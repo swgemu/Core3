@@ -59,6 +59,8 @@ which carries forward this exception.
 
 #include "../../Zone.h"
 
+#include "ContainerObject.h"
+
 #include "DamageDone.h"
 
 class Zone;
@@ -70,7 +72,7 @@ class ZoneProcessServerImplementation;
 
 class ObjectMenuResponse;
 
-class SceneObjectImplementation : public SceneObjectServant, public QuadTreeEntry, public Logger {
+class SceneObjectImplementation : public SceneObjectServant, public QuadTreeEntry, public ContainerObject, public Logger {
 
 protected:
 	/*

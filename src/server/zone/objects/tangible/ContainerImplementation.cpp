@@ -54,8 +54,7 @@ which carries forward this exception.
 ContainerImplementation::ContainerImplementation(uint64 oid) : ContainerServant(oid) {
 	objectCRC = 0x3969E83B;
 
-	items.setInsertPlan(SortedVector<VectorMapEntry<uint64, SceneObject*>*>::NO_DUPLICATE);
-	items.setNullValue(NULL);
+	setContainerVolumeLimit(0xFFFFFFFF);
 
 	StringBuffer loggingname;
 	loggingname << "Container = 0x" << oid;
@@ -66,64 +65,7 @@ ContainerImplementation::ContainerImplementation(uint64 oid) : ContainerServant(
 }
 
 ContainerImplementation::~ContainerImplementation() {
-	while (items.size() > 0) {
-		SceneObject* item = items.get(0);
 
-		items.drop(item->getObjectID());
-
-		item->release();
-
-		if (item->isTangible())
-			((TangibleObject*) item)->setParent(NULL);
-
-		item->finalize();
-	}
-}
-
-void ContainerImplementation::addObject(SceneObject* obj) {
-	uint64 oid = obj->getObjectID();
-
-	if (!items.contains(oid)) {
-		obj->acquire();
-	}
-
-	items.put(oid, obj);
-}
-
-void ContainerImplementation::removeObject(int index) {
-	SceneObject* item = items.get(index);
-
-	if (item == NULL)
-		return;
-
-	items.remove(index);
-
-	if (item->isTangible())
-		((TangibleObject*) item)->setParent(NULL);
-
-	item->release();
-}
-
-void ContainerImplementation::removeObject(uint64 oid) {
-	SceneObject* item = items.get(oid);
-
-	if (item == NULL)
-		return;
-
-	items.drop(oid);
-
-	if (item != NULL && item->isTangible())
-		((TangibleObject*) item)->setParent(NULL);
-
-	item->release();
-}
-
-void ContainerImplementation::openTo(Player* player) {
-	if (player != parent && player->getInventory() != parent)
-		sendItemsTo(player);
-
-	ClientOpenContainerMessage* msg = new ClientOpenContainerMessage(this);
-	player->sendMessage(msg);
 }
 
 void ContainerImplementation::sendTo(Player* player, bool doClose) {
@@ -150,24 +92,16 @@ void ContainerImplementation::sendTo(Player* player, bool doClose) {
 		SceneObjectImplementation::close(client);
 }
 
-void ContainerImplementation::sendItemsTo(Player* player) {
-	for (int i = 0; i < objectsSize(); ++i) {
-		SceneObject* item = getObject(i);
-
-		item->sendTo(player);
-	}
-}
-
 void ContainerImplementation::parseItemAttributes() {
 	String attr = "slots";
 	setSlots(itemAttributes->getIntAttribute(attr));
 }
 
 void ContainerImplementation::setSlots(int attributeSlots) {
-	slots = attributeSlots;
+	ContainerObject::setSlots(attributeSlots);
 
 	String attr = "slots";
-	itemAttributes->setIntAttribute(attr, slots);
+	itemAttributes->setIntAttribute(attr, attributeSlots);
 }
 
 void ContainerImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {

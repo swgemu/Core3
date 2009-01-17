@@ -76,8 +76,8 @@ public:
 		TangibleObject* retTano = NULL;
 		TangibleObject* tano = NULL;
 
-		for (int i = 0; i < items.size(); ++i) {
-			SceneObject* obj = items.get(i);
+		for (int i = 0; i < getContainerObjectsSize(); ++i) {
+			SceneObject* obj = getObject(i);
 
 			if (obj->isTangible()) {
 				tano = (TangibleObject*)obj;
@@ -100,8 +100,8 @@ public:
 	void removeAllByMisoKey(CreatureObject* owner, String& misKey) {
 		TangibleObject* tano = NULL;
 
-		for (int i = 0; i < items.size(); ++i) {
-			SceneObject* obj = items.get(i);
+		for (int i = 0; i < getContainerObjectsSize(); ++i) {
+			SceneObject* obj = getObject(i);
 
 			if (obj->isTangible()) {
 				tano = (TangibleObject*)obj;
@@ -126,8 +126,8 @@ public:
 	int getUnequippedItemCount() {
 		int count = 0;
 
-		for (int i = 0; i < items.size(); ++i) {
-			SceneObject* obj = items.get(i);
+		for (int i = 0; i < getContainerObjectsSize(); ++i) {
+			SceneObject* obj = getObject(i);
 
 			if (obj->isTangible()) {
 				TangibleObject* tano = (TangibleObject*) obj;

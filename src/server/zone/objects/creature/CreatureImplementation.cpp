@@ -560,7 +560,7 @@ void CreatureImplementation::clearLootItems() {
 	if (lootContainer == NULL)
 		return;
 
-	while (!lootContainer->isEmpty()) {
+	while (!lootContainer->isContainerEmpty()) {
 		SceneObject* object = lootContainer->getObject((int) 0);
 
 		lootContainer->removeObject((int) 0);

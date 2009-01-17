@@ -27,152 +27,12 @@ Container::Container(DummyConstructorParameter* param) : TangibleObject(param) {
 Container::~Container() {
 }
 
-void Container::addObject(SceneObject* obj) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 6);
-		method.addObjectParameter(obj);
-
-		method.executeWithVoidReturn();
-	} else
-		((ContainerImplementation*) _impl)->addObject(obj);
-}
-
-SceneObject* Container::getObject(int index) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 7);
-		method.addSignedIntParameter(index);
-
-		return (SceneObject*) method.executeWithObjectReturn();
-	} else
-		return ((ContainerImplementation*) _impl)->getObject(index);
-}
-
-SceneObject* Container::getObject(unsigned long long oid) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 8);
-		method.addUnsignedLongParameter(oid);
-
-		return (SceneObject*) method.executeWithObjectReturn();
-	} else
-		return ((ContainerImplementation*) _impl)->getObject(oid);
-}
-
-void Container::removeObject(int index) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
-		method.addSignedIntParameter(index);
-
-		method.executeWithVoidReturn();
-	} else
-		((ContainerImplementation*) _impl)->removeObject(index);
-}
-
-void Container::removeObject(unsigned long long oid) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 10);
-		method.addUnsignedLongParameter(oid);
-
-		method.executeWithVoidReturn();
-	} else
-		((ContainerImplementation*) _impl)->removeObject(oid);
-}
-
-int Container::objectsSize() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 11);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((ContainerImplementation*) _impl)->objectsSize();
-}
-
-void Container::openTo(Player* player) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 12);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		((ContainerImplementation*) _impl)->openTo(player);
-}
-
-void Container::sendItemsTo(Player* player) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 13);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		((ContainerImplementation*) _impl)->sendItemsTo(player);
-}
-
-bool Container::isEmpty() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 14);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((ContainerImplementation*) _impl)->isEmpty();
-}
-
-int Container::getSlots() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 15);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((ContainerImplementation*) _impl)->getSlots();
-}
-
-void Container::setSlots(int attributeSlots) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 16);
-		method.addSignedIntParameter(attributeSlots);
-
-		method.executeWithVoidReturn();
-	} else
-		((ContainerImplementation*) _impl)->setSlots(attributeSlots);
-}
-
 void Container::generateAttributes(SceneObject* obj) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 6);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -192,39 +52,6 @@ Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		addObject((SceneObject*) inv->getObjectParameter());
-		break;
-	case 7:
-		resp->insertLong(getObject(inv->getSignedIntParameter())->_getObjectID());
-		break;
-	case 8:
-		resp->insertLong(getObject(inv->getUnsignedLongParameter())->_getObjectID());
-		break;
-	case 9:
-		removeObject(inv->getSignedIntParameter());
-		break;
-	case 10:
-		removeObject(inv->getUnsignedLongParameter());
-		break;
-	case 11:
-		resp->insertSignedInt(objectsSize());
-		break;
-	case 12:
-		openTo((Player*) inv->getObjectParameter());
-		break;
-	case 13:
-		sendItemsTo((Player*) inv->getObjectParameter());
-		break;
-	case 14:
-		resp->insertBoolean(isEmpty());
-		break;
-	case 15:
-		resp->insertSignedInt(getSlots());
-		break;
-	case 16:
-		setSlots(inv->getSignedIntParameter());
-		break;
-	case 17:
 		generateAttributes((SceneObject*) inv->getObjectParameter());
 		break;
 	default:
@@ -232,50 +59,6 @@ Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	}
 
 	return resp;
-}
-
-void ContainerAdapter::addObject(SceneObject* obj) {
-	return ((ContainerImplementation*) impl)->addObject(obj);
-}
-
-SceneObject* ContainerAdapter::getObject(int index) {
-	return ((ContainerImplementation*) impl)->getObject(index);
-}
-
-SceneObject* ContainerAdapter::getObject(unsigned long long oid) {
-	return ((ContainerImplementation*) impl)->getObject(oid);
-}
-
-void ContainerAdapter::removeObject(int index) {
-	return ((ContainerImplementation*) impl)->removeObject(index);
-}
-
-void ContainerAdapter::removeObject(unsigned long long oid) {
-	return ((ContainerImplementation*) impl)->removeObject(oid);
-}
-
-int ContainerAdapter::objectsSize() {
-	return ((ContainerImplementation*) impl)->objectsSize();
-}
-
-void ContainerAdapter::openTo(Player* player) {
-	return ((ContainerImplementation*) impl)->openTo(player);
-}
-
-void ContainerAdapter::sendItemsTo(Player* player) {
-	return ((ContainerImplementation*) impl)->sendItemsTo(player);
-}
-
-bool ContainerAdapter::isEmpty() {
-	return ((ContainerImplementation*) impl)->isEmpty();
-}
-
-int ContainerAdapter::getSlots() {
-	return ((ContainerImplementation*) impl)->getSlots();
-}
-
-void ContainerAdapter::setSlots(int attributeSlots) {
-	return ((ContainerImplementation*) impl)->setSlots(attributeSlots);
 }
 
 void ContainerAdapter::generateAttributes(SceneObject* obj) {

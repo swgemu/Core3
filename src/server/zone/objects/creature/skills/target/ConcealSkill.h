@@ -215,7 +215,7 @@ public:
 
 		Inventory* inventory = creature->getInventory();
 
-		for (int i=0; i<inventory->objectsSize(); i++) {
+		for (int i=0; i< inventory->getContainerObjectsSize(); i++) {
 			TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 
 			if (item != NULL && item->isCamoKit()) {

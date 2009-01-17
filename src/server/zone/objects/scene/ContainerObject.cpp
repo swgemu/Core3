@@ -42,65 +42,92 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CONTAINERIMPLEMENTATION_H_
-#define CONTAINERIMPLEMENTATION_H_
+#include "ContainerObject.h"
 
-#include "TangibleObject.h"
+#include "../tangible/TangibleObject.h"
+#include "../player/Player.h"
 
-#include "Container.h"
+#include "../../packets/scene/ClientOpenContainerMessage.h"
 
-class Player;
+#include "../../packets.h"
 
-class ContainerImplementation : public ContainerServant {
-//protected:
-//	VectorMap<uint64, SceneObject*>* items;
+ContainerObject::ContainerObject(SceneObjectImplementation* obj) {
+	sceneObject = obj;
 
-public:
-	//VectorMap<uint64, SceneObject*> items;
+	containerType = 0;
+	containerVolumeLimit = 0;
 
-	//int slots;
+	objects.setInsertPlan(SortedVector<VectorMapEntry<uint64, SceneObject*>*>::NO_DUPLICATE);
+	objects.setNullValue(NULL);
+}
 
-	ContainerImplementation(uint64 oid);
+ContainerObject::~ContainerObject() {
+	while (objects.size() > 0) {
+		SceneObject* item = objects.get(0);
 
-	virtual ~ContainerImplementation();
+		objects.drop(item->getObjectID());
 
-	/*void addObject(SceneObject* obj);
+		item->release();
+		item->setParent(NULL);
 
-	void openTo(Player* player);
+		item->finalize();
+	}
+}
 
-	SceneObject* getObject(int index) {
-		return items.get(index);
+bool ContainerObject::addObject(SceneObject* obj) {
+	if ((uint32)getContainerObjectsSize() >= containerVolumeLimit)
+		return false;
+
+	uint64 oid = obj->getObjectID();
+
+	if (!objects.contains(oid)) {
+		obj->acquire();
 	}
 
-	SceneObject* getObject(uint64 oid) {
-		return items.get(oid);
+	objects.put(oid, obj);
+
+	return true;
+}
+
+void ContainerObject::removeObject(int index) {
+	SceneObject* item = objects.get(index);
+
+	if (item == NULL)
+		return;
+
+	objects.remove(index);
+
+	item->setParent(NULL);
+
+	item->release();
+}
+
+void ContainerObject::removeObject(uint64 oid) {
+	SceneObject* item = objects.get(oid);
+
+	if (item == NULL)
+		return;
+
+	objects.drop(oid);
+
+	if (item != NULL)
+		item->setParent(NULL);
+
+	item->release();
+}
+
+void ContainerObject::openTo(Player* player) {
+	if (player != sceneObject->getParent() && player->getInventory() != sceneObject->getParent())
+		sendItemsTo(player);
+
+	ClientOpenContainerMessage* msg = new ClientOpenContainerMessage(sceneObject);
+	player->sendMessage(msg);
+}
+
+void ContainerObject::sendItemsTo(Player* player) {
+	for (int i = 0; i < getContainerObjectsSize(); ++i) {
+		SceneObject* item = getObject(i);
+
+		item->sendTo(player);
 	}
-
-	void removeObject(int index);
-
-	void removeObject(uint64 oid);
-
-	int objectsSize() {
-		return items.size();
-	}
-
-	bool isEmpty() {
-		return items.isEmpty();
-	}*/
-
-	void sendTo(Player* player, bool doClose = true);
-
-	/*void sendItemsTo(Player* player);
-
-	int getSlots() {
-		return slots;
-	}*/
-
-	void setSlots(int attributeSlots);
-
-	void parseItemAttributes();
-
-	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
-};
-
-#endif /*CONTAINERIMPLEMENTATION_H_*/
+}

@@ -441,7 +441,7 @@ void CreatureObjectImplementation::sendItemsTo(Player* player) {
 
 	inventory->sendTo(player, false);
 
-	for (int i = 0; i < inventory->objectsSize(); ++i) {
+	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 		SceneObject* item = inventory->getObject(i);
 
 		if (player == (Player*) _this)
@@ -1842,7 +1842,7 @@ Instrument* CreatureObjectImplementation::getInstrument() {
 	if (inventory == NULL)
 		return NULL;
 
-	for (int i=0; i < inventory->objectsSize(); i++) {
+	for (int i=0; i < inventory->isContainerEmpty(); i++) {
 		TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 
 		if (item->isInstrument() && item->isEquipped())
@@ -1856,7 +1856,7 @@ Armor* CreatureObjectImplementation::getArmor(int type) {
 	if (inventory == NULL)
 		return NULL;
 
-	for (int i=0; i < inventory->objectsSize(); i++) {
+	for (int i=0; i < inventory->isContainerEmpty(); i++) {
 		TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 
 		if (item->isArmor()) {
@@ -1888,7 +1888,7 @@ void CreatureObjectImplementation::addInventoryResource(ResourceContainer* rcno)
 	if (player == NULL)
 		return;
 
-	for (int i = 0; i < inventory->objectsSize(); i++) {
+	for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 		TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 		if (item != NULL && item->isResource()) {
 			inventoryResource = (ResourceContainer*) item;
@@ -4393,7 +4393,7 @@ bool CreatureObjectImplementation::isTanoObjEquipped(TangibleObject* tano) {
 	if (inventory == NULL)
 		return false;
 
-	for (int i = 0; i < inventory->objectsSize(); i++) {
+	for (int i = 0; i < inventory->isContainerEmpty(); i++) {
 		TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 
 		if (tano == item)

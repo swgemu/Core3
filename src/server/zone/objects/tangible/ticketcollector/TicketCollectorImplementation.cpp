@@ -94,7 +94,7 @@ int TicketCollectorImplementation::useObject(Player* player) {
 	sui->setPromptText("@travel:boarding_ticket_selection");
 	sui->setCancelButton(true);
 
-	for (int i = 0; i < inventory->objectsSize(); ++i) {
+	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 		SceneObject* obj = inventory->getObject(i);
 
 		if (!obj->isTangible())

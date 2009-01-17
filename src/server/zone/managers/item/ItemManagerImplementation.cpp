@@ -1502,7 +1502,7 @@ void ItemManagerImplementation::loadPlayerDatapadItems(Player* player) {
 void ItemManagerImplementation::unloadPlayerItems(Player* player) {
 	Inventory* inventory = player->getInventory();
 
-	for (int i = 0; i < inventory->objectsSize(); ++i) {
+	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 		TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 
 		if (!item->isPersistent()) {
@@ -2030,7 +2030,7 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 		}
 
 		if (destinationIsInventoryContainer || destinationIsExternalContainer) {
-			int containerItems = ((Container*) destinationObject)->objectsSize();
+			int containerItems = ((Container*) destinationObject)->getContainerObjectsSize();
 			int attributeSlots = ((Container*) destinationObject)->getSlots();
 
 			if (containerItems >= attributeSlots) {
@@ -2339,7 +2339,7 @@ void ItemManagerImplementation::moveNestedItemsToPlayerStorage(Player* player, C
 		query << "START TRANSACTION";
 		ServerDatabase::instance()->executeStatement(query);
 
-		for (int i = 0; i < container->objectsSize(); ++i) {
+		for (int i = 0; i < container->getContainerObjectsSize(); ++i) {
 			item = (TangibleObject*) container->getObject(i);
 
 			try {
@@ -2426,7 +2426,7 @@ void ItemManagerImplementation::moveNestedItemsToInventoryContainer(Player* play
 		query << "START TRANSACTION";
 		ServerDatabase::instance()->executeStatement(query);
 
-		for (int i = 0; i < container->objectsSize(); ++i) {
+		for (int i = 0; i < container->getContainerObjectsSize(); ++i) {
 			item = (TangibleObject*) container->getObject(i);
 			if (item != NULL) {
 				try {

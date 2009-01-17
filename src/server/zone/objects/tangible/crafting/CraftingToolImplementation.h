@@ -58,7 +58,6 @@ class CreatureObject;
 class SceneObject;
 class Player;
 class CreateObjectEvent;
-class Container;
 
 
 class CraftingToolImplementation : public CraftingToolServant {
@@ -132,7 +131,7 @@ public:
 
 	void resetSlots();
 
-	Container * getHopper(Player * player);
+	Container* getHopper(Player * player);
 	void retriveHopperItem(Player * player);
 
 	void cleanUp(Player * player);

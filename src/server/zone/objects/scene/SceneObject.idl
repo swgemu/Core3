@@ -90,6 +90,33 @@ interface SceneObject implements ManagedObject {
 
 	void close(ZoneClientSession client);
 
+	// Container methods
+	void openTo(Player player);
+
+	boolean addObject(SceneObject obj);
+
+	SceneObject getObject(int index);
+	SceneObject getObject(unsigned long oid);
+
+	void removeObject(int index);
+	void removeObject(unsigned long oid);
+
+	void sendItemsTo(Player player);
+
+	// getters
+	int getContainerObjectsSize();
+
+	boolean isContainerEmpty();
+
+	int getSlots();
+	int getContainerType();
+	int getContainerVolumeLimit();
+
+	// setters
+	void setSlots(int attributeSlots);
+	void setContainerVolumeLimit(unsigned int limit);
+	void setContainerType(unsigned int type);
+
 	// QT methods
 	boolean isInRange(SceneObject obj, float range);
 

@@ -52,7 +52,7 @@ interface Inventory implements Container {
 	Inventory(CreatureObject creature) {
 		super(unsigned long oid);
 	}
-	
+
 	TangibleObject getItemByMisoKey(String misKey);
 	void removeAllByMisoKey(CreatureObject owner, String misKey);
 

@@ -85,7 +85,7 @@ void CreatureInventoryImplementation::sendTo(Player* player, bool doClose) {
 }
 
 void CreatureInventoryImplementation::sendItemsTo(Player* player) {
-	for (int i = 0; i < objectsSize(); ++i) {
+	for (int i = 0; i < getContainerObjectsSize(); ++i) {
 		SceneObject* item = getObject(i);
 
 		item->sendTo(player);

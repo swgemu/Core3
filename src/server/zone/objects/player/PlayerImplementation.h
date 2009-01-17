@@ -1957,7 +1957,7 @@ public:
 	inline Vector<TangibleObject*> getInsurableItems() {
 		Vector<TangibleObject*> insurableItems;
 
-		for (int i = 0; i < inventory->objectsSize(); i++) {
+		for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 			TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 
 			if (item != NULL && item->isInsurable())

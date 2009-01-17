@@ -228,6 +228,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/campkit/campsite/BasicCampSiteImplementation.cpp \
 		server/zone/objects/tangible/weapons/ThrowableWeaponImplementation.cpp \
 		server/zone/objects/tangible/weapons/throwable/TrapThrowableWeaponImplementation.cpp \
+		server/zone/objects/scene/ContainerObject.cpp \
 		server/chat/ChatManagerImplementation.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/conf/ConfigManager.cpp \

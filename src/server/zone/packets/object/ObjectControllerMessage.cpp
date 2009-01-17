@@ -2441,7 +2441,7 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player,
 		if (tano->isContainer()) {
 			Container* container = (Container*) tano;
 
-			while (!container->isEmpty()) {
+			while (!container->isContainerEmpty()) {
 				SceneObject* sco = container->getObject(0);
 
 				itemManager->deletePlayerItem(player, ((TangibleObject*) sco),
