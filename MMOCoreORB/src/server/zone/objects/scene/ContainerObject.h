@@ -42,65 +42,85 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CONTAINERIMPLEMENTATION_H_
-#define CONTAINERIMPLEMENTATION_H_
+#ifndef CONTAINEROBJECT_H_
+#define CONTAINEROBJECT_H_
 
-#include "TangibleObject.h"
+#include "engine/engine.h"
 
-#include "Container.h"
+#include "ContainerObject.h"
+
+#include "SceneObject.h"
 
 class Player;
+class SceneObjectImplementation;
 
-class ContainerImplementation : public ContainerServant {
-//protected:
-//	VectorMap<uint64, SceneObject*>* items;
+class ContainerObject {
+	uint32 containerType;
+	uint32 containerVolumeLimit;
 
+	int slots;
+
+	VectorMap<uint64, SceneObject*> objects;
+
+	SceneObjectImplementation* sceneObject;
 public:
-	//VectorMap<uint64, SceneObject*> items;
-
-	//int slots;
-
-	ContainerImplementation(uint64 oid);
-
-	virtual ~ContainerImplementation();
-
-	/*void addObject(SceneObject* obj);
+	ContainerObject(SceneObjectImplementation* obj);
+	virtual ~ContainerObject();
 
 	void openTo(Player* player);
 
+	bool addObject(SceneObject* obj);
+
 	SceneObject* getObject(int index) {
-		return items.get(index);
+		return objects.get(index);
 	}
 
 	SceneObject* getObject(uint64 oid) {
-		return items.get(oid);
+		return objects.get(oid);
 	}
 
 	void removeObject(int index);
 
 	void removeObject(uint64 oid);
 
-	int objectsSize() {
-		return items.size();
+	void sendItemsTo(Player* player);
+
+	// ssgetters
+
+	int getContainerObjectsSize() {
+		return objects.size();
 	}
 
-	bool isEmpty() {
-		return items.isEmpty();
-	}*/
+	bool isContainerEmpty() {
+		return objects.isEmpty();
+	}
 
-	void sendTo(Player* player, bool doClose = true);
-
-	/*void sendItemsTo(Player* player);
-
-	int getSlots() {
+	inline int getSlots() {
 		return slots;
-	}*/
+	}
 
-	void setSlots(int attributeSlots);
+	inline int getContainerType() {
+		return containerType;
+	}
 
-	void parseItemAttributes();
+	inline int getContainerVolumeLimit() {
+		return containerVolumeLimit;
+	}
 
-	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
+	// setters
+
+	virtual void setSlots(int attributeSlots) {
+		slots = attributeSlots;
+	}
+
+	void setContainerVolumeLimit(uint32 limit) {
+		containerVolumeLimit = limit;
+	}
+
+	void setContainerType(int type) {
+		containerType = type;
+	}
+
 };
 
-#endif /*CONTAINERIMPLEMENTATION_H_*/
+#endif /*ContainerObject_H_*/

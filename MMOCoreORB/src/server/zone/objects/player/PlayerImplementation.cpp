@@ -1063,7 +1063,7 @@ void PlayerImplementation::trainStartingProfession() {
 
 void PlayerImplementation::decayInventory() {
 	if (inventory != NULL) {
-		for (int i = 0; i < inventory->objectsSize(); i++) {
+		for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 			TangibleObject* item = ((TangibleObject*) inventory->getObject(i));
 
 			if (item->isDecayable()) {
@@ -1124,7 +1124,7 @@ void PlayerImplementation::sendPersonalContainers() {
 	//datapad
 	datapad->sendTo(_this, false);
 
-	for (int i = 0; i < datapad->objectsSize(); ++i) {
+	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
 		SceneObject* item = datapad->getObject(i);
 		item->sendTo(_this);
 	}
@@ -3995,7 +3995,7 @@ CraftingTool* PlayerImplementation::getCraftingTool(const int type, bool doLock)
 	TangibleObject* item= NULL;
 
 	// The For loop is looking for something in inventory with the same name as what is passed in
-	for (int i = 0; i < inventory->objectsSize(); i++) {
+	for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 
 		item = (TangibleObject*) inventory->getObject(i);
 
@@ -4822,7 +4822,7 @@ void PlayerImplementation::saveDatapad(Player* player) {
 
 		ServerDatabase::instance()->executeStatement(query);
 
-		for (int i = 0; i < datapad->objectsSize(); ++i) {
+		for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
 			name = "";
 			detailName = "";
 			appearance = " "; //There's a reason for the whitespace - don't change it plz !
@@ -5369,7 +5369,7 @@ void PlayerImplementation::throwTrap(uint64 targetID) {
 	Inventory* inventory = getInventory();
 
 	if (inventory != NULL) {
-		for (int i = 0; i < inventory->objectsSize(); i++) {
+		for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 			TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 
 			if (item->isTrap()) {
@@ -5417,7 +5417,7 @@ uint64 PlayerImplementation::getAvailablePower() {
 	uint64 power = 0;
 
 	if (inventory != NULL) {
-		for (int i = 0; i < inventory->objectsSize(); i++) {
+		for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 			TangibleObject* tano = (TangibleObject*) inventory->getObject(i);
 
 			if (tano->isResource()) {
@@ -5445,7 +5445,7 @@ void PlayerImplementation::removePower(uint64 power) {
 	uint64 containerPower = 0;
 
 	if (inventory != NULL && power > 0) {
-		for (int i = 0; i < inventory->objectsSize(); i++ && power > 0) {
+		for (int i = 0; i < inventory->getContainerObjectsSize(); i++ && power > 0) {
 			TangibleObject* tano = (TangibleObject*) inventory->getObject(i);
 
 			if (tano->isResource()) {

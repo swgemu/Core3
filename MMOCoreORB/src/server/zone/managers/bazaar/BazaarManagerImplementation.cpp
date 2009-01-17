@@ -872,7 +872,7 @@ void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, 
 		// Check if inventory is full
 		Inventory* inventory = player->getInventory();
 
-		if (inventory->objectsSize() > 79) {
+		if (inventory->getContainerObjectsSize() > 79) {
 			msg = new RetrieveAuctionItemResponseMessage(objectid, 12);
 
 			item->unlock();

@@ -2822,7 +2822,7 @@ void GameCommandHandler::poofObject(StringTokenizer tokenizer, Player * player) 
 		if (((TangibleObject*) obj)->isContainer()) {
 			Container* container = (Container*) obj;
 
-			while (!container->isEmpty()) {
+			while (!container->isContainerEmpty()) {
 				SceneObject* sco = container->getObject(0);
 
 				container->removeObject(0);

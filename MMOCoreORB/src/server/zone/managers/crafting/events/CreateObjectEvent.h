@@ -95,7 +95,7 @@ public:
 
 					Container* hopper = ct->getHopper(player);
 
-					for (int i = 0; i < hopper->objectsSize(); i++){
+					for (int i = 0; i < hopper->getContainerObjectsSize(); i++){
 						hopper->removeObject(0);
 					}
 

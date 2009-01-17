@@ -61,6 +61,36 @@ public:
 
 	void close(ZoneClientSession* client);
 
+	void openTo(Player* player);
+
+	bool addObject(SceneObject* obj);
+
+	SceneObject* getObject(int index);
+
+	SceneObject* getObject(unsigned long long oid);
+
+	void removeObject(int index);
+
+	void removeObject(unsigned long long oid);
+
+	void sendItemsTo(Player* player);
+
+	int getContainerObjectsSize();
+
+	bool isContainerEmpty();
+
+	int getSlots();
+
+	int getContainerType();
+
+	int getContainerVolumeLimit();
+
+	void setSlots(int attributeSlots);
+
+	void setContainerVolumeLimit(unsigned int limit);
+
+	void setContainerType(unsigned int type);
+
 	bool isInRange(SceneObject* obj, float range);
 
 	bool isInRange(float x, float y, float range);
@@ -330,6 +360,36 @@ public:
 	void selectConversationOption(int option, SceneObject* obj);
 
 	void close(ZoneClientSession* client);
+
+	void openTo(Player* player);
+
+	bool addObject(SceneObject* obj);
+
+	SceneObject* getObject(int index);
+
+	SceneObject* getObject(unsigned long long oid);
+
+	void removeObject(int index);
+
+	void removeObject(unsigned long long oid);
+
+	void sendItemsTo(Player* player);
+
+	int getContainerObjectsSize();
+
+	bool isContainerEmpty();
+
+	int getSlots();
+
+	int getContainerType();
+
+	int getContainerVolumeLimit();
+
+	void setSlots(int attributeSlots);
+
+	void setContainerVolumeLimit(unsigned int limit);
+
+	void setContainerType(unsigned int type);
 
 	bool isInRange(SceneObject* obj, float range);
 

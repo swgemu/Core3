@@ -141,7 +141,7 @@ public:
 		int medicineUse = creature->getSkillMod("healing_ability");
 
 		if (inventory != NULL) {
-			for (int i = 0; i < inventory->objectsSize(); i++) {
+			for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 
 				if (item->isPharmaceutical()) {

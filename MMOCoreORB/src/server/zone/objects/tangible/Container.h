@@ -19,28 +19,6 @@ class Container : public TangibleObject {
 public:
 	Container(unsigned long long oid);
 
-	void addObject(SceneObject* obj);
-
-	SceneObject* getObject(int index);
-
-	SceneObject* getObject(unsigned long long oid);
-
-	void removeObject(int index);
-
-	void removeObject(unsigned long long oid);
-
-	int objectsSize();
-
-	void openTo(Player* player);
-
-	void sendItemsTo(Player* player);
-
-	bool isEmpty();
-
-	int getSlots();
-
-	void setSlots(int attributeSlots);
-
 	void generateAttributes(SceneObject* obj);
 
 protected:
@@ -58,28 +36,6 @@ public:
 	ContainerAdapter(ContainerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	void addObject(SceneObject* obj);
-
-	SceneObject* getObject(int index);
-
-	SceneObject* getObject(unsigned long long oid);
-
-	void removeObject(int index);
-
-	void removeObject(unsigned long long oid);
-
-	int objectsSize();
-
-	void openTo(Player* player);
-
-	void sendItemsTo(Player* player);
-
-	bool isEmpty();
-
-	int getSlots();
-
-	void setSlots(int attributeSlots);
 
 	void generateAttributes(SceneObject* obj);
 

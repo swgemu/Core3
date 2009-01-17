@@ -708,7 +708,7 @@ void SuiManager::handleRepairWeapon(uint32 boxID, Player* player, uint32 cancel,
 
 			int weaponCount = 0;
 
-			for (int i = 0; i < inventory->objectsSize(); i++) {
+			for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 
 				item->wlock();
@@ -759,7 +759,7 @@ void SuiManager::handleRepairArmor(uint32 boxID, Player* player, uint32 cancel, 
 
 			int armorCount = 0;
 
-			for (int i = 0; i < inventory->objectsSize(); i++) {
+			for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 
 				item->wlock();

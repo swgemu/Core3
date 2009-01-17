@@ -198,7 +198,7 @@ void CraftingToolImplementation::sendTo(Player* player, bool doClose) {
 void CraftingToolImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
 
 	if(hopper != NULL) {
-		if(hopper->objectsSize() > 0) {
+		if(hopper->getContainerObjectsSize() > 0) {
 			omr->addRadialItem(0, 130, 3, "Retrieve Prototype");
 		}
 	}
@@ -493,7 +493,7 @@ void CraftingToolImplementation::retriveHopperItem(Player* player){
 	Inventory* inventory = player->getInventory();
 
 	if (hopper != NULL){
-		if (hopper->objectsSize() > 0 && inventory->getObjectCount() < 80){
+		if (hopper->getContainerObjectsSize() > 0 && inventory->getObjectCount() < 80){
 
 			TangibleObject* tano = (TangibleObject*) hopper->getObject(0);
 			hopper->removeObject(0);

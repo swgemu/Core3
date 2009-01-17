@@ -79,7 +79,7 @@ interface CreatureObject implements TangibleObject {
 	CreatureObject(unsigned long oid) {
 		super(oid, int type);
 	}
-	
+
 	void info(const String message, boolean forcedLog = false);
 
 	void sendItemsTo(Player player);
@@ -115,7 +115,7 @@ interface CreatureObject implements TangibleObject {
 	boolean isKnockedDown();
 	boolean isKneeling();
 	boolean isProne();
-	boolean isStanding();                                                                                                                         
+	boolean isStanding();
 	boolean isInCombat();
 	boolean isDizzied();
 	boolean isStunned();
@@ -134,7 +134,7 @@ interface CreatureObject implements TangibleObject {
 	boolean isNPC();
 
 	boolean isTanoObjEquipped(TangibleObject tano);
-	
+
 	//Future Creature Handler Stuff
 	boolean isPet();
 	//boolean isPetOf(CreatureObject owner);
@@ -265,7 +265,7 @@ interface CreatureObject implements TangibleObject {
 	boolean addQueuedState(unsigned int skillCRC);
 
 	void setMeditateState();
-	
+
 	void removePowerboost();
 
 	boolean isGuilded();
@@ -273,7 +273,7 @@ interface CreatureObject implements TangibleObject {
 	void removeGroup();
 
 	boolean isInAGroup();
-	
+
 	boolean isInGroupWith(CreatureObject creature);
 
 	void setGroupID(unsigned long gid);
@@ -299,11 +299,11 @@ interface CreatureObject implements TangibleObject {
 	void setIgnoreMovementTests(int times);
 
 	void setLevel(unsigned int lvl);
-	
+
 	void setHealthEncumbrance(unsigned int value);
 	void setActionEncumbrance(unsigned int value);
 	void setMindEncumbrance(unsigned int value);
-	
+
 	void changeHealthEncumbrance(int value);
 	void changeActionEncumbrance(int value);
 	void changeMindEncumbrance(int value);
@@ -470,7 +470,7 @@ interface CreatureObject implements TangibleObject {
 	boolean hasWounds();
 	boolean hasWound(unsigned char attribute);
 	boolean hasShockWounds();
-	
+
 	unsigned char getNextWoundedAttribute(boolean h = true, boolean a = true, boolean m = false);
 
 	boolean isAttackable();
@@ -557,7 +557,7 @@ interface CreatureObject implements TangibleObject {
 	int getMindWounds();
 	int getFocusWounds();
 	int getWillpowerWounds();
-	
+
 	unsigned int getHealthDamage();
 	unsigned int getActionDamage();
 	unsigned int getMindDamage();
@@ -579,11 +579,11 @@ interface CreatureObject implements TangibleObject {
 
 	int getpbHA();
 
-	int getpbMind(); 
-	
-	int getpbTick(); 
-	
-	int getpbBonus(); 
+	int getpbMind();
+
+	int getpbTick();
+
+	int getpbBonus();
 
 	unsigned long getTargetID();
 
@@ -669,7 +669,7 @@ interface CreatureObject implements TangibleObject {
 
 	String getLootGroup();
 
-	unsigned int getFerocity();	
+	unsigned int getFerocity();
 	boolean isBaby();
 
 	// setters
@@ -742,14 +742,14 @@ interface CreatureObject implements TangibleObject {
 	void changeMind(int value);
 	void changeFocus(int value);
 	void changeWillpower(int value);
-	
+
 	void setpbHA(int value);
- 
-	void setpbMind(int value); 
-	
-	void setpbTick(int value); 
-	
-    void setpbBonus(unsigned int value); 
+
+	void setpbMind(int value);
+
+	void setpbTick(int value);
+
+    void setpbBonus(unsigned int value);
 
 	void setSpeed(float spd);
 	void setAcceleration(float acc);
@@ -820,7 +820,7 @@ interface CreatureObject implements TangibleObject {
 	boolean healState(CreatureObject target, unsigned long state);
 	boolean revive(CreatureObject target, boolean forcedChange = false);
 	boolean resurrect(CreatureObject target, boolean forcedChange = false);
-	
+
 	void deactivateWoundTreatment();
 	void activateWoundTreatment();
 
@@ -876,8 +876,8 @@ interface CreatureObject implements TangibleObject {
 
 	void setInternalNPCDamageModifier(float indm);
 
-	void setFerocity(unsigned int fero);	
-	
+	void setFerocity(unsigned int fero);
+
 	void setBaby(boolean baby);
 
 	// NPC weapons
@@ -891,7 +891,7 @@ interface CreatureObject implements TangibleObject {
 	void setCreatureWeaponAttackSpeed(float weaponattackspeed);
 	void setCreatureWeaponDamageType(const String weapondamtype);
 	void setCreatureWeaponArmorPiercing(const String weaponarmorpiercing);
-								
+
 	boolean isFrozen();
 	void setFrozen(boolean flag);
 
@@ -905,7 +905,7 @@ interface CreatureObject implements TangibleObject {
 
 	void setCamoType(unsigned int cType);
 	unsigned int getCamoType();
-	
+
 	void activateCamo(unsigned int camoCRC,unsigned int time,unsigned int ms);
 	void deactivateCamo(boolean forced);
 	void activateCamoLock();
@@ -923,7 +923,7 @@ interface CreatureObject implements TangibleObject {
 	int getNumberOfPets();
 	void setNumberOfPets(int num);
 
-	
+
 	unsigned char getLowestHAMAttribute();
 
 
@@ -944,7 +944,7 @@ interface CreatureObject implements TangibleObject {
 	void onReceiveDamage(SceneObject attacker, unsigned char attribute, unsigned int amount);
 	void onRegenerateHAM();
 	//void onMeditate();
-	
+
 	//Actions
 	boolean inflictDamage(CreatureObject victim, unsigned char attribute, unsigned int damage);
 	void incapacitateSelf();
@@ -952,8 +952,8 @@ interface CreatureObject implements TangibleObject {
 	void die();
 	void equipItem(TangibleObject item);
 	void unequipItem(TangibleObject item);
-	
+
 	//Setters
-	
+
 	//Getters
 }

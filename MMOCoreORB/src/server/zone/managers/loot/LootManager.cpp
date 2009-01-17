@@ -83,8 +83,8 @@ void LootManager::lootCorpse(Player* player, Creature* creature) {
 
 		Container* lootContainer = creature->getLootContainer();
 
-		if (lootContainer != NULL && lootContainer->objectsSize() > 0) {
-			for (int i = lootContainer->objectsSize() - 1; i >= 0 && !player->hasFullInventory(); --i) {
+		if (lootContainer != NULL && lootContainer->getContainerObjectsSize() > 0) {
+			for (int i = lootContainer->getContainerObjectsSize() - 1; i >= 0 && !player->hasFullInventory(); --i) {
 				TangibleObject* lootItem = (TangibleObject*) lootContainer->getObject(i);
 
 				moveObject(lootItem, player, creature);
@@ -248,7 +248,7 @@ void LootManager::createLoot(Creature* creature, Player* player) {
 	if (lootContainer == NULL)
 		return;
 
-	if (lootContainer->objectsSize() > 0)
+	if (lootContainer->getContainerObjectsSize() > 0)
 		return;
 
 	int creatureLevel = creature->getLevel();
