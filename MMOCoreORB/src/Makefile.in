@@ -89,14 +89,15 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am__objects_1 = CamoKit.$(OBJEXT) CampKit.$(OBJEXT) CampSite.$(OBJEXT) \
-	BasicCampSite.$(OBJEXT) CampActiveArea.$(OBJEXT) \
-	ThrowableWeapon.$(OBJEXT) TrapThrowableWeapon.$(OBJEXT) \
-	CampTerminal.$(OBJEXT) ChatManager.$(OBJEXT) \
-	GameCommandHandler.$(OBJEXT) ChatRoom.$(OBJEXT) \
-	BankManager.$(OBJEXT) BazaarManager.$(OBJEXT) \
-	BazaarPlanetManager.$(OBJEXT) CraftingManager.$(OBJEXT) \
-	CreatureManager.$(OBJEXT) GuildManager.$(OBJEXT) \
-	GuildMap.$(OBJEXT) ItemManager.$(OBJEXT) LootManager.$(OBJEXT) \
+	BasicCampSite.$(OBJEXT) HTFBCampSite.$(OBJEXT) \
+	CampActiveArea.$(OBJEXT) ThrowableWeapon.$(OBJEXT) \
+	TrapThrowableWeapon.$(OBJEXT) CampTerminal.$(OBJEXT) \
+	ChatManager.$(OBJEXT) GameCommandHandler.$(OBJEXT) \
+	ChatRoom.$(OBJEXT) BankManager.$(OBJEXT) \
+	BazaarManager.$(OBJEXT) BazaarPlanetManager.$(OBJEXT) \
+	CraftingManager.$(OBJEXT) CreatureManager.$(OBJEXT) \
+	GuildManager.$(OBJEXT) GuildMap.$(OBJEXT) \
+	ItemManager.$(OBJEXT) LootManager.$(OBJEXT) \
 	LootTableManager.$(OBJEXT) MissionManager.$(OBJEXT) \
 	PlanetManager.$(OBJEXT) PlayerManager.$(OBJEXT) \
 	PlayerMap.$(OBJEXT) ResourceManager.$(OBJEXT) \
@@ -105,13 +106,13 @@ am__objects_1 = CamoKit.$(OBJEXT) CampKit.$(OBJEXT) CampSite.$(OBJEXT) \
 	Area.$(OBJEXT) ActiveArea.$(OBJEXT) \
 	ActiveAreaTrigger.$(OBJEXT) BadgeActiveArea.$(OBJEXT) \
 	TestActiveArea.$(OBJEXT) AttackableObject.$(OBJEXT) \
-	LairObject.$(OBJEXT) AuctionItem.$(OBJEXT) \
-	BuildingObject.$(OBJEXT) CellObject.$(OBJEXT) \
-	CloningFacility.$(OBJEXT) Action.$(OBJEXT) \
-	ActionCreature.$(OBJEXT) BlueFrogCreature.$(OBJEXT) \
-	BlueFrogVector.$(OBJEXT) Creature.$(OBJEXT) \
-	CreatureGroup.$(OBJEXT) CreatureObject.$(OBJEXT) \
-	MountCreature.$(OBJEXT) ImperialRecruiterCreature.$(OBJEXT) \
+	AuctionItem.$(OBJEXT) BuildingObject.$(OBJEXT) \
+	CellObject.$(OBJEXT) CloningFacility.$(OBJEXT) \
+	Action.$(OBJEXT) ActionCreature.$(OBJEXT) \
+	BlueFrogCreature.$(OBJEXT) BlueFrogVector.$(OBJEXT) \
+	Creature.$(OBJEXT) CreatureGroup.$(OBJEXT) \
+	CreatureObject.$(OBJEXT) MountCreature.$(OBJEXT) \
+	ImperialRecruiterCreature.$(OBJEXT) \
 	RebelRecruiterCreature.$(OBJEXT) RecruiterCreature.$(OBJEXT) \
 	ShuttleCreature.$(OBJEXT) TrainerCreature.$(OBJEXT) \
 	DraftSchematicAttribute.$(OBJEXT) DraftSchematic.$(OBJEXT) \
@@ -133,17 +134,17 @@ am__objects_1 = CamoKit.$(OBJEXT) CampKit.$(OBJEXT) CampSite.$(OBJEXT) \
 	SceneObject.$(OBJEXT) ShipObject.$(OBJEXT) \
 	FireworkWorld.$(OBJEXT) StaticObject.$(OBJEXT) \
 	HairObject.$(OBJEXT) Attachment.$(OBJEXT) Bank.$(OBJEXT) \
-	ShipComponent.$(OBJEXT) Container.$(OBJEXT) \
-	Component.$(OBJEXT) CraftingStation.$(OBJEXT) \
-	CraftingTool.$(OBJEXT) FactoryCrate.$(OBJEXT) \
-	Datapad.$(OBJEXT) DeedObject.$(OBJEXT) FactoryDeed.$(OBJEXT) \
-	GeneratorDeed.$(OBJEXT) HarvesterDeed.$(OBJEXT) \
-	PlayerHouseDeed.$(OBJEXT) VehicleDeed.$(OBJEXT) \
-	ResourceDeed.$(OBJEXT) Firework.$(OBJEXT) \
-	GenericItem.$(OBJEXT) Dice.$(OBJEXT) Holocron.$(OBJEXT) \
-	Instrument.$(OBJEXT) Inventory.$(OBJEXT) \
-	CreatureInventory.$(OBJEXT) MissionBag.$(OBJEXT) \
-	CurePack.$(OBJEXT) CureAreaPack.$(OBJEXT) \
+	ShipComponent.$(OBJEXT) Consumable.$(OBJEXT) Food.$(OBJEXT) \
+	Drink.$(OBJEXT) Container.$(OBJEXT) Component.$(OBJEXT) \
+	CraftingStation.$(OBJEXT) CraftingTool.$(OBJEXT) \
+	FactoryCrate.$(OBJEXT) Datapad.$(OBJEXT) DeedObject.$(OBJEXT) \
+	FactoryDeed.$(OBJEXT) GeneratorDeed.$(OBJEXT) \
+	HarvesterDeed.$(OBJEXT) PlayerHouseDeed.$(OBJEXT) \
+	VehicleDeed.$(OBJEXT) ResourceDeed.$(OBJEXT) \
+	Firework.$(OBJEXT) GenericItem.$(OBJEXT) Dice.$(OBJEXT) \
+	Holocron.$(OBJEXT) Instrument.$(OBJEXT) Inventory.$(OBJEXT) \
+	CreatureInventory.$(OBJEXT) LairObject.$(OBJEXT) \
+	MissionBag.$(OBJEXT) CurePack.$(OBJEXT) CureAreaPack.$(OBJEXT) \
 	EnhancePack.$(OBJEXT) Pharmaceutical.$(OBJEXT) \
 	RevivePack.$(OBJEXT) StatePack.$(OBJEXT) StimPack.$(OBJEXT) \
 	WoundPack.$(OBJEXT) Tool.$(OBJEXT) \
@@ -171,9 +172,10 @@ am_core3_OBJECTS = $(am__objects_1) CamoKitImplementation.$(OBJEXT) \
 	CampKitImplementation.$(OBJEXT) \
 	CampSiteImplementation.$(OBJEXT) \
 	BasicCampSiteImplementation.$(OBJEXT) \
+	HTFBCampSiteImplementation.$(OBJEXT) \
 	ThrowableWeaponImplementation.$(OBJEXT) \
 	TrapThrowableWeaponImplementation.$(OBJEXT) \
-	ChatManagerImplementation.$(OBJEXT) \
+	ContainerObject.$(OBJEXT) ChatManagerImplementation.$(OBJEXT) \
 	ChatRoomImplementation.$(OBJEXT) ConfigManager.$(OBJEXT) \
 	ForumsDatabase.$(OBJEXT) ServerDatabase.$(OBJEXT) \
 	LoginMessageProcessorThread.$(OBJEXT) \
@@ -241,6 +243,8 @@ am_core3_OBJECTS = $(am__objects_1) CamoKitImplementation.$(OBJEXT) \
 	ShipObjectImplementation.$(OBJEXT) \
 	StaticObjectImplementation.$(OBJEXT) \
 	AttachmentImplementation.$(OBJEXT) \
+	ConsumableImplementation.$(OBJEXT) \
+	FoodImplementation.$(OBJEXT) DrinkImplementation.$(OBJEXT) \
 	ContainerImplementation.$(OBJEXT) \
 	CustomizationVariables.$(OBJEXT) \
 	ComponentImplementation.$(OBJEXT) \
@@ -271,7 +275,7 @@ am_core3_OBJECTS = $(am__objects_1) CamoKitImplementation.$(OBJEXT) \
 	TangibleObjectImplementation.$(OBJEXT) \
 	TicketCollectorImplementation.$(OBJEXT) \
 	TicketImplementation.$(OBJEXT) WeaponImplementation.$(OBJEXT) \
-	ArmorImplementation.$(OBJEXT) \
+	WearableImplementation.$(OBJEXT) ArmorImplementation.$(OBJEXT) \
 	ObjectControllerMessage.$(OBJEXT) \
 	ClientCreateCharacter.$(OBJEXT) \
 	ZoneClientSessionImplementation.$(OBJEXT) \
@@ -411,6 +415,7 @@ core3_IDLS = server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/tangible/campkit/CampKit.cpp \
 		server/zone/objects/tangible/campkit/campsite/CampSite.cpp \
 		server/zone/objects/tangible/campkit/campsite/BasicCampSite.cpp \
+		server/zone/objects/tangible/campkit/campsite/HTFBCampSite.cpp \
 		server/zone/objects/area/CampActiveArea.cpp \
 		server/zone/objects/tangible/weapons/ThrowableWeapon.cpp \
 		server/zone/objects/tangible/weapons/throwable/TrapThrowableWeapon.cpp \
@@ -443,7 +448,6 @@ core3_IDLS = server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/area/BadgeActiveArea.cpp \
 		server/zone/objects/area/TestActiveArea.cpp \
 		server/zone/objects/attackable/AttackableObject.cpp \
-		server/zone/objects/attackable/lair/LairObject.cpp \
 		server/zone/objects/auction/AuctionItem.cpp \
 		server/zone/objects/building/BuildingObject.cpp \
 		server/zone/objects/building/cell/CellObject.cpp \
@@ -500,6 +504,9 @@ core3_IDLS = server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/tangible/attachment/Attachment.cpp \
 		server/zone/objects/tangible/Bank.cpp \
 		server/zone/objects/tangible/component/ShipComponent.cpp \
+		server/zone/objects/tangible/consumable/Consumable.cpp \
+		server/zone/objects/tangible/consumable/food/Food.cpp \
+		server/zone/objects/tangible/consumable/drink/Drink.cpp \
 		server/zone/objects/tangible/Container.cpp \
 		server/zone/objects/tangible/crafting/component/Component.cpp \
 		server/zone/objects/tangible/crafting/CraftingStation.cpp \
@@ -520,6 +527,7 @@ core3_IDLS = server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/tangible/instrument/Instrument.cpp \
 		server/zone/objects/tangible/Inventory.cpp \
 		server/zone/objects/tangible/inventory/CreatureInventory.cpp \
+		server/zone/objects/tangible/lair/LairObject.cpp \
 		server/zone/objects/tangible/MissionBag.cpp \
 		server/zone/objects/tangible/pharmaceutical/CurePack.cpp \
 		server/zone/objects/tangible/pharmaceutical/CureAreaPack.cpp \
@@ -576,8 +584,10 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/campkit/CampKitImplementation.cpp \
 		server/zone/objects/tangible/campkit/campsite/CampSiteImplementation.cpp \
 		server/zone/objects/tangible/campkit/campsite/BasicCampSiteImplementation.cpp \
+		server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp \
 		server/zone/objects/tangible/weapons/ThrowableWeaponImplementation.cpp \
 		server/zone/objects/tangible/weapons/throwable/TrapThrowableWeaponImplementation.cpp \
+		server/zone/objects/scene/ContainerObject.cpp \
 		server/chat/ChatManagerImplementation.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/conf/ConfigManager.cpp \
@@ -619,7 +629,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/managers/sui/SuiManager.cpp \
 		server/zone/managers/user/UserManagerImplementation.cpp \
 		server/zone/objects/attackable/AttackableObjectImplementation.cpp \
-		server/zone/objects/attackable/lair/LairObjectImplementation.cpp \
+		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/building/cell/CellObjectImplementation.cpp \
 		server/zone/objects/creature/action/ActionCreatureImplementation.cpp \
@@ -660,6 +670,9 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \
 		server/zone/objects/static/StaticObjectImplementation.cpp \
 		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
+		server/zone/objects/tangible/consumable/ConsumableImplementation.cpp \
+		server/zone/objects/tangible/consumable/food/FoodImplementation.cpp \
+		server/zone/objects/tangible/consumable/drink/DrinkImplementation.cpp \
 		server/zone/objects/tangible/ContainerImplementation.cpp \
 		server/zone/objects/tangible/CustomizationVariables.cpp \
 		server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp \
@@ -692,6 +705,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
 		server/zone/objects/tangible/ticket/TicketImplementation.cpp \
 		server/zone/objects/tangible/weapons/WeaponImplementation.cpp \
+		server/zone/objects/tangible/wearables/WearableImplementation.cpp \
 		server/zone/objects/tangible/wearables/ArmorImplementation.cpp \
 		server/zone/packets/object/ObjectControllerMessage.cpp \
 		server/zone/packets/charcreation/ClientCreateCharacter.cpp \
@@ -824,8 +838,11 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Component.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ComponentImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ConfigManager.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Consumable.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ConsumableImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Container.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ContainerImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ContainerObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CraftingManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CraftingManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CraftingStation.Po@am__quote@
@@ -862,6 +879,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematicIngredientImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematicValues.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematicValuesImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Drink.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DrinkImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/EnhancePack.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/EnhancePackImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FactionPointList.Po@am__quote@
@@ -874,6 +893,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Firework.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FireworkWorld.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FlowAnalyzerNode.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Food.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FoodImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ForumsDatabase.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FriendListImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FriendsList.Po@am__quote@
@@ -893,6 +914,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GuildManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GuildMap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GuildTerminal.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HTFBCampSite.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HTFBCampSiteImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HairObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HarvesterDeed.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HarvesterDeedImplementation.Po@am__quote@
@@ -1050,6 +1073,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Weapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/WeaponImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Wearable.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/WearableImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/WoundPack.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/WoundPackImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Zone.Po@am__quote@
@@ -1132,6 +1156,20 @@ BasicCampSite.obj: server/zone/objects/tangible/campkit/campsite/BasicCampSite.c
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/BasicCampSite.cpp' object='BasicCampSite.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BasicCampSite.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/BasicCampSite.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/BasicCampSite.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/BasicCampSite.cpp'; fi`
+
+HTFBCampSite.o: server/zone/objects/tangible/campkit/campsite/HTFBCampSite.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT HTFBCampSite.o -MD -MP -MF $(DEPDIR)/HTFBCampSite.Tpo -c -o HTFBCampSite.o `test -f 'server/zone/objects/tangible/campkit/campsite/HTFBCampSite.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/campkit/campsite/HTFBCampSite.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/HTFBCampSite.Tpo $(DEPDIR)/HTFBCampSite.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/HTFBCampSite.cpp' object='HTFBCampSite.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o HTFBCampSite.o `test -f 'server/zone/objects/tangible/campkit/campsite/HTFBCampSite.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/campkit/campsite/HTFBCampSite.cpp
+
+HTFBCampSite.obj: server/zone/objects/tangible/campkit/campsite/HTFBCampSite.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT HTFBCampSite.obj -MD -MP -MF $(DEPDIR)/HTFBCampSite.Tpo -c -o HTFBCampSite.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/HTFBCampSite.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/HTFBCampSite.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/HTFBCampSite.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/HTFBCampSite.Tpo $(DEPDIR)/HTFBCampSite.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/HTFBCampSite.cpp' object='HTFBCampSite.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o HTFBCampSite.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/HTFBCampSite.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/HTFBCampSite.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/HTFBCampSite.cpp'; fi`
 
 CampActiveArea.o: server/zone/objects/area/CampActiveArea.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CampActiveArea.o -MD -MP -MF $(DEPDIR)/CampActiveArea.Tpo -c -o CampActiveArea.o `test -f 'server/zone/objects/area/CampActiveArea.cpp' || echo '$(srcdir)/'`server/zone/objects/area/CampActiveArea.cpp
@@ -1580,20 +1618,6 @@ AttackableObject.obj: server/zone/objects/attackable/AttackableObject.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/attackable/AttackableObject.cpp' object='AttackableObject.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o AttackableObject.obj `if test -f 'server/zone/objects/attackable/AttackableObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/attackable/AttackableObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/attackable/AttackableObject.cpp'; fi`
-
-LairObject.o: server/zone/objects/attackable/lair/LairObject.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LairObject.o -MD -MP -MF $(DEPDIR)/LairObject.Tpo -c -o LairObject.o `test -f 'server/zone/objects/attackable/lair/LairObject.cpp' || echo '$(srcdir)/'`server/zone/objects/attackable/lair/LairObject.cpp
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/LairObject.Tpo $(DEPDIR)/LairObject.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/attackable/lair/LairObject.cpp' object='LairObject.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LairObject.o `test -f 'server/zone/objects/attackable/lair/LairObject.cpp' || echo '$(srcdir)/'`server/zone/objects/attackable/lair/LairObject.cpp
-
-LairObject.obj: server/zone/objects/attackable/lair/LairObject.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LairObject.obj -MD -MP -MF $(DEPDIR)/LairObject.Tpo -c -o LairObject.obj `if test -f 'server/zone/objects/attackable/lair/LairObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/attackable/lair/LairObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/attackable/lair/LairObject.cpp'; fi`
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/LairObject.Tpo $(DEPDIR)/LairObject.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/attackable/lair/LairObject.cpp' object='LairObject.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LairObject.obj `if test -f 'server/zone/objects/attackable/lair/LairObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/attackable/lair/LairObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/attackable/lair/LairObject.cpp'; fi`
 
 AuctionItem.o: server/zone/objects/auction/AuctionItem.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT AuctionItem.o -MD -MP -MF $(DEPDIR)/AuctionItem.Tpo -c -o AuctionItem.o `test -f 'server/zone/objects/auction/AuctionItem.cpp' || echo '$(srcdir)/'`server/zone/objects/auction/AuctionItem.cpp
@@ -2379,6 +2403,48 @@ ShipComponent.obj: server/zone/objects/tangible/component/ShipComponent.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ShipComponent.obj `if test -f 'server/zone/objects/tangible/component/ShipComponent.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/component/ShipComponent.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/component/ShipComponent.cpp'; fi`
 
+Consumable.o: server/zone/objects/tangible/consumable/Consumable.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Consumable.o -MD -MP -MF $(DEPDIR)/Consumable.Tpo -c -o Consumable.o `test -f 'server/zone/objects/tangible/consumable/Consumable.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/consumable/Consumable.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Consumable.Tpo $(DEPDIR)/Consumable.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/consumable/Consumable.cpp' object='Consumable.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Consumable.o `test -f 'server/zone/objects/tangible/consumable/Consumable.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/consumable/Consumable.cpp
+
+Consumable.obj: server/zone/objects/tangible/consumable/Consumable.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Consumable.obj -MD -MP -MF $(DEPDIR)/Consumable.Tpo -c -o Consumable.obj `if test -f 'server/zone/objects/tangible/consumable/Consumable.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/consumable/Consumable.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/consumable/Consumable.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Consumable.Tpo $(DEPDIR)/Consumable.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/consumable/Consumable.cpp' object='Consumable.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Consumable.obj `if test -f 'server/zone/objects/tangible/consumable/Consumable.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/consumable/Consumable.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/consumable/Consumable.cpp'; fi`
+
+Food.o: server/zone/objects/tangible/consumable/food/Food.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Food.o -MD -MP -MF $(DEPDIR)/Food.Tpo -c -o Food.o `test -f 'server/zone/objects/tangible/consumable/food/Food.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/consumable/food/Food.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Food.Tpo $(DEPDIR)/Food.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/consumable/food/Food.cpp' object='Food.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Food.o `test -f 'server/zone/objects/tangible/consumable/food/Food.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/consumable/food/Food.cpp
+
+Food.obj: server/zone/objects/tangible/consumable/food/Food.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Food.obj -MD -MP -MF $(DEPDIR)/Food.Tpo -c -o Food.obj `if test -f 'server/zone/objects/tangible/consumable/food/Food.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/consumable/food/Food.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/consumable/food/Food.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Food.Tpo $(DEPDIR)/Food.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/consumable/food/Food.cpp' object='Food.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Food.obj `if test -f 'server/zone/objects/tangible/consumable/food/Food.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/consumable/food/Food.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/consumable/food/Food.cpp'; fi`
+
+Drink.o: server/zone/objects/tangible/consumable/drink/Drink.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Drink.o -MD -MP -MF $(DEPDIR)/Drink.Tpo -c -o Drink.o `test -f 'server/zone/objects/tangible/consumable/drink/Drink.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/consumable/drink/Drink.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Drink.Tpo $(DEPDIR)/Drink.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/consumable/drink/Drink.cpp' object='Drink.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Drink.o `test -f 'server/zone/objects/tangible/consumable/drink/Drink.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/consumable/drink/Drink.cpp
+
+Drink.obj: server/zone/objects/tangible/consumable/drink/Drink.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Drink.obj -MD -MP -MF $(DEPDIR)/Drink.Tpo -c -o Drink.obj `if test -f 'server/zone/objects/tangible/consumable/drink/Drink.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/consumable/drink/Drink.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/consumable/drink/Drink.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Drink.Tpo $(DEPDIR)/Drink.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/consumable/drink/Drink.cpp' object='Drink.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Drink.obj `if test -f 'server/zone/objects/tangible/consumable/drink/Drink.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/consumable/drink/Drink.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/consumable/drink/Drink.cpp'; fi`
+
 Container.o: server/zone/objects/tangible/Container.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Container.o -MD -MP -MF $(DEPDIR)/Container.Tpo -c -o Container.o `test -f 'server/zone/objects/tangible/Container.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/Container.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Container.Tpo $(DEPDIR)/Container.Po
@@ -2658,6 +2724,20 @@ CreatureInventory.obj: server/zone/objects/tangible/inventory/CreatureInventory.
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/inventory/CreatureInventory.cpp' object='CreatureInventory.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CreatureInventory.obj `if test -f 'server/zone/objects/tangible/inventory/CreatureInventory.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/inventory/CreatureInventory.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/inventory/CreatureInventory.cpp'; fi`
+
+LairObject.o: server/zone/objects/tangible/lair/LairObject.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LairObject.o -MD -MP -MF $(DEPDIR)/LairObject.Tpo -c -o LairObject.o `test -f 'server/zone/objects/tangible/lair/LairObject.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/lair/LairObject.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/LairObject.Tpo $(DEPDIR)/LairObject.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/lair/LairObject.cpp' object='LairObject.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LairObject.o `test -f 'server/zone/objects/tangible/lair/LairObject.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/lair/LairObject.cpp
+
+LairObject.obj: server/zone/objects/tangible/lair/LairObject.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LairObject.obj -MD -MP -MF $(DEPDIR)/LairObject.Tpo -c -o LairObject.obj `if test -f 'server/zone/objects/tangible/lair/LairObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/lair/LairObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/lair/LairObject.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/LairObject.Tpo $(DEPDIR)/LairObject.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/lair/LairObject.cpp' object='LairObject.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LairObject.obj `if test -f 'server/zone/objects/tangible/lair/LairObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/lair/LairObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/lair/LairObject.cpp'; fi`
 
 MissionBag.o: server/zone/objects/tangible/MissionBag.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT MissionBag.o -MD -MP -MF $(DEPDIR)/MissionBag.Tpo -c -o MissionBag.o `test -f 'server/zone/objects/tangible/MissionBag.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/MissionBag.cpp
@@ -3415,6 +3495,20 @@ BasicCampSiteImplementation.obj: server/zone/objects/tangible/campkit/campsite/B
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BasicCampSiteImplementation.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/BasicCampSiteImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/BasicCampSiteImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/BasicCampSiteImplementation.cpp'; fi`
 
+HTFBCampSiteImplementation.o: server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT HTFBCampSiteImplementation.o -MD -MP -MF $(DEPDIR)/HTFBCampSiteImplementation.Tpo -c -o HTFBCampSiteImplementation.o `test -f 'server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/HTFBCampSiteImplementation.Tpo $(DEPDIR)/HTFBCampSiteImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp' object='HTFBCampSiteImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o HTFBCampSiteImplementation.o `test -f 'server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp
+
+HTFBCampSiteImplementation.obj: server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT HTFBCampSiteImplementation.obj -MD -MP -MF $(DEPDIR)/HTFBCampSiteImplementation.Tpo -c -o HTFBCampSiteImplementation.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/HTFBCampSiteImplementation.Tpo $(DEPDIR)/HTFBCampSiteImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp' object='HTFBCampSiteImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o HTFBCampSiteImplementation.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp'; fi`
+
 ThrowableWeaponImplementation.o: server/zone/objects/tangible/weapons/ThrowableWeaponImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ThrowableWeaponImplementation.o -MD -MP -MF $(DEPDIR)/ThrowableWeaponImplementation.Tpo -c -o ThrowableWeaponImplementation.o `test -f 'server/zone/objects/tangible/weapons/ThrowableWeaponImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/weapons/ThrowableWeaponImplementation.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ThrowableWeaponImplementation.Tpo $(DEPDIR)/ThrowableWeaponImplementation.Po
@@ -3442,6 +3536,20 @@ TrapThrowableWeaponImplementation.obj: server/zone/objects/tangible/weapons/thro
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/weapons/throwable/TrapThrowableWeaponImplementation.cpp' object='TrapThrowableWeaponImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TrapThrowableWeaponImplementation.obj `if test -f 'server/zone/objects/tangible/weapons/throwable/TrapThrowableWeaponImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/weapons/throwable/TrapThrowableWeaponImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/weapons/throwable/TrapThrowableWeaponImplementation.cpp'; fi`
+
+ContainerObject.o: server/zone/objects/scene/ContainerObject.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ContainerObject.o -MD -MP -MF $(DEPDIR)/ContainerObject.Tpo -c -o ContainerObject.o `test -f 'server/zone/objects/scene/ContainerObject.cpp' || echo '$(srcdir)/'`server/zone/objects/scene/ContainerObject.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ContainerObject.Tpo $(DEPDIR)/ContainerObject.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/scene/ContainerObject.cpp' object='ContainerObject.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ContainerObject.o `test -f 'server/zone/objects/scene/ContainerObject.cpp' || echo '$(srcdir)/'`server/zone/objects/scene/ContainerObject.cpp
+
+ContainerObject.obj: server/zone/objects/scene/ContainerObject.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ContainerObject.obj -MD -MP -MF $(DEPDIR)/ContainerObject.Tpo -c -o ContainerObject.obj `if test -f 'server/zone/objects/scene/ContainerObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/scene/ContainerObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/scene/ContainerObject.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ContainerObject.Tpo $(DEPDIR)/ContainerObject.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/scene/ContainerObject.cpp' object='ContainerObject.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ContainerObject.obj `if test -f 'server/zone/objects/scene/ContainerObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/scene/ContainerObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/scene/ContainerObject.cpp'; fi`
 
 ChatManagerImplementation.o: server/chat/ChatManagerImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ChatManagerImplementation.o -MD -MP -MF $(DEPDIR)/ChatManagerImplementation.Tpo -c -o ChatManagerImplementation.o `test -f 'server/chat/ChatManagerImplementation.cpp' || echo '$(srcdir)/'`server/chat/ChatManagerImplementation.cpp
@@ -4017,19 +4125,19 @@ AttackableObjectImplementation.obj: server/zone/objects/attackable/AttackableObj
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o AttackableObjectImplementation.obj `if test -f 'server/zone/objects/attackable/AttackableObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/attackable/AttackableObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/attackable/AttackableObjectImplementation.cpp'; fi`
 
-LairObjectImplementation.o: server/zone/objects/attackable/lair/LairObjectImplementation.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LairObjectImplementation.o -MD -MP -MF $(DEPDIR)/LairObjectImplementation.Tpo -c -o LairObjectImplementation.o `test -f 'server/zone/objects/attackable/lair/LairObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/attackable/lair/LairObjectImplementation.cpp
+LairObjectImplementation.o: server/zone/objects/tangible/lair/LairObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LairObjectImplementation.o -MD -MP -MF $(DEPDIR)/LairObjectImplementation.Tpo -c -o LairObjectImplementation.o `test -f 'server/zone/objects/tangible/lair/LairObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/lair/LairObjectImplementation.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/LairObjectImplementation.Tpo $(DEPDIR)/LairObjectImplementation.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/attackable/lair/LairObjectImplementation.cpp' object='LairObjectImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/lair/LairObjectImplementation.cpp' object='LairObjectImplementation.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LairObjectImplementation.o `test -f 'server/zone/objects/attackable/lair/LairObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/attackable/lair/LairObjectImplementation.cpp
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LairObjectImplementation.o `test -f 'server/zone/objects/tangible/lair/LairObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/lair/LairObjectImplementation.cpp
 
-LairObjectImplementation.obj: server/zone/objects/attackable/lair/LairObjectImplementation.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LairObjectImplementation.obj -MD -MP -MF $(DEPDIR)/LairObjectImplementation.Tpo -c -o LairObjectImplementation.obj `if test -f 'server/zone/objects/attackable/lair/LairObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/attackable/lair/LairObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/attackable/lair/LairObjectImplementation.cpp'; fi`
+LairObjectImplementation.obj: server/zone/objects/tangible/lair/LairObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LairObjectImplementation.obj -MD -MP -MF $(DEPDIR)/LairObjectImplementation.Tpo -c -o LairObjectImplementation.obj `if test -f 'server/zone/objects/tangible/lair/LairObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/lair/LairObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/lair/LairObjectImplementation.cpp'; fi`
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/LairObjectImplementation.Tpo $(DEPDIR)/LairObjectImplementation.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/attackable/lair/LairObjectImplementation.cpp' object='LairObjectImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/lair/LairObjectImplementation.cpp' object='LairObjectImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LairObjectImplementation.obj `if test -f 'server/zone/objects/attackable/lair/LairObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/attackable/lair/LairObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/attackable/lair/LairObjectImplementation.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LairObjectImplementation.obj `if test -f 'server/zone/objects/tangible/lair/LairObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/lair/LairObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/lair/LairObjectImplementation.cpp'; fi`
 
 BuildingObjectImplementation.o: server/zone/objects/building/BuildingObjectImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BuildingObjectImplementation.o -MD -MP -MF $(DEPDIR)/BuildingObjectImplementation.Tpo -c -o BuildingObjectImplementation.o `test -f 'server/zone/objects/building/BuildingObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/building/BuildingObjectImplementation.cpp
@@ -4591,6 +4699,48 @@ AttachmentImplementation.obj: server/zone/objects/tangible/attachment/Attachment
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o AttachmentImplementation.obj `if test -f 'server/zone/objects/tangible/attachment/AttachmentImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/attachment/AttachmentImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/attachment/AttachmentImplementation.cpp'; fi`
 
+ConsumableImplementation.o: server/zone/objects/tangible/consumable/ConsumableImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ConsumableImplementation.o -MD -MP -MF $(DEPDIR)/ConsumableImplementation.Tpo -c -o ConsumableImplementation.o `test -f 'server/zone/objects/tangible/consumable/ConsumableImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/consumable/ConsumableImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ConsumableImplementation.Tpo $(DEPDIR)/ConsumableImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/consumable/ConsumableImplementation.cpp' object='ConsumableImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ConsumableImplementation.o `test -f 'server/zone/objects/tangible/consumable/ConsumableImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/consumable/ConsumableImplementation.cpp
+
+ConsumableImplementation.obj: server/zone/objects/tangible/consumable/ConsumableImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ConsumableImplementation.obj -MD -MP -MF $(DEPDIR)/ConsumableImplementation.Tpo -c -o ConsumableImplementation.obj `if test -f 'server/zone/objects/tangible/consumable/ConsumableImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/consumable/ConsumableImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/consumable/ConsumableImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ConsumableImplementation.Tpo $(DEPDIR)/ConsumableImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/consumable/ConsumableImplementation.cpp' object='ConsumableImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ConsumableImplementation.obj `if test -f 'server/zone/objects/tangible/consumable/ConsumableImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/consumable/ConsumableImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/consumable/ConsumableImplementation.cpp'; fi`
+
+FoodImplementation.o: server/zone/objects/tangible/consumable/food/FoodImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT FoodImplementation.o -MD -MP -MF $(DEPDIR)/FoodImplementation.Tpo -c -o FoodImplementation.o `test -f 'server/zone/objects/tangible/consumable/food/FoodImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/consumable/food/FoodImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/FoodImplementation.Tpo $(DEPDIR)/FoodImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/consumable/food/FoodImplementation.cpp' object='FoodImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o FoodImplementation.o `test -f 'server/zone/objects/tangible/consumable/food/FoodImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/consumable/food/FoodImplementation.cpp
+
+FoodImplementation.obj: server/zone/objects/tangible/consumable/food/FoodImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT FoodImplementation.obj -MD -MP -MF $(DEPDIR)/FoodImplementation.Tpo -c -o FoodImplementation.obj `if test -f 'server/zone/objects/tangible/consumable/food/FoodImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/consumable/food/FoodImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/consumable/food/FoodImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/FoodImplementation.Tpo $(DEPDIR)/FoodImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/consumable/food/FoodImplementation.cpp' object='FoodImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o FoodImplementation.obj `if test -f 'server/zone/objects/tangible/consumable/food/FoodImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/consumable/food/FoodImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/consumable/food/FoodImplementation.cpp'; fi`
+
+DrinkImplementation.o: server/zone/objects/tangible/consumable/drink/DrinkImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DrinkImplementation.o -MD -MP -MF $(DEPDIR)/DrinkImplementation.Tpo -c -o DrinkImplementation.o `test -f 'server/zone/objects/tangible/consumable/drink/DrinkImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/consumable/drink/DrinkImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/DrinkImplementation.Tpo $(DEPDIR)/DrinkImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/consumable/drink/DrinkImplementation.cpp' object='DrinkImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DrinkImplementation.o `test -f 'server/zone/objects/tangible/consumable/drink/DrinkImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/consumable/drink/DrinkImplementation.cpp
+
+DrinkImplementation.obj: server/zone/objects/tangible/consumable/drink/DrinkImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DrinkImplementation.obj -MD -MP -MF $(DEPDIR)/DrinkImplementation.Tpo -c -o DrinkImplementation.obj `if test -f 'server/zone/objects/tangible/consumable/drink/DrinkImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/consumable/drink/DrinkImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/consumable/drink/DrinkImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/DrinkImplementation.Tpo $(DEPDIR)/DrinkImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/consumable/drink/DrinkImplementation.cpp' object='DrinkImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DrinkImplementation.obj `if test -f 'server/zone/objects/tangible/consumable/drink/DrinkImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/consumable/drink/DrinkImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/consumable/drink/DrinkImplementation.cpp'; fi`
+
 ContainerImplementation.o: server/zone/objects/tangible/ContainerImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ContainerImplementation.o -MD -MP -MF $(DEPDIR)/ContainerImplementation.Tpo -c -o ContainerImplementation.o `test -f 'server/zone/objects/tangible/ContainerImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/ContainerImplementation.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ContainerImplementation.Tpo $(DEPDIR)/ContainerImplementation.Po
@@ -5038,6 +5188,20 @@ WeaponImplementation.obj: server/zone/objects/tangible/weapons/WeaponImplementat
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/weapons/WeaponImplementation.cpp' object='WeaponImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o WeaponImplementation.obj `if test -f 'server/zone/objects/tangible/weapons/WeaponImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/weapons/WeaponImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/weapons/WeaponImplementation.cpp'; fi`
+
+WearableImplementation.o: server/zone/objects/tangible/wearables/WearableImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT WearableImplementation.o -MD -MP -MF $(DEPDIR)/WearableImplementation.Tpo -c -o WearableImplementation.o `test -f 'server/zone/objects/tangible/wearables/WearableImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/wearables/WearableImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/WearableImplementation.Tpo $(DEPDIR)/WearableImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/wearables/WearableImplementation.cpp' object='WearableImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o WearableImplementation.o `test -f 'server/zone/objects/tangible/wearables/WearableImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/wearables/WearableImplementation.cpp
+
+WearableImplementation.obj: server/zone/objects/tangible/wearables/WearableImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT WearableImplementation.obj -MD -MP -MF $(DEPDIR)/WearableImplementation.Tpo -c -o WearableImplementation.obj `if test -f 'server/zone/objects/tangible/wearables/WearableImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/wearables/WearableImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/wearables/WearableImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/WearableImplementation.Tpo $(DEPDIR)/WearableImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/wearables/WearableImplementation.cpp' object='WearableImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o WearableImplementation.obj `if test -f 'server/zone/objects/tangible/wearables/WearableImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/wearables/WearableImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/wearables/WearableImplementation.cpp'; fi`
 
 ArmorImplementation.o: server/zone/objects/tangible/wearables/ArmorImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ArmorImplementation.o -MD -MP -MF $(DEPDIR)/ArmorImplementation.Tpo -c -o ArmorImplementation.o `test -f 'server/zone/objects/tangible/wearables/ArmorImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/wearables/ArmorImplementation.cpp

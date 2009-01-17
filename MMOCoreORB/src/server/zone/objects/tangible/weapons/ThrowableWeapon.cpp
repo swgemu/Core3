@@ -84,12 +84,25 @@ void ThrowableWeapon::setSkill(const String& sk) {
 		((ThrowableWeaponImplementation*) _impl)->setSkill(sk);
 }
 
-bool ThrowableWeapon::isUsefull(Player* player) {
+String& ThrowableWeapon::getSkill() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
+
+		method.executeWithAsciiReturn(_return_getSkill);
+		return _return_getSkill;
+	} else
+		return ((ThrowableWeaponImplementation*) _impl)->getSkill();
+}
+
+bool ThrowableWeapon::isUsefull(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -102,7 +115,7 @@ unsigned int ThrowableWeapon::getSkillCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -133,9 +146,12 @@ Packet* ThrowableWeaponAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		setSkill(inv->getAsciiParameter(_param0_setSkill__String_));
 		break;
 	case 10:
-		resp->insertBoolean(isUsefull((Player*) inv->getObjectParameter()));
+		resp->insertAscii(getSkill());
 		break;
 	case 11:
+		resp->insertBoolean(isUsefull((Player*) inv->getObjectParameter()));
+		break;
+	case 12:
 		resp->insertInt(getSkillCRC());
 		break;
 	default:
@@ -159,6 +175,10 @@ int ThrowableWeaponAdapter::useObject(Player* player) {
 
 void ThrowableWeaponAdapter::setSkill(const String& sk) {
 	return ((ThrowableWeaponImplementation*) impl)->setSkill(sk);
+}
+
+String& ThrowableWeaponAdapter::getSkill() {
+	return ((ThrowableWeaponImplementation*) impl)->getSkill();
 }
 
 bool ThrowableWeaponAdapter::isUsefull(Player* player) {

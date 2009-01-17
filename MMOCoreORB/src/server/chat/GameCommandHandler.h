@@ -215,9 +215,7 @@ private:
 	static void spawnAA(StringTokenizer tokenizer, Player* player);
 	static void revolkBadge(StringTokenizer tokenizer, Player* player);
 	static void setLocation(StringTokenizer tokenizer, Player* player);
-	static void setDirection(StringTokenizer tokenizer, Player* player);
 	static void drag(StringTokenizer tokenizer, Player* player);
-	static void campCode(StringTokenizer tokenizer, Player* player);
 
 	void init();
 

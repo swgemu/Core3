@@ -45,7 +45,7 @@ which carries forward this exception.
 #include "../../../managers/item/ItemManager.h"
 #include "campsite/CampSite.h"
 #include "campsite/BasicCampSite.h"
-
+#include "campsite/HTFBCampSite.h"
 #include "../TangibleObject.h"
 
 #include "engine/engine.h"
@@ -102,11 +102,13 @@ int CampKitImplementation::useObject(Player* player) {
 		case 0:
 			campSite = new BasicCampSite(player, player->getNewItemID(), _this);
 			break;
+		case 1:
 		case 2:
 		case 3:
 		case 4:
 		case 5:
-		case 6:
+			campSite = new HTFBCampSite(player, player->getNewItemID(), _this);
+			break;
 		default:
 			return 1;
 	}
@@ -116,9 +118,18 @@ int CampKitImplementation::useObject(Player* player) {
 
 	player->setCamp(campSite);
 	player->sendSystemMessage("@camp:starting_camp");
-	CampSpawnEvent* event = new CampSpawnEvent(campSite,5000);
+
+	int campMod = player->getSkillMod("camp");
+
+	int spawnTime = 10000 * (100 - campMod) / 100;
+
+	if (spawnTime < 1000)
+		spawnTime = 1000;
+
+	CampSpawnEvent* event = new CampSpawnEvent(campSite,spawnTime);
 	player->getZoneProcessServer()->addEvent(event);
 	remove(player);
+
 	return 1;
 }
 
@@ -153,20 +164,20 @@ bool CampKitImplementation::canNotUse(Player* player) {
 	case 0:
 			box = "outdoors_scout_novice";
 			break;
-		case 2:
+		case 1:
 			box = "outdoors_scout_camp_02";
 			break;
-		case 3:
+		case 2:
 			box = "outdoors_scout_camp_04";
 			break;
-		case 4:
+		case 3:
 			box = "outdoors_ranger_novice";
 			break;
-		case 5:
-			box = "outdoors_scout_tracking_02";
+		case 4:
+			box = "outdoors_ranger_tracking_02";
 			break;
-		case 6:
-			box = "outdoors_scout_tracking_04";
+		case 5:
+			box = "outdoors_ranger_tracking_04";
 			break;
 		default:
 			return true;

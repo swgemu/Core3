@@ -23,7 +23,10 @@ public:
 	}
 
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
-		if (camp == NULL && (camp->getOwner() != player || camp->isAbandoned()))
+		if (camp == NULL)
+			return;
+
+		if (camp->getOwner() != player || camp->isAbandoned())
 			return;
 
 		omr->addRadialItem(0, 204, 3, "@camp:mnu_disband");

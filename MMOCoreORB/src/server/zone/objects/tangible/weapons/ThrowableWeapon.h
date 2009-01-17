@@ -29,6 +29,8 @@ public:
 
 	void setSkill(const String& sk);
 
+	String& getSkill();
+
 	bool isUsefull(Player* player);
 
 	unsigned int getSkillCRC();
@@ -37,6 +39,8 @@ protected:
 	ThrowableWeapon(DummyConstructorParameter* param);
 
 	virtual ~ThrowableWeapon();
+
+	String _return_getSkill;
 
 	friend class ThrowableWeaponHelper;
 };
@@ -56,6 +60,8 @@ public:
 	int useObject(Player* player);
 
 	void setSkill(const String& sk);
+
+	String& getSkill();
 
 	bool isUsefull(Player* player);
 

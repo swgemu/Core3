@@ -450,40 +450,8 @@ void CreatureImplementation::generateAttributes(SceneObject* obj) {
 		alm->insertAttribute("basetohit", 0.89f);
 
 	if (creaKnowledge >= 100) {
-		float minDamage = 0;
-		float maxDamage = 0;
-
-		Weapon* wpn = getWeapon();
-
-		if (wpn != NULL) {
-			minDamage = wpn->getMinDamage();
-			maxDamage = wpn->getMaxDamage();
-		} else {
-			maxDamage = getSkillMod("unarmed_damage");
-			if (maxDamage < 25.0f)
-				maxDamage = 25.0f;
-
-			if (isBaby())
-				maxDamage / 2;
-
-			minDamage = maxDamage / 2;
-		}
-
-		minDamage *= getInternalNPCDamageModifier();
-		maxDamage *= getInternalNPCDamageModifier();
-
-		if (skillNum > 0) {
-			Skill* skill = getSkill(getSkill(0));
-			if (skill->isAttackSkill()) {
-				AttackTargetSkill* askill = (AttackTargetSkill*) skill;
-				maxDamage *= askill->getDamageRatio();
-				minDamage *= askill->getDamageRatio();
-			}
-
-		}
-
 		StringBuffer damageMsg;
-		damageMsg << (int) minDamage << "-" << (int) maxDamage;
+		damageMsg << creatureWeaponMinDamage << "-" << creatureWeaponMaxDamage;
 		alm->insertAttribute("cat_wpn_damage", damageMsg.toString());
 	}
 

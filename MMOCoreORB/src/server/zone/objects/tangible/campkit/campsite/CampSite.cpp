@@ -221,18 +221,6 @@ void CampSite::exitNotificaton(Player* player) {
 		((CampSiteImplementation*) _impl)->exitNotificaton(player);
 }
 
-void CampSite::printPlacmentCode() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 21);
-
-		method.executeWithVoidReturn();
-	} else
-		((CampSiteImplementation*) _impl)->printPlacmentCode();
-}
-
 /*
  *	CampSiteAdapter
  */
@@ -288,9 +276,6 @@ Packet* CampSiteAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 20:
 		exitNotificaton((Player*) inv->getObjectParameter());
-		break;
-	case 21:
-		printPlacmentCode();
 		break;
 	default:
 		return NULL;
@@ -357,10 +342,6 @@ void CampSiteAdapter::enterNotification(Player* player) {
 
 void CampSiteAdapter::exitNotificaton(Player* player) {
 	return ((CampSiteImplementation*) impl)->exitNotificaton(player);
-}
-
-void CampSiteAdapter::printPlacmentCode() {
-	return ((CampSiteImplementation*) impl)->printPlacmentCode();
 }
 
 /*
