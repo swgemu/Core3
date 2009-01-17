@@ -93,10 +93,11 @@ bool CommandQueueAction::check() {
 		if (target == NULL)
 			target = creature;
 
-		if (!(target->isNonPlayerCreature() || target->isPlayer() || target->isAttackableObject())) {
-			clearError(3);
-			return false;
-		}
+		if (!(target->isNonPlayerCreature() || target->isPlayer() || target->isAttackableObject())) 
+			target = creature;
+		
+		if (target->isNonPlayerCreature() && !target->isAttackableObject() && skill->isHealSkill())
+			target = creature;
 
 		return true;
 	}
