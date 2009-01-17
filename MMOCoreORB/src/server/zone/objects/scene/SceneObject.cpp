@@ -24,8 +24,6 @@
 
 #include "../creature/skills/target/AttackTargetSkill.h"
 
-#include "../attackable/lair/LairObject.h"
-
 /*
  *	SceneObjectStub
  */

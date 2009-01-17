@@ -42,14 +42,23 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+import "../TangibleObject";
+import "../../attackable/AttackableObject";
 
-import "../tangible/TangibleObject";
-
-import "../../Zone";
-
-interface AttackableObject implements TangibleObject {
-	AttackableObject(unsigned long oid) {
-		super(oid, int type);
+interface LairObject implements AttackableObject {
+	LairObject(unsigned int objcrc, unsigned long oid) {
+		super(oid);
 	}
 
+	void setCreatureCRC(unsigned int crc);
+	void setSpawnSize(int size);
+	void setBabiesPerMillion(int babies);
+
+	void spawnCreatures(boolean lockCreatureManager = true);
+
+	String getTemplateDetailName();
+	String getTemplateDetail();
+
+	int getLevel();
+	void setLevel(int lev);
 }

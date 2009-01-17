@@ -42,14 +42,102 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#ifndef LAIROBJECTIMPLEMENTATION_H_
+#define LAIROBJECTIMPLEMENTATION_H_
 
-import "../tangible/TangibleObject";
+#include "engine/engine.h"
 
-import "../../Zone";
+#include "LairObject.h"
 
-interface AttackableObject implements TangibleObject {
-	AttackableObject(unsigned long oid) {
-		super(oid, int type);
+#include "../../../packets.h"
+
+#include "../../creature/Creature.h"
+#include "../../../managers/creature/CreatureManager.h"
+#include "../../../Zone.h"
+
+class LairObjectImplementation : public LairObjectServant {
+
+	SortedVector<Creature*> creatures;
+
+	bool spawn1;
+	bool spawn2;
+
+	String stfName;
+	uint32 creatureCRC;
+	String creatureName;
+	String creatureStfName;
+	int spawnSize;
+	int babiesPerMillion;
+	int level;
+
+	String templateDetailName;
+	String templateDetail;
+
+public:
+	LairObjectImplementation(uint32 objCRC, uint64 oid);
+
+	void addDefender(SceneObject* defender);
+	void doDamage(int damage, SceneObject* attacker);
+	void spawnCreatures(bool lockCreatureManager = true);
+	void doDestroyed(SceneObject* attacker);
+
+	void sendTo(Player* player, bool doClose = true);
+
+	inline void setMaxCondition(int cond) {
+		maxCondition = cond;
 	}
 
-}
+	inline void setSStfName(String& stfname) {
+		stfName = stfname;
+	}
+
+	inline void setCreatureCRC(uint32 crc) {
+		creatureCRC = crc;
+	}
+
+	inline void setSpawnSize(int size) {
+		spawnSize = size;
+	}
+
+	inline void setBabiesPerMillion(int babies) {
+		babiesPerMillion = babies;
+	}
+
+	inline void setLevel(int lev) {
+		level = lev;
+	}
+
+	void addCreature(Creature* creature) {
+		creatures.add(creature);
+	}
+
+	void removeCreature(Creature* creature) {
+		creatures.drop(creature);
+	}
+
+	inline String& getTemplateDetailName() {
+		return templateDetailName;
+	}
+
+	inline String& getTemplateDetail() {
+		return templateDetail;
+	}
+
+	Creature* getCreature() {
+		if (creatures.size() > 0)
+			return creatures.get(0);
+		else
+			return NULL;
+	}
+
+	int getNumberOfCreatures() {
+		return creatures.size();
+	}
+
+	inline int getLevel() {
+		return level;
+	}
+
+};
+
+#endif /*LAIROBJECTIMPLEMENTATION_H_*/

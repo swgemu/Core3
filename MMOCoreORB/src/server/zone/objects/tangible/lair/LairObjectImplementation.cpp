@@ -44,8 +44,11 @@ which carries forward this exception.
 
 #include "LairObjectImplementation.h"
 
-#include "../AttackableObjectImplementation.h"
+#include "../TangibleObjectImplementation.h"
 #include "../../scene/SceneObjectImplementation.h"
+
+#include "../../../packets/lair/LairObjectMessage3.h"
+#include "../../../packets/lair/LairObjectMessage6.h"
 
 LairObjectImplementation::LairObjectImplementation(uint32 objCRC, uint64 oid)
 	: LairObjectServant(oid) {
@@ -58,7 +61,7 @@ LairObjectImplementation::LairObjectImplementation(uint32 objCRC, uint64 oid)
 
 	templateTypeName = "lair_n";
 
-	name = UnicodeString("");
+	customName = UnicodeString("");
 
 	String templateDetailName = "lair_d";
 
@@ -75,6 +78,8 @@ LairObjectImplementation::LairObjectImplementation(uint32 objCRC, uint64 oid)
 
 	spawn1 = false;
 	spawn2 = false;
+
+	complexity = 100.f;
 
 	setLevel(0);
 }
@@ -93,7 +98,7 @@ void LairObjectImplementation::doDamage(int damage, SceneObject* attacker) {
 		spawnCreatures();
 	}
 
-	AttackableObjectDeltaMessage3* upd = new AttackableObjectDeltaMessage3((AttackableObject*) _this);
+	TangibleObjectDeltaMessage3* upd = new TangibleObjectDeltaMessage3((TangibleObject*) _this);
 	upd->updateConditionDamage();
 	upd->close();
 	broadcastMessage(upd);
@@ -143,6 +148,26 @@ void LairObjectImplementation::spawnCreatures(bool lockCreatureManager) {
 	}
 }
 
+void LairObjectImplementation::sendTo(Player* player, bool doClose) {
+	ZoneClientSession* client = player->getClient();
+	if (client == NULL)
+		return;
+
+	SceneObjectImplementation::create(client);
+
+	BaseMessage* tano3 = new LairObjectMessage3((LairObject*) _this);
+	client->sendMessage(tano3);
+
+	BaseMessage* tano6 = new LairObjectMessage6((LairObject*) _this);
+	client->sendMessage(tano6);
+
+	UpdatePVPStatusMessage* msg = new UpdatePVPStatusMessage(_this, pvpStatusBitmask);
+	client->sendMessage(msg);
+
+	if (doClose)
+		SceneObjectImplementation::close(client);
+}
+
 void LairObjectImplementation::addDefender(SceneObject* defender) {
 	if (defender == _this)
 		return;
@@ -174,9 +199,10 @@ void LairObjectImplementation::addDefender(SceneObject* defender) {
 void LairObjectImplementation::doDestroyed(SceneObject* attacker) {
 	pvpStatusBitmask = 0x20;
 	attackable = false;
+	optionsBitmask = 0x80;
 
-	AttackableObjectDeltaMessage3* dcreo3 = new AttackableObjectDeltaMessage3(_this);
-	dcreo3->update06Operand(0x80);
+	TangibleObjectDeltaMessage3* dcreo3 = new TangibleObjectDeltaMessage3(_this);
+	dcreo3->updateOptionsBitmask();
 	dcreo3->close();
 
 	broadcastMessage(dcreo3);

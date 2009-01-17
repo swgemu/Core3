@@ -91,7 +91,6 @@ core3_IDLS = 	server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/area/BadgeActiveArea.cpp \
 		server/zone/objects/area/TestActiveArea.cpp \
 		server/zone/objects/attackable/AttackableObject.cpp \
-		server/zone/objects/attackable/lair/LairObject.cpp \
 		server/zone/objects/auction/AuctionItem.cpp \
 		server/zone/objects/building/BuildingObject.cpp \
 		server/zone/objects/building/cell/CellObject.cpp \
@@ -171,6 +170,7 @@ core3_IDLS = 	server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/tangible/instrument/Instrument.cpp \
 		server/zone/objects/tangible/Inventory.cpp \
 		server/zone/objects/tangible/inventory/CreatureInventory.cpp \
+		server/zone/objects/tangible/lair/LairObject.cpp \
 		server/zone/objects/tangible/MissionBag.cpp \
 		server/zone/objects/tangible/pharmaceutical/CurePack.cpp \
 		server/zone/objects/tangible/pharmaceutical/CureAreaPack.cpp \
@@ -269,7 +269,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/sui/SuiManager.cpp \
 		server/zone/managers/user/UserManagerImplementation.cpp \
 		server/zone/objects/attackable/AttackableObjectImplementation.cpp \
-		server/zone/objects/attackable/lair/LairObjectImplementation.cpp \
+		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/building/cell/CellObjectImplementation.cpp \
 		server/zone/objects/creature/action/ActionCreatureImplementation.cpp \

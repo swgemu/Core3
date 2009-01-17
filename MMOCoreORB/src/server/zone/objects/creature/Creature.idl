@@ -50,7 +50,7 @@ import "../player/Player";
 
 import "../tangible/wearables/Armor";
 
-import "../attackable/lair/LairObject";
+import "../tangible/lair/LairObject";
 
 import "CreatureObject";
 
@@ -83,12 +83,12 @@ interface Creature implements CreatureObject {
 
 	void doIncapacitate();
 	void doStandUp();
-	
+
 	void setArmor(unsigned int ar);
-	
+
 	unsigned int getArmor();
 	float getArmorResist(int resistType);
-	
+
 	void setKinetic(float kin);
 	void setEnergy(float ene);
 	void setElectricity(float ele);
@@ -99,7 +99,7 @@ interface Creature implements CreatureObject {
 	void setAcid(float aci);
 	void setLightSaber(float lig);
 
-	
+
 
 	//void agro(boolean all);
 
@@ -154,7 +154,7 @@ interface Creature implements CreatureObject {
 	void setCreatureGroup(CreatureGroup group);
 
 	void setObjectFileName(const String name);
-	
+
 	String getObjectFileName();
 
 	void setType(int tp);
@@ -169,11 +169,11 @@ interface Creature implements CreatureObject {
 	void setLootCreated(boolean value);
 
 	void setRandomMovement(boolean value);
-	
+
 	unsigned int getFPValue();
-	
+
 	void setFPValue(unsigned int value);
-	
+
 	//Event Handlers
 	void onIncapacitateTarget(CreatureObject victim);
 }

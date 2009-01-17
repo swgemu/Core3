@@ -53,9 +53,8 @@ class TangibleObjectDeltaMessage3 : public DeltaMessage {
 	TangibleObject* tano;
 
 public:
-	TangibleObjectDeltaMessage3(TangibleObject* ta)
-			//: DeltaMessage(ta->getObjectID(), 0x4352454F, 3) {
-			: DeltaMessage(ta->getObjectID(), 0x54414E4F, 3) {
+	TangibleObjectDeltaMessage3(TangibleObject* ta, uint32 objType = 0x54414E4F)
+			: DeltaMessage(ta->getObjectID(), objType, 3) {
 		tano = ta;
 	}
 

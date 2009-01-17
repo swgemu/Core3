@@ -14,7 +14,7 @@
 
 #include "../tangible/wearables/Armor.h"
 
-#include "../attackable/lair/LairObject.h"
+#include "../tangible/lair/LairObject.h"
 
 #include "CreatureObject.h"
 

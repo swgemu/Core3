@@ -67,8 +67,6 @@ import "../building/BuildingObject";
 
 import "../creature/skills/target/AttackTargetSkill";
 
-import "../attackable/lair/LairObject";
-
 interface SceneObject implements ManagedObject {
 	native boolean destroy();
 

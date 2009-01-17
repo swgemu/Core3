@@ -114,6 +114,12 @@ protected:
 
 	int volume;
 
+	Vector<ManagedReference<SceneObject> > defenderList;
+	uint32 defenderUpdateCounter;
+
+	bool inCombat;
+	bool attackable;
+
 	//Slicing
 	bool sliced;
 	bool slicable;
@@ -373,6 +379,8 @@ public:
 		return playerUseMask;
 	}
 
+	virtual void onReceiveDamage(SceneObject* attacker, uint32 amount);
+
 	void generateSkillMods(class AttributeListMessage* alm, int skillModType, int skillModValue);
 
 	void sendTo(Player* player, bool doClose = true);
@@ -380,6 +388,18 @@ public:
 	void sendDestroyTo(Player* player);
 
 	virtual void sendDeltas(Player* player);
+
+	virtual void setDefender(SceneObject* defender);
+	virtual void addDefender(SceneObject* defender);
+	virtual void removeDefender(SceneObject* defender);
+	virtual void removeDefenders();
+	virtual bool hasDefender(SceneObject* defender);
+
+	virtual void doDamage(int damage, SceneObject* attacker);
+	virtual void doDestroyed(SceneObject* attacker);
+
+	virtual void setCombatState();
+	virtual void clearCombatState(bool removeDefenders = true);
 
 	void close(Player* player);
 
@@ -534,6 +554,22 @@ public:
 		return craftedSerial;
 	}
 
+	inline uint32 getDefenderUpdateCounter() {
+		return defenderUpdateCounter;
+	}
+
+	inline uint32 getNewDefenderUpdateCounter(int cnt) {
+		return defenderUpdateCounter += cnt;
+	}
+
+	inline uint32 getDefenderListSize() {
+		return defenderList.size();
+	}
+
+	inline SceneObject* getDefender(int idx) {
+		return defenderList.get(idx);
+	}
+
 	inline int getObjectSubType() {
 		return objectSubType;
 	}
@@ -686,6 +722,14 @@ public:
 
 	inline int getCondition() {
 		return maxCondition - conditionDamage;
+	}
+
+	virtual bool isAttackableBy(CreatureObject* creature) {
+		return attackable;
+	}
+
+	inline bool isDestroyed() {
+		return (conditionDamage >= maxCondition);
 	}
 
 	//Sending of Messages

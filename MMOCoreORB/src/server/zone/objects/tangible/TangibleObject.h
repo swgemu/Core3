@@ -53,6 +53,10 @@ public:
 
 	bool isUpdated();
 
+	unsigned int getDefenderUpdateCounter();
+
+	unsigned int getNewDefenderUpdateCounter(int cnt);
+
 	char getUnknownByte();
 
 	float getComplexity();
@@ -78,6 +82,10 @@ public:
 	bool isInstrument();
 
 	bool isAttachment();
+
+	bool isDestroyed();
+
+	bool isAttackableBy(CreatureObject* creature);
 
 	bool isResource();
 
@@ -163,6 +171,8 @@ public:
 
 	int getCondition();
 
+	void doDamage(int damage, SceneObject* attacker);
+
 	String& getCraftersName();
 
 	String& getCraftedSerial();
@@ -176,6 +186,8 @@ public:
 	String& getMisoAsocKey();
 
 	void setLoot(bool l);
+
+	void setMaxCondition(int maxCond);
 
 	void setObjectSubType(const int type);
 
@@ -250,6 +262,10 @@ public:
 
 	bool isUpdated();
 
+	unsigned int getDefenderUpdateCounter();
+
+	unsigned int getNewDefenderUpdateCounter(int cnt);
+
 	char getUnknownByte();
 
 	float getComplexity();
@@ -275,6 +291,10 @@ public:
 	bool isInstrument();
 
 	bool isAttachment();
+
+	bool isDestroyed();
+
+	bool isAttackableBy(CreatureObject* creature);
 
 	bool isResource();
 
@@ -360,6 +380,8 @@ public:
 
 	int getCondition();
 
+	void doDamage(int damage, SceneObject* attacker);
+
 	String& getCraftersName();
 
 	String& getCraftedSerial();
@@ -373,6 +395,8 @@ public:
 	String& getMisoAsocKey();
 
 	void setLoot(bool l);
+
+	void setMaxCondition(int maxCond);
 
 	void setObjectSubType(const int type);
 

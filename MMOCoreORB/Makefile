@@ -123,11 +123,8 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/generic/GenericItem.idl \
 				server/zone/objects/tangible/generic/Dice.idl \
 				server/zone/objects/tangible/instrument/Instrument.idl \
-				server/zone/objects/attackable/lair/LairObject.idl \
+				server/zone/objects/tangible/lair/LairObject.idl \
 				server/zone/objects/tangible/surveytool/SurveyTool.idl \
-				server/zone/objects/tangible/consumable/Consumable.idl \
-				server/zone/objects/tangible/consumable/food/Food.idl \
-				server/zone/objects/tangible/consumable/drink/Drink.idl \
 				server/zone/objects/tangible/crafting/CraftingTool.idl \
 				server/zone/objects/tangible/crafting/CraftingStation.idl \
 				server/zone/objects/tangible/crafting/component/Component.idl \
