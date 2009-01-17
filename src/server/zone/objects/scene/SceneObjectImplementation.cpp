@@ -62,7 +62,7 @@ which carries forward this exception.
 
 #include "../creature/skills/target/AttackTargetSkill.h"
 
-#include "../attackable/lair/LairObject.h"
+#include "../tangible/lair/LairObject.h"
 
 #include "../../managers/player/PlayerManager.h"
 
@@ -437,6 +437,55 @@ void SceneObjectImplementation::broadcastMessage(StandaloneBaseMessage* msg, int
 	}
 
 	//System::out << "finished SceneObjectImplementation::broadcastMessage(Message* msg, int range, bool doLock)\n";
+}
+
+void SceneObjectImplementation::broadcastMessages(Vector<BaseMessage*>& msgs, int range, bool doLock) {
+	if (zone == NULL) {
+		for (int j = 0; j < msgs.size(); ++j) {
+			Message* msg = msgs.get(j);
+			delete msg;
+		}
+
+		msgs.removeAll();
+
+		return;
+	}
+
+	try {
+		//System::out << "CreatureObject::broadcastMessages(Vector<Message*>& msgs, int range, bool doLock)\n";
+
+		zone->lock(doLock);
+
+		for (int i = 0; i < inRangeObjectCount(); ++i) {
+			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_getStub());
+
+			if (object->isPlayer()) {
+				Player* player = (Player*) object;
+
+				if (range == 128 || isInRange(player, range) || player->getParent() != NULL) {
+					for (int j = 0; j < msgs.size(); ++j) {
+						BaseMessage* msg = msgs.get(j);
+						player->sendMessage(msg->clone());
+					}
+				}
+			}
+		}
+
+		for (int j = 0; j < msgs.size(); ++j) {
+			Message* msg = msgs.get(j);
+			delete msg;
+		}
+
+		msgs.removeAll();
+
+		zone->unlock(doLock);
+
+		//System::out << "finished CreatureObject::broadcastMessages(Vector<Message*>& msgs, int range, bool doLock)\n";
+	} catch (...) {
+		error("exception CreatureObject::broadcastMessages(Vector<Message*>& msgs, int range, bool doLock)");
+
+		zone->unlock(doLock);
+	}
 }
 
 void SceneObjectImplementation::removeFromZone(bool doLock) {

@@ -7,112 +7,32 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class SceneObject;
-
-class Player;
+class TangibleObject;
 
 class Zone;
 
-#include "../scene/SceneObject.h"
+#include "../tangible/TangibleObject.h"
 
-class AttackableObject : public SceneObject {
+class AttackableObject : public TangibleObject {
 public:
 	AttackableObject(unsigned long long oid);
-
-	void insertToZone(Zone* zone);
-
-	void removeFromZone(bool doLock = true);
-
-	void sendDestroyTo(Player* player);
-
-	void setTemplateName(String& name);
-
-	String& getTemplateTypeName();
-
-	String& getTemplateName();
-
-	UnicodeString& getName();
-
-	String& getTemplateDetailName();
-
-	String& getTemplateDetail();
-
-	void getCustomizationString(String& app);
-
-	void setConditionDamage(unsigned int cond);
-
-	void setMaxCondition(unsigned int maxcond);
-
-	int getConditionDamage();
-
-	int getMaxCondition();
-
-	void doDamage(int damage, SceneObject* attacker);
-
-	bool isDestroyed();
-
-	void onReceiveDamage(SceneObject* attacker, unsigned int amount);
 
 protected:
 	AttackableObject(DummyConstructorParameter* param);
 
 	virtual ~AttackableObject();
 
-	String _return_getTemplateDetail;
-	String _return_getTemplateDetailName;
-	String _return_getTemplateName;
-	String _return_getTemplateTypeName;
-
-	UnicodeString _return_getName;
-
 	friend class AttackableObjectHelper;
 };
 
 class AttackableObjectImplementation;
 
-class AttackableObjectAdapter : public SceneObjectAdapter {
+class AttackableObjectAdapter : public TangibleObjectAdapter {
 public:
 	AttackableObjectAdapter(AttackableObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void insertToZone(Zone* zone);
-
-	void removeFromZone(bool doLock);
-
-	void sendDestroyTo(Player* player);
-
-	void setTemplateName(String& name);
-
-	String& getTemplateTypeName();
-
-	String& getTemplateName();
-
-	UnicodeString& getName();
-
-	String& getTemplateDetailName();
-
-	String& getTemplateDetail();
-
-	void getCustomizationString(String& app);
-
-	void setConditionDamage(unsigned int cond);
-
-	void setMaxCondition(unsigned int maxcond);
-
-	int getConditionDamage();
-
-	int getMaxCondition();
-
-	void doDamage(int damage, SceneObject* attacker);
-
-	bool isDestroyed();
-
-	void onReceiveDamage(SceneObject* attacker, unsigned int amount);
-
-protected:
-	String _param0_setTemplateName__String_;
-	String _param0_getCustomizationString__String_;
 };
 
 class AttackableObjectHelper : public DistributedObjectClassHelper, public Singleton<AttackableObjectHelper> {
@@ -130,9 +50,9 @@ public:
 	friend class SingletonWrapper<AttackableObjectHelper>;
 };
 
-#include "../scene/SceneObjectImplementation.h"
+#include "../tangible/TangibleObjectImplementation.h"
 
-class AttackableObjectServant : public SceneObjectImplementation {
+class AttackableObjectServant : public TangibleObjectImplementation {
 public:
 	AttackableObject* _this;
 

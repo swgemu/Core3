@@ -122,9 +122,6 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	skillModBonusCounter = 0;
 
 	// CREO6 operands
-	defenderUpdateCounter = 0;
-	defenderID = 0;
-
 	moodid = 0;
 	mood = Races::getMood(moodid);
 	moodStr = Races::getMoodStr(mood);
@@ -632,131 +629,6 @@ void CreatureObjectImplementation::setCombatState() {
 		if (postureState == CreaturePosture::SITTING)
 			setPosture(CreaturePosture::UPRIGHT);
 	}
-}
-
-void CreatureObjectImplementation::setDefender(SceneObject* defender) {
-	if (defender == _this)
-		return;
-
-	setCombatState();
-
-	ManagedReference<SceneObject> temp = NULL;
-
-	int i = 0;
-	for (; i < defenderList.size(); i++) {
-		if (defenderList.get(i) == defender) {
-			if (i == 0)
-				return;
-
-			temp = defenderList.get(0);
-
-			defenderList.set(0, defender);
-			defenderList.set(i, temp);
-
-			break;
-		}
-	}
-
-	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6((CreatureObject*) _this);
-	if (temp != NULL) {
-		dcreo6->startDefenderUpdate(2);
-		dcreo6->setDefender(i, temp->getObjectID());
-		dcreo6->setDefender(0, defender->getObjectID());
-	} else {
-		dcreo6->startDefenderUpdate(1);
-		dcreo6->addDefender(defenderList.size(), defender->getObjectID());
-
-		defenderList.add(defender);
-	}
-
-	dcreo6->close();
-
-	broadcastMessage(dcreo6);
-}
-
-void CreatureObjectImplementation::addDefender(SceneObject* defender) {
-	if (defender == _this)
-		return;
-
-	setCombatState();
-
-	for (int i = 0; i < defenderList.size(); ++i) {
-		if (defender == defenderList.get(i))
-			return;
-	}
-
-	info("adding defender");
-
-	defenderList.add(defender);
-
-	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6((CreatureObject*) _this);
-	dcreo6->startDefenderUpdate(1);
-	dcreo6->addDefender(defenderList.size() - 1, defender->getObjectID());
-	dcreo6->close();
-
-	broadcastMessage(dcreo6);
-}
-
-void CreatureObjectImplementation::removeDefenders() {
-	info("removing all defenders");
-	if (defenderList.size() == 0) {
-		//info("no defenders in list");
-		return;
-	}
-
-	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6((CreatureObject*) _this);
-	dcreo6->startDefenderUpdate(1);
-
-	dcreo6->removeDefenders();
-	dcreo6->close();
-
-	broadcastMessage(dcreo6);
-
-	defenderList.removeAll();
-
-	info("removed all defenders");
-}
-
-void CreatureObjectImplementation::removeDefender(SceneObject* defender) {
-	if (zone == NULL)
-		return;
-
-	//info("trying to remove defender");
-	for (int i = 0; i < defenderList.size(); ++i) {
-		if (defenderList.get(i) == defender) {
-			defenderList.remove(i);
-
-			info("removing defender");
-
-			CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6((CreatureObject*) _this);
-			dcreo6->startDefenderUpdate(1);
-
-			if (defenderList.size() == 0)
-				dcreo6->removeDefenders();
-			else
-				dcreo6->removeDefender(i);
-
-			dcreo6->close();
-
-			broadcastMessage(dcreo6);
-
-			//info("defender found and removed");
-			break;
-		}
-	}
-
-	if (defenderList.size() == 0)
-		clearCombatState(false);
-
-	//info("finished removing defender");
-}
-
-bool CreatureObjectImplementation::hasDefender(SceneObject* defender) {
-	for (int i = 0; i < defenderList.size(); ++i) {
-		if (defenderList.get(i) == defender)
-			return true;
-	}
-	return false;
 }
 
 void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
@@ -3518,55 +3390,6 @@ uint32 CreatureObjectImplementation::getMitigation(const String& mit) {
 	else {
 		PassiveSkill* mitigation = (PassiveSkill*)mitig;
 		return mitigation->getDamageReduction();
-	}
-}
-
-void CreatureObjectImplementation::broadcastMessages(Vector<BaseMessage*>& msgs, int range, bool doLock) {
-	if (zone == NULL) {
-		for (int j = 0; j < msgs.size(); ++j) {
-			Message* msg = msgs.get(j);
-			delete msg;
-		}
-
-		msgs.removeAll();
-
-		return;
-	}
-
-	try {
-		//System::out << "CreatureObject::broadcastMessages(Vector<Message*>& msgs, int range, bool doLock)\n";
-
-		zone->lock(doLock);
-
-		for (int i = 0; i < inRangeObjectCount(); ++i) {
-			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_getStub());
-
-			if (object->isPlayer()) {
-				Player* player = (Player*) object;
-
-				if (range == 128 || isInRange(player, range) || player->getParent() != NULL) {
-					for (int j = 0; j < msgs.size(); ++j) {
-						BaseMessage* msg = msgs.get(j);
-						player->sendMessage(msg->clone());
-					}
-				}
-			}
-		}
-
-		for (int j = 0; j < msgs.size(); ++j) {
-			Message* msg = msgs.get(j);
-			delete msg;
-		}
-
-		msgs.removeAll();
-
-		zone->unlock(doLock);
-
-		//System::out << "finished CreatureObject::broadcastMessages(Vector<Message*>& msgs, int range, bool doLock)\n";
-	} catch (...) {
-		error("exception CreatureObject::broadcastMessages(Vector<Message*>& msgs, int range, bool doLock)");
-
-		zone->unlock(doLock);
 	}
 }
 

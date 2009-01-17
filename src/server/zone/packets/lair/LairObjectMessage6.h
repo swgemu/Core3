@@ -42,14 +42,28 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#ifndef LAIROBJECTMESSAGE6_H_
+#define LAIROBJECTMESSAGE6_H_
 
-import "../tangible/TangibleObject";
+#include "../BaseLineMessage.h"
 
-import "../../Zone";
+#include "../../objects/tangible/lair/LairObject.h"
 
-interface AttackableObject implements TangibleObject {
-	AttackableObject(unsigned long oid) {
-		super(oid, int type);
+class LairObjectMessage6 : public BaseLineMessage {
+public:
+	LairObjectMessage6(LairObject* tano)
+			: BaseLineMessage(tano->getObjectID(), 0x54414E4F, 6, 0x04) {
+		insertInt(0x59);
+		insertAscii(tano->getTemplateDetailName());
+		insertInt(0);
+		insertAscii(tano->getTemplateDetail());
+		insertInt(0);
+		insertInt(0);
+		insertByte(0);
+
+		setSize();
 	}
 
-}
+};
+
+#endif /*ATTACKABLEOBJECTMESSAGE6_H_*/

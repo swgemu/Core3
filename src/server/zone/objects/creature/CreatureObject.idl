@@ -281,8 +281,6 @@ interface CreatureObject implements TangibleObject {
 	void updateGroupId(unsigned long id);
 	void updateGroupInviterId(unsigned long id);
 
-	void setDefenderID(long did);
-
 	void updateTarget(unsigned long targ);
 	void updateTarget(SceneObject targ);
 	void clearTarget();
@@ -599,11 +597,6 @@ interface CreatureObject implements TangibleObject {
 
 	unsigned float getSpeed();
 	unsigned float getAcceleration();
-
-	unsigned long getDefenderID();
-	unsigned int getDefenderUpdateCounter();
-	unsigned int getNewDefenderUpdateCounter(int cnt);
-
 
 	String getPerformanceAnimation();
 	unsigned int getPerformanceCounter();

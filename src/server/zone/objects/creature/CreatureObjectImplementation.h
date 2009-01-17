@@ -219,8 +219,8 @@ protected:
 	uint32 skillModBonusCounter;
 
 	//CREO6 operands
-	uint32 defenderUpdateCounter;
-	uint64 defenderID;
+
+	//uint64 defenderID;
 
 	String mood;
 	String moodStr;
@@ -297,8 +297,6 @@ protected:
 	VectorMap<uint32, uint32> queuedStates; // TODO: make SortedVector for basic types
 
 	DizzyFallDownEvent* dizzyFallDownEvent;
-
-	Vector<ManagedReference<SceneObject> > defenderList;
 
 	VectorMap<CreatureObject*, uint32> damageMap;
 
@@ -392,12 +390,6 @@ public:
 	void sendCombatSpam(CreatureObject* defender, TangibleObject* item, uint32 damage, const String& skill, bool areaSpam = true);
 
 	void setPosture(uint8 state, bool overrideDizzy = false, bool objectInteraction = false, float objX = 0, float objY = 0, float objZ = 0);
-
-	void setDefender(SceneObject* defender);
-	void addDefender(SceneObject* defender);
-	void removeDefender(SceneObject* defender);
-	void removeDefenders();
-	bool hasDefender(SceneObject* defender);
 
 	void setCombatState();
 	void clearCombatState(bool removeDefenders = true);
@@ -945,9 +937,7 @@ public:
 
 	void sendDestroyTo(Player* player);
 
-	void broadcastMessages(Vector<BaseMessage*>& msgs, int range = 128, bool doLock = true);
 	void broadcastMessageRange(Player* player, const String& message, float range);
-
 
 	void sendSystemMessage(const String& message);
 	void sendSystemMessage(UnicodeString& message);
@@ -1480,10 +1470,6 @@ public:
 		pbBonus = value;
 	}
 
-	inline void setDefenderID(uint64 did) {
-		defenderID = did;
-	}
-
 	inline void setSpeed(float spd) {
 		speed = spd;
 	}
@@ -1537,14 +1523,6 @@ public:
 
 	inline uint32 getPositionCounter() {
 		return positionCounter++;
-	}
-
-	inline uint32 getDefenderListSize() {
-		return defenderList.size();
-	}
-
-	inline SceneObject* getDefender(int idx) {
-		return defenderList.get(idx);
 	}
 
 	inline uint32 getBankCredits() {
@@ -1995,18 +1973,6 @@ public:
 	uint64 getTargetID();
 
 	uint64 getWeaponID();
-
-	inline uint64 getDefenderID() {
-		return defenderID;
-	}
-
-	inline uint32 getDefenderUpdateCounter() {
-		return defenderUpdateCounter;
-	}
-
-	inline uint32 getNewDefenderUpdateCounter(int cnt) {
-		return defenderUpdateCounter += cnt;
-	}
 
 	inline uint32 getNewSkillModsCounter(int cnt) {
 		return skillModsCounter += cnt;

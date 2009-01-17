@@ -6,9 +6,7 @@
 
 #include "AttackableObjectImplementation.h"
 
-#include "../scene/SceneObject.h"
-
-#include "../player/Player.h"
+#include "../tangible/TangibleObject.h"
 
 #include "../../Zone.h"
 
@@ -16,372 +14,33 @@
  *	AttackableObjectStub
  */
 
-AttackableObject::AttackableObject(unsigned long long oid) : SceneObject(DummyConstructorParameter::instance()) {
+AttackableObject::AttackableObject(unsigned long long oid) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new AttackableObjectImplementation(oid);
 	_impl->_setStub(this);
 }
 
-AttackableObject::AttackableObject(DummyConstructorParameter* param) : SceneObject(param) {
+AttackableObject::AttackableObject(DummyConstructorParameter* param) : TangibleObject(param) {
 }
 
 AttackableObject::~AttackableObject() {
-}
-
-void AttackableObject::insertToZone(Zone* zone) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 6);
-		method.addObjectParameter(zone);
-
-		method.executeWithVoidReturn();
-	} else
-		((AttackableObjectImplementation*) _impl)->insertToZone(zone);
-}
-
-void AttackableObject::removeFromZone(bool doLock) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 7);
-		method.addBooleanParameter(doLock);
-
-		method.executeWithVoidReturn();
-	} else
-		((AttackableObjectImplementation*) _impl)->removeFromZone(doLock);
-}
-
-void AttackableObject::sendDestroyTo(Player* player) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 8);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		((AttackableObjectImplementation*) _impl)->sendDestroyTo(player);
-}
-
-void AttackableObject::setTemplateName(String& name) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
-		method.addAsciiParameter(name);
-
-		method.executeWithVoidReturn();
-	} else
-		((AttackableObjectImplementation*) _impl)->setTemplateName(name);
-}
-
-String& AttackableObject::getTemplateTypeName() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 10);
-
-		method.executeWithAsciiReturn(_return_getTemplateTypeName);
-		return _return_getTemplateTypeName;
-	} else
-		return ((AttackableObjectImplementation*) _impl)->getTemplateTypeName();
-}
-
-String& AttackableObject::getTemplateName() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 11);
-
-		method.executeWithAsciiReturn(_return_getTemplateName);
-		return _return_getTemplateName;
-	} else
-		return ((AttackableObjectImplementation*) _impl)->getTemplateName();
-}
-
-UnicodeString& AttackableObject::getName() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 12);
-
-		method.executeWithUnicodeReturn(_return_getName);
-		return _return_getName;
-	} else
-		return ((AttackableObjectImplementation*) _impl)->getName();
-}
-
-String& AttackableObject::getTemplateDetailName() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 13);
-
-		method.executeWithAsciiReturn(_return_getTemplateDetailName);
-		return _return_getTemplateDetailName;
-	} else
-		return ((AttackableObjectImplementation*) _impl)->getTemplateDetailName();
-}
-
-String& AttackableObject::getTemplateDetail() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 14);
-
-		method.executeWithAsciiReturn(_return_getTemplateDetail);
-		return _return_getTemplateDetail;
-	} else
-		return ((AttackableObjectImplementation*) _impl)->getTemplateDetail();
-}
-
-void AttackableObject::getCustomizationString(String& app) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 15);
-		method.addAsciiParameter(app);
-
-		method.executeWithVoidReturn();
-	} else
-		((AttackableObjectImplementation*) _impl)->getCustomizationString(app);
-}
-
-void AttackableObject::setConditionDamage(unsigned int cond) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 16);
-		method.addUnsignedIntParameter(cond);
-
-		method.executeWithVoidReturn();
-	} else
-		((AttackableObjectImplementation*) _impl)->setConditionDamage(cond);
-}
-
-void AttackableObject::setMaxCondition(unsigned int maxcond) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 17);
-		method.addUnsignedIntParameter(maxcond);
-
-		method.executeWithVoidReturn();
-	} else
-		((AttackableObjectImplementation*) _impl)->setMaxCondition(maxcond);
-}
-
-int AttackableObject::getConditionDamage() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 18);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((AttackableObjectImplementation*) _impl)->getConditionDamage();
-}
-
-int AttackableObject::getMaxCondition() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 19);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((AttackableObjectImplementation*) _impl)->getMaxCondition();
-}
-
-void AttackableObject::doDamage(int damage, SceneObject* attacker) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 20);
-		method.addSignedIntParameter(damage);
-		method.addObjectParameter(attacker);
-
-		method.executeWithVoidReturn();
-	} else
-		((AttackableObjectImplementation*) _impl)->doDamage(damage, attacker);
-}
-
-bool AttackableObject::isDestroyed() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 21);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((AttackableObjectImplementation*) _impl)->isDestroyed();
-}
-
-void AttackableObject::onReceiveDamage(SceneObject* attacker, unsigned int amount) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 22);
-		method.addObjectParameter(attacker);
-		method.addUnsignedIntParameter(amount);
-
-		method.executeWithVoidReturn();
-	} else
-		((AttackableObjectImplementation*) _impl)->onReceiveDamage(attacker, amount);
 }
 
 /*
  *	AttackableObjectAdapter
  */
 
-AttackableObjectAdapter::AttackableObjectAdapter(AttackableObjectImplementation* obj) : SceneObjectAdapter(obj) {
+AttackableObjectAdapter::AttackableObjectAdapter(AttackableObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* AttackableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
-		insertToZone((Zone*) inv->getObjectParameter());
-		break;
-	case 7:
-		removeFromZone(inv->getBooleanParameter());
-		break;
-	case 8:
-		sendDestroyTo((Player*) inv->getObjectParameter());
-		break;
-	case 9:
-		setTemplateName(inv->getAsciiParameter(_param0_setTemplateName__String_));
-		break;
-	case 10:
-		resp->insertAscii(getTemplateTypeName());
-		break;
-	case 11:
-		resp->insertAscii(getTemplateName());
-		break;
-	case 12:
-		resp->insertUnicode(getName());
-		break;
-	case 13:
-		resp->insertAscii(getTemplateDetailName());
-		break;
-	case 14:
-		resp->insertAscii(getTemplateDetail());
-		break;
-	case 15:
-		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__String_));
-		break;
-	case 16:
-		setConditionDamage(inv->getUnsignedIntParameter());
-		break;
-	case 17:
-		setMaxCondition(inv->getUnsignedIntParameter());
-		break;
-	case 18:
-		resp->insertSignedInt(getConditionDamage());
-		break;
-	case 19:
-		resp->insertSignedInt(getMaxCondition());
-		break;
-	case 20:
-		doDamage(inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter());
-		break;
-	case 21:
-		resp->insertBoolean(isDestroyed());
-		break;
-	case 22:
-		onReceiveDamage((SceneObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
-		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
-}
-
-void AttackableObjectAdapter::insertToZone(Zone* zone) {
-	return ((AttackableObjectImplementation*) impl)->insertToZone(zone);
-}
-
-void AttackableObjectAdapter::removeFromZone(bool doLock) {
-	return ((AttackableObjectImplementation*) impl)->removeFromZone(doLock);
-}
-
-void AttackableObjectAdapter::sendDestroyTo(Player* player) {
-	return ((AttackableObjectImplementation*) impl)->sendDestroyTo(player);
-}
-
-void AttackableObjectAdapter::setTemplateName(String& name) {
-	return ((AttackableObjectImplementation*) impl)->setTemplateName(name);
-}
-
-String& AttackableObjectAdapter::getTemplateTypeName() {
-	return ((AttackableObjectImplementation*) impl)->getTemplateTypeName();
-}
-
-String& AttackableObjectAdapter::getTemplateName() {
-	return ((AttackableObjectImplementation*) impl)->getTemplateName();
-}
-
-UnicodeString& AttackableObjectAdapter::getName() {
-	return ((AttackableObjectImplementation*) impl)->getName();
-}
-
-String& AttackableObjectAdapter::getTemplateDetailName() {
-	return ((AttackableObjectImplementation*) impl)->getTemplateDetailName();
-}
-
-String& AttackableObjectAdapter::getTemplateDetail() {
-	return ((AttackableObjectImplementation*) impl)->getTemplateDetail();
-}
-
-void AttackableObjectAdapter::getCustomizationString(String& app) {
-	return ((AttackableObjectImplementation*) impl)->getCustomizationString(app);
-}
-
-void AttackableObjectAdapter::setConditionDamage(unsigned int cond) {
-	return ((AttackableObjectImplementation*) impl)->setConditionDamage(cond);
-}
-
-void AttackableObjectAdapter::setMaxCondition(unsigned int maxcond) {
-	return ((AttackableObjectImplementation*) impl)->setMaxCondition(maxcond);
-}
-
-int AttackableObjectAdapter::getConditionDamage() {
-	return ((AttackableObjectImplementation*) impl)->getConditionDamage();
-}
-
-int AttackableObjectAdapter::getMaxCondition() {
-	return ((AttackableObjectImplementation*) impl)->getMaxCondition();
-}
-
-void AttackableObjectAdapter::doDamage(int damage, SceneObject* attacker) {
-	return ((AttackableObjectImplementation*) impl)->doDamage(damage, attacker);
-}
-
-bool AttackableObjectAdapter::isDestroyed() {
-	return ((AttackableObjectImplementation*) impl)->isDestroyed();
-}
-
-void AttackableObjectAdapter::onReceiveDamage(SceneObject* attacker, unsigned int amount) {
-	return ((AttackableObjectImplementation*) impl)->onReceiveDamage(attacker, amount);
 }
 
 /*
@@ -419,7 +78,7 @@ DistributedObjectAdapter* AttackableObjectHelper::createAdapter(DistributedObjec
  *	AttackableObjectServant
  */
 
-AttackableObjectServant::AttackableObjectServant(unsigned long long oid, int type) : SceneObjectImplementation(oid, type) {
+AttackableObjectServant::AttackableObjectServant(unsigned long long oid, int type) : TangibleObjectImplementation(oid, type) {
 	_classHelper = AttackableObjectHelper::instance();
 }
 
@@ -428,7 +87,7 @@ AttackableObjectServant::~AttackableObjectServant() {
 
 void AttackableObjectServant::_setStub(DistributedObjectStub* stub) {
 	_this = (AttackableObject*) stub;
-	SceneObjectServant::_setStub(stub);
+	TangibleObjectServant::_setStub(stub);
 }
 
 DistributedObjectStub* AttackableObjectServant::_getStub() {

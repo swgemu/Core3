@@ -14,7 +14,7 @@
 
 #include "../../objects/creature/CreatureGroup.h"
 
-#include "../../objects/attackable/lair/LairObject.h"
+#include "../../objects/tangible/lair/LairObject.h"
 
 #include "../../objects/creature/action/ActionCreature.h"
 

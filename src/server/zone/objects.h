@@ -116,8 +116,8 @@ which carries forward this exception.
 #include "objects/tangible/ticketcollector/TicketCollectorImplementation.h"
 #include "objects/tangible/instrument/Instrument.h"
 #include "objects/tangible/instrument/InstrumentImplementation.h"
-#include "objects/attackable/lair/LairObject.h"
-#include "objects/attackable/lair/LairObjectImplementation.h"
+#include "objects/tangible/lair/LairObject.h"
+#include "objects/tangible/lair/LairObjectImplementation.h"
 
 // Deeds
 #include "objects/tangible/deed/DeedObject.h"

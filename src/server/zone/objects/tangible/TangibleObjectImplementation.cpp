@@ -129,6 +129,10 @@ void TangibleObjectImplementation::initialize() {
 
 	complexity = 100.f;
 
+	defenderUpdateCounter = 0;
+	inCombat = false;
+	attackable = false;
+
 	unknownByte = 1;
 
 	volume = 1;
@@ -339,6 +343,178 @@ void TangibleObjectImplementation::close(Player* player) {
 		return;
 
 	SceneObjectImplementation::close(client);
+}
+
+void TangibleObjectImplementation::setDefender(SceneObject* defender) {
+	if (defender == _this)
+		return;
+
+	setCombatState();
+
+	ManagedReference<SceneObject> temp = NULL;
+
+	int i = 0;
+	for (; i < defenderList.size(); i++) {
+		if (defenderList.get(i) == defender) {
+			if (i == 0)
+				return;
+
+			temp = defenderList.get(0);
+
+			defenderList.set(0, defender);
+			defenderList.set(i, temp);
+
+			break;
+		}
+	}
+
+	TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6((TangibleObject*) _this);
+
+	if (temp != NULL) {
+		dtano6->startDefenderUpdate(2);
+		dtano6->setDefender(i, temp->getObjectID());
+		dtano6->setDefender(0, defender->getObjectID());
+	} else {
+		dtano6->startDefenderUpdate(1);
+		dtano6->addDefender(defenderList.size(), defender->getObjectID());
+
+		defenderList.add(defender);
+	}
+
+	dtano6->close();
+
+	broadcastMessage(dtano6);
+}
+
+void TangibleObjectImplementation::addDefender(SceneObject* defender) {
+	if (defender == _this)
+		return;
+
+	setCombatState();
+
+	for (int i = 0; i < defenderList.size(); ++i) {
+		if (defender == defenderList.get(i))
+			return;
+	}
+
+	info("adding defender");
+
+	defenderList.add(defender);
+
+	TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6((TangibleObject*) _this);
+	dtano6->startDefenderUpdate(1);
+	dtano6->addDefender(defenderList.size() - 1, defender->getObjectID());
+	dtano6->close();
+
+	broadcastMessage(dtano6);
+}
+
+void TangibleObjectImplementation::removeDefenders() {
+	info("removing all defenders");
+	if (defenderList.size() == 0) {
+		//info("no defenders in list");
+		return;
+	}
+
+	TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6((TangibleObject*) _this);
+	dtano6->startDefenderUpdate(1);
+
+	dtano6->removeDefenders();
+	dtano6->close();
+
+	broadcastMessage(dtano6);
+
+	defenderList.removeAll();
+
+	info("removed all defenders");
+}
+
+void TangibleObjectImplementation::removeDefender(SceneObject* defender) {
+	if (zone == NULL)
+		return;
+
+	//info("trying to remove defender");
+	for (int i = 0; i < defenderList.size(); ++i) {
+		if (defenderList.get(i) == defender) {
+			defenderList.remove(i);
+
+			info("removing defender");
+
+			TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6((TangibleObject*) _this);
+			dtano6->startDefenderUpdate(1);
+
+			if (defenderList.size() == 0)
+				dtano6->removeDefenders();
+			else
+				dtano6->removeDefender(i);
+
+			dtano6->close();
+
+			broadcastMessage(dtano6);
+
+			//info("defender found and removed");
+			break;
+		}
+	}
+
+	if (defenderList.size() == 0)
+		clearCombatState(false);
+
+	//info("finished removing defender");
+}
+
+bool TangibleObjectImplementation::hasDefender(SceneObject* defender) {
+	for (int i = 0; i < defenderList.size(); ++i) {
+		if (defenderList.get(i) == defender)
+			return true;
+	}
+	return false;
+}
+
+void TangibleObjectImplementation::setCombatState() {
+	//lastCombatAction.update();
+	inCombat = true;
+}
+
+void TangibleObjectImplementation::clearCombatState(bool removedefenders) {
+	inCombat = false;
+
+	if (removedefenders)
+		removeDefenders();
+
+	//info("finished clearCombatState");
+}
+
+void TangibleObjectImplementation::doDamage(int damage, SceneObject* attacker) {
+	conditionDamage = conditionDamage + damage;
+
+	TangibleObjectDeltaMessage3* upd = new TangibleObjectDeltaMessage3((TangibleObject*) _this);
+	upd->updateConditionDamage();
+	upd->close();
+	broadcastMessage(upd);
+
+	if (conditionDamage >= maxCondition) {
+		doDestroyed(attacker);
+	}
+}
+
+void TangibleObjectImplementation::onReceiveDamage(SceneObject* attacker, uint32 amount) {
+
+}
+
+void TangibleObjectImplementation::doDestroyed(SceneObject* attacker) {
+	pvpStatusBitmask = 0;
+	attackable = false;
+	optionsBitmask = 0x80;
+
+	UpdatePVPStatusMessage* msg = new UpdatePVPStatusMessage(_this, pvpStatusBitmask);
+	broadcastMessage(msg);
+
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
+	dtano3->updateOptionsBitmask();
+	dtano3->close();
+
+	broadcastMessage(dtano3);
 }
 
 

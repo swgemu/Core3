@@ -343,8 +343,6 @@ public:
 
 	void updateGroupInviterId(unsigned long long id);
 
-	void setDefenderID(long long did);
-
 	void updateTarget(unsigned long long targ);
 
 	void updateTarget(SceneObject* targ);
@@ -770,12 +768,6 @@ public:
 	float getSpeed();
 
 	float getAcceleration();
-
-	unsigned long long getDefenderID();
-
-	unsigned int getDefenderUpdateCounter();
-
-	unsigned int getNewDefenderUpdateCounter(int cnt);
 
 	String& getPerformanceAnimation();
 
@@ -1619,8 +1611,6 @@ public:
 
 	void updateGroupInviterId(unsigned long long id);
 
-	void setDefenderID(long long did);
-
 	void updateTarget(unsigned long long targ);
 
 	void updateTarget(SceneObject* targ);
@@ -2044,12 +2034,6 @@ public:
 	float getSpeed();
 
 	float getAcceleration();
-
-	unsigned long long getDefenderID();
-
-	unsigned int getDefenderUpdateCounter();
-
-	unsigned int getNewDefenderUpdateCounter(int cnt);
 
 	String& getPerformanceAnimation();
 

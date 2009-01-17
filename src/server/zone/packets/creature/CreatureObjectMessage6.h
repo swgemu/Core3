@@ -48,25 +48,12 @@ which carries forward this exception.
 #include "../../packets/BaseLineMessage.h"
 
 #include "../../objects/creature/CreatureObject.h"
+#include "../tangible/TangibleObjectMessage6.h"
 
-class CreatureObjectMessage6 : public BaseLineMessage {
+class CreatureObjectMessage6 : public TangibleObjectMessage6 {
 public:
 	CreatureObjectMessage6(CreatureObject* creo)
-			: BaseLineMessage(creo->getObjectID(), 0x4352454F, 6, 0x16) {
-		insertInt(0x3D);
-
-		/*uint64 defid = creo->getDefenderID();
-
-		if (!defid) {
-			insertInt(0);
-			insertInt(creo->getDefenderUpdateCounter());
-		} else {
-			insertInt(1);
-			insertInt(creo->getDefenderUpdateCounter());
-			insertLong(defid);
-		}*/
-
-		insertDefenders(creo);
+			: TangibleObjectMessage6(creo, 0x4352454F, 0x16) {
 
 		insertShort((uint16)creo->getLevel());
 
@@ -141,16 +128,6 @@ public:
 
 
 		setSize();
-	}
-
-	void insertDefenders(CreatureObject* creo) {
-		int size = creo->getDefenderListSize();
-
-		insertInt(size);
-		insertInt(creo->getDefenderUpdateCounter());
-
-		for (int i = 0; i < size; ++i)
-			insertLong(creo->getDefender(i)->getObjectID());
 	}
 };
 

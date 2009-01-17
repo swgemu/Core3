@@ -87,6 +87,9 @@ interface TangibleObject implements SceneObject {
 	boolean isPersistent();
 	boolean isUpdated();
 	
+	unsigned int getDefenderUpdateCounter();
+	unsigned int getNewDefenderUpdateCounter(int cnt);
+	
 	char getUnknownByte();
 	
 	float getComplexity();
@@ -110,6 +113,9 @@ interface TangibleObject implements SceneObject {
 	boolean isInstrument();
 	
 	boolean isAttachment();
+	
+	boolean isDestroyed();
+	boolean isAttackableBy(CreatureObject creature);
 
 	boolean isResource();
 	boolean isTicket();
@@ -173,6 +179,8 @@ interface TangibleObject implements SceneObject {
 	int getConditionDamage();
 	int getMaxCondition();
 	int getCondition();
+	
+	void doDamage(int damage, SceneObject attacker);
 
 	String getCraftersName();
 	String getCraftedSerial();
@@ -185,7 +193,8 @@ interface TangibleObject implements SceneObject {
 	String getMisoAsocKey();
 
 	// setters
-	void setLoot(boolean l);	
+	void setLoot(boolean l);
+	void setMaxCondition(int maxCond);
 
 	void setObjectSubType(const int type);
 	

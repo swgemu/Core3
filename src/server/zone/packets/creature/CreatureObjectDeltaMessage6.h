@@ -45,47 +45,19 @@ which carries forward this exception.
 #ifndef CREATUREOBJECTDELTAMESSAGE6_H_
 #define CREATUREOBJECTDELTAMESSAGE6_H_
 
-#include "../../packets/DeltaMessage.h"
+#include "../tangible/TangibleObjectDeltaMessage6.h"
 
 #include "../../objects/creature/CreatureObject.h"
 
 #include "../../objects/creature/CreatureAttribute.h"
 
-class CreatureObjectDeltaMessage6 : public DeltaMessage {
+class CreatureObjectDeltaMessage6 : public TangibleObjectDeltaMessage6 {
 	CreatureObject* creo;
 
 public:
 	CreatureObjectDeltaMessage6(CreatureObject* cr)
-	: DeltaMessage(cr->getObjectID(), 0x4352454F, 6) {
+		: TangibleObjectDeltaMessage6(cr, 0x4352454F) {
 		creo = cr;
-	}
-
-	void startDefenderUpdate(int updates) {
-		startUpdate(0x01);
-
-		uint32 counter = creo->getNewDefenderUpdateCounter(updates);
-		startList(updates, counter);
-	}
-
-	void addDefender(uint16 index, uint64 defenderID) {
-		insertByte(1);
-		insertShort(index);
-		insertLong(defenderID);
-	}
-
-	void setDefender(uint16 idx, uint64 defenderID) {
-		insertByte(2);
-		insertShort(idx);
-		insertLong(defenderID);
-	}
-
-	void removeDefender(uint16 index) {
-		insertByte(0);
-		insertShort(index);
-	}
-
-	void removeDefenders() {
-		insertByte(4);
 	}
 
 	void updateWeapon() {

@@ -54,114 +54,14 @@ which carries forward this exception.
 
 #include "../tangible/CustomizationVariables.h"
 
-#include "../../packets/attackable/AttackableObjectMessage3.h"
-#include "../../packets/attackable/AttackableObjectMessage6.h"
-#include "../../packets/attackable/AttackableObjectDeltaMessage3.h"
-
 
 class AttackableObjectImplementation : public AttackableObjectServant {
 protected:
-
-	Zone* zone;
-
-	Vector<ManagedReference<SceneObject> > defenderList;
-
-	bool inCombat;
-
-	int conditionDamage;
-	int maxCondition;
-	int pvpStatusBitmask;
-
-	bool attackable;
-
-	UnicodeString name;
-	String templateTypeName;
-	String templateName;
-	String templateDetailName;
-	String templateDetail;
-
-	CustomizationVariables customizationVars;
 
 
 public:
 	AttackableObjectImplementation(uint64 oid);
 
-	void insertToZone(Zone* zone);
-	void removeFromZone(bool doLock = true);
-	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true);
-
-	void setDefender(SceneObject* defender);
-	virtual void addDefender(SceneObject* defender);
-	void removeDefender(SceneObject* defender);
-	void removeDefenders();
-	bool hasDefender(SceneObject* defender);
-
-	void setCombatState();
-	void clearCombatState(bool removeDefenders = true);
-
-	void sendTo(Player* player, bool doClose = true);
-	void sendDestroyTo(Player* player);
-
-	virtual void doDamage(int damage, SceneObject* attacker);
-	virtual void doDestroyed(SceneObject* attacker);
-
-	inline void setTemplateName(String& stfname) {
-		templateName = stfname;
-	}
-
-	inline String& getTemplateTypeName() {
-		return templateTypeName;
-	}
-
-	inline String& getTemplateName() {
-		return templateName;
-	}
-
-	inline UnicodeString& getName() {
-		return name;
-	}
-
-	inline String& getTemplateDetailName() {
-		return templateDetailName;
-	}
-
-	inline String& getTemplateDetail() {
-		return templateDetail;
-	}
-
-	void getCustomizationString(String& app) {
-		return customizationVars.toString(app);
-	}
-
-	inline void setConditionDamage(uint32 cond) {
-		conditionDamage = cond;
-	}
-
-	inline void setMaxCondition(uint32 maxcond) {
-		maxCondition = maxcond;
-	}
-
-	inline int getConditionDamage() {
-		return conditionDamage;
-	}
-
-	inline int getMaxCondition() {
-		return maxCondition;
-	}
-
-	inline bool isAttackableBy(CreatureObject* creature) {
-		return attackable;
-	}
-
-	inline bool isDestroyed() {
-		return (conditionDamage >= maxCondition);
-	}
-
-	//Event Handlers
-	virtual void onReceiveDamage(SceneObject* attacker, uint32 amount);
-	//void onDestroyed();
-
-	//Actions
 };
 
 #endif /*ATTACKABLEOBJECTIMPLEMENTATION_H_*/
