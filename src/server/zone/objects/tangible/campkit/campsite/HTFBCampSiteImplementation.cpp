@@ -42,10 +42,11 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "BasicCampSiteImplementation.h"
+#include "HTFBCampSiteImplementation.h"
 #include "../CampKit.h"
+#include "../../crafting/CraftingStation.h"
 
-BasicCampSiteImplementation::BasicCampSiteImplementation(Player* player, uint64 oid, CampKit* campKit) : BasicCampSiteServant(player, oid,  campKit) {
+HTFBCampSiteImplementation::HTFBCampSiteImplementation(Player* player, uint64 oid, CampKit* campKit) : HTFBCampSiteServant(player, oid,  campKit) {
 	objectID = oid;
 
 
@@ -55,7 +56,7 @@ BasicCampSiteImplementation::BasicCampSiteImplementation(Player* player, uint64 
 	campOwner = player;
 
 	campArea = NULL;
-	areaRange = 5.0f;
+	areaRange = 15.0f;
 	visitor = new VisitorList();
 	currentXP = 0.0f;
 	campType = campKit->getCampType();
@@ -70,7 +71,7 @@ BasicCampSiteImplementation::BasicCampSiteImplementation(Player* player, uint64 
 	init();
 }
 
-BasicCampSiteImplementation::~BasicCampSiteImplementation() {
+HTFBCampSiteImplementation::~HTFBCampSiteImplementation() {
 	campArea = NULL;
 	despawnEvent = NULL;
 	if (abandonEvent != NULL)
@@ -81,7 +82,7 @@ BasicCampSiteImplementation::~BasicCampSiteImplementation() {
 	zone = NULL;
 }
 
-void BasicCampSiteImplementation::init() {
+void HTFBCampSiteImplementation::init() {
 	persistent = false;
 	updated = false;
 
@@ -94,29 +95,53 @@ void BasicCampSiteImplementation::init() {
 
 	pvpStatusBitmask = 0;
 
-	name = UnicodeString("Basic Camp");
+	name = UnicodeString("HTFB Camp");
 	defaultName = "basic_name";
-	objectCRC = 0x897A440;
-	campModifier = 60;
-	aggroMod = 0;
+	objectCRC = 0x616E404E;
+	campModifier = 100;
+	aggroMod = 100;
 }
 
-void BasicCampSiteImplementation::spawnCampItems() {
+void HTFBCampSiteImplementation::spawnCampItems() {
     float x = getPositionX();
 	float z = getPositionZ();
 	float y = getPositionY();
 
-	UnicodeString campName = campOwner->getFirstName() +"'s Basic Camp";
-	CampTerminal* terminal = new CampTerminal(_this,campOwner->getNewItemID(),(x + 2.3f), z, (y + 1.7f));
-	terminal->setDirection(0.000000f, 0.0f, 1.0f, -0.7f);
+	UnicodeString campName = campOwner->getFirstName() +"'s High Tech Field Base";
+	CampTerminal* terminal = new CampTerminal(_this,campOwner->getNewItemID(),(x - 4.5f), z, (y + 12.3f));
+	terminal->setDirection(0.0f, 0.0f, 0.95f, 0.1f);
 	terminal->setCustomName(campName);
 	terminal->insertToZone(campOwner->getZone());
 	// 0 : terminal
 	addCampObject(terminal);
-	// 2 : logs & fire
-	addCampObject(campOwner->getNewItemID(), 0x6E4F92CB,  (x + 0.506110f), z, (y - 0.596347f), 0.000000f, 0.0f, 0.0f, 0.0f);
-	addCampObject(campOwner->getNewItemID(), 0x96740DBC,  (x + 0.506110f), z, (y - 0.596347f), 0.000000f, 0.0f, 0.0f, 0.0f);
-	// 3 : chair
-	addCampObject(campOwner->getNewItemID(), 0xB85D0E73, UnicodeString("A Lawn Chair"), (x + 0.863f), z, (y -2.85f), 0.000000f, 0.0f, -0.009319f, -0.999957f);
+	// 1 & 2 : logs & fire
+	addCampObject(campOwner->getNewItemID(), 0x76C5460F,  (x + 1.0f), z, y, 0.0f, 0.0f, 0.0f, 0.0f);
+	addCampObject(campOwner->getNewItemID(), 0x96740DBC,  (x + 1.0f), z, y, 0.0f, 0.0f, 0.0f, 0.0f);
+	// 3 & 4 stations
+	CraftingStation* medicStation = new CraftingStation(campOwner->getNewItemID(),0x2FF7F78B,UnicodeString("Food and Chemical Crafting Station"),"food_station_name ");
+	medicStation->initializePosition((x + 10.5f),z,(y - 2.0f));
+	medicStation->setDirection(0.0f, 0.0f, 0.72f, -0.75f);
+	medicStation->setEffectiveness(100);
+	addCampObject(medicStation);
 
+	CraftingStation* weapponStation = new CraftingStation(campOwner->getNewItemID(),0x812DD757,UnicodeString("Weapon, Droid, and General Item Crafting Station"),"weapon_station_name ");
+	weapponStation->initializePosition((x + 4.5f),z,(y + 13.5f));
+	weapponStation->setDirection(0.0f, 0.0f, 0.72f, -0.75f);
+	weapponStation->setEffectiveness(100);
+	addCampObject(weapponStation);
+	// 5 ... : chair
+	addCampObject(campOwner->getNewItemID(), 0x2A47C169, UnicodeString("A Chair"), (x - 3.1f), z, (y + 1.7f), 0.000000f, 0.0f, 0.1f, -0.75f);
+	addCampObject(campOwner->getNewItemID(), 0x2A47C169, UnicodeString("A Chair"), (x - 4.7f), z, (y + 3.6f), 0.000000f, 0.0f, 0.7f, 0.75f);
+	addCampObject(campOwner->getNewItemID(), 0x2A47C169, UnicodeString("A Chair"), (x - 2.5f), z, (y - 0.3f), 0.000000f, 0.0f, 0.7f, -0.75f);
+	addCampObject(campOwner->getNewItemID(), 0x2A47C169, UnicodeString("A Chair"), (x - 4.1f), z, (y - 1.7f), 0.000000f, 0.0f, 0.0f, -0.75f);
+	addCampObject(campOwner->getNewItemID(), 0x2A47C169, UnicodeString("A Chair"), (x - 5.7f), z, (y -0.2f), 0.000000f, 0.0f, -0.7f, -0.75f);
+	addCampObject(campOwner->getNewItemID(), 0x2A47C169, UnicodeString("A Chair"), (x - 7.7f), z, (y + 1.7f), 0.000000f, 0.0f, 0.0f, -0.75f);
+	addCampObject(campOwner->getNewItemID(), 0x2A47C169, UnicodeString("A Chair"), (x - 7.7f), z, (y + 4.0f), 0.000000f, 0.0f, 1.0f, 0.0f);
+
+}
+
+void HTFBCampSiteImplementation::abandonCamp() {
+	CampSiteImplementation::abandonCamp();
+	campObjects.get(3)->removeFromZone();
+	campObjects.get(4)->removeFromZone();
 }

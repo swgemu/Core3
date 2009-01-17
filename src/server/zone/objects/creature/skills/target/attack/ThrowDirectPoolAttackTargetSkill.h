@@ -118,7 +118,7 @@ public:
 			return 0;
 		}
 
-		trap->useCharge(player);
+		player->addCooldown(getSkillName(),8000);
 
 		int damage = calculateTrapDamage(creature, target, ((Weapon*) trap));
 

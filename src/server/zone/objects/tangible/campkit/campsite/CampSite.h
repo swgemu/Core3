@@ -57,8 +57,6 @@ public:
 
 	void exitNotificaton(Player* player);
 
-	void printPlacmentCode();
-
 protected:
 	CampSite(DummyConstructorParameter* param);
 
@@ -108,8 +106,6 @@ public:
 	void enterNotification(Player* player);
 
 	void exitNotificaton(Player* player);
-
-	void printPlacmentCode();
 
 };
 

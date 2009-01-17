@@ -42,79 +42,20 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef THROWABLEWEAPONIMPLEMENTATION_H_
-#define THROWABLEWEAPONIMPLEMENTATION_H_
+#ifndef HTFBCAMPSITEIMPLEMENTATION_H_
+#define HTFBCAMPSITEIMPLEMENTATION_H_
 
-#include "ThrowableWeapon.h"
+#include "HTFBCampSite.h"
 
-class ThrowableWeaponImplementation: public ThrowableWeaponServant {
-protected:
-	uint32 skill;
-	String skillName;
+class HTFBCampSiteImplementation: public HTFBCampSiteServant {
 public:
-	ThrowableWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn,const int tp, bool eqp = false);
+	HTFBCampSiteImplementation(Player* player, uint64 oid, CampKit* campKit);
+	virtual ~HTFBCampSiteImplementation();
 
-	ThrowableWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, const int tp, bool eqp = false);
-
-	void initialize();
-
-	/*
-	 * Uses a charge of the object. Ramoves the object if 0 charges left
-	 * \param player The player.
-	 */
-	virtual void useCharge(Player* player) {
-
-		decreaseUsesRemaining();
-		updated = true;
-
-		if (getUsesRemaining() == 0)
-			remove(player);
-	}
-
-	/*
-	 * Removes the camo kit from the inventory.
-	 * \param player The player.
-	 */
-	void remove(Player* player);
-
-	/*
-	 * Uses the object.
-	 * \param player The player using the object.
-	 */
-	int useObject(Player* player);
-
-	/*
-	 * Parses the items attributes.
-	 */
-	void parseItemAttributes();
-
-	/*
-	 * Sets the related skills name.
-	 */
-	void setSkill(const String& sk);
-
-	/*
-	 * Returns the related skills name.
-	 */
-	String& getSkill();
-
-
-	/*
-	 * Returns the related skills crc.
-	 */
-	int getSkillCRC();
-
-	/*
-	 * Sets the related skills crc.
-	 */
-	void setSkillCRC(const int sk);
-
-	/*
-	 * Checks if the object is usefull.
-	 * \param player The player using the object.
-	 */
-	bool isUsefull(Player* player);
+	void init();
+	void spawnCampItems();
+	void abandonCamp();
 
 };
 
-#endif /* THROWABLEWEAPONIMPLEMENTATION_H_ */
+#endif /* HTFBCAMPSITEIMPLEMENTATION_H_ */

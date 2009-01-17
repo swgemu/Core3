@@ -201,7 +201,8 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/weapons/throwable/TrapThrowableWeapon.idl \
 				server/zone/objects/area/CampActiveArea.idl \
 	 			server/zone/objects/tangible/terminal/camp/CampTerminal.idl \
-	 			server/zone/objects/tangible/campkit/campsite/BasicCampSite.idl	
+	 			server/zone/objects/tangible/campkit/campsite/BasicCampSite.idl	\
+	 			server/zone/objects/tangible/campkit/campsite/HTFBCampSite.idl	
 
 all:
 	cd src && $(IDLC) $(IDL_SOURCES)

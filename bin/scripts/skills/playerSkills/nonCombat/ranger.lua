@@ -122,7 +122,7 @@ ThrowSkill = {
 	range = 35,
 	damageRatio = 1.0,
 	speedRatio = 2.0,
-	areaRange = 4,
+	areaRange = 8,
 	accuracyBonus = 0,
 			
 	knockdownChance = 0,

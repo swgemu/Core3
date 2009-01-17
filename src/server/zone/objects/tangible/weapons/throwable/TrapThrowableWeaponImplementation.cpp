@@ -99,7 +99,6 @@ void TrapThrowableWeaponImplementation::initialize() {
  * \param player The player using the object.
  */
 int TrapThrowableWeaponImplementation::useObject(Player* player) {
-
 	String skillBox = "outdoors_scout_novice";
 
 	if (!player->hasSkillBox(skillBox)) {
@@ -112,20 +111,25 @@ int TrapThrowableWeaponImplementation::useObject(Player* player) {
 		return 0;
 	}
 
-	ManagedReference<SceneObject> obj = player->getTarget();
 
+	if (!player->hasCooldownExpired(getSkill())) {
+		player->sendSystemMessage("trap/trap", "sys_not_ready");
+		return 0;
+	}
+
+	ManagedReference<SceneObject> obj = player->getTarget();
 	if (obj == NULL || !obj->isNonPlayerCreature()) {
 		player->sendSystemMessage("trap/trap", "sys_cannot_throw");
 		return 0;
 	}
 
 	Creature* target = (Creature*) obj.get();
-
 	if (!target->isCreature()) {
 		player->sendSystemMessage("trap/trap", "sys_creatures_only");
 		return 0;
 	}
 
+	useCharge(player);
 	player->queueThrow((TangibleObject*)_this, getSkillCRC());
 
 	return 1;
@@ -191,9 +195,7 @@ void TrapThrowableWeaponImplementation::sendDeltas(Player* player) {
  */
 void TrapThrowableWeaponImplementation::parseItemAttributes() {
 //	cout << "parse trap\n";
-	WeaponImplementation::parseItemAttributes();
-	String attr = "skill";
-	setSkillCRC(itemAttributes->getIntAttribute(attr));
+	ThrowableWeaponImplementation::parseItemAttributes();
 }
 
 /*

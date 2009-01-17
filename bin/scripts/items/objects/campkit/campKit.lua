@@ -49,7 +49,7 @@ campKit = Object:new {
 
 	objectType = CAMPKIT,
 
-	duration = 1200,
+	duration = 3600,
 
 	xp = 320,
 

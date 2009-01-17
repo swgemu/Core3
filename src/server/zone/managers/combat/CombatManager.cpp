@@ -257,8 +257,8 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 			coneRange = (int)skill->getRange();
 
 		int areaRange = weaponRange;
-		if (skill->getRange() != 0)
-			areaRange = (int)skill->getRange();
+		if (skill->getAreaRange() != 0)
+			areaRange = (int)skill->getAreaRange();
 
 		for (int i = 0; i < creature->inRangeObjectCount(); i++) {
 			// Is this correct?
@@ -299,7 +299,9 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 				if (angle > coneAngle || angle < -coneAngle)
 					continue;
 
-			} else if (!(creature->isInRange(object, areaRange)))
+			} else if (!skill->isThrowSkill() && !(creature->isInRange(object, areaRange)))
+				continue;
+			else if (skill->isThrowSkill() && !(target->isInRange(object, areaRange)))
 				continue;
 
 			zone->unlock();

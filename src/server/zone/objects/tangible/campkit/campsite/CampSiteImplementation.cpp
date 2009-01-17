@@ -67,6 +67,7 @@ CampSiteImplementation::CampSiteImplementation(Player* player, uint64 oid,CampKi
 	campOwner = player;
 
 	campArea = NULL;
+	areaRange = 10.0f;
 	visitor = new VisitorList();
 	currentXP = 0.0f;
 	campType = campKit->getCampType();
@@ -170,7 +171,7 @@ void CampSiteImplementation::createCampArea() {
 	Zone* zone = campOwner->getZone();
 
 	PlanetManager* planetManager = zone->getPlanetManager();
-	campArea = planetManager->spawnActiveArea(new CampActiveArea(getPositionX(),  getPositionY(),  getPositionZ(), 5.0f, _this));
+	campArea = planetManager->spawnActiveArea(new CampActiveArea(getPositionX(),  getPositionY(),  getPositionZ(), areaRange, _this));
 	campArea->forceTriggerEnter();
 
 	//despawnEvent = new CampDespawnEvent(_this,getDuration() * 1000);
@@ -220,6 +221,14 @@ void CampSiteImplementation::abandonCamp() {
 	if (scno != NULL && scno->isTangible()) {
 		TangibleObject* tObj = (TangibleObject*) scno;
 		tObj->setCustomName(UnicodeString("Abandoned Camp"));
+	}
+	//update terminal name
+	for (int i = 0; i < inRangeObjectCount(); i++) {
+		SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_this);
+		if (object->isPlayer()) {
+			Player* player = (Player*) object;
+			campObjects.get(0)->sendTo(player);
+		}
 	}
 }
 
@@ -311,24 +320,3 @@ void CampSiteImplementation::addXP(uint64 playerID) {
 		currentXP += xp;
 	}
 }
-
-void CampSiteImplementation::printPlacmentCode() {
-	StringBuffer code;
-	code << "\n";
-
-	for (int i = 0 ; i < campObjects.size() ; i++) {
-		SceneObject* scno = campObjects.get(i);
-
-		float diffX = getPositionX() - scno->getPositionX();
-		float diffY = getPositionY() - scno->getPositionY();
-
-		code << "addCampObject(campOwner->getNewItemID(), ";
-		code << scno->getObjectCRC() << ", ";
-		code << "(x + " << diffX  << "f), z, (y + " << diffY << "f), ";
-		code << scno->getDirectionX() << "f, "<< scno->getDirectionY() <<"f, " << scno->getDirectionY() << "f, " << scno->getDirectionW() << "f )\n";
-
-	}
-	code << "\n";
-	System::out << code.toString();
-}
-

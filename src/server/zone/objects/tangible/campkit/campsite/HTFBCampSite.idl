@@ -42,29 +42,16 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../../creature/CreatureObject";
-import "../../player/Player";
-import "RangedWeapon";
+import "../campsite/CampSite";
+import "../CampKit";
 
-interface ThrowableWeapon implements RangedWeapon {
+import "../../../player/Player";
 
-	ThrowableWeapon(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn,int tp, boolean eqp = false) {
-		super(oid, tempCRC, n, tempn, int tp, eqp);
+interface HTFBCampSite implements CampSite {
+	HTFBCampSite(Player player, unsigned long oid,CampKit campKit) {
+		super(player,oid,campKit);
 	}
-	
-	ThrowableWeapon(CreatureObject creature, const String temp, const UnicodeString n, const String tempn,int tp, boolean eqp = false) {
-		super(creature, temp, n, tempn, int tp, eqp);
-	}
-	void useCharge(Player player);
-	
-	void remove(Player player);
 
-	int useObject(Player player);
-			
-	void setSkill(const String sk);
-	String getSkill();
+	void spawnCampItems();
 
-	boolean isUsefull(Player player);
-
-	unsigned int getSkillCRC();
 }

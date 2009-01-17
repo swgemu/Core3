@@ -40,5 +40,18 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("objects/campkit/campKit.lua");
-RunItemLUAFile("objects/campkit/htfb.lua");
+htfb = Object:new {
+	objectName = "A High Tech Field Base Kit",
+
+	templateName = "object/tangible/scout/camp/shared_camp_luxury.iff",
+
+	objectCRC = 1082864410,
+
+	objectType = CAMPKIT,
+
+	duration = 3600,
+
+	xp = 320,
+
+	campType = 5
+}

@@ -64,6 +64,7 @@ protected:
 	uint8 aggroMod;
 
 	ActiveAreaTrigger* campArea;
+	float areaRange;
 
 	Vector<ManagedReference<SceneObject> > campObjects;
 	VisitorList* visitor;
@@ -184,8 +185,6 @@ public:
 	bool isAbandoned() {
 		return abandoned;
 	}
-
-	void printPlacmentCode();
 
 	void enterNotification(Player* player);
 	void exitNotificaton(Player* player);

@@ -5375,7 +5375,7 @@ void PlayerImplementation::throwTrap(uint64 targetID) {
 			if (item->isTrap()) {
 				TrapThrowableWeapon* trap = (TrapThrowableWeapon*) item;
 
-				if (trap->isUsefull(_this)) {
+				if (trap->isUsefull(_this) && hasCooldownExpired(trap->getSkill())) {
 
 					trap->useObject(_this);
 					return;

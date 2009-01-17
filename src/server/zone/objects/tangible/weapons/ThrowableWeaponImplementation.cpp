@@ -83,7 +83,7 @@ void ThrowableWeaponImplementation::initialize() {
 	setMaxRangeAccuracy(-85);
 	setMaxRange(32);
 	setArmorPiercing(NONE);
-
+	setSkill("");
 	setHealthAttackCost(17);
 	setActionAttackCost(30);
 	setMindAttackCost(17);
@@ -115,7 +115,13 @@ int ThrowableWeaponImplementation::useObject(Player* player) {
 }
 
 void ThrowableWeaponImplementation::setSkill(const String& sk) {
+	skillName = sk;
+	String attr = "skillName";
+	itemAttributes->setStringAttribute(attr,skillName);
 	setSkillCRC(sk.hashCode());
+}
+String& ThrowableWeaponImplementation::getSkill() {
+	return skillName;
 }
 
 int ThrowableWeaponImplementation::getSkillCRC() {
@@ -124,15 +130,13 @@ int ThrowableWeaponImplementation::getSkillCRC() {
 
 void ThrowableWeaponImplementation::setSkillCRC(const int sk) {
 	skill = sk;
-	String attr = "skill";
-	itemAttributes->setIntAttribute(attr,skill);
 }
 
 void ThrowableWeaponImplementation::parseItemAttributes() {
 //	cout << "parse trap\n";
 	WeaponImplementation::parseItemAttributes();
-	String attr = "skill";
-	setSkillCRC(itemAttributes->getIntAttribute(attr));
+	String attr = "skillName";
+	setSkill(itemAttributes->getStringAttribute(attr));
 }
 
 bool ThrowableWeaponImplementation::isUsefull(Player* player) {
