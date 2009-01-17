@@ -134,7 +134,7 @@ public:
 	}
 
 	void equipItem (TangibleObject* item) {
-		if (item->isArmor() || item->isClothing() || item->isContainer())
+		if (item->isArmor() || item->isClothing() || item->isWearableContainer())
 			changeWearable((Wearable*)item);
 		else if (item->isWeapon() || item->isInstrument())
 			changeWeapon(item);
