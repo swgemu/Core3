@@ -1176,17 +1176,25 @@ CloningFacility* StructureManagerImplementation::getClosestCloningFacility(Playe
 
 	float closestDistance = 32768.0f;
 
-	cloningFacilityMap->resetIterator();
+	try {
+		cloningFacilityMap->lock();
 
-	while (cloningFacilityMap->hasNext()) {
-		CloningFacility* facility = cloningFacilityMap->next();
+		cloningFacilityMap->resetIterator();
 
-		float dist = sqrt(pow(playerX - facility->getPositionX(), 2) + pow(playerY - facility->getPositionY(), 2));
+		while (cloningFacilityMap->hasNext()) {
+			CloningFacility* facility = cloningFacilityMap->next();
 
-		if (dist < closestDistance) {
-			closestDistance = dist;
-			closestFacility = facility;
+			float dist = sqrt(pow(playerX - facility->getPositionX(), 2) + pow(playerY - facility->getPositionY(), 2));
+
+			if (dist < closestDistance) {
+				closestDistance = dist;
+				closestFacility = facility;
+			}
 		}
+
+		cloningFacilityMap->unlock();
+	} catch (...) {
+		cloningFacilityMap->unlock();
 	}
 
 	return closestFacility;
