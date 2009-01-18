@@ -49,7 +49,7 @@ which carries forward this exception.
 #include "../../objects/building/cloningfacility/CloningFacility.h"
 
 class CloningFacilityMap : public HashTable<uint64, ManagedReference<CloningFacility> >
-		, public HashTableIterator<uint64, ManagedReference<CloningFacility> > {
+		, public HashTableIterator<uint64, ManagedReference<CloningFacility> >, public Mutex {
 
 	int hash(const uint64& key) {
         return Long::hashCode(key);
@@ -57,7 +57,7 @@ class CloningFacilityMap : public HashTable<uint64, ManagedReference<CloningFaci
 
 public:
 	CloningFacilityMap(int initsize) : HashTable<uint64, ManagedReference<CloningFacility> >(initsize)
-			, HashTableIterator<uint64, ManagedReference<CloningFacility> >(this) {
+			, HashTableIterator<uint64, ManagedReference<CloningFacility> >(this), Mutex("CloningFacilityMap") {
 		setNullValue(NULL);
 	}
 

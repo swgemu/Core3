@@ -103,6 +103,9 @@ void IntangibleObjectImplementation::sendDestroyTo(Player* player) {
 void IntangibleObjectImplementation::updateStatus(uint32 stat) {
 	status = stat;
 
+	if (parent == NULL)
+		return;
+
 	SceneObject* object = parent->getParent();
 	if (object == NULL)
 		return;
