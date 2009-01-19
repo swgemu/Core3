@@ -107,9 +107,9 @@ tuskenWitchDoctor = Creature:new {
 	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 500,
-	weaponMaxDamage = 1200,
-	weaponAttackSpeed = 1.6,
+	weaponMinDamage = 1145,
+	weaponMaxDamage = 2000,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

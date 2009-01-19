@@ -108,9 +108,9 @@ tuskenObserver = Creature:new {
 	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 750,
-	weaponMaxDamage = 1550,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 1270,
+	weaponMaxDamage = 2250,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

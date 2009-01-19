@@ -69,7 +69,7 @@ geonosianCrazed = Creature:new {
 	willpower = 3000,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 25,
 	energy = 35,
 	electricity = 25,
@@ -101,9 +101,9 @@ geonosianCrazed = Creature:new {
 	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 200,
-	weaponMaxDamage = 500,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 480,
+	weaponMaxDamage = 670,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

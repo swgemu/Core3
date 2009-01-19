@@ -101,22 +101,22 @@ sennexGuard = Creature:new {
 	weaponTemp = "lance_vibro_axe", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 250,
-	weaponMaxDamage = 450,
-	weaponAttackSpeed = 1.5,
-	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponMinDamage = 310,
+	weaponMaxDamage = 330,
+	weaponAttackSpeed = 2,
+	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "object/weapon/melee/axe/shared_axe_vibroaxe.iff", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "a Vibro Axe", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "axe_vibro", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "TwoHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 200,
-	alternateWeaponMaxDamage = 400,
-	alternateWeaponAttackSpeed = 1.5,
+	alternateWeaponMinDamage = 310,
+	alternateWeaponMaxDamage = 330,
+	alternateWeaponAttackSpeed = 2,
 	alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	alternateWeaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 

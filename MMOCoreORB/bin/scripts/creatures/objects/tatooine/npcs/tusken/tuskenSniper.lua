@@ -93,12 +93,9 @@ tuskenSniper = Creature:new {
 	stalker = 1,
 	killer = 0,
 	aggressive = 1,
-	invincible = 0, 
-
-	  
+	invincible = 0, 	  
 	
-	meleeDefense = 1,  
-	  
+	meleeDefense = 1,  	  
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
@@ -108,9 +105,9 @@ tuskenSniper = Creature:new {
 	weaponTemp = "rifle_tusken", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 200,
-	weaponMaxDamage = 450,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 210,
+	weaponMaxDamage = 220,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

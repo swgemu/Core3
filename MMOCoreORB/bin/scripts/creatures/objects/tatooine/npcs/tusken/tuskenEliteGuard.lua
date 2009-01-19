@@ -107,9 +107,9 @@ tuskenEliteGuard = Creature:new {
 	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 105,
-	weaponMaxDamage = 300,
-	weaponAttackSpeed = 1.6,
+	weaponMinDamage = 365,
+	weaponMaxDamage = 440,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

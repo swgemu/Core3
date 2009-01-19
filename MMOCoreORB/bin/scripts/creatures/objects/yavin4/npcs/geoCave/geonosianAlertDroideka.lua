@@ -49,11 +49,7 @@ geonosianAlertDroideka = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2397633499, 
 	socialGroup = "self",
-	
-
-	level = 86,
-
-	
+	level = 86,	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -105,9 +101,9 @@ geonosianAlertDroideka = Creature:new {
 	weaponTemp = "droid_droideka_ranged", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 300,
-	weaponMaxDamage = 800,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 595,
+	weaponMaxDamage = 600,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

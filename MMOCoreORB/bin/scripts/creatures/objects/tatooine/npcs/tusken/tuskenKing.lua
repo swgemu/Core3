@@ -73,7 +73,7 @@ tuskenKing = Creature:new {
 	willpower = 5000,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 45,
 	energy = 30,
 	electricity = 50,
@@ -108,9 +108,9 @@ tuskenKing = Creature:new {
 	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 275,
-	weaponMaxDamage = 500,
-	weaponAttackSpeed = 1.6,
+	weaponMinDamage = 645,
+	weaponMaxDamage = 1000,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

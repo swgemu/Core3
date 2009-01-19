@@ -69,7 +69,7 @@ geonosianImperialObserver = Creature:new {
 	willpower = 3000,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 5,
 	energy = 5,
 	electricity = 5,
@@ -104,9 +104,9 @@ geonosianImperialObserver = Creature:new {
 	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 200,
-	weaponMaxDamage = 400,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 415,
+	weaponMaxDamage = 540,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

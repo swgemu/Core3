@@ -107,9 +107,9 @@ tuskenExecutioner = Creature:new {
 	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 1000,
-	weaponMaxDamage = 2250,
-	weaponAttackSpeed = 1.6,
+	weaponMinDamage = 1645,
+	weaponMaxDamage = 3000,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
