@@ -920,3 +920,45 @@ void SceneObjectImplementation::warpTo(float x, float z, float y, uint64 parentI
 
 	insertToZone(zone);
 }
+
+Coordinate* SceneObjectImplementation::getCoordinate(SceneObject* object, float distance, float angle) {
+	float newX;
+	float newZ;
+	float newY;
+
+	float angleRads = angle * (M_PI / 180.0f);
+	float newAngle = angleRads + object->getPrecisionDirectionAngle();
+
+	newX = object->getPositionX() + (sin(newAngle) * distance);
+	newY = object->getPositionY() + (cos(newAngle) * distance);
+	newZ = zone->getHeight(newX, newY);
+
+	Coordinate* newPosition = new Coordinate(newX, newZ, newY);
+	return newPosition;
+}
+
+Coordinate* SceneObjectImplementation::getCoordinate(SceneObject* object1, SceneObject* object2, float distanceFromObject1) {
+	Coordinate* newPosition = new Coordinate;
+
+	float dx = object2->getPositionX() - object1->getPositionX();
+	float dy = object2->getPositionY() - object1->getPositionY();
+
+	float distance = sqrt((dx * dx) + (dy * dy));
+
+	if (distanceFromObject1 == 0 || distance == 0) {
+		newPosition->setPosition(object1->getPositionX(), object1->getPositionZ(), object1->getPositionY());
+		return newPosition;
+
+	} else if (distance < distanceFromObject1) {
+		newPosition->setPosition(object2->getPositionX(), object2->getPositionZ(), object2->getPositionY());
+		return newPosition;
+	}
+
+	float newPositionX = object1->getPositionX() + (distanceFromObject1 * (dx / distance));
+	float newPositionY = object1->getPositionY() + (distanceFromObject1 * (dy / distance));
+	float newPositionZ = zone->getHeight(newPositionX, newPositionY);
+
+	newPosition->setPosition(newPositionX, newPositionZ, newPositionY);
+
+	return newPosition;
+}

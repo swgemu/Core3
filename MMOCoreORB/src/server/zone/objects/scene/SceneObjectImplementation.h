@@ -126,6 +126,7 @@ protected:
 	float directionW;
 
 	uint8 directionAngle;
+	float precisionDirectionAngle;
 
 	SceneObject* parent;
 
@@ -303,7 +304,7 @@ public:
 	inline void setWestDirection() {
 		directionX = -1;
 		directionZ = 0;
-		directionY = 1;
+		directionY = 0;
 	}
 
 	inline void setEastDirection() {
@@ -340,16 +341,38 @@ public:
 		directionY = y;
 		directionW = w;
 
-		if (x * x + z * z + y * y > 0.0f) {
-			if (w > 0.0f && z < 0)
+		if (w * w + y * y > 0.0f) {
+			if (w > 0.0f && y < 0.0f)
 				w *= -1.0f;
 
 			angle = 2.0f * acos(w);
 		} else
 			angle = 0.0f;
 
-		directionAngle = (uint8) ((angle/6.283f) * 100);
+		precisionDirectionAngle = angle;
+		directionAngle = (uint8) ((angle/6.283f) * 100); //used for updating player clients.
 	}
+
+	/**
+	 * getCoodinate Returns the coordinates of a position away from an object, using desired distance and angle offset.
+	 * The angle offset is clockwise relative to the object's front surface and is on a 360 degree scale.
+	 * Example: If you want a position directly to the right of a player's viewing angle, you input 90.0f for angle.
+	 * Example: If you want a position directly to the left of a player's viewing angle, enter -90.0f for angle.
+	 * \param object The object from which we are finding a position nearby.
+	 * \param distance The distance away from the object the new position will be (in meters).
+	 * \param angle The direction from the object's front surface we want the new position to be (in degrees).
+	 * \return The Coordinate of the new position.
+	 */
+	Coordinate* getCoordinate(SceneObject* object, float distance, float angle);
+
+	/**
+	 * getCoodinate Returns the coordinates of a position directly between two objects, using distance from the first object.
+	 * \param object1 The first object which we will find a new position a given distance away from, toward the second object.
+	 * \param object2 The second object.
+	 * \param distanceFromObject1 The distance from object1 we want the new position to be (in meters).
+	 * \return The Coordinate of the new position.
+	 */
+	Coordinate* getCoordinate(SceneObject* object1, SceneObject* object2, float distanceFromObject1);
 
 	bool isInRange(SceneObject* obj, float range) {
 		return QuadTreeEntry::isInRange(obj->getPositionX(), obj->getPositionY(), range);
@@ -517,6 +540,10 @@ public:
 
 	inline uint8 getDirectionAngle() {
 		return directionAngle;
+	}
+
+	inline float getPrecisionDirectionAngle() {
+		return precisionDirectionAngle;
 	}
 
 	inline SceneObject* getParent() {

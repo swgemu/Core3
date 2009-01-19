@@ -1799,9 +1799,10 @@ void PlayerImplementation::drag(Player* targetPlayer, float maxRange, float maxM
 	targetPlayer->setRadialDirection(radangle);
 
 	//Set the new location of the target player.
-	Coordinate* newPosition = getCoordinateBetween(target, dragger, maxMovement);
-	targetPlayer->setPosition(newPosition->getPositionX(), getPositionZ(), newPosition->getPositionY()); //TODO: Use newPosition for Z when heightmaps are done.
+	Coordinate* newPosition = getCoordinate(targetPlayer, _this, maxMovement);
+	targetPlayer->setPosition(newPosition->getPositionX(), newPosition->getPositionZ(), newPosition->getPositionY());
 	targetPlayer->increaseMovementCounter();
+
 	targetPlayer->updatePlayerPosition(false); //Updates everyone except targetPlayer of their movement.
 	targetPlayer->bounceBack(); //Updates targetPlayer with the new location.
 
@@ -1811,35 +1812,11 @@ void PlayerImplementation::drag(Player* targetPlayer, float maxRange, float maxM
 	StfParameter* targetParam = new StfParameter;
 	targetParam->addTT(targetPlayer->getObjectID());
 	sendSystemMessage("healing_response", "healing_response_b5", targetParam); //"Attempting to drag %TT to your location..."
-
 	delete targetParam;
+
 	delete dragger;
 	delete target;
 	delete newPosition;
-}
-
-Coordinate* PlayerImplementation::getCoordinateBetween(Coordinate* position1, Coordinate* position2, float distanceFromPosition1) {
-	Coordinate* newPosition = new Coordinate;
-
-	float dx = position2->getPositionX() - position1->getPositionX();
-	float dy = position2->getPositionY() - position1->getPositionY();
-
-	float distance = sqrt((dx * dx) + (dy * dy));
-
-	if (distanceFromPosition1 == 0 || distance == 0) {
-		newPosition->setPosition(position1->getPositionX(), position1->getPositionZ(), position1->getPositionY());
-		return newPosition;
-	} else if (distance < distanceFromPosition1) {
-		newPosition->setPosition(position2->getPositionX(), position2->getPositionZ(), position2->getPositionY());
-		return newPosition;
-	}
-
-	float newPositionX = position1->getPositionX() + (distanceFromPosition1 * (dx / distance));
-	float newPositionY = position1->getPositionY() + (distanceFromPosition1 * (dy / distance));
-	float newPositionZ = zone->getHeight(newPositionX, newPositionY);
-	newPosition->setPosition(newPositionX, newPositionZ, newPositionY);
-
-	return newPosition;
 }
 
 void PlayerImplementation::notifySceneReady() {

@@ -213,6 +213,8 @@ interface SceneObject implements ManagedObject {
 	float getPositionY();
 
 	int getDirectionAngle();
+	
+	float getPrecisionDirectionAngle();
 
 	float getDirectionX();
 
