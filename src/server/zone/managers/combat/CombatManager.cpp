@@ -219,11 +219,12 @@ float CombatManager::doCamoSkill(CommandQueueAction* action) {
 
 float CombatManager::doGroupSkill(CommandQueueAction* action) {
 	CreatureObject* creature = action->getCreature();
-
+	SceneObject* target = action->getTarget();
+	String actionModifier = action->getActionModifier();
 	GroupSkill* groupskill = (GroupSkill*) action->getSkill();
 
-	if(groupskill->canBePerformed(creature)) {
-		groupskill->doSkill(creature);
+	if(groupskill->canBePerformed(creature, target)) {
+		groupskill->doSkill(creature, target, actionModifier);
 		return groupskill->getSpeed();
 	} else {
 		return 0.0f;
@@ -643,7 +644,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	// TODO: add Aim mod
 	float aimMod = 0.0;
 
-	float attackerAccuracy = creature->getAccuracy();
+	float attackerAccuracy = creature->getAccuracy() + creature->getAccuracyBonus();
 
 	int targetDefense = getTargetDefense(creature, targetCreature, weapon);
 
@@ -653,7 +654,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	float blindState = 0;
 	if (creature->isBlinded())
 		blindState = 50;
-	float stunBonus =0;
+	float stunBonus = 0;
 	if (targetCreature->isStunned())
 		stunBonus = 50;
 

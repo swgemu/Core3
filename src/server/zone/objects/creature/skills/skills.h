@@ -94,5 +94,8 @@ which carries forward this exception.
 #include "GroupSkill.h"
 #include "group/SystemGroupMessageSkill.h"
 #include "group/BoostMoraleGroupSkill.h"
+#include "group/VolleyFireGroupSkill.h"
+#include "group/FormupGroupSkill.h"
+#include "group/RallyGroupSkill.h"
 
 #endif /*SKILLS_H_*/

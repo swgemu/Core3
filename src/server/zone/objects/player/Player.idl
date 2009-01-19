@@ -214,6 +214,7 @@ interface Player implements CreatureObject {
 	void queueFlourish(const String modifier, unsigned long target, unsigned int actionCntr);
 	void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
 	void queueAction(Player player, unsigned long target, unsigned int actionCRC, unsigned int actionCntr, const String actionModifier);
+	void doInstantAction(unsigned long target, unsigned int actionCRC, unsigned int actionCntr, const String amod);
 	void deleteQueueAction(unsigned int actioncntr);
 
 	void changePosture(int post);

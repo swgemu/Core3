@@ -42,20 +42,70 @@
 
 ------------------------------------------------------------------------
 SystemGroupMessageSkill = {
-	-- this is a dummy skill, look at AddSystemGroupMessageSkill in ScriptAttackManager for more info
+	skillname = "serversysgroup"	
 }
 
 AddSystemGroupMessageSkill(SystemGroupMessageSkill);
 ------------------------------------------------------------------------
 
+------------------------------------------------------------------------
 BoostMoraleGroupSkill = {
 	skillname = "boostmorale",
 	combatspam = "boostmorale_buff",
-	cooldowntime = 120000,
+	cooldowntime = 120,
 	healthcost = 100,
 	actioncost = 100,
 	mindcost = 100
 }
 
 AddBoostMoraleGroupSkill(BoostMoraleGroupSkill);
+------------------------------------------------------------------------
 
+------------------------------------------------------------------------
+VolleyFireGroupSkill = {
+	skillname = "volleyfire",
+	
+	combatspam = "volley_success_single",
+	
+	defaultattack = "attack",
+	
+	cooldowntime = 30,
+	healthcost = 100,
+	actioncost = 100,
+	mindcost = 50
+}
+
+AddVolleyFireGroupSkill(VolleyFireGroupSkill);
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+FormupGroupSkill = {
+	skillname = "formup",
+	combatspam = "formup_buff",
+	cooldowntime = 5,
+	healthcost = 50,
+	actioncost = 50,
+	mindcost = 50,
+	healdizzychance = 25, -- a value of 50 means a 50% chance to heal, 100 = 100%, 0 = 0%
+	healstunchance = 25,
+	healblindchance = 25,
+	healintimidatechance = 25,
+}
+
+AddFormupGroupSkill(FormupGroupSkill);
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+RallyGroupSkill = {
+	skillname = "rally",
+	combatspam = "rally_success_group_msg",
+	cooldowntime = 90,
+	healthcost = 100,
+	actioncost = 200,
+	mindcost = 100,
+	rallyduration = 30,
+	accuracybonus = 15
+}
+
+AddRallyGroupSkill(RallyGroupSkill);
+------------------------------------------------------------------------

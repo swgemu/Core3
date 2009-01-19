@@ -45,22 +45,106 @@ which carries forward this exception.
 #ifndef FORMUPGROUPSKILL_H_
 #define FORMUPGROUPSKILL_H_
 
-#include "../SelfSkill.h"
+#include "../GroupSkill.h"
+#include "../../CreatureState.h"
+#include "../../CreatureObjectImplementation.h"
 
-class FormUpGroupSkill : public GroupSkill {
+class FormupGroupSkill : public GroupSkill {
 protected:
-
+	int healDizzyChance;
+	int healStunChance;
+	int healBlindChance;
+	int healIntimidateChance;
 public:
-	FormUpGroupSkill(const String& Name, const char* effect, ZoneProcessServerImplementation* serv) : GroupSkill(Name, effect, OTHER, serv) {
-
+	FormupGroupSkill(const String& Name, const char* effect, ZoneProcessServerImplementation* serv) : GroupSkill(Name, effect, OTHER, serv) {
+		healDizzyChance = 0;
+		healStunChance = 0;
+		healBlindChance = 0;
+		healIntimidateChance = 0;
 	}
 
-	void doSkill(CreatureObject* creature, String& modifier) {
+	virtual void doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
+		if(creature->isPlayer()) {
+			Player* squadLeader = (Player*)creature;
+			GroupObject* group = squadLeader->getGroupObject();
 
+			group->wlock();
+
+			int squadLeaderZoneID = squadLeader->getZoneID();
+
+			for(int i = 0; i < group->getGroupSize(); i++) {
+				CreatureObject* groupMember = (CreatureObject*)group->getGroupMember(i);
+
+				if(groupMember->getZoneID() == squadLeaderZoneID) {
+					if(System::random(99) < healDizzyChance)
+						squadLeader->healState(groupMember, CreatureState::DIZZY);
+
+					if(System::random(99) < healStunChance)
+						squadLeader->healState(groupMember, CreatureState::STUNNED);
+
+					if(System::random(99) < healBlindChance)
+						squadLeader->healState(groupMember, CreatureState::BLINDED);
+
+					if(System::random(99) < healIntimidateChance)
+						squadLeader->healState(groupMember, CreatureState::INTIMIDATED);
+
+					if(groupMember->isPlayer()) {
+						Player* player = (Player*)groupMember;
+						player->sendSystemMessage("cbt_spam", combatSpam);
+						player->sendCombatSpam(groupMember, NULL, 0, combatSpam, false);
+					}
+				}
+			}
+
+			group->unlock();
+
+			squadLeader->changeHealthBar(-healthCost, true);
+			squadLeader->changeActionBar(-actionCost, true);
+			squadLeader->changeMindBar(-mindCost, true);
+
+			squadLeader->addCooldown(skillName, cooldownTime);
+		} else {
+			// should never get here unless we allow non players to be squad leaders
+		}
 	}
 
 	void doAnimations(CreatureObject* creature) {
 
+	}
+
+	// This method checks to see if the cooldown time has elasped
+	virtual bool derivedCanBePerformed(CreatureObject* creature, SceneObject* target) {
+
+		if(creature->hasState(CreatureState::STUNNED)) {
+			creature->sendSystemMessage("You can't perform that action while stunned.");
+			return false;
+		}
+
+		if(!creature->hasCooldownExpired(skillName)) {
+			int timeRemaining = creature->getCooldownTimeRemaining(skillName);
+			StringBuffer message;
+			message << "You must wait " << timeRemaining << " seconds to perform Formup.";
+			creature->sendSystemMessage(message.toString());
+			return false;
+		}
+
+		return true;
+	}
+
+	void setHealDizzyChance(int value) {
+		healDizzyChance = value;
+	}
+
+	void setHealStunChance(int value) {
+		healStunChance = value;
+	}
+
+	void setHealBlindChance(int value) {
+		healBlindChance = value;
+	}
+
+	void setHealIntimidateChance(int value) {
+		healIntimidateChance = value;
 	}
 };
 

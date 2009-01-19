@@ -218,9 +218,7 @@ public:
 
 	static void parseThrowTrap(Player* player, Message* pack);
 
-	// Squad Leader Skills
-	static void parseSystemGroupMessage(Player* player, Message* pack);
-
+	static void doInstantAction(Player* player, Message* pack, uint32 actionCRC, uint32 actionCntr);
 };
 
 #endif /*OBJECTCONTROLLERMESSAGE_H_*/

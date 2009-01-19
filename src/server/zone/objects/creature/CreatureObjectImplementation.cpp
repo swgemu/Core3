@@ -226,6 +226,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	bleedingDotStrength = 0;
 
 	accuracy = 0;
+	accuracyBonus = 0;
 
 	sittingOnObject = false;
 
@@ -937,6 +938,9 @@ bool CreatureObjectImplementation::clearState(uint64 state) {
 			break;
 		case CreatureState::ROOTED:
 			showFlyText("combat_effects", "no_rooted", 0xFF, 0, 0);
+			break;
+		case CreatureState::RALLIED:
+			showFlyText("combat_effects", "no_rally", 0xFF, 0, 0);
 			break;
 		default:
 			break;

@@ -111,11 +111,11 @@ void ScriptAttacksManager::registerFunctions() {
 
 	// Squad Leader skills
 	lua_register(getLuaState(), "AddBoostMoraleGroupSkill", AddBoostMoraleGroupSkill);
-	//lua_register(getLuaState(), "AddFormupGroupSkill", AddFormupGroupSkill);
-	//lua_register(getLuaState(), "AddRallyGroupSkill", AddRallyGroupSkill);
+	lua_register(getLuaState(), "AddFormupGroupSkill", AddFormupGroupSkill);
+	lua_register(getLuaState(), "AddRallyGroupSkill", AddRallyGroupSkill);
 	//lua_register(getLuaState(), "AddRetreatGroupSkill", AddRetreatGroupSkill);
 	//lua_register(getLuaState(), "AddSteadyAimGroupSkill", AddSteadyAimGroupSkill);
-	//lua_register(getLuaState(), "AddVolleyFireGroupSkill", AddVolleyFireGroupSkill);
+	lua_register(getLuaState(), "AddVolleyFireGroupSkill", AddVolleyFireGroupSkill);
 	lua_register(getLuaState(), "AddSystemGroupMessageSkill", AddSystemGroupMessageSkill);
 
 }
@@ -1611,19 +1611,13 @@ int ScriptAttacksManager::AddSystemGroupMessageSkill(lua_State* L) {
 		if (!skill.isValidTable())
 			return 0;
 
-		// THE ONLY REASON THIS IS MADE A SKILL IS SO IT LOADS SKILL
-		// BUTTONS CORRECTLY.  WHEN A PLAYER USES THIS SKILL IT WILL
-		// BE HANDLED IN OBJECTCONTROLLERMESSAGE.  HANDLING IT IN
-		// OBJECTCONTROLLERMESSAGE IS ALSO SO WHEN USING THIS SKILL,
-		// IT WILL NOT BE PUT INTO THE ATTACK QUEUE
-
-		String skillName = "sysgroup";
+		String skillName = skill.getStringField("skillname");
 		String animation = "";
 
-		SystemGroupMessageSkill* sysgroupDummy;
-		sysgroupDummy = new SystemGroupMessageSkill(skillName, animation, server);
+		SystemGroupMessageSkill* sysgroup;
+		sysgroup = new SystemGroupMessageSkill(skillName, animation, server);
 
-		CombatActions->put(sysgroupDummy);
+		CombatActions->put(sysgroup);
 		return 0;
 	} catch(...) {
 		System::out << "[ERROR] when attempting to add SystemMessageGroupSkill!" << endl;
@@ -1659,6 +1653,120 @@ int ScriptAttacksManager::AddBoostMoraleGroupSkill(lua_State* L) {
 		return 0;
 	} catch(...) {
 		System::out << "[ERROR] when attempting to add BoostMoraleGroupSkill!" << endl;
+		return -1;
+	}
+}
+
+int ScriptAttacksManager::AddVolleyFireGroupSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	try {
+
+		if (!skill.isValidTable())
+			return 0;
+
+		String skillName = skill.getStringField("skillname");
+		String animation = "";
+		String combatSpam = skill.getStringField("combatspam");
+		String defaultAttack = skill.getStringField("defaultattack");
+		int cooldownTime = skill.getIntField("cooldowntime");
+		int healthCost = skill.getIntField("healthcost");
+		int actionCost = skill.getIntField("actioncost");
+		int mindCost = skill.getIntField("mindcost");
+
+		VolleyFireGroupSkill* volleyFire;
+		volleyFire = new VolleyFireGroupSkill(skillName, animation, server);
+		volleyFire->setCombatSpam(combatSpam);
+		volleyFire->setDefaultAttack(defaultAttack);
+		volleyFire->setCooldownTime(cooldownTime);
+		volleyFire->setHealthCost(healthCost);
+		volleyFire->setActionCost(actionCost);
+		volleyFire->setMindCost(mindCost);
+
+		CombatActions->put(volleyFire);
+		return 0;
+	} catch(...) {
+		System::out << "[ERROR] when attempting to add AddVolleyFireGroupSkill!" << endl;
+		return -1;
+	}
+}
+
+int ScriptAttacksManager::AddFormupGroupSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	try {
+
+		if (!skill.isValidTable())
+			return 0;
+
+		String skillName = skill.getStringField("skillname");
+		String animation = "";
+		String combatSpam = skill.getStringField("combatspam");
+		int cooldownTime = skill.getIntField("cooldowntime");
+		int healthCost = skill.getIntField("healthcost");
+		int actionCost = skill.getIntField("actioncost");
+		int mindCost = skill.getIntField("mindcost");
+		int healDizzyChance = skill.getIntField("healdizzychance");
+		int healStunChance = skill.getIntField("healstunchance");
+		int healBlindChance = skill.getIntField("healblindchance");
+		int healIntimidateChance = skill.getIntField("healintimidatechance");
+
+		FormupGroupSkill* formup;
+		formup = new FormupGroupSkill(skillName, animation, server);
+		formup->setCombatSpam(combatSpam);
+
+		formup->setCooldownTime(cooldownTime);
+		formup->setHealthCost(healthCost);
+		formup->setActionCost(actionCost);
+		formup->setMindCost(mindCost);
+
+		formup->setHealDizzyChance(healDizzyChance);
+		formup->setHealStunChance(healStunChance);
+		formup->setHealBlindChance(healBlindChance);
+		formup->setHealIntimidateChance(healIntimidateChance);
+
+		CombatActions->put(formup);
+		return 0;
+	} catch(...) {
+		System::out << "[ERROR] when attempting to add AddFormupGroupSkill!" << endl;
+		return -1;
+	}
+}
+
+int ScriptAttacksManager::AddRallyGroupSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	try {
+
+		if (!skill.isValidTable())
+			return 0;
+
+		String skillName = skill.getStringField("skillname");
+		String animation = "";
+		String combatSpam = skill.getStringField("combatspam");
+		int cooldownTime = skill.getIntField("cooldowntime");
+		int healthCost = skill.getIntField("healthcost");
+		int actionCost = skill.getIntField("actioncost");
+		int mindCost = skill.getIntField("mindcost");
+		int rallyDuration = skill.getIntField("rallyduration");
+		int accuracyBonus = skill.getIntField("accuracybonus");
+
+		RallyGroupSkill* rally;
+		rally = new RallyGroupSkill(skillName, animation, server);
+		rally->setCombatSpam(combatSpam);
+
+		rally->setCooldownTime(cooldownTime);
+		rally->setHealthCost(healthCost);
+		rally->setActionCost(actionCost);
+		rally->setMindCost(mindCost);
+
+		rally->setRallyDuration(rallyDuration);
+		rally->setAccuracyBonus(accuracyBonus);
+
+		CombatActions->put(rally);
+		return 0;
+	} catch(...) {
+		System::out << "[ERROR] when attempting to add AddRallyGroupSkill!" << endl;
 		return -1;
 	}
 }

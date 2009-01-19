@@ -110,8 +110,12 @@ public:
 	static int AddThrowRandomPoolTargetSkill(lua_State *L);
 	static int AddThrowDirectPoolTargetSkill(lua_State *L);
 
+	// Squad Leader
 	static int AddSystemGroupMessageSkill(lua_State *L);
 	static int AddBoostMoraleGroupSkill(lua_State *L);
+	static int AddVolleyFireGroupSkill(lua_State* L);
+	static int AddFormupGroupSkill(lua_State* L);
+	static int AddRallyGroupSkill(lua_State* L);
 };
 
 

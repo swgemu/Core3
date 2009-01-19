@@ -74,13 +74,13 @@ public:
 		combatSpam = "";
 	}
 
-	virtual void doSkill(CreatureObject* creature, bool doAnimation = true) = 0;
+	virtual void doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) = 0;
 
 	virtual void doAnimations(CreatureObject* creature) {
 
 	}
 
-	bool canBePerformed(CreatureObject* creature) {
+	bool canBePerformed(CreatureObject* creature, SceneObject* target) {
 		if(creature->isPlayer()) {
 			Player* player = (Player*)creature;
 			GroupObject* group = player->getGroupObject();
@@ -97,24 +97,24 @@ public:
 			if(!checkHAMCost(creature))
 				return false;
 
-			return derivedCanBePerformed(creature);
+			return derivedCanBePerformed(creature, target);
 		}
 
 		return false;
 	}
 
-	virtual bool derivedCanBePerformed(CreatureObject* creature) = 0;
+	virtual bool derivedCanBePerformed(CreatureObject* creature, SceneObject* target) = 0;
 
 	virtual bool checkHAMCost(CreatureObject* creature) {
-		if(creature->getHealth() < healthCost) {
+		if(creature->getHealth() <= healthCost) {
 			creature->sendSystemMessage("You do not have enough Health to perform this action.");
 			return false;
 		}
-		if(creature->getAction() < actionCost) {
+		if(creature->getAction() <= actionCost) {
 			creature->sendSystemMessage("You do not have enough Action to perform this action.");
 			return false;
 		}
-		if(creature->getMind() < mindCost) {
+		if(creature->getMind() <= mindCost) {
 			creature->sendSystemMessage("You do not have enough Mind to perform this action.");
 			return false;
 		}
@@ -142,8 +142,8 @@ public:
 		combatSpam = value;
 	}
 
-	void setCooldownTime(int value) {
-		cooldownTime = value;
+	void setCooldownTime(int valueInSeconds) {
+		cooldownTime = valueInSeconds * 1000;
 	}
 };
 

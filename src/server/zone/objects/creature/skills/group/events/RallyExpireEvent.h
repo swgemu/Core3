@@ -42,43 +42,40 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SYSTEMGROUPMESSAGESKILL_H_
-#define SYSTEMGROUPMESSAGESKILL_H_
+#ifndef RALLYEXPIREEVENT_H_
+#define RALLYEXPIREEVENT_H_
 
-#include "../GroupSkill.h"
-#include "../../CreatureObjectImplementation.h"
+#include "../../../CreatureObjectImplementation.h"
+#include "../../../CreatureState.h"
 
-class SystemGroupMessageSkill : public GroupSkill {
-protected:
-	String sqLead;
-	String colon;
+class RallyExpireEvent : public Event {
+	ManagedReference<CreatureObject> creo;
+	int accuracyBonus;
 
 public:
-	SystemGroupMessageSkill(const String& Name, const char* effect, ZoneProcessServerImplementation* serv) : GroupSkill(Name, effect, OTHER, serv) {
-		sqLead = "Squad Leader ";
-		colon = ": ";
+	RallyExpireEvent(CreatureObject* cr, int delay, int accuracyBonus) : Event(delay) {
+		this->creo = cr;
+		this->accuracyBonus = accuracyBonus;
 	}
 
-	void doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
-		if(creature->isPlayer()) {
-			Player* player = (Player*)creature;
-			GroupObject* group = player->getGroupObject();
+	bool activate() {
+		try {
+			creo->wlock();
 
-			group->wlock();
+			int accB = creo->getAccuracyBonus();
+			creo->setAccuracyBonus(accB - accuracyBonus);
+			creo->clearState(CreatureState::RALLIED);
+			creo->updateStates();
 
-			String groupMessage = sqLead + player->getCharacterName().toString() + colon + modifier;
-			for(int i = 0; i < group->getGroupSize(); i++) {
-				CreatureObject* groupMember = (CreatureObject*)group->getGroupMember(i);
-				groupMember->sendSystemMessage(groupMessage);
-			}
-
-			group->unlock();
+			creo->unlock();
+		} catch (...) {
+			creo->error("unreported exception caught in RallyExpireEvent::activate");
+			creo->unlock();
 		}
-	}
 
-	bool derivedCanBePerformed(CreatureObject* creature, SceneObject* target) {
 		return true;
 	}
+
 };
 
-#endif /*SYSTEMGROUPMESSAGESKILL_H_*/
+#endif /* RALLYEXPIREEVENT_H_ */
