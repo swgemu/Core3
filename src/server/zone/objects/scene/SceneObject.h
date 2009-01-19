@@ -189,6 +189,8 @@ public:
 
 	int getDirectionAngle();
 
+	float getPrecisionDirectionAngle();
+
 	float getDirectionX();
 
 	float getDirectionZ();
@@ -486,6 +488,8 @@ public:
 	float getPositionY();
 
 	int getDirectionAngle();
+
+	float getPrecisionDirectionAngle();
 
 	float getDirectionX();
 
