@@ -44,8 +44,6 @@ which carries forward this exception.
 
 #include "DraftSchematicImplementation.h"
 
-#include "../../packets.h"
-
 DraftSchematicImplementation::DraftSchematicImplementation(uint32 schematicID, const String& objName,
 		const String& StringName, uint32 objCRC, const String& groupName, uint32 complexity,
 		uint32 schematicSize, int craftingToolTab) :

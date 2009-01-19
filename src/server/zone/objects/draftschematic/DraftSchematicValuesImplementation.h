@@ -62,19 +62,23 @@ class DraftSchematicValuesImplementation : public DraftSchematicValuesServant {
 
 public:
 
-	static const float valueNotFound = -999999;
+	static const float VALUENOTFOUND = -999999;
+
+	static const int NORMAL = 1;
+	static const int HIDDEN = 2;
 
 public:
 	DraftSchematicValuesImplementation();
 	~DraftSchematicValuesImplementation();
 	// Experimental Titles
 	void addExperimentalProperty(const String& title, const String& subtitle,
-			const float min, const float max, const int precision);
+			const float min, const float max, const int precision, const bool filler);
 
 	String& getExperimentalPropertyTitle(const String& subtitle);
 	String& getExperimentalPropertyTitle(const int i);
+	String& getVisibleExperimentalPropertyTitle(const int i);
 
-	String& getExperimentalPropertySubtitleClass(const int i);
+	String& getExperimentalPropertySubtitlesTitle(const int i);
 
 	String& getExperimentalPropertySubtitle(const int i);
 
@@ -85,6 +89,8 @@ public:
 	int getExperimentalPropertySubtitleSize(const String title);
 
 	bool hasProperty(const String& attribute);
+
+	bool isHidden(const String& attribute);
 
 	void setCurrentValue(const String& attribute, const float value);
 	void setCurrentValue(const String& attribute, const float value, const float min, const float max);
@@ -121,12 +127,25 @@ public:
 	int getPrecision(const String& attribute);
 	void setPrecision(const String& attribute, const int precision);
 
-	void recalculateValues(DraftSchematic* draftSchematic);
+	void recalculateValues(DraftSchematic* draftSchematic, bool initial);
 
 	void toString();
 
 	inline int getExperimentalPropertyTitleSize(){
 		return experimentalValuesMap.size();
+	}
+
+	inline int getVisibleExperimentalPropertyTitleSize(){
+		int tempSize = 0;
+		Subclasses* subclasses;
+
+		for(int i = 0; i < experimentalValuesMap.size(); ++i) {
+			subclasses = experimentalValuesMap.get(i);
+
+			if(!subclasses->isHidden())
+				tempSize++;
+		}
+		return tempSize;
 	}
 
 	inline int getSubtitleCount(){
@@ -150,15 +169,19 @@ public:
 
 		Subclasses* subClasses;
 		String exptitle;
+		int counter = 0;
 
 		for (int j = 0; j < experimentalValuesMap.size(); ++j) {
 
 			subClasses = experimentalValuesMap.get(j);
 
-			exptitle = subClasses->getClassName();
+			exptitle = subClasses->getClassTitle();
 
-			if (title == exptitle)
-				return j;
+			if(!subClasses->isHidden()) {
+				if (title == exptitle)
+					return counter;
+				counter++;
+			}
 		}
 
 		return -1;

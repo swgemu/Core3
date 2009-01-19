@@ -78,6 +78,7 @@ void DraftSchematicIngredientImplementation::helperSendToPlayer(ObjectController
 		msg->insertByte(0);
 
 	msg->insertInt(1);
+
 	msg->insertAscii(templateName);  // ex: craft_food_ingredients_n
 	msg->insertInt(0);
 	msg->insertAscii(titleName);	// ex: dried_fruit

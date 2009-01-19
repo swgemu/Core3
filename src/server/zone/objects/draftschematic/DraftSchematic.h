@@ -69,7 +69,7 @@ public:
 
 	void setXp(int x);
 
-	void setExpCounter();
+	void setExpCounter(int value);
 
 	void setExpPoints(int points);
 
@@ -211,7 +211,7 @@ public:
 
 	void setXp(int x);
 
-	void setExpCounter();
+	void setExpCounter(int value);
 
 	void setExpPoints(int points);
 

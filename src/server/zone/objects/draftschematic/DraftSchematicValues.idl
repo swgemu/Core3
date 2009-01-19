@@ -49,19 +49,24 @@ interface DraftSchematicValues implements ManagedObject {
 	DraftSchematicValues();
 
 	void addExperimentalProperty(const String subtitle, const String title, 
-             const float min, const float max, const int precision);
+             const float min, const float max, const int precision, const boolean filler);
 	String getExperimentalPropertySubtitle(const int i);
 	String getExperimentalPropertySubtitle(const String title, const int i);
+	
 	String getExperimentalPropertyTitle(const String subtitle);
 	String getExperimentalPropertyTitle(const int i);
+	String getVisibleExperimentalPropertyTitle(const int i);
 
-	String getExperimentalPropertySubtitleClass(const int i);
+	String getExperimentalPropertySubtitlesTitle(const int i);
 	
 	int getExperimentalPropertySubtitleSize();
 	int getExperimentalPropertySubtitleSize(const String title);
+	
+	int getVisibleExperimentalPropertyTitleSize();
 	int getExperimentalPropertyTitleSize();
 
 	boolean hasProperty(const String attribute);
+	boolean isHidden(const String& attribute);
 
 	void setCurrentValue(const String& attribute, const float value);
 	void setCurrentValue(const String& attribute, const float value, const float min, const float max);
@@ -96,7 +101,7 @@ interface DraftSchematicValues implements ManagedObject {
 	int getPrecision(const String attribute);
 	void setPrecision(const String attribute, const int precision);
 
-	void recalculateValues(DraftSchematic draftSchematic);
+	void recalculateValues(DraftSchematic draftSchematic, boolean initial);
 
 	float getAttributeAndValue(String& attribute, const int i);
 

@@ -105,7 +105,7 @@ interface DraftSchematic implements ManagedObject {
 
 	void setXp(int x);
 
-	void setExpCounter();
+	void setExpCounter(int value);
 
 	void setExpPoints(int points);
 

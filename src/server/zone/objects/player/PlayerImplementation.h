@@ -1272,8 +1272,6 @@ public:
 		return playerObject->searchWaypoint(play,name,mode);
 	}
 
-	void launchFirework(int animationType);
-
 	inline bool hasFullInventory() {
 		return inventory->isFull();
 	}

@@ -171,6 +171,7 @@ void ComponentImplementation::generateAttributes(SceneObject* obj) {
 	float value;
 	double power;
 	int precision;
+	bool hidden;
 
 	String footer;
 
@@ -193,8 +194,9 @@ void ComponentImplementation::generateAttributes(SceneObject* obj) {
 		attribute = keyList.get(i);
 		value = attributeMap.get(attribute);
 		precision = precisionMap.get(attribute);
+		hidden = hiddenMap.get(attribute);
 
-		if (precision >= 0) {
+		if (precision >= 0 && !hidden) {
 			if (precision >= 10) {
 				footer = "%";
 				precision -= 10;
@@ -217,6 +219,7 @@ void ComponentImplementation::parseItemAttributes(){
 	parseAttributeString();
 	parsePrecisionString();
 	parseTitleString();
+	parseHiddenString();
 
 	String temp = "craftersname";
 	craftersName = itemAttributes->getStringAttribute(temp);
@@ -247,6 +250,7 @@ void ComponentImplementation::updateCraftingValues(DraftSchematic* draftSchemati
 	float value;
 	int precision;
 	String title;
+	bool hidden;
 
 	attributeMap.removeAll();
 	precisionMap.removeAll();
@@ -263,6 +267,7 @@ void ComponentImplementation::updateCraftingValues(DraftSchematic* draftSchemati
 		value = craftingValues->getCurrentValue(attribute);
 		precision = craftingValues->getPrecision(attribute);
 		title = craftingValues->getExperimentalPropertyTitle(attribute);
+		hidden = craftingValues->isHidden(attribute);
 
 		if (!hasKey(attribute))
 			keyList.add(attribute);
@@ -272,6 +277,7 @@ void ComponentImplementation::updateCraftingValues(DraftSchematic* draftSchemati
 		attributeMap.put(attribute, value);
 		precisionMap.put(attribute, precision);
 		titleMap.put(attribute, title);
+		hiddenMap.put(attribute, hidden);
 
 	}
 
@@ -291,6 +297,22 @@ void ComponentImplementation::savePrecisionList(){
 	}
 
 	String attribute = "precision";
+	String value = ss.toString();
+
+	itemAttributes->setStringAttribute(attribute, value);
+}
+
+void ComponentImplementation::saveHiddenList(){
+	StringBuffer ss;
+	String element;
+
+	for (int i = 0; i < keyList.size(); ++i){
+		element = keyList.get(i);
+
+		ss << element << "=" << hiddenMap.get(element) << ";";
+	}
+
+	String attribute = "hidden";
 	String value = ss.toString();
 
 	itemAttributes->setStringAttribute(attribute, value);
@@ -356,6 +378,30 @@ void ComponentImplementation::parseTitleString() {
 			String value = attrPair.subString(index3 + 1, attrPair.length());
 
 			titleMap.put(key, value);
+		}
+
+		index1 = index2 + 1;
+	}
+}
+
+void ComponentImplementation::parseHiddenString() {
+	int index1 = 0;
+	int index2;
+	int index3;
+
+	hiddenMap.removeAll();
+
+	String attribute = "hidden";
+	String hiddenString = itemAttributes->getStringAttribute(attribute);
+
+	while ((index2 = hiddenString.indexOf(";", index1)) != -1) {
+		String attrPair = hiddenString.subString(index1, index2);
+
+		if ((index3 = attrPair.indexOf("=", 0)) != -1) {
+			String key = attrPair.subString(0, index3);
+			String value = attrPair.subString(index3 + 1, attrPair.length());
+
+			hiddenMap.put(key, value);
 		}
 
 		index1 = index2 + 1;

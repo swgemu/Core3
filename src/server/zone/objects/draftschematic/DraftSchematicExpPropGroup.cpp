@@ -341,6 +341,18 @@ int DraftSchematicExpPropGroup::getPrecision() {
 		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getPrecision();
 }
 
+bool DraftSchematicExpPropGroup::isFiller() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 30);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((DraftSchematicExpPropGroupImplementation*) _impl)->isFiller();
+}
+
 /*
  *	DraftSchematicExpPropGroupAdapter
  */
@@ -423,6 +435,9 @@ Packet* DraftSchematicExpPropGroupAdapter::invokeMethod(uint32 methid, Distribut
 		break;
 	case 29:
 		resp->insertSignedInt(getPrecision());
+		break;
+	case 30:
+		resp->insertBoolean(isFiller());
 		break;
 	default:
 		return NULL;
@@ -525,6 +540,10 @@ float DraftSchematicExpPropGroupAdapter::getRange() {
 
 int DraftSchematicExpPropGroupAdapter::getPrecision() {
 	return ((DraftSchematicExpPropGroupImplementation*) impl)->getPrecision();
+}
+
+bool DraftSchematicExpPropGroupAdapter::isFiller() {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->isFiller();
 }
 
 /*

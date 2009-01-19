@@ -58,7 +58,9 @@ protected:
 	VectorMap<String, float> attributeMap;
 	VectorMap<String, int> precisionMap;
 	VectorMap<String, String> titleMap;
+	VectorMap<String, bool> hiddenMap;
 	Vector<String> keyList;
+
 
 public:
 	ComponentImplementation(uint64 object_id, uint32 tempCRC, const UnicodeString& n, const String& tempn);
@@ -83,6 +85,7 @@ public:
 
 	void savePrecisionList();
 	void saveTitleList();
+	void saveHiddenList();
 
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 
@@ -91,6 +94,7 @@ public:
 	void parseAttributeString();
 	void parsePrecisionString();
 	void parseTitleString();
+	void parseHiddenString();
 
 	inline bool hasProperty(String& attributeName) {
 		return attributeMap.contains(attributeName);

@@ -78,7 +78,7 @@ public:
 	void setExperimentationEnabled(bool experimenting) {
 		startUpdate(1);
 		if (experimenting){
-			insertInt(4);  // 3
+			insertInt(3);  // 3 // 4
 		}
 		else {
 			insertInt(1);

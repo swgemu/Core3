@@ -371,11 +371,11 @@ void ArmorImplementation::setCraftingKinetic(DraftSchematic* draftSchematic) {
 
 	float value = craftingValues->getCurrentValue("kineticeffectiveness");
 
-	if (value == DraftSchematicValuesImplementation::valueNotFound && firstCraftingUpdate) {
+	if (value == DraftSchematicValuesImplementation::VALUENOTFOUND && firstCraftingUpdate) {
 		craftingValues->lockValue("kineticeffectiveness");
 	}
 
-	if (value == DraftSchematicValuesImplementation::valueNotFound) {
+	if (value == DraftSchematicValuesImplementation::VALUENOTFOUND) {
 		if (isVunerableTo("kinetic"))
 			setKinetic(0.0f);
 		else
@@ -403,11 +403,11 @@ void ArmorImplementation::setCraftingEnergy(DraftSchematic* draftSchematic) {
 
 	float value = craftingValues->getCurrentValue("energyeffectiveness");
 
-	if (value == DraftSchematicValuesImplementation::valueNotFound && firstCraftingUpdate) {
+	if (value == DraftSchematicValuesImplementation::VALUENOTFOUND && firstCraftingUpdate) {
 		craftingValues->lockValue("energyeffectiveness");
 	}
 
-	if (value == DraftSchematicValuesImplementation::valueNotFound) {
+	if (value == DraftSchematicValuesImplementation::VALUENOTFOUND) {
 		if (isVunerableTo("energy"))
 			setEnergy(0.0f);
 		else
@@ -434,11 +434,11 @@ void ArmorImplementation::setCraftingElectrical(DraftSchematic* draftSchematic) 
 
 	float value = craftingValues->getCurrentValue("electricaleffectiveness");
 
-	if (value == DraftSchematicValuesImplementation::valueNotFound && firstCraftingUpdate) {
+	if (value == DraftSchematicValuesImplementation::VALUENOTFOUND && firstCraftingUpdate) {
 		craftingValues->lockValue("electricaleffectiveness");
 	}
 
-	if (value == DraftSchematicValuesImplementation::valueNotFound) {
+	if (value == DraftSchematicValuesImplementation::VALUENOTFOUND) {
 		if (isVunerableTo("energy"))
 			setElectricity(0.0f);
 		else
@@ -465,13 +465,13 @@ void ArmorImplementation::setCraftingStun(DraftSchematic* draftSchematic) {
 
 	float value = craftingValues->getCurrentValue("stuneffectiveness");
 
-	if (value == DraftSchematicValuesImplementation::valueNotFound && firstCraftingUpdate) {
+	if (value == DraftSchematicValuesImplementation::VALUENOTFOUND && firstCraftingUpdate) {
 		craftingValues->lockValue("stuneffectiveness");
 	} else {
 		value = specialbase;
 	}
 
-	if (value == DraftSchematicValuesImplementation::valueNotFound) {
+	if (value == DraftSchematicValuesImplementation::VALUENOTFOUND) {
 		if (isVunerableTo("stun"))
 			setStun(0.0f);
 		else
@@ -495,13 +495,13 @@ void ArmorImplementation::setCraftingBlast(DraftSchematic* draftSchematic) {
 
 	float value = craftingValues->getCurrentValue("blasteffectiveness");
 
-	if (value == DraftSchematicValuesImplementation::valueNotFound && firstCraftingUpdate) {
+	if (value == DraftSchematicValuesImplementation::VALUENOTFOUND && firstCraftingUpdate) {
 		craftingValues->lockValue("blasteffectiveness");
 	} else {
 		value = specialbase;
 	}
 
-	if (value == DraftSchematicValuesImplementation::valueNotFound) {
+	if (value == DraftSchematicValuesImplementation::VALUENOTFOUND) {
 		if (isVunerableTo("blast"))
 			setBlast(0.0f);
 		else
@@ -525,13 +525,13 @@ void ArmorImplementation::setCraftingHeat(DraftSchematic* draftSchematic) {
 
 	float value = craftingValues->getCurrentValue("heateffectiveness");
 
-	if (value == DraftSchematicValuesImplementation::valueNotFound && firstCraftingUpdate) {
+	if (value == DraftSchematicValuesImplementation::VALUENOTFOUND && firstCraftingUpdate) {
 		craftingValues->lockValue("heateffectiveness");
 	} else {
 		value = specialbase;
 	}
 
-	if (value == DraftSchematicValuesImplementation::valueNotFound) {
+	if (value == DraftSchematicValuesImplementation::VALUENOTFOUND) {
 		if (isVunerableTo("heat"))
 			setHeat(0.0f);
 		else
@@ -555,13 +555,13 @@ void ArmorImplementation::setCraftingCold(DraftSchematic* draftSchematic) {
 
 	float value = craftingValues->getCurrentValue("coldeffectiveness");
 
-	if (value == DraftSchematicValuesImplementation::valueNotFound && firstCraftingUpdate) {
+	if (value == DraftSchematicValuesImplementation::VALUENOTFOUND && firstCraftingUpdate) {
 		craftingValues->lockValue("coldeffectiveness");
 	} else {
 		value = specialbase;
 	}
 
-	if (value == DraftSchematicValuesImplementation::valueNotFound) {
+	if (value == DraftSchematicValuesImplementation::VALUENOTFOUND) {
 		if (isVunerableTo("cold"))
 			setCold(0.0f);
 		else
@@ -585,13 +585,13 @@ void ArmorImplementation::setCraftingAcid(DraftSchematic* draftSchematic) {
 
 	float value = craftingValues->getCurrentValue("acideffectiveness");
 
-	if (value == DraftSchematicValuesImplementation::valueNotFound && firstCraftingUpdate) {
+	if (value == DraftSchematicValuesImplementation::VALUENOTFOUND && firstCraftingUpdate) {
 		craftingValues->lockValue("acideffectiveness");
 	} else {
 		value = specialbase;
 	}
 
-	if (value == DraftSchematicValuesImplementation::valueNotFound) {
+	if (value == DraftSchematicValuesImplementation::VALUENOTFOUND) {
 		if (isVunerableTo("acid"))
 			setAcid(0.0f);
 		else
@@ -615,13 +615,13 @@ void ArmorImplementation::setCraftingRestrain(DraftSchematic* draftSchematic) {
 
 	float value = craftingValues->getCurrentValue("restraineffectiveness");
 
-	if (value == DraftSchematicValuesImplementation::valueNotFound && firstCraftingUpdate) {
+	if (value == DraftSchematicValuesImplementation::VALUENOTFOUND && firstCraftingUpdate) {
 		craftingValues->lockValue("restraineffectiveness");
 	} else {
 		value = specialbase;
 	}
 
-	if (value == DraftSchematicValuesImplementation::valueNotFound) {
+	if (value == DraftSchematicValuesImplementation::VALUENOTFOUND) {
 		if (isVunerableTo("restrain"))
 			setLightSaber(0.0f);
 		else

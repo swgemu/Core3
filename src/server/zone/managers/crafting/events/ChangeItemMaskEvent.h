@@ -1,3 +1,4 @@
+
 /*
 Copyright (C) 2007 <SWGEmu>
 
@@ -42,58 +43,41 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#ifndef CHANGEITEMMASKEVENT_H_
+#define CHANGEITEMMASKEVENT_H_
 
-#ifndef MANUFACTURESCHEMATICOBJECTDELTAMESSAGE3_H_
-#define MANUFACTURESCHEMATICOBJECTDELTAMESSAGE3_H_
+#include "../../../packets/tangible/TangibleObjectDeltaMessage3.h"
 
-#include "../BaseLineMessage.h"
+class ChangeItemMaskEvent : public Event {
 
-#include "../../objects/draftschematic/DraftSchematic.h"
-#include "../../objects/draftschematic/DraftSchematicValues.h"
+	TangibleObject* tano;
+	Player* player;
+	int timeLeft;
 
-class ManufactureSchematicObjectDeltaMessage3 : public DeltaMessage {
 public:
-	ManufactureSchematicObjectDeltaMessage3(uint64 sceneObjSchematic)
-			: DeltaMessage(sceneObjSchematic, 0x4D53434F, 3) {
+	ChangeItemMaskEvent(Player * pl, TangibleObject* ta, int mask) : Event() {
+		tano = ta;
+		player = pl;
+		timeLeft = mask;
 	}
 
-	void updateComplexity(float complexity) {
-		addFloatUpdate(0, complexity);
-	}
+	bool activate() {
+		try {
 
-	void updateName(String name) {
-		addUnicodeUpdate(2, name);
-	}
 
-	void updateCondition(int condition) {
-		addIntUpdate(4, condition);
-	}
+			tano->setOptionsBitmask(timeLeft);
 
-	void updateCraftedValues(DraftSchematic * draftSchematic){
+			tano->updateOptionsBitmask(player);
 
-		DraftSchematicValues * craftingValues = draftSchematic->getCraftingValues();
+			System::out << "Mask = " << timeLeft << endl;
 
-		String name;
-		float value;
 
-		int count = craftingValues->getValuesToSendSize();
-
-		startUpdate(5);
-
-		startList(count, count);
-
-		for (int i = 0; i < count; ++i){
-
-			insertByte(0);
-			insertAscii("crafting");
-			insertInt(0);
-			name = craftingValues->getValuesToSend(i);
-			value = craftingValues->getCurrentValue(name);
-			insertAscii(name);
-			insertFloat(value);
-
+		} catch (...) {
+			System::out << "Unreported exception caught in UpdateToolCountdownEvent::activate\n";
 		}
+
+		return true;
 	}
 };
 
-#endif /*MANUFACTURESCHEMATICOBJECTMESSAGE3_H_*/
+#endif /*UPDATETOOLCOUNTDOWNEVENT_H_*/

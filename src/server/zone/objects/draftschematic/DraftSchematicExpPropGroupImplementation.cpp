@@ -54,6 +54,8 @@ DraftSchematicExpPropGroupImplementation::DraftSchematicExpPropGroupImplementati
 	subtitle = Subtitle;
 
 	expPropGroupListSize = 0;
+
+	filler = true;
 }
 DraftSchematicExpPropGroupImplementation::DraftSchematicExpPropGroupImplementation(DraftSchematicExpPropGroup* group) : DraftSchematicExpPropGroupServant() {
 
@@ -106,26 +108,37 @@ void DraftSchematicExpPropGroupImplementation::addExperimentalProperty(const Str
 		// nothing needs to be done
 	} else if (experimentalPropertyType == "CR") {
 		expPropType = 0x01;
+		filler = false;
 	} else if (experimentalPropertyType == "CD") {
 		expPropType = 0x02;
+		filler = false;
 	} else if (experimentalPropertyType == "DR") {
 		expPropType = 0x03;
+		filler = false;
 	} else if (experimentalPropertyType == "HR") {
 		expPropType = 0x04;
+		filler = false;
 	} else if (experimentalPropertyType == "FL") {
 		expPropType = 0x05;
+		filler = false;
 	} else if (experimentalPropertyType == "MA") {
 		expPropType = 0x06;
+		filler = false;
 	} else if (experimentalPropertyType == "PE") {
 		expPropType = 0x07;
+		filler = false;
 	} else if (experimentalPropertyType == "OQ") {
 		expPropType = 0x08;
+		filler = false;
 	} else if (experimentalPropertyType == "SR") {
 		expPropType = 0x09;
+		filler = false;
 	} else if (experimentalPropertyType == "UT") {
 		expPropType = 0x0A;
+		filler = false;
 	} else if (experimentalPropertyType == "BK") {
 		expPropType = 0x0B;
+		filler = false;
 	} else if (experimentalPropertyType == "XX"){
 		expPropType = 0x00;
 	} else {

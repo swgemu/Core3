@@ -2594,13 +2594,16 @@ void GameCommandHandler::getXP(StringTokenizer tokenizer, Player* player) {
 
 void GameCommandHandler::adminList(StringTokenizer tokenizer, Player* player) {
 	try {
-		StringBuffer query, msg, appendix;
+		StringBuffer query;
 
 		query << "SELECT character_id,firstname,surname,adminLevel from characters where adminLevel <> 4 order by character_id asc;";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
 		while (res->next()) {
+
+			StringBuffer msg, appendix;
+
 			switch (res->getInt(3)) {
 			case (1):
 				appendix << "1 (CSR)";
