@@ -886,7 +886,10 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		parseTeach(player, pack);
 		break;
 	case (0xD6EE77C2): // System Group Message
-		parseSystemGroupMessage(player, pack);
+		doInstantAction(player, pack, actionCRC, actioncntr);
+		break;
+	case (0x7EF26D6A): // System Group Message
+		doInstantAction(player, pack, actionCRC, actioncntr);
 		break;
 	default:
 		target = pack->parseLong();
@@ -934,6 +937,18 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	}
 
 	player->clearQueueAction(actioncntr);
+}
+
+void ObjectControllerMessage::doInstantAction(Player* player, Message* pack, uint32 actionCRC, uint32 actionCntr) {
+	uint64 target = pack->parseLong();
+	UnicodeString option = UnicodeString("");
+	String actionModifier = "";
+
+	pack->parseUnicode(option);
+	actionModifier = option.toString();
+	String amod = actionModifier.toCharArray();
+
+	player->doInstantAction(target, actionCRC, actionCntr, amod);
 }
 
 void ObjectControllerMessage::parseAttachmentDragDrop(Player* player,
@@ -4500,34 +4515,3 @@ void ObjectControllerMessage::parseNewbieSelectStartingLocation(Player* player,
 	}
 
 }
-
-void ObjectControllerMessage::parseSystemGroupMessage(Player* player, Message* pack) {
-	pack->shiftOffset(8);
-	UnicodeString message;
-	pack->parseUnicode(message);
-
-	String skillBox = "outdoors_squadleader_novice";
-	if(player->hasSkillBox(skillBox)) {
-		GroupObject* group = player->getGroupObject();
-		if(group != NULL) {
-			if(group->getLeader() == player) {
-				UnicodeString sqLead = "Squad Leader ";
-				UnicodeString colon = ": ";
-				UnicodeString finalMessage = sqLead + player->getCharacterName() + colon + message;
-				for(int i = 0; i < group->getGroupSize(); i++) {
-					CreatureObject* groupMember = (CreatureObject*)group->getGroupMember(i);
-					if(groupMember->isPlayer()) {
-						groupMember->sendSystemMessage(finalMessage);
-					}
-				}
-			} else {
-				player->sendSystemMessage("You must be the group leader to perform this command.");
-			}
-		} else {
-			player->sendSystemMessage("You must be in a group to perform this command.");
-		}
-	} else {
-		player->sendSystemMessage("You do not have sufficient abilities to System Group Message");
-	}
-}
-

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef BOOSTMORALEGROUPSKILL_H_
 #define BOOSTMORALEGROUPSKILL_H_
 
-#include "../SelfSkill.h"
+#include "../GroupSkill.h"
 #include "../../CreatureObjectImplementation.h"
 
 class BoostMoraleGroupSkill : public GroupSkill {
@@ -53,32 +53,41 @@ protected:
 
 public:
 	BoostMoraleGroupSkill(const String& Name, const char* effect, ZoneProcessServerImplementation* serv) : GroupSkill(Name, effect, OTHER, serv) {
-		combatSpam = "";
+
 	}
 
-	virtual void doSkill(CreatureObject* creature, bool doAnimation = true) {
+	virtual void doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
 		if(creature->isPlayer()) {
-			Player* player = (Player*)creature;
-			GroupObject* group = player->getGroupObject();
+			Player* squadLeader = (Player*)creature;
+			GroupObject* group = squadLeader->getGroupObject();
 			int totalWounds = 0;
 			int groupWoundsAverage = 0;
 			uint8 size = creature->getWoundsArraySize();
 
+			group->wlock();
+
+			int squadLeaderZoneID = squadLeader->getZoneID();
+
+			Vector<CreatureObject*> groupMembers;
+
 			for(int i = 0; i < group->getGroupSize(); i++) {
 				CreatureObject* groupMember = (CreatureObject*)group->getGroupMember(i);
-				if(groupMember->isPlayer()) {
-					// Find average of group member's wounds
-					for(uint8 i = 0; i < size; i++) {
-						int woundAmount = groupMember->getWounds(i);
-						totalWounds += woundAmount;
+				if(groupMember->getZoneID() == squadLeaderZoneID) {
+					if(groupMember->isPlayer()) {
+						// Find average of group member's wounds
+						for(uint8 i = 0; i < size; i++) {
+							int woundAmount = groupMember->getWounds(i);
+							totalWounds += woundAmount;
+						}
+						groupMembers.add(groupMember);
 					}
 				}
 			}
 
 			groupWoundsAverage = totalWounds / (group->getGroupSize() * size);
 
-			for(int i = 0; i < group->getGroupSize(); i++) {
-				CreatureObject* groupMember = (CreatureObject*)group->getGroupMember(i);
+			for(int i = 0; i < groupMembers.size(); i++) {
+				CreatureObject* groupMember = groupMembers.get(i);
 				for(uint8 i = 0; i < size; i++) {
 					int currentWounds = groupMember->getWounds(i);
 					int maxWounds = groupMember->getBaseAttribute(i) - 1;
@@ -93,15 +102,16 @@ public:
 				}
 
 				groupMember->sendSystemMessage("cbt_spam", combatSpam);
-				player->sendCombatSpam(groupMember, NULL, 0, combatSpam, false);
+				groupMember->sendCombatSpam(groupMember, NULL, 0, combatSpam, false);
 			}
 
+			group->unlock();
 
-			player->changeHealthBar(-healthCost, true);
-			player->changeActionBar(-actionCost, true);
-			player->changeMindBar(-mindCost, true);
+			squadLeader->changeHealthBar(-healthCost, true);
+			squadLeader->changeActionBar(-actionCost, true);
+			squadLeader->changeMindBar(-mindCost, true);
 
-			player->addCooldown(skillName, cooldownTime);
+			squadLeader->addCooldown(skillName, cooldownTime);
 		} else {
 			// should never get here unless we allow non players to be squad leaders
 		}
@@ -112,7 +122,7 @@ public:
 	}
 
 	// This method checks to see if the cooldown time has elasped
-	virtual bool derivedCanBePerformed(CreatureObject* creature) {
+	virtual bool derivedCanBePerformed(CreatureObject* creature, SceneObject* target) {
 		if(creature->hasCooldownExpired(skillName)) {
 			return true;
 		} else {

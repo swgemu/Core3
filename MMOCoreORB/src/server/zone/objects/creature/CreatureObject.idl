@@ -292,6 +292,7 @@ interface CreatureObject implements TangibleObject {
 	void setCreatureLinkID(unsigned long creatureID);
 
 	void setAccuracy(int acc);
+	void setAccuracyBonus(int accBonus);
 	void setDamageBonus(int bonus);
 	void setDefenseBonus(int bonus);
 
@@ -347,6 +348,7 @@ interface CreatureObject implements TangibleObject {
 	boolean hasSkillModBonus(const String name);
 
 	int getAccuracy();
+	int getAccuracyBonus();
 	int getDefenseBonus();
 	int getDamageBonus();
 

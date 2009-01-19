@@ -289,6 +289,7 @@ protected:
 	uint8 pbCounter;
 
 	int accuracy;
+	int accuracyBonus;
 
 	Time burstRunCooldown;
 	int damageBonus;
@@ -581,6 +582,10 @@ public:
 
 	Skill* getSkill(const String& name) {
 		return creatureSkills.get(name.hashCode());
+	}
+
+	Skill* getSkill(uint32 actionCRC) {
+		return creatureSkills.get(actionCRC);
 	}
 
 	inline String& getSkill(int idx) {
@@ -1918,6 +1923,10 @@ public:
 		return accuracy;
 	}
 
+	inline int getAccuracyBonus() {
+		return accuracyBonus;
+	}
+
 	inline float getSpeed() {
 		return speed;
 	}
@@ -2204,6 +2213,9 @@ public:
 		accuracy = acc;
 	}
 
+	inline void setAccuracyBonus(int accBonus) {
+		accuracyBonus = accBonus;
+	}
 
 	//Harvesting stuff
 	inline void setMeatType(const String& meat) {

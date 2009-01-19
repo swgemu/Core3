@@ -45,23 +45,93 @@ which carries forward this exception.
 #ifndef RALLYGROUPSKILL_H_
 #define RALLYGROUPSKILL_H_
 
-#include "../SelfSkill.h"
+#include "../GroupSkill.h"
+#include "../../CreatureObjectImplementation.h"
+#include "events/RallyExpireEvent.h"
 
 class RallyGroupSkill : public GroupSkill {
 protected:
+	int accuracyBonus;
+	int rallyDuration;
+	RallyExpireEvent* rallyExpireEvent;
 
 public:
 	RallyGroupSkill(const String& Name, const char* effect, ZoneProcessServerImplementation* serv) : GroupSkill(Name, effect, OTHER, serv) {
-
+		accuracyBonus = 0;
+		rallyDuration = 0;
 	}
 
-	void doSkill(CreatureObject* creature, String& modifier) {
+	virtual void doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
+		if(creature->isPlayer()) {
+			Player* squadLeader = (Player*)creature;
+			GroupObject* group = squadLeader->getGroupObject();
 
+			group->wlock();
+
+			int squadLeaderZoneID = squadLeader->getZoneID();
+
+			for(int i = 0; i < group->getGroupSize(); i++) {
+				CreatureObject* groupMember = (CreatureObject*)group->getGroupMember(i);
+
+				if(groupMember->getZoneID() == squadLeaderZoneID) {
+					int accB = groupMember->getAccuracyBonus();
+					groupMember->setAccuracyBonus(accB + accuracyBonus);
+					groupMember->setState(CreatureState::RALLIED);
+					groupMember->showFlyText("combat_effects", "go_rally", 0, 0xFF, 0);
+					groupMember->updateStates();
+
+					rallyExpireEvent = new RallyExpireEvent(groupMember, rallyDuration, accuracyBonus);
+					if (server != NULL)
+						server->addEvent(rallyExpireEvent);
+					else
+						System::out << "Error adding RallyExpireEvent in RallyGroupSkill::doSkill\n";
+
+					if(groupMember->isPlayer()) {
+						Player* player = (Player*)groupMember;
+						player->sendSystemMessage("cbt_spam", combatSpam);
+						player->sendCombatSpam(groupMember, NULL, 0, combatSpam, false);
+					}
+				}
+			}
+
+			group->unlock();
+
+			squadLeader->changeHealthBar(-healthCost, true);
+			squadLeader->changeActionBar(-actionCost, true);
+			squadLeader->changeMindBar(-mindCost, true);
+
+			squadLeader->addCooldown(skillName, cooldownTime);
+
+		} else {
+			// should never get here unless we allow non players to be squad leaders
+		}
 	}
 
 	void doAnimations(CreatureObject* creature) {
 
 	}
+
+	// This method checks to see if the cooldown time has elasped
+	virtual bool derivedCanBePerformed(CreatureObject* creature, SceneObject* target) {
+		if(creature->hasCooldownExpired(skillName)) {
+			return true;
+		} else {
+			int timeRemaining = creature->getCooldownTimeRemaining(skillName);
+			StringBuffer message;
+			message << "You must wait " << timeRemaining << " seconds to perform Rally.";
+			creature->sendSystemMessage(message.toString());
+			return false;
+		}
+	}
+
+	void setAccuracyBonus(int value) {
+		accuracyBonus = value;
+	}
+
+	void setRallyDuration(int valueInSeconds) {
+		rallyDuration = valueInSeconds * 1000;
+	}
+
 };
 
 #endif /*RALLYGROUPSKILL_H_*/

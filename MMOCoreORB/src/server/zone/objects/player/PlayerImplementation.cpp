@@ -1823,16 +1823,6 @@ void PlayerImplementation::notifySceneReady() {
 	PlayerObject* playerObject = getPlayerObject();
 
 	if (onlineStatus  == LOGGINGIN) {
-		UnicodeString msg = UnicodeString("Welcome to the Official Core3 Test Center!");
-		sendSystemMessage(msg);
-		UnicodeString msg2 = UnicodeString("Please help us sorting some problems out by being as active as you can. we need to stress the server for these bugs to arise. thank you");
-		sendSystemMessage(msg2);
-
-		UnicodeString msg3 = UnicodeString("This server is owned, operated, and developed by Team SWGEmu at SWGEmu.com and is in no way affiliated with any other server communities.");
-		sendSystemMessage(msg3);
-
-		UnicodeString msg4 = UnicodeString("Please Report All Spammer, Harassment, Exploits Or Bugs To HTTP://WWW.SWGEMU.COM/SUPPORT.");
-		sendSystemMessage(msg4);
 
 		playerObject->loadFriends();
 		playerObject->loadIgnore();
@@ -2004,7 +1994,6 @@ void PlayerImplementation::queueFlourish(const String& modifier, uint64 target, 
     queueAction(po->getPlayer(), target, actionCRC, actionCntr, modifier);
 }
 
-
 void PlayerImplementation::queueAction(Player* player, uint64 target, uint32 actionCRC, uint32 actionCntr, const String& amod) {
 	/*StringBuffer ident;
 	ident << "0x" << hex << actionCRC << " (" << actionCntr << ")";
@@ -2031,6 +2020,31 @@ void PlayerImplementation::queueAction(Player* player, uint64 target, uint32 act
 	/*sendSystemMessage("queing action " + ident.toString() + " finished");*/
 
 	return;
+}
+
+void PlayerImplementation::doInstantAction(uint64 target, uint32 actionCRC, uint32 actionCntr, const String& amod) {
+
+	CombatManager* combatManager = server->getCombatManager();
+	CommandQueueAction* action = new CommandQueueAction(_this, target, actionCRC, actionCntr, amod);
+
+	Skill* skill = creatureSkills.get(actionCRC);
+
+	if (skill == NULL) {
+		action->clearError(2);
+		return;
+	}
+
+	updateTarget(action->getTargetID());
+
+	action->setTarget(targetObject.get());
+	action->setSkill(skill);
+
+	if (!action->check()) {
+		delete action;
+		return;
+	}
+
+	combatManager->handleAction(action);
 }
 
 bool PlayerImplementation::doAction(CommandQueueAction* action) {

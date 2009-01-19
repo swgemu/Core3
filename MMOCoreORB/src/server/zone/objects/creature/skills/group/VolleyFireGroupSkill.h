@@ -45,22 +45,109 @@ which carries forward this exception.
 #ifndef VOLLEYFIREGROUPSKILL_H_
 #define VOLLEYFIREGROUPSKILL_H_
 
-#include "../SelfSkill.h"
+#include "../GroupSkill.h"
+#include "../../CreatureObjectImplementation.h"
 
 class VolleyFireGroupSkill : public GroupSkill {
 protected:
 
+	uint32 defaultAttackActionCRC;
+	StfParameter* param;
+
 public:
 	VolleyFireGroupSkill(const String& Name, const char* effect, ZoneProcessServerImplementation* serv) : GroupSkill(Name, effect, OTHER, serv) {
+		defaultAttackActionCRC = 0;
+		param = new StfParameter();
+		String sName("Volley Fire");
+		param->addTO(sName);
 
 	}
 
-	void doSkill(CreatureObject* creature, String& modifier) {
+	~VolleyFireGroupSkill() {
+		delete param;
+	}
 
+	void doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
+		if(creature->isPlayer()) {
+			Player* squadLeader = (Player*)creature;
+			GroupObject* group = squadLeader->getGroupObject();
+			CombatManager* cm = squadLeader->getZoneProcessServer()->getCombatManager();
+
+			group->wlock();
+
+			int squadLeaderZoneID = squadLeader->getZoneID();
+
+			for(int i = 0; i < group->getGroupSize(); i++) {
+				CreatureObject* groupMember = (CreatureObject*)group->getGroupMember(i);
+
+				if(groupMember->getZoneID() == squadLeaderZoneID) {
+					if(groupMember->isPlayer()) {
+						Player* player = (Player*)groupMember;
+						player->doInstantAction(target->getObjectID(), defaultAttackActionCRC, 0, modifier);
+						player->sendSystemMessage("cbt_spam", combatSpam);
+						player->sendCombatSpam(groupMember, NULL, 0, combatSpam, false);
+					}
+				}
+			}
+
+
+			group->unlock();
+
+			squadLeader->changeHealthBar(-healthCost, true);
+			squadLeader->changeActionBar(-actionCost, true);
+			squadLeader->changeMindBar(-mindCost, true);
+
+			squadLeader->addCooldown(skillName, cooldownTime);
+		} else {
+			// should never get here unless we allow non players to be squad leaders
+		}
 	}
 
 	void doAnimations(CreatureObject* creature) {
 
+	}
+
+	void sendInvalidTarget(CreatureObject* creature) {
+		if(creature->isPlayer()) {
+			Player* player = (Player*)creature;
+			player->sendSystemMessage("cmd_err", "target_type_prose", param);
+		}
+	}
+
+	// This method checks to see if the cooldown time has elasped
+	virtual bool derivedCanBePerformed(CreatureObject* creature, SceneObject* target) {
+		if(target == NULL || !target->isAttackableBy(creature)) {
+			sendInvalidTarget(creature);
+			return false;
+		}
+
+		if(target->isNonPlayerCreature()) {
+			Creature* tar = (Creature*) target;
+			if(!tar->isAttackable()) {
+				sendInvalidTarget(creature);
+				return false;
+			}
+		} else if(target->isPlayer()){
+			Player* tar = (Player*) target;
+			if(!tar->isAttackable()) {
+				sendInvalidTarget(creature);
+				return false;
+			}
+		}
+
+		if(!creature->hasCooldownExpired(skillName)) {
+			int timeRemaining = creature->getCooldownTimeRemaining(skillName);
+			StringBuffer message;
+			message << "You must wait " << timeRemaining << " seconds to perform Volley Fire.";
+			creature->sendSystemMessage(message.toString());
+			return false;
+		}
+
+		return true;
+	}
+
+	void setDefaultAttack(const String& defaultAttack) {
+		defaultAttackActionCRC = defaultAttack.hashCode();
 	}
 };
 

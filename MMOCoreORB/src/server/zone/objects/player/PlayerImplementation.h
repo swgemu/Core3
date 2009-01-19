@@ -744,6 +744,7 @@ public:
 	void queueFlourish(const String& modifier, uint64 target, uint32 actionCntr);
 	void queueAction(Player* player, uint64 target, uint32 actionCRC, uint32 actionCntr, const String& amod);
 
+	void doInstantAction(uint64 target, uint32 actionCRC, uint32 actionCntr, const String& amod);
 	bool doAction(CommandQueueAction* action);
 
 	void clearQueueAction(uint32 actioncntr, float timer = 0.0, uint32 tab1 = 0, uint32 tab2 = 0);
