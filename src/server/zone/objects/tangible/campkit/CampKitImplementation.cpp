@@ -141,6 +141,9 @@ bool CampKitImplementation::isUsefull(Player* player) {
 	if (player->isInANoBuildArea()) {
 		player->sendSystemMessage("@camp:error_nobuild");
 		return false;
+	} else if (player->isInBuilding()) {
+		player->sendSystemMessage("You cannot place a structure while inside a building.");//TODO:find correct error message.
+		return false;
 	} else if (player->hasCamp()) {
 		player->sendSystemMessage("@camp:sys_already_camping");
 		return false;
