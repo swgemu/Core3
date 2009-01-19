@@ -102,15 +102,15 @@ tuskenExecutionerRandom = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/ranged/rifle/shared_rifle_tusken.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "a Tusken Rifle", -- Name ex. 'a Vibrolance'
-	weaponTemp = "rifle_tusken", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weapon = "object/weapon/melee/baton/shared_baton_gaderiffi.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a Gaderiffi", -- Name ex. 'a Vibrolance'
+	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 1250,
-	weaponMaxDamage = 2750,
-	weaponAttackSpeed = 1.6,
-	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponMinDamage = 1645,
+	weaponMaxDamage = 3000,
+	weaponAttackSpeed = 2,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx

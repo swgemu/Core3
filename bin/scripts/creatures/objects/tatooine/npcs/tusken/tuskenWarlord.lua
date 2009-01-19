@@ -93,12 +93,9 @@ tuskenWarlord = Creature:new {
 	stalker = 1,
 	killer = 1,
 	aggressive = 1,
-	invincible = 0, 
+	invincible = 0, 	  
 
-	  
-
-	meleeDefense = 1,  
-	  
+	meleeDefense = 1,  	  
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
@@ -108,9 +105,9 @@ tuskenWarlord = Creature:new {
 	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 200,
-	weaponMaxDamage = 380,
-	weaponAttackSpeed = 1.6,
+	weaponMinDamage = 455,
+	weaponMaxDamage = 620,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

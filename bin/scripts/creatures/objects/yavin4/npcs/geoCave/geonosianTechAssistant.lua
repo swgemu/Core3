@@ -70,7 +70,7 @@ geonosianTechAssistant = Creature:new {
 	willpower = 2000,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 20,
 	energy = 20,
 	electricity = 30,
@@ -102,9 +102,9 @@ geonosianTechAssistant = Creature:new {
 	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 100,
-	weaponMaxDamage = 300,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 385,
+	weaponMaxDamage = 480,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

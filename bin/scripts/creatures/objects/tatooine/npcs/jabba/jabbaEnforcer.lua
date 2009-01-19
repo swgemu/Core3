@@ -103,9 +103,9 @@ jabbaEnforcer = Creature:new {
 	weaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 175,
-	weaponMaxDamage = 250,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 170,
+	weaponMaxDamage = 180,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 

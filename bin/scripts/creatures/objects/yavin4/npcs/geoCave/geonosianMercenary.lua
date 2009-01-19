@@ -69,7 +69,7 @@ geonosianMercenary = Creature:new {
 	willpower = 5000,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 40,
 	energy = 40,
 	electricity = 20,
@@ -101,9 +101,9 @@ geonosianMercenary = Creature:new {
 	weaponTemp = "knife_survival", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 300,
+	weaponMinDamage = 470,
 	weaponMaxDamage = 650,
-	weaponAttackSpeed = 1,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

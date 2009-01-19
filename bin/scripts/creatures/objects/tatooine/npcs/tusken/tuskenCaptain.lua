@@ -51,8 +51,6 @@ tuskenCaptain = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3780705985, 
 	socialGroup = "tusken_raider",
-	 
-
 	level = 75,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
@@ -93,12 +91,9 @@ tuskenCaptain = Creature:new {
 	stalker = 1,
 	killer = 1,
 	aggressive = 1,
-	invincible = 0, 
-
-	  
+	invincible = 0, 	  
 	
-	meleeDefense = 1,  
-	  
+	meleeDefense = 1,  	  
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
@@ -108,9 +103,9 @@ tuskenCaptain = Creature:new {
 	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 150,
-	weaponMaxDamage = 305,
-	weaponAttackSpeed = 1.6,
+	weaponMinDamage = 345,
+	weaponMaxDamage = 400,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

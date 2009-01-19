@@ -103,9 +103,9 @@ jawaSmuggler = Creature:new {
 	weaponTemp = "rifle_jawa_ion", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 100,
-	weaponMaxDamage = 250,
-	weaponAttackSpeed = 4,
+	weaponMinDamage = 50,
+	weaponMaxDamage = 55,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
