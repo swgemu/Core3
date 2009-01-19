@@ -19,6 +19,11 @@ Firework::Firework(Player* player, unsigned int tempCRC, const UnicodeString& n,
 	_impl->_setStub(this);
 }
 
+Firework::Firework(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempname, int tp) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new FireworkImplementation(oid, tempCRC, n, tempname, tp);
+	_impl->_setStub(this);
+}
+
 Firework::Firework(DummyConstructorParameter* param) : TangibleObject(param) {
 }
 

@@ -366,7 +366,8 @@ void WearableImplementation::addAttributes(AttributeListMessage* alm) {
 
 	alm->insertAttribute("Volume", "1");
 
-	alm->insertAttribute("Sockets", sockets);
+	if(sockets > 0)
+		alm->insertAttribute("Sockets", sockets);
 
 	if (skillMod0Type != 0)
 		generateSkillMods(alm, skillMod0Type, skillMod0Value);

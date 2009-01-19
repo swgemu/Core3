@@ -60,9 +60,29 @@
 #include "../../objects/draftschematic/DraftSchematicGroup.h"
 #include "../../objects/draftschematic/DraftSchematicGroupImplementation.h"
 
-#include "../../objects.h"
+#include "../../objects/tangible/TangibleObject.h"
+#include "../../objects/tangible/TangibleObjectImplementation.h"
 
-#include "../../packets.h"
+#include "../../objects/tangible/crafting/component/Component.h"
+#include "../../objects/tangible/crafting/component/ComponentImplementation.h"
+
+#include "../../objects/tangible/crafting/CraftingTool.h"
+#include "../../objects/tangible/crafting/CraftingToolImplementation.h"
+
+#include "../../objects/tangible/resource/ResourceContainer.h"
+#include "../../objects/tangible/resource/ResourceContainerImplementation.h"
+
+#include "../../objects/tangible/TangibleObjectImplementation.h"
+#include "../../objects/tangible/TangibleObjectImplementation.h"
+
+#include "../../packets/manufactureschematic/ManufactureSchematicObjectMessage3.h"
+#include "../../packets/manufactureschematic/ManufactureSchematicObjectMessage6.h"
+#include "../../packets/manufactureschematic/ManufactureSchematicObjectMessage7.h"
+#include "../../packets/manufactureschematic/ManufactureSchematicObjectMessage8.h"
+#include "../../packets/manufactureschematic/ManufactureSchematicObjectMessage9.h"
+#include "../../packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage3.h"
+#include "../../packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage6.h"
+#include "../../packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage7.h"
 
 
 class ZoneServer;
@@ -77,6 +97,8 @@ class CraftingManagerImplementation : public CraftingManagerServant,
 	VectorMap<String, DraftSchematicGroup*> draftSchematicsMap;
 
 	String generatedSerial;
+
+	int tempMask;
 
 	static CraftingManagerImplementation* instance;
 

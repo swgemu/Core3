@@ -63,6 +63,8 @@ public:
 
 	int getPrecision();
 
+	bool isFiller();
+
 protected:
 	DraftSchematicExpPropGroup(DummyConstructorParameter* param);
 
@@ -133,6 +135,8 @@ public:
 	float getRange();
 
 	int getPrecision();
+
+	bool isFiller();
 
 protected:
 	String _param0_addExperimentalProperty__String_int_float_float_int_;

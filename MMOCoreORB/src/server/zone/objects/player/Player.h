@@ -521,8 +521,6 @@ public:
 
 	unsigned long long getTradeRequestedPlayer();
 
-	void launchFirework(int anim);
-
 	void sendMessage(BaseMessage* msg);
 
 	void sendMessage(StandaloneBaseMessage* msg);
@@ -1465,8 +1463,6 @@ public:
 	void setTradeRequestedPlayer(unsigned long long ID);
 
 	unsigned long long getTradeRequestedPlayer();
-
-	void launchFirework(int anim);
 
 	void sendMessage(BaseMessage* msg);
 

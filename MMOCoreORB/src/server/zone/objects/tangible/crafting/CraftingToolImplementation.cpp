@@ -281,51 +281,57 @@ void CraftingToolImplementation::updateCraftingValues(DraftSchematic* draftSchem
 
 }
 
+/*
+ *  This method starts the crafting process.  It starts when a crafting tool
+ *  is opened, and ends after sending the appropriate packets to display tool
+ *  and data on the screen
+ */
 void CraftingToolImplementation::sendToolStart(Player* player) {
 
-
+	/// Temporary reference for schematic objects
 	DraftSchematic* draftSchematic;
+
+	/// Default Crafting station complexity
 	float workingStationComplexity = 15;
+
+	/// Object ID and type of station, if found nearby
 	int stationType = 0;
-	uint64 stationFound = 0;
+	uint64 oidOfLocatedCraftingStation = 0;
 
-	// Get nearby crafting stations here
+	/// Identify type of nearby crafting station, if in range
+	oidOfLocatedCraftingStation = findCraftingStation(player, workingStationComplexity);
 
-	stationFound = findCraftingStation(player, workingStationComplexity);
-
-	if (stationFound != 0)
-
+	/// If station is found, we enable experimenting
+	if (oidOfLocatedCraftingStation != 0)
 		experimentingEnabled = true;
-
 	else
-
 		experimentingEnabled = false;
 
+	/// Get schematics based on type of tool and complexity level
+	getSchematicsForTool(player, workingStationComplexity);
 
-	// Craft Start
-	// Tano7
+	/// Packet Sending Start
+
+	/// Tano7
 	TangibleObjectMessage7* tano7 = new TangibleObjectMessage7(_this);
 	player->sendMessage(tano7);
+	// End Tano7***********************************
 
-	// DPlay9
+	/// DPlay9
 	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
-	dplay9->setClosestCraftingStation(stationFound);
-	dplay9->setExperimentationPoints(0);
 	dplay9->setExperimentationEnabled(experimentingEnabled);
 	dplay9->setCraftingState(1);
 	setCraftingState(1);
+	dplay9->setClosestCraftingStation(oidOfLocatedCraftingStation);
+	dplay9->setExperimentationPoints(0);
 	dplay9->close();
 	player->sendMessage(dplay9);
+	// End dplay9***********************************
 
-	// Get schematics based on type of tool and complexity level
-	getSchematicsForTool(player, workingStationComplexity);
-
-	// Tool Start
-	// Obj Controller Msg
-
+	/// Object Controller Message 102 - Schematic List
 	ObjectControllerMessage* ocm = new ObjectControllerMessage(player->getObjectID(),0x0B, 0x102);
 	ocm->insertLong(getObjectID());
-	ocm->insertLong(0x00);
+	ocm->insertLong(oidOfLocatedCraftingStation);
 	uint32 draftSchematicListSize = schematicsToSend.size();
 	ocm->insertInt(draftSchematicListSize);
 
@@ -336,27 +342,31 @@ void CraftingToolImplementation::sendToolStart(Player* player) {
 		ocm->insertInt(draftSchematic->getSchematicID());
 		ocm->insertInt(draftSchematic->getSchematicCRC());
 		ocm->insertInt(draftSchematic->getCraftingToolTab()); // this number decides what tab the schematic goes in (ex: 4 = food tab in crafting window)
-
 	}
-
 	player->sendMessage(ocm);
+	// End OBJC 102***********************************
 
+	/// Send all the ingredients to the player
 	for (int i = 0; i < draftSchematicListSize; ++i){
 
 		draftSchematic = schematicsToSend.get(i);
 
+		/// Object Controller Message 1BF
 		draftSchematic->sendIngredientsToPlayer(player);
-
+		// End OBJC 1BF***********************************
 	}
 
+	/// Send all the experimental properties to the player
 	for (int i = 0; i < draftSchematicListSize; ++i){
 
 		draftSchematic = schematicsToSend.get(i);
 
+		/// Object Controller Message 207
 		draftSchematic->sendExperimentalPropertiesToPlayer(player);
-
+		// End OBJC 207***********************************
 	}
 
+	/// Sets this crafting tool as active in the player object
 	player->setCurrentCraftingTool(_this);
 }
 
@@ -379,15 +389,12 @@ void CraftingToolImplementation::getSchematicsForTool(Player* player, float work
 					toolUsesTab = true;
 					break;
 				}
-
 			}
 
 			if (workingStationComplexity >= draftSchematic->getComplexity()
 					&& toolUsesTab) {
 
 				schematicsToSend.add(draftSchematic);
-				//System::out << "Adding schematic = " << draftSchematic->getName() << endl;
-
 			}
 		}
 	}
@@ -412,7 +419,7 @@ uint64 CraftingToolImplementation::findCraftingStation(Player* player, float& wo
 		inRangeObject = (TangibleObject*)server->getObject(oid);
 
 		if (inRangeObject != NULL){
-			if (inRangeObject->isCraftingStation() && player->isInRange(inRangeObject, 6.0f)){
+			if (inRangeObject->isCraftingStation() && player->isInRange(inRangeObject, 7.0f)){
 				station = (CraftingStation*)inRangeObject;
 
 				//System::out << "Station = " << station->getStationType() << "   Tool = " << _this->getToolType() << endl;

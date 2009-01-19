@@ -67,7 +67,7 @@ public:
 		update5(size+1, size+1, slot);
 		update6(size, size, slot);
 		update7();
-		initializeExperimentalValues(draftSchematic);
+		//initializeExperimentalValues(draftSchematic);
 		update14();
 	}
 
@@ -100,6 +100,7 @@ public:
 	}
 
 	void updateForAssembly(DraftSchematic* draftSchematic){
+		initializeExperimentalValues(draftSchematic);  // Temp
 		update9(draftSchematic, true);
 		update0B(draftSchematic);
 		update0C(draftSchematic);
@@ -224,21 +225,20 @@ public:
 
 		startUpdate(8);
 
-		int titleCount = craftingValues->getExperimentalPropertyTitleSize();
+		int titleCount = craftingValues->getVisibleExperimentalPropertyTitleSize();
 		int counter = draftSchematic->getExpCounter();
 
 		insertInt(titleCount);
 		insertInt(titleCount);
 
 		for (int i = 0; i < titleCount; i++) {
-			String title = craftingValues->getExperimentalPropertyTitle(i);
+			String title = craftingValues->getVisibleExperimentalPropertyTitle(i);
 
 			insertByte(1);
 			insertShort(i);
 			insertAscii("crafting");  // I think this is always "crafting"
 			insertInt(0);
 			insertAscii(title);
-
 		}
 
 		// Initialize update 9************
@@ -280,7 +280,7 @@ public:
 
 	}
 
-	// This should send the experimental values shown in the Screen after hitting assemble
+	// This sends the experimental values shown in the Screen after hitting assemble
 	void update9(DraftSchematic* draftSchematic, bool initial) {
 		startUpdate(9);
 
@@ -288,6 +288,7 @@ public:
 		int count, linenum;
 		String title, subtitle;
 		float value;
+		bool hidden;
 		VectorMap<int, String> updatedLines;
 
 		for (int i = 0; i < craftingValues->getValuesToSendSize(); ++i) {
@@ -298,25 +299,32 @@ public:
 
 			linenum = craftingValues->getTitleLine(title);
 
-			if (linenum != -1 && !updatedLines.contains(linenum))
+			hidden = craftingValues->isHidden(subtitle);
+
+			if (((!initial && !hidden) || initial) && linenum != -1 && !updatedLines.contains(linenum)
+					&& title != "" && title != "null") {
+//System::out << "dmsco7 End: " << linenum << " " << title << endl;
 				updatedLines.put(linenum, title);
+			}
 		}
 
-		if (initial)
+		if (initial) {
+			draftSchematic->setExpCounter(updatedLines.size() * 2);
 			count = updatedLines.size() * 2;
-		else
-			count = draftSchematic->getExpCounter() + (craftingValues->getExperimentalPropertyTitleSize() - 1);
+		} else {
+			count = draftSchematic->getExpCounter();
+		}
 
 		startList(updatedLines.size(), count);
-
+//System::out << "dmsco7 updateLines: " << updatedLines.size() << " counter " << draftSchematic->getExpCounter() << " props " << craftingValues->getVisibleExperimentalPropertyTitleSize() << " count sent " << count << endl;
 		for (int i = 0; i < updatedLines.size(); ++i) {
 
 			linenum = updatedLines.elementAt(i)->getKey();
 
-			value = craftingValues->getCurrentPercentageAverage(linenum);
+			value = craftingValues->getCurrentPercentageAverage(updatedLines.elementAt(i)->getValue());
 
 			removeListFloatElement(linenum, value);
-
+//System::out << "dmsco7 End: " << linenum << " " << value << endl;
 		}
 
 		updatedLines.removeAll();
@@ -328,7 +336,7 @@ public:
 
 		startUpdate(0x0A);
 
-		int titleCount = craftingValues->getExperimentalPropertyTitleSize();
+		int titleCount = craftingValues->getVisibleExperimentalPropertyTitleSize();
 
 		startList(titleCount, titleCount * 2);
 
@@ -343,7 +351,7 @@ public:
 
 		startUpdate(0x0B);
 
-		int titleCount = craftingValues->getExperimentalPropertyTitleSize();
+		int titleCount = craftingValues->getVisibleExperimentalPropertyTitleSize();
 
 		startList(titleCount, titleCount * 2);
 
@@ -358,7 +366,7 @@ public:
 
 		startUpdate(0x0C);
 
-		int titleCount = craftingValues->getExperimentalPropertyTitleSize();
+		int titleCount = craftingValues->getVisibleExperimentalPropertyTitleSize();
 
 		startList(titleCount, titleCount * 2);
 

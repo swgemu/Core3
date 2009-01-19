@@ -17,7 +17,7 @@ class DraftSchematicValues : public ManagedObject {
 public:
 	DraftSchematicValues();
 
-	void addExperimentalProperty(const String& subtitle, const String& title, float min, float max, const int precision);
+	void addExperimentalProperty(const String& subtitle, const String& title, float min, float max, const int precision, const bool filler);
 
 	String& getExperimentalPropertySubtitle(const int i);
 
@@ -27,15 +27,21 @@ public:
 
 	String& getExperimentalPropertyTitle(const int i);
 
-	String& getExperimentalPropertySubtitleClass(const int i);
+	String& getVisibleExperimentalPropertyTitle(const int i);
+
+	String& getExperimentalPropertySubtitlesTitle(const int i);
 
 	int getExperimentalPropertySubtitleSize();
 
 	int getExperimentalPropertySubtitleSize(const String& title);
 
+	int getVisibleExperimentalPropertyTitleSize();
+
 	int getExperimentalPropertyTitleSize();
 
 	bool hasProperty(const String& attribute);
+
+	bool isHidden(const String& attribute);
 
 	void setCurrentValue(const String& attribute, float value);
 
@@ -87,7 +93,7 @@ public:
 
 	void setPrecision(const String& attribute, const int precision);
 
-	void recalculateValues(DraftSchematic* draftSchematic);
+	void recalculateValues(DraftSchematic* draftSchematic, bool initial);
 
 	float getAttributeAndValue(String& attribute, const int i);
 
@@ -103,9 +109,10 @@ protected:
 	virtual ~DraftSchematicValues();
 
 	String _return_getExperimentalPropertySubtitle;
-	String _return_getExperimentalPropertySubtitleClass;
+	String _return_getExperimentalPropertySubtitlesTitle;
 	String _return_getExperimentalPropertyTitle;
 	String _return_getValuesToSend;
+	String _return_getVisibleExperimentalPropertyTitle;
 
 	friend class DraftSchematicValuesHelper;
 };
@@ -118,7 +125,7 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void addExperimentalProperty(const String& subtitle, const String& title, float min, float max, const int precision);
+	void addExperimentalProperty(const String& subtitle, const String& title, float min, float max, const int precision, const bool filler);
 
 	String& getExperimentalPropertySubtitle(const int i);
 
@@ -128,15 +135,21 @@ public:
 
 	String& getExperimentalPropertyTitle(const int i);
 
-	String& getExperimentalPropertySubtitleClass(const int i);
+	String& getVisibleExperimentalPropertyTitle(const int i);
+
+	String& getExperimentalPropertySubtitlesTitle(const int i);
 
 	int getExperimentalPropertySubtitleSize();
 
 	int getExperimentalPropertySubtitleSize(const String& title);
 
+	int getVisibleExperimentalPropertyTitleSize();
+
 	int getExperimentalPropertyTitleSize();
 
 	bool hasProperty(const String& attribute);
+
+	bool isHidden(const String& attribute);
 
 	void setCurrentValue(const String& attribute, float value);
 
@@ -188,7 +201,7 @@ public:
 
 	void setPrecision(const String& attribute, const int precision);
 
-	void recalculateValues(DraftSchematic* draftSchematic);
+	void recalculateValues(DraftSchematic* draftSchematic, bool initial);
 
 	float getAttributeAndValue(String& attribute, const int i);
 
@@ -199,12 +212,13 @@ public:
 	void toString();
 
 protected:
-	String _param0_addExperimentalProperty__String_String_float_float_int_;
-	String _param1_addExperimentalProperty__String_String_float_float_int_;
+	String _param0_addExperimentalProperty__String_String_float_float_int_bool_;
+	String _param1_addExperimentalProperty__String_String_float_float_int_bool_;
 	String _param0_getExperimentalPropertySubtitle__String_int_;
 	String _param0_getExperimentalPropertyTitle__String_;
 	String _param0_getExperimentalPropertySubtitleSize__String_;
 	String _param0_hasProperty__String_;
+	String _param0_isHidden__String_;
 	String _param0_setCurrentValue__String_float_;
 	String _param0_setCurrentValue__String_float_float_float_;
 	String _param0_setCurrentPercentage__String_float_;

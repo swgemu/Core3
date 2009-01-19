@@ -45,6 +45,7 @@
 
 #include "events/CreateObjectEvent.h"
 #include "events/UpdateToolCountdownEvent.h"
+#include "events/ChangeItemMaskEvent.h"
 
 CraftingManagerImplementation* CraftingManagerImplementation::instance = NULL;
 
@@ -64,6 +65,8 @@ CraftingManagerImplementation::CraftingManagerImplementation(ZoneServer* serv,
 
 	setLogging(true);
 	setGlobalLogging(true);
+
+	tempMask = 0;
 
 	init();
 }
@@ -292,8 +295,7 @@ void CraftingManagerImplementation::addIngredientToSlot(Player* player,
 
 		// DMSCO7 ***************************************************
 		// Updates the slot
-		ManufactureSchematicObjectDeltaMessage7
-				* dMsco7 =
+		ManufactureSchematicObjectDeltaMessage7 * dMsco7 =
 						new ManufactureSchematicObjectDeltaMessage7(draftSchematic->getObjectID());
 
 		if (craftingTool->getInsertCount() == 1) {
@@ -755,7 +757,6 @@ void CraftingManagerImplementation::initialAssembly(Player* player,
 	int custpoints = int(player->getSkillMod(custskill));
 
 	// The Experimenting counter always starts at numbers of exp titles + 1
-	draftSchematic->setExpCounter();
 	draftSchematic->setExpPoints(exppoints);
 
 	// Start DPLAY9 ***********************************************************
@@ -787,8 +788,7 @@ void CraftingManagerImplementation::initialAssembly(Player* player,
 
 	// Start DMSCO3 ***********************************************************
 	// Sends the updated values to the crafting screen
-	ManufactureSchematicObjectDeltaMessage3
-			* dMsco3 =
+	ManufactureSchematicObjectDeltaMessage3* dMsco3 =
 					new ManufactureSchematicObjectDeltaMessage3(draftSchematic->getObjectID());
 	dMsco3->updateCraftedValues(draftSchematic);
 	dMsco3->close();
@@ -798,8 +798,7 @@ void CraftingManagerImplementation::initialAssembly(Player* player,
 
 	// Start DMSCO7 ***********************************************************
 	// Sends the experimental properties and experimental percentages
-	ManufactureSchematicObjectDeltaMessage7
-			* dMsco7 =
+	ManufactureSchematicObjectDeltaMessage7* dMsco7 =
 					new ManufactureSchematicObjectDeltaMessage7(draftSchematic->getObjectID());
 	dMsco7->updateForAssembly(draftSchematic);
 	if (custpoints > 0) {
@@ -883,11 +882,11 @@ void CraftingManagerImplementation::setInitialCraftingValues(Player* player,
 	// These 2 values are pretty standard, adding these
 	itemName = "xp";
 	value = float(draftSchematic->getXp());
-	craftingValues->setCurrentValue(itemName, value);
+	craftingValues->addExperimentalProperty("", itemName, value, value, 0, 1);
 
 	itemName = "complexity";
 	value = draftSchematic->getComplexity();
-	craftingValues->setCurrentValue(itemName, value);
+	craftingValues->addExperimentalProperty("", itemName, value, value, 0, 1);
 
 	int subtitleCounter = 0;
 
@@ -906,7 +905,7 @@ void CraftingManagerImplementation::setInitialCraftingValues(Player* player,
 
 		weightedSum = 0;
 
-		craftingValues->addExperimentalProperty(title, subtitle, dsepg->getMinValue(), dsepg->getMaxValue(), dsepg->getPrecision());
+		craftingValues->addExperimentalProperty(title, subtitle, dsepg->getMinValue(), dsepg->getMaxValue(), dsepg->getPrecision(), dsepg->isFiller());
 
 		for (int ii = 0; ii < dsepg->getExpPropPercentageListSize(); ++ii) {
 
@@ -943,44 +942,17 @@ void CraftingManagerImplementation::setInitialCraftingValues(Player* player,
 
 	}
 
-	/*for (int i = subtitleCounter; i < draftSchematic->getAttributesToSetListSize(); ++i) {
-
-		attrib = draftSchematic->getAttributeToSet(i);
-
-		subtitle = attrib->getAttributeName();
-
-		title = attrib->getAttributeExperimentalProperty();
-
-		// This is the formula for max experimenting percentages
-		maxPercentage = 1.0f;
-
-		// Based on the weighted sum, we can get the initial %
-		currentPercentage = craftingValues->getCurrentPercentageAverage(title);
-
-		craftingValues->addExperimentalProperty(title, subtitle, attrib->getMinValue(),
-				attrib->getMaxValue(), attrib->getPrecision());
-
-		craftingValues->setMaxPercentage(subtitle, maxPercentage);
-		craftingValues->setCurrentPercentage(subtitle, currentPercentage);
-
-//System::out << "Subtitle: " << subtitle << " current: " << currentPercentage << " max: " << maxPercentage << endl;
-
-	}*/
-
-	//attrib = NULL;
-
-	craftingValues->recalculateValues(draftSchematic);
+	craftingValues->recalculateValues(draftSchematic, true);
 
 	if (applyComponentBoost(draftSchematic, craftingTool))
-		craftingValues->recalculateValues(draftSchematic);
+		craftingValues->recalculateValues(draftSchematic, true);
 
 	// If components give a boost, calculate here
 	//currentPercentage += applyComponentPercentageBoost(subtitle,
 	//		draftSchematic, craftingTool);
 
 	if (addSubcomponentTraitsToNewTano(craftingTool))
-		craftingValues->recalculateValues(draftSchematic);
-
+		craftingValues->recalculateValues(draftSchematic, true);
 }
 
 bool CraftingManagerImplementation::addSubcomponentTraitsToNewTano(CraftingTool* craftingTool) {
@@ -1054,7 +1026,7 @@ bool CraftingManagerImplementation::addSubcomponentTraitsToNewTano(CraftingTool*
 		} else {
 
 			currentvalue = 0;
-			craftingValues->addExperimentalProperty(title, attribute, value, value, precision);
+			craftingValues->addExperimentalProperty(title, attribute, value, value, precision, 0);
 			craftingValues->setMaxPercentage(attribute, 1.0f);
 
 		}
@@ -1264,7 +1236,7 @@ void CraftingManagerImplementation::handleExperimenting(Player* player,
 	}
 
 	// Use percentages to recalculate the values
-	craftingValues->recalculateValues(draftSchematic);
+	craftingValues->recalculateValues(draftSchematic, false);
 
 	// Update the Tano with new values
 	tano->updateCraftingValues(draftSchematic);
@@ -1288,18 +1260,16 @@ void CraftingManagerImplementation::handleExperimenting(Player* player,
 	// End Player Object Delta **************************************
 
 
-	ManufactureSchematicObjectDeltaMessage3
-			* dMsco3 =
-					new ManufactureSchematicObjectDeltaMessage3(draftSchematic->getObjectID());
+	ManufactureSchematicObjectDeltaMessage3* dMsco3 =
+			new ManufactureSchematicObjectDeltaMessage3(draftSchematic->getObjectID());
 	dMsco3->updateComplexity(draftSchematic->getComplexity());
 	dMsco3->updateCraftedValues(draftSchematic);
 	dMsco3->close();
 
 	player->sendMessage(dMsco3);
 
-	ManufactureSchematicObjectDeltaMessage7
-			* dMsco7 =
-					new ManufactureSchematicObjectDeltaMessage7(draftSchematic->getObjectID());
+	ManufactureSchematicObjectDeltaMessage7* dMsco7 =
+			new ManufactureSchematicObjectDeltaMessage7(draftSchematic->getObjectID());
 	dMsco7->update9(draftSchematic, false);
 	dMsco7->close();
 
@@ -1308,7 +1278,6 @@ void CraftingManagerImplementation::handleExperimenting(Player* player,
 	TangibleObjectDeltaMessage3* dtano3 =
 			new TangibleObjectDeltaMessage3(craftingTool->getWorkingTano());
 	dtano3->updateComplexity(float(draftSchematic->getComplexity()));
-
 	dtano3->close();
 
 	player->sendMessage(dtano3);
@@ -1339,15 +1308,15 @@ void CraftingManagerImplementation::experimentRow(
 
 	float modifier, newValue;
 
-	String title, subtitle, subtitleClass;
+	String title, subtitle, subtitlesTitle;
 
-	title = craftingValues->getExperimentalPropertyTitle(rowEffected);
+	title = craftingValues->getVisibleExperimentalPropertyTitle(rowEffected);
 
 	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
 
-		subtitleClass = craftingValues->getExperimentalPropertySubtitleClass(i);
+		subtitlesTitle = craftingValues->getExperimentalPropertySubtitlesTitle(i);
 
-		if (subtitleClass == title) {
+		if (subtitlesTitle == title) {
 
 			subtitle = craftingValues->getExperimentalPropertySubtitle(i);
 
@@ -1361,7 +1330,6 @@ void CraftingManagerImplementation::experimentRow(
 				newValue = craftingValues->getMaxPercentage(subtitle);
 
 			craftingValues->setCurrentPercentage(subtitle, newValue);
-
 		}
 	}
 }
@@ -1427,9 +1395,23 @@ void CraftingManagerImplementation::createPrototype(Player* player,
 
 			} else {
 
+				// This is for practiceing
 				createObjectInInventory(player, draftSchematic->getComplexity() * 2, false);
+
+				// For simulating Factory crates
+				createObjectInInventory(player, draftSchematic->getComplexity() * 2, true);
+				player->getCurrentCraftingTool()->getWorkingTano()->setPlayerUseMask(8192);
+
+				// This is an item mask test below - It cycles through the item masks - for testing
+				/*createObjectInInventory(player, 1, true);
 				xp = int(round(1.05 * xp));
 
+				for(int i = -500; i < pow(2,32);  ++i) {
+
+					ChangeItemMaskEvent* maskEvent = new ChangeItemMaskEvent(player, craftingTool->getWorkingTano(), (int)pow(2, i));
+
+					processor->addEvent(maskEvent, (i * 200));
+				}*/
 			}
 
 			player->addXp(xpType, xp, true);
@@ -1616,7 +1598,7 @@ void CraftingManagerImplementation::createObjectInInventory(Player* player,
 		}
 
 		if (timer < 0) {
-			timer2 += timer * 1000;
+			timer2 += timer;// * 1000;
 			timer = 0;
 		}
 
@@ -1625,6 +1607,7 @@ void CraftingManagerImplementation::createObjectInInventory(Player* player,
 
 		processor->addEvent(updateToolCountdownEvent, timer2);
 		processor->addEvent(createObjectEvent, timer2);
+
 	} else {
 		System::out << "Serv == NULL\n";
 	}
@@ -1680,6 +1663,11 @@ TangibleObject* CraftingManagerImplementation::generateTangibleObject(
 				new TangibleObject(objectid, objectcrc, objectname, objecttemp);
 
 	}
+
+	//mint tempmasknum = (int)pow(2, ++tempMask);
+	//System::out << tempMask << endl;
+	//tano->setOptionsBitmask(++tempMask);
+
 	tano->setPlayerUseMask(mask);
 
 	tano->setTemplateTypeName(templatetype);

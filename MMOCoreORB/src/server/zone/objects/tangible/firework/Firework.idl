@@ -50,6 +50,10 @@ interface Firework implements TangibleObject {
 	Firework(Player player, unsigned int tempCRC, const UnicodeString n, const String tempn, int anim) {
 		super(unsigned long oid, int tp);
 	}
+	
+	Firework(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempname, int tp = 0) {
+		super(unsigned long oid, int tp);
+	}
 
 	int useObject(Player player);
 }

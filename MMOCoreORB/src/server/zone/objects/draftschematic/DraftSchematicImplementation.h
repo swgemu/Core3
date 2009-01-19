@@ -62,6 +62,15 @@
 #include "DraftSchematicValues.h"
 #include "DraftSchematicValuesImplementation.h"
 
+#include "../../packets/manufactureschematic/ManufactureSchematicObjectMessage3.h"
+#include "../../packets/manufactureschematic/ManufactureSchematicObjectMessage6.h"
+#include "../../packets/manufactureschematic/ManufactureSchematicObjectMessage7.h"
+#include "../../packets/manufactureschematic/ManufactureSchematicObjectMessage8.h"
+#include "../../packets/manufactureschematic/ManufactureSchematicObjectMessage9.h"
+#include "../../packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage3.h"
+#include "../../packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage6.h"
+#include "../../packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage7.h"
+
 class Player;
 class ObjectControllerMessage;
 
@@ -221,8 +230,8 @@ public:
 		xp = x;
 	}
 
-	inline void setExpCounter() {
-		expCounter = craftingValues->getExperimentalPropertyTitleSize() + 1;
+	inline void setExpCounter(int value) {
+		expCounter = value;
 	}
 
 	inline void increaseExpCounter() {

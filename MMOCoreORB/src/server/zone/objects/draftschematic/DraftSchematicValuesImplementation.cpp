@@ -62,15 +62,15 @@ DraftSchematicValuesImplementation::~DraftSchematicValuesImplementation() {
 }
 
 void DraftSchematicValuesImplementation::addExperimentalProperty(const String& title, const String& subtitle,
-		const float min, const float max, const int precision) {
+		const float min, const float max, const int precision, const bool filler) {
 	Subclasses* subclasses;
 
 	if (experimentalValuesMap.contains(title)) {
 		subclasses = experimentalValuesMap.get(title);
 
-		subclasses->addSubtitle(subtitle, min, max, precision);
+		subclasses->addSubtitle(subtitle, min, max, precision, filler);
 	} else {
-		subclasses = new Subclasses(title, subtitle, min, max, precision);
+		subclasses = new Subclasses(title, subtitle, min, max, precision, filler);
 
 		experimentalValuesMap.put(title, subclasses);
 	}
@@ -89,7 +89,7 @@ String& DraftSchematicValuesImplementation::getExperimentalPropertyTitle(
 			values = subclasses->get(j);
 
 			if (values->getName() == subtitle) {
-				return subclasses->getClassName();
+				return subclasses->getClassTitle();
 			}
 		}
 	}
@@ -105,13 +105,33 @@ String& DraftSchematicValuesImplementation::getExperimentalPropertyTitle(
 	subclasses = experimentalValuesMap.get(i);
 
 	if (subclasses != NULL) {
-		return subclasses->getClassName();
+		return subclasses->getClassTitle();
 	}
 
 	return EMPTY;
 }
 
-String& DraftSchematicValuesImplementation::getExperimentalPropertySubtitleClass(const int i) {
+String& DraftSchematicValuesImplementation::getVisibleExperimentalPropertyTitle(
+		const int i) {
+
+	Subclasses* subclasses;
+	int counter = -1;
+	String title;
+
+	for(int j = 0; j < experimentalValuesMap.size(); ++j) {
+		subclasses = experimentalValuesMap.get(j);
+
+		if(!subclasses->isHidden())
+			counter++;
+
+		if(counter == i)
+			return subclasses->getClassTitle();
+	}
+
+	return EMPTY;
+}
+
+String& DraftSchematicValuesImplementation::getExperimentalPropertySubtitlesTitle(const int i) {
 	Subclasses* subclasses;
 	int count = 0;
 
@@ -121,7 +141,7 @@ String& DraftSchematicValuesImplementation::getExperimentalPropertySubtitleClass
 		if (count + subclasses->size() <= i){
 			count += subclasses->size();
 		} else {
-			return subclasses->getClassName();
+			return subclasses->getClassTitle();
 		}
 	}
 
@@ -181,7 +201,7 @@ int DraftSchematicValuesImplementation::getExperimentalPropertySubtitleSize(cons
 	if (subclasses != NULL)
 		return subclasses->size();
 
-	return (int)valueNotFound;
+	return (int)VALUENOTFOUND;
 }
 
 bool DraftSchematicValuesImplementation::hasProperty(const String& attribute) {
@@ -198,6 +218,26 @@ bool DraftSchematicValuesImplementation::hasProperty(const String& attribute) {
 
 			if (values->getName() == attribute) {
 				return true;
+			}
+		}
+	}
+	return false;
+}
+
+bool DraftSchematicValuesImplementation::isHidden(const String& attribute) {
+
+	Subclasses* subclasses;
+	Values* values;
+
+	for (int j = 0; j < experimentalValuesMap.size(); ++j) {
+		subclasses = experimentalValuesMap.get(j);
+
+		for (int i = 0; i < subclasses->size(); ++i) {
+
+			values = subclasses->get(i);
+
+			if (values->getName() == attribute) {
+				return values->isFiller();
 			}
 		}
 	}
@@ -269,7 +309,7 @@ float DraftSchematicValuesImplementation::getCurrentValue(
 		}
 	}
 
-	return valueNotFound;
+	return VALUENOTFOUND;
 }
 
 float DraftSchematicValuesImplementation::getCurrentValue(const int i) {
@@ -290,7 +330,7 @@ float DraftSchematicValuesImplementation::getCurrentValue(const int i) {
 		}
 	}
 
-	return valueNotFound;
+	return VALUENOTFOUND;
 }
 
 void DraftSchematicValuesImplementation::lockValue(const String& attribute) {
@@ -408,7 +448,7 @@ float DraftSchematicValuesImplementation::getCurrentPercentage(
 		}
 	}
 
-	return valueNotFound;
+	return VALUENOTFOUND;
 }
 
 float DraftSchematicValuesImplementation::getCurrentPercentage(const int i) {
@@ -429,14 +469,16 @@ float DraftSchematicValuesImplementation::getCurrentPercentage(const int i) {
 		}
 	}
 
-	return valueNotFound;
+	return VALUENOTFOUND;
 }
 
 float DraftSchematicValuesImplementation::getCurrentPercentageAverage(const int i) {
 	Subclasses* subclasses;
 	Values* values;
 
-	subclasses = experimentalValuesMap.get(i);
+	String title = getVisibleExperimentalPropertyTitle(i);
+
+	subclasses = experimentalValuesMap.get(title);
 
 	if (subclasses == NULL)
 		return -1;
@@ -447,7 +489,7 @@ float DraftSchematicValuesImplementation::getCurrentPercentageAverage(const int 
 	for (int j = 0; j < subclasses->size(); ++j) {
 		values = subclasses->get(j);
 
-		if (values->getMaxPercentage() < 1.0f) {
+		if (values->getMaxPercentage() < 1.0f && !values->isFiller()) {
 
 			average += values->getPercentage();
 			count++;
@@ -472,7 +514,7 @@ float DraftSchematicValuesImplementation::getCurrentPercentageAverage(const Stri
 	for (int j = 0; j < subclasses->size(); ++j) {
 		values = subclasses->get(j);
 
-		if (values->getMaxPercentage() < 1.0f) {
+		if (values->getMaxPercentage() < 1.0f && !values->isFiller()) {
 
 			average += values->getPercentage();
 			count++;
@@ -524,7 +566,7 @@ float DraftSchematicValuesImplementation::getMaxPercentage(
 		}
 	}
 
-	return valueNotFound;
+	return VALUENOTFOUND;
 }
 
 float DraftSchematicValuesImplementation::getMaxPercentage(const int i) {
@@ -545,14 +587,16 @@ float DraftSchematicValuesImplementation::getMaxPercentage(const int i) {
 		}
 	}
 
-	return valueNotFound;
+	return VALUENOTFOUND;
 }
 
 float DraftSchematicValuesImplementation::getMaxPercentageAverage(const int i) {
 	Subclasses* subclasses;
 	Values* values;
 
-	subclasses = experimentalValuesMap.get(i);
+	String title = getVisibleExperimentalPropertyTitle(i);
+
+	subclasses = experimentalValuesMap.get(title);
 
 	float average = 0;
 	float count = 0;
@@ -560,7 +604,7 @@ float DraftSchematicValuesImplementation::getMaxPercentageAverage(const int i) {
 	for (int j = 0; j < subclasses->size(); ++j) {
 		values = subclasses->get(j);
 
-		if (values->getMaxPercentage() < 1.0f) {
+		if (values->getMaxPercentage() < 1.0f && !values->isFiller()) {
 
 			average += values->getMaxPercentage();
 			count++;
@@ -587,7 +631,7 @@ float DraftSchematicValuesImplementation::getMaxValue(const String& attribute) {
 		}
 	}
 
-	return valueNotFound;
+	return VALUENOTFOUND;
 }
 
 float DraftSchematicValuesImplementation::getMinValue(const String& attribute) {
@@ -607,7 +651,7 @@ float DraftSchematicValuesImplementation::getMinValue(const String& attribute) {
 		}
 	}
 
-	return valueNotFound;
+	return VALUENOTFOUND;
 }
 
 void DraftSchematicValuesImplementation::setMinValue(const String& attribute, const float value) {
@@ -663,7 +707,7 @@ int DraftSchematicValuesImplementation::getPrecision(const String& attribute) {
 		}
 	}
 
-	return (int)valueNotFound;
+	return (int)VALUENOTFOUND;
 }
 
 void DraftSchematicValuesImplementation::setPrecision(const String& attribute, const int value) {
@@ -684,10 +728,11 @@ void DraftSchematicValuesImplementation::setPrecision(const String& attribute, c
 	}
 }
 
-void DraftSchematicValuesImplementation::recalculateValues(DraftSchematic* draftSchematic) {
+void DraftSchematicValuesImplementation::recalculateValues(DraftSchematic* draftSchematic, bool initial) {
 
 	String experimentalPropTitle, attributeName;
 	float percentage, min, max, newValue, oldValue;
+	bool hidden;
 
 	for (int i = 0; i < getSubtitleCount(); ++i) {
 
@@ -697,6 +742,8 @@ void DraftSchematicValuesImplementation::recalculateValues(DraftSchematic* draft
 
 		min = getMinValue(attributeName);
 		max = getMaxValue(attributeName);
+
+		hidden = isHidden(attributeName);
 
 		percentage = getCurrentPercentage(attributeName);//experimentalPropTitle);
 
@@ -714,8 +761,9 @@ void DraftSchematicValuesImplementation::recalculateValues(DraftSchematic* draft
 				newValue = (float(1.0f - percentage) * (min - max)) + max;
 		}
 
-		if (newValue != oldValue) {
+		if (newValue != oldValue && (initial || (!initial && !hidden))) {
 			setCurrentValue(attributeName, newValue);
+			//System::out << attributeName << " " << newValue << endl;
 			valuesToSend.add(attributeName);
 		}
 	}
@@ -731,7 +779,7 @@ void DraftSchematicValuesImplementation::toString() {
 
 		System::out << "\n*************************" << endl;
 		System::out << "Subclass " << i << endl;
-		System::out << "Class: " << tempSubclasses->getClassName() << endl;
+		System::out << "Class: " << tempSubclasses->getClassTitle() << endl;
 		System::out << "Name: " << tempSubclasses->getName() << endl;
 		tempSubclasses->toString();
 		System::out << "**************************" << endl;

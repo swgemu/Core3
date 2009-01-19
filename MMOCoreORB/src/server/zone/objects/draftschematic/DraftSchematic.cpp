@@ -296,16 +296,17 @@ void DraftSchematic::setXp(int x) {
 		((DraftSchematicImplementation*) _impl)->setXp(x);
 }
 
-void DraftSchematic::setExpCounter() {
+void DraftSchematic::setExpCounter(int value) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 25);
+		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
 	} else
-		((DraftSchematicImplementation*) _impl)->setExpCounter();
+		((DraftSchematicImplementation*) _impl)->setExpCounter(value);
 }
 
 void DraftSchematic::setExpPoints(int points) {
@@ -853,7 +854,7 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setXp(inv->getSignedIntParameter());
 		break;
 	case 25:
-		setExpCounter();
+		setExpCounter(inv->getSignedIntParameter());
 		break;
 	case 26:
 		setExpPoints(inv->getSignedIntParameter());
@@ -1052,8 +1053,8 @@ void DraftSchematicAdapter::setXp(int x) {
 	return ((DraftSchematicImplementation*) impl)->setXp(x);
 }
 
-void DraftSchematicAdapter::setExpCounter() {
-	return ((DraftSchematicImplementation*) impl)->setExpCounter();
+void DraftSchematicAdapter::setExpCounter(int value) {
+	return ((DraftSchematicImplementation*) impl)->setExpCounter(value);
 }
 
 void DraftSchematicAdapter::setExpPoints(int points) {

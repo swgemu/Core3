@@ -590,6 +590,23 @@ TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint
     case 0x9EC5864C:
     	item = new MolecularClamp(objectid, objectcrc, objectname, objecttemp);
     	break;
+    case 0xE87446BF:
+    case 0x1A0F19FE:
+    case 0xF9E2CBB8:
+    case 0x15ADE9E5:
+    case 0xCEBA4172:
+    case 0x87B726FF:
+    case 0x7C540DEB:
+    case 0x35596A66:
+    case 0x47888310:
+    case 0x0E85E49D:
+    case 0x06618416:
+    case 0x50E06D6C:
+    case 0x1A8A9B32:
+    case 0xFB00F899:
+    case 0xA0E061DC:
+    	item = new Firework(objectid, objectcrc, objectname, objecttemp);
+    	break;
 	default:
 		item = new TangibleObject(objectid, objectcrc, objectname, objecttemp, TangibleObjectImplementation::MISC);
 		break;
@@ -1878,7 +1895,7 @@ TangibleObject* ItemManagerImplementation::forageStatRandomizer(TangibleObject* 
 	    case (0x891C5134): //ABEC
 	    	property = "Charges";
 	    	value = component->getAttributeValue(property);
-	    	if (value != DraftSchematicValuesImplementation::valueNotFound) {
+	    	if (value != DraftSchematicValuesImplementation::VALUENOTFOUND) {
 
 	    	   	value += System::random((int)value * 3);
 	    	   	component->changeAttributeValue(property, value);
@@ -1891,7 +1908,7 @@ TangibleObject* ItemManagerImplementation::forageStatRandomizer(TangibleObject* 
 	    case (0xAFFCBBEB): //ASDS
 	    	property = "Power";
 	    	value = component->getAttributeValue(property);
-	    	if (value != DraftSchematicValuesImplementation::valueNotFound) {
+	    	if (value != DraftSchematicValuesImplementation::VALUENOTFOUND) {
 	    	    value += System::random((int)value * 3);
 	    	   	component->changeAttributeValue(property, value);
 	    	}

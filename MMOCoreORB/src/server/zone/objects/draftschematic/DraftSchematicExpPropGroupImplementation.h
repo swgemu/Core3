@@ -66,6 +66,8 @@ class DraftSchematicExpPropGroupImplementation: public DraftSchematicExpPropGrou
 
 	int decimalPrecision;
 
+	bool filler;
+
 public:
 	// When they allow passing of vectors, make this constructor take in a Vector of Strings and a vector
 	// of uint32 for the types and weights
@@ -173,6 +175,10 @@ public:
 
 	inline int getPrecision() {
 		return decimalPrecision;
+	}
+
+	inline bool isFiller() {
+		return filler;
 	}
 
 private:

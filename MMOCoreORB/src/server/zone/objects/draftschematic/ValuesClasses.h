@@ -47,19 +47,26 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+/*
+ * The Values class is just a container for values calculated in crafting
+ * Each "Value" has 3 properties, maxPercentage, currentPercentage, currentValue.
+ * These values coupled with the traits minValue and maxValue allow a generic holder for
+ * whatever value the crafting process needs on any range
+ */
 class Values {
 	VectorMap<String, float> values;
 	String name;
-	float min, max;
+	float minValue, maxValue;
 	int precision;
 	bool locked;
+	bool experimentalProperties;
 
 public:
-	Values(const String& n, const float tempmin, const float tempmax, const int prec) {
+	Values(const String& n, const float tempmin, const float tempmax, const int prec, const bool filler) {
 		name = n;
 
-		min = tempmin;
-		max = tempmax;
+		minValue = tempmin;
+		maxValue = tempmax;
 		precision = prec;
 
 		locked = false;
@@ -67,6 +74,8 @@ public:
 		values.put("maxPercentage", 0.0f);
 		values.put("currentPercentage", 0.0f);
 		values.put("currentValue", 0.0f);
+
+		experimentalProperties = filler;
 	}
 
 	~Values(){
@@ -86,15 +95,19 @@ public:
 	}
 
 	inline float getMinValue() {
-		return min;
+		return minValue;
 	}
 
 	inline float getMaxValue() {
-		return max;
+		return maxValue;
 	}
 
 	inline int getPrecision() {
 		return precision;
+	}
+
+	inline bool isFiller() {
+		return experimentalProperties;
 	}
 
 	inline String& getName() {
@@ -102,8 +115,8 @@ public:
 	}
 
 	inline void lockValue() {
-		min = getValue();
-		max = getValue();
+		minValue = getValue();
+		maxValue = getValue();
 		locked = true;
 	}
 
@@ -120,10 +133,10 @@ public:
 
 		float newpercentage;
 
-		if (max > min)
-			newpercentage = (value - min) / (max - min);
+		if (maxValue > minValue)
+			newpercentage = (value - minValue) / (maxValue - minValue);
 		else
-			newpercentage = 1 - ((value - max) / (min - max));
+			newpercentage = 1 - ((value - maxValue) / (minValue - maxValue));
 
 		values.put("currentValue", value);
 		values.put("currentPercentage", newpercentage);
@@ -132,13 +145,13 @@ public:
 	inline void setMinValue(const float value) {
 		if (locked)
 			return;
-		min = value;
+		minValue = value;
 	}
 
 	inline void setMaxValue(const float value) {
 		if (locked)
 			return;
-		max = value;
+		maxValue = value;
 	}
 
 	inline void setPrecision(const int value) {
@@ -171,10 +184,10 @@ public:
 		setPercentage(reset);
 
 		float newvalue;
-		if (max > min)
-			newvalue = (reset * (max - min)) + min;
+		if (maxValue > minValue)
+			newvalue = (reset * (maxValue - minValue)) + minValue;
 		else
-			newvalue = ((1.0f - reset) * (min - max)) + max;
+			newvalue = ((1.0f - reset) * (minValue - maxValue)) + maxValue;
 		setValue(newvalue);
 	}
 
@@ -183,19 +196,26 @@ public:
 class Subclasses {
 	VectorMap<String, Values*> valueList;
 	float avePercentage;
-	String name, className;
+	String name, classTitle;
+
+	bool hidden;
 
 public:
 	Subclasses(const String& title, const String& subtitle, const float
-			min, const float max, const int precision) {
+			min, const float max, const int precision, const bool filler) {
 
-		className = title;
+		classTitle = title;
 
 		name = subtitle;
 
-		Values* values = new Values(subtitle ,min, max, precision);
+		Values* values = new Values(subtitle ,min, max, precision, filler);
 
 		valueList.put(subtitle, values);
+
+		if(classTitle == "null" || classTitle == "" || (min == 0 && max == 0) || (name == ""))
+			hidden = true;
+		else
+			hidden == false;
 	}
 
 	~Subclasses(){
@@ -205,10 +225,10 @@ public:
 		valueList.removeAll();
 	}
 
-	void addSubtitle(const String& s, const float min, const float max, const int precision) {
+	void addSubtitle(const String& s, const float min, const float max, const int precision, const bool filler) {
 
 		if (!valueList.contains(s)) {
-			Values* values = new Values(s, min, max, precision);
+			Values* values = new Values(s, min, max, precision, filler);
 
 			valueList.put(s, values);
 		}
@@ -224,6 +244,10 @@ public:
 
 	inline int size(){
 		return valueList.size();
+	}
+
+	inline bool isHidden(){
+		return hidden;
 	}
 
 	inline float getPercentage(const String& subTitle) {
@@ -245,8 +269,8 @@ public:
 		return name;
 	}
 
-	inline String& getClassName() {
-		return className;
+	inline String& getClassTitle() {
+		return classTitle;
 	}
 
 	inline void setMaxPercentage(const String& subtitle, const float value) {
