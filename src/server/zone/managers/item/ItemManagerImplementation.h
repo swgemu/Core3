@@ -141,6 +141,7 @@ public:
 	void createPlayerDeed(Player* player, DeedObject* item);
 
 	void deletePlayerItem(Player* player, TangibleObject* item, bool notify);
+	void deletePlayerItemAndSetContainerNull(Player* player, TangibleObject* item, bool notify);
 
 	void savePlayerItem(Player* player, TangibleObject* item);
 

@@ -3915,32 +3915,44 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player,
 	float z = tokenizer.getFloatToken();
 	float y = tokenizer.getFloatToken();
 
+	TangibleObject* targetTanoObject;
+
 	if (destinationID == player->getObjectID()) { //equipping item to player (weapons, clothes etc.)
 		player->changeCloth(target);
-
 	} else if (destinationID == player->getObjectID() + 1) { //item is going to inventory
-		TangibleObject* targetTanoObject = (TangibleObject*) player->getInventoryItem(target);
-		if (targetTanoObject != NULL) {
-			if(player->isTanoObjEquipped(targetTanoObject)) {
-				if(targetTanoObject->isWeapon()) {
-					player->changeWeapon(target, true);
-					//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping weapon.\n";
-				} else if(targetTanoObject->isArmor()) {
-					player->changeArmor(target, false);
-					//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping armor.\n";
-				} else if(targetTanoObject->isClothing()) {
-					player->changeCloth(target);
-					//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping clothing.\n";
-				}
+		targetTanoObject = (TangibleObject*) player->getInventoryItem(target);
+
+		if (targetTanoObject == NULL){ //the item can't be found in the inventory - maybe a world object?
+			Zone* zone = player->getZone();
+			if (zone != NULL) {
+				targetTanoObject = (TangibleObject*) zone->lookupObject(target);
 			}
-		} else {
+		}
+
+ 		if (targetTanoObject != NULL) {
+ 			if(player->isTanoObjEquipped(targetTanoObject)) {
+ 				if(targetTanoObject->isWeapon()) {
+ 					player->changeWeapon(target, true);
+ 					//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping weapon.\n";
+ 				} else if(targetTanoObject->isArmor()) {
+ 					player->changeArmor(target, true);
+ 					//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping armor.\n";
+ 				} else if(targetTanoObject->isClothing()) {
+ 					player->changeArmor(target, true);
+ 					//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping armor.\n";
+ 				} else if(targetTanoObject->isWearableContainer()) {
+ 					player->changeArmor(target, true);
+					//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping backpack.\n";
+ 				}
+ 			}
+ 		} else {
 			//System::out << "ObjectControllerMessage::parseTransferItemMisc, item unequip not implemented in ObjectControllerMessage::parseTransferItemMisc.\n";
-			return;
+ 			return;
 		}
 
 		SceneObject* targetObject = player->getTarget();
 
-		//Target is dead creature, looting from another creature to players inventory
+		//Player'S target is a dead creature, looting to players inventory
 		if (targetObject != NULL && targetObject->isNonPlayerCreature()) {
 			Creature* creature = (Creature*) targetObject;
 
@@ -3975,7 +3987,9 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player,
 			TangibleObject* item = validateDropAction(player, target);
 
 			if (item != NULL)
+			{
 				transferItemToContainer(player, item, destinationID);
+			}
 
 			return;
 		}
@@ -4435,6 +4449,7 @@ TangibleObject* ObjectControllerMessage::validateDropAction(Player* player,
 		obj = player->getInventoryItem(target);
 		if (obj == NULL)
 			return NULL;
+
 	}
 
 	if (!obj->isTangible())

@@ -258,31 +258,6 @@ void LootManager::createLoot(Creature* creature, Player* player) {
 
 	creature->setCashCredits(0);
 
-	/* old code
-	int itemcount = System::random(creatureLevel / 100) + 1;
-
-	for (int i = 0; i < itemcount; ++i) {
-		int lootchance = System::random(100);
-
-		int creaturechancemodifier = creatureLevel / 100;
-
-		if (lootchance < 5 + creaturechancemodifier) {
-			createArmorLoot(creature, creatureLevel + 50);
-		} else if (lootchance < 10 + 2 * creaturechancemodifier) {
-			createClothingLoot(creature, creatureLevel + 50);
-		} else if (lootchance < 15 + 3 * creaturechancemodifier) {
-			createWeaponLoot(creature, creatureLevel + 50);
-		} else if (lootchance < 20 + 4 * creaturechancemodifier) {
-			createAttachmentLoot(creature, creatureLevel + 50);
-		} else if (lootchance < 25 + 5 * creaturechancemodifier) {
-			createPowerupLoot(creature, creatureLevel + 50);
-		} else if (lootchance < 25 + 5 * creaturechancemodifier) {
-			createJunkLoot(creature);
-		}
-
-	}
-	 */
-
 	LootTableManager* ltm;
 	Zone* zone = creature->getZone();
 
