@@ -4397,7 +4397,7 @@ bool CreatureObjectImplementation::isTanoObjEquipped(TangibleObject* tano) {
 	if (inventory == NULL)
 		return false;
 
-	for (int i = 0; i < inventory->isContainerEmpty(); i++) {
+	for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 		TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 
 		if (tano == item)

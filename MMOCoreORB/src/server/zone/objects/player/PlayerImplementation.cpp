@@ -502,7 +502,7 @@ void PlayerImplementation::load(ZoneClientSession* client) {
 		//fillMissionSaveVars(); //REAL
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-		//playerManager->updateOtherFriendlists(_this, true);
+		playerManager->updateOtherFriendlists(_this, true);
 		displayMessageoftheDay();
 
 		//unlock();
@@ -3166,7 +3166,9 @@ void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
 	if (obj == NULL || !obj->isTangible())
 		return;
 
-	if (!((TangibleObject*)obj.get())->isArmor() && !((TangibleObject*)obj.get())->isClothing())
+	if (!((TangibleObject*)obj.get())->isArmor()
+			&& !((TangibleObject*)obj.get())->isClothing()
+			&& !((TangibleObject*)obj.get())->isWearableContainer())
 		return;
 
 	Wearable* cloth = (Wearable*) obj.get();
