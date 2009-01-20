@@ -144,6 +144,7 @@ interface TangibleObject implements SceneObject {
 
 	boolean isWeaponPowerup();
 	boolean isCamoKit();
+	boolean isCampKit();
 	boolean isLoot();
 
 	boolean isInsured();

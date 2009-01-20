@@ -712,6 +712,10 @@ public:
 		return objectSubType == CAMOKIT;
 	}
 
+	inline bool isCampKit() {
+		return objectSubType == CAMPKIT;
+	}
+
 	inline int getConditionDamage() {
 		return conditionDamage;
 	}

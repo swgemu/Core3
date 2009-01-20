@@ -48,9 +48,13 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "../VisitorList.h"
+#include "../RecoveryList.h"
+
 #include "../../terminal/camp/CampTerminal.h"
 #include "../events/CampDespawnEvent.h"
 #include "../events/CampAbandonEvent.h"
+#include "../events/CampRecoveryEvent.h"
+
 class Zone;
 class Player;
 class DeedObject;
@@ -68,6 +72,8 @@ protected:
 
 	Vector<ManagedReference<SceneObject> > campObjects;
 	VisitorList* visitor;
+	RecoveryList* recoveries;
+
 	bool abandoned;
 
 	CampDespawnEvent* despawnEvent;
@@ -189,6 +195,7 @@ public:
 	void enterNotification(Player* player);
 	void exitNotificaton(Player* player);
 
+	void reactiveRecovery(Player* player);
 };
 
 #endif

@@ -616,12 +616,24 @@ bool TangibleObject::isCamoKit() {
 		return ((TangibleObjectImplementation*) _impl)->isCamoKit();
 }
 
-bool TangibleObject::isLoot() {
+bool TangibleObject::isCampKit() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 53);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->isCampKit();
+}
+
+bool TangibleObject::isLoot() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 54);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -633,7 +645,7 @@ bool TangibleObject::isInsured() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, 55);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -645,7 +657,7 @@ bool TangibleObject::isInsurable() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, 56);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -657,7 +669,7 @@ bool TangibleObject::isDecayable() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 56);
+		DistributedMethod method(this, 57);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -669,7 +681,7 @@ bool TangibleObject::isSlicable() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, 58);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -681,7 +693,7 @@ bool TangibleObject::isSliced() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, 59);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -693,7 +705,7 @@ bool TangibleObject::isBeingSliced() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, 60);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -705,7 +717,7 @@ unsigned long long TangibleObject::getSlicerID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, 61);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -717,7 +729,7 @@ void TangibleObject::setSlicerID(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, 62);
 		method.addUnsignedLongParameter(id);
 
 		method.executeWithVoidReturn();
@@ -730,7 +742,7 @@ void TangibleObject::setSlicable(bool value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 62);
+		DistributedMethod method(this, 63);
 		method.addBooleanParameter(value);
 
 		method.executeWithVoidReturn();
@@ -743,7 +755,7 @@ void TangibleObject::setCraftersName(String& n) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 63);
+		DistributedMethod method(this, 64);
 		method.addAsciiParameter(n);
 
 		method.executeWithVoidReturn();
@@ -756,7 +768,7 @@ void TangibleObject::setCraftedSerial(String& s) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 64);
+		DistributedMethod method(this, 65);
 		method.addAsciiParameter(s);
 
 		method.executeWithVoidReturn();
@@ -769,7 +781,7 @@ void TangibleObject::getCustomizationString(String& appearance) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 65);
+		DistributedMethod method(this, 66);
 		method.addAsciiParameter(appearance);
 
 		method.executeWithVoidReturn();
@@ -782,7 +794,7 @@ void TangibleObject::setPlayerUseMask(unsigned int mask) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 66);
+		DistributedMethod method(this, 67);
 		method.addUnsignedIntParameter(mask);
 
 		method.executeWithVoidReturn();
@@ -795,7 +807,7 @@ unsigned int TangibleObject::getPlayerUseMask() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 67);
+		DistributedMethod method(this, 68);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -807,7 +819,7 @@ void TangibleObject::setOptionsBitmask(unsigned int mask) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 68);
+		DistributedMethod method(this, 69);
 		method.addUnsignedIntParameter(mask);
 
 		method.executeWithVoidReturn();
@@ -820,7 +832,7 @@ unsigned int TangibleObject::getOptionsBitmask() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 69);
+		DistributedMethod method(this, 70);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -832,7 +844,7 @@ int TangibleObject::getObjectSubType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 70);
+		DistributedMethod method(this, 71);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -844,7 +856,7 @@ unsigned int TangibleObject::getTemplateID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 71);
+		DistributedMethod method(this, 72);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -856,7 +868,7 @@ int TangibleObject::getObjectCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 72);
+		DistributedMethod method(this, 73);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -868,7 +880,7 @@ int TangibleObject::getConditionDamage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 73);
+		DistributedMethod method(this, 74);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -880,7 +892,7 @@ int TangibleObject::getMaxCondition() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 74);
+		DistributedMethod method(this, 75);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -892,7 +904,7 @@ int TangibleObject::getCondition() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 75);
+		DistributedMethod method(this, 76);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -904,7 +916,7 @@ void TangibleObject::doDamage(int damage, SceneObject* attacker) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 76);
+		DistributedMethod method(this, 77);
 		method.addSignedIntParameter(damage);
 		method.addObjectParameter(attacker);
 
@@ -918,7 +930,7 @@ String& TangibleObject::getCraftersName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 77);
+		DistributedMethod method(this, 78);
 
 		method.executeWithAsciiReturn(_return_getCraftersName);
 		return _return_getCraftersName;
@@ -931,7 +943,7 @@ String& TangibleObject::getCraftedSerial() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 78);
+		DistributedMethod method(this, 79);
 
 		method.executeWithAsciiReturn(_return_getCraftedSerial);
 		return _return_getCraftedSerial;
@@ -944,7 +956,7 @@ void TangibleObject::setAttributes(String& attributeString) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 79);
+		DistributedMethod method(this, 80);
 		method.addAsciiParameter(attributeString);
 
 		method.executeWithVoidReturn();
@@ -957,7 +969,7 @@ String& TangibleObject::getAttributes() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 80);
+		DistributedMethod method(this, 81);
 
 		method.executeWithAsciiReturn(_return_getAttributes);
 		return _return_getAttributes;
@@ -970,7 +982,7 @@ void TangibleObject::addAttributes(AttributeListMessage* alm) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 81);
+		DistributedMethod method(this, 82);
 		method.addObjectParameter(alm);
 
 		method.executeWithVoidReturn();
@@ -983,7 +995,7 @@ String& TangibleObject::getMisoAsocKey() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 82);
+		DistributedMethod method(this, 83);
 
 		method.executeWithAsciiReturn(_return_getMisoAsocKey);
 		return _return_getMisoAsocKey;
@@ -996,7 +1008,7 @@ void TangibleObject::setLoot(bool l) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 83);
+		DistributedMethod method(this, 84);
 		method.addBooleanParameter(l);
 
 		method.executeWithVoidReturn();
@@ -1009,7 +1021,7 @@ void TangibleObject::setMaxCondition(int maxCond) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 84);
+		DistributedMethod method(this, 85);
 		method.addSignedIntParameter(maxCond);
 
 		method.executeWithVoidReturn();
@@ -1022,7 +1034,7 @@ void TangibleObject::setObjectSubType(const int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 85);
+		DistributedMethod method(this, 86);
 		method.addSignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -1035,7 +1047,7 @@ void TangibleObject::setPersistent(bool pers) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 86);
+		DistributedMethod method(this, 87);
 		method.addBooleanParameter(pers);
 
 		method.executeWithVoidReturn();
@@ -1048,7 +1060,7 @@ void TangibleObject::setUpdated(bool upd) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 87);
+		DistributedMethod method(this, 88);
 		method.addBooleanParameter(upd);
 
 		method.executeWithVoidReturn();
@@ -1061,7 +1073,7 @@ void TangibleObject::setConditionDamage(int damage) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 88);
+		DistributedMethod method(this, 89);
 		method.addSignedIntParameter(damage);
 
 		method.executeWithVoidReturn();
@@ -1074,7 +1086,7 @@ void TangibleObject::setCustomizationString(String& cust) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 89);
+		DistributedMethod method(this, 90);
 		method.addAsciiParameter(cust);
 
 		method.executeWithVoidReturn();
@@ -1087,7 +1099,7 @@ void TangibleObject::setCustomizationVariable(const String& type, unsigned int v
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 90);
+		DistributedMethod method(this, 91);
 		method.addAsciiParameter(type);
 		method.addUnsignedIntParameter(value);
 
@@ -1101,7 +1113,7 @@ void TangibleObject::setCustomizationVariable(unsigned char type, unsigned int v
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 91);
+		DistributedMethod method(this, 92);
 		method.addUnsignedCharParameter(type);
 		method.addUnsignedIntParameter(value);
 
@@ -1115,7 +1127,7 @@ void TangibleObject::setObjectCount(const int count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 92);
+		DistributedMethod method(this, 93);
 		method.addSignedIntParameter(count);
 
 		method.executeWithVoidReturn();
@@ -1128,7 +1140,7 @@ void TangibleObject::setMisoAsocKey(const String& tma) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 93);
+		DistributedMethod method(this, 94);
 		method.addAsciiParameter(tma);
 
 		method.executeWithVoidReturn();
@@ -1141,7 +1153,7 @@ void TangibleObject::updateOptionsBitmask(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 94);
+		DistributedMethod method(this, 95);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -1154,7 +1166,7 @@ void TangibleObject::updateInsurance(Player* player, bool insure) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 95);
+		DistributedMethod method(this, 96);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(insure);
 
@@ -1168,7 +1180,7 @@ void TangibleObject::onBroken() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 96);
+		DistributedMethod method(this, 97);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1180,7 +1192,7 @@ void TangibleObject::onSlicingFailure(Player* slicer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 97);
+		DistributedMethod method(this, 98);
 		method.addObjectParameter(slicer);
 
 		method.executeWithVoidReturn();
@@ -1193,7 +1205,7 @@ void TangibleObject::decay(float decayRate) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 98);
+		DistributedMethod method(this, 99);
 		method.addFloatParameter(decayRate);
 
 		method.executeWithVoidReturn();
@@ -1206,7 +1218,7 @@ void TangibleObject::slice(Player* slicer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 99);
+		DistributedMethod method(this, 100);
 		method.addObjectParameter(slicer);
 
 		method.executeWithVoidReturn();
@@ -1367,144 +1379,147 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(isCamoKit());
 		break;
 	case 53:
-		resp->insertBoolean(isLoot());
+		resp->insertBoolean(isCampKit());
 		break;
 	case 54:
-		resp->insertBoolean(isInsured());
+		resp->insertBoolean(isLoot());
 		break;
 	case 55:
-		resp->insertBoolean(isInsurable());
+		resp->insertBoolean(isInsured());
 		break;
 	case 56:
-		resp->insertBoolean(isDecayable());
+		resp->insertBoolean(isInsurable());
 		break;
 	case 57:
-		resp->insertBoolean(isSlicable());
+		resp->insertBoolean(isDecayable());
 		break;
 	case 58:
-		resp->insertBoolean(isSliced());
+		resp->insertBoolean(isSlicable());
 		break;
 	case 59:
-		resp->insertBoolean(isBeingSliced());
+		resp->insertBoolean(isSliced());
 		break;
 	case 60:
-		resp->insertLong(getSlicerID());
+		resp->insertBoolean(isBeingSliced());
 		break;
 	case 61:
-		setSlicerID(inv->getUnsignedLongParameter());
+		resp->insertLong(getSlicerID());
 		break;
 	case 62:
-		setSlicable(inv->getBooleanParameter());
+		setSlicerID(inv->getUnsignedLongParameter());
 		break;
 	case 63:
-		setCraftersName(inv->getAsciiParameter(_param0_setCraftersName__String_));
+		setSlicable(inv->getBooleanParameter());
 		break;
 	case 64:
-		setCraftedSerial(inv->getAsciiParameter(_param0_setCraftedSerial__String_));
+		setCraftersName(inv->getAsciiParameter(_param0_setCraftersName__String_));
 		break;
 	case 65:
-		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__String_));
+		setCraftedSerial(inv->getAsciiParameter(_param0_setCraftedSerial__String_));
 		break;
 	case 66:
-		setPlayerUseMask(inv->getUnsignedIntParameter());
+		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__String_));
 		break;
 	case 67:
-		resp->insertInt(getPlayerUseMask());
+		setPlayerUseMask(inv->getUnsignedIntParameter());
 		break;
 	case 68:
-		setOptionsBitmask(inv->getUnsignedIntParameter());
+		resp->insertInt(getPlayerUseMask());
 		break;
 	case 69:
-		resp->insertInt(getOptionsBitmask());
+		setOptionsBitmask(inv->getUnsignedIntParameter());
 		break;
 	case 70:
-		resp->insertSignedInt(getObjectSubType());
+		resp->insertInt(getOptionsBitmask());
 		break;
 	case 71:
-		resp->insertInt(getTemplateID());
+		resp->insertSignedInt(getObjectSubType());
 		break;
 	case 72:
-		resp->insertSignedInt(getObjectCount());
+		resp->insertInt(getTemplateID());
 		break;
 	case 73:
-		resp->insertSignedInt(getConditionDamage());
+		resp->insertSignedInt(getObjectCount());
 		break;
 	case 74:
-		resp->insertSignedInt(getMaxCondition());
+		resp->insertSignedInt(getConditionDamage());
 		break;
 	case 75:
-		resp->insertSignedInt(getCondition());
+		resp->insertSignedInt(getMaxCondition());
 		break;
 	case 76:
-		doDamage(inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter());
+		resp->insertSignedInt(getCondition());
 		break;
 	case 77:
-		resp->insertAscii(getCraftersName());
+		doDamage(inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
 	case 78:
-		resp->insertAscii(getCraftedSerial());
+		resp->insertAscii(getCraftersName());
 		break;
 	case 79:
-		setAttributes(inv->getAsciiParameter(_param0_setAttributes__String_));
+		resp->insertAscii(getCraftedSerial());
 		break;
 	case 80:
-		resp->insertAscii(getAttributes());
+		setAttributes(inv->getAsciiParameter(_param0_setAttributes__String_));
 		break;
 	case 81:
-		addAttributes((AttributeListMessage*) inv->getObjectParameter());
+		resp->insertAscii(getAttributes());
 		break;
 	case 82:
-		resp->insertAscii(getMisoAsocKey());
+		addAttributes((AttributeListMessage*) inv->getObjectParameter());
 		break;
 	case 83:
-		setLoot(inv->getBooleanParameter());
+		resp->insertAscii(getMisoAsocKey());
 		break;
 	case 84:
-		setMaxCondition(inv->getSignedIntParameter());
+		setLoot(inv->getBooleanParameter());
 		break;
 	case 85:
-		setObjectSubType(inv->getSignedIntParameter());
+		setMaxCondition(inv->getSignedIntParameter());
 		break;
 	case 86:
-		setPersistent(inv->getBooleanParameter());
+		setObjectSubType(inv->getSignedIntParameter());
 		break;
 	case 87:
-		setUpdated(inv->getBooleanParameter());
+		setPersistent(inv->getBooleanParameter());
 		break;
 	case 88:
-		setConditionDamage(inv->getSignedIntParameter());
+		setUpdated(inv->getBooleanParameter());
 		break;
 	case 89:
-		setCustomizationString(inv->getAsciiParameter(_param0_setCustomizationString__String_));
+		setConditionDamage(inv->getSignedIntParameter());
 		break;
 	case 90:
-		setCustomizationVariable(inv->getAsciiParameter(_param0_setCustomizationVariable__String_int_), inv->getUnsignedIntParameter());
+		setCustomizationString(inv->getAsciiParameter(_param0_setCustomizationString__String_));
 		break;
 	case 91:
-		setCustomizationVariable(inv->getUnsignedCharParameter(), inv->getUnsignedIntParameter());
+		setCustomizationVariable(inv->getAsciiParameter(_param0_setCustomizationVariable__String_int_), inv->getUnsignedIntParameter());
 		break;
 	case 92:
-		setObjectCount(inv->getSignedIntParameter());
+		setCustomizationVariable(inv->getUnsignedCharParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 93:
-		setMisoAsocKey(inv->getAsciiParameter(_param0_setMisoAsocKey__String_));
+		setObjectCount(inv->getSignedIntParameter());
 		break;
 	case 94:
-		updateOptionsBitmask((Player*) inv->getObjectParameter());
+		setMisoAsocKey(inv->getAsciiParameter(_param0_setMisoAsocKey__String_));
 		break;
 	case 95:
-		updateInsurance((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
+		updateOptionsBitmask((Player*) inv->getObjectParameter());
 		break;
 	case 96:
-		onBroken();
+		updateInsurance((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 97:
-		onSlicingFailure((Player*) inv->getObjectParameter());
+		onBroken();
 		break;
 	case 98:
-		decay(inv->getFloatParameter());
+		onSlicingFailure((Player*) inv->getObjectParameter());
 		break;
 	case 99:
+		decay(inv->getFloatParameter());
+		break;
+	case 100:
 		slice((Player*) inv->getObjectParameter());
 		break;
 	default:
@@ -1700,6 +1715,10 @@ bool TangibleObjectAdapter::isWeaponPowerup() {
 
 bool TangibleObjectAdapter::isCamoKit() {
 	return ((TangibleObjectImplementation*) impl)->isCamoKit();
+}
+
+bool TangibleObjectAdapter::isCampKit() {
+	return ((TangibleObjectImplementation*) impl)->isCampKit();
 }
 
 bool TangibleObjectAdapter::isLoot() {

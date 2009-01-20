@@ -302,7 +302,6 @@ class PlayerImplementation : public PlayerServant {
 	Badges * badges;
 
 	CampSite* camp;
-	uint8 campAggro;
 	//Cloning
 	CloningFacility* cloningFacility;
 
@@ -1687,9 +1686,6 @@ public:
 	}
 
 	inline bool isImmune() {
-		if (campAggro != 0) {
-			return System::random(100) < campAggro;
-		}
 		return immune;
 	}
 
@@ -2062,14 +2058,6 @@ public:
 
 	inline String& getConsentEntry(int index) {
 		return consentList.get(index);
-	}
-
-	inline uint8 getCampAggroMod() {
-		return campAggro;
-	}
-
-	inline void setCampAggroMod(uint8 mod) {
-		campAggro = mod;
 	}
 
 	friend class PlayerManager;

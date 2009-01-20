@@ -921,6 +921,8 @@ interface CreatureObject implements TangibleObject {
 	void setCampModifier(int mod);
 	int getCampModifier();
 	boolean isInCamp();
+	int getCampAggroMod();
+	void setCampAggroMod(int mod);
 
 	int getNumberOfPets();
 	void setNumberOfPets(int num);

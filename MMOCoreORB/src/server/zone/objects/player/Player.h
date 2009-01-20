@@ -233,6 +233,8 @@ public:
 
 	void queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, const String& actionModifier);
 
+	void doInstantAction(unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, const String& amod);
+
 	void deleteQueueAction(unsigned int actioncntr);
 
 	void changePosture(int post);
@@ -857,10 +859,6 @@ public:
 
 	bool hasCamp();
 
-	int getCampAggroMod();
-
-	void setCampAggroMod(int mod);
-
 	unsigned long long getAvailablePower();
 
 	void removePower(unsigned long long power);
@@ -1175,6 +1173,8 @@ public:
 	void clearQueueAction(unsigned int actioncntr, float timer, unsigned int tab1, unsigned int tab2);
 
 	void queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, const String& actionModifier);
+
+	void doInstantAction(unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, const String& amod);
 
 	void deleteQueueAction(unsigned int actioncntr);
 
@@ -1800,10 +1800,6 @@ public:
 
 	bool hasCamp();
 
-	int getCampAggroMod();
-
-	void setCampAggroMod(int mod);
-
 	unsigned long long getAvailablePower();
 
 	void removePower(unsigned long long power);
@@ -1935,6 +1931,7 @@ public:
 protected:
 	String _param0_queueFlourish__String_long_int_;
 	String _param4_queueAction__Player_long_int_int_String_;
+	String _param3_doInstantAction__long_int_int_String_;
 	String _param0_trainSkillBox__String_bool_;
 	String _param0_surrenderSkillBox__String_;
 	String _param0_hasSkillBox__String_;

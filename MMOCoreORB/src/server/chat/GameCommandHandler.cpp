@@ -356,8 +356,12 @@ void GameCommandHandler::init() {
 			&drag);
 
 
-
 	/* Disabled Commands
+
+	gmCommands->addCommand("deleteFromZone", DEVELOPER,
+			"Deletes the target item from the zone.",
+			"Usage: @deleteFromZone",
+			&deleteFromZone);
 
 
 	gmCommands->addCommand("setLocation", DEVELOPER,
@@ -3408,4 +3412,15 @@ void GameCommandHandler::drag(StringTokenizer tokenizer, Player* player) {
 		player->sendSystemMessage("healing_response", "healing_response_a6"); //"You may only drag players!"
 		return;
 	}
+}
+
+void GameCommandHandler::deleteFromZone(StringTokenizer tokenizer, Player* player) {
+	SceneObject* obj = player->getTarget();
+
+	if (obj == NULL) {
+		return;
+	}
+
+	obj->removeFromZone(true);
+	obj->finalize();
 }

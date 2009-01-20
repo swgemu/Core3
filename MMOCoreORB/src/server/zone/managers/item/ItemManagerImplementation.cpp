@@ -2086,6 +2086,10 @@ void ItemManagerImplementation::moveItem(Zone* zone, Player* player, TangibleObj
 	if (object != NULL)
 		objectID = object->getObjectID();
 
+	if (item !=NULL && item->isCampKit()) {
+		return;
+	}
+
 	try {
 		item->wlock(player);
 

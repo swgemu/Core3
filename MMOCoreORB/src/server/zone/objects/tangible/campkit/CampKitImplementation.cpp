@@ -142,9 +142,9 @@ bool CampKitImplementation::isUsefull(Player* player) {
 		player->sendSystemMessage("@camp:error_nobuild");
 		return false;
 	} else if (player->isInBuilding()) {
-		player->sendSystemMessage("You cannot place a structure while inside a building.");//TODO:find correct error message.
+		player->sendSystemMessage("@camp:error_inside");
 		return false;
-	} else if (player->hasCamp()) {
+	} else if (player->hasCamp() || player->getParent() != NULL) {
 		player->sendSystemMessage("@camp:sys_already_camping");
 		return false;
 	} else if (!player->isStanding()) {
@@ -244,4 +244,3 @@ void CampKitImplementation::parseItemAttributes() {
 	attr = "campType";
 	setCampType(itemAttributes->getIntAttribute(attr));
 }
-
