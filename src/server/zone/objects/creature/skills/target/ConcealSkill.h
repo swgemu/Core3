@@ -91,10 +91,6 @@ public:
 			return;
 		}
 
-		if (!calculateCost(creature)) {
-			return;
-		}
-
 		if (target != NULL) {
 			if(!target->isPlayer()) {
 				player->sendSystemMessage("skl_use", "sys_conceal_notplayer");
@@ -103,6 +99,10 @@ public:
 			Player* tar = (Player*) target;
 
 			if (!isUseful(tar)) {
+				return;
+			}
+
+			if (!calculateCost(tar)) {
 				return;
 			}
 

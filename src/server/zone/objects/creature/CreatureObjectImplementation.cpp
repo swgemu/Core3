@@ -4250,9 +4250,9 @@ void CreatureObjectImplementation::deactivateCamo(bool forced) {
 		if (forced)
 			sendSystemMessage("skl_use", "sys_scentmask_break");
 		else if (getCamoType() == CamoSkill::MASKSCENT)
-			sendSystemMessage("skl_use", "sys_scentmask_stop ");
+			sendSystemMessage("skl_use", "sys_scentmask_stop");
 		else
-			sendSystemMessage("skl_use", "sys_conceal_stop ");
+			sendSystemMessage("skl_use", "sys_conceal_stop");
 
 
 
