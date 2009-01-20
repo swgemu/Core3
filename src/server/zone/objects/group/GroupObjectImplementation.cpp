@@ -62,6 +62,7 @@ GroupObjectImplementation::GroupObjectImplementation(uint64 oid, Player* Leader)
 	leader = Leader;
 
 	groupMembers.add(Leader);
+	addSquadLeaderBonuses(Leader);
 
 	StringBuffer name;
 	name << "Group :" << oid;
@@ -101,9 +102,10 @@ void GroupObjectImplementation::sendTo(Player* player, bool doClose) {
 
 void GroupObjectImplementation::addPlayer(Player* player) {
 	int index = groupMembers.size();
-	
+
 	groupMembers.add(player);
 	calcGroupLevel();
+	addSquadLeaderBonuses(player);
 
 	GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6((GroupObject*) _this);
 	grp->addMember(player, index);
@@ -120,7 +122,7 @@ void GroupObjectImplementation::addPlayer(Player* player) {
 
 void GroupObjectImplementation::calcGroupLevel() {
 	groupLevel = 0;
-	
+
 	for (int i = 0; i < getGroupSize(); i++) {
 		int currentlevel = groupLevel - getGroupSize();
 		int memberlevel = getGroupMember(i)->getLevel();
@@ -137,8 +139,9 @@ void GroupObjectImplementation::removePlayer(Player* player) {
 
 		if (play == player) {
 			groupMembers.remove(i);
-			
+
 			calcGroupLevel();
+			removeSquadLeaderBonuses(play);
 
 			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6((GroupObject*) _this);
 			grp->removeMember(i);
@@ -153,7 +156,7 @@ void GroupObjectImplementation::removePlayer(Player* player) {
 
 	if ((player == leader) && groupMembers.size() > 0)
 		leader = groupMembers.get(0);
-		
+
 	calcGroupLevel();
 }
 
@@ -178,6 +181,7 @@ void GroupObjectImplementation::disband() {
 
 			play->setGroup(NULL);
 			play->updateGroupId(0);
+			removeSquadLeaderBonuses(play);
 
 			BaseMessage* msg = new SceneObjectDestroyMessage((GroupObject*) _this);
 			play->sendMessage(msg);
@@ -272,11 +276,16 @@ void GroupObjectImplementation::makeLeader(Player* player) {
 	if (groupMembers.size() < 2)
 		return;
 
+	for(int i = 0; i < groupMembers.size(); i++) {
+		removeSquadLeaderBonuses(groupMembers.get(i));
+	}
+
 	Player* temp = leader;
 	leader = player;
-
 	int i = 0;
 	for (; i < groupMembers.size(); i++) {
+		addSquadLeaderBonuses(groupMembers.get(i));
+
 		if (groupMembers.get(i) == player) {
 			groupMembers.set(0, player);
 			groupMembers.set(i, temp);
@@ -333,4 +342,28 @@ float GroupObjectImplementation::getRangerBonusForHarvesting(Player* player) {
 		return bonus;
 	else
 		return 0.0f;
+}
+
+void GroupObjectImplementation::addSquadLeaderBonuses(CreatureObject* groupMember) {
+	int meleeDefenseBonus = leader->getSkillMod("group_melee_defense");
+	int rangedDefenseBonus = leader->getSkillMod("group_ranged_defense");
+	int burstRunBonus = leader->getSkillMod("group_burst_run");
+	int terrainNegotiationBonus = leader->getSkillMod("group_slope_move");
+
+	groupMember->addSkillModBonus("melee_defense", meleeDefenseBonus, false);
+	groupMember->addSkillModBonus("ranged_defense", rangedDefenseBonus, false);
+	groupMember->addSkillModBonus("burst_run", burstRunBonus, false);
+	groupMember->addSkillModBonus("slope_move", terrainNegotiationBonus, false);
+}
+
+void GroupObjectImplementation::removeSquadLeaderBonuses(CreatureObject* groupMember) {
+	int meleeDefenseBonus = leader->getSkillMod("group_melee_defense");
+	int rangedDefenseBonus = leader->getSkillMod("group_ranged_defense");
+	int burstRunBonus = leader->getSkillMod("group_burst_run");
+	int terrainNegotiationBonus = leader->getSkillMod("group_slope_move");
+
+	groupMember->addSkillModBonus("melee_defense", -meleeDefenseBonus, false);
+	groupMember->addSkillModBonus("ranged_defense", -rangedDefenseBonus, false);
+	groupMember->addSkillModBonus("burst_run", -burstRunBonus, false);
+	groupMember->addSkillModBonus("slope_move", -terrainNegotiationBonus, false);
 }
