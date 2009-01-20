@@ -58,6 +58,7 @@ HTFBCampSiteImplementation::HTFBCampSiteImplementation(Player* player, uint64 oi
 	campArea = NULL;
 	areaRange = 15.0f;
 	visitor = new VisitorList();
+	recoveries = new RecoveryList();
 	currentXP = 0.0f;
 	campType = campKit->getCampType();
 
@@ -79,6 +80,7 @@ HTFBCampSiteImplementation::~HTFBCampSiteImplementation() {
 
 	abandonEvent = NULL;
 	visitor = NULL;
+	recoveries = NULL;
 	zone = NULL;
 }
 

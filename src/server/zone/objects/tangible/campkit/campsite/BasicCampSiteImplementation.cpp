@@ -57,6 +57,7 @@ BasicCampSiteImplementation::BasicCampSiteImplementation(Player* player, uint64 
 	campArea = NULL;
 	areaRange = 5.0f;
 	visitor = new VisitorList();
+	recoveries = new RecoveryList();
 	currentXP = 0.0f;
 	campType = campKit->getCampType();
 
@@ -78,6 +79,7 @@ BasicCampSiteImplementation::~BasicCampSiteImplementation() {
 
 	abandonEvent = NULL;
 	visitor = NULL;
+	recoveries = NULL;
 	zone = NULL;
 }
 

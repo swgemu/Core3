@@ -368,8 +368,9 @@ protected:
 	int ferocity;
 	bool baby;
 
-	int campMod;
-	int petNumber;
+	uint8 campMod;
+	uint8 campAggro;
+	uint8 petNumber;
 
 	float combatRegenModifier;
 	float peacedRegenModifier;
@@ -2619,7 +2620,7 @@ public:
 		templateString = tmpString;
 	}
 
-		void setCamoType(unsigned int cType) {
+	void setCamoType(unsigned int cType) {
 		camoType = cType;
 	}
 
@@ -2738,6 +2739,13 @@ public:
 		return peacedRegenModifier;
 	}
 
+	inline uint8 getCampAggroMod() {
+		return campAggro;
+	}
+
+	inline void setCampAggroMod(uint8 mod) {
+		campAggro = mod;
+	}
 
 
 

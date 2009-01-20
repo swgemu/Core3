@@ -256,9 +256,12 @@ void CampSiteImplementation::enterNotification(Player* player) {
 	player->setCampModifier(campModifier);
 	player->setCampAggroMod(aggroMod);
 
+	CampRecoveryEvent* recoveryEvent = new CampRecoveryEvent(player,_this);
+	server->addEvent(recoveryEvent,300000);
+	recoveries->put(player->getObjectID(),recoveryEvent);
+
 	Time enterTime;
 	visitor->put(player->getObjectID(),enterTime.getTime());
-
 }
 
 /*
@@ -277,6 +280,7 @@ void CampSiteImplementation::exitNotificaton(Player* player) {
 	player->sendSystemMessage("@camp:camp_exit");
 	player->setCampModifier(0);
 	player->setCampAggroMod(0);
+	recoveries->getEvent(player->getObjectID())->leaveCamp();
 
 	addXP(player->getObjectID());
 	visitor->put(player->getObjectID(),0);
@@ -319,4 +323,10 @@ void CampSiteImplementation::addXP(uint64 playerID) {
 
 		currentXP += xp;
 	}
+}
+
+void CampSiteImplementation::reactiveRecovery(Player* player) {
+	CampRecoveryEvent* recoveryEvent = recoveries->getEvent(player->getObjectID());
+	if (recoveryEvent != NULL && !recoveryEvent->isQueued())
+		server->addEvent(recoveryEvent,300000);
 }

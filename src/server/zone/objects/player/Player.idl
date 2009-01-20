@@ -718,8 +718,6 @@ interface Player implements CreatureObject {
 	void setCamp(CampSite campSite);
 	CampSite getCamp();
 	boolean hasCamp();
-	int getCampAggroMod();
-	void setCampAggroMod(int mod);
 
 	unsigned long getAvailablePower();
 	void removePower(unsigned long power);

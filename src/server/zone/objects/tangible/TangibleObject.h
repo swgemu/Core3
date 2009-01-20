@@ -125,6 +125,8 @@ public:
 
 	bool isCamoKit();
 
+	bool isCampKit();
+
 	bool isLoot();
 
 	bool isInsured();
@@ -333,6 +335,8 @@ public:
 	bool isWeaponPowerup();
 
 	bool isCamoKit();
+
+	bool isCampKit();
 
 	bool isLoot();
 

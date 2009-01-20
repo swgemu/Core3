@@ -1573,9 +1573,13 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 	info("attacking target");
 
 	doCamoCheck(target);
+
 	if (camoSet) {
 		return false;
 	}
+
+	if (!target->isInCombat() && (target->getCampAggroMod() >= System::random(100)))
+		return false;
 
 	if (target == NULL || target == _this || (!target->isPlayer() && !target->isNonPlayerCreature()))
 		return false;

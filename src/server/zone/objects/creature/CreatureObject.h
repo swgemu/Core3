@@ -357,6 +357,8 @@ public:
 
 	void setAccuracy(int acc);
 
+	void setAccuracyBonus(int accBonus);
+
 	void setDamageBonus(int bonus);
 
 	void setDefenseBonus(int bonus);
@@ -420,6 +422,8 @@ public:
 	bool hasSkillModBonus(const String& name);
 
 	int getAccuracy();
+
+	int getAccuracyBonus();
 
 	int getDefenseBonus();
 
@@ -1229,6 +1233,10 @@ public:
 
 	bool isInCamp();
 
+	int getCampAggroMod();
+
+	void setCampAggroMod(int mod);
+
 	int getNumberOfPets();
 
 	void setNumberOfPets(int num);
@@ -1625,6 +1633,8 @@ public:
 
 	void setAccuracy(int acc);
 
+	void setAccuracyBonus(int accBonus);
+
 	void setDamageBonus(int bonus);
 
 	void setDefenseBonus(int bonus);
@@ -1686,6 +1696,8 @@ public:
 	bool hasSkillModBonus(const String& name);
 
 	int getAccuracy();
+
+	int getAccuracyBonus();
 
 	int getDefenseBonus();
 
@@ -2494,6 +2506,10 @@ public:
 	int getCampModifier();
 
 	bool isInCamp();
+
+	int getCampAggroMod();
+
+	void setCampAggroMod(int mod);
 
 	int getNumberOfPets();
 
