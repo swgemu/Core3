@@ -66,7 +66,7 @@ class GroupObjectImplementation : public GroupObjectServant {
 	uint32 listCount;
 
 	ChatRoom* groupChannel;
-	
+
 	int groupLevel;
 
 public:
@@ -90,9 +90,12 @@ public:
 	void startChannel();
 
 	float getRangerBonusForHarvesting(Player* player);
-	
+
+	void addSquadLeaderBonuses(CreatureObject* groupMember);
+	void removeSquadLeaderBonuses(CreatureObject* groupMember);
+
 	void calcGroupLevel();
-	
+
 	int getGroupLevel() {
 		return groupLevel;
 	}
