@@ -107,6 +107,8 @@ DraftSchematicImplementation::DraftSchematicImplementation(
 		customizationDefaults.add(draftSchematic->getCustomizationDefaultValue(i));
 	}
 
+	customizationSkill = draftSchematic->getCustomizationSkill();
+
 	//toString();
 }
 

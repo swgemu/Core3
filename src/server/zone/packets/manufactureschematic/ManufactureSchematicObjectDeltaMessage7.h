@@ -383,7 +383,6 @@ public:
 
 	void update0D(DraftSchematic* draftSchematic) {
 
-		String prefix = "/private/";
 		int count = draftSchematic->getCustomizationOptionCount();
 
 		startUpdate(0x0D);
@@ -391,12 +390,10 @@ public:
 		startList(count, count);
 
 		for (int i = 0; i < count; ++i) {
-			StringBuffer ss;
-			ss << prefix << draftSchematic->getCustomizationOption(i);
 
 			insertByte(0x01);
 			insertShort(i);
-			insertAscii(ss.toString());
+			insertAscii(draftSchematic->getCustomizationOption(i));
 		}
 
 	}
