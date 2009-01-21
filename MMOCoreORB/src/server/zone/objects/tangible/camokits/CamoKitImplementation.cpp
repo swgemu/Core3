@@ -61,10 +61,10 @@ CamoKitImplementation::CamoKitImplementation(unsigned long long oid, unsigned in
 
 	customName = n;
 
-	setPlanet(0);
 	setUsesRemaining(5);
 	setEquipped(false);
 
+	init();
 }
 
 CamoKitImplementation::CamoKitImplementation(Player* player, unsigned int tempCRC, const UnicodeString& n, const String& tempn)
@@ -75,13 +75,59 @@ CamoKitImplementation::CamoKitImplementation(Player* player, unsigned int tempCR
 	templateName = tempn;
 
 	customName = n;
-	planet = 0;
 
 	usesRemaining = 5;
+
+	init();
 
 	setParent((TangibleObject*) player->getInventory(), 0xFFFFFFFF);
 
 	setEquipped(false);
+}
+
+void CamoKitImplementation::init() {
+	switch(objectCRC) {
+		case 0x82EDE91E:
+			setPlanet(0);
+			setConcealMin(40);
+			break;
+		case 0x3EDB35EE:
+			setPlanet(1);
+			setConcealMin(80);
+			break;
+		case 0x16346E3E:
+			setPlanet(2);
+			setConcealMin(100);
+			break;
+		case 0x833521B4:
+			setPlanet(3);
+			setConcealMin(80);
+			break;
+		case 0xE9A14DB2:
+			setPlanet(4);
+			setConcealMin(80);
+			break;
+		case 0x416F97B6:
+			setPlanet(5);
+			setConcealMin(40);
+			break;
+		case 0xAAF7CBB0:
+			setPlanet(6);
+			setConcealMin(40);
+			break;
+		case 0x583DE19C:
+			setPlanet(7);
+			setConcealMin(40);
+			break;
+		case 0xBEAE8881:
+			setPlanet(8);
+			setConcealMin(40);
+			break;
+		case 0x42B8E295:
+			setPlanet(9);
+			setConcealMin(80);
+			break;
+	}
 }
 
 void CamoKitImplementation::updateCraftingValues(DraftSchematic* draftSchematic) {

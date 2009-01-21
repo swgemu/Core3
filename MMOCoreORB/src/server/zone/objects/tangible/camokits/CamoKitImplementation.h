@@ -77,6 +77,11 @@ public:
 	CamoKitImplementation(Player* player, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
 	/*
+	 * Initializies the Planet and Conceal Minimum
+	 */
+	void init();
+
+	/*
 	 * Updates the crafting values
 	 * \param DraftSchematic - Schematic of item being crafting
 	 */
