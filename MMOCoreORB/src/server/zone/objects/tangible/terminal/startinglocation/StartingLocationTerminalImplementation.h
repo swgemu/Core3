@@ -42,98 +42,38 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef TERMINALIMPLEMENTATION_H_
-#define TERMINALIMPLEMENTATION_H_
+#ifndef STARTINGLOCATIONTERMINALIMPLEMENTATION_H_
+#define STARTINGLOCATIONTERMINALIMPLEMENTATION_H_
 
-#include "../../player/Player.h"
+#include "../../../player/Player.h"
 
-#include "../../creature/shuttle/ShuttleCreature.h"
+#include "../TerminalImplementation.h"
 
-#include "../../../packets/player/EnterTicketPurchaseModeMessage.h"
+#include "../../../player/sui/messagebox/SuiMessageBox.h"
 
-#include "Terminal.h"
+#include "../../../../packets.h"
 
-#include "../../../packets.h"
 
-class TerminalImplementation : public TerminalServant {
-protected:
-	uint8 terminalType;
-
+class StartingLocationTerminalImplementation : public StartingLocationTerminalServant {
+	//vars here
 
 public:
-	//Terminal Types
-	static const uint8 TRAVEL = 1;
-	static const uint8 GUILD = 2;
-	static const uint8 VENDOR = 3;
-	static const uint8 MISSION = 4;
-	static const uint8 CLONING = 5;
-	static const uint8 INSURANCE = 6;
-	static const int CAMP = 7;
-	static const uint8 STARTINGLOCATION = 8;
-	static const uint8 BAZAAR = 50;
+	StartingLocationTerminalImplementation(uint64 objid, float x, float z, float y) :
+		StartingLocationTerminalServant(0x7402F0FC, objid, UnicodeString("Starting Location Terminal"), "terminal_cloning", x, z, y, STARTINGLOCATION) {
 
 
-public:
-	TerminalImplementation(uint32 objCRC, uint64 objid, const UnicodeString& n, const String& tempn, float x, float z, float y, uint8 TerminalType)
-			: TerminalServant(objid, TERMINAL) {
-
-		objectCRC = objCRC;
-
-		customName = n;
-
-		templateTypeName = "terminal_name";
-		templateName = tempn;
-
-		terminalType = TerminalType;
-
-		initializePosition(x, z, y);
 	}
 
-	virtual int useObject(Player* player) {
+	//TODO: Replace the CRC for the termina and the terminal template name.
+	//TODO: Creature a CLONING type of terminal.
+
+	int useObject(Player* player) {
+		StartingLocationList* sll = new StartingLocationList(player);
+		player->sendMessage(sll);
+
 		return 0;
-	}
-
-	inline uint8 getTerminalType() {
-		return terminalType;
-	}
-
-	inline bool isTravelTerminal() {
-		return terminalType == TRAVEL;
-	}
-
-	inline bool isGuildTerminal() {
-		return terminalType == GUILD;
-	}
-
-	inline bool isMissionTerminal() {
-		return terminalType == MISSION;
-	}
-
-	inline bool isCampTerminal() {
-		return terminalType == CAMP;
-	}
-
-	inline bool isCloningTerminal() {
-		return terminalType == CLONING;
-	}
-
-	inline bool isInsuranceTerminal() {
-		return terminalType == INSURANCE;
-	}
-
-	inline bool isBazaarTerminal() {
-		return terminalType == BAZAAR;
-	}
-
-	inline bool isStartingLocationTerminal() {
-		return terminalType == STARTINGLOCATION;
-	}
-
-	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
-		omr->finish();
-		player->sendMessage(omr);
 	}
 
 };
 
-#endif /*TERMINALIMPLEMENTATION_H_*/
+#endif /* STARTINGLOCATIONTERMINALIMPLEMENTATION_H_ */

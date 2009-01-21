@@ -77,7 +77,10 @@ interface PlanetManager {
 	unsigned int getTravelFare(String departurePlanet, String arrivalPlanet);
 	ShuttleCreature getShuttle(const String Shuttle);	
 	void sendPlanetTravelPointListResponse(Player player);
-		
+	
+	void tutorialStepWelcome(Player player);
+	void tutorialStepStatMigration(Player player);
+
 	MissionTerminal getMissionTerminal(unsigned long oid);
 
 	void placePlayerStructure(Player player, unsigned long objectID, float x, float y, int orient);

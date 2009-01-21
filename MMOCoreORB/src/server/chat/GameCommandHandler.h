@@ -217,7 +217,7 @@ private:
 	static void setLocation(StringTokenizer tokenizer, Player* player);
 	static void drag(StringTokenizer tokenizer, Player* player);
 	static void deleteFromZone(StringTokenizer tokenizer, Player* player);
-
+	static void playAudio(StringTokenizer tokenizer, Player* player);
 	void init();
 
 public:

@@ -51,6 +51,10 @@ public:
 
 	void sendPlanetTravelPointListResponse(Player* player);
 
+	void tutorialStepWelcome(Player* player);
+
+	void tutorialStepStatMigration(Player* player);
+
 	MissionTerminal* getMissionTerminal(unsigned long long oid);
 
 	void placePlayerStructure(Player* player, unsigned long long objectID, float x, float y, int orient);
@@ -106,6 +110,10 @@ public:
 	ShuttleCreature* getShuttle(const String& Shuttle);
 
 	void sendPlanetTravelPointListResponse(Player* player);
+
+	void tutorialStepWelcome(Player* player);
+
+	void tutorialStepStatMigration(Player* player);
 
 	MissionTerminal* getMissionTerminal(unsigned long long oid);
 

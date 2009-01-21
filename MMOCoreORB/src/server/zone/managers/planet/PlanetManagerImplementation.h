@@ -127,6 +127,9 @@ class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, p
 	PlayerManager* playerManager;
     PlayerMap* playerMap;
 
+    //tutorial stuffs
+    //TutorialAudioStatMigrationEvent* tutorialAudioStatMigrationEvent;
+    //TutorialAudioWelcomeEvent* tutorialAudioWelcomeEvent;
 
 public:
 	PlanetManagerImplementation(Zone* zone, ZoneProcessServerImplementation* serv);
@@ -151,6 +154,9 @@ public:
 	void weatherUpdatePlayers();
 	void weatherRemoveEvents();
 
+	void tutorialStepWelcome(Player* player);
+	void tutorialStepStatMigration(Player* player);
+
 private:
 	void loadStaticPlanetObjects();
 	void loadStaticTangibleObjects();
@@ -166,6 +172,7 @@ private:
 	void loadNoBuildAreas();
 	void loadBadgeAreas();
 	String getStationName(uint64 crc);
+	void loadStartingLocationTerminals();
 
 
 
