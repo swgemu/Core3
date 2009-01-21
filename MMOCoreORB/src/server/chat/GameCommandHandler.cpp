@@ -1112,6 +1112,12 @@ void GameCommandHandler::kill(StringTokenizer tokenizer, Player* player) {
 	Player* targetPlayer = NULL;
 	Creature* creature = NULL;
 
+	if (!player->isDuelListEmpty()) {
+		//Using this command while dueling is causing a deadlock!
+		player->sendSystemMessage("You can't use @kill while dueling.");
+		return;
+	}
+
 	ChatManager * chatManager = player->getZone()->getChatManager();
 
 	if (tokenizer.hasMoreTokens()) {
@@ -1156,7 +1162,6 @@ void GameCommandHandler::kill(StringTokenizer tokenizer, Player* player) {
 		}
 	//} else if (creature != NULL  && !creature->isTrainer() && !creature->isRecruiter() && !creature->isMount()) {
 	} else if (creature != NULL && creature->getOptionsBitmask() != 0x108 && creature->getOptionsBitmask() != 0x1080) {
-
 		try {
 			creature->wlock(player);
 
