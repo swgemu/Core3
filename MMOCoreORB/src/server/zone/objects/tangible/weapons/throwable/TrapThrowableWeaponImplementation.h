@@ -61,6 +61,8 @@ public:
 
 	void initialize();
 
+	void updateCraftingValues(DraftSchematic* draftSchematic);
+
 	int useObject(Player* player);
 
 	void useCharge(Player* player);

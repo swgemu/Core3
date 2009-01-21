@@ -77,6 +77,12 @@ public:
 	CamoKitImplementation(Player* player, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
 	/*
+	 * Updates the crafting values
+	 * \param DraftSchematic - Schematic of item being crafting
+	 */
+	void updateCraftingValues(DraftSchematic* draftSchematic);
+
+	/*
 	 * Uses a charge oh the camo kit. If 0 uses are left, it is removed from the inventory.
 	 * \param player The player that uses the camo kit.
 	 */
