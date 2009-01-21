@@ -1481,6 +1481,7 @@ void CraftingManagerImplementation::craftingCustomization(Player* player,
 		customizationnumber = tokenizer.getIntToken();
 		customization = draftSchematic->getCustomizationOption(customizationnumber);
 
+		customization = customization.replaceAll("/private/", "");
 		customizationvalue = tokenizer.getIntToken();
 
 		customizationMap.put(customization, customizationvalue);
@@ -1499,9 +1500,8 @@ void CraftingManagerImplementation::craftingCustomization(Player* player,
 
 	player->sendMessage(dtano3);
 
-	ManufactureSchematicObjectDeltaMessage3
-			* dMsco3 =
-					new ManufactureSchematicObjectDeltaMessage3(draftSchematic->getObjectID());
+	ManufactureSchematicObjectDeltaMessage3 * dMsco3 =
+			new ManufactureSchematicObjectDeltaMessage3(draftSchematic->getObjectID());
 	dMsco3->updateName(name);
 	dMsco3->updateCondition(condition);
 	dMsco3->close();
