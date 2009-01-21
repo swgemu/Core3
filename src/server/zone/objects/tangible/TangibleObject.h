@@ -85,6 +85,8 @@ public:
 
 	bool isDestroyed();
 
+	bool isAttackable();
+
 	bool isAttackableBy(CreatureObject* creature);
 
 	bool isResource();
@@ -295,6 +297,8 @@ public:
 	bool isAttachment();
 
 	bool isDestroyed();
+
+	bool isAttackable();
 
 	bool isAttackableBy(CreatureObject* creature);
 

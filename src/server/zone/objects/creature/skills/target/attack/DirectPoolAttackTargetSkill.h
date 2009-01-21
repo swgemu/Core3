@@ -58,7 +58,6 @@ public:
 	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
 		int damage = calculateDamage(creature, target);
 
-
 		if (target->isPlayer() || target->isNonPlayerCreature()) {
 			CreatureObject* targetCreature = (CreatureObject*) target;
 			if (damage && targetCreature->hasAttackDelay())
@@ -71,7 +70,7 @@ public:
 	}
 
 	int calculateDamage(CreatureObject* creature, SceneObject* target) {
-		return server->getCombatManager()->calculateDamage(creature, target, this, false);
+		return server->getCombatManager()->calculateWeaponDamage(creature, (TangibleObject*)target, this, false);
 	}
 
 };

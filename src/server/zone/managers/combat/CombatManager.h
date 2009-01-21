@@ -47,11 +47,17 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+#define MELEEATTACK 0
+#define RANGEDATTACK 1
+#define FORCEATTACK 2
+#define TRAPATTACK 3
+
 #define MELEEWEAPON(weapontype) ((weapontype < 4 || (weapontype > 6 && weapontype < 10)) ? true : false)
 #define RANGEDWEAPON(weapontype) (((weapontype > 3 && weapontype < 7) || (weapontype > 6 && weapontype < 20)) ? true : false)
 #define THROWNWEAPON(weapontype) ((weapontype > 19 && weapontype < 21) ? true : false)
 
 class SceneObject;
+class TangibleObject;
 class ZoneServer;
 class Player;
 class CreatureObject;
@@ -62,6 +68,7 @@ class Weapon;
 class TargetSkill;
 class AttackTargetSkill;
 class ThrowAttackTargetSkill;
+class ForcePowersPoolAttackTargetSkill;
 class ZoneProcessServerImplementation;
 class CombatAction;
 
@@ -75,9 +82,10 @@ static uint32 defaultAttacks[] = {
 
 class CombatManager {
 	ZoneProcessServerImplementation* server;
+	static const bool DEBUG = false;
 
 private:
-	bool doAttackAction(CreatureObject* attacker, SceneObject* target, AttackTargetSkill* skill, String& modifier, CombatAction* actionMessage);
+	bool doAttackAction(CreatureObject* attacker, TangibleObject* target, AttackTargetSkill* skill, String& modifier, CombatAction* actionMessage);
 	uint32 getDefaultAttackAnimation(CreatureObject* creature);
 
 public:
@@ -88,7 +96,7 @@ public:
 	CombatManager(ZoneProcessServerImplementation* srv);
 
 	float handleAction(CommandQueueAction* action);
-	void handleAreaAction(CreatureObject* creature, SceneObject* target, CommandQueueAction* action, CombatAction* actionMessage);
+	void handleAreaAction(CreatureObject* creature, TangibleObject* target, CommandQueueAction* action, CombatAction* actionMessage);
 
 	float doTargetSkill(CommandQueueAction* action);
 	float doSelfSkill(CommandQueueAction* action);
@@ -99,8 +107,8 @@ public:
 
 	// misc methods
 	bool canAttack(Player* player, Player* targetPlayer);
-	float getConeAngle(SceneObject* targetCreature, float CreatureVectorX, float CreatureVectorY, float DirectionVectorX, float DirectionVectorY);
-	bool checkSkill(CreatureObject* creature, SceneObject* target, TargetSkill* skill);
+	float getConeAngle(TangibleObject* targetCreature, float CreatureVectorX, float CreatureVectorY, float DirectionVectorX, float DirectionVectorY);
+	bool checkSkill(CreatureObject* creature, TangibleObject* target, TargetSkill* skill);
 
 	void requestDuel(Player* player, uint64 targetID);
 	void requestDuel(Player* player, Player* targetPlayer);
@@ -122,14 +130,15 @@ public:
 	// calc methods
 	void calculateDamageReduction(CreatureObject* creature, CreatureObject* targetCreature, float& damage);
 	int calculatePostureMods(CreatureObject* creature, CreatureObject* targetCreature);
-	void checkMitigation(CreatureObject* creature, CreatureObject* targetCreature, float& minDamage, float& maxDamage);
-	int checkSecondaryDefenses(CreatureObject* creature, CreatureObject* targetCreature);
-	int getHitChance(CreatureObject* creature, CreatureObject* targetCreature, int accuracyBonus);
+	void checkMitigation(CreatureObject* creature, CreatureObject* targetCreature, int attacktype, float& minDamage, float& maxDamage);
+	int checkSecondaryDefenses(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon, int attackType);
+	int getHitChance(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon, int accuracyBonus, int attackType);
 	float getWeaponRangeMod(float currentRange, Weapon* weapon);
-	uint32 getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon, bool forceAttack = false);
-	int applyDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part, AttackTargetSkill* askill);
-	int applyTrapDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part, AttackTargetSkill* askill,Weapon* weapon);
-	int getArmorReduction(Weapon* weapon, CreatureObject* target, int damage, int location);
+	uint32 getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, int attackType);
+	int applyDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part,
+			AttackTargetSkill* askill, int attacktype, int damagetype, int armorpiercing, bool cankill);
+	int getArmorReduction(CreatureObject* target, int damage, int location, int attacktype, int damagetype, int armorpiercing);
+	void applyWounds(CreatureObject* attacker, CreatureObject* target, Weapon* weapon, int location);
 	bool calculateCost(CreatureObject* creature, float healthMultiplier, float actionMultiplier, float mindMultiplier, float forceMultiplier);
 	float calculateWeaponAttackSpeed(CreatureObject* creature, TargetSkill* tskill);
 	float calculateHealSpeed(CreatureObject* creature, TargetSkill* tskill);
@@ -138,8 +147,11 @@ public:
 	void checkKnockDown(CreatureObject* creature, CreatureObject* targetCreature, int chance);
 	void checkPostureDown(CreatureObject* creature, CreatureObject* targetCreature, int chance);
 	void checkPostureUp(CreatureObject* creature, CreatureObject* targetCreature, int chance);
-	int calculateDamage(CreatureObject* creature, SceneObject* target, AttackTargetSkill* skill, bool randompoolhit);
-	int calculateTrapDamage(CreatureObject* creature, SceneObject* target, ThrowAttackTargetSkill* skill, bool randompoolhit, Weapon* weapon);
+	int calculateWeaponDamage(CreatureObject* creature, TangibleObject* target, AttackTargetSkill* skill, bool randompoolhit);
+	int calculateTrapDamage(CreatureObject* creature, TangibleObject* target, ThrowAttackTargetSkill* skill, bool randompoolhit, Weapon* weapon);
+	int calculateForceDamage(CreatureObject* creature, TangibleObject* target, ForcePowersPoolAttackTargetSkill* skill, int forceAttackType, int damageType, float mindmg, float maxdmg);
+	int calculateDamage(CreatureObject* creature, TangibleObject* target, Weapon* weapon, AttackTargetSkill* skill, int attackType,
+			int damageType, int armorPiercing, float minDmg, float maxDmg, bool randompoolhit, bool cankill);
 	void doDotWeaponAttack(CreatureObject* creature, CreatureObject* targetCreature, bool areaHit);
 };
 

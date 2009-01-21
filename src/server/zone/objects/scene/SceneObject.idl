@@ -107,6 +107,8 @@ interface SceneObject implements ManagedObject {
 	int getContainerObjectsSize();
 
 	boolean isContainerEmpty();
+	
+	boolean isAttackable();
 
 	int getSlots();
 	int getContainerType();

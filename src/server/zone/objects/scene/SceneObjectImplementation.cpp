@@ -90,6 +90,8 @@ SceneObjectImplementation::SceneObjectImplementation()
 
 	undeployEvent = NULL;
 	keepObject = false;
+
+	attackable = false;
 }
 
 SceneObjectImplementation::SceneObjectImplementation(uint64 oid, int type)
@@ -119,6 +121,8 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid, int type)
 
 	undeployEvent = NULL;
 	keepObject = false;
+
+	attackable = false;
 }
 
 SceneObjectImplementation::~SceneObjectImplementation() {

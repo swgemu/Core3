@@ -120,7 +120,7 @@ public:
 
 		player->addCooldown(getSkillName(),8000);
 
-		int damage = calculateTrapDamage(creature, target, ((Weapon*) trap));
+		int damage = calculateTrapDamage(creature, (TangibleObject*)target, ((Weapon*) trap));
 
 		if (damage && targetCreature->hasAttackDelay())
 			targetCreature->clearAttackDelay();
@@ -166,8 +166,7 @@ public:
 	 * \param weapon The trap.
 	 * \return Returns Returns the damage.
 	 */
-	virtual int calculateTrapDamage(CreatureObject* creature,
-				SceneObject* target, Weapon* weapon) {
+	virtual int calculateTrapDamage(CreatureObject* creature, TangibleObject* target, Weapon* weapon) {
 		return server->getCombatManager()->calculateTrapDamage(creature, target, this, true, weapon);
 	}
 

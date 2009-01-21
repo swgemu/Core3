@@ -138,6 +138,8 @@ protected:
 
 	uint64 associatedArea;
 
+	bool attackable;
+
 	VectorMap<GroupObject*, int> groupDamageList;
 	VectorMap<CreatureObject*, DamageDone*> playerDamageList;
 
@@ -416,6 +418,10 @@ public:
 
 	inline bool isShip() {
 		return objectType == SHIP;
+	}
+
+	inline bool isAttackable() {
+		return attackable;
 	}
 
 	inline bool isAttackableObject() {

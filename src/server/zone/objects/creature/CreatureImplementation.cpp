@@ -122,6 +122,8 @@ void CreatureImplementation::init() {
 
 	creatureState = ACTIVE;
 
+	attackable = true;
+
 	armor = 0;
 
 	kinetic = 0;

@@ -79,6 +79,8 @@ LairObjectImplementation::LairObjectImplementation(uint32 objCRC, uint64 oid)
 	spawn1 = false;
 	spawn2 = false;
 
+	attackable = true;
+
 	complexity = 100.f;
 
 	setLevel(0);
