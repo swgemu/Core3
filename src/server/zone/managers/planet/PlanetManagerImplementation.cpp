@@ -99,6 +99,8 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	weatherIncreaseEvent = new WeatherIncreaseEvent(this);
 	weatherDecreaseEvent = new WeatherDecreaseEvent(this);
 
+
+
 	shuttleMap = new ShuttleMap();
 	ticketCollectorMap = new TicketCollectorMap(2000);
 	travelTerminalMap = new TravelTerminalMap(2000);
@@ -397,6 +399,7 @@ void PlanetManagerImplementation::loadStaticPlanetObjects() {
 	loadCloningTerminals();
 	loadInsuranceTerminals();
 	loadCloneSpawnPoints();
+	loadStartingLocationTerminals();
 }
 
 void PlanetManagerImplementation::loadShuttles() {
@@ -815,6 +818,49 @@ void PlanetManagerImplementation::loadCraftingStations() {
 	unlock();
 }
 
+void PlanetManagerImplementation::loadStartingLocationTerminals() {
+
+	try {
+			lock();
+
+			StringBuffer query;
+			query << "SELECT * FROM terminals WHERE type = 8 AND zoneid = " << zone->getZoneID() << " ORDER BY parentid;";
+
+			ResultSet* resultSet = ServerDatabase::instance()->executeQuery(query);
+
+			while (resultSet->next()) {
+				uint64 parentId = resultSet->getUnsignedLong(1);
+
+				float oX = resultSet->getFloat(3);
+				float oZ = resultSet->getFloat(4);
+				float oY = resultSet->getFloat(5);
+				float oW = resultSet->getFloat(6);
+
+				float X = resultSet->getFloat(7);
+				float Z = resultSet->getFloat(8);
+				float Y = resultSet->getFloat(9);
+
+				SceneObject* parentCell = zone->lookupObject(parentId);
+
+				if (parentCell != NULL) {
+					StartingLocationTerminal* startingLocationTerminal = new StartingLocationTerminal(getNextStaticObjectID(false), X, Z, Y);
+					startingLocationTerminal->setDirection(oX, oZ, oY, oW);
+					startingLocationTerminal->setParent(parentCell);
+					startingLocationTerminal->insertToZone(zone);
+				}
+			}
+
+			delete resultSet;
+			unlock();
+		} catch (DatabaseException& e) {
+			error(e.getMessage());
+			unlock();
+		} catch (...) {
+			error("Unreported exception caught in PlanetManagerImplementation::loadStartingLocationTerminals()");
+			unlock();
+		}
+}
+
 String PlanetManagerImplementation::getStationName(uint64 crc){
 	String name = "";
 
@@ -1184,4 +1230,14 @@ void PlanetManagerImplementation::removeActiveAreaTrigger(ActiveAreaTrigger* tri
 	trigger->removeFromZone();
 	trigger->removeUndeploymentEvent();
 	trigger->finalize();
+}
+
+void PlanetManagerImplementation::tutorialStepWelcome(Player* player) {
+	PlayMusicMessage* pmm = new PlayMusicMessage("sound/tut_01_welcome.snd");
+	player->sendMessage(pmm);
+}
+
+void PlanetManagerImplementation::tutorialStepStatMigration(Player* player) {
+	PlayMusicMessage* pmm = new PlayMusicMessage("sound/tut_00_statmigration.snd");
+	player->sendMessage(pmm);
 }

@@ -354,6 +354,10 @@ void GameCommandHandler::init() {
 			"Drags a dead or incapacitated player toward yourself.",
 			"Usage: @drag",
 			&drag);
+	gmCommands->addCommand("playAudio", DEVELOPER,
+				"Plays the specified audio file",
+				"USAGE: @playAudio [soundfile]",
+				&playAudio);
 
 
 	/* Disabled Commands
@@ -3428,4 +3432,21 @@ void GameCommandHandler::deleteFromZone(StringTokenizer tokenizer, Player* playe
 
 	obj->removeFromZone(true);
 	obj->finalize();
+}
+
+void GameCommandHandler::playAudio(StringTokenizer tokenizer, Player* player) {
+	//SceneObject* obj = player->getTarget();
+
+	//if (obj == NULL) {
+	//	return;
+	//}
+	String audioFile;
+
+		if (!tokenizer.hasMoreTokens())
+			return;
+		tokenizer.getStringToken(audioFile);
+
+	PlayMusicMessage* pmm = new PlayMusicMessage(audioFile);
+	player->sendMessage(pmm);
+
 }

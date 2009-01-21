@@ -112,6 +112,8 @@ which carries forward this exception.
 #include "objects/tangible/terminal/cloning/InsuranceTerminalImplementation.h"
 #include "objects/tangible/terminal/vendor/VendorTerminal.h"
 #include "objects/tangible/terminal/vendor/VendorTerminalImplementation.h"
+#include "objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
+#include "objects/tangible/terminal/startinglocation/StartingLocationTerminalImplementation.h"
 #include "objects/tangible/ticketcollector/TicketCollector.h"
 #include "objects/tangible/ticketcollector/TicketCollectorImplementation.h"
 #include "objects/tangible/instrument/Instrument.h"

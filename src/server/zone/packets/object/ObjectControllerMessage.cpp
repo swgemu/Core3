@@ -1264,9 +1264,16 @@ void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player,
 	//	player->applyAttachment(attachmentID, targetID);
 	//}
 
+	//Check to make sure they are in the tutorial zone.
+	if (player->getZoneID() == 42) {
+		//This isn't working right now. The window stays open.
+		//I have an idea how to fix it, but for now I'm leaving it.
+		StatMigrationTargetsMessage* smtm = new StatMigrationTargetsMessage(player);
+		player->sendMessage(smtm);
+	} else {
+		player->sendSystemMessage("You cannot migrate your stats without seeing an Image Designer.");
+	}
 
-	//StatMigrationTargetsMessage* smtm = new StatMigrationTargetsMessage(player);
-	//player->sendMessage(smtm);
 }
 
 void ObjectControllerMessage::parseCharacterSheetInfoRequest(Player* player,

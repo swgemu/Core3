@@ -173,12 +173,38 @@ void PlanetManager::sendPlanetTravelPointListResponse(Player* player) {
 		((PlanetManagerImplementation*) _impl)->sendPlanetTravelPointListResponse(player);
 }
 
-MissionTerminal* PlanetManager::getMissionTerminal(unsigned long long oid) {
+void PlanetManager::tutorialStepWelcome(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 17);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlanetManagerImplementation*) _impl)->tutorialStepWelcome(player);
+}
+
+void PlanetManager::tutorialStepStatMigration(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlanetManagerImplementation*) _impl)->tutorialStepStatMigration(player);
+}
+
+MissionTerminal* PlanetManager::getMissionTerminal(unsigned long long oid) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
 		method.addUnsignedLongParameter(oid);
 
 		return (MissionTerminal*) method.executeWithObjectReturn();
@@ -191,7 +217,7 @@ void PlanetManager::placePlayerStructure(Player* player, unsigned long long obje
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 20);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(objectID);
 		method.addFloatParameter(x);
@@ -208,7 +234,7 @@ bool PlanetManager::isNoBuildArea(float x, float y) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 21);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
 
@@ -222,7 +248,7 @@ void PlanetManager::addNoBuildArea(float x, float y, float radius) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 22);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
 		method.addFloatParameter(radius);
@@ -237,7 +263,7 @@ void PlanetManager::weatherUpdatePlayers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 23);
 
 		method.executeWithVoidReturn();
 	} else
@@ -249,7 +275,7 @@ void PlanetManager::weatherChange() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 24);
 
 		method.executeWithVoidReturn();
 	} else
@@ -261,7 +287,7 @@ void PlanetManager::weatherRemoveEvents() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 25);
 
 		method.executeWithVoidReturn();
 	} else
@@ -273,7 +299,7 @@ ActiveAreaTrigger* PlanetManager::spawnActiveArea(ActiveArea* area) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 26);
 		method.addObjectParameter(area);
 
 		return (ActiveAreaTrigger*) method.executeWithObjectReturn();
@@ -286,7 +312,7 @@ void PlanetManager::removeActiveAreaTrigger(ActiveAreaTrigger* trigger) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 27);
 		method.addObjectParameter(trigger);
 
 		method.executeWithVoidReturn();
@@ -339,30 +365,36 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		sendPlanetTravelPointListResponse((Player*) inv->getObjectParameter());
 		break;
 	case 17:
-		resp->insertLong(getMissionTerminal(inv->getUnsignedLongParameter())->_getObjectID());
+		tutorialStepWelcome((Player*) inv->getObjectParameter());
 		break;
 	case 18:
-		placePlayerStructure((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter());
+		tutorialStepStatMigration((Player*) inv->getObjectParameter());
 		break;
 	case 19:
-		resp->insertBoolean(isNoBuildArea(inv->getFloatParameter(), inv->getFloatParameter()));
+		resp->insertLong(getMissionTerminal(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 20:
-		addNoBuildArea(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		placePlayerStructure((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter());
 		break;
 	case 21:
-		weatherUpdatePlayers();
+		resp->insertBoolean(isNoBuildArea(inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
 	case 22:
-		weatherChange();
+		addNoBuildArea(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case 23:
-		weatherRemoveEvents();
+		weatherUpdatePlayers();
 		break;
 	case 24:
-		resp->insertLong(spawnActiveArea((ActiveArea*) inv->getObjectParameter())->_getObjectID());
+		weatherChange();
 		break;
 	case 25:
+		weatherRemoveEvents();
+		break;
+	case 26:
+		resp->insertLong(spawnActiveArea((ActiveArea*) inv->getObjectParameter())->_getObjectID());
+		break;
+	case 27:
 		removeActiveAreaTrigger((ActiveAreaTrigger*) inv->getObjectParameter());
 		break;
 	default:
@@ -414,6 +446,14 @@ ShuttleCreature* PlanetManagerAdapter::getShuttle(const String& Shuttle) {
 
 void PlanetManagerAdapter::sendPlanetTravelPointListResponse(Player* player) {
 	return ((PlanetManagerImplementation*) impl)->sendPlanetTravelPointListResponse(player);
+}
+
+void PlanetManagerAdapter::tutorialStepWelcome(Player* player) {
+	return ((PlanetManagerImplementation*) impl)->tutorialStepWelcome(player);
+}
+
+void PlanetManagerAdapter::tutorialStepStatMigration(Player* player) {
+	return ((PlanetManagerImplementation*) impl)->tutorialStepStatMigration(player);
 }
 
 MissionTerminal* PlanetManagerAdapter::getMissionTerminal(unsigned long long oid) {

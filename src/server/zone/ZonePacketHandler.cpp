@@ -65,6 +65,9 @@ which carries forward this exception.
 #include "objects/terrain/PlanetNames.h"
 #include "objects/tangible/terminal/bazaar/RegionBazaar.h"
 
+#include "managers/planet/events/tutorial/TutorialAudioStatMigrationEvent.h"
+#include "managers/planet/events/tutorial/TutorialAudioWelcomeEvent.h"
+
 #include "../login/packets/ErrorMessage.h"
 
 #include "../chat/ChatManager.h"
@@ -386,10 +389,15 @@ void ZonePacketHandler::handleCmdSceneReady(Message* pack) {
 
 		player->notifySceneReady();
 
-		//If their on the tutorial terrain, send the starting location packet.
+		//If they are on the tutorial terrain, send audio.
+
 		if (player->getZoneID() == 42) {
-			StartingLocationList* sll = new StartingLocationList(player);
-			player->sendMessage(sll);
+			TutorialAudioWelcomeEvent* tutorialStepWelcome = new TutorialAudioWelcomeEvent(player->getZone()->getPlanetManager(), player);
+			TutorialAudioStatMigrationEvent* tutorialStepStatMigration = new TutorialAudioStatMigrationEvent(player->getZone()->getPlanetManager(), player);
+
+
+			player->getZoneProcessServer()->addEvent(tutorialStepWelcome, 1000);
+			player->getZoneProcessServer()->addEvent(tutorialStepStatMigration, 5000);
 		}
 
 		player->unlock();
