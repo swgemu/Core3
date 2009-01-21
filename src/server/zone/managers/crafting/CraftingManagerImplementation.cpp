@@ -760,7 +760,6 @@ void CraftingManagerImplementation::initialAssembly(Player* player,
 
 	// Get the level of customization
 	String custskill = draftSchematic->getCustomizationSkill();
-System::out << custskill << endl;
 	int custpoints = int(player->getSkillMod(custskill));
 
 	// The Experimenting counter always starts at numbers of exp titles + 1
