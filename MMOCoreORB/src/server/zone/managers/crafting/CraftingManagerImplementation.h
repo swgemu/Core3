@@ -200,7 +200,7 @@ private:
 
 	// Methods to setup the crafting sequence
 	void createDraftSchematic(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
-	void createTangibleObject(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
+	TangibleObject* createTangibleObject(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
 	void setupIngredients(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
 	TangibleObject * generateTangibleObject(Player* player, DraftSchematic* draftSchematic);
 

@@ -121,7 +121,8 @@ void CraftingManagerImplementation::prepareCraftingSession(Player* player,
 	createDraftSchematic(player, craftingTool, draftSchematic);
 
 	// Creates the Appropriate TangibleObject and sends to player
-	createTangibleObject(player, craftingTool, draftSchematic);
+	if(!createTangibleObject(player, craftingTool, draftSchematic))
+		return;
 
 	// Object Message to send necissart ingredients to player
 	setupIngredients(player, craftingTool, draftSchematic);
@@ -144,11 +145,14 @@ void CraftingManagerImplementation::createDraftSchematic(Player* player,
 	draftSchematic->sendTo(player);
 }
 
-void CraftingManagerImplementation::createTangibleObject(Player* player,
+TangibleObject* CraftingManagerImplementation::createTangibleObject(Player* player,
 		CraftingTool* craftingTool, DraftSchematic* draftSchematic) {
 
 	// Generates the tangible for crafting
 	TangibleObject* tano = generateTangibleObject(player, draftSchematic);
+
+	if(tano == NULL)
+		return NULL;
 
 	// Link TangibleObject to the CraftingTool
 	tano->setParent(craftingTool);
@@ -187,6 +191,8 @@ void CraftingManagerImplementation::createTangibleObject(Player* player,
 
 	// Start the insert count so inserts and removals work
 	craftingTool->setInsertCount(1);
+
+	return tano;
 
 }
 
@@ -754,6 +760,7 @@ void CraftingManagerImplementation::initialAssembly(Player* player,
 
 	// Get the level of customization
 	String custskill = draftSchematic->getCustomizationSkill();
+System::out << custskill << endl;
 	int custpoints = int(player->getSkillMod(custskill));
 
 	// The Experimenting counter always starts at numbers of exp titles + 1
@@ -1398,7 +1405,7 @@ void CraftingManagerImplementation::createPrototype(Player* player,
 
 				// For simulating Factory crates
 				createObjectInInventory(player, draftSchematic->getComplexity() * 2, true);
-				player->getCurrentCraftingTool()->getWorkingTano()->setPlayerUseMask(8192);
+				player->getCurrentCraftingTool()->getWorkingTano()->setOptionsBitmask(8192);
 
 				// This is an item mask test below - It cycles through the item masks - for testing
 				/*createObjectInInventory(player, 1, true);
@@ -1657,8 +1664,8 @@ TangibleObject* CraftingManagerImplementation::generateTangibleObject(
 
 	if (tano == NULL) {
 
-		TangibleObject* tano =
-				new TangibleObject(objectid, objectcrc, objectname, objecttemp);
+		player->sendSystemMessage("Failed to make tangible item, perhaps the Object type is wrong, or it doesn't exist in ItemManager");
+		return NULL;
 
 	}
 
@@ -2425,6 +2432,10 @@ int CraftingManagerImplementation::addDraftSchematicToServer(lua_State *L) {
 			draftSchematic->addCustomizationOption(parsedCustomizationOptions.get(i),
 					parsedCustomizationValues.get(i));
 		}
+
+		// Save schematics tano attributes
+		String customizationSkill = schematic.getStringField("customizationSkill");
+		draftSchematic->setCustomizationSkill(customizationSkill);
 
 
 		instance->mapDraftSchematic(draftSchematic);
