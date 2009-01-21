@@ -285,6 +285,7 @@ void CraftingToolImplementation::updateCraftingValues(DraftSchematic* draftSchem
  *  This method starts the crafting process.  It starts when a crafting tool
  *  is opened, and ends after sending the appropriate packets to display tool
  *  and data on the screen
+ *  \params Player - The player object that started the crafting tool
  */
 void CraftingToolImplementation::sendToolStart(Player* player) {
 

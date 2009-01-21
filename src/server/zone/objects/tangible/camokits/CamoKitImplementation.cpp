@@ -77,12 +77,24 @@ CamoKitImplementation::CamoKitImplementation(Player* player, unsigned int tempCR
 	customName = n;
 	planet = 0;
 
-
-	usesRemaining = 5 ;
+	usesRemaining = 5;
 
 	setParent((TangibleObject*) player->getInventory(), 0xFFFFFFFF);
 
 	setEquipped(false);
+}
+
+void CamoKitImplementation::updateCraftingValues(DraftSchematic* draftSchematic) {
+
+	String name;
+
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+	//craftingValues->toString();
+
+	usesRemaining = (int)craftingValues->getCurrentValue("quantity");
+	String attr = "uses";
+	itemAttributes->setIntAttribute(attr, usesRemaining);
+
 }
 
 void CamoKitImplementation::useCharge(Player* player) {

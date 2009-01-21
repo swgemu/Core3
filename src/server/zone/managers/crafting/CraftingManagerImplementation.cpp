@@ -1075,7 +1075,6 @@ bool CraftingManagerImplementation::applyComponentBoost(
 		DraftSchematic* draftSchematic, CraftingTool* craftingTool) {
 
 	DraftSchematicIngredient* ingredient;
-	DraftSchematicAttribute* attribute = NULL;
 	TangibleObject* tano;
 	TangibleObject* workingTano = craftingTool->getWorkingTano();
 	Component* component;
@@ -1118,7 +1117,6 @@ bool CraftingManagerImplementation::applyComponentBoost(
 					craftingValues->setMinValue(property, min);
 
 					max += component->getAttributeValue(property);
-					attribute->setMaxValue(max);
 
 					if (ingredient->getCombineType() == COMPONENTLINEAR) {
 

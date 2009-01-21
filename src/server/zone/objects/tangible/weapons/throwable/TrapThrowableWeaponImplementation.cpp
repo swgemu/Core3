@@ -93,6 +93,13 @@ void TrapThrowableWeaponImplementation::initialize() {
 
 	setEquipped(false);
 }
+/*
+ * Recieves the values from crafting.
+ * \param DraftSchematic - the recently crafting schematic with value data
+ */
+void TrapThrowableWeaponImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
+	setUsesRemaining(5);
+}
 
 /*
  * Uses the object.
