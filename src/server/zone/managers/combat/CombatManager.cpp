@@ -534,8 +534,10 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 
 	float attackerAccuracy = 0;
 
-	if (attackType == MELEEATTACK || attackType == RANGEDATTACK) {
-		attackerAccuracy = creature->getAccuracy() + creature->getAccuracyBonus();
+	if (creature->isNonPlayerCreature())  // Temporary until accuracies fixed
+		attackerAccuracy = creature->getLevel();
+	else if (attackType == MELEEATTACK || attackType == RANGEDATTACK) {
+		attackerAccuracy = creature->getAccuracy();
 	} else if (attackType == TRAPATTACK) {
 		attackerAccuracy = creature->getSkillMod("trapping");
 	}
@@ -559,21 +561,25 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 		targetDefense = targetCreature->getSkillMod("counterattack");
 	}
 
+	if (targetDefense == 0)
+		return 0;
+
 	if (targetCreature->isStunned())
 		targetDefense -= 50;
-	targetDefense += targetCreature->getCenteredBonus() * 1.5l;
+	targetDefense += targetCreature->getCenteredBonus();
 	targetDefense -=- targetDefense * targetCreature->calculateBFRatio();
 
 	if (targetDefense > 125)
 		targetDefense = 125;
 
-	if (targetDefense == 0)
-		return 0;
-
 	accTotal += (attackerAccuracy + weaponAccuracy - targetDefense) / 2.0;
 
+	if (DEBUG)
+		System::out << "Secondary - targetDefense = " << targetDefense << " attackerAccuracy = "
+			<< attackerAccuracy << " weaponAccuracy = " << weaponAccuracy <<  " result = " << accTotal << endl;
+
 	int rand = System::random(100);
-	if ((int)accTotal <= rand)
+	if (rand <= (int)accTotal)  // Hit, not defended
 		return 0;
 
 	switch (defenseType) {
@@ -608,7 +614,9 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	float aimMod = 0.0;
 	float attackerAccuracy = 0;
 
-	if (attackType == MELEEATTACK || attackType == RANGEDATTACK) {
+	if (creature->isNonPlayerCreature())  // Temporary until accuracies fixed
+		attackerAccuracy = creature->getLevel();
+	else if (attackType == MELEEATTACK || attackType == RANGEDATTACK) {
 		attackerAccuracy = creature->getAccuracy() + creature->getAccuracyBonus();
 	} else if (attackType == TRAPATTACK) {
 		attackerAccuracy = creature->getSkillMod("trapping");
