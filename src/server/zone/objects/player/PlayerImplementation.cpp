@@ -1,5 +1,4 @@
-/*
-Copyright (C) 2007 <SWGEmu>
+/*Copyright (C) 2007 <SWGEmu>
 
 This File is part of Core3.
 
@@ -2158,13 +2157,16 @@ void PlayerImplementation::deleteQueueAction(uint32 actioncntr) {
 }
 
 void PlayerImplementation::doIncapacitate() {
+	//TODO:Is this code ever executed ??
+	//Please remove the above line if so...
+
+	if (isMounted())
+		dismount(true, true);
+
 	clearCombatState();
 
 	if (isDead())
 		return;
-
-	if (isMounted())
-		dismount(true, true);
 
 	if (incapacitationCounter == 0) {
 		firstIncapacitationTime.update();
@@ -6003,12 +6005,15 @@ void PlayerImplementation::onIncapacitateTarget(CreatureObject* victim) {
  * \param attacker The object that caused the incapacitation
  */
 void PlayerImplementation::onIncapacitated(SceneObject* attacker) {
-	updateIncapacitationCounter();
-	clearCombatState();
-	clearStates();
+	//Dismount has to take place before clearStates! ClearStates() also
+	//clears the "mount state" so we need to check "isMounted()" before cleared
 
 	if (isMounted())
 		dismount(true, true);
+
+	updateIncapacitationCounter();
+	clearCombatState();
+	clearStates();
 
 	if (getIncapacitationCounter() < 3) {
 		setPosture(CreaturePosture::INCAPACITATED);
@@ -6037,6 +6042,12 @@ void PlayerImplementation::onIncapacitated(SceneObject* attacker) {
  * This event handler gets first after the action die() takes place.
  */
 void PlayerImplementation::onDeath() {
+	//Dismount has to take place before clearStates! ClearStates() also
+	//clears the "mount state" so we need to check "isMounted()" before cleared
+
+	if (isMounted())
+		dismount(true, true);
+
 	clearDuelList();
 	clearCombatState(true);
 	clearStates();
