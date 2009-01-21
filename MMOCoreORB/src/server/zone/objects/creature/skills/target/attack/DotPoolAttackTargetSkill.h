@@ -102,113 +102,13 @@ public:
 	}
 
 	int calculateDamage(CreatureObject* creature, SceneObject* target) {
-		Weapon* weapon = creature->getWeapon();
-
-		CreatureObject* targetCreature = NULL;
-		if (target->isPlayer() || target->isNonPlayerCreature())
-			targetCreature = (CreatureObject*) target;
-
-		float minDamage = 0;
-		float maxDamage = 0;
-		float healthDamage = 0;
-		float actionDamage = 0;
-		float mindDamage = 0;
-		int bodyPart = 1;
-		int reduction = 0;
-
-		if (weapon != NULL) {
-			if (weapon->isCertified()) {
-				minDamage = weapon->getMinDamage();
-				maxDamage = weapon->getMaxDamage();
-			}
-			else {
-				minDamage = weapon->getMinDamage() / 5;
-				maxDamage = weapon->getMaxDamage() / 5;
-			}
-		} else {
-			maxDamage = (float)creature->getSkillMod("unarmed_damage");
-			if (maxDamage < 25)
-				maxDamage = 25;
-			minDamage = maxDamage / 2;
+		int damage = server->getCombatManager()->calculateWeaponDamage(creature, (TangibleObject*)target, this, true);
+		if (damage > 0 && (target->isPlayer() || target->isNonPlayerCreature())) {
+			CreatureObject* targetCreature = (CreatureObject*)target;
+			checkDots(targetCreature, damage);
 		}
 
-		if (targetCreature != NULL)
-			checkMitigation(creature, targetCreature, minDamage, maxDamage);
-
-		float damage = 0;
-		int average = 0;
-
-		int diff = (int)maxDamage - (int)minDamage;
-		if (diff >= 0)
-			average = System::random(diff) + (int)minDamage;
-
-		float globalMultiplier = CombatManager::GLOBAL_MULTIPLIER;
-		if (creature->isPlayer() && !target->isPlayer())
-			globalMultiplier *= CombatManager::PVE_MULTIPLIER;
-		else if (creature->isPlayer() && target->isPlayer())
-			globalMultiplier *= CombatManager::PVP_MULTIPLIER;
-
-		if (targetCreature != NULL) {
-
-			if (getHitChance(creature, targetCreature) > System::random(100)) {
-				int secondaryDefense = checkSecondaryDefenses(creature, targetCreature);
-
-				if (secondaryDefense < 2) {
-					if (secondaryDefense == 1)
-						damage = damage / 2;
-
-				if (healthPoolAttackChance != 0 && System::random(100) < healthPoolAttackChance) {
-					healthDamage = damageRatio * average * globalMultiplier;
-					calculateDamageReduction(creature, targetCreature, healthDamage);
-					bodyPart = System::random(5)+1;
-
-					damage += healthDamage;
-				} else if (actionPoolAttackChance != 0 && System::random(100) < actionPoolAttackChance) {
-					actionDamage = damageRatio * average * globalMultiplier;
-					calculateDamageReduction(creature, targetCreature,  actionDamage);
-					bodyPart = System::random(1)+7;
-
-					damage += actionDamage;
-				} else if (mindPoolAttackChance != 0 && System::random(100) < mindPoolAttackChance) {
-					mindDamage = damageRatio * average * globalMultiplier;
-					calculateDamageReduction(creature, targetCreature,  mindDamage);
-					bodyPart = 9;
-
-					damage += mindDamage;
-				}
-			} else {
-				return 0;
-			}
-
-			if (damage == 0) {
-				doMiss(creature, targetCreature, (int32) damage);
-				return 0;
-		 	} else
-		 		checkDots(targetCreature, damage);
-
-			if (hasCbtSpamHit())
-				creature->sendCombatSpam(targetCreature, NULL, (int32)damage, getCbtSpamHit());
-
-			reduction = applyDamage(creature, targetCreature, (int32) healthDamage, bodyPart);
-
-			if (weapon != NULL) {
-				doDotWeaponAttack(creature, targetCreature, 0);
-
-				if (weapon->decreasePowerupUses())
-						weapon->setUpdated(true);
-					else if (weapon->hasPowerup())
-						weapon->removePowerup((Player*)creature, true);
-			}
-
-		} else {
-			doMiss(creature, targetCreature, (int32) damage);
-			return 0;
-		}
-		} else {
-			return (int32)damageRatio * average;
-		}
-
-		return (int32)damage - reduction;
+		return damage;
 	}
 
 	void checkDots(CreatureObject* targetCreature, float damage) {

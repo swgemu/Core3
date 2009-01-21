@@ -56,6 +56,9 @@ public:
 	}
 
 	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
+		if (!target->isAttackable())
+			return 0;
+
 		int damage = calculateDamage(creature, target);
 
 
@@ -71,7 +74,7 @@ public:
 	}
 
 	int calculateDamage(CreatureObject* creature, SceneObject* target) {
-		return server->getCombatManager()->calculateDamage(creature, target, this, true);
+		return server->getCombatManager()->calculateWeaponDamage(creature, (TangibleObject*)target, this, true);
 	}
 
 };

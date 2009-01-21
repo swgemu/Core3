@@ -199,7 +199,7 @@ public:
 		//return server->getCombatManager()->checkSecondaryDefenses(creature, targetCreature);
 		return 0;
 	}
-
+/*
 	virtual inline int getHitChance(CreatureObject* creature, CreatureObject* targetCreature) {
 		return server->getCombatManager()->getHitChance(creature, targetCreature, accuracyBonus);
 	}
@@ -213,9 +213,9 @@ public:
 	}
 
 	int applyDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part) {
-		return server->getCombatManager()->applyDamage(attacker, target, damage, part, this);
+		return server->getCombatManager()->applyWeaponDamage(attacker, target, damage, part, this);
 	}
-
+*/
 	void doDotWeaponAttack(CreatureObject* creature, CreatureObject* targetCreature, bool areaHit) {
 		server->getCombatManager()->doDotWeaponAttack(creature, targetCreature, areaHit);
 	}

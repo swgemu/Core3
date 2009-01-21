@@ -120,7 +120,7 @@ public:
 
 		player->addCooldown(getSkillName(),8000);
 
-		int damage = calculateTrapDamage(creature, target, ((Weapon*) trap));
+		int damage = calculateTrapDamage(creature, (TangibleObject*)target, ((Weapon*) trap));
 
 		if (damage && targetCreature->hasAttackDelay())
 			targetCreature->clearAttackDelay();
@@ -130,7 +130,7 @@ public:
 		creatureName << "@" << targetCreature->getTemplateTypeName() << ":"
 				<< targetCreature->getTemplateName();
 		params->addTT(creatureName.toString());
-		;
+
 		if (damage != 0) {
 			applyDot(targetCreature, damage);
 			String type = "trapping";
@@ -167,9 +167,8 @@ public:
 	 * \param weapon The trap.
 	 * \return Returns Returns the damage.
 	 */
-	virtual int calculateTrapDamage(CreatureObject* creature,
-				SceneObject* target, Weapon* weapon) {
-		return server->getCombatManager()->calculateTrapDamage(creature, target, this, false, weapon);
+	int calculateTrapDamage(CreatureObject* creature, TangibleObject* target, Weapon* weapon) {
+		return server->getCombatManager()->calculateTrapDamage(creature, target, this, true, weapon);
 	}
 
 };

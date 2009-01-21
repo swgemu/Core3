@@ -73,7 +73,7 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddRandomPoolAttackTargetSkill", AddRandomPoolAttackTargetSkill);
 	lua_register(getLuaState(), "AddDirectPoolAttackTargetSkill", AddDirectPoolAttackTargetSkill);
 	lua_register(getLuaState(), "AddForcePowersPoolAttackTargetSkill", AddForcePowersPoolAttackTargetSkill);
-	lua_register(getLuaState(), "AddWeaponlessDotPoolAttackTargetSkill", AddWeaponlessDotPoolAttackSkill);
+	//lua_register(getLuaState(), "AddWeaponlessDotPoolAttackTargetSkill", AddWeaponlessDotPoolAttackSkill);
 	lua_register(getLuaState(), "AddForceHealSelfSkill", AddForceHealSelfSkill);
 	lua_register(getLuaState(), "AddHealSelfSkill", AddHealSelfSkill);
 	lua_register(getLuaState(), "AddHealTargetSkill", AddHealTargetSkill);
@@ -93,7 +93,7 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddEnhanceSelfSkill", AddEnhanceSelfSkill);
 	lua_register(getLuaState(), "AddDotPoolAttackTargetSkill", AddDotPoolAttackTargetSkill);
 	lua_register(getLuaState(), "AddChangePostureSelfSkill", AddChangePostureSelfSkill);
-	lua_register(getLuaState(), "AddWoundsDirectPoolAttackTargetSkill", AddWoundsDirectPoolAttackTargetSkill);
+	//lua_register(getLuaState(), "AddWoundsDirectPoolAttackTargetSkill", AddWoundsDirectPoolAttackTargetSkill);
 	lua_register(getLuaState(), "AddPassiveSkill", AddPassiveSkill);
 	lua_register(getLuaState(), "AddMeditateSkill", AddMeditateSkill);
 	lua_register(getLuaState(), "AddPowerboostSkill", AddPowerboostSkill);
@@ -406,6 +406,7 @@ int ScriptAttacksManager::AddDirectPoolAttackTargetSkill(lua_State *L) {
 	return 0;
 }
 
+
 int ScriptAttacksManager::AddDotPoolAttackTargetSkill(lua_State *L) {
 	LuaObject skill(L);
 
@@ -506,7 +507,7 @@ int ScriptAttacksManager::AddDotPoolAttackTargetSkill(lua_State *L) {
 	CombatActions->put(attack);
 	return 0;
 }
-
+/*
 int ScriptAttacksManager::AddWeaponlessDotPoolAttackSkill(lua_State *L) {
 	LuaObject skill(L);
 
@@ -596,7 +597,7 @@ int ScriptAttacksManager::AddWeaponlessDotPoolAttackSkill(lua_State *L) {
 	CombatActions->put(attack);
 	return 0;
 }
-
+*/
 int ScriptAttacksManager::AddForcePowersPoolAttackTargetSkill(lua_State *L) {
 	LuaObject skill(L);
 
@@ -1301,7 +1302,7 @@ int ScriptAttacksManager::AddChangePostureSelfSkill(lua_State* L) {
 
 	return 0;
 }
-
+/*
 int ScriptAttacksManager::AddWoundsDirectPoolAttackTargetSkill(lua_State *L) {
 	LuaObject skill(L);
 
@@ -1380,7 +1381,7 @@ int ScriptAttacksManager::AddWoundsDirectPoolAttackTargetSkill(lua_State *L) {
 	CombatActions->put(attack);
 	return 0;
 }
-
+*/
 int ScriptAttacksManager::RunSkillsFile(lua_State* L) {
 	String filename;
 
@@ -1454,7 +1455,6 @@ int ScriptAttacksManager::AddEntertainSkill(lua_State* L) {
 
 	return 0;
 }
-
 
 int ScriptAttacksManager::AddEntertainEffectSkill(lua_State* L) {
 	LuaObject skill(L);

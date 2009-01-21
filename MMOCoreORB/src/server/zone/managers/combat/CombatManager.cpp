@@ -141,7 +141,9 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 	}
 
 	// Attack skills
-	if (!checkSkill(creature, target, tskill))
+	TangibleObject* targetObject = (TangibleObject*) target;
+
+	if (!checkSkill(creature, targetObject, tskill))
 		return 0.0f;
 
 	uint32 animCRC = tskill->getAnimCRC();
@@ -157,15 +159,14 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 	} else {
 		actionMessage = new CombatAction(creature, animCRC);
 	}
-	if (!doAttackAction(creature, target, (AttackTargetSkill*)tskill, actionModifier, actionMessage)) {
+
+	if (!doAttackAction(creature, targetObject, (AttackTargetSkill*)tskill, actionModifier, actionMessage)) {
 		delete actionMessage;
 		return 0.0f;
 	}
 
-
-
 	if (tskill->isArea())
-		handleAreaAction(creature, target, action, actionMessage);
+		handleAreaAction(creature, targetObject, action, actionMessage);
 
 	creature->broadcastMessage(actionMessage);
 
@@ -214,7 +215,6 @@ float CombatManager::doCamoSkill(CommandQueueAction* action) {
 	}
 
 	return skill->calculateSpeed(creature);
-
 }
 
 float CombatManager::doGroupSkill(CommandQueueAction* action) {
@@ -232,7 +232,7 @@ float CombatManager::doGroupSkill(CommandQueueAction* action) {
 }
 
 // TODO: Need support for grenades where the area is not centred around the attacker
-void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* target, CommandQueueAction* action, CombatAction* actionMessage) {
+void CombatManager::handleAreaAction(CreatureObject* creature, TangibleObject* target, CommandQueueAction* action, CombatAction* actionMessage) {
 	TargetSkill* skill = (TargetSkill*) action->getSkill();
 
 	float CreatureVectorX = creature->getPositionX();
@@ -240,6 +240,20 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 
 	float DirectionVectorX = target->getPositionX() - CreatureVectorX;
 	float DirectionVectorY = target->getPositionY() - CreatureVectorY;
+
+	int weaponRange;
+	if (creature->getWeapon() != NULL)
+		weaponRange = creature->getWeapon()->getMaxRange();
+	else
+		weaponRange = 5;
+
+	int coneRange = weaponRange;
+	if (skill->getRange() != 0)
+		coneRange = (int)skill->getRange();
+
+	int areaRange = weaponRange;
+	if (skill->getAreaRange() != 0)
+		areaRange = (int)skill->getRange();
 
 	String actionModifier = action->getActionModifier();
 
@@ -258,14 +272,13 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 			coneRange = (int)skill->getRange();
 
 		int areaRange = weaponRange;
-		if (skill->getAreaRange() != 0)
-			areaRange = (int)skill->getAreaRange();
+		if (skill->getRange() != 0)
+			areaRange = (int)skill->getRange();
 
 		for (int i = 0; i < creature->inRangeObjectCount(); i++) {
-			// Is this correct?
 			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) creature->getInRangeObject(i))->_this);
 
-			if (!object->isPlayer() && !object->isNonPlayerCreature() && !object->isAttackableObject())
+			if (!object->isAttackable())
 				continue;
 
 			if (object == creature || object == target)
@@ -294,20 +307,18 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 				if (!(creature->isInRange(object, coneRange)))
 					continue;
 
-				float angle = getConeAngle(object, CreatureVectorX, CreatureVectorY, DirectionVectorX, DirectionVectorY);
+				float angle = getConeAngle((TangibleObject*)object, CreatureVectorX, CreatureVectorY, DirectionVectorX, DirectionVectorY);
 				float coneAngle = skill->getConeAngle() / 2;
 
 				if (angle > coneAngle || angle < -coneAngle)
 					continue;
 
-			} else if (!skill->isThrowSkill() && !(creature->isInRange(object, areaRange)))
-				continue;
-			else if (skill->isThrowSkill() && !(target->isInRange(object, areaRange)))
+			} else if (!(creature->isInRange(object, areaRange)))
 				continue;
 
 			zone->unlock();
 
-			doAttackAction(creature, object, (AttackTargetSkill*)skill, actionModifier, NULL);
+			doAttackAction(creature, (TangibleObject*)object, (AttackTargetSkill*)skill, actionModifier, NULL);
 
 			zone->lock();
 		}
@@ -320,7 +331,7 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 	}
 }
 
-bool CombatManager::doAttackAction(CreatureObject* attacker, SceneObject* target, AttackTargetSkill* skill,  String& modifier, CombatAction* actionMessage) {
+bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* target, AttackTargetSkill* skill,  String& modifier, CombatAction* actionMessage) {
 	try {
 		target->wlock(attacker);
 
@@ -373,22 +384,6 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, SceneObject* target
 			actionMessage->addDefender(targetCreature, damage >= 0);
 
 		if (targetCreature != NULL) {
-			/**
-			 * TODO: REMOVE - handled with event handlers now
-			 * if (targetCreature->isIncapacitated()) {
-				attacker->sendSystemMessage("base_player", "prose_target_incap", targetCreature->getObjectID());
-
-				if (!skill->isArea()) {
-					attacker->clearCombatState(true);
-				}
-
-			} else if (targetCreature->isDead()) {
-				attacker->sendSystemMessage("base_player", "prose_target_dead", targetCreature->getObjectID());
-
-				if (!skill->isArea()) {
-					attacker->clearCombatState(true);
-				}
-			}*/
 
 			skill->calculateStates(attacker, targetCreature);
 
@@ -438,7 +433,7 @@ bool CombatManager::canAttack(Player* player, Player* targetPlayer) {
 	return true;
 }
 
-bool CombatManager::checkSkill(CreatureObject* creature, SceneObject* target, TargetSkill* skill) {
+bool CombatManager::checkSkill(CreatureObject* creature, TangibleObject* target, TargetSkill* skill) {
 	if (target == NULL)
 		return false;
 
@@ -451,7 +446,7 @@ bool CombatManager::checkSkill(CreatureObject* creature, SceneObject* target, Ta
 	return true;
 }
 
-float CombatManager::getConeAngle(SceneObject* target, float CreatureVectorX, float CreatureVectorY, float DirectionVectorX, float DirectionVectorY) {
+float CombatManager::getConeAngle(TangibleObject* target, float CreatureVectorX, float CreatureVectorY, float DirectionVectorX, float DirectionVectorY) {
 	float Target1 = target->getPositionX() - CreatureVectorX;
 	float Target2 = target->getPositionY() - CreatureVectorY;
 
@@ -488,21 +483,13 @@ void CombatManager::doBlock(CreatureObject* creature, CreatureObject* defender) 
 }
 
 // calc methods
-void CombatManager::calculateDamageReduction(CreatureObject* creature, CreatureObject* targetCreature, float& damage) {
-
-	if (targetCreature->isKnockedDown())
-		damage *= 1.33f;
-
-	if (creature->isIntimidated())
-		damage *= 0.8f;
-}
 
 // TODO: Not used for force attacks
-void CombatManager::checkMitigation(CreatureObject* creature, CreatureObject* targetCreature, float& minDamage, float& maxDamage) {
+void CombatManager::checkMitigation(CreatureObject* creature, CreatureObject* targetCreature, int attacktype, float& minDamage, float& maxDamage) {
 	Weapon* weapon = creature->getWeapon();
 	uint32 mit = 0;
 
-	if (weapon == NULL || MELEEWEAPON(weapon->getType())) {
+	if (attacktype == MELEEATTACK) {
 		mit = targetCreature->getMitigation("melee_damage_mitigation_3");
 
 		if (mit == 0) {
@@ -511,7 +498,7 @@ void CombatManager::checkMitigation(CreatureObject* creature, CreatureObject* ta
 				mit = targetCreature->getMitigation("melee_damage_mitigation_1");
 		}
 
-	} else {
+	} else if (attacktype == RANGEDATTACK || attacktype == FORCEATTACK){
 		mit = targetCreature->getMitigation("ranged_damage_mitigation_3");
 
 		if (mit == 0) {
@@ -529,137 +516,119 @@ void CombatManager::checkMitigation(CreatureObject* creature, CreatureObject* ta
  * checkSecondaryDefenses:
  *     returns 0 - hit, 1 - block, 2 - dodge, 3 - counter-attack
  */
-int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObject* targetCreature) {
-	if (targetCreature->isIntimidated())
-		return 0;
-
+int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon, int attackType) {
+	Weapon* attackerWeapon = creature->getWeapon();
 	Weapon* targetWeapon = targetCreature->getWeapon();
-	Weapon* playerWeapon = creature->getWeapon();
 
-	if (targetWeapon == NULL)
-		return 0;
+	int hitChance = 0;
+	int defenseType = 0;
+	float targetDefense = 0;
 
-	float playerAccuracy = creature->getAccuracy();
-	float weaponAccuracy = getWeaponRangeMod(creature->getDistanceTo(targetCreature), playerWeapon);
 
-	weaponAccuracy += calculatePostureMods(creature, targetCreature);
-
-	int blindState = 0;
-
-	if (creature->isBlinded())
-		blindState = 1;
-
-	float defTotal = 0;
-	float accTotal = 0;
-
-	int rand = System::random(100);
-
-	if ((targetWeapon->getType() == WeaponImplementation::POLEARM) || (targetWeapon->getType() == WeaponImplementation::RIFLE)) {
-		float block = targetCreature->getSkillMod("block");
-
-		if (block == 0)
-			return 0;
-
-		if (block > 85)
-			block = 85;
-
-		defTotal = powf(float((block * 6.5) + (targetCreature->getCenteredBonus() * 1.5)), 4.9);
-		defTotal -= (defTotal * targetCreature->calculateBFRatio());
-
-		if ((playerAccuracy + weaponAccuracy + blindState) >= 0)
-			accTotal = powf(float((playerAccuracy * 1.2) + weaponAccuracy - (blindState * 50)), 6);
-
-		int chance = (int)round(((defTotal / (defTotal + accTotal))) * 100);
-
-		/*cout << "accTotal:[" << accTotal << "] defTotal:[" << defTotal << "]\n";
-		cout << "chance:[" << chance << "]\n";*/
-
-		if (rand < chance) {
-			doBlock(targetCreature, creature);
-			return 1;
-		}
-	} else if ((targetWeapon->getType() == WeaponImplementation::ONEHANDED) || (targetWeapon->getType() == WeaponImplementation::PISTOL)) {
-		float dodge = targetCreature->getSkillMod("dodge");
-
-		if (dodge == 0)
-			return 0;
-
-		if (dodge > 85)
-			dodge = 85;
-
-		defTotal = powf(float((dodge * 6.5) + (targetCreature->getCenteredBonus() * 1.5)), 4.9);
-		defTotal -= (defTotal * targetCreature->calculateBFRatio());
-
-		if ((playerAccuracy + weaponAccuracy + blindState) >= 0)
-			accTotal = powf(float((playerAccuracy * 1.2) + weaponAccuracy - (blindState * 50)), 6);
-
-		int chance = (int)round(((defTotal / (defTotal + accTotal))) * 100);
-
-		/*cout << "accTotal:[" << accTotal << "] defTotal:[" << defTotal << "]\n";
-		cout << "chance:[" << chance << "]\n";*/
-
-		if (rand < chance) {
-			doDodge(targetCreature, creature);
-			return 2;
-		}
-	} else if ((targetWeapon->getType() == WeaponImplementation::CARBINE) || (targetWeapon->getType() == WeaponImplementation::TWOHANDED)) {
-		float counterAttack = targetCreature->getSkillMod("counterattack");
-
-		if (counterAttack == 0)
-			return 0;
-
-		if (counterAttack > 85)
-			counterAttack = 85;
-
-		defTotal = powf(float((counterAttack * 6.5) + (targetCreature->getCenteredBonus() * 1.5)), 4.9);
-		defTotal -= (defTotal * targetCreature->calculateBFRatio());
-
-		if ((playerAccuracy + weaponAccuracy + blindState) >= 0)
-			accTotal = powf(float((playerAccuracy * 1.2) + weaponAccuracy - (blindState * 50)), 6);
-
-		int chance = (int)round(((defTotal / (defTotal + accTotal))) * 100);
-
-		/*cout << "accTotal:[" << accTotal << "] defTotal:[" << defTotal << "]\n";
-		cout << "chance:[" << chance << "]\n";*/
-
-		if (rand < chance) {
-			doCounterAttack(targetCreature, creature);
-			return 3;
-		}
+	float weaponAccuracy = 0;
+	if (attackType == MELEEATTACK || attackType == RANGEDATTACK) {
+	// Get the weapon mods for range and add the mods for stance
+		weaponAccuracy = getWeaponRangeMod(creature->getDistanceTo(targetCreature), weapon);
+		weaponAccuracy += calculatePostureMods(creature, targetCreature);
 	}
 
-	// TODO: TKM secondary defenses also saberblock
+	float attackerAccuracy = 0;
 
-	return 0;
-}
-
-int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* targetCreature, int accuracyBonus) {
-	int hitChance = 0;
-	Weapon* weapon = creature->getWeapon();
-
-	// Get the weapon mods for range and add the mods for stance
-	float weaponAccuracy = getWeaponRangeMod(creature->getDistanceTo(targetCreature), weapon);
-	weaponAccuracy += calculatePostureMods(creature, targetCreature);
-
-	// TODO: add Aim mod
-	float aimMod = 0.0;
-
-	float attackerAccuracy = creature->getAccuracy() + creature->getAccuracyBonus();
-
-	int targetDefense = getTargetDefense(creature, targetCreature, weapon);
+	if (attackType == MELEEATTACK || attackType == RANGEDATTACK) {
+		attackerAccuracy = creature->getAccuracy() + creature->getAccuracyBonus();
+	} else if (attackType == TRAPATTACK) {
+		attackerAccuracy = creature->getSkillMod("trapping");
+	}
+	if (creature->isBlinded())
+		attackerAccuracy -= 50;
 
 	// Calculation based on the DPS calculation spreadsheet
 	float accTotal = 66.0; // Base chance
 
-	float blindState = 0;
-	if (creature->isBlinded())
-		blindState = 50;
-	float stunBonus = 0;
-	if (targetCreature->isStunned())
-		stunBonus = 50;
+	if (targetWeapon == NULL || targetWeapon->getType() == WeaponImplementation::UNARMED) {
+		targetDefense = targetCreature->getSkillMod("unarmed_passive_defense");
+		defenseType = 1 + System::random(2);
+	} else if ((targetWeapon->getType() == WeaponImplementation::POLEARM) || (targetWeapon->getType() == WeaponImplementation::RIFLE)) {
+		defenseType = 1;
+		targetDefense = targetCreature->getSkillMod("block");
+	} else if ((targetWeapon->getType() == WeaponImplementation::ONEHANDED) || (targetWeapon->getType() == WeaponImplementation::PISTOL)) {
+		defenseType = 2;
+		targetDefense = targetCreature->getSkillMod("dodge");
+	} else if ((targetWeapon->getType() == WeaponImplementation::CARBINE) || (targetWeapon->getType() == WeaponImplementation::TWOHANDED)) {
+		defenseType = 3;
+		targetDefense = targetCreature->getSkillMod("counterattack");
+	}
 
-	accTotal += (attackerAccuracy + weaponAccuracy + aimMod + accuracyBonus + stunBonus
-			- targetDefense - blindState) / 2.0;
+	if (targetCreature->isStunned())
+		targetDefense -= 50;
+	targetDefense += targetCreature->getCenteredBonus() * 1.5l;
+	targetDefense -=- targetDefense * targetCreature->calculateBFRatio();
+
+	if (targetDefense > 125)
+		targetDefense = 125;
+
+	if (targetDefense == 0)
+		return 0;
+
+	accTotal += (attackerAccuracy + weaponAccuracy - targetDefense) / 2.0;
+
+	int rand = System::random(100);
+	if ((int)accTotal <= rand)
+		return 0;
+
+	switch (defenseType) {
+	case 1:
+		doBlock(targetCreature, creature);
+		break;
+	case 2:
+		doDodge(targetCreature, creature);
+		break;
+	case 3:
+		doCounterAttack(targetCreature, creature);
+		break;
+	}
+
+	// TODO: saberblock
+
+	return defenseType;
+}
+
+int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon, int accuracyBonus, int attackType) {
+	int hitChance = 0;
+
+
+	float weaponAccuracy = 0;
+	if (attackType == MELEEATTACK || attackType == RANGEDATTACK) {
+	// Get the weapon mods for range and add the mods for stance
+		weaponAccuracy = getWeaponRangeMod(creature->getDistanceTo(targetCreature), weapon);
+		weaponAccuracy += calculatePostureMods(creature, targetCreature);
+	}
+
+	// TODO: add Aim mod
+	float aimMod = 0.0;
+	float attackerAccuracy = 0;
+
+	if (attackType == MELEEATTACK || attackType == RANGEDATTACK) {
+		attackerAccuracy = creature->getAccuracy() + creature->getAccuracyBonus();
+	} else if (attackType == TRAPATTACK) {
+		attackerAccuracy = creature->getSkillMod("trapping");
+	}
+
+	int targetDefense = getTargetDefense(creature, targetCreature, attackType);
+
+	// Calculation based on the DPS calculation spreadsheet
+	float accTotal = 66.0; // Base chance
+
+	if (creature->isBlinded())
+		attackerAccuracy -= 50;
+	if (targetCreature->isStunned())
+		targetDefense -= 50;
+
+	if (targetDefense > 125)
+		targetDefense = 125;
+
+	// TODO: Need to add in food/drink mods for defense and attack
+	accTotal += (attackerAccuracy + weaponAccuracy + aimMod + accuracyBonus	- targetDefense) / 2.0;
 
 	if (accTotal > 100)
 		accTotal = 100.0;
@@ -735,31 +704,25 @@ int CombatManager::calculatePostureMods(CreatureObject* creature, CreatureObject
 	return accuracy;
 }
 
-uint32 CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon, bool forceAttack) {
+uint32 CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, int attackType) {
 	uint32 defense = 0;
 	uint32 targetPosture = targetCreature->getPosture();
 
-	if (forceAttack) {
+	if (attackType == FORCEATTACK) {
 		uint32 force = targetCreature->getSkillMod("force_defense");
 		defense = force;
 	} else {
 
 		// TODO: Add defenses into creature luas.
 		if (!targetCreature->isPlayer()) {
-			defense = targetCreature->getLevel() / 2;
-
-			if (defense > 250)
-				defense = 250;
+			defense = targetCreature->getLevel();
 			return defense;
-
-		} else if (weapon == NULL || MELEEWEAPON(weapon->getType())) {
+		} else if (attackType == MELEEATTACK) {
 			defense = targetCreature->getSkillMod("melee_defense");
 		} else {
 			defense = targetCreature->getSkillMod("ranged_defense");
 		}
 	}
-
-	//defense += targetCreature->getDefenseBonus();
 
 	return defense - (uint32)(defense * targetCreature->calculateBFRatio());
 }
@@ -785,17 +748,27 @@ uint32 CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject*
  * \param weapon The weapon used.
  * \return Returns the amount of damage absorbed by armour.
  */
-int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part, AttackTargetSkill* askill) {
+int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part,
+		AttackTargetSkill* askill, int attacktype, int damagetype, int armorpiercing, bool cankill) {
 
-	Weapon* weapon = attacker->getWeapon();
-
-	int reduction = 0;
-
-	reduction = getArmorReduction(weapon, target, damage, part);
+	int reduction = getArmorReduction(target, damage, part, attacktype, damagetype, armorpiercing);
 
 	damage -= reduction;
 	if (damage < 0)
 		damage = 0;
+
+	if (!cankill) {
+		if (part < 6) {
+			if (damage >= target->getHealth())
+				damage = target->getHealth() - 1;
+		} else if (part < 8) {
+			if (damage >= target->getAction())
+				damage = target->getAction() - 1;
+		} else {
+			if (damage >= target->getMind())
+				damage = target->getMind() - 1;
+		}
+	}
 
 	//target->addDamage(attacker, damage);
 	target->addDamageDone(attacker, damage, askill->getSkillName());
@@ -840,17 +813,21 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target,
 		}
 	}
 
+	return reduction;
+}
+
+void CombatManager::applyWounds(CreatureObject* attacker, CreatureObject* target, Weapon* weapon, int location) {
 	float woundsRatio = 5;
 
 	if (weapon != NULL)
 		woundsRatio = weapon->getWoundsRatio();
 
 	if (woundsRatio + (woundsRatio * target->calculateBFRatio()) > System::random(100)) {
-		if (part == 8)
+		if (location == 8)
 			target->changeMindWoundsBar(1, true);
-		else if (part < 6)
+		else if (location < 6)
 			target->changeHealthWoundsBar(1, true);
-		else if (part < 8)
+		else if (location < 8)
 			target->changeActionWoundsBar(1, true);
 
 		target->changeShockWounds(1);
@@ -862,7 +839,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target,
 
 		Armor* armor = NULL;
 		if (target->isPlayer())
-			armor = ((Player*)target)->getPlayerArmor(part);
+			armor = ((Player*)target)->getPlayerArmor(location);
 		if (armor != NULL) {
 			armor->setConditionDamage(armor->getConditionDamage() + 1);
 			armor->setUpdated(true);
@@ -873,124 +850,9 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target,
 			weapon->setUpdated(true);
 		}
 	}
-
-	return reduction;
 }
 
-/*
- * This applies the damage afflicted by a trap. The damage will not kill the target.
- * \param attacker The attacker.
- * \param target The target.
- * \param damage The damage.
- * \param part The area the damage is applied to.
- *   		The values are:
- * 			0 - Chest
- * 			1 - Hands
- * 			2,3 - Left arm
- * 			4,5 - Right arm
- * 			6 -	Legs
- * 			7 - Feet
- * 			8 - Head
- * \param askill The attack skill.
- * \param weapon The weapon used.
- */
-int CombatManager::applyTrapDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part, AttackTargetSkill* askill,Weapon* weapon) {
-
-	int reduction = 0;
-
-	reduction = getArmorReduction(weapon, target, damage, part);
-
-	damage -= reduction;
-	if (damage < 0)
-		damage = 0;
-
-	if (part < 6) {
-		if (damage >= target->getHealth())
-			damage = target->getHealth() - 1;
-	} else if (part < 8) {
-		if (damage >= target->getAction())
-			damage = target->getAction() - 1;
-	} else {
-		if (damage >= target->getMind())
-			damage = target->getMind() - 1;
-	}
-
-	target->addDamage(attacker, damage);
-	target->addDamageDone(attacker, damage, askill->getSkillName());
-
-	if (part < 6)
-		attacker->inflictDamage(target, CreatureAttribute::HEALTH, damage);
-	else if (part < 8)
-		attacker->inflictDamage(target, CreatureAttribute::ACTION, damage);
-	else
-		attacker->inflictDamage(target, CreatureAttribute::MIND, damage);
-
-	if (attacker->isPlayer()) {
-		ShowFlyText* fly;
-		switch(part) {
-		case 8:
-			fly = new ShowFlyText(target, "combat_effects", "hit_head", 0, 0, 0xFF);
-			((Player*)attacker)->sendMessage(fly);
-			break;
-		case 4:
-		case 5:
-			fly = new ShowFlyText(target, "combat_effects", "hit_rarm", 0xFF, 0, 0);
-			((Player*)attacker)->sendMessage(fly);
-			break;
-		case 1:
-		case 2:
-		case 3:
-			fly = new ShowFlyText(target, "combat_effects", "hit_larm", 0xFF, 0, 0);
-			((Player*)attacker)->sendMessage(fly);
-			break;
-		case 0:
-			fly = new ShowFlyText(target, "combat_effects", "hit_body", 0xFF, 0, 0);
-			((Player*)attacker)->sendMessage(fly);
-			break;
-		case 6:
-		case 7:
-			if (System::random(1) == 0)
-				fly = new ShowFlyText(target, "combat_effects", "hit_lleg", 0, 0xFF, 0);
-			else
-				fly = new ShowFlyText(target, "combat_effects", "hit_rleg", 0, 0xFF, 0);
-			((Player*)attacker)->sendMessage(fly);
-			break;
-		}
-	}
-
-	float woundsRatio = 5;
-
-	if (weapon != NULL)
-		woundsRatio = weapon->getWoundsRatio();
-
-	if (woundsRatio + (woundsRatio * target->calculateBFRatio()) > System::random(100)) {
-		if (part == 9)
-			target->changeMindWoundsBar(1, true);
-		else if (part < 7)
-			target->changeHealthWoundsBar(1, true);
-		else if (part < 9)
-			target->changeActionWoundsBar(1, true);
-
-		target->changeShockWounds(1);
-
-		Armor* armor = NULL;
-		if (target->isPlayer())
-			armor = ((Player*)target)->getPlayerArmor(part);
-		if (armor != NULL) {
-			armor->setConditionDamage(armor->getConditionDamage() + 1);
-			armor->setUpdated(true);
-		}
-
-		if (weapon != NULL && System::random(10) == 1) {
-			weapon->setConditionDamage(weapon->getConditionDamage() + 1);
-			weapon->setUpdated(true);
-		}
-	}
-
-	return reduction;
-}
-
-int CombatManager::getArmorReduction(Weapon* weapon, CreatureObject* target, int damage, int location) {
+int CombatManager::getArmorReduction(CreatureObject* target, int damage, int location, int attacktype, int damagetype, int armorpiercing) {
 	float currentDamage = damage;
 	int reduction;
 
@@ -1001,7 +863,7 @@ int CombatManager::getArmorReduction(Weapon* weapon, CreatureObject* target, int
 
 	// Stage two toughness
 	if (target->isPlayer())
-		if (weapon == NULL || MELEEWEAPON(weapon->getType())) { // Melee attack
+		if (attacktype == MELEEATTACK) {
 			int toughness = 0;
 			if (target->getWeapon() == NULL)
 				toughness = target->getSkillMod("unarmed_toughness");
@@ -1042,11 +904,9 @@ int CombatManager::getArmorReduction(Weapon* weapon, CreatureObject* target, int
 			}
 		}
 
-	int damageType = WeaponImplementation::KINETIC;
-
 	float resist = 0;
 	if (armor != NULL) {
-		switch (damageType) {
+		switch (damagetype) {
 		case WeaponImplementation::KINETIC:
 			resist = armor->getKinetic();
 			break;
@@ -1079,27 +939,21 @@ int CombatManager::getArmorReduction(Weapon* weapon, CreatureObject* target, int
 			break;
 		}
 	} else if (target->isNonPlayerCreature()) {
-			resist = ((Creature*)target)->getArmorResist(damageType);
+			resist = ((Creature*)target)->getArmorResist(damagetype);
 	}
 
 	if (resist > 0 && resist < 100) {
-		int armorPiercing = 1;
-		if (weapon != NULL) {
-			damageType = weapon->getDamageType();
-			armorPiercing = weapon->getArmorPiercing();
-		}
-
 		int armorResistance = 0;
 		if (armor != NULL)
 			armorResistance = armor->getRating() / 16;
 		else if (target->isNonPlayerCreature())
 			armorResistance = ((Creature*)target)->getArmor();
 
-		if (armorPiercing > armorResistance)
-			for (int i = armorResistance; i < armorPiercing; i++)
+		if (armorpiercing > armorResistance)
+			for (int i = armorResistance; i < armorpiercing; i++)
 				currentDamage *= 1.25f;
-		else if (armorPiercing < armorResistance)
-			for (int i = armorPiercing; i < armorResistance; i++)
+		else if (armorpiercing < armorResistance)
+			for (int i = armorpiercing; i < armorResistance; i++)
 				currentDamage *= 0.5;
 	}
 
@@ -1562,22 +1416,26 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 
 	/*
 	 * Calculates and applies the damage of a skill.
-	 * \param creature The creature, that throws the trap.
-	 * \param target The traget.
+	 * \param creature The creature that is attacking.
+	 * \param target The target.
 	 * \param randompoolhit Is it random pool damage ?
-	 * \param weapon The Trap.
 	 */
-	int CombatManager::calculateDamage(CreatureObject* creature, SceneObject* target, AttackTargetSkill* skill, bool randompoolhit) {
+	int CombatManager::calculateWeaponDamage(CreatureObject* creature, TangibleObject* target, AttackTargetSkill* skill, bool randompoolhit) {
 		Weapon* weapon = creature->getWeapon();
-
-		float minDamage = 0;
-		float maxDamage = 0;
-		float healthDamage = 0;
-		float actionDamage = 0;
-		float mindDamage = 0;
-		int reduction = 0;
+		float minDamage, maxDamage;
+		int damageType = 0;
+		int attackType = MELEEATTACK;
+		int armorPiercing;
 
 		if (weapon != NULL) {
+			if (MELEEWEAPON(weapon->getType()))
+				attackType = MELEEATTACK;
+			else
+				attackType = RANGEDATTACK;
+
+			damageType = weapon->getDamageType();
+			armorPiercing = weapon->getArmorPiercing();
+
 			minDamage = weapon->getMinDamage();
 			maxDamage = weapon->getMaxDamage();
 			if (weapon->getType() == 0) {  // Unarmed
@@ -1593,122 +1451,36 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 			maxDamage = minDamage + 15.0;
 		}
 
-		CreatureObject* targetCreature = NULL;
-		if (target->isPlayer() || target->isNonPlayerCreature()) {
-			targetCreature = (CreatureObject*) target;
-			checkMitigation(creature, targetCreature, minDamage, maxDamage);
-		}
-
-		float damage = 0;
-		int average = 0;
-
-		int diff = (int)maxDamage - (int)minDamage;
-		if (diff >= 0)
-			average = System::random(diff) + (int)minDamage;
-
-		float globalMultiplier = 1.0f;
-		if (creature->isPlayer()) {
-			globalMultiplier = GLOBAL_MULTIPLIER;  // All player damage has a multiplier
-			if (!target->isPlayer())
-				globalMultiplier *= PVE_MULTIPLIER;
-			else
-				globalMultiplier *= PVP_MULTIPLIER;
-		}
-
-		if (targetCreature != NULL) {
-
+		// Test for hit
+		if (target->isNonPlayerCreature() || target->isPlayer()) {
 			int rand = System::random(100);
-
-			if (getHitChance(creature, targetCreature, skill->getAccuracyBonus()) > rand) {
-				int secondaryDefense = checkSecondaryDefenses(creature, targetCreature);
-
-				if (secondaryDefense < 2) {
-					if (secondaryDefense == 1)
-						damage = damage / 2;
-
-					//Work out the number of pools that may be affected
-					int poolsAffected = 0;
-					int totalPercentage = 0;  // Temporary fix until percentages in lua are corrected
-
-					if (skill->healthPoolAttackChance > 0) {
-						poolsAffected++;
-						totalPercentage += skill->healthPoolAttackChance;
-					}
-					if (skill->actionPoolAttackChance > 0) {
-						poolsAffected++;
-						totalPercentage += skill->actionPoolAttackChance;
-					}
-					if (skill->mindPoolAttackChance > 0) {
-						poolsAffected++;
-						totalPercentage += skill->mindPoolAttackChance;
-					}
-					if (randompoolhit)
-						poolsAffected = 1;  // Only one random pool hit
-
-					damage = skill->damageRatio * average * globalMultiplier;
-					float individualDamage = damage / poolsAffected;
-
-					for (int i = 0; i < poolsAffected; i++) {
-						int pool = System::random(totalPercentage);
-
-						/* Body parts are
-						 * 	0 - Chest
-						 * 	1 - Hands
-						 * 	2,3 - Left arm
-						 * 	4,5 - Right arm
-						 * 	6 -	Legs
-						 * 	7 - Feet
-						 * 	8 - Head
-						 */
-						int bodyPart = 0;
-						if (pool < skill->healthPoolAttackChance) {
-							healthDamage = individualDamage;
-							if (System::random(1) == 0)  // 50% chance of chest hit
-								bodyPart = 0;
-							else
-								bodyPart = System::random(4)+1;
-							calculateDamageReduction(creature, targetCreature, healthDamage);
-						}
-						else if (pool < skill->healthPoolAttackChance + skill->actionPoolAttackChance) {
-							actionDamage = individualDamage;
-							if (System::random(2) == 0)
-								bodyPart = 7;
-							else
-								bodyPart = 6;
-							calculateDamageReduction(creature, targetCreature, actionDamage);
-						}
-						else {
-							mindDamage = individualDamage;
-							bodyPart = 8;
-							calculateDamageReduction(creature, targetCreature, mindDamage);
-						}
-
-						if (skill->hasCbtSpamHit())
-							creature->sendCombatSpam(targetCreature, NULL, (int32)individualDamage, skill->getCbtSpamHit());
-
-						reduction += applyDamage(creature, targetCreature, (int32) individualDamage, bodyPart, skill);
-					}
-				}
-
-
-				if (weapon != NULL) {
-					doDotWeaponAttack(creature, targetCreature, 0);
-
-					if (weapon->decreasePowerupUses())
-						weapon->setUpdated(true);
-					else if (weapon->hasPowerup())
-						weapon->removePowerup((Player*)creature, true);
-				}
-
-			} else {
-				skill->doMiss(creature, targetCreature, (int32) damage);
+			if (rand > getHitChance(creature, (CreatureObject*)target, weapon, skill->getAccuracyBonus(), attackType)) {
+				skill->doMiss(creature, (CreatureObject*)target, 0);
 				return -1;
 			}
-		} else {
-			return (int32)skill->damageRatio * average;
 		}
 
-		return (int32)damage - reduction;
+		if (creature->isNonPlayerCreature() && DEBUG) {
+			System::out << "Creature " << creature->_getName();
+			if (weapon != NULL)
+				System::out << " weapon " << weapon->_getName();
+			System::out << " does " << minDamage << " to " << maxDamage << " damage" << endl;
+		}
+
+		int damage = calculateDamage(creature, target, weapon, skill, attackType, damageType, armorPiercing,
+				minDamage, maxDamage, randompoolhit, true);
+
+		if (damage >= 0 && (target->isNonPlayerCreature() || target->isPlayer())) {
+			if (weapon != NULL) {
+				doDotWeaponAttack(creature, (CreatureObject*)target, 0);
+
+				if (weapon->decreasePowerupUses())
+					weapon->setUpdated(true);
+				else if (weapon->hasPowerup())
+					weapon->removePowerup((Player*)creature, true);
+			}
+		}
+		return damage;
 	}
 
 	/*
@@ -1719,9 +1491,65 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 	 * \param weapon The Trap.
 	 * \return The damage done.
 	 */
-	int CombatManager::calculateTrapDamage(CreatureObject* creature, SceneObject* target, ThrowAttackTargetSkill* skill, bool randompoolhit, Weapon* weapon) {
+	int CombatManager::calculateTrapDamage(CreatureObject* creature, TangibleObject* target, ThrowAttackTargetSkill* skill, bool randompoolhit, Weapon* weapon) {
+
+		CreatureObject* targetCreature = (CreatureObject*)target;
+
+		int rand = System::random(100);
+		int trappingSkill = creature->getSkillMod("trapping");
+
+/*
+		// Changed to use SOE hit calculation
+		int level = targetCreature->getLevel(); //336 ancient krayt
+		if (level > 180)
+			level = 180;
+
+		if ((!(trappingSkill + rand > level) || (rand > 10 && rand < 20))) {
+			skill->doMiss(creature, targetCreature, 0);
+			return -1;
+		}
+*/
 		float minDamage = weapon->getMinDamage();
 		float maxDamage = weapon->getMaxDamage();
+		int damageType = weapon->getDamageType();
+		int attackType = TRAPATTACK;
+		int armorPiercing = 1;
+
+		int damage = calculateDamage(creature, target, weapon, skill, attackType, damageType, armorPiercing, minDamage, maxDamage, true, false);
+
+		if (damage >= 0)
+			calculateTrapStates(creature, targetCreature, skill);
+
+		return damage;
+	}
+
+	int CombatManager::calculateForceDamage(CreatureObject* creature, TangibleObject* target, ForcePowersPoolAttackTargetSkill* skill, int forceAttackType, int damageType, float mindmg, float maxdmg) {
+		float minDamage = mindmg;
+		float maxDamage = mindmg;
+		int attackType = FORCEATTACK;
+		int randomHit = true;
+		if (forceAttackType == 5)
+			randomHit = false;
+
+		// TODO: Add to hit for Force
+		int damage = calculateDamage(creature, target, NULL, skill, FORCEATTACK, damageType, 1, minDamage, maxDamage, randomHit, true);
+
+		return damage;
+	}
+
+	/*
+	 * Calculates and applies the damage of a skill.
+	 * \param creature The creature, that throws the trap.
+	 * \param target The traget.
+	 * \param randompoolhit Is it random pool damage ?
+	 * \param weapon The Trap.
+	 */
+	int CombatManager::calculateDamage(CreatureObject* creature, TangibleObject* target, Weapon* weapon, AttackTargetSkill* skill,
+			int attackType, int damageType, int armorPiercing, float minDmg, float maxDmg, bool randompoolhit, bool cankill) {
+
+		float minDamage = minDmg;
+		float maxDamage = maxDmg;
+
 		float healthDamage = 0;
 		float actionDamage = 0;
 		float mindDamage = 0;
@@ -1730,15 +1558,15 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 		CreatureObject* targetCreature = NULL;
 		if (target->isPlayer() || target->isNonPlayerCreature()) {
 			targetCreature = (CreatureObject*) target;
-			checkMitigation(creature, targetCreature, minDamage, maxDamage);
+			checkMitigation(creature, targetCreature, attackType, minDamage, maxDamage);
 		}
 
+		float damage = 0;
 		int average = 0;
 
 		int diff = (int)maxDamage - (int)minDamage;
 		if (diff >= 0)
 			average = System::random(diff) + (int)minDamage;
-		float damage = 0;
 
 		float globalMultiplier = 1.0f;
 		if (creature->isPlayer()) {
@@ -1749,95 +1577,95 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 				globalMultiplier *= PVP_MULTIPLIER;
 		}
 
+		if (creature->isIntimidated())
+			damage /= 2;
+		if (creature->isStunned())
+			damage /= 2;
+
+
+
 		if (targetCreature != NULL) {
-			int rand = System::random(100);
+			if (targetCreature->isKnockedDown())
+				damage *= 1.333f;
 
-			int trappingSkill = creature->getSkillMod("trapping");
+			int secondaryDefense = 0;
+			if (!targetCreature->isIntimidated())
+				secondaryDefense = checkSecondaryDefenses(creature, targetCreature, weapon, attackType);
 
-			int level = targetCreature->getLevel(); //336 ancient krayt
+			// TODO:  Handle other  secondary defences properly
+			if (secondaryDefense == 1)
+				damage = damage / 2;
+			else if (secondaryDefense == 2)
+				return -1;
+			//else if (secondaryDefense == 3)
+			//	doCounterAttack
 
-			if (level > 180)
-				level = 180;
+			//Work out the number of pools that may be affected
+			int poolsAffected = 0;
+			int totalPercentage = 0;  // Temporary fix until percentages in lua are corrected
 
-			if ((trappingSkill + rand > level) || (rand > 10 && rand < 20)) {
-				int secondaryDefense = checkSecondaryDefenses(creature, targetCreature);
+			if (skill->healthPoolAttackChance > 0) {
+				poolsAffected++;
+				totalPercentage += skill->healthPoolAttackChance;
+			}
+			if (skill->actionPoolAttackChance > 0) {
+				poolsAffected++;
+				totalPercentage += skill->actionPoolAttackChance;
+			}
+			if (skill->mindPoolAttackChance > 0) {
+				poolsAffected++;
+				totalPercentage += skill->mindPoolAttackChance;
+			}
+			if (randompoolhit)
+				poolsAffected = 1;  // Only one random pool hit
 
-				if (secondaryDefense < 2) {
-					if (secondaryDefense == 1)
-						damage = damage / 2;
+			damage = skill->damageRatio * average * globalMultiplier;
+			float individualDamage = damage / poolsAffected;
 
-					//Work out the number of pools that may be affected
-					int poolsAffected = 0;
-					int totalPercentage = 0;  // Temporary fix until percentages in lua are corrected
+			for (int i = 0; i < poolsAffected; i++) {
+				int pool = System::random(totalPercentage);
 
-					if (skill->healthPoolAttackChance > 0) {
-						poolsAffected++;
-						totalPercentage += skill->healthPoolAttackChance;
-					}
-					if (skill->actionPoolAttackChance > 0) {
-						poolsAffected++;
-						totalPercentage += skill->actionPoolAttackChance;
-					}
-					if (skill->mindPoolAttackChance > 0) {
-						poolsAffected++;
-						totalPercentage += skill->mindPoolAttackChance;
-					}
-					if (randompoolhit)
-						poolsAffected = 1;  // Only one random pool hit
-
-					damage = average * globalMultiplier;
-					float individualDamage = damage / poolsAffected;
-
-					for (int i = 0; i < poolsAffected; i++) {
-						int pool = System::random(totalPercentage);
-
-						/* Body parts are
-						 * 	0 - Chest
-						 * 	1 - Hands
-						 * 	2,3 - Left arm
-						 * 	4,5 - Right arm
-						 * 	6 -	Legs
-						 * 	7 - Feet
-						 * 	8 - Head
-						 */
-						int bodyPart = 0;
-						if (pool < skill->healthPoolAttackChance) {
-							healthDamage = individualDamage;
-							if (System::random(1) == 0)  // 50% chance of chest hit
-								bodyPart = 0;
-							else
-								bodyPart = System::random(4)+1;
-							calculateDamageReduction(creature, targetCreature, healthDamage);
-						}
-						else if (pool < skill->healthPoolAttackChance + skill->actionPoolAttackChance) {
-							actionDamage = individualDamage;
-							if (System::random(2) == 0)  // 50% chance of chest hit
-								bodyPart = 7;
-							else
-								bodyPart = 6;
-							calculateDamageReduction(creature, targetCreature, actionDamage);
-						}
-						else {
-							mindDamage = individualDamage;
-							bodyPart = 8;
-							calculateDamageReduction(creature, targetCreature, mindDamage);
-						}
-
-						reduction += applyTrapDamage(creature, targetCreature, (int32) individualDamage, bodyPart, skill,weapon);
-						damage = individualDamage;
-						if (skill->hasCbtSpamHit())
-							creature->sendCombatSpam(targetCreature, NULL, (int32)individualDamage, skill->getCbtSpamHit());
-
-					}
+				/* Body parts are
+				 * 	0 - Chest
+				 * 	1 - Hands
+				 * 	2,3 - Left arm
+				 * 	4,5 - Right arm
+				 * 	6 -	Legs
+				 * 	7 - Feet
+				 * 	8 - Head
+				 */
+				int bodyPart = 0;
+				if (pool < skill->healthPoolAttackChance) {
+					healthDamage = individualDamage;
+					if (System::random(1) == 0)  // 50% chance of chest hit
+						bodyPart = 0;
+					else
+						bodyPart = System::random(4)+1;
+				}
+				else if (pool < skill->healthPoolAttackChance + skill->actionPoolAttackChance) {
+					actionDamage = individualDamage;
+					if (System::random(2) == 0)
+						bodyPart = 7;
+					else
+						bodyPart = 6;
+				} else {
+					mindDamage = individualDamage;
+					bodyPart = 8;
 				}
 
-			} else {
-				skill->doMiss(creature, targetCreature, (int32) damage);
-				return -1;
+				if (skill->hasCbtSpamHit())
+					creature->sendCombatSpam(targetCreature, NULL, (int32)individualDamage, skill->getCbtSpamHit());
+
+				int tempReduction = applyDamage(creature, targetCreature, (int32)individualDamage, bodyPart, skill, attackType, damageType, armorPiercing, cankill);
+				if (individualDamage > tempReduction)
+					applyWounds(creature, targetCreature, weapon, bodyPart);
+				reduction += tempReduction;
 			}
-		} else {
+		} else { // Non creature attackable objects
 			return (int32)skill->damageRatio * average;
+			// TODO: Add weapon damage
 		}
+
 		return (int32)damage - reduction;
 	}
 
@@ -1845,7 +1673,7 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 		if (targetID != 0) {
 			Zone* zone = player->getZone();
 
-			SceneObject* targetObject = zone->lookupObject(targetID);
+			TangibleObject* targetObject = (TangibleObject*)zone->lookupObject(targetID);
 
 			if (targetObject != NULL && targetObject->isPlayer()) {
 				Player* targetPlayer = (Player*) targetObject;
@@ -1921,7 +1749,7 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 		if (targetID != 0) {
 			Zone* zone = player->getZone();
 
-			SceneObject* targetObject = zone->lookupObject(targetID);
+			TangibleObject* targetObject = (TangibleObject*)zone->lookupObject(targetID);
 
 			if (targetObject != NULL && targetObject->isPlayer()) {
 				Player* targetPlayer = (Player*)targetObject;
@@ -2039,7 +1867,7 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 
 		Zone* zone = player->getZone();
 
-		SceneObject* targetObject = zone->lookupObject(targetID);
+		TangibleObject* targetObject = (TangibleObject*)zone->lookupObject(targetID);
 
 		if (targetObject != NULL && targetObject->isPlayer()) {
 			Player* targetPlayer = (Player*)targetObject;

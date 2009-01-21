@@ -246,6 +246,8 @@ void PlayerImplementation::initialize() {
 	// constants
 	itemShift = 100;
 
+	attackable = true;
+
 	// pvp stuff
 	incapacitationCounter = 0;
 	pvpRating = PVPRATING_DEFAULT; //New players start with pvpRating of 1200

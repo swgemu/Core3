@@ -567,6 +567,7 @@ RandomPoolAtt = {
 	maxDamage = 1500,
 	speed = 5.0,
 	accuracyBonus = 0,
+	damageType = FORCE,
 	
 	knockdownChance = 0,
 	postureDownChance = 0,

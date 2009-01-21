@@ -49,9 +49,9 @@ which carries forward this exception.
 #include "target/attack/DirectPoolAttackTargetSkill.h"
 #include "target/attack/DotPoolAttackTargetSkill.h"
 #include "target/attack/DeBuffAttackTargetSkill.h"
-#include "target/attack/WoundsDirectPoolAttackTargetSkill.h"
+//#include "target/attack/WoundsDirectPoolAttackTargetSkill.h"
 #include "target/attack/ForcePowersPoolAttackTargetSkill.h"
-#include "target/attack/WeaponlessDotPoolAttackSkill.h"
+//#include "target/attack/WeaponlessDotPoolAttackSkill.h"
 #include "target/HealTargetSkill.h"
 #include "target/heal/ForceHealTargetSkill.h"
 

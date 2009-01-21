@@ -115,6 +115,7 @@ interface TangibleObject implements SceneObject {
 	boolean isAttachment();
 
 	boolean isDestroyed();
+	boolean isAttackable();
 	boolean isAttackableBy(CreatureObject creature);
 
 	boolean isResource();

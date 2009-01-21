@@ -94,68 +94,7 @@ public:
 	 *     returns damage
 	 */
 	virtual int calculateDamage(CreatureObject* creature, SceneObject* target) {
-
-		CreatureObject* targetCreature = NULL;
-		if (target->isPlayer() || target->isNonPlayerCreature())
-			targetCreature = (CreatureObject*) target;
-
-		int reduction;
-		int bodyPart = 1;
-
-		if (targetCreature != NULL)
-			checkMitigation(creature, targetCreature, minDamage, maxDamage);
-
-		float damage = 0;
-		int average = 0;
-
-		int diff = (int)maxDamage - (int)minDamage;
-		if (diff >= 0)
-			average = System::random(diff) + (int)minDamage;
-
-		float globalMultiplier = CombatManager::GLOBAL_MULTIPLIER;
-		if (creature->isPlayer() && !target->isPlayer())
-			globalMultiplier *= CombatManager::PVE_MULTIPLIER;
-		else if (creature->isPlayer() && target->isPlayer())
-			globalMultiplier *= CombatManager::PVP_MULTIPLIER;
-
-		if (targetCreature != NULL) {
-
-			damage = damageRatio * average * globalMultiplier;
-
-			calculateDamageReduction(creature, targetCreature, damage);
-
-			int pool = System::random(100);
-
-			if (getHitChance(creature, targetCreature) > System::random(100)) {
-				int secondaryDefense = checkSecondaryDefenses(creature, targetCreature);
-
-				if (secondaryDefense < 2) {
-					if (secondaryDefense == 1)
-						damage = damage / 2;
-
-					if (pool < healthPoolAttackChance)
-						bodyPart = System::random(5)+1;
-					else if (pool < healthPoolAttackChance + actionPoolAttackChance)
-						bodyPart = System::random(1)+7;
-					else if (pool < 100)
-						bodyPart = 9;
-
-				} else
-					return 0;
-			} else {
-				doMiss(creature, targetCreature, (int32) damage);
-				return -1;
-			}
-
-			if (hasCbtSpamHit())
-				creature->sendCombatSpam(targetCreature, NULL, (int32) damage, getCbtSpamHit());
-
-			reduction = applyDamage(creature, targetCreature, (int32) damage, bodyPart);
-
-		} else
-			return (int32)damageRatio * average;
-
-		return (int32)(damage - reduction);
+		return server->getCombatManager()->calculateForceDamage(creature, (TangibleObject*)target, this, attackType, damageType, minDamage, maxDamage);
 	}
 
 	inline int getHitChance(CreatureObject* creature, CreatureObject* targetCreature) {
@@ -190,7 +129,7 @@ public:
 		}
 
 		int targetDefense = server->getCombatManager()->getTargetDefense(creature,
-				targetCreature, creature->getWeapon(), true);
+				targetCreature, FORCEATTACK);
 
 		// Calculation based on the DPS calculation spreadsheet
 		float accTotal = 66.0; // Base chance
@@ -220,6 +159,10 @@ public:
 
 	inline void setDamageType(int dmg) {
 		damageType = dmg;
+	}
+
+	inline int getDamageType() {
+		return damageType;
 	}
 
 	inline void setMinDamage(float mindamage) {

@@ -118,7 +118,6 @@ protected:
 	uint32 defenderUpdateCounter;
 
 	bool inCombat;
-	bool attackable;
 
 	//Slicing
 	bool sliced;

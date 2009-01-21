@@ -79,6 +79,8 @@ public:
 
 	bool isContainerEmpty();
 
+	bool isAttackable();
+
 	int getSlots();
 
 	int getContainerType();
@@ -380,6 +382,8 @@ public:
 	int getContainerObjectsSize();
 
 	bool isContainerEmpty();
+
+	bool isAttackable();
 
 	int getSlots();
 

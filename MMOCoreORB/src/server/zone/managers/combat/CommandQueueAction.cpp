@@ -48,6 +48,7 @@ which carries forward this exception.
 
 #include "../../objects/player/Player.h"
 
+#include "../../objects/scene/SceneObject.h"
 #include "../../objects/creature/CreatureObject.h"
 #include "../../objects/tangible/weapons/Weapon.h"
 #include "../../objects/attackable/AttackableObject.h"
@@ -77,31 +78,31 @@ bool CommandQueueAction::check() {
 		return false;
 	}
 
+	// TODO: Default attacks can be performed from mounts
 	if (creature->isMounted()) {
 		clearError(1, 16);
 		return false;
 	}
 
 	if (skill->isTargetSkill()) {
+		SceneObject* target = player->getTarget();
+
 		if (creature->isKnockedDown()) {
 			clearError(1, 18);
 			return false;
 		}
 
-		target = player->getTarget();
-
-		if (target == NULL)
-			target = creature;
-
-		if (!(target->isNonPlayerCreature() || target->isPlayer() || target->isAttackableObject())) 
-			target = creature;
-		
-		if (target->isNonPlayerCreature() && !target->isAttackableObject() && skill->isHealSkill())
-			target = creature;
-
-		return true;
+		if (skill->isHealSkill())
+			if (target == NULL || !target->isAttackable()) {
+				target = creature;
+				return true;
+			}
+		else
+			if (target == NULL || !target->isAttackable()) {
+				clearError(3);
+				return false;
+			}
 	}
-
 	return true;
 }
 
