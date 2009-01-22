@@ -180,6 +180,7 @@ core3_IDLS = 	server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/tangible/pharmaceutical/RevivePack.cpp \
 		server/zone/objects/tangible/pharmaceutical/StatePack.cpp \
 		server/zone/objects/tangible/pharmaceutical/StimPack.cpp \
+		server/zone/objects/tangible/pharmaceutical/RangedStimPack.cpp \
 		server/zone/objects/tangible/pharmaceutical/WoundPack.cpp \
 		server/zone/objects/tangible/tools/Tool.cpp \
 		server/zone/objects/tangible/tools/smuggler/PrecisionLaserKnife.cpp \
@@ -340,6 +341,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/StatePackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp \
+		server/zone/objects/tangible/pharmaceutical/RangedStimPackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp \
 		server/zone/objects/tangible/tools/ToolImplementation.cpp \
 		server/zone/objects/tangible/powerup/PowerupImplementation.cpp \

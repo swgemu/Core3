@@ -52,6 +52,9 @@ which carries forward this exception.
 #include "../../objects/creature/CreatureObject.h"
 #include "../../objects/tangible/weapons/Weapon.h"
 #include "../../objects/attackable/AttackableObject.h"
+#include "../../objects/tangible/pharmaceutical/Pharmaceutical.h"
+#include "../../objects/creature/skills/target/HealDamageTargetSkill.h"
+
 
 CommandQueueAction::CommandQueueAction(CreatureObject* cr, uint64 targid, uint32 acrc, uint32 acntr, const String& amod) {
 	actionCRC = acrc;
@@ -92,16 +95,18 @@ bool CommandQueueAction::check() {
 			return false;
 		}
 
-		if (skill->isHealSkill())
+		if (skill->isHealSkill()) {
 			if (target == NULL || !target->isAttackable()) {
 				target = creature;
 				return true;
 			}
-		else
+		}
+		else {
 			if (target == NULL || !target->isAttackable()) {
 				clearError(3);
 				return false;
 			}
+		}
 	}
 	return true;
 }
@@ -128,7 +133,8 @@ bool CommandQueueAction::validate() {
 	}
 
 	if (skill->isTargetSkill()) {
-		if (target != creature) {
+		// are all heal skills target skills ?
+		if (target != creature || skill->isHealSkill()) {
 			if (skill->isAttackSkill()) {
 
 				if (!checkWeapon())
@@ -224,6 +230,8 @@ bool CommandQueueAction::validate() {
 					target->unlock();
 				}
 			} else if (skill->isHealSkill()) {
+				if (target == NULL)
+					target = creature;
 				return checkHealSkill();
 			}
 		} else { // target == creature
@@ -238,7 +246,6 @@ bool CommandQueueAction::validate() {
 }
 
 bool CommandQueueAction::checkHealSkill() {
-
 	if (target->isAttackableObject()) {
 		clearError(3);
 		return false;
@@ -261,6 +268,64 @@ bool CommandQueueAction::checkHealSkill() {
 					target = creature;
 			} else if (target->isNonPlayerCreature() && !skill->isDiagnoseSkill() && !skill->isDragSkill())
 				target = creature;
+
+
+			// range check stimpacks
+			if (skill->getNameCRC() == 0x0A9F00A0) {
+				float range = 5.0f;
+				float distance = creature->calculateDistance(targetObject);
+
+				bool melee = distance <= 5.0f;
+
+				uint64 objectId = 0;
+
+				if (!actionModifier.isEmpty())
+					objectId = Long::valueOf(actionModifier);
+				else
+					objectId = 0;
+
+				if (objectId != 0) {
+					Pharmaceutical* pharma =  (Pharmaceutical*) creature->getInventoryItem(objectId);
+
+					float pharmaRange = pharma->getRange(creature);
+
+					if (pharmaRange > range) {
+						range = pharmaRange;
+
+					}
+				} else if (objectId == 0) {
+					HealDamageTargetSkill* hSkill = (HealDamageTargetSkill*) skill;
+					StimPack* stim = hSkill->findStimPack(creature,distance);
+					if (stim == NULL) {
+						String box = "science_combatmedic_novice";
+						if (!melee && !player->hasSkillBox(box))
+							player->sendSystemMessage("Your target is too far away to Heal Damage.");
+						else
+							player->sendSystemMessage("healing_response", "healing_response_60");
+
+						targetObject->unlock();
+						clearError(0);
+						return false;
+					} else {
+						range = stim->getRange(creature);
+						StringBuffer mod;
+
+						mod << stim->getObjectID();
+						actionModifier = mod.toString();
+					}
+				}
+
+				if (!creature->isInRange(target->getPositionX(), target->getPositionY(), range)) {
+					player->sendSystemMessage("Your target is too far away to Heal Damage.");
+
+					targetObject->unlock();
+					clearError(0);
+					return false;
+				}
+				targetObject->unlock();
+				clearError(0);
+				return true;
+			}
 
 			if (!creature->isInRange(target->getPositionX(), target->getPositionY(), skill->getRange())) {
 				targetObject->unlock();

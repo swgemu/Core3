@@ -6865,16 +6865,17 @@ void CreatureObject::activateWoundTreatment() {
 		((CreatureObjectImplementation*) _impl)->activateWoundTreatment();
 }
 
-void CreatureObject::deactivateInjuryTreatment() {
+void CreatureObject::deactivateInjuryTreatment(bool isRangedStim) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 534);
+		method.addBooleanParameter(isRangedStim);
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureObjectImplementation*) _impl)->deactivateInjuryTreatment();
+		((CreatureObjectImplementation*) _impl)->deactivateInjuryTreatment(isRangedStim);
 }
 
 void CreatureObject::activateInjuryTreatment() {
@@ -9583,7 +9584,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		activateWoundTreatment();
 		break;
 	case 534:
-		deactivateInjuryTreatment();
+		deactivateInjuryTreatment(inv->getBooleanParameter());
 		break;
 	case 535:
 		activateInjuryTreatment();
@@ -11965,8 +11966,8 @@ void CreatureObjectAdapter::activateWoundTreatment() {
 	return ((CreatureObjectImplementation*) impl)->activateWoundTreatment();
 }
 
-void CreatureObjectAdapter::deactivateInjuryTreatment() {
-	return ((CreatureObjectImplementation*) impl)->deactivateInjuryTreatment();
+void CreatureObjectAdapter::deactivateInjuryTreatment(bool isRangedStim) {
+	return ((CreatureObjectImplementation*) impl)->deactivateInjuryTreatment(isRangedStim);
 }
 
 void CreatureObjectAdapter::activateInjuryTreatment() {

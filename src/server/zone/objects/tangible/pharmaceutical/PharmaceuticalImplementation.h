@@ -66,6 +66,9 @@ public:
 	static const int STATEPACK = 5;
 	static const int REVIVEPACK = 6;
 	static const int CUREAREAPACK = 7;
+	static const int RANGEDSTIMPACK = 8;
+	static const int POISONDELIVERYUNIT = 9;
+	static const int DISEASEDELIVERYUNIT = 10;
 
 public:
 
@@ -145,6 +148,38 @@ public:
 
 	inline bool isCureAreaPack() {
 		return medpackType == CUREAREAPACK;
+	}
+
+	inline bool isRangedStimPack() {
+		return medpackType == RANGEDSTIMPACK;
+	}
+
+	inline bool isPoisonDeliveryUnit() {
+		return medpackType == POISONDELIVERYUNIT;
+	}
+
+	inline bool isDiseaseDeliveryUnit() {
+		return medpackType == DISEASEDELIVERYUNIT;
+	}
+
+	inline bool isGeneralMedicItem() {
+		return medpackType < RANGEDSTIMPACK;
+	}
+
+	inline bool isCombatMedicItem() {
+		return medpackType > CUREAREAPACK;
+	}
+
+	virtual bool isArea() {
+		return false;
+	}
+
+	virtual float getRange(CreatureObject* creature = NULL) {
+		return 5.0f;
+	}
+
+	virtual float getArea() {
+		return 0.0f;
 	}
 };
 

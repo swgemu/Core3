@@ -2567,7 +2567,7 @@ public:
 	void deactivateWoundTreatment();
 	void activateWoundTreatment();
 
-	void deactivateInjuryTreatment();
+	void deactivateInjuryTreatment(bool isRangedStim);
 	void activateInjuryTreatment();
 
 	void deactivateStateTreatment();

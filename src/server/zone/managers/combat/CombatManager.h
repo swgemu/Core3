@@ -65,6 +65,7 @@ class AttackableObject;
 class MountCreature;
 class Weapon;
 
+class Skill;
 class TargetSkill;
 class AttackTargetSkill;
 class ThrowAttackTargetSkill;
@@ -153,6 +154,8 @@ public:
 	int calculateDamage(CreatureObject* creature, TangibleObject* target, Weapon* weapon, AttackTargetSkill* skill, int attackType,
 			int damageType, int armorPiercing, float minDmg, float maxDmg, bool randompoolhit, bool cankill);
 	void doDotWeaponAttack(CreatureObject* creature, CreatureObject* targetCreature, bool areaHit);
+
+	void handelMedicArea(CreatureObject* creature, CreatureObject* areaCenter,Skill* skill, int stimPower, float range);
 };
 
 #endif /*COMBATMANAGER_H_*/

@@ -566,6 +566,16 @@ TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint
 	case 0xC6F551AE: //fireblanket
 		item = new CurePack(objectid, objectcrc, objectname, objecttemp);
 		break;
+	case 0xF44F43F:
+	case 0xD4535CA8:
+	case 0x9D5E3B25:
+	case 0x66BD1031:
+	case 0x2FB077BC:
+	case 0x5D62E08E:
+	case 0x86754819:
+	case 0xCF782F94:
+		item = new RangedStimPack(objectid, objectcrc, objectname, objecttemp);
+		break;
     case 0x221F0907:
     case 0x484AC6A6:
     case 0x821DB6E8:
@@ -934,6 +944,10 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("STATEPACK", PharmaceuticalImplementation::STATEPACK);
 	setGlobalInt("STIMPACK", PharmaceuticalImplementation::STIMPACK);
 	setGlobalInt("REVIVEPACK", PharmaceuticalImplementation::REVIVEPACK);
+	setGlobalInt("RANGEDSTIMPACK", PharmaceuticalImplementation::RANGEDSTIMPACK);
+	setGlobalInt("POISONDELIVERYUNIT", PharmaceuticalImplementation::POISONDELIVERYUNIT);
+	setGlobalInt("DISEASEDELIVERYUNIT", PharmaceuticalImplementation::DISEASEDELIVERYUNIT);
+
 
 	setGlobalInt("HEALTH", CreatureAttribute::HEALTH);
 	setGlobalInt("ACTION", CreatureAttribute::ACTION);
@@ -1257,6 +1271,19 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 			stim->setEffectiveness(eff);
 			break;
 		}
+		case PharmaceuticalImplementation::RANGEDSTIMPACK:
+		{
+			float eff = itemconfig.getFloatField("effectiveness");
+			float range = itemconfig.getFloatField("range");
+			float area = itemconfig.getFloatField("area");
+
+			RangedStimPack* stim = (RangedStimPack*) item;
+			stim->setEffectiveness(eff);
+			stim->setRange(range);
+			stim->setArea(area);
+
+			break;
+		}
 		default:
 			break;
 		}
@@ -1269,12 +1296,12 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		container->setSlots(attributeSlots);
 	} else if (type == TangibleObjectImplementation::CAMOKIT) {
 		CamoKit* camoKit = (CamoKit*) item;
-		int planet = itemconfig.getIntField("planetType");
+		//int planet = itemconfig.getIntField("planetType");
 		int uses = itemconfig.getIntField("uses");
-		int cMin = itemconfig.getIntField("concealSkill");
-		camoKit->setPlanet(planet);
+		//int cMin = itemconfig.getIntField("concealSkill");
+		//camoKit->setPlanet(planet);
 		camoKit->setUsesRemaining(uses);
-		camoKit->setConcealMin(cMin);
+		//camoKit->setConcealMin(cMin);
 	} else if (type == TangibleObjectImplementation::CAMPKIT) {
 				CampKit* campKit = (CampKit*) item;
 				int xp = itemconfig.getIntField("xp");

@@ -225,6 +225,103 @@ bool Pharmaceutical::isRevivePack() {
 		return ((PharmaceuticalImplementation*) _impl)->isRevivePack();
 }
 
+bool Pharmaceutical::isRangedStimPack() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PharmaceuticalImplementation*) _impl)->isRangedStimPack();
+}
+
+bool Pharmaceutical::isPoisonDeliveryUnit() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PharmaceuticalImplementation*) _impl)->isPoisonDeliveryUnit();
+}
+
+bool Pharmaceutical::isDiseaseDeliveryUnit() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PharmaceuticalImplementation*) _impl)->isDiseaseDeliveryUnit();
+}
+
+bool Pharmaceutical::isGeneralMedicItem() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PharmaceuticalImplementation*) _impl)->isGeneralMedicItem();
+}
+
+bool Pharmaceutical::isCombatMedicItem() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 25);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PharmaceuticalImplementation*) _impl)->isCombatMedicItem();
+}
+
+bool Pharmaceutical::isArea() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 26);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PharmaceuticalImplementation*) _impl)->isArea();
+}
+
+float Pharmaceutical::getRange(CreatureObject* creature) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 27);
+		method.addObjectParameter(creature);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((PharmaceuticalImplementation*) _impl)->getRange(creature);
+}
+
+float Pharmaceutical::getArea() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((PharmaceuticalImplementation*) _impl)->getArea();
+}
+
 /*
  *	PharmaceuticalAdapter
  */
@@ -280,6 +377,30 @@ Packet* PharmaceuticalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 20:
 		resp->insertBoolean(isRevivePack());
+		break;
+	case 21:
+		resp->insertBoolean(isRangedStimPack());
+		break;
+	case 22:
+		resp->insertBoolean(isPoisonDeliveryUnit());
+		break;
+	case 23:
+		resp->insertBoolean(isDiseaseDeliveryUnit());
+		break;
+	case 24:
+		resp->insertBoolean(isGeneralMedicItem());
+		break;
+	case 25:
+		resp->insertBoolean(isCombatMedicItem());
+		break;
+	case 26:
+		resp->insertBoolean(isArea());
+		break;
+	case 27:
+		resp->insertFloat(getRange((CreatureObject*) inv->getObjectParameter()));
+		break;
+	case 28:
+		resp->insertFloat(getArea());
 		break;
 	default:
 		return NULL;
@@ -346,6 +467,38 @@ bool PharmaceuticalAdapter::isCurePack() {
 
 bool PharmaceuticalAdapter::isRevivePack() {
 	return ((PharmaceuticalImplementation*) impl)->isRevivePack();
+}
+
+bool PharmaceuticalAdapter::isRangedStimPack() {
+	return ((PharmaceuticalImplementation*) impl)->isRangedStimPack();
+}
+
+bool PharmaceuticalAdapter::isPoisonDeliveryUnit() {
+	return ((PharmaceuticalImplementation*) impl)->isPoisonDeliveryUnit();
+}
+
+bool PharmaceuticalAdapter::isDiseaseDeliveryUnit() {
+	return ((PharmaceuticalImplementation*) impl)->isDiseaseDeliveryUnit();
+}
+
+bool PharmaceuticalAdapter::isGeneralMedicItem() {
+	return ((PharmaceuticalImplementation*) impl)->isGeneralMedicItem();
+}
+
+bool PharmaceuticalAdapter::isCombatMedicItem() {
+	return ((PharmaceuticalImplementation*) impl)->isCombatMedicItem();
+}
+
+bool PharmaceuticalAdapter::isArea() {
+	return ((PharmaceuticalImplementation*) impl)->isArea();
+}
+
+float PharmaceuticalAdapter::getRange(CreatureObject* creature) {
+	return ((PharmaceuticalImplementation*) impl)->getRange(creature);
+}
+
+float PharmaceuticalAdapter::getArea() {
+	return ((PharmaceuticalImplementation*) impl)->getArea();
 }
 
 /*

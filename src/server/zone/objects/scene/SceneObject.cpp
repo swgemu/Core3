@@ -1823,6 +1823,19 @@ void SceneObject::warpTo(float x, float z, float y, unsigned long long parentID)
 		((SceneObjectImplementation*) _impl)->warpTo(x, z, y, parentID);
 }
 
+float SceneObject::calculateDistance(SceneObject* scno) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 144);
+		method.addObjectParameter(scno);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->calculateDistance(scno);
+}
+
 /*
  *	SceneObjectAdapter
  */
@@ -2247,6 +2260,9 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		break;
 	case 143:
 		warpTo(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
+		break;
+	case 144:
+		resp->insertFloat(calculateDistance((SceneObject*) inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -2805,6 +2821,10 @@ void SceneObjectAdapter::receivePaymentFrom(CreatureObject* sender, unsigned int
 
 void SceneObjectAdapter::warpTo(float x, float z, float y, unsigned long long parentID) {
 	return ((SceneObjectImplementation*) impl)->warpTo(x, z, y, parentID);
+}
+
+float SceneObjectAdapter::calculateDistance(SceneObject* scno) {
+	return ((SceneObjectImplementation*) impl)->calculateDistance(scno);
 }
 
 /*

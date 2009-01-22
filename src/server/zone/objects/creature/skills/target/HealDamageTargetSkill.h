@@ -46,10 +46,12 @@ which carries forward this exception.
 #define HEALDAMAGETARGETSKILL_H_
 
 #include "../TargetSkill.h"
-#include "../../../tangible/pharmaceutical/PharmaceuticalImplementation.h"
-#include "../../../tangible/pharmaceutical/StimPackImplementation.h"
+#include "../../../tangible/pharmaceutical/Pharmaceutical.h"
+#include "../../../tangible/pharmaceutical/StimPack.h"
+#include "../../../tangible/pharmaceutical/RangedStimPack.h"
 
 #include "../../../../managers/player/PlayerManager.h"
+#include "../../../../packets/object/CombatAction.h"
 
 class HealDamageTargetSkill : public TargetSkill {
 protected:
@@ -72,6 +74,26 @@ public:
 		else
 			creature->doAnimation("heal_other");
 	}
+
+	void doAnimationsRange(CreatureObject* creature, CreatureObject* creatureTarget,int oid,float range) {
+
+		String crc;
+
+		if (range < 10.0f) {
+			crc = "throw_grenade_near_healing";
+		}
+		else if (10.0f <= range && range < 20.f) {
+			crc = "throw_grenade_medium_healing";
+		}
+		else {
+			crc = "throw_grenade_far_healing";
+		}
+
+		CombatAction* action = new CombatAction(creature, creatureTarget,  crc.hashCode(), 1, 0L);
+
+		creature->broadcastMessage(action);
+	}
+
 
 	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, StimPack* stimPack) {
 		if (!creature->canTreatInjuries()) {
@@ -134,10 +156,12 @@ public:
 			objectId = 0;
 	}
 
-	StimPack* findStimPack(CreatureObject* creature) {
+	StimPack* findStimPack(CreatureObject* creature, float range) {
 		Inventory* inventory = creature->getInventory();
 		int medicineUse = creature->getSkillMod("healing_ability");
+		int combatMedicineUse = creature->getSkillMod("combat_healing_ability");
 
+		bool melee = range <= 5.0f;
 		if (inventory != NULL) {
 			for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
@@ -145,10 +169,16 @@ public:
 				if (item->isPharmaceutical()) {
 					Pharmaceutical* pharma = (Pharmaceutical*) item;
 
-					if (pharma->isStimPack()) {
-						StimPack* stimPack = (StimPack*) pharma;
+					if (melee && pharma->isStimPack()) {
+						StimPack* stimPack = (StimPack*)pharma;
 
 						if (stimPack->getMedicineUseRequired() <= medicineUse)
+							return stimPack;
+					}
+					if (pharma->isRangedStimPack()) {
+						RangedStimPack* stimPack = (RangedStimPack*)pharma;
+
+						if (stimPack->getMedicineUseRequired() <= combatMedicineUse && stimPack->getRange(creature))
 							return stimPack;
 					}
 				}
@@ -159,6 +189,7 @@ public:
 	}
 
 	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
+
 		if (!target->isPlayer() && !target->isNonPlayerCreature()) {
 			creature->sendSystemMessage("healing_response", "healing_response_62"); //Target must be a player or a creature pet in order to heal damage.
 			return 0;
@@ -170,9 +201,6 @@ public:
 
 		StimPack* stimPack = (StimPack*) creature->getInventoryItem(objectId);
 
-		if (stimPack == NULL)
-			stimPack = findStimPack(creature);
-
 		CreatureObject* creatureTarget = (CreatureObject*) target;
 
 		if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted())
@@ -182,7 +210,6 @@ public:
 			return 0;
 
 		int stimPower = stimPack->calculatePower(creature);
-
 		int healthHealed = creature->healDamage(creatureTarget, stimPower, CreatureAttribute::HEALTH);
 		int actionHealed = creature->healDamage(creatureTarget, stimPower, CreatureAttribute::ACTION);
 
@@ -193,15 +220,21 @@ public:
 
 		creature->changeMindBar(mindCost);
 
-		creature->deactivateInjuryTreatment();
-
 		if (stimPack != NULL)
 			stimPack->useCharge((Player*) creature);
 
 		if (creatureTarget != creature)
 			awardXp(creature, "medical", (healthHealed + healthHealed)); //No experience for healing yourself.
 
-		doAnimations(creature, creatureTarget);
+		if (stimPack->isArea())
+			handleArea(creature,creatureTarget,stimPower,stimPack->getArea());
+
+		if (stimPack->isRangedStimPack()) {
+			doAnimationsRange(creature, creatureTarget,stimPack->getObjectID(),creature->calculateDistance(creatureTarget));
+		} else
+			doAnimations(creature, creatureTarget);
+
+		creature->deactivateInjuryTreatment(stimPack->isRangedStimPack());
 
 		return 0;
 	}
@@ -260,6 +293,75 @@ public:
 
 	void setMindCost(int cost) {
 		mindCost = cost;
+	}
+
+	void handleArea(CreatureObject* creature, CreatureObject* areaCenter, int stimPower, float range) {
+		server->getCombatManager()->handelMedicArea(creature, areaCenter,this, stimPower, range);
+	/*	for (int i = 0; i < areaCenter->inRangeObjectCount(); i++) {
+			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) areaCenter->getInRangeObject(i))->_this);
+
+			if (!object->isPlayer() && !object->isNonPlayerCreature() && !object->isAttackableObject())
+				continue;
+
+			if (object == areaCenter)
+				continue;
+
+			if (!areaCenter->isInRange(object,range))
+				continue;
+
+			CreatureObject* creatureTarget = (CreatureObject*) object;
+
+			if (creatureTarget != creature)
+				creatureTarget->lock();
+
+			if (!canPerformSkillNoMessage(creature, creatureTarget)) {
+				if (creatureTarget != creature)
+						creatureTarget->unlock();
+				continue;
+			}
+
+			int healthHealed = creature->healDamage(creatureTarget, stimPower, CreatureAttribute::HEALTH);
+			int actionHealed = creature->healDamage(creatureTarget, stimPower, CreatureAttribute::ACTION);
+
+			if (creatureTarget->isPlayer())
+				((Player*)creature)->sendBattleFatigueMessage(creatureTarget);
+
+			sendHealMessage(creature, creatureTarget, healthHealed, actionHealed);
+
+			if (creatureTarget != creature)
+				awardXp(creature, "medical", (healthHealed + healthHealed)); //No experience for healing yourself.
+
+			if (creatureTarget != creature)
+				creatureTarget->unlock();
+		}*/
+	}
+
+	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, int stimPower) {
+		int healthHealed = creature->healDamage(creatureTarget, stimPower, CreatureAttribute::HEALTH);
+		int actionHealed = creature->healDamage(creatureTarget, stimPower, CreatureAttribute::ACTION);
+
+		if (creatureTarget->isPlayer())
+			((Player*)creature)->sendBattleFatigueMessage(creatureTarget);
+
+		sendHealMessage(creature, creatureTarget, healthHealed, actionHealed);
+
+		if (creatureTarget != creature)
+			awardXp(creature, "medical", (healthHealed + healthHealed)); //No experience for healing yourself.
+
+	}
+
+	bool checkAreaMedicTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
+		if (!creature->canTreatInjuries()) {
+			return false;
+		}
+		if (creatureTarget->isOvert() && creatureTarget->getFaction() != creature->getFaction()) {
+			return false;
+		}
+		if (!creatureTarget->hasHealthDamage() && !creatureTarget->hasActionDamage()) {
+			return false;
+		}
+
+		return true;
 	}
 
 };

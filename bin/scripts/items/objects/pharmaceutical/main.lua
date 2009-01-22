@@ -27,3 +27,14 @@ RunItemLUAFile("objects/pharmaceutical/statepacks/stunnedPack.lua");
 RunItemLUAFile("objects/pharmaceutical/curepacks/fireBlanket.lua");
 RunItemLUAFile("objects/pharmaceutical/curepacks/poisonCureC.lua");
 RunItemLUAFile("objects/pharmaceutical/curepacks/diseaseCureC.lua");
+
+RunItemLUAFile("objects/pharmaceutical/rangedstimpacks/rangedStimPackA.lua");
+RunItemLUAFile("objects/pharmaceutical/rangedstimpacks/rangedStimPackB.lua");
+RunItemLUAFile("objects/pharmaceutical/rangedstimpacks/rangedStimPackC.lua");
+RunItemLUAFile("objects/pharmaceutical/rangedstimpacks/rangedStimPackD.lua");
+RunItemLUAFile("objects/pharmaceutical/rangedstimpacks/rangedStimPackE.lua");
+
+RunItemLUAFile("objects/pharmaceutical/areastimpacks/areaStimPackA.lua");
+RunItemLUAFile("objects/pharmaceutical/areastimpacks/areaStimPackB.lua");
+RunItemLUAFile("objects/pharmaceutical/areastimpacks/areaStimPackC.lua");
+

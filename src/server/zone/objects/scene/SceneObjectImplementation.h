@@ -669,6 +669,8 @@ public:
 	virtual void deathblow(Player* victim);
 	virtual void receivePaymentFrom(CreatureObject* sender, uint32 amount);
 	virtual void warpTo(float x, float z, float y, uint64 parentID = 0);
+
+	float calculateDistance(SceneObject* scno);
 };
 
 #endif /*SCENEOBJECTIMPLEMENTATION_H_*/
