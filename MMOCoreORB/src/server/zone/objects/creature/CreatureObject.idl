@@ -826,7 +826,7 @@ interface CreatureObject implements TangibleObject {
 	void deactivateWoundTreatment();
 	void activateWoundTreatment();
 
-	void deactivateInjuryTreatment();
+	void deactivateInjuryTreatment(boolean isRangedStim);
 	void activateInjuryTreatment();
 
 	void deactivateStateTreatment();
@@ -960,4 +960,5 @@ interface CreatureObject implements TangibleObject {
 	//Setters
 
 	//Getters
+
 }

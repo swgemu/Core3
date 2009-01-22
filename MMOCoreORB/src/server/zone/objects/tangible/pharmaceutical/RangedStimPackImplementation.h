@@ -42,20 +42,20 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef STIMPACKIMPLEMENTATION_H_
-#define STIMPACKIMPLEMENTATION_H_
+#ifndef RANGEDSTIMPACKIMPLEMENTATION_H_
+#define RANGEDSTIMPACKIMPLEMENTATION_H_
 
 #include "../../creature/CreatureObject.h"
 
-#include "StimPack.h"
+#include "RangedStimPack.h"
 
-class StimPackImplementation : public StimPackServant {
+class RangedStimPackImplementation : public RangedStimPackServant {
 protected:
-	float effectiveness;
+	float effectiveness, range, area, rangeMod;
 
 public:
-	StimPackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn);
-	StimPackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
+	RangedStimPackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn);
+	RangedStimPackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 
 	void initialize();
 
@@ -70,7 +70,7 @@ public:
 	void addAttributes(AttributeListMessage* alm);
 
 	virtual int calculatePower(CreatureObject* creature) {
-		float modSkill = (float) creature->getSkillMod("healing_injury_treatment");
+		float modSkill = (float) creature->getSkillMod("combat_medic_effectiveness");
 		return (int) round((100.0f + modSkill) / 100.0f * effectiveness);
 	}
 
@@ -83,6 +83,32 @@ public:
 	inline float getEffectiveness() {
 		return effectiveness;
 	}
+
+	inline void setRange(float rng) {
+		range = rng;
+		String attr = "range";
+		itemAttributes->setFloatAttribute(attr, range);
+	}
+
+	inline float getRange(CreatureObject* creature = NULL) {
+		float modSkill = (float) creature->getSkillMod("healing_range");
+		return (int) round((100.0f + rangeMod * modSkill) / 100.0f * range);
+	}
+
+	inline void setArea(float ar) {
+		area = ar;
+		String attr = "area";
+		itemAttributes->setFloatAttribute(attr, area);
+	}
+
+	inline float getArea() {
+		return area;
+	}
+
+
+	inline bool isArea() {
+		return area != 0.0;
+	}
 };
 
-#endif /* STIMPACKIMPLEMENTATION_H_ */
+#endif /* RANGEDSTIMPACKIMPLEMENTATION_H_ */

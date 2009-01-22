@@ -230,6 +230,14 @@ public:
 	inline bool isGroupSkill(){
 		return category == GROUP;
 	}
+
+	virtual void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, int stimPower) {
+		return;
+	}
+	virtual bool checkAreaMedicTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
+		return false;
+	}
+
 };
 
 #endif /*SKILL_H_*/

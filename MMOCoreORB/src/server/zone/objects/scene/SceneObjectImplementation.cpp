@@ -966,3 +966,7 @@ Coordinate* SceneObjectImplementation::getCoordinate(SceneObject* object1, Scene
 
 	return newPosition;
 }
+
+float SceneObjectImplementation::calculateDistance(SceneObject* scno) {
+	return (sqrt(pow(getPositionX() - scno->getPositionX(), 2) + pow(getPositionY() - scno->getPositionY(), 2)));
+}

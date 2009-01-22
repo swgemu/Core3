@@ -4113,8 +4113,15 @@ void CreatureObjectImplementation::activateWoundTreatment() {
 	sendSystemMessage("healing_response", "healing_response_59"); //You are now ready to heal more wounds or apply more enhancements.
 }
 
-void CreatureObjectImplementation::deactivateInjuryTreatment() {
-	float modSkill = (float)getSkillMod("healing_injury_speed");
+void CreatureObjectImplementation::deactivateInjuryTreatment(bool isRangedStim) {
+	float modSkill = 0.0f;
+
+	if (isRangedStim)
+		modSkill = (float)getSkillMod("healing_range_speed");
+	else
+		modSkill = (float)getSkillMod("healing_injury_speed");
+
+
 	int delay = (int)round((modSkill * -(1.0f / 8.0f)) + 21.0f);
 
 	//Force the delay to be at least 4 seconds.

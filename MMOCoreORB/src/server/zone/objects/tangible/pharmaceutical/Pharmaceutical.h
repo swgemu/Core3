@@ -55,6 +55,22 @@ public:
 
 	bool isRevivePack();
 
+	bool isRangedStimPack();
+
+	bool isPoisonDeliveryUnit();
+
+	bool isDiseaseDeliveryUnit();
+
+	bool isGeneralMedicItem();
+
+	bool isCombatMedicItem();
+
+	bool isArea();
+
+	float getRange(CreatureObject* creature = NULL);
+
+	float getArea();
+
 protected:
 	Pharmaceutical(DummyConstructorParameter* param);
 
@@ -100,6 +116,22 @@ public:
 	bool isCurePack();
 
 	bool isRevivePack();
+
+	bool isRangedStimPack();
+
+	bool isPoisonDeliveryUnit();
+
+	bool isDiseaseDeliveryUnit();
+
+	bool isGeneralMedicItem();
+
+	bool isCombatMedicItem();
+
+	bool isArea();
+
+	float getRange(CreatureObject* creature);
+
+	float getArea();
 
 };
 

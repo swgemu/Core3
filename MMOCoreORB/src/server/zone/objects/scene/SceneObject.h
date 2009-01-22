@@ -317,6 +317,8 @@ public:
 
 	void warpTo(float x, float z, float y, unsigned long long parentID = 0);
 
+	float calculateDistance(SceneObject* scno);
+
 protected:
 	SceneObject(DummyConstructorParameter* param);
 
@@ -616,6 +618,8 @@ public:
 	void receivePaymentFrom(CreatureObject* sender, unsigned int amount);
 
 	void warpTo(float x, float z, float y, unsigned long long parentID);
+
+	float calculateDistance(SceneObject* scno);
 
 protected:
 	String _param0_info__String_bool_;

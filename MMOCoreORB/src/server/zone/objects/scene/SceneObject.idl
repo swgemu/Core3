@@ -322,4 +322,6 @@ interface SceneObject implements ManagedObject {
 	void deathblow(Player victim);
 	void receivePaymentFrom(CreatureObject sender, unsigned int amount);
 	void warpTo(float x, float z, float y, unsigned long parentID = 0);
+
+	float calculateDistance(SceneObject scno);
 }

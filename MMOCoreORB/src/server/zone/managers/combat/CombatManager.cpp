@@ -231,7 +231,6 @@ float CombatManager::doGroupSkill(CommandQueueAction* action) {
 	}
 }
 
-// TODO: Need support for grenades where the area is not centred around the attacker
 void CombatManager::handleAreaAction(CreatureObject* creature, TangibleObject* target, CommandQueueAction* action, CombatAction* actionMessage) {
 	TargetSkill* skill = (TargetSkill*) action->getSkill();
 
@@ -331,6 +330,36 @@ void CombatManager::handleAreaAction(CreatureObject* creature, TangibleObject* t
 	}
 }
 
+void CombatManager::handelMedicArea(CreatureObject* creature, CreatureObject* areaCenter,Skill* skill, int stimPower, float range) {
+	for (int i = 0; i < areaCenter->inRangeObjectCount(); i++) {
+		SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) areaCenter->getInRangeObject(i))->_this);
+
+		if (!object->isPlayer() && !object->isNonPlayerCreature() && !object->isAttackableObject())
+			continue;
+
+		if (object == areaCenter)
+			continue;
+
+		if (!areaCenter->isInRange(object,range))
+			continue;
+
+		CreatureObject* creatureTarget = (CreatureObject*) object;
+
+		if (creatureTarget != creature)
+			creatureTarget->lock();
+
+		if (!skill->checkAreaMedicTarget(creature, creatureTarget)) {
+			if (creatureTarget != creature)
+					creatureTarget->unlock();
+			continue;
+		}
+
+		skill->doAreaMedicActionTarget(creature, creatureTarget, stimPower);
+
+		if (creatureTarget != creature)
+			creatureTarget->unlock();
+	}
+}
 bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* target, AttackTargetSkill* skill,  String& modifier, CombatAction* actionMessage) {
 	try {
 		target->wlock(attacker);

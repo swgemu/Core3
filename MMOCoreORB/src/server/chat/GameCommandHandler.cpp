@@ -362,6 +362,16 @@ void GameCommandHandler::init() {
 
 	/* Disabled Commands
 
+	gmCommands->addCommand("damage", DEVELOPER,
+					"damage.",
+					"Usage: @damage",
+					&damage);
+
+	gmCommands->addCommand("damage", DEVELOPER,
+				"damage.",
+				"Usage: @damage",
+				&damage);
+
 	gmCommands->addCommand("deleteFromZone", DEVELOPER,
 			"Deletes the target item from the zone.",
 			"Usage: @deleteFromZone",
@@ -3420,6 +3430,25 @@ void GameCommandHandler::drag(StringTokenizer tokenizer, Player* player) {
 	} else {
 		player->sendSystemMessage("healing_response", "healing_response_a6"); //"You may only drag players!"
 		return;
+	}
+}
+
+void GameCommandHandler::damage(StringTokenizer tokenizer, Player* player) {
+	SceneObject* obj = player->getTarget();
+	CreatureObject* target;
+
+	if (obj == NULL) {
+
+		return;
+	}
+
+	if (obj->isPlayer() || obj->isNonPlayerCreature()) {
+
+		target = (CreatureObject*) obj;
+
+		player->inflictDamage(target, CreatureAttribute::HEALTH, 500);
+		player->inflictDamage(target, CreatureAttribute::ACTION, 500);
+
 	}
 }
 

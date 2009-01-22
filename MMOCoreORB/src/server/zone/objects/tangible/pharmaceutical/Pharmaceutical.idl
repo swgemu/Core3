@@ -40,4 +40,14 @@ interface Pharmaceutical implements TangibleObject {
 	boolean isStatePack();
 	boolean isCurePack();
 	boolean isRevivePack();
+	boolean isRangedStimPack();
+	boolean isPoisonDeliveryUnit();
+	boolean isDiseaseDeliveryUnit();
+
+	boolean isGeneralMedicItem();
+	boolean isCombatMedicItem();
+
+	boolean isArea();
+	float getRange(CreatureObject creature = NULL);
+	float getArea();
 }

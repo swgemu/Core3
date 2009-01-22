@@ -147,7 +147,7 @@ am__objects_1 = CamoKit.$(OBJEXT) CampKit.$(OBJEXT) CampSite.$(OBJEXT) \
 	MissionBag.$(OBJEXT) CurePack.$(OBJEXT) CureAreaPack.$(OBJEXT) \
 	EnhancePack.$(OBJEXT) Pharmaceutical.$(OBJEXT) \
 	RevivePack.$(OBJEXT) StatePack.$(OBJEXT) StimPack.$(OBJEXT) \
-	WoundPack.$(OBJEXT) Tool.$(OBJEXT) \
+	RangedStimPack.$(OBJEXT) WoundPack.$(OBJEXT) Tool.$(OBJEXT) \
 	PrecisionLaserKnife.$(OBJEXT) FlowAnalyzerNode.$(OBJEXT) \
 	MolecularClamp.$(OBJEXT) UpgradeKit.$(OBJEXT) \
 	Powerup.$(OBJEXT) ResourceContainer.$(OBJEXT) \
@@ -155,19 +155,19 @@ am__objects_1 = CamoKit.$(OBJEXT) CampKit.$(OBJEXT) CampSite.$(OBJEXT) \
 	RegionBazaar.$(OBJEXT) GuildTerminal.$(OBJEXT) \
 	CloningTerminal.$(OBJEXT) InsuranceTerminal.$(OBJEXT) \
 	MissionTerminal.$(OBJEXT) Terminal.$(OBJEXT) \
-	TravelTerminal.$(OBJEXT) VendorTerminal.$(OBJEXT) \
-	TicketCollector.$(OBJEXT) Ticket.$(OBJEXT) \
-	OneHandedJediWeapon.$(OBJEXT) PolearmJediWeapon.$(OBJEXT) \
-	TwoHandedJediWeapon.$(OBJEXT) JediWeapon.$(OBJEXT) \
-	OneHandedMeleeWeapon.$(OBJEXT) PolearmMeleeWeapon.$(OBJEXT) \
-	TwoHandedMeleeWeapon.$(OBJEXT) UnarmedMeleeWeapon.$(OBJEXT) \
-	MeleeWeapon.$(OBJEXT) CarbineRangedWeapon.$(OBJEXT) \
-	HeavyRangedWeapon.$(OBJEXT) PistolRangedWeapon.$(OBJEXT) \
-	RifleRangedWeapon.$(OBJEXT) SpecialHeavyRangedWeapon.$(OBJEXT) \
-	RangedWeapon.$(OBJEXT) Weapon.$(OBJEXT) Armor.$(OBJEXT) \
-	Wearable.$(OBJEXT) WaypointObject.$(OBJEXT) \
-	ZoneClientSession.$(OBJEXT) Zone.$(OBJEXT) \
-	ZoneServer.$(OBJEXT)
+	TravelTerminal.$(OBJEXT) StartingLocationTerminal.$(OBJEXT) \
+	VendorTerminal.$(OBJEXT) TicketCollector.$(OBJEXT) \
+	Ticket.$(OBJEXT) OneHandedJediWeapon.$(OBJEXT) \
+	PolearmJediWeapon.$(OBJEXT) TwoHandedJediWeapon.$(OBJEXT) \
+	JediWeapon.$(OBJEXT) OneHandedMeleeWeapon.$(OBJEXT) \
+	PolearmMeleeWeapon.$(OBJEXT) TwoHandedMeleeWeapon.$(OBJEXT) \
+	UnarmedMeleeWeapon.$(OBJEXT) MeleeWeapon.$(OBJEXT) \
+	CarbineRangedWeapon.$(OBJEXT) HeavyRangedWeapon.$(OBJEXT) \
+	PistolRangedWeapon.$(OBJEXT) RifleRangedWeapon.$(OBJEXT) \
+	SpecialHeavyRangedWeapon.$(OBJEXT) RangedWeapon.$(OBJEXT) \
+	Weapon.$(OBJEXT) Armor.$(OBJEXT) Wearable.$(OBJEXT) \
+	WaypointObject.$(OBJEXT) ZoneClientSession.$(OBJEXT) \
+	Zone.$(OBJEXT) ZoneServer.$(OBJEXT)
 am_core3_OBJECTS = $(am__objects_1) CamoKitImplementation.$(OBJEXT) \
 	CampKitImplementation.$(OBJEXT) \
 	CampSiteImplementation.$(OBJEXT) \
@@ -268,6 +268,7 @@ am_core3_OBJECTS = $(am__objects_1) CamoKitImplementation.$(OBJEXT) \
 	RevivePackImplementation.$(OBJEXT) \
 	StatePackImplementation.$(OBJEXT) \
 	StimPackImplementation.$(OBJEXT) \
+	RangedStimPackImplementation.$(OBJEXT) \
 	WoundPackImplementation.$(OBJEXT) ToolImplementation.$(OBJEXT) \
 	PowerupImplementation.$(OBJEXT) \
 	ResourceContainerImplementation.$(OBJEXT) \
@@ -536,6 +537,7 @@ core3_IDLS = server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/tangible/pharmaceutical/RevivePack.cpp \
 		server/zone/objects/tangible/pharmaceutical/StatePack.cpp \
 		server/zone/objects/tangible/pharmaceutical/StimPack.cpp \
+		server/zone/objects/tangible/pharmaceutical/RangedStimPack.cpp \
 		server/zone/objects/tangible/pharmaceutical/WoundPack.cpp \
 		server/zone/objects/tangible/tools/Tool.cpp \
 		server/zone/objects/tangible/tools/smuggler/PrecisionLaserKnife.cpp \
@@ -553,6 +555,7 @@ core3_IDLS = server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/tangible/terminal/mission/MissionTerminal.cpp \
 		server/zone/objects/tangible/terminal/Terminal.cpp \
 		server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
+		server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp \
 		server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp \
 		server/zone/objects/tangible/ticketcollector/TicketCollector.cpp \
 		server/zone/objects/tangible/ticket/Ticket.cpp \
@@ -696,6 +699,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/StatePackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp \
+		server/zone/objects/tangible/pharmaceutical/RangedStimPackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp \
 		server/zone/objects/tangible/tools/ToolImplementation.cpp \
 		server/zone/objects/tangible/powerup/PowerupImplementation.cpp \
@@ -986,6 +990,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PrecisionLaserKnife.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ProfessionManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RadialManager.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RangedStimPack.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RangedStimPackImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RangedWeapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RebelRecruiterCreature.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RecruiterCreature.Po@am__quote@
@@ -1014,6 +1020,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ShuttleCreatureImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SkillManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SpecialHeavyRangedWeapon.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StartingLocationTerminal.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StatePack.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StatePackImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StaticObject.Po@am__quote@
@@ -2851,6 +2858,20 @@ StimPack.obj: server/zone/objects/tangible/pharmaceutical/StimPack.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o StimPack.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/StimPack.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/StimPack.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/StimPack.cpp'; fi`
 
+RangedStimPack.o: server/zone/objects/tangible/pharmaceutical/RangedStimPack.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT RangedStimPack.o -MD -MP -MF $(DEPDIR)/RangedStimPack.Tpo -c -o RangedStimPack.o `test -f 'server/zone/objects/tangible/pharmaceutical/RangedStimPack.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/RangedStimPack.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/RangedStimPack.Tpo $(DEPDIR)/RangedStimPack.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/RangedStimPack.cpp' object='RangedStimPack.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o RangedStimPack.o `test -f 'server/zone/objects/tangible/pharmaceutical/RangedStimPack.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/RangedStimPack.cpp
+
+RangedStimPack.obj: server/zone/objects/tangible/pharmaceutical/RangedStimPack.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT RangedStimPack.obj -MD -MP -MF $(DEPDIR)/RangedStimPack.Tpo -c -o RangedStimPack.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/RangedStimPack.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/RangedStimPack.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/RangedStimPack.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/RangedStimPack.Tpo $(DEPDIR)/RangedStimPack.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/RangedStimPack.cpp' object='RangedStimPack.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o RangedStimPack.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/RangedStimPack.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/RangedStimPack.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/RangedStimPack.cpp'; fi`
+
 WoundPack.o: server/zone/objects/tangible/pharmaceutical/WoundPack.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT WoundPack.o -MD -MP -MF $(DEPDIR)/WoundPack.Tpo -c -o WoundPack.o `test -f 'server/zone/objects/tangible/pharmaceutical/WoundPack.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/WoundPack.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/WoundPack.Tpo $(DEPDIR)/WoundPack.Po
@@ -3088,6 +3109,20 @@ TravelTerminal.obj: server/zone/objects/tangible/terminal/travel/TravelTerminal.
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp' object='TravelTerminal.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TravelTerminal.obj `if test -f 'server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp'; fi`
+
+StartingLocationTerminal.o: server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StartingLocationTerminal.o -MD -MP -MF $(DEPDIR)/StartingLocationTerminal.Tpo -c -o StartingLocationTerminal.o `test -f 'server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/StartingLocationTerminal.Tpo $(DEPDIR)/StartingLocationTerminal.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp' object='StartingLocationTerminal.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o StartingLocationTerminal.o `test -f 'server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp
+
+StartingLocationTerminal.obj: server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StartingLocationTerminal.obj -MD -MP -MF $(DEPDIR)/StartingLocationTerminal.Tpo -c -o StartingLocationTerminal.obj `if test -f 'server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/StartingLocationTerminal.Tpo $(DEPDIR)/StartingLocationTerminal.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp' object='StartingLocationTerminal.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o StartingLocationTerminal.obj `if test -f 'server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp'; fi`
 
 VendorTerminal.o: server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT VendorTerminal.o -MD -MP -MF $(DEPDIR)/VendorTerminal.Tpo -c -o VendorTerminal.o `test -f 'server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp
@@ -5062,6 +5097,20 @@ StimPackImplementation.obj: server/zone/objects/tangible/pharmaceutical/StimPack
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp' object='StimPackImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o StimPackImplementation.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp'; fi`
+
+RangedStimPackImplementation.o: server/zone/objects/tangible/pharmaceutical/RangedStimPackImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT RangedStimPackImplementation.o -MD -MP -MF $(DEPDIR)/RangedStimPackImplementation.Tpo -c -o RangedStimPackImplementation.o `test -f 'server/zone/objects/tangible/pharmaceutical/RangedStimPackImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/RangedStimPackImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/RangedStimPackImplementation.Tpo $(DEPDIR)/RangedStimPackImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/RangedStimPackImplementation.cpp' object='RangedStimPackImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o RangedStimPackImplementation.o `test -f 'server/zone/objects/tangible/pharmaceutical/RangedStimPackImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/RangedStimPackImplementation.cpp
+
+RangedStimPackImplementation.obj: server/zone/objects/tangible/pharmaceutical/RangedStimPackImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT RangedStimPackImplementation.obj -MD -MP -MF $(DEPDIR)/RangedStimPackImplementation.Tpo -c -o RangedStimPackImplementation.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/RangedStimPackImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/RangedStimPackImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/RangedStimPackImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/RangedStimPackImplementation.Tpo $(DEPDIR)/RangedStimPackImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/RangedStimPackImplementation.cpp' object='RangedStimPackImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o RangedStimPackImplementation.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/RangedStimPackImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/RangedStimPackImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/RangedStimPackImplementation.cpp'; fi`
 
 WoundPackImplementation.o: server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT WoundPackImplementation.o -MD -MP -MF $(DEPDIR)/WoundPackImplementation.Tpo -c -o WoundPackImplementation.o `test -f 'server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp
