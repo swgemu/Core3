@@ -360,6 +360,7 @@ void CombatManager::handelMedicArea(CreatureObject* creature, CreatureObject* ar
 			creatureTarget->unlock();
 	}
 }
+
 bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* target, AttackTargetSkill* skill,  String& modifier, CombatAction* actionMessage) {
 	try {
 		target->wlock(attacker);
@@ -631,6 +632,8 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon, int accuracyBonus, int attackType) {
 	int hitChance = 0;
 
+	if (DEBUG)
+		System::out << "Calculating hit chance" << endl;
 
 	float weaponAccuracy = 0;
 	if (attackType == MELEEATTACK || attackType == RANGEDATTACK) {
@@ -638,6 +641,9 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 		weaponAccuracy = getWeaponRangeMod(creature->getDistanceTo(targetCreature), weapon);
 		weaponAccuracy += calculatePostureMods(creature, targetCreature);
 	}
+
+	if (DEBUG)
+		System::out << "\tAttacker weapon accuracy is " << weaponAccuracy << endl;
 
 	// TODO: add Aim mod
 	float aimMod = 0.0;
@@ -651,7 +657,13 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 		attackerAccuracy = creature->getSkillMod("trapping");
 	}
 
+	if (DEBUG)
+		System::out << "\tBase attacker accuracy is " << attackerAccuracy << endl;
+
 	int targetDefense = getTargetDefense(creature, targetCreature, attackType);
+
+	if (DEBUG)
+		System::out << "\tBase target defense is " << targetDefense << endl;
 
 	// Calculation based on the DPS calculation spreadsheet
 	float accTotal = 66.0; // Base chance
@@ -664,8 +676,14 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	if (targetDefense > 125)
 		targetDefense = 125;
 
+	if (DEBUG)
+		System::out << "\tTarget defense after state affects and cap is " << targetDefense << endl;
+
 	// TODO: Need to add in food/drink mods for defense and attack
 	accTotal += (attackerAccuracy + weaponAccuracy + aimMod + accuracyBonus	- targetDefense) / 2.0;
+
+	if (DEBUG)
+		System::out << "\tFinal hit chance is " << accTotal << "%" << endl;
 
 	if (accTotal > 100)
 		accTotal = 100.0;
@@ -893,6 +911,9 @@ int CombatManager::getArmorReduction(CreatureObject* target, int damage, int loc
 	float currentDamage = damage;
 	int reduction;
 
+	if (DEBUG)
+		System::out << "Original damage = " << damage << endl;
+
 	// Stage one : External full coverage.  PSG and Force Armour
 	if (target->isPlayer() && ((Player*)target)->getPlayerArmor(13) != NULL) {
 		// Do the reduction for PSG
@@ -925,7 +946,10 @@ int CombatManager::getArmorReduction(CreatureObject* target, int damage, int loc
 					break;
 				}
 				currentDamage -= currentDamage * toughness / 100.0f;
+				if (DEBUG)
+					System::out << "\tMelee Toughness (" << toughness << "%) reduces it to " << currentDamage << endl;
 		}
+
 	// TODO: Add Jedi toughness, all attacks except lightsaber
 
 
@@ -979,6 +1003,11 @@ int CombatManager::getArmorReduction(CreatureObject* target, int damage, int loc
 			resist = ((Creature*)target)->getArmorResist(damagetype);
 	}
 
+	if (DEBUG)
+		System::out << "\tArmour resistance to damage type " << damagetype << " is " << resist << "%" << endl;
+
+	float preArmorDamage = currentDamage;
+
 	if (resist > 0 && resist < 100) {
 		int armorResistance = 0;
 		if (armor != NULL)
@@ -992,17 +1021,22 @@ int CombatManager::getArmorReduction(CreatureObject* target, int damage, int loc
 		else if (armorpiercing < armorResistance)
 			for (int i = armorpiercing; i < armorResistance; i++)
 				currentDamage *= 0.5;
+		if (DEBUG)
+			System::out << "\tAP/AR changes damage value to " << currentDamage << endl;
 	}
 
-	if (target->isPlayer() && resist > 0 && armor != NULL)
-		target->sendCombatSpam(target,(TangibleObject*)armor, (int)(currentDamage * resist / 100.0f), "armor_damaged", false);
-
 	currentDamage -= currentDamage * resist / 100.0f;
+
+	if (target->isPlayer() && resist > 0 && armor != NULL)
+		target->sendCombatSpam(target,(TangibleObject*)armor, (int)(preArmorDamage - currentDamage), "armor_damaged", false);
 
 	// Final outcome, may be negative
 	reduction = damage - (int)currentDamage;
 
-	return reduction;
+	if (DEBUG)
+		System::out << "\tFinal reduction due to armour and toughness is " << reduction << endl;
+
+		return reduction;
 }
 
 bool CombatManager::calculateCost(CreatureObject* creature, float healthMultiplier, float actionMultiplier, float mindMultiplier, float forceMultiplier) {
@@ -1532,9 +1566,6 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 
 		CreatureObject* targetCreature = (CreatureObject*)target;
 
-		int rand = System::random(100);
-		int trappingSkill = creature->getSkillMod("trapping");
-
 /*
 		// Changed to use SOE hit calculation
 		int level = targetCreature->getLevel(); //336 ancient krayt
@@ -1546,6 +1577,15 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 			return -1;
 		}
 */
+		// Test for hit
+		if (target->isNonPlayerCreature() || target->isPlayer()) {
+			int rand = System::random(100);
+			if (rand > getHitChance(creature, (CreatureObject*)target, weapon, skill->getAccuracyBonus(), TRAPATTACK)) {
+				skill->doMiss(creature, (CreatureObject*)target, 0);
+				return -1;
+			}
+		}
+
 		float minDamage = weapon->getMinDamage();
 		float maxDamage = weapon->getMaxDamage();
 		int damageType = weapon->getDamageType();
@@ -1634,8 +1674,10 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 				damage = damage / 2;
 			else if (secondaryDefense == 2)
 				return -1;
-			//else if (secondaryDefense == 3)
-			//	doCounterAttack
+			else if (secondaryDefense == 3) {
+				counterAttack(creature, targetCreature);
+				return -1;
+			}
 
 			//Work out the number of pools that may be affected
 			int poolsAffected = 0;
@@ -1704,6 +1746,10 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 		}
 
 		return (int32)damage - reduction;
+	}
+
+	void CombatManager::counterAttack(CreatureObject* targetCreature, CreatureObject* creature) {
+		// TODO:  This probably needs a skill setting up that can be fed through the system
 	}
 
 	void CombatManager::requestDuel(Player* player, uint64 targetID) {

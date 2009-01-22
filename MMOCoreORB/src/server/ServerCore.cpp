@@ -55,7 +55,7 @@ which carries forward this exception.
 
 ZoneServer* ServerCore::zoneServer;
 
-ServerCore::ServerCore() : Core("core3.log"), Logger("Core") {
+ServerCore::ServerCore() : Core("log/core3.log"), Logger("Core") {
 	orb = NULL;
 
 	loginServer = NULL;

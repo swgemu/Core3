@@ -154,7 +154,7 @@ public:
 	int calculateDamage(CreatureObject* creature, TangibleObject* target, Weapon* weapon, AttackTargetSkill* skill, int attackType,
 			int damageType, int armorPiercing, float minDmg, float maxDmg, bool randompoolhit, bool cankill);
 	void doDotWeaponAttack(CreatureObject* creature, CreatureObject* targetCreature, bool areaHit);
-
+	void CombatManager::counterAttack(CreatureObject* targetCreature, CreatureObject* creature);
 	void handelMedicArea(CreatureObject* creature, CreatureObject* areaCenter,Skill* skill, int stimPower, float range);
 };
 
