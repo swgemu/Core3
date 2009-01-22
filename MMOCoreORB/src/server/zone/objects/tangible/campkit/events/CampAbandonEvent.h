@@ -65,10 +65,10 @@ public:
 				return true;
 			}
 			campSite->abandonCamp();
+
 		} catch (...) {
 			campSite->error("Unreported exception caught on Camp Site\n");
 
-			campSite->unlock();
 		}
 
 		return true;

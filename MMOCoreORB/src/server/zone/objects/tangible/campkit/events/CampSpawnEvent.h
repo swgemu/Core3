@@ -59,7 +59,8 @@ public:
 	bool activate() {
 		try {
 			campSite->lock();
-			campSite->createCampArea();
+			if (campSite->getOwner()->isOnline())
+				campSite->createCampArea();
 			campSite->unlock();
 		} catch (...) {
 			campSite->error("Unreported exception caught on Camp Site\n");

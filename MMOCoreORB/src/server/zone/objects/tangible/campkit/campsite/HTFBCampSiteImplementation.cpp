@@ -56,7 +56,7 @@ HTFBCampSiteImplementation::HTFBCampSiteImplementation(Player* player, uint64 oi
 	campOwner = player;
 
 	campArea = NULL;
-	areaRange = 15.0f;
+	areaRange = 17.5f;
 	visitor = new VisitorList();
 	recoveries = new RecoveryList();
 	currentXP = 0.0f;

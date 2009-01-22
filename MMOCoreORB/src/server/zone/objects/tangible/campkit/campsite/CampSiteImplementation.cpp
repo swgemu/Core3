@@ -145,7 +145,6 @@ void CampSiteImplementation::removeCampArea() {
 
 		campOwner->sendSystemMessage(msg.toString());
 
-		//TODO: check area, insert & remove include activation
 	}
 
 	campArea->forceTriggerExit();
@@ -153,14 +152,18 @@ void CampSiteImplementation::removeCampArea() {
 	planetManager->removeActiveAreaTrigger(campArea);
 	campArea = NULL;
 
+	if (abandonEvent != NULL)
+		abandonEvent->endNow();
+
+	abandonEvent = NULL;
+
 	for (int i = 0 ; i < campObjects.size() ; i++) {
 		SceneObject* scno = campObjects.get(i);
 		scno->removeFromZone();
 		scno->finalize();
 	}
 
-
-
+	deactivateRecovery();
 }
 
 /*
@@ -207,12 +210,16 @@ void CampSiteImplementation::addCampObject(uint64 oid, uint32 ocrc, const Unicod
  */
 void CampSiteImplementation::disbandCamp() {
 	despawnEvent->endNow();
+	abandoned = true;
 }
 
 /*
  * abandons the camp.
  */
 void CampSiteImplementation::abandonCamp() {
+	if (abandoned)
+		return;
+
 	abandoned = true;
 	abandonEvent = NULL;
 	campOwner->setCamp(NULL);
@@ -228,8 +235,15 @@ void CampSiteImplementation::abandonCamp() {
 		if (object->isPlayer()) {
 			Player* player = (Player*) object;
 			campObjects.get(0)->sendTo(player);
+			//player->setCampModifier(0);
+			//player->setCampAggroMod(0);
 		}
 	}
+
+	campArea->forceTriggerExit();
+
+	deactivateRecovery();
+
 }
 
 /*
@@ -245,8 +259,10 @@ void CampSiteImplementation::abortAbandonPhase() {
  * \param player The player entering the camp.
  */
 void CampSiteImplementation::enterNotification(Player* player) {
-	if (abandoned)
+	if (abandoned) {
+		player->setCampModifier(0);
 		return;
+	}
 
 	if (player == campOwner && abandonEvent != NULL) {
 		abortAbandonPhase();
@@ -269,20 +285,20 @@ void CampSiteImplementation::enterNotification(Player* player) {
  * \param player The player leaving the camp.
  */
 void CampSiteImplementation::exitNotificaton(Player* player) {
-	if (abandoned)
-		return;
-
 	if (player == campOwner && !abandoned) {
 		abandonEvent = new CampAbandonEvent(_this,60000);
 		server->addEvent(abandonEvent);
 	}
 
-	player->sendSystemMessage("@camp:camp_exit");
 	player->setCampModifier(0);
 	player->setCampAggroMod(0);
+
 	recoveries->getEvent(player->getObjectID())->leaveCamp();
 
-	addXP(player->getObjectID());
+	if (!abandoned) {
+		player->sendSystemMessage("@camp:camp_exit");
+		addXP(player->getObjectID());
+	}
 	visitor->put(player->getObjectID(),0);
 }
 
@@ -298,6 +314,7 @@ void CampSiteImplementation::calculateXP() {
 
 		while (visitor->hasNext()) {
 			playerID = visitor->getNextKey();
+
 			addXP(playerID);
 		}
 	}
@@ -329,4 +346,16 @@ void CampSiteImplementation::reactiveRecovery(Player* player) {
 	CampRecoveryEvent* recoveryEvent = recoveries->getEvent(player->getObjectID());
 	if (recoveryEvent != NULL && !recoveryEvent->isQueued())
 		server->addEvent(recoveryEvent,300000);
+}
+
+void CampSiteImplementation::deactivateRecovery() {
+	uint64 playerID = 0;
+
+	while (recoveries->hasNext()) {
+		playerID = recoveries->getNextKey();
+
+		// deactivate for all player, visited the camp (players not in area, logout)
+		recoveries->getEvent(playerID)->leaveCamp();
+
+	}
 }

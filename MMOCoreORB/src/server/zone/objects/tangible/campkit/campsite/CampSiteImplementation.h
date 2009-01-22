@@ -196,6 +196,7 @@ public:
 	void exitNotificaton(Player* player);
 
 	void reactiveRecovery(Player* player);
+	void deactivateRecovery();
 };
 
 #endif
