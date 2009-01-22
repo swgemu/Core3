@@ -203,7 +203,7 @@ PlayerImplementation::~PlayerImplementation() {
 	}
 
 	if (camp != NULL) {
-		camp->abandonCamp();
+		camp->disbandCamp();
 		camp = NULL;
 	}
 
@@ -506,6 +506,14 @@ void PlayerImplementation::load(ZoneClientSession* client) {
 		playerManager->updateOtherFriendlists(_this, true);
 		displayMessageoftheDay();
 
+		// clear camp
+		if (camp == NULL) {
+			//getCamp()->abandonCamp();
+			//setCamp(NULL);
+			setCampAggroMod(0);
+			setCampModifier(0);
+		}
+
 		//unlock();
 	} catch (Exception& e) {
 		//unlock();
@@ -683,6 +691,13 @@ void PlayerImplementation::unload() {
 		}
 	}
 
+	// clear camp
+	if (camp != NULL) {
+		getCamp()->disbandCamp();
+		setCamp(NULL);
+		setCampAggroMod(0);
+		setCampModifier(0);
+	}
 	clearDuelList();
 
 	activateRecovery();

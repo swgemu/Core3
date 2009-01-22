@@ -136,6 +136,11 @@ int TrapThrowableWeaponImplementation::useObject(Player* player) {
 		return 0;
 	}
 
+	if (!player->isInRange(target,getRange())) {
+		player->sendSystemMessage("Your target is too far away.");
+		return 0;
+	}
+
 	useCharge(player);
 	player->queueThrow((TangibleObject*)_this, getSkillCRC());
 

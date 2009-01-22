@@ -2682,7 +2682,7 @@ public:
 	}
 
 	bool isInCamp() {
-		return campMod != 0;
+		return campMod > 1;
 	}
 
 	void setNumberOfPets(int num) {

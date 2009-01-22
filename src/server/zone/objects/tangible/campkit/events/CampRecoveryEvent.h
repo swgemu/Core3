@@ -61,8 +61,9 @@ public:
 
 	bool activate() {
 		try {
-			if (inCamp) {
+			if (inCamp && camp != NULL && player != NULL) {
 				player->lock();
+
 				player->healWound(player, 5, 0, false);
 				player->healWound(player, 5, 1, false);
 				player->healWound(player, 5, 2, false);
@@ -72,7 +73,9 @@ public:
 				player->healWound(player, 5, 6, false);
 				player->healWound(player, 5, 7, false);
 				player->healWound(player, 5, 8, false);
+
 				camp->reactiveRecovery(player);
+
 				player->unlock();
 			} else
 				setKeeping(false);
