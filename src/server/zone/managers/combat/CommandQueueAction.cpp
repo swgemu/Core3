@@ -88,7 +88,7 @@ bool CommandQueueAction::check() {
 	}
 
 	if (skill->isTargetSkill()) {
-		SceneObject* target = player->getTarget();
+		target = player->getTarget();
 
 		if (creature->isKnockedDown()) {
 			clearError(1, 18);
@@ -96,10 +96,8 @@ bool CommandQueueAction::check() {
 		}
 
 		if (skill->isHealSkill()) {
-			if (target == NULL || !target->isAttackable()) {
+			if (target == NULL || !target->isAttackable())
 				target = creature;
-				return true;
-			}
 		}
 		else {
 			if (target == NULL || !target->isAttackable()) {
@@ -205,6 +203,7 @@ bool CommandQueueAction::validate() {
 						Player* targetPlayer = (Player*) target.get();
 
 						// TODO:  Needs fixing for BH missions
+						//if (!player->isHunting(targetPlayer))
 						if (!player->isInDuelWith(targetPlayer, false)) {
 							if (!player->isOvert() || !targetPlayer->isOvert()) {
 								clearError(3);
