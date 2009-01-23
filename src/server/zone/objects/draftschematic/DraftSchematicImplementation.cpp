@@ -87,11 +87,11 @@ DraftSchematicImplementation::DraftSchematicImplementation(
 	resourcesRemoved = false;
 
 	for (int i = 0; i < draftSchematic->getIngredientListSize(); ++i) {
-		dsIngredients.add(draftSchematic->getIngredient(i));
+		dsIngredients.add(draftSchematic->cloneIngredient(i));
 	}
 
 	for (int i = 0; i < draftSchematic->getExpPropGroupListSize(); ++i) {
-		dsExpPropGroups.add(draftSchematic->getExpPropGroup(i));
+		dsExpPropGroups.add(draftSchematic->cloneExpPropGroup(i));
 	}
 
 	tanoAttributes = draftSchematic->getTanoAttributes();
@@ -113,16 +113,11 @@ DraftSchematicImplementation::DraftSchematicImplementation(
 }
 
 DraftSchematicImplementation::~DraftSchematicImplementation(){
-	/*while (dsExpPropGroups.size() > 0)
+	while (dsExpPropGroups.size() > 0)
 		dsExpPropGroups.remove(0)->finalize();
 
 	while (dsIngredients.size() > 0)
 		dsIngredients.remove(0)->finalize();
-
-	experimentalProperties.removeAll();*/
-
-	//while (attributesToSet.size() > 0)
-	//	attributesToSet.remove(0)->finalize();
 
 	craftingValues->finalize();
 	craftingValues = NULL;

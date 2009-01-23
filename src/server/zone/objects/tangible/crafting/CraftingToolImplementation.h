@@ -47,10 +47,15 @@ which carries forward this exception.
 
 #include "../../../managers/crafting/CraftingManager.h"
 
-#include "../../../packets.h"
 #include "CraftingTool.h"
 #include "CraftingSlots.h"
 #include "../ContainerImplementation.h"
+
+#include "../resource/ResourceContainerImplementation.h"
+#include "../resource/ResourceContainer.h"
+
+#include "../../draftschematic/DraftSchematicImplementation.h"
+#include "../../draftschematic/DraftSchematic.h"
 
 #include "engine/engine.h"
 
@@ -58,39 +63,95 @@ class CreatureObject;
 class SceneObject;
 class Player;
 class CreateObjectEvent;
+class ResourceContainer;
+class DraftSchematic;
 
-
+/*
+ *  The crafting tool class represents the various crafting tools in the game
+ */
 class CraftingToolImplementation : public CraftingToolServant {
 protected:
+	/*
+	 * Effectiveness is the quality of the tool (Range: -15 to 15)
+	 */
 	float effectiveness;
+
+	/*
+	 * Indicates the type of tool, generic, clothing, etc
+	 */
 	int tooltype;
+
+	/*
+	 * Identifies the current crafting stage
+	 */
 	int state;
 
+	/*
+	 * This is a vector of the Tab ID the crafting tool should display for the situation
+	 */
 	Vector<uint64> tabIds;
+
+	/*
+	 * This is a vector of the schematics sent to the player when the tool is opened
+	 */
 	Vector<ManagedReference<DraftSchematic> > schematicsToSend;
 
+	/*
+	 * Where the crafted item is stored during the crafting process
+	 */
 	TangibleObject* currentTano;
+
+	/*
+	 * Where the schematic clone is stored during the crafting process
+	 */
 	DraftSchematic* currentDraftSchematic;
 
+	/*
+	 * This vector holds references to an object that may fall into "limbo"
+	 * during the process, it is cleaned up on crafting close
+	 */
 	Vector<TangibleObject*> tempIngredient;
 
+	/*
+	 * A representation of the ingredient slots for a schematic
+	 */
 	CraftingSlots* craftingSlots;
 
+	/*
+	 * Crafting Hopper
+	 */
 	Container* hopper;
 
+	/*
+	 * Current status of the tool @crafting:tool_status_ready, @crafting:tool_status_working
+	 * @crafting:tool_status_finished
+	 */
 	String status;
+
+	/*
+	 * Results of the assembly roll
+	 */
 	int assemblyResults;
 
-	int assemblyMod;
-	int experimentationMod;
-
-	// To see if is first resource inserted in a crafting session
+	/*
+	 * Counter for experimenting - used in packets
+	 */
 	int insertCount;
 
+	/*
+	 * Dictates if experimenting is enabled
+	 */
 	bool experimentingEnabled;
+
+	/*
+	 * If crafting goes past a certain point, resources are unrecoverable
+	 */
 	bool recoverResources;
 
-	float craftingToolModifier;
+	/*
+	 * Counter for experimenting - used in packets
+	 */
+	//float craftingToolModifier;
 
 public:
 	static const int CLOTHING = 1; // Clothing and Armor Crafting Tool

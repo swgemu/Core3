@@ -45,6 +45,7 @@ which carries forward this exception.
 #ifndef CRAFTINGSLOT_H_
 #define CRAFTINGSLOT_H_
 
+#include "../../resource/ResourceContainer.h"
 
 class CraftingSlot {
 
@@ -73,29 +74,10 @@ public:
 
 	virtual inline void init(const int size){
 
-		/*cleanup();
-
-		maxsize = size;*/
 	}
 
 	virtual inline void cleanup(){
 
-		/*TangibleObject* tano;
-
-		for (int i = 0; i < objects.size(); ++i){
-
-			tano = objects.get(i);
-
-			if (tano != NULL){
-
-				tano->setContainer(NULL);
-				tano->finalize();
-
-			}
-			tano = NULL;
-		}
-		objects.removeAll();
-		serial = "";*/
 	}
 
 	virtual inline int size(){
@@ -104,24 +86,6 @@ public:
 	}
 
 	virtual inline bool add(TangibleObject* tano) {
-
-		/*if (serial == "")
-			serial = tano->getCraftedSerial();
-		else if ((slottype == MIXEDSLOT)
-				&& (serial != tano->getCraftedSerial()))
-			return false;
-
-		if (slottype != MIXEDSLOT) {
-			TangibleObject* ingredientInSlot = (TangibleObject*) get();
-			ingredientInSlot->finalize();
-
-			clear();
-
-			objects.add(tano);
-			return true;
-		}*/
-
-
 
 		return false;
 	}

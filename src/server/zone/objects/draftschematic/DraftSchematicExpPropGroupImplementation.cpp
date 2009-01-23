@@ -57,28 +57,42 @@ DraftSchematicExpPropGroupImplementation::DraftSchematicExpPropGroupImplementati
 
 	filler = true;
 }
-DraftSchematicExpPropGroupImplementation::DraftSchematicExpPropGroupImplementation(DraftSchematicExpPropGroup* group) : DraftSchematicExpPropGroupServant() {
+DraftSchematicExpPropGroupImplementation::DraftSchematicExpPropGroupImplementation(
+		DraftSchematicExpPropGroup* group) :
+	DraftSchematicExpPropGroupServant() {
 
-		title = group->getTitle();
-		subtitle = group->getSubtitle();
+	minValue = group->getMinValue();
+	maxValue = group->getMaxValue();
 
-		for (int i = 0; i < group->getKeyCount(); ++i){
-			keys.add(group->getKey(i));
-		}
+	decimalPrecision = group->getPrecision();
 
-		for (int i = 0; i < group->getExpPropTypesSize(); ++i){
-			expPropTypes.put(group->getExpPropTypesKey(i), group->getExpPropTypesValue(i));
-		}
+	filler = group->isFiller();
 
-		for (int i = 0; i < group->getExpPropWeightsSize(); ++i){
-			expPropWeights.put(group->getExpPropWeightsKey(i), group->getExpPropWeightsValue(i));
-		}
+	expPropGroupListSize = 0;
 
-		for (int i = 0; i < group->getExpPropWeightPercentagesSize(); ++i){
-			expPropWeightPercentages.put(group->getExpPropWeightPercentagesKey(i),
-					group->getExpPropWeightPercentagesValue(i));
-		}
+	title = group->getTitle();
+	subtitle = group->getSubtitle();
+
+	for (int i = 0; i < group->getKeyCount(); ++i) {
+		keys.add(group->getKey(i));
+		expPropGroupListSize++;
 	}
+
+	for (int i = 0; i < group->getExpPropTypesSize(); ++i) {
+		expPropTypes.put(group->getExpPropTypesKey(i),
+				group->getExpPropTypesValue(i));
+	}
+
+	for (int i = 0; i < group->getExpPropWeightsSize(); ++i) {
+		expPropWeights.put(group->getExpPropWeightsKey(i),
+				group->getExpPropWeightsValue(i));
+	}
+
+	for (int i = 0; i < group->getExpPropWeightPercentagesSize(); ++i) {
+		expPropWeightPercentages.put(group->getExpPropWeightPercentagesKey(i),
+				group->getExpPropWeightPercentagesValue(i));
+	}
+}
 
 DraftSchematicExpPropGroupImplementation::~DraftSchematicExpPropGroupImplementation(){
 

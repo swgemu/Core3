@@ -77,47 +77,58 @@ ComponentImplementation::ComponentImplementation(CreatureObject* creature, uint3
 	init();
 }
 
-ComponentImplementation::ComponentImplementation(Component* component, uint64 oid) :
+ComponentImplementation::ComponentImplementation(Component* component,
+		uint64 oid) :
 	ComponentServant(oid, COMPONENT) {
 
 	component->lock();
 
-	objectCRC = component->getObjectCRC();
-	templateTypeName = component->getTemplateTypeName();
-	templateName = component->getTemplateName();
-	customName = component->getCustomName();
-	objectCount = component->getObjectCount();
+	try {
 
-	craftersName = component->getCraftersName();
-	String tempattribute = "craftersname";
-	itemAttributes->setStringAttribute(tempattribute, craftersName);
+		objectCRC = component->getObjectCRC();
+		templateTypeName = component->getTemplateTypeName();
+		templateName = component->getTemplateName();
+		customName = component->getCustomName();
+		objectCount = component->getObjectCount();
 
-	String tempattribute2 = "craftedserial";
-	craftedSerial = component->getCraftedSerial();
-	itemAttributes->setStringAttribute(tempattribute2, craftedSerial);
+		craftersName = component->getCraftersName();
+		String tempattribute = "craftersname";
+		itemAttributes->setStringAttribute(tempattribute, craftersName);
 
-	String property;
+		String tempattribute2 = "craftedserial";
+		craftedSerial = component->getCraftedSerial();
+		itemAttributes->setStringAttribute(tempattribute2, craftedSerial);
 
-	for (int i = 0; i < component->getPropertyCount(); ++i) {
-		property = component->getProperty(i);
+		String property;
 
-		float value = component->getAttributeValue(property);
-		int precision = component->getAttributePrecision(property);
-		String title = component->getAttributeTitle(property);
+		for (int i = 0; i < component->getPropertyCount(); ++i) {
+			property = component->getProperty(i);
 
-		keyList.add(property);
-		attributeMap.put(property, value);
-		itemAttributes->setFloatAttribute(property, value);
-		precisionMap.put(property, precision);
-		titleMap.put(property, title);
+			float value = component->getAttributeValue(property);
+			int precision = component->getAttributePrecision(property);
+			String title = component->getAttributeTitle(property);
+			bool hidden = component->getAttributeHidden(property);
+
+			keyList.add(property);
+			attributeMap.put(property, value);
+			itemAttributes->setFloatAttribute(property, value);
+			precisionMap.put(property, precision);
+			titleMap.put(property, title);
+			hiddenMap.put(property, hidden);
+		}
+
+		savePrecisionList();
+		saveTitleList();
+		saveHiddenList();
+
+		itemAttributes->getAttributeString(attributeString);
+
+		component->unlock();
+
+	} catch (...) {
+		component->unlock();
+		System::out << "Unable to clone a component, That makes kyle a sad panda" << endl;
 	}
-
-	savePrecisionList();
-	saveTitleList();
-
-	itemAttributes->getAttributeString(attributeString);
-
-	component->unlock();
 }
 
 
@@ -125,6 +136,7 @@ ComponentImplementation::~ComponentImplementation(){
 	attributeMap.removeAll();
 	precisionMap.removeAll();
 	titleMap.removeAll();
+	hiddenMap.removeAll();
 	keyList.removeAll();
 }
 
@@ -156,6 +168,7 @@ void ComponentImplementation::init() {
 	parseAttributeString();
 	parsePrecisionString();
 	parseTitleString();
+	parseHiddenString();
 }
 
 int ComponentImplementation::useObject(Player* player) {
@@ -243,6 +256,10 @@ String& ComponentImplementation::getAttributeTitle(String& attributeName){
 	return titleMap.get(attributeName);
 }
 
+bool ComponentImplementation::getAttributeHidden(String& attributeName){
+	return hiddenMap.get(attributeName);
+}
+
 void ComponentImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
 	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
@@ -283,6 +300,7 @@ void ComponentImplementation::updateCraftingValues(DraftSchematic* draftSchemati
 
 	savePrecisionList();
 	saveTitleList();
+	saveHiddenList();
 	setUpdated(true);
 }
 

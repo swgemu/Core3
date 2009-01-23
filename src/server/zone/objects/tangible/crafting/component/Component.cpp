@@ -148,12 +148,25 @@ String& Component::getAttributeTitle(String& attributeName) {
 		return ((ComponentImplementation*) _impl)->getAttributeTitle(attributeName);
 }
 
-bool Component::hasProperty(String& attributeName) {
+bool Component::getAttributeHidden(String& attributeName) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 14);
+		method.addAsciiParameter(attributeName);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((ComponentImplementation*) _impl)->getAttributeHidden(attributeName);
+}
+
+bool Component::hasProperty(String& attributeName) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
 		method.addAsciiParameter(attributeName);
 
 		return method.executeWithBooleanReturn();
@@ -166,7 +179,7 @@ void Component::addProperty(String& attribute, float value, int precision, Strin
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addAsciiParameter(attribute);
 		method.addFloatParameter(value);
 		method.addSignedIntParameter(precision);
@@ -182,7 +195,7 @@ int Component::getPropertyCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -194,7 +207,7 @@ String& Component::getProperty(const int j) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addSignedIntParameter(j);
 
 		method.executeWithAsciiReturn(_return_getProperty);
@@ -208,7 +221,7 @@ bool Component::changeAttributeValue(String& property, float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 		method.addAsciiParameter(property);
 		method.addFloatParameter(value);
 
@@ -253,18 +266,21 @@ Packet* ComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertAscii(getAttributeTitle(inv->getAsciiParameter(_param0_getAttributeTitle__String_)));
 		break;
 	case 14:
-		resp->insertBoolean(hasProperty(inv->getAsciiParameter(_param0_hasProperty__String_)));
+		resp->insertBoolean(getAttributeHidden(inv->getAsciiParameter(_param0_getAttributeHidden__String_)));
 		break;
 	case 15:
-		addProperty(inv->getAsciiParameter(_param0_addProperty__String_float_int_String_), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addProperty__String_float_int_String_));
+		resp->insertBoolean(hasProperty(inv->getAsciiParameter(_param0_hasProperty__String_)));
 		break;
 	case 16:
-		resp->insertSignedInt(getPropertyCount());
+		addProperty(inv->getAsciiParameter(_param0_addProperty__String_float_int_String_), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addProperty__String_float_int_String_));
 		break;
 	case 17:
-		resp->insertAscii(getProperty(inv->getSignedIntParameter()));
+		resp->insertSignedInt(getPropertyCount());
 		break;
 	case 18:
+		resp->insertAscii(getProperty(inv->getSignedIntParameter()));
+		break;
+	case 19:
 		resp->insertBoolean(changeAttributeValue(inv->getAsciiParameter(_param0_changeAttributeValue__String_float_), inv->getFloatParameter()));
 		break;
 	default:
@@ -304,6 +320,10 @@ int ComponentAdapter::getAttributePrecision(String& attributeName) {
 
 String& ComponentAdapter::getAttributeTitle(String& attributeName) {
 	return ((ComponentImplementation*) impl)->getAttributeTitle(attributeName);
+}
+
+bool ComponentAdapter::getAttributeHidden(String& attributeName) {
+	return ((ComponentImplementation*) impl)->getAttributeHidden(attributeName);
 }
 
 bool ComponentAdapter::hasProperty(String& attributeName) {

@@ -63,6 +63,8 @@ public:
 
 	CampKitImplementation(Player* player, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
+	void updateCraftingValues(DraftSchematic* draftSchematic);
+
 	int useObject(Player* player);
 
 	bool isUsefull(Player* player);

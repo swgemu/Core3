@@ -131,11 +131,13 @@ void CamoKitImplementation::init() {
 }
 
 void CamoKitImplementation::updateCraftingValues(DraftSchematic* draftSchematic) {
-
-	String name;
+	// Incoming values available
+	//
+	// unitIntegrity (Range: 1000 - 1000)
+	// quantity      (Range: 5 - 20)
+	//***********************************
 
 	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
-	//craftingValues->toString();
 
 	usesRemaining = (int)craftingValues->getCurrentValue("quantity");
 	String attr = "uses";

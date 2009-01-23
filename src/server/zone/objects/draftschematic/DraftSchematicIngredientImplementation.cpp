@@ -65,6 +65,7 @@ DraftSchematicIngredientImplementation::DraftSchematicIngredientImplementation(D
 	this->resourceType = ingredient->getResourceType();
 	this->resourceQuantity = ingredient->getResourceQuantity();
 	this->combineType = ingredient->getCombineType();
+	this->contribution = ingredient->getContribution();
 }
 
 void DraftSchematicIngredientImplementation::helperSendToPlayer(ObjectControllerMessage* msg) {

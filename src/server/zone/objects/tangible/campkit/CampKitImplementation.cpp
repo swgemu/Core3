@@ -90,6 +90,14 @@ CampKitImplementation::CampKitImplementation(Player* player, unsigned int tempCR
 
 }
 
+void CampKitImplementation::updateCraftingValues(DraftSchematic* draftSchematic) {
+	// Incoming values available
+	//
+	// unitIntegrity (Range: 1000 - 1000)
+	// quality      (Range: 1 - 100)
+	//***********************************
+
+}
 /*
  * Uses the object.
  * \param player The player using the object.

@@ -232,6 +232,7 @@ void WearableImplementation::updateCraftingValues(DraftSchematic* draftSchematic
 
 	int sockets = (int)craftingValues->getCurrentValue("sockets");
 	setSockets(sockets);
+
 }
 
 void WearableImplementation::setSocket(int index, int type, int value) {

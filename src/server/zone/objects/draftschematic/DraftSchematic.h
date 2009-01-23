@@ -51,12 +51,6 @@ public:
 
 	void addIngredient(const String& ingredientTemplateName, const String& ingredientTitleName, const int optional, const String& resourceType, unsigned int resourceQuantity, unsigned int combineType, unsigned int contribution);
 
-	DraftSchematicIngredient* getIngredient(int index);
-
-	int getIngredientListSize();
-
-	int getRequiredIngredientCount();
-
 	void setPersistent(bool status);
 
 	void setObjectID(unsigned long long objID);
@@ -93,9 +87,19 @@ public:
 
 	DraftSchematicExpPropGroup* getExpPropGroup(int index);
 
+	DraftSchematicExpPropGroup* cloneExpPropGroup(int index);
+
 	unsigned int getSchematicID();
 
 	unsigned int getSchematicCRC();
+
+	DraftSchematicIngredient* getIngredient(int index);
+
+	DraftSchematicIngredient* cloneIngredient(int index);
+
+	int getIngredientListSize();
+
+	int getRequiredIngredientCount();
 
 	String& getName();
 
@@ -193,12 +197,6 @@ public:
 
 	void addIngredient(const String& ingredientTemplateName, const String& ingredientTitleName, const int optional, const String& resourceType, unsigned int resourceQuantity, unsigned int combineType, unsigned int contribution);
 
-	DraftSchematicIngredient* getIngredient(int index);
-
-	int getIngredientListSize();
-
-	int getRequiredIngredientCount();
-
 	void setPersistent(bool status);
 
 	void setObjectID(unsigned long long objID);
@@ -235,9 +233,19 @@ public:
 
 	DraftSchematicExpPropGroup* getExpPropGroup(int index);
 
+	DraftSchematicExpPropGroup* cloneExpPropGroup(int index);
+
 	unsigned int getSchematicID();
 
 	unsigned int getSchematicCRC();
+
+	DraftSchematicIngredient* getIngredient(int index);
+
+	DraftSchematicIngredient* cloneIngredient(int index);
+
+	int getIngredientListSize();
+
+	int getRequiredIngredientCount();
 
 	String& getName();
 
