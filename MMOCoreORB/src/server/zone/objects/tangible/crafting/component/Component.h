@@ -45,6 +45,8 @@ public:
 
 	String& getAttributeTitle(String& attributeName);
 
+	bool getAttributeHidden(String& attributeName);
+
 	bool hasProperty(String& attributeName);
 
 	void addProperty(String& attribute, float value, int precision, String& title);
@@ -90,6 +92,8 @@ public:
 
 	String& getAttributeTitle(String& attributeName);
 
+	bool getAttributeHidden(String& attributeName);
+
 	bool hasProperty(String& attributeName);
 
 	void addProperty(String& attribute, float value, int precision, String& title);
@@ -104,6 +108,7 @@ protected:
 	String _param0_getAttributeValue__String_;
 	String _param0_getAttributePrecision__String_;
 	String _param0_getAttributeTitle__String_;
+	String _param0_getAttributeHidden__String_;
 	String _param0_hasProperty__String_;
 	String _param0_addProperty__String_float_int_String_;
 	String _param3_addProperty__String_float_int_String_;

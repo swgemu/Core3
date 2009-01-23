@@ -387,12 +387,20 @@ public:
 		return dsIngredients.get(index);
 	}
 
+	DraftSchematicIngredient* cloneIngredient(int index) {
+		return new DraftSchematicIngredient(dsIngredients.get(index));
+	}
+
 	int getExpPropGroupListSize() {
 		return dsExpPropGroups.size();
 	}
 
 	DraftSchematicExpPropGroup* getExpPropGroup(int index) {
 		return dsExpPropGroups.get(index);
+	}
+
+	DraftSchematicExpPropGroup* cloneExpPropGroup(int index) {
+		return new DraftSchematicExpPropGroup(dsExpPropGroups.get(index));
 	}
 
 	int getRequiredIngredientCount();

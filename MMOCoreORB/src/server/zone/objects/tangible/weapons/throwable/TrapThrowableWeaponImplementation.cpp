@@ -98,6 +98,12 @@ void TrapThrowableWeaponImplementation::initialize() {
  * \param DraftSchematic - the recently crafting schematic with value data
  */
 void TrapThrowableWeaponImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
+	// Incoming values available
+	//
+	// unitIntegrity (Range: 1000 - 1000)
+	// quality      (Range: 1 - 100)
+	//***********************************
+
 	setUsesRemaining(5);
 }
 

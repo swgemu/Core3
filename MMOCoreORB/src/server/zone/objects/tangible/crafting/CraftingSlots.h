@@ -53,20 +53,34 @@
 #include "craftingslots/OptionalMixedSlot.h"
 
 #include "../../draftschematic/DraftSchematicIngredient.h"
+#include "../../draftschematic/DraftSchematic.h"
 
+
+/*
+ * This class represents the item slots for each ingredient in the crafting process
+ */
 class CraftingSlots {
 
 	Vector<CraftingSlot*> slots;
 
 public:
+	/*
+	 * Constructor
+	 */
 	CraftingSlots() {
 
 	}
+	/*
+	 * Deconstructor
+	 */
 	~CraftingSlots() {
 
 		cleanup();
 	}
 
+	/*
+	 * Initialization of object with the appropriate slots
+	 */
 	inline void init(DraftSchematic* draftSchematic) {
 
 		cleanup();
@@ -108,6 +122,9 @@ public:
 		}
 	}
 
+	/*
+	 * Some housekeeping on destruction
+	 */
 	inline void cleanup() {
 
 		CraftingSlot* slot = NULL;
@@ -123,12 +140,18 @@ public:
 		}
 	}
 
+	/*
+	 * Number of Slots
+	 */
 	inline int size() {
 
 		return slots.size();
 
 	}
 
+	/*
+	 * Adds the appropriate ingredient to the appropriate slot
+	 */
 	inline bool putIngredientInSlot(int slot, TangibleObject* tano) {
 
 		CraftingSlot* theslot = slots.get(slot);
@@ -139,6 +162,9 @@ public:
 		return false;
 	}
 
+	/*
+	 * Clears the appropriate ingredient to the appropriate slot
+	 */
 	inline void clearIngredientInSlot(int slot) {
 
 		CraftingSlot* theslot = slots.get(slot);
@@ -147,6 +173,9 @@ public:
 			theslot->clear();
 	}
 
+	/*
+	 * Returns the appropriate ingredient to the appropriate slot
+	 */
 	inline TangibleObject* getIngredientInSlot(int slot) {
 
 		CraftingSlot* theslot = slots.get(slot);
@@ -157,6 +186,9 @@ public:
 			return NULL;
 	}
 
+	/*
+	 * The item count of something in a slot
+	 */
 	inline int getIngredientCount(int slot) {
 
 		CraftingSlot* theslot = slots.get(slot);
@@ -167,6 +199,9 @@ public:
 			return 0;
 	}
 
+	/*
+	 * Console output of this object
+	 */
 	void toString() {
 
 		CraftingSlot* tano;

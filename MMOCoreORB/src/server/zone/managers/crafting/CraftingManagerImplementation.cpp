@@ -949,16 +949,17 @@ void CraftingManagerImplementation::setInitialCraftingValues(Player* player,
 	}
 
 	craftingValues->recalculateValues(draftSchematic, true);
-
+craftingValues->toString();
 	if (applyComponentBoost(draftSchematic, craftingTool))
 		craftingValues->recalculateValues(draftSchematic, true);
-
+craftingValues->toString();
 	// If components give a boost, calculate here
 	//currentPercentage += applyComponentPercentageBoost(subtitle,
 	//		draftSchematic, craftingTool);
 
 	if (addSubcomponentTraitsToNewTano(craftingTool))
 		craftingValues->recalculateValues(draftSchematic, true);
+craftingValues->toString();
 }
 
 bool CraftingManagerImplementation::addSubcomponentTraitsToNewTano(CraftingTool* craftingTool) {
@@ -1104,7 +1105,7 @@ bool CraftingManagerImplementation::applyComponentBoost(
 				for (int j = 0; j < component->getPropertyCount(); ++j) {
 
 					String property = component->getProperty(j); // charges
-
+System::out << property << endl;
 					modified = true;
 
 					max = craftingValues->getMaxValue(property);
@@ -1113,16 +1114,14 @@ bool CraftingManagerImplementation::applyComponentBoost(
 
 					currentvalue = craftingValues->getCurrentValue(property);
 
-					propertyvalue = component->getAttributeValue(property)
-							* ingredient->getContribution();
+					propertyvalue = component->getAttributeValue(property) * ingredient->getContribution();
 
 					currentvalue += propertyvalue;
-
-					min += component->getAttributeValue(property);
+					min += propertyvalue;
+					max += propertyvalue;
 
 					craftingValues->setMinValue(property, min);
-
-					max += component->getAttributeValue(property);
+					craftingValues->setMaxValue(property, max);
 
 					if (ingredient->getCombineType() == COMPONENTLINEAR) {
 
@@ -1400,11 +1399,13 @@ void CraftingManagerImplementation::createPrototype(Player* player,
 			} else {
 
 				// This is for practiceing
-				createObjectInInventory(player, draftSchematic->getComplexity() * 2, false);
+				//createObjectInInventory(player, draftSchematic->getComplexity() * 2, false);
 
 				// For simulating Factory crates
 				createObjectInInventory(player, draftSchematic->getComplexity() * 2, true);
 				player->getCurrentCraftingTool()->getWorkingTano()->setOptionsBitmask(8192);
+
+				player->getCurrentCraftingTool()->getWorkingTano()->setObjectCount(25);
 
 				// This is an item mask test below - It cycles through the item masks - for testing
 				/*createObjectInInventory(player, 1, true);

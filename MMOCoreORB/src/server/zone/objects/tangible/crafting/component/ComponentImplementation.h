@@ -82,6 +82,7 @@ public:
 	float getAttributeValue(String& attributeName);
 	int getAttributePrecision(String& attributeName);
 	String& getAttributeTitle(String& attributeName);
+	bool getAttributeHidden(String& attributeName);
 
 	void savePrecisionList();
 	void saveTitleList();
