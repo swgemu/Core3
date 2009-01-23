@@ -11,6 +11,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for terminals
 -- ----------------------------
+DROP TABLE IF EXISTS `terminals`;
 CREATE TABLE `terminals` (
   `id` int(11) NOT NULL auto_increment,
   `parentid` bigint(20) NOT NULL default '0',
