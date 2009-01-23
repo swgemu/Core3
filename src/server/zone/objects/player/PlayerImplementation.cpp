@@ -5526,11 +5526,6 @@ void PlayerImplementation::sendActivateCloneRequest() {
 
 	CloningFacility* preDesignatedFacility = getCloningFacility();
 
-	if (preDesignatedFacility == NULL) {
-		cloneMenu->finalize();
-		return;
-	}
-
 	String closestName = "Not Working Yet";
 	String predesignatedName = (preDesignatedFacility != NULL) ? "Not Working Yet" : "None";
 
