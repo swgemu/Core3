@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "Badges.h"
 #include "Badge.h"
 
-class BadgesImplementation : public BadgesServant {
+class BadgesImplementation : public BadgesServant, public ReadWriteLock {
 	uint32 badgeBitmask[5];
 	uint8 badgeTypeCounts[6];
 	uint8 badgeTotal;
@@ -70,6 +70,8 @@ public:
 
 public:
 	void setBadge(int badgeindex) {
+		wlock();
+
 		int bitmaskNumber = badgeindex >> 5;
 
 		uint32 bit = badgeindex % 32;
@@ -80,9 +82,13 @@ public:
 			badgeTypeCounts[Badge::getType(badgeindex)]++;
 			badgeTotal++;
 		}
+
+		unlock();
 	}
 
 	void unsetBadge(int badgeindex) {
+		wlock();
+
 		int bitmaskNumber = badgeindex >> 5;
 
 		uint32 bit = badgeindex % 32;
@@ -93,6 +99,8 @@ public:
 			badgeTypeCounts[Badge::getType(badgeindex)]--;
 			badgeTotal--;
 		}
+
+		unlock();
 	}
 
 
@@ -103,31 +111,69 @@ public:
 		uint32 bit = badgeindex % 32;
 		uint32 value = 1 << bit;
 
-		return badgeBitmask[bitmaskNumber] & value;
+		rlock();
+
+		bool res = badgeBitmask[bitmaskNumber] & value;
+
+		unlock();
+
+		return res;
 	}
 
 	void setBitmask(int index, uint32 bitmask) {
+		wlock();
+
 		badgeBitmask[index] = bitmask;
+
+		unlock();
 	}
 
 	uint32 getBitmask(int index) {
-		return badgeBitmask[index];
+		uint32 res = 0;
+
+		rlock();
+
+		res = badgeBitmask[index];
+
+		unlock();
+
+		return res;
 	}
 
 	void setTypeCount(uint8 index, uint8 value) {
+		wlock();
+
 		badgeTypeCounts[index] = value;
+
+		unlock();
 	}
 
 	uint8 getTypeCount(uint8 type) {
-		return badgeTypeCounts[type];
+		rlock();
+
+		uint8 res = badgeTypeCounts[type];
+
+		unlock();
+
+		return res;
 	}
 
 	uint8 getNumBadges() {
-		return badgeTotal;
+		rlock();
+
+		uint8 res = badgeTotal;
+
+		unlock();
+
+		return res;
 	}
 
 	void setNumBadges(uint8 value) {
+		wlock();
+
 		badgeTotal = value;
+
+		unlock();
 	}
 
 

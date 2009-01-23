@@ -1153,10 +1153,14 @@ void GameCommandHandler::kill(StringTokenizer tokenizer, Player* player) {
 		}
 
 	}
+
+	if (targetPlayer != player)
+		player->unlock();
+
 	if (targetPlayer != NULL) {
 		try {
 			if (targetPlayer != player)
-				targetPlayer->wlock(player);
+				targetPlayer->wlock();
 
 			targetPlayer->explode(2, false);
 			targetPlayer->die();
@@ -1177,7 +1181,7 @@ void GameCommandHandler::kill(StringTokenizer tokenizer, Player* player) {
 	//} else if (creature != NULL  && !creature->isTrainer() && !creature->isRecruiter() && !creature->isMount()) {
 	} else if (creature != NULL && creature->getOptionsBitmask() != 0x108 && creature->getOptionsBitmask() != 0x1080) {
 		try {
-			creature->wlock(player);
+			creature->wlock();
 
 			creature->explode(2, false);
 			uint damage = 100000000;
@@ -1191,6 +1195,9 @@ void GameCommandHandler::kill(StringTokenizer tokenizer, Player* player) {
 		}
 
 	}
+
+	if (targetPlayer != player)
+		player->wlock();
 }
 
 void GameCommandHandler::ecKill(StringTokenizer tokenizer, Player* player) {
@@ -1243,9 +1250,7 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player* player) {
 		zone->lock();
 
 		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-			ManagedReference<SceneObject> obj =
-							(SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(
-									i))->_getStub());
+			ManagedReference<SceneObject> obj = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_getStub());
 
 			if (obj->isPlayer()) {
 				Player* otherPlayer = (Player*) obj.get();
@@ -1256,9 +1261,12 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player* player) {
 								== PlayerImplementation::NORMAL)) {
 					zone->unlock();
 
+					if (otherPlayer != player)
+						player->unlock();
+
 					try {
 						if (otherPlayer != player)
-							otherPlayer->wlock(player);
+							otherPlayer->wlock();
 
 						otherPlayer->explode(2, false);
 						otherPlayer->die();
@@ -1274,6 +1282,9 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player* player) {
 						player->sendSystemMessage("unable to kill player \'"
 								+ otherName + "\'");
 					}
+
+					if (otherPlayer != player)
+						player->wlock();
 
 					zone->lock();
 				}
