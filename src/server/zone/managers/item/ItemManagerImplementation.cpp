@@ -407,12 +407,19 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 		}
 
 	} else if (objecttype & TangibleObjectImplementation::COMPONENT) {
-		item = new Component(objectid, objectcrc, objectname, objecttemp);
+		switch (objecttype) {
+		case TangibleObjectImplementation::ARMORCOMPONENT:
+			item = new ArmorComponent(objectid, objectcrc, objectname, objecttemp);
+			break;
+		default:
+			item = new Component(objectid, objectcrc, objectname, objecttemp);
+			break;
+		}
 		if (makeStats) {
-			item->setAttributes(lootAttributes );
+			item->setAttributes(lootAttributes);
 			item->parseItemAttributes();
 		}
-	} else if (objecttype & TangibleObjectImplementation::DEED) {
+	}  else if (objecttype & TangibleObjectImplementation::DEED) {
 		switch (objecttype) {
 			case TangibleObjectImplementation::INSTALLATIONDEED:
 				switch(DeedObjectImplementation::getSubType(objectcrc)){

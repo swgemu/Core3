@@ -44,3 +44,5 @@
 -- Armorsmith
 
 RunDraftSchematicFile("objects/draftschematics/armorsmith/masterArmorsmith/compositeArmorChestPlate.lua")
+RunDraftSchematicFile("objects/draftschematics/armorsmith/masterArmorsmith/advancedCompositeArmorSegment.lua")
+RunDraftSchematicFile("objects/draftschematics/armorsmith/layersIBasicEnhancements/energyProtectionArmorLayer.lua")

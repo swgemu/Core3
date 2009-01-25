@@ -142,7 +142,7 @@ public:
 		for(int i = 0; i < experimentalValuesMap.size(); ++i) {
 			subclasses = experimentalValuesMap.get(i);
 
-			if(!subclasses->isHidden())
+			if(!subclasses->isClassHidden())
 				tempSize++;
 		}
 		return tempSize;
@@ -177,7 +177,7 @@ public:
 
 			exptitle = subClasses->getClassTitle();
 
-			if(!subClasses->isHidden()) {
+			if(!subClasses->isClassHidden()) {
 				if (title == exptitle)
 					return counter;
 				counter++;

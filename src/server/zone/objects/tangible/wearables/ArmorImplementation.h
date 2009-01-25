@@ -113,11 +113,13 @@ private:
 
 	float specialBase;
 
+	int armorStyle;
+
 public:
 
-	static const int LIGHT = 0x10;
-	static const int MEDIUM = 0x20;
-	static const int HEAVY = 0x30;
+	static const int LIGHT = 0x01;
+	static const int MEDIUM = 0x02;
+	static const int HEAVY = 0x03;
 
 	static const int CHEST = 1;
 	static const int HAND = 2;
@@ -129,6 +131,41 @@ public:
 	static const int FOOT = 8;
 	static const int HEAD = 9;
 	static const int BELT = 10;
+
+	static const int COMPOSITE = 1;
+	static const int ASSAULTTROOPER = 2;
+	static const int BONE = 3;
+	static const int BOUNTYHUNTERLOOTED = 4;
+	static const int BOUNTYHUNTER = 5;
+	static const int CHITIN= 6;
+	static const int CLONETROOPERIMPERIAL = 7;
+	static const int CLONETROOPERNEUTRAL = 8;
+	static const int CLONETROOPERREBEL = 9;
+	static const int ITHORIANDEFENDER = 10;
+	static const int ITHORIANGUARDIAN = 11;
+	static const int ITHORIANSENTINEL = 12;
+	static const int WOOKIEBLACKMOUNTAIN = 13;
+	static const int WOOKIECERIMONIAL = 14;
+	static const int WOOKIEHUNTING = 15;
+	static const int MANDALORIANIMPERIAL = 16;
+	static const int MANDALORIAN = 17;
+	static const int MANDALORIANREBEL = 18;
+	static const int MARAUDER1 = 19;
+	static const int MARAUDER2 = 20;
+	static const int MARAUDER3 = 21;
+	static const int REBELMARINE = 22;
+	static const int SCOUTTROOPER = 23;
+	static const int NIGHTSISTER = 24;
+	static const int PADDED = 25;
+	static const int REBELASSAULT = 26;
+	static const int REBELBATTLE = 27;
+	static const int RIS = 28;
+	static const int SINGINGMOUNTAIN = 29;
+	static const int STORMTROOPER = 30;
+	static const int TANTEL = 31;
+	static const int UBESE = 32;
+	static const int MABARI = 33;
+
 
 public:
 	ArmorImplementation(uint64 objid, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false);
@@ -144,15 +181,16 @@ public:
 
 	void updateCraftingValues(DraftSchematic* draftSchematic);
 	void generateSockets(DraftSchematic* draftSchematic);
-	void setCraftingKinetic(DraftSchematic* draftSchematic);
-	void setCraftingEnergy(DraftSchematic* draftSchematic);
-	void setCraftingElectrical(DraftSchematic* draftSchematic);
-	void setCraftingStun(DraftSchematic* draftSchematic);
-	void setCraftingBlast(DraftSchematic* draftSchematic);
-	void setCraftingHeat(DraftSchematic* draftSchematic);
-	void setCraftingCold(DraftSchematic* draftSchematic);
-	void setCraftingAcid(DraftSchematic* draftSchematic);
-	void setCraftingRestrain(DraftSchematic* draftSchematic);
+	void addSpecialProtectionBasedOnType(DraftSchematic* draftSchematic);
+	void setCraftingKinetic(DraftSchematic* draftSchematic, float base);
+	void setCraftingEnergy(DraftSchematic* draftSchematic, float base);
+	void setCraftingElectrical(DraftSchematic* draftSchematic, float base);
+	void setCraftingStun(DraftSchematic* draftSchematic, float base);
+	void setCraftingBlast(DraftSchematic* draftSchematic, float base);
+	void setCraftingHeat(DraftSchematic* draftSchematic, float base);
+	void setCraftingCold(DraftSchematic* draftSchematic, float base);
+	void setCraftingAcid(DraftSchematic* draftSchematic, float base);
+	void setCraftingRestrain(DraftSchematic* draftSchematic, float base);
 
 	void decay(float decayRate);
 
@@ -624,8 +662,12 @@ public:
 		return socket3Value;
 	}
 
-	inline bool isComposite() {
-		switch(objectCRC) {
+	inline int getArmorStyle() {
+		return armorStyle;
+	}
+
+	inline void setArmorStyle() {
+		switch (objectCRC) {
 		case 0x9AF51EAA:
 		case 0x7B476F26:
 		case 0x13A4DA11:
@@ -635,12 +677,376 @@ public:
 		case 0x2C35FFA2:
 		case 0xC294C432:
 		case 0xDB91E9DB:
-			return true;
-		default:
-			return false;
+			armorStyle = COMPOSITE;
+			setElectricityIsSpecial(true);
+			break;
+		case 0xEADBF3ED:
+		case 0xF14843C9:
+		case 0xDDFD80F6:
+		case 0xAD28C565:
+		case 0x75EECEBE:
+		case 0x053B8B2D:
+		case 0x5C1B12E5:
+		case 0xFACA13A1:
+		case 0x48C9992B:
+			armorStyle = ASSAULTTROOPER;
+			break;
+		case 0x46BE7E7F:
+		case 0xD3C024EE:
+		case 0x7C53DF9C:
+		case 0xC0F6A8B3:
+		case 0x0C869A0F:
+		case 0x2E5FEF07:
+		case 0x5E8AAA94:
+		case 0xF07E9F77:
+		case 0xA17B3218:
+		case 0x2FD71E30:
+			armorStyle = BONE;
+			setEnergyIsSpecial(true);
+			break;
+		case 0x30DB6875:
+		case 0x4FD29AA3:
+		case 0xE37785C9:
+		case 0x93A2C05A:
+		case 0x17573C24:
+		case 0x678279B7:
+		case 0x861B987D:
+		case 0x9873E13B:
+		case 0x219DF586:
+			armorStyle = BOUNTYHUNTERLOOTED;
+			break;
+		case 0x6B80CA32:
+		case 0x4DD537AA:
+		case 0xEB09A2AF:
+		case 0x9BDCE73C:
+		case 0x4F78B79C:
+		case 0x3FADF20F:
+		case 0xDD402B3A:
+		case 0xC05C6A83:
+		case 0xB233F039:
+			armorStyle = BOUNTYHUNTER;
+			break;
+		case 0x286C8D19:
+		case 0x232BEF27:
+		case 0x3E8BDF01:
+		case 0x4E5E9A92:
+		case 0xCB5B391E:
+		case 0xBB8E7C8D:
+		case 0x9EAC6C11:
+		case 0x447FE401:
+		case 0x74EA10A3:
+		case 0x92F3A5A7: // Acklay Variant
+		case 0x2151257A:
+		case 0x33173AA9:
+		case 0x43C27F3A:
+		case 0x667317CD:
+		case 0x16A6525E:
+		case 0x243344AF:
+		case 0xE957CAD2:
+		case 0x85DDF66B:
+			armorStyle = CHITIN;
+			setKineticIsSpecial(true);
+			break;
+		case 0x6D79791D:
+		case 0xE5305A03:
+		case 0x083CC01D:
+		case 0x78E9858E:
+		case 0xB2F0053C:
+		case 0xC22540AF:
+		case 0xDBB99815:
+		case 0x3DD4D823:
+		case 0xDA62A4A1:
+			armorStyle = CLONETROOPERIMPERIAL;
+			break;
+		case 0x7F0A7908:
+		case 0xDF0DA91A:
+		case 0x3EAF3505:
+		case 0x4E7A7090:
+		case 0xEFB13B1E:
+		case 0x9F647E8D:
+		case 0xC9CA9800:
+		case 0x6095E601:
+		case 0x6FDA2C47:
+			armorStyle = CLONETROOPERNEUTRAL;
+			break;
+		case 0x7795247C:
+		case 0x7D30AB00:
+		case 0x87FAACBB:
+		case 0xF72FE928:
+		case 0x25DFFE6F:
+		case 0x550ABBFC:
+		case 0xC155C574:
+		case 0xAAFB2370:
+		case 0xD1530337:
+			armorStyle = CLONETROOPERREBEL;
+			break;
+		case 0x353894F0:
+		case 0x7BB4F363:
+		case 0x174E6BA2:
+		case 0x679B2E31:
+		case 0xB405DCF1:
+		case 0xC4D09962:
+		case 0x83F875F8:
+		case 0x3B2101EE:
+		case 0xA4E6DFF1:
+			armorStyle = ITHORIANDEFENDER;
+			setKineticIsSpecial(true);
+			break;
+		case 0x83C052A4:
+		case 0x5D06B751:
+		case 0x4830FF6E:
+		case 0x38E5BAFD:
+		case 0x8A49064B:
+		case 0xFA9C43D8:
+		case 0x3500B3AC:
+		case 0x056DDB54:
+		case 0x7B79F3C1:
+			armorStyle = ITHORIANGUARDIAN;
+			setKineticIsSpecial(true);
+			break;
+		case 0x24E0753F:
+		case 0x169D55D8:
+		case 0x877F6265:
+		case 0xF7AA27F6:
+		case 0xA011206F:
+		case 0xD0C465FC:
+		case 0x92209437:
+		case 0x2F35FD70:
+		case 0xECE5898D:
+			armorStyle = ITHORIANSENTINEL;
+			setKineticIsSpecial(true);
+			break;
+		case 0x9F9C111B:
+		case 0xE55C868E:
+		case 0x8654BD2A:
+		case 0xF681F8B9:
+		case 0x8F0F72D8:
+		case 0xFFDA374B:
+		case 0x002BAFC7:
+			armorStyle = WOOKIEBLACKMOUNTAIN;
+			setKineticIsSpecial(true);
+			break;
+		case 0x8BA52D06:
+		case 0x09B81A0F:
+		case 0x419E1070:
+		case 0x314B55E3:
+		case 0x066FE844:
+		case 0x76BAADD7:
+		case 0x894B355B:
+			armorStyle = WOOKIECERIMONIAL;
+			setKineticIsSpecial(true);
+			break;
+		case 0xE11CC6F9:
+		case 0x92DCF514:
+		case 0x82B60ABA:
+		case 0xF2634F29:
+		case 0x7EBC9404:
+		case 0x0E69D197:
+		case 0xF198491B:
+			armorStyle = WOOKIEHUNTING;
+			setKineticIsSpecial(true);
+			break;
+		case 0x152CDE9B:
+		case 0x1129C977:
+		case 0x9B27B642:
+		case 0xEBF2F3D1:
+		case 0x81D8477B:
+		case 0xF10D02E8:
+		case 0xA3EC3F93:
+		case 0x0EFC9A64:
+			armorStyle = MANDALORIANIMPERIAL;
+			setBlastIsSpecial(true);
+			break;
+		case 0x37A4683E:
+		case 0x24525C1C:
+		case 0x82309ECC:
+		case 0xF2E5DB5F:
+		case 0xF828E204:
+		case 0x88FDA797:
+		case 0x81648936:
+		case 0x770C3F1B:
+		case 0xA1D10ED0:
+			armorStyle = MANDALORIAN;
+			setBlastIsSpecial(true);
+			break;
+		case 0x30E02815:
+		case 0xDC7CA03F:
+		case 0xD837E5C9:
+		case 0xA8E2A05A:
+		case 0xA84E9AD5:
+		case 0xD89BDF46:
+		case 0x8620C91D:
+		case 0x276A47CA:
+		case 0x836563AB:
+			armorStyle = MANDALORIANREBEL;
+			setBlastIsSpecial(true);
+			break;
+		case 0x2658E2C1:
+		case 0xAE077DF7:
+		case 0x366AA70B:
+		case 0x46BFE298:
+		case 0x0C2BDEA6:
+		case 0x7CFE9B35:
+		case 0x909803C9:
+		case 0x830F03B9:
+		case 0xDE3A814C:
+			armorStyle = MARAUDER1;
+			break;
+		case 0x2E43C7CB:
+		case 0x96722E10:
+		case 0x0B4740B3:
+		case 0x7B920520:
+		case 0xC4338DE5:
+		case 0xB4E6C876:
+		case 0x988326C3:
+		case 0x4B1750FA:
+		case 0xD00E14C9:
+			armorStyle = MARAUDER2;
+			break;
+		case 0x3B0E1963:
+		case 0x29B524CD:
+		case 0x81A11F4D:
+		case 0xE3E316B6:
+		case 0x93365325:
+		case 0x83C44324:
+		case 0xF31106B7:
+		case 0x9F75C5C5:
+		case 0x0CE09E3B:
+		case 0x29A29327:
+			armorStyle = MARAUDER3;
+			break;
+		case 0x1890B6F4:
+		case 0x98A41A65:
+		case 0x16825F91:
+		case 0x66571A02:
+		case 0x7CF0F246:
+		case 0x0C25B7D5:
+		case 0xAE5057FC:
+		case 0xF3D42F59:
+		case 0x0A06D625:
+		case 0xCC2DF763:
+			armorStyle = REBELMARINE;
+			break;
+		case 0xDFD90681:
+		case 0xB0CD9C67:
+		case 0x1CFFEA0D:
+		case 0x6C2AAF9E:
+		case 0x2ECFB890:
+		case 0x5E1AFD03:
+		case 0x6919E789:
+		case 0xA1EB65BF:
+		case 0x1D93C91E:
+			armorStyle = SCOUTTROOPER;
+			break;
+		case 0x2E943BD2:
+			armorStyle = NIGHTSISTER;
+			break;
+		case 0x1179DA8E:
+		case 0x374CE8CA:
+		case 0xDD27D59E:
+		case 0xADF2900D:
+		case 0xAFBBA6BE:
+		case 0xDF6EE32D:
+		case 0xA7B93B86:
+		case 0x209F7BA1:
+		case 0x147FA032:
+			armorStyle = PADDED;
+			setBlastIsSpecial(true);
+			break;
+		case 0xF11ED8BD:
+		case 0x59A76FA0:
+		case 0x7F8CC0E7:
+		case 0x0F598574:
+		case 0xFC03B2DE:
+		case 0x8CD6F64D:
+		case 0x47DE39B5:
+		case 0x73276FC1:
+		case 0x29262900:
+			armorStyle = REBELASSAULT;
+			break;
+		case 0x895B64E3:
+		case 0x125FE423:
+		case 0xFC8C6EB8:
+		case 0x8C592B2B:
+		case 0x98E22BE9:
+		case 0xE8376E7A:
+		case 0x2F9B85EB:
+		case 0x17C6F6F6:
+		case 0xE85B36EA:
+			armorStyle = REBELBATTLE;
+			break;
+
+		case 0x2C06918C:
+		case 0x6C18B779:
+		case 0x47933CDD:
+		case 0x3746794E:
+		case 0x11C508F6:
+		case 0x61104D65:
+		case 0x9AC67084:
+		case 0x9EE1D5E9:
+		case 0x43240F82:
+			armorStyle = RIS;
+			setKineticIsSpecial(true);
+			break;
+		case 0xF83A5E23:
+		case 0x88EF1BB0:
+		case 0x3DD6C635:
+		case 0x4D0383A6:
+			armorStyle = SINGINGMOUNTAIN;
+			break;
+		case 0xC499637D:
+		case 0x0F22790E:
+		case 0x3BC0061C:
+		case 0x4B15438F:
+		case 0x97474F75:
+		case 0xE7920AE6:
+		case 0x72598275:
+		case 0x1863926A:
+		case 0x7833E9D6:
+		case 0x347F64A4:
+		case 0x42ED86AA:
+		case 0xB46EC87C:
+			armorStyle = STORMTROOPER;
+			break;
+		case 0x56EE9000:
+		case 0x115816CF:
+		case 0x60AC7BEC:
+		case 0x10793E7F:
+		case 0xA8E6DF13:
+		case 0xD8339A80:
+		case 0xE02E7108:
+		case 0x27C2020C:
+		case 0x36A996F5:
+		case 0x3E8FDEDE:
+		case 0x67A5B2AE:
+		case 0x01D62C68:
+			armorStyle = TANTEL;
+			setEnergyIsSpecial(true);
+			break;
+		case 0xE9F5A650:
+		case 0xDC4ECF46:
+		case 0xF6158787:
+		case 0x86C0C214:
+		case 0x5F354758:
+		case 0x3EA9A48D:
+		case 0x47F2F8C3:
+		case 0x7240A9E8:
+		case 0xCB32836B:
+			armorStyle = UBESE;
+			setKineticIsSpecial(true);
+			break;
+		case 0x1EF5A158:
+		case 0xC4EA554A:
+		case 0xA8354050:
+		case 0x1E5FA69F:
+		case 0x8A927B5C:
+		case 0x9793D045:
+			armorStyle = MABARI;
+			setHeatIsSpecial(true);
+			setBlastIsSpecial(true);
+			break;
 		}
 	}
-
 
 	//Event Handlers
 	void onBroken();

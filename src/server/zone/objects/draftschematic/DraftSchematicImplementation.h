@@ -278,6 +278,10 @@ public:
 		complexity++;
 	}
 
+	inline void decreaseComplexity() {
+		complexity--;
+	}
+
 	inline void setFinished() {
 		finished = true;
 	}

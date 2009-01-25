@@ -69,16 +69,17 @@ clothingAndArmorCraftingTool = Object:new {
    numberExperimentalProperties = "1, 1, 1, 1",
    experimentalProperties = "XX, XX, XX, CD",
    experimentalWeights = "1, 1, 1, 1",
-   experimentalGroupTitles = "null, null, null, expEffectiveness",
+   experimentalGroupTitles = "null, null, null, exp_effectiveness",
 
    experimentalSubGroupTitles = "null, null, hitpoints, usemodifier",
    experimentalMin = "0, 0, 1000, -15",
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32769:objectcrc=753735496:objecttemp=clothing_tool:templatetype=crafting:",
+   tanoAttributes = "objecttype=32769:objectcrc=753735496:objecttemp=clothing_tool_name:templatetype=crafting:itemmask=65535:",
    customizationOptions = "",
-   customizationDefaults = ""
+   customizationDefaults = "",
+   customizationSkill = "clothing_customization"
 
 }
 

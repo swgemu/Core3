@@ -63,3 +63,6 @@ end
 
 RunDraftSchematicFile("objects/draftschematics/armorsmith/main.lua")
 RunDraftSchematicFile("objects/draftschematics/artisan/main.lua")
+RunDraftSchematicFile("objects/draftschematics/ranger/main.lua")
+RunDraftSchematicFile("objects/draftschematics/scout/main.lua")
+RunDraftSchematicFile("objects/draftschematics/tailor/main.lua")

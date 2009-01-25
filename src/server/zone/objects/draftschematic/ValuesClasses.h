@@ -212,10 +212,11 @@ public:
 
 		valueList.put(subtitle, values);
 
-		if(classTitle == "null" || classTitle == "" || (min == 0 && max == 0) || (name == ""))
+		if(classTitle == "null" || classTitle == "" || (name == "")) {
 			hidden = true;
+		}
 		else
-			hidden == false;
+			hidden = false;
 	}
 
 	~Subclasses(){
@@ -227,11 +228,12 @@ public:
 
 	void addSubtitle(const String& s, const float min, const float max, const int precision, const bool filler) {
 
-		if (!valueList.contains(s)) {
-			Values* values = new Values(s, min, max, precision, filler);
-
-			valueList.put(s, values);
+		if (valueList.contains(s)) {
+			valueList.drop(s);
 		}
+
+		Values* values = new Values(s, min, max, precision, filler);
+		valueList.put(s, values);
 	}
 
 	inline Values* get(const int i){
@@ -246,7 +248,7 @@ public:
 		return valueList.size();
 	}
 
-	inline bool isHidden(){
+	inline bool isClassHidden(){
 		return hidden;
 	}
 
@@ -265,9 +267,9 @@ public:
 		return values->getValue();
 	}
 
-	inline String& getName() {
-		return name;
-	}
+	//inline String& getName() {
+	//	return name;
+	//}
 
 	inline String& getClassTitle() {
 		return classTitle;
@@ -296,7 +298,14 @@ public:
 
 			tempValues = valueList.get(i);
 
-			System::out << "Property Name: " << tempValues->getName() << endl;
+			System::out << "Property Name: " << tempValues->getName();
+
+			if(tempValues->isFiller()) {
+				System::out << " HIDDEN" << endl;
+			} else {
+				System::out << endl;
+			}
+
 			System::out << "Max % " << tempValues->getMaxPercentage() << endl;
 			System::out << "Current % " << tempValues->getPercentage() << endl;
 			System::out << "Current Value " << tempValues->getValue() << endl;

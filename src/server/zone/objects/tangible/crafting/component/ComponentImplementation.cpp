@@ -42,17 +42,17 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "../../../../packets.h"
-
-#include "../../../../objects.h"
+#include "../../../../packets/object/ObjectMenuResponse.h"
+#include "../../../../objects/draftschematic/DraftSchematic.h"
+#include "../../../../objects/draftschematic/DraftSchematicValues.h"
 
 #include "Component.h"
 #include "ComponentImplementation.h"
 
 #include "../../../../ZoneClientSession.h"
 
-ComponentImplementation::ComponentImplementation(uint64 object_id, uint32 tempCRC,
-		const UnicodeString& n, const String& tempn) : ComponentServant(object_id, tempCRC, n, tempn,
+ComponentImplementation::ComponentImplementation(uint64 objectid, uint32 tempCRC,
+		const UnicodeString& n, const String& tempn) : ComponentServant(objectid, tempCRC, n, tempn,
 				COMPONENT) {
 	objectCRC = tempCRC;
 
@@ -138,14 +138,6 @@ ComponentImplementation::~ComponentImplementation(){
 	titleMap.removeAll();
 	hiddenMap.removeAll();
 	keyList.removeAll();
-}
-
-Component* ComponentImplementation::cloneComponent(Component* component, uint64 oid) {
-	if (component != NULL) {
-		return new Component(component, oid);
-	} else {
-		return NULL;
-	}
 }
 
 void ComponentImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
@@ -301,7 +293,6 @@ void ComponentImplementation::updateCraftingValues(DraftSchematic* draftSchemati
 	savePrecisionList();
 	saveTitleList();
 	saveHiddenList();
-	setUpdated(true);
 }
 
 void ComponentImplementation::savePrecisionList(){
@@ -419,7 +410,7 @@ void ComponentImplementation::parseHiddenString() {
 			String key = attrPair.subString(0, index3);
 			String value = attrPair.subString(index3 + 1, attrPair.length());
 
-			hiddenMap.put(key, value);
+			hiddenMap.put(key, Integer::valueOf(value));
 		}
 
 		index1 = index2 + 1;
