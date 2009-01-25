@@ -2039,7 +2039,6 @@ void PlayerImplementation::queueAction(Player* player, uint64 target, uint32 act
 }
 
 void PlayerImplementation::doInstantAction(uint64 target, uint32 actionCRC, uint32 actionCntr, const String& amod) {
-
 	CombatManager* combatManager = server->getCombatManager();
 	CommandQueueAction* action = new CommandQueueAction(_this, target, actionCRC, actionCntr, amod);
 

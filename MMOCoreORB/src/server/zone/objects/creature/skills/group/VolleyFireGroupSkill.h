@@ -71,6 +71,7 @@ public:
 		if(creature->isPlayer()) {
 			Player* squadLeader = (Player*)creature;
 			GroupObject* group = squadLeader->getGroupObject();
+
 			CombatManager* cm = squadLeader->getZoneProcessServer()->getCombatManager();
 
 			group->wlock();
@@ -82,14 +83,16 @@ public:
 
 				if(groupMember->getZoneID() == squadLeaderZoneID) {
 					if(groupMember->isPlayer()) {
-						Player* player = (Player*)groupMember;
+						Player* player = (Player*) groupMember;
+
 						player->doInstantAction(target->getObjectID(), defaultAttackActionCRC, 0, modifier);
+
 						player->sendSystemMessage("cbt_spam", combatSpam);
+
 						player->sendCombatSpam(groupMember, NULL, 0, combatSpam, false);
 					}
 				}
 			}
-
 
 			group->unlock();
 
