@@ -55,18 +55,18 @@ geonosianAlertDroideka = Creature:new {
 
 	healthMax = 15000,
 	healthMin = 13000,
-	strength = 5000,
-	constitution = 5000,
+	strength = 3000,
+	constitution = 3000,
 
 	actionMax = 15000,
 	actionMin = 13000,
-	quickness = 5000,
-	stamina = 5000,
+	quickness = 3000,
+	stamina = 3000,
 
 	mindMax = 15000,
 	mindMin = 13000,
-	focus = 5000,
-	willpower = 5000,
+	focus = 3000,
+	willpower = 3000,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -101,11 +101,11 @@ geonosianAlertDroideka = Creature:new {
 	weaponTemp = "droid_droideka_ranged", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 595,
-	weaponMaxDamage = 600,
+	weaponMinDamage = 500,
+	weaponMaxDamage = 800,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx

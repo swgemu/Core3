@@ -59,18 +59,18 @@ tuskenWarMaster = Creature:new {
 
 	healthMax = 13000,
 	healthMin = 10000,
-	strength = 500,
-	constitution = 500,
+	strength = 2000,
+	constitution = 2000,
 
 	actionMax = 13000,
 	actionMin = 10000,
-	quickness = 500,
-	stamina = 500,
+	quickness = 2000,
+	stamina = 2000,
 
 	mindMax = 13000,
 	mindMin = 10000,
-	focus = 500,
-	willpower = 500,
+	focus = 2000,
+	willpower = 2000,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -112,7 +112,7 @@ tuskenWarMaster = Creature:new {
 	weaponMaxDamage = 530,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -127,7 +127,7 @@ tuskenWarMaster = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,1,11,15,19,23,24,33,99", -- Group it belongs to for loot
+	lootGroup = "0,1,11,15,19,23,24,99", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

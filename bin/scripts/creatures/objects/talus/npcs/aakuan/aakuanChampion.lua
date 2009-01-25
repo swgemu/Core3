@@ -1,4 +1,4 @@
---Copyright (C) 2008 <SWGEmu>
+--Copyright (C) 2009 <SWGEmu>
 
 
 --This File is part of Core3.
@@ -54,22 +54,22 @@ aakuanChampion = Creature:new {
 	socialGroup = "aakuans",
 	level = 30,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	healthMax = 10200,
-	healthMin = 8400,
-	strength = 0,
-	constitution = 0,
+	healthMax = 11200,
+	healthMin = 9400,
+	strength = 2000,
+	constitution = 2000,
 
-	actionMax = 10200,
-	actionMin = 8400,
-	quickness = 0,
-	stamina = 0,
+	actionMax = 11200,
+	actionMin = 9400,
+	quickness = 2000,
+	stamina = 2000,
 
-	mindMax = 10200,
-	mindMin = 8400,
-	focus = 0,
-	willpower = 0,
+	mindMax = 11200,
+	mindMin = 9400,
+	focus = 2000,
+	willpower = 2000,
 
 	height = 1, -- Size of creature
 	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -83,7 +83,7 @@ aakuanChampion = Creature:new {
 	acid = 0,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 300,
 
 	healer = 0,
 
@@ -91,7 +91,7 @@ aakuanChampion = Creature:new {
 	herd = 0,
 	stalker = 0,
 	killer = 1,
-	aggressive = 0,
+	aggressive = 1,
 	invincible = 0,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
@@ -100,7 +100,7 @@ aakuanChampion = Creature:new {
 	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
 	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
+	weaponEquipped = 1,
 	weaponMinDamage = 290,
 	weaponMaxDamage = 300,
 	weaponAttackSpeed = 2,
@@ -135,8 +135,8 @@ aakuanChampion = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "aakuanAttack1" },
-	respawnTimer = 180,
+	skills = { "aakuanAttack1", "aakuanAttack2", "aakuanAttack3", "aakuanAttack4", "aakuanAttack5" },
+	respawnTimer = 1200,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

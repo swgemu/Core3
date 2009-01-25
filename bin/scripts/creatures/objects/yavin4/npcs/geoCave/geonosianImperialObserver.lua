@@ -80,7 +80,7 @@ geonosianImperialObserver = Creature:new {
 	acid = 5,
 	lightsaber = 0,
 
-	accuracy = 350,
+	accuracy = 300,
 
 	healer = 0,
 
@@ -104,11 +104,11 @@ geonosianImperialObserver = Creature:new {
 	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 415,
-	weaponMaxDamage = 540,
+	weaponMinDamage = 315,
+	weaponMaxDamage = 600,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'

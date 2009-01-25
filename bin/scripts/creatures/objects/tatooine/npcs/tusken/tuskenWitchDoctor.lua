@@ -84,7 +84,7 @@ tuskenWitchDoctor = Creature:new {
 	acid = 45,
 	lightsaber = 0,
 
-	accuracy = 380,
+	accuracy = 340,
 
 	healer = 0,
 
@@ -111,7 +111,7 @@ tuskenWitchDoctor = Creature:new {
 	weaponMaxDamage = 2000,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'

@@ -80,7 +80,7 @@ geonosianCrazed = Creature:new {
 	acid = -1,
 	lightsaber = 0,
 
-	accuracy = 320,
+	accuracy = 300,
 
 	healer = 0,
 
@@ -101,11 +101,11 @@ geonosianCrazed = Creature:new {
 	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 480,
-	weaponMaxDamage = 670,
+	weaponMinDamage = 300,
+	weaponMaxDamage = 700,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'

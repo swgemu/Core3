@@ -82,7 +82,7 @@ geonosianFireBreathingSpider = Creature:new {
       acid = 10,
       lightsaber = 0,
 
-      accuracy = 400,
+      accuracy = 350,
 
       healer = 0,
 
@@ -93,10 +93,7 @@ geonosianFireBreathingSpider = Creature:new {
       aggressive = 1,
       invincible = 0, 
 
-	  
-
       meleeDefense = 1,  
-	  
       rangedDefense = 1,
 
       attackCreatureOnSight = "", -- Enter socialGroups 
@@ -106,7 +103,7 @@ geonosianFireBreathingSpider = Creature:new {
       weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 250,
+      weaponMinDamage = 450,
       weaponMaxDamage = 750,
       weaponAttackSpeed = 1,
       weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc

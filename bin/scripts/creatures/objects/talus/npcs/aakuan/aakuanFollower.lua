@@ -1,4 +1,4 @@
---Copyright (C) 2008 <SWGEmu>
+--Copyright (C) 2009 <SWGEmu>
 
 
 --This File is part of Core3.
@@ -58,18 +58,18 @@ aakuanFollower = Creature:new {
 
 	healthMax = 1200,
 	healthMin = 1000,
-	strength = 0,
-	constitution = 0,
+	strength = 200,
+	constitution = 200,
 
 	actionMax = 1200,
 	actionMin = 1000,
-	quickness = 0,
-	stamina = 0,
+	quickness = 200,
+	stamina = 200,
 
 	mindMax = 1200,
 	mindMin = 1000,
-	focus = 0,
-	willpower = 0,
+	focus = 200,
+	willpower = 200,
 
 	height = 1, -- Size of creature
 	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -83,7 +83,7 @@ aakuanFollower = Creature:new {
 	acid = 0,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 200,
 
 	healer = 0,
 
@@ -100,7 +100,7 @@ aakuanFollower = Creature:new {
 	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
 	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
+	weaponEquipped = 1,
 	weaponMinDamage = 120,
 	weaponMaxDamage = 130,
 	weaponAttackSpeed = 2,
@@ -135,8 +135,8 @@ aakuanFollower = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "aakuanAttack1" },
-	respawnTimer = 180,
+	skills = { "aakuanAttack2" },
+	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

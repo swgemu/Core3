@@ -85,7 +85,7 @@ tuskenObserver = Creature:new {
 	acid = 45,
 	lightsaber = 0,
 
-	accuracy = 380,
+	accuracy = 350,
 
 	healer = 0,
 
@@ -112,7 +112,7 @@ tuskenObserver = Creature:new {
 	weaponMaxDamage = 2250,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'

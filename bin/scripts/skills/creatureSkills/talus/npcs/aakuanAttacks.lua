@@ -44,15 +44,49 @@ aakuanAttack1 = {
 	attackname = "aakuanAttack1",
 	animation = "creature_attack_light",
 	
-	requiredWeaponType = NONE,
+	requiredWeaponType = MELEE,
 
-	range = 10,
+	range = 5,
 
 	damageRatio = 1.2,
 
-	speedRatio = 4,
+	speedRatio = 1.6,
 
-	areaRange = 0,
+	areaRange = 5,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 20,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(aakuanAttack1)
+
+---------------------------------------------------------------------------------------
+
+aakuanAttack2 = {
+	attackname = "aakuanAttack2",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = MELEE,
+
+	range = 5,
+
+	damageRatio = 1.2,
+
+	speedRatio = 2.3,
+
+	areaRange = 5,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -70,7 +104,106 @@ aakuanAttack1 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(aakuanAttack1)
+AddRandomPoolAttackTargetSkill(aakuanAttack2)
 
 ---------------------------------------------------------------------------------------
 
+aakuanAttack3 = {
+	attackname = "aakuanAttack3",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = MELEE,
+
+	range = 5,
+
+	damageRatio = 1.2,
+
+	speedRatio = 2.7,
+
+	areaRange = 5,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 33,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(aakuanAttack3)
+
+-----------------------------------------------------------------------------------------
+
+aakuanAttack4 = {
+	attackname = "aakuanAttack4",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = MELEE,
+
+	range = 5,
+
+	damageRatio = 1.2,
+
+	speedRatio = 1.9,
+
+	areaRange = 5,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(aakuanAttack4)
+
+-------------------------------------------------------------------------------------------
+
+aakuanAttack5 = {
+	attackname = "aakuanAttack5",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = MELEE,
+
+	range = 5,
+
+	damageRatio = 1.2,
+
+	speedRatio = 2.3,
+
+	areaRange = 5,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 50,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(aakuanAttack5)

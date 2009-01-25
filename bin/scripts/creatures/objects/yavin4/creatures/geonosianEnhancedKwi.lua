@@ -80,7 +80,7 @@ geonosianEnhancedKwi = Creature:new {
       acid = 5,
       lightsaber = 0,
 
-      accuracy = 375,
+      accuracy = 330,
 
       healer = 0,
 
@@ -103,8 +103,8 @@ geonosianEnhancedKwi = Creature:new {
       weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
       weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 690,
+      weaponEquipped = 1,
+      weaponMinDamage = 600,
       weaponMaxDamage = 1090,
       weaponAttackSpeed = 2,
       weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
