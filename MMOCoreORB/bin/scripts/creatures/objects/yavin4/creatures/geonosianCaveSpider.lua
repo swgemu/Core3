@@ -82,7 +82,7 @@ geonosianCaveSpider = Creature:new {
       acid = -1,
       lightsaber = 0,
 
-      accuracy = 350,
+      accuracy = 250,
 
       healer = 0,
 

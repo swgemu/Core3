@@ -81,7 +81,7 @@ geonosianTechAssistant = Creature:new {
 	acid = -1,
 	lightsaber = 0,
 
-	accuracy = 350,
+	accuracy = 250,
 
 	healer = 0,
 
@@ -102,11 +102,11 @@ geonosianTechAssistant = Creature:new {
 	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 385,
-	weaponMaxDamage = 480,
+	weaponMinDamage = 250,
+	weaponMaxDamage = 380,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'

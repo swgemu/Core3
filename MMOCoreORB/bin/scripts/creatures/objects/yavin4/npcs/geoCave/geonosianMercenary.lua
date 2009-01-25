@@ -80,7 +80,7 @@ geonosianMercenary = Creature:new {
 	acid = 20,
 	lightsaber = 0,
 
-	accuracy = 350,
+	accuracy = 320,
 
 	healer = 0,
 
@@ -101,11 +101,11 @@ geonosianMercenary = Creature:new {
 	weaponTemp = "knife_survival", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 470,
-	weaponMaxDamage = 650,
+	weaponMinDamage = 330,
+	weaponMaxDamage = 775,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'

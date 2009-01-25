@@ -41,6 +41,7 @@
 --which carries forward this exception.
 
 --Planetary Spawns
+RunCreatureFile("objects/yavin4/creatures/acklay.lua")
 RunCreatureFile("objects/yavin4/creatures/angler.lua")
 RunCreatureFile("objects/yavin4/creatures/anglerBone.lua")
 RunCreatureFile("objects/yavin4/creatures/anglerHatchling.lua")
@@ -62,9 +63,11 @@ RunCreatureFile("objects/yavin4/creatures/gackleBatHunter.lua")
 RunCreatureFile("objects/yavin4/creatures/gackleBatMyrmidonLord.lua")
 RunCreatureFile("objects/yavin4/creatures/gackleBatVampiric.lua")
 RunCreatureFile("objects/yavin4/creatures/geonosianEnhancedKwi.lua")
-RunCreatureFile("objects/yavin4/creatures/geonosianGapingSpiderFire.lua")
-RunCreatureFile("objects/yavin4/creatures/geonosianKliknikForceStrong.lua")
-RunCreatureFile("objects/yavin4/creatures/geonosianKliknikForceWeak.lua")
+RunCreatureFile("objects/yavin4/creatures/geonosianEnhancedKliknik.lua")
+RunCreatureFile("objects/yavin4/creatures/geonosianKliknik.lua")
+RunCreatureFile("objects/yavin4/creatures/geonosianFireBreathingSpider.lua")
+RunCreatureFile("objects/yavin4/creatures/geonosianForceKliknik.lua")
+RunCreatureFile("objects/yavin4/creatures/geonosianCaveSpider.lua")
 RunCreatureFile("objects/yavin4/creatures/giantAngler.lua")
 RunCreatureFile("objects/yavin4/creatures/giantCrystalSnake.lua")
 RunCreatureFile("objects/yavin4/creatures/giantGackleBat.lua")

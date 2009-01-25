@@ -82,7 +82,7 @@ geonosianKliknik = Creature:new {
       acid = 10,
       lightsaber = 0,
 
-      accuracy = 350,
+      accuracy = 300,
 
       healer = 0,
 
@@ -102,10 +102,10 @@ geonosianKliknik = Creature:new {
       weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
       weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
+      weaponEquipped = 1,
+      weaponMinDamage = 375,
+      weaponMaxDamage = 500,
+      weaponAttackSpeed = 2,
       weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 

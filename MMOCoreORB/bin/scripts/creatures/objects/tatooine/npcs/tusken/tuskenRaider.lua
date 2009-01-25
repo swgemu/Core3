@@ -84,7 +84,7 @@ tuskenRaider = Creature:new {
 	acid = -1,
 	lightsaber = 0,
 
-	accuracy = 350,
+	accuracy = 280,
 
 	healer = 0,
 
@@ -109,7 +109,7 @@ tuskenRaider = Creature:new {
 	weaponMaxDamage = 190,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -124,7 +124,7 @@ tuskenRaider = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,1,3,11,15,23,", -- Group it belongs to for loot
+	lootGroup = "0,1,3,11,15,23", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

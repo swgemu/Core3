@@ -125,7 +125,7 @@ end
 
 --Talus
 if (PLANET_ID == 7) then
---RunCreatureFile("spawns/talus/aakuanCave.lua")
+RunCreatureFile("spawns/talus/aakuanCave.lua")
 RunCreatureFile("spawns/talus/staticSpawns.lua")
 RunCreatureFile("spawns/talus/citys/dearic.lua")
 RunCreatureFile("spawns/talus/citys/narshal.lua")

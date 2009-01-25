@@ -82,7 +82,7 @@ geonosianEnhancedKliknik = Creature:new {
       acid = 10,
       lightsaber = 0,
 
-      accuracy = 350,
+      accuracy = 300,
 
       healer = 0,
 
@@ -103,8 +103,8 @@ geonosianEnhancedKliknik = Creature:new {
       weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 350,
-      weaponMaxDamage = 700,
+      weaponMinDamage = 450,
+      weaponMaxDamage = 800,
       weaponAttackSpeed = 1,
       weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY

@@ -84,7 +84,7 @@ tuskenSniper = Creature:new {
 	acid = -1,
 	lightsaber = 0,
 
-	accuracy = 400,
+	accuracy = 320,
 
 	healer = 0,
 
@@ -106,10 +106,10 @@ tuskenSniper = Creature:new {
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
 	weaponMinDamage = 210,
-	weaponMaxDamage = 220,
+	weaponMaxDamage = 320,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'

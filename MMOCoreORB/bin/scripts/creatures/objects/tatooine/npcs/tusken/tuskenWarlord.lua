@@ -59,18 +59,18 @@ tuskenWarlord = Creature:new {
 
 	healthMax = 14000,
 	healthMin = 11000,
-	strength = 500,
-	constitution = 500,
+	strength = 2000,
+	constitution = 2000,
 
 	actionMax = 14000,
 	actionMin = 11000,
-	quickness = 500,
-	stamina = 500,
+	quickness = 2000,
+	stamina = 2000,
 
 	mindMax = 14000,
 	mindMin = 11000,
-	focus = 500,
-	willpower = 500,
+	focus = 2000,
+	willpower = 2000,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -84,7 +84,7 @@ tuskenWarlord = Creature:new {
 	acid = -1,
 	lightsaber = 0,
 
-	accuracy = 370,
+	accuracy = 300,
 
 	healer = 0,
 
@@ -109,7 +109,7 @@ tuskenWarlord = Creature:new {
 	weaponMaxDamage = 620,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -124,7 +124,7 @@ tuskenWarlord = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,1,3,11,15,19,23,33,99", -- Group it belongs to for loot
+	lootGroup = "0,1,3,11,15,19,23,99", -- Group it belongs to for loot
 	tame = 0,  -- Likely hood to be tamed
 
 	milk = 0,
