@@ -316,11 +316,23 @@ void CraftingManagerImplementation::addIngredientToSlot(Player* player,
 			dMsco7->partialUpdate(slot, draftSchematic->getIngredientListSize()
 					+ craftingTool->getInsertCount(), newTano->getObjectID(),
 					quantity + ingredientInSlotQuantity);
+
+			draftSchematic->increaseComplexity();
 		}
 		dMsco7->close();
 
 		player->sendMessage(dMsco7);
 		// End DMSCO7 ***************************************************
+
+		// Start DMSCO3 ***********************************************************
+		// Updates the Complexity
+		ManufactureSchematicObjectDeltaMessage3* dMsco3 =
+				new ManufactureSchematicObjectDeltaMessage3(draftSchematic->getObjectID());
+		dMsco3->updateComplexity(draftSchematic->getComplexity());
+		dMsco3->close();
+
+		player->sendMessage(dMsco3);
+		// End DMSCO3 *************************************************************
 
 		sendSlotMessage(player, counter, SLOTOK);
 
@@ -636,6 +648,19 @@ void CraftingManagerImplementation::removeIngredientFromSlot(Player* player,
 
 		tano = NULL;
 
+		if(craftingTool->getInsertCount() > 0)
+			draftSchematic->decreaseComplexity();
+
+		// Start DMSCO3 ***********************************************************
+		// Updates the Complexity
+		ManufactureSchematicObjectDeltaMessage3* dMsco3 =
+				new ManufactureSchematicObjectDeltaMessage3(draftSchematic->getObjectID());
+		dMsco3->updateComplexity(draftSchematic->getComplexity());
+		dMsco3->close();
+
+		player->sendMessage(dMsco3);
+		// End DMSCO3 *************************************************************
+
 		// Increases Insert Counter
 		craftingTool->increaseInsertCount();
 
@@ -680,7 +705,7 @@ void CraftingManagerImplementation::putComponentBackInInventory(Player* player,
 
 	newComponent->sendTo(player);
 
-	newComponent->setPersistent(true);
+	newComponent->setPersistent(false);
 
 	component->setParent(NULL);
 
@@ -949,134 +974,12 @@ void CraftingManagerImplementation::setInitialCraftingValues(Player* player,
 	}
 
 	craftingValues->recalculateValues(draftSchematic, true);
-craftingValues->toString();
+
 	if (applyComponentBoost(draftSchematic, craftingTool))
 		craftingValues->recalculateValues(draftSchematic, true);
-craftingValues->toString();
-	// If components give a boost, calculate here
-	//currentPercentage += applyComponentPercentageBoost(subtitle,
-	//		draftSchematic, craftingTool);
 
-	if (addSubcomponentTraitsToNewTano(craftingTool))
-		craftingValues->recalculateValues(draftSchematic, true);
-craftingValues->toString();
+	//craftingValues->toString();
 }
-
-bool CraftingManagerImplementation::addSubcomponentTraitsToNewTano(CraftingTool* craftingTool) {
-
-	VectorMap<String, float> propertiesToAdd;
-	VectorMap<String, int> precisionToAdd;
-	VectorMap<String, String> titleToAdd;
-
-	DraftSchematicIngredient* ingredient = NULL;
-	DraftSchematicAttribute* draftSchematicAttribute = NULL;
-	TangibleObject* workingTano = craftingTool->getWorkingTano();
-	DraftSchematic* draftSchematic = craftingTool->getWorkingDraftSchematic();
-	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
-	TangibleObject* itemInSlot = NULL;
-
-	if (workingTano == NULL)
-		return false;
-
-	for (int i = 0; i < craftingTool->getSlotCount(); ++i) {
-
-		itemInSlot = craftingTool->getIngredientInSlot(i);
-
-		if (itemInSlot != NULL && itemInSlot->isComponent()) {
-
-			Component* component = (Component*) itemInSlot;
-
-			ingredient = draftSchematic->getIngredient(i);
-
-			for (int j = 0; j < component->getPropertyCount(); ++j) {
-
-				String attribute = component->getProperty(j);
-				float value = component->getAttributeValue(attribute);
-				int precision = component->getAttributePrecision(attribute);
-				String title = component->getAttributeTitle(attribute);
-
-				if (!craftingValues->hasProperty(attribute)) {
-
-					if (!propertiesToAdd.contains(attribute)) {
-
-						propertiesToAdd.put(attribute, value);
-						precisionToAdd.put(attribute, precision);
-						titleToAdd.put(attribute, title);
-
-					} else {
-
-						float oldvalue = propertiesToAdd.get(attribute);
-						value += oldvalue;
-						propertiesToAdd.drop(attribute);
-						propertiesToAdd.put(attribute, value);
-
-					}
-				}
-			}
-		}
-	}
-
-	bool recalculate = false;
-	float currentvalue;
-
-	for (int i = 0; i < propertiesToAdd.size(); ++i) {
-
-		String attribute = propertiesToAdd.elementAt(i)->getKey();
-		float value = propertiesToAdd.get(i);
-		int precision = precisionToAdd.get(i);
-		String title = titleToAdd.get(i);
-
-		if (craftingValues->hasProperty(attribute)) {
-
-			currentvalue = craftingValues->getCurrentValue(attribute);
-
-		} else {
-
-			currentvalue = 0;
-			craftingValues->addExperimentalProperty(title, attribute, value, value, precision, 0);
-			craftingValues->setMaxPercentage(attribute, 1.0f);
-
-		}
-		currentvalue += value;
-		craftingValues->setCurrentValue(attribute, currentvalue);
-
-		recalculate = true;
-	}
-	return recalculate;
-}
-
-/*float CraftingManagerImplementation::applyComponentPercentageBoost(
-		String subtitle, DraftSchematic* draftSchematic,
-		CraftingTool* craftingTool) {
-
-	DraftSchematicIngredient* ingredient;
-	TangibleObject* tano;
-	Component* component;
-	float value = 0;
-
-	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
-
-	for (int i = 0; i < draftSchematic->getIngredientListSize(); ++i) {
-
-		ingredient = draftSchematic->getIngredient(i);
-
-		if (ingredient != NULL) {
-
-			if (ingredient->getCombineType() == PERCENTAGEADDPROPERTIES) {
-
-				tano = craftingTool->getIngredientInSlot(i);
-
-				if (tano != NULL && tano->isComponent()) {
-
-					component = (Component*) tano;
-
-					value += component->getAttributeValue(subtitle);
-				}
-			}
-		}
-	}
-	return value;
-} */
 
 bool CraftingManagerImplementation::applyComponentBoost(
 		DraftSchematic* draftSchematic, CraftingTool* craftingTool) {
@@ -1086,7 +989,10 @@ bool CraftingManagerImplementation::applyComponentBoost(
 	TangibleObject* workingTano = craftingTool->getWorkingTano();
 	Component* component;
 	float max, min, currentvalue, propertyvalue;
+	int precision;
 	bool modified = false;
+	bool hidden;
+	String experimentalTitle, property;
 
 	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
@@ -1104,35 +1010,48 @@ bool CraftingManagerImplementation::applyComponentBoost(
 
 				for (int j = 0; j < component->getPropertyCount(); ++j) {
 
-					String property = component->getProperty(j); // charges
-System::out << property << endl;
+					property = component->getProperty(j); // charges
+
 					modified = true;
 
-					max = craftingValues->getMaxValue(property);
+					if (craftingValues->hasProperty(property) && !component->getAttributeHidden(property)) {
 
-					min = craftingValues->getMinValue(property);
+						max = craftingValues->getMaxValue(property);
 
-					currentvalue = craftingValues->getCurrentValue(property);
+						min = craftingValues->getMinValue(property);
 
-					propertyvalue = component->getAttributeValue(property) * ingredient->getContribution();
+						hidden = craftingValues->isHidden(property);
 
-					currentvalue += propertyvalue;
-					min += propertyvalue;
-					max += propertyvalue;
+						currentvalue = craftingValues->getCurrentValue(property);
 
-					craftingValues->setMinValue(property, min);
-					craftingValues->setMaxValue(property, max);
+						propertyvalue = component->getAttributeValue(property) * ingredient->getContribution();
 
-					if (ingredient->getCombineType() == COMPONENTLINEAR) {
+						currentvalue += propertyvalue;
+						min += propertyvalue;
+						max += propertyvalue;
 
-						craftingValues->setCurrentPercentage(property,
-								currentvalue, min, max);
+						craftingValues->setMinValue(property, min);
+						craftingValues->setMaxValue(property, max);
 
-					} else if (ingredient->getCombineType() == COMPONENTPERCENTAGE) {
+						if (ingredient->getCombineType() == COMPONENTLINEAR) {
 
-						craftingValues->setCurrentValue(property, currentvalue,
-								min, max);
+							craftingValues->setCurrentValue(property, currentvalue);
 
+						} else if (ingredient->getCombineType() == COMPONENTPERCENTAGE) {
+
+							craftingValues->setCurrentPercentage(property, currentvalue);
+
+						}
+					} else if(!component->getAttributeHidden(property)) {
+
+						currentvalue = component->getAttributeValue(property);
+						precision = component->getAttributePrecision(property);
+						experimentalTitle = component->getAttributeTitle(property);
+
+						craftingValues->addExperimentalProperty(experimentalTitle, property, currentvalue, currentvalue, precision, false);
+						craftingValues->setCurrentPercentage(property, .5f);
+						craftingValues->setMaxPercentage(property, 1.0f);
+						craftingValues->setCurrentValue(property, currentvalue);
 					}
 				}
 			}

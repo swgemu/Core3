@@ -60,8 +60,8 @@ compositeArmorChestPlate = Object:new {
 
    ingredientTemplateNames = "craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n",
    ingredientTitleNames = "auxilary_coverage, body, liner, hardware_and_attachments, binding_and_reinforcement, padding, armor, load_bearing_harness, reinforcement",
-   ingredientSlotType = "0, 0, 0, 0, 0, 0, 1, 1, 1",
-   resourceTypes = "ore_intrusive, fuel_petrochem_solid_known, fiberplast_naboo, aluminum, copper_beyrllius, hide_wooly, object/tangible/component/armor/shared_armor_segme, object/tangible/component/clothing/shared_syntheti, object/tangible/component/clothing/shared_reinforc",
+   ingredientSlotType = "0, 0, 0, 0, 0, 0, 1, 2, 2",
+   resourceTypes = "ore_intrusive, fuel_petrochem_solid_known, fiberplast_naboo, aluminum, copper_beyrllius, hide_wooly, object/tangible/component/armor/shared_armor_segment_composite.iff, object/tangible/component/clothing/shared_synthetic_cloth.iff, object/tangible/component/clothing/shared_reinforced_fiber_panels.iff",
    resourceQuantities = "100, 100, 50, 60, 50, 40, 4, 1, 1",
    combineTypes = "0, 0, 0, 0, 0, 0, 1, 1, 1",
    contribution = "100, 100, 100, 100, 100, 100, 100, 100, 100",
@@ -69,16 +69,17 @@ compositeArmorChestPlate = Object:new {
    numberExperimentalProperties = "1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 1",
    experimentalProperties = "XX, XX, XX, XX, OQ, SR, OQ, UT, MA, OQ, MA, OQ, MA, OQ, XX, XX, OQ, SR, XX",
    experimentalWeights = "1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1",
-   experimentalGroupTitles = "null, null, null, expDurability, expQuality, expResistance, expDurability, expDurability, expDurability, null, null, expResistance, null",
+   experimentalGroupTitles = "null, null, null, exp_durability, exp_quality, exp_resistance, exp_durability, exp_durability, exp_durability, null, null, exp_resistance, null",
 
    experimentalSubGroupTitles = "null, null, sockets, hit_points, armor_effectiveness, armor_integrity, armor_health_encumbrance, armor_action_encumbrance, armor_mind_encumbrance, armor_rating, armor_special_type, armor_special_effectiveness, armor_special_integrity",
-   experimentalMin = "0, 0, 0, 1000, 1, 30000, 150, 39, 15, 1, 0, 0, 0",
-   experimentalMax = "0, 0, 0, 1000, 40, 50000, 250, 66, 25, 1, 0, 0, 0",
+   experimentalMin = "0, 0, 0, 1000, 1, 30000, 250, 66, 25, 1, 0, 0, 0",
+   experimentalMax = "0, 0, 0, 1000, 40, 50000, 150, 39, 15, 1, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=257:objectcrc=2068279078:objecttemp=armor_composite_chest_plate:templatetype=wearables_name:",
-   customizationOptions = "",
-   customizationDefaults = ""
+   tanoAttributes = "objecttype=257:objectcrc=2068279078:objecttemp=armor_composite_chest_plate:templatetype=wearables_name:itemmask=62975:",
+   customizationOptions = "/private/index_color_1",
+   customizationDefaults = "0",
+   customizationSkill = "armor_customization"
 
 }
 

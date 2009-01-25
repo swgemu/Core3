@@ -44,8 +44,6 @@ which carries forward this exception.
 
 #include "DraftSchematicValuesImplementation.h"
 
-#include "../../packets.h"
-
 DraftSchematicValuesImplementation::DraftSchematicValuesImplementation() : DraftSchematicValuesServant() {
 	EMPTY = "";
 	experimentalValuesMap.setNullValue(NULL);
@@ -121,7 +119,7 @@ String& DraftSchematicValuesImplementation::getVisibleExperimentalPropertyTitle(
 	for(int j = 0; j < experimentalValuesMap.size(); ++j) {
 		subclasses = experimentalValuesMap.get(j);
 
-		if(!subclasses->isHidden())
+		if(!subclasses->isClassHidden())
 			counter++;
 
 		if(counter == i)
@@ -754,16 +752,18 @@ void DraftSchematicValuesImplementation::recalculateValues(DraftSchematic* draft
 				newValue = max;
 			else
 				newValue = min;
-		} else {
+		} else if(max != min) {
 			if (max > min)
 				newValue = (percentage * (max - min)) + min;
 			else
 				newValue = (float(1.0f - percentage) * (min - max)) + max;
+		} else if(max == min) {
+			newValue = max;
 		}
 
-		if (newValue != oldValue && (initial || (!initial && !hidden))) {
+		if (initial || (newValue != oldValue && (!initial && !hidden))) {
 			setCurrentValue(attributeName, newValue);
-			//System::out << attributeName << " " << newValue << endl;
+
 			valuesToSend.add(attributeName);
 		}
 	}
@@ -780,7 +780,6 @@ void DraftSchematicValuesImplementation::toString() {
 		System::out << "\n*************************" << endl;
 		System::out << "Subclass " << i << endl;
 		System::out << "Class: " << tempSubclasses->getClassTitle() << endl;
-		System::out << "Name: " << tempSubclasses->getName() << endl;
 		tempSubclasses->toString();
 		System::out << "**************************" << endl;
 	}

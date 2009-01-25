@@ -78,6 +78,8 @@ DraftSchematic = Object:new {
    experimentalPrecision = "",
 
    tanoAttributes = "",
+
    customizationOptions = "",
-   customizationDefaults = ""
+   customizationDefaults = "",
+   customizationSkill = ""
 }

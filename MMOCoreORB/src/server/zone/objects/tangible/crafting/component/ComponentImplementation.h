@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef COMPONENTIMPLEMENTATION_H_
 #define COMPONENTIMPLEMENTATION_H_
 
-#include "../../../../packets.h"
+#include "../../../../packets/object/ObjectMenuResponse.h"
 #include "Component.h"
 
 class CreatureObject;
@@ -63,13 +63,11 @@ protected:
 
 
 public:
-	ComponentImplementation(uint64 object_id, uint32 tempCRC, const UnicodeString& n, const String& tempn);
+	ComponentImplementation(uint64 objectid, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 	ComponentImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 	ComponentImplementation(Component* component, uint64 oid);
 
 	~ComponentImplementation();
-
-	Component* cloneComponent(Component* component, uint64 oid);
 
 	void init();
 
@@ -97,6 +95,14 @@ public:
 	void parseTitleString();
 	void parseHiddenString();
 
+	virtual Component* cloneComponent(Component* component, uint64 oid) {
+		if (component != NULL) {
+			return new Component(component, oid);
+		} else {
+			return NULL;
+		}
+	}
+
 	inline bool hasProperty(String& attributeName) {
 		return attributeMap.contains(attributeName);
 	}
@@ -109,9 +115,11 @@ public:
 		attributeMap.put(attribute, value);
 		precisionMap.put(attribute, precision);
 		titleMap.put(attribute, title);
+		hiddenMap.put(attribute, false);
 
 		savePrecisionList();
 		saveTitleList();
+		saveHiddenList();
 	}
 
 	inline int getPropertyCount() {
@@ -140,6 +148,24 @@ public:
 		attributeMap.put(property, value);
 		itemAttributes->setFloatAttribute(property, value);
 		return true;
+	}
+
+	inline void setPropertyToHidden(String property) {
+		for (int i = 0; i < keyList.size(); ++i) {
+			if (keyList.get(i) == property) {
+				hiddenMap.drop(property);
+				hiddenMap.put(property, true);
+			}
+		}
+	}
+
+	inline void setPropertyValue(String property, float value) {
+		for (int i = 0; i < keyList.size(); ++i) {
+			if (keyList.get(i) == property) {
+				attributeMap.drop(property);
+				attributeMap.put(property, value);
+			}
+		}
 	}
 };
 

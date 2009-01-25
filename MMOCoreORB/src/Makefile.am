@@ -153,6 +153,7 @@ core3_IDLS = 	server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/tangible/consumable/drink/Drink.cpp \
 		server/zone/objects/tangible/Container.cpp \
 		server/zone/objects/tangible/crafting/component/Component.cpp \
+		server/zone/objects/tangible/crafting/component/armorcomponent/ArmorComponent.cpp \
 		server/zone/objects/tangible/crafting/CraftingStation.cpp \
 		server/zone/objects/tangible/crafting/CraftingTool.cpp \
 		server/zone/objects/tangible/crafting/factorycrate/FactoryCrate.cpp \
@@ -321,6 +322,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/ContainerImplementation.cpp \
 		server/zone/objects/tangible/CustomizationVariables.cpp \
 		server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp \
+		server/zone/objects/tangible/crafting/component/armorcomponent/ArmorComponentImplementation.cpp \
 		server/zone/objects/tangible/crafting/CraftingStationImplementation.cpp \
 		server/zone/objects/tangible/crafting/CraftingToolImplementation.cpp \
 		server/zone/objects/tangible/crafting/factorycrate/FactoryCrateImplementation.cpp \

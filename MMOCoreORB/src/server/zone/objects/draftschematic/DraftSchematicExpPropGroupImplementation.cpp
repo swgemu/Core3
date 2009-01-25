@@ -160,6 +160,9 @@ void DraftSchematicExpPropGroupImplementation::addExperimentalProperty(const Str
 		return;
 	}
 
+	if(minValue == maxValue)
+		filler = true;
+
 	expPropTypes.put(experimentalPropertyType, expPropType);
 
 	if (expPropType != 0x00)

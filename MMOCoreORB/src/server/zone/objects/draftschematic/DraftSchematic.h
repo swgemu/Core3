@@ -43,6 +43,8 @@ public:
 
 	void increaseComplexity();
 
+	void decreaseComplexity();
+
 	void increaseExpCounter();
 
 	void sendIngredientsToPlayer(Player* player);
@@ -188,6 +190,8 @@ public:
 	void sendExperimentalPropertiesToPlayer(Player* player);
 
 	void increaseComplexity();
+
+	void decreaseComplexity();
 
 	void increaseExpCounter();
 

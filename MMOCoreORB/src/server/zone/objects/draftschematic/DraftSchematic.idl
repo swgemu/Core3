@@ -73,6 +73,8 @@ interface DraftSchematic implements ManagedObject {
 	void sendExperimentalPropertiesToPlayer(Player player);
 
 	void increaseComplexity();
+	
+	void decreaseComplexity();
 
 	void increaseExpCounter();
 

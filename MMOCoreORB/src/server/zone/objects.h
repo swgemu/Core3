@@ -146,8 +146,6 @@ which carries forward this exception.
 #include "objects/tangible/crafting/CraftingTool.h"
 #include "objects/tangible/crafting/CraftingToolImplementation.h"
 #include "objects/tangible/crafting/CraftingStation.h"
-#include "objects/tangible/crafting/component/Component.h"
-#include "objects/tangible/crafting/component/ComponentImplementation.h"
 #include "objects/tangible/crafting/factorycrate/FactoryCrate.h"
 #include "objects/tangible/crafting/factorycrate/FactoryCrateImplementation.h"
 #include "objects/tangible/crafting/CraftingStationImplementation.h"
@@ -159,6 +157,11 @@ which carries forward this exception.
 #include "objects/tangible/powerup/PowerupImplementation.h"
 #include "objects/tangible/inventory/CreatureInventory.h"
 #include "objects/tangible/inventory/CreatureInventoryImplementation.h"
+
+#include "objects/tangible/crafting/component/Component.h"
+#include "objects/tangible/crafting/component/ComponentImplementation.h"
+#include "objects/tangible/crafting/component/armorcomponent/ArmorComponent.h"
+#include "objects/tangible/crafting/component/armorcomponent/ArmorComponentImplementation.h"
 
 #include "objects/tangible/weapons/Weapon.h"
 #include "objects/tangible/weapons/WeaponImplementation.h"
