@@ -227,7 +227,7 @@ public:
 			awardXp(creature, "medical", (healthHealed + healthHealed)); //No experience for healing yourself.
 
 		if (stimPack->isArea())
-			handleArea(creature,creatureTarget,stimPower,stimPack->getArea());
+			handleArea(creature, creatureTarget, stimPower, stimPack->getArea());
 
 		if (stimPack->isRangedStimPack()) {
 			doAnimationsRange(creature, creatureTarget,stimPack->getObjectID(),creature->calculateDistance(creatureTarget));
@@ -252,7 +252,6 @@ public:
 
 	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, int healthDamage, int actionDamage) {
 		Player* player = (Player*) creature;
-		Player* playerTarget = (Player*) creatureTarget;
 
 		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
 
@@ -271,9 +270,12 @@ public:
 		if (creature == creatureTarget) {
 			msgPlayer << "You heal yourself for " << msgBody.toString() << msgTail.toString();
 			player->sendSystemMessage(msgPlayer.toString());
-		} else {
+		} else if (creatureTarget->isPlayer()) { // TODO: this is a temporary fix, creatureTarget wasn't checked if its a player before casting
+			Player* playerTarget = (Player*) creatureTarget;
+
 			msgPlayer << "You heal " << playerTarget->getFirstNameProper() << " for " << msgBody.toString() << msgTail.toString();
 			player->sendSystemMessage(msgPlayer.toString());
+
 			msgTarget << player->getFirstNameProper() << " heals you for " << msgBody.toString() << msgTail.toString();
 			playerTarget->sendSystemMessage(msgTarget.toString());
 		}
@@ -341,7 +343,7 @@ public:
 		int actionHealed = creature->healDamage(creatureTarget, stimPower, CreatureAttribute::ACTION);
 
 		if (creatureTarget->isPlayer())
-			((Player*)creature)->sendBattleFatigueMessage(creatureTarget);
+			((Player*) creature)->sendBattleFatigueMessage(creatureTarget);
 
 		sendHealMessage(creature, creatureTarget, healthHealed, actionHealed);
 
