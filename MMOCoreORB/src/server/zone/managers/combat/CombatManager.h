@@ -134,6 +134,7 @@ public:
 	void checkMitigation(CreatureObject* creature, CreatureObject* targetCreature, int attacktype, float& minDamage, float& maxDamage);
 	int checkSecondaryDefenses(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon, int attackType);
 	int getHitChance(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon, int accuracyBonus, int attackType);
+	inline float hitChanceEquation(float attackerAccuracy, float accuracyBonus, float targetDefense, float defenseBonus);
 	float getWeaponRangeMod(float currentRange, Weapon* weapon);
 	uint32 getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, int attackType);
 	int applyDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part,
