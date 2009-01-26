@@ -91,6 +91,7 @@ public:
 	inline void setSurveyToolRange(int range) {
 		String temp = "range";
 		itemAttributes->setIntAttribute(temp, range);
+		setUpdated(true);
 		surveyToolRange = range;
 	}
 

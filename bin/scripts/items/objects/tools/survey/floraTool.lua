@@ -44,7 +44,7 @@ flora_tool = Tool:new {
 
 	objectName = "Flora Survey Tool",
 
-	templateName = "survey_tool_flora",
+	templateName = "survey_tool_lumber",
 
 	objectCRC = 1329114448,
 

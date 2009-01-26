@@ -44,7 +44,7 @@ chemical_tool = Tool:new {
 
 	objectName = "Chemical Survey Tool",
 
-	templateName = "survey_tool_chemical",
+	templateName = "survey_tool_liquid",
 
 	objectCRC = 2242363434,
 

@@ -85,21 +85,21 @@ void SurveyToolImplementation::init() {
 		surveyToolType = ResourceHarvestType::MINERAL;
 	} else if (templateName == "survey_tool_solar") {
 		surveyToolType = ResourceHarvestType::SOLAR;
-	} else if (templateName == "survey_tool_chemical") {
+	} else if (templateName == "survey_tool_liquid") {
 		surveyToolType = ResourceHarvestType::CHEMICAL;
-	} else if (templateName == "survey_tool_flora") {
+	} else if (templateName == "survey_tool_lumber") {
 		surveyToolType = ResourceHarvestType::FLORA;
 	} else if (templateName == "survey_tool_gas") {
 		surveyToolType = ResourceHarvestType::GAS;
 	} else if (templateName == "survey_tool_geothermal") {
 		surveyToolType = ResourceHarvestType::GEOTHERMAL;
-	} else if (templateName == "survey_tool_water") {
+	} else if (templateName == "survey_tool_moisture") {
 		surveyToolType = ResourceHarvestType::WATER;
 	} else if (templateName == "survey_tool_wind") {
 		surveyToolType = ResourceHarvestType::WIND;
 	}
 
-	setSurveyToolRange(0);
+	setSurveyToolRange(64);
 }
 
 int SurveyToolImplementation::useObject(Player* player) {
@@ -107,7 +107,8 @@ int SurveyToolImplementation::useObject(Player* player) {
 
 	String skillBox = "crafting_artisan_novice";
 	if (player->getParent() != NULL && player->getParent()->isCell()) {
-		player->sendSystemMessage("You cannot perform survey-related actions inside a structure.");
+		ChatSystemMessage* sysMessage = new ChatSystemMessage("error_message", "survey_in_structure");
+		player->sendMessage(sysMessage);
 		return 0;
 	}
 
@@ -125,8 +126,8 @@ int SurveyToolImplementation::useObject(Player* player) {
 			player->sendMessage(sysMessage);
 		}
 	} else {
-		player->sendSystemMessage("You do not have sufficient abilities to open "
-					+ getCustomName().toString() + ".");
+		ChatSystemMessage* sysMessage = new ChatSystemMessage("error_message", "insufficient_skill");
+		player->sendMessage(sysMessage);
 	}
 
 	return 0;

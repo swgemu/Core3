@@ -41,46 +41,10 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-configurableDice = Object:new {
+-- Musician
 
-   objectName = "Configurable Dice",
-   stfName = "eqp_configurable_group_dice_single",
-   objectCRC = 1370957893,
-   groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
-
-   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
-   complexity = 6, 
-   size = 1, 
-
-   xpType = "crafting_general", 
-   xp = 36, 
-
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
-
-   ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
-   ingredientTitleNames = "cube_core, hardened_shell, logic_unit, color_actuator, parallel_logic_unit, interface_pad, power_unit",
-   ingredientSlotType = "0, 0, 0, 0, 0, 0, 0",
-   resourceTypes = "metal, petrochem_inert_polymer, metal, petrochem_inert_polymer, petrochem_inert_polymer, petrochem_inert_polymer, metal_nonferrous",
-   resourceQuantities = "6, 5, 2, 2, 2, 1, 2",
-   combineTypes = "0, 0, 0, 0, 0, 0, 0",
-   contribution = "100, 100, 100, 100, 100, 100, 100",
-
-   numberExperimentalProperties = "1, 1, 1, 1",
-   experimentalProperties = "XX, XX, XX, CD",
-   experimentalWeights = "1, 1, 1, 1",
-   experimentalGroupTitles = "null, null, null, exp_effectiveness",
-
-   experimentalSubGroupTitles = "null, null, hitpoints, usemodifier",
-   experimentalMin = "0, 0, 1000, -15",
-   experimentalMax = "0, 0, 1000, 15",
-   experimentalPrecision = "0, 0, 0, 0",
-
-   tanoAttributes = "objecttype=:objectcrc=1212860070:objecttemp=eqp_configurable_group_dice_single:templatetype=dice/dice_details:itemmask=65535:",
-   customizationOptions = "",
-   customizationDefaults = "",
-   customizationSkill = "clothing_customization"
-
-}
-
-DraftSchematics:addDraftSchematic(configurableDice, 1370957893)--- Add to global DraftSchematics table
+RunDraftSchematicFile("objects/draftschematics/musician/noviceMusician/aFanfar.lua")
+RunDraftSchematicFile("objects/draftschematics/musician/noviceMusician/aKlooHorn.lua")
+RunDraftSchematicFile("objects/draftschematics/musician/noviceMusician/dualWaveSynthesizer.lua")
+RunDraftSchematicFile("objects/draftschematics/musician/musicalTechniquesIi/aMandoviol.lua")
+RunDraftSchematicFile("objects/draftschematics/musician/musicalTechniquesIi/aTraz.lua")

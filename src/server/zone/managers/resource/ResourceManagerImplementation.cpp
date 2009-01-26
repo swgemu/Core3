@@ -965,7 +965,7 @@ bool ResourceManagerImplementation::checkResource(Player* player, String& resour
 		class2 = "Wind Energy";
 		break;
 	default:
-		player->error("Invalid Tool");
+		player->error("Invalid Tool (SurveyToolType) in ResourceManagerImplementation::checkResource");
 		unlock(doLock);
 		return false;
 	}
@@ -1032,7 +1032,7 @@ bool ResourceManagerImplementation::sendSurveyResources(Player* player, int Surv
 		surveyType = "enegy_renewable_unlimited_wind";
 		break;
 	default:
-		player->error("Invalid Tool");
+		player->error("Invalid Tool (SurveyToolType) in ResourceManagerImplementation::sendSurveyResources");
 		delete resourceList;
 		unlock(doLock);
 		return false;
