@@ -42,29 +42,29 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CREATUREBURSTRUNOVEREVENT_H_
-#define CREATUREBURSTRUNOVEREVENT_H_
+#ifndef BURSTRUNNOTIFYAVAILABLEEVENT_H_
+#define BURSTRUNNOTIFYAVAILABLEEVENT_H_
 
 #include "../CreatureObjectImplementation.h"
 
-class CreatureBurstRunOverEvent : public Event {
+class BurstRunNotifyAvailableEvent : public Event {
 	CreatureObjectImplementation* creo;
 
 public:
-	CreatureBurstRunOverEvent(CreatureObjectImplementation* cr) : Event(30000) {
+	BurstRunNotifyAvailableEvent(CreatureObjectImplementation* cr) : Event() {
 		creo = cr;
+		setKeeping(true);
 	}
 
 	bool activate() {
 		try {
 			creo->wlock();
 
-			if (!creo->isMounted())
-				creo->deactivateBurstRun();
+			creo->sendSystemMessage("combat_effects", "burst_run_not_tired"); //"You are no longer tired.";
 
 			creo->unlock();
 		} catch (...) {
-			creo->error("unreported exception caught in CreatureBurstRunOverEvent::activate");
+			creo->error("unreported exception caught in BurstRunNotifyAvailableEvent::activate");
 			creo->unlock();
 		}
 
@@ -73,4 +73,4 @@ public:
 
 };
 
-#endif /*CREATUREBURSTRUNOVEREVENT_H_*/
+#endif /*BURSTRUNNOTIFYAVAILABLEEVENT_H_*/

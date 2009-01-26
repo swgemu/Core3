@@ -1838,16 +1838,17 @@ void CreatureObject::clearAttackDelay() {
 		((CreatureObjectImplementation*) _impl)->clearAttackDelay();
 }
 
-void CreatureObject::activateBurstRun() {
+void CreatureObject::activateBurstRun(bool bypassChecks) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 140);
+		method.addBooleanParameter(bypassChecks);
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureObjectImplementation*) _impl)->activateBurstRun();
+		((CreatureObjectImplementation*) _impl)->activateBurstRun(bypassChecks);
 }
 
 bool CreatureObject::hasQueuedState(unsigned int skillCRC) {
@@ -8402,7 +8403,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		clearAttackDelay();
 		break;
 	case 140:
-		activateBurstRun();
+		activateBurstRun(inv->getBooleanParameter());
 		break;
 	case 141:
 		resp->insertBoolean(hasQueuedState(inv->getUnsignedIntParameter()));
@@ -10390,8 +10391,8 @@ void CreatureObjectAdapter::clearAttackDelay() {
 	return ((CreatureObjectImplementation*) impl)->clearAttackDelay();
 }
 
-void CreatureObjectAdapter::activateBurstRun() {
-	return ((CreatureObjectImplementation*) impl)->activateBurstRun();
+void CreatureObjectAdapter::activateBurstRun(bool bypassChecks) {
+	return ((CreatureObjectImplementation*) impl)->activateBurstRun(bypassChecks);
 }
 
 bool CreatureObjectAdapter::hasQueuedState(unsigned int skillCRC) {

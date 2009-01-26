@@ -888,7 +888,10 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	case (0xD6EE77C2): // System Group Message
 		doInstantAction(player, pack, actionCRC, actioncntr);
 		break;
-	case (0x7EF26D6A): // System Group Message
+	case (0x7EF26D6A): // Volley Fire
+		doInstantAction(player, pack, actionCRC, actioncntr);
+		break;
+	case (0x4871BBF4): //Retreat
 		doInstantAction(player, pack, actionCRC, actioncntr);
 		break;
 	default:

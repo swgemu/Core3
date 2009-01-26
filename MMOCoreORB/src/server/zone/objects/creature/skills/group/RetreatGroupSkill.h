@@ -50,17 +50,76 @@ which carries forward this exception.
 class RetreatGroupSkill : public GroupSkill {
 protected:
 
+	bool buffSL;
+	String effect;
+
 public:
-	RetreatGroupSkill(const String& Name, const char* effect, ZoneProcessServerImplementation* serv) : GroupSkill(Name, effect, OTHER, serv) {
+	RetreatGroupSkill(const String& Name, const char* eff, const char* anim, ZoneProcessServerImplementation* serv) : GroupSkill(Name, eff, OTHER, serv) {
+		buffSL = false; //replaced by lua value.
+		effect = eff;
+	}
+
+	void doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
+		if (!creature->isPlayer()) {
+			return;
+		}
+
+		Player* squadLeader = (Player*)creature;
+		GroupObject* group = squadLeader->getGroupObject();
+
+		//Deduct HAM costs from the Squad Leader.
+		squadLeader->changeHealthBar(-healthCost, false);
+		squadLeader->changeActionBar(-actionCost, false);
+		squadLeader->changeMindBar(-mindCost, false);
+
+		squadLeader->sendSystemMessage("You have ordered a retreat!");
+
+		try {
+			group->wlock();
+
+			for(int i = 0; i < group->getGroupSize(); i++) {
+				CreatureObject* groupMember = (CreatureObject*)group->getGroupMember(i);
+
+				//System message and combat spam.
+				if (groupMember != squadLeader) {
+					groupMember->sendCombatSpam(groupMember, NULL, 0, combatSpam, false);
+					groupMember->sendSystemMessage("cbt_spam", "retreat_buff"); //"Your squad leader has ordered a retreat!"
+				}
+
+				//Effect and buff.
+				if (groupMember != squadLeader || buffSL) {
+					groupMember->playEffect(effect, "");
+					groupMember->activateBurstRun(true);
+				}
+			}
+
+			group->unlock();
+
+		} catch (...) {
+			group->unlock();
+			System::out << "Exception in RetreatGroupSkill::doSkill()\n";
+		}
+
+		//Add cooldown.
+		squadLeader->addCooldown(skillName, cooldownTime);
 
 	}
 
-	void doSkill(CreatureObject* creature, String& modifier) {
-
+	void setBuffSL(bool value) {
+		buffSL = value;
 	}
 
-	void doAnimations(CreatureObject* creature) {
-
+	// This method checks to see if the cool down time has elapsed.
+	virtual bool derivedCanBePerformed(CreatureObject* creature, SceneObject* target) {
+		if(creature->hasCooldownExpired(skillName)) {
+			return true;
+		} else {
+			int timeRemaining = creature->getCooldownTimeRemaining(skillName);
+			StringBuffer message;
+			message << "You must wait " << timeRemaining << " seconds to perform Retreat.";
+			creature->sendSystemMessage(message.toString());
+			return false;
+		}
 	}
 };
 

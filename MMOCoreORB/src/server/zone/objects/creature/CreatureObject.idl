@@ -258,7 +258,7 @@ interface CreatureObject implements TangibleObject {
 	boolean hasAttackDelay();
 	void clearAttackDelay();
 
-	void activateBurstRun();
+	void activateBurstRun(boolean bypassChecks = false);
 
 	boolean hasQueuedState(unsigned int skillCRC);
 	boolean removeQueuedState(unsigned int skillCRC);

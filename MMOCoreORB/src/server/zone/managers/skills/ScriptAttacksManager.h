@@ -116,6 +116,7 @@ public:
 	static int AddVolleyFireGroupSkill(lua_State* L);
 	static int AddFormupGroupSkill(lua_State* L);
 	static int AddRallyGroupSkill(lua_State* L);
+	static int AddRetreatGroupSkill(lua_State *L);
 };
 
 

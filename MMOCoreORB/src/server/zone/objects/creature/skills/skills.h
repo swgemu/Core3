@@ -85,6 +85,7 @@ which carries forward this exception.
 #include "self/ForageSelfSkill.h"
 #include "target/ConcealSkill.h"
 #include "CamoSkill.h"
+
 #include "PassiveSkill.h"
 
 #include "target/attack/ThrowAttackTargetSkill.h"
@@ -97,5 +98,6 @@ which carries forward this exception.
 #include "group/VolleyFireGroupSkill.h"
 #include "group/FormupGroupSkill.h"
 #include "group/RallyGroupSkill.h"
+#include "group/RetreatGroupSkill.h"
 
 #endif /*SKILLS_H_*/
