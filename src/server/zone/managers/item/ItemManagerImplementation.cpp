@@ -380,6 +380,11 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 			break;
 
 		case TangibleObjectImplementation::REPAIRTOOL:
+			item = new RepairTool(objectid, objectcrc, objectname, objecttemp);
+			if (makeStats) {
+				item->setAttributes(lootAttributes );
+				item->parseItemAttributes();
+			}
 			break;
 		case TangibleObjectImplementation::CAMPKIT:
 			item = new CampKit(objectid, objectcrc, objectname, objecttemp);

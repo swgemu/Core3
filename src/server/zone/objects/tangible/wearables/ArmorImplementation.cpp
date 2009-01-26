@@ -305,7 +305,20 @@ void ArmorImplementation::generateAttributes(SceneObject* obj) {
 }
 
 void ArmorImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
-
+/*
+ * Incoming Values:					Ranges:
+ * sockets							All depend on type of armor
+ * hit_points
+ * armor_effectiveness
+ * armor_integrity
+ * armor_health_encumbrance
+ * armor_action_encumbrance
+ * armor_mind_encumbrance
+ * armor_rating
+ * armor_special_type
+ * armor_special_effectiveness
+ * armor_special_integrity
+ */
 	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
 	if (firstCraftingUpdate) {
