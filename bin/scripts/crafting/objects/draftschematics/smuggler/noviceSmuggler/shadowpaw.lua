@@ -41,31 +41,46 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
--- draftschematic lua files
+shadowpaw = Object:new {
 
---RunDraftSchematicFile("config.lua") -- crafting configuration
+   objectName = "Shadowpaw",
+   stfName = "shadowpaw",
+   objectCRC = 1734826910,
+   groupName = "craftSmugglerSpiceNovice", -- Group schematic is awarded in (See skills table)
 
-RunDraftSchematicFile("objects/object.lua") -- basic object
-RunDraftSchematicFile("objects/draftschematic.lua") -- DraftSchematic Object
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 10, 
+   size = 1, 
 
--- Global creature table
-DraftSchematics = { }
+   xpType = "crafting_spice", 
+   xp = 120, 
 
-function DraftSchematics:addDraftSchematic(obj, crc)
-	self[crc] = obj
- AddDraftSchematicToServer(obj);
-end
+   assemblySkill = "spice_assembly", 
+   experimentingSkill = "spice_experimentation", 
 
-function getDraftSchematic(crc)
-	return DraftSchematics[crc]
-end
--- DraftSchematics objects
+   ingredientTemplateNames = "craft_food_ingredients_n, craft_food_ingredients_n",
+   ingredientTitleNames = "crushed_root, container",
+   ingredientSlotType = "0, 0",
+   resourceTypes = "organic, metal",
+   resourceQuantities = "25, 5",
+   combineTypes = "0, 0",
+   contribution = "100, 100",
 
-RunDraftSchematicFile("objects/draftschematics/armorsmith/main.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/main.lua")
-RunDraftSchematicFile("objects/draftschematics/entertainer/main.lua")
-RunDraftSchematicFile("objects/draftschematics/musician/main.lua")
-RunDraftSchematicFile("objects/draftschematics/ranger/main.lua")
-RunDraftSchematicFile("objects/draftschematics/scout/main.lua")
-RunDraftSchematicFile("objects/draftschematics/smuggler/main.lua")
-RunDraftSchematicFile("objects/draftschematics/tailor/main.lua")
+   numberExperimentalProperties = "1, 1, 3",
+   experimentalProperties = "XX, XX, DR, OQ, UT",
+   experimentalWeights = "1, 1, 4, 1, 1",
+   experimentalGroupTitles = "null, null, exp_nutrition",
+
+   experimentalSubGroupTitles = "null, null, hitpoints",
+   experimentalMin = "0, 0, 1000",
+   experimentalMax = "0, 0, 1000",
+   experimentalPrecision = "0, 0, 0",
+
+   tanoAttributes = "objecttype=8202:objectcrc=2778111395:objecttemp=shadowpaw:templatetype=food_name:itemmask=65535:",
+   customizationOptions = "",
+   customizationDefaults = "",
+   customizationSkill = "spice_customization"
+
+}
+
+DraftSchematics:addDraftSchematic(shadowpaw, 1734826910)--- Add to global DraftSchematics table

@@ -105,17 +105,17 @@ void SurveyToolImplementation::init() {
 int SurveyToolImplementation::useObject(Player* player) {
 	ResourceManager* resourceManager = player->getZone()->getZoneServer()->getResourceManager();
 
-	String skillBox = "crafting_artisan_novice";
+	String noviceSkill = "crafting_artisan_novice";
+
 	if (player->getParent() != NULL && player->getParent()->isCell()) {
 		ChatSystemMessage* sysMessage = new ChatSystemMessage("error_message", "survey_in_structure");
 		player->sendMessage(sysMessage);
 		return 0;
 	}
 
-	if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
-		// Added to set a default range.  Remove this to disable feature.
-		if (getSurveyToolRange() == 0)
-			setSurveyToolRange(64);
+	if (player->getSkillBoxesSize() && player->hasSkillBox(noviceSkill)) {
+
+		checkSurveyRange(player);
 
 		if (getSurveyToolRange() > 0) {
 			if (resourceManager->sendSurveyResources(player, getSurveyToolType())) {
@@ -131,6 +131,38 @@ int SurveyToolImplementation::useObject(Player* player) {
 	}
 
 	return 0;
+}
+
+void SurveyToolImplementation::checkSurveyRange(Player* player) {
+
+	String survey1Skill = "crafting_artisan_survey_01";
+	String survey2Skill = "crafting_artisan_survey_02";
+	String survey3Skill = "crafting_artisan_survey_03";
+	String survey4Skill = "crafting_artisan_survey_04";
+
+	if (player->hasSkillBox(survey4Skill))
+		return;
+
+	if (getSurveyToolRange() > 256)
+		setSurveyToolRange(256);
+
+	if (player->hasSkillBox(survey3Skill))
+		return;
+
+	if (getSurveyToolRange() > 192)
+		setSurveyToolRange(192);
+
+	if (player->hasSkillBox(survey2Skill))
+		return;
+
+	if (getSurveyToolRange() > 128)
+		setSurveyToolRange(128);
+
+	if (player->hasSkillBox(survey1Skill))
+		return;
+
+	if (getSurveyToolRange() > 64)
+		setSurveyToolRange(64);
 }
 
 void SurveyToolImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {

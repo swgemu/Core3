@@ -41,31 +41,46 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
--- draftschematic lua files
+precisionLaserKnife = Object:new {
 
---RunDraftSchematicFile("config.lua") -- crafting configuration
+   objectName = "Precision Laser Knife",
+   stfName = "laser_knife",
+   objectCRC = 1575116633,
+   groupName = "craftSmugglerToolsA", -- Group schematic is awarded in (See skills table)
 
-RunDraftSchematicFile("objects/object.lua") -- basic object
-RunDraftSchematicFile("objects/draftschematic.lua") -- DraftSchematic Object
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 7, 
+   size = 1, 
 
--- Global creature table
-DraftSchematics = { }
+   xpType = "crafting_spice", 
+   xp = 32, 
 
-function DraftSchematics:addDraftSchematic(obj, crc)
-	self[crc] = obj
- AddDraftSchematicToServer(obj);
-end
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
 
-function getDraftSchematic(crc)
-	return DraftSchematics[crc]
-end
--- DraftSchematics objects
+   ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
+   ingredientTitleNames = "assembly_enclosure, controller, laser_assembly",
+   ingredientSlotType = "0, 0, 0",
+   resourceTypes = "metal, metal, metal",
+   resourceQuantities = "7, 7, 2",
+   combineTypes = "0, 0, 0",
+   contribution = "100, 100, 100",
 
-RunDraftSchematicFile("objects/draftschematics/armorsmith/main.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/main.lua")
-RunDraftSchematicFile("objects/draftschematics/entertainer/main.lua")
-RunDraftSchematicFile("objects/draftschematics/musician/main.lua")
-RunDraftSchematicFile("objects/draftschematics/ranger/main.lua")
-RunDraftSchematicFile("objects/draftschematics/scout/main.lua")
-RunDraftSchematicFile("objects/draftschematics/smuggler/main.lua")
-RunDraftSchematicFile("objects/draftschematics/tailor/main.lua")
+   numberExperimentalProperties = "1, 1, 1, 1",
+   experimentalProperties = "XX, XX, XX, CD",
+   experimentalWeights = "1, 1, 1, 1",
+   experimentalGroupTitles = "null, null, null, exp_effectiveness",
+
+   experimentalSubGroupTitles = "null, null, hitpoints, usemodifier",
+   experimentalMin = "0, 0, 1000, -15",
+   experimentalMax = "0, 0, 1000, 15",
+   experimentalPrecision = "0, 0, 0, 0",
+
+   tanoAttributes = "objecttype=8211:objectcrc=3905355100:objecttemp=laser_knife:templatetype=item_n:itemmask=65535:",
+   customizationOptions = "",
+   customizationDefaults = "",
+   customizationSkill = "spice_customization"
+
+}
+
+DraftSchematics:addDraftSchematic(precisionLaserKnife, 1575116633)--- Add to global DraftSchematics table

@@ -41,31 +41,46 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
--- draftschematic lua files
+greyGabaki = Object:new {
 
---RunDraftSchematicFile("config.lua") -- crafting configuration
+   objectName = "Grey Gabaki",
+   stfName = "grey_gabaki",
+   objectCRC = 3344628504,
+   groupName = "craftSmugglerSpiceNovice", -- Group schematic is awarded in (See skills table)
 
-RunDraftSchematicFile("objects/object.lua") -- basic object
-RunDraftSchematicFile("objects/draftschematic.lua") -- DraftSchematic Object
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 10, 
+   size = 1, 
 
--- Global creature table
-DraftSchematics = { }
+   xpType = "crafting_spice", 
+   xp = 80, 
 
-function DraftSchematics:addDraftSchematic(obj, crc)
-	self[crc] = obj
- AddDraftSchematicToServer(obj);
-end
+   assemblySkill = "spice_assembly", 
+   experimentingSkill = "spice_experimentation", 
 
-function getDraftSchematic(crc)
-	return DraftSchematics[crc]
-end
--- DraftSchematics objects
+   ingredientTemplateNames = "craft_food_ingredients_n, craft_food_ingredients_n",
+   ingredientTitleNames = "dried_leaf, preservative",
+   ingredientSlotType = "0, 0",
+   resourceTypes = "vegetable, organic",
+   resourceQuantities = "15, 5",
+   combineTypes = "0, 0",
+   contribution = "100, 100",
 
-RunDraftSchematicFile("objects/draftschematics/armorsmith/main.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/main.lua")
-RunDraftSchematicFile("objects/draftschematics/entertainer/main.lua")
-RunDraftSchematicFile("objects/draftschematics/musician/main.lua")
-RunDraftSchematicFile("objects/draftschematics/ranger/main.lua")
-RunDraftSchematicFile("objects/draftschematics/scout/main.lua")
-RunDraftSchematicFile("objects/draftschematics/smuggler/main.lua")
-RunDraftSchematicFile("objects/draftschematics/tailor/main.lua")
+   numberExperimentalProperties = "1, 1, 1",
+   experimentalProperties = "XX, XX, XX",
+   experimentalWeights = "1, 1, 1",
+   experimentalGroupTitles = "null, null, null",
+
+   experimentalSubGroupTitles = "null, null, hitpoints",
+   experimentalMin = "0, 0, 1000",
+   experimentalMax = "0, 0, 1000",
+   experimentalPrecision = "0, 0, 0",
+
+   tanoAttributes = "objecttype=8202:objectcrc=4012257661:objecttemp=grey_gabaki:templatetype=spice/spice:itemmask=65535:",
+   customizationOptions = "",
+   customizationDefaults = "",
+   customizationSkill = "spice_customization"
+
+}
+
+DraftSchematics:addDraftSchematic(greyGabaki, 3344628504)--- Add to global DraftSchematics table

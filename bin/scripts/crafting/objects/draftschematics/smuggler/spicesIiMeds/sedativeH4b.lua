@@ -41,31 +41,46 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
--- draftschematic lua files
+sedativeH4b = Object:new {
 
---RunDraftSchematicFile("config.lua") -- crafting configuration
+   objectName = "Sedative H4b",
+   stfName = "sedative_h4b",
+   objectCRC = 811014949,
+   groupName = "craftSmugglerSpiceB", -- Group schematic is awarded in (See skills table)
 
-RunDraftSchematicFile("objects/object.lua") -- basic object
-RunDraftSchematicFile("objects/draftschematic.lua") -- DraftSchematic Object
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 11, 
+   size = 1, 
 
--- Global creature table
-DraftSchematics = { }
+   xpType = "crafting_spice", 
+   xp = 115, 
 
-function DraftSchematics:addDraftSchematic(obj, crc)
-	self[crc] = obj
- AddDraftSchematicToServer(obj);
-end
+   assemblySkill = "spice_assembly", 
+   experimentingSkill = "spice_experimentation", 
 
-function getDraftSchematic(crc)
-	return DraftSchematics[crc]
-end
--- DraftSchematics objects
+   ingredientTemplateNames = "craft_food_ingredients_n, craft_food_ingredients_n, craft_food_ingredients_n",
+   ingredientTitleNames = "h4b_concentrate, coagulant, delivery_mechanism",
+   ingredientSlotType = "0, 0, 0",
+   resourceTypes = "organic, meat, metal",
+   resourceQuantities = "10, 10, 5",
+   combineTypes = "0, 0, 0",
+   contribution = "100, 100, 100",
 
-RunDraftSchematicFile("objects/draftschematics/armorsmith/main.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/main.lua")
-RunDraftSchematicFile("objects/draftschematics/entertainer/main.lua")
-RunDraftSchematicFile("objects/draftschematics/musician/main.lua")
-RunDraftSchematicFile("objects/draftschematics/ranger/main.lua")
-RunDraftSchematicFile("objects/draftschematics/scout/main.lua")
-RunDraftSchematicFile("objects/draftschematics/smuggler/main.lua")
-RunDraftSchematicFile("objects/draftschematics/tailor/main.lua")
+   numberExperimentalProperties = "1, 1, 3",
+   experimentalProperties = "XX, XX, DR, OQ, UT",
+   experimentalWeights = "1, 1, 4, 1, 1",
+   experimentalGroupTitles = "null, null, exp_nutrition",
+
+   experimentalSubGroupTitles = "null, null, hitpoints",
+   experimentalMin = "0, 0, 1000",
+   experimentalMax = "0, 0, 1000",
+   experimentalPrecision = "0, 0, 0",
+
+   tanoAttributes = "objecttype=8202:objectcrc=4072023421:objecttemp=sedative_h4b:templatetype=spice/spice:itemmask=65535:",
+   customizationOptions = "",
+   customizationDefaults = "",
+   customizationSkill = "spice_customization"
+
+}
+
+DraftSchematics:addDraftSchematic(sedativeH4b, 811014949)--- Add to global DraftSchematics table

@@ -41,31 +41,46 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
--- draftschematic lua files
+yarrock = Object:new {
 
---RunDraftSchematicFile("config.lua") -- crafting configuration
+   objectName = "Yarrock",
+   stfName = "yarrock",
+   objectCRC = 3906041259,
+   groupName = "craftSmugglerSpiceA", -- Group schematic is awarded in (See skills table)
 
-RunDraftSchematicFile("objects/object.lua") -- basic object
-RunDraftSchematicFile("objects/draftschematic.lua") -- DraftSchematic Object
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 10, 
+   size = 1, 
 
--- Global creature table
-DraftSchematics = { }
+   xpType = "crafting_spice", 
+   xp = 90, 
 
-function DraftSchematics:addDraftSchematic(obj, crc)
-	self[crc] = obj
- AddDraftSchematicToServer(obj);
-end
+   assemblySkill = "spice_assembly", 
+   experimentingSkill = "spice_experimentation", 
 
-function getDraftSchematic(crc)
-	return DraftSchematics[crc]
-end
--- DraftSchematics objects
+   ingredientTemplateNames = "craft_food_ingredients_n, craft_food_ingredients_n, craft_food_ingredients_n",
+   ingredientTitleNames = "dried_root, grain_dust, chemical_reactive",
+   ingredientSlotType = "0, 0, 0",
+   resourceTypes = "wood, cereal, chemical",
+   resourceQuantities = "10, 5, 5",
+   combineTypes = "0, 0, 0",
+   contribution = "100, 100, 100",
 
-RunDraftSchematicFile("objects/draftschematics/armorsmith/main.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/main.lua")
-RunDraftSchematicFile("objects/draftschematics/entertainer/main.lua")
-RunDraftSchematicFile("objects/draftschematics/musician/main.lua")
-RunDraftSchematicFile("objects/draftschematics/ranger/main.lua")
-RunDraftSchematicFile("objects/draftschematics/scout/main.lua")
-RunDraftSchematicFile("objects/draftschematics/smuggler/main.lua")
-RunDraftSchematicFile("objects/draftschematics/tailor/main.lua")
+   numberExperimentalProperties = "1, 1, 3",
+   experimentalProperties = "XX, XX, DR, OQ, UT",
+   experimentalWeights = "1, 1, 4, 1, 1",
+   experimentalGroupTitles = "null, null, exp_nutrition",
+
+   experimentalSubGroupTitles = "null, null, hitpoints",
+   experimentalMin = "0, 0, 1000",
+   experimentalMax = "0, 0, 1000",
+   experimentalPrecision = "0, 0, 0",
+
+   tanoAttributes = "objecttype=8202:objectcrc=194250139:objecttemp=yarrock:templatetype=spice/spice:itemmask=65535:",
+   customizationOptions = "",
+   customizationDefaults = "",
+   customizationSkill = "spice_customization"
+
+}
+
+DraftSchematics:addDraftSchematic(yarrock, 3906041259)--- Add to global DraftSchematics table
