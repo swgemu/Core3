@@ -63,6 +63,8 @@ public:
 
 	int useObject(Player* player);
 
+	void checkSurveyRange(Player* player);
+
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 
 	void generateAttributes(SceneObject* obj);

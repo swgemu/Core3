@@ -76,7 +76,7 @@ configurableDice = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=1212860070:objecttemp=eqp_configurable_group_dice_single:templatetype=dice/dice_details:itemmask=65535:",
+   tanoAttributes = "objecttype=8211:objectcrc=1212860070:objecttemp=eqp_configurable_group_dice_single:templatetype=dice/dice_details:itemmask=65535:",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

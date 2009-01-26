@@ -41,31 +41,22 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
--- draftschematic lua files
+-- Smuggler
 
---RunDraftSchematicFile("config.lua") -- crafting configuration
-
-RunDraftSchematicFile("objects/object.lua") -- basic object
-RunDraftSchematicFile("objects/draftschematic.lua") -- DraftSchematic Object
-
--- Global creature table
-DraftSchematics = { }
-
-function DraftSchematics:addDraftSchematic(obj, crc)
-	self[crc] = obj
- AddDraftSchematicToServer(obj);
-end
-
-function getDraftSchematic(crc)
-	return DraftSchematics[crc]
-end
--- DraftSchematics objects
-
-RunDraftSchematicFile("objects/draftschematics/armorsmith/main.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/main.lua")
-RunDraftSchematicFile("objects/draftschematics/entertainer/main.lua")
-RunDraftSchematicFile("objects/draftschematics/musician/main.lua")
-RunDraftSchematicFile("objects/draftschematics/ranger/main.lua")
-RunDraftSchematicFile("objects/draftschematics/scout/main.lua")
-RunDraftSchematicFile("objects/draftschematics/smuggler/main.lua")
-RunDraftSchematicFile("objects/draftschematics/tailor/main.lua")
+RunDraftSchematicFile("objects/draftschematics/smuggler/noviceSmuggler/greyGabaki.lua")
+RunDraftSchematicFile("objects/draftschematics/smuggler/noviceSmuggler/scramjet.lua")
+RunDraftSchematicFile("objects/draftschematics/smuggler/noviceSmuggler/shadowpaw.lua")
+RunDraftSchematicFile("objects/draftschematics/smuggler/spicesINaturals/yarrock.lua")
+RunDraftSchematicFile("objects/draftschematics/smuggler/spicesINaturals/giggledust.lua")
+RunDraftSchematicFile("objects/draftschematics/smuggler/spicesINaturals/sweetblossom.lua")
+RunDraftSchematicFile("objects/draftschematics/smuggler/spicesIiMeds/zypoleneDroidLubricant.lua")
+RunDraftSchematicFile("objects/draftschematics/smuggler/spicesIiMeds/pyrepenol.lua")
+RunDraftSchematicFile("objects/draftschematics/smuggler/spicesIiMeds/sedativeH4b.lua")
+RunDraftSchematicFile("objects/draftschematics/smuggler/spicesIiiStims/gunjack.lua")
+RunDraftSchematicFile("objects/draftschematics/smuggler/spicesIiiStims/thrusterHead.lua")
+RunDraftSchematicFile("objects/draftschematics/smuggler/spicesIvChems/boosterBlue.lua")
+RunDraftSchematicFile("objects/draftschematics/smuggler/spicesIvChems/muonGold.lua")
+RunDraftSchematicFile("objects/draftschematics/smuggler/spicesIvChems/neutronPixie.lua")
+RunDraftSchematicFile("objects/draftschematics/smuggler/noviceSmuggler/precisionLaserKnife.lua")
+RunDraftSchematicFile("objects/draftschematics/smuggler/slicingIvWeaponAdvanced/molecularClamp.lua")
+RunDraftSchematicFile("objects/draftschematics/smuggler/spicesIiiStims/crashNBurn.lua")
