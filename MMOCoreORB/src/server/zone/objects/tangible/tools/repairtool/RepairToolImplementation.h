@@ -42,83 +42,45 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef TOOLIMPLEMENTATION_H_
-#define TOOLIMPLEMENTATION_H_
+#ifndef REPAIRTOOLIMPLEMENTATION_H_
+#define REPAIRTOOLIMPLEMENTATION_H_
 
-#include "../../player/Player.h"
+#include "engine/engine.h"
 
-#include "Tool.h"
+#include "RepairTool.h"
 
-class ToolImplementation : public ToolServant {
-	uint32 toolType;
-	float effectiveness;
-
-public:
-	//Smuggler Tool Types
-	static const uint32 PRECLASERKNIFE = 100;
-	static const uint32 FLOWANALYZERNODE = 101;
-	static const uint32 MOLECULARCLAMP = 102;
-	static const uint32 UPGRADEKIT = 103;
+class RepairToolImplementation : public RepairToolServant {
+private:
+	int quality;
 
 public:
-	ToolImplementation(uint64 objID, uint32 tempCRC, const UnicodeString& n, const String& tempn, uint32 tooltype);
-	ToolImplementation(uint64 objID, uint32 tooltype);
+	RepairToolImplementation(uint64 objID, uint32 tempCRC, const UnicodeString& n, const String& tempn);
+	RepairToolImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 
-	void initialize();
+	~RepairToolImplementation();
 
-	void generateAttributes(SceneObject* obj);
+	void init();
+
+	int useObject(Player* player);
 
 	void parseItemAttributes();
-
+	void generateAttributes(SceneObject* obj);
 	void addAttributes(AttributeListMessage* alm);
-	virtual void addHeaderAttributes(AttributeListMessage* alm);
-	virtual void addFooterAttributes(AttributeListMessage* alm);
 
+	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 
-	//Setters
-	inline void setToolType(uint32 value) {
-		toolType = value;
-		String attr = "toolType";
-		itemAttributes->setIntAttribute(attr, toolType);
+	void updateCraftingValues(DraftSchematic* draftSchematic);
+
+	void setQuality(int q){
+		quality = q;
+		String attr = "quality";
+		itemAttributes->setIntAttribute(attr, quality);
 	}
 
-	inline void setEffectiveness(float value) {
-		effectiveness = value;
-		String attr = "effectiveness";
-		itemAttributes->setFloatAttribute(attr, effectiveness);
-	}
-
-	//Getters
-	inline uint32 getToolType() {
-		return toolType;
-	}
-
-	inline float getEffectiveness() {
-		return effectiveness;
-	}
-
-
-	//Smuggler Tools
-	inline bool isPrecisionLaserKnife() {
-		return toolType == PRECLASERKNIFE;
-	}
-
-	inline bool isFlowAnalyzerNode() {
-		return toolType == FLOWANALYZERNODE;
-	}
-
-	inline bool isMolecularClamp() {
-		return toolType == MOLECULARCLAMP;
-	}
-
-	inline bool isUpgradeKit() {
-		return toolType == UPGRADEKIT;
-	}
-
-	inline bool isRepairTool() {
-		return (toolType==WEAPON || toolType==ARMOR || toolType==CLOTHING);
+	int getQuality(){
+		return quality;
 	}
 
 };
 
-#endif /* TOOLIMPLEMENTATION_H_ */
+#endif /* REPAIRTOOLIMPLEMENTATION_H_ */

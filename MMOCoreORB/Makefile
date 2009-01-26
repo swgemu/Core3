@@ -146,6 +146,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/tools/smuggler/MolecularClamp.idl \
 				server/zone/objects/tangible/tools/smuggler/FlowAnalyzerNode.idl \
 				server/zone/objects/tangible/tools/smuggler/UpgradeKit.idl \
+				server/zone/objects/tangible/tools/repairtool/RepairTool.idl \
 				server/zone/objects/tangible/attachment/Attachment.idl \
 				server/zone/objects/tangible/powerup/Powerup.idl \
 				server/zone/objects/tangible/holocron/Holocron.idl \

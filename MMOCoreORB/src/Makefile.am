@@ -188,6 +188,7 @@ core3_IDLS = 	server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/tangible/tools/smuggler/FlowAnalyzerNode.cpp \
 		server/zone/objects/tangible/tools/smuggler/MolecularClamp.cpp \
 		server/zone/objects/tangible/tools/smuggler/UpgradeKit.cpp \
+		server/zone/objects/tangible/tools/repairtool/RepairTool.cpp \
 		server/zone/objects/tangible/powerup/Powerup.cpp \
 		server/zone/objects/tangible/resource/ResourceContainer.cpp \
 		server/zone/objects/tangible/surveytool/SurveyTool.cpp \
@@ -346,6 +347,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/pharmaceutical/RangedStimPackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp \
 		server/zone/objects/tangible/tools/ToolImplementation.cpp \
+		server/zone/objects/tangible/tools/repairtool/RepairToolImplementation.cpp \
 		server/zone/objects/tangible/powerup/PowerupImplementation.cpp \
 		server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
 		server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp \

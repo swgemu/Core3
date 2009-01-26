@@ -405,6 +405,11 @@ void PowerupImplementation::generateName() {
 }
 
 void PowerupImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
+	/*
+	 * Incoming Values:				Range:
+	 * effect						1-100
+	 * hitpoints					1000-1000
+	 */
 	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
 	int hitPoints = (int)craftingValues->getCurrentValue("hitpoints");

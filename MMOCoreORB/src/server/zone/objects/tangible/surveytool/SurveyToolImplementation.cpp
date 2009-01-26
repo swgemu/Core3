@@ -237,6 +237,22 @@ void SurveyToolImplementation::parseItemAttributes() {
 
 }
 
+void SurveyToolImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
+	/*
+	 * Incoming Values:				Range:
+	 * usemodifier					-15 - 15
+	 * hitpoints					1000-1000
+	 */
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+
+	int hitPoints = (int)craftingValues->getCurrentValue("hitpoints");
+	setCondition(hitPoints,hitPoints);
+
+	//Did survey tools have an effectiveness like crafting tools?
+	//int useModifier = (int)craftingValues->getCurrentValue("usemodifier");
+	setSurveyToolRange(0);
+}
+
 void SurveyToolImplementation::sendSurveyEffect(Player* player) {
 	PlayClientEffectLoc* effect;
 

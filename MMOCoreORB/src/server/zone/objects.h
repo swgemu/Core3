@@ -226,6 +226,8 @@ which carries forward this exception.
 #include "objects/tangible/tools/smuggler/MolecularClampImplementation.h"
 #include "objects/tangible/tools/smuggler/UpgradeKit.h"
 #include "objects/tangible/tools/smuggler/UpgradeKitImplementation.h"
+#include "objects/tangible/tools/repairtool/RepairTool.h"
+#include "objects/tangible/tools/repairtool/RepairToolImplementation.h"
 
 #include "objects/tangible/generic/GenericItem.h"
 #include "objects/tangible/generic/GenericItemImplementation.h"

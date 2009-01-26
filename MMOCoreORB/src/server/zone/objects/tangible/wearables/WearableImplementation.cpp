@@ -147,7 +147,7 @@ void WearableImplementation::parseItemAttributes() {
 
 void WearableImplementation::init() {
 	setConditionDamage(0);
-	setCondition(1000,1000);
+	setCondition(10,10);
 
 	skillMod0Type = 0;
 	skillMod0Value = 0;
@@ -225,6 +225,11 @@ void WearableImplementation::generateAttributes(SceneObject* obj) {
 }
 
 void WearableImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
+	/*
+	 * Values available:	Range:
+	 * sockets				0-0(novice artisan)
+	 * hitpoints			1000-1000
+	 */
 	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
 	int hitPoints = (int)craftingValues->getCurrentValue("hitpoints");

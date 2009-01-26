@@ -50,6 +50,13 @@ void GeneratorDeedImplementation::parseItemAttributes() {
 }
 
 void GeneratorDeedImplementation::updateCraftingValues(DraftSchematic* draftSchematic) {
+	/*
+	 * Incoming Values:				Range:
+	 * extractrate					4-10(personal harvesters)
+	 * hoppersize					25000-50000(personal harvesters)
+	 * hitpoints					1000-1000(personal harvessters)
+	 */
+
 	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
 	int extractionRate = (int)craftingValues->getCurrentValue("extractrate");
