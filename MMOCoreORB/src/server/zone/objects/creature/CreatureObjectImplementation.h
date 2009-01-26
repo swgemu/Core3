@@ -1815,7 +1815,9 @@ public:
 	}
 
 	inline bool hasWounds() {
-		return (getHealthWounds() > 0 || getActionWounds() > 0 || getMindWounds() > 0);
+		return (getHealthWounds() > 0 || getStrengthWounds() > 0 || getConstitutionWounds() > 0
+				|| getActionWounds() > 0 || getQuicknessWounds() > 0 || getStaminaWounds() > 0
+				|| getMindWounds() > 0 || getFocusWounds() > 0 || getWillpowerWounds() > 0);
 	}
 
 	inline bool hasWound(uint8 attribute) {
