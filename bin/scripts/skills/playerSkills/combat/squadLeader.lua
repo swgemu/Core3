@@ -109,3 +109,21 @@ RallyGroupSkill = {
 
 AddRallyGroupSkill(RallyGroupSkill);
 ------------------------------------------------------------------------
+------------------------------------------------------------------------
+RetreatSkill = {
+	skillname = "retreat",
+	combatspam = "retreat_buff",
+	cooldowntime = 30,
+
+	healthcost = 0,
+	actioncost = 600,                 
+	mindcost = 600,   
+
+	effect = "", --applied to all group members that receive the buff.
+	buffSL = 0 --determines if Squad Leader also receives the buff. 	                   
+}
+
+AddRetreatGroupSkill(RetreatSkill);
+
+------------------------------------------------------------------------
+

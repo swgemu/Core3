@@ -51,7 +51,8 @@ which carries forward this exception.
 #include "../../packets.h"
 
 
-#include "events/CreatureBurstRunOverEvent.h"
+#include "events/BurstRunOverEvent.h"
+#include "events/BurstRunNotifyAvailableEvent.h"
 #include "events/DizzyFallDownEvent.h"
 #include "events/WoundTreatmentOverEvent.h"
 #include "events/InjuryTreatmentOverEvent.h"
@@ -180,6 +181,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	doPlayingMusic = false;
 	doListening = false;
 	doWatching = false;
+	burstRunning = false;
 
 	watchID = 0;
 	listenID = 0;
@@ -246,6 +248,8 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 
 	group = NULL;
 
+	burstRunOverEvent = new BurstRunOverEvent(this);
+	burstRunNotifyAvailableEvent = new BurstRunNotifyAvailableEvent(this);
 	dizzyFallDownEvent = new DizzyFallDownEvent(this);
 
 	lastMovementUpdateStamp = 0;
@@ -297,6 +301,22 @@ CreatureObjectImplementation::~CreatureObjectImplementation() {
 
 		delete dizzyFallDownEvent;
 		dizzyFallDownEvent = NULL;
+	}
+
+	if (burstRunOverEvent != NULL) {
+		if (burstRunOverEvent->isQueued())
+			server->removeEvent(burstRunOverEvent);
+
+		delete burstRunOverEvent;
+		burstRunOverEvent = NULL;
+	}
+
+	if (burstRunNotifyAvailableEvent != NULL) {
+		if (burstRunNotifyAvailableEvent->isQueued())
+			server->removeEvent(burstRunNotifyAvailableEvent);
+
+		delete burstRunNotifyAvailableEvent;
+		burstRunNotifyAvailableEvent = NULL;
 	}
 
 	if (woundTreatmentEvent != NULL) {
@@ -604,10 +624,22 @@ void CreatureObjectImplementation::setPosture(uint8 state, bool overrideDizzy, b
 
 		broadcastMessages(msgs);
 
-		if (postureState == CreaturePosture::PRONE)
-			updateSpeed(2.688, 0.7745);
-		else if (postureState == CreaturePosture::UPRIGHT)
-			updateSpeed(5.376, 1.549f);
+		if (postureState == CreaturePosture::UPRIGHT) {
+			if (isBurstRunning()) {
+				updateSpeed(8.0f, 0.922938f);
+			} else
+				updateSpeed(5.376f, 1.549f);
+		}
+
+		if (postureState == CreaturePosture::PRONE) {
+			float proneModifier = calculateProneSpeedModifier();
+
+			if (isBurstRunning()) {
+				updateSpeed(1.2f * proneModifier, 0.7745f / proneModifier);
+			} else {
+				updateSpeed(0.7f * proneModifier, 0.7745f / proneModifier);
+			}
+		}
 	}
 }
 
@@ -1681,81 +1713,167 @@ void CreatureObjectImplementation::removePowerboost() {
 	pbCounter = 0;
 }
 
-void CreatureObjectImplementation::activateBurstRun() {
-	//TODO: Burst run had HAM costs - but i can't find any documentation HOW MUCH...
+void CreatureObjectImplementation::activateBurstRun(bool bypassChecks) {
+	int duration = 30; //seconds
+	int coolDown = 600; //seconds after burst run ends.
 
-	if (isMounted() ||
-			isDizzied() ||
-			isKnockedDown() ||
-			isMeditating() ||
-			postureState != CreaturePosture::UPRIGHT) {
-
-		sendSystemMessage("@combat_effects:burst_run_no");
-
+	//Check if mounted.
+	if (isMounted()) {
+		sendSystemMessage("cbt_spam", "no_burst"); //"You cannot burst-run while mounted on a creature or vehicle."
 		return;
 	}
 
-	if (!burstRunCooldown.isPast() && isPlayer()) {
-		int left = -(burstRunCooldown.miliDifference() / 1000);
-		int min = left / 60;
-		int seconds = left % 60;
-		StringBuffer msg;
-		msg << "You must wait " << min << " minutes and " << seconds << " seconds to perform this action.";
-		((PlayerImplementation*) this)->sendSystemMessage(msg.toString());
+	//Check if on the Corvette dungeon.
+	if (getZoneID() == 39) {
+		if (isPlayer()) {
+			sendSystemMessage("cbt_spam", "burst_run_space_dungeon"); //"The artificial gravity makes burst running impossible here."
+		}
 		return;
 	}
 
-	if (isPlayer() && speed > 5.376f) {
-		UnicodeString msg = UnicodeString("You are already running.");
-		((PlayerImplementation*) this)->sendSystemMessage(msg);
+	//Check if already burst running.
+	if (isBurstRunning()) {
+		if (bypassChecks) {
+			//Renew the end event.
+			if (burstRunOverEvent->isQueued()) {
+				server->removeEvent(burstRunOverEvent);
+				server->addEvent(burstRunOverEvent, duration * 1000);
+			}
+			if (isPlayer()) {
+				sendSystemMessage("cbt_spam", "burstrun_start_single"); //"You run as hard as you can!"
+			}
+			return;
 
+		} else {
+			if (isPlayer()) {
+				sendSystemMessage("You are already running.");
+			}
+			return;
+		}
+	}
+
+	//Check for other forms of running (force run)
+	if (speed > 8.0f) {
+		if (isPlayer()) {
+			sendSystemMessage("You are already running.");
+		}
 		return;
 	}
 
-	speed = 8.0f;
-	acceleration = 0.922938f;
+	//Check states, HAM, etc.
+	if (!bypassChecks) {
+		bool success = burstRunChecks();
+		if (!success) {
+			return;
+		}
+	}
+
+	//Apply burst run.
+	if (isProne()) {
+		float proneModifier = calculateProneSpeedModifier();
+		updateSpeed(1.2f * proneModifier, 0.7745f / proneModifier);
+	} else {
+		updateSpeed(8.0f, 0.922938f);
+	}
+
+	burstRunning = true;
+
+	//Queue the end event.
+	server->addEvent(burstRunOverEvent, duration * 1000);
 
 	if (isPlayer()) {
-		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(this);
+		sendSystemMessage("cbt_spam", "burstrun_start_single"); //"You run as hard as you can!"
 
-		dcreo4->updateSpeed();
-		dcreo4->updateAcceleration();
-		dcreo4->close();
+		if (!bypassChecks) {
+			//Queue the notify burst run available event.
+			int delay = (duration + coolDown) * 1000;
+			if (isPlayer()) {
+				server->addEvent(burstRunNotifyAvailableEvent, delay);
+			}
 
-		((PlayerImplementation*) this)->sendMessage(dcreo4);
-
-		Event* e = new CreatureBurstRunOverEvent(this);
-		server->addEvent(e);
-
-		((PlayerImplementation*) this)->sendSystemMessage("cbt_spam", "burstrun_start_single");
+			//Update the cool down timer.
+			String skillName = "burstrun";
+			addCooldown(skillName, delay);
+		}
 	}
 }
 
-void CreatureObjectImplementation::deactivateBurstRun() {
-	if (speed <= 5.376) {
-		burstRunCooldown.update();
-		burstRunCooldown.addMiliTime(900000);
+void CreatureObjectImplementation::deactivateBurstRun(bool bypassChecks) {
+	if (isProne()) {
+		float proneModifier = calculateProneSpeedModifier();
+		updateSpeed(0.7f * proneModifier, 0.7745f / proneModifier);
 
-		return;
+	} else {
+		updateSpeed(5.376, 1.549f);
 	}
 
-	speed = 5.376f;
-	acceleration = 1.549f;
-
-	burstRunCooldown.update();
-	burstRunCooldown.addMiliTime(900000);
+	burstRunning = false;
 
 	if (isPlayer()) {
-		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(this);
-		dcreo4->updateSpeed();
-		dcreo4->updateAcceleration();
-		dcreo4->close();
-
-		PlayerImplementation* player = (PlayerImplementation*) this;
-		player->sendMessage(dcreo4);
-
-		((PlayerImplementation*) this)->sendSystemMessage("cbt_spam", "burstrun_stop_single");
+		sendSystemMessage("cbt_spam", "burstrun_stop_single"); //"You slow down."
 	}
+}
+
+bool CreatureObjectImplementation::burstRunChecks() {
+	float hamCost = 100.0f;
+
+	//Check invalid states.
+	if (isDizzied() || isKnockedDown() || isMeditating() || postureState != CreaturePosture::UPRIGHT) {
+		if (isPlayer()) {
+			sendSystemMessage("combat_effects", "burst_run_no");
+		}
+		return false;
+	}
+
+	//Check cooldown timer.
+	if (!hasCooldownExpired("burstrun")) {
+		String skillName = "burstrun";
+		int timeRemaining = getCooldownTimeRemaining(skillName);
+		int min = timeRemaining / 60;
+		int seconds = timeRemaining % 60;
+		StringBuffer msg;
+		msg << "You must wait " << min << " minutes and " << seconds << " seconds to perform this action.";
+		sendSystemMessage(msg.toString());
+		return false;
+	}
+
+	//Calculate HAM cost based on efficiency skill mod.
+	float burstRunMod = (float)getSkillMod("burst_run");
+	if (burstRunMod > 100.0f) {
+		burstRunMod = 100.0f;
+	}
+
+	float efficiency = 1.0f - (burstRunMod / 100.0f);
+	hamCost *= efficiency;
+	int newHamCost = (int)hamCost;
+
+	//Check for and deduct HAM cost.
+	if (getHealth() <= newHamCost || getAction() <= newHamCost || getMind() <= newHamCost) {
+		sendSystemMessage("combat_effects", "burst_run_wait"); //"You are too tired to Burst Run."
+		return false;
+
+	} else {
+		changeHAMBars(-newHamCost, -newHamCost, -newHamCost, false);
+	}
+
+	return true;
+}
+
+float CreatureObjectImplementation::calculateProneSpeedModifier() {
+	float proneModifier;
+	int terrainMod = getSkillMod("slope_move");
+
+	if (terrainMod > 100) {
+		terrainMod = 100;
+	}
+
+	if (terrainMod > 50) {
+		proneModifier = 1.0f + (((float)terrainMod - 50.0f) / 25.0f);
+	} else {
+		proneModifier = 1.0f;
+	}
+
+	return proneModifier;
 }
 
 void CreatureObjectImplementation::updateSpeed(float speed, float acceleration) {

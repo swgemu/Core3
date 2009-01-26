@@ -317,7 +317,7 @@ public:
 
 	void clearAttackDelay();
 
-	void activateBurstRun();
+	void activateBurstRun(bool bypassChecks = false);
 
 	bool hasQueuedState(unsigned int skillCRC);
 
@@ -1593,7 +1593,7 @@ public:
 
 	void clearAttackDelay();
 
-	void activateBurstRun();
+	void activateBurstRun(bool bypassChecks);
 
 	bool hasQueuedState(unsigned int skillCRC);
 

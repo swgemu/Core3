@@ -113,11 +113,10 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddBoostMoraleGroupSkill", AddBoostMoraleGroupSkill);
 	lua_register(getLuaState(), "AddFormupGroupSkill", AddFormupGroupSkill);
 	lua_register(getLuaState(), "AddRallyGroupSkill", AddRallyGroupSkill);
-	//lua_register(getLuaState(), "AddRetreatGroupSkill", AddRetreatGroupSkill);
+	lua_register(getLuaState(), "AddRetreatGroupSkill", AddRetreatGroupSkill);
 	//lua_register(getLuaState(), "AddSteadyAimGroupSkill", AddSteadyAimGroupSkill);
 	lua_register(getLuaState(), "AddVolleyFireGroupSkill", AddVolleyFireGroupSkill);
 	lua_register(getLuaState(), "AddSystemGroupMessageSkill", AddSystemGroupMessageSkill);
-
 }
 
 void ScriptAttacksManager::registerGlobals() {
@@ -1769,6 +1768,38 @@ int ScriptAttacksManager::AddRallyGroupSkill(lua_State* L) {
 		System::out << "[ERROR] when attempting to add AddRallyGroupSkill!" << endl;
 		return -1;
 	}
+}
+
+int ScriptAttacksManager::AddRetreatGroupSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	if (!skill.isValidTable())
+		return 0;
+
+	String skillname = skill.getStringField("skillname");
+	String combatSpam = skill.getStringField("combatspam");
+	int cooldownTime = skill.getIntField("cooldowntime");
+
+	String effect = skill.getStringField("effect");
+
+	int healthCost = skill.getIntField("healthcost");
+	int actionCost = skill.getIntField("actioncost");
+	int mindCost = skill.getIntField("mindcost");
+
+	bool buffSL = skill.getIntField("buffSL");
+
+	RetreatGroupSkill* retreat = new RetreatGroupSkill(skillname, effect, "", server);
+
+	retreat->setCombatSpam(combatSpam);
+	retreat->setCooldownTime(cooldownTime);
+	retreat->setHealthCost(healthCost);
+	retreat->setActionCost(actionCost);
+	retreat->setMindCost(mindCost);
+	retreat->setBuffSL(buffSL);
+
+	CombatActions->put(retreat);
+
+	return 0;
 }
 
 int ScriptAttacksManager::AddThrowRandomPoolTargetSkill(lua_State* L) {

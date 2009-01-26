@@ -94,6 +94,8 @@ class WoundTreatmentOverEvent;
 class InjuryTreatmentOverEvent;
 class StateTreatmentOverEvent;
 class ConditionTreatmentOverEvent;
+class BurstRunOverEvent;
+class BurstRunNotifyAvailableEvent;
 
 class MountCreature;
 class BuildingObject;
@@ -291,12 +293,13 @@ protected:
 	int accuracy;
 	int accuracyBonus;
 
-	Time burstRunCooldown;
 	int damageBonus;
 	int defenseBonus;
 
 	VectorMap<uint32, uint32> queuedStates; // TODO: make SortedVector for basic types
 
+	BurstRunOverEvent* burstRunOverEvent;
+	BurstRunNotifyAvailableEvent* burstRunNotifyAvailableEvent;
 	DizzyFallDownEvent* dizzyFallDownEvent;
 
 	VectorMap<CreatureObject*, uint32> damageMap;
@@ -357,6 +360,8 @@ protected:
 
 	bool frozen;
 	String templateString;
+
+	bool burstRunning;
 
 	// mask scent
 	uint32 camoType;
@@ -501,8 +506,10 @@ public:
 
 	float calculateBFRatio();
 
-	void activateBurstRun();
-	void deactivateBurstRun();
+	void activateBurstRun(bool bypassChecks = false);
+	void deactivateBurstRun(bool bypassChecks = false);
+	bool burstRunChecks();
+	float calculateProneSpeedModifier();
 
 	void updateTarget(uint64 targ);
 	void updateTarget(SceneObject* targ);
@@ -808,6 +815,10 @@ public:
 		return stateBitmask & CreatureState::ALERT;
 	}
 
+	inline bool isBurstRunning() {
+		return burstRunning;
+	}
+
 	inline bool isCreature() {
 		return creatureType == "ANIMAL";
 	}
@@ -1009,8 +1020,11 @@ public:
 	int getSkillMod(const String& name) {
 		// TODO: Add Buffs
 		int bonus = creatureSkillModBonus.get(name);
-		if (bonus > 25)
-			bonus = 25;
+		if (!(name == "burst_run") && !(name == "group_slope_move")) {
+			if (bonus > 25)
+				bonus = 25;
+		}
+
 		return creatureSkillMods.get(name) + bonus;
 	}
 
