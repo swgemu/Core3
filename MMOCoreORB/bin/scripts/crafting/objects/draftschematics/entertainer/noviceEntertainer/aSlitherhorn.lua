@@ -41,46 +41,46 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-configurableDice = Object:new {
+aSlitherhorn = Object:new {
 
-   objectName = "Configurable Dice",
-   stfName = "eqp_configurable_group_dice_single",
-   objectCRC = 1370957893,
-   groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
+   objectName = "a Slitherhorn",
+   stfName = "obj_slitherhorn",
+   objectCRC = 2027141215,
+   groupName = "craftInstrumentGroupA", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
-   complexity = 6, 
+   complexity = 8, 
    size = 1, 
 
-   xpType = "crafting_general", 
-   xp = 36, 
+   xpType = "music", 
+   xp = 90, 
 
-   assemblySkill = "general_assembly", 
+   assemblySkill = "instrument_assembly", 
    experimentingSkill = "general_experimentation", 
 
-   ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
-   ingredientTitleNames = "cube_core, hardened_shell, logic_unit, color_actuator, parallel_logic_unit, interface_pad, power_unit",
-   ingredientSlotType = "0, 0, 0, 0, 0, 0, 0",
-   resourceTypes = "metal, petrochem_inert_polymer, metal, petrochem_inert_polymer, petrochem_inert_polymer, petrochem_inert_polymer, metal_nonferrous",
-   resourceQuantities = "6, 5, 2, 2, 2, 1, 2",
-   combineTypes = "0, 0, 0, 0, 0, 0, 0",
-   contribution = "100, 100, 100, 100, 100, 100, 100",
+   ingredientTemplateNames = "craft_furniture_ingredients_n, craft_furniture_ingredients_n",
+   ingredientTitleNames = "frame, valving",
+   ingredientSlotType = "0, 0",
+   resourceTypes = "metal, metal",
+   resourceQuantities = "30, 15",
+   combineTypes = "0, 0",
+   contribution = "100, 100",
 
    numberExperimentalProperties = "1, 1, 1, 1",
-   experimentalProperties = "XX, XX, XX, CD",
+   experimentalProperties = "XX, XX, UT, CD",
    experimentalWeights = "1, 1, 1, 1",
-   experimentalGroupTitles = "null, null, null, exp_effectiveness",
+   experimentalGroupTitles = "null, null, null, exp_quality",
 
-   experimentalSubGroupTitles = "null, null, hitpoints, usemodifier",
-   experimentalMin = "0, 0, 1000, -15",
-   experimentalMax = "0, 0, 1000, 15",
+   experimentalSubGroupTitles = "null, null, hitpoints, quality",
+   experimentalMin = "0, 0, 1000, 1",
+   experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=1212860070:objecttemp=eqp_configurable_group_dice_single:templatetype=dice/dice_details:itemmask=65535:",
+   tanoAttributes = "objecttype=8204:objectcrc=3533891079:objecttemp=obj_slitherhorn:templatetype=obj_n:itemmask=65535:",
    customizationOptions = "",
    customizationDefaults = "",
-   customizationSkill = "clothing_customization"
+   customizationSkill = "instrument_customization"
 
 }
 
-DraftSchematics:addDraftSchematic(configurableDice, 1370957893)--- Add to global DraftSchematics table
+DraftSchematics:addDraftSchematic(aSlitherhorn, 2027141215)--- Add to global DraftSchematics table

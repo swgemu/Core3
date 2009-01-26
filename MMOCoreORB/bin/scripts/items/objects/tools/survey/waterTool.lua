@@ -44,7 +44,7 @@ water_tool = Tool:new {
 
 	objectName = "Water Survey Tool",
 
-	templateName = "survey_tool_water",
+	templateName = "survey_tool_moisture",
 
 	objectCRC = 2175673400,
 

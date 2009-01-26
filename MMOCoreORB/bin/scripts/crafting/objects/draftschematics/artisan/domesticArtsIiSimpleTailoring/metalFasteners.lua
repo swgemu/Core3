@@ -76,7 +76,7 @@ metalFasteners = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8224:objectcrc=1732023387:objecttemp=metal_fasteners:templatetype=craft_clothing_ingredients_n:itemmask=65535:",
+   tanoAttributes = "objecttype=262144:objectcrc=1732023387:objecttemp=metal_fasteners:templatetype=craft_clothing_ingredients_n:itemmask=65535:",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"
