@@ -5652,10 +5652,6 @@ void PlayerImplementation::die() {
 
 	//rescheduleRecovery(2000);
 
-	//if (powerboosted) {
-		//removePowerboost();
-	//}
-
 	CreatureObjectImplementation::die();
 	onDeath();
 }
@@ -6058,6 +6054,10 @@ void PlayerImplementation::onDeath() {
 
 	if (isMounted())
 		dismount(true, true);
+
+	if (powerboosted) {
+		removePowerboost();
+	}
 
 	clearDuelList();
 	clearCombatState(true);
