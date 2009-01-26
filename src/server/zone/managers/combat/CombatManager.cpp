@@ -155,7 +155,10 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 	if (tskill->isThrowSkill()) {
 		ThrowAttackTargetSkill* tarSkill = (ThrowAttackTargetSkill*) tskill;
 		ThrowableWeapon* throwWeapon= tarSkill->getThrowableWeapon(creature,actionModifier);
-		actionMessage = new CombatAction(creature, animCRC,throwWeapon->getObjectID());
+		if (throwWeapon == NULL)
+			return 0.0f;
+		else
+			actionMessage = new CombatAction(creature, animCRC,throwWeapon->getObjectID());
 	} else {
 		actionMessage = new CombatAction(creature, animCRC);
 	}
@@ -574,9 +577,6 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 	if (creature->isBlinded())
 		attackerAccuracy -= 50;
 
-	// Calculation based on the DPS calculation spreadsheet
-	float accTotal = 66.0; // Base chance
-
 	if (targetWeapon == NULL || targetWeapon->getType() == WeaponImplementation::UNARMED) {
 		targetDefense = targetCreature->getSkillMod("unarmed_passive_defense");
 		defenseType = 1 + System::random(2);
@@ -591,18 +591,20 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 		targetDefense = targetCreature->getSkillMod("counterattack");
 	}
 
+	targetDefense += targetCreature->getCenteredBonus();
 	if (targetDefense == 0)
 		return 0;
 
 	if (targetCreature->isStunned())
 		targetDefense -= 50;
-	targetDefense += targetCreature->getCenteredBonus();
-	targetDefense -=- targetDefense * targetCreature->calculateBFRatio();
 
+	targetDefense -=- targetDefense * targetCreature->calculateBFRatio();
 	if (targetDefense > 125)
 		targetDefense = 125;
 
-	accTotal += (attackerAccuracy + weaponAccuracy - targetDefense) / 2.0;
+	float defenseBonus = 0.0f;  // TODO: Fodd/drink bonuses go here
+
+	float accTotal = hitChanceEquation(attackerAccuracy, weaponAccuracy, targetDefense, defenseBonus);
 
 	if (DEBUG)
 		System::out << "Secondary - targetDefense = " << targetDefense << " attackerAccuracy = "
@@ -627,6 +629,12 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 	// TODO: saberblock
 
 	return defenseType;
+}
+
+float CombatManager::hitChanceEquation(float attackerAccuracy, float accuracyBonus, float targetDefense, float defenseBonus) {
+	float accTotal = 66.0 +
+		(attackerAccuracy + accuracyBonus - targetDefense - defenseBonus) / 2.0;
+	return accTotal;
 }
 
 int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon, int accuracyBonus, int attackType) {
@@ -665,9 +673,6 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	if (DEBUG)
 		System::out << "\tBase target defense is " << targetDefense << endl;
 
-	// Calculation based on the DPS calculation spreadsheet
-	float accTotal = 66.0; // Base chance
-
 	if (creature->isBlinded())
 		attackerAccuracy -= 50;
 	if (targetCreature->isStunned())
@@ -679,8 +684,9 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	if (DEBUG)
 		System::out << "\tTarget defense after state affects and cap is " << targetDefense << endl;
 
-	// TODO: Need to add in food/drink mods for defense and attack
-	accTotal += (attackerAccuracy + weaponAccuracy + aimMod + accuracyBonus	- targetDefense) / 2.0;
+	float defenseBonus = 0.0f;  // TODO: Food/drink defense bonuses go here
+
+	float accTotal = hitChanceEquation(attackerAccuracy, weaponAccuracy + accuracyBonus + aimMod, targetDefense, defenseBonus);
 
 	if (DEBUG)
 		System::out << "\tFinal hit chance is " << accTotal << "%" << endl;
@@ -1171,22 +1177,28 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 			checkPostureUp(creature, targetCreature, chance);
 
 		if (tskill->getDizzyChance() != 0) {
-			int targetDefense = targetCreature->getSkillMod("dizzy_defense");
-			targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+			float targetDefense = targetCreature->getSkillMod("dizzy_defense");
+			targetDefense -= (targetDefense * targetCreature->calculateBFRatio());
 
-			int rand = System::random(100);
+			if (targetDefense > 125)
+				targetDefense = 125;
 
-			if ((5 > rand) || (rand > targetDefense))
+			float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
+
+			if (System::random(100) <= hitChanceEquation(0.0f, 0.0f, targetDefense, defenseBonus))
 				targetCreature->setDizziedState();
 		}
 
 		if (tskill->getBlindChance() != 0) {
-			int targetDefense = targetCreature->getSkillMod("blind_defense");
-			targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+			float targetDefense = targetCreature->getSkillMod("blind_defense");
+			targetDefense -= (targetDefense * targetCreature->calculateBFRatio());
 
-			int rand = System::random(100);
+			if (targetDefense > 125)
+				targetDefense = 125;
 
-			if ((5 > rand) || (rand > targetDefense))
+			float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
+
+			if (System::random(100) <= hitChanceEquation(0.0f, 0.0f, targetDefense, defenseBonus))
 				targetCreature->setBlindedState();
 		}
 
@@ -1194,9 +1206,12 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 			int targetDefense = targetCreature->getSkillMod("stun_defense");
 			targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
 
-			int rand = System::random(100);
+			if (targetDefense > 125)
+				targetDefense = 125;
 
-			if ((5 > rand) || (rand > targetDefense))
+			float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
+
+			if (System::random(100) <= hitChanceEquation(0.0f, 0.0f, targetDefense, defenseBonus))
 				targetCreature->setStunnedState();
 		}
 
