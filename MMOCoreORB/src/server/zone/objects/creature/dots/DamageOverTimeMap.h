@@ -27,7 +27,6 @@ public:
 	DamageOverTimeMap() : HashTable<uint64, DamageOverTimeList*>() , HashTableIterator<uint64, DamageOverTimeList*>(this) {
 		setNullValue(NULL);
 
-		setNextTick(NULL);
 		dot = false;
 		dotStates = 0x0;
 	}
