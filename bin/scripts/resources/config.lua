@@ -63,6 +63,15 @@ spawnThrottling = 50 -- 0-90  is a percentage
   -- and this is set at 70, 90% of resources will have 
   -- a value of < 700 and 10% > 700
 
+lowerGateOverride = 500 -- 0-1000  
+  -- This will manually set the lower gate to this 
+  -- number if it has a lower gate greater than the
+  -- number entered.  ex. if a resource has a SOE gate
+  -- of 850-950, and the number is set at 300, it will
+  -- change the gate to 300-950.  This allows for resource
+  -- quality control, especially for resources with 
+  -- very high gates.  Set to 1000 for standard gates.
+
 maxspawns = 40   --  Maximum number of spawns per planet
 minspawns = 25   --  Minimum number of spawns per planet
 maxradius = 2000 --  Maximum Spawn radius of resource on map

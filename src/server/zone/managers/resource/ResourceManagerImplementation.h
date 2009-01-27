@@ -45,8 +45,6 @@ which carries forward this exception.
 #ifndef RESOURCEMANAGERIMPLEMENTATION_
 #define RESOURCEMANAGERIMPLEMENTATION_
 
-#include <vector>
-
 #include "engine/engine.h"
 
 #include "../../ZoneServer.h"
@@ -107,6 +105,7 @@ class ResourceManagerImplementation : public ResourceManagerServant, public Mute
 	int aveduration;
 
 	float spawnThrottling;
+	int lowerGateOverride;
 
 	bool forageResource;
 
