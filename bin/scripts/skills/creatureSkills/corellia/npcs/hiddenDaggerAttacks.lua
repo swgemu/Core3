@@ -52,11 +52,11 @@ hiddenDaggerAttack1 = {
 	areaRange = 0,
 	accuracyBonus = 0,
 
-	healthAttackChiddenDaggerce = 100,
-	actionAttackChiddenDaggerce = 0,
-	mindAttackChiddenDaggerce = 0,
+	healthAttackChance = 100,
+	actionAttackChance = 0,
+	mindAttackChance = 0,
 
-	dotChiddenDaggerce = 60,
+	dotChance = 60,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,

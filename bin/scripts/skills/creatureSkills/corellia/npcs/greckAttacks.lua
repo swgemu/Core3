@@ -52,11 +52,11 @@ greckAttack1 = {
 	areaRange = 0,
 	accuracyBonus = 0,
 
-	healthAttackCgreckce = 100,
-	actionAttackCgreckce = 0,
-	mindAttackCgreckce = 0,
+	healthAttackChance = 100,
+	actionAttackChance = 0,
+	mindAttackChance = 0,
 
-	dotCgreckce = 60,
+	dotChance = 60,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
