@@ -952,13 +952,13 @@ void SuiManager::handleStateTerminalRequest(uint32 boxID, Player* player, uint32
 		if (sui->isListBox() && cancel != 1) {
 			switch (itemIndex) {
 			case 0:
-				player->setOnFireState(150,1,180);
+				player->addDotState(player,System::random(10000),CreatureState::ONFIRE, 50, 0, 60,50,0);
 				break;
 			case 1:
-				player->setDiseasedState(150, 1, 180);
+				player->addDotState(player,System::random(10000),CreatureState::DISEASED, 50, 0, 60,50,0);
 				break;
 			case 2:
-				player->setPoisonedState(150, 1, 180);
+				player->addDotState(player,System::random(10000),CreatureState::POISONED, 50, 0, 60,50,0);
 				break;
 			case 3:
 				player->setDizziedState();

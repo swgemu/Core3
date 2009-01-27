@@ -178,7 +178,7 @@ DotPoolAtt = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0, --10, ?
+	bleedingStrength = 1, --10, ?
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,
@@ -226,7 +226,7 @@ DotPoolAtt = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0, --10, ?
+	bleedingStrength = 1, --10, ?
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,

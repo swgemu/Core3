@@ -188,7 +188,7 @@ sennexattack5 = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 5,
+	bleedingStrength = 1,
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,

@@ -71,7 +71,7 @@ DotPoolAtt = {
 	dotChance = 100,
 	tickStrengthOfHit = 1,
 
-	fireStrength = 0,
+	fireStrength = 1,
 	fireType = HEALTH,
 	
 	CbtSpamBlock = "flamesingle1_block",
@@ -117,7 +117,7 @@ DotPoolAtt = {
 	dotChance = 100,
 	tickStrengthOfHit = 1,
 
-	fireStrength = 0,
+	fireStrength = 1,
 	fireType = HEALTH,
 	
 	CbtSpamBlock = "flamecone1_block",
@@ -163,7 +163,7 @@ DotPoolAtt = {
 	dotChance = 100,
 	tickStrengthOfHit = 1,
 
-	fireStrength = 0,
+	fireStrength = 1,
 	fireType = HEALTH,
 	
 	CbtSpamBlock = "flamesingle2_block",
@@ -210,7 +210,7 @@ DotPoolAtt = {
 	dotChance = 100,
 	tickStrengthOfHit = 1,
 
-	fireStrength = 0,
+	fireStrength = 1,
 	fireType = HEALTH,
 	
 	CbtSpamBlock = "flamecone2_block",

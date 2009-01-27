@@ -184,21 +184,6 @@ public:
 	static const int MEDIUM = 2;
 	static const int HEAVY = 3;
 
-	static const int BLEED = 1;
-	static const int DISEASE = 2;
-	static const int FIRE = 3;
-	static const int POISON = 4;
-
-	static const int HEALTH = 1;
-	static const int STRENGTH = 2;
-	static const int CONSTITUTION = 3;
-	static const int ACTION = 4;
-	static const int QUICKNESS = 5;
-	static const int STAMINA = 6;
-	static const int MIND = 7;
-	static const int FOCUS = 8;
-	static const int WILLPOWER = 9;
-
 	static const int KINETIC = 1;
 	static const int ENERGY = 2;
 	static const int ELECTRICITY = 3;

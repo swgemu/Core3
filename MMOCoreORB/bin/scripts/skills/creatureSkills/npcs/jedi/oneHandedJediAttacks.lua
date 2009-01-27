@@ -157,7 +157,7 @@ oneHandedJediAttack4 = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0, --10, ?
+	bleedingStrength = 3, --10, ?
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,
@@ -200,7 +200,7 @@ oneHandedJediAttack5 = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0, --10, ?
+	bleedingStrength = 3, --10, ?
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,

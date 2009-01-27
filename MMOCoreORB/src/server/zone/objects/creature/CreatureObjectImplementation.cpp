@@ -215,7 +215,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	factionRank = 0;
 
 	// combat
-	fireDotType = 0;
+/*	fireDotType = 0;
 	fireDotStrength = 0;
 
 	poisonDotType = 0;
@@ -225,7 +225,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	diseaseDotStrength = 0;
 
 	bleedingDotType = 0;
-	bleedingDotStrength = 0;
+	bleedingDotStrength = 0;*/
 
 	accuracy = 0;
 	accuracyBonus = 0;
@@ -292,6 +292,8 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	//Regeneration modifiers
 	combatRegenModifier = 1.0f;
 	peacedRegenModifier = 1.0f;
+
+	dotMap = new DamageOverTimeMap();
 }
 
 CreatureObjectImplementation::~CreatureObjectImplementation() {
@@ -377,6 +379,11 @@ CreatureObjectImplementation::~CreatureObjectImplementation() {
 
 		inventory->finalize();
 		inventory = NULL;
+	}
+
+	if (dotMap != NULL) {
+		// TODO: clear & delete dotMap
+		dotMap = NULL;
 	}
 }
 
@@ -795,136 +802,13 @@ void CreatureObjectImplementation::setMeditateState() {
 	setState(CreatureState::ALERT);
 }
 
-void CreatureObjectImplementation::setPoisonedState(int str, int type, int duration) {
-	if (setState(CreatureState::POISONED)) {
-		playEffect("clienteffect/dot_apply_poison.cef");
-		sendSystemMessage("dot_message", "start_poisoned");
 
-		poisonDotType = type;
-		poisonDotStrength = str;
-
-		poisonRecoveryTime.update();
-		poisonRecoveryTime.addMiliTime(duration * 1000);
-	}
+void CreatureObjectImplementation::addDotState(CreatureObject* attacker,uint64 dotID, uint64 dotType, uint32 str, uint8 type, uint32 duration, float potency,uint32 defense) {
+	dotMap->addDot(attacker,_this, dotID ,duration,dotType, type , str,potency,defense);
 }
 
-void CreatureObjectImplementation::setOnFireState(int str, int type, int duration) {
-	if (setState(CreatureState::ONFIRE)) {
-		playEffect("clienteffect/dot_apply_fire.cef");
-		sendSystemMessage("dot_message", "start_fire");
-
-		fireDotType = type;
-		fireDotStrength = str;
-
-		fireRecoveryTime.update();
-		fireRecoveryTime.addMiliTime(duration * 1000);
-	}
-}
-
-void CreatureObjectImplementation::setBleedingState(int str, int type, int duration) {
-	if (setState(CreatureState::BLEEDING)) {
-		playEffect("clienteffect/dot_apply_bleeding.cef");
-		sendSystemMessage("dot_message", "start_bleeding");
-
-		bleedingDotType = type;
-		bleedingDotStrength = str;
-
-		bleedingRecoveryTime.update();
-		bleedingRecoveryTime.addMiliTime(duration * 1000);
-
-		nextBleedingTick.update();
-	}
-}
-
-void CreatureObjectImplementation::setDiseasedState(int str, int type, int duration) {
-	if (setState(CreatureState::DISEASED)) {
-		playEffect("clienteffect/dot_apply_disease.cef");
-		sendSystemMessage("dot_message", "start_diseased");
-
-		diseaseDotType = type;
-		diseaseDotStrength = str;
-
-		diseasedRecoveryTime.update();
-		diseasedRecoveryTime.addMiliTime(duration * 1000);
-	}
-}
-
-void CreatureObjectImplementation::doPoisonTick() {
-	if (nextPoisonTick.isPast()) {
-		if (poisonDotType == 1)
-			changeHealthBar(-poisonDotStrength);
-		else if (poisonDotType == 4)
-			changeActionBar(-poisonDotStrength);
-		else
-			changeMindBar(-poisonDotStrength);
-
-		playEffect("clienteffect/dot_poisoned.cef");
-
-		nextPoisonTick.update();
-		nextPoisonTick.addMiliTime(9000);
-	}
-}
-
-void CreatureObjectImplementation::doBleedingTick() {
-	if (nextBleedingTick.isPast()) {
-		if (bleedingDotType == 1)
-			changeHealthBar(-bleedingDotStrength);
-		else if (bleedingDotType == 4)
-			changeActionBar(-bleedingDotStrength);
-		else
-			changeMindBar(-bleedingDotStrength);
-
-		playEffect("clienteffect/dot_bleeding.cef");
-
-		nextBleedingTick.update();
-		nextBleedingTick.addMiliTime(9000);
-	}
-}
-
-void CreatureObjectImplementation::doDiseaseTick() {
-	if (nextDiseaseTick.isPast()) {
-
-		if (diseaseDotType == 1)
-			changeHealthWoundsBar(diseaseDotStrength + (shockWounds * diseaseDotStrength / 500));
-		else if (diseaseDotType == 4)
-			changeActionWoundsBar(diseaseDotStrength + (shockWounds * diseaseDotStrength / 500));
-		else
-			changeMindWoundsBar(diseaseDotStrength + (shockWounds * diseaseDotStrength / 500));
-
-		changeShockWounds(1 + (shockWounds * diseaseDotStrength / 5000));
-
-		playEffect("clienteffect/dot_diseased.cef");
-
-		nextDiseaseTick.update();
-		nextDiseaseTick.addMiliTime(9000);
-	}
-}
-
-void CreatureObjectImplementation::doFireTick() {
-	if (isOnFire() && hasState(CreatureState::SWIMMING)) {
-		clearState(CreatureState::ONFIRE);
-		return;
-	}
-
-	if (nextFireTick.isPast()) {
-		if (fireDotType == 1){
-			changeHealthWoundsBar((fireDotStrength / 5) + (shockWounds * fireDotStrength / 500));
-			changeHealthBar(-fireDotStrength);
-		} else if (fireDotType == 4) {
-			changeActionWoundsBar((fireDotStrength / 5) + (shockWounds * fireDotStrength / 500));
-			changeActionBar(-fireDotStrength);
-		} else {
-			changeMindWoundsBar((fireDotStrength / 5) + (shockWounds * fireDotStrength / 500));
-			changeMindBar(-fireDotStrength);
-		}
-
-		changeShockWounds(1 + (shockWounds * fireDotStrength / 5000));
-
-		playEffect("clienteffect/dot_fire.cef");
-
-		nextFireTick.update();
-		nextFireTick.addMiliTime(9000);
-	}
+bool CreatureObjectImplementation::healDot(uint64 dotType,int reduction) {
+	return dotMap->healState(_this,dotType,reduction);
 }
 
 bool CreatureObjectImplementation::setState(uint64 state) {
@@ -935,6 +819,11 @@ bool CreatureObjectImplementation::setState(uint64 state) {
 		return false;
 }
 
+void CreatureObjectImplementation::updateDotStates(uint64 oldStates, uint64 newStates) {
+	stateBitmask &= ~oldStates;
+	stateBitmask |= newStates;
+	updateStates();
+}
 bool CreatureObjectImplementation::clearState(uint64 state) {
 	if (stateBitmask & state) {
 		switch (state) {
@@ -982,6 +871,11 @@ bool CreatureObjectImplementation::clearState(uint64 state) {
 		return true;
 	} else
 		return false;
+}
+
+void CreatureObjectImplementation::removeState(uint64 state) {
+	stateBitmask &= ~state;
+	updateStates();
 }
 
 void CreatureObjectImplementation::updateStates() {
@@ -1558,49 +1452,37 @@ void CreatureObjectImplementation::doMeditateHeals() {
 	int meditateMod = getSkillMod("meditate");
 
     //Heal dots first.
-	if (isBleeding() || isPoisoned() || isDiseased()) {
-
-		switch (0) {
-		case 0:
+//	if (isBleeding() || isPoisoned() || isDiseased()) {
+		uint32 meditatePower = 20 + (meditateMod / 3);
+		//switch (0) {
+		//case 0:
 			if (isBleeding() && meditateMod >= 15) {
-				bleedingDotStrength -= 20 + (meditateMod / 3);
-				if (bleedingDotStrength < 1) {
-					bleedingDotStrength = 0;
-					clearState(CreatureState::BLEEDING);
-				} else {
+				if (!healDot(CreatureState::BLEEDING,meditatePower)) {
 					if (isPlayer())
 						sendSystemMessage("dot_message", "decrease_bleeding");
 				}
 				return;
 			}
 
-		case 1:
+		//case 1:
 			if (isPoisoned() && meditateMod >= 30) {
-				poisonDotStrength -= 20 + (meditateMod / 3);
-				if (poisonDotStrength < 1) {
-					poisonDotStrength = 0;
-					clearState(CreatureState::POISONED);
-				} else {
+				if (!healDot(CreatureState::BLEEDING,meditatePower)) {
 					if (isPlayer())
 						sendSystemMessage("dot_message", "decrease_poisoned");
 				}
 				return;
 			}
 
-		case 2:
+		//case 2:
 			if (isDiseased() && meditateMod >= 45) {
-				diseaseDotStrength -= 20 + (meditateMod / 3);
-				if (diseaseDotStrength < 1) {
-					diseaseDotStrength = 0;
-					clearState(CreatureState::DISEASED);
-				} else {
+				if (!healDot(CreatureState::BLEEDING,meditatePower)) {
 					if (isPlayer())
 						sendSystemMessage("dot_message", "decrease_diseased");
 				}
 				return;
 			}
-		}
-	}
+		//}
+	//}
 
     //If no more dots can be healed, heal wounds.
 	if (meditateMod >= 75) {
@@ -4126,45 +4008,6 @@ int CreatureObjectImplementation::healEnhance(CreatureObject* target, int amount
 	return amount;
 }
 
-bool CreatureObjectImplementation::curePoison(CreatureObject* target, float effectiveness) {
-	//TODO: Add in effectiveness once DoT's are restructured
-	if (!target->isPoisoned())
-		return false;
-
-	if (target->clearState(CreatureState::POISONED)) {
-		target->updateStates();
-		return true;
-	}
-
-	return false;
-}
-
-bool CreatureObjectImplementation::cureDisease(CreatureObject* target, float effectiveness) {
-	//TODO: Add in effectiveness once DoT's are restructured
-	if (!target->isDiseased())
-		return false;
-
-	if (target->clearState(CreatureState::DISEASED)) {
-		target->updateStates();
-		return true;
-	}
-
-	return false;
-}
-
-bool CreatureObjectImplementation::extinguishFire(CreatureObject* target, float effectiveness) {
-	//TODO: Add in effectiveness once DoT's are restructured
-	if (!target->isOnFire())
-		return false;
-
-	if (target->clearState(CreatureState::ONFIRE)) {
-		target->updateStates();
-		return true;
-	}
-
-	return false;
-}
-
 bool CreatureObjectImplementation::healState(CreatureObject* target, uint64 state) {
 	if (!target->hasState(state))
 		return false;
@@ -4275,7 +4118,7 @@ void CreatureObjectImplementation::deactivateStateTreatment() {
 void CreatureObjectImplementation::activateStateTreatment() {
 	doStateTreatment = true;
 	stateTreatmentEvent = NULL;
-	sendSystemMessage("healing_response", "healing_response_59 ");
+	sendSystemMessage("healing_response", "healing_response_59");
 }
 
 void CreatureObjectImplementation::deactivateConditionTreatment() {
@@ -4295,7 +4138,7 @@ void CreatureObjectImplementation::deactivateConditionTreatment() {
 void CreatureObjectImplementation::activateConditionTreatment() {
 	doConditionTreatment = true;
 	conditionTreatmentEvent = NULL;
-	sendSystemMessage("healing_response", "healing_response_59 ");
+	sendSystemMessage("healing_response", "healing_response_59");
 }
 
 int CreatureObjectImplementation::getMedicalFacilityRating() {
@@ -4564,6 +4407,7 @@ void CreatureObjectImplementation::onDeath() {
 	//Remove buffs
 	//Decay items
 	//Only creature stuff happens here.
+	((CreatureImplementation*)_this->_getImplementation())->doIncapacitate();
 }
 
 /**
@@ -4658,4 +4502,12 @@ void CreatureObjectImplementation::onRegenerateHAM() {
 	}
 
 	changeHAMBars(healthTick, actionTick, mindTick);
+}
+
+void CreatureObjectImplementation::applyDots() {
+	if (dotMap->hasDot() && dotMap->isPast()) {
+		dotMap->activateDots(_this);
+	}
+	//else
+	//	dotList->clear();
 }

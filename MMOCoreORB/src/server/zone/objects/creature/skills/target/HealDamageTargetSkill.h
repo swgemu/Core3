@@ -270,7 +270,7 @@ public:
 		if (creature == creatureTarget) {
 			msgPlayer << "You heal yourself for " << msgBody.toString() << msgTail.toString();
 			player->sendSystemMessage(msgPlayer.toString());
-		} else if (creatureTarget->isPlayer()) { // TODO: this is a temporary fix, creatureTarget wasn't checked if its a player before casting
+		} else if (creatureTarget->isPlayer()) {
 			Player* playerTarget = (Player*) creatureTarget;
 
 			msgPlayer << "You heal " << playerTarget->getFirstNameProper() << " for " << msgBody.toString() << msgTail.toString();
@@ -278,6 +278,8 @@ public:
 
 			msgTarget << player->getFirstNameProper() << " heals you for " << msgBody.toString() << msgTail.toString();
 			playerTarget->sendSystemMessage(msgTarget.toString());
+		} else {
+			//TODO: Pet Message
 		}
 	}
 
@@ -299,43 +301,6 @@ public:
 
 	void handleArea(CreatureObject* creature, CreatureObject* areaCenter, int stimPower, float range) {
 		server->getCombatManager()->handelMedicArea(creature, areaCenter,this, stimPower, range);
-	/*	for (int i = 0; i < areaCenter->inRangeObjectCount(); i++) {
-			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) areaCenter->getInRangeObject(i))->_this);
-
-			if (!object->isPlayer() && !object->isNonPlayerCreature() && !object->isAttackableObject())
-				continue;
-
-			if (object == areaCenter)
-				continue;
-
-			if (!areaCenter->isInRange(object,range))
-				continue;
-
-			CreatureObject* creatureTarget = (CreatureObject*) object;
-
-			if (creatureTarget != creature)
-				creatureTarget->lock();
-
-			if (!canPerformSkillNoMessage(creature, creatureTarget)) {
-				if (creatureTarget != creature)
-						creatureTarget->unlock();
-				continue;
-			}
-
-			int healthHealed = creature->healDamage(creatureTarget, stimPower, CreatureAttribute::HEALTH);
-			int actionHealed = creature->healDamage(creatureTarget, stimPower, CreatureAttribute::ACTION);
-
-			if (creatureTarget->isPlayer())
-				((Player*)creature)->sendBattleFatigueMessage(creatureTarget);
-
-			sendHealMessage(creature, creatureTarget, healthHealed, actionHealed);
-
-			if (creatureTarget != creature)
-				awardXp(creature, "medical", (healthHealed + healthHealed)); //No experience for healing yourself.
-
-			if (creatureTarget != creature)
-				creatureTarget->unlock();
-		}*/
 	}
 
 	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, int stimPower) {
@@ -353,6 +318,10 @@ public:
 	}
 
 	bool checkAreaMedicTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
+		// TODO: Pet Check
+		if (!creatureTarget->isPlayer()) {
+			return false;
+		}
 		if (!creature->canTreatInjuries()) {
 			return false;
 		}

@@ -219,6 +219,8 @@ private:
 	static void damage(StringTokenizer tokenizer, Player* player);
 	static void deleteFromZone(StringTokenizer tokenizer, Player* player);
 	static void playAudio(StringTokenizer tokenizer, Player* player);
+	static void applyDot(StringTokenizer tokenizer, Player* player);
+
 	void init();
 
 public:

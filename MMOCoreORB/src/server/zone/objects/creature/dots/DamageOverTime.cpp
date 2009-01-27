@@ -43,9 +43,11 @@ which carries forward this exception.
 */
 
 #include "DamageOverTime.h"
+#include "../CreatureAttribute.h"
+#include "../CreatureState.h"
 
 DamageOverTime::DamageOverTime() {
-	setType(DamageOverTimeType::BLEEDING);
+	setType(CreatureState::BLEEDING);
 	setAttribute(CreatureAttribute::HEALTH);
 	setStrength(0);
 	setDuration(0);
@@ -53,21 +55,146 @@ DamageOverTime::DamageOverTime() {
 	setExpires(NULL);
 }
 
-DamageOverTime::DamageOverTime(uint8 tp, uint8 attrib, uint32 str) {
+DamageOverTime::DamageOverTime(uint64 tp, uint8 attrib, uint32 str, uint32 dur, float potency) {
 	setType(tp);
 	setAttribute(attrib);
 	setStrength(str);
-	setDuration(0);
+	setDuration(dur);
 	setPotency(0.0f);
 	setExpires(NULL);
+	setPotency(potency);
+	activate();
 }
 
-bool DamageOverTime::activate() {
-	if (expires == NULL) {
-		expires->update();
-		expires->addMiliTime(duration * 1000);
-		return true;
+void DamageOverTime::activate() {
+		expires.update();
+		expires.addMiliTime(duration * 1000);
+}
+
+void DamageOverTime::applyDot(CreatureObject* attacker, CreatureObject* victim) {
+	switch(type) {
+		case CreatureState::BLEEDING:
+			if (expires.isPast()) {
+				return;
+			}
+			else if (nextTick.isPast()){
+
+				doBleedingTick(attacker,victim);
+
+				nextTick.update();
+				nextTick.addMiliTime(9000);
+			}
+		break;
+		case CreatureState::POISONED:
+			if (expires.isPast()) {
+				return;
+			}
+			else if (nextTick.isPast()) {
+				doPoisonTick(attacker,victim);
+
+				nextTick.update();
+				nextTick.addMiliTime(9000);
+			}
+		break;
+		case CreatureState::DISEASED:
+			if (expires.isPast()) {
+				return;
+			}
+			else if (nextTick.isPast()) {
+				doDiseaseTick(attacker,victim);
+
+				nextTick.update();
+				nextTick.addMiliTime(19000);
+			}
+		break;
+		case CreatureState::ONFIRE:
+			if (expires.isPast()) {
+				return;
+			}
+			else if (nextTick.isPast()) {
+				doFireTick(attacker,victim);
+
+				nextTick.update();
+				nextTick.addMiliTime(9000);
+			}
+		break;
+
+	}
+//	if (expires.compareTo(nextTick) > 0)
+//		expires.update();
+	victim->updateStates();
+}
+
+void DamageOverTime::doBleedingTick(CreatureObject* attacker, CreatureObject* victim) {
+		attacker->inflictDamage(victim,attribute,strength);
+
+		victim->playEffect("clienteffect/dot_bleeding.cef","");
+}
+
+void DamageOverTime::doFireTick(CreatureObject* attacker, CreatureObject* victim) {
+		attacker->inflictDamage(victim,attribute,strength);
+
+		victim->playEffect("clienteffect/dot_fire.cef","");
+}
+
+void DamageOverTime::doPoisonTick(CreatureObject* attacker, CreatureObject* victim) {
+		attacker->inflictDamage(victim,attribute,strength);
+
+		victim->playEffect("clienteffect/dot_poisoned.cef","");
+}
+
+void DamageOverTime::doDiseaseTick(CreatureObject* attacker, CreatureObject* victim) {
+		uint32 shockWounds = victim->getShockWounds();
+
+		switch (attribute) {
+			case CreatureAttribute::HEALTH:
+				victim->changeHealthWoundsBar(strength + (shockWounds * strength / 500));
+				break;
+			case CreatureAttribute::STRENGTH:
+				victim->changeStrengthWoundsBar(strength + (shockWounds * strength / 500));
+				break;
+			case CreatureAttribute::CONSTITUTION:
+				victim->changeConstitutionWoundsBar(strength + (shockWounds * strength / 500));
+				break;
+			case CreatureAttribute::ACTION:
+				victim->changeActionWoundsBar(strength + (shockWounds * strength / 500));
+				break;
+			case CreatureAttribute::QUICKNESS:
+				victim->changeQuicknessWoundsBar(strength + (shockWounds * strength / 500));
+				break;
+			case CreatureAttribute::STAMINA:
+				victim->changeStaminaWoundsBar(strength + (shockWounds * strength / 500));
+				break;
+			case CreatureAttribute::MIND:
+				victim->changeMindWoundsBar(strength + (shockWounds * strength / 500));
+				break;
+			case CreatureAttribute::FOCUS:
+				victim->changeFocusWoundsBar(strength + (shockWounds * strength / 500));
+				break;
+			case CreatureAttribute::WILLPOWER:
+				victim->changeWillpowerWoundsBar(strength + (shockWounds * strength / 500));
+				break;
+
+		}
+
+		victim->playEffect("clienteffect/dot_diseased.cef","");
+		StringBuffer msg;
+}
+
+int DamageOverTime::reduceTick(int reduction) {
+	if (reduction < 0)
+		return reduction;
+
+	int eff_reduction = (potency - reduction);
+	int reductionLeft = reduction - potency;
+
+	if (reductionLeft >= 0) {
+		expires.update();
+	} else {
+		float dot_reduction = ((float)eff_reduction) / potency;
+		strength *= dot_reduction;
+		potency -= reduction;
 	}
 
-	return false;
+	return reductionLeft;
 }

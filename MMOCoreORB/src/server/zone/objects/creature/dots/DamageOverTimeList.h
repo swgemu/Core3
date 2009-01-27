@@ -46,23 +46,36 @@ which carries forward this exception.
 #define DAMAGEOVERTIMELIST_H_
 
 #include "engine/engine.h"
-#include "DamageOverTime.h"
 
-class DamageOverTimeList : public VectorMap<uint32, DamageOverTime*> {
-	int hash(const uint32& key) {
-		return key;
+#include "../CreatureState.h"
+#include "DamageOverTime.h"
+#include "../CreatureObject.h"
+
+class DamageOverTimeList : public HashTable<uint64, DamageOverTime*>, public HashTableIterator<uint64, DamageOverTime*>{
+	int hash(const uint64& key) {
+		return Long::hashCode(key);
 	}
 
 protected:
 	Time nextTick;
-
+	bool dot;
+	CreatureObject* attacker;
 public:
 	//uint32 is the skillCRC of the skill used to apply the DOT
-	DamageOverTimeList() : VectorMap<uint32, DamageOverTime*>() {
+	DamageOverTimeList(CreatureObject* attacker) : HashTable<uint64, DamageOverTime*>() , HashTableIterator<uint64, DamageOverTime*>(this) {
 		setNullValue(NULL);
-		setInsertPlan(NO_DUPLICATE);
 
 		setNextTick(NULL);
+		setAttacker(attacker);
+		dot = false;
+	}
+
+	inline void setAttacker(CreatureObject* crea) {
+		attacker = crea;
+	}
+
+	inline CreatureObject* getAttacker() {
+		return attacker;
 	}
 
 	inline void setNextTick(Time time) {
@@ -70,12 +83,24 @@ public:
 	}
 
 	inline void setNextTick(uint32 delay) {
-		nextTick->addMiliTime(delay * 1000);
+		nextTick.addMiliTime(delay * 1000);
 	}
 
 	inline Time getNextTick() {
 		return nextTick;
 	}
+
+	bool hasDot() {
+		return (!isEmpty() && dot);
+	}
+
+	inline bool isNextTickPast() {
+		return nextTick.isPast();
+	}
+
+	uint64 activateDots(CreatureObject* victim);
+	bool addDot(CreatureObject* victim, uint64 dotID, uint32 duration, uint64 dotType, uint8 pool, uint32 strength,float potency);
+	int healState(uint64 dotType, int reduction) ;
 };
 
 #endif /* DAMAGEOVERTIMELIST_H_ */

@@ -2406,7 +2406,7 @@ void PlayerImplementation::doStateRecovery() {
 	if (isIntimidated() && intimidateRecoveryTime.isPast())
 		clearState(CreatureState::INTIMIDATED);
 
-	if (isPoisoned()) {
+	/*if (isPoisoned()) {
 		if (poisonRecoveryTime.isPast())
 			clearState(CreatureState::POISONED);
 		else doPoisonTick();
@@ -2428,7 +2428,9 @@ void PlayerImplementation::doStateRecovery() {
 		if (bleedingRecoveryTime.isPast())
 			clearState(CreatureState::BLEEDING);
 		else doBleedingTick();
-	}
+	}*/
+
+	applyDots();
 
 	updateStates();
 }

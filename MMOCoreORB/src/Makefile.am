@@ -275,6 +275,9 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/action/ActionImplementation.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp \
 		server/zone/objects/creature/buffs/Buff.cpp \
+		server/zone/objects/creature/dots/DamageOverTime.cpp \
+		server/zone/objects/creature/dots/DamageOverTimeList.cpp \
+		server/zone/objects/creature/dots/DamageOverTimeMap.cpp \
 		server/zone/objects/creature/CreatureImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/creature/mount/MountCreatureImplementation.cpp \
@@ -315,8 +318,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/campkit/campsite/CampSiteImplementation.cpp \
 		server/zone/objects/tangible/campkit/campsite/BasicCampSiteImplementation.cpp \
 		server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp \
-		server/zone/objects/tangible/weapons/ThrowableWeaponImplementation.cpp \
-		server/zone/objects/tangible/weapons/throwable/TrapThrowableWeaponImplementation.cpp \
 		server/zone/objects/tangible/consumable/ConsumableImplementation.cpp \
 		server/zone/objects/tangible/consumable/food/FoodImplementation.cpp \
 		server/zone/objects/tangible/consumable/drink/DrinkImplementation.cpp \
@@ -355,6 +356,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
 		server/zone/objects/tangible/ticket/TicketImplementation.cpp \
 		server/zone/objects/tangible/weapons/WeaponImplementation.cpp \
+		server/zone/objects/tangible/weapons/ThrowableWeaponImplementation.cpp \
+		server/zone/objects/tangible/weapons/throwable/TrapThrowableWeaponImplementation.cpp \
 		server/zone/objects/tangible/wearables/WearableImplementation.cpp \
 		server/zone/objects/tangible/wearables/ArmorImplementation.cpp \
 		server/zone/packets/object/ObjectControllerMessage.cpp \

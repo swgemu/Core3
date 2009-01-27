@@ -71,7 +71,7 @@ imperialGeneralAttack1 = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 1,
 	bleedingType = ACTION,
 
 	poisonStrength = 0,

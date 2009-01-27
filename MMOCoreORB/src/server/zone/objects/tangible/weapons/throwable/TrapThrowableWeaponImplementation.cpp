@@ -92,7 +92,67 @@ void TrapThrowableWeaponImplementation::initialize() {
 	setMindAttackCost(17);
 
 	setEquipped(false);
+	switch(objectCRC) {
+		case 0xB7D57DE9:
+			setMinDamage(20);
+			setMaxDamage(60);
+			setSkill("throwwiredmeshtrap");
+			break;
+		case 0xCD1AE96C:
+			setMinDamage(120);
+			setMaxDamage(196);
+			setSkill("throwadhesivemesh");
+			break;
+		case 0x2CB999F4:
+			setMinDamage(110);
+			setMaxDamage(170);
+			setSkill("throwstinkbomb");
+			break;
+		case 0xD6E7C9BA:
+			setMinDamage(200);
+			setMaxDamage(450);
+			setSkill("throwsonicpulse");
+			break;
+		case 0xE84CAD5F:
+			setMinDamage(40);
+			setMaxDamage(60);
+			setSkill("throwsharpbonespur");
+			break;
+		case 0x935D78C3:
+			setMinDamage(150);
+			setMaxDamage(200);
+			setSkill("throwphecnacinedart");
+			break;
+		case 0xBAC1314F:
+			setMinDamage(80);
+			setMaxDamage(120);
+			setSkill("thrownoisemaker");
+			break;
+		case 0x2A08D489:
+			setMinDamage(20);
+			setMaxDamage(50);
+			setSkill("throwlecepanindart");
+			break;
+		case 0xCDD1F369:
+			setMinDamage(90);
+			setMaxDamage(170);
+			setSkill("throwglowwiretrap");
+			break;
+		case 0x2CB1F2C:
+			setMinDamage(40);
+			setMaxDamage(75);
+			setSkill("throwglowjuicetrap");
+			break;
+		case 0x2A3EBC50:
+			setMinDamage(200);
+			setMaxDamage(300);
+			setSkill("throwflashbomb");
+			break;
+		default:
+			break;
+		}
 }
+
 /*
  * Recieves the values from crafting.
  * \param DraftSchematic - the recently crafting schematic with value data

@@ -157,11 +157,15 @@ public:
 
 	bool clearState(unsigned long long state);
 
+	void updateDotStates(unsigned long long oldStates, unsigned long long newStates);
+
 	void updateStates();
 
 	void clearStates();
 
 	float calculateBFRatio();
+
+	void removeState(unsigned long long state);
 
 	void resetHAMBars(bool doUpdateClient);
 
@@ -1037,13 +1041,9 @@ public:
 
 	void setRootedState();
 
-	void setPoisonedState(int str, int type, int duration);
+	void addDotState(CreatureObject* attacker, unsigned long long dotID, unsigned long long dotType, int str, int type, int duration, float potency, int defense);
 
-	void setBleedingState(int str, int type, int duration);
-
-	void setDiseasedState(int str, int type, int duration);
-
-	void setOnFireState(int str, int type, int duration);
+	bool healDot(int dotType, int reduction);
 
 	bool setNextAttackDelay(int del);
 
@@ -1090,12 +1090,6 @@ public:
 	int healWound(CreatureObject* target, int damage, unsigned char attribute, bool doBattleFatigue = true);
 
 	int healEnhance(CreatureObject* target, int amount, float duration, unsigned char attribute, bool doBattleFatigue = true);
-
-	bool curePoison(CreatureObject* target, float effectiveness);
-
-	bool cureDisease(CreatureObject* target, float effectiveness);
-
-	bool extinguishFire(CreatureObject* target, float effectiveness);
 
 	bool healState(CreatureObject* target, unsigned long long state);
 
@@ -1433,11 +1427,15 @@ public:
 
 	bool clearState(unsigned long long state);
 
+	void updateDotStates(unsigned long long oldStates, unsigned long long newStates);
+
 	void updateStates();
 
 	void clearStates();
 
 	float calculateBFRatio();
+
+	void removeState(unsigned long long state);
 
 	void resetHAMBars(bool doUpdateClient);
 
@@ -2311,13 +2309,9 @@ public:
 
 	void setRootedState();
 
-	void setPoisonedState(int str, int type, int duration);
+	void addDotState(CreatureObject* attacker, unsigned long long dotID, unsigned long long dotType, int str, int type, int duration, float potency, int defense);
 
-	void setBleedingState(int str, int type, int duration);
-
-	void setDiseasedState(int str, int type, int duration);
-
-	void setOnFireState(int str, int type, int duration);
+	bool healDot(int dotType, int reduction);
 
 	bool setNextAttackDelay(int del);
 
@@ -2364,12 +2358,6 @@ public:
 	int healWound(CreatureObject* target, int damage, unsigned char attribute, bool doBattleFatigue);
 
 	int healEnhance(CreatureObject* target, int amount, float duration, unsigned char attribute, bool doBattleFatigue);
-
-	bool curePoison(CreatureObject* target, float effectiveness);
-
-	bool cureDisease(CreatureObject* target, float effectiveness);
-
-	bool extinguishFire(CreatureObject* target, float effectiveness);
 
 	bool healState(CreatureObject* target, unsigned long long state);
 

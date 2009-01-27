@@ -148,10 +148,10 @@ public:
 	 * \param targetCreature The target.
 	 * \param damage The damage. Dot strength = damage / 3;
 	 */
-	void applyDot(CreatureObject* targetCreature, float damage) {
+	void applyDot(CreatureObject* creature,CreatureObject* targetCreature, float damage) {
 		if (dotType > 0) {
 			int bleedingDotStrength = (int)(damage / 3);
-			targetCreature->setBleedingState(bleedingDotStrength, dotType, 60);
+			targetCreature->addDotState(creature,nameCRC,CreatureState::BLEEDING, bleedingDotStrength, CreatureAttribute::MIND, 60,50,targetCreature->getSkillMod("resistance_bleeding"));
 		}
 	}
 

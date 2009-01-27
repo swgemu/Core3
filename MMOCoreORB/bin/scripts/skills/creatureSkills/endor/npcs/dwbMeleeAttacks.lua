@@ -188,7 +188,7 @@ dwbMeleeAttack44 = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 1,
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,
@@ -262,7 +262,7 @@ dwbMeleeAttack46 = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 1,
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,
@@ -483,7 +483,7 @@ dwbMeleeAttack52 = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 2,
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,

@@ -96,7 +96,7 @@ singingMountainClanAttack20 = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 1,
 	bleedingType = ACTION,
 
 	poisonStrength = 0,
@@ -459,7 +459,7 @@ singingMountainClanAttack31 = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 1,
 	bleedingType = ACTION,
 
 	poisonStrength = 0,
@@ -621,7 +621,7 @@ singingMountainClanAttack44 = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 1,
 	bleedingType = ACTION,
 
 	poisonStrength = 0,
@@ -695,7 +695,7 @@ singingMountainClanAttack46 = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 1,
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,

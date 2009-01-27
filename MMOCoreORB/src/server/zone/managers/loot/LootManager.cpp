@@ -411,8 +411,8 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 				item->setArmorPiercing(WeaponImplementation::NONE);
 				item->setMinDamage(7);
 				item->setMaxDamage(133);
-				item->setDot0Attribute(WeaponImplementation::HEALTH);
-				item->setDot0Type(WeaponImplementation::DISEASE);
+				item->setDot0Attribute(CreatureAttribute::HEALTH);
+				item->setDot0Type(CreatureState::DISEASED);
 				item->setDot0Potency(70);
 				item->setDot0Strength(40);
 				item->setDot0Duration(1200);
