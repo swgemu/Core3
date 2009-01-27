@@ -332,7 +332,7 @@ void InstallationObjectImplementation::handleMakeDeed(Player* player) {
 
 	//deleteInstallation does these:
 	//removeFromZone(true);
-	//finalize();
+	//_this->finalize();
 }
 
 void InstallationObjectImplementation::handleStructureStatus(Player* player) {

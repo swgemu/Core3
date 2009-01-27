@@ -87,7 +87,7 @@ public:
 
 				itemManager->deletePlayerItem(player, _this, true);
 
-				finalize();
+				_this->finalize();
 			}
 		}
 

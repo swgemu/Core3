@@ -90,7 +90,8 @@ void ResourceDeedImplementation::destroyDeed(Player* player) {
 		if (zoneServer != NULL && ((itemManager = zoneServer->getItemManager()) != NULL)) {
 			player->removeInventoryItem(objectID);
 			itemManager->deletePlayerItem(player, _this, false);
-			finalize();
+
+			_this->finalize();
 		}
 	}
 }

@@ -170,7 +170,7 @@ void PharmaceuticalImplementation::useCharge(Player* player) {
 
 				itemManager->deletePlayerItem(player, _this, false);
 
-				finalize();
+				_this->finalize();
 			}
 		}
 	} else {
