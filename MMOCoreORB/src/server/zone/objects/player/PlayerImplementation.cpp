@@ -1162,8 +1162,10 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 
 		info("PlayerImplementation::insertToZone");
 
-		if (parent == NULL)
+		if (parent == NULL) {
 			setPosition(positionX, zone->getHeight(positionX, positionY), positionY);
+			updatePlayerPosition(false);
+		}
 
 		zone->registerObject(_this);
 
@@ -1750,7 +1752,6 @@ void PlayerImplementation::bounceBack() {
 
 void PlayerImplementation::drag(Player* targetPlayer, float maxRange, float maxMovement, bool needsConsent, bool canDragLiveTarget) {
 	if (targetPlayer == NULL) {
-		System::out << "target player is null.\n";
 		return;
 	}
 
@@ -1865,6 +1866,12 @@ void PlayerImplementation::notifySceneReady() {
 
 	ChatManager* chatManager = server->getChatManager();
 	chatManager->listMail(_this);
+
+	if (parent == NULL) {
+		setPosition(positionX, zone->getHeight(positionX, positionY), positionY);
+		bounceBack();
+		updatePlayerPosition(false);
+	}
 
 	info("scene ready");
 	setOnline();
