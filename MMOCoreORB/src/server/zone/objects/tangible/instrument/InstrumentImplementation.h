@@ -110,6 +110,8 @@ public:
 		customName = n;
 
 		equipped = equipd;
+
+		instrumentType = 0;
 	}
 
 	void parseItemAttributes() {

@@ -133,6 +133,20 @@ public:
 		totalHealthEncumbrance = totalActionEncumbrance = totalMindEncumbrance = 0;
 	}
 
+	const static char* getInstrumentSkill(int idx) {
+		if (idx > 10)
+			throw ArrayIndexOutOfBoundsException(idx);
+
+		return instrumentSkills[idx];
+	}
+
+	const static char* getEnhancement(int idx) {
+		if (idx > 31)
+			throw ArrayIndexOutOfBoundsException(idx);
+
+		return enhancements[idx];
+	}
+
 	void equipItem (TangibleObject* item) {
 		if (item->isArmor() || item->isClothing() || item->isWearableContainer())
 			changeWearable((Wearable*)item);
@@ -520,9 +534,9 @@ public:
 		if (item->isInstrument()) {
 			int instrument = ((Instrument*)item)->getInstrumentType();
 
-			String skillBox;
 			// Needs to be refactored
-			skillBox = instrumentSkills[instrument];
+			String skillBox = getInstrumentSkill(instrument);
+
 			if (!player->getSkillBoxesSize() || !player->hasSkillBox(skillBox)) {
 				player->sendSystemMessage("You do not have sufficient abilities to equip " + item->getCustomName().toString() + ".");
 				return false;
@@ -584,7 +598,7 @@ public:
 		if (type == 0)
 			return;
 
-		String enhanceName = enhancements[type];
+		String enhanceName = getEnhancement(type);
 		player->addSkillModBonus(enhanceName, value, true);
 	}
 

@@ -293,12 +293,16 @@ void CampSiteImplementation::exitNotificaton(Player* player) {
 	player->setCampModifier(0);
 	player->setCampAggroMod(0);
 
-	recoveries->getEvent(player->getObjectID())->leaveCamp();
+	CampRecoveryEvent* event = recoveries->getEvent(player->getObjectID());
+
+	if (event != NULL)
+		event->leaveCamp();
 
 	if (!abandoned) {
 		player->sendSystemMessage("@camp:camp_exit");
 		addXP(player->getObjectID());
 	}
+
 	visitor->put(player->getObjectID(),0);
 }
 
@@ -309,7 +313,7 @@ void CampSiteImplementation::calculateXP() {
 	if (abandoned)
 		return;
 
-	if(!visitor->isEmpty()) {
+	if (!visitor->isEmpty()) {
 		uint64 playerID = 0;
 
 		while (visitor->hasNext()) {
