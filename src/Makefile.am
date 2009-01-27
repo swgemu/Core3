@@ -55,16 +55,7 @@ LIBS =	$(SYSTEM_LIBS)  \
 
 bin_PROGRAMS = core3
 
-core3_IDLS = 	server/zone/objects/tangible/camokits/CamoKit.cpp \
-		server/zone/objects/tangible/campkit/CampKit.cpp \
-		server/zone/objects/tangible/campkit/campsite/CampSite.cpp \
-		server/zone/objects/tangible/campkit/campsite/BasicCampSite.cpp \
-		server/zone/objects/tangible/campkit/campsite/HTFBCampSite.cpp \
-		server/zone/objects/area/CampActiveArea.cpp \
-		server/zone/objects/tangible/weapons/ThrowableWeapon.cpp \
-		server/zone/objects/tangible/weapons/throwable/TrapThrowableWeapon.cpp \
-		server/zone/objects/tangible/terminal/camp/CampTerminal.cpp \
-		server/chat/ChatManager.cpp \
+core3_IDLS =	server/chat/ChatManager.cpp \
 		server/chat/GameCommandHandler.cpp \
 		server/chat/room/ChatRoom.cpp \
 		server/zone/managers/bank/BankManager.cpp \
@@ -90,6 +81,7 @@ core3_IDLS = 	server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/area/ActiveArea.cpp \
 		server/zone/objects/area/ActiveAreaTrigger.cpp \
 		server/zone/objects/area/BadgeActiveArea.cpp \
+		server/zone/objects/area/CampActiveArea.cpp \
 		server/zone/objects/area/TestActiveArea.cpp \
 		server/zone/objects/attackable/AttackableObject.cpp \
 		server/zone/objects/auction/AuctionItem.cpp \
@@ -147,6 +139,11 @@ core3_IDLS = 	server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/tangible/appearance/HairObject.cpp \
 		server/zone/objects/tangible/attachment/Attachment.cpp \
 		server/zone/objects/tangible/Bank.cpp \
+ 		server/zone/objects/tangible/camokits/CamoKit.cpp \
+		server/zone/objects/tangible/campkit/CampKit.cpp \
+		server/zone/objects/tangible/campkit/campsite/CampSite.cpp \
+		server/zone/objects/tangible/campkit/campsite/BasicCampSite.cpp \
+		server/zone/objects/tangible/campkit/campsite/HTFBCampSite.cpp \
 		server/zone/objects/tangible/component/ShipComponent.cpp \
 		server/zone/objects/tangible/consumable/Consumable.cpp \
 		server/zone/objects/tangible/consumable/food/Food.cpp \
@@ -202,6 +199,7 @@ core3_IDLS = 	server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
 		server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp \
 		server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp \
+		server/zone/objects/tangible/terminal/camp/CampTerminal.cpp \
 		server/zone/objects/tangible/ticketcollector/TicketCollector.cpp \
 		server/zone/objects/tangible/ticket/Ticket.cpp \
 		server/zone/objects/tangible/weapons/jedi/OneHandedJediWeapon.cpp \
@@ -220,6 +218,8 @@ core3_IDLS = 	server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/tangible/weapons/ranged/SpecialHeavyRangedWeapon.cpp \
 		server/zone/objects/tangible/weapons/RangedWeapon.cpp \
 		server/zone/objects/tangible/weapons/Weapon.cpp \
+		server/zone/objects/tangible/weapons/ThrowableWeapon.cpp \
+		server/zone/objects/tangible/weapons/throwable/TrapThrowableWeapon.cpp \
 		server/zone/objects/tangible/wearables/Armor.cpp \
 		server/zone/objects/tangible/wearables/Wearable.cpp \
 		server/zone/objects/waypoint/WaypointObject.cpp \
@@ -227,14 +227,6 @@ core3_IDLS = 	server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/Zone.cpp \
 		server/zone/ZoneServer.cpp 
 core3_SOURCES =	$(core3_IDLS) \
-		server/zone/objects/tangible/camokits/CamoKitImplementation.cpp \
-		server/zone/objects/tangible/campkit/CampKitImplementation.cpp \
-		server/zone/objects/tangible/campkit/campsite/CampSiteImplementation.cpp \
-		server/zone/objects/tangible/campkit/campsite/BasicCampSiteImplementation.cpp \
-		server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp \
-		server/zone/objects/tangible/weapons/ThrowableWeaponImplementation.cpp \
-		server/zone/objects/tangible/weapons/throwable/TrapThrowableWeaponImplementation.cpp \
-		server/zone/objects/scene/ContainerObject.cpp \
 		server/chat/ChatManagerImplementation.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/conf/ConfigManager.cpp \
@@ -314,9 +306,17 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
 		server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
+		server/zone/objects/scene/ContainerObject.cpp \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \
 		server/zone/objects/static/StaticObjectImplementation.cpp \
 		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
+		server/zone/objects/tangible/camokits/CamoKitImplementation.cpp \
+		server/zone/objects/tangible/campkit/CampKitImplementation.cpp \
+		server/zone/objects/tangible/campkit/campsite/CampSiteImplementation.cpp \
+		server/zone/objects/tangible/campkit/campsite/BasicCampSiteImplementation.cpp \
+		server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp \
+		server/zone/objects/tangible/weapons/ThrowableWeaponImplementation.cpp \
+		server/zone/objects/tangible/weapons/throwable/TrapThrowableWeaponImplementation.cpp \
 		server/zone/objects/tangible/consumable/ConsumableImplementation.cpp \
 		server/zone/objects/tangible/consumable/food/FoodImplementation.cpp \
 		server/zone/objects/tangible/consumable/drink/DrinkImplementation.cpp \
