@@ -65,7 +65,6 @@ public:
 	DamageOverTimeList(CreatureObject* attacker) : HashTable<uint64, DamageOverTime*>() , HashTableIterator<uint64, DamageOverTime*>(this) {
 		setNullValue(NULL);
 
-		setNextTick(NULL);
 		setAttacker(attacker);
 		dot = false;
 	}
