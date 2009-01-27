@@ -52,11 +52,11 @@ monumenterAttack1 = {
 	areaRange = 0,
 	accuracyBonus = 0,
 
-	healthAttackCmonumenterce = 100,
-	actionAttackCmonumenterce = 0,
-	mindAttackCmonumenterce = 0,
+	healthAttackChance = 100,
+	actionAttackChance = 0,
+	mindAttackChance = 0,
 
-	dotCmonumenterce = 60,
+	dotChance = 60,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,

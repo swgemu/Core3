@@ -52,11 +52,11 @@ ragTagAttack1 = {
 	areaRange = 0,
 	accuracyBonus = 0,
 
-	healthAttackCragTagce = 100,
-	actionAttackCragTagce = 0,
-	mindAttackCragTagce = 0,
+	healthAttackChance = 100,
+	actionAttackChance = 0,
+	mindAttackChance = 0,
 
-	dotCragTagce = 60,
+	dotChance = 60,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,

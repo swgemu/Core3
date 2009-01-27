@@ -52,11 +52,11 @@ beldonnasAttack1 = {
 	areaRange = 0,
 	accuracyBonus = 0,
 
-	healthAttackCbeldonnasce = 100,
-	actionAttackCbeldonnasce = 0,
-	mindAttackCbeldonnasce = 0,
+	healthAttackChance = 100,
+	actionAttackChance = 0,
+	mindAttackChance = 0,
 
-	dotCbeldonnasce = 60,
+	dotChance = 60,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
