@@ -381,24 +381,28 @@ public:
 	void initializeEvents();
 	void removeEvents();
 
-	void clearLogoutEvent() {
+	inline void clearLogoutEvent() {
 		logoutEvent = NULL;
 	}
 
-	void clearResurrectEvent() {
+	inline void clearResurrectEvent() {
 		resurrectEvent = NULL;
 	}
 
-	void clearDigestEvent() {
+	inline void clearDigestEvent() {
 		digestEvent = NULL;
 	}
 
-	void clearRecoveryEvent() {
+	inline void clearRecoveryEvent() {
 		recoveryEvent = NULL;
 	}
 
-	void clearSaveStateEvent() {
+	inline void clearSaveStateEvent() {
 		playerSaveStateEvent = NULL;
+	}
+
+	inline void clearPowerboostEventWane() {
+		powerboostEventWane = NULL;
 	}
 
 	void loadItems(bool newcharacter = false);

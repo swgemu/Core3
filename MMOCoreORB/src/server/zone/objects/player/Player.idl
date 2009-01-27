@@ -139,9 +139,9 @@ interface Player implements CreatureObject {
     void increaseMovementCounter();
     void updatePlayerPosition(boolean doLightUpdate);
     void setRadialDirection(float radangle);
-    
+
     void drag(Player targetPlayer, float range, float maxMovement, boolean needsConsent = true, boolean canDragLiveTarget = false);
-    
+
 	//void lightUpdateZone();
 	void updateZone(boolean lightUpdate = false);
 
@@ -262,6 +262,8 @@ interface Player implements CreatureObject {
 	boolean getPowerboosted();
 	void setPowerboosted(boolean pb);
 
+	void clearPowerboostEventWane();
+
 	// Item manipulation methods
 	void changeCloth(unsigned long itemid);
 	void changeWeapon(unsigned long itemid, boolean doUpdate);
@@ -269,7 +271,7 @@ interface Player implements CreatureObject {
 
 	void setWeaponSkillMods(Weapon weapon);
 	void setWeaponAccuracy(Weapon weapon);
-	
+
 	void setArmorSkillMods(Armor armor);
 	boolean setArmorEncumbrance(Armor armor, boolean forced);
 	void unsetArmorEncumbrance(Armor armor);
@@ -306,11 +308,11 @@ interface Player implements CreatureObject {
 	String getNextSkillBox();
 	boolean hasNextSkillBox();
 	boolean hasSkillBox(String skillBox);
-	
-	// Foraging                                                                                                                       
+
+	// Foraging
 	void startForaging(int foragetype);
-	boolean isForaging();      
-	int lottery(int mytickets, int totaltickets);                                                                                     
+	boolean isForaging();
+	int lottery(int mytickets, int totaltickets);
 
 	// Waypoint
 	void addWaypoint(WaypointObject wp);
@@ -409,7 +411,7 @@ interface Player implements CreatureObject {
 	void setOnline();
 
 	void clearDisconnectEvent();
-	
+
 	void setClient(ZoneClientSession client);
 
 	void updateNextTipTime();
@@ -648,9 +650,9 @@ interface Player implements CreatureObject {
 	void addLastNpcConvOptions(const String option);
 	void clearLastNpcConvOptions();
 	int countLastNpcConvOptions();
-	
+
 	void setInputBoxReturnBuffer(const String message);
-	
+
 	void setGuildLeader(boolean guildLeader = true);
 
 	void loadGuildChat();
@@ -673,8 +675,8 @@ interface Player implements CreatureObject {
 	unsigned int getMaxFactionPoints(String faction);
 
 	void delFactionPoints(Player player, unsigned int amount);
-	
-	void updateWeather(); 																								
+
+	void updateWeather();
 
 	void addSuiBoxChoice(String choice);
 
@@ -705,14 +707,14 @@ interface Player implements CreatureObject {
 	void clearTeachingSkillOptions();
 	void teachSkill(String skillname);
 	int getSkillPoints();
-	
+
 	ActiveArea getActiveArea();
 	void setActiveArea(ActiveArea area);
 
-	void throwTrap(unsigned int targetID);	
+	void throwTrap(unsigned int targetID);
 	void equipItem(TangibleObject item);
 	void unequipItem(TangibleObject item);
-	
+
 	Armor getPlayerArmor (int location);
 
 	void setCamp(CampSite campSite);
@@ -731,7 +733,7 @@ interface Player implements CreatureObject {
 	void sendItemInsuranceMenu(InsuranceTerminal terminal);
 	void sendItemInsureAllConfirm(InsuranceTerminal terminal);
 	void sendSlicingMenu(TangibleObject item);
-	
+
 	//Event Handlers
 	void onIncapacitateTarget(CreatureObject victim);
 	void onIncapacitated(SceneObject attacker);
@@ -759,7 +761,7 @@ interface Player implements CreatureObject {
 	void onInsureAllItemsComplete();
 	void onNoValidInsurables();
 	void onBankTipSuccessful();
-	
+
 	//Actions
 	void incapacitateSelf();
 	void die();
@@ -779,23 +781,23 @@ interface Player implements CreatureObject {
 	boolean cashTip(Player recipient, unsigned int amount);
 	void consent(Player playerTarget);
 	void unconsent(String name);
-	
-	
+
+
 	//Setters
 	void setCloningFacility(CloningFacility facility);
 	void addConsentEntry(const String name);
 	void removeConsentEntry(const String name);
-	
+
 	//Getters
 	CloningFacility getCloningFacility();
 	boolean hasConsented(const String name);
 	boolean hasConsentFrom(Player player);
 	unsigned int getConsentListSize();
 	String getConsentEntry(int index);
-	
+
 	//Calculations
 	unsigned char calculateIncapacitationTimer();
-	
+
 	//Sui
 	void closeSuiWindowType(unsigned int windowType);
 }

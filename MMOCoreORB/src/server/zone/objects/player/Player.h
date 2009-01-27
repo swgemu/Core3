@@ -287,6 +287,8 @@ public:
 
 	void setPowerboosted(bool pb);
 
+	void clearPowerboostEventWane();
+
 	void changeCloth(unsigned long long itemid);
 
 	void changeWeapon(unsigned long long itemid, bool doUpdate);
@@ -1227,6 +1229,8 @@ public:
 	bool getPowerboosted();
 
 	void setPowerboosted(bool pb);
+
+	void clearPowerboostEventWane();
 
 	void changeCloth(unsigned long long itemid);
 
