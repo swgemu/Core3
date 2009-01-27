@@ -179,6 +179,7 @@ bool ResourceManagerImplementation::loadConfigData() {
 	averageShiftTime = getGlobalInt("averageShiftTime");
 	aveduration = getGlobalInt("aveduration");
 	spawnThrottling = getGlobalFloat("spawnThrottling");
+	lowerGateOverride = getGlobalInt("lowerGateOverride");
 
 	maxspawns = getGlobalInt("maxspawns");
 	minspawns = getGlobalInt("minspawns");
