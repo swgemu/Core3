@@ -71,11 +71,11 @@ public:
 
 	bool addObject(SceneObject* obj);
 
-	SceneObject* getObject(int index) {
+	inline SceneObject* getObject(int index) {
 		return objects.get(index);
 	}
 
-	SceneObject* getObject(uint64 oid) {
+	inline SceneObject* getObject(uint64 oid) {
 		return objects.get(oid);
 	}
 
@@ -87,7 +87,7 @@ public:
 
 	// ssgetters
 
-	int getContainerObjectsSize() {
+	inline int getContainerObjectsSize() {
 		return objects.size();
 	}
 
@@ -113,11 +113,11 @@ public:
 		slots = attributeSlots;
 	}
 
-	void setContainerVolumeLimit(uint32 limit) {
+	inline void setContainerVolumeLimit(uint32 limit) {
 		containerVolumeLimit = limit;
 	}
 
-	void setContainerType(int type) {
+	inline void setContainerType(int type) {
 		containerType = type;
 	}
 

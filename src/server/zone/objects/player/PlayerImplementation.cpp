@@ -168,14 +168,6 @@ PlayerImplementation::~PlayerImplementation() {
 		centerOfBeingEvent = NULL;
 	}
 
-	if (powerboostEventWane != NULL) {
-		if (powerboostEventWane->isQueued())
-			server->removeEvent(powerboostEventWane);
-
-		delete powerboostEventWane;
-		powerboostEventWane = NULL;
-	}
-
 	if (recoveryEvent != NULL) {
 		if (recoveryEvent->isQueued())
 			server->removeEvent(recoveryEvent);
@@ -296,10 +288,6 @@ void PlayerImplementation::initialize() {
  	forageDelayEvent = NULL;
 
 	centerOfBeingEvent = new CenterOfBeingEvent(this);
-
-	uint32 pbCRC = 0x8C2221CB; //powerboost
-	PowerboostSelfSkill* skill = (PowerboostSelfSkill*)creatureSkills.get(pbCRC); //Get the Powerboost skill.
-	powerboostEventWane = new PowerboostEventWane(_this, skill);
 
 	lastTestPositionX = 0.f;
 	lastTestPositionY = 0.f;
@@ -631,9 +619,7 @@ void PlayerImplementation::unload() {
 	forageZones.removeAll();
 	medForageZones.removeAll();
 
-	if (powerboosted) {
-		removePowerboost();
-	}
+	removePowerboost();
 
 	clearCombatState(); // remove the defenders
 
@@ -920,6 +906,9 @@ void PlayerImplementation::initializeEvents() {
 
 		server->addEvent(playerSaveStateEvent);
 	}
+
+	PowerboostSelfSkill* skill = (PowerboostSelfSkill*)creatureSkills.get(0x8C2221CB); //Get the Powerboost skill.
+	powerboostEventWane = new PowerboostEventWane(_this, skill);
 
 	if (dizzyFallDownEvent == NULL)
 		dizzyFallDownEvent = new DizzyFallDownEvent(this);
@@ -2734,6 +2723,8 @@ bool PlayerImplementation::doPowerboost() {
 		if (powerboostEventWane->isQueued()) {
 			server->removeEvent(powerboostEventWane);
 		}
+
+		delete powerboostEventWane;
 	} else {
 		powerboostEventWane = new PowerboostEventWane(_this, skill);
 	}
@@ -2744,17 +2735,20 @@ bool PlayerImplementation::doPowerboost() {
 }
 
 void PlayerImplementation::removePowerboost() {
-	if (!powerboosted)
-		return;
-
 	if (powerboostEventWane != NULL) {
 		if (powerboostEventWane->isQueued()) {
 			server->removeEvent(powerboostEventWane);
 		}
+
+		delete powerboostEventWane;
 	}
+
+	if (!powerboosted)
+		return;
 
 	CreatureObject* creature = (CreatureObject*)_this;
 	creature->removePowerboost();
+
 	powerboosted = false;
 }
 

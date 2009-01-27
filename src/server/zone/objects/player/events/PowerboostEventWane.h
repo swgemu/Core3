@@ -59,13 +59,13 @@ public:
 		player = pl;
 
 		powerboost = sk;
-
-		setKeeping(true);
 	}
 
 	bool activate() {
 		try {
 			player->wlock();
+
+			player->clearPowerboostEventWane();
 
 			if (player->isOnline() || player->isLinkDead()) {
 				powerboost->finish(player);
