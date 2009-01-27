@@ -284,29 +284,33 @@ bool CommandQueueAction::checkHealSkill() {
 					objectId = 0;
 
 				if (objectId != 0) {
-					Pharmaceutical* pharma =  (Pharmaceutical*) creature->getInventoryItem(objectId);
+					Pharmaceutical* pharma = (Pharmaceutical*) creature->getInventoryItem(objectId);
 
-					float pharmaRange = pharma->getRange(creature);
+					if (pharma != NULL) {
+						float pharmaRange = pharma->getRange(creature);
 
-					if (pharmaRange > range) {
-						range = pharmaRange;
-
+						if (pharmaRange > range)
+							range = pharmaRange;
 					}
 				} else if (objectId == 0) {
 					HealDamageTargetSkill* hSkill = (HealDamageTargetSkill*) skill;
+
 					StimPack* stim = hSkill->findStimPack(creature,distance);
 					if (stim == NULL) {
 						String box = "science_combatmedic_novice";
+
 						if (!melee && !player->hasSkillBox(box))
 							player->sendSystemMessage("Your target is too far away to Heal Damage.");
 						else
 							player->sendSystemMessage("healing_response", "healing_response_60");
 
 						targetObject->unlock();
+
 						clearError(0);
 						return false;
 					} else {
 						range = stim->getRange(creature);
+
 						StringBuffer mod;
 
 						mod << stim->getObjectID();
@@ -318,22 +322,27 @@ bool CommandQueueAction::checkHealSkill() {
 					player->sendSystemMessage("Your target is too far away to Heal Damage.");
 
 					targetObject->unlock();
+
 					clearError(0);
 					return false;
 				}
+
 				targetObject->unlock();
+
 				clearError(0);
 				return true;
 			}
 
 			if (!creature->isInRange(target->getPositionX(), target->getPositionY(), skill->getRange())) {
 				targetObject->unlock();
+
 				clearError(4);
 				return false;
 			}
 
 			if (targetObject->isDead() && !skill->isReviveSkill() && !skill->isDragSkill()) {
 				clearError(3);
+
 				targetObject->unlock();
 				return false;
 			}

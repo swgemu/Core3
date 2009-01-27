@@ -2723,8 +2723,6 @@ bool PlayerImplementation::doPowerboost() {
 		if (powerboostEventWane->isQueued()) {
 			server->removeEvent(powerboostEventWane);
 		}
-
-		delete powerboostEventWane;
 	} else {
 		powerboostEventWane = new PowerboostEventWane(_this, skill);
 	}
@@ -2741,6 +2739,7 @@ void PlayerImplementation::removePowerboost() {
 		}
 
 		delete powerboostEventWane;
+		powerboostEventWane = NULL;
 	}
 
 	if (!powerboosted)

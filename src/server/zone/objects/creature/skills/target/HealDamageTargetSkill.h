@@ -199,7 +199,7 @@ public:
 
 		parseModifier(modifier, objectId);
 
-		StimPack* stimPack = (StimPack*) creature->getInventoryItem(objectId);
+		ManagedReference<StimPack> stimPack = (StimPack*) creature->getInventoryItem(objectId);
 
 		CreatureObject* creatureTarget = (CreatureObject*) target;
 
