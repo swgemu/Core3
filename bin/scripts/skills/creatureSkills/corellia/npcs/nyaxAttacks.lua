@@ -121,12 +121,12 @@ nyaxAttack10 = {
 	mindAttackChance = 0,
 
 	dotChance = 50,
-	tickStrengthOfHit = 100,
+	tickStrengthOfHit = 3,
 
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 100,
+	bleedingStrength = 3,
 	bleedingType = ACTION,
 
 	poisonStrength = 0,

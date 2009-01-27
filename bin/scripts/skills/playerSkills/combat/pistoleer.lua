@@ -59,14 +59,14 @@ DotPoolAtt = {
 	healthAttackChance = 100,
 	actionAttackChance = 0,
 	mindAttackChance = 0,
-
+	
 	dotChance = 60,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 1,
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,

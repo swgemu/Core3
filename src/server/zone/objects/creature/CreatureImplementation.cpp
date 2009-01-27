@@ -1498,7 +1498,6 @@ void CreatureImplementation::doIncapacitate() {
 	setPosture(CreaturePosture::DEAD);
 
 	CreatureObject* lootOwner = getLootOwner();
-
 	if ((isImperial() || isRebel()) && lootOwner != NULL && lootOwner->isPlayer()) {
 		Player* lootOwnerPlayer = (Player *) lootOwner;
 
@@ -1529,6 +1528,7 @@ void CreatureImplementation::createHarvestList() {
 	if (owner == NULL || !hasOrganics())
 		return;
 
+	playerCanHarvest.add(owner->getFirstName());
 	if (owner->isInAGroup()) {
 
 		group = owner->getGroupObject();
@@ -1540,11 +1540,6 @@ void CreatureImplementation::createHarvestList() {
 			if (tempPlayer != NULL && tempPlayer->hasSkillBox(skillBox))
 				playerCanHarvest.add(tempPlayer->getFirstName());
 		}
-
-	} else {
-
-		if (owner->hasSkillBox(skillBox))
-			playerCanHarvest.add(owner->getFirstName());
 
 	}
 }
@@ -1916,33 +1911,7 @@ void CreatureImplementation::doStatesRecovery() {
 	if (isSnared() && snareRecoveryTime.isPast())
 		clearState(CreatureState::SNARED);
 
-	if (isPoisoned()) {
-		if (poisonRecoveryTime.isPast())
-			clearState(CreatureState::POISONED);
-		else
-			doPoisonTick();
-	}
-
-	if (isDiseased()) {
-		if (diseasedRecoveryTime.isPast())
-			clearState(CreatureState::DISEASED);
-		else
-			doDiseaseTick();
-	}
-
-	if (isOnFire()) {
-		if (fireRecoveryTime.isPast())
-			clearState(CreatureState::ONFIRE);
-		else
-			doFireTick();
-	}
-
-	if (isBleeding()) {
-		if (bleedingRecoveryTime.isPast())
-			clearState(CreatureState::BLEEDING);
-		else
-			doBleedingTick();
-	}
+	applyDots();
 
 	updateStates();
 }

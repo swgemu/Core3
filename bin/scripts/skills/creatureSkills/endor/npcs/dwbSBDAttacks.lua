@@ -193,7 +193,7 @@ dwbSBDAttack44 = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 1,
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,
@@ -269,7 +269,7 @@ dwbSBDAttack46 = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 1,
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,
@@ -496,7 +496,7 @@ dwbSBDAttack52 = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 1,
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,
@@ -538,7 +538,7 @@ dwbSBDAttack53 = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 2,
 	bleedingType = 0,
 
 	poisonStrength = 0,

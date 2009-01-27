@@ -362,6 +362,11 @@ void GameCommandHandler::init() {
 
 	/* Disabled Commands
 
+	gmCommands->addCommand("applyDot", DEVELOPER,
+				"applyDot",
+				"USAGE: @applyDot ",
+				&applyDot);
+
 	gmCommands->addCommand("damage", DEVELOPER,
 					"damage.",
 					"Usage: @damage",
@@ -2229,7 +2234,50 @@ void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player* player)
 		player->addInventoryItem(item);
 
 		item->sendTo(player);
-	} else {
+	} else if (itemType == "DotWeapon") {
+		PistolRangedWeapon* item = new PistolRangedWeapon(player->getNewItemID(), 0x37DB11ED, UnicodeString("Dot CDEF Pistol"), "object/weapon/ranged/pistol/shared_pistol_cdef.iff", false);
+
+		item->setDamageType(WeaponImplementation::ENERGY);
+		item->setArmorPiercing(WeaponImplementation::NONE);
+		item->setAttackSpeed(1.8f);
+		item->setMinDamage(10.0f + System::random(5));
+		item->setMaxDamage(35.0f + System::random(20));
+
+
+		if (tokenizer.hasMoreTokens()) {
+			uint64 type = 0;
+			int token = tokenizer.getIntToken();
+			if (token == 1)
+				type = CreatureState::BLEEDING;
+			if (token == 2)
+				type = CreatureState::ONFIRE;
+			if (token == 3)
+				type = CreatureState::POISONED;
+			if (token == 4)
+				type = CreatureState::DISEASED;
+
+			item->setDot0Type(type);
+
+			int pool = System::random(3);
+			int attr = 0;
+			if (pool == 0)
+				attr = CreatureAttribute::ACTION;
+			if (pool == 1)
+				attr = CreatureAttribute::MIND;
+			else
+				attr = CreatureAttribute::HEALTH;
+
+			item->setDot0Attribute(attr);
+			item->setDot0Uses(System::random(1000));
+			item->setDot0Potency(100);
+			item->setDot0Strength(System::random(100));
+			item->setDot0Duration(System::random(60));
+		}
+
+		player->addInventoryItem(item);
+		item->sendTo(player);
+	}
+	else {
 		player->sendSystemMessage("Unknown Item Type.");
 	}
 }
@@ -3462,7 +3510,46 @@ void GameCommandHandler::damage(StringTokenizer tokenizer, Player* player) {
 
 	}
 }
+void GameCommandHandler::applyDot(StringTokenizer tokenizer, Player* player) {
+	SceneObject* obj = player->getTarget();
+	CreatureObject* target;
 
+
+	if (obj == NULL) {
+
+		return;
+	}
+
+	uint8 attr = CreatureAttribute::HEALTH;
+	uint64 type = CreatureState::BLEEDING;
+	uint32 bleedingDotStrength = 50;
+
+	if (tokenizer.hasMoreTokens()) {
+		int token = tokenizer.getIntToken();
+		if (token == 1)
+			type = CreatureState::BLEEDING;
+		if (token == 2)
+			type = CreatureState::ONFIRE;
+		if (token == 3)
+			type = CreatureState::POISONED;
+		if (token == 4)
+			type = CreatureState::DISEASED;
+	}
+
+	if (tokenizer.hasMoreTokens())
+		attr = tokenizer.getIntToken();
+
+	if (tokenizer.hasMoreTokens())
+		bleedingDotStrength = tokenizer.getIntToken();
+
+	if (obj->isPlayer() || obj->isNonPlayerCreature()) {
+
+		target = (CreatureObject*) obj;
+
+		target->addDotState(player,System::random(10000),type, bleedingDotStrength, attr, 60,50,0);
+
+	}
+}
 void GameCommandHandler::deleteFromZone(StringTokenizer tokenizer, Player* player) {
 	SceneObject* obj = player->getTarget();
 

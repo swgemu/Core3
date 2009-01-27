@@ -76,6 +76,8 @@ which carries forward this exception.
 #include "events/MaskScentEvent.h"
 #include "skills/CamoSkill.h"
 
+#include "dots/DamageOverTimeMap.h"
+
 class CombatManager;
 
 class Player;
@@ -259,7 +261,7 @@ protected:
 	uint8 factionRank;
 
 	// combat
-	int fireDotType;
+	/*int fireDotType;
 	int fireDotStrength;
 
 	int poisonDotType;
@@ -275,7 +277,7 @@ protected:
 	Time nextFireTick;
 	Time nextPoisonTick;
 	Time nextDiseaseTick;
-
+*/
 	Time knockdownRecovery;
 	Time postureDownRecovery;
 	Time postureUpRecovery;
@@ -380,6 +382,7 @@ protected:
 	float combatRegenModifier;
 	float peacedRegenModifier;
 
+	DamageOverTimeMap* dotMap;
 public:
 	static const float DEFAULT_SPEED = 5.376f;
 	static const float DEFAULT_ACCELERATION = 1.549f;
@@ -404,8 +407,9 @@ public:
 	bool setState(uint64 state);
 	bool clearState(uint64 state);
 	void updateStates();
+	void updateDotStates(uint64 oldStates, uint64 newStates);
 	void clearStates();
-
+	void removeState(uint64 state);
 	/// HAM Methods
 	bool changeHAMBars(int32 health, int32 action, int32 mind, bool forcedChange = false);
 	bool changeHAMWounds(int32 health, int32 action, int32 mind, bool forcedChange = false);
@@ -671,15 +675,9 @@ public:
 	}
 
 	// dots
-	void setPoisonedState(int str, int type, int duration);
-	void setBleedingState(int str, int type, int duration);
-	void setDiseasedState(int str, int type, int duration);
-	void setOnFireState(int str, int type, int duration);
-
-	void doPoisonTick();
-	void doBleedingTick();
-	void doDiseaseTick();
-	void doFireTick();
+	void addDotState(CreatureObject* attacker, uint64 dotID, uint64 dotType, uint32 str, uint8 type, uint32 duration, float potency,uint32 defense);
+	void applyDots();
+	bool healDot(uint64 dotType,int reduction);
 
 	virtual void doIncapacitate() {
 	}
@@ -2762,8 +2760,6 @@ public:
 	inline void setCampAggroMod(uint8 mod) {
 		campAggro = mod;
 	}
-
-
 
 	friend class CombatManager;
 	friend class SkillManager;

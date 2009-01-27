@@ -46,36 +46,36 @@ which carries forward this exception.
 #define DAMAGEOVERTIME_H_
 
 #include "engine/engine.h"
-
-class DamageOverTimeType {
-public:
-	static const uint8 BLEEDING = 0;
-	static const uint8 POISONED = 1;
-	static const uint8 DISEASED = 2;
-	static const uint8 ONFIRE = 3;
-	static const uint8 FORCECHOKE = 4;
-};
+#include "../CreatureObject.h"
 
 class DamageOverTime {
 protected:
-	uint8 type;
+	uint64 type;
 	uint8 attribute;
 	uint32 strength;
 	uint32 duration;
 	float potency;
 
 	Time expires;
-
+	Time nextTick;
 public:
 	DamageOverTime();
-	DamageOverTime(uint8 tp, uint8 attrib, uint32 str);
+	DamageOverTime(uint64 tp, uint8 attrib, uint32 str ,uint32 dur,float potency);
 
 	//~DamageOverTime();
 
-	bool activate();
+	void activate();
+	void applyDot(CreatureObject* attacker, CreatureObject* victim);
+	int reduceTick(int reduction);
+
+	// damage methods
+	inline void doBleedingTick(CreatureObject* attacker, CreatureObject* victim);
+	inline void doFireTick(CreatureObject* attacker, CreatureObject* victim);
+	inline void doPoisonTick(CreatureObject* attacker, CreatureObject* victim);
+	inline void doDiseaseTick(CreatureObject* attacker, CreatureObject* victim);
 
 	// Setters
-	inline void setType(uint8 value) {
+	inline void setType(uint64 value) {
 		type = value;
 	}
 
@@ -100,7 +100,7 @@ public:
 	}
 
 	//Getters
-	inline uint8 getType() {
+	inline uint64 getType() {
 		return type;
 	}
 
@@ -121,19 +121,27 @@ public:
 	}
 
 	inline bool isActivated() {
-		return expires != NULL && !expires->isPast();
+		return !expires.isPast();
 	}
 
 	inline bool isPast() {
-		return expires->isPast();
+		return expires.isPast();
 	}
 
 	inline bool isFuture() {
-		return expires->isFuture();
+		return expires.isFuture();
 	}
 
 	inline bool isPresent() {
-		return expires->isPresent();
+		return expires.isPresent();
+	}
+
+	inline bool nextTickPast() {
+		return nextTick.isPast();
+	}
+
+	inline Time getNextTick() {
+		return nextTick;
 	}
 };
 

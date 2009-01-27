@@ -392,46 +392,46 @@ void WeaponImplementation::generateDotAttributes(AttributeListMessage* alm) {
 		//Sends the information along for the first DOT, if it exists
 
 		switch (dot0Type) {
-		case BLEED:
+		case CreatureState::BLEEDING:
 			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_type", "Bleed");
 			break;
-		case DISEASE:
+		case CreatureState::DISEASED:
 			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_type", "Disease");
 			break;
-		case FIRE:
+		case CreatureState::ONFIRE:
 			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_type", "Fire");
 			break;
-		case POISON:
+		case CreatureState::POISONED:
 			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_type", "Poison");
 			break;
 		}
 
 		switch (dot0Attribute) {
-		case HEALTH:
+		case CreatureAttribute::HEALTH:
 			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Health");
 			break;
-		case STRENGTH:
+		case CreatureAttribute::STRENGTH:
 			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Strength");
 			break;
-		case CONSTITUTION:
+		case CreatureAttribute::CONSTITUTION:
 			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Constitution");
 			break;
-		case ACTION:
+		case CreatureAttribute::ACTION:
 			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Action");
 			break;
-		case QUICKNESS:
+		case CreatureAttribute::QUICKNESS:
 			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Quickness");
 			break;
-		case STAMINA:
+		case CreatureAttribute::STAMINA:
 			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Stamina");
 			break;
-		case MIND:
+		case CreatureAttribute::MIND:
 			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Mind");
 			break;
-		case FOCUS:
+		case CreatureAttribute::FOCUS:
 			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Focus");
 			break;
-		case WILLPOWER:
+		case CreatureAttribute::WILLPOWER:
 			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Willpower");
 			break;
 		}
@@ -452,46 +452,46 @@ void WeaponImplementation::generateDotAttributes(AttributeListMessage* alm) {
 		//Sends the information for the second DOT, if it exists
 
 		switch (dot1Type) {
-		case BLEED:
+		case CreatureState::BLEEDING:
 			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_type", "Bleed");
 			break;
-		case DISEASE:
+		case CreatureState::DISEASED:
 			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_type", "Disease");
 			break;
-		case FIRE:
+		case CreatureState::ONFIRE:
 			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_type", "Fire");
 			break;
-		case POISON:
+		case CreatureState::POISONED:
 			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_type", "Poison");
 			break;
 		}
 
 		switch (dot1Attribute) {
-		case HEALTH:
+		case CreatureAttribute::HEALTH:
 			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Health");
 			break;
-		case STRENGTH:
+		case CreatureAttribute::STRENGTH:
 			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Strength");
 			break;
-		case CONSTITUTION:
+		case CreatureAttribute::CONSTITUTION:
 			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Constitution");
 			break;
-		case ACTION:
+		case CreatureAttribute::ACTION:
 			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Action");
 			break;
-		case QUICKNESS:
+		case CreatureAttribute::QUICKNESS:
 			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Quickness");
 			break;
-		case STAMINA:
+		case CreatureAttribute::STAMINA:
 			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Stamina");
 			break;
-		case MIND:
+		case CreatureAttribute::MIND:
 			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Mind");
 			break;
-		case FOCUS:
+		case CreatureAttribute::FOCUS:
 			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Focus");
 			break;
-		case WILLPOWER:
+		case CreatureAttribute::WILLPOWER:
 			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Willpower");
 			break;
 		}
@@ -513,46 +513,46 @@ void WeaponImplementation::generateDotAttributes(AttributeListMessage* alm) {
 		//The third DOT, if it exists
 
 		switch (dot2Type) {
-		case BLEED:
+		case CreatureState::BLEEDING:
 			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_type", "Bleed");
 			break;
-		case DISEASE:
+		case CreatureState::DISEASED:
 			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_type", "Disease");
 			break;
-		case FIRE:
+		case CreatureState::ONFIRE:
 			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_type", "Fire");
 			break;
-		case POISON:
+		case CreatureState::POISONED:
 			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_type", "Poison");
 			break;
 		}
 
 		switch (dot2Attribute) {
-		case HEALTH:
+		case CreatureAttribute::HEALTH:
 			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Health");
 			break;
-		case STRENGTH:
+		case CreatureAttribute::STRENGTH:
 			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Strength");
 			break;
-		case CONSTITUTION:
+		case CreatureAttribute::CONSTITUTION:
 			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Constitution");
 			break;
-		case ACTION:
+		case CreatureAttribute::ACTION:
 			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Action");
 			break;
-		case QUICKNESS:
+		case CreatureAttribute::QUICKNESS:
 			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Quickness");
 			break;
-		case STAMINA:
+		case CreatureAttribute::STAMINA:
 			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Stamina");
 			break;
-		case MIND:
+		case CreatureAttribute::MIND:
 			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Mind");
 			break;
-		case FOCUS:
+		case CreatureAttribute::FOCUS:
 			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Focus");
 			break;
-		case WILLPOWER:
+		case CreatureAttribute::WILLPOWER:
 			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Willpower");
 			break;
 		}
@@ -682,7 +682,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	if (playerRoll > 13000 && System::random(1) == 1)	{
 		switch (System::random(4)) {
 		case 1:
-			setDot1Type(BLEED);
+			setDot1Type(CreatureState::BLEEDING);
 			setDot1Attribute((System::random(2) * 3) + 1);
 			setDot1Strength((modifier / 3) + (luck / 2));
 			setDot1Duration(((luck * 4) + modifier) / 7);
@@ -690,7 +690,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 			setDot1Uses((modifier + luck) * 11);
 			break;
 		case 2:
-			setDot1Type(DISEASE);
+			setDot1Type(CreatureState::DISEASED);
 			setDot1Attribute((System::random(2) * 3) + 1);
 			setDot1Strength((modifier / 4) + (luck / 2));
 			setDot1Duration(((luck * 4) + modifier) / 7);
@@ -698,7 +698,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 			setDot1Uses((modifier + luck) * 11);
 			break;
 		case 3:
-			setDot1Type(FIRE);
+			setDot1Type(CreatureState::ONFIRE);
 			setDot1Attribute((System::random(2) * 3) + 1);
 			setDot1Strength((modifier / 4) + (luck / 2));
 			setDot1Duration(((luck * 4) + modifier) / 7);
@@ -706,7 +706,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 			setDot1Uses((modifier + luck) * 11);
 			break;
 		case 4:
-			setDot1Type(POISON);
+			setDot1Type(CreatureState::POISONED);
 			setDot1Attribute((System::random(2) * 3) + 1);
 			setDot1Strength((modifier / 3) + (luck / 2));
 			setDot1Duration(((luck * 4) + modifier) / 7);

@@ -132,7 +132,7 @@ public:
 		params->addTT(creatureName.toString());
 
 		if (damage != 0) {
-			applyDot(targetCreature, damage);
+			applyDot(creature,targetCreature, damage);
 			String type = "trapping";
 
 			int xp = 14 * targetCreature->getLevel() - 48;

@@ -49,6 +49,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/area/ActiveArea.idl \
 				server/zone/objects/area/ActiveAreaTrigger.idl \
 				server/zone/objects/area/BadgeActiveArea.idl \
+				server/zone/objects/area/CampActiveArea.idl \
 				server/zone/objects/area/TestActiveArea.idl \
 				server/zone/objects/attackable/AttackableObject.idl \
 				server/zone/objects/auction/AuctionItem.idl \
@@ -110,6 +111,8 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/weapons/jedi/OneHandedJediWeapon.idl \
 				server/zone/objects/tangible/weapons/jedi/TwoHandedJediWeapon.idl \
 				server/zone/objects/tangible/weapons/jedi/PolearmJediWeapon.idl \
+				server/zone/objects/tangible/weapons/ThrowableWeapon.idl \
+				server/zone/objects/tangible/weapons/throwable/TrapThrowableWeapon.idl \
 				server/zone/objects/tangible/ticket/Ticket.idl \
 				server/zone/objects/tangible/terminal/Terminal.idl \
 				server/zone/objects/tangible/terminal/travel/TravelTerminal.idl \
@@ -119,6 +122,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/terminal/cloning/InsuranceTerminal.idl \
 				server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl \
 				server/zone/objects/tangible/terminal/bazaar/RegionBazaar.idl \
+				server/zone/objects/tangible/terminal/camp/CampTerminal.idl \
 				server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.idl \
 				server/zone/objects/tangible/ticketcollector/TicketCollector.idl \
 				server/zone/objects/tangible/generic/GenericItem.idl \
@@ -158,6 +162,11 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/deed/vehicledeed/VehicleDeed.idl \
 				server/zone/objects/tangible/deed/playerhousedeed/PlayerHouseDeed.idl \
 				server/zone/objects/tangible/deed/DeedObject.idl \
+				server/zone/objects/tangible/camokits/CamoKit.idl \
+				server/zone/objects/tangible/campkit/CampKit.idl \
+				server/zone/objects/tangible/campkit/campsite/CampSite.idl \
+	 			server/zone/objects/tangible/campkit/campsite/BasicCampSite.idl	\
+	 			server/zone/objects/tangible/campkit/campsite/HTFBCampSite.idl \
 				server/zone/objects/tangible/inventory/CreatureInventory.idl \
 				server/zone/objects/static/firework/FireworkWorld.idl \
 				server/zone/objects/static/StaticObject.idl \
@@ -197,16 +206,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/managers/structure/StructureManager.idl \
 				server/zone/managers/user/UserManager.idl \
 				server/chat/room/ChatRoom.idl \
-				server/chat/ChatManager.idl \
-				server/zone/objects/tangible/camokits/CamoKit.idl \
-				server/zone/objects/tangible/campkit/CampKit.idl \
-				server/zone/objects/tangible/campkit/campsite/CampSite.idl \
-				server/zone/objects/tangible/weapons/ThrowableWeapon.idl \
-				server/zone/objects/tangible/weapons/throwable/TrapThrowableWeapon.idl \
-				server/zone/objects/area/CampActiveArea.idl \
-	 			server/zone/objects/tangible/terminal/camp/CampTerminal.idl \
-	 			server/zone/objects/tangible/campkit/campsite/BasicCampSite.idl	\
-	 			server/zone/objects/tangible/campkit/campsite/HTFBCampSite.idl	
+				server/chat/ChatManager.idl
 
 all:
 	cd src && $(IDLC) $(IDL_SOURCES)

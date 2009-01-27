@@ -158,9 +158,11 @@ interface CreatureObject implements TangibleObject {
 
 	boolean setState(unsigned long state);
 	boolean clearState(unsigned long state);
+	void updateDotStates(unsigned long oldStates,unsigned long newStates);
 	void updateStates();
 	void clearStates();
 	float calculateBFRatio();
+	void removeState(unsigned long state);
 
 	// HAM methods
 	void resetHAMBars(boolean doUpdateClient);
@@ -772,10 +774,8 @@ interface CreatureObject implements TangibleObject {
 	void setSnaredState();
 	void setRootedState();
 
-	void setPoisonedState(int str, int type, int duration);
-	void setBleedingState(int str, int type, int duration);
-	void setDiseasedState(int str, int type, int duration);
-	void setOnFireState(int str, int type, int duration);
+	void addDotState(CreatureObject attacker,unsigned long dotID, unsigned long dotType,int str, int type, int duration,float potency,int defense);
+	boolean healDot(int dotType,int reduction);
 
 	boolean setNextAttackDelay(int del);
 
@@ -816,9 +816,6 @@ interface CreatureObject implements TangibleObject {
 	int healDamage(CreatureObject target, int damage, unsigned char attribute, boolean doBattleFatigue = true);
 	int healWound(CreatureObject target, int damage, unsigned char attribute, boolean doBattleFatigue = true);
 	int healEnhance(CreatureObject target, int amount, float duration, unsigned char attribute, boolean doBattleFatigue = true);
-	boolean curePoison(CreatureObject target, float effectiveness);
-	boolean cureDisease(CreatureObject target, float effectiveness);
-	boolean extinguishFire(CreatureObject target, float effectiveness);
 	boolean healState(CreatureObject target, unsigned long state);
 	boolean revive(CreatureObject target, boolean forcedChange = false);
 	boolean resurrect(CreatureObject target, boolean forcedChange = false);

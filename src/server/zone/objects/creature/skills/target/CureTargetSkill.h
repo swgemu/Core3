@@ -219,24 +219,27 @@ public:
 		if (!canPerformSkill(creature, creatureTarget, curePack))
 			return 0;
 
+		sendCureMessage(creature, creatureTarget);
+
 		switch (state) {
 		case CreatureState::DISEASED:
-			if (!creature->cureDisease(creatureTarget, curePack->getEffectiveness()))
-				return 0;
+			/*if (!creature->cureDisease(creatureTarget, curePack->getEffectiveness()))
+				return 0;*/
+			creatureTarget->healDot(CreatureState::DISEASED,curePack->getEffectiveness());
 			break;
 		case CreatureState::POISONED:
-			if (!creature->curePoison(creatureTarget, curePack->getEffectiveness()))
-				return 0;
+			/*if (!creature->curePoison(creatureTarget, curePack->getEffectiveness()))
+				return 0;*/
+			creatureTarget->healDot(CreatureState::POISONED,curePack->getEffectiveness());
 			break;
 		case CreatureState::ONFIRE:
-			if (!creature->extinguishFire(creatureTarget, curePack->getEffectiveness()))
-				return 0;
+			/*if (!creature->extinguishFire(creatureTarget, curePack->getEffectiveness()))
+				return 0;*/
+			creatureTarget->healDot(CreatureState::ONFIRE,curePack->getEffectiveness());
 			break;
 		default:
 			return 0;
 		}
-
-		sendCureMessage(creature, creatureTarget);
 
 		creature->changeMindBar(mindCost);
 		creature->deactivateConditionTreatment();

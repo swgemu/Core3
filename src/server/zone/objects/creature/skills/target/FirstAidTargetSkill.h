@@ -89,7 +89,7 @@ public:
 			creature->sendSystemMessage("You cannot apply First Aid while prone.");
 			return 0;
 		}
-		
+
 		if (creature->isMeditating()) {
 			creature->sendSystemMessage("You cannot apply First Aid while Meditating.");
 			return 0;
@@ -116,8 +116,7 @@ public:
 		}
 
 		if (creatureTarget->isBleeding()) {
-			if (creatureTarget->clearState(CreatureState::BLEEDING)) {
-				creatureTarget->updateStates();
+			if (creatureTarget->isBleeding()) {
 
 				if (creatureTarget != creature) {
 					StringBuffer message;
@@ -126,10 +125,18 @@ public:
 				} else {
 					creature->sendSystemMessage("healing_response","first_aid_self"); //You apply first aid to yourself.
 				}
-
 				creature->changeMindBar(mindCost);
 
 				doAnimations(creature, creatureTarget);
+
+
+				uint32 skillMod = creature->getSkillMod("healing_injury_treatment");
+				creatureTarget->healDot(CreatureState::BLEEDING,skillMod);
+				/*if (creatureTarget->healDot(CreatureState::BLEEDING,skillMod))
+					creatureTarget->sendSystemMessage("Bleed stop");
+				else
+					creatureTarget->sendSystemMessage("Bleed reduced");
+				 */
 			} else {
 				creature->error("Failed clearing bleeding state on player for unknown reason.");
 			}
