@@ -74,6 +74,57 @@ void FactoryCrate::sendTo(Player* player, bool doClose) {
 		((FactoryCrateImplementation*) _impl)->sendTo(player, doClose);
 }
 
+void FactoryCrate::sendDeltas(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryCrateImplementation*) _impl)->sendDeltas(player);
+}
+
+void FactoryCrate::linkTangibleObject(TangibleObject* item) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addObjectParameter(item);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryCrateImplementation*) _impl)->linkTangibleObject(item);
+}
+
+TangibleObject* FactoryCrate::getLinkedItem() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		return (TangibleObject*) method.executeWithObjectReturn();
+	} else
+		return ((FactoryCrateImplementation*) _impl)->getLinkedItem();
+}
+
+void FactoryCrate::setLinkedItem(TangibleObject* item) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addObjectParameter(item);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryCrateImplementation*) _impl)->setLinkedItem(item);
+}
+
 /*
  *	FactoryCrateAdapter
  */
@@ -94,6 +145,18 @@ Packet* FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case 8:
 		sendTo((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
+	case 9:
+		sendDeltas((Player*) inv->getObjectParameter());
+		break;
+	case 10:
+		linkTangibleObject((TangibleObject*) inv->getObjectParameter());
+		break;
+	case 11:
+		resp->insertLong(getLinkedItem()->_getObjectID());
+		break;
+	case 12:
+		setLinkedItem((TangibleObject*) inv->getObjectParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -111,6 +174,22 @@ int FactoryCrateAdapter::useObject(Player* player) {
 
 void FactoryCrateAdapter::sendTo(Player* player, bool doClose) {
 	return ((FactoryCrateImplementation*) impl)->sendTo(player, doClose);
+}
+
+void FactoryCrateAdapter::sendDeltas(Player* player) {
+	return ((FactoryCrateImplementation*) impl)->sendDeltas(player);
+}
+
+void FactoryCrateAdapter::linkTangibleObject(TangibleObject* item) {
+	return ((FactoryCrateImplementation*) impl)->linkTangibleObject(item);
+}
+
+TangibleObject* FactoryCrateAdapter::getLinkedItem() {
+	return ((FactoryCrateImplementation*) impl)->getLinkedItem();
+}
+
+void FactoryCrateAdapter::setLinkedItem(TangibleObject* item) {
+	return ((FactoryCrateImplementation*) impl)->setLinkedItem(item);
 }
 
 /*

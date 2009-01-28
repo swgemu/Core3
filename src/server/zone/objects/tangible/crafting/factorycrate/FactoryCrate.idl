@@ -62,10 +62,17 @@ interface FactoryCrate implements TangibleObject {
 	}
 
 	void generateAttributes(Player player);
- 
+ 	
 	int useObject(Player player);
 
 	void sendTo(Player player, boolean doClose);
-
+	
+	void sendDeltas(Player player);
+	
+	void linkTangibleObject(TangibleObject item);
+	
+	TangibleObject getLinkedItem();
+	
+	void setLinkedItem(TangibleObject item);
 
 }

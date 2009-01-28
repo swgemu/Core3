@@ -31,6 +31,14 @@ public:
 
 	void sendTo(Player* player, bool doClose);
 
+	void sendDeltas(Player* player);
+
+	void linkTangibleObject(TangibleObject* item);
+
+	TangibleObject* getLinkedItem();
+
+	void setLinkedItem(TangibleObject* item);
+
 protected:
 	FactoryCrate(DummyConstructorParameter* param);
 
@@ -52,6 +60,14 @@ public:
 	int useObject(Player* player);
 
 	void sendTo(Player* player, bool doClose);
+
+	void sendDeltas(Player* player);
+
+	void linkTangibleObject(TangibleObject* item);
+
+	TangibleObject* getLinkedItem();
+
+	void setLinkedItem(TangibleObject* item);
 
 };
 

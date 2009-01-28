@@ -130,6 +130,8 @@ public:
     static void parseHarvesterGetResourceData(Player* player, Message* pack);
     static void parseHarvesterSelectResource(Player* player, Message* pack);
 
+    static void parseExtractObject(Player* player, Message* pack);
+
     static void parseSurveySlashRequest(Player* player, Message* pack);
     static void parseSampleSlashRequest(Player* player, Message* pack);
     static void parseSurveyRequest(Player* player, Message* pack);
