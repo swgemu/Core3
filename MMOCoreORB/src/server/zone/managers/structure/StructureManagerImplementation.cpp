@@ -837,12 +837,20 @@ void StructureManagerImplementation::spawnTempStructure(Player * player,
 	inso->setOwnerID(player->getCharacterID());
 	inso->setZoneProcessServer(server);
 
+	//remove but do not delete
+	player->removeInventoryItem(deed);
+	deed->sendDestroyTo(player);
+
+	int lots = player->getLotsRemaining();
+	lots -= deed->getLotSize();
+	player->setLotsRemaining(lots);
 
 	tempInstallationSpawnEvent = new TempInstallationSpawnEvent(inso, player->getZone());
 	tempInstallationDespawnEvent = new TempInstallationDespawnEvent(inso, player, deed, x, z, y, oX, oZ, oY, oW);
 
 	server->addEvent(tempInstallationSpawnEvent, 100); // trigger spawn now
 	server->addEvent(tempInstallationDespawnEvent, 10000); // set despawn for 10 seconds
+
 }
 
 void StructureManagerImplementation::spawnInstallation(Player * player,
@@ -861,6 +869,8 @@ void StructureManagerImplementation::spawnInstallation(Player * player,
 	server->addEvent(installationSpawnEvent, 100);
 
  	installationMap->put(inso->getObjectID(), inso);
+
+ 	deed->finalize();
 }
 
 void StructureManagerImplementation::spawnHarvester(Player * player,
@@ -882,6 +892,8 @@ void StructureManagerImplementation::spawnHarvester(Player * player,
  	server->addEvent(installationSpawnEvent, 100);
 
  	installationMap->put(hino->getObjectID(), hino);
+
+ 	deed->finalize();
 }
 
 void StructureManagerImplementation::spawnBuilding(Player * player,

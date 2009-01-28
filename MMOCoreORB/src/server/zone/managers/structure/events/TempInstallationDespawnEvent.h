@@ -68,9 +68,9 @@ public:
 				break;
 		}
 
-		int lots = player->getLotsRemaining();
-		lots -= deed->getLotSize();
-		player->setLotsRemaining(lots);
+		//int lots = player->getLotsRemaining();
+		//lots -= deed->getLotSize();
+		//player->setLotsRemaining(lots);
 
 		return true;
 	}

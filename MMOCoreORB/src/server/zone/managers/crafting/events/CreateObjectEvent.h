@@ -45,7 +45,10 @@
 #ifndef CREATEOBJECTEVENT_H_
 #define CREATEOBJECTEVENT_H_
 
+#include "../../../objects/tangible/crafting/factorycrate/FactoryCrate.h"
+
 class CraftingToolImplementation;
+class FactoryCrate;
 
 class CreateObjectEvent : public Event {
 	CraftingTool* ct;
@@ -109,7 +112,24 @@ public:
 
 			} else {
 
+				//TEMPORARY CODE TO CREATE FACTORY CRATES FOR TESTING PURPOSES
+				ChatSystemMessage* sysMessage = new ChatSystemMessage("system_msg", "prototype_transferred");
+				player->sendMessage(sysMessage);
+
+				FactoryCrate* crate = new FactoryCrate(player->getNewItemID(), 0x28D7B8E0, "A Factory Crate", "generic_items_crate");
+				crate->linkTangibleObject(tano);
+				crate->setObjectCount(25);
+				tano->setPersistent(false);//false until i get them to save/load to the DB correctly
+				crate->setPersistent(false);
+
+				player->addInventoryItem(crate);
+
 				ct->setStatusReady();
+
+				crate->sendTo(player, true);
+
+				//uncomment the next line and delete the rest to put it back to how it was
+				//ct->setStatusReady();
 			}
 
 			ct->setWorkingTano(NULL);

@@ -802,6 +802,12 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		break;
 	case (0x7EE9D72B): // harvestertakesurvey
 		break;
+	case (0xF62E35BA): // extractobject
+		parseExtractObject(player, pack);
+		break;
+	case (0x1F88CB58): // splitfactorycrate
+		System::out << "generic split function called\n";
+		break;
 	case (0x19C9FAC1):
 		parseSurveySlashRequest(player, pack);
 		break;
@@ -3151,6 +3157,7 @@ void ObjectControllerMessage::parsePlaceStructure(Player* player,
 	uint64 toID = Long::unsignedvalueOf(objectID);
 
 	PlanetManager* planet = player->getZone()->getPlanetManager();
+
 	planet->placePlayerStructure(player, toID, x, y, orient);
 }
 
@@ -3427,6 +3434,27 @@ void ObjectControllerMessage::parseHarvesterSelectResource(Player *player,
 	dinso7->updateExtractionRate(inso->getActualRate());
 	dinso7->close();
 	player->sendMessage(dinso7);
+}
+
+void ObjectControllerMessage::parseExtractObject(Player* player,
+		Message* packet) {
+	uint64 objectID = packet->parseLong();
+	SceneObject* object = player->getInventoryItem(objectID);
+
+	if (object == NULL)
+		return;
+
+	if (player->hasFullInventory()) {
+		player->sendSystemMessage("You don't have enough space in your inventory to do that.");
+		return;
+	}
+	TangibleObject* tano = (TangibleObject*) object;
+	//if (!object->isFactoryCrate())
+	//	return;
+
+	FactoryCrate* crate = (FactoryCrate*) tano;
+
+	crate->useObject(player);
 }
 
 void ObjectControllerMessage::parseSurveySlashRequest(Player* player,

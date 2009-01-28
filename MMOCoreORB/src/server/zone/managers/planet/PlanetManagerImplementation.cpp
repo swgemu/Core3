@@ -892,6 +892,10 @@ void PlanetManagerImplementation::placePlayerStructure(Player * player,
 		}
 
 		DeedObject * deed = (DeedObject*) player->getInventoryItem(objectID);
+		if(deed->getLotSize() > player->getLotsRemaining() || player->getLotsRemaining()<=0){
+			player->sendSystemMessage("You don't have enough remaining lots to place that structure");
+			return;
+		}
 
 		if (deed == NULL)
 			return;

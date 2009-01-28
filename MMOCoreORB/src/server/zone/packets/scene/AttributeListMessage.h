@@ -88,6 +88,13 @@ public:
 		countLocation = 22 + description.length() * 2;
 	}
 
+	void insertAttribute(const String& attribute, UnicodeString& value) {
+		insertAscii(attribute);
+		insertUnicode(value);
+
+		updateListCount();
+	}
+
 	void insertAttribute(const String& attribute, String& value) {
 		UnicodeString Value = UnicodeString(value);
 		insertAscii(attribute);

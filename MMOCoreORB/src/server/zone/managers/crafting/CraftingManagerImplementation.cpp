@@ -1320,11 +1320,14 @@ void CraftingManagerImplementation::createPrototype(Player* player,
 				// This is for practiceing
 				//createObjectInInventory(player, draftSchematic->getComplexity() * 2, false);
 
-				// For simulating Factory crates
-				createObjectInInventory(player, draftSchematic->getComplexity() * 2, true);
-				player->getCurrentCraftingTool()->getWorkingTano()->setOptionsBitmask(8192);
+				// factory crates are rigged to output on createObjectInInventory(x, x, FALSE);
+				// so uncomment this next line to create a factory crate of 25 items
+				//createObjectInInventory(player, draftSchematic->getComplexity() * 2, false);
 
-				player->getCurrentCraftingTool()->getWorkingTano()->setObjectCount(25);
+				//comment this next line if you are making factory crates instead
+				createObjectInInventory(player, draftSchematic->getComplexity() * 2, true);
+
+				player->getCurrentCraftingTool()->getWorkingTano()->setOptionsBitmask(8192);
 
 				// This is an item mask test below - It cycles through the item masks - for testing
 				/*createObjectInInventory(player, 1, true);

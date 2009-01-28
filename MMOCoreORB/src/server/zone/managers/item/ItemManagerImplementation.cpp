@@ -323,7 +323,10 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 
 		case TangibleObjectImplementation::FACTORYCRATE:
 			item = new FactoryCrate(objectid, objectcrc, objectname, objecttemp);
-			item->setObjectCount(5);
+			if(makeStats) {
+				item->setAttributes(lootAttributes);
+				item->parseItemAttributes();
+			}
 			break;
 
 		case TangibleObjectImplementation::PHARMACEUTICAL:
