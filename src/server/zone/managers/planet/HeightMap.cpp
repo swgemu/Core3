@@ -36,10 +36,12 @@ void HeightMap::load(const String& path) {
 	File* file = new File(path);
 
 	try {
-		reader = new FileReader(file);
+		reader = new FileInputStream(file);
+
 		info("loaded " + path);
 	} catch (FileNotFoundException& e) {
 		reader = NULL;
+
 		info("failed to load " + path);
 	}
 
@@ -83,7 +85,7 @@ float HeightMap::getHeight(float x, float y) {
 	return retHeight;
 }
 
-float HeightMap::getHeightFrom(Reader* file, float x, float y) {
+float HeightMap::getHeightFrom(FileInputStream* file, float x, float y) {
 	if (x < -7680 || x > 7680 || y < -7680 || y > 7680)
 		return 0;
 
@@ -148,8 +150,8 @@ int HeightMap::getPlanePosition(float x, float y) {
 }
 
 void HeightMap::convert(const String& path) {
-	Reader* reader = new FileReader(new File(path));
-	Writer* writer = new FileWriter(new File("converted_" + path));
+	FileInputStream* reader = new FileInputStream(new File(path));
+	FileOutputStream* writer = new FileOutputStream(new File("converted_" + path));
 
 	byte emptybuffer[PLANEWIDTH * HEIGHTSIZE];
 
@@ -200,7 +202,7 @@ void HeightMap::convert(const String& path) {
 	writer->close();
 }
 
-void HeightMap::readPlaneForConversion(Reader* file, float* buffer, int planeX, int planeY) {
+void HeightMap::readPlaneForConversion(FileInputStream* file, float* buffer, int planeX, int planeY) {
 	int tableX = planeX * PLANEWIDTH - 7680;
 	int tableY = planeY * PLANEWIDTH - 7680;
 
