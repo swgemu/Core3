@@ -62,7 +62,8 @@ ArmorComponentImplementation::ArmorComponentImplementation(
 ArmorComponentImplementation::ArmorComponentImplementation(
 		ArmorComponent* component, uint64 oid) : ArmorComponentServant(component, oid) {
 
-	init();
+	objectSubType = ARMORCOMPONENT;
+
 	for(int i = 0; i < component->getSpecialResistCount(); ++i) {
 	    specialResists.add(component->getSpecialResist(i));
 	}

@@ -56,14 +56,14 @@ aveduration = 86400 -- In seconds
   --  *** Default is 1 day (86400) ***
   --  *** Good testing period is (40) ***
 
-spawnThrottling = 50 -- 0-90  is a percentage
+spawnThrottling = 50 -- *** 10-90 ***
   -- This will add a throttle to the spawner so
   -- that 90% of resources will have stats less than
   -- x * maxGate.  So if a resource has stat 0-1000
   -- and this is set at 70, 90% of resources will have 
   -- a value of < 700 and 10% > 700
 
-lowerGateOverride = 500 -- 0-1000  
+lowerGateOverride = 1000 -- 1-1000  
   -- This will manually set the lower gate to this 
   -- number if it has a lower gate greater than the
   -- number entered.  ex. if a resource has a SOE gate

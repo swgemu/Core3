@@ -153,6 +153,8 @@ void ResourceManagerImplementation::init() {
 
 		spawnThrottling = .9f;
 
+		lowerGateOverride = 1000;
+
 		maxspawns = 40;
 		minspawns = 25;
 		maxradius = 2000;
@@ -178,16 +180,24 @@ bool ResourceManagerImplementation::loadConfigData() {
 
 	averageShiftTime = getGlobalInt("averageShiftTime");
 	aveduration = getGlobalInt("aveduration");
-	spawnThrottling = getGlobalFloat("spawnThrottling");
+	spawnThrottling = float(getGlobalInt("spawnThrottling")) / 100.0f;
+
+	if(spawnThrottling > .9f)
+		spawnThrottling = .9f;
+	if(spawnThrottling < .1f)
+			spawnThrottling = .1f;
+
 	lowerGateOverride = getGlobalInt("lowerGateOverride");
+
+	if(lowerGateOverride < 1)
+		lowerGateOverride = 1;
+	if(lowerGateOverride > 1000)
+		lowerGateOverride = 1000;
 
 	maxspawns = getGlobalInt("maxspawns");
 	minspawns = getGlobalInt("minspawns");
 	maxradius = getGlobalInt("maxradius");
 	minradius = getGlobalInt("minradius");
-
-	//dBUser = getGlobalString("DBUser");
-	//dBPass = getGlobalString("DBPass");
 
 	return true;
 }
@@ -1903,20 +1913,32 @@ int ResourceManagerImplementation::randomize(int min, int max) {
 	if (min == 0 && max == 0)
 		return 0;
 
-	float num = System::random(int(spawnThrottling + (.1f * spawnThrottling)));
-	float realPercentage = num / float(spawnThrottling + (.1f * spawnThrottling));
+	//System::out << "Incoming gates: " << min << " - " << max << endl;
 
-	int value = int(float((max - min) * realPercentage) + min);
+	if(min > lowerGateOverride)
+		min = lowerGateOverride;
 
-	/*if (realPercentage > 0)
-		System::out << "Value = " << value << "  Min = " << min << "  Max = " << max << "  realPercentage = " << realPercentage << "  Percentage = " << num << endl;
+	//System::out << "Adjusted gates: " << min << " - " << max << endl;
 
-	if (num > spawnThrottling)
-		tempOver++;
-	else
-		tempUnder++;*/
+	int breakpoint = (int)(spawnThrottling * (max - min)) + min;
+	int randomStat = System::random(max - min) + min;
+	bool aboveBreakpoint = System::random(10) == 7;
 
-	return value;
+	if (!(aboveBreakpoint && randomStat > breakpoint) || (!aboveBreakpoint
+			&& randomStat < breakpoint)) {
+
+		if (aboveBreakpoint)
+			while (randomStat < breakpoint)
+				randomStat = System::random(max - min) + min;
+		else
+			while (randomStat > breakpoint)
+				randomStat = System::random(max - min) + min;
+	}
+
+    //System::out << "Above = " << aboveBreakpoint << endl;
+	//System::out << "Midpoint: " << breakpoint << " and selected stat " << randomStat << endl;
+
+	return randomStat;
 }
 
 void ResourceManagerImplementation::setAttStat(ResourceTemplate* resource, String statTitle, int stat){

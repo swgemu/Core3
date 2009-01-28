@@ -58,7 +58,7 @@ powerConditioner = Object:new {
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
 
-   ingredientTemplateNames = "craft_structure_ingredients_n, craft_structure_ingredients_n, craft_structure_ingredients_n, craft_structure_ingredients_n, craft_structure_ingredients_n, craft_structure_ingredients_n, craft_structure_ingredients_n",
+   ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
    ingredientTitleNames = "module_brackets_and_frame, circuit_stabilization_medium, circuit_shielding_and_substrate, stage_1_energy_filter, stage_2_energy_filter, charge_leakage_and_contaminant_arrestor, charge_filtering_prism",
    ingredientSlotType = "0, 0, 0, 0, 0, 0, 0",
    resourceTypes = "metal, petrochem_inert_polymer, ore, copper, copper, gas_inert, gemstone_armophous",
