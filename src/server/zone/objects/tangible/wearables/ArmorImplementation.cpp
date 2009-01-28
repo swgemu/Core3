@@ -268,7 +268,6 @@ void ArmorImplementation::sendTo(Player* player, bool doClose) {
 
 void ArmorImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
 	if (player->getInventoryItem(getObjectID()) != NULL) {
-		omr->addRadialItem(0, 68, 3, "Change color");
 
 		if (!isSliced() && player->getSlicingAbility() >= 3)
 			omr->addRadialItem(0, 69, 3, "Slice");
