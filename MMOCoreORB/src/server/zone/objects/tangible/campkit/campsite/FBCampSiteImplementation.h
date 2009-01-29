@@ -42,95 +42,20 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CAMPKITIMPLEMENTATION_H_
-#define CAMPKITIMPLEMENTATION_H_
+#ifndef FBCAMPSITEIMPLEMENTATION_H_
+#define FBCAMPSITEIMPLEMENTATION_H_
 
-#include "CampKit.h"
-#include "../../player/Player.h"
-#include "../../area/ActiveAreaTrigger.h"
+#include "FBCampSite.h"
 
-class CampKitImplementation: public CampKitServant {
-protected:
-	uint16 usesRemaining;
-	uint16 exp;
-	uint16 duration;
-
-	uint16 campType;
-
+class FBCampSiteImplementation: public FBCampSiteServant {
 public:
-
-	CampKitImplementation(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
-
-	CampKitImplementation(Player* player, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
+	FBCampSiteImplementation(Player* player, uint64 oid, CampKit* campKit);
+	virtual ~FBCampSiteImplementation();
 
 	void init();
+	void spawnCampItems();
 
-	void updateCraftingValues(DraftSchematic* draftSchematic);
-
-	int useObject(Player* player);
-
-	bool isUsefull(Player* player);
-	bool canNotUse(Player* player);
-	/*
-	 * Returns the camps max xp.
-	 * \return The xp.
-	 */
-	int getXP() {
-		return exp;
-	}
-
-	/*
-	 * Sets the camps max xp.
-	 * \param xp The max xp.
-	 */
-	void setXP(const int xp) {
-		exp = xp;
-		String attr = "exp";
-		itemAttributes->setIntAttribute(attr, exp);
-	}
-	/*
-	 * Returns the camps duration.
-	 * \return The durarion.
-	 */
-	int getDuration() {
-		return duration;
-	}
-	/*
-	 * Sets the camps duration.
-	 * \param dur The duration.
-	 */
-	void setDuration(const int dur) {
-		duration = dur;
-		String attr = "duration";
-		itemAttributes->setIntAttribute(attr, duration);
-	}
-
-	/*
-	 * Returns the camps crc.
-	 * \return The camps crc.
-	 */
-	int getCampType() {
-		return campType;
-	}
-
-	/*
-	 * Sets the camps crc.
-	 * \return Returns the camps crc.
-	 */
-	void setCampType(const int type) {
-		campType = type;
-		String attr = "campType";
-		itemAttributes->setIntAttribute(attr, campType);
-	}
-
-	void remove(Player* player);
-
-	void generateAttributes(SceneObject* obj);
-	void addHeaderAttributes(AttributeListMessage* alm);
-	void addFooterAttributes(AttributeListMessage* alm);
-	void addAttributes(AttributeListMessage* alm);
-
-	void parseItemAttributes();
+	void abandonCamp();
 };
 
-#endif /* CAMOKITIMPLEMENTATION2_H_ */
+#endif /* FBCAMPSITEIMPLEMENTATION_H_ */

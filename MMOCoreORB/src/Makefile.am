@@ -143,6 +143,10 @@ core3_IDLS =	server/chat/ChatManager.cpp \
 		server/zone/objects/tangible/campkit/CampKit.cpp \
 		server/zone/objects/tangible/campkit/campsite/CampSite.cpp \
 		server/zone/objects/tangible/campkit/campsite/BasicCampSite.cpp \
+		server/zone/objects/tangible/campkit/campsite/MultipersonCampSite.cpp \
+		server/zone/objects/tangible/campkit/campsite/ImprovedCampSite.cpp \
+		server/zone/objects/tangible/campkit/campsite/HQCampSite.cpp \
+		server/zone/objects/tangible/campkit/campsite/FBCampSite.cpp \
 		server/zone/objects/tangible/campkit/campsite/HTFBCampSite.cpp \
 		server/zone/objects/tangible/component/ShipComponent.cpp \
 		server/zone/objects/tangible/consumable/Consumable.cpp \
@@ -317,6 +321,10 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/campkit/CampKitImplementation.cpp \
 		server/zone/objects/tangible/campkit/campsite/CampSiteImplementation.cpp \
 		server/zone/objects/tangible/campkit/campsite/BasicCampSiteImplementation.cpp \
+		server/zone/objects/tangible/campkit/campsite/MultipersonCampSiteImplementation.cpp \
+		server/zone/objects/tangible/campkit/campsite/ImprovedCampSiteImplementation.cpp \
+		server/zone/objects/tangible/campkit/campsite/HQCampSiteImplementation.cpp \
+		server/zone/objects/tangible/campkit/campsite/FBCampSiteImplementation.cpp \
 		server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp \
 		server/zone/objects/tangible/consumable/ConsumableImplementation.cpp \
 		server/zone/objects/tangible/consumable/food/FoodImplementation.cpp \

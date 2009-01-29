@@ -166,6 +166,10 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/campkit/CampKit.idl \
 				server/zone/objects/tangible/campkit/campsite/CampSite.idl \
 	 			server/zone/objects/tangible/campkit/campsite/BasicCampSite.idl	\
+	 			server/zone/objects/tangible/campkit/campsite/MultipersonCampSite.idl \
+	 			server/zone/objects/tangible/campkit/campsite/ImprovedCampSite.idl \
+	 			server/zone/objects/tangible/campkit/campsite/HQCampSite.idl \
+	 			server/zone/objects/tangible/campkit/campsite/FBCampSite.idl \
 	 			server/zone/objects/tangible/campkit/campsite/HTFBCampSite.idl \
 				server/zone/objects/tangible/inventory/CreatureInventory.idl \
 				server/zone/objects/static/firework/FireworkWorld.idl \
