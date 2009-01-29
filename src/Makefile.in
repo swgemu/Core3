@@ -131,7 +131,9 @@ am__objects_1 = ChatManager.$(OBJEXT) GameCommandHandler.$(OBJEXT) \
 	FireworkWorld.$(OBJEXT) StaticObject.$(OBJEXT) \
 	HairObject.$(OBJEXT) Attachment.$(OBJEXT) Bank.$(OBJEXT) \
 	CamoKit.$(OBJEXT) CampKit.$(OBJEXT) CampSite.$(OBJEXT) \
-	BasicCampSite.$(OBJEXT) HTFBCampSite.$(OBJEXT) \
+	BasicCampSite.$(OBJEXT) MultipersonCampSite.$(OBJEXT) \
+	ImprovedCampSite.$(OBJEXT) HQCampSite.$(OBJEXT) \
+	FBCampSite.$(OBJEXT) HTFBCampSite.$(OBJEXT) \
 	ShipComponent.$(OBJEXT) Consumable.$(OBJEXT) Food.$(OBJEXT) \
 	Drink.$(OBJEXT) Container.$(OBJEXT) Component.$(OBJEXT) \
 	ArmorComponent.$(OBJEXT) CraftingStation.$(OBJEXT) \
@@ -244,6 +246,10 @@ am_core3_OBJECTS = $(am__objects_1) \
 	CampKitImplementation.$(OBJEXT) \
 	CampSiteImplementation.$(OBJEXT) \
 	BasicCampSiteImplementation.$(OBJEXT) \
+	MultipersonCampSiteImplementation.$(OBJEXT) \
+	ImprovedCampSiteImplementation.$(OBJEXT) \
+	HQCampSiteImplementation.$(OBJEXT) \
+	FBCampSiteImplementation.$(OBJEXT) \
 	HTFBCampSiteImplementation.$(OBJEXT) \
 	ConsumableImplementation.$(OBJEXT) \
 	FoodImplementation.$(OBJEXT) DrinkImplementation.$(OBJEXT) \
@@ -506,6 +512,10 @@ core3_IDLS = server/chat/ChatManager.cpp \
 		server/zone/objects/tangible/campkit/CampKit.cpp \
 		server/zone/objects/tangible/campkit/campsite/CampSite.cpp \
 		server/zone/objects/tangible/campkit/campsite/BasicCampSite.cpp \
+		server/zone/objects/tangible/campkit/campsite/MultipersonCampSite.cpp \
+		server/zone/objects/tangible/campkit/campsite/ImprovedCampSite.cpp \
+		server/zone/objects/tangible/campkit/campsite/HQCampSite.cpp \
+		server/zone/objects/tangible/campkit/campsite/FBCampSite.cpp \
 		server/zone/objects/tangible/campkit/campsite/HTFBCampSite.cpp \
 		server/zone/objects/tangible/component/ShipComponent.cpp \
 		server/zone/objects/tangible/consumable/Consumable.cpp \
@@ -681,6 +691,10 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/campkit/CampKitImplementation.cpp \
 		server/zone/objects/tangible/campkit/campsite/CampSiteImplementation.cpp \
 		server/zone/objects/tangible/campkit/campsite/BasicCampSiteImplementation.cpp \
+		server/zone/objects/tangible/campkit/campsite/MultipersonCampSiteImplementation.cpp \
+		server/zone/objects/tangible/campkit/campsite/ImprovedCampSiteImplementation.cpp \
+		server/zone/objects/tangible/campkit/campsite/HQCampSiteImplementation.cpp \
+		server/zone/objects/tangible/campkit/campsite/FBCampSiteImplementation.cpp \
 		server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp \
 		server/zone/objects/tangible/consumable/ConsumableImplementation.cpp \
 		server/zone/objects/tangible/consumable/food/FoodImplementation.cpp \
@@ -905,6 +919,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DrinkImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/EnhancePack.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/EnhancePackImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FBCampSite.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FBCampSiteImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FactionPointList.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FactoryCrate.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FactoryCrateImplementation.Po@am__quote@
@@ -936,6 +952,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GuildManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GuildMap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GuildTerminal.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HQCampSite.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HQCampSiteImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HTFBCampSite.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HTFBCampSiteImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HairObject.Po@am__quote@
@@ -950,6 +968,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/IgnoreListImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ImageDesignCustomization.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ImperialRecruiterCreature.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ImprovedCampSite.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ImprovedCampSiteImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/InstallationObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/InstallationObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Instrument.Po@am__quote@
@@ -980,6 +1000,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MolecularClamp.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MountCreature.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MountCreatureImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MultipersonCampSite.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MultipersonCampSiteImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/NameManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ObjectControllerMessage.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ObjectManager.Po@am__quote@
@@ -2359,6 +2381,62 @@ BasicCampSite.obj: server/zone/objects/tangible/campkit/campsite/BasicCampSite.c
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/BasicCampSite.cpp' object='BasicCampSite.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BasicCampSite.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/BasicCampSite.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/BasicCampSite.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/BasicCampSite.cpp'; fi`
+
+MultipersonCampSite.o: server/zone/objects/tangible/campkit/campsite/MultipersonCampSite.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT MultipersonCampSite.o -MD -MP -MF $(DEPDIR)/MultipersonCampSite.Tpo -c -o MultipersonCampSite.o `test -f 'server/zone/objects/tangible/campkit/campsite/MultipersonCampSite.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/campkit/campsite/MultipersonCampSite.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/MultipersonCampSite.Tpo $(DEPDIR)/MultipersonCampSite.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/MultipersonCampSite.cpp' object='MultipersonCampSite.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o MultipersonCampSite.o `test -f 'server/zone/objects/tangible/campkit/campsite/MultipersonCampSite.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/campkit/campsite/MultipersonCampSite.cpp
+
+MultipersonCampSite.obj: server/zone/objects/tangible/campkit/campsite/MultipersonCampSite.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT MultipersonCampSite.obj -MD -MP -MF $(DEPDIR)/MultipersonCampSite.Tpo -c -o MultipersonCampSite.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/MultipersonCampSite.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/MultipersonCampSite.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/MultipersonCampSite.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/MultipersonCampSite.Tpo $(DEPDIR)/MultipersonCampSite.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/MultipersonCampSite.cpp' object='MultipersonCampSite.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o MultipersonCampSite.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/MultipersonCampSite.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/MultipersonCampSite.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/MultipersonCampSite.cpp'; fi`
+
+ImprovedCampSite.o: server/zone/objects/tangible/campkit/campsite/ImprovedCampSite.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ImprovedCampSite.o -MD -MP -MF $(DEPDIR)/ImprovedCampSite.Tpo -c -o ImprovedCampSite.o `test -f 'server/zone/objects/tangible/campkit/campsite/ImprovedCampSite.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/campkit/campsite/ImprovedCampSite.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ImprovedCampSite.Tpo $(DEPDIR)/ImprovedCampSite.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/ImprovedCampSite.cpp' object='ImprovedCampSite.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ImprovedCampSite.o `test -f 'server/zone/objects/tangible/campkit/campsite/ImprovedCampSite.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/campkit/campsite/ImprovedCampSite.cpp
+
+ImprovedCampSite.obj: server/zone/objects/tangible/campkit/campsite/ImprovedCampSite.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ImprovedCampSite.obj -MD -MP -MF $(DEPDIR)/ImprovedCampSite.Tpo -c -o ImprovedCampSite.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/ImprovedCampSite.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/ImprovedCampSite.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/ImprovedCampSite.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ImprovedCampSite.Tpo $(DEPDIR)/ImprovedCampSite.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/ImprovedCampSite.cpp' object='ImprovedCampSite.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ImprovedCampSite.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/ImprovedCampSite.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/ImprovedCampSite.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/ImprovedCampSite.cpp'; fi`
+
+HQCampSite.o: server/zone/objects/tangible/campkit/campsite/HQCampSite.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT HQCampSite.o -MD -MP -MF $(DEPDIR)/HQCampSite.Tpo -c -o HQCampSite.o `test -f 'server/zone/objects/tangible/campkit/campsite/HQCampSite.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/campkit/campsite/HQCampSite.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/HQCampSite.Tpo $(DEPDIR)/HQCampSite.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/HQCampSite.cpp' object='HQCampSite.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o HQCampSite.o `test -f 'server/zone/objects/tangible/campkit/campsite/HQCampSite.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/campkit/campsite/HQCampSite.cpp
+
+HQCampSite.obj: server/zone/objects/tangible/campkit/campsite/HQCampSite.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT HQCampSite.obj -MD -MP -MF $(DEPDIR)/HQCampSite.Tpo -c -o HQCampSite.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/HQCampSite.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/HQCampSite.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/HQCampSite.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/HQCampSite.Tpo $(DEPDIR)/HQCampSite.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/HQCampSite.cpp' object='HQCampSite.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o HQCampSite.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/HQCampSite.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/HQCampSite.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/HQCampSite.cpp'; fi`
+
+FBCampSite.o: server/zone/objects/tangible/campkit/campsite/FBCampSite.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT FBCampSite.o -MD -MP -MF $(DEPDIR)/FBCampSite.Tpo -c -o FBCampSite.o `test -f 'server/zone/objects/tangible/campkit/campsite/FBCampSite.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/campkit/campsite/FBCampSite.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/FBCampSite.Tpo $(DEPDIR)/FBCampSite.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/FBCampSite.cpp' object='FBCampSite.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o FBCampSite.o `test -f 'server/zone/objects/tangible/campkit/campsite/FBCampSite.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/campkit/campsite/FBCampSite.cpp
+
+FBCampSite.obj: server/zone/objects/tangible/campkit/campsite/FBCampSite.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT FBCampSite.obj -MD -MP -MF $(DEPDIR)/FBCampSite.Tpo -c -o FBCampSite.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/FBCampSite.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/FBCampSite.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/FBCampSite.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/FBCampSite.Tpo $(DEPDIR)/FBCampSite.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/FBCampSite.cpp' object='FBCampSite.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o FBCampSite.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/FBCampSite.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/FBCampSite.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/FBCampSite.cpp'; fi`
 
 HTFBCampSite.o: server/zone/objects/tangible/campkit/campsite/HTFBCampSite.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT HTFBCampSite.o -MD -MP -MF $(DEPDIR)/HTFBCampSite.Tpo -c -o HTFBCampSite.o `test -f 'server/zone/objects/tangible/campkit/campsite/HTFBCampSite.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/campkit/campsite/HTFBCampSite.cpp
@@ -4781,6 +4859,62 @@ BasicCampSiteImplementation.obj: server/zone/objects/tangible/campkit/campsite/B
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/BasicCampSiteImplementation.cpp' object='BasicCampSiteImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BasicCampSiteImplementation.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/BasicCampSiteImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/BasicCampSiteImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/BasicCampSiteImplementation.cpp'; fi`
+
+MultipersonCampSiteImplementation.o: server/zone/objects/tangible/campkit/campsite/MultipersonCampSiteImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT MultipersonCampSiteImplementation.o -MD -MP -MF $(DEPDIR)/MultipersonCampSiteImplementation.Tpo -c -o MultipersonCampSiteImplementation.o `test -f 'server/zone/objects/tangible/campkit/campsite/MultipersonCampSiteImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/campkit/campsite/MultipersonCampSiteImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/MultipersonCampSiteImplementation.Tpo $(DEPDIR)/MultipersonCampSiteImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/MultipersonCampSiteImplementation.cpp' object='MultipersonCampSiteImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o MultipersonCampSiteImplementation.o `test -f 'server/zone/objects/tangible/campkit/campsite/MultipersonCampSiteImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/campkit/campsite/MultipersonCampSiteImplementation.cpp
+
+MultipersonCampSiteImplementation.obj: server/zone/objects/tangible/campkit/campsite/MultipersonCampSiteImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT MultipersonCampSiteImplementation.obj -MD -MP -MF $(DEPDIR)/MultipersonCampSiteImplementation.Tpo -c -o MultipersonCampSiteImplementation.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/MultipersonCampSiteImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/MultipersonCampSiteImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/MultipersonCampSiteImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/MultipersonCampSiteImplementation.Tpo $(DEPDIR)/MultipersonCampSiteImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/MultipersonCampSiteImplementation.cpp' object='MultipersonCampSiteImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o MultipersonCampSiteImplementation.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/MultipersonCampSiteImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/MultipersonCampSiteImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/MultipersonCampSiteImplementation.cpp'; fi`
+
+ImprovedCampSiteImplementation.o: server/zone/objects/tangible/campkit/campsite/ImprovedCampSiteImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ImprovedCampSiteImplementation.o -MD -MP -MF $(DEPDIR)/ImprovedCampSiteImplementation.Tpo -c -o ImprovedCampSiteImplementation.o `test -f 'server/zone/objects/tangible/campkit/campsite/ImprovedCampSiteImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/campkit/campsite/ImprovedCampSiteImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ImprovedCampSiteImplementation.Tpo $(DEPDIR)/ImprovedCampSiteImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/ImprovedCampSiteImplementation.cpp' object='ImprovedCampSiteImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ImprovedCampSiteImplementation.o `test -f 'server/zone/objects/tangible/campkit/campsite/ImprovedCampSiteImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/campkit/campsite/ImprovedCampSiteImplementation.cpp
+
+ImprovedCampSiteImplementation.obj: server/zone/objects/tangible/campkit/campsite/ImprovedCampSiteImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ImprovedCampSiteImplementation.obj -MD -MP -MF $(DEPDIR)/ImprovedCampSiteImplementation.Tpo -c -o ImprovedCampSiteImplementation.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/ImprovedCampSiteImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/ImprovedCampSiteImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/ImprovedCampSiteImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ImprovedCampSiteImplementation.Tpo $(DEPDIR)/ImprovedCampSiteImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/ImprovedCampSiteImplementation.cpp' object='ImprovedCampSiteImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ImprovedCampSiteImplementation.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/ImprovedCampSiteImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/ImprovedCampSiteImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/ImprovedCampSiteImplementation.cpp'; fi`
+
+HQCampSiteImplementation.o: server/zone/objects/tangible/campkit/campsite/HQCampSiteImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT HQCampSiteImplementation.o -MD -MP -MF $(DEPDIR)/HQCampSiteImplementation.Tpo -c -o HQCampSiteImplementation.o `test -f 'server/zone/objects/tangible/campkit/campsite/HQCampSiteImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/campkit/campsite/HQCampSiteImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/HQCampSiteImplementation.Tpo $(DEPDIR)/HQCampSiteImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/HQCampSiteImplementation.cpp' object='HQCampSiteImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o HQCampSiteImplementation.o `test -f 'server/zone/objects/tangible/campkit/campsite/HQCampSiteImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/campkit/campsite/HQCampSiteImplementation.cpp
+
+HQCampSiteImplementation.obj: server/zone/objects/tangible/campkit/campsite/HQCampSiteImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT HQCampSiteImplementation.obj -MD -MP -MF $(DEPDIR)/HQCampSiteImplementation.Tpo -c -o HQCampSiteImplementation.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/HQCampSiteImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/HQCampSiteImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/HQCampSiteImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/HQCampSiteImplementation.Tpo $(DEPDIR)/HQCampSiteImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/HQCampSiteImplementation.cpp' object='HQCampSiteImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o HQCampSiteImplementation.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/HQCampSiteImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/HQCampSiteImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/HQCampSiteImplementation.cpp'; fi`
+
+FBCampSiteImplementation.o: server/zone/objects/tangible/campkit/campsite/FBCampSiteImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT FBCampSiteImplementation.o -MD -MP -MF $(DEPDIR)/FBCampSiteImplementation.Tpo -c -o FBCampSiteImplementation.o `test -f 'server/zone/objects/tangible/campkit/campsite/FBCampSiteImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/campkit/campsite/FBCampSiteImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/FBCampSiteImplementation.Tpo $(DEPDIR)/FBCampSiteImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/FBCampSiteImplementation.cpp' object='FBCampSiteImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o FBCampSiteImplementation.o `test -f 'server/zone/objects/tangible/campkit/campsite/FBCampSiteImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/campkit/campsite/FBCampSiteImplementation.cpp
+
+FBCampSiteImplementation.obj: server/zone/objects/tangible/campkit/campsite/FBCampSiteImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT FBCampSiteImplementation.obj -MD -MP -MF $(DEPDIR)/FBCampSiteImplementation.Tpo -c -o FBCampSiteImplementation.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/FBCampSiteImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/FBCampSiteImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/FBCampSiteImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/FBCampSiteImplementation.Tpo $(DEPDIR)/FBCampSiteImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/campkit/campsite/FBCampSiteImplementation.cpp' object='FBCampSiteImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o FBCampSiteImplementation.obj `if test -f 'server/zone/objects/tangible/campkit/campsite/FBCampSiteImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/campkit/campsite/FBCampSiteImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/campkit/campsite/FBCampSiteImplementation.cpp'; fi`
 
 HTFBCampSiteImplementation.o: server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT HTFBCampSiteImplementation.o -MD -MP -MF $(DEPDIR)/HTFBCampSiteImplementation.Tpo -c -o HTFBCampSiteImplementation.o `test -f 'server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/campkit/campsite/HTFBCampSiteImplementation.cpp

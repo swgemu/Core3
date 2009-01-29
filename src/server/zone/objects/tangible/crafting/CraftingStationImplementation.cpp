@@ -140,8 +140,14 @@ void CraftingStationImplementation::generateAttributes(SceneObject* obj) {
 	alm->insertAttribute("volume", "1");
 	alm->insertAttribute("craft_tool_effectiveness", effectiveness);
 	alm->insertAttribute("craft_tool_status", "@crafting:tool_status_ready");
-	alm->insertAttribute("crafter", "Kyle");
-	alm->insertAttribute("serial_number", "(98u1p5d5)");
+
+	if(craftersName != ""){
+		alm->insertAttribute("crafter", craftersName);
+	}
+
+	if(craftedSerial != ""){
+		alm->insertAttribute("serial_number", craftedSerial);
+	}
 
 	player->sendMessage(alm);
 }

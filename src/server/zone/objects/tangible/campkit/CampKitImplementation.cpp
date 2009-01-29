@@ -45,6 +45,10 @@ which carries forward this exception.
 #include "../../../managers/item/ItemManager.h"
 #include "campsite/CampSite.h"
 #include "campsite/BasicCampSite.h"
+#include "campsite/MultipersonCampSite.h"
+#include "campsite/ImprovedCampSite.h"
+#include "campsite/HQCampSite.h"
+#include "campsite/FBCampSite.h"
 #include "campsite/HTFBCampSite.h"
 #include "../TangibleObject.h"
 
@@ -69,6 +73,7 @@ CampKitImplementation::CampKitImplementation(unsigned long long oid, unsigned in
 
 		setEquipped(false);
 
+		init();
 }
 CampKitImplementation::CampKitImplementation(Player* player, unsigned int tempCRC, const UnicodeString& n, const String& tempn)
 : CampKitServant(player->getNewItemID(), CAMPKIT) {
@@ -88,6 +93,49 @@ CampKitImplementation::CampKitImplementation(Player* player, unsigned int tempCR
 
     setEquipped(false);
 
+    init();
+}
+
+void CampKitImplementation::init() {
+	System::out << "init\n";
+	switch(objectCRC) {
+		case 0x4D07C52D: // basic
+			System::out << "camp 0\n";
+			setCampType(0);
+			setDuration(3600);
+			setXP(360);
+			break;
+		case 0x650EBB89: // multiperson
+			System::out << "camp 1\n";
+			setCampType(1);
+			setDuration(3600);
+			setXP(640);
+			break;
+		case 0xA8BF79A0: // improved
+			System::out << "camp 2\n";
+			setCampType(2);
+			setDuration(3600);
+			setXP(800);
+			break;
+		case 0xCFB4AB9B: // hq 0xD3800CD7
+			System::out << "camp 3\n";
+			setCampType(3);
+			setDuration(3600);
+			setXP(1000);
+			break;
+		case 0xDE6F4FE4: // fb 0x286327C3
+			System::out << "camp 4\n";
+			setCampType(4);
+			setDuration(3600);
+			setXP(1100);
+			break;
+		case 0x408B331A: // htfb
+			System::out << "camp 5\n";
+			setCampType(5);
+			setDuration(3600);
+			setXP(1250);
+			break;
+	}
 }
 
 void CampKitImplementation::updateCraftingValues(DraftSchematic* draftSchematic) {
@@ -108,13 +156,27 @@ int CampKitImplementation::useObject(Player* player) {
 	CampSite* campSite;
 	switch(campType) {
 		case 0:
+			System::out << "place camp 0\n";
 			campSite = new BasicCampSite(player, player->getNewItemID(), _this);
 			break;
 		case 1:
+			System::out << "place camp 1\n";
+			campSite = new MultipersonCampSite(player, player->getNewItemID(), _this);
+			break;
 		case 2:
+			System::out << "place camp 2\n";
+			campSite = new ImprovedCampSite(player, player->getNewItemID(), _this);
+			break;
 		case 3:
+			System::out << "place camp 3\n";
+			campSite = new HQCampSite(player, player->getNewItemID(), _this);
+			break;
 		case 4:
+			System::out << "place camp 4\n";
+			campSite = new FBCampSite(player, player->getNewItemID(), _this);
+			break;
 		case 5:
+			System::out << "place camp 3\n";
 			campSite = new HTFBCampSite(player, player->getNewItemID(), _this);
 			break;
 		default:
