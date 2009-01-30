@@ -408,32 +408,44 @@ uint64 CraftingToolImplementation::findCraftingStation(Player* player, float& wo
 	CraftingStation* station;
 	uint64 oid;
 	ZoneServer* server = player->getZone()->getZoneServer();
+	Zone* zone = player->getZone();
 
-	int closeObjectCount = player->inRangeObjectCount();
+	try {
 
-	for (int i = 0; i < closeObjectCount; ++i){
+		zone->rlock();
 
-		entry = player->getInRangeObject(i);
+		int closeObjectCount = player->inRangeObjectCount();
 
-		oid = entry->getObjectID();
+		for (int i = 0; i < closeObjectCount; ++i) {
 
-		inRangeObject = (TangibleObject*)server->getObject(oid);
+			entry = player->getInRangeObject(i);
 
-		if (inRangeObject != NULL){
-			if (inRangeObject->isCraftingStation() && player->isInRange(inRangeObject, 7.0f)){
-				station = (CraftingStation*)inRangeObject;
+			oid = entry->getObjectID();
 
-				//System::out << "Station = " << station->getStationType() << "   Tool = " << _this->getToolType() << endl;
+			inRangeObject = (TangibleObject*) server->getObject(oid);
 
-				if (_this->getToolType() == station->getStationType() ||
-						(_this->getToolType() == JEDI && station->getStationType() == WEAPON)){
+			if (inRangeObject != NULL) {
+				if (inRangeObject->isCraftingStation() && player->isInRange(
+						inRangeObject, 7.0f)) {
+					station = (CraftingStation*) inRangeObject;
 
-					workingStationComplexity = ((CraftingStation*)inRangeObject)->getComplexityLevel();
-					return station->getObjectID();
+					//System::out << "Station = " << station->getStationType() << "   Tool = " << _this->getToolType() << endl;
 
+					if (_this->getToolType() == station->getStationType()
+							|| (_this->getToolType() == JEDI
+									&& station->getStationType() == WEAPON)) {
+
+						workingStationComplexity = ((CraftingStation*) inRangeObject)->getComplexityLevel();
+						zone->unlock();
+						return station->getObjectID();
+
+					}
 				}
 			}
 		}
+		zone->unlock();
+	} catch (...) {
+		zone->unlock();
 	}
 	return 0;
 }

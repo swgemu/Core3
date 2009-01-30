@@ -524,6 +524,8 @@ TangibleObject* CraftingManagerImplementation::transferComponentToSlot(
 
 		component->finalize();
 
+		quantity = objectCount;
+
 	} else {
 
 		try {
@@ -558,7 +560,9 @@ TangibleObject* CraftingManagerImplementation::transferComponentToSlot(
 	// Sending resource to the player, but NOT to inventory
 	newComponent->sendTo(player);
 
-	newComponent->setPersistent(false);
+	// We don't want the temp component to save
+	newComponent->setPersistent(true);
+	newComponent->setUpdated(false);
 
 	//Send attributes to update crafting window (Or quality bars don't show up
 	newComponent->generateAttributes(player);
@@ -1376,6 +1380,10 @@ void CraftingManagerImplementation::createPrototype(Player* player,
 void CraftingManagerImplementation::createSchematic(Player* player,
 		String count) {
 
+	CraftingTool* craftingTool;
+	DraftSchematic* draftSchematic;
+	TangibleObject* workingTano;
+
 	StringTokenizer tokenizer(count);
 
 	if (!tokenizer.hasMoreTokens())
@@ -1383,10 +1391,71 @@ void CraftingManagerImplementation::createSchematic(Player* player,
 
 	int counter = tokenizer.getIntToken();
 
-	// Add Schematic to datapad here
+	try {
+
+		craftingTool = player->getCurrentCraftingTool();
+
+		if (craftingTool == NULL) {
+
+			sendSlotMessage(player, counter, SLOTNOTOOL);
+			return;
+
+		}
+
+		draftSchematic = craftingTool->getWorkingDraftSchematic();
+
+		if (draftSchematic == NULL) {
+
+			sendSlotMessage(player, counter, SLOTNOSCHEMATIC);
+			return;
+
+		}
+
+		workingTano = craftingTool->getWorkingTano();
+
+		if (workingTano == NULL) {
+
+			sendSlotMessage(player, counter, SLOTPROTOTYPENOTFOUND);
+			return;
+
+		}
+
+		if (!draftSchematic->isFinished() && draftSchematic->resourcesWereRemoved()) {
+
+
+			//Object Controller
+			ObjectControllerMessage* objMsg =
+					new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+			objMsg->insertInt(0x10B);
+			objMsg->insertInt(1);
+			objMsg->insertByte(counter);
+
+			player->sendMessage(objMsg);
+
+			//player->addXp(xpType, xp, true);
+			draftSchematic->setFinished();
+
+		} else {
+
+			//Object Controller - Closes Window
+			ObjectControllerMessage* objMsg =
+					new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+			objMsg->insertInt(0x10A);
+			objMsg->insertInt(1);
+			objMsg->insertByte(counter);
+
+			player->sendMessage(objMsg);
+
+
+			sendSlotMessage(player, counter, WEIRDFAILEDMESSAGE);
+		}
+
+	} catch (...) {
+
+	}
 }
 void CraftingManagerImplementation::craftingCustomization(Player* player,
-		String name, int condition, String customizationString) {
+		String name, int manufacturingSchematicLimit, String customizationString) {
 
 	CraftingTool* craftingTool = player->getCurrentCraftingTool();
 
@@ -1436,7 +1505,7 @@ void CraftingManagerImplementation::craftingCustomization(Player* player,
 	ManufactureSchematicObjectDeltaMessage3 * dMsco3 =
 			new ManufactureSchematicObjectDeltaMessage3(draftSchematic->getObjectID());
 	dMsco3->updateName(name);
-	dMsco3->updateCondition(condition);
+	dMsco3->updateCondition(manufacturingSchematicLimit);
 	dMsco3->close();
 
 	player->sendMessage(dMsco3);

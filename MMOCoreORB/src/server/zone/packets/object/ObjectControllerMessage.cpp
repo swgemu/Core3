@@ -3853,7 +3853,7 @@ void ObjectControllerMessage::parseCraftCustomization(Player* player,
 
 	packet->shiftOffset(1);
 
-	int condition = packet->parseInt();
+	int manufacturingSchematicCount = packet->parseInt();
 
 	int customizationcount = packet->parseByte();
 
@@ -3875,7 +3875,7 @@ void ObjectControllerMessage::parseCraftCustomization(Player* player,
 
 	String customizationString = ss.toString();
 
-	player->craftingCustomization(name, condition, customizationString);
+	player->craftingCustomization(name, manufacturingSchematicCount, customizationString);
 }
 void ObjectControllerMessage::parseCreatePrototype(Player* player,
 		Message* packet) {
