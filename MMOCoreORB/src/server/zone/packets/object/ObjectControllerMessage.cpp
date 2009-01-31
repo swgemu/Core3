@@ -3886,7 +3886,9 @@ void ObjectControllerMessage::parseCreatePrototype(Player* player,
 
 	String count = d.toString();
 
-	player->createPrototype(count);
+	if(!count.isEmpty())
+		player->createPrototype(count);
+
 }
 
 void ObjectControllerMessage::parseCreateSchematic(Player* player,
@@ -3898,7 +3900,8 @@ void ObjectControllerMessage::parseCreateSchematic(Player* player,
 
 	String count = str.toString();
 
-	player->createSchematic(count);
+	if(!count.isEmpty())
+		player->createSchematic(count);
 }
 
 void ObjectControllerMessage::parseExperimentation(Player* player,

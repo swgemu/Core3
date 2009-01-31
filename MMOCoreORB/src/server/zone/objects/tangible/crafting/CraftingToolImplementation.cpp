@@ -281,6 +281,16 @@ void CraftingToolImplementation::updateCraftingValues(DraftSchematic* draftSchem
 
 }
 
+bool CraftingToolImplementation::hasAllRequiredResources(DraftSchematic* draftSchematic) {
+
+	for(int i = 0; i < getSlotCount(); ++i) {
+		bool optional = draftSchematic->getIngredient(i)->isOptionalSlot();
+		if(!optional && getIngredientInSlot(i) == NULL)
+			return false;
+	}
+	return true;
+}
+
 /*
  *  This method starts the crafting process.  It starts when a crafting tool
  *  is opened, and ends after sending the appropriate packets to display tool
