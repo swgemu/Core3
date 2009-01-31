@@ -47,8 +47,8 @@ which carries forward this exception.
 #include "../campsite/CampSite.h"
 
 class CampRecoveryEvent: public Event {
-	Player* player;
-	CampSite* camp;
+	ManagedReference<Player> player;
+	ManagedReference<CampSite> camp;
 	bool inCamp;
 public:
 	CampRecoveryEvent(Player* pl,CampSite* campSite) :
@@ -62,7 +62,7 @@ public:
 	bool activate() {
 		try {
 			if (inCamp && camp != NULL && player != NULL) {
-				player->lock();
+				player->wlock();
 
 				player->healWound(player, 5, 0, false);
 				player->healWound(player, 5, 1, false);

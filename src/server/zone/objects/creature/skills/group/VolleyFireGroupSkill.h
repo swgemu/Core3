@@ -74,12 +74,24 @@ public:
 
 			CombatManager* cm = squadLeader->getZoneProcessServer()->getCombatManager();
 
-			group->wlock();
-
 			int squadLeaderZoneID = squadLeader->getZoneID();
+
+			squadLeader->changeHealthBar(-healthCost, true);
+			squadLeader->changeActionBar(-actionCost, true);
+			squadLeader->changeMindBar(-mindCost, true);
+
+			squadLeader->addCooldown(skillName, cooldownTime);
+
+			target->unlock();
+
+			squadLeader->unlock();
+
+			group->wlock();
 
 			for(int i = 0; i < group->getGroupSize(); i++) {
 				CreatureObject* groupMember = (CreatureObject*)group->getGroupMember(i);
+
+				groupMember->wlock(group);
 
 				if(groupMember->getZoneID() == squadLeaderZoneID) {
 					if(groupMember->isPlayer()) {
@@ -92,15 +104,14 @@ public:
 						player->sendCombatSpam(groupMember, NULL, 0, combatSpam, false);
 					}
 				}
+
+				groupMember->unlock();
 			}
 
 			group->unlock();
 
-			squadLeader->changeHealthBar(-healthCost, true);
-			squadLeader->changeActionBar(-actionCost, true);
-			squadLeader->changeMindBar(-mindCost, true);
-
-			squadLeader->addCooldown(skillName, cooldownTime);
+			squadLeader->wlock();
+			target->wlock(squadLeader);
 		} else {
 			// should never get here unless we allow non players to be squad leaders
 		}

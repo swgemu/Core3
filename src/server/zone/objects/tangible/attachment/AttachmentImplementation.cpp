@@ -53,7 +53,7 @@ which carries forward this exception.
 #include "../../../packets.h"
 
 AttachmentImplementation::AttachmentImplementation(uint64 objID, int type) :
-	AttachmentServant(objID, attachmentType) {
+	AttachmentServant(objID, type) {
 
 	attachmentType = type;
 	objectID = objID;

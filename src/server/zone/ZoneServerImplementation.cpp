@@ -354,9 +354,12 @@ ServiceClient* ZoneServerImplementation::createConnection(Socket* sock, SocketAd
 	ZoneClientSession* client = new ZoneClientSession(this, sock, &addr);
 	client->deploy("ZoneClientSession " + addr.getFullIPAddress());
 
-	info("client connected from \'" + client->getAddress() + "\'");
-
 	ZoneClientSessionImplementation* clientImpl = (ZoneClientSessionImplementation*) client->_getImplementation();
+
+	String address = client->getAddress();
+
+	info("client connected from \'" + address + "\'");
+
 	return clientImpl;
 }
 
@@ -396,7 +399,14 @@ void ZoneServerImplementation::addObject(SceneObject* obj, bool doLock) {
 	try {
 		lock(doLock);
 
-		if (objectManager->add(obj) == NULL && obj->isPlayer()) {
+		SceneObject* conflictedObj = objectManager->add(obj);
+
+		if (conflictedObj != NULL && conflictedObj != obj) {
+			error("Object id conflict");
+			StackTrace::printStackTrace();
+		}
+
+		if (conflictedObj == NULL && obj->isPlayer()) {
 			Player* player = (Player*) obj;
 
 			chatManager->addPlayer(player);

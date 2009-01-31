@@ -11,13 +11,30 @@ HarvesterObjectImplementation::HarvesterObjectImplementation(uint64 oid) : Harve
 	objectID = oid;
 
 	//(InstallationObject*)_this
+
+
+	StringBuffer logname;
+	logname << "HarvesterObject " << hex << objectID;
+
+	setLoggingName(logname.toString());
+	setLogging(false);
+	setGlobalLogging(true);
+
 	InstallationObjectImplementation::init();
+
 	init();
 }
 
 
 HarvesterObjectImplementation::HarvesterObjectImplementation(uint64 oid, HarvesterDeed* deed) : HarvesterObjectServant(oid, deed) {
 	objectID = oid;
+
+	StringBuffer logname;
+	logname << "HarvesterObject " << hex << objectID;
+
+	setLoggingName(logname.toString());
+	setLogging(false);
+	setGlobalLogging(true);
 
 	InstallationObjectImplementation::init();
 	init();
@@ -211,7 +228,9 @@ void HarvesterObjectImplementation::updateHopper() {
 
 	// the spawn expired before we updated hopper last - don't update the hopper
 	if (spawnExpireTimestamp.compareTo(resourceHopperTimestamp) > 0) { // if (t1 < t2) return 1;
-		System::out << "HarvesterObjectImplementation::updateHopper(" << hex << activeResourceID << dec << ") resource expired!! (why do we have expired resources in the list?) spawnExpireTimestamp: " << dec << spawnExpireTimestamp.getTime() << "  resourceHopperTimestamp: " << resourceHopperTimestamp.getTime() << endl;
+		StringBuffer msg;
+		msg << "HarvesterObjectImplementation::updateHopper(" << hex << activeResourceID << dec << ") resource expired!! (why do we have expired resources in the list?) spawnExpireTimestamp: " << dec << spawnExpireTimestamp.getTime() << "  resourceHopperTimestamp: " << resourceHopperTimestamp.getTime() << endl;
+		info(msg);
 		return;
 	}
 

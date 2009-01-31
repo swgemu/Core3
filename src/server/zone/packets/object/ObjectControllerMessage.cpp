@@ -3410,7 +3410,7 @@ void ObjectControllerMessage::parseHarvesterSelectResource(Player *player,
 
 	String sResourceID = resourceIDUnicode.toString();
 
-	System::out << "harvesterSelectResource: " << sResourceID << endl;
+	//System::out << "harvesterSelectResource: " << sResourceID << endl;
 
 	uint64 resourceID = Long::unsignedvalueOf(sResourceID);
 

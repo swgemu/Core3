@@ -225,17 +225,17 @@ public:
 		case CreatureState::DISEASED:
 			/*if (!creature->cureDisease(creatureTarget, curePack->getEffectiveness()))
 				return 0;*/
-			creatureTarget->healDot(CreatureState::DISEASED,curePack->getEffectiveness());
+			creatureTarget->healDot(CreatureState::DISEASED,(int)curePack->getEffectiveness());
 			break;
 		case CreatureState::POISONED:
 			/*if (!creature->curePoison(creatureTarget, curePack->getEffectiveness()))
 				return 0;*/
-			creatureTarget->healDot(CreatureState::POISONED,curePack->getEffectiveness());
+			creatureTarget->healDot(CreatureState::POISONED,(int)curePack->getEffectiveness());
 			break;
 		case CreatureState::ONFIRE:
 			/*if (!creature->extinguishFire(creatureTarget, curePack->getEffectiveness()))
 				return 0;*/
-			creatureTarget->healDot(CreatureState::ONFIRE,curePack->getEffectiveness());
+			creatureTarget->healDot(CreatureState::ONFIRE, (int)curePack->getEffectiveness());
 			break;
 		default:
 			return 0;

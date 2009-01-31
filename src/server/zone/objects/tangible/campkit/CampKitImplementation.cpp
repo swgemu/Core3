@@ -97,7 +97,7 @@ CampKitImplementation::CampKitImplementation(Player* player, unsigned int tempCR
 }
 
 void CampKitImplementation::init() {
-	System::out << "init\n";
+	//System::out << "init\n";
 	switch(objectCRC) {
 		case 0x4D07C52D: // basic
 			setCampType(0);
