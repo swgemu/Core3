@@ -237,6 +237,8 @@ private:
 	void finishStage2(Player* player, int counter);
 	void createObjectInInventory(Player* player, int timer, bool create);
 
+	void closeCraftingWindow(Player* player, int counter);
+
 	// Calculations
 
 	void calculateAssemblySuccess(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, float modifier);

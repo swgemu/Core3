@@ -735,7 +735,11 @@ void CraftingManagerImplementation::nextCraftingStage(Player* player, String tes
 
 	// Make sure all the require resources are there, if not, return them to inventory and close tool
 	if(!craftingTool->hasAllRequiredResources(draftSchematic)){
+
 		craftingTool->cleanUp(player);
+
+		closeCraftingWindow(player, counter);
+
 		return;
 	}
 
@@ -1307,25 +1311,7 @@ void CraftingManagerImplementation::createPrototype(Player* player, String count
 
 		if (!draftSchematic->isFinished() && draftSchematic->resourcesWereRemoved()) {
 
-			//Object Controller - Closes Window
-			ObjectControllerMessage* objMsg =
-					new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
-			objMsg->insertInt(0x10A);
-			objMsg->insertInt(1);
-			objMsg->insertByte(counter);
-
-			player->sendMessage(objMsg);
-
-			objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
-			objMsg->insertInt(0x10A);
-			objMsg->insertInt(0);
-			objMsg->insertByte(counter);
-
-			player->sendMessage(objMsg);
-
-			objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01C2);
-			objMsg->insertByte(counter);
-			player->sendMessage(objMsg);
+			closeCraftingWindow(player, counter);
 
 			String xpType = draftSchematic->getXpType();
 			int xp = draftSchematic->getXp();
@@ -1364,15 +1350,7 @@ void CraftingManagerImplementation::createPrototype(Player* player, String count
 			draftSchematic->setFinished();
 		} else {
 
-			//Object Controller - Closes Window
-			ObjectControllerMessage* objMsg =
-					new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
-			objMsg->insertInt(0x10A);
-			objMsg->insertInt(1);
-			objMsg->insertByte(counter);
-
-			player->sendMessage(objMsg);
-
+			closeCraftingWindow(player, counter);
 
 			sendSlotMessage(player, counter, WEIRDFAILEDMESSAGE);
 		}
@@ -1380,6 +1358,27 @@ void CraftingManagerImplementation::createPrototype(Player* player, String count
 	} catch (...) {
 
 	}
+}
+
+void CraftingManagerImplementation::closeCraftingWindow(Player* player, int counter) {
+
+	ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+	objMsg->insertInt(0x10A);
+	objMsg->insertInt(1);
+	objMsg->insertByte(counter);
+
+	player->sendMessage(objMsg);
+
+	objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+	objMsg->insertInt(0x10A);
+	objMsg->insertInt(0);
+	objMsg->insertByte(counter);
+
+	player->sendMessage(objMsg);
+
+	objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01C2);
+	objMsg->insertByte(counter);
+	player->sendMessage(objMsg);
 }
 
 void CraftingManagerImplementation::createSchematic(Player* player,
@@ -1457,15 +1456,7 @@ void CraftingManagerImplementation::createSchematic(Player* player,
 
 		} else {
 
-			//Object Controller - Closes Window
-			ObjectControllerMessage* objMsg =
-					new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
-			objMsg->insertInt(0x10A);
-			objMsg->insertInt(1);
-			objMsg->insertByte(counter);
-
-			player->sendMessage(objMsg);
-
+			closeCraftingWindow(player, counter);
 
 			sendSlotMessage(player, counter, WEIRDFAILEDMESSAGE);
 		}
