@@ -124,7 +124,7 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 		}
 
 		//System::out << "Radial ID = " << dec << radialID << endl;
-		SceneObject* obj = zone->lookupObject(objectID);
+		ManagedReference<SceneObject> obj = zone->lookupObject(objectID);
 
 		//TODO: Get a bazaar object to pass to the next functions
 		BazaarManager* bazaarManager = zone->getZoneServer()->getBazaarManager();
@@ -618,17 +618,18 @@ void RadialManager::handleStructureDestroy(Player* player, SceneObject* obj) {
 
 void RadialManager::handleStructureStatus(Player* player, SceneObject* obj) {
 	try{
-		InstallationObject * inso = (InstallationObject *) obj;
+		if (obj != NULL && obj->isTangible() && ((TangibleObject*)obj)->isInstallation()) {
+			InstallationObject * inso = (InstallationObject *) obj;
 
-		if (inso!= NULL)
 			inso->handleStructureStatus(player);
-		/*else {
+			/*else {
 				BuildingObject * buio = (BuildingObject * ) obj;
 
 				if (buio!= NULL)
 					buio->handleStructureStatus(player);
-			}
-		}*/
+				}
+			}*/
+		}
 	}
 	catch(...){
 		System::out << "Unreported exception in RadialManager::handleStructureStatus\n";

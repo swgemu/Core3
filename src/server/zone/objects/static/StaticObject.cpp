@@ -27,37 +27,12 @@ StaticObject::StaticObject(DummyConstructorParameter* param) : SceneObject(param
 StaticObject::~StaticObject() {
 }
 
-void StaticObject::insertToZone(Zone* zone) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 6);
-		method.addObjectParameter(zone);
-
-		method.executeWithVoidReturn();
-	} else
-		((StaticObjectImplementation*) _impl)->insertToZone(zone);
-}
-
-void StaticObject::removeFromZone() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 7);
-
-		method.executeWithVoidReturn();
-	} else
-		((StaticObjectImplementation*) _impl)->removeFromZone();
-}
-
 void StaticObject::close(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 6);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -70,7 +45,7 @@ void StaticObject::sendTo(Player* player, bool doClose) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 7);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(doClose);
 
@@ -91,15 +66,9 @@ Packet* StaticObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 	switch (methid) {
 	case 6:
-		insertToZone((Zone*) inv->getObjectParameter());
-		break;
-	case 7:
-		removeFromZone();
-		break;
-	case 8:
 		close((Player*) inv->getObjectParameter());
 		break;
-	case 9:
+	case 7:
 		sendTo((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	default:
@@ -107,14 +76,6 @@ Packet* StaticObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	}
 
 	return resp;
-}
-
-void StaticObjectAdapter::insertToZone(Zone* zone) {
-	return ((StaticObjectImplementation*) impl)->insertToZone(zone);
-}
-
-void StaticObjectAdapter::removeFromZone() {
-	return ((StaticObjectImplementation*) impl)->removeFromZone();
 }
 
 void StaticObjectAdapter::close(Player* player) {

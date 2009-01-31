@@ -54,37 +54,36 @@ which carries forward this exception.
 
 #include "../../../Zone.h"
 
-CellObjectImplementation::CellObjectImplementation(uint64 objID, BuildingObject* buio) : CellObjectServant(objID, CELL) {
-
+CellObjectImplementation::CellObjectImplementation(uint64 objID, BuildingObject* buio)
+	: CellObjectServant(objID, CELL) {
 	parent = (SceneObject*) buio;
-	objectType = SceneObjectImplementation::CELL;
-
-	children.setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);
-	StringBuffer name;
-	name << "Cell :" << objID;
-	setLoggingName(name.toString());
-
-	setLogging(false);
-	setGlobalLogging(true);
 
 	cellNumber = 0;
-	itemAttributes = new ItemAttributes();
+
+	initialize();
 }
 
-CellObjectImplementation::CellObjectImplementation(uint64 objID, BuildingObject* buio, int number) : CellObjectServant(objID, CELL) {
-
+CellObjectImplementation::CellObjectImplementation(uint64 objID, BuildingObject* buio, int number)
+	: CellObjectServant(objID, CELL) {
 	parent = (SceneObject*) buio;
+
+	cellNumber = number;
+
+	initialize();
+}
+
+void CellObjectImplementation::initialize() {
 	objectType = SceneObjectImplementation::CELL;
 
-	children.setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);
+	setContainerVolumeLimit(-1);
+
 	StringBuffer name;
-	name << "Cell :" << objID;
+	name << "Cell :" << objectID;
 	setLoggingName(name.toString());
 
 	setLogging(false);
 	setGlobalLogging(true);
 
-	cellNumber = number;
 	itemAttributes = new ItemAttributes();
 }
 
@@ -95,15 +94,17 @@ CellObjectImplementation::~CellObjectImplementation() {
 }
 
 void CellObjectImplementation::addChild(SceneObject* obj, bool doLock) {
-	wlock(doLock);
+	_this->wlock(doLock);
 
-	if (children.put(obj) != -1) {
-		StringBuffer object;
-		object << "acquired child:" << obj->getLoggingName();
-		info(object.toString());
+	try {
+
+		addObject(obj);
+
+	} catch (...) {
+		error("unreported exception caught in CellObjectImplementation::addChild(SceneObject* obj, bool doLock)");
 	}
 
-	unlock(doLock);
+	_this->unlock(doLock);
 }
 
 void CellObjectImplementation::parseItemAttributes() {
@@ -113,13 +114,15 @@ void CellObjectImplementation::parseItemAttributes() {
 
 
 void CellObjectImplementation::removeChild(SceneObject* obj, bool doLock) {
-	wlock(doLock);
+	_this->wlock(doLock);
 
-	if (children.drop(obj)) {
-		StringBuffer object;
-		object << "released child:" << obj->getLoggingName();
-		info(object.toString());
+	try {
+
+		removeObject(obj->getObjectID());
+
+	} catch (...) {
+		error("unreported exception caught in CellObjectImplementation::removeChild(SceneObject* obj, bool doLock)");
 	}
 
-	unlock(doLock);
+	_this->unlock(doLock);
 }

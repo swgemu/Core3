@@ -333,35 +333,66 @@ void CombatManager::handleAreaAction(CreatureObject* creature, TangibleObject* t
 	}
 }
 
-void CombatManager::handelMedicArea(CreatureObject* creature, CreatureObject* areaCenter,Skill* skill, int stimPower, float range) {
-	for (int i = 0; i < areaCenter->inRangeObjectCount(); i++) {
-		SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) areaCenter->getInRangeObject(i))->_this);
+void CombatManager::handelMedicArea(CreatureObject* creature, CreatureObject* areaCenter, Skill* skill, int stimPower, float range) {
+	/* Pre: creature && areaCenter wlocked, nothing else is locked
+	 * Post: creature && areaCenter wlocked, nothing else is locked
+	 */
 
-		if (!object->isPlayer() && !object->isNonPlayerCreature() && !object->isAttackableObject())
-			continue;
+	Zone* zone = areaCenter->getZone();
 
-		if (object == areaCenter)
-			continue;
+	if (zone == NULL)
+		return;
 
-		if (!areaCenter->isInRange(object,range))
-			continue;
+	areaCenter->unlock();
 
-		CreatureObject* creatureTarget = (CreatureObject*) object;
+	try {
+		zone->lock();
 
-		if (creatureTarget != creature)
-			creatureTarget->lock();
+		for (int i = 0; i < areaCenter->inRangeObjectCount(); i++) {
+			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) areaCenter->getInRangeObject(i))->_this);
 
-		if (!skill->checkAreaMedicTarget(creature, creatureTarget)) {
+			if (!object->isPlayer() && !object->isNonPlayerCreature() && !object->isAttackableObject())
+				continue;
+
+			if (object == areaCenter)
+				continue;
+
+			if (!areaCenter->isInRange(object,range))
+				continue;
+
+			CreatureObject* creatureTarget = (CreatureObject*) object;
+
+			zone->unlock();
+
 			if (creatureTarget != creature)
+				creatureTarget->wlock(creature);
+
+			if (!skill->checkAreaMedicTarget(creature, creatureTarget)) {
+				if (creatureTarget != creature)
 					creatureTarget->unlock();
-			continue;
+
+				zone->lock();
+				continue;
+			}
+
+			try {
+				skill->doAreaMedicActionTarget(creature, creatureTarget, stimPower);
+			} catch (...) {
+				System::out << "unreported exception caught in CombatManager::handelMedicArea";
+			}
+
+			if (creatureTarget != creature)
+				creatureTarget->unlock();
+
+			zone->lock();
 		}
 
-		skill->doAreaMedicActionTarget(creature, creatureTarget, stimPower);
-
-		if (creatureTarget != creature)
-			creatureTarget->unlock();
+		zone->unlock();
+	} catch (...) {
+		zone->unlock();
 	}
+
+	areaCenter->wlock(creature);
 }
 
 bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* target, AttackTargetSkill* skill,  String& modifier, CombatAction* actionMessage) {

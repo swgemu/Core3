@@ -69,54 +69,6 @@ void StaticObjectImplementation::initialize() {
 	objectType = SceneObjectImplementation::STATIC;
 }
 
-void StaticObjectImplementation::insertToZone(Zone* zone) {
-	StaticObjectImplementation::zone = zone;
-
-	try {
-		zone->lock();
-
-		zone->registerObject((StaticObject*) _this);
-
-		zone->insert(this);
-		zone->inRange(this, 128);
-
-		zone->unlock();
-	} catch (...) {
-		System::out << "exception StaticObject::insertToZone(Zone* zone)\n";
-
-		zone->unlock();
-	}
-}
-
-void StaticObjectImplementation::removeFromZone() {
-	if (zone == NULL)
-		return;
-
-	try {
-		zone->lock();
-
-    	for (int i = 0; i < inRangeObjectCount(); ++i) {
-			QuadTreeEntry* obj = getInRangeObject(i);
-
-			if (obj != this)
-				obj->removeInRangeObject(this);
-		}
-
-		removeInRangeObjects();
-
-		zone->remove(this);
-		zone->deleteObject(objectID);
-
-		zone->unlock();
-
-		zone = NULL;
-	} catch (...) {
-		System::out << "exception StaticObject::removeFromZone(bool doLock)\n";
-
-		zone->unlock();
-	}
-}
-
 void StaticObjectImplementation::sendTo(Player* player, bool doClose) {
 	ZoneClientSession* client = player->getClient();
 	if (client == NULL)

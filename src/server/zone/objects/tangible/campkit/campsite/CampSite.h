@@ -53,6 +53,8 @@ public:
 
 	bool isAbandoned();
 
+	void removeCampRecoveryEvent(Player* player);
+
 	void enterNotification(Player* player);
 
 	void exitNotificaton(Player* player);
@@ -104,6 +106,8 @@ public:
 	void abortAbandonPhase();
 
 	bool isAbandoned();
+
+	void removeCampRecoveryEvent(Player* player);
 
 	void enterNotification(Player* player);
 

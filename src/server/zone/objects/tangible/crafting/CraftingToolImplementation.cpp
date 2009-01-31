@@ -404,6 +404,7 @@ void CraftingToolImplementation::getSchematicsForTool(Player* player, float work
 uint64 CraftingToolImplementation::findCraftingStation(Player* player, float& workingStationComplexity){
 
 	QuadTreeEntry* entry;
+	SceneObject* object;
 	TangibleObject* inRangeObject;
 	CraftingStation* station;
 	uint64 oid;
@@ -412,7 +413,7 @@ uint64 CraftingToolImplementation::findCraftingStation(Player* player, float& wo
 
 	try {
 
-		zone->rlock();
+		zone->lock();
 
 		int closeObjectCount = player->inRangeObjectCount();
 
@@ -422,9 +423,11 @@ uint64 CraftingToolImplementation::findCraftingStation(Player* player, float& wo
 
 			oid = entry->getObjectID();
 
-			inRangeObject = (TangibleObject*) server->getObject(oid);
+			object = server->getObject(oid);
 
-			if (inRangeObject != NULL) {
+			if (object != NULL && object->isTangible()) {
+				inRangeObject = (TangibleObject*) object;
+
 				if (inRangeObject->isCraftingStation() && player->isInRange(
 						inRangeObject, 7.0f)) {
 					station = (CraftingStation*) inRangeObject;
@@ -439,10 +442,12 @@ uint64 CraftingToolImplementation::findCraftingStation(Player* player, float& wo
 						zone->unlock();
 						return station->getObjectID();
 
+
 					}
 				}
 			}
 		}
+
 		zone->unlock();
 	} catch (...) {
 		zone->unlock();

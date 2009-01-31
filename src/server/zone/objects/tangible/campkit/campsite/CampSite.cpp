@@ -195,12 +195,25 @@ bool CampSite::isAbandoned() {
 		return ((CampSiteImplementation*) _impl)->isAbandoned();
 }
 
-void CampSite::enterNotification(Player* player) {
+void CampSite::removeCampRecoveryEvent(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 19);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((CampSiteImplementation*) _impl)->removeCampRecoveryEvent(player);
+}
+
+void CampSite::enterNotification(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -213,7 +226,7 @@ void CampSite::exitNotificaton(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -226,7 +239,7 @@ void CampSite::reactiveRecovery(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 22);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -285,12 +298,15 @@ Packet* CampSiteAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(isAbandoned());
 		break;
 	case 19:
-		enterNotification((Player*) inv->getObjectParameter());
+		removeCampRecoveryEvent((Player*) inv->getObjectParameter());
 		break;
 	case 20:
-		exitNotificaton((Player*) inv->getObjectParameter());
+		enterNotification((Player*) inv->getObjectParameter());
 		break;
 	case 21:
+		exitNotificaton((Player*) inv->getObjectParameter());
+		break;
+	case 22:
 		reactiveRecovery((Player*) inv->getObjectParameter());
 		break;
 	default:
@@ -350,6 +366,10 @@ void CampSiteAdapter::abortAbandonPhase() {
 
 bool CampSiteAdapter::isAbandoned() {
 	return ((CampSiteImplementation*) impl)->isAbandoned();
+}
+
+void CampSiteAdapter::removeCampRecoveryEvent(Player* player) {
+	return ((CampSiteImplementation*) impl)->removeCampRecoveryEvent(player);
 }
 
 void CampSiteAdapter::enterNotification(Player* player) {
