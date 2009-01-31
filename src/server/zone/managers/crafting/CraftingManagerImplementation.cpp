@@ -1266,10 +1266,19 @@ void CraftingManagerImplementation::createPrototype(Player* player,
 	CraftingTool* craftingTool;
 	DraftSchematic* draftSchematic;
 	TangibleObject* workingTano;
+	int counter, practice;
 
 	StringTokenizer tokenizer(count);
-	int counter = tokenizer.getIntToken();
-	int practice = tokenizer.getIntToken();
+
+	try {
+		counter = tokenizer.getIntToken();
+		practice = tokenizer.getIntToken();
+	} catch(Exception& e) {
+
+		System::out << "Character " << player->getFirstName() << " sent unexpected packet data to CraftingManagerImplementation::createPrototype()  Data = '" << count << "'" << endl;
+		e.printStackTrace();
+		return;
+	}
 
 	try {
 
@@ -1383,13 +1392,21 @@ void CraftingManagerImplementation::createSchematic(Player* player,
 	CraftingTool* craftingTool;
 	DraftSchematic* draftSchematic;
 	TangibleObject* workingTano;
+	int counter, practice;
 
 	StringTokenizer tokenizer(count);
 
-	if (!tokenizer.hasMoreTokens())
-		return;
+	try {
 
-	int counter = tokenizer.getIntToken();
+		counter = tokenizer.getIntToken();
+		practice = tokenizer.getIntToken();
+
+	} catch(Exception& e) {
+
+		System::out << "Character " << player->getFirstName() << " sent unexpected packet data to CraftingManagerImplementation::createSchematic()  Data = '" << count << "'" << endl;
+		e.printStackTrace();
+		return;
+	}
 
 	try {
 
@@ -1434,6 +1451,22 @@ void CraftingManagerImplementation::createSchematic(Player* player,
 
 			//player->addXp(xpType, xp, true);
 			draftSchematic->setFinished();
+
+			// Create and send datapad schematic to player
+
+			/*IntangibleObject* datapadSchematic =
+				new IntangibleObject((SceneObject*) player->getDatapad(), workingTano->getObjectCRC(), player->getNewItemID());
+
+			datapadSchematic->setName(workingTano->getTemplateName());
+			datapadSchematic->setDetailName(workingTano->getTemplateTypeName());
+			datapadSchematic->setWorldObject(workingTano);*/
+
+			player->addDatapadItem((SceneObject*) workingTano);
+
+			workingTano->sendTo(player, true);
+
+			UpdateContainmentMessage* ucm = new UpdateContainmentMessage((SceneObject*) workingTano, (SceneObject*) player->getDatapad(), 0xFFFFFFFF);
+			player->sendMessage(ucm);
 
 		} else {
 
