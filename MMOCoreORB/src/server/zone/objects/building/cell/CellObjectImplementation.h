@@ -63,16 +63,20 @@ class BuildingObject;
 class Zone;
 
 class CellObjectImplementation : public CellObjectServant {
-	SortedVector<SceneObject*> children;
 	int cellNumber;
 
 	String templateName;
 
 	ItemAttributes* itemAttributes;
 	String attributeString;
+
+private:
+	void initialize();
+
 public:
 	CellObjectImplementation(uint64 objID, BuildingObject* buio);
 	CellObjectImplementation(uint64 objID, BuildingObject* buio, int number);
+
 	~CellObjectImplementation();
 
 	void addChild(SceneObject* obj, bool doLock = true);
@@ -92,6 +96,7 @@ public:
 	inline int getCellNumber() {
 		return cellNumber;
 	}
+
 	inline void setCellNumber(int i) {
 		cellNumber = i;
 		String attr("cellNumber");
@@ -99,7 +104,6 @@ public:
 	}
 
 	void sendTo(Player* player, bool doClose = true) {
-
 	}
 
 	inline String& getTemplateName() {
@@ -111,11 +115,11 @@ public:
 	}
 
 	inline SceneObject* getChild(int idx) {
-		return children.get(idx);
+		return getObject(idx);
 	}
 
 	inline int getChildrenSize() {
-		return children.size();
+		return getContainerObjectsSize();
 	}
 
 

@@ -192,6 +192,10 @@ public:
 		return abandoned;
 	}
 
+	void removeCampRecoveryEvent(Player* player) {
+		recoveries->remove(player->getObjectID());
+	}
+
 	void enterNotification(Player* player);
 	void exitNotificaton(Player* player);
 

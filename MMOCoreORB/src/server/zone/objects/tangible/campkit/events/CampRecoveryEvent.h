@@ -77,8 +77,15 @@ public:
 				camp->reactiveRecovery(player);
 
 				player->unlock();
-			} else
+			} else {
+				player->wlock();
+
+				camp->removeCampRecoveryEvent(player);
+
+				player->unlock();
+
 				setKeeping(false);
+			}
 
 		} catch (...) {
 			player->error("Unreported exception caught in CampRecoveryEvent\n");

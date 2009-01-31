@@ -3423,17 +3423,23 @@ void GameCommandHandler::setLocation(StringTokenizer tokenizer, Player* player) 
 			num = tokenizer.getIntToken();
 		else
 			return;
-		camp->lock();
+
+		camp->wlock();
+
 		obj = camp->getCampObject(num);
+
 		float x = camp->getPositionX();
 		float y = camp->getPositionY();
 		float z = camp->getPositionZ();
+
+		Zone* zone = camp->getOwner()->getZone();
+
+		camp->unlock();
 
 		if (obj == NULL)
 			return;
 
 		obj->wlock(player);
-
 
 		float oX = 0;
 		float oY = 0;
@@ -3454,15 +3460,14 @@ void GameCommandHandler::setLocation(StringTokenizer tokenizer, Player* player) 
 		if (tokenizer.hasMoreTokens())
 			oW = tokenizer.getFloatToken();
 
-		obj->setPosition((x + diffX),z,(y + diffY));
+		obj->removeFromZone();
+
+		obj->initializePosition((x + diffX), z, (y + diffY));
 		obj->setDirection(oX,0,oY,oW);
 
-		obj->removeFromZone();
-		obj->insertToZone(camp->getOwner()->getZone());
+		obj->insertToZone(zone);
 
 		obj->unlock();
-		camp->unlock();
-
 	} catch (...) {
 		obj->unlock();
 	}

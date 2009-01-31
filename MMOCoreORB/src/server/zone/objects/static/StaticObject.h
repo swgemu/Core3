@@ -21,10 +21,6 @@ class StaticObject : public SceneObject {
 public:
 	StaticObject(unsigned long long oid, int type);
 
-	void insertToZone(Zone* zone);
-
-	void removeFromZone();
-
 	void close(Player* player);
 
 	void sendTo(Player* player, bool doClose = true);
@@ -44,10 +40,6 @@ public:
 	StaticObjectAdapter(StaticObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	void insertToZone(Zone* zone);
-
-	void removeFromZone();
 
 	void close(Player* player);
 

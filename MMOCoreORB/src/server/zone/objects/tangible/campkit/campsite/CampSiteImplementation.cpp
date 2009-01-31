@@ -69,6 +69,7 @@ CampSiteImplementation::CampSiteImplementation(Player* player, uint64 oid,CampKi
 	campArea = NULL;
 	areaRange = 10.0f;
 	visitor = new VisitorList();
+	recoveries = NULL;
 	currentXP = 0.0f;
 	campType = campKit->getCampType();
 
