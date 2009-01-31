@@ -343,7 +343,8 @@ void CombatManager::handelMedicArea(CreatureObject* creature, CreatureObject* ar
 	if (zone == NULL)
 		return;
 
-	areaCenter->unlock();
+	if (creature != areaCenter)
+		areaCenter->unlock();
 
 	try {
 		zone->lock();
@@ -392,7 +393,8 @@ void CombatManager::handelMedicArea(CreatureObject* creature, CreatureObject* ar
 		zone->unlock();
 	}
 
-	areaCenter->wlock(creature);
+	if (creature != areaCenter)
+		areaCenter->wlock(creature);
 }
 
 bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* target, AttackTargetSkill* skill,  String& modifier, CombatAction* actionMessage) {
