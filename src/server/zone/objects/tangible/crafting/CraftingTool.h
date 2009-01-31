@@ -49,6 +49,8 @@ public:
 
 	void sendToolStart(Player* player);
 
+	bool hasAllRequiredResources(DraftSchematic* draftSchematic);
+
 	void setToolEffectiveness(float eff);
 
 	void setCraftingState(int s);
@@ -142,6 +144,8 @@ public:
 	int useObject(Player* player);
 
 	void sendToolStart(Player* player);
+
+	bool hasAllRequiredResources(DraftSchematic* draftSchematic);
 
 	void setToolEffectiveness(float eff);
 

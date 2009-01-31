@@ -198,6 +198,8 @@ public:
 	void cleanUp(Player * player);
 
 	void updateCraftedValues(Player * player, DraftSchematic * draftSchematic);
+
+	bool hasAllRequiredResources(DraftSchematic* draftSchematic);
 	// Setters
 
 	inline void setToolEffectiveness(float eff) {

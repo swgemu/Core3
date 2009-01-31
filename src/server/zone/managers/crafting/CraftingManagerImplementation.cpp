@@ -719,25 +719,29 @@ void CraftingManagerImplementation::putComponentBackInInventory(Player* player,
 
 }
 
-void CraftingManagerImplementation::nextCraftingStage(Player* player,
-		String test) {
+void CraftingManagerImplementation::nextCraftingStage(Player* player, String test) {
 
 	CraftingTool* craftingTool = player->getCurrentCraftingTool();
 	if (craftingTool == NULL)
 		return;
-
-	// If the window is closed now, this sets the resources to no be recoverable
-	craftingTool->setRecoverResources(false);
 
 	DraftSchematic* draftSchematic = craftingTool->getWorkingDraftSchematic();
 
 	if (draftSchematic == NULL)
 		return;
 
-	draftSchematic->setResourcesWereRemoved();
-
 	// Get counter from packet
 	int counter = atoi(test.toCharArray());
+
+	// Make sure all the require resources are there, if not, return them to inventory and close tool
+	if(!craftingTool->hasAllRequiredResources(draftSchematic)){
+		craftingTool->cleanUp(player);
+		return;
+	}
+
+	// If the window is closed now, this sets the resources to no be recoverable
+	craftingTool->setRecoverResources(false);
+	draftSchematic->setResourcesWereRemoved();
 
 	if (craftingTool->getCraftingState() == 2) {
 
@@ -1260,8 +1264,7 @@ void CraftingManagerImplementation::experimentRow(
 	}
 }
 
-void CraftingManagerImplementation::createPrototype(Player* player,
-		String count) {
+void CraftingManagerImplementation::createPrototype(Player* player, String count) {
 
 	CraftingTool* craftingTool;
 	DraftSchematic* draftSchematic;
@@ -1270,15 +1273,8 @@ void CraftingManagerImplementation::createPrototype(Player* player,
 
 	StringTokenizer tokenizer(count);
 
-	try {
-		counter = tokenizer.getIntToken();
-		practice = tokenizer.getIntToken();
-	} catch(Exception& e) {
-
-		System::out << "Character " << player->getFirstName() << " sent unexpected packet data to CraftingManagerImplementation::createPrototype()  Data = '" << count << "'" << endl;
-		e.printStackTrace();
-		return;
-	}
+	counter = tokenizer.getIntToken();
+	practice = tokenizer.getIntToken();
 
 	try {
 
@@ -1396,17 +1392,8 @@ void CraftingManagerImplementation::createSchematic(Player* player,
 
 	StringTokenizer tokenizer(count);
 
-	try {
-
-		counter = tokenizer.getIntToken();
-		practice = tokenizer.getIntToken();
-
-	} catch(Exception& e) {
-
-		System::out << "Character " << player->getFirstName() << " sent unexpected packet data to CraftingManagerImplementation::createSchematic()  Data = '" << count << "'" << endl;
-		e.printStackTrace();
-		return;
-	}
+	counter = tokenizer.getIntToken();
+	practice = tokenizer.getIntToken();
 
 	try {
 
