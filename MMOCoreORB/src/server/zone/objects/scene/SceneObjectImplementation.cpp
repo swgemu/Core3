@@ -866,12 +866,18 @@ void SceneObjectImplementation::incapacitate(CreatureObject* victim) {
 void SceneObjectImplementation::deathblow(Player* victim) {
 	onDeathblow(victim);
 	try {
-		unlock();
+		/*if (victim != _this)
+			wlock(victim);*/
+
 		victim->onReceiveDeathblow(_this);
-		wlock(victim);
+
+		/*if (victim != _this)
+			unlock();*/
+
 	} catch (...) {
 		System::out << "Unhandled exception in SceneObjectImplementation::deathblow" << endl;
-		wlock(victim);
+		/*if (victim != _this)
+			unlock();*/
 	}
 }
 

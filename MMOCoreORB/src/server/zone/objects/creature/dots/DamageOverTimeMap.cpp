@@ -15,7 +15,7 @@ void DamageOverTimeMap::addDot(CreatureObject* attacker, CreatureObject* victim,
 	if (defense > 0)
 		dotReductionMod -= (float) defense / 125.0f;
 
-	int redStrength = strength * dotReductionMod;
+	int redStrength = (int)(strength * dotReductionMod);
 	float redPotency = potency * dotReductionMod;
 
 	bool dotAdded =  dotList->addDot(victim, dotID, duration, dotType, pool, redStrength,redPotency);

@@ -52,7 +52,7 @@ DamageOverTime::DamageOverTime() {
 	setStrength(0);
 	setDuration(0);
 	setPotency(0.0f);
-	setExpires(NULL);
+	setExpires(0);
 }
 
 DamageOverTime::DamageOverTime(uint64 tp, uint8 attrib, uint32 str, uint32 dur, float potency) {
@@ -61,7 +61,7 @@ DamageOverTime::DamageOverTime(uint64 tp, uint8 attrib, uint32 str, uint32 dur, 
 	setStrength(str);
 	setDuration(dur);
 	setPotency(0.0f);
-	setExpires(NULL);
+	setExpires(0);
 	setPotency(potency);
 	activate();
 }
@@ -185,14 +185,14 @@ int DamageOverTime::reduceTick(int reduction) {
 	if (reduction < 0)
 		return reduction;
 
-	int eff_reduction = (potency - reduction);
-	int reductionLeft = reduction - potency;
+	int eff_reduction = (int)(potency - reduction);
+	int reductionLeft = (int)(reduction - potency);
 
 	if (reductionLeft >= 0) {
 		expires.update();
 	} else {
 		float dot_reduction = ((float)eff_reduction) / potency;
-		strength *= dot_reduction;
+		strength *= (int)dot_reduction;
 		potency -= reduction;
 	}
 

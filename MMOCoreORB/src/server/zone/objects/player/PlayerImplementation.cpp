@@ -121,6 +121,11 @@ PlayerImplementation::PlayerImplementation(uint64 cid) : PlayerServant(baseID = 
 
 PlayerImplementation::~PlayerImplementation() {
 
+	if (isInQuadTree()){
+		System::out << "ERROR deleting a player that is still in the Quadtree\n";
+		raise(SIGSEGV);
+	}
+
 	clearBuffs(false);
 
 	for (int i = 0; i < suiBoxes.size(); ++i) {
@@ -1809,7 +1814,12 @@ void PlayerImplementation::drag(Player* targetPlayer, float maxRange, float maxM
 	targetPlayer->setPosition(newPosition->getPositionX(), newPosition->getPositionZ(), newPosition->getPositionY());
 	targetPlayer->increaseMovementCounter();
 
-	targetPlayer->updatePlayerPosition(false); //Updates everyone except targetPlayer of their movement.
+	//targetPlayer->updatePlayerPosition(false); //Updates everyone except targetPlayer of their movement.
+	if (parent != NULL && parent->isCell())
+		targetPlayer->updateZoneWithParent(parent->getObjectID(), false);
+	else
+		targetPlayer->updateZone(false);
+
 	targetPlayer->bounceBack(); //Updates targetPlayer with the new location.
 
 	//Visuals.
@@ -6121,6 +6131,24 @@ void PlayerImplementation::onReceiveDeathblow(SceneObject* killer) {
 		} else {
 			decreasePvpRating(playerKiller);
 		}
+
+		if (playerKiller->requestedDuelTo(_this)) {
+			playerKiller->removeFromDuelList(_this);
+
+			BaseMessage* pvpstat = new UpdatePVPStatusMessage(playerKiller, playerKiller->getPvpStatusBitmask());
+			sendMessage(pvpstat);
+
+			ChatSystemMessage* csm = new ChatSystemMessage("duel", "end_self", playerKiller->getObjectID());
+			sendMessage(csm);
+
+			BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(_this, getPvpStatusBitmask());
+			playerKiller->sendMessage(pvpstat2);
+
+			ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "end_target", getObjectID());
+			playerKiller->sendMessage(csm2);
+		}
+
+		removeFromDuelList(playerKiller);
 	}
 
 	die();

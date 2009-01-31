@@ -3483,8 +3483,13 @@ void GameCommandHandler::drag(StringTokenizer tokenizer, Player* player) {
 		if (targetPlayer == player) {
 			player->sendSystemMessage("healing_response", "healing_response_a5"); //"You must first have a valid target to drag before you can perform this command."
 			return;
-		} else
+		} else {
+			targetPlayer->wlock(player);
+
 			player->drag(targetPlayer, 128.0f, 20.0f, false, true);
+
+			targetPlayer->unlock();
+		}
 
 	} else {
 		player->sendSystemMessage("healing_response", "healing_response_a6"); //"You may only drag players!"

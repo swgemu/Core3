@@ -1846,7 +1846,7 @@ Instrument* CreatureObjectImplementation::getInstrument() {
 	if (inventory == NULL)
 		return NULL;
 
-	for (int i=0; i < inventory->isContainerEmpty(); i++) {
+	for (int i=0; i < inventory->getContainerObjectsSize(); i++) {
 		TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 
 		if (item->isInstrument() && item->isEquipped())
@@ -1860,7 +1860,7 @@ Armor* CreatureObjectImplementation::getArmor(int type) {
 	if (inventory == NULL)
 		return NULL;
 
-	for (int i=0; i < inventory->isContainerEmpty(); i++) {
+	for (int i=0; i < inventory->getContainerObjectsSize(); i++) {
 		TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 
 		if (item->isArmor()) {

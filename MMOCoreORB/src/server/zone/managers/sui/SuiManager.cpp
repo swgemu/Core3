@@ -340,10 +340,9 @@ void SuiManager::handleRedeedStructure(uint32 boxID, Player* player,
 
 			InstallationObject * inso = (InstallationObject *) scno;
 
-			if (extra == inso->getDestroyCode()){
+			if (scno != NULL && extra == inso->getDestroyCode()) {
 				inso->handleMakeDeed(player);
-			}
-			else{
+			} else {
 				SuiMessageBox* wrongCode = new SuiMessageBox(player, 0x00);
 				wrongCode->setPromptTitle("Star Wars Galaxies");
 				wrongCode->setPromptText("You have entered an incorrect code.  You will"

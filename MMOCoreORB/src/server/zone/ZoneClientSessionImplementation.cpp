@@ -102,13 +102,13 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 			player->logout();
 		else {
 			try {
-				player->wlock();
+				//player->wlock();
 
 				player->setLinkDead();
 
-				player->unlock();
+				//player->unlock();
 			} catch (...) {
-				player->unlock();
+				//player->unlock();
 			}
 
 			closeConnection(true, true);
@@ -131,20 +131,22 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 		if (player != NULL) {
 			ZoneServer* srv = NULL;
 
+			ManagedReference<Player> play = player;
+
 			if (lockPlayer)
 				unlock();
 
 			try {
-				player->wlock(lockPlayer);
+				play->wlock(lockPlayer);
 
-				if (player->getZone() != NULL)
-					srv = player->getZone()->getZoneServer();
+				if (play->getZone() != NULL)
+					srv = play->getZone()->getZoneServer();
 
-				player->setClient(NULL);
+				play->setClient(NULL);
 
-				player->unlock(lockPlayer);
+				play->unlock(lockPlayer);
 			} catch (...) {
-				player->unlock(lockPlayer);
+				play->unlock(lockPlayer);
 			}
 
 			if (lockPlayer)
