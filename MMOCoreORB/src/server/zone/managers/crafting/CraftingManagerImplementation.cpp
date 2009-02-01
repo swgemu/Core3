@@ -1660,12 +1660,13 @@ TangibleObject* CraftingManagerImplementation::generateTangibleObject(
 	temp = "itemmask";
 	int mask = itemAttributes->getIntAttribute(temp);
 
-	//(objectid, objectcrc, objectname, objecttemp, false);
-	// Set these defaults in case
-	/*String appearance = result->getString(10);
-	 BinaryData cust(appearance);
-	 String custStr;
-	 cust.decode(custStr);*/
+	temp = "customattributes";
+	String customattributes = itemAttributes->getStringAttribute(temp);
+
+	if(!customattributes.isEmpty()) {
+		customattributes = customattributes.replaceAll(";", ":");
+		customattributes = customattributes.replaceAll(",", ";");
+	}
 
 	TangibleObject* item = NULL;
 
@@ -1681,16 +1682,13 @@ TangibleObject* CraftingManagerImplementation::generateTangibleObject(
 
 	}
 
-	//mint tempmasknum = (int)pow(2, ++tempMask);
-	//System::out << tempMask << endl;
-	//tano->setOptionsBitmask(++tempMask);
-
 	tano->setPlayerUseMask(mask);
 
 	tano->setTemplateTypeName(templatetype);
 
-	//item->setAttributes(attributes);
-	//item->parseItemAttributes();
+	tano->setAttributes(customattributes);
+
+	tano->parseItemAttributes();
 
 	//item->setCustomizationString(custStr);
 	return tano;
