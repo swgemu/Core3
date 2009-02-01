@@ -1702,7 +1702,7 @@ void PlayerImplementation::switchMap(int planetid) {
 	misoBSB = 0;
 	//_this->fillMissionSaveVars(); //REAL
 
-	initializePosition(positionX, zone->getHeight(positionX, positionY), positionZ);
+	initializePosition(positionX, zone->getHeight(positionX, positionY), positionY);
 
 	insertToZone(zone);
 }
