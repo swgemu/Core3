@@ -1031,7 +1031,8 @@ void CreatureImplementation::updateZoneWithParent(uint64 par, bool lightUpdate,
 					}
 				}
 
-				((CellObject*) parent)->removeChild(_this);
+				if (parent != NULL)
+					((CellObject*) parent)->removeChild(_this);
 			}
 			parent = newParent;
 			((CellObject*) parent)->addChild(_this);
