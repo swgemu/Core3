@@ -1353,7 +1353,8 @@ void PlayerImplementation::updateZoneWithParent(uint64 Parent, bool lightUpdate)
 					}
 
 					// remove from old cell
-					((CellObject*) parent)->removeChild(_this);
+					if (parent != NULL)
+						((CellObject*) parent)->removeChild(_this);
 				} else
 					insert = true;
 			}
@@ -1701,7 +1702,7 @@ void PlayerImplementation::switchMap(int planetid) {
 	misoBSB = 0;
 	//_this->fillMissionSaveVars(); //REAL
 
-	setPositionZ(zone->getHeight(positionX, positionY));
+	initializePosition(positionX, zone->getHeight(positionX, positionY), positionZ);
 
 	insertToZone(zone);
 }
@@ -1717,7 +1718,7 @@ void PlayerImplementation::doWarp(float x, float y, float z, float randomizeDist
 
 	parent = NULL;
 
-	setPosition(x, zone->getHeight(x, y), y);
+	initializePosition(x, zone->getHeight(x, y), y);
 
 	if (parentID != 0) {
 		SceneObject* newParent = zone->lookupObject(parentID);
