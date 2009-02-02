@@ -96,7 +96,7 @@ void GameCommandHandler::init() {
 			"Usage: @warp <x> <y>",
 			&warp);
 	gmCommands->addCommand("warpToWP", STAFF,
-			"Warps you to the waypoint of the given name (casesensitive).",
+			"Warps you to the waypoint of the given name (case sensitive).",
 			"Usage: @warpToWP <waypointName>",
 			&warpToWP);
 	gmCommands->addCommand("warpTo", STAFF,
@@ -208,7 +208,7 @@ void GameCommandHandler::init() {
 			"Usage: @updateAppearance",
 			&updateAppearance);
 	gmCommands->addCommand("setAppearanceVariable", DEVELOPER,
-			"Sets an apperance variable for your character.",
+			"Sets an appearance variable for your character.",
 			"Usage: @setAppearanceVariable <variable> <value>",
 			&setAppearanceVariable);
 	gmCommands->addCommand("HAMStats", DEVELOPER,
@@ -232,7 +232,7 @@ void GameCommandHandler::init() {
 			"Usage: @setAdminLevel <player> <level> \n Levels: 1-CSR 2-DEVELOPER 4-PLAYER 8-QA 16-EC 32-LEADQA 64-EMUSTAFF",
 			&setAdminLevel);
 	gmCommands->addCommand("getLocation", ALL,
-			"Gives full detailsofyour location.",
+			"Gives full details of your location.",
 			"Usage: @getLocation",
 			&getLocation);
 	gmCommands->addCommand("getTargetLocation", ALL,
@@ -261,7 +261,7 @@ void GameCommandHandler::init() {
 			&reloadSchematics);
 	gmCommands->addCommand("spawn", CSREVENTS,
 			"Spawn a creature.",
-			"Usage: @spawn <creaturetype> <moves (0,1)> <heigth> <x> <y> <baby>",
+			"Usage: @spawn <creaturetype> <moves (0,1)> <height> <x> <y> <baby>",
 			&spawn);
 	gmCommands->addCommand("guildAdmin", PRIVILEGED,
 			"Let you join a guild temporarily to administer the guild via guildterminal.",
@@ -288,11 +288,11 @@ void GameCommandHandler::init() {
 			"USAGE: @adminList",
 			&adminList);
 	gmCommands->addCommand("showChars", PRIVILEGED,
-			"Returns a list of characters a player has registrated with this server.",
+			"Returns a list of characters a player has registered with this server.",
 			"USAGE: @showChars <Forum Nickname>",
 			&showChars);
 	gmCommands->addCommand("lockServer", DEVELOPER,
-			"Locks the server for intern testing.",
+			"Locks the server for internal testing.",
 			"USAGE: @lockServer",
 			&lockServer);
 	gmCommands->addCommand("unlockServer", DEVELOPER,
@@ -300,7 +300,7 @@ void GameCommandHandler::init() {
 			"USAGE: @lockServer",
 			&unlockServer);
 	gmCommands->addCommand("sendp", DEVELOPER,
-			"Send Packet Test.",
+			"Send a Packet Test.",
 			"Usage: @sendp",
 			&sendp);
 	gmCommands->addCommand("requestStartingLocations", ALL,
@@ -760,7 +760,7 @@ void GameCommandHandler::kick(StringTokenizer tokenizer, Player* player) {
 			player->sendSystemMessage("player \'" + name
 					+ "\' has been kicked.");
 		} else
-			player->sendSystemMessage("unable to kick player \'" + name + "\'");
+			player->sendSystemMessage("Unable to kick player \'" + name + "\'");
 
 	} else
 		player->sendSystemMessage("You can't kick yourself. Use /logout please. \n");
@@ -801,7 +801,7 @@ void GameCommandHandler::kickArea(StringTokenizer tokenizer, Player* player) {
 						player->sendSystemMessage("player \'" + otherName + "\' has been kicked.");
 						i--;
 					} else
-					player->sendSystemMessage("unable to kick player \'" + otherName + "\'");
+					player->sendSystemMessage("Unable to kick player \'" + otherName + "\'");
 
 					zone->lock();
 				}
@@ -867,7 +867,7 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 		}
 
 		if (banMessage.toString() == "") {
-			player->sendSystemMessage("Invalid ban format, please specify reason");
+			player->sendSystemMessage("Invalid ban format, please specify a reason.");
 			return;
 		}
 
@@ -920,7 +920,7 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 			}
 
 			if (offendersAccountName == adminsAccountName) {
-				player->sendSystemMessage("You can't ban yourself.  Idiot");
+				player->sendSystemMessage("You can't ban yourself, idiot.");
 				player->wlock();
 				return;
 			}
@@ -961,7 +961,7 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 
 				if (usergroupid != ForumsDatabase::standardGroup()){
 					delete res;
-					player->sendSystemMessage("You can only ban standard users with this command");
+					player->sendSystemMessage("You can only ban standard users with this command.");
 					player->wlock();
 					return;
 				}
@@ -1013,16 +1013,16 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 
 		} catch (...) {
 
-			player->sendSystemMessage("unable to ban player \'" + name
+			player->sendSystemMessage("Unable to ban player \'" + name
 					+ "\'  (Forum Account = " + offendersAccountName + ")");
 
 		}
 	} else if (server->banUser(name, player->getFirstName())) {
 
-		player->sendSystemMessage("player \'" + name + "\' is banned (IP)");
+		player->sendSystemMessage("Player \'" + name + "\' is banned (IP)");
 
 	} else {
-		player->sendSystemMessage("unable to ban player \'" + name + "\' (IP)");
+		player->sendSystemMessage("Unable to ban player \'" + name + "\' (IP)");
 	}
 
 	player->wlock();
@@ -1076,7 +1076,7 @@ void GameCommandHandler::getForumName(StringTokenizer tokenizer, Player* player)
 
 			player->sendSystemMessage("Forum account name: " + offendersAccountName);
 		} catch (...) {
-			player->sendSystemMessage("unable to get forum account info");
+			player->sendSystemMessage("Unable to get forum account info...");
 		}
 	} else  {
 		player->sendSystemMessage("Unable to get forum account for " + name);
@@ -1284,7 +1284,7 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player* player) {
 					} catch (...) {
 						if (otherPlayer != player)
 							otherPlayer->unlock();
-						player->sendSystemMessage("unable to kill player \'"
+						player->sendSystemMessage("Unable to kill player \'"
 								+ otherName + "\'");
 					}
 
@@ -1308,11 +1308,11 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player* player) {
 
 						creature->explode(2, false);
 						player->inflictDamage(creature, CreatureAttribute::HEALTH, damage);
-						player->sendSystemMessage("creature has been killed.");
+						player->sendSystemMessage("Creature has been killed.");
 
 						creature->unlock();
 					} catch (...) {
-						player->sendSystemMessage("unable to kill creature");
+						player->sendSystemMessage("Unable to kill creature");
 						creature->unlock();
 					}
 
@@ -1344,7 +1344,7 @@ void GameCommandHandler::muteChat(StringTokenizer tokenizer, Player* player) {
 		chatManager->unlock();
 	} catch (...) {
 		chatManager->unlock();
-		System::out << "unreported exception caught in GameCommandHandler::muteChat()\n";
+		System::out << "Unreported exception caught in GameCommandHandler::muteChat()\n";
 	}
 }
 
@@ -2209,7 +2209,7 @@ void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player* player)
 				item = new Firework(player, 0x6618416, UnicodeString("a Firework Type-8"), "object/tangible/firework/shared_firework_s18.iff",8);
 				break;
 			default:
-				player->sendSystemMessage("Useage: @giveItemTemp Firework <1-8>");
+				player->sendSystemMessage("Usage: @giveItemTemp Firework <1-8>");
 				return;
 			}
 
@@ -3324,7 +3324,7 @@ void GameCommandHandler::warpAreaToWP(StringTokenizer tokenizer, Player* player)
 							if (otherPlayer != player)
 								otherPlayer->unlock();
 						} catch (...) {
-							player->sendSystemMessage("unable to warp player \'" + otherName + "\'");
+							player->sendSystemMessage("Unable to warp player \'" + otherName + "\'");
 							if (otherPlayer != player)
 								otherPlayer->unlock();
 						}
