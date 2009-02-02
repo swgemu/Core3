@@ -226,12 +226,32 @@ float CombatManager::doGroupSkill(CommandQueueAction* action) {
 	String actionModifier = action->getActionModifier();
 	GroupSkill* groupskill = (GroupSkill*) action->getSkill();
 
-	if(groupskill->canBePerformed(creature, target)) {
-		groupskill->doSkill(creature, target, actionModifier);
-		return groupskill->getSpeed();
-	} else {
-		return 0.0f;
+	try {
+
+		if (target != NULL && creature != target)
+			target->wlock(creature);
+
+		if (groupskill->canBePerformed(creature, target)) {
+			groupskill->doSkill(creature, target, actionModifier);
+
+			if (target != NULL && creature != target)
+				target->unlock();
+
+			return groupskill->getSpeed();
+		} else {
+			if (target != NULL && creature != target)
+				target->unlock();
+			return 0.0f;
+		}
+
+		if (target != NULL && creature != target)
+			target->unlock();
+	} catch (...) {
+		if (target != NULL && creature != target)
+			target->unlock();
 	}
+
+	return 0.f;
 }
 
 void CombatManager::handleAreaAction(CreatureObject* creature, TangibleObject* target, CommandQueueAction* action, CombatAction* actionMessage) {

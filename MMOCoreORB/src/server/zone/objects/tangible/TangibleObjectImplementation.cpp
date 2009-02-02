@@ -104,7 +104,7 @@ TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creat
 }
 
 TangibleObjectImplementation::~TangibleObjectImplementation() {
-	if (parent != NULL && !isPlayer()) {
+	if (parent != NULL && !isPlayer() && !isNonPlayerCreature()) {
 		error(_this->getTemplateName() + "item still in container on delete");
 
 		StackTrace::printStackTrace();

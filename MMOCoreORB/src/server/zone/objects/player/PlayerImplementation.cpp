@@ -522,6 +522,14 @@ void PlayerImplementation::reload(ZoneClientSession* client) {
 	try {
 		wlock();
 
+		if (inventory == NULL) { // we should be in load() not in reload()
+			load(client);
+
+			unlock();
+
+			return;
+		}
+
 		if (isLoggingOut()) {
 			if (disconnectEvent != NULL) {
 				server->removeEvent(disconnectEvent);

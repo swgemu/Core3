@@ -94,6 +94,9 @@ BuildingObjectImplementation::~BuildingObjectImplementation() {
 
 	delete itemAttributes;
 	itemAttributes = NULL;
+
+	error("DELETING A BUILDING OBJECT");
+	StackTrace::printStackTrace();
 }
 
 void BuildingObjectImplementation::addCell(CellObject* cell) {
