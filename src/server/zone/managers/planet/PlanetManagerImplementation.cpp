@@ -1168,16 +1168,16 @@ void PlanetManagerImplementation::weatherUpdatePlayers() {
     try {
     	playerMap->lock();
     	playerMap->resetIterator(false);
-    	Player* player;
+    	ManagedReference<Player> player;
 
     	while (playerMap->hasNext(false)) {
     		player = playerMap->next(false);
 
     		if (player != NULL) {
-    			playerMap->unlock();
+    			//playerMap->unlock();
 
     			try {
-    				player->wlock();
+    				//player->wlock();
 
     				int playerZone = player->getZoneIndex();
 
@@ -1185,13 +1185,13 @@ void PlanetManagerImplementation::weatherUpdatePlayers() {
     					player->updateWeather();
     				}
 
-    				player->unlock();
+    				//player->unlock();
 
     			} catch (...) {
-    				player->unlock();
+    				//player->unlock();
     			}
 
-    			playerMap->lock();
+    			//playerMap->lock();
     		}
     	}
 

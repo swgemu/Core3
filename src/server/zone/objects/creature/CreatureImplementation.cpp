@@ -1891,7 +1891,7 @@ void CreatureImplementation::performRandomIncapAnimation() {
 }
 
 void CreatureImplementation::doStatesRecovery() {
-	if (isKnockedDown() && knockdownRecoveryTime.isPast())
+	if (!isIncapacitated() && !isDead() && isKnockedDown() && knockdownRecoveryTime.isPast())
 		doStandUp();
 
 	if (isDizzied() && dizzyRecoveryTime.isPast())

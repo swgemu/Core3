@@ -226,8 +226,17 @@ public:
 		if (creatureTarget != creature)
 			awardXp(creature, "medical", (healthHealed + healthHealed)); //No experience for healing yourself.
 
-		if (stimPack->isArea())
+		if (stimPack->isArea()) {
+			if (creature == creatureTarget && target != creature) {
+				target->unlock();
+			}
+
 			handleArea(creature, creatureTarget, stimPower, stimPack->getArea());
+
+			if (creature == creatureTarget && target != creature) {
+				target->wlock(creature);
+			}
+		}
 
 		if (stimPack->isRangedStimPack()) {
 			doAnimationsRange(creature, creatureTarget,stimPack->getObjectID(),creature->calculateDistance(creatureTarget));
