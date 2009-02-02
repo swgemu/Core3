@@ -250,9 +250,10 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 	if (player->countLastNpcConvOptions() > 0) {
 		if (player->getLastNpcConvMessStr() == "trainer_learn")
 			choice = player->getLastNpcConvOption(0);
-		else
+		else if (player->countLastNpcConvOptions() > (uint32)option)
 			choice = player->getLastNpcConvOption(option);
 	}
+
 	player->clearLastNpcConvOptions();
 
 	if (player->getLastNpcConvMessStr() == "trainer_initial") {
@@ -323,26 +324,28 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 				}
 			}
 
-			money = sBox->getSkillMoneyRequired();
-			sp = sBox->getSkillPointsRequired();
+			if (sBox != NULL) {
+				money = sBox->getSkillMoneyRequired();
+				sp = sBox->getSkillPointsRequired();
 
-			if (sBox->getSkillXpCost() > player->getXp(sBox->getSkillXpType())) {
-				player->sendSystemMessage("skill_teacher", "prose_train_failed", params);
-			} else if ((player->getSkillPoints() + sBox->getSkillPointsRequired()) > 250) {
-				params->addDI(sp);
-				if (player->getSkillPoints() != 250)
-					player->sendSystemMessage("skill_teacher", "nsf_skill_points", params);
-				else
-					player->sendSystemMessage("skill_teacher", "no_skill_points");
-			} else if (!verifyCashCredits((uint32)money)) {
-				player->sendSystemMessage("skill_teacher", "prose_nsf", params);
-			} else {
-				params->addDI(money);
-				train(sBox, player);
-				player->addXp(sBox->getSkillXpType(), (-1)*sBox->getSkillXpCost(), true);
-				player->subtractCashCredits((uint32)money);
-				player->sendSystemMessage("skill_teacher", "prose_pay", params);
-				player->sendSystemMessage("skill_teacher", "prose_skill_learned", params);
+				if (sBox->getSkillXpCost() > player->getXp(sBox->getSkillXpType())) {
+					player->sendSystemMessage("skill_teacher", "prose_train_failed", params);
+				} else if ((player->getSkillPoints() + sBox->getSkillPointsRequired()) > 250) {
+					params->addDI(sp);
+					if (player->getSkillPoints() != 250)
+						player->sendSystemMessage("skill_teacher", "nsf_skill_points", params);
+					else
+						player->sendSystemMessage("skill_teacher", "no_skill_points");
+				} else if (!verifyCashCredits((uint32)money)) {
+					player->sendSystemMessage("skill_teacher", "prose_nsf", params);
+				} else {
+					params->addDI(money);
+					train(sBox, player);
+					player->addXp(sBox->getSkillXpType(), (-1)*sBox->getSkillXpCost(), true);
+					player->subtractCashCredits((uint32)money);
+					player->sendSystemMessage("skill_teacher", "prose_pay", params);
+					player->sendSystemMessage("skill_teacher", "prose_skill_learned", params);
+				}
 			}
 			optionmessage = "msg_yes";
 			break;

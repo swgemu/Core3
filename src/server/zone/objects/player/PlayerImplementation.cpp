@@ -6157,7 +6157,8 @@ void PlayerImplementation::onReceiveDeathblow(SceneObject* killer) {
 			playerKiller->sendMessage(csm2);
 		}
 
-		removeFromDuelList(playerKiller);
+		if (requestedDuelTo(playerKiller))
+			removeFromDuelList(playerKiller);
 	}
 
 	die();
