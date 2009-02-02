@@ -13,17 +13,19 @@ uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 		dot = get(key);
 
 		if (dot->nextTickPast()) {
-			try {
-				if (attacker != victim)
-					attacker->wlock(victim);
+			if (attacker != NULL) {
+				try {
+					if (attacker != victim)
+						attacker->wlock(victim);
 
-				dot->applyDot(attacker,victim);
+					dot->applyDot(attacker,victim);
 
-				if (attacker != victim)
-					attacker->unlock();
-			} catch(...) {
-				if (attacker != victim)
-					attacker->unlock();
+					if ( attacker != victim)
+						attacker->unlock();
+				} catch (...) {
+					if (attacker != victim)
+						attacker->unlock();
+				}
 			}
 		}
 
