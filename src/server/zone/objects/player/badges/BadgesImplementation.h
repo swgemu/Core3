@@ -115,7 +115,7 @@ public:
 
 		bool res = badgeBitmask[bitmaskNumber] & value;
 
-		unlock();
+		runlock();
 
 		return res;
 	}
@@ -135,7 +135,7 @@ public:
 
 		res = badgeBitmask[index];
 
-		unlock();
+		runlock();
 
 		return res;
 	}
@@ -153,7 +153,7 @@ public:
 
 		uint8 res = badgeTypeCounts[type];
 
-		unlock();
+		runlock();
 
 		return res;
 	}
@@ -163,7 +163,7 @@ public:
 
 		uint8 res = badgeTotal;
 
-		unlock();
+		runlock();
 
 		return res;
 	}
