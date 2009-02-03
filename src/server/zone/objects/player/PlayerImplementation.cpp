@@ -1453,9 +1453,13 @@ void PlayerImplementation::removeFromZone(bool doLock) {
 
 		info("removing from zone");
 
+		SceneObject* par = NULL;
+
 		if (parent != NULL && parent->isCell()) {
 			CellObject* cell = (CellObject*) parent;
 			BuildingObject* building = (BuildingObject*)parent->getParent();
+
+			par = parent;
 
 			removeFromBuilding(building);
 		} else
@@ -1471,6 +1475,9 @@ void PlayerImplementation::removeFromZone(bool doLock) {
 		removeInRangeObjects();
 
 		zone->deleteObject(objectID);
+
+		if (par != NULL)
+			parent = par;
 
 		zone->unlock(doLock);
 	} catch (...) {

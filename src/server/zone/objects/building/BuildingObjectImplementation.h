@@ -169,6 +169,9 @@ public:
 	BuildingObjectImplementation(uint64 oid, bool staticBuild, int bType = UNKNOWN);
 	~BuildingObjectImplementation();
 
+	void removeFromZone(bool doLock = true);
+	void putPlayersInWorld();
+
 
 	// Attribute Setters
 	inline void setOwner(const String own) {

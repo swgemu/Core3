@@ -99,6 +99,71 @@ BuildingObjectImplementation::~BuildingObjectImplementation() {
 	StackTrace::printStackTrace();
 }
 
+void BuildingObjectImplementation::removeFromZone(bool doLock) {
+	try {
+		//System::out << "SceneObjectImplementation::removeFromZone(bool doLock) Entered" << endl;
+		if (zone == NULL || !isInQuadTree())
+			return;
+
+		//System::out << "SceneObjectImplementation::removeFromZone(bool doLock) After Zone/QuadTree check" << endl;
+		//deaggro();
+
+		zone->lock(doLock);
+
+		putPlayersInWorld();
+
+		if (parent != NULL && parent->isCell()) {
+			CellObject* cell = (CellObject*) parent;
+			BuildingObject* building = (BuildingObject*)parent->getParent();
+
+			removeFromBuilding(building);
+		} else
+			zone->remove(this);
+
+    	for (int i = 0; i < inRangeObjectCount(); ++i) {
+			QuadTreeEntry* obj = getInRangeObject(i);
+
+			if (obj != this)
+				obj->removeInRangeObject(this);
+		}
+
+		removeInRangeObjects();
+
+		zone->deleteObject(objectID);
+
+		zone->unlock(doLock);
+	} catch (...) {
+		System::out << "exception SceneObjectImplementation::removeFromZone(bool doLock)\n";
+
+		zone->unlock(doLock);
+	}
+}
+
+void BuildingObjectImplementation::putPlayersInWorld() {
+	for (int i = 0; i < cells.size(); ++i) {
+		CellObject* cell = cells.get(i);
+
+		for (int j = 0; j < cell->getChildrenSize(); ++j) {
+			SceneObject* child = cell->getChild(j);
+			SceneObjectImplementation* childImpl = (SceneObjectImplementation*) child->_getImplementation();
+
+			child->removeFromZone(false);
+
+			if (child->isPlayer() || child->isNonPlayerCreature()) {
+				child->setParent(NULL);
+				child->initializePosition(positionX, positionZ, positionY);
+
+				child->setZone(zone);
+
+				zone->registerObject(child);
+
+				zone->insert(childImpl);
+				zone->inRange(childImpl, 128);
+			}
+		}
+	}
+}
+
 void BuildingObjectImplementation::addCell(CellObject* cell) {
 	// Guess Cell Numbers
 	if(cell->getCellNumber() == 0)

@@ -1,3 +1,4 @@
+
 /*
  Copyright (C) 2007 <SWGEmu>
 
@@ -3154,7 +3155,7 @@ void ObjectControllerMessage::parsePlaceStructure(Player* player,
 
 	int orient = tokenizer.getIntToken();
 
-	uint64 toID = Long::unsignedvalueOf(objectID);
+	uint64 toID = (uint64)Long::valueOf(objectID);
 
 	PlanetManager* planet = player->getZone()->getPlanetManager();
 
@@ -3412,7 +3413,7 @@ void ObjectControllerMessage::parseHarvesterSelectResource(Player *player,
 
 	//System::out << "harvesterSelectResource: " << sResourceID << endl;
 
-	uint64 resourceID = Long::unsignedvalueOf(sResourceID);
+	uint64 resourceID = (uint64)Long::valueOf(sResourceID);
 
 	//return;
 	if (object == NULL)
@@ -3581,7 +3582,7 @@ void ObjectControllerMessage::parseResourceContainerTransfer(Player* player,
 	if (tokenizer.hasMoreTokens())
 		tokenizer.getStringToken(quantityString);
 
-	uint64 toID = Long::unsignedvalueOf(toIDString);
+	uint64 toID = (uint64)Long::valueOf(toIDString);
 
 	SceneObject* object1 = player->getInventoryItem(fromID);
 	SceneObject* object2 = player->getInventoryItem(toID);
