@@ -63,6 +63,9 @@ bool DamageOverTimeList::addDot(CreatureObject* victim, uint64 dotID, uint32 dur
 		}
 	}
 
+	if (attacker == NULL)
+		return false;
+
 	newDot = new DamageOverTime(dotType, pool, strength ,duration,potency);
 
 	newDot->applyDot(attacker,victim);
