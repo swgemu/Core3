@@ -64,7 +64,7 @@ float HeightMap::getHeight(float x, float y) {
 
 		if (plane == NULL) {
 			//System::out << "Streaming in heightplane number " << planePosition << ".\n";
-			unlock();
+			runlock();
 
 			plane = streamPlaneAt(x, y);
 
@@ -76,10 +76,10 @@ float HeightMap::getHeight(float x, float y) {
 
 		retHeight = plane->getHeight(width, height);
 
-		unlock();
+		runlock();
 	} catch (...) {
 		System::out << "Exception while getting height";
-		unlock();
+		runlock();
 	}
 
 	return retHeight;
