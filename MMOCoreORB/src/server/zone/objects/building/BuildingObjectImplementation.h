@@ -292,7 +292,6 @@ public:
 		storageLoaded = setter;
 	}
 
-
 	inline bool isCloningFacility() {
 		return buildingType == CLONING_FACILITY;
 	}

@@ -52,6 +52,10 @@ which carries forward this exception.
 #include "BankManager.h"
 #include "BankTerminals.h"
 
+#include "../../objects/tangible/Container.h"
+
+class container;
+
 class BankManagerImplementation : public BankManagerServant, public Logger {
 	ZoneProcessServerImplementation* processServer;
 	ZoneServer*	zoneServer;
@@ -63,6 +67,8 @@ public:
 	~BankManagerImplementation();
 
 	bool isBankTerminal(uint64 objectid);
+
+	void handleBankStorage(Player* player);
 };
 
 #endif /*BANKMANAGERIMPLEMENTATION_H_*/

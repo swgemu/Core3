@@ -65,9 +65,11 @@ interface ItemManager {
 	void loadStaticWorldObjects();
 
 	TangibleObject getPlayerItem(Player player, long objectid);
+	
 	void loadPlayerItems(Player player);
 	void loadDefaultPlayerItems(Player player);
 	void loadPlayerDatapadItems(Player player);
+	void loadBankItems(Player player);
 	
 	void unloadPlayerItems(Player player);
 	

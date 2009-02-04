@@ -39,6 +39,19 @@ bool BankManager::isBankTerminal(long long objectid) {
 		return ((BankManagerImplementation*) _impl)->isBankTerminal(objectid);
 }
 
+void BankManager::handleBankStorage(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((BankManagerImplementation*) _impl)->handleBankStorage(player);
+}
+
 /*
  *	BankManagerAdapter
  */
@@ -53,6 +66,9 @@ Packet* BankManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case 6:
 		resp->insertBoolean(isBankTerminal(inv->getSignedLongParameter()));
 		break;
+	case 7:
+		handleBankStorage((Player*) inv->getObjectParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -62,6 +78,10 @@ Packet* BankManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 bool BankManagerAdapter::isBankTerminal(long long objectid) {
 	return ((BankManagerImplementation*) impl)->isBankTerminal(objectid);
+}
+
+void BankManagerAdapter::handleBankStorage(Player* player) {
+	return ((BankManagerImplementation*) impl)->handleBankStorage(player);
 }
 
 /*

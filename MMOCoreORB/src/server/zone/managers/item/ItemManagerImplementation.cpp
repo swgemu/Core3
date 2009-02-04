@@ -108,7 +108,8 @@ void ItemManagerImplementation::loadPlayerItems(Player* player) {
 		StringBuffer query;
 
 		//Iventory items nested in containers MUST LOAD AT LAST - to assure that all container objects are existing when loading items
-		query << "select * from `character_items` where `character_id` = " << player->getCharacterID() << " and `deleted` = 0 order by container asc";
+		query << "select * from `character_items` where `character_id` = " << player->getCharacterID()
+		<< " and `deleted` = 0 and in_bank = 0 order by container asc";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
@@ -138,6 +139,42 @@ void ItemManagerImplementation::loadPlayerItems(Player* player) {
 		System::out << e.getMessage() << "\n";
 	} catch (...) {
 		System::out << "unreported exception caught in ItemManagerImplementation::loadPlayerItems(Player* player)\n";
+	}
+}
+
+void ItemManagerImplementation::loadBankItems(Player* player) {
+	if (player->getBankContainer() == NULL)
+		return;
+
+	Container* bankContainer = player->getBankContainer();
+
+	if (bankContainer == NULL)
+		return;
+
+	bankContainer->sendTo(player);
+
+	try {
+		StringBuffer query;
+
+		query << "select * from `character_items` where in_bank = 1 "
+		<< "and character_id = " << player->getCharacterID() << " and deleted = 0 order by container asc";
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+
+		while (res->next()) {
+			TangibleObject* tano = createPlayerObject(player, res);
+
+			if (tano != NULL)
+				tano->sendTo(player);
+		}
+
+		delete res;
+
+		bankContainer->openTo(player);
+
+	} catch (DatabaseException& e) {
+		System::out << e.getMessage() << "\n";
+	} catch (...) {
+		System::out << "unreported exception caught in ItemManagerImplementation::loadBankItems(Player* player)\n";
 	}
 }
 
@@ -698,18 +735,24 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 		if (zone != NULL) {
 			SceneObject* contiSCO = zone->lookupObject(container);
 
-			if (contiSCO != NULL && contiSCO->isTangible() && ((TangibleObject*)contiSCO)->isContainer()) {
-				Container* conti = (Container*) contiSCO;
+			if (contiSCO == NULL) {
+				if (container == player->getObjectID() + 0x004) { //The items is stored in the bank
+					Container* conti = player->getBankContainer();
 
-				item->setParent(contiSCO);
+					//TODO: 19519 -> setParent() is now included in addObject()
+					//Comment and next line gets removed, if this running stable on TC for a while
+					//item->setParent(conti);
+					conti->addObject(item);
 
-				BaseMessage* linkmsg = item->link(contiSCO);
-				player->sendMessage(linkmsg);
+					updateItemLink(player, item, conti, true);
+				}
+			} else if (contiSCO != NULL && contiSCO->isTangible() && ((TangibleObject*)contiSCO)->isContainer()) {
+				//TODO: 19519 -> setParent() is now included in addObject()
+				//Comment and next line gets removed, if this running stable on TC for a while
+				//item->setParent(contiSCO);
+				contiSCO->addObject(item);
 
-				UpdateTransformMessage* transformMessage = new UpdateTransformMessage(item, 0, 0, 0);
-				player->sendMessage(transformMessage);
-
-				conti->addObject(item);
+				updateItemLink(player, item, contiSCO, true);
 			}
 		}
 	} else if (player != NULL)
@@ -1154,7 +1197,9 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 						extractionRate = itemconfig.getFloatField("extractionRate");
 						hopperSize = itemconfig.getFloatField("hopperSize");
 
-						//System::out << "surplusMaintenance: " << surplusMaintenance << ", maintainanceRate: " << maintenanceRate << ", surplusPower: " << surplusPower << ", extractionRate: " << extractionRate << ", hopperSize: " << hopperSize << endl;
+						//System::out << "surplusMaintenance: " << surplusMaintenance << ", maintainanceRate: "
+						//<< maintenanceRate << ", surplusPower: " << surplusPower << ", extractionRate: "
+						//<< extractionRate << ", hopperSize: " << hopperSize << endl;
 
 
 						HarvesterDeed* harv = (HarvesterDeed*) item;
@@ -1308,7 +1353,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 
 		int attributeSlots = itemconfig.getIntField("slots");
 		Container* container = (Container*) item;
-		container->setSlots(attributeSlots);
+		container->setContainerVolumeLimit(attributeSlots);
 	} else if (type == TangibleObjectImplementation::CAMOKIT) {
 		CamoKit* camoKit = (CamoKit*) item;
 		//int planet = itemconfig.getIntField("planetType");
@@ -1437,7 +1482,7 @@ void ItemManagerImplementation::giveBFItemSet(Player * player, String& set) {
 	if (inventory->getUnequippedItemCount() + itemSet->size()
 			>= InventoryImplementation::MAXUNEQUIPPEDCOUNT) {
 
-		player->sendSystemMessage("You don't have enough space in your inventory");
+		player->sendSystemMessage("@error_message:inv_full");
 		return;
 	}
 
@@ -1447,11 +1492,10 @@ void ItemManagerImplementation::giveBFItemSet(Player * player, String& set) {
 		if (item == NULL) {
 			System::out << "ItemManagerImplementation::giveBFItemSet(...), item == NULL!, set = " << set << endl;
 		} else {
+			server->addObject(item);
+
 			player->addInventoryItem(item);
 			item->sendTo(player);
-
-			if (item->isContainer())
-				server->addObject(item);
 		}
 	}
 }
@@ -1630,12 +1674,6 @@ void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* i
 		String attr = item->getAttributes();
 		MySqlDatabase::escapeString(attr);
 
-		//uint64 contiID = 0;
-		//Container* conti = (Container*) item->getContainer();
-
-		//if (conti != NULL && !item->getContainer()->isPlayer())
-		//	contiID = conti->getObjectID();
-
 		StringBuffer query;
 
 		query << "UPDATE `character_items` set equipped = " << item->isEquipped();
@@ -1644,7 +1682,6 @@ void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* i
 		query << ", appearance = '" << appearance.subString(0, appearance.length() - 1) << "' ";
 		query << ", itemMask = " << item->getPlayerUseMask() << " ";
 		query << ", optionsBitmask = " << item->getOptionsBitmask() << " ";
-		//query << ", container = " << contiID << " ";
 		query << "where item_id = " << item->getObjectID();
 
 		ServerDatabase::instance()->executeStatement(query);
@@ -1656,31 +1693,12 @@ void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* i
 	}
 }
 
-void ItemManagerImplementation::deletePlayerItemAndSetContainerNull(Player* player, TangibleObject* item, bool notify) {
+void ItemManagerImplementation::deletePlayerItem(Player* player, TangibleObject* item, bool notify) {
 	try {
 		StringBuffer query;
 		query << "update `character_items` set deleted = 1, container = 0 where item_id = " << item->getObjectID();
 
 		ServerDatabase::instance()->executeStatement(query);
-
-		StringBuffer playertxt;
-		if (notify)
-			playertxt << "You have destroyed " << item->getCustomName().toString() << ".";
-
-		player->sendSystemMessage(playertxt.toString());
-	} catch (DatabaseException& e) {
-		System::out << e.getMessage() << "\n";
-	}
-}
-
-void ItemManagerImplementation::deletePlayerItem(Player* player, TangibleObject* item, bool notify) {
-	try {
-		StringBuffer query;
-		query << "update `character_items` set deleted = 1 where item_id = " << item->getObjectID();
-
-		ServerDatabase::instance()->executeStatement(query);
-
-		//System::out << query.toString() << endl;
 
 		StringBuffer playertxt;
 		if (notify)
@@ -1977,401 +1995,61 @@ TangibleObject* ItemManagerImplementation::forageStatRandomizer(TangibleObject* 
 }
 
 void ItemManagerImplementation::transferContainerItem(Player* player, TangibleObject* item, uint64 destinationID) {
-	//Item cant be null here, o/w the function would not have been called
-	//This function is called by the ObjectControllerMessage.cpp
+	//pre: Item null checked, called from OBJC
 
-	SceneObject* sourceObject = NULL;
-	SceneObject* destinationObject = NULL;
+	SceneObject* parentSCO;
+	SceneObject* destination;
+	TangibleObject* destinationTano;
 
 	try {
 		item->wlock(player);
 
-		if (item->isEquipped()) {
-			player->sendSystemMessage("You cannot drop equipped items.");
+		//is the operation exceeding storage space?
+		checkDestinationSpace(player, item, destinationID);
+
+		//Remove the item from its source object
+		if (!removeItemFromSource(player, item)) {
+			player->sendSystemMessage("@container_error_message:container01");//Container Transfer unsuccessful
+
 			item->unlock();
 			return;
 		}
 
-		SceneObject* object = (SceneObject*) item;
+		//Determine the target object we move the item to
+		destination = getTargetObject(player, destinationID);
+		if (destination == NULL) {
+			player->sendSystemMessage("@container_error_message:container01");//Container Transfer unsuccessful
 
-		sourceObject = item->getParent();
-		if (sourceObject == NULL) {
 			item->unlock();
 			return;
 		}
 
-		Container* sourceContainer = NULL;
+		TangibleObject* destinationTano = (TangibleObject*) destination;
 
-		Zone* zone = player->getZone();
-		if (zone == NULL) {
+		//Operation allowed?
+		if (!checkProhibitedNesting(player, destinationTano, item)) {
+			player->sendSystemMessage("@container_error_message:container12"); //This item is too bulky to fit inside this container.
+
 			item->unlock();
 			return;
 		}
 
-		destinationObject = zone->lookupObject(destinationID);
+		//All fine, move the item finally
+		if (!moveItemToDestination(player, item, destination)) {
+			player->sendSystemMessage("@container_error_message:container01");//Container Transfer unsuccessful
 
-		bool destinationIsInventory = false;
-		if (destinationID == player->getInventory()->getObjectID())
-			destinationIsInventory = true;
-
-		if (destinationObject == NULL && !destinationIsInventory) {
-			player->sendSystemMessage("You cannot drop items here.");
 			item->unlock();
 			return;
 		}
 
-		//The item comes from...
-		bool comesFromCell = false;
-		bool comesFromInventory = false;
-		bool comesFromInventoryContainer = false;
-		bool comesFromExternalContainer = false;
-		bool comesFromDeadCreature = false;
-
-		TangibleObject* sourceTano = (TangibleObject*) sourceObject;
-
-		if (sourceObject->getObjectID() == player->getInventory()->getObjectID())
-			comesFromInventory = true;
-		else {
-			item->unlock();
-
-			if (sourceObject != player)
-				sourceObject->wlock(player);
-		}
-
-		if (!comesFromInventory) {
-			if (sourceObject->isCell()) {
-				comesFromCell = true;
-			} else if (sourceObject->getParentID() == player->getInventory()->getObjectID()) {
-				comesFromInventoryContainer = true;
-				sourceContainer = (Container*) sourceObject;
-			} else if (sourceTano->isContainer()) {
-				comesFromExternalContainer = true;
-				sourceContainer = (Container*) sourceObject;
-			}
-
-			if (sourceObject != player)
-				sourceObject->unlock();
-
-			item->wlock(player);
-		}
-
-		//The item goes to...
-		bool destinationIsCell = false;
-		bool destinationIsExternalContainer = false;
-		bool destinationIsInventoryContainer = false;
-		bool itemIsContainer = false;
-
-		if (!destinationIsInventory) {
-			item->unlock();
-
-			destinationObject->wlock(player);
-
-			if (destinationObject->isCell()) {
-				destinationIsCell = true;
-			} else {
-				if (destinationObject->isTangible()) {
-					TangibleObject* destinationTano = (TangibleObject*) destinationObject;
-
-					if (destinationObject->getParent() != NULL) {
-						if (destinationObject->getParentID() == player->getInventory()->getObjectID()
-								|| destinationTano->isEquipped())
-							destinationIsInventoryContainer = true;
-						else if (destinationTano->isContainer())
-							destinationIsExternalContainer = true;
-					}
-				}
-			}
-
-			if (!destinationIsInventory) {
-				destinationObject->unlock();
-				item->wlock(player);
-			}
-		}
-
-		if (item->isContainer())
-			itemIsContainer = true;
+		//Reflect the operation in the database
+		reflectItemMovementInDB(player, item, destination);
 
 		item->unlock();
-
-		if ((itemIsContainer && destinationIsInventoryContainer) || (itemIsContainer && destinationIsExternalContainer)) {
-			player->sendSystemMessage("You cannot drop a container into another container");
-			return;
-		}
-
-		if (destinationIsInventoryContainer || destinationIsExternalContainer) {
-			int containerItems = ((Container*) destinationObject)->getContainerObjectsSize();
-			int attributeSlots = ((Container*) destinationObject)->getSlots();
-
-			if (containerItems >= attributeSlots) {
-				player->sendSystemMessage("The container is full.");
-				return;
-			}
-		}
-
-		if (sourceContainer != NULL && player->getInventory() != sourceContainer && !sourceContainer->isTangible()  && !sourceContainer->isContainer())
-			sourceContainer = NULL;
-
-		moveItem(zone, player, item, object, comesFromCell, comesFromInventory, comesFromInventoryContainer,
-				comesFromExternalContainer, destinationObject, destinationIsCell, destinationIsInventory,
-				destinationIsInventoryContainer, destinationIsExternalContainer,sourceContainer, itemIsContainer);
 
 	} catch (...) {
 		item->unlock();
-		destinationObject->unlock();
-		sourceObject->unlock();
-
 		System::out << "Unreported exception caught in ItemManagerImplementation::transferContainerItem(Player* player, TangibleObject* item, uint64 destinationID)\n";
-	}
-}
-
-void ItemManagerImplementation::moveItem(Zone* zone, Player* player, TangibleObject* item, SceneObject* object,	bool comesFromCell,
-		bool comesFromInventory, bool comesFromInventoryContainer, bool comesFromExternalContainer,	SceneObject* destinationObject,
-		bool destinationIsCell, bool destinationIsInventory, bool destinationIsInventoryContainer,bool destinationIsExternalContainer,
-		Container* sourceContainer, bool itemIsContainer) {
-
-	BuildingObject* building = NULL;
-	Container* conti = NULL;
-
-	uint64 objectID = 0;
-	if (object != NULL)
-		objectID = object->getObjectID();
-
-	if (item !=NULL && item->isCampKit()) {
-		return;
-	}
-
-	try {
-		item->wlock(player);
-
-		if (comesFromInventory)
-			player->removeInventoryItem(item);
-
-		if (comesFromInventoryContainer || comesFromExternalContainer) {
-			item->unlock();
-
-			if (sourceContainer == NULL)
-				return;
-
-			//********** Temporarily debug code for TC
-			if (sourceContainer != player->getInventory()) {
-				bool container = sourceContainer->isTangible() && sourceContainer->isContainer();
-				if (!container) {
-					System::out << "ATTENTION - SERIOUS PROBLEM: There is an object considered to be a container, but it isnt. The name of the sourceContainer is "
-					<< sourceContainer->getObjectCRC() << "  and the OID is " << sourceContainer->getObjectID() << "\n";
-
-					return;
-				}
-			}
-			//**********
-
-			try {
-				sourceContainer->wlock(player);
-
-				sourceContainer->removeObject(item->getObjectID());
-
-				sourceContainer->unlock();
-			} catch (...) {
-				sourceContainer->unlock();
-			}
-
-			item->wlock(player);
-		}
-
-		if (destinationIsInventoryContainer || destinationIsExternalContainer)
-			conti = (Container*) destinationObject;
-
-		item->initializePosition(player->getPositionX(), player->getPositionZ()+0.08, player->getPositionY());
-
-		if (destinationIsCell) {
-			building = (BuildingObject*) destinationObject->getParent();
-			if (building == NULL) {
-				item->unlock();
-				return;
-			}
-
-			try {
-				if (item != object)
-					object->wlock();
-
-				object->setParent(destinationObject);
-				item->setParent(destinationObject);
-
-				object->insertToZone(zone);
-				object->setZoneProcessServer(pServer);
-
-				if (item != object)
-					object->unlock();
-			} catch (...) {
-				if (item != object)
-					object->unlock();
-			}
-
-			BaseMessage* linkmsg = item->link(destinationObject);
-			player->broadcastMessage(linkmsg);
-
-			UpdateTransformWithParentMessage* transformMessage = new UpdateTransformWithParentMessage(item);
-			player->broadcastMessage(transformMessage);
-
-		} else if (destinationIsInventoryContainer || destinationIsExternalContainer) {
-			try {
-				if (item != object)
-					object->wlock();
-
-				if (comesFromCell) {
-					BuildingObject* sourceBuilding = (BuildingObject*) object->getParent()->getParent();
-
-					if (sourceBuilding != NULL) {
-						object->removeFromZone();
-						Zone* zone = object->getZone();
-						if (zone != NULL)
-							zone->getZoneServer()->addObject(object);
-					}
-				}
-
-				object->setParent(destinationObject);
-				item->setParent(destinationObject);
-
-				if (item != object)
-					object->unlock();
-			} catch (...) {
-				if (item != object)
-					object->unlock();
-			}
-
-			BaseMessage* linkmsg = item->link(destinationObject);
-			player->broadcastMessage(linkmsg);
-
-			UpdateTransformMessage* transformMessage = new UpdateTransformMessage(item, 0, 0, 0);
-
-			if (comesFromInventory && destinationIsInventoryContainer) {
-				player->sendMessage(transformMessage);
-			}
-			else {
-				player->broadcastMessage(transformMessage);
-			}
-
-			if (destinationObject->isTangible() && ((TangibleObject*)destinationObject)->isContainer())
-				((Container*) destinationObject)->addObject(item);
-			else {
-				System::out << "error destination is not a container its a " << destinationObject->getObjectType();
-				if (destinationObject->isTangible()) {
-					System::out << " tano subtype " << ((TangibleObject*)destinationObject)->getObjectSubType() << " crc:" << destinationObject->getObjectCRC();
-				}
-			}
-
-		} else if (destinationIsInventory) {
-			try {
-				if (item != object)
-					object->wlock();
-
-				if (comesFromCell) {
-					BuildingObject* sourceBuilding = (BuildingObject*) object->getParent()->getParent();
-
-					//If a s container gets picked up, we need to close the container for others.
-					//This is done by removing the object from zone and re-inserting. We also re-send
-					//the item to the player picking up, o/w the item won't show up in inventory
-
-					if (sourceBuilding != NULL) {
-						Zone* zone = object->getZone();
-
-						object->removeFromZone();
-
-						if (zone != NULL) {
-							zone->getZoneServer()->addObject(object);
-						}
-					}
-				}
-
-				Inventory* inventory = player->getInventory();
-				if (inventory == NULL) {
-					if (item != object)
-						object->unlock();
-
-					item->unlock();
-					return;
-				}
-
-				object->setParent(inventory);
-				item->setParent(inventory, 0xFFFFFFFF);
-
-				inventory->addObject(item);
-				createPlayerItem(player, item);
-
-				object->sendTo(player);
-
-				BaseMessage* linkmsg = item->link(inventory);
-				player->broadcastMessage(linkmsg);
-
-				UpdateTransformMessage* transformMessage = new UpdateTransformMessage(item, 0, 0, 0);
-				player->broadcastMessage(transformMessage);
-
-				if (item != object)
-					object->unlock();
-			} catch (...) {
-				if (item != object)
-					object->unlock();
-			}
-		}
-
-		item->unlock();
-
-	}  catch (Exception& e) {
-		item->unlock();
-
-		System::out << "exception caught in ItemManagerImplementation::moveItem(....)\n" << e.getMessage();
-		return;
-	}	catch (...) {
-		item->unlock();
-
-		System::out << "Unreported exception caught in ItemManagerImplementation::moveItem(....)\n";
-		return;
-	}
-
-	reflectItemMovementInDB(player, item, comesFromCell, comesFromInventory, comesFromInventoryContainer,
-			comesFromExternalContainer,	destinationObject, destinationIsCell, destinationIsInventory,
-			destinationIsInventoryContainer, destinationIsExternalContainer, itemIsContainer, conti, building);
-}
-
-void ItemManagerImplementation::reflectItemMovementInDB(Player* player, TangibleObject* item, bool comesFromCell,
-		bool comesFromInventory, bool comesFromInventoryContainer, bool comesFromExternalContainer,	SceneObject* destinationObject,
-		bool destinationIsCell, bool destinationIsInventory, bool destinationIsInventoryContainer, bool destinationIsExternalContainer,
-		bool itemIsContainer, Container* conti,	BuildingObject* building) {
-
-	if (comesFromCell || comesFromExternalContainer) {
-		deleteItemFromPlayerStorageDB(item);
-
-		if (destinationIsInventory) {
-			if (itemIsContainer) {
-				Container* container = (Container*) item;
-				moveNestedItemsToInventoryContainer(player, container);
-			}
-		} else if (destinationIsInventoryContainer) {
-			//This CAN! happen, eg. if you DRAG something from an external container to your backpack within your inventory
-			//so please do not comment this out
-			createPlayerItemInInventoryContainer(player, item, destinationObject);
-		}
-	} else if (comesFromInventory) {
-		if (destinationIsInventoryContainer) {
-			moveItemInInventory(player, item, destinationObject, false);
-		} else if (destinationIsCell || destinationIsExternalContainer) {
-			deletePlayerItemAndSetContainerNull(player, item, false);
-
-			insertItemIntoPlayerStorage(player, item, destinationObject, conti, building);
-
-			if (itemIsContainer && destinationIsCell) {
-				Container* container = (Container*) item;
-				if (container != NULL)
-					moveNestedItemsToPlayerStorage(player, container);
-			}
-		}
-
-	} else if (comesFromInventoryContainer) {
-		if (destinationIsInventory)
-			moveItemInInventory(player, item, NULL, true);
-		else if (destinationIsCell || destinationIsExternalContainer) {
-			deletePlayerItemAndSetContainerNull(player, item, false);
-			insertItemIntoPlayerStorage(player, item, destinationObject, conti, building);
-		}
 	}
 }
 
@@ -2397,34 +2075,33 @@ void ItemManagerImplementation::deleteItemFromPlayerStorageDB(TangibleObject* it
 	}
 }
 
-void ItemManagerImplementation::moveNestedItemsToPlayerStorage(Player* player, Container* container) {
+void ItemManagerImplementation::moveNestedItemsToPlayerStorage(Player* player, Container* contain) {
 	TangibleObject* item;
 
 	try {
-		container->wlock();
+		contain->wlock();
 
 		StringBuffer query;
 
 		query << "START TRANSACTION";
 		ServerDatabase::instance()->executeStatement(query);
 
-		for (int i = 0; i < container->getContainerObjectsSize(); ++i) {
-			item = (TangibleObject*) container->getObject(i);
-
+		for (int i = 0; i < contain->getContainerObjectsSize(); ++i) {
+			item = (TangibleObject*) contain->getObject(i);
 			try {
-				item->wlock(container);
+				item->wlock(contain);
 
 				query.deleteAll();
 
 				query << "UPDATE character_items"
-				<< " set character_id = " << player->getCharacterID() << ", deleted = 1, container = 0"
+				<< " set deleted = 1, container = " << contain->getObjectID()
 				<< " WHERE item_id = " << item->getObjectID() << ";";
 
 				ServerDatabase::instance()->executeStatement(query);
 
 				uint64 containerID = 0;
 
-				containerID = container->getObjectID();
+				containerID = contain->getObjectID();
 
 				String itemname = item->getCustomName().toString();
 				MySqlDatabase::escapeString(itemname);
@@ -2468,46 +2145,52 @@ void ItemManagerImplementation::moveNestedItemsToPlayerStorage(Player* player, C
 		}
 
 		query.deleteAll();
-
 		query << "COMMIT";
-
 		ServerDatabase::instance()->executeStatement(query);
 
-		container->unlock();
+		contain->unlock();
 	} catch (DatabaseException& e) {
 		System::out << e.getMessage() << "\n";
-		container->unlock();
+		contain->unlock();
 
 	} catch (...) {
 		System::out << "unreported exception caught in moveNestedItemsToPlayerStorage(Player* player, TangibleObject* item)\n";
-		container->unlock();
+		contain->unlock();
 	}
 }
 
-void ItemManagerImplementation::moveNestedItemsToInventoryContainer(Player* player, Container* container) {
+void ItemManagerImplementation::moveNestedItemsToInventoryContainer(Player* player, Container* contain) {
 	TangibleObject* item;
 
+	int inBank = 0;
+	if (contain->getParent() != NULL && contain->getParent()->getObjectID() == player->getObjectID() + 0x004)
+		inBank = 1;
+
 	try {
-		container->wlock();
+		contain->wlock();
 
 		StringBuffer query;
+		StringBuffer query2;
 
 		query << "START TRANSACTION";
 		ServerDatabase::instance()->executeStatement(query);
 
-		for (int i = 0; i < container->getContainerObjectsSize(); ++i) {
-			item = (TangibleObject*) container->getObject(i);
+		for (int i = 0; i < contain->getContainerObjectsSize(); ++i) {
+			item = (TangibleObject*) contain->getObject(i);
 			if (item != NULL) {
 				try {
-					item->wlock(container);
+					item->wlock(contain);
 
 					query.deleteAll();
-
 					query << "UPDATE character_items"
-					<< " set character_id = " << player->getCharacterID() << ", deleted = 0, container = " << container->getObjectID()
+					<< " set character_id = " << player->getCharacterID() << ", deleted = 0, in_bank = " << inBank
+					<< ", container = " << contain->getObjectID()
 					<< " WHERE item_id = " << item->getObjectID() << ";";
-
 					ServerDatabase::instance()->executeStatement(query);
+
+					query2.deleteAll();
+					query2 << "DELETE from player_storage WHERE item_id = " << item->getObjectID() << ";";
+					ServerDatabase::instance()->executeStatement(query2);
 
 					item->unlock();
 				} catch (...) {
@@ -2517,121 +2200,58 @@ void ItemManagerImplementation::moveNestedItemsToInventoryContainer(Player* play
 		}
 
 		query.deleteAll();
-
 		query << "COMMIT";
-
 		ServerDatabase::instance()->executeStatement(query);
 
-		container->unlock();
+		contain->unlock();
 	} catch (DatabaseException& e) {
 		System::out << e.getMessage() << "\n";
-		container->unlock();
+		contain->unlock();
 
 	} catch (...) {
 		System::out << "unreported exception caught in moveNestedItemsToInventoryContainer(Player* player, TangibleObject* item)\n";
-		container->unlock();
+		contain->unlock();
 	}
 }
 
-void ItemManagerImplementation::createPlayerItemInInventoryContainer(Player* player, TangibleObject* item, SceneObject* destinationObject) {
-	try {
-		destinationObject->wlock();
-		item->wlock();
-
-		StringBuffer query;
-
-		query.deleteAll();
-		query << "UPDATE character_items"
-		<< " set character_id = " << player->getCharacterID() << ", deleted = 0, container = " << destinationObject->getObjectID()
-		<< " WHERE item_id = " << item->getObjectID() << ";";
-
-		ServerDatabase::instance()->executeStatement(query);
-
-		item->unlock();
-		destinationObject->unlock();
-
-	} catch (DatabaseException& e) {
-		System::out << e.getMessage() << "\n";
-		item->unlock();
-		destinationObject->unlock();
-	} catch (...) {
-		System::out << "unreported exception caught in ItemManagerImplementation::deleteItemFromPlayerStorageDB(TangibleObject* item)\n";
-		item->unlock();
-		destinationObject->unlock();
-	}
-}
-
-void ItemManagerImplementation::moveItemInInventory(Player* player, TangibleObject* item, SceneObject* destinationObject,bool destinationIsInventory) {
-	uint64 containerID = 0;
-	uint64 itemID;
+void ItemManagerImplementation::insertItemIntoPlayerStorage(Player* player, TangibleObject* item) {
+	SceneObject* itemParent;
 
 	try {
-		if (item == NULL)
-			return;
-
-		if (!destinationIsInventory)
-			destinationObject->wlock();
-
-		item->wlock();
-
-		itemID = item->getObjectID();
-
-		item->unlock();
-
-
-		if (destinationObject != NULL) {
-			if (destinationObject->isTangible()) {
-				TangibleObject* destinationItem = (TangibleObject*) destinationObject;
-
-				if (destinationItem->isContainer())
-					containerID = destinationItem->getObjectID();
-			}
-		}
-
-		StringBuffer query;
-		query.deleteAll();
-
-		query << "UPDATE character_items"
-			<< " set character_id = " << player->getCharacterID() << ", deleted = 0, container = " << containerID
-			<< " WHERE item_id = " << itemID << ";";
-
-		ServerDatabase::instance()->executeStatement(query);
-
-		if (!destinationIsInventory)
-			destinationObject->unlock();
-
-	} catch (DatabaseException& e) {
-		System::out << e.getMessage() << "\n";
-
-		if (!destinationIsInventory)
-			destinationObject->unlock();
-
-	} catch (...) {
-		System::out << "unreported exception caught in createPlayerItemInInventoryContainer(Player* player, TangibleObject* item, SceneObject* destinationObject)\n";
-
-		if (!destinationIsInventory)
-			destinationObject->unlock();
-	}
-}
-
-void ItemManagerImplementation::insertItemIntoPlayerStorage(Player* player, TangibleObject* item,
-		SceneObject* destinationObject, Container* conti, BuildingObject* building) {
-
-	try {
-		item->wlock();
-
 		uint64 structureID = 0;
 		uint64 containerID = 0;
 		uint64 parentID = 0;
 
-		if (building != NULL)
-			structureID = building->getObjectID();
+		if (item->getParent() == NULL)
+			return;
 
-		if (conti != NULL)
-			containerID = conti->getObjectID();
+		itemParent = item->getParent();
 
-		if (destinationObject->getParent() != NULL && conti == NULL)
-			parentID = destinationObject->getObjectID();
+		itemParent->wlock();
+
+		if (itemParent->isCell()) {
+			structureID = itemParent->getParentID();
+			parentID = itemParent->getObjectID();
+		}
+
+		if (((TangibleObject*) itemParent)->isContainer()) {
+			if (itemParent->getParent() == NULL) {
+				itemParent->unlock();
+				return;
+			}
+
+			structureID = 0;
+			containerID = itemParent->getObjectID();
+			parentID = 0;
+		}
+
+		if (itemParent->getParent() != NULL && item->getParentID() == player->getObjectID() + 0x004) {
+			structureID = 0;
+			containerID = player->getObjectID() + 0x004;
+			parentID = 0;
+		}
+
+		itemParent->unlock();
 
 		String itemname = item->getCustomName().toString();
 		MySqlDatabase::escapeString(itemname);
@@ -2656,7 +2276,6 @@ void ItemManagerImplementation::insertItemIntoPlayerStorage(Player* player, Tang
 		float oW = item->getDirectionW();
 
 		StringBuffer query;
-
 		query << "REPLACE DELAYED INTO `player_storage` "
 		<< "(`item_id`,`structure_id`,`name`,`template_crc`,`template_type`"
 		<< ",`template_name`,`container`,`parent_id`,`appearance`, `attributes`,`itemMask`,`optionsBitmask`,X,Y,Z,oX,oY,oZ,oW,dropped_by_character) "
@@ -2665,16 +2284,24 @@ void ItemManagerImplementation::insertItemIntoPlayerStorage(Player* player, Tang
 		<< containerID << "," << parentID << ",'" << appearance.subString(0, appearance.length() - 1)
 		<< "','" << attr << "'," << item->getPlayerUseMask() << "," << item->getOptionsBitmask() << ","
 		<< x << "," << y << "," << z << "," << oX << "," << oY << "," << oZ << "," << oW << "," << player->getCharacterID() << ")";
-
 		ServerDatabase::instance()->executeStatement(query);
 
-		item->unlock();
-	} catch (DatabaseException& e) {
-		item->unlock();
-		System::out << e.getMessage() << "\n";
+		StringBuffer query2;
+		query2 << "UPDATE `character_items` set deleted = 1, container = " << containerID << " where item_id = " << item->getObjectID();
+		ServerDatabase::instance()->executeStatement(query2);
 
+
+		if (item->isContainer()) {
+			item->unlock();
+			moveNestedItemsToPlayerStorage(player, ((Container*) item));
+			item->wlock(player);
+		}
+
+	} catch (DatabaseException& e) {
+		itemParent->unlock();
+		System::out << e.getMessage() << "\n";
 	} catch (...) {
-		item->unlock();
+		itemParent->unlock();
 		System::out << "unreported exception caught in insertItemIntoPlayerStorage(TangibleObject* item, SceneObject* destinationObject, Container* conti, BuildingObject* building)\n";
 	}
 }
@@ -2683,7 +2310,6 @@ void ItemManagerImplementation::loadStructurePlayerItems(Player* player, uint64 
 	Zone* zone = player->getZone();
 	if (zone == NULL)
 		return;
-
 
 	SceneObject* cellSCO = zone->lookupObject(cellID);
 	if (cellSCO == NULL)
@@ -2697,27 +2323,23 @@ void ItemManagerImplementation::loadStructurePlayerItems(Player* player, uint64 
 		return;
 
 	if (!building->getStorageLoaded())
-		loadContainersInStructures(player, building);
+		loadContainersInStructures(player, building, cellSCO );
 }
 
-void ItemManagerImplementation::loadContainersInStructures(Player* player, BuildingObject* building) {
+void ItemManagerImplementation::loadContainersInStructures(Player* player, BuildingObject* building, SceneObject* cell) {
+	TangibleObject* item;
+
 	try {
 		ResultSet* result = NULL;
 		Zone* zone = NULL;
 
-		//building->wlock();
-
 		zone = building->getZone();
 
-		if (zone == NULL) {
-			//building->unlock();
+		if (zone == NULL || cell == NULL)
 			return;
-		}
 
 		StringBuffer query;
-
 		query << "select * from `player_storage` where `structure_id` = " << building->getObjectID() << " and container = 0;";
-
 		result = ServerDatabase::instance()->executeQuery(query);
 
 		while (result->next())	{
@@ -2751,71 +2373,61 @@ void ItemManagerImplementation::loadContainersInStructures(Player* player, Build
 
 			String attributes = result->getString(8);
 
-			TangibleObject* item = createPlayerObjectTemplate(objecttype, objectid, objectcrc,
-					UnicodeString(objectname), objecttemp, equipped, false, "", 0);
+			try {
+				item = createPlayerObjectTemplate(objecttype, objectid, objectcrc,
+						UnicodeString(objectname), objecttemp, equipped, false, "", 0);
 
-			if (item == NULL) {
-				//building->unlock();
+				if (item == NULL) {
+					delete result;
+					return;
+				}
 
-				delete result;
-				return;
-			}
-
-			item->wlock();
-
-			item->initializePosition(X,Z,Y);
-			item->setDirection(oX,oZ,oY,oW);
-
-			item->setAttributes(attributes);
-			item->parseItemAttributes();
-
-			item->setPlayerUseMask(itemMask);
-
-			item->setOptionsBitmask(optionsBitmask);
-
-			item->setCustomizationString(custStr);
-
-			item->setPersistent(true);
-
-			server->addObject(item);
-
-			item->unlock();
-
-			SceneObject* cell = zone->lookupObject(parentID);
-			if (cell != NULL) {
 				item->wlock();
+
+				item->initializePosition(X,Z,Y);
+				item->setDirection(oX,oZ,oY,oW);
+
+				item->setAttributes(attributes);
+				item->parseItemAttributes();
 
 				item->setParent(cell);
 
+				item->setPlayerUseMask(itemMask);
+
+				item->setOptionsBitmask(optionsBitmask);
+
+				item->setCustomizationString(custStr);
+
+				item->setPersistent(true);
+
+				server->addObject(item);
+
 				item->insertToZone(zone);
-				item->setZoneProcessServer(pServer);
 
-				BaseMessage* linkmsg = item->link(cell);
-				player->broadcastMessage(linkmsg);
+				//TODO: 19519 -> remove the comment and the commented line when stable on TC
+				//item->setZoneProcessServer(pServer);
 
-				UpdateTransformWithParentMessage* transformMessage = new UpdateTransformWithParentMessage(item);
-				player->broadcastMessage(transformMessage);
+				updateItemLinkWithParent(player, item, cell, false);
 
 				item->unlock();
 
 				if (item->isContainer())
 					loadItemsInContainersForStructure(player, (Container*) item);
+			} catch (...) {
+				System::out << "unreported exception caught in ItemManagerImplementation::loadContainersInStructures(Player* player, BuildingObject* building)\n";
+				item->unlock();
+				return;
 			}
 		}
 
 		building->setStorageLoaded(true);
 
-		//building->unlock();
-
 		delete result;
+
 	} catch (DatabaseException& e) {
 		System::out << e.getMessage() << "\n";
-
-		//building->unlock();
 	} catch (...) {
 		System::out << "unreported exception caught in ItemManagerImplementation::loadContainersInStructures(Player* player, BuildingObject* building)\n";
-
-		//building->unlock();
 	}
 }
 
@@ -2826,9 +2438,7 @@ void ItemManagerImplementation::loadItemsInContainersForStructure(Player* player
 		uint64 contiID = conti->getObjectID();
 
 		StringBuffer query;
-
 		query << "select * from `player_storage` where `container` = " << contiID << ";";
-
 		ResultSet* contiResult = ServerDatabase::instance()->executeQuery(query);
 
 		while (contiResult->next())	{
@@ -2879,16 +2489,13 @@ void ItemManagerImplementation::loadItemsInContainersForStructure(Player* player
 				item->setPersistent(true);
 
 				server->addObject(item);
-
-				item->setParent(conti);
-
-				BaseMessage* linkmsg = item->link(conti);
-				player->broadcastMessage(linkmsg);
-
-				UpdateTransformMessage* transformMessage = new UpdateTransformMessage(item, 0, 0, 0);
-				player->broadcastMessage(transformMessage);
+				//TODO: 19519 -> setParent() is now included in addObject()
+				//Comment and next line gets removed, if this running stable on TC for a while
+				//item->setParent(conti);
 
 				conti->addObject(item);
+
+				updateItemLinkWithParent(player, item, conti, false);
 
 				item->unlock();
 			} catch (...) {
@@ -2908,4 +2515,369 @@ void ItemManagerImplementation::loadItemsInContainersForStructure(Player* player
 
 		conti->unlock();
 	}
+}
+
+void ItemManagerImplementation::moveItemToInventoryDB(Player* player, TangibleObject* item) {
+	try {
+		uint64 containerID = 0;
+		uint8 inBank = 0;
+
+		TangibleObject* parent;
+		parent = (TangibleObject*) item->getParent();
+
+		if (parent != NULL) {
+			if (parent->getObjectID() != player->getObjectID() + 1) { //...goes NOT to inventory - set container value
+				containerID = parent->getObjectID();
+			}
+
+			if (parent->getObjectID() == player->getObjectID() + 0x004) { //...goes to bank storage
+				inBank = 1;
+			}
+
+			if (parent->getParent() != NULL) {
+				if (parent->getParent()->getObjectID() == player->getObjectID() + 0x004) { //...goes inside a container in the bank
+					inBank = 1;
+				}
+			}
+		}
+
+		StringBuffer query;
+		query << "UPDATE character_items set character_id = " << player->getCharacterID() << ", deleted = 0, in_bank = "
+		<< inBank << ", container = " << containerID << " where item_id = " << item->getObjectID() << ";";
+		ServerDatabase::instance()->executeStatement(query);
+
+		StringBuffer query2;
+		query2 << "DELETE from player_storage where item_id = " << item->getObjectID() << ";";
+		ServerDatabase::instance()->executeStatement(query2);
+
+		if (item->isContainer()) {
+			item->unlock();
+			moveNestedItemsToInventoryContainer(player, ((Container*) item));
+			item->wlock(player);
+		}
+
+	} catch (DatabaseException& e) {
+		System::out << e.getMessage() << "\n";
+	} catch (...) {
+		System::out << "unreported exception caught in ItemManagerImplementation::moveItemToInventoryDB(Player* player, TangibleObject* item)\n";
+	}
+}
+
+
+void ItemManagerImplementation::publishItemToSurroundingPlayers(Player* player, TangibleObject* item, int meter) {
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	try {
+		zone->lock();
+
+		if (meter < 1)
+			meter = 1;
+
+		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
+			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_this);
+
+			if (object->isPlayer()) {
+				Player* creature = (Player*) object;
+
+				if (player->isInRange(creature, meter)) {
+					item->sendTo(creature);
+				}
+			}
+		}
+
+		zone->unlock();
+	} catch (...) {
+		zone->unlock();
+	}
+}
+
+void ItemManagerImplementation::closeExternalContainer(TangibleObject* item) {
+	//pre: container (item) locked
+
+	Zone* zone;
+	BuildingObject* building;
+
+	if (item == NULL || !item->isContainer())
+		return;
+
+	if ( ( item->getParent() != NULL && item->getParent()->isCell())
+		|| ( (item->getParent() != NULL && item->getParent()->getParent() != NULL && item->getParent()->getParent()->isCell())) ) {
+
+		zone = item->getZone();
+		if (zone != NULL) {
+			item->removeFromZone();
+			zone->getZoneServer()->addObject(item);
+		}
+	}
+}
+
+void ItemManagerImplementation::updateItemLinkWithParent(Player* player, TangibleObject* item, SceneObject* destination, bool singleMode) {
+	BaseMessage* linkmsg = item->link(destination);
+
+	if (!singleMode)
+		player->broadcastMessage(linkmsg);
+	else
+		player->sendMessage(linkmsg);
+
+	UpdateTransformWithParentMessage* transformMessage = new UpdateTransformWithParentMessage(item);
+
+	if (!singleMode)
+		player->broadcastMessage(transformMessage);
+	else
+		player->sendMessage(transformMessage);
+}
+
+void ItemManagerImplementation::updateItemLink(Player* player, TangibleObject* item, SceneObject* destination, bool singleMode) {
+	BaseMessage* linkmsg = item->link(destination);
+
+	if (!singleMode)
+		player->broadcastMessage(linkmsg);
+	else
+		player->sendMessage(linkmsg);
+
+	UpdateTransformMessage* transformMessage = new UpdateTransformMessage(item, 0, 0, 0);
+
+	if (!singleMode)
+		player->broadcastMessage(transformMessage);
+	else
+		player->sendMessage(transformMessage);
+
+}
+
+bool ItemManagerImplementation::checkDestinationSpace(Player* player, TangibleObject* item, uint64 destinationID) {
+	//pre: item locked
+	SceneObject* destination;
+
+	int amountToMove = 1, volumeLimit = 0, currentAmount = 0;
+
+	if (item->isContainer())
+		amountToMove = item->getContainerObjectsWithChildsSize() + 1;
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return false;
+
+	try {
+		destination = zone->lookupObject(destinationID);
+
+		if (destination == NULL) {
+			if (destinationID == player->getInventory()->getObjectID()) {
+				destination = player->getInventory();
+				currentAmount = ((Inventory*) destination)->getUnequippedItemCount();
+
+			} else if (destinationID == player->getBankContainer()->getObjectID()) {
+				destination = player->getBankContainer();
+				currentAmount = destination->getContainerObjectsWithChildsSize();
+
+			} else {
+				player->sendSystemMessage("@container_error_message:container01");
+				return false;
+			}
+		} else {
+			currentAmount = destination->getContainerObjectsWithChildsSize();
+		}
+
+		//Check the target object for space:
+		volumeLimit = destination->getContainerVolumeLimit();
+
+		if ((currentAmount + amountToMove > volumeLimit) && volumeLimit > 0) { //For now: Safety net, there are still many containerObjects with a containerVolume = -1
+			if (destination->isCell())
+				player->sendSystemMessage("@container_error_message:container13"); //The house is full
+			else
+				player->sendSystemMessage("@container_error_message:container03"); //Container/unventory full
+
+			return false;
+		}
+
+		//Check topmost parent and its children for space:
+		SceneObject* topmost = destination;
+		String error = "@container_error_message:container03";
+
+		while (topmost->getParentID() > 0) {
+			try {
+				topmost->wlock();
+
+				if (topmost->isPlayerInventory()) {
+					Inventory* inventory = player->getInventory();
+					currentAmount = inventory->getUnequippedItemCount();
+					error = "@error_message:inv_full";
+					topmost->unlock();
+					break;
+				} else if (topmost->isPlayerBankStorage()) {
+					currentAmount = topmost->getContainerObjectsWithChildsSize();
+					topmost->unlock();
+					break;
+				} else if (topmost->isBuilding()) {
+					currentAmount = topmost->getContainerObjectsWithChildsSize();
+					topmost->unlock();
+					break;
+				} else {
+					topmost->unlock();
+				}
+			} catch(...) {
+				topmost->unlock();
+			}
+
+			//Changing the parent at the END of the loop -not at the beginning- so we also catch the current level (in case its the inventory)
+			topmost = topmost->getParent();
+		}
+
+		volumeLimit = topmost->getContainerVolumeLimit();
+
+		if ((currentAmount + amountToMove > volumeLimit) && volumeLimit > 0) { //For now: Safety net, there are still many containerObjects with a containerVolume = -1
+			player->sendSystemMessage(error);
+			return false;
+		}
+
+	} catch (...) {
+		System::out << "Unreported exception caught in ItemManagerImplementation::checkDestinationSpace\n";
+	}
+
+	return true;
+}
+
+bool ItemManagerImplementation::checkProhibitedNesting(Player* player, TangibleObject* destinationTano, TangibleObject* item) {
+	//pre: item locked
+	if (destinationTano->isContainer() && item->isContainer() && !destinationTano->isPlayerBankStorage())
+		return false;
+
+	return true;
+}
+
+bool ItemManagerImplementation::removeItemFromSource(Player* player, TangibleObject* item) {
+	//pre: item locked
+
+	SceneObject* parentSCO = item->getParent();
+
+	if (item->isContainer())
+		closeExternalContainer(item);
+
+	if (parentSCO != NULL) {
+		try {
+			if (parentSCO != player && !parentSCO->isCell())
+				parentSCO->wlock(player);
+
+			if (!parentSCO->isCell()) {
+				if (!parentSCO->removeObject(item->getObjectID())) {
+					player->sendSystemMessage("@container_error_message:container01"); //Container Transfer unsuccessful
+
+					if (parentSCO != player && !parentSCO->isCell())
+						parentSCO->unlock();
+
+					return false;
+				}
+			} else {
+				BuildingObject* parentBuilding = (BuildingObject*) parentSCO->getParent();
+
+				if (parentBuilding != NULL)
+					item->removeFromBuilding(parentBuilding);
+			}
+
+			if (parentSCO != player && !parentSCO->isCell())
+				parentSCO->unlock();
+
+		} catch (...) {
+			player->sendSystemMessage("@container_error_message:container01");//Container Transfer unsuccessful
+
+			if (parentSCO != player && !parentSCO->isCell())
+				parentSCO->unlock();
+
+			return false;
+		}
+	}
+
+	return true;
+}
+
+SceneObject* ItemManagerImplementation::getTargetObject(Player* player, uint64 destinationID) {
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return NULL;
+
+	SceneObject* destination = NULL;
+
+	destination = zone->lookupObject(destinationID);
+
+	if (destination == NULL) {
+		if (destinationID == player->getInventory()->getObjectID()) {
+			destination = (SceneObject*) player->getInventory();
+
+		} else if (destinationID == player->getBankContainer()->getObjectID()) {
+			destination = (SceneObject*) player->getBankContainer();
+
+		} else
+			return NULL;
+	}
+
+	return destination;
+}
+
+void ItemManagerImplementation::reflectItemMovementInDB(Player* player, TangibleObject* item, SceneObject* destination) {
+	SceneObject* topmost;
+	topmost = destination;
+
+	while (topmost->getParentID() > 0) {
+		if (topmost->isPlayerInventory()) {
+			moveItemToInventoryDB(player, item); //Nested in inventory
+			break;
+
+		} else if (topmost->isPlayerBankStorage()) {
+			moveItemToInventoryDB(player, item); //Nested in bank
+			break;
+
+		} else if (topmost->isCell()) {
+			insertItemIntoPlayerStorage(player, item); //Nested in a cell
+			break;
+		}
+
+		topmost = topmost->getParent();
+	}
+}
+
+bool ItemManagerImplementation::moveItemToDestination(Player* player, TangibleObject* item, SceneObject* destination) {
+	Zone* zone = player->getZone();
+
+	if (zone == NULL)
+		return false;
+
+	item->initializePosition(player->getPositionX(), player->getPositionZ()+0.08, player->getPositionY());
+
+	if (destination->isCell()) { //Dropping to a cell object
+		item->setParent(destination);
+		item->insertToZone(zone);
+
+		publishItemToSurroundingPlayers(player, item, 32);
+
+		updateItemLinkWithParent(player, item, destination, false);
+
+	} else if (((TangibleObject*) destination)->isContainer()) { //destination is a container
+		if (!destination->isPlayer())
+			destination->wlock(player);
+
+		destination->addObject(item);
+
+		publishItemToSurroundingPlayers(player, item, 32); //make the item known to others if it's an external container
+		updateItemLink(player, item, destination, false);
+
+		if (!destination->isPlayer())
+			destination->unlock();
+
+	} else 	if (destination->isPlayerInventory()) { //destination is inventory
+		Inventory* playerInventory = player->getInventory();
+
+		if (playerInventory != NULL) {
+			playerInventory->addObject(item);
+			updateItemLink(player, item, destination, false);
+		}
+
+	} else 	if (destination->isPlayerBankStorage()) {
+		destination->addObject(item);
+		updateItemLink(player, item, destination, true);
+	}
+
+	item->sendTo(player);
+
+	return true;
 }

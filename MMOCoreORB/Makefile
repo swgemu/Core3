@@ -90,7 +90,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/Container.idl \
 				server/zone/objects/tangible/Inventory.idl \
 				server/zone/objects/tangible/Datapad.idl \
-				server/zone/objects/tangible/Bank.idl \
+				server/zone/objects/tangible/terminal/bank/BankTerminal.idl \
 				server/zone/objects/tangible/MissionBag.idl \
 				server/zone/objects/tangible/weapons/Weapon.idl \
 				server/zone/objects/tangible/weapons/JediWeapon.idl \
@@ -172,6 +172,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 	 			server/zone/objects/tangible/campkit/campsite/FBCampSite.idl \
 	 			server/zone/objects/tangible/campkit/campsite/HTFBCampSite.idl \
 				server/zone/objects/tangible/inventory/CreatureInventory.idl \
+				server/zone/objects/tangible/inventory/BankInventory.idl \
 				server/zone/objects/static/firework/FireworkWorld.idl \
 				server/zone/objects/static/StaticObject.idl \
 				server/zone/objects/intangible/IntangibleObject.idl \

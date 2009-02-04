@@ -98,13 +98,14 @@ interface SceneObject implements ManagedObject {
 	SceneObject getObject(int index);
 	SceneObject getObject(unsigned long oid);
 
-	void removeObject(int index);
-	void removeObject(unsigned long oid);
+	boolean removeObject(int index);
+	boolean removeObject(unsigned long oid);
 
 	void sendItemsTo(Player player);
 
 	// getters
 	int getContainerObjectsSize();
+	int getContainerObjectsWithChildsSize();
 
 	boolean isContainerEmpty();
 	
@@ -115,7 +116,6 @@ interface SceneObject implements ManagedObject {
 	int getContainerVolumeLimit();
 
 	// setters
-	void setSlots(int attributeSlots);
 	void setContainerVolumeLimit(unsigned int limit);
 	void setContainerType(unsigned int type);
 
@@ -237,6 +237,10 @@ interface SceneObject implements ManagedObject {
 	boolean isPlayer();
 
 	boolean isNonPlayerCreature();
+	
+	boolean isPlayerInventory();
+
+	boolean isPlayerBankStorage();	
 
 	boolean isBuilding();
 

@@ -55,6 +55,12 @@ public:
 	void sendTo(Player* player, bool doClose = true);
 
 	void sendItemsTo(Player* player);
+
+	bool addObject(SceneObject* obj);
+
+	bool removeObject(int index);
+
+	bool removeObject(uint64 oid);
 };
 
 

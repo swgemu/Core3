@@ -70,6 +70,8 @@ public:
 	static const uint8 INSURANCE = 6;
 	static const int CAMP = 7;
 	static const uint8 STARTINGLOCATION = 8;
+
+	static const uint8 BANK = 42;
 	static const uint8 BAZAAR = 50;
 
 
@@ -119,6 +121,10 @@ public:
 
 	inline bool isInsuranceTerminal() {
 		return terminalType == INSURANCE;
+	}
+
+	inline bool isBankTerminal() {
+		return terminalType == BANK;
 	}
 
 	inline bool isBazaarTerminal() {

@@ -980,16 +980,23 @@ void PlayerImplementation::removeEvents() {
 
 void PlayerImplementation::loadItems(bool newcharacter) {
 	inventory = new Inventory(_this);
+	inventory->setContainerVolumeLimit(80);
+
+	bankContainer = new BankInventory(_this);
+	bankContainer->setContainerVolumeLimit(100);
 
 	datapad = new Datapad(_this);
+	datapad->setContainerVolumeLimit(100);
+
 	equippedItems = new EquippedItems(_this);
 
 	ItemManager* itemManager = zone->getZoneServer()->getItemManager();
 	if (newcharacter) {
 		itemManager->loadDefaultPlayerItems(_this);
 		itemManager->loadPlayerDatapadItems(_this);
-	} else
+	} else {
 		itemManager->loadPlayerItems(_this);
+	}
 
 	if (!hairObject.isEmpty()) {
 		hairObj = new HairObject(_this, hairObject.hashCode(), UnicodeString("hair"), "hair");
@@ -3223,7 +3230,6 @@ void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
 		System::out << "ERROR - equippedItems not initialised" << endl;
 		return;
 	}
-
 	equippedItems->changeWearable(cloth, forced);
 
 	BaseMessage* creo6 = new CreatureObjectMessage6(_this);

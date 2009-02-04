@@ -16,7 +16,6 @@ See the GNU Lesser General Public License for
 more details.
 
 You should have received a copy of the GNU Lesser General
-Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 Linking Engine3 statically or dynamically with other modules
@@ -114,6 +113,7 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 
 	creatureManager = planet->getCreatureManager();
 	structureManager = new StructureManager(zone, server);
+	bankManager = server->getBankManager();
 
 	StringBuffer logName;
 	logName << "PlanetManager" << zone->getZoneID();
@@ -284,7 +284,9 @@ void PlanetManagerImplementation::loadStaticTangibleObjects() {
 		tano->initializePosition(x, z, y);
 		tano->setDirection(oX, oZ, oY, oW);
 		tano->setObjectSubType(type);
-		tano->setZoneProcessServer(server);
+		//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
+		//i will remove the comment and the commented line.
+		//tano->setZoneProcessServer(server);
 		tano->insertToZone(zone);
 
 		staticTangibleObjectMap.put(tano->getObjectID(), tano);
@@ -398,6 +400,7 @@ void PlanetManagerImplementation::loadStaticPlanetObjects() {
 	loadStaticTangibleObjects();
 	loadCloningTerminals();
 	loadInsuranceTerminals();
+	loadBankTerminals();
 	loadCloneSpawnPoints();
 	loadStartingLocationTerminals();
 }
@@ -451,7 +454,11 @@ void PlanetManagerImplementation::loadShuttles() {
 
 				TicketCollector * colector = new TicketCollector(shuttle, getNextStaticObjectID(false),
 					UnicodeString("Ticket Collector"), "ticket_travel", collPosX, collPosZ, collPosY);
-				colector->setZoneProcessServer(server);
+
+				//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
+				//i will remove the comment and the commented line.
+				//colector->setZoneProcessServer(server);
+
 				colector->setDirection(0, 0, collDirY, collDirW);
 				colector->setParent(zone->lookupObject(collCellId));
 
@@ -476,7 +483,11 @@ void PlanetManagerImplementation::loadShuttles() {
 
 				TravelTerminal * terminal = new TravelTerminal(shuttle, getNextStaticObjectID(false),
 									termPosX, termPosZ, termPosY);
-				terminal->setZoneProcessServer(server);
+
+				//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
+				//i will remove the comment and the commented line.
+				//terminal->setZoneProcessServer(server);
+
 				terminal->setDirection(0, 0, termDirY, termDirW);
 				terminal->setParent(zone->lookupObject(termCellId));
 				terminal->insertToZone(zone);
@@ -562,6 +573,53 @@ void PlanetManagerImplementation::loadGuildTerminals() {
 		unlock();
 	}
 
+}
+
+void PlanetManagerImplementation::loadBankTerminals() {
+	BankTerminal* bankTerminal;
+
+	try {
+		lock();
+
+		StringBuffer query;
+		query << "SELECT * FROM terminals WHERE type = 2 AND zoneid = " << zone->getZoneID() << " ORDER BY parentid;";
+
+		ResultSet* resultSet = ServerDatabase::instance()->executeQuery(query);
+
+		while (resultSet->next()) {
+			uint64 parentId = resultSet->getUnsignedLong(1);
+
+			float oX = resultSet->getFloat(3);
+			float oZ = resultSet->getFloat(4);
+			float oY = resultSet->getFloat(5);
+			float oW = resultSet->getFloat(6);
+
+			float X = resultSet->getFloat(7);
+			float Z = resultSet->getFloat(8);
+			float Y = resultSet->getFloat(9);
+
+			SceneObject* parentCell = zone->lookupObject(parentId);
+
+			uint64 newID = getNextStaticObjectID(false);
+
+			bankTerminal = new BankTerminal(server->getBankManager(), newID, X, Z, Y);
+			bankTerminal->setDirection(oX, oZ, oY, oW);
+
+			if (parentCell != NULL)
+				bankTerminal->setParent(parentCell);
+
+			bankTerminal->insertToZone(zone);
+		}
+
+		delete resultSet;
+		unlock();
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+		unlock();
+	} catch (...) {
+		error("Unreported exception caught in PlanetManagerImplementation::loadBankTerminals()");
+		unlock();
+	}
 }
 
 void PlanetManagerImplementation::loadCloningTerminals() {
@@ -726,7 +784,9 @@ void PlanetManagerImplementation::loadVendorTerminals() {
 	VendorTerminal* vendorTerminal = new VendorTerminal(zone->getZoneServer()->getBazaarManager(), getNextStaticObjectID(false), 46, 52, -5352);
 	vendorTerminal->setDirection(0, 0, 0, 0);
 
-	vendorTerminal->setZoneProcessServer(server);
+	//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
+	//i will remove the comment and the commented line.
+	//vendorTerminal->setZoneProcessServer(server);
 
 	vendorTerminal->insertToZone(zone);
 
@@ -748,7 +808,9 @@ void PlanetManagerImplementation::loadMissionTerminals() {
 	MissionTerminal* missionTerminal = new MissionTerminal(getNextStaticObjectID(false), -5100.0f, 21.0f, -2351.0f, planetId, MissionTerminalImplementation::TMASK_GENERAL);
 	missionTerminal->setDirection(0, 0, 0, 0);
 
-	missionTerminal->setZoneProcessServer(server);
+	//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
+	//i will remove the comment and the commented line.
+	//missionTerminal->setZoneProcessServer(server);
 
 	missionTerminal->insertToZone(zone);
 	missionTerminalMap->put(missionTerminal->getObjectID(), missionTerminal);
@@ -1225,7 +1287,11 @@ ActiveAreaTrigger* PlanetManagerImplementation::spawnActiveArea(ActiveArea * are
 
 	trigger->setObjectID(getNextStaticObjectID(false));
 	trigger->initializePosition(area->getX(), area->getZ(), area->getY());
-	trigger->setZoneProcessServer(server);
+
+	//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
+	//i will remove the comment and the commented line.
+	//trigger->setZoneProcessServer(server);
+
 	trigger->insertToZone(zone);
 
 	unlock();

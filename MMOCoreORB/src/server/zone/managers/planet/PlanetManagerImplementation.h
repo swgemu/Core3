@@ -59,6 +59,7 @@ which carries forward this exception.
 #include "MissionTerminalMap.h"
 #include "../creature/CreatureManager.h"
 #include "../structure/StructureManager.h"
+#include "../bank/BankManager.h"
 
 #include "../player/PlayerManager.h"
 #include "../player/PlayerMap.h"
@@ -80,6 +81,7 @@ class WeatherDecreaseEvent;
 class Zone;
 class CreatureManager;
 class StructureManager;
+class BankManager;
 
 class ZoneProcessServerImplementation;
 class BuildingObject;
@@ -115,6 +117,8 @@ class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, p
 	CreatureManager* creatureManager;
 
 	StructureManager* structureManager;
+
+	BankManager* bankManager;
 
 	NoBuildAreaMap * noBuildAreaMap;
 
@@ -165,6 +169,7 @@ private:
 	void loadGuildTerminals();
 	void loadCloningTerminals();
 	void loadInsuranceTerminals();
+	void loadBankTerminals();
 	void loadCloneSpawnPoints();
 	void loadVendorTerminals();
 	void loadMissionTerminals();
@@ -173,8 +178,6 @@ private:
 	void loadBadgeAreas();
 	String getStationName(uint64 crc);
 	void loadStartingLocationTerminals();
-
-
 
 
 	void clearShuttles();

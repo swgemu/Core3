@@ -19,6 +19,8 @@ public:
 
 	bool isBankTerminal(long long objectid);
 
+	void handleBankStorage(Player* player);
+
 protected:
 	BankManager(DummyConstructorParameter* param);
 
@@ -36,6 +38,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	bool isBankTerminal(long long objectid);
+
+	void handleBankStorage(Player* player);
 
 };
 

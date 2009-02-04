@@ -75,6 +75,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 
 	inventory = NULL;
 	lootContainer = NULL;
+	bankContainer = NULL;
 
 	weaponSpeedModifier = 1;
 	centeredBonus = 0;
@@ -372,6 +373,11 @@ CreatureObjectImplementation::~CreatureObjectImplementation() {
 	if (lootContainer != NULL) {
 		lootContainer->finalize();
 		lootContainer = NULL;
+	}
+
+	if (bankContainer != NULL) {
+		bankContainer->finalize();
+		bankContainer = NULL;
 	}
 
 	if (inventory != NULL) {
@@ -1876,9 +1882,7 @@ void CreatureObjectImplementation::addInventoryItem(TangibleObject* item) {
 	if (item->isEquipped() && item->isWeapon()) {
 		item->setParent(_this, 0x04);
 		setWeapon((Weapon*) item);
-	} else
-		item->setParent(inventory, 0xFFFFFFFF);
-
+	}
 	inventory->addObject(item);
 }
 
@@ -1952,7 +1956,8 @@ void CreatureObjectImplementation::addInventoryResource(ResourceContainer* rcno)
 			return;
 		}
 
-		rcno->setParent(inventory, 0xFFFFFFFF);
+		//TODO: 19519 - remove this comment and next line if its running stable on TC
+		//rcno->setParent(inventory, 0xFFFFFFFF);
 
 		inventory->addObject(rcno);
 
@@ -1985,9 +1990,18 @@ void CreatureObjectImplementation::removeInventoryItem(uint64 oid) {
 
 void CreatureObjectImplementation::addLootItem(TangibleObject* item) {
 
-	item->setParent(lootContainer, 0xFFFFFFFF);
+	//TODO: 19519 - remove this comment and next line if its running stable on TC
+	//item->setParent(lootContainer, 0xFFFFFFFF);
 
 	lootContainer->addObject(item);
+}
+
+void CreatureObjectImplementation::addBankItem(TangibleObject* item) {
+
+	//TODO: 19519 - remove this comment and next line if its running stable on TC
+	//item->setParent(bankContainer, 0xFFFFFFFF);
+
+	bankContainer->addObject(item);
 }
 
 TangibleObject* CreatureObjectImplementation::getLootItem(uint64 oid) {
@@ -1995,6 +2009,21 @@ TangibleObject* CreatureObjectImplementation::getLootItem(uint64 oid) {
 		return (TangibleObject*) lootContainer->getObject(oid);
 	else
 		return NULL;
+}
+
+TangibleObject* CreatureObjectImplementation::getBankItem(uint64 oid) {
+	if (bankContainer != NULL)
+		return (TangibleObject*) bankContainer->getObject(oid);
+	else
+		return NULL;
+}
+
+void CreatureObjectImplementation::removeBankItem(SceneObject* item) {
+	bankContainer->removeObject(item->getObjectID());
+}
+
+void CreatureObjectImplementation::removeBankItem(uint64 oid) {
+	bankContainer->removeObject(oid);
 }
 
 void CreatureObjectImplementation::removeLootItem(SceneObject* item) {

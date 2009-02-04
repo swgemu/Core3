@@ -39,6 +39,8 @@ public:
 
 	void loadPlayerDatapadItems(Player* player);
 
+	void loadBankItems(Player* player);
+
 	void unloadPlayerItems(Player* player);
 
 	void createPlayerItem(Player* player, TangibleObject* item);
@@ -100,6 +102,8 @@ public:
 	void loadDefaultPlayerItems(Player* player);
 
 	void loadPlayerDatapadItems(Player* player);
+
+	void loadBankItems(Player* player);
 
 	void unloadPlayerItems(Player* player);
 

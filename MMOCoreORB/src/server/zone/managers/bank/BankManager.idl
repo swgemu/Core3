@@ -54,4 +54,7 @@ interface BankManager {
 	}
 
 	boolean isBankTerminal(long objectid);
+	
+	void handleBankStorage(Player player);
+
 }

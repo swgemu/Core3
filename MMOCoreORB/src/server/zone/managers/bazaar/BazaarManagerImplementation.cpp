@@ -912,7 +912,7 @@ void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, 
 			ChatManager* cman = processServer->getChatManager();
 
 			// send the player a mail and system message
-			UnicodeString subject("Auction Cancelled");
+			UnicodeString subject("Auction Canceled");
 			StringBuffer mess;
 			mess <<  "Your bid on " << item->getItemName() << " was retracted because the auction was cancelled by the owner.";
 			UnicodeString body(mess.toString());

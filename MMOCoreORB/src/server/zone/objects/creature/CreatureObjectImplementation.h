@@ -103,6 +103,7 @@ class MountCreature;
 class BuildingObject;
 class CreatureObjectServant;
 class CreatureInventory;
+class BankInventory;
 
 class CreatureObjectImplementation : public CreatureObjectServant {
 protected:
@@ -166,6 +167,7 @@ protected:
 	//creature objects
 	Inventory* inventory;
 	CreatureInventory* lootContainer;
+	BankInventory* bankContainer;
 	HairObject* hairObj;
 
 	Time lastCombatAction;
@@ -826,7 +828,6 @@ public:
 	}
 
 	//Future Creature Handler methods
-
 	inline bool isPet() {
 		return false;
 	}
@@ -929,6 +930,12 @@ public:
 	void updateBankCredits(uint32 credits);
 	void subtractCashCredits(uint32 credits);
 	void subtractBankCredits(uint32 credits);
+
+	//BankStorage
+	void addBankItem(TangibleObject* item);
+	TangibleObject* getBankItem(uint64 oid);
+	void removeBankItem(SceneObject* item);
+	void removeBankItem(uint64 oid);
 
 	inline bool verifyCashCredits(uint32 creditsToRemove) {
 		return (getCashCredits() >= creditsToRemove);
@@ -2165,6 +2172,14 @@ public:
 
 	inline Container* getLootContainer() {
 		return (Container*)lootContainer;
+	}
+
+	inline Container* getBankContainer() {
+		return (Container*)bankContainer;
+	}
+
+	inline BankInventory* getBankInventory() {
+		return bankContainer;
 	}
 
 	// entertainer

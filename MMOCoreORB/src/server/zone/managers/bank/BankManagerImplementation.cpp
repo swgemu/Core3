@@ -44,6 +44,8 @@ which carries forward this exception.
 
 #include "BankManagerImplementation.h"
 
+#include "../item/ItemManager.h"
+
 BankManagerImplementation::BankManagerImplementation(ZoneServer* zoneserver, ZoneProcessServerImplementation* server) :
 	BankManagerServant(), Logger("BankManager") {
 
@@ -55,7 +57,10 @@ BankManagerImplementation::BankManagerImplementation(ZoneServer* zoneserver, Zon
 	setLogging(false);
 	setGlobalLogging(true);
 
+
 	info("Populating the bank terminal details");
+
+	BankTerminal* bankTerminal;
 
 	try {
 		StringBuffer query;
@@ -72,6 +77,8 @@ BankManagerImplementation::BankManagerImplementation(ZoneServer* zoneserver, Zon
 
 			bankTerminals->addTerminal(objectID, planet, (int)x, (int)z);
 
+			bankTerminal = new BankTerminal(server->getBankManager(), objectID, x, z, 0);
+			zoneServer->addObject(bankTerminal);
 		}
 
 		delete terminals;
@@ -94,3 +101,21 @@ bool BankManagerImplementation::isBankTerminal(uint64 objectid) {
 	return (bankTerminals->isBankTerminal(objectid) != NULL);
 }
 
+void BankManagerImplementation::handleBankStorage(Player* player) {
+	BankInventory* playersBank = (BankInventory*) player->getBankContainer();
+
+	if (playersBank == NULL)
+		return;
+
+	ItemManager* im = zoneServer->getItemManager();
+	if (im == NULL)
+		return;
+
+	if (!playersBank->getBankIsLoaded()) {
+		im->loadBankItems(player);
+		playersBank->setBankIsLoaded();
+	}
+
+	playersBank->sendTo(player);
+	playersBank->openTo(player);
+}

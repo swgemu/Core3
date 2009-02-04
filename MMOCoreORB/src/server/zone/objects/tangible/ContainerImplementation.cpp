@@ -94,19 +94,19 @@ void ContainerImplementation::sendTo(Player* player, bool doClose) {
 
 void ContainerImplementation::parseItemAttributes() {
 	String attr = "slots";
-	setSlots(itemAttributes->getIntAttribute(attr));
+	setContainerVolumeLimit(itemAttributes->getIntAttribute(attr));
 }
 
+/*I think its safe to finally delete all commented stuff here
 void ContainerImplementation::setSlots(int attributeSlots) {
 	ContainerObject::setSlots(attributeSlots);
 
 	String attr = "slots";
 	itemAttributes->setIntAttribute(attr, attributeSlots);
 }
+*/
 
 void ContainerImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
-	//Not to myself (Farmer): TODO: Fix this as soon as rename is working
-
 	//TODO:Cell permission check
 	if (_this->getParent() != NULL) {
 		bool cellPermission = true;
@@ -117,7 +117,8 @@ void ContainerImplementation::sendRadialResponseTo(Player* player, ObjectMenuRes
 		}
 	}
 
-	omr->addRadialItem(0, 131, 3, "Set Name"); //"@player_structure:set_name"
+	//TODO: Enable when working
+	//omr->addRadialItem(0, 131, 3, "Set Name"); //"@player_structure:set_name"
 
 	omr->finish();
 	player->sendMessage(omr);

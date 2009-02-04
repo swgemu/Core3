@@ -80,6 +80,8 @@ public:
 	~CellObjectImplementation();
 
 	void addChild(SceneObject* obj, bool doLock = true);
+	bool addObject(SceneObject* obj);
+
 	void removeChild(SceneObject* obj, bool doLock = true);
 
 	inline void setAttributes(String& attributeString) {

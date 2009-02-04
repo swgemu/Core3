@@ -1189,7 +1189,15 @@ ActionCreature* MissionManagerImplementation::addActionCreature(lua_State* L, in
 
 		creature->setMisoMgr(instance);
 
-		cm->spawnActionCreature(creature, &creatureConfig);
+		//TODO: Ramsey...:
+		//Is this calling the "wrong" function ?
+		//It's calling spawnActionCreature(ActionCreature* tac, bool doLock = true);
+		//But i think it should call:
+		//ActionCreature* spawnActionCreature(String& name, String& stfname, uint32 objCrc, const String misoKey, float x, float y, float oY, float oW, uint64 cellid = 0, bool doLock = true);
+
+		//Changing/fixing the compiler warning for now:
+		//cm->spawnActionCreature(creature, &creatureConfig);
+		cm->spawnActionCreature(creature, true);
 
 		instance->unlock();
 	} catch (...) {

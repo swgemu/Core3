@@ -45,105 +45,29 @@ which carries forward this exception.
 #ifndef INVENTORYIMPLEMENTATION_H_
 #define INVENTORYIMPLEMENTATION_H_
 
-#include "../creature/CreatureObject.h"
-#include "../scene/SceneObject.h"
-#include "TangibleObject.h"
-
-#include "Container.h"
-
 #include "Inventory.h"
 
 class InventoryImplementation : public InventoryServant {
-
 public:
-	InventoryImplementation(CreatureObject* creature) : InventoryServant(creature->getObjectID() + 0x01) {
-		customName = UnicodeString("");
+	InventoryImplementation(CreatureObject* creature);
+	~InventoryImplementation();
 
-		templateTypeName = "item_n";
-		templateName = "inventory";
-
-		parent = (SceneObject*) creature;
-	}
-
-public:
 	const static int MAXUNEQUIPPEDCOUNT = 80;
 
-	virtual ~InventoryImplementation() {
-		parent = NULL;
-	}
+	TangibleObject* getItemByMisoKey(String& misKey);
 
-	TangibleObject* getItemByMisoKey(String& misKey) {
-		TangibleObject* retTano = NULL;
-		TangibleObject* tano = NULL;
+	void removeAllByMisoKey(CreatureObject* owner, String& misKey);
 
-		for (int i = 0; i < getContainerObjectsSize(); ++i) {
-			SceneObject* obj = getObject(i);
-
-			if (obj->isTangible()) {
-				tano = (TangibleObject*)obj;
-
-				if ((tano->getMisoAsocKey() == misKey) && !tano->isEquipped()) {
-					break;
-				} else {
-					tano = NULL;
-				}
-			}
-		}
-
-		if (tano != NULL) {
-			retTano = tano;
-		}
-
-		return retTano;
-	}
-
-	void removeAllByMisoKey(CreatureObject* owner, String& misKey) {
-		TangibleObject* tano = NULL;
-
-		for (int i = 0; i < getContainerObjectsSize(); ++i) {
-			SceneObject* obj = getObject(i);
-
-			if (obj->isTangible()) {
-				tano = (TangibleObject*)obj;
-
-				if ((tano->getMisoAsocKey() == misKey) && (!tano->isEquipped())) {
-					if (tano != NULL) {
-						removeObject(tano->getObjectID());
-
-						if (owner->isPlayer()) {
-							tano->sendDestroyTo((Player*) owner);
-						}
-
-						tano->finalize();
-					}
-				} else {
-					tano = NULL;
-				}
-			}
-		}
-	}
-
-	int getUnequippedItemCount() {
-		int count = 0;
-
-		for (int i = 0; i < getContainerObjectsSize(); ++i) {
-			SceneObject* obj = getObject(i);
-
-			if (obj->isTangible()) {
-				TangibleObject* tano = (TangibleObject*) obj;
-
-				if (!tano->isEquipped())
-					++count;
-			}
-		}
-
-		return count;
-	}
+	int getUnequippedItemCount();
 
 	inline bool isFull() {
 		return getUnequippedItemCount() >= MAXUNEQUIPPEDCOUNT;
 	}
 
+	bool addObject(SceneObject* obj);
+
+	bool removeObject(int index);
+	bool removeObject(uint64 oid);
 };
 
 #endif /*INVENTORYIMPLEMENTATION_H_*/

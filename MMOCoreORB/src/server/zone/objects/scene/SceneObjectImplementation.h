@@ -159,6 +159,8 @@ public:
 	static const int WAYPOINT = 13;
 	static const int MANUFACTURESCHEMATIC = 14;
 	static const int CAMPSITE = 15;
+	static const int INVENTORYOBJECT = 16;
+	static const int BANKINVENTORYSTORAGE = 17;
 
 	static const int NONATTACKABLE_BITMASK = 0x1000;
 	static const int CREO_BITMASK = 0x80;
@@ -394,6 +396,14 @@ public:
 
 	bool isNonPlayerCreature() {
 		return objectType == NONPLAYERCREATURE;
+	}
+
+	bool isPlayerInventory() {
+		return objectType == INVENTORYOBJECT;
+	}
+
+	bool isPlayerBankStorage() {
+		return objectType == BANKINVENTORYSTORAGE;
 	}
 
 	inline bool isBuilding() {
