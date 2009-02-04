@@ -2459,14 +2459,39 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player,
 	IntangibleObject* datapadData = (IntangibleObject*) player->getDatapadItem(
 			objid);
 	SceneObject* invObj = player->getInventoryItem(objid);
+	SceneObject* bankObj = player->getBankItem(objid);
 
-	if (invObj != NULL && invObj->isTangible()) {
+	if (bankObj != NULL && bankObj->isTangible()) {
+		TangibleObject* tano = (TangibleObject*) bankObj;
+
+		if (tano->isContainer()) {
+			Container* container = (Container*) tano;
+
+			while (!container->isContainerEmpty()) {
+				SceneObject* sco = container->getObject(0);
+
+				itemManager->deletePlayerItem(player, ((TangibleObject*) sco), true);
+
+				container->removeObject(0);
+				sco->removeFromZone(true);
+				sco->finalize();
+			}
+		}
+
+		itemManager->deletePlayerItem(player, tano, true);
+
+		player->removeInventoryItem(objid);
+
+		BaseMessage* msg = new SceneObjectDestroyMessage(tano);
+		player->getClient()->sendMessage(msg);
+
+		tano->finalize();
+
+	} else if (invObj != NULL && invObj->isTangible()) {
 		TangibleObject* tano = (TangibleObject*) invObj;
 
 		if (tano->isEquipped()) {
-			//player->changeCloth(objid);
-			player->sendSystemMessage(
-					"You must unequip the item before destroying it.");
+			player->sendSystemMessage("You must unequip the item before destroying it.");
 			return;
 		}
 
@@ -2476,58 +2501,45 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player,
 			while (!container->isContainerEmpty()) {
 				SceneObject* sco = container->getObject(0);
 
-				itemManager->deletePlayerItem(player, ((TangibleObject*) sco),
-						true);
+				itemManager->deletePlayerItem(player, ((TangibleObject*) sco), true);
 
 				container->removeObject(0);
-
 				sco->removeFromZone(true);
-
 				sco->finalize();
 			}
-		}
-	}
-
-	if (invObj != NULL && invObj->isTangible()) {
-		TangibleObject* item = (TangibleObject*) invObj;
-
-		if (item->isEquipped()) {
-			//player->changeCloth(objid);
-			player->sendSystemMessage(
-					"You must unequip the item before destroying it.");
-			return;
 		}
 
 		//System::out << "Server destroy happening\n";
 
-		if (player->getCurrentCraftingTool() == item) {
-			CraftingTool* tool = (CraftingTool*) item;
+		if (player->getCurrentCraftingTool() == tano) {
+			CraftingTool* tool = (CraftingTool*) tano;
 
 			if (!tool->isReady()) {
-				player->sendSystemMessage(
-						"You cant delete a working crafting tool!");
+				player->sendSystemMessage("You cant delete a working crafting tool!");
 				return;
 			} else
 				player->clearCurrentCraftingTool();
 		}
 
-		itemManager->deletePlayerItem(player, item, true);
+		itemManager->deletePlayerItem(player, tano, true);
 
 		player->removeInventoryItem(objid);
 
-		if (player->getWeapon() == item)
+		if (player->getWeapon() == tano)
 			player->setWeapon(NULL);
 
-		if (player->getSurveyTool() == item)
+		if (player->getSurveyTool() == tano)
 			player->setSurveyTool(NULL);
 
-		BaseMessage* msg = new SceneObjectDestroyMessage(item);
+		BaseMessage* msg = new SceneObjectDestroyMessage(tano);
 		player->getClient()->sendMessage(msg);
 
-		item->finalize();
+		tano->finalize();
+
 	} else if (waypoint != NULL) {
 		if (player->removeWaypoint(waypoint))
 			waypoint->finalize();
+
 	} else if (datapadData != NULL) {
 		player->removeDatapadItem(objid);
 
@@ -2921,7 +2933,7 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack, PlayerMana
 			Player* recipient = playerManager->getPlayer(recipientName);
 
 			if (recipient == NULL) {
-				//The player exists but they are offline. So Still do the tip.
+				//The player exists but they are offline, so still do the tip.
 				//Do stuff like altering the db here since they arent online.
 				if (playerManager->modifyOfflineBank(player, recipientName, tipAmount))
 					player->sendSystemMessage("Player not online. Credits should be transferred.");
@@ -2954,7 +2966,7 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack, PlayerMana
 		SceneObject* object = player->getZone()->lookupObject(recipientID);
 
 		if (object == NULL) {
-			player->sendSystemMessage("SceneObject is NULL for some reason.");
+			player->sendSystemMessage("Usage: /tip <amount> with the player you want to tip as target. Use  '/tip <name> <amount> bank' to tip with the recipients name via bank.");
 			delete params;
 			return;
 		}
@@ -3941,8 +3953,7 @@ void ObjectControllerMessage::parsePickup(Player* player, Message* pack) {
 	//System::out << pack->toString() << "\n";
 }
 
-void ObjectControllerMessage::parseTransferItemMisc(Player* player,
-		Message* pack) {
+void ObjectControllerMessage::parseTransferItemMisc(Player* player, Message* pack) {
 	uint64 target = pack->parseLong();
 	UnicodeString data;
 	pack->parseUnicode(data);
@@ -3960,12 +3971,23 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player,
 	TangibleObject* targetTanoObject;
 
 	if (destinationID == player->getObjectID()) { //equipping item to player (weapons, clothes etc.)
-		player->changeCloth(target);
+		targetTanoObject = (TangibleObject*) player->getInventoryItem(target);
+
+		if (targetTanoObject != NULL && targetTanoObject->isInstrument()) {
+			player->changeWeapon(target, true);
+			return;
+
+		} else {
+			player->changeCloth(target);
+			return;
+		}
+
 	} else if (destinationID == player->getObjectID() + 1) { //item is going to inventory
 		targetTanoObject = (TangibleObject*) player->getInventoryItem(target);
 
 		if (targetTanoObject == NULL){ //the item can't be found in the inventory - maybe a world object?
 			Zone* zone = player->getZone();
+
 			if (zone != NULL) {
 				targetTanoObject = (TangibleObject*) zone->lookupObject(target);
 			}
@@ -3973,28 +3995,32 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player,
 
  		if (targetTanoObject != NULL) {
  			if(player->isTanoObjEquipped(targetTanoObject)) {
+
  				if(targetTanoObject->isWeapon()) {
  					player->changeWeapon(target, true);
- 					//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping weapon.\n";
+
+ 				} else if(targetTanoObject->isInstrument()) {
+ 					player->changeWeapon(target, true);
+
  				} else if(targetTanoObject->isArmor()) {
  					player->changeArmor(target, true);
- 					//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping armor.\n";
+
  				} else if(targetTanoObject->isClothing()) {
  					player->changeArmor(target, true);
- 					//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping armor.\n";
+
  				} else if(targetTanoObject->isWearableContainer()) {
  					player->changeArmor(target, true);
-					//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping backpack.\n";
  				}
  			}
+
  		} else {
-			//System::out << "ObjectControllerMessage::parseTransferItemMisc, item unequip not implemented in ObjectControllerMessage::parseTransferItemMisc.\n";
+			//what else object could this be?
  			return;
 		}
 
 		SceneObject* targetObject = player->getTarget();
 
-		//Player'S target is a dead creature, looting to players inventory
+		//Player's target is a dead creature, looting to players inventory
 		if (targetObject != NULL && targetObject->isNonPlayerCreature()) {
 			Creature* creature = (Creature*) targetObject;
 
@@ -4029,9 +4055,7 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player,
 			TangibleObject* item = validateDropAction(player, target);
 
 			if (item != NULL)
-			{
 				transferItemToContainer(player, item, destinationID);
-			}
 
 			return;
 		}
@@ -4466,7 +4490,7 @@ void ObjectControllerMessage::handleContainerOpen(Player* player, Message* pack)
 	if (parent == NULL)
 		return;
 
-	if (conti->getParent() == player->getInventory() || parent->isCell()) {
+	if (parent == player->getInventory() || parent->isCell() || ((player->getBankContainer() != NULL) && (parent =  player->getBankContainer()))) {
 		conti->sendTo(player);
 		conti->openTo(player);
 	}

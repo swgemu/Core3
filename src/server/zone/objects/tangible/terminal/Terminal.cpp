@@ -122,6 +122,18 @@ bool Terminal::isBazaarTerminal() {
 		return ((TerminalImplementation*) _impl)->isBazaarTerminal();
 }
 
+bool Terminal::isBankTerminal() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((TerminalImplementation*) _impl)->isBankTerminal();
+}
+
 /*
  *	TerminalAdapter
  */
@@ -156,6 +168,9 @@ Packet* TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 13:
 		resp->insertBoolean(isBazaarTerminal());
+		break;
+	case 14:
+		resp->insertBoolean(isBankTerminal());
 		break;
 	default:
 		return NULL;
@@ -194,6 +209,10 @@ bool TerminalAdapter::isInsuranceTerminal() {
 
 bool TerminalAdapter::isBazaarTerminal() {
 	return ((TerminalImplementation*) impl)->isBazaarTerminal();
+}
+
+bool TerminalAdapter::isBankTerminal() {
+	return ((TerminalImplementation*) impl)->isBankTerminal();
 }
 
 /*

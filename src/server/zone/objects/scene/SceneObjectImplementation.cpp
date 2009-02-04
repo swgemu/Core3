@@ -313,6 +313,9 @@ void SceneObjectImplementation::insertToZone(Zone* zone) {
 
 		zone->registerObject(_this);
 
+		//TODO: 19519 - i remove this comment if these changes are stable on TC
+		setZoneProcessServer(server);
+
 		if (parent != NULL && parent->isCell()) {
 			BuildingObject* building = (BuildingObject*)parent->getParent();
 
@@ -346,7 +349,6 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 
 	try {
 		//building->lock(doLock);
-
 		info("SceneObjectImplementation::insertToBuilding");
 
 		((CellObject*)parent)->addChild(_this);
@@ -496,11 +498,9 @@ void SceneObjectImplementation::broadcastMessages(Vector<BaseMessage*>& msgs, in
 
 void SceneObjectImplementation::removeFromZone(bool doLock) {
 	try {
-		//System::out << "SceneObjectImplementation::removeFromZone(bool doLock) Entered" << endl;
 		if (zone == NULL || !isInQuadTree())
 			return;
 
-		//System::out << "SceneObjectImplementation::removeFromZone(bool doLock) After Zone/QuadTree check" << endl;
 		//deaggro();
 
 		zone->lock(doLock);

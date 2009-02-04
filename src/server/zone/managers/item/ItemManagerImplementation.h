@@ -109,11 +109,12 @@ public:
 	void loadStaticWorldObjects();
 
 	void loadPlayerItems(Player* player);
-	TangibleObject* getPlayerItem(Player* player, uint64 objectid);
 	void loadDefaultPlayerItems(Player* player);
 	void loadDefaultDatapadItems(Player* player);
-
+	void loadBankItems(Player* player);
 	void loadPlayerDatapadItems(Player* player);
+
+	TangibleObject* getPlayerItem(Player* player, uint64 objectid);
 
 	TangibleObject* createPlayerObject(Player* player, ResultSet* result);
 
@@ -135,44 +136,39 @@ public:
 	void giveBFItemSet(Player * player, String& set);
 
 	void unloadPlayerItems(Player* player);
-
 	void createPlayerItem(Player* player, TangibleObject* item);
-
 	void createPlayerDeed(Player* player, DeedObject* item);
-
 	void deletePlayerItem(Player* player, TangibleObject* item, bool notify);
-	void deletePlayerItemAndSetContainerNull(Player* player, TangibleObject* item, bool notify);
-
 	void savePlayerItem(Player* player, TangibleObject* item);
 
 	void showDbStats(Player* player);
 	void showDbDeleted(Player* player);
-
 	void purgeDbDeleted(Player* player);
 
 	void giveForageItem(Player* player, int group, int count);
 
 	//player storage / item movement
-	void loadItemsInContainersForStructure(Player* player, Container* conti);
-	void loadContainersInStructures(Player* player, BuildingObject* building);
+	void publishItemToSurroundingPlayers(Player* player, TangibleObject* item, int meter);
+
 	void loadStructurePlayerItems(Player* player, uint64 cellID);
+	void loadContainersInStructures(Player* player, BuildingObject* building, SceneObject* cell);
+	void loadItemsInContainersForStructure(Player* player, Container* conti);
+
 	void transferContainerItem(Player* player, TangibleObject* item, uint64 destinationID);
 	void deleteItemFromPlayerStorageDB(TangibleObject* item);
-	void moveNestedItemsToInventoryContainer(Player* player, Container* container);
-	void createPlayerItemInInventoryContainer(Player* player, TangibleObject* item, SceneObject* destinationObject);
-	void moveItemInInventory(Player* player, TangibleObject* item, SceneObject* destinationObject, bool destinationIsInventory);
-	void insertItemIntoPlayerStorage(Player* player, TangibleObject* item, SceneObject* destinationObject, Container* conti, BuildingObject* building);
-	void moveNestedItemsToPlayerStorage(Player* player, Container* container);
-
-	void moveItem(Zone* zone, Player* player, TangibleObject* item, SceneObject* object, bool comesFromCell, bool comesFromInventory,
-			bool comesFromInventoryContainer, bool comesFromExternalContainer, SceneObject* destinationObject, bool destinationIsCell,
-			bool destinationIsInventory, bool destinationIsInventoryContainer, bool destinationIsExternalContainer,
-			Container* sourceContainer,	bool itemIsContainer);
-
-	void reflectItemMovementInDB(Player* player, TangibleObject* item, bool comesFromCell, bool comesFromInventory,
-			bool comesFromInventoryContainer, bool comesFromExternalContainer, SceneObject* destinationObject, bool destinationIsCell,
-			bool destinationIsInventory, bool destinationIsInventoryContainer, bool destinationIsExternalContainer,
-			bool itemIsContainer, Container* conti, BuildingObject* building);
+	void moveNestedItemsToInventoryContainer(Player* player, Container* contain);
+	void insertItemIntoPlayerStorage(Player* player, TangibleObject* item);
+	void moveNestedItemsToPlayerStorage(Player* player, Container* contain);
+	void moveItemToInventoryDB(Player* player, TangibleObject* item);
+	void closeExternalContainer(TangibleObject* item);
+	void updateItemLinkWithParent(Player* player, TangibleObject* item, SceneObject* destination, bool singleMode);
+	void updateItemLink(Player* player, TangibleObject* item, SceneObject* destination, bool singleMode);
+	bool checkDestinationSpace(Player* player, TangibleObject* item, uint64 destinationID);
+	bool checkProhibitedNesting(Player* player, TangibleObject* destinationTano, TangibleObject* item);
+	bool removeItemFromSource(Player* player, TangibleObject* item);
+	SceneObject* getTargetObject(Player* player, uint64 destinationID);
+	void reflectItemMovementInDB(Player* player, TangibleObject* item, SceneObject* destination);
+	bool moveItemToDestination(Player* player, TangibleObject* item, SceneObject* destination);
 
 	// setters and getters
 	inline uint64 getNextStaticObjectID() {

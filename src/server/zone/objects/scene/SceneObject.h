@@ -69,13 +69,15 @@ public:
 
 	SceneObject* getObject(unsigned long long oid);
 
-	void removeObject(int index);
+	bool removeObject(int index);
 
-	void removeObject(unsigned long long oid);
+	bool removeObject(unsigned long long oid);
 
 	void sendItemsTo(Player* player);
 
 	int getContainerObjectsSize();
+
+	int getContainerObjectsWithChildsSize();
 
 	bool isContainerEmpty();
 
@@ -86,8 +88,6 @@ public:
 	int getContainerType();
 
 	int getContainerVolumeLimit();
-
-	void setSlots(int attributeSlots);
 
 	void setContainerVolumeLimit(unsigned int limit);
 
@@ -214,6 +214,10 @@ public:
 	bool isPlayer();
 
 	bool isNonPlayerCreature();
+
+	bool isPlayerInventory();
+
+	bool isPlayerBankStorage();
 
 	bool isBuilding();
 
@@ -375,13 +379,15 @@ public:
 
 	SceneObject* getObject(unsigned long long oid);
 
-	void removeObject(int index);
+	bool removeObject(int index);
 
-	void removeObject(unsigned long long oid);
+	bool removeObject(unsigned long long oid);
 
 	void sendItemsTo(Player* player);
 
 	int getContainerObjectsSize();
+
+	int getContainerObjectsWithChildsSize();
 
 	bool isContainerEmpty();
 
@@ -392,8 +398,6 @@ public:
 	int getContainerType();
 
 	int getContainerVolumeLimit();
-
-	void setSlots(int attributeSlots);
 
 	void setContainerVolumeLimit(unsigned int limit);
 
@@ -518,6 +522,10 @@ public:
 	bool isPlayer();
 
 	bool isNonPlayerCreature();
+
+	bool isPlayerInventory();
+
+	bool isPlayerBankStorage();
 
 	bool isBuilding();
 

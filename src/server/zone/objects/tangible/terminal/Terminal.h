@@ -35,6 +35,8 @@ public:
 
 	bool isBazaarTerminal();
 
+	bool isBankTerminal();
+
 protected:
 	Terminal(DummyConstructorParameter* param);
 
@@ -66,6 +68,8 @@ public:
 	bool isInsuranceTerminal();
 
 	bool isBazaarTerminal();
+
+	bool isBankTerminal();
 
 };
 

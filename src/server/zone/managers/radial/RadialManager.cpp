@@ -53,7 +53,6 @@ which carries forward this exception.
 
 #include "../../objects/player/sui/listbox/SuiListBoxImplementation.h"
 #include "../../objects/player/sui/colorpicker/SuiColorPickerImplementation.h"
-#include "../../objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.h"
 #include "../../objects/player/sui/inputbox/SuiInputBoxImplementation.h"
 
 #include "../bazaar/BazaarManager.h"
@@ -62,8 +61,6 @@ which carries forward this exception.
 #include "../bank/BankManagerImplementation.h"
 
 #include "../guild/GuildManagerImplementation.h"
-
-
 
 RadialManager::RadialManager() {
 }
@@ -136,14 +133,19 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 			return;
 		}
 
+		/*
 		BankManager* bankManager = zone->getZoneServer()->getBankManager();
 
 		if (bankManager->isBankTerminal(objectID)) {
-			sendRadialResponseForBank(objectID, player);
+			BankTerminal* bt;
+			ObjectMenuResponse* omr;
 
+			bt->sendRadialResponseTo(player, omr);
+			//handleBankStorage(player);
 			player->unlock();
 			return;
 		}
+		*/
 
 		if (obj == NULL) {
 			obj = player->getInventoryItem(objectID);
@@ -181,9 +183,9 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		break;
 	case 14: // DESTROY
 		break;
-	//case 16: // OPEN RADIAL
+	case 16: // OPEN RADIAL
 		break;
-	//case 17: // OPEN IN NEW WINDOW RADIAL
+	case 17: // OPEN IN NEW WINDOW RADIAL
 		break;
 	case 20: // ITEM_USE
 		obj->useObject(player);
@@ -358,7 +360,8 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 204: // CAMP DESTROY
 		handleDisbandCamp(player,obj);
 		break;
-
+	case 225: //Bank Storage
+		handleBankStorage(player);
 	default:
 		//System::out << "Unknown radial selection received:" << radialID << "\n";
 		break;
@@ -407,18 +410,6 @@ void RadialManager::sendRadialResponseForBazaar(uint64 objectId, Player* player)
 
 	if (bazaar != NULL)
 		bazaar->newBazaarRequest(objectId, player, player->getZoneID());
-}
-
-void RadialManager::sendRadialResponseForBank(uint64 objectId, Player* player) {
-	Zone* zone = player->getZone();
-
-	SuiBankTransferBox* sui = new SuiBankTransferBox(player, SuiWindowType::BANK_TRANSFER);
-
-	sui->addCash(player->getCashCredits());
-	sui->addBank(player->getBankCredits());
-
-	player->addSuiBox(sui);
-	player->sendMessage(sui->generateMessage());
 }
 
 void RadialManager::handleVehicleStore(SceneObject* obj) {
@@ -1161,4 +1152,18 @@ void RadialManager::handleInsureAllItems(Player* player, SceneObject* obj) {
 	}
 
 	player->sendSystemMessage("The insurance terminal used was invalid.");
+}
+
+void RadialManager::handleBankStorage(Player* player) {
+	Zone* zone = player->getZone();
+
+	if (zone == NULL)
+		return;
+
+	BankManager* bankmanager = zone->getZoneServer()->getBankManager();
+
+	if (bankmanager == NULL)
+		return;
+
+	bankmanager->handleBankStorage(player);
 }

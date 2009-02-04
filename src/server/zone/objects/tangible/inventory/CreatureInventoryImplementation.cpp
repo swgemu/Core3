@@ -91,3 +91,51 @@ void CreatureInventoryImplementation::sendItemsTo(Player* player) {
 		item->sendTo(player);
 	}
 }
+
+bool CreatureInventoryImplementation::addObject(SceneObject* obj) {
+	uint64 oid = obj->getObjectID();
+
+	if (!objects.contains(oid)) {
+		obj->acquire();
+	}
+
+	objects.put(oid, obj);
+
+	//Make sure, this item isn't linked already to the inventory, since eg. weapons are link type 0x04 !
+	if (obj->getParent() == NULL || obj->getParent() != _this)
+		obj->setParent(_this, 0xFFFFFFFF);
+
+	return true;
+}
+
+bool CreatureInventoryImplementation::removeObject(int index) {
+	SceneObject* item = objects.get(index);
+
+	if (item == NULL)
+		return false;
+
+	objects.remove(index);
+
+	item->setParent(NULL);
+
+	item->release();
+
+	return true;
+}
+
+bool CreatureInventoryImplementation::removeObject(uint64 oid) {
+	SceneObject* item = objects.get(oid);
+
+	if (item == NULL)
+		return false;
+
+	objects.drop(oid);
+
+	if (item != NULL)
+		item->setParent(NULL);
+
+	item->release();
+
+	return true;
+}
+

@@ -60,16 +60,17 @@ class ContainerObject {
 
 	int slots;
 
+protected:
 	VectorMap<uint64, SceneObject*> objects;
-
 	SceneObjectImplementation* sceneObject;
+
 public:
 	ContainerObject(SceneObjectImplementation* obj);
 	virtual ~ContainerObject();
 
 	void openTo(Player* player);
 
-	bool addObject(SceneObject* obj);
+	virtual bool addObject(SceneObject* obj);
 
 	inline SceneObject* getObject(int index) {
 		return objects.get(index);
@@ -79,17 +80,18 @@ public:
 		return objects.get(oid);
 	}
 
-	void removeObject(int index);
-
-	void removeObject(uint64 oid);
+	virtual bool removeObject(int index);
+	virtual bool removeObject(uint64 oid);
 
 	void sendItemsTo(Player* player);
 
-	// ssgetters
+	// getters
 
 	inline int getContainerObjectsSize() {
 		return objects.size();
 	}
+
+	int getContainerObjectsWithChildsSize();
 
 	bool isContainerEmpty() {
 		return objects.isEmpty();
@@ -108,10 +110,11 @@ public:
 	}
 
 	// setters
-
+	/*I think its safe to finally delete all commented stuff here
 	virtual void setSlots(int attributeSlots) {
 		slots = attributeSlots;
 	}
+	*/
 
 	inline void setContainerVolumeLimit(uint32 limit) {
 		containerVolumeLimit = limit;
@@ -120,7 +123,6 @@ public:
 	inline void setContainerType(int type) {
 		containerType = type;
 	}
-
 };
 
 #endif /*ContainerObject_H_*/

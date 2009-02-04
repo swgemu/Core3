@@ -217,6 +217,10 @@ public:
 		return guildManager;
 	}
 
+	inline BankManager* getBankManager() {
+		return bankManager;
+	}
+
 	inline ResourceManager* getResourceManager() {
 		return resourceManager;
 	}
@@ -227,10 +231,6 @@ public:
 
 	inline BazaarManager* getBazaarManager() {
 		return bazaarManager;
-	}
-
-	inline BankManager* getBankManager() {
-		return bankManager;
 	}
 
 	inline MissionManager* getMissionManager() {

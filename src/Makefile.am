@@ -138,7 +138,7 @@ core3_IDLS =	server/chat/ChatManager.cpp \
 		server/zone/objects/static/StaticObject.cpp \
 		server/zone/objects/tangible/appearance/HairObject.cpp \
 		server/zone/objects/tangible/attachment/Attachment.cpp \
-		server/zone/objects/tangible/Bank.cpp \
+		server/zone/objects/tangible/terminal/bank/BankTerminal.cpp \
  		server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/tangible/campkit/CampKit.cpp \
 		server/zone/objects/tangible/campkit/campsite/CampSite.cpp \
@@ -173,6 +173,7 @@ core3_IDLS =	server/chat/ChatManager.cpp \
 		server/zone/objects/tangible/instrument/Instrument.cpp \
 		server/zone/objects/tangible/Inventory.cpp \
 		server/zone/objects/tangible/inventory/CreatureInventory.cpp \
+		server/zone/objects/tangible/inventory/BankInventory.cpp \
 		server/zone/objects/tangible/lair/LairObject.cpp \
 		server/zone/objects/tangible/MissionBag.cpp \
 		server/zone/objects/tangible/pharmaceutical/CurePack.cpp \
@@ -330,6 +331,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/consumable/food/FoodImplementation.cpp \
 		server/zone/objects/tangible/consumable/drink/DrinkImplementation.cpp \
 		server/zone/objects/tangible/ContainerImplementation.cpp \
+		server/zone/objects/tangible/InventoryImplementation.cpp \
 		server/zone/objects/tangible/CustomizationVariables.cpp \
 		server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp \
 		server/zone/objects/tangible/crafting/component/armorcomponent/ArmorComponentImplementation.cpp \
@@ -346,6 +348,7 @@ core3_SOURCES =	$(core3_IDLS) \
         server/zone/objects/tangible/generic/GenericItemImplementation.cpp \
         server/zone/objects/tangible/generic/DiceImplementation.cpp \
 		server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp \
+		server/zone/objects/tangible/inventory/BankInventoryImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/CureAreaPackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/EnhancePackImplementation.cpp \

@@ -64,6 +64,7 @@ public:
 
 	virtual ~ContainerImplementation();
 
+	//I think its safe to finally delete all commented stuff here
 	/*void addObject(SceneObject* obj);
 
 	void openTo(Player* player);
@@ -96,7 +97,7 @@ public:
 		return slots;
 	}*/
 
-	void setSlots(int attributeSlots);
+	//void setSlots(int attributeSlots);
 
 	void parseItemAttributes();
 

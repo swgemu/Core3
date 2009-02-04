@@ -75,9 +75,6 @@ ContainerObject::~ContainerObject() {
 }
 
 bool ContainerObject::addObject(SceneObject* obj) {
-	if ((uint32)getContainerObjectsSize() >= containerVolumeLimit)
-		return false;
-
 	uint64 oid = obj->getObjectID();
 
 	if (!objects.contains(oid)) {
@@ -86,34 +83,37 @@ bool ContainerObject::addObject(SceneObject* obj) {
 
 	objects.put(oid, obj);
 
+	obj->setParent((SceneObject*)sceneObject->_getStub());
+
 	return true;
 }
 
-void ContainerObject::removeObject(int index) {
+bool ContainerObject::removeObject(int index) {
 	SceneObject* item = objects.get(index);
 
 	if (item == NULL)
-		return;
+		return false;
 
 	objects.remove(index);
 
 	item->setParent(NULL);
-
 	item->release();
+
+	return true;
 }
 
-void ContainerObject::removeObject(uint64 oid) {
+bool ContainerObject::removeObject(uint64 oid) {
 	SceneObject* item = objects.get(oid);
 
 	if (item == NULL)
-		return;
+		return false;
 
 	objects.drop(oid);
 
-	if (item != NULL)
-		item->setParent(NULL);
-
+	item->setParent(NULL);
 	item->release();
+
+	return true;
 }
 
 void ContainerObject::openTo(Player* player) {
@@ -130,4 +130,16 @@ void ContainerObject::sendItemsTo(Player* player) {
 
 		item->sendTo(player);
 	}
+}
+
+int ContainerObject::getContainerObjectsWithChildsSize() {
+	int offset = objects.size();
+
+	for (int i = 0; i < getContainerObjectsSize(); ++i) {
+		TangibleObject* nestedItem = (TangibleObject*) getObject(i);
+		if (nestedItem->isContainer())
+			offset = offset + nestedItem->getContainerObjectsSize();
+	}
+
+	return offset;
 }

@@ -17,6 +17,8 @@ class SceneObject;
 
 class Inventory;
 
+class BankInventory;
+
 class Container;
 
 class TangibleObject;
@@ -401,9 +403,17 @@ public:
 
 	void removeLootItem(unsigned long long oid);
 
+	SceneObject* getBankItem(unsigned long long oid);
+
+	void removeBankItem(unsigned long long oid);
+
 	Inventory* getInventory();
 
 	Container* getLootContainer();
+
+	Container* getBankContainer();
+
+	BankInventory* getBankInventory();
 
 	unsigned long long getNewItemID();
 
@@ -1671,9 +1681,17 @@ public:
 
 	void removeLootItem(unsigned long long oid);
 
+	SceneObject* getBankItem(unsigned long long oid);
+
+	void removeBankItem(unsigned long long oid);
+
 	Inventory* getInventory();
 
 	Container* getLootContainer();
+
+	Container* getBankContainer();
+
+	BankInventory* getBankInventory();
 
 	unsigned long long getNewItemID();
 

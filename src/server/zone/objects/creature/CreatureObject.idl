@@ -50,6 +50,8 @@ import "../scene/SceneObject";
 
 import "../tangible/Inventory";
 
+import "../tangible/inventory/BankInventory";
+
 import "../tangible/Container";
 
 import "../tangible/TangibleObject";
@@ -325,9 +327,14 @@ interface CreatureObject implements TangibleObject {
 	SceneObject getLootItem(unsigned long oid);
 	void removeLootItem(unsigned long oid);
 
-	Inventory getInventory();
+	SceneObject getBankItem(unsigned long oid);
+	void removeBankItem(unsigned long oid);
 
+	Inventory getInventory();
 	Container getLootContainer();
+	
+	Container getBankContainer();
+	BankInventory getBankInventory();
 
 	unsigned long getNewItemID(); // should be virtual
 

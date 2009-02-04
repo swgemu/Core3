@@ -53,6 +53,7 @@ class ObjectMenuResponse;
 class Player;
 class SceneObject;
 class GuildTerminal;
+class BankTerminal;
 class SurveyTool;
 class CraftingTool;
 class Weapon;
@@ -74,7 +75,6 @@ public:
 
 	void sendDefaultRadialResponse(Player* player, ObjectMenuResponse* omr);
 	void sendRadialResponseForBazaar(uint64 objectId, Player* player);
-	void sendRadialResponseForBank(uint64 objectId, Player* player);
 
 	void handleSelection(int radialID, Player* player, SceneObject* obj);
 	void handleVehicleStore(SceneObject* obj);
@@ -108,6 +108,9 @@ public:
 	void handleGuildNameChange(Player* player);
 	void handleGuildInformationMembers(Player* player);
 	void handleGuildTransferLeader(Player* player);
+
+	//Bankterminal
+	void handleBankStorage(Player* player);
 
 	//Surveytools
 	void sendRadialResponseForSurveyTools(Player* player, SurveyTool* surveyTool, ObjectMenuResponse* omr);
