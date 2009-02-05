@@ -33,12 +33,18 @@ HeightMap::~HeightMap() {
 void HeightMap::load(const String& path) {
 	wlock();
 
-	File* file = new File(path);
-
 	try {
+		File* file = new File(path);
+
 		reader = new FileInputStream(file);
 
-		info("loaded " + path);
+		if (file->exists()) {
+			info("loaded " + path);
+		} else {
+			info("failed to load " + path);
+
+			reader = NULL;
+		}
 	} catch (FileNotFoundException& e) {
 		reader = NULL;
 
