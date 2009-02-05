@@ -725,6 +725,8 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 
 	item->setCustomizationString(custStr);
 
+	item->setPersistent(true);
+
 	item->setPickupFlag(true);
 
 	server->addObject(item);
