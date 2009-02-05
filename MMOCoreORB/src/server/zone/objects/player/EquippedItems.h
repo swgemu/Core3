@@ -231,11 +231,12 @@ public:
 			break;
 
 		case TangibleObjectImplementation::PANTS:
+		case TangibleObjectImplementation::SKIRT:
 			locations = LEGS;
 			break;
 
 		case TangibleObjectImplementation::WEARABLECONTAINER:
-			locations = PACK; // TODO: Add pack contents to inventory on unequip.
+			locations = PACK; //
 			break;
 
 		case TangibleObjectImplementation::ARMOR:
