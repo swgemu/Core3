@@ -90,6 +90,7 @@ SceneObjectImplementation::SceneObjectImplementation()
 
 	undeployEvent = NULL;
 	keepObject = false;
+	canPickup = false;
 
 	attackable = false;
 }

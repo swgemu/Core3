@@ -725,7 +725,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 
 	item->setCustomizationString(custStr);
 
-	item->setPersistent(true);
+	item->setPickupFlag(true);
 
 	server->addObject(item);
 
@@ -1523,6 +1523,8 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	for (int j = 0; j < items->size(); ++j) {
 		TangibleObject* obj = clonePlayerObjectTemplate(player->getNewItemID(), items->get(j));
 		//obj->setObjectID(player->getNewItemID());
+		obj->setPickupFlag(true);
+
 		player->addInventoryItem(obj);
 	}
 
@@ -1997,6 +1999,9 @@ TangibleObject* ItemManagerImplementation::forageStatRandomizer(TangibleObject* 
 void ItemManagerImplementation::transferContainerItem(Player* player, TangibleObject* item, uint64 destinationID) {
 	//pre: Item null checked, called from OBJC
 
+	if (!item->getPickupFlag())
+		return;
+
 	SceneObject* parentSCO;
 	SceneObject* destination;
 	TangibleObject* destinationTano;
@@ -2400,6 +2405,8 @@ void ItemManagerImplementation::loadContainersInStructures(Player* player, Build
 
 				item->setPersistent(true);
 
+				item->setPickupFlag(true);
+
 				server->addObject(item);
 
 				item->insertToZone(zone);
@@ -2486,6 +2493,8 @@ void ItemManagerImplementation::loadItemsInContainersForStructure(Player* player
 				item->setCustomizationString(custStr);
 
 				item->setPersistent(true);
+
+				item->setPickupFlag(true);
 
 				server->addObject(item);
 				//TODO: 19519 -> setParent() is now included in addObject()
