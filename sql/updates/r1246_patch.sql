@@ -1,0 +1,3 @@
+ALTER TABLE `swgemu`.`character_items` MODIFY COLUMN `in_bank` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0;
+ALTER TABLE `swgemu`.`player_storage` MODIFY COLUMN `itemMask` SMALLINT(5) UNSIGNED NOT NULL;
+
