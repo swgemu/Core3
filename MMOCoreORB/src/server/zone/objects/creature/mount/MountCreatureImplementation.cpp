@@ -157,6 +157,8 @@ void MountCreatureImplementation::repair() {
 		return;
 
 	conditionDamage = 0;
+	speed = 21.9f;
+	acceleration = 10.95f;
 	StringBuffer cond;
 
 	cond << "condition=" << (maxCondition-conditionDamage) << "/" << maxCondition << ":";

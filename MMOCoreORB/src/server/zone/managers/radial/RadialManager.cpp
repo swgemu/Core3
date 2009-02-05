@@ -133,20 +133,6 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 			return;
 		}
 
-		/*
-		BankManager* bankManager = zone->getZoneServer()->getBankManager();
-
-		if (bankManager->isBankTerminal(objectID)) {
-			BankTerminal* bt;
-			ObjectMenuResponse* omr;
-
-			bt->sendRadialResponseTo(player, omr);
-			//handleBankStorage(player);
-			player->unlock();
-			return;
-		}
-		*/
-
 		if (obj == NULL) {
 			obj = player->getInventoryItem(objectID);
 
