@@ -284,9 +284,7 @@ void PlanetManagerImplementation::loadStaticTangibleObjects() {
 		tano->initializePosition(x, z, y);
 		tano->setDirection(oX, oZ, oY, oW);
 		tano->setObjectSubType(type);
-		//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-		//i will remove the comment and the commented line.
-		//tano->setZoneProcessServer(server);
+		tano->setZoneProcessServer(server);
 		tano->insertToZone(zone);
 
 		staticTangibleObjectMap.put(tano->getObjectID(), tano);
@@ -455,9 +453,7 @@ void PlanetManagerImplementation::loadShuttles() {
 				TicketCollector * colector = new TicketCollector(shuttle, getNextStaticObjectID(false),
 					UnicodeString("Ticket Collector"), "ticket_travel", collPosX, collPosZ, collPosY);
 
-				//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-				//i will remove the comment and the commented line.
-				//colector->setZoneProcessServer(server);
+				colector->setZoneProcessServer(server);
 
 				colector->setDirection(0, 0, collDirY, collDirW);
 				colector->setParent(zone->lookupObject(collCellId));
@@ -484,9 +480,7 @@ void PlanetManagerImplementation::loadShuttles() {
 				TravelTerminal * terminal = new TravelTerminal(shuttle, getNextStaticObjectID(false),
 									termPosX, termPosZ, termPosY);
 
-				//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-				//i will remove the comment and the commented line.
-				//terminal->setZoneProcessServer(server);
+				terminal->setZoneProcessServer(server);
 
 				terminal->setDirection(0, 0, termDirY, termDirW);
 				terminal->setParent(zone->lookupObject(termCellId));
@@ -784,9 +778,7 @@ void PlanetManagerImplementation::loadVendorTerminals() {
 	VendorTerminal* vendorTerminal = new VendorTerminal(zone->getZoneServer()->getBazaarManager(), getNextStaticObjectID(false), 46, 52, -5352);
 	vendorTerminal->setDirection(0, 0, 0, 0);
 
-	//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-	//i will remove the comment and the commented line.
-	//vendorTerminal->setZoneProcessServer(server);
+	vendorTerminal->setZoneProcessServer(server);
 
 	vendorTerminal->insertToZone(zone);
 
@@ -808,9 +800,7 @@ void PlanetManagerImplementation::loadMissionTerminals() {
 	MissionTerminal* missionTerminal = new MissionTerminal(getNextStaticObjectID(false), -5100.0f, 21.0f, -2351.0f, planetId, MissionTerminalImplementation::TMASK_GENERAL);
 	missionTerminal->setDirection(0, 0, 0, 0);
 
-	//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-	//i will remove the comment and the commented line.
-	//missionTerminal->setZoneProcessServer(server);
+	missionTerminal->setZoneProcessServer(server);
 
 	missionTerminal->insertToZone(zone);
 	missionTerminalMap->put(missionTerminal->getObjectID(), missionTerminal);
@@ -1288,9 +1278,7 @@ ActiveAreaTrigger* PlanetManagerImplementation::spawnActiveArea(ActiveArea * are
 	trigger->setObjectID(getNextStaticObjectID(false));
 	trigger->initializePosition(area->getX(), area->getZ(), area->getY());
 
-	//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-	//i will remove the comment and the commented line.
-	//trigger->setZoneProcessServer(server);
+	trigger->setZoneProcessServer(server);
 
 	trigger->insertToZone(zone);
 

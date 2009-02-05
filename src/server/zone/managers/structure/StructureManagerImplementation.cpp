@@ -271,9 +271,7 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid, i
 				buio = new BuildingObject(oid, client);
 			}
 
-			//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-			//i will remove the comment and the commented line.
-			//buio->setZoneProcessServer(server);
+			buio->setZoneProcessServer(server);
 
 			buio->setObjectCRC(file.hashCode());
 			buio->setBuildingType(guessBuildingType(oid, file));
@@ -358,9 +356,7 @@ void StructureManagerImplementation::loadPlayerStructures() {
 				info("StructureManagerImplementation::loadPlayerStructures(), type = building");
 
 				BuildingObject* buio = new BuildingObject(oid, false);
-				//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-				//i will remove the comment and the commented line.
-				//buio->setZoneProcessServer(server);
+				buio->setZoneProcessServer(server);
 
 				buio->setObjectCRC(crc);
 				buio->setObjectType(type);
@@ -407,9 +403,8 @@ void StructureManagerImplementation::loadPlayerStructures() {
 						break;
 				}
 
-				//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-				//i will remove the comment and the commented line.
-				//inso->setZoneProcessServer(server);
+
+				inso->setZoneProcessServer(server);
 
 				inso->setObjectCRC(crc);
 				inso->setObjectType(type);
@@ -842,9 +837,7 @@ void StructureManagerImplementation::spawnTempStructure(Player * player,
 	inso->setDirection(oX, oZ, oY, oW);
 	inso->setOwner(player->getFirstName());
 	inso->setOwnerID(player->getCharacterID());
-	//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-	//i will remove the comment and the commented line.
-	//inso->setZoneProcessServer(server);
+	inso->setZoneProcessServer(server);
 
 	//remove but do not delete
 	player->removeInventoryItem(deed);
@@ -872,9 +865,7 @@ void StructureManagerImplementation::spawnInstallation(Player * player,
 	inso->setDirection(oX, oZ, oY, oW);
 	inso->setOwner(player->getFirstName());
 	inso->setOwnerID(player->getCharacterID());
-	//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-	//i will remove the comment and the commented line.
-	//inso->setZoneProcessServer(server);
+	inso->setZoneProcessServer(server);
 
 	installationSpawnEvent = new InstallationSpawnEvent(player, inso, player->getZone());
 	server->addEvent(installationSpawnEvent, 100);
@@ -895,9 +886,7 @@ void StructureManagerImplementation::spawnHarvester(Player * player,
  	hino->setDirection(oX, oZ, oY, oW);
  	hino->setOwner(player->getFirstName());
  	hino->setOwnerID(player->getCharacterID());
-	//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-	//i will remove the comment and the commented line.
- 	//hino->setZoneProcessServer(server);
+ 	hino->setZoneProcessServer(server);
 
  	hino->setMaintenanceRate(30.0f * size);
  	hino->setPowerRate(25.0f * size);
@@ -915,9 +904,7 @@ void StructureManagerImplementation::spawnBuilding(Player * player,
  	                float oY, float oW) {
 	PlayerHouseDeed * deed = (PlayerHouseDeed *) thedeed;
 	BuildingObject* buio = new BuildingObject(player->getNewItemID(), false);
-	//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-	//i will remove the comment and the commented line.
-	//buio->setZoneProcessServer(server);
+	buio->setZoneProcessServer(server);
 
 	buio->setObjectCRC(deed->getTargetFile().hashCode());
 	buio->initializePosition(x, z, y);

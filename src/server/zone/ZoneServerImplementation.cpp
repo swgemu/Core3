@@ -406,6 +406,8 @@ void ZoneServerImplementation::addObject(SceneObject* obj, bool doLock) {
 			StackTrace::printStackTrace();
 		}
 
+		obj->setZoneProcessServer(processor);
+
 		if (conflictedObj == NULL && obj->isPlayer()) {
 			Player* player = (Player*) obj;
 
