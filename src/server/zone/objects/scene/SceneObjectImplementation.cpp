@@ -122,6 +122,7 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid, int type)
 
 	undeployEvent = NULL;
 	keepObject = false;
+	canPickup = false;
 
 	attackable = false;
 }
@@ -313,9 +314,6 @@ void SceneObjectImplementation::insertToZone(Zone* zone) {
 		zone->lock();
 
 		zone->registerObject(_this);
-
-		//TODO: 19519 - i remove this comment if these changes are stable on TC
-		//setZoneProcessServer(server);
 
 		if (parent != NULL && parent->isCell()) {
 			BuildingObject* building = (BuildingObject*)parent->getParent();

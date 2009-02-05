@@ -323,6 +323,10 @@ public:
 
 	float calculateDistance(SceneObject* scno);
 
+	bool getPickupFlag();
+
+	void setPickupFlag(bool pickup);
+
 protected:
 	SceneObject(DummyConstructorParameter* param);
 
@@ -628,6 +632,10 @@ public:
 	void warpTo(float x, float z, float y, unsigned long long parentID);
 
 	float calculateDistance(SceneObject* scno);
+
+	bool getPickupFlag();
+
+	void setPickupFlag(bool pickup);
 
 protected:
 	String _param0_info__String_bool_;

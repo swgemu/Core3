@@ -58,7 +58,7 @@ which carries forward this exception.
 UserManagerImplementation::UserManagerImplementation(ZoneServer* serv) : UserManagerServant(), Logger("UserManager") {
 	server = serv;
 
-	userCap = 300;
+	userCap = 400;
 
 	adminUsers = new AdminSet();
 
