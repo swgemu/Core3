@@ -252,13 +252,10 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 
 		if (item != NULL) {
 			item->setPlayerUseMask(itemMask);
-			creature->addLootItem(item);
 
-			//Registering the object with the objectMap (important!)
-			//if we don't register the loot item with the server on creation,
-			//the lookupObject() later (OBJC parseItemTransfer) will fail,
-			//therefore we will not be able to drag selective loot to the players inventory
-			//...and some more problems...
+			item->setPickupFlag(true);
+
+			creature->addLootItem(item);
 
 			ZoneServer* zoneServer;
 			Zone* zone;

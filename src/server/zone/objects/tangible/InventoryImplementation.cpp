@@ -141,12 +141,10 @@ int InventoryImplementation::getUnequippedItemCount() {
 bool InventoryImplementation::addObject(SceneObject* obj) {
 	uint64 oid = obj->getObjectID();
 
-	if (!objects.contains(oid)) {
+	if (!objects.contains(oid))
 		obj->acquire();
-	}
 
-	//Make sure, this item isn't linked already to the inventory, since eg. weapons are link type 0x04 !
-	if (obj->getParent() == NULL || obj->getParent() != _this)
+	if (!((TangibleObject*) obj)->isEquipped())
 		obj->setParent(_this, 0xFFFFFFFF);
 
 	objects.put(oid, obj);
