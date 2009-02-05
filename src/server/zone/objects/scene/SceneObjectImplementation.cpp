@@ -93,6 +93,13 @@ SceneObjectImplementation::SceneObjectImplementation()
 	canPickup = false;
 
 	attackable = false;
+
+	StringBuffer name;
+		name << "SceneObject(" << objectType << ")  0x" << hex << objectID;
+
+	setLoggingName(name.toString());
+	setGlobalLogging(true);
+	setLogging(false);
 }
 
 SceneObjectImplementation::SceneObjectImplementation(uint64 oid, int type)
@@ -103,6 +110,10 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid, int type)
 	StringBuffer name;
 	name << "SceneObject(" << objectType << ")  0x" << hex << objectID;
 	//setDeployingName(name.toString());
+
+	setLoggingName(name.toString());
+	setGlobalLogging(true);
+	setLogging(false);
 
 	server = NULL;
 	zone = NULL;

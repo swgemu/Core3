@@ -102,6 +102,9 @@ void FireworkImplementation::init() {
 	case 0xA0E061DC: // test
 		animationType = 0;
 	}
+
+	itemAttributes->setFloatAttribute("charges", 5);
+	parseItemAttributes();
 }
 
 void FireworkImplementation::parseItemAttributes() {
@@ -230,6 +233,8 @@ void FireworkImplementation::launchFirework(Player* player) {
 		firework->setFireworkObject(0xEF5A1CF7);
 		break;
 	}
+
+	server = player->getZoneProcessServer();
 
 	firework->setZoneProcessServer(server);
 	firework->setDirection(0, 0, -0.64, 0.76);
