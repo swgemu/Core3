@@ -246,9 +246,7 @@ public:
 				break;
 		}
 
-		//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-		//i will remove the comment and the commented line.
-		//firework->setZoneProcessServer(server);
+		firework->setZoneProcessServer(server);
 		firework->setDirection(0, 0, -0.64, 0.76);
 		firework->insertToZone(player->getZone());
 

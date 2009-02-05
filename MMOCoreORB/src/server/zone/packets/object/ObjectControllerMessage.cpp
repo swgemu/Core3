@@ -3294,6 +3294,8 @@ void ObjectControllerMessage::parseHarvesterDiscardHopper(Player *player,
 	//skip objId + old size
 	pack->shiftOffset(12);
 
+	//if (pack->getSize())
+
 	uint64 hId = pack->parseLong();
 	SceneObject* object = player->getZone()->lookupObject(hId);
 

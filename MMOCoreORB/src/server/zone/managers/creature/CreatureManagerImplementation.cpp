@@ -333,9 +333,7 @@ ActionCreature* CreatureManagerImplementation::spawnActionCreature(String& name,
 		actCr->setParent(getZone()->lookupObject(cellid));
 		actCr->setDirection(0, 0, oY, oW);
 		actCr->setPvpStatusBitmask(0);
-		//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-		//i will remove the comment and the commented line.
-		//actCr->setZoneProcessServer(server);
+		actCr->setZoneProcessServer(server);
 
 		load(actCr);
 
@@ -367,9 +365,7 @@ ActionCreature* CreatureManagerImplementation::spawnActionCreature(ActionCreatur
 		actCr->setParent(getZone()->lookupObject(cellid));
 		actCr->setDirection(0, 0, oY, oW);
 		actCr->setPvpStatusBitmask(0);*/
-		//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-		//i will remove the comment and the commented line.
-		//actCr->setZoneProcessServer(server);
+		actCr->setZoneProcessServer(server);
 
 		load(actCr);
 
@@ -402,9 +398,7 @@ BlueFrogCreature* CreatureManagerImplementation::spawnBlueFrog(float x, float y,
 		bluefrog->setPvpStatusBitmask(0);//0x01 + 0x02 + 0x20;
 		bluefrog->setBFType(type);
 		bluefrog->setType(CreatureImplementation::TRAINER);
-		//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-		//i will remove the comment and the commented line.
-		//bluefrog->setZoneProcessServer(server);
+		bluefrog->setZoneProcessServer(server);
 
 		load(bluefrog);
 
@@ -453,9 +447,7 @@ TrainerCreature* CreatureManagerImplementation::spawnTrainer(const String& profe
 		trainer->setParent(getZone()->lookupObject(cell));
 		trainer->setDirection(0, 0, oy, ow);
 		trainer->setPvpStatusBitmask(0);
-		//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-		//i will remove the comment and the commented line.
-		//trainer->setZoneProcessServer(server);
+		trainer->setZoneProcessServer(server);
 
 		load(trainer);
 
@@ -527,9 +519,7 @@ ShuttleCreature* CreatureManagerImplementation::spawnShuttle(const String& Plane
 		shuttle->initializePosition(x, z, y);
 
 		shuttle->setCreatureManager(this);
-		//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-		//i will remove the comment and the commented line.
-		//shuttle->setZoneProcessServer(server);
+		shuttle->setZoneProcessServer(server);
 
 		shuttle->insertToZone(zone);
 
@@ -603,9 +593,7 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 	try {
 		creature->wlock();
 
-		//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-		//i will remove the comment and the commented line.
-		//creature->setZoneProcessServer(server);
+		creature->setZoneProcessServer(server);
 		creature->setObjectCRC(objcrc);
 		creature->setCreatureManager(this);
 
@@ -904,9 +892,7 @@ LairObject* CreatureManagerImplementation::spawnLair(const String& type, float x
 		System::out << "CRC = " << objectCRC << endl;
 
 		lair = new LairObject(objectCRC, getNextCreatureID());
-		//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-		//i will remove the comment and the commented line.
-		//lair->setZoneProcessServer(server);
+		lair->setZoneProcessServer(server);
 
 		//String objectName = result.getStringField("objectName");
 		String stfname = result.getStringField("stfName");
@@ -966,9 +952,7 @@ LairObject* CreatureManagerImplementation::spawnLair(const String& type, float x
 
 void CreatureManagerImplementation::load(Creature* creature) {
 	creature->setCreatureManager(this);
-	//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-	//i will remove the comment and the commented line.
-	//creature->setZoneProcessServer(server);
+	creature->setZoneProcessServer(server);
 
 	// Load skills from lua's
 	LuaFunction getCreature(getLuaState(), "getCreature", 1);

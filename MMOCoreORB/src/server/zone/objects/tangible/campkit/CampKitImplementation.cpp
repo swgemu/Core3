@@ -170,9 +170,7 @@ int CampKitImplementation::useObject(Player* player) {
 		default:
 			return 1;
 	}
-	//TODO: 19519 -> setZoneProcessServer() is no included by "insertToZone()". If its running stable on TC for a while,
-	//i will remove the comment and the commented line.
-	//campSite->setZoneProcessServer(player->getZoneProcessServer());
+	campSite->setZoneProcessServer(player->getZoneProcessServer());
 
 	campSite->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
 	campSite->setDirection(0,0,0,0);

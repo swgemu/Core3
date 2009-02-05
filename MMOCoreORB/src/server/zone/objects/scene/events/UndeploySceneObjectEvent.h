@@ -66,6 +66,7 @@ public:
 				object->info("undeploying");
 
 				object->clearUndeploymentEvent();
+				object->printReferenceHolders();
 				object->finalize();
 			} else
 				object->info("undeployment not scheduled for object");

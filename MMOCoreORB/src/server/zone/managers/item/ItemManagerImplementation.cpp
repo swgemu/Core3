@@ -2404,8 +2404,7 @@ void ItemManagerImplementation::loadContainersInStructures(Player* player, Build
 
 				item->insertToZone(zone);
 
-				//TODO: 19519 -> remove the comment and the commented line when stable on TC
-				//item->setZoneProcessServer(pServer);
+				item->setZoneProcessServer(pServer);
 
 				updateItemLinkWithParent(player, item, cell, false);
 
