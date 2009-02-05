@@ -328,4 +328,8 @@ interface SceneObject implements ManagedObject {
 	void warpTo(float x, float z, float y, unsigned long parentID = 0);
 
 	float calculateDistance(SceneObject scno);
+	
+	boolean getPickupFlag();
+
+	void setPickupFlag(boolean pickup);	
 }

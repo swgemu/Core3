@@ -136,6 +136,8 @@ protected:
 
 	bool keepObject;
 
+	bool canPickup;
+
 	uint64 associatedArea;
 
 	bool attackable;
@@ -681,6 +683,14 @@ public:
 	virtual void warpTo(float x, float z, float y, uint64 parentID = 0);
 
 	float calculateDistance(SceneObject* scno);
+
+	virtual bool getPickupFlag() {
+		return canPickup;
+	}
+
+	virtual void setPickupFlag(bool pickup) {
+		canPickup = pickup;
+	}
 };
 
 #endif /*SCENEOBJECTIMPLEMENTATION_H_*/
