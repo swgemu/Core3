@@ -2696,27 +2696,33 @@ bool ItemManagerImplementation::checkDestinationSpace(Player* player, TangibleOb
 
 		while (topmost->getParentID() > 0) {
 			try {
-				topmost->wlock();
+				if (player != topmost)
+					topmost->wlock();
 
 				if (topmost->isPlayerInventory()) {
 					Inventory* inventory = player->getInventory();
 					currentAmount = inventory->getUnequippedItemCount();
 					error = "@error_message:inv_full";
-					topmost->unlock();
+					if (player != topmost)
+						topmost->unlock();
 					break;
 				} else if (topmost->isPlayerBankStorage()) {
 					currentAmount = topmost->getContainerObjectsWithChildsSize();
-					topmost->unlock();
+					if (player != topmost)
+						topmost->unlock();
 					break;
 				} else if (topmost->isBuilding()) {
 					currentAmount = topmost->getContainerObjectsWithChildsSize();
-					topmost->unlock();
+					if (player != topmost)
+						topmost->unlock();
 					break;
 				} else {
-					topmost->unlock();
+					if (player != topmost)
+						topmost->unlock();
 				}
 			} catch(...) {
-				topmost->unlock();
+				if (player != topmost)
+					topmost->unlock();
 			}
 
 			//Changing the parent at the END of the loop -not at the beginning- so we also catch the current level (in case its the inventory)
