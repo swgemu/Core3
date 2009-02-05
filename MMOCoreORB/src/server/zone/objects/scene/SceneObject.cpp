@@ -1859,6 +1859,31 @@ float SceneObject::calculateDistance(SceneObject* scno) {
 		return ((SceneObjectImplementation*) _impl)->calculateDistance(scno);
 }
 
+bool SceneObject::getPickupFlag() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 147);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->getPickupFlag();
+}
+
+void SceneObject::setPickupFlag(bool pickup) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 148);
+		method.addBooleanParameter(pickup);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->setPickupFlag(pickup);
+}
+
 /*
  *	SceneObjectAdapter
  */
@@ -2292,6 +2317,12 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		break;
 	case 146:
 		resp->insertFloat(calculateDistance((SceneObject*) inv->getObjectParameter()));
+		break;
+	case 147:
+		resp->insertBoolean(getPickupFlag());
+		break;
+	case 148:
+		setPickupFlag(inv->getBooleanParameter());
 		break;
 	default:
 		return NULL;
@@ -2862,6 +2893,14 @@ void SceneObjectAdapter::warpTo(float x, float z, float y, unsigned long long pa
 
 float SceneObjectAdapter::calculateDistance(SceneObject* scno) {
 	return ((SceneObjectImplementation*) impl)->calculateDistance(scno);
+}
+
+bool SceneObjectAdapter::getPickupFlag() {
+	return ((SceneObjectImplementation*) impl)->getPickupFlag();
+}
+
+void SceneObjectAdapter::setPickupFlag(bool pickup) {
+	return ((SceneObjectImplementation*) impl)->setPickupFlag(pickup);
 }
 
 /*

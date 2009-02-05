@@ -59,202 +59,27 @@ protected:
 	int animationType;
 
 public:
-	FireworkImplementation(Player* player, uint32 tempCRC, const UnicodeString& n, const String& tempn, int anim)
-			: FireworkServant(player->getNewItemID(), FIREWORK) {
+	FireworkImplementation(Player* player, uint32 tempCRC, const UnicodeString& n, const String& tempn, int anim);
 
-		objectCRC = tempCRC;
-		animationType = anim;
+	FireworkImplementation(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempname, int tp = 0);
 
-		customName = n;
+	void init();
 
-		templateTypeName = "firework_n";
-		templateName = tempn;
+	void parseItemAttributes();
 
-		ply = player;
-	}
+	void generateAttributes(SceneObject* obj);
 
-	FireworkImplementation(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempname, int tp = 0)
-			: FireworkServant(oid, FIREWORK) {
+	void addAttributes(AttributeListMessage* alm);
 
-		objectCRC = tempCRC;
+	void updateCraftingValues(DraftSchematic* draftSchematic);
 
-		customName = n;
-
-		templateTypeName = "firework_n";
-		templateName = tempname;
-
-		init();
-	}
-
-	void init() {
-		switch (objectCRC) {
-		case 0xF9E2CBB8: // 1
-		case 0x15ADE9E5: // s01
-			animationType = 1;
-		case 0xCEBA4172: // s02
-		case 0x1A8A9B32: // 2
-			animationType = 2;
-		case 0x87B726FF: // s03
-		case 0x50E06D6C: // 3
-			animationType = 3;
-		case 0x1A0F19FE: // 4
-		case 0x7C540DEB: // s04
-			animationType = 4;
-		case 0x35596A66: // s05
-		case 0xE87446BF: // 5
-			animationType = 5;
-		case 0x47888310: // s10
-			animationType = 6;
-		case 0x0E85E49D: // s11
-			animationType = 7;
-		case 0x06618416: // s18
-			animationType = 8;
-		case 0xFB00F899: // Show
-		case 0xA0E061DC: // test
-			animationType = 0;
-		}
-	}
-
-	void parseItemAttributes() {
-
-		String temp;
-
-		temp = "charges";
-		objectCount = (int)itemAttributes->getFloatAttribute(temp);
-
-		temp = "craftersname";
-		craftersName = itemAttributes->getStringAttribute(temp);
-
-		temp = "craftedserial";
-		craftedSerial = itemAttributes->getStringAttribute(temp);
-
-
-	}
-
-	void generateAttributes(SceneObject* obj) {
-
-		if (!obj->isPlayer())
-			return;
-
-		Player* player = (Player*) obj;
-
-		AttributeListMessage* alm = new AttributeListMessage((TangibleObject*) _this);
-
-		addAttributes(alm);
-
-		player->sendMessage(alm);
-
-	}
-
-	void addAttributes(AttributeListMessage* alm) {
-
-		alm->insertAttribute("volume", "1");
-
-		alm->insertAttribute("charges", objectCount);
-
-		if (craftersName != ""){
-
-			alm->insertAttribute("crafter", craftersName);
-		}
-		if (craftedSerial != ""){
-
-			alm->insertAttribute("serial_number", craftedSerial);
-		}
-
-	}
-
-	void updateCraftingValues(DraftSchematic* draftSchematic){
-
-		String name;
-
-		Player* player = draftSchematic->getCrafter();
-
-		DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
-		//craftingValues->toString();
-
-		name = "charges";
-		objectCount = (int)craftingValues->getCurrentValue("charges");
-		itemAttributes->setFloatAttribute(name, objectCount);
-
-		TangibleObjectDeltaMessage3 * dtano3 = new TangibleObjectDeltaMessage3(_this);
-		dtano3->setQuantity(objectCount);
-		dtano3->close();
-		player->sendMessage(dtano3);
-	}
-
-	int getAnimation() {
+	inline int getAnimation() {
 		return animationType;
 	}
 
-	int useObject(Player* player) {
+	int useObject(Player* player);
 
-		//now we launch it.
-		launchFirework(player);
-
-		if(objectCount > 1) {
-
-			setObjectCount(objectCount--);
-
-			TangibleObjectDeltaMessage3 * dtano3 = new TangibleObjectDeltaMessage3(_this);
-			dtano3->setQuantity(objectCount);
-			dtano3->close();
-			player->sendMessage(dtano3);
-
-		} else {
-
-			player->removeInventoryItem(objectID);
-
-			_this->sendDestroyTo(player);
-
-			_this->finalize();
-		}
-
-		return 0;
-	}
-
-	void launchFirework(Player* player) {
-		//Create the firework in the world.
-		FireworkWorld* firework = new FireworkWorld(player);
-
-		switch (animationType) {
-			case 1:
-				firework->setFireworkObject(0xEF5A1CF7);
-				break;
-			case 2:
-				firework->setFireworkObject(0x344DB460);
-				break;
-			case 3:
-				firework->setFireworkObject(0x7D40D3ED);
-				break;
-			case 4:
-				firework->setFireworkObject(0x86A3F8F9);
-				break;
-			case 5:
-				firework->setFireworkObject(0xCFAE9F74);
-				break;
-			case 6:
-				firework->setFireworkObject(0xF472118F);
-				break;
-			case 7:
-				firework->setFireworkObject(0xFC967104);
-				break;
-			case 8:
-				firework->setFireworkObject(0xBD7F7602);
-				break;
-			default:
-				firework->setFireworkObject(0xEF5A1CF7);
-				break;
-		}
-
-		firework->setZoneProcessServer(server);
-		firework->setDirection(0, 0, -0.64, 0.76);
-		firework->insertToZone(player->getZone());
-
-		player->setPosture(CreaturePosture::CROUCHED);
-
-		Animation* anim = new Animation(player, "manipulate_low");
-		player->broadcastMessage(anim, 128, true, true);
-	}
+	void launchFirework(Player* player);
 
 };
 

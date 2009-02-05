@@ -345,6 +345,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/deed/playerhousedeed/PlayerHouseDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/vehicledeed/VehicleDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/resourcedeed/ResourceDeedImplementation.cpp \
+		server/zone/objects/tangible/firework/FireworkImplementation.cpp \
         server/zone/objects/tangible/generic/GenericItemImplementation.cpp \
         server/zone/objects/tangible/generic/DiceImplementation.cpp \
 		server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp \
