@@ -241,6 +241,7 @@ public:
 
 		case TangibleObjectImplementation::ARMOR:
 		case TangibleObjectImplementation::BODYARMOR:
+		case TangibleObjectImplementation::HEADARMOR:
 		case TangibleObjectImplementation::MISCARMOR:
 		case TangibleObjectImplementation::LEGARMOR:
 		case TangibleObjectImplementation::ARMARMOR:
