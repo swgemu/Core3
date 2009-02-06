@@ -41,46 +41,46 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-cdefRifle = Object:new {
+powerHammer = Object:new {
 
-   objectName = "CDEF Rifle",
-   stfName = "rifle_cdef",
-   objectCRC = 3598018363,
-   groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
+   objectName = "Power Hammer",
+   stfName = "sword_2h_maul",
+   objectCRC = 1312097223,
+   groupName = "craftWeaponMeleeGroupF", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
-   complexity = 8, 
-   size = 3, 
+   complexity = 30, 
+   size = 4, 
 
-   xpType = "crafting_general", 
-   xp = 42, 
+   xpType = "crafting_weapons_general", 
+   xp = 280, 
 
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
 
-   ingredientTemplateNames = "craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n",
-   ingredientTitleNames = "frame_assembly, receiver_assembly, grip_assembly",
-   ingredientSlotType = "0, 0, 0",
-   resourceTypes = "metal, chemical, metal",
-   resourceQuantities = "12, 6, 3",
-   combineTypes = "0, 0, 0",
-   contribution = "100, 100, 100",
+   ingredientTemplateNames = "craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n",
+   ingredientTitleNames = "grip_unit, reactive_striking_surface, power_cell_brackets, reinforcement_core",
+   ingredientSlotType = "0, 0, 0, 2",
+   resourceTypes = "iron_kammris, metal, copper, object/tangible/component/weapon/shared_reinforcement_core.iff",
+   resourceQuantities = "75, 40, 24, 1",
+   combineTypes = "0, 0, 0, 1",
+   contribution = "100, 100, 100, 100",
 
-   numberExperimentalProperties = "1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2",
-   experimentalProperties = "XX, XX, CD, OQ, CD, OQ, CD, OQ, CD, OQ, CD, OQ, CD, OQ, XX, XX, XX, CD, OQ, CD, OQ, CD, OQ, CD, OQ",
-   experimentalWeights = "1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1",
-   experimentalGroupTitles = "null, null, expDamage, expDamage, expDamage, expDamage, expEffeciency, exp_durability, null, null, null, expRange, expEffeciency, expEffeciency, expEffeciency",
+   numberExperimentalProperties = "1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1",
+   experimentalProperties = "XX, XX, SR, SR, SR, SR, SR, SR, SR, XX, SR, XX, SR, SR, SR",
+   experimentalWeights = "1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1",
+   experimentalGroupTitles = "null, null, expDamage, expDamage, expDamage, expDamage, exp_durability, expRange, expRange, null, expRange, null, expEffeciency, expEffeciency, expEffeciency",
 
-   experimentalSubGroupTitles = "null, null, mindamage, maxdamage, attackspeed, woundchance, roundsused, hitpoints, zerorangemod, maxrangemod, midrange, midrangemod, attackhealthcost, attackactioncost, attackmindcost",
-   experimentalMin = "0, 0, 17, 35, 4.6, 4, 5, 750, 0, -80, 35, 35, 10, 22, 10",
-   experimentalMax = "0, 0, 32, 65, 3.2, 5, 20, 1500, 0, -80, 35, 65, 7, 15, 7",
+   experimentalSubGroupTitles = "null, null, mindamage, maxdamage, attackspeed, woundchance, hitpoints, zerorangemod, maxrangemod, midrange, midrangemod, maxrange, attackhealthcost, attackactioncost, attackmindcost",
+   experimentalMin = "0, 0, 53, 235, 8.5, 11, 750, -46, -46, 3, -46, 4, 120, 30, 16",
+   experimentalMax = "0, 0, 98, 436, 5.8, 20, 1500, -25, -25, 3, -25, 4, 63, 15, 7",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131084:objectcrc=3496137221:objecttemp=rifle_cdef:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=2;:",
+   tanoAttributes = "objecttype=131080:objectcrc=248141391:objecttemp=sword_2h_maul:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=1;:",
    customizationOptions = "",
    customizationDefaults = "",
-   customizationSkill = "clothing_customization"
+   customizationSkill = "weapon_customization"
 
 }
 
-DraftSchematics:addDraftSchematic(cdefRifle, 3598018363)--- Add to global DraftSchematics table
+DraftSchematics:addDraftSchematic(powerHammer, 1312097223)--- Add to global DraftSchematics table

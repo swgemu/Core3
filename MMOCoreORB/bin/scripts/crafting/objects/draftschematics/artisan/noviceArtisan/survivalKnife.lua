@@ -72,11 +72,11 @@ survivalKnife = Object:new {
    experimentalGroupTitles = "null, null, expDamage, expDamage, expDamage, expDamage, exp_durability, expRange, expRange, null, expRange, null, expEffeciency, expEffeciency, expEffeciency",
 
    experimentalSubGroupTitles = "null, null, mindamage, maxdamage, attackspeed, woundchance, hitpoints, zerorangemod, maxrangemod, midrange, midrangemod, maxrange, attackhealthcost, attackactioncost, attackmindcost",
-   experimentalMin = "0, 0, 14, 28, 42, 5, 750, 21, 21, 3, 21, 4, 9, 29, 7",
-   experimentalMax = "0, 0, 26, 52, 29, 11, 1500, 39, 39, 3, 39, 1482184792, 5, 15, 4",
+   experimentalMin = "0, 0, 14, 28, 4.2, 5, 750, 21, 21, 3, 21, 4, 9, 29, 7",
+   experimentalMax = "0, 0, 26, 52, 2.9, 11, 1500, 39, 39, 3, 39, 1482184792, 5, 15, 4",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131073:objectcrc=530531036:objecttemp=knife_survival:templatetype=weapon_name:itemmask=65535:",
+   tanoAttributes = "objecttype=131073:objectcrc=530531036:objecttemp=knife_survival:templatetype=weapon_name:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

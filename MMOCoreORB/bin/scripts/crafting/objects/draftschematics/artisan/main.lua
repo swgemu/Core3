@@ -59,6 +59,7 @@ RunDraftSchematicFile("objects/draftschematics/artisan/noviceArtisan/chanceCube.
 RunDraftSchematicFile("objects/draftschematics/artisan/noviceArtisan/sixSidedDiceSet.lua")
 RunDraftSchematicFile("objects/draftschematics/artisan/noviceArtisan/cdefPistol.lua")
 RunDraftSchematicFile("objects/draftschematics/artisan/noviceArtisan/cdefCarbine.lua")
+RunDraftSchematicFile("objects/draftschematics/artisan/noviceArtisan/cdefRifle.lua")
 RunDraftSchematicFile("objects/draftschematics/artisan/noviceArtisan/type1Firework.lua")
 RunDraftSchematicFile("objects/draftschematics/artisan/noviceArtisan/type2Firework.lua")
 RunDraftSchematicFile("objects/draftschematics/artisan/noviceArtisan/type3Firework.lua")

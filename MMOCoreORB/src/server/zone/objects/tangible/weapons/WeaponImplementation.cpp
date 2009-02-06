@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "../../../packets.h"
 
+#include "../../../objects/draftschematic/DraftSchematicValuesImplementation.h"
+
 #include "WeaponImplementation.h"
 
 WeaponImplementation::WeaponImplementation(uint64 objid, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat)
@@ -321,6 +323,77 @@ void WeaponImplementation::parseItemAttributes() {
 	name = "sliced";
 	sliced = itemAttributes->getBooleanAttribute(name);
 }
+
+void WeaponImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
+		/*
+		 * Incoming Values:					Ranges:
+		 * mindamage						Differs between weapons
+		 * maxdamage
+		 * attackspeed
+		 * woundchance
+		 * roundsused
+		 * hitpoints
+		 * zerorangemod
+		 * maxrange
+		 * maxrangemod
+		 * midrange
+		 * midrangemod
+		 * charges
+		 * attackhealthcost
+		 * attackactioncost
+		 * attackmindcost
+		 */
+			DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+
+			float value;
+			_this->setMinDamage(craftingValues->getCurrentValue("mindamage"));
+			_this->setMaxDamage(craftingValues->getCurrentValue("maxdamage"));
+
+			_this->setAttackSpeed(craftingValues->getCurrentValue("attackspeed"));
+			_this->setHealthAttackCost((int)craftingValues->getCurrentValue("attackhealthcost"));
+			_this->setActionAttackCost((int)craftingValues->getCurrentValue("attackactioncost"));
+			_this->setMindAttackCost((int)craftingValues->getCurrentValue("attackmindcost"));
+			//_this->setDamageType((int)craftingValues->getCurrentValue("damagetype"));
+
+			value = craftingValues->getCurrentValue("woundchance");
+			if(value != DraftSchematicValuesImplementation::VALUENOTFOUND)
+				_this->setWoundsRatio(value);
+
+			//value = craftingValues->getCurrentValue("roundsused");
+			//if(value != DraftSchematicValuesImplementation::VALUENOTFOUND)
+				//_this->set_______(value);
+
+			value = craftingValues->getCurrentValue("zerorangemod");
+			if(value != DraftSchematicValuesImplementation::VALUENOTFOUND)
+				_this->setPointBlankAccuracy((int)value);
+
+			value = craftingValues->getCurrentValue("maxrange");
+			if(value != DraftSchematicValuesImplementation::VALUENOTFOUND)
+				_this->setMaxRange((int)value);
+
+			value = craftingValues->getCurrentValue("maxrangemod");
+			if(value != DraftSchematicValuesImplementation::VALUENOTFOUND)
+				_this->setMaxRangeAccuracy((int)value);
+
+			value = craftingValues->getCurrentValue("midrange");
+			if(value != DraftSchematicValuesImplementation::VALUENOTFOUND)
+				_this->setIdealRange((int)value);
+
+			value = craftingValues->getCurrentValue("midrangemod");
+			if(value != DraftSchematicValuesImplementation::VALUENOTFOUND)
+				_this->setIdealAccuracy((int)value);
+
+			value = craftingValues->getCurrentValue("charges");
+			if(value != DraftSchematicValuesImplementation::VALUENOTFOUND)
+				_this->setUsesRemaining((int)value);
+
+			value = craftingValues->getCurrentValue("hitpoints");
+			if(value != DraftSchematicValuesImplementation::VALUENOTFOUND)
+				_this->setMaxCondition((int)value);
+
+			_this->setConditionDamage(0);
+
+	}
 
 void WeaponImplementation::sendTo(Player* player, bool doClose) {
 	ZoneClientSession* client = player->getClient();
