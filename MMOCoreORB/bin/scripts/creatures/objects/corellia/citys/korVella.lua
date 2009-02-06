@@ -40,28 +40,6 @@
 --this exception also makes it possible to release a modified version
 --which carries forward this exception.
 
-korvellaNpc3 = Creature:new {
-	objectName = "korvellaNpc3",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_medic",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 425662555,
-	positionX = -3112,
-	positionY = 2814,
-	positionZ = 31,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.994522,
-	directionW = 0.104528,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 korvellaNpc4 = Creature:new {
 	objectName = "korvellaNpc4",
 	creatureType = NPC,
@@ -104,50 +82,6 @@ korvellaNpc5 = Creature:new {
 	randomMovement = 0,
 	mood = "conversation",
 	cellID = 0
-}
-
-korvellaNpc6 = Creature:new {
-	objectName = "korvellaNpc6",
-	creatureType = NPC,
-
-	speciesName = "corsec_sergeant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 920895820,
-	positionX = -3177.78,
-	positionY = 2891.03,
-	positionZ = 31,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 1,
-	directionW = 1.95143e-08,
-	randomMovement = 0,
-	mood = "conversation",
-	cellID = 0
-}
-
-korvellaNpc7 = Creature:new {
-	objectName = "korvellaNpc7",
-	creatureType = NPC,
-
-	speciesName = "corsec_inspector_sergeant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1875886160,
-	positionX = -62.2367,
-	positionY = 39.7337,
-	positionZ = 2.63942,
-
-	directionX = 5.40039e-07,
-	directionZ = -8.88462e-10,
-	directionY = 0.00164518,
-	directionW = 0.999999,
-	randomMovement = 0,
-	mood = "conversation",
-	cellID = 4255431
 }
 
 korvellaNpc8 = Creature:new {
@@ -326,28 +260,6 @@ korvellaNpc15 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc16 = Creature:new {
-	objectName = "korvellaNpc16",
-	creatureType = NPC,
-
-	speciesName = "corsec_lieutenant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 152421728,
-	positionX = -3177.78,
-	positionY = 2889.93,
-	positionZ = 31,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -2.95947e-08,
-	directionW = 1,
-	randomMovement = 0,
-	mood = "conversation",
-	cellID = 0
-}
-
 korvellaNpc17 = Creature:new {
 	objectName = "korvellaNpc17",
 	creatureType = NPC,
@@ -414,28 +326,6 @@ korvellaNpc19 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc20 = Creature:new {
-	objectName = "korvellaNpc20",
-	creatureType = NPC,
-
-	speciesName = "corsec_master_sergeant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3630538207,
-	positionX = -3172.38,
-	positionY = 2880.85,
-	positionZ = 31,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0,
-	directionW = 1,
-	randomMovement = 0,
-	mood = "conversation",
-	cellID = 0
-}
-
 korvellaNpc21 = Creature:new {
 	objectName = "korvellaNpc21",
 	creatureType = NPC,
@@ -480,28 +370,6 @@ korvellaNpc22 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc23 = Creature:new {
-	objectName = "korvellaNpc23",
-	creatureType = NPC,
-
-	speciesName = "corsec_comissioner",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 466282881,
-	positionX = -3100.88,
-	positionY = 2890.25,
-	positionZ = 31,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 1,
-	directionW = 0,
-	randomMovement = 0,
-	mood = "conversation",
-	cellID = 0
-}
-
 korvellaNpc24 = Creature:new {
 	objectName = "korvellaNpc24",
 	creatureType = NPC,
@@ -519,28 +387,6 @@ korvellaNpc24 = Creature:new {
 	directionZ = 0,
 	directionY = 0,
 	directionW = 1,
-	randomMovement = 0,
-	mood = "conversation",
-	cellID = 0
-}
-
-korvellaNpc25 = Creature:new {
-	objectName = "korvellaNpc25",
-	creatureType = NPC,
-
-	speciesName = "corsec_cadet",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 152421728,
-	positionX = -3101.09,
-	positionY = 2905.97,
-	positionZ = 31,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 1,
-	directionW = 0,
 	randomMovement = 0,
 	mood = "conversation",
 	cellID = 0
@@ -942,50 +788,6 @@ korvellaNpc43 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc45 = Creature:new {
-	objectName = "korvellaNpc45",
-	creatureType = NPC,
-
-	speciesName = "corsec_trooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3254959481,
-	positionX = -3151.32,
-	positionY = 2772.13,
-	positionZ = 31.114,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.623452,
-	directionW = 0.781861,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc46 = Creature:new {
-	objectName = "korvellaNpc46",
-	creatureType = NPC,
-
-	speciesName = "corsec_major",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 152421728,
-	positionX = -3150.16,
-	positionY = 2773.01,
-	positionZ = 31.1352,
-
-	directionX = -0,
-	directionZ = 0,
-	directionY = -0.623467,
-	directionW = 0.78185,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 korvellaNpc47 = Creature:new {
 	objectName = "korvellaNpc47",
 	creatureType = NPC,
@@ -1003,50 +805,6 @@ korvellaNpc47 = Creature:new {
 	directionZ = 0,
 	directionY = 0.731691,
 	directionW = -0.681635,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc48 = Creature:new {
-	objectName = "korvellaNpc48",
-	creatureType = NPC,
-
-	speciesName = "corsec_trooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3630538207,
-	positionX = -3103.98,
-	positionY = 2988.38,
-	positionZ = 31,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.725523,
-	directionW = -0.688198,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc49 = Creature:new {
-	objectName = "korvellaNpc49",
-	creatureType = NPC,
-
-	speciesName = "corsec_sergeant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 920895820,
-	positionX = -3149.45,
-	positionY = 2771.7,
-	positionZ = 31.1521,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.62346,
-	directionW = 0.781856,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -1074,28 +832,6 @@ korvellaNpc50 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc51 = Creature:new {
-	objectName = "korvellaNpc51",
-	creatureType = NPC,
-
-	speciesName = "corsec_trooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3254959481,
-	positionX = -3102.95,
-	positionY = 2989.56,
-	positionZ = 31,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.725513,
-	directionW = -0.688209,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 korvellaNpc52 = Creature:new {
 	objectName = "korvellaNpc52",
 	creatureType = NPC,
@@ -1113,50 +849,6 @@ korvellaNpc52 = Creature:new {
 	directionZ = 0,
 	directionY = 0.649618,
 	directionW = 0.760261,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc53 = Creature:new {
-	objectName = "korvellaNpc53",
-	creatureType = NPC,
-
-	speciesName = "corsec_inspector_sergeant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3750712439,
-	positionX = -3102.24,
-	positionY = 2988.47,
-	positionZ = 31,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.725552,
-	directionW = -0.688168,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc54 = Creature:new {
-	objectName = "korvellaNpc54",
-	creatureType = NPC,
-
-	speciesName = "drall_guard",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 21647313,
-	positionX = -3173.48,
-	positionY = 2881.95,
-	positionZ = 31,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.661453,
-	directionW = 0.749987,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -1316,72 +1008,6 @@ korvellaNpc63 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc64 = Creature:new {
-	objectName = "korvellaNpc64",
-	creatureType = NPC,
-
-	speciesName = "corellian_butterfly_drone",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 760782683,
-	positionX = -3123.76,
-	positionY = 2704.9,
-	positionZ = 31.3295,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.295256,
-	directionW = 0.955418,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc65 = Creature:new {
-	objectName = "korvellaNpc65",
-	creatureType = NPC,
-
-	speciesName = "corellian_butterfly_drone",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 760782683,
-	positionX = -3122.96,
-	positionY = 2705.34,
-	positionZ = 31.2444,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.74063,
-	directionW = 0.671913,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc66 = Creature:new {
-	objectName = "korvellaNpc66",
-	creatureType = NPC,
-
-	speciesName = "corellian_butterfly",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 760782683,
-	positionX = -3131.35,
-	positionY = 2701.43,
-	positionZ = 32.0668,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.119042,
-	directionW = 0.992889,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 korvellaNpc67 = Creature:new {
 	objectName = "korvellaNpc67",
 	creatureType = NPC,
@@ -1399,314 +1025,6 @@ korvellaNpc67 = Creature:new {
 	directionZ = 0,
 	directionY = 0.975741,
 	directionW = 0.218928,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc68 = Creature:new {
-	objectName = "korvellaNpc68",
-	creatureType = NPC,
-
-	speciesName = "corellian_butterfly",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 760782683,
-	positionX = -3049.56,
-	positionY = 2729.58,
-	positionZ = 26.37,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.0571019,
-	directionW = 0.998368,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc69 = Creature:new {
-	objectName = "korvellaNpc69",
-	creatureType = NPC,
-
-	speciesName = "corellian_butterfly_drone",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 760782683,
-	positionX = -3051.64,
-	positionY = 2721.83,
-	positionZ = 26.1904,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.998762,
-	directionW = 0.0497475,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc70 = Creature:new {
-	objectName = "korvellaNpc70",
-	creatureType = NPC,
-
-	speciesName = "gubbur",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 406952354,
-	positionX = -2968.55,
-	positionY = 2824.15,
-	positionZ = 28.8086,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.995893,
-	directionW = -0.0905357,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc71 = Creature:new {
-	objectName = "korvellaNpc71",
-	creatureType = NPC,
-
-	speciesName = "corellian_butterfly",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 760782683,
-	positionX = -2968.59,
-	positionY = 2819.86,
-	positionZ = 28.3172,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.879832,
-	directionW = 0.475285,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc72 = Creature:new {
-	objectName = "korvellaNpc72",
-	creatureType = NPC,
-
-	speciesName = "corellian_butterfly_drone",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 760782683,
-	positionX = -2968.39,
-	positionY = 2821.15,
-	positionZ = 28.4853,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.363156,
-	directionW = 0.931728,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc73 = Creature:new {
-	objectName = "korvellaNpc73",
-	creatureType = NPC,
-
-	speciesName = "corellian_butterfly",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 760782683,
-	positionX = -2964.87,
-	positionY = 2821.79,
-	positionZ = 28.479,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.30128,
-	directionW = 0.953536,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc74 = Creature:new {
-	objectName = "korvellaNpc74",
-	creatureType = NPC,
-
-	speciesName = "gubbur",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 406952354,
-	positionX = -2968.51,
-	positionY = 2824.93,
-	positionZ = 28.804,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.882328,
-	directionW = -0.470635,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc75 = Creature:new {
-	objectName = "korvellaNpc75",
-	creatureType = NPC,
-
-	speciesName = "corellian_butterfly_drone",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 760782683,
-	positionX = -2961.61,
-	positionY = 2831.61,
-	positionZ = 28.0736,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.0131545,
-	directionW = 0.999913,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc76 = Creature:new {
-	objectName = "korvellaNpc76",
-	creatureType = NPC,
-
-	speciesName = "durni",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 122624654,
-	positionX = -2973.34,
-	positionY = 2948.52,
-	positionZ = 30.7278,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.0344561,
-	directionW = 0.999406,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc77 = Creature:new {
-	objectName = "korvellaNpc77",
-	creatureType = NPC,
-
-	speciesName = "durni",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 122624654,
-	positionX = -2968.55,
-	positionY = 2952.81,
-	positionZ = 30.522,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.325814,
-	directionW = 0.945434,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc78 = Creature:new {
-	objectName = "korvellaNpc78",
-	creatureType = NPC,
-
-	speciesName = "gubbur",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 406952354,
-	positionX = -2974.33,
-	positionY = 2947.56,
-	positionZ = 30.7521,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.12657,
-	directionW = 0.991958,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc79 = Creature:new {
-	objectName = "korvellaNpc79",
-	creatureType = NPC,
-
-	speciesName = "durni",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 122624654,
-	positionX = -2964.67,
-	positionY = 2954.11,
-	positionZ = 30.4361,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.664672,
-	directionW = 0.747135,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc80 = Creature:new {
-	objectName = "korvellaNpc80",
-	creatureType = NPC,
-
-	speciesName = "corellian_butterfly_drone",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 760782683,
-	positionX = -2965.31,
-	positionY = 2952.1,
-	positionZ = 30.3629,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.891648,
-	directionW = 0.452728,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc81 = Creature:new {
-	objectName = "korvellaNpc81",
-	creatureType = NPC,
-
-	speciesName = "durni",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 122624654,
-	positionX = -2969.64,
-	positionY = 2961.77,
-	positionZ = 30.7686,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.695757,
-	directionW = 0.718277,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -1819,28 +1137,6 @@ korvellaNpc88 = Creature:new {
 	directionW = 0.797166,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc89 = Creature:new {
-	objectName = "korvellaNpc89",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_medic",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 425662555,
-	positionX = -3386,
-	positionY = 2992,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.0480123,
-	directionW = 0.998847,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -1998,28 +1294,6 @@ korvellaNpc98 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc99 = Creature:new {
-	objectName = "korvellaNpc99",
-	creatureType = NPC,
-
-	speciesName = "corsec_detective",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3750712439,
-	positionX = -3408.26,
-	positionY = 3049.35,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 1,
-	directionW = 0,
-	randomMovement = 0,
-	mood = "conversation",
-	cellID = 0
-}
-
 korvellaNpc100 = Creature:new {
 	objectName = "korvellaNpc100",
 	creatureType = NPC,
@@ -2081,28 +1355,6 @@ korvellaNpc102 = Creature:new {
 	directionZ = 0,
 	directionY = 0,
 	directionW = 1,
-	randomMovement = 0,
-	mood = "conversation",
-	cellID = 0
-}
-
-korvellaNpc103 = Creature:new {
-	objectName = "korvellaNpc103",
-	creatureType = NPC,
-
-	speciesName = "corsec_lieutenant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3630538207,
-	positionX = -3450.64,
-	positionY = 3031.31,
-	positionZ = 78,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 1,
-	directionW = 0,
 	randomMovement = 0,
 	mood = "conversation",
 	cellID = 0
@@ -2262,72 +1514,6 @@ korvellaNpc120 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc122 = Creature:new {
-	objectName = "korvellaNpc122",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2594882157,
-	positionX = -3421.17,
-	positionY = 3114.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.809714,
-	directionW = -0.586825,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc123 = Creature:new {
-	objectName = "korvellaNpc123",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3090816966,
-	positionX = -3420.17,
-	positionY = 3117.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.999907,
-	directionW = 0.0136316,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc124 = Creature:new {
-	objectName = "korvellaNpc124",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4046944331,
-	positionX = -3420.17,
-	positionY = 3120.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.832294,
-	directionW = 0.554334,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 korvellaNpc126 = Creature:new {
 	objectName = "korvellaNpc126",
 	creatureType = NPC,
@@ -2369,28 +1555,6 @@ korvellaNpc127 = Creature:new {
 	directionW = -0.432468,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc129 = Creature:new {
-	objectName = "korvellaNpc129",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 706793692,
-	positionX = -3414.17,
-	positionY = 3115.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.98192,
-	directionW = -0.189298,
-	randomMovement = 0,
-	mood = "neutral",
 	cellID = 0
 }
 
@@ -2458,50 +1622,6 @@ korvellaNpc132 = Creature:new {
 	randomMovement = 0,
 	mood = "conversation",
 	cellID = 3005411
-}
-
-korvellaNpc133 = Creature:new {
-	objectName = "korvellaNpc133",
-	creatureType = NPC,
-
-	speciesName = "corsec_rogue",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 168335290,
-	positionX = -45.2379,
-	positionY = -20.6909,
-	positionZ = 0.105009,
-
-	directionX = -2.67407e-11,
-	directionZ = 1.17352e-06,
-	directionY = 1,
-	directionW = 2.28892e-05,
-	randomMovement = 0,
-	mood = "conversation",
-	cellID = 3005411
-}
-
-korvellaNpc134 = Creature:new {
-	objectName = "korvellaNpc134",
-	creatureType = NPC,
-
-	speciesName = "corsec_comissioner",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 466282881,
-	positionX = -25.7262,
-	positionY = 10.5232,
-	positionZ = -0.519991,
-
-	directionX = -7.74755e-07,
-	directionZ = -1.47978e-11,
-	directionY = -1.90709e-05,
-	directionW = 1,
-	randomMovement = 0,
-	mood = "conversation",
-	cellID = 3005409
 }
 
 korvellaNpc135 = Creature:new {
@@ -2724,28 +1844,6 @@ korvellaNpc144 = Creature:new {
 	cellID = 3005400
 }
 
-korvellaNpc145 = Creature:new {
-	objectName = "korvellaNpc145",
-	creatureType = NPC,
-
-	speciesName = "corsec_chief",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 466282881,
-	positionX = 20.5946,
-	positionY = -18.6063,
-	positionZ = -0.894996,
-
-	directionX = -7.85659e-13,
-	directionZ = -2.68255e-07,
-	directionY = 1,
-	directionW = -2.86138e-06,
-	randomMovement = 0,
-	mood = "conversation",
-	cellID = 3005400
-}
-
 korvellaNpc146 = Creature:new {
 	objectName = "korvellaNpc146",
 	creatureType = NPC,
@@ -2856,28 +1954,6 @@ korvellaNpc150 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc151 = Creature:new {
-	objectName = "korvellaNpc151",
-	creatureType = NPC,
-
-	speciesName = "corsec_inspector_sergeant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3750712439,
-	positionX = -3520.73,
-	positionY = 3125.57,
-	positionZ = 78,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0,
-	directionW = 1,
-	randomMovement = 0,
-	mood = "conversation",
-	cellID = 0
-}
-
 korvellaNpc152 = Creature:new {
 	objectName = "korvellaNpc152",
 	creatureType = NPC,
@@ -2922,72 +1998,6 @@ korvellaNpc153 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc154 = Creature:new {
-	objectName = "korvellaNpc154",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3119243537,
-	positionX = -3422.17,
-	positionY = 3123.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.556482,
-	directionW = 0.830859,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc155 = Creature:new {
-	objectName = "korvellaNpc155",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1794132300,
-	positionX = -3414.17,
-	positionY = 3120.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.0494636,
-	directionW = 0.998776,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc156 = Creature:new {
-	objectName = "korvellaNpc156",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 706793692,
-	positionX = -3417.17,
-	positionY = 3121.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.719962,
-	directionW = -0.694013,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
 korvellaNpc157 = Creature:new {
 	objectName = "korvellaNpc157",
 	creatureType = NPC,
@@ -3007,160 +2017,6 @@ korvellaNpc157 = Creature:new {
 	directionW = 1,
 	randomMovement = 0,
 	mood = "conversation",
-	cellID = 0
-}
-
-korvellaNpc159 = Creature:new {
-	objectName = "korvellaNpc159",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 728074066,
-	positionX = -3413.17,
-	positionY = 3117.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.344403,
-	directionW = 0.938822,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc160 = Creature:new {
-	objectName = "korvellaNpc160",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 117165421,
-	positionX = -3420.17,
-	positionY = 3119.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.237732,
-	directionW = 0.971331,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc161 = Creature:new {
-	objectName = "korvellaNpc161",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4127988119,
-	positionX = -3417.17,
-	positionY = 3115.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.97363,
-	directionW = -0.228131,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc162 = Creature:new {
-	objectName = "korvellaNpc162",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 145755511,
-	positionX = -3418.17,
-	positionY = 3116.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.939843,
-	directionW = -0.341606,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc163 = Creature:new {
-	objectName = "korvellaNpc163",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2316353705,
-	positionX = -3414.17,
-	positionY = 3122.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.110799,
-	directionW = 0.993843,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc164 = Creature:new {
-	objectName = "korvellaNpc164",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 675581684,
-	positionX = -3424.17,
-	positionY = 3120.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.235489,
-	directionW = 0.971877,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc165 = Creature:new {
-	objectName = "korvellaNpc165",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3126739438,
-	positionX = -3416.17,
-	positionY = 3118.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.00248542,
-	directionW = 0.999997,
-	randomMovement = 0,
-	mood = "neutral",
 	cellID = 0
 }
 
@@ -3205,28 +2061,6 @@ korvellaNpc168 = Creature:new {
 	directionW = -0.503811,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc169 = Creature:new {
-	objectName = "korvellaNpc169",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1794132300,
-	positionX = -3422.17,
-	positionY = 3122.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.916282,
-	directionW = 0.400535,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -3381,28 +2215,6 @@ korvellaNpc181 = Creature:new {
 	directionW = 0.550347,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc183 = Creature:new {
-	objectName = "korvellaNpc183",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 194053329,
-	positionX = -3420.17,
-	positionY = 3118.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.262103,
-	directionW = 0.96504,
-	randomMovement = 0,
-	mood = "neutral",
 	cellID = 0
 }
 
@@ -3582,72 +2394,6 @@ korvellaNpc192 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc193 = Creature:new {
-	objectName = "korvellaNpc193",
-	creatureType = NPC,
-
-	speciesName = "corsec_rogue",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 340310318,
-	positionX = -3340.49,
-	positionY = 3292.76,
-	positionZ = 86,
-
-	directionX = -0.0200862,
-	directionZ = 0.0305971,
-	directionY = 0.765999,
-	directionW = 0.6418,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-korvellaNpc194 = Creature:new {
-	objectName = "korvellaNpc194",
-	creatureType = NPC,
-
-	speciesName = "corsec_rogue",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2394298047,
-	positionX = -3332.89,
-	positionY = 3303.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.564043,
-	directionW = 0.825745,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-korvellaNpc195 = Creature:new {
-	objectName = "korvellaNpc195",
-	creatureType = NPC,
-
-	speciesName = "corsec_rogue",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3737467730,
-	positionX = -3330.1,
-	positionY = 3290.98,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.788527,
-	directionW = 0.614999,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 korvellaNpc196 = Creature:new {
 	objectName = "korvellaNpc196",
 	creatureType = NPC,
@@ -3667,28 +2413,6 @@ korvellaNpc196 = Creature:new {
 	directionW = -0.673304,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc199 = Creature:new {
-	objectName = "korvellaNpc199",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 725530518,
-	positionX = -3417.17,
-	positionY = 3121.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.998572,
-	directionW = -0.0534233,
-	randomMovement = 0,
-	mood = "neutral",
 	cellID = 0
 }
 
@@ -3824,116 +2548,6 @@ korvellaNpc207 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc209 = Creature:new {
-	objectName = "korvellaNpc209",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3090816966,
-	positionX = -3415.17,
-	positionY = 3116.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.565267,
-	directionW = 0.824908,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-korvellaNpc210 = Creature:new {
-	objectName = "korvellaNpc210",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 638835734,
-	positionX = -3421.17,
-	positionY = 3119.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.826203,
-	directionW = 0.563373,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-korvellaNpc211 = Creature:new {
-	objectName = "korvellaNpc211",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 194053329,
-	positionX = -3418.17,
-	positionY = 3114.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.63913,
-	directionW = 0.769099,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc212 = Creature:new {
-	objectName = "korvellaNpc212",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2867472418,
-	positionX = -3419.17,
-	positionY = 3114.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.363585,
-	directionW = 0.931561,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc213 = Creature:new {
-	objectName = "korvellaNpc213",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 5533180,
-	positionX = -3418.17,
-	positionY = 3113.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.620506,
-	directionW = 0.784202,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
 korvellaNpc214 = Creature:new {
 	objectName = "korvellaNpc214",
 	creatureType = NPC,
@@ -3978,28 +2592,6 @@ korvellaNpc215 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc216 = Creature:new {
-	objectName = "korvellaNpc216",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4034015173,
-	positionX = -3419.17,
-	positionY = 3119.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.984068,
-	directionW = -0.177793,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
 korvellaNpc218 = Creature:new {
 	objectName = "korvellaNpc218",
 	creatureType = NPC,
@@ -4017,28 +2609,6 @@ korvellaNpc218 = Creature:new {
 	directionZ = 0,
 	directionY = 0,
 	directionW = 1,
-	randomMovement = 0,
-	mood = "conversation",
-	cellID = 0
-}
-
-korvellaNpc219 = Creature:new {
-	objectName = "korvellaNpc219",
-	creatureType = NPC,
-
-	speciesName = "corsec_lieutenant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 920895820,
-	positionX = -3587.81,
-	positionY = 3135.7,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 1,
-	directionW = 0,
 	randomMovement = 0,
 	mood = "conversation",
 	cellID = 0
@@ -4110,28 +2680,6 @@ korvellaNpc223 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc224 = Creature:new {
-	objectName = "korvellaNpc224",
-	creatureType = NPC,
-
-	speciesName = "drall_abbot",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 21647313,
-	positionX = -3602.67,
-	positionY = 3222.17,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 1,
-	directionW = 0,
-	randomMovement = 0,
-	mood = "conversation",
-	cellID = 0
-}
-
 korvellaNpc225 = Creature:new {
 	objectName = "korvellaNpc225",
 	creatureType = NPC,
@@ -4176,28 +2724,6 @@ korvellaNpc226 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc231 = Creature:new {
-	objectName = "korvellaNpc231",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2440014656,
-	positionX = -3421.17,
-	positionY = 3118.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.97829,
-	directionW = 0.207241,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
 korvellaNpc232 = Creature:new {
 	objectName = "korvellaNpc232",
 	creatureType = NPC,
@@ -4215,28 +2741,6 @@ korvellaNpc232 = Creature:new {
 	directionZ = 0,
 	directionY = 0,
 	directionW = 1,
-	randomMovement = 0,
-	mood = "conversation",
-	cellID = 3005430
-}
-
-korvellaNpc233 = Creature:new {
-	objectName = "korvellaNpc233",
-	creatureType = NPC,
-
-	speciesName = "corsec_agent",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 920895820,
-	positionX = -5.69316,
-	positionY = -9.21648,
-	positionZ = -5.5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 1,
-	directionW = 2.45042e-05,
 	randomMovement = 0,
 	mood = "conversation",
 	cellID = 3005430
@@ -4306,28 +2810,6 @@ korvellaNpc236 = Creature:new {
 	randomMovement = 0,
 	mood = "conversation",
 	cellID = 3005430
-}
-
-korvellaNpc237 = Creature:new {
-	objectName = "korvellaNpc237",
-	creatureType = NPC,
-
-	speciesName = "corsec_chief",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 466282881,
-	positionX = 3.9861,
-	positionY = -3.1463,
-	positionZ = -0.0513746,
-
-	directionX = 7.75507e-07,
-	directionZ = -5.54676e-11,
-	directionY = 7.15243e-05,
-	directionW = 1,
-	randomMovement = 0,
-	mood = "conversation",
-	cellID = 3005428
 }
 
 korvellaNpc238 = Creature:new {
@@ -4418,94 +2900,6 @@ korvellaNpc241 = Creature:new {
 	cellID = 3005428
 }
 
-korvellaNpc243 = Creature:new {
-	objectName = "korvellaNpc243",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3043344299,
-	positionX = -3637.85,
-	positionY = 3118.04,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.822855,
-	directionW = 0.568251,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-korvellaNpc244 = Creature:new {
-	objectName = "korvellaNpc244",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 145755511,
-	positionX = -3634.85,
-	positionY = 3116.04,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.442753,
-	directionW = 0.896644,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-korvellaNpc245 = Creature:new {
-	objectName = "korvellaNpc245",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4046944331,
-	positionX = -3630.85,
-	positionY = 3115.04,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.533457,
-	directionW = 0.845827,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc246 = Creature:new {
-	objectName = "korvellaNpc246",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3119243537,
-	positionX = -3420.17,
-	positionY = 3114.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.988347,
-	directionW = 0.152219,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
 korvellaNpc247 = Creature:new {
 	objectName = "korvellaNpc247",
 	creatureType = NPC,
@@ -4525,50 +2919,6 @@ korvellaNpc247 = Creature:new {
 	directionW = -0.292945,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc248 = Creature:new {
-	objectName = "korvellaNpc248",
-	creatureType = NPC,
-
-	speciesName = "crackdown_specialist_noncom",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2887599713,
-	positionX = -3660.31,
-	positionY = 3103.26,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.33422,
-	directionW = 0.942495,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-korvellaNpc249 = Creature:new {
-	objectName = "korvellaNpc249",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1647562779,
-	positionX = -3639.85,
-	positionY = 3121.04,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.977989,
-	directionW = -0.208655,
-	randomMovement = 0,
-	mood = "neutral",
 	cellID = 0
 }
 
@@ -4594,28 +2944,6 @@ korvellaNpc250 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc251 = Creature:new {
-	objectName = "korvellaNpc251",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 5533180,
-	positionX = -3635.85,
-	positionY = 3122.04,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.443149,
-	directionW = 0.896448,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
 korvellaNpc255 = Creature:new {
 	objectName = "korvellaNpc255",
 	creatureType = NPC,
@@ -4635,28 +2963,6 @@ korvellaNpc255 = Creature:new {
 	directionW = 0,
 	randomMovement = 0,
 	mood = "conversation",
-	cellID = 0
-}
-
-korvellaNpc257 = Creature:new {
-	objectName = "korvellaNpc257",
-	creatureType = NPC,
-
-	speciesName = "drall_patriot",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 21647313,
-	positionX = -3735.04,
-	positionY = 3219.3,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.268587,
-	directionW = 0.963255,
-	randomMovement = 0,
-	mood = "calm",
 	cellID = 0
 }
 
@@ -4701,50 +3007,6 @@ korvellaNpc261 = Creature:new {
 	directionW = 0.889441,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc262 = Creature:new {
-	objectName = "korvellaNpc262",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 713507325,
-	positionX = -3631.85,
-	positionY = 3117.04,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.168116,
-	directionW = 0.985767,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc267 = Creature:new {
-	objectName = "korvellaNpc267",
-	creatureType = NPC,
-
-	speciesName = "crackdown_imperial_warrant_officer_ii",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3423844128,
-	positionX = -3787.12,
-	positionY = 3147.97,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -3.78268e-09,
-	directionW = 1,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -4814,28 +3076,6 @@ korvellaNpc272 = Creature:new {
 	cellID = 3375392
 }
 
-korvellaNpc273 = Creature:new {
-	objectName = "korvellaNpc273",
-	creatureType = NPC,
-
-	speciesName = "corsec_agent",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 152421728,
-	positionX = 0.280297,
-	positionY = 7.39289,
-	positionZ = 0.184067,
-
-	directionX = 2.08602e-07,
-	directionZ = 4.05386e-12,
-	directionY = -1.94745e-05,
-	directionW = 1,
-	randomMovement = 0,
-	mood = "conversation",
-	cellID = 3375392
-}
-
 korvellaNpc274 = Creature:new {
 	objectName = "korvellaNpc274",
 	creatureType = NPC,
@@ -4856,72 +3096,6 @@ korvellaNpc274 = Creature:new {
 	randomMovement = 0,
 	mood = "conversation",
 	cellID = 3375392
-}
-
-korvellaNpc275 = Creature:new {
-	objectName = "korvellaNpc275",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2316353705,
-	positionX = -3640.85,
-	positionY = 3121.04,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.881924,
-	directionW = 0.471391,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc276 = Creature:new {
-	objectName = "korvellaNpc276",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 5533180,
-	positionX = -3631.85,
-	positionY = 3124.04,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.914282,
-	directionW = -0.405078,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc277 = Creature:new {
-	objectName = "korvellaNpc277",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3651467751,
-	positionX = -3634.85,
-	positionY = 3125.04,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.975126,
-	directionW = -0.221652,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
 }
 
 korvellaNpc278 = Creature:new {
@@ -4946,116 +3120,6 @@ korvellaNpc278 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc279 = Creature:new {
-	objectName = "korvellaNpc279",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3090816966,
-	positionX = -3631.85,
-	positionY = 3117.04,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.881867,
-	directionW = -0.471497,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc280 = Creature:new {
-	objectName = "korvellaNpc280",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3939418807,
-	positionX = -3637.85,
-	positionY = 3114.04,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.198514,
-	directionW = 0.980098,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc281 = Creature:new {
-	objectName = "korvellaNpc281",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 181687135,
-	positionX = -3631.85,
-	positionY = 3122.04,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.866915,
-	directionW = -0.498455,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc282 = Creature:new {
-	objectName = "korvellaNpc282",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1812306872,
-	positionX = -3631.85,
-	positionY = 3119.04,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.992718,
-	directionW = -0.120459,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc283 = Creature:new {
-	objectName = "korvellaNpc283",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1660701062,
-	positionX = -3630.85,
-	positionY = 3119.04,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.25654,
-	directionW = 0.966534,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
 korvellaNpc284 = Creature:new {
 	objectName = "korvellaNpc284",
 	creatureType = NPC,
@@ -5076,204 +3140,6 @@ korvellaNpc284 = Creature:new {
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 18187224143116836370
-}
-
-korvellaNpc285 = Creature:new {
-	objectName = "korvellaNpc285",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1120359320,
-	positionX = -3635.85,
-	positionY = 3118.04,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.830911,
-	directionW = -0.556405,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc286 = Creature:new {
-	objectName = "korvellaNpc286",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1020849451,
-	positionX = -3637.85,
-	positionY = 3120.04,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.255794,
-	directionW = 0.966731,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc287 = Creature:new {
-	objectName = "korvellaNpc287",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 138244543,
-	positionX = -3421.17,
-	positionY = 3122.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.956198,
-	directionW = 0.292722,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc288 = Creature:new {
-	objectName = "korvellaNpc288",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2500249611,
-	positionX = -3423.17,
-	positionY = 3116.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.615451,
-	directionW = 0.788175,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc289 = Creature:new {
-	objectName = "korvellaNpc289",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 728074066,
-	positionX = -3421.17,
-	positionY = 3120.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.373538,
-	directionW = 0.927615,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc290 = Creature:new {
-	objectName = "korvellaNpc290",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 728074066,
-	positionX = -3633.85,
-	positionY = 3121.04,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.99646,
-	directionW = -0.0840679,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc291 = Creature:new {
-	objectName = "korvellaNpc291",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1794187804,
-	positionX = -3417.17,
-	positionY = 3118.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.831911,
-	directionW = 0.554909,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc292 = Creature:new {
-	objectName = "korvellaNpc292",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 638835734,
-	positionX = -3421.17,
-	positionY = 3120.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.980158,
-	directionW = 0.198216,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
-korvellaNpc293 = Creature:new {
-	objectName = "korvellaNpc293",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1309761692,
-	positionX = -3424.17,
-	positionY = 3115.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.213095,
-	directionW = 0.977031,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
 }
 
 korvellaNpc294 = Creature:new {
@@ -5317,28 +3183,6 @@ korvellaNpc295 = Creature:new {
 	directionW = -0.559105,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc296 = Creature:new {
-	objectName = "korvellaNpc296",
-	creatureType = NPC,
-
-	speciesName = "ragtag_kook",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 728074066,
-	positionX = -3420.17,
-	positionY = 3112.69,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.962221,
-	directionW = 0.27227,
-	randomMovement = 0,
-	mood = "neutral",
 	cellID = 0
 }
 
@@ -5540,28 +3384,6 @@ korvellaNpc305 = Creature:new {
 	cellID = 3005670
 }
 
-korvellaNpc306 = Creature:new {
-	objectName = "korvellaNpc306",
-	creatureType = NPC,
-
-	speciesName = "drall_monk",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 21647313,
-	positionX = -16.9034,
-	positionY = 10.7646,
-	positionZ = 1.6,
-
-	directionX = 1.02948e-06,
-	directionZ = -1.2481e-11,
-	directionY = 1.21236e-05,
-	directionW = 1,
-	randomMovement = 0,
-	mood = "conversation",
-	cellID = 3005672
-}
-
 korvellaNpc307 = Creature:new {
 	objectName = "korvellaNpc307",
 	creatureType = NPC,
@@ -5606,138 +3428,6 @@ korvellaNpc308 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc309 = Creature:new {
-	objectName = "korvellaNpc309",
-	creatureType = NPC,
-
-	speciesName = "durni",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 122624654,
-	positionX = -3172.9,
-	positionY = 3216.97,
-	positionZ = 101,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.869382,
-	directionW = 0.494141,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc310 = Creature:new {
-	objectName = "korvellaNpc310",
-	creatureType = NPC,
-
-	speciesName = "corellian_butterfly_drone",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 760782683,
-	positionX = -3162.98,
-	positionY = 3213.35,
-	positionZ = 101,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.687235,
-	directionW = 0.726436,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc311 = Creature:new {
-	objectName = "korvellaNpc311",
-	creatureType = NPC,
-
-	speciesName = "corellian_butterfly_drone",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 760782683,
-	positionX = -3162.48,
-	positionY = 3224,
-	positionZ = 101,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.951399,
-	directionW = -0.30796,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc312 = Creature:new {
-	objectName = "korvellaNpc312",
-	creatureType = NPC,
-
-	speciesName = "gubbur",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 406952354,
-	positionX = -3163.98,
-	positionY = 3224.56,
-	positionZ = 101,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.975001,
-	directionW = 0.222202,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc313 = Creature:new {
-	objectName = "korvellaNpc313",
-	creatureType = NPC,
-
-	speciesName = "corellian_butterfly_drone",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 760782683,
-	positionX = -3170.48,
-	positionY = 3222.99,
-	positionZ = 101,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.995538,
-	directionW = 0.0943661,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc314 = Creature:new {
-	objectName = "korvellaNpc314",
-	creatureType = NPC,
-
-	speciesName = "corellian_butterfly_drone",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 760782683,
-	positionX = -3172.56,
-	positionY = 3220.4,
-	positionZ = 101,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.931627,
-	directionW = 0.363416,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 korvellaNpc315 = Creature:new {
 	objectName = "korvellaNpc315",
 	creatureType = NPC,
@@ -5759,4 +3449,3 @@ korvellaNpc315 = Creature:new {
 	mood = "conversation",
 	cellID = 0
 }
-

@@ -121,6 +121,7 @@ end
 
 -- yavin 4
 if (PLANET_ID == 9) then
+RunCreatureFile("objects/yavin4/geoCave.lua") 
 RunCreatureFile("objects/yavin4/creatures.lua") 
 RunCreatureFile("objects/yavin4/npcs.lua")
 RunCreatureFile("objects/yavin4/citys.lua")

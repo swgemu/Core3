@@ -89,9 +89,14 @@
 
  RunCreatureFile("objects/corellia/npcs/drall/drallAbbot.lua")
  RunCreatureFile("objects/corellia/npcs/drall/drallChieftain.lua")
+ RunCreatureFile("objects/corellia/npcs/drall/drallGuard.lua")
+ RunCreatureFile("objects/corellia/npcs/drall/drallMaster.lua")
+ RunCreatureFile("objects/corellia/npcs/drall/drallMonk.lua")
+ RunCreatureFile("objects/corellia/npcs/drall/drallPatriot.lua")
  RunCreatureFile("objects/corellia/npcs/drall/drallPatriotConqueror.lua")
  RunCreatureFile("objects/corellia/npcs/drall/drallPatriotFootsoldier.lua")
  RunCreatureFile("objects/corellia/npcs/drall/drallPatriotLegionnare.lua")
+ RunCreatureFile("objects/corellia/npcs/drall/drallSentry.lua")
 
  RunCreatureFile("objects/corellia/npcs/greck/greckAssassin.lua") -- Weapon "DX2 Pistol"
  RunCreatureFile("objects/corellia/npcs/greck/greckHenchman.lua") -- Weapon "DX2 Pistol"

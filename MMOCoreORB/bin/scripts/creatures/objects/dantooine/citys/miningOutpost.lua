@@ -84,28 +84,6 @@ miningOutpostNpc2 = Creature:new {
 	cellID = 0
 }
 
-miningOutpostNpc3 = Creature:new {
-	objectName = "miningOutpostNpc3",
-	creatureType = NPC,
-
-	speciesName = "imperial_colonel",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2701430666,
-	positionX = -588.773,
-	positionY = 2499.09,
-	positionZ = 3,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.739533,
-	directionW = -0.67312,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
 miningOutpostNpc4 = Creature:new {
 	objectName = "miningOutpostNpc4",
 	creatureType = NPC,
@@ -411,28 +389,6 @@ miningOutpostNpc17 = Creature:new {
 	directionW = 0.89915,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-miningOutpostNpc18 = Creature:new {
-	objectName = "miningOutpostNpc18",
-	creatureType = NPC,
-
-	speciesName = "stranded_imperial_soldier",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 519244536,
-	positionX = -604.016,
-	positionY = 2538.15,
-	positionZ = 3,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.984164,
-	directionW = -0.177258,
-	randomMovement = 0,
-	mood = "npc_imperial",
 	cellID = 0
 }
 
@@ -875,4 +831,3 @@ miningOutpostNpc38 = Creature:new {
 	mood = "neutral",
 	cellID = 6205565
 }
-

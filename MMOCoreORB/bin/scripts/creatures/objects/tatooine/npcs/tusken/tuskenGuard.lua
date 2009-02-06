@@ -40,48 +40,46 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-
-drallSentry = Creature:new {
-	objectName = "drallSentry",  -- Lua Object Name
-	creatureType = "NPC",
-	faction = "drall", 
+tuskenGuard = Creature:new {
+    objectName = "tuskenGuard",  -- Lua Object Name
+    creatureType = "NPC",
+	faction = "tusken_raider", 
 	factionPoints = 20,
 	gender = "",
 
-	name = "Drall sentry",
-	speciesName = "creature_name",
+    speciesName = "tusken_guard",
 	stfName = "mob/creature_names", 
-	objectCRC = 3116494340, 
-	socialGroup = "drall",
-	level = 8,
+	objectCRC = 3780705985, 
+	socialGroup = "tusken_raider",
+	level = 26,	
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	healthMax = 495,
-	healthMin = 405,
+	healthMax = 8800,
+	healthMin = 7200,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 495,
-	actionMin = 405,
+	actionMax = 8800,
+	actionMin = 7200,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 495,
-	mindMin = 405,
+	mindMax = 8800,
+	mindMin = 7200,
 	focus = 0,
 	willpower = 0,
 
 	height = 1, -- Size of creature
-	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 0,
-	energy = 0,
-	electricity = 0,
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 20,
+	energy = 20,
+	electricity = 50,
 	stun = -1,
 	blast = 0,
-	heat = 0,
-	cold = 0,
-	acid = 0,
+	heat = 50,
+	cold = -1,
+	acid = -1,
 	lightsaber = 0,
 
 	accuracy = 0,
@@ -90,20 +88,23 @@ drallSentry = Creature:new {
 
 	pack = 1,
 	herd = 0,
-	stalker = 0,
-	killer = 0,
-	aggressive = 0,
+	stalker = 1,
+	killer = 1,
+	aggressive = 1,
 	invincible = 0,
+	
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
-	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 70,
-	weaponMaxDamage = 75,
+	weapon = "object/weapon/melee/baton/shared_baton_gaderiffi.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a Gaderiffi", -- Name ex. 'a Vibrolance'
+	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 240,
+	weaponMaxDamage = 250,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -115,13 +116,13 @@ drallSentry = Creature:new {
 	alternateWeaponEquipped = 0,
 	alternateWeaponMinDamage = 0,
 	alternateWeaponMaxDamage = 0,
-	alternateweaponAttackSpeed = 2,
+	alternateWeaponAttackSpeed = 0,
 	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	alternateweaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0,1,3,11,15,23", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,10 +137,10 @@ drallSentry = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "drallAttack01" },
-	respawnTimer = 180,
+	skills = { "tuskenAttack40", "tuskenAttack41", "tuskenAttack42", "tuskenAttack43",  "tuskenAttack44", "tuskenAttack45", "tuskenAttack47", "tuskenAttack49" },
+	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(drallSentry, 3116494340) -- Add to Global Table
+Creatures:addCreature(tuskenGuard, 3780705985) --  Add to Global Table

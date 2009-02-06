@@ -435,4 +435,3 @@ smugglersOutpostNpc18 = Creature:new {
 	mood = "calm",
 	cellID = 0
 }
-
