@@ -117,6 +117,9 @@
  RunCreatureFile("objects/tatooine/npcs/tusken/tuskenWarlord.lua")
  RunCreatureFile("objects/tatooine/npcs/tusken/tuskenWarMaster.lua")
  RunCreatureFile("objects/tatooine/npcs/tusken/tuskenWitchDoctor.lua") 
+ RunCreatureFile("objects/tatooine/npcs/tusken/tuskenWarrior.lua")  
+ RunCreatureFile("objects/tatooine/npcs/tusken/tuskenGuard.lua")   
+ RunCreatureFile("objects/tatooine/npcs/tusken/tuskenSavage.lua") 
  --RunCreatureFile("objects/tatooine/npcs/tusken/tuskenExecutionerRandom.lua")
 
  --Valarian

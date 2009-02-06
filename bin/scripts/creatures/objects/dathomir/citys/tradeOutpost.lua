@@ -304,28 +304,6 @@ dathTradeNpc12 = Creature:new {
 	cellID = 0
 }
 
-dathTradeNpc13 = Creature:new {
-	objectName = "dathTradeNpc13",
-	creatureType = NPC,
-
-	speciesName = "escaped_nightsister_slave",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1812306872,
-	positionX = 595.466,
-	positionY = 3045.35,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.739636,
-	directionW = -0.673007,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 dathTradeNpc14 = Creature:new {
 	objectName = "dathTradeNpc14",
 	creatureType = NPC,

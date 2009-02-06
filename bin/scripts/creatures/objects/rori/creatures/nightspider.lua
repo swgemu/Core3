@@ -40,40 +40,36 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-
-drallSentry = Creature:new {
-	objectName = "drallSentry",  -- Lua Object Name
-	creatureType = "NPC",
-	faction = "drall", 
-	factionPoints = 20,
+nightspider = Creature:new {
+	objectName = "nightspider",  -- Lua Object Name
+	creatureType = "ANIMAL",
 	gender = "",
 
-	name = "Drall sentry",
-	speciesName = "creature_name",
-	stfName = "mob/creature_names", 
-	objectCRC = 3116494340, 
-	socialGroup = "drall",
-	level = 8,
+	speciesName = "nightspider",
+	stfName = "mob/creature_names",
+	objectCRC = 4118742802, 
+	socialGroup = "Nightspider",
+	level = 7,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
-	healthMax = 495,
-	healthMin = 405,
-	strength = 0,
-	constitution = 0,
+	healthMax = 330,
+	healthMin = 270,
+	strength = 500,
+	constitution = 500,
 
-	actionMax = 495,
-	actionMin = 405,
-	quickness = 0,
-	stamina = 0,
+	actionMax = 330,
+	actionMin = 270,
+	quickness = 500,
+	stamina = 500,
 
-	mindMax = 495,
-	mindMin = 405,
-	focus = 0,
-	willpower = 0,
+	mindMax = 330,
+	mindMin = 270,
+	focus = 500,
+	willpower = 500,
 
 	height = 1, -- Size of creature
-	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 0,
 	energy = 0,
 	electricity = 0,
@@ -84,29 +80,32 @@ drallSentry = Creature:new {
 	acid = 0,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 200,
 
 	healer = 0,
 
-	pack = 1,
+	pack = 0,
 	herd = 0,
 	stalker = 0,
 	killer = 0,
 	aggressive = 0,
-	invincible = 0,
+	invincible = 0, 
+
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
-	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 0,
-	weaponMinDamage = 70,
-	weaponMaxDamage = 75,
-	weaponAttackSpeed = 2,
-	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -115,9 +114,9 @@ drallSentry = Creature:new {
 	alternateWeaponEquipped = 0,
 	alternateWeaponMinDamage = 0,
 	alternateWeaponMaxDamage = 0,
-	alternateweaponAttackSpeed = 2,
+	alternateWeaponAttackSpeed = 0,
 	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	alternateweaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
@@ -128,18 +127,18 @@ drallSentry = Creature:new {
 	milk = 0,
 
 	boneType = "",
-	boneMax = 0,
+	boneMax = 20,
 
 	hideType = "",
-	hideMax = 0,
+	hideMax = 20,
 
-	meatType = "",
-	meatMax = 0,
+	meatType = "meat_insect_naboo",
+	meatMax = 60,
 
-	skills = { "drallAttack01" },
-	respawnTimer = 180,
+	skills = { "nightspiderAttack1" },
+	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(drallSentry, 3116494340) -- Add to Global Table
+Creatures:addCreature(nightspider, 4118742802) --  Add to Global Table

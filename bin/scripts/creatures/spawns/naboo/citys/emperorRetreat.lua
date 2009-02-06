@@ -40,46 +40,47 @@
 --this exception also makes it possible to release a modified version
 --which carries forward this exception.
 
-spawnCreatureInCell(corvetteNpc1, 5, 13.050000, 21.000748, -26.070000, 1418886)
-spawnCreatureInCell(corvetteNpc2, 5, 15.350000, 20.000000, -28.000000, 1418886)
-spawnCreatureInCell(corvetteNpc3, 5, 10.550000, 20.000000, -28.000000, 1418886)
-spawnCreatureInCell(corvetteNpc4, 5, -57.250000, 0.200002, -24.059999, 1418884)
-spawnCreatureInCell(corvetteNpc5, 5, -44.015461, 0.200001, -31.585495, 1418884)
-spawnCreatureInCell(corvetteNpc6, 5, -45.790001, 0.200001, -12.500000, 1418879)
-spawnCreatureInCell(corvetteNpc7, 5, 4.980000, 0.200735, -41.820000, 1418876)
-spawnCreatureInCell(corvetteNpc8, 5, 4.000000, 0.200735, -45.299999, 1418876)
-spawnCreatureInCell(corvetteNpc9, 5, 19.290001, 0.200000, -41.959999, 1418875)
-spawnCreatureInCell(corvetteNpc10, 5, 23.127373, 0.200000, -42.530930, 1418875)
-spawnCreatureInCell(corvetteNpc11, 5, 23.830000, 0.200000, -40.419998, 1418875)
-spawnCreatureInCell(corvetteNpc12, 5, 23.625877, 0.200000, -19.098454, 1418874)
-spawnCreatureInCell(corvetteNpc13, 5, 17.000000, 0.200000, -31.000000, 1418874)
-spawnCreatureInCell(corvetteNpc14, 5, 9.000000, 0.200000, -31.000000, 1418874)
+spawnCreatureInCell(palpatine, 5, 13.050000, 21.000748, -26.070000, 1418886)
+ -- spawnCreatureInCell(emperor_royal_guard, 5, 15.350000, 20.000000, -28.000000, 1418886)
+ -- spawnCreatureInCell(emperor_royal_guard, 5, 10.550000, 20.000000, -28.000000, 1418886)
+spawnCreatureInCell(darthVader, 5, -57.250000, 0.200002, -24.059999, 1418884)
+spawnCreatureInCell(corvetteNpc5, 5, -44.015461, 0.200001, -31.585495, 1418884) -- ja_ce_yiaso
+spawnCreatureInCell(corvetteNpc6, 5, -45.790001, 0.200001, -12.500000, 1418879) -- mouse_droid
+spawnCreatureInCell(corvetteNpc7, 5, 4.980000, 0.200735, -41.820000, 1418876) -- lord_hethrir
+spawnCreatureInCell(corvetteNpc8, 5, 4.000000, 0.200735, -45.299999, 1418876) -- ra7_bug_droid
+spawnCreatureInCell(corvetteNpc9, 5, 19.290001, 0.200000, -41.959999, 1418875) -- loam_redge
+spawnCreatureInCell(corvetteNpc10, 5, 23.127373, 0.200000, -42.530930, 1418875) -- vyrke
+spawnCreatureInCell(corvetteNpc11, 5, 23.830000, 0.200000, -40.419998, 1418875) -- mouse_droid
+spawnCreatureInCell(corvetteNpc12, 5, 23.625877, 0.200000, -19.098454, 1418874) -- Lt. Velso
+ -- spawnCreatureInCell(emperor_royal_guard, 5, 17.000000, 0.200000, -31.000000, 1418874)
+ -- spawnCreatureInCell(emperor_royal_guard, 5, 9.000000, 0.200000, -31.000000, 1418874)
 spawnCreatureInCell(imperialStormTrooper, 5, 1.580000, 0.200000, -23.350000, 1418874)
 spawnCreatureInCell(imperialStormTrooper, 5, 3.580000, 0.200000, -23.350000, 1418874)
-spawnCreatureInCell(corvetteNpc17, 5, 12.250561, 0.199998, -24.380045, 1418874)
-spawnCreatureInCell(corvetteNpc18, 5, 33.341969, 0.200000, -35.839436, 1418873)
-spawnCreatureInCell(corvetteNpc19, 5, 2.060000, 0.200000, -13.740000, 1418872)
-spawnCreature(corvetteNpc20, 5, 2444.228271, -3896.671143)
-spawnCreature(corvetteNpc21, 5, 2369.500000, -3922.000000)
-spawnCreature(corvetteNpc22, 5, 2369.000000, -3921.000000)
-spawnCreature(corvetteNpc23, 5, 2447.500000, -3898.000000)
-spawnCreature(corvetteNpc24, 5, 2431.979980, -3887.320068)
-spawnCreature(corvetteNpc25, 5, 2413.233643, -3939.152832)
+spawnCreatureInCell(corvetteNpc17, 5, 12.250561, 0.199998, -24.380045, 1418874) -- mouse_droid
+spawnCreatureInCell(corvetteNpc18, 5, 33.341969, 0.200000, -35.839436, 1418873) -- Wurson Harro
+spawnCreatureInCell(corvetteNpc19, 5, 2.060000, 0.200000, -13.740000, 1418872) -- kaja_orzee
+
+spawnCreature(corvetteNpc20, 5, 2444.228271, -3896.671143) -- fa_zoll
+spawnCreature(corvetteNpc21, 5, 2369.500000, -3922.000000) -- Captain Thrawn
+spawnCreature(corvetteNpc22, 5, 2369.000000, -3921.000000) -- Colonel Veers
+spawnCreature(corvetteNpc23, 5, 2447.500000, -3898.000000) -- DS-602
+spawnCreature(corvetteNpc24, 5, 2431.979980, -3887.320068) -- DS-753
+spawnCreature(corvetteNpc25, 5, 2413.233643, -3939.152832) -- imperial_pilot
 spawnCreature(imperialStormTrooper, 5, 2360.499756, -4102.828613)
-spawnCreature(corvetteNpc27, 5, 2414.937500, -3948.007324)
+spawnCreature(corvetteNpc27, 5, 2414.937500, -3948.007324) -- Lt. Allard Lissara
 spawnCreature(imperialDarkTrooper, 5, 2455.692871, -3947.988281)
 spawnCreature(imperialDarkTrooper, 5, 2456.938477, -3938.957520)
 spawnCreature(imperialAtSt, 5, 2456.068848, -3942.025391)
 spawnCreature(imperialDarkTrooper, 5, 2451.271973, -3930.306396)
 spawnCreature(imperialAtSt, 5, 2440.442627, -3975.220947)
--- spawnCreature(imperialStormTrooperCommando, 5, 2336.182617, -3949.591064)
+spawnCreature(imperialStormTrooperCommando, 5, 2336.182617, -3949.591064)
 spawnCreature(imperialStormTrooper, 5, 2424.980469, -3983.182129)
 spawnCreature(imperialStormTrooper, 5, 2420.632080, -3975.926514)
 spawnCreature(imperialDarkTrooper, 5, 2439.723145, -3939.758545)
 spawnCreature(imperialStormTrooper, 5, 2353.532227, -4099.077637)
 spawnCreature(imperialStormTrooper, 5, 2428.224854, -3970.913818)
--- spawnCreature(imperialStormTrooperCommando, 5, 2347.458252, -3965.700684)
--- spawnCreature(imperialStormTrooperCommando, 5, 2333.002197, -3954.552002)
+spawnCreature(imperialStormTrooperCommando, 5, 2347.458252, -3965.700684)
+spawnCreature(imperialStormTrooperCommando, 5, 2333.002197, -3954.552002)
 spawnCreature(imperialStormTrooper, 5, 2554.135010, -3868.553711)
 spawnCreature(imperialStormTrooper, 5, 2558.774414, -3864.604248)
 spawnCreature(imperialStormTrooper, 5, 2563.118164, -3859.051758)
