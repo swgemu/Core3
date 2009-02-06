@@ -106,6 +106,50 @@ vreniNpc3 = Creature:new {
 	cellID = 0
 }
 
+vreniNpc4 = Creature:new {
+	objectName = "vreniNpc4",
+	creatureType = NPC,
+
+	speciesName = "crackdown_rebel_command_security_guard",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 2578460775,
+	positionX = -5501.09,
+	positionY = -6128.22,
+	positionZ = 23.4,
+
+	directionX = 0,
+	directionZ = 0,
+	directionY = 0.947864,
+	directionW = 0.318674,
+	randomMovement = 0,
+	mood = "",
+	cellID = 0
+}
+
+vreniNpc5 = Creature:new {
+	objectName = "vreniNpc5",
+	creatureType = NPC,
+
+	speciesName = "crackdown_rebel_guardsman",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 3356992038,
+	positionX = -5538.4,
+	positionY = -6054.7,
+	positionZ = 16.4902,
+
+	directionX = 0,
+	directionZ = 0,
+	directionY = 0.999848,
+	directionW = -0.0174524,
+	randomMovement = 0,
+	mood = "",
+	cellID = 0
+}
+
 vreniNpc8 = Creature:new {
 	objectName = "vreniNpc8",
 	creatureType = NPC,
@@ -194,6 +238,28 @@ vreniNpc11 = Creature:new {
 	cellID = 0
 }
 
+vreniNpc12 = Creature:new {
+	objectName = "vreniNpc12",
+	creatureType = NPC,
+
+	speciesName = "crackdown_rebel_cadet",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 340310318,
+	positionX = -5568.4,
+	positionY = -6199.11,
+	positionZ = 23.4,
+
+	directionX = 0,
+	directionZ = 0,
+	directionY = 0.708656,
+	directionW = 0.705554,
+	randomMovement = 0,
+	mood = "calm",
+	cellID = 0
+}
+
 vreniNpc13 = Creature:new {
 	objectName = "vreniNpc13",
 	creatureType = NPC,
@@ -213,6 +279,72 @@ vreniNpc13 = Creature:new {
 	directionW = 0.0032577,
 	randomMovement = 0,
 	mood = "calm",
+	cellID = 0
+}
+
+vreniNpc14 = Creature:new {
+	objectName = "vreniNpc14",
+	creatureType = NPC,
+
+	speciesName = "crackdown_rebel_comm_operator",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 2445061765,
+	positionX = -5582.42,
+	positionY = -6199.06,
+	positionZ = 23.4,
+
+	directionX = 0,
+	directionZ = 0,
+	directionY = 0.708528,
+	directionW = 0.705683,
+	randomMovement = 0,
+	mood = "calm",
+	cellID = 0
+}
+
+vreniNpc15 = Creature:new {
+	objectName = "vreniNpc15",
+	creatureType = NPC,
+
+	speciesName = "crackdown_rebel_soldier",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 1035675155,
+	positionX = -5664,
+	positionY = -6179.3,
+	positionZ = 14.6,
+
+	directionX = 0,
+	directionZ = 0,
+	directionY = 0.731354,
+	directionW = 0.681998,
+	randomMovement = 0,
+	mood = "",
+	cellID = 0
+}
+
+vreniNpc16 = Creature:new {
+	objectName = "vreniNpc16",
+	creatureType = NPC,
+
+	speciesName = "crackdown_rebel_guardsman",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 3630957150,
+	positionX = -5664,
+	positionY = -6185.3,
+	positionZ = 14.7566,
+
+	directionX = 0,
+	directionZ = 0,
+	directionY = 0.731354,
+	directionW = 0.681998,
+	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -257,6 +389,72 @@ vreniNpc18 = Creature:new {
 	directionW = -0.391332,
 	randomMovement = 0,
 	mood = "calm",
+	cellID = 0
+}
+
+vreniNpc19 = Creature:new {
+	objectName = "vreniNpc19",
+	creatureType = NPC,
+
+	speciesName = "crackdown_rebel_liberator",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 3172332319,
+	positionX = -5549.5,
+	positionY = -6202.1,
+	positionZ = 23.4,
+
+	directionX = 0,
+	directionZ = 0,
+	directionY = -0.422618,
+	directionW = 0.906308,
+	randomMovement = 0,
+	mood = "",
+	cellID = 0
+}
+
+vreniNpc20 = Creature:new {
+	objectName = "vreniNpc20",
+	creatureType = NPC,
+
+	speciesName = "crackdown_rebel_liberator",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 3172332319,
+	positionX = -5716.1,
+	positionY = -6147.5,
+	positionZ = 14.6,
+
+	directionX = 0,
+	directionZ = 0,
+	directionY = -0.700909,
+	directionW = 0.71325,
+	randomMovement = 0,
+	mood = "",
+	cellID = 0
+}
+
+vreniNpc21 = Creature:new {
+	objectName = "vreniNpc21",
+	creatureType = NPC,
+
+	speciesName = "crackdown_rebel_soldier",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 3356992038,
+	positionX = -5716.1,
+	positionY = -6153.1,
+	positionZ = 14.6,
+
+	directionX = 0,
+	directionZ = 0,
+	directionY = 0.71325,
+	directionW = -0.700909,
+	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -414,6 +612,50 @@ vreniNpc30 = Creature:new {
 	cellID = 0
 }
 
+vreniNpc31 = Creature:new {
+	objectName = "vreniNpc31",
+	creatureType = NPC,
+
+	speciesName = "crackdown_rebel_guardsman",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 3172332319,
+	positionX = -5429.8,
+	positionY = -6218.9,
+	positionZ = 24,
+
+	directionX = 0,
+	directionZ = 0,
+	directionY = 0,
+	directionW = 1,
+	randomMovement = 0,
+	mood = "",
+	cellID = 0
+}
+
+vreniNpc32 = Creature:new {
+	objectName = "vreniNpc32",
+	creatureType = NPC,
+
+	speciesName = "crackdown_rebel_soldier",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 1094091104,
+	positionX = -5443.6,
+	positionY = -6243,
+	positionZ = 24,
+
+	directionX = 0,
+	directionZ = 0,
+	directionY = -0.62932,
+	directionW = 0.777146,
+	randomMovement = 0,
+	mood = "",
+	cellID = 0
+}
+
 vreniNpc33 = Creature:new {
 	objectName = "vreniNpc33",
 	creatureType = NPC,
@@ -456,6 +698,50 @@ vreniNpc34 = Creature:new {
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 2775419
+}
+
+vreniNpc36 = Creature:new {
+	objectName = "vreniNpc36",
+	creatureType = NPC,
+
+	speciesName = "corsec_inspector_sergeant",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 3750712439,
+	positionX = 24.9055,
+	positionY = 5.31569,
+	positionZ = 1.28309,
+
+	directionX = 2.70973e-07,
+	directionZ = 3.12469e-11,
+	directionY = -0.000115314,
+	directionW = 1,
+	randomMovement = 0,
+	mood = "conversation",
+	cellID = 2775414
+}
+
+vreniNpc37 = Creature:new {
+	objectName = "vreniNpc37",
+	creatureType = NPC,
+
+	speciesName = "corsec_investigator",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 3750712439,
+	positionX = 9.49578,
+	positionY = 10.5511,
+	positionZ = 1.00001,
+
+	directionX = -5.30446e-09,
+	directionZ = 3.09346e-07,
+	directionY = 0.999853,
+	directionW = 0.0171448,
+	randomMovement = 0,
+	mood = "conversation",
+	cellID = 2775413
 }
 
 vreniNpc38 = Creature:new {
@@ -524,6 +810,28 @@ vreniNpc40 = Creature:new {
 	cellID = 0
 }
 
+vreniNpc41 = Creature:new {
+	objectName = "vreniNpc41",
+	creatureType = NPC,
+
+	speciesName = "crackdown_rebel_guard_captain",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 2297961472,
+	positionX = -5411.4,
+	positionY = -6219.3,
+	positionZ = 24.9599,
+
+	directionX = 0,
+	directionZ = 0,
+	directionY = 0.0436193,
+	directionW = 0.999048,
+	randomMovement = 0,
+	mood = "",
+	cellID = 0
+}
+
 vreniNpc42 = Creature:new {
 	objectName = "vreniNpc42",
 	creatureType = NPC,
@@ -543,6 +851,28 @@ vreniNpc42 = Creature:new {
 	directionW = 0.512379,
 	randomMovement = 0,
 	mood = "calm",
+	cellID = 0
+}
+
+vreniNpc43 = Creature:new {
+	objectName = "vreniNpc43",
+	creatureType = NPC,
+
+	speciesName = "crackdown_rebel_soldier",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 3630957150,
+	positionX = -5320,
+	positionY = -6237.8,
+	positionZ = 24,
+
+	directionX = 0,
+	directionZ = 0,
+	directionY = 0.731354,
+	directionW = 0.681998,
+	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -567,3 +897,4 @@ vreniNpc44 = Creature:new {
 	mood = "calm",
 	cellID = 0
 }
+
