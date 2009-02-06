@@ -135,3 +135,6 @@
  RunCreatureFile("objects/tatooine/npcs/weequay/weequaySoldier.lua")
  RunCreatureFile("objects/tatooine/npcs/weequay/weequayThug.lua")
  RunCreatureFile("objects/tatooine/npcs/weequay/weequayZealot.lua")
+ 
+ -- Misc NPCS
+ RunCreatureFile("objects/tatooine/npcs/questHeroOfTatooineHermit.lua")
