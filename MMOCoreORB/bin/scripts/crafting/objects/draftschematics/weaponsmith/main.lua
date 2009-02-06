@@ -44,7 +44,7 @@
 -- Weaponsmith
 
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/noviceWeaponsmith/blasterpistolBarrel.lua")
-RunDraftSchematicFile("objects/draftschematics/weaponsmith/noviceWeaponsmith/blasterpowerHandler.lua")
+RunDraftSchematicFile("objects/draftschematics/weaponsmith/noviceWeaponsmith/blasterpowerhandler.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/noviceWeaponsmith/d18Pistol.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/noviceWeaponsmith/weaponScope.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/noviceWeaponsmith/bladeVibroUnit.lua")
@@ -96,7 +96,7 @@ RunDraftSchematicFile("objects/draftschematics/weaponsmith/expertFirearmsCraftin
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/expertFirearmsCrafting/dh17Pistol.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/expertFirearmsCrafting/e11Carbine.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/expertFirearmsCrafting/e11Rifle.lua")
-RunDraftSchematicFile("objects/draftschematics/weaponsmith/expertFirearmsCrafting/power5pistol.lua")
+RunDraftSchematicFile("objects/draftschematics/weaponsmith/expertFirearmsCrafting/power5Pistol.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/expertFirearmsCrafting/launcherPistol.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/expertFirearmsCrafting/scatterPistol.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/expertFirearmsCrafting/sg82Rifle.lua")
