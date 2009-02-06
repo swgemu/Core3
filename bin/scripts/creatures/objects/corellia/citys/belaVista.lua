@@ -62,6 +62,28 @@ belavistNpc1 = Creature:new {
 	cellID = 0
 }
 
+belavistNpc2 = Creature:new {
+	objectName = "belavistNpc2",
+	creatureType = NPC,
+
+	speciesName = "crackdown_imperial_noncom",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 3423844128,
+	positionX = 6663.8,
+	positionY = -5913.3,
+	positionZ = 330,
+
+	directionX = 0,
+	directionZ = 0,
+	directionY = 0.920505,
+	directionW = 0.390731,
+	randomMovement = 0,
+	mood = "",
+	cellID = 0
+}
+
 belavistNpc10 = Creature:new {
 	objectName = "belavistNpc10",
 	creatureType = NPC,
@@ -84,6 +106,72 @@ belavistNpc10 = Creature:new {
 	cellID = 0
 }
 
+belavistNpc15 = Creature:new {
+	objectName = "belavistNpc15",
+	creatureType = NPC,
+
+	speciesName = "corsec_trooper",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 3630538207,
+	positionX = 6735,
+	positionY = -5806.36,
+	positionZ = 315,
+
+	directionX = 0,
+	directionZ = 0,
+	directionY = 0.285802,
+	directionW = 0.958289,
+	randomMovement = 0,
+	mood = "",
+	cellID = 0
+}
+
+belavistNpc16 = Creature:new {
+	objectName = "belavistNpc16",
+	creatureType = NPC,
+
+	speciesName = "corsec_trooper",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 3630538207,
+	positionX = 6735,
+	positionY = -5806.36,
+	positionZ = 315,
+
+	directionX = 0,
+	directionZ = 0,
+	directionY = 0.0463163,
+	directionW = 0.998927,
+	randomMovement = 0,
+	mood = "",
+	cellID = 0
+}
+
+belavistNpc18 = Creature:new {
+	objectName = "belavistNpc18",
+	creatureType = NPC,
+
+	speciesName = "crackdown_specialist_noncom",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 519244536,
+	positionX = 6830.18,
+	positionY = -5816.91,
+	positionZ = 314.823,
+
+	directionX = -0,
+	directionZ = 0,
+	directionY = 0.998048,
+	directionW = -0.0624524,
+	randomMovement = 0,
+	mood = "npc_imperial",
+	cellID = 0
+}
+
 belavistNpc19 = Creature:new {
 	objectName = "belavistNpc19",
 	creatureType = NPC,
@@ -103,6 +191,28 @@ belavistNpc19 = Creature:new {
 	directionW = 0.939396,
 	randomMovement = 0,
 	mood = "calm",
+	cellID = 0
+}
+
+belavistNpc22 = Creature:new {
+	objectName = "belavistNpc22",
+	creatureType = NPC,
+
+	speciesName = "crackdown_scout_trooper",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 2303490976,
+	positionX = 6832.36,
+	positionY = -5811.93,
+	positionZ = 314.758,
+
+	directionX = 0,
+	directionZ = 0,
+	directionY = -0.403991,
+	directionW = 0.914763,
+	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -480,6 +590,28 @@ belavistNpc42 = Creature:new {
 	cellID = 0
 }
 
+belavistNpc43 = Creature:new {
+	objectName = "belavistNpc43",
+	creatureType = NPC,
+
+	speciesName = "corsec_trooper",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 3630538207,
+	positionX = 6846.25,
+	positionY = -5789.3,
+	positionZ = 317.5,
+
+	directionX = 0,
+	directionZ = 0,
+	directionY = 0.958923,
+	directionW = 0.283666,
+	randomMovement = 0,
+	mood = "",
+	cellID = 0
+}
+
 belavistNpc44 = Creature:new {
 	objectName = "belavistNpc44",
 	creatureType = NPC,
@@ -612,6 +744,28 @@ belavistNpc54 = Creature:new {
 	cellID = 0
 }
 
+belavistNpc55 = Creature:new {
+	objectName = "belavistNpc55",
+	creatureType = NPC,
+
+	speciesName = "corsec_trooper",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 3630538207,
+	positionX = 6775.44,
+	positionY = -5690.23,
+	positionZ = 315,
+
+	directionX = 0,
+	directionZ = 0,
+	directionY = 0.528572,
+	directionW = 0.848888,
+	randomMovement = 0,
+	mood = "",
+	cellID = 0
+}
+
 belavistNpc56 = Creature:new {
 	objectName = "belavistNpc56",
 	creatureType = NPC,
@@ -698,6 +852,28 @@ belavistNpc61 = Creature:new {
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 2365769
+}
+
+belavistNpc62 = Creature:new {
+	objectName = "belavistNpc62",
+	creatureType = NPC,
+
+	speciesName = "crackdown_dark_trooper",
+	combatFlags = 0,
+	creatureBitmask = 264,
+	stfName = "mob/creature_names",
+	objectCRC = 1312348723,
+	positionX = 6749.3,
+	positionY = -5684,
+	positionZ = 315,
+
+	directionX = 0,
+	directionZ = 0,
+	directionY = 0.902585,
+	directionW = -0.430511,
+	randomMovement = 0,
+	mood = "",
+	cellID = 0
 }
 
 belavistNpc63 = Creature:new {
@@ -919,3 +1095,4 @@ belavistNpc79 = Creature:new {
 	mood = "calm",
 	cellID = 0
 }
+
