@@ -44,7 +44,7 @@
 -- Weaponsmith
 
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/noviceWeaponsmith/blasterpistolBarrel.lua")
-RunDraftSchematicFile("objects/draftschematics/weaponsmith/noviceWeaponsmith/blasterpowerhandler.lua")
+RunDraftSchematicFile("objects/draftschematics/weaponsmith/noviceWeaponsmith/blasterPowerhandler.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/noviceWeaponsmith/d18Pistol.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/noviceWeaponsmith/weaponScope.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/noviceWeaponsmith/bladeVibroUnit.lua")
