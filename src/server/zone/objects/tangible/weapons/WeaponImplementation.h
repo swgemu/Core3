@@ -203,6 +203,8 @@ public:
 
 	void parseItemAttributes();
 
+	void updateCraftingValues(DraftSchematic* draftSchematic);
+
 	void sendTo(Player* player, bool doClose = true);
 
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);

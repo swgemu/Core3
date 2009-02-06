@@ -41,30 +41,30 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-cdefRifle = Object:new {
+e11Carbine = Object:new {
 
-   objectName = "CDEF Rifle",
-   stfName = "rifle_cdef",
-   objectCRC = 3598018363,
-   groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
+   objectName = "E11 Carbine",
+   stfName = "carbine_e11",
+   objectCRC = 24679666,
+   groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
-   complexity = 8, 
+   complexity = 22, 
    size = 3, 
 
-   xpType = "crafting_general", 
-   xp = 42, 
+   xpType = "crafting_weapons_general", 
+   xp = 140, 
 
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
 
-   ingredientTemplateNames = "craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n",
-   ingredientTitleNames = "frame_assembly, receiver_assembly, grip_assembly",
-   ingredientSlotType = "0, 0, 0",
-   resourceTypes = "metal, chemical, metal",
-   resourceQuantities = "12, 6, 3",
-   combineTypes = "0, 0, 0",
-   contribution = "100, 100, 100",
+   ingredientTemplateNames = "craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n",
+   ingredientTitleNames = "frame_assembly, receiver_assembly, grip_assembly, powerhandler, barrel, scope, stock",
+   ingredientSlotType = "0, 0, 0, 2, 2, 4, 4",
+   resourceTypes = "iron_plumbum, metal_ferrous, metal, object/tangible/component/weapon/shared_blaster_power_handler.iff, object/tangible/component/weapon/shared_blaster_rifle_barrel.iff, object/tangible/component/weapon/shared_scope_weapon.iff, object/tangible/component/weapon/shared_stock.iff",
+   resourceQuantities = "40, 20, 9, 1, 1, 1, 1",
+   combineTypes = "0, 0, 0, 1, 1, 1, 1",
+   contribution = "100, 100, 100, 100, 100, 100, 100",
 
    numberExperimentalProperties = "1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2",
    experimentalProperties = "XX, XX, CD, OQ, CD, OQ, CD, OQ, CD, OQ, CD, OQ, CD, OQ, XX, XX, XX, CD, OQ, CD, OQ, CD, OQ, CD, OQ",
@@ -72,15 +72,15 @@ cdefRifle = Object:new {
    experimentalGroupTitles = "null, null, expDamage, expDamage, expDamage, expDamage, expEffeciency, exp_durability, null, null, null, expRange, expEffeciency, expEffeciency, expEffeciency",
 
    experimentalSubGroupTitles = "null, null, mindamage, maxdamage, attackspeed, woundchance, roundsused, hitpoints, zerorangemod, maxrangemod, midrange, midrangemod, attackhealthcost, attackactioncost, attackmindcost",
-   experimentalMin = "0, 0, 17, 35, 4.6, 4, 5, 750, 0, -80, 35, 35, 10, 22, 10",
-   experimentalMax = "0, 0, 32, 65, 3.2, 5, 20, 1500, 0, -80, 35, 65, 7, 15, 7",
+   experimentalMin = "0, 0, 28, 67, 4.3, 7, 15, 750, -40, -80, 30, -5, 33, 42, 20",
+   experimentalMax = "0, 0, 52, 124, 3, 13, 45, 1500, -40, -80, 30, 5, 18, 22, 11",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131084:objectcrc=3496137221:objecttemp=rifle_cdef:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=2;:",
+   tanoAttributes = "objecttype=131083:objectcrc=3034123480:objecttemp=carbine_e11:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=2;:",
    customizationOptions = "",
    customizationDefaults = "",
-   customizationSkill = "clothing_customization"
+   customizationSkill = "weapon_customization"
 
 }
 
-DraftSchematics:addDraftSchematic(cdefRifle, 3598018363)--- Add to global DraftSchematics table
+DraftSchematics:addDraftSchematic(e11Carbine, 24679666)--- Add to global DraftSchematics table

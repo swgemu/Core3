@@ -41,46 +41,46 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-cdefRifle = Object:new {
+vibroLance = Object:new {
 
-   objectName = "CDEF Rifle",
-   stfName = "rifle_cdef",
-   objectCRC = 3598018363,
-   groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
+   objectName = "Vibro Lance",
+   stfName = "lance_vibrolance",
+   objectCRC = 2399536859,
+   groupName = "craftWeaponMeleeGroupE", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
-   complexity = 8, 
-   size = 3, 
+   complexity = 30, 
+   size = 4, 
 
-   xpType = "crafting_general", 
-   xp = 42, 
+   xpType = "crafting_weapons_general", 
+   xp = 130, 
 
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
 
-   ingredientTemplateNames = "craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n",
-   ingredientTitleNames = "frame_assembly, receiver_assembly, grip_assembly",
-   ingredientSlotType = "0, 0, 0",
-   resourceTypes = "metal, chemical, metal",
-   resourceQuantities = "12, 6, 3",
-   combineTypes = "0, 0, 0",
-   contribution = "100, 100, 100",
+   ingredientTemplateNames = "craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n",
+   ingredientTitleNames = "lance_shaft, vibro_unit_and_power_cell_brackets, grip, vibration_generator",
+   ingredientSlotType = "0, 0, 0, 1",
+   resourceTypes = "steel_ditanium, copper_polysteel, metal, object/tangible/component/weapon/shared_vibro_unit.iff",
+   resourceQuantities = "24, 17, 6, 2",
+   combineTypes = "0, 0, 0, 1",
+   contribution = "100, 100, 100, 100",
 
-   numberExperimentalProperties = "1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2",
-   experimentalProperties = "XX, XX, CD, OQ, CD, OQ, CD, OQ, CD, OQ, CD, OQ, CD, OQ, XX, XX, XX, CD, OQ, CD, OQ, CD, OQ, CD, OQ",
-   experimentalWeights = "1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1",
-   experimentalGroupTitles = "null, null, expDamage, expDamage, expDamage, expDamage, expEffeciency, exp_durability, null, null, null, expRange, expEffeciency, expEffeciency, expEffeciency",
+   numberExperimentalProperties = "1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1",
+   experimentalProperties = "XX, XX, SR, SR, SR, SR, SR, SR, SR, XX, SR, XX, SR, SR, SR",
+   experimentalWeights = "1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1",
+   experimentalGroupTitles = "null, null, expDamage, expDamage, expDamage, expDamage, exp_durability, expRange, expRange, null, expRange, null, expEffeciency, expEffeciency, expEffeciency",
 
-   experimentalSubGroupTitles = "null, null, mindamage, maxdamage, attackspeed, woundchance, roundsused, hitpoints, zerorangemod, maxrangemod, midrange, midrangemod, attackhealthcost, attackactioncost, attackmindcost",
-   experimentalMin = "0, 0, 17, 35, 4.6, 4, 5, 750, 0, -80, 35, 35, 10, 22, 10",
-   experimentalMax = "0, 0, 32, 65, 3.2, 5, 20, 1500, 0, -80, 35, 65, 7, 15, 7",
+   experimentalSubGroupTitles = "null, null, mindamage, maxdamage, attackspeed, woundchance, hitpoints, zerorangemod, maxrangemod, midrange, midrangemod, maxrange, attackhealthcost, attackactioncost, attackmindcost",
+   experimentalMin = "0, 0, 42, 154, 5.9, 14, 750, -24, -24, 3, -24, 5, 59, 78, 29",
+   experimentalMax = "0, 0, 78, 286, 4, 26, 1500, 0, 0, 3, 0, 5, 32, 43, 15",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131084:objectcrc=3496137221:objecttemp=rifle_cdef:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=2;:",
+   tanoAttributes = "objecttype=131081:objectcrc=22784428:objecttemp=lance_vibrolance:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=2;:",
    customizationOptions = "",
    customizationDefaults = "",
-   customizationSkill = "clothing_customization"
+   customizationSkill = "weapon_customization"
 
 }
 
-DraftSchematics:addDraftSchematic(cdefRifle, 3598018363)--- Add to global DraftSchematics table
+DraftSchematics:addDraftSchematic(vibroLance, 2399536859)--- Add to global DraftSchematics table

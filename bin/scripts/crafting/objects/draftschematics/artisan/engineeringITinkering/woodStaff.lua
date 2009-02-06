@@ -72,11 +72,11 @@ woodStaff = Object:new {
    experimentalGroupTitles = "null, null, expDamage, expDamage, expDamage, expDamage, exp_durability, expRange, expRange, null, expRange, null, expEffeciency, expEffeciency, expEffeciency",
 
    experimentalSubGroupTitles = "null, null, mindamage, maxdamage, attackspeed, woundchance, hitpoints, zerorangemod, maxrangemod, midrange, midrangemod, maxrange, attackhealthcost, attackactioncost, attackmindcost",
-   experimentalMin = "0, 0, 25, 56, 58, 3, 750, 14, 14, 3, 14, 5, 20, 49, 20",
-   experimentalMax = "0, 0, 46, 104, 40, 7, 1500, 26, 26, 3, 26, 1482184792, 11, 27, 11",
+   experimentalMin = "0, 0, 25, 56, 5.8, 3, 750, 14, 14, 3, 14, 5, 20, 49, 20",
+   experimentalMax = "0, 0, 46, 104, 4, 7, 1500, 26, 26, 3, 26, 5, 11, 27, 11",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131081:objectcrc=1200142292:objecttemp=lance_staff_wood_s1:templatetype=weapon_name:itemmask=65535:",
+   tanoAttributes = "objecttype=131081:objectcrc=1200142292:objecttemp=lance_staff_wood_s1:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=1;:",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

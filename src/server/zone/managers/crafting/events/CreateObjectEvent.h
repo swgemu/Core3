@@ -113,6 +113,7 @@ public:
 			} else {
 
 				//TEMPORARY CODE TO CREATE FACTORY CRATES FOR TESTING PURPOSES
+				tano->setOptionsBitmask(8192);
 				ChatSystemMessage* sysMessage = new ChatSystemMessage("system_msg", "prototype_transferred");
 				player->sendMessage(sysMessage);
 

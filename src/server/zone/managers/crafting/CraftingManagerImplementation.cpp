@@ -1332,7 +1332,7 @@ void CraftingManagerImplementation::createPrototype(Player* player, String count
 				//comment this next line if you are making factory crates instead
 				createObjectInInventory(player, draftSchematic->getComplexity() * 2, true);
 
-				workingTano->setOptionsBitmask(8192);
+				//workingTano->setOptionsBitmask(8192);
 
 				// This is an item mask test below - It cycles through the item masks - for testing
 				/*createObjectInInventory(player, 1, true);

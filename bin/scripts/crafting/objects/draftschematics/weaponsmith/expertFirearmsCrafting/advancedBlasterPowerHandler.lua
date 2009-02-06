@@ -41,46 +41,46 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-cdefRifle = Object:new {
+advancedBlasterPowerHandler = Object:new {
 
-   objectName = "CDEF Rifle",
-   stfName = "rifle_cdef",
-   objectCRC = 3598018363,
-   groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
+   objectName = "Advanced Blaster Power Handler",
+   stfName = "blaster_power_handler_advanced",
+   objectCRC = 669027229,
+   groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
-   complexity = 8, 
+   complexity = 20, 
    size = 3, 
 
-   xpType = "crafting_general", 
-   xp = 42, 
+   xpType = "crafting_weapons_general", 
+   xp = 50, 
 
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
 
-   ingredientTemplateNames = "craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n",
-   ingredientTitleNames = "frame_assembly, receiver_assembly, grip_assembly",
-   ingredientSlotType = "0, 0, 0",
-   resourceTypes = "metal, chemical, metal",
-   resourceQuantities = "12, 6, 3",
-   combineTypes = "0, 0, 0",
-   contribution = "100, 100, 100",
+   ingredientTemplateNames = "craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n",
+   ingredientTitleNames = "module_assembly, xciter_circuitry, circuitry_substrate, gas_containment_unit, reactant_source, weapon_enhancement",
+   ingredientSlotType = "0, 0, 0, 0, 0, 4",
+   resourceTypes = "petrochem_inert_polymer, copper_diatium, ore_carbonate_ostrine, aluminum_phrik, gas_reactive_irolunn, object/tangible/component/weapon/shared_base_blaster_power_handler_enhancement.iff",
+   resourceQuantities = "10, 5, 5, 8, 16, 1",
+   combineTypes = "0, 0, 0, 0, 0, 1",
+   contribution = "100, 100, 100, 100, 100, 100",
 
-   numberExperimentalProperties = "1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2",
-   experimentalProperties = "XX, XX, CD, OQ, CD, OQ, CD, OQ, CD, OQ, CD, OQ, CD, OQ, XX, XX, XX, CD, OQ, CD, OQ, CD, OQ, CD, OQ",
-   experimentalWeights = "1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1",
-   experimentalGroupTitles = "null, null, expDamage, expDamage, expDamage, expDamage, expEffeciency, exp_durability, null, null, null, expRange, expEffeciency, expEffeciency, expEffeciency",
+   numberExperimentalProperties = "1, 1, 2, 2, 2, 2",
+   experimentalProperties = "XX, XX, CD, OQ, CD, OQ, CD, OQ, CD, OQ",
+   experimentalWeights = "1, 1, 2, 1, 2, 1, 2, 1, 2, 1",
+   experimentalGroupTitles = "null, null, expDamage, expDamage, expDamage, exp_durability",
 
-   experimentalSubGroupTitles = "null, null, mindamage, maxdamage, attackspeed, woundchance, roundsused, hitpoints, zerorangemod, maxrangemod, midrange, midrangemod, attackhealthcost, attackactioncost, attackmindcost",
-   experimentalMin = "0, 0, 17, 35, 4.6, 4, 5, 750, 0, -80, 35, 35, 10, 22, 10",
-   experimentalMax = "0, 0, 32, 65, 3.2, 5, 20, 1500, 0, -80, 35, 65, 7, 15, 7",
-   experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
+   experimentalSubGroupTitles = "null, null, mindamage, maxdamage, attackspeed, hitpoints",
+   experimentalMin = "0, 0, 1, 1, 0, 10",
+   experimentalMax = "0, 0, 25, 50, -0.5, 100",
+   experimentalPrecision = "0, 0, 0, 0, 1, 0",
 
-   tanoAttributes = "objecttype=131084:objectcrc=3496137221:objecttemp=rifle_cdef:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=2;:",
+   tanoAttributes = "objecttype=262155:objectcrc=1426378303:objecttemp=blaster_power_handler_advanced:templatetype=craft_weapon_ingredients_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
-   customizationSkill = "clothing_customization"
+   customizationSkill = "weapon_customization"
 
 }
 
-DraftSchematics:addDraftSchematic(cdefRifle, 3598018363)--- Add to global DraftSchematics table
+DraftSchematics:addDraftSchematic(advancedBlasterPowerHandler, 669027229)--- Add to global DraftSchematics table
