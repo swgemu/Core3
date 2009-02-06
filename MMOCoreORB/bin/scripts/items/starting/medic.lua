@@ -47,7 +47,7 @@ medic_humanoid_male_items = {casualShoes, sleevelessJacket, workSlacks, reinforc
 
 --------------------------Female Humanoid Items---------------------------
 
-medic_humanoid_female_items = {hideBoots, reinforcedJumpsuit}
+medic_humanoid_female_items = {hideBoots, reinforcedJumpSuit}
 
 --------------------------Male Trandoshan Items---------------------------
 
