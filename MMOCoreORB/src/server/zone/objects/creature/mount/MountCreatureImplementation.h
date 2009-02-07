@@ -123,6 +123,8 @@ public:
 		return conditionDamage >= maxCondition;
 	}
 
+	void die();
+
 	inline int getMountType() {
 		return mountType;
 	}

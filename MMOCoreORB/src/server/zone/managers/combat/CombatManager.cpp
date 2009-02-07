@@ -60,6 +60,8 @@ which carries forward this exception.
 
 #include "../loot/LootManager.h"
 
+#include "../../objects/creature/mount/MountCreature.h"
+
 CombatManager::CombatManager(ZoneProcessServerImplementation* srv) {
 	server = srv;
 }
@@ -112,6 +114,30 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 		if (creature->isPlayer())
 			((Player*)creature)->sendSystemMessage("You cannot attack an immune player.");
 		return 0.0f;
+	}
+
+	//If the target is a mount, make it attackable (and only then) if the owner is attackable
+	if (target->isNonPlayerCreature() && ((Creature*)target)->isMount()) {
+		try {
+			target->wlock(creature);
+
+			MountCreature* mount = (MountCreature*) target;
+			CreatureObject* linkCreo = mount->getLinkedCreature();
+
+			if (!linkCreo->isAttackableBy(creature)) {
+				target->unlock();
+				return false;
+			}
+
+			handleMountDamage(creature, mount);
+
+			target->unlock();
+			return 0.0f;
+
+		} catch (...) {
+			target->unlock();
+			System::out << "Exception in CombatManager::doTargetSkill(CommandQueueAction* action)\n";
+		}
 	}
 
 	if (creature->isWatching() && !tskill->isHealSkill())
@@ -461,7 +487,12 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* tar
 		else
 			attacker->setDefender(target);
 
-		target->addDefender(attacker);
+		//Farmer find note
+		//No defender for bare metal vehicles (but for pets)
+		if ( !targetCreature->isMount() && ((MountCreature*) targetCreature)->isVehicle())
+			target->addDefender(attacker);
+
+
 		attacker->clearState(CreatureState::PEACE);
 
 		int damage = skill->doSkill(attacker, target, modifier, false);
@@ -473,8 +504,12 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* tar
 
 			skill->calculateStates(attacker, targetCreature);
 
-			if(targetCreature->isNonPlayerCreature())
-				targetCreature->doAttack(attacker, damage);
+			//Farmer find note
+			//bare metal vehicles shouldn't fight back - but pets should
+			if(targetCreature->isNonPlayerCreature()) {
+				if ( !targetCreature->isMount() && ((MountCreature*) targetCreature)->isVehicle())
+					targetCreature->doAttack(attacker, damage);
+			}
 
 			targetCreature->activateRecovery();
 		} else {
@@ -1214,165 +1249,197 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 	return MAX(weaponSpeed, 1.0f);
 }
 
-	float CombatManager::calculateHealSpeed(CreatureObject* creature, TargetSkill* tskill) {
-		// Heals use an event for the timings.  However the combat queue needs timing for next action
-		return tskill->calculateSpeed(creature);
+float CombatManager::calculateHealSpeed(CreatureObject* creature, TargetSkill* tskill) {
+	// Heals use an event for the timings.  However the combat queue needs timing for next action
+	return tskill->calculateSpeed(creature);
+}
+
+void CombatManager::calculateStates(CreatureObject* creature, CreatureObject* targetCreature, AttackTargetSkill* tskill) {
+	// TODO: None of these equations seem correct except intimidate
+	int chance = 0;
+	if ((chance = tskill->getKnockdownChance()) > 0)
+		checkKnockDown(creature, targetCreature, chance);
+	if ((chance = tskill->getPostureDownChance()) > 0)
+		checkPostureDown(creature, targetCreature, chance);
+	if ((chance = tskill->getPostureUpChance()) > 0)
+		checkPostureUp(creature, targetCreature, chance);
+
+	if (tskill->getDizzyChance() != 0) {
+		float targetDefense = targetCreature->getSkillMod("dizzy_defense");
+		targetDefense -= (targetDefense * targetCreature->calculateBFRatio());
+
+		if (targetDefense > 125)
+			targetDefense = 125;
+
+		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
+
+		if (System::random(100) <= hitChanceEquation(0.0f, 0.0f, targetDefense, defenseBonus))
+			targetCreature->setDizziedState();
 	}
 
-	void CombatManager::calculateStates(CreatureObject* creature, CreatureObject* targetCreature, AttackTargetSkill* tskill) {
-		// TODO: None of these equations seem correct except intimidate
-		int chance = 0;
-		if ((chance = tskill->getKnockdownChance()) > 0)
-			checkKnockDown(creature, targetCreature, chance);
-		if ((chance = tskill->getPostureDownChance()) > 0)
-			checkPostureDown(creature, targetCreature, chance);
-		if ((chance = tskill->getPostureUpChance()) > 0)
-			checkPostureUp(creature, targetCreature, chance);
+	if (tskill->getBlindChance() != 0) {
+		float targetDefense = targetCreature->getSkillMod("blind_defense");
+		targetDefense -= (targetDefense * targetCreature->calculateBFRatio());
 
-		if (tskill->getDizzyChance() != 0) {
-			float targetDefense = targetCreature->getSkillMod("dizzy_defense");
-			targetDefense -= (targetDefense * targetCreature->calculateBFRatio());
+		if (targetDefense > 125)
+			targetDefense = 125;
 
-			if (targetDefense > 125)
-				targetDefense = 125;
+		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
 
-			float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
+		if (System::random(100) <= hitChanceEquation(0.0f, 0.0f, targetDefense, defenseBonus))
+			targetCreature->setBlindedState();
+	}
 
+	if (tskill->getStunChance() != 0) {
+		int targetDefense = targetCreature->getSkillMod("stun_defense");
+		targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+
+		if (targetDefense > 125)
+			targetDefense = 125;
+
+		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
 			if (System::random(100) <= hitChanceEquation(0.0f, 0.0f, targetDefense, defenseBonus))
-				targetCreature->setDizziedState();
-		}
+			targetCreature->setStunnedState();
+	}
 
-		if (tskill->getBlindChance() != 0) {
-			float targetDefense = targetCreature->getSkillMod("blind_defense");
-			targetDefense -= (targetDefense * targetCreature->calculateBFRatio());
+	if ((chance = tskill->getIntimidateChance()) > 0) {
+		int rand = System::random(100);
 
-			if (targetDefense > 125)
-				targetDefense = 125;
+		if (rand <= chance)
+			targetCreature->setIntimidatedState();
+	}
 
-			float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
+	targetCreature->updateStates();
+}
 
-			if (System::random(100) <= hitChanceEquation(0.0f, 0.0f, targetDefense, defenseBonus))
-				targetCreature->setBlindedState();
-		}
+/*
+ * Applies the states to the target.
+ * \param creature The skill user.
+ * \param targetCreature The target.
+ */
+void CombatManager::calculateTrapStates(CreatureObject* creature,
+		CreatureObject* targetCreature, ThrowAttackTargetSkill* skill) {
 
-		if (tskill->getStunChance() != 0) {
-			int targetDefense = targetCreature->getSkillMod("stun_defense");
-			targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+	if (skill->isMissed())
+		return;
 
-			if (targetDefense > 125)
-				targetDefense = 125;
+	bool debuffHit = false;
 
-			float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
+	if (skill->isStateTap()) {
 
-			if (System::random(100) <= hitChanceEquation(0.0f, 0.0f, targetDefense, defenseBonus))
-				targetCreature->setStunnedState();
-		}
+		if (skill->getDizzyChance() != 0)
+			targetCreature->setDizziedState();
 
-		if ((chance = tskill->getIntimidateChance()) > 0) {
-			int rand = System::random(100);
+		if (skill->getBlindChance() != 0)
+			targetCreature->setBlindedState();
 
-			if (rand <= chance)
-				targetCreature->setIntimidatedState();
-		}
+		if (skill->getStunChance() != 0)
+			targetCreature->setStunnedState();
+
+		if (skill->getIntimidateChance() != 0)
+			targetCreature->setIntimidatedState();
+
+		if (skill->getSnareChance() != 0)
+			targetCreature->setSnaredState();
+
+		if (skill->getRootChance() != 0)
+			targetCreature->setRootedState();
 
 		targetCreature->updateStates();
 	}
 
-	/*
-	 * Applies the states to the target.
-	 * \param creature The skill user.
-	 * \param targetCreature The target.
-	 */
-	void CombatManager::calculateTrapStates(CreatureObject* creature,
-			CreatureObject* targetCreature, ThrowAttackTargetSkill* skill) {
-
-		if (skill->isMissed())
+	if (skill->isDebuffTrap()) {
+		if (targetCreature->hasBuff(skill->getNameCRC())) {
 			return;
-
-		bool debuffHit = false;
-
-		if (skill->isStateTap()) {
-
-			if (skill->getDizzyChance() != 0)
-				targetCreature->setDizziedState();
-
-			if (skill->getBlindChance() != 0)
-				targetCreature->setBlindedState();
-
-			if (skill->getStunChance() != 0)
-				targetCreature->setStunnedState();
-
-			if (skill->getIntimidateChance() != 0)
-				targetCreature->setIntimidatedState();
-
-			if (skill->getSnareChance() != 0)
-				targetCreature->setSnaredState();
-
-			if (skill->getRootChance() != 0)
-				targetCreature->setRootedState();
-
-			targetCreature->updateStates();
 		}
 
-		if (skill->isDebuffTrap()) {
-			if (targetCreature->hasBuff(skill->getNameCRC())) {
-				return;
-			}
+		int duration = 30;
+		Buff* deBuff = new Buff(skill->getNameCRC(), 0, duration);
+		if (skill->getMeleeDefDebuff()!= 0) {
+			deBuff->addSkillModBuff("melee_defense", skill->getMeleeDefDebuff());
+			targetCreature->showFlyText("trap/trap", "melee_def_1_on", 255, 255, 255);
+			debuffHit = true;
+		}
+		if (skill->getRangedDefDebuff() != 0) {
+			deBuff->addSkillModBuff("ranged_defense", skill->getRangedDefDebuff());
+			targetCreature->showFlyText("trap/trap", "ranged_def_1_on", 255, 255, 255);
+			debuffHit = true;
+		}
+		if (skill->getIntimidateDefDebuff() != 0) {
+			deBuff->addSkillModBuff("intimidate_defense", skill->getIntimidateDefDebuff());
+			targetCreature->showFlyText("trap/trap", "melee_ranged_def_1_on", 255, 255, 255);
+			debuffHit = true;
+		}
+		if (skill->getStunChance() != 0) {
+			deBuff->addSkillModBuff("stun_defense", skill->getStunChance());
+			targetCreature->showFlyText("trap/trap", "state_def_1_on", 255, 255, 255);
+			debuffHit = true;
+		}
 
-			int duration = 30;
-			Buff* deBuff = new Buff(skill->getNameCRC(), 0, duration);
-			if (skill->getMeleeDefDebuff()!= 0) {
-				deBuff->addSkillModBuff("melee_defense", skill->getMeleeDefDebuff());
-				targetCreature->showFlyText("trap/trap", "melee_def_1_on", 255,
-						255, 255);
-				debuffHit = true;
-			}
-			if (skill->getRangedDefDebuff() != 0) {
-				deBuff->addSkillModBuff("ranged_defense", skill->getRangedDefDebuff());
-				targetCreature->showFlyText("trap/trap", "ranged_def_1_on",
-						255, 255, 255);
-				debuffHit = true;
-			}
-			if (skill->getIntimidateDefDebuff() != 0) {
-				deBuff->addSkillModBuff("intimidate_defense",
-						skill->getIntimidateDefDebuff());
-				targetCreature->showFlyText("trap/trap",
-						"melee_ranged_def_1_on", 255, 255, 255);
-				debuffHit = true;
-			}
-			if (skill->getStunChance() != 0) {
-				deBuff->addSkillModBuff("stun_defense", skill->getStunChance());
-				targetCreature->showFlyText("trap/trap", "state_def_1_on", 255,
-						255, 255);
-				debuffHit = true;
-			}
-
-			if (debuffHit) {
-				BuffObject* bo = new BuffObject(deBuff);
-				targetCreature->applyBuff(bo);
-			}
+		if (debuffHit) {
+			BuffObject* bo = new BuffObject(deBuff);
+			targetCreature->applyBuff(bo);
 		}
 	}
+}
 
+void CombatManager::checkKnockDown(CreatureObject* creature, CreatureObject* targetCreature, int chance) {
+	if (creature->isPlayer() && (targetCreature->isKnockedDown() || targetCreature->isProne())) {
+		if (80 > System::random(100))
+			targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
+		return;
+	}
 
-	void CombatManager::checkKnockDown(CreatureObject* creature, CreatureObject* targetCreature, int chance) {
+	if (targetCreature->checkKnockdownRecovery()) {
+		int targetDefense = targetCreature->getSkillMod("knockdown_defense");
+		targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+		int rand = System::random(100);
+
+		if ((5 > rand) || (rand > targetDefense)) {
+			if (targetCreature->isMounted())
+				targetCreature->dismount();
+
+			targetCreature->setPosture(CreaturePosture::KNOCKEDDOWN);
+			targetCreature->updateKnockdownRecovery();
+			targetCreature->sendSystemMessage("cbt_spam", "posture_knocked_down");
+
+			int combatEquil = targetCreature->getSkillMod("combat_equillibrium");
+
+			if (combatEquil > 100)
+				combatEquil = 100;
+
+			if ((combatEquil >> 1) > (int) System::random(100))
+				targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
+		}
+	} else
+		creature->sendSystemMessage("cbt_spam", "knockdown_fail");
+}
+
+void CombatManager::checkPostureDown(CreatureObject* creature, CreatureObject* targetCreature, int chance) {
 		if (creature->isPlayer() && (targetCreature->isKnockedDown() || targetCreature->isProne())) {
 			if (80 > System::random(100))
 				targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
+
 			return;
 		}
 
-		if (targetCreature->checkKnockdownRecovery()) {
-			int targetDefense = targetCreature->getSkillMod("knockdown_defense");
+		if (targetCreature->checkPostureDownRecovery()) {
+			int targetDefense = targetCreature->getSkillMod("posture_change_down_defense");
 			targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+
 			int rand = System::random(100);
 
 			if ((5 > rand) || (rand > targetDefense)) {
 				if (targetCreature->isMounted())
 					targetCreature->dismount();
-				targetCreature->setPosture(CreaturePosture::KNOCKEDDOWN);
-				targetCreature->updateKnockdownRecovery();
-				targetCreature->sendSystemMessage("cbt_spam", "posture_knocked_down");
+
+				if (targetCreature->getPosture() == CreaturePosture::UPRIGHT)
+					targetCreature->setPosture(CreaturePosture::CROUCHED);
+				else
+					targetCreature->setPosture(CreaturePosture::PRONE);
+
+				targetCreature->updatePostureDownRecovery();
+				targetCreature->sendSystemMessage("cbt_spam", "posture_down");
 
 				int combatEquil = targetCreature->getSkillMod("combat_equillibrium");
 
@@ -1383,652 +1450,495 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 					targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
 			}
 		} else
-			creature->sendSystemMessage("cbt_spam", "knockdown_fail");
-	}
-
-	void CombatManager::checkPostureDown(CreatureObject* creature, CreatureObject* targetCreature, int chance) {
-			if (creature->isPlayer() && (targetCreature->isKnockedDown() || targetCreature->isProne())) {
-				if (80 > System::random(100))
-					targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
-				return;
-			}
-
-			if (targetCreature->checkPostureDownRecovery()) {
-				int targetDefense = targetCreature->getSkillMod("posture_change_down_defense");
-				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
-
-				int rand = System::random(100);
-
-				if ((5 > rand) || (rand > targetDefense)) {
-					if (targetCreature->isMounted())
-						targetCreature->dismount();
-
-					if (targetCreature->getPosture() == CreaturePosture::UPRIGHT)
-						targetCreature->setPosture(CreaturePosture::CROUCHED);
-					else
-						targetCreature->setPosture(CreaturePosture::PRONE);
-
-					targetCreature->updatePostureDownRecovery();
-					targetCreature->sendSystemMessage("cbt_spam", "posture_down");
-
-					int combatEquil = targetCreature->getSkillMod("combat_equillibrium");
-
-					if (combatEquil > 100)
-						combatEquil = 100;
-
-					if ((combatEquil >> 1) > (int) System::random(100))
-						targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
-				}
-			} else
-				creature->sendSystemMessage("cbt_spam", "posture_change_fail");
-	}
-
-	void CombatManager::checkPostureUp(CreatureObject* creature, CreatureObject* targetCreature, int chance) {
-		if (targetCreature->checkPostureUpRecovery()) {
-			int targetDefense = targetCreature->getSkillMod("posture_change_up_defense");
-			targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
-
-			int rand = System::random(100);
-
-			if ((5 > rand) || (rand > targetDefense)) {
-				if (targetCreature->isMounted())
-					targetCreature->dismount();
-
-				if (targetCreature->getPosture() == CreaturePosture::PRONE) {
-					targetCreature->setPosture(CreaturePosture::CROUCHED);
-					targetCreature->updatePostureUpRecovery();
-				} else if (targetCreature->getPosture() ==  CreaturePosture::CROUCHED) {
-					targetCreature->setPosture(CreaturePosture::UPRIGHT);
-					targetCreature->updatePostureUpRecovery();
-				}
-			}
-		} else if (!targetCreature->checkPostureUpRecovery())
 			creature->sendSystemMessage("cbt_spam", "posture_change_fail");
-	}
+}
 
-	void CombatManager::doDotWeaponAttack(CreatureObject* creature, CreatureObject* targetCreature, bool areaHit) {
-		Weapon* weapon = creature->getWeapon();
+void CombatManager::checkPostureUp(CreatureObject* creature, CreatureObject* targetCreature, int chance) {
+	if (targetCreature->checkPostureUpRecovery()) {
+		int targetDefense = targetCreature->getSkillMod("posture_change_up_defense");
+		targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
 
-		int resist = 0;
+		int rand = System::random(100);
 
-		if (weapon != NULL) {
-			if (weapon->getDot0Uses() != 0) {
-				StringBuffer dotIDText;
-				dotIDText << weapon->getObjectID() << "_" << "Dot0";
-				uint64 dotID = dotIDText.toString().hashCode();
+		if ((5 > rand) || (rand > targetDefense)) {
+			if (targetCreature->isMounted())
+				targetCreature->dismount();
 
-				switch (weapon->getDot0Type()) {
-				case CreatureState::BLEEDING:
-					resist = targetCreature->getSkillMod("resistance_bleeding");
+			if (targetCreature->getPosture() == CreaturePosture::PRONE) {
+				targetCreature->setPosture(CreaturePosture::CROUCHED);
+				targetCreature->updatePostureUpRecovery();
+			} else if (targetCreature->getPosture() ==  CreaturePosture::CROUCHED) {
+				targetCreature->setPosture(CreaturePosture::UPRIGHT);
+				targetCreature->updatePostureUpRecovery();
+			}
+		}
+	} else if (!targetCreature->checkPostureUpRecovery())
+		creature->sendSystemMessage("cbt_spam", "posture_change_fail");
+}
 
-					if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
-						targetCreature->addDotState(creature,dotID,CreatureState::BLEEDING, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
-					break;
-				case CreatureState::DISEASED:
-					resist = targetCreature->getSkillMod("resistance_disease");
+void CombatManager::doDotWeaponAttack(CreatureObject* creature, CreatureObject* targetCreature, bool areaHit) {
+	Weapon* weapon = creature->getWeapon();
 
-					if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
-						targetCreature->addDotState(creature,dotID,CreatureState::DISEASED, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
-					break;
-				case CreatureState::ONFIRE:
-					resist = targetCreature->getSkillMod("resistance_fire");
+	int resist = 0;
 
-					if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
-						targetCreature->addDotState(creature,dotID,CreatureState::ONFIRE, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
-					break;
-				case CreatureState::POISONED:
-					resist = targetCreature->getSkillMod("resistance_poison");
+	if (weapon != NULL) {
+		if (weapon->getDot0Uses() != 0) {
+			StringBuffer dotIDText;
+			dotIDText << weapon->getObjectID() << "_" << "Dot0";
+			uint64 dotID = dotIDText.toString().hashCode();
 
-					if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
-						targetCreature->addDotState(creature,dotID,CreatureState::POISONED, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
-					break;
-				}
+			switch (weapon->getDot0Type()) {
+			case CreatureState::BLEEDING:
+				resist = targetCreature->getSkillMod("resistance_bleeding");
 
-				if (areaHit == 0 && weapon->decreaseDot0Uses()) {
-					weapon->setUpdated(true);
-				}
+				if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
+					targetCreature->addDotState(creature,dotID,CreatureState::BLEEDING, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
+				break;
+			case CreatureState::DISEASED:
+				resist = targetCreature->getSkillMod("resistance_disease");
+
+				if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
+					targetCreature->addDotState(creature,dotID,CreatureState::DISEASED, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
+				break;
+			case CreatureState::ONFIRE:
+				resist = targetCreature->getSkillMod("resistance_fire");
+
+				if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
+					targetCreature->addDotState(creature,dotID,CreatureState::ONFIRE, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
+				break;
+			case CreatureState::POISONED:
+				resist = targetCreature->getSkillMod("resistance_poison");
+
+				if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
+					targetCreature->addDotState(creature,dotID,CreatureState::POISONED, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
+				break;
 			}
 
-			if (weapon->getDot1Uses() != 0) {
-				StringBuffer dotIDText;
-				dotIDText << weapon->getObjectID() << "_" << "Dot1";
-				uint64 dotID = dotIDText.toString().hashCode();
+			if (areaHit == 0 && weapon->decreaseDot0Uses()) {
+				weapon->setUpdated(true);
+			}
+		}
+
+		if (weapon->getDot1Uses() != 0) {
+			StringBuffer dotIDText;
+			dotIDText << weapon->getObjectID() << "_" << "Dot1";
+			uint64 dotID = dotIDText.toString().hashCode();
 
 
-				switch (weapon->getDot1Type()) {
-				case CreatureState::BLEEDING:
-					resist = targetCreature->getSkillMod("resistance_bleeding");
+			switch (weapon->getDot1Type()) {
+			case CreatureState::BLEEDING:
+				resist = targetCreature->getSkillMod("resistance_bleeding");
 
-					if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
-						targetCreature->addDotState(creature,dotID,CreatureState::BLEEDING, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
-					break;
-				case CreatureState::DISEASED:
-					resist = targetCreature->getSkillMod("resistance_disease");
+				if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
+					targetCreature->addDotState(creature,dotID,CreatureState::BLEEDING, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
+				break;
+			case CreatureState::DISEASED:
+				resist = targetCreature->getSkillMod("resistance_disease");
 
-					if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
-						targetCreature->addDotState(creature,dotID,CreatureState::DISEASED, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
-					break;
-				case CreatureState::ONFIRE:
-					resist = targetCreature->getSkillMod("resistance_fire");
+				if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
+					targetCreature->addDotState(creature,dotID,CreatureState::DISEASED, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
+				break;
+			case CreatureState::ONFIRE:
+				resist = targetCreature->getSkillMod("resistance_fire");
 
-					if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
-						targetCreature->addDotState(creature,dotID,CreatureState::ONFIRE, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
-					break;
-				case CreatureState::POISONED:
-					resist = targetCreature->getSkillMod("resistance_poison");
+				if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
+					targetCreature->addDotState(creature,dotID,CreatureState::ONFIRE, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
+				break;
+			case CreatureState::POISONED:
+				resist = targetCreature->getSkillMod("resistance_poison");
 
-					if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
-						targetCreature->addDotState(creature,dotID,CreatureState::POISONED, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
-					break;
-				}
-
-				if (areaHit == 0 && weapon->decreaseDot1Uses()) {
-					weapon->setUpdated(true);
-				}
+				if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
+					targetCreature->addDotState(creature,dotID,CreatureState::POISONED, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
+				break;
 			}
 
-			if (weapon->getDot2Uses() != 0) {
-				StringBuffer dotIDText;
-				dotIDText << weapon->getObjectID() << "_" << "Dot2";
-				uint64 dotID = dotIDText.toString().hashCode();
+			if (areaHit == 0 && weapon->decreaseDot1Uses()) {
+				weapon->setUpdated(true);
+			}
+		}
 
-				switch (weapon->getDot2Type()) {
-				case CreatureState::BLEEDING:
-					resist = targetCreature->getSkillMod("resistance_bleeding");
+		if (weapon->getDot2Uses() != 0) {
+			StringBuffer dotIDText;
+			dotIDText << weapon->getObjectID() << "_" << "Dot2";
+			uint64 dotID = dotIDText.toString().hashCode();
 
-					if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
-						targetCreature->addDotState(creature,dotID,CreatureState::BLEEDING, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
-					break;
-				case CreatureState::DISEASED:
-					resist = targetCreature->getSkillMod("resistance_disease");
+			switch (weapon->getDot2Type()) {
+			case CreatureState::BLEEDING:
+				resist = targetCreature->getSkillMod("resistance_bleeding");
 
-					if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
-						targetCreature->addDotState(creature,dotID,CreatureState::DISEASED, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
-					break;
-				case CreatureState::ONFIRE:
-					resist = targetCreature->getSkillMod("resistance_fire");
+				if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
+					targetCreature->addDotState(creature,dotID,CreatureState::BLEEDING, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
+				break;
+			case CreatureState::DISEASED:
+				resist = targetCreature->getSkillMod("resistance_disease");
 
-					if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
-						targetCreature->addDotState(creature,dotID,CreatureState::ONFIRE, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
-					break;
-				case CreatureState::POISONED:
-					resist = targetCreature->getSkillMod("resistance_poison");
+				if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
+					targetCreature->addDotState(creature,dotID,CreatureState::DISEASED, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
+				break;
+			case CreatureState::ONFIRE:
+				resist = targetCreature->getSkillMod("resistance_fire");
 
-					if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
-						targetCreature->addDotState(creature,dotID,CreatureState::POISONED, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
-					break;
-				}
+				if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
+					targetCreature->addDotState(creature,dotID,CreatureState::ONFIRE, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
+				break;
+			case CreatureState::POISONED:
+				resist = targetCreature->getSkillMod("resistance_poison");
 
-				if (areaHit == 0 && weapon->decreaseDot2Uses()) {
-					weapon->setUpdated(true);
-				}
+				if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
+					targetCreature->addDotState(creature,dotID,CreatureState::POISONED, weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration(),weapon->getDot0Potency(),resist);
+				break;
+			}
+
+			if (areaHit == 0 && weapon->decreaseDot2Uses()) {
+				weapon->setUpdated(true);
 			}
 		}
 	}
-
-	/*
-	 * Calculates and applies the damage of a skill.
-	 * \param creature The creature that is attacking.
-	 * \param target The target.
-	 * \param randompoolhit Is it random pool damage ?
-	 */
-	int CombatManager::calculateWeaponDamage(CreatureObject* creature, TangibleObject* target, AttackTargetSkill* skill, bool randompoolhit) {
-		Weapon* weapon = creature->getWeapon();
-		float minDamage, maxDamage;
-		int damageType = 0;
-		int attackType = MELEEATTACK;
-		int armorPiercing;
-
-		if (weapon != NULL) {
-			if (MELEEWEAPON(weapon->getType()))
-				attackType = MELEEATTACK;
-			else
-				attackType = RANGEDATTACK;
-
-			damageType = weapon->getDamageType();
-			armorPiercing = weapon->getArmorPiercing();
-
-			minDamage = weapon->getMinDamage();
-			maxDamage = weapon->getMaxDamage();
-			if (weapon->getType() == 0) {  // Unarmed
-				minDamage += (float)creature->getSkillMod("unarmed_damage");
-				maxDamage += (float)creature->getSkillMod("unarmed_damage");
-			}
-			if (!weapon->isCertified()) {
-				minDamage /= 5;
-				maxDamage /= 5;
-			}
-		} else {
-			minDamage = (float)creature->getSkillMod("unarmed_damage");
-			maxDamage = minDamage + 15.0;
-		}
-
-		// Test for hit
-		if (target->isNonPlayerCreature() || target->isPlayer()) {
-			int rand = System::random(100);
-			if (rand > getHitChance(creature, (CreatureObject*)target, weapon, skill->getAccuracyBonus(), attackType)) {
-				skill->doMiss(creature, (CreatureObject*)target, 0);
-				return -1;
-			}
-		}
-
-		if (creature->isNonPlayerCreature() && DEBUG) {
-			System::out << "Creature " << creature->_getName();
-			if (weapon != NULL)
-				System::out << " weapon " << weapon->_getName();
-			System::out << " does " << minDamage << " to " << maxDamage << " damage" << endl;
-		}
-
-		int damage = calculateDamage(creature, target, weapon, skill, attackType, damageType, armorPiercing,
-				minDamage, maxDamage, randompoolhit, true);
-
-		if (damage >= 0 && (target->isNonPlayerCreature() || target->isPlayer())) {
-			if (weapon != NULL) {
-				doDotWeaponAttack(creature, (CreatureObject*)target, 0);
-
-				if (weapon->decreasePowerupUses())
-					weapon->setUpdated(true);
-				else if (weapon->hasPowerup())
-					weapon->removePowerup((Player*)creature, true);
-			}
-		}
-		return damage;
-	}
-
-	/*
-	 * Calculates and applies the damage of Traps.
-	 * \param creature The creature, that throws the trap.
-	 * \param target The traget.
-	 * \param randompoolhit Is it random pool damage ?
-	 * \param weapon The Trap.
-	 * \return The damage done.
-	 */
-	int CombatManager::calculateTrapDamage(CreatureObject* creature, TangibleObject* target, ThrowAttackTargetSkill* skill, bool randompoolhit, Weapon* weapon) {
-
-		CreatureObject* targetCreature = (CreatureObject*)target;
+}
 
 /*
-		// Changed to use SOE hit calculation
-		int level = targetCreature->getLevel(); //336 ancient krayt
-		if (level > 180)
-			level = 180;
+ * Calculates and applies the damage of a skill.
+ * \param creature The creature that is attacking.
+ * \param target The target.
+ * \param randompoolhit Is it random pool damage ?
+ */
+int CombatManager::calculateWeaponDamage(CreatureObject* creature, TangibleObject* target, AttackTargetSkill* skill, bool randompoolhit) {
+	Weapon* weapon = creature->getWeapon();
+	float minDamage, maxDamage;
+	int damageType = 0;
+	int attackType = MELEEATTACK;
+	int armorPiercing;
 
-		if ((!(trappingSkill + rand > level) || (rand > 10 && rand < 20))) {
-			skill->doMiss(creature, targetCreature, 0);
+	if (weapon != NULL) {
+		if (MELEEWEAPON(weapon->getType()))
+			attackType = MELEEATTACK;
+		else
+			attackType = RANGEDATTACK;
+
+		damageType = weapon->getDamageType();
+		armorPiercing = weapon->getArmorPiercing();
+
+		minDamage = weapon->getMinDamage();
+		maxDamage = weapon->getMaxDamage();
+		if (weapon->getType() == 0) {  // Unarmed
+			minDamage += (float)creature->getSkillMod("unarmed_damage");
+			maxDamage += (float)creature->getSkillMod("unarmed_damage");
+		}
+		if (!weapon->isCertified()) {
+			minDamage /= 5;
+			maxDamage /= 5;
+		}
+	} else {
+		minDamage = (float)creature->getSkillMod("unarmed_damage");
+		maxDamage = minDamage + 15.0;
+	}
+
+	// Test for hit
+	if (target->isNonPlayerCreature() || target->isPlayer()) {
+		int rand = System::random(100);
+		if (rand > getHitChance(creature, (CreatureObject*)target, weapon, skill->getAccuracyBonus(), attackType)) {
+			skill->doMiss(creature, (CreatureObject*)target, 0);
 			return -1;
 		}
+	}
+
+	if (creature->isNonPlayerCreature() && DEBUG) {
+		System::out << "Creature " << creature->_getName();
+		if (weapon != NULL)
+			System::out << " weapon " << weapon->_getName();
+		System::out << " does " << minDamage << " to " << maxDamage << " damage" << endl;
+	}
+
+	int damage = calculateDamage(creature, target, weapon, skill, attackType, damageType, armorPiercing,
+			minDamage, maxDamage, randompoolhit, true);
+
+	if (damage >= 0 && (target->isNonPlayerCreature() || target->isPlayer())) {
+		if (weapon != NULL) {
+			doDotWeaponAttack(creature, (CreatureObject*)target, 0);
+
+			if (weapon->decreasePowerupUses())
+				weapon->setUpdated(true);
+			else if (weapon->hasPowerup())
+				weapon->removePowerup((Player*)creature, true);
+		}
+	}
+	return damage;
+}
+
+/*
+ * Calculates and applies the damage of Traps.
+ * \param creature The creature, that throws the trap.
+ * \param target The traget.
+ * \param randompoolhit Is it random pool damage ?
+ * \param weapon The Trap.
+ * \return The damage done.
+ */
+int CombatManager::calculateTrapDamage(CreatureObject* creature, TangibleObject* target, ThrowAttackTargetSkill* skill, bool randompoolhit, Weapon* weapon) {
+
+	CreatureObject* targetCreature = (CreatureObject*)target;
+
+/*
+	// Changed to use SOE hit calculation
+	int level = targetCreature->getLevel(); //336 ancient krayt
+	if (level > 180)
+		level = 180;
+
+	if ((!(trappingSkill + rand > level) || (rand > 10 && rand < 20))) {
+		skill->doMiss(creature, targetCreature, 0);
+		return -1;
+	}
 */
-		// Test for hit
-		if (target->isNonPlayerCreature() || target->isPlayer()) {
-			int rand = System::random(100);
-			if (rand > getHitChance(creature, (CreatureObject*)target, weapon, skill->getAccuracyBonus(), TRAPATTACK)) {
-				skill->doMiss(creature, (CreatureObject*)target, 0);
-				return -1;
-			}
-		}
-
-		float minDamage = weapon->getMinDamage();
-		float maxDamage = weapon->getMaxDamage();
-		int damageType = weapon->getDamageType();
-		int attackType = TRAPATTACK;
-		int armorPiercing = 1;
-
-		int damage = calculateDamage(creature, target, weapon, skill, attackType, damageType, armorPiercing, minDamage, maxDamage, true, false);
-
-		if (damage >= 0)
-			calculateTrapStates(creature, targetCreature, skill);
-
-		return damage;
-	}
-
-	int CombatManager::calculateForceDamage(CreatureObject* creature, TangibleObject* target, ForcePowersPoolAttackTargetSkill* skill, int forceAttackType, int damageType, float mindmg, float maxdmg) {
-		float minDamage = mindmg;
-		float maxDamage = mindmg;
-		int attackType = FORCEATTACK;
-		int randomHit = true;
-		if (forceAttackType == 5)
-			randomHit = false;
-
-		// TODO: Add to hit for Force
-		int damage = calculateDamage(creature, target, NULL, skill, FORCEATTACK, damageType, 1, minDamage, maxDamage, randomHit, true);
-
-		return damage;
-	}
-
-	/*
-	 * Calculates and applies the damage of a skill.
-	 * \param creature The creature, that throws the trap.
-	 * \param target The traget.
-	 * \param randompoolhit Is it random pool damage ?
-	 * \param weapon The Trap.
-	 */
-	int CombatManager::calculateDamage(CreatureObject* creature, TangibleObject* target, Weapon* weapon, AttackTargetSkill* skill,
-			int attackType, int damageType, int armorPiercing, float minDmg, float maxDmg, bool randompoolhit, bool cankill) {
-
-		float minDamage = minDmg;
-		float maxDamage = maxDmg;
-
-		float healthDamage = 0;
-		float actionDamage = 0;
-		float mindDamage = 0;
-		int reduction = 0;
-
-		CreatureObject* targetCreature = NULL;
-		if (target->isPlayer() || target->isNonPlayerCreature()) {
-			targetCreature = (CreatureObject*) target;
-			checkMitigation(creature, targetCreature, attackType, minDamage, maxDamage);
-		}
-
-		float damage = 0;
-		int average = 0;
-
-		int diff = (int)maxDamage - (int)minDamage;
-		if (diff >= 0)
-			average = System::random(diff) + (int)minDamage;
-
-		float globalMultiplier = 1.0f;
-		if (creature->isPlayer()) {
-			globalMultiplier = GLOBAL_MULTIPLIER;  // All player damage has a multiplier
-			if (!target->isPlayer())
-				globalMultiplier *= PVE_MULTIPLIER;
-			else
-				globalMultiplier *= PVP_MULTIPLIER;
-		}
-
-		if (creature->isIntimidated())
-			damage /= 2;
-		if (creature->isStunned())
-			damage /= 2;
-
-
-
-		if (targetCreature != NULL) {
-			if (targetCreature->isKnockedDown())
-				damage *= 1.333f;
-
-			int secondaryDefense = 0;
-			if (!targetCreature->isIntimidated())
-				secondaryDefense = checkSecondaryDefenses(creature, targetCreature, weapon, attackType);
-
-			// TODO:  Handle other  secondary defences properly
-			if (secondaryDefense == 1)
-				damage = damage / 2;
-			else if (secondaryDefense == 2)
-				return -1;
-			else if (secondaryDefense == 3) {
-				counterAttack(creature, targetCreature);
-				return -1;
-			}
-
-			//Work out the number of pools that may be affected
-			int poolsAffected = 0;
-			int totalPercentage = 0;  // Temporary fix until percentages in lua are corrected
-
-			if (skill->healthPoolAttackChance > 0) {
-				poolsAffected++;
-				totalPercentage += skill->healthPoolAttackChance;
-			}
-			if (skill->actionPoolAttackChance > 0) {
-				poolsAffected++;
-				totalPercentage += skill->actionPoolAttackChance;
-			}
-			if (skill->mindPoolAttackChance > 0) {
-				poolsAffected++;
-				totalPercentage += skill->mindPoolAttackChance;
-			}
-			if (randompoolhit)
-				poolsAffected = 1;  // Only one random pool hit
-
-			damage = skill->damageRatio * average * globalMultiplier;
-			float individualDamage = damage / poolsAffected;
-
-			for (int i = 0; i < poolsAffected; i++) {
-				int pool = System::random(totalPercentage);
-
-				/* Body parts are
-				 * 	0 - Chest
-				 * 	1 - Hands
-				 * 	2,3 - Left arm
-				 * 	4,5 - Right arm
-				 * 	6 -	Legs
-				 * 	7 - Feet
-				 * 	8 - Head
-				 */
-				int bodyPart = 0;
-				if (pool < skill->healthPoolAttackChance) {
-					healthDamage = individualDamage;
-					if (System::random(1) == 0)  // 50% chance of chest hit
-						bodyPart = 0;
-					else
-						bodyPart = System::random(4)+1;
-				}
-				else if (pool < skill->healthPoolAttackChance + skill->actionPoolAttackChance) {
-					actionDamage = individualDamage;
-					if (System::random(2) == 0)
-						bodyPart = 7;
-					else
-						bodyPart = 6;
-				} else {
-					mindDamage = individualDamage;
-					bodyPart = 8;
-				}
-
-				if (skill->hasCbtSpamHit())
-					creature->sendCombatSpam(targetCreature, NULL, (int32)individualDamage, skill->getCbtSpamHit());
-
-				int tempReduction = applyDamage(creature, targetCreature, (int32)individualDamage, bodyPart, skill, attackType, damageType, armorPiercing, cankill);
-				if (individualDamage > tempReduction)
-					applyWounds(creature, targetCreature, weapon, bodyPart);
-				reduction += tempReduction;
-			}
-		} else { // Non creature attackable objects
-			return (int32)skill->damageRatio * average;
-			// TODO: Add weapon damage
-		}
-
-		return (int32)damage - reduction;
-	}
-
-	void CombatManager::counterAttack(CreatureObject* targetCreature, CreatureObject* creature) {
-		// TODO:  This probably needs a skill setting up that can be fed through the system
-	}
-
-	void CombatManager::requestDuel(Player* player, uint64 targetID) {
-		if (targetID != 0) {
-			Zone* zone = player->getZone();
-
-			TangibleObject* targetObject = (TangibleObject*)zone->lookupObject(targetID);
-
-			if (targetObject != NULL && targetObject->isPlayer()) {
-				Player* targetPlayer = (Player*) targetObject;
-				if (targetPlayer != player && targetPlayer->isOnline())
-					requestDuel(player, targetPlayer);
-			}
+	// Test for hit
+	if (target->isNonPlayerCreature() || target->isPlayer()) {
+		int rand = System::random(100);
+		if (rand > getHitChance(creature, (CreatureObject*)target, weapon, skill->getAccuracyBonus(), TRAPATTACK)) {
+			skill->doMiss(creature, (CreatureObject*)target, 0);
+			return -1;
 		}
 	}
 
-	void CombatManager::requestDuel(Player* player, Player* targetPlayer) {
-		/* Pre: player != targetPlayer and not NULL; player is locked
-		 * Post: player requests duel to targetPlayer
-		 */
+	float minDamage = weapon->getMinDamage();
+	float maxDamage = weapon->getMaxDamage();
+	int damageType = weapon->getDamageType();
+	int attackType = TRAPATTACK;
+	int armorPiercing = 1;
 
-		if (player->isListening())
-			player->stopListen(player->getListenID());
+	int damage = calculateDamage(creature, target, weapon, skill, attackType, damageType, armorPiercing, minDamage, maxDamage, true, false);
 
-		if (player->isWatching())
-			player->stopWatch(player->getWatchID());
+	if (damage >= 0)
+		calculateTrapStates(creature, targetCreature, skill);
 
-		try {
-			targetPlayer->wlock(player);
+	return damage;
+}
 
-			if (player->isOvert() && targetPlayer->isOvert()) {
-				if (player->getFaction() != targetPlayer->getFaction()) {
-					targetPlayer->unlock();
-					return;
-				}
+int CombatManager::calculateForceDamage(CreatureObject* creature, TangibleObject* target, ForcePowersPoolAttackTargetSkill* skill, int forceAttackType, int damageType, float mindmg, float maxdmg) {
+	float minDamage = mindmg;
+	float maxDamage = mindmg;
+	int attackType = FORCEATTACK;
+	int randomHit = true;
+	if (forceAttackType == 5)
+		randomHit = false;
+
+	// TODO: Add to hit for Force
+	int damage = calculateDamage(creature, target, NULL, skill, FORCEATTACK, damageType, 1, minDamage, maxDamage, randomHit, true);
+
+	return damage;
+}
+
+/*
+ * Calculates and applies the damage of a skill.
+ * \param creature The creature, that throws the trap.
+ * \param target The traget.
+ * \param randompoolhit Is it random pool damage ?
+ * \param weapon The Trap.
+ */
+int CombatManager::calculateDamage(CreatureObject* creature, TangibleObject* target, Weapon* weapon, AttackTargetSkill* skill,
+		int attackType, int damageType, int armorPiercing, float minDmg, float maxDmg, bool randompoolhit, bool cankill) {
+
+	float minDamage = minDmg;
+	float maxDamage = maxDmg;
+
+	float healthDamage = 0;
+	float actionDamage = 0;
+	float mindDamage = 0;
+	int reduction = 0;
+
+	CreatureObject* targetCreature = NULL;
+	if (target->isPlayer() || target->isNonPlayerCreature()) {
+		targetCreature = (CreatureObject*) target;
+		checkMitigation(creature, targetCreature, attackType, minDamage, maxDamage);
+	}
+
+	float damage = 0;
+	int average = 0;
+
+	int diff = (int)maxDamage - (int)minDamage;
+	if (diff >= 0)
+		average = System::random(diff) + (int)minDamage;
+
+	float globalMultiplier = 1.0f;
+	if (creature->isPlayer()) {
+		globalMultiplier = GLOBAL_MULTIPLIER;  // All player damage has a multiplier
+		if (!target->isPlayer())
+			globalMultiplier *= PVE_MULTIPLIER;
+		else
+			globalMultiplier *= PVP_MULTIPLIER;
+	}
+
+	if (creature->isIntimidated())
+		damage /= 2;
+	if (creature->isStunned())
+		damage /= 2;
+
+	if (targetCreature != NULL) {
+		if (targetCreature->isKnockedDown())
+			damage *= 1.333f;
+
+		int secondaryDefense = 0;
+		if (!targetCreature->isIntimidated())
+			secondaryDefense = checkSecondaryDefenses(creature, targetCreature, weapon, attackType);
+
+		// TODO:  Handle other  secondary defences properly
+		if (secondaryDefense == 1)
+			damage = damage / 2;
+		else if (secondaryDefense == 2)
+			return -1;
+		else if (secondaryDefense == 3) {
+			counterAttack(creature, targetCreature);
+			return -1;
+		}
+
+		//Work out the number of pools that may be affected
+		int poolsAffected = 0;
+		int totalPercentage = 0;  // Temporary fix until percentages in lua are corrected
+
+		if (skill->healthPoolAttackChance > 0) {
+			poolsAffected++;
+			totalPercentage += skill->healthPoolAttackChance;
+		}
+		if (skill->actionPoolAttackChance > 0) {
+			poolsAffected++;
+			totalPercentage += skill->actionPoolAttackChance;
+		}
+		if (skill->mindPoolAttackChance > 0) {
+			poolsAffected++;
+			totalPercentage += skill->mindPoolAttackChance;
+		}
+		if (randompoolhit)
+			poolsAffected = 1;  // Only one random pool hit
+
+		damage = skill->damageRatio * average * globalMultiplier;
+		float individualDamage = damage / poolsAffected;
+
+		for (int i = 0; i < poolsAffected; i++) {
+			int pool = System::random(totalPercentage);
+
+			/* Body parts are
+			 * 	0 - Chest
+			 * 	1 - Hands
+			 * 	2,3 - Left arm
+			 * 	4,5 - Right arm
+			 * 	6 -	Legs
+			 * 	7 - Feet
+			 * 	8 - Head
+			 */
+			int bodyPart = 0;
+			if (pool < skill->healthPoolAttackChance) {
+				healthDamage = individualDamage;
+				if (System::random(1) == 0)  // 50% chance of chest hit
+					bodyPart = 0;
+				else
+					bodyPart = System::random(4)+1;
 			}
-
-			if (player->requestedDuelTo(targetPlayer)) {
-				ChatSystemMessage* csm = new ChatSystemMessage("duel", "already_challenged", targetPlayer->getObjectID());
-				player->sendMessage(csm);
-
-				targetPlayer->unlock();
-				return;
-			}
-
-			player->info("requesting duel");
-
-			player->addToDuelList(targetPlayer);
-
-			if (targetPlayer->requestedDuelTo(player)) {
-				BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer, targetPlayer->getPvpStatusBitmask() + CreatureFlag::ATTACKABLE + CreatureFlag::AGGRESSIVE);
-				player->sendMessage(pvpstat);
-
-				ChatSystemMessage* csm = new ChatSystemMessage("duel", "accept_self", targetPlayer->getObjectID());
-				player->sendMessage(csm);
-
-				BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask() + CreatureFlag::ATTACKABLE + CreatureFlag::AGGRESSIVE);
-				targetPlayer->sendMessage(pvpstat2);
-
-				ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "accept_target", player->getObjectID());
-				targetPlayer->sendMessage(csm2);
+			else if (pool < skill->healthPoolAttackChance + skill->actionPoolAttackChance) {
+				actionDamage = individualDamage;
+				if (System::random(2) == 0)
+					bodyPart = 7;
+				else
+					bodyPart = 6;
 			} else {
-				ChatSystemMessage* csm = new ChatSystemMessage("duel", "challenge_self", targetPlayer->getObjectID());
-				player->sendMessage(csm);
-
-				ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "challenge_target", player->getObjectID());
-				targetPlayer->sendMessage(csm2);
+				mindDamage = individualDamage;
+				bodyPart = 8;
 			}
 
-			targetPlayer->unlock();
-		} catch (Exception& e) {
-			System::out << "Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n" << e.getMessage() << "\n";
-		} catch (...) {
-			System::out << "Unreported Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n";
-			targetPlayer->unlock();
+			if (skill->hasCbtSpamHit())
+				creature->sendCombatSpam(targetCreature, NULL, (int32)individualDamage, skill->getCbtSpamHit());
+
+			int tempReduction = applyDamage(creature, targetCreature, (int32)individualDamage, bodyPart, skill, attackType, damageType, armorPiercing, cankill);
+			if (individualDamage > tempReduction)
+				applyWounds(creature, targetCreature, weapon, bodyPart);
+			reduction += tempReduction;
 		}
+	} else { // Non creature attackable objects
+		return (int32)skill->damageRatio * average;
+		// TODO: Add weapon damage
 	}
 
-	void CombatManager::requestEndDuel(Player* player, uint64 targetID) {
-		if (targetID != 0) {
-			Zone* zone = player->getZone();
+	return (int32)damage - reduction;
+}
 
-			TangibleObject* targetObject = (TangibleObject*)zone->lookupObject(targetID);
+void CombatManager::counterAttack(CreatureObject* targetCreature, CreatureObject* creature) {
+	// TODO:  This probably needs a skill setting up that can be fed through the system
+}
 
-			if (targetObject != NULL && targetObject->isPlayer()) {
-				Player* targetPlayer = (Player*)targetObject;
+void CombatManager::requestDuel(Player* player, uint64 targetID) {
+	if (targetID != 0) {
+		Zone* zone = player->getZone();
 
-				if (targetPlayer != player)
-					requestEndDuel(player, targetPlayer);
-			}
-		} else {
-			freeDuelList(player);
+		TangibleObject* targetObject = (TangibleObject*)zone->lookupObject(targetID);
+
+		if (targetObject != NULL && targetObject->isPlayer()) {
+			Player* targetPlayer = (Player*) targetObject;
+			if (targetPlayer != player && targetPlayer->isOnline())
+				requestDuel(player, targetPlayer);
 		}
 	}
+}
 
-	void CombatManager::requestEndDuel(Player* player, Player* targetPlayer) {
-		/* Pre: player != targetPlayer and not NULL; player is locked
-		 * Post: player requested to end the duel with targetPlayer
-		 */
+void CombatManager::requestDuel(Player* player, Player* targetPlayer) {
+	/* Pre: player != targetPlayer and not NULL; player is locked
+	 * Post: player requests duel to targetPlayer
+	 */
 
-		if (player->isListening())
-			player->stopListen(player->getListenID());
+	if (player->isListening())
+		player->stopListen(player->getListenID());
 
-		if (player->isWatching())
-			player->stopWatch(player->getWatchID());
+	if (player->isWatching())
+		player->stopWatch(player->getWatchID());
 
-		try {
-			targetPlayer->wlock(player);
+	try {
+		targetPlayer->wlock(player);
 
-			if (!player->requestedDuelTo(targetPlayer)) {
-				ChatSystemMessage* csm = new ChatSystemMessage("duel", "not_dueling", targetPlayer->getObjectID());
-				player->sendMessage(csm);
-
+		if (player->isOvert() && targetPlayer->isOvert()) {
+			if (player->getFaction() != targetPlayer->getFaction()) {
 				targetPlayer->unlock();
 				return;
 			}
+		}
 
-			player->info("ending duel");
-
-			player->removeFromDuelList(targetPlayer);
-
-			if (targetPlayer->requestedDuelTo(player)) {
-				targetPlayer->removeFromDuelList(player);
-				BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer, targetPlayer->getPvpStatusBitmask());
-				player->sendMessage(pvpstat);
-
-				ChatSystemMessage* csm = new ChatSystemMessage("duel", "end_self", targetPlayer->getObjectID());
-				player->sendMessage(csm);
-
-				BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask());
-				targetPlayer->sendMessage(pvpstat2);
-
-				ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "end_target", player->getObjectID());
-				targetPlayer->sendMessage(csm2);
-			}
+		if (player->requestedDuelTo(targetPlayer)) {
+			ChatSystemMessage* csm = new ChatSystemMessage("duel", "already_challenged", targetPlayer->getObjectID());
+			player->sendMessage(csm);
 
 			targetPlayer->unlock();
-		} catch (...) {
-			targetPlayer->unlock();
-		}
-	}
-
-	void CombatManager::freeDuelList(Player* player) {
-		/* Pre: player not NULL and is locked
-		 * Post: player removed and warned all of the objects from its duel list
-		 */
-		if (player->isDuelListEmpty())
 			return;
-
-		if (player->isListening())
-			player->stopListen(player->getListenID());
-
-		if (player->isWatching())
-			player->stopWatch(player->getWatchID());
-
-		player->info("freeing duel list");
-
-		while (player->getDuelListSize() != 0) {
-			ManagedReference<Player> targetPlayer = player->getDuelListObject(0);
-
-			if (targetPlayer != NULL) {
-				try {
-					targetPlayer->wlock(player);
-
-					if (targetPlayer->requestedDuelTo(player)) {
-						targetPlayer->removeFromDuelList(player);
-
-						BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer, targetPlayer->getPvpStatusBitmask());
-						player->sendMessage(pvpstat);
-
-						ChatSystemMessage* csm = new ChatSystemMessage("duel", "end_self", targetPlayer->getObjectID());
-						player->sendMessage(csm);
-
-						BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask());
-						targetPlayer->sendMessage(pvpstat2);
-
-						ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "end_target", player->getObjectID());
-						targetPlayer->sendMessage(csm2);
-					}
-
-					player->removeFromDuelList(targetPlayer);
-
-					targetPlayer->unlock();
-				} catch (ObjectNotDeployedException& e) {
-					player->removeFromDuelList(targetPlayer);
-
-					System::out << "Exception on CombatManager::freeDuelList()\n" << e.getMessage() << "\n";
-				} catch (...) {
-					targetPlayer->unlock();
-				}
-			}
 		}
+
+		player->info("requesting duel");
+
+		player->addToDuelList(targetPlayer);
+
+		if (targetPlayer->requestedDuelTo(player)) {
+			BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer, targetPlayer->getPvpStatusBitmask() + CreatureFlag::ATTACKABLE + CreatureFlag::AGGRESSIVE);
+			player->sendMessage(pvpstat);
+
+			ChatSystemMessage* csm = new ChatSystemMessage("duel", "accept_self", targetPlayer->getObjectID());
+			player->sendMessage(csm);
+
+			BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask() + CreatureFlag::ATTACKABLE + CreatureFlag::AGGRESSIVE);
+			targetPlayer->sendMessage(pvpstat2);
+
+			ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "accept_target", player->getObjectID());
+			targetPlayer->sendMessage(csm2);
+		} else {
+			ChatSystemMessage* csm = new ChatSystemMessage("duel", "challenge_self", targetPlayer->getObjectID());
+			player->sendMessage(csm);
+
+			ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "challenge_target", player->getObjectID());
+			targetPlayer->sendMessage(csm2);
+		}
+
+		targetPlayer->unlock();
+	} catch (Exception& e) {
+		System::out << "Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n" << e.getMessage() << "\n";
+	} catch (...) {
+		System::out << "Unreported Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n";
+		targetPlayer->unlock();
 	}
+}
 
-	void CombatManager::declineDuel(Player* player, uint64 targetID) {
-		if (targetID == 0)
-			return;
-
+void CombatManager::requestEndDuel(Player* player, uint64 targetID) {
+	if (targetID != 0) {
 		Zone* zone = player->getZone();
 
 		TangibleObject* targetObject = (TangibleObject*)zone->lookupObject(targetID);
@@ -2037,36 +1947,194 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 			Player* targetPlayer = (Player*)targetObject;
 
 			if (targetPlayer != player)
-				declineDuel(player, targetPlayer);
+				requestEndDuel(player, targetPlayer);
 		}
+	} else {
+		freeDuelList(player);
 	}
+}
 
-	void CombatManager::declineDuel(Player* player, Player* targetPlayer) {
-		/* Pre: player != targetPlayer and not NULL; player is locked
-		 * Post: player declined Duel to targetPlayer
-		 */
+void CombatManager::requestEndDuel(Player* player, Player* targetPlayer) {
+	/* Pre: player != targetPlayer and not NULL; player is locked
+	 * Post: player requested to end the duel with targetPlayer
+	 */
 
-		if (player->isListening())
-			player->stopListen(player->getListenID());
+	if (player->isListening())
+		player->stopListen(player->getListenID());
 
-		if (player->isWatching())
-			player->stopWatch(player->getWatchID());
+	if (player->isWatching())
+		player->stopWatch(player->getWatchID());
 
-		try {
-			targetPlayer->wlock(player);
+	try {
+		targetPlayer->wlock(player);
 
-			if (targetPlayer->requestedDuelTo(player)) {
-				targetPlayer->removeFromDuelList(player);
+		if (!player->requestedDuelTo(targetPlayer)) {
+			ChatSystemMessage* csm = new ChatSystemMessage("duel", "not_dueling", targetPlayer->getObjectID());
+			player->sendMessage(csm);
 
-				ChatSystemMessage* csm = new ChatSystemMessage("duel", "cancel_self", targetPlayer->getObjectID());
-				player->sendMessage(csm);
+			targetPlayer->unlock();
+			return;
+		}
 
-				ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "cancel_target", player->getObjectID());
-				targetPlayer->sendMessage(csm2);
+		player->info("ending duel");
+
+		player->removeFromDuelList(targetPlayer);
+
+		if (targetPlayer->requestedDuelTo(player)) {
+			targetPlayer->removeFromDuelList(player);
+			BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer, targetPlayer->getPvpStatusBitmask());
+			player->sendMessage(pvpstat);
+
+			ChatSystemMessage* csm = new ChatSystemMessage("duel", "end_self", targetPlayer->getObjectID());
+			player->sendMessage(csm);
+
+			BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask());
+			targetPlayer->sendMessage(pvpstat2);
+
+			ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "end_target", player->getObjectID());
+			targetPlayer->sendMessage(csm2);
+		}
+
+		targetPlayer->unlock();
+	} catch (...) {
+		targetPlayer->unlock();
+	}
+}
+
+void CombatManager::freeDuelList(Player* player) {
+	/* Pre: player not NULL and is locked
+	 * Post: player removed and warned all of the objects from its duel list
+	 */
+	if (player->isDuelListEmpty())
+		return;
+
+	if (player->isListening())
+		player->stopListen(player->getListenID());
+
+	if (player->isWatching())
+		player->stopWatch(player->getWatchID());
+
+	player->info("freeing duel list");
+
+	while (player->getDuelListSize() != 0) {
+		ManagedReference<Player> targetPlayer = player->getDuelListObject(0);
+
+		if (targetPlayer != NULL) {
+			try {
+				targetPlayer->wlock(player);
+
+				if (targetPlayer->requestedDuelTo(player)) {
+					targetPlayer->removeFromDuelList(player);
+
+					BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer, targetPlayer->getPvpStatusBitmask());
+					player->sendMessage(pvpstat);
+
+					ChatSystemMessage* csm = new ChatSystemMessage("duel", "end_self", targetPlayer->getObjectID());
+					player->sendMessage(csm);
+
+					BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask());
+					targetPlayer->sendMessage(pvpstat2);
+
+					ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "end_target", player->getObjectID());
+					targetPlayer->sendMessage(csm2);
+				}
+
+				player->removeFromDuelList(targetPlayer);
+
+				targetPlayer->unlock();
+			} catch (ObjectNotDeployedException& e) {
+				player->removeFromDuelList(targetPlayer);
+
+				System::out << "Exception on CombatManager::freeDuelList()\n" << e.getMessage() << "\n";
+			} catch (...) {
+				targetPlayer->unlock();
 			}
-
-			targetPlayer->unlock();
-		} catch (...) {
-			targetPlayer->unlock();
 		}
 	}
+}
+
+void CombatManager::declineDuel(Player* player, uint64 targetID) {
+	if (targetID == 0)
+		return;
+
+	Zone* zone = player->getZone();
+
+	TangibleObject* targetObject = (TangibleObject*)zone->lookupObject(targetID);
+
+	if (targetObject != NULL && targetObject->isPlayer()) {
+		Player* targetPlayer = (Player*)targetObject;
+
+		if (targetPlayer != player)
+			declineDuel(player, targetPlayer);
+	}
+}
+
+void CombatManager::declineDuel(Player* player, Player* targetPlayer) {
+	/* Pre: player != targetPlayer and not NULL; player is locked
+	 * Post: player declined Duel to targetPlayer
+	 */
+
+	if (player->isListening())
+		player->stopListen(player->getListenID());
+
+	if (player->isWatching())
+		player->stopWatch(player->getWatchID());
+
+	try {
+		targetPlayer->wlock(player);
+
+		if (targetPlayer->requestedDuelTo(player)) {
+			targetPlayer->removeFromDuelList(player);
+
+			ChatSystemMessage* csm = new ChatSystemMessage("duel", "cancel_self", targetPlayer->getObjectID());
+			player->sendMessage(csm);
+
+			ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "cancel_target", player->getObjectID());
+			targetPlayer->sendMessage(csm2);
+		}
+
+		targetPlayer->unlock();
+	} catch (...) {
+		targetPlayer->unlock();
+	}
+}
+
+bool CombatManager::handleMountDamage(CreatureObject* attacker, MountCreature* mount) {
+	if (attacker->getMount() == mount)
+		return false;
+
+	CreatureObject* owner = mount->getLinkedCreature();
+
+	if (mount->isDisabled())
+		return false;
+
+	if (!mount->isInWorld())
+		return false;
+
+	if (owner == attacker)
+		return false;
+
+	if (owner->isPlayer() && attacker->isPlayer()) {
+		Player* player = (Player*) owner;
+
+		if (player == attacker)
+			return false;
+
+		if (!canAttack((Player*)attacker, player))
+			return false;
+
+	}
+
+	mount->changeConditionDamage(System::random(20000));
+
+	if (mount->isDisabled()) {
+		CreatureObject* creature = mount->getLinkedCreature();
+		if (creature != NULL && creature->isMounted()) {
+			creature->dismount();
+
+			return true;
+		}
+	}
+
+	return true;
+}

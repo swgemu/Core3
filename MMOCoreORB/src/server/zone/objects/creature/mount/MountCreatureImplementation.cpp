@@ -146,6 +146,25 @@ void MountCreatureImplementation::sendTo(Player* player, bool doClose) {
 		SceneObjectImplementation::close(client);
 }
 
+void MountCreatureImplementation::die() {
+	/*
+	 * Pets need to be handled here later
+	 *
+	while (damageMap.size() > 0) {
+		CreatureObject* object = damageMap.elementAt(0)->getKey();
+		damageMap.drop(object);
+
+		object->release();
+	}
+
+	defenderList.removeAll();
+
+	clearStates();
+
+	aggroedCreature = NULL;
+	*/
+}
+
 void MountCreatureImplementation::repair() {
 	if (linkedCreature == NULL || !linkedCreature->isPlayer())
 		return;

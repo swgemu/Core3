@@ -4289,12 +4289,6 @@ int CreatureObjectImplementation::getCamoCooldownLeft() {
 	return -1 * camoLock.miliDifference();
 }
 
-
-
-
-
-
-
 /// Actions
 bool CreatureObjectImplementation::inflictDamage(CreatureObject* victim, uint8 attribute, uint32 damage) {
 	if (SceneObjectImplementation::inflictDamage(victim, attribute, damage)) {
@@ -4326,9 +4320,10 @@ void CreatureObjectImplementation::recoverFromIncapacitation() {
  * Action performed when a player dies, whether by deathblow or kill.
  */
 void CreatureObjectImplementation::die() {
+
 	setPosture(CreaturePosture::DEAD);
 
-	/// If creature is a player, don't execute the onDeath handler here. It will propogate down from PlayerImplementation.
+	/// If creature is a player, don't execute the onDeath handler here. It will propagate down from PlayerImplementation.
 	if (!isPlayer())
 		onDeath();
 }
