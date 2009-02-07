@@ -346,6 +346,8 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 204: // CAMP DESTROY
 		handleDisbandCamp(player,obj);
 		break;
+	case 205: // Enter/exit mount
+		break;
 	case 225: //Bank Storage
 		handleBankStorage(player);
 	default:

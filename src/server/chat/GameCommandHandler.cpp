@@ -366,33 +366,23 @@ void GameCommandHandler::init() {
 				"applyDot",
 				"USAGE: @applyDot ",
 				&applyDot);
-
 	gmCommands->addCommand("damage", DEVELOPER,
 					"damage.",
 					"Usage: @damage",
 					&damage);
-
-	gmCommands->addCommand("damage", DEVELOPER,
-				"damage.",
-				"Usage: @damage",
-				&damage);
-
 	gmCommands->addCommand("deleteFromZone", DEVELOPER,
 			"Deletes the target item from the zone.",
 			"Usage: @deleteFromZone",
 			&deleteFromZone);
-
-
 	gmCommands->addCommand("setLocation", DEVELOPER,
 			"Shows your setLocation",
 			"Usage: @setLocation>",
 			&setLocation);
-
 	gmCommands->addCommand("toggleCombat", DEVELOPER,
 			"Enables/Disables combat.",
 			"USAGE: @toggleCombat",
 			&toggleCombat);
-	Uncomment for use on DEV servers
+	//Uncomment for use on DEV servers
 	gmCommands->addCommand("getCords", DEVELOPER,
 			"Command to aid the cave devs placing of creatures, SpawnCreature command is written pre-formatted to a file.",
 			"Usage: @getCords <nameOfCreatureFile>",
@@ -3560,6 +3550,7 @@ void GameCommandHandler::applyDot(StringTokenizer tokenizer, Player* player) {
 
 	}
 }
+
 void GameCommandHandler::deleteFromZone(StringTokenizer tokenizer, Player* player) {
 	SceneObject* obj = player->getTarget();
 
