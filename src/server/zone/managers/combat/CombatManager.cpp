@@ -487,7 +487,6 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* tar
 		else
 			attacker->setDefender(target);
 
-		//Farmer find note
 		//No defender for bare metal vehicles (but for pets)
 		if ( !targetCreature->isMount() && ((MountCreature*) targetCreature)->isVehicle())
 			target->addDefender(attacker);
@@ -504,7 +503,6 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* tar
 
 			skill->calculateStates(attacker, targetCreature);
 
-			//Farmer find note
 			//bare metal vehicles shouldn't fight back - but pets should
 			if(targetCreature->isNonPlayerCreature()) {
 				if ( !targetCreature->isMount() && ((MountCreature*) targetCreature)->isVehicle())
