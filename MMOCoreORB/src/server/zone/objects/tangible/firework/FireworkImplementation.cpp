@@ -58,6 +58,8 @@ FireworkImplementation::FireworkImplementation(Player* player, uint32 tempCRC, c
 	templateName = tempn;
 
 	ply = player;
+
+	init();
 }
 
 FireworkImplementation::FireworkImplementation(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempname, int tp)
@@ -103,8 +105,7 @@ void FireworkImplementation::init() {
 		animationType = 0;
 	}
 
-	itemAttributes->setFloatAttribute("charges", 5);
-	parseItemAttributes();
+	setObjectCount(1);
 }
 
 void FireworkImplementation::parseItemAttributes() {

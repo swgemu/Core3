@@ -2127,8 +2127,25 @@ bool CombatManager::handleMountDamage(CreatureObject* attacker, MountCreature* m
 
 	if (mount->isDisabled()) {
 		CreatureObject* creature = mount->getLinkedCreature();
+
 		if (creature != NULL && creature->isMounted()) {
-			creature->dismount();
+			mount->unlock();
+
+			attacker->unlock();
+
+			try {
+				creature->wlock();
+
+				creature->dismount();
+
+				creature->unlock();
+			} catch (...) {
+				creature->unlock();
+			}
+
+			attacker->wlock();
+
+			mount->wlock(attacker);
 
 			return true;
 		}

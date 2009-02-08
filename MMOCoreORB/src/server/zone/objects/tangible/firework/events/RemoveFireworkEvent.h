@@ -54,7 +54,7 @@ class RemoveFireworkEvent : public Event {
 	ManagedReference<FireworkWorld> firework;
 
 public:
-	RemoveFireworkEvent(FireworkWorld* fire) : Event(5000) {
+	RemoveFireworkEvent(FireworkWorld* fire) : Event(1000) {
 		firework = fire;
 	}
 
