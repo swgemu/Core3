@@ -2151,22 +2151,28 @@ void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player* player)
 	String itemType;
 	tokenizer.getStringToken(itemType);
 
+	ZoneServer * server = player->getZone()->getZoneServer();
+	if (server == NULL)
+		return;
+
 	if (itemType == "Holocron") {
 		Holocron * item = new Holocron(player, 0x9BA06548, UnicodeString("Holocron"), "object/tangible/jedi/shared_jedi_holocron_light.iff");
+		server->addObject(item);
 		player->addInventoryItem(item);
-
 		item->sendTo(player);
-	} else if (itemType == "Jetpack") {
-			VehicleDeed * item = new VehicleDeed(player, 0x9899666C, UnicodeString("Deed for: Jetpack"), "jetpack_deed");
-			player->addInventoryItem(item);
 
-			item->sendTo(player);
+	} else if (itemType == "Jetpack") {
+		VehicleDeed * item = new VehicleDeed(player, 0x9899666C, UnicodeString("Deed for: Jetpack"), "jetpack_deed");
+		server->addObject(item);
+		player->addInventoryItem(item);
+		item->sendTo(player);
 
 	} else if (itemType == "ResourceDeed") {
-			ResourceDeed * item = new ResourceDeed(player, 0x7D28DE23, UnicodeString("A Crate of Free Resources"), "resourceDeed");
-			player->addInventoryItem(item);
+		ResourceDeed * item = new ResourceDeed(player, 0x7D28DE23, UnicodeString("A Crate of Free Resources"), "resourceDeed");
+		server->addObject(item);
+		player->addInventoryItem(item);
+		item->sendTo(player);
 
-			item->sendTo(player);
 	} else if (itemType == "Firework") {
 		if (tokenizer.hasMoreTokens()) {
 			int fwAniType = tokenizer.getIntToken();
@@ -2203,6 +2209,7 @@ void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player* player)
 				return;
 			}
 
+			server->addObject(item);
 			player->addInventoryItem(item);
 			item->sendTo(player);
 
@@ -2214,16 +2221,18 @@ void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player* player)
 		Attachment* item = new Attachment(player->getNewItemID(), AttachmentImplementation::ARMOR);
 		item->setSkillMods(System::random(500));
 
+		server->addObject(item);
 		player->addInventoryItem(item);
-
 		item->sendTo(player);
+
 	} else if (itemType == "Powerup") {
 		Powerup* item = new Powerup(player->getNewItemID());
 		item->setPowerupStats(System::random(500));
 
+		server->addObject(item);
 		player->addInventoryItem(item);
-
 		item->sendTo(player);
+
 	} else if (itemType == "DotWeapon") {
 		PistolRangedWeapon* item = new PistolRangedWeapon(player->getNewItemID(), 0x37DB11ED, UnicodeString("Dot CDEF Pistol"), "object/weapon/ranged/pistol/shared_pistol_cdef.iff", false);
 
@@ -2264,10 +2273,11 @@ void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player* player)
 			item->setDot0Duration(System::random(60));
 		}
 
+		server->addObject(item);
 		player->addInventoryItem(item);
 		item->sendTo(player);
-	}
-	else {
+
+	} else {
 		player->sendSystemMessage("Unknown Item Type.");
 	}
 }

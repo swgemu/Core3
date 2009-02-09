@@ -59,4 +59,6 @@ interface Inventory implements Container {
 	int getUnequippedItemCount();
 
 	boolean isFull();
+	
+	void moveObjectToTopLevel(CreatureObject owner, TangibleObject obj);
 }

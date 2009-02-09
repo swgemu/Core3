@@ -164,6 +164,10 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 8: // TRADE
 		handleTrade(player, obj);
 		break;
+	case 11: // Equip
+		break;
+	case 12: // Unequip
+		break;
 	case 13: // DROP
 		handleItemDrop(player, obj);
 		break;
@@ -1144,12 +1148,10 @@ void RadialManager::handleInsureAllItems(Player* player, SceneObject* obj) {
 
 void RadialManager::handleBankStorage(Player* player) {
 	Zone* zone = player->getZone();
-
 	if (zone == NULL)
 		return;
 
 	BankManager* bankmanager = zone->getZoneServer()->getBankManager();
-
 	if (bankmanager == NULL)
 		return;
 

@@ -109,6 +109,8 @@ bool BankInventoryImplementation::addObject(SceneObject* obj) {
 
 	obj->setParent(_this, 0xFFFFFFFF);
 
+	obj->setPickupFlag(true);
+
 	objects.put(oid, obj);
 
 	return true;

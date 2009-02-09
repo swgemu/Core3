@@ -81,6 +81,7 @@ bool ContainerObject::addObject(SceneObject* obj) {
 		obj->acquire();
 	}
 
+	obj->setPickupFlag(true);
 	objects.put(oid, obj);
 
 	obj->setParent((SceneObject*)sceneObject->_getStub());

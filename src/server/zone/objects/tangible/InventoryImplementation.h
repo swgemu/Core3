@@ -68,6 +68,7 @@ public:
 
 	bool removeObject(int index);
 	bool removeObject(uint64 oid);
+	void moveObjectToTopLevel(CreatureObject* owner, TangibleObject* obj);
 };
 
 #endif /*INVENTORYIMPLEMENTATION_H_*/

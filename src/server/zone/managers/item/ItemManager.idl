@@ -47,6 +47,7 @@ import "server/zone/Zone";
 include "server/zone/ZoneProcessServerImplementation";
 
 import "../../objects/tangible/TangibleObject";
+import "../../objects/scene/SceneObject";
 
 import "../../objects/tangible/weapons/Weapon";
 import "../../objects/tangible/wearables/Armor";
@@ -87,6 +88,7 @@ interface ItemManager {
 	
 	void transferContainerItem(Player player, TangibleObject item, unsigned long destinationID);
 	void loadStructurePlayerItems(Player player, unsigned long cellID);
+	boolean moveItemToDestination(Player player, TangibleObject item, SceneObject destination);
 	
 	void giveForageItem(Player player, int group, int count);                                                                     
 	
