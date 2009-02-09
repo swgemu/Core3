@@ -2005,7 +2005,10 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 		item->wlock(player);
 
 		//is the operation exceeding storage space?
-		checkDestinationSpace(player, item, destinationID);
+		if (!checkDestinationSpace(player, item, destinationID)) {
+			item->unlock();
+			return;
+		}
 
 		//Remove the item from its source object
 		if (!removeItemFromSource(player, item)) {
