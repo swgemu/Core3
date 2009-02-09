@@ -101,11 +101,7 @@ public:
 
 	void userLogout(int msgCounter = 3);
 
-	void resurrectCountdown(int counter = 6);
-
 	void clearLogoutEvent();
-
-	void clearResurrectEvent();
 
 	void clearDigestEvent();
 
@@ -246,8 +242,6 @@ public:
 	bool doPowerboost();
 
 	void doPeace();
-
-	void resurrect();
 
 	void doRecovery();
 
@@ -913,6 +907,8 @@ public:
 
 	void onCloneFailure();
 
+	void onResuscitated(SceneObject* healer);
+
 	void onMakePaymentTo(SceneObject* target, unsigned int cost);
 
 	void onMakeBankPaymentTo(SceneObject* target, unsigned int cost);
@@ -942,6 +938,8 @@ public:
 	void clone(unsigned long long terminalID);
 
 	void clone(CloningFacility* cloningFacility);
+
+	void resuscitate(CreatureObject* patient, bool forced = false);
 
 	void increasePvpRating(Player* victim);
 
@@ -984,6 +982,8 @@ public:
 	unsigned int getConsentListSize();
 
 	String& getConsentEntry(int index);
+
+	bool isPowerboosted();
 
 	unsigned char calculateIncapacitationTimer();
 
@@ -1044,11 +1044,7 @@ public:
 
 	void userLogout(int msgCounter);
 
-	void resurrectCountdown(int counter);
-
 	void clearLogoutEvent();
-
-	void clearResurrectEvent();
 
 	void clearDigestEvent();
 
@@ -1189,8 +1185,6 @@ public:
 	bool doPowerboost();
 
 	void doPeace();
-
-	void resurrect();
 
 	void doRecovery();
 
@@ -1856,6 +1850,8 @@ public:
 
 	void onCloneFailure();
 
+	void onResuscitated(SceneObject* healer);
+
 	void onMakePaymentTo(SceneObject* target, unsigned int cost);
 
 	void onMakeBankPaymentTo(SceneObject* target, unsigned int cost);
@@ -1885,6 +1881,8 @@ public:
 	void clone(unsigned long long terminalID);
 
 	void clone(CloningFacility* cloningFacility);
+
+	void resuscitate(CreatureObject* patient, bool forced);
 
 	void increasePvpRating(Player* victim);
 
@@ -1927,6 +1925,8 @@ public:
 	unsigned int getConsentListSize();
 
 	String& getConsentEntry(int index);
+
+	bool isPowerboosted();
 
 	unsigned char calculateIncapacitationTimer();
 

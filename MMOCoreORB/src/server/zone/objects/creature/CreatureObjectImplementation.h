@@ -196,9 +196,9 @@ protected:
 
 	uint64 creatureLinkID;
 
-	Time resurrectionExpires;
-	Time knockdownRecoveryTime;
+	uint64 timeOfDeath;
 
+	Time knockdownRecoveryTime;
 	Time dizzyRecoveryTime;
 	Time stunRecoveryTime;
 	Time blindRecoveryTime;
@@ -388,6 +388,8 @@ protected:
 public:
 	static const float DEFAULT_SPEED = 5.376f;
 	static const float DEFAULT_ACCELERATION = 1.549f;
+
+	static const uint64 DEAD_TOO_LONG = 1800000; //30 minutes - How long can someone be dead and still be resuscitated in Miliseconds
 
 public:
 	CreatureObjectImplementation(uint64 oid);
@@ -680,9 +682,6 @@ public:
 	void addDotState(CreatureObject* attacker, uint64 dotID, uint64 dotType, uint32 str, uint8 type, uint32 duration, float potency,uint32 defense);
 	void applyDots();
 	bool healDot(uint64 dotType,int reduction);
-
-	virtual void doIncapacitate() {
-	}
 
 	inline uint8 getLowestHAMAttribute() {
 		uint8 attribute = CreatureAttribute::MIND;
@@ -1735,6 +1734,10 @@ public:
 		return wounds[CreatureAttribute::WILLPOWER];
 	}
 
+	inline int32 getAttributeDamage(uint8 attribute) {
+		return getAttributeMax(attribute) - getWounds(attribute) - getAttribute(attribute);
+	}
+
 	inline int32 getHealthDamage() {
 		return getHealthMax() - getHealthWounds() - getHealth();
 	}
@@ -1899,22 +1902,16 @@ public:
 			return CreatureAttribute::UNKNOWN;
 	}
 
-	inline bool isRevivable() {
-		return (getHealth() > 0 && getAction() > 0 && getMind() > 0);
+	inline bool isResuscitable() {
+		return (isDead() && (Time().getMiliTime() - timeOfDeath) < DEAD_TOO_LONG);
 	}
 
-	inline bool isResurrectable() {
-		return resurrectionExpires.isFuture();
+	inline void setTimeOfDeath(uint64 mtime) {
+		timeOfDeath = mtime;
 	}
 
-	inline uint64 getResurrectionExpires() {
-		return resurrectionExpires.getMiliTime();
-	}
-
-	inline void setResurrectionExpires(uint64 msecs) {
-		resurrectionExpires.update();
-		int64 diff = msecs - resurrectionExpires.getMiliTime();
-		resurrectionExpires.addMiliTime((diff > 0) ? diff : 0);
+	inline uint64 getTimeOfDeath() {
+		return timeOfDeath;
 	}
 
 	inline bool hasHealthDamage() {
@@ -2583,15 +2580,10 @@ public:
 	void explode(int level = 1, bool destroy = true);
 
 	// Medic & Doctor
-	int healDamage(CreatureObject* target, int damage, uint8 attribute, bool doBattleFatigue = true);
-	int healWound(CreatureObject* target, int damage, uint8 attribute, bool doBattleFatigue = true);
-	int healEnhance(CreatureObject* target, int amount, float duration, uint8 attribute, bool doBattleFatigue = true);
 	bool curePoison(CreatureObject* target, float effectiveness);
 	bool cureDisease(CreatureObject* target, float effectiveness);
 	bool extinguishFire(CreatureObject* target, float effectiveness);
 	bool healState(CreatureObject* target, uint64 state);
-	bool revive(CreatureObject* target, bool forcedChange = false);
-	bool resurrect(CreatureObject* target, bool forcedChange = false);
 
 	void deactivateWoundTreatment();
 	void activateWoundTreatment();
@@ -2729,6 +2721,10 @@ public:
 	virtual void onIncapacitationRecovery();
 	virtual void onDeath();
 	virtual void onKilled(SceneObject* killer);
+	virtual void onResuscitated(SceneObject* healer);
+	virtual void onDamageHealed(SceneObject* healer, uint8 attribute, uint32 amount);
+	virtual void onWoundHealed(SceneObject* healer, uint8 attribute, uint32 amount);
+	virtual void onHealEnhanced(SceneObject* enhancer, uint8 attribute, uint32 amount, float duration);
 	virtual void onBlinded();
 	virtual void onDizzied();
 	virtual void onStunned();
@@ -2760,6 +2756,10 @@ public:
 	}
 
 	//Getters
+	inline bool canRecoverFromIncapacitation() {
+		return (!isDead() && getHealth() > 0 && getAction() > 0 && getMind() > 0);
+	}
+
 	inline float getCombatRegenModifier() {
 		return combatRegenModifier;
 	}

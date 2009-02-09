@@ -1490,35 +1490,6 @@ bool CreatureImplementation::doMovement() {
 	return true;
 }
 
-void CreatureImplementation::doIncapacitate() {
-	if (isMount())
-		return;
-
-	disseminateXp(getLevel());
-	deaggro();
-	setPosture(CreaturePosture::DEAD);
-
-	CreatureObject* lootOwner = getLootOwner();
-	if ((isImperial() || isRebel()) && lootOwner != NULL && lootOwner->isPlayer()) {
-		Player* lootOwnerPlayer = (Player *) lootOwner;
-
-		String pfaction = (lootOwnerPlayer->isImperial())
-			? "imperial" : "rebel";
-
-		String myfaction = (isImperial())
-			? "imperial" : "rebel";
-
-		lootOwnerPlayer->addFactionPoints(pfaction, fpValue);
-		lootOwnerPlayer->subtractFactionPoints(myfaction, fpValue);
-	}
-
-	creatureHealth = System::random(3) + 1;
-
-	createHarvestList();
-
-	scheduleDespawnCreature(180000);
-}
-
 void CreatureImplementation::createHarvestList() {
 	Player* tempPlayer;
 	GroupObject* group;
@@ -2018,4 +1989,39 @@ void CreatureImplementation::onIncapacitateTarget(CreatureObject* victim) {
 		deathblow((Player*) victim);
 
 	deaggro();
+}
+
+void CreatureImplementation::onKilled(CreatureObject* killer) {
+	System::out << "in onKilled" << endl;
+	die();
+}
+
+void CreatureImplementation::onDeath() {
+	if (isMount())
+		return;
+
+	disseminateXp(getLevel());
+	deaggro();
+	setPosture(CreaturePosture::DEAD);
+
+	//TODO: Currently doesn't work with groups does it?
+	CreatureObject* lootOwner = getLootOwner();
+	if ((isImperial() || isRebel()) && lootOwner != NULL && lootOwner->isPlayer()) {
+		Player* lootOwnerPlayer = (Player *) lootOwner;
+
+		String pfaction = (lootOwnerPlayer->isImperial())
+			? "imperial" : "rebel";
+
+		String myfaction = (isImperial())
+			? "imperial" : "rebel";
+
+		lootOwnerPlayer->addFactionPoints(pfaction, fpValue);
+		lootOwnerPlayer->subtractFactionPoints(myfaction, fpValue);
+	}
+
+	creatureHealth = System::random(3) + 1;
+
+	createHarvestList();
+
+	scheduleDespawnCreature(180000);
 }

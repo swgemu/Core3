@@ -65,21 +65,11 @@ public:
 
 	int useObject(Player* player);
 
+	uint32 calculatePower(CreatureObject* enhancer, CreatureObject* patient, bool applyBattleFatgiue = true);
+
 	void generateAttributes(SceneObject* obj);
-
 	void parseItemAttributes();
-
 	void addAttributes(AttributeListMessage* alm);
-
-	uint32 getBuffCRC();
-
-	inline int calculatePower(CreatureObject* creature) {
-		//TODO: Add in medical city bonus
-		float modEnvironment = (float) creature->getMedicalFacilityRating();
-		float modSkill = (float) creature->getSkillMod("healing_wound_treatment");
-		float modCityBonus = 1.0f;
-		return (int) round(effectiveness * modCityBonus * modEnvironment * (100.0f + modSkill) / 10000.0f);
-	}
 
 	inline void setEffectiveness(float eff) {
 		effectiveness = eff;

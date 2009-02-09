@@ -121,10 +121,8 @@ interface Player implements CreatureObject {
 
 	void logout(boolean doLock = true);
 	void userLogout(int msgCounter = 3);
-	void resurrectCountdown(int counter = 6);
 
 	void clearLogoutEvent();
-	void clearResurrectEvent();
 	void clearDigestEvent();
 	void clearRecoveryEvent();
 	void clearSaveStateEvent();
@@ -225,9 +223,6 @@ interface Player implements CreatureObject {
 	boolean doPowerboost();
 
 	void doPeace();
-
-	//Incapacitation, Death, Cloning
-	void resurrect();
 
 	void doRecovery();
 
@@ -751,6 +746,7 @@ interface Player implements CreatureObject {
 	void onCloneDataAlreadyStored();
 	void onCloneSuccessful();
 	void onCloneFailure();
+	void onResuscitated(SceneObject healer);
 	void onMakePaymentTo(SceneObject target, unsigned int cost);
 	void onMakeBankPaymentTo(SceneObject target, unsigned int cost);
 	void onInsufficientFundsAvailable(SceneObject target, unsigned int amount);
@@ -768,6 +764,7 @@ interface Player implements CreatureObject {
 	void clone();
 	void clone(unsigned long terminalID);
 	void clone(CloningFacility cloningFacility);
+	void resuscitate(CreatureObject patient, boolean forced = false);
 	void increasePvpRating(Player victim);
 	void increasePvpRating(unsigned int amount);
 	void decreasePvpRating(Player killer);
@@ -794,6 +791,8 @@ interface Player implements CreatureObject {
 	boolean hasConsentFrom(Player player);
 	unsigned int getConsentListSize();
 	String getConsentEntry(int index);
+	
+	boolean isPowerboosted();
 
 	//Calculations
 	unsigned char calculateIncapacitationTimer();

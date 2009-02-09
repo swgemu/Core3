@@ -53,12 +53,12 @@ class QuickHealTargetSkill : public TargetSkill {
 protected:
 	String effectName;
 	int mindCost;
-	int mindWoundCost;	
+	int mindWoundCost;
 
 	int healthHealed;
 	int actionHealed;
 	int mindHealed;
-	
+
 	float speed;
 
 public:
@@ -66,11 +66,11 @@ public:
 		effectName = aname;
 		mindCost = 0;
 		mindWoundCost = 0;
-		
+
 		healthHealed = 0;
 		actionHealed = 0;
 		mindHealed = 0;
-		
+
 		speed = 0.0f;
 	}
 
@@ -97,7 +97,7 @@ public:
 
 		if (creature->isProne()) {
 			creature->sendSystemMessage("You cannot Quick Heal while prone.");
-			return 0;		
+			return 0;
 		}
 
 		if (creature->isMeditating()) {
@@ -125,7 +125,7 @@ public:
 			return 0;
 		}
 
-		
+
 		if (!creatureTarget->hasHealthDamage() && !creatureTarget->hasActionDamage()) {
 				if (creatureTarget == creature)
 					creature->sendSystemMessage("healing_response", "healing_response_61"); //You have no damage to heal.
@@ -136,14 +136,14 @@ public:
 
 			int healPower = (int) round(150 + System::random(600));
 
-			int healedHealth = creature->healDamage(creatureTarget, healPower, CreatureAttribute::HEALTH);
-			int healedAction = creature->healDamage(creatureTarget, healPower, CreatureAttribute::ACTION);
+			int healedHealth = creature->healDamage(creatureTarget, CreatureAttribute::HEALTH, healPower);
+			int healedAction = creature->healDamage(creatureTarget, CreatureAttribute::ACTION, healPower);
 
 			if (creature->isPlayer())
 				((Player*)creature)->sendBattleFatigueMessage(creatureTarget);
 
 			sendHealMessage(creature, creatureTarget, healedHealth, healedAction);
-			
+
 		creature->changeMindBar(-mindCost);
 		creature->changeFocusWoundsBar(mindWoundCost);
 		creature->changeWillpowerWoundsBar(mindWoundCost);
@@ -153,7 +153,7 @@ public:
 
 		return 0;
 	}
-	
+
 	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, int healthDamage, int actionDamage) {
 		Player* player = (Player*) creature;
 		Player* playerTarget = (Player*) creatureTarget;
@@ -183,7 +183,7 @@ public:
 			playerTarget->sendSystemMessage(msgTarget.toString());
 		}
 	}
-	
+
 	float calculateSpeed(CreatureObject* creature) {
 		return speed;
 	}

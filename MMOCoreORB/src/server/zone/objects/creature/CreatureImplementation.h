@@ -195,7 +195,6 @@ public:
 
 	bool doMovement();
 
-	void doIncapacitate();
 	void createHarvestList();
 	void doStandUp();
 
@@ -510,6 +509,8 @@ public:
 
 	//Event Handlers
 	void onIncapacitateTarget(CreatureObject* victim);
+	void onKilled(CreatureObject* killer);
+	void onDeath();
 
 
 	friend class CreatureManagerImplementation;

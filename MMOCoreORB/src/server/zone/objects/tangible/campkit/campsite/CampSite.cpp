@@ -234,7 +234,7 @@ void CampSite::exitNotificaton(Player* player) {
 		((CampSiteImplementation*) _impl)->exitNotificaton(player);
 }
 
-void CampSite::reactiveRecovery(Player* player) {
+void CampSite::reactivateRecovery(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -244,7 +244,7 @@ void CampSite::reactiveRecovery(Player* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CampSiteImplementation*) _impl)->reactiveRecovery(player);
+		((CampSiteImplementation*) _impl)->reactivateRecovery(player);
 }
 
 /*
@@ -307,7 +307,7 @@ Packet* CampSiteAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		exitNotificaton((Player*) inv->getObjectParameter());
 		break;
 	case 22:
-		reactiveRecovery((Player*) inv->getObjectParameter());
+		reactivateRecovery((Player*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -380,8 +380,8 @@ void CampSiteAdapter::exitNotificaton(Player* player) {
 	return ((CampSiteImplementation*) impl)->exitNotificaton(player);
 }
 
-void CampSiteAdapter::reactiveRecovery(Player* player) {
-	return ((CampSiteImplementation*) impl)->reactiveRecovery(player);
+void CampSiteAdapter::reactivateRecovery(Player* player) {
+	return ((CampSiteImplementation*) impl)->reactivateRecovery(player);
 }
 
 /*

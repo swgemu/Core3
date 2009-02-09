@@ -468,10 +468,9 @@ interface CreatureObject implements TangibleObject {
 	boolean hasStates();
 	boolean hasState(unsigned long state);
 
-	boolean isRevivable();
-	unsigned long getResurrectionExpires();
-	void setResurrectionExpires(unsigned long msecs);
-	boolean isResurrectable();
+	boolean isResuscitable();
+	void setTimeOfDeath(unsigned long mtime);
+	unsigned long getTimeOfDeath();
 
 	boolean hasHealthDamage();
 	boolean hasActionDamage();
@@ -569,6 +568,7 @@ interface CreatureObject implements TangibleObject {
 	int getFocusWounds();
 	int getWillpowerWounds();
 
+	unsigned int getAttributeDamage(unsigned char attribute);
 	unsigned int getHealthDamage();
 	unsigned int getActionDamage();
 	unsigned int getMindDamage();
@@ -818,14 +818,7 @@ interface CreatureObject implements TangibleObject {
 	BuffObject getBuffObject(const unsigned int buffCRC);
 
 	boolean hasBuff(const unsigned int buffCRC);
-
-	// Medic & Doctor
-	int healDamage(CreatureObject target, int damage, unsigned char attribute, boolean doBattleFatigue = true);
-	int healWound(CreatureObject target, int damage, unsigned char attribute, boolean doBattleFatigue = true);
-	int healEnhance(CreatureObject target, int amount, float duration, unsigned char attribute, boolean doBattleFatigue = true);
 	boolean healState(CreatureObject target, unsigned long state);
-	boolean revive(CreatureObject target, boolean forcedChange = false);
-	boolean resurrect(CreatureObject target, boolean forcedChange = false);
 
 	void deactivateWoundTreatment();
 	void activateWoundTreatment();
@@ -940,6 +933,10 @@ interface CreatureObject implements TangibleObject {
 	void onIncapacitationRecovery();
 	void onDeath();
 	void onKilled(SceneObject killer);
+	void onResuscitated(SceneObject healer);
+	void onDamageHealed(SceneObject healer, unsigned char attribute, unsigned int amount);
+	void onWoundHealed(SceneObject healer, unsigned char attribute, unsigned int amount);
+	void onHealEnhanced(SceneObject enhancer, unsigned char attribute, unsigned int amount, float duration);
 	void onBlinded();
 	void onDizzied();
 	void onStunned();
@@ -964,5 +961,6 @@ interface CreatureObject implements TangibleObject {
 	//Setters
 
 	//Getters
+	boolean canRecoverFromIncapacitation();
 
 }

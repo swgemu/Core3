@@ -671,6 +671,10 @@ public:
 	virtual void onInflictDamage(CreatureObject* victim, uint8 attribute, uint32 damage);
 	virtual void onKill(CreatureObject* victim);
 	virtual void onDeathblow(Player* victim);
+	virtual void onResuscitateTarget(CreatureObject* patient);
+	virtual void onHealTargetDamage(CreatureObject* patient, uint8 attribute, uint32 amount);
+	virtual void onHealTargetWound(CreatureObject* patient, uint8 attribute, uint32 amount);
+	virtual void onHealEnhanceTarget(CreatureObject* patient, uint8 attribute, uint32 amount, float duration);
 	virtual void onReceivePaymentFrom(CreatureObject* sender, uint32 amount);
 
 	//Actions
@@ -679,6 +683,10 @@ public:
 	virtual void incapacitate(CreatureObject* victim);
 	virtual void kill(CreatureObject* victim);
 	virtual void deathblow(Player* victim);
+	virtual void resuscitate(CreatureObject* patient, bool forced = false);
+	virtual uint32 healDamage(CreatureObject* patient, uint8 attribute, uint32 amount);
+	virtual uint32 healWound(CreatureObject* patient, uint8 attribute, uint32 amount);
+	virtual uint32 healEnhance(CreatureObject* patient, uint8 attribute, uint32 amount, float duration);
 	virtual void receivePaymentFrom(CreatureObject* sender, uint32 amount);
 	virtual void warpTo(float x, float z, float y, uint64 parentID = 0);
 

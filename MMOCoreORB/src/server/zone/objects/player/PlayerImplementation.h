@@ -98,7 +98,6 @@ class CenterOfBeingEvent;
 class PowerboostEventWane;
 class PlayerDisconnectEvent;
 class PlayerLogoutEvent;
-class PlayerResurrectEvent;
 class ForageDelayEvent;
 class ForageZone;
 
@@ -147,7 +146,6 @@ class PlayerImplementation : public PlayerServant {
 
 	PlayerDisconnectEvent* disconnectEvent;
 	PlayerLogoutEvent* logoutEvent;
-	PlayerResurrectEvent* resurrectEvent;
 
 	PlayerSaveStateEvent* playerSaveStateEvent;
 
@@ -374,8 +372,6 @@ public:
 	void logout(bool doLock = true);
 	void userLogout(int msgCounter = 3);
 
-	void resurrectCountdown(int counter = 6);
-
 	void disconnect(bool closeClient = true, bool doLock = true);
 
 	void initializeEvents();
@@ -383,10 +379,6 @@ public:
 
 	inline void clearLogoutEvent() {
 		logoutEvent = NULL;
-	}
-
-	inline void clearResurrectEvent() {
-		resurrectEvent = NULL;
 	}
 
 	inline void clearDigestEvent() {
@@ -782,8 +774,6 @@ public:
 
 	void lootCorpse(bool lootAll = false);
 	void lootObject(Creature* creature, SceneObject* object);
-
-	void resurrect();
 
 	//Foraging
 	void startForaging(int foragetype);
@@ -1986,6 +1976,7 @@ public:
 	void onCloneDataAlreadyStored();
 	void onCloneSuccessful();
 	void onCloneFailure();
+	void onResuscitated(SceneObject* healer);
 	void onMakePaymentTo(SceneObject* target, uint32 cost);
 	void onMakeBankPaymentTo(SceneObject* target, uint32 cost);
 	void onInsufficientFundsAvailable(SceneObject* target, uint32 amount);
@@ -2003,6 +1994,7 @@ public:
 	void clone();
 	void clone(uint64 terminalID);
 	void clone(CloningFacility* cloningFacility);
+	void resuscitate(CreatureObject* patient, bool forced = false);
 	void increasePvpRating(Player* victim);
 	void increasePvpRating(uint32 amount);
 	void decreasePvpRating(Player* killer);
@@ -2045,7 +2037,7 @@ public:
 
 	inline bool hasConsented(const String& name) {
 		for (int i = 0; i < consentList.size(); i++) {
-			if (consentList.get(i) == name)
+			if (consentList.get(i) == name.toLowerCase())
 				return true;
 		}
 
@@ -2053,7 +2045,7 @@ public:
 	}
 
 	inline bool hasConsentFrom(Player* player) {
-		return player->hasConsented(getFirstName());
+		return player->hasConsented(getFirstName().toLowerCase());
 	}
 
 	inline uint32 getConsentListSize() {
@@ -2062,6 +2054,10 @@ public:
 
 	inline String& getConsentEntry(int index) {
 		return consentList.get(index);
+	}
+
+	inline bool isPowerboosted() {
+		return powerboosted;
 	}
 
 	friend class PlayerManager;

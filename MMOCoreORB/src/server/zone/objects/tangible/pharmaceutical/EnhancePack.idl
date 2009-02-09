@@ -20,9 +20,7 @@ interface EnhancePack implements Pharmaceutical {
 	
 	void generateAttributes(SceneObject obj);
 	
-	unsigned int getBuffCRC();
-	
-	int calculatePower(CreatureObject creature);
+	unsigned int calculatePower(CreatureObject enhancer, CreatureObject patient, boolean applyBattleFatigue = true);
 	
 	void setEffectiveness(float eff);
 	void setDuration(float dur);

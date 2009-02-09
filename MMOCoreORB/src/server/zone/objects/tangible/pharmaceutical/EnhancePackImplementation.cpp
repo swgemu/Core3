@@ -72,34 +72,10 @@ int EnhancePackImplementation::useObject(Player* player) {
 	return 0;
 }
 
-uint32 EnhancePackImplementation::getBuffCRC() {
-	switch (attribute) {
-	case CreatureAttribute::ACTION:
-		return BuffCRC::MEDICAL_ENHANCE_ACTION;
-		break;
-	case CreatureAttribute::CONSTITUTION:
-		return BuffCRC::MEDICAL_ENHANCE_CONSTITUTION;
-		break;
-	case CreatureAttribute::STRENGTH:
-		return BuffCRC::MEDICAL_ENHANCE_STRENGTH;
-		break;
-	case CreatureAttribute::QUICKNESS:
-		return BuffCRC::MEDICAL_ENHANCE_QUICKNESS;
-		break;
-	case CreatureAttribute::STAMINA:
-		return BuffCRC::MEDICAL_ENHANCE_STAMINA;
-		break;
-	case CreatureAttribute::HEALTH:
-	default:
-		return BuffCRC::MEDICAL_ENHANCE_HEALTH;
-		break;
-	}
-}
-
 void EnhancePackImplementation::initialize() {
 	setEffectiveness(0.0f);
 	setDuration(0.0f);
-	setAttribute(CreatureAttribute::UNKNOWN);
+	setAttribute(CreatureAttribute::HEALTH);
 }
 
 void EnhancePackImplementation::parseItemAttributes() {
@@ -139,4 +115,17 @@ void EnhancePackImplementation::generateAttributes(SceneObject* obj) {
 	addAttributes(alm);
 
 	player->sendMessage(alm);
+}
+
+uint32 EnhancePackImplementation::calculatePower(CreatureObject* enhancer, CreatureObject* patient, bool applyBattleFatigue) {
+	float power = getEffectiveness();
+
+	if (applyBattleFatigue)
+		power -= power * patient->calculateBFRatio();
+
+	float modEnvironment = (float) enhancer->getMedicalFacilityRating();
+	float modSkill = (float) enhancer->getSkillMod("healing_wound_treatment");
+	float modCityBonus = 1.0f; //TODO: Add in medical city bonus
+
+	return (uint32) round(power * modCityBonus * modEnvironment * (100.0f + modSkill) / 10000.0f);
 }

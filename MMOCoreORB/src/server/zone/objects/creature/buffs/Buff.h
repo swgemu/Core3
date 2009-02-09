@@ -55,6 +55,8 @@ which carries forward this exception.
 
 #include "../skillmods/SkillModList.h"
 
+#include "../CreatureAttribute.h"
+
 class CreatureObject;
 class Player;
 class PlayerObject;
@@ -215,6 +217,30 @@ public:
 	static const uint32 FORCE_RANK_SERENITY = 0xA09E5934;
 	static const uint32 SKILL_BUFF_POLEARM_ACCURACY = 0xF0C5EEED;
 	static const uint32 SKILL_BUFF_POLEARM_SPEED = 0x6F675FB6;
+
+	uint32 static getMedicalBuff(uint8 attribute) {
+		uint32 buffCRC = MEDICAL_ENHANCE_HEALTH;
+
+		switch (attribute) {
+		case CreatureAttribute::ACTION:
+			buffCRC = BuffCRC::MEDICAL_ENHANCE_ACTION;
+			break;
+		case CreatureAttribute::STRENGTH:
+			buffCRC = BuffCRC::MEDICAL_ENHANCE_STRENGTH;
+			break;
+		case CreatureAttribute::CONSTITUTION:
+			buffCRC = BuffCRC::MEDICAL_ENHANCE_CONSTITUTION;
+			break;
+		case CreatureAttribute::QUICKNESS:
+			buffCRC = BuffCRC::MEDICAL_ENHANCE_QUICKNESS;
+			break;
+		case CreatureAttribute::STAMINA:
+			buffCRC = BuffCRC::MEDICAL_ENHANCE_STAMINA;
+			break;
+		}
+
+		return buffCRC;
+	}
 };
 
 class BuffType {
@@ -248,18 +274,7 @@ protected:
 	Event* buffEvent;
 
 	// HAM Values - can be negative
-	int healthBuff;
-	int actionBuff;
-	int mindBuff;
-
-	int strengthBuff;
-	int constitutionBuff;
-
-	int staminaBuff;
-	int quicknessBuff;
-
-	int willpowerBuff;
-	int focusBuff;
+	int32 attributeBuffs[9];
 
 	int forcePowerBuff;
 	//int forceRegenBuff;
@@ -311,40 +326,44 @@ public:
 		return buffDuration;
 	}
 
+	inline int getAttributeBuff(uint8 attribute) {
+		return attributeBuffs[attribute];
+	}
+
 	inline int getHealthBuff() {
-		return healthBuff;
+		return attributeBuffs[CreatureAttribute::HEALTH];
 	}
 
 	inline int getActionBuff() {
-		return actionBuff;
+		return attributeBuffs[CreatureAttribute::ACTION];
 	}
 
 	inline int getMindBuff() {
-		return mindBuff;
+		return attributeBuffs[CreatureAttribute::MIND];
 	}
 
 	inline int getStrengthBuff() {
-		return strengthBuff;
+		return attributeBuffs[CreatureAttribute::STRENGTH];
 	}
 
 	inline int getConstitutionBuff() {
-		return constitutionBuff;
+		return attributeBuffs[CreatureAttribute::CONSTITUTION];
 	}
 
 	inline int getStaminaBuff() {
-		return staminaBuff;
+		return attributeBuffs[CreatureAttribute::STAMINA];
 	}
 
 	inline int getQuicknessBuff() {
-		return quicknessBuff;
+		return attributeBuffs[CreatureAttribute::QUICKNESS];
 	}
 
 	inline int getWillpowerBuff() {
-		return willpowerBuff;
+		return attributeBuffs[CreatureAttribute::WILLPOWER];
 	}
 
 	inline int getFocusBuff() {
-		return focusBuff;
+		return attributeBuffs[CreatureAttribute::FOCUS];
 	}
 
 	inline int getForcePowerBuff() {
@@ -376,40 +395,44 @@ public:
 		buffDuration = duration;
 	}
 
+	inline void setAttributeBuff(uint8 attribute, int value) {
+		attributeBuffs[attribute] = value;
+	}
+
 	inline void setHealthBuff(int health) {
-		healthBuff = health;
+		attributeBuffs[CreatureAttribute::HEALTH] = health;
 	}
 
 	inline void setActionBuff(int action) {
-		actionBuff = action;
+		attributeBuffs[CreatureAttribute::ACTION] = action;
 	}
 
 	inline void setMindBuff(int mind) {
-		mindBuff = mind;
+		attributeBuffs[CreatureAttribute::MIND] = mind;
 	}
 
 	inline void setStrengthBuff(int strength) {
-		strengthBuff = strength;
+		attributeBuffs[CreatureAttribute::STRENGTH] = strength;
 	}
 
 	inline void setConstitutionBuff(int constitution) {
-		constitutionBuff = constitution;
+		attributeBuffs[CreatureAttribute::CONSTITUTION] = constitution;
 	}
 
 	inline void setStaminaBuff(int stamina) {
-		staminaBuff = stamina;
+		attributeBuffs[CreatureAttribute::STAMINA] = stamina;
 	}
 
 	inline void setQuicknessBuff(int quickness) {
-		quicknessBuff = quickness;
+		attributeBuffs[CreatureAttribute::QUICKNESS] = quickness;
 	}
 
 	inline void setWillpowerBuff(int willpower) {
-		willpowerBuff = willpower;
+		attributeBuffs[CreatureAttribute::WILLPOWER] = willpower;
 	}
 
 	inline void setFocusBuff(int focus) {
-		focusBuff = focus;
+		attributeBuffs[CreatureAttribute::FOCUS] = focus;
 	}
 
 	inline void setForcePowerBuff(int force) {
@@ -462,13 +485,8 @@ public:
 
 	uint32 getTimeRemaining() {
 		Time timeEnd = buffEvent->getTimeStamp();
-		Time currentTime;
-		currentTime.update();
 
-		uint32 secondsTime = (uint32) (currentTime.getMiliTime() / 1000);
-		uint32 secondsEnd = (uint32) (timeEnd.getMiliTime() / 1000);
-
-		return secondsEnd - secondsTime;
+		return (uint32) (timeEnd.miliDifference() / 1000);
 	}
 };
 

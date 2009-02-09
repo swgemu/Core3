@@ -59,7 +59,7 @@ public:
 
 	void exitNotificaton(Player* player);
 
-	void reactiveRecovery(Player* player);
+	void reactivateRecovery(Player* player);
 
 protected:
 	CampSite(DummyConstructorParameter* param);
@@ -113,7 +113,7 @@ public:
 
 	void exitNotificaton(Player* player);
 
-	void reactiveRecovery(Player* player);
+	void reactivateRecovery(Player* player);
 
 };
 

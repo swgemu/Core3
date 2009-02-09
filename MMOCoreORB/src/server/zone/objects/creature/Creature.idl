@@ -81,7 +81,6 @@ interface Creature implements CreatureObject {
 
 	boolean doMovement();
 
-	void doIncapacitate();
 	void doStandUp();
 
 	void setArmor(unsigned int ar);
@@ -176,4 +175,6 @@ interface Creature implements CreatureObject {
 
 	//Event Handlers
 	void onIncapacitateTarget(CreatureObject victim);
+	void onKilled(CreatureObject killer);
+	void onDeath();
 }

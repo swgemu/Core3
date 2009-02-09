@@ -156,8 +156,8 @@ public:
 
 			int healPower = (int) round((100.0f + modSkill) / 100.0f * effectiveness);
 
-			int healedHealth = creature->healDamage(creatureTarget, healPower, CreatureAttribute::HEALTH);
-			int healedAction = creature->healDamage(creatureTarget, healPower, CreatureAttribute::ACTION);
+			int healedHealth = creature->healDamage(creatureTarget, CreatureAttribute::HEALTH, healPower);
+			int healedAction = creature->healDamage(creatureTarget, CreatureAttribute::ACTION, healPower);
 
 			if (creature->isPlayer())
 				((Player*)creature)->sendBattleFatigueMessage(creatureTarget);
@@ -189,7 +189,9 @@ public:
 
 			int healPower = (int) round(effectiveness * modCityBonus * modEnvironment * (100.0f + modSkill) / 10000.0f);
 
-			int healedWounds = creature->healWound(creatureTarget, healPower, attribute);
+			//TODO: Battle Fatigue
+
+			int healedWounds = creature->healWound(creatureTarget, attribute, healPower);
 
 			if (creature->isPlayer())
 				((Player*)creature)->sendBattleFatigueMessage(creatureTarget);

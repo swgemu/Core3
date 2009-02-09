@@ -305,6 +305,14 @@ public:
 
 	void onDeathblow(Player* victim);
 
+	void onResuscitateTarget(CreatureObject* patient);
+
+	void onHealTargetDamage(CreatureObject* patient, unsigned char attribute, unsigned int amount);
+
+	void onHealTargetWound(CreatureObject* patient, unsigned char attribute, unsigned int amount);
+
+	void onHealEnhanceTarget(CreatureObject* patient, unsigned char attribute, unsigned int amount, float duration);
+
 	void onReceivePaymentFrom(CreatureObject* sender, unsigned int amount);
 
 	bool inflictDamage(AttackableObject* victim, unsigned int damage);
@@ -316,6 +324,14 @@ public:
 	void kill(CreatureObject* victim);
 
 	void deathblow(Player* victim);
+
+	unsigned int healDamage(CreatureObject* patient, unsigned char attribute, unsigned int amount);
+
+	unsigned int healWound(CreatureObject* patient, unsigned char attribute, unsigned int amount);
+
+	unsigned int healEnhance(CreatureObject* patient, unsigned char attribute, unsigned int amount, float duration);
+
+	void resuscitate(CreatureObject* patient, bool forced = false);
 
 	void receivePaymentFrom(CreatureObject* sender, unsigned int amount);
 
@@ -615,6 +631,14 @@ public:
 
 	void onDeathblow(Player* victim);
 
+	void onResuscitateTarget(CreatureObject* patient);
+
+	void onHealTargetDamage(CreatureObject* patient, unsigned char attribute, unsigned int amount);
+
+	void onHealTargetWound(CreatureObject* patient, unsigned char attribute, unsigned int amount);
+
+	void onHealEnhanceTarget(CreatureObject* patient, unsigned char attribute, unsigned int amount, float duration);
+
 	void onReceivePaymentFrom(CreatureObject* sender, unsigned int amount);
 
 	bool inflictDamage(AttackableObject* victim, unsigned int damage);
@@ -626,6 +650,14 @@ public:
 	void kill(CreatureObject* victim);
 
 	void deathblow(Player* victim);
+
+	unsigned int healDamage(CreatureObject* patient, unsigned char attribute, unsigned int amount);
+
+	unsigned int healWound(CreatureObject* patient, unsigned char attribute, unsigned int amount);
+
+	unsigned int healEnhance(CreatureObject* patient, unsigned char attribute, unsigned int amount, float duration);
+
+	void resuscitate(CreatureObject* patient, bool forced);
 
 	void receivePaymentFrom(CreatureObject* sender, unsigned int amount);
 

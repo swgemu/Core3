@@ -577,13 +577,11 @@ public:
 
 	bool hasState(unsigned long long state);
 
-	bool isRevivable();
+	bool isResuscitable();
 
-	unsigned long long getResurrectionExpires();
+	void setTimeOfDeath(unsigned long long mtime);
 
-	void setResurrectionExpires(unsigned long long msecs);
-
-	bool isResurrectable();
+	unsigned long long getTimeOfDeath();
 
 	bool hasHealthDamage();
 
@@ -732,6 +730,8 @@ public:
 	int getFocusWounds();
 
 	int getWillpowerWounds();
+
+	unsigned int getAttributeDamage(unsigned char attribute);
 
 	unsigned int getHealthDamage();
 
@@ -1095,17 +1095,7 @@ public:
 
 	bool hasBuff(const unsigned int buffCRC);
 
-	int healDamage(CreatureObject* target, int damage, unsigned char attribute, bool doBattleFatigue = true);
-
-	int healWound(CreatureObject* target, int damage, unsigned char attribute, bool doBattleFatigue = true);
-
-	int healEnhance(CreatureObject* target, int amount, float duration, unsigned char attribute, bool doBattleFatigue = true);
-
 	bool healState(CreatureObject* target, unsigned long long state);
-
-	bool revive(CreatureObject* target, bool forcedChange = false);
-
-	bool resurrect(CreatureObject* target, bool forcedChange = false);
 
 	void deactivateWoundTreatment();
 
@@ -1255,6 +1245,14 @@ public:
 
 	void onKilled(SceneObject* killer);
 
+	void onResuscitated(SceneObject* healer);
+
+	void onDamageHealed(SceneObject* healer, unsigned char attribute, unsigned int amount);
+
+	void onWoundHealed(SceneObject* healer, unsigned char attribute, unsigned int amount);
+
+	void onHealEnhanced(SceneObject* enhancer, unsigned char attribute, unsigned int amount, float duration);
+
 	void onBlinded();
 
 	void onDizzied();
@@ -1286,6 +1284,8 @@ public:
 	void equipItem(TangibleObject* item);
 
 	void unequipItem(TangibleObject* item);
+
+	bool canRecoverFromIncapacitation();
 
 protected:
 	CreatureObject(DummyConstructorParameter* param);
@@ -1853,13 +1853,11 @@ public:
 
 	bool hasState(unsigned long long state);
 
-	bool isRevivable();
+	bool isResuscitable();
 
-	unsigned long long getResurrectionExpires();
+	void setTimeOfDeath(unsigned long long mtime);
 
-	void setResurrectionExpires(unsigned long long msecs);
-
-	bool isResurrectable();
+	unsigned long long getTimeOfDeath();
 
 	bool hasHealthDamage();
 
@@ -2008,6 +2006,8 @@ public:
 	int getFocusWounds();
 
 	int getWillpowerWounds();
+
+	unsigned int getAttributeDamage(unsigned char attribute);
 
 	unsigned int getHealthDamage();
 
@@ -2371,17 +2371,7 @@ public:
 
 	bool hasBuff(const unsigned int buffCRC);
 
-	int healDamage(CreatureObject* target, int damage, unsigned char attribute, bool doBattleFatigue);
-
-	int healWound(CreatureObject* target, int damage, unsigned char attribute, bool doBattleFatigue);
-
-	int healEnhance(CreatureObject* target, int amount, float duration, unsigned char attribute, bool doBattleFatigue);
-
 	bool healState(CreatureObject* target, unsigned long long state);
-
-	bool revive(CreatureObject* target, bool forcedChange);
-
-	bool resurrect(CreatureObject* target, bool forcedChange);
 
 	void deactivateWoundTreatment();
 
@@ -2531,6 +2521,14 @@ public:
 
 	void onKilled(SceneObject* killer);
 
+	void onResuscitated(SceneObject* healer);
+
+	void onDamageHealed(SceneObject* healer, unsigned char attribute, unsigned int amount);
+
+	void onWoundHealed(SceneObject* healer, unsigned char attribute, unsigned int amount);
+
+	void onHealEnhanced(SceneObject* enhancer, unsigned char attribute, unsigned int amount, float duration);
+
 	void onBlinded();
 
 	void onDizzied();
@@ -2562,6 +2560,8 @@ public:
 	void equipItem(TangibleObject* item);
 
 	void unequipItem(TangibleObject* item);
+
+	bool canRecoverFromIncapacitation();
 
 protected:
 	String _param0_info__String_bool_;
