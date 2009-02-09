@@ -99,7 +99,6 @@ void CellObjectImplementation::addChild(SceneObject* obj, bool doLock) {
 	try {
 
 		addObject(obj);
-		obj->setParent(_this);
 
 	} catch (...) {
 		error("unreported exception caught in CellObjectImplementation::addChild(SceneObject* obj, bool doLock)");
@@ -116,7 +115,6 @@ bool CellObjectImplementation::addObject(SceneObject* obj) {
 	}
 
 	objects.put(oid, obj);
-	obj->setParent(_this);
 
 	return true;
 }
