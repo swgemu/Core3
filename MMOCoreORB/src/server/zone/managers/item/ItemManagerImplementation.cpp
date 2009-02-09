@@ -156,7 +156,7 @@ void ItemManagerImplementation::loadBankItems(Player* player) {
 	try {
 		StringBuffer query;
 
-		query << "select * from `character_items` where in_bank = 1 "
+		query << "select * from `character_items` where in_bank = 1 and deleted = 0 "
 		<< "and character_id = " << player->getCharacterID() << " and deleted = 0 order by container asc";
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
@@ -727,8 +727,6 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 
 	item->setPersistent(true);
 
-	item->setPickupFlag(true);
-
 	server->addObject(item);
 
 	if (container != 0) {
@@ -740,20 +738,14 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 			if (contiSCO == NULL) {
 				if (container == player->getObjectID() + 0x004) { //The items is stored in the bank
 					Container* conti = player->getBankContainer();
-
-					//TODO: 19519 -> setParent() is now included in addObject()
-					//Comment and next line gets removed, if this running stable on TC for a while
-					//item->setParent(conti);
-					conti->addObject(item);
-
-					updateItemLink(player, item, conti, true);
+					if (conti != NULL) {
+						conti->addObject(item);
+						updateItemLink(player, item, conti, true);
+					}
 				}
 			} else if (contiSCO != NULL && contiSCO->isTangible() && ((TangibleObject*)contiSCO)->isContainer()) {
-				//TODO: 19519 -> setParent() is now included in addObject()
-				//Comment and next line gets removed, if this running stable on TC for a while
-				//item->setParent(contiSCO);
+				server->addObject(item);
 				contiSCO->addObject(item);
-
 				updateItemLink(player, item, contiSCO, true);
 			}
 		}
@@ -1477,7 +1469,7 @@ int ItemManagerImplementation::addBFGroup(lua_State * l) {
 	return 0;
 }
 
-void ItemManagerImplementation::giveBFItemSet(Player * player, String& set) {
+void ItemManagerImplementation::giveBFItemSet(Player* player, String& set) {
 	Inventory* inventory = player->getInventory();
 	Vector<TangibleObject*>* itemSet = bfItemSet->get(set);
 
@@ -1490,14 +1482,13 @@ void ItemManagerImplementation::giveBFItemSet(Player * player, String& set) {
 
 	for (int i = 0; i < itemSet->size(); i++) {
 		TangibleObject* item = clonePlayerObjectTemplate(player->getNewItemID(), itemSet->get(i));
-		//item->setObjectID(player->getNewItemID());
 		if (item == NULL) {
 			System::out << "ItemManagerImplementation::giveBFItemSet(...), item == NULL!, set = " << set << endl;
 		} else {
 			server->addObject(item);
+            player->addInventoryItem(item);
 
-			player->addInventoryItem(item);
-			item->sendTo(player);
+            item->sendTo(player);
 		}
 	}
 }
@@ -1524,9 +1515,7 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	items = startingItems->getProfessionItems(prof, species, sex);
 	for (int j = 0; j < items->size(); ++j) {
 		TangibleObject* obj = clonePlayerObjectTemplate(player->getNewItemID(), items->get(j));
-		//obj->setObjectID(player->getNewItemID());
-		obj->setPickupFlag(true);
-
+		server->addObject(obj);
 		player->addInventoryItem(obj);
 	}
 
@@ -1534,7 +1523,8 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	items = startingItems->getProfessionItems(prof, all, sex);
 	for (int j = 0; j < items->size(); ++j) {
 		TangibleObject* obj = clonePlayerObjectTemplate(player->getNewItemID(), items->get(j));
-		//obj->setObjectID(player->getNewItemID());
+
+		server->addObject(obj);
 		player->addInventoryItem(obj);
 	}
 
@@ -1542,7 +1532,7 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	items = startingItems->getProfessionItems(gen, species, sex);
 	for (int j = 0; j < items->size(); ++j) {
 		TangibleObject* obj = clonePlayerObjectTemplate(player->getNewItemID(), items->get(j));
-		//obj->setObjectID(player->getNewItemID());
+		server->addObject(obj);
 		player->addInventoryItem(obj);
 	}
 
@@ -1550,10 +1540,9 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	items = startingItems->getProfessionItems(gen, all, sex);
 	for (int j = 0; j < items->size(); ++j) {
 		TangibleObject* obj = clonePlayerObjectTemplate(player->getNewItemID(), items->get(j));
-		//obj->setObjectID(player->getNewItemID());
+		server->addObject(obj);
 		player->addInventoryItem(obj);
 	}
-
 }
 
 void ItemManagerImplementation::loadPlayerDatapadItems(Player* player) {
@@ -1926,6 +1915,7 @@ void ItemManagerImplementation::giveForageItem(Player* player, int group, int co
            item = forageStatRandomizer(item);
 
            //Give item to player.
+           server->addObject(item);
            player->addInventoryItem(item);
            item->sendTo(player);
        }
@@ -1949,14 +1939,17 @@ void ItemManagerImplementation::giveForageItem(Player* player, int group, int co
 		   item->setCraftedSerial(serial);
 
 		   //Give first item.
-		   player->addInventoryItem(item);
+		   server->addObject(item);
+           player->addInventoryItem(item);
 		   item->sendTo(player);
 
 		   //Give additional identical items.
 		   for (int i = 0; i < count - 1; i++) {
 		       objectID = player->getNewItemID();
 		       item = clonePlayerObjectTemplate(objectID, item);
-		       player->addInventoryItem(item);
+
+		       server->addObject(item);
+	           player->addInventoryItem(item);
 		       item->sendTo(player);
 		   }
         }
@@ -2496,12 +2489,7 @@ void ItemManagerImplementation::loadItemsInContainersForStructure(Player* player
 
 				item->setPersistent(true);
 
-				item->setPickupFlag(true);
-
 				server->addObject(item);
-				//TODO: 19519 -> setParent() is now included in addObject()
-				//Comment and next line gets removed, if this running stable on TC for a while
-				//item->setParent(conti);
 
 				conti->addObject(item);
 

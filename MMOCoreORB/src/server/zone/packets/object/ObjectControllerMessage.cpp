@@ -506,15 +506,13 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		player->changePosture(CreaturePosture::CROUCHED);
 		break;
 	case 0x335676c7: // equip, change weapon.
-		target = pack->parseLong();
-		player->changeWeapon(target, true);
+		parseTransferWeapon(player, pack);
 		break;
 	case 0x82f75977: // transferitemmisc
 		parseTransferItemMisc(player, pack);
 		break;
 	case 0x18726ca1: // equip, change armor
-		target = pack->parseLong();
-		player->changeArmor(target, false);
+		parseTransferArmor(player, pack);
 		break;
 	case (0xBD8D02AF):
 		if (player->isMounted()) {
@@ -2440,12 +2438,10 @@ void ObjectControllerMessage::parseSetWaypointName(Player* player,
 	player->updateWaypoint(waypoint);
 }
 
-void ObjectControllerMessage::parseServerDestroyObject(Player* player,
-		Message* pack) {
+void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* pack) {
 	uint64 objid = pack->parseLong(); //get the id
 
-	ItemManager* itemManager =
-			player->getZone()->getZoneServer()->getItemManager();
+	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
 
 	if (player->getTradeSize() != 0) {
 		player->sendSystemMessage("You cant destroy objects while trading..");
@@ -2456,38 +2452,15 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player,
 	pack->parseUnicode(unkPramString); //?
 
 	WaypointObject* waypoint = player->getWaypoint(objid);
-	IntangibleObject* datapadData = (IntangibleObject*) player->getDatapadItem(
-			objid);
+	IntangibleObject* datapadData = (IntangibleObject*) player->getDatapadItem(objid);
 	SceneObject* invObj = player->getInventoryItem(objid);
 	SceneObject* bankObj = player->getBankItem(objid);
 
-	if (bankObj != NULL && bankObj->isTangible()) {
-		TangibleObject* tano = (TangibleObject*) bankObj;
+	//Avoid redundant code:
+	if (bankObj != NULL)
+		invObj = bankObj;
 
-		if (tano->isContainer()) {
-			Container* container = (Container*) tano;
-
-			while (!container->isContainerEmpty()) {
-				SceneObject* sco = container->getObject(0);
-
-				itemManager->deletePlayerItem(player, ((TangibleObject*) sco), true);
-
-				container->removeObject(0);
-				sco->removeFromZone(true);
-				sco->finalize();
-			}
-		}
-
-		itemManager->deletePlayerItem(player, tano, true);
-
-		player->removeInventoryItem(objid);
-
-		BaseMessage* msg = new SceneObjectDestroyMessage(tano);
-		player->getClient()->sendMessage(msg);
-
-		tano->finalize();
-
-	} else if (invObj != NULL && invObj->isTangible()) {
+	if (invObj != NULL && invObj->isTangible()) {
 		TangibleObject* tano = (TangibleObject*) invObj;
 
 		if (tano->isEquipped()) {
@@ -2522,6 +2495,11 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player,
 		}
 
 		itemManager->deletePlayerItem(player, tano, true);
+
+		//Move item to inventory top level for deletion
+		Inventory* inventory = player->getInventory();
+		if (inventory != NULL)
+			inventory->moveObjectToTopLevel(player, tano);
 
 		player->removeInventoryItem(objid);
 
@@ -3955,7 +3933,40 @@ void ObjectControllerMessage::parsePickup(Player* player, Message* pack) {
 	//System::out << pack->toString() << "\n";
 }
 
+void ObjectControllerMessage::parseTransferArmor(Player* player, Message* pack) {
+	uint64 target = pack->parseLong();
+
+	TangibleObject* targetTanoObject;
+	targetTanoObject = (TangibleObject*) player->getInventoryItem(target);
+
+	if (targetTanoObject != NULL) {
+		Inventory* inventory = player->getInventory();
+
+		if (inventory != NULL)
+			inventory->moveObjectToTopLevel(player, targetTanoObject);
+
+		player->changeArmor(target, false);
+	}
+}
+
+void ObjectControllerMessage::parseTransferWeapon(Player* player, Message* pack) {
+	uint64 target = pack->parseLong();
+
+	TangibleObject* targetTanoObject;
+	targetTanoObject = (TangibleObject*) player->getInventoryItem(target);
+
+	if (targetTanoObject != NULL) {
+		Inventory* inventory = player->getInventory();
+
+		if (inventory != NULL)
+			inventory->moveObjectToTopLevel(player, targetTanoObject);
+
+		player->changeWeapon(target, true);
+	}
+}
+
 void ObjectControllerMessage::parseTransferItemMisc(Player* player, Message* pack) {
+	//Equip weapon + equip armor never gets here, they have their own CRC, while unequipping of all items WILL go here
 	uint64 target = pack->parseLong();
 	UnicodeString data;
 	pack->parseUnicode(data);
@@ -3972,16 +3983,25 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player, Message* pac
 
 	TangibleObject* targetTanoObject;
 
-	if (destinationID == player->getObjectID()) { //equipping item to player (weapons, clothes etc.)
+	if (destinationID == player->getObjectID()) { //equipping misc. item to player
 		targetTanoObject = (TangibleObject*) player->getInventoryItem(target);
 
-		if (targetTanoObject != NULL && targetTanoObject->isInstrument()) {
-			player->changeWeapon(target, true);
-			return;
+		if (targetTanoObject != NULL) {
+			Inventory* inventory = player->getInventory();
 
-		} else {
-			player->changeCloth(target);
-			return;
+			if (inventory != NULL)
+				inventory->moveObjectToTopLevel(player, targetTanoObject);
+
+			if(targetTanoObject->isInstrument()) {
+				player->changeWeapon(target, true);
+
+			} else if(targetTanoObject->isClothing()) {
+				player->changeArmor(target, true);
+
+			} else if(targetTanoObject->isWearableContainer()) {
+				player->changeArmor(target, true);
+			}
+
 		}
 
 	} else if (destinationID == player->getObjectID() + 1) { //item is going to inventory

@@ -1950,8 +1950,7 @@ void CreatureObjectImplementation::addInventoryResource(ResourceContainer* rcno)
 	}
 
 	if (makeNewResource) {
-		// NOTE: Figure out how to get max inventory size...
-		if (inventory->getUnequippedItemCount() + 1 > InventoryImplementation::MAXUNEQUIPPEDCOUNT) {
+		if (inventory->getUnequippedItemCount() + 1 > inventory->getContainerVolumeLimit()) {
 			ChatSystemMessage* sysMessage =
 					new ChatSystemMessage("survey", "no_inv_spc");
 			player->sendMessage(sysMessage);
@@ -1971,7 +1970,26 @@ void CreatureObjectImplementation::addInventoryResource(ResourceContainer* rcno)
 }
 
 SceneObject* CreatureObjectImplementation::getInventoryItem(uint64 oid) {
-	return (TangibleObject*) inventory->getObject(oid);
+	SceneObject* returnSCO = NULL;
+
+	//First level of inventory
+	returnSCO = inventory->getObject(oid);
+	if (returnSCO != NULL)
+		return returnSCO;
+
+	//Container in inventory
+	for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
+		TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+
+		if (item->isContainer()) {
+			returnSCO = item->getObject(oid);
+
+			if (returnSCO != NULL)
+				return returnSCO;
+		}
+	}
+
+	return NULL;
 }
 
 void CreatureObjectImplementation::removeAllInventoryByMisoKey(String& mkey) {
@@ -1983,7 +2001,7 @@ TangibleObject* CreatureObjectImplementation::getItemByMisoKey(String& tma) {
 }
 
 void CreatureObjectImplementation::removeInventoryItem(SceneObject* item) {
-	inventory->removeObject(item->getObjectID());
+	removeInventoryItem(item->getObjectID());
 }
 
 void CreatureObjectImplementation::removeInventoryItem(uint64 oid) {
@@ -1991,18 +2009,10 @@ void CreatureObjectImplementation::removeInventoryItem(uint64 oid) {
 }
 
 void CreatureObjectImplementation::addLootItem(TangibleObject* item) {
-
-	//TODO: 19519 - remove this comment and next line if its running stable on TC
-	//item->setParent(lootContainer, 0xFFFFFFFF);
-
 	lootContainer->addObject(item);
 }
 
 void CreatureObjectImplementation::addBankItem(TangibleObject* item) {
-
-	//TODO: 19519 - remove this comment and next line if its running stable on TC
-	//item->setParent(bankContainer, 0xFFFFFFFF);
-
 	bankContainer->addObject(item);
 }
 

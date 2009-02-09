@@ -83,6 +83,7 @@ public:
 					ChatSystemMessage* sysMessage = new ChatSystemMessage("system_msg", "prototype_transferred");
 					player->sendMessage(sysMessage);
 
+					player->getZone()->getZoneServer()->addObject(tano);
 					player->addInventoryItem(tano);
 
 					//itemManager->createPlayerItem(player, tano);
@@ -123,6 +124,7 @@ public:
 				tano->setPersistent(false);//false until i get them to save/load to the DB correctly
 				crate->setPersistent(false);
 
+				player->getZone()->getZoneServer()->addObject(crate);
 				player->addInventoryItem(crate);
 
 				ct->setStatusReady();

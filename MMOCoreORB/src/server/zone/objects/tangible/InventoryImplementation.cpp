@@ -44,6 +44,7 @@ which carries forward this exception.
 
 #include "Inventory.h"
 #include "InventoryImplementation.h"
+#include "../../managers/item/ItemManager.h"
 
 #include "../creature/CreatureObject.h"
 
@@ -147,6 +148,8 @@ bool InventoryImplementation::addObject(SceneObject* obj) {
 	if (!((TangibleObject*) obj)->isEquipped())
 		obj->setParent(_this, 0xFFFFFFFF);
 
+	obj->setPickupFlag(true);
+
 	objects.put(oid, obj);
 
 	return true;
@@ -178,4 +181,33 @@ bool InventoryImplementation::removeObject(uint64 oid) {
 	item->release();
 
 	return true;
+}
+
+void InventoryImplementation::moveObjectToTopLevel(CreatureObject* owner, TangibleObject* obj) {
+	SceneObject* parent = obj->getParent();
+	if (parent == NULL)
+		return;
+
+	if (!((TangibleObject*) parent)->isContainer())	//Item not in a container, no need to go further
+		return;
+
+	//Item is in a container, check for inventory. Item needs to be moved to the inventory for/on use
+	while (parent->getParentID() > 0) {
+		if (parent->isPlayer() && parent->isCell()) // item is not in a nested inventory container - break out!
+			break;
+
+		if (parent->isPlayerInventory()) {
+			Zone* zone = owner->getZone();
+
+			if (zone != NULL) {
+				ItemManager* itemmanager = zone->getZoneServer()->getItemManager();
+
+				if (itemmanager != NULL) {
+					itemmanager->moveItemToDestination((Player*) owner, (TangibleObject*) obj, owner->getInventory());
+					break;
+				}
+			}
+		}
+		parent = parent->getParent();
+	}
 }

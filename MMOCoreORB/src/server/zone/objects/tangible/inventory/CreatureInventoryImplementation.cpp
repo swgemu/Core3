@@ -101,9 +101,10 @@ bool CreatureInventoryImplementation::addObject(SceneObject* obj) {
 
 	objects.put(oid, obj);
 
-	//Make sure, this item isn't linked already to the inventory, since eg. weapons are link type 0x04 !
-	if (obj->getParent() == NULL || obj->getParent() != _this)
+	if (!((TangibleObject*) obj)->isEquipped())
 		obj->setParent(_this, 0xFFFFFFFF);
+
+	obj->setPickupFlag(true);
 
 	return true;
 }

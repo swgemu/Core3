@@ -705,16 +705,15 @@ void CraftingManagerImplementation::putComponentBackInInventory(Player* player,
 
 	newComponent->deploy();
 
-	player->addInventoryItem(newComponent);
-
-	newComponent->sendTo(player);
-
 	newComponent->setPersistent(false);
 
+	server->addObject(newComponent);
+
+	player->addInventoryItem(newComponent);
+	newComponent->sendTo(player);
+
 	component->setParent(NULL);
-
 	component->destroy(player->getClient());
-
 	component->finalize();
 
 }

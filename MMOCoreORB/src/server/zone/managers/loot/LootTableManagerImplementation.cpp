@@ -253,8 +253,6 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 		if (item != NULL) {
 			item->setPlayerUseMask(itemMask);
 
-			item->setPickupFlag(true);
-
 			creature->addLootItem(item);
 
 			ZoneServer* zoneServer;
