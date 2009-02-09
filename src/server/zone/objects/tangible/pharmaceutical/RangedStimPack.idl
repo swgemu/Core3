@@ -20,7 +20,7 @@ interface RangedStimPack implements StimPack {
 	
 	void generateAttributes(SceneObject obj);
 	
-	int calculatePower(CreatureObject creature);
+	unsigned int calculatePower(CreatureObject healer, CreatureObject patient, boolean applyBattleFatigue = true);
 	
 	void setEffectiveness(float eff);
 	float getEffectiveness();

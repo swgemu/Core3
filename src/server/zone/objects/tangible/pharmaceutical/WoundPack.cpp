@@ -49,17 +49,19 @@ void WoundPack::generateAttributes(SceneObject* obj) {
 		((WoundPackImplementation*) _impl)->generateAttributes(obj);
 }
 
-int WoundPack::calculatePower(CreatureObject* creature) {
+unsigned int WoundPack::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
-		method.addObjectParameter(creature);
+		method.addObjectParameter(healer);
+		method.addObjectParameter(patient);
+		method.addBooleanParameter(applyBattleFatigue);
 
-		return method.executeWithSignedIntReturn();
+		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((WoundPackImplementation*) _impl)->calculatePower(creature);
+		return ((WoundPackImplementation*) _impl)->calculatePower(healer, patient, applyBattleFatigue);
 }
 
 void WoundPack::setEffectiveness(float eff) {
@@ -127,7 +129,7 @@ Packet* WoundPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		generateAttributes((SceneObject*) inv->getObjectParameter());
 		break;
 	case 7:
-		resp->insertSignedInt(calculatePower((CreatureObject*) inv->getObjectParameter()));
+		resp->insertInt(calculatePower((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
 	case 8:
 		setEffectiveness(inv->getFloatParameter());
@@ -152,8 +154,8 @@ void WoundPackAdapter::generateAttributes(SceneObject* obj) {
 	return ((WoundPackImplementation*) impl)->generateAttributes(obj);
 }
 
-int WoundPackAdapter::calculatePower(CreatureObject* creature) {
-	return ((WoundPackImplementation*) impl)->calculatePower(creature);
+unsigned int WoundPackAdapter::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
+	return ((WoundPackImplementation*) impl)->calculatePower(healer, patient, applyBattleFatigue);
 }
 
 void WoundPackAdapter::setEffectiveness(float eff) {

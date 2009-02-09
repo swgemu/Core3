@@ -176,3 +176,14 @@ void RangedStimPackImplementation::generateAttributes(SceneObject* obj) {
 
 	player->sendMessage(alm);
 }
+
+uint32 RangedStimPackImplementation::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
+	float power = getEffectiveness();
+
+	if (applyBattleFatigue)
+		power -= power * patient->calculateBFRatio();
+
+	float modSkill = (float) healer->getSkillMod("combat_medic_effectiveness");
+
+	return (int) round((100.0f + modSkill) / 100.0f * power);
+}

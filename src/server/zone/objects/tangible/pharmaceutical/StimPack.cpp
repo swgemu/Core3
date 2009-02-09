@@ -49,17 +49,19 @@ void StimPack::generateAttributes(SceneObject* obj) {
 		((StimPackImplementation*) _impl)->generateAttributes(obj);
 }
 
-int StimPack::calculatePower(CreatureObject* creature) {
+unsigned int StimPack::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
-		method.addObjectParameter(creature);
+		method.addObjectParameter(healer);
+		method.addObjectParameter(patient);
+		method.addBooleanParameter(applyBattleFatigue);
 
-		return method.executeWithSignedIntReturn();
+		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((StimPackImplementation*) _impl)->calculatePower(creature);
+		return ((StimPackImplementation*) _impl)->calculatePower(healer, patient, applyBattleFatigue);
 }
 
 void StimPack::setEffectiveness(float eff) {
@@ -102,7 +104,7 @@ Packet* StimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		generateAttributes((SceneObject*) inv->getObjectParameter());
 		break;
 	case 7:
-		resp->insertSignedInt(calculatePower((CreatureObject*) inv->getObjectParameter()));
+		resp->insertInt(calculatePower((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
 	case 8:
 		setEffectiveness(inv->getFloatParameter());
@@ -121,8 +123,8 @@ void StimPackAdapter::generateAttributes(SceneObject* obj) {
 	return ((StimPackImplementation*) impl)->generateAttributes(obj);
 }
 
-int StimPackAdapter::calculatePower(CreatureObject* creature) {
-	return ((StimPackImplementation*) impl)->calculatePower(creature);
+unsigned int StimPackAdapter::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
+	return ((StimPackImplementation*) impl)->calculatePower(healer, patient, applyBattleFatigue);
 }
 
 void StimPackAdapter::setEffectiveness(float eff) {

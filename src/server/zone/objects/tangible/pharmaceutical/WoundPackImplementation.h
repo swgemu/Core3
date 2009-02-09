@@ -70,13 +70,7 @@ public:
 
 	void addAttributes(AttributeListMessage* alm);
 
-	inline int calculatePower(CreatureObject* creature) {
-		//TODO: Add in medical city bonus
-		float modEnvironment = (float) creature->getMedicalFacilityRating();
-		float modSkill = (float) creature->getSkillMod("healing_wound_treatment");
-		float modCityBonus = 1.0f;
-		return (int) round(effectiveness * modCityBonus * modEnvironment * (100.0f + modSkill) / 10000.0f);
-	}
+	uint32 calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue = true);
 
 	inline void setEffectiveness(float eff) {
 		effectiveness = eff;
