@@ -27,7 +27,7 @@ public:
 
 	void generateAttributes(SceneObject* obj);
 
-	int calculatePower(CreatureObject* creature);
+	unsigned int calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue = true);
 
 	void setEffectiveness(float eff);
 
@@ -59,7 +59,7 @@ public:
 
 	void generateAttributes(SceneObject* obj);
 
-	int calculatePower(CreatureObject* creature);
+	unsigned int calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue);
 
 	void setEffectiveness(float eff);
 

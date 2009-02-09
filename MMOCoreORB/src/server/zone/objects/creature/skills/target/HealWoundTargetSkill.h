@@ -216,11 +216,9 @@ public:
 			return 0;
 		}
 
-		int woundPower = woundPack->calculatePower(creature);
+		uint32 woundPower = woundPack->calculatePower(creature, creatureTarget);
 
-		//TODO: Battle Fatigue
-
-		int woundHealed = creature->healWound(creatureTarget, attribute, woundPower);
+		uint32 woundHealed = creature->healWound(creatureTarget, attribute, woundPower);
 
 		if (creature->isPlayer())
 			((Player*)creature)->sendBattleFatigueMessage(creatureTarget);
@@ -253,7 +251,7 @@ public:
 		player->addXp(type, amount, true);
 	}
 
-	void sendWoundMessage(CreatureObject* creature, CreatureObject* creatureTarget, uint8 attribute, int woundsHealed) {
+	void sendWoundMessage(CreatureObject* creature, CreatureObject* creatureTarget, uint8 attribute, uint32 woundsHealed) {
 		String creatureName = creature->getCharacterName().toString();
 		String creatureTargetName = creatureTarget->getCharacterName().toString();
 

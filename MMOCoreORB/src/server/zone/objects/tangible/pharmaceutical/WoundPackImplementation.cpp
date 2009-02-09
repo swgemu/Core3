@@ -131,3 +131,16 @@ void WoundPackImplementation::generateAttributes(SceneObject* obj) {
 
 	player->sendMessage(alm);
 }
+
+uint32 WoundPackImplementation::calculatePower(CreatureObject* enhancer, CreatureObject* patient, bool applyBattleFatigue) {
+	float power = getEffectiveness();
+
+	if (applyBattleFatigue)
+		power -= power * patient->calculateBFRatio();
+
+	float modEnvironment = (float) enhancer->getMedicalFacilityRating();
+	float modSkill = (float) enhancer->getSkillMod("healing_wound_treatment");
+	float modCityBonus = 1.0f; //TODO: Add in medical city bonus
+
+	return (uint32) round(power * modCityBonus * modEnvironment * (100.0f + modSkill) / 10000.0f);
+}

@@ -214,7 +214,7 @@ public:
 		}
 
 		//Applies battle fatigue
-		int buffPower = enhancePack->calculatePower(enhancer, patient);
+		uint32 buffPower = enhancePack->calculatePower(enhancer, patient);
 
 		if (buffPower < currentBuff) {
 			if (patient == enhancer)

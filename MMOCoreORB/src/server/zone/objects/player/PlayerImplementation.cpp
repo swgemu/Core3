@@ -5809,6 +5809,8 @@ void PlayerImplementation::bankTipFinish(Player* recipient, uint32 amount) {
 	sendSystemMessage("base_player", "prose_wire_pass_self", params);  //You have successfully sent %DI bank credits to %TO.
 
 	if (recipient->isOnline()) {
+		params->clear();
+		params->addDI(amount);
 		params->addTO(getObjectID());
 		recipient->sendSystemMessage("base_player", "prose_wire_pass_target", params); //You have successfully received %DI bank credits from %TO.
 	}
@@ -5862,6 +5864,8 @@ bool PlayerImplementation::cashTip(Player* recipient, uint32 amount) {
 	subtractCashCredits(amount);
 
 	sendSystemMessage("base_player", "prose_tip_pass_self", params); //You successfully tip %DI credits to %TT.
+	params->clear();
+	params->addDI(amount);
 	params->addTT(getObjectID());
 	recipient->sendSystemMessage("base_player", "prose_tip_pass_target", params); //%TT tips you %DI credits.
 

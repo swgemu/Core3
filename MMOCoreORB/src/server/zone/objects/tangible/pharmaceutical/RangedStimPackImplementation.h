@@ -69,10 +69,7 @@ public:
 
 	void addAttributes(AttributeListMessage* alm);
 
-	virtual int calculatePower(CreatureObject* creature) {
-		float modSkill = (float) creature->getSkillMod("combat_medic_effectiveness");
-		return (int) round((100.0f + modSkill) / 100.0f * effectiveness);
-	}
+	uint32 calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue = true);
 
 	inline void setEffectiveness(float eff) {
 		effectiveness = eff;

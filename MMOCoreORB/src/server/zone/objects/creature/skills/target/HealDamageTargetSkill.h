@@ -214,10 +214,10 @@ public:
 			return 0;
 
 		//TODO: Refactor this to apply BF
-		int stimPower = stimPack->calculatePower(creature);
+		uint32 stimPower = stimPack->calculatePower(creature, creatureTarget);
 
-		int healthHealed = creature->healDamage(creatureTarget, CreatureAttribute::HEALTH, stimPower);
-		int actionHealed = creature->healDamage(creatureTarget, CreatureAttribute::ACTION, stimPower);
+		uint32 healthHealed = creature->healDamage(creatureTarget, CreatureAttribute::HEALTH, stimPower);
+		uint32 actionHealed = creature->healDamage(creatureTarget, CreatureAttribute::ACTION, stimPower);
 
 		if (creature->isPlayer())
 			((Player*)creature)->sendBattleFatigueMessage(creatureTarget);
@@ -230,7 +230,7 @@ public:
 			stimPack->useCharge((Player*) creature);
 
 		if (creatureTarget != creature)
-			awardXp(creature, "medical", (healthHealed + healthHealed)); //No experience for healing yourself.
+			awardXp(creature, "medical", (healthHealed + actionHealed)); //No experience for healing yourself.
 
 		if (stimPack->isArea()) {
 			if (creature == creatureTarget && target != creature) {
@@ -265,7 +265,7 @@ public:
 		player->addXp(type, amount, true);
 	}
 
-	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, int healthDamage, int actionDamage) {
+	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, uint32 healthDamage, uint32 actionDamage) {
 		Player* player = (Player*) creature;
 
 		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
@@ -288,10 +288,10 @@ public:
 		} else if (creatureTarget->isPlayer()) {
 			Player* playerTarget = (Player*) creatureTarget;
 
-			msgPlayer << "You heal " << playerTarget->getFirstNameProper() << " for " << msgBody.toString() << msgTail.toString();
+			msgPlayer << "You heal " << playerTarget->getCharacterName().toString() << " for " << msgBody.toString() << msgTail.toString();
 			player->sendSystemMessage(msgPlayer.toString());
 
-			msgTarget << player->getFirstNameProper() << " heals you for " << msgBody.toString() << msgTail.toString();
+			msgTarget << player->getCharacterName().toString() << " heals you for " << msgBody.toString() << msgTail.toString();
 			playerTarget->sendSystemMessage(msgTarget.toString());
 		} else {
 			//TODO: Pet Message
@@ -314,11 +314,11 @@ public:
 		mindCost = cost;
 	}
 
-	void handleArea(CreatureObject* creature, CreatureObject* areaCenter, int stimPower, float range) {
-		server->getCombatManager()->handelMedicArea(creature, areaCenter,this, stimPower, range);
+	void handleArea(CreatureObject* creature, CreatureObject* areaCenter, uint32 stimPower, float range) {
+		server->getCombatManager()->handelMedicArea(creature, areaCenter, this, stimPower, range);
 	}
 
-	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, int stimPower) {
+	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, uint32 stimPower) {
 		//TODO: Battle Fatigue
 		int healthHealed = creature->healDamage(creatureTarget, CreatureAttribute::HEALTH, stimPower);
 		int actionHealed = creature->healDamage(creatureTarget, CreatureAttribute::ACTION, stimPower);
@@ -329,7 +329,7 @@ public:
 		sendHealMessage(creature, creatureTarget, healthHealed, actionHealed);
 
 		if (creatureTarget != creature)
-			awardXp(creature, "medical", (healthHealed + healthHealed)); //No experience for healing yourself.
+			awardXp(creature, "medical", (healthHealed + actionHealed)); //No experience for healing yourself.
 
 	}
 

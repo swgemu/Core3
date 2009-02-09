@@ -49,17 +49,19 @@ void RangedStimPack::generateAttributes(SceneObject* obj) {
 		((RangedStimPackImplementation*) _impl)->generateAttributes(obj);
 }
 
-int RangedStimPack::calculatePower(CreatureObject* creature) {
+unsigned int RangedStimPack::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
-		method.addObjectParameter(creature);
+		method.addObjectParameter(healer);
+		method.addObjectParameter(patient);
+		method.addBooleanParameter(applyBattleFatigue);
 
-		return method.executeWithSignedIntReturn();
+		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((RangedStimPackImplementation*) _impl)->calculatePower(creature);
+		return ((RangedStimPackImplementation*) _impl)->calculatePower(healer, patient, applyBattleFatigue);
 }
 
 void RangedStimPack::setEffectiveness(float eff) {
@@ -153,7 +155,7 @@ Packet* RangedStimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		generateAttributes((SceneObject*) inv->getObjectParameter());
 		break;
 	case 7:
-		resp->insertSignedInt(calculatePower((CreatureObject*) inv->getObjectParameter()));
+		resp->insertInt(calculatePower((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
 	case 8:
 		setEffectiveness(inv->getFloatParameter());
@@ -184,8 +186,8 @@ void RangedStimPackAdapter::generateAttributes(SceneObject* obj) {
 	return ((RangedStimPackImplementation*) impl)->generateAttributes(obj);
 }
 
-int RangedStimPackAdapter::calculatePower(CreatureObject* creature) {
-	return ((RangedStimPackImplementation*) impl)->calculatePower(creature);
+unsigned int RangedStimPackAdapter::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
+	return ((RangedStimPackImplementation*) impl)->calculatePower(healer, patient, applyBattleFatigue);
 }
 
 void RangedStimPackAdapter::setEffectiveness(float eff) {
