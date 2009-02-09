@@ -2001,7 +2001,7 @@ TangibleObject* CreatureObjectImplementation::getItemByMisoKey(String& tma) {
 }
 
 void CreatureObjectImplementation::removeInventoryItem(SceneObject* item) {
-	removeInventoryItem(item->getObjectID());
+	inventory->removeObject(item->getObjectID());
 }
 
 void CreatureObjectImplementation::removeInventoryItem(uint64 oid) {
