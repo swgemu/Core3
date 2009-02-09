@@ -209,9 +209,11 @@ public:
 		if (!canPerformSkill(creature, creatureTarget, stimPack))
 			return 0;
 
+		//TODO: Refactor this to apply BF
 		int stimPower = stimPack->calculatePower(creature);
-		int healthHealed = creature->healDamage(creatureTarget, stimPower, CreatureAttribute::HEALTH);
-		int actionHealed = creature->healDamage(creatureTarget, stimPower, CreatureAttribute::ACTION);
+
+		int healthHealed = creature->healDamage(creatureTarget, CreatureAttribute::HEALTH, stimPower);
+		int actionHealed = creature->healDamage(creatureTarget, CreatureAttribute::ACTION, stimPower);
 
 		if (creature->isPlayer())
 			((Player*)creature)->sendBattleFatigueMessage(creatureTarget);
@@ -313,8 +315,9 @@ public:
 	}
 
 	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, int stimPower) {
-		int healthHealed = creature->healDamage(creatureTarget, stimPower, CreatureAttribute::HEALTH);
-		int actionHealed = creature->healDamage(creatureTarget, stimPower, CreatureAttribute::ACTION);
+		//TODO: Battle Fatigue
+		int healthHealed = creature->healDamage(creatureTarget, CreatureAttribute::HEALTH, stimPower);
+		int actionHealed = creature->healDamage(creatureTarget, CreatureAttribute::ACTION, stimPower);
 
 		if (creatureTarget->isPlayer())
 			((Player*) creature)->sendBattleFatigueMessage(creatureTarget);

@@ -27,9 +27,7 @@ public:
 
 	void generateAttributes(SceneObject* obj);
 
-	unsigned int getBuffCRC();
-
-	int calculatePower(CreatureObject* creature);
+	unsigned int calculatePower(CreatureObject* enhancer, CreatureObject* patient, bool applyBattleFatigue = true);
 
 	void setEffectiveness(float eff);
 
@@ -61,9 +59,7 @@ public:
 
 	void generateAttributes(SceneObject* obj);
 
-	unsigned int getBuffCRC();
-
-	int calculatePower(CreatureObject* creature);
+	unsigned int calculatePower(CreatureObject* enhancer, CreatureObject* patient, bool applyBattleFatigue);
 
 	void setEffectiveness(float eff);
 

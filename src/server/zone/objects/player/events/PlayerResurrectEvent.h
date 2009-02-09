@@ -63,15 +63,9 @@ public:
 		try {
 			player->wlock();
 
-			player->clearResurrectEvent();
-
-			if (player->isOnline() && player->isDead())
-				player->resurrectCountdown(msgCounter);
-
 			player->unlock();
 		} catch (...) {
 			player->error("unreported exception caught in PlayerResurrectEvent::activate");
-			player->clearResurrectEvent();
 
 			player->unlock();
 		}

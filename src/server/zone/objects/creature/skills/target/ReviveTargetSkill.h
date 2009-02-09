@@ -72,8 +72,8 @@ public:
 			creature->doAnimation("heal_other");
 	}
 
-	bool canPerformSkill(CreatureObject* creature, Player* playerTarget, RevivePack* revivePack) {
-		if (!playerTarget->isDead()) {
+	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, RevivePack* revivePack) {
+		if (!creatureTarget->isDead()) {
 			creature->sendSystemMessage("healing_response", "healing_response_a4"); //Your target does not require resuscitation!
 			return 0;
 		}
@@ -83,18 +83,18 @@ public:
 			return false;
 		}
 
-		if (!playerTarget->isResurrectable()) {
+		if (!creatureTarget->isResuscitable()) {
 			creature->sendSystemMessage("healing_response", "too_dead_to_resuscitate"); //Your target has been dead too long. There is no hope of resuscitation.
 			return false;
 		}
 
 		if (creature->isProne()) {
-			creature->sendSystemMessage("You cannot Revive while prone.");
+			creature->sendSystemMessage("You cannot do that while Prone.");
 			return false;
 		}
 
 		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You cannot Revive while Meditating.");
+			creature->sendSystemMessage("You cannot do that while Meditating.");
 			return false;
 		}
 
@@ -108,14 +108,27 @@ public:
 			return false;
 		}
 
-		if (playerTarget->isOvert() && playerTarget->getFaction() != creature->getFaction()) {
+		if (creatureTarget->isOvert() && creatureTarget->getFaction() != creature->getFaction()) {
 			creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
 			return false;
 		}
 
-		if (!creature->isInGroupWith((CreatureObject*) playerTarget) && !((Player*)creature)->hasConsentFrom(playerTarget)) {
-			creature->sendSystemMessage("healing_response", "must_be_grouped"); //You must be grouped with or have consent from your resuscitation target!
-			return false;
+		if (!creature->isInGroupWith(creatureTarget)) {
+			if (creature->isPlayer()) {
+				Player* player = (Player*) creature;
+
+				//At this point, we know that the creatureTarget is either a player or a creaturePet.
+				//TODO: Activate this switch once creature pet's are introduced.
+				//Player* consentOwner = (creatureTarget->isPlayer()) ? (Player*) creatureTarget : (CreaturePet*) creatureTarget->getOwner();
+				Player* consentOwner = (Player*) creatureTarget;
+
+				if (!player->hasConsentFrom(consentOwner)) {
+					creature->sendSystemMessage("healing_response", "must_be_grouped"); //You must be grouped with or have consent from your resuscitation target!
+					return false;
+				}
+			} else {
+				return false;
+			}
 		}
 
 		if (creature->getMind() < abs(mindCost)) {
@@ -158,7 +171,7 @@ public:
 	}
 
 	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
-		if (!target->isPlayer()) {
+		if (!target->isPlayer() && !((CreatureObject*)target)->isPet()) {
 			creature->sendSystemMessage("healing_response", "healing_response_a2");	//You cannot apply resuscitation medication without a valid target!
 			return 0;
 		}
@@ -168,6 +181,7 @@ public:
 			return 0;
 		}
 
+		CreatureObject* creatureTarget = (CreatureObject*) target;
 		uint64 objectId = 0;
 
 		parseModifier(modifier, objectId);
@@ -177,33 +191,18 @@ public:
 		if (revivePack == NULL)
 			revivePack = findRevivePack(creature);
 
-		Player* playerTarget = (Player*) target;
-
-		if (!canPerformSkill(creature, playerTarget, revivePack))
+		if (!canPerformSkill(creature, creatureTarget, revivePack))
 			return 0;
 
-		int healedHealth = creature->healDamage((CreatureObject*) playerTarget, (int) round(revivePack->getHealthHealed()), CreatureAttribute::HEALTH);
-		int healedAction = creature->healDamage((CreatureObject*) playerTarget, (int) round(revivePack->getActionHealed()), CreatureAttribute::ACTION);
-		int healedMind = creature->healDamage((CreatureObject*) playerTarget, (int) round(revivePack->getMindHealed()), CreatureAttribute::MIND);
+		int healedHealth = creature->healDamage(creatureTarget, CreatureAttribute::HEALTH, (int) round(revivePack->getHealthHealed()));
+		int healedAction = creature->healDamage(creatureTarget, CreatureAttribute::ACTION, (int) round(revivePack->getActionHealed()));
+		int healedMind = creature->healDamage(creatureTarget, CreatureAttribute::MIND, (int) round(revivePack->getMindHealed()));
 
-		int healedHealthWounds = creature->healWound((CreatureObject*) playerTarget, (int) round(revivePack->getHealthWoundHealed()), CreatureAttribute::HEALTH);
-		int healedActionWounds = creature->healWound((CreatureObject*) playerTarget, (int) round(revivePack->getActionWoundHealed()), CreatureAttribute::ACTION);
-		int healedMindWounds = creature->healWound((CreatureObject*) playerTarget, (int) round(revivePack->getMindWoundHealed()), CreatureAttribute::MIND);
+		int healedHealthWounds = creature->healWound(creatureTarget, CreatureAttribute::HEALTH, (int) round(revivePack->getHealthWoundHealed()));
+		int healedActionWounds = creature->healWound(creatureTarget, CreatureAttribute::ACTION, (int) round(revivePack->getActionWoundHealed()));
+		int healedMindWounds = creature->healWound(creatureTarget, CreatureAttribute::MIND, (int) round(revivePack->getMindWoundHealed()));
 
-		((Player*)creature)->sendBattleFatigueMessage((CreatureObject*) playerTarget);
-
-		if (!creature->resurrect((CreatureObject*) playerTarget))
-			return 0;
-
-		StringBuffer msgPlayer, msgTarget;
-		msgPlayer << "You resuscitate " << playerTarget->getCharacterName().toString() << ".";
-		msgTarget << creature->getCharacterName().toString() << " resuscitates you.";
-
-		creature->sendSystemMessage(msgPlayer.toString());
-		playerTarget->sendSystemMessage(msgTarget.toString());
-
-		sendHealMessage((Player*) creature, playerTarget, healedHealth, healedAction, healedMind);
-		sendWoundMessage((Player*) creature, playerTarget, healedHealthWounds, healedActionWounds, healedMindWounds);
+		creature->resuscitate(creatureTarget);
 
 		creature->changeMindBar(-mindCost);
 
@@ -213,7 +212,7 @@ public:
 		int xpAmount = healedHealth + healedAction + healedMind + healedHealthWounds + healedActionWounds + healedMindWounds + 250;
 		awardXp(creature, "medical", xpAmount);
 
-		doAnimations(creature, (CreatureObject*) playerTarget);
+		doAnimations(creature, creatureTarget);
 
 		return 0;
 	}
@@ -227,84 +226,6 @@ public:
 			return;
 
 		player->addXp(type, amount, true);
-	}
-
-	void sendHealMessage(Player* player, Player* playerTarget, int health, int action, int mind) {
-		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
-
-		if (health > 0 && action > 0 && mind > 0) {
-			msgBody << health << " health, " << action << " action, and " << mind << " mind";
-		} else {
-			if (health > 0 && action > 0) {
-				msgBody << health << " health and " << action << " action";
-			} else if (health > 0 && mind > 0) {
-				msgBody << health << " health and " << mind << " mind";
-			} else if (action > 0 && mind > 0) {
-					msgBody << action << " action and " << mind << " mind";
-			} else {
-				if (health > 0) {
-					msgBody << health << " health";
-				} else if (action > 0) {
-					msgBody << action << " action";
-				} else if (mind > 0) {
-					msgBody << mind << " mind";
-				} else {
-					return;
-				}
-			}
-
-		}
-
-		msgTail << " damage.";
-
-		if (player == playerTarget) {
-			msgPlayer << "You heal yourself for " << msgBody.toString() << msgTail.toString();
-			player->sendSystemMessage(msgPlayer.toString());
-		} else {
-			msgPlayer << "You heal " << playerTarget->getFirstNameProper() << " for " << msgBody.toString() << msgTail.toString();
-			player->sendSystemMessage(msgPlayer.toString());
-			msgTarget << player->getFirstNameProper() << " heals you for " << msgBody.toString() << msgTail.toString();
-			playerTarget->sendSystemMessage(msgTarget.toString());
-		}
-	}
-
-	void sendWoundMessage(Player* player, Player* playerTarget, int health, int action, int mind) {
-		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
-
-		if (health > 0 && action > 0 && mind > 0) {
-			msgBody << health << " health, " << action << " action, and " << mind << " mind";
-		} else {
-			if (health > 0 && action > 0) {
-				msgBody << health << " health and " << action << " action";
-			} else if (health > 0 && mind > 0) {
-				msgBody << health << " health and " << mind << " mind";
-			} else if (action > 0 && mind > 0) {
-					msgBody << action << " action and " << mind << " mind";
-			} else {
-				if (health > 0) {
-					msgBody << health << " health";
-				} else if (action > 0) {
-					msgBody << action << " action";
-				} else if (mind > 0) {
-					msgBody << mind << " mind";
-				} else {
-					return;
-				}
-			}
-
-		}
-
-		msgTail << " wound damage.";
-
-		if (player == playerTarget) {
-			msgPlayer << "You heal yourself for " << msgBody.toString() << msgTail.toString();
-			player->sendSystemMessage(msgPlayer.toString());
-		} else {
-			msgPlayer << "You heal " << playerTarget->getFirstNameProper() << " for " << msgBody.toString() << msgTail.toString();
-			player->sendSystemMessage(msgPlayer.toString());
-			msgTarget << player->getFirstNameProper() << " heals you for " << msgBody.toString() << msgTail.toString();
-			playerTarget->sendSystemMessage(msgTarget.toString());
-		}
 	}
 
 	float calculateSpeed(CreatureObject* creature) {

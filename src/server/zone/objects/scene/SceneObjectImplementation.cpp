@@ -776,7 +776,7 @@ void SceneObjectImplementation::cleanupDamageDone() {
 //Event Handlers
 
 void SceneObjectImplementation::onIncapacitateTarget(CreatureObject* victim) {
-
+	clearCombatState();
 }
 
 void SceneObjectImplementation::onInflictDamage(AttackableObject* victim, uint32 damage) {
@@ -803,6 +803,22 @@ void SceneObjectImplementation::onKill(CreatureObject* victim) {
 	//Award any faction points
 	//Gain experienced
 	clearCombatState(true);
+}
+
+void SceneObjectImplementation::onResuscitateTarget(CreatureObject* patient) {
+
+}
+
+void SceneObjectImplementation::onHealTargetDamage(CreatureObject* patient, uint8 attribute, uint32 amount) {
+
+}
+
+void SceneObjectImplementation::onHealTargetWound(CreatureObject* patient, uint8 attribute, uint32 amount) {
+
+}
+
+void SceneObjectImplementation::onHealEnhanceTarget(CreatureObject* patient, uint8 attribute, uint32 amount, float duration) {
+
 }
 
 /**
@@ -842,10 +858,12 @@ bool SceneObjectImplementation::inflictDamage(CreatureObject* victim, uint8 attr
 	victim->setAttributeBar(attribute, newValue);
 
 	if (newValue <= 0) {
-		if (victim->isPlayer() || victim->isPet())
-			incapacitate(victim);
-		else
-			kill(victim);
+		if (!victim->isDead() && !victim->isIncapacitated()) {
+			if (victim->isPlayer() || victim->isPet())
+				incapacitate(victim);
+			else
+				kill(victim);
+		}
 	}
 
 	return true;
@@ -860,13 +878,7 @@ void SceneObjectImplementation::incapacitate(CreatureObject* victim) {
 		return;
 
 	onIncapacitateTarget(victim);
-
-	if (victim->isPlayer()) {
-		Player* playerVictim = (Player*) victim;
-		playerVictim->onIncapacitated(_this);
-	} else {
-		victim->onIncapacitated(_this);
-	}
+	victim->onIncapacitated(_this);
 }
 
 /**
@@ -898,6 +910,104 @@ void SceneObjectImplementation::deathblow(Player* victim) {
 void SceneObjectImplementation::kill(CreatureObject* victim) {
 	onKill(victim);
 	victim->onKilled(_this);
+}
+
+/**
+ * Action that is performed when resuscitating a creature
+ * \param patient The creature that is being resuscitated.
+ */
+void SceneObjectImplementation::resuscitate(CreatureObject* patient, bool forced) {
+	if (!forced) {
+		if (!patient->isResuscitable())
+			return;
+	}
+
+	//Make sure they have at least 1 in every HAM attribute
+	if (patient->getHealth() < 1)
+		patient->setHealthBar(1);
+
+	if (patient->getAction() < 1)
+		patient->setHealthBar(1);
+
+	if (patient->getMind() < 1)
+		patient->setMindBar(1);
+
+	patient->onResuscitated(_this);
+	onResuscitateTarget(patient);
+}
+
+/**
+ * This action heals a targets damage by a pre determined amount. Pre: battleFatigue costs should already be applied
+ */
+uint32 SceneObjectImplementation::healDamage(CreatureObject* patient, uint8 attribute, uint32 amount) {
+	if (!CreatureAttribute::isHAM(attribute))
+		return 0;
+
+	uint32 damageAmount = patient->getAttributeDamage(attribute);
+	uint32 healableAmount = (damageAmount > amount) ? amount : damageAmount;
+
+	if (healableAmount == 0)
+		return 0;
+
+	if (patient->changeAttributeBar(attribute, healableAmount)) {
+		onHealTargetDamage(patient, attribute, healableAmount);
+		patient->onDamageHealed(_this, attribute, healableAmount);
+		return healableAmount;
+	}
+
+	return 0;
+}
+
+uint32 SceneObjectImplementation::healWound(CreatureObject* patient, uint8 attribute, uint32 amount) {
+	uint32 woundedAmount = patient->getWounds(attribute);
+	uint32 healableAmount = (woundedAmount > amount) ? amount : woundedAmount;
+
+	if (healableAmount == 0)
+		return 0;
+
+	if (patient->changeWoundsBar(attribute, -healableAmount)) {
+		onHealTargetWound(patient, attribute, healableAmount);
+		patient->onWoundHealed(_this, attribute, healableAmount);
+		return healableAmount;
+	}
+
+	return 0;
+}
+
+/**
+ * Used to medical enhance a creature. Should remove the old buff if of weaker or same power.
+ * \param patient The creature to be enhanced.
+ * \param attribute Which attribute is getting enhanced.
+ * \param amount How much is it getting enhanced for.
+ * \param duration How long should the enhancement last for.
+ * \return Returns 0 if unsuccessful, otherwise, returns the difference between existing buff and new buff.
+ */
+uint32 SceneObjectImplementation::healEnhance(CreatureObject* patient, uint8 attribute, uint32 amount, float duration) {
+	uint32 buffCRC = BuffCRC::getMedicalBuff(attribute);
+	uint32 existingPower = 0;
+
+	if (patient->hasBuff(buffCRC)) {
+		BuffObject* existingBuffObj = patient->getBuffObject(buffCRC);
+		Buff* existingBuff = existingBuffObj->getBuff();
+
+		existingPower = existingBuff->getAttributeBuff(attribute);
+		existingBuffObj->finalize();
+
+		//Can't re-apply a more powerful buff.
+		if (existingPower > amount)
+			return 0;
+	}
+
+	Buff* buff = new Buff(buffCRC, BuffType::MEDICAL, duration);
+	buff->setAttributeBuff(attribute, amount);
+
+	BuffObject* bo = new BuffObject(buff);
+
+	patient->applyBuff(bo);
+
+	//TODO: Make sure that the old buff is getting removed before adding the new buff
+
+	return amount - existingPower;
 }
 
 /**

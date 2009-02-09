@@ -347,7 +347,7 @@ void CampSiteImplementation::addXP(uint64 playerID) {
 	}
 }
 
-void CampSiteImplementation::reactiveRecovery(Player* player) {
+void CampSiteImplementation::reactivateRecovery(Player* player) {
 	CampRecoveryEvent* recoveryEvent = recoveries->getEvent(player->getObjectID());
 	if (recoveryEvent != NULL && !recoveryEvent->isQueued())
 		server->addEvent(recoveryEvent,300000);

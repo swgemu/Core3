@@ -218,7 +218,9 @@ public:
 
 		int woundPower = woundPack->calculatePower(creature);
 
-		int woundHealed = creature->healWound(creatureTarget, woundPower, attribute);
+		//TODO: Battle Fatigue
+
+		int woundHealed = creature->healWound(creatureTarget, attribute, woundPower);
 
 		if (creature->isPlayer())
 			((Player*)creature)->sendBattleFatigueMessage(creatureTarget);

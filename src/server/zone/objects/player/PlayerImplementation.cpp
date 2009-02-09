@@ -79,7 +79,6 @@ which carries forward this exception.
 #include "PlayerHAM.h"
 
 #include "events/PlayerLogoutEvent.h"
-#include "events/PlayerResurrectEvent.h"
 #include "events/PlayerDisconnectEvent.h"
 #include "events/PlayerSaveStateEvent.h"
 #include "events/PlayerRecoveryEvent.h"
@@ -158,14 +157,6 @@ PlayerImplementation::~PlayerImplementation() {
 		playerSaveStateEvent = NULL;
 	}
 
-	if (resurrectEvent != NULL) {
-		if (resurrectEvent->isQueued())
-			server->removeEvent(resurrectEvent);
-
-		delete resurrectEvent;
-		resurrectEvent = NULL;
-	}
-
 	if (centerOfBeingEvent != NULL) {
 		server->removeEvent(centerOfBeingEvent);
 
@@ -223,7 +214,6 @@ void PlayerImplementation::initialize() {
 
 	disconnectEvent = NULL;
 	logoutEvent = NULL;
-	resurrectEvent = NULL;
 
 	playerSaveStateEvent = NULL;
 
@@ -747,60 +737,6 @@ void PlayerImplementation::logout(bool doLock) {
 	unlock(doLock);
 }
 
-//Resurrection
-void PlayerImplementation::resurrectCountdown(int counter) {
-	if (counter < 0 || counter > 6)
-		counter = 6;
-
-	if (resurrectionExpires.isPast())
-		counter = 1;
-
-	//Remove any pre existing events.
-	if (resurrectEvent != NULL) {
-
-		if (resurrectEvent->isQueued())
-			server->removeEvent(resurrectEvent);
-
-		delete resurrectEvent;
-		resurrectEvent = NULL;
-	}
-
-	if (isDead()) {
-		resurrectEvent = new PlayerResurrectEvent(_this, counter);
-
-		switch (counter) {
-		case 6:
-		case 5:
-		case 4:
-		case 3:
-		case 2:
-		{
-			int realCount = counter - 1;
-
-			StringBuffer msgRemainingTime;
-			msgRemainingTime << "You have " << (counter - 1) << " minute" << ((counter == 2) ? "" : "s") << " remaining to be resuscitated.";
-			sendSystemMessage(msgRemainingTime.toString());
-
-			//Find out how much time is actually left until the next tick should be going off.
-			int diff = abs((int) resurrectionExpires.miliDifference());
-			int nextTick = diff - (60000 * (realCount - 1));
-
-			server->addEvent(resurrectEvent, nextTick);
-			break;
-		}
-		case 1:
-			sendSystemMessage("You have been dead too long and can no longer be resuscitated. You have 10 minutes before you will automatically be cloned.");
-			server->addEvent(resurrectEvent, 600000);
-			break;
-		case 0:
-			delete resurrectEvent;
-			resurrectEvent = NULL;
-
-			//doClone();
-			break;
-		}
-	}
-}
 
 void PlayerImplementation::userLogout(int msgCounter) {
 	if (msgCounter < 0 || msgCounter > 3)
@@ -934,14 +870,6 @@ void PlayerImplementation::removeEvents() {
 
 		delete firstSampleEvent;
 		firstSampleEvent = NULL;
-	}
-
-	if (resurrectEvent != NULL) {
-		if (resurrectEvent->isQueued())
-			server->removeEvent(resurrectEvent);
-
-		delete resurrectEvent;
-		resurrectEvent = NULL;
 	}
 
 	if (sampleEvent != NULL) {
@@ -1868,16 +1796,8 @@ void PlayerImplementation::notifySceneReady() {
 
 		loadGuildChat();
 
-		if (isDead()) {
+		if (isDead())
 			onDeath();
-			/*
-			if (resurrectionExpires.isFuture()) {
-				int diff = abs((int) floor(((float)resurrectionExpires.miliDifference()) / 60000));
-				resurrectCountdown(diff + 1);
-			} else {
-				resurrectCountdown(1);
-			}*/
-		}
 
 	} else {
 		playerObject->friendsMagicNumberReset();
@@ -2201,6 +2121,9 @@ void PlayerImplementation::deleteQueueAction(uint32 actioncntr) {
 	}
 }
 
+
+//Deprecated
+//Use incapacitate() and the event handlers.
 void PlayerImplementation::doIncapacitate() {
 	//TODO:Is this code ever executed ??
 	//Please remove the above line if so...
@@ -2388,7 +2311,7 @@ void PlayerImplementation::doRecovery() {
 	}
 
 	//TODO: Redo this?
-	if (!isOnFullHealth() || hasWounds() || hasShockWounds() || powerboosted)
+	if (!isOnFullHealth() || hasWounds() || hasShockWounds() || isPowerboosted())
 		onRegenerateHAM();
 
 	if (hasStates())
@@ -2398,32 +2321,6 @@ void PlayerImplementation::doRecovery() {
 		calculateForceRegen();
 
 	activateRecovery();
-}
-
-
-void PlayerImplementation::resurrect() {
-	resurrectionExpires.update();
-
-	if (resurrectEvent != NULL) {
-		if (resurrectEvent->isQueued())
-			server->removeEvent(resurrectEvent);
-
-		delete resurrectEvent;
-		resurrectEvent = NULL;
-	}
-
-	uint32 boxID = getSuiBoxFromWindowType(SuiWindowType::CLONE_REQUEST); //Activate Clone SuiBox
-
-	if (hasSuiBox(boxID)) {
-		SuiBox* sui = getSuiBox(boxID);
-		sendMessage(sui->generateCloseMessage());
-		removeSuiBox(boxID);
-		sui->finalize();
-	}
-
-	changePosture(CreaturePosture::UPRIGHT);
-
-	rescheduleRecovery(3000);
 }
 
 void PlayerImplementation::doStateRecovery() {
@@ -4775,8 +4672,10 @@ void PlayerImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespon
 			omr->addRadialItem(0, 50, 3, "Stop Watch");
 	}
 
-	if (_this->isInAGroup() && player->isInAGroup() && (group == player->getGroupObject())) {
-		omr->addRadialItem(0, 140, 3, "@cmd_n:teach");
+	if (!isDead() && !isIncapacitated()) {
+		if (_this->isInAGroup() && player->isInAGroup() && (group == player->getGroupObject())) {
+			omr->addRadialItem(0, 140, 3, "@cmd_n:teach");
+		}
 	}
 
 	omr->finish();
@@ -5682,9 +5581,7 @@ void PlayerImplementation::incapacitateSelf() {
 void PlayerImplementation::die() {
 	resetIncapacitationCounter();
 
-	//resurrectCountdown();
-
-	//rescheduleRecovery(2000);
+	//TODO: Start resurrection countdown timer.
 
 	CreatureObjectImplementation::die();
 	onDeath();
@@ -5723,6 +5620,10 @@ void PlayerImplementation::clone(CloningFacility* cloningFacility) {
 	if (cloningFacility != NULL) {
 		cloningFacility->clone(_this);
 	}
+}
+
+void PlayerImplementation::resuscitate(CreatureObject* patient, bool forced) {
+	SceneObjectImplementation::resuscitate(patient, forced);
 }
 
 
@@ -6038,6 +5939,7 @@ void PlayerImplementation::unconsent(const String& name) {
  * \param victim The victim of the incapacitation.
  */
 void PlayerImplementation::onIncapacitateTarget(CreatureObject* victim) {
+	SceneObjectImplementation::onIncapacitateTarget(victim);
 	sendSystemMessage("base_player", "prose_target_incap", victim->getObjectID()); //You incapacitate %TT.
 }
 
@@ -6059,12 +5961,10 @@ void PlayerImplementation::onIncapacitated(SceneObject* attacker) {
 	if (getIncapacitationCounter() < 3) {
 		setPosture(CreaturePosture::INCAPACITATED);
 
-		if (attacker != NULL) {
+		if (attacker != NULL)
 			sendSystemMessage("base_player", "prose_victim_incap", attacker->getObjectID()); //You have been incapacitated by %TT.
-			attacker->onIncapacitateTarget(_this);
-		} else {
+		else
 			sendSystemMessage("base_player", "victim_incapacitated"); //You have become incapacitated.
-		}
 
 		uint32 incapTime = calculateIncapacitationTimer();
 		sendIncapacitationTimer(incapTime);
@@ -6270,6 +6170,15 @@ void PlayerImplementation::onCloneSuccessful() {
 /// This event should follow after failing to clone.
 void PlayerImplementation::onCloneFailure() {
 
+}
+
+void PlayerImplementation::onResuscitated(SceneObject* healer) {
+	CreatureObjectImplementation::onResuscitated(healer);
+
+	if (hasSuiBoxWindowType(SuiWindowType::CLONE_REQUEST))
+		closeSuiWindowType(SuiWindowType::CLONE_REQUEST);
+
+	rescheduleRecovery(1000);
 }
 
 /**

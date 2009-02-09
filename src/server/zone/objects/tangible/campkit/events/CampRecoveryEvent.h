@@ -64,17 +64,19 @@ public:
 			if (inCamp && camp != NULL && player != NULL) {
 				player->wlock();
 
-				player->healWound(player, 5, 0, false);
-				player->healWound(player, 5, 1, false);
-				player->healWound(player, 5, 2, false);
-				player->healWound(player, 5, 3, false);
-				player->healWound(player, 5, 4, false);
-				player->healWound(player, 5, 5, false);
-				player->healWound(player, 5, 6, false);
-				player->healWound(player, 5, 7, false);
-				player->healWound(player, 5, 8, false);
+				uint32 heal = 5;
 
-				camp->reactiveRecovery(player);
+				player->healWound(player, 0, heal);
+				player->healWound(player, 1, heal);
+				player->healWound(player, 2, heal);
+				player->healWound(player, 3, heal);
+				player->healWound(player, 4, heal);
+				player->healWound(player, 5, heal);
+				player->healWound(player, 6, heal);
+				player->healWound(player, 7, heal);
+				player->healWound(player, 8, heal);
+
+				camp->reactivateRecovery(player);
 
 				player->unlock();
 			} else {

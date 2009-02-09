@@ -295,6 +295,8 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	peacedRegenModifier = 1.0f;
 
 	dotMap = new DamageOverTimeMap();
+
+	timeOfDeath = 0;
 }
 
 CreatureObjectImplementation::~CreatureObjectImplementation() {
@@ -3687,12 +3689,8 @@ void CreatureObjectImplementation::applyBuff(BuffObject *bo) {
 
 void CreatureObjectImplementation::applyBuff(Buff *buff) {
 	if (buff == NULL || buff->getBuffCRC() <= 0 || buff->getBuffDuration() <= 0)
-	{
-		//System::out << "returning null for applyBuff" << endl;
 		return;
-	}
 
-	//System::out << "applyBuff()" << endl;
 	// Other code should handle returning an error message
 	// if a previous buff already exists - safety net - make sure we don't double up
 	if (hasBuff(buff->getBuffCRC()))
@@ -3702,8 +3700,6 @@ void CreatureObjectImplementation::applyBuff(Buff *buff) {
 
 	buff->activateBuff(_this, server);
 
-	//Should be sending delta's here.
-
 	CreatureObjectMessage3* msg1 = new CreatureObjectMessage3(_this);
 	CreatureObjectMessage6* msg2 = new CreatureObjectMessage6(_this);
 
@@ -3712,12 +3708,8 @@ void CreatureObjectImplementation::applyBuff(Buff *buff) {
 	msgs.add(msg2);
 	broadcastMessages(msgs);
 
-	activateRecovery();
+	//activateRecovery();
 }
-
-// TODO: CreatureObjectImplementation::saveBuffs(bool doUpdateCreature)
-// save the current duration onto the creature object so they can be
-// loaded back when they login
 
 void CreatureObjectImplementation::removeBuffs(bool doUpdateClient) {
 
@@ -3806,7 +3798,7 @@ float CreatureObjectImplementation::calculateBFRatio() {
 	if (shockWounds <= 250)
 		return 0;
 	else
-		return (float)((shockWounds-250)/1000);
+		return ((((float) shockWounds) - 250.0f) / 1000.0f);
 }
 
 void CreatureObjectImplementation::updateCharacterAppearance() {
@@ -3840,203 +3832,6 @@ void CreatureObjectImplementation::explode(int level, bool destroy) {
 
 }
 
-
-//Medic & Doctor
-//TODO: REFACTOR WITH NEW METHODS
-int CreatureObjectImplementation::healDamage(CreatureObject* target, int damage, uint8 attribute, bool doBattleFatigue) {
-	if (!CreatureAttribute::isHAM(attribute))
-		return 0;
-
-	if (!target->hasDamage())
-		return 0;
-
-	int healableDamage = 0;
-
-	switch (attribute) {
-	case CreatureAttribute::HEALTH:
-		healableDamage = (damage > target->getHealthDamage()) ? target->getHealthDamage() : damage;
-
-		if (doBattleFatigue)
-			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
-
-		if (!target->changeHealthBar(healableDamage))
-			healableDamage = 0;
-
-		break;
-	case CreatureAttribute::ACTION:
-		healableDamage = (damage > target->getActionDamage()) ? target->getActionDamage() : damage;
-
-		if (doBattleFatigue)
-			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
-
-		if (!target->changeActionBar(healableDamage))
-			return healableDamage = 0;
-
-		break;
-	case CreatureAttribute::MIND:
-		healableDamage = (damage > target->getMindDamage()) ? target->getMindDamage() : damage;
-
-		if (doBattleFatigue)
-			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
-
-		if (!target->changeMindBar(healableDamage))
-			return healableDamage = 0;
-
-		break;
-	}
-
-	revive(target);
-
-	return healableDamage;
-}
-
-//TODO: REFACTOR WITH NEW METHODS
-int CreatureObjectImplementation::healWound(CreatureObject* target, int damage, uint8 attribute, bool doBattleFatigue) {
-	if (!target->hasWounds())
-		return 0;
-
-	int healableDamage = 0;
-
-	switch (attribute) {
-	case CreatureAttribute::HEALTH:
-		healableDamage = (damage > target->getHealthWounds()) ? target->getHealthWounds() : damage;
-
-		if (doBattleFatigue)
-			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
-
-		if (target->changeHealthWoundsBar(-healableDamage))
-			return healableDamage;
-
-		break;
-	case CreatureAttribute::ACTION:
-		healableDamage = (damage > target->getActionWounds()) ? target->getActionWounds() : damage;
-
-		if (doBattleFatigue)
-			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
-
-		if (target->changeActionWoundsBar(-healableDamage))
-			return healableDamage;
-
-		break;
-	case CreatureAttribute::MIND:
-		healableDamage = (damage > target->getMindWounds()) ? target->getMindWounds() : damage;
-
-		if (doBattleFatigue)
-			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
-
-		if (target->changeMindWoundsBar(-healableDamage))
-			return healableDamage;
-
-		break;
-	case CreatureAttribute::STRENGTH:
-		healableDamage = (damage > target->getStrengthWounds()) ? target->getStrengthWounds() : damage;
-
-		if (doBattleFatigue)
-			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
-
-		if (target->changeStrengthWoundsBar(-healableDamage))
-			return healableDamage;
-
-		break;
-	case CreatureAttribute::CONSTITUTION:
-		healableDamage = (damage > target->getConstitutionWounds()) ? target->getConstitutionWounds() : damage;
-
-		if (doBattleFatigue)
-			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
-
-		if (target->changeConstitutionWoundsBar(-healableDamage))
-			return healableDamage;
-
-		break;
-	case CreatureAttribute::QUICKNESS:
-		healableDamage = (damage > target->getQuicknessWounds()) ? target->getQuicknessWounds() : damage;
-
-		if (doBattleFatigue)
-			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
-
-		if (target->changeQuicknessWoundsBar(-healableDamage))
-			return healableDamage;
-
-		break;
-	case CreatureAttribute::STAMINA:
-		healableDamage = (damage > target->getStaminaWounds()) ? target->getStaminaWounds() : damage;
-
-		if (doBattleFatigue)
-			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
-
-		if (target->changeStaminaWoundsBar(-healableDamage))
-			return healableDamage;
-
-		break;
-	case CreatureAttribute::FOCUS:
-		healableDamage = (damage > target->getFocusWounds()) ? target->getFocusWounds() : damage;
-
-		if (doBattleFatigue)
-			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
-
-		if (target->changeFocusWoundsBar(-healableDamage))
-			return healableDamage;
-
-		break;
-	case CreatureAttribute::WILLPOWER:
-		healableDamage = (damage > target->getWillpowerWounds()) ? target->getWillpowerWounds() : damage;
-
-		if (doBattleFatigue)
-			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
-
-		if (target->changeWillpowerWoundsBar(-healableDamage))
-			return healableDamage;
-
-		break;
-	}
-
-	return 0;
-}
-
-int CreatureObjectImplementation::healEnhance(CreatureObject* target, int amount, float duration, uint8 attribute, bool doBattleFatigue) {
-	Buff* buff = new Buff(BuffCRC::TEST_FIRST);
-
-	if (doBattleFatigue)
-		amount -= (int) round((float)amount * target->calculateBFRatio());
-
-	switch (attribute) {
-	case CreatureAttribute::HEALTH:
-		buff->setBuffCRC(BuffCRC::MEDICAL_ENHANCE_HEALTH);
-		buff->setHealthBuff(amount);
-		break;
-	case CreatureAttribute::ACTION:
-		buff->setBuffCRC(BuffCRC::MEDICAL_ENHANCE_ACTION);
-		buff->setActionBuff(amount);
-		break;
-	case CreatureAttribute::STRENGTH:
-		buff->setBuffCRC(BuffCRC::MEDICAL_ENHANCE_STRENGTH);
-		buff->setStrengthBuff(amount);
-		break;
-	case CreatureAttribute::CONSTITUTION:
-		buff->setBuffCRC(BuffCRC::MEDICAL_ENHANCE_CONSTITUTION);
-		buff->setConstitutionBuff(amount);
-		break;
-	case CreatureAttribute::QUICKNESS:
-		buff->setBuffCRC(BuffCRC::MEDICAL_ENHANCE_QUICKNESS);
-		buff->setQuicknessBuff(amount);
-		break;
-	case CreatureAttribute::STAMINA:
-		buff->setBuffCRC(BuffCRC::MEDICAL_ENHANCE_STAMINA);
-		buff->setStaminaBuff(amount);
-		break;
-	default:
-		return 0;
-	}
-
-	buff->setBuffDuration(duration);
-
-	BuffObject* bo = new BuffObject(buff);
-
-	target->applyBuff(bo);
-
-	return amount;
-}
-
 bool CreatureObjectImplementation::healState(CreatureObject* target, uint64 state) {
 	if (!target->hasState(state))
 		return false;
@@ -4047,40 +3842,6 @@ bool CreatureObjectImplementation::healState(CreatureObject* target, uint64 stat
 	}
 
 	return false;
-}
-
-/// Revive is used to bring a player out of Incapacitation.
-bool CreatureObjectImplementation::revive(CreatureObject* target, bool forcedChange) {
-	if (!target->isIncapacitated() && !target->isDead())
-		return false;
-
-	if (!target->isRevivable() && !forcedChange)
-		return false;
-
-	if (target->isPlayer())
-		((Player*)target)->changePosture(CreaturePosture::UPRIGHT);
-	else
-		target->setPosture(CreaturePosture::UPRIGHT, (forcedChange ? true : false));
-
-	return true;
-}
-
-/// Resurrect is used to bring a player back from the dead.
-bool CreatureObjectImplementation::resurrect(CreatureObject* target, bool forcedChange) {
-	if (!target->isDead())
-		return false;
-
-	if (!target->isResurrectable() && !forcedChange)
-		return false;
-
-	if (target->isPlayer()) {
-		((Player*)target)->resurrect();
-	} else {
-		if (!revive(target, true))
-			return false;
-	}
-
-	return true;
 }
 
 void CreatureObjectImplementation::deactivateWoundTreatment() {
@@ -4305,6 +4066,7 @@ bool CreatureObjectImplementation::inflictDamage(CreatureObject* victim, uint8 a
  */
 void CreatureObjectImplementation::incapacitateSelf() {
 	setPosture(CreaturePosture::INCAPACITATED);
+	System::out << "creo::incapself" << endl;
 	onIncapacitated(NULL);
 }
 
@@ -4322,8 +4084,10 @@ void CreatureObjectImplementation::recoverFromIncapacitation() {
 void CreatureObjectImplementation::die() {
 
 	setPosture(CreaturePosture::DEAD);
+	timeOfDeath = Time().getMiliTime();
 
 	/// If creature is a player, don't execute the onDeath handler here. It will propagate down from PlayerImplementation.
+	//TODO: Does this really need to be here?
 	if (!isPlayer())
 		onDeath();
 }
@@ -4431,7 +4195,6 @@ void CreatureObjectImplementation::onDeath() {
 	//Remove buffs
 	//Decay items
 	//Only creature stuff happens here.
-	((CreatureImplementation*)_this->_getImplementation())->doIncapacitate();
 }
 
 /**
@@ -4442,6 +4205,23 @@ void CreatureObjectImplementation::onKilled(SceneObject* killer) {
 	//Lose any faction points
 	//Lose experience (Jedi)
 	die();
+}
+
+void CreatureObjectImplementation::onResuscitated(SceneObject* healer) {
+	setPosture(CreaturePosture::UPRIGHT);
+}
+
+void CreatureObjectImplementation::onDamageHealed(SceneObject* healer, uint8 attribute, uint32 amount) {
+	if (canRecoverFromIncapacitation())
+		recoverFromIncapacitation();
+}
+
+void CreatureObjectImplementation::onWoundHealed(SceneObject* healer, uint8 attribute, uint32 amount) {
+
+}
+
+void CreatureObjectImplementation::onHealEnhanced(SceneObject* enhancer, uint8 attribute, uint32 amount, float duration) {
+
 }
 
 void CreatureObjectImplementation::onBlinded() {

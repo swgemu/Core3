@@ -49,29 +49,19 @@ void EnhancePack::generateAttributes(SceneObject* obj) {
 		((EnhancePackImplementation*) _impl)->generateAttributes(obj);
 }
 
-unsigned int EnhancePack::getBuffCRC() {
+unsigned int EnhancePack::calculatePower(CreatureObject* enhancer, CreatureObject* patient, bool applyBattleFatigue) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addObjectParameter(enhancer);
+		method.addObjectParameter(patient);
+		method.addBooleanParameter(applyBattleFatigue);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((EnhancePackImplementation*) _impl)->getBuffCRC();
-}
-
-int EnhancePack::calculatePower(CreatureObject* creature) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 8);
-		method.addObjectParameter(creature);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((EnhancePackImplementation*) _impl)->calculatePower(creature);
+		return ((EnhancePackImplementation*) _impl)->calculatePower(enhancer, patient, applyBattleFatigue);
 }
 
 void EnhancePack::setEffectiveness(float eff) {
@@ -79,7 +69,7 @@ void EnhancePack::setEffectiveness(float eff) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 8);
 		method.addFloatParameter(eff);
 
 		method.executeWithVoidReturn();
@@ -92,7 +82,7 @@ void EnhancePack::setDuration(float dur) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 9);
 		method.addFloatParameter(dur);
 
 		method.executeWithVoidReturn();
@@ -105,7 +95,7 @@ void EnhancePack::setAttribute(unsigned char value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 10);
 		method.addUnsignedCharParameter(value);
 
 		method.executeWithVoidReturn();
@@ -118,7 +108,7 @@ float EnhancePack::getEffectiveness() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 11);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -130,7 +120,7 @@ float EnhancePack::getDuration() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 12);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -142,7 +132,7 @@ unsigned char EnhancePack::getAttribute() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 13);
 
 		return method.executeWithUnsignedCharReturn();
 	} else
@@ -164,27 +154,24 @@ Packet* EnhancePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		generateAttributes((SceneObject*) inv->getObjectParameter());
 		break;
 	case 7:
-		resp->insertInt(getBuffCRC());
+		resp->insertInt(calculatePower((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
 	case 8:
-		resp->insertSignedInt(calculatePower((CreatureObject*) inv->getObjectParameter()));
-		break;
-	case 9:
 		setEffectiveness(inv->getFloatParameter());
 		break;
-	case 10:
+	case 9:
 		setDuration(inv->getFloatParameter());
 		break;
-	case 11:
+	case 10:
 		setAttribute(inv->getUnsignedCharParameter());
 		break;
-	case 12:
+	case 11:
 		resp->insertFloat(getEffectiveness());
 		break;
-	case 13:
+	case 12:
 		resp->insertFloat(getDuration());
 		break;
-	case 14:
+	case 13:
 		resp->insertByte(getAttribute());
 		break;
 	default:
@@ -198,12 +185,8 @@ void EnhancePackAdapter::generateAttributes(SceneObject* obj) {
 	return ((EnhancePackImplementation*) impl)->generateAttributes(obj);
 }
 
-unsigned int EnhancePackAdapter::getBuffCRC() {
-	return ((EnhancePackImplementation*) impl)->getBuffCRC();
-}
-
-int EnhancePackAdapter::calculatePower(CreatureObject* creature) {
-	return ((EnhancePackImplementation*) impl)->calculatePower(creature);
+unsigned int EnhancePackAdapter::calculatePower(CreatureObject* enhancer, CreatureObject* patient, bool applyBattleFatigue) {
+	return ((EnhancePackImplementation*) impl)->calculatePower(enhancer, patient, applyBattleFatigue);
 }
 
 void EnhancePackAdapter::setEffectiveness(float eff) {

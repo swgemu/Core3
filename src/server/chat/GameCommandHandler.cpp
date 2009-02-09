@@ -2320,10 +2320,10 @@ void GameCommandHandler::rez(StringTokenizer tokenizer, Player* player) {
 		if (targetPlayer != player)
 			targetPlayer->wlock(player);
 
-		((CreatureObject*)player)->resurrect(targetPlayer, true);
+		player->resuscitate(targetPlayer, true);
 
-		targetPlayer->sendSystemMessage("Your character has been resuscitated by \'" + player->getFirstName() + "\'.");
-		player->sendSystemMessage("You resuscitate the character \'" + name + "\'.");
+		targetPlayer->sendSystemMessage("You have been restored...");
+		player->sendSystemMessage("You resuscitate " + name + ".");
 
 		if (targetPlayer != player)
 			targetPlayer->unlock();

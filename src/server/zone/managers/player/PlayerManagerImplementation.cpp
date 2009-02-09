@@ -579,10 +579,12 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	//Posture
 	player->changePosture(character->getInt(61));
 
-	if (player->isDead()) {
-		uint64 rezExpires = ((uint64) character->getUnsignedInt(62)) * 1000;
-		player->setResurrectionExpires(rezExpires);
-	}
+	//If a player is incapacitated when the server saves, and subsequently are unloaded from memory, they should be loaded as standing.
+	if (player->isIncapacitated())
+		player->setPosture(CreaturePosture::UPRIGHT);
+
+	//Set time of death
+	player->setTimeOfDeath(character->getUnsignedLong(62));
 
 	player->setCloningFacility(structureManager->getCloningFacility(character->getUnsignedLong(65)));
 
@@ -818,7 +820,7 @@ void PlayerManagerImplementation::save(Player* player) {
 	<< ",factionRank=" << (int) player->getFactionRank()
 	<< ",experience=" << "'" << player->saveXp() << "'"
 	<< ",posture=" << (int) player->getPosture()
-	<< ",rezExpires=" << (int) floor(((float)(player->getResurrectionExpires()) / 1000.0f))
+	<< ",timeOfDeath=" << (uint64) player->getTimeOfDeath()
 	<< ",cloningFacility=" << (uint64) cloningFacilityID
 	<< " WHERE character_id=" << player->getCharacterID() << ";";
 	try {

@@ -43,8 +43,6 @@ public:
 
 	bool doMovement();
 
-	void doIncapacitate();
-
 	void doStandUp();
 
 	void setArmor(unsigned int ar);
@@ -151,6 +149,10 @@ public:
 
 	void onIncapacitateTarget(CreatureObject* victim);
 
+	void onKilled(CreatureObject* killer);
+
+	void onDeath();
+
 protected:
 	Creature(DummyConstructorParameter* param);
 
@@ -185,8 +187,6 @@ public:
 	void removeFromQueue();
 
 	bool doMovement();
-
-	void doIncapacitate();
 
 	void doStandUp();
 
@@ -291,6 +291,10 @@ public:
 	void setFPValue(unsigned int value);
 
 	void onIncapacitateTarget(CreatureObject* victim);
+
+	void onKilled(CreatureObject* killer);
+
+	void onDeath();
 
 protected:
 	String _param0_setObjectFileName__String_;

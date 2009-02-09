@@ -63,69 +63,69 @@ public:
 		mindCost = 0;
 	}
 
-	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
+	void doAnimations(CreatureObject* enhancer, CreatureObject* patient) {
 		if (!effectName.isEmpty())
-			creatureTarget->playEffect(effectName, "");
+			patient->playEffect(effectName, "");
 
-		if (creature == creatureTarget)
-			creature->doAnimation("heal_self");
+		if (enhancer == patient)
+			enhancer->doAnimation("heal_self");
 		else
-			creature->doAnimation("heal_other");
+			enhancer->doAnimation("heal_other");
 	}
 
-	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, EnhancePack* enhancePack) {
-		if (!creature->canTreatWounds()) {
-			creature->sendSystemMessage("healing_response", "enhancement_must_wait"); //You must wait before you can heal wounds or apply enhancements again.
+	bool canPerformSkill(CreatureObject* enhancer, CreatureObject* patient, EnhancePack* enhancePack) {
+		if (!enhancer->canTreatWounds()) {
+			enhancer->sendSystemMessage("healing_response", "enhancement_must_wait"); //You must wait before you can heal wounds or apply enhancements again.
 			return false;
 		}
 
 		if (enhancePack == NULL) {
-			creature->sendSystemMessage("healing_response", "healing_response_60"); //No valid medicine found.
+			enhancer->sendSystemMessage("healing_response", "healing_response_60"); //No valid medicine found.
 			return false;
 		}
 
-		if (creature->getMedicalFacilityRating() <= 0) {
-			creature->sendSystemMessage("healing_response", "must_be_near_droid"); //You must be in a hospital, at a campsite, or near a surgical droid to do that.
+		if (enhancer->getMedicalFacilityRating() <= 0) {
+			enhancer->sendSystemMessage("healing_response", "must_be_near_droid"); //You must be in a hospital, at a campsite, or near a surgical droid to do that.
 			return false;
 		}
 
-		if (creature->isProne()) {
-			creature->sendSystemMessage("You cannot Heal Enhance while prone.");
+		if (enhancer->isProne()) {
+			enhancer->sendSystemMessage("You cannot Heal Enhance while prone.");
 			return false;
 		}
 
-		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You cannot Heal Enhance while Meditating.");
+		if (enhancer->isMeditating()) {
+			enhancer->sendSystemMessage("You cannot Heal Enhance while Meditating.");
 			return false;
 		}
 
-		if (creature->isRidingCreature()) {
-			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
+		if (enhancer->isRidingCreature()) {
+			enhancer->sendSystemMessage("You cannot do that while Riding a Creature.");
 			return false;
 		}
 
-		if (creature->isMounted()) {
-			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
+		if (enhancer->isMounted()) {
+			enhancer->sendSystemMessage("You cannot do that while Driving a Vehicle.");
 			return false;
 		}
 
-		if (creature->isInCombat()) {
-			creature->sendSystemMessage("You cannot do that while in Combat.");
+		if (enhancer->isInCombat()) {
+			enhancer->sendSystemMessage("You cannot do that while in Combat.");
 			return false;
 		}
 
-		if (creatureTarget->isInCombat()) {
-			creature->sendSystemMessage("You cannot do that while your target is in Combat.");
+		if (patient->isInCombat()) {
+			enhancer->sendSystemMessage("You cannot do that while your target is in Combat.");
 			return false;
 		}
 
-		if (creatureTarget->isOvert() && creatureTarget->getFaction() != creature->getFaction()) {
-			creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+		if (patient->isOvert() && patient->getFaction() != enhancer->getFaction()) {
+			enhancer->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
 			return false;
 		}
 
-		if (creature->getMind() < abs(mindCost)) {
-			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
+		if (enhancer->getMind() < abs(mindCost)) {
+			enhancer->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
 			return false;
 		}
 
@@ -150,10 +150,10 @@ public:
 		}
 	}
 
-	EnhancePack* findEnhancePack(CreatureObject* creature, uint8 attribute) {
-		Inventory* inventory = creature->getInventory();
+	EnhancePack* findEnhancePack(CreatureObject* enhancer, uint8 attribute) {
+		Inventory* inventory = enhancer->getInventory();
 
-		int medicineUse = creature->getSkillMod("healing_ability");
+		int medicineUse = enhancer->getSkillMod("healing_ability");
 
 		if (inventory != NULL) {
 			for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
@@ -175,9 +175,9 @@ public:
 		return NULL;
 	}
 
-	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
+	int doSkill(CreatureObject* enhancer, SceneObject* target, const String& modifier, bool doAnimation = true) {
 		if (!target->isPlayer() && !target->isNonPlayerCreature()) {
-			creature->sendSystemMessage("healing_response", "healing_response_77"); //Target must be a player or a creature pet in order to apply enhancements.
+			enhancer->sendSystemMessage("healing_response", "healing_response_77"); //Target must be a player or a creature pet in order to apply enhancements.
 			return 0;
 		}
 
@@ -187,73 +187,68 @@ public:
 		parseModifier(modifier, attribute, objectId);
 
 		if (attribute == CreatureAttribute::UNKNOWN) {
-			creature->sendSystemMessage("healing_response", "healing_response_75"); //You must specify a valid attribute.
+			enhancer->sendSystemMessage("healing_response", "healing_response_75"); //You must specify a valid attribute.
 			return 0;
 		}
 
-		EnhancePack* enhancePack = (EnhancePack*) creature->getInventoryItem(objectId);
+		EnhancePack* enhancePack = (EnhancePack*) enhancer->getInventoryItem(objectId);
 
 		if (enhancePack == NULL)
-			enhancePack = findEnhancePack(creature, attribute);
+			enhancePack = findEnhancePack(enhancer, attribute);
 
-		CreatureObject* creatureTarget = (CreatureObject*) target;
+		CreatureObject* patient = (CreatureObject*) target;
 
-		if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted())
-			creatureTarget = creature;
+		if (patient->isDead() || patient->isRidingCreature() || patient->isMounted())
+			patient = enhancer;
 
-		if (!canPerformSkill(creature, creatureTarget, enhancePack))
+		if (!canPerformSkill(enhancer, patient, enhancePack))
 			return 0;
 
+		uint32 currentBuff = 0;
+		uint32 buffCRC = BuffCRC::getMedicalBuff(attribute);
 
-		//Calculate current buff
-		int currentPower = 0;
-		uint32 currentBuffCRC = enhancePack->getBuffCRC();
-
-		if (creature->hasBuff(currentBuffCRC)) {
-			BuffObject* currentBuffObj = creature->getBuffObject(currentBuffCRC);
-			Buff* currentBuff = currentBuffObj->getBuff();
-
-			currentPower = getBuffPower(currentBuff, currentBuffCRC);
-
-			currentBuffObj->finalize();
+		if (patient->hasBuff(buffCRC)) {
+			BuffObject* bo = patient->getBuffObject(buffCRC);
+			currentBuff = bo->getBuff()->getAttributeBuff(attribute);
+			bo->finalize();
 		}
 
-		int buffPower = enhancePack->calculatePower(creature);
-		int predictedPower = buffPower - (int)round(((float)buffPower * creatureTarget->calculateBFRatio()));
+		//Applies battle fatigue
+		int buffPower = enhancePack->calculatePower(enhancer, patient);
 
-		if (currentPower > predictedPower) {
-			if (creatureTarget == creature) {
-				creature->sendSystemMessage("Your current enhancements are of greater power and cannot be replaced.");
-			} else {
-				creature->sendSystemMessage("Your target's current enhancements are of greater power and cannot be replaced.");
-			}
+		if (buffPower < currentBuff) {
+			if (patient == enhancer)
+				enhancer->sendSystemMessage("Your current enhancements are of greater power and cannot be re-applied.");
+			else
+				enhancer->sendSystemMessage("Your target's current enhancements are of greater power and cannot be re-applied.");
+
 			return 0;
 		}
 
-		int buffApplied = creature->healEnhance(creatureTarget, buffPower, enhancePack->getDuration(), attribute);
+		uint32 amountEnhanced = enhancer->healEnhance(patient, attribute, buffPower, enhancePack->getDuration());
 
-		if (creature->isPlayer())
-			((Player*)creature)->sendBattleFatigueMessage(creatureTarget);
+		if (enhancer->isPlayer())
+			((Player*)enhancer)->sendBattleFatigueMessage(patient);
 
-		sendEnhanceMessage(creature, creatureTarget, attribute, buffApplied, currentPower);
+		sendEnhanceMessage(enhancer, patient, attribute, amountEnhanced);
 
-		creature->changeMindBar(mindCost);
+		enhancer->changeMindBar(mindCost);
 
-		creature->deactivateWoundTreatment();
+		enhancer->deactivateWoundTreatment();
 
 		if (enhancePack != NULL)
-			enhancePack->useCharge((Player*) creature);
+			enhancePack->useCharge((Player*) enhancer);
 
-		if (creatureTarget != creature)
-			awardXp(creature, "medical", buffApplied); //No experience for healing yourself.
+		if (patient != enhancer)
+			awardXp(enhancer, "medical", amountEnhanced); //No experience for healing yourself.
 
-		doAnimations(creature, creatureTarget);
+		doAnimations(enhancer, patient);
 
 		return 0;
 	}
 
-	void awardXp(CreatureObject* creature, String type, int power) {
-		Player* player = (Player*) creature;
+	void awardXp(CreatureObject* enhancer, String type, int power) {
+		Player* player = (Player*) enhancer;
 
 		int amount = (int)round((float)power * 0.5f);
 
@@ -263,61 +258,37 @@ public:
 		player->addXp(type, amount, true);
 	}
 
-	void sendEnhanceMessage(CreatureObject* creature, CreatureObject* creatureTarget, uint8 attribute, int buffApplied, int currentPower) {
-		String creatureName = creature->getCharacterName().toString();
-		String creatureTargetName = creatureTarget->getCharacterName().toString();
+	void sendEnhanceMessage(CreatureObject* enhancer, CreatureObject* patient, uint8 attribute, uint32 buffApplied) {
+		String enhancerName = enhancer->getCharacterName().toString();
+		String patientName = patient->getCharacterName().toString();
 		String attributeName = CreatureAttribute::getName(attribute, true);
 
 		StringBuffer msgPlayer, msgTarget, msgBuff;
 
-		if (buffApplied == currentPower) {
-			if (creature == creatureTarget) {
+		if (buffApplied == 0) {
+			if (enhancer == patient) {
 				msgPlayer << "You re-apply your ";
 			} else {
-				msgPlayer << "You re-apply " << creatureTargetName << "'s ";
-				msgTarget << creatureName << " re-applies your ";
+				msgPlayer << "You re-apply " << patientName << "'s ";
+				msgTarget << enhancerName << " re-applies your ";
 			}
 			msgBuff << attributeName << " enhancement.";
 		} else {
-			if (creature == creatureTarget) {
+			if (enhancer == patient) {
 				msgPlayer << "You enhance your ";
 			} else {
-				msgPlayer << "You enhance " << creatureTargetName << "'s ";
-				msgTarget << creatureName << " enhances your ";
+				msgPlayer << "You enhance " << patientName << "'s ";
+				msgTarget << enhancerName << " enhances your ";
 			}
 			msgBuff << attributeName << " by " << buffApplied << ".";
 		}
 
 		msgPlayer << msgBuff.toString();
-		creature->sendSystemMessage(msgPlayer.toString());
+		enhancer->sendSystemMessage(msgPlayer.toString());
 
-		if (creature != creatureTarget) {
+		if (enhancer != patient) {
 			msgTarget << msgBuff.toString();
-			creatureTarget->sendSystemMessage(msgTarget.toString());
-		}
-	}
-
-	int getBuffPower(Buff* buff, uint32 buffCRC) {
-		switch (buffCRC) {
-		case BuffCRC::MEDICAL_ENHANCE_ACTION:
-			return buff->getActionBuff();
-			break;
-		case BuffCRC::MEDICAL_ENHANCE_CONSTITUTION:
-			return buff->getConstitutionBuff();
-			break;
-		case BuffCRC::MEDICAL_ENHANCE_STRENGTH:
-			return buff->getStrengthBuff();
-			break;
-		case BuffCRC::MEDICAL_ENHANCE_QUICKNESS:
-			return buff->getQuicknessBuff();
-			break;
-		case BuffCRC::MEDICAL_ENHANCE_STAMINA:
-			return buff->getStaminaBuff();
-			break;
-		case BuffCRC::MEDICAL_ENHANCE_HEALTH:
-		default:
-			return buff->getHealthBuff();
-			break;
+			patient->sendSystemMessage(msgTarget.toString());
 		}
 	}
 

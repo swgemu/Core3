@@ -53,10 +53,10 @@ class MindHealTargetSkill : public TargetSkill {
 protected:
 	String effectName;
 	int mindCost;
-	int mindWoundCost;	
+	int mindWoundCost;
 
 	int mindHealed;
-	
+
 	float speed;
 
 public:
@@ -64,9 +64,9 @@ public:
 		effectName = aname;
 		mindCost = 0;
 		mindWoundCost = 0;
-		
+
 		mindHealed = 0;
-		
+
 		speed = 0.0f;
 	}
 
@@ -78,7 +78,7 @@ public:
 			creature->doAnimation("heal_self");
 		else
 			creature->doAnimation("heal_other");
-	}	
+	}
 
 	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
 		CreatureObject* creatureTarget;
@@ -98,7 +98,7 @@ public:
 
 		if (creature->isProne()) {
 			creature->sendSystemMessage("You cannot Heal Mind while prone.");
-			return 0;		
+			return 0;
 		}
 
 		if (creature->isMeditating()) {
@@ -129,23 +129,23 @@ public:
 		if (creature->getMind() < abs(mindCost)) {
 			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
 			return 0;
-		}		
+		}
 
 		if (!creatureTarget->hasMindDamage()) {
-				if (creatureTarget) 
+				if (creatureTarget)
 					creature->sendSystemMessage("healing", "no_mind_to_heal_target", creatureTarget->getObjectID()); //%NT has no mind to heal.
 				return 0;
 			}
-		
+
 			int healPower = (int) round(150 + System::random(600));
 
-			int healedMind = creature->healDamage(creatureTarget, healPower, CreatureAttribute::MIND);
+			int healedMind = creature->healDamage(creatureTarget, CreatureAttribute::MIND, healPower);
 
 			if (creature->isPlayer())
 				((Player*)creature)->sendBattleFatigueMessage(creatureTarget);
-		
+
 			sendHealMessage(creature, creatureTarget, healedMind);
-			
+
 		creature->changeMindBar(-mindCost);
 		creature->changeMindWoundsBar(mindWoundCost);
 		creature->changeFocusWoundsBar(mindWoundCost);
@@ -156,9 +156,9 @@ public:
 
 		return 0;
 	}
-	
+
 	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, int mindDamage) {
-		
+
 		Player* player = (Player*) creature;
 		Player* playerTarget = (Player*) creatureTarget;
 
@@ -180,7 +180,7 @@ public:
 			playerTarget->sendSystemMessage(msgTarget.toString());
 		}
 	}
-	
+
 	float calculateSpeed(CreatureObject* creature) {
 		return speed;
 	}
