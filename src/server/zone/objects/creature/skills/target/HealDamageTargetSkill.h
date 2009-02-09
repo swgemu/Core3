@@ -198,8 +198,12 @@ public:
 		uint64 objectId = 0;
 
 		parseModifier(modifier, objectId);
+		ManagedReference<StimPack> stimPack;
 
-		ManagedReference<StimPack> stimPack = (StimPack*) creature->getInventoryItem(objectId);
+		if (objectId != 0)
+			stimPack = (StimPack*) creature->getInventoryItem(objectId);
+		else
+			stimPack = findStimPack(creature, getRange());
 
 		CreatureObject* creatureTarget = (CreatureObject*) target;
 
