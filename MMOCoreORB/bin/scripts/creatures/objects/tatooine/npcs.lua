@@ -70,8 +70,10 @@
  RunCreatureFile("objects/tatooine/npcs/duneStalker/duneStalkerMarksman.lua")
 
  --Jabba
+ RunCreatureFile("objects/tatooine/npcs/jabba/jabbaAssassin.lua")
  RunCreatureFile("objects/tatooine/npcs/jabba/jabbaCompoundGuard.lua")
  RunCreatureFile("objects/tatooine/npcs/jabba/jabbaEnforcer.lua")
+ RunCreatureFile("objects/tatooine/npcs/jabba/jabbaHenchman.lua")
  RunCreatureFile("objects/tatooine/npcs/jabba/jabbaSwooper.lua")
  RunCreatureFile("objects/tatooine/npcs/jabba/jabbaSwooperLeader.lua")
 
