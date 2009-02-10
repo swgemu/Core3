@@ -121,6 +121,8 @@ if (PLANET_ID == 5) then
  RunCreatureFile("spawns/naboo/citys/lakeRetreat.lua") 
  RunCreatureFile("spawns/naboo/citys/moenia.lua") 
  RunCreatureFile("spawns/naboo/citys/theed.lua")  
+ --
+ RunCreatureFile("spawns/naboo/dungeons/narglatchCave.lua")  
 end
 
 --Rori
