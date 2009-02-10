@@ -41,28 +41,28 @@
 --which carries forward this exception.
 
 --Outside Agro
-spawnCreature(woolamander, 0, 479.72, -661.131)
-spawnCreature(woolamander, 0, 483.283, -665.337)
-spawnCreature(stuntedWoolamander, 0, 509.331, -689.23)
-spawnCreature(woolamander, 0, 483.851, -662.943)
-spawnCreature(stuntedWoolamander, 0, 511.055, -687.557)
-spawnCreature(woolamander, 0, 479.598, -659.412)
-spawnCreature(woolamander, 0, 480.857, -663.185)
+spawnCreature(woolamander, 9, 479.72, -661.131)
+spawnCreature(woolamander, 9, 483.283, -665.337)
+spawnCreature(stuntedWoolamander, 9, 509.331, -689.23)
+spawnCreature(woolamander, 9, 483.851, -662.943)
+spawnCreature(stuntedWoolamander, 9, 511.055, -687.557)
+spawnCreature(woolamander, 9, 479.598, -659.412)
+spawnCreature(woolamander, 9, 480.857, -663.185)
 
 --Inside Agro
-spawnCreatureInCell(woolamanderHarvester, 0, -59.3201, 2.0202, 21.0591, 3705359)
-spawnCreatureInCell(woolamanderGatherer, 0, -59.2473, 2.0202, -11.0566, 3705359)
-spawnCreatureInCell(woolamanderHarrower, 0, -84.9596, 2.02019, 3.06351, 3705359)
-spawnCreatureInCell(woolamanderHarrower, 0, -85.751, 2.02019, 4.10265, 3705359)
-spawnCreatureInCell(woolamanderHarvester, 0, 53.9211, 2.02021, 5.37407, 3705361)
-spawnCreatureInCell(woolamanderHarvester, 0, 54.3143, 2.02021, 7.01683, 3705361)
-spawnCreatureInCell(woolamander, 0, 14.4116, 2.0202, 0.0878928, 3705355)
-spawnCreatureInCell(woolamander, 0, 15.4302, 2.0202, -0.711728, 3705355)
-spawnCreatureInCell(woolamanderGatherer, 0, -2.0938, 2.0202, 6.12562, 3705355)
-spawnCreatureInCell(woolamanderGatherer, 0, -2.82066, 2.0202, 8.06346, 3705355)
-spawnCreatureInCell(woolamander, 0, -17.5263, 2.0202, 0.383472, 3705355)
-spawnCreatureInCell(woolamander, 0, -18.2843, 2.0202, -0.466568, 3705355)
-spawnCreature(stuntedWoolamander, 0, 509.124, -687.435)
+spawnCreatureInCell(woolamanderHarvester, 9, -59.3201, 2.0202, 21.0591, 3705359)
+spawnCreatureInCell(woolamanderGatherer, 9, -59.2473, 2.0202, -11.0566, 3705359)
+spawnCreatureInCell(woolamanderHarrower, 9, -84.9596, 2.02019, 3.06351, 3705359)
+spawnCreatureInCell(woolamanderHarrower, 9, -85.751, 2.02019, 4.10265, 3705359)
+spawnCreatureInCell(woolamanderHarvester, 9, 53.9211, 2.02021, 5.37407, 3705361)
+spawnCreatureInCell(woolamanderHarvester, 9, 54.3143, 2.02021, 7.01683, 3705361)
+spawnCreatureInCell(woolamander, 9, 14.4116, 2.0202, 0.0878928, 3705355)
+spawnCreatureInCell(woolamander, 9, 15.4302, 2.0202, -0.711728, 3705355)
+spawnCreatureInCell(woolamanderGatherer, 9, -2.0938, 2.0202, 6.12562, 3705355)
+spawnCreatureInCell(woolamanderGatherer, 9, -2.82066, 2.0202, 8.06346, 3705355)
+spawnCreatureInCell(woolamander, 9, -17.5263, 2.0202, 0.383472, 3705355)
+spawnCreatureInCell(woolamander, 9, -18.2843, 2.0202, -0.466568, 3705355)
+spawnCreature(stuntedWoolamander, 9, 509.124, -687.435)
 
 
 
