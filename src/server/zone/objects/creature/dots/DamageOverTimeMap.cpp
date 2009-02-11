@@ -1,7 +1,8 @@
 
 #include "DamageOverTimeMap.h"
+#include "../../player/Player.h"
 
-void DamageOverTimeMap::addDot(CreatureObject* attacker, CreatureObject* victim, uint64 dotID, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense) {
+uint32 DamageOverTimeMap::addDot(CreatureObject* attacker, CreatureObject* victim, uint64 dotID, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense) {
 	uint64 attackerID = attacker->getObjectID();
 	DamageOverTimeList* dotList = get(attackerID);
 
@@ -15,12 +16,17 @@ void DamageOverTimeMap::addDot(CreatureObject* attacker, CreatureObject* victim,
 	if (defense > 0)
 		dotReductionMod -= (float) defense / 125.0f;
 
+
 	int redStrength = (int)(strength * dotReductionMod);
 	float redPotency = potency * dotReductionMod;
 
-	bool dotAdded =  dotList->addDot(victim, dotID, duration, dotType, pool, redStrength,redPotency);
+	// hitChance may need modification when poison resist packs are added, include 5% hit and 5% miss
+	if (!(redPotency > System::random(125) || redPotency > System::random(125)))
+			return false;
 
-	if (dotAdded) {
+	int dotPower =  dotList->addDot(victim, dotID, duration, dotType, pool, redStrength,redPotency);
+
+	if (dotPower > 0) {
 		Time nTime = dotList->getNextTick();
 
 		if(isEmpty() || nextTick.isPast())
@@ -35,11 +41,12 @@ void DamageOverTimeMap::addDot(CreatureObject* attacker, CreatureObject* victim,
 
 		if (hasState)
 			sendIncreaseMessage(victim,dotType);
-		else if (dotAdded)
-			sendStartMessage(victim,dotType);
+		else if (dotPower > 0)
+			sendStartMessage(victim,attacker, dotType);
 	}
 
 	victim->updateStates();
+	return dotPower;
 }
 
 void DamageOverTimeMap::activateDots(CreatureObject* victim) {
@@ -88,6 +95,7 @@ bool DamageOverTimeMap::healState(CreatureObject* victim, uint64 dotType, int re
 	uint64 attacker = 0;
 	DamageOverTimeList* dotList = NULL;
 	resetIterator();
+	float tempReduction = (float)reduction;
 
 	while (hasNext()) {
 		attacker = getNextKey();
@@ -96,11 +104,11 @@ bool DamageOverTimeMap::healState(CreatureObject* victim, uint64 dotType, int re
 		if (reduction < 0)
 			break;
 
-		reduction = dotList->healState(dotType,reduction);
+		tempReduction = dotList->healState(dotType,reduction);
 
 	}
 
-	if (reduction >= 0) {
+	if (tempReduction >= 0.0f) {
 		victim->clearState(dotType);
 		//sendStopMessage(victim,dotType);
 		victim->updateStates();
@@ -111,7 +119,7 @@ bool DamageOverTimeMap::healState(CreatureObject* victim, uint64 dotType, int re
 	return false;
 }
 
-void DamageOverTimeMap::sendStartMessage(CreatureObject* victim, uint64 type) {
+void DamageOverTimeMap::sendStartMessage(CreatureObject* victim,CreatureObject* attacker, uint64 type) {
 		if (!victim->isPlayer())
 			return;
 
@@ -189,4 +197,9 @@ void DamageOverTimeMap::sendDecreaseMessage(CreatureObject* victim, uint64 type)
 				victim->sendSystemMessage("@dot_message:decrease_fire");
 				break;
 	}
+}
+
+void DamageOverTimeMap::clear() {
+	dot = false;
+	removeAll();
 }

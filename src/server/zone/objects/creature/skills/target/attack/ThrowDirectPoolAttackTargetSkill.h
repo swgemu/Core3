@@ -58,7 +58,7 @@ public:
 	 * \param serv The ZoneProcessServerImplementation.
 	 */
 	ThrowDirectPoolAttackTargetSkill(const String& name, const String& anim,
-			ZoneProcessServerImplementation* serv) : ThrowAttackTargetSkill(name, anim, DIRECT, serv) {
+			ZoneProcessServerImplementation* serv) : ThrowAttackTargetSkill(name, anim, THROW, serv) {
 		healthPoolAttackChance = 0;
 		strengthPoolAttackChance = 0;
 		constitutionPoolAttackChance = 0;
@@ -168,7 +168,7 @@ public:
 	 * \return Returns Returns the damage.
 	 */
 	int calculateTrapDamage(CreatureObject* creature, TangibleObject* target, Weapon* weapon) {
-		return server->getCombatManager()->calculateTrapDamage(creature, target, this, true, weapon);
+		return server->getCombatManager()->calculateTrapDamage(creature, target, this, false, weapon);
 	}
 
 };

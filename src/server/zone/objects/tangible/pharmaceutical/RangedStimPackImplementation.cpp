@@ -91,12 +91,11 @@ void RangedStimPackImplementation::updateCraftingValues(DraftSchematic* draftSch
 
 	name = "range";
 	effectiveness = craftingValues->getCurrentValue("range");
-	itemAttributes->setFloatAttribute(name, effectiveness);
+	itemAttributes->setFloatAttribute(name, range);
 
 	name = "area";
 	effectiveness = craftingValues->getCurrentValue("area");
-	itemAttributes->setFloatAttribute(name, effectiveness);
-
+	itemAttributes->setFloatAttribute(name, area);
 }
 
 void RangedStimPackImplementation::initialize() {
@@ -161,8 +160,9 @@ void RangedStimPackImplementation::addAttributes(AttributeListMessage* alm) {
 		attr = "examine_heal_area";
 		alm->insertAttribute(attr, getPrecision(area, 0));
 	}
+	attr = "combat_healing_ability";
+	alm->insertAttribute(attr, getMedicineUseRequired());
 
-	PharmaceuticalImplementation::addFooterAttributes(alm);
 }
 
 void RangedStimPackImplementation::generateAttributes(SceneObject* obj) {

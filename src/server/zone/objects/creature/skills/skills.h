@@ -54,6 +54,10 @@ which carries forward this exception.
 //#include "target/attack/WeaponlessDotPoolAttackSkill.h"
 #include "target/HealTargetSkill.h"
 #include "target/heal/ForceHealTargetSkill.h"
+#include "target/attack/ThrowAttackTargetSkill.h"
+#include "target/attack/ThrowRandomPoolAttackTargetSkill.h"
+#include "target/attack/ThrowDirectPoolAttackTargetSkill.h"
+#include "target/attack/CMDotAttackTargetSkill.h"
 
 #include "target/HealEnhanceTargetSkill.h"
 #include "target/HealDamageTargetSkill.h"
@@ -87,10 +91,6 @@ which carries forward this exception.
 #include "CamoSkill.h"
 
 #include "PassiveSkill.h"
-
-#include "target/attack/ThrowAttackTargetSkill.h"
-#include "target/attack/ThrowRandomPoolAttackTargetSkill.h"
-#include "target/attack/ThrowDirectPoolAttackTargetSkill.h"
 
 #include "GroupSkill.h"
 #include "group/SystemGroupMessageSkill.h"

@@ -99,6 +99,44 @@ unsigned long long CurePack::getState() {
 		return ((CurePackImplementation*) _impl)->getState();
 }
 
+void CurePack::setArea(float ar) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addFloatParameter(ar);
+
+		method.executeWithVoidReturn();
+	} else
+		((CurePackImplementation*) _impl)->setArea(ar);
+}
+
+float CurePack::getArea() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((CurePackImplementation*) _impl)->getArea();
+}
+
+int CurePack::calculatePower(CreatureObject* creature) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addObjectParameter(creature);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((CurePackImplementation*) _impl)->calculatePower(creature);
+}
+
 /*
  *	CurePackAdapter
  */
@@ -125,6 +163,15 @@ Packet* CurePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case 10:
 		resp->insertLong(getState());
 		break;
+	case 11:
+		setArea(inv->getFloatParameter());
+		break;
+	case 12:
+		resp->insertFloat(getArea());
+		break;
+	case 13:
+		resp->insertSignedInt(calculatePower((CreatureObject*) inv->getObjectParameter()));
+		break;
 	default:
 		return NULL;
 	}
@@ -150,6 +197,18 @@ float CurePackAdapter::getEffectiveness() {
 
 unsigned long long CurePackAdapter::getState() {
 	return ((CurePackImplementation*) impl)->getState();
+}
+
+void CurePackAdapter::setArea(float ar) {
+	return ((CurePackImplementation*) impl)->setArea(ar);
+}
+
+float CurePackAdapter::getArea() {
+	return ((CurePackImplementation*) impl)->getArea();
+}
+
+int CurePackAdapter::calculatePower(CreatureObject* creature) {
+	return ((CurePackImplementation*) impl)->calculatePower(creature);
 }
 
 /*

@@ -88,6 +88,7 @@ int CurePackImplementation::useObject(Player* player) {
 
 void CurePackImplementation::initialize() {
 	setEffectiveness(0.0f);
+	setArea(0.0f);
 	setState(CreatureState::INVALID);
 }
 
@@ -99,6 +100,9 @@ void CurePackImplementation::parseItemAttributes() {
 
 	attr = "state";
 	setState(itemAttributes->getUnsignedLongAttribute(attr));
+
+	attr = "area";
+	setArea(itemAttributes->getFloatAttribute(attr));
 }
 
 void CurePackImplementation::addAttributes(AttributeListMessage* alm) {
@@ -109,6 +113,10 @@ void CurePackImplementation::addAttributes(AttributeListMessage* alm) {
 	alm->insertAttribute("examine_dot_cure", eff.toString());
 
 	alm->insertAttribute("examine_dot_cure_power", effectiveness);
+
+	if (isArea()) {
+		alm->insertAttribute("examine_heal_area", getPrecision(area, 0));
+	}
 
 	PharmaceuticalImplementation::addFooterAttributes(alm);
 }

@@ -51,5 +51,20 @@ MindHealSkill = {
 	speed = 5.0,
 	range = 6.0
 }
+
+CMDotSkill = {
+	skillname = "applypoison",
+	effect = "clienteffect/healing_healenhance.cef",
+
+	medpackType = POISONDELIVERYUNIT}
+
+AddCMDotAttackTargetSkill(CMDotSkill);
+
+CMDotSkill = {
+	skillname = "applydisease",
+	effect = "clienteffect/healing_healenhance.cef",
+
+	medpackType = DISEASEDELIVERYUNIT
+}
  
-AddMindHealTargetSkill(MindHealSkill);
+AddCMDotAttackTargetSkill(CMDotSkill);

@@ -83,6 +83,7 @@ public:
 	static const int THROW = 12;
 	static const int FORAGE = 13;
 	static const int DRAG = 14;
+	static const int CMDOT =15;
 
 	static const int TARGET = 1;
 	static const int SELF = 2;
@@ -140,7 +141,7 @@ public:
 	}
 
 	inline bool isAttackSkill() {
-		return type == ATTACK || type == THROW;
+		return type == ATTACK || type == THROW || type == CMDOT;
 	}
 
 	inline bool isHealSkill() {
@@ -182,6 +183,11 @@ public:
 	inline bool isDragSkill() {
 		return type == DRAG;
 	}
+
+	inline bool isCMDot() {
+		return type == CMDOT;
+	}
+
 
 	inline uint32 getNameCRC() {
 		return nameCRC;
@@ -231,9 +237,10 @@ public:
 		return category == GROUP;
 	}
 
-	virtual void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, int stimPower) {
+	virtual void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, Pharmaceutical* pharma) {
 		return;
 	}
+
 	virtual bool checkAreaMedicTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
 		return false;
 	}

@@ -65,14 +65,14 @@ public:
 	//~DamageOverTime();
 
 	void activate();
-	void applyDot(CreatureObject* attacker, CreatureObject* victim);
-	int reduceTick(int reduction);
+	uint32 applyDot(CreatureObject* attacker, CreatureObject* victim);
+	float reduceTick(float reduction);
 
 	// damage methods
-	inline void doBleedingTick(CreatureObject* attacker, CreatureObject* victim);
-	inline void doFireTick(CreatureObject* attacker, CreatureObject* victim);
-	inline void doPoisonTick(CreatureObject* attacker, CreatureObject* victim);
-	inline void doDiseaseTick(CreatureObject* attacker, CreatureObject* victim);
+	inline uint32 doBleedingTick(CreatureObject* attacker, CreatureObject* victim);
+	inline uint32 doFireTick(CreatureObject* attacker, CreatureObject* victim);
+	inline uint32 doPoisonTick(CreatureObject* attacker, CreatureObject* victim);
+	inline uint32 doDiseaseTick(CreatureObject* attacker, CreatureObject* victim);
 
 	// Setters
 	inline void setType(uint64 value) {

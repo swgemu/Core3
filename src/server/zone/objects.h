@@ -213,10 +213,10 @@ which carries forward this exception.
 #include "objects/tangible/pharmaceutical/CurePackImplementation.h"
 #include "objects/tangible/pharmaceutical/RevivePack.h"
 #include "objects/tangible/pharmaceutical/RevivePackImplementation.h"
-#include "objects/tangible/pharmaceutical/CureAreaPack.h"
-#include "objects/tangible/pharmaceutical/CureAreaPackImplementation.h"
 #include "objects/tangible/pharmaceutical/RangedStimPack.h"
 #include "objects/tangible/pharmaceutical/RangedStimPackImplementation.h"
+#include "objects/tangible/pharmaceutical/DotPack.h"
+#include "objects/tangible/pharmaceutical/DotPackImplementation.h"
 
 #include "objects/tangible/tools/Tool.h"
 #include "objects/tangible/tools/ToolImplementation.h"

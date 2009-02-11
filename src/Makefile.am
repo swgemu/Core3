@@ -177,7 +177,6 @@ core3_IDLS =	server/chat/ChatManager.cpp \
 		server/zone/objects/tangible/lair/LairObject.cpp \
 		server/zone/objects/tangible/MissionBag.cpp \
 		server/zone/objects/tangible/pharmaceutical/CurePack.cpp \
-		server/zone/objects/tangible/pharmaceutical/CureAreaPack.cpp \
 		server/zone/objects/tangible/pharmaceutical/EnhancePack.cpp \
 		server/zone/objects/tangible/pharmaceutical/Pharmaceutical.cpp \
 		server/zone/objects/tangible/pharmaceutical/RevivePack.cpp \
@@ -185,6 +184,7 @@ core3_IDLS =	server/chat/ChatManager.cpp \
 		server/zone/objects/tangible/pharmaceutical/StimPack.cpp \
 		server/zone/objects/tangible/pharmaceutical/RangedStimPack.cpp \
 		server/zone/objects/tangible/pharmaceutical/WoundPack.cpp \
+		server/zone/objects/tangible/pharmaceutical/DotPack.cpp \
 		server/zone/objects/tangible/tools/Tool.cpp \
 		server/zone/objects/tangible/tools/smuggler/PrecisionLaserKnife.cpp \
 		server/zone/objects/tangible/tools/smuggler/FlowAnalyzerNode.cpp \
@@ -351,7 +351,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp \
 		server/zone/objects/tangible/inventory/BankInventoryImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp \
-		server/zone/objects/tangible/pharmaceutical/CureAreaPackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/EnhancePackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/PharmaceuticalImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp \
@@ -359,6 +358,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/RangedStimPackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp \
+		server/zone/objects/tangible/pharmaceutical/DotPackImplementation.cpp \
 		server/zone/objects/tangible/tools/ToolImplementation.cpp \
 		server/zone/objects/tangible/tools/repairtool/RepairToolImplementation.cpp \
 		server/zone/objects/tangible/powerup/PowerupImplementation.cpp \

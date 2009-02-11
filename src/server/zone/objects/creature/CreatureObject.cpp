@@ -6467,7 +6467,7 @@ void CreatureObject::setRootedState() {
 		((CreatureObjectImplementation*) _impl)->setRootedState();
 }
 
-void CreatureObject::addDotState(CreatureObject* attacker, unsigned long long dotID, unsigned long long dotType, int str, int type, int duration, float potency, int defense) {
+int CreatureObject::addDotState(CreatureObject* attacker, unsigned long long dotID, unsigned long long dotType, int str, int type, int duration, float potency, int defense) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6482,9 +6482,9 @@ void CreatureObject::addDotState(CreatureObject* attacker, unsigned long long do
 		method.addFloatParameter(potency);
 		method.addSignedIntParameter(defense);
 
-		method.executeWithVoidReturn();
+		return method.executeWithSignedIntReturn();
 	} else
-		((CreatureObjectImplementation*) _impl)->addDotState(attacker, dotID, dotType, str, type, duration, potency, defense);
+		return ((CreatureObjectImplementation*) _impl)->addDotState(attacker, dotID, dotType, str, type, duration, potency, defense);
 }
 
 bool CreatureObject::healDot(int dotType, int reduction) {
@@ -9504,7 +9504,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setRootedState();
 		break;
 	case 505:
-		addDotState((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getSignedIntParameter());
+		resp->insertSignedInt(addDotState((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getSignedIntParameter()));
 		break;
 	case 506:
 		resp->insertBoolean(healDot(inv->getSignedIntParameter(), inv->getSignedIntParameter()));
@@ -11860,7 +11860,7 @@ void CreatureObjectAdapter::setRootedState() {
 	return ((CreatureObjectImplementation*) impl)->setRootedState();
 }
 
-void CreatureObjectAdapter::addDotState(CreatureObject* attacker, unsigned long long dotID, unsigned long long dotType, int str, int type, int duration, float potency, int defense) {
+int CreatureObjectAdapter::addDotState(CreatureObject* attacker, unsigned long long dotID, unsigned long long dotType, int str, int type, int duration, float potency, int defense) {
 	return ((CreatureObjectImplementation*) impl)->addDotState(attacker, dotID, dotType, str, type, duration, potency, defense);
 }
 

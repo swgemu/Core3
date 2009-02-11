@@ -51,6 +51,8 @@ RunItemLUAFile("bluefrog/areaStimPackSet.lua");
 RunItemLUAFile("bluefrog/woundPackSet.lua");
 RunItemLUAFile("bluefrog/statePackSet.lua");
 RunItemLUAFile("bluefrog/curePackSet.lua");
+RunItemLUAFile("bluefrog/poisonPackSet.lua");
+RunItemLUAFile("bluefrog/diseasePackSet.lua");
 
 RunItemLUAFile("bluefrog/clothingSets.lua");
 

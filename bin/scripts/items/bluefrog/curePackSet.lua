@@ -40,5 +40,5 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-curePackSet = {fireBlanket, poisonCureC, diseaseCureC}
+curePackSet = {fireBlanket, poisonCureC, diseaseCureC, areaPoisonCureC, areaDiseaseCureC}
 addBFItemSet("CurePacks - Fire Blanket", curePackSet);

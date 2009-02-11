@@ -68,7 +68,7 @@ CampKitImplementation::CampKitImplementation(unsigned long long oid, unsigned in
 		customName = n;
 
 		setXP(320);
-		setDuration(60);
+		setDuration(3600);
 		setCampType(0);
 
 		setEquipped(false);
@@ -85,7 +85,7 @@ CampKitImplementation::CampKitImplementation(Player* player, unsigned int tempCR
 	customName = n;
 
 	setXP(320);
-	setDuration(60);
+	setDuration(3600);
 	setCampType(0);
 	setEquipped(false);
 

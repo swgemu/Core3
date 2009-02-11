@@ -379,7 +379,7 @@ void CombatManager::handleAreaAction(CreatureObject* creature, TangibleObject* t
 	}
 }
 
-void CombatManager::handelMedicArea(CreatureObject* creature, CreatureObject* areaCenter, Skill* skill, int stimPower, float range) {
+void CombatManager::handelMedicArea(CreatureObject* creature, CreatureObject* areaCenter, Skill* skill, Pharmaceutical* pharma, float range) {
 	/* Pre: creature && areaCenter wlocked, nothing else is locked
 	 * Post: creature && areaCenter wlocked, nothing else is locked
 	 */
@@ -423,7 +423,7 @@ void CombatManager::handelMedicArea(CreatureObject* creature, CreatureObject* ar
 			}
 
 			try {
-				skill->doAreaMedicActionTarget(creature, creatureTarget, stimPower);
+				skill->doAreaMedicActionTarget(creature, creatureTarget, pharma);
 			} catch (...) {
 				System::out << "unreported exception caught in CombatManager::handelMedicArea";
 			}

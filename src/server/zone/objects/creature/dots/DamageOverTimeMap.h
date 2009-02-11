@@ -52,12 +52,12 @@ public:
 	}
 
 
-	void addDot(CreatureObject* attacker, CreatureObject* victim, uint64 dotID, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense);
+	uint32 addDot(CreatureObject* attacker, CreatureObject* victim, uint64 dotID, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense);
 	void activateDots(CreatureObject* victim);
 	bool healState(CreatureObject* victim, uint64 dotType, int reduction);
+	void clear();
 
-
-	void sendStartMessage(CreatureObject* victim, uint64 type);
+	void sendStartMessage(CreatureObject* victim,CreatureObject* attacker, uint64 type);
 	void sendStopMessage(CreatureObject* victim, uint64 type);
 	void sendIncreaseMessage(CreatureObject* victim, uint64 type);
 	void sendDecreaseMessage(CreatureObject* victim, uint64 type);
