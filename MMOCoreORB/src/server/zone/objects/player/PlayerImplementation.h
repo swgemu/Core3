@@ -1974,8 +1974,7 @@ public:
 	void onExperienceLost(const String& xptype, uint32 amount);
 	void onCloneDataStored();
 	void onCloneDataAlreadyStored();
-	void onCloneSuccessful();
-	void onCloneFailure();
+	void onClone();
 	void onResuscitated(SceneObject* healer);
 	void onMakePaymentTo(SceneObject* target, uint32 cost);
 	void onMakeBankPaymentTo(SceneObject* target, uint32 cost);
@@ -1991,9 +1990,7 @@ public:
 	//Actions
 	void incapacitateSelf();
 	void die();
-	void clone();
-	void clone(uint64 terminalID);
-	void clone(CloningFacility* cloningFacility);
+	void clone(uint64 facilityID = 0);
 	void resuscitate(CreatureObject* patient, bool forced = false);
 	void increasePvpRating(Player* victim);
 	void increasePvpRating(uint32 amount);

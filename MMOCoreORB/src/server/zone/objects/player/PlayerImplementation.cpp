@@ -5590,36 +5590,23 @@ void PlayerImplementation::die() {
 /**
  * Clones the player at their designated facility, or, if it hasn't been set or is off planet, at the closest one.
  */
-void PlayerImplementation::clone() {
-	CloningFacility* cloningFacility = getCloningFacility();
-
-	if (cloningFacility != NULL && cloningFacility->getZoneID() == getZoneID()) {
-		clone(cloningFacility);
-	} else {
-		cloningFacility = getZone()->getPlanetManager()->getStructureManager()->getClosestCloningFacility(_this);
-
-		if (cloningFacility != NULL)
-			clone(cloningFacility);
-		else
-			error("Couldn't clone player at any cloning facility");
-	}
-}
-
 void PlayerImplementation::clone(uint64 facilityID) {
-	StructureManager* structureManager = getZone()->getPlanetManager()->getStructureManager();
-	CloningFacility* cloningFacility = structureManager->getCloningFacility(facilityID);
+	StructureManager* structureManager = zone->getPlanetManager()->getStructureManager();
+	CloningFacility* cloningFacility = NULL;
 
-	if (cloningFacility != NULL) {
-		clone(cloningFacility);
-	} else {
-		error("Cloning facility does not exist in PlayerImplementation::clone(uint64 facilityID);");
-	}
-}
+	if (facilityID > 0)
+		cloningFacility = structureManager->getCloningFacility(facilityID);
+	else
+		cloningFacility = getCloningFacility();
 
-void PlayerImplementation::clone(CloningFacility* cloningFacility) {
-	if (cloningFacility != NULL) {
+	//Cloning facility is invalid. Try to get the closest facility.
+	if (cloningFacility == NULL || cloningFacility->getZoneID() != getZoneID())
+		cloningFacility = structureManager->getClosestCloningFacility(_this);
+
+	if (cloningFacility != NULL)
 		cloningFacility->clone(_this);
-	}
+	else
+		sendSystemMessage("An error occurred, preventing you from cloning. Please contact a Customer Service Representative.");
 }
 
 void PlayerImplementation::resuscitate(CreatureObject* patient, bool forced) {
@@ -6167,13 +6154,14 @@ void PlayerImplementation::onCloneDataAlreadyStored() {
 }
 
 /// This event should follow after successfully cloning.
-void PlayerImplementation::onCloneSuccessful() {
+void PlayerImplementation::onClone() {
+	clearStates();
+	clearBuffs(true);
+	resetArmorEncumbrance();
+
+	setPosture(CreaturePosture::UPRIGHT);
+
 	rescheduleRecovery(3000);
-}
-
-/// This event should follow after failing to clone.
-void PlayerImplementation::onCloneFailure() {
-
 }
 
 void PlayerImplementation::onResuscitated(SceneObject* healer) {

@@ -11,6 +11,8 @@ class BuildingObject;
 
 class Player;
 
+class SceneObject;
+
 class CloneSpawnPoint;
 
 class CloningTerminal;

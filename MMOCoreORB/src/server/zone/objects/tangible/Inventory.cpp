@@ -78,6 +78,20 @@ bool Inventory::isFull() {
 		return ((InventoryImplementation*) _impl)->isFull();
 }
 
+void Inventory::moveObjectToTopLevel(CreatureObject* owner, TangibleObject* obj) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addObjectParameter(owner);
+		method.addObjectParameter(obj);
+
+		method.executeWithVoidReturn();
+	} else
+		((InventoryImplementation*) _impl)->moveObjectToTopLevel(owner, obj);
+}
+
 /*
  *	InventoryAdapter
  */
@@ -101,6 +115,9 @@ Packet* InventoryAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case 9:
 		resp->insertBoolean(isFull());
 		break;
+	case 10:
+		moveObjectToTopLevel((CreatureObject*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -122,6 +139,10 @@ int InventoryAdapter::getUnequippedItemCount() {
 
 bool InventoryAdapter::isFull() {
 	return ((InventoryImplementation*) impl)->isFull();
+}
+
+void InventoryAdapter::moveObjectToTopLevel(CreatureObject* owner, TangibleObject* obj) {
+	return ((InventoryImplementation*) impl)->moveObjectToTopLevel(owner, obj);
 }
 
 /*

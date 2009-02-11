@@ -165,7 +165,6 @@ bool Buff::activateBuff(CreatureObject* creo, ZoneProcessServerImplementation* s
 
 	removeBuffEvent();
 
-	// TODO: Add Skill Mods
 	buffEvent = new CreatureBuffEvent(creo, buffCRC, buffDuration);
 	if (server != NULL)
 		server->addEvent(buffEvent);

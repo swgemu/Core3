@@ -27,6 +27,8 @@ public:
 
 	bool isFull();
 
+	void moveObjectToTopLevel(CreatureObject* owner, TangibleObject* obj);
+
 protected:
 	Inventory(DummyConstructorParameter* param);
 
@@ -50,6 +52,8 @@ public:
 	int getUnequippedItemCount();
 
 	bool isFull();
+
+	void moveObjectToTopLevel(CreatureObject* owner, TangibleObject* obj);
 
 protected:
 	String _param0_getItemByMisoKey__String_;
