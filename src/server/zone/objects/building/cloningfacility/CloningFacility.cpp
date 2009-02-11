@@ -10,6 +10,8 @@
 
 #include "../../player/Player.h"
 
+#include "../../scene/SceneObject.h"
+
 #include "CloneSpawnPoint.h"
 
 #include "../../tangible/terminal/cloning/CloningTerminal.h"

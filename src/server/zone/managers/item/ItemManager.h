@@ -15,6 +15,8 @@ class Zone;
 
 class TangibleObject;
 
+class SceneObject;
+
 class Weapon;
 
 class Armor;
@@ -56,6 +58,8 @@ public:
 	void transferContainerItem(Player* player, TangibleObject* item, unsigned long long destinationID);
 
 	void loadStructurePlayerItems(Player* player, unsigned long long cellID);
+
+	bool moveItemToDestination(Player* player, TangibleObject* item, SceneObject* destination);
 
 	void giveForageItem(Player* player, int group, int count);
 
@@ -120,6 +124,8 @@ public:
 	void transferContainerItem(Player* player, TangibleObject* item, unsigned long long destinationID);
 
 	void loadStructurePlayerItems(Player* player, unsigned long long cellID);
+
+	bool moveItemToDestination(Player* player, TangibleObject* item, SceneObject* destination);
 
 	void giveForageItem(Player* player, int group, int count);
 

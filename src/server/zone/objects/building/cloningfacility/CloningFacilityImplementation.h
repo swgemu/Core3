@@ -58,7 +58,11 @@ class CloningFacilityImplementation : public CloningFacilityServant {
 	Vector<CloneSpawnPoint*> cloningSpawnPoints;
 
 	bool registered;
-	bool degenerating;
+
+	bool decaying;
+	bool wounding;
+
+	uint32 buffValue;
 
 	uint32 faction;
 
@@ -67,7 +71,12 @@ public:
 		CloningFacilityServant(oid, staticBuild, CLONING_FACILITY) {
 
 		setRegistered(false);
-		setDegenerating(true);
+
+		setDecaying(true);
+		setWounding(true);
+		setBuffValue(0);
+
+		setFaction(0);
 	}
 
 	~CloningFacilityImplementation() {
@@ -84,38 +93,37 @@ public:
 	/**
 	 * Clones a player at this facility.
 	 * \param player Player to be cloned at this facility.
-	 * \param deathblown Was the death the result of a deathblow by a player?
 	 * \return Was the cloning a success.
 	 */
-	bool clone(Player* player, bool deathblown = false) {
-		if (isDegenerating()) {
-			if (!hasCloningData(player)) {
-				player->changeHAMWounds(100,100,100);
-				player->changeShockWounds(100);
+	bool clone(Player* victim) {
+		if (isWounding()) {
+			if (!hasCloningData(victim)) {
+				victim->changeHAMWounds(100,100,100);
+				victim->changeShockWounds(100);
 			}
-
-			if (!deathblown)
-				player->decayInventory();
 		}
 
-		player->clearStates();
-		player->clearBuffs(true);
-		player->resetArmorEncumbrance();
-
+		//TODO: Add in a check to see who their killer was, and if it was a player or not.
+		if (isDecaying())
+			victim->decayInventory();
 
 		//TODO: Make cloning facilities able to be neutral, imp, or rebel
-		if (player->isOvert())
-			player->setCovert();
-
-		player->setPosture(CreaturePosture::UPRIGHT);
+		if (victim->isOvert() && victim->getFaction() != getFaction())
+			victim->setCovert();
 
 		CloneSpawnPoint* spawnPoint = getRandomSpawnPoint();
 
 		if (spawnPoint != NULL) {
-			if (spawnPoint->spawnAt(player))
-				player->onCloneSuccessful();
+			if (spawnPoint->spawnAt(victim))
+				victim->onClone();
 			else
-				player->onCloneFailure();
+				victim->sendSystemMessage("An error has occurred, preventing you from being cloned. Please contact a Customer Service Representative.");
+		} else {
+			victim->error("Attempted to spawn player at cloneSpawnPoint, but none existed.");
+		}
+
+		if (getBuffValue() > 0) {
+			//Apply a buff
 		}
 
 		return true;
@@ -127,11 +135,25 @@ public:
 	}
 
 	/**
-	 * Sets where cloning wounds and battle fatigue should be incurred.
-	 * \param deg Boolean value indicating whether or not to incur battle fatigue and cloning wounds.
+	 * Sets if items decay or not.
 	 */
-	inline void setDegenerating(bool deg) {
-		degenerating = deg;
+	inline void setDecaying(bool decay) {
+		decaying = decay;
+	}
+
+	inline void setWounding(bool wound) {
+		wounding = wound;
+	}
+
+	inline void setBuffValue(uint32 value) {
+		buffValue = value;
+	}
+
+	inline void setFaction(String fctn) {
+		if (fctn != "neutral")
+			faction = fctn.hashCode();
+		else
+			faction = 0;
 	}
 
 	inline void setFaction(uint32 fctn) {
@@ -143,8 +165,16 @@ public:
 		return registered;
 	}
 
-	inline bool isDegenerating() {
-		return degenerating;
+	inline bool isDecaying() {
+		return decaying;
+	}
+
+	inline bool isWounding() {
+		return wounding;
+	}
+
+	inline uint32 getBuffValue() {
+		return buffValue;
 	}
 
 	inline uint32 getFaction() {

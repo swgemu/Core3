@@ -744,8 +744,7 @@ interface Player implements CreatureObject {
 	void onExperienceLost(const String xptype, unsigned int amount);
 	void onCloneDataStored();
 	void onCloneDataAlreadyStored();
-	void onCloneSuccessful();
-	void onCloneFailure();
+	void onClone();
 	void onResuscitated(SceneObject healer);
 	void onMakePaymentTo(SceneObject target, unsigned int cost);
 	void onMakeBankPaymentTo(SceneObject target, unsigned int cost);
@@ -761,9 +760,7 @@ interface Player implements CreatureObject {
 	//Actions
 	void incapacitateSelf();
 	void die();
-	void clone();
-	void clone(unsigned long terminalID);
-	void clone(CloningFacility cloningFacility);
+	void clone(unsigned long facilityID = 0);
 	void resuscitate(CreatureObject patient, boolean forced = false);
 	void increasePvpRating(Player victim);
 	void increasePvpRating(unsigned int amount);

@@ -505,7 +505,7 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* tar
 
 			//bare metal vehicles shouldn't fight back - but pets should
 			if(targetCreature->isNonPlayerCreature()) {
-				if ( !targetCreature->isMount() && ((MountCreature*) targetCreature)->isVehicle())
+				if ( !targetCreature->isMount())
 					targetCreature->doAttack(attacker, damage);
 			}
 

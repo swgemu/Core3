@@ -47,6 +47,8 @@ import "../BuildingObject";
 
 import "../../player/Player";
 
+import "../../scene/SceneObject";
+
 import "CloneSpawnPoint";
 
 import "../../tangible/terminal/cloning/CloningTerminal";

@@ -903,9 +903,7 @@ public:
 
 	void onCloneDataAlreadyStored();
 
-	void onCloneSuccessful();
-
-	void onCloneFailure();
+	void onClone();
 
 	void onResuscitated(SceneObject* healer);
 
@@ -933,11 +931,7 @@ public:
 
 	void die();
 
-	void clone();
-
-	void clone(unsigned long long terminalID);
-
-	void clone(CloningFacility* cloningFacility);
+	void clone(unsigned long long facilityID = 0);
 
 	void resuscitate(CreatureObject* patient, bool forced = false);
 
@@ -1846,9 +1840,7 @@ public:
 
 	void onCloneDataAlreadyStored();
 
-	void onCloneSuccessful();
-
-	void onCloneFailure();
+	void onClone();
 
 	void onResuscitated(SceneObject* healer);
 
@@ -1876,11 +1868,7 @@ public:
 
 	void die();
 
-	void clone();
-
-	void clone(unsigned long long terminalID);
-
-	void clone(CloningFacility* cloningFacility);
+	void clone(unsigned long long facilityID);
 
 	void resuscitate(CreatureObject* patient, bool forced);
 

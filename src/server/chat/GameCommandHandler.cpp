@@ -358,6 +358,14 @@ void GameCommandHandler::init() {
 				"Plays the specified audio file",
 				"USAGE: @playAudio [soundfile]",
 				&playAudio);
+	gmCommands->addCommand("eventMessage", CSREVENTS,
+				"Sends a system message, tailored for announcing events.",
+				"USAGE: @eventMessage <message>",
+				&eventMessage);
+	gmCommands->addCommand("eventCloner", CSREVENTS,
+				"Spawns a cloning facility at the current location.",
+				"USAGE: @eventCloner <decaying> <wounding> <buffValue> <neutral|rebel|imperial>",
+				&eventCloner);
 
 
 	/* Disabled Commands
@@ -440,7 +448,7 @@ void GameCommandHandler::commands(StringTokenizer tokenizer, Player* player) {
 		String token;
 		tokenizer.getStringToken(token);
 
-		if ( gmCommands->containsKey(token)) {
+		if (gmCommands->containsKey(token)) {
 			player->sendSystemMessage(gmCommands->get(token)->getDesc());
 			player->sendSystemMessage(gmCommands->get(token)->getUsage());
 			return;
@@ -452,16 +460,23 @@ void GameCommandHandler::commands(StringTokenizer tokenizer, Player* player) {
 	StringBuffer str;
 	str << "Command List: ";
 
+	SuiListBox* commandsList = new SuiListBox(player, 0);
+	commandsList->setPromptTitle("Available Commands");
+	commandsList->setPromptText("The following commands are available to you.");
+
 	for (int i = 0; i < list.size(); i++) {
 		String cmd = list.get(i);
 
-		if (gmCommands->get(cmd)->getRequiredAdminLevel() & player->getAdminLevel())
-			str << list.get(i) << ", ";
+		if (gmCommands->get(cmd)->getRequiredAdminLevel() & player->getAdminLevel()) {
+			String commandName = list.get(i);
+
+			if (commandName != "commands")
+				commandsList->addMenuItem(commandName);
+		}
 	}
 
-	str.removeRange(str.length() - 3, str.length() - 1);
-
-	player->sendSystemMessage(str.toString());
+	player->sendMessage(commandsList->generateMessage());
+	commandsList->finalize();
 }
 
 void GameCommandHandler::map(StringTokenizer tokenizer, Player* player) {
@@ -1541,6 +1556,28 @@ void GameCommandHandler::systemMessage(StringTokenizer tokenizer, Player* player
 
 	} catch (...) {
 		player->sendSystemMessage("Error sending systemMessage - Usage: systemMessage RANGE TEXT");
+	}
+}
+
+void GameCommandHandler::eventMessage(StringTokenizer tokenizer, Player* player) {
+	String message;
+	try {
+		ChatManager * chatManager = player->getZone()->getChatManager();
+
+		StringBuffer message;
+		String msg;
+		message << "[\\#ffaa33\\Event\\#ffffff\\] ";
+
+		while (tokenizer.hasMoreTokens()) {
+			tokenizer.getStringToken(msg);
+			message << msg << " ";
+		}
+
+		System::out << message.toString() << endl;
+		chatManager->broadcastMessage(message.toString());
+
+	} catch (...) {
+		player->sendSystemMessage("Error sending eventMessage - Usage: @systemMessage <message>");
 	}
 }
 
@@ -3587,4 +3624,32 @@ void GameCommandHandler::playAudio(StringTokenizer tokenizer, Player* player) {
 	PlayMusicMessage* pmm = new PlayMusicMessage(audioFile);
 	player->sendMessage(pmm);
 
+}
+
+void GameCommandHandler::eventCloner(StringTokenizer tokenizer, Player* player) {
+	bool decayItems = true;
+	bool giveWounds = true;
+	uint32 buffAmount = 0;
+	String faction = "neutral";
+
+	if (tokenizer.hasMoreTokens())
+		decayItems = (bool) tokenizer.getIntToken();
+
+	if (tokenizer.hasMoreTokens())
+		giveWounds = (bool) tokenizer.getIntToken();
+
+	if (tokenizer.hasMoreTokens())
+		buffAmount = (uint32) tokenizer.getIntToken();
+
+	if (tokenizer.hasMoreTokens()) {
+		String token;
+		tokenizer.getStringToken(token);
+
+		if (token == "rebel" || token == "neutral" || token == "imperial")
+			faction = token;
+	}
+
+	//Create the temp cloner
+	//Put it in the world at the current players location
+	//Set the options it has
 }

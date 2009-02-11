@@ -5341,7 +5341,7 @@ void Player::onCloneDataAlreadyStored() {
 		((PlayerImplementation*) _impl)->onCloneDataAlreadyStored();
 }
 
-void Player::onCloneSuccessful() {
+void Player::onClone() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -5350,19 +5350,7 @@ void Player::onCloneSuccessful() {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerImplementation*) _impl)->onCloneSuccessful();
-}
-
-void Player::onCloneFailure() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 418);
-
-		method.executeWithVoidReturn();
-	} else
-		((PlayerImplementation*) _impl)->onCloneFailure();
+		((PlayerImplementation*) _impl)->onClone();
 }
 
 void Player::onResuscitated(SceneObject* healer) {
@@ -5370,7 +5358,7 @@ void Player::onResuscitated(SceneObject* healer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 419);
+		DistributedMethod method(this, 418);
 		method.addObjectParameter(healer);
 
 		method.executeWithVoidReturn();
@@ -5383,7 +5371,7 @@ void Player::onMakePaymentTo(SceneObject* target, unsigned int cost) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 420);
+		DistributedMethod method(this, 419);
 		method.addObjectParameter(target);
 		method.addUnsignedIntParameter(cost);
 
@@ -5397,7 +5385,7 @@ void Player::onMakeBankPaymentTo(SceneObject* target, unsigned int cost) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 421);
+		DistributedMethod method(this, 420);
 		method.addObjectParameter(target);
 		method.addUnsignedIntParameter(cost);
 
@@ -5411,7 +5399,7 @@ void Player::onInsufficientFundsAvailable(SceneObject* target, unsigned int amou
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 422);
+		DistributedMethod method(this, 421);
 		method.addObjectParameter(target);
 		method.addUnsignedIntParameter(amount);
 
@@ -5425,7 +5413,7 @@ void Player::onInsureItemSuccess(unsigned int itemID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 423);
+		DistributedMethod method(this, 422);
 		method.addUnsignedIntParameter(itemID);
 
 		method.executeWithVoidReturn();
@@ -5438,7 +5426,7 @@ void Player::onInsureItemFailure(unsigned int itemID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 424);
+		DistributedMethod method(this, 423);
 		method.addUnsignedIntParameter(itemID);
 
 		method.executeWithVoidReturn();
@@ -5451,7 +5439,7 @@ void Player::onInsureItemInsufficientFunds(unsigned int itemID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 425);
+		DistributedMethod method(this, 424);
 		method.addUnsignedIntParameter(itemID);
 
 		method.executeWithVoidReturn();
@@ -5464,7 +5452,7 @@ void Player::onInsureItemInvalidTerminal() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 426);
+		DistributedMethod method(this, 425);
 
 		method.executeWithVoidReturn();
 	} else
@@ -5476,7 +5464,7 @@ void Player::onInsureAllItemsComplete() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 427);
+		DistributedMethod method(this, 426);
 
 		method.executeWithVoidReturn();
 	} else
@@ -5488,7 +5476,7 @@ void Player::onNoValidInsurables() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 428);
+		DistributedMethod method(this, 427);
 
 		method.executeWithVoidReturn();
 	} else
@@ -5500,7 +5488,7 @@ void Player::onBankTipSuccessful() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 429);
+		DistributedMethod method(this, 428);
 
 		method.executeWithVoidReturn();
 	} else
@@ -5512,7 +5500,7 @@ void Player::incapacitateSelf() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 430);
+		DistributedMethod method(this, 429);
 
 		method.executeWithVoidReturn();
 	} else
@@ -5524,49 +5512,24 @@ void Player::die() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 431);
+		DistributedMethod method(this, 430);
 
 		method.executeWithVoidReturn();
 	} else
 		((PlayerImplementation*) _impl)->die();
 }
 
-void Player::clone() {
+void Player::clone(unsigned long long facilityID) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 432);
+		DistributedMethod method(this, 431);
+		method.addUnsignedLongParameter(facilityID);
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerImplementation*) _impl)->clone();
-}
-
-void Player::clone(unsigned long long terminalID) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 433);
-		method.addUnsignedLongParameter(terminalID);
-
-		method.executeWithVoidReturn();
-	} else
-		((PlayerImplementation*) _impl)->clone(terminalID);
-}
-
-void Player::clone(CloningFacility* cloningFacility) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 434);
-		method.addObjectParameter(cloningFacility);
-
-		method.executeWithVoidReturn();
-	} else
-		((PlayerImplementation*) _impl)->clone(cloningFacility);
+		((PlayerImplementation*) _impl)->clone(facilityID);
 }
 
 void Player::resuscitate(CreatureObject* patient, bool forced) {
@@ -5574,7 +5537,7 @@ void Player::resuscitate(CreatureObject* patient, bool forced) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 435);
+		DistributedMethod method(this, 432);
 		method.addObjectParameter(patient);
 		method.addBooleanParameter(forced);
 
@@ -5588,7 +5551,7 @@ void Player::increasePvpRating(Player* victim) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 436);
+		DistributedMethod method(this, 433);
 		method.addObjectParameter(victim);
 
 		method.executeWithVoidReturn();
@@ -5601,7 +5564,7 @@ void Player::increasePvpRating(unsigned int amount) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 437);
+		DistributedMethod method(this, 434);
 		method.addUnsignedIntParameter(amount);
 
 		method.executeWithVoidReturn();
@@ -5614,7 +5577,7 @@ void Player::decreasePvpRating(Player* killer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 438);
+		DistributedMethod method(this, 435);
 		method.addObjectParameter(killer);
 
 		method.executeWithVoidReturn();
@@ -5627,7 +5590,7 @@ void Player::decreasePvpRating(unsigned int amount) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 439);
+		DistributedMethod method(this, 436);
 		method.addUnsignedIntParameter(amount);
 
 		method.executeWithVoidReturn();
@@ -5640,7 +5603,7 @@ bool Player::makePaymentTo(SceneObject* target, unsigned int cost, bool notifyPl
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 440);
+		DistributedMethod method(this, 437);
 		method.addObjectParameter(target);
 		method.addUnsignedIntParameter(cost);
 		method.addBooleanParameter(notifyPlayer);
@@ -5655,7 +5618,7 @@ bool Player::makeBankPaymentTo(SceneObject* target, unsigned int cost, bool noti
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 441);
+		DistributedMethod method(this, 438);
 		method.addObjectParameter(target);
 		method.addUnsignedIntParameter(cost);
 		method.addBooleanParameter(notifyPlayer);
@@ -5670,7 +5633,7 @@ void Player::insureItem(InsuranceTerminal* terminal, unsigned long long itemID, 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 442);
+		DistributedMethod method(this, 439);
 		method.addObjectParameter(terminal);
 		method.addUnsignedLongParameter(itemID);
 		method.addBooleanParameter(notifySuccess);
@@ -5685,7 +5648,7 @@ void Player::insureAllItems(unsigned long long terminalID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 443);
+		DistributedMethod method(this, 440);
 		method.addUnsignedLongParameter(terminalID);
 
 		method.executeWithVoidReturn();
@@ -5698,7 +5661,7 @@ bool Player::bankTipStart(Player* recipient, unsigned int amount) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 444);
+		DistributedMethod method(this, 441);
 		method.addObjectParameter(recipient);
 		method.addUnsignedIntParameter(amount);
 
@@ -5712,7 +5675,7 @@ void Player::bankTipFinish(Player* recipient, unsigned int amount) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 445);
+		DistributedMethod method(this, 442);
 		method.addObjectParameter(recipient);
 		method.addUnsignedIntParameter(amount);
 
@@ -5726,7 +5689,7 @@ bool Player::cashTip(Player* recipient, unsigned int amount) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 446);
+		DistributedMethod method(this, 443);
 		method.addObjectParameter(recipient);
 		method.addUnsignedIntParameter(amount);
 
@@ -5740,7 +5703,7 @@ void Player::consent(Player* playerTarget) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 447);
+		DistributedMethod method(this, 444);
 		method.addObjectParameter(playerTarget);
 
 		method.executeWithVoidReturn();
@@ -5753,7 +5716,7 @@ void Player::unconsent(String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 448);
+		DistributedMethod method(this, 445);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -5766,7 +5729,7 @@ void Player::setCloningFacility(CloningFacility* facility) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 449);
+		DistributedMethod method(this, 446);
 		method.addObjectParameter(facility);
 
 		method.executeWithVoidReturn();
@@ -5779,7 +5742,7 @@ void Player::addConsentEntry(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 450);
+		DistributedMethod method(this, 447);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -5792,7 +5755,7 @@ void Player::removeConsentEntry(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 451);
+		DistributedMethod method(this, 448);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -5805,7 +5768,7 @@ CloningFacility* Player::getCloningFacility() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 452);
+		DistributedMethod method(this, 449);
 
 		return (CloningFacility*) method.executeWithObjectReturn();
 	} else
@@ -5817,7 +5780,7 @@ bool Player::hasConsented(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 453);
+		DistributedMethod method(this, 450);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
@@ -5830,7 +5793,7 @@ bool Player::hasConsentFrom(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 454);
+		DistributedMethod method(this, 451);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -5843,7 +5806,7 @@ unsigned int Player::getConsentListSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 455);
+		DistributedMethod method(this, 452);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -5855,7 +5818,7 @@ String& Player::getConsentEntry(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 456);
+		DistributedMethod method(this, 453);
 		method.addSignedIntParameter(index);
 
 		method.executeWithAsciiReturn(_return_getConsentEntry);
@@ -5869,7 +5832,7 @@ bool Player::isPowerboosted() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 457);
+		DistributedMethod method(this, 454);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -5881,7 +5844,7 @@ unsigned char Player::calculateIncapacitationTimer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 458);
+		DistributedMethod method(this, 455);
 
 		return method.executeWithUnsignedCharReturn();
 	} else
@@ -5893,7 +5856,7 @@ void Player::closeSuiWindowType(unsigned int windowType) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 459);
+		DistributedMethod method(this, 456);
 		method.addUnsignedIntParameter(windowType);
 
 		method.executeWithVoidReturn();
@@ -7146,132 +7109,123 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		onCloneDataAlreadyStored();
 		break;
 	case 417:
-		onCloneSuccessful();
+		onClone();
 		break;
 	case 418:
-		onCloneFailure();
-		break;
-	case 419:
 		onResuscitated((SceneObject*) inv->getObjectParameter());
 		break;
-	case 420:
+	case 419:
 		onMakePaymentTo((SceneObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
-	case 421:
+	case 420:
 		onMakeBankPaymentTo((SceneObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
-	case 422:
+	case 421:
 		onInsufficientFundsAvailable((SceneObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
-	case 423:
+	case 422:
 		onInsureItemSuccess(inv->getUnsignedIntParameter());
 		break;
-	case 424:
+	case 423:
 		onInsureItemFailure(inv->getUnsignedIntParameter());
 		break;
-	case 425:
+	case 424:
 		onInsureItemInsufficientFunds(inv->getUnsignedIntParameter());
 		break;
-	case 426:
+	case 425:
 		onInsureItemInvalidTerminal();
 		break;
-	case 427:
+	case 426:
 		onInsureAllItemsComplete();
 		break;
-	case 428:
+	case 427:
 		onNoValidInsurables();
 		break;
-	case 429:
+	case 428:
 		onBankTipSuccessful();
 		break;
-	case 430:
+	case 429:
 		incapacitateSelf();
 		break;
-	case 431:
+	case 430:
 		die();
 		break;
-	case 432:
-		clone();
-		break;
-	case 433:
+	case 431:
 		clone(inv->getUnsignedLongParameter());
 		break;
-	case 434:
-		clone((CloningFacility*) inv->getObjectParameter());
-		break;
-	case 435:
+	case 432:
 		resuscitate((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 436:
+	case 433:
 		increasePvpRating((Player*) inv->getObjectParameter());
 		break;
-	case 437:
+	case 434:
 		increasePvpRating(inv->getUnsignedIntParameter());
 		break;
-	case 438:
+	case 435:
 		decreasePvpRating((Player*) inv->getObjectParameter());
 		break;
-	case 439:
+	case 436:
 		decreasePvpRating(inv->getUnsignedIntParameter());
 		break;
-	case 440:
+	case 437:
 		resp->insertBoolean(makePaymentTo((SceneObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 441:
+	case 438:
 		resp->insertBoolean(makeBankPaymentTo((SceneObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 442:
+	case 439:
 		insureItem((InsuranceTerminal*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getBooleanParameter());
 		break;
-	case 443:
+	case 440:
 		insureAllItems(inv->getUnsignedLongParameter());
 		break;
-	case 444:
+	case 441:
 		resp->insertBoolean(bankTipStart((Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter()));
 		break;
-	case 445:
+	case 442:
 		bankTipFinish((Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
-	case 446:
+	case 443:
 		resp->insertBoolean(cashTip((Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter()));
 		break;
-	case 447:
+	case 444:
 		consent((Player*) inv->getObjectParameter());
 		break;
-	case 448:
+	case 445:
 		unconsent(inv->getAsciiParameter(_param0_unconsent__String_));
 		break;
-	case 449:
+	case 446:
 		setCloningFacility((CloningFacility*) inv->getObjectParameter());
 		break;
-	case 450:
+	case 447:
 		addConsentEntry(inv->getAsciiParameter(_param0_addConsentEntry__String_));
 		break;
-	case 451:
+	case 448:
 		removeConsentEntry(inv->getAsciiParameter(_param0_removeConsentEntry__String_));
 		break;
-	case 452:
+	case 449:
 		resp->insertLong(getCloningFacility()->_getObjectID());
 		break;
-	case 453:
+	case 450:
 		resp->insertBoolean(hasConsented(inv->getAsciiParameter(_param0_hasConsented__String_)));
 		break;
-	case 454:
+	case 451:
 		resp->insertBoolean(hasConsentFrom((Player*) inv->getObjectParameter()));
 		break;
-	case 455:
+	case 452:
 		resp->insertInt(getConsentListSize());
 		break;
-	case 456:
+	case 453:
 		resp->insertAscii(getConsentEntry(inv->getSignedIntParameter()));
 		break;
-	case 457:
+	case 454:
 		resp->insertBoolean(isPowerboosted());
 		break;
-	case 458:
+	case 455:
 		resp->insertByte(calculateIncapacitationTimer());
 		break;
-	case 459:
+	case 456:
 		closeSuiWindowType(inv->getUnsignedIntParameter());
 		break;
 	default:
@@ -8925,12 +8879,8 @@ void PlayerAdapter::onCloneDataAlreadyStored() {
 	return ((PlayerImplementation*) impl)->onCloneDataAlreadyStored();
 }
 
-void PlayerAdapter::onCloneSuccessful() {
-	return ((PlayerImplementation*) impl)->onCloneSuccessful();
-}
-
-void PlayerAdapter::onCloneFailure() {
-	return ((PlayerImplementation*) impl)->onCloneFailure();
+void PlayerAdapter::onClone() {
+	return ((PlayerImplementation*) impl)->onClone();
 }
 
 void PlayerAdapter::onResuscitated(SceneObject* healer) {
@@ -8985,16 +8935,8 @@ void PlayerAdapter::die() {
 	return ((PlayerImplementation*) impl)->die();
 }
 
-void PlayerAdapter::clone() {
-	return ((PlayerImplementation*) impl)->clone();
-}
-
-void PlayerAdapter::clone(unsigned long long terminalID) {
-	return ((PlayerImplementation*) impl)->clone(terminalID);
-}
-
-void PlayerAdapter::clone(CloningFacility* cloningFacility) {
-	return ((PlayerImplementation*) impl)->clone(cloningFacility);
+void PlayerAdapter::clone(unsigned long long facilityID) {
+	return ((PlayerImplementation*) impl)->clone(facilityID);
 }
 
 void PlayerAdapter::resuscitate(CreatureObject* patient, bool forced) {
