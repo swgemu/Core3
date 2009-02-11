@@ -122,7 +122,8 @@ if (PLANET_ID == 5) then
  RunCreatureFile("spawns/naboo/citys/moenia.lua") 
  RunCreatureFile("spawns/naboo/citys/theed.lua")  
  --
- RunCreatureFile("spawns/naboo/dungeons/narglatchCave.lua")  
+ RunCreatureFile("spawns/naboo/dungeons/narglatchCave.lua") 
+ RunCreatureFile("spawns/naboo/dungeons/veermokCave.lua") 
 end
 
 --Rori
@@ -141,7 +142,9 @@ RunCreatureFile("spawns/talus/staticSpawns.lua")
 RunCreatureFile("spawns/talus/citys/dearic.lua")
 RunCreatureFile("spawns/talus/citys/narshal.lua")
 --
-RunCreatureFile("spawns/talus/dungeons/aakuanCave.lua")
+RunCreatureFile("spawns/talus/poi/lostVillageOfDurbin.lua")
+--
+RunCreatureFile("spawns/talus/dungeons/aakuanChampionsCave.lua")
 end
 
 --Tatooine
