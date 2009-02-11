@@ -34,11 +34,7 @@ uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 		if (nextTick.isPast() || (!dot->isPast() && (nTime.compareTo(nextTick) > 0)))
 			nextTick = nTime;
 
-
-		/*if(dot->isPast())
-			remove(key);
-		else*/
-		if (dot->nextTickPast() && !dot->isPast())
+		if (!dot->isPast())
 			states |= dot->getType();
 
 	}
@@ -46,20 +42,21 @@ uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 		dot = false;
 		removeAll();
 		attacker = NULL;
+		states = 0x0;
 	}
 
 	return states;
 }
 
-bool DamageOverTimeList::addDot(CreatureObject* victim, uint64 dotID, uint32 duration, uint64 dotType, uint8 pool, uint32 strength,float potency) {
+uint32 DamageOverTimeList::addDot(CreatureObject* victim, uint64 dotID, uint32 duration, uint64 dotType, uint8 pool, uint32 strength,float potency) {
 	DamageOverTime* newDot = get(dotID);
 
 	if ((newDot != NULL)  && !newDot->isPast()) {
 		if (newDot->getStrength() >= strength)
-			return false;
+			return strength;
 		else {
 			newDot->setStrength(strength);
-			return true;
+			return strength;
 		}
 	}
 
@@ -68,7 +65,7 @@ bool DamageOverTimeList::addDot(CreatureObject* victim, uint64 dotID, uint32 dur
 
 	newDot = new DamageOverTime(dotType, pool, strength ,duration,potency);
 
-	newDot->applyDot(attacker,victim);
+	int dotPower = newDot->applyDot(attacker,victim);
 	victim->setState(dotType);
 
 	Time nTime = newDot->getNextTick();
@@ -82,28 +79,34 @@ bool DamageOverTimeList::addDot(CreatureObject* victim, uint64 dotID, uint32 dur
 
 	dot = true;
 
-	return true;
+	return dotPower;
 }
 
-int DamageOverTimeList::healState(uint64 dotType, int reduction) {
+float DamageOverTimeList::healState(uint64 dotType, float reduction) {
 	if(!hasDot())
 		return reduction;
 
 	uint32 key = 0;
 	DamageOverTime* dot = NULL;
-	int red_iter = reduction;
+	float tempReduction = reduction;
 	resetIterator();
 
 	while (hasNext()) {
 		key = getNextKey();
 		dot = get(key);
 
-		if (red_iter < 0)
-			return red_iter;
+		if (tempReduction < 0.0f)
+			return tempReduction;
 
 		if (dot->getType() == dotType && !dot->isPast())
-			red_iter = dot->reduceTick(red_iter);
+			tempReduction = dot->reduceTick(tempReduction);
 	}
 
-	return red_iter;
+	return tempReduction;
+}
+
+void DamageOverTimeList::clear() {
+	dot = false;
+	removeAll();
+	attacker = NULL;
 }

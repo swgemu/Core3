@@ -237,7 +237,7 @@ public:
 				target->unlock();
 			}
 
-			handleArea(creature, creatureTarget, stimPower, stimPack->getArea());
+			handleArea(creature, creatureTarget, stimPack, stimPack->getArea());
 
 			if (creature == creatureTarget && target != creature) {
 				target->wlock(creature);
@@ -314,14 +314,23 @@ public:
 		mindCost = cost;
 	}
 
-	void handleArea(CreatureObject* creature, CreatureObject* areaCenter, uint32 stimPower, float range) {
-		server->getCombatManager()->handelMedicArea(creature, areaCenter, this, stimPower, range);
+	void handleArea(CreatureObject* creature, CreatureObject* areaCenter, Pharmaceutical* pharma, float range) {
+		server->getCombatManager()->handelMedicArea(creature, areaCenter,this, pharma, range);
 	}
 
-	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, uint32 stimPower) {
-		//TODO: Battle Fatigue
-		int healthHealed = creature->healDamage(creatureTarget, CreatureAttribute::HEALTH, stimPower);
-		int actionHealed = creature->healDamage(creatureTarget, CreatureAttribute::ACTION, stimPower);
+	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, Pharmaceutical* pharma) {
+		RangedStimPack* rangeStim = NULL;
+		if (pharma->isRangedStimPack())
+			rangeStim = (RangedStimPack*) pharma;
+
+		if (pharma == NULL)
+			return;
+
+		int stimPower = rangeStim->calculatePower(creature,creatureTarget);
+
+		int healthHealed = creature->healDamage(creatureTarget, stimPower, CreatureAttribute::HEALTH);
+		int actionHealed = creature->healDamage(creatureTarget, stimPower, CreatureAttribute::ACTION);
+
 
 		if (creatureTarget->isPlayer())
 			((Player*) creature)->sendBattleFatigueMessage(creatureTarget);

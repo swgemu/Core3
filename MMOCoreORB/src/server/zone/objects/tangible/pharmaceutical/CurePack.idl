@@ -25,4 +25,10 @@ interface CurePack implements Pharmaceutical {
 
 	float getEffectiveness();
 	unsigned long getState();
+	
+	void setArea(float ar);
+	float getArea();
+	
+	int calculatePower(CreatureObject creature);
+	
 }

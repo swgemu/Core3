@@ -811,8 +811,8 @@ void CreatureObjectImplementation::setMeditateState() {
 }
 
 
-void CreatureObjectImplementation::addDotState(CreatureObject* attacker,uint64 dotID, uint64 dotType, uint32 str, uint8 type, uint32 duration, float potency,uint32 defense) {
-	dotMap->addDot(attacker,_this, dotID ,duration,dotType, type , str,potency,defense);
+int CreatureObjectImplementation::addDotState(CreatureObject* attacker,uint64 dotID, uint64 dotType, uint32 str, uint8 type, uint32 duration, float potency,uint32 defense) {
+	return dotMap->addDot(attacker,_this, dotID ,duration,dotType, type , str,potency,defense);
 }
 
 bool CreatureObjectImplementation::healDot(uint64 dotType,int reduction) {
@@ -913,7 +913,7 @@ void CreatureObjectImplementation::clearStates() {
 	nextAttackDelay.update();
 
 	removeDefenders();
-
+	dotMap->clear();
 	updateStates();
 }
 
@@ -974,14 +974,14 @@ bool CreatureObjectImplementation::changeWoundsBar(uint8 attribute, int32 value,
 
 	int32 newWounds = getWounds(attribute) + value;
 
+	//if (newWounds >= getAttributeMax(attribute)) {
 	if (newWounds >= getAttributeMax(attribute)) {
-		if (forcedChange) {
-		} else {
+		if (!forcedChange) {
 			newWounds = getAttributeMax(attribute) - 1;
 		}
 	}
 
-	setWoundsBar(attribute, MIN(newWounds, getBaseAttribute(attribute) - 1));
+	setWoundsBar(attribute, MIN(newWounds, getAttributeMax(attribute) - 1));
 
 	return true;
 }
@@ -1407,9 +1407,13 @@ void CreatureObjectImplementation::setWoundsBar(uint8 attribute, int32 value) {
 	broadcastMessage(dcreo3);
 
 	// Update to match max/wounds
+	/*setAttributeBar(attribute, MIN(getAttribute(attribute), getAttributeMax(attribute) - getWounds(attribute)));
+	if (getAttribute(attribute) < getAttributeMax(attribute))
+		activateRecovery();*/
+
 	setAttributeBar(attribute, MIN(getAttribute(attribute), getAttributeMax(attribute) - getWounds(attribute)));
 	if (getAttribute(attribute) < getAttributeMax(attribute))
-		activateRecovery();
+			activateRecovery();
 }
 
 void CreatureObjectImplementation::setHealthWoundsBar(int32 value) {
@@ -4314,7 +4318,6 @@ void CreatureObjectImplementation::onRegenerateHAM() {
 			doPowerboostTick(player);
 		}
 	}
-
 	changeHAMBars(healthTick, actionTick, mindTick);
 }
 

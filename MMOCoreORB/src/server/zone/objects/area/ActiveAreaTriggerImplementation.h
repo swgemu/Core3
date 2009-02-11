@@ -93,51 +93,66 @@ public:
 	}
 
 	void forceTriggerEnter() {
-		QuadTreeEntry* obj;
-		int closeObjectCount = inRangeObjectCount();
+		try {
+			zone->lock();
+			QuadTreeEntry* obj;
+			int closeObjectCount = inRangeObjectCount();
 
-		for (int i = 0; i < closeObjectCount; ++i){
-			obj = getInRangeObject(i);
-			if (obj == NULL || obj == this)
-				continue;
+			for (int i = 0; i < closeObjectCount; ++i){
+				obj = getInRangeObject(i);
+				if (obj == NULL || obj == this)
+					continue;
 
-			SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
+				SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
 
-			if (scno->isPlayer()) {
+				if (scno->isPlayer()) {
 
-				Player * player = (Player *) scno;
+					Player * player = (Player *) scno;
 
-				if (player->getActiveArea() != area && area->containsPoint(player->getPositionX(), player->getPositionY())) {
-					player->setActiveArea(area);
-					area->onEnter(player);
+					if (player->getActiveArea() != area && area->containsPoint(player->getPositionX(), player->getPositionY())) {
+						player->setActiveArea(area);
+						area->onEnter(player);
+					}
 				}
 			}
+			zone->unlock();
+		} catch (...) {
+			zone->unlock();
+
+			System::out << "Exception in ActiveAreaTriggerImplementation::forceTriggerEnter\n";
 		}
 	}
 
 	void forceTriggerExit() {
-		QuadTreeEntry* obj;
-		int closeObjectCount = inRangeObjectCount();
+		try {
+			zone->lock();
+			QuadTreeEntry* obj;
+			int closeObjectCount = inRangeObjectCount();
 
-		for (int i = 0; i < closeObjectCount; ++i){
-			obj = getInRangeObject(i);
-			if (obj == NULL || obj == this)
-				continue;
+			for (int i = 0; i < closeObjectCount; ++i){
+				obj = getInRangeObject(i);
+				if (obj == NULL || obj == this)
+					continue;
 
-			SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
+				SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
 
-			if (scno->isPlayer()) {
+				if (scno->isPlayer()) {
 
-				Player * player = (Player *) scno;
+					Player * player = (Player *) scno;
 
-				if (player->getActiveArea() == area) {
-					player->setActiveArea(NULL);
-					area->onExit(player);
+					if (player->getActiveArea() == area) {
+						player->setActiveArea(NULL);
+						area->onExit(player);
 
+					}
 				}
 			}
-		}
+			zone->unlock();
+		} catch (...) {
+			zone->unlock();
 
+			System::out << "Exception in ActiveAreaTriggerImplementation::forceTriggerExit\n";
+		}
 	}
 
 

@@ -64,6 +64,7 @@ class CreatureObject;
 class AttackableObject;
 class MountCreature;
 class Weapon;
+class Pharmaceutical;
 
 class Skill;
 class TargetSkill;
@@ -156,7 +157,7 @@ public:
 			int damageType, int armorPiercing, float minDmg, float maxDmg, bool randompoolhit, bool cankill);
 	void doDotWeaponAttack(CreatureObject* creature, CreatureObject* targetCreature, bool areaHit);
 	void counterAttack(CreatureObject* targetCreature, CreatureObject* creature);
-	void handelMedicArea(CreatureObject* creature, CreatureObject* areaCenter,Skill* skill, int stimPower, float range);
+	void handelMedicArea(CreatureObject* creature, CreatureObject* areaCenter,Skill* skill, Pharmaceutical* pharma, float range);
 };
 
 #endif /*COMBATMANAGER_H_*/

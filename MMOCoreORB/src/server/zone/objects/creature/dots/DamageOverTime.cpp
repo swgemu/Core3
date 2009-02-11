@@ -45,6 +45,9 @@ which carries forward this exception.
 #include "DamageOverTime.h"
 #include "../CreatureAttribute.h"
 #include "../CreatureState.h"
+#include "../CreatureImplementation.h"
+#include "../../player/Player.h"
+#include "../../../packets/object/CombatSpam.h"
 
 DamageOverTime::DamageOverTime() {
 	setType(CreatureState::BLEEDING);
@@ -60,8 +63,6 @@ DamageOverTime::DamageOverTime(uint64 tp, uint8 attrib, uint32 str, uint32 dur, 
 	setAttribute(attrib);
 	setStrength(str);
 	setDuration(dur);
-	setPotency(0.0f);
-	setExpires(0);
 	setPotency(potency);
 	activate();
 }
@@ -71,15 +72,15 @@ void DamageOverTime::activate() {
 		expires.addMiliTime(duration * 1000);
 }
 
-void DamageOverTime::applyDot(CreatureObject* attacker, CreatureObject* victim) {
+uint32 DamageOverTime::applyDot(CreatureObject* attacker, CreatureObject* victim) {
+	uint32 power = 0;
 	switch(type) {
 		case CreatureState::BLEEDING:
 			if (expires.isPast()) {
-				return;
+				return 0;
 			}
 			else if (nextTick.isPast()){
-
-				doBleedingTick(attacker,victim);
+				power = doBleedingTick(attacker,victim);
 
 				nextTick.update();
 				nextTick.addMiliTime(9000);
@@ -87,10 +88,10 @@ void DamageOverTime::applyDot(CreatureObject* attacker, CreatureObject* victim) 
 		break;
 		case CreatureState::POISONED:
 			if (expires.isPast()) {
-				return;
+				return 0;
 			}
 			else if (nextTick.isPast()) {
-				doPoisonTick(attacker,victim);
+				power = doPoisonTick(attacker,victim);
 
 				nextTick.update();
 				nextTick.addMiliTime(9000);
@@ -98,10 +99,10 @@ void DamageOverTime::applyDot(CreatureObject* attacker, CreatureObject* victim) 
 		break;
 		case CreatureState::DISEASED:
 			if (expires.isPast()) {
-				return;
+				return 0;
 			}
 			else if (nextTick.isPast()) {
-				doDiseaseTick(attacker,victim);
+				power = doDiseaseTick(attacker,victim);
 
 				nextTick.update();
 				nextTick.addMiliTime(19000);
@@ -109,89 +110,99 @@ void DamageOverTime::applyDot(CreatureObject* attacker, CreatureObject* victim) 
 		break;
 		case CreatureState::ONFIRE:
 			if (expires.isPast()) {
-				return;
+				return 0;
 			}
 			else if (nextTick.isPast()) {
-				doFireTick(attacker,victim);
+				power = doFireTick(attacker,victim);
 
 				nextTick.update();
 				nextTick.addMiliTime(9000);
 			}
 		break;
-
 	}
-//	if (expires.compareTo(nextTick) > 0)
-//		expires.update();
-	victim->updateStates();
+
+	return power;
 }
 
-void DamageOverTime::doBleedingTick(CreatureObject* attacker, CreatureObject* victim) {
+
+uint32 DamageOverTime::doBleedingTick(CreatureObject* attacker, CreatureObject* victim) {
 		attacker->inflictDamage(victim,attribute,strength);
 
 		victim->playEffect("clienteffect/dot_bleeding.cef","");
+
+		return strength;
 }
 
-void DamageOverTime::doFireTick(CreatureObject* attacker, CreatureObject* victim) {
+uint32 DamageOverTime::doFireTick(CreatureObject* attacker, CreatureObject* victim) {
 		attacker->inflictDamage(victim,attribute,strength);
 
 		victim->playEffect("clienteffect/dot_fire.cef","");
+
+		return strength;
 }
 
-void DamageOverTime::doPoisonTick(CreatureObject* attacker, CreatureObject* victim) {
+uint32 DamageOverTime::doPoisonTick(CreatureObject* attacker, CreatureObject* victim) {
 		attacker->inflictDamage(victim,attribute,strength);
 
 		victim->playEffect("clienteffect/dot_poisoned.cef","");
+
+		return strength;
 }
 
-void DamageOverTime::doDiseaseTick(CreatureObject* attacker, CreatureObject* victim) {
+uint32 DamageOverTime::doDiseaseTick(CreatureObject* attacker, CreatureObject* victim) {
 		uint32 shockWounds = victim->getShockWounds();
+		uint32 power = strength + (shockWounds * strength / 500);
 
 		switch (attribute) {
 			case CreatureAttribute::HEALTH:
-				victim->changeHealthWoundsBar(strength + (shockWounds * strength / 500));
+				victim->changeHealthWoundsBar(power, false);
 				break;
 			case CreatureAttribute::STRENGTH:
-				victim->changeStrengthWoundsBar(strength + (shockWounds * strength / 500));
+				victim->changeStrengthWoundsBar(power, false);
 				break;
 			case CreatureAttribute::CONSTITUTION:
-				victim->changeConstitutionWoundsBar(strength + (shockWounds * strength / 500));
+				victim->changeConstitutionWoundsBar(power, false);
 				break;
 			case CreatureAttribute::ACTION:
-				victim->changeActionWoundsBar(strength + (shockWounds * strength / 500));
+				victim->changeActionWoundsBar(power, false);
 				break;
 			case CreatureAttribute::QUICKNESS:
-				victim->changeQuicknessWoundsBar(strength + (shockWounds * strength / 500));
+				victim->changeQuicknessWoundsBar(power, false);
 				break;
 			case CreatureAttribute::STAMINA:
-				victim->changeStaminaWoundsBar(strength + (shockWounds * strength / 500));
+				victim->changeStaminaWoundsBar(power, false);
 				break;
 			case CreatureAttribute::MIND:
-				victim->changeMindWoundsBar(strength + (shockWounds * strength / 500));
+				victim->changeMindWoundsBar(power, false);
 				break;
 			case CreatureAttribute::FOCUS:
-				victim->changeFocusWoundsBar(strength + (shockWounds * strength / 500));
+				victim->changeFocusWoundsBar(power, false);
 				break;
 			case CreatureAttribute::WILLPOWER:
-				victim->changeWillpowerWoundsBar(strength + (shockWounds * strength / 500));
+				victim->changeWillpowerWoundsBar(power,false);
 				break;
 
 		}
 
+		victim->addDamage(attacker,power);
+		victim->changeShockWounds((int)(strength * 0.75f));
+
 		victim->playEffect("clienteffect/dot_diseased.cef","");
-		StringBuffer msg;
+
+		return power;
 }
 
-int DamageOverTime::reduceTick(int reduction) {
+float DamageOverTime::reduceTick(float reduction) {
 	if (reduction < 0)
 		return reduction;
 
-	int eff_reduction = (int)(potency - reduction);
-	int reductionLeft = (int)(reduction - potency);
+	float eff_reduction = (potency - (float)reduction);
+	float reductionLeft = (float)reduction - potency;
 
-	if (reductionLeft >= 0) {
+	if (reductionLeft >= 0.0f) {
 		expires.update();
 	} else {
-		float dot_reduction = ((float)eff_reduction) / potency;
+		float dot_reduction = eff_reduction / potency;
 		strength *= (int)dot_reduction;
 		potency -= reduction;
 	}

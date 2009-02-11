@@ -98,6 +98,7 @@ public:
 	static int AddQuickHealTargetSkill(lua_State* L);
 	static int AddMindHealTargetSkill(lua_State* L);
 	static int AddDragTargetSkill(lua_State* L);
+	static int AddCMDotAttackTargetSkill(lua_State* L);
 
 	static int AddEntertainSkill(lua_State* L);
 	static int AddEntertainEffectSkill(lua_State* L);

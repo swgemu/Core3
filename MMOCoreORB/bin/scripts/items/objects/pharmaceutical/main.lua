@@ -27,6 +27,8 @@ RunItemLUAFile("objects/pharmaceutical/statepacks/stunnedPack.lua");
 RunItemLUAFile("objects/pharmaceutical/curepacks/fireBlanket.lua");
 RunItemLUAFile("objects/pharmaceutical/curepacks/poisonCureC.lua");
 RunItemLUAFile("objects/pharmaceutical/curepacks/diseaseCureC.lua");
+RunItemLUAFile("objects/pharmaceutical/curepacks/areaPoisonCureC.lua");
+RunItemLUAFile("objects/pharmaceutical/curepacks/areaDiseaseCureC.lua");
 
 RunItemLUAFile("objects/pharmaceutical/rangedstimpacks/rangedStimPackA.lua");
 RunItemLUAFile("objects/pharmaceutical/rangedstimpacks/rangedStimPackB.lua");
@@ -38,3 +40,24 @@ RunItemLUAFile("objects/pharmaceutical/areastimpacks/areaStimPackA.lua");
 RunItemLUAFile("objects/pharmaceutical/areastimpacks/areaStimPackB.lua");
 RunItemLUAFile("objects/pharmaceutical/areastimpacks/areaStimPackC.lua");
 
+RunItemLUAFile("objects/pharmaceutical/poison/actionPoisonA.lua");
+RunItemLUAFile("objects/pharmaceutical/poison/actionPoisonC.lua");
+RunItemLUAFile("objects/pharmaceutical/poison/healthPoisonA.lua");
+RunItemLUAFile("objects/pharmaceutical/poison/healthPoisonC.lua");
+RunItemLUAFile("objects/pharmaceutical/poison/mindPoisonA.lua");
+RunItemLUAFile("objects/pharmaceutical/poison/mindPoisonC.lua");
+
+RunItemLUAFile("objects/pharmaceutical/poison/areaActionPoisonA.lua");
+RunItemLUAFile("objects/pharmaceutical/poison/areaActionPoisonC.lua");
+RunItemLUAFile("objects/pharmaceutical/poison/areaHealthPoisonA.lua");
+RunItemLUAFile("objects/pharmaceutical/poison/areaHealthPoisonC.lua");RunItemLUAFile("objects/pharmaceutical/poison/areaMindPoisonA.lua");
+RunItemLUAFile("objects/pharmaceutical/poison/areaMindPoisonC.lua");
+
+RunItemLUAFile("objects/pharmaceutical/disease/actionDiseaseA.lua");
+RunItemLUAFile("objects/pharmaceutical/disease/actionDiseaseC.lua");
+RunItemLUAFile("objects/pharmaceutical/disease/healthDiseaseA.lua");
+RunItemLUAFile("objects/pharmaceutical/disease/healthDiseaseC.lua");
+RunItemLUAFile("objects/pharmaceutical/disease/mindDiseaseA.lua");
+RunItemLUAFile("objects/pharmaceutical/disease/mindDiseaseC.lua");
+RunItemLUAFile("objects/pharmaceutical/disease/areaActionDiseaseA.lua");
+RunItemLUAFile("objects/pharmaceutical/disease/areaHealthDiseaseA.lua");RunItemLUAFile("objects/pharmaceutical/disease/areaMindDiseaseA.lua");

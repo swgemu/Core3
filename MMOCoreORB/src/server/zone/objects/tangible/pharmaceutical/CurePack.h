@@ -35,6 +35,12 @@ public:
 
 	unsigned long long getState();
 
+	void setArea(float ar);
+
+	float getArea();
+
+	int calculatePower(CreatureObject* creature);
+
 protected:
 	CurePack(DummyConstructorParameter* param);
 
@@ -60,6 +66,12 @@ public:
 	float getEffectiveness();
 
 	unsigned long long getState();
+
+	void setArea(float ar);
+
+	float getArea();
+
+	int calculatePower(CreatureObject* creature);
 
 };
 

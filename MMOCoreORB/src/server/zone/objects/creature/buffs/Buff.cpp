@@ -204,7 +204,6 @@ bool Buff::deActivateBuff(CreatureObject* creo, bool updateClient) {
 
 	if (getHealthBuff() != 0)
 		creo->changeMaxHealthBar(-1 * getHealthBuff(), updateClient);
-
 	if (getActionBuff() != 0)
 		creo->changeMaxActionBar(-1 * getActionBuff(), updateClient);
 

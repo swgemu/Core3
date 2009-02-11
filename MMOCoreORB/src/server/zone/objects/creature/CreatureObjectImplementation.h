@@ -679,7 +679,7 @@ public:
 	}
 
 	// dots
-	void addDotState(CreatureObject* attacker, uint64 dotID, uint64 dotType, uint32 str, uint8 type, uint32 duration, float potency,uint32 defense);
+	int addDotState(CreatureObject* attacker, uint64 dotID, uint64 dotType, uint32 str, uint8 type, uint32 duration, float potency,uint32 defense);
 	void applyDots();
 	bool healDot(uint64 dotType,int reduction);
 

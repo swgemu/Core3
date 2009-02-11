@@ -1051,7 +1051,7 @@ public:
 
 	void setRootedState();
 
-	void addDotState(CreatureObject* attacker, unsigned long long dotID, unsigned long long dotType, int str, int type, int duration, float potency, int defense);
+	int addDotState(CreatureObject* attacker, unsigned long long dotID, unsigned long long dotType, int str, int type, int duration, float potency, int defense);
 
 	bool healDot(int dotType, int reduction);
 
@@ -2327,7 +2327,7 @@ public:
 
 	void setRootedState();
 
-	void addDotState(CreatureObject* attacker, unsigned long long dotID, unsigned long long dotType, int str, int type, int duration, float potency, int defense);
+	int addDotState(CreatureObject* attacker, unsigned long long dotID, unsigned long long dotType, int str, int type, int duration, float potency, int defense);
 
 	bool healDot(int dotType, int reduction);
 

@@ -51,7 +51,7 @@ which carries forward this exception.
 
 class CurePackImplementation : public CurePackServant {
 protected:
-	float effectiveness;
+	float effectiveness, area;
 	uint64 state;
 
 public:
@@ -86,6 +86,27 @@ public:
 	inline uint64 getState() {
 		return state;
 	}
+
+	inline void setArea(float ar) {
+		area = ar;
+		String attr = "area";
+		itemAttributes->setFloatAttribute(attr, area);
+	}
+
+	inline float getArea() {
+		return area;
+	}
+
+
+	inline bool isArea() {
+		return area != 0.0;
+	}
+
+	virtual int calculatePower(CreatureObject* creature) {
+		float modSkill = (float) creature->getSkillMod("healing_wound_treatment");
+		return (int) round((100.0f + modSkill) / 100.0f * effectiveness);
+	}
+
 };
 
 #endif /* CUREPACKIMPLEMENTATION_H_ */

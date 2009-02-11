@@ -221,25 +221,7 @@ public:
 
 		sendCureMessage(creature, creatureTarget);
 
-		switch (state) {
-		case CreatureState::DISEASED:
-			/*if (!creature->cureDisease(creatureTarget, curePack->getEffectiveness()))
-				return 0;*/
-			creatureTarget->healDot(CreatureState::DISEASED,(int)curePack->getEffectiveness());
-			break;
-		case CreatureState::POISONED:
-			/*if (!creature->curePoison(creatureTarget, curePack->getEffectiveness()))
-				return 0;*/
-			creatureTarget->healDot(CreatureState::POISONED,(int)curePack->getEffectiveness());
-			break;
-		case CreatureState::ONFIRE:
-			/*if (!creature->extinguishFire(creatureTarget, curePack->getEffectiveness()))
-				return 0;*/
-			creatureTarget->healDot(CreatureState::ONFIRE, (int)curePack->getEffectiveness());
-			break;
-		default:
-			return 0;
-		}
+		creatureTarget->healDot(state,curePack->calculatePower(creature));
 
 		creature->changeMindBar(mindCost);
 		creature->deactivateConditionTreatment();
@@ -249,6 +231,9 @@ public:
 
 		if (creatureTarget != creature)
 			awardXp(creature, "medical", 50); //No experience for healing yourself.
+
+		if (curePack->isArea())
+			handleArea(creature, creatureTarget, curePack, curePack->getArea());
 
 		doAnimations(creature, creatureTarget);
 
@@ -315,6 +300,57 @@ public:
 
 	void setMindCost(int cost) {
 		mindCost = cost;
+	}
+
+	void handleArea(CreatureObject* creature, CreatureObject* areaCenter, Pharmaceutical* pharma, float range) {
+		server->getCombatManager()->handelMedicArea(creature, areaCenter,this, pharma, range);
+	}
+
+	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, Pharmaceutical* pharma) {
+		CurePack* curePack = NULL;
+		if (pharma->isCurePack())
+			curePack = (CurePack*) pharma;
+
+		if (curePack == NULL)
+			return;
+
+		creatureTarget->healDot(state,curePack->calculatePower(creature));
+
+		sendCureMessage(creature, creatureTarget);
+
+		if (creatureTarget != creature)
+			awardXp(creature, "medical", 50); //No experience for healing yourself.
+
+	}
+
+	bool checkAreaMedicTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
+		// TODO: Pet Check
+		if (!creatureTarget->isPlayer()) {
+			return false;
+		}
+		switch (state) {
+			case CreatureState::POISONED:
+				if (!creatureTarget->isPoisoned()) {
+					return false;
+				}
+				break;
+			case CreatureState::DISEASED:
+				if (!creatureTarget->isDiseased()) {
+					return false;
+				}
+				break;
+			case CreatureState::ONFIRE:
+				if (!creatureTarget->isOnFire()) {
+					return false;
+				}
+				break;
+		}
+
+
+		if (creatureTarget->isOvert() && creatureTarget->getFaction() != creature->getFaction()) {
+			return false;
+		}
+		return true;
 	}
 };
 

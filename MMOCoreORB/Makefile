@@ -143,8 +143,8 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl \
 				server/zone/objects/tangible/pharmaceutical/StatePack.idl \
 				server/zone/objects/tangible/pharmaceutical/CurePack.idl \
-				server/zone/objects/tangible/pharmaceutical/CureAreaPack.idl \
 				server/zone/objects/tangible/pharmaceutical/RevivePack.idl \
+				server/zone/objects/tangible/pharmaceutical/DotPack.idl \
 				server/zone/objects/tangible/tools/Tool.idl \
 				server/zone/objects/tangible/tools/smuggler/PrecisionLaserKnife.idl \
 				server/zone/objects/tangible/tools/smuggler/MolecularClamp.idl \

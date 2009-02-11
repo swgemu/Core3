@@ -781,7 +781,7 @@ interface CreatureObject implements TangibleObject {
 	void setSnaredState();
 	void setRootedState();
 
-	void addDotState(CreatureObject attacker,unsigned long dotID, unsigned long dotType,int str, int type, int duration,float potency,int defense);
+	int addDotState(CreatureObject attacker,unsigned long dotID, unsigned long dotType,int str, int type, int duration,float potency,int defense);
 	boolean healDot(int dotType,int reduction);
 
 	boolean setNextAttackDelay(int del);

@@ -58,7 +58,7 @@ public:
 	 * \param serv The ZoneProcessServerImplementation.
 	 */
 	ThrowRandomPoolAttackTargetSkill(const String& name, const String& anim,
-			ZoneProcessServerImplementation* serv) : ThrowAttackTargetSkill(name, anim, RANDOM, serv) {
+			ZoneProcessServerImplementation* serv) : ThrowAttackTargetSkill(name, anim, THROW, serv) {
 		healthPoolAttackChance = 50;
 		strengthPoolAttackChance = 0;
 		constitutionPoolAttackChance = 0;

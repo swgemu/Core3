@@ -367,7 +367,6 @@ void GameCommandHandler::init() {
 				"USAGE: @eventCloner <decaying> <wounding> <buffValue> <neutral|rebel|imperial>",
 				&eventCloner);
 
-
 	/* Disabled Commands
 
 	gmCommands->addCommand("applyDot", DEVELOPER,

@@ -98,8 +98,9 @@ public:
 	}
 
 	uint64 activateDots(CreatureObject* victim);
-	bool addDot(CreatureObject* victim, uint64 dotID, uint32 duration, uint64 dotType, uint8 pool, uint32 strength,float potency);
-	int healState(uint64 dotType, int reduction) ;
+	uint32 addDot(CreatureObject* victim, uint64 dotID, uint32 duration, uint64 dotType, uint8 pool, uint32 strength,float potency);
+	float healState(uint64 dotType, float reduction) ;
+	void clear();
 };
 
 #endif /* DAMAGEOVERTIMELIST_H_ */

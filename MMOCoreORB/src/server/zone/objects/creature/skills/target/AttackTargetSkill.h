@@ -450,6 +450,11 @@ public:
 		return damageRatio;
 	}
 
+	//void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, Pharmaceutical* pharma) {
+	//	System::out <<"yyyy\n";
+	//	return;
+	//}
+
 	friend class CombatManager;
 
 };

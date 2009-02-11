@@ -615,6 +615,12 @@ TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint
 	case 0xB791A080:
 	case 0x6C860817:
 	case 0x258B6F9A:
+	case 0x7DB8D61:
+	case 0xDCCC25F6:
+	case 0x95C1427B:
+	case 0x8194445E:
+	case 0x5A83ECC9:
+	case 0x138E8B44:
 	case 0xC6F551AE: //fireblanket
 		item = new CurePack(objectid, objectcrc, objectname, objecttemp);
 		break;
@@ -625,7 +631,7 @@ TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint
 	case 0x2FB077BC:
 	case 0x5D62E08E:
 	case 0x86754819:
-	case 0xCF782F94:
+	case 0xCF782F94: //ranged stimpack
 		item = new RangedStimPack(objectid, objectcrc, objectname, objecttemp);
 		break;
     case 0x221F0907:
@@ -668,6 +674,80 @@ TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint
     case 0xFB00F899:
     case 0xA0E061DC:
     	item = new Firework(objectid, objectcrc, objectname, objecttemp);
+    	break;
+	case 0xEEF26656: //poison start
+	case 0x35E5CEC1:
+	case 0x7CE8A94C:
+	case 0x6B4D106A:
+	case 0xB05AB8FD:
+	case 0xF957DF70:
+	case 0xD649AF2:
+	case 0xD6733265:
+	case 0x9F7E55E8:
+	case 0xC867155A:
+	case 0x1370BDCD:
+	case 0x5A7DDA40:
+	case 0x4DD86366:
+	case 0x96CFCBF1:
+	case 0xDFC2AC7C:
+	case 0x5EE6FF15:
+	case 0x85F15782:
+	case 0xCCFC300F: //poison end
+	case 0x54B7E9D5: //disease start
+	case 0x8FA04142:
+	case 0xC6AD26CF:
+	case 0xE49B8CF4:
+	case 0x3F8C2463:
+	case 0x768143EE:
+	case 0x4A354089:
+	case 0x9122E81E:
+	case 0xD82F8F93:
+	case 0xFBC965A9:
+	case 0x20DECD3E:
+	case 0x69D3AAB3:
+	case 0x6124FAC8:
+	case 0xBA33525F:
+	case 0xF33E35D2:
+	case 0xBE444D92:
+	case 0x6553E505:
+	case 0x2C5E8288:
+	case 0x482239BB:
+	case 0x9335912C:
+	case 0xDA38F6A1:
+	case 0x2F3F071:
+	case 0xD9E458E6:
+	case 0x90E93F6B:
+	case 0xD62265FC:
+	case 0xD35CD6B:
+	case 0x4438AAE6:
+	case 0x99D4FEB7:
+	case 0x42C35620:
+	case 0xBCE31AD:
+	case 0xF22A80EF:
+	case 0x293D2878:
+	case 0x60304FF5:
+	case 0x3302CBB1:
+	case 0xE8156326:
+	case 0xA11804AB:
+	case 0xD1089FE9:
+	case 0xA1F377E:
+	case 0x431250F3:
+	case 0x556264D1:
+	case 0x8E75CC46:
+	case 0xC778ABCB:
+	case 0xF744DB8A:
+	case 0x2C53731D:
+	case 0x655E1490:
+	case 0x93A85C0F:
+	case 0x48BFF498:
+	case 0x1B29315:
+	case 0xAC523DD5:
+	case 0x77459542:
+	case 0x3E48F2CF:
+	case 0x26B21C86:
+	case 0xFDA5B411:
+	case 0xB4A8D39C: //disease end
+    	item = new DotPack(objectid, objectcrc, objectname, objecttemp);
     	break;
 	default:
 		item = new TangibleObject(objectid, objectcrc, objectname, objecttemp, TangibleObjectImplementation::MISC);
@@ -1284,11 +1364,14 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		case PharmaceuticalImplementation::CUREPACK:
 		{
 			float eff = itemconfig.getFloatField("effectiveness");
+			float area = itemconfig.getFloatField("area");
 			uint64 condition = itemconfig.getLongField("conditionCured");
 
 			CurePack* curepack = (CurePack*) item;
 			curepack->setEffectiveness(eff);
 			curepack->setState(condition);
+			curepack->setArea(area);
+
 			break;
 		}
 		case PharmaceuticalImplementation::STATEPACK:
@@ -1336,6 +1419,34 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 			stim->setRange(range);
 			stim->setArea(area);
 
+			break;
+		}
+		case PharmaceuticalImplementation::POISONDELIVERYUNIT:
+		{
+			float eff = itemconfig.getFloatField("effectiveness");
+			float range = itemconfig.getFloatField("range");
+			float area = itemconfig.getFloatField("area");
+			float potency = itemconfig.getFloatField("potency");
+
+			DotPack* dot = (DotPack*) item;
+			dot->setEffectiveness(eff);
+			dot->setRange(range);
+			dot->setArea(area);
+			dot->setPotency(potency);
+			break;
+		}
+		case PharmaceuticalImplementation::DISEASEDELIVERYUNIT:
+		{
+			float eff = itemconfig.getFloatField("effectiveness");
+			float range = itemconfig.getFloatField("range");
+			float area = itemconfig.getFloatField("area");
+			float potency = itemconfig.getFloatField("potency");
+
+			DotPack* dot = (DotPack*) item;
+			dot->setEffectiveness(eff);
+			dot->setRange(range);
+			dot->setArea(area);
+			dot->setPotency(potency);
 			break;
 		}
 		default:

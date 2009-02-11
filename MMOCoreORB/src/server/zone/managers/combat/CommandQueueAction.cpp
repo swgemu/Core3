@@ -53,8 +53,9 @@ which carries forward this exception.
 #include "../../objects/tangible/weapons/Weapon.h"
 #include "../../objects/attackable/AttackableObject.h"
 #include "../../objects/tangible/pharmaceutical/Pharmaceutical.h"
+#include "../../objects/tangible/pharmaceutical/DotPack.h"
 #include "../../objects/creature/skills/target/HealDamageTargetSkill.h"
-
+#include "../../objects/creature/skills/target/attack/CMDotAttackTargetSkill.h"
 
 CommandQueueAction::CommandQueueAction(CreatureObject* cr, uint64 targid, uint32 acrc, uint32 acntr, const String& amod) {
 	actionCRC = acrc;
@@ -143,7 +144,7 @@ bool CommandQueueAction::validate() {
 
 					Weapon* weapon = creature->getWeapon();
 
-					int range;
+					int range = 0;
 
 					if (skill->getRange() != 0)
 						range = (int)skill->getRange();
@@ -151,6 +152,57 @@ bool CommandQueueAction::validate() {
 						range = weapon->getMaxRange();
 					else
 						range = 5;
+
+					if(skill->isCMDot()) { // CM poison/disease range check
+						uint64 objectId;
+						CMDotAttackTargetSkill* dotSkill = (CMDotAttackTargetSkill*) skill;
+						float distance = creature->calculateDistance(target);
+
+						if (!actionModifier.isEmpty())
+							objectId = Long::valueOf(actionModifier);
+						else
+							objectId = 0;
+
+						if (objectId != 0) {
+							DotPack* dotPack = (DotPack*) creature->getInventoryItem(objectId);
+
+							if (dotPack != NULL)
+								range = (int)dotPack->getRange(creature);
+
+							if (range < distance) {
+								if (dotSkill->getMedType() == PharmaceuticalImplementation::POISONDELIVERYUNIT)
+									player->sendSystemMessage("Your target is too far away to Apply Poison.");
+								else
+									player->sendSystemMessage("Your target is too far away to Apply Disease.");
+
+								target->unlock();
+
+								clearError(0);
+								return false;
+							}
+						}
+						else if (objectId == 0) {
+							DotPack* dotPack = dotSkill->findDotPack(creature,distance);
+							if (dotPack == NULL) {
+								if (dotSkill->getMedType() == PharmaceuticalImplementation::POISONDELIVERYUNIT)
+									player->sendSystemMessage("No Poison.");
+								else
+									player->sendSystemMessage("No Disease.");
+
+								target->unlock();
+
+								clearError(0);
+									return false;
+							} else {
+								range = (int)dotPack->getRange(creature);
+
+								StringBuffer mod;
+
+								mod << dotPack->getObjectID();
+								actionModifier = mod.toString();
+							}
+						}
+					}
 
 					if (!creature->isInRange(target->getPositionX(), target->getPositionY(), range)) {
 						target->unlock();

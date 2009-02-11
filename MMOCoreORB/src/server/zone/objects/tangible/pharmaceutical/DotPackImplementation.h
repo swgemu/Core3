@@ -42,26 +42,29 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CUREAREAPACKIMPLEMENTATION_H_
-#define CUREAREAPACKIMPLEMENTATION_H_
+#ifndef DOTPACKIMPLEMENTATION_H_
+#define DOTPACKIMPLEMENTATION_H_
 
 #include "../../creature/CreatureObject.h"
 
-#include "CureAreaPack.h"
+#include "DotPack.h"
 
-class CureAreaPackImplementation : public CureAreaPackServant {
+class DotPackImplementation : public DotPackServant {
 protected:
-	float effectiveness;
-	float areaOfEffect;
-	uint64 state;
+	float effectiveness, range, area, rangeMod, potency;
+
+	uint32 duration;
+	uint8 pool,dotType;
 
 public:
-	CureAreaPackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn);
-	CureAreaPackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
+	DotPackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn);
+	DotPackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 
 	void initialize();
 
 	int useObject(Player* player);
+
+	void updateCraftingValues(DraftSchematic* draftSchematic);
 
 	void generateAttributes(SceneObject* obj);
 
@@ -69,35 +72,75 @@ public:
 
 	void addAttributes(AttributeListMessage* alm);
 
+	virtual int calculatePower(CreatureObject* creature) {
+		float modSkill = (float) creature->getSkillMod("combat_medic_effectiveness");
+		return (int) round((100.0f + modSkill) / 100.0f * effectiveness);
+	}
+
 	inline void setEffectiveness(float eff) {
 		effectiveness = eff;
 		String attr = "effectiveness";
 		itemAttributes->setFloatAttribute(attr, effectiveness);
 	}
 
-	inline void setAreaOfEffect(float area) {
-		areaOfEffect = area;
-		String attr = "areaOfEffect";
-		itemAttributes->setFloatAttribute(attr, areaOfEffect);
-	}
-
-	inline void setState(uint64 value) {
-		state = value;
-		String attr = "state";
-		itemAttributes->setUnsignedLongAttribute(attr, state);
-	}
-
 	inline float getEffectiveness() {
 		return effectiveness;
 	}
 
-	inline float getAreaOfEffect() {
-		return areaOfEffect;
+	inline void setPotency(float pot) {
+		potency = pot;
+		String attr = "potency";
+		itemAttributes->setFloatAttribute(attr, potency);
 	}
 
-	inline uint64 getState() {
-		return state;
+	inline float getPotency() {
+		return potency;
+	}
+
+	inline void setDuration(uint32 dur) {
+			duration = dur;
+			String attr = "duration";
+			itemAttributes->setFloatAttribute(attr, duration);
+		}
+
+		inline uint32 getDuration() {
+			return duration;
+		}
+
+
+	inline void setRange(float rng) {
+		range = rng;
+		String attr = "range";
+		itemAttributes->setFloatAttribute(attr, range);
+	}
+
+	inline float getRange(CreatureObject* creature = NULL) {
+		float modSkill = (float) creature->getSkillMod("healing_range");
+		return (int) round((100.0f + rangeMod * modSkill) / 100.0f * range);
+	}
+
+	inline void setArea(float ar) {
+		area = ar;
+		String attr = "area";
+		itemAttributes->setFloatAttribute(attr, area);
+	}
+
+	inline float getArea() {
+		return area;
+	}
+
+
+	inline bool isArea() {
+		return area != 0.0f;
+	}
+
+	inline uint8 getPool() {
+		return pool;
+	}
+
+	inline void setPool(uint8 pl) {
+		pool = pl;
 	}
 };
 
-#endif /* CUREAREAPACKIMPLEMENTATION_H_ */
+#endif /* DOTPACKIMPLEMENTATION_H_ */

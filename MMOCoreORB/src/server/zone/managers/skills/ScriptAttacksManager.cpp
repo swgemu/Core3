@@ -117,6 +117,9 @@ void ScriptAttacksManager::registerFunctions() {
 	//lua_register(getLuaState(), "AddSteadyAimGroupSkill", AddSteadyAimGroupSkill);
 	lua_register(getLuaState(), "AddVolleyFireGroupSkill", AddVolleyFireGroupSkill);
 	lua_register(getLuaState(), "AddSystemGroupMessageSkill", AddSystemGroupMessageSkill);
+
+	lua_register(getLuaState(), "AddCMDotAttackTargetSkill", AddCMDotAttackTargetSkill);
+
 }
 
 void ScriptAttacksManager::registerGlobals() {
@@ -234,6 +237,10 @@ void ScriptAttacksManager::registerGlobals() {
 	setGlobalInt("MIND", CreatureAttribute::MIND);
 	setGlobalInt("FOCUS", CreatureAttribute::FOCUS);
 	setGlobalInt("WILLPOWER", CreatureAttribute::WILLPOWER);
+
+	// CM items
+	setGlobalInt("POISONDELIVERYUNIT", PharmaceuticalImplementation::POISONDELIVERYUNIT);
+	setGlobalInt("DISEASEDELIVERYUNIT", PharmaceuticalImplementation::DISEASEDELIVERYUNIT);
 }
 
 int ScriptAttacksManager::AddRandomPoolAttackTargetSkill(lua_State *L) {
@@ -2002,3 +2009,21 @@ int ScriptAttacksManager::AddThrowDirectPoolTargetSkill(lua_State *L) {
 	return 0;
 }
 
+int ScriptAttacksManager::AddCMDotAttackTargetSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	if (!skill.isValidTable())
+		return 0;
+
+	CMDotAttackTargetSkill* dot;
+
+	String skillname = skill.getStringField("skillname");
+	String effect = skill.getStringField("effect");
+	int medPack = skill.getIntField("medpackType");
+
+	dot = new CMDotAttackTargetSkill(skillname, effect.toCharArray(), server);
+	dot->setMedType(medPack);
+
+	CombatActions->put(dot);
+	return 0;
+}
