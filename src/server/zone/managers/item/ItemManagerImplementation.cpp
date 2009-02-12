@@ -1090,6 +1090,8 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("STAMINA", CreatureAttribute::STAMINA);
 	setGlobalInt("FOCUS", CreatureAttribute::FOCUS);
 	setGlobalInt("WILLPOWER", CreatureAttribute::WILLPOWER);
+	setGlobalInt("POISONRESISTANCE", BuffAttribute::POISON);
+	setGlobalInt("DISEASERESISTANCE", BuffAttribute::DISEASE);
 
 	setGlobalInt("INTIMIDATED", CreatureState::INTIMIDATED);
 	setGlobalInt("STUNNED", CreatureState::STUNNED);

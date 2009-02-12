@@ -40,5 +40,25 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-enhancePackSet = {enhancePackHealthD, enhancePackConstitutionD, enhancePackStrengthD, enhancePackActionD, enhancePackQuicknessD, enhancePackStaminaD,  enhancePackPoisonA, enhancePackDiseaseA}
-addBFItemSet("Enhance Set", enhancePackSet);
+enhancePackDiseaseA = Object:new {
+
+	objectName = "Enhance Disease Resistance Medpack - A",
+
+	templateName = "object/tangible/medicine/crafted/shared_medpack_enhance_disease_a.iff",
+
+	objectCRC = "3542293256",
+
+	objectType = PHARMACEUTICAL,
+	
+	medpackType = ENHANCEPACK,
+	
+	usesRemaining = 22,
+	
+	medicineUse = 73,
+	
+	effectiveness = 40,
+	
+	duration = 5400,
+	
+	poolAffected = DISEASERESISTANCE
+}

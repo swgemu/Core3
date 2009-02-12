@@ -16,9 +16,13 @@ uint32 DamageOverTimeMap::addDot(CreatureObject* attacker, CreatureObject* victi
 	if (defense > 0)
 		dotReductionMod -= (float) defense / 125.0f;
 
+	//System::out << "dot reduction (" << defense << ")= " << dotReductionMod << "\n";
 
 	int redStrength = (int)(strength * dotReductionMod);
 	float redPotency = potency * dotReductionMod;
+
+	//System::out << "Strength : " << strength << " => " << redStrength << "\n";
+	//System::out << "Potency: " << potency << " => " << redPotency << "\n";
 
 	// hitChance may need modification when poison resist packs are added, include 5% hit and 5% miss
 	if (!(redPotency > System::random(125) || redPotency > System::random(125)))

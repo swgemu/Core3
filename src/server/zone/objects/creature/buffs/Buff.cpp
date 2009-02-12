@@ -94,6 +94,8 @@ Buff::Buff(uint32 crc, int type, float duration) {
 	setQuicknessBuff(0);
 	setWillpowerBuff(0);
 	setFocusBuff(0);
+	setPoisonBuff(0);
+	setDiseaseBuff(0);
 
 	active = false;
 }
@@ -148,6 +150,14 @@ bool Buff::activateBuff(CreatureObject* creo, ZoneProcessServerImplementation* s
 	if (getFocusBuff() != 0) {
 		creo->setFocusBar(MAX(MIN(creo->getFocus() - creo->getFocusWounds() + getFocusBuff(), creo->getFocusMax() - creo->getFocusWounds() + getFocusBuff()), 1));
 		creo->changeMaxFocusBar(getFocusBuff());
+	}
+
+	if (getPoisonBuff() != 0) {
+		creo->addSkillMod(BuffAttribute::getProtectionString(BuffAttribute::POISON),getPoisonBuff(),false);
+	}
+
+	if (getDiseaseBuff() != 0) {
+		creo->addSkillMod(BuffAttribute::getProtectionString(BuffAttribute::DISEASE),getDiseaseBuff(),false);
 	}
 
 	if(!skillModBuffs.isEmpty()) {
@@ -252,6 +262,15 @@ bool Buff::deActivateBuff(CreatureObject* creo, bool updateClient) {
 		creo->changeMaxFocusBar(-1 * getFocusBuff(), updateClient);
 		creo->setFocusBar(MAX(creo->getFocusMax() - creo->getFocusWounds(), 1));
 		creo->changeFocusWoundsBar(0);
+	}
+
+
+	if (getPoisonBuff() != 0) {
+		creo->addSkillMod(BuffAttribute::getProtectionString(BuffAttribute::POISON),(-1* getPoisonBuff()),false);
+	}
+
+	if (getDiseaseBuff() != 0) {
+		creo->addSkillMod(BuffAttribute::getProtectionString(BuffAttribute::DISEASE),(-1 * getDiseaseBuff()),false);
 	}
 
 	if(getSkillModBuff("melee_defense") != 0) {

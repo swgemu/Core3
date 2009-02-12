@@ -69,6 +69,7 @@ which carries forward this exception.
 #include "CreatureState.h"
 #include "CreaturePosture.h"
 #include "CreatureFlag.h"
+#include "BuffAttribute.h"
 
 #include "../guild/Guild.h"
 

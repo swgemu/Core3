@@ -56,6 +56,7 @@ which carries forward this exception.
 #include "../skillmods/SkillModList.h"
 
 #include "../CreatureAttribute.h"
+#include "../BuffAttribute.h"
 
 class CreatureObject;
 class Player;
@@ -222,20 +223,26 @@ public:
 		uint32 buffCRC = MEDICAL_ENHANCE_HEALTH;
 
 		switch (attribute) {
-		case CreatureAttribute::ACTION:
+		case BuffAttribute::ACTION:
 			buffCRC = BuffCRC::MEDICAL_ENHANCE_ACTION;
 			break;
-		case CreatureAttribute::STRENGTH:
+		case BuffAttribute::STRENGTH:
 			buffCRC = BuffCRC::MEDICAL_ENHANCE_STRENGTH;
 			break;
-		case CreatureAttribute::CONSTITUTION:
+		case BuffAttribute::CONSTITUTION:
 			buffCRC = BuffCRC::MEDICAL_ENHANCE_CONSTITUTION;
 			break;
-		case CreatureAttribute::QUICKNESS:
+		case BuffAttribute::QUICKNESS:
 			buffCRC = BuffCRC::MEDICAL_ENHANCE_QUICKNESS;
 			break;
-		case CreatureAttribute::STAMINA:
+		case BuffAttribute::STAMINA:
 			buffCRC = BuffCRC::MEDICAL_ENHANCE_STAMINA;
+			break;
+		case BuffAttribute::POISON:
+			buffCRC = BuffCRC::MEDICAL_ENHANCE_POISON;
+			break;
+		case BuffAttribute::DISEASE:
+			buffCRC = BuffCRC::MEDICAL_ENHANCE_DISEASE;
 			break;
 		}
 
@@ -331,39 +338,47 @@ public:
 	}
 
 	inline int getHealthBuff() {
-		return attributeBuffs[CreatureAttribute::HEALTH];
+		return attributeBuffs[BuffAttribute::HEALTH];
 	}
 
 	inline int getActionBuff() {
-		return attributeBuffs[CreatureAttribute::ACTION];
+		return attributeBuffs[BuffAttribute::ACTION];
 	}
 
 	inline int getMindBuff() {
-		return attributeBuffs[CreatureAttribute::MIND];
+		return attributeBuffs[BuffAttribute::MIND];
 	}
 
 	inline int getStrengthBuff() {
-		return attributeBuffs[CreatureAttribute::STRENGTH];
+		return attributeBuffs[BuffAttribute::STRENGTH];
 	}
 
 	inline int getConstitutionBuff() {
-		return attributeBuffs[CreatureAttribute::CONSTITUTION];
+		return attributeBuffs[BuffAttribute::CONSTITUTION];
 	}
 
 	inline int getStaminaBuff() {
-		return attributeBuffs[CreatureAttribute::STAMINA];
+		return attributeBuffs[BuffAttribute::STAMINA];
 	}
 
 	inline int getQuicknessBuff() {
-		return attributeBuffs[CreatureAttribute::QUICKNESS];
+		return attributeBuffs[BuffAttribute::QUICKNESS];
 	}
 
 	inline int getWillpowerBuff() {
-		return attributeBuffs[CreatureAttribute::WILLPOWER];
+		return attributeBuffs[BuffAttribute::WILLPOWER];
 	}
 
 	inline int getFocusBuff() {
-		return attributeBuffs[CreatureAttribute::FOCUS];
+		return attributeBuffs[BuffAttribute::FOCUS];
+	}
+
+	inline int getPoisonBuff() {
+		return attributeBuffs[BuffAttribute::POISON];
+	}
+
+	inline int getDiseaseBuff() {
+		return attributeBuffs[BuffAttribute::POISON];
 	}
 
 	inline int getForcePowerBuff() {
@@ -400,39 +415,47 @@ public:
 	}
 
 	inline void setHealthBuff(int health) {
-		attributeBuffs[CreatureAttribute::HEALTH] = health;
+		attributeBuffs[BuffAttribute::HEALTH] = health;
 	}
 
 	inline void setActionBuff(int action) {
-		attributeBuffs[CreatureAttribute::ACTION] = action;
+		attributeBuffs[BuffAttribute::ACTION] = action;
 	}
 
 	inline void setMindBuff(int mind) {
-		attributeBuffs[CreatureAttribute::MIND] = mind;
+		attributeBuffs[BuffAttribute::MIND] = mind;
 	}
 
 	inline void setStrengthBuff(int strength) {
-		attributeBuffs[CreatureAttribute::STRENGTH] = strength;
+		attributeBuffs[BuffAttribute::STRENGTH] = strength;
 	}
 
 	inline void setConstitutionBuff(int constitution) {
-		attributeBuffs[CreatureAttribute::CONSTITUTION] = constitution;
+		attributeBuffs[BuffAttribute::CONSTITUTION] = constitution;
 	}
 
 	inline void setStaminaBuff(int stamina) {
-		attributeBuffs[CreatureAttribute::STAMINA] = stamina;
+		attributeBuffs[BuffAttribute::STAMINA] = stamina;
 	}
 
 	inline void setQuicknessBuff(int quickness) {
-		attributeBuffs[CreatureAttribute::QUICKNESS] = quickness;
+		attributeBuffs[BuffAttribute::QUICKNESS] = quickness;
 	}
 
 	inline void setWillpowerBuff(int willpower) {
-		attributeBuffs[CreatureAttribute::WILLPOWER] = willpower;
+		attributeBuffs[BuffAttribute::WILLPOWER] = willpower;
 	}
 
 	inline void setFocusBuff(int focus) {
-		attributeBuffs[CreatureAttribute::FOCUS] = focus;
+		attributeBuffs[BuffAttribute::FOCUS] = focus;
+	}
+
+	inline void setPoisonBuff(int poison) {
+		attributeBuffs[BuffAttribute::POISON] = poison;
+	}
+
+	inline void setDiseaseBuff(int disease) {
+		attributeBuffs[BuffAttribute::DISEASE] = disease;
 	}
 
 	inline void setForcePowerBuff(int force) {
