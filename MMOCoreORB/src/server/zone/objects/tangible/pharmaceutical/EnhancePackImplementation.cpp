@@ -67,7 +67,7 @@ int EnhancePackImplementation::useObject(Player* player) {
 	}
 
 	uint32 actionCRC = 0xEEE029CF; //healenhance
-	player->queueHeal((TangibleObject*)_this, actionCRC, CreatureAttribute::getName(attribute));
+	player->queueHeal((TangibleObject*)_this, actionCRC, BuffAttribute::getName(attribute));
 
 	return 0;
 }
@@ -75,7 +75,7 @@ int EnhancePackImplementation::useObject(Player* player) {
 void EnhancePackImplementation::initialize() {
 	setEffectiveness(0.0f);
 	setDuration(0.0f);
-	setAttribute(CreatureAttribute::HEALTH);
+	setAttribute(BuffAttribute::HEALTH);
 }
 
 void EnhancePackImplementation::parseItemAttributes() {
@@ -92,7 +92,7 @@ void EnhancePackImplementation::parseItemAttributes() {
 void EnhancePackImplementation::addAttributes(AttributeListMessage* alm) {
 	PharmaceuticalImplementation::addHeaderAttributes(alm);
 
-	String attributeName = CreatureAttribute::getName(attribute);
+	String attributeName = BuffAttribute::getName(attribute);
 
 	StringBuffer eff;
 	eff << "examine_enhance_" << attributeName;

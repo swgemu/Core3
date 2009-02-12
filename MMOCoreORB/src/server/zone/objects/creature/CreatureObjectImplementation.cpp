@@ -1478,7 +1478,7 @@ void CreatureObjectImplementation::doMeditateHeals() {
 
 		//case 1:
 			if (isPoisoned() && meditateMod >= 30) {
-				if (!healDot(CreatureState::BLEEDING,meditatePower)) {
+				if (!healDot(CreatureState::POISONED,meditatePower)) {
 					if (isPlayer())
 						sendSystemMessage("dot_message", "decrease_poisoned");
 				}
@@ -1487,7 +1487,7 @@ void CreatureObjectImplementation::doMeditateHeals() {
 
 		//case 2:
 			if (isDiseased() && meditateMod >= 45) {
-				if (!healDot(CreatureState::BLEEDING,meditatePower)) {
+				if (!healDot(CreatureState::DISEASED,meditatePower)) {
 					if (isPlayer())
 						sendSystemMessage("dot_message", "decrease_diseased");
 				}

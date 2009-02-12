@@ -140,12 +140,12 @@ public:
 			String attributeName;
 
 			tokenizer.getStringToken(attributeName);
-			attribute = CreatureAttribute::getAttribute(attributeName);
+			attribute = BuffAttribute::getAttribute(attributeName);
 
 			if (tokenizer.hasMoreTokens())
 				objectId = tokenizer.getLongToken();
 		} else {
-			attribute = CreatureAttribute::UNKNOWN;
+			attribute = BuffAttribute::UNKNOWN;
 			objectId = 0;
 		}
 	}
@@ -181,12 +181,12 @@ public:
 			return 0;
 		}
 
-		uint8 attribute = CreatureAttribute::UNKNOWN;
+		uint8 attribute = BuffAttribute::UNKNOWN;
 		uint64 objectId = 0;
 
 		parseModifier(modifier, attribute, objectId);
 
-		if (attribute == CreatureAttribute::UNKNOWN) {
+		if (attribute == BuffAttribute::UNKNOWN) {
 			enhancer->sendSystemMessage("healing_response", "healing_response_75"); //You must specify a valid attribute.
 			return 0;
 		}
@@ -261,7 +261,7 @@ public:
 	void sendEnhanceMessage(CreatureObject* enhancer, CreatureObject* patient, uint8 attribute, uint32 buffApplied) {
 		String enhancerName = enhancer->getCharacterName().toString();
 		String patientName = patient->getCharacterName().toString();
-		String attributeName = CreatureAttribute::getName(attribute, true);
+		String attributeName = BuffAttribute::getName(attribute, true);
 
 		StringBuffer msgPlayer, msgTarget, msgBuff;
 

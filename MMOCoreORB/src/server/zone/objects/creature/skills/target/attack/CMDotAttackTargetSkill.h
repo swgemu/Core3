@@ -202,7 +202,6 @@ public:
 					((Player*)creature)->sendSystemMessage("healing","apply_poison_self",params);
 			if (creatureTarget->isPlayer())
 					((Player*)creatureTarget)->sendSystemMessage("healing","apply_poison_other",params);
-
 			dotDMG = creatureTarget->addDotState(creature,dotPack->getObjectCRC(),CreatureState::POISONED, dotPower, dotPack->getPool(), dotPack->getDuration(),dotPack->getPotency(),creatureTarget->getSkillMod("resistance_poison"));
 		}
 		else {
@@ -210,7 +209,6 @@ public:
 					((Player*)creature)->sendSystemMessage("healing","apply_disease_self",params);
 			if (creatureTarget->isPlayer())
 					((Player*)creatureTarget)->sendSystemMessage("healing","apply_disease_other",params);
-
 			dotDMG = creatureTarget->addDotState(creature,dotPack->getObjectCRC(),CreatureState::DISEASED, dotPower, dotPack->getPool(), dotPack->getDuration(),dotPack->getPotency(),creatureTarget->getSkillMod("resistance_disease"));
 		}
 

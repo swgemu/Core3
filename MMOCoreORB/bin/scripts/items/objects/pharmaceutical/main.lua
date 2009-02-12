@@ -4,6 +4,8 @@ RunItemLUAFile("objects/pharmaceutical/enhancepacks/enhancePackConstitutionD.lua
 RunItemLUAFile("objects/pharmaceutical/enhancepacks/enhancePackStrengthD.lua");
 RunItemLUAFile("objects/pharmaceutical/enhancepacks/enhancePackQuicknessD.lua");
 RunItemLUAFile("objects/pharmaceutical/enhancepacks/enhancePackStaminaD.lua");
+RunItemLUAFile("objects/pharmaceutical/enhancepacks/enhancePackPoisonA.lua");
+RunItemLUAFile("objects/pharmaceutical/enhancepacks/enhancePackDiseaseA.lua");
 
 RunItemLUAFile("objects/pharmaceutical/stimpacks/stimPackSmallA.lua");
 RunItemLUAFile("objects/pharmaceutical/stimpacks/stimPackSmallB.lua");
