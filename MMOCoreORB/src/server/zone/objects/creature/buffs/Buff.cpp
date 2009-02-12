@@ -202,19 +202,24 @@ bool Buff::deActivateBuff(CreatureObject* creo, bool updateClient) {
 		return false;
 	}
 
-	if (getHealthBuff() != 0)
+	if (getHealthBuff() != 0) {
 		creo->changeMaxHealthBar(-1 * getHealthBuff(), updateClient);
-	if (getActionBuff() != 0)
+		creo->changeHealthWoundsBar(0);
+	}
+	if (getActionBuff() != 0) {
 		creo->changeMaxActionBar(-1 * getActionBuff(), updateClient);
-
-	if (getMindBuff() != 0)
+		creo->changeActionWoundsBar(0);
+	}
+	if (getMindBuff() != 0) {
 		creo->changeMaxMindBar(-1 * getMindBuff(), updateClient);
-
+		creo->changeMindWoundsBar(0);
+	}
 	if (getStrengthBuff() != 0) {
 		//System::out << "deActivateBuff (strength max original): " << creo->getStrengthMax() << endl;
 		creo->changeMaxStrengthBar(-1 * getStrengthBuff(), updateClient);
 		//System::out << "deActivateBuff (strength max new): " << creo->getStrengthMax() << endl;
 		creo->setStrengthBar(MAX(creo->getStrengthMax() - creo->getConstitutionWounds(), 1));
+		creo->changeStrengthWoundsBar(0);
 	}
 
 	if (getConstitutionBuff() != 0) {
@@ -222,26 +227,31 @@ bool Buff::deActivateBuff(CreatureObject* creo, bool updateClient) {
 		creo->changeMaxConstitutionBar(-1 * getConstitutionBuff(), updateClient);
 		//System::out << "deActivateBuff (constitution max new): " << creo->getConstitutionMax() << endl;
 		creo->setConstitutionBar(MAX(creo->getConstitutionMax() - creo->getConstitutionWounds(), 1));
+		creo->changeConstitutionWoundsBar(0);
 	}
 
 	if (getStaminaBuff() != 0) {
 		creo->changeMaxStaminaBar(-1 * getStaminaBuff(), updateClient);
 		creo->setStaminaBar(MAX(creo->getStaminaMax() - creo->getStaminaWounds(), 1));
+		creo->changeStaminaWoundsBar(0);
 	}
 
 	if (getQuicknessBuff() != 0) {
 		creo->changeMaxQuicknessBar(-1 * getQuicknessBuff(), updateClient);
 		creo->setQuicknessBar(MAX(creo->getQuicknessMax() - creo->getQuicknessWounds(), 1));
+		creo->changeQuicknessWoundsBar(0);
 	}
 
 	if (getWillpowerBuff() != 0) {
 		creo->changeMaxWillpowerBar(-1 * getWillpowerBuff(), updateClient);
 		creo->setWillpowerBar(MAX(creo->getWillpowerMax() - creo->getWillpowerWounds(), 1));
+		creo->changeWillpowerWoundsBar(0);
 	}
 
 	if (getFocusBuff() != 0) {
 		creo->changeMaxFocusBar(-1 * getFocusBuff(), updateClient);
 		creo->setFocusBar(MAX(creo->getFocusMax() - creo->getFocusWounds(), 1));
+		creo->changeFocusWoundsBar(0);
 	}
 
 	if(getSkillModBuff("melee_defense") != 0) {
