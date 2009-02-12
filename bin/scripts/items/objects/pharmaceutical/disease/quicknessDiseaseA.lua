@@ -40,5 +40,26 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-diseasePackSet = {actionDiseaseA, healthDiseaseA, mindDiseaseA, areaActionDiseaseA, areaHealthDiseaseA, areaMindDiseaseA, actionDiseaseC, healthDiseaseC, mindDiseaseC, strengthDiseaseA,  focusDiseaseA, constitutionDiseaseA, staminaDiseaseA,  quicknessDiseaseA,  willpowerDiseaseA}
-addBFItemSet("Disease Set", diseasePackSet);
+quicknessDiseaseA = Object:new {
+
+	objectName = "Disease Quickness A",
+
+	templateName = "object/tangible/medicine/crafted/shared_medpack_disease_quickness_a.iff",
+	objectCRC = "1210202555",
+
+	objectType = PHARMACEUTICAL,
+	
+	medpackType = DISEASEDELIVERYUNIT,
+	
+	usesRemaining = 8,
+	
+	medicineUse = 5,
+	
+	effectiveness = 53,
+
+	range = 21.0,
+	
+	potency = 110.0,
+
+	area = 0.0
+}
