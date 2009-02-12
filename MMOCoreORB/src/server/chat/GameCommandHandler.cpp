@@ -107,7 +107,7 @@ void GameCommandHandler::init() {
 			"Warps a player to a given location.",
 			"Usage: @warpPlayer <player> <starport |hotel | shuttle | medical | bank | garage | salon | punish>",
 			&warpPlayer);
-	gmCommands->addCommand("summon", PRIVILEGED | LEADQA,
+	gmCommands->addCommand("summon", CSREVENTS | LEADQA,
 			"Warps a player to your location.",
 			"Usage: @summon <player>",
 			&summon);
@@ -215,7 +215,7 @@ void GameCommandHandler::init() {
 			"Prints your current HAM stats.",
 			"Usage: @HAMStats",
 			&HAMStats);
-	gmCommands->addCommand("buff", PRIVILEGED | LEADQA,
+	gmCommands->addCommand("buff", CSREVENTS | LEADQA,
 			"Buffs your player or target player.",
 			"Usage: @buff <target>",
 			&buff);
@@ -239,7 +239,7 @@ void GameCommandHandler::init() {
 			"Gives full details of targeted object location.",
 			"Usage: @getTargetLocation",
 			&getTargetLocation);
-	gmCommands->addCommand("giveItemTemp", DEVELOPER,
+	gmCommands->addCommand("giveItemTemp", CSREVENTS,
 			"Adds a requested item to your inventory.",
 			"Usage: @giveItemTemp <Item Type> [item sub-type]",
 			&giveItemTemp);
@@ -247,7 +247,7 @@ void GameCommandHandler::init() {
 			"Plays a client effect animation around your character.",
 			"Usage: @clientEffect <effect>",
 			&clientEffect);
-	gmCommands->addCommand("rez", PRIVILEGED | LEADQA,
+	gmCommands->addCommand("rez", CSREVENTS | LEADQA,
 			"Resurrects a player.",
 			"Usage: @rez <playername or target player>",
 			&rez);
@@ -283,7 +283,7 @@ void GameCommandHandler::init() {
 			"Gives you specified type of experience",
 			"USAGE: @getXP [type] [amount]",
 			&getXP);
-	gmCommands->addCommand("adminList", PRIVILEGED,
+	gmCommands->addCommand("adminList", DEVELOPER,
 			"Returns a list of players with a level higher than normal (4)",
 			"USAGE: @adminList",
 			&adminList);
@@ -342,7 +342,7 @@ void GameCommandHandler::init() {
 			"Sets the height of a player or creature.",
 			"Usage: @setHeight number.",
 			&setHeight);
-	gmCommands->addCommand("warpAreaToWP", PRIVILEGED,
+	gmCommands->addCommand("warpAreaToWP", CSREVENTS,
 			"Warps all players in a set radius to a specific waypoint",
 			"Usage: @warpAreaToWP <waypointName> <radius>",
 			&warpAreaToWP);
@@ -350,7 +350,7 @@ void GameCommandHandler::init() {
 			"Sets the multiplier for serverwide experience",
 			"Usage: @scaleXP <scaler>",
 			&scaleXP);
-	gmCommands->addCommand("drag", DEVELOPER,
+	gmCommands->addCommand("drag", CSREVENTS,
 			"Drags a dead or incapacitated player toward yourself.",
 			"Usage: @drag",
 			&drag);
