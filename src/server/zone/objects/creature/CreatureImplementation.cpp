@@ -1686,7 +1686,7 @@ void CreatureImplementation::doCamoCheck(CreatureObject* target) {
 
 	if (targetCamoType != CamoSkill::NONE) {
 
-		if (targetCamoType == CamoSkill::MASKSCENT && !isCreature()) {
+		if (targetCamoType == CamoSkill::MASKSCENT && isNPC()) {
 			camoSet = false;
 			camoCount = 0;
 			return;
