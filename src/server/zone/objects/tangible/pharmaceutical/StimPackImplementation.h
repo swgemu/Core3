@@ -61,7 +61,7 @@ public:
 
 	int useObject(Player* player);
 
-	uint32 calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue = true);
+	virtual uint32 calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue = true);
 
 	void updateCraftingValues(DraftSchematic* draftSchematic);
 
