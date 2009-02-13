@@ -696,6 +696,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	modifier = modifier + System::random(10);
 
 	int playerRoll = System::random(1000) * modifier * luck / 1000;
+
 	if (playerRoll > 170000) {
 		modifier = modifier + 150;
 		luck = luck + 170;
@@ -752,41 +753,82 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		setSkillMod2Value(luck / (System::random(3) + 10));
 	}
 
-	if (playerRoll > 13000 && System::random(1) == 1)	{
-		switch (System::random(4)) {
+	if (objectCRC != 0xE24F970E && playerRoll > 13000 && System::random(1) == 1)	{
+		switch (System::random(3)) {
+		case 0:
+			setDot0Type(CreatureState::BLEEDING);
+			setDot0Attribute((System::random(2) * 3));
+			break;
 		case 1:
-			setDot1Type(CreatureState::BLEEDING);
-			setDot1Attribute((System::random(2) * 3) + 1);
-			setDot1Strength((modifier / 3) + (luck / 2));
-			setDot1Duration(((luck * 4) + modifier) / 7);
-			setDot1Potency(System::random(luck / 3) + (luck / 5));
-			setDot1Uses((modifier + luck) * 11);
+			setDot0Type(CreatureState::DISEASED);
+			setDot0Attribute((System::random(8)));
 			break;
 		case 2:
-			setDot1Type(CreatureState::DISEASED);
-			setDot1Attribute((System::random(2) * 3) + 1);
-			setDot1Strength((modifier / 4) + (luck / 2));
-			setDot1Duration(((luck * 4) + modifier) / 7);
-			setDot1Potency(System::random(luck / 3) + (luck / 5));
-			setDot1Uses((modifier + luck) * 11);
+			setDot0Type(CreatureState::ONFIRE);
+			setDot0Attribute((System::random(2) * 3));
 			break;
 		case 3:
-			setDot1Type(CreatureState::ONFIRE);
-			setDot1Attribute((System::random(2) * 3) + 1);
-			setDot1Strength((modifier / 4) + (luck / 2));
-			setDot1Duration(((luck * 4) + modifier) / 7);
-			setDot1Potency(System::random(luck / 3) + (luck / 5));
-			setDot1Uses((modifier + luck) * 11);
-			break;
-		case 4:
-			setDot1Type(CreatureState::POISONED);
-			setDot1Attribute((System::random(2) * 3) + 1);
-			setDot1Strength((modifier / 3) + (luck / 2));
-			setDot1Duration(((luck * 4) + modifier) / 7);
-			setDot1Potency(System::random(luck / 3) + (luck / 5));
-			setDot1Uses((modifier + luck) * 11);
+			setDot0Type(CreatureState::POISONED);
+			setDot0Attribute((System::random(2) * 3));
 			break;
 		}
+		setDot0Strength((modifier / 3) + (luck / 2));
+		setDot0Duration(((luck * 4) + modifier) / 7);
+		setDot0Potency(System::random(luck / 3) + (luck / 5));
+		setDot0Uses((modifier + luck) * 11);
+
+	}
+
+	if (playerRoll > 13000 && System::random(2) == 1)	{
+		switch (System::random(3)) {
+		case 0:
+			setDot1Type(CreatureState::BLEEDING);
+			setDot1Attribute((System::random(2) * 3));
+			break;
+		case 1:
+			setDot1Type(CreatureState::DISEASED);
+			setDot1Attribute((System::random(8)));
+			break;
+		case 2:
+			setDot1Type(CreatureState::ONFIRE);
+			setDot1Attribute((System::random(2) * 3));
+			break;
+		case 3:
+			setDot1Type(CreatureState::POISONED);
+			setDot1Attribute((System::random(2) * 3));
+			break;
+		}
+		setDot1Strength((modifier / 3) + (luck / 2));
+		setDot1Duration(((luck * 4) + modifier) / 7);
+		setDot1Potency(System::random(luck / 3) + (luck / 5));
+		setDot1Uses((modifier + luck) * 11);
+
+	}
+
+	if (playerRoll > 13000 && System::random(4) == 1)	{
+		switch (System::random(3)) {
+		case 0:
+			setDot2Type(CreatureState::BLEEDING);
+			setDot2Attribute((System::random(2) * 3));
+			break;
+		case 1:
+			setDot2Type(CreatureState::DISEASED);
+			setDot2Attribute((System::random(8)));
+			break;
+		case 2:
+			setDot2Type(CreatureState::ONFIRE);
+			setDot2Attribute((System::random(2) * 3));
+			break;
+		case 3:
+			setDot2Type(CreatureState::POISONED);
+			setDot2Attribute((System::random(2) * 3));
+			break;
+		}
+		setDot2Strength((modifier / 3) + (luck / 2));
+		setDot2Duration(((luck * 4) + modifier) / 7);
+		setDot2Potency(System::random(luck / 3) + (luck / 5));
+		setDot2Uses((modifier + luck) * 11);
+
 	}
 
 	if (attackSpeed < 1)
