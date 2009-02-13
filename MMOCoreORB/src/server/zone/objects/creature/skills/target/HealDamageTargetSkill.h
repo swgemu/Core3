@@ -319,27 +319,25 @@ public:
 	}
 
 	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, Pharmaceutical* pharma) {
-		RangedStimPack* rangeStim = NULL;
-		if (pharma->isRangedStimPack())
-			rangeStim = (RangedStimPack*) pharma;
+		if (pharma->isRangedStimPack()) {
+			RangedStimPack* rangeStim = (RangedStimPack*) pharma;
 
-		if (pharma == NULL)
-			return;
+			if (pharma == NULL)
+				return;
+			int stimPower = rangeStim->calculatePower(creature,creatureTarget);
 
-		int stimPower = rangeStim->calculatePower(creature,creatureTarget);
-
-		int healthHealed = creature->healDamage(creatureTarget, stimPower, CreatureAttribute::HEALTH);
-		int actionHealed = creature->healDamage(creatureTarget, stimPower, CreatureAttribute::ACTION);
+			uint32 healthHealed = creature->healDamage(creatureTarget, CreatureAttribute::HEALTH, stimPower);
+			uint32 actionHealed = creature->healDamage(creatureTarget, CreatureAttribute::ACTION, stimPower);
 
 
-		if (creatureTarget->isPlayer())
-			((Player*) creature)->sendBattleFatigueMessage(creatureTarget);
+			if (creatureTarget->isPlayer())
+				((Player*) creature)->sendBattleFatigueMessage(creatureTarget);
 
-		sendHealMessage(creature, creatureTarget, healthHealed, actionHealed);
+			sendHealMessage(creature, creatureTarget, healthHealed, actionHealed);
 
-		if (creatureTarget != creature)
-			awardXp(creature, "medical", (healthHealed + actionHealed)); //No experience for healing yourself.
-
+			if (creatureTarget != creature)
+				awardXp(creature, "medical", (healthHealed + actionHealed)); //No experience for healing yourself.
+		}
 	}
 
 	bool checkAreaMedicTarget(CreatureObject* creature, CreatureObject* creatureTarget) {

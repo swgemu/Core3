@@ -2279,6 +2279,14 @@ void PlayerImplementation::rescheduleRecovery(int time) {
 	server->addEvent(recoveryEvent, time);
 }
 
+/**
+ * Action performed to recover from incapacitation.
+ */
+void PlayerImplementation::recoverFromIncapacitation() {
+	setPosture(CreaturePosture::UPRIGHT);
+	rescheduleRecovery(0);
+}
+
 void PlayerImplementation::doRecovery() {
 	if (isLinkDead()) {
 		if (logoutTimeStamp.isPast()) {

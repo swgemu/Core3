@@ -754,6 +754,7 @@ public:
 	void activateSaveStateEvent();
 
 	void rescheduleRecovery(int time = 3000);
+	void recoverFromIncapacitation();
 	void rescheduleSaveStateEvent(int time);
 
 	void doRecovery();
