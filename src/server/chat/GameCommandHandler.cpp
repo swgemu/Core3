@@ -2202,6 +2202,12 @@ void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player* player)
 		server->addObject(item);
 		player->addInventoryItem(item);
 		item->sendTo(player);
+		
+	} else if (itemType == "Swoop") {
+		VehicleDeed * item = new VehicleDeed(player, 0x1D885457, UnicodeString("Deed for: Speederbike Swoop"), "speederbike_swoop_deed");
+		server->addObject(item);
+		player->addInventoryItem(item);
+		item->sendTo(player);
 
 	} else if (itemType == "ResourceDeed") {
 		ResourceDeed * item = new ResourceDeed(player, 0x7D28DE23, UnicodeString("A Crate of Free Resources"), "resourceDeed");
