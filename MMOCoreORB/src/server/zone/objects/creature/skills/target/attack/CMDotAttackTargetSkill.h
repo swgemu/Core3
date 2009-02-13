@@ -294,7 +294,8 @@ public:
 			creature->setDefender(creatureTarget);
 			creatureTarget->addDefender(creature);
 			creature->clearState(CreatureState::PEACE);
-			((CreatureImplementation*)creatureTarget->_getImplementation())->doAttack(creature, dotDMG);
+			((Creature*)creatureTarget)->doAttack(creature, dotDMG);
+			//((CreatureImplementation*)creatureTarget->_getImplementation())->doAttack(creature, dotDMG);
 			creatureTarget->activateRecovery();
 
 		} else {
