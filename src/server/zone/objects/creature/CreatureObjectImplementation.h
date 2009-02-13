@@ -2758,7 +2758,7 @@ public:
 
 	//Getters
 	inline bool canRecoverFromIncapacitation() {
-		return (!isDead() && getHealth() > 0 && getAction() > 0 && getMind() > 0);
+		return (!isDead() && isIncapacitated() && getHealth() > 0 && getAction() > 0 && getMind() > 0);
 	}
 
 	inline float getCombatRegenModifier() {
