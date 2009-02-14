@@ -201,7 +201,7 @@ PlayerImplementation::~PlayerImplementation() {
 
 }
 
-void PlayerImplementation::initialize() {
+void PlayerImplementation::init() {
 	objectType = PLAYER;
 
 	owner = NULL;

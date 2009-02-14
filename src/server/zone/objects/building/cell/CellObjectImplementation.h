@@ -71,7 +71,7 @@ class CellObjectImplementation : public CellObjectServant {
 	String attributeString;
 
 private:
-	void initialize();
+	void init();
 
 public:
 	CellObjectImplementation(uint64 objID, BuildingObject* buio);

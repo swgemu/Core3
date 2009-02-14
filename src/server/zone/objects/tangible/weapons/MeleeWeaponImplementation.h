@@ -53,15 +53,15 @@ class MeleeWeaponImplementation : public MeleeWeaponServant {
 public:
 	MeleeWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, int tp, bool eqp = false) 
 			: MeleeWeaponServant(objid, tempcrc, n, tempn, eqp, tp, MELEE ) {
-		initialize();
+		init();
 	}
 
 	MeleeWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp = false) 
 			: MeleeWeaponServant(creature, temp, n, tempn, eqp, tp, MELEE ) {
-		initialize();
+		init();
 	}
 
-	void initialize() {
+	void init() {
 		setMinDamage(50);
 		setMaxDamage(125);
 		

@@ -61,6 +61,10 @@ public:
 
 	void close(ZoneClientSession* client);
 
+	void init();
+
+	void initScriptedValues();
+
 	void openTo(Player* player);
 
 	bool addObject(SceneObject* obj);
@@ -390,6 +394,10 @@ public:
 	void selectConversationOption(int option, SceneObject* obj);
 
 	void close(ZoneClientSession* client);
+
+	void init();
+
+	void initScriptedValues();
 
 	void openTo(Player* player);
 

@@ -49,14 +49,14 @@ which carries forward this exception.
 
 RangedStimPackImplementation::RangedStimPackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: RangedStimPackServant(oid, tempCRC, n, tempn) {
-	initialize();
+	init();
 }
 RangedStimPackImplementation::RangedStimPackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: RangedStimPackServant(creature, tempCRC, n, tempn) {
 	customName = n;
 	templateName = tempn;
 
-	initialize();
+	init();
 }
 
 int RangedStimPackImplementation::useObject(Player* player) {
@@ -98,7 +98,7 @@ void RangedStimPackImplementation::updateCraftingValues(DraftSchematic* draftSch
 	itemAttributes->setFloatAttribute(name, area);
 }
 
-void RangedStimPackImplementation::initialize() {
+void RangedStimPackImplementation::init() {
 	setMedpackType(RANGEDSTIMPACK);
 	setEffectiveness(0.0f);
 	setRange(10.0f);

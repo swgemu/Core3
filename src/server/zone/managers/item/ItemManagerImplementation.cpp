@@ -212,7 +212,7 @@ TangibleObject* ItemManagerImplementation::getPlayerItem(Player* player, uint64 
 	return tano;
 }
 
-TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int objecttype, uint64 objectid,
+TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(Player* player, int objecttype, uint64 objectid,
 		uint32 objectcrc, const UnicodeString& objectname, const String& objecttemp, bool equipped, bool makeStats, String lootAttributes, int level) {
 	TangibleObject* item = NULL;
 
@@ -513,7 +513,8 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 	return item;
 }
 
-TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint32 objectcrc, const UnicodeString& objectname, const String& objecttemp, bool equipped) {
+TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint32 objectcrc,
+		const UnicodeString& objectname, const String& objecttemp, bool equipped) {
 	TangibleObject* item = NULL;
 
 	switch (objectcrc) {
@@ -788,7 +789,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 
 	String attributes = result->getString(9);
 
-	TangibleObject* item = createPlayerObjectTemplate(objecttype, objectid, objectcrc,
+	TangibleObject* item = createPlayerObjectTemplate(player, objecttype, objectid, objectcrc,
 			UnicodeString(objectname), objecttemp, equipped, false, "", 0);
 
 	if (item == NULL)
@@ -838,7 +839,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	return item;
 }
 
-TangibleObject* ItemManagerImplementation::initializeTangibleForCrafting(
+TangibleObject* ItemManagerImplementation::initializeTangibleForCrafting(Player* player,
 		int objecttype, uint64 objectid, uint32 objectcrc, String objectn,
 		String objecttemp, bool equipped){
 
@@ -846,7 +847,7 @@ TangibleObject* ItemManagerImplementation::initializeTangibleForCrafting(
 
 	TangibleObject* item = NULL;
 
-	item = createPlayerObjectTemplate(objecttype, objectid, objectcrc,
+	item = createPlayerObjectTemplate(player, objecttype, objectid, objectcrc,
 			objectname.toString(), objecttemp, equipped, false, "", 0);
 
 	/*if (item == NULL) {
@@ -867,7 +868,7 @@ TangibleObject* ItemManagerImplementation::clonePlayerObjectTemplate(uint64 obje
 		return NULL;
 	}
 	//the name is passed in a hackish way to stop buffer overflows.. anyone know why it was doing that?
-	TangibleObject* newTempl = createPlayerObjectTemplate(templ->getObjectSubType(),
+	TangibleObject* newTempl = createPlayerObjectTemplate(NULL, templ->getObjectSubType(),
 			objectid, templ->getObjectCRC(), UnicodeString(templ->getCustomName()),
 			(char *) templ->getTemplateName().toCharArray(), templ->isEquipped(), false, "", 0);
 
@@ -1178,7 +1179,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 	if (itemMask == 0)
 		itemMask = TangibleObjectImplementation::ALL;
 
-	TangibleObject* item = createPlayerObjectTemplate(type, 1, crc, UnicodeString(name), templ, equipped, false, "", 0);
+	TangibleObject* item = createPlayerObjectTemplate(NULL, type, 1, crc, UnicodeString(name), templ, equipped, false, "", 0);
 
 	item->setObjectSubType(type);
 	item->setPlayerUseMask(itemMask);
@@ -2490,7 +2491,7 @@ void ItemManagerImplementation::loadContainersInStructures(Player* player, Build
 			String attributes = result->getString(8);
 
 			try {
-				item = createPlayerObjectTemplate(objecttype, objectid, objectcrc,
+				item = createPlayerObjectTemplate(player, objecttype, objectid, objectcrc,
 						UnicodeString(objectname), objecttemp, equipped, false, "", 0);
 
 				if (item == NULL) {
@@ -2579,7 +2580,7 @@ void ItemManagerImplementation::loadItemsInContainersForStructure(Player* player
 
 			String attributes = contiResult->getString(8);
 
-			TangibleObject* item = createPlayerObjectTemplate(objecttype, objectid, objectcrc,
+			TangibleObject* item = createPlayerObjectTemplate(player, objecttype, objectid, objectcrc,
 					UnicodeString(objectname), objecttemp, equipped, false, "", 0);
 
 			if (item == NULL) {

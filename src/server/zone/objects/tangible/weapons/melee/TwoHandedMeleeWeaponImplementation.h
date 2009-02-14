@@ -52,15 +52,15 @@ class TwoHandedMeleeWeaponImplementation : public TwoHandedMeleeWeaponServant {
 public:
 	TwoHandedMeleeWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, bool eqp = false) 
 			: TwoHandedMeleeWeaponServant(objid, tempcrc, n, tempn, TWOHANDED, eqp) {
-		initialize();
+		init();
 	}
 
 	TwoHandedMeleeWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false) 
 			: TwoHandedMeleeWeaponServant(creature, temp, n, tempn, TWOHANDED, eqp) {
-		initialize();
+		init();
 	}
 
-	void initialize() {
+	void init() {
 		objectSubType = TangibleObjectImplementation::TWOHANDMELEEWEAPON;
 		
 		setType(TWOHANDED);

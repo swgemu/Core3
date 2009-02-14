@@ -173,7 +173,7 @@ public:
 
 	void parseItemAttributes();
 
-	void initialize();
+	void init();
 
 	void sendTo(Player* player, bool doClose = true);
 

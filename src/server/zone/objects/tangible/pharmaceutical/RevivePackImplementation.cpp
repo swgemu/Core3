@@ -49,7 +49,7 @@ which carries forward this exception.
 
 RevivePackImplementation::RevivePackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: RevivePackServant(oid, tempCRC, n, tempn, REVIVEPACK) {
-	initialize();
+	init();
 }
 RevivePackImplementation::RevivePackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: RevivePackServant(creature, tempCRC, n, tempn, REVIVEPACK) {
@@ -57,7 +57,7 @@ RevivePackImplementation::RevivePackImplementation(CreatureObject* creature, uin
 	customName = n;
 	templateName = tempn;
 
-	initialize();
+	init();
 }
 
 int RevivePackImplementation::useObject(Player* player) {
@@ -72,7 +72,7 @@ int RevivePackImplementation::useObject(Player* player) {
 	return 0;
 }
 
-void RevivePackImplementation::initialize() {
+void RevivePackImplementation::init() {
 	setHealthWoundHealed(0.0f);
 	setHealthHealed(0.0f);
 	setActionWoundHealed(0.0f);

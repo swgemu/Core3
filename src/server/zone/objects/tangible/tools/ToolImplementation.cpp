@@ -55,17 +55,17 @@ ToolImplementation::ToolImplementation(uint64 oid, uint32 tempCRC, const Unicode
 	templateTypeName = "obj_n";
 
 	setToolType(tooltype);
-	initialize();
+	init();
 }
 
 ToolImplementation::ToolImplementation(uint64 oid, uint32 tooltype)
 	: ToolServant(oid, TOOL) {
 
 	setToolType(tooltype);
-	initialize();
+	init();
 }
 
-void ToolImplementation::initialize() {
+void ToolImplementation::init() {
 	setEffectiveness(0);
 }
 

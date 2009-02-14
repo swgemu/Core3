@@ -52,15 +52,15 @@ class PistolRangedWeaponImplementation : public PistolRangedWeaponServant {
 public:
 	PistolRangedWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, bool eqp = false) 
 			: PistolRangedWeaponServant(objid, tempcrc, n, tempn, PISTOL, eqp) {
-		initialize();
+		init();
 	}
 
 	PistolRangedWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false) 
 			: PistolRangedWeaponServant(creature, temp, n, tempn, PISTOL, eqp) {
-		initialize();
+		init();
 	}
 
-	void initialize() {
+	void init() {
 		objectSubType = TangibleObjectImplementation::PISTOL;
 		
 		setType(PISTOL);

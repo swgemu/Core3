@@ -49,7 +49,7 @@ which carries forward this exception.
 
 StatePackImplementation::StatePackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: StatePackServant(oid, tempCRC, n, tempn, STATEPACK) {
-	initialize();
+	init();
 }
 StatePackImplementation::StatePackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: StatePackServant(creature, tempCRC, n, tempn, STATEPACK) {
@@ -57,7 +57,7 @@ StatePackImplementation::StatePackImplementation(CreatureObject* creature, uint3
 	customName = n;
 	templateName = tempn;
 
-	initialize();
+	init();
 }
 
 int StatePackImplementation::useObject(Player* player) {
@@ -72,7 +72,7 @@ int StatePackImplementation::useObject(Player* player) {
 	return 0;
 }
 
-void StatePackImplementation::initialize() {
+void StatePackImplementation::init() {
 	setState(CreatureState::INVALID);
 }
 

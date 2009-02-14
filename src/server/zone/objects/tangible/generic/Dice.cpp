@@ -54,24 +54,12 @@ void Dice::generateAttributes(SceneObject* obj) {
 		((DiceImplementation*) _impl)->generateAttributes(obj);
 }
 
-void Dice::initialize() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 7);
-
-		method.executeWithVoidReturn();
-	} else
-		((DiceImplementation*) _impl)->initialize();
-}
-
 void Dice::rollDice(Player* player, int dnum) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 7);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(dnum);
 
@@ -85,7 +73,7 @@ void Dice::setConfigurableDice(int dsides) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 8);
 		method.addSignedIntParameter(dsides);
 
 		method.executeWithVoidReturn();
@@ -108,12 +96,9 @@ Packet* DiceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		generateAttributes((SceneObject*) inv->getObjectParameter());
 		break;
 	case 7:
-		initialize();
-		break;
-	case 8:
 		rollDice((Player*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 9:
+	case 8:
 		setConfigurableDice(inv->getSignedIntParameter());
 		break;
 	default:
@@ -125,10 +110,6 @@ Packet* DiceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 void DiceAdapter::generateAttributes(SceneObject* obj) {
 	return ((DiceImplementation*) impl)->generateAttributes(obj);
-}
-
-void DiceAdapter::initialize() {
-	return ((DiceImplementation*) impl)->initialize();
 }
 
 void DiceAdapter::rollDice(Player* player, int dnum) {

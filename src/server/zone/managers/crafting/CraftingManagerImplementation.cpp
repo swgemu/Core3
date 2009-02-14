@@ -1671,7 +1671,7 @@ TangibleObject* CraftingManagerImplementation::generateTangibleObject(
 
 	bool equipped = false;
 
-	tano = itemManager->initializeTangibleForCrafting(objecttype, objectid,
+	tano = itemManager->initializeTangibleForCrafting(player, objecttype, objectid,
 			objectcrc, objectname, objecttemp, equipped);
 
 	if (tano == NULL) {
@@ -1680,6 +1680,12 @@ TangibleObject* CraftingManagerImplementation::generateTangibleObject(
 		return NULL;
 
 	}
+
+	tano->setZone(player->getZone());
+
+	tano->setZoneProcessServer(player->getZoneProcessServer());
+
+	tano->initScriptedValues();
 
 	tano->setPlayerUseMask(mask);
 

@@ -52,15 +52,15 @@ class UnarmedMeleeWeaponImplementation : public UnarmedMeleeWeaponServant {
 public:
 	UnarmedMeleeWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, bool eqp = false) 
 			: UnarmedMeleeWeaponServant(objid, tempcrc, n, tempn, UNARMED, eqp) {
-		initialize();
+		init();
 	}
 
 	UnarmedMeleeWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false) 
 			: UnarmedMeleeWeaponServant(creature, temp, n, tempn, UNARMED, eqp) {
-		initialize();
+		init();
 	}
 
-	void initialize() {
+	void init() {
 		objectSubType = TangibleObjectImplementation::MELEEWEAPON;
 		
 		setType(UNARMED);

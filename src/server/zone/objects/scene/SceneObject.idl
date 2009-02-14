@@ -89,6 +89,9 @@ interface SceneObject implements ManagedObject {
 	void selectConversationOption(int option, SceneObject obj);
 
 	void close(ZoneClientSession client);
+	
+	void init();
+	void initScriptedValues();
 
 	// Container methods
 	void openTo(Player player);

@@ -245,12 +245,17 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 		uint16 itemMask = lootTableTemp->getLootItemMask();
 
 		//for testing: System::out << "Selected lootitem is " << lootTableTemp->getLootItemName() << endl;
-		TangibleObject* item = im->createPlayerObjectTemplate(itemType, creature->getNewItemID(), itemCRC,
+		TangibleObject* item = im->createPlayerObjectTemplate(player, itemType, creature->getNewItemID(), itemCRC,
 				clearName, itemName, false, true, lootAttributes, level);
 
 		items[i] = item;
 
 		if (item != NULL) {
+
+			item->setZone(player->getZone());
+
+			item->initScriptedValues();
+
 			item->setPlayerUseMask(itemMask);
 
 			creature->addLootItem(item);

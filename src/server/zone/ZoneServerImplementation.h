@@ -62,6 +62,7 @@ class UserManager;
 class PlayerManager;
 class CraftingManager;
 class ItemManager;
+class ItemConfigManager;
 class GuildManager;
 
 class ChatManager;
@@ -89,6 +90,7 @@ class ZoneServerImplementation : public DatagramServiceThread, public ZoneServer
 	PlayerManager* playerManager;
 	CraftingManager* craftingManager;
 	ItemManager* itemManager;
+	ItemConfigManager* itemConfigManager;
 	ChatManager* chatManager;
 	GuildManager* guildManager;
 
@@ -207,6 +209,10 @@ public:
 
 	inline ItemManager* getItemManager() {
 		return itemManager;
+	}
+
+	inline ItemConfigManager* getItemConfigManager() {
+		return itemConfigManager;
 	}
 
 	inline ChatManager* getChatManager() {

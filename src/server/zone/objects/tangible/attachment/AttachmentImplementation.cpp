@@ -58,14 +58,14 @@ AttachmentImplementation::AttachmentImplementation(uint64 objID, int type) :
 	attachmentType = type;
 	objectID = objID;
 
-	initialize();
+	init();
 }
 
 AttachmentImplementation::~AttachmentImplementation()
 {
 }
 
-void AttachmentImplementation::initialize() {
+void AttachmentImplementation::init() {
 
 	skillMod0Type = 0;
 	skillMod0Value = 0;

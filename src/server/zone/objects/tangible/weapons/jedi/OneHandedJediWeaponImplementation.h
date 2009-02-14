@@ -57,15 +57,15 @@ class OneHandedJediWeaponImplementation : public OneHandedJediWeaponServant {
 public:
 	OneHandedJediWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, bool eqp = false) 
 			: OneHandedJediWeaponServant(objid, tempcrc, n, tempn, ONEHANDSABER, eqp) {
-		initialize();
+		init();
 	}
 
 	OneHandedJediWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false) 
 			: OneHandedJediWeaponServant(creature, temp, n, tempn, ONEHANDSABER, eqp) {
-		initialize();
+		init();
 	}
 
-	void initialize() {
+	void init() {
 		objectSubType = TangibleObjectImplementation::ONEHANDSABER;
 
 		//setType(7);

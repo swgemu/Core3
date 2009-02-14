@@ -61,7 +61,7 @@ public:
 
 	//~EnhancePackImplementation();
 
-	void initialize();
+	void init();
 
 	int useObject(Player* player);
 

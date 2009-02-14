@@ -78,7 +78,7 @@ interface ItemManager {
 
 	TangibleObject clonePlayerObjectTemplate(unsigned long objectid, TangibleObject templ);
 
-	TangibleObject initializeTangibleForCrafting(int objecttype,
+	TangibleObject initializeTangibleForCrafting(Player player, int objecttype,
 			unsigned long objectid, unsigned long objectcrc, String objectn,
 			String objecttemp, boolean equipped);
 

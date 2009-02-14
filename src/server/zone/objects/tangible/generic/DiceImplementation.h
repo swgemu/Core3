@@ -82,7 +82,7 @@ public:
 	void addHeaderAttributes(AttributeListMessage* alm);
 	void addFooterAttributes(AttributeListMessage* alm);
 
-    void initialize();
+    void init();
     void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
     void rollDice(Player* player, int dnum);
 	void setConfigurableDice(int dsides);

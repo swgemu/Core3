@@ -57,7 +57,7 @@ ConsumableImplementation::ConsumableImplementation(uint64 oid, uint32 tempCRC, c
 	templateName = tempn;
 	setObjectSubType(type);
 
-	initialize();
+	init();
 }
 
 ConsumableImplementation::ConsumableImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn, int type)
@@ -71,7 +71,7 @@ ConsumableImplementation::ConsumableImplementation(CreatureObject* creature, uin
 
 	setParent((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);
 
-	initialize();
+	init();
 }
 
 
@@ -86,13 +86,13 @@ ConsumableImplementation::ConsumableImplementation(CreatureObject* creature, uin
 
 	//setParent((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);
 
-	initialize();
+	init();
 }
 
 ConsumableImplementation::~ConsumableImplementation() {
 }
 
-void ConsumableImplementation::initialize() {
+void ConsumableImplementation::init() {
 
 }
 

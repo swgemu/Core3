@@ -61,21 +61,21 @@ PowerupImplementation::PowerupImplementation(uint64 objID, uint32 tempCRC, const
 	templateName = tempn;
 	templateTypeName = "weapon_name";
 
-	initialize();
+	init();
 }
 
 PowerupImplementation::PowerupImplementation(uint64 objID)
 		: PowerupServant(objID, WEAPONPOWERUP) {
 	templateTypeName = "weapon_name";
 
-	initialize();
+	init();
 }
 
 PowerupImplementation::~PowerupImplementation() {
 
 }
 
-void PowerupImplementation::initialize() {
+void PowerupImplementation::init() {
 
 	objectType = SceneObjectImplementation::TANGIBLE;
 	objectSubType = TangibleObjectImplementation::WEAPONPOWERUP;

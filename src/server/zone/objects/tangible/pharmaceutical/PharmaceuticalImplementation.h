@@ -78,7 +78,7 @@ public:
 
 	~PharmaceuticalImplementation();
 
-	void initialize();
+	void init();
 
 	void sendDeltas(Player* player);
 

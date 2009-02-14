@@ -56,15 +56,15 @@ protected:
 public:
 	RangedWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, int tp, bool eqp = false) 
 			: RangedWeaponServant(objid, tempcrc, n, tempn, eqp, tp, RANGED) {
-		initialize();
+		init();
 	}
 
 	RangedWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp = false) 
 			: RangedWeaponServant(creature, temp, n, tempn, eqp, tp, RANGED) {
-		initialize();
+		init();
 	}
 
-	void initialize() {
+	void init() {
 		setMinDamage(50);
 		setMaxDamage(125);
 		

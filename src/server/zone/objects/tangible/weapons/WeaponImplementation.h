@@ -199,7 +199,7 @@ public:
 	WeaponImplementation(uint64 objid, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat);
 	WeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat);
 
-	void initialize();
+	void init();
 
 	void parseItemAttributes();
 

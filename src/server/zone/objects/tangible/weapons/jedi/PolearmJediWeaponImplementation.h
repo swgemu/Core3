@@ -56,15 +56,15 @@ class PolearmJediWeaponImplementation : public PolearmJediWeaponServant {
 public:
 	PolearmJediWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, bool eqp = false) 
 			: PolearmJediWeaponServant(objid, tempcrc, n, tempn, POLEARMSABER, eqp) {
-		initialize();
+		init();
 	}
 
 	PolearmJediWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false) 
 			: PolearmJediWeaponServant(creature, temp, n, tempn, POLEARMSABER, eqp) {
-		initialize();
+		init();
 	}
 
-	void initialize() {
+	void init() {
 		objectSubType = TangibleObjectImplementation::POLEARMSABER;
 
 		//setType(9);

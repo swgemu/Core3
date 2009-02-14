@@ -57,7 +57,7 @@ PharmaceuticalImplementation::PharmaceuticalImplementation(uint64 oid, uint32 te
 	templateName = tempn;
 
 	setMedpackType(mptype);
-	initialize();
+	init();
 }
 
 PharmaceuticalImplementation::PharmaceuticalImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn, int mptype)
@@ -71,7 +71,7 @@ PharmaceuticalImplementation::PharmaceuticalImplementation(CreatureObject* creat
 	setParent((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);
 
 	setMedpackType(mptype);
-	initialize();
+	init();
 }
 
 
@@ -86,13 +86,13 @@ PharmaceuticalImplementation::PharmaceuticalImplementation(CreatureObject* creat
 	//setContainer((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);
 
 	setMedpackType(mptype);
-	initialize();
+	init();
 }
 
 PharmaceuticalImplementation::~PharmaceuticalImplementation() {
 }
 
-void PharmaceuticalImplementation::initialize() {
+void PharmaceuticalImplementation::init() {
 	setUsesRemaining(0);
 	setMedicineUseRequired(0);
 }

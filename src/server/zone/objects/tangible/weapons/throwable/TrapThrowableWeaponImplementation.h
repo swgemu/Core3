@@ -59,7 +59,7 @@ public:
 
 	TrapThrowableWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false);
 
-	void initialize();
+	void init();
 
 	void updateCraftingValues(DraftSchematic* draftSchematic);
 

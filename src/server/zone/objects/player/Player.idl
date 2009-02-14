@@ -105,8 +105,6 @@ interface Player implements CreatureObject {
 		super(oid);
 	}
 
-	void initialize();
-
 	void create(ZoneClientSession client);
 
 	void refuseCreate(ZoneClientSession client);
