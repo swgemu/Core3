@@ -66,7 +66,7 @@ public:
 
 	~DrinkImplementation();
 
-	void initialize();
+	void init();
 
 	int useObject(Player* player);
 

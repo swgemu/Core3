@@ -51,7 +51,8 @@ which carries forward this exception.
 
 TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, int tp)
 		: TangibleObjectServant(oid, TANGIBLE) {
-	initialize();
+
+	init();
 
 	if (tp == NONPLAYERCREATURE || tp == PLAYER)
 		objectType = tp;
@@ -67,7 +68,8 @@ TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, int tp)
 
 TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempname, int tp)
 		: TangibleObjectServant(oid, TANGIBLE) {
-	initialize();
+
+	init();
 
 	objectCRC = tempCRC;
 
@@ -86,7 +88,8 @@ TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, uint32 te
 
 TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempname, int tp)
 		: TangibleObjectServant() {
-	initialize();
+
+	init();
 
 	customName = n;
 
@@ -117,7 +120,7 @@ TangibleObjectImplementation::~TangibleObjectImplementation() {
 	itemAttributes = NULL;
 }
 
-void TangibleObjectImplementation::initialize() {
+void TangibleObjectImplementation::init() {
 	StringBuffer name;
 	name << "TangibleObject :" << objectID;
 	setLoggingName(name.toString());

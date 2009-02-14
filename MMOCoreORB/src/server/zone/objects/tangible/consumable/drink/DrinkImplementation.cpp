@@ -56,7 +56,7 @@ DrinkImplementation::DrinkImplementation(uint64 oid, uint32 tempCRC, const Unico
 	customName = n;
 	templateName = tempn;
 
-	initialize();
+	init();
 }
 
 DrinkImplementation::DrinkImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn)
@@ -69,13 +69,13 @@ DrinkImplementation::DrinkImplementation(CreatureObject* creature, uint64 oid, u
 
 	setParent((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);
 
-	initialize();
+	init();
 }
 
 DrinkImplementation::~DrinkImplementation() {
 }
 
-void DrinkImplementation::initialize() {
+void DrinkImplementation::init() {
 	quantity = 1;
 	filling = 1;
 	flavor = 1;

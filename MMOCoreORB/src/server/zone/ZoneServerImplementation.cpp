@@ -56,6 +56,9 @@ which carries forward this exception.
 #include "managers/item/ItemManager.h"
 #include "managers/item/ItemManagerImplementation.h"
 
+#include "managers/item/ItemConfigManager.h"
+#include "managers/item/ItemConfigManagerImplementation.h"
+
 #include "managers/combat/CombatManager.h"
 #include "../chat/ChatManager.h"
 #include "../chat/ChatManagerImplementation.h"
@@ -138,6 +141,11 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 	if (itemManager != NULL) {
 		itemManager->finalize();
 		itemManager = NULL;
+	}
+
+	if (itemConfigManager != NULL) {
+		itemConfigManager->finalize();
+		itemConfigManager = NULL;
 	}
 
 	if (bazaarManager != NULL) {
@@ -228,6 +236,7 @@ void ZoneServerImplementation::init() {
 
 	userManager = NULL;
 	itemManager = NULL;
+	itemConfigManager = NULL;
 	playerManager = NULL;
 	guildManager = NULL;
 	resourceManager = NULL;
@@ -256,6 +265,9 @@ void ZoneServerImplementation::startManagers() {
 
 	itemManager = new ItemManager(_this, processor);
 	itemManager->deploy("ItemManager");
+
+	itemConfigManager = new ItemConfigManager();
+	itemConfigManager->deploy("ItemConfigManager");
 
 	playerManager = new PlayerManager(itemManager, processor);
 	playerManager->deploy("PlayerManager");

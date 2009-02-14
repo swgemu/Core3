@@ -52,7 +52,7 @@ which carries forward this exception.
 
 DotPackImplementation::DotPackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: DotPackServant(oid, tempCRC, n, tempn, 0) {
-	initialize();
+	init();
 }
 DotPackImplementation::DotPackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: DotPackServant(creature, tempCRC, n, tempn, 0) {
@@ -60,7 +60,7 @@ DotPackImplementation::DotPackImplementation(CreatureObject* creature, uint32 te
 	customName = n;
 	templateName = tempn;
 
-	initialize();
+	init();
 }
 
 int DotPackImplementation::useObject(Player* player) {
@@ -114,7 +114,7 @@ void DotPackImplementation::updateCraftingValues(DraftSchematic* draftSchematic)
 	itemAttributes->setIntAttribute(name, duration);
 }
 
-void DotPackImplementation::initialize() {
+void DotPackImplementation::init() {
 	setEffectiveness(0.0f);
 	setArea(0);
 

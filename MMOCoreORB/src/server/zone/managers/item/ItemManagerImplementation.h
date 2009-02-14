@@ -121,7 +121,7 @@ public:
 	static TangibleObject* createSubObject(uint64 objectid, uint32 objectcrc,
 			const UnicodeString& objectname, const String& objecttemp, bool equipped);
 
-	static TangibleObject* createPlayerObjectTemplate(int objecttype, uint64 objectid, uint32 objectcrc,
+	static TangibleObject* createPlayerObjectTemplate(Player* player, int objecttype, uint64 objectid, uint32 objectcrc,
 			const UnicodeString& objectname, const String& objecttemp, bool equipped,
 			bool makeStats, String lootAttributes, int level);
 
@@ -129,7 +129,7 @@ public:
 
 	//TODO: remove this function when a global clone() function is available for all objects
 	TangibleObject* clonePlayerObjectTemplate(uint64 objectid, TangibleObject* templ);
-	TangibleObject* initializeTangibleForCrafting(int objecttype,
+	TangibleObject* initializeTangibleForCrafting(Player* player, int objecttype,
 			uint64 objectid, uint32 objectcrc, String objectn,
 			String objecttemp, bool equipped);
 

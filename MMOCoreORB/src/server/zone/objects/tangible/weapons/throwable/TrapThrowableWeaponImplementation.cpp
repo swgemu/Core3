@@ -52,16 +52,16 @@ which carries forward this exception.
 
 TrapThrowableWeaponImplementation::TrapThrowableWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, bool eqp)
 		: TrapThrowableWeaponServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::TRAP,false) {
-	initialize();
+	init();
 }
 
 TrapThrowableWeaponImplementation::TrapThrowableWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp)
 			: TrapThrowableWeaponServant(creature, temp, n, tempn, TangibleObjectImplementation::TRAP, false) {
-	initialize();
+	init();
 }
 
 
-void TrapThrowableWeaponImplementation::initialize() {
+void TrapThrowableWeaponImplementation::init() {
 	objectSubType = TangibleObjectImplementation::TRAP;
 
 	setType(TRAP);

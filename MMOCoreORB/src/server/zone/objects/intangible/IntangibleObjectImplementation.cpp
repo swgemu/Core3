@@ -62,10 +62,10 @@ IntangibleObjectImplementation::IntangibleObjectImplementation(SceneObject* cont
 
 	status = 0;
 
-	initialize();
+	init();
 }
 
-void IntangibleObjectImplementation::initialize() {
+void IntangibleObjectImplementation::init() {
 
 }
 

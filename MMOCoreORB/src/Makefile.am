@@ -66,6 +66,7 @@ core3_IDLS =	server/chat/ChatManager.cpp \
 		server/zone/managers/guild/GuildManager.cpp \
 		server/zone/managers/guild/GuildMap.cpp \
 		server/zone/managers/item/ItemManager.cpp \
+		server/zone/managers/item/ItemConfigManager.cpp \
 		server/zone/managers/loot/LootManager.cpp \
 		server/zone/managers/loot/LootTableManager.cpp \
 		server/zone/managers/mission/MissionManager.cpp \
@@ -254,6 +255,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/group/GroupManager.cpp \
 		server/zone/managers/guild/GuildManagerImplementation.cpp \
 		server/zone/managers/item/ItemManagerImplementation.cpp \
+		server/zone/managers/item/ItemConfigManagerImplementation.cpp \
 		server/zone/managers/loot/LootTableManagerImplementation.cpp \
 		server/zone/managers/mission/MissionManagerImplementation.cpp \
 		server/zone/managers/name/NameManager.cpp \

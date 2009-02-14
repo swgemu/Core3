@@ -42,55 +42,21 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SPECIALHEAVYRANGEDWEAPONIMPLEMENTATION_H_
-#define SPECIALHEAVYRANGEDWEAPONIMPLEMENTATION_H_
 
-#include "SpecialHeavyRangedWeapon.h"
+interface ItemConfigManager {
+	ItemConfigManager() {
+		super();
+	}
 
-class SpecialHeavyRangedWeaponImplementation : public SpecialHeavyRangedWeaponServant {
+	boolean loadConfigFile();
+	boolean loadConfigData();
+
+	//Attachments
+	int getMaxAttachmentModCount();
+
+	//Wearables
+	int getMaxWearableSocketCount();
+	int getMaxWearableModCount();
+	boolean canRemoveAttachments();
 	
-public:
-	SpecialHeavyRangedWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, bool eqp = false) 
-			: SpecialHeavyRangedWeaponServant(objid, tempcrc, n, tempn, RIFLEFLAMETHROWER, eqp) {
-		init();
-	}
-
-	SpecialHeavyRangedWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false) 
-			: SpecialHeavyRangedWeaponServant(creature, temp, n, tempn, RIFLEFLAMETHROWER, eqp) {
-		init();
-	}
-
-	void init() {
-		objectSubType = TangibleObjectImplementation::SPECIALHEAVYWEAPON;
-		
-		setType(RIFLEFLAMETHROWER);
-		setCategory(RANGED);
-		
-		setDamageType(HEAT);
-		setArmorPiercing(NONE);
-		
-		setAttackSpeed(6.1f);
-		
-		setMinDamage(25);
-		setMaxDamage(284);
-		setWoundsRatio(36);
-		
-		setPointBlankAccuracy(10);
-		setPointBlankRange(0);
-		
-		setIdealAccuracy(-65);
-		setIdealRange(50);
-		
-		setMaxRangeAccuracy(-120);
-		setMaxRange(64);
-
-		setHealthAttackCost(64);
-		setActionAttackCost(25);
-		setMindAttackCost(35);
-		
-		cert = "cert_rifle_flame_thrower";
-	}
-	
-};
-
-#endif /*SPECIALHEAVYRANGEDWEAPONIMPLEMENTATION_H_*/
+}

@@ -54,15 +54,15 @@ class HeavyRangedWeaponImplementation : public HeavyRangedWeaponServant {
 public:
 	HeavyRangedWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, bool eqp = false) 
 			: HeavyRangedWeaponServant(objid, tempcrc, n, tempn, HEAVYROCKETLAUNCHER, eqp) {
-		initialize();
+		init();
 	}
 
 	HeavyRangedWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false) 
 			: HeavyRangedWeaponServant(creature, temp, n, tempn, HEAVYROCKETLAUNCHER, eqp) {
-		initialize();
+		init();
 	}
 
-	void initialize() {
+	void init() {
 		objectSubType = TangibleObjectImplementation::HEAVYWEAPON;
 		
 		setType(HEAVYROCKETLAUNCHER);

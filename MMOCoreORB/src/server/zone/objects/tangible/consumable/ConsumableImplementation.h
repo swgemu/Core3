@@ -60,7 +60,7 @@ public:
 
 	~ConsumableImplementation();
 
-	void initialize();
+	void init();
 
 	void generateAttributes(SceneObject* obj);
 	void updateCraftingValues(DraftSchematic* draftSchematic);

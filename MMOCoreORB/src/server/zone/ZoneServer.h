@@ -19,6 +19,8 @@ class CraftingManager;
 
 class ItemManager;
 
+class ItemConfigManager;
+
 class ResourceManager;
 
 class LootTableManager;
@@ -96,6 +98,8 @@ public:
 	CraftingManager* getCraftingManager();
 
 	ItemManager* getItemManager();
+
+	ItemConfigManager* getItemConfigManager();
 
 	ResourceManager* getResourceManager();
 
@@ -221,6 +225,8 @@ public:
 	CraftingManager* getCraftingManager();
 
 	ItemManager* getItemManager();
+
+	ItemConfigManager* getItemConfigManager();
 
 	ResourceManager* getResourceManager();
 

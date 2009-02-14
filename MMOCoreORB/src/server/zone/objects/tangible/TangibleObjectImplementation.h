@@ -347,7 +347,7 @@ public:
 
 	~TangibleObjectImplementation();
 
-	void initialize();
+	void init();
 
 	// This function should be called for all character items
 	void parseAttributes();

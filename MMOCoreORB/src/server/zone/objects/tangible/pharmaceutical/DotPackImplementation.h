@@ -60,7 +60,7 @@ public:
 	DotPackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 	DotPackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 
-	void initialize();
+	void init();
 
 	int useObject(Player* player);
 

@@ -52,15 +52,15 @@ class JediWeaponImplementation : public JediWeaponServant {
 public:
 	JediWeaponImplementation(uint64 objid, uint32 tempCRC, const UnicodeString& n, const String& tempn, int tp, bool eqp = false)
 			: JediWeaponServant(objid, tempCRC, n, tempn, eqp, tp, JEDI) {
-		initialize();
+		init();
 	}
 
 	JediWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp = false)
 			: JediWeaponServant(creature, temp, n, tempn, eqp, tp, JEDI) {
-		initialize();
+		init();
 	}
 
-	void initialize() {
+	void init() {
 		setMinDamage(300);
 		setMaxDamage(450);
 		setAttackSpeed(2.0f);

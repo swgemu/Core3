@@ -25,7 +25,6 @@ interface Dice implements GenericItem {
 
 	void generateAttributes(SceneObject obj);
 
-    	void initialize();
 	void rollDice(Player player, int dnum);
 	void setConfigurableDice(int dsides);
 }

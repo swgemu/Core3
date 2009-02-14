@@ -59,16 +59,16 @@ public:
 		customName = n;
 		templateName = tempn;
 
-		initialize();
+		init();
 	}
 
 	PrecisionLaserKnifeImplementation(uint64 objID) :
 		PrecisionLaserKnifeServant(objID, PRECLASERKNIFE) {
 
-		initialize();
+		init();
 	}
 
-	void initialize() {
+	void init() {
 		setCharges(0);
 	}
 

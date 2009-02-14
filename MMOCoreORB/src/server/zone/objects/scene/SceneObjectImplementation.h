@@ -193,6 +193,9 @@ public:
 
 	void close(ZoneClientSession* client);
 
+	virtual void init();
+	virtual void initScriptedValues();
+
 	virtual void insertToZone(Zone * zone);
 	virtual void insertToBuilding(BuildingObject * building);
 	virtual void removeFromZone(bool doLock = true);

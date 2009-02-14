@@ -64,7 +64,7 @@ public:
 	ToolImplementation(uint64 objID, uint32 tempCRC, const UnicodeString& n, const String& tempn, uint32 tooltype);
 	ToolImplementation(uint64 objID, uint32 tooltype);
 
-	void initialize();
+	void init();
 
 	void generateAttributes(SceneObject* obj);
 

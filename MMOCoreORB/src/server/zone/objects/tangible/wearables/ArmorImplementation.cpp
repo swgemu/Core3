@@ -56,7 +56,7 @@ which carries forward this exception.
 
 ArmorImplementation::ArmorImplementation(uint64 objid, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp)
 		: ArmorServant(objid, tempCRC, n, tempn, eqp) {
-	initialize();
+	init();
 }
 
 ArmorImplementation::ArmorImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp)
@@ -66,7 +66,7 @@ ArmorImplementation::ArmorImplementation(CreatureObject* creature, uint32 tempCR
 	customName = n;
 	templateName = tempn;
 
-	initialize();
+	init();
 }
 
 void ArmorImplementation::parseItemAttributes() {
@@ -167,7 +167,7 @@ void ArmorImplementation::parseItemAttributes() {
 
 }
 
-void ArmorImplementation::initialize() {
+void ArmorImplementation::init() {
 	objectSubType = ARMOR;
 
 	setRating(LIGHT);

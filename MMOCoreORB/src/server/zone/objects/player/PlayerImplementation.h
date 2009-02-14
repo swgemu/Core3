@@ -358,7 +358,7 @@ public:
 
 	virtual ~PlayerImplementation();
 
-	void initialize();
+	void init();
 
 	void create(ZoneClientSession* client);
 	void refuseCreate(ZoneClientSession* client);

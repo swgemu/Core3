@@ -29,8 +29,6 @@ public:
 
 	void generateAttributes(SceneObject* obj);
 
-	void initialize();
-
 	void rollDice(Player* player, int dnum);
 
 	void setConfigurableDice(int dsides);
@@ -52,8 +50,6 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void generateAttributes(SceneObject* obj);
-
-	void initialize();
 
 	void rollDice(Player* player, int dnum);
 

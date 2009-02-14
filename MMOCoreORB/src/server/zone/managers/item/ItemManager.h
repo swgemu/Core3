@@ -49,7 +49,7 @@ public:
 
 	TangibleObject* clonePlayerObjectTemplate(unsigned long long objectid, TangibleObject* templ);
 
-	TangibleObject* initializeTangibleForCrafting(int objecttype, unsigned long long objectid, unsigned long long objectcrc, String& objectn, String& objecttemp, bool equipped);
+	TangibleObject* initializeTangibleForCrafting(Player* player, int objecttype, unsigned long long objectid, unsigned long long objectcrc, String& objectn, String& objecttemp, bool equipped);
 
 	void savePlayerItem(Player* player, TangibleObject* item);
 
@@ -115,7 +115,7 @@ public:
 
 	TangibleObject* clonePlayerObjectTemplate(unsigned long long objectid, TangibleObject* templ);
 
-	TangibleObject* initializeTangibleForCrafting(int objecttype, unsigned long long objectid, unsigned long long objectcrc, String& objectn, String& objecttemp, bool equipped);
+	TangibleObject* initializeTangibleForCrafting(Player* player, int objecttype, unsigned long long objectid, unsigned long long objectcrc, String& objectn, String& objecttemp, bool equipped);
 
 	void savePlayerItem(Player* player, TangibleObject* item);
 
@@ -146,8 +146,8 @@ public:
 	void giveBFItemSet(Player* player, String& set);
 
 protected:
-	String _param3_initializeTangibleForCrafting__int_long_long_String_String_bool_;
-	String _param4_initializeTangibleForCrafting__int_long_long_String_String_bool_;
+	String _param4_initializeTangibleForCrafting__Player_int_long_long_String_String_bool_;
+	String _param5_initializeTangibleForCrafting__Player_int_long_long_String_String_bool_;
 	String _param0_getBFProfList__String_;
 	String _param0_getBFProf__String_;
 	String _param1_giveBFItemSet__Player_String_;

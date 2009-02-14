@@ -56,7 +56,7 @@ public:
 
 	ThrowableWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, const int tp, bool eqp = false);
 
-	void initialize();
+	void init();
 
 	/*
 	 * Uses a charge of the object. Ramoves the object if 0 charges left

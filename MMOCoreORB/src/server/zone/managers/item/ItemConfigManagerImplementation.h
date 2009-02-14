@@ -42,39 +42,67 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef STATICOBJECTIMPLEMENTATION_H_
-#define STATICOBJECTIMPLEMENTATION_H_
+#ifndef ITEMCONFIGMANAGERIMPLEMENTATION_H_
+#define ITEMCONFIGMANAGERIMPLEMENTATION_H_
 
 #include "engine/engine.h"
 
-#include "../../../db/ServerDatabase.h"
+#include "ItemConfigManager.h"
+/*
+ * ItemConfigManager stores customized lua data for items in the game
+ */
+class ItemConfigManagerImplementation : public ItemConfigManagerServant, public Lua {
 
-#include "../scene/SceneObject.h"
-
-#include "StaticObject.h"
-
-class Zone;
-class CreatureObject;
-class Player;
-class BuildingObject;
-
-class StaticObjectImplementation : public StaticObjectServant {
-protected:
-	Zone* zone;
+	/*
+	 * maxAttachmentModCount designates how many mods an attachment can have
+	 */
+	int maxAttachmentModCount;
+	/*
+	 * maxWearableSocketCount designates the max number of sockets for a wearable item
+	 */
+	int maxWearableSocketCount;
+	/*
+	 * maxWearableModCount designates the max number of mods for a wearable item
+	 */
+	int maxWearableModCount;
+	/*
+	 * wearableRemoveableAttachments designates whether you can remove attachments from a wearable
+	 */
+	bool wearableRemoveableAttachments;
 
 public:
-	static const int FIREWORK = 1;
-	static const int CAMPSITE = 2;
-public:
-	StaticObjectImplementation(uint64 oid, int tp = 0);
 
-	void init();
+	ItemConfigManagerImplementation();
 
-	void sendTo(Player* player, bool doClose = true);
+	~ItemConfigManagerImplementation();
 
-	void sendDestroyTo(Player* player);
+	bool loadConfigFile() {
+		return runFile("scripts/items/config.lua");
+	}
 
-	void close(Player* player);
+	bool loadConfigData();
+
+	//getters
+
+	inline int getMaxAttachmentModCount() {
+		return maxAttachmentModCount;
+	}
+
+	inline int getMaxWearableSocketCount() {
+		return maxWearableSocketCount;
+	}
+
+	inline int getMaxWearableModCount() {
+		return maxWearableModCount;
+	}
+
+	inline bool canRemoveAttachments() {
+		return wearableRemoveableAttachments;
+	}
+
 };
 
-#endif /*STATICOBJECTIMPLEMENTATION_H_*/
+#endif // #ifndef ITEMCONFIGMANAGERIMPLEMENTATION_H_
+
+
+

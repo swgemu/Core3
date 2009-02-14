@@ -72,7 +72,7 @@ public:
 	
 	virtual ~AttachmentImplementation();
 
-	void initialize();
+	void init();
 	
 	void parseItemAttributes();
 	

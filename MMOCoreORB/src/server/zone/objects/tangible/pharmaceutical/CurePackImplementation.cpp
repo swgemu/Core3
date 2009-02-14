@@ -49,7 +49,7 @@ which carries forward this exception.
 
 CurePackImplementation::CurePackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: CurePackServant(oid, tempCRC, n, tempn, CUREPACK) {
-	initialize();
+	init();
 }
 CurePackImplementation::CurePackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: CurePackServant(creature, tempCRC, n, tempn, CUREPACK) {
@@ -57,7 +57,7 @@ CurePackImplementation::CurePackImplementation(CreatureObject* creature, uint32 
 	customName = n;
 	templateName = tempn;
 
-	initialize();
+	init();
 }
 
 int CurePackImplementation::useObject(Player* player) {
@@ -86,7 +86,7 @@ int CurePackImplementation::useObject(Player* player) {
 	return 0;
 }
 
-void CurePackImplementation::initialize() {
+void CurePackImplementation::init() {
 	setEffectiveness(0.0f);
 	setArea(0.0f);
 	setState(CreatureState::INVALID);

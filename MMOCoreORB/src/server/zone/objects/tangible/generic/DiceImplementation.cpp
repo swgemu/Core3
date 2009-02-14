@@ -56,14 +56,14 @@ DiceImplementation::DiceImplementation(uint64 oid, uint32 tempCRC, const Unicode
 
 	diceType = objectCRC;
 	diceSides = 0;
-	initialize();
+	init();
 }
 
 DiceImplementation::DiceImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: DiceServant(creature, oid, tempCRC, n, tempn, DICE) {
 	diceType = objectCRC;
 	diceSides = 0;
-	initialize();
+	init();
 }
 
 
@@ -71,7 +71,7 @@ DiceImplementation::DiceImplementation(CreatureObject* creature, uint32 tempCRC,
 		: DiceServant(creature, creature->getNewItemID(), tempCRC, n, tempn, DICE) {
 	diceType = objectCRC;
 	diceSides = 0;
-	initialize();
+	init();
 }
 
 DiceImplementation::~DiceImplementation() {
@@ -151,7 +151,7 @@ void DiceImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse
 	player->sendMessage(omr);
 }
 
-void DiceImplementation::initialize() {
+void DiceImplementation::init() {
 	switch (diceType) {
 	case CHANCECUBE:
 		diceSides = 2;

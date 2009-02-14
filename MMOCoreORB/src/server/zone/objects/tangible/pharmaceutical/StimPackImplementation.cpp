@@ -49,7 +49,7 @@ which carries forward this exception.
 
 StimPackImplementation::StimPackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: StimPackServant(oid, tempCRC, n, tempn, STIMPACK) {
-	initialize();
+	init();
 }
 StimPackImplementation::StimPackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: StimPackServant(creature, tempCRC, n, tempn, STIMPACK) {
@@ -57,7 +57,7 @@ StimPackImplementation::StimPackImplementation(CreatureObject* creature, uint32 
 	customName = n;
 	templateName = tempn;
 
-	initialize();
+	init();
 }
 
 int StimPackImplementation::useObject(Player* player) {
@@ -92,7 +92,7 @@ void StimPackImplementation::updateCraftingValues(DraftSchematic* draftSchematic
 
 }
 
-void StimPackImplementation::initialize() {
+void StimPackImplementation::init() {
 	setEffectiveness(0.0f);
 }
 

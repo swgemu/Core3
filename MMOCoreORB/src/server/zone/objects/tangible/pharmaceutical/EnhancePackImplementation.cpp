@@ -49,7 +49,7 @@ which carries forward this exception.
 
 EnhancePackImplementation::EnhancePackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: EnhancePackServant(oid, tempCRC, n, tempn, ENHANCEPACK) {
-	initialize();
+	init();
 }
 EnhancePackImplementation::EnhancePackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: EnhancePackServant(creature, tempCRC, n, tempn, ENHANCEPACK) {
@@ -57,7 +57,7 @@ EnhancePackImplementation::EnhancePackImplementation(CreatureObject* creature, u
 	customName = n;
 	templateName = tempn;
 
-	initialize();
+	init();
 }
 
 int EnhancePackImplementation::useObject(Player* player) {
@@ -72,7 +72,7 @@ int EnhancePackImplementation::useObject(Player* player) {
 	return 0;
 }
 
-void EnhancePackImplementation::initialize() {
+void EnhancePackImplementation::init() {
 	setEffectiveness(0.0f);
 	setDuration(0.0f);
 	setAttribute(BuffAttribute::HEALTH);

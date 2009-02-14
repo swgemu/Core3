@@ -49,7 +49,7 @@ which carries forward this exception.
 
 WoundPackImplementation::WoundPackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: WoundPackServant(oid, tempCRC, n, tempn, WOUNDPACK) {
-	initialize();
+	init();
 }
 WoundPackImplementation::WoundPackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: WoundPackServant(creature, tempCRC, n, tempn, WOUNDPACK) {
@@ -57,7 +57,7 @@ WoundPackImplementation::WoundPackImplementation(CreatureObject* creature, uint3
 	customName = n;
 	templateName = tempn;
 
-	initialize();
+	init();
 }
 
 int WoundPackImplementation::useObject(Player* player) {
@@ -96,7 +96,7 @@ void WoundPackImplementation::updateCraftingValues(DraftSchematic* draftSchemati
 
 }
 
-void WoundPackImplementation::initialize() {
+void WoundPackImplementation::init() {
 	setEffectiveness(0.0f);
 	setAttribute(CreatureAttribute::UNKNOWN);
 }

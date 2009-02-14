@@ -159,12 +159,13 @@ TangibleObject* ItemManager::clonePlayerObjectTemplate(unsigned long long object
 		return ((ItemManagerImplementation*) _impl)->clonePlayerObjectTemplate(objectid, templ);
 }
 
-TangibleObject* ItemManager::initializeTangibleForCrafting(int objecttype, unsigned long long objectid, unsigned long long objectcrc, String& objectn, String& objecttemp, bool equipped) {
+TangibleObject* ItemManager::initializeTangibleForCrafting(Player* player, int objecttype, unsigned long long objectid, unsigned long long objectcrc, String& objectn, String& objecttemp, bool equipped) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 15);
+		method.addObjectParameter(player);
 		method.addSignedIntParameter(objecttype);
 		method.addUnsignedLongParameter(objectid);
 		method.addUnsignedLongParameter(objectcrc);
@@ -174,7 +175,7 @@ TangibleObject* ItemManager::initializeTangibleForCrafting(int objecttype, unsig
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
-		return ((ItemManagerImplementation*) _impl)->initializeTangibleForCrafting(objecttype, objectid, objectcrc, objectn, objecttemp, equipped);
+		return ((ItemManagerImplementation*) _impl)->initializeTangibleForCrafting(player, objecttype, objectid, objectcrc, objectn, objecttemp, equipped);
 }
 
 void ItemManager::savePlayerItem(Player* player, TangibleObject* item) {
@@ -408,7 +409,7 @@ Packet* ItemManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertLong(clonePlayerObjectTemplate(inv->getUnsignedLongParameter(), (TangibleObject*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case 15:
-		resp->insertLong(initializeTangibleForCrafting(inv->getSignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter(), inv->getAsciiParameter(_param3_initializeTangibleForCrafting__int_long_long_String_String_bool_), inv->getAsciiParameter(_param4_initializeTangibleForCrafting__int_long_long_String_String_bool_), inv->getBooleanParameter())->_getObjectID());
+		resp->insertLong(initializeTangibleForCrafting((Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter(), inv->getAsciiParameter(_param4_initializeTangibleForCrafting__Player_int_long_long_String_String_bool_), inv->getAsciiParameter(_param5_initializeTangibleForCrafting__Player_int_long_long_String_String_bool_), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 16:
 		savePlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
@@ -495,8 +496,8 @@ TangibleObject* ItemManagerAdapter::clonePlayerObjectTemplate(unsigned long long
 	return ((ItemManagerImplementation*) impl)->clonePlayerObjectTemplate(objectid, templ);
 }
 
-TangibleObject* ItemManagerAdapter::initializeTangibleForCrafting(int objecttype, unsigned long long objectid, unsigned long long objectcrc, String& objectn, String& objecttemp, bool equipped) {
-	return ((ItemManagerImplementation*) impl)->initializeTangibleForCrafting(objecttype, objectid, objectcrc, objectn, objecttemp, equipped);
+TangibleObject* ItemManagerAdapter::initializeTangibleForCrafting(Player* player, int objecttype, unsigned long long objectid, unsigned long long objectcrc, String& objectn, String& objecttemp, bool equipped) {
+	return ((ItemManagerImplementation*) impl)->initializeTangibleForCrafting(player, objecttype, objectid, objectcrc, objectn, objecttemp, equipped);
 }
 
 void ItemManagerAdapter::savePlayerItem(Player* player, TangibleObject* item) {

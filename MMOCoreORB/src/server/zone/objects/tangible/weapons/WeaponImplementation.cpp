@@ -58,7 +58,7 @@ WeaponImplementation::WeaponImplementation(uint64 objid, uint32 tempCRC, const U
 
 	equipped = eqp;
 
-	initialize();
+	init();
 }
 
 WeaponImplementation::WeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat)
@@ -77,10 +77,10 @@ WeaponImplementation::WeaponImplementation(CreatureObject* creature, const Strin
 	else
 		setParent(creature->getInventory(), 0xFFFFFFFF);
 
-	initialize();
+	init();
 }
 
-void WeaponImplementation::initialize() {
+void WeaponImplementation::init() {
 	templateTypeName = "weapon_name";
 	cert = "";
 	certified = true;

@@ -60,10 +60,10 @@ which carries forward this exception.
 
 StaticObjectImplementation::StaticObjectImplementation(uint64 oid, int tp)
 		: StaticObjectServant(oid, STATIC) {
-	initialize();
+	init();
 }
 
-void StaticObjectImplementation::initialize() {
+void StaticObjectImplementation::init() {
 	zone = NULL;
 
 	objectType = SceneObjectImplementation::STATIC;

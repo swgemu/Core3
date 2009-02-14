@@ -317,6 +317,14 @@ void SceneObjectImplementation::setLockName(const String& name) {
 	//ManagedObjectImplementation::setLockName(name);
 }
 
+void SceneObjectImplementation::init() {
+
+}
+
+void SceneObjectImplementation::initScriptedValues() {
+
+}
+
 void SceneObjectImplementation::insertToZone(Zone* zone) {
 	SceneObjectImplementation::zone = zone;
 	zoneID = zone->getZoneID();

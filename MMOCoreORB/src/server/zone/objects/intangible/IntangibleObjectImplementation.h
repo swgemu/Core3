@@ -62,7 +62,7 @@ class IntangibleObjectImplementation : public IntangibleObjectServant {
 public:
 	IntangibleObjectImplementation(SceneObject* container, uint32 objCRC, uint64 id);
 
-	void initialize();
+	void init();
 
 	virtual ~IntangibleObjectImplementation();
 

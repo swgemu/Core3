@@ -84,7 +84,7 @@ public:
 
 	virtual ~PowerupImplementation();
 
-	void initialize();
+	void init();
 
 	void generateName();
 
