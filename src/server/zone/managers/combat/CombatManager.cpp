@@ -445,7 +445,8 @@ void CombatManager::handelMedicArea(CreatureObject* creature, CreatureObject* ar
 
 bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* target, AttackTargetSkill* skill,  String& modifier, CombatAction* actionMessage) {
 	try {
-		target->wlock(attacker);
+		if (attacker != target)
+			target->wlock(attacker);
 
 		Creature* targetCreature = NULL;
 
@@ -453,7 +454,8 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* tar
 			targetCreature = (Creature*) target;
 
 			if (targetCreature->isIncapacitated() || targetCreature->isDead()) {
-				targetCreature->unlock();
+				if (attacker != target)
+					targetCreature->unlock();
 				return false;
 			} else if (targetCreature->isPlayingMusic())
 				targetCreature->stopPlayingMusic();
@@ -464,19 +466,22 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* tar
 				Player* targetPlayer = (Player*) targetCreature;
 
 				if (targetPlayer->isImmune()) {
-					targetPlayer->unlock();
+					if (attacker != target)
+						targetPlayer->unlock();
 					return false;
 				}
 
 				if (attacker->isPlayer()) {
 					if (!canAttack((Player*)attacker, targetPlayer)) {
-						targetPlayer->unlock();
+						if (attacker != target)
+							targetPlayer->unlock();
 						return false;
 					}
 				}
 
 				if (!targetPlayer->isOnline()) {
-					targetPlayer->unlock();
+					if (attacker != target)
+						targetPlayer->unlock();
 					return false;
 				}
 			}
@@ -488,7 +493,7 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* tar
 			attacker->setDefender(target);
 
 		//No defender for bare metal vehicles (but for pets)
-		if ( !targetCreature->isMount() && ((MountCreature*) targetCreature)->isVehicle())
+		if (!targetCreature->isMount()/* && !((MountCreature*) targetCreature)->isVehicle()*/)
 			target->addDefender(attacker);
 
 
@@ -515,13 +520,18 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* tar
 			if (targetObject->isDestroyed())
 				if (!skill->isArea()) {
 					attacker->clearCombatState(true);
+
+					if (attacker != target)
+						target->unlock();
+
 					return false;
 				}
 
 			targetObject->doDamage(damage, attacker);
 		}
 
-		target->unlock();
+		if (attacker != target)
+			target->unlock();
 	} catch (Exception& e) {
 		System::out << "Exception in doAction(CreatureObject* attacker, CreatureObject* targetCreature, TargetSkill* skill)\n"
 			 << e.getMessage() << "\n";

@@ -164,13 +164,13 @@ bool Buff::activateBuff(CreatureObject* creo, ZoneProcessServerImplementation* s
 		String mod = "";
 		int32 value = 0;
 
+		skillModBuffs.resetIterator();
+
 		while (skillModBuffs.hasNext()) {
 			mod = skillModBuffs.getNextKey();
 			value = skillModBuffs.get(mod);
 			creo->addSkillModBonus(mod,value,false);
 		}
-
-		skillModBuffs.resetIterator();
 	}
 
 	removeBuffEvent();
@@ -273,7 +273,7 @@ bool Buff::deActivateBuff(CreatureObject* creo, bool updateClient) {
 		creo->addSkillMod(BuffAttribute::getProtectionString(BuffAttribute::DISEASE),(-1 * getDiseaseBuff()),false);
 	}
 
-	if(getSkillModBuff("melee_defense") != 0) {
+	/*if(getSkillModBuff("melee_defense") != 0) {
 		creo->showFlyText("trap/trap", "melee_def_1_off", 255, 255, 255);
 	}
 
@@ -287,7 +287,7 @@ bool Buff::deActivateBuff(CreatureObject* creo, bool updateClient) {
 
 	if(getSkillModBuff("stun_defense") != 0) {
 		creo->showFlyText("trap/trap", "state_def_1_off", 255, 255, 255);
-	}
+	}*/
 
 	creo->activateRecovery();
 
@@ -295,13 +295,13 @@ bool Buff::deActivateBuff(CreatureObject* creo, bool updateClient) {
 		String mod = "";
 		int32 value = 0;
 
+		skillModBuffs.resetIterator();
+
 		while (skillModBuffs.hasNext()) {
 			mod = skillModBuffs.getNextKey();
 			value = skillModBuffs.get(mod);
 			creo->addSkillModBonus(mod,(-1 *value),false);
 		}
-
-		skillModBuffs.resetIterator();
 	}
 
 	removeBuffEvent();

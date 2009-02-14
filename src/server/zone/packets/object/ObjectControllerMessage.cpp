@@ -3576,13 +3576,13 @@ void ObjectControllerMessage::parseResourceContainerTransfer(Player* player,
 
 	uint64 toID = (uint64)Long::valueOf(toIDString);
 
-	SceneObject* object1 = player->getInventoryItem(fromID);
-	SceneObject* object2 = player->getInventoryItem(toID);
+	ManagedReference<SceneObject> object1 = player->getInventoryItem(fromID);
+	ManagedReference<SceneObject> object2 = player->getInventoryItem(toID);
 
 	if (object1 != NULL && object2 != NULL && object1->isTangible()
 			&& object2->isTangible()) {
-		TangibleObject* resCof = (TangibleObject*) object1;
-		TangibleObject* resCot = (TangibleObject*) object2;
+		TangibleObject* resCof = (TangibleObject*) object1.get();
+		TangibleObject* resCot = (TangibleObject*) object2.get();
 		if (resCof->isResource() && resCot->isResource()) {
 			ResourceContainer* rcof = (ResourceContainer*) resCof;
 			ResourceContainer* rcot = (ResourceContainer*) resCot;
@@ -4046,7 +4046,7 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player, Message* pac
 		if (targetObject != NULL && targetObject->isNonPlayerCreature()) {
 			Creature* creature = (Creature*) targetObject;
 
-			SceneObject * object;
+			SceneObject* object;
 
 			try {
 				creature->wlock(player);
@@ -4064,7 +4064,7 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player, Message* pac
 				player->lootObject(creature, object);
 			} else {
 				//Current target is a dead creature but player is moving stuff in inventory (because creature->getLootItem returned NULL)
-				TangibleObject* item = validateDropAction(player, target);
+				ManagedReference<TangibleObject> item = validateDropAction(player, target);
 
 				if (item != NULL)
 					transferItemToContainer(player, item, destinationID);
@@ -4074,7 +4074,7 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player, Message* pac
 
 		} else {
 			//Player has no dead creature as target and dropping an item from a cell or container to the inventory
-			TangibleObject* item = validateDropAction(player, target);
+			ManagedReference<TangibleObject> item = validateDropAction(player, target);
 
 			if (item != NULL)
 				transferItemToContainer(player, item, destinationID);

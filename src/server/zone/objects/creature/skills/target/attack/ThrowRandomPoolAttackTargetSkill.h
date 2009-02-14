@@ -104,10 +104,19 @@ public:
 	 */
 	int doSkill(CreatureObject* creature, SceneObject* target,
 			const String& modifier, bool doAnimation) {
+		// TODO: fix this shit
+		//return 0;
+
 		TrapThrowableWeapon* trap = (TrapThrowableWeapon*) getThrowableWeapon(
 				creature, modifier);
 
 		if (trap == NULL)
+			return 0;
+
+		if (!target->isPlayer() && !target->isNonPlayerCreature())
+			return 0;
+
+		if (!creature->isPlayer())
 			return 0;
 
 		CreatureObject* targetCreature = (CreatureObject*) target;
