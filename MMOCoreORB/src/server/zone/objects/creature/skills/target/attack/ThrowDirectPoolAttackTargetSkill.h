@@ -110,6 +110,12 @@ public:
 		if (trap == NULL)
 			return 0;
 
+		if (!target->isPlayer() && !target->isNonPlayerCreature())
+			return 0;
+
+		if (!creature->isPlayer())
+			return 0;
+
 		CreatureObject* targetCreature = (CreatureObject*) target;
 		Player* player = (Player*) creature;
 

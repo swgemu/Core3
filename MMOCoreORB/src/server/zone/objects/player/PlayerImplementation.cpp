@@ -632,10 +632,6 @@ void PlayerImplementation::unload() {
 	playerManager->updateOtherFriendlists(_this, false);
 
 	// remove from group
-	if (group != NULL && zone != NULL) {
-		GroupManager* groupManager = server->getGroupManager();
-		groupManager->leaveGroup(group, _this);
-	}
 
 	// remove from chat rooms
 	while (!chatRooms.isEmpty()) {
@@ -687,6 +683,12 @@ void PlayerImplementation::unload() {
 		setCampAggroMod(0);
 		setCampModifier(0);
 	}
+
+	if (group != NULL) {
+		GroupManager* groupManager = server->getGroupManager();
+		groupManager->leaveGroup(group, _this);
+	}
+
 	clearDuelList();
 
 	activateRecovery();
@@ -5949,6 +5951,22 @@ void PlayerImplementation::onIncapacitateTarget(CreatureObject* victim) {
 void PlayerImplementation::onIncapacitated(SceneObject* attacker) {
 	//Dismount has to take place before clearStates! ClearStates() also
 	//clears the "mount state" so we need to check "isMounted()" before cleared
+
+	if (attacker != _this)
+		attacker->unlock();
+
+	try {
+
+		if (doDancing)
+			stopDancing();
+		else if (doPlayingMusic)
+			stopPlayingMusic();
+	} catch (...) {
+		error("unreported exception caught in void PlayerImplementation::onIncapacitated(SceneObject* attacker)");
+	}
+
+	if (attacker != _this)
+		attacker->wlock(_this);
 
 	if (isMounted())
 		dismount(true, true);

@@ -145,7 +145,16 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 			}
 		}
 
-		handleSelection(radialID, player, obj);
+		try {
+
+			handleSelection(radialID, player, obj);
+
+		} catch (Exception& e) {
+			System::out << "exceptcion while handling radial selection \n" << e.getMessage();
+			e.printStackTrace();
+		} catch (...) {
+			System::out << "unreported exception caught while handling radial selection\n";
+		}
 
 	} catch (...) {
 		System::out << "unreported exception in void RadialManager::handleRadialSelect(Player* player, Packet* pack)\n";
@@ -157,206 +166,229 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	// Pre: player is wlocked, obj is unlocked
 	// Post: player and obj unlocked
 
+
 	//System::out << "Radial ID = " << dec << radialID << endl;
-	switch (radialID) {
-	case 7: // EXAMINE
-		break;
-	case 8: // TRADE
-		handleTrade(player, obj);
-		break;
-	case 11: // Equip
-		break;
-	case 12: // Unequip
-		break;
-	case 13: // DROP
-		handleItemDrop(player, obj);
-		break;
-	case 14: // DESTROY
-		break;
-	case 16: // OPEN RADIAL
-		break;
-	case 17: // OPEN IN NEW WINDOW RADIAL
-		break;
-	case 20: // ITEM_USE
-		obj->useObject(player);
-		break;
-	case 33: // Structure Set Name
-		break;
-	case 35:  // LOOT
-		player->lootCorpse();
-		break;
-	case 36:  // LOOT_ALL
-		player->lootCorpse(true);
-		break;
-	case 45: // Open vendor
-		sendRadialResponseForBazaar(obj->getObjectID(), player);
-		break;
-	case 50:  // LISTEN / WATCH (Entertainer)
-		handleEntertainerActions(player, obj);
-		break;
-	case 60: // VEHICLE_GENERATE
-		player->unlock();
-		handleVehicleGenerate(obj);
-		return;
-	case 61: // VEHICLE_STORE
-		player->unlock();
-		handleVehicleStore(obj);
-		return;
-	case 62: // VEHICLE_REPAIR
-		player->unlock();
-		handleVehicleRepair(obj);
-		return;
-	case 68: // SERVER_MENU1 using to change color on wearables (temporary)
-		handleWearableColorChange(player, obj);
-		break;
-	case 69: // SLICING
-		handleSlicing(player, obj);
-		break;
-	case 70: // REPAIR
-		handleRepair(player, obj);
-		break;
-	case 71: // REMOVE POWERUP
-		handleRemovePowerup(player, obj);
-		break;
-	case 77: // Add Energy
-		handleStructureAddEnergy(player, obj);
-		break;
-	case 82: // Manage Harvester
-		handleManageHarvester(player, obj);
-		break;
-	case 108: // Harvest Meat
-		handleHarvest(player, obj, 1);
-		break;
-	case 109: // Harvest Hide
-		handleHarvest(player, obj, 2);
-		break;
-	case 110: // Harvest Bone
-		handleHarvest(player, obj, 3);
-		break;
-	case 122: // Structure Management
-		break;
-	case 128: // Structure Status
-		handleStructureStatus(player, obj);
-		break;
-	case 131: // Handle Set Name
-		handleSetName(player, obj);
-		break;
-	case 132: // Structure Destroy
-		handleStructureDestroy(player, obj);
-		break;
-	case 133: // Pay Maintenance
-		handleStructureManageMaintenance(player, obj);
-		break;
-	case 130: // Crafting tool hopper item retrieval
-		handleOpenCraftingToolHopper(player, obj);
-		break;
-	case 136: // SURVEY_TOOL_OPTIONS
-		break;
-	case 137: // SURVEY_TOOL_SET_RANGE
-		sendRadialResponseForSurveyToolRange(player, obj);
-		break;
-	case 140: // SERVER_TEACH
-		handleTeach(obj, player);
-		break;
-	case 148: // Harvest
-		handleHarvest(player, obj, 0);
-		break;
-	case 164: // ROLL_DICE (Configure)
-		// nothing here, has sub-members
-		break;
-	case 165: // DICE_TWO_FACE
-		handleDiceConfigure(player, obj, 2);
-		break;
-	case 166: // DICE_THREE_FACE
-		handleDiceConfigure(player, obj, 3);
-		break;
-	case 167: // DICE_FOUR_FACE
-		handleDiceConfigure(player, obj, 4);
-		break;
-	case 168: // DICE_FIVE_FACE
-		handleDiceConfigure(player, obj, 5);
-		break;
-	case 169: // DICE_SIX_FACE
-		handleDiceConfigure(player, obj, 6);
-		break;
-	case 170: // DICE_SEVEN_FACE
-		handleDiceConfigure(player, obj, 7);
-		break;
-	case 171: // DICE_EIGHT_FACE
-		handleDiceConfigure(player, obj, 8);
-		break;
-	case 172: // DICE_COUNT_ONE
-		handleDiceRoll(player, obj, 1);
-		break;
-	case 173: // DICE_COUNT_TWO
-		handleDiceRoll(player, obj, 2);
-		break;
-	case 174: // DICE_COUNT_THREE
-		handleDiceRoll(player, obj, 3);
-		break;
-	case 175: // DICE_COUNT_FOUR
-		handleDiceRoll(player, obj, 4);
-		break;
-	case 187: // SERVER_GUILD_INFORMATION
-		player->unlock();
-		handleGuildInformation(player);
-		return;
-	case 188: // SERVER_GUILD_MEMBERS
-		player->unlock();
-		handleGuildInformationMembers(player);
-		return;
-	case 190: // SERVER_GUILD_ENEMIES
-		player->unlock();
-		//System::out << "Radial Guild Enemies" << endl;
-		return;
-	case 194: // SERVER_GUILD_GUILD_MANAGEMENT
-		//nothing, has sub menues
-		break;
-	case 195: // SERVER_GUILD_MEMBER_MANAGEMENT
-		//nothing, has sub menues
-		break;
-	case 196: // SERVER_GUILD_CREATION
-		player->unlock();
-		handleGuildCreationTag(player);
-		return;
-	case 197: // SERVER_GUILD_SPONSOR
-		player->unlock();
-		handleGuildSponsor(player);
-		return;
-	case 198: // SERVER_GUILD_SPONSORED
-		player->unlock();
-		handleGuildSponsored(player);
-		return;
-	case 199: // SERVER_GUILD_DISBAND
-		player->unlock();
-		handleGuildDisband(player);
-		return;
-	case 200: // SERVER_GUILD_NAMECHANGE
-		player->unlock();
-		handleGuildNameChange(player);
-		return;
-	case 201: // SERVER_GUILD_ENABLE/DISBALE_ELECTIONS
-		player->sendSystemMessage("This feature is not in yet. Thank you for choosing SWGEmu(c).");
-		player->unlock();
-		return;
-	case 202: // SERVER_GUILD_TRANSFER_LEADERSHIP
-		player->unlock();
-		handleGuildTransferLeader(player);
-		return;
-	case 203: //INSURE_ALL
-		player->unlock();
-		handleInsureAllItems(player, obj);
-		return;
-	case 204: // CAMP DESTROY
-		handleDisbandCamp(player,obj);
-		break;
-	case 205: // Enter/exit mount
-		break;
-	case 225: //Bank Storage
-		handleBankStorage(player);
-	default:
-		//System::out << "Unknown radial selection received:" << radialID << "\n";
-		break;
+	try {
+		switch (radialID) {
+		case 7: // EXAMINE
+			break;
+		case 8: // TRADE
+			handleTrade(player, obj);
+			break;
+		case 11: // Equip
+
+			break;
+		case 12: // Unequip
+
+			break;
+		case 13: // DROP
+			handleItemDrop(player, obj);
+			break;
+		case 14: // DESTROY
+
+			break;
+		case 16: // OPEN RADIAL
+
+			break;
+		case 17: // OPEN IN NEW WINDOW RADIAL
+
+			break;
+		case 20: // ITEM_USE
+			player->unlock();
+			player->wlock();
+			obj->useObject(player);
+			break;
+		case 33: // Structure Set Name
+
+			break;
+		case 35:  // LOOT
+			player->lootCorpse();
+			break;
+		case 36:  // LOOT_ALL
+			player->lootCorpse(true);
+			break;
+		case 45: // Open vendor
+			sendRadialResponseForBazaar(obj->getObjectID(), player);
+			break;
+		case 50:  // LISTEN / WATCH (Entertainer)
+			handleEntertainerActions(player, obj);
+			break;
+		case 60: // VEHICLE_GENERATE
+			player->unlock();
+			handleVehicleGenerate(obj);
+			return;
+		case 61: // VEHICLE_STORE
+			player->unlock();
+			handleVehicleStore(obj);
+			return;
+		case 62: // VEHICLE_REPAIR
+			player->unlock();
+			handleVehicleRepair(obj);
+			return;
+		case 68: // SERVER_MENU1 using to change color on wearables (temporary)
+			handleWearableColorChange(player, obj);
+			break;
+		case 69: // SLICING
+			handleSlicing(player, obj);
+			break;
+		case 70: // REPAIR
+			handleRepair(player, obj);
+			break;
+		case 71: // REMOVE POWERUP
+			handleRemovePowerup(player, obj);
+			break;
+		case 77: // Add Energy
+			handleStructureAddEnergy(player, obj);
+			break;
+		case 82: // Manage Harvester
+			handleManageHarvester(player, obj);
+			break;
+		case 108: // Harvest Meat
+			handleHarvest(player, obj, 1);
+			break;
+		case 109: // Harvest Hide
+			handleHarvest(player, obj, 2);
+			break;
+		case 110: // Harvest Bone
+			handleHarvest(player, obj, 3);
+			break;
+		case 122: // Structure Management
+
+			break;
+		case 128: // Structure Status
+			handleStructureStatus(player, obj);
+			break;
+		case 131: // Handle Set Name
+			handleSetName(player, obj);
+			break;
+		case 132: // Structure Destroy
+			handleStructureDestroy(player, obj);
+			break;
+		case 133: // Pay Maintenance
+			handleStructureManageMaintenance(player, obj);
+			break;
+		case 130: // Crafting tool hopper item retrieval
+			handleOpenCraftingToolHopper(player, obj);
+			break;
+		case 136: // SURVEY_TOOL_OPTIONS
+
+			break;
+		case 137: // SURVEY_TOOL_SET_RANGE
+			sendRadialResponseForSurveyToolRange(player, obj);
+			break;
+		case 140: // SERVER_TEACH
+			handleTeach(obj, player);
+			break;
+		case 148: // Harvest
+			handleHarvest(player, obj, 0);
+			break;
+		case 164: // ROLL_DICE (Configure)
+			// nothing here, has sub-members
+			break;
+		case 165: // DICE_TWO_FACE
+			handleDiceConfigure(player, obj, 2);
+			break;
+		case 166: // DICE_THREE_FACE
+			handleDiceConfigure(player, obj, 3);
+			break;
+		case 167: // DICE_FOUR_FACE
+			handleDiceConfigure(player, obj, 4);
+			break;
+		case 168: // DICE_FIVE_FACE
+			handleDiceConfigure(player, obj, 5);
+			break;
+		case 169: // DICE_SIX_FACE
+			handleDiceConfigure(player, obj, 6);
+			break;
+		case 170: // DICE_SEVEN_FACE
+			handleDiceConfigure(player, obj, 7);
+			break;
+		case 171: // DICE_EIGHT_FACE
+			handleDiceConfigure(player, obj, 8);
+			break;
+		case 172: // DICE_COUNT_ONE
+			handleDiceRoll(player, obj, 1);
+			break;
+		case 173: // DICE_COUNT_TWO
+			handleDiceRoll(player, obj, 2);
+			break;
+		case 174: // DICE_COUNT_THREE
+			handleDiceRoll(player, obj, 3);
+			break;
+		case 175: // DICE_COUNT_FOUR
+			handleDiceRoll(player, obj, 4);
+			break;
+		case 187: // SERVER_GUILD_INFORMATION
+			player->unlock();
+			handleGuildInformation(player);
+			return;
+		case 188: // SERVER_GUILD_MEMBERS
+			player->unlock();
+			handleGuildInformationMembers(player);
+			return;
+		case 190: // SERVER_GUILD_ENEMIES
+			player->unlock();
+			//System::out << "Radial Guild Enemies" << endl;
+			return;
+		case 194: // SERVER_GUILD_GUILD_MANAGEMENT
+			//nothing, has sub menues
+			break;
+		case 195: // SERVER_GUILD_MEMBER_MANAGEMENT
+
+			//nothing, has sub menues
+			break;
+		case 196: // SERVER_GUILD_CREATION
+			player->unlock();
+			handleGuildCreationTag(player);
+			return;
+		case 197: // SERVER_GUILD_SPONSOR
+			player->unlock();
+			handleGuildSponsor(player);
+			return;
+		case 198: // SERVER_GUILD_SPONSORED
+			player->unlock();
+			handleGuildSponsored(player);
+			return;
+		case 199: // SERVER_GUILD_DISBAND
+			player->unlock();
+			handleGuildDisband(player);
+			return;
+		case 200: // SERVER_GUILD_NAMECHANGE
+			player->unlock();
+			handleGuildNameChange(player);
+			return;
+		case 201: // SERVER_GUILD_ENABLE/DISBALE_ELECTIONS
+			player->sendSystemMessage("This feature is not in yet. Thank you for choosing SWGEmu(c).");
+			player->unlock();
+			return;
+		case 202: // SERVER_GUILD_TRANSFER_LEADERSHIP
+			player->unlock();
+			handleGuildTransferLeader(player);
+			return;
+		case 203: //INSURE_ALL
+			player->unlock();
+			handleInsureAllItems(player, obj);
+			return;
+		case 204: // CAMP DESTROY
+			handleDisbandCamp(player,obj);
+			break;
+		case 205: // Enter/exit mount
+
+			break;
+		case 225: //Bank Storage
+			handleBankStorage(player);
+			break;
+		default:
+
+			//System::out << "Unknown radial selection received:" << radialID << "\n";
+			break;
+		}
+	} catch (Exception& e) {
+		System::out << e.getMessage();
+		e.printStackTrace();
+	} catch (...) {
+		System::out << "unreported exception caught in void RadialManager::handleSelection\n";
+		StackTrace::printStackTrace();
 	}
 
 	player->unlock();

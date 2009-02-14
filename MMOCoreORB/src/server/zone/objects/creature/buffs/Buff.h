@@ -486,6 +486,13 @@ public:
 		return bonus;
 	}
 
+	int getSkillModBuff(const char* str) {
+		String test(str);
+
+		int bonus = skillModBuffs.get(test);
+		return bonus;
+	}
+
 	bool hasSkillModBuff(const String& name) {
 		return skillModBuffs.containsKey(name);
 	}

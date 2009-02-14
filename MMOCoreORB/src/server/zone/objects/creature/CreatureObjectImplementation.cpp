@@ -4226,8 +4226,14 @@ void CreatureObjectImplementation::onResuscitated(SceneObject* healer) {
 }
 
 void CreatureObjectImplementation::onDamageHealed(SceneObject* healer, uint8 attribute, uint32 amount) {
-	if (canRecoverFromIncapacitation())
+	if (canRecoverFromIncapacitation()) {
+		if (healer->isPlayer()) {
+			((Player*)healer)->stopWatch(objectID, true, true, false);
+			((Player*)healer)->stopListen(objectID, true, true, false);
+		}
+
 		recoverFromIncapacitation();
+	}
 }
 
 void CreatureObjectImplementation::onWoundHealed(SceneObject* healer, uint8 attribute, uint32 amount) {
