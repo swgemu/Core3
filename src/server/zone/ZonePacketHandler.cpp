@@ -421,7 +421,7 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 	}
 
 	Player* player = new Player();
-	player->init();
+	player->initializePlayer();
 
 	player->setZoneProcessServer(processServer);
 
