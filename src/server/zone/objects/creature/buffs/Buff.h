@@ -286,7 +286,7 @@ protected:
 	int forcePowerBuff;
 	//int forceRegenBuff;
 
-	SkillModList skillModBuffs;
+	VectorMap<String, int32> skillModBuffs;
 
 
 public:
@@ -477,9 +477,9 @@ public:
 	// Skill Mods
 
 
-	SkillModList* getSkillModBuffList() {
+	/*SkillModList* getSkillModBuffList() {
 		return &skillModBuffs;
-	}
+	}*/
 
 	int getSkillModBuff(const String& name) {
 		int bonus = skillModBuffs.get(name);
@@ -494,11 +494,11 @@ public:
 	}
 
 	bool hasSkillModBuff(const String& name) {
-		return skillModBuffs.containsKey(name);
+		return skillModBuffs.contains(name);
 	}
 
 	void removeSkillModBuff(String& name) {
-		skillModBuffs.remove(name);
+		skillModBuffs.drop(name);
 	}
 
 	void addSkillModBuff(String mod, int val) {

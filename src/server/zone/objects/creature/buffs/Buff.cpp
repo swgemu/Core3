@@ -71,6 +71,9 @@ Buff::Buff(uint32 crc) {
 	setWillpowerBuff(0);
 	setFocusBuff(0);
 
+	skillModBuffs.setNullValue(0);
+	skillModBuffs.setInsertPlan(SortedVector<String>::ALLOW_OVERWRITE);
+
 	active = false;
 }
 
@@ -96,6 +99,9 @@ Buff::Buff(uint32 crc, int type, float duration) {
 	setFocusBuff(0);
 	setPoisonBuff(0);
 	setDiseaseBuff(0);
+
+	skillModBuffs.setNullValue(0);
+	skillModBuffs.setInsertPlan(SortedVector<String>::ALLOW_OVERWRITE);
 
 	active = false;
 }
@@ -160,17 +166,25 @@ bool Buff::activateBuff(CreatureObject* creo, ZoneProcessServerImplementation* s
 		creo->addSkillMod(BuffAttribute::getProtectionString(BuffAttribute::DISEASE),getDiseaseBuff(),false);
 	}
 
-	if(!skillModBuffs.isEmpty()) {
+	if (!skillModBuffs.isEmpty()) {
 		String mod = "";
 		int32 value = 0;
 
-		skillModBuffs.resetIterator();
+		for (int i = 0; i < skillModBuffs.size(); ++i) {
+			VectorMapEntry<String, int32>* entry = ((SortedVector<VectorMapEntry<String, int32>*>)skillModBuffs).get(i);
+
+			mod = entry->getKey();
+			value = entry->getValue();
+			creo->addSkillModBonus(mod, value, false);
+		}
+
+		/*skillModBuffs.resetIterator();
 
 		while (skillModBuffs.hasNext()) {
 			mod = skillModBuffs.getNextKey();
 			value = skillModBuffs.get(mod);
 			creo->addSkillModBonus(mod,value,false);
-		}
+		}*/
 	}
 
 	removeBuffEvent();
@@ -273,7 +287,7 @@ bool Buff::deActivateBuff(CreatureObject* creo, bool updateClient) {
 		creo->addSkillMod(BuffAttribute::getProtectionString(BuffAttribute::DISEASE),(-1 * getDiseaseBuff()),false);
 	}
 
-	/*if(getSkillModBuff("melee_defense") != 0) {
+	if(getSkillModBuff("melee_defense") != 0) {
 		creo->showFlyText("trap/trap", "melee_def_1_off", 255, 255, 255);
 	}
 
@@ -287,21 +301,29 @@ bool Buff::deActivateBuff(CreatureObject* creo, bool updateClient) {
 
 	if(getSkillModBuff("stun_defense") != 0) {
 		creo->showFlyText("trap/trap", "state_def_1_off", 255, 255, 255);
-	}*/
+	}
 
 	creo->activateRecovery();
 
-	if(!skillModBuffs.isEmpty()) {
+	if (!skillModBuffs.isEmpty()) {
 		String mod = "";
 		int32 value = 0;
 
-		skillModBuffs.resetIterator();
+		for (int i = 0; i < skillModBuffs.size(); ++i) {
+			VectorMapEntry<String, int32>* entry = ((SortedVector<VectorMapEntry<String, int32>*>)skillModBuffs).get(i);
+
+			mod = entry->getKey();
+			value = entry->getValue();
+			creo->addSkillModBonus(mod, (-1 * value), false);
+		}
+
+		/*skillModBuffs.resetIterator();
 
 		while (skillModBuffs.hasNext()) {
 			mod = skillModBuffs.getNextKey();
 			value = skillModBuffs.get(mod);
 			creo->addSkillModBonus(mod,(-1 *value),false);
-		}
+		}*/
 	}
 
 	removeBuffEvent();

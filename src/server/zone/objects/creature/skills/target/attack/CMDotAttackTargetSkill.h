@@ -166,6 +166,9 @@ public:
 		parseModifier(modifier, objectId);
 		ManagedReference<DotPack> dotPack = (DotPack*) creature->getInventoryItem(objectId);
 
+		if (dotPack == NULL)
+			return 0;
+
 		CreatureObject* creatureTarget = (CreatureObject*) target;
 
 		int dotPower = dotPack->calculatePower(creature);
