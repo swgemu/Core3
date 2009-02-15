@@ -2112,7 +2112,7 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 		return;
 
 	SceneObject* parentSCO;
-	SceneObject* destination;
+	ManagedReference<SceneObject> destination = NULL;
 	TangibleObject* destinationTano;
 
 	try {
@@ -2141,7 +2141,7 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 			return;
 		}
 
-		TangibleObject* destinationTano = (TangibleObject*) destination;
+		TangibleObject* destinationTano = (TangibleObject*) destination.get();
 
 		//Operation allowed?
 		if (!checkProhibitedNesting(player, destinationTano, item)) {

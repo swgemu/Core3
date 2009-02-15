@@ -406,7 +406,7 @@ bool PlayerManagerImplementation::validateName(const String& name) {
 
 Player* PlayerManagerImplementation::load(uint64 charid) {
 	Player* player = new Player(charid);
-	player->init();
+	player->initializePlayer();
 
 	player->setZoneProcessServer(server);
 

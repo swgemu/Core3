@@ -81,6 +81,8 @@ public:
 
 	Player(unsigned long long oid);
 
+	void initializePlayer();
+
 	void create(ZoneClientSession* client);
 
 	void refuseCreate(ZoneClientSession* client);
@@ -1015,6 +1017,8 @@ public:
 	PlayerAdapter(PlayerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializePlayer();
 
 	void create(ZoneClientSession* client);
 

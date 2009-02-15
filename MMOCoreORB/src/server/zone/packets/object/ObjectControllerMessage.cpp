@@ -119,6 +119,9 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 		return false;
 	}
 
+	if (!player->isOnline())
+		return false;
+
 	uint32 lastStamp = player->getLastMovementUpdateStamp();
 
 	if (lastStamp == 0 || lastStamp > movementStamp) {
@@ -198,6 +201,9 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 		Message* pack) {
 	//System::out << pack->toString() << "\n";
+	if (!player->isOnline())
+		return 0;
+
 	pack->shiftOffset(8); // skip ObjectID and size
 
 	uint32 movementStamp = pack->parseInt();
@@ -4084,7 +4090,7 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player, Message* pac
 
 		//Dropping FROM the players inventory TO a cell or container (which could also be a nested inventory container)
 	} else {
-		TangibleObject* item = validateDropAction(player, target);
+		ManagedReference<TangibleObject> item = validateDropAction(player, target);
 
 		if (item != NULL)
 			transferItemToContainer(player, item, destinationID);
