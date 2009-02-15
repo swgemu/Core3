@@ -193,7 +193,7 @@ public:
 
 	void close(ZoneClientSession* client);
 
-	virtual void init();
+	void init();
 	virtual void initScriptedValues();
 
 	virtual void insertToZone(Zone * zone);

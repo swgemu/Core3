@@ -73,33 +73,7 @@ SceneObjectImplementation::SceneObjectImplementation()
 	objectID = 0;
 	objectType = 0;
 
-	server = NULL;
-	zone = NULL;
-
-	positionX = positionZ = positionY = 0;
-	directionX = directionZ = directionY = 0;
-
-	parent = NULL;
-
-	groupDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
-	playerDamageList.setInsertPlan(SortedVector<DamageDone>::ALLOW_OVERWRITE);
-
-	linkType = 0x04;
-
-	moving = false;
-
-	undeployEvent = NULL;
-	keepObject = false;
-	canPickup = false;
-
-	attackable = false;
-
-	StringBuffer name;
-		name << "SceneObject(" << objectType << ")  0x" << hex << objectID;
-
-	setLoggingName(name.toString());
-	setGlobalLogging(true);
-	setLogging(false);
+	init();
 }
 
 SceneObjectImplementation::SceneObjectImplementation(uint64 oid, int type)
@@ -107,6 +81,10 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid, int type)
 	objectID = oid;
 	objectType = type;
 
+	init();
+}
+
+void SceneObjectImplementation::init() {
 	StringBuffer name;
 	name << "SceneObject(" << objectType << ")  0x" << hex << objectID;
 	//setDeployingName(name.toString());
@@ -315,10 +293,6 @@ void SceneObjectImplementation::unlock(bool doLock) {
 
 void SceneObjectImplementation::setLockName(const String& name) {
 	//ManagedObjectImplementation::setLockName(name);
-}
-
-void SceneObjectImplementation::init() {
-
 }
 
 void SceneObjectImplementation::initScriptedValues() {
