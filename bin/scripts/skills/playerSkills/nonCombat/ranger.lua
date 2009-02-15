@@ -43,10 +43,10 @@
 CamoSkill = {
 	skillname = "conceal",
 	type = 2,
-	duration = 3600.0,	
+	duration = 3600.0
 }
 
-AddCamoSkill(CamoSkill)
+AddCamoSkill(CamoSkill);
 
 ----------------------------- Advanced Trapping 2 -------------------------------
 
@@ -105,7 +105,7 @@ ThrowSkill = {
 	intimidateDefDebuff = 0
 }
 
-AddThrowDirectPoolTargetSkill(ThrowSkill)
+AddThrowDirectPoolTargetSkill(ThrowSkill);
 
 ----------------------------- Advanced Trapping 3 -------------------------------
 
@@ -151,4 +151,13 @@ ThrowSkill = {
 	intimidateDefDebuff = 0
 }
 
-AddThrowRandomPoolTargetSkill(ThrowSkill)
+AddThrowRandomPoolTargetSkill(ThrowSkill);
+----------------------------------------------------------------
+
+AreaTrackSkill = {
+	skillname = "areatrack",
+	animation = "combarea",
+	cooldowntime = 30
+}
+
+AddAreaTrackSkill(AreaTrackSkill);

@@ -88,6 +88,7 @@ which carries forward this exception.
 #include "self/MaskScentSelfSkill.h"
 #include "self/ForageSelfSkill.h"
 #include "target/ConcealSkill.h"
+#include "self/AreaTrackSelfSkill.h"
 #include "CamoSkill.h"
 
 #include "PassiveSkill.h"

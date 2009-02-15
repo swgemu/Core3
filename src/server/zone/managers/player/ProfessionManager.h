@@ -76,6 +76,7 @@ private:
 	void loadSkillCommands(SkillBox* skillBox, String& skillCommands);
 	void loadSkillMods(SkillBox* skillBox, String& skillMods);
 	void loadDraftSchematics(SkillBox* skillBox, String& grantedDraftSchematics);
+	void loadChildren(SkillBox* skillBox, String& skillChildren);
 
 public:
 
@@ -90,8 +91,8 @@ public:
 
 	bool trainSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient = true);
 	bool trainSkillBox(const String& skillBox, PlayerImplementation* player, bool updateClient = true);
-	void surrenderSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient = true);
-	void surrenderSkillBox(const String& skillBox, PlayerImplementation* player, bool updateClient = true);
+	bool surrenderSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient = true);
+	bool surrenderSkillBox(const String& skillBox, PlayerImplementation* player, bool updateClient = true);
 
 	inline SkillManager* getSkillManager() {
 		return skillManager;
@@ -101,7 +102,7 @@ public:
 		return server;
 	}
 
-	inline SkillBox* getSkillBox(String prof) {
+	inline SkillBox* getSkillBox(const String& prof) {
 		return skillBoxMap.get(prof);
 	}
 

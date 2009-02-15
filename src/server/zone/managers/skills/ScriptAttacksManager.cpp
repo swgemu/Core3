@@ -106,6 +106,7 @@ void ScriptAttacksManager::registerFunctions() {
 
 	lua_register(getLuaState(), "AddCamoSkill", AddCamoSkill);
 	lua_register(getLuaState(), "AddForageSkill", AddForageSkill);
+	lua_register(getLuaState(), "AddAreaTrackSkill", AddAreaTrackSkill);
 	lua_register(getLuaState(), "AddThrowRandomPoolTargetSkill", AddThrowRandomPoolTargetSkill);
 	lua_register(getLuaState(), "AddThrowDirectPoolTargetSkill", AddThrowDirectPoolTargetSkill);
 
@@ -2026,4 +2027,28 @@ int ScriptAttacksManager::AddCMDotAttackTargetSkill(lua_State* L) {
 
 	CombatActions->put(dot);
 	return 0;
+}
+
+int ScriptAttacksManager::AddAreaTrackSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	try {
+		if (!skill.isValidTable())
+			return 0;
+
+		String skillName = skill.getStringField("skillname");
+		String animation = skill.getStringField("animation");
+		int cooldownTime = skill.getIntField("cooldowntime");
+
+		AreaTrackSelfSkill* areaTrack;
+		areaTrack = new AreaTrackSelfSkill(skillName, animation, server);
+
+		areaTrack->setCooldownTime(cooldownTime);
+
+		CombatActions->put(areaTrack);
+		return 0;
+	} catch(...) {
+		System::out << "[ERROR] when attempting to add AddAreaTrackSkill!" << endl;
+		return -1;
+	}
 }

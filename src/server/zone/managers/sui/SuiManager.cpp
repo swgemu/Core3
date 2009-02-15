@@ -64,6 +64,8 @@ which carries forward this exception.
 
 #include "../resource/ResourceManagerImplementation.h"
 
+#include "../../objects/creature/skills/self/events/AreaTrackEvent.h"
+
 SuiManager::SuiManager(ZoneProcessServerImplementation* serv) : Logger("SuiManager") {
 	server = serv;
 
@@ -79,9 +81,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 	GuildManager* pGuild = server->getGuildManager();
 
 	switch (type) {
-	case SuiWindowType::MOTD:
-		handleMessageoftheDay(boxID, player, cancel);
-		break;
 	case SuiWindowType::CONSENT:
 		handleConsentBox(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
@@ -230,6 +229,13 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 	case SuiWindowType::SLICING_MENU:
 		handleSlicingMenu(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
+	case SuiWindowType::RANGER_WHAT_TO_TRACK:
+		handleRangerWhatToTrackBox(boxID, player, cancel, atoi(value.toCharArray()));
+		break;
+	case SuiWindowType::SET_MOTD:
+		returnString = value;
+		handleSetMOTD(boxID, player, cancel, returnString);
+		break;
 	default:
 		//Clean up players sui box:
 
@@ -252,33 +258,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 	}
 }
 
-void SuiManager::handleMessageoftheDay(uint32 boxID, Player* player, uint32 cancel) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-		sui = NULL;
-
-		player->unlock();
-	} catch (Exception& e) {
-		error("Exception in SuiManager::handleMessageoftheDay");
-		e.printStackTrace();
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleMessageoftheDay");
-		player->unlock();
-	}
-}
 void SuiManager::handleCodeForRedeed(uint32 boxID, Player* player,
 		uint32 cancel, const String& extra) {
 	try {
@@ -1796,6 +1775,79 @@ void SuiManager::handleSlicingMenu(uint32 boxID, Player* player, uint32 cancel, 
 		player->removeSuiBox(boxID);
 
 		sui->finalize();
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleInsuranceMenu ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleInsuranceMenu");
+		player->unlock();
+	}
+}
+
+void SuiManager::handleRangerWhatToTrackBox(uint32 boxID, Player* player, uint32 cancel, int index) {
+	try {
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+
+		if(cancel != 1) {
+				player->doEmote(0, 72, false); // 72 is "/combarea" emote
+
+			if(server != NULL) {
+				AreaTrackEvent* ate = new AreaTrackEvent(player, 5000, index);
+				server->addEvent(ate);
+			}
+		}
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleInsuranceMenu ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleInsuranceMenu");
+		player->unlock();
+	}
+}
+
+void SuiManager::handleSetMOTD(uint32 boxID, Player* player, uint32 cancel, const String& returnString) {
+	try {
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+
+		if(cancel != 1) {
+			if(server != NULL) {
+				ZoneServer* zone = server->getZoneServer();
+				if(returnString.length() <= 1024)
+					zone->changeMessageoftheDay(returnString);
+				else
+					player->sendSystemMessage("Message exceeded character limit!");
+			}
+		}
 
 		player->unlock();
 	} catch (Exception& e) {

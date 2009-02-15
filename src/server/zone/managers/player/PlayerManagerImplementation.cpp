@@ -205,6 +205,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
+		player->setAccountID(accountID);
 		player->setCharacterID(res->getLastAffectedRow());
 
 		PlayerObject* playerObject = player->getPlayerObject();
@@ -454,6 +455,7 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 		throw Exception(msg.toString());
 	}
 
+	player->setAccountID(character->getInt(1));
 	player->setFirstName(character->getString(3));
 	player->setLastName(character->getString(4));
 

@@ -53,7 +53,6 @@ which carries forward this exception.
 
 #include "PlayerObject.h"
 
-#include "professions/SkillBoxMap.h"
 #include "professions/SkillBox.h"
 #include "professions/XpMap.h"
 
@@ -117,6 +116,7 @@ class PlayerImplementation : public PlayerServant {
 	int onlineStatus;
 	Time logoutTimeStamp;
 
+	uint64 accountID;
 	uint64 characterID;
 	uint64 baseID;
 
@@ -169,7 +169,7 @@ class PlayerImplementation : public PlayerServant {
 	int factionStatus;
 
 	// Profession stuff
-	SkillBoxMap skillBoxes;
+	VectorMap<String, SkillBox*> skillBoxes;
 	SortedVector<SkillBox*> skillBoxesToSave;
 	VectorMap<String, Certification*> certificationList;
 	VectorMap<String, int> xpCapList;
@@ -878,6 +878,20 @@ public:
 		return playerObject->getDrinkFilling();
 	}
 
+	int getFoodFillingMax() {
+		if (playerObject == NULL)
+			return 0;
+
+		return playerObject->getFoodFillingMax();
+	}
+
+	int getDrinkFillingMax() {
+		if (playerObject == NULL)
+			return 0;
+
+		return playerObject->getDrinkFillingMax();
+	}
+
 
 	void setFoodFilling(uint32 fill, bool updateClient = true) {
 		if (playerObject == NULL)
@@ -980,22 +994,18 @@ public:
 	void loadProfessions();
 	void trainStartingProfession();
 	bool trainSkillBox(const String& name, bool updateClient = true);
-	void surrenderSkillBox(const String& name);
+	bool surrenderSkillBox(const String& name, bool updateClient = true);
 
-	void resetSkillBoxesIterator() {
-		skillBoxes.resetIterator();
-	}
-
-	int getSkillBoxesSize() {
+	int getSkillBoxesMapSize() {
 		return skillBoxes.size();
 	}
 
-	String& getNextSkillBox() {
-		return skillBoxes.getNextValue()->getName();
+	SkillBox* getSkillBox(int index) {
+		return skillBoxes.get(index);
 	}
 
-	bool hasNextSkillBox() {
-		return skillBoxes.hasNext();
+	String& getSkillBoxName(int index) {
+		return skillBoxes.get(index)->getName();
 	}
 
 	// duel list manipulation methods
@@ -1343,6 +1353,10 @@ public:
 		firstNameProper = name;
 	}
 
+	inline void setAccountID(uint64 id) {
+		accountID = id;
+	}
+
 	inline void setCharacterID(uint64 id) {
 		characterID = id;
 		baseID = id << 32;
@@ -1441,6 +1455,10 @@ public:
 		return conversatingCreature;
 	}
 
+	inline uint64 getAccountID() {
+		return accountID;
+	}
+
 	inline uint64 getCharacterID() {
 		return characterID;
 	}
@@ -1529,8 +1547,23 @@ public:
 		playerObject = obj;
 	}
 
-	inline bool hasSkillBox(String& skillBox) {
-		return skillBoxes.containsKey(skillBox);
+	inline bool hasSkillBox(const String& skillBox) {
+		if(skillBoxes.size() > 0)
+			return skillBoxes.contains(skillBox);
+		else
+			return false;
+	}
+
+	inline bool hasChildSkillBox(const String& skillBox) {
+		ProfessionManager* pm = server->getProfessionManager();
+		SkillBox* sBox = pm->getSkillBox(skillBox);
+
+		for(int i = 0; i < sBox->getChildrenListSize(); i++) {
+			if(skillBoxes.contains(sBox->getChild(i)))
+				return true;
+		}
+
+		return false;
 	}
 
 	inline int getPvpRating() {

@@ -326,23 +326,67 @@ public:
 	}
 
 	inline void loadMessageoftheDay() {
+		lock();
+
 		File* file;
 		FileReader* reader;
 
 		try {
 			file = new File("motd.txt");
 			reader = new FileReader(file);
+
+			String line;
+			while(reader->readLine(line)) {
+				messageoftheDay += line;
+			}
+
+			reader->close();
 		} catch (FileNotFoundException& e) {
 			file = NULL;
 			reader = NULL;
 		}
 
-		String line;
-		while(reader->readLine(line)) {
-			messageoftheDay += line;
+		unlock();
+	}
+
+	inline void changeMessageoftheDay(const String& newMOTD) {
+		lock();
+
+		File* file;
+		FileWriter* writer;
+
+		String finalMOTD = "";
+
+		try {
+			file = new File("motd.txt");
+			writer = new FileWriter(file);
+
+			for(int i = 0; i < newMOTD.length(); i++) {
+				if(i+1 < newMOTD.length()) {
+					char currentLetter = newMOTD.charAt(i);
+					char nextLetter = newMOTD.charAt(i+1);
+					if(currentLetter == '\\' && nextLetter == 'n') {
+						finalMOTD += "\n";
+						i++;
+					} else {
+						finalMOTD += currentLetter;
+					}
+				} else {
+					finalMOTD += newMOTD.charAt(i);
+				}
+			}
+
+			writer->write(finalMOTD);
+
+			writer->close();
+		} catch (FileNotFoundException& e) {
+			file = NULL;
+			writer = NULL;
 		}
 
-		reader->close();
+		messageoftheDay = finalMOTD;
+
+		unlock();
 	}
 
 	inline String& getMessageoftheDay() {
