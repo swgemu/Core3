@@ -90,6 +90,7 @@ mokkLoreweaver = Creature:new {
 	herd = True,
 	stalker = False,
 	killer = True,
+	ferocity = 0,
 	aggressive = True,
 
 	attackCreatureOnSight = {}, -- Enter socialGroups 

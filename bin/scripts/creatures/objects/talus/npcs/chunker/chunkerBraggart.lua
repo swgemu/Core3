@@ -89,6 +89,7 @@ chunkerBraggart = Creature:new {
 	herd = 0,
 	stalker = 0,
 	killer = 0,
+	ferocity = 0,
 	aggressive = 1,
 	invincible = 0,
 

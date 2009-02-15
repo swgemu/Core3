@@ -90,7 +90,8 @@ geonosianCaveSpider = Creature:new {
       herd = 0,
       stalker = 1,
       killer = 0,
-      aggressive = 1,
+      ferocity = 0,
+	aggressive = 1,
       invincible = 0, 
 
 	  meleeDefense = 1,  
