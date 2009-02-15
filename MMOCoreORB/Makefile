@@ -172,6 +172,9 @@ IDL_SOURCES = server/zone/Zone.idl \
 	 			server/zone/objects/tangible/campkit/campsite/FBCampSite.idl \
 	 			server/zone/objects/tangible/campkit/campsite/HTFBCampSite.idl \
 				server/zone/objects/tangible/inventory/CreatureInventory.idl \
+				server/zone/objects/tangible/consumable/Consumable.idl \
+				server/zone/objects/tangible/consumable/drink/Drink.idl \
+				server/zone/objects/tangible/consumable/food/Food.idl \
 				server/zone/objects/tangible/inventory/BankInventory.idl \
 				server/zone/objects/static/firework/FireworkWorld.idl \
 				server/zone/objects/static/StaticObject.idl \

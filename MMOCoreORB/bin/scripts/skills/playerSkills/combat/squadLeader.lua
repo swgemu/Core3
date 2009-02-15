@@ -99,11 +99,11 @@ AddFormupGroupSkill(FormupGroupSkill);
 RallyGroupSkill = {
 	skillname = "rally",
 	combatspam = "rally_success_group_msg",
-	cooldowntime = 90,
+	cooldowntime = 70,
 	healthcost = 100,
 	actioncost = 200,
 	mindcost = 100,
-	rallyduration = 30,
+	rallyduration = 45,
 	accuracybonus = 15
 }
 

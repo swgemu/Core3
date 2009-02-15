@@ -125,7 +125,7 @@ public:
 
 	void addCommand(String command, int reqAdminLevel, String disc, String usage,
 			void (*gmCommandFunc)(StringTokenizer tokenizer, Player* player)) {
-		put(command, new GMCommand(command, reqAdminLevel, disc, usage, gmCommandFunc));
+		put(command.toLowerCase(), new GMCommand(command, reqAdminLevel, disc, usage, gmCommandFunc));
 
 		commandList.add(command);
 	}
@@ -213,12 +213,14 @@ private:
 	static void warpAreaToWP(StringTokenizer tokenizer, Player* player);
 	static void scaleXP(StringTokenizer tokenizer, Player* player);
 	static void spawnAA(StringTokenizer tokenizer, Player* player);
-	static void revolkBadge(StringTokenizer tokenizer, Player* player);
+	static void revokeBadge(StringTokenizer tokenizer, Player* player);
 	static void setLocation(StringTokenizer tokenizer, Player* player);
 	static void drag(StringTokenizer tokenizer, Player* player);
 	static void damage(StringTokenizer tokenizer, Player* player);
 	static void deleteFromZone(StringTokenizer tokenizer, Player* player);
 	static void playAudio(StringTokenizer tokenizer, Player* player);
+	static void setMOTD(StringTokenizer tokenizer, Player* player);
+	static void displayMOTD(StringTokenizer tokenizer, Player* player);
 	static void applyDot(StringTokenizer tokenizer, Player* player);
 
 	static void eventMessage(StringTokenizer tokenizer, Player* player);

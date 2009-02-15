@@ -112,6 +112,10 @@ public:
 	static const int BANK_TIP_CONFIRM = 46;
 
 	static const int SLICING_MENU = 47;
+
+	static const int RANGER_WHAT_TO_TRACK = 48;
+
+	static const int SET_MOTD = 49;
 };
 
 #endif /*SuiWindowType_H_*/

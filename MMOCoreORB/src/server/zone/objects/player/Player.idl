@@ -296,13 +296,11 @@ interface Player implements CreatureObject {
 	void trainStartingProfession();
 
 	boolean trainSkillBox(const String name, boolean updateClient = true);
-	void surrenderSkillBox(const String name);
+	boolean surrenderSkillBox(const String name, boolean updateClient = true);
 
-	void resetSkillBoxesIterator();
-	int getSkillBoxesSize();
-	String getNextSkillBox();
-	boolean hasNextSkillBox();
-	boolean hasSkillBox(String skillBox);
+	int getSkillBoxesMapSize();
+	String getSkillBoxName(int index);
+	boolean hasSkillBox(const String skillBox);
 
 	// Foraging
 	void startForaging(int foragetype);
@@ -390,10 +388,13 @@ interface Player implements CreatureObject {
 	boolean isAttackableBy(CreatureObject attacker);
 	int getFoodFilling();
 	int getDrinkFilling();
+	int getFoodFillingMax();
+	int getDrinkFillingMax();
 	void activateDigest();
 
 	void activateQueueAction();
 
+	void setAccountID(unsigned long id);
 	void setCharacterID(unsigned long id);
 
 	void setStartingProfession(const String prof);
@@ -501,6 +502,7 @@ interface Player implements CreatureObject {
 	int getLotsRemaining();
 	//String getHairData();
 
+	unsigned long getAccountID();
 	unsigned long getCharacterID();
 
 	String getStartingProfession();
@@ -796,4 +798,7 @@ interface Player implements CreatureObject {
 
 	//Sui
 	void closeSuiWindowType(unsigned int windowType);
+	
+	//motd
+	void displayMessageoftheDay();
 }

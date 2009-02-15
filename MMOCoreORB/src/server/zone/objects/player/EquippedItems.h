@@ -539,7 +539,7 @@ public:
 			// Needs to be refactored
 			String skillBox = getInstrumentSkill(instrument);
 
-			if (!player->getSkillBoxesSize() || !player->hasSkillBox(skillBox)) {
+			if (!player->hasSkillBox(skillBox)) {
 				player->sendSystemMessage("You do not have sufficient abilities to equip " + item->getCustomName().toString() + ".");
 				return false;
 			}

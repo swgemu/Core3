@@ -107,6 +107,8 @@ public:
 	void handleBankTipConfirm(uint32 boxID, Player* player, uint32 cancel);
 	void handleSlicingMenu(uint32 boxID, Player* player, uint32 cancel, int index);
 
+	void handleRangerWhatToTrackBox(uint32 boxID, Player* player, uint32 cancel, int index);
+	void handleSetMOTD(uint32 boxID, Player* player, uint32 cancel, const String& returnString);
 };
 
 #endif /*SUIMANAGER_H_*/

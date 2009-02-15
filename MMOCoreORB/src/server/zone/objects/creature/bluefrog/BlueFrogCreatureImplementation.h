@@ -53,7 +53,6 @@ class SkillBox;
 #include "BlueFrogCreature.h"
 #include "../../../managers/player/ProfessionManager.h"
 #include "../../player/professions/SkillBox.h"
-#include "../../player/professions/SkillBoxMap.h"
 
 class BlueFrogCreatureImplementation : public BlueFrogCreatureServant {
 	Profession* profession;

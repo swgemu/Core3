@@ -110,6 +110,7 @@ public:
 	static int AddForageSkill(lua_State* L);
 	static int AddThrowRandomPoolTargetSkill(lua_State *L);
 	static int AddThrowDirectPoolTargetSkill(lua_State *L);
+	static int AddAreaTrackSkill(lua_State* L);
 
 	// Squad Leader
 	static int AddSystemGroupMessageSkill(lua_State *L);

@@ -132,19 +132,19 @@ void BlueFrogCreatureImplementation::sendMessage1(Player* player) {
 }
 void BlueFrogCreatureImplementation::sendChoices1(Player* player) {
 	StringList* slist = new StringList(player);
-	UnicodeString option1 = UnicodeString("Which professions will you teach me?");
-	//UnicodeString option2 = UnicodeString("I'd like to unlearn all my skills and start over.");
-	UnicodeString option3 = UnicodeString("Which items can I get?");
-	UnicodeString option4 = UnicodeString("I want to test wounds.");
-	UnicodeString option5 = UnicodeString("I want to test states.");
-	//UnicodeString option6 = UnicodeString("I want to earn some faction points.");
+	UnicodeString option0 = UnicodeString("Which professions will you teach me?");
+	UnicodeString option1 = UnicodeString("I'd like to unlearn all my skills and start over.");
+	UnicodeString option2 = UnicodeString("Which items can I get?");
+	UnicodeString option3 = UnicodeString("I want to test wounds.");
+	UnicodeString option4 = UnicodeString("I want to test states.");
+	//UnicodeString option5 = UnicodeString("I want to earn some faction points.");
 
+	slist->insertOption(option0);
 	slist->insertOption(option1);
-	//slist->insertOption(option2);
+	slist->insertOption(option2);
 	slist->insertOption(option3);
 	slist->insertOption(option4);
-	slist->insertOption(option5);
-	//slist->insertOption(option6);
+	//slist->insertOption(option5);
 
 	player->setLastNpcConvMessStr("blue_frog_m1");
 	player->sendMessage(slist);
@@ -278,24 +278,24 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 			player->setLastNpcConvMessStr("blue_frog_prof_root");
 			sendSelectProfessionMessage(player);
 			break;
-	/*	case 1:
+		case 1:
 			dropSkills(player);
 			player->sendSystemMessage("You have unlearned all your skills...");
 			sendMessage1(player);
-			break; */
-		case 1:
+			break;
+		case 2:
 			sendSelectItemMessage(player);
 			sendMessage1(player);
 			break;
-		case 2:
+		case 3:
 			sendWoundTerminalMessage(player);
 			sendMessage1(player);
 			break;
-		case 3:
+		case 4:
 			sendStateTerminalMessage(player);
 			sendMessage1(player);
 			break;
-	/*	case 4:
+	/*	case 5:
 			player->setLastNpcConvMessStr("blue_frog_fp");
 			sendFactionPointTerminalMessage(player);
 			break; */
@@ -387,5 +387,14 @@ bool BlueFrogCreatureImplementation::trainSkill(Player * player, SkillBox * skil
 }
 
 void BlueFrogCreatureImplementation::dropSkills(Player * player) {
-	//TODO: Add ability to drop all skills
+
+	while(player->getSkillBoxesMapSize() > 0) {
+
+		for(int i = 0; i < player->getSkillBoxesMapSize(); i++) {
+			String sbox = player->getSkillBoxName(i);
+			player->surrenderSkillBox(sbox, false);
+		}
+	}
+
+	player->sendTo(player);
 }

@@ -400,6 +400,7 @@ public:
 	// opdarand Update methods
 	void doCombatAnimation(CreatureObject* defender, uint32 animcrc, uint8 hit = 0);
 	void doAnimation(const String& anim);
+	void doEmote(uint32 targetid, uint32 emoteid, bool showtext);
 	void playEffect(const String& file, const String& aux = "");
 	void showFlyText(const String& file, const String& aux, uint8 red, uint8 green, uint8 blue);
 	void sendCombatSpam(CreatureObject* defender, TangibleObject* item, uint32 damage, const String& skill, bool areaSpam = true);

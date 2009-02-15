@@ -204,6 +204,8 @@ PlayerImplementation::~PlayerImplementation() {
 void PlayerImplementation::initializePlayer() {
 	objectType = PLAYER;
 
+	accountID = 0;
+
 	owner = NULL;
 	zone = NULL;
 
@@ -1936,7 +1938,7 @@ void PlayerImplementation::queueFlourish(const String& modifier, uint64 target, 
 
 	String skillBox = "social_entertainer_novice";
 
-	if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
+	if (!hasSkillBox(skillBox)) {
 		// TODO: sendSystemMessage("cmd_err", "ability_prose", creature);
 		sendSystemMessage("You do not have sufficient abilities to Flourish");
 		return;
@@ -4139,7 +4141,7 @@ void PlayerImplementation::addSkillBox(SkillBox* skillBox, bool updateClient) {
 }
 
 void PlayerImplementation::removeSkillBox(SkillBox* skillBox, bool updateClient) {
-	skillBoxes.remove(skillBox->getName());
+	skillBoxes.drop(skillBox->getName());
 	loadXpTypeCap();
 
 	if (updateClient) {
@@ -4461,10 +4463,10 @@ bool PlayerImplementation::trainSkillBox(const String& name, bool updateClient) 
 	return professionManager->trainSkillBox(name, this, updateClient);
 }
 
-void PlayerImplementation::surrenderSkillBox(const String& name) {
+bool PlayerImplementation::surrenderSkillBox(const String& name, bool updateClient) {
 	ProfessionManager* professionManager = server->getProfessionManager();
 
-	return professionManager->surrenderSkillBox(name, this);
+	return professionManager->surrenderSkillBox(name, this, updateClient);
 }
 
 void PlayerImplementation::newChangeFactionStatusEvent(uint8 stat, uint32 timer) {
@@ -4915,10 +4917,10 @@ int PlayerImplementation::getXpTypeCap(String xptype) {
 }
 
 void PlayerImplementation::loadXpTypeCap() {
-	resetSkillBoxesIterator();
 	xpCapList.removeAll();
-	while (hasNextSkillBox()) {
-		SkillBox *skillbox = skillBoxes.getNextValue();
+
+	for(int i = 0; i < skillBoxes.size(); i++) {
+		SkillBox *skillbox = skillBoxes.get(i);
 
 		if (skillbox->isNoviceBox()) {
 			Profession *prof = skillbox->getProfession();
@@ -4965,14 +4967,13 @@ void PlayerImplementation::loadXpTypeCap() {
 }
 
 int PlayerImplementation::calcPlayerLevel(String xptype) {
-	resetSkillBoxesIterator();
 	playerLevel = 0;
 
 	if (xptype == "jedi_general") {
 		playerLevel = 10;
 		int skillnum = 0;
-		while (hasNextSkillBox()) {
-			SkillBox *skillbox = skillBoxes.getNextValue();
+		for(int i = 0; i < skillBoxes.size(); i++) {
+			SkillBox *skillbox = skillBoxes.get(i);
 			if (skillbox->getSkillXpType() == "jedi_general")
 				skillnum += 1;
 
@@ -4996,8 +4997,8 @@ int PlayerImplementation::calcPlayerLevel(String xptype) {
 	else
 		wtype = weap->getType();
 
-	while ( hasNextSkillBox() ) {
-		SkillBox *skillbox = skillBoxes.getNextValue();
+	for(int i = 0; i < skillBoxes.size(); i++) {
+		SkillBox *skillbox = skillBoxes.get(i);
 		switch (wtype) {
 		case WeaponImplementation::UNARMED:
 			if (skillbox->getName() == "combat_unarmed_master") {
@@ -5153,15 +5154,14 @@ void PlayerImplementation::teachPlayer(Player* player) {
 		return;
 
 	Vector<SkillBox*> trainboxes;
-	resetSkillBoxesIterator();
 
-	if (!hasNextSkillBox()) {
+	if (skillBoxes.size() <= 0) {
 		sendSystemMessage("teaching","no_skills");
 		return;
 	}
 
-	while (hasNextSkillBox()) {
-		SkillBox* sBox = skillBoxes.getNextValue();
+	for(int i = 0; i < skillBoxes.size(); i++) {
+		SkillBox* sBox = skillBoxes.get(i);
 
 		if (sBox->isNoviceBox())
 			continue;
@@ -5298,6 +5298,7 @@ void PlayerImplementation::displayMessageoftheDay() {
 	suiMessageBox->setPromptText(motd);
 
 	sendMessage(suiMessageBox->generateMessage());
+	suiMessageBox->finalize();
 }
 
 uint64 PlayerImplementation::getAvailablePower() {

@@ -100,9 +100,15 @@ public:
 
 						player->doInstantAction(target->getObjectID(), defaultAttackActionCRC, 0, modifier);
 
-						player->sendSystemMessage("cbt_spam", combatSpam);
+						if(player == squadLeader) {
+							player->sendSystemMessage("cbt_spam", combatSpam);
 
-						player->sendCombatSpam(groupMember, NULL, 0, combatSpam, false);
+							//player->sendCombatSpam(groupMember, NULL, 0, combatSpam, false);
+						} else {
+							player->sendSystemMessage("Squad Leader " + squadLeader->getCharacterName().toString() + " orders a volley of fire!");
+
+							//player->sendCombatSpam(groupMember, NULL, 0, combatSpam, false);
+						}
 					}
 				}
 

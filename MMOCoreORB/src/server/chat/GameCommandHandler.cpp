@@ -171,10 +171,10 @@ void GameCommandHandler::init() {
 			"Awards a badge to targeted player.",
 			"Usage: @awardBadge <badgeid>",
 			&awardBadge);
-	gmCommands->addCommand("revolkBadge", DEVELOPER,
+	gmCommands->addCommand("revokeBadge", STAFF,
 			"Remove a badge from a targeted player.",
-			"Usage: @revolkBadge <badgeid>",
-			&revolkBadge);
+			"Usage: @revokeBadge <badgeid>",
+			&revokeBadge);
 	gmCommands->addCommand("systemMessage", CSREVENTS | LEADQA,
 			"Sends a message to all players on the server within the given range.",
 			"Usage: @systemMessage <range> <message>",
@@ -366,6 +366,14 @@ void GameCommandHandler::init() {
 				"Spawns a cloning facility at the current location.",
 				"USAGE: @eventCloner <decaying> <wounding> <buffValue> <neutral|rebel|imperial>",
 				&eventCloner);
+	gmCommands->addCommand("setMOTD", PRIVILEGED,
+				"Edit the Message of the Day",
+				"USAGE: @setMOTD",
+				&setMOTD);
+	gmCommands->addCommand("MOTD", PRIVILEGED,
+				"Displays the Message of the Day",
+				"USAGE: @MOTD",
+				&displayMOTD);
 
 	/* Disabled Commands
 
@@ -435,7 +443,7 @@ void GameCommandHandler::handleCommand(String cmd, StringTokenizer tokenizer, Pl
 		return;
 	}
 
-	GMCommand * command = gmCommands->get(cmd);
+	GMCommand * command = gmCommands->get(cmd.toLowerCase());
 	if (command->getRequiredAdminLevel() & player->getAdminLevel())
 		command->exec(tokenizer, player);
 	else
@@ -1507,7 +1515,7 @@ void GameCommandHandler::awardBadge(StringTokenizer tokenizer, Player* player) {
 		player->sendSystemMessage("Invalid target.");
 }
 
-void GameCommandHandler::revolkBadge(StringTokenizer tokenizer, Player* player) {
+void GameCommandHandler::revokeBadge(StringTokenizer tokenizer, Player* player) {
 	int badgeid = tokenizer.getIntToken();
 	CreatureObject* target = (CreatureObject*) player->getTarget();
 
@@ -2158,7 +2166,7 @@ void GameCommandHandler::getCords(StringTokenizer tokenizer, Player* player) {
 	File* cordFile = new File("cords.txt");
 
 	try {
-		FileWriter cordWriter(cordFile);
+		FileOutputStream cordWriter(cordFile);
 
 		if ((player->getParentID() == 0)) {
 			cordWriter << "spawnCreature(" << name << ", " << player->getZoneIndex()
@@ -2202,7 +2210,7 @@ void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player* player)
 		server->addObject(item);
 		player->addInventoryItem(item);
 		item->sendTo(player);
-		
+
 	} else if (itemType == "Swoop") {
 		VehicleDeed * item = new VehicleDeed(player, 0x1D885457, UnicodeString("Deed for: Speederbike Swoop"), "speederbike_swoop_deed");
 		server->addObject(item);
@@ -3629,6 +3637,24 @@ void GameCommandHandler::playAudio(StringTokenizer tokenizer, Player* player) {
 	PlayMusicMessage* pmm = new PlayMusicMessage(audioFile);
 	player->sendMessage(pmm);
 
+}
+
+void GameCommandHandler::setMOTD(StringTokenizer tokenizer, Player * player) {
+
+	SuiInputBox* suiInpBox = new SuiInputBox(player, SuiWindowType::SET_MOTD, 0);
+
+	suiInpBox->setPromptTitle("Set MOTD");
+	suiInpBox->setPromptText("Input the new message of the day below. (char limit 1024)");
+	suiInpBox->setCancelButton(true);
+	suiInpBox->setMaxInputSize(1024);
+
+	player->addSuiBox(suiInpBox);
+	player->sendMessage(suiInpBox->generateMessage());
+
+}
+
+void GameCommandHandler::displayMOTD(StringTokenizer tokenizer, Player* player) {
+	player->displayMessageoftheDay();
 }
 
 void GameCommandHandler::eventCloner(StringTokenizer tokenizer, Player* player) {

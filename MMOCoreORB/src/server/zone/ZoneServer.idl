@@ -110,6 +110,7 @@ interface ZoneServer {
 	
 	void fixScheduler();
 
+	void changeMessageoftheDay(const String newMOTD);
 	void loadMessageoftheDay();
 
 	// getters

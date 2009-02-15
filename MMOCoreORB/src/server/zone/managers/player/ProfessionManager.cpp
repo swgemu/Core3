@@ -187,7 +187,7 @@ void ProfessionManager::saveProfessions(PlayerImplementation* player) {
 }
 
 bool ProfessionManager::trainSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient) {
-	if (player->skillBoxes.containsKey(skillBox->getName()))
+	if (player->hasSkillBox(skillBox->getName()))
 		return false;
 
 	if ((player->skillPoints + skillBox->skillPointsRequired) > 250)
@@ -195,7 +195,7 @@ bool ProfessionManager::trainSkillBox(SkillBox* skillBox, PlayerImplementation* 
 
 	for (int i = 0; i < skillBox->requiredSkills.size(); i++) {
 		SkillBox* sBox = skillBox->requiredSkills.get(i);
-		if (!player->skillBoxes.containsKey(sBox->getName()))
+		if (!player->skillBoxes.contains(sBox->getName()))
 			return false;
 	}
 
@@ -221,10 +221,12 @@ bool ProfessionManager::trainSkillBox(const String& skillBox, PlayerImplementati
 		return false;
 }
 
-void ProfessionManager::surrenderSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient) {
-	if (!player->skillBoxesToSave.contains(skillBox))
-		return;
-	else {
+bool ProfessionManager::surrenderSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient) {
+	if (!player->hasSkillBox(skillBox->getName()))
+		return false;
+	else if(player->hasChildSkillBox(skillBox->getName())) {
+		return false;
+	} else {
 		skillManager->removeSkillBox(skillBox, player, updateClient);
 
 		player->skillBoxesToSave.drop(skillBox);
@@ -233,14 +235,19 @@ void ProfessionManager::surrenderSkillBox(SkillBox* skillBox, PlayerImplementati
 			SkillBox* sBox = skillBox->requiredSkills.get(i);
 			player->skillBoxesToSave.put(sBox);
 		}
+
+		return true;
 	}
 }
 
-void ProfessionManager::surrenderSkillBox(const String& skillBox, PlayerImplementation* player, bool updateClient) {
+bool ProfessionManager::surrenderSkillBox(const String& skillBox, PlayerImplementation* player, bool updateClient) {
 	SkillBox* sBox = skillBoxMap.get(skillBox);
 
-	if (sBox != NULL)
-		surrenderSkillBox(sBox, player, updateClient);
+	if (sBox != NULL) {
+		return surrenderSkillBox(sBox, player, updateClient);
+	}
+
+	return false;
 }
 
 void ProfessionManager::loadProfessionsFromDatabase() {
@@ -371,7 +378,7 @@ SkillBox* ProfessionManager::loadSkillBox(ResultSet* result, Profession* profess
 
 	String skillParent = result->getString(2);
 
-	if (skillParent.length() > 1) {
+	if (!skillParent.isEmpty()) {
 		SkillBox* parent = skillBoxMap.get(skillParent);
 		if (parent != NULL) {
 			skillBox->setParent(parent);
@@ -408,7 +415,11 @@ SkillBox* ProfessionManager::loadSkillBox(ResultSet* result, Profession* profess
 	String grantedDraftSchematics = result->getString(24);
 	loadDraftSchematics(skillBox, grantedDraftSchematics);
 
-	skillBox->setSkillIsSearchable(result->getInt(25));
+	skillBox->setSkillIsSearchable(result->getInt(26));
+
+	String skillChildren = result->getString(28);
+
+	loadChildren(skillBox, skillChildren);
 
 	skillBoxMap.put(skillBox->getName(), skillBox);
 
@@ -416,7 +427,7 @@ SkillBox* ProfessionManager::loadSkillBox(ResultSet* result, Profession* profess
 }
 
 void ProfessionManager::loadSkillRequirements(SkillBox* skillBox, String& skillRequirements) {
-	if (skillRequirements.length() > 1) {
+	if (!skillRequirements.isEmpty()) {
 		StringTokenizer tokenizer(skillRequirements);
 		tokenizer.setDelimeter(",");
 
@@ -430,7 +441,7 @@ void ProfessionManager::loadSkillRequirements(SkillBox* skillBox, String& skillR
 }
 
 void ProfessionManager::loadSkillPreclusions(SkillBox* skillBox, String& skillPreclusions) {
-	if (skillPreclusions.length() > 1) {
+	if (!skillPreclusions.isEmpty()) {
 		StringTokenizer tokenizer(skillPreclusions);
 		tokenizer.setDelimeter(",");
 
@@ -444,7 +455,7 @@ void ProfessionManager::loadSkillPreclusions(SkillBox* skillBox, String& skillPr
 }
 
 void ProfessionManager::loadSkillSpeciesRequired(SkillBox* skillBox, String& skillSpeciesRequired) {
-	if (skillSpeciesRequired.length() > 1) {
+	if (!skillSpeciesRequired.isEmpty()) {
 		StringTokenizer tokenizer(skillSpeciesRequired);
 		tokenizer.setDelimeter(",");
 
@@ -458,7 +469,7 @@ void ProfessionManager::loadSkillSpeciesRequired(SkillBox* skillBox, String& ski
 }
 
 void ProfessionManager::loadSkillCommands(SkillBox* skillBox, String& skillCommands) {
-	if (skillCommands.length() > 1) {
+	if (!skillCommands.isEmpty()) {
 		StringTokenizer tokenizer(skillCommands);
 		tokenizer.setDelimeter(",");
 
@@ -490,7 +501,7 @@ void ProfessionManager::loadSkillCommands(SkillBox* skillBox, String& skillComma
 }
 
 void ProfessionManager::loadSkillMods(SkillBox* skillBox, String& skillMods) {
-	if (skillMods.length() > 1) {
+	if (!skillMods.isEmpty()) {
 		StringTokenizer tokenizer(skillMods);
 		tokenizer.setDelimeter(",");
 
@@ -508,7 +519,7 @@ void ProfessionManager::loadSkillMods(SkillBox* skillBox, String& skillMods) {
 }
 
 void ProfessionManager::loadDraftSchematics(SkillBox* skillBox, String& grantedDraftSchematics) {
-	if (grantedDraftSchematics.length() > 1) {
+	if (!grantedDraftSchematics.isEmpty()) {
 		StringTokenizer tokenizer(grantedDraftSchematics);
 		tokenizer.setDelimeter(",");
 
@@ -517,6 +528,20 @@ void ProfessionManager::loadDraftSchematics(SkillBox* skillBox, String& grantedD
 			tokenizer.getStringToken(draftSchematic);
 
 			skillBox->addGrantedSchematic(draftSchematic);
+		}
+	}
+}
+
+void ProfessionManager::loadChildren(SkillBox* skillBox, String& skillChildren) {
+	if (!skillChildren.isEmpty()) {
+		StringTokenizer tokenizer(skillChildren);
+		tokenizer.setDelimeter(",");
+
+		while (tokenizer.hasMoreTokens()) {
+			String skillChild;
+			tokenizer.getStringToken(skillChild);
+
+			skillBox->addChild(skillChild);
 		}
 	}
 }

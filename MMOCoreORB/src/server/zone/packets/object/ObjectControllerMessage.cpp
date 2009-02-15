@@ -2084,7 +2084,7 @@ void ObjectControllerMessage::parseImageDesign(Player* player, Message* pack) {
 
 	String skillBox = "social_entertainer_novice";
 
-	if (!player->getSkillBoxesSize() || !player->hasSkillBox(skillBox)) {
+	if (!player->hasSkillBox(skillBox)) {
 		// TODO: sendSystemMessage("cmd_err", "ability_prose", creature);
 		player->sendSystemMessage(
 				"You do not have sufficient abilities to image design.");
@@ -3477,7 +3477,7 @@ void ObjectControllerMessage::parseSurveyRequest(Player* player,
 
 	String skillBox = "crafting_artisan_novice";
 
-	if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
+	if (player->hasSkillBox(skillBox)) {
 		if (player->getSurveyTool() == NULL) {
 			player->sendSystemMessage(
 					"You must use a survey tool once from the Inventory before you can do this.");
@@ -3502,7 +3502,7 @@ void ObjectControllerMessage::parseSampleRequest(Player* player,
 
 	String skillBox = "crafting_artisan_novice";
 
-	if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
+	if (player->hasSkillBox(skillBox)) {
 		if (player->getSurveyTool() == NULL) {
 			player->sendSystemMessage(
 					"You must use a survey tool once from the Inventory before you can do this.");
