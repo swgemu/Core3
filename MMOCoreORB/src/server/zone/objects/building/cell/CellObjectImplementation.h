@@ -70,14 +70,16 @@ class CellObjectImplementation : public CellObjectServant {
 	ItemAttributes* itemAttributes;
 	String attributeString;
 
-private:
-	void init();
+//private:
+
 
 public:
 	CellObjectImplementation(uint64 objID, BuildingObject* buio);
 	CellObjectImplementation(uint64 objID, BuildingObject* buio, int number);
 
 	~CellObjectImplementation();
+
+	void init();
 
 	void addChild(SceneObject* obj, bool doLock = true);
 	bool addObject(SceneObject* obj);
