@@ -1985,8 +1985,15 @@ void CreatureImplementation::addRandomPatrolPoint(float radius, bool doLock) {
 void CreatureImplementation::onIncapacitateTarget(CreatureObject* victim) {
 	performRandomIncapAnimation();
 
-	if (isKiller() && victim->isPlayer() && !victim->isDead() && victim->isIncapacitated())
+	System::out << "In onIncapTarget in CreatureImp" << endl;
+
+	if (victim->isIncapacitated())
+		System::out << "passed" << endl;
+
+	if (isKiller() && victim->isPlayer() && !victim->isDead() && victim->isIncapacitated()) {
+		System::out << "Attempting to deathblow victim" << endl;
 		deathblow((Player*) victim);
+	}
 
 	deaggro();
 }

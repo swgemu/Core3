@@ -758,7 +758,7 @@ void SceneObjectImplementation::cleanupDamageDone() {
 //Event Handlers
 
 void SceneObjectImplementation::onIncapacitateTarget(CreatureObject* victim) {
-	clearCombatState();
+	clearCombatState(true);
 }
 
 void SceneObjectImplementation::onInflictDamage(AttackableObject* victim, uint32 damage) {
@@ -841,7 +841,7 @@ bool SceneObjectImplementation::inflictDamage(CreatureObject* victim, uint8 attr
 
 	if (newValue <= 0) {
 		if (!victim->isDead() && !victim->isIncapacitated()) {
-			if (victim->isPlayer() || victim->isPet())
+			if ((victim->isPlayer() || victim->isPet()))
 				incapacitate(victim);
 			else
 				kill(victim);
@@ -859,8 +859,8 @@ void SceneObjectImplementation::incapacitate(CreatureObject* victim) {
 	if (!victim->isAttackable())
 		return;
 
-	onIncapacitateTarget(victim);
 	victim->onIncapacitated(_this);
+	onIncapacitateTarget(victim);
 }
 
 /**
