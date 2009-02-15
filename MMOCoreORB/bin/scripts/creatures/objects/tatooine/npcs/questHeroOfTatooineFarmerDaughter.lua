@@ -92,6 +92,7 @@ questHeroOfTatooineFarmerDaughter = Creature:new {
 	herd = 1,
 	stalker = 0,
 	killer = 0,
+	ferocity = 0,
 	aggressive = 0,
 	invincible = 1,
 

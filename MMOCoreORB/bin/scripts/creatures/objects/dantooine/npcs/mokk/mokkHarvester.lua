@@ -90,6 +90,7 @@ mokkHarvester = Creature:new {
 	herd = True,
 	stalker = False,
 	killer = False,
+	ferocity = 0,
 	aggressive = True,
 
 	attackCreatureOnSight = {}, -- Enter socialGroups 

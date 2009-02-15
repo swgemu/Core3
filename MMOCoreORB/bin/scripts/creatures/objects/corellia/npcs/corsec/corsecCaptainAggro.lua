@@ -90,6 +90,7 @@ corsecCaptainAggro = Creature:new {
 	herd = 0,
 	stalker = 0,
 	killer = 1,
+	ferocity = 0,
 	aggressive = 1,
 	invincible = 0,
 

@@ -91,6 +91,7 @@ lostAqualishMarshal = Creature:new {
 	herd = 1,
 	stalker = 0,
 	killer = 1,
+	ferocity = 0,
 	aggressive = 1,
 	invincible = 0,
 
