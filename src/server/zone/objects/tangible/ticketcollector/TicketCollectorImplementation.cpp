@@ -133,15 +133,38 @@ bool TicketCollectorImplementation::checkTime(ShuttleCreature* shuttle, Player* 
 		int min = landTime / 60;
 		int seconds = (landTime % 60);
 
-		if (min > 0) {
+		if (min > 1 && seconds > 1) {
 			StringBuffer arrivalTime;
 			arrivalTime << "The next shuttle will be ready to board in " << min << " minutes and " << seconds << " seconds";
 			player->sendSystemMessage(arrivalTime.toString());
-		} else {
+		} else if (min > 1 && seconds==1) {
+			StringBuffer arrivalTime;
+			arrivalTime << "The next shuttle will be ready to board in " << min << " minutes and " << seconds << " second";
+			player->sendSystemMessage(arrivalTime.toString());
+		} else if (min > 1 && seconds==0) {
+			StringBuffer arrivalTime;
+			arrivalTime << "The next shuttle will be ready to board in " << min << " minutes and " << seconds << " seconds";
+			player->sendSystemMessage(arrivalTime.toString());
+	    } else if (min==1 && seconds > 1) {
+			StringBuffer arrivalTime;
+			arrivalTime << "The next shuttle will be ready to board in " << min << " minute and " << seconds << " seconds";
+			player->sendSystemMessage(arrivalTime.toString());
+	    } else if (min==1 && seconds==1) {
+	    	StringBuffer arrivalTime;
+	    	arrivalTime << "The next shuttle will be ready to board in " << min << " minute and " << seconds << " second";
+	    	player->sendSystemMessage(arrivalTime.toString());
+	    } else if (min==1 && seconds==0) {
+	    	StringBuffer arrivalTime;
+	    	arrivalTime << "The next shuttle will be ready to board in " << min << " minute and " << seconds << " seconds";
+	    	player->sendSystemMessage(arrivalTime.toString());
+	    } else if (min==0 && seconds > 1) {
 			StringBuffer arrivalTime;
 			arrivalTime << "The next shuttle will be ready to board in " << seconds << " seconds";
 			player->sendSystemMessage(arrivalTime.toString());
-
+		} else if (min==0 && seconds < 2){
+			StringBuffer arrivalTime;
+			arrivalTime << "The next shuttle will be ready to board in " << seconds << " second";
+			player->sendSystemMessage(arrivalTime.toString());
 		}
 
 		return false;
