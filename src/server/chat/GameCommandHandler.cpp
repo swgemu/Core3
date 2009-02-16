@@ -438,12 +438,13 @@ GameCommandHandler::~GameCommandHandler() {
 }
 
 void GameCommandHandler::handleCommand(String cmd, StringTokenizer tokenizer, Player* player) {
-	if (!gmCommands->containsKey(cmd)) {
+	String cmdLower = cmd.toLowerCase();
+	if (!gmCommands->containsKey(cmdLower)) {
 		player->sendSystemMessage("Command not found.");
 		return;
 	}
 
-	GMCommand * command = gmCommands->get(cmd.toLowerCase());
+	GMCommand * command = gmCommands->get(cmdLower);
 	if (command->getRequiredAdminLevel() & player->getAdminLevel())
 		command->exec(tokenizer, player);
 	else
@@ -472,13 +473,14 @@ void GameCommandHandler::commands(StringTokenizer tokenizer, Player* player) {
 	commandsList->setPromptText("The following commands are available to you.");
 
 	for (int i = 0; i < list.size(); i++) {
-		String cmd = list.get(i);
+		String cmdKey = list.get(i);
+		GMCommand* cmd = gmCommands->get(cmdKey);
 
-		if (gmCommands->get(cmd)->getRequiredAdminLevel() & player->getAdminLevel()) {
-			String commandName = list.get(i);
+		if (cmd->getRequiredAdminLevel() & player->getAdminLevel()) {
+			String cmdName = cmd->getName();
 
-			if (commandName != "commands")
-				commandsList->addMenuItem(commandName);
+			if (cmdName != "commands")
+				commandsList->addMenuItem(cmdName);
 		}
 	}
 
