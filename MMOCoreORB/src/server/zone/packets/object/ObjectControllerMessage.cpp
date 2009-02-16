@@ -2457,17 +2457,17 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 	UnicodeString unkPramString;
 	pack->parseUnicode(unkPramString); //?
 
-	WaypointObject* waypoint = player->getWaypoint(objid);
-	IntangibleObject* datapadData = (IntangibleObject*) player->getDatapadItem(objid);
-	SceneObject* invObj = player->getInventoryItem(objid);
-	SceneObject* bankObj = player->getBankItem(objid);
+	ManagedReference<WaypointObject> waypoint = player->getWaypoint(objid);
+	ManagedReference<IntangibleObject> datapadData = (IntangibleObject*) player->getDatapadItem(objid);
+	ManagedReference<SceneObject> invObj = player->getInventoryItem(objid);
+	ManagedReference<SceneObject> bankObj = player->getBankItem(objid);
 
 	//Avoid redundant code:
 	if (bankObj != NULL)
 		invObj = bankObj;
 
 	if (invObj != NULL && invObj->isTangible()) {
-		TangibleObject* tano = (TangibleObject*) invObj;
+		TangibleObject* tano = (TangibleObject*) invObj.get();
 
 		if (tano->isEquipped()) {
 			player->sendSystemMessage("You must unequip the item before destroying it.");
@@ -2478,9 +2478,9 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 			Container* container = (Container*) tano;
 
 			while (!container->isContainerEmpty()) {
-				SceneObject* sco = container->getObject(0);
+				ManagedReference<SceneObject> sco = container->getObject(0);
 
-				itemManager->deletePlayerItem(player, ((TangibleObject*) sco), true);
+				itemManager->deletePlayerItem(player, ((TangibleObject*) sco.get()), true);
 
 				container->removeObject(0);
 				sco->removeFromZone(true);

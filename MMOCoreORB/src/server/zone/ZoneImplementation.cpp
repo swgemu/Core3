@@ -81,6 +81,12 @@ void ZoneImplementation::startManagers() {
 	//if (zoneID > 45) //TODO: Change back to 9 sometimes. We use Zone 10 (Space Corellia) as a "prison" for the CSRs sending bad players there
 	//	return;
 
+	if (zoneID <= 9) {
+		String planetName = Planet::getPlanetName(zoneID);
+
+		heightMap.load("planets/" + planetName + "/" + planetName + ".hmap");
+	}
+
 	creatureManager = new CreatureManager(_this, processor);
 	creatureManager->deploy("CreatureManager", zoneID);
 
@@ -96,13 +102,6 @@ void ZoneImplementation::startManagers() {
 	planetManager->start();
 
 	creatureManager->start();
-
-
-	if (zoneID <= 9) {
-		String planetName = Planet::getPlanetName(zoneID);
-
-		heightMap.load("planets/" + planetName + "/" + planetName + ".hmap");
-	}
 }
 
 void ZoneImplementation::stopManagers() {
