@@ -482,30 +482,30 @@ public:
 	}*/
 
 	int getSkillModBuff(const String& name) {
-		int bonus = skillModBuffs.get(name);
+		int bonus = 0;//skillModBuffs.get(name);
 		return bonus;
 	}
 
 	int getSkillModBuff(const char* str) {
 		String test(str);
 
-		int bonus = skillModBuffs.get(test);
+		int bonus = 0;// skillModBuffs.get(test);
 		return bonus;
 	}
 
 	bool hasSkillModBuff(const String& name) {
-		return skillModBuffs.contains(name);
+		return false;//skillModBuffs.contains(name);
 	}
 
 	void removeSkillModBuff(String& name) {
-		skillModBuffs.drop(name);
+		//skillModBuffs.drop(name);
 	}
 
 	void addSkillModBuff(String mod, int val) {
-		if (hasSkillModBuff(mod))
+		/*if (hasSkillModBuff(mod))
 			removeSkillModBuff(mod);
 
-		skillModBuffs.put(mod, val);
+		skillModBuffs.put(mod, val);*/
 
 	}
 

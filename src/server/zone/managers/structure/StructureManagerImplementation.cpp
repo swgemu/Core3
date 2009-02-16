@@ -410,7 +410,7 @@ void StructureManagerImplementation::loadPlayerStructures() {
 				inso->setObjectType(type);
 				inso->setObjectSubType(subType);
 				inso->setCustomName(name);
-				inso->initializePosition(x, z, y);
+				inso->initializePosition(x, zone->getHeight(x, y), y);
 				inso->setDirection(oX, oZ, oY, oW);
 				inso->setPersistent(true); // we loaded it so it must be persistent
 				inso->setUpdated(false); // doesn't need updates
