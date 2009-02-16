@@ -60,8 +60,7 @@ public:
 		try {
 			creo->wlock();
 
-			if (!creo->isMounted())
-				creo->deactivateBurstRun();
+			creo->deactivateBurstRun();
 
 			creo->unlock();
 		} catch (...) {

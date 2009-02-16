@@ -85,6 +85,8 @@ public:
 
 	void fixScheduler();
 
+	void changeMessageoftheDay(const String& newMOTD);
+
 	void loadMessageoftheDay();
 
 	ChatManager* getChatManager();
@@ -212,6 +214,8 @@ public:
 
 	void fixScheduler();
 
+	void changeMessageoftheDay(const String& newMOTD);
+
 	void loadMessageoftheDay();
 
 	ChatManager* getChatManager();
@@ -283,6 +287,7 @@ protected:
 	String _param1_banUser__String_String_;
 	String _param0_kickUser__String_String_;
 	String _param1_kickUser__String_String_;
+	String _param0_changeMessageoftheDay__String_;
 };
 
 class ZoneServerHelper : public DistributedObjectClassHelper, public Singleton<ZoneServerHelper> {

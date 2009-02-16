@@ -1633,8 +1633,8 @@ void CreatureObjectImplementation::removePowerboost() {
 }
 
 void CreatureObjectImplementation::activateBurstRun(bool bypassChecks) {
-	int duration = 30; //seconds
-	int coolDown = 600; //seconds after burst run ends.
+	int duration = 30; //seconds of burst run duration.
+	int coolDown = 300; //seconds after burst run ends.
 
 	//Check if mounted.
 	if (isMounted()) {
@@ -1718,18 +1718,22 @@ void CreatureObjectImplementation::activateBurstRun(bool bypassChecks) {
 }
 
 void CreatureObjectImplementation::deactivateBurstRun(bool bypassChecks) {
+	if (isPlayer()) {
+		sendSystemMessage("cbt_spam", "burstrun_stop_single"); //"You slow down."
+	}
+
+	burstRunning = false;
+
+	if (isMounted()) {
+		return;
+	}
+
 	if (isProne()) {
 		float proneModifier = calculateProneSpeedModifier();
 		updateSpeed(0.7f * proneModifier, 0.7745f / proneModifier);
 
 	} else {
 		updateSpeed(5.376, 1.549f);
-	}
-
-	burstRunning = false;
-
-	if (isPlayer()) {
-		sendSystemMessage("cbt_spam", "burstrun_stop_single"); //"You slow down."
 	}
 }
 
@@ -3562,7 +3566,12 @@ void CreatureObjectImplementation::dismount(bool lockMount, bool ignoreCooldown)
 			mount->updateStates();
 		}
 
-		updateSpeed(5.376f, 1.549f);
+		if (isBurstRunning()) {
+			updateSpeed(8.0f, 0.922938f);
+		} else {
+			updateSpeed(5.376f, 1.549f);
+		}
+
 		clearState(CreatureState::RIDINGMOUNT);
 		updateStates();
 

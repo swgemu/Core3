@@ -329,17 +329,13 @@ public:
 
 	bool trainSkillBox(const String& name, bool updateClient = true);
 
-	void surrenderSkillBox(const String& name);
+	bool surrenderSkillBox(const String& name, bool updateClient = true);
 
-	void resetSkillBoxesIterator();
+	int getSkillBoxesMapSize();
 
-	int getSkillBoxesSize();
+	String& getSkillBoxName(int index);
 
-	String& getNextSkillBox();
-
-	bool hasNextSkillBox();
-
-	bool hasSkillBox(String& skillBox);
+	bool hasSkillBox(const String& skillBox);
 
 	void startForaging(int foragetype);
 
@@ -449,9 +445,15 @@ public:
 
 	int getDrinkFilling();
 
+	int getFoodFillingMax();
+
+	int getDrinkFillingMax();
+
 	void activateDigest();
 
 	void activateQueueAction();
+
+	void setAccountID(unsigned long long id);
 
 	void setCharacterID(unsigned long long id);
 
@@ -574,6 +576,8 @@ public:
 	UnicodeString& getBiography();
 
 	int getLotsRemaining();
+
+	unsigned long long getAccountID();
 
 	unsigned long long getCharacterID();
 
@@ -983,6 +987,8 @@ public:
 
 	void closeSuiWindowType(unsigned int windowType);
 
+	void displayMessageoftheDay();
+
 protected:
 	Player(DummyConstructorParameter* param);
 
@@ -998,8 +1004,8 @@ protected:
 	String _return_getLastNpcConvMessStr;
 	String _return_getLastNpcConvOption;
 	String _return_getLastNpcConvStr;
-	String _return_getNextSkillBox;
 	String _return_getRaceFileName;
+	String _return_getSkillBoxName;
 	String _return_getStartingProfession;
 	String _return_getTeachingOffer;
 	String _return_getTeachingSkillOption;
@@ -1266,17 +1272,13 @@ public:
 
 	bool trainSkillBox(const String& name, bool updateClient);
 
-	void surrenderSkillBox(const String& name);
+	bool surrenderSkillBox(const String& name, bool updateClient);
 
-	void resetSkillBoxesIterator();
+	int getSkillBoxesMapSize();
 
-	int getSkillBoxesSize();
+	String& getSkillBoxName(int index);
 
-	String& getNextSkillBox();
-
-	bool hasNextSkillBox();
-
-	bool hasSkillBox(String& skillBox);
+	bool hasSkillBox(const String& skillBox);
 
 	void startForaging(int foragetype);
 
@@ -1386,9 +1388,15 @@ public:
 
 	int getDrinkFilling();
 
+	int getFoodFillingMax();
+
+	int getDrinkFillingMax();
+
 	void activateDigest();
 
 	void activateQueueAction();
+
+	void setAccountID(unsigned long long id);
 
 	void setCharacterID(unsigned long long id);
 
@@ -1511,6 +1519,8 @@ public:
 	UnicodeString& getBiography();
 
 	int getLotsRemaining();
+
+	unsigned long long getAccountID();
 
 	unsigned long long getCharacterID();
 
@@ -1920,12 +1930,14 @@ public:
 
 	void closeSuiWindowType(unsigned int windowType);
 
+	void displayMessageoftheDay();
+
 protected:
 	String _param0_queueFlourish__String_long_int_;
 	String _param4_queueAction__Player_long_int_int_String_;
 	String _param3_doInstantAction__long_int_int_String_;
 	String _param0_trainSkillBox__String_bool_;
-	String _param0_surrenderSkillBox__String_;
+	String _param0_surrenderSkillBox__String_bool_;
 	String _param0_hasSkillBox__String_;
 	String _param1_searchWaypoint__Player_String_int_;
 	String _param2_queueHeal__TangibleObject_int_String_;
