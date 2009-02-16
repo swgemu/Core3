@@ -125,9 +125,11 @@ public:
 
 	void addCommand(String command, int reqAdminLevel, String disc, String usage,
 			void (*gmCommandFunc)(StringTokenizer tokenizer, Player* player)) {
-		put(command.toLowerCase(), new GMCommand(command, reqAdminLevel, disc, usage, gmCommandFunc));
+		String cmdLower = command.toLowerCase();
 
-		commandList.add(command);
+		put(cmdLower, new GMCommand(command, reqAdminLevel, disc, usage, gmCommandFunc));
+
+		commandList.add(cmdLower);
 	}
 
 	LinkedList<String> getCommandList() {
