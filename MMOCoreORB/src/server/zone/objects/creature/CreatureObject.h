@@ -63,6 +63,8 @@ public:
 
 	void doAnimation(const String& anim);
 
+	void doEmote(unsigned long long targetid, unsigned int emoteid, bool showtext);
+
 	void playEffect(const String& file, const String& aux);
 
 	void showFlyText(const String& file, const String& aux, unsigned char red, unsigned char green, unsigned char blue);
@@ -1340,6 +1342,8 @@ public:
 	void doCombatAnimation(CreatureObject* defender, unsigned int animcrc, bool hit);
 
 	void doAnimation(const String& anim);
+
+	void doEmote(unsigned long long targetid, unsigned int emoteid, bool showtext);
 
 	void playEffect(const String& file, const String& aux);
 
