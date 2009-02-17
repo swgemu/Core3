@@ -62,18 +62,12 @@ addBFGroup("Non-Combatant Professions", "root");
     addBFProfession("Master Medic", "Healing Professions", "science_medic_master");
     addBFProfession("Master Combat Medic", "Healing Professions", "science_combatmedic_master");
   addBFGroup("Crafting Professions", "Non-Combatant Professions");
-    addBFProfession("Master Artisan", "Crafting Professions", 
-"crafting_artisan_master");
-    addBFProfession("Master Architect", "Crafting Professions", 
-"crafting_architect_master");
-    addBFProfession("Master Armorsmith", "Crafting Professions", 
-"crafting_armorsmith_master");
-    addBFProfession("Master Chef", "Crafting Professions", 
-"crafting_chef_master");
-    addBFProfession("Master Tailor", "Crafting Professions", 
-"crafting_tailor_master");
-    addBFProfession("Master Weaponsmith", "Crafting Professions", 
-"crafting_weaponsmith_master");
+    addBFProfession("Master Artisan", "Crafting Professions", "crafting_artisan_master");
+    addBFProfession("Master Architect", "Crafting Professions", "crafting_architect_master");
+    addBFProfession("Master Armorsmith", "Crafting Professions", "crafting_armorsmith_master");
+    addBFProfession("Master Chef", "Crafting Professions", "crafting_chef_master");
+    addBFProfession("Master Tailor", "Crafting Professions", "crafting_tailor_master");
+    addBFProfession("Master Weaponsmith", "Crafting Professions", "crafting_weaponsmith_master");
   addBFGroup("Social Professions", "Non-Combatant Professions"); 
     addBFProfession("Master Entertainer", "Social Professions", "social_entertainer_master");
     addBFProfession("Master Musician", "Social Professions", "social_musician_master");
@@ -82,5 +76,4 @@ addBFGroup("Non-Combatant Professions", "root");
   addBFGroup("Outdoor Professions", "Non-Combatant Professions");
     addBFProfession("Master Scout", "Outdoor Professions", "outdoors_scout_master");
     addBFProfession("Master Ranger", "Outdoor Professions", "outdoors_ranger_master");
-    addBFProfession("Master Squad Leader", "Outdoor Professions", "outdoors_squadleader_master");
-        
+    addBFProfession("Master Squad Leader", "Outdoor Professions", "outdoors_squadleader_master");     

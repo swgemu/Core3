@@ -91,6 +91,8 @@ RunCreatureFile("objects/npcs/imperial/imperialTrooper.lua") -- Weapon "Scout Bl
 RunCreatureFile("objects/npcs/imperial/imperialWarrantOfficerI.lua") -- Weapon "Pistol fwg5"
 RunCreatureFile("objects/npcs/imperial/imperialWarrantOfficerIi.lua") -- Weapon "Pistol fwg5"
 
+RunCreatureFile("objects/npcs/imperial/imperialNoncom.lua")
+
 RunCreatureFile("objects/npcs/imperial/imperialAtAt.lua") -- Weapon "Cannon"
 RunCreatureFile("objects/npcs/imperial/imperialAtSt.lua") -- Weapon "Cannon"
 RunCreatureFile("objects/npcs/imperial/imperialProbot.lua") -- Weapon "Droid Attack"
