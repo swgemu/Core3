@@ -56,6 +56,8 @@ import "../player/Player";
 
 import "../draftschematic/DraftSchematic";
 
+import "../intangible/IntangibleObject";
+
 interface TangibleObject implements SceneObject {
 	TangibleObject(unsigned long oid, int tp = 0);
 
@@ -226,4 +228,10 @@ interface TangibleObject implements SceneObject {
 	//Actions
 	void decay(float decayRate);
 	void slice(Player slicer);
+	
+	//Datapad
+	void setItnocrc(unsigned int itnocrc);
+	unsigned int getItnocrc();
+	IntangibleObject getITNO();
+	void addToDatapad(Player player);
 }

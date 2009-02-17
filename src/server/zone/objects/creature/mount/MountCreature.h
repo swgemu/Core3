@@ -21,7 +21,13 @@ class MountCreature : public Creature {
 public:
 	MountCreature(CreatureObject* linkCreature, const String& name, const String& stf, unsigned int itnocrc, unsigned int objCRC, unsigned long long oid);
 
+	MountCreature(unsigned long long oid, unsigned int tempcrc, const UnicodeString& n, const String& tempn);
+
 	void setMountType(int type);
+
+	void setLinkedCreature(CreatureObject* linkCreature);
+
+	void setObjectFileName(String& name);
 
 	int getMountType();
 
@@ -35,27 +41,17 @@ public:
 
 	CreatureObject* getLinkedCreature();
 
-	IntangibleObject* getITNO();
-
 	void call();
 
 	void store(bool doLock = true);
 
 	int useObject(Player* player);
 
-	void addToDatapad();
-
 	void setInstantMount(bool val);
 
 	bool isInWorld();
 
-	unsigned int getItnocrc();
-
 	void parseItemAttributes();
-
-	void setAttributes(String& attributeString);
-
-	String& getAttributes();
 
 	void repair();
 
@@ -63,8 +59,6 @@ protected:
 	MountCreature(DummyConstructorParameter* param);
 
 	virtual ~MountCreature();
-
-	String _return_getAttributes;
 
 	friend class MountCreatureHelper;
 };
@@ -79,6 +73,10 @@ public:
 
 	void setMountType(int type);
 
+	void setLinkedCreature(CreatureObject* linkCreature);
+
+	void setObjectFileName(String& name);
+
 	int getMountType();
 
 	bool isVehicle();
@@ -91,32 +89,22 @@ public:
 
 	CreatureObject* getLinkedCreature();
 
-	IntangibleObject* getITNO();
-
 	void call();
 
 	void store(bool doLock);
 
 	int useObject(Player* player);
 
-	void addToDatapad();
-
 	void setInstantMount(bool val);
 
 	bool isInWorld();
 
-	unsigned int getItnocrc();
-
 	void parseItemAttributes();
-
-	void setAttributes(String& attributeString);
-
-	String& getAttributes();
 
 	void repair();
 
 protected:
-	String _param0_setAttributes__String_;
+	String _param0_setObjectFileName__String_;
 };
 
 class MountCreatureHelper : public DistributedObjectClassHelper, public Singleton<MountCreatureHelper> {

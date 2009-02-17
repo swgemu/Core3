@@ -160,6 +160,9 @@ void TangibleObjectImplementation::init() {
 
 	setLoot(false);
 
+	itno = NULL;
+	itnoCRC = 0;
+
 	setSliced(false);
 	setSlicable(false);
 	setSlicerID(0);
@@ -338,6 +341,20 @@ void TangibleObjectImplementation::sendDeltas(Player* player) {
 
 	client->sendMessage(dtano3);
 
+}
+
+void TangibleObjectImplementation::addToDatapad(Player* player) {
+	if (player == NULL || itnoCRC == 0)
+		return;
+
+	itno = new IntangibleObject((SceneObject*) player->getDatapad(),
+			itnoCRC, player->getNewItemID());
+
+	itno->setName(templateName);
+	itno->setDetailName(templateTypeName);
+	itno->setWorldObject(_this);
+
+	player->addDatapadItem((SceneObject*) itno);
 }
 
 void TangibleObjectImplementation::close(Player* player) {
@@ -656,4 +673,11 @@ void TangibleObjectImplementation::decay(float decayRate) {
 
 void TangibleObjectImplementation::slice(Player* slicer) {
 
+}
+
+IntangibleObject* TangibleObjectImplementation::getITNO() {
+	if (itno == NULL)
+		return NULL;
+
+	return itno;
 }

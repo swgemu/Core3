@@ -65,12 +65,48 @@ MountCreatureImplementation::MountCreatureImplementation(CreatureObject* linkCre
 
 	linkedCreature = linkCreature;
 
-	mountType = 0;
-
 	templateTypeName = stf;
 	templateName = name;
 
 	objectCRC = objCRC;
+
+	itno = NULL;
+	itnoCRC = itnocrc;
+
+	StringBuffer loggingname;
+	loggingname << "Mount = 0x" << oid;
+	setLoggingName(loggingname.toString());
+
+	init();
+}
+
+MountCreatureImplementation::MountCreatureImplementation(uint64 oid, uint32 tempcrc, const UnicodeString& n, const String& tempn)
+	: MountCreatureServant(oid) {
+
+	objectCRC = tempcrc;
+
+	customName = n;
+	templateTypeName = tempn;
+	templateName = tempn;
+
+	StringBuffer loggingname;
+	loggingname << "Mount = 0x" << oid;
+	setLoggingName(loggingname.toString());
+
+	init();
+}
+
+MountCreatureImplementation::~MountCreatureImplementation() {
+
+	delete itemAttributes;
+
+	itemAttributes = NULL;
+}
+
+void MountCreatureImplementation::init(){
+	objectSubType = TangibleObjectImplementation::VEHICLE;
+
+	mountType = 0;
 
 	setType(CreatureImplementation::MOUNT);
 
@@ -85,41 +121,17 @@ MountCreatureImplementation::MountCreatureImplementation(CreatureObject* linkCre
 
 	itemAttributes = new ItemAttributes();
 
-	itno = NULL;
-	itnoCRC = itnocrc;
-
 	instantMount = false;
-
-	StringBuffer loggingname;
-	loggingname << "Mount = 0x" << oid;
-	setLoggingName(loggingname.toString());
 
 	setLogging(false);
 	setGlobalLogging(true);
 
 }
 
-MountCreatureImplementation::~MountCreatureImplementation() {
+void MountCreatureImplementation::setLinkedCreature(CreatureObject* linkCreature) {
+	creatureLinkID = linkCreature->getObjectID();
 
-	delete itemAttributes;
-
-	itemAttributes = NULL;
-}
-
-void MountCreatureImplementation::addToDatapad() {
-	if (linkedCreature == NULL || !linkedCreature->isPlayer())
-		return;
-
-	Player* linkedPlayer = (Player*)linkedCreature;
-
-	itno = new IntangibleObject((SceneObject*) linkedPlayer->getDatapad(),
-			itnoCRC, linkedCreature->getNewItemID());
-
-	itno->setName(templateName);
-	itno->setDetailName(templateTypeName);
-	itno->setWorldObject(_this);
-
-	linkedPlayer->addDatapadItem((SceneObject*) itno);
+	linkedCreature = linkCreature;
 }
 
 void MountCreatureImplementation::sendTo(Player* player, bool doClose) {
@@ -231,8 +243,12 @@ void MountCreatureImplementation::sendRadialResponseTo(Player* player, ObjectMen
 
 
 void MountCreatureImplementation::parseItemAttributes() {
+
 	maxCondition = itemAttributes->getMaxCondition();
 	conditionDamage = maxCondition - itemAttributes->getCurrentCondition();
+
+	String temp = "objectFileName";
+	setObjectFileName(itemAttributes->getStringAttribute(temp));
 }
 
 
@@ -383,22 +399,4 @@ void MountCreatureImplementation::store(bool doLock) {
 		error("storing MountCreature");
 		error(e.getMessage());
 	}
-}
-
-IntangibleObject* MountCreatureImplementation::getITNO() {
-	if (itno == NULL) {
-		if (!linkedCreature->isPlayer())
-			return NULL;
-
-		Player* player = (Player*) linkedCreature;
-
-		itno = new IntangibleObject((SceneObject*) player->getDatapad(),
-				itnoCRC, linkedCreature->getNewItemID());
-
-		itno->setName(templateTypeName);
-		itno->setDetailName(templateName);
-		itno->setWorldObject(_this);
-	}
-
-	return itno;
 }

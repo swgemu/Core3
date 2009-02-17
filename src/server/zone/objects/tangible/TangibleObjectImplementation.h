@@ -64,6 +64,7 @@ class Zone;
 class CreatureObject;
 class Player;
 class BuildingObject;
+class IntangibleObject;
 
 class TangibleObjectImplementation : public TangibleObjectServant {
 protected:
@@ -125,6 +126,9 @@ protected:
 	uint64 slicerID;
 
 	byte unknownByte;
+
+	IntangibleObject* itno;
+	uint32 itnoCRC;
 
 public:
 	static const int HAIR = 0x30000001;
@@ -399,6 +403,12 @@ public:
 
 	virtual void setCombatState();
 	virtual void clearCombatState(bool removeDefenders = true);
+
+	/*
+	 * itnocrc must be set before calling this function otherwise it wont know what
+	 * datapad item to create. use setItnocrc(uint32 crc);
+	 */
+	void addToDatapad(Player* player);
 
 	void close(Player* player);
 
@@ -801,6 +811,29 @@ public:
 		String name = "sliced";
 		itemAttributes->setBooleanAttribute(name, sliced);
 	}
+
+	/*
+	 * Sets the intangible object crc that this item is linked to.
+	 * The intangible crc is what the tangible item uses to create the datapad item to be linked to
+	 * \param itnocrc uint32 CRC of the intangible datapad object.
+	 */
+	inline void setItnocrc(uint32 itnocrc) {
+		itnoCRC = itnocrc;
+	}
+
+	/*
+	 * Get the CRC of the intangible object (datapad item) corresponding to this item.
+	 * \return uint32 Returns the CRC of this item's datapad equivalent
+	 */
+	inline uint32 getItnocrc() {
+		return itnoCRC;
+	}
+
+	/*
+	 * Get the Intangible Object (datapad item) corresponding to this item.
+	 * \return IntangibleObject* Returns the intangible object linked to this item or NULL if not linked to one.
+	 */
+	IntangibleObject* getITNO();
 };
 
 #endif /*TANGIBLEOBJECTIMPLEMENTATION_H_*/

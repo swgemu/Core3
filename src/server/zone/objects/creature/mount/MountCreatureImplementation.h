@@ -46,7 +46,6 @@ which carries forward this exception.
 #define MOUNTCREATUREIMPLEMENTATION_H_
 
 class Player;
-class IntangibleObject;
 class CreatureObject;
 class Creature;
 
@@ -58,15 +57,13 @@ class MountCreatureImplementation : public MountCreatureServant {
 	int mountType;
 
 	CreatureObject* linkedCreature;
-	IntangibleObject* itno;
-	uint32 itnoCRC;
 
 	bool instantMount;
 
 protected:
-	String attributeString;
+	//String attributeString;
 
-	ItemAttributes* itemAttributes;
+	//ItemAttributes* itemAttributes;
 
 public:
 
@@ -77,10 +74,13 @@ public:
 public:
 	MountCreatureImplementation(CreatureObject* linkCreature, const String& name,
 			const String& stf, uint32 itnocrc, uint32 objCRC, uint64 oid);
+	MountCreatureImplementation(uint64 oid, uint32 tempcrc, const UnicodeString& n, const String& tempn);
 
 	~MountCreatureImplementation();
 
-	void addToDatapad();
+	void init();
+
+	void setLinkedCreature(CreatureObject* linkCreature);
 
 	void sendTo(Player* player, bool doClose = true);
 
@@ -94,13 +94,19 @@ public:
 	void store(bool doLock = true);
 
 	// setters and getters
-	inline void setAttributes(String& attributeString) {
-		itemAttributes->setAttributes(attributeString);
-	}
+	//inline void setAttributes(String& attributeString) {
+	//	itemAttributes->setAttributes(attributeString);
+	//}
 
-	inline String& getAttributes() {
-		itemAttributes->getAttributeString(attributeString);
-		return attributeString;
+	//inline String& getAttributes() {
+	//	itemAttributes->getAttributeString(attributeString);
+	//	return attributeString;
+	//}
+
+	inline void setObjectFileName(String& name) {
+		objectFile = name;
+		const String aName = "objectFileName";
+		itemAttributes->setStringAttribute(aName, name);
 	}
 
 	void repair();
@@ -116,8 +122,6 @@ public:
 	CreatureObject* getLinkedCreature() {
 		return linkedCreature;
 	}
-
-	IntangibleObject* getITNO();
 
 	inline bool isDisabled() {
 		return conditionDamage >= maxCondition;
@@ -145,9 +149,6 @@ public:
 		return isInQuadTree();
 	}
 
-	inline uint32 getItnocrc() {
-		return itnoCRC;
-	}
 };
 
 #endif /*MOUNTCREATUREIMPLEMENTATION_H_*/

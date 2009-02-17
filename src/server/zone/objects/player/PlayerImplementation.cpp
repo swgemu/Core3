@@ -4702,10 +4702,11 @@ void PlayerImplementation::saveDatapad(Player* player) {
 		if (datapad == NULL)
 			return;
 
-		String name, detailName, appearance, mountApp, attr, fileName;
+		String name, detailName, appearance, tanoApp, attr, tanoName;
 
-		uint32 objCRC, itnoCRC;
+		uint32 objCRC, tanoCRC;
 		uint64 objID;
+		int objectSubType;
 
 		StringBuffer query;
 		query << "DELETE FROM datapad where character_id = " << player->getCharacterID() << ";";
@@ -4717,11 +4718,11 @@ void PlayerImplementation::saveDatapad(Player* player) {
 			detailName = "";
 			appearance = " "; //There's a reason for the whitespace - don't change it plz !
 			attr = "";
-			mountApp = "";
-			fileName = "";
+			tanoApp = "";
+			tanoName = "";
 			objCRC = 0;
 			objID = 0;
-			itnoCRC = 0;
+			tanoCRC = 0;
 
 			SceneObject* item = datapad->getObject(i);
 
@@ -4729,44 +4730,55 @@ void PlayerImplementation::saveDatapad(Player* player) {
 				IntangibleObject* itno = (IntangibleObject*) item;
 
 				if (itno != NULL) {
-					if (item->getObjectType() == 7 ) { //Vehicle (MountCreature)
-						name = itno->getName();
-						detailName = itno->getDetailName();
-						objCRC = item->getObjectCRC();
+					//name = itno->getCustomName().toString();
+					name = itno->getName();
 
-						MountCreature* mountCreature = (MountCreature*) itno->getWorldObject();
+					MySqlDatabase::escapeString(name);
 
-						if (mountCreature != NULL) {
-							Creature* creaMount = (Creature*) mountCreature;
+					detailName = itno->getDetailName();
+					objCRC = item->getObjectCRC();
 
-							itnoCRC = mountCreature->getObjectCRC();
-							objID = mountCreature->getObjectID();
-							mountCreature->getCustomizationString(mountApp);
-							fileName = mountCreature->getObjectFileName();
-							attr = mountCreature->getAttributes();
+					SceneObject* scno = itno->getWorldObject();
 
-							MySqlDatabase::escapeString(attr);
+					if (scno != NULL) {
+						tanoCRC = scno->getObjectCRC();
+						objID = scno->getObjectID();
+						tanoName = scno->getTemplateName();
 
-							if (mountApp != "") {
-								BinaryData cust(mountApp);
+						MySqlDatabase::escapeString(attr);
+
+						//linked to items or vehicles/pets/droids
+						if (scno->isTangible() || scno->isNonPlayerCreature()){
+							TangibleObject* tano = (TangibleObject*) scno;
+							tano->getCustomizationString(tanoApp);
+							if (tanoApp != "") {
+								BinaryData cust(tanoApp);
 								cust.encode(appearance);
 							}
+							attr = tano->getAttributes();
+							objectSubType = tano->getObjectSubType();
 						}
+						else//otherwise it is linked to a mission
+							objectSubType = SceneObjectImplementation::MISSION;
+					}
+					else{//if its not linked to anything, its a manufacturing schematic
+						objectSubType = TangibleObjectImplementation::MANUFACTURINGSCHEMATIC;
+						objID = itno->getObjectID();
+
+						//IF INTANGIBLES ARE EVER CHANGED TO HAVE ITEM ATTRIBUTES, UNCOMMENT THIS LINE
+						//attr = itno->getAttributes();
 					}
 
-					//TODO: Datapad Load/save Schematics
-					//TODO: Datapad Load/save Droids
-					//TODO: Datapad Load/save Pets
-
-					if (itnoCRC != 0 ) {
+					if (objID != 0 ) {
 						query.deleteAll();
 
-						query << "Insert into datapad set character_id = " << player->getCharacterID()
-							  << ",name = '" << name << "', itnocrc = " << objCRC << ",item_crc = "
-							  << itnoCRC << ",itemMask = 65535, appearance = '"
+						query << "Insert into datapad set item_id = " << objID
+							  << ", character_id = " << player->getCharacterID()
+							  << ", name = '" << name << "', itno_crc = " << objCRC << ", tano_crc = "
+							  << tanoCRC << ", tano_type = " << objectSubType << ", tano_name = '"
+							  << tanoName << "', attributes = '" << attr << "', appearance = '"
 							  << appearance.subString(0, appearance.length() - 1)
-							  << "',attributes = '" << attr << "',file_name = '" << fileName << "',obj_id = "
-							  << objID << ";";
+							  << "', itemMask = 65535;";
 
 						ServerDatabase::instance()->executeStatement(query);
 					}

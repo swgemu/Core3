@@ -142,7 +142,7 @@ int VehicleDeedImplementation::useObject(Player* player) {
 	try {
 		vehicle->setMaxCondition(getHitPoints());
 		vehicle->setObjectFileName(vehicleFile);
-		vehicle->addToDatapad();
+		vehicle->addToDatapad(player);
 		vehicle->setZoneProcessServer(player->getZoneProcessServer());
 
 		vehicle->getITNO()->sendTo(player, true);
