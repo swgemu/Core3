@@ -133,14 +133,14 @@ void BlueFrogCreatureImplementation::sendMessage1(Player* player) {
 void BlueFrogCreatureImplementation::sendChoices1(Player* player) {
 	StringList* slist = new StringList(player);
 	UnicodeString option0 = UnicodeString("Which professions will you teach me?");
-	//UnicodeString option1 = UnicodeString("I'd like to unlearn all my skills and start over.");
+	UnicodeString option1 = UnicodeString("I'd like to unlearn all my skills and start over.");
 	UnicodeString option2 = UnicodeString("Which items can I get?");
 	UnicodeString option3 = UnicodeString("I want to test wounds.");
 	UnicodeString option4 = UnicodeString("I want to test states.");
 	//UnicodeString option5 = UnicodeString("I want to earn some faction points.");
 
 	slist->insertOption(option0);
-	//slist->insertOption(option1);
+	slist->insertOption(option1);
 	slist->insertOption(option2);
 	slist->insertOption(option3);
 	slist->insertOption(option4);
@@ -279,9 +279,9 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 			sendSelectProfessionMessage(player);
 			break;
 		case 1:
-			//dropSkills(player);
-			//player->sendSystemMessage("You have unlearned all your skills...");
-			//sendMessage1(player);
+			dropSkills(player);
+			player->sendSystemMessage("You have unlearned all your skills...");
+			sendMessage1(player);
 			break;
 		case 2:
 			sendSelectItemMessage(player);
@@ -387,15 +387,5 @@ bool BlueFrogCreatureImplementation::trainSkill(Player * player, SkillBox * skil
 }
 
 void BlueFrogCreatureImplementation::dropSkills(Player * player) {
-
-	/*while(player->getSkillBoxesSize() > 0) {
-		player->resetSkillBoxesIterator();
-
-		while (player->hasNextSkillBox()) {
-			String sbox = player->getNextSkillBox();
-			player->surrenderSkillBox(sbox, false);
-		}
-	}
-
-	player->sendTo(player);*/
+	player->surrenderAll();
 }

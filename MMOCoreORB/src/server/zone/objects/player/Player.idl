@@ -104,7 +104,7 @@ interface Player implements CreatureObject {
 	Player(unsigned long oid) {
 		super(oid);
 	}
-	
+
 	void initializePlayer();
 
 	void create(ZoneClientSession client);
@@ -297,11 +297,12 @@ interface Player implements CreatureObject {
 
 	boolean trainSkillBox(const String name, boolean updateClient = true);
 	boolean surrenderSkillBox(const String name, boolean updateClient = true);
+	void surrenderAll();
 
-	void resetSkillBoxesIterator(); 
-	int getSkillBoxesSize(); 
-	String getNextSkillBox(); 
-	boolean hasNextSkillBox(); 
+	void resetSkillBoxesIterator();
+	int getSkillBoxesSize();
+	String getNextSkillBox();
+	boolean hasNextSkillBox();
 	boolean hasSkillBox(String skillBox);
 
 	// Foraging
@@ -792,7 +793,7 @@ interface Player implements CreatureObject {
 	boolean hasConsentFrom(Player player);
 	unsigned int getConsentListSize();
 	String getConsentEntry(int index);
-	
+
 	boolean isPowerboosted();
 
 	//Calculations
@@ -800,7 +801,7 @@ interface Player implements CreatureObject {
 
 	//Sui
 	void closeSuiWindowType(unsigned int windowType);
-	
+
 	//motd
 	void displayMessageoftheDay();
 }

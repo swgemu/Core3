@@ -4469,6 +4469,12 @@ bool PlayerImplementation::surrenderSkillBox(const String& name, bool updateClie
 	return professionManager->surrenderSkillBox(name, this, updateClient);
 }
 
+void PlayerImplementation::surrenderAll() {
+	ProfessionManager* professionManager = server->getProfessionManager();
+
+	professionManager->surrenderAll(this);
+}
+
 void PlayerImplementation::newChangeFactionStatusEvent(uint8 stat, uint32 timer) {
 	pvpStatusBitmask |= CreatureFlag::CHANGEFACTIONSTATUS;
 

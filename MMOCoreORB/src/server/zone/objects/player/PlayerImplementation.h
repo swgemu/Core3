@@ -996,6 +996,7 @@ public:
 	void trainStartingProfession();
 	bool trainSkillBox(const String& name, bool updateClient = true);
 	bool surrenderSkillBox(const String& name, bool updateClient = true);
+	void surrenderAll();
 
 	void resetSkillBoxesIterator() {
 		skillBoxes.resetIterator();

@@ -331,11 +331,17 @@ public:
 
 	bool surrenderSkillBox(const String& name, bool updateClient = true);
 
-	int getSkillBoxesMapSize();
+	void surrenderAll();
 
-	String& getSkillBoxName(int index);
+	void resetSkillBoxesIterator();
 
-	bool hasSkillBox(const String& skillBox);
+	int getSkillBoxesSize();
+
+	String& getNextSkillBox();
+
+	bool hasNextSkillBox();
+
+	bool hasSkillBox(String& skillBox);
 
 	void startForaging(int foragetype);
 
@@ -1004,8 +1010,8 @@ protected:
 	String _return_getLastNpcConvMessStr;
 	String _return_getLastNpcConvOption;
 	String _return_getLastNpcConvStr;
+	String _return_getNextSkillBox;
 	String _return_getRaceFileName;
-	String _return_getSkillBoxName;
 	String _return_getStartingProfession;
 	String _return_getTeachingOffer;
 	String _return_getTeachingSkillOption;
@@ -1274,11 +1280,17 @@ public:
 
 	bool surrenderSkillBox(const String& name, bool updateClient);
 
-	int getSkillBoxesMapSize();
+	void surrenderAll();
 
-	String& getSkillBoxName(int index);
+	void resetSkillBoxesIterator();
 
-	bool hasSkillBox(const String& skillBox);
+	int getSkillBoxesSize();
+
+	String& getNextSkillBox();
+
+	bool hasNextSkillBox();
+
+	bool hasSkillBox(String& skillBox);
 
 	void startForaging(int foragetype);
 
