@@ -298,9 +298,11 @@ interface Player implements CreatureObject {
 	boolean trainSkillBox(const String name, boolean updateClient = true);
 	boolean surrenderSkillBox(const String name, boolean updateClient = true);
 
-	int getSkillBoxesMapSize();
-	String getSkillBoxName(int index);
-	boolean hasSkillBox(const String skillBox);
+	void resetSkillBoxesIterator(); 
+	int getSkillBoxesSize(); 
+	String getNextSkillBox(); 
+	boolean hasNextSkillBox(); 
+	boolean hasSkillBox(String skillBox);
 
 	// Foraging
 	void startForaging(int foragetype);

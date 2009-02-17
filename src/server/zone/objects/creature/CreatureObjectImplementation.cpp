@@ -2230,7 +2230,7 @@ void CreatureObjectImplementation::startDancing(const String& modifier, bool cha
 		PlayerImplementation* player = (PlayerImplementation*) this;
 
 		String skillBox = "social_entertainer_novice";
-		if (player->hasSkillBox(skillBox)) {
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
 			availableDances.add("basic");
 			availableDances.add("rhythmic");
 		} else
@@ -2241,62 +2241,62 @@ void CreatureObjectImplementation::startDancing(const String& modifier, bool cha
 
 
 		skillBox = "social_entertainer_dance_01";
-		if (player->hasSkillBox(skillBox))
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
 			availableDances.add("basic2");
 
 		skillBox = "social_entertainer_dance_02";
-		if (player->hasSkillBox(skillBox))
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
 			availableDances.add("rhythmic2");
 
 		skillBox = "social_entertainer_dance_03";
-		if (player->hasSkillBox(skillBox))
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
 			availableDances.add("footloose");
 
 		skillBox = "social_entertainer_dance_04";
-		if (player->hasSkillBox(skillBox))
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
 			availableDances.add("formal");
 
 		skillBox = "social_entertainer_master";
-		if (player->hasSkillBox(skillBox)) {
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
 			availableDances.add("footloose2");
 			availableDances.add("formal2");
 		}
 
 		skillBox = "social_dancer_novice";
-		if (player->hasSkillBox(skillBox)) {
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
 			availableDances.add("poplock");
 			availableDances.add("popular");
 		}
 
 
 		skillBox = "social_dancer_knowledge_01";
-		if (player->hasSkillBox(skillBox)) {
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
 			availableDances.add("popular2");
 			availableDances.add("tumble");
 		}
 
 		skillBox = "social_dancer_knowledge_02";
-		if (player->hasSkillBox(skillBox)) {
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
 			availableDances.add("poplock2");
 			availableDances.add("tumble2");
 		}
 
 
 		skillBox = "social_dancer_knowledge_03";
-		if (player->hasSkillBox(skillBox)) {
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
 			availableDances.add("breakdance");
 			availableDances.add("lyrical");
 		}
 
 		skillBox = "social_dancer_knowledge_04";
-		if (player->hasSkillBox(skillBox)) {
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
 			availableDances.add("breakdance2");
 			availableDances.add("exotic");
 			availableDances.add("exotic2");
 		}
 
 		skillBox = "social_dancer_master";
-		if (player->hasSkillBox(skillBox)) {
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
 			availableDances.add("exotic3");
 			availableDances.add("exotic4");
 			availableDances.add("lyrical2");
@@ -2485,7 +2485,7 @@ void CreatureObjectImplementation::startPlayingMusic(const String& modifier, boo
 
 		String skillBox = "social_entertainer_novice";
 
-		if (player->hasSkillBox(skillBox))
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
 			availableSongs.add("starwars1");
 		else {
 			sendSystemMessage("You do not have sufficient abilities to play music.");
@@ -2493,47 +2493,47 @@ void CreatureObjectImplementation::startPlayingMusic(const String& modifier, boo
 		}
 
 		skillBox = "social_entertainer_music_01";
-		if (player->hasSkillBox(skillBox))
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
 			availableSongs.add("rock");
 
 		skillBox = "social_entertainer_music_02";
-		if (player->hasSkillBox(skillBox))
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
 			availableSongs.add("starwars2");
 
 		skillBox = "social_entertainer_music_03";
-		if (player->hasSkillBox(skillBox))
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
 			availableSongs.add("folk");
 
 		skillBox = "social_entertainer_music_04";
-		if (player->hasSkillBox(skillBox))
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
 			availableSongs.add("starwars3");
 
 		skillBox = "social_entertainer_master";
-		if (player->hasSkillBox(skillBox))
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
 			availableSongs.add("ceremonial");
 
 		skillBox = "social_musician_novice";
-		if (player->hasSkillBox(skillBox))
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
 			availableSongs.add("starwars4");
 
 		skillBox = "social_musician_knowledge_01";
-		if (player->hasSkillBox(skillBox))
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
 			availableSongs.add("ballad");
 
 		skillBox = "social_musician_knowledge_02";
-		if (player->hasSkillBox(skillBox))
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
 			availableSongs.add("funk");
 
 		skillBox = "social_musician_knowledge_03";
-		if (player->hasSkillBox(skillBox))
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
 			availableSongs.add("waltz");
 
 		skillBox = "social_musician_knowledge_04";
-		if (player->hasSkillBox(skillBox))
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
 			availableSongs.add("jazz");
 
 		skillBox = "social_musician_master";
-		if (player->hasSkillBox(skillBox)) {
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
 			availableSongs.add("virtuoso");
 			//availableSongs.add("western"); //add back in later - this isn't in the skills tree
 		}
@@ -3032,7 +3032,7 @@ void CreatureObjectImplementation::doFlourish(const String& modifier) {
 
 		String skillBox = "social_entertainer_novice";
 
-		if (!player->hasSkillBox(skillBox)) {
+		if (!player->getSkillBoxesSize() || !player->hasSkillBox(skillBox)) {
 			// TODO: sendSystemMessage("cmd_err", "ability_prose", creature);
 			sendSystemMessage("You do not have sufficient abilities to Flourish");
 			return;

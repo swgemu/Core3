@@ -80,14 +80,15 @@ public:
 	void insertSkillBoxes(CreatureObjectImplementation* creo) {
 		PlayerImplementation* player = (PlayerImplementation*)creo;
 
-		int size = player->getSkillBoxesMapSize();
+		int size = player->skillBoxes.size();
+		player->skillBoxes.resetIterator();
 
 		insertInt(size);
 		insertInt(creo->skillBoxesUpdateCounter);
 
-		for(int i = 0; i < size; i++) {
-			String skillBoxName = player->getSkillBoxName(i);
-			insertAscii(skillBoxName);
+		while (player->skillBoxes.hasNext()) {
+			SkillBox* skillBox = player->skillBoxes.getNextValue();
+			insertAscii(skillBox->getName());
 		}
 	}
 
