@@ -190,6 +190,7 @@ bool Buff::activateBuff(CreatureObject* creo, ZoneProcessServerImplementation* s
 	removeBuffEvent();
 
 	buffEvent = new CreatureBuffEvent(creo, buffCRC, buffDuration);
+
 	if (server != NULL)
 		server->addEvent(buffEvent);
 
@@ -339,4 +340,10 @@ bool Buff::deActivateBuff(CreatureObject* creo, bool updateClient) {
 		downerBuff(creo);
 
 	return true;
+}
+
+float Buff::getTimeRemaining() {
+	Time currentTime;
+	float timeRemaining = round(currentTime.miliDifference(buffEvent->getTimeStamp()) / 1000.0f);
+	return timeRemaining;
 }

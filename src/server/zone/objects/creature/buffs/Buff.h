@@ -300,6 +300,8 @@ public:
 
 	bool deActivateBuff(CreatureObject* creo, bool updateClient = true);
 
+	float getTimeRemaining();
+
 	inline void removeBuffEvent() {
 		if (buffEvent != NULL) {
 			if (buffEvent->isQueued()) {
@@ -481,27 +483,27 @@ public:
 		return &skillModBuffs;
 	}*/
 
-	int getSkillModBuff(const String& name) {
+	inline int getSkillModBuff(const String& name) {
 		int bonus = 0;//skillModBuffs.get(name);
 		return bonus;
 	}
 
-	int getSkillModBuff(const char* str) {
+	inline int getSkillModBuff(const char* str) {
 		String test(str);
 
 		int bonus = 0;// skillModBuffs.get(test);
 		return bonus;
 	}
 
-	bool hasSkillModBuff(const String& name) {
+	inline bool hasSkillModBuff(const String& name) {
 		return false;//skillModBuffs.contains(name);
 	}
 
-	void removeSkillModBuff(String& name) {
+	inline void removeSkillModBuff(String& name) {
 		//skillModBuffs.drop(name);
 	}
 
-	void addSkillModBuff(String mod, int val) {
+	inline void addSkillModBuff(String mod, int val) {
 		/*if (hasSkillModBuff(mod))
 			removeSkillModBuff(mod);
 
@@ -509,14 +511,8 @@ public:
 
 	}
 
-	bool isActive() {
+	inline bool isActive() {
 		return buffEvent->isQueued();
-	}
-
-	uint32 getTimeRemaining() {
-		Time timeEnd = buffEvent->getTimeStamp();
-
-		return (uint32) (timeEnd.miliDifference() / 1000);
 	}
 };
 
