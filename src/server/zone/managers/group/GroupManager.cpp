@@ -257,7 +257,10 @@ void GroupManager::disbandGroup(GroupObject* group, Player* player) {
 
 	try {
 		group->wlock();
-
+		//The following should never happen, as a check is made in
+		//ObjectControlMessage.cpp and removes the player from the group
+		//if he's not the leader. Remove?
+		//After Fix 13 feb 2009 - Bankler
 		if (group->getLeader() != player) {
 			player->sendSystemMessage("group", "must_be_leader");
 			group->unlock();

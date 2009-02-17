@@ -2774,7 +2774,13 @@ void ObjectControllerMessage::parseGroupDisband(Player* player, Message* pack,
 	if (group == NULL)
 		return;
 
-	groupManager->disbandGroup(group.get(), player);
+	//If player not is leader, he will leave the group instead.
+	//Fix 13 feb 2009 - Bankler
+	if (player != group->getLeader())
+		groupManager->leaveGroup(group.get(), player);
+
+	else
+		groupManager->disbandGroup(group.get(), player);
 }
 
 void ObjectControllerMessage::parseGroupKick(Player* player, Message* pack,
