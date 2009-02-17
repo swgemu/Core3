@@ -93,6 +93,8 @@ public:
 	bool surrenderSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient = true);
 	bool surrenderSkillBox(const String& skillBox, PlayerImplementation* player, bool updateClient = true);
 
+	void surrenderAll(PlayerImplementation* player);
+
 	inline SkillManager* getSkillManager() {
 		return skillManager;
 	}

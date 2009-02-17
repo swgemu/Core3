@@ -248,6 +248,14 @@ bool ProfessionManager::surrenderSkillBox(const String& skillBox, PlayerImplemen
 	return false;
 }
 
+void ProfessionManager::surrenderAll(PlayerImplementation* player) {
+	while (player->skillBoxesToSave.size() > 0) {
+		surrenderSkillBox(player->skillBoxesToSave.get(0), player, false);
+	}
+
+	player->sendTo(player->_this);
+}
+
 void ProfessionManager::loadProfessionsFromDatabase() {
 	lock();
 
