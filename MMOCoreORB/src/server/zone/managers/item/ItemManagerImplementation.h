@@ -137,6 +137,7 @@ public:
 
 	void unloadPlayerItems(Player* player);
 	void createPlayerItem(Player* player, TangibleObject* item);
+	void createDatapadItem(Player* player, ResultSet* result);
 	void createPlayerDeed(Player* player, DeedObject* item);
 	void deletePlayerItem(Player* player, TangibleObject* item, bool notify);
 	void savePlayerItem(Player* player, TangibleObject* item);

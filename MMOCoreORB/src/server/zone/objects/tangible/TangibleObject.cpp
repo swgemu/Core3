@@ -16,6 +16,8 @@
 
 #include "../draftschematic/DraftSchematic.h"
 
+#include "../intangible/IntangibleObject.h"
+
 /*
  *	TangibleObjectStub
  */
@@ -1238,6 +1240,56 @@ void TangibleObject::slice(Player* slicer) {
 		((TangibleObjectImplementation*) _impl)->slice(slicer);
 }
 
+void TangibleObject::setItnocrc(unsigned int itnocrc) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 102);
+		method.addUnsignedIntParameter(itnocrc);
+
+		method.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->setItnocrc(itnocrc);
+}
+
+unsigned int TangibleObject::getItnocrc() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 103);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getItnocrc();
+}
+
+IntangibleObject* TangibleObject::getITNO() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 104);
+
+		return (IntangibleObject*) method.executeWithObjectReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getITNO();
+}
+
+void TangibleObject::addToDatapad(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 105);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->addToDatapad(player);
+}
+
 /*
  *	TangibleObjectAdapter
  */
@@ -1536,6 +1588,18 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 101:
 		slice((Player*) inv->getObjectParameter());
+		break;
+	case 102:
+		setItnocrc(inv->getUnsignedIntParameter());
+		break;
+	case 103:
+		resp->insertInt(getItnocrc());
+		break;
+	case 104:
+		resp->insertLong(getITNO()->_getObjectID());
+		break;
+	case 105:
+		addToDatapad((Player*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -1926,6 +1990,22 @@ void TangibleObjectAdapter::decay(float decayRate) {
 
 void TangibleObjectAdapter::slice(Player* slicer) {
 	return ((TangibleObjectImplementation*) impl)->slice(slicer);
+}
+
+void TangibleObjectAdapter::setItnocrc(unsigned int itnocrc) {
+	return ((TangibleObjectImplementation*) impl)->setItnocrc(itnocrc);
+}
+
+unsigned int TangibleObjectAdapter::getItnocrc() {
+	return ((TangibleObjectImplementation*) impl)->getItnocrc();
+}
+
+IntangibleObject* TangibleObjectAdapter::getITNO() {
+	return ((TangibleObjectImplementation*) impl)->getITNO();
+}
+
+void TangibleObjectAdapter::addToDatapad(Player* player) {
+	return ((TangibleObjectImplementation*) impl)->addToDatapad(player);
 }
 
 /*

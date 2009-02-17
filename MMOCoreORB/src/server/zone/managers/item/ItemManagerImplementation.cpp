@@ -505,6 +505,15 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(Player* pl
 			item->setAttributes(lootAttributes);
 			item->parseItemAttributes();
 		}
+	} else if (objecttype & TangibleObjectImplementation::VEHICLE){
+		item = new MountCreature(objectid, objectcrc, objectname, objecttemp);
+		MountCreature* mount = (MountCreature*)item;
+		mount->setLinkedCreature(player);
+		item->setZoneProcessServer(player->getZoneProcessServer());
+		if (makeStats && item !=NULL) {
+			item->setAttributes(lootAttributes);
+			item->parseItemAttributes();
+		}
 	}
 	/*else {
 		item = new TangibleObjectImplementation(objectid, objectname, objecttemp, objectcrc, equipped);
@@ -1663,12 +1672,87 @@ void ItemManagerImplementation::loadPlayerDatapadItems(Player* player) {
 	try {
 		StringBuffer query;
 
-		query << "SELECT datapad.inx, datapad.character_id, datapad.name, datapad.itnocrc, datapad.item_crc, "
-			<< "datapad.file_name, datapad.attributes, datapad.appearance, datapad.itemMask, datapad.obj_id "
+		query << "SELECT datapad.item_id, datapad.character_id, datapad.name, datapad.itno_crc, datapad.tano_crc, "
+			<< "datapad.tano_type, datapad.tano_name, datapad.attributes, datapad.appearance, datapad.itemMask "
 			<< "FROM datapad where character_id = " << player->getCharacterID() << ";";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
+		while (res->next()) {
+			createDatapadItem(player, res);
+		}
+
+		delete res;
+
+	} catch (DatabaseException& e) {
+		player->error("Load Datapad exception in : ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player)");
+		player->error(e.getMessage());
+	} catch (...) {
+		System::out << "Exception in ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player)\n";
+		player->error("Load Datapad unknown exception in : ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player)");
+	}
+}
+
+void ItemManagerImplementation::createDatapadItem(Player* player, ResultSet* result) {
+	uint64 objectid = result->getUnsignedLong(0);
+
+	int objecttype = result->getInt(5);
+	uint32 objectcrc = result->getUnsignedInt(4);
+
+	String objectname = result->getString(2);
+	char* objecttemp = result->getString(6); // template_name
+
+	String appearance = result->getString(8);
+
+	uint16 itemMask = result->getUnsignedInt(9);
+
+	if (itemMask == 0)
+		itemMask = TangibleObjectImplementation::ALL;
+
+	BinaryData cust(appearance);
+
+	String custStr;
+	cust.decode(custStr);
+
+	String attributes = result->getString(7);
+	uint32 itnocrc = result->getUnsignedInt(3);
+	if(objectcrc == TangibleObjectImplementation::MANUFACTURINGSCHEMATIC){
+		//will implement this with more info on manufacturing schematics
+		return;
+	} else if (objectcrc == SceneObjectImplementation::MISSION){
+		//will implement this with more info on missions.
+		return;
+	} else{
+		TangibleObject* item = createPlayerObjectTemplate(player, objecttype, objectid, objectcrc,
+				UnicodeString(objectname), objecttemp, false, false, "", 0);
+
+		if (item == NULL)
+			return;
+
+		item->setAttributes(attributes);
+		item->parseItemAttributes();
+
+		item->setObjectSubType(objecttype);
+
+		item->setPlayerUseMask(itemMask);
+
+		item->setCustomizationString(custStr);
+
+		item->setPersistent(true);
+
+		server->addObject(item);
+
+		item->setItnocrc(itnocrc);
+		item->addToDatapad(player);
+
+		if(item->getITNO() != NULL)
+			item->getITNO()->sendTo(player, true);
+
+		UpdateContainmentMessage* ucm = new UpdateContainmentMessage(item, player->getDatapad(), 0xFFFFFFFF);
+		player->sendMessage(ucm);
+	}
+}
+/*
 		MountCreature* land = NULL;
 
 		while (res->next()) {
@@ -1707,7 +1791,7 @@ void ItemManagerImplementation::loadPlayerDatapadItems(Player* player) {
 		player->error("Load Datapad unknown exception in : ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player)");
 	}
 
-}
+}*/
 
 void ItemManagerImplementation::unloadPlayerItems(Player* player) {
 	Inventory* inventory = player->getInventory();

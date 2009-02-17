@@ -54,8 +54,14 @@ interface MountCreature implements Creature {
 			unsigned int itnocrc, unsigned int objCRC, unsigned long oid) {
 		super(oid);
 	}
+	
+	MountCreature(unsigned long oid, unsigned int tempcrc, const UnicodeString n, const String tempn){
+		super(oid);
+	}
 
 	void setMountType(int type);
+	void setLinkedCreature(CreatureObject linkCreature);
+	void setObjectFileName(String name);
 	
 	int getMountType();
 	boolean isVehicle();
@@ -64,24 +70,19 @@ interface MountCreature implements Creature {
 	boolean isJetpack();
 	
 	CreatureObject getLinkedCreature();
-	IntangibleObject getITNO();
 	
 	void call();
 	void store(boolean doLock = true);
 	
 	int useObject(Player player);
 	
-	void addToDatapad();
-	
 	void setInstantMount(boolean val);	
 	
 	boolean isInWorld();
 	
-	unsigned int getItnocrc();
-	
 	void parseItemAttributes();
-	void setAttributes(String attributeString);
-	String getAttributes();
+	//void setAttributes(String attributeString);
+	//String getAttributes();
 	
 	void repair();
 	

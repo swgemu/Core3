@@ -21,6 +21,8 @@ class Player;
 
 class DraftSchematic;
 
+class IntangibleObject;
+
 #include "../scene/SceneObject.h"
 
 class TangibleObject : public SceneObject {
@@ -222,6 +224,14 @@ public:
 	void decay(float decayRate);
 
 	void slice(Player* slicer);
+
+	void setItnocrc(unsigned int itnocrc);
+
+	unsigned int getItnocrc();
+
+	IntangibleObject* getITNO();
+
+	void addToDatapad(Player* player);
 
 protected:
 	TangibleObject(DummyConstructorParameter* param);
@@ -435,6 +445,14 @@ public:
 	void decay(float decayRate);
 
 	void slice(Player* slicer);
+
+	void setItnocrc(unsigned int itnocrc);
+
+	unsigned int getItnocrc();
+
+	IntangibleObject* getITNO();
+
+	void addToDatapad(Player* player);
 
 protected:
 	String _param0_setCraftersName__String_;
