@@ -72,6 +72,9 @@ public:
 			Player* squadLeader = (Player*)creature;
 			GroupObject* group = squadLeader->getGroupObject();
 
+			if (group == NULL)
+				return;
+
 			CombatManager* cm = squadLeader->getZoneProcessServer()->getCombatManager();
 
 			int squadLeaderZoneID = squadLeader->getZoneID();
