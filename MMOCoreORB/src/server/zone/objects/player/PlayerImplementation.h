@@ -53,6 +53,7 @@ which carries forward this exception.
 
 #include "PlayerObject.h"
 
+#include "professions/SkillBoxMap.h"
 #include "professions/SkillBox.h"
 #include "professions/XpMap.h"
 
@@ -169,7 +170,7 @@ class PlayerImplementation : public PlayerServant {
 	int factionStatus;
 
 	// Profession stuff
-	VectorMap<String, SkillBox*> skillBoxes;
+	SkillBoxMap skillBoxes;
 	SortedVector<SkillBox*> skillBoxesToSave;
 	VectorMap<String, Certification*> certificationList;
 	VectorMap<String, int> xpCapList;
@@ -996,16 +997,20 @@ public:
 	bool trainSkillBox(const String& name, bool updateClient = true);
 	bool surrenderSkillBox(const String& name, bool updateClient = true);
 
-	int getSkillBoxesMapSize() {
+	void resetSkillBoxesIterator() {
+		skillBoxes.resetIterator();
+	}
+
+	int getSkillBoxesSize() {
 		return skillBoxes.size();
 	}
 
-	SkillBox* getSkillBox(int index) {
-		return skillBoxes.get(index);
+	String& getNextSkillBox() {
+		return skillBoxes.getNextValue()->getName();
 	}
 
-	String& getSkillBoxName(int index) {
-		return skillBoxes.get(index)->getName();
+	bool hasNextSkillBox() {
+		return skillBoxes.hasNext();
 	}
 
 	// duel list manipulation methods
@@ -1547,23 +1552,8 @@ public:
 		playerObject = obj;
 	}
 
-	inline bool hasSkillBox(const String& skillBox) {
-		if(skillBoxes.size() > 0)
-			return skillBoxes.contains(skillBox);
-		else
-			return false;
-	}
-
-	inline bool hasChildSkillBox(const String& skillBox) {
-		ProfessionManager* pm = server->getProfessionManager();
-		SkillBox* sBox = pm->getSkillBox(skillBox);
-
-		for(int i = 0; i < sBox->getChildrenListSize(); i++) {
-			if(skillBoxes.contains(sBox->getChild(i)))
-				return true;
-		}
-
-		return false;
+	inline bool hasSkillBox(String& skillBox) {
+		return skillBoxes.containsKey(skillBox);
 	}
 
 	inline int getPvpRating() {

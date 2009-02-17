@@ -76,7 +76,6 @@ private:
 	void loadSkillCommands(SkillBox* skillBox, String& skillCommands);
 	void loadSkillMods(SkillBox* skillBox, String& skillMods);
 	void loadDraftSchematics(SkillBox* skillBox, String& grantedDraftSchematics);
-	void loadChildren(SkillBox* skillBox, String& skillChildren);
 
 public:
 

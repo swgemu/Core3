@@ -1938,7 +1938,7 @@ void PlayerImplementation::queueFlourish(const String& modifier, uint64 target, 
 
 	String skillBox = "social_entertainer_novice";
 
-	if (!hasSkillBox(skillBox)) {
+	if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
 		// TODO: sendSystemMessage("cmd_err", "ability_prose", creature);
 		sendSystemMessage("You do not have sufficient abilities to Flourish");
 		return;
@@ -4141,7 +4141,7 @@ void PlayerImplementation::addSkillBox(SkillBox* skillBox, bool updateClient) {
 }
 
 void PlayerImplementation::removeSkillBox(SkillBox* skillBox, bool updateClient) {
-	skillBoxes.drop(skillBox->getName());
+	skillBoxes.remove(skillBox->getName());
 	loadXpTypeCap();
 
 	if (updateClient) {
@@ -4929,10 +4929,11 @@ int PlayerImplementation::getXpTypeCap(String xptype) {
 }
 
 void PlayerImplementation::loadXpTypeCap() {
+	resetSkillBoxesIterator();
 	xpCapList.removeAll();
 
-	for(int i = 0; i < skillBoxes.size(); i++) {
-		SkillBox *skillbox = skillBoxes.get(i);
+	while (hasNextSkillBox()) {
+		SkillBox *skillbox = skillBoxes.getNextValue();
 
 		if (skillbox->isNoviceBox()) {
 			Profession *prof = skillbox->getProfession();
@@ -4979,13 +4980,14 @@ void PlayerImplementation::loadXpTypeCap() {
 }
 
 int PlayerImplementation::calcPlayerLevel(String xptype) {
+	resetSkillBoxesIterator();
 	playerLevel = 0;
 
 	if (xptype == "jedi_general") {
 		playerLevel = 10;
 		int skillnum = 0;
-		for(int i = 0; i < skillBoxes.size(); i++) {
-			SkillBox *skillbox = skillBoxes.get(i);
+		while (hasNextSkillBox()) {
+			SkillBox *skillbox = skillBoxes.getNextValue();
 			if (skillbox->getSkillXpType() == "jedi_general")
 				skillnum += 1;
 
@@ -5009,8 +5011,8 @@ int PlayerImplementation::calcPlayerLevel(String xptype) {
 	else
 		wtype = weap->getType();
 
-	for(int i = 0; i < skillBoxes.size(); i++) {
-		SkillBox *skillbox = skillBoxes.get(i);
+	while ( hasNextSkillBox() ) {
+		SkillBox *skillbox = skillBoxes.getNextValue();
 		switch (wtype) {
 		case WeaponImplementation::UNARMED:
 			if (skillbox->getName() == "combat_unarmed_master") {
@@ -5167,13 +5169,15 @@ void PlayerImplementation::teachPlayer(Player* player) {
 
 	Vector<SkillBox*> trainboxes;
 
-	if (skillBoxes.size() <= 0) {
+	resetSkillBoxesIterator();
+
+	if (!hasNextSkillBox()) {
 		sendSystemMessage("teaching","no_skills");
 		return;
 	}
 
-	for(int i = 0; i < skillBoxes.size(); i++) {
-		SkillBox* sBox = skillBoxes.get(i);
+	while (hasNextSkillBox()) {
+		SkillBox* sBox = skillBoxes.getNextValue();
 
 		if (sBox->isNoviceBox())
 			continue;

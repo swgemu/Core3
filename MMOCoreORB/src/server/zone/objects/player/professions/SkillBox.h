@@ -57,7 +57,6 @@ class SkillBox {
 	int skillBoxId;
 
 	SkillBox* parent;
-	Vector<String> children;
 	Profession* profession;
 
 	bool skillGodOnly;
@@ -216,18 +215,6 @@ public:
 
 	inline SkillBox* getParent() {
 		return parent;
-	}
-
-	inline int getChildrenListSize() {
-		return children.size();
-	}
-
-	void addChild(const String& childSkillName) {
-		children.add(childSkillName);
-	}
-
-	inline String& getChild(int index) {
-		return children.get(index);
 	}
 
 	inline int getSkillBoxId() {

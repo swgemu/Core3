@@ -82,7 +82,7 @@ void SkillManager::loadSkillBox(SkillBox* skillBox, PlayerImplementation* player
 	if (player == NULL || skillBox == NULL)
 		return;
 
-	if (player->hasSkillBox(skillBox->getName()))
+	if (player->skillBoxes.containsKey(skillBox->getName()))
 		return;
 
 	SkillBox* skillBoxReq = NULL;
@@ -149,7 +149,7 @@ void SkillManager::loadDraftSchematics(SkillBox* skillBox, PlayerImplementation*
 }
 
 void SkillManager::removeSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient) {
-	if (!player->hasSkillBox(skillBox->getName()))
+	if (!player->skillBoxes.containsKey(skillBox->getName()))
 		return;
 
 	player->removeSkillBox(skillBox, updateClient);

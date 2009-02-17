@@ -187,7 +187,7 @@ void ProfessionManager::saveProfessions(PlayerImplementation* player) {
 }
 
 bool ProfessionManager::trainSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient) {
-	if (player->hasSkillBox(skillBox->getName()))
+	if (player->skillBoxes.containsKey(skillBox->getName()))
 		return false;
 
 	if ((player->skillPoints + skillBox->skillPointsRequired) > 250)
@@ -195,7 +195,7 @@ bool ProfessionManager::trainSkillBox(SkillBox* skillBox, PlayerImplementation* 
 
 	for (int i = 0; i < skillBox->requiredSkills.size(); i++) {
 		SkillBox* sBox = skillBox->requiredSkills.get(i);
-		if (!player->skillBoxes.contains(sBox->getName()))
+		if (!player->skillBoxes.containsKey(sBox->getName()))
 			return false;
 	}
 
@@ -222,9 +222,7 @@ bool ProfessionManager::trainSkillBox(const String& skillBox, PlayerImplementati
 }
 
 bool ProfessionManager::surrenderSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient) {
-	if (!player->hasSkillBox(skillBox->getName()))
-		return false;
-	else if(player->hasChildSkillBox(skillBox->getName())) {
+	if (!player->skillBoxesToSave.contains(skillBox)) {
 		return false;
 	} else {
 		skillManager->removeSkillBox(skillBox, player, updateClient);
@@ -378,7 +376,7 @@ SkillBox* ProfessionManager::loadSkillBox(ResultSet* result, Profession* profess
 
 	String skillParent = result->getString(2);
 
-	if (!skillParent.isEmpty()) {
+	if (skillParent.length() > 1) {
 		SkillBox* parent = skillBoxMap.get(skillParent);
 		if (parent != NULL) {
 			skillBox->setParent(parent);
@@ -417,17 +415,13 @@ SkillBox* ProfessionManager::loadSkillBox(ResultSet* result, Profession* profess
 
 	skillBox->setSkillIsSearchable(result->getInt(26));
 
-	String skillChildren = result->getString(28);
-
-	loadChildren(skillBox, skillChildren);
-
 	skillBoxMap.put(skillBox->getName(), skillBox);
 
 	return skillBox;
 }
 
 void ProfessionManager::loadSkillRequirements(SkillBox* skillBox, String& skillRequirements) {
-	if (!skillRequirements.isEmpty()) {
+	if (skillRequirements.length() > 1) {
 		StringTokenizer tokenizer(skillRequirements);
 		tokenizer.setDelimeter(",");
 
@@ -441,7 +435,7 @@ void ProfessionManager::loadSkillRequirements(SkillBox* skillBox, String& skillR
 }
 
 void ProfessionManager::loadSkillPreclusions(SkillBox* skillBox, String& skillPreclusions) {
-	if (!skillPreclusions.isEmpty()) {
+	if (skillPreclusions.length() > 1) {
 		StringTokenizer tokenizer(skillPreclusions);
 		tokenizer.setDelimeter(",");
 
@@ -455,7 +449,7 @@ void ProfessionManager::loadSkillPreclusions(SkillBox* skillBox, String& skillPr
 }
 
 void ProfessionManager::loadSkillSpeciesRequired(SkillBox* skillBox, String& skillSpeciesRequired) {
-	if (!skillSpeciesRequired.isEmpty()) {
+	if (skillSpeciesRequired.length() > 1) {
 		StringTokenizer tokenizer(skillSpeciesRequired);
 		tokenizer.setDelimeter(",");
 
@@ -469,7 +463,7 @@ void ProfessionManager::loadSkillSpeciesRequired(SkillBox* skillBox, String& ski
 }
 
 void ProfessionManager::loadSkillCommands(SkillBox* skillBox, String& skillCommands) {
-	if (!skillCommands.isEmpty()) {
+	if (skillCommands.length() > 1) {
 		StringTokenizer tokenizer(skillCommands);
 		tokenizer.setDelimeter(",");
 
@@ -501,7 +495,7 @@ void ProfessionManager::loadSkillCommands(SkillBox* skillBox, String& skillComma
 }
 
 void ProfessionManager::loadSkillMods(SkillBox* skillBox, String& skillMods) {
-	if (!skillMods.isEmpty()) {
+	if (skillMods.length() > 1) {
 		StringTokenizer tokenizer(skillMods);
 		tokenizer.setDelimeter(",");
 
@@ -519,7 +513,7 @@ void ProfessionManager::loadSkillMods(SkillBox* skillBox, String& skillMods) {
 }
 
 void ProfessionManager::loadDraftSchematics(SkillBox* skillBox, String& grantedDraftSchematics) {
-	if (!grantedDraftSchematics.isEmpty()) {
+	if (grantedDraftSchematics.length() > 1) {
 		StringTokenizer tokenizer(grantedDraftSchematics);
 		tokenizer.setDelimeter(",");
 
@@ -528,20 +522,6 @@ void ProfessionManager::loadDraftSchematics(SkillBox* skillBox, String& grantedD
 			tokenizer.getStringToken(draftSchematic);
 
 			skillBox->addGrantedSchematic(draftSchematic);
-		}
-	}
-}
-
-void ProfessionManager::loadChildren(SkillBox* skillBox, String& skillChildren) {
-	if (!skillChildren.isEmpty()) {
-		StringTokenizer tokenizer(skillChildren);
-		tokenizer.setDelimeter(",");
-
-		while (tokenizer.hasMoreTokens()) {
-			String skillChild;
-			tokenizer.getStringToken(skillChild);
-
-			skillBox->addChild(skillChild);
 		}
 	}
 }

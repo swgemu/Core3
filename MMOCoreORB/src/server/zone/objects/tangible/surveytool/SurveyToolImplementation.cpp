@@ -113,7 +113,7 @@ int SurveyToolImplementation::useObject(Player* player) {
 		return 0;
 	}
 
-	if (player->hasSkillBox(noviceSkill)) {
+	if (player->getSkillBoxesSize() && player->hasSkillBox(noviceSkill)) {
 
 		checkSurveyRange(player);
 
