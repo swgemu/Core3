@@ -51,27 +51,27 @@ imperialDarkTrooper = Creature:new {
 	stfName = "mob/creature_names",
 	objectCRC = 1312348723, 
 	socialGroup = "imperial",
-	level = 228,	
+	level = 35,	
 
 	combatFlags = 0,
 
-	healthMax = 250000,
-	healthMin = 240000,
-	strength = 50000,
-	constitution = 50000,
+	healthMax = 25000,
+	healthMin = 20000,
+	strength = 1000,
+	constitution = 1000,
 
-	actionMax = 250000,
-	actionMin = 240000,
-	quickness = 50000,
-	stamina = 50000,
+	actionMax = 25000,
+	actionMin = 20000,
+	quickness = 1000,
+	stamina = 1000,
 
-	mindMax = 250000,
-	mindMin = 240000,
-	focus = 50000,
-	willpower = 50000,
+	mindMax = 25000,
+	mindMin = 20000,
+	focus = 1000,
+	willpower = 1000,
 
 	height = 1, -- Size of creature
-	armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 85,
 	energy = 95,
 	electricity = 10,
@@ -106,11 +106,11 @@ imperialDarkTrooper = Creature:new {
 	weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 1270,
-	weaponMaxDamage = 2250,
+	weaponMinDamage = 305,
+	weaponMaxDamage = 320,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -125,7 +125,7 @@ imperialDarkTrooper = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,11,15,19,33,42,98", -- Group it belongs to for loot
+	lootGroup = "0,11,15,19,33,42", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

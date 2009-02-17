@@ -1,1 +1,0 @@
-ALTER TABLE `swgemu`.`badge_areas` ADD COLUMN `z` FLOAT UNSIGNED NOT NULL DEFAULT 0 AFTER `y`;

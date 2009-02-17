@@ -54,7 +54,7 @@ if (PLANET_ID == 0) then
  RunCreatureFile("spawns/corellia/dungeons/afarathuCave.lua")
  RunCreatureFile("spawns/corellia/dungeons/drallCave.lua")
  RunCreatureFile("spawns/corellia/dungeons/lordNyaxCult.lua")
- RunCreatureFile("spawns/corellia/dungeons/rogueCorsec.lua")
+ RunCreatureFile("spawns/corellia/dungeons/rogueCorsecBase.lua")
  RunCreatureFile("spawns/corellia/dungeons/rebelHideout.lua")
  RunCreatureFile("spawns/corellia/dungeons/imperialStronghold.lua") 
 end
