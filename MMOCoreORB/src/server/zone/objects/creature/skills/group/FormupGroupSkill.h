@@ -68,41 +68,59 @@ public:
 			Player* squadLeader = (Player*)creature;
 			GroupObject* group = squadLeader->getGroupObject();
 
-			group->wlock();
-
 			int squadLeaderZoneID = squadLeader->getZoneID();
+
+			if (target != squadLeader)
+				target->unlock();
+
+			squadLeader->unlock();
+
+			group->wlock();
 
 			for(int i = 0; i < group->getGroupSize(); i++) {
 				CreatureObject* groupMember = (CreatureObject*)group->getGroupMember(i);
 
-				if(groupMember->getZoneID() == squadLeaderZoneID) {
-					if(System::random(99) < healDizzyChance)
-						squadLeader->healState(groupMember, CreatureState::DIZZY);
+				try {
+					groupMember->wlock(group);
 
-					if(System::random(99) < healStunChance)
-						squadLeader->healState(groupMember, CreatureState::STUNNED);
+					if (groupMember->getZoneID() == squadLeaderZoneID) {
+						if(System::random(99) < healDizzyChance)
+							squadLeader->healState(groupMember, CreatureState::DIZZY);
 
-					if(System::random(99) < healBlindChance)
-						squadLeader->healState(groupMember, CreatureState::BLINDED);
+						if(System::random(99) < healStunChance)
+							squadLeader->healState(groupMember, CreatureState::STUNNED);
 
-					if(System::random(99) < healIntimidateChance)
-						squadLeader->healState(groupMember, CreatureState::INTIMIDATED);
+						if(System::random(99) < healBlindChance)
+							squadLeader->healState(groupMember, CreatureState::BLINDED);
 
-					if(groupMember->isPlayer()) {
-						Player* player = (Player*)groupMember;
-						player->sendSystemMessage("cbt_spam", combatSpam);
-						player->sendCombatSpam(groupMember, NULL, 0, combatSpam, false);
+						if(System::random(99) < healIntimidateChance)
+							squadLeader->healState(groupMember, CreatureState::INTIMIDATED);
+
+						if(groupMember->isPlayer()) {
+							Player* player = (Player*)groupMember;
+							player->sendSystemMessage("cbt_spam", combatSpam);
+							player->sendCombatSpam(groupMember, NULL, 0, combatSpam, false);
+						}
 					}
+
+					groupMember->unlock();
+				} catch (...) {
+					groupMember->unlock();
 				}
 			}
 
 			group->unlock();
+
+			squadLeader->wlock();
 
 			squadLeader->changeHealthBar(-healthCost, true);
 			squadLeader->changeActionBar(-actionCost, true);
 			squadLeader->changeMindBar(-mindCost, true);
 
 			squadLeader->addCooldown(skillName, cooldownTime);
+
+			if (target != squadLeader)
+				target->wlock(squadLeader);
 		} else {
 			// should never get here unless we allow non players to be squad leaders
 		}

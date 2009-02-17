@@ -60,15 +60,24 @@ public:
 		if(creature->isPlayer()) {
 			Player* squadLeader = (Player*)creature;
 			GroupObject* group = squadLeader->getGroupObject();
+
+			if (group == NULL)
+				return;
+
 			int totalWounds = 0;
 			int groupWoundsAverage = 0;
 			uint8 size = creature->getWoundsArraySize();
+
+			if (target != creature)
+				target->unlock();
+
+			squadLeader->unlock();
 
 			group->wlock();
 
 			int squadLeaderZoneID = squadLeader->getZoneID();
 
-			Vector<CreatureObject*> groupMembers;
+			Vector<ManagedReference<CreatureObject> > groupMembers;
 
 			for(int i = 0; i < group->getGroupSize(); i++) {
 				CreatureObject* groupMember = (CreatureObject*)group->getGroupMember(i);
@@ -86,8 +95,13 @@ public:
 
 			groupWoundsAverage = totalWounds / (group->getGroupSize() * size);
 
+			group->unlock();
+
 			for(int i = 0; i < groupMembers.size(); i++) {
 				CreatureObject* groupMember = groupMembers.get(i);
+
+				groupMember->wlock();
+
 				for(uint8 i = 0; i < size; i++) {
 					int currentWounds = groupMember->getWounds(i);
 					int maxWounds = groupMember->getBaseAttribute(i) - 1;
@@ -103,15 +117,20 @@ public:
 
 				groupMember->sendSystemMessage("cbt_spam", combatSpam);
 				groupMember->sendCombatSpam(groupMember, NULL, 0, combatSpam, false);
+
+				groupMember->unlock();
 			}
 
-			group->unlock();
+			squadLeader->wlock();
 
 			squadLeader->changeHealthBar(-healthCost, true);
 			squadLeader->changeActionBar(-actionCost, true);
 			squadLeader->changeMindBar(-mindCost, true);
 
 			squadLeader->addCooldown(skillName, cooldownTime);
+
+			if (target != squadLeader)
+				target->wlock(squadLeader);
 		} else {
 			// should never get here unless we allow non players to be squad leaders
 		}

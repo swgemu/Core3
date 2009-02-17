@@ -66,35 +66,53 @@ public:
 			Player* squadLeader = (Player*)creature;
 			GroupObject* group = squadLeader->getGroupObject();
 
-			group->wlock();
+			if (group == NULL)
+				return;
 
 			int squadLeaderZoneID = squadLeader->getZoneID();
+
+			if (target != squadLeader)
+				target->unlock();
+
+			squadLeader->unlock();
+
+			group->wlock();
 
 			for(int i = 0; i < group->getGroupSize(); i++) {
 				CreatureObject* groupMember = (CreatureObject*)group->getGroupMember(i);
 
-				if(groupMember->getZoneID() == squadLeaderZoneID) {
-					int accB = groupMember->getAccuracyBonus();
-					groupMember->setAccuracyBonus(accB + accuracyBonus);
-					groupMember->setState(CreatureState::RALLIED);
-					groupMember->showFlyText("combat_effects", "go_rally", 0, 0xFF, 0);
-					groupMember->updateStates();
+				try {
+					groupMember->wlock(group);
 
-					rallyExpireEvent = new RallyExpireEvent(groupMember, rallyDuration, accuracyBonus);
-					if (server != NULL)
-						server->addEvent(rallyExpireEvent);
-					else
-						System::out << "Error adding RallyExpireEvent in RallyGroupSkill::doSkill\n";
+					if(groupMember->getZoneID() == squadLeaderZoneID) {
+						int accB = groupMember->getAccuracyBonus();
+						groupMember->setAccuracyBonus(accB + accuracyBonus);
+						groupMember->setState(CreatureState::RALLIED);
+						groupMember->showFlyText("combat_effects", "go_rally", 0, 0xFF, 0);
+						groupMember->updateStates();
 
-					if(groupMember->isPlayer()) {
-						Player* player = (Player*)groupMember;
-						player->sendSystemMessage("cbt_spam", combatSpam);
-						player->sendCombatSpam(groupMember, NULL, 0, combatSpam, false);
+						rallyExpireEvent = new RallyExpireEvent(groupMember, rallyDuration, accuracyBonus);
+						if (server != NULL)
+							server->addEvent(rallyExpireEvent);
+						else
+							System::out << "Error adding RallyExpireEvent in RallyGroupSkill::doSkill\n";
+
+						if(groupMember->isPlayer()) {
+							Player* player = (Player*)groupMember;
+							player->sendSystemMessage("cbt_spam", combatSpam);
+							player->sendCombatSpam(groupMember, NULL, 0, combatSpam, false);
+						}
 					}
+
+					groupMember->unlock();
+				} catch (...) {
+					groupMember->unlock();
 				}
 			}
 
 			group->unlock();
+
+			squadLeader->wlock();
 
 			squadLeader->changeHealthBar(-healthCost, true);
 			squadLeader->changeActionBar(-actionCost, true);
@@ -102,6 +120,8 @@ public:
 
 			squadLeader->addCooldown(skillName, cooldownTime);
 
+			if (target != squadLeader)
+				target->wlock(squadLeader);
 		} else {
 			// should never get here unless we allow non players to be squad leaders
 		}

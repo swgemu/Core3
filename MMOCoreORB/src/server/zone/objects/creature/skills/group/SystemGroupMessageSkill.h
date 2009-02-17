@@ -64,15 +64,25 @@ public:
 			Player* player = (Player*)creature;
 			GroupObject* group = player->getGroupObject();
 
-			group->wlock();
+			if (group == NULL)
+				return;
+
+			if (player != target)
+				target->unlock();
+
+			group->wlock(player);
 
 			String groupMessage = sqLead + player->getCharacterName().toString() + colon + modifier;
-			for(int i = 0; i < group->getGroupSize(); i++) {
+
+			for(int i = 0; i < group->getGroupSize(); ++i) {
 				CreatureObject* groupMember = (CreatureObject*)group->getGroupMember(i);
 				groupMember->sendSystemMessage(groupMessage);
 			}
 
 			group->unlock();
+
+			if (player != target)
+				target->wlock(player);
 		}
 	}
 

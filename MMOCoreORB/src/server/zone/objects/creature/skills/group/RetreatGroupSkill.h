@@ -67,6 +67,9 @@ public:
 		Player* squadLeader = (Player*)creature;
 		GroupObject* group = squadLeader->getGroupObject();
 
+		if (group == NULL)
+			return;
+
 		//Deduct HAM costs from the Squad Leader.
 		squadLeader->changeHealthBar(-healthCost, false);
 		squadLeader->changeActionBar(-actionCost, false);
@@ -74,22 +77,34 @@ public:
 
 		squadLeader->sendSystemMessage("You have ordered a retreat!");
 
+		if (target != creature)
+			target->unlock();
+
+		squadLeader->unlock();
+
 		try {
 			group->wlock();
 
 			for(int i = 0; i < group->getGroupSize(); i++) {
 				CreatureObject* groupMember = (CreatureObject*)group->getGroupMember(i);
 
-				//System message and combat spam.
-				if (groupMember != squadLeader) {
-					groupMember->sendCombatSpam(groupMember, NULL, 0, combatSpam, false);
-					groupMember->sendSystemMessage("cbt_spam", "retreat_buff"); //"Your squad leader has ordered a retreat!"
-				}
+				try {
+					groupMember->wlock(group);
+					//System message and combat spam.
+					if (groupMember != squadLeader) {
+						groupMember->sendCombatSpam(groupMember, NULL, 0, combatSpam, false);
+						groupMember->sendSystemMessage("cbt_spam", "retreat_buff"); //"Your squad leader has ordered a retreat!"
+					}
 
-				//Effect and buff.
-				if (groupMember != squadLeader || buffSL) {
-					groupMember->playEffect(effect, "");
-					groupMember->activateBurstRun(true);
+					//Effect and buff.
+					if (groupMember != squadLeader || buffSL) {
+						groupMember->playEffect(effect, "");
+						groupMember->activateBurstRun(true);
+					}
+
+					groupMember->unlock();
+				} catch (...) {
+					groupMember->unlock();
 				}
 			}
 
@@ -99,6 +114,11 @@ public:
 			group->unlock();
 			System::out << "Exception in RetreatGroupSkill::doSkill()\n";
 		}
+
+		squadLeader->wlock();
+
+		if (target != squadLeader)
+			target->wlock(squadLeader);
 
 		//Add cooldown.
 		squadLeader->addCooldown(skillName, cooldownTime);
