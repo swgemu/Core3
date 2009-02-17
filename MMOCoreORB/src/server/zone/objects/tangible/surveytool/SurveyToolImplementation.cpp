@@ -328,8 +328,13 @@ void SurveyToolImplementation::sendSampleEffect(Player* player) {
 }
 
 void SurveyToolImplementation::surveyRequest(Player* player, String resourceName) {
+	if (!player->changeMindBar(-50)) {
+		player->sendSystemMessage("error_message", "survey_mind"); //You are exhausted. You need to clear your head before you can survey again.
+		return;
+	}
+
 	if (player->getParent() != NULL && player->getParent()->isCell()) {
-		player->sendSystemMessage("You cannot perform survey-related actions inside a structure.");
+		player->sendSystemMessage("error_message", "survey_in_structure"); //You cannot perform survey-related actions inside a structure.
 		return;
 	}
 

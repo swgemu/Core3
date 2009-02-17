@@ -3485,8 +3485,7 @@ void ObjectControllerMessage::parseSurveyRequest(Player* player,
 
 	if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
 		if (player->getSurveyTool() == NULL) {
-			player->sendSystemMessage(
-					"You must use a survey tool once from the Inventory before you can do this.");
+			player->sendSystemMessage("ui", "survey_notool"); //You must use a survey tool once from the Inventory before you can do this.
 			return;
 		}
 		player->getSurveyTool()->surveyRequest(player, resName);
