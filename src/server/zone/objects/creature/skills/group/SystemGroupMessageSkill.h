@@ -67,7 +67,7 @@ public:
 			if (group == NULL)
 				return;
 
-			if (player != target)
+			if (player != target && target != NULL)
 				target->unlock();
 
 			group->wlock(player);
@@ -81,7 +81,7 @@ public:
 
 			group->unlock();
 
-			if (player != target)
+			if (player != target && target != NULL)
 				target->wlock(player);
 		}
 	}

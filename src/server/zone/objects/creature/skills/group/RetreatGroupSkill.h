@@ -77,7 +77,7 @@ public:
 
 		squadLeader->sendSystemMessage("You have ordered a retreat!");
 
-		if (target != creature)
+		if (target != creature && target != NULL)
 			target->unlock();
 
 		squadLeader->unlock();
@@ -117,7 +117,7 @@ public:
 
 		squadLeader->wlock();
 
-		if (target != squadLeader)
+		if (target != squadLeader && target != NULL)
 			target->wlock(squadLeader);
 
 		//Add cooldown.

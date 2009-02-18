@@ -85,7 +85,7 @@ public:
 
 			squadLeader->addCooldown(skillName, cooldownTime);
 
-			if (squadLeader != target)
+			if (squadLeader != target && target != NULL)
 				target->unlock();
 
 			squadLeader->unlock();
@@ -122,7 +122,7 @@ public:
 
 			squadLeader->wlock();
 
-			if (squadLeader != target)
+			if (squadLeader != target && target != NULL)
 				target->wlock(squadLeader);
 		} else {
 			// should never get here unless we allow non players to be squad leaders
