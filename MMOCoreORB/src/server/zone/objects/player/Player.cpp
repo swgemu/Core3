@@ -5938,6 +5938,18 @@ void Player::displayMessageoftheDay() {
 		((PlayerImplementation*) _impl)->displayMessageoftheDay();
 }
 
+void Player::crashClient() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 463);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->crashClient();
+}
+
 /*
  *	PlayerAdapter
  */
@@ -7319,6 +7331,9 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 462:
 		displayMessageoftheDay();
+		break;
+	case 463:
+		crashClient();
 		break;
 	default:
 		return NULL;
@@ -9153,6 +9168,10 @@ void PlayerAdapter::closeSuiWindowType(unsigned int windowType) {
 
 void PlayerAdapter::displayMessageoftheDay() {
 	return ((PlayerImplementation*) impl)->displayMessageoftheDay();
+}
+
+void PlayerAdapter::crashClient() {
+	return ((PlayerImplementation*) impl)->crashClient();
 }
 
 /*

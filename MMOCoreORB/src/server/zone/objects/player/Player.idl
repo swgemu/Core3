@@ -804,4 +804,6 @@ interface Player implements CreatureObject {
 
 	//motd
 	void displayMessageoftheDay();
+	
+	void crashClient();
 }

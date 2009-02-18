@@ -995,6 +995,8 @@ public:
 
 	void displayMessageoftheDay();
 
+	void crashClient();
+
 protected:
 	Player(DummyConstructorParameter* param);
 
@@ -1943,6 +1945,8 @@ public:
 	void closeSuiWindowType(unsigned int windowType);
 
 	void displayMessageoftheDay();
+
+	void crashClient();
 
 protected:
 	String _param0_queueFlourish__String_long_int_;

@@ -770,12 +770,14 @@ void GameCommandHandler::kick(StringTokenizer tokenizer, Player* player) {
 	player->unlock();
 
 	if (name != player->getFirstName()) {
+
+		targetPlayer->crashClient();
+
 		if (server->kickUser(name, player->getFirstName())) {
 			player->sendSystemMessage("player \'" + name
 					+ "\' has been kicked.");
 		} else
 			player->sendSystemMessage("Unable to kick player \'" + name + "\'");
-
 	} else
 		player->sendSystemMessage("You can't kick yourself. Use /logout please. \n");
 
@@ -814,6 +816,7 @@ void GameCommandHandler::kickArea(StringTokenizer tokenizer, Player* player) {
 					if (server->kickUser(otherName, name)) {
 						player->sendSystemMessage("player \'" + otherName + "\' has been kicked.");
 						i--;
+						otherPlayer->crashClient();
 					} else
 					player->sendSystemMessage("Unable to kick player \'" + otherName + "\'");
 
@@ -854,6 +857,9 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 	if (tokenizer.hasMoreTokens()) {
 
 		tokenizer.getStringToken(name);
+		ChatManager * chatManager = player->getZone()->getChatManager();
+
+		targetPlayer = chatManager->getPlayer(name);
 
 	} else {
 
@@ -1023,6 +1029,9 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 			player->sendSystemMessage("player \'" + name
 					+ "\' is banned (Forum Account = " + offendersAccountName + ")");
 
+			if(targetPlayer != NULL)
+				targetPlayer->crashClient();
+
 			server->kickUser(name, player->getFirstNameProper());
 
 		} catch (...) {
@@ -1032,6 +1041,9 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 
 		}
 	} else if (server->banUser(name, player->getFirstName())) {
+
+		if(targetPlayer != NULL)
+			targetPlayer->crashClient();
 
 		player->sendSystemMessage("Player \'" + name + "\' is banned (IP)");
 
@@ -3020,7 +3032,7 @@ void GameCommandHandler::whoDroppedThis(StringTokenizer tokenizer, Player * play
 	}
 }
 
-void GameCommandHandler::sendp(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::sendp(StringTokenizer tokenizer, Player* player) {
 	//TESTING PURPOSES ULTYMAS.
 	player->savePlayerState(false);
 	player->sendSystemMessage("char saved");
