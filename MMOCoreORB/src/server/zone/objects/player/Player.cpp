@@ -1205,7 +1205,7 @@ void Player::lootObject(Creature* creature, SceneObject* object) {
 		((PlayerImplementation*) _impl)->lootObject(creature, object);
 }
 
-void Player::addTradeItem(TangibleObject* item) {
+void Player::addTradeItem(SceneObject* item) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1242,7 +1242,7 @@ int Player::getTradeSize() {
 		return ((PlayerImplementation*) _impl)->getTradeSize();
 }
 
-TangibleObject* Player::getTradeItem(int idx) {
+SceneObject* Player::getTradeItem(int idx) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1250,7 +1250,7 @@ TangibleObject* Player::getTradeItem(int idx) {
 		DistributedMethod method(this, 97);
 		method.addSignedIntParameter(idx);
 
-		return (TangibleObject*) method.executeWithObjectReturn();
+		return (SceneObject*) method.executeWithObjectReturn();
 	} else
 		return ((PlayerImplementation*) _impl)->getTradeItem(idx);
 }
@@ -6214,7 +6214,7 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		lootObject((Creature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
 	case 94:
-		addTradeItem((TangibleObject*) inv->getObjectParameter());
+		addTradeItem((SceneObject*) inv->getObjectParameter());
 		break;
 	case 95:
 		clearTradeItems();
@@ -7679,7 +7679,7 @@ void PlayerAdapter::lootObject(Creature* creature, SceneObject* object) {
 	return ((PlayerImplementation*) impl)->lootObject(creature, object);
 }
 
-void PlayerAdapter::addTradeItem(TangibleObject* item) {
+void PlayerAdapter::addTradeItem(SceneObject* item) {
 	return ((PlayerImplementation*) impl)->addTradeItem(item);
 }
 
@@ -7691,7 +7691,7 @@ int PlayerAdapter::getTradeSize() {
 	return ((PlayerImplementation*) impl)->getTradeSize();
 }
 
-TangibleObject* PlayerAdapter::getTradeItem(int idx) {
+SceneObject* PlayerAdapter::getTradeItem(int idx) {
 	return ((PlayerImplementation*) impl)->getTradeItem(idx);
 }
 

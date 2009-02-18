@@ -257,13 +257,13 @@ public:
 
 	void lootObject(Creature* creature, SceneObject* object);
 
-	void addTradeItem(TangibleObject* item);
+	void addTradeItem(SceneObject* item);
 
 	void clearTradeItems();
 
 	int getTradeSize();
 
-	TangibleObject* getTradeItem(int idx);
+	SceneObject* getTradeItem(int idx);
 
 	void setAcceptedTrade(bool val);
 
@@ -1206,13 +1206,13 @@ public:
 
 	void lootObject(Creature* creature, SceneObject* object);
 
-	void addTradeItem(TangibleObject* item);
+	void addTradeItem(SceneObject* item);
 
 	void clearTradeItems();
 
 	int getTradeSize();
 
-	TangibleObject* getTradeItem(int idx);
+	SceneObject* getTradeItem(int idx);
 
 	void setAcceptedTrade(bool val);
 

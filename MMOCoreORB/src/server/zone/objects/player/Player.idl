@@ -237,10 +237,10 @@ interface Player implements CreatureObject {
 	void lootObject(Creature creature, SceneObject object);
 
 	// trade
-	void addTradeItem(TangibleObject item);
+	void addTradeItem(SceneObject item);
 	void clearTradeItems();
 	int getTradeSize();
-	TangibleObject getTradeItem(int idx);
+	SceneObject getTradeItem(int idx);
 
 	void setAcceptedTrade(boolean val);
 	boolean hasAcceptedTrade();
