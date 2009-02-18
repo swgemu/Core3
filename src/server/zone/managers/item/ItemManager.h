@@ -15,6 +15,8 @@ class Zone;
 
 class TangibleObject;
 
+class IntangibleObject;
+
 class SceneObject;
 
 class Weapon;
@@ -52,6 +54,8 @@ public:
 	TangibleObject* initializeTangibleForCrafting(Player* player, int objecttype, unsigned long long objectid, unsigned long long objectcrc, String& objectn, String& objecttemp, bool equipped);
 
 	void savePlayerItem(Player* player, TangibleObject* item);
+
+	void savePlayerDatapadItem(Player* player, IntangibleObject* itno);
 
 	void deletePlayerItem(Player* player, TangibleObject* item, bool notify);
 
@@ -118,6 +122,8 @@ public:
 	TangibleObject* initializeTangibleForCrafting(Player* player, int objecttype, unsigned long long objectid, unsigned long long objectcrc, String& objectn, String& objecttemp, bool equipped);
 
 	void savePlayerItem(Player* player, TangibleObject* item);
+
+	void savePlayerDatapadItem(Player* player, IntangibleObject* itno);
 
 	void deletePlayerItem(Player* player, TangibleObject* item, bool notify);
 

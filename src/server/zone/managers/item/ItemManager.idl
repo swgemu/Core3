@@ -47,6 +47,7 @@ import "server/zone/Zone";
 include "server/zone/ZoneProcessServerImplementation";
 
 import "../../objects/tangible/TangibleObject";
+import "../../objects/intangible/IntangibleObject";
 import "../../objects/scene/SceneObject";
 
 import "../../objects/tangible/weapons/Weapon";
@@ -83,6 +84,7 @@ interface ItemManager {
 			String objecttemp, boolean equipped);
 
 	void savePlayerItem(Player player, TangibleObject item); 
+	void savePlayerDatapadItem(Player player, IntangibleObject itno);
 
 	void deletePlayerItem(Player player, TangibleObject item, boolean notify);
 	

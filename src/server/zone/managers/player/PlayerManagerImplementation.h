@@ -132,6 +132,7 @@ public:
 	void updateGuildStatus(Player* player);
 
 	void moveItem(Player* sender, Player* receiver, TangibleObject* item);
+	void moveItem(Player* sender, Player* receiver, IntangibleObject* item);
 
 	// setters
 	inline void setGuildManager(GuildManager* gmanager) {

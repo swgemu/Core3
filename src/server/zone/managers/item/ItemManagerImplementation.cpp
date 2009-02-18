@@ -1901,6 +1901,44 @@ void ItemManagerImplementation::deletePlayerItem(Player* player, TangibleObject*
 	}
 }
 
+void ItemManagerImplementation::savePlayerDatapadItem(Player* player, IntangibleObject* itno) {
+	try {
+		String appearance = " ";//i think there is supposed to be a space here. dont remove it!
+		String itemApp = "";
+		String attr = "";
+
+		SceneObject* scno = itno->getWorldObject();
+		if(scno != NULL){
+			if(scno->isTangible() || scno->isNonPlayerCreature()){
+				TangibleObject* tano = (TangibleObject*) scno;
+
+				tano->getCustomizationString(itemApp);
+				BinaryData cust(itemApp);
+				cust.encode(appearance);
+
+				attr = tano->getAttributes();
+			}
+		}
+
+		MySqlDatabase::escapeString(attr);
+
+		StringBuffer query;
+
+		query << "UPDATE `datapad` set character_id = " << player->getCharacterID() << " ";
+		query << ", attributes = '" << attr << "' ";
+		query << ", appearance = '" << appearance.subString(0, appearance.length() - 1) << "' ";
+		query << ", itemMask = 65535" << " ";
+		query << "where item_id = " << itno->getObjectID();
+
+		ServerDatabase::instance()->executeStatement(query);
+
+	} catch (DatabaseException& e) {
+		System::out << e.getMessage() << "\n";
+	} catch (...) {
+		System::out << "unreported exception caught in ItemManagerImplementation::savePlayerDatapadItem(Player* player, IntangibleObject* item)\n";
+	}
+}
+
 void ItemManagerImplementation::showDbStats(Player* player) {
 	StringBuffer txt;
 	txt << "Database Statistics\n";

@@ -227,7 +227,7 @@ class PlayerImplementation : public PlayerServant {
 
 	// trading
 	uint64 tradeRequestedPlayer;
-	Vector<TangibleObject*> tradeItems;
+	Vector<SceneObject*> tradeItems;
 	uint32 moneyToTrade;
 	bool acceptedTrade;
 	bool verifiedTrade;
@@ -585,7 +585,7 @@ public:
 	}
 
 	// trade mehtods
-	void addTradeItem(TangibleObject* item) {
+	void addTradeItem(SceneObject* item) {
 		for (int i = 0; i < tradeItems.size(); ++i) {
 			if (tradeItems.get(i) == item)
 				return;
@@ -604,7 +604,7 @@ public:
 		return tradeItems.size();
 	}
 
-	TangibleObject* getTradeItem(int idx) {
+	SceneObject* getTradeItem(int idx) {
 		return tradeItems.get(idx);
 	}
 
