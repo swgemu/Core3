@@ -70,7 +70,7 @@ public:
 
 			int squadLeaderZoneID = squadLeader->getZoneID();
 
-			if (target != squadLeader)
+			if (target != squadLeader && target != NULL)
 				target->unlock();
 
 			squadLeader->unlock();
@@ -119,7 +119,7 @@ public:
 
 			squadLeader->addCooldown(skillName, cooldownTime);
 
-			if (target != squadLeader)
+			if (target != squadLeader && target != NULL)
 				target->wlock(squadLeader);
 		} else {
 			// should never get here unless we allow non players to be squad leaders
