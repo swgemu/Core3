@@ -2033,6 +2033,8 @@ public:
 
 	void cancelRecoveryEvent();
 
+	void crashClient();
+
 	//Setters
 	inline void setCloningFacility(CloningFacility* facility) {
 		cloningFacility = facility;
