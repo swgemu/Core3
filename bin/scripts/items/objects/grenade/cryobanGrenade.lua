@@ -40,33 +40,27 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/compositeArmorSet.lua");
-RunItemLUAFile("bluefrog/ithArmorSet.lua");
-RunItemLUAFile("bluefrog/wookieeArmorSet.lua");
+cryobanGrenade = Weapon:new {
 
-RunItemLUAFile("bluefrog/enhancePackSet.lua");
-RunItemLUAFile("bluefrog/stimPackSet.lua");
-RunItemLUAFile("bluefrog/rangedStimPackSet.lua");
-RunItemLUAFile("bluefrog/areaStimPackSet.lua");
-RunItemLUAFile("bluefrog/woundPackSet.lua");
-RunItemLUAFile("bluefrog/statePackSet.lua");
-RunItemLUAFile("bluefrog/curePackSet.lua");
-RunItemLUAFile("bluefrog/poisonPackSet.lua");
-RunItemLUAFile("bluefrog/diseasePackSet.lua");
+	objectName = "Cryoban Grenade",
 
-RunItemLUAFile("bluefrog/clothingSets.lua");
+	templateName = "object/weapon/ranged/grenade/shared_grenade_cryoban.iff",
 
-RunItemLUAFile("bluefrog/instrumentSet.lua");
+	objectCRC = 2139866976,
 
---RunItemLUAFile("bluefrog/vehicleDeedSet.lua");
---RunItemLUAFile("bluefrog/housingDeedSet.lua");
+	objectType = GRENADE,
 
-RunItemLUAFile("bluefrog/weaponSet.lua");
+	damageType = WEAPON_COLD,
 
-RunItemLUAFile("bluefrog/surveyingKit.lua");
+	armorPiercing = WEAPON_NONE,
 
-RunItemLUAFile("bluefrog/grenadeSet.lua");
---RunItemLUAFile("bluefrog/camokits.lua");
---RunItemLUAFile("bluefrog/trapSet.lua");
---RunItemLUAFile("bluefrog/campKits.lua");
---RunItemLUAFile("bluefrog/slicingTools.lua");
+	certification = "cert_grenade_cryoban",
+
+	uses = 15,
+	
+	attackSpeed = 4.0,
+
+	minDamage = 200,
+
+	maxDamage = 306,
+}

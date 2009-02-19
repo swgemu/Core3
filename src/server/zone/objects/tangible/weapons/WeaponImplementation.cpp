@@ -119,6 +119,8 @@ void WeaponImplementation::init() {
 	setMaxRange(5);
 	setMaxRangeAccuracy(0);
 
+	setArea(0.0f);
+
 	setWoundsRatio(10);
 
 	setArmorPiercing(NONE);
@@ -322,6 +324,9 @@ void WeaponImplementation::parseItemAttributes() {
 
 	name = "sliced";
 	sliced = itemAttributes->getBooleanAttribute(name);
+
+	name = "area";
+	area = itemAttributes->getFloatAttribute(name);
 }
 
 void WeaponImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
@@ -1107,6 +1112,9 @@ void WeaponImplementation::addAttributes(AttributeListMessage* alm) {
 		spdtxt << ".0";
 
 	alm->insertAttribute("wpn_attack_speed", spdtxt.toString());
+
+	if (area != 0.0f)
+		alm->insertAttribute("area", getPrecision(area, 0));
 
 	//Damage Information
 	StringBuffer dmgtxt;

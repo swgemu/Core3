@@ -371,7 +371,7 @@ interface CreatureObject implements TangibleObject {
 
 	unsigned long getCreatureLinkID();
 
-	float getDistanceTo(CreatureObject targetCreature); // temp
+	float getDistanceTo(SceneObject targetCreature); // temp
 	float getHeight();
 
 	unsigned int getCreatureSkillsCount();

@@ -53,9 +53,6 @@ class MindHealTargetSkill : public TargetSkill {
 protected:
 	String effectName;
 	int mindCost;
-	int mindWoundCost;
-
-	int mindHealed;
 
 	float speed;
 
@@ -63,9 +60,6 @@ public:
 	MindHealTargetSkill(const String& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
 		effectName = aname;
 		mindCost = 0;
-		mindWoundCost = 0;
-
-		mindHealed = 0;
 
 		speed = 0.0f;
 	}
@@ -132,29 +126,36 @@ public:
 		}
 
 		if (!creatureTarget->hasMindDamage()) {
-				if (creatureTarget)
-					creature->sendSystemMessage("healing", "no_mind_to_heal_target", creatureTarget->getObjectID()); //%NT has no mind to heal.
-				return 0;
-			}
+			if (creatureTarget)
+				creature->sendSystemMessage("healing", "no_mind_to_heal_target", creatureTarget->getObjectID()); //%NT has no mind to heal.
+			return 0;
+		}
 
-			int healPower = (int) round(150 + System::random(600));
+		float modSkill = (float) creature->getSkillMod("combat_medic_effectiveness");
+		int healPower = (int) round((100.0f + modSkill) / 100.0f * creatureTarget->getMindMax() / 2);
 
-			int healedMind = creature->healDamage(creatureTarget, CreatureAttribute::MIND, healPower);
+		int healedMind = creature->healDamage(creatureTarget, CreatureAttribute::MIND, healPower);
 
-			if (creature->isPlayer())
-				((Player*)creature)->sendBattleFatigueMessage(creatureTarget);
+		if (creature->isPlayer())
+			((Player*)creature)->sendBattleFatigueMessage(creatureTarget);
 
-			sendHealMessage(creature, creatureTarget, healedMind);
+		sendHealMessage(creature, creatureTarget, healedMind);
+		int mindWound = (int) round(500.0f * healedMind / healPower) ;
 
-		creature->changeMindBar(-mindCost);
-		creature->changeMindWoundsBar(mindWoundCost);
-		creature->changeFocusWoundsBar(mindWoundCost);
-		creature->changeWillpowerWoundsBar(mindWoundCost);
+		creature->changeMindWoundsBar(calculateWound(mindWound,creature->getMindWounds(),creature->getBaseMind()));
+		creature->changeFocusWoundsBar(calculateWound(mindWound,creature->getFocusWounds(),creature->getBaseFocus()));
+		creature->changeWillpowerWoundsBar(calculateWound(mindWound,creature->getWillpowerWounds(),creature->getBaseWillpower()));
+
 		creature->changeShockWounds(25);
 
 		doAnimations(creature, creatureTarget);
 
 		return 0;
+	}
+
+	int calculateWound(int wound, int poolWounds, int poolMax) {
+		int maxWound = poolMax - poolWounds - 1;
+		return (MAX(0,MIN(maxWound,wound)));
 	}
 
 	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, int mindDamage) {
@@ -195,14 +196,6 @@ public:
 
 	void setMindCost(int cost) {
 		mindCost = cost;
-	}
-
-	void setMindWoundCost(int cost) {
-		mindWoundCost = cost;
-	}
-
-	void setMindHealed(int mind) {
-		mindHealed = mind;
 	}
 
 	void setSpeed(float spd) {

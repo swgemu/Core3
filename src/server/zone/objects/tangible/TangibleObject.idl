@@ -142,7 +142,7 @@ interface TangibleObject implements SceneObject {
 
 	boolean isComponent();
 	boolean isTrap();
-	boolean isGranade();
+	boolean isGrenade();
 	boolean isThrowable();
 
 	boolean isWeaponPowerup();

@@ -181,10 +181,15 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 	if (tskill->isThrowSkill()) {
 		ThrowAttackTargetSkill* tarSkill = (ThrowAttackTargetSkill*) tskill;
 		ThrowableWeapon* throwWeapon= tarSkill->getThrowableWeapon(creature,actionModifier);
-		if (throwWeapon == NULL)
+
+		if (throwWeapon == NULL)  {
 			return 0.0f;
-		else
+		}
+		else {
+			if (creature->isPlayer())
+				throwWeapon->useCharge((Player*)creature);
 			actionMessage = new CombatAction(creature, animCRC,throwWeapon->getObjectID());
+		}
 	} else {
 		actionMessage = new CombatAction(creature, animCRC);
 	}
@@ -289,20 +294,6 @@ void CombatManager::handleAreaAction(CreatureObject* creature, TangibleObject* t
 	float DirectionVectorX = target->getPositionX() - CreatureVectorX;
 	float DirectionVectorY = target->getPositionY() - CreatureVectorY;
 
-	int weaponRange;
-	if (creature->getWeapon() != NULL)
-		weaponRange = creature->getWeapon()->getMaxRange();
-	else
-		weaponRange = 5;
-
-	int coneRange = weaponRange;
-	if (skill->getRange() != 0)
-		coneRange = (int)skill->getRange();
-
-	int areaRange = weaponRange;
-	if (skill->getAreaRange() != 0)
-		areaRange = (int)skill->getRange();
-
 	String actionModifier = action->getActionModifier();
 
 	Zone* zone = creature->getZone();
@@ -321,7 +312,7 @@ void CombatManager::handleAreaAction(CreatureObject* creature, TangibleObject* t
 
 		int areaRange = weaponRange;
 		if (skill->getRange() != 0)
-			areaRange = (int)skill->getRange();
+			areaRange = (int)skill->getAreaRange();
 
 		for (int i = 0; i < creature->inRangeObjectCount(); i++) {
 			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) creature->getInRangeObject(i))->_this);
@@ -361,8 +352,11 @@ void CombatManager::handleAreaAction(CreatureObject* creature, TangibleObject* t
 				if (angle > coneAngle || angle < -coneAngle)
 					continue;
 
-			} else if (!(creature->isInRange(object, areaRange)))
+			} else if (!skill->isThrowSkill() &&!(creature->isInRange(object, areaRange))) {
 				continue;
+			} else if (skill->isThrowSkill() &&!(target->isInRange(object, areaRange))) {
+				continue;
+			}
 
 			zone->unlock();
 
@@ -759,7 +753,8 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 		attackerAccuracy = creature->getAccuracy() + creature->getAccuracyBonus();
 	} else if (attackType == TRAPATTACK) {
 		attackerAccuracy = creature->getSkillMod("trapping");
-	}
+	} else if (attackType == GRENADEATTACK)
+		attackerAccuracy = creature->getSkillMod("thrown_accuracy");
 
 	if (DEBUG)
 		System::out << "\tBase attacker accuracy is " << attackerAccuracy << endl;
@@ -1325,7 +1320,7 @@ void CombatManager::calculateStates(CreatureObject* creature, CreatureObject* ta
  * \param creature The skill user.
  * \param targetCreature The target.
  */
-void CombatManager::calculateTrapStates(CreatureObject* creature,
+void CombatManager::calculateThrowItemStates(CreatureObject* creature,
 		CreatureObject* targetCreature, ThrowAttackTargetSkill* skill) {
 
 	if (skill->isMissed())
@@ -1681,7 +1676,7 @@ int CombatManager::calculateWeaponDamage(CreatureObject* creature, TangibleObjec
  * \param weapon The Trap.
  * \return The damage done.
  */
-int CombatManager::calculateTrapDamage(CreatureObject* creature, TangibleObject* target, ThrowAttackTargetSkill* skill, bool randompoolhit, Weapon* weapon) {
+int CombatManager::calculateThrowItemDamage(CreatureObject* creature, TangibleObject* target, ThrowAttackTargetSkill* skill, bool randompoolhit, bool canKill, Weapon* weapon) {
 
 	CreatureObject* targetCreature = (CreatureObject*)target;
 
@@ -1699,9 +1694,16 @@ int CombatManager::calculateTrapDamage(CreatureObject* creature, TangibleObject*
 	// Test for hit
 	if (target->isNonPlayerCreature() || target->isPlayer()) {
 		int rand = System::random(100);
-		if (rand > getHitChance(creature, (CreatureObject*)target, weapon, skill->getAccuracyBonus(), TRAPATTACK)) {
-			skill->doMiss(creature, (CreatureObject*)target, 0);
-			return -1;
+		if (weapon->isTrap()) {
+			if (rand > getHitChance(creature, (CreatureObject*)target, weapon, skill->getAccuracyBonus(), TRAPATTACK)) {
+				skill->doMiss(creature, (CreatureObject*)target, 0);
+				return -1;
+			}
+		} else if (weapon->isGrenade()) {
+			if (rand > getHitChance(creature, (CreatureObject*)target, weapon, skill->getAccuracyBonus(), GRENADEATTACK)) {
+				skill->doMiss(creature, (CreatureObject*)target, 0);
+				return -1;
+			}
 		}
 	}
 
@@ -1711,10 +1713,10 @@ int CombatManager::calculateTrapDamage(CreatureObject* creature, TangibleObject*
 	int attackType = TRAPATTACK;
 	int armorPiercing = 1;
 
-	int damage = calculateDamage(creature, target, weapon, skill, attackType, damageType, armorPiercing, minDamage, maxDamage, true, false);
+	int damage = calculateDamage(creature, target, weapon, skill, attackType, damageType, armorPiercing, minDamage, maxDamage, true, canKill);
 
 	if (damage >= 0)
-		calculateTrapStates(creature, targetCreature, skill);
+		calculateThrowItemStates(creature, targetCreature, skill);
 
 	return damage;
 }

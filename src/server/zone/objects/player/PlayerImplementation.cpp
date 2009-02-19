@@ -4653,7 +4653,6 @@ void PlayerImplementation::queueHeal(TangibleObject* medPack, uint32 actionCRC, 
 		actionModifier << attribute << "|";
 
 	actionModifier << objectID;
-
 	queueAction(_this, getTargetID(), actionCRC, ++actionCounter, actionModifier.toString());
 }
 

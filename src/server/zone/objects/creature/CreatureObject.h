@@ -457,7 +457,7 @@ public:
 
 	unsigned long long getCreatureLinkID();
 
-	float getDistanceTo(CreatureObject* targetCreature);
+	float getDistanceTo(SceneObject* targetCreature);
 
 	float getHeight();
 
@@ -1735,7 +1735,7 @@ public:
 
 	unsigned long long getCreatureLinkID();
 
-	float getDistanceTo(CreatureObject* targetCreature);
+	float getDistanceTo(SceneObject* targetCreature);
 
 	float getHeight();
 

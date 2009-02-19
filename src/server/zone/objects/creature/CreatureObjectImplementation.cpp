@@ -3486,7 +3486,7 @@ void CreatureObjectImplementation::sendSystemMessage(UnicodeString& message) {
 		((PlayerImplementation*) this)->sendSystemMessage(message);
 }
 
-float CreatureObjectImplementation::getDistanceTo(CreatureObject* targetCreature) {
+float CreatureObjectImplementation::getDistanceTo(SceneObject* targetCreature) {
 	// TEMP till
 	float x = targetCreature->getPositionX();
 	float y = targetCreature->getPositionY();

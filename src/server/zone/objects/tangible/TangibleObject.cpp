@@ -582,7 +582,7 @@ bool TangibleObject::isTrap() {
 		return ((TangibleObjectImplementation*) _impl)->isTrap();
 }
 
-bool TangibleObject::isGranade() {
+bool TangibleObject::isGrenade() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -591,7 +591,7 @@ bool TangibleObject::isGranade() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((TangibleObjectImplementation*) _impl)->isGranade();
+		return ((TangibleObjectImplementation*) _impl)->isGrenade();
 }
 
 bool TangibleObject::isThrowable() {
@@ -1434,7 +1434,7 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(isTrap());
 		break;
 	case 50:
-		resp->insertBoolean(isGranade());
+		resp->insertBoolean(isGrenade());
 		break;
 	case 51:
 		resp->insertBoolean(isThrowable());
@@ -1784,8 +1784,8 @@ bool TangibleObjectAdapter::isTrap() {
 	return ((TangibleObjectImplementation*) impl)->isTrap();
 }
 
-bool TangibleObjectAdapter::isGranade() {
-	return ((TangibleObjectImplementation*) impl)->isGranade();
+bool TangibleObjectAdapter::isGrenade() {
+	return ((TangibleObjectImplementation*) impl)->isGrenade();
 }
 
 bool TangibleObjectAdapter::isThrowable() {

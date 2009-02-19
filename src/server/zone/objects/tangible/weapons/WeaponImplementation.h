@@ -150,6 +150,7 @@ protected:
 	float bonusWoundsRatio;
 
 	String xpType;
+	float area;
 
 public:
 
@@ -634,6 +635,16 @@ public:
 
 	inline void setCertified(bool crt) {
 		certified = crt;
+	}
+
+	inline void setArea(float ar) {
+		area = ar;
+		String name = "area";
+		itemAttributes->setFloatAttribute(name, area);
+	}
+
+	inline float getArea() {
+		return area;
 	}
 
 	// getters

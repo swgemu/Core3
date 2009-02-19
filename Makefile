@@ -113,6 +113,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/weapons/jedi/PolearmJediWeapon.idl \
 				server/zone/objects/tangible/weapons/ThrowableWeapon.idl \
 				server/zone/objects/tangible/weapons/throwable/TrapThrowableWeapon.idl \
+				server/zone/objects/tangible/weapons/throwable/GrenadeThrowableWeapon.idl \
 				server/zone/objects/tangible/ticket/Ticket.idl \
 				server/zone/objects/tangible/terminal/Terminal.idl \
 				server/zone/objects/tangible/terminal/travel/TravelTerminal.idl \

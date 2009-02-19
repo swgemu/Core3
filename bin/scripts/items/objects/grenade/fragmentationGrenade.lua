@@ -40,33 +40,27 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/compositeArmorSet.lua");
-RunItemLUAFile("bluefrog/ithArmorSet.lua");
-RunItemLUAFile("bluefrog/wookieeArmorSet.lua");
+fragmentationGrenade = Weapon:new {
 
-RunItemLUAFile("bluefrog/enhancePackSet.lua");
-RunItemLUAFile("bluefrog/stimPackSet.lua");
-RunItemLUAFile("bluefrog/rangedStimPackSet.lua");
-RunItemLUAFile("bluefrog/areaStimPackSet.lua");
-RunItemLUAFile("bluefrog/woundPackSet.lua");
-RunItemLUAFile("bluefrog/statePackSet.lua");
-RunItemLUAFile("bluefrog/curePackSet.lua");
-RunItemLUAFile("bluefrog/poisonPackSet.lua");
-RunItemLUAFile("bluefrog/diseasePackSet.lua");
+	objectName = "Fragmentation Grenade",
 
-RunItemLUAFile("bluefrog/clothingSets.lua");
+	templateName = "object/weapon/ranged/grenade/shared_grenade_fragmentation.iff",
 
-RunItemLUAFile("bluefrog/instrumentSet.lua");
+	objectCRC = 2723525196,
 
---RunItemLUAFile("bluefrog/vehicleDeedSet.lua");
---RunItemLUAFile("bluefrog/housingDeedSet.lua");
+	objectType = GRENADE,
 
-RunItemLUAFile("bluefrog/weaponSet.lua");
+	damageType = WEAPON_ENERGY,
 
-RunItemLUAFile("bluefrog/surveyingKit.lua");
+	armorPiercing = WEAPON_LIGHT,
 
-RunItemLUAFile("bluefrog/grenadeSet.lua");
---RunItemLUAFile("bluefrog/camokits.lua");
---RunItemLUAFile("bluefrog/trapSet.lua");
---RunItemLUAFile("bluefrog/campKits.lua");
---RunItemLUAFile("bluefrog/slicingTools.lua");
+	certification = "cert_grenade_fragmentation",
+
+	uses = 15,
+	
+	attackSpeed = 4.0,
+
+	minDamage = 100,
+
+	maxDamage = 206,
+}

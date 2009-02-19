@@ -971,7 +971,7 @@ public:
 	void updateGroupId(uint64 id);
 	void updateGroupInviterId(uint64 id);
 
-	float getDistanceTo(CreatureObject* targetCreature);
+	float getDistanceTo(SceneObject* targetCreature);
 
 	void updateMood(const String& md);
 

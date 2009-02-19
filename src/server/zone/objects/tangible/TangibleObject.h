@@ -121,7 +121,7 @@ public:
 
 	bool isTrap();
 
-	bool isGranade();
+	bool isGrenade();
 
 	bool isThrowable();
 
@@ -342,7 +342,7 @@ public:
 
 	bool isTrap();
 
-	bool isGranade();
+	bool isGrenade();
 
 	bool isThrowable();
 
