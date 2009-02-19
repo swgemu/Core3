@@ -30,7 +30,7 @@
  code included in the standard release of Core3 under the GNU LGPL
  license (or modified versions of such code, with unchanged license).
  You may copy and distribute such a system following the terms of the
- GNU LGPL for Engine3 and the licenses of the other code concerned,
+ GNU LGPL for Engine3 and the limcenses of the other code concerned,
  provided that you include the source code of that other code when
  and as the GNU LGPL requires distribution of source code.
 
@@ -42,14 +42,14 @@
  which carries forward this exception.
  */
 
-#ifndef THROWDIRECTPOOLATTACKTARGETSKILL_H_
-#define THROWDIRECTPOOLATTACKTARGETSKILL_H_
+#ifndef THROWGRENADEATTACKTARGETSKILL_H_
+#define THROWGRENADELATTACKTARGETSKILL_H_
 
 #include "ThrowAttackTargetSkill.h"
 #include "../../../../tangible/weapons/ThrowableWeapon.h"
 #include "../../../../tangible/weapons/throwable/TrapThrowableWeapon.h"
 
-class ThrowDirectPoolAttackTargetSkill: public ThrowAttackTargetSkill {
+class ThrowGrenadeAttackTargetSkill: public ThrowAttackTargetSkill {
 public:
 	/*
 	 * The constructor.
@@ -57,17 +57,17 @@ public:
 	 * \param anim The animation.
 	 * \param serv The ZoneProcessServerImplementation.
 	 */
-	ThrowDirectPoolAttackTargetSkill(const String& name, const String& anim,
+	ThrowGrenadeAttackTargetSkill(const String& name, const String& anim,
 			ZoneProcessServerImplementation* serv) : ThrowAttackTargetSkill(name, anim, THROW, serv) {
-		healthPoolAttackChance = 0;
+		healthPoolAttackChance = 50;
 		strengthPoolAttackChance = 0;
 		constitutionPoolAttackChance = 0;
 
-		actionPoolAttackChance = 0;
+		actionPoolAttackChance = 35;
 		quicknessPoolAttackChance = 0;
 		staminaPoolAttackChance = 0;
 
-		mindPoolAttackChance = 0;
+		mindPoolAttackChance = 10;
 		focusPoolAttackChance = 0;
 		willpowerPoolAttackChance = 0;
 
@@ -104,10 +104,11 @@ public:
 	 */
 	int doSkill(CreatureObject* creature, SceneObject* target,
 			const String& modifier, bool doAnimation) {
-		TrapThrowableWeapon* trap = (TrapThrowableWeapon*) getThrowableWeapon(
+
+		ThrowableWeapon* weapon = (ThrowableWeapon*) getThrowableWeapon(
 				creature, modifier);
 
-		if (trap == NULL)
+		if (weapon == NULL)
 			return 0;
 
 		if (!target->isPlayer() && !target->isNonPlayerCreature())
@@ -119,49 +120,25 @@ public:
 		CreatureObject* targetCreature = (CreatureObject*) target;
 		Player* player = (Player*) creature;
 
-		if (!targetCreature->isCreature()) {
-			player->sendSystemMessage("traps/traps", "sys_creatures_only");
-			return 0;
-		}
+		int cooldown = (int) round(weapon->getAttackSpeed() * (100.0f - (float)player->getSkillMod("thrown_speed")) / 100.0f);
 
-		player->addCooldown(getSkillName(),8000);
+		player->addCooldown(getSkillName(),cooldown * 1000);
 
-		int damage = calculateThrowItemDamage(creature, (TangibleObject*)target, ((Weapon*) trap));
+		int damage = calculateThrowItemDamage(creature, (TangibleObject*)target, ((Weapon*) weapon));
 
 		if (damage && targetCreature->hasAttackDelay())
 			targetCreature->clearAttackDelay();
 
 		StfParameter* params = new StfParameter();
 		StringBuffer creatureName;
-		creatureName << "@" << targetCreature->getTemplateTypeName() << ":"
+		/*creatureName << "@" << targetCreature->getTemplateTypeName() << ":"
 				<< targetCreature->getTemplateName();
-		params->addTT(creatureName.toString());
-
+		params->addTT(creatureName.toString());*/
 		if (damage != 0) {
-			applyDot(creature,targetCreature, damage);
-			String type = "trapping";
-
-			int xp = 14 * targetCreature->getLevel() - 48;
-
-			if (xp < 50)
-				xp = 50;
-			else if (xp > 600)
-				xp = 600;
-
-			player->addXp(type, xp, true);
-
-			player->sendSystemMessage(getDeBuffStrFile(),
-					getDeBuffHitMessage(), params);
-
 			missed = false;
 
 		} else {
-
-			player->sendSystemMessage(getDeBuffStrFile(),
-					getDeBuffMissMessage(), params);
-
 			missed = true;
-
 		}
 		return damage;
 	}
@@ -173,10 +150,18 @@ public:
 	 * \param weapon The trap.
 	 * \return Returns Returns the damage.
 	 */
-	int calculateThrowDamage(CreatureObject* creature, TangibleObject* target, Weapon* weapon) {
-		return server->getCombatManager()->calculateThrowItemDamage(creature, target, this, false, false, weapon);
+	virtual int calculateThrowItemDamage(CreatureObject* creature, TangibleObject* target, Weapon* weapon) {
+		return server->getCombatManager()->calculateThrowItemDamage(creature, target, this, true, true, weapon);
+	}
+
+	void doMiss(CreatureObject* creature, CreatureObject* target, int32 damage) {
+		System::out << "gen miss\n";
+		if (hasCbtSpamMiss())
+			creature->sendCombatSpam(target, NULL, -(int32)damage, getCbtSpamMiss());
+
+		target->showFlyText("combat_effects", "miss", 0xFF, 0xFF, 0xFF);
 	}
 
 };
 
-#endif /* THROWDIRECTPOOLATTACKTARGETSKILL_H_ */
+#endif /*THROWGRENADEATTACKTARGETSKILL_H_*/

@@ -42,79 +42,47 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef THROWABLEWEAPONIMPLEMENTATION_H_
-#define THROWABLEWEAPONIMPLEMENTATION_H_
+#ifndef GRENADETHROWABLEWEAPONIMPLEMENTATION_H_
+#define GRENADETHROWABLEWEAPONIMPLEMENTATION_H_
 
-#include "ThrowableWeapon.h"
+#include "GrenadeThrowableWeapon.h"
 
-class ThrowableWeaponImplementation: public ThrowableWeaponServant {
+class GrenadeThrowableWeaponImplementation : public GrenadeThrowableWeaponServant {
 protected:
 	uint32 skill;
-	String skillName;
-public:
-	ThrowableWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn,const int tp, bool eqp = false);
+	float area;
 
-	ThrowableWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, const int tp, bool eqp = false);
+	String animationString;
+
+public:
+	GrenadeThrowableWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, bool eqp = false);
+
+	GrenadeThrowableWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false);
 
 	void init();
 
-	/*
-	 * Uses a charge of the object. Ramoves the object if 0 charges left
-	 * \param player The player.
-	 */
-	virtual void useCharge(Player* player) {
+	void updateCraftingValues(DraftSchematic* draftSchematic);
 
-		decreaseUsesRemaining();
-		updated = true;
-
-		if (getUsesRemaining() == 0)
-			remove(player);
-	}
-
-	/*
-	 * Removes the camo kit from the inventory.
-	 * \param player The player.
-	 */
-	void remove(Player* player);
-
-	/*
-	 * Uses the object.
-	 * \param player The player using the object.
-	 */
 	int useObject(Player* player);
 
-	/*
-	 * Parses the items attributes.
-	 */
+	void useCharge(Player* player);
+
+	void sendDeltas(Player* player);
+
+	void generateAttributes(SceneObject* obj);
+
+	void addHeaderAttributes(AttributeListMessage* alm);
+
+	void addFooterAttributes(AttributeListMessage* alm);
+
+	void addAttributes(AttributeListMessage* alm);
+
 	void parseItemAttributes();
 
-	/*
-	 * Sets the related skills name.
-	 */
-	void setSkill(const String& sk);
-
-	/*
-	 * Returns the related skills name.
-	 */
-	String& getSkill();
-
-
-	/*
-	 * Returns the related skills crc.
-	 */
-	uint32 getSkillCRC();
-
-	/*
-	 * Sets the related skills crc.
-	 */
-	void setSkillCRC(const uint32 sk);
-
-	/*
-	 * Checks if the object is usefull.
-	 * \param player The player using the object.
-	 */
 	bool isUsefull(Player* player);
+
+	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 
 };
 
-#endif /* THROWABLEWEAPONIMPLEMENTATION_H_ */
+#endif /* GRENADETHROWABLEWEAPONIMPLEMENTATION_H_ */

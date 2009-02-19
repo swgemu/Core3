@@ -52,6 +52,8 @@ MindHealSkill = {
 	range = 6.0
 }
 
+AddMindHealTargetSkill(MindHealSkill);
+
 CMDotSkill = {
 	skillname = "applypoison",
 	effect = "clienteffect/healing_healenhance.cef",

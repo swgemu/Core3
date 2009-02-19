@@ -127,7 +127,6 @@ public:
 	}
 
 	void doMiss(CreatureObject* creature, CreatureObject* target, int32 damage) {
-
 		target->showFlyText("trap/trap", "sys_miss", 0xFF, 0xFF, 0xFF);
 	}
 
@@ -138,7 +137,7 @@ public:
 	 * \param weapon The trap.
 	 * \return Returns Returns the damage.
 	 */
-	virtual int calculateTrapDamage(CreatureObject* creature,
+	virtual int calculateThrowItemDamage(CreatureObject* creature,
 				SceneObject* target, Weapon* weapon) {
 		return 0;
 	}
@@ -210,7 +209,7 @@ public:
 	void calculateStates(CreatureObject* creature,
 			CreatureObject* targetCreature) {
 		if (hasStateChance)
-			return server->getCombatManager()->calculateTrapStates(creature, targetCreature, this);
+			return server->getCombatManager()->calculateThrowItemStates(creature, targetCreature, this);
 	}
 
 	/*

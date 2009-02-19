@@ -191,6 +191,12 @@ which carries forward this exception.
 #include "objects/tangible/weapons/jedi/TwoHandedJediWeaponImplementation.h"
 #include "objects/tangible/weapons/jedi/PolearmJediWeapon.h"
 #include "objects/tangible/weapons/jedi/PolearmJediWeaponImplementation.h"
+#include "objects/tangible/weapons/ThrowableWeapon.h"
+#include "objects/tangible/weapons/ThrowableWeaponImplementation.h"
+#include "objects/tangible/weapons/throwable/TrapThrowableWeapon.h"
+#include "objects/tangible/weapons/throwable/TrapThrowableWeaponImplementation.h"
+#include "objects/tangible/weapons/throwable/GrenadeThrowableWeapon.h"
+#include "objects/tangible/weapons/throwable/GrenadeThrowableWeaponImplementation.h"
 
 #include "objects/tangible/consumable/Consumable.h"
 #include "objects/tangible/consumable/ConsumableImplementation.h"
@@ -314,10 +320,7 @@ which carries forward this exception.
 #include "objects/player/sui/slicingbox/SuiSlicingBox.h"
 #include "objects/player/sui/slicingbox/SuiSlicingBoxImplementation.h"
 
-#include "objects/tangible/weapons/ThrowableWeapon.h"
-#include "objects/tangible/weapons/ThrowableWeaponImplementation.h"
-#include "objects/tangible/weapons/throwable/TrapThrowableWeapon.h"
-#include "objects/tangible/weapons/throwable/TrapThrowableWeaponImplementation.h"
+
 #include "objects/tangible/camokits/CamoKit.h"
 #include "objects/tangible/camokits/CamoKitImplementation.h"
 #include "objects/tangible/campkit/CampKit.h"

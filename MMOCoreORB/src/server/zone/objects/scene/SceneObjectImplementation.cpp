@@ -666,6 +666,7 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 
 		Player* player = (Player*)creature;
 		float xpadd = 0.0f;
+		float throwCombatXP = 0.0f;
 
 		float totaldamage = (float)dmg->getTotalDamage();
 
@@ -719,16 +720,22 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 			if (xpaddsingle < 1.0f)
 				xpaddsingle = 1.0f;
 
+			if (xptype == "none")
+				throwCombatXP += xpaddsingle;
+
 			PlayerManager* pmng = server->getPlayerManager();
 			if (pmng != NULL)
 				xpaddsingle *= pmng->getXpScale();
 
-			player->addXp(xptype, (int)xpaddsingle, true);
+			if (xptype != "none")
+				player->addXp(xptype, (int)xpaddsingle, true);
+
 			if (xptype != "jedi_general")
 				xpadd += xpaddsingle;
 		}
 
 		xpadd /= 10.0f;
+		xpadd += throwCombatXP;
 		String xptype = String("combat_general");
 		player->addXp(xptype, (int)xpadd, true);
 

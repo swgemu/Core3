@@ -118,17 +118,17 @@ void ThrowableWeaponImplementation::setSkill(const String& sk) {
 	skillName = sk;
 	String attr = "skillName";
 	itemAttributes->setStringAttribute(attr,skillName);
-	setSkillCRC(sk.hashCode());
+	setSkillCRC(skillName.hashCode());
 }
 String& ThrowableWeaponImplementation::getSkill() {
 	return skillName;
 }
 
-int ThrowableWeaponImplementation::getSkillCRC() {
+uint32 ThrowableWeaponImplementation::getSkillCRC() {
 	return skill;
 }
 
-void ThrowableWeaponImplementation::setSkillCRC(const int sk) {
+void ThrowableWeaponImplementation::setSkillCRC(const uint32 sk) {
 	skill = sk;
 }
 

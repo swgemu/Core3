@@ -51,6 +51,7 @@ which carries forward this exception.
 #define RANGEDATTACK 1
 #define FORCEATTACK 2
 #define TRAPATTACK 3
+#define GRENADEATTACK 4
 
 #define MELEEWEAPON(weapontype) ((weapontype < 4 || (weapontype > 6 && weapontype < 10)) ? true : false)
 #define RANGEDWEAPON(weapontype) (((weapontype > 3 && weapontype < 7) || (weapontype > 6 && weapontype < 20)) ? true : false)
@@ -146,12 +147,12 @@ public:
 	float calculateWeaponAttackSpeed(CreatureObject* creature, TargetSkill* tskill);
 	float calculateHealSpeed(CreatureObject* creature, TargetSkill* tskill);
 	void calculateStates(CreatureObject* creature, CreatureObject* targetCreature, AttackTargetSkill* tskill);
-	void calculateTrapStates(CreatureObject* creature, CreatureObject* targetCreature, ThrowAttackTargetSkill* tskill);
+	void calculateThrowItemStates(CreatureObject* creature, CreatureObject* targetCreature, ThrowAttackTargetSkill* tskill);
 	void checkKnockDown(CreatureObject* creature, CreatureObject* targetCreature, int chance);
 	void checkPostureDown(CreatureObject* creature, CreatureObject* targetCreature, int chance);
 	void checkPostureUp(CreatureObject* creature, CreatureObject* targetCreature, int chance);
 	int calculateWeaponDamage(CreatureObject* creature, TangibleObject* target, AttackTargetSkill* skill, bool randompoolhit);
-	int calculateTrapDamage(CreatureObject* creature, TangibleObject* target, ThrowAttackTargetSkill* skill, bool randompoolhit, Weapon* weapon);
+	int calculateThrowItemDamage(CreatureObject* creature, TangibleObject* target, ThrowAttackTargetSkill* skill, bool randompoolhit, bool canKill, Weapon* weapon);
 	int calculateForceDamage(CreatureObject* creature, TangibleObject* target, ForcePowersPoolAttackTargetSkill* skill, int forceAttackType, int damageType, float mindmg, float maxdmg);
 	int calculateDamage(CreatureObject* creature, TangibleObject* target, Weapon* weapon, AttackTargetSkill* skill, int attackType,
 			int damageType, int armorPiercing, float minDmg, float maxDmg, bool randompoolhit, bool cankill);

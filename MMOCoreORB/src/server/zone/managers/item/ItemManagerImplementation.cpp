@@ -257,9 +257,9 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(Player* pl
 		case TangibleObjectImplementation::TRAP:
 			item = new TrapThrowableWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
-		//case TangibleObjectImplementation::GRANADE:
-		//	item = new ThrowableWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
-		//	break;
+		case TangibleObjectImplementation::GRENADE:
+			item = new GrenadeThrowableWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
+			break;
 		}
 
 		if (item != NULL && makeStats) {
@@ -987,6 +987,7 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("PISTOL", TangibleObjectImplementation::PISTOL);
 	setGlobalInt("CARBINE", TangibleObjectImplementation::CARBINE);
 	setGlobalInt("RIFLE", TangibleObjectImplementation::RIFLE);
+	setGlobalInt("GRENADE", TangibleObjectImplementation::GRENADE);
 	setGlobalInt("RESOURCECONTAINER", TangibleObjectImplementation::RESOURCECONTAINER);
 	setGlobalInt("ENERGYGAS", TangibleObjectImplementation::ENERGYGAS);
 	setGlobalInt("ENERGYLIQUID", TangibleObjectImplementation::ENERGYLIQUID);
@@ -1254,6 +1255,12 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 
 			((TrapThrowableWeapon*) weapon)->setUsesRemaining(uses);
 			((TrapThrowableWeapon*) weapon)->setSkill(skill);
+		}
+
+		if (weapon->isGrenade()) {
+			int uses =  itemconfig.getIntField("uses");
+
+			((GrenadeThrowableWeapon*) weapon)->setUsesRemaining(uses);
 		}
 
 		if (!cert.isEmpty())

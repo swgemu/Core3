@@ -226,6 +226,7 @@ core3_IDLS =	server/chat/ChatManager.cpp \
 		server/zone/objects/tangible/weapons/Weapon.cpp \
 		server/zone/objects/tangible/weapons/ThrowableWeapon.cpp \
 		server/zone/objects/tangible/weapons/throwable/TrapThrowableWeapon.cpp \
+		server/zone/objects/tangible/weapons/throwable/GrenadeThrowableWeapon.cpp \
 		server/zone/objects/tangible/wearables/Armor.cpp \
 		server/zone/objects/tangible/wearables/Wearable.cpp \
 		server/zone/objects/waypoint/WaypointObject.cpp \
@@ -372,6 +373,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/weapons/WeaponImplementation.cpp \
 		server/zone/objects/tangible/weapons/ThrowableWeaponImplementation.cpp \
 		server/zone/objects/tangible/weapons/throwable/TrapThrowableWeaponImplementation.cpp \
+		server/zone/objects/tangible/weapons/throwable/GrenadeThrowableWeaponImplementation.cpp \
 		server/zone/objects/tangible/wearables/WearableImplementation.cpp \
 		server/zone/objects/tangible/wearables/ArmorImplementation.cpp \
 		server/zone/packets/object/ObjectControllerMessage.cpp \

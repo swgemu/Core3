@@ -221,7 +221,7 @@ public:
 	static const int PISTOL = 0x2000A;
 	static const int CARBINE = 0x2000B;
 	static const int RIFLE = 0x2000C;
-	static const int GRANADE = 0x2000E;
+	static const int GRENADE = 0x2000E;
 
 	static const int COMPONENT = 0x40000;
 	static const int ARMORCOMPONENT = 0x40001;
@@ -643,12 +643,12 @@ public:
 		return objectSubType == TRAP;
 	}
 
-	inline bool isGranade() {
-		return objectSubType == GRANADE;
+	inline bool isGrenade() {
+		return objectSubType == GRENADE;
 	}
 
 	inline bool isThrowable() {
-		return (objectSubType == GRANADE || objectSubType == TRAP);
+		return (objectSubType == GRENADE || objectSubType == TRAP);
 	}
 
 	inline bool isInstrument() {

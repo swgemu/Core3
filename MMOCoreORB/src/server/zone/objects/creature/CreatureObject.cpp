@@ -2716,7 +2716,7 @@ unsigned long long CreatureObject::getCreatureLinkID() {
 		return ((CreatureObjectImplementation*) _impl)->getCreatureLinkID();
 }
 
-float CreatureObject::getDistanceTo(CreatureObject* targetCreature) {
+float CreatureObject::getDistanceTo(SceneObject* targetCreature) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -8628,7 +8628,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertLong(getCreatureLinkID());
 		break;
 	case 208:
-		resp->insertFloat(getDistanceTo((CreatureObject*) inv->getObjectParameter()));
+		resp->insertFloat(getDistanceTo((SceneObject*) inv->getObjectParameter()));
 		break;
 	case 209:
 		resp->insertFloat(getHeight());
@@ -10690,7 +10690,7 @@ unsigned long long CreatureObjectAdapter::getCreatureLinkID() {
 	return ((CreatureObjectImplementation*) impl)->getCreatureLinkID();
 }
 
-float CreatureObjectAdapter::getDistanceTo(CreatureObject* targetCreature) {
+float CreatureObjectAdapter::getDistanceTo(SceneObject* targetCreature) {
 	return ((CreatureObjectImplementation*) impl)->getDistanceTo(targetCreature);
 }
 

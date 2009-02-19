@@ -65,4 +65,4 @@ RunItemLUAFile("objects/weapons/main.lua");
 RunItemLUAFile("objects/camokit/main.lua");
 RunItemLUAFile("objects/traps/main.lua");
 RunItemLUAFile("objects/campkit/main.lua");
-
+RunItemLUAFile("objects/grenade/main.lua");

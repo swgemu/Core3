@@ -368,3 +368,242 @@ AddRandomPoolAttackTargetSkill(RandPoolAtt)
 
 -----------------------------------------------------------------------
 
+--- Fragment Grenade (Novice Commando)ThrowSkill = { 
+	attackname = "throwgrenadefragmentation",
+	animation = "throw_grenade_medium_fragmentation",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "throw_fragmentation_block",
+	CbtSpamCounter = "throw_fragmentation_counter",
+	CbtSpamEvade = "throw_fragmentation_evade",
+	CbtSpamHit = "throw_fragmentation_hit",
+	CbtSpamMiss = "throw_fragmentation_miss",
+	
+	deBuffStrFile = "",
+	deBuffHitMessage = "",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowGrenadeTargetSkill(ThrowSkill)
+
+--- Glop Grenade (Field Tactics 1)ThrowSkill = { 
+	attackname = "throwgrenadecryoban",
+	animation = "cert_grenade_cryoban",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "throw_cryoban_block",
+	CbtSpamCounter = "throw_cryoban_counter",
+	CbtSpamEvade = "throw_cryoban_evade",
+	CbtSpamHit = "throw_cryoban_hit",
+	CbtSpamMiss = "throw_cryoban_miss",
+	
+	deBuffStrFile = "",
+	deBuffHitMessage = "",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowGrenadeTargetSkill(ThrowSkill)
+
+--- Glop Grenade (Field Tactics 2)ThrowSkill = { 
+	attackname = "throwgrenadeglop",
+	animation = "throw_grenade_medium_glop",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "throw_glop_block",
+	CbtSpamCounter = "throw_glop_counter",
+	CbtSpamEvade = "throw_glop_evade",
+	CbtSpamHit = "throw_glop_hit",
+	CbtSpamMiss = "throw_glop_miss",
+	
+	deBuffStrFile = "",
+	deBuffHitMessage = "",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowGrenadeTargetSkill(ThrowSkill)
+
+--- Imperial Detonator (Field Tactics 3)ThrowSkill = { 
+	attackname = "throwimperialdetonator",
+	animation = "cert_grenade_imperial_detonator",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "throw_imperial_detonator_block",
+	CbtSpamCounter = "throw_imperial_detonator_counter",
+	CbtSpamEvade = "throw_imperial_detonator_evade",
+	CbtSpamHit = "throw_imperial_detonator_hit",
+	CbtSpamMiss = "throw_imperial_detonator_miss",
+	
+	deBuffStrFile = "",
+	deBuffHitMessage = "",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowGrenadeTargetSkill(ThrowSkill)
+
+--- Thermal Detonator (Field Tactics 4)ThrowSkill = { 
+	attackname = "throwthermaldetonator",
+	animation = "throw_grenade_medium_thermal_detonator",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "throw_thermal_detonator_block",
+	CbtSpamCounter = "throw_thermal_detonator_counter",
+	CbtSpamEvade = "throw_thermal_detonator_evade",
+	CbtSpamHit = "throw_thermal_detonator_hit",
+	CbtSpamMiss = "throw_thermal_detonator_miss",
+	
+	deBuffStrFile = "",
+	deBuffHitMessage = "",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowGrenadeTargetSkill(ThrowSkill)
+
+--- Proton Grenade (Master Commando)ThrowSkill = { 
+	attackname = "throwgrenadeproton",
+	animation = "cert_grenade_proton",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "throw_proton_block",
+	CbtSpamCounter = "throw_proton_counter",
+	CbtSpamEvade = "throw_proton_evade",
+	CbtSpamHit = "throw_proton_hit",
+	CbtSpamMiss = "throw_proton_miss",
+	
+	deBuffStrFile = "",
+	deBuffHitMessage = "",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowGrenadeTargetSkill(ThrowSkill)

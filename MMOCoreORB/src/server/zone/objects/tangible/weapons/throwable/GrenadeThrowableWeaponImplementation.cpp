@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "TrapThrowableWeaponImplementation.h"
+#include "GrenadeThrowableWeaponImplementation.h"
 #include "../../../player/Player.h"
 #include "../../../creature/Creature.h"
 #include "../../../../managers/item/ItemManager.h"
@@ -50,33 +50,31 @@ which carries forward this exception.
 #include "engine/engine.h"
 #include "../../../../packets.h"
 
-TrapThrowableWeaponImplementation::TrapThrowableWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, bool eqp)
-		: TrapThrowableWeaponServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::TRAP,false) {
+GrenadeThrowableWeaponImplementation::GrenadeThrowableWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, bool eqp)
+		: GrenadeThrowableWeaponServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::TRAP,false) {
 	init();
 }
 
-TrapThrowableWeaponImplementation::TrapThrowableWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp)
-			: TrapThrowableWeaponServant(creature, temp, n, tempn, TangibleObjectImplementation::TRAP, false) {
+GrenadeThrowableWeaponImplementation::GrenadeThrowableWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp)
+			: GrenadeThrowableWeaponServant(creature, temp, n, tempn, TangibleObjectImplementation::TRAP, false) {
 	init();
 }
 
 
-void TrapThrowableWeaponImplementation::init() {
-	objectSubType = TangibleObjectImplementation::TRAP;
+void GrenadeThrowableWeaponImplementation::init() {
+	objectSubType = TangibleObjectImplementation::GRENADE;
 
-	setType(TRAP);
+	setType(GRENADE);
 	setCategory(ALL);
 
-	setXpType();
-
-	setDamageType(KINETIC);
+	setDamageType(ENERGY);
 	setMinDamage(89);
 	setMaxDamage(232);
 
-	setAttackSpeed(1.0f);
+	setAttackSpeed(4.0f);
 
-	setRange(45);
-
+	setRange(35);
+	setArea(8.0f);
 	setPointBlankAccuracy(-30);
 	setPointBlankRange(0);
 
@@ -92,61 +90,49 @@ void TrapThrowableWeaponImplementation::init() {
 	setMindAttackCost(17);
 
 	setEquipped(false);
+	setCertified(false);
+
 	switch(objectCRC) {
-		case 0xB7D57DE9:
-			setMinDamage(20);
-			setMaxDamage(60);
-			setSkill("throwwiredmeshtrap");
+		case 0xA943F10B:
+			setArmorPiercing(NONE);
+			setDamageType(ENERGY);
+			setSkill("throwgrenade");
 			break;
-		case 0xCD1AE96C:
-			setMinDamage(120);
-			setMaxDamage(196);
-			setSkill("throwadhesivemesh");
+		case 0xA255B24C:
+			setArmorPiercing(LIGHT);
+			setDamageType(ENERGY);
+			setSkill("throwgrenadefragmentation");
+			setCert("cert_grenade_fragmentation");
 			break;
-		case 0x2CB999F4:
-			setMinDamage(110);
-			setMaxDamage(170);
-			setSkill("throwstinkbomb");
+		case 0x7F8BC760:
+			setArmorPiercing(LIGHT);
+			setDamageType(COLD);
+			setSkill("throwgrenadecryoban");
+			setCert("cert_grenade_cryoban");
 			break;
-		case 0xD6E7C9BA:
-			setMinDamage(200);
-			setMaxDamage(450);
-			setSkill("throwsonicpulse");
+		case 0x2382F2AD:
+			setArmorPiercing(NONE);
+			setDamageType(ACID);
+			setSkill("throwgrenadeglop");
+			setCert("cert_grenade_glop");
 			break;
-		case 0xE84CAD5F:
-			setMinDamage(40);
-			setMaxDamage(60);
-			setSkill("throwsharpbonespur");
+		case 0xF0940F10:
+			setArmorPiercing(LIGHT);
+			setDamageType(BLAST);
+			setSkill("throwimperialdetonator");
+			setCert("cert_grenade_imperial_detonator");
 			break;
-		case 0x935D78C3:
-			setMinDamage(150);
-			setMaxDamage(200);
-			setSkill("throwphecnacinedart");
+		case 0xF4107AED:
+			setArmorPiercing(MEDIUM);
+			setDamageType(BLAST);
+			setCert("cert_grenade_thermal_detonator");
+			setSkill("throwthermaldetonator");
 			break;
-		case 0xBAC1314F:
-			setMinDamage(80);
-			setMaxDamage(120);
-			setSkill("thrownoisemaker");
-			break;
-		case 0x2A08D489:
-			setMinDamage(20);
-			setMaxDamage(50);
-			setSkill("throwlecepanindart");
-			break;
-		case 0xCDD1F369:
-			setMinDamage(90);
-			setMaxDamage(170);
-			setSkill("throwglowwiretrap");
-			break;
-		case 0x2CB1F2C:
-			setMinDamage(40);
-			setMaxDamage(75);
-			setSkill("throwglowjuicetrap");
-			break;
-		case 0x2A3EBC50:
-			setMinDamage(200);
-			setMaxDamage(300);
-			setSkill("throwflashbomb");
+		case 0x35E29637:
+			setArmorPiercing(LIGHT);
+			setDamageType(HEAT);
+			setSkill("throwgrenadeproton");
+			setCert("cert_grenade_proton");
 			break;
 		default:
 			break;
@@ -157,7 +143,7 @@ void TrapThrowableWeaponImplementation::init() {
  * Recieves the values from crafting.
  * \param DraftSchematic - the recently crafting schematic with value data
  */
-void TrapThrowableWeaponImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
+void GrenadeThrowableWeaponImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
 	// Incoming values available
 	//
 	// unitIntegrity (Range: 1000 - 1000)
@@ -165,40 +151,27 @@ void TrapThrowableWeaponImplementation::updateCraftingValues(DraftSchematic* dra
 	//***********************************
 
 	setUsesRemaining(5);
+	setArea(8.0f);
 }
 
 /*
  * Uses the object.
  * \param player The player using the object.
  */
-int TrapThrowableWeaponImplementation::useObject(Player* player) {
-	String skillBox = "outdoors_scout_novice";
+int GrenadeThrowableWeaponImplementation::useObject(Player* player) {
+	SceneObject* target = player->getTarget();
 
-	if (!player->hasSkillBox(skillBox)) {
-		player->sendSystemMessage("trap/trap", "trap_no_skill");
+	if(target == NULL) {
 		return 0;
 	}
 
-	if (!isUsefull(player)) {
-		player->sendSystemMessage("trap/trap", "trap_no_skill_this");
+	if (!player->checkCertification(getCert())) {
+		player->sendSystemMessage("This grenade is not certified");
 		return 0;
 	}
-
 
 	if (!player->hasCooldownExpired(getSkill())) {
-		player->sendSystemMessage("trap/trap", "sys_not_ready");
-		return 0;
-	}
-
-	ManagedReference<SceneObject> obj = player->getTarget();
-	if (obj == NULL || !obj->isNonPlayerCreature()) {
-		player->sendSystemMessage("trap/trap", "sys_cannot_throw");
-		return 0;
-	}
-
-	Creature* target = (Creature*) obj.get();
-	if (!target->isCreature()) {
-		player->sendSystemMessage("trap/trap", "sys_creatures_only");
+		player->sendSystemMessage("This grenade is not ready to be used again");
 		return 0;
 	}
 
@@ -209,11 +182,11 @@ int TrapThrowableWeaponImplementation::useObject(Player* player) {
 
 	//useCharge(player);
 	player->queueThrow((TangibleObject*)_this, getSkillCRC());
-
+	//useCharge(player);
 	return 1;
 }
 
-void TrapThrowableWeaponImplementation::generateAttributes(SceneObject* obj) {
+void GrenadeThrowableWeaponImplementation::generateAttributes(SceneObject* obj) {
 	if (!obj->isPlayer())
 		return;
 
@@ -221,15 +194,16 @@ void TrapThrowableWeaponImplementation::generateAttributes(SceneObject* obj) {
 	AttributeListMessage* alm = new AttributeListMessage((TangibleObject*) _this);
 
 	addAttributes(alm);
-
 	player->sendMessage(alm);
 }
-void TrapThrowableWeaponImplementation::addAttributes(AttributeListMessage* alm) {
-	addHeaderAttributes(alm);
+void GrenadeThrowableWeaponImplementation::addAttributes(AttributeListMessage* alm) {
+	//addHeaderAttributes(alm);
+	WeaponImplementation::addAttributes(alm);
+
 	addFooterAttributes(alm);
 }
 
-void TrapThrowableWeaponImplementation::addHeaderAttributes(AttributeListMessage* alm) {
+void GrenadeThrowableWeaponImplementation::addHeaderAttributes(AttributeListMessage* alm) {
 	alm->insertAttribute("volume", "1");
 	alm->insertAttribute("counter_uses_remaining", getUsesRemaining());
 
@@ -246,7 +220,7 @@ void TrapThrowableWeaponImplementation::addHeaderAttributes(AttributeListMessage
  * Uses a charge of the object. Ramoves the object if 0 charges left
  * \param player The player.
  */
-void TrapThrowableWeaponImplementation::useCharge(Player* player) {
+void GrenadeThrowableWeaponImplementation::useCharge(Player* player) {
 
 	decreaseUsesRemaining();
 	updated = true;
@@ -257,11 +231,11 @@ void TrapThrowableWeaponImplementation::useCharge(Player* player) {
 		sendDeltas(player);
 }
 
-void TrapThrowableWeaponImplementation::addFooterAttributes(AttributeListMessage* alm) {
+void GrenadeThrowableWeaponImplementation::addFooterAttributes(AttributeListMessage* alm) {
 	//alm->insertAttribute("healing_ability", getPlanet());
 }
 
-void TrapThrowableWeaponImplementation::sendDeltas(Player* player) {
+void GrenadeThrowableWeaponImplementation::sendDeltas(Player* player) {
 	TangibleObjectDeltaMessage3 * dtano3 = new TangibleObjectDeltaMessage3((TangibleObject*)_this);
 	dtano3->addIntUpdate(7, getUsesRemaining()); //Update the number of charges on the pack in inventory.
 	dtano3->close();
@@ -271,21 +245,14 @@ void TrapThrowableWeaponImplementation::sendDeltas(Player* player) {
 /*
  * Parses the items attributes.
  */
-void TrapThrowableWeaponImplementation::parseItemAttributes() {
+void GrenadeThrowableWeaponImplementation::parseItemAttributes() {
 //	cout << "parse trap\n";
 	ThrowableWeaponImplementation::parseItemAttributes();
+	String attr = "area";
+	setArea(itemAttributes->getFloatAttribute(attr));
 }
 
-/*
- * Checks if the object is usefull.
- * \param player The player using the object.
- */
-bool TrapThrowableWeaponImplementation::isUsefull(Player* player) {
-//	cout << "is usefull: " <<  player->hasSkill(getSkillCRC()) << "\n";
-	return player->hasSkill(getSkillCRC());
-}
-
-void TrapThrowableWeaponImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+void GrenadeThrowableWeaponImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
 	if (player->getInventoryItem(getObjectID()) != NULL) {
 
 	/*	if (!isSliced() && player->getSlicingAbility() >= 2)
@@ -310,4 +277,13 @@ void TrapThrowableWeaponImplementation::sendRadialResponseTo(Player* player, Obj
 
 	player->sendMessage(omr);
 
+}
+
+/*
+ * Checks if the object is usefull.
+ * \param player The player using the object.
+ */
+bool GrenadeThrowableWeaponImplementation::isUsefull(Player* player) {
+//	cout << "is usefull: " <<  player->hasSkill(getSkillCRC()) << "\n";
+	return player->hasSkill(getSkillCRC());
 }
