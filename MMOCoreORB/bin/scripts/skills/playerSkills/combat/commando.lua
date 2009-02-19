@@ -410,7 +410,7 @@ AddThrowGrenadeTargetSkill(ThrowSkill)
 
 --- Glop Grenade (Field Tactics 1)ThrowSkill = { 
 	attackname = "throwgrenadecryoban",
-	animation = "cert_grenade_cryoban",
+	animation = "throw_grenade_medium_cryoban",
 
 	requiredWeaponType = ALL,
 	
@@ -490,7 +490,7 @@ AddThrowGrenadeTargetSkill(ThrowSkill)
 
 --- Imperial Detonator (Field Tactics 3)ThrowSkill = { 
 	attackname = "throwimperialdetonator",
-	animation = "cert_grenade_imperial_detonator",
+	animation = "throw_grenade_medium_imperial_detonator",
 
 	requiredWeaponType = ALL,
 	
@@ -570,7 +570,7 @@ AddThrowGrenadeTargetSkill(ThrowSkill)
 
 --- Proton Grenade (Master Commando)ThrowSkill = { 
 	attackname = "throwgrenadeproton",
-	animation = "cert_grenade_proton",
+	animation = "throw_grenade_medium_proton",
 
 	requiredWeaponType = ALL,
 	

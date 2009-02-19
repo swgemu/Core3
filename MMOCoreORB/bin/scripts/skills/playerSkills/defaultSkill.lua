@@ -71,7 +71,7 @@ AddRandomPoolAttackTargetSkill(RandPoolAtt)
 
 ThrowSkill = { 
 	attackname = "throwgrenade",
-	animation = "",
+	animation = "throw_grenade_medium_fragmentation",
 
 	requiredWeaponType = ALL,
 	
