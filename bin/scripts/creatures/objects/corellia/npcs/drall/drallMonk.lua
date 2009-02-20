@@ -46,9 +46,8 @@ drallMonk = Creature:new {
 	faction = "drall", 
 	factionPoints = 20,
 	gender = "",
-
-	name = "Droll monk",
-	speciesName = "creature_name",
+	
+	speciesName = "drall_monk",
 	stfName = "mob/creature_names", 
 	objectCRC = 3116494340, 
 	socialGroup = "drall",

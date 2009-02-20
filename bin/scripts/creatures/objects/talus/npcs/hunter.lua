@@ -45,9 +45,8 @@ hunter = Creature:new {
 	creatureType = "NPC",
 	faction = "Talus Poacher",
 	gender = "",
-
-	name = "hunter",
-	speciesName = "creature_name",
+	
+	speciesName = "hunter",
 	stfName = "mob/creature_names", 
 	objectCRC = ?, 
 	socialGroup = "Talus Poacher",

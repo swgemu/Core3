@@ -50,8 +50,6 @@ beldonnasMarshal = Creature:new {
 
 	speciesName = "beldonnas_marshal",
 	stfName = "mob/creature_names", 
-	speciesName = "creature_name",
-	stfName = "mob/creature_names", 
 	objectCRC = 3021148797, 
 	socialGroup = "beldonnas_league",
 	level = 26,

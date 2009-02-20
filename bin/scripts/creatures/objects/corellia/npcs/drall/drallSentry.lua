@@ -47,9 +47,8 @@ drallSentry = Creature:new {
 	faction = "drall", 
 	factionPoints = 20,
 	gender = "",
-
-	name = "Drall sentry",
-	speciesName = "creature_name",
+	
+	speciesName = "drall_sentry",
 	stfName = "mob/creature_names", 
 	objectCRC = 3116494340, 
 	socialGroup = "drall",
