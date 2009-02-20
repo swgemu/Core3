@@ -3234,18 +3234,26 @@ void ObjectControllerMessage::parseHarvesterActivate(Player *player,
 
 	InstallationObject* inso = (InstallationObject*) tano;
 
-	InstallationObjectDeltaMessage3* dinso3 =
-			new InstallationObjectDeltaMessage3(inso);
-	dinso3->updateOperating(true);
-	dinso3->close();
-	player->sendMessage(dinso3);
+	try {
+		inso->wlock(player);
 
-	InstallationObjectDeltaMessage7* dinso7 =
+		InstallationObjectDeltaMessage3* dinso3 =
+			new InstallationObjectDeltaMessage3(inso);
+		dinso3->updateOperating(true);
+		dinso3->close();
+		player->sendMessage(dinso3);
+
+		InstallationObjectDeltaMessage7* dinso7 =
 			new InstallationObjectDeltaMessage7(inso);
-	dinso7->updateOperating(true);
-	dinso7->updateExtractionRate(inso->getActualRate());
-	dinso7->close();
-	player->sendMessage(dinso7);
+		dinso7->updateOperating(true);
+		dinso7->updateExtractionRate(inso->getActualRate());
+		dinso7->close();
+		player->sendMessage(dinso7);
+
+		inso->unlock();
+	} catch (...) {
+		inso->unlock();
+	}
 }
 
 void ObjectControllerMessage::parseHarvesterDeActivate(Player *player,
@@ -3267,17 +3275,25 @@ void ObjectControllerMessage::parseHarvesterDeActivate(Player *player,
 
 	InstallationObject* inso = (InstallationObject*) tano;
 
-	InstallationObjectDeltaMessage3* dinso3 =
-			new InstallationObjectDeltaMessage3(inso);
-	dinso3->updateOperating(false);
-	dinso3->close();
-	player->sendMessage(dinso3);
+	try {
+		inso->wlock(player);
 
-	InstallationObjectDeltaMessage7* dinso7 =
+		InstallationObjectDeltaMessage3* dinso3 =
+			new InstallationObjectDeltaMessage3(inso);
+		dinso3->updateOperating(false);
+		dinso3->close();
+		player->sendMessage(dinso3);
+
+		InstallationObjectDeltaMessage7* dinso7 =
 			new InstallationObjectDeltaMessage7(inso);
-	dinso7->updateOperating(false);
-	dinso7->close();
-	player->sendMessage(dinso7);
+		dinso7->updateOperating(false);
+		dinso7->close();
+		player->sendMessage(dinso7);
+
+		inso->unlock();
+	} catch (...) {
+		inso->unlock();
+	}
 }
 
 void ObjectControllerMessage::parseHarvesterDiscardHopper(Player *player,
@@ -3434,12 +3450,20 @@ void ObjectControllerMessage::parseHarvesterSelectResource(Player *player,
 
 	InstallationObject* inso = (InstallationObject*) tano;
 
-	InstallationObjectDeltaMessage7* dinso7 =
+	try {
+		inso->wlock(player);
+
+		InstallationObjectDeltaMessage7* dinso7 =
 			new InstallationObjectDeltaMessage7(inso);
-	dinso7->updateActiveResource(resourceID);
-	dinso7->updateExtractionRate(inso->getActualRate());
-	dinso7->close();
-	player->sendMessage(dinso7);
+		dinso7->updateActiveResource(resourceID);
+		dinso7->updateExtractionRate(inso->getActualRate());
+		dinso7->close();
+		player->sendMessage(dinso7);
+
+		inso->unlock();
+	} catch (...) {
+		inso->unlock();
+	}
 }
 
 void ObjectControllerMessage::parseExtractObject(Player* player,
@@ -3460,7 +3484,15 @@ void ObjectControllerMessage::parseExtractObject(Player* player,
 
 	FactoryCrate* crate = (FactoryCrate*) tano;
 
-	crate->useObject(player);
+	try {
+		crate->wlock(player);
+
+		crate->useObject(player);
+
+		crate->unlock();
+	} catch (...) {
+		crate->unlock();
+	}
 }
 
 void ObjectControllerMessage::parseSurveySlashRequest(Player* player,
@@ -3551,10 +3583,10 @@ void ObjectControllerMessage::parseResourceContainerSplit(Player* player,
 
 	int newQuantity = atoi(quantityString.toCharArray());
 
-	SceneObject* invObj = player->getInventoryItem(objectID);
+	ManagedReference<SceneObject> invObj = player->getInventoryItem(objectID);
 
 	if (invObj != NULL && invObj->isTangible()) {
-		TangibleObject* tano = (TangibleObject*) invObj;
+		TangibleObject* tano = (TangibleObject*) invObj.get();
 
 		if (tano->isResource()) {
 			ResourceContainer* rco = (ResourceContainer*) tano;
