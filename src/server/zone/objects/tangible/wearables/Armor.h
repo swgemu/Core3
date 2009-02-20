@@ -175,6 +175,8 @@ public:
 
 	void slice(Player* slicer);
 
+	void conditionReduction(float damage);
+
 protected:
 	Armor(DummyConstructorParameter* param);
 
@@ -342,6 +344,8 @@ public:
 	void onSlicingFailure(Player* slicer);
 
 	void slice(Player* slicer);
+
+	void conditionReduction(float damage);
 
 };
 

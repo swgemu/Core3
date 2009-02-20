@@ -74,7 +74,7 @@ void ArmorImplementation::parseItemAttributes() {
 	armorType = itemAttributes->getIntAttribute(name);
 
 	maxCondition = itemAttributes->getMaxCondition();
-	conditionDamage = maxCondition - itemAttributes->getCurrentCondition();
+	conditionDamage = (float) maxCondition - itemAttributes->getCurrentCondition();
 
 	name = "rating";
 	rating = itemAttributes->getIntAttribute(name);
@@ -779,7 +779,10 @@ void ArmorImplementation::setArmorStats(int modifier) {
 	}
 
 	maxCondition = 25000 + (luck * System::random(luck));
-	setCondition(maxCondition, maxCondition);
+	int currentCondition = maxCondition / 4;
+	currentCondition += System::random(maxCondition - currentCondition);
+
+	setCondition(currentCondition, maxCondition);
 
 	if ((luck * System::random(100)) > 2000) {
 		setHealthEncumbrance(healthEncumbrance - (healthEncumbrance * luck / 357));
@@ -1357,3 +1360,11 @@ void ArmorImplementation::sliceEffectiveness(Player* slicer, uint8 percentage){
 	onEffectivenessSliced(slicer, percentage);
 }
 
+void ArmorImplementation::conditionReduction(float damage) {
+	float armorMod = 0.1f;
+	//TODO find modifiers for armor types
+	//PSG = 0.1;
+
+	conditionDamage += damage * armorMod;
+	setConditionDamage(conditionDamage);
+}

@@ -682,6 +682,7 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 	}
 
 	targetDefense += targetCreature->getCenteredBonus();
+
 	if (targetDefense == 0)
 		return 0;
 
@@ -724,6 +725,11 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 float CombatManager::hitChanceEquation(float attackerAccuracy, float accuracyBonus, float targetDefense, float defenseBonus) {
 	float accTotal = 66.0 +
 		(attackerAccuracy + accuracyBonus - targetDefense - defenseBonus) / 2.0;
+	if (DEBUG) {
+		System::out << "HitChance\n";
+		System::out << "\tTarget Defense "<< targetDefense <<"\n";
+		System::out << "\tTarget Defense Bonus"<< defenseBonus <<"\n";
+	}
 	return accTotal;
 }
 
@@ -789,7 +795,8 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 	hitChance = (int)accTotal;
 
-	return hitChance;
+	//return hitChance;
+	return 1000;
 }
 
 float CombatManager::getWeaponRangeMod(float currentRange, Weapon* weapon) {
@@ -924,13 +931,18 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target,
 
 	//target->addDamage(attacker, damage);
 	target->addDamageDone(attacker, damage, askill->getSkillName());
-
 	if (part < 6)
 		attacker->inflictDamage(target, CreatureAttribute::HEALTH, damage);
 	else if (part < 8)
 		attacker->inflictDamage(target, CreatureAttribute::ACTION, damage);
 	else
 		attacker->inflictDamage(target, CreatureAttribute::MIND, damage);
+
+	if (DEBUG) {
+		System::out << "\n==============================\n";
+		System::out << "=    "<< damage <<"/"<< reduction << "    =\n";
+		System::out << "==============================\n\n";
+	}
 
 	if (attacker->isPlayer()) {
 		ShowFlyText* fly;
@@ -1006,7 +1018,7 @@ void CombatManager::applyWounds(CreatureObject* attacker, CreatureObject* target
 
 int CombatManager::getArmorReduction(CreatureObject* target, int damage, int location, int attacktype, int damagetype, int armorpiercing) {
 	float currentDamage = damage;
-	int reduction;
+	int reduction = 0;
 
 	if (DEBUG)
 		System::out << "Original damage = " << damage << endl;
@@ -1047,8 +1059,11 @@ int CombatManager::getArmorReduction(CreatureObject* target, int damage, int loc
 					System::out << "\tMelee Toughness (" << toughness << "%) reduces it to " << currentDamage << endl;
 		}
 
-	// TODO: Add Jedi toughness, all attacks except lightsaber
-
+	int jediToughness = target->getSkillMod("jedi_toughness");
+	if (jediToughness > 0)
+		currentDamage -= currentDamage * jediToughness / 100.0f;
+	if (DEBUG)
+		System::out << "\tJedi Toughness (" << jediToughness << "%) reduces it to " << currentDamage << endl;
 
 	// Stage three : Regular armour
 	Armor* armor = NULL;
@@ -1063,6 +1078,7 @@ int CombatManager::getArmorReduction(CreatureObject* target, int damage, int loc
 		}
 
 	float resist = 0;
+
 	if (armor != NULL) {
 		switch (damagetype) {
 		case WeaponImplementation::KINETIC:
@@ -1107,25 +1123,35 @@ int CombatManager::getArmorReduction(CreatureObject* target, int damage, int loc
 
 	if (resist > 0 && resist < 100) {
 		int armorResistance = 0;
-		if (armor != NULL)
+		if (armor != NULL) {
 			armorResistance = armor->getRating() / 16;
-		else if (target->isNonPlayerCreature())
+		}
+		else if (target->isNonPlayerCreature()) {
 			armorResistance = ((Creature*)target)->getArmor();
-
+		}
 		if (armorpiercing > armorResistance)
 			for (int i = armorResistance; i < armorpiercing; i++)
 				currentDamage *= 1.25f;
 		else if (armorpiercing < armorResistance)
 			for (int i = armorpiercing; i < armorResistance; i++)
 				currentDamage *= 0.5;
+
+		currentDamage -= currentDamage * resist / 100.0f;
 		if (DEBUG)
 			System::out << "\tAP/AR changes damage value to " << currentDamage << endl;
 	}
 
-	currentDamage -= currentDamage * resist / 100.0f;
+	float armorReduction = preArmorDamage - currentDamage;
 
-	if (target->isPlayer() && resist > 0 && armor != NULL)
-		target->sendCombatSpam(target,(TangibleObject*)armor, (int)(preArmorDamage - currentDamage), "armor_damaged", false);
+	if (armor != NULL && resist > 0 && target->isPlayer()) {
+		armor->conditionReduction(currentDamage);
+
+		StfParameter* params = new StfParameter();
+		params->addTO(armor->getObjectID());
+		params->addDI(armorReduction);
+		((Player*)target)->sendSystemMessage("cbt_spam",
+				"armor_damaged", params);
+	}
 
 	// Final outcome, may be negative
 	reduction = damage - (int)currentDamage;
@@ -1133,7 +1159,7 @@ int CombatManager::getArmorReduction(CreatureObject* target, int damage, int loc
 	if (DEBUG)
 		System::out << "\tFinal reduction due to armour and toughness is " << reduction << endl;
 
-		return reduction;
+	return reduction;
 }
 
 bool CombatManager::calculateCost(CreatureObject* creature, float healthMultiplier, float actionMultiplier, float mindMultiplier, float forceMultiplier) {
@@ -1634,6 +1660,8 @@ int CombatManager::calculateWeaponDamage(CreatureObject* creature, TangibleObjec
 	} else {
 		minDamage = (float)creature->getSkillMod("unarmed_damage");
 		maxDamage = minDamage + 15.0;
+		damageType = WeaponImplementation::KINETIC;
+		armorPiercing = WeaponImplementation::NONE;
 	}
 
 	// Test for hit
@@ -1775,10 +1803,16 @@ int CombatManager::calculateDamage(CreatureObject* creature, TangibleObject* tar
 			globalMultiplier *= PVP_MULTIPLIER;
 	}
 
+	damage = skill->damageRatio * average * globalMultiplier;
+	if(DEBUG)
+		System::out << "Damage Before Intim: " << damage <<"\n";
+
 	if (creature->isIntimidated())
 		damage /= 2;
-	if (creature->isStunned())
-		damage /= 2;
+	//if (creature->isStunned())
+	//	damage /= 2;
+	if(DEBUG)
+		System::out << "Damage After Intim: " << damage <<"\n";
 
 	if (targetCreature != NULL) {
 		if (targetCreature->isKnockedDown())
@@ -1817,7 +1851,7 @@ int CombatManager::calculateDamage(CreatureObject* creature, TangibleObject* tar
 		if (randompoolhit)
 			poolsAffected = 1;  // Only one random pool hit
 
-		damage = skill->damageRatio * average * globalMultiplier;
+		//damage = skill->damageRatio * average * globalMultiplier;
 		float individualDamage = damage / poolsAffected;
 
 		for (int i = 0; i < poolsAffected; i++) {

@@ -273,7 +273,8 @@ void LootManager::createLoot(Creature* creature, Player* player) {
 		return;
 	}
 
-	ltm->createLootItem(creature, creatureLevel, player);
+	if (System::random(2) == 0)
+		ltm->createLootItem(creature, creatureLevel, player);
 
 	creature->setCashCredits(creatureLevel * System::random(1234) / 25);
 	creature->setLootCreated(true);

@@ -984,6 +984,19 @@ void Armor::slice(Player* slicer) {
 		((ArmorImplementation*) _impl)->slice(slicer);
 }
 
+void Armor::conditionReduction(float damage) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 82);
+		method.addFloatParameter(damage);
+
+		method.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->conditionReduction(damage);
+}
+
 /*
  *	ArmorAdapter
  */
@@ -1222,6 +1235,9 @@ Packet* ArmorAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 81:
 		slice((Player*) inv->getObjectParameter());
+		break;
+	case 82:
+		conditionReduction(inv->getFloatParameter());
 		break;
 	default:
 		return NULL;
@@ -1532,6 +1548,10 @@ void ArmorAdapter::onSlicingFailure(Player* slicer) {
 
 void ArmorAdapter::slice(Player* slicer) {
 	return ((ArmorImplementation*) impl)->slice(slicer);
+}
+
+void ArmorAdapter::conditionReduction(float damage) {
+	return ((ArmorImplementation*) impl)->conditionReduction(damage);
 }
 
 /*
