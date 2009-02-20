@@ -795,8 +795,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 	hitChance = (int)accTotal;
 
-	//return hitChance;
-	return 1000;
+	return hitChance;
 }
 
 float CombatManager::getWeaponRangeMod(float currentRange, Weapon* weapon) {
