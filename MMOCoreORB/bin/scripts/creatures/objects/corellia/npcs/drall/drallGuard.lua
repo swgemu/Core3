@@ -45,9 +45,8 @@ drallGuard = Creature:new {
 	creatureType = "NPC",
 	faction = "Drall 0",
 	gender = "",
-
-	name = "Droll guard",
-	speciesName = "creature_name",
+	
+	speciesName = "drall_guard",
 	stfName = "mob/creature_names", 
 	objectCRC = 3116494340, 
 	socialGroup = "drall",
