@@ -220,9 +220,10 @@ public:
 
 	static void parseTeach(Player* player, Message* pack);
 
-	static void parseThrowTrap(Player* player, Message* pack);
-
 	static void doInstantAction(Player* player, Message* pack, uint32 actionCRC, uint32 actionCntr);
+
+	static void parseThrowItem(Player* player, Message* pack, uint32 actionCRC, uint32 actionCntr);
+
 };
 
 #endif /*OBJECTCONTROLLERMESSAGE_H_*/

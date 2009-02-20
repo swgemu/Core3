@@ -35,6 +35,8 @@ public:
 
 	unsigned int getSkillCRC();
 
+	void activateSkill(Player* player);
+
 protected:
 	ThrowableWeapon(DummyConstructorParameter* param);
 
@@ -66,6 +68,8 @@ public:
 	bool isUsefull(Player* player);
 
 	unsigned int getSkillCRC();
+
+	void activateSkill(Player* player);
 
 protected:
 	String _param0_setSkill__String_;

@@ -115,6 +115,8 @@ public:
 	 */
 	bool isUsefull(Player* player);
 
+	void activateSkill(Player* player);
+
 };
 
 #endif /* THROWABLEWEAPONIMPLEMENTATION_H_ */

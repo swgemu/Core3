@@ -62,7 +62,7 @@ GrenadeThrowableWeaponImplementation::GrenadeThrowableWeaponImplementation(Creat
 
 
 void GrenadeThrowableWeaponImplementation::init() {
-	objectSubType = TangibleObjectImplementation::GRENADE;
+	objectSubType = TangibleObjectImplementation::THROWNWEAPON;
 
 	setType(GRENADE);
 	setCategory(ALL);
@@ -181,7 +181,12 @@ int GrenadeThrowableWeaponImplementation::useObject(Player* player) {
 	}
 
 	//useCharge(player);
-	player->queueThrow((TangibleObject*)_this, getSkillCRC());
+	StringBuffer cmd;
+	cmd << "/throwgrenade "<< getObjectID();
+	ExecuteConsoleCommand* msg =  new ExecuteConsoleCommand(cmd.toString());
+
+	player->sendMessage(msg);
+	//player->queueThrow((TangibleObject*)_this, getSkillCRC());
 	//useCharge(player);
 	return 1;
 }
