@@ -126,6 +126,11 @@ uint32 DamageOverTime::applyDot(CreatureObject* attacker, CreatureObject* victim
 
 
 uint32 DamageOverTime::doBleedingTick(CreatureObject* attacker, CreatureObject* victim) {
+		uint32 attr = victim->getAttribute(attribute);
+
+		if (attr < strength)
+			strength = attr - 1;
+
 		attacker->inflictDamage(victim,attribute,strength);
 
 		victim->playEffect("clienteffect/dot_bleeding.cef","");
@@ -134,6 +139,11 @@ uint32 DamageOverTime::doBleedingTick(CreatureObject* attacker, CreatureObject* 
 }
 
 uint32 DamageOverTime::doFireTick(CreatureObject* attacker, CreatureObject* victim) {
+		uint32 attr = victim->getAttribute(attribute);
+
+		if (attr < strength)
+			strength = attr - 1;
+
 		attacker->inflictDamage(victim,attribute,strength);
 
 		victim->playEffect("clienteffect/dot_fire.cef","");
@@ -142,6 +152,11 @@ uint32 DamageOverTime::doFireTick(CreatureObject* attacker, CreatureObject* vict
 }
 
 uint32 DamageOverTime::doPoisonTick(CreatureObject* attacker, CreatureObject* victim) {
+		uint32 attr = victim->getAttribute(attribute);
+
+		if (attr < strength)
+			strength = attr - 1;
+
 		attacker->inflictDamage(victim,attribute,strength);
 
 		victim->playEffect("clienteffect/dot_poisoned.cef","");

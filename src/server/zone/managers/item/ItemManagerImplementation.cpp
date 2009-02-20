@@ -257,7 +257,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(Player* pl
 		case TangibleObjectImplementation::TRAP:
 			item = new TrapThrowableWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
-		case TangibleObjectImplementation::GRENADE:
+		case TangibleObjectImplementation::THROWNWEAPON:
 			item = new GrenadeThrowableWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		}
@@ -987,7 +987,7 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("PISTOL", TangibleObjectImplementation::PISTOL);
 	setGlobalInt("CARBINE", TangibleObjectImplementation::CARBINE);
 	setGlobalInt("RIFLE", TangibleObjectImplementation::RIFLE);
-	setGlobalInt("GRENADE", TangibleObjectImplementation::GRENADE);
+	setGlobalInt("GRENADE", TangibleObjectImplementation::THROWNWEAPON);
 	setGlobalInt("RESOURCECONTAINER", TangibleObjectImplementation::RESOURCECONTAINER);
 	setGlobalInt("ENERGYGAS", TangibleObjectImplementation::ENERGYGAS);
 	setGlobalInt("ENERGYLIQUID", TangibleObjectImplementation::ENERGYLIQUID);

@@ -644,11 +644,11 @@ public:
 	}
 
 	inline bool isGrenade() {
-		return objectSubType == GRENADE;
+		return objectSubType == THROWNWEAPON;
 	}
 
 	inline bool isThrowable() {
-		return (objectSubType == GRENADE || objectSubType == TRAP);
+		return (objectSubType == THROWNWEAPON || objectSubType == TRAP);
 	}
 
 	inline bool isInstrument() {

@@ -122,6 +122,19 @@ unsigned int ThrowableWeapon::getSkillCRC() {
 		return ((ThrowableWeaponImplementation*) _impl)->getSkillCRC();
 }
 
+void ThrowableWeapon::activateSkill(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((ThrowableWeaponImplementation*) _impl)->activateSkill(player);
+}
+
 /*
  *	ThrowableWeaponAdapter
  */
@@ -153,6 +166,9 @@ Packet* ThrowableWeaponAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		break;
 	case 12:
 		resp->insertInt(getSkillCRC());
+		break;
+	case 13:
+		activateSkill((Player*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -187,6 +203,10 @@ bool ThrowableWeaponAdapter::isUsefull(Player* player) {
 
 unsigned int ThrowableWeaponAdapter::getSkillCRC() {
 	return ((ThrowableWeaponImplementation*) impl)->getSkillCRC();
+}
+
+void ThrowableWeaponAdapter::activateSkill(Player* player) {
+	return ((ThrowableWeaponImplementation*) impl)->activateSkill(player);
 }
 
 /*

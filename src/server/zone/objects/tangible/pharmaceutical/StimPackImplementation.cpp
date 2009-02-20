@@ -66,8 +66,14 @@ int StimPackImplementation::useObject(Player* player) {
 		return 0;
 	}
 
-	uint32 actionCRC = 0x0A9F00A0; //healdamage
-	player->queueHeal((TangibleObject*)_this, actionCRC, String(""));
+	//uint32 actionCRC = 0x0A9F00A0; //healdamage
+
+	StringBuffer cmd;
+	cmd << "/healdamage "<< getObjectID();
+	ExecuteConsoleCommand* msg =  new ExecuteConsoleCommand(cmd.toString());
+
+	player->sendMessage(msg);
+	//player->queueHeal((TangibleObject*)_this, actionCRC, String(""));
 
 	return 0;
 }

@@ -890,9 +890,6 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	case (0xCF2D30F4): // newbieselectstartinglocation
 		parseNewbieSelectStartingLocation(player, pack);
 		break;
-	case (0x549BE67): //throwtrap
-		parseThrowTrap(player, pack);
-		break;
 	case (0x5041F83A): // Teach
 		parseTeach(player, pack);
 		break;
@@ -904,6 +901,10 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		break;
 	case (0x4871BBF4): //Retreat
 		doInstantAction(player, pack, actionCRC, actioncntr);
+		break;
+	case (0x549BE67): //throwtrap
+	case (0xBBAF8943): //throwgrenade
+		parseThrowItem(player, pack, actionCRC, actioncntr);
 		break;
 	default:
 		target = pack->parseLong();
@@ -4479,24 +4480,6 @@ void ObjectControllerMessage::parseDelFactionPoints(Player* player,
 	player->delFactionPoints(tipTo, tipAmount);
 }
 
-void ObjectControllerMessage::parseThrowTrap(Player* player, Message* pack) {
-	Zone* zone = player->getZone();
-	if (zone == NULL)
-		return;
-
-	uint64 targetid = pack->parseLong();
-
-	SceneObject* object = zone->lookupObject(targetid);
-
-
-	if (object == NULL || !object->isNonPlayerCreature())
-		return;
-
-	Creature* target = (Creature*) object;
-
-	player->throwTrap(target->getObjectID());
-}
-
 void ObjectControllerMessage::handleContainerOpen(Player* player, Message* pack) {
 	//TODO:Cell permission must take place here
 	uint64 target = pack->parseLong();
@@ -4626,6 +4609,40 @@ void ObjectControllerMessage::parseNewbieSelectStartingLocation(Player* player,
 		player->setPosition(-5045.0f, 0, -2294.0f);
 		player->switchMap(0);
 
+	}
+
+}
+
+void ObjectControllerMessage::parseThrowItem(Player* player, Message* pack, uint32 actionCRC, uint32 actionCntr) {
+	uint64 target = pack->parseLong();
+	UnicodeString option = UnicodeString("");
+	String actionModifier = "";
+
+	pack->parseUnicode(option);
+	actionModifier = option.toString();
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+	if (zoneServer == NULL)
+		return;
+	uint64 objectId = 0;
+	if (!actionModifier.isEmpty())
+		objectId = Long::valueOf(actionModifier);
+	else {
+		player->throwTrap(target);
+	}
+
+
+	SceneObject* obj = player->getInventoryItem(objectId);
+
+	if (obj == NULL)
+		return;
+
+	if (obj->isTangible() && ((TangibleObject*)obj)->isThrowable()) {
+		((ThrowableWeapon*)obj)->activateSkill(player);
 	}
 
 }

@@ -207,8 +207,12 @@ int TrapThrowableWeaponImplementation::useObject(Player* player) {
 		return 0;
 	}
 
+	StringBuffer cmd;
+	cmd << "/throwtrap "<< getObjectID();
+	ExecuteConsoleCommand* msg =  new ExecuteConsoleCommand(cmd.toString());
+	player->sendMessage(msg);
 	//useCharge(player);
-	player->queueThrow((TangibleObject*)_this, getSkillCRC());
+	//player->queueThrow((TangibleObject*)_this, getSkillCRC());
 
 	return 1;
 }

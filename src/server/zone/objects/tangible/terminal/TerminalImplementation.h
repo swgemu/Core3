@@ -68,7 +68,7 @@ public:
 	static const uint8 MISSION = 4;
 	static const uint8 CLONING = 5;
 	static const uint8 INSURANCE = 6;
-	static const int CAMP = 7;
+	static const uint8 CAMP = 7;
 	static const uint8 STARTINGLOCATION = 8;
 
 	static const uint8 BANK = 42;

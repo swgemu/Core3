@@ -143,3 +143,7 @@ bool ThrowableWeaponImplementation::isUsefull(Player* player) {
 	return true;
 }
 
+void ThrowableWeaponImplementation::activateSkill(Player* player) {
+	player->queueThrow((TangibleObject*)_this, getSkillCRC());
+}
+
