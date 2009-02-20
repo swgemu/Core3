@@ -1058,5 +1058,7 @@ public:
 	void slice(Player* slicer);
 	void sliceEncumbrance(Player* slicer, uint8 percentage);
 	void sliceEffectiveness(Player* slicer, uint8 percentage);
+
+	void conditionReduction(float damage);
 };
 #endif /*ARMORIMPLEMENTATION_H_*/

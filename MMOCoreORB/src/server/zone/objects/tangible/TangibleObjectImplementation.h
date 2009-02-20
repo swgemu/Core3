@@ -78,7 +78,7 @@ protected:
 	certificationsRequired
 	customizationVariableMapping*/
 
-	int conditionDamage;
+	float conditionDamage;
 	int maxCondition;
 
 	uint32 optionsBitmask;
@@ -437,17 +437,17 @@ public:
 	inline void setCondition(int current, int max){
 		itemAttributes->setCondition(current, max);
 		maxCondition = max;
-		conditionDamage = max - current;
+		conditionDamage = (float) max - current;
 	}
 
 	inline void setMaxCondition(int maxCond) {
 		maxCondition = maxCond;
-		itemAttributes->setCondition((maxCond - conditionDamage), maxCond);
+		itemAttributes->setCondition((int) round(maxCond - conditionDamage), maxCond);
 	}
 
-	inline void setConditionDamage(int damage) {
+	inline void setConditionDamage(float damage) {
 		conditionDamage = damage;
-		itemAttributes->setCondition((maxCondition - damage), maxCondition);
+		itemAttributes->setCondition((int) round(maxCondition - conditionDamage), maxCondition);
 	}
 
 	inline void setCustomizationVariable(uint8 type, uint16 value) {
@@ -725,7 +725,7 @@ public:
 		return objectSubType == CAMPKIT;
 	}
 
-	inline int getConditionDamage() {
+	inline float getConditionDamage() {
 		return conditionDamage;
 	}
 
@@ -734,7 +734,7 @@ public:
 	}
 
 	inline int getCondition() {
-		return maxCondition - conditionDamage;
+		return (int) round(maxCondition - conditionDamage);
 	}
 
 	virtual bool isAttackableBy(CreatureObject* creature) {
