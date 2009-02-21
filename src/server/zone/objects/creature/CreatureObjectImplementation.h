@@ -1102,7 +1102,7 @@ public:
 	}
 
 	inline int getConditionDamage() {
-		return conditionDamage;
+		return (int)conditionDamage;
 	}
 
 	inline int getMaxCondition() {
@@ -1110,7 +1110,7 @@ public:
 	}
 
 	inline int getCondition() {
-		return maxCondition - conditionDamage;
+		return (int)(maxCondition - conditionDamage);
 	}
 
 	inline int getCenteredBonus() {

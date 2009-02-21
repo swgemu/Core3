@@ -717,8 +717,6 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 		break;
 	}
 
-	// TODO: saberblock
-
 	return defenseType;
 }
 
@@ -1150,7 +1148,7 @@ int CombatManager::getArmorReduction(CreatureObject* target, int damage, int loc
 
 		StfParameter* params = new StfParameter();
 		params->addTO(armor->getObjectID());
-		params->addDI(armorReduction);
+		params->addDI((int)armorReduction);
 		((Player*)target)->sendSystemMessage("cbt_spam",
 				"armor_damaged", params);
 	}
@@ -1832,6 +1830,20 @@ int CombatManager::calculateDamage(CreatureObject* creature, TangibleObject* tar
 			return -1;
 		else if (secondaryDefense == 3) {
 			counterAttack(creature, targetCreature);
+			return -1;
+		}
+
+		// Saber Block
+
+		Weapon* targetWeapon = targetCreature->getWeapon();
+
+		int saberBlockChance = targetCreature->getSkillMod("saber_block");
+
+		CreatureObject* defender = (CreatureObject*) target;
+
+		if ((attackType == RANGEDATTACK) && (targetWeapon != NULL) && ((targetWeapon->getType() == WeaponImplementation::ONEHANDSABER) || (targetWeapon->getType() == WeaponImplementation::TWOHANDSABER) || (targetWeapon->getType() == WeaponImplementation::POLEARMSABER))) {
+			if (System::random(100) <= saberBlockChance)
+				creature->doCombatAnimation(defender, String("test_sword_ricochet").hashCode(), 0);
 			return -1;
 		}
 
