@@ -1635,7 +1635,7 @@ int CombatManager::calculateWeaponDamage(CreatureObject* creature, TangibleObjec
 	float minDamage, maxDamage;
 	int damageType = 0;
 	int attackType = MELEEATTACK;
-	int armorPiercing;
+	int armorPiercing = 0;
 
 	if (weapon != NULL) {
 		if (MELEEWEAPON(weapon->getType()))
@@ -1659,8 +1659,7 @@ int CombatManager::calculateWeaponDamage(CreatureObject* creature, TangibleObjec
 	} else {
 		minDamage = (float)creature->getSkillMod("unarmed_damage");
 		maxDamage = minDamage + 15.0;
-		damageType = WeaponImplementation::KINETIC;
-		armorPiercing = WeaponImplementation::NONE;
+		// DamageType and ArmorPiercing default to Kinetic no piercing
 	}
 
 	// Test for hit
@@ -1804,14 +1803,16 @@ int CombatManager::calculateDamage(CreatureObject* creature, TangibleObject* tar
 
 	damage = skill->damageRatio * average * globalMultiplier;
 	if(DEBUG)
-		System::out << "Damage Before Intim: " << damage <<"\n";
+		System::out << "Damage Before Intimidate and stun " << damage <<"\n";
 
 	if (creature->isIntimidated())
 		damage /= 2;
-	//if (creature->isStunned())
-	//	damage /= 2;
+
+	if (creature->isStunned())
+		damage /= 2;
+
 	if(DEBUG)
-		System::out << "Damage After Intim: " << damage <<"\n";
+		System::out << "Damage After Intimidate and stun " << damage <<"\n";
 
 	if (targetCreature != NULL) {
 		if (targetCreature->isKnockedDown())
