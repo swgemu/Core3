@@ -1058,11 +1058,13 @@ int CombatManager::getArmorReduction(CreatureObject* target, int damage, int loc
 					System::out << "\tMelee Toughness (" << toughness << "%) reduces it to " << currentDamage << endl;
 		}
 
-	int jediToughness = target->getSkillMod("jedi_toughness");
-	if (jediToughness > 0)
-		currentDamage -= currentDamage * jediToughness / 100.0f;
-	if (DEBUG)
-		System::out << "\tJedi Toughness (" << jediToughness << "%) reduces it to " << currentDamage << endl;
+	if ((attacktype == MELEEATTACK) && (!damagetype == WeaponImplementation::LIGHTSABER)) {
+		int jediToughness = target->getSkillMod("jedi_toughness");
+		if (jediToughness > 0)
+			currentDamage -= currentDamage * jediToughness / 100.0f;
+		if (DEBUG)
+			System::out << "\tJedi Toughness (" << jediToughness << "%) reduces it to " << currentDamage << endl;
+	}
 
 	// Stage three : Regular armour
 	Armor* armor = NULL;
