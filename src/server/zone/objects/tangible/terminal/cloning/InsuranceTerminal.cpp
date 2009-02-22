@@ -117,7 +117,7 @@ DistributedObjectAdapter* InsuranceTerminalHelper::createAdapter(DistributedObje
  *	InsuranceTerminalServant
  */
 
-InsuranceTerminalServant::InsuranceTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, int TerminalType) : TerminalImplementation(objCRC, objid, n, tempn, x, z, y, TerminalType) {
+InsuranceTerminalServant::InsuranceTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, int terminalType) : TerminalImplementation(objCRC, objid, n, tempn, x, z, y, terminalType) {
 	_classHelper = InsuranceTerminalHelper::instance();
 }
 

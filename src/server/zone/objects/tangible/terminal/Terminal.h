@@ -17,7 +17,7 @@ class TangibleObject;
 
 class Terminal : public TangibleObject {
 public:
-	Terminal(unsigned int objCRC, unsigned long long oid, const UnicodeString& n, const String& tempn, float x, float z, float y, unsigned char TerminalType);
+	Terminal(unsigned int objCRC, unsigned long long oid, const UnicodeString& n, const String& tempn, float x, float z, float y, unsigned char terminaltype);
 
 	int useObject(Player* player);
 
@@ -36,6 +36,10 @@ public:
 	bool isBazaarTerminal();
 
 	bool isBankTerminal();
+
+	bool isStartingLocationTerminal();
+
+	bool isPlayerStructureTerminal();
 
 protected:
 	Terminal(DummyConstructorParameter* param);
@@ -70,6 +74,10 @@ public:
 	bool isBazaarTerminal();
 
 	bool isBankTerminal();
+
+	bool isStartingLocationTerminal();
+
+	bool isPlayerStructureTerminal();
 
 };
 

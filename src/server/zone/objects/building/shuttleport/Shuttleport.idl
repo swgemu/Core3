@@ -42,16 +42,19 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../../../player/Player";
 
-import "../Terminal";
+import "../BuildingObject";
 
-interface InsuranceTerminal implements Terminal {
-	InsuranceTerminal(unsigned long objid, float x, float z, float y) {
-		super(unsigned int objCRC, objid, const UnicodeString n, const String tempn, x, z, y, int terminalType); 
+import "../../creature/shuttle/ShuttleCreature";
+
+interface Shuttleport implements BuildingObject {
+	Shuttleport(unsigned long oid, boolean staticBuild) {
+		super(oid, staticBuild, int btype);
 	}
-
-	int useObject(Player player);
 	
-	int getCost();
+	//Setters
+	void setShuttle(ShuttleCreature shtl);
+	
+	//Getters
+	ShuttleCreature getShuttle();
 }

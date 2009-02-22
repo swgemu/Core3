@@ -49,20 +49,30 @@ which carries forward this exception.
 
 class CellObject;
 class Player;
+class Guild;
 class Zone;
 
 #include "BuildingObject.h"
 
 #include "../tangible/ItemAttributes.h"
 
+#include "StructurePermissionList.h"
+
 class BuildingObjectImplementation : public QuadTree, public BuildingObjectServant {
 	SortedVector<CellObject*> cells;
+	SortedVector<SceneObject*> sceneObjects;
 
-	UnicodeString name;
+	UnicodeString buildingName;
 	String defaultName;
 
 	String owner;
 	uint64 ownerID;
+
+	StructurePermissionList* permissionList;
+
+	bool publicEntry;
+	uint32 accessFee;
+	uint32 accessTime; //In minutes
 
 	int buildingType;
 
@@ -172,26 +182,60 @@ public:
 	void removeFromZone(bool doLock = true);
 	void putPlayersInWorld();
 
+	void addSceneObject(SceneObject* sceneObject);
+
+	void givePermission(Player* enforcer, Player* recipient, uint8 permission) {
+		permissionList->givePermission(enforcer, recipient, permission);
+	}
+
+	void givePermission(Player* enforcer, Guild* guild, uint8 permission) {
+		permissionList->givePermission(enforcer, guild, permission);
+	}
+
+	void givePermission(Player* enforcer, const String& entryname, uint8 permission) {
+		permissionList->givePermission(enforcer, entryname, permission);
+	}
+
+	void revokePermission(Player* enforcer, Player* recipient, uint8 permission) {
+		permissionList->revokePermission(enforcer, recipient, permission);
+	}
+
+	void revokePermission(Player* enforcer, Guild* guild, uint8 permission) {
+		permissionList->revokePermission(enforcer, guild, permission);
+	}
+
+	void revokePermission(Player* enforcer, const String& entryname, uint8 permission) {
+		permissionList->revokePermission(enforcer, entryname, permission);
+	}
 
 	// Attribute Setters
 	inline void setOwner(const String own) {
 		setUpdated(true);
 		owner = own;
 		String attr("owner");
+		permissionList->setOwner(owner);
 		itemAttributes->setStringAttribute(attr, owner);
 	}
+
 	inline void setOwnerID(uint64 ownerid) {
 		setUpdated(true);
 		ownerID = ownerid;
 		String attr("ownerID");
 		itemAttributes->setUnsignedLongAttribute(attr, ownerID);
 	}
+
+	inline void setPublicEntry(bool pubentry) {
+		publicEntry = pubentry;
+		String attr("publicEntry");
+		itemAttributes->setBooleanAttribute(attr, publicEntry);
+	}
+
 	inline void setName(const String& n) {
-		name = n;
+		buildingName = n;
 	}
 
 	inline void setName(const UnicodeString& n) {
-		name = n;
+		buildingName = n;
 	}
 
 	// Attribute Getters
@@ -202,7 +246,7 @@ public:
 		return ownerID;
 	}
 	inline UnicodeString& getName() {
-		return name;
+		return buildingName;
 	}
 	inline String& getTemplateName() {
 		templateName = "";
@@ -222,6 +266,11 @@ public:
 	void notifyDissapear(QuadTreeEntry* obj);
 
 	void notifyInsertToZone(SceneObject* object);
+
+	///Used for loading a saved permissions string from the database.
+	inline void setPermissionsList(const String& permissionsString) {
+		permissionList->setPermissionsFromString(permissionsString);
+	}
 
 	inline void setAttributes(String& attributeString) {
 		itemAttributes->setAttributes(attributeString);
@@ -248,6 +297,8 @@ public:
 		return cells.get(idx);
 	}
 
+	bool hasCell(uint64 cellID);
+
 	inline void setBuildingType(const int type) {
 		buildingType = type;
 		setDefaultName();
@@ -267,6 +318,11 @@ public:
 
 	inline bool isUpdated() {
 		return updated;
+	}
+
+	/// Is the building enterable by the public.
+	inline bool isPublic() {
+		return publicEntry;
 	}
 
 	void setDefaultName();
@@ -296,6 +352,25 @@ public:
 		return buildingType == CLONING_FACILITY;
 	}
 
+	inline bool isOwnedBy(Player* player) {
+		return owner == player->getFirstName().toLowerCase();
+	}
+
+	inline bool isOnAdminList(Player* player) {
+		return permissionList->isOnAdminList(player);
+	}
+
+	inline bool isOnEntryList(Player* player) {
+		return permissionList->isOnEntryList(player);
+	}
+
+	inline bool isOnHopperList(Player* player) {
+		return permissionList->isOnHopperList(player);
+	}
+
+	inline bool isOnBanList(Player* player) {
+		return permissionList->isOnBanList(player);
+	}
 };
 
 #endif /*BUILDINGOBJECTIMPLEMENTATION_H_*/

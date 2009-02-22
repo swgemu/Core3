@@ -42,16 +42,14 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../../../player/Player";
+import "../../player/Player";
 
-import "../Terminal";
+import "../TangibleObject";
 
-interface InsuranceTerminal implements Terminal {
-	InsuranceTerminal(unsigned long objid, float x, float z, float y) {
-		super(unsigned int objCRC, objid, const UnicodeString n, const String tempn, x, z, y, int terminalType); 
+interface JubileeWheel implements TangibleObject {
+	JubileeWheel(unsigned long objid, float x, float z, float y) {
+		super(objid, unsigned int tempCRC, const UnicodeString n, const String tempname, int tp); 
 	}
 
 	int useObject(Player player);
-	
-	int getCost();
 }

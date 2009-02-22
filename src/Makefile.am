@@ -206,6 +206,8 @@ core3_IDLS =	server/chat/ChatManager.cpp \
 		server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp \
 		server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp \
 		server/zone/objects/tangible/terminal/camp/CampTerminal.cpp \
+		server/zone/objects/tangible/gambling/LugjackMachine.cpp \
+		server/zone/objects/tangible/gambling/JubileeWheel.cpp \
 		server/zone/objects/tangible/ticketcollector/TicketCollector.cpp \
 		server/zone/objects/tangible/ticket/Ticket.cpp \
 		server/zone/objects/tangible/weapons/jedi/OneHandedJediWeapon.cpp \
@@ -279,6 +281,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/building/cell/CellObjectImplementation.cpp \
+		server/zone/objects/building/StructurePermissionList.cpp \
 		server/zone/objects/creature/action/ActionCreatureImplementation.cpp \
 		server/zone/objects/creature/action/ActionImplementation.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp \

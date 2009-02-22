@@ -65,7 +65,7 @@ public:
 	InsuranceTerminal* _this;
 
 public:
-	InsuranceTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, int TerminalType);
+	InsuranceTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, int terminalType);
 	virtual ~InsuranceTerminalServant();
 
 	void _setStub(DistributedObjectStub* stub);

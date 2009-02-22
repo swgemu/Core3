@@ -53,7 +53,7 @@ import "../../../player/Player";
 
 interface BankTerminal implements Terminal {
 	BankTerminal(BankManager bankmanager, unsigned long objid, float x, float z, float y) {
-		super(unsigned int objCRC, objid, const UnicodeString n, const String tempn, x, z, y, int TerminalType); 
+		super(unsigned int objCRC, objid, const UnicodeString n, const String tempn, x, z, y, unsigned char terminaltype); 
 	}
 	
 	int useObject(Player player);

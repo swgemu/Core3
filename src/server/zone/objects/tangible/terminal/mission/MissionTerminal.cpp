@@ -138,7 +138,7 @@ DistributedObjectAdapter* MissionTerminalHelper::createAdapter(DistributedObject
  *	MissionTerminalServant
  */
 
-MissionTerminalServant::MissionTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, int TerminalType) : TerminalImplementation(objCRC, objid, n, tempn, x, z, y, TerminalType) {
+MissionTerminalServant::MissionTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, unsigned char terminaltype) : TerminalImplementation(objCRC, objid, n, tempn, x, z, y, terminaltype) {
 	_classHelper = MissionTerminalHelper::instance();
 }
 

@@ -52,7 +52,7 @@ import "../Terminal";
 
 interface CloningTerminal implements Terminal {
 	CloningTerminal(unsigned long objid, float x, float z, float y, unsigned int cost = 1000) {
-		super(unsigned int objCRC, objid, const UnicodeString n, const String tempn, x, z, y, int TerminalType); 
+		super(unsigned int objCRC, objid, const UnicodeString n, const String tempn, x, z, y, int terminalType); 
 	}
 
 	int useObject(Player player);

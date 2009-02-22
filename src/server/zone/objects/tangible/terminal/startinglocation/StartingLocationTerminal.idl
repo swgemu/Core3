@@ -44,13 +44,11 @@ which carries forward this exception.
 
 import "../../../player/Player";
 
-import "../../../tangible/TangibleObject";
-
 import "../Terminal";
 
 interface StartingLocationTerminal implements Terminal {
 	StartingLocationTerminal(unsigned long objid, float x, float z, float y) {
-		super(unsigned int objCRC, objid, const UnicodeString n, const String tempn, x, z, y, int TerminalType); 
+		super(unsigned int objCRC, objid, const UnicodeString n, const String tempn, x, z, y, unsigned char terminaltype); 
 	}
 
 	int useObject(Player player);

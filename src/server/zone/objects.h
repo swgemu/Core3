@@ -121,6 +121,11 @@ which carries forward this exception.
 #include "objects/tangible/lair/LairObject.h"
 #include "objects/tangible/lair/LairObjectImplementation.h"
 
+#include "objects/tangible/gambling/LugjackMachine.h"
+#include "objects/tangible/gambling/LugjackMachineImplementation.h"
+#include "objects/tangible/gambling/JubileeWheel.h"
+#include "objects/tangible/gambling/JubileeWheelImplementation.h"
+
 // Deeds
 #include "objects/tangible/deed/DeedObject.h"
 #include "objects/tangible/deed/DeedObjectImplementation.h"

@@ -9,8 +9,6 @@
 
 class Player;
 
-class TangibleObject;
-
 class Terminal;
 
 #include "../Terminal.h"
@@ -63,7 +61,7 @@ public:
 	StartingLocationTerminal* _this;
 
 public:
-	StartingLocationTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, int TerminalType);
+	StartingLocationTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, unsigned char terminaltype);
 	virtual ~StartingLocationTerminalServant();
 
 	void _setStub(DistributedObjectStub* stub);

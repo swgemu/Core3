@@ -200,7 +200,7 @@ DistributedObjectAdapter* CloningTerminalHelper::createAdapter(DistributedObject
  *	CloningTerminalServant
  */
 
-CloningTerminalServant::CloningTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, int TerminalType) : TerminalImplementation(objCRC, objid, n, tempn, x, z, y, TerminalType) {
+CloningTerminalServant::CloningTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, int terminalType) : TerminalImplementation(objCRC, objid, n, tempn, x, z, y, terminalType) {
 	_classHelper = CloningTerminalHelper::instance();
 }
 

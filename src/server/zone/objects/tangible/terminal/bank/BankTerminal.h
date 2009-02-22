@@ -63,7 +63,7 @@ public:
 	BankTerminal* _this;
 
 public:
-	BankTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, int TerminalType);
+	BankTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, unsigned char terminaltype);
 	virtual ~BankTerminalServant();
 
 	void _setStub(DistributedObjectStub* stub);

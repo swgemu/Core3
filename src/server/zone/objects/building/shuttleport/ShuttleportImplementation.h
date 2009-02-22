@@ -42,43 +42,38 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef TRAVELTERMINALIMPLEMENTATION_H_
-#define TRAVELTERMINALIMPLEMENTATION_H_
+#ifndef SHUTTLEPORTIMPLEMENTATION_H_
+#define SHUTTLEPORTIMPLEMENTATION_H_
 
-#include "../../../player/Player.h"
+#include "engine/engine.h"
 
-#include "../../../creature/shuttle/ShuttleCreature.h"
+#include "Shuttleport.h"
 
-#include "../../../../packets/player/EnterTicketPurchaseModeMessage.h"
+#include "../../creature/shuttle/ShuttleCreature.h"
 
-#include "TravelTerminal.h"
-
-#include "../../../../packets.h"
-
-
-class TravelTerminalImplementation : public TravelTerminalServant {
-protected:
-	ShuttleCreature* shuttle;
+class ShuttleportImplementation : public ShuttleportServant {
+	ManagedReference<ShuttleCreature> shuttle;
+	bool interplanetary;
 
 public:
-	TravelTerminalImplementation(ShuttleCreature* shutle, uint64 objid, float x, float z, float y)
-			: TravelTerminalServant(0x7402F0FC, objid, UnicodeString("Travel Terminal"), "terminal_travel", x, z, y, TRAVEL) {
-		shuttle = shutle;
+	ShuttleportImplementation(uint64 oid, bool staticBuild) :
+		ShuttleportServant(oid, staticBuild, CLONING_FACILITY) {
 
+		shuttle = NULL;
+		interplanetary = false;
 	}
 
-	int useObject(Player* player) {
-		EnterTicketPurchaseModeMessage* etpm = new EnterTicketPurchaseModeMessage(shuttle->getPlanet(), shuttle->getCity());
-		player->sendMessage(etpm);
-
-		return 0;
+	~ShuttleportImplementation() {
 	}
 
-	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
-		omr->finish();
+	//Setters
+	void setShuttle(ShuttleCreature* shtl) {
+		shuttle = shtl;
+	}
 
-		player->sendMessage(omr);
+	ShuttleCreature* getShuttle() {
+		return shuttle;
 	}
 };
 
-#endif /*TRAVELTERMINALIMPLEMENTATION_H_*/
+#endif /*SHUTTLEPORTIMPLEMENTATION_H_*/

@@ -14,8 +14,8 @@
  *	TerminalStub
  */
 
-Terminal::Terminal(unsigned int objCRC, unsigned long long oid, const UnicodeString& n, const String& tempn, float x, float z, float y, unsigned char TerminalType) : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new TerminalImplementation(objCRC, oid, n, tempn, x, z, y, TerminalType);
+Terminal::Terminal(unsigned int objCRC, unsigned long long oid, const UnicodeString& n, const String& tempn, float x, float z, float y, unsigned char terminaltype) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new TerminalImplementation(objCRC, oid, n, tempn, x, z, y, terminaltype);
 	_impl->_setStub(this);
 }
 
@@ -134,6 +134,30 @@ bool Terminal::isBankTerminal() {
 		return ((TerminalImplementation*) _impl)->isBankTerminal();
 }
 
+bool Terminal::isStartingLocationTerminal() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((TerminalImplementation*) _impl)->isStartingLocationTerminal();
+}
+
+bool Terminal::isPlayerStructureTerminal() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((TerminalImplementation*) _impl)->isPlayerStructureTerminal();
+}
+
 /*
  *	TerminalAdapter
  */
@@ -171,6 +195,12 @@ Packet* TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 14:
 		resp->insertBoolean(isBankTerminal());
+		break;
+	case 15:
+		resp->insertBoolean(isStartingLocationTerminal());
+		break;
+	case 16:
+		resp->insertBoolean(isPlayerStructureTerminal());
 		break;
 	default:
 		return NULL;
@@ -213,6 +243,14 @@ bool TerminalAdapter::isBazaarTerminal() {
 
 bool TerminalAdapter::isBankTerminal() {
 	return ((TerminalImplementation*) impl)->isBankTerminal();
+}
+
+bool TerminalAdapter::isStartingLocationTerminal() {
+	return ((TerminalImplementation*) impl)->isStartingLocationTerminal();
+}
+
+bool TerminalAdapter::isPlayerStructureTerminal() {
+	return ((TerminalImplementation*) impl)->isPlayerStructureTerminal();
 }
 
 /*

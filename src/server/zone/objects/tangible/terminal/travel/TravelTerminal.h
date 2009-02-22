@@ -65,7 +65,7 @@ public:
 	TravelTerminal* _this;
 
 public:
-	TravelTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, int TerminalType);
+	TravelTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, unsigned char terminaltype);
 	virtual ~TravelTerminalServant();
 
 	void _setStub(DistributedObjectStub* stub);

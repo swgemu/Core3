@@ -46,12 +46,10 @@ import "../../../player/Player";
 
 import "../Terminal";
 
-interface InsuranceTerminal implements Terminal {
-	InsuranceTerminal(unsigned long objid, float x, float z, float y) {
-		super(unsigned int objCRC, objid, const UnicodeString n, const String tempn, x, z, y, int terminalType); 
+interface PlayerStructureTerminal implements Terminal {
+	PlayerStructureTerminal(unsigned long objid, float x, float z, float y) {
+		super(unsigned int objCRC, objid, const UnicodeString n, const String tempn, x, z, y, unsigned char terminaltype); 
 	}
 
 	int useObject(Player player);
-	
-	int getCost();
 }
