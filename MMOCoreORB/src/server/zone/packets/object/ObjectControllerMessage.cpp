@@ -4019,6 +4019,8 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player, Message* pac
 	tokenizer.setDelimeter(" ");
 
 	uint64 destinationID = tokenizer.getLongToken();
+
+	//TODO: Pretty sure that this should be called transferType rather than unknown?
 	int unknown = tokenizer.getIntToken(); // I've seen -1 usually.. 4 when equipping most clothes (I think -1 is remove)
 
 	float x = tokenizer.getFloatToken();
@@ -4053,6 +4055,28 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player, Message* pac
 
 		if (targetTanoObject == NULL){ //the item can't be found in the inventory - maybe a world object?
 			Zone* zone = player->getZone();
+
+			//Here we check to see if the player is staff, and if not, we check to see if they have permission to pickup the item in the structure they are in.
+			if (player->getAdminLevel() == PlayerImplementation::NORMAL && player->isInBuilding()) {
+				BuildingObject* building = (BuildingObject*) player->getBuilding();
+
+				if (building != NULL) {
+					try {
+						building->lock();
+
+						if (building->hasCell(destinationID) && !building->isOnAdminList(player)) {
+							player->sendSystemMessage("container_error_message", "container08"); //You do not have permission to access that container.
+							building->unlock();
+							return;
+						}
+
+						building->unlock();
+					} catch (Exception& e) {
+						player->error("Error in ObjectControllerMessage locking building on item pickup");
+						building->unlock();
+					}
+				}
+			}
 
 			if (zone != NULL) {
 				targetTanoObject = (TangibleObject*) zone->lookupObject(target);
@@ -4129,6 +4153,28 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player, Message* pac
 		//Dropping FROM the players inventory TO a cell or container (which could also be a nested inventory container)
 	} else {
 		ManagedReference<TangibleObject> item = validateDropAction(player, target);
+
+		//Here we check to see if the player is staff, and if not, we check to see if they have permission to drop the item in the structure they are in.
+		if (player->getAdminLevel() == PlayerImplementation::NORMAL && player->isInBuilding()) {
+			BuildingObject* building = (BuildingObject*) player->getBuilding();
+
+			if (building != NULL) {
+				try {
+					building->lock();
+
+					if (building->hasCell(destinationID) && !building->isOnAdminList(player)) {
+						player->sendSystemMessage("container_error_message", "container08"); //You do not have permission to access that container.
+						building->unlock();
+						return;
+					}
+
+					building->unlock();
+				} catch (Exception& e) {
+					player->error("Unhandled exception in ObjectControllerMessage when trying to lock building and dropping an item.");
+					building->unlock();
+				}
+			}
+		}
 
 		if (item != NULL)
 			transferItemToContainer(player, item, destinationID);

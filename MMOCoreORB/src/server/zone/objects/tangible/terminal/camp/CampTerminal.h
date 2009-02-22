@@ -67,7 +67,7 @@ public:
 	CampTerminal* _this;
 
 public:
-	CampTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, int TerminalType);
+	CampTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, unsigned char terminaltype);
 	virtual ~CampTerminalServant();
 
 	void _setStub(DistributedObjectStub* stub);

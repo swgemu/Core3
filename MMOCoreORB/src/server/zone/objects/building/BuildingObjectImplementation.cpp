@@ -67,17 +67,24 @@ BuildingObjectImplementation::BuildingObjectImplementation(uint64 oid, bool stat
 
 	setDefaultName();
 
-	name = "";
 	owner = "";
 
 	objectType = SceneObjectImplementation::BUILDING;
 
 	cells.setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);
+	sceneObjects.setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);
+
+	permissionList = new StructurePermissionList();
+	permissionList->setOwner(owner);
+
+	publicEntry = true;
+	accessFee = 0;
+	accessTime = 15;
 
 	itemAttributes = new ItemAttributes();
 
 	StringBuffer name;
-	name << "Building = " << objectID;
+	name << "BuildingObject(" << objectType << ")  0x" << hex << objectID;
 
 	SceneObjectImplementation::setLoggingName(name.toString());
 	SceneObjectImplementation::setLogging(false);
@@ -94,6 +101,9 @@ BuildingObjectImplementation::~BuildingObjectImplementation() {
 
 	delete itemAttributes;
 	itemAttributes = NULL;
+
+	delete permissionList;
+	permissionList = NULL;
 
 	error("DELETING A BUILDING OBJECT");
 	StackTrace::printStackTrace();
@@ -139,6 +149,10 @@ void BuildingObjectImplementation::removeFromZone(bool doLock) {
 	}
 }
 
+void BuildingObjectImplementation::addSceneObject(SceneObject* sceneObject) {
+	sceneObjects.put(sceneObject);
+}
+
 void BuildingObjectImplementation::putPlayersInWorld() {
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
@@ -170,6 +184,15 @@ void BuildingObjectImplementation::addCell(CellObject* cell) {
 		cell->setCellNumber(cells.size()+1);
 
 	cells.put(cell);
+}
+
+bool BuildingObjectImplementation::hasCell(uint64 cellID) {
+	for (int i = 0; i < cells.size(); i++) {
+		if (cells.get(i)->getObjectID() == cellID)
+			return true;
+	}
+
+	return false;
 }
 
 void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {

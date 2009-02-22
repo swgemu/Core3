@@ -85,7 +85,7 @@ public:
 	CloningTerminal* _this;
 
 public:
-	CloningTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, int TerminalType);
+	CloningTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, int terminalType);
 	virtual ~CloningTerminalServant();
 
 	void _setStub(DistributedObjectStub* stub);

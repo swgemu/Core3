@@ -50,6 +50,7 @@ import "cell/CellObject";
 
 import "../scene/SceneObject";
 import "../player/Player";
+import "../guild/Guild";
 import "../creature/CreatureObject";
 
 import "../../Zone";
@@ -63,6 +64,8 @@ interface BuildingObject implements SceneObject {
 	//void sendDestroyTo(Player* player);
 		
 	void addCell(CellObject cell);
+	
+	void addSceneObject(SceneObject sceneObject);
 		
 	void notifyInsertToZone(SceneObject object);
 		
@@ -73,6 +76,7 @@ interface BuildingObject implements SceneObject {
 	
 	int getCellCount();
 	CellObject getCell(int idx);
+	boolean hasCell(unsigned long cellID);
 	
 	void setPersistent(boolean pers);
 	void setUpdated(boolean up);
@@ -88,6 +92,9 @@ interface BuildingObject implements SceneObject {
 	
 	unsigned long getOwnerID();
 	void setOwnerID(unsigned long owner);
+	
+	boolean isPublic();
+	void setPublicEntry(boolean pubentry);
 
 	void parseItemAttributes();
 
@@ -115,5 +122,19 @@ interface BuildingObject implements SceneObject {
 	void setStorageLoaded(boolean setter);
 	
 	boolean isCloningFacility();
-
+	
+	boolean isOwnedBy(Player player);
+	boolean isOnAdminList(Player player);
+	boolean isOnEntryList(Player player);
+	boolean isOnHopperList(Player player);
+	boolean isOnBanList(Player player);
+	
+	void givePermission(Player enforcer, Player recipient, unsigned char permission);
+	void givePermission(Player enforcer, Guild guild, unsigned char permission);
+	void givePermission(Player enforcer, const String entryname, unsigned char permission);
+	void revokePermission(Player enforcer, Player recipient, unsigned char permission);
+	void revokePermission(Player enforcer, Guild guild, unsigned char permission);
+	void revokePermission(Player enforcer, const String entryname, unsigned char permission);
+	
+	void setPermissionsList(const String permissionsString);
 }

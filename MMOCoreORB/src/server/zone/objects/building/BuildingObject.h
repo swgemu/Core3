@@ -17,6 +17,8 @@ class SceneObject;
 
 class Player;
 
+class Guild;
+
 class CreatureObject;
 
 class Zone;
@@ -29,6 +31,8 @@ public:
 
 	void addCell(CellObject* cell);
 
+	void addSceneObject(SceneObject* sceneObject);
+
 	void notifyInsertToZone(SceneObject* object);
 
 	bool isStatic();
@@ -40,6 +44,8 @@ public:
 	int getCellCount();
 
 	CellObject* getCell(int idx);
+
+	bool hasCell(unsigned long long cellID);
 
 	void setPersistent(bool pers);
 
@@ -60,6 +66,10 @@ public:
 	unsigned long long getOwnerID();
 
 	void setOwnerID(unsigned long long owner);
+
+	bool isPublic();
+
+	void setPublicEntry(bool pubentry);
 
 	void parseItemAttributes();
 
@@ -95,6 +105,30 @@ public:
 
 	bool isCloningFacility();
 
+	bool isOwnedBy(Player* player);
+
+	bool isOnAdminList(Player* player);
+
+	bool isOnEntryList(Player* player);
+
+	bool isOnHopperList(Player* player);
+
+	bool isOnBanList(Player* player);
+
+	void givePermission(Player* enforcer, Player* recipient, unsigned char permission);
+
+	void givePermission(Player* enforcer, Guild* guild, unsigned char permission);
+
+	void givePermission(Player* enforcer, const String& entryname, unsigned char permission);
+
+	void revokePermission(Player* enforcer, Player* recipient, unsigned char permission);
+
+	void revokePermission(Player* enforcer, Guild* guild, unsigned char permission);
+
+	void revokePermission(Player* enforcer, const String& entryname, unsigned char permission);
+
+	void setPermissionsList(const String& permissionsString);
+
 protected:
 	BuildingObject(DummyConstructorParameter* param);
 
@@ -120,6 +154,8 @@ public:
 
 	void addCell(CellObject* cell);
 
+	void addSceneObject(SceneObject* sceneObject);
+
 	void notifyInsertToZone(SceneObject* object);
 
 	bool isStatic();
@@ -131,6 +167,8 @@ public:
 	int getCellCount();
 
 	CellObject* getCell(int idx);
+
+	bool hasCell(unsigned long long cellID);
 
 	void setPersistent(bool pers);
 
@@ -151,6 +189,10 @@ public:
 	unsigned long long getOwnerID();
 
 	void setOwnerID(unsigned long long owner);
+
+	bool isPublic();
+
+	void setPublicEntry(bool pubentry);
 
 	void parseItemAttributes();
 
@@ -186,11 +228,38 @@ public:
 
 	bool isCloningFacility();
 
+	bool isOwnedBy(Player* player);
+
+	bool isOnAdminList(Player* player);
+
+	bool isOnEntryList(Player* player);
+
+	bool isOnHopperList(Player* player);
+
+	bool isOnBanList(Player* player);
+
+	void givePermission(Player* enforcer, Player* recipient, unsigned char permission);
+
+	void givePermission(Player* enforcer, Guild* guild, unsigned char permission);
+
+	void givePermission(Player* enforcer, const String& entryname, unsigned char permission);
+
+	void revokePermission(Player* enforcer, Player* recipient, unsigned char permission);
+
+	void revokePermission(Player* enforcer, Guild* guild, unsigned char permission);
+
+	void revokePermission(Player* enforcer, const String& entryname, unsigned char permission);
+
+	void setPermissionsList(const String& permissionsString);
+
 protected:
 	String _param0_setAttributes__String_;
 	String _param0_setOwner__String_;
 	String _param0_setName__String_;
 	UnicodeString _param0_setName__UnicodeString_;
+	String _param1_givePermission__Player_String_char_;
+	String _param1_revokePermission__Player_String_char_;
+	String _param0_setPermissionsList__String_;
 };
 
 class BuildingObjectHelper : public DistributedObjectClassHelper, public Singleton<BuildingObjectHelper> {

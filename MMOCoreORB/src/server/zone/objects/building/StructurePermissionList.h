@@ -42,43 +42,72 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef TRAVELTERMINALIMPLEMENTATION_H_
-#define TRAVELTERMINALIMPLEMENTATION_H_
+#ifndef STRUCTUREPERMISSIONLIST_H_
+#define STRUCTUREPERMISSIONLIST_H_
 
-#include "../../../player/Player.h"
+#include "engine/engine.h"
 
-#include "../../../creature/shuttle/ShuttleCreature.h"
+#include "../player/Player.h"
+#include "../guild/Guild.h"
 
-#include "../../../../packets/player/EnterTicketPurchaseModeMessage.h"
-
-#include "TravelTerminal.h"
-
-#include "../../../../packets.h"
-
-
-class TravelTerminalImplementation : public TravelTerminalServant {
-protected:
-	ShuttleCreature* shuttle;
+class StructurePermissionList : public VectorMap<String, uint8> {
+	String owner;
 
 public:
-	TravelTerminalImplementation(ShuttleCreature* shutle, uint64 objid, float x, float z, float y)
-			: TravelTerminalServant(0x7402F0FC, objid, UnicodeString("Travel Terminal"), "terminal_travel", x, z, y, TRAVEL) {
-		shuttle = shutle;
+	//List Permissions - Are they on said list.
+	static const uint8 BANLIST = 0;
+	static const uint8 NONE = 1;
+	static const uint8 HOPPERLIST = 2;
+	static const uint8 ENTRYLIST = 4;
+	static const uint8 ADMINLIST = 8;
 
+	//Super Permissions
+	static const uint8 ADMIN = HOPPERLIST | ENTRYLIST | ADMINLIST | ~BANLIST;
+
+public:
+	StructurePermissionList();
+
+	bool givePermission(Player* enforcer, Player* recipient, uint8 permission);
+	bool givePermission(Player* enforcer, Guild* guild, uint8 permission);
+	bool givePermission(Player* enforcer, const String& entryname, uint8 permission);
+
+	bool revokePermission(Player* enforcer, Player* recipient, uint8 permission);
+	bool revokePermission(Player* enforcer, Guild* guild, uint8 permission);
+	bool revokePermission(Player* enforcer, const String& entryname, uint8 permission);
+
+	void setPermissionsFromString(const String& permissionsString) {
+		//TODO: This should take a string, and populate the list with its data.
 	}
 
-	int useObject(Player* player) {
-		EnterTicketPurchaseModeMessage* etpm = new EnterTicketPurchaseModeMessage(shuttle->getPlanet(), shuttle->getCity());
-		player->sendMessage(etpm);
+	bool hasPermission(Player* player, uint8 permission);
 
-		return 0;
+	inline void setOwner(const String& ownername) {
+		owner = ownername;
 	}
 
-	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
-		omr->finish();
+	inline String getOwner() {
+		return owner;
+	}
 
-		player->sendMessage(omr);
+	inline bool isOwner(Player* player) {
+		return (owner == player->getFirstName().toLowerCase());
+	}
+
+	bool isOnAdminList(Player* player) {
+		return hasPermission(player, ADMIN) || isOwner(player);
+	}
+
+	bool isOnBanList(Player* player) {
+		return hasPermission(player, BANLIST);
+	}
+
+	bool isOnEntryList(Player* player) {
+		return hasPermission(player, ENTRYLIST) || isOwner(player);
+	}
+
+	bool isOnHopperList(Player* player) {
+		return hasPermission(player, HOPPERLIST) || isOwner(player);
 	}
 };
 
-#endif /*TRAVELTERMINALIMPLEMENTATION_H_*/
+#endif /* STRUCTUREPERMISSIONLIST_H_ */

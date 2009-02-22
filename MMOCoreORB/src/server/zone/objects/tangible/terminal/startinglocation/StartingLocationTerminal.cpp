@@ -8,8 +8,6 @@
 
 #include "../../../player/Player.h"
 
-#include "../../../tangible/TangibleObject.h"
-
 #include "../Terminal.h"
 
 /*
@@ -100,7 +98,7 @@ DistributedObjectAdapter* StartingLocationTerminalHelper::createAdapter(Distribu
  *	StartingLocationTerminalServant
  */
 
-StartingLocationTerminalServant::StartingLocationTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, int TerminalType) : TerminalImplementation(objCRC, objid, n, tempn, x, z, y, TerminalType) {
+StartingLocationTerminalServant::StartingLocationTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, unsigned char terminaltype) : TerminalImplementation(objCRC, objid, n, tempn, x, z, y, terminaltype) {
 	_classHelper = StartingLocationTerminalHelper::instance();
 }
 

@@ -12,6 +12,8 @@
 
 #include "../player/Player.h"
 
+#include "../guild/Guild.h"
+
 #include "../creature/CreatureObject.h"
 
 #include "../../Zone.h"
@@ -44,12 +46,25 @@ void BuildingObject::addCell(CellObject* cell) {
 		((BuildingObjectImplementation*) _impl)->addCell(cell);
 }
 
-void BuildingObject::notifyInsertToZone(SceneObject* object) {
+void BuildingObject::addSceneObject(SceneObject* sceneObject) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addObjectParameter(sceneObject);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->addSceneObject(sceneObject);
+}
+
+void BuildingObject::notifyInsertToZone(SceneObject* object) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -62,7 +77,7 @@ bool BuildingObject::isStatic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -74,7 +89,7 @@ int BuildingObject::getBuildingType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -86,7 +101,7 @@ void BuildingObject::setBuildingType(int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 		method.addSignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -99,7 +114,7 @@ int BuildingObject::getCellCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -111,7 +126,7 @@ CellObject* BuildingObject::getCell(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 		method.addSignedIntParameter(idx);
 
 		return (CellObject*) method.executeWithObjectReturn();
@@ -119,12 +134,25 @@ CellObject* BuildingObject::getCell(int idx) {
 		return ((BuildingObjectImplementation*) _impl)->getCell(idx);
 }
 
+bool BuildingObject::hasCell(unsigned long long cellID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+		method.addUnsignedLongParameter(cellID);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((BuildingObjectImplementation*) _impl)->hasCell(cellID);
+}
+
 void BuildingObject::setPersistent(bool pers) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 15);
 		method.addBooleanParameter(pers);
 
 		method.executeWithVoidReturn();
@@ -137,7 +165,7 @@ void BuildingObject::setUpdated(bool up) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 16);
 		method.addBooleanParameter(up);
 
 		method.executeWithVoidReturn();
@@ -150,7 +178,7 @@ bool BuildingObject::isPersistent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -162,7 +190,7 @@ bool BuildingObject::isUpdated() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -174,7 +202,7 @@ void BuildingObject::setAttributes(String& attributeString) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 19);
 		method.addAsciiParameter(attributeString);
 
 		method.executeWithVoidReturn();
@@ -187,7 +215,7 @@ String& BuildingObject::getAttributes() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 20);
 
 		method.executeWithAsciiReturn(_return_getAttributes);
 		return _return_getAttributes;
@@ -200,7 +228,7 @@ String& BuildingObject::getOwner() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 21);
 
 		method.executeWithAsciiReturn(_return_getOwner);
 		return _return_getOwner;
@@ -213,7 +241,7 @@ void BuildingObject::setOwner(const String& owner) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 22);
 		method.addAsciiParameter(owner);
 
 		method.executeWithVoidReturn();
@@ -226,7 +254,7 @@ unsigned long long BuildingObject::getOwnerID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 23);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -238,7 +266,7 @@ void BuildingObject::setOwnerID(unsigned long long owner) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 24);
 		method.addUnsignedLongParameter(owner);
 
 		method.executeWithVoidReturn();
@@ -246,12 +274,37 @@ void BuildingObject::setOwnerID(unsigned long long owner) {
 		((BuildingObjectImplementation*) _impl)->setOwnerID(owner);
 }
 
+bool BuildingObject::isPublic() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 25);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((BuildingObjectImplementation*) _impl)->isPublic();
+}
+
+void BuildingObject::setPublicEntry(bool pubentry) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 26);
+		method.addBooleanParameter(pubentry);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->setPublicEntry(pubentry);
+}
+
 void BuildingObject::parseItemAttributes() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 27);
 
 		method.executeWithVoidReturn();
 	} else
@@ -263,7 +316,7 @@ UnicodeString& BuildingObject::getName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 28);
 
 		method.executeWithUnicodeReturn(_return_getName);
 		return _return_getName;
@@ -276,7 +329,7 @@ void BuildingObject::setName(const String& n) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 29);
 		method.addAsciiParameter(n);
 
 		method.executeWithVoidReturn();
@@ -289,7 +342,7 @@ void BuildingObject::setName(const UnicodeString& n) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 30);
 		method.addUnicodeParameter(n);
 
 		method.executeWithVoidReturn();
@@ -302,7 +355,7 @@ String& BuildingObject::getDefaultName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 31);
 
 		method.executeWithAsciiReturn(_return_getDefaultName);
 		return _return_getDefaultName;
@@ -315,7 +368,7 @@ String& BuildingObject::getTemplateName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 32);
 
 		method.executeWithAsciiReturn(_return_getTemplateName);
 		return _return_getTemplateName;
@@ -328,7 +381,7 @@ void BuildingObject::lock(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 33);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
@@ -341,7 +394,7 @@ void BuildingObject::unlock(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 34);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
@@ -354,7 +407,7 @@ void BuildingObject::setSize(float minx, float miny, float maxx, float maxy) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 35);
 		method.addFloatParameter(minx);
 		method.addFloatParameter(miny);
 		method.addFloatParameter(maxx);
@@ -370,7 +423,7 @@ void BuildingObject::insert(QuadTreeEntry* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 36);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -383,7 +436,7 @@ void BuildingObject::remove(QuadTreeEntry* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 37);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -396,7 +449,7 @@ void BuildingObject::removeAll() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 38);
 
 		method.executeWithVoidReturn();
 	} else
@@ -408,7 +461,7 @@ bool BuildingObject::update(QuadTreeEntry* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 39);
 		method.addObjectParameter(obj);
 
 		return method.executeWithBooleanReturn();
@@ -421,7 +474,7 @@ void BuildingObject::inRange(QuadTreeEntry* obj, float range) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 40);
 		method.addObjectParameter(obj);
 		method.addFloatParameter(range);
 
@@ -435,7 +488,7 @@ bool BuildingObject::getStorageLoaded() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 41);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -447,7 +500,7 @@ void BuildingObject::setStorageLoaded(bool setter) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 42);
 		method.addBooleanParameter(setter);
 
 		method.executeWithVoidReturn();
@@ -460,11 +513,179 @@ bool BuildingObject::isCloningFacility() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 43);
 
 		return method.executeWithBooleanReturn();
 	} else
 		return ((BuildingObjectImplementation*) _impl)->isCloningFacility();
+}
+
+bool BuildingObject::isOwnedBy(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 44);
+		method.addObjectParameter(player);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((BuildingObjectImplementation*) _impl)->isOwnedBy(player);
+}
+
+bool BuildingObject::isOnAdminList(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 45);
+		method.addObjectParameter(player);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((BuildingObjectImplementation*) _impl)->isOnAdminList(player);
+}
+
+bool BuildingObject::isOnEntryList(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 46);
+		method.addObjectParameter(player);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((BuildingObjectImplementation*) _impl)->isOnEntryList(player);
+}
+
+bool BuildingObject::isOnHopperList(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 47);
+		method.addObjectParameter(player);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((BuildingObjectImplementation*) _impl)->isOnHopperList(player);
+}
+
+bool BuildingObject::isOnBanList(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 48);
+		method.addObjectParameter(player);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((BuildingObjectImplementation*) _impl)->isOnBanList(player);
+}
+
+void BuildingObject::givePermission(Player* enforcer, Player* recipient, unsigned char permission) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 49);
+		method.addObjectParameter(enforcer);
+		method.addObjectParameter(recipient);
+		method.addUnsignedCharParameter(permission);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->givePermission(enforcer, recipient, permission);
+}
+
+void BuildingObject::givePermission(Player* enforcer, Guild* guild, unsigned char permission) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 50);
+		method.addObjectParameter(enforcer);
+		method.addObjectParameter(guild);
+		method.addUnsignedCharParameter(permission);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->givePermission(enforcer, guild, permission);
+}
+
+void BuildingObject::givePermission(Player* enforcer, const String& entryname, unsigned char permission) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 51);
+		method.addObjectParameter(enforcer);
+		method.addAsciiParameter(entryname);
+		method.addUnsignedCharParameter(permission);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->givePermission(enforcer, entryname, permission);
+}
+
+void BuildingObject::revokePermission(Player* enforcer, Player* recipient, unsigned char permission) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 52);
+		method.addObjectParameter(enforcer);
+		method.addObjectParameter(recipient);
+		method.addUnsignedCharParameter(permission);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->revokePermission(enforcer, recipient, permission);
+}
+
+void BuildingObject::revokePermission(Player* enforcer, Guild* guild, unsigned char permission) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 53);
+		method.addObjectParameter(enforcer);
+		method.addObjectParameter(guild);
+		method.addUnsignedCharParameter(permission);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->revokePermission(enforcer, guild, permission);
+}
+
+void BuildingObject::revokePermission(Player* enforcer, const String& entryname, unsigned char permission) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 54);
+		method.addObjectParameter(enforcer);
+		method.addAsciiParameter(entryname);
+		method.addUnsignedCharParameter(permission);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->revokePermission(enforcer, entryname, permission);
+}
+
+void BuildingObject::setPermissionsList(const String& permissionsString) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 55);
+		method.addAsciiParameter(permissionsString);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->setPermissionsList(permissionsString);
 }
 
 /*
@@ -482,103 +703,151 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		addCell((CellObject*) inv->getObjectParameter());
 		break;
 	case 7:
-		notifyInsertToZone((SceneObject*) inv->getObjectParameter());
+		addSceneObject((SceneObject*) inv->getObjectParameter());
 		break;
 	case 8:
-		resp->insertBoolean(isStatic());
+		notifyInsertToZone((SceneObject*) inv->getObjectParameter());
 		break;
 	case 9:
-		resp->insertSignedInt(getBuildingType());
+		resp->insertBoolean(isStatic());
 		break;
 	case 10:
-		setBuildingType(inv->getSignedIntParameter());
+		resp->insertSignedInt(getBuildingType());
 		break;
 	case 11:
-		resp->insertSignedInt(getCellCount());
+		setBuildingType(inv->getSignedIntParameter());
 		break;
 	case 12:
-		resp->insertLong(getCell(inv->getSignedIntParameter())->_getObjectID());
+		resp->insertSignedInt(getCellCount());
 		break;
 	case 13:
-		setPersistent(inv->getBooleanParameter());
+		resp->insertLong(getCell(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 14:
-		setUpdated(inv->getBooleanParameter());
+		resp->insertBoolean(hasCell(inv->getUnsignedLongParameter()));
 		break;
 	case 15:
-		resp->insertBoolean(isPersistent());
+		setPersistent(inv->getBooleanParameter());
 		break;
 	case 16:
-		resp->insertBoolean(isUpdated());
+		setUpdated(inv->getBooleanParameter());
 		break;
 	case 17:
-		setAttributes(inv->getAsciiParameter(_param0_setAttributes__String_));
+		resp->insertBoolean(isPersistent());
 		break;
 	case 18:
-		resp->insertAscii(getAttributes());
+		resp->insertBoolean(isUpdated());
 		break;
 	case 19:
-		resp->insertAscii(getOwner());
+		setAttributes(inv->getAsciiParameter(_param0_setAttributes__String_));
 		break;
 	case 20:
-		setOwner(inv->getAsciiParameter(_param0_setOwner__String_));
+		resp->insertAscii(getAttributes());
 		break;
 	case 21:
-		resp->insertLong(getOwnerID());
+		resp->insertAscii(getOwner());
 		break;
 	case 22:
-		setOwnerID(inv->getUnsignedLongParameter());
+		setOwner(inv->getAsciiParameter(_param0_setOwner__String_));
 		break;
 	case 23:
-		parseItemAttributes();
+		resp->insertLong(getOwnerID());
 		break;
 	case 24:
-		resp->insertUnicode(getName());
+		setOwnerID(inv->getUnsignedLongParameter());
 		break;
 	case 25:
-		setName(inv->getAsciiParameter(_param0_setName__String_));
+		resp->insertBoolean(isPublic());
 		break;
 	case 26:
-		setName(inv->getUnicodeParameter(_param0_setName__UnicodeString_));
+		setPublicEntry(inv->getBooleanParameter());
 		break;
 	case 27:
-		resp->insertAscii(getDefaultName());
+		parseItemAttributes();
 		break;
 	case 28:
-		resp->insertAscii(getTemplateName());
+		resp->insertUnicode(getName());
 		break;
 	case 29:
-		lock(inv->getBooleanParameter());
+		setName(inv->getAsciiParameter(_param0_setName__String_));
 		break;
 	case 30:
-		unlock(inv->getBooleanParameter());
+		setName(inv->getUnicodeParameter(_param0_setName__UnicodeString_));
 		break;
 	case 31:
-		setSize(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		resp->insertAscii(getDefaultName());
 		break;
 	case 32:
-		insert((QuadTreeEntry*) inv->getObjectParameter());
+		resp->insertAscii(getTemplateName());
 		break;
 	case 33:
-		remove((QuadTreeEntry*) inv->getObjectParameter());
+		lock(inv->getBooleanParameter());
 		break;
 	case 34:
-		removeAll();
+		unlock(inv->getBooleanParameter());
 		break;
 	case 35:
-		resp->insertBoolean(update((QuadTreeEntry*) inv->getObjectParameter()));
+		setSize(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case 36:
-		inRange((QuadTreeEntry*) inv->getObjectParameter(), inv->getFloatParameter());
+		insert((QuadTreeEntry*) inv->getObjectParameter());
 		break;
 	case 37:
-		resp->insertBoolean(getStorageLoaded());
+		remove((QuadTreeEntry*) inv->getObjectParameter());
 		break;
 	case 38:
-		setStorageLoaded(inv->getBooleanParameter());
+		removeAll();
 		break;
 	case 39:
+		resp->insertBoolean(update((QuadTreeEntry*) inv->getObjectParameter()));
+		break;
+	case 40:
+		inRange((QuadTreeEntry*) inv->getObjectParameter(), inv->getFloatParameter());
+		break;
+	case 41:
+		resp->insertBoolean(getStorageLoaded());
+		break;
+	case 42:
+		setStorageLoaded(inv->getBooleanParameter());
+		break;
+	case 43:
 		resp->insertBoolean(isCloningFacility());
+		break;
+	case 44:
+		resp->insertBoolean(isOwnedBy((Player*) inv->getObjectParameter()));
+		break;
+	case 45:
+		resp->insertBoolean(isOnAdminList((Player*) inv->getObjectParameter()));
+		break;
+	case 46:
+		resp->insertBoolean(isOnEntryList((Player*) inv->getObjectParameter()));
+		break;
+	case 47:
+		resp->insertBoolean(isOnHopperList((Player*) inv->getObjectParameter()));
+		break;
+	case 48:
+		resp->insertBoolean(isOnBanList((Player*) inv->getObjectParameter()));
+		break;
+	case 49:
+		givePermission((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedCharParameter());
+		break;
+	case 50:
+		givePermission((Player*) inv->getObjectParameter(), (Guild*) inv->getObjectParameter(), inv->getUnsignedCharParameter());
+		break;
+	case 51:
+		givePermission((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_givePermission__Player_String_char_), inv->getUnsignedCharParameter());
+		break;
+	case 52:
+		revokePermission((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedCharParameter());
+		break;
+	case 53:
+		revokePermission((Player*) inv->getObjectParameter(), (Guild*) inv->getObjectParameter(), inv->getUnsignedCharParameter());
+		break;
+	case 54:
+		revokePermission((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_revokePermission__Player_String_char_), inv->getUnsignedCharParameter());
+		break;
+	case 55:
+		setPermissionsList(inv->getAsciiParameter(_param0_setPermissionsList__String_));
 		break;
 	default:
 		return NULL;
@@ -589,6 +858,10 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 void BuildingObjectAdapter::addCell(CellObject* cell) {
 	return ((BuildingObjectImplementation*) impl)->addCell(cell);
+}
+
+void BuildingObjectAdapter::addSceneObject(SceneObject* sceneObject) {
+	return ((BuildingObjectImplementation*) impl)->addSceneObject(sceneObject);
 }
 
 void BuildingObjectAdapter::notifyInsertToZone(SceneObject* object) {
@@ -613,6 +886,10 @@ int BuildingObjectAdapter::getCellCount() {
 
 CellObject* BuildingObjectAdapter::getCell(int idx) {
 	return ((BuildingObjectImplementation*) impl)->getCell(idx);
+}
+
+bool BuildingObjectAdapter::hasCell(unsigned long long cellID) {
+	return ((BuildingObjectImplementation*) impl)->hasCell(cellID);
 }
 
 void BuildingObjectAdapter::setPersistent(bool pers) {
@@ -653,6 +930,14 @@ unsigned long long BuildingObjectAdapter::getOwnerID() {
 
 void BuildingObjectAdapter::setOwnerID(unsigned long long owner) {
 	return ((BuildingObjectImplementation*) impl)->setOwnerID(owner);
+}
+
+bool BuildingObjectAdapter::isPublic() {
+	return ((BuildingObjectImplementation*) impl)->isPublic();
+}
+
+void BuildingObjectAdapter::setPublicEntry(bool pubentry) {
+	return ((BuildingObjectImplementation*) impl)->setPublicEntry(pubentry);
 }
 
 void BuildingObjectAdapter::parseItemAttributes() {
@@ -721,6 +1006,54 @@ void BuildingObjectAdapter::setStorageLoaded(bool setter) {
 
 bool BuildingObjectAdapter::isCloningFacility() {
 	return ((BuildingObjectImplementation*) impl)->isCloningFacility();
+}
+
+bool BuildingObjectAdapter::isOwnedBy(Player* player) {
+	return ((BuildingObjectImplementation*) impl)->isOwnedBy(player);
+}
+
+bool BuildingObjectAdapter::isOnAdminList(Player* player) {
+	return ((BuildingObjectImplementation*) impl)->isOnAdminList(player);
+}
+
+bool BuildingObjectAdapter::isOnEntryList(Player* player) {
+	return ((BuildingObjectImplementation*) impl)->isOnEntryList(player);
+}
+
+bool BuildingObjectAdapter::isOnHopperList(Player* player) {
+	return ((BuildingObjectImplementation*) impl)->isOnHopperList(player);
+}
+
+bool BuildingObjectAdapter::isOnBanList(Player* player) {
+	return ((BuildingObjectImplementation*) impl)->isOnBanList(player);
+}
+
+void BuildingObjectAdapter::givePermission(Player* enforcer, Player* recipient, unsigned char permission) {
+	return ((BuildingObjectImplementation*) impl)->givePermission(enforcer, recipient, permission);
+}
+
+void BuildingObjectAdapter::givePermission(Player* enforcer, Guild* guild, unsigned char permission) {
+	return ((BuildingObjectImplementation*) impl)->givePermission(enforcer, guild, permission);
+}
+
+void BuildingObjectAdapter::givePermission(Player* enforcer, const String& entryname, unsigned char permission) {
+	return ((BuildingObjectImplementation*) impl)->givePermission(enforcer, entryname, permission);
+}
+
+void BuildingObjectAdapter::revokePermission(Player* enforcer, Player* recipient, unsigned char permission) {
+	return ((BuildingObjectImplementation*) impl)->revokePermission(enforcer, recipient, permission);
+}
+
+void BuildingObjectAdapter::revokePermission(Player* enforcer, Guild* guild, unsigned char permission) {
+	return ((BuildingObjectImplementation*) impl)->revokePermission(enforcer, guild, permission);
+}
+
+void BuildingObjectAdapter::revokePermission(Player* enforcer, const String& entryname, unsigned char permission) {
+	return ((BuildingObjectImplementation*) impl)->revokePermission(enforcer, entryname, permission);
+}
+
+void BuildingObjectAdapter::setPermissionsList(const String& permissionsString) {
+	return ((BuildingObjectImplementation*) impl)->setPermissionsList(permissionsString);
 }
 
 /*

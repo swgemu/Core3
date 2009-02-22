@@ -70,13 +70,19 @@ public:
 	static const uint8 INSURANCE = 6;
 	static const uint8 CAMP = 7;
 	static const uint8 STARTINGLOCATION = 8;
+	static const uint8 PLAYERSTRUCTURE = 9;
+	//static const uint8 PLAYERSTRUCTURE_NOSNAP = 10;
+	//static const uint8 PLAYERSTRUCTURE_NOSNAP_MINI = 11;
+	static const uint8 ELEVATOR = 12;
+	static const uint8 ELEVATOR_UP = 13;
+	static const uint8 ELEVATOR_DOWN = 14;
 
 	static const uint8 BANK = 42;
 	static const uint8 BAZAAR = 50;
 
 
 public:
-	TerminalImplementation(uint32 objCRC, uint64 objid, const UnicodeString& n, const String& tempn, float x, float z, float y, uint8 TerminalType)
+	TerminalImplementation(uint32 objCRC, uint64 objid, const UnicodeString& n, const String& tempn, float x, float z, float y, uint8 terminaltype)
 			: TerminalServant(objid, TERMINAL) {
 
 		objectCRC = objCRC;
@@ -86,7 +92,7 @@ public:
 		templateTypeName = "terminal_name";
 		templateName = tempn;
 
-		terminalType = TerminalType;
+		terminalType = terminaltype;
 
 		initializePosition(x, z, y);
 	}
@@ -133,6 +139,10 @@ public:
 
 	inline bool isStartingLocationTerminal() {
 		return terminalType == STARTINGLOCATION;
+	}
+
+	inline bool isPlayerStructureTerminal() {
+		return terminalType == PLAYERSTRUCTURE;
 	}
 
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {

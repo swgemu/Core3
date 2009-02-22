@@ -100,7 +100,7 @@ DistributedObjectAdapter* GuildTerminalHelper::createAdapter(DistributedObjectSt
  *	GuildTerminalServant
  */
 
-GuildTerminalServant::GuildTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, int TerminalType) : TerminalImplementation(objCRC, objid, n, tempn, x, z, y, TerminalType) {
+GuildTerminalServant::GuildTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, unsigned char TerminalType) : TerminalImplementation(objCRC, objid, n, tempn, x, z, y, TerminalType) {
 	_classHelper = GuildTerminalHelper::instance();
 }
 

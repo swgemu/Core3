@@ -50,7 +50,7 @@ import "../../../player/Player";
 
 interface GuildTerminal implements Terminal {
 	GuildTerminal(GuildManager guildmanager, unsigned long objid, float x, float z, float y) {
-		super(unsigned int objCRC, objid, const UnicodeString n, const String tempn, x, z, y, int TerminalType);
+		super(unsigned int objCRC, objid, const UnicodeString n, const String tempn, x, z, y, unsigned char TerminalType);
 	}
 	
 	int useObject(Player player);

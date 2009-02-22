@@ -119,7 +119,7 @@ DistributedObjectAdapter* CampTerminalHelper::createAdapter(DistributedObjectStu
  *	CampTerminalServant
  */
 
-CampTerminalServant::CampTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, int TerminalType) : TerminalImplementation(objCRC, objid, n, tempn, x, z, y, TerminalType) {
+CampTerminalServant::CampTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, unsigned char terminaltype) : TerminalImplementation(objCRC, objid, n, tempn, x, z, y, terminaltype) {
 	_classHelper = CampTerminalHelper::instance();
 }
 

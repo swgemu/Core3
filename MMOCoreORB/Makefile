@@ -125,6 +125,8 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/terminal/bazaar/RegionBazaar.idl \
 				server/zone/objects/tangible/terminal/camp/CampTerminal.idl \
 				server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.idl \
+				server/zone/objects/tangible/gambling/LugjackMachine.idl \
+				server/zone/objects/tangible/gambling/JubileeWheel.idl \
 				server/zone/objects/tangible/ticketcollector/TicketCollector.idl \
 				server/zone/objects/tangible/generic/GenericItem.idl \
 				server/zone/objects/tangible/generic/Dice.idl \

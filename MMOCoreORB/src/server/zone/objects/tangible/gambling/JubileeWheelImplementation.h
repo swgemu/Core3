@@ -42,43 +42,35 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef TRAVELTERMINALIMPLEMENTATION_H_
-#define TRAVELTERMINALIMPLEMENTATION_H_
+#ifndef JUBILEEWHEELIMPLEMENTATION_H_
+#define JUBILEEWHEELIMPLEMENTATION_H_
 
-#include "../../../player/Player.h"
+#include "../../player/Player.h"
 
-#include "../../../creature/shuttle/ShuttleCreature.h"
+#include "JubileeWheel.h"
 
-#include "../../../../packets/player/EnterTicketPurchaseModeMessage.h"
-
-#include "TravelTerminal.h"
-
-#include "../../../../packets.h"
-
-
-class TravelTerminalImplementation : public TravelTerminalServant {
-protected:
-	ShuttleCreature* shuttle;
+class JubileeWheelImplementation : public JubileeWheelServant {
 
 public:
-	TravelTerminalImplementation(ShuttleCreature* shutle, uint64 objid, float x, float z, float y)
-			: TravelTerminalServant(0x7402F0FC, objid, UnicodeString("Travel Terminal"), "terminal_travel", x, z, y, TRAVEL) {
-		shuttle = shutle;
-
+	JubileeWheelImplementation(uint64 objid, float x, float z, float y) :
+		JubileeWheelServant(objid, 0xC09FE752, UnicodeString(""), "object/tangible/gambling/wheel/shared_roulette.iff", GENERICITEM) {
+		setPositionX(x);
+		setPositionZ(z);
+		setPositionY(y);
 	}
 
 	int useObject(Player* player) {
-		EnterTicketPurchaseModeMessage* etpm = new EnterTicketPurchaseModeMessage(shuttle->getPlanet(), shuttle->getCity());
-		player->sendMessage(etpm);
-
 		return 0;
 	}
 
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+		/*
+		omr->addRadialItem(0, 203, 3, "@sui:mnu_insure_all"); //Insure All
 		omr->finish();
 
 		player->sendMessage(omr);
+		*/
 	}
 };
 
-#endif /*TRAVELTERMINALIMPLEMENTATION_H_*/
+#endif /* JUBILEEWHEELIMPLEMENTATION_H_ */

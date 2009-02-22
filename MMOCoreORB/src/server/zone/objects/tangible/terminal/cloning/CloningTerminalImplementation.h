@@ -47,8 +47,6 @@ which carries forward this exception.
 
 #include "../../../player/Player.h"
 
-#include "../TerminalImplementation.h"
-
 #include "../../../player/sui/messagebox/SuiMessageBox.h"
 
 #include "../../../../packets.h"

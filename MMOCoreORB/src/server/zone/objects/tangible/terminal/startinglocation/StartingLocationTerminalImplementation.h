@@ -59,19 +59,19 @@ class StartingLocationTerminalImplementation : public StartingLocationTerminalSe
 
 public:
 	StartingLocationTerminalImplementation(uint64 objid, float x, float z, float y) :
-		StartingLocationTerminalServant(0x7402F0FC, objid, UnicodeString("Starting Location Terminal"), "terminal_cloning", x, z, y, STARTINGLOCATION) {
-
-
+		StartingLocationTerminalServant(0x7402F0FC, objid, UnicodeString("Starting Location Terminal"), "terminal_travel", x, z, y, STARTINGLOCATION) {
 	}
-
-	//TODO: Replace the CRC for the termina and the terminal template name.
-	//TODO: Creature a CLONING type of terminal.
 
 	int useObject(Player* player) {
 		StartingLocationList* sll = new StartingLocationList(player);
 		player->sendMessage(sll);
 
 		return 0;
+	}
+
+	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+		omr->finish();
+		player->sendMessage(omr);
 	}
 
 };

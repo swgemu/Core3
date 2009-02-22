@@ -42,43 +42,31 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef TRAVELTERMINALIMPLEMENTATION_H_
-#define TRAVELTERMINALIMPLEMENTATION_H_
+#ifndef PLAYERSTRUCTURETERMINALIMPLEMENTATION_H_
+#define PLAYERSTRUCTURETERMINALIMPLEMENTATION_H_
 
 #include "../../../player/Player.h"
 
-#include "../../../creature/shuttle/ShuttleCreature.h"
-
-#include "../../../../packets/player/EnterTicketPurchaseModeMessage.h"
-
-#include "TravelTerminal.h"
-
-#include "../../../../packets.h"
-
-
-class TravelTerminalImplementation : public TravelTerminalServant {
-protected:
-	ShuttleCreature* shuttle;
+class PlayerStructureTerminalImplementation : public PlayerStructureTerminalServant {
+	//vars here
 
 public:
-	TravelTerminalImplementation(ShuttleCreature* shutle, uint64 objid, float x, float z, float y)
-			: TravelTerminalServant(0x7402F0FC, objid, UnicodeString("Travel Terminal"), "terminal_travel", x, z, y, TRAVEL) {
-		shuttle = shutle;
-
+	PlayerStructureTerminalImplementation(uint64 objid, float x, float z, float y) :
+		PlayerStructureTerminalServant(0x7402F0FC, objid, UnicodeString("Starting Location Terminal"), "terminal_travel", x, z, y, STARTINGLOCATION) {
 	}
 
 	int useObject(Player* player) {
-		EnterTicketPurchaseModeMessage* etpm = new EnterTicketPurchaseModeMessage(shuttle->getPlanet(), shuttle->getCity());
-		player->sendMessage(etpm);
+		StartingLocationList* sll = new StartingLocationList(player);
+		player->sendMessage(sll);
 
 		return 0;
 	}
 
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
 		omr->finish();
-
 		player->sendMessage(omr);
 	}
+
 };
 
-#endif /*TRAVELTERMINALIMPLEMENTATION_H_*/
+#endif /* PLAYERSTRUCTURETERMINALIMPLEMENTATION_H_ */
