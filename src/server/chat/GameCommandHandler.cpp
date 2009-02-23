@@ -1711,31 +1711,31 @@ void GameCommandHandler::HAMStats(StringTokenizer tokenizer, Player* player) {
 	StringBuffer message;
 
 	message << "Health:  " << player->getHealth() << "/"
-			<< player->getHealthMax() << "/" << player->getBaseHealth() << ".";
+			<< player->getHealthMax() << "/" << player->getBaseHealth() <<"/" << player->getHealthWounds() << ".";
 	message << " Action:  " << player->getAction() << "/"
-			<< player->getActionMax() << "/" << player->getBaseAction() << ".";
+			<< player->getActionMax() << "/" << player->getBaseAction()<< "/" << player->getActionWounds() << ".";
 	message << " Mind:  " << player->getMind() << "/" << player->getMindMax()
-			<< "/" << player->getBaseMind() << ".";
+			<< "/" << player->getBaseMind() << "/"<< player->getMindWounds()<< ".";
 
 	message << " Strength:  " << player->getStrength() << "/"
 			<< player->getStrengthMax() << "/" << player->getBaseStrength()
-			<< ".";
+			<< "/" << player->getStrengthWounds() << ".";
 	message << " Constitution:  " << player->getConstitution() << "/"
 			<< player->getConstitutionMax() << "/"
-			<< player->getBaseConstitution() << ".";
+			<< player->getBaseConstitution() << "/" << player->getConstitutionWounds() << ".";
 
 	message << " Quickness:  " << player->getQuickness() << "/"
 			<< player->getQuicknessMax() << "/" << player->getBaseQuickness()
-			<< ".";
+			<< "/" << player->getQuicknessWounds() << ".";
 	message << " Stamina:  " << player->getStamina() << "/"
 			<< player->getStaminaMax() << "/" << player->getBaseStamina()
-			<< ".";
+			<< "/" << player->getStaminaWounds() << ".";
 
 	message << " Focus:  " << player->getFocus() << "/"
 			<< player->getFocusMax() << "/" << player->getBaseFocus() << ".";
 	message << " Willpower:  " << player->getWillpower() << "/"
 			<< player->getWillpowerMax() << "/" << player->getBaseWillpower()
-			<< ".";
+			<< "/" << player->getWillpowerWounds() << ".";
 
 	player->sendSystemMessage(message.toString());
 }

@@ -1143,7 +1143,7 @@ int CombatManager::getArmorReduction(CreatureObject* target, int damage, int loc
 
 	float armorReduction = preArmorDamage - currentDamage;
 
-	if (armor != NULL && resist > 0 && target->isPlayer()) {
+	/*if (armor != NULL && resist > 0 && target->isPlayer()) {
 		armor->conditionReduction(currentDamage);
 
 		StfParameter* params = new StfParameter();
@@ -1151,8 +1151,10 @@ int CombatManager::getArmorReduction(CreatureObject* target, int damage, int loc
 		params->addDI((int)armorReduction);
 		((Player*)target)->sendSystemMessage("cbt_spam",
 				"armor_damaged", params);
-	}
+	}*/
 
+	if (target->isPlayer() && resist > 0 && armor != NULL)
+		target->sendCombatSpam(target,(TangibleObject*)armor, (int)(preArmorDamage - currentDamage), "armor_damaged", false);
 	// Final outcome, may be negative
 	reduction = damage - (int)currentDamage;
 

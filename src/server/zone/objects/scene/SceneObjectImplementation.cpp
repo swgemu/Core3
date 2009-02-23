@@ -838,7 +838,7 @@ bool SceneObjectImplementation::inflictDamage(AttackableObject* victim, uint32 d
  * \parma amount How much damage to inflict.
  */
 bool SceneObjectImplementation::inflictDamage(CreatureObject* victim, uint8 attribute, uint32 damage) {
-	if (!victim->isAttackable())
+	if (!victim->isAttackable() || victim->isIncapacitated() || victim->isDead())
 		return false;
 
 	int32 oldValue = victim->getAttribute(attribute);
@@ -847,12 +847,10 @@ bool SceneObjectImplementation::inflictDamage(CreatureObject* victim, uint8 attr
 	victim->setAttributeBar(attribute, newValue);
 
 	if (newValue <= 0) {
-		if (!victim->isDead() && !victim->isIncapacitated()) {
-			if ((victim->isPlayer() || victim->isPet()))
-				incapacitate(victim);
-			else
-				kill(victim);
-		}
+		if ((victim->isPlayer() || victim->isPet()))
+			incapacitate(victim);
+		else
+			kill(victim);
 	}
 
 	return true;
