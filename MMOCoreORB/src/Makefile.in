@@ -159,7 +159,8 @@ am__objects_1 = ChatManager.$(OBJEXT) GameCommandHandler.$(OBJEXT) \
 	InsuranceTerminal.$(OBJEXT) MissionTerminal.$(OBJEXT) \
 	Terminal.$(OBJEXT) TravelTerminal.$(OBJEXT) \
 	StartingLocationTerminal.$(OBJEXT) VendorTerminal.$(OBJEXT) \
-	CampTerminal.$(OBJEXT) TicketCollector.$(OBJEXT) \
+	CampTerminal.$(OBJEXT) LugjackMachine.$(OBJEXT) \
+	JubileeWheel.$(OBJEXT) TicketCollector.$(OBJEXT) \
 	Ticket.$(OBJEXT) OneHandedJediWeapon.$(OBJEXT) \
 	PolearmJediWeapon.$(OBJEXT) TwoHandedJediWeapon.$(OBJEXT) \
 	JediWeapon.$(OBJEXT) OneHandedMeleeWeapon.$(OBJEXT) \
@@ -207,6 +208,7 @@ am_core3_OBJECTS = $(am__objects_1) \
 	LairObjectImplementation.$(OBJEXT) \
 	BuildingObjectImplementation.$(OBJEXT) \
 	CellObjectImplementation.$(OBJEXT) \
+	StructurePermissionList.$(OBJEXT) \
 	ActionCreatureImplementation.$(OBJEXT) \
 	ActionImplementation.$(OBJEXT) \
 	BlueFrogCreatureImplementation.$(OBJEXT) Buff.$(OBJEXT) \
@@ -581,6 +583,8 @@ core3_IDLS = server/chat/ChatManager.cpp \
 		server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp \
 		server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp \
 		server/zone/objects/tangible/terminal/camp/CampTerminal.cpp \
+		server/zone/objects/tangible/gambling/LugjackMachine.cpp \
+		server/zone/objects/tangible/gambling/JubileeWheel.cpp \
 		server/zone/objects/tangible/ticketcollector/TicketCollector.cpp \
 		server/zone/objects/tangible/ticket/Ticket.cpp \
 		server/zone/objects/tangible/weapons/jedi/OneHandedJediWeapon.cpp \
@@ -655,6 +659,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/building/cell/CellObjectImplementation.cpp \
+		server/zone/objects/building/StructurePermissionList.cpp \
 		server/zone/objects/creature/action/ActionCreatureImplementation.cpp \
 		server/zone/objects/creature/action/ActionImplementation.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp \
@@ -1002,6 +1007,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ItemManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ItemManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/JediWeapon.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/JubileeWheel.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LairObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LairObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LoginMessageProcessorThread.Po@am__quote@
@@ -1011,6 +1017,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LootManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LootTableManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LootTableManagerImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LugjackMachine.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ManufactureSchematic.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MeleeWeapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MissionBag.Po@am__quote@
@@ -1094,6 +1101,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StimPackImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StructureManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StructureManagerImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StructurePermissionList.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiBankTipConfirmBox.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiBankTransferBox.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiBankTransferBoxImplementation.Po@am__quote@
@@ -3286,6 +3294,34 @@ CampTerminal.obj: server/zone/objects/tangible/terminal/camp/CampTerminal.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CampTerminal.obj `if test -f 'server/zone/objects/tangible/terminal/camp/CampTerminal.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/terminal/camp/CampTerminal.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/terminal/camp/CampTerminal.cpp'; fi`
 
+LugjackMachine.o: server/zone/objects/tangible/gambling/LugjackMachine.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LugjackMachine.o -MD -MP -MF $(DEPDIR)/LugjackMachine.Tpo -c -o LugjackMachine.o `test -f 'server/zone/objects/tangible/gambling/LugjackMachine.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/gambling/LugjackMachine.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/LugjackMachine.Tpo $(DEPDIR)/LugjackMachine.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/gambling/LugjackMachine.cpp' object='LugjackMachine.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LugjackMachine.o `test -f 'server/zone/objects/tangible/gambling/LugjackMachine.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/gambling/LugjackMachine.cpp
+
+LugjackMachine.obj: server/zone/objects/tangible/gambling/LugjackMachine.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LugjackMachine.obj -MD -MP -MF $(DEPDIR)/LugjackMachine.Tpo -c -o LugjackMachine.obj `if test -f 'server/zone/objects/tangible/gambling/LugjackMachine.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/gambling/LugjackMachine.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/gambling/LugjackMachine.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/LugjackMachine.Tpo $(DEPDIR)/LugjackMachine.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/gambling/LugjackMachine.cpp' object='LugjackMachine.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LugjackMachine.obj `if test -f 'server/zone/objects/tangible/gambling/LugjackMachine.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/gambling/LugjackMachine.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/gambling/LugjackMachine.cpp'; fi`
+
+JubileeWheel.o: server/zone/objects/tangible/gambling/JubileeWheel.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT JubileeWheel.o -MD -MP -MF $(DEPDIR)/JubileeWheel.Tpo -c -o JubileeWheel.o `test -f 'server/zone/objects/tangible/gambling/JubileeWheel.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/gambling/JubileeWheel.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/JubileeWheel.Tpo $(DEPDIR)/JubileeWheel.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/gambling/JubileeWheel.cpp' object='JubileeWheel.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o JubileeWheel.o `test -f 'server/zone/objects/tangible/gambling/JubileeWheel.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/gambling/JubileeWheel.cpp
+
+JubileeWheel.obj: server/zone/objects/tangible/gambling/JubileeWheel.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT JubileeWheel.obj -MD -MP -MF $(DEPDIR)/JubileeWheel.Tpo -c -o JubileeWheel.obj `if test -f 'server/zone/objects/tangible/gambling/JubileeWheel.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/gambling/JubileeWheel.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/gambling/JubileeWheel.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/JubileeWheel.Tpo $(DEPDIR)/JubileeWheel.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/gambling/JubileeWheel.cpp' object='JubileeWheel.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o JubileeWheel.obj `if test -f 'server/zone/objects/tangible/gambling/JubileeWheel.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/gambling/JubileeWheel.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/gambling/JubileeWheel.cpp'; fi`
+
 TicketCollector.o: server/zone/objects/tangible/ticketcollector/TicketCollector.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TicketCollector.o -MD -MP -MF $(DEPDIR)/TicketCollector.Tpo -c -o TicketCollector.o `test -f 'server/zone/objects/tangible/ticketcollector/TicketCollector.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/ticketcollector/TicketCollector.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/TicketCollector.Tpo $(DEPDIR)/TicketCollector.Po
@@ -4293,6 +4329,20 @@ CellObjectImplementation.obj: server/zone/objects/building/cell/CellObjectImplem
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/building/cell/CellObjectImplementation.cpp' object='CellObjectImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CellObjectImplementation.obj `if test -f 'server/zone/objects/building/cell/CellObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/building/cell/CellObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/building/cell/CellObjectImplementation.cpp'; fi`
+
+StructurePermissionList.o: server/zone/objects/building/StructurePermissionList.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StructurePermissionList.o -MD -MP -MF $(DEPDIR)/StructurePermissionList.Tpo -c -o StructurePermissionList.o `test -f 'server/zone/objects/building/StructurePermissionList.cpp' || echo '$(srcdir)/'`server/zone/objects/building/StructurePermissionList.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/StructurePermissionList.Tpo $(DEPDIR)/StructurePermissionList.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/building/StructurePermissionList.cpp' object='StructurePermissionList.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o StructurePermissionList.o `test -f 'server/zone/objects/building/StructurePermissionList.cpp' || echo '$(srcdir)/'`server/zone/objects/building/StructurePermissionList.cpp
+
+StructurePermissionList.obj: server/zone/objects/building/StructurePermissionList.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StructurePermissionList.obj -MD -MP -MF $(DEPDIR)/StructurePermissionList.Tpo -c -o StructurePermissionList.obj `if test -f 'server/zone/objects/building/StructurePermissionList.cpp'; then $(CYGPATH_W) 'server/zone/objects/building/StructurePermissionList.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/building/StructurePermissionList.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/StructurePermissionList.Tpo $(DEPDIR)/StructurePermissionList.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/building/StructurePermissionList.cpp' object='StructurePermissionList.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o StructurePermissionList.obj `if test -f 'server/zone/objects/building/StructurePermissionList.cpp'; then $(CYGPATH_W) 'server/zone/objects/building/StructurePermissionList.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/building/StructurePermissionList.cpp'; fi`
 
 ActionCreatureImplementation.o: server/zone/objects/creature/action/ActionCreatureImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ActionCreatureImplementation.o -MD -MP -MF $(DEPDIR)/ActionCreatureImplementation.Tpo -c -o ActionCreatureImplementation.o `test -f 'server/zone/objects/creature/action/ActionCreatureImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/action/ActionCreatureImplementation.cpp

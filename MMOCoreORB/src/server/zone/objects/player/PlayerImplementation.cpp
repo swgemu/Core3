@@ -352,6 +352,9 @@ void PlayerImplementation::initializePlayer() {
 	}
 
 	powerboostEventWane = NULL;
+
+	if (!isDead() && !isIncapacitated() && (!isOnFullHealth() || hasWounds() || hasShockWounds() || hasStates()))
+		activateRecovery();
 }
 
 void PlayerImplementation::create(ZoneClientSession* client) {
@@ -2288,6 +2291,7 @@ void PlayerImplementation::rescheduleRecovery(int time) {
  */
 void PlayerImplementation::recoverFromIncapacitation() {
 	setPosture(CreaturePosture::UPRIGHT);
+	//setHAMBars(1,1,1);
 	rescheduleRecovery(0);
 }
 
@@ -6036,7 +6040,6 @@ void PlayerImplementation::onIncapacitated(SceneObject* attacker) {
 void PlayerImplementation::onDeath() {
 	//Dismount has to take place before clearStates! ClearStates() also
 	//clears the "mount state" so we need to check "isMounted()" before cleared
-
 	if (isMounted())
 		dismount(true, true);
 
@@ -6047,6 +6050,7 @@ void PlayerImplementation::onDeath() {
 	clearDuelList();
 	clearCombatState(true);
 	clearStates();
+	setPosture(CreaturePosture::DEAD);
 
 	cancelRecoveryEvent();
 

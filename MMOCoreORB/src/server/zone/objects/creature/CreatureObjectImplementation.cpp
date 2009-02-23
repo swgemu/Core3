@@ -963,12 +963,21 @@ bool CreatureObjectImplementation::changeHAMBars(int32 health, int32 action, int
 			setHAMBars(MAX(newHealth, 0), MAX(newAction, 0), MAX(newMind, 0));
 
 			incapacitateSelf();
-		}
 
-		return false;
+			return false;
+
+		} else {
+			if (newHealth <= 0)
+				newHealth = 1;
+			if (newAction <= 0)
+				newAction = 1;
+			if (newMind <= 0)
+				newMind = 1;
+		}
 	}
 
 	setHAMBars(MIN(newHealth, getHealthMax() - getHealthWounds()), MIN(newAction, getActionMax() - getActionWounds()), MIN(newMind, getMindMax() - getMindWounds()));
+	//setHAMBars(MIN(MAX(newHealth,1), getHealthMax() - getHealthWounds()), MIN(MAX(newAction,1), getActionMax() - getActionWounds()), MIN(MAX(newMind,1), getMindMax() - getMindWounds()));
 
 	return true;
 }
