@@ -2291,7 +2291,7 @@ void PlayerImplementation::rescheduleRecovery(int time) {
  */
 void PlayerImplementation::recoverFromIncapacitation() {
 	setPosture(CreaturePosture::UPRIGHT);
-	//setHAMBars(1,1,1);
+	onIncapacitationRecovery();
 	rescheduleRecovery(0);
 }
 
