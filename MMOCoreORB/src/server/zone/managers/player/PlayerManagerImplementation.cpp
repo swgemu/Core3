@@ -1171,33 +1171,33 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(Player* player) {
 		player->setVerifiedTrade(true);
 
 		uint64 targID = player->getTradeRequestedPlayer();
-		SceneObject* obj = server->getZoneServer()->getObject(targID);
+		ManagedReference<SceneObject> obj = server->getZoneServer()->getObject(targID);
 
 		if (obj != NULL && obj->isPlayer()) {
-			Player* receiver = (Player*)obj;
+			Player* receiver = (Player*)obj.get();
 
 			try {
 				receiver->wlock(player);
 
 				if (receiver->hasVerifiedTrade()) {
 					for (int i = 0; i < player->getTradeSize(); ++i) {
-						SceneObject* item = player->getTradeItem(i);
+						ManagedReference<SceneObject> item = player->getTradeItem(i);
 						if (item->isTangible()){
-							TangibleObject* tano = (TangibleObject*) item;
+							TangibleObject* tano = (TangibleObject*) item.get();
 							moveItem(player, receiver, tano);
 						} else {
-							IntangibleObject* itno = (IntangibleObject*) item;
+							IntangibleObject* itno = (IntangibleObject*) item.get();
 							moveItem(player, receiver, itno);
 						}
 					}
 
 					for (int i = 0; i < receiver->getTradeSize(); ++i) {
-						SceneObject* item = receiver->getTradeItem(i);
+						ManagedReference<SceneObject> item = receiver->getTradeItem(i);
 						if (item->isTangible()){
-							TangibleObject* tano = (TangibleObject*) item;
+							TangibleObject* tano = (TangibleObject*) item.get();
 							moveItem(player, receiver, tano);
 						} else {
-							IntangibleObject* itno = (IntangibleObject*) item;
+							IntangibleObject* itno = (IntangibleObject*) item.get();
 							moveItem(player, receiver, itno);
 						}
 					}

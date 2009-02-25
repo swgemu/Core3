@@ -227,7 +227,7 @@ class PlayerImplementation : public PlayerServant {
 
 	// trading
 	uint64 tradeRequestedPlayer;
-	Vector<SceneObject*> tradeItems;
+	Vector<ManagedReference<SceneObject> > tradeItems;
 	uint32 moneyToTrade;
 	bool acceptedTrade;
 	bool verifiedTrade;

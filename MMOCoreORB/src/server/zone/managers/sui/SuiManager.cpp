@@ -273,11 +273,21 @@ void SuiManager::handleCodeForRedeed(uint32 boxID, Player* player,
 		if (sui->isListBox() && cancel != 1) {
 			Zone * zone = player->getZone();
 
-			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
+			ManagedReference<SceneObject> scno = zone->lookupObject(player->getCurrentStructureID());
 
-			InstallationObject * inso = (InstallationObject *) scno;
+			InstallationObject * inso = (InstallationObject *) scno.get();
 
-			inso->handleStructureRedeedConfirm(player);
+			if (inso != NULL) {
+				try {
+					inso->wlock(player);
+
+					inso->handleStructureRedeedConfirm(player);
+
+					inso->unlock();
+				} catch (...) {
+					inso->unlock();
+				}
+			}
 		}
 
 		player->removeSuiBox(boxID);
@@ -310,17 +320,22 @@ void SuiManager::handleRedeedStructure(uint32 boxID, Player* player,
 		SuiBox* sui = player->getSuiBox(boxID);
 
 		if (sui->isInputBox() && cancel != 1) {
-
-
-
 			Zone * zone = player->getZone();
 
-			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
+			ManagedReference<SceneObject> scno = zone->lookupObject(player->getCurrentStructureID());
 
-			InstallationObject * inso = (InstallationObject *) scno;
+			InstallationObject * inso = (InstallationObject *) scno.get();
 
 			if (scno != NULL && extra == inso->getDestroyCode()) {
-				inso->handleMakeDeed(player);
+				try {
+					inso->wlock(player);
+
+					inso->handleMakeDeed(player);
+
+					inso->unlock();
+				} catch (...) {
+					inso->unlock();
+				}
 			} else {
 				SuiMessageBox* wrongCode = new SuiMessageBox(player, 0x00);
 				wrongCode->setPromptTitle("Star Wars Galaxies");
@@ -363,11 +378,13 @@ void SuiManager::handleRefreshStatusListBox(uint32 boxID, Player* player,
 		if (sui->isListBox() && cancel != 1) {
 			Zone * zone = player->getZone();
 
-			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
+			ManagedReference<SceneObject> scno = zone->lookupObject(player->getCurrentStructureID());
 
-			InstallationObject * inso = (InstallationObject *) scno;
+			InstallationObject * inso = (InstallationObject *) scno.get();
 
-			inso->handleStructureStatus(player);
+			if (inso != NULL) {
+				inso->handleStructureStatus(player);
+			}
 		}
 
 		player->removeSuiBox(boxID);
@@ -456,21 +473,29 @@ void SuiManager::handleManageMaintenance(uint32 boxID, Player* player,
 
 			Zone * zone = player->getZone();
 
-			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
+			ManagedReference<SceneObject> scno = zone->lookupObject(player->getCurrentStructureID());
 
-			InstallationObject * inso = (InstallationObject *) scno;
+			InstallationObject * inso = (InstallationObject *) scno.get();
 
 			if (inso!= NULL)	{
-				int maint = (player->getCashCredits() - atoi(newCashVal.toCharArray()));
+				try {
+					inso->wlock(player);
 
-				inso->addMaintenance(maint);
-				player->subtractCashCredits(maint);
+					int maint = (player->getCashCredits() - atoi(newCashVal.toCharArray()));
 
-				StringBuffer report;
-				report << "You successfully make a payment of " << maint << " to "
+					inso->addMaintenance(maint);
+					player->subtractCashCredits(maint);
+
+					StringBuffer report;
+					report << "You successfully make a payment of " << maint << " to "
 					<< inso->getCustomName().toString();
 
-				player->sendSystemMessage(report.toString());
+					player->sendSystemMessage(report.toString());
+
+					inso->unlock();
+				} catch (...) {
+					inso->unlock();
+				}
 
 			}
 
@@ -516,28 +541,35 @@ void SuiManager::handleAddEnergy(uint32 boxID, Player* player,
 
 			Zone * zone = player->getZone();
 
-			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
+			ManagedReference<SceneObject> scno = zone->lookupObject(player->getCurrentStructureID());
 
-			InstallationObject * inso = (InstallationObject *) scno;
+			InstallationObject * inso = (InstallationObject *) scno.get();
 
 			StringBuffer msg;
 
 			if (inso!= NULL)	{
-				// player->getEnergy() - atoi(newEnergyVal.toCharArray())
-				uint energy = player->getAvailablePower() - atoi(newEnergyVal.toCharArray());
-				//inso->getSurplusPower()
-				msg << "SuiManager::handleAddEnergy(" << boxID << ", player, " << cancel << ", " << newEnergyVal << ") : atoi: " << atoi(newEnergyVal.toCharArray()) << " / available: " << player->getAvailablePower() << endl;
-				info(msg.toString());
+				try {
+					inso->wlock(player);
+					// player->getEnergy() - atoi(newEnergyVal.toCharArray())
+					uint energy = player->getAvailablePower() - atoi(newEnergyVal.toCharArray());
+					//inso->getSurplusPower()
+					msg << "SuiManager::handleAddEnergy(" << boxID << ", player, " << cancel << ", " << newEnergyVal << ") : atoi: " << atoi(newEnergyVal.toCharArray()) << " / available: " << player->getAvailablePower() << endl;
+					info(msg.toString());
 
-				inso->addPower(energy);
-				player->removePower(energy);
-				//player->removeEnergy(energy);
+					inso->addPower(energy);
+					player->removePower(energy);
+					//player->removeEnergy(energy);
 
-				StringBuffer report;
-				report << "You successfully deposit " << energy << " units of energy.\n"
+					StringBuffer report;
+					report << "You successfully deposit " << energy << " units of energy.\n"
 					<< "Energy reserves now at " << inso->getSurplusPower() << " units.";
 
-				player->sendSystemMessage(report.toString());
+					player->sendSystemMessage(report.toString());
+
+					inso->unlock();
+				} catch (...) {
+					inso->unlock();
+				}
 
 			}
 

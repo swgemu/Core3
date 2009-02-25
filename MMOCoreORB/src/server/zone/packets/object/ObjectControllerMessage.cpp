@@ -4384,7 +4384,7 @@ void ObjectControllerMessage::parseHarvestOrganics(Player* player,
 
 	try {
 
-		creature->wlock();
+		creature->wlock(player);
 
 		int type = 0;
 
