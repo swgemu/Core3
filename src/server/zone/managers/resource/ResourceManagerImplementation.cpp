@@ -640,144 +640,154 @@ void ResourceManagerImplementation::harvestOrganics(Player* player,
 	 * Pre/post: creature and player are wlock()
 	 */
 
-	lock();
 
-	bool proceed = false;
-	int loop = 0;
-	String harvestType = "";
-	String creatureHealthType = "";
-	int baseAmount = 0;
-	int bonusAmount = 0;
-	float bonusPercentage = 0;
-	int variance;
-	int creatureHealth;
 
-	CreatureObject* creatureObj = (CreatureObject*) creature;
+	try {
 
-	String skillBox = "outdoors_scout_novice";
+		lock();
 
-	if (player->isInRange(creature->getPositionX(), creature->getPositionY(),
-			10.0f) && !player->isInCombat() && player->hasSkillBox(skillBox)
-			&& creature->isDead() && creature->canHarvest(
-			player->getFirstName())) {
+		bool proceed = false;
+		int loop = 0;
+		String harvestType = "";
+		String creatureHealthType = "";
+		int baseAmount = 0;
+		int bonusAmount = 0;
+		float bonusPercentage = 0;
+		int variance;
+		int creatureHealth;
 
-		getHarvestingType(creatureObj, harvestType, baseAmount, type);
+		CreatureObject* creatureObj = (CreatureObject*) creature;
 
-		if (baseAmount == 0 || harvestType == "") {
-			unlock();
-			return;
-		}
+		String skillBox = "outdoors_scout_novice";
 
-		baseAmount = int(baseAmount * float(player->getSkillMod(
-				"creature_harvesting") / 100.0f));
+		if (player->isInRange(creature->getPositionX(), creature->getPositionY(),
+				10.0f) && !player->isInCombat() && player->hasSkillBox(skillBox)
+				&& creature->isDead() && creature->canHarvest(
+						player->getFirstName())) {
 
-		creatureHealth = creatureObj->getCreatureHealth();
+			getHarvestingType(creatureObj, harvestType, baseAmount, type);
 
-		switch (creatureHealth) {
-		case 1:
-			baseAmount = int(baseAmount * 0.50f);
-			creatureHealthType = "creature_quality_scrawny";
-			break;
-		case 2:
-			baseAmount = int(baseAmount * 0.75f);
-			creatureHealthType = "creature_quality_skinny";
-			break;
-		case 3:
-			baseAmount = int(baseAmount * 1.00f);
-			creatureHealthType = "creature_quality_medium";
-			break;
-		case 4:
-			baseAmount = int(baseAmount * 1.25f);
-			creatureHealthType = "creature_quality_fat";
-			break;
-		}
-
-		if (player->isInAGroup()) {
-
-			GroupObject* group = player->getGroupObject();
-
-			try {
-				group->wlock(player);
-
-				bonusPercentage = group->getRangerBonusForHarvesting(player);
-
-				group->unlock();
-			} catch (...) {
-				group->unlock();
+			if (baseAmount == 0 || harvestType == "") {
+				unlock();
+				return;
 			}
 
-			bonusAmount = int(bonusPercentage * baseAmount);
-		}
+			baseAmount = int(baseAmount * float(player->getSkillMod(
+					"creature_harvesting") / 100.0f));
 
-		if (baseAmount < 1)
-			baseAmount = 1;
+			creatureHealth = creatureObj->getCreatureHealth();
 
-		ResourceContainer* newRcno =
+			switch (creatureHealth) {
+			case 1:
+				baseAmount = int(baseAmount * 0.50f);
+				creatureHealthType = "creature_quality_scrawny";
+				break;
+			case 2:
+				baseAmount = int(baseAmount * 0.75f);
+				creatureHealthType = "creature_quality_skinny";
+				break;
+			case 3:
+				baseAmount = int(baseAmount * 1.00f);
+				creatureHealthType = "creature_quality_medium";
+				break;
+			case 4:
+				baseAmount = int(baseAmount * 1.25f);
+				creatureHealthType = "creature_quality_fat";
+				break;
+			}
+
+			if (player->isInAGroup()) {
+
+				GroupObject* group = player->getGroupObject();
+
+				try {
+					group->wlock(player);
+
+					bonusPercentage = group->getRangerBonusForHarvesting(player);
+
+					group->unlock();
+				} catch (...) {
+					group->unlock();
+				}
+
+				bonusAmount = int(bonusPercentage * baseAmount);
+			}
+
+			if (baseAmount < 1)
+				baseAmount = 1;
+
+			ResourceContainer* newRcno =
 				new ResourceContainer(player->getNewItemID());
 
-		String resname = getCurrentNameFromType(harvestType);
+			String resname = getCurrentNameFromType(harvestType);
 
-		if (resname == "") {
-			unlock();
-			return;
-		}
-
-		newRcno->setResourceName(resname);
-		newRcno->setContents(baseAmount + bonusAmount);
-		setResourceData(newRcno, false);
-
-		StfParameter* stfparams = new StfParameter();
-
-		stfparams->addDI(newRcno->getContents());
-		stfparams->addTU(newRcno->getClassSeven());
-
-		player->sendSystemMessage("skl_use", creatureHealthType, stfparams);
-
-		if (player->isInAGroup()) {
-
-			GroupObject* group = player->getGroupObject();
-
-			try {
-				group->wlock(player);
-
-				stfparams = new StfParameter();
-
-				stfparams->addTU(player->getFirstNameProper());
-				stfparams->addDI(newRcno->getContents());
-				stfparams->addTO(newRcno->getClassSeven());
-
-				StringBuffer creatureName;
-				creatureName << "@" << creature->getTemplateTypeName() << ":" << creature->getTemplateName();
-				stfparams->addTT(creatureName.toString());
-
-				group->sendSystemMessage(player, "group",
-						"notify_harvest_corpse", stfparams, false);
-
-				if (bonusPercentage == 0.2f)
-					player->sendSystemMessage("skl_use", "group_harvest_bonus");
-				else if (bonusPercentage == 0.3f)
-					player->sendSystemMessage("skl_use", "group_harvest_bonus_ranger");
-				else if (bonusPercentage == 0.4f)
-					player->sendSystemMessage("skl_use", "group_harvest_bonus_masterranger");
-
-				group->unlock();
-			} catch (...) {
-				group->unlock();
+			if (resname == "") {
+				unlock();
+				return;
 			}
 
+			newRcno->setResourceName(resname);
+			newRcno->setContents(baseAmount + bonusAmount);
+			setResourceData(newRcno, false);
+
+			StfParameter* stfparams = new StfParameter();
+
+			stfparams->addDI(newRcno->getContents());
+			stfparams->addTU(newRcno->getClassSeven());
+
+			player->sendSystemMessage("skl_use", creatureHealthType, stfparams);
+
+			if (player->isInAGroup()) {
+
+				GroupObject* group = player->getGroupObject();
+
+				try {
+					group->wlock(player);
+
+					stfparams = new StfParameter();
+
+					stfparams->addTU(player->getFirstNameProper());
+					stfparams->addDI(newRcno->getContents());
+					stfparams->addTO(newRcno->getClassSeven());
+
+					StringBuffer creatureName;
+					creatureName << "@" << creature->getTemplateTypeName() << ":" << creature->getTemplateName();
+					stfparams->addTT(creatureName.toString());
+
+					group->sendSystemMessage(player, "group",
+							"notify_harvest_corpse", stfparams, false);
+
+					if (bonusPercentage == 0.2f)
+						player->sendSystemMessage("skl_use", "group_harvest_bonus");
+					else if (bonusPercentage == 0.3f)
+						player->sendSystemMessage("skl_use", "group_harvest_bonus_ranger");
+					else if (bonusPercentage == 0.4f)
+						player->sendSystemMessage("skl_use", "group_harvest_bonus_masterranger");
+
+					group->unlock();
+				} catch (...) {
+					group->unlock();
+				}
+
+			}
+
+			player->addInventoryResource(newRcno);
+
+			creature->removePlayerFromHarvestList(player->getFirstName());
+
+			String xpType = "scout";
+			//int xp = int(creatureObj->getXP() * .1f);
+			int xp = int(creatureObj->getLevel() * 10);
+
+			player->addXp(xpType, xp, true);
 		}
 
-		player->addInventoryResource(newRcno);
+		unlock();
 
-		creature->removePlayerFromHarvestList(player->getFirstName());
-
-		String xpType = "scout";
-		//int xp = int(creatureObj->getXP() * .1f);
-		int xp = int(creatureObj->getLevel() * 10);
-
-		player->addXp(xpType, xp, true);
+	} catch (...) {
+		unlock();
 	}
-	unlock();
+
 }
 
 void ResourceManagerImplementation::getHarvestingType(CreatureObject* creatureObj,

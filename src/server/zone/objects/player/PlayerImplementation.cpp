@@ -691,7 +691,8 @@ void PlayerImplementation::unload() {
 
 	if (group != NULL) {
 		GroupManager* groupManager = server->getGroupManager();
-		groupManager->leaveGroup(group, _this);
+		ManagedReference<GroupObject> groupObject = group;
+		groupManager->leaveGroup(groupObject, _this);
 	}
 
 	clearDuelList();
@@ -5360,10 +5361,10 @@ void PlayerImplementation::removePower(uint64 power) {
 
 	if (inventory != NULL && power > 0) {
 		for (int i = 0; i < inventory->getContainerObjectsSize(); i++ && power > 0) {
-			TangibleObject* tano = (TangibleObject*) inventory->getObject(i);
+			ManagedReference<TangibleObject> tano = (TangibleObject*) inventory->getObject(i);
 
 			if (tano->isResource()) {
-				ResourceContainer* rcno = (ResourceContainer*)tano;
+				ResourceContainer* rcno = (ResourceContainer*)tano.get();
 
 				int PE = rcno->getPotentialEnergy();
 				if(PE > 500)
