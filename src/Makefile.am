@@ -84,7 +84,6 @@ core3_IDLS =	server/chat/ChatManager.cpp \
 		server/zone/objects/area/BadgeActiveArea.cpp \
 		server/zone/objects/area/CampActiveArea.cpp \
 		server/zone/objects/area/TestActiveArea.cpp \
-		server/zone/objects/attackable/AttackableObject.cpp \
 		server/zone/objects/auction/AuctionItem.cpp \
 		server/zone/objects/building/BuildingObject.cpp \
 		server/zone/objects/building/cell/CellObject.cpp \
@@ -277,7 +276,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/structure/StructureManagerImplementation.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
 		server/zone/managers/user/UserManagerImplementation.cpp \
-		server/zone/objects/attackable/AttackableObjectImplementation.cpp \
 		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/building/cell/CellObjectImplementation.cpp \

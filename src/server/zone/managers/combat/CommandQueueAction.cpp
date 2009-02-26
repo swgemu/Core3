@@ -51,7 +51,6 @@ which carries forward this exception.
 #include "../../objects/scene/SceneObject.h"
 #include "../../objects/creature/CreatureObject.h"
 #include "../../objects/tangible/weapons/Weapon.h"
-#include "../../objects/attackable/AttackableObject.h"
 #include "../../objects/tangible/pharmaceutical/Pharmaceutical.h"
 #include "../../objects/tangible/pharmaceutical/DotPack.h"
 #include "../../objects/creature/skills/target/HealDamageTargetSkill.h"
@@ -233,18 +232,10 @@ bool CommandQueueAction::validate() {
 						}
 					}
 
-					if (!target->isAttackableObject()) {
+					if (target->isPlayer() || target->isNonPlayerCreature()) {
 						CreatureObject* targetCreature = (CreatureObject*) target.get();
 
 						if (targetCreature->isIncapacitated() || targetCreature->isDead()) {
-							clearError(3);
-							target->unlock();
-							return false;
-						}
-					} else {
-						AttackableObject* targetObject = (AttackableObject*) target.get();
-
-						if (targetObject->isDestroyed()) {
 							clearError(3);
 							target->unlock();
 							return false;
@@ -297,11 +288,6 @@ bool CommandQueueAction::validate() {
 }
 
 bool CommandQueueAction::checkHealSkill() {
-	if (target->isAttackableObject()) {
-		clearError(3);
-		return false;
-	}
-
 	CreatureObject* targetObject = (CreatureObject*) target.get();
 	if (targetObject != creature) {
 		try {

@@ -392,7 +392,7 @@ void CombatManager::handelMedicArea(CreatureObject* creature, CreatureObject* ar
 		for (int i = 0; i < areaCenter->inRangeObjectCount(); i++) {
 			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) areaCenter->getInRangeObject(i))->_this);
 
-			if (!object->isPlayer() && !object->isNonPlayerCreature() && !object->isAttackableObject())
+			if (!object->isPlayer() && !object->isNonPlayerCreature())
 				continue;
 
 			if (object == areaCenter)
@@ -509,19 +509,6 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* tar
 			}
 
 			targetCreature->activateRecovery();
-		} else {
-			AttackableObject* targetObject = (AttackableObject*) target;
-			if (targetObject->isDestroyed())
-				if (!skill->isArea()) {
-					attacker->clearCombatState(true);
-
-					if (attacker != target)
-						target->unlock();
-
-					return false;
-				}
-
-			targetObject->doDamage(damage, attacker);
 		}
 
 		if (attacker != target)
@@ -1329,14 +1316,19 @@ void CombatManager::calculateStates(CreatureObject* creature, CreatureObject* ta
 			targetDefense = 125;
 
 		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
-			if (System::random(100) <= hitChanceEquation(0.0f, 0.0f, targetDefense, defenseBonus))
+		if (System::random(100) <= hitChanceEquation(0.0f, 0.0f, targetDefense, defenseBonus))
 			targetCreature->setStunnedState();
 	}
 
 	if ((chance = tskill->getIntimidateChance()) > 0) {
-		int rand = System::random(100);
+		int targetDefense = targetCreature->getSkillMod("intimidate_defense");
+		targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
 
-		if (rand <= chance)
+		if (targetDefense > 125)
+			targetDefense = 125;
+
+		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
+		if (System::random(100) <= hitChanceEquation(chance, 0.0f, targetDefense, defenseBonus))
 			targetCreature->setIntimidatedState();
 	}
 
@@ -1636,9 +1628,10 @@ void CombatManager::doDotWeaponAttack(CreatureObject* creature, CreatureObject* 
 int CombatManager::calculateWeaponDamage(CreatureObject* creature, TangibleObject* target, AttackTargetSkill* skill, bool randompoolhit) {
 	Weapon* weapon = creature->getWeapon();
 	float minDamage, maxDamage;
-	int damageType = 0;
+
+	int damageType = WeaponImplementation::KINETIC;
 	int attackType = MELEEATTACK;
-	int armorPiercing = 0;
+	int armorPiercing = 0; // None
 
 	if (weapon != NULL) {
 		if (MELEEWEAPON(weapon->getType()))
@@ -1662,7 +1655,6 @@ int CombatManager::calculateWeaponDamage(CreatureObject* creature, TangibleObjec
 	} else {
 		minDamage = (float)creature->getSkillMod("unarmed_damage");
 		maxDamage = minDamage + 15.0;
-		// DamageType and ArmorPiercing default to Kinetic no piercing
 	}
 
 	// Test for hit

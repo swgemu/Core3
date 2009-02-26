@@ -690,14 +690,15 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 						xpaddsingle += (playerlevel - levels) * 60.0f;
 					else if (playerlevel > levels)
 						xpaddsingle += (levels - playerlevel) * 4.5f;
-				} else if (isAttackableObject()) {
-					AttackableObject *attobj = (AttackableObject*)_this;
+				}
+				/* else if (isAttackableObject()) {
+					TangibleObject *attobj = (TangibleObject*)_this;
 					if (attobj->getTemplateTypeName() == "lair_n") {
 						LairObject *lair = (LairObject*)attobj;
 						xpaddsingle = lair->getLevel() * 100 / (group->getGroupSize()) * (1.0f+((group->getGroupSize()+5.0f)*.01f));
 					}
 				}
-
+				*/
 			} else { // use solo calculation
 				if (isNonPlayerCreature()) {
 					xpaddsingle = (damage/total)*40.0f*((float)levels)*(multiplier);
@@ -705,13 +706,16 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 						xpaddsingle += (playerlevel - levels) * 60.0f;
 					else if (playerlevel > levels)
 						xpaddsingle += (levels - playerlevel) * 4.5f;
-				} else if (isAttackableObject()) {
-					AttackableObject *attobj = (AttackableObject*)_this;
+				}
+				/*
+				else if (isAttackableObject()) {
+					TangibleObject *attobj = (TangibleObject*)_this;
 					if (attobj->getTemplateTypeName() == "lair_n") {
 						LairObject *lair = (LairObject*)attobj;
 						xpaddsingle = lair->getLevel() * 100;
 					}
 				}
+				*/
 			}
 
 			if (xptype == "jedi_general")
@@ -768,10 +772,11 @@ void SceneObjectImplementation::onIncapacitateTarget(CreatureObject* victim) {
 	clearCombatState(true);
 }
 
+/*
 void SceneObjectImplementation::onInflictDamage(AttackableObject* victim, uint32 damage) {
 
 }
-
+*/
 void SceneObjectImplementation::onInflictDamage(CreatureObject* victim, uint8 attribute, uint32 damage) {
 
 }
@@ -826,11 +831,11 @@ void SceneObjectImplementation::onReceivePaymentFrom(CreatureObject* sender, uin
  * Action performed to inflict damage on an attackable object.
  * \param victim An attackable object that is to receive the damage.
  * \parma amount How much damage to inflict.
- */
+ *
 bool SceneObjectImplementation::inflictDamage(AttackableObject* victim, uint32 damage) {
 	return false;
 }
-
+*/
 /**
  * Action performed to inflict damage on a creature.
  * \param victim A creature that is to receive the damage.

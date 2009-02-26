@@ -51,7 +51,6 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/area/BadgeActiveArea.idl \
 				server/zone/objects/area/CampActiveArea.idl \
 				server/zone/objects/area/TestActiveArea.idl \
-				server/zone/objects/attackable/AttackableObject.idl \
 				server/zone/objects/auction/AuctionItem.idl \
 				server/zone/objects/scene/SceneObject.idl \
 				server/zone/objects/creature/CreatureObject.idl \

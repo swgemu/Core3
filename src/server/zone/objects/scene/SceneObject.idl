@@ -61,8 +61,6 @@ import "../tangible/weapons/Weapon";
 
 import "../creature/CreatureObject";
 
-import "../attackable/AttackableObject";
-
 import "../building/BuildingObject";
 
 import "../creature/skills/target/AttackTargetSkill";
@@ -257,8 +255,6 @@ interface SceneObject implements ManagedObject {
 
 	boolean isShip();
 
-	boolean isAttackableObject();
-
 	boolean isMission();
 
 	boolean isPlayerObject();
@@ -315,7 +311,6 @@ interface SceneObject implements ManagedObject {
 
 	//Event Handlers
 	void onIncapacitateTarget(CreatureObject victim);
-	void onInflictDamage(AttackableObject victim, unsigned int damage);
 	void onInflictDamage(CreatureObject victim, unsigned char attribute, unsigned int damage);
 	void onKill(CreatureObject victim);
 	void onDeathblow(Player victim);
@@ -326,7 +321,6 @@ interface SceneObject implements ManagedObject {
 	void onReceivePaymentFrom(CreatureObject sender, unsigned int amount);
 
 	//Actions
-	boolean inflictDamage(AttackableObject victim, unsigned int damage);
 	boolean inflictDamage(CreatureObject victim, unsigned char attribute, unsigned int damage);
 	void incapacitate(CreatureObject victim);
 	void kill(CreatureObject victim);
