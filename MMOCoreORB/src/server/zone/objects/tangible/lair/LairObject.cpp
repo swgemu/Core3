@@ -8,18 +8,16 @@
 
 #include "../TangibleObject.h"
 
-#include "../../attackable/AttackableObject.h"
-
 /*
  *	LairObjectStub
  */
 
-LairObject::LairObject(unsigned int objcrc, unsigned long long oid) : AttackableObject(DummyConstructorParameter::instance()) {
+LairObject::LairObject(unsigned int objcrc, unsigned long long oid) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new LairObjectImplementation(objcrc, oid);
 	_impl->_setStub(this);
 }
 
-LairObject::LairObject(DummyConstructorParameter* param) : AttackableObject(param) {
+LairObject::LairObject(DummyConstructorParameter* param) : TangibleObject(param) {
 }
 
 LairObject::~LairObject() {
@@ -132,7 +130,7 @@ void LairObject::setLevel(int lev) {
  *	LairObjectAdapter
  */
 
-LairObjectAdapter::LairObjectAdapter(LairObjectImplementation* obj) : AttackableObjectAdapter(obj) {
+LairObjectAdapter::LairObjectAdapter(LairObjectImplementation* obj) : TangibleObjectAdapter(obj) {
 }
 
 Packet* LairObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -237,7 +235,7 @@ DistributedObjectAdapter* LairObjectHelper::createAdapter(DistributedObjectStub*
  *	LairObjectServant
  */
 
-LairObjectServant::LairObjectServant(unsigned long long oid) : AttackableObjectImplementation(oid) {
+LairObjectServant::LairObjectServant(unsigned long long oid) : TangibleObjectImplementation(oid) {
 	_classHelper = LairObjectHelper::instance();
 }
 
@@ -246,7 +244,7 @@ LairObjectServant::~LairObjectServant() {
 
 void LairObjectServant::_setStub(DistributedObjectStub* stub) {
 	_this = (LairObject*) stub;
-	AttackableObjectServant::_setStub(stub);
+	TangibleObjectServant::_setStub(stub);
 }
 
 DistributedObjectStub* LairObjectServant::_getStub() {

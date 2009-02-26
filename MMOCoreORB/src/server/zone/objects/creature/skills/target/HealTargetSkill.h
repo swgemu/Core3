@@ -107,14 +107,16 @@ public:
 			calculateHeal(creature, targetCreature);
 
 			doAnimations(creature, targetCreature);
-		} else if (target->isAttackableObject() && creature->isPlayer()) {
+		}
+		/*
+		else if (target->isAttackableObject() && creature->isPlayer()) {
 			CreatureObject* targetCreature = creature;
 
 			calculateHeal(creature, targetCreature);
 
 			doAnimations(creature, targetCreature);
 		}
-
+		*/
 		// TODO: Creatures need to be able to heal lairs
 		return 0;
 	}

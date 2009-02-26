@@ -439,10 +439,6 @@ public:
 		return attackable;
 	}
 
-	inline bool isAttackableObject() {
-		return objectType == ATTACKABLE;
-	}
-
 	inline bool isMission() {
 		return objectType == MISSION;
 	}
@@ -670,7 +666,6 @@ public:
 
 	//Event Handlers
 	virtual void onIncapacitateTarget(CreatureObject* victim);
-	virtual void onInflictDamage(AttackableObject* victim, uint32 damage);
 	virtual void onInflictDamage(CreatureObject* victim, uint8 attribute, uint32 damage);
 	virtual void onKill(CreatureObject* victim);
 	virtual void onDeathblow(Player* victim);
@@ -681,7 +676,6 @@ public:
 	virtual void onReceivePaymentFrom(CreatureObject* sender, uint32 amount);
 
 	//Actions
-	virtual bool inflictDamage(AttackableObject* victim, uint32 damage);
 	virtual bool inflictDamage(CreatureObject* victim, uint8 attribute, uint32 damage);
 	virtual void incapacitate(CreatureObject* victim);
 	virtual void kill(CreatureObject* victim);

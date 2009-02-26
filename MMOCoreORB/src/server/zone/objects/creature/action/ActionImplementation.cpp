@@ -554,9 +554,11 @@ void ActionImplementation::verifyParent() {
 		if(parentCreature->getType() == CreatureImplementation::ACTION) {
 			hasActionParent = true;
 		}
-	} else if(parentObject->isAttackableObject()) {
+	}
+	/*else if(parentObject->isAttackableObject()) {
 		hasLairParent = true;
-	} else {
+	} */
+	else {
 	}
 }
 

@@ -9,11 +9,9 @@
 
 class TangibleObject;
 
-class AttackableObject;
+#include "../TangibleObject.h"
 
-#include "../../attackable/AttackableObject.h"
-
-class LairObject : public AttackableObject {
+class LairObject : public TangibleObject {
 public:
 	LairObject(unsigned int objcrc, unsigned long long oid);
 
@@ -46,7 +44,7 @@ protected:
 
 class LairObjectImplementation;
 
-class LairObjectAdapter : public AttackableObjectAdapter {
+class LairObjectAdapter : public TangibleObjectAdapter {
 public:
 	LairObjectAdapter(LairObjectImplementation* impl);
 
@@ -85,9 +83,9 @@ public:
 	friend class SingletonWrapper<LairObjectHelper>;
 };
 
-#include "../../attackable/AttackableObjectImplementation.h"
+#include "../TangibleObjectImplementation.h"
 
-class LairObjectServant : public AttackableObjectImplementation {
+class LairObjectServant : public TangibleObjectImplementation {
 public:
 	LairObject* _this;
 

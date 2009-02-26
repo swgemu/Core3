@@ -43,9 +43,8 @@ which carries forward this exception.
 */
 
 import "../TangibleObject";
-import "../../attackable/AttackableObject";
 
-interface LairObject implements AttackableObject {
+interface LairObject implements TangibleObject {
 	LairObject(unsigned int objcrc, unsigned long oid) {
 		super(oid);
 	}

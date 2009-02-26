@@ -62,7 +62,6 @@ class TangibleObject;
 class ZoneServer;
 class Player;
 class CreatureObject;
-class AttackableObject;
 class MountCreature;
 class Weapon;
 class Pharmaceutical;
