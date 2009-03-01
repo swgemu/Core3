@@ -79,9 +79,9 @@
 
  --Misc
  RunCreatureFile("objects/lok/npcs/misc/droideka.lua")
- RunCreatureFile("objects/lok/npcs/misc/imperialDeserter.lua")
- RunCreatureFile("objects/lok/npcs/misc/jinkins.lua")
- RunCreatureFile("objects/lok/npcs/misc/kole.lua")
+ RunCreatureFile("objects/lok/npcs/misc/igAssassinDroid.lua") 
+ RunCreatureFile("objects/lok/npcs/misc/lokCommoner.lua")  
+ RunCreatureFile("objects/lok/npcs/misc/imperialDeserter.lua") 
  RunCreatureFile("objects/lok/npcs/misc/slpPirate.lua")
 
  --Nym

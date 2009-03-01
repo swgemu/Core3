@@ -53,7 +53,7 @@ tuskenSniper = Creature:new {
 	socialGroup = "tusken_raider",
 	 
 
-	level = 75,
+	level = 22,
 	
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

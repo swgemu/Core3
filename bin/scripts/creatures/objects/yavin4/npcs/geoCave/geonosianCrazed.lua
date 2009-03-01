@@ -69,11 +69,11 @@ geonosianCrazed = Creature:new {
 	willpower = 3000,
 
 	height = 1, -- Size of creature
-	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 25,
 	energy = 35,
 	electricity = 25,
-	stun = 0,
+	stun = 25,
 	blast = -1,
 	heat = 65,
 	cold = 25,
@@ -84,7 +84,7 @@ geonosianCrazed = Creature:new {
 
 	healer = 0,
 
-	pack = 1,
+	pack = 0,
 	herd = 0,
 	stalker = 0,
 	killer = 1,

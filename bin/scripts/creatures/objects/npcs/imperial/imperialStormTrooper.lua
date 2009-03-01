@@ -44,14 +44,14 @@ imperialStormTrooper = Creature:new {
 	objectName = "imperialStormTrooper",  -- Lua Object Name
 	creatureType = "NPC",
 	faction = "imperial", 
-	factionPoints = 20,
+	factionPoints = 12,
 	gender = "",
 
 	speciesName = "crackdown_stormtrooper",
     stfName = "mob/creature_names",
 	objectCRC = 3128894413, 
 	socialGroup = "imperial",
-	level = 80,
+	level = 25,
 	
 
 	combatFlags = 0,
@@ -72,15 +72,15 @@ imperialStormTrooper = Creature:new {
 	willpower = 500,
 	height = 1, -- Size of creature
 
-	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 30,
-	energy = 65,
-	electricity = 30,
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 15,
+	energy = 15,
+	electricity = 15,
 	stun = 0,
-	blast = 30,
-	heat = 0,
-	cold = 30,
-	acid = 0,
+	blast = 40,
+	heat = 15,
+	cold = 15,
+	acid = 15,
 	lightsaber = 0,
 
 	accuracy = 300,
@@ -88,9 +88,9 @@ imperialStormTrooper = Creature:new {
 	healer = 0,
 
 	pack = 1,
-	herd = 0,
+	herd = 1,
 	stalker = 0,
-	killer = 0,
+	killer = 1,
 	ferocity = 0,
 	aggressive = 0,
 	invincible = 0, 
@@ -103,11 +103,11 @@ imperialStormTrooper = Creature:new {
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
 	weapon = "object/weapon/ranged/carbine/shared_carbine_e11.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "a e11 Carbine", -- Name ex. 'a Vibrolance'
+	weaponName = "an e11 Carbine", -- Name ex. 'a Vibrolance'
 	weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 240,
+	weaponMinDamage = 80,
 	weaponMaxDamage = 250,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
@@ -141,7 +141,7 @@ imperialStormTrooper = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "imperialStormTrooperAttack1", "imperialStormTrooperAttack2", "imperialStormTrooperAttack3", "imperialStormTrooperAttack4", "imperialStormTrooperAttack5", "imperialStormTrooperAttack6", "imperialStormTrooperAttack7", "imperialStormTrooperAttack8", "imperialStormTrooperAttack9", "imperialStormTrooperAttack10", "imperialStormTrooperAttack11", "imperialStormTrooperAttack12", "imperialStormTrooperAttack13", "imperialStormTrooperAttack14", "imperialStormTrooperAttack15" },
+	skills = { "imperialStormTrooperAttack3", "imperialStormTrooperAttack4", "imperialStormTrooperAttack5", "imperialStormTrooperAttack8", "imperialStormTrooperAttack9", "imperialStormTrooperAttack10", "imperialStormTrooperAttack11", "imperialStormTrooperAttack13",},
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

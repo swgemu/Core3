@@ -86,7 +86,7 @@ nightsisterElder = Creature:new {
 
 	healer = 0,
 
-	pack = 1,
+	pack = 0,
 	herd = 0,
 	stalker = 0,
 	killer = 1,

@@ -55,28 +55,28 @@ nightsisterStalker = Creature:new {
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	healthMax = 25000,
-	healthMin = 20000,
+	healthMax = 15500,
+	healthMin = 10000,
 	strength = 3000,
 	constitution = 3000,
 
-	actionMax = 25000,
-	actionMin = 20000,
+	actionMax = 15500,
+	actionMin = 10000,
 	quickness = 3000,
 	stamina = 3000,
 
-	mindMax = 25000,
-	mindMin = 20000,
+	mindMax = 15500,
+	mindMin = 10000,
 	focus = 3000,
 	willpower = 3000,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 10,
+	kinetic = 40,
 	energy = 100,
 	electricity = 100,
 	stun = 100,
-	blast = 10,
+	blast = 40,
 	heat = 100,
 	cold = 100,
 	acid = 100,
@@ -86,9 +86,9 @@ nightsisterStalker = Creature:new {
 
 	healer = 0,
 
-	pack = 1,
+	pack = 0,
 	herd = 0,
-	stalker = 1,
+	stalker = 0,
 	killer = 1,
 	ferocity = 0,
 	aggressive = 1,

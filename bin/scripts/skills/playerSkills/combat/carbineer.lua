@@ -62,7 +62,7 @@ DotPoolAtt = {
 	mindAttackChance = 0,
 	
 	knockdownChance = 0,
-	postureDownChance = 25,
+	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,

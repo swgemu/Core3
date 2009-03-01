@@ -70,14 +70,14 @@ enragedRancor = Creature:new {
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 0,
+	kinetic = 30,
 	energy = 60,
 	electricity = 100,
-	stun = 0,
-	blast = 0,
+	stun = 30,
+	blast = 30,
 	heat = 100,
 	cold = 100,
-	acid = 0,
+	acid = 30,
 	lightsaber = 0,
 
 	accuracy = 200,
@@ -88,7 +88,7 @@ enragedRancor = Creature:new {
 	herd = 0,
 	stalker = 0,
 	killer = 1,
-	ferocity = 0,
+	ferocity = 12,
 	aggressive = 1,
 	invincible = 0, 
 
@@ -102,7 +102,7 @@ enragedRancor = Creature:new {
 	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 0,
-	weaponMinDamage = 570,
+	weaponMinDamage = 840,
 	weaponMaxDamage = 850,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc

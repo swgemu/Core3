@@ -108,8 +108,8 @@ imperialScoutTrooper = Creature:new {
 	weaponMinDamage = 90,
 	weaponMaxDamage = 230,
 	weaponAttackSpeed = 2,
-	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'

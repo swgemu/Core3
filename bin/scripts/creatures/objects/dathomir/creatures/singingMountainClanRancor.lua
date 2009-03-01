@@ -40,8 +40,8 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-singingMountainClanRancor = Creature:new {
-	objectName = "singingMountainClanRancor",  -- Lua Object Name
+singingMtnClanRancor = Creature:new {
+	objectName = "singingMtnClanRancor",  -- Lua Object Name
 	creatureType = "ANIMAL",
 	faction = "Singing Mountain",
 	gender = "",
@@ -145,4 +145,4 @@ singingMountainClanRancor = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(singingMountainClanRancor, 3516440142) --  Add to Global Table
+Creatures:addCreature(singingMtnClanRancor, 3516440142) --  Add to Global Table

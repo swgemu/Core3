@@ -40,90 +40,88 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-singingMountainClanSentry = Creature:new {
-	objectName = "singingMountainClanSentry",  -- Lua Object Name
+imperialInquisitor = Creature:new {
+	objectName = "imperialInquisitor",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "mtn_clan", 
-	factionPoints = 20,
+	faction = "Imperial",
 	gender = "",
+	
+	speciesName = "imperial_inquisitor  ",
+	stfName = "mob/creature_names",
+	objectCRC = 1449644294, 
+	socialGroup = "Imperial",
+	level = 120,
 
-	speciesName = "singing_mountain_clan_sentry",
-	stfName = "mob/creature_names", 
-	objectCRC = 1197970667, 
-	socialGroup = "mtn_clan",
-	level = 51,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	healthMax = 54000,
+	healthMin = 44000,
+	strength = 0,
+	constitution = 0,
 
-	healthMax = 7200,
-	healthMin = 5900,
-	strength = 500,
-	constitution = 500,
+	actionMax = 54000,
+	actionMin = 44000,
+	quickness = 0,
+	stamina = 0,
 
-	actionMax = 7200,
-	actionMin = 5900,
-	quickness = 500,
-	stamina = 500,
-
-	mindMax = 7200,
-	mindMin = 5900,
-	focus = 500,
-	willpower = 500,
+	mindMax = 54000,
+	mindMin = 44000,
+	focus = 0,
+	willpower = 0,
 
 	height = 1, -- Size of creature
-	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 100,
-	energy = 5,
-	electricity = 100,
-	stun = 100,
-	blast = 5,
-	heat = 100,
-	cold = 100,
-	acid = 100,
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 50,
+	energy = 50,
+	electricity = 0,
+	stun = 50,
+	blast = 50,
+	heat = 0,
+	cold = 50,
+	acid = 50,
 	lightsaber = 0,
 
-	accuracy = 300,
+	accuracy = 0,
 
 	healer = 0,
 
-	pack = 0,
+	pack = 1,
 	herd = 0,
 	stalker = 0,
-	killer = 1,
-	ferocity = 0,
-	aggressive = 1,
-	invincible = 0, 
-
-	meleeDefense = 1,  
+	killer = 0,
+	aggressive = 0,
+	invincible = 0,
+	
+	meleeDefense = 1,
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/melee/baton/shared_baton_gaderiffi.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "a Gaderiffi", -- Name ex. 'a Vibrolance'
-	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weapon = "object/weapon/ranged/carbine/shared_carbine_e11.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a e11 Carbine", -- Name ex. 'a Vibrolance'
+	weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 190,
-	weaponMaxDamage = 200,
+	weaponMinDamage = 290,
+	weaponMaxDamage = 300,
 	weaponAttackSpeed = 2,
-	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
-	alternateWeapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
-	alternateWeaponName = "a Stun Baton", -- Name ex. 'a Vibrolance'
-	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
-	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 190,
-	alternateWeaponMaxDamage = 200,
-	alternateweaponAttackSpeed = 2,
-	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
-	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,1,3,11,19,39,40", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -138,10 +136,10 @@ singingMountainClanSentry = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "singingMountainClanAttack40", "singingMountainClanAttack41", "singingMountainClanAttack42", "singingMountainClanAttack43", "singingMountainClanAttack44", "singingMountainClanAttack45", "singingMountainClanAttack46", "singingMountainClanAttack47", "singingMountainClanAttack48", "singingMountainClanAttack49", "singingMountainClanAttack50", "singingMountainClanAttack51" },
-	respawnTimer = 300,
+	skills = { "imperialFirstLieutenantAttack1" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(singingMountainClanSentry, 1197970667) --  Add to Global Table
+Creatures:addCreature(imperialInquisitor, 1449644294) --  Add to Global Table

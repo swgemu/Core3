@@ -73,13 +73,13 @@ imperialStormTrooperNovatrooperCommander = Creature:new {
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 65,
-	energy = 65,
-	electricity = 0,
+	kinetic = 60,
+	energy = 75,
+	electricity = 5,
 	stun = 45,
 	blast = 80,
 	heat = 30,
-	cold = 0,
+	cold = 5,
 	acid = 30,
 	lightsaber = 0,
 

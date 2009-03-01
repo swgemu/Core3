@@ -45,9 +45,8 @@ grovo = Creature:new {
 	creatureType = "ANIMAL",
 	gender = "",
 
-	--speciesName = "creature_name",
-	--stfName = "mob/creature_names",
-	stfName = "a Grovo",
+	speciesName = "grovo",
+	stfName = "monster_name",
 	objectCRC = 2646925455, 
 	socialGroup = "Nightsister",
 	level = 75,
