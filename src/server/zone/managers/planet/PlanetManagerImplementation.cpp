@@ -650,11 +650,12 @@ void PlanetManagerImplementation::loadCloningTerminals() {
 				if (building != NULL && building->isCloningFacility()) {
 					CloningFacility* cloningFacility = (CloningFacility*) building;
 
+					/*
 					if (parentId == 1697352) {
 						PlayerStructureTerminal* pst = new PlayerStructureTerminal(cloningFacility, getNextStaticObjectID(false), -1.3f, -0.1f, -2.9f);
 						pst->setParent(parentCell);
 						pst->insertToZone(zone);
-					}
+					}*/
 
 					CloningTerminal* cloningTerminal = new CloningTerminal(getNextStaticObjectID(false), X, Z, Y);
 					cloningTerminal->setDirection(oX, oZ, oY, oW);
