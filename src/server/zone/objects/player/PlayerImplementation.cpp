@@ -305,15 +305,15 @@ void PlayerImplementation::initializePlayer() {
 	sampleErrorMessage = false;
 
 	// Stat Migration
-	setTargetHealth(0);
-	setTargetStrength(0);
-	setTargetConstitution(0);
-	setTargetAction(0);
-	setTargetQuickness(0);
-	setTargetStamina(0);
-	setTargetMind(0);
-	setTargetFocus(0);
-	setTargetWillpower(0);
+	setMigrationHealth(0);
+	setMigrationStrength(0);
+	setMigrationConstitution(0);
+	setMigrationAction(0);
+	setMigrationQuickness(0);
+	setMigrationStamina(0);
+	setMigrationMind(0);
+	setMigrationFocus(0);
+	setMigrationWillpower(0);
 
 	suiBoxes.setInsertPlan(SortedVector<SuiBox*>::NO_DUPLICATE);
 	suiBoxes.setNullValue(NULL);
@@ -2289,6 +2289,7 @@ void PlayerImplementation::recoverFromIncapacitation() {
 	setPosture(CreaturePosture::UPRIGHT);
 	onIncapacitationRecovery();
 	rescheduleRecovery(0);
+	onIncapacitationRecovery();
 }
 
 void PlayerImplementation::doRecovery() {
@@ -4677,21 +4678,25 @@ void PlayerImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespon
 
 	if (_this->isPlayingMusic()) {
 		if (!player->isListening())
-			omr->addRadialItem(0, 50, 3, "Listen");
+			omr->addRadialItem(0, 116, 3, "@radial_performance:listen");
 		else
-			omr->addRadialItem(0, 50, 3, "Stop Listen");
+			omr->addRadialItem(0, 116, 3, "@radial_performance:listen_stop");
 	}
 
 	if (_this->isDancing()) {
 		if (!player->isWatching())
-			omr->addRadialItem(0, 50, 3, "Watch");
+			omr->addRadialItem(0, 116, 3, "@radial_performance:watch");
 		else
-			omr->addRadialItem(0, 50, 3, "Stop Watch");
+			omr->addRadialItem(0, 116, 3, "@radial_performance:watch_stop");
 	}
 
 	if (!isDead() && !isIncapacitated()) {
 		if (_this->isInAGroup() && player->isInAGroup() && (group == player->getGroupObject())) {
 			omr->addRadialItem(0, 140, 3, "@cmd_n:teach");
+		}
+
+		if (hasWounds()) {
+			omr->addRadialItem(0, 87, 3, "@sui:heal_wound");
 		}
 	}
 
@@ -5964,6 +5969,40 @@ void PlayerImplementation::crashClient() {
 	ErrorMessage* errMsg = new ErrorMessage("You aren't welcome", "Get out and don't come back", true);
 	_this->sendMessage(errMsg);
 
+}
+
+bool PlayerImplementation::migrateStats() {
+	PlayerManager* playerManager = server->getPlayerManager();
+
+	if (getBaseHealth() != getMigrationHealth())
+		setBaseHealthBar(getMigrationHealth());
+
+	if (getBaseStrength() != getMigrationStrength())
+		setBaseStrengthBar(getMigrationStrength());
+
+	if (getBaseConstitution() != getMigrationConstitution())
+		setBaseConstitutionBar(getMigrationConstitution());
+
+	if (getBaseAction() != getMigrationAction())
+		setBaseActionBar(getMigrationAction());
+
+	if (getBaseQuickness() != getMigrationQuickness())
+		setBaseQuicknessBar(getMigrationQuickness());
+
+	if (getBaseStamina() != getMigrationStamina())
+		setBaseStaminaBar(getMigrationStamina());
+
+	if (getBaseMind() != getMigrationMind())
+		setBaseMindBar(getMigrationMind());
+
+	if (getBaseFocus() != getMigrationFocus())
+		setBaseFocusBar(getMigrationFocus());
+
+	if (getBaseWillpower() != getMigrationWillpower())
+		setBaseWillpowerBar(getMigrationWillpower());
+
+	if (playerManager != NULL)
+		playerManager->updatePlayerBaseHAMToDatabase(_this);
 }
 
 

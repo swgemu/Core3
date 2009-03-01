@@ -133,6 +133,16 @@ public:
 
 	//Insurance
 	void handleInsureAllItems(Player* player, SceneObject* obj);
+
+
+	//Structure Terminal
+	void handleStructurePermissionList(Player* player, SceneObject* obj, uint8 listtype);
+	void handleStructurePrivacy(Player* player, SceneObject* obj);
+	void handleStructureTransferRequest(Player* player, SceneObject* obj);
+	void handleStructureDeclareResidence(Player* player, SceneObject* obj);
+	void handleStructurePayMaintenance(Player* player, SceneObject* obj);
+	void handleStructureCreateVendor(Player* player, SceneObject* obj);
+	void handleGiveVendorMaintenance(Player* player, SceneObject* obj);
 };
 
 #endif /*RADIALMANAGER_H_*/

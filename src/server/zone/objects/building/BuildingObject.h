@@ -29,6 +29,8 @@ class BuildingObject : public SceneObject {
 public:
 	BuildingObject(unsigned long long oid, bool staticBuilding, int bType = 1);
 
+	void sendPermissionListTo(Player* player, unsigned char listtype);
+
 	void addCell(CellObject* cell);
 
 	void addSceneObject(SceneObject* sceneObject);
@@ -151,6 +153,8 @@ public:
 	BuildingObjectAdapter(BuildingObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void sendPermissionListTo(Player* player, unsigned char listtype);
 
 	void addCell(CellObject* cell);
 

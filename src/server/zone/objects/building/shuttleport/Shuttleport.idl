@@ -48,13 +48,15 @@ import "../BuildingObject";
 import "../../creature/shuttle/ShuttleCreature";
 
 interface Shuttleport implements BuildingObject {
-	Shuttleport(unsigned long oid, boolean staticBuild) {
+	Shuttleport(unsigned long oid, boolean nterplanetry = false, boolean staticBuild) {
 		super(oid, staticBuild, int btype);
 	}
 	
 	//Setters
 	void setShuttle(ShuttleCreature shtl);
+	void setInterplanetary(nterplanetry);
 	
 	//Getters
 	ShuttleCreature getShuttle();
+	boolean isInterplanetary();
 }

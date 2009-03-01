@@ -276,15 +276,15 @@ class PlayerImplementation : public PlayerServant {
 	Vector<String> lastNpcConvoOptions;
 
 	// Stat Migration Targets
-	uint32 targetHealth;
-	uint32 targetStrength;
-	uint32 targetConstitution;
-	uint32 targetAction;
-	uint32 targetQuickness;
-	uint32 targetStamina;
-	uint32 targetMind;
-	uint32 targetFocus;
-	uint32 targetWillpower;
+	uint32 migrationHealth;
+	uint32 migrationStrength;
+	uint32 migrationConstitution;
+	uint32 migrationAction;
+	uint32 migrationQuickness;
+	uint32 migrationStamina;
+	uint32 migrationMind;
+	uint32 migrationFocus;
+	uint32 migrationWillpower;
 
 	Vector<String> consentList;
 
@@ -416,6 +416,16 @@ public:
 	}
 
 	//Racial Attribute Limits
+	inline uint32 getMinAttribute(uint8 attribute) {
+		const uint32 * table = Races::getAttribLimits(raceID);
+		return table[attribute * 2];
+	}
+
+	inline uint32 getMaxAttribute(uint8 attribute) {
+		const uint32 * table = Races::getAttribLimits(raceID);
+		return table[attribute * 2 + 1];
+	}
+
 	inline uint32 getMinHealth() {
 		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[0];
@@ -643,97 +653,99 @@ public:
 
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 
-	// Stat Migration Targets
+	// Stat Migration
+	bool migrateStats();
+
 	// HAM getters
-	inline uint32 getTargetHealth() {
-		if (targetHealth == 0)
-			targetHealth = getBaseHealth();
-		return targetHealth;
+	inline uint32 getMigrationHealth() {
+		if (migrationHealth == 0)
+			migrationHealth = getBaseHealth();
+		return migrationHealth;
 	}
 
-	inline uint32 getTargetStrength() {
-		if (targetStrength == 0)
-			targetStrength = getBaseStrength();
-		return targetStrength;
+	inline uint32 getMigrationStrength() {
+		if (migrationStrength == 0)
+			migrationStrength = getBaseStrength();
+		return migrationStrength;
 	}
 
-	inline uint32 getTargetConstitution() {
-		if (targetConstitution == 0)
-			targetConstitution = getBaseConstitution();
-		return targetConstitution;
+	inline uint32 getMigrationConstitution() {
+		if (migrationConstitution == 0)
+			migrationConstitution = getBaseConstitution();
+		return migrationConstitution;
 	}
 
-	inline uint32 getTargetAction() {
-		if (targetAction == 0)
-			targetAction = getBaseAction();
-		return targetAction;
+	inline uint32 getMigrationAction() {
+		if (migrationAction == 0)
+			migrationAction = getBaseAction();
+		return migrationAction;
 	}
 
-	inline uint32 getTargetQuickness() {
-		if (targetQuickness == 0)
-			targetQuickness = getBaseQuickness();
-		return targetQuickness;
+	inline uint32 getMigrationQuickness() {
+		if (migrationQuickness == 0)
+			migrationQuickness = getBaseQuickness();
+		return migrationQuickness;
 	}
 
-	inline uint32 getTargetStamina() {
-		if (targetStamina == 0)
-			targetStamina = getBaseStamina();
-		return targetStamina;
+	inline uint32 getMigrationStamina() {
+		if (migrationStamina == 0)
+			migrationStamina = getBaseStamina();
+		return migrationStamina;
 	}
 
-	inline uint32 getTargetMind() {
-		if (targetMind == 0)
-			targetMind = getBaseMind();
-		return targetMind;
+	inline uint32 getMigrationMind() {
+		if (migrationMind == 0)
+			migrationMind = getBaseMind();
+		return migrationMind;
 	}
 
-	inline uint32 getTargetFocus() {
-		if (targetFocus == 0)
-			targetFocus = getBaseFocus();
-		return targetFocus;
+	inline uint32 getMigrationFocus() {
+		if (migrationFocus == 0)
+			migrationFocus = getBaseFocus();
+		return migrationFocus;
 	}
 
-	inline uint32 getTargetWillpower() {
-		if (targetWillpower == 0)
-			targetWillpower = getBaseWillpower();
-		return targetWillpower;
+	inline uint32 getMigrationWillpower() {
+		if (migrationWillpower == 0)
+			migrationWillpower = getBaseWillpower();
+		return migrationWillpower;
 	}
 
 	// Stat Migration Setters
-	inline void setTargetHealth(uint32 value) {
-		targetHealth = value;
+	inline void setMigrationHealth(uint32 value) {
+		migrationHealth = value;
 	}
 
-	inline void setTargetStrength(uint32 value) {
-		targetStrength = value;
+	inline void setMigrationStrength(uint32 value) {
+		migrationStrength = value;
 	}
 
-	inline void setTargetConstitution(uint32 value) {
-		targetConstitution = value;
+	inline void setMigrationConstitution(uint32 value) {
+		migrationConstitution = value;
 	}
 
-	inline void setTargetAction(uint32 value) {
-		targetAction = value;
+	inline void setMigrationAction(uint32 value) {
+		migrationAction = value;
 	}
 
-	inline void setTargetQuickness(uint32 value) {
-		targetQuickness = value;
+	inline void setMigrationQuickness(uint32 value) {
+		migrationQuickness = value;
 	}
 
-	inline void setTargetStamina(uint32 value) {
-		targetStamina = value;
+	inline void setMigrationStamina(uint32 value) {
+		migrationStamina = value;
 	}
 
-	inline void setTargetMind(uint32 value) {
-		targetMind = value;
+	inline void setMigrationMind(uint32 value) {
+		migrationMind = value;
 	}
 
-	inline void setTargetFocus(uint32 value) {
-		targetFocus = value;
+	inline void setMigrationFocus(uint32 value) {
+		migrationFocus = value;
 	}
 
-	inline void setTargetWillpower(uint32 value) {
-		targetWillpower = value;
+	inline void setMigrationWillpower(uint32 value) {
+		migrationWillpower = value;
 	}
 
 	// combat methods

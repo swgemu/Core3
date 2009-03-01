@@ -42,22 +42,42 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef PLAYERSTRUCTURETERMINALIMPLEMENTATION_H_
-#define PLAYERSTRUCTURETERMINALIMPLEMENTATION_H_
+#include "PlayerStructureTerminal.h"
+#include "PlayerStructureTerminalImplementation.h"
 
-#include "../../../player/Player.h"
+PlayerStructureTerminalImplementation::PlayerStructureTerminalImplementation(BuildingObject* buio, uint64 objid, float x, float z, float y) :
+	PlayerStructureTerminalServant(0xEFCF3082, objid, UnicodeString(""), "terminal_player_structure", x, z, y, PLAYERSTRUCTURE) {
 
-class PlayerStructureTerminalImplementation : public PlayerStructureTerminalServant {
-	BuildingObject* structure;
+		structure = buio;
+}
 
-public:
-	PlayerStructureTerminalImplementation(BuildingObject* buio, uint64 objid, float x, float z, float y);
+int PlayerStructureTerminalImplementation::useObject(Player* player) {
+	return 0;
+}
 
-	int useObject(Player* player);
+void PlayerStructureTerminalImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+	omr->addRadialItem(0, 118, 3, "@player_structure:management"); //Structure Management
+	omr->addRadialItem(0, 117, 3, "@player_structure:permissions"); //Structure Permissions
 
-	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
+		omr->addRadialItem(3, 126, 3, "@player_structure:management_transfer"); //Transfer Ownership
+		omr->addRadialItem(3, 128, 3, "@player_structure:permission_destroy"); //Destroy Structure
+		omr->addRadialItem(3, 124, 3, "@player_structure:management_status"); //Status
+		omr->addRadialItem(3, 129, 3, "@player_structure:management_pay"); //Pay Maintenance
+		omr->addRadialItem(3, 127, 3, "@player_structure:management_residence"); //Declare Residence
+		omr->addRadialItem(3, 125, 3, "@player_structure:management_privacy"); //Privacy
 
-	void sendPermissionListTo(Player* player, uint8 listtype);
-};
+		omr->addRadialItem(2, 119, 3, "@player_structure:permission_enter"); //Entry List
+		omr->addRadialItem(2, 120, 3, "@player_structure:permission_banned"); //Ban List
+		omr->addRadialItem(2, 121, 3, "@player_structure:permission_admin"); //Administrator List
+		omr->addRadialItem(2, 122, 3, "@player_structure:permission_vendor"); //Vendor List
 
-#endif /* PLAYERSTRUCTURETERMINALIMPLEMENTATION_H_ */
+		omr->finish();
+		player->sendMessage(omr);
+}
+
+void PlayerStructureTerminalImplementation::sendPermissionListTo(Player* player, uint8 listtype) {
+	if (structure == NULL)
+		return;
+
+	structure->sendPermissionListTo(player, listtype);
+}

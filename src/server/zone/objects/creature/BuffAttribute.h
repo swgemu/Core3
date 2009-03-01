@@ -62,6 +62,9 @@ public:
 	static const uint8 DISEASE = 10;
 	static const uint8 UNKNOWN = 11;
 
+	//TODO: This entire class needs to be removed. Posion and Disease are not attributes.
+	//THEY ARE SKILLMODS
+
 	static const uint8 ARRAYSIZE = 11;
 
 	static bool isHAM(uint8 attribute) {

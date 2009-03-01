@@ -205,6 +205,7 @@ core3_IDLS =	server/chat/ChatManager.cpp \
 		server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp \
 		server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp \
 		server/zone/objects/tangible/terminal/camp/CampTerminal.cpp \
+		server/zone/objects/tangible/terminal/playerstructure/PlayerStructureTerminal.cpp \
 		server/zone/objects/tangible/gambling/LugjackMachine.cpp \
 		server/zone/objects/tangible/gambling/JubileeWheel.cpp \
 		server/zone/objects/tangible/ticketcollector/TicketCollector.cpp \
@@ -363,6 +364,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/pharmaceutical/RangedStimPackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/DotPackImplementation.cpp \
+		server/zone/objects/tangible/terminal/playerstructure/PlayerStructureTerminalImplementation.cpp \
 		server/zone/objects/tangible/tools/ToolImplementation.cpp \
 		server/zone/objects/tangible/tools/repairtool/RepairToolImplementation.cpp \
 		server/zone/objects/tangible/powerup/PowerupImplementation.cpp \

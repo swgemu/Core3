@@ -164,30 +164,34 @@ interface Player implements CreatureObject {
 	SceneObject getPlayerItem(unsigned long oid);
 
 
-	// Stat Migration Targets
+	// Stat Migration
+	boolean migrateStats();
+	
 	// getters
-	unsigned int getTargetHealth();
-	unsigned int getTargetStrength();
-	unsigned int getTargetConstitution();
-	unsigned int getTargetAction();
-	unsigned int getTargetQuickness();
-	unsigned int getTargetStamina();
-	unsigned int getTargetMind();
-	unsigned int getTargetFocus();
-	unsigned int getTargetWillpower();
+	unsigned int getMigrationHealth();
+	unsigned int getMigrationStrength();
+	unsigned int getMigrationConstitution();
+	unsigned int getMigrationAction();
+	unsigned int getMigrationQuickness();
+	unsigned int getMigrationStamina();
+	unsigned int getMigrationMind();
+	unsigned int getMigrationFocus();
+	unsigned int getMigrationWillpower();
 
 	// setters
-	void setTargetHealth(unsigned int health);
-	void setTargetStrength(unsigned int strength);
-	void setTargetConstitution(unsigned int constituition);
-	void setTargetAction(unsigned int action);
-	void setTargetQuickness(unsigned int quickness);
-	void setTargetStamina(unsigned int stamina);
-	void setTargetMind(unsigned int mind);
-	void setTargetFocus(unsigned int focus);
-	void setTargetWillpower(unsigned int willpower);
+	void setMigrationHealth(unsigned int health);
+	void setMigrationStrength(unsigned int strength);
+	void setMigrationConstitution(unsigned int constituition);
+	void setMigrationAction(unsigned int action);
+	void setMigrationQuickness(unsigned int quickness);
+	void setMigrationStamina(unsigned int stamina);
+	void setMigrationMind(unsigned int mind);
+	void setMigrationFocus(unsigned int focus);
+	void setMigrationWillpower(unsigned int willpower);
 
 	//Attribute Limits
+	unsigned int getMinAttribute(unsigned char attribute);
+	unsigned int getMaxAttribute(unsigned char attribute);
 	unsigned int getMinHealth();
 	unsigned int getMaxHealth();
 	unsigned int getMinStrength();

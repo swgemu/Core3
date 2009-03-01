@@ -27,8 +27,6 @@ class Weapon;
 
 class CreatureObject;
 
-class AttackableObject;
-
 class BuildingObject;
 
 class AttackTargetSkill;
@@ -235,8 +233,6 @@ public:
 
 	bool isShip();
 
-	bool isAttackableObject();
-
 	bool isMission();
 
 	bool isPlayerObject();
@@ -301,8 +297,6 @@ public:
 
 	void onIncapacitateTarget(CreatureObject* victim);
 
-	void onInflictDamage(AttackableObject* victim, unsigned int damage);
-
 	void onInflictDamage(CreatureObject* victim, unsigned char attribute, unsigned int damage);
 
 	void onKill(CreatureObject* victim);
@@ -318,8 +312,6 @@ public:
 	void onHealEnhanceTarget(CreatureObject* patient, unsigned char attribute, unsigned int amount, float duration);
 
 	void onReceivePaymentFrom(CreatureObject* sender, unsigned int amount);
-
-	bool inflictDamage(AttackableObject* victim, unsigned int damage);
 
 	bool inflictDamage(CreatureObject* victim, unsigned char attribute, unsigned int damage);
 
@@ -567,8 +559,6 @@ public:
 
 	bool isShip();
 
-	bool isAttackableObject();
-
 	bool isMission();
 
 	bool isPlayerObject();
@@ -631,8 +621,6 @@ public:
 
 	void onIncapacitateTarget(CreatureObject* victim);
 
-	void onInflictDamage(AttackableObject* victim, unsigned int damage);
-
 	void onInflictDamage(CreatureObject* victim, unsigned char attribute, unsigned int damage);
 
 	void onKill(CreatureObject* victim);
@@ -648,8 +636,6 @@ public:
 	void onHealEnhanceTarget(CreatureObject* patient, unsigned char attribute, unsigned int amount, float duration);
 
 	void onReceivePaymentFrom(CreatureObject* sender, unsigned int amount);
-
-	bool inflictDamage(AttackableObject* victim, unsigned int damage);
 
 	bool inflictDamage(CreatureObject* victim, unsigned char attribute, unsigned int damage);
 

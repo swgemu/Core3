@@ -55,12 +55,17 @@ class ShuttleportImplementation : public ShuttleportServant {
 	ManagedReference<ShuttleCreature> shuttle;
 	bool interplanetary;
 
+	String city;   //Deprecate with Regions
+	String planet; //Deprecate with Regions
+
+	Coordinate* arrivalPoint;
+
 public:
-	ShuttleportImplementation(uint64 oid, bool staticBuild) :
-		ShuttleportServant(oid, staticBuild, CLONING_FACILITY) {
+	ShuttleportImplementation(uint64 oid, bool nterplanetry, bool staticBuild) :
+		ShuttleportServant(oid, staticBuild, (nterplanetry ? STARPORT : SHUTTLEPORT)) {
 
 		shuttle = NULL;
-		interplanetary = false;
+		interplanetary = nterplanetry;
 	}
 
 	~ShuttleportImplementation() {
@@ -71,8 +76,17 @@ public:
 		shuttle = shtl;
 	}
 
+	void setInterplanetary(bool nterplanetry) {
+		interplanetary = nterplanetry;
+	}
+
+	//Getters
 	ShuttleCreature* getShuttle() {
 		return shuttle;
+	}
+
+	bool isInterplanetary() {
+		return interplanetary;
 	}
 };
 

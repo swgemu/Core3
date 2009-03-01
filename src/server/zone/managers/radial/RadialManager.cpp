@@ -170,48 +170,118 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	//System::out << "Radial ID = " << dec << radialID << endl;
 	try {
 		switch (radialID) {
-		case 7: // EXAMINE
+		case 0: //UNKNOWN
+		case 1: //COMBAT_TARGET
+		case 2: //COMBAT_UNTARGET
+		case 3: //COMBAT_ATTACK
+		case 4: //COMBAT_PEACE
+		case 5: //COMBAT_DUEL
+		case 6: //COMBAT_DEATH_BLOW
 			break;
-		case 8: // TRADE
+		case 7: //EXAMINE
+			break;
+		case 8: //TRADE_START
 			handleTrade(player, obj);
 			break;
-		case 11: // Equip
-
+		case 9: //TRADE_ACCEPT
 			break;
-		case 12: // Unequip
-
+		case 10: //ITEM_PICKUP
+		case 11: //ITEM_EQUIP
 			break;
-		case 13: // DROP
+		case 12: //ITEM_UNEQUIP
+			break;
+		case 13: //ITEM_DROP
 			handleItemDrop(player, obj);
 			break;
-		case 14: // DESTROY
-
+		case 14: //ITEM_DESTROY
 			break;
-		case 16: // OPEN RADIAL
-
+		case 15: //ITEM_TOKEN
 			break;
-		case 17: // OPEN IN NEW WINDOW RADIAL
-
+		case 16: //ITEM_OPEN
 			break;
-		case 20: // ITEM_USE
-			player->unlock();
-			player->wlock();
+		case 17: //ITEM_OPEN_NEW_WINDOW
+			break;
+		case 18: //ITEM_ACTIVATE
+		case 19: //ITEM_DEACTIVATE
+			break;
+		case 20: //ITEM_USE
 			obj->useObject(player);
 			break;
-		case 33: // Structure Set Name
-
+		case 21: //ITEM_USE_SELF
+		case 22: //ITEM_USE_OTHER
+		case 23: //ITEM_SIT
+		case 24: //ITEM_MAIL
+		case 25: //CONVERSE_START
+		case 26: //CONVERSE_RESPOND
+		case 27: //CONVERSE_RESPONSE
+		case 28: //CONVERSE_STOP
 			break;
-		case 35:  // LOOT
+		case 29: //CRAFT_OPTIONS
+			break;
+		case 30: //CRAFT_START
+			break;
+		case 31: //CRAFT_HOPPER_INPUT
+			break;
+		case 32: //CRAFT_HOPPER_OUTPUT
+			handleOpenCraftingToolHopper(player, obj);
+			break;
+		case 33: //MISSION_TERMINAL_LIST
+			break;
+		case 34: //MISSION_DETAILS
+			break;
+		case 35: //LOOT
 			player->lootCorpse();
 			break;
-		case 36:  // LOOT_ALL
+		case 36: //LOOT_ALL
 			player->lootCorpse(true);
 			break;
-		case 45: // Open vendor
+		case 37: //GROUP_INVITE
+			break;
+		case 38: //GROUP_JOIN
+		case 39: //GROUP_LEAVE
+		case 40: //GROUP_KICK
+		case 41: //GROUP_DISBAND
+		case 42: //GROUP_DECLINE
+		case 43: //EXTRACT_OBJECT
+		case 44: //PET_CALL
+			break;
+		case 45: //TERMINAL_AUCTION_USE
 			sendRadialResponseForBazaar(obj->getObjectID(), player);
 			break;
-		case 50:  // LISTEN / WATCH (Entertainer)
-			handleEntertainerActions(player, obj);
+		case 46: //CREATURE_FOLLOW
+		case 47: //CREATURE_STOP_FOLLOW
+			break;
+		case 48: //SPLIT
+			break;
+		case 49: //IMAGEDESIGN
+			break;
+		case 50: //SET_NAME
+			handleSetName(player, obj);
+			break;
+		case 51: //ITEM_ROTATE - MENU ROOT
+			break;
+		case 52: //ITEM_ROTATE_RIGHT
+			//obj->rotate(right);
+			break;
+		case 53: //ITEM_ROTATE_LEFT
+			//obj->rotate(left);
+			break;
+		case 54: //ITEM_MOVE - MENU ROOT
+			break;
+		case 55: //ITEM_MOVE_FORWARD
+			//obj->move(forward, amount);
+			break;
+		case 56: //ITEM_MOVE_BACK
+			//obj->move(back, amount);
+			break;
+		case 57: //ITEM_MOVE_UP
+			//obj->move(up, amount);
+			break;
+		case 58: //ITEM_MOVE_DOWN
+			//obj->move(down, amount);
+			break;
+		case 59: //PET_STORE
+			//player->storePet(obj);
 			break;
 		case 60: // VEHICLE_GENERATE
 			player->unlock();
@@ -221,13 +291,30 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 			player->unlock();
 			handleVehicleStore(obj);
 			return;
+		//case 62: //MISSION_ABORT
 		case 62: // VEHICLE_REPAIR
 			player->unlock();
 			handleVehicleRepair(obj);
 			return;
-		case 68: // SERVER_MENU1 using to change color on wearables (temporary)
+		case 63: //MISSION_END_DUTY
+			break;
+		case 64: //SHIP_MANAGE_COMPONENTS
+		case 65: //WAYPOINT_AUTOPILOT
+		case 66: //PROGRAM_DROID
+		case 67: //SERVER_DIVIDER
+			break;
+		case 68: // SERVER_MENU1 TODO:using to change color on wearables (temporary)
 			handleWearableColorChange(player, obj);
 			break;
+		//case 69: //SERVER_MENU2
+		//case 70: //SERVER_MENU3
+		//case 71: //SERVER_MENU4
+		//case 72: //SERVER_MENU5
+		//case 73: //SERVER_MENU6
+		//case 74: //SERVER_MENU7
+		//case 75: //SERVER_MENU8
+		//case 76: //SERVER_MENU9
+		//case 77: //SERVER_MENU10
 		case 69: // SLICING
 			handleSlicing(player, obj);
 			break;
@@ -240,47 +327,132 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		case 77: // Add Energy
 			handleStructureAddEnergy(player, obj);
 			break;
-		case 82: // Manage Harvester
+		case 78: //SERVER_HARVESTER_MANAGE
 			handleManageHarvester(player, obj);
 			break;
-		case 108: // Harvest Meat
-			handleHarvest(player, obj, 1);
+		case 79: //SERVER_HOUSE_MANAGE
+		case 80: //SERVER_FACTION_HALL_MANAGE
+		case 81: //SERVER_HUE
+		case 82: //SERVER_OBSERVE
+		case 83: //SERVER_STOP_OBSERVING
+		case 84: //SERVER_TRAVEL_OPTIONS
+		case 85: //SERVER_BAZAAR_OPTIONS
+		case 86: //SERVER_SHIPPING_OPTIONS
+		case 87: //SERVER_HEAL_WOUND
+		case 88: //SERVER_HEAL_WOUND_HEALTH
+		case 89: //SERVER_HEAL_WOUND_ACTION
+		case 90: //SERVER_HEAL_WOUND_STRENGTH
+		case 91: //SERVER_HEAL_WOUND_CONSTITUTION
+		case 92: //SERVER_HEAL_WOUND_QUICKNESS
+		case 93: //SERVER_HEAL_WOUND_STAMINA
+		case 94: //SERVER_HEAL_DAMAGE
+		case 95: //SERVER_HEAL_STATE
+		case 96: //SERVER_HEAL_STATE_STUNNED
+		case 97: //SERVER_HEAL_STATE_BLINDED
+		case 98: //SERVER_HEAL_STATE_DIZZY
+		case 99: //SERVER_HEAL_STATE_INTIMIDATED
+		case 100: //SERVER_HEAL_ENHANCE
+		case 101: //SERVER_HEAL_ENHANCE_HEALTH
+		case 102: //SERVER_HEAL_ENHANCE_ACTION
+		case 103: //SERVER_HEAL_ENHANCE_STRENGTH
+		case 104: //SERVER_HEAL_ENHANCE_CONSTITUTION
+		case 105: //SERVER_HEAL_ENHANCE_QUICKNESS
+		case 106: //SERVER_HEAL_ENHANCE_STAMINA
+		case 107: //SERVER_HEAL_FIRSTAID
+		case 108: //SERVER_HEAL_CURE_POISON
+		case 109: //SERVER_HEAL_CURE_DISEASE
+		case 110: //SERVER_HEAL_APPLY_POISON
+		case 111: //SERVER_HEAL_APPLY_DISEASE
 			break;
-		case 109: // Harvest Hide
-			handleHarvest(player, obj, 2);
+		case 112: //SERVER_HARVEST_CORPSE
+			handleHarvest(player, obj, 0);
+		case 113: //SERVER_PERFORMANCE_LISTEN
+		case 114: //SERVER_PERFORMANCE_WATCH
+		case 115: //SERVER_PERFORMANCE_LISTEN_STOP
+		case 116: //SERVER_PERFORMANCE_WATCH_STOP
+			handleEntertainerActions(player, obj);
 			break;
-		case 110: // Harvest Bone
-			handleHarvest(player, obj, 3);
+		case 117: //SERVER_TERMINAL_PERMISSIONS
+		case 118: //SERVER_TERMINAL_MANAGEMENT
 			break;
-		case 122: // Structure Management
-
+		case 119: //SERVER_TERMINAL_PERMISSIONS_ENTER
+			handleStructurePermissionList(player, obj, StructurePermissionList::ENTRYLIST);
 			break;
-		case 128: // Structure Status
+		case 120: //SERVER_TERMINAL_PERMISSIONS_BANNED
+			handleStructurePermissionList(player, obj, StructurePermissionList::BANLIST);
+			break;
+		case 121: //SERVER_TERMINAL_PERMISSIONS_ADMIN
+			handleStructurePermissionList(player, obj, StructurePermissionList::ADMINLIST);
+			break;
+		case 122: //SERVER_TERMINAL_PERMISSIONS_VENDOR
+			handleStructurePermissionList(player, obj, StructurePermissionList::VENDORLIST);
+			break;
+		case 123: //SERVER_TERMINAL_PERMISSIONS_HOPPER
+			handleStructurePermissionList(player, obj, StructurePermissionList::HOPPERLIST);
+			break;
+		case 124: //SERVER_TERMINAL_MANAGEMENT_STATUS
 			handleStructureStatus(player, obj);
 			break;
-		case 131: // Handle Set Name
-			handleSetName(player, obj);
+		case 125: //SERVER_TERMINAL_MANAGEMENT_PRIVACY
+			handleStructurePrivacy(player, obj);
 			break;
-		case 132: // Structure Destroy
+		case 126: //SERVER_TERMINAL_MANAGEMENT_TRANSFER
+			handleStructureTransferRequest(player, obj);
+			break;
+		case 127: //SERVER_TERMINAL_MANAGEMENT_RESIDENCE
+			handleStructureDeclareResidence(player, obj);
+			break;
+		case 128: //SERVER_TERMINAL_MANAGEMENT_DESTROY
 			handleStructureDestroy(player, obj);
 			break;
-		case 133: // Pay Maintenance
-			handleStructureManageMaintenance(player, obj);
+		case 129: //SERVER_TERMINAL_MANAGEMENT_PAY
+			handleStructurePayMaintenance(player, obj);
 			break;
-		case 130: // Crafting tool hopper item retrieval
-			handleOpenCraftingToolHopper(player, obj);
+		case 130: //SERVER_TERMINAL_CREATE_VENDOR
+			handleStructureCreateVendor(player, obj);
 			break;
-		case 136: // SURVEY_TOOL_OPTIONS
-
+		case 131: //SERVER_GIVE_VENDOR_MAINTENANCE
+			handleGiveVendorMaintenance(player, obj);
 			break;
-		case 137: // SURVEY_TOOL_SET_RANGE
+		case 132: //SERVER_ITEM_OPTIONS
+			break;
+		case 133: //SERVER_SURVEY_TOOL_RANGE
 			sendRadialResponseForSurveyToolRange(player, obj);
+			break;
+		case 134: //SERVER_SURVEY_TOOL_RESOLUTION
+		case 135: //SERVER_SURVEY_TOOL_CLASS
+			break;
+		case 136: //SERVER_PROBE_DROID_TRACK_TARGET
+		case 137: //SERVER_PROBE_DROID_FIND_TARGET
+		case 138: //SERVER_PROBE_DROID_ACTIVATE
+		case 139: //SERVER_PROBE_DROID_BUY
 			break;
 		case 140: // SERVER_TEACH
 			handleTeach(obj, player);
 			break;
-		case 148: // Harvest
-			handleHarvest(player, obj, 0);
+		case 141: //PET_COMMAND
+		case 142: //PET_FOLLOW
+		case 143: //PET_STAY
+		case 144: //PET_GUARD
+		case 145: //PET_FRIEND
+		case 146: //PET_ATTACK
+		case 147: //PET_PATROL
+		case 148: //PET_GET_PATROL_POINT
+		case 149: //PET_CLEAR_PATROL_POINTS
+		case 150: //PET_ASSUME_FORMATION_1
+		case 151: //PET_ASSUME_FORMATION_2
+		case 152: //PET_TRANSFER
+		case 153: //PET_RELEASE
+		case 154: //PET_TRICK_1
+		case 155: //PET_TRICK_2
+		case 156: //PET_TRICK_3
+		case 157: //PET_TRICK_4
+		case 158: //PET_GROUP
+		case 159: //PET_TAME
+		case 160: //PET_FEED
+		case 161: //PET_SPECIAL_ATTACK_ONE
+		case 162: //PET_SPECIAL_ATTACK_TWO
+		case 163: //PET_RANGED_ATTACK
 			break;
 		case 164: // ROLL_DICE (Configure)
 			// nothing here, has sub-members
@@ -318,66 +490,118 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		case 175: // DICE_COUNT_FOUR
 			handleDiceRoll(player, obj, 4);
 			break;
-		case 187: // SERVER_GUILD_INFORMATION
-			player->unlock();
-			handleGuildInformation(player);
-			return;
-		case 188: // SERVER_GUILD_MEMBERS
-			player->unlock();
-			handleGuildInformationMembers(player);
-			return;
-		case 190: // SERVER_GUILD_ENEMIES
-			player->unlock();
-			//System::out << "Radial Guild Enemies" << endl;
-			return;
-		case 194: // SERVER_GUILD_GUILD_MANAGEMENT
-			//nothing, has sub menues
+		case 176: //CREATE_BALLOT
+		case 177: //VOTE
+		case 178: //BOMBING_RUN
+		case 179: //SELF_DESTRUCT
+		case 180: //THIRTY_SEC
+		case 181: //FIFTEEN_SEC
+		case 182: //SERVER_CAMP_DISBAND
+			handleDisbandCamp(player,obj);
 			break;
-		case 195: // SERVER_GUILD_MEMBER_MANAGEMENT
-
-			//nothing, has sub menues
-			break;
-		case 196: // SERVER_GUILD_CREATION
+		case 183: //SERVER_CAMP_ASSUME_OWNERSHIP
+		case 184: //SERVER_PROBE_DROID_PROGRAM
+		case 185: //SERVER_GUILD_CREATE
 			player->unlock();
 			handleGuildCreationTag(player);
 			return;
-		case 197: // SERVER_GUILD_SPONSOR
+		case 186: //SERVER_GUILD_INFO
 			player->unlock();
-			handleGuildSponsor(player);
+			handleGuildInformation(player);
 			return;
-		case 198: // SERVER_GUILD_SPONSORED
+		case 187: // SERVER_GUILD_MEMBERS
+			player->unlock();
+			handleGuildInformationMembers(player);
+			return;
+		case 188: //SERVER_GUILD_SPONSORED
 			player->unlock();
 			handleGuildSponsored(player);
 			return;
-		case 199: // SERVER_GUILD_DISBAND
+		case 189: //SERVER_GUILD_ENEMIES
+			player->unlock();
+			return;
+		case 190: //SERVER_GUILD_SPONSOR
+			player->unlock();
+			handleGuildSponsor(player);
+			return;
+		case 191: //SERVER_GUILD_DISBAND
 			player->unlock();
 			handleGuildDisband(player);
 			return;
-		case 200: // SERVER_GUILD_NAMECHANGE
+		case 192: //SERVER_GUILD_NAMECHANGE
 			player->unlock();
 			handleGuildNameChange(player);
 			return;
-		case 201: // SERVER_GUILD_ENABLE/DISBALE_ELECTIONS
-			player->sendSystemMessage("This feature is not in yet. Thank you for choosing SWGEmu(c).");
-			player->unlock();
-			return;
-		case 202: // SERVER_GUILD_TRANSFER_LEADERSHIP
-			player->unlock();
-			handleGuildTransferLeader(player);
-			return;
-		case 203: //INSURE_ALL
+		case 193: //SERVER_GUILD_GUILD_MANAGEMENT
+		case 194: //SERVER_GUILD_MEMBER_MANAGEMENT
+			break;
+		case 195: //SERVER_MANF_HOPPER_INPUT
+		case 196: //SERVER_MANF_HOPPER_OUTPUT
+		case 197: //SERVER_MANF_STATION_SCHEMATIC
+		case 198: //ELEVATOR_UP
+		case 199: //ELEVATOR_DOWN
+		case 200: //SERVER_PET_OPEN
+		case 201: //SERVER_PET_DPAD
+		case 202: //SERVER_MED_TOOL_DIAGNOSE
+		case 203: //SERVER_MED_TOOL_TENDWOUND
+		case 204: //SERVER_MED_TOOL_TENDDAMAGE
+		case 205: //SERVER_PET_MOUNT
+		case 206: //SERVER_PET_DISMOUNT
+		case 207: //SERVER_PET_TRAIN_MOUNT
+		case 208: //SERVER_VEHICLE_ENTER
+		case 209: //SERVER_VEHICLE_EXIT
+		case 210: //OPEN_NAVICOMP_DPAD
+		case 211: //INIT_NAVICOMP_DPAD
+		case 212: //CITY_STATUS
+		case 213: //CITY_CITIZENS
+		case 214: //CITY_STRUCTURES
+		case 215: //CITY_TREASURY
+		case 216: //CITY_MANAGEMENT
+		case 217: //CITY_NAME
+		case 218: //CITY_MILITIA
+		case 219: //CITY_TAXES
+		case 220: //CITY_TREASURY_DEPOSIT
+		case 221: //CITY_TREASURY_WITHDRAW
+		case 222: //CITY_REGISTER
+		case 223: //CITY_RANK
+		case 224: //CITY_ADMIN_1
+		case 225: //CITY_ADMIN_2
+		case 226: //CITY_ADMIN_3
+		case 227: //CITY_ADMIN_4
+		case 228: //CITY_ADMIN_5
+		case 229: //CITY_ADMIN_6
+		case 230: //MEMORY_CHIP_PROGRAM
+		case 231: //MEMORY_CHIP_TRANSFER
+		case 232: //MEMORY_CHIP_ANALYZE
+		case 233: //EQUIP_DROID_ON_SHIP
+			break;
+		case 234: //HARVEST_MEAT
+			handleHarvest(player, obj, 1);
+			break;
+		case 235: //HARVEST_HIDE
+			handleHarvest(player, obj, 2);
+			break;
+		case 236: //HARVEST_BONE
+			handleHarvest(player, obj, 3);
+			break;
+		case 240: //INSURE_ALL
 			player->unlock();
 			handleInsureAllItems(player, obj);
 			return;
-		case 204: // CAMP DESTROY
-			handleDisbandCamp(player,obj);
-			break;
-		case 205: // Enter/exit mount
-
-			break;
-		case 225: //Bank Storage
+		case 245: //BANK_STORAGE
 			handleBankStorage(player);
 			break;
+		case 246: //BANK_REGISTER
+		case 247: //BANK_UNREGISTER
+			break;
+		case 250: // SERVER_GUILD_TOGGLE_ELECTIONS
+			player->sendSystemMessage("This feature is not in yet. Thank you for choosing SWGEmu(c).");
+			break;
+		case 251: // SERVER_GUILD_TRANSFER_LEADERSHIP
+			player->unlock();
+			handleGuildTransferLeader(player);
+			return;
+
 		default:
 
 			//System::out << "Unknown radial selection received:" << radialID << "\n";
@@ -1188,4 +1412,44 @@ void RadialManager::handleBankStorage(Player* player) {
 		return;
 
 	bankmanager->handleBankStorage(player);
+}
+
+
+
+
+
+
+
+/**
+ * This method makes sure that the object used was in fact a player structure terminal, it then passes execution to the terminal.
+ * \param player The player using the radial.
+ * \param obj The object that the radial originated from.
+ * \param listtype The type of the list, referencing StructurePermissionList
+ */
+void RadialManager::handleStructurePermissionList(Player* player, SceneObject* obj, uint8 listtype) {
+	if (obj == NULL || !obj->isTangible() || !((TangibleObject*)obj)->isTerminal() || !((Terminal*)obj)->isPlayerStructureTerminal())
+		return;
+
+	PlayerStructureTerminal* terminal = (PlayerStructureTerminal*) obj;
+	terminal->sendPermissionListTo(player, listtype);
+}
+
+void RadialManager::handleStructurePrivacy(Player* player, SceneObject* obj) {
+
+}
+void RadialManager::handleStructureTransferRequest(Player* player, SceneObject* obj) {
+
+}
+void RadialManager::handleStructureDeclareResidence(Player* player, SceneObject* obj) {
+
+}
+void RadialManager::handleStructurePayMaintenance(Player* player, SceneObject* obj) {
+
+}
+void RadialManager::handleStructureCreateVendor(Player* player, SceneObject* obj) {
+
+}
+
+void RadialManager::handleGiveVendorMaintenance(Player* player, SceneObject* obj) {
+
 }

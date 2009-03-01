@@ -92,28 +92,28 @@ public:
 			return;
 
 		if (guild->getGuildID() != 0) {
-			omr->addRadialItem(0, 194, 3, "@guild:menu_guild_management");
-			omr->addRadialItem(0, 195, 3, "@guild:menu_member_management");
+			omr->addRadialItem(0, 193, 3, "@guild:menu_guild_management");
+			omr->addRadialItem(0, 194, 3, "@guild:menu_member_management");
 
 			// Suboptions
-			omr->addRadialItem(2, 190, 3, "@guild:menu_enemies");
-			omr->addRadialItem(2, 187, 3, "@guild:menu_info");
-			omr->addRadialItem(2, 199, 3, "@guild:menu_disband");
-			omr->addRadialItem(2, 200, 3, "@guild:menu_namechange");
+			omr->addRadialItem(2, 189, 3, "@guild:menu_enemies");
+			omr->addRadialItem(2, 186, 3, "@guild:menu_info");
+			omr->addRadialItem(2, 191, 3, "@guild:menu_disband");
+			omr->addRadialItem(2, 192, 3, "@guild:menu_namechange");
 
 			//ToDo: When PA halls are in:  if guild elections == disabled
-			omr->addRadialItem(2, 201, 3, "@guild:menu_enable_elections");
+			omr->addRadialItem(2, 250, 3, "@guild:menu_enable_elections");
 			//else omr->addRadialItem(2, 201, 3, "@guild:menu_disable_elections");
 
 			//Suboptions
-			omr->addRadialItem(3, 188, 3, "@guild:menu_members");
-			omr->addRadialItem(3, 197, 3, "@guild:menu_sponsor");
-			omr->addRadialItem(3, 198, 3, "@guild:menu_sponsored");
-			omr->addRadialItem(3, 202, 3, "@guild:menu_leader_change");
+			omr->addRadialItem(3, 187, 3, "@guild:menu_members");
+			omr->addRadialItem(3, 190, 3, "@guild:menu_sponsor");
+			omr->addRadialItem(3, 188, 3, "@guild:menu_sponsored");
+			omr->addRadialItem(3, 251, 3, "@guild:menu_leader_change");
 
 
 		} else {
-			omr->addRadialItem(0, 196, 3, "@guild:menu_create");
+			omr->addRadialItem(0, 185, 3, "@guild:menu_create");
 		}
 
 		omr->finish();

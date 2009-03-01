@@ -1105,203 +1105,82 @@ void ObjectControllerMessage::parseNpcStopConversation(Player* player,
 	}
 }
 
-void ObjectControllerMessage::parseStatMigrationDataRequest(Player* player,
-		Message* pack) {
-	uint64 objectid = pack->parseLong();
+
+/**
+ * This method is fired when a player has requested the stat migration data
+ * For example: If they open the stat migration window in the character sheet.
+ * \param player This is the player that has requested the data.
+ * \param pack The packet.
+ */
+void ObjectControllerMessage::parseStatMigrationDataRequest(Player* player, Message* pack) {
+	uint64 objectid = pack->parseLong(); //TargetID?
 
 	StatMigrationTargetsMessage* smtm = new StatMigrationTargetsMessage(player);
 	player->sendMessage(smtm);
 }
 
-void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player,
-		Message* pack) {
-	uint64 objectid = pack->parseLong();
+/**
+ * This method is fired when a player has requested that stat migration data be changed.
+ * For example: They have changed the data in the stat migration window, and have pressed
+ * okay rather than cancel.
+ * \param player The player that has set that stat migration data request.
+ * \param pack The packet.
+ */
+void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player, Message* pack) {
+	//This appears to be the ID of the target who's data is being set.
+	uint64 targetID = pack->parseLong();
 
 	UnicodeString stats = UnicodeString("");
 	pack->parseUnicode(stats);
 
-	//player->info(stats.toCharArray());
-
 	StringTokenizer tokenizer(stats.toString());
 	tokenizer.setDelimeter(" ");
 
-	uint32 targetHealth, targetStrength, targetConstitution;
-	uint32 targetAction, targetQuickness, targetStamina;
-	uint32 targetMind, targetFocus, targetWillpower;
-
-	/*****************************************************
-	 * TODO: Stat migration bug tracking.  Remove later. *
-	 ****************************************************/
-	ChatManager * chatManager = player->getZone()->getChatManager();
-	const String sender = "BUG TRACKER";
-	UnicodeString header = "STAT MIGRATION BUG REPORT";
-	StringBuffer ss;
-	ss << "The stat migration protection system has been triggered for user "
-			<< player->getCharacterName().toString() << "." << endl;
-	ss << "The following is the relevant debug information:" << endl << endl;
-	ss << "Player Name: " << player->getCharacterName().toString() << endl;
-	ss << "Species: " << player->getTemplateName() << endl;
-	ss << "Sex: " << player->getGender() << endl;
-	ss << "Target Stats: " << stats.toString() << endl;
-	ss << "Min/Max/Current Health: " << player->getMinHealth() << " | "
-			<< player->getMaxHealth() << " | " << player->getBaseHealth()
-			<< endl;
-	ss << "Min/Max/Current Strength: " << player->getMinStrength() << " | "
-			<< player->getMaxStrength() << " | " << player->getBaseStrength()
-			<< endl;
-	ss << "Min/Max/Current Constitution: " << player->getMinConstitution()
-			<< " | " << player->getMaxConstitution() << " | "
-			<< player->getBaseConstitution() << endl;
-	ss << "Min/Max/Current Action: " << player->getMinAction() << " | "
-			<< player->getMaxAction() << " | " << player->getBaseAction()
-			<< endl;
-	ss << "Min/Max/Current Quickness: " << player->getMinQuickness() << " | "
-			<< player->getMaxQuickness() << " | " << player->getBaseQuickness()
-			<< endl;
-	ss << "Min/Max/Current Stamina: " << player->getMinStamina() << " | "
-			<< player->getMaxStamina() << " | " << player->getBaseStamina()
-			<< endl;
-	ss << "Min/Max/Current Mind: " << player->getMinMind() << " | "
-			<< player->getMaxMind() << " | " << player->getBaseMind() << endl;
-	ss << "Min/Max/Current Focus: " << player->getMinFocus() << " | "
-			<< player->getMaxFocus() << " | " << player->getBaseFocus() << endl;
-	ss << "Min/Max/Current Willpower: " << player->getMinWillpower() << " | "
-			<< player->getMaxWillpower() << " | " << player->getBaseWillpower()
-			<< endl;
-	ss << "Total Attrib Points: " << player->getTotalAttribPoints();
-	UnicodeString body = UnicodeString(ss.toString());
-	const String reciever = "Bobius";
-	/*******************************************************/
+	uint32 targetPointsTotal = 0;
+	uint32 targetAttributes[9] = {0};
 
 	for (int i = 0; tokenizer.hasMoreTokens(); i++) {
 		uint32 value = tokenizer.getIntToken();
-		switch (i) {
-		case 0:
-			if (value < player->getMinHealth() || value
-					> player->getMaxHealth()) {
-				chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
-				return;
-			} else
-				targetHealth = value;
-			break;
-		case 1:
-			if (value < player->getMinStrength() || value
-					> player->getMaxStrength()) {
-				chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
-				return;
-			} else
-				targetStrength = value;
-			break;
-		case 2:
-			if (value < player->getMinConstitution() || value
-					> player->getMaxConstitution()) {
-				chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
-				return;
-			} else
-				targetConstitution = value;
-			break;
-		case 3:
-			if (value < player->getMinAction() || value
-					> player->getMaxAction()) {
-				chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
-				return;
-			} else
-				targetAction = value;
-			break;
-		case 4:
-			if (value < player->getMinQuickness() || value
-					> player->getMaxQuickness()) {
-				chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
-				return;
-			} else
-				targetQuickness = value;
-			break;
-		case 5:
-			if (value < player->getMinStamina() || value
-					> player->getMaxStamina()) {
-				chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
-				return;
-			} else
-				targetStamina = value;
-			break;
-		case 6:
-			if (value < player->getMinMind() || value > player->getMaxMind()) {
-				chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
-				return;
-			} else
-				targetMind = value;
-			break;
-		case 7:
-			if (value < player->getMinFocus() || value > player->getMaxFocus()) {
-				chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
-				return;
-			} else
-				targetFocus = value;
-			break;
-		case 8:
-			if (value < player->getMinWillpower() || value
-					> player->getMaxWillpower()) {
-				chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
-				return;
-			} else
-				targetWillpower = value;
-			break;
-		default: // points available
-			break;
+
+		if (value < player->getMinAttribute(i) && value > player->getMaxAttribute(i)) {
+			player->info("Suspected stat migration hacking attempt.");
+			return;
 		}
+
+		targetAttributes[i] = value;
+		targetPointsTotal += value;
 	}
 
-	int targetPoints = targetHealth + targetStrength + targetConstitution
-			+ targetAction + targetQuickness + targetStamina + targetMind
-			+ targetFocus + targetWillpower;
-
-	if (targetPoints == player->getTotalAttribPoints()) {
-		player->setTargetHealth(targetHealth);
-		player->setTargetStrength(targetStrength);
-		player->setTargetConstitution(targetConstitution);
-		player->setTargetAction(targetAction);
-		player->setTargetQuickness(targetQuickness);
-		player->setTargetStamina(targetStamina);
-		player->setTargetMind(targetMind);
-		player->setTargetFocus(targetFocus);
-		player->setTargetWillpower(targetWillpower);
+	//Here we set the stat migration target attributes.
+	//NOTE: We aren't actually migrating the stats at this point.
+	if (targetPointsTotal == player->getTotalAttribPoints()) {
+		player->setMigrationHealth(targetAttributes[0]);
+		player->setMigrationStrength(targetAttributes[1]);
+		player->setMigrationConstitution(targetAttributes[2]);
+		player->setMigrationAction(targetAttributes[3]);
+		player->setMigrationQuickness(targetAttributes[4]);
+		player->setMigrationStamina(targetAttributes[5]);
+		player->setMigrationMind(targetAttributes[6]);
+		player->setMigrationFocus(targetAttributes[7]);
+		player->setMigrationWillpower(targetAttributes[8]);
 	} else {
-		chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
+		player->error("Trying to set migratory stats without assigning all available points.");
 		return;
 	}
 
-	//chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
-
-
-	//if (tokenizer.hasMoreTokens()) {
-	//	uint64 targetID = tokenizer.getLongToken();
-	//
-	//	player->applyAttachment(attachmentID, targetID);
-	//}
-
-	//Check to make sure they are in the tutorial zone.
-	if (player->getZoneID() == 42) {
-		//This isn't working right now. The window stays open.
-		//I have an idea how to fix it, but for now I'm leaving it.
-		StatMigrationTargetsMessage* smtm = new StatMigrationTargetsMessage(player);
-		player->sendMessage(smtm);
-	} else {
-		player->sendSystemMessage("You cannot migrate your stats without seeing an Image Designer.");
-	}
-
+	//Player is in the tutorial zone and is allowed to migrate stats.
+	if (player->getZoneID() == 42)
+		player->migrateStats();
 }
 
-void ObjectControllerMessage::parseCharacterSheetInfoRequest(Player* player,
-		Message* pack) {
+void ObjectControllerMessage::parseCharacterSheetInfoRequest(Player* player, Message* pack) {
 	uint64 objectid = pack->parseLong();
 
-	CharacterSheetResponseMessage* csrm = new CharacterSheetResponseMessage(
-			player);
+	CharacterSheetResponseMessage* csrm = new CharacterSheetResponseMessage(player);
 	player->sendMessage(csrm);
 }
 
-void ObjectControllerMessage::parseBiographyRequest(Player* player,
-		Message *pack) {
+void ObjectControllerMessage::parseBiographyRequest(Player* player, Message* pack) {
 	uint64 objectid = pack->parseLong();
 
 	SceneObject* object = player->getZone()->lookupObject(objectid);
@@ -1789,42 +1668,11 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player,
 					xpval = 100;
 			}
 
-			PlayerManager* playerManager =
-					serv->getZoneServer()->getPlayerManager();
+			PlayerManager* playerManager = serv->getZoneServer()->getPlayerManager();
+
 			// Stat Migration
 			if (stat_migration > 0) {
-				if (player->getBaseHealth() != player->getTargetHealth())
-					player->setBaseHealthBar(player->getTargetHealth());
-
-				if (player->getBaseStrength() != player->getTargetStrength())
-					player->setBaseStrengthBar(player->getTargetStrength());
-
-				if (player->getBaseConstitution()
-						!= player->getTargetConstitution())
-					player->setBaseConstitutionBar(
-							player->getTargetConstitution());
-
-				if (player->getBaseAction() != player->getTargetAction())
-					player->setBaseActionBar(player->getTargetAction());
-
-				if (player->getBaseQuickness() != player->getTargetQuickness())
-					player->setBaseQuicknessBar(player->getTargetQuickness());
-
-				if (player->getBaseStamina() != player->getTargetStamina())
-					player->setBaseStaminaBar(player->getTargetStamina());
-
-				if (player->getBaseMind() != player->getTargetMind())
-					player->setBaseMindBar(player->getTargetMind());
-
-				if (player->getBaseFocus() != player->getTargetFocus())
-					player->setBaseFocusBar(player->getTargetFocus());
-
-				if (player->getBaseWillpower() != player->getTargetWillpower())
-					player->setBaseWillpowerBar(player->getTargetWillpower());
-
-				if (playerManager != NULL)
-					playerManager->updatePlayerBaseHAMToDatabase(player);
-
+				player->migrateStats();
 				xpval = 2000;
 			}
 
@@ -1854,8 +1702,7 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player,
 				playerManager->updatePlayerAppearanceToDatabase(player);
 		}
 	} catch (...) {
-		System::out
-				<< "unreported ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pack) exception\n";
+		System::out << "unreported ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pack) exception\n";
 	}
 }
 

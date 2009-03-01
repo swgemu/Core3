@@ -44,12 +44,50 @@ which carries forward this exception.
 
 #include "StructurePermissionList.h"
 
-StructurePermissionList::StructurePermissionList()
+#include "../player/sui/listbox/SuiListBox.h"
+#include "../player/sui/SuiWindowType.h"
+
+StructurePermissionList::StructurePermissionList(BuildingObject* buio)
 	: VectorMap<String, uint8>() {
 
-	setOwner("");
-
+	building = buio;
 	setInsertPlan(NO_DUPLICATE);
+}
+
+void StructurePermissionList::sendTo(Player* player, uint8 permission) {
+	SuiListBox* suilist = new SuiListBox(player, SuiWindowType::PERMISSION_LIST);
+
+	switch (permission) {
+	case ENTRYLIST:
+		suilist->setPromptTitle("@player_structure:entry_permissions_list");
+		break;
+	case HOPPERLIST:
+		suilist->setPromptTitle("@player_structure:hopper_permissions_list");
+		break;
+	case BANLIST:
+		suilist->setPromptTitle("@player_structure:ban_list");
+		break;
+	case VENDORLIST:
+		suilist->setPromptTitle("@player_structure:vendor_permissions_list");
+		break;
+	case ADMINLIST:
+		suilist->setPromptTitle("@player_structure:admin_permissions_list");
+		break;
+	default:
+		suilist->finalize();
+		return;
+	}
+
+	suilist->setUsingObjectID(building->getObjectID());
+	suilist->setCancelButton(true);
+
+	for (int i = 0; i < size(); i++) {
+		if (get(i) & permission)
+			suilist->addMenuItem(elementAt(i)->getKey());
+	}
+
+	player->sendMessage(suilist->generateMessage());
+	suilist->finalize();
 }
 
 bool StructurePermissionList::givePermission(Player* enforcer, Player* recipient, uint8 permission) {
@@ -120,14 +158,8 @@ bool StructurePermissionList::revokePermission(Player* enforcer, const String& e
 
 	if (permission & BANLIST)
 		newMask = NONE;
-	else if (permission & HOPPERLIST)
-		newMask &= ~HOPPERLIST;
-	else if (permission & ENTRYLIST)
-		newMask &= ~ENTRYLIST;
-	else if (permission & ADMINLIST)
-		newMask = ADMIN;
 	else
-		newMask = NONE;
+		newMask &= ~permission;
 
 	if (contains(entryname))
 		get(entryname) = newMask;
