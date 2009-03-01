@@ -74,8 +74,8 @@ BuildingObjectImplementation::BuildingObjectImplementation(uint64 oid, bool stat
 	cells.setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);
 	sceneObjects.setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);
 
-	permissionList = new StructurePermissionList();
-	permissionList->setOwner(owner);
+	//Don't forget to set this later.
+	permissionList = new StructurePermissionList(NULL);
 
 	publicEntry = true;
 	accessFee = 0;
@@ -196,6 +196,10 @@ bool BuildingObjectImplementation::hasCell(uint64 cellID) {
 }
 
 void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
+	//When the building is inserted to zone, we go ahead and set the permission lists
+	//building to this objects stub.
+	permissionList->setBuilding(_this);
+
 	info("BuildingObjectImplementation::notifyInsert");
 	SceneObjectImplementation* scno = (SceneObjectImplementation*) obj;
 
@@ -442,3 +446,9 @@ void BuildingObjectImplementation::setDefaultName()
 	}
 }
 
+void BuildingObjectImplementation::sendPermissionListTo(Player* player, uint8 listtype) {
+	if (permissionList == NULL)
+		return;
+
+	permissionList->sendTo(player, listtype);
+}

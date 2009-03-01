@@ -202,16 +202,16 @@ void CreatureImplementation::sendRadialResponseTo(Player* player,
 			&& !player->isInCombat() && player->hasSkillBox(skillBox)
 			&& isDead() && canHarvest(player->getFirstName())) {
 
-		omr->addRadialItem(0, 148, 3, "@sui:harvest_corpse");
+		omr->addRadialItem(0, 112, 3, "@sui:harvest_corpse");
 
 		if (getMeatType() != "")
-			omr->addRadialItem(4, 108, 3, "@sui:harvest_meat");
+			omr->addRadialItem(4, 234, 3, "@sui:harvest_meat");
 
 		if (getHideType() != "")
-			omr->addRadialItem(4, 109, 3, "@sui:harvest_hide");
+			omr->addRadialItem(4, 235, 3, "@sui:harvest_hide");
 
 		if (getBoneType() != "")
-			omr->addRadialItem(4, 110, 3, "@sui:harvest_bone");
+			omr->addRadialItem(4, 236, 3, "@sui:harvest_bone");
 
 	}
 

@@ -67,7 +67,7 @@ public:
 	}
 
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
-		omr->addRadialItem(0, 203, 3, "@sui:mnu_insure_all"); //Insure All
+		omr->addRadialItem(0, 240, 3, "@sui:mnu_insure_all"); //Insure All
 		omr->finish();
 
 		player->sendMessage(omr);

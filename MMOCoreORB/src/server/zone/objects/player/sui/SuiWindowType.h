@@ -116,6 +116,8 @@ public:
 	static const int RANGER_WHAT_TO_TRACK = 48;
 
 	static const int SET_MOTD = 49;
+
+	static const int PERMISSION_LIST = 50;
 };
 
 #endif /*SuiWindowType_H_*/

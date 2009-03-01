@@ -213,7 +213,6 @@ public:
 		setUpdated(true);
 		owner = own;
 		String attr("owner");
-		permissionList->setOwner(owner);
 		itemAttributes->setStringAttribute(attr, owner);
 	}
 
@@ -256,6 +255,7 @@ public:
 	void parseItemAttributes();
 	void sendTo(Player* player, bool doClose = true);
 	void sendDestroyTo(Player* player);
+	void sendPermissionListTo(Player* player, uint8 listtype);
 
 	void addCell(CellObject* cell);
 

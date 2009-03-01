@@ -42,22 +42,56 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef PLAYERSTRUCTURETERMINALIMPLEMENTATION_H_
-#define PLAYERSTRUCTURETERMINALIMPLEMENTATION_H_
+#ifndef REGIONMAP_H_
+#define REGIONMAP_H_
 
-#include "../../../player/Player.h"
+//This should read the stf names in and put them in a file somewhere,
+//then add them to each zone.
+//String zone->getRegionName(float x, float y);
+//Would return something like @rori_region_names:narmle
 
-class PlayerStructureTerminalImplementation : public PlayerStructureTerminalServant {
-	BuildingObject* structure;
-
+class RegionMap {
 public:
-	PlayerStructureTerminalImplementation(BuildingObject* buio, uint64 objid, float x, float z, float y);
-
-	int useObject(Player* player);
-
-	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
-
-	void sendPermissionListTo(Player* player, uint8 listtype);
+	RegionMap(uint32 planetID) {}
+	~RegionMap() {}
 };
 
-#endif /* PLAYERSTRUCTURETERMINALIMPLEMENTATION_H_ */
+class Region {
+	uint32 zoneID;
+	uint32 regionID;
+	String stfName;
+
+	Area* boundingBox;
+
+public:
+	Region() {}
+	~Region() {}
+
+	//Setters
+	void setZoneID(uint32 zid) {
+		zoneID = zid;
+	}
+
+	void setRegionID(uint32 rid) {
+		regionID = rid;
+	}
+
+	void setStfName(const String& stfname) {
+		stfName = stfname;
+	}
+
+	//Getters
+	uint32 getZoneID() {
+		return zoneID;
+	}
+
+	uint32 getRegionID() {
+		return regionID;
+	}
+
+	String getStfName() {
+		return stfName;
+	}
+};
+
+#endif /* REGIONMAP_H_ */

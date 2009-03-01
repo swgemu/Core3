@@ -175,8 +175,8 @@ void SurveyToolImplementation::sendRadialResponseTo(Player* player, ObjectMenuRe
 				omr->addRadialItem(0, 10, 3, "Pickup");
 
 			} else if (parent == player->getInventory() && player->getParent() == NULL) {
-				omr->addRadialItem(0, 136, 3, "@sui:tool_options");
-				omr->addRadialItem(4, 137, 3, "@sui:survey_range");
+				omr->addRadialItem(0, 135, 3, "@sui:tool_options");
+				omr->addRadialItem(4, 133, 3, "@sui:survey_range");
 			}
 
 		}

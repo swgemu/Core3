@@ -62,6 +62,7 @@ interface BuildingObject implements SceneObject {
 	
 	//void sendTo(Player* player);
 	//void sendDestroyTo(Player* player);
+	void sendPermissionListTo(Player player, unsigned char listtype);
 		
 	void addCell(CellObject cell);
 	

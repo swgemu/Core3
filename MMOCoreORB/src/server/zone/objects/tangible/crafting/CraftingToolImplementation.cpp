@@ -199,11 +199,10 @@ void CraftingToolImplementation::sendRadialResponseTo(Player* player, ObjectMenu
 
 	if(hopper != NULL) {
 		if(hopper->getContainerObjectsSize() > 0) {
-			omr->addRadialItem(0, 130, 3, "Retrieve Prototype");
+			omr->addRadialItem(0, 132, 3, "@ui_radial:craft_hopper_output");
 		}
 	}
 
-	//TODO:Cell permission check
 	if (_this->getParent() != NULL) {
 		bool cellPermission = true;
 

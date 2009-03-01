@@ -50,8 +50,10 @@ which carries forward this exception.
 #include "../player/Player.h"
 #include "../guild/Guild.h"
 
+#include "BuildingObject.h"
+
 class StructurePermissionList : public VectorMap<String, uint8> {
-	String owner;
+	BuildingObject* building;
 
 public:
 	//List Permissions - Are they on said list.
@@ -59,13 +61,15 @@ public:
 	static const uint8 NONE = 1;
 	static const uint8 HOPPERLIST = 2;
 	static const uint8 ENTRYLIST = 4;
-	static const uint8 ADMINLIST = 8;
+	static const uint8 VENDORLIST = 8;
+	static const uint8 ADMINLIST = 16;
 
 	//Super Permissions
-	static const uint8 ADMIN = HOPPERLIST | ENTRYLIST | ADMINLIST | ~BANLIST;
+	static const uint8 VENDOR = ENTRYLIST | VENDORLIST | ~BANLIST;
+	static const uint8 ADMIN = HOPPERLIST | VENDOR | ADMINLIST;
 
 public:
-	StructurePermissionList();
+	StructurePermissionList(BuildingObject* buio);
 
 	bool givePermission(Player* enforcer, Player* recipient, uint8 permission);
 	bool givePermission(Player* enforcer, Guild* guild, uint8 permission);
@@ -79,18 +83,23 @@ public:
 		//TODO: This should take a string, and populate the list with its data.
 	}
 
+	void sendTo(Player* player, uint8 permission);
+
 	bool hasPermission(Player* player, uint8 permission);
 
-	inline void setOwner(const String& ownername) {
-		owner = ownername;
+	inline void setBuilding(BuildingObject* buio) {
+		building = buio;
 	}
 
-	inline String getOwner() {
-		return owner;
+	inline BuildingObject* getBuilding() {
+		return building;
 	}
 
 	inline bool isOwner(Player* player) {
-		return (owner == player->getFirstName().toLowerCase());
+		if (building != NULL)
+			return (building->getOwnerID() == player->getObjectID());
+
+		return false;
 	}
 
 	bool isOnAdminList(Player* player) {
@@ -103,6 +112,10 @@ public:
 
 	bool isOnEntryList(Player* player) {
 		return hasPermission(player, ENTRYLIST) || isOwner(player);
+	}
+
+	bool isOnVendorList(Player* player) {
+		return hasPermission(player, VENDOR) || isOwner(player);
 	}
 
 	bool isOnHopperList(Player* player) {

@@ -149,41 +149,47 @@ public:
 
 	SceneObject* getPlayerItem(unsigned long long oid);
 
-	unsigned int getTargetHealth();
+	bool migrateStats();
 
-	unsigned int getTargetStrength();
+	unsigned int getMigrationHealth();
 
-	unsigned int getTargetConstitution();
+	unsigned int getMigrationStrength();
 
-	unsigned int getTargetAction();
+	unsigned int getMigrationConstitution();
 
-	unsigned int getTargetQuickness();
+	unsigned int getMigrationAction();
 
-	unsigned int getTargetStamina();
+	unsigned int getMigrationQuickness();
 
-	unsigned int getTargetMind();
+	unsigned int getMigrationStamina();
 
-	unsigned int getTargetFocus();
+	unsigned int getMigrationMind();
 
-	unsigned int getTargetWillpower();
+	unsigned int getMigrationFocus();
 
-	void setTargetHealth(unsigned int health);
+	unsigned int getMigrationWillpower();
 
-	void setTargetStrength(unsigned int strength);
+	void setMigrationHealth(unsigned int health);
 
-	void setTargetConstitution(unsigned int constituition);
+	void setMigrationStrength(unsigned int strength);
 
-	void setTargetAction(unsigned int action);
+	void setMigrationConstitution(unsigned int constituition);
 
-	void setTargetQuickness(unsigned int quickness);
+	void setMigrationAction(unsigned int action);
 
-	void setTargetStamina(unsigned int stamina);
+	void setMigrationQuickness(unsigned int quickness);
 
-	void setTargetMind(unsigned int mind);
+	void setMigrationStamina(unsigned int stamina);
 
-	void setTargetFocus(unsigned int focus);
+	void setMigrationMind(unsigned int mind);
 
-	void setTargetWillpower(unsigned int willpower);
+	void setMigrationFocus(unsigned int focus);
+
+	void setMigrationWillpower(unsigned int willpower);
+
+	unsigned int getMinAttribute(unsigned char attribute);
+
+	unsigned int getMaxAttribute(unsigned char attribute);
 
 	unsigned int getMinHealth();
 
@@ -1100,41 +1106,47 @@ public:
 
 	SceneObject* getPlayerItem(unsigned long long oid);
 
-	unsigned int getTargetHealth();
+	bool migrateStats();
 
-	unsigned int getTargetStrength();
+	unsigned int getMigrationHealth();
 
-	unsigned int getTargetConstitution();
+	unsigned int getMigrationStrength();
 
-	unsigned int getTargetAction();
+	unsigned int getMigrationConstitution();
 
-	unsigned int getTargetQuickness();
+	unsigned int getMigrationAction();
 
-	unsigned int getTargetStamina();
+	unsigned int getMigrationQuickness();
 
-	unsigned int getTargetMind();
+	unsigned int getMigrationStamina();
 
-	unsigned int getTargetFocus();
+	unsigned int getMigrationMind();
 
-	unsigned int getTargetWillpower();
+	unsigned int getMigrationFocus();
 
-	void setTargetHealth(unsigned int health);
+	unsigned int getMigrationWillpower();
 
-	void setTargetStrength(unsigned int strength);
+	void setMigrationHealth(unsigned int health);
 
-	void setTargetConstitution(unsigned int constituition);
+	void setMigrationStrength(unsigned int strength);
 
-	void setTargetAction(unsigned int action);
+	void setMigrationConstitution(unsigned int constituition);
 
-	void setTargetQuickness(unsigned int quickness);
+	void setMigrationAction(unsigned int action);
 
-	void setTargetStamina(unsigned int stamina);
+	void setMigrationQuickness(unsigned int quickness);
 
-	void setTargetMind(unsigned int mind);
+	void setMigrationStamina(unsigned int stamina);
 
-	void setTargetFocus(unsigned int focus);
+	void setMigrationMind(unsigned int mind);
 
-	void setTargetWillpower(unsigned int willpower);
+	void setMigrationFocus(unsigned int focus);
+
+	void setMigrationWillpower(unsigned int willpower);
+
+	unsigned int getMinAttribute(unsigned char attribute);
+
+	unsigned int getMaxAttribute(unsigned char attribute);
 
 	unsigned int getMinHealth();
 
