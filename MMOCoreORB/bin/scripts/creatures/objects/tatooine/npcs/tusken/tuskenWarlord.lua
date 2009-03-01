@@ -53,7 +53,7 @@ tuskenWarlord = Creature:new {
 	socialGroup = "tusken_raider",
 	 
 
-	level = 85,
+	level = 62,
 	
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

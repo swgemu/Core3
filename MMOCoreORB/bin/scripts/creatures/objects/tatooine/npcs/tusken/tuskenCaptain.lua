@@ -51,7 +51,7 @@ tuskenCaptain = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3780705985, 
 	socialGroup = "tusken_raider",
-	level = 75,
+	level = 54,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

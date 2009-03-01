@@ -78,9 +78,9 @@ tuskenExecutioner = Creature:new {
 	energy = 80,
 	electricity = 30,
 	stun = 80,
-	blast = 45,
+	blast = 35,
 	heat = 100,
-	cold = 0,
+	cold = 20,
 	acid = 45,
 	lightsaber = 0,
 

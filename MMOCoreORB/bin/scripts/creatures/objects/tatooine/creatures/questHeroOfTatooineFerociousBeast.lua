@@ -70,14 +70,14 @@ questHeroOfTatooineFerociousBeast = Creature:new {
 
 	height = 1, -- Size of creature
 	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 0,
-	energy = 0,
-	electricity = 0,
+	kinetic = 30,
+	energy = 30,
+	electricity = 30,
 	stun = -1,
-	blast = 0,
-	heat = 0,
-	cold = 0,
-	acid = 0,
+	blast = 30,
+	heat = 30,
+	cold = 30,
+	acid = 30,
 	lightsaber = 0,
 
 	accuracy = 0,

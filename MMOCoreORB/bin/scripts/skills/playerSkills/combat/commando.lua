@@ -201,7 +201,7 @@ DotPoolAtt = {
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
-	rezChance = 100,
+	rezChance = 0,
 
 	healthAttackChance = 34,
 	actionAttackChance = 33,
@@ -248,6 +248,10 @@ RandPoolAtt = {
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
+
+	healthAttackChance = 34,
+	actionAttackChance = 33,
+	mindAttackChance = 33,
 	
 	CbtSpamBlock = "fireacidsingle1_block",
 	CbtSpamCounter = "fireacidsingle1_counter",
@@ -284,6 +288,10 @@ RandPoolAtt = {
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
+
+	healthAttackChance = 34,
+	actionAttackChance = 33,
+	mindAttackChance = 33,
 	
 	CbtSpamBlock = "fireacidcone1_block",
 	CbtSpamCounter = "fireacidcone1_counter",
@@ -320,6 +328,10 @@ RandPoolAtt = {
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
+
+	healthAttackChance = 34,
+	actionAttackChance = 33,
+	mindAttackChance = 33,
 	
 	CbtSpamBlock = "fireacidsingle2_block",
 	CbtSpamCounter = "fireacidsingle2_counter",
@@ -348,6 +360,10 @@ RandPoolAtt = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 	forceCostMultiplier = 0,
+
+	healthAttackChance = 34,
+	actionAttackChance = 33,
+	mindAttackChance = 33,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,

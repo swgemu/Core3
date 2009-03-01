@@ -51,7 +51,7 @@ nightsisterSpellWeaver = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2291851149, 
 	socialGroup = "nightsister",
-	level = 107,
+	level = 100,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -72,11 +72,11 @@ nightsisterSpellWeaver = Creature:new {
 
 	height = 1, -- Size of creature
 	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 15,
+	kinetic = 5,
 	energy = 100,
 	electricity = 100,
 	stun = 100,
-	blast = 15,
+	blast = 5,
 	heat = 100,
 	cold = 100,
 	acid = 100,
@@ -104,8 +104,8 @@ nightsisterSpellWeaver = Creature:new {
 	weaponTemp = "lance_vibrolance", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 645,
-	weaponMaxDamage = 1000,
+	weaponMinDamage = 509,
+	weaponMaxDamage = 533,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -115,8 +115,8 @@ nightsisterSpellWeaver = Creature:new {
 	alternateWeaponTemp = "lance_vibro_axe", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 645,
-	alternateWeaponMaxDamage = 1000,
+	alternateWeaponMinDamage = 509,
+	alternateWeaponMaxDamage = 533,
 	alternateweaponAttackSpeed = 2,
 	alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY

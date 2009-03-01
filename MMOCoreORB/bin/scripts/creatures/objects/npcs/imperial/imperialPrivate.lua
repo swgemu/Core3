@@ -87,7 +87,7 @@ imperialPrivate = Creature:new {
 
 	healer = 0,
 
-	pack = 1,
+	pack = 0,
 	herd = 0,
 	stalker = 0,
 	killer = 0,
@@ -100,27 +100,27 @@ imperialPrivate = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/ranged/carbine/shared_carbine_e11.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "Imperial Issue E11 Carbine", -- Name ex. 'a Vibrolance'
-	weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 1,
-	weaponMinDamage = 160,
-	weaponMaxDamage = 170,
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Creature Default", -- Name ex. 'a Vibrolance'
+	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 32,
+	weaponMaxDamage = 50,
 	weaponAttackSpeed = 2,
-	weaponDamageType = "energy", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "none", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	alternateWeaponEquipped = 0,
-	alternateWeaponMinDamage = 0,
-	alternateWeaponMaxDamage = 0,
-	alternateWeaponAttackSpeed = 0,
-	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "object/weapon/ranged/pistol/shared_pistol_cdef.iff", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "CDEF Pistol", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "pistol_cdef", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 1,
+	alternateWeaponMinDamage = 32,
+	alternateWeaponMaxDamage = 50,
+	alternateWeaponAttackSpeed = 2,
+	alternateWeaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 

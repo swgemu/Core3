@@ -100,11 +100,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	healthAttackChance = 0,
+	healthAttackChance = 100,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 	
-	actionAttackChance = 100,
+	actionAttackChance = 0,
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
@@ -343,6 +343,10 @@ RandPoolAtt = {
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
+
+	healthAttackChance = 34,
+	actionAttackChance = 33,
+	mindAttackChance = 33,
 	
 	CbtSpamBlock = "firelightningsingle1_block",
 	CbtSpamCounter = "firelightningsingle1_counter",
@@ -379,6 +383,10 @@ RandPoolAtt = {
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
+
+	healthAttackChance = 34,
+	actionAttackChance = 33,
+	mindAttackChance = 33,
 	
 	CbtSpamBlock = "firelightningcone1_block",
 	CbtSpamCounter = "firelightningcone1_counter",
@@ -415,6 +423,10 @@ RandPoolAtt = {
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
+
+	healthAttackChance = 34,
+	actionAttackChance = 33,
+	mindAttackChance = 33,
 	
 	CbtSpamBlock = "firelightningsingle2_block",
 	CbtSpamCounter = "firelightningsingle2_counter",
@@ -487,6 +499,10 @@ RandPoolAtt = {
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
+
+	healthAttackChance = 34,
+	actionAttackChance = 33,
+	mindAttackChance = 33,
 	
 	CbtSpamBlock = "firelightningcone2_block",
 	CbtSpamCounter = "firelightningcone2_counter",

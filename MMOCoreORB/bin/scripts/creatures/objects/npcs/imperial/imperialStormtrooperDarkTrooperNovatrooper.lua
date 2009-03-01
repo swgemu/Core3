@@ -56,32 +56,32 @@ imperialStormTrooperDarkTrooperNovatrooper = Creature:new {
 
 	combatFlags = 0,
 
-	healthMax = 14000,
-	healthMin = 11000,
+	healthMax = 245000,
+	healthMin = 235000,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 14000,
-	actionMin = 11000,
+	actionMax = 245000,
+	actionMin = 235000,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 14000,
-	mindMin = 11000,
+	mindMax = 245000,
+	mindMin = 235000,
 	focus = 0,
 	willpower = 0,
 
 	height = 1, -- Size of creature
 	armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 40,
-	energy = 0,
-	electricity = 50,
-	stun = -1,
-	blast = 0,
-	heat = 50,
-	cold = 50,
-	acid = 50,
-	lightsaber = 0,
+	kinetic = 95,
+	energy = 85,
+	electricity = 10,
+	stun = 45,
+	blast = 80,
+	heat = 30,
+	cold = 10,
+	acid = 30,
+	lightsaber = -1,
 
 	accuracy = 0,
 

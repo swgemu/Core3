@@ -56,43 +56,43 @@ imperialStormTrooperNovatrooperCaptain = Creature:new {
 
 	combatFlags = 0,
 
-	healthMax = 6600,
-	healthMin = 5400,
+	healthMax = 80000,
+	healthMin = 70000,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 6600,
-	actionMin = 5400,
+	actionMax = 80000,
+	actionMin = 70000,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 6600,
-	mindMin = 5400,
+	mindMax = 80000,
+	mindMin = 70000,
 	focus = 0,
 	willpower = 0,
 
 	height = 1, -- Size of creature
 	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 0,
-	energy = 0,
-	electricity = 0,
-	stun = -1,
-	blast = 0,
-	heat = 0,
-	cold = 0,
-	acid = 0,
+	kinetic = 60,
+	energy = 50,
+	electricity = 25,
+	stun = 45,
+	blast = 80,
+	heat = 30,
+	cold = 25,
+	acid = 30,
 	lightsaber = 0,
 
 	accuracy = 0,
 
 	healer = 0,
 
-	pack = 1,
+	pack = 0,
 	herd = 0,
-	stalker = 0,
+	stalker = 1,
 	killer = 1,
 	ferocity = 0,
-	aggressive = 0,
+	aggressive = 1,
 	invincible = 0,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 

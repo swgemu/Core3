@@ -90,7 +90,7 @@
 
  --Singing Mountain Clan
  RunCreatureFile("objects/dathomir/npcs/singingMountainClan/escapedSingingMtnClanSlave.lua")
- RunCreatureFile("objects/dathomir/npcs/singingMountainClan/singingMountainClanSentry.lua")
+ RunCreatureFile("objects/dathomir/npcs/singingMountainClan/singingMtnClanSentry.lua")
  RunCreatureFile("objects/dathomir/npcs/singingMountainClan/singingMtnClanArchWitch.lua")
  RunCreatureFile("objects/dathomir/npcs/singingMountainClan/singingMtnClanCouncilwoman.lua")
  RunCreatureFile("objects/dathomir/npcs/singingMountainClan/singingMtnClanDragoon.lua")

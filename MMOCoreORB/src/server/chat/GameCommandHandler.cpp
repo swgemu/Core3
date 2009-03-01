@@ -67,19 +67,21 @@ GMCommandMap * GameCommandHandler::gmCommands = NULL;
 
 void GameCommandHandler::init() {
 	/* Admin Levels */
-	const int DEVELOPER = PlayerImplementation::DEVELOPER; 						/* Admin/Dev  */
-	const int CSR = PlayerImplementation::CSR;									/* CSR */
-	const int EC = PlayerImplementation::EC;									/* Event Coordinator */
-	const int LEADQA = PlayerImplementation::LEADQA;							/* Lead - Quality Assurance */
-	const int QA = PlayerImplementation::QA;									/* Quality Assurance */
-	const int EMUSTAFF = PlayerImplementation::EMUSTAFF;						/* Misc Emu Staff */
-	const int NORMAL = PlayerImplementation::NORMAL;							/* Normal Player*/
+	const int DEVELOPER = PlayerImplementation::DEVELOPER; 									/* Admin/Dev  */
+	const int CSR = PlayerImplementation::CSR;												/* CSR */
+	const int EC = PlayerImplementation::EC;												/* Event Coordinator */
+	const int CSRJR = PlayerImplementation::CSR;											/* JR CSR */
+	const int ECJR = PlayerImplementation::EC;												/* JR Event Coordinator */
+	const int LEADQA = PlayerImplementation::LEADQA;										/* Lead - Quality Assurance */
+	const int QA = PlayerImplementation::QA;												/* Quality Assurance */
+	const int EMUSTAFF = PlayerImplementation::EMUSTAFF;									/* Misc Emu Staff */
+	const int NORMAL = PlayerImplementation::NORMAL;										/* Normal Player*/
 
 	/* Admin Groups */
-	const int ALL = DEVELOPER | CSR | EC | LEADQA | QA | EMUSTAFF | NORMAL;		/* All Staff/Players */
-	const int STAFF = DEVELOPER | CSR | EC | LEADQA | QA | EMUSTAFF;			/* EMU Staff Only */
-	const int PRIVILEGED = DEVELOPER | CSR;										/* Admin,Dev/CSR */
-	const int CSREVENTS = DEVELOPER | CSR | EC;									/* Admin,Dev/CSR/Event Coordinator */
+	const int ALL = DEVELOPER | CSR | CSRJR | EC | ECJR | LEADQA | QA | EMUSTAFF | NORMAL;	/* All Staff/Players */
+	const int STAFF = DEVELOPER | CSR | EC | LEADQA | QA | EMUSTAFF;						/* EMU Staff Only */
+	const int PRIVILEGED = DEVELOPER | CSR;													/* Admin,Dev/CSR */
+	const int CSREVENTS = DEVELOPER | CSR | EC;												/* Admin,Dev/CSR/Event Coordinator */
 
 	gmCommands = new GMCommandMap();
 

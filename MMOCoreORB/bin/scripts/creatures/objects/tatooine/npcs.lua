@@ -110,6 +110,8 @@
 
  --Tusken
  RunCreatureFile("objects/tatooine/npcs/tusken/tuskenCaptain.lua")
+ RunCreatureFile("objects/tatooine/npcs/tusken/tuskenChief.lua") 
+ RunCreatureFile("objects/tatooine/npcs/tusken/tuskenCommoner.lua")
  RunCreatureFile("objects/tatooine/npcs/tusken/tuskenEliteGuard.lua")
  RunCreatureFile("objects/tatooine/npcs/tusken/tuskenExecutioner.lua")
  RunCreatureFile("objects/tatooine/npcs/tusken/tuskenKing.lua")

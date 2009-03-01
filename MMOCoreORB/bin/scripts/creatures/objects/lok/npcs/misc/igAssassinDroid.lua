@@ -40,73 +40,71 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-untrainedWielderOfTheDarkSide = Creature:new {
-	objectName = "untrainedWielderOfTheDarkSide",  -- Lua Object Name
+igAssassinDroid = Creature:new {
+	objectName = "igAssassinDroid",  -- Lua Object Name
 	creatureType = "NPC",
+	faction = "self",
 	gender = "",
-
-	speciesName = "untrained_wielder_of_the_dark_side",
+	
+	speciesName = "ig_assassin_droid ",
 	stfName = "mob/creature_names", 
-	objectCRC = 2507849557, 
-	socialGroup = "Remn. Of Kun",
-	level = 65,
+	objectCRC = 2794810877, 
+	socialGroup = "self",
+	named = FALSE, 
+	xp = 1803,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-	healthMax = 14000,
-	healthMin = 11000,
-	strength = 500,
-	constitution = 500,
+	healthMax = 3000,
+	healthMin = 2400,
+	strength = 0,
+	constitution = 0,
 
-	actionMax = 14000,
-	actionMin = 11000,
-	quickness = 500,
-	stamina = 500,
+	actionMax = 3000,
+	actionMin = 2400,
+	quickness = 0,
+	stamina = 0,
 
-	mindMax = 14000,
-	mindMin = 11000,
-	focus = 500,
-	willpower = 500,
+	mindMax = 3000,
+	mindMin = 2400,
+	focus = 0,
+	willpower = 0,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 30,
-	energy = 30,
-	electricity = 0,
-	stun = 0,
+	kinetic = 25,
+	energy = 25,
+	electricity = -1,
+	stun = -1,
 	blast = 0,
 	heat = 0,
 	cold = 0,
 	acid = 0,
 	lightsaber = 0,
 
-	accuracy = 300,
+	accuracy = 0,
 
 	healer = 0,
 
-	pack = 1,
+	pack = 0,
 	herd = 0,
-	stalker = 0,
+	stalker = 1,
 	killer = 1,
-	ferocity = 0,
-	aggressive = 1,
-	invincible = 0, 
-
-	meleeDefense = 1,  
-	rangedDefense = 1,
+	aggressive = 0,
+	invincible = 0,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
-	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 545,
-	weaponMaxDamage = 800,
-	weaponAttackSpeed = 2,
-	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/droid/shared_droid_droideka_ranged.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Imperial Droideka", -- Name ex. 'a Vibrolance'
+	weaponTemp = "droid_droideka_ranged", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 370,
+	weaponMaxDamage = 450,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -115,13 +113,13 @@ untrainedWielderOfTheDarkSide = Creature:new {
 	alternateWeaponEquipped = 0,
 	alternateWeaponMinDamage = 0,
 	alternateWeaponMaxDamage = 0,
-	alternateweaponAttackSpeed = 2,
+	alternateWeaponAttackSpeed = 0,
 	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,11,15,19,33,39,40,99", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,10 +134,10 @@ untrainedWielderOfTheDarkSide = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "untrainedWielderDarkSideAttack20", "untrainedWielderDarkSideAttack21", "untrainedWielderDarkSideAttack22", "untrainedWielderDarkSideAttack23", "untrainedWielderDarkSideAttack24", "untrainedWielderDarkSideAttack25", "untrainedWielderDarkSideAttack26", "untrainedWielderDarkSideAttack27" }, 
-	respawnTimer = 300, 
+	skills = { "miscAttack2" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(untrainedWielderOfTheDarkSide, 2507849557) --  Add to Global Table
+Creatures:addCreature(igAssassinDroid, 2794810877) --  Add to Global Table

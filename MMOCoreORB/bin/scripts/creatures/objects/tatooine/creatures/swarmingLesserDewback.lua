@@ -53,29 +53,29 @@ swarmingLesserDewback = Creature:new {
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-	healthMax = 4300,
-	healthMin = 3500,
+	healthMax = 4200,
+	healthMin = 3600,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 4300,
-	actionMin = 3500,
+	actionMax = 4200,
+	actionMin = 3600,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 4300,
-	mindMin = 3500,
+	mindMax = 4200,
+	mindMin = 3600,
 	focus = 0,
 	willpower = 0,
 
 	height = 1, -- Size of creature
 	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 15,
-	energy = 0,
+	energy = 5,
 	electricity = -1,
 	stun = -1,
 	blast = 10,
-	heat = 0,
+	heat = 5,
 	cold = -1,
 	acid = -1,
 	lightsaber = 0,
@@ -88,7 +88,7 @@ swarmingLesserDewback = Creature:new {
 	herd = 0,
 	stalker = 1,
 	killer = 0,
-	ferocity = 0,
+	ferocity = 5,
 	aggressive = 0,
 	invincible = 0, 
 

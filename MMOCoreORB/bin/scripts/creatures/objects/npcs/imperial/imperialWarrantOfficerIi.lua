@@ -52,7 +52,7 @@ imperialWarrantOfficerII = Creature:new {
 	
 	objectCRC = 1967105963, 
 	socialGroup = "imperial",
-	level = 75,
+	level = 25,
 	
 
 	combatFlags = 0,
@@ -73,15 +73,15 @@ imperialWarrantOfficerII = Creature:new {
 	willpower = 0,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 0,
-	energy = 0,
-	electricity = 0,
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 5,
+	energy = 5,
+	electricity = 5,
 	stun = -1,
-	blast = 0,
-	heat = 0,
-	cold = 0,
-	acid = 0,
+	blast = 5,
+	heat = 5,
+	cold = 5,
+	acid = 5,
 	lightsaber = 0,
 
 	accuracy = 0,
@@ -98,17 +98,17 @@ imperialWarrantOfficerII = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/ranged/pistol/shared_pistol_fwg5.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "officer's FWG5", -- Name ex. 'a Vibrolance'
-	weaponTemp = "pistol_fwg5", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weapon = "object/weapon/ranged/carbine/shared_carbine_e11.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "an e11 Carbine", -- Name ex. 'a Vibrolance'
+	weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 170,
-	weaponMaxDamage = 180,
+	weaponMinDamage = 30,
+	weaponMaxDamage = 70,
 	weaponAttackSpeed = 2,
-	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
-
+	
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'

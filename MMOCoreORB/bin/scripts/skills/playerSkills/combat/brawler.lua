@@ -1052,7 +1052,7 @@ CmbtEnhaceSkill = {
 
 	range = 15,
 
-	duration = 20.0,
+	duration = 120.0,
 	
 	speedRatio = 1.0,
 

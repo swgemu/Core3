@@ -73,11 +73,11 @@ rancorYouth = Creature:new {
 	kinetic = 35,
 	energy = 60,
 	electricity = 100,
-	stun = 0,
-	blast = 0,
+	stun = 30,
+	blast = 30,
 	heat = 100,
 	cold = 100,
-	acid = 0,
+	acid = 30,
 	lightsaber = 0,
 
 	accuracy = 200,
@@ -88,7 +88,7 @@ rancorYouth = Creature:new {
 	herd = 0,
 	stalker = 1,
 	killer = 1,
-	ferocity = 0,
+	ferocity = 8,
 	aggressive = 1,
 	invincible = 0, 
 

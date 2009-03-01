@@ -49,7 +49,7 @@ enragedBullRancor = Creature:new {
 	stfName = "mob/creature_names",
 	objectCRC = 837719973, 
 	socialGroup = "Rancor",
-	level = 89,
+	level = 85,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -70,14 +70,14 @@ enragedBullRancor = Creature:new {
 
 	height = 1, -- Size of creature
 	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 0,
+	kinetic = 35,
 	energy = 70,
 	electricity = 100,
-	stun = 0,
-	blast = 0,
+	stun = 35,
+	blast = 35,
 	heat = 100,
 	cold = 100,
-	acid = 0,
+	acid = 35,
 	lightsaber = 0,
 
 	accuracy = 200,
@@ -88,7 +88,7 @@ enragedBullRancor = Creature:new {
 	herd = 0,
 	stalker = 0,
 	killer = 1,
-	ferocity = 0,
+	ferocity = 15,
 	aggressive = 1,
 	invincible = 0, 
 
@@ -102,7 +102,7 @@ enragedBullRancor = Creature:new {
 	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 0,
-	weaponMinDamage = 570,
+	weaponMinDamage = 840,
 	weaponMaxDamage = 850,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc

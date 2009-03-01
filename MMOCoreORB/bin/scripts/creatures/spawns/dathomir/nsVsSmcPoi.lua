@@ -42,9 +42,9 @@
 
 -- NS VS SMC POI
 spawnCreatures(singingMtnClanGuardian, 2, -2530, 1600, 500, 5)
-spawnCreatures(singingMountainClanSentry, 2, -2530, 1600, 500, 5)
+spawnCreatures(singingMtnClanSentry, 2, -2530, 1600, 500, 5)
 spawnCreatures(singingMtnClanCouncilwoman, 2, -2530, 1600, 50, 2)
-spawnCreatures(singingMountainClanSentry, 2, -2530, 1600, 500, 5)
+spawnCreatures(singingMtnClanSentry, 2, -2530, 1600, 500, 5)
 spawnCreatures(singingMtnClanInitiate, 2, -2530, 1600, 500, 5)
 spawnCreatures(singingMtnClanScout, 2, -2530, 1600, 500, 5)
 spawnCreatures(singingMtnClanScout, 2, -2530, 1600, 1000, 25)

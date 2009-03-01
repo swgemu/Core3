@@ -41,45 +41,32 @@
 --which carries forward this exception.
 
 -- Force Crystal Hunter's Cave
---Cells are: ....83 = Upper Entry   84 = middle floor down to the 2nd camp     85 = lower floor down to the maincave  86= lower main cave
-
---First mob, 84 upper part
-spawnCreatureInCell(darkForceCrystalHunter, 1, 21.8, -38.6, -32.9, 8535484)
-spawnCreatureInCell(untrainedWielderOfTheDarkSide, 1, 23.5, -38.5, -33.1, 8535484)
-spawnCreatureInCell(darkForceCrystalHunter, 1, 25.1, -38.3, -33.5, 8535484)
-
---2nd mob, 84 middle part
-spawnCreatureInCell(untrainedWielderOfTheDarkSide, 1, 22.7, -40.1, -44.8, 8535484)
-spawnCreatureInCell(untrainedWielderOfTheDarkSide, 1, 25.6, -40.4, -45.9, 8535484)
-
---3rd mob, 84 lower end/corner -  before turn
-spawnCreatureInCell(darkForceCrystalHunter, 1, 24.3, -42.6, -67.3, 8535484)
-spawnCreatureInCell(darkForceCrystalHunter, 1, 20.1, -41.4, -68.3, 8535484)
-
---4th mob, 84 first camp in the turn
-spawnCreatureInCell(darkForceCrystalHunter, 1, 51.5, -48.9, -62.3, 8535484)
-
---5th mob, 84 bridge/intersection to 85 , in the middle
-spawnCreatureInCell(darkForceCrystalHunter, 1, 44.5, -47.5, -42.1, 8535484)
-
---6th mob, 84 camp at the end of the bridge
-spawnCreatureInCell(darkForceCrystalHunter, 1, 48.1, -47.1, -7.4, 8535484)
-spawnCreatureInCell(darkForceCrystalHunter, 1, 46.5, -47.2, -9.6, 8535484)
-
---7th mob, 85 very first beginning of cell (boarder to the floor leading down)
-spawnCreatureInCell(untrainedWielderOfTheDarkSide, 1, 91.7, -62.1, -16.9, 8535485)
-spawnCreatureInCell(untrainedWielderOfTheDarkSide, 1, 92.3, -64.4, -17.8, 8535485)
-
---8th mob, 86 1. camp right
-spawnCreatureInCell(darkForceCrystalHunter, 1, 66.3, -75.4, -58.9, 8535486)
-spawnCreatureInCell(darkForceCrystalHunter, 1, 72.0, -75.3, -59.4, 8535486)
-
---9th mob, 86 2. camp left
-spawnCreatureInCell(darkForceCrystalHunter, 1, 89.8,- 76.9, -61.9, 8535486)
-spawnCreatureInCell(darkForceCrystalHunter, 1, 88.6, -76.8, -64.3, 8535486)
-spawnCreatureInCell(darkForceCrystalHunter, 1, 93.9, -75.7, -65.0, 8535486)
-spawnCreatureInCell(darkForceCrystalHunter, 1, 87.0, -76.7, -64.8, 8535486)
-
-
---10th mob, 86 3. camp back
-spawnCreatureInCell(darkForceCrystalHunter, 1, 89.8, -76.4, -85.4, 8535486)
+-- spawnCreatureInCell(untrainedWeilderOfTheDarkSide, 1, 45.0904, -47.6756, -63.313, 8535484)
+-- spawnCreatureInCell(untrainedWeilderOfTheDarkSide, 1, 46.1038, -48.0046, -63.0732, 8535484)
+-- spawnCreatureInCell(untrainedWeilderOfTheDarkSide, 1, 22.7714, -40.6993, -48.1753, 8535484)
+-- spawnCreatureInCell(untrainedWeilderOfTheDarkSide, 1, 23.6106, -40.5315, -46.4409, 8535484)
+-- spawnCreatureInCell(untrainedWeilderOfTheDarkSide, 1, 21.6995, -40.5779, -48.2526, 8535484)
+-- spawnCreatureInCell(untrainedWeilderOfTheDarkSide, 1, 23.3531, -29.6389, -14.2453, 8535483)
+-- spawnCreatureInCell(untrainedWeilderOfTheDarkSide, 1, 22.0372, -29.7611, -14.7857, 8535483)
+-- spawnCreatureInCell(untrainedWeilderOfTheDarkSide, 1, 20.9014, -29.2072, -13.8818, 8535483)
+spawnCreatureInCell(darkForceCrystalHunter, 1, 50.056, -47.4545, -6.97608, 8535484)
+spawnCreatureInCell(darkForceCrystalHunter, 1, 51.387, -47.8643, -5.9065, 8535484)
+spawnCreatureInCell(darkForceCrystalHunter, 1, 51.5238, -48.6576, -64.4212, 8535484)
+-- spawnCreatureInCell(untrainedWeilderOfTheDarkSide, 1, 47.8784, -47.5494, -17.2823, 8535484)
+-- spawnCreatureInCell(untrainedWeilderOfTheDarkSide, 1, 47.1368, -47.2097, -16.3451, 8535484)
+-- spawnCreatureInCell(untrainedWeilderOfTheDarkSide, 1, 92.2009, -65.2158, -31.2866, 8535485)
+-- spawnCreatureInCell(untrainedWeilderOfTheDarkSide, 1, 90.7143, -65.7253, -32.7367, 8535485)
+-- spawnCreatureInCell(untrainedWeilderOfTheDarkSide, 1, 88.9163, -66.1718, -34.8198, 8535485)
+-- spawnCreatureInCell(untrainedWeilderOfTheDarkSide, 1, 91.0278, -65.5753, -32.2358, 8535485)
+spawnCreatureInCell(darkForceCrystalHunter, 1, 53.0072, -68.0963, -40.6676, 8535484)
+spawnCreatureInCell(darkForceCrystalHunter, 1, 54.4778, -68.2985, -40.363, 8535484)
+spawnCreatureInCell(darkForceCrystalHunter, 1, 68.0795, -75.4798, -56.001, 8535486)
+spawnCreatureInCell(darkForceCrystalHunter, 1, 70.3888, -75.3941, -56.9811, 8535486)
+spawnCreatureInCell(darkForceCrystalHunter, 1, 87.7348, -76.5133, -66.0111, 8535486)
+spawnCreatureInCell(darkForceCrystalHunter, 1, 88.5358, -76.431, -66.9858, 8535486)
+spawnCreatureInCell(darkForceCrystalHunter, 1, 66.0897, -75.4689, -64.6093, 8535486)
+spawnCreatureInCell(darkForceCrystalHunter, 1, 65.1141, -75.4725, -64.8087, 8535486)
+spawnCreatureInCell(darkForceCrystalHunter, 1, 75.2572, -76.9339, -88.0694, 8535486)
+spawnCreatureInCell(darkForceCrystalHunter, 1, 75.9547, -76.8223, -87.7808, 8535486)
+spawnCreatureInCell(darkForceCrystalHunter, 1, 91.1268, -76.3305, -82.3623, 8535486)
+spawnCreatureInCell(darkForceCrystalHunter, 1, 89.6152, -76.5638, -83.1857, 8535486)

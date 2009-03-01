@@ -73,13 +73,13 @@ imperialStormTrooperBlackHole = Creature:new {
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 0,
-	energy = 0,
-	electricity = -1,
-	stun = -1,
-	blast = 0,
-	heat = -1,
-	cold = 30,
+	kinetic = 55,
+	energy = 45,
+	electricity = 15,
+	stun = 45,
+	blast = 80,
+	heat = 30,
+	cold = 15,
 	acid = 30,
 	lightsaber = 0,
 

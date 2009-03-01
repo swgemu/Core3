@@ -40,9 +40,29 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-spawnCreatures(casVankoo, 4, -74, 2709, 50, 1)
-spawnCreatures(giantDuneKimogila, 4, -74, 2709, 50, 1)
-spawnCreatures(kimogilaHatchling, 4, -74, 2709, 250, 6)
+spawnCreature(kimogilaHatchling, 4, -104.7, 2650.16)
+spawnCreature(kimogilaHatchling, 4, -98.8467, 2653.42)
+spawnCreature(kimogilaHatchling, 4, -98.0349, 2647.25)
+spawnCreature(lokCommoner1, 4, -89.4283, 2679.48)
+spawnCreature(lokCommoner2, 4, -95.9296, 2685.26)
+spawnCreature(lokCommoner3, 4, -102.416, 2685.17)
+spawnCreature(lokCommoner4, 4, -109.065, 2690.12)
+spawnCreature(lokCommoner5, 4, -102.322, 2684.85)
+spawnCreature(lokCommoner6, 4, -86.1488, 2709.89)
+spawnCreature(lokCommoner7, 4, -92.9387, 2708.29)
+spawnCreature(lokCommoner8, 4, -95.2094, 2710.35)
+spawnCreature(lokCommoner9, 4, -98.4221, 2716.59)
+spawnCreature(lokCommoner10, 4, -93.4888, 2717.4)
+spawnCreature(kimogilaHatchling, 4, -125.891, 2747.89)
+spawnCreature(kimogilaHatchling, 4, -127.63, 2751.88)
+spawnCreature(kimogilaHatchling, 4, -134.281, 2759.8)
+spawnCreature(lokCommoner11, 4, -51.6445, 2718.56)
+spawnCreature(lokCommoner12, 4, -45.2733, 2713.45)
+spawnCreature(lokCommoner13, 4, -41.4249, 2711.64)
+spawnCreature(lokCommoner14, 4, -35.1539, 2708.05)
+spawnCreature(lokCommoner15, 4, -42.6069, 2713.9)
+spawnCreature(casVankoo, 4, -18.5213, 2729.13)
+spawnCreature(giantDuneKimogila, 4, -3.64837, 2716.32)
 
 
 

@@ -56,7 +56,7 @@
  RunCreatureFile("objects/dantooine/npcs/forceSens/forceTrainedArchaist.lua")
  RunCreatureFile("objects/dantooine/npcs/forceSens/forsakenForceDrifter.lua")
  --RunCreatureFile("objects/dantooine/npcs/forceSens/noviceForceMystic.lua") --Find CRC
- RunCreatureFile("objects/dantooine/npcs/forceSens/untrainedWielderOfTheDarkSide.lua")
+ RunCreatureFile("objects/dantooine/npcs/forceSens/untrainedWeilderOfTheDarkSide.lua")
 
  --Jantas
  RunCreatureFile("objects/dantooine/npcs/janta/jantaClanLeader.lua")
@@ -117,3 +117,5 @@
  RunCreatureFile("objects/dantooine/npcs/warren/warrenTeraudLoyalist.lua")
  RunCreatureFile("objects/dantooine/npcs/warren/warrenTeraudLoyalistCommander.lua")
  RunCreatureFile("objects/dantooine/npcs/warren/warrenTeraudLoyalistCyborg.lua")
+ 
+ RunCreatureFile("objects/dantooine/npcs/abandonedRebel.lua")

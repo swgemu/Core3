@@ -72,12 +72,12 @@ imperialStormCommando = Creature:new {
 	willpower = 0,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 0,
-	energy = 0,
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 20,
+	energy = 20,
 	electricity = 30,
 	stun = -1,
-	blast = 0,
+	blast = 20,
 	heat = 30,
 	cold = -1,
 	acid = -1,
@@ -87,25 +87,25 @@ imperialStormCommando = Creature:new {
 
 	healer = 0,
 
-	pack = 1,
+	pack = 0,
 	herd = 0,
-	stalker = 1,
-	killer = 1,
+	stalker = 0,
+	killer = 0,
 	ferocity = 0,
 	aggressive = 0,
 	invincible = 0,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "Imperial Flame Thrower", -- Name ex. 'a Vibrolance'
-	weaponTemp = "rifle_flame_thrower", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "HeavyRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weapon = "object/weapon/ranged/carbine/shared_carbine_e11.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "an e11 Carbine", -- Name ex. 'a Vibrolance'
+	weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
 	weaponMinDamage = 300,
 	weaponMaxDamage = 310,
 	weaponAttackSpeed = 2,
-	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx

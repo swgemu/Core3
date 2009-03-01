@@ -50,6 +50,7 @@ if (PLANET_ID == 0) then
  RunCreatureFile("spawns/corellia/citys/korVella.lua") 
  RunCreatureFile("spawns/corellia/citys/tyrena.lua") 
  RunCreatureFile("spawns/corellia/citys/vreniIsland.lua") 
+ RunCreatureFile("spawns/corellia/citys/theater.lua")
  ---
  RunCreatureFile("spawns/corellia/dungeons/afarathuCave.lua")
  RunCreatureFile("spawns/corellia/dungeons/drallCave.lua")
@@ -63,15 +64,17 @@ end
 if (PLANET_ID == 1) then
  RunCreatureFile("spawns/dantooine/staticSpawns.lua")
  RunCreatureFile("spawns/dantooine/jediSpawns.lua") 
- --
+ RunCreatureFile("spawns/dantooine/abandonedRebel.lua")  
+ 
  RunCreatureFile("spawns/dantooine/citys/imperialOutpost.lua")
  RunCreatureFile("spawns/dantooine/citys/miningOutpost.lua")
  RunCreatureFile("spawns/dantooine/citys/pirateOutpost.lua")
- --
+ 
  RunCreatureFile("spawns/dantooine/dungeons/forceCrystalHuntersCave.lua")
  RunCreatureFile("spawns/dantooine/dungeons/jantaCave.lua")
  RunCreatureFile("spawns/dantooine/dungeons/kungaCave.lua")
  RunCreatureFile("spawns/dantooine/dungeons/MokkCave.lua")
+ RunCreatureFile("spawns/dantooine/dungeons/dantariMokkVillage.lua") 
 end
 
 --Dathomir
@@ -108,11 +111,16 @@ if (PLANET_ID == 4) then
 RunCreatureFile("spawns/lok/staticSpawns.lua")
 RunCreatureFile("spawns/lok/citys/nymsStronghold.lua")
 RunCreatureFile("spawns/lok/kimoTown.lua")
+RunCreatureFile("spawns/lok/canyonCorsairStronghold.lua")
+RunCreatureFile("spawns/lok/gurkKingLair.lua")
+RunCreatureFile("spawns/lok/imperialOutpost.lua")
+RunCreatureFile("spawns/lok/dungeons/droidDungeon.lua")
 end
 
 --Naboo
 if (PLANET_ID == 5) then
  RunCreatureFile("spawns/naboo/staticSpawns.lua")
+ RunCreatureFile("spawns/naboo/weaponDevelopmentFacility.lua") 
  --
  RunCreatureFile("spawns/naboo/citys/deejaPeak.lua") 
  RunCreatureFile("spawns/naboo/citys/emperorRetreat.lua")
@@ -180,6 +188,7 @@ RunCreatureFile("spawns/yavin4/citys/miningOutpost.lua")
 --
 RunCreatureFile("spawns/yavin4/dungeons/geoCave.lua")
 RunCreatureFile("spawns/yavin4/dungeons/woolamanderPalace.lua")
+RunCreatureFile("spawns/yavin4/dungeons/blueleafTemple.lua")
 end
 
 --Corellian Corvette
