@@ -42,21 +42,22 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CREATUREPETIMPLEMENTATION_H_
-#define CREATUREPETIMPLEMENTATION_H_
+#ifndef FEATURES_H_
+#define FEATURES_H_
 
-class Player;
+#include "engine/engine.h"
 
-class CreaturePetImplementation {
-	ManagedReference<CreatureObject> owner;
-	uint64 ownerID;
-
-	ItemAttributes* petCommands;
+class Features : public VectorMap<String, String> {
 
 public:
-	CreaturePetImplementation(CreatureObject* ownerCreature, const String& name, const String& stf, uint32 itnocrc, uint32 objCRC, uint64 oid);
+	Features();
+	~Features();
 
-	~CreaturePetImplementation();
+	bool loadFeatures();
+
+	inline bool hasFeature(const String& key) {
+		return contains(key);
+	}
 };
 
-#endif /* CREATUREPETIMPLEMENTATION_H_ */
+#endif /* FEATURES_H_ */

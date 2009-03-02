@@ -4140,6 +4140,7 @@ void CreatureObjectImplementation::recoverFromIncapacitation() {
  */
 void CreatureObjectImplementation::die() {
 
+	clearStates();
 	setPosture(CreaturePosture::DEAD);
 	timeOfDeath = Time().getMiliTime();
 

@@ -239,6 +239,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/chat/ChatManagerImplementation.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/conf/ConfigManager.cpp \
+		server/features/Features.cpp \
 		server/db/ForumsDatabase.cpp \
 		server/db/ServerDatabase.cpp \
 		server/login/LoginMessageProcessorThread.cpp \

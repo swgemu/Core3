@@ -64,6 +64,8 @@ ServerCore::ServerCore() : Core("log/core3.log"), Logger("Core") {
 	pingServer = NULL;
 	forumDatabase = NULL;
 	database = NULL;
+
+	features = NULL;
 }
 
 void ServerCore::init() {
@@ -185,6 +187,11 @@ void ServerCore::shutdown() {
 		forumDatabase = NULL;
 	}
 
+	if (features != NULL) {
+		delete features;
+		features = NULL;
+	}
+
 	DistributedObjectBroker::finalize();
 
 	info("server closed");
@@ -260,4 +267,7 @@ void ServerCore::handleCommands() {
 void ServerCore::processConfig() {
 	if (!configManager.loadConfigData())
 		info("missing config file.. loading default values\n");
+
+	//if (!features->loadFeatures())
+		//info("Problem occurred trying to load features.lua");
 }

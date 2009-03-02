@@ -498,7 +498,7 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* tar
 		if (actionMessage != NULL && targetCreature != NULL)
 			actionMessage->addDefender(targetCreature, damage >= 0);
 
-		if (targetCreature != NULL) {
+		if (targetCreature != NULL && !targetCreature->isDead()) {
 
 			skill->calculateStates(attacker, targetCreature);
 

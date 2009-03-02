@@ -42,21 +42,20 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CREATUREPETIMPLEMENTATION_H_
-#define CREATUREPETIMPLEMENTATION_H_
+#include "Features.h"
 
-class Player;
+Features::Features()
+	: VectorMap<String, String>() {
+	setInsertPlan(NO_DUPLICATE);
+}
 
-class CreaturePetImplementation {
-	ManagedReference<CreatureObject> owner;
-	uint64 ownerID;
+Features::~Features() {
+}
 
-	ItemAttributes* petCommands;
+bool Features::loadFeatures() {
+	Lua* lua = new Lua();
+	if (!lua->runFile("features.lua"))
+		return false;
 
-public:
-	CreaturePetImplementation(CreatureObject* ownerCreature, const String& name, const String& stf, uint32 itnocrc, uint32 objCRC, uint64 oid);
-
-	~CreaturePetImplementation();
-};
-
-#endif /* CREATUREPETIMPLEMENTATION_H_ */
+	return true;
+}
