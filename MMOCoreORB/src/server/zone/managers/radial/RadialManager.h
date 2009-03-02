@@ -143,6 +143,11 @@ public:
 	void handleStructurePayMaintenance(Player* player, SceneObject* obj);
 	void handleStructureCreateVendor(Player* player, SceneObject* obj);
 	void handleGiveVendorMaintenance(Player* player, SceneObject* obj);
+
+
+	//Healing
+	void handleHealWound(Player* player, SceneObject* obj, uint8 attribute = 9);
+	void handleHealEnhance(Player* player, SceneObject* obj, uint8 attribute = 9);
 };
 
 #endif /*RADIALMANAGER_H_*/

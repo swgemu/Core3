@@ -270,10 +270,10 @@ void ArmorImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespons
 	if (player->getInventoryItem(getObjectID()) != NULL) {
 
 		if (!isSliced() && player->getSlicingAbility() >= 3)
-			omr->addRadialItem(0, 69, 3, "Slice");
+			omr->addRadialParent(69, 3, "@slicing:slice");
 
 		if (getConditionDamage() > 0)
-			omr->addRadialItem(0, 70, 3, "Repair");
+			omr->addRadialParent(70, 3, "@sui:repair");
 	}
 
 	//TODO:Cell permission check
@@ -281,7 +281,7 @@ void ArmorImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespons
 		bool cellPermission = true;
 
 		if (_this->getParent()->isCell() && cellPermission) {
-			omr->addRadialItem(0, 10, 3, "Pickup");
+			omr->addRadialParent(10, 3, "@ui_radial:item_pickup");
 		}
 	}
 

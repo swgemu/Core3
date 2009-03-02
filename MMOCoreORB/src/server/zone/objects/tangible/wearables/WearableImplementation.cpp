@@ -194,7 +194,7 @@ void WearableImplementation::sendRadialResponseTo(Player* player, ObjectMenuResp
 	if (player->getInventoryItem(getObjectID()) != NULL) {
 
 		if (getConditionDamage() > 0)
-			omr->addRadialItem(0, 70, 3, "Repair");
+			omr->addRadialParent(70, 3, "sui:repair");
 	}
 
 	//TODO:Cell permission check
@@ -202,7 +202,7 @@ void WearableImplementation::sendRadialResponseTo(Player* player, ObjectMenuResp
 		bool cellPermission = true;
 
 		if (_this->getParent()->isCell() && cellPermission) {
-			omr->addRadialItem(0, 10, 3, "Pickup");
+			omr->addRadialParent(10, 3, "@ui_radial:item_pickup");
 		}
 	}
 

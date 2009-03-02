@@ -74,9 +74,9 @@ public:
 
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
 		//TODO: Note to myself, Farmer: Check bank location here and adjust radial according
-		omr->addRadialItem(0, 245, 3, "@sui:bank_items"); //Safety Deposit
-		omr->addRadialItem(0, 246, 3, "Register with the bank (not working yet)");
-		omr->addRadialItem(0, 247, 3, "Unregister (not working yet)");
+		omr->addRadialParent(245, 3, "@sui:bank_items"); //Safety Deposit
+		omr->addRadialParent(246, 3, "Register with the bank (not working yet)");
+		omr->addRadialParent(247, 3, "Unregister (not working yet)");
 
 		omr->finish();
 		player->sendMessage(omr);

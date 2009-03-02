@@ -593,7 +593,7 @@ public:
 
 	bool hasDamage();
 
-	bool hasWounds();
+	bool hasWounds(bool h = true, bool a = true, bool m = true);
 
 	bool hasWound(unsigned char attribute);
 
@@ -784,6 +784,8 @@ public:
 	unsigned long long getGuildID();
 
 	Guild* getGuild();
+
+	unsigned int getActionCounter();
 
 	float getSpeed();
 
@@ -1871,7 +1873,7 @@ public:
 
 	bool hasDamage();
 
-	bool hasWounds();
+	bool hasWounds(bool h, bool a, bool m);
 
 	bool hasWound(unsigned char attribute);
 
@@ -2062,6 +2064,8 @@ public:
 	unsigned long long getGuildID();
 
 	Guild* getGuild();
+
+	unsigned int getActionCounter();
 
 	float getSpeed();
 

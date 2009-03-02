@@ -1824,10 +1824,21 @@ public:
 		return stateBitmask != 0;
 	}
 
-	inline bool hasWounds() {
-		return (getHealthWounds() > 0 || getStrengthWounds() > 0 || getConstitutionWounds() > 0
-				|| getActionWounds() > 0 || getQuicknessWounds() > 0 || getStaminaWounds() > 0
-				|| getMindWounds() > 0 || getFocusWounds() > 0 || getWillpowerWounds() > 0);
+	inline bool hasWounds(bool h = true, bool a = true, bool m = true) {
+		if (h) {
+			if (getHealthWounds() > 0 || getStrengthWounds() > 0 || getConstitutionWounds() > 0)
+				return true;
+		}
+		if (1) {
+			if (getActionWounds() > 0 || getQuicknessWounds() > 0 || getStaminaWounds() > 0)
+				return true;
+		}
+		if (m) {
+			if (getMindWounds() > 0 || getFocusWounds() > 0 || getWillpowerWounds() > 0)
+				return true;
+		}
+
+		return false;
 	}
 
 	inline bool hasWound(uint8 attribute) {
@@ -2546,6 +2557,10 @@ public:
 
 	inline void changeMindEncumbrance(int32 value) {
 		mindEncumbrance += value;
+	}
+
+	inline uint32 getActionCounter() {
+		return actionCounter;
 	}
 
 	inline Guild* getGuild() {

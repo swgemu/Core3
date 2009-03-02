@@ -122,12 +122,10 @@ int SurveyToolImplementation::useObject(Player* player) {
 				player->setSurveyTool(_this);
 			}
 		} else {
-			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","select_range");
-			player->sendMessage(sysMessage);
+			player->sendSystemMessage("survey","select_range");
 		}
 	} else {
-		ChatSystemMessage* sysMessage = new ChatSystemMessage("error_message", "insufficient_skill");
-		player->sendMessage(sysMessage);
+		player->sendSystemMessage("error_message", "insufficient_skill");
 	}
 
 	return 0;
@@ -172,11 +170,12 @@ void SurveyToolImplementation::sendRadialResponseTo(Player* player, ObjectMenuRe
 		if (parent != NULL) {
 
 			if (parent->isCell()) {
-				omr->addRadialItem(0, 10, 3, "Pickup");
+				omr->addRadialParent(10, 3, "@ui_radial:item_pickup");
 
 			} else if (parent == player->getInventory() && player->getParent() == NULL) {
-				omr->addRadialItem(0, 135, 3, "@sui:tool_options");
-				omr->addRadialItem(4, 133, 3, "@sui:survey_range");
+				RadialMenuParent* toolOptions = new RadialMenuParent(135, 3, "@sui:tool_options");
+				toolOptions->addRadialMenuItem(133, 3, "@sui:survey_range");
+				omr->addRadialParent(toolOptions);
 			}
 
 		}

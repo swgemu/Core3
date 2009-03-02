@@ -73,12 +73,6 @@ public:
 
 		return 0;
 	}
-
-	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
-		omr->finish();
-
-		player->sendMessage(omr);
-	}
 };
 
 #endif /*TRAVELTERMINALIMPLEMENTATION_H_*/

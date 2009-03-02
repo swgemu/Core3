@@ -274,7 +274,7 @@ void GrenadeThrowableWeaponImplementation::sendRadialResponseTo(Player* player, 
 		bool cellPermission = true;
 
 		if (_this->getParent()->isCell() && cellPermission) {
-			omr->addRadialItem(0, 10, 3, "Pickup");
+			omr->addRadialParent(10, 3, "@ui_radial:item_pickup");
 		}
 	}
 

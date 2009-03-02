@@ -199,7 +199,7 @@ void CraftingToolImplementation::sendRadialResponseTo(Player* player, ObjectMenu
 
 	if(hopper != NULL) {
 		if(hopper->getContainerObjectsSize() > 0) {
-			omr->addRadialItem(0, 132, 3, "@ui_radial:craft_hopper_output");
+			omr->addRadialParent(132, 3, "@ui_radial:craft_hopper_output");
 		}
 	}
 
@@ -208,7 +208,7 @@ void CraftingToolImplementation::sendRadialResponseTo(Player* player, ObjectMenu
 
 		if (_this->getParent()->isCell() && cellPermission) {
 			if (_this->isTangible())
-			omr->addRadialItem(0, 10, 3, "Pickup");
+			omr->addRadialParent(10, 3, "@ui_radial:item_pickup");
 		}
 	}
 

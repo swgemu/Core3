@@ -117,24 +117,27 @@ void DiceImplementation::addAttributes(AttributeListMessage* alm) {
 
 void DiceImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
 	if (player->getInventoryItem(getObjectID()) != NULL) {
-		omr->addRadialItem(0,172,3,"@dice/dice:dice_roll_single");
+		RadialMenuParent* rollMenu = new RadialMenuParent(172,3,"@dice/dice:dice_roll_single");
 
 		if (diceType != CHANCECUBE && diceType != CONFIGURABLE) {
-			omr->addRadialItem(3,172,3,"@dice/dice:dice_roll_one_single");
-			omr->addRadialItem(3,173,3,"@dice/dice:dice_roll_two_single");
-			omr->addRadialItem(3,174,3,"@dice/dice:dice_roll_three_single");
-			omr->addRadialItem(3,175,3,"@dice/dice:dice_roll_four_single");
+			rollMenu->addRadialMenuItem(172,3,"@dice/dice:dice_roll_one_single");
+			rollMenu->addRadialMenuItem(173,3,"@dice/dice:dice_roll_two_single");
+			rollMenu->addRadialMenuItem(174,3,"@dice/dice:dice_roll_three_single");
+			rollMenu->addRadialMenuItem(175,3,"@dice/dice:dice_roll_four_single");
 		}
 
+		omr->addRadialParent(rollMenu);
+
 		if (diceType == CONFIGURABLE) {
-			omr->addRadialItem(0,164,3,"@dice/dice_details:eqp_dice_configure");
-			omr->addRadialItem(4,171,3,"@dice/dice:dice_eight_single");
-			omr->addRadialItem(4,170,3,"@dice/dice:dice_seven_single");
-			omr->addRadialItem(4,169,3,"@dice/dice:dice_six_single");
-			omr->addRadialItem(4,168,3,"@dice/dice:dice_five_single");
-			omr->addRadialItem(4,167,3,"@dice/dice:dice_four_single");
-			omr->addRadialItem(4,166,3,"@dice/dice:dice_three_single");
-			omr->addRadialItem(4,165,3,"@dice/dice:dice_two_single");
+			RadialMenuParent* configureMenu = new RadialMenuParent(164,3,"@dice/dice_details:eqp_dice_configure");
+			configureMenu->addRadialMenuItem(171,3,"@dice/dice:dice_eight_single");
+			configureMenu->addRadialMenuItem(170,3,"@dice/dice:dice_seven_single");
+			configureMenu->addRadialMenuItem(169,3,"@dice/dice:dice_six_single");
+			configureMenu->addRadialMenuItem(168,3,"@dice/dice:dice_five_single");
+			configureMenu->addRadialMenuItem(167,3,"@dice/dice:dice_four_single");
+			configureMenu->addRadialMenuItem(166,3,"@dice/dice:dice_three_single");
+			configureMenu->addRadialMenuItem(165,3,"@dice/dice:dice_two_single");
+			omr->addRadialParent(configureMenu);
 		}
 	}
 
@@ -142,7 +145,7 @@ void DiceImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse
 		bool cellPermission = true;
 
 		if (_this->getParent()->isCell() && cellPermission) {
-			omr->addRadialItem(0, 10, 3, "Pickup");
+			omr->addRadialParent(10, 3, "@ui_radial:item_pickup");
 		}
 	}
 

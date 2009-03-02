@@ -4676,27 +4676,62 @@ void PlayerImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespon
 	//player = the player requesting the radial
 	//_this = the object who's radial was activated (can only be a playerobject)
 
+	//In order to have sub menus, all parent menus have to be declared first.
+
+	if (!isDead() && !isIncapacitated()) {
+		//Heal Enhance
+		//TODO: Can this be changed to check for an ability, rather than a skillbox?
+		String sbox = "science_doctor_wound_02";
+
+		if (player->hasSkillBox(sbox)) {
+			RadialMenuParent* enhanceMenu = new RadialMenuParent(100, 3, "@sui:heal_enhance");
+			enhanceMenu->addRadialMenuItem(101, 3, "@sui:heal_enhance_health");
+			enhanceMenu->addRadialMenuItem(102, 3, "@sui:heal_enhance_action");
+			enhanceMenu->addRadialMenuItem(103, 3, "@sui:heal_enhance_strength");
+			enhanceMenu->addRadialMenuItem(104, 3, "@sui:heal_enhance_constitution");
+			enhanceMenu->addRadialMenuItem(105, 3, "@sui:heal_enhance_quickness");
+			enhanceMenu->addRadialMenuItem(106, 3, "@sui:heal_enhance_stamina");
+			omr->addRadialParent(enhanceMenu);
+		}
+
+		sbox = "science_medic_novice";
+
+		if (player->hasSkillBox(sbox) && hasWounds(true, true, false)) {
+			RadialMenuParent* woundMenu = new RadialMenuParent(87, 3, "@sui:heal_wound");
+
+			if (hasWound(CreatureAttribute::HEALTH))
+				woundMenu->addRadialMenuItem(88, 3, "@sui:heal_wound_health");
+			if (hasWound(CreatureAttribute::ACTION))
+				woundMenu->addRadialMenuItem(89, 3, "@sui:heal_wound_action");
+			if (hasWound(CreatureAttribute::STRENGTH))
+				woundMenu->addRadialMenuItem(90, 3, "@sui:heal_wound_strength");
+			if (hasWound(CreatureAttribute::CONSTITUTION))
+				woundMenu->addRadialMenuItem(91, 3, "@sui:heal_wound_constitution");
+			if (hasWound(CreatureAttribute::QUICKNESS))
+				woundMenu->addRadialMenuItem(92, 3, "@sui:heal_wound_quickness");
+			if (hasWound(CreatureAttribute::STAMINA))
+				woundMenu->addRadialMenuItem(93, 3, "@sui:heal_wound_stamina");
+			omr->addRadialParent(woundMenu);
+		}
+	}
+
 	if (_this->isPlayingMusic()) {
 		if (!player->isListening())
-			omr->addRadialItem(0, 116, 3, "@radial_performance:listen");
+			omr->addRadialParent(116, 3, "@radial_performance:listen");
 		else
-			omr->addRadialItem(0, 116, 3, "@radial_performance:listen_stop");
+			omr->addRadialParent(116, 3, "@radial_performance:listen_stop");
 	}
 
 	if (_this->isDancing()) {
 		if (!player->isWatching())
-			omr->addRadialItem(0, 116, 3, "@radial_performance:watch");
+			omr->addRadialParent(116, 3, "@radial_performance:watch");
 		else
-			omr->addRadialItem(0, 116, 3, "@radial_performance:watch_stop");
+			omr->addRadialParent(116, 3, "@radial_performance:watch_stop");
 	}
 
 	if (!isDead() && !isIncapacitated()) {
 		if (_this->isInAGroup() && player->isInAGroup() && (group == player->getGroupObject())) {
-			omr->addRadialItem(0, 140, 3, "@cmd_n:teach");
-		}
-
-		if (hasWounds()) {
-			omr->addRadialItem(0, 87, 3, "@sui:heal_wound");
+			omr->addRadialParent(140, 3, "@cmd_n:teach");
 		}
 	}
 
@@ -6003,6 +6038,8 @@ bool PlayerImplementation::migrateStats() {
 
 	if (playerManager != NULL)
 		playerManager->updatePlayerBaseHAMToDatabase(_this);
+
+	return true;
 }
 
 

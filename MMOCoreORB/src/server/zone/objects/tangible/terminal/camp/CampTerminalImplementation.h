@@ -29,7 +29,7 @@ public:
 		if (camp->getOwner() != player || camp->isAbandoned())
 			return;
 
-		omr->addRadialItem(0, 182, 3, "@camp:mnu_disband");
+		omr->addRadialParent(182, 3, "@camp:mnu_disband");
 
 		omr->finish();
 		player->sendMessage(omr);

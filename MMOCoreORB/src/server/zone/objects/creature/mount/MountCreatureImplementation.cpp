@@ -229,11 +229,11 @@ void MountCreatureImplementation::repair() {
 
 void MountCreatureImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
 	if (player->getMount() == _this) {
-		omr->addRadialItem(0, 205, 1, "@pet/pet_menu:menu_enter_exit");
-		omr->addRadialItem(0, 61, 3);
+		omr->addRadialParent(205, 1, "@pet/pet_menu:menu_enter_exit");
+		omr->addRadialParent(61, 3, "");
 
-		//TODO:Remove this when garages are functionally
-		omr->addRadialItem(0, 62, 3, "Repair");
+		//TODO:Remove this when garages are functioning
+		omr->addRadialParent(62, 3, "Repair");
 	}
 
 	omr->finish();

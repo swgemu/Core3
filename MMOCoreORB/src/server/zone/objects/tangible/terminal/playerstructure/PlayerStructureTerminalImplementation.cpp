@@ -56,20 +56,23 @@ int PlayerStructureTerminalImplementation::useObject(Player* player) {
 }
 
 void PlayerStructureTerminalImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
-	omr->addRadialItem(0, 118, 3, "@player_structure:management"); //Structure Management
-	omr->addRadialItem(0, 117, 3, "@player_structure:permissions"); //Structure Permissions
+		RadialMenuParent* management = new RadialMenuParent(118, 3, "@player_structure:management");
+		RadialMenuParent* permissions = new RadialMenuParent(117, 3, "@player_structure:permissions");
 
-		omr->addRadialItem(3, 126, 3, "@player_structure:management_transfer"); //Transfer Ownership
-		omr->addRadialItem(3, 128, 3, "@player_structure:permission_destroy"); //Destroy Structure
-		omr->addRadialItem(3, 124, 3, "@player_structure:management_status"); //Status
-		omr->addRadialItem(3, 129, 3, "@player_structure:management_pay"); //Pay Maintenance
-		omr->addRadialItem(3, 127, 3, "@player_structure:management_residence"); //Declare Residence
-		omr->addRadialItem(3, 125, 3, "@player_structure:management_privacy"); //Privacy
+		management->addRadialMenuItem(126, 3, "@player_structure:management_transfer"); //Transfer Ownership
+		management->addRadialMenuItem(128, 3, "@player_structure:permission_destroy"); //Destroy Structure
+		management->addRadialMenuItem(124, 3, "@player_structure:management_status"); //Status
+		management->addRadialMenuItem(129, 3, "@player_structure:management_pay"); //Pay Maintenance
+		management->addRadialMenuItem(127, 3, "@player_structure:management_residence"); //Declare Residence
+		management->addRadialMenuItem(125, 3, "@player_structure:management_privacy"); //Privacy
 
-		omr->addRadialItem(2, 119, 3, "@player_structure:permission_enter"); //Entry List
-		omr->addRadialItem(2, 120, 3, "@player_structure:permission_banned"); //Ban List
-		omr->addRadialItem(2, 121, 3, "@player_structure:permission_admin"); //Administrator List
-		omr->addRadialItem(2, 122, 3, "@player_structure:permission_vendor"); //Vendor List
+		permissions->addRadialMenuItem(119, 3, "@player_structure:permission_enter"); //Entry List
+		permissions->addRadialMenuItem(120, 3, "@player_structure:permission_banned"); //Ban List
+		permissions->addRadialMenuItem(121, 3, "@player_structure:permission_admin"); //Administrator List
+		permissions->addRadialMenuItem(122, 3, "@player_structure:permission_vendor"); //Vendor List
+
+		omr->addRadialParent(permissions);
+		omr->addRadialParent(management);
 
 		omr->finish();
 		player->sendMessage(omr);
