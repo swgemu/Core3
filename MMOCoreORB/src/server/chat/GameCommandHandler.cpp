@@ -2154,6 +2154,7 @@ void GameCommandHandler::getTargetLocation(StringTokenizer tokenizer, Player* pl
 	}
 }
 
+/*  Needs filewriter fixing, Errors on Cygwin engine/Compile.
 void GameCommandHandler::getCords(StringTokenizer tokenizer, Player* player) {
 	//This command is for the cave devs, helping them building the needed LUA files.
 	//Please dont delete it from the SVN , Uncomment for use on dev Servers.
@@ -2202,6 +2203,7 @@ void GameCommandHandler::getCords(StringTokenizer tokenizer, Player* player) {
 
 	delete cordFile;
 }
+*/
 
 void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player* player) {
 	//Give TANO
