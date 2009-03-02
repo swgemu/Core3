@@ -478,7 +478,7 @@ interface CreatureObject implements TangibleObject {
 	boolean hasMindDamage();
 	boolean hasDamage();
 
-	boolean hasWounds();
+	boolean hasWounds(boolean h = true, boolean a = true, boolean m = true);
 	boolean hasWound(unsigned char attribute);
 	boolean hasShockWounds();
 
@@ -606,6 +606,8 @@ interface CreatureObject implements TangibleObject {
 	unsigned long getGroupID();
 	unsigned long getGuildID();
 	Guild getGuild();
+	
+	unsigned int getActionCounter();
 
 	unsigned float getSpeed();
 	unsigned float getAcceleration();

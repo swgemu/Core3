@@ -92,28 +92,31 @@ public:
 			return;
 
 		if (guild->getGuildID() != 0) {
-			omr->addRadialItem(0, 193, 3, "@guild:menu_guild_management");
-			omr->addRadialItem(0, 194, 3, "@guild:menu_member_management");
+			RadialMenuParent* guildManagement = new RadialMenuParent(193, 3, "@guild:menu_guild_management");
+			RadialMenuParent* guildMemberManagement = new RadialMenuParent(194, 3, "@guild:menu_member_management");
 
 			// Suboptions
-			omr->addRadialItem(2, 189, 3, "@guild:menu_enemies");
-			omr->addRadialItem(2, 186, 3, "@guild:menu_info");
-			omr->addRadialItem(2, 191, 3, "@guild:menu_disband");
-			omr->addRadialItem(2, 192, 3, "@guild:menu_namechange");
+			guildManagement->addRadialMenuItem(189, 3, "@guild:menu_enemies");
+			guildManagement->addRadialMenuItem(186, 3, "@guild:menu_info");
+			guildManagement->addRadialMenuItem(191, 3, "@guild:menu_disband");
+			guildManagement->addRadialMenuItem(192, 3, "@guild:menu_namechange");
 
 			//ToDo: When PA halls are in:  if guild elections == disabled
-			omr->addRadialItem(2, 250, 3, "@guild:menu_enable_elections");
+			guildManagement->addRadialMenuItem(250, 3, "@guild:menu_enable_elections");
 			//else omr->addRadialItem(2, 201, 3, "@guild:menu_disable_elections");
 
 			//Suboptions
-			omr->addRadialItem(3, 187, 3, "@guild:menu_members");
-			omr->addRadialItem(3, 190, 3, "@guild:menu_sponsor");
-			omr->addRadialItem(3, 188, 3, "@guild:menu_sponsored");
-			omr->addRadialItem(3, 251, 3, "@guild:menu_leader_change");
+			guildMemberManagement->addRadialMenuItem(187, 3, "@guild:menu_members");
+			guildMemberManagement->addRadialMenuItem(190, 3, "@guild:menu_sponsor");
+			guildMemberManagement->addRadialMenuItem(188, 3, "@guild:menu_sponsored");
+			guildMemberManagement->addRadialMenuItem(251, 3, "@guild:menu_leader_change");
+
+			omr->addRadialParent(guildManagement);
+			omr->addRadialParent(guildMemberManagement);
 
 
 		} else {
-			omr->addRadialItem(0, 185, 3, "@guild:menu_create");
+			omr->addRadialParent(185, 3, "@guild:menu_create");
 		}
 
 		omr->finish();

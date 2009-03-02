@@ -48,11 +48,11 @@ void ResourceDeedImplementation::sendRadialResponseTo(Player* player, ObjectMenu
 
 		if (_this->getParent()->isCell() && cellPermission) {
 			if (_this->isTangible())
-			omr->addRadialItem(0, 10, 3, "Pickup");
+			omr->addRadialParent(10, 3, "@ui_radial:item_pickup");
 		}
 	}
 
-	omr->addRadialItem(0, 20, 3, "@ui_radial:item_use");
+	omr->addRadialParent(20, 3, "@ui_radial:item_use");
 
 	omr->finish();
 

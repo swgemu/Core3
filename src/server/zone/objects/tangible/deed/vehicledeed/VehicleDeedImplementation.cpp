@@ -95,14 +95,14 @@ void VehicleDeedImplementation::init() {
 }
 
 void VehicleDeedImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
-	omr->addRadialItem(0, 20, 3, "@pet/pet_menu:menu_generate");
+	omr->addRadialParent(20, 3, "@pet/pet_menu:menu_generate");
 
 	//TODO:Cell permission check
 	if (_this->getParent() != NULL) {
 		bool cellPermission = true;
 
 		if (_this->getParent()->isCell() && cellPermission) {
-			omr->addRadialItem(0, 10, 3, "Pickup");
+			omr->addRadialParent(10, 3, "@ui_radial:item_pickup");
 		}
 	}
 

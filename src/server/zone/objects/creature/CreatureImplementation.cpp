@@ -193,25 +193,25 @@ void CreatureImplementation::init() {
 	setGlobalLogging(true);
 }
 
-void CreatureImplementation::sendRadialResponseTo(Player* player,
-		ObjectMenuResponse* omr) {
-
+void CreatureImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
 	String skillBox = "outdoors_scout_novice";
 
 	if (player->isInRange(getPositionX(), getPositionY(), 10.0f)
 			&& !player->isInCombat() && player->hasSkillBox(skillBox)
 			&& isDead() && canHarvest(player->getFirstName())) {
 
-		omr->addRadialItem(0, 112, 3, "@sui:harvest_corpse");
+		RadialMenuParent* harvestMenu = new RadialMenuParent(112, 3, "@sui:harvest_corpse");
 
 		if (getMeatType() != "")
-			omr->addRadialItem(4, 234, 3, "@sui:harvest_meat");
+			harvestMenu->addRadialMenuItem(234, 3, "@sui:harvest_meat");
 
 		if (getHideType() != "")
-			omr->addRadialItem(4, 235, 3, "@sui:harvest_hide");
+			harvestMenu->addRadialMenuItem(235, 3, "@sui:harvest_hide");
 
 		if (getBoneType() != "")
-			omr->addRadialItem(4, 236, 3, "@sui:harvest_bone");
+			harvestMenu->addRadialMenuItem(236, 3, "@sui:harvest_bone");
+
+		omr->addRadialParent(harvestMenu);
 
 	}
 
@@ -2009,11 +2009,9 @@ void CreatureImplementation::onDeath() {
 	if ((isImperial() || isRebel()) && lootOwner != NULL && lootOwner->isPlayer()) {
 		Player* lootOwnerPlayer = (Player *) lootOwner;
 
-		String pfaction = (lootOwnerPlayer->isImperial())
-			? "imperial" : "rebel";
+		String pfaction = (lootOwnerPlayer->isImperial()) ? "imperial" : "rebel";
 
-		String myfaction = (isImperial())
-			? "imperial" : "rebel";
+		String myfaction = (isImperial()) ? "imperial" : "rebel";
 
 		lootOwnerPlayer->addFactionPoints(pfaction, fpValue);
 		lootOwnerPlayer->subtractFactionPoints(myfaction, fpValue);

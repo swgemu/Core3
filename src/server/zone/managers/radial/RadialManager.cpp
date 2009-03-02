@@ -65,6 +65,12 @@ which carries forward this exception.
 RadialManager::RadialManager() {
 }
 
+/**
+ * This method is fired when the server receives a packet requesting radial options for an object.
+ * In response, an ObjectMenuResponse packet is sent to the client, containing the radial options.
+ * \param player The player that has requested the radial options.
+ * \param pack The packet that was sent from the client to the server.
+ */
 void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 	pack->shiftOffset(12); // skip ObjectID and size
 
@@ -339,12 +345,26 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		case 85: //SERVER_BAZAAR_OPTIONS
 		case 86: //SERVER_SHIPPING_OPTIONS
 		case 87: //SERVER_HEAL_WOUND
+			handleHealWound(player, obj);
+			break;
 		case 88: //SERVER_HEAL_WOUND_HEALTH
+			handleHealWound(player, obj, CreatureAttribute::HEALTH);
+			break;
 		case 89: //SERVER_HEAL_WOUND_ACTION
+			handleHealWound(player, obj, CreatureAttribute::ACTION);
+			break;
 		case 90: //SERVER_HEAL_WOUND_STRENGTH
+			handleHealWound(player, obj, CreatureAttribute::STRENGTH);
+			break;
 		case 91: //SERVER_HEAL_WOUND_CONSTITUTION
+			handleHealWound(player, obj, CreatureAttribute::CONSTITUTION);
+			break;
 		case 92: //SERVER_HEAL_WOUND_QUICKNESS
+			handleHealWound(player, obj, CreatureAttribute::QUICKNESS);
+			break;
 		case 93: //SERVER_HEAL_WOUND_STAMINA
+			handleHealWound(player, obj, CreatureAttribute::STAMINA);
+			break;
 		case 94: //SERVER_HEAL_DAMAGE
 		case 95: //SERVER_HEAL_STATE
 		case 96: //SERVER_HEAL_STATE_STUNNED
@@ -352,12 +372,26 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		case 98: //SERVER_HEAL_STATE_DIZZY
 		case 99: //SERVER_HEAL_STATE_INTIMIDATED
 		case 100: //SERVER_HEAL_ENHANCE
+			handleHealEnhance(player, obj);
+			break;
 		case 101: //SERVER_HEAL_ENHANCE_HEALTH
+			handleHealEnhance(player, obj, CreatureAttribute::HEALTH);
+			break;
 		case 102: //SERVER_HEAL_ENHANCE_ACTION
+			handleHealEnhance(player, obj, CreatureAttribute::ACTION);
+			break;
 		case 103: //SERVER_HEAL_ENHANCE_STRENGTH
+			handleHealEnhance(player, obj, CreatureAttribute::STRENGTH);
+			break;
 		case 104: //SERVER_HEAL_ENHANCE_CONSTITUTION
+			handleHealEnhance(player, obj, CreatureAttribute::CONSTITUTION);
+			break;
 		case 105: //SERVER_HEAL_ENHANCE_QUICKNESS
+			handleHealEnhance(player, obj, CreatureAttribute::QUICKNESS);
+			break;
 		case 106: //SERVER_HEAL_ENHANCE_STAMINA
+			handleHealEnhance(player, obj, CreatureAttribute::STAMINA);
+			break;
 		case 107: //SERVER_HEAL_FIRSTAID
 		case 108: //SERVER_HEAL_CURE_POISON
 		case 109: //SERVER_HEAL_CURE_DISEASE
@@ -634,7 +668,7 @@ ObjectMenuResponse* RadialManager::parseDefaults(Player* player, uint64 objectid
 
 		pack->shiftOffset(4); // shift UnicodeString command
 
-		omr->addRadialItem(parentid, radialid, callback);
+		omr->addRadialParent(radialid, callback, "");
 	}
 
 	uint8 counter = pack->parseByte();
@@ -1033,10 +1067,12 @@ void RadialManager::handleRemovePowerup(Player* player, SceneObject* obj) {
 
 
 void RadialManager::sendRadialResponseForSurveyTools(Player* player, SurveyTool* surveyTool, ObjectMenuResponse* omr) {
-	omr->addRadialItem(0, 136, 3, "@sui:tool_options");
-	omr->addRadialItem(4, 137, 3, "@sui:survey_range");
-	omr->finish();
+	RadialMenuParent* toolOptions = new RadialMenuParent(136, 3, "@sui:tool_options");
 
+	toolOptions->addRadialMenuItem(137, 3, "@sui:survey_range");
+	omr->addRadialParent(toolOptions);
+
+	omr->finish();
 	player->sendMessage(omr);
 }
 
@@ -1434,22 +1470,84 @@ void RadialManager::handleStructurePermissionList(Player* player, SceneObject* o
 	terminal->sendPermissionListTo(player, listtype);
 }
 
+/**
+ * Toggles the privacy mode for the structure.
+ * \param player The player setting the privacy.
+ * \param obj The terminal being used to toggle the privacy?
+ */
 void RadialManager::handleStructurePrivacy(Player* player, SceneObject* obj) {
 
 }
+
+/**
+ * Attempts to transfer a structure to another player. The target should be player's target.
+ * \param player The player that is transfering the structure.
+ * \param obj The terminal that was used to transfer the structure?
+ */
 void RadialManager::handleStructureTransferRequest(Player* player, SceneObject* obj) {
 
 }
+
+/**
+ * Declares residence at the structure
+ * \param player The player that is attempting to declare residence.
+ * \param obj The playerstructureterminal that was used to declare with.
+ */
 void RadialManager::handleStructureDeclareResidence(Player* player, SceneObject* obj) {
 
 }
+
+/**
+ * Pays maintenance to a structure
+ * \param player The player that is paying the maintenance
+ * \param obj The terminal that was summoned to pay maintenance with.
+ */
 void RadialManager::handleStructurePayMaintenance(Player* player, SceneObject* obj) {
 
 }
+
+/**
+ * Creates a new vendor from a player structure terminal. Player must be on the Vendor List
+ * \param player The player that is attempting to create the vendor.
+ * \param obj The terminal that is being used to create the vendor.
+ */
 void RadialManager::handleStructureCreateVendor(Player* player, SceneObject* obj) {
 
 }
 
+/**
+ * Gives a vendor maintenance
+ * \param player The player that is giving the maintenance.
+ * \param obj The vendor that is receiving the maintenance.
+ */
 void RadialManager::handleGiveVendorMaintenance(Player* player, SceneObject* obj) {
 
+}
+
+
+//Healing
+/**
+ * Enhances the specified attribute of the object passed in.
+ * \param player The player that is doing the enhancing.
+ * \param obj The target of the enhancement.
+ * \param attribute Which attribute should be enhanced? Defaults to unknown which will result in the first sequential available attribute.
+ */
+void RadialManager::handleHealEnhance(Player* player, SceneObject* obj, uint8 attribute) {
+	uint32 actionCRC = 0xEEE029CF; //healenhance
+	String actionModifier = CreatureAttribute::getName(attribute);
+	player->setActionCounter(player->getActionCounter() + 1);
+	player->queueAction(player, obj->getObjectID(), actionCRC, player->getActionCounter(), actionModifier.toCharArray());
+}
+
+/**
+ * Heals a wound of a specified attribute on the object passed.
+ * \param player The player that is doing the wound healing.
+ * \param obj The wounded player that is receiving the healing.
+ * \param attribute The attribute that is being healed. Defaults to unknown which will result in the first sequential available attribute.
+ */
+void RadialManager::handleHealWound(Player* player, SceneObject* obj, uint8 attribute) {
+	uint32 actionCRC = 0x2087CE04; //healwound
+	String actionModifier = CreatureAttribute::getName(attribute);
+	player->setActionCounter(player->getActionCounter() + 1);
+	player->queueAction(player, obj->getObjectID(), actionCRC, player->getActionCounter(), actionModifier.toCharArray());
 }
