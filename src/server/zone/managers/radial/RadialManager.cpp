@@ -1533,6 +1533,12 @@ void RadialManager::handleGiveVendorMaintenance(Player* player, SceneObject* obj
  * \param attribute Which attribute should be enhanced? Defaults to unknown which will result in the first sequential available attribute.
  */
 void RadialManager::handleHealEnhance(Player* player, SceneObject* obj, uint8 attribute) {
+	if (!obj->isPlayer() || !obj->isNonPlayerCreature())
+		return;
+
+	if (attribute == 9)
+		attribute = CreatureAttribute::HEALTH;
+
 	uint32 actionCRC = 0xEEE029CF; //healenhance
 	String actionModifier = CreatureAttribute::getName(attribute);
 	player->setActionCounter(player->getActionCounter() + 1);
@@ -1546,6 +1552,14 @@ void RadialManager::handleHealEnhance(Player* player, SceneObject* obj, uint8 at
  * \param attribute The attribute that is being healed. Defaults to unknown which will result in the first sequential available attribute.
  */
 void RadialManager::handleHealWound(Player* player, SceneObject* obj, uint8 attribute) {
+	if (!obj->isPlayer() || !obj->isNonPlayerCreature())
+		return;
+
+	CreatureObject* creature = (CreatureObject*) obj;
+
+	if (attribute == 9)
+		attribute = creature->getNextWoundedAttribute(true, true, false);
+
 	uint32 actionCRC = 0x2087CE04; //healwound
 	String actionModifier = CreatureAttribute::getName(attribute);
 	player->setActionCounter(player->getActionCounter() + 1);
