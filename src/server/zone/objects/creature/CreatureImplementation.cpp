@@ -2000,9 +2000,8 @@ void CreatureImplementation::onDeath() {
 	if (isMount())
 		return;
 
-	disseminateXp(getLevel());
 	deaggro();
-	setPosture(CreaturePosture::DEAD);
+	disseminateXp(getLevel());
 
 	//TODO: Currently doesn't work with groups does it?
 	CreatureObject* lootOwner = getLootOwner();

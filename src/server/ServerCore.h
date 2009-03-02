@@ -55,6 +55,8 @@ which carries forward this exception.
 
 #include "login/LoginServer.h"
 
+#include "features/Features.h"
+
 #include "ping/PingServer.h"
 
 #include "status/StatusServer.h"
@@ -74,6 +76,8 @@ class ServerCore : public Core, public Logger {
 	LoginServer* loginServer;
 
 	StatusServer * statusServer;
+
+	Features* features;
 
 	PingServer* pingServer;
 
