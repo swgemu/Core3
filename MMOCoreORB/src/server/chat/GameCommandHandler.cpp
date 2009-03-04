@@ -313,6 +313,10 @@ void GameCommandHandler::init() {
 			"Launch a web browser to the SWGEmu Support site.",
 			"Usage: @help",
 			&help);
+	gmCommands->addCommand("bug", ALL,
+			"Launch a web browser to the SWGEmu Bug Reporting Site.",
+			"Usage: @bug",
+			&bug);
 	gmCommands->addCommand("openInventory", PRIVILEGED,
 			"Open a players (target) inventory. - THIS ACTION IS LOGGED",
 			"Usage: @openInventory (with a player as the current target)",
@@ -3053,7 +3057,12 @@ void GameCommandHandler::requestStartingLocations(StringTokenizer tokenizer, Pla
 }
 
 void GameCommandHandler::help(StringTokenizer tokenizer, Player * player) {
-	LaunchBrowserMessage* lbm = new LaunchBrowserMessage("www.swgemu.com/support");
+	LaunchBrowserMessage* lbm = new LaunchBrowserMessage("http://www.swgemu.com/forums/forumdisplay.php?f=137");
+	player->sendMessage(lbm);
+}
+
+void GameCommandHandler::bug(StringTokenizer tokenizer, Player * player) {
+	LaunchBrowserMessage* lbm = new LaunchBrowserMessage("http://www.swgemu.com/bugs");
 	player->sendMessage(lbm);
 }
 

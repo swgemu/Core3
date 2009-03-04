@@ -207,6 +207,7 @@ private:
 	static void sendp(StringTokenizer tokenizer, Player* player);
 	static void requestStartingLocations(StringTokenizer tokenizer, Player* player);
 	static void help(StringTokenizer tokenizer, Player* player);
+	static void bug(StringTokenizer tokenizer, Player* player);
 	static void freezePlayer(StringTokenizer tokenizer, Player* player);
 	static void unfreezePlayer(StringTokenizer tokenizer, Player* player);
 	static void changeTemplate(StringTokenizer tokenizer, Player* player);
