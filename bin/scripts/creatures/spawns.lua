@@ -175,6 +175,7 @@ if (PLANET_ID == 8) then
  RunCreatureFile("spawns/tatooine/dungeons/squillcavern.lua")
  RunCreatureFile("spawns/tatooine/dungeons/hutthideout.lua")
  RunCreatureFile("spawns/tatooine/dungeons/tuskenBunker.lua")
+ RunCreatureFile("spawns/tatooine/dungeons/tuskenVillage.lua") 
  RunCreatureFile("spawns/tatooine/dungeons/beetlecave.lua")
 end
 

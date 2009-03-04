@@ -155,7 +155,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 10,
+	range = 15,
 	damageRatio = 1.0,
 	speedRatio = 1.25,
 	areaRange = 0,
@@ -191,7 +191,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 10,
+	range = 15,
 	damageRatio = 1.0,
 	speedRatio = 1.5,
 	areaRange = 0,
@@ -227,7 +227,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 10,
+	range = 15,
 	damageRatio = 1.0,
 	speedRatio = 1.5,
 	areaRange = 0,
@@ -263,7 +263,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 10,
+	range = 15,
 	damageRatio = 1.0,
 	speedRatio = 1.5,
 	areaRange = 0,
