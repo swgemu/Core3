@@ -372,9 +372,9 @@ void GameCommandHandler::init() {
 				"Edit the Message of the Day",
 				"USAGE: @setMOTD",
 				&setMOTD);
-	gmCommands->addCommand("MOTD", PRIVILEGED,
-				"Displays the Message of the Day",
-				"USAGE: @MOTD",
+	gmCommands->addCommand("tasks", ALL,
+				"Displays the current Message of the Day",
+				"USAGE: @tasks",
 				&displayMOTD);
 
 	/* Disabled Commands
