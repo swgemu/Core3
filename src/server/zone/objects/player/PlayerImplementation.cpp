@@ -90,6 +90,7 @@ which carries forward this exception.
 #include "events/SurveyEvent.h"
 #include "events/EntertainerEvent.h"
 #include "events/SampleEvent.h"
+#include "events/InvisibleDelayEvent.h"
 
 #include "events/ForageDelayEvent.h"
 #include "../creature/skills/self/ForageZone.h"
@@ -164,6 +165,14 @@ PlayerImplementation::~PlayerImplementation() {
 		centerOfBeingEvent = NULL;
 	}
 
+	if (invisibleDelayEvent != NULL) {
+		if (invisibleDelayEvent->isQueued())
+			server->removeEvent(invisibleDelayEvent);
+
+		delete invisibleDelayEvent;
+		invisibleDelayEvent = NULL;
+	}
+
 	if (recoveryEvent != NULL) {
 		if (recoveryEvent->isQueued())
 			server->removeEvent(recoveryEvent);
@@ -224,6 +233,8 @@ void PlayerImplementation::initializePlayer() {
 
 	changeFactionEvent = NULL;
 
+	invisibleDelayEvent = NULL;
+
 	datapad = NULL;
 	equippedItems = NULL;
 
@@ -262,6 +273,7 @@ void PlayerImplementation::initializePlayer() {
 	//GM Flags
 	chatMuted = false;
 	immune = false;
+	invisible = false;
 
 	//Mission Vars
 	misoRFC = 0x01;
@@ -285,6 +297,8 @@ void PlayerImplementation::initializePlayer() {
  	forageDelayEvent = NULL;
 
 	centerOfBeingEvent = new CenterOfBeingEvent(this);
+
+	invisibleDelayEvent = new InvisibleDelayEvent(this);
 
 	lastTestPositionX = 0.f;
 	lastTestPositionY = 0.f;
@@ -1557,6 +1571,10 @@ void PlayerImplementation::notifyInsert(QuadTreeEntry* obj) {
 			break;
 
 		player = (Player*) scno;
+
+		if (player->isInvisible()) {
+			break;
+		}
 
 		player->sendTo(_this);
 		player->sendItemsTo(_this);
@@ -2915,6 +2933,11 @@ void PlayerImplementation::mutePlayer() {
 }
 
 void PlayerImplementation::toggleImmune() {
+	if (isInvisible()){
+		sendSystemMessage("You can't disable immune while invisible.");
+		return;
+	}
+
 	if (!immune) {
 		clearDuelList();
 		clearCombatState();
@@ -2929,6 +2952,83 @@ void PlayerImplementation::toggleImmune() {
 
 	UpdatePVPStatusMessage * mess = new UpdatePVPStatusMessage(this, pvpStatusBitmask);
 	broadcastMessage(mess);
+}
+
+void PlayerImplementation::activateInvisible() {
+	if (getZoneID() > 9) {
+		sendSystemMessage("You can't toggle invisible in this zone.");
+		return;
+	}
+
+	if (isInvisible() && isMounted()) {
+		sendSystemMessage("You can't become visible while mounted.");
+		return;
+	}
+
+	if (invisibleDelayEvent->isQueued()) {
+		sendSystemMessage("You can't toggle invisibility this often.");
+		return;
+	}
+
+	PlayClientEffectLoc* effect = new PlayClientEffectLoc("clienteffect/pl_force_resist_disease_self.cef", zone->getZoneID(), getPositionX(), getPositionZ(), getPositionY());
+	broadcastMessage(effect);
+	server->addEvent(invisibleDelayEvent, 1700);
+}
+
+void PlayerImplementation::toggleInvisible() {
+	if (!isInvisible()) {
+
+		try {
+			zone->lock(true);
+
+			for (int i = 0; i < inRangeObjectCount(); ++i) {
+				QuadTreeEntry* obj = getInRangeObject(i);
+				SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
+
+				if (obj != this && scno->isPlayer()) {
+					obj->notifyDissapear(this);
+				}
+			}
+
+			zone->unlock(true);
+		} catch (...) {
+			System::out << "Unreported exception in PlayerImplementation::toggleInvisible().\n";
+			zone->unlock(true);
+		}
+
+		sendSystemMessage("You are now invisible to other players. They WILL NOT see your spatial chat or emotes!");
+		sendSystemMessage("DO NOT change your equipped items while invisible!");
+
+		if (!isImmune())
+			toggleImmune();
+
+		invisible = true;
+
+	} else {
+		invisible = false;
+
+		try {
+			zone->lock();
+
+	    	for (int i = 0; i < inRangeObjectCount(); ++i) {
+				QuadTreeEntry* obj = getInRangeObject(i);
+
+				if (obj != this) {
+					obj->notifyInsert(this);
+				}
+			}
+
+			zone->unlock();
+		} catch (...) {
+			error("Unreported exception in PlayerImplementation::toggleInvisible().\n");
+
+			zone->unlock();
+		}
+
+		sendSystemMessage("You are now visible to other players.");
+		if (isImmune())
+			toggleImmune();
+	}
 }
 
 

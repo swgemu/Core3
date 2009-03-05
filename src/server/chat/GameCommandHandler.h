@@ -187,6 +187,8 @@ private:
 	static void clientEffect(StringTokenizer tokenizer, Player* player);
 	static void rez(StringTokenizer tokenizer, Player* player);
 	static void immune(StringTokenizer tokenizer, Player* player);
+	static void invisible(StringTokenizer tokenizer, Player* player);
+	static void flare(StringTokenizer tokenizer, Player* player);
 	static void reloadSchematics(StringTokenizer tokenizer, Player* player);
 	static void spawn(StringTokenizer tokenizer, Player* player);
 	static void guildAdmin(StringTokenizer tokenizer, Player* player);
