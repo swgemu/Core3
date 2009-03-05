@@ -373,7 +373,7 @@ public:
 	 * \param angle The clockwise direction from north we want the new position to be (in degrees).
 	 * \return The Coordinate of the new position.
 	 */
-	Coordinate* SceneObjectImplementation::getCoordinate(float x, float y, float distance, float angle);
+	Coordinate* getCoordinate(float x, float y, float distance, float angle);
 
 	/**
 	 * getCoordinate Returns the coordinates of a position away from an object, using desired distance and angle offset.
