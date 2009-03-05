@@ -47,6 +47,8 @@ include "engine/service/proto/StandaloneBaseMessage";
 
 include "engine/util/QuadTreeEntry";
 
+include "engine/util/Coordinate";
+
 include "../../ZoneProcessServerImplementation";
 
 import "../../packets/object/ObjectMenuResponse";
@@ -64,6 +66,7 @@ import "../creature/CreatureObject";
 import "../building/BuildingObject";
 
 import "../creature/skills/target/AttackTargetSkill";
+
 
 interface SceneObject implements ManagedObject {
 	native boolean destroy();
@@ -154,6 +157,10 @@ interface SceneObject implements ManagedObject {
 	void setPositionY(float y);
 
 	void setDirection(float x, float z, float y, float w);
+	
+	Coordinate getCoordinate(float x, float y, float distance, float angle);
+	Coordinate getCoordinate(SceneObject object, float distance, float angle);
+	Coordinate getCoordinate(SceneObject object1, SceneObject object2, float distanceFromObject1);
 
 	// attribute methods
 	void generateAttributes(Player player);

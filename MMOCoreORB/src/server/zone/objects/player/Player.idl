@@ -467,6 +467,7 @@ interface Player implements CreatureObject {
 
 	void mutePlayer();
 	void toggleImmune();
+	void activateInvisible();
 
 	// SuiBoxes
 
@@ -539,6 +540,7 @@ interface Player implements CreatureObject {
 
 	boolean isChatMuted();
 	boolean isImmune();
+	boolean isInvisible();
 
 	String getInputBoxReturnBuffer();
 

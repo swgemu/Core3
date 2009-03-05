@@ -363,19 +363,32 @@ public:
 	}
 
 	/**
-	 * getCoodinate Returns the coordinates of a position away from an object, using desired distance and angle offset.
+	 * getCoordinate Returns the coordinates of a position away from a set of coordinates, using desired distance and angle offset.
+	 * The angle offset is clockwise relative to north and is on a 360 degree scale.
+	 * Example: If you want a position directly east of the given position, input 90.0f for angle.
+	 * Example: If you want a position directly west of the given position, input -90.0f for angle.
+	 * \param x The x-coordinate of the position we are finding a new position away from.
+	 * \param y The y-coordinate of the position we are finding a new position away from.
+	 * \param distance The distance away from the given position the new position will be (in meters).
+	 * \param angle The clockwise direction from north we want the new position to be (in degrees).
+	 * \return The Coordinate of the new position.
+	 */
+	Coordinate* SceneObjectImplementation::getCoordinate(float x, float y, float distance, float angle);
+
+	/**
+	 * getCoordinate Returns the coordinates of a position away from an object, using desired distance and angle offset.
 	 * The angle offset is clockwise relative to the object's front surface and is on a 360 degree scale.
 	 * Example: If you want a position directly to the right of a player's viewing angle, you input 90.0f for angle.
 	 * Example: If you want a position directly to the left of a player's viewing angle, enter -90.0f for angle.
 	 * \param object The object from which we are finding a position nearby.
 	 * \param distance The distance away from the object the new position will be (in meters).
-	 * \param angle The direction from the object's front surface we want the new position to be (in degrees).
+	 * \param angle The clockwise direction from the object's front surface we want the new position to be (in degrees).
 	 * \return The Coordinate of the new position.
 	 */
 	Coordinate* getCoordinate(SceneObject* object, float distance, float angle);
 
 	/**
-	 * getCoodinate Returns the coordinates of a position directly between two objects, using distance from the first object.
+	 * getCoordinate Returns the coordinates of a position directly between two objects, using distance from the first object.
 	 * \param object1 The first object which we will find a new position a given distance away from, toward the second object.
 	 * \param object2 The second object.
 	 * \param distanceFromObject1 The distance from object1 we want the new position to be (in meters).

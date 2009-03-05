@@ -1043,17 +1043,24 @@ void SceneObjectImplementation::warpTo(float x, float z, float y, uint64 parentI
 	insertToZone(zone);
 }
 
-Coordinate* SceneObjectImplementation::getCoordinate(SceneObject* object, float distance, float angle) {
-	float newX;
-	float newZ;
-	float newY;
+Coordinate* SceneObjectImplementation::getCoordinate(float x, float y, float distance, float angle) {
+	float angleRads = angle * (M_PI / 180.0f);
 
+	float newX = x + (sin(angleRads) * distance);
+	float newY = y + (cos(angleRads) * distance);
+	float newZ = zone->getHeight(newX, newY);
+
+	Coordinate* newPosition = new Coordinate(newX, newZ, newY);
+	return newPosition;
+}
+
+Coordinate* SceneObjectImplementation::getCoordinate(SceneObject* object, float distance, float angle) {
 	float angleRads = angle * (M_PI / 180.0f);
 	float newAngle = angleRads + object->getPrecisionDirectionAngle();
 
-	newX = object->getPositionX() + (sin(newAngle) * distance);
-	newY = object->getPositionY() + (cos(newAngle) * distance);
-	newZ = zone->getHeight(newX, newY);
+	float newX = object->getPositionX() + (sin(newAngle) * distance);
+	float newY = object->getPositionY() + (cos(newAngle) * distance);
+	float newZ = zone->getHeight(newX, newY);
 
 	Coordinate* newPosition = new Coordinate(newX, newZ, newY);
 	return newPosition;

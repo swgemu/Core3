@@ -98,6 +98,7 @@ class CenterOfBeingEvent;
 class PowerboostEventWane;
 class PlayerDisconnectEvent;
 class PlayerLogoutEvent;
+class InvisibleDelayEvent;
 class ForageDelayEvent;
 class ForageZone;
 
@@ -163,6 +164,7 @@ class PlayerImplementation : public PlayerServant {
 	//GM Flags
 	bool chatMuted;
 	bool immune;
+	bool invisible;
 
 	// Faction Stuff
 	FactionPointsMap factionPointsMap;
@@ -220,6 +222,8 @@ class PlayerImplementation : public PlayerServant {
 	CenterOfBeingEvent* centerOfBeingEvent;
 
 	PowerboostEventWane* powerboostEventWane;
+
+	InvisibleDelayEvent* invisibleDelayEvent;
 
 
 	float lastTestPositionX;
@@ -1722,8 +1726,14 @@ public:
 		return immune;
 	}
 
+	inline bool isInvisible() {
+		return invisible;
+	}
+
 	void mutePlayer();
 	void toggleImmune();
+	void activateInvisible();
+	void toggleInvisible();
 
 
 

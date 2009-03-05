@@ -257,6 +257,14 @@ void GameCommandHandler::init() {
 			"Toggles immunity.",
 			"Usage: @immune",
 			&immune);
+	gmCommands->addCommand("invisible", CSREVENTS | LEADQA,
+			"Toggles invisibility",
+			"Usage: @invisible",
+			&invisible);
+	gmCommands->addCommand("flare", CSREVENTS | LEADQA,
+			"Fires a flare at your position...",
+			"Usage: @flare",
+			&flare);
 	gmCommands->addCommand("reloadSchematics", DEVELOPER,
 			"Hot Loads schematic tables.",
 			"Usage: @reloadSchematics",
@@ -2418,6 +2426,20 @@ void GameCommandHandler::rez(StringTokenizer tokenizer, Player* player) {
 
 void GameCommandHandler::immune(StringTokenizer tokenizer, Player* player) {
 	player->toggleImmune();
+}
+
+void GameCommandHandler::invisible(StringTokenizer tokenizer, Player* player) {
+	player->activateInvisible();
+}
+
+void GameCommandHandler::flare(StringTokenizer tokenizer, Player* player) {
+	if (player->isInBuilding()) {
+		player->sendSystemMessage("You can't fire a flare indoors.");
+		return;
+	}
+
+	PlayClientEffectLoc* effect = new PlayClientEffectLoc("clienteffect/pl_force_resist_bleeding_self.cef", player->getZoneID(), player->getPositionX(), player->getPositionZ(), player->getPositionY());
+	player->broadcastMessage(effect);
 }
 
 void GameCommandHandler::reloadSchematics(StringTokenizer tokenizer,
