@@ -79,7 +79,7 @@ void GameCommandHandler::init() {
 
 	/* Admin Groups */
 	const int ALL = DEVELOPER | CSR | CSRJR | EC | ECJR | LEADQA | QA | EMUSTAFF | NORMAL;	/* All Staff/Players */
-	const int STAFF = DEVELOPER | CSR | EC | LEADQA | QA | EMUSTAFF;						/* EMU Staff Only */
+	const int STAFF = DEVELOPER | CSR | CSRJR | EC | ECJR | LEADQA | QA | EMUSTAFF;			/* EMU Staff Only */
 	const int PRIVILEGED = DEVELOPER | CSR;													/* Admin,Dev/CSR */
 	const int CSREVENTS = DEVELOPER | CSR | EC;												/* Admin,Dev/CSR/Event Coordinator */
 
