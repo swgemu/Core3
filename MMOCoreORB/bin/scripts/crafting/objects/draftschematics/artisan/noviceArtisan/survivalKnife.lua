@@ -76,7 +76,7 @@ survivalKnife = Object:new {
    experimentalMax = "0, 0, 26, 52, 2.9, 11, 1500, 39, 39, 3, 39, 4, 5, 15, 4",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131073:objectcrc=530531036:objecttemp=knife_survival:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=1;:",
+   tanoAttributes = "objecttype=131079:objectcrc=530531036:objecttemp=knife_survival:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=1;:",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"
