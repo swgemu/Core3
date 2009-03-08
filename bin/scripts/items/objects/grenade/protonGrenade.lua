@@ -56,11 +56,11 @@ protonGrenade = Weapon:new {
 
 	certification = "cert_grenade_proton",
 
-	uses = 15,
+	uses = 5,
 	
-	attackSpeed = 4.0,
+	attackSpeed = 5.6,
 
-	minDamage = 600,
+	minDamage = 1552,
 
-	maxDamage = 806,
+	maxDamage = 3157
 }

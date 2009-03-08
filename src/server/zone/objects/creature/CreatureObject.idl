@@ -96,6 +96,7 @@ interface CreatureObject implements TangibleObject {
 	void playEffect(const String file, const String aux);
 	void showFlyText(const String file, const String aux, unsigned char red, unsigned char green, unsigned char blue);
 	void sendCombatSpam(CreatureObject defender, TangibleObject item, unsigned int damage, const String skill, boolean areaSpam = true);
+	void sendCombatSpamTrap(CreatureObject defender, TangibleObject item, unsigned int damage, const String skill, boolean areaSpam = true);
 
 	void addDamage(CreatureObject creature, unsigned int damage);
 

@@ -164,7 +164,7 @@ ThrowSkill = {
 	
 	deBuffStrFile = "trap\\trap",
 	deBuffHitMessage = "trap_melee_def_1_effect",
-	deBuffMissMessage = "trap_melee_def_1_effect_no",
+	deBuffMissMessage = "",
 	
 	meleeDefDebuff = -15,
 	rangedDefDebuff = 0,
@@ -211,7 +211,7 @@ ThrowSkill = {
 	
 	deBuffStrFile = "trap\\trap",
 	deBuffHitMessage = "trap_melee_ranged_def_1_effect",
-	deBuffMissMessage = "trap_melee_ranged_def_1_effect_no",
+	deBuffMissMessage = "",
 	
 	meleeDefDebuff = 0,
 	rangedDefDebuff = -15,
@@ -417,7 +417,7 @@ ThrowSkill = {
 	
 	deBuffStrFile = "trap\\trap",
 	deBuffHitMessage = "trap_melee_ranged_def_1_effect",
-	deBuffMissMessage = "trap_melee_ranged_def_1_effect_no",
+	deBuffMissMessage = "",
 	
 	meleeDefDebuff = -30,
 	rangedDefDebuff = -30,

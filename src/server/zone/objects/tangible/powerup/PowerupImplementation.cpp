@@ -99,7 +99,7 @@ void PowerupImplementation::setPowerupStats(int modifier) {
 		modifier += diff;
 	}
 
-	setPowerupUses(50+System::random(100));
+	setPowerupUses(50+System::random(50));
 
 	setPowerupType(System::random(1) + 1);
 	setPowerupSubType(System::random(5) + 1);
@@ -1081,5 +1081,4 @@ void PowerupImplementation::addAttributes(AttributeListMessage* alm) {
 		break;
 		}
 	}
-	alm->insertAttribute("cat_pup.pup_uses",uses);
 }

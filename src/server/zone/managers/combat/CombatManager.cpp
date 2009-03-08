@@ -1343,9 +1343,6 @@ void CombatManager::calculateStates(CreatureObject* creature, CreatureObject* ta
 void CombatManager::calculateThrowItemStates(CreatureObject* creature,
 		CreatureObject* targetCreature, ThrowAttackTargetSkill* skill) {
 
-	if (skill->isMissed())
-		return;
-
 	bool debuffHit = false;
 
 	if (skill->isStateTap()) {
@@ -1372,7 +1369,8 @@ void CombatManager::calculateThrowItemStates(CreatureObject* creature,
 	}
 
 	if (skill->isDebuffTrap()) {
-		if (targetCreature->hasBuff(skill->getNameCRC())) {
+		if (targetCreature->hasBuff(skill->getNameCRC()) && !skill->getDeBuffHitMessage().isEmpty()) {
+			creature->sendCombatSpamTrap(targetCreature, NULL, 0, skill->getDeBuffMissMessage());
 			return;
 		}
 
@@ -1400,6 +1398,8 @@ void CombatManager::calculateThrowItemStates(CreatureObject* creature,
 		}
 
 		if (debuffHit) {
+			creature->sendCombatSpamTrap(targetCreature, NULL, 0, skill->getDeBuffHitMessage());
+
 			BuffObject* bo = new BuffObject(deBuff);
 			targetCreature->applyBuff(bo);
 		}
@@ -1894,7 +1894,7 @@ int CombatManager::calculateDamage(CreatureObject* creature, TangibleObject* tar
 				bodyPart = 8;
 			}
 
-			if (skill->hasCbtSpamHit())
+			if (!skill->isTrapSkill() && skill->hasCbtSpamHit())
 				creature->sendCombatSpam(targetCreature, NULL, (int32)individualDamage, skill->getCbtSpamHit());
 
 			int tempReduction = applyDamage(creature, targetCreature, (int32)individualDamage, bodyPart, skill, attackType, damageType, armorPiercing, cankill);

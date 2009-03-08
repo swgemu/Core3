@@ -58,9 +58,9 @@ cryobanGrenade = Weapon:new {
 
 	uses = 15,
 	
-	attackSpeed = 4.0,
+	attackSpeed = 9.0,
 
-	minDamage = 200,
+	minDamage = 114,
 
-	maxDamage = 306,
+	maxDamage = 388
 }

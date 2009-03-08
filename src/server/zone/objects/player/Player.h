@@ -545,6 +545,8 @@ public:
 
 	void toggleImmune();
 
+	void activateInvisible();
+
 	bool hasSuiBox(unsigned int boxID);
 
 	bool hasSuiBoxWindowType(unsigned int windowType);
@@ -622,6 +624,8 @@ public:
 	bool isChatMuted();
 
 	bool isImmune();
+
+	bool isInvisible();
 
 	String& getInputBoxReturnBuffer();
 
@@ -1502,6 +1506,8 @@ public:
 
 	void toggleImmune();
 
+	void activateInvisible();
+
 	bool hasSuiBox(unsigned int boxID);
 
 	bool hasSuiBoxWindowType(unsigned int windowType);
@@ -1579,6 +1585,8 @@ public:
 	bool isChatMuted();
 
 	bool isImmune();
+
+	bool isInvisible();
 
 	String& getInputBoxReturnBuffer();
 

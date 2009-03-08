@@ -71,6 +71,8 @@ public:
 
 	void sendCombatSpam(CreatureObject* defender, TangibleObject* item, unsigned int damage, const String& skill, bool areaSpam = true);
 
+	void sendCombatSpamTrap(CreatureObject* defender, TangibleObject* item, unsigned int damage, const String& skill, bool areaSpam = true);
+
 	void addDamage(CreatureObject* creature, unsigned int damage);
 
 	unsigned int getDamage(CreatureObject* creature);
@@ -1353,6 +1355,8 @@ public:
 
 	void sendCombatSpam(CreatureObject* defender, TangibleObject* item, unsigned int damage, const String& skill, bool areaSpam);
 
+	void sendCombatSpamTrap(CreatureObject* defender, TangibleObject* item, unsigned int damage, const String& skill, bool areaSpam);
+
 	void addDamage(CreatureObject* creature, unsigned int damage);
 
 	unsigned int getDamage(CreatureObject* creature);
@@ -2579,6 +2583,7 @@ protected:
 	String _param0_showFlyText__String_String_char_char_char_;
 	String _param1_showFlyText__String_String_char_char_char_;
 	String _param3_sendCombatSpam__CreatureObject_TangibleObject_int_String_bool_;
+	String _param3_sendCombatSpamTrap__CreatureObject_TangibleObject_int_String_bool_;
 	String _param0_getMitigation__String_;
 	String _param0_addCooldown__String_int_;
 	String _param0_removeCooldown__String_;

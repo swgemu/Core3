@@ -58,9 +58,9 @@ fragmentationGrenade = Weapon:new {
 
 	uses = 15,
 	
-	attackSpeed = 4.0,
+	attackSpeed = 3.5,
 
-	minDamage = 100,
+	minDamage = 326,
 
-	maxDamage = 206,
+	maxDamage = 2974
 }

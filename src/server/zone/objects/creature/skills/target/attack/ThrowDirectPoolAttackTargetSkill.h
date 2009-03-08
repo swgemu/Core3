@@ -131,13 +131,7 @@ public:
 		if (damage && targetCreature->hasAttackDelay())
 			targetCreature->clearAttackDelay();
 
-		StfParameter* params = new StfParameter();
-		StringBuffer creatureName;
-		creatureName << "@" << targetCreature->getTemplateTypeName() << ":"
-				<< targetCreature->getTemplateName();
-		params->addTT(creatureName.toString());
-
-		if (damage != 0) {
+		if (damage > 0) {
 			applyDot(creature,targetCreature, damage);
 			String type = "trapping";
 
@@ -150,19 +144,8 @@ public:
 
 			player->addXp(type, xp, true);
 
-			player->sendSystemMessage(getDeBuffStrFile(),
-					getDeBuffHitMessage(), params);
-
-			missed = false;
-
-		} else {
-
-			player->sendSystemMessage(getDeBuffStrFile(),
-					getDeBuffMissMessage(), params);
-
-			missed = true;
-
 		}
+
 		return damage;
 	}
 
@@ -177,6 +160,9 @@ public:
 		return server->getCombatManager()->calculateThrowItemDamage(creature, target, this, false, false, weapon);
 	}
 
+	virtual bool isTrapSkill() {
+		return true;
+	}
 };
 
 #endif /* THROWDIRECTPOOLATTACKTARGETSKILL_H_ */

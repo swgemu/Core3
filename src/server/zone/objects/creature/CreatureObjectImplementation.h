@@ -404,6 +404,7 @@ public:
 	void playEffect(const String& file, const String& aux = "");
 	void showFlyText(const String& file, const String& aux, uint8 red, uint8 green, uint8 blue);
 	void sendCombatSpam(CreatureObject* defender, TangibleObject* item, uint32 damage, const String& skill, bool areaSpam = true);
+	void sendCombatSpamTrap(CreatureObject* defender, TangibleObject* item, uint32 damage, const String& skill, bool areaSpam = true);
 
 	void setPosture(uint8 state, bool overrideDizzy = false, bool objectInteraction = false, float objX = 0, float objY = 0, float objZ = 0);
 
