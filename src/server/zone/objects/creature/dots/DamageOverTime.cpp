@@ -124,6 +124,27 @@ uint32 DamageOverTime::applyDot(CreatureObject* attacker, CreatureObject* victim
 	return power;
 }
 
+uint32 DamageOverTime::initDot(CreatureObject* attacker, CreatureObject* victim) {
+	uint32 power = 0;
+	switch(type) {
+		case CreatureState::BLEEDING:
+		case CreatureState::POISONED:
+		case CreatureState::ONFIRE:
+			nextTick.update();
+			nextTick.addMiliTime(9000);
+			power = strength;
+		break;
+		case CreatureState::DISEASED:
+			nextTick.update();
+			nextTick.addMiliTime(19000);
+			uint32 shockWounds = victim->getShockWounds();
+			power = strength + (shockWounds * strength / 500);
+		break;
+	}
+	victim->addDamage(attacker,1);
+
+	return power;
+}
 
 uint32 DamageOverTime::doBleedingTick(CreatureObject* attacker, CreatureObject* victim) {
 		uint32 attr = victim->getAttribute(attribute);

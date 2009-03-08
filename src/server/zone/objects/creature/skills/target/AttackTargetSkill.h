@@ -165,6 +165,7 @@ public:
 			creature->sendCombatSpam(target, NULL, -(int32)damage, getCbtSpamMiss());
 
 		target->showFlyText("combat_effects", "miss", 0xFF, 0xFF, 0xFF);
+		target->addDamage(creature,1);
 	}
 
 	void calculateStates(CreatureObject* creature, CreatureObject* targetCreature) {

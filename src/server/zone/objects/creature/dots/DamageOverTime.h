@@ -66,6 +66,7 @@ public:
 
 	void activate();
 	uint32 applyDot(CreatureObject* attacker, CreatureObject* victim);
+	uint32 initDot(CreatureObject* attacker, CreatureObject* victim);
 	float reduceTick(float reduction);
 
 	// damage methods

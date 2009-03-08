@@ -65,7 +65,7 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim, uint64 dotID, uint32 d
 
 	newDot = new DamageOverTime(dotType, pool, strength ,duration,potency);
 
-	int dotPower = newDot->applyDot(attacker,victim);
+	int dotPower = newDot->initDot(attacker,victim);
 	victim->setState(dotType);
 
 	Time nTime = newDot->getNextTick();

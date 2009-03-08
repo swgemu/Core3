@@ -1884,7 +1884,7 @@ public:
 	 * Gets a wounded attribute by random.
 	 * \return Returns the randomly selected wounded attribute.
 	 */
-	inline uint8 getRandomWoundedAttribute(bool health = true, bool action = true, bool mind = true) {
+	inline uint8 getRandomWoundedAttribute(bool health = true, bool action = true, bool mind = true, bool strength = true, bool constitution = true, bool quickness = true, bool stamina = true, bool focus = true, bool willpower = true) {
 		Vector<uint8> woundedAttributes;
 
 		if (health) {
@@ -1903,6 +1903,48 @@ public:
 
 		if (mind) {
 			for (int i = CreatureAttribute::MIND; i < CreatureAttribute::UNKNOWN; i++) {
+				if (hasWound(i))
+					woundedAttributes.add(i);
+			}
+		}
+
+		if (strength) {
+			for (int i = CreatureAttribute::STRENGTH; i < CreatureAttribute::UNKNOWN; i++) {
+				if (hasWound(i))
+					woundedAttributes.add(i);
+			}
+		}
+
+		if (constitution) {
+			for (int i = CreatureAttribute::CONSTITUTION; i < CreatureAttribute::UNKNOWN; i++) {
+				if (hasWound(i))
+					woundedAttributes.add(i);
+			}
+		}
+
+		if (quickness) {
+			for (int i = CreatureAttribute::QUICKNESS; i < CreatureAttribute::UNKNOWN; i++) {
+				if (hasWound(i))
+					woundedAttributes.add(i);
+			}
+		}
+
+		if (stamina) {
+			for (int i = CreatureAttribute::STAMINA; i < CreatureAttribute::UNKNOWN; i++) {
+				if (hasWound(i))
+					woundedAttributes.add(i);
+			}
+		}
+
+		if (focus) {
+			for (int i = CreatureAttribute::FOCUS; i < CreatureAttribute::UNKNOWN; i++) {
+				if (hasWound(i))
+					woundedAttributes.add(i);
+			}
+		}
+
+		if (willpower) {
+			for (int i = CreatureAttribute::WILLPOWER; i < CreatureAttribute::UNKNOWN; i++) {
 				if (hasWound(i))
 					woundedAttributes.add(i);
 			}

@@ -580,16 +580,19 @@ uint32 CombatManager::getDefaultAttackAnimation(CreatureObject* creature) {
 void CombatManager::doDodge(CreatureObject* creature, CreatureObject* defender) {
 	creature->showFlyText("combat_effects", "dodge", 0, 0xFF, 0);
 	creature->doCombatAnimation(defender, String("dodge").hashCode(), 0);
+	defender->addDamage(creature,1);
 }
 
 void CombatManager::doCounterAttack(CreatureObject* creature, CreatureObject* defender) {
 	creature->showFlyText("combat_effects", "counterattack", 0, 0xFF, 0);
 	creature->doCombatAnimation(defender, String("dodge").hashCode(), 0);
+	defender->addDamage(creature,1);
 }
 
 void CombatManager::doBlock(CreatureObject* creature, CreatureObject* defender) {
 	creature->showFlyText("combat_effects", "block", 0, 0xFF, 0);
 	creature->doCombatAnimation(defender, String("dodge").hashCode(), 0);
+	defender->addDamage(creature,1);
 }
 
 // calc methods
