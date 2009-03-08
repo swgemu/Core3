@@ -76,7 +76,7 @@ largeGlass = Object:new {
    experimentalMax = "0, 0, 2",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8224:objectcrc=1157356093:objecttemp=large_glass:templatetype=craft_food_ingredients_n:itemmask=65535:",
+   tanoAttributes = "objecttype=262144:objectcrc=1157356093:objecttemp=large_glass:templatetype=craft_food_ingredients_n:itemmask=65535:",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -76,7 +76,7 @@ leatherGloves = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262:objectcrc=2119585153:objecttemp=gloves_s12:templatetype=wearables_name:itemmask=62975:",
+   tanoAttributes = "objecttype=16777224:objectcrc=2119585153:objecttemp=gloves_s12:templatetype=wearables_name:itemmask=62975:",
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "26",
    customizationSkill = "clothing_customization"
