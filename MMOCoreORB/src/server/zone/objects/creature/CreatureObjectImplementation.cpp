@@ -1051,6 +1051,9 @@ bool CreatureObjectImplementation::changeWoundsBar(uint8 attribute, int32 value,
 
 	setWoundsBar(attribute, MIN(newWounds, getAttributeMax(attribute) - 1));
 
+	if (attribute != CreatureAttribute::HEALTH && attribute != CreatureAttribute::ACTION && attribute != CreatureAttribute::MIND)
+		changeAttributeBar(attribute,-1 * value);
+
 	return true;
 }
 

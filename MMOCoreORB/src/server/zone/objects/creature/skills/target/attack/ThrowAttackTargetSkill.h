@@ -130,6 +130,7 @@ public:
 			creature->sendCombatSpam(target, NULL, -(int32)damage, getCbtSpamMiss());
 
 		target->showFlyText("trap/trap", "sys_miss", 0xFF, 0xFF, 0xFF);
+		target->addDamage(creature,1);
 	}
 
 	/*
