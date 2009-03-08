@@ -56,11 +56,11 @@ glopGrenade = Weapon:new {
 
 	certification = "cert_grenade_glop",
 
-	uses = 15,
+	uses = 5,
 	
-	attackSpeed = 4.0,
+	attackSpeed = 3.6,
 
-	minDamage = 300,
+	minDamage = 443,
 
-	maxDamage = 406,
+	maxDamage = 3150
 }

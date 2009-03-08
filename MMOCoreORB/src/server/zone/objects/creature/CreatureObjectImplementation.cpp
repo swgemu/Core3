@@ -614,6 +614,40 @@ void CreatureObjectImplementation::sendCombatSpam(CreatureObject* defender, Tang
 	}
 }
 
+void CreatureObjectImplementation::sendCombatSpamTrap(CreatureObject* defender, TangibleObject* item, uint32 damage, const String& skill, bool areaSpam) {
+	try {
+		//info("sending combat spam");
+
+		zone->lock();
+
+		bool needLimiting = inRangeObjectCount() > 40;
+
+		if (areaSpam)
+		for (int i = 0; i < inRangeObjectCount(); ++i) {
+			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_getStub());
+
+			if (object->isPlayer() && isInRange(object, 70)) {
+				Player* player = (Player*) object;
+
+				CombatSpam* msg = new CombatSpam(_this, defender, item, damage, "trap//trap", skill, player);
+				player->sendMessage(msg);
+			}
+		}
+		else if (isPlayer()) {
+			CombatSpam* msg = new CombatSpam(_this, defender, item, damage, "trap//trap", skill, _this);
+			((Player*)_this)->sendMessage(msg);
+		}
+
+		zone->unlock();
+
+		//info("combat spam sent");
+	} catch (...) {
+		error("exception CreatureObject::sendCombatSpam(CreatureObject* defender, TangibleObject* item, uint32 damage, const String& skill)");
+
+		zone->unlock();
+	}
+}
+
 void CreatureObjectImplementation::setPosture(uint8 state, bool overrideDizzy, bool objectInteraction, float objX, float objY, float objZ) {
 	if (!overrideDizzy && isDizzied() && (postureState != CreaturePosture::UPRIGHT))
 		state = CreaturePosture::KNOCKEDDOWN;
@@ -4109,8 +4143,8 @@ int CreatureObjectImplementation::getCamoCooldownLeft() {
 
 /// Actions
 bool CreatureObjectImplementation::inflictDamage(CreatureObject* victim, uint8 attribute, uint32 damage) {
+	victim->addDamage(_this, damage);
 	if (SceneObjectImplementation::inflictDamage(victim, attribute, damage)) {
-		victim->addDamage(_this, damage);
 		return true;
 	}
 

@@ -91,11 +91,11 @@ ThrowSkill = {
 	snareChance = 0,
 	rootChance = 0,
 	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
+	CbtSpamBlock = "throw_fragmentation_block",
+	CbtSpamCounter = "throw_fragmentation_counter",
+	CbtSpamEvade = "throw_fragmentation_evade",
+	CbtSpamHit = "throw_fragmentation_hit",
+	CbtSpamMiss = "throw_fragmentation_miss",
 	
 	deBuffStrFile = "",
 	deBuffHitMessage = "",

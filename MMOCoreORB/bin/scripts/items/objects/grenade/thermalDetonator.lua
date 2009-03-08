@@ -58,9 +58,9 @@ thermalDetonator = Weapon:new {
 
 	uses = 15,
 	
-	attackSpeed = 4.0,
+	attackSpeed = 5.2,
 
-	minDamage = 500,
+	minDamage = 829,
 
-	maxDamage = 606,
+	maxDamage = 1717
 }

@@ -58,9 +58,9 @@ imperialDetonator = Weapon:new {
 
 	uses = 15,
 	
-	attackSpeed = 4.0,
+	attackSpeed = 5.2,
 
-	minDamage = 400,
+	minDamage = 829,
 
-	maxDamage = 506,
+	maxDamage = 1717
 }

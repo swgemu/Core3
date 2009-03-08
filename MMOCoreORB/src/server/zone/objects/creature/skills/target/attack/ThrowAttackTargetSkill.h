@@ -96,7 +96,6 @@ public:
 
 		range = 32.0f;
 
-		missed = false;
 		isDebuff = false;
 
 		dotType = 0;
@@ -127,6 +126,9 @@ public:
 	}
 
 	void doMiss(CreatureObject* creature, CreatureObject* target, int32 damage) {
+		if (hasCbtSpamMiss())
+			creature->sendCombatSpam(target, NULL, -(int32)damage, getCbtSpamMiss());
+
 		target->showFlyText("trap/trap", "sys_miss", 0xFF, 0xFF, 0xFF);
 	}
 
@@ -206,11 +208,11 @@ public:
 	 * \param creature The skill user.
 	 * \param targetCreature The target.
 	 */
-	void calculateStates(CreatureObject* creature,
+	/*void calculateStates(CreatureObject* creature,
 			CreatureObject* targetCreature) {
 		if (hasStateChance)
 			return server->getCombatManager()->calculateThrowItemStates(creature, targetCreature, this);
-	}
+	}*/
 
 	/*
 	 * Find the trap in the inventory.
@@ -323,10 +325,6 @@ public:
 
 	inline String getDeBuffMissMessage() {
 		return debuffMissMessage;
-	}
-
-	inline bool isMissed() {
-		return missed;
 	}
 
 	inline bool isStateTap() {

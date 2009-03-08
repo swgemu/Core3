@@ -237,6 +237,10 @@ public:
 		return category == GROUP;
 	}
 
+	virtual bool isTrapSkill() {
+		return false;
+	}
+
 	virtual void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, Pharmaceutical* pharma) {
 		return;
 	}

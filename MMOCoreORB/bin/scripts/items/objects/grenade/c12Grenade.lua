@@ -56,11 +56,11 @@ c12Grenade = Weapon:new {
 
 	uses = 15,
 	
-	attackSpeed = 4.0,
+	attackSpeed = 5.0,
 
-	minDamage = 80,
+	minDamage = 35,
 
-	maxDamage = 196,
+	maxDamage = 105,
 
 	skill = "throwgrenade"
 }
