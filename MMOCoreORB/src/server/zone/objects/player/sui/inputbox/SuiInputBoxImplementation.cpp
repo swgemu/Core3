@@ -54,89 +54,59 @@ SuiInputBoxImplementation::SuiInputBoxImplementation(Player* player, uint32 wind
 	inputType = inputtype;
 }
 
-void SuiInputBoxImplementation::generateHeader(BaseMessage* msg) {
-	msg->insertAscii("Script.inputBox");
-
-	if (cancelButton)
-		msg->insertInt(0x0C);
-	else
-		msg->insertInt(0x0D);
-
-	if (isFilterBox()) {
-		for (int i = 0; i < 2; ++i) {
-			msg->insertByte(5);
-			msg->insertInt(0);
-			msg->insertInt(0x0B); // number of shorts(asciis)
-
-			msg->insertShort(0); // 1
-			msg->insertShort(1); // 2
-			msg->insertByte(9 + i);
-			msg->insertAscii("handleFilterInput"); // 3
-			msg->insertAscii("Prompt.lblPrompt"); // 4
-			msg->insertAscii("Text"); // 5
-			msg->insertAscii("bg.caption.lblTitle"); // 6
-			msg->insertAscii("Text"); // 7
-			msg->insertAscii("txtInput"); // 8
-			msg->insertAscii("MaxLength"); // 9
-			msg->insertAscii("txtInput"); // 10
-			msg->insertAscii("LocalText"); // 11
-		}
-	} else {
-		for (int i = 0; i < 2; ++i) {
-			msg->insertByte(5);
-			msg->insertInt(0);
-			msg->insertInt(7); // number of shorts(asciis?)  //note B in harvs
-
-			msg->insertShort(0); // 1
-			msg->insertShort(1); // 2
-			msg->insertByte(9 + i);
-			msg->insertAscii("handleAutoLevelSelect"); // 3
-			msg->insertAscii("txtInput"); // 4
-			msg->insertAscii("LocalText"); // 5
-			msg->insertAscii("cmbInput"); // 6
-			msg->insertAscii("SelectedText"); // 7
-		}
-	}
-}
-
 BaseMessage* SuiInputBoxImplementation::generateMessage() {
-	SuiCreatePageMessage* msg = new SuiCreatePageMessage(boxID);
-	generateHeader(msg);
+	SuiCreatePageMessage* msg = new SuiCreatePageMessage(boxID, "Script.inputBox");
 
-	msg->insertOption(3, promptText, "Prompt.lblPrompt", "Text");
-	msg->insertOption(3, promptTitle, "bg.caption.lblTitle", "Text");
+	//Declare Headers:
+	if (isFilterBox()) {
+		addHeader("Prompt.lblPrompt", "Text");
+		addHeader("bg.caption.lblTitle", "Text");
+		addHeader("txtInput", "MaxLength");
+		addHeader("txtInput", "LocalText");
+	} else {
+		addHeader("txtInput", "LocalText");
+		addHeader("cmbInput", "SelectedText");
+	}
+
+	//Declare Body Settings:
+	addSetting("3", "Prompt.lblPrompt", "Text", promptText);
+	addSetting("3", "bg.caption.lblTitle", "Text", promptTitle);
 
 	if (cancelButton) {
-		msg->insertOption(3, "@cancel", "btnCancel", "Text");
+		addSetting("3", "btnCancel", "Text", "@cancel");
 	} else {
-		msg->insertOption(3, "False", "btnCancel", "Enabled");
-		msg->insertOption(3, "False", "btnCancel", "Visible");
+		addSetting("3", "btnCancel", "Enabled", "False");
+		addSetting("3", "btnCancel", "Visible", "False");
 	}
 
-	msg->insertOption(3, "@ok", "btnOk", "Text");
+	addSetting("3", "btnOk", "Text", "@ok");
 
-	msg->insertOption(3, "true", "txtInput", "Enabled");
-	msg->insertOption(3, "true", "txtInput", "Visible");
+	addSetting("3", "txtInput", "Enabled", "true");
+	addSetting("3", "txtInput", "Visible", "true");
 
-	msg->insertOption(3, "false", "cmbInput", "Enabled");
-	msg->insertOption(3, "false", "cmbInput", "Visible");
+	addSetting("3", "cmbInput", "Enabled", "false");
+	addSetting("3", "cmbInput", "Visible", "false");
 
-	char tempStr[10];
-	sprintf(tempStr, "%d", maxInputSize);
-
-	msg->insertOption(3, tempStr, "txtInput", "MaxLength");
+	addSetting("3", "txtInput", "MaxLength", String::valueOf(maxInputSize));
 
 	if (isFilterBox()) {
-		if (defaultInput != "")
-			msg->insertOption(3, defaultInput, "txtInput", "Text");
-		else
-			msg->insertOption(3, "", "txtInput", "Text");
-	} else
-		msg->insertOption(3, tempStr, "cmbInput", "MaxLength");
+		if (defaultInput != "") {
+			addSetting("3", "txtInput", "Text", defaultInput);
+		} else {
+			addSetting("3", "txtInput", "Text", "");
+		}
+	} else {
+		addSetting("3", "cmbInput", "MaxLength", String::valueOf(maxInputSize));
+	}
 
-	msg->insertLong(0);
-	msg->insertInt(0);
-	msg->insertLong(0);
+	//Generate Packet:
+	if (isFilterBox()) {
+		generateHeader(msg, "handleFilterInput");
+	} else {
+		generateHeader(msg, "handleAutoLevelSelect");
+	}
+	generateBody(msg);
+	generateFooter(msg);
 
 	return msg;
 }

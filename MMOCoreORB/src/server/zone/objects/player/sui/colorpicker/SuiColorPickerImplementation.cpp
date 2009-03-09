@@ -62,39 +62,26 @@ SuiColorPickerImplementation::SuiColorPickerImplementation(Player* player, uint6
 	variable = var;
 }
 
-void SuiColorPickerImplementation::generateHeader(BaseMessage* msg) {
-	msg->insertAscii("Script.ColorPicker");
-	msg->insertInt(6);
-
-	for (int i = 0; i < 2; ++i) {
-		msg->insertByte(5);
-		msg->insertInt(0);
-		msg->insertInt(5);
-
-		msg->insertShort(0); // 1
-		msg->insertShort(1); // 2
-		msg->insertByte(9 + i);
-		msg->insertAscii("handleColorizeFrame"); // 3
-		msg->insertAscii("ColorPicker"); // 4
-		msg->insertAscii("SelectedIndex"); // 5
-	}
-}
-
 BaseMessage* SuiColorPickerImplementation::generateMessage() {
-	SuiCreatePageMessage* msg = new SuiCreatePageMessage(boxID);
-	generateHeader(msg);
+	SuiCreatePageMessage* msg = new SuiCreatePageMessage(boxID, "Script.ColorPicker");
 
 	StringBuffer id;
 	id << objectID;
 
-	msg->insertOption(3, id.toString().toCharArray(), "ColorPicker", "TargetNetworkId");
-	msg->insertOption(3, variable.toCharArray(), "ColorPicker", "TargetVariable");
-	msg->insertOption(3, "500", "ColorPicker", "TargetRangeMax");
-	msg->insertOption(3, "@base_player:swg", "bg.caption.lblTitle", "Text");
+	//Declare Headers:
+	addHeader("ColorPicker", "SelectedIndex");
+	addHeader("bg.caption.lblTitle", "Text");
 
-	msg->insertLong(0);
-	msg->insertInt(0);
-	msg->insertLong(0);
+	//Set Body Options:
+	addSetting("3", "bg.caption.lblTitle", "Text", "@base_player:swg");
+	addSetting("3", "ColorPicker", "TargetRangeMax", "500");
+	addSetting("3", "ColorPicker", "TargetNetworkId", id.toString().toCharArray());
+	addSetting("3", "ColorPicker", "TargetVariable", id.toString().toCharArray());
+
+	//Generate Packet:
+	generateHeader(msg, "handleColorizeFrame");
+	generateBody(msg);
+	generateFooter(msg);
 
 	return msg;
 }

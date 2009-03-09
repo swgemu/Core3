@@ -63,33 +63,6 @@ BaseMessage* SuiBankTransferBox::generateMessage() {
 		return ((SuiBankTransferBoxImplementation*) _impl)->generateMessage();
 }
 
-BaseMessage* SuiBankTransferBox::getMessage() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
-
-		return (BaseMessage*) method.executeWithObjectReturn();
-	} else
-		return ((SuiBankTransferBoxImplementation*) _impl)->getMessage();
-}
-
-void SuiBankTransferBox::addOption(const String& itemText, const String& lblType, const String& itemType) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 10);
-		method.addAsciiParameter(itemText);
-		method.addAsciiParameter(lblType);
-		method.addAsciiParameter(itemType);
-
-		method.executeWithVoidReturn();
-	} else
-		((SuiBankTransferBoxImplementation*) _impl)->addOption(itemText, lblType, itemType);
-}
-
 /*
  *	SuiBankTransferBoxAdapter
  */
@@ -110,12 +83,6 @@ Packet* SuiBankTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod
 	case 8:
 		resp->insertLong(generateMessage()->_getObjectID());
 		break;
-	case 9:
-		resp->insertLong(getMessage()->_getObjectID());
-		break;
-	case 10:
-		addOption(inv->getAsciiParameter(_param0_addOption__String_String_String_), inv->getAsciiParameter(_param1_addOption__String_String_String_), inv->getAsciiParameter(_param2_addOption__String_String_String_));
-		break;
 	default:
 		return NULL;
 	}
@@ -133,14 +100,6 @@ void SuiBankTransferBoxAdapter::addBank(int bank) {
 
 BaseMessage* SuiBankTransferBoxAdapter::generateMessage() {
 	return ((SuiBankTransferBoxImplementation*) impl)->generateMessage();
-}
-
-BaseMessage* SuiBankTransferBoxAdapter::getMessage() {
-	return ((SuiBankTransferBoxImplementation*) impl)->getMessage();
-}
-
-void SuiBankTransferBoxAdapter::addOption(const String& itemText, const String& lblType, const String& itemType) {
-	return ((SuiBankTransferBoxImplementation*) impl)->addOption(itemText, lblType, itemType);
 }
 
 /*

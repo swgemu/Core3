@@ -49,30 +49,20 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+#include "../../../../packets/ui/SuiCreatePageMessage.h"
+
 class Player;
 class SuiCreatePageMessage;
 
 class SuiBankTransferBoxImplementation : public SuiBankTransferBoxServant {
-	int options;
 
 	String lblFrom, lblStartingFrom, lblInputFrom, lblTo, lblStartingTo, lblInputTo;
 	String convertRatioFrom, convertRatioTo;
-
-	SuiCreatePageMessage* message;
-
-private:
-	void generateHeader(SuiCreatePageMessage* msg);
 
 public:
 	SuiBankTransferBoxImplementation(Player* player, uint32 windowType);
 
 	BaseMessage* generateMessage();
-
-	BaseMessage* getMessage() {
-		return (BaseMessage*)message;
-	}
-
-	void addOption(const String& itemText, const String& lblType, const String& itemType);
 
 	void addCash(int cash);
 	void addBank(int bank);

@@ -47,13 +47,12 @@ which carries forward this exception.
 
 #include "SuiMessageBox.h"
 #include "engine/engine.h"
+#include "../../../../packets/ui/SuiCreatePageMessage.h"
 
 class Player;
 
 class SuiMessageBoxImplementation : public SuiMessageBoxServant {
 
-private:
-	void generateHeader(BaseMessage* msg);
 public:
 	SuiMessageBoxImplementation(Player* player, uint32 windowType);
 

@@ -21,10 +21,6 @@ public:
 
 	BaseMessage* generateMessage();
 
-	BaseMessage* getMessage();
-
-	void addOption(const String& itemText, const String& lblType, const String& itemType);
-
 	void addFrom(const String& from, const String& startingFrom, const String& inputFrom, const String& rFrom);
 
 	void addTo(const String& to, const String& startingTo, const String& inputTo, const String& rTo);
@@ -47,18 +43,11 @@ public:
 
 	BaseMessage* generateMessage();
 
-	BaseMessage* getMessage();
-
-	void addOption(const String& itemText, const String& lblType, const String& itemType);
-
 	void addFrom(const String& from, const String& startingFrom, const String& inputFrom, const String& rFrom);
 
 	void addTo(const String& to, const String& startingTo, const String& inputTo, const String& rTo);
 
 protected:
-	String _param0_addOption__String_String_String_;
-	String _param1_addOption__String_String_String_;
-	String _param2_addOption__String_String_String_;
 	String _param0_addFrom__String_String_String_String_;
 	String _param1_addFrom__String_String_String_String_;
 	String _param2_addFrom__String_String_String_String_;

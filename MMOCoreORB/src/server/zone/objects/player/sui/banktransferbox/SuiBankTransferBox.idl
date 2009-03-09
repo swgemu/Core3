@@ -57,8 +57,4 @@ interface SuiBankTransferBox implements SuiBox {
 	void addBank(int bank);
 	
 	BaseMessage generateMessage();
-
-	BaseMessage getMessage();
-
-	void addOption(const String itemText, const String lblType, const String itemType);
 }

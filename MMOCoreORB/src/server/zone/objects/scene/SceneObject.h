@@ -13,6 +13,8 @@
 
 #include "engine/util/QuadTreeEntry.h"
 
+#include "engine/util/Coordinate.h"
+
 #include "../../ZoneProcessServerImplementation.h"
 
 class ObjectMenuResponse;
@@ -132,6 +134,12 @@ public:
 	void setPositionY(float y);
 
 	void setDirection(float x, float z, float y, float w);
+
+	Coordinate* getCoordinate(float x, float y, float distance, float angle);
+
+	Coordinate* getCoordinate(SceneObject* object, float distance, float angle);
+
+	Coordinate* getCoordinate(SceneObject* object1, SceneObject* object2, float distanceFromObject1);
 
 	void generateAttributes(Player* player);
 
@@ -460,6 +468,12 @@ public:
 	void setPositionY(float y);
 
 	void setDirection(float x, float z, float y, float w);
+
+	Coordinate* getCoordinate(float x, float y, float distance, float angle);
+
+	Coordinate* getCoordinate(SceneObject* object, float distance, float angle);
+
+	Coordinate* getCoordinate(SceneObject* object1, SceneObject* object2, float distanceFromObject1);
 
 	void generateAttributes(Player* player);
 

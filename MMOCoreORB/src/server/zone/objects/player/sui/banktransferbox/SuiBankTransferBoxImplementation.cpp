@@ -48,66 +48,41 @@ which carries forward this exception.
 
 SuiBankTransferBoxImplementation::SuiBankTransferBoxImplementation(Player* player, uint32 windowType) :
 	SuiBankTransferBoxServant(player, windowType, BANKTRANSFERBOX) {
-
-	options = 0;
-
-	SuiCreatePageMessage* message = NULL;
-}
-
-void SuiBankTransferBoxImplementation::generateHeader(SuiCreatePageMessage* msg) {
-	msg->insertAscii("Script.transfer");
-	msg->insertInt(0x0C); // Size
-
-	for (int i = 0; i < 2; i++) {  // If these are not added twice it crashes the client
-		msg->insertByte(5);
-		msg->insertInt(0);
-		msg->insertInt(7);
-		msg->insertShort(0); // 1
-		msg->insertShort(1); // 2
-		msg->insertByte(9 + i);
-		msg->insertAscii("handleDepositWithdraw"); // 3
-		msg->insertAscii("transaction.txtInputFrom"); // 4
-		msg->insertAscii("Text"); // 5
-		msg->insertAscii("transaction.txtInputTo"); // 6
-		msg->insertAscii("Text"); // 7
-	}
-
-	promptTitle = "@base_player:bank_title";
-	promptText = "@base_player:bank_prompt";
-	msg->insertOption(3, promptTitle, "bg.caption.lblTitle", "Text");
-	msg->insertOption(3, promptText, "Prompt.lblPrompt", "Text");
-	options = 4;
 }
 
 BaseMessage* SuiBankTransferBoxImplementation::generateMessage() {
-	message = new SuiCreatePageMessage(boxID);
-	generateHeader(message);
+	SuiCreatePageMessage* message = new SuiCreatePageMessage(boxID, "Script.transfer");
 
-	addOption(lblFrom, "transaction.lblFrom", "Text");
-	addOption(lblTo, "transaction.lblTo", "Text");
+	//Declare Headers:
+	addHeader("transaction.txtInputFrom", "Text");
+	addHeader("transaction.txtInputTo", "Text");
 
-	addOption(lblStartingFrom, "transaction.lblStartingFrom", "Text");
-	addOption(lblStartingTo, "transaction.lblStartingTo", "Text");
+	//Set Body Options:
+	promptTitle = "@base_player:bank_title";
+	promptText = "@base_player:bank_prompt";
+	addSetting("3", "bg.caption.lblTitle", "Text", promptTitle);
+	addSetting("3", "Prompt.lblPrompt", "Text", promptText);
 
-	addOption(lblInputFrom, "transaction.txtInputFrom", "Text");
-	addOption(lblInputTo, "transaction.txtInputTo", "Text");
+	addSetting("3", "transaction.lblFrom", "Text", lblFrom);
+	addSetting("3", "transaction.lblTo", "Text", lblTo);
 
-	addOption(convertRatioFrom, "transaction", "ConversionRatioFrom");
-	addOption(convertRatioTo, "transaction", "ConversionRatioTo");
+	addSetting("3", "transaction.lblStartingFrom", "Text", lblStartingFrom);
+	addSetting("3", "transaction.lblStartingTo", "Text", lblStartingTo);
 
-	message->insertLong(0);
-	message->insertInt(0x7F7FFFFF);
-	message->insertInt(0x7F7FFFFF);
-	message->insertInt(0x7F7FFFFF);
-	message->insertInt(0);
+	addSetting("3", "transaction.txtInputFrom", "Text", lblInputFrom);
+	addSetting("3", "transaction.txtInputTo", "Text", lblInputTo);
+
+	addSetting("3", "transaction", "ConversionRatioFrom", convertRatioFrom);
+	addSetting("3", "transaction", "ConversionRatioTo", convertRatioTo);
+
+	//Generate Packet:
+	generateHeader(message, "handleDepositWithdraw");
+	generateBody(message);
+	generateFooter(message, 1); //special banktransferbox footer? nfi
 
 	return message;
 }
 
-void SuiBankTransferBoxImplementation::addOption(const String& itemText, const String& lblType, const String& itemType) {
-	message->insertOption(3, itemText, lblType, itemType);
-	++options;
-}
 void SuiBankTransferBoxImplementation::addCash(int cash) {
 
 	lblFrom = "Cash";

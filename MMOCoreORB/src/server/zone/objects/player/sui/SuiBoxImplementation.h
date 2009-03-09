@@ -50,6 +50,8 @@ which carries forward this exception.
 
 #include "SuiBoxImplementation.h"
 
+#include "../../../packets/ui/SuiCreatePageMessage.h"
+
 class Player;
 
 class SuiBoxImplementation : public SuiBoxServant {
@@ -73,6 +75,10 @@ protected:
 
 	int32 integerValue;
 
+	Vector<String> headerSets;
+	Vector<String> optionSets;
+	int hdrOptCount; //header option count
+
 public:
 	const static int INPUTBOX = 0;
 	const static int LISTBOX = 1;
@@ -93,6 +99,16 @@ public:
 	virtual BaseMessage* generateMessage() = 0;
 
 	BaseMessage* generateCloseMessage();
+
+
+	//For adding options to manipulate the UI
+	void addSetting(const String& optType, const String& variable, const String& setting, const String& value);
+	void addHeader(const String& variable, const String& type);
+
+	//For generation for SuiCreatePageMessage packet:
+	void generateHeader(SuiCreatePageMessage* msg, const String& handlerStr);
+	void generateBody(SuiCreatePageMessage* msg);
+	void generateFooter(SuiCreatePageMessage* msg, int type = 0);
 
 	int compareTo(SuiBox* obj) {
 		uint32 id = obj->getBoxID();
