@@ -617,7 +617,8 @@ interface CreatureObject implements TangibleObject {
 	unsigned int getPerformanceCounter();
 
 	unsigned int getInstrumentID();
-
+	int getInstrumentType();
+	
 	String getPerformanceName();
 
 	String getMood();

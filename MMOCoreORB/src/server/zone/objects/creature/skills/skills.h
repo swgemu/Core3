@@ -85,6 +85,7 @@ which carries forward this exception.
 #include "self/EntertainEffectSelfSkill.h"
 #include "self/DanceEffectSelfSkill.h"
 #include "self/MusicEffectSelfSkill.h"
+#include "self/BandFlourishSkill.h"
 
 #include "self/MaskScentSelfSkill.h"
 #include "self/ForageSelfSkill.h"

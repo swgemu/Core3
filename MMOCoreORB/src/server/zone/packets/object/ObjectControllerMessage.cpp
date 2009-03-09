@@ -627,6 +627,17 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		}
 		parseFlourish(player, pack, actioncntr);
 		break;
+	case (0xF4C60EC3): //bandflourish
+		if (!player->hasSkill(actionCRC)) {
+			player->clearQueueAction(actioncntr, 0, 2, 0);
+			return;
+		}
+		if (player->isMounted()) {
+			player->clearQueueAction(actioncntr, 0, 1, 16);
+			return;
+		}
+		parseBandFlourish(player, pack, actionCRC, actioncntr);
+		break;
 	case (0xB5220E24): //changemusic
 		if (player->isMounted()) {
 			player->clearQueueAction(actioncntr, 0, 1, 16);
@@ -2025,8 +2036,7 @@ void ObjectControllerMessage::parseImageDesign(Player* player, Message* pack) {
 	}
 }
 
-void ObjectControllerMessage::parseFlourish(Player* player, Message* pack,
-		uint32 actionCntr) {
+void ObjectControllerMessage::parseFlourish(Player* player, Message* pack, uint32 actionCntr) {
 	uint64 target = pack->parseLong(); // skip passed target
 
 	UnicodeString option = UnicodeString("");
@@ -2036,6 +2046,16 @@ void ObjectControllerMessage::parseFlourish(Player* player, Message* pack,
 	player->queueFlourish(actionModifier, target, actionCntr);
 	//player->queueFlourish()
 	//player->doFlourish(actionModifier);
+}
+
+void ObjectControllerMessage::parseBandFlourish(Player* player, Message* pack, uint32 actionCRC, uint32 actionCntr) {
+	uint64 target = pack->parseLong();
+
+	UnicodeString option = UnicodeString("");
+	pack->parseUnicode(option);
+	String actionModifier = option.toString();
+
+	player->queueAction(player, target, actionCRC, actionCntr, actionModifier);
 }
 
 void ObjectControllerMessage::parseChangeMusic(Player* player, Message* pack) {

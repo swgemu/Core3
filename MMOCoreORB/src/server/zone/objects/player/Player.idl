@@ -792,6 +792,7 @@ interface Player implements CreatureObject {
 	void setCloningFacility(CloningFacility facility);
 	void addConsentEntry(const String name);
 	void removeConsentEntry(const String name);
+	void setAcceptingBandFlourishes(boolean input);
 
 	//Getters
 	CloningFacility getCloningFacility();
@@ -799,8 +800,8 @@ interface Player implements CreatureObject {
 	boolean hasConsentFrom(Player player);
 	unsigned int getConsentListSize();
 	String getConsentEntry(int index);
-
 	boolean isPowerboosted();
+	boolean isAcceptingBandFlourishes();
 
 	//Calculations
 	unsigned char calculateIncapacitationTimer();
