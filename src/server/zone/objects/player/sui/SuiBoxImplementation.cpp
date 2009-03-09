@@ -60,6 +60,106 @@ SuiBoxImplementation::SuiBoxImplementation(Player* play, uint32 windowType, uint
 	cancelButton = false;
 
 	backButton = false;
+
+	hdrOptCount = 0; //header option count
+}
+
+//Use when building the UI. This should be called to add option setting's BEFORE the packet build
+void SuiBoxImplementation::addSetting(const String& optType, const String& variable, const String& setting, const String& value) {
+	String setName = "", setVal = "";
+	setName = setting;
+	setVal = value;
+
+	//These checks and settings ensure parsing of the optStr wont screw up in generateBody()
+	if((variable.length() == 0) || (optType.length() == 0))
+		return;
+
+	if(setName.length() == 0)
+		setName = " ";
+
+	if(setVal.length() == 0)
+		setVal = " ";
+
+	String optStr = "";
+	int optTypeInt = 0;
+	optStr+=(optType+"~"+variable);
+	optTypeInt = Integer::valueOf(optType);
+
+	//OptionType 3 & 4 have variable settings and values (see documentation for packet)
+	if((optTypeInt == 3) || (optTypeInt == 4)) {
+		optStr+=("~"+setName+"~"+setVal);
+	}
+
+	// Insert the option into the list:
+	optionSets.add(optStr);
+}
+
+//Use when building the UI. This should be called to add header's BEFORE the packet build
+void SuiBoxImplementation::addHeader(const String& variable, const String& type) {
+	if((variable.length() == 0) || (type.length() == 0))
+		return;
+
+	//Add's the header option to the list
+	String headerStr = "";
+	headerStr+=(variable+"~"+type);
+	headerSets.add(headerStr);
+
+	//The header count increases by 2. 1 for the variable name, 1 for the data type.
+	hdrOptCount+=2;
+}
+
+//Called after all Header Settings have been added. See SuiCreatePageMessage docs for more info
+void SuiBoxImplementation::generateHeader(SuiCreatePageMessage* msg, const String& handlerStr) {
+	//[UI DECLARATION HEADER]
+	String hdrVar = "";
+	String hdrType = "";
+
+	//The header needs to be repeated twice. (Why SOE?)
+	for (int i = 0; i < 2; ++i) {
+		msg->insertByte(5); //# of vars to follow, not inc strings
+		msg->insertInt(0);
+		msg->insertInt(3+hdrOptCount); //# of shorts (inc ascii string size shorts), excluding the counter
+		msg->insertShort(0); // 1
+		msg->insertShort(1); // 2
+		msg->insertByte(9 + i); //counter
+
+		msg->insertAscii(handlerStr);
+
+		for(int k = 0; k < headerSets.size(); k++) {
+			StringTokenizer hdrTok(headerSets.get(k)); //ex. List.lstList~SelectedRow
+			hdrTok.setDelimeter("~"); //Split & parse
+			hdrTok.getStringToken(hdrVar);
+			hdrTok.getStringToken(hdrType);
+			msg->insertHeaderOption(hdrVar, hdrType, (i > 0));
+		}
+	}
+}
+
+//Called after all Option Settings have been added. See SuiCreatePageMessage docs for more info
+void SuiBoxImplementation::generateBody(SuiCreatePageMessage* msg) {
+	//[UI BODY]
+	String bdyTypeStr = "";
+	int bdyType = 0;
+	String bdyVar = "";
+	String bdySetting = "";
+	String bdyValue = "";
+	for(int k = 0; k < optionSets.size(); k++) {
+		StringTokenizer bdyTok(optionSets.get(k)); //ex. 3~Prompt.lblTitle~Text~LOL
+		bdyTok.setDelimeter("~"); //Split & parse
+		bdyTok.getStringToken(bdyTypeStr);
+		bdyType = Integer::valueOf(bdyTypeStr);
+		bdyTok.getStringToken(bdyVar);
+		if((bdyType == 3) || (bdyType == 4)) {
+			bdyTok.getStringToken(bdySetting);
+			bdyTok.getStringToken(bdyValue);
+		}
+		msg->insertOption(bdyType, bdyValue, bdyVar, bdySetting);
+	}
+}
+
+//Called to complete the SuiCreatePageMessage packet
+void SuiBoxImplementation::generateFooter(SuiCreatePageMessage* msg, int type) {
+	msg->insertFooter(type);
 }
 
 //This will return the packet to close the UI page on the client.
@@ -70,4 +170,6 @@ BaseMessage* SuiBoxImplementation::generateCloseMessage() {
 }
 
 SuiBoxImplementation::~SuiBoxImplementation() {
+	headerSets.removeAll();
+	optionSets.removeAll();
 }

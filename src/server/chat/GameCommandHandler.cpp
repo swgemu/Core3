@@ -388,7 +388,6 @@ void GameCommandHandler::init() {
 				"Displays the current Message of the Day",
 				"USAGE: @tasks",
 				&displayMOTD);
-
 	/* Disabled Commands
 
 	gmCommands->addCommand("applyDot", DEVELOPER,
@@ -3733,3 +3732,4 @@ void GameCommandHandler::eventCloner(StringTokenizer tokenizer, Player* player) 
 	//Put it in the world at the current players location
 	//Set the options it has
 }
+

@@ -37,39 +37,12 @@ BaseMessage* SuiTransferBox::generateMessage() {
 		return ((SuiTransferBoxImplementation*) _impl)->generateMessage();
 }
 
-BaseMessage* SuiTransferBox::getMessage() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 7);
-
-		return (BaseMessage*) method.executeWithObjectReturn();
-	} else
-		return ((SuiTransferBoxImplementation*) _impl)->getMessage();
-}
-
-void SuiTransferBox::addOption(const String& itemText, const String& lblType, const String& itemType) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 8);
-		method.addAsciiParameter(itemText);
-		method.addAsciiParameter(lblType);
-		method.addAsciiParameter(itemType);
-
-		method.executeWithVoidReturn();
-	} else
-		((SuiTransferBoxImplementation*) _impl)->addOption(itemText, lblType, itemType);
-}
-
 void SuiTransferBox::addFrom(const String& from, const String& startingFrom, const String& inputFrom, const String& rFrom) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 7);
 		method.addAsciiParameter(from);
 		method.addAsciiParameter(startingFrom);
 		method.addAsciiParameter(inputFrom);
@@ -85,7 +58,7 @@ void SuiTransferBox::addTo(const String& to, const String& startingTo, const Str
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 8);
 		method.addAsciiParameter(to);
 		method.addAsciiParameter(startingTo);
 		method.addAsciiParameter(inputTo);
@@ -111,15 +84,9 @@ Packet* SuiTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertLong(generateMessage()->_getObjectID());
 		break;
 	case 7:
-		resp->insertLong(getMessage()->_getObjectID());
-		break;
-	case 8:
-		addOption(inv->getAsciiParameter(_param0_addOption__String_String_String_), inv->getAsciiParameter(_param1_addOption__String_String_String_), inv->getAsciiParameter(_param2_addOption__String_String_String_));
-		break;
-	case 9:
 		addFrom(inv->getAsciiParameter(_param0_addFrom__String_String_String_String_), inv->getAsciiParameter(_param1_addFrom__String_String_String_String_), inv->getAsciiParameter(_param2_addFrom__String_String_String_String_), inv->getAsciiParameter(_param3_addFrom__String_String_String_String_));
 		break;
-	case 10:
+	case 8:
 		addTo(inv->getAsciiParameter(_param0_addTo__String_String_String_String_), inv->getAsciiParameter(_param1_addTo__String_String_String_String_), inv->getAsciiParameter(_param2_addTo__String_String_String_String_), inv->getAsciiParameter(_param3_addTo__String_String_String_String_));
 		break;
 	default:
@@ -131,14 +98,6 @@ Packet* SuiTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 BaseMessage* SuiTransferBoxAdapter::generateMessage() {
 	return ((SuiTransferBoxImplementation*) impl)->generateMessage();
-}
-
-BaseMessage* SuiTransferBoxAdapter::getMessage() {
-	return ((SuiTransferBoxImplementation*) impl)->getMessage();
-}
-
-void SuiTransferBoxAdapter::addOption(const String& itemText, const String& lblType, const String& itemType) {
-	return ((SuiTransferBoxImplementation*) impl)->addOption(itemText, lblType, itemType);
 }
 
 void SuiTransferBoxAdapter::addFrom(const String& from, const String& startingFrom, const String& inputFrom, const String& rFrom) {

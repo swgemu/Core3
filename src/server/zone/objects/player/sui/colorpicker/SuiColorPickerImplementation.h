@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "SuiColorPicker.h"
 #include "engine/engine.h"
+#include "../../../../packets/ui/SuiCreatePageMessage.h"
 
 class Player;
 
@@ -54,9 +55,6 @@ class SuiColorPickerImplementation : public SuiColorPickerServant {
 	uint64 objectID;
 
 	String variable;
-
-private:
-	void generateHeader(BaseMessage* msg);
 
 public:
 	SuiColorPickerImplementation(Player* player, uint64 objectId, uint32 windowType);

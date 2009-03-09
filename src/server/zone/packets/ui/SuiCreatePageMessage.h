@@ -1,44 +1,44 @@
 /*
 Copyright (C) 2007 <SWGEmu>
- 
+
 This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
+Foundation; either version 2 of the License,
 or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for
 more details.
- 
-You should have received a copy of the GNU Lesser General 
+
+You should have received a copy of the GNU Lesser General
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
 and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
@@ -50,26 +50,82 @@ which carries forward this exception.
 #include "../object/StfParameter.h"
 
 class SuiCreatePageMessage : public BaseMessage {
+	int optionOffset;
+	int optionCount;
+
 public:
-   SuiCreatePageMessage(uint32 pageID) : BaseMessage() {
-		insertShort(0x02);
-		insertInt(0xD44B7259);  // CRC
-		
-		insertInt(pageID);
+   SuiCreatePageMessage(uint32 pageID, const String& scriptClass) : BaseMessage() {
+	   optionOffset = 0;
+	   optionCount = 0;
+
+	   insertShort(0x02);
+	   insertInt(0xD44B7259);  // CRC
+	   insertInt(pageID);
+	   insertAscii(scriptClass);
+	   insertInt(0); //option count
+
+	   //Calculate the offset for the optionCount (priority+crc+pageid+asciiSize+ascii+4):
+	   optionOffset = 16+scriptClass.length();
    }
-   
-   void insertOption(uint8 option, const String& value, const String& variable, const String& type) {
-	   insertByte(option); // 3 Strings?
-	   
-	   insertInt(1); // number of Unicodes
-	   UnicodeString val = UnicodeString(value);
-	   insertUnicode(val);
-	   
-	   insertInt(2); // number of ASCIIS
+
+	//Use for inserting an option set when building the packet
+	void insertOption(uint8 optionType, const String& value, const String& variable, const String& setting) {
+	   optionCount+=1;
+	   insertByte(optionType); //Option Type. 1=Data Container Option. 3=Data Value Option. 4=Container Data Header Option
+
+	   //Data Value Option and Header Option are the same
+	   if((optionType == 3) || (optionType == 4)) {
+		   insertInt(1); // number of Unicodes
+		   UnicodeString val = UnicodeString(value);
+		   insertUnicode(val);
+
+		   insertInt(2); // number of ASCIIS
+		   insertAscii(variable.toCharArray());
+		   insertAscii(setting.toCharArray());
+	   } else { //For type #1, Data Container Option (used to delcare a list of options, like in dataList)
+			insertInt(0); //0 unicodes
+			insertInt(1); // 1 ascii
+			insertAscii(variable.toCharArray()); //ex. List.dataList
+	   }
+
+	   //Update the option count
+	   insertInt(optionOffset, optionCount);
+	}
+
+	//Use for inserting the UI header on packet build
+	void insertHeaderOption(const String& variable, const String& type, bool noCount = false) {
+	   if(!noCount) {
+		   optionCount+=1;
+	   }
+
 	   insertAscii(variable.toCharArray());
 	   insertAscii(type.toCharArray());
-   }
-   
+
+	   //Update the option count
+	   insertInt(optionOffset, optionCount);
+	}
+
+	void insertFooter(int type = 0) {
+		insertLong(0);
+		if(type > 0) {
+			insertInt(0x7F7FFFFF);
+			insertInt(0x7F7FFFFF);
+			insertInt(0x7F7FFFFF);
+			insertInt(0);
+		} else {
+			insertInt(0);
+			insertLong(0);
+		}
+	}
+
+	void setOptionCount(int optCnt) {
+	   optionCount = optCnt;
+	}
+
+	int getOptionCount() {
+		return optionCount;
+	}
+
    /*void frogMenu() {
 	   insertInt(0x00F85E88); //I'm gonna guess this is an ID of sorts.
 	   insertAscii("Script.listBox");
@@ -110,7 +166,7 @@ public:
 	   insertAscii("otherPressed");
 	   //end of list?
 
-	   //---------------------------
+	   //--------------------------- 1
 	   insertByte(3);
 	   insertInt(1); //I think this is a counter.
 	   UnicodeString test = "Character Builder Terminal";
@@ -120,7 +176,7 @@ public:
 	   insertAscii("bg.caption.lblTitle");
 	   insertAscii("Text");
 
-	   //---------------------------
+	   //--------------------------- 2
 	   insertByte(3);
 	   insertInt(1); //counter I think.
 	   UnicodeString test2 = "Select the desired Roadmap option";
@@ -131,7 +187,7 @@ public:
 	   insertAscii("Text");
 
 
-	   //---------------------------
+	   //--------------------------- 3
 	   insertByte(3);
 	   insertInt(1); //counter I think
 	   UnicodeString test99 = "true";
@@ -142,7 +198,7 @@ public:
 	   insertAscii("visible");
 
 
-	   //---------------------------
+	   //--------------------------- 4
 	   insertByte(3);
 	   insertInt(1); //counter I think
 	   UnicodeString test3 = "@refresh";
@@ -152,7 +208,7 @@ public:
 	   insertAscii("btnOther");
 	   insertAscii("visible");
 
-	   //---------------------------
+	   //--------------------------- 5
 	   insertByte(3);
 	   insertInt(1); //counter I think
 	   UnicodeString test4 = "@cancel";
@@ -162,7 +218,7 @@ public:
 	   insertAscii("btnCancel");
 	   insertAscii("Text");
 
-	   //---------------------------
+	   //--------------------------- 6
 	   insertByte(3);
 	   insertInt(1); //counter I think
 	   UnicodeString test5 = "@ok";
@@ -182,7 +238,7 @@ public:
 	   insertInt(1); //counter I think
 	   insertAscii("List.dataList");
 
-	   //---------------------------
+	   //--------------------------- 7
 	   insertByte(4);
 	   insertInt(1);
 	   UnicodeString test6 = "0";
@@ -191,7 +247,7 @@ public:
 	   insertAscii("List.dataList");
 	   insertAscii("Name");
 
-	   //---------------------------
+	   //--------------------------- 8
 	   insertByte(3);
 	   insertInt(1);
 	   UnicodeString test7 = "Select Roadmap";
@@ -200,7 +256,7 @@ public:
 	   insertAscii("List.dataList.0");
 	   insertAscii("Text");
 
-	   //---------------------------
+	   //--------------------------- 9
 	   insertByte(4);
 	   insertInt(1);
 	   UnicodeString test8 = "1";
@@ -209,7 +265,7 @@ public:
 	   insertAscii("List.dataList");
 	   insertAscii("Name");
 
-	   //---------------------------
+	   //--------------------------- 10
 	   insertByte(3);
 	   insertInt(1);
 	   UnicodeString test9 = "Earn Current Skill";
@@ -219,7 +275,7 @@ public:
 	   insertAscii("Text");
 
 
-	   //---------------------------
+	   //--------------------------- 11
 	   insertByte(4);
 	   insertInt(1);
 	   UnicodeString test10 = "2";
@@ -229,7 +285,7 @@ public:
 	   insertAscii("Name");
 
 
-	   //---------------------------
+	   //--------------------------- 12
 	   insertByte(3);
 	   insertInt(1);
 	   UnicodeString test11 = "Set Combat Level";
@@ -239,7 +295,7 @@ public:
 	   insertAscii("Text");
 
 
-	   //---------------------------
+	   //--------------------------- 13
 	   insertByte(3);
 	   insertInt(1);
 	   UnicodeString test12 = "true";
@@ -249,7 +305,7 @@ public:
 	   insertAscii("visible");
 
 
-	   //---------------------------
+	   //--------------------------- 14
 	   insertByte(3);
 	   insertInt(1);
 	   UnicodeString test13 = "Back";
@@ -263,8 +319,8 @@ public:
 	   insertLong(0);
 	   insertInt(0);
 	   insertLong(0);
-   }*/    
-	
+   }*/
+
 };
 
 #endif /*BADGESRESPONSEMESSAGE_H_*/

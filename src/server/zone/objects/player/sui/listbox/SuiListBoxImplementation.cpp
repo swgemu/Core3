@@ -67,102 +67,79 @@ void SuiListBoxImplementation::init(){
 	next = 0;
 }
 
-void SuiListBoxImplementation::generateHeader(BaseMessage* msg) {
-	msg->insertAscii("Script.listBox");
-
-	switch(type) {
-	case HANDLESTATUSUI:
-		msg->insertInt(7 + (2 * menuItems.size()));
-		break;
-	case HANDLEDESTROYUI:
-		msg->insertInt(7 + (2 * menuItems.size()));
-		break;
-	default:
-		if (cancelButton || backButton)
-			msg->insertInt(7 + (2 * menuItems.size()));
-		else
-			msg->insertInt(8 + (2 * menuItems.size()));
-	}
-
-	for (int i = 0; i < 2; i++) {  // If these are not added twice it crashes the client
-		msg->insertByte(5);
-		msg->insertInt(0);
-		msg->insertInt(7);
-		msg->insertShort(0); // 1
-		msg->insertShort(1); // 2
-		msg->insertByte(9 + i);
-
-		switch(type) {
-		case HANDLESTATUSUI:
-			msg->insertAscii("handleStatusUi");
-			break;
-		case HANDLEDESTROYUI:
-			msg->insertAscii("handleDestroyUi");
-			break;
-		default:
-			msg->insertAscii("msgSelected");
-		}
-
-		msg->insertAscii("List.lstList"); // 4
-		msg->insertAscii("SelectedRow"); // 5
-		msg->insertAscii("bg.caption.lblTitle"); // 6
-		msg->insertAscii("Text"); // 7
-	}
-}
-
 BaseMessage* SuiListBoxImplementation::generateMessage() {
-	SuiCreatePageMessage* msg = new SuiCreatePageMessage(boxID);
-	generateHeader(msg);
+	SuiCreatePageMessage* message = new SuiCreatePageMessage(boxID, "Script.listBox");
 
-	msg->insertOption(3, promptTitle, "bg.caption.lblTitle", "Text");
-	msg->insertOption(3, promptText, "Prompt.lblPrompt", "Text");
+	//Declare Headers:
+	addHeader("List.lstList", "SelectedRow");
+	addHeader("bg.caption.lblTitle", "Text");
+	//addHeader("Prompt.lblPrompt", "Text"); //note: the list ui script doesnt need this...not sure why
+
+	//Set Body Options:
+	addSetting("3", "bg.caption.lblTitle", "Text", promptTitle);
+	addSetting("3", "Prompt.lblPrompt", "Text", promptText);
+	/*addSetting("3", "Prompt", "Visible", "false");
+	addSetting("3", "List", "Location", "4,5");
+	addSetting("3", "List", "Size", "275,290");*/
 
 	switch(type) {
 	case HANDLESTATUSUI:
 		if (!backButton)
-			msg->insertOption(3, "@cancel", "btnCancel", "Text");
+			addSetting("3", "btnCancel", "Text", "@cancel");
 		else
-			msg->insertOption(3, "@back", "btnCancel", "Text");
-		msg->insertOption(3, "@refresh", "btnOk", "Text");
+			addSetting("3", "btnCancel", "Text", "@back");
+		addSetting("3", "btnOk", "Text", "@refresh");
 		break;
 	case HANDLEDESTROYUI:
-		msg->insertOption(3, "@no", "btnCancel", "Text");
-		msg->insertOption(3, "@yes", "btnOk", "Text");
+		addSetting("3", "btnCancel", "Text", "@no");
+		addSetting("3", "btnOk", "Text", "@yes");
 		break;
 	default:
 		if (cancelButton)
-			msg->insertOption(3, "@cancel", "btnCancel", "Text");
+			addSetting("3", "btnCancel", "Text", "@cancel");
 		else if (backButton)
-			msg->insertOption(3, "@back", "btnCancel", "Text");
+			addSetting("3", "btnCancel", "Text", "@back");
 		else {
-			msg->insertOption(3, "False", "btnCancel", "Enabled");
-			msg->insertOption(3, "False", "btnCancel", "Visible");
+			addSetting("3", "btnCancel", "Enabled", "False");
+			addSetting("3", "btnCancel", "Visible", "False");
 		}
 
-		msg->insertOption(3, "@ok", "btnOk", "Text");
+		addSetting("3", "btnOk", "Text", "@ok");
 	}
 
-	msg->insertByte(1);
-	msg->insertInt(0);
-	msg->insertInt(1);
-	msg->insertAscii("List.dataList");
+	//Data Container Option
+	addSetting("1", "List.dataList", "", "");
 
+	//Fill the above Data Container
+	String tempVal = "";
 	for (int i = 0; i < menuItems.size(); i++) {
 		char tempStr[30];
 		sprintf(tempStr, "%d", i);
 
-		msg->insertOption(4, tempStr, "List.dataList", "Name");
+		addSetting("4", "List.dataList", "Name", tempStr);
 
 		sprintf(tempStr, "List.dataList.%d", i);
 
-		msg->insertOption(3, menuItems.get(i)->getOptionName(), tempStr, "Text");
+		tempVal = menuItems.get(i)->getOptionName();
+
+		addSetting("3", tempStr, "Text", tempVal);
 	}
 
-	msg->insertLong(0);
-	msg->insertInt(0);
-	msg->insertLong(0);
+	//Generate Packet:
+	switch(type) {
+	case HANDLESTATUSUI:
+		generateHeader(message, "handleStatusUi");
+		break;
+	case HANDLEDESTROYUI:
+		generateHeader(message, "handleDestroyUi");
+		break;
+	default:
+		generateHeader(message, "msgSelected");
+	}
+	generateBody(message);
+	generateFooter(message);
 
-	return msg;
+	return message;
 }
 
 

@@ -50,6 +50,8 @@ which carries forward this exception.
 #include "SuiListBox.h"
 #include "SuiListBoxMenuItem.h"
 
+#include "../../../../packets/ui/SuiCreatePageMessage.h"
+
 class Player;
 
 class SuiListBoxImplementation : public SuiListBoxServant {
@@ -58,8 +60,6 @@ class SuiListBoxImplementation : public SuiListBoxServant {
 	int type;
 
 private:
-	void generateHeader(BaseMessage* msg);
-
 	uint64 next;
 	uint64 previous;
 

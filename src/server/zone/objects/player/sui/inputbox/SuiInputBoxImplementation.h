@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "SuiInputBox.h"
 #include "engine/engine.h"
+#include "../../../../packets/ui/SuiCreatePageMessage.h"
 
 class Player;
 
@@ -55,9 +56,6 @@ class SuiInputBoxImplementation : public SuiInputBoxServant {
 	String defaultInput;
 
 	int inputType;
-
-private:
-	void generateHeader(BaseMessage* msg);
 
 public:
 	const static int DEFAULT = 0;
