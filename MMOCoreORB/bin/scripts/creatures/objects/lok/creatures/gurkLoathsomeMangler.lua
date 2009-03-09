@@ -51,7 +51,7 @@ gurkLoathsomeMangler = Creature:new {
 	socialGroup = "Gurk",
 	level = 33,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
 	healthMax = 10000,
 	healthMin = 8200,

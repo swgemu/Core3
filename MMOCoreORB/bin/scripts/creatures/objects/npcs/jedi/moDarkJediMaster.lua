@@ -137,7 +137,7 @@ moDarkJediMaster = Creature:new {
 	meatMax = 0,
 
 	skills = { "oneHandedJediAttack1", "oneHandedJediAttack2", "oneHandedJediAttack3", "oneHandedJediAttack4", "oneHandedJediAttack5", "oneHandedJediAttack6", "oneHandedJediAttack7", "oneHandedJediAttack8" },
-	respawnTimer = 7200,
+	respawnTimer = 432000,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

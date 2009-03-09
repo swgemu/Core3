@@ -41,16 +41,16 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-droideka = Creature:new {
-	objectName = "droideka",  -- Lua Object Name
+lokDroidekaDungeon = Creature:new {
+	objectName = "lokDroidekaDungeon",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Droideka",
+	faction = "droideka",
 	gender = "",
 
 	speciesName = "droideka",
 	stfName = "mob/creature_names", 
 	objectCRC = 2412922465, 
-	socialGroup = "Droideka",
+	socialGroup = "droideka",
 	level = 32,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
@@ -96,9 +96,9 @@ droideka = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/ranged/droid/shared_droid_droideka_ranged.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "Imperial Droideka", -- Name ex. 'a Vibrolance'
-	weaponTemp = "droid_droideka_ranged", -- Weapon Template ex. 'lance_vibrolance'
+	weapon = "object/weapon/ranged/droid/shared_droid_lokDroidekaDungeon_ranged.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Imperial lokDroidekaDungeon", -- Name ex. 'a Vibrolance'
+	weaponTemp = "droid_lokDroidekaDungeon_ranged", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
 	weaponMinDamage = 370,
@@ -141,4 +141,4 @@ droideka = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(droideka, 2412922465) -- Add to Global Table
+Creatures:addCreature(lokDroidekaDungeon, 2412922465) -- Add to Global Table

@@ -51,7 +51,7 @@ gurkGatherer = Creature:new {
 	socialGroup = "Gurk",
 	level = 30,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
 	healthMax = 10000,
 	healthMin = 8200,
