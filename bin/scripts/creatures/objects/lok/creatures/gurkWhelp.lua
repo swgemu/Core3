@@ -51,7 +51,7 @@ gurkWhelp = Creature:new {
 	socialGroup = "Gurk",
 	level = 27,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
 	healthMax = 7200,
 	healthMin = 5900,

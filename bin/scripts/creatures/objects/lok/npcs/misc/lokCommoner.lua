@@ -40,11 +40,11 @@
 --this exception also makes it possible to release a modified version
 --which carries forward this exception.
 
-lokCommoner1 = Creature:new {
-	objectName = "lokCommoner1",
+kimoTownCommon1 = Creature:new {
+	objectName = "kimoTownCommon1",
 	creatureType = NPC,
 
-	speciesName = "Commoner",
+	speciesName = "commoner",
 	combatFlags = ATTACKABLE_FLAG,
 	
 	stfName = "mob/creature_names",
@@ -60,12 +60,25 @@ lokCommoner1 = Creature:new {
 	randomMovement = 0,
 	mood = "",
 	cellID = 0,
+	
+	healthMax = 200,
+	healthMin = 200,
+	strength = 0,
+	constitution = 0,
 
-	weapon = ""
+	actionMax = 200,
+	actionMin = 200,
+	quickness = 0,
+	stamina = 0,
+
+	mindMax = 200,
+	mindMin = 200,
+	focus = 0,
+	willpower = 0,
 }
 
-lokCommoner2 = Creature:new {
-	objectName = "lokCommoner2",
+kimoTownCommon2 = Creature:new {
+	objectName = "kimoTownCommon2",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -84,12 +97,25 @@ lokCommoner2 = Creature:new {
 	randomMovement = 0,
 	mood = "",
 	cellID = 0,
+	
+	healthMax = 200,
+	healthMin = 200,
+	strength = 0,
+	constitution = 0,
 
-	weapon = ""
+	actionMax = 200,
+	actionMin = 200,
+	quickness = 0,
+	stamina = 0,
+
+	mindMax = 200,
+	mindMin = 200,
+	focus = 0,
+	willpower = 0,
 }
 
-lokCommoner3 = Creature:new {
-	objectName = "lokCommoner3",
+kimoTownCommon3 = Creature:new {
+	objectName = "kimoTownCommon3",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -108,12 +134,25 @@ lokCommoner3 = Creature:new {
 	randomMovement = 0,
 	mood = "",
 	cellID = 0,
+	
+	healthMax = 200,
+	healthMin = 200,
+	strength = 0,
+	constitution = 0,
 
-	weapon = ""
+	actionMax = 200,
+	actionMin = 200,
+	quickness = 0,
+	stamina = 0,
+
+	mindMax = 200,
+	mindMin = 200,
+	focus = 0,
+	willpower = 0,
 }
 
-lokCommoner4 = Creature:new {
-	objectName = "lokCommoner4",
+kimoTownCommon4 = Creature:new {
+	objectName = "kimoTownCommon4",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -132,12 +171,25 @@ lokCommoner4 = Creature:new {
 	randomMovement = 0,
 	mood = "",
 	cellID = 0,
+	
+	healthMax = 200,
+	healthMin = 200,
+	strength = 0,
+	constitution = 0,
 
-	weapon = ""
+	actionMax = 200,
+	actionMin = 200,
+	quickness = 0,
+	stamina = 0,
+
+	mindMax = 200,
+	mindMin = 200,
+	focus = 0,
+	willpower = 0,
 }
 
-lokCommoner5 = Creature:new {
-	objectName = "lokCommoner5",
+kimoTownCommon5 = Creature:new {
+	objectName = "kimoTownCommon5",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -156,12 +208,25 @@ lokCommoner5 = Creature:new {
 	randomMovement = 0,
 	mood = "",
 	cellID = 0,
+	
+	healthMax = 200,
+	healthMin = 200,
+	strength = 0,
+	constitution = 0,
 
-	weapon = ""
+	actionMax = 200,
+	actionMin = 200,
+	quickness = 0,
+	stamina = 0,
+
+	mindMax = 200,
+	mindMin = 200,
+	focus = 0,
+	willpower = 0,
 }
 
-lokCommoner6 = Creature:new {
-	objectName = "lokCommoner6",
+kimoTownCommon6 = Creature:new {
+	objectName = "kimoTownCommon6",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -180,12 +245,25 @@ lokCommoner6 = Creature:new {
 	randomMovement = 0,
 	mood = "",
 	cellID = 0,
+	
+	healthMax = 200,
+	healthMin = 200,
+	strength = 0,
+	constitution = 0,
 
-	weapon = ""
+	actionMax = 200,
+	actionMin = 200,
+	quickness = 0,
+	stamina = 0,
+
+	mindMax = 200,
+	mindMin = 200,
+	focus = 0,
+	willpower = 0,
 }
 
-lokCommoner7 = Creature:new {
-	objectName = "lokCommoner7",
+kimoTownCommon7 = Creature:new {
+	objectName = "kimoTownCommon7",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -204,12 +282,25 @@ lokCommoner7 = Creature:new {
 	randomMovement = 0,
 	mood = "",
 	cellID = 0,
+	
+	healthMax = 200,
+	healthMin = 200,
+	strength = 0,
+	constitution = 0,
 
-	weapon = ""
+	actionMax = 200,
+	actionMin = 200,
+	quickness = 0,
+	stamina = 0,
+
+	mindMax = 200,
+	mindMin = 200,
+	focus = 0,
+	willpower = 0,
 }
 
-lokCommoner8 = Creature:new {
-	objectName = "lokCommoner8",
+kimoTownCommon8 = Creature:new {
+	objectName = "kimoTownCommon8",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -228,12 +319,25 @@ lokCommoner8 = Creature:new {
 	randomMovement = 0,
 	mood = "",
 	cellID = 0,
+	
+	healthMax = 200,
+	healthMin = 200,
+	strength = 0,
+	constitution = 0,
 
-	weapon = ""
+	actionMax = 200,
+	actionMin = 200,
+	quickness = 0,
+	stamina = 0,
+
+	mindMax = 200,
+	mindMin = 200,
+	focus = 0,
+	willpower = 0,
 }
 
-lokCommoner9 = Creature:new {
-	objectName = "lokCommoner9",
+kimoTownCommon9 = Creature:new {
+	objectName = "kimoTownCommon9",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -252,12 +356,25 @@ lokCommoner9 = Creature:new {
 	randomMovement = 0,
 	mood = "",
 	cellID = 0,
+	
+	healthMax = 200,
+	healthMin = 200,
+	strength = 0,
+	constitution = 0,
 
-	weapon = ""
+	actionMax = 200,
+	actionMin = 200,
+	quickness = 0,
+	stamina = 0,
+
+	mindMax = 200,
+	mindMin = 200,
+	focus = 0,
+	willpower = 0,
 }
 
-lokCommoner10 = Creature:new {
-	objectName = "lokCommoner10",
+kimoTownCommon10 = Creature:new {
+	objectName = "kimoTownCommon10",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -276,12 +393,25 @@ lokCommoner10 = Creature:new {
 	randomMovement = 0,
 	mood = "",
 	cellID = 0,
+	
+	healthMax = 200,
+	healthMin = 200,
+	strength = 0,
+	constitution = 0,
 
-	weapon = ""
+	actionMax = 200,
+	actionMin = 200,
+	quickness = 0,
+	stamina = 0,
+
+	mindMax = 200,
+	mindMin = 200,
+	focus = 0,
+	willpower = 0,
 }
 
-lokCommoner11 = Creature:new {
-	objectName = "lokCommoner11",
+kimoTownCommon11 = Creature:new {
+	objectName = "kimoTownCommon11",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -300,12 +430,25 @@ lokCommoner11 = Creature:new {
 	randomMovement = 0,
 	mood = "",
 	cellID = 0,
+	
+	healthMax = 200,
+	healthMin = 200,
+	strength = 0,
+	constitution = 0,
 
-	weapon = ""
+	actionMax = 200,
+	actionMin = 200,
+	quickness = 0,
+	stamina = 0,
+
+	mindMax = 200,
+	mindMin = 200,
+	focus = 0,
+	willpower = 0,
 }
 
-lokCommoner12 = Creature:new {
-	objectName = "lokCommoner12",
+kimoTownCommon12 = Creature:new {
+	objectName = "kimoTownCommon12",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -324,12 +467,25 @@ lokCommoner12 = Creature:new {
 	randomMovement = 0,
 	mood = "",
 	cellID = 0,
+	
+	healthMax = 200,
+	healthMin = 200,
+	strength = 0,
+	constitution = 0,
 
-	weapon = ""
+	actionMax = 200,
+	actionMin = 200,
+	quickness = 0,
+	stamina = 0,
+
+	mindMax = 200,
+	mindMin = 200,
+	focus = 0,
+	willpower = 0,
 }
 
-lokCommoner13 = Creature:new {
-	objectName = "lokCommoner13",
+kimoTownCommon13 = Creature:new {
+	objectName = "kimoTownCommon13",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -348,12 +504,25 @@ lokCommoner13 = Creature:new {
 	randomMovement = 0,
 	mood = "",
 	cellID = 0,
+	
+	healthMax = 200,
+	healthMin = 200,
+	strength = 0,
+	constitution = 0,
 
-	weapon = ""
+	actionMax = 200,
+	actionMin = 200,
+	quickness = 0,
+	stamina = 0,
+
+	mindMax = 200,
+	mindMin = 200,
+	focus = 0,
+	willpower = 0,
 }
 
-lokCommoner14 = Creature:new {
-	objectName = "lokCommoner14",
+kimoTownCommon14 = Creature:new {
+	objectName = "kimoTownCommon14",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -372,12 +541,25 @@ lokCommoner14 = Creature:new {
 	randomMovement = 0,
 	mood = "",
 	cellID = 0,
+	
+	healthMax = 200,
+	healthMin = 200,
+	strength = 0,
+	constitution = 0,
 
-	weapon = ""
+	actionMax = 200,
+	actionMin = 200,
+	quickness = 0,
+	stamina = 0,
+
+	mindMax = 200,
+	mindMin = 200,
+	focus = 0,
+	willpower = 0,
 }
 
-lokCommoner15 = Creature:new {
-	objectName = "lokCommoner15",
+kimoTownCommon15 = Creature:new {
+	objectName = "kimoTownCommon15",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -396,6 +578,19 @@ lokCommoner15 = Creature:new {
 	randomMovement = 0,
 	mood = "",
 	cellID = 0,
+	
+	healthMax = 200,
+	healthMin = 200,
+	strength = 0,
+	constitution = 0,
 
-	weapon = ""
+	actionMax = 200,
+	actionMin = 200,
+	quickness = 0,
+	stamina = 0,
+
+	mindMax = 200,
+	mindMin = 200,
+	focus = 0,
+	willpower = 0,
 }

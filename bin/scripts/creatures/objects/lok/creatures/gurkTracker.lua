@@ -51,7 +51,7 @@ gurkTracker = Creature:new {
 	socialGroup = "Gurk",
 	level = 30,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
 	healthMax = 10200,
 	healthMin = 8400,

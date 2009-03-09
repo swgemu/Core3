@@ -78,9 +78,9 @@
  RunCreatureFile("objects/lok/npcs/mercenary/mercenaryWeak.lua")
 
  --Misc
- RunCreatureFile("objects/lok/npcs/misc/droideka.lua")
+ RunCreatureFile("objects/lok/npcs/misc/lokDroidekaDungeon.lua")
  RunCreatureFile("objects/lok/npcs/misc/igAssassinDroid.lua") 
- RunCreatureFile("objects/lok/npcs/misc/lokCommoner.lua")  
+ RunCreatureFile("objects/lok/npcs/misc/kimoTownCommon.lua")  
  RunCreatureFile("objects/lok/npcs/misc/imperialDeserter.lua") 
  RunCreatureFile("objects/lok/npcs/misc/slpPirate.lua")
 
