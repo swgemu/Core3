@@ -1943,6 +1943,15 @@ Instrument* CreatureObjectImplementation::getInstrument() {
 	return NULL;
 }
 
+int CreatureObjectImplementation::getInstrumentType() {
+	Instrument* instrument = getInstrument();
+	if (instrument == NULL) {
+		return -1;
+	} else {
+		return instrument->getInstrumentType();
+	}
+}
+
 Armor* CreatureObjectImplementation::getArmor(int type) {
 	if (inventory == NULL)
 		return NULL;

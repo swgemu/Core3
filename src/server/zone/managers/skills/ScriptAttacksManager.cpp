@@ -99,6 +99,7 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddPowerboostSkill", AddPowerboostSkill);
 	lua_register(getLuaState(), "AddEntertainSkill", AddEntertainSkill);
 	lua_register(getLuaState(), "AddEntertainEffectSkill", AddEntertainEffectSkill);
+	lua_register(getLuaState(), "AddBandFlourishSkill", AddBandFlourishSkill);
 	lua_register(getLuaState(), "AddDanceEffectSkill", AddDanceEffectSkill);
 	lua_register(getLuaState(), "AddMusicEffectSkill", AddMusicEffectSkill);
 	lua_register(getLuaState(), "AddForceRunSelfSkill", AddForceRunSelfSkill);
@@ -1470,6 +1471,20 @@ int ScriptAttacksManager::AddEntertainEffectSkill(lua_State* L) {
 
 	entertain = new EntertainEffectSelfSkill(skillname, effect_prefix, server);
 	CombatActions->put(entertain);
+
+	return 0;
+}
+
+int ScriptAttacksManager::AddBandFlourishSkill(lua_State* L) {
+	LuaObject skill(L);
+	if (!skill.isValidTable())
+		return 0;
+
+	String skillname = skill.getStringField("skillname");
+
+	BandFlourishSkill* bandflo;
+	bandflo = new BandFlourishSkill(skillname, server);
+	CombatActions->put(bandflo);
 
 	return 0;
 }

@@ -219,6 +219,8 @@ class PlayerImplementation : public PlayerServant {
 
 	bool powerboosted;
 
+	bool acceptingBandFlourishes;
+
 	CenterOfBeingEvent* centerOfBeingEvent;
 
 	PowerboostEventWane* powerboostEventWane;
@@ -315,9 +317,9 @@ public:
 	static const int LOGGINGIN = 4;
 	static const int LOGGINGOUT = 5;
 	static const int LOADING = 6;
-	
+
 	static const int CSR = 1;
-	static const int DEVELOPER = 2;	
+	static const int DEVELOPER = 2;
 	static const int ADMIN = CSR | DEVELOPER;
 	static const int NORMAL = 4;
 	static const int QA = 8;
@@ -1625,6 +1627,14 @@ public:
 
 	inline bool isForaging() {
 		return foraging;
+	}
+
+	inline bool isAcceptingBandFlourishes() {
+		return acceptingBandFlourishes;
+	}
+
+	inline void setAcceptingBandFlourishes(bool input) {
+		acceptingBandFlourishes = input;
 	}
 
 	void setResourceDeedID(uint64 objectID);

@@ -100,7 +100,12 @@ colorlightsSkill = {
 }
 AddEntertainEffectSkill(colorlightsSkill)
 
--- Flourishes 
+-- Flourishes
+
+bandflourishSkill = {
+	skillname = "bandflourish"
+}
+AddBandFlourishSkill(bandflourishSkill) 
 
 flourish1Skill = {
 	skillname = "flourish+1"

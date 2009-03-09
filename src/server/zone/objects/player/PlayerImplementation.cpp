@@ -296,6 +296,8 @@ void PlayerImplementation::initializePlayer() {
  	foraging = false;
  	forageDelayEvent = NULL;
 
+ 	acceptingBandFlourishes = true;
+
 	centerOfBeingEvent = new CenterOfBeingEvent(this);
 
 	invisibleDelayEvent = new InvisibleDelayEvent(this);

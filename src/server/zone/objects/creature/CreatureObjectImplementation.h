@@ -1569,6 +1569,7 @@ public:
 	}
 
 	Instrument* getInstrument();
+	int getInstrumentType();
 
 	Armor* getArmor(int type);
 
