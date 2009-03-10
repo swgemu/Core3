@@ -1345,68 +1345,90 @@ void CombatManager::calculateStates(CreatureObject* creature, CreatureObject* ta
  */
 void CombatManager::calculateThrowItemStates(CreatureObject* creature,
 		CreatureObject* targetCreature, ThrowAttackTargetSkill* skill) {
-
-	bool debuffHit = false;
+	int duration = 30;
+	Buff* deBuff = new Buff(skill->getNameCRC(), 0, duration);
+	bool stateReapply = false;
 
 	if (skill->isStateTap()) {
+		if (skill->getDizzyChance() != 0) {
+			if (targetCreature->isDiseased())
+				stateReapply = true;
+			else
+				targetCreature->setDizziedState();
+		}
 
-		if (skill->getDizzyChance() != 0)
-			targetCreature->setDizziedState();
+		if (skill->getBlindChance() != 0) {
+			if (targetCreature->isBlinded())
+				stateReapply = true;
+			else
+				targetCreature->setBlindedState();
+		}
 
-		if (skill->getBlindChance() != 0)
-			targetCreature->setBlindedState();
+		if (skill->getStunChance() != 0) {
+			if (targetCreature->isStunned())
+				stateReapply = true;
+			else
+				targetCreature->setStunnedState();
+		}
 
-		if (skill->getStunChance() != 0)
-			targetCreature->setStunnedState();
+		if (skill->getIntimidateChance() != 0) {
+			if (targetCreature->isIntimidated())
+				stateReapply = true;
+			else
+				targetCreature->setIntimidatedState();
+		}
 
-		if (skill->getIntimidateChance() != 0)
-			targetCreature->setIntimidatedState();
+		if (skill->getSnareChance() != 0) {
+			if (targetCreature->isSnared())
+				stateReapply = true;
+			else
+				targetCreature->setSnaredState();
+		}
 
-		if (skill->getSnareChance() != 0)
-			targetCreature->setSnaredState();
-
-		if (skill->getRootChance() != 0)
-			targetCreature->setRootedState();
-
+		if (skill->getRootChance() != 0) {
+			if (targetCreature->isRooted())
+				stateReapply = true;
+			else
+				targetCreature->setRootedState();
+		}
 		targetCreature->updateStates();
+
+		if (stateReapply && !skill->getDeBuffHitMessage().isEmpty()) {
+			creature->sendCombatSpamTrap(targetCreature, NULL, 0, skill->getDeBuffMissMessage());
+		}
 	}
 
 	if (skill->isDebuffTrap()) {
 		if (targetCreature->hasBuff(skill->getNameCRC()) && !skill->getDeBuffHitMessage().isEmpty()) {
-			creature->sendCombatSpamTrap(targetCreature, NULL, 0, skill->getDeBuffMissMessage());
+			if (!stateReapply)
+				creature->sendCombatSpamTrap(targetCreature, NULL, 0, skill->getDeBuffMissMessage());
 			return;
 		}
 
-		int duration = 30;
-		Buff* deBuff = new Buff(skill->getNameCRC(), 0, duration);
 		if (skill->getMeleeDefDebuff()!= 0) {
 			deBuff->addSkillModBuff("melee_defense", skill->getMeleeDefDebuff());
 			targetCreature->showFlyText("trap/trap", "melee_def_1_on", 255, 255, 255);
-			debuffHit = true;
 		}
 		if (skill->getRangedDefDebuff() != 0) {
 			deBuff->addSkillModBuff("ranged_defense", skill->getRangedDefDebuff());
 			targetCreature->showFlyText("trap/trap", "ranged_def_1_on", 255, 255, 255);
-			debuffHit = true;
 		}
 		if (skill->getIntimidateDefDebuff() != 0) {
 			deBuff->addSkillModBuff("intimidate_defense", skill->getIntimidateDefDebuff());
 			targetCreature->showFlyText("trap/trap", "melee_ranged_def_1_on", 255, 255, 255);
-			debuffHit = true;
 		}
 		if (skill->getStunChance() != 0) {
 			deBuff->addSkillModBuff("stun_defense", skill->getStunChance());
 			targetCreature->showFlyText("trap/trap", "state_def_1_on", 255, 255, 255);
-			debuffHit = true;
 		}
 
-		if (debuffHit) {
-			creature->sendCombatSpamTrap(targetCreature, NULL, 0, skill->getDeBuffHitMessage());
+		BuffObject* bo = new BuffObject(deBuff);
+		targetCreature->applyBuff(bo);
 
-			BuffObject* bo = new BuffObject(deBuff);
-			targetCreature->applyBuff(bo);
-		}
 	}
+
+	creature->sendCombatSpamTrap(targetCreature, NULL, 0, skill->getDeBuffHitMessage());
+
 }
 
 void CombatManager::checkKnockDown(CreatureObject* creature, CreatureObject* targetCreature, int chance) {
@@ -1704,17 +1726,6 @@ int CombatManager::calculateThrowItemDamage(CreatureObject* creature, TangibleOb
 
 	CreatureObject* targetCreature = (CreatureObject*)target;
 
-/*
-	// Changed to use SOE hit calculation
-	int level = targetCreature->getLevel(); //336 ancient krayt
-	if (level > 180)
-		level = 180;
-
-	if ((!(trappingSkill + rand > level) || (rand > 10 && rand < 20))) {
-		skill->doMiss(creature, targetCreature, 0);
-		return -1;
-	}
-*/
 	// Test for hit
 	if (target->isNonPlayerCreature() || target->isPlayer()) {
 		int rand = System::random(100);
@@ -1737,9 +1748,9 @@ int CombatManager::calculateThrowItemDamage(CreatureObject* creature, TangibleOb
 	int attackType = TRAPATTACK;
 	int armorPiercing = 1;
 
-	int damage = calculateDamage(creature, target, weapon, skill, attackType, damageType, armorPiercing, minDamage, maxDamage, true, canKill);
+	int damage = calculateDamage(creature, target, weapon, skill, attackType, damageType, armorPiercing, minDamage, maxDamage, randompoolhit, canKill);
 
-	if (damage >= 0)
+	if (damage > 0)
 		calculateThrowItemStates(creature, targetCreature, skill);
 
 	return damage;

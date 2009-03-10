@@ -184,8 +184,9 @@ public:
 
 		//creature->deactivateInjuryTreatment(dotPack->isRangedStimPack());
 		StfParameter* params = new StfParameter();
-
-		if (!creatureTarget->isPlayer()) {
+		params->addTT(((Player*)creatureTarget)->getObjectID());
+		params->addTU(((Player*)creature)->getObjectID());
+		/*if (!creatureTarget->isPlayer()) {
 			StringBuffer creatureName;
 			creatureName << "@" << creatureTarget->getTemplateTypeName() << ":"
 					<< creatureTarget->getTemplateName();
@@ -195,7 +196,7 @@ public:
 		} else {
 			params->addTT(((Player*)creatureTarget)->getFirstName());
 			params->addTU(((Player*)creature)->getFirstName());
-		}
+		}*/
 
 		int dotDMG = 0;
 

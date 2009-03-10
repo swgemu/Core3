@@ -156,7 +156,7 @@ public:
 	 * \param weapon The trap.
 	 * \return Returns Returns the damage.
 	 */
-	int calculateThrowDamage(CreatureObject* creature, TangibleObject* target, Weapon* weapon) {
+	virtual int calculateThrowItemDamage(CreatureObject* creature, TangibleObject* target, Weapon* weapon) {
 		return server->getCombatManager()->calculateThrowItemDamage(creature, target, this, false, false, weapon);
 	}
 
