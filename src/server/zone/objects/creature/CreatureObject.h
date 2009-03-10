@@ -799,6 +799,8 @@ public:
 
 	unsigned int getInstrumentID();
 
+	int getInstrumentType();
+
 	String& getPerformanceName();
 
 	String& getMood();
@@ -2080,6 +2082,8 @@ public:
 	unsigned int getPerformanceCounter();
 
 	unsigned int getInstrumentID();
+
+	int getInstrumentType();
 
 	String& getPerformanceName();
 

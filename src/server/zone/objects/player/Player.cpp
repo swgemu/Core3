@@ -5887,12 +5887,25 @@ void Player::removeConsentEntry(const String& name) {
 		((PlayerImplementation*) _impl)->removeConsentEntry(name);
 }
 
-CloningFacility* Player::getCloningFacility() {
+void Player::setAcceptingBandFlourishes(bool input) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 459);
+		method.addBooleanParameter(input);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->setAcceptingBandFlourishes(input);
+}
+
+CloningFacility* Player::getCloningFacility() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 460);
 
 		return (CloningFacility*) method.executeWithObjectReturn();
 	} else
@@ -5904,7 +5917,7 @@ bool Player::hasConsented(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 460);
+		DistributedMethod method(this, 461);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
@@ -5917,7 +5930,7 @@ bool Player::hasConsentFrom(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 461);
+		DistributedMethod method(this, 462);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -5930,7 +5943,7 @@ unsigned int Player::getConsentListSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 462);
+		DistributedMethod method(this, 463);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -5942,7 +5955,7 @@ String& Player::getConsentEntry(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 463);
+		DistributedMethod method(this, 464);
 		method.addSignedIntParameter(index);
 
 		method.executeWithAsciiReturn(_return_getConsentEntry);
@@ -5956,11 +5969,23 @@ bool Player::isPowerboosted() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 464);
+		DistributedMethod method(this, 465);
 
 		return method.executeWithBooleanReturn();
 	} else
 		return ((PlayerImplementation*) _impl)->isPowerboosted();
+}
+
+bool Player::isAcceptingBandFlourishes() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 466);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->isAcceptingBandFlourishes();
 }
 
 unsigned char Player::calculateIncapacitationTimer() {
@@ -5968,7 +5993,7 @@ unsigned char Player::calculateIncapacitationTimer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 465);
+		DistributedMethod method(this, 467);
 
 		return method.executeWithUnsignedCharReturn();
 	} else
@@ -5980,7 +6005,7 @@ void Player::closeSuiWindowType(unsigned int windowType) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 466);
+		DistributedMethod method(this, 468);
 		method.addUnsignedIntParameter(windowType);
 
 		method.executeWithVoidReturn();
@@ -5993,7 +6018,7 @@ void Player::displayMessageoftheDay() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 467);
+		DistributedMethod method(this, 469);
 
 		method.executeWithVoidReturn();
 	} else
@@ -6005,7 +6030,7 @@ void Player::crashClient() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 468);
+		DistributedMethod method(this, 470);
 
 		method.executeWithVoidReturn();
 	} else
@@ -7383,33 +7408,39 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		removeConsentEntry(inv->getAsciiParameter(_param0_removeConsentEntry__String_));
 		break;
 	case 459:
-		resp->insertLong(getCloningFacility()->_getObjectID());
+		setAcceptingBandFlourishes(inv->getBooleanParameter());
 		break;
 	case 460:
-		resp->insertBoolean(hasConsented(inv->getAsciiParameter(_param0_hasConsented__String_)));
+		resp->insertLong(getCloningFacility()->_getObjectID());
 		break;
 	case 461:
-		resp->insertBoolean(hasConsentFrom((Player*) inv->getObjectParameter()));
+		resp->insertBoolean(hasConsented(inv->getAsciiParameter(_param0_hasConsented__String_)));
 		break;
 	case 462:
-		resp->insertInt(getConsentListSize());
+		resp->insertBoolean(hasConsentFrom((Player*) inv->getObjectParameter()));
 		break;
 	case 463:
-		resp->insertAscii(getConsentEntry(inv->getSignedIntParameter()));
+		resp->insertInt(getConsentListSize());
 		break;
 	case 464:
-		resp->insertBoolean(isPowerboosted());
+		resp->insertAscii(getConsentEntry(inv->getSignedIntParameter()));
 		break;
 	case 465:
-		resp->insertByte(calculateIncapacitationTimer());
+		resp->insertBoolean(isPowerboosted());
 		break;
 	case 466:
-		closeSuiWindowType(inv->getUnsignedIntParameter());
+		resp->insertBoolean(isAcceptingBandFlourishes());
 		break;
 	case 467:
-		displayMessageoftheDay();
+		resp->insertByte(calculateIncapacitationTimer());
 		break;
 	case 468:
+		closeSuiWindowType(inv->getUnsignedIntParameter());
+		break;
+	case 469:
+		displayMessageoftheDay();
+		break;
+	case 470:
 		crashClient();
 		break;
 	default:
@@ -9231,6 +9262,10 @@ void PlayerAdapter::removeConsentEntry(const String& name) {
 	return ((PlayerImplementation*) impl)->removeConsentEntry(name);
 }
 
+void PlayerAdapter::setAcceptingBandFlourishes(bool input) {
+	return ((PlayerImplementation*) impl)->setAcceptingBandFlourishes(input);
+}
+
 CloningFacility* PlayerAdapter::getCloningFacility() {
 	return ((PlayerImplementation*) impl)->getCloningFacility();
 }
@@ -9253,6 +9288,10 @@ String& PlayerAdapter::getConsentEntry(int index) {
 
 bool PlayerAdapter::isPowerboosted() {
 	return ((PlayerImplementation*) impl)->isPowerboosted();
+}
+
+bool PlayerAdapter::isAcceptingBandFlourishes() {
+	return ((PlayerImplementation*) impl)->isAcceptingBandFlourishes();
 }
 
 unsigned char PlayerAdapter::calculateIncapacitationTimer() {

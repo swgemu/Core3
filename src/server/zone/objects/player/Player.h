@@ -987,6 +987,8 @@ public:
 
 	void removeConsentEntry(const String& name);
 
+	void setAcceptingBandFlourishes(bool input);
+
 	CloningFacility* getCloningFacility();
 
 	bool hasConsented(const String& name);
@@ -998,6 +1000,8 @@ public:
 	String& getConsentEntry(int index);
 
 	bool isPowerboosted();
+
+	bool isAcceptingBandFlourishes();
 
 	unsigned char calculateIncapacitationTimer();
 
@@ -1948,6 +1952,8 @@ public:
 
 	void removeConsentEntry(const String& name);
 
+	void setAcceptingBandFlourishes(bool input);
+
 	CloningFacility* getCloningFacility();
 
 	bool hasConsented(const String& name);
@@ -1959,6 +1965,8 @@ public:
 	String& getConsentEntry(int index);
 
 	bool isPowerboosted();
+
+	bool isAcceptingBandFlourishes();
 
 	unsigned char calculateIncapacitationTimer();
 
