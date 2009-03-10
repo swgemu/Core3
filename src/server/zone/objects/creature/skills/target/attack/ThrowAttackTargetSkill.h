@@ -126,7 +126,6 @@ public:
 	}
 
 	void doMiss(CreatureObject* creature, CreatureObject* target, int32 damage) {
-		System::out << "do trap miss\n";
 		if (hasCbtSpamMiss())
 			creature->sendCombatSpam(target, NULL, -(int32)damage, getCbtSpamMiss());
 
