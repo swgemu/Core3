@@ -40,19 +40,19 @@
 --this exception also makes it possible to release a modified version
 --which carries forward this exception.
 
-spawnCreature(yavinMiningOutpostNpc1, 5, -256.417, 4892.18) -- commoner
-spawnCreature(yavinMiningOutpostNpc2, 5, -258.202, 4837.59) -- commoner
-spawnCreature(yavinMiningOutpostNpc3, 5, -271.765, 4901.25) -- businessman
-spawnCreature(yavinMiningOutpostNpc4, 5, -261.35, 4848.72) -- businessman
-spawnCreature(yavinMiningOutpostNpc5, 5, -260.442, 4874.56) -- scientist
-spawnCreature(yavinMiningOutpostNpc6, 5, -362.869, 4846.44) -- R5 droid
-spawnCreature(yavinMiningOutpostNpc7, 5, -360.064, 4847.17) -- R3 droid
-spawnCreature(yavinMiningOutpostNpc8, 5, -321, 4840.54) -- mercenary
-spawnCreature(yavinMiningOutpostNpc9, 5, -311.915, 4824.62) -- commoner
-spawnCreature(yavinMiningOutpostNpc10, 5, -352.762, 4820.84) -- commoner
-spawnCreature(yavinMiningOutpostNpc11, 5, -329.392, 4823.34) -- commoner
-spawnCreature(yavinMiningOutpostNpc12, 5, -324.673, 4889.01) -- commoner
-spawnCreature(yavinMiningOutpostNpc13, 5, -348.122, 4882.18) -- commoner
-spawnCreature(yavinMiningOutpostNpc14, 5, -303.225, 4837.41) -- mercenary
-spawnCreature(yavinMiningOutpostNpc15, 5, -294.091, 4867.02) -- mercenary
-spawnCreatureInCell(yavinMiningOutpostNpc16, 5, 7.44396, 0.625, -6.22189, 7925452) -- human_base_male
+spawnCreature(yavinMiningOutpostNpc1, 9, -256.417, 4892.18) -- commoner
+spawnCreature(yavinMiningOutpostNpc2, 9, -258.202, 4837.59) -- commoner
+spawnCreature(yavinMiningOutpostNpc3, 9, -271.765, 4901.25) -- businessman
+spawnCreature(yavinMiningOutpostNpc4, 9, -261.35, 4848.72) -- businessman
+spawnCreature(yavinMiningOutpostNpc5, 9, -260.442, 4874.56) -- scientist
+spawnCreature(yavinMiningOutpostNpc6, 9, -362.869, 4846.44) -- R5 droid
+spawnCreature(yavinMiningOutpostNpc7, 9, -360.064, 4847.17) -- R3 droid
+spawnCreature(yavinMiningOutpostNpc8, 9, -321, 4840.54) -- mercenary
+spawnCreature(yavinMiningOutpostNpc9, 9, -311.915, 4824.62) -- commoner
+spawnCreature(yavinMiningOutpostNpc10, 9, -352.762, 4820.84) -- commoner
+spawnCreature(yavinMiningOutpostNpc11, 9, -329.392, 4823.34) -- commoner
+spawnCreature(yavinMiningOutpostNpc12, 9, -324.673, 4889.01) -- commoner
+spawnCreature(yavinMiningOutpostNpc13, 9, -348.122, 4882.18) -- commoner
+spawnCreature(yavinMiningOutpostNpc14, 9, -303.225, 4837.41) -- mercenary
+spawnCreature(yavinMiningOutpostNpc15, 9, -294.091, 4867.02) -- mercenary
+spawnCreatureInCell(yavinMiningOutpostNpc16, 9, 7.44396, 0.625, -6.22189, 7925452) -- human_base_male

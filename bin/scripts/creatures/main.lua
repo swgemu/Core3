@@ -61,16 +61,22 @@ function getCreature(crc)
 	return Creatures[crc]
 end
 
+-- Standard Creature Spawning
 function spawnCreature(creature, Planet, PositionX, PositionY)
 	newCreature = creature:new { planet = Planet, positionX = PositionX, positionY = PositionY }
 	AddCreatureToServer(newCreature)
 end
-
+-- Spawning with Respawn Time
 function spawnCreature(creature, Planet, PositionX, PositionY, respawnTime)
 	newCreature = creature:new { planet = Planet, positionX = PositionX, positionY = PositionY, respawnTimer = respawnTime }
 	AddCreatureToServer(newCreature)
 end
-
+-- Spawning With Direction
+function spawnCreature(creature, Planet, PositionX, PositionY, DirectionX, DirectionZ, DirectionY, DirectionW)
+	newCreature = creature:new { planet = Planet, positionX = PositionX, positionY = PositionY, directionX = DirectionX,  directionZ = DirectionZ,  directionY = DirectionY,  directionY = DirectionW }
+	AddCreatureToServer(newCreature)
+end
+-- Spawning Inside Cells
 function spawnCreatureInCell(creature, Planet, PositionX, PositionZ, PositionY, cellid)
 	newCreature = creature:new { planet = Planet, positionX = PositionX, positionZ = PositionZ, positionY = PositionY, cellID = cellid }
 	AddCreatureToServer(newCreature)
