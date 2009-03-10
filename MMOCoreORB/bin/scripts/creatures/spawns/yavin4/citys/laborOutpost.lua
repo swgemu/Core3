@@ -40,45 +40,45 @@
 --this exception also makes it possible to release a modified version
 --which carries forward this exception.
 
-spawnCreature(laborOutpostNpc1, 5, -6883.65, -5711.41) -- R2 droid
-spawnCreature(laborOutpostNpc2, 5, -6877.27, -5682.29) -- patron_chiss_male
-spawnCreature(laborOutpostNpc3, 5, -6892, -5763.85) -- businessman
-spawnCreature(laborOutpostNpc4, 5, -6875.79, -5715.96) -- businessman
-spawnCreature(laborOutpostNpc5, 5, -6878.13, -5690.85) -- criminal
-spawnCreature(laborOutpostNpc6, 5, -6969.33, -5673.89) -- eg6_power_droid
-spawnCreature(laborOutpostNpc7, 5, -6914.39, -5695.14) -- mercenary
-spawnCreature(laborOutpostNpc8, 5, -6917.94, -5670.7) -- eg6_power_droid
-spawnCreature(laborOutpostNpc9, 5, -6919.36, -5664.19) -- R4 droid
-spawnCreature(laborOutpostNpc10, 5, -6952.89, -5665.23) -- R3 droid
-spawnCreature(laborOutpostNpc11, 5, -6972.29, -5713.9) -- R2 droid
-spawnCreature(laborOutpostNpc12, 5, -6954.68, -5687.66) -- mercenary
-spawnCreature(laborOutpostNpc13, 5, -6901.56, -5683.4) -- commoner
-spawnCreature(laborOutpostNpc14, 5, -6947.81, -5754.46) -- commoner
-spawnCreature(laborOutpostNpc15, 5, -6912.21, -5732.03) -- commoner
-spawnCreature(laborOutpostNpc16, 5, -6918.02, -5655.85) -- commoner
-spawnCreature(laborOutpostNpc17, 5, -6978.51, -5676.13) -- commoner
-spawnCreature(laborOutpostNpc18, 5, -6953.84, -5734.78) -- commoner
-spawnCreature(laborOutpostNpc19, 5, -6974.45, -5770.39) -- noble
-spawnCreature(laborOutpostNpc20, 5, -6982.53, -5659.47) -- commoner
-spawnCreature(laborOutpostNpc21, 5, -6940.44, -5751.44) -- sharpshooter
-spawnCreature(laborOutpostNpc22, 5, -6980.03, -5709.15) -- commando
-spawnCreature(laborOutpostNpc23, 5, -6939.6, -5751.82) -- mercenary
+spawnCreature(laborOutpostNpc1, 9, -6883.65, -5711.41) -- R2 droid
+spawnCreature(laborOutpostNpc2, 9, -6877.27, -5682.29) -- patron_chiss_male
+spawnCreature(laborOutpostNpc3, 9, -6892, -5763.85) -- businessman
+spawnCreature(laborOutpostNpc4, 9, -6875.79, -5715.96) -- businessman
+spawnCreature(laborOutpostNpc5, 9, -6878.13, -5690.85) -- criminal
+spawnCreature(laborOutpostNpc6, 9, -6969.33, -5673.89) -- eg6_power_droid
+spawnCreature(laborOutpostNpc7, 9, -6914.39, -5695.14) -- mercenary
+spawnCreature(laborOutpostNpc8, 9, -6917.94, -5670.7) -- eg6_power_droid
+spawnCreature(laborOutpostNpc9, 9, -6919.36, -5664.19) -- R4 droid
+spawnCreature(laborOutpostNpc10, 9, -6952.89, -5665.23) -- R3 droid
+spawnCreature(laborOutpostNpc11, 9, -6972.29, -5713.9) -- R2 droid
+spawnCreature(laborOutpostNpc12, 9, -6954.68, -5687.66) -- mercenary
+spawnCreature(laborOutpostNpc13, 9, -6901.56, -5683.4) -- commoner
+spawnCreature(laborOutpostNpc14, 9, -6947.81, -5754.46) -- commoner
+spawnCreature(laborOutpostNpc15, 9, -6912.21, -5732.03) -- commoner
+spawnCreature(laborOutpostNpc16, 9, -6918.02, -5655.85) -- commoner
+spawnCreature(laborOutpostNpc17, 9, -6978.51, -5676.13) -- commoner
+spawnCreature(laborOutpostNpc18, 9, -6953.84, -5734.78) -- commoner
+spawnCreature(laborOutpostNpc19, 9, -6974.45, -5770.39) -- noble
+spawnCreature(laborOutpostNpc20, 9, -6982.53, -5659.47) -- commoner
+spawnCreature(laborOutpostNpc21, 9, -6940.44, -5751.44) -- sharpshooter
+spawnCreature(laborOutpostNpc22, 9, -6980.03, -5709.15) -- commando
+spawnCreature(laborOutpostNpc23, 9, -6939.6, -5751.82) -- mercenary
 
-spawnCreatureInCell(laborOutpostNpc24, 5, -3.15454, 0.625, 1.08281, 3035372) -- eker
+spawnCreatureInCell(laborOutpostNpc24, 9, -3.15454, 0.625, 1.08281, 3035372) -- eker
 
-spawnCreature(laborOutpostNpc25, 5, -7045.52, -5831.22) -- smuggler_patrol_thief_14
-spawnCreature(laborOutpostNpc26, 5, -7083.1, -5825.68) -- smuggler_patrol_thief_14
-spawnCreature(laborOutpostNpc27, 5, -7059, -5836.15) -- smuggler_patrol_thief_14
-spawnCreature(laborOutpostNpc28, 5, -7083.33, -5822.13) -- smuggler_patrol_thief_14
-spawnCreature(laborOutpostNpc29, 5, -7056.77, -5822.08) -- smuggler_patrol_thief_14
-spawnCreature(laborOutpostNpc30, 5, -7088.64, -5817.39) -- smuggler_patrol_thief_14
-spawnCreature(laborOutpostNpc31, 5, -7053.05, -5839.94) -- smuggler_patrol_thief_14
-spawnCreature(laborOutpostNpc32, 5, -7060.32, -5857.83) -- smuggler_patrol_thief_14
-spawnCreature(laborOutpostNpc33, 5, -7053.05, -5839.94) -- smuggler_patrol_thief_14
+spawnCreature(laborOutpostNpc25, 9, -7045.52, -5831.22) -- smuggler_patrol_thief_14
+spawnCreature(laborOutpostNpc26, 9, -7083.1, -5825.68) -- smuggler_patrol_thief_14
+spawnCreature(laborOutpostNpc27, 9, -7059, -5836.15) -- smuggler_patrol_thief_14
+spawnCreature(laborOutpostNpc28, 9, -7083.33, -5822.13) -- smuggler_patrol_thief_14
+spawnCreature(laborOutpostNpc29, 9, -7056.77, -5822.08) -- smuggler_patrol_thief_14
+spawnCreature(laborOutpostNpc30, 9, -7088.64, -5817.39) -- smuggler_patrol_thief_14
+spawnCreature(laborOutpostNpc31, 9, -7053.05, -5839.94) -- smuggler_patrol_thief_14
+spawnCreature(laborOutpostNpc32, 9, -7060.32, -5857.83) -- smuggler_patrol_thief_14
+spawnCreature(laborOutpostNpc33, 9, -7053.05, -5839.94) -- smuggler_patrol_thief_14
 
-spawnCreatureInCell(laborOutpostNpc34, 5, 5.10403, 0.125266, 3.22682, 3035597) -- technician
-spawnCreatureInCell(laborOutpostNpc35, 5, 5.10403, 0.125266, 4.32683, 3035597) -- artisan
-spawnCreatureInCell(laborOutpostNpc36, 5, -0.385261, 0.624999, -2.90517, 3035378) -- fringer
-spawnCreatureInCell(laborOutpostNpc37, 5, -0.385261, 0.625, -1.80517, 3035378) -- twilek_base_female
-spawnCreatureInCell(laborOutpostNpc38, 5, -1.48526, 0.625, -1.80517, 3035378) -- vendor
-spawnCreatureInCell(laborOutpostNpc39, 5, 1.81813, 0.624999, 1.50685, 3035376) -- aqzow
+spawnCreatureInCell(laborOutpostNpc34, 9, 5.10403, 0.125266, 3.22682, 3035597) -- technician
+spawnCreatureInCell(laborOutpostNpc35, 9, 5.10403, 0.125266, 4.32683, 3035597) -- artisan
+spawnCreatureInCell(laborOutpostNpc36, 9, -0.385261, 0.624999, -2.90517, 3035378) -- fringer
+spawnCreatureInCell(laborOutpostNpc37, 9, -0.385261, 0.625, -1.80517, 3035378) -- twilek_base_female
+spawnCreatureInCell(laborOutpostNpc38, 9, -1.48526, 0.625, -1.80517, 3035378) -- vendor
+spawnCreatureInCell(laborOutpostNpc39, 9, 1.81813, 0.624999, 1.50685, 3035376) -- aqzow
