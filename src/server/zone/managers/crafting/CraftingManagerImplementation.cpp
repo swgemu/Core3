@@ -1386,12 +1386,14 @@ void CraftingManagerImplementation::createSchematic(Player* player,
 	CraftingTool* craftingTool;
 	DraftSchematic* draftSchematic;
 	TangibleObject* workingTano;
-	int counter, practice;
+	int counter, practice = 0;
 
 	StringTokenizer tokenizer(count);
 
 	counter = tokenizer.getIntToken();
-	practice = tokenizer.getIntToken();
+
+	if (tokenizer.hasMoreTokens())
+		practice = tokenizer.getIntToken();
 
 	try {
 

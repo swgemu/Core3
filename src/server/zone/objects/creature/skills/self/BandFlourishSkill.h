@@ -50,12 +50,6 @@ which carries forward this exception.
 
 class BandFlourishSkill : public SelfSkill {
 
-private:
-
-	String stringA;
-	String stringB;
-	int instrumentID;
-
 public:
 	BandFlourishSkill(const String& Name, ZoneProcessServerImplementation* serv) : SelfSkill(Name, "", ENTERTAIN, serv) {
 
@@ -66,14 +60,16 @@ public:
 			return;
 		}
 
+		String stringA, stringB;
+
 		Player* leader = (Player*)creature;
 
 		//Parse the options from the input string. This is the text the player entered after "/bandFlourish"
-		if (!parseOptions(leader, options))
+		if (!parseOptions(leader, options, stringA, stringB))
 			return;
 
 		//Check if leader specified an instrument to flourish.
-		instrumentID = 0;
+		int instrumentID = 0;
 		if (!stringB.isEmpty()) {
 			instrumentID = determineInstrumentID(stringB);
 			if (instrumentID < 0) {
@@ -87,10 +83,10 @@ public:
 
 		if (number > 0 && number < 9) {
 			if (leader->isDancing()) {
-				doBandFlourish(leader, stringA, false);
+				doBandFlourish(leader, stringA, false, instrumentID);
 
 			} else if (leader->isPlayingMusic()) {
-				doBandFlourish(leader, stringA, true);
+				doBandFlourish(leader, stringA, true, instrumentID);
 
 			} else {
 				leader->sendSystemMessage("performance", "flourish_not_performing");
@@ -119,7 +115,7 @@ public:
 	}
 
 
-	bool parseOptions(Player* leader, String& options) {
+	bool parseOptions(Player* leader, String& options, String& stringA, String& stringB) {
 		if (options.isEmpty()) {
 			leader->sendSystemMessage("performance", "band_flourish_format");
 			return false;
@@ -212,7 +208,7 @@ public:
 	}
 
 
-	void doBandFlourish(Player* leader, String& number, bool musicflourish) {
+	void doBandFlourish(Player* leader, String& number, bool musicflourish, int instrumentID) {
 		GroupObject* group = leader->getGroupObject();
 
 		//Make the leader flourish.
