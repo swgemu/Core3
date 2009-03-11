@@ -202,7 +202,8 @@ bool Buff::activateBuff(CreatureObject* creo, ZoneProcessServerImplementation* s
 }
 
 void Buff::downerBuff(CreatureObject* creo) {
-	System::out << "incap : " << creo->isIncapacitated() << "/" << creo->isDead() << "\n";
+	//System::out << "incap : " << creo->isIncapacitated() << "/" << creo->isDead() << "\n";
+
 	Buff *buff = new Buff(getBuffDownerCRC(), BuffType::SPICE, round(getBuffDuration() / 3.0));
 
 	// The Min Value of their total bar - 1 or the downer

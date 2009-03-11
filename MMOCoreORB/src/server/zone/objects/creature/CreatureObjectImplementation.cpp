@@ -410,11 +410,11 @@ void CreatureObjectImplementation::sendToOwner(Player* player, bool doClose) {
 	BaseMessage* pmm = new ParametersMessage();
 	client->sendMessage(pmm);
 
-	if (parent != NULL)
-	{
+	if (parent != NULL)	{
 		if (parent != NULL && parent->isCell()) {
 			BuildingObject* building = (BuildingObject*) parent->getParent();
-			info("sending building to client through CreatureObjectImplementation::sendToOwner");
+
+			//info("sending building to client through CreatureObjectImplementation::sendToOwner");
 			building->sendTo((Player*)_this, false);
 		} else
 			parent->sendTo((Player*)_this, false);
@@ -424,7 +424,6 @@ void CreatureObjectImplementation::sendToOwner(Player* player, bool doClose) {
 }
 
 void CreatureObjectImplementation::sendTo(Player* player, bool doClose) {
-	info("CreatureObjectImplementation::sendTo");
 	ReferenceSlot<ZoneClientSession> client = player->getClient();
 	if (client == NULL)
 		return;
