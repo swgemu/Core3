@@ -1750,7 +1750,7 @@ int CombatManager::calculateThrowItemDamage(CreatureObject* creature, TangibleOb
 
 	int damage = calculateDamage(creature, target, weapon, skill, attackType, damageType, armorPiercing, minDamage, maxDamage, randompoolhit, canKill);
 
-	if (damage > 0)
+	if (damage > 0 && (skill->isStateTap() || skill->isDebuffTrap()))
 		calculateThrowItemStates(creature, targetCreature, skill);
 
 	return damage;

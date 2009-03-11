@@ -72,13 +72,12 @@ CampSiteImplementation::CampSiteImplementation(Player* player, uint64 oid,CampKi
 	recoveries = NULL;
 	currentXP = 0.0f;
 	campType = campKit->getCampType();
-
 	maxXP = campKit->getXP();
-	duration = campKit->getDuration();
 	campModifier = 0;
 	abandoned = false;
 	abandonEvent = NULL;
 	despawnEvent = NULL;
+
 	initializePosition(player->getPositionX(),player->getPositionZ(),player->getPositionY());
 
 	init();
@@ -171,6 +170,7 @@ void CampSiteImplementation::removeCampArea() {
  * Creates an CampActiveArea around the camp.
  */
 void CampSiteImplementation::createCampArea() {
+	placementTime.update();
 	campOwner->sendSystemMessage("@camp:camp_complete");
 	Zone* zone = campOwner->getZone();
 
@@ -338,6 +338,7 @@ void CampSiteImplementation::addXP(uint64 playerID) {
 
 	Time current;
 	uint64 enterTime = visitor->get(playerID);
+	visitor->put(playerID,0);
 	if (enterTime > 0) {
 		uint64 time = 1 + current.getTime() - enterTime;
 
@@ -363,4 +364,31 @@ void CampSiteImplementation::deactivateRecovery() {
 		recoveries->getEvent(playerID)->leaveCamp();
 
 	}
+}
+
+void CampSiteImplementation::sendCampInfo(Player* player) {
+	try
+		{
+			StringBuffer owner,time,visitors, text;
+			Time currentTime;
+			uint32 durationTime = currentTime.getTime() - placementTime.getTime();
+
+			SuiListBox* statusBox = new SuiListBox(player, SuiWindowType::CAMP_INFO, 0x0);
+			statusBox->setPromptTitle("Camp Status");
+			text << "Camp Name: " << player->getFirstName() << "'s " << getName().toString();
+			statusBox->setPromptText(text.toString());
+
+			owner << "Owner: " << campOwner->getFirstName() << " " << campOwner->getLastName();
+			statusBox->addMenuItem(owner.toString());
+			time << "Time: " << (durationTime / 60) << " minutes, "<< (durationTime % 60) << "seconds";
+			statusBox->addMenuItem(time.toString());
+
+			visitors << "Visitors: " << visitor->size();
+			statusBox->addMenuItem(visitors.toString());
+
+			player->addSuiBox(statusBox);
+			player->sendMessage(statusBox->generateMessage());
+		} catch(...) {
+			System::out << "unreported exception in InstallationObjectImplementation::handleStructureStatus\n";
+		}
 }

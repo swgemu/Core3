@@ -125,14 +125,6 @@ public:
 		return 0;
 	}
 
-	void doMiss(CreatureObject* creature, CreatureObject* target, int32 damage) {
-		if (hasCbtSpamMiss())
-			creature->sendCombatSpam(target, NULL, -(int32)damage, getCbtSpamMiss());
-
-		target->showFlyText("trap/trap", "sys_miss", 0xFF, 0xFF, 0xFF);
-		target->addDamage(creature,1);
-	}
-
 	/*
 	 * Calculates the damage of the trap. Calls getCombatManager::calculateTrapDamage.
 	 * \param creature The creature, that throws the trap.

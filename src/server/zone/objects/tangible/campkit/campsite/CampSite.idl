@@ -82,4 +82,6 @@ interface CampSite implements TangibleObject {
 	void enterNotification(Player player);
 	void exitNotificaton(Player player);
 	void reactivateRecovery(Player player);
+
+	void sendCampInfo(Player player);
 }

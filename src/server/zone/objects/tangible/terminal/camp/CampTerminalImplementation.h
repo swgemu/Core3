@@ -28,7 +28,7 @@ public:
 
 		if (camp->getOwner() != player || camp->isAbandoned())
 			return;
-
+		omr->addRadialParent(252, 3, "Camp Status");
 		omr->addRadialParent(182, 3, "@camp:mnu_disband");
 
 		omr->finish();

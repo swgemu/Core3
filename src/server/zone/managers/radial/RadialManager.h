@@ -130,7 +130,7 @@ public:
 
 	//camp
 	void handleDisbandCamp(Player* player,SceneObject* obj);
-
+	void handleCampInfo(Player* player,SceneObject* obj);
 	//Insurance
 	void handleInsureAllItems(Player* player, SceneObject* obj);
 

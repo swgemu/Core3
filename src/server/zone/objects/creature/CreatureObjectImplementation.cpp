@@ -870,6 +870,7 @@ void CreatureObjectImplementation::setMeditateState() {
 
 
 int CreatureObjectImplementation::addDotState(CreatureObject* attacker,uint64 dotID, uint64 dotType, uint32 str, uint8 type, uint32 duration, float potency,uint32 defense) {
+	System::out << "add dot\n";
 	return dotMap->addDot(attacker,_this, dotID ,duration,dotType, type , str,potency,defense);
 }
 

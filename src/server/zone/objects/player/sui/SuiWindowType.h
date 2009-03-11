@@ -118,6 +118,8 @@ public:
 	static const int SET_MOTD = 49;
 
 	static const int PERMISSION_LIST = 50;
+
+	static const int CAMP_INFO = 51;
 };
 
 #endif /*SuiWindowType_H_*/

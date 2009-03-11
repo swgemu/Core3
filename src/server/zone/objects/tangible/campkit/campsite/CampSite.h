@@ -61,6 +61,8 @@ public:
 
 	void reactivateRecovery(Player* player);
 
+	void sendCampInfo(Player* player);
+
 protected:
 	CampSite(DummyConstructorParameter* param);
 
@@ -114,6 +116,8 @@ public:
 	void exitNotificaton(Player* player);
 
 	void reactivateRecovery(Player* player);
+
+	void sendCampInfo(Player* player);
 
 };
 
