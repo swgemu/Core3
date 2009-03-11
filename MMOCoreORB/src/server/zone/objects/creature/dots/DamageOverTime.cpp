@@ -130,6 +130,7 @@ uint32 DamageOverTime::initDot(CreatureObject* attacker, CreatureObject* victim)
 		case CreatureState::BLEEDING:
 		case CreatureState::POISONED:
 		case CreatureState::ONFIRE:
+			System::out << "init dot\n";
 			nextTick.update();
 			nextTick.addMiliTime(9000);
 			power = strength;
@@ -161,6 +162,7 @@ uint32 DamageOverTime::doBleedingTick(CreatureObject* attacker, CreatureObject* 
 
 uint32 DamageOverTime::doFireTick(CreatureObject* attacker, CreatureObject* victim) {
 		uint32 attr = victim->getAttribute(attribute);
+		victim->changeWoundsBar(attribute,strength,false);
 
 		if (attr < strength)
 			strength = attr - 1;

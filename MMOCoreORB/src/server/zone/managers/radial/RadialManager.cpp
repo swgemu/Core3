@@ -635,7 +635,10 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 			player->unlock();
 			handleGuildTransferLeader(player);
 			return;
-
+		case 252: // SERVER_GUILD_TRANSFER_LEADERSHIP
+			player->unlock();
+			handleCampInfo(player, obj);
+			return;
 		default:
 
 			//System::out << "Unknown radial selection received:" << radialID << "\n";
@@ -1419,6 +1422,15 @@ void RadialManager::handleDisbandCamp(Player* player,SceneObject* obj) {
 	CampTerminal* terminal = (CampTerminal*) obj;
 	CampSite* camp = terminal->getCampSite();
 	camp->disbandCamp();
+
+}
+
+void RadialManager::handleCampInfo(Player* player,SceneObject* obj) {
+	if (!obj->isTangible())
+		return;
+	CampTerminal* terminal = (CampTerminal*) obj;
+	CampSite* camp = terminal->getCampSite();
+	camp->sendCampInfo(player);
 
 }
 

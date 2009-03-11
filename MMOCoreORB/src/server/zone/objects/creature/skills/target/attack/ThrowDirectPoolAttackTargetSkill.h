@@ -119,6 +119,11 @@ public:
 		CreatureObject* targetCreature = (CreatureObject*) target;
 		Player* player = (Player*) creature;
 
+		if (!player->hasCooldownExpired(getSkillName())) {
+			player->sendSystemMessage("trap/trap", "sys_not_ready");
+			return 0;
+		}
+
 		if (!targetCreature->isCreature()) {
 			player->sendSystemMessage("traps/traps", "sys_creatures_only");
 			return 0;
@@ -163,6 +168,15 @@ public:
 	virtual bool isTrapSkill() {
 		return true;
 	}
+
+	void doMiss(CreatureObject* creature, CreatureObject* target, int32 damage) {
+		if (hasCbtSpamMiss())
+			creature->sendCombatSpam(target, NULL, -(int32)damage, getCbtSpamMiss());
+
+		target->showFlyText("trap/trap", "sys_miss", 0xFF, 0xFF, 0xFF);
+		target->addDamage(creature,1);
+	}
+
 };
 
 #endif /* THROWDIRECTPOOLATTACKTARGETSKILL_H_ */

@@ -104,7 +104,6 @@ public:
 	 */
 	int doSkill(CreatureObject* creature, SceneObject* target,
 			const String& modifier, bool doAnimation) {
-
 		ThrowableWeapon* weapon = (ThrowableWeapon*) getThrowableWeapon(
 				creature, modifier);
 
@@ -119,6 +118,11 @@ public:
 
 		CreatureObject* targetCreature = (CreatureObject*) target;
 		Player* player = (Player*) creature;
+
+		if (!player->hasCooldownExpired(getSkillName())) {
+			player->sendSystemMessage("This grenade is not ready to be used again");
+			return 0;
+		}
 
 		int cooldown = (int) round(weapon->getAttackSpeed() * (100.0f - (float)player->getSkillMod("thrown_speed")) / 100.0f);
 

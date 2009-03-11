@@ -82,11 +82,12 @@ protected:
 	String defaultName;
 	UnicodeString name;
 
-	uint8 maxXP;
+	uint32 maxXP;
 	uint8 campModifier;
 	uint32 duration;
 
 	Player* campOwner;
+	Time placementTime;
 
 public:
 
@@ -201,6 +202,8 @@ public:
 
 	void reactivateRecovery(Player* player);
 	void deactivateRecovery();
+
+	void sendCampInfo(Player* player);
 };
 
 #endif
