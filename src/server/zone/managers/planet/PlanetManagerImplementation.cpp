@@ -950,7 +950,7 @@ void PlanetManagerImplementation::placePlayerStructure(Player * player,
 			return;
 		}
 
-		DeedObject * deed = (DeedObject*) player->getInventoryItem(objectID);
+		ManagedReference<DeedObject> deed = (DeedObject*) player->getInventoryItem(objectID);
 
 		if (deed == NULL)
 			return;

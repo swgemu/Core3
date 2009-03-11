@@ -342,7 +342,8 @@ bool CommandQueueAction::checkHealSkill() {
 					else
 						player->sendSystemMessage("healing_response", "healing_response_60");
 
-					targetObject->unlock();
+					if (targetObject != creature)
+						targetObject->unlock();
 
 					clearError(0);
 					return false;

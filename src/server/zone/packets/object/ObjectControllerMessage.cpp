@@ -3707,10 +3707,12 @@ void ObjectControllerMessage::parseAddCraftingResource(Player* player,
 
 	int counter = packet->parseByte();
 
-	SceneObject* invObj = player->getInventoryItem(resourceObjectID);
+	ManagedReference<SceneObject> invObj = player->getInventoryItem(resourceObjectID);
 
 	if (invObj != NULL && invObj->isTangible()) {
-		player->addIngredientToSlot((TangibleObject*) invObj, slot, counter);
+		TangibleObject* tano = (TangibleObject*) invObj.get();
+
+		player->addIngredientToSlot(tano, slot, counter);
 
 	} else {
 		// This eles should never execute
@@ -4575,7 +4577,12 @@ void ObjectControllerMessage::parseThrowItem(Player* player, Message* pack, uint
 		return;
 	uint64 objectId = 0;
 	if (!actionModifier.isEmpty())
-		objectId = Long::valueOf(actionModifier);
+		try {
+			objectId = Long::valueOf(actionModifier);
+		} catch (...) {
+			System::out << "cant convert long:[" << actionModifier << "]\n";
+			//player->throwTrap(target);
+		}
 	else {
 		player->throwTrap(target);
 	}

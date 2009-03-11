@@ -257,10 +257,10 @@ void GameCommandHandler::init() {
 			"Toggles immunity.",
 			"Usage: @immune",
 			&immune);
-	gmCommands->addCommand("invisible", CSREVENTS | LEADQA,
+	/*gmCommands->addCommand("invisible", CSREVENTS | LEADQA,
 			"Toggles invisibility",
 			"Usage: @invisible",
-			&invisible);
+			&invisible);*/ // TA: review this, remove inRangeObject hacks
 	gmCommands->addCommand("flare", CSREVENTS | LEADQA,
 			"Fires a flare at your position...",
 			"Usage: @flare",

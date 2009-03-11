@@ -150,14 +150,6 @@ PlayerImplementation::~PlayerImplementation() {
 		hairObj = NULL;
 	}
 
-	if (playerSaveStateEvent != NULL) {
-		if (playerSaveStateEvent->isQueued())
-			server->removeEvent(playerSaveStateEvent);
-
-		delete playerSaveStateEvent;
-		playerSaveStateEvent = NULL;
-	}
-
 	if (centerOfBeingEvent != NULL) {
 		server->removeEvent(centerOfBeingEvent);
 
@@ -927,6 +919,14 @@ void PlayerImplementation::removeEvents() {
 			delete changeFactionEvent;
 			changeFactionEvent = NULL;
 		}
+	}
+
+	if (playerSaveStateEvent != NULL) {
+		if (playerSaveStateEvent->isQueued())
+			server->removeEvent(playerSaveStateEvent);
+
+		delete playerSaveStateEvent;
+		playerSaveStateEvent = NULL;
 	}
 }
 
