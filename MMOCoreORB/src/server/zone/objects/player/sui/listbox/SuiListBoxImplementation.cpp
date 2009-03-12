@@ -68,7 +68,7 @@ void SuiListBoxImplementation::init(){
 }
 
 BaseMessage* SuiListBoxImplementation::generateMessage() {
-	SuiCreatePageMessage* message = new SuiCreatePageMessage(boxID, "Script.listBox");
+	message = new SuiCreatePageMessage(boxID, "Script.listBox");
 
 	//Declare Headers:
 	addHeader("List.lstList", "SelectedRow");
@@ -107,37 +107,41 @@ BaseMessage* SuiListBoxImplementation::generateMessage() {
 		addSetting("3", "btnOk", "Text", "@ok");
 	}
 
-	//Data Container Option
-	addSetting("1", "List.dataList", "", "");
+	if(menuItems.size() > 0) {
+		//Data Container Option
+		addSetting("1", "List.dataList", "", "");
 
-	//Fill the above Data Container
-	String tempVal = "";
-	for (int i = 0; i < menuItems.size(); i++) {
-		char tempStr[30];
-		sprintf(tempStr, "%d", i);
+		//Fill the above Data Container
+		String tempVal = "";
+		for (int i = 0; i < menuItems.size(); i++) {
+			char tempStr[30];
+			sprintf(tempStr, "%d", i);
 
-		addSetting("4", "List.dataList", "Name", tempStr);
+			addSetting("4", "List.dataList", "Name", tempStr);
 
-		sprintf(tempStr, "List.dataList.%d", i);
+			sprintf(tempStr, "List.dataList.%d", i);
 
-		tempVal = menuItems.get(i)->getOptionName();
+			tempVal = menuItems.get(i)->getOptionName();
 
-		addSetting("3", tempStr, "Text", tempVal);
+			addSetting("3", tempStr, "Text", tempVal);
+		}
+	} else {
+		System::out << "Menu size is less than 1, not generating menu" << endl;
 	}
 
 	//Generate Packet:
 	switch(type) {
 	case HANDLESTATUSUI:
-		generateHeader(message, "handleStatusUi");
+		generateHeader("handleStatusUi");
 		break;
 	case HANDLEDESTROYUI:
-		generateHeader(message, "handleDestroyUi");
+		generateHeader("handleDestroyUi");
 		break;
 	default:
-		generateHeader(message, "msgSelected");
+		generateHeader("msgSelected");
 	}
-	generateBody(message);
-	generateFooter(message);
+	generateBody();
+	generateFooter();
 
 	return message;
 }

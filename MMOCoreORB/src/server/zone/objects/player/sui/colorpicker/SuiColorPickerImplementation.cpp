@@ -63,7 +63,7 @@ SuiColorPickerImplementation::SuiColorPickerImplementation(Player* player, uint6
 }
 
 BaseMessage* SuiColorPickerImplementation::generateMessage() {
-	SuiCreatePageMessage* msg = new SuiCreatePageMessage(boxID, "Script.ColorPicker");
+	message = new SuiCreatePageMessage(boxID, "Script.ColorPicker");
 
 	StringBuffer id;
 	id << objectID;
@@ -79,9 +79,9 @@ BaseMessage* SuiColorPickerImplementation::generateMessage() {
 	addSetting("3", "ColorPicker", "TargetVariable", id.toString().toCharArray());
 
 	//Generate Packet:
-	generateHeader(msg, "handleColorizeFrame");
-	generateBody(msg);
-	generateFooter(msg);
+	generateHeader("handleColorizeFrame");
+	generateBody();
+	generateFooter();
 
-	return msg;
+	return message;
 }

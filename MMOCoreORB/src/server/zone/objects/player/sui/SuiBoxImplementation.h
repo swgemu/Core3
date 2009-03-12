@@ -42,6 +42,15 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+/**
+ * \class SuiBoxImplementation
+ * This is the base clas for Server UI objects. The packet, SuiCreatePageMessage, is built heavily
+ * through the generate functions. Also provides facilities to store variables present in every
+ * SWG UI box, such as Prompt Titles.
+ * Every SuiBoxImplementation object has it's own instance of the SuiCreatePageMessage packet.
+ * This should be the only UI packet used to manipulate UI elements controlled within the class.
+ */
+
 #ifndef SUIBOXIMPLEMENTATION_H_
 #define SUIBOXIMPLEMENTATION_H_
 
@@ -79,6 +88,13 @@ protected:
 	Vector<String> optionSets;
 	int hdrOptCount; //header option count
 
+	SuiCreatePageMessage* message;
+
+protected:
+	void generateHeader(const String& handlerStr);
+	void generateBody();
+	void generateFooter(int type = 0);
+
 public:
 	const static int INPUTBOX = 0;
 	const static int LISTBOX = 1;
@@ -97,18 +113,22 @@ public:
 	virtual ~SuiBoxImplementation();
 
 	virtual BaseMessage* generateMessage() = 0;
-
+	BaseMessage* getCurrentMessage();
 	BaseMessage* generateCloseMessage();
 
-
-	//For adding options to manipulate the UI
 	void addSetting(const String& optType, const String& variable, const String& setting, const String& value);
 	void addHeader(const String& variable, const String& type);
 
-	//For generation for SuiCreatePageMessage packet:
-	void generateHeader(SuiCreatePageMessage* msg, const String& handlerStr);
-	void generateBody(SuiCreatePageMessage* msg);
-	void generateFooter(SuiCreatePageMessage* msg, int type = 0);
+	/**
+	 * Resets all variables for the SuiBox object. Useful if you are reusing or resending the object
+	 */
+	void clearOptions() {
+		headerSets.removeAll();
+		hdrOptCount = 0;
+		optionSets.removeAll();
+		if(message != NULL)
+			message->setOptionCount(0);
+	}
 
 	int compareTo(SuiBox* obj) {
 		uint32 id = obj->getBoxID();

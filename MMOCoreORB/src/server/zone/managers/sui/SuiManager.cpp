@@ -1790,7 +1790,8 @@ void SuiManager::handleSlicingMenu(uint32 boxID, Player* player, uint32 cancel, 
 				bool resendMenu = slicingMenu->handleMenuChoice(index);
 
 				if (resendMenu) {
-					//System::out << "resendingmenu" << endl;
+					//If we are resending the same object, clear the vars so there isnt a build problem
+					slicingMenu->clearOptions();
 					player->sendMessage(slicingMenu->generateMessage());
 					player->unlock();
 					return;

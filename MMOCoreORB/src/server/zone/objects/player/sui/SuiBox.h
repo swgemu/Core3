@@ -13,7 +13,15 @@ class Player;
 
 class SuiBox : public DistributedObjectStub {
 public:
+	BaseMessage* getCurrentMessage();
+
 	BaseMessage* generateCloseMessage();
+
+	void addSetting(const String& optType, const String& variable, const String& setting, const String& value);
+
+	void addHeader(const String& variable, const String& type);
+
+	void clearOptions();
 
 	void setPromptTitle(const String& name);
 
@@ -67,7 +75,15 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	BaseMessage* getCurrentMessage();
+
 	BaseMessage* generateCloseMessage();
+
+	void addSetting(const String& optType, const String& variable, const String& setting, const String& value);
+
+	void addHeader(const String& variable, const String& type);
+
+	void clearOptions();
 
 	void setPromptTitle(const String& name);
 
@@ -106,6 +122,12 @@ public:
 	Player* getPlayer();
 
 protected:
+	String _param0_addSetting__String_String_String_String_;
+	String _param1_addSetting__String_String_String_String_;
+	String _param2_addSetting__String_String_String_String_;
+	String _param3_addSetting__String_String_String_String_;
+	String _param0_addHeader__String_String_;
+	String _param1_addHeader__String_String_;
 	String _param0_setPromptTitle__String_;
 	String _param0_setPromptText__String_;
 };
