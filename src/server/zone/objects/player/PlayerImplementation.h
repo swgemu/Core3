@@ -323,8 +323,7 @@ public:
 	static const int ADMIN = CSR | DEVELOPER;
 	static const int NORMAL = 4;
 	static const int QA = 8;
-	static const int EC = 16;
-	static const int LEADQA = 32;
+	static const int EC = 16;	
 	static const int EMUSTAFF = 64;
 	static const int CSRJR = 128;
 	static const int ECJR = 256;

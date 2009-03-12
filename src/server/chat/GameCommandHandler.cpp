@@ -67,21 +67,22 @@ GMCommandMap * GameCommandHandler::gmCommands = NULL;
 
 void GameCommandHandler::init() {
 	/* Admin Levels */
-	const int DEVELOPER = PlayerImplementation::DEVELOPER; 									/* Admin/Dev  */
-	const int CSR = PlayerImplementation::CSR;												/* CSR */
-	const int EC = PlayerImplementation::EC;												/* Event Coordinator */
-	const int CSRJR = PlayerImplementation::CSR;											/* JR CSR */
-	const int ECJR = PlayerImplementation::EC;												/* JR Event Coordinator */
-	const int LEADQA = PlayerImplementation::LEADQA;										/* Lead - Quality Assurance */
-	const int QA = PlayerImplementation::QA;												/* Quality Assurance */
-	const int EMUSTAFF = PlayerImplementation::EMUSTAFF;									/* Misc Emu Staff */
-	const int NORMAL = PlayerImplementation::NORMAL;										/* Normal Player*/
+	const int DEVELOPER = PlayerImplementation::DEVELOPER; 							/* Admin/Dev  */
+	const int CSR = PlayerImplementation::CSR;										/* CSR */
+	const int EC = PlayerImplementation::EC;										/* Event Coordinator */
+	const int CSRJR = PlayerImplementation::CSR;									/* JR CSR */
+	const int ECJR = PlayerImplementation::EC;										/* JR Event Coordinator */	
+	const int QA = PlayerImplementation::QA;										/* Quality Assurance */
+	const int EMUSTAFF = PlayerImplementation::EMUSTAFF;							/* Misc Emu Staff */
+	const int NORMAL = PlayerImplementation::NORMAL;								/* Normal Player*/
 
 	/* Admin Groups */
-	const int ALL = DEVELOPER | CSR | CSRJR | EC | ECJR | LEADQA | QA | EMUSTAFF | NORMAL;	/* All Staff/Players */
-	const int STAFF = DEVELOPER | CSR | CSRJR | EC | ECJR | LEADQA | QA | EMUSTAFF;			/* EMU Staff Only */
-	const int PRIVILEGED = DEVELOPER | CSR;													/* Admin,Dev/CSR */
-	const int CSREVENTS = DEVELOPER | CSR | EC;												/* Admin,Dev/CSR/Event Coordinator */
+	const int ALL = DEVELOPER | CSR | CSRJR | EC | ECJR | QA | EMUSTAFF | NORMAL;	/* All Staff/Players */	
+	const int STAFF = DEVELOPER | CSR | CSRJR | EC | ECJR | QA | EMUSTAFF;			/* Staff Only */
+	const int PRIVILEGED = DEVELOPER | CSR;											/* Admin,Dev/CSR */
+	const int PRIVILEGEDJR = DEVELOPER | CSR | CSRJR;								/* Admin,Dev/CSR /CSRJR*/
+	const int CSREVENTS = DEVELOPER | CSR | EC;										/* Admin,Dev/CSR/Event Coordinator */
+	const int CSREVENTSJR = DEVELOPER | CSR | EC | CSRJR | ECJR;					/* Admin,Dev/CSR/EC/CSRJR/ECJR */
 
 	gmCommands = new GMCommandMap();
 
@@ -107,9 +108,9 @@ void GameCommandHandler::init() {
 			&warpTo);
 	gmCommands->addCommand("warpPlayer", PRIVILEGED,
 			"Warps a player to a given location.",
-			"Usage: @warpPlayer <player> <starport |hotel | shuttle | medical | bank | garage | salon | punish>",
+			"Usage: @warpPlayer <player> <starport | hotel | shuttle | medical | bank | garage | salon | punish>",
 			&warpPlayer);
-	gmCommands->addCommand("summon", CSREVENTS | LEADQA,
+	gmCommands->addCommand("summon", CSREVENTSJR,
 			"Warps a player to your location.",
 			"Usage: @summon <player>",
 			&summon);
@@ -125,11 +126,11 @@ void GameCommandHandler::init() {
 			"Bans a user from logging in to the server.",
 			"Usage: @banUser <name> <ban time in minutes> <reason>",
 			&banUser);
-	gmCommands->addCommand("getForumName", PRIVILEGED,
+	gmCommands->addCommand("getForumName", PRIVILEGEDJR,
 			"Returns forum name for select character.",
 			"Usage: @getForumName <player>",
 			&getForumName);
-	gmCommands->addCommand("mutePlayer", CSREVENTS,
+	gmCommands->addCommand("mutePlayer", CSREVENTSJR,
 			"Prevents a player from speaking in spacial chat.",
 			"Usage: @mutePlayer <player>",
 			&mutePlayer);
@@ -137,7 +138,7 @@ void GameCommandHandler::init() {
 			"Kills a player or creature.",
 			"Usage: @kill <player name or current-target>",
 			&kill);
-	gmCommands->addCommand("ecKill", CSREVENTS,
+	gmCommands->addCommand("ecKill", CSREVENTSJR,
 			"Kills a creature. EC version of the kill command.",
 			"Usage: @ecKill <current-target>",
 			&ecKill);
@@ -145,7 +146,7 @@ void GameCommandHandler::init() {
 			"Kills all players or creatures within a certain range.",
 			"Usage: @killArea [distance]",
 			&killArea);
-	gmCommands->addCommand("muteChat", CSREVENTS,
+	gmCommands->addCommand("muteChat", CSREVENTSJR,
 			"Prevents players from speaking in spacial chat.",
 			"Usage: @muteChat",
 			&muteChat);
@@ -153,7 +154,7 @@ void GameCommandHandler::init() {
 			"Prints the amount of users on the server.",
 			"Usage: @users",
 			&users);
-	gmCommands->addCommand("setWeather", CSREVENTS,
+	gmCommands->addCommand("setWeather", CSREVENTSJR,
 			"Changes the weather conditions on the planet.",
 			"Usage: @setWeather <0-4>",
 			&setWeather);
@@ -169,15 +170,15 @@ void GameCommandHandler::init() {
 			"Gives you a travel ticket.",
 			"Usage: @ticketPurchase <planet> <city>",
 			&ticketPurchase);
-	gmCommands->addCommand("awardBadge", DEVELOPER,
+	gmCommands->addCommand("awardBadge", CSREVENTSJR,
 			"Awards a badge to targeted player.",
 			"Usage: @awardBadge <badgeid>",
 			&awardBadge);
-	gmCommands->addCommand("revokeBadge", STAFF,
+	gmCommands->addCommand("revokeBadge", CSREVENTSJR,
 			"Remove a badge from a targeted player.",
 			"Usage: @revokeBadge <badgeid>",
 			&revokeBadge);
-	gmCommands->addCommand("systemMessage", CSREVENTS | LEADQA,
+	gmCommands->addCommand("systemMessage", CSREVENTS,
 			"Sends a message to all players on the server within the given range.",
 			"Usage: @systemMessage <range> <message>",
 			&systemMessage);
@@ -217,7 +218,7 @@ void GameCommandHandler::init() {
 			"Prints your current HAM stats.",
 			"Usage: @HAMStats",
 			&HAMStats);
-	gmCommands->addCommand("buff", CSREVENTS | LEADQA,
+	gmCommands->addCommand("buff", CSREVENTSJR,
 			"Buffs your player or target player.",
 			"Usage: @buff <target>",
 			&buff);
@@ -225,13 +226,13 @@ void GameCommandHandler::init() {
 			"Gives your player a certain spice.",
 			"Usage: @spice <spice>",
 			&spice);
-	gmCommands->addCommand("getDirection", STAFF,
+	gmCommands->addCommand("getDirection", ALL,
 			"Prints out your direction or the direction of a targeted object.",
 			"Usage: @getDirection",
 			&getDirection);
 	gmCommands->addCommand("setAdminLevel", DEVELOPER,
 			"Sets your admin level.",
-			"Usage: @setAdminLevel <player> <level> \n Levels: 1-CSR 2-DEVELOPER 4-PLAYER 8-QA 16-EC 32-LEADQA 64-EMUSTAFF",
+			"Usage: @setAdminLevel <player> <level> \n Levels: 1-CSR 2-DEVELOPER 4-PLAYER 8-QA 16-EC 64-EMUSTAFF 128-CSRJR 256-ECJR",
 			&setAdminLevel);
 	gmCommands->addCommand("getLocation", ALL,
 			"Gives full details of your location.",
@@ -249,19 +250,19 @@ void GameCommandHandler::init() {
 			"Plays a client effect animation around your character.",
 			"Usage: @clientEffect <effect>",
 			&clientEffect);
-	gmCommands->addCommand("rez", CSREVENTS | LEADQA,
+	gmCommands->addCommand("rez", CSREVENTSJR,
 			"Resurrects a player.",
 			"Usage: @rez <playername or target player>",
 			&rez);
-	gmCommands->addCommand("immune", CSREVENTS | LEADQA,
+	gmCommands->addCommand("immune", CSREVENTSJR,
 			"Toggles immunity.",
 			"Usage: @immune",
 			&immune);
-	/*gmCommands->addCommand("invisible", CSREVENTS | LEADQA,
+	/*gmCommands->addCommand("invisible", PRIVILEGED ,
 			"Toggles invisibility",
 			"Usage: @invisible",
 			&invisible);*/ // TA: review this, remove inRangeObject hacks
-	gmCommands->addCommand("flare", CSREVENTS | LEADQA,
+	gmCommands->addCommand("flare", PRIVILEGED,
 			"Fires a flare at your position...",
 			"Usage: @flare",
 			&flare);
@@ -281,7 +282,7 @@ void GameCommandHandler::init() {
 			"Let you leave the guild you temporarily joined for support actions.",
 			"Usage: @endGuildAdmin",
 			&endGuildAdmin);
-	gmCommands->addCommand("factionSet", CSREVENTS,
+	gmCommands->addCommand("factionSet", CSREVENTSJR,
 			"Let you change a players faction. Will be applied IMMEDIATLY!",
 			"Usage: @factionSet overt | covert | rebel | imperial | neutral",
 			&factionSet);
@@ -297,7 +298,7 @@ void GameCommandHandler::init() {
 			"Returns a list of players with a level higher than normal (4)",
 			"USAGE: @adminList",
 			&adminList);
-	gmCommands->addCommand("showChars", PRIVILEGED,
+	gmCommands->addCommand("showChars", PRIVILEGEDJR,
 			"Returns a list of characters a player has registered with this server.",
 			"USAGE: @showChars <Forum Nickname>",
 			&showChars);
@@ -330,12 +331,12 @@ void GameCommandHandler::init() {
 			"Usage: @openInventory (with a player as the current target)",
 			&openInventory);
 	//Temporary for CSRs as long as structures and cell permissions not finally in
-	gmCommands->addCommand("poofObject", PRIVILEGED,
+	gmCommands->addCommand("poofObject", PRIVILEGEDJR,
 			"Destroys an object.",
 			"USAGE: @poofObject <target>",
 			&poofObject);
 	//Temporary for CSRs as long as structures and cell permissions not finally in
-	gmCommands->addCommand("whoDroppedThis", PRIVILEGED,
+	gmCommands->addCommand("whoDroppedThis", PRIVILEGEDJR,
 			"Shows the characters name who dropped the current target (item).",
 			"USAGE: @whoDroppedThis <target>",
 			&whoDroppedThis);
@@ -372,7 +373,7 @@ void GameCommandHandler::init() {
 				"Plays the specified audio file",
 				"USAGE: @playAudio [soundfile]",
 				&playAudio);
-	gmCommands->addCommand("eventMessage", CSREVENTS,
+	gmCommands->addCommand("eventMessage", CSREVENTSJR,
 				"Sends a system message, tailored for announcing events.",
 				"USAGE: @eventMessage <message>",
 				&eventMessage);
