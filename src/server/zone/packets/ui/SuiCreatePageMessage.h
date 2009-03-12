@@ -42,6 +42,12 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+/**
+ * \class SuiCreatePageMessage
+ * Packet. See trac documentation for detailed variable information.
+ * Manipulated and built heavily in SuiBoxImplementation
+ */
+
 #ifndef SUICREATEPAGEMESSAGE_H_
 #define SUICREATEPAGEMESSAGE_H_
 
@@ -68,11 +74,19 @@ public:
 	   optionOffset = 16+scriptClass.length();
    }
 
-	//Use for inserting an option set when building the packet
+	/**
+	 * Insert's a UI-Body option into the packet. Should only be accessed by methods in SuiBoxImplementation
+	 * See packet trac docs for more info.
+	 * \param optionType Type of UI option to add
+	 * \param value Value to set the setting to.
+	 * \param variable SWG-UI Classpath to access
+	 * \param setting SWG-UI setting within the UI class to modify
+	 */
 	void insertOption(uint8 optionType, const String& value, const String& variable, const String& setting) {
 	   optionCount+=1;
 	   insertByte(optionType); //Option Type. 1=Data Container Option. 3=Data Value Option. 4=Container Data Header Option
 
+	   //System::out << "Adding Option, OptCount[" << optionCount << "]." << variable << "." << setting << "=" << value << endl;
 	   //Data Value Option and Header Option are the same
 	   if((optionType == 3) || (optionType == 4)) {
 		   insertInt(1); // number of Unicodes
@@ -92,11 +106,19 @@ public:
 	   insertInt(optionOffset, optionCount);
 	}
 
-	//Use for inserting the UI header on packet build
+	/**
+	 * Insert's a UI-Header option into the packet. Should only be accessed by methods in SuiBoxImplementation
+	 * See packet trac docs for more info
+	 * \param variable SWG-UI Class var to access
+	 * \param type Datatype of the UI var
+	 * \param noCount Internal packet variable used to determine weather or not to count the option towards the total packet options
+	 */
 	void insertHeaderOption(const String& variable, const String& type, bool noCount = false) {
 	   if(!noCount) {
 		   optionCount+=1;
 	   }
+
+	   //System::out << "Adding Header Option, OptCount[" << optionCount << "]." << variable << " with type " << type << endl;
 
 	   insertAscii(variable.toCharArray());
 	   insertAscii(type.toCharArray());
@@ -105,6 +127,10 @@ public:
 	   insertInt(optionOffset, optionCount);
 	}
 
+	/**
+	 * Insert's a UI-Footer option into the packet. Should only be accessed by methods in SuiBoxImplementation
+	 * \param type Type of footer to insert.
+	 */
 	void insertFooter(int type = 0) {
 		insertLong(0);
 		if(type > 0) {

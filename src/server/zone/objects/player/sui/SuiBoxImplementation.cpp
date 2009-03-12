@@ -62,9 +62,19 @@ SuiBoxImplementation::SuiBoxImplementation(Player* play, uint32 windowType, uint
 	backButton = false;
 
 	hdrOptCount = 0; //header option count
+	message = NULL;
 }
 
-//Use when building the UI. This should be called to add option setting's BEFORE the packet build
+/**
+ * Use to add a UI-body option that will be included in UI generation
+ * See trac documentation of SuiCreatePageMessage for when to use
+ * Variables are concated into a string and placed in a vector (optionSets) of all the body settings
+ * for the SuiBoxImplementation object. Each string separates variables with a tilde (~) character.
+ * \param optType Type of setting to add. See packet docs for info
+ * \param variable UI Classpath in the script to access
+ * \param setting SWG UI setting to modify
+ * \param value The value of the setting being modified
+ */
 void SuiBoxImplementation::addSetting(const String& optType, const String& variable, const String& setting, const String& value) {
 	String setName = "", setVal = "";
 	setName = setting;
@@ -94,7 +104,14 @@ void SuiBoxImplementation::addSetting(const String& optType, const String& varia
 	optionSets.add(optStr);
 }
 
-//Use when building the UI. This should be called to add header's BEFORE the packet build
+/**
+ * Use to add a UI-Header that will eventually be included in the UI generation.
+ * See trac documentation of SuiCreatePageMessage for when to use
+ * Variables are concated into a string and placed in a vector (headerSets) of all the header settings
+ * for the SuiBoxImplementation object. Each string separates variables with a tilde (~) character.
+ * \param variable UI Variable to declare header for
+ * \param type Data type of the UI variable being declared
+ */
 void SuiBoxImplementation::addHeader(const String& variable, const String& type) {
 	if((variable.length() == 0) || (type.length() == 0))
 		return;
@@ -108,35 +125,53 @@ void SuiBoxImplementation::addHeader(const String& variable, const String& type)
 	hdrOptCount+=2;
 }
 
-//Called after all Header Settings have been added. See SuiCreatePageMessage docs for more info
-void SuiBoxImplementation::generateHeader(SuiCreatePageMessage* msg, const String& handlerStr) {
+/**
+ * Call after all Header settings have been added with addHeader()
+ * Generates the UI-Header of the packet, SuiCreatePageMessage, based on the headerSets vector.
+ * If you are reusing the SuiBox and rebuilding with different variables, make sure you reset
+ * the object with clearOptions()
+ * \sa addHeader(), clearOptions()
+ */
+void SuiBoxImplementation::generateHeader(const String& handlerStr) {
+	if(message == NULL)
+		return;
+
 	//[UI DECLARATION HEADER]
 	String hdrVar = "";
 	String hdrType = "";
 
 	//The header needs to be repeated twice. (Why SOE?)
 	for (int i = 0; i < 2; ++i) {
-		msg->insertByte(5); //# of vars to follow, not inc strings
-		msg->insertInt(0);
-		msg->insertInt(3+hdrOptCount); //# of shorts (inc ascii string size shorts), excluding the counter
-		msg->insertShort(0); // 1
-		msg->insertShort(1); // 2
-		msg->insertByte(9 + i); //counter
+		message->insertByte(5); //# of vars to follow, not inc strings
+		message->insertInt(0);
+		message->insertInt(3+hdrOptCount); //# of shorts (inc ascii string size shorts), excluding the counter
+		message->insertShort(0); // 1
+		message->insertShort(1); // 2
+		message->insertByte(9 + i); //counter
 
-		msg->insertAscii(handlerStr);
+		message->insertAscii(handlerStr);
 
 		for(int k = 0; k < headerSets.size(); k++) {
 			StringTokenizer hdrTok(headerSets.get(k)); //ex. List.lstList~SelectedRow
 			hdrTok.setDelimeter("~"); //Split & parse
 			hdrTok.getStringToken(hdrVar);
 			hdrTok.getStringToken(hdrType);
-			msg->insertHeaderOption(hdrVar, hdrType, (i > 0));
+			message->insertHeaderOption(hdrVar, hdrType, (i > 0));
 		}
 	}
 }
 
-//Called after all Option Settings have been added. See SuiCreatePageMessage docs for more info
-void SuiBoxImplementation::generateBody(SuiCreatePageMessage* msg) {
+/**
+ * Call after all Body Settings have been added with addSetting() and the header has been generated
+ * Generates the UI-Body of the packet, SuiCreatePageMessage, based on the optionSets vector.
+ * If you are reusing the SuiBox and rebuilding with different variables, make sure you
+ * reset the object with clearOptions()
+ * \sa addSetting(), clearOptions()
+ */
+void SuiBoxImplementation::generateBody() {
+	if(message == NULL)
+		return;
+
 	//[UI BODY]
 	String bdyTypeStr = "";
 	int bdyType = 0;
@@ -153,20 +188,39 @@ void SuiBoxImplementation::generateBody(SuiCreatePageMessage* msg) {
 			bdyTok.getStringToken(bdySetting);
 			bdyTok.getStringToken(bdyValue);
 		}
-		msg->insertOption(bdyType, bdyValue, bdyVar, bdySetting);
+		message->insertOption(bdyType, bdyValue, bdyVar, bdySetting);
 	}
 }
 
-//Called to complete the SuiCreatePageMessage packet
-void SuiBoxImplementation::generateFooter(SuiCreatePageMessage* msg, int type) {
-	msg->insertFooter(type);
+/**
+ * Call after generating both the header and body.
+ * Footer of SuiCreatePageMessage is largely unknown. Subject to change based on research. See trac
+ * \param type Type of footer to place into packet
+ */
+void SuiBoxImplementation::generateFooter(int type) {
+	if(message == NULL)
+		return;
+
+	message->insertFooter(type);
 }
 
-//This will return the packet to close the UI page on the client.
-//Make sure to remove the suibox from the suiBoxes map
+/**
+ * Use to close the UI object on the client.
+ * Sends the SuiForceClosePage packet to the client.
+ */
 BaseMessage* SuiBoxImplementation::generateCloseMessage() {
 	SuiForceClosePage* msg = new SuiForceClosePage(boxID);
+	clearOptions();
 	return msg;
+}
+
+/**
+ * Returns the instanced SuiCreatePageMessage packet object, in whatever state it is in.
+ * \warning May be incomplete or null. Do not use this method unless absolutely necessary.
+ * \deprecated Function will be removed when SUI facilities are complete.
+ */
+BaseMessage* SuiBoxImplementation::getCurrentMessage() {
+	return message;
 }
 
 SuiBoxImplementation::~SuiBoxImplementation() {

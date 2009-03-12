@@ -51,7 +51,7 @@ SuiTransferBoxImplementation::SuiTransferBoxImplementation(Player* player, uint3
 }
 
 BaseMessage* SuiTransferBoxImplementation::generateMessage() {
-	SuiCreatePageMessage* message = new SuiCreatePageMessage(boxID, "Script.transfer");
+	message = new SuiCreatePageMessage(boxID, "Script.transfer");
 
 	//Declare Headers:
 	addHeader("transaction.txtInputFrom", "Text");
@@ -74,9 +74,9 @@ BaseMessage* SuiTransferBoxImplementation::generateMessage() {
 	addSetting("3", "transaction", "ConversionRatioTo", convertRatioTo);
 
 	//Generate Packet:
-	generateHeader(message, "msgPayMaintenance");
-	generateBody(message);
-	generateFooter(message);
+	generateHeader("msgPayMaintenance");
+	generateBody();
+	generateFooter();
 
 	return message;
 }

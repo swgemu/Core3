@@ -48,7 +48,13 @@ include "engine/service/proto/BaseMessage";
 
 interface SuiBox {
 
+	BaseMessage getCurrentMessage();
 	BaseMessage generateCloseMessage();
+	
+	//For adding options to manipulate the UI
+	void addSetting(const String optType, const String variable, const String setting, const String value);
+	void addHeader(const String variable, const String type);
+	void clearOptions();
 	
 	void setPromptTitle(const String name);
 	void setPromptText(const String name);

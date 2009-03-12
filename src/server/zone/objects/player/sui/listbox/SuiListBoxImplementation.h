@@ -75,6 +75,9 @@ public:
 
 	void init();
 
+	/**
+	 * Use to add Menu Item to the ListBox Sui class. List will be looped through in generateBody
+	 */
 	void addMenuItem(const String& name, uint64 objectID = 0) {
 		SuiListBoxMenuItem* item = new SuiListBoxMenuItem(name, objectID);
 		menuItems.add(item);
@@ -85,6 +88,10 @@ public:
 		return menuItem->getOptionName();
 	}
 
+	/*
+	 * Clears all Menu Items from the list box.
+	 * \warning If you are going to reuse the SuiBox object and call this method, you most likely need to call clearOptions() in SuiBoxImplementation
+	 */
 	void removeAllMenuItems(){
 		menuItems.removeAll();
 	}

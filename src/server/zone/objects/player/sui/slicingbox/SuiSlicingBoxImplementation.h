@@ -160,6 +160,7 @@ public:
 		uint8 progress = getProgress();
 
 		removeAllMenuItems();
+		clearOptions(); //Call just incase
 
 		StringBuffer prompt;
 		prompt << "@slicing/slicing:";

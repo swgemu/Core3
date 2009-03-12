@@ -51,7 +51,7 @@ SuiBankTransferBoxImplementation::SuiBankTransferBoxImplementation(Player* playe
 }
 
 BaseMessage* SuiBankTransferBoxImplementation::generateMessage() {
-	SuiCreatePageMessage* message = new SuiCreatePageMessage(boxID, "Script.transfer");
+	message = new SuiCreatePageMessage(boxID, "Script.transfer");
 
 	//Declare Headers:
 	addHeader("transaction.txtInputFrom", "Text");
@@ -76,9 +76,9 @@ BaseMessage* SuiBankTransferBoxImplementation::generateMessage() {
 	addSetting("3", "transaction", "ConversionRatioTo", convertRatioTo);
 
 	//Generate Packet:
-	generateHeader(message, "handleDepositWithdraw");
-	generateBody(message);
-	generateFooter(message, 1); //special banktransferbox footer? nfi
+	generateHeader("handleDepositWithdraw");
+	generateBody();
+	generateFooter(1); //special banktransferbox footer? nfi
 
 	return message;
 }
