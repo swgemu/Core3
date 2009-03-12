@@ -97,10 +97,12 @@ public:
 	}
 
 	uint64 getMenuObjectID(int idx) {
-		if ((uint32)idx < menuItems.size())
-			return menuItems.get(idx)->getObjectID();
-		else
-			return 0;
+		if ((uint32)idx < menuItems.size()) {
+			SuiListBoxMenuItem* menuItem = menuItems.get(idx);
+			if(menuItem != NULL)
+				return menuItem->getObjectID();
+		}
+		return 0;
 	}
 
 	int getMenuSize() {
