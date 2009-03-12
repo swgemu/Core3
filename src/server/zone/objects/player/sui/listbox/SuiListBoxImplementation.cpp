@@ -107,26 +107,22 @@ BaseMessage* SuiListBoxImplementation::generateMessage() {
 		addSetting("3", "btnOk", "Text", "@ok");
 	}
 
-	if(menuItems.size() > 0) {
-		//Data Container Option
-		addSetting("1", "List.dataList", "", "");
+	//Data Container Option
+	addSetting("1", "List.dataList", "", "");
 
-		//Fill the above Data Container
-		String tempVal = "";
-		for (int i = 0; i < menuItems.size(); i++) {
-			char tempStr[30];
-			sprintf(tempStr, "%d", i);
+	//Fill the above Data Container
+	String tempVal = "";
+	for (int i = 0; i < getMenuSize(); i++) {
+		char tempStr[30];
+		sprintf(tempStr, "%d", i);
 
-			addSetting("4", "List.dataList", "Name", tempStr);
+		addSetting("4", "List.dataList", "Name", tempStr);
 
-			sprintf(tempStr, "List.dataList.%d", i);
+		sprintf(tempStr, "List.dataList.%d", i);
 
-			tempVal = menuItems.get(i)->getOptionName();
+		tempVal = menuItems.get(i)->getOptionName();
 
-			addSetting("3", tempStr, "Text", tempVal);
-		}
-	} else {
-		System::out << "Menu size is less than 1, not generating menu" << endl;
+		addSetting("3", tempStr, "Text", tempVal);
 	}
 
 	//Generate Packet:

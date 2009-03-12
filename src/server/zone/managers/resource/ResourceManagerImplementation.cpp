@@ -841,6 +841,8 @@ void ResourceManagerImplementation::getHarvestingType(CreatureObject* creatureOb
 }
 
 void ResourceManagerImplementation::generateSUI(Player* player, SuiListBox* sui){
+	sui->removeAllMenuItems();
+	sui->clearOptions();
 
 	SuiListBoxVector* choicesList = player->getSuiBoxChoices();
 	Vector<String>* menuList = resourceTree->getSuiMenuList(choicesList);

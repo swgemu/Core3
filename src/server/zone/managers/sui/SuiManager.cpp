@@ -1320,7 +1320,6 @@ void SuiManager::handleFreeResource(uint32 boxID, Player* player, uint32 cancel,
 						SuiBox* nextSui = player->getSuiBox(listBox->getNextBox());
 						if (nextSui->isListBox()){
 							SuiListBox* nextListBox = (SuiListBox*)nextSui;
-							nextListBox->removeAllMenuItems();
 							String text = ("Choose resource class from " + choice);
 							nextListBox->setPromptText(text);
 							resManager->generateSUI(player, nextListBox);
@@ -1790,8 +1789,6 @@ void SuiManager::handleSlicingMenu(uint32 boxID, Player* player, uint32 cancel, 
 				bool resendMenu = slicingMenu->handleMenuChoice(index);
 
 				if (resendMenu) {
-					//If we are resending the same object, clear the vars so there isnt a build problem
-					slicingMenu->clearOptions();
 					player->sendMessage(slicingMenu->generateMessage());
 					player->unlock();
 					return;
