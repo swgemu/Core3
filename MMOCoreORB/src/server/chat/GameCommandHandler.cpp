@@ -67,22 +67,21 @@ GMCommandMap * GameCommandHandler::gmCommands = NULL;
 
 void GameCommandHandler::init() {
 	/* Admin Levels */
-	const int DEVELOPER = PlayerImplementation::DEVELOPER; 							/* Admin/Dev  */
-	const int CSR = PlayerImplementation::CSR;										/* CSR */
-	const int EC = PlayerImplementation::EC;										/* Event Coordinator */
-	const int CSRJR = PlayerImplementation::CSR;									/* JR CSR */
-	const int ECJR = PlayerImplementation::EC;										/* JR Event Coordinator */	
-	const int QA = PlayerImplementation::QA;										/* Quality Assurance */
-	const int EMUSTAFF = PlayerImplementation::EMUSTAFF;							/* Misc Emu Staff */
-	const int NORMAL = PlayerImplementation::NORMAL;								/* Normal Player*/
+	const int DEVELOPER = PlayerImplementation::DEVELOPER; 				/* Admin/Dev  */
+	const int CSR = PlayerImplementation::CSR;							/* CSR */
+	const int EC = PlayerImplementation::EC;							/* Event Coordinator */
+	const int CSRJR = PlayerImplementation::CSRJR;						/* JR CSR */
+	const int ECJR = PlayerImplementation::ECJR;						/* JR Event Coordinator */	
+	const int QA = PlayerImplementation::QA;							/* Quality Assurance */
+	const int NORMAL = PlayerImplementation::NORMAL;					/* Normal Player*/
 
 	/* Admin Groups */
-	const int ALL = DEVELOPER | CSR | CSRJR | EC | ECJR | QA | EMUSTAFF | NORMAL;	/* All Staff/Players */	
-	const int STAFF = DEVELOPER | CSR | CSRJR | EC | ECJR | QA | EMUSTAFF;			/* Staff Only */
-	const int PRIVILEGED = DEVELOPER | CSR;											/* Admin,Dev/CSR */
-	const int PRIVILEGEDJR = DEVELOPER | CSR | CSRJR;								/* Admin,Dev/CSR /CSRJR*/
-	const int CSREVENTS = DEVELOPER | CSR | EC;										/* Admin,Dev/CSR/Event Coordinator */
-	const int CSREVENTSJR = DEVELOPER | CSR | EC | CSRJR | ECJR;					/* Admin,Dev/CSR/EC/CSRJR/ECJR */
+	const int ALL = DEVELOPER | CSR | CSRJR | EC | ECJR | QA | NORMAL;	/* All Staff/Players */	
+	const int STAFF = DEVELOPER | CSR | CSRJR | EC | ECJR | QA;			/* Staff Only */
+	const int PRIVILEGED = DEVELOPER | CSR;								/* Admin,Dev/CSR */
+	const int PRIVILEGEDJR = DEVELOPER | CSR | CSRJR;					/* Admin,Dev/CSR /CSRJR*/
+	const int CSREVENTS = DEVELOPER | CSR | EC;							/* Admin,Dev/CSR/Event Coordinator */
+	const int CSREVENTSJR = DEVELOPER | CSR | EC | CSRJR | ECJR;		/* Admin,Dev/CSR/EC/CSRJR/ECJR */
 
 	gmCommands = new GMCommandMap();
 
@@ -106,7 +105,7 @@ void GameCommandHandler::init() {
 			"Warps you to a player\'s location ",
 			"Usage @warpTo <player>",
 			&warpTo);
-	gmCommands->addCommand("warpPlayer", PRIVILEGED,
+	gmCommands->addCommand("warpPlayer", PRIVILEGEDJR,
 			"Warps a player to a given location.",
 			"Usage: @warpPlayer <player> <starport | hotel | shuttle | medical | bank | garage | salon | punish>",
 			&warpPlayer);
@@ -232,7 +231,7 @@ void GameCommandHandler::init() {
 			&getDirection);
 	gmCommands->addCommand("setAdminLevel", DEVELOPER,
 			"Sets your admin level.",
-			"Usage: @setAdminLevel <player> <level> \n Levels: 1-CSR 2-DEVELOPER 4-PLAYER 8-QA 16-EC 64-EMUSTAFF 128-CSRJR 256-ECJR",
+			"Usage: @setAdminLevel <player> <level> \n Levels: 1-CSR 2-DEVELOPER 4-PLAYER 8-QA 16-EC 32-CSRJR 64-ECJR",
 			&setAdminLevel);
 	gmCommands->addCommand("getLocation", ALL,
 			"Gives full details of your location.",
@@ -2794,10 +2793,10 @@ void GameCommandHandler::adminList(StringTokenizer tokenizer, Player* player) {
 				appendix << "16 (EC)";
 				break;
 			case (32):
-				appendix << "32 (LEAD QA)";
+				appendix << "32 (CSR JR)";
 				break;
 			case (64):
-				appendix << "64 (EMU STAFF)";
+				appendix << "64 (EC JR)";
 				break;
 			default:
 				appendix << res->getInt(3) << "(UNKNOWN VALUE)";
