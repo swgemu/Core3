@@ -43,7 +43,7 @@
 whisperBirdMale = Creature:new {
 	objectName = "whisperBirdMale",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	gender = "",
+	gender = "male",
 
 	speciesName = "whisper_bird_male",
 	stfName = "mob/creature_names",

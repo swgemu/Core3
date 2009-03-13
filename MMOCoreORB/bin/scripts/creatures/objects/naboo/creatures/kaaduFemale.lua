@@ -43,7 +43,7 @@
 kaaduFemale = Creature:new {
 	objectName = "kaaduFemale",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	gender = "",
+	gender = "female",
 
 	speciesName = "kaadu_female",
 	stfName = "mob/creature_names",
