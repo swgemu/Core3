@@ -43,7 +43,7 @@
 matureSnorbalMale = Creature:new {
 	objectName = "matureSnorbalMale",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	gender = "",
+	gender = "male",
 
 	speciesName = "mature_snorbal_male",
 	stfName = "mob/creature_names",
