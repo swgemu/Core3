@@ -43,10 +43,10 @@
 imperialExterminator = Creature:new {
 	objectName = "imperialExterminator",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Imperial",
+	faction = "imperial",
 	gender = "",
 	
-	speciesName = "crackdown_imperial_exterminator ",
+	speciesName = "crackdown_imperial_exterminator",
 	stfName = "mob/creature_names",
 	objectCRC = 2481288664, 
 	socialGroup = "Imperial",

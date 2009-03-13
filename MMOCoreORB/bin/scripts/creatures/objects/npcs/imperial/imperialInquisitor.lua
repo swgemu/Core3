@@ -43,10 +43,10 @@
 imperialInquisitor = Creature:new {
 	objectName = "imperialInquisitor",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Imperial",
+	faction = "imperial",
 	gender = "",
 	
-	speciesName = "imperial_inquisitor  ",
+	speciesName = "imperial_inquisitor",
 	stfName = "mob/creature_names",
 	objectCRC = 1449644294, 
 	socialGroup = "Imperial",
