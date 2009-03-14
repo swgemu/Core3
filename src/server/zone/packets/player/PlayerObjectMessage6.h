@@ -55,7 +55,12 @@ public:
 			: BaseLineMessage(play->getObjectID(), 0x504C4159, 6, 0x03) {
 
 		insertInt(0);
-		insertByte(play->getAdminLevel());  //Developer/CSR Flag
+
+		int adminFlag = play->getAdminLevel();
+		if (adminFlag = PlayerImplementation::CSRJR)
+			adminFlag = PlayerImplementation::CSR; //Allow CSRJR to have CSR title.
+
+		insertByte(adminFlag);  //Developer/CSR Flag
 
 		setSize();
 	}
