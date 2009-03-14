@@ -2099,12 +2099,21 @@ void GameCommandHandler::setAdminLevel(StringTokenizer tokenizer, Player* player
 	ChatManager* chatManager = player->getZone()->getChatManager();
 
 	String name;
-	tokenizer.getStringToken(name);
+	int level;
 
-	if (!tokenizer.hasMoreTokens())
+	if (tokenizer.hasMoreTokens()) {
+		tokenizer.getStringToken(name);
+	} else {
+		player->sendSystemMessage("Usage: @setAdminLevel <player> <level>");
 		return;
+	}
 
-	int level = tokenizer.getIntToken();
+	if (tokenizer.hasMoreTokens()) {
+		level = tokenizer.getIntToken();
+	} else {
+		player->sendSystemMessage("Usage: @setAdminLevel <player> <level>");
+		return;
+	}
 
 	Player* target = chatManager->getPlayer(name);
 
@@ -2120,16 +2129,20 @@ void GameCommandHandler::setAdminLevel(StringTokenizer tokenizer, Player* player
 		StringBuffer str;
 		str << player->getFirstName() << " has changed your admin level.";
 		target->sendSystemMessage(str.toString());
-	}
 
-	StringBuffer query;
-	query << "UPDATE characters SET " << "adminLevel ='"
+		StringBuffer query;
+		query << "UPDATE characters SET " << "adminLevel ='"
 		  << level
 		  << "' WHERE firstname=\'" << name << "\';";
 
-	ServerDatabase::instance()->executeStatement(query);
+		ServerDatabase::instance()->executeStatement(query);
 
-	player->sendSystemMessage("Admin level set.");
+		player->sendSystemMessage("Admin level set.");
+
+	} else {
+		player->sendSystemMessage("The specified player was not found.");
+		return;
+	}
 }
 
 
