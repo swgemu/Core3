@@ -80,7 +80,7 @@ BaseMessage* SuiBankTransferBoxImplementation::generateMessage() {
 	generateBody();
 	generateFooter(1); //special banktransferbox footer? nfi
 
-	return message;
+	return message->clone();
 }
 
 void SuiBankTransferBoxImplementation::addCash(int cash) {

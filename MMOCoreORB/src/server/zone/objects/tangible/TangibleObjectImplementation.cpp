@@ -430,7 +430,7 @@ void TangibleObjectImplementation::addDefender(SceneObject* defender) {
 }
 
 void TangibleObjectImplementation::removeDefenders() {
-	info("removing all defenders");
+	//info("removing all defenders");
 	if (defenderList.size() == 0) {
 		//info("no defenders in list");
 		return;
@@ -446,7 +446,7 @@ void TangibleObjectImplementation::removeDefenders() {
 
 	defenderList.removeAll();
 
-	info("removed all defenders");
+	//info("removed all defenders");
 }
 
 void TangibleObjectImplementation::removeDefender(SceneObject* defender) {

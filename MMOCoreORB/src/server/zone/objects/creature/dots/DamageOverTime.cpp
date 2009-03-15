@@ -130,7 +130,7 @@ uint32 DamageOverTime::initDot(CreatureObject* attacker, CreatureObject* victim)
 		case CreatureState::BLEEDING:
 		case CreatureState::POISONED:
 		case CreatureState::ONFIRE:
-			System::out << "init dot\n";
+			//System::out << "init dot\n";
 			nextTick.update();
 			nextTick.addMiliTime(9000);
 			power = strength;

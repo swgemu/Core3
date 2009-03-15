@@ -468,7 +468,7 @@ void CreatureImplementation::reload() {
 
 	insertToZone(zone);
 
-	info("creature respawned");
+	//info("creature respawned");
 }
 
 void CreatureImplementation::unload() {
@@ -502,7 +502,7 @@ void CreatureImplementation::unload() {
 	if (respawnCellID != 0)
 		parent = zone->lookupObject(respawnCellID);
 
-	info("creature despawned");
+	//info("creature despawned");
 
 }
 
@@ -1220,11 +1220,11 @@ bool CreatureImplementation::activate() {
 		needMoreActivity |= doRecovery();
 
 		if (needMoreActivity && zone != NULL) {
-			info("queuing more activities");
+			//info("queuing more activities");
 
 			creatureManager->queueActivity(this);
 		} else {
-			info("no more activities needed");
+			//info("no more activities needed");
 			deaggro();
 		}
 
@@ -1250,7 +1250,7 @@ void CreatureImplementation::removeFromQueue() {
 
 bool CreatureImplementation::checkState() {
 	if (isDead() && isInActiveState()) {
-		info("queing despawn");
+		//info("queing despawn");
 
 		deaggro();
 
@@ -1268,7 +1268,7 @@ bool CreatureImplementation::checkState() {
 		if (respawnTimer > 0) { // 0 is do not respawn
 			StringBuffer msg;
 			msg << "respawning creature with " << respawnTimer << "s timer";
-			info(msg);
+			//info(msg);
 
 			creatureManager->queueActivity(this, respawnTimer * 1000);
 		}
@@ -1350,7 +1350,7 @@ void CreatureImplementation::setNextPosition() {
 
 	StringBuffer reachedPosition;
 	reachedPosition << "(" << positionX << ", " << positionY << ")";
-	info("reached " + reachedPosition.toString());
+	//info("reached " + reachedPosition.toString());
 
 	if (newCell != 0)
 		updateZoneWithParent(newCell, false, false);
@@ -1434,7 +1434,7 @@ bool CreatureImplementation::doMovement() {
 		maxDistance = weaponObject->getMaxRange();
 
 	if (dist < maxDistance) {
-		info("reached destintaion");
+		//info("reached destintaion");
 
 		if (aggroedCreature == NULL) {
 			resetPatrolPoints(false);
@@ -1483,7 +1483,7 @@ bool CreatureImplementation::doMovement() {
 
 	StringBuffer position;
 	position << "(" << newPositionX << ", " << newPositionY << ")";
-	info("moving to " + position.toString());
+	//info("moving to " + position.toString());
 
 	broadcastNextPositionUpdate(nextPosition);
 
@@ -1525,13 +1525,13 @@ void CreatureImplementation::doAttack(CreatureObject* target, int damage) {
 	if (target != aggroedCreature && highestMadeDamage < damage) {
 		highestMadeDamage = damage;
 
-		info("new target locked");
+		//info("new target locked");
 
 		aggroedCreature = getLootOwner();
 
 		updateTarget(target);
 
-		info("new target locked");
+		//info("new target locked");
 	}
 
 	if (aggroedCreature != NULL && !isActive() && creatureManager != NULL)
@@ -1539,7 +1539,7 @@ void CreatureImplementation::doAttack(CreatureObject* target, int damage) {
 }
 
 bool CreatureImplementation::attack(CreatureObject* target) {
-	info("attacking target");
+	//info("attacking target");
 
 	doCamoCheck(target);
 
@@ -1604,7 +1604,7 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 	} else if (!isInRange(target, skill->getRange()))
 		return true;
 
-	info("queuing attacking");
+	//info("queuing attacking");
 
 	String modifier = "";
 	CommandQueueAction* action =
@@ -1780,7 +1780,7 @@ void CreatureImplementation::deaggro() {
 		StringBuffer msg;
 		msg << "deaggroed (0x" << hex << aggroedCreature->getObjectID() << dec
 				<< ")";
-		info(msg);
+		//info(msg);
 
 		if (aggroedCreature->isDead()) {
 			removeFromDamageMap(aggroedCreature);
@@ -1891,8 +1891,8 @@ void CreatureImplementation::doStatesRecovery() {
 void CreatureImplementation::queueRespawn() {
 	creatureState = RESPAWNING;
 
-	StringBuffer msg;
-	info(msg);
+	/*StringBuffer msg;
+	info(msg);*/
 
 	removeFromQueue();
 

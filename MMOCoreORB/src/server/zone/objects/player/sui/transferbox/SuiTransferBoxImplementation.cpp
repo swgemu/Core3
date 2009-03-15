@@ -78,7 +78,7 @@ BaseMessage* SuiTransferBoxImplementation::generateMessage() {
 	generateBody();
 	generateFooter();
 
-	return message;
+	return message->clone();
 }
 
 void SuiTransferBoxImplementation::addFrom(const String& from,

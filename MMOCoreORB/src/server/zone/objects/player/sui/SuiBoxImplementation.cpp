@@ -71,6 +71,16 @@ SuiBoxImplementation::SuiBoxImplementation(Player* play, uint32 windowType, uint
 	hasGenerated = false;
 }
 
+SuiBoxImplementation::~SuiBoxImplementation() {
+	headerSets.removeAll();
+	optionSets.removeAll();
+
+	if (message != NULL) {
+		delete message;
+		message = NULL;
+	}
+}
+
 /**
  * Use to add a UI-body option that will be included in UI generation
  * See trac documentation of SuiCreatePageMessage for when to use
@@ -229,7 +239,3 @@ BaseMessage* SuiBoxImplementation::getCurrentMessage() {
 	return message;
 }
 
-SuiBoxImplementation::~SuiBoxImplementation() {
-	headerSets.removeAll();
-	optionSets.removeAll();
-}

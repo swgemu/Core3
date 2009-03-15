@@ -71,12 +71,12 @@ void GameCommandHandler::init() {
 	const int CSR = PlayerImplementation::CSR;							/* CSR */
 	const int EC = PlayerImplementation::EC;							/* Event Coordinator */
 	const int CSRJR = PlayerImplementation::CSRJR;						/* JR CSR */
-	const int ECJR = PlayerImplementation::ECJR;						/* JR Event Coordinator */	
+	const int ECJR = PlayerImplementation::ECJR;						/* JR Event Coordinator */
 	const int QA = PlayerImplementation::QA;							/* Quality Assurance */
 	const int NORMAL = PlayerImplementation::NORMAL;					/* Normal Player*/
 
 	/* Admin Groups */
-	const int ALL = DEVELOPER | CSR | CSRJR | EC | ECJR | QA | NORMAL;	/* All Staff/Players */	
+	const int ALL = DEVELOPER | CSR | CSRJR | EC | ECJR | QA | NORMAL;	/* All Staff/Players */
 	const int STAFF = DEVELOPER | CSR | CSRJR | EC | ECJR | QA;			/* Staff Only */
 	const int PRIVILEGED = DEVELOPER | CSR;								/* Admin,Dev/CSR */
 	const int PRIVILEGEDJR = DEVELOPER | CSR | CSRJR;					/* Admin,Dev/CSR /CSRJR*/
@@ -3706,7 +3706,7 @@ void GameCommandHandler::setMOTD(StringTokenizer tokenizer, Player * player) {
 
 	suiInpBox->setPromptTitle("Set MOTD");
 	suiInpBox->setPromptText("Input the new message of the day below. (char limit 1024)");
-	suiInpBox->setCancelButton(true);
+	suiInpBox->setCancelButton(true, "");
 	suiInpBox->setMaxInputSize(1024);
 
 	player->addSuiBox(suiInpBox);
