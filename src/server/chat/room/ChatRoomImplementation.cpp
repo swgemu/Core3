@@ -207,7 +207,7 @@ void ChatRoomImplementation::removeAllPlayers() {
 		Player* player = playerList.get(i);
 
 		try {
-			player->wlock();
+			player->wlock(_this);
 
 			player->removeChatRoom((ChatRoom*) _this);
 

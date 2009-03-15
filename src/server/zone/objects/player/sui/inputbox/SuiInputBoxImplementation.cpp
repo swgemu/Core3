@@ -108,5 +108,5 @@ BaseMessage* SuiInputBoxImplementation::generateMessage() {
 	generateBody();
 	generateFooter();
 
-	return message;
+	return message->clone();
 }

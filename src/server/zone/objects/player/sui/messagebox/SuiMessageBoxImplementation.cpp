@@ -78,5 +78,5 @@ BaseMessage* SuiMessageBoxImplementation::generateMessage() {
 	generateBody();
 	generateFooter();
 
-	return message;
+	return message->clone();
 }
