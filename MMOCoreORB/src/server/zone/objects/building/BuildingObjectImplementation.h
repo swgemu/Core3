@@ -258,7 +258,7 @@ public:
 	void sendTo(Player* player, bool doClose = true);
 	void sendDestroyTo(Player* player);
 	void sendPermissionListTo(Player* player, uint8 listtype);
-	void handlePermissionListModify(Player* enforcer, uint8 listtype, int recipientIdx, SuiListBox* suilist);
+	void handlePermissionListModify(Player* enforcer, uint8 listtype, String modName, bool doAdd);
 
 	void addCell(CellObject* cell);
 

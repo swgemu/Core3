@@ -97,7 +97,6 @@ public:
 
     static void parseShowPvpRating(Player* player, Message* pack);
 
-
     static void parseFlourish(Player* player, Message* pack, uint32 actionCntr);
     static void parseImageDesign(Player* player, Message* pack);
     static void parseWatch(Player* player, Message* pack);
@@ -142,6 +141,9 @@ public:
     static void parseResourceContainerTransfer(Player* player, Message* pack);
 
     static void parseResourceEmptyHopper(Player* player, Message* pack);
+
+    // structures
+    static void parsePermissionListModify(Player* player, Message* pack);
 
     // mission
     static void parseMissionListRequest(Player* player, Message* pack);

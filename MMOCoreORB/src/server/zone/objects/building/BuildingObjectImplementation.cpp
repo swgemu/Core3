@@ -454,20 +454,18 @@ void BuildingObjectImplementation::sendPermissionListTo(Player* player, uint8 li
 }
 
 /**
- * Called from SuiManager::handlePermissionListModify(). This method should verify the permissions of the
- * enforcer, check if the recipient player (recipientIdx) in the SuiList exists, and make the appropriate changes
- * based on the List Type. Do NOT destory the suilist object in this method.
+ * Called from ObjectControllerMessage::parsePermissionListModify(). This method should verify the permissions of the
+ * enforcer, check if the recipient player (modName) in the StructurePermissionlist exists, and make the appropriate changes
+ * based on the List Type.
  * \param enforcer The player that is trying to make the change.
  * \param listtype Type of list being modified by the player, defined in BuildingObjectImplementation.h
- * \param recipientIdx Index of the player in the listBox that is being modified (removed)
- * \param suilist SuiListBox object, use to lookup the index of the player being modified.
+ * \param modName Name of the player in the listBox that is being modified (added/removed)
+ * \param doAdd If true, modName is being added. False, modName is being removed.
  */
-void BuildingObjectImplementation::handlePermissionListModify(Player* enforcer, uint8 listtype, int recipientIdx, SuiListBox* suilist) {
-	if(recipientIdx == -1) { //Nothing selected in the list box, send "Add" inputBox here
-		System::out << "add player requested" << endl;
-	} else { //A player in the list was selected, send "Remove" confirmation ui here
-		String playerListName = suilist->getMenuItemName(recipientIdx);
-		System::out << "remove of player: " << playerListName << " requested" << endl;
+void BuildingObjectImplementation::handlePermissionListModify(Player* enforcer, uint8 listtype, String modName, bool doAdd) {
+	if(doAdd) {
+		System::out << "Adding " << modName << " to list[" << listtype << "]" <<endl;
+	} else {
+		System::out << "Removing " << modName << " from list[" << listtype << "]" <<endl;
 	}
-	//DO NOT KILL THE SUI BOX HERE. After this method returns to the SuiManager, the listbox will be terminated there.
 }

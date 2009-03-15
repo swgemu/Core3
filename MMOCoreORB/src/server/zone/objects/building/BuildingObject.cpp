@@ -49,7 +49,7 @@ void BuildingObject::sendPermissionListTo(Player* player, unsigned char listtype
 		((BuildingObjectImplementation*) _impl)->sendPermissionListTo(player, listtype);
 }
 
-void BuildingObject::handlePermissionListModify(Player* enforcer, unsigned char listtype, int recipientIdx, SuiListBox* suilist) {
+void BuildingObject::handlePermissionListModify(Player* enforcer, unsigned char listtype, String& modName, bool doAdd) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -57,12 +57,12 @@ void BuildingObject::handlePermissionListModify(Player* enforcer, unsigned char 
 		DistributedMethod method(this, 7);
 		method.addObjectParameter(enforcer);
 		method.addUnsignedCharParameter(listtype);
-		method.addSignedIntParameter(recipientIdx);
-		method.addObjectParameter(suilist);
+		method.addAsciiParameter(modName);
+		method.addBooleanParameter(doAdd);
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->handlePermissionListModify(enforcer, listtype, recipientIdx, suilist);
+		((BuildingObjectImplementation*) _impl)->handlePermissionListModify(enforcer, listtype, modName, doAdd);
 }
 
 void BuildingObject::addCell(CellObject* cell) {
@@ -735,7 +735,7 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		sendPermissionListTo((Player*) inv->getObjectParameter(), inv->getUnsignedCharParameter());
 		break;
 	case 7:
-		handlePermissionListModify((Player*) inv->getObjectParameter(), inv->getUnsignedCharParameter(), inv->getSignedIntParameter(), (SuiListBox*) inv->getObjectParameter());
+		handlePermissionListModify((Player*) inv->getObjectParameter(), inv->getUnsignedCharParameter(), inv->getAsciiParameter(_param2_handlePermissionListModify__Player_char_String_bool_), inv->getBooleanParameter());
 		break;
 	case 8:
 		addCell((CellObject*) inv->getObjectParameter());
@@ -898,8 +898,8 @@ void BuildingObjectAdapter::sendPermissionListTo(Player* player, unsigned char l
 	return ((BuildingObjectImplementation*) impl)->sendPermissionListTo(player, listtype);
 }
 
-void BuildingObjectAdapter::handlePermissionListModify(Player* enforcer, unsigned char listtype, int recipientIdx, SuiListBox* suilist) {
-	return ((BuildingObjectImplementation*) impl)->handlePermissionListModify(enforcer, listtype, recipientIdx, suilist);
+void BuildingObjectAdapter::handlePermissionListModify(Player* enforcer, unsigned char listtype, String& modName, bool doAdd) {
+	return ((BuildingObjectImplementation*) impl)->handlePermissionListModify(enforcer, listtype, modName, doAdd);
 }
 
 void BuildingObjectAdapter::addCell(CellObject* cell) {

@@ -44,8 +44,7 @@ which carries forward this exception.
 
 #include "StructurePermissionList.h"
 
-#include "../player/sui/listbox/SuiListBox.h"
-#include "../player/sui/SuiWindowType.h"
+#include "../../packets/ui/PermissionListCreateMessage.h"
 
 StructurePermissionList::StructurePermissionList(BuildingObject* buio)
 	: VectorMap<String, uint8>() {
@@ -55,73 +54,17 @@ StructurePermissionList::StructurePermissionList(BuildingObject* buio)
 }
 
 void StructurePermissionList::sendTo(Player* player, uint8 permission) {
-	SuiListBox* suilist = new SuiListBox(player, SuiWindowType::PERMISSION_LIST);
 
-	switch (permission) {
-	case ENTRYLIST:
-		suilist->setPromptTitle("@player_structure:entry_permissions_list");
-		break;
-	case HOPPERLIST:
-		suilist->setPromptTitle("@player_structure:hopper_permissions_list");
-		break;
-	case BANLIST:
-		suilist->setPromptTitle("@player_structure:ban_list");
-		break;
-	case VENDORLIST:
-		suilist->setPromptTitle("@player_structure:vendor_permissions_list");
-		break;
-	case ADMINLIST:
-		suilist->setPromptTitle("@player_structure:admin_permissions_list");
-		break;
-	default:
-		suilist->finalize();
-		return;
-	}
+	//TODO: determine the name of the list being modified, then set the listname accordingly.
+	//ListNames (must be one of these): "ADMIN", "ENTRY", "HOPPER", "BAN", "VENDOR"
+	String listName = "ADMIN"; //hardcode temp
 
-	suilist->setUsingObjectID(building->getObjectID());
+	PermissionListCreateMessage* listMsg = new PermissionListCreateMessage(listName);
+	listMsg->addName("LOLOLOL");
+	listMsg->addName("LOLOLOL");
+	listMsg->generateMessage(); //must be called after adding all the names to the list
 
-	//WINDOW:
-	suilist->addSetting("3", "listBox", "Size", "500,280");
-	suilist->addSetting("3", "listBox", "UserResizable", "false");
-	suilist->addSetting("3", "bg", "Size", "500,280");
-
-	//Prompt Text (small box above the list...we're killing it):
-	suilist->addSetting("3", "Prompt", "Visible", "false");
-	suilist->addSetting("3", "Prompt", "Enabled", "false");
-
-	//the actual "list box"
-	suilist->addSetting("3", "List", "Location", "12,25");
-	suilist->addSetting("3", "List", "Size", "475,225");
-
-	//btnOk - Add User
-	suilist->addSetting("3", "btnOk", "Location", "17,251");
-	suilist->addSetting("3", "btnOk", "Size", "130,20");
-	suilist->setOkButton(true, "Add");
-
-	//btnOther - Remove User
-	suilist->addSetting("3", "btnOther", "Enabled", "true");
-	suilist->addSetting("3", "btnOther", "Visible", "true");
-	suilist->addSetting("3", "btnOther", "Text", "Remove");
-	suilist->addSetting("3", "btnOther", "IsCancelButton", "false"); //needed
-	suilist->addSetting("3", "btnOther", "Location", "175,251");
-	suilist->addSetting("3", "btnOther", "Size", "130,20");
-
-	//btnCancel - Close
-	suilist->setCancelButton(true, "Close");
-	suilist->addSetting("3", "btnCancel", "Location", "350,251");
-	suilist->addSetting("3", "btnCancel", "Size", "130,20");
-
-	suilist->addMenuItem("TEST SUP1");
-	suilist->addMenuItem("TEST SUP2");
-	suilist->addMenuItem("TEST SUP3");
-
-	for (int i = 0; i < size(); i++) {
-		if (get(i) & permission)
-			suilist->addMenuItem(elementAt(i)->getKey());
-	}
-
-	player->sendMessage(suilist->generateMessage());
-	player->addSuiBox(suilist);
+	player->sendMessage(listMsg);
 }
 
 bool StructurePermissionList::givePermission(Player* enforcer, Player* recipient, uint8 permission) {

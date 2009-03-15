@@ -33,7 +33,7 @@ public:
 
 	void sendPermissionListTo(Player* player, unsigned char listtype);
 
-	void handlePermissionListModify(Player* enforcer, unsigned char listtype, int recipientIdx, SuiListBox* suilist);
+	void handlePermissionListModify(Player* enforcer, unsigned char listtype, String& modName, bool doAdd);
 
 	void addCell(CellObject* cell);
 
@@ -160,7 +160,7 @@ public:
 
 	void sendPermissionListTo(Player* player, unsigned char listtype);
 
-	void handlePermissionListModify(Player* enforcer, unsigned char listtype, int recipientIdx, SuiListBox* suilist);
+	void handlePermissionListModify(Player* enforcer, unsigned char listtype, String& modName, bool doAdd);
 
 	void addCell(CellObject* cell);
 
@@ -263,6 +263,7 @@ public:
 	void setPermissionsList(const String& permissionsString);
 
 protected:
+	String _param2_handlePermissionListModify__Player_char_String_bool_;
 	String _param0_setAttributes__String_;
 	String _param0_setOwner__String_;
 	String _param0_setName__String_;
