@@ -208,6 +208,7 @@ which carries forward this exception.
 #include "packets/ui/ExecuteConsoleCommand.h"
 #include "packets/ui/LaunchBrowserMessage.h"
 #include "packets/ui/OpenHolocronToPageMessage.h"
+#include "packets/ui/PermissionListCreateMessage.h"
 #include "packets/ui/NewbieTutorialEnableHudElement.h"
 #include "packets/ui/CreateTicketResponseMessage.h"
 #include "packets/ui/ClientMfdStatusUpdateMessage.h"

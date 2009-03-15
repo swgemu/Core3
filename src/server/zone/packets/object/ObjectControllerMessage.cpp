@@ -1,4 +1,3 @@
-
 /*
  Copyright (C) 2007 <SWGEmu>
 
@@ -465,6 +464,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 			break;
 
 		player->queueAction(player, target, actionCRC, actioncntr, "");
+		break;
+	case (0x896713F2): //permissionlistmodify
+		parsePermissionListModify(player, pack);
 		break;
 	case (0xB93A3853): //haveconsent
 		parseHaveConsentRequest(player, pack);
@@ -2510,8 +2512,62 @@ void ObjectControllerMessage::parseResourceEmptyHopper(Player* player,
 
 }
 
-void ObjectControllerMessage::parseMissionListRequest(Player* player,
-		Message* pack) {
+// Structures
+void ObjectControllerMessage::parsePermissionListModify(Player* player, Message* pack) {
+	//Skip target id
+	pack->shiftOffset(8);
+
+	//Grab the command string:
+	UnicodeString commands;
+	String commandStr;
+	pack->parseUnicode(commands);
+	commandStr = commands.toString();
+
+	//Parse the vars from the command string
+	String name;
+	String temp;
+	uint8 listType = 1;
+	bool add = false;
+
+	//Set the name of player being modified, list type & determine if player is being add/removed
+	StringTokenizer cmdTok(commandStr);
+	cmdTok.setDelimeter(" ");
+	cmdTok.getStringToken(name);
+	name = name.toLowerCase();
+
+	cmdTok.getStringToken(temp);
+	if(temp.compareTo("ENTRY") == 0) {
+		listType = StructurePermissionList::ENTRYLIST;
+	} else if(temp.compareTo("HOPPER") == 0) {
+		listType = StructurePermissionList::HOPPERLIST;
+	} else if(temp.compareTo("BAN") == 0) {
+		listType = StructurePermissionList::BANLIST;
+	} else if(temp.compareTo("VENDOR") == 0) {
+		listType = StructurePermissionList::VENDORLIST;
+	} else if(temp.compareTo("ADMIN") == 0) {
+		listType = StructurePermissionList::ADMINLIST;
+	} else {
+		listType = StructurePermissionList::NONE;
+	}
+
+	//determine if the action is for adding/removing. remove = default.
+	cmdTok.getStringToken(temp);
+	if(temp.compareTo("add") == 0) {
+		add = true;
+	}
+
+	//Send to buildingobject handler
+	BuildingObject* blo = (BuildingObject*)player->getBuilding();
+	if(blo == NULL)
+		return;
+
+	blo->handlePermissionListModify(player, listType, name, add);
+}
+
+
+// Missions
+
+void ObjectControllerMessage::parseMissionListRequest(Player* player, Message* pack) {
 	//skip objId + old size + unk byte + refresh byte
 	pack->shiftOffset(14);
 
@@ -2521,8 +2577,7 @@ void ObjectControllerMessage::parseMissionListRequest(Player* player,
 	//TODO: Take the error messages out after testing
 	PlanetManager* plnMgr = player->getZone()->getPlanetManager();
 	if (plnMgr == NULL) {
-		System::out
-				<< "Error: Planet Manager NULL in parseMissionListRequest() \n";
+		System::out << "Error: Planet Manager NULL in parseMissionListRequest() \n";
 		return;
 	}
 
@@ -2533,11 +2588,9 @@ void ObjectControllerMessage::parseMissionListRequest(Player* player,
 		return;
 	}
 
-	MissionManager* misoMgr =
-			player->getZone()->getZoneServer()->getMissionManager();
+	MissionManager* misoMgr = player->getZone()->getZoneServer()->getMissionManager();
 	if (misoMgr == NULL) {
-		System::out
-				<< "Error: Mission Manager NULL in parseMissionListRequest() \n";
+		System::out << "Error: Mission Manager NULL in parseMissionListRequest() \n";
 		return;
 	}
 

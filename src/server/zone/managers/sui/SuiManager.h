@@ -78,7 +78,6 @@ public:
 	void handleRefreshStatusListBox(uint32 boxID, Player* player, uint32 cancel, const int extra);
 	void handleSetObjectName(uint32 boxID, Player* player, uint32 cancel, const String& name);
 	void handleManageMaintenance(uint32 boxID, Player* player,uint32 cancel, const String& name);
-	void handlePermissionListModify(uint32 boxID, Player* player, uint32 cancel, const String& returnString, const String& returnString2);
 	void handleAddEnergy(uint32 boxID, Player* player,uint32 cancel, const String& name);
 
 	void handleColorPicker(uint32 boxID, Player* player, uint32 cancel, const String& value, int var);
