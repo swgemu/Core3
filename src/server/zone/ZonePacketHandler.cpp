@@ -1194,7 +1194,6 @@ void ZonePacketHandler::handleGetArticleMessage(Message* pack) {
 		   			foundarticle = true;
 		   			body = result->getString(2);
 		   			UnicodeString var(body);
-
 		   		}
 
 		   		delete result;

@@ -64,7 +64,7 @@ public:
 
 		setPromptTitle("@base_player:tip_wire_title"); //Confirm Bank Tip
 		setPromptText("@base_player:tip_wire_prompt"); //A surcharge of 5% will be added to your requested bank-to-bank transfer amount. Would you like to continue?
-		setCancelButton(true);
+		setCancelButton(true, "");
 	}
 
 	void setTipAmount(uint32 amount) {

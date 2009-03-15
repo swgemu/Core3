@@ -57,12 +57,18 @@ SuiBoxImplementation::SuiBoxImplementation(Player* play, uint32 windowType, uint
 
 	this->windowType = windowType;
 
+	cancelButtonText = "@cancel";
 	cancelButton = false;
 
+	backButtonText = "@back";
 	backButton = false;
+
+	okButtonText = "@ok";
+	okButton = true;
 
 	hdrOptCount = 0; //header option count
 	message = NULL;
+	hasGenerated = false;
 }
 
 /**

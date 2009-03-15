@@ -23,6 +23,8 @@ class CreatureObject;
 
 class Zone;
 
+class SuiListBox;
+
 #include "../scene/SceneObject.h"
 
 class BuildingObject : public SceneObject {
@@ -30,6 +32,8 @@ public:
 	BuildingObject(unsigned long long oid, bool staticBuilding, int bType = 1);
 
 	void sendPermissionListTo(Player* player, unsigned char listtype);
+
+	void handlePermissionListModify(Player* enforcer, unsigned char listtype, int recipientIdx, SuiListBox* suilist);
 
 	void addCell(CellObject* cell);
 
@@ -155,6 +159,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void sendPermissionListTo(Player* player, unsigned char listtype);
+
+	void handlePermissionListModify(Player* enforcer, unsigned char listtype, int recipientIdx, SuiListBox* suilist);
 
 	void addCell(CellObject* cell);
 

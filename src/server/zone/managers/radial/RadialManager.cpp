@@ -1166,7 +1166,7 @@ void RadialManager::handleGuildCreationTag(Player* player) {
 
 	suiInpBox->setPromptTitle("@guild:create_abbrev_title");
 	suiInpBox->setPromptText("@guild:create_abbrev_prompt");
-	suiInpBox->setCancelButton(true);
+	suiInpBox->setCancelButton(true, "");
 	suiInpBox->setMaxInputSize(5);
 
 	player->addSuiBox(suiInpBox);
@@ -1189,7 +1189,7 @@ void RadialManager::handleGuildSponsor(Player* player) {
 
 	suiInpBox->setPromptTitle("@guild:sponsor_title");
 	suiInpBox->setPromptText("@guild:sponsor_prompt");
-	suiInpBox->setCancelButton(true);
+	suiInpBox->setCancelButton(true, "");
 	suiInpBox->setMaxInputSize(25);
 
 	player->addSuiBox(suiInpBox);
@@ -1238,7 +1238,7 @@ void RadialManager::handleGuildDisband(Player* player) {
 
 	suiInpBox->setPromptTitle("@guild:disband_title");
 	suiInpBox->setPromptText(prompt.toString());
-	suiInpBox->setCancelButton(true);
+	suiInpBox->setCancelButton(true, "");
 	suiInpBox->setMaxInputSize(15);
 
 	player->addSuiBox(suiInpBox);

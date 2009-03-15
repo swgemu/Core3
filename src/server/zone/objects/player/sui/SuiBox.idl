@@ -49,6 +49,7 @@ include "engine/service/proto/BaseMessage";
 interface SuiBox {
 
 	BaseMessage getCurrentMessage();
+	boolean hasGeneratedMessage();
 	BaseMessage generateCloseMessage();
 	
 	//For adding options to manipulate the UI
@@ -58,8 +59,9 @@ interface SuiBox {
 	
 	void setPromptTitle(const String name);
 	void setPromptText(const String name);
-	void setCancelButton(boolean value);
-	void setBackButton(boolean value);
+	void setCancelButton(boolean value, const String backText);
+	void setBackButton(boolean value, const String backText);
+	void setOkButton(boolean value, const String okText);
 	void setUsingObjectID(unsigned long oid);
 	void setIntValue(int value);
 

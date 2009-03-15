@@ -89,7 +89,7 @@ public:
 	}
 
 	/*
-	 * Clears all Menu Items from the list box.
+	 * Clears all Menu Items from the list box
 	 * \warning If you are going to reuse the SuiBox object and call this method, you most likely need to call clearOptions() in SuiBoxImplementation
 	 */
 	void removeAllMenuItems(){

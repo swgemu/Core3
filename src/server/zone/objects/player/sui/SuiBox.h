@@ -15,6 +15,8 @@ class SuiBox : public DistributedObjectStub {
 public:
 	BaseMessage* getCurrentMessage();
 
+	bool hasGeneratedMessage();
+
 	BaseMessage* generateCloseMessage();
 
 	void addSetting(const String& optType, const String& variable, const String& setting, const String& value);
@@ -27,9 +29,11 @@ public:
 
 	void setPromptText(const String& name);
 
-	void setCancelButton(bool value);
+	void setCancelButton(bool value, const String& backText);
 
-	void setBackButton(bool value);
+	void setBackButton(bool value, const String& backText);
+
+	void setOkButton(bool value, const String& okText);
 
 	void setUsingObjectID(unsigned long long oid);
 
@@ -77,6 +81,8 @@ public:
 
 	BaseMessage* getCurrentMessage();
 
+	bool hasGeneratedMessage();
+
 	BaseMessage* generateCloseMessage();
 
 	void addSetting(const String& optType, const String& variable, const String& setting, const String& value);
@@ -89,9 +95,11 @@ public:
 
 	void setPromptText(const String& name);
 
-	void setCancelButton(bool value);
+	void setCancelButton(bool value, const String& backText);
 
-	void setBackButton(bool value);
+	void setBackButton(bool value, const String& backText);
+
+	void setOkButton(bool value, const String& okText);
 
 	void setUsingObjectID(unsigned long long oid);
 
@@ -130,6 +138,9 @@ protected:
 	String _param1_addHeader__String_String_;
 	String _param0_setPromptTitle__String_;
 	String _param0_setPromptText__String_;
+	String _param1_setCancelButton__bool_String_;
+	String _param1_setBackButton__bool_String_;
+	String _param1_setOkButton__bool_String_;
 };
 
 class SuiBoxHelper : public DistributedObjectClassHelper, public Singleton<SuiBoxHelper> {
