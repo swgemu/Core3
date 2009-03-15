@@ -60,6 +60,7 @@ public:
 	void handleSuiEventNotification(uint32 boxID, Player* player, uint32 cancel, const String& value, const String& value2);
 
 	void handleMessageoftheDay(uint32 boxID, Player* player, uint32 cancel);
+	void handleSetMOTD(uint32 boxID, Player* player, uint32 cancel, const String& returnString);
 
 	void handleStartMusic(uint32 boxID, Player* player, uint32 cancel, const String& song, bool change = false);
 	void handleStartDancing(uint32 boxID, Player* player, uint32 cancel, const String& dance, bool change = false);
@@ -77,8 +78,8 @@ public:
 	void handleRefreshStatusListBox(uint32 boxID, Player* player, uint32 cancel, const int extra);
 	void handleSetObjectName(uint32 boxID, Player* player, uint32 cancel, const String& name);
 	void handleManageMaintenance(uint32 boxID, Player* player,uint32 cancel, const String& name);
+	void handlePermissionListModify(uint32 boxID, Player* player, uint32 cancel, const String& returnString, const String& returnString2);
 	void handleAddEnergy(uint32 boxID, Player* player,uint32 cancel, const String& name);
-
 
 	void handleColorPicker(uint32 boxID, Player* player, uint32 cancel, const String& value, int var);
 
@@ -106,9 +107,7 @@ public:
 
 	void handleBankTipConfirm(uint32 boxID, Player* player, uint32 cancel);
 	void handleSlicingMenu(uint32 boxID, Player* player, uint32 cancel, int index);
-
 	void handleRangerWhatToTrackBox(uint32 boxID, Player* player, uint32 cancel, int index);
-	void handleSetMOTD(uint32 boxID, Player* player, uint32 cancel, const String& returnString);
 };
 
 #endif /*SUIMANAGER_H_*/

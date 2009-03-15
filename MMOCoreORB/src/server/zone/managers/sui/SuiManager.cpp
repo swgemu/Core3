@@ -232,6 +232,9 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 	case SuiWindowType::RANGER_WHAT_TO_TRACK:
 		handleRangerWhatToTrackBox(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
+	case SuiWindowType::PERMISSION_LIST:
+		handlePermissionListModify(boxID, player, cancel, value, value2);
+		break;
 	case SuiWindowType::SET_MOTD:
 		returnString = value;
 		handleSetMOTD(boxID, player, cancel, returnString);
@@ -1309,7 +1312,7 @@ void SuiManager::handleFreeResource(uint32 boxID, Player* player, uint32 cancel,
 					player->addSuiBox(finalListBox);
 					listBox->setNextBox(finalListBox->getBoxID());
 					finalListBox->setPreviousBox(listBox->getBoxID());
-					finalListBox->setBackButton(true);
+					finalListBox->setBackButton(true, "");
 					finalListBox->setPromptTitle(choice);
 					finalListBox->setPromptText("Please confirm that you would like to select this resource as your Veteran Reward Crate of Resources. Use the BACK button to go back and select a different resource.");
 					resManager->generateSUI(player, finalListBox);
@@ -1334,7 +1337,7 @@ void SuiManager::handleFreeResource(uint32 boxID, Player* player, uint32 cancel,
 						listBox2->setPromptTitle("Resources");
 						String text = ("Choose resource class from " + choice);
 						listBox2->setPromptText(text);
-						listBox2->setBackButton(true);
+						listBox2->setBackButton(true, "");
 						resManager->generateSUI(player, listBox2);
 						player->sendMessage(listBox2->generateMessage());
 					}
@@ -1345,6 +1348,8 @@ void SuiManager::handleFreeResource(uint32 boxID, Player* player, uint32 cancel,
 				if (prevSui->isListBox()){
 					SuiListBox* prevListBox = (SuiListBox*)prevSui;
 					player->removeLastSuiBoxChoice();
+					if(prevListBox->hasGeneratedMessage())
+						prevListBox->clearOptions();
 					player->sendMessage(prevListBox->generateMessage());
 				}
 			}
@@ -1435,6 +1440,8 @@ void SuiManager::handleGiveFreeResource(uint32 boxID, Player* player, uint32 can
 					prevListBox->setNextBox(zero);
 					listBox->setPreviousBox(zero);
 					listBox->finalize();
+					if(prevListBox->hasGeneratedMessage())
+						prevListBox->clearOptions();
 					player->sendMessage(prevListBox->generateMessage());
 				}
 			}
@@ -1569,7 +1576,7 @@ void SuiManager::handleTeachPlayer(uint32 boxID, Player* player, int value, uint
 		mbox->setPromptTitle("@sui:teach");
 		mbox->setPromptText(prompt.toString());
 		mbox->addMenuItem(skillname.toString());
-		mbox->setCancelButton(true);
+		mbox->setCancelButton(true, "");
 
 		student->addSuiBox(mbox);
 		student->sendMessage(mbox->generateMessage());
@@ -1854,6 +1861,78 @@ void SuiManager::handleRangerWhatToTrackBox(uint32 boxID, Player* player, uint32
 	}
 }
 
+/**
+ * Called when an event on the structure permission list is fired.
+ */
+void SuiManager::handlePermissionListModify(uint32 boxID, Player* player, uint32 cancel, const String& returnString, const String& returnString2) {
+	try {
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* suiBox = player->getSuiBox(boxID);
+		BuildingObject* blo = (BuildingObject*)player->getBuilding();
+
+		if(blo == NULL || (suiBox->getWindowType() != SuiWindowType::PERMISSION_LIST)) {
+			player->unlock();
+			return;
+		}
+
+		SuiListBox* sui = (SuiListBox*)suiBox;
+
+		//Find out what list is being modified by searching returnString2
+		//returnString2 ex: "@player_structure:entry_permissions_list"
+		StringTokenizer retTok(returnString2);
+		String permissionStr = "";
+		retTok.setDelimeter(":");
+		retTok.finalToken(permissionStr);
+		uint8 listType = 1;
+
+		if(permissionStr.compareTo("@player_structure:entry_permissions_list")) {
+			listType = StructurePermissionList::ENTRYLIST;
+		} else if(permissionStr.compareTo("@player_structure:hopper_permissions_list")) {
+			listType = StructurePermissionList::HOPPERLIST;
+		} else if(permissionStr.compareTo("@player_structure:ban_list")) {
+			listType = StructurePermissionList::BANLIST;
+		} else if(permissionStr.compareTo("@player_structure:vendor_permissions_list")) {
+			listType = StructurePermissionList::VENDORLIST;
+		} else if(permissionStr.compareTo("@player_structure:admin_permissions_list")) {
+			listType = StructurePermissionList::ADMINLIST;
+		} else {
+			player->unlock();
+			return;
+		}
+
+		//System::out << "SuiManager::handlePermissionListModify. cancel: " << cancel << ". returnString: " << returnString << ". returnString2: " << returnString2 << endl;
+
+		//returnString is the index of the player in the list
+		int playerListIdx = Integer::valueOf(returnString);
+
+		//Make sure user didnt close box, then pass to handler in StructurePermissionlist
+		if(cancel == 0) {
+			blo->handlePermissionListModify(player, listType, playerListIdx, sui);
+		}
+
+		//Whatever the handler does, we want this box gone.
+		player->removeSuiBox(boxID);
+		sui->finalize();
+
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handlePermissionListModify ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handlePermissionListModify");
+		player->unlock();
+	}
+}
+
 void SuiManager::handleSetMOTD(uint32 boxID, Player* player, uint32 cancel, const String& returnString) {
 	try {
 		player->wlock();
@@ -1881,12 +1960,12 @@ void SuiManager::handleSetMOTD(uint32 boxID, Player* player, uint32 cancel, cons
 
 		player->unlock();
 	} catch (Exception& e) {
-		error("Exception in SuiManager::handleInsuranceMenu ");
+		error("Exception in SuiManager::handleSetMOTD ");
 		e.printStackTrace();
 
 		player->unlock();
 	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleInsuranceMenu");
+		error("Unreported exception caught in SuiManager::handleSetMOTD");
 		player->unlock();
 	}
 }

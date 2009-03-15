@@ -58,6 +58,8 @@ class Zone;
 
 #include "StructurePermissionList.h"
 
+#include "../player/sui/listbox/SuiListBox.h"
+
 class BuildingObjectImplementation : public QuadTree, public BuildingObjectServant {
 	SortedVector<CellObject*> cells;
 	SortedVector<SceneObject*> sceneObjects;
@@ -256,6 +258,7 @@ public:
 	void sendTo(Player* player, bool doClose = true);
 	void sendDestroyTo(Player* player);
 	void sendPermissionListTo(Player* player, uint8 listtype);
+	void handlePermissionListModify(Player* enforcer, uint8 listtype, int recipientIdx, SuiListBox* suilist);
 
 	void addCell(CellObject* cell);
 

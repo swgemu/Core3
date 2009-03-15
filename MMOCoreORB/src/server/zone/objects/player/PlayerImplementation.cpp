@@ -5353,7 +5353,7 @@ void PlayerImplementation::teachPlayer(Player* player) {
 		SuiListBox* sbox = new SuiListBox(player, SuiWindowType::TEACH_PLAYER);
 		sbox->setPromptTitle("@sui:teach");
 		sbox->setPromptText("What would you like to teach?");
-		sbox->setCancelButton(true);
+		sbox->setCancelButton(true, "");
 
 		for (int i = 0; i < trainboxes.size(); i++) {
 			StringBuffer skillboxname;
@@ -5599,7 +5599,7 @@ void PlayerImplementation::sendConsentList() {
 
 	consentBox->setPromptTitle("@ui:consent_title");
 	consentBox->setPromptText("All players whom you have given your consent to are listed below.\n\nHighlight a player's name and click OK to revoke consent.");
-	consentBox->setCancelButton(true);
+	consentBox->setCancelButton(true, "");
 
 	for (int i=0; i < consentList.size(); i++) {
 		String entryName = consentList.get(i);
@@ -5664,7 +5664,7 @@ void PlayerImplementation::sendCloningDataStorageConfirm(CloningTerminal* termin
 	SuiMessageBox* cloneConfirm = new SuiMessageBox(_this, SuiWindowType::CLONE_CONFIRM);
 	cloneConfirm->setPromptTitle("@base_player:clone_confirm_title");
 	cloneConfirm->setPromptText("@base_player:clone_confirm_prompt");
-	cloneConfirm->setCancelButton(true);
+	cloneConfirm->setCancelButton(true, "");
 	cloneConfirm->setUsingObjectID(terminal->getObjectID());
 
 	addSuiBox(cloneConfirm);
@@ -5717,7 +5717,7 @@ void PlayerImplementation::sendItemInsureAllConfirm(InsuranceTerminal* terminal)
 	insureAll->setUsingObjectID(terminal->getObjectID());
 	insureAll->setPromptTitle("@terminal_ui:insure_all_t");
 	insureAll->setPromptText(promptText.toString());
-	insureAll->setCancelButton(true);
+	insureAll->setCancelButton(true, "");
 
 	addSuiBox(insureAll);
 	sendMessage(insureAll->generateMessage());
@@ -5736,7 +5736,7 @@ void PlayerImplementation::sendSlicingMenu(TangibleObject* item) {
 
 		SuiSlicingBox* slicingMenu = new SuiSlicingBox(_this, item);
 		slicingMenu->generateMenu();
-		slicingMenu->setCancelButton(true);
+		slicingMenu->setCancelButton(true, "");
 
 		addSuiBox(slicingMenu);
 		sendMessage(slicingMenu->generateMessage());

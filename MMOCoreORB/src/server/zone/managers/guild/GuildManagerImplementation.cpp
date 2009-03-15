@@ -498,7 +498,7 @@ void GuildManagerImplementation::handleGuildCreationName(Player* player) {
 
 	suiInpBox->setPromptTitle("@guild:create_name_title");
 	suiInpBox->setPromptText("@guild:create_name_prompt");
-	suiInpBox->setCancelButton(true);
+	suiInpBox->setCancelButton(true, "");
 	suiInpBox->setMaxInputSize(25);
 
 	try {
@@ -1024,7 +1024,7 @@ void GuildManagerImplementation::VerifyBoxSponsorTargetforGuildMembership(Player
 		sui->setPromptText(inviter + " wishes to sponsor you for membership in " + guildname + "."
 						+ " Accepting this will cancel your sponsorship for any other guilds.  Do you accept sponsorship?");
 
-		sui->setCancelButton(true);
+		sui->setCancelButton(true, "");
 
 		otherPlayer->addSuiBox(sui);
 		otherPlayer->sendMessage(sui->generateMessage());
@@ -1203,7 +1203,7 @@ void GuildManagerImplementation::handleSponsoredGuildMembersBox(uint32 boxID, Pl
 		sponsoredAcceptBox->setPromptText("@guild:sponsor_verify_title : " + (playerGuild->getSponsoredMap(index)) );
 		sponsoredAcceptBox->addMenuItem("@guild:accept");
 		sponsoredAcceptBox->addMenuItem("@guild:decline");
-		sponsoredAcceptBox->setCancelButton(true);
+		sponsoredAcceptBox->setCancelButton(true, "");
 
 		player->addSuiBox(sponsoredAcceptBox);
 		player->sendMessage(sponsoredAcceptBox->generateMessage());
@@ -1832,7 +1832,7 @@ void GuildManagerImplementation::handleGuildNameChange(uint32 boxID, Player* pla
 
 		suiInpBox->setPromptTitle("@guild:namechange_name_title");
 		suiInpBox->setPromptText("@guild:namechange_name_prompt");
-		suiInpBox->setCancelButton(true);
+		suiInpBox->setCancelButton(true, "");
 		suiInpBox->setMaxInputSize(25);
 
 		player->addSuiBox(suiInpBox);
@@ -2011,7 +2011,7 @@ void GuildManagerImplementation::handleGuildInformationMembers(Player* player) {
 
 		suiListBox->setPromptTitle("@guild:members_title");
 		suiListBox->setPromptText("@guild:members_prompt");
-		suiListBox->setCancelButton(true);
+		suiListBox->setCancelButton(true, "");
 
 		while (guildInfo->next()) {
 			entry.deleteAll();
@@ -2137,7 +2137,7 @@ void GuildManagerImplementation::handleGuildInformationMembersBox(uint32 boxID, 
 		suiListBox->addMenuItem("@guild:title");
 		suiListBox->addMenuItem("@guild:kick");
 		suiListBox->addMenuItem("@guild:permissions");
-		suiListBox->setCancelButton(true);
+		suiListBox->setCancelButton(true, "");
 
 		player->addSuiBox(suiListBox);
 		player->sendMessage(suiListBox->generateMessage());
@@ -2229,7 +2229,7 @@ void GuildManagerImplementation::handleRemoveFromGuild(Player* player, String ki
 
 		suiMessageBox->setPromptTitle("@guild:kick_title");
 		suiMessageBox->setPromptText(prompt.toString());
-		suiMessageBox->setCancelButton(true);
+		suiMessageBox->setCancelButton(true, "");
 
 		player->addSuiBox(suiMessageBox);
 		player->sendMessage(suiMessageBox->generateMessage());
@@ -2388,7 +2388,7 @@ void GuildManagerImplementation::callGuildPermissions(Player* player, String pro
 			suiListBox->addMenuItem("@guild:permission_disband_no");
 
 
-		suiListBox->setCancelButton(true);
+		suiListBox->setCancelButton(true, "");
 
 		player->addSuiBox(suiListBox);
 		player->sendMessage(suiListBox->generateMessage());
@@ -2869,7 +2869,7 @@ void GuildManagerImplementation::handleGuildSponsoring(Player* player) {
 
 		sponsoredBox->setPromptTitle("Sponsored for membership: " + guildName);
 		sponsoredBox->setPromptText("@guild:sponsored_prompt");
-		sponsoredBox->setCancelButton(true);
+		sponsoredBox->setCancelButton(true, "");
 
 		while (sponsoredList->next()) {
 			sponsoredBox->addMenuItem(sponsoredList->getString(1));
@@ -2911,7 +2911,7 @@ void GuildManagerImplementation::handleGuildRenaming(Player* player) {
 
 	suiInpBox->setPromptTitle("@guild:namechange_abbrev_title");
 	suiInpBox->setPromptText("@guild:namechange_abbrev_title");
-	suiInpBox->setCancelButton(true);
+	suiInpBox->setCancelButton(true, "");
 	suiInpBox->setMaxInputSize(5);
 
 	try {
@@ -2999,7 +2999,7 @@ void GuildManagerImplementation::handleGuildTransferLeader(Player* player) {
 
 		suiInpBox->setPromptTitle("@guild:make_leader_t");
 		suiInpBox->setPromptText("@guild:make_leader_d");
-		suiInpBox->setCancelButton(true);
+		suiInpBox->setCancelButton(true, "");
 		suiInpBox->setMaxInputSize(25);
 
 		player->addSuiBox(suiInpBox);
@@ -3074,7 +3074,7 @@ void GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Play
 
 	oSui->setPromptTitle("@guild:make_leader_t");
 	oSui->setPromptText("@guild:make_leader_p");
-	oSui->setCancelButton(true);
+	oSui->setCancelButton(true, "");
 
 	try {
 		otherPlayer->wlock();

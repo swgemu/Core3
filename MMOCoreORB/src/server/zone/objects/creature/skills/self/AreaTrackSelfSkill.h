@@ -81,7 +81,7 @@ public:
 			if(player->hasSkillBox(trackingBox4))
 				rangerWhatToTrack->addMenuItem("@cmd_n:areatrack_player");
 
-			rangerWhatToTrack->setCancelButton(true);
+			rangerWhatToTrack->setCancelButton(true, "");
 
 			player->addSuiBox(rangerWhatToTrack);
 			player->sendMessage(rangerWhatToTrack->generateMessage());

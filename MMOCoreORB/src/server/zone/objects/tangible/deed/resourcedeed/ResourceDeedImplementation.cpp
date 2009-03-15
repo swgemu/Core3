@@ -67,7 +67,7 @@ int ResourceDeedImplementation::useObject(Player* player) {
 
 	sui1->setPromptTitle("Resources");
 	sui1->setPromptText("Choose resource class.");
-	sui1->setCancelButton(true);
+	sui1->setCancelButton(true, "");
 	player->addSuiBox(sui1);
 	resourceManager->generateSUI(player, sui1);
 

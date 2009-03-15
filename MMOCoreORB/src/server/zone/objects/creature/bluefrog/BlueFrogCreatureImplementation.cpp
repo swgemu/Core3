@@ -190,7 +190,7 @@ void BlueFrogCreatureImplementation::sendSelectItemMessage(Player * player) {
 	SuiListBox* sui = new SuiListBox(player, SuiWindowType::BLUE_FROG_ITEM_REQUEST);
 	sui->setPromptTitle("Blue Frog Items");
 	sui->setPromptText("You can have any of the following item sets.");
-	sui->setCancelButton(true);
+	sui->setCancelButton(true, "");
 
 	BlueFrogVector * bfVector = itemManager->getBFItemList();
 	for (int i = 0; i < bfVector->size(); i++) {
@@ -205,7 +205,7 @@ void BlueFrogCreatureImplementation::sendWoundTerminalMessage(Player * player) {
 	SuiListBox* sui = new SuiListBox(player, SuiWindowType::WOUND_TERMINAL_REQUEST);
 	sui->setPromptTitle("@wound_terminal:beta_terminal_wound");
 	sui->setPromptText("Each selection will cause 500 wound damage.");
-	sui->setCancelButton(true);
+	sui->setCancelButton(true, "");
 
 	sui->addMenuItem("@wound_terminal:inflict_wound_health");
 	sui->addMenuItem("@wound_terminal:inflict_wound_strength");
@@ -225,7 +225,7 @@ void BlueFrogCreatureImplementation::sendStateTerminalMessage(Player * player) {
 	SuiListBox* sui = new SuiListBox(player, SuiWindowType::STATE_TERMINAL_REQUEST);
 	sui->setPromptTitle("State Terminal");
 	sui->setPromptText("Each selection will cause a state.  Use curepacks or statepacks to heal them.");
-	sui->setCancelButton(true);
+	sui->setCancelButton(true, "");
 
 	sui->addMenuItem("Test Fire State.");
 	sui->addMenuItem("Test Disease State");

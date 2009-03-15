@@ -105,7 +105,7 @@ public:
 		StringBuffer text;
 		text << "Below is a listing of the wound and Battle Fatigue levels of " << targetName.toCharArray() << ". Wounds are healed through /tendwound or use of wound Medpacks. High levels of Battle Fatigue can inhibit the healing process, and Battle Fatigue can only be healed by the patient choosing to watch performing entertainers.";
 		sui->setPromptText(text.toString());
-		sui->setCancelButton(false);
+		sui->setCancelButton(false, "");
 
 		StringBuffer health;
 		health << "Health -- " << creatureTarget->getHealthWounds();

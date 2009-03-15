@@ -71,9 +71,12 @@ protected:
 
 	uint64 usingObjectID;
 
+	String cancelButtonText;
 	bool cancelButton;
-
+	String backButtonText;
 	bool backButton;
+	String okButtonText;
+	bool okButton;
 
 	String promptTitle;
 	String promptText;
@@ -95,6 +98,8 @@ protected:
 	void generateBody();
 	void generateFooter(int type = 0);
 
+	bool hasGenerated;
+
 public:
 	const static int INPUTBOX = 0;
 	const static int LISTBOX = 1;
@@ -113,8 +118,14 @@ public:
 	virtual ~SuiBoxImplementation();
 
 	virtual BaseMessage* generateMessage() = 0;
-	BaseMessage* getCurrentMessage();
 	BaseMessage* generateCloseMessage();
+
+	BaseMessage* getCurrentMessage();
+	inline bool hasGeneratedMessage() {
+		if(message != NULL)
+			hasGenerated = true;
+		return hasGenerated;
+	}
 
 	void addSetting(const String& optType, const String& variable, const String& setting, const String& value);
 	void addHeader(const String& variable, const String& type);
@@ -185,12 +196,22 @@ public:
 		return boxType == COLORPICKER;
 	}
 
-	inline void setCancelButton(bool value) {
+	inline void setCancelButton(bool value, const String& cancelText) {
+		if(cancelText.length() > 0)
+			cancelButtonText = cancelText;
 		cancelButton = value;
 	}
 
-	inline void setBackButton(bool value) {
+	inline void setBackButton(bool value, const String& backText) {
+		if(backText.length() > 0)
+			backButtonText = backText;
 		backButton = value;
+	}
+
+	inline void setOkButton(bool value, const String& okText) {
+		if(okText.length() > 0)
+			okButtonText = okText;
+		okButton = value;
 	}
 
 	inline uint64 getUsingObjectID() {

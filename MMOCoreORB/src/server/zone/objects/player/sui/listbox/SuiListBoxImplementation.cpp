@@ -78,16 +78,13 @@ BaseMessage* SuiListBoxImplementation::generateMessage() {
 	//Set Body Options:
 	addSetting("3", "bg.caption.lblTitle", "Text", promptTitle);
 	addSetting("3", "Prompt.lblPrompt", "Text", promptText);
-	/*addSetting("3", "Prompt", "Visible", "false");
-	addSetting("3", "List", "Location", "4,5");
-	addSetting("3", "List", "Size", "275,290");*/
 
 	switch(type) {
 	case HANDLESTATUSUI:
 		if (!backButton)
-			addSetting("3", "btnCancel", "Text", "@cancel");
+			addSetting("3", "btnCancel", "Text", cancelButtonText);
 		else
-			addSetting("3", "btnCancel", "Text", "@back");
+			addSetting("3", "btnCancel", "Text", backButtonText);
 		addSetting("3", "btnOk", "Text", "@refresh");
 		break;
 	case HANDLEDESTROYUI:
@@ -96,15 +93,16 @@ BaseMessage* SuiListBoxImplementation::generateMessage() {
 		break;
 	default:
 		if (cancelButton)
-			addSetting("3", "btnCancel", "Text", "@cancel");
+			addSetting("3", "btnCancel", "Text", cancelButtonText);
 		else if (backButton)
-			addSetting("3", "btnCancel", "Text", "@back");
+			addSetting("3", "btnCancel", "Text", backButtonText);
 		else {
 			addSetting("3", "btnCancel", "Enabled", "False");
 			addSetting("3", "btnCancel", "Visible", "False");
 		}
 
-		addSetting("3", "btnOk", "Text", "@ok");
+		if(okButton)
+			addSetting("3", "btnOk", "Text", okButtonText);
 	}
 
 	//Data Container Option

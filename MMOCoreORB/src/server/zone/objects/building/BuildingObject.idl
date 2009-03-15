@@ -55,6 +55,8 @@ import "../creature/CreatureObject";
 
 import "../../Zone";
 
+import "../../objects/player/sui/listbox/SuiListBox";
+
 interface BuildingObject implements SceneObject {
 	BuildingObject(unsigned long oid, boolean staticBuilding, int bType = 1) {
 		super(oid, int type);
@@ -63,6 +65,7 @@ interface BuildingObject implements SceneObject {
 	//void sendTo(Player* player);
 	//void sendDestroyTo(Player* player);
 	void sendPermissionListTo(Player player, unsigned char listtype);
+	void handlePermissionListModify(Player enforcer, unsigned char listtype, int recipientIdx, SuiListBox suilist);
 		
 	void addCell(CellObject cell);
 	

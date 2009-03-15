@@ -92,7 +92,7 @@ int TicketCollectorImplementation::useObject(Player* player) {
 	SuiListBox* sui = new SuiListBox(player, SuiWindowType::TICKET_COLLECTOR_RESPONSES);
 	sui->setPromptTitle("@travel:ticket_collector_name");
 	sui->setPromptText("@travel:boarding_ticket_selection");
-	sui->setCancelButton(true);
+	sui->setCancelButton(true, "");
 
 	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 		SceneObject* obj = inventory->getObject(i);
