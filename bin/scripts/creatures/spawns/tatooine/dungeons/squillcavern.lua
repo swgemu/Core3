@@ -54,7 +54,7 @@ spawnCreatureInCell(mountainSquillGuardian, 8, -60.77, -65.0712, -161.43, 712558
 spawnCreatureInCell(mountainSquillGuardian, 8, -70.581, -66.1532, -161.76, 7125587)
 spawnCreatureInCell(femaleMountainSquill, 8, -85.9301, -65.4183, -196.88, 7125587)
 spawnCreatureInCell(femaleMountainSquill, 8, -83.2403, -66.3616, -190.17, 7125587)
-spawnCreatureInCell(questHeroOfTatooineHermit, 8, 36.5399, -69.0717, -102.5, 7125586)
+-- spawnCreatureInCell(questHeroOfTatooineHermit, 8, 36.5399, -69.0717, -102.5, 7125586)
 spawnCreatureInCell(mountainSquill, 8, -18.8302, -67.7473, -114.79, 7125585)
 spawnCreatureInCell(mountainSquillHunter, 8, -1.73016, -70.7505, -106.53, 7125585)
 spawnCreatureInCell(mountainSquillGuardian, 8, 9.71032, -70.6517, -102.46, 7125585)

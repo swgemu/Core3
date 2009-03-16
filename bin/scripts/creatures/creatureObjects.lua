@@ -138,3 +138,6 @@ end
 RunCreatureFile("objects/npcs/imperialNpcs.lua") 
 RunCreatureFile("objects/npcs/rebelNpcs.lua") 
 RunCreatureFile("objects/npcs/miscNpcs.lua") 
+RunCreatureFile("objects/npcs/cannonNpcs.lua") 
+
+

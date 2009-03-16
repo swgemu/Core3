@@ -40,9 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
--- Epic theed Spawn
-spawnCreatureInCell(mellichae, 5, 0.429564, 27, -120.732, 1688865)
-
 spawnCreatureInCell(staticTheedNpc1, 5, -33.7329, 0.259996, 14.005, 1697365)
 spawnCreatureInCell(staticTheedNpc2, 5, -33.7333, 0.259997, 14.0052, 1697365)
 spawnCreatureInCell(staticTheedNpc3, 5, -25.52, 0.26, -3.48, 1697364)
@@ -191,7 +188,6 @@ spawnCreature(staticTheedNpc149, 5, -5127.71, 4337.34)
 spawnCreature(staticTheedNpc150, 5, -5219.06, 4291.75)
 spawnCreatureInCell(staticTheedNpc152, 5, 5.28267, -0.894992, -5.62239, 91)
 spawnCreature(staticTheedNpc153, 5, -5140.78, 4404.92)
-spawnCreature(staticTheedNpc154, 5, -5279.6, 4317.03)
 spawnCreature(staticTheedNpc155, 5, -5279.6, 4317.03)
 spawnCreature(staticTheedNpc156, 5, -5281.75, 4325.98)
 spawnCreature(staticTheedNpc157, 5, -5283.85, 4336.2)

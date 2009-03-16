@@ -40,55 +40,13 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
--- utils
--- lua files
 
-RunObjectFile("objects/object.lua") -- basic object
-RunObjectFile("objects/lair.lua") -- Lair Object
-
-local sin, cos = math.sin, math.cos
-local deg, rad = math.deg, math.rad
-math.sin = function (x) return sin(rad(x)) end
-math.cos = function (x) return cos(rad(x)) end
-
--- Global object table
-Objects = { }
-
-function Objects:addObject(obj, type)
-	self[type] = obj
-end
-
-function getObject(type)
-	return Objects[type]
-end
-
-function spawnObject(object, Planet, PositionX, PositionY)
-	newObject = object:new { planet = Planet, positionX = PositionX, positionY = PositionY }
-	AddObjectToServer(newObject)
-end
-
-function spawnObject(object, Planet, PositionX, PositionY, respawnTime)
-	newObject = object:new { planet = Planet, positionX = PositionX, positionY = PositionY, respawnTimer = respawnTime }
-	AddObjectToServer(newObject)
-end
-
-function spawnLair(lair, Planet, PositionX, PositionY, PositionZ)
-	newLair = lair:new { planet = Planet, positionX = PositionX, positionY = PositionY, positionZ = PositionZ }
-	AddLairToServer(newLair)
-end
-
--- Creature objects
--- RunObjectFile("objects/lairs/corelliaLairs.lua")
--- RunObjectFile("objects/lairs/dantooineLairs.lua")
--- RunObjectFile("objects/lairs/dathomirLairs.lua")
--- RunObjectFile("objects/lairs/endorLairs.lua")
--- RunObjectFile("objects/lairs/lokLairs.lua")
--- RunObjectFile("objects/lairs/nabooLairs.lua")
--- RunObjectFile("objects/lairs/roriLairs.lua")
--- RunObjectFile("objects/lairs/talusLairs.lua")
--- RunObjectFile("objects/lairs/tatooineLairs.lua")
--- RunObjectFile("objects/lairs/yavin4Lairs.lua")
+RunCreatureFile("objects/npcs/cannonNpcs/palpatine.lua")
+RunCreatureFile("objects/npcs/cannonNpcs/darthVader.lua")
+RunCreatureFile("objects/npcs/cannonNpcs/bobaFett.lua")
+RunCreatureFile("objects/npcs/cannonNpcs/oldMan.lua")
+RunCreatureFile("objects/npcs/cannonNpcs/luke.lua")
+RunCreatureFile("objects/npcs/cannonNpcs/hanSolo.lua")
+RunCreatureFile("objects/npcs/cannonNpcs/chewbacca.lua")
 
 
--- Spawns
-RunObjectFile("spawns.lua")
