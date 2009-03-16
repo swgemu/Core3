@@ -45,6 +45,7 @@ kineticProtectionArmorLayer = Object:new {
 
    objectName = "Kinetic Protection Armor Layer",
    stfName = "armor_layer_kinetic",
+   stfFile = "craft_armor_ingredients_n",
    objectCRC = 4175436808,
    groupName = "craftArmorLightLayersGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ kineticProtectionArmorLayer = Object:new {
    experimentalMax = "0, 0, 1000, 5, 1000, 0, 0, 0, 1, 1, 15, 50",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262145:objectcrc=2095312993:objecttemp=armor_layer_kinetic:templatetype=craft_armor_ingredients_n:itemmask=65535:",
+   tanoAttributes = "objecttype=262145:objectcrc=2095312993:objecttemp=armor_layer_kinetic:templatetype=craft_armor_ingredients_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

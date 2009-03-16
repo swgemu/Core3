@@ -45,6 +45,7 @@ wookieeArmWraps = Object:new {
 
    objectName = "Wookiee Arm Wraps",
    stfName = "wke_gloves_s02",
+   stfFile = "wearables_name",
    objectCRC = 252803633,
    groupName = "craftArtisanDomesticGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ wookieeArmWraps = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777232:objectcrc=3785152076:objecttemp=wke_gloves_s02:templatetype=wearables_name:itemmask=61955:",
+   tanoAttributes = "objecttype=16777232:objectcrc=3785152076:objecttemp=wke_gloves_s02:templatetype=wearables_name:itemmask=61955::",
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "12, 33",
    customizationSkill = "clothing_customization"

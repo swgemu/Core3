@@ -45,6 +45,7 @@ largeGlass = Object:new {
 
    objectName = "Large Glass",
    stfName = "large_glass",
+   stfFile = "craft_food_ingredients_n",
    objectCRC = 3740654207,
    groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ largeGlass = Object:new {
    experimentalMax = "0, 0, 2",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=262144:objectcrc=1157356093:objecttemp=large_glass:templatetype=craft_food_ingredients_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8224:objectcrc=1157356093:objecttemp=large_glass:templatetype=craft_food_ingredients_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

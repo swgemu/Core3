@@ -27,8 +27,6 @@ public:
 
 	Component(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
-	Component(Component* component, unsigned long long oid);
-
 	void sendTo(Player* player, bool doClose = true);
 
 	void generateAttributes(Player* player);
@@ -36,8 +34,6 @@ public:
 	void updateCraftingValues(DraftSchematic* draftSchematic);
 
 	int useObject(Player* player);
-
-	Component* cloneComponent(Component* component, unsigned long long oid);
 
 	float getAttributeValue(String& attributeName);
 
@@ -83,8 +79,6 @@ public:
 	void updateCraftingValues(DraftSchematic* draftSchematic);
 
 	int useObject(Player* player);
-
-	Component* cloneComponent(Component* component, unsigned long long oid);
 
 	float getAttributeValue(String& attributeName);
 
@@ -139,7 +133,6 @@ public:
 public:
 	ComponentServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp);
 	ComponentServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp);
-	ComponentServant(unsigned long long oid, int tp);
 	virtual ~ComponentServant();
 
 	void _setStub(DistributedObjectStub* stub);

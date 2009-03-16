@@ -45,6 +45,7 @@ which carries forward this exception.
 import "../TangibleObject";
 import "../../creature/CreatureObject";
 import "../../player/Player";
+import "../wearables/Wearable";
  
 include "engine/service/Message";
  
@@ -52,31 +53,23 @@ interface Attachment implements TangibleObject {
 	Attachment(unsigned long objID, int attachmentType) {
 		super(objID, attachmentType);
 	}
+
+	void addSkillMod(String skillModType, int skillModValue);
+
+	void setSkillModCount(int modifier);
+	
+	void generateSkillMods(Player player, int modifier);
 	
 	void remove(Player player);
-
-	void setSkillMod0Type(int type);
-	void setSkillMod1Type(int type);
-	void setSkillMod2Type(int type);
-
-	void setSkillMod0Value(int value);
-	void setSkillMod1Value(int value);
-	void setSkillMod2Value(int value);
-
-	void setSkillModValue(int index, int value);
-	void setSkillModType(int index, int type);
 	
-	void setSkillMods(int modifier);
-	
-	int getSkillMod0Type();
-	int getSkillMod1Type();
-	int getSkillMod2Type();
+	int getRandomModValue(int luck, int modifier);
 
-	int getSkillMod0Value();
-	int getSkillMod1Value();
-	int getSkillMod2Value();
-
-	int getSkillModType(int index);
+	String getSkillModName(int index);
 	int getSkillModValue(int index);
-	int getBestSkillMod();
+	
+	int getSkillModValue(String name);
+
+	int getSkillModCount();
+	
+	int getAttachmentType();
 }

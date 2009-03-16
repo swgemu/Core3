@@ -66,91 +66,24 @@ interface Armor implements Wearable {
 	void generateAttributes(SceneObject obj);
 	
 	void setArmorStats(int modifier);
-	
-	int addSkillMod(int skillModType, int skillModValue);
-	
+
 	// getters
 	int getRating();
 	
-	int getCondition();
-	
-	int getMaxCondition();
-	
-	int getHealthEncumbrance();
-
-	int getActionEncumbrance();
-
-	int getMindEncumbrance();
-	
-	float getKinetic();
-	
-	boolean isKineticSpecial();
-	
+	float getKinetic();	
 	float getEnergy();
-	
-	boolean isEnergySpecial();
-	
 	float getElectricity();
-	
-	boolean isElectricitySpecial();
-	
 	float getStun();
-	
-	boolean isStunSpecial();
-	
 	float getBlast();
-	
-	boolean isBlastSpecial();
-	
 	float getHeat();
-	
-	boolean isHeatSpecial();
-	
 	float getCold();
-	
-	boolean isColdSpecial();
-	
 	float getAcid();
-	
-	boolean isAcidSpecial();
-	
 	float getLightSaber();
 	
-	boolean isLightSaberSpecial();
-	
-	int getType();
-	
-	int getSocketType(int index);
-	int getSocketValue(int index);
-	
-	int getSkillMod0Type();
-	int getSkillMod1Type();
-	int getSkillMod2Type();
-	
-	int getSkillMod0Value();
-	int getSkillMod1Value();
-	int getSkillMod2Value();
-	
-	int getSockets();
-	
-	int getSocket0Type();
-	int getSocket1Type();
-	int getSocket2Type();
-	int getSocket3Type();
-	
-	int getSocket0Value();
-	int getSocket1Value();
-	int getSocket2Value();
-	int getSocket3Value();
-	
-	int getArmorType();
+	int getArmorPiece();
 
 	// setters
 	void setArmorPiece(int armorSlot);
-	
-	void setHealthEncumbrance(int healthEnc);
-	void setActionEncumbrance(int actionEnc);
-	void setMindEncumbrance(int mindEnc);
 
 	void setRating(int rating);
 	void setAcid(float resist);
@@ -162,28 +95,4 @@ interface Armor implements Wearable {
 	void setHeat(float resist);
 	void setKinetic(float resist);
 	void setLightSaber(float resist);
-
-	void setSocketType(int index, int type);
-	void setSocketValue(int index, int type);
-
-	void setSockets(int socket);
-	
-	void setSocket0Type(int type);
-	void setSocket1Type(int type);
-	void setSocket2Type(int type);
-	void setSocket3Type(int type);
-	
-	void setSocket0Value(int value);
-	void setSocket1Value(int value);
-	void setSocket2Value(int value);
-	void setSocket3Value(int value);
-	
-	//Event Handlers
-	void onBroken();
-	void onSlicingFailure(Player slicer);
-	
-	//Action
-	void slice(Player slicer);
-
-	void conditionReduction(float damage);
 }

@@ -45,6 +45,7 @@ twelveSidedDiceSet = Object:new {
 
    objectName = "Twelve Sided Dice Set",
    stfName = "eqp_twelve_sided_dice_set_single",
+   stfFile = "dice/dice_details",
    objectCRC = 1478333642,
    groupName = "craftArtisanEngineeringGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ twelveSidedDiceSet = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8211:objectcrc=2176227197:objecttemp=eqp_twelve_sided_dice_set_single:templatetype=dice/dice_details:itemmask=65535:",
+   tanoAttributes = "objecttype=8211:objectcrc=2176227197:objecttemp=eqp_twelve_sided_dice_set_single:templatetype=dice/dice_details:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

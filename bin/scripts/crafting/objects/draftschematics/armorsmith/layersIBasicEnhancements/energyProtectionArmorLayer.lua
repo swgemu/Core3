@@ -45,6 +45,7 @@ energyProtectionArmorLayer = Object:new {
 
    objectName = "Energy Protection Armor Layer",
    stfName = "armor_layer_energy",
+   stfFile = "craft_armor_ingredients_n",
    objectCRC = 4258794187,
    groupName = "craftArmorLightLayersGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ energyProtectionArmorLayer = Object:new {
    experimentalMax = "0, 0, 1000, 5, 1000, 0, 0, 0, 1, 2, 15, 50",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262145:objectcrc=2938969271:objecttemp=armor_layer_energy:templatetype=craft_armor_ingredients_n:itemmask=65535:",
+   tanoAttributes = "objecttype=262145:objectcrc=2938969271:objecttemp=armor_layer_energy:templatetype=craft_armor_ingredients_n:itemmask=65535:customattributes=specialprotection=energyeffectiveness;:",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

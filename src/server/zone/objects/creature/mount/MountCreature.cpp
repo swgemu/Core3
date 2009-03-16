@@ -14,6 +14,8 @@
 
 #include "../../intangible/IntangibleObject.h"
 
+#include "../../scene/SceneObject.h"
+
 /*
  *	MountCreatureStub
  */
@@ -220,12 +222,25 @@ void MountCreature::parseItemAttributes() {
 		((MountCreatureImplementation*) _impl)->parseItemAttributes();
 }
 
-void MountCreature::repair() {
+void MountCreature::setDatapadItem(SceneObject* item) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 21);
+		method.addObjectParameter(item);
+
+		method.executeWithVoidReturn();
+	} else
+		((MountCreatureImplementation*) _impl)->setDatapadItem(item);
+}
+
+void MountCreature::repair() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
 
 		method.executeWithVoidReturn();
 	} else
@@ -289,6 +304,9 @@ Packet* MountCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		parseItemAttributes();
 		break;
 	case 21:
+		setDatapadItem((SceneObject*) inv->getObjectParameter());
+		break;
+	case 22:
 		repair();
 		break;
 	default:
@@ -356,6 +374,10 @@ bool MountCreatureAdapter::isInWorld() {
 
 void MountCreatureAdapter::parseItemAttributes() {
 	return ((MountCreatureImplementation*) impl)->parseItemAttributes();
+}
+
+void MountCreatureAdapter::setDatapadItem(SceneObject* item) {
+	return ((MountCreatureImplementation*) impl)->setDatapadItem(item);
 }
 
 void MountCreatureAdapter::repair() {

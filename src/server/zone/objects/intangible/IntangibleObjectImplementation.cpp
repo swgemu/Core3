@@ -51,28 +51,41 @@ which carries forward this exception.
 #include "../../ZoneClientSession.h"
 
 
-IntangibleObjectImplementation::IntangibleObjectImplementation(SceneObject* container, uint32 objCRC, uint64 id) : IntangibleObjectServant(id, INTANGIBLE) {
-	objectType = INTANGIBLE;
+IntangibleObjectImplementation::IntangibleObjectImplementation(uint64 oid, String n, String stringFile,
+		String stringName, uint32 objCRC, SceneObject* cont)
+	: IntangibleObjectServant(oid, INTANGIBLE) {
+
+	customName = n;
+
+	templateName = stringFile;
+	templateTypeName = stringName;
+
 	objectCRC = objCRC;
 
-	linkType = 0xFFFFFFFF;
-	parent = container;
+	parent = cont;
 
-	worldObject = NULL;
+	init();
+}
 
-	status = 0;
+IntangibleObjectImplementation::IntangibleObjectImplementation(uint64 id, int tp) : IntangibleObjectServant(id, tp) {
 
 	init();
 }
 
 void IntangibleObjectImplementation::init() {
 
+	linkType = 0xFFFFFFFF;
+
+	status = 0;
+
+	objectType = INTANGIBLE;
 }
 
 IntangibleObjectImplementation::~IntangibleObjectImplementation() {
-	if (worldObject != NULL) {
-		worldObject->finalize();
-		worldObject = NULL;
+	SceneObject* item = getObject(0);
+	if (item != NULL) {
+		item->finalize();
+		objects.removeAll();
 	}
 }
 
@@ -98,6 +111,27 @@ void IntangibleObjectImplementation::sendTo(Player* player, bool doClose) {
 
 void IntangibleObjectImplementation::sendDestroyTo(Player* player) {
 	SceneObjectImplementation::destroy(player->getClient());
+}
+
+void IntangibleObjectImplementation::parseItemAttributes() {
+
+}
+
+void IntangibleObjectImplementation::generateAttributes(SceneObject* obj) {
+	if (!obj->isPlayer())
+		return;
+
+	Player* player = (Player*) obj;
+
+	AttributeListMessage* alm = new AttributeListMessage(_this);
+	addAttributes(alm);
+
+	player->sendMessage(alm);
+}
+
+
+void IntangibleObjectImplementation::addAttributes(AttributeListMessage* alm) {
+
 }
 
 void IntangibleObjectImplementation::updateStatus(uint32 stat) {

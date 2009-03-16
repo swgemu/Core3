@@ -49,7 +49,7 @@ which carries forward this exception.
 
 #include "../../../ZoneProcessServerImplementation.h"
 
-#include "../../tangible/ItemAttributes.h"
+#include "../../scene/ItemAttributes.h"
 
 #include "engine/sched/Event.h"
 

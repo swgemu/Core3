@@ -45,6 +45,7 @@ ryykBlade = Object:new {
 
    objectName = "Ryyk Blade",
    stfName = "sword_blade_ryyk",
+   stfFile = "weapon_name",
    objectCRC = 3464681484,
    groupName = "craftWeaponMeleeGroupD", -- Group schematic is awarded in (See skills table)
 

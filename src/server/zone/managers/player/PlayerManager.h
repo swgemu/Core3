@@ -47,7 +47,7 @@ public:
 
 	void handleAbortTradeMessage(Player* player);
 
-	void handleAddItemMessage(Player* player, unsigned long long itemID);
+	void handleAddItemToTradeWindow(Player* player, unsigned long long itemID);
 
 	void handleGiveMoneyMessage(Player* player, unsigned int value);
 
@@ -129,7 +129,7 @@ public:
 
 	void handleAbortTradeMessage(Player* player);
 
-	void handleAddItemMessage(Player* player, unsigned long long itemID);
+	void handleAddItemToTradeWindow(Player* player, unsigned long long itemID);
 
 	void handleGiveMoneyMessage(Player* player, unsigned int value);
 

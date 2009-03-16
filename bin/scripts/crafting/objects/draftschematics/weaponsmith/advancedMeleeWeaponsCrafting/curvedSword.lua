@@ -45,6 +45,7 @@ curvedSword = Object:new {
 
    objectName = "Curved Sword",
    stfName = "sword_02",
+   stfFile = "weapon_name",
    objectCRC = 2999681334,
    groupName = "craftWeaponMeleeGroupC", -- Group schematic is awarded in (See skills table)
 

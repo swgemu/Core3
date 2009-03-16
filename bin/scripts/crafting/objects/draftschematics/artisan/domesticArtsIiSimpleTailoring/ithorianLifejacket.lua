@@ -45,6 +45,7 @@ ithorianLifejacket = Object:new {
 
    objectName = "Ithorian Lifejacket",
    stfName = "ith_vest_s01",
+   stfFile = "wearables_name",
    objectCRC = 454011368,
    groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ ithorianLifejacket = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777231:objectcrc=1675163714:objecttemp=ith_vest_s01:templatetype=wearables_name:itemmask=63491:",
+   tanoAttributes = "objecttype=16777231:objectcrc=1675163714:objecttemp=ith_vest_s01:templatetype=wearables_name:itemmask=63491::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

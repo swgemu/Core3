@@ -45,6 +45,7 @@ plainRobe = Object:new {
 
    objectName = "Plain Robe",
    stfName = "dress_s10",
+   stfFile = "wearables_name",
    objectCRC = 4131021674,
    groupName = "craftArtisanDomesticGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ plainRobe = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777223:objectcrc=526339937:objecttemp=dress_s10:templatetype=wearables_name:itemmask=62974:",
+   tanoAttributes = "objecttype=16777223:objectcrc=526339937:objecttemp=dress_s10:templatetype=wearables_name:itemmask=62974::",
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "116",
    customizationSkill = "clothing_customization"

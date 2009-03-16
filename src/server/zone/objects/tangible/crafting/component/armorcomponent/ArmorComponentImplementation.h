@@ -59,13 +59,12 @@ protected:
 public:
 	ArmorComponentImplementation(uint64 objectid, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 	ArmorComponentImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
-	ArmorComponentImplementation(ArmorComponent* component, uint64 oid);
 
 	~ArmorComponentImplementation();
 
 	void init();
 
-
+	void parseItemAttributes();
 
 	void updateCraftingValues(DraftSchematic* draftSchematic);
 
@@ -78,14 +77,6 @@ public:
 	}
 
 	void setSpecialProtection();
-
-	Component* cloneComponent(ArmorComponent* component, uint64 oid) {
-		if (component != NULL) {
-			return new ArmorComponent(component, oid);
-		} else {
-			return NULL;
-		}
-	}
 };
 
 #endif /*ARMORCOMPONENTIMPLEMENTATION_H_*/

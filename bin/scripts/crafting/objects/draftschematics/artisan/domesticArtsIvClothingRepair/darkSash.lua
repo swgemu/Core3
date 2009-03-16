@@ -45,6 +45,7 @@ darkSash = Object:new {
 
    objectName = "Dark Sash",
    stfName = "bandolier_s08",
+   stfFile = "wearables_name",
    objectCRC = 2198770163,
    groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ darkSash = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777217:objectcrc=1976696738:objecttemp=bandolier_s08:templatetype=wearables_name:itemmask=62975:",
+   tanoAttributes = "objecttype=16777217:objectcrc=1976696738:objecttemp=bandolier_s08:templatetype=wearables_name:itemmask=62975::",
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "0, 0",
    customizationSkill = "clothing_customization"

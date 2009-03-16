@@ -166,7 +166,7 @@ void PlayerManager::handleAbortTradeMessage(Player* player) {
 		((PlayerManagerImplementation*) _impl)->handleAbortTradeMessage(player);
 }
 
-void PlayerManager::handleAddItemMessage(Player* player, unsigned long long itemID) {
+void PlayerManager::handleAddItemToTradeWindow(Player* player, unsigned long long itemID) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -177,7 +177,7 @@ void PlayerManager::handleAddItemMessage(Player* player, unsigned long long item
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerManagerImplementation*) _impl)->handleAddItemMessage(player, itemID);
+		((PlayerManagerImplementation*) _impl)->handleAddItemToTradeWindow(player, itemID);
 }
 
 void PlayerManager::handleGiveMoneyMessage(Player* player, unsigned int value) {
@@ -518,7 +518,7 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		handleAbortTradeMessage((Player*) inv->getObjectParameter());
 		break;
 	case 16:
-		handleAddItemMessage((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		handleAddItemToTradeWindow((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 17:
 		handleGiveMoneyMessage((Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
@@ -633,8 +633,8 @@ void PlayerManagerAdapter::handleAbortTradeMessage(Player* player) {
 	return ((PlayerManagerImplementation*) impl)->handleAbortTradeMessage(player);
 }
 
-void PlayerManagerAdapter::handleAddItemMessage(Player* player, unsigned long long itemID) {
-	return ((PlayerManagerImplementation*) impl)->handleAddItemMessage(player, itemID);
+void PlayerManagerAdapter::handleAddItemToTradeWindow(Player* player, unsigned long long itemID) {
+	return ((PlayerManagerImplementation*) impl)->handleAddItemToTradeWindow(player, itemID);
 }
 
 void PlayerManagerAdapter::handleGiveMoneyMessage(Player* player, unsigned int value) {

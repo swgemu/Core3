@@ -17,6 +17,8 @@
 
 #include "../../ZoneProcessServerImplementation.h"
 
+class AttributeListMessage;
+
 class ObjectMenuResponse;
 
 class Zone;
@@ -85,6 +87,8 @@ public:
 
 	bool isContainerEmpty();
 
+	bool isContainerFull();
+
 	bool isAttackable();
 
 	int getSlots();
@@ -135,6 +139,18 @@ public:
 
 	void setDirection(float x, float z, float y, float w);
 
+	void setPersistent(bool pers);
+
+	void setUpdated(bool upd);
+
+	void setDeleted(bool del);
+
+	bool isPersistent();
+
+	bool isUpdated();
+
+	bool isDeleted();
+
 	Coordinate* getCoordinate(float x, float y, float distance, float angle);
 
 	Coordinate* getCoordinate(SceneObject* object, float distance, float angle);
@@ -142,6 +158,10 @@ public:
 	Coordinate* getCoordinate(SceneObject* object1, SceneObject* object2, float distanceFromObject1);
 
 	void generateAttributes(Player* player);
+
+	void addAttributes(AttributeListMessage* alm);
+
+	void parseItemAttributes();
 
 	void info(const String& message, bool forcedLog = false);
 
@@ -168,6 +188,14 @@ public:
 	void setParent(SceneObject* par, unsigned int linktype = 04);
 
 	void setZone(Zone* zne);
+
+	void setAttributes(String& attributeString);
+
+	void setCustomizationString(String& cust);
+
+	void setCustomizationVariable(const String& type, unsigned int value);
+
+	void setCustomizationVariable(unsigned char type, unsigned int value);
 
 	void clearUndeploymentEvent();
 
@@ -220,6 +248,10 @@ public:
 	String& getTemplateTypeName();
 
 	unsigned long long getAssociatedArea();
+
+	void getCustomizationString(String& appearance);
+
+	String& getAttributes();
 
 	bool isPlayer();
 
@@ -354,6 +386,7 @@ protected:
 
 	bool _destroy();
 
+	String _return_getAttributes;
 	String _return_getLoggingName;
 	String _return_getTemplateName;
 	String _return_getTemplateTypeName;
@@ -419,6 +452,8 @@ public:
 
 	bool isContainerEmpty();
 
+	bool isContainerFull();
+
 	bool isAttackable();
 
 	int getSlots();
@@ -469,6 +504,18 @@ public:
 
 	void setDirection(float x, float z, float y, float w);
 
+	void setPersistent(bool pers);
+
+	void setUpdated(bool upd);
+
+	void setDeleted(bool del);
+
+	bool isPersistent();
+
+	bool isUpdated();
+
+	bool isDeleted();
+
 	Coordinate* getCoordinate(float x, float y, float distance, float angle);
 
 	Coordinate* getCoordinate(SceneObject* object, float distance, float angle);
@@ -476,6 +523,10 @@ public:
 	Coordinate* getCoordinate(SceneObject* object1, SceneObject* object2, float distanceFromObject1);
 
 	void generateAttributes(Player* player);
+
+	void addAttributes(AttributeListMessage* alm);
+
+	void parseItemAttributes();
 
 	void info(const String& message, bool forcedLog);
 
@@ -500,6 +551,14 @@ public:
 	void setParent(SceneObject* par, unsigned int linktype);
 
 	void setZone(Zone* zne);
+
+	void setAttributes(String& attributeString);
+
+	void setCustomizationString(String& cust);
+
+	void setCustomizationVariable(const String& type, unsigned int value);
+
+	void setCustomizationVariable(unsigned char type, unsigned int value);
 
 	void clearUndeploymentEvent();
 
@@ -552,6 +611,10 @@ public:
 	String& getTemplateTypeName();
 
 	unsigned long long getAssociatedArea();
+
+	void getCustomizationString(String& appearance);
+
+	String& getAttributes();
 
 	bool isPlayer();
 
@@ -682,6 +745,10 @@ protected:
 	String _param0_error__String_;
 	String _param0_setCustomName__String_;
 	UnicodeString _param0_setCustomName__UnicodeString_;
+	String _param0_setAttributes__String_;
+	String _param0_setCustomizationString__String_;
+	String _param0_setCustomizationVariable__String_int_;
+	String _param0_getCustomizationString__String_;
 	String _param0_setTemplateName__String_;
 	String _param0_setTemplateTypeName__String_;
 	String _param2_addDamageDone__CreatureObject_int_String_;

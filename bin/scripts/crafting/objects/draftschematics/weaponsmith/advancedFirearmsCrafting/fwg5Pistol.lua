@@ -45,6 +45,7 @@ fwg5Pistol = Object:new {
 
    objectName = "FWG5 Pistol",
    stfName = "pistol_fwg5",
+   stfFile = "weapon_name",
    objectCRC = 2825813273,
    groupName = "craftWeaponRangedGroupC", -- Group schematic is awarded in (See skills table)
 

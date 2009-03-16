@@ -51,10 +51,7 @@ which carries forward this exception.
 
 #include "../scene/SceneObject.h"
 
-#include "ItemAttributes.h"
-
 #include "TangibleObject.h"
-#include "CustomizationVariables.h"
 
 #include "../../packets/scene/AttributeListMessage.h"
 
@@ -83,14 +80,8 @@ protected:
 
 	uint32 optionsBitmask;
 
-	bool persistent, updated;
-
 	uint32 templateID;
 	int objectSubType;
-
-	String attributeString;
-
-	CustomizationVariables customizationVariables;
 
 	int objectCount;
 
@@ -101,8 +92,6 @@ protected:
 	uint32 pvpStatusBitmask;
 
 	uint16 playerUseMask;
-
-	ItemAttributes* itemAttributes;
 
 	String misoAsocKey; //Mission association key
 
@@ -127,8 +116,7 @@ protected:
 
 	byte unknownByte;
 
-	IntangibleObject* itno;
-	uint32 itnoCRC;
+	bool firstCraftingUpdate;
 
 public:
 	static const int HAIR = 0x30000001;
@@ -329,13 +317,19 @@ public:
 	static const uint16 ALLFACTIONS = NEUTRAL | IMPERIAL | REBEL | COVERT;
 	static const uint16 HUMANOIDS = ALL & ~(WOOKIEE | ITHORIAN);
 	static const uint16 HUMANOID_FOOTWEAR = HUMANOIDS & ~TRANDOSHAN;
+	static const uint16 HUMANOID_HANDWEAR = HUMANOIDS & ~TRANDOSHAN;
+	static const uint16 HUMANOID_HEADWEAR = HUMANOIDS & ~TWILEK;
 	static const uint16 HUMANOID_MALES = HUMANOIDS & ~FEMALE;
 	static const uint16 HUMANOID_FEMALES = HUMANOIDS & ~MALE;
 	static const uint16 HUMANOID_IMPERIALS = HUMANOIDS & ~(REBEL | NEUTRAL | COVERT);
 	static const uint16 HUMANOID_REBELS = HUMANOIDS & ~(IMPERIAL | NEUTRAL | COVERT);
+	static const uint16 NO_RODIANS = ALL & ~RODIAN;
+	static const uint16 NO_MONCALAMARI = ALL & ~MONCALAMARI;
+	static const uint16 NO_WOOKIES = ALL & ~WOOKIEE;
 	static const uint16 WOOKIEES = WOOKIEE | ALLSEXES | ALLFACTIONS;
 	static const uint16 ITHORIANS = ITHORIAN | ALLSEXES | ALLFACTIONS;
 	static const uint16 TWILEKS = TWILEK | ALLSEXES | ALLFACTIONS;
+
 
 
 	//Options Flags
@@ -343,6 +337,7 @@ public:
 	static const uint32 OPTIONS_UNKNOWN1 = 0x01;
 	static const uint32 OPTIONS_UNKNOWN2 = 0x02;
 	static const uint32 OPTIONS_INSURED = 0x04;
+	static const uint32 OPTIONS_YELLOW = 0x20;
 
 public:
 	TangibleObjectImplementation(uint64 oid, int tp = 0);
@@ -404,12 +399,6 @@ public:
 	virtual void setCombatState();
 	virtual void clearCombatState(bool removeDefenders = true);
 
-	/*
-	 * itnocrc must be set before calling this function otherwise it wont know what
-	 * datapad item to create. use setItnocrc(uint32 crc);
-	 */
-	void addToDatapad(Player* player);
-
 	void close(Player* player);
 
 	void repairItem(Player* player);
@@ -418,20 +407,8 @@ public:
 
 	virtual void addAttributes(AttributeListMessage* alm);
 
-	inline void setPersistent(bool pers) {
-		persistent = pers;
-	}
-
-	inline void setUpdated(bool upd) {
-		updated = upd;
-	}
-
 	inline void setEquipped(bool eqp) {
 		equipped = eqp;
-	}
-
-	inline void setCustomizationString(String& cust) {
-		customizationVariables = cust;
 	}
 
 	inline void setCondition(int current, int max){
@@ -448,14 +425,6 @@ public:
 	inline void setConditionDamage(float damage) {
 		conditionDamage = damage;
 		itemAttributes->setCondition((int) round(maxCondition - conditionDamage), maxCondition);
-	}
-
-	inline void setCustomizationVariable(uint8 type, uint16 value) {
-		customizationVariables.setVariable(type, value);
-	}
-
-	inline void setCustomizationVariable(const String type, uint8 value) {
-		customizationVariables.setVariable(type, value);
 	}
 
 	inline void setCraftersName(String& n){
@@ -486,14 +455,6 @@ public:
 			objectCount = count;
 
 		}
-	}
-
-	inline bool isPersistent() {
-		return persistent;
-	}
-
-	inline bool isUpdated() {
-		return updated;
 	}
 
 	inline bool isInsured() {
@@ -530,25 +491,12 @@ public:
 		return volume;
 	}
 
-	inline void getCustomizationString(String& appearance) {
-		return customizationVariables.toString(appearance);
-	}
-
 	inline int getObjectCount() {
 		return objectCount;
 	}
 
 	inline bool isEquipped() {
 		return equipped;
-	}
-
-	inline void setAttributes(String& attributeString) {
-		itemAttributes->setAttributes(attributeString);
-	}
-
-	inline String& getAttributes() {
-		itemAttributes->getAttributeString(attributeString);
-		return attributeString;
 	}
 
 	inline void setObjectSubType(const int type) {
@@ -752,6 +700,12 @@ public:
 	//Event Handlers
 	virtual void onBroken();
 	virtual void onSlicingFailure(Player* slicer);
+	virtual void onEquip(Player* player) {
+
+	}
+	virtual void onUnequip(Player* player) {
+
+	}
 
 	//Actions
 	virtual void decay(float decayRate);
@@ -811,29 +765,6 @@ public:
 		String name = "sliced";
 		itemAttributes->setBooleanAttribute(name, sliced);
 	}
-
-	/*
-	 * Sets the intangible object crc that this item is linked to.
-	 * The intangible crc is what the tangible item uses to create the datapad item to be linked to
-	 * \param itnocrc uint32 CRC of the intangible datapad object.
-	 */
-	inline void setItnocrc(uint32 itnocrc) {
-		itnoCRC = itnocrc;
-	}
-
-	/*
-	 * Get the CRC of the intangible object (datapad item) corresponding to this item.
-	 * \return uint32 Returns the CRC of this item's datapad equivalent
-	 */
-	inline uint32 getItnocrc() {
-		return itnoCRC;
-	}
-
-	/*
-	 * Get the Intangible Object (datapad item) corresponding to this item.
-	 * \return IntangibleObject* Returns the intangible object linked to this item or NULL if not linked to one.
-	 */
-	IntangibleObject* getITNO();
 };
 
 #endif /*TANGIBLEOBJECTIMPLEMENTATION_H_*/

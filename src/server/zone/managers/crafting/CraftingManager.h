@@ -45,9 +45,9 @@ public:
 
 	void handleExperimenting(Player* player, int counter, int numRowsAttempted, String& expString);
 
-	void createPrototype(Player* player, String& count);
+	void createPrototype(Player* player, int counter, int practice);
 
-	void createSchematic(Player* player, String& count);
+	void createSchematic(Player* player, int counter);
 
 	float getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type);
 
@@ -97,9 +97,9 @@ public:
 
 	void handleExperimenting(Player* player, int counter, int numRowsAttempted, String& expString);
 
-	void createPrototype(Player* player, String& count);
+	void createPrototype(Player* player, int counter, int practice);
 
-	void createSchematic(Player* player, String& count);
+	void createSchematic(Player* player, int counter);
 
 	float getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type);
 
@@ -120,8 +120,6 @@ protected:
 	String _param1_craftingCustomization__Player_String_int_String_;
 	String _param3_craftingCustomization__Player_String_int_String_;
 	String _param3_handleExperimenting__Player_int_int_String_;
-	String _param1_createPrototype__Player_String_;
-	String _param1_createSchematic__Player_String_;
 	String _param1_addDraftSchematicsFromGroupName__Player_String_;
 	String _param1_subtractDraftSchematicsFromGroupName__Player_String_;
 };

@@ -45,6 +45,7 @@ adhesiveMesh = Object:new {
 
    objectName = "Adhesive Mesh",
    stfName = "trap_webber",
+   stfFile = "item_n",
    objectCRC = 2895113899,
    groupName = "craftScoutTrapGroupD", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ adhesiveMesh = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8212:objectcrc=3441092972:objecttemp=trap_webber:templatetype=item_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8212:objectcrc=3441092972:objecttemp=trap_webber:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -79,7 +79,7 @@ public:
 
 		insertInt(count); //item count
 
-		insertInt(tano->getConditionDamage());
+		insertInt(int(tano->getConditionDamage()));
 		insertInt(tano->getMaxCondition());
 
 		insertByte(tano->getUnknownByte());

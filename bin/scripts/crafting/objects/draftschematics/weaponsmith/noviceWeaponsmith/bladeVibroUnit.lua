@@ -45,6 +45,7 @@ bladeVibroUnit = Object:new {
 
    objectName = "Blade Vibro Unit",
    stfName = "blade_vibro_unit",
+   stfFile = "craft_weapon_ingredients_n",
    objectCRC = 642464593,
    groupName = "craftWeaponMeleeGroupA", -- Group schematic is awarded in (See skills table)
 

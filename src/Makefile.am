@@ -299,6 +299,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/draftschematic/DraftSchematicImplementation.cpp \
 		server/zone/objects/draftschematic/DraftSchematicIngredientImplementation.cpp \
 		server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp \
+		server/zone/objects/manufacture/ManufactureSchematicImplementation.cpp \
 		server/zone/objects/group/GroupObjectImplementation.cpp \
 		server/zone/objects/guild/GuildImplementation.cpp \
 		server/zone/objects/installation/factory/FactoryObjectImplementation.cpp \
@@ -321,6 +322,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/scene/ContainerObject.cpp \
+		server/zone/objects/scene/CustomizationVariables.cpp \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \
 		server/zone/objects/static/StaticObjectImplementation.cpp \
 		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
@@ -338,7 +340,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/consumable/drink/DrinkImplementation.cpp \
 		server/zone/objects/tangible/ContainerImplementation.cpp \
 		server/zone/objects/tangible/InventoryImplementation.cpp \
-		server/zone/objects/tangible/CustomizationVariables.cpp \
 		server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp \
 		server/zone/objects/tangible/crafting/component/armorcomponent/ArmorComponentImplementation.cpp \
 		server/zone/objects/tangible/crafting/CraftingStationImplementation.cpp \

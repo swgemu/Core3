@@ -45,6 +45,7 @@ advancedWeaponStock = Object:new {
 
    objectName = "Advanced Weapon Stock",
    stfName = "stock_unit_advanced",
+   stfFile = "craft_weapon_ingredients_n",
    objectCRC = 1592695997,
    groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
 

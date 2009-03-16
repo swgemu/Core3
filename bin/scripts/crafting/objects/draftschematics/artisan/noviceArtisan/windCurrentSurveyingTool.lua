@@ -45,6 +45,7 @@ windCurrentSurveyingTool = Object:new {
 
    objectName = "Wind Current Surveying Tool",
    stfName = "survey_tool_wind",
+   stfFile = "item_n",
    objectCRC = 2695222848,
    groupName = "craftArtisanSurveyGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ windCurrentSurveyingTool = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32770:objectcrc=566467536:objecttemp=survey_tool_wind:templatetype=item_n:itemmask=65535:",
+   tanoAttributes = "objecttype=32770:objectcrc=566467536:objecttemp=survey_tool_wind:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

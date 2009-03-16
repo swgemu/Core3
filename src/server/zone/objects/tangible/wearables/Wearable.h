@@ -15,6 +15,8 @@ class SceneObject;
 
 class TangibleObject;
 
+class Attachment;
+
 #include "../TangibleObject.h"
 
 class Wearable : public TangibleObject {
@@ -33,68 +35,42 @@ public:
 
 	void sendTo(Player* player, bool doClose = true);
 
-	int addSkillMod(int skillModType, int skillModValue);
+	bool hasSkillMod(String& skillModName);
 
-	int getSocketType(int index);
+	void setMaxSockets(int socket);
 
-	int getSocketValue(int index);
+	void setHealthEncumbrance(int healthEnc);
 
-	int getSkillMod0Type();
+	void setActionEncumbrance(int actionEnc);
 
-	int getSkillMod1Type();
+	void setMindEncumbrance(int mindEnc);
 
-	int getSkillMod2Type();
+	String& getSkillModType(int i);
 
-	int getSkillMod0Value();
+	int getSkillModValue(String& name);
 
-	int getSkillMod1Value();
+	int getMaxSockets();
 
-	int getSkillMod2Value();
+	int socketsUsed();
 
-	int getSockets();
+	int getHealthEncumbrance();
 
-	int getSocket0Type();
+	int getActionEncumbrance();
 
-	int getSocket1Type();
+	int getMindEncumbrance();
 
-	int getSocket2Type();
+	void applyAttachment(Player* player, Attachment* attachment);
 
-	int getSocket3Type();
+	void reclaimAttachments(Player* player);
 
-	int getSocket0Value();
-
-	int getSocket1Value();
-
-	int getSocket2Value();
-
-	int getSocket3Value();
-
-	void setSocketType(int index, int type);
-
-	void setSocketValue(int index, int type);
-
-	void setSockets(int socket);
-
-	void setSocket0Type(int type);
-
-	void setSocket1Type(int type);
-
-	void setSocket2Type(int type);
-
-	void setSocket3Type(int type);
-
-	void setSocket0Value(int value);
-
-	void setSocket1Value(int value);
-
-	void setSocket2Value(int value);
-
-	void setSocket3Value(int value);
+	void conditionReduction(float damage);
 
 protected:
 	Wearable(DummyConstructorParameter* param);
 
 	virtual ~Wearable();
+
+	String _return_getSkillModType;
 
 	friend class WearableHelper;
 };
@@ -115,64 +91,39 @@ public:
 
 	void sendTo(Player* player, bool doClose);
 
-	int addSkillMod(int skillModType, int skillModValue);
+	bool hasSkillMod(String& skillModName);
 
-	int getSocketType(int index);
+	void setMaxSockets(int socket);
 
-	int getSocketValue(int index);
+	void setHealthEncumbrance(int healthEnc);
 
-	int getSkillMod0Type();
+	void setActionEncumbrance(int actionEnc);
 
-	int getSkillMod1Type();
+	void setMindEncumbrance(int mindEnc);
 
-	int getSkillMod2Type();
+	String& getSkillModType(int i);
 
-	int getSkillMod0Value();
+	int getSkillModValue(String& name);
 
-	int getSkillMod1Value();
+	int getMaxSockets();
 
-	int getSkillMod2Value();
+	int socketsUsed();
 
-	int getSockets();
+	int getHealthEncumbrance();
 
-	int getSocket0Type();
+	int getActionEncumbrance();
 
-	int getSocket1Type();
+	int getMindEncumbrance();
 
-	int getSocket2Type();
+	void applyAttachment(Player* player, Attachment* attachment);
 
-	int getSocket3Type();
+	void reclaimAttachments(Player* player);
 
-	int getSocket0Value();
+	void conditionReduction(float damage);
 
-	int getSocket1Value();
-
-	int getSocket2Value();
-
-	int getSocket3Value();
-
-	void setSocketType(int index, int type);
-
-	void setSocketValue(int index, int type);
-
-	void setSockets(int socket);
-
-	void setSocket0Type(int type);
-
-	void setSocket1Type(int type);
-
-	void setSocket2Type(int type);
-
-	void setSocket3Type(int type);
-
-	void setSocket0Value(int value);
-
-	void setSocket1Value(int value);
-
-	void setSocket2Value(int value);
-
-	void setSocket3Value(int value);
-
+protected:
+	String _param0_hasSkillMod__String_;
+	String _param0_getSkillModValue__String_;
 };
 
 class WearableHelper : public DistributedObjectClassHelper, public Singleton<WearableHelper> {

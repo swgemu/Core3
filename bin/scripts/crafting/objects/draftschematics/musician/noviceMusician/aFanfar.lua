@@ -45,6 +45,7 @@ aFanfar = Object:new {
 
    objectName = "a Fanfar",
    stfName = "obj_fanfar",
+   stfFile = "obj_n",
    objectCRC = 1598981907,
    groupName = "craftInstrumentGroupC", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ aFanfar = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8204:objectcrc=2024043623:objecttemp=obj_fanfar:templatetype=obj_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8204:objectcrc=2024043623:objecttemp=obj_fanfar:templatetype=obj_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "instrument_customization"

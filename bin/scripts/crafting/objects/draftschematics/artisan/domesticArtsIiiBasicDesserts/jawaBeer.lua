@@ -45,6 +45,7 @@ jawaBeer = Object:new {
 
    objectName = "Jawa Beer",
    stfName = "jawa_beer",
+   stfFile = "food_name",
    objectCRC = 2181376134,
    groupName = "craftArtisanDomesticGroupC", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ jawaBeer = Object:new {
    experimentalMax = "0, 0, 1000, 0, 120, 120, 100, 120, 1",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777223:objectcrc=3314105882:objecttemp=jawa_beer:templatetype=food_name:itemmask=65535:",
+   tanoAttributes = "objecttype=16777223:objectcrc=3314105882:objecttemp=jawa_beer:templatetype=food_name:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

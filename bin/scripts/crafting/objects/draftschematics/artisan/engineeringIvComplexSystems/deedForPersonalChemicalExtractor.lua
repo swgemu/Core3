@@ -45,6 +45,7 @@ deedForPersonalChemicalExtractor = Object:new {
 
    objectName = "Deed for: Personal Chemical Extractor",
    stfName = "liquid_harvester_deed_name",
+   stfFile = "deed",
    objectCRC = 3569746504,
    groupName = "craftArtisanEngineeringGroupD", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ deedForPersonalChemicalExtractor = Object:new {
    experimentalMax = "0, 0, 5, 50000, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8388610:objectcrc=3335458434:objecttemp=liquid_harvester_deed_name:templatetype=deed:itemmask=65535:",
+   tanoAttributes = "objecttype=8388610:objectcrc=3335458434:objecttemp=liquid_harvester_deed_name:templatetype=deed:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

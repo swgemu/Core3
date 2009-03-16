@@ -45,6 +45,7 @@ grenadeWiringKit = Object:new {
 
    objectName = "Grenade Wiring Kit",
    stfName = "weapon_thrown_wiring",
+   stfFile = "powerup_n",
    objectCRC = 2101449408,
    groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ grenadeWiringKit = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=524291:objectcrc=569969360:objecttemp=weapon_thrown_wiring:templatetype=powerup_n:itemmask=65535:",
+   tanoAttributes = "objecttype=524291:objectcrc=569969360:objecttemp=weapon_thrown_wiring:templatetype=powerup_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

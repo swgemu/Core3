@@ -45,6 +45,7 @@ advancedBlasterPowerHandler = Object:new {
 
    objectName = "Advanced Blaster Power Handler",
    stfName = "blaster_power_handler_advanced",
+   stfFile = "craft_weapon_ingredients_n",
    objectCRC = 669027229,
    groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
 

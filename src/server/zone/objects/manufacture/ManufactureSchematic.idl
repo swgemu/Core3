@@ -43,9 +43,38 @@ which carries forward this exception.
 */
 
 import "../scene/SceneObject";
+import "../draftschematic/DraftSchematic";
+import "../tangible/TangibleObject";
+import "../tangible/crafting/CraftingTool";
+import "../player/Player";
+include "../../packets/scene/AttributeListMessage";
 
 interface ManufactureSchematic implements SceneObject {
-	ManufactureSchematic(unsigned long oid) {
-		super(oid, int type);
+    ManufactureSchematic(unsigned long oid, String n, String stfFile, String stfName, unsigned int crc) {
+    	super(oid, int tp); 
+    }
+
+	ManufactureSchematic(unsigned long oid, DraftSchematic draftSchematic, CraftingTool craftingTool) {
+		super(oid, int tp);
 	}
+
+	void parseItemAttributes();
+	void generateAttributes(Player player);
+	void addAttributes(AttributeListMessage alm);
+	
+	int getComplexity();
+	
+	int getManufacturingLimit();
+	
+	int getDataSize();
+	
+	TangibleObject getTangibleObject();
+	
+	void setComplexity(int value);
+	
+	void setManufacturingLimit(int value);
+	
+	void setTangibleObject(TangibleObject tano);
+	
+	void setDataSize(int value);
 }

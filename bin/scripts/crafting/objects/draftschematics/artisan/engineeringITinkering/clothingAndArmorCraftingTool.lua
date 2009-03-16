@@ -45,6 +45,7 @@ clothingAndArmorCraftingTool = Object:new {
 
    objectName = "Clothing and Armor Crafting Tool",
    stfName = "clothing_tool_name",
+   stfFile = "crafting",
    objectCRC = 1505349903,
    groupName = "craftArtisanToolGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ clothingAndArmorCraftingTool = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32769:objectcrc=753735496:objecttemp=clothing_tool_name:templatetype=crafting:itemmask=65535:",
+   tanoAttributes = "objecttype=32769:objectcrc=753735496:objecttemp=clothing_tool_name:templatetype=crafting:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -45,6 +45,7 @@ weightedWookieeHood = Object:new {
 
    objectName = "Weighted Wookiee Hood",
    stfName = "wke_hood_s03",
+   stfFile = "wearables_name",
    objectCRC = 1536998290,
    groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ weightedWookieeHood = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777232:objectcrc=3154752353:objecttemp=wke_hood_s03:templatetype=wearables_name:itemmask=61955:",
+   tanoAttributes = "objecttype=16777232:objectcrc=3154752353:objecttemp=wke_hood_s03:templatetype=wearables_name:itemmask=61955::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

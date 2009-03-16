@@ -156,32 +156,33 @@ void CraftingManager::handleExperimenting(Player* player, int counter, int numRo
 		((CraftingManagerImplementation*) _impl)->handleExperimenting(player, counter, numRowsAttempted, expString);
 }
 
-void CraftingManager::createPrototype(Player* player, String& count) {
+void CraftingManager::createPrototype(Player* player, int counter, int practice) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 14);
 		method.addObjectParameter(player);
-		method.addAsciiParameter(count);
+		method.addSignedIntParameter(counter);
+		method.addSignedIntParameter(practice);
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingManagerImplementation*) _impl)->createPrototype(player, count);
+		((CraftingManagerImplementation*) _impl)->createPrototype(player, counter, practice);
 }
 
-void CraftingManager::createSchematic(Player* player, String& count) {
+void CraftingManager::createSchematic(Player* player, int counter) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 15);
 		method.addObjectParameter(player);
-		method.addAsciiParameter(count);
+		method.addSignedIntParameter(counter);
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingManagerImplementation*) _impl)->createSchematic(player, count);
+		((CraftingManagerImplementation*) _impl)->createSchematic(player, counter);
 }
 
 float CraftingManager::getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type) {
@@ -316,10 +317,10 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		handleExperimenting((Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_handleExperimenting__Player_int_int_String_));
 		break;
 	case 14:
-		createPrototype((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createPrototype__Player_String_));
+		createPrototype((Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 15:
-		createSchematic((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createSchematic__Player_String_));
+		createSchematic((Player*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 16:
 		resp->insertFloat(getWeightedValue((Player*) inv->getObjectParameter(), (CraftingTool*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter(), inv->getSignedIntParameter()));
@@ -381,12 +382,12 @@ void CraftingManagerAdapter::handleExperimenting(Player* player, int counter, in
 	return ((CraftingManagerImplementation*) impl)->handleExperimenting(player, counter, numRowsAttempted, expString);
 }
 
-void CraftingManagerAdapter::createPrototype(Player* player, String& count) {
-	return ((CraftingManagerImplementation*) impl)->createPrototype(player, count);
+void CraftingManagerAdapter::createPrototype(Player* player, int counter, int practice) {
+	return ((CraftingManagerImplementation*) impl)->createPrototype(player, counter, practice);
 }
 
-void CraftingManagerAdapter::createSchematic(Player* player, String& count) {
-	return ((CraftingManagerImplementation*) impl)->createSchematic(player, count);
+void CraftingManagerAdapter::createSchematic(Player* player, int counter) {
+	return ((CraftingManagerImplementation*) impl)->createSchematic(player, counter);
 }
 
 float CraftingManagerAdapter::getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type) {

@@ -45,6 +45,7 @@ hideBoots = Object:new {
 
    objectName = "Hide Boots",
    stfName = "boots_s04",
+   stfFile = "wearables_name",
    objectCRC = 196342496,
    groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ hideBoots = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777222:objectcrc=2321198008:objecttemp=boots_s04:templatetype=wearables_name:itemmask=62967:",
+   tanoAttributes = "objecttype=16777222:objectcrc=2321198008:objecttemp=boots_s04:templatetype=wearables_name:itemmask=62967::",
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "19",
    customizationSkill = "clothing_customization"

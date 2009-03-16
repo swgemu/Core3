@@ -45,6 +45,7 @@ electronicsGPModule = Object:new {
 
    objectName = "Electronics GP Module",
    stfName = "electronics_gp_module",
+   stfFile = "craft_item_ingredients_n",
    objectCRC = 4228360112,
    groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ electronicsGPModule = Object:new {
    experimentalMax = "0, 0, 150, 5",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8200:objectcrc=3786408832:objecttemp=electronics_gp_module:templatetype=craft_item_ingredients_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8200:objectcrc=3786408832:objecttemp=electronics_gp_module:templatetype=craft_item_ingredients_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

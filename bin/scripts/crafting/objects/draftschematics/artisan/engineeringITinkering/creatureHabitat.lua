@@ -45,6 +45,7 @@ creatureHabitat = Object:new {
 
    objectName = "Creature Habitat",
    stfName = "bug_habitat",
+   stfFile = "craft_item_ingredients_n",
    objectCRC = 3662038442,
    groupName = "craftArtisanEngineeringGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ creatureHabitat = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8211:objectcrc=3865262015:objecttemp=bug_habitat:templatetype=craft_item_ingredients_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8211:objectcrc=3865262015:objecttemp=bug_habitat:templatetype=craft_item_ingredients_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

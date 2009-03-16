@@ -45,6 +45,7 @@ energyDistributor = Object:new {
 
    objectName = "Energy Distributor",
    stfName = "electronic_energy_distributor",
+   stfFile = "craft_item_ingredients_n",
    objectCRC = 1152098080,
    groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ energyDistributor = Object:new {
    experimentalMax = "0, 0, 150, 5",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8200:objectcrc=3328520335:objecttemp=electronic_energy_distributor:templatetype=craft_item_ingredients_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8200:objectcrc=3328520335:objecttemp=electronic_energy_distributor:templatetype=craft_item_ingredients_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

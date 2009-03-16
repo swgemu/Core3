@@ -45,6 +45,7 @@ allPurposeShipRepairKit = Object:new {
 
    objectName = "All Purpose Ship Repair Kit",
    stfName = "repair_kit_ship_n",
+   stfFile = "space/space_item",
    objectCRC = 2504809285,
    groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ allPurposeShipRepairKit = Object:new {
    experimentalMax = "0, 0, 10000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=805306374:objectcrc=807989435:objecttemp=repair_kit_ship_n:templatetype=space/space_item:itemmask=65535:",
+   tanoAttributes = "objecttype=805306374:objectcrc=807989435:objecttemp=repair_kit_ship_n:templatetype=space/space_item:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

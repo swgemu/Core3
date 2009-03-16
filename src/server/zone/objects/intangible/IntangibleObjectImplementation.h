@@ -49,18 +49,21 @@ which carries forward this exception.
 
 #include "IntangibleObject.h"
 
+#include "../scene/ItemAttributes.h"
+#include "../scene/CustomizationVariables.h"
+
 class Player;
 
 class IntangibleObjectImplementation : public IntangibleObjectServant {
-	String name;
-	String detailName;
+
+protected:
 
 	uint32 status;
 
-	ManagedReference<SceneObject> worldObject;
-
 public:
-	IntangibleObjectImplementation(SceneObject* container, uint32 objCRC, uint64 id);
+	IntangibleObjectImplementation(uint64 oid, String n, String stringFile,
+			String stringName, uint32 objCRC, SceneObject* cont);
+	IntangibleObjectImplementation(uint64 oid, int tp);
 
 	void init();
 
@@ -69,36 +72,25 @@ public:
 	void sendTo(Player* player, bool doClose = true);
 	void sendDestroyTo(Player* player);
 
+	void parseItemAttributes();
+	void generateAttributes(SceneObject* obj);
+	void addAttributes(AttributeListMessage* alm);
+
 	void updateStatus(uint32 stat);
-
-	inline String& getName() {
-		return name;
-	}
-
-	inline String& getDetailName() {
-		return detailName;
-	}
 
 	inline uint32 getStatus() {
 		return status;
 	}
 
 	inline SceneObject* getWorldObject() {
-		return worldObject;
+		return getObject(0);
 	}
 
 	inline void setWorldObject(SceneObject* obj) {
-		worldObject = obj;
+		obj->setParent(_this);
+		objects.removeAll();
+		addObject(obj);
 	}
-
-	inline void setName(const String& nme) {
-		name = nme;
-	}
-
-	inline void setDetailName(const String& detail) {
-		detailName = detail;
-	}
-
 };
 
 #endif /*INTANGIBLEOBJECTIMPLEMENTATION_H_*/

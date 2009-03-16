@@ -45,6 +45,7 @@ speederbike = Object:new {
 
    objectName = "Speederbike",
    stfName = "speederbike",
+   stfFile = "pet_deed",
    objectCRC = 3893680726,
    groupName = "craftArtisanVehicle", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ speederbike = Object:new {
    experimentalMax = "0, 0, 2500",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8388613:objectcrc=4075476273:objecttemp=speederbike:templatetype=monster_name:itemmask=65535:",
+   tanoAttributes = "objecttype=8388613:objectcrc=4075476273:objecttemp=speederbike:templatetype=monster_name:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

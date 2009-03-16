@@ -14,8 +14,13 @@
  *	IntangibleObjectStub
  */
 
-IntangibleObject::IntangibleObject(SceneObject* container, unsigned int objCRC, unsigned long long oid) : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new IntangibleObjectImplementation(container, objCRC, oid);
+IntangibleObject::IntangibleObject(unsigned long long oid, String& n, String& stringFile, String& stringName, unsigned int objCRC, SceneObject* cont) : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new IntangibleObjectImplementation(oid, n, stringFile, stringName, objCRC, cont);
+	_impl->_setStub(this);
+}
+
+IntangibleObject::IntangibleObject(unsigned long long oid, int tp) : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new IntangibleObjectImplementation(oid, tp);
 	_impl->_setStub(this);
 }
 
@@ -52,51 +57,12 @@ void IntangibleObject::sendDestroyTo(Player* player) {
 		((IntangibleObjectImplementation*) _impl)->sendDestroyTo(player);
 }
 
-void IntangibleObject::setName(const String& name) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 8);
-		method.addAsciiParameter(name);
-
-		method.executeWithVoidReturn();
-	} else
-		((IntangibleObjectImplementation*) _impl)->setName(name);
-}
-
-void IntangibleObject::setDetailName(const String& detail) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
-		method.addAsciiParameter(detail);
-
-		method.executeWithVoidReturn();
-	} else
-		((IntangibleObjectImplementation*) _impl)->setDetailName(detail);
-}
-
-void IntangibleObject::setWorldObject(SceneObject* obj) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 10);
-		method.addObjectParameter(obj);
-
-		method.executeWithVoidReturn();
-	} else
-		((IntangibleObjectImplementation*) _impl)->setWorldObject(obj);
-}
-
 void IntangibleObject::updateStatus(unsigned int stat) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 8);
 		method.addUnsignedIntParameter(stat);
 
 		method.executeWithVoidReturn();
@@ -104,38 +70,12 @@ void IntangibleObject::updateStatus(unsigned int stat) {
 		((IntangibleObjectImplementation*) _impl)->updateStatus(stat);
 }
 
-String& IntangibleObject::getName() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 12);
-
-		method.executeWithAsciiReturn(_return_getName);
-		return _return_getName;
-	} else
-		return ((IntangibleObjectImplementation*) _impl)->getName();
-}
-
-String& IntangibleObject::getDetailName() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 13);
-
-		method.executeWithAsciiReturn(_return_getDetailName);
-		return _return_getDetailName;
-	} else
-		return ((IntangibleObjectImplementation*) _impl)->getDetailName();
-}
-
 SceneObject* IntangibleObject::getWorldObject() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 9);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -147,11 +87,24 @@ unsigned int IntangibleObject::getStatus() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 10);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
 		return ((IntangibleObjectImplementation*) _impl)->getStatus();
+}
+
+void IntangibleObject::setWorldObject(SceneObject* obj) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addObjectParameter(obj);
+
+		method.executeWithVoidReturn();
+	} else
+		((IntangibleObjectImplementation*) _impl)->setWorldObject(obj);
 }
 
 /*
@@ -172,28 +125,16 @@ Packet* IntangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		sendDestroyTo((Player*) inv->getObjectParameter());
 		break;
 	case 8:
-		setName(inv->getAsciiParameter(_param0_setName__String_));
-		break;
-	case 9:
-		setDetailName(inv->getAsciiParameter(_param0_setDetailName__String_));
-		break;
-	case 10:
-		setWorldObject((SceneObject*) inv->getObjectParameter());
-		break;
-	case 11:
 		updateStatus(inv->getUnsignedIntParameter());
 		break;
-	case 12:
-		resp->insertAscii(getName());
-		break;
-	case 13:
-		resp->insertAscii(getDetailName());
-		break;
-	case 14:
+	case 9:
 		resp->insertLong(getWorldObject()->_getObjectID());
 		break;
-	case 15:
+	case 10:
 		resp->insertInt(getStatus());
+		break;
+	case 11:
+		setWorldObject((SceneObject*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -210,28 +151,8 @@ void IntangibleObjectAdapter::sendDestroyTo(Player* player) {
 	return ((IntangibleObjectImplementation*) impl)->sendDestroyTo(player);
 }
 
-void IntangibleObjectAdapter::setName(const String& name) {
-	return ((IntangibleObjectImplementation*) impl)->setName(name);
-}
-
-void IntangibleObjectAdapter::setDetailName(const String& detail) {
-	return ((IntangibleObjectImplementation*) impl)->setDetailName(detail);
-}
-
-void IntangibleObjectAdapter::setWorldObject(SceneObject* obj) {
-	return ((IntangibleObjectImplementation*) impl)->setWorldObject(obj);
-}
-
 void IntangibleObjectAdapter::updateStatus(unsigned int stat) {
 	return ((IntangibleObjectImplementation*) impl)->updateStatus(stat);
-}
-
-String& IntangibleObjectAdapter::getName() {
-	return ((IntangibleObjectImplementation*) impl)->getName();
-}
-
-String& IntangibleObjectAdapter::getDetailName() {
-	return ((IntangibleObjectImplementation*) impl)->getDetailName();
 }
 
 SceneObject* IntangibleObjectAdapter::getWorldObject() {
@@ -240,6 +161,10 @@ SceneObject* IntangibleObjectAdapter::getWorldObject() {
 
 unsigned int IntangibleObjectAdapter::getStatus() {
 	return ((IntangibleObjectImplementation*) impl)->getStatus();
+}
+
+void IntangibleObjectAdapter::setWorldObject(SceneObject* obj) {
+	return ((IntangibleObjectImplementation*) impl)->setWorldObject(obj);
 }
 
 /*

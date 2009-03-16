@@ -46,11 +46,11 @@ which carries forward this exception.
 
 #include "../TangibleObject.h"
 
+#include "../wearables/WearableSkillMods.h"
+
 #include "engine/engine.h"
 
 #include "AttachmentImplementation.h"
-
-#include "../../../packets.h"
 
 AttachmentImplementation::AttachmentImplementation(uint64 objID, int type) :
 	AttachmentServant(objID, type) {
@@ -67,30 +67,25 @@ AttachmentImplementation::~AttachmentImplementation()
 
 void AttachmentImplementation::init() {
 
-	skillMod0Type = 0;
-	skillMod0Value = 0;
-
-	skillMod1Type = 0;
-	skillMod1Value = 0;
-
-	skillMod2Type = 0;
-	skillMod2Value = 0;
-
 	objectType = SceneObjectImplementation::TANGIBLE;
 
-	if (attachmentType == ARMOR) {
+	if (attachmentType == TangibleObjectImplementation::ARMORATTACHMENT) {
 		objectCRC = 0xDF144F5C;
 		objectSubType = TangibleObjectImplementation::ARMORATTACHMENT;
-		customName = UnicodeString("\\#ffff00Armor Attachment");
-		templateName = "gem_armor";
+		setOptionsBitmask(TangibleObjectImplementation::OPTIONS_YELLOW);
+		attachmentType = AttachmentImplementation::ARMORATTACHMENT;
+		templateName = "socket_gem_armor";
 	} else {
 		objectCRC = 0xC0FCFE34;
 		objectSubType = TangibleObjectImplementation::CLOTHINGATTACHMENT;
-		customName = UnicodeString("\\#ffff00Clothing Attachment");
-		templateName = "gem_clothing";
+		setOptionsBitmask(TangibleObjectImplementation::OPTIONS_YELLOW);
+		templateName = "socket_gem_clothing";
+		attachmentType = AttachmentImplementation::CLOTHINGATTACHMENT;
 	}
 
-	templateTypeName = "weapon_name";
+	templateTypeName = "item_n";
+
+	maxmods = 3;
 
 	persistent = false;
 	updated = false;
@@ -99,21 +94,79 @@ void AttachmentImplementation::init() {
 
 void AttachmentImplementation::parseItemAttributes() {
 
-	String name = "skillMod0Type";
-	skillMod0Type = itemAttributes->getIntAttribute(name);
-	name = "skillMod0Value";
-	skillMod0Value = itemAttributes->getIntAttribute(name);
+	String name = "skillMods";
+	parseSkillModAttributeString(itemAttributes->getStringAttribute(name));
 
-	name = "skillMod1Type";
-	skillMod1Type = itemAttributes->getIntAttribute(name);
-	name = "skillMod1Value";
-	skillMod1Value = itemAttributes->getIntAttribute(name);
+	name = "skillModIndex";
+	parseSkillModIndexString(itemAttributes->getStringAttribute(name));
 
-	name = "skillMod2Type";
-	skillMod2Type = itemAttributes->getIntAttribute(name);
-	name = "skillMod2Value";
-	skillMod2Value = itemAttributes->getIntAttribute(name);
+}
 
+void AttachmentImplementation::saveSkillModIndex() {
+
+	StringBuffer index;
+
+	for (int i = 0; i < skillModIndex.size(); ++i) {
+		index << skillModIndex.get(i) << ";";
+	}
+
+	String name = "skillModIndex";
+	String value = index.toString();
+	itemAttributes->setStringAttribute(name, value);
+}
+
+void AttachmentImplementation::saveSkillModAttributes() {
+
+	StringBuffer skills;
+
+	for (int i = 0; i < skillModMap.size(); ++i) {
+		skills << skillModMap.elementAt(i)->getKey() << "="
+				<< skillModMap.elementAt(i)->getValue() << ";";
+	}
+
+	String name = "skillMods";
+	String value = skills.toString();
+	itemAttributes->setStringAttribute(name, value);
+}
+
+void AttachmentImplementation::parseSkillModAttributeString(String attribute) {
+
+	String temp, type;
+
+	StringTokenizer tokenizer(attribute);
+	tokenizer.setDelimeter(";");
+
+	while(tokenizer.hasMoreTokens()) {
+
+		tokenizer.getStringToken(temp);
+
+		StringTokenizer keyvaluepair(temp);
+		keyvaluepair.setDelimeter("=");
+
+		if (keyvaluepair.hasMoreTokens()) {
+			keyvaluepair.getStringToken(type);
+			int value = keyvaluepair.getIntToken();
+
+			addSkillMod(type, value);
+		}
+	}
+}
+
+void AttachmentImplementation::parseSkillModIndexString(String attribute) {
+
+	String name;
+
+	StringTokenizer tokenizer(attribute);
+	tokenizer.setDelimeter(";");
+
+	skillModIndex.removeAll();
+
+	while(tokenizer.hasMoreTokens()) {
+
+		tokenizer.getStringToken(name);
+
+		skillModIndex.add(name);
+	}
 }
 
 void AttachmentImplementation::generateAttributes(SceneObject* obj) {
@@ -128,188 +181,110 @@ void AttachmentImplementation::generateAttributes(SceneObject* obj) {
 	player->sendMessage(alm);
 }
 
-void AttachmentImplementation::setSkillModValue(int index, int value) {
-	switch (index) {
-	case 0:
-		setSkillMod0Value(value);
-		break;
-	case 1:
-		setSkillMod1Value(value);
-		break;
-	case 2:
-		setSkillMod2Value(value);
-		break;
+
+void AttachmentImplementation::addAttributes(AttributeListMessage* alm) {
+	StringBuffer name;
+	for(int i = 0; i < skillModMap.size(); ++i) {
+
+		name << "cat_skill_mod_bonus.@stat_n:" << skillModMap.elementAt(i)->getKey();
+		int value = skillModMap.elementAt(i)->getValue();
+
+		alm->insertAttribute(name.toString(), value);
+
+		name.removeAll();
 	}
 }
 
-void AttachmentImplementation::setSkillModType(int index, int type) {
-	switch (index) {
-	case 0:
-		setSkillMod0Type(type);
-		break;
-	case 1:
-		setSkillMod1Type(type);
-		break;
-	case 2:
-		setSkillMod2Type(type);
-		break;
+void AttachmentImplementation::addSkillMod(String skillModType, int skillModValue) {
+
+	if (skillModMap.contains(skillModType)) {
+		skillModMap.drop(skillModType);
 	}
+
+	skillModMap.put(skillModType, skillModValue);
+
+	skillModIndex.add(skillModType);
+
+	saveSkillModIndex();
+	saveSkillModAttributes();
 }
 
-int AttachmentImplementation::getSkillModType(int index) {
-	switch (index) {
-	case 0:
-		return skillMod0Type;
-		break;
-	case 1:
-		return skillMod1Type;
-		break;
-	case 2:
-		return skillMod2Type;
-		break;
-	}
-	return -1;
-}
+void AttachmentImplementation::generateSkillMods(Player* player, int creatureLevel) {
 
-int AttachmentImplementation::getSkillModValue(int index) {
-	switch (index) {
-	case 0:
-		return skillMod0Value;
-		break;
-	case 1:
-		return skillMod1Value;
-		break;
-	case 2:
-		return skillMod2Value;
-		break;
-	}
-	return 0;
-}
+	int maxEffectiveLevel = 250;
 
-int AttachmentImplementation::getBestSkillMod() {
-	int index = -1;
-	int skillModValue = -26;
+	if (creatureLevel > maxEffectiveLevel)
+		creatureLevel = maxEffectiveLevel;
 
-	if (skillMod0Value > skillModValue) {
-		skillModValue = skillMod0Value;
-		index = 0;
-	}
-	if (skillMod1Value > skillModValue) {
-		skillModValue = skillMod1Value;
-		index = 1;
-	}
-	if (skillMod2Value > skillModValue) {
-		skillModValue = skillMod2Value;
-		index = 2;
-	}
-	return index;
-}
+	// Gives a max Value of 200 - If creature level i >= 250 this will equal 100
+	int levelModifier = int(float(creatureLevel) / float(maxEffectiveLevel) * 100) * 2;
 
-void AttachmentImplementation::setSkillMods(int modifier) {
+	// Gives a max Value of 500 - If creature level i >= 250 this will equal 100
+	int luckskill = int(float(player->getSkillMod("luck") + player->getSkillMod("force_luck")) / 125.0f) * 100 * 2;
 
-	int maxLevel = 120;
-
-	if (modifier > maxLevel){
-		int diff = System::random(modifier - maxLevel);
-
-		modifier = maxLevel;
-		modifier += diff;
-	}
-
-	int luck = (System::random(100)) + (modifier/4);
+	int luckRoll = System::random(300);
 
 	if (System::random(1000) == 7)
-		luck = luck * 2;
+		luckRoll *=  2;
 
 	if (System::random(50000) == 77)
-		luck = luck * 5;
+		luckRoll *= 5;
 
 	if (System::random(1000000) == 777)
-		luck = luck * 10;
+		luckRoll *= 10;
 
 	if (System::random(100) == 6)
-		luck = 0;
+		luckRoll = 0;
 
-	modifier = modifier + System::random(10);
+	int playerRoll = System::random(levelModifier + luckskill + luckRoll);
 
-	int playerRoll = System::random(1000) * modifier * luck / 1000;
+	/*for(int i = 0; i < 1000; i++) {
+		levelModifier = System::random(250);
+		luckRoll = System::random(300);
+		int playerRoll = System::random(levelModifier + luckskill + luckRoll);
 
-	if (playerRoll > 200000) {
-		luck = luck + 150;
-	} else if (playerRoll > 45000) {
-		luck = luck + 100;
-	} else if (playerRoll > 17500) {
-		luck = luck + 50;
+		if(playerRoll > 350)
+			System::out << " Level: " << levelModifier << " Luck: " << luckRoll << " Got 3 Sockets" << endl;
+		else if(playerRoll > 250)
+				System::out << " Level: " << levelModifier << " Luck: " << luckRoll <<  " Got 2 Sockets" << endl;
+	}*/
+
+	// Max roll without luck mods Creature max is 500, luck max is 200
+	// int maxPlayerRoll = 1000 * 250 * 2250 / 1000;
+
+	maxmods = 1;
+
+	if (playerRoll > 200) {
+		maxmods = 2;
+	} else if (playerRoll > 350) {
+		maxmods = 3;
 	}
 
-	setSkillMod0Type(System::random(30) + 1);
-	setSkillMod0Value(getModValue(luck, modifier));
-
-	if (System::random(15) == 1) {
-		setSkillMod1Type(System::random(30) + 1);
-		setSkillMod1Value(getModValue(luck, modifier));
-	}
-	if (System::random(30) == 1) {
-		setSkillMod2Type(System::random(30) + 1);
-		setSkillMod2Value(getModValue(luck, modifier));
-	}
-	if (skillMod0Value > 25)
-		setSkillMod0Value(25);
-
-	if (skillMod1Value > 25)
-		setSkillMod1Value(25);
-
-	if (skillMod2Value > 25)
-		setSkillMod2Value(25);
-
-	if (skillMod0Value < -25)
-		setSkillMod0Value(-25);
-
-	if (skillMod1Value < -25)
-		setSkillMod1Value(-25);
-
-	if (skillMod2Value < -25)
-		setSkillMod2Value(-25);
-
-	if (skillMod0Value == 0)
-		setSkillMod0Value(-1);
-
-	if (skillMod1Value == 0)
-		setSkillMod1Value(-1);
-
-	if (skillMod2Value == 0)
-		setSkillMod2Value(-1);
-
-	if (skillMod2Type == skillMod1Type || skillMod2Type == skillMod0Type) {
-		setSkillMod2Type(0);
-		setSkillMod2Value(0);
-	}
-
-	if (skillMod1Type == skillMod0Type || skillMod1Type == skillMod2Type) {
-		setSkillMod1Type(0);
-		setSkillMod1Value(0);
+	for(int i = 0; i < maxmods; ++i) {
+		int randomLuck = System::random(int(luckRoll / 2)) + int(luckRoll / 2) + luckskill;
+		addSkillMod(wearableSkillMods.getRandomAttachmentMod(attachmentType), getRandomModValue(randomLuck, creatureLevel));
 	}
 }
 
-int AttachmentImplementation::getModValue(int luck, int modifier){
+int AttachmentImplementation::getRandomModValue(int luck, int creatureLevel){
 
 	int min, mod, result;
 
-	if (modifier > 185){
+	if (luck > 280 && creatureLevel > 250){
 		min = 9;
-		mod = modifier % 27;
-	} else if (modifier > 141){
+		mod = luck % 27;
+	} else if (luck > 200 && creatureLevel > 125){
 		min = 4;
-		mod = modifier % 19;
-	} else if (modifier > 110){
+		mod = luck % 19;
+	} else if (luck > 110){
 		min = 2;
-		mod = modifier % 7;
-	} else if (modifier > 45){
+		mod = luck % 7;
+	} else if (luck > 45){
 		min = 2;
-		mod = modifier % 4;
-	} else if (modifier > 15){
+		mod = luck % 4;
+	} else if (luck > 15){
 		min = 1;
-		mod = modifier % 2;
+		mod = luck % 2;
 	}
 
 	result = min + mod;
@@ -317,8 +292,14 @@ int AttachmentImplementation::getModValue(int luck, int modifier){
 		result *= -1;
 	}
 
-	return result;
+	if(result > 25)
+		result = 25;
+	if(result < -25)
+		result = -25;
+	if(result == 0)
+		result = -1;
 
+	return result;
 }
 
 void AttachmentImplementation::remove(Player* player) {
@@ -328,18 +309,5 @@ void AttachmentImplementation::remove(Player* player) {
 
 	player->removeInventoryItem(objectID);
 
-	BaseMessage* msg = new SceneObjectDestroyMessage(objectID);
-	player->sendMessage(msg);
-
-}
-
-void AttachmentImplementation::addAttributes(AttributeListMessage* alm) {
-
-	if (skillMod0Value != 0)
-		generateSkillMods(alm,skillMod0Type,skillMod0Value);
-	if (skillMod1Value != 0)
-		generateSkillMods(alm,skillMod1Type,skillMod1Value);
-	if (skillMod2Value != 0)
-		generateSkillMods(alm,skillMod2Type,skillMod2Value);
-
+	sendDestroyTo(player);
 }

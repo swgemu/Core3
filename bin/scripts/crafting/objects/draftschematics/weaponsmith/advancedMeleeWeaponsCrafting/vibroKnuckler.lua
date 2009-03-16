@@ -45,6 +45,7 @@ vibroKnuckler = Object:new {
 
    objectName = "Vibro Knuckler",
    stfName = "vibroknuckler",
+   stfFile = "weapon_name",
    objectCRC = 1403681275,
    groupName = "craftWeaponMeleeGroupC", -- Group schematic is awarded in (See skills table)
 

@@ -49,6 +49,8 @@ which carries forward this exception.
 
 #include "../../objects/scene/SceneObject.h"
 
+//class SceneObject;
+
 class AttributeListMessage : public BaseMessage {
 	int listcount;
 	int countLocation;

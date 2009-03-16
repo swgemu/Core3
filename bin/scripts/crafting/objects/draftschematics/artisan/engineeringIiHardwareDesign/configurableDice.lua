@@ -45,6 +45,7 @@ configurableDice = Object:new {
 
    objectName = "Configurable Dice",
    stfName = "eqp_configurable_group_dice_single",
+   stfFile = "dice/dice_details",
    objectCRC = 1370957893,
    groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ configurableDice = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8211:objectcrc=1212860070:objecttemp=eqp_configurable_group_dice_single:templatetype=dice/dice_details:itemmask=65535:",
+   tanoAttributes = "objecttype=8211:objectcrc=1212860070:objecttemp=eqp_configurable_group_dice_single:templatetype=dice/dice_details:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

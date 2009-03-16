@@ -45,6 +45,7 @@ compositeArmorChestPlate = Object:new {
 
    objectName = "Composite Armor Chest Plate",
    stfName = "armor_composite_chest_plate",
+   stfFile = "wearables_name",
    objectCRC = 506032706,
    groupName = "craftArmorPersonalGroupF", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ compositeArmorChestPlate = Object:new {
    experimentalMax = "0, 0, 0, 1000, 40, 50000, 150, 39, 15, 1, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=257:objectcrc=2068279078:objecttemp=armor_composite_chest_plate:templatetype=wearables_name:itemmask=62975:",
+   tanoAttributes = "objecttype=257:objectcrc=2068279078:objecttemp=armor_composite_chest_plate:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=restraineffectiveness;vunerability=stuneffectiveness;armorType=256;armorStyle=4097;:",
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "0",
    customizationSkill = "armor_customization"

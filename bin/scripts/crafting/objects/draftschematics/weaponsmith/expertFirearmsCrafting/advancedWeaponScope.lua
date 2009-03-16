@@ -45,6 +45,7 @@ advancedWeaponScope = Object:new {
 
    objectName = "Advanced Weapon Scope",
    stfName = "scope_weapon_advanced",
+   stfFile = "craft_weapon_ingredients_n",
    objectCRC = 3611829706,
    groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
 

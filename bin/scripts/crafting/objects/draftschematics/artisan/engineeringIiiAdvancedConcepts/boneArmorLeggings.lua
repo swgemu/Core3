@@ -45,6 +45,7 @@ boneArmorLeggings = Object:new {
 
    objectName = "Bone Armor Leggings",
    stfName = "armor_bone_s01_leggings",
+   stfFile = "wearables_name",
    objectCRC = 4006019725,
    groupName = "craftArtisanEngineeringGroupC", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ boneArmorLeggings = Object:new {
    experimentalMax = "0, 0, 0, 1000, 20, 12500, 10, 36, 2, 1, 2, 30, 12500",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=260:objectcrc=2709205528:objecttemp=armor_bone_s01_leggings:templatetype=wearables_name:itemmask=62975:",
+   tanoAttributes = "objecttype=260:objectcrc=2709205528:objecttemp=armor_bone_s01_leggings:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=energyeffectiveness;vunerability=kineticeffectiveness,blasteffectiveness,stuneffectiveness,heateffectiveness,coldeffectiveness,acideffectiveness,restraineffectiveness;armorType=262;armorStyle=4099;:",
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "7, 0",
    customizationSkill = "armor_customization"

@@ -45,6 +45,7 @@ mineExplosivesKit = Object:new {
 
    objectName = "Mine Explosives Kit",
    stfName = "weapon_mine_explosive",
+   stfFile = "powerup_n",
    objectCRC = 797092971,
    groupName = "craftArtisanEngineeringGroupC", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ mineExplosivesKit = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=524293:objectcrc=3665923080:objecttemp=weapon_mine_explosive:templatetype=powerup_n:itemmask=65535:",
+   tanoAttributes = "objecttype=524293:objectcrc=3665923080:objecttemp=weapon_mine_explosive:templatetype=powerup_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

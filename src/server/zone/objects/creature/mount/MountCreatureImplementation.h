@@ -50,7 +50,7 @@ class CreatureObject;
 class Creature;
 
 #include "MountCreature.h"
-#include "../../tangible/ItemAttributes.h"
+#include "../../scene/ItemAttributes.h"
 #include "../../../packets/scene/AttributeListMessage.h"
 
 class MountCreatureImplementation : public MountCreatureServant {
@@ -59,6 +59,8 @@ class MountCreatureImplementation : public MountCreatureServant {
 	CreatureObject* linkedCreature;
 
 	bool instantMount;
+
+	IntangibleObject* datapadItem;
 
 protected:
 	//String attributeString;
@@ -117,6 +119,11 @@ public:
 
 	inline void setInstantMount(bool val) {
 		instantMount = val;
+	}
+
+	inline void setDatapadItem(SceneObject* item) {
+		if(item->isIntangible())
+			datapadItem = (IntangibleObject*) item;
 	}
 
 	CreatureObject* getLinkedCreature() {

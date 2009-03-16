@@ -45,6 +45,7 @@ coupler = Object:new {
 
    objectName = "Coupler",
    stfName = "weapon_ranged_power",
+   stfFile = "powerup_n",
    objectCRC = 2789770349,
    groupName = "craftArtisanEngineeringGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ coupler = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=524290:objectcrc=1622710306:objecttemp=weapon_ranged_power:templatetype=powerup_n:itemmask=65535:",
+   tanoAttributes = "objecttype=524290:objectcrc=1622710306:objecttemp=weapon_ranged_power:templatetype=powerup_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

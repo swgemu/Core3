@@ -75,7 +75,7 @@ which carries forward this exception.
 #include "../zone/objects/player/sui/listbox/SuiListBoxImplementation.h"
 #include "../zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.h"
 
-#include "../zone/objects/tangible/CustomizationVariables.h"
+#include "../zone/objects/scene/CustomizationVariables.h"
 
 #include "../zone/managers/planet/PlanetManager.h"
 

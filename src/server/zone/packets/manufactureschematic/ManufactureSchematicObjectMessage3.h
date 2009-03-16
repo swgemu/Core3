@@ -49,6 +49,7 @@ which carries forward this exception.
 #include "../BaseLineMessage.h"
 
 #include "../../objects/draftschematic/DraftSchematic.h"
+#include "../../objects/manufacture/ManufactureSchematic.h"
 
 class ManufactureSchematicObjectMessage3 : public BaseLineMessage {
 public:
@@ -73,6 +74,64 @@ public:
 		insertInt(0);
 		insertAscii("complexity");
 		insertFloat(complexity);
+
+		//UnicodeString playerName = "Link";
+		insertUnicode(playerName);
+		insertInt(50);
+		insertFloat(8.0f);
+
+		setSize();
+	}
+
+	ManufactureSchematicObjectMessage3(DraftSchematic* draftSchematic, UnicodeString& playerName)
+			: BaseLineMessage(draftSchematic->getObjectID(), 0x4D53434F, 3, 0x09) {
+
+		insertFloat(draftSchematic->getComplexity());
+		insertAscii(draftSchematic->getStringFile());
+		insertInt(0);
+		insertAscii(draftSchematic->getStringName());
+
+		insertUnicode(draftSchematic->getName());
+
+		insertInt(0);  // Unknown
+		insertInt(draftSchematic->getManufacturingLimit()); // Manufacturing Count
+		insertInt(1);
+		insertInt(1);
+		insertByte(0);
+
+		insertAscii("crafting");
+		insertInt(0);
+		insertAscii("complexity");
+		insertFloat(draftSchematic->getComplexity());
+
+		//UnicodeString playerName = "Link";
+		insertUnicode(playerName);
+		insertInt(50);
+		insertFloat(8.0f);
+
+		setSize();
+	}
+
+	ManufactureSchematicObjectMessage3(ManufactureSchematic* manufactureSchematic, UnicodeString& playerName)
+			: BaseLineMessage(manufactureSchematic->getObjectID(), 0x4D53434F, 3, 0x09) {
+
+		insertFloat(manufactureSchematic->getComplexity());
+		insertAscii(manufactureSchematic->getTemplateTypeName());
+		insertInt(0);
+		insertAscii(manufactureSchematic->getTemplateName());
+
+		insertUnicode(manufactureSchematic->getCustomName());
+
+		insertInt(0);  // Unknown
+		insertInt(0x0A); // Unknown
+		insertInt(1);
+		insertInt(1);
+		insertByte(0);
+
+		insertAscii("crafting");
+		insertInt(0);
+		insertAscii("complexity");
+		insertFloat(manufactureSchematic->getComplexity());
 
 		//UnicodeString playerName = "Link";
 		insertUnicode(playerName);

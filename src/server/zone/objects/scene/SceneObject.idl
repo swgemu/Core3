@@ -51,6 +51,8 @@ include "engine/util/Coordinate";
 
 include "../../ZoneProcessServerImplementation";
 
+import "../../packets/scene/AttributeListMessage";
+
 import "../../packets/object/ObjectMenuResponse";
 
 import "../../Zone";
@@ -112,6 +114,7 @@ interface SceneObject implements ManagedObject {
 	int getContainerObjectsWithChildsSize();
 
 	boolean isContainerEmpty();
+	boolean isContainerFull();
 	
 	boolean isAttackable();
 
@@ -157,6 +160,16 @@ interface SceneObject implements ManagedObject {
 	void setPositionY(float y);
 
 	void setDirection(float x, float z, float y, float w);
+
+	void setPersistent(boolean pers);
+	void setUpdated(boolean upd);
+	void setDeleted(boolean del);
+	
+	// Saving methods
+	boolean isPersistent();
+	boolean isUpdated();
+	boolean isDeleted();
+
 	
 	Coordinate getCoordinate(float x, float y, float distance, float angle);
 	Coordinate getCoordinate(SceneObject object, float distance, float angle);
@@ -164,6 +177,8 @@ interface SceneObject implements ManagedObject {
 
 	// attribute methods
 	void generateAttributes(Player player);
+	void addAttributes(AttributeListMessage alm);
+	void parseItemAttributes();
 
 	// logger methods
 	void info(const String message, boolean forcedLog = false);
@@ -192,6 +207,13 @@ interface SceneObject implements ManagedObject {
 	void setParent(SceneObject par, unsigned int linktype = 0x04);
 
 	void setZone(Zone zne);
+	
+	void setAttributes(String attributeString);
+	
+	void setCustomizationString(String cust);
+
+	void setCustomizationVariable(const String type, unsigned int value);
+	void setCustomizationVariable(unsigned char type, unsigned int value);
 
 	void clearUndeploymentEvent();
 
@@ -241,6 +263,10 @@ interface SceneObject implements ManagedObject {
 	String getTemplateTypeName();
 
 	unsigned long getAssociatedArea();
+	
+	void getCustomizationString(String appearance);
+	
+	String getAttributes();
 
 	boolean isPlayer();
 

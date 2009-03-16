@@ -57,6 +57,8 @@ import "../creature/Creature";
 
 import "../tangible/TangibleObject";
 
+import "../tangible/wearables/Wearable";
+
 import "PlayerObject";
 
 import "faction/FactionPointList";
@@ -271,13 +273,14 @@ interface Player implements CreatureObject {
 	void setWeaponSkillMods(Weapon weapon);
 	void setWeaponAccuracy(Weapon weapon);
 
-	void setArmorSkillMods(Armor armor);
 	boolean setArmorEncumbrance(Armor armor, boolean forced);
 	void unsetArmorEncumbrance(Armor armor);
 
 	void applyAttachment(unsigned long attachmentID, unsigned long targetID);
 
 	void applyPowerup(unsigned long powerupID, unsigned long targetID);
+	
+	void setItemSkillMod(int type, int value);
 
 	void loadItems(boolean newcharacter);
 
@@ -291,8 +294,6 @@ interface Player implements CreatureObject {
 	void addInventoryItem(TangibleObject item);
 	void addInventoryResource(ResourceContainer item);
 	void equipPlayerItem(TangibleObject item, boolean doUpdate);
-
-	void saveDatapad(Player player);
 
 	// Profession
 	void saveProfessions();
@@ -570,9 +571,12 @@ interface Player implements CreatureObject {
 	void removeResourceFromCraft(unsigned long resID, int slot, int counter);
 	void nextCraftingStage(String test);
 	void craftingCustomization(String name, int condition, String customizationString);
-	void createPrototype(String count);
-	void createSchematic(String count);
+	void createPrototype(int counter, int practice);
+	void createSchematic(int counter);
 	void handleExperimenting(int count, int numRowsAttempted, String expString);
+	
+    void setLastExperimentationAttempt();
+    boolean canExperiment();
 
 	// Draft Schematic stuff
 	void sendDraftSchematics();

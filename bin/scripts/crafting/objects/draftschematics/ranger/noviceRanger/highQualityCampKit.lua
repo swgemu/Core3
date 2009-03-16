@@ -45,6 +45,7 @@ highQualityCampKit = Object:new {
 
    objectName = "High Quality Camp Kit",
    stfName = "camp_quality",
+   stfFile = "item_n",
    objectCRC = 1609906001,
    groupName = "craftRangerCampGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ highQualityCampKit = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32772:objectcrc=3484724123:objecttemp=camp_quality:templatetype=item_n:itemmask=65535:",
+   tanoAttributes = "objecttype=32772:objectcrc=3484724123:objecttemp=camp_quality:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

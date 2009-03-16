@@ -15,6 +15,8 @@ class Player;
 
 class IntangibleObject;
 
+class SceneObject;
+
 #include "../Creature.h"
 
 class MountCreature : public Creature {
@@ -52,6 +54,8 @@ public:
 	bool isInWorld();
 
 	void parseItemAttributes();
+
+	void setDatapadItem(SceneObject* item);
 
 	void repair();
 
@@ -100,6 +104,8 @@ public:
 	bool isInWorld();
 
 	void parseItemAttributes();
+
+	void setDatapadItem(SceneObject* item);
 
 	void repair();
 

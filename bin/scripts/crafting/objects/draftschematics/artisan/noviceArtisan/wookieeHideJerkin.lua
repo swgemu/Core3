@@ -45,6 +45,7 @@ wookieeHideJerkin = Object:new {
 
    objectName = "Wookiee Hide Jerkin",
    stfName = "wke_shirt_s01",
+   stfFile = "wearables_name",
    objectCRC = 3901194065,
    groupName = "craftArtisanNewbieGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ wookieeHideJerkin = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777232:objectcrc=2791438893:objecttemp=wke_shirt_s01:templatetype=wearables_name:itemmask=61955:",
+   tanoAttributes = "objecttype=16777232:objectcrc=2791438893:objecttemp=wke_shirt_s01:templatetype=wearables_name:itemmask=61955::",
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "8, 22",
    customizationSkill = "clothing_customization"

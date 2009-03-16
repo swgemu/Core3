@@ -30,11 +30,6 @@ Component::Component(CreatureObject* creature, unsigned int tempCRC, const Unico
 	_impl->_setStub(this);
 }
 
-Component::Component(Component* component, unsigned long long oid) : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new ComponentImplementation(component, oid);
-	_impl->_setStub(this);
-}
-
 Component::Component(DummyConstructorParameter* param) : TangibleObject(param) {
 }
 
@@ -94,26 +89,12 @@ int Component::useObject(Player* player) {
 		return ((ComponentImplementation*) _impl)->useObject(player);
 }
 
-Component* Component::cloneComponent(Component* component, unsigned long long oid) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 10);
-		method.addObjectParameter(component);
-		method.addUnsignedLongParameter(oid);
-
-		return (Component*) method.executeWithObjectReturn();
-	} else
-		return ((ComponentImplementation*) _impl)->cloneComponent(component, oid);
-}
-
 float Component::getAttributeValue(String& attributeName) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 10);
 		method.addAsciiParameter(attributeName);
 
 		return method.executeWithFloatReturn();
@@ -126,7 +107,7 @@ int Component::getAttributePrecision(String& attributeName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 11);
 		method.addAsciiParameter(attributeName);
 
 		return method.executeWithSignedIntReturn();
@@ -139,7 +120,7 @@ String& Component::getAttributeTitle(String& attributeName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 12);
 		method.addAsciiParameter(attributeName);
 
 		method.executeWithAsciiReturn(_return_getAttributeTitle);
@@ -153,7 +134,7 @@ bool Component::getAttributeHidden(String& attributeName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 13);
 		method.addAsciiParameter(attributeName);
 
 		return method.executeWithBooleanReturn();
@@ -166,7 +147,7 @@ bool Component::hasProperty(String& attributeName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 14);
 		method.addAsciiParameter(attributeName);
 
 		return method.executeWithBooleanReturn();
@@ -179,7 +160,7 @@ void Component::addProperty(String& attribute, float value, int precision, Strin
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 15);
 		method.addAsciiParameter(attribute);
 		method.addFloatParameter(value);
 		method.addSignedIntParameter(precision);
@@ -195,7 +176,7 @@ int Component::getPropertyCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 16);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -207,7 +188,7 @@ String& Component::getProperty(const int j) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 17);
 		method.addSignedIntParameter(j);
 
 		method.executeWithAsciiReturn(_return_getProperty);
@@ -221,7 +202,7 @@ bool Component::changeAttributeValue(String& property, float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 18);
 		method.addAsciiParameter(property);
 		method.addFloatParameter(value);
 
@@ -254,33 +235,30 @@ Packet* ComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertSignedInt(useObject((Player*) inv->getObjectParameter()));
 		break;
 	case 10:
-		resp->insertLong(cloneComponent((Component*) inv->getObjectParameter(), inv->getUnsignedLongParameter())->_getObjectID());
-		break;
-	case 11:
 		resp->insertFloat(getAttributeValue(inv->getAsciiParameter(_param0_getAttributeValue__String_)));
 		break;
-	case 12:
+	case 11:
 		resp->insertSignedInt(getAttributePrecision(inv->getAsciiParameter(_param0_getAttributePrecision__String_)));
 		break;
-	case 13:
+	case 12:
 		resp->insertAscii(getAttributeTitle(inv->getAsciiParameter(_param0_getAttributeTitle__String_)));
 		break;
-	case 14:
+	case 13:
 		resp->insertBoolean(getAttributeHidden(inv->getAsciiParameter(_param0_getAttributeHidden__String_)));
 		break;
-	case 15:
+	case 14:
 		resp->insertBoolean(hasProperty(inv->getAsciiParameter(_param0_hasProperty__String_)));
 		break;
-	case 16:
+	case 15:
 		addProperty(inv->getAsciiParameter(_param0_addProperty__String_float_int_String_), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addProperty__String_float_int_String_));
 		break;
-	case 17:
+	case 16:
 		resp->insertSignedInt(getPropertyCount());
 		break;
-	case 18:
+	case 17:
 		resp->insertAscii(getProperty(inv->getSignedIntParameter()));
 		break;
-	case 19:
+	case 18:
 		resp->insertBoolean(changeAttributeValue(inv->getAsciiParameter(_param0_changeAttributeValue__String_float_), inv->getFloatParameter()));
 		break;
 	default:
@@ -304,10 +282,6 @@ void ComponentAdapter::updateCraftingValues(DraftSchematic* draftSchematic) {
 
 int ComponentAdapter::useObject(Player* player) {
 	return ((ComponentImplementation*) impl)->useObject(player);
-}
-
-Component* ComponentAdapter::cloneComponent(Component* component, unsigned long long oid) {
-	return ((ComponentImplementation*) impl)->cloneComponent(component, oid);
 }
 
 float ComponentAdapter::getAttributeValue(String& attributeName) {
@@ -386,10 +360,6 @@ ComponentServant::ComponentServant(unsigned long long oid, unsigned int tempCRC,
 }
 
 ComponentServant::ComponentServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp) : TangibleObjectImplementation(creature, tempCRC, n, tempn, tp) {
-	_classHelper = ComponentHelper::instance();
-}
-
-ComponentServant::ComponentServant(unsigned long long oid, int tp) : TangibleObjectImplementation(oid, tp) {
 	_classHelper = ComponentHelper::instance();
 }
 

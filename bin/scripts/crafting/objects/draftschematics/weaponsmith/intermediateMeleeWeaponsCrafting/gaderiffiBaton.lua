@@ -45,6 +45,7 @@ gaderiffiBaton = Object:new {
 
    objectName = "Gaderiffi Baton",
    stfName = "baton_gaderiffi",
+   stfFile = "weapon_name",
    objectCRC = 3052026379,
    groupName = "craftWeaponMeleeGroupB", -- Group schematic is awarded in (See skills table)
 

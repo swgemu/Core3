@@ -45,6 +45,7 @@ advancedReinforcementCore = Object:new {
 
    objectName = "Advanced Reinforcement Core",
    stfName = "reinforcement_core_advanced",
+   stfFile = "craft_weapon_ingredients_n",
    objectCRC = 1668239813,
    groupName = "craftWeaponMeleeGroupC", -- Group schematic is awarded in (See skills table)
 

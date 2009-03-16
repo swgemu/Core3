@@ -45,6 +45,7 @@ t21Rifle = Object:new {
 
    objectName = "T21 Rifle",
    stfName = "rifle_t21",
+   stfFile = "weapon_name",
    objectCRC = 546888390,
    groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
 

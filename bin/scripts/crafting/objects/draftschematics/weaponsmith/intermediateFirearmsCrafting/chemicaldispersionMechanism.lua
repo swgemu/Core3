@@ -45,6 +45,7 @@ chemicaldispersionMechanism = Object:new {
 
    objectName = "Chemical-dispersion Mechanism",
    stfName = "chemical_dispersion_mechanism",
+   stfFile = "craft_weapon_ingredients_n",
    objectCRC = 4093058849,
    groupName = "craftWeaponRangedGroupB", -- Group schematic is awarded in (See skills table)
 

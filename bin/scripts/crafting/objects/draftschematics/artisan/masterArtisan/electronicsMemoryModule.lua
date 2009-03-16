@@ -45,6 +45,7 @@ electronicsMemoryModule = Object:new {
 
    objectName = "Electronics Memory Module",
    stfName = "electronics_memory_module",
+   stfFile = "craft_item_ingredients_n",
    objectCRC = 2170102415,
    groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ electronicsMemoryModule = Object:new {
    experimentalMax = "0, 0, 150, 5",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8200:objectcrc=3552886678:objecttemp=electronics_memory_module:templatetype=craft_item_ingredients_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8200:objectcrc=3552886678:objecttemp=electronics_memory_module:templatetype=craft_item_ingredients_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -13,6 +13,8 @@ class CreatureObject;
 
 class Player;
 
+class Wearable;
+
 #include "engine/service/Message.h"
 
 #include "../TangibleObject.h"
@@ -21,48 +23,32 @@ class Attachment : public TangibleObject {
 public:
 	Attachment(unsigned long long objID, int attachmentType);
 
+	void addSkillMod(String& skillModType, int skillModValue);
+
+	void setSkillModCount(int modifier);
+
+	void generateSkillMods(Player* player, int modifier);
+
 	void remove(Player* player);
 
-	void setSkillMod0Type(int type);
+	int getRandomModValue(int luck, int modifier);
 
-	void setSkillMod1Type(int type);
-
-	void setSkillMod2Type(int type);
-
-	void setSkillMod0Value(int value);
-
-	void setSkillMod1Value(int value);
-
-	void setSkillMod2Value(int value);
-
-	void setSkillModValue(int index, int value);
-
-	void setSkillModType(int index, int type);
-
-	void setSkillMods(int modifier);
-
-	int getSkillMod0Type();
-
-	int getSkillMod1Type();
-
-	int getSkillMod2Type();
-
-	int getSkillMod0Value();
-
-	int getSkillMod1Value();
-
-	int getSkillMod2Value();
-
-	int getSkillModType(int index);
+	String& getSkillModName(int index);
 
 	int getSkillModValue(int index);
 
-	int getBestSkillMod();
+	int getSkillModValue(String& name);
+
+	int getSkillModCount();
+
+	int getAttachmentType();
 
 protected:
 	Attachment(DummyConstructorParameter* param);
 
 	virtual ~Attachment();
+
+	String _return_getSkillModName;
 
 	friend class AttachmentHelper;
 };
@@ -75,44 +61,29 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void addSkillMod(String& skillModType, int skillModValue);
+
+	void setSkillModCount(int modifier);
+
+	void generateSkillMods(Player* player, int modifier);
+
 	void remove(Player* player);
 
-	void setSkillMod0Type(int type);
+	int getRandomModValue(int luck, int modifier);
 
-	void setSkillMod1Type(int type);
-
-	void setSkillMod2Type(int type);
-
-	void setSkillMod0Value(int value);
-
-	void setSkillMod1Value(int value);
-
-	void setSkillMod2Value(int value);
-
-	void setSkillModValue(int index, int value);
-
-	void setSkillModType(int index, int type);
-
-	void setSkillMods(int modifier);
-
-	int getSkillMod0Type();
-
-	int getSkillMod1Type();
-
-	int getSkillMod2Type();
-
-	int getSkillMod0Value();
-
-	int getSkillMod1Value();
-
-	int getSkillMod2Value();
-
-	int getSkillModType(int index);
+	String& getSkillModName(int index);
 
 	int getSkillModValue(int index);
 
-	int getBestSkillMod();
+	int getSkillModValue(String& name);
 
+	int getSkillModCount();
+
+	int getAttachmentType();
+
+protected:
+	String _param0_addSkillMod__String_int_;
+	String _param0_getSkillModValue__String_;
 };
 
 class AttachmentHelper : public DistributedObjectClassHelper, public Singleton<AttachmentHelper> {

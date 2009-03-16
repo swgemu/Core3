@@ -105,6 +105,8 @@ void SceneObjectImplementation::init() {
 	groupDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
 	playerDamageList.setInsertPlan(SortedVector<DamageDone>::ALLOW_OVERWRITE);
 
+	itemAttributes = new ItemAttributes();
+
 	linkType = 0x04;
 
 	moving = false;
@@ -240,7 +242,18 @@ void SceneObjectImplementation::generateAttributes(SceneObject* obj) {
 	Player* player = (Player*) obj;
 
 	AttributeListMessage* alm = new AttributeListMessage(_this);
+
+	addAttributes(alm);
+
 	player->sendMessage(alm);
+}
+
+void SceneObjectImplementation::addAttributes(AttributeListMessage* alm) {
+
+}
+
+void SceneObjectImplementation::parseItemAttributes() {
+
 }
 
 void SceneObjectImplementation::randomizePosition(float radius) {

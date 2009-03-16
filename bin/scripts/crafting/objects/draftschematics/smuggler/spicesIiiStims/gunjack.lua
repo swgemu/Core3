@@ -45,6 +45,7 @@ gunjack = Object:new {
 
    objectName = "Gunjack",
    stfName = "gunjack",
+   stfFile = "food_name",
    objectCRC = 1606899928,
    groupName = "craftSmugglerSpiceC", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ gunjack = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=3162646760:objecttemp=gunjack:templatetype=spice/spice:itemmask=65535:",
+   tanoAttributes = "objecttype=8202:objectcrc=3162646760:objecttemp=gunjack:templatetype=spice/spice:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "spice_customization"

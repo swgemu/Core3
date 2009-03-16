@@ -45,6 +45,7 @@ weightedWookieePullover = Object:new {
 
    objectName = "Weighted Wookiee Pullover",
    stfName = "wke_shirt_s02",
+   stfFile = "wearables_name",
    objectCRC = 865130438,
    groupName = "craftArtisanDomesticGroupC", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ weightedWookieePullover = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777232:objectcrc=2104906426:objecttemp=wke_shirt_s02:templatetype=wearables_name:itemmask=61955:",
+   tanoAttributes = "objecttype=16777232:objectcrc=2104906426:objecttemp=wke_shirt_s02:templatetype=wearables_name:itemmask=61955::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

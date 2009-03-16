@@ -45,6 +45,7 @@ wireMeshTrap = Object:new {
 
    objectName = "Wire Mesh Trap",
    stfName = "trap_melee_def_1",
+   stfFile = "item_n",
    objectCRC = 4212347810,
    groupName = "craftScoutTrapGroupNovice", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ wireMeshTrap = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8212:objectcrc=3084221929:objecttemp=trap_melee_def_1:templatetype=item_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8212:objectcrc=3084221929:objecttemp=trap_melee_def_1:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

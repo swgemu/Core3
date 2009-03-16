@@ -45,6 +45,7 @@ advancedSwordCore = Object:new {
 
    objectName = "Advanced Sword Core",
    stfName = "sword_core_advanced",
+   stfFile = "craft_weapon_ingredients_n",
    objectCRC = 4271255485,
    groupName = "craftWeaponMeleeGroupC", -- Group schematic is awarded in (See skills table)
 

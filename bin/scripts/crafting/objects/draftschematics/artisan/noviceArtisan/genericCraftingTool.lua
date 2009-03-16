@@ -45,6 +45,7 @@ genericCraftingTool = Object:new {
 
    objectName = "Generic Crafting Tool",
    stfName = "generic_tool_name",
+   stfFile = "crafting",
    objectCRC = 2914524854,
    groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -69,16 +70,17 @@ genericCraftingTool = Object:new {
    numberExperimentalProperties = "1, 1, 1, 1",
    experimentalProperties = "XX, XX, XX, CD",
    experimentalWeights = "1, 1, 1, 1",
-   experimentalGroupTitles = "null, null, null, expEffectiveness",
+   experimentalGroupTitles = "null, null, null, exp_effectiveness",
 
    experimentalSubGroupTitles = "null, null, hitpoints, usemodifier",
    experimentalMin = "0, 0, 1000, -15",
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32769:objectcrc=1055200365:objecttemp=generic_tool_name:templatetype=crafting:",
+   tanoAttributes = "objecttype=:objectcrc=1055200365:objecttemp=generic_tool_name:templatetype=crafting:itemmask=65535::",
    customizationOptions = "",
-   customizationDefaults = ""
+   customizationDefaults = "",
+   customizationSkill = "clothing_customization"
 
 }
 

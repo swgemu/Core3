@@ -45,6 +45,7 @@ deedForWindPowerGenerator = Object:new {
 
    objectName = "Deed for: Wind Power Generator",
    stfName = "wind_generator_deed_name",
+   stfFile = "deed",
    objectCRC = 3011453668,
    groupName = "craftArtisanEngineeringGroupC", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ deedForWindPowerGenerator = Object:new {
    experimentalMax = "0, 0, 10, 50000, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8388610:objectcrc=3871805863:objecttemp=wind_generator_deed_name:templatetype=deed:itemmask=65535:",
+   tanoAttributes = "objecttype=8388610:objectcrc=3871805863:objecttemp=wind_generator_deed_name:templatetype=deed:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -97,6 +97,10 @@ public:
 		return objects.isEmpty();
 	}
 
+	bool isContainerFull() {
+		return objects.size() >= containerVolumeLimit;
+	}
+
 	inline int getSlots() {
 		return slots;
 	}

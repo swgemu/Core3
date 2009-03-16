@@ -45,6 +45,7 @@ sixSidedDiceSet = Object:new {
 
    objectName = "Six Sided Dice Set",
    stfName = "eqp_six_sided_dice_set_single",
+   stfFile = "dice/dice_details",
    objectCRC = 2953774166,
    groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ sixSidedDiceSet = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8211:objectcrc=3211047396:objecttemp=eqp_six_sided_dice_set_single:templatetype=dice:itemmask=65535:",
+   tanoAttributes = "objecttype=8211:objectcrc=3211047396:objecttemp=eqp_six_sided_dice_set_single:templatetype=dice:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

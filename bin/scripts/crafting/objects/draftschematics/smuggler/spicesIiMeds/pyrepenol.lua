@@ -45,6 +45,7 @@ pyrepenol = Object:new {
 
    objectName = "Pyrepenol",
    stfName = "pyrepenol",
+   stfFile = "food_name",
    objectCRC = 4245288866,
    groupName = "craftSmugglerSpiceB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ pyrepenol = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=1073230239:objecttemp=pyrepenol:templatetype=spice/spice:itemmask=65535:",
+   tanoAttributes = "objecttype=8202:objectcrc=1073230239:objecttemp=pyrepenol:templatetype=spice/spice:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "spice_customization"

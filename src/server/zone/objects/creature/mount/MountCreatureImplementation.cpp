@@ -70,9 +70,6 @@ MountCreatureImplementation::MountCreatureImplementation(CreatureObject* linkCre
 
 	objectCRC = objCRC;
 
-	itno = NULL;
-	itnoCRC = itnocrc;
-
 	StringBuffer loggingname;
 	loggingname << "Mount = 0x" << oid;
 	setLoggingName(loggingname.toString());
@@ -107,6 +104,8 @@ void MountCreatureImplementation::init(){
 	objectSubType = TangibleObjectImplementation::VEHICLE;
 
 	mountType = 0;
+
+	parent = NULL;
 
 	setType(CreatureImplementation::MOUNT);
 
@@ -286,6 +285,8 @@ void MountCreatureImplementation::call() {
 		return;
 
 	try {
+		parent = NULL;
+
 		linkedCreature->wlock(_this);
 
 		if (linkedCreature->getParent() != NULL) {
@@ -295,8 +296,7 @@ void MountCreatureImplementation::call() {
 
 
 		if (linkedCreature->getMount() != NULL) {
-			linkedCreature->unlock();
-			return;
+			linkedCreature->getMount()->store(false);
 		}
 
 		if (linkedCreature->isInCombat()) {
@@ -324,12 +324,12 @@ void MountCreatureImplementation::call() {
 
 		linkedCreature->unlock();
 
-		if (itno != NULL) {
-			itno->wlock();
+		if (datapadItem != NULL) {
+			datapadItem->wlock();
 
-			itno->updateStatus(1);
+			datapadItem->updateStatus(1);
 
-			itno->unlock();
+			datapadItem->unlock();
 		}
 
 		setFaction(linkedCreature->getFaction());
@@ -383,12 +383,12 @@ void MountCreatureImplementation::store(bool doLock) {
 		if (doLock)
 			linkedCreature->unlock();
 
-		if (itno != NULL) {
-			itno->wlock();
+		if (datapadItem != NULL) {
+			datapadItem->wlock();
 
-			itno->updateStatus(0);
+			datapadItem->updateStatus(0);
 
-			itno->unlock();
+			datapadItem->unlock();
 		}
 
 		removeFromZone();

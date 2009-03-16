@@ -8,12 +8,25 @@
 
 #include "../scene/SceneObject.h"
 
+#include "../draftschematic/DraftSchematic.h"
+
+#include "../tangible/TangibleObject.h"
+
+#include "../tangible/crafting/CraftingTool.h"
+
+#include "../player/Player.h"
+
 /*
  *	ManufactureSchematicStub
  */
 
-ManufactureSchematic::ManufactureSchematic(unsigned long long oid) : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new ManufactureSchematicImplementation(oid);
+ManufactureSchematic::ManufactureSchematic(unsigned long long oid, String& n, String& stfFile, String& stfName, unsigned int crc) : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new ManufactureSchematicImplementation(oid, n, stfFile, stfName, crc);
+	_impl->_setStub(this);
+}
+
+ManufactureSchematic::ManufactureSchematic(unsigned long long oid, DraftSchematic* draftSchematic, CraftingTool* craftingTool) : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new ManufactureSchematicImplementation(oid, draftSchematic, craftingTool);
 	_impl->_setStub(this);
 }
 
@@ -21,6 +34,144 @@ ManufactureSchematic::ManufactureSchematic(DummyConstructorParameter* param) : S
 }
 
 ManufactureSchematic::~ManufactureSchematic() {
+}
+
+void ManufactureSchematic::parseItemAttributes() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((ManufactureSchematicImplementation*) _impl)->parseItemAttributes();
+}
+
+void ManufactureSchematic::generateAttributes(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((ManufactureSchematicImplementation*) _impl)->generateAttributes(player);
+}
+
+void ManufactureSchematic::addAttributes(AttributeListMessage* alm) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(alm);
+
+		method.executeWithVoidReturn();
+	} else
+		((ManufactureSchematicImplementation*) _impl)->addAttributes(alm);
+}
+
+int ManufactureSchematic::getComplexity() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ManufactureSchematicImplementation*) _impl)->getComplexity();
+}
+
+int ManufactureSchematic::getManufacturingLimit() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ManufactureSchematicImplementation*) _impl)->getManufacturingLimit();
+}
+
+int ManufactureSchematic::getDataSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ManufactureSchematicImplementation*) _impl)->getDataSize();
+}
+
+TangibleObject* ManufactureSchematic::getTangibleObject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+
+		return (TangibleObject*) method.executeWithObjectReturn();
+	} else
+		return ((ManufactureSchematicImplementation*) _impl)->getTangibleObject();
+}
+
+void ManufactureSchematic::setComplexity(int value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addSignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((ManufactureSchematicImplementation*) _impl)->setComplexity(value);
+}
+
+void ManufactureSchematic::setManufacturingLimit(int value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+		method.addSignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((ManufactureSchematicImplementation*) _impl)->setManufacturingLimit(value);
+}
+
+void ManufactureSchematic::setTangibleObject(TangibleObject* tano) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+		method.addObjectParameter(tano);
+
+		method.executeWithVoidReturn();
+	} else
+		((ManufactureSchematicImplementation*) _impl)->setTangibleObject(tano);
+}
+
+void ManufactureSchematic::setDataSize(int value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+		method.addSignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((ManufactureSchematicImplementation*) _impl)->setDataSize(value);
 }
 
 /*
@@ -34,11 +185,88 @@ Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMeth
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		parseItemAttributes();
+		break;
+	case 7:
+		generateAttributes((Player*) inv->getObjectParameter());
+		break;
+	case 8:
+		addAttributes((AttributeListMessage*) inv->getObjectParameter());
+		break;
+	case 9:
+		resp->insertSignedInt(getComplexity());
+		break;
+	case 10:
+		resp->insertSignedInt(getManufacturingLimit());
+		break;
+	case 11:
+		resp->insertSignedInt(getDataSize());
+		break;
+	case 12:
+		resp->insertLong(getTangibleObject()->_getObjectID());
+		break;
+	case 13:
+		setComplexity(inv->getSignedIntParameter());
+		break;
+	case 14:
+		setManufacturingLimit(inv->getSignedIntParameter());
+		break;
+	case 15:
+		setTangibleObject((TangibleObject*) inv->getObjectParameter());
+		break;
+	case 16:
+		setDataSize(inv->getSignedIntParameter());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void ManufactureSchematicAdapter::parseItemAttributes() {
+	return ((ManufactureSchematicImplementation*) impl)->parseItemAttributes();
+}
+
+void ManufactureSchematicAdapter::generateAttributes(Player* player) {
+	return ((ManufactureSchematicImplementation*) impl)->generateAttributes(player);
+}
+
+void ManufactureSchematicAdapter::addAttributes(AttributeListMessage* alm) {
+	return ((ManufactureSchematicImplementation*) impl)->addAttributes(alm);
+}
+
+int ManufactureSchematicAdapter::getComplexity() {
+	return ((ManufactureSchematicImplementation*) impl)->getComplexity();
+}
+
+int ManufactureSchematicAdapter::getManufacturingLimit() {
+	return ((ManufactureSchematicImplementation*) impl)->getManufacturingLimit();
+}
+
+int ManufactureSchematicAdapter::getDataSize() {
+	return ((ManufactureSchematicImplementation*) impl)->getDataSize();
+}
+
+TangibleObject* ManufactureSchematicAdapter::getTangibleObject() {
+	return ((ManufactureSchematicImplementation*) impl)->getTangibleObject();
+}
+
+void ManufactureSchematicAdapter::setComplexity(int value) {
+	return ((ManufactureSchematicImplementation*) impl)->setComplexity(value);
+}
+
+void ManufactureSchematicAdapter::setManufacturingLimit(int value) {
+	return ((ManufactureSchematicImplementation*) impl)->setManufacturingLimit(value);
+}
+
+void ManufactureSchematicAdapter::setTangibleObject(TangibleObject* tano) {
+	return ((ManufactureSchematicImplementation*) impl)->setTangibleObject(tano);
+}
+
+void ManufactureSchematicAdapter::setDataSize(int value) {
+	return ((ManufactureSchematicImplementation*) impl)->setDataSize(value);
 }
 
 /*
@@ -76,7 +304,7 @@ DistributedObjectAdapter* ManufactureSchematicHelper::createAdapter(DistributedO
  *	ManufactureSchematicServant
  */
 
-ManufactureSchematicServant::ManufactureSchematicServant(unsigned long long oid, int type) : SceneObjectImplementation(oid, type) {
+ManufactureSchematicServant::ManufactureSchematicServant(unsigned long long oid, int tp) : SceneObjectImplementation(oid, tp) {
 	_classHelper = ManufactureSchematicHelper::instance();
 }
 

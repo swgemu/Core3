@@ -65,13 +65,13 @@ protected:
 public:
 	ComponentImplementation(uint64 objectid, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 	ComponentImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
-	ComponentImplementation(Component* component, uint64 oid);
 
 	~ComponentImplementation();
 
 	void init();
 
 	void generateAttributes(SceneObject* player);
+	void addAttributes(AttributeListMessage* alm);
 
 	void parseItemAttributes();
 
@@ -94,14 +94,6 @@ public:
 	void parsePrecisionString();
 	void parseTitleString();
 	void parseHiddenString();
-
-	virtual Component* cloneComponent(Component* component, uint64 oid) {
-		if (component != NULL) {
-			return new Component(component, oid);
-		} else {
-			return NULL;
-		}
-	}
 
 	inline bool hasProperty(String& attributeName) {
 		return attributeMap.contains(attributeName);

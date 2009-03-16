@@ -59,16 +59,6 @@ ArmorComponentImplementation::ArmorComponentImplementation(
 
 	init();
 }
-ArmorComponentImplementation::ArmorComponentImplementation(
-		ArmorComponent* component, uint64 oid) : ArmorComponentServant(component, oid) {
-
-	objectSubType = ARMORCOMPONENT;
-
-	for(int i = 0; i < component->getSpecialResistCount(); ++i) {
-	    specialResists.add(component->getSpecialResist(i));
-	}
-	ComponentImplementation::ComponentImplementation((Component*)component, oid);
-}
 
 ArmorComponentImplementation::~ArmorComponentImplementation() {
 	attributeMap.removeAll();
@@ -83,9 +73,26 @@ void ArmorComponentImplementation::init() {
 
 	objectSubType = ARMORCOMPONENT;
 
-	setSpecialProtection();
-
 	ComponentImplementation::init();
+}
+
+void ArmorComponentImplementation::parseItemAttributes() {
+
+	ComponentImplementation::parseItemAttributes();
+
+	String name;
+
+	StringTokenizer tokenizer(itemAttributes->getStringAttribute("specialprotection"));
+	tokenizer.setDelimeter(",");
+
+	specialResists.removeAll();
+
+	while(tokenizer.hasMoreTokens()) {
+
+		tokenizer.getStringToken(name);
+
+		specialResists.add(name);
+	}
 }
 
 void ArmorComponentImplementation::updateCraftingValues(DraftSchematic* draftSchematic) {

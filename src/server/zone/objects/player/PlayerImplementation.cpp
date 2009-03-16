@@ -713,8 +713,6 @@ void PlayerImplementation::savePlayerState(bool doSchedule) {
 
 	saveWaypoints(_this);
 
-	saveDatapad(_this);
-
 	//_this->saveMissions(); //REAL
 
 	playerObject->saveFriends();
@@ -728,6 +726,7 @@ void PlayerImplementation::savePlayerState(bool doSchedule) {
 
 		ItemManager* itemManager = zserver->getItemManager();
 		itemManager->unloadPlayerItems(_this);
+		itemManager->unloadDatapadItems(_this);
 	}
 
 	if (doSchedule)
@@ -1078,7 +1077,7 @@ void PlayerImplementation::sendToOwner(bool doClose) {
 	playerObject->sendToOwner();
 
 	sendItemsTo(_this);
-	sendPersonalContainers();
+	sendDatapadItems();
 	sendGuildList();
 
 	//if (parent != NULL)
@@ -1097,12 +1096,13 @@ void PlayerImplementation::sendTo(Player* player, bool doClose) {
 		SceneObjectImplementation::close(player->getClient());
 }
 
-void PlayerImplementation::sendPersonalContainers() {
+void PlayerImplementation::sendDatapadItems() {
 	//datapad
 	datapad->sendTo(_this, false);
 
 	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
 		SceneObject* item = datapad->getObject(i);
+
 		item->sendTo(_this);
 	}
 
@@ -3417,30 +3417,6 @@ void PlayerImplementation::setWeaponSkillMods(Weapon* weapon) {
 	}
 }
 
-void PlayerImplementation::setArmorSkillMods(Armor* armoritem) {
-	setItemSkillMod(armoritem->getSkillMod0Type(), armoritem->getSkillMod0Value());
-	setItemSkillMod(armoritem->getSkillMod1Type(), armoritem->getSkillMod1Value());
-	setItemSkillMod(armoritem->getSkillMod2Type(), armoritem->getSkillMod2Value());
-
-	setItemSkillMod(armoritem->getSocket0Type(), armoritem->getSocket0Value());
-	setItemSkillMod(armoritem->getSocket1Type(), armoritem->getSocket1Value());
-	setItemSkillMod(armoritem->getSocket2Type(), armoritem->getSocket2Value());
-	setItemSkillMod(armoritem->getSocket3Type(), armoritem->getSocket3Value());
-
-}
-
-void PlayerImplementation::unsetArmorSkillMods(Armor* armoritem) {
-	setItemSkillMod(armoritem->getSkillMod0Type(), -armoritem->getSkillMod0Value());
-	setItemSkillMod(armoritem->getSkillMod1Type(), -armoritem->getSkillMod1Value());
-	setItemSkillMod(armoritem->getSkillMod2Type(), -armoritem->getSkillMod2Value());
-
-	setItemSkillMod(armoritem->getSocket0Type(), -armoritem->getSocket0Value());
-	setItemSkillMod(armoritem->getSocket1Type(), -armoritem->getSocket1Value());
-	setItemSkillMod(armoritem->getSocket2Type(), -armoritem->getSocket2Value());
-	setItemSkillMod(armoritem->getSocket3Type(), -armoritem->getSocket3Value());
-
-}
-
 void PlayerImplementation::unsetWeaponSkillMods(Weapon* weapon) {
 	setItemSkillMod(weapon->getSkillMod0Type(), -weapon->getSkillMod0Value());
 	setItemSkillMod(weapon->getSkillMod1Type(), -weapon->getSkillMod1Value());
@@ -3579,79 +3555,29 @@ void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID)
 
 	tano = (TangibleObject*) invObj;
 
-	if (!tano->isArmor())
-		return;
+	if (tano->isArmor() || tano->isClothing()) {
 
-	Armor* armor = (Armor*) tano;
+		Wearable* wearable = (Wearable*) tano;
 
-	armor->wlock();
-	attachment->wlock();
-
-	int skillModType;
-	int skillModValue;
-
-	int armorIndex;
-	int attachmentIndex;
-
-	bool done = false;
-	bool setMods = false;
-
-	while (!done) {
-		done = true;
-		attachmentIndex = attachment->getBestSkillMod();
-		skillModType = attachment->getSkillModType(attachmentIndex);
-		skillModValue = attachment->getSkillModValue(attachmentIndex);
-
-		if (armor->isEquipped()) {
-			unsetArmorSkillMods(armor);
-			setMods = true;
-		}
-
-		int armorIndex = armor->addSkillMod(skillModType, skillModValue);
-
-		if (setMods) {
-			setArmorSkillMods(armor);
-			setMods = false;
-		}
-
-		switch (armorIndex) {
-		case (-1): // add failed
-			break;
-		case (-2): // equal or lesser value, remove skill mod from attachment and try again
-			attachment->setSkillModValue(attachmentIndex, 0);
-			attachment->setUpdated(true);
-			done = false;
-			break;
-		case (-3): // we overwrote the skill mod with a higher one.  delete the attachment.
-			armor->unlock();
-			attachment->unlock();
-			attachment->remove(_this);
-
-			attachment->finalize();
+		if(wearable == NULL)
 			return;
-		default: // skill mod was added successfully
-			armor->unlock();
-			attachment->unlock();
-			attachment->remove(_this);
 
-			attachment->finalize();
-			return;
+		try {
+
+			wearable->wlock();
+			attachment->wlock();
+
+			wearable->applyAttachment(_this, attachment);
+
+			wearable->unlock();
+			attachment->unlock();
+
+		} catch (...) {
+
+			wearable->unlock();
+			attachment->unlock();
 		}
 	}
-	// this is for the case when we pulled off the skill mod but the attachment only had one mod)
-	if (attachment->isUpdated()) {
-		attachment->remove(_this);
-		attachment->setUpdated(false);
-
-		armor->unlock();
-		attachment->unlock();
-
-		attachment->finalize();
-		return;
-	}
-
-	armor->unlock();
-	attachment->unlock();
 }
 
 void PlayerImplementation::setOvert() {
@@ -4107,14 +4033,14 @@ void PlayerImplementation::craftingCustomization(String name, int condition, Str
 	craftingManager->craftingCustomization(_this, name, condition, customizationString);
 }
 
-void PlayerImplementation::createPrototype(String count) {
+void PlayerImplementation::createPrototype(int counter, int practice) {
 	CraftingManager* craftingManager = server->getCraftingManager();
-	craftingManager->createPrototype(_this, count);
+	craftingManager->createPrototype(_this, counter, practice);
 }
 
-void PlayerImplementation::createSchematic(String count) {
+void PlayerImplementation::createSchematic(int counter) {
 	CraftingManager* craftingManager = server->getCraftingManager();
-	craftingManager->createSchematic(_this, count);
+	craftingManager->createSchematic(_this, counter);
 }
 
 void PlayerImplementation::handleExperimenting(int count, int numRowsAttempted, String expString) {
@@ -4840,107 +4766,6 @@ void PlayerImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespon
 	omr->finish();
 
 	player->sendMessage(omr);
-}
-
-void PlayerImplementation::saveDatapad(Player* player) {
-	try {
-		Datapad* datapad = player->getDatapad();
-
-		if (datapad == NULL)
-			return;
-
-		String name, detailName, appearance, tanoApp, attr, tanoName;
-
-		uint32 objCRC, tanoCRC;
-		uint64 objID;
-		int objectSubType;
-
-		StringBuffer query;
-		query << "DELETE FROM datapad where character_id = " << player->getCharacterID() << ";";
-
-		ServerDatabase::instance()->executeStatement(query);
-
-		for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
-			name = "";
-			detailName = "";
-			appearance = " "; //There's a reason for the whitespace - don't change it plz !
-			attr = "";
-			tanoApp = "";
-			tanoName = "";
-			objCRC = 0;
-			objID = 0;
-			tanoCRC = 0;
-
-			SceneObject* item = datapad->getObject(i);
-
-			if (item != NULL && item->isIntangible()) {
-				IntangibleObject* itno = (IntangibleObject*) item;
-
-				if (itno != NULL) {
-					//name = itno->getCustomName().toString();
-					name = itno->getName();
-
-					MySqlDatabase::escapeString(name);
-
-					detailName = itno->getDetailName();
-					objCRC = item->getObjectCRC();
-
-					SceneObject* scno = itno->getWorldObject();
-
-					if (scno != NULL) {
-						tanoCRC = scno->getObjectCRC();
-						objID = scno->getObjectID();
-						tanoName = scno->getTemplateName();
-
-						MySqlDatabase::escapeString(attr);
-
-						//linked to items or vehicles/pets/droids
-						if (scno->isTangible() || scno->isNonPlayerCreature()){
-							TangibleObject* tano = (TangibleObject*) scno;
-							tano->getCustomizationString(tanoApp);
-							if (tanoApp != "") {
-								BinaryData cust(tanoApp);
-								cust.encode(appearance);
-							}
-							attr = tano->getAttributes();
-							objectSubType = tano->getObjectSubType();
-						}
-						else//otherwise it is linked to a mission
-							objectSubType = SceneObjectImplementation::MISSION;
-					}
-					else{//if its not linked to anything, its a manufacturing schematic
-						objectSubType = TangibleObjectImplementation::MANUFACTURINGSCHEMATIC;
-						objID = itno->getObjectID();
-
-						//IF INTANGIBLES ARE EVER CHANGED TO HAVE ITEM ATTRIBUTES, UNCOMMENT THIS LINE
-						//attr = itno->getAttributes();
-					}
-
-					if (objID != 0 ) {
-						query.deleteAll();
-
-						query << "Insert into datapad set item_id = " << objID
-							  << ", character_id = " << player->getCharacterID()
-							  << ", name = '" << name << "', itno_crc = " << objCRC << ", tano_crc = "
-							  << tanoCRC << ", tano_type = " << objectSubType << ", tano_name = '"
-							  << tanoName << "', attributes = '" << attr << "', appearance = '"
-							  << appearance.subString(0, appearance.length() - 1)
-							  << "', itemMask = 65535;";
-
-						ServerDatabase::instance()->executeStatement(query);
-					}
-				}
-			}
-		}
-	} catch (DatabaseException& e) {
-		player->error("DB Exception in PlayerImplementation::saveDatapad(Player* player)");
-		player->error(e.getMessage());
-	} catch (Exception& e) {
-		player->error("Exception in PlayerImplementation::saveDatapad(Player* player)");
-		e.printStackTrace();
-	} catch (...) {
-		player->error("Unreported Exception in PlayerImplementation::saveDatapad(Player* player)");
-	}
 }
 
 void PlayerImplementation::addFactionPoints(String faction, uint32 points) {

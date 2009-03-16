@@ -45,6 +45,7 @@ zypoleneDroidLubricant = Object:new {
 
    objectName = "Zypolene Droid Lubricant",
    stfName = "droid_lube",
+   stfFile = "food_name",
    objectCRC = 3232550663,
    groupName = "craftSmugglerSpiceB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ zypoleneDroidLubricant = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=1700944368:objecttemp=droid_lube:templatetype=spice/spice:itemmask=65535:",
+   tanoAttributes = "objecttype=8202:objectcrc=1700944368:objecttemp=droid_lube:templatetype=spice/spice:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "spice_customization"

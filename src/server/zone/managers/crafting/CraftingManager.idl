@@ -72,8 +72,8 @@ interface CraftingManager {
 	void nextCraftingStage(Player player, String test);
 	void craftingCustomization(Player player, String name, int condition, String customizationString);
 	void handleExperimenting(Player player, int counter, int numRowsAttempted, String expString);
-	void createPrototype(Player player, String count);
-	void createSchematic(Player player, String count);
+	void createPrototype(Player player, int counter, int practice);
+	void createSchematic(Player player, int counter);
 
 
 	float getWeightedValue(Player player, CraftingTool craftingTool, DraftSchematic draftSchematic, int type);

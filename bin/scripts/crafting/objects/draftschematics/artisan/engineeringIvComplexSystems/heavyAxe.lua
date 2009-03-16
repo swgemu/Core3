@@ -45,6 +45,7 @@ heavyAxe = Object:new {
 
    objectName = "Heavy Axe",
    stfName = "axe_heavy_duty",
+   stfFile = "weapon_name",
    objectCRC = 234370130,
    groupName = "craftArtisanEngineeringGroupD", -- Group schematic is awarded in (See skills table)
 

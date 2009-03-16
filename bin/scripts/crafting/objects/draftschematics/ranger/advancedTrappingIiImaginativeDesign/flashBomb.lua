@@ -45,6 +45,7 @@ flashBomb = Object:new {
 
    objectName = "Flash Bomb",
    stfName = "trap_flash_bomb",
+   stfFile = "item_n",
    objectCRC = 1322113998,
    groupName = "craftRangerTrapGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ flashBomb = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8212:objectcrc=708754512:objecttemp=trap_flash_bomb:templatetype=item_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8212:objectcrc=708754512:objecttemp=trap_flash_bomb:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -45,6 +45,7 @@ kanaliWafers = Object:new {
 
    objectName = "Kanali Wafers",
    stfName = "kanali_wafers",
+   stfFile = "food_name",
    objectCRC = 2008463907,
    groupName = "craftArtisanDomesticGroupC", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ kanaliWafers = Object:new {
    experimentalMax = "0, 0, 1000, 120, 120, 100, 120",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=2212622551:objecttemp=kanali_wafers:templatetype=food_name:itemmask=65535:",
+   tanoAttributes = "objecttype=8202:objectcrc=2212622551:objecttemp=kanali_wafers:templatetype=food_name:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

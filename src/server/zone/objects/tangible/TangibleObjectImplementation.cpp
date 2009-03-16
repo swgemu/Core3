@@ -156,12 +156,7 @@ void TangibleObjectImplementation::init() {
 
 	pvpStatusBitmask = 0;
 
-	itemAttributes = new ItemAttributes();
-
 	setLoot(false);
-
-	itno = NULL;
-	itnoCRC = 0;
 
 	setSliced(false);
 	setSlicable(false);
@@ -292,8 +287,6 @@ void TangibleObjectImplementation::generateSkillMods(AttributeListMessage* alm, 
 	}
 }
 
-
-
 void TangibleObjectImplementation::sendTo(Player* player, bool doClose) {
 	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
@@ -341,20 +334,6 @@ void TangibleObjectImplementation::sendDeltas(Player* player) {
 
 	client->sendMessage(dtano3);
 
-}
-
-void TangibleObjectImplementation::addToDatapad(Player* player) {
-	if (player == NULL || itnoCRC == 0)
-		return;
-
-	itno = new IntangibleObject((SceneObject*) player->getDatapad(),
-			itnoCRC, player->getNewItemID());
-
-	itno->setName(templateName);
-	itno->setDetailName(templateTypeName);
-	itno->setWorldObject(_this);
-
-	player->addDatapadItem((SceneObject*) itno);
 }
 
 void TangibleObjectImplementation::close(Player* player) {
@@ -570,10 +549,10 @@ void TangibleObjectImplementation::repairItem(Player* player) {
 		player->sendSystemMessage("error_message", "sys_repair_perfect"); //You have repaired the item with only minor blemishes.
 	} else if (roll >= 50) {
 		player->sendSystemMessage("error_message", "sys_repair_slight"); //You have repaired the item, however the item's maximum condition has been reduced.
-		repairRate = 0.95f; //95% repair
+		repairRate = 0.75f; //75% repair
 	} else if (roll >= 25) {
 		player->sendSystemMessage("error_message", "sys_repair_imperfect"); //You have only marginally repaired the item. The item's max condition has been reduced.
-		repairRate = 0.80f; //80% repair
+		repairRate = 0.50f; //50% repair
 	} else {
 		player->sendSystemMessage("error_message", "sys_repair_failed"); //You have completely failed to repair the item. The item falls apart.
 		repairRate = 0.0f; //0% repair
@@ -673,11 +652,4 @@ void TangibleObjectImplementation::decay(float decayRate) {
 
 void TangibleObjectImplementation::slice(Player* slicer) {
 
-}
-
-IntangibleObject* TangibleObjectImplementation::getITNO() {
-	if (itno == NULL)
-		return NULL;
-
-	return itno;
 }

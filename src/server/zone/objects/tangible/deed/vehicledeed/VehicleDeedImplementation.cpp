@@ -132,23 +132,31 @@ void VehicleDeedImplementation::parseItemAttributes(){
 }
 
 int VehicleDeedImplementation::useObject(Player* player) {
-	Datapad * datapad = player->getDatapad();
+	Datapad* datapad = player->getDatapad();
 
-	MountCreature* vehicle = new MountCreature(player, targetName.toString(), "monster_name",
-			targetFile.hashCode(),
-			vehicleFile.hashCode(),
-			player->getNewItemID());
+	String tempName = "monster_name";
+	String cName = customName.toString();
+	String tarName = targetName.toString();
+
+	IntangibleObject* datapadItem = new IntangibleObject(player->getNewItemID(), cName, tarName,
+			tempName, targetFile.hashCode(), (SceneObject*) datapad);
+
+	MountCreature* vehicle = new MountCreature(player, tarName, tempName,
+			targetFile.hashCode(), vehicleFile.hashCode(), player->getNewItemID());
 
 	try {
 		vehicle->setMaxCondition(getHitPoints());
 		vehicle->setObjectFileName(vehicleFile);
-		vehicle->addToDatapad(player);
 		vehicle->setZoneProcessServer(player->getZoneProcessServer());
+		vehicle->setCustomName(cName);
 
-		vehicle->getITNO()->sendTo(player, true);
+		vehicle->setDatapadItem(datapadItem);
+		datapadItem->setWorldObject(vehicle);
+		datapadItem->setParent(datapad);
 
-		UpdateContainmentMessage* ucm = new UpdateContainmentMessage(vehicle, datapad, 0xFFFFFFFF);
-		player->sendMessage(ucm);
+		player->addDatapadItem(datapadItem);
+
+		datapadItem->sendTo(player, true);
 
 		player->unlock();
 

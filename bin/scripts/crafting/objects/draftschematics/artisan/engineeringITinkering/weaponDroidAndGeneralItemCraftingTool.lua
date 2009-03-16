@@ -45,6 +45,7 @@ weaponDroidAndGeneralItemCraftingTool = Object:new {
 
    objectName = "Weapon, Droid, and General Item Crafting Tool",
    stfName = "weapon_tool_name",
+   stfFile = "crafting",
    objectCRC = 806231782,
    groupName = "craftArtisanToolGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ weaponDroidAndGeneralItemCraftingTool = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32769:objectcrc=1693896753:objecttemp=weapon_tool_name:templatetype=crafting:itemmask=65535:",
+   tanoAttributes = "objecttype=32769:objectcrc=1693896753:objecttemp=weapon_tool_name:templatetype=crafting:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

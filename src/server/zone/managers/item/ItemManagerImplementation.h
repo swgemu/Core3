@@ -56,6 +56,8 @@
 
 #include "../../objects/tangible/deed/DeedObject.h"
 
+#include "../../objects/manufacture/ManufactureSchematic.h"
+
 #include "ItemManager.h"
 
 #include "StartingItemList.h"
@@ -137,11 +139,19 @@ public:
 
 	void unloadPlayerItems(Player* player);
 	void createPlayerItem(Player* player, TangibleObject* item);
-	void createDatapadItem(Player* player, ResultSet* result);
-	void createPlayerDeed(Player* player, DeedObject* item);
-	void deletePlayerItem(Player* player, TangibleObject* item, bool notify);
 	void savePlayerItem(Player* player, TangibleObject* item);
-	void savePlayerDatapadItem(Player* player, IntangibleObject* itno);
+	void deletePlayerItem(Player* player, TangibleObject* item, bool notify);
+
+	void unloadDatapadItems(Player* player);
+	void loadDatapadItem(Player* player, ResultSet* result);
+
+	SceneObject* loadDatapadLinkedItem(Player* player, uint64 oid);
+	void createDatapadItem(Player* player, SceneObject* item);
+	void createDatapadLinkedItem(Player* player, SceneObject* item);
+	void saveDatapadItem(Player* player, SceneObject* item);
+	void deleteDatapadItem(Player* player, SceneObject* item, bool notify);
+
+	void createPlayerDeed(Player* player, DeedObject* item);
 
 	void showDbStats(Player* player);
 	void showDbDeleted(Player* player);

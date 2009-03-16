@@ -132,13 +132,13 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		case 0x81EB4EF7: //GuildRequestMessage
 		    handleGuildRequestMessage(pack);
 		    break;
-		case 0x1E8D1356: // AddItemMessage
+		case 0x1E8D1356: // Adding Items to trade window
 			handleAddItemMessage(pack);
 			break;
 		case 0xD1527EE8: // GiveMoneyMessage
 			handleGiveMoneyMessage(pack);
 			break;
-		case 0xD36EFAE4: //GetAuctionDetails
+		case 0xD36EFAE4: // Item attributes request
 			handleGetAuctionItemAttributes(pack);
 			break;
 		case 0xD6D1B6D1: //ClientRandomNameRequest
@@ -164,10 +164,10 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		break;
 	case 3:
 		switch (opcode) {
-		case 0xD5899226: //	ClientIdMsg
+		case 0xD5899226:
 			handleClientPermissionsMessage(pack);
 			break;
-		case 0x07E3559F: //ChatRequestPersistentMessage
+		case 0x07E3559F:
 			handleRequestPersistentMsg(pack);
 			break;
 		case 0x7CA18726:
@@ -185,7 +185,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		case 0x493E3FFA: //  ChatRemoveAvatarFromRoom
 			handleChatRemoveAvatarFromRoom(pack);
 			break;
-		case 0x12B0D449: //RetrieveAuctionItemMessage
+		case 0x12B0D449: // Retrieve auction item
 			handleRetrieveAuctionItem(pack);
 			break;
 		case 0xBB8CAD45: // VerifyPlayerNameMessage
@@ -205,10 +205,10 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		case 0xD5899226:
 			handleClientPermissionsMessage(pack);
 			break;
-		case 0x092D3564: //SuiEventNotification
+		case 0x092D3564: // Selection box return
 			handleSuiEventNotification(pack);
 			break;
-		case 0x91125453: //BidAuctionMessage
+		case 0x91125453: // Bazaar/Vendor bid
 			handleBazaarBuy(pack);
 			break;
 		case 0xC9A5F98D: // GetTicketsMessage
@@ -221,7 +221,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		case 0x80CE5E46:
 			handleObjectControllerMessage(pack);
 			break;
-		case 0x84BB21F7: //ChatInstantMessageToCharacter
+		case 0x84BB21F7:
 			handleTellMessage(pack);
 			break;
 		case 0xD6D1B6D1: //ClientRandomNameRequest
@@ -230,7 +230,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		case 0x1A7AB839: //GetMapLocationsRequestMessage
 			handleGetMapLocationsRequestMessage(pack);
 			break;
-		case 0x20E4DBE3: //ChatSendToRoom
+		case 0x20E4DBE3: //ClientChatRoomMessage
 			handleChatRoomMessage(pack);
 			break;
 		}
@@ -238,17 +238,17 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		break;
 	case 6:
 		switch(opcode) {
-		case 0x25A29FA6: //	ChatPersistentMessageToServer
+		case 0x25A29FA6:
 			handleSendMail(pack);
 			break;
 		}
 		break;
 	case 7:
 		switch (opcode) {
-		case 0x35366BED: //ChatCreateRoom
+		case 0x35366BED:
 			handleChatCreateRoom(pack);
 			break;
-		case 0xAD47021D: //CreateAuctionMessage
+		case 0xAD47021D:
 			handleBazaarAddItem(pack, true);
 			break;
 		}
@@ -256,7 +256,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		break;
 	case 8:
 		switch (opcode) {
-		case 0x1E9CE308: //CreateImmediateAuctionMessage
+		case 0x1E9CE308: //Bazaar
 			handleBazaarAddItem(pack, false);
 			break;
 		}
@@ -277,7 +277,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		break;
 	case 14:
 		switch (opcode) {
-		case 0x679E0D00: //AuctionQueryHeadersMessage
+		case 0x679E0D00: // 14
 			handleBazaarScreens(pack);
 			break;
 		}
@@ -548,6 +548,9 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 				if (parent != 0)
 					player->updateZoneWithParent(parent);
 
+				break;
+			case 0x115:
+				ObjectControllerMessage::parseItemDropTrade(player, pack);
 				break;
 			case 0x116:
 				ObjectControllerMessage::parseCommandQueueEnqueue(player, pack, processServer);
@@ -982,7 +985,7 @@ void ZonePacketHandler::handleAddItemMessage(Message* pack) {
 
 	uint64 id = pack->parseLong();
 
-	server->getPlayerManager()->handleAddItemMessage(player, id);
+	server->getPlayerManager()->handleAddItemToTradeWindow(player, id);
 }
 
 void ZonePacketHandler::handleGiveMoneyMessage(Message* pack) {
@@ -1164,12 +1167,13 @@ void ZonePacketHandler::handleNewbieTutorialResponse(Message* pack) {
 	if (player == NULL)
 		return;
 
-	//The string is just "ClientReady" - meant to serve as a ClientReady for Tutorial
+	//I DON'T THINK THIS IS RIGHT. BUT ITS HERE FOR NOW.
 	String req;
 	pack->parseAscii(req);
 
 	NewbieTutorialRequest* ntr = new NewbieTutorialRequest(req);
 	client->sendMessage(ntr);
+
 }
 
 void ZonePacketHandler::handleGetArticleMessage(Message* pack) {
@@ -1194,6 +1198,7 @@ void ZonePacketHandler::handleGetArticleMessage(Message* pack) {
 		   			foundarticle = true;
 		   			body = result->getString(2);
 		   			UnicodeString var(body);
+
 		   		}
 
 		   		delete result;
@@ -1375,10 +1380,9 @@ void ZonePacketHandler::handleRequestCategoriesMessage(Message* pack) {
 	if (player == NULL)
 		return;
 
-	//Make sure the client is actually sending this. Then add support
-	String lang;
-	//lang = pack->parseAscii(); //should be "en"
-
+	//TODO: FIX THIS. AND RESEARCH THIS.
+	//In the client, theres 02 00 65 6E after the opcode.
+	//Check this precu.
 	RequestCategoriesResponseMessage* rcrm = new RequestCategoriesResponseMessage();
 	rcrm->addMainCategory("Account/Billing", 0xB808, 1, 1, 1);
 	client->sendMessage(rcrm);

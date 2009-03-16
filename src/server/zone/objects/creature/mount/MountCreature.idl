@@ -49,6 +49,8 @@ import "../../player/Player";
 
 import "../../intangible/IntangibleObject";
 
+import "../../scene/SceneObject";
+
 interface MountCreature implements Creature {
 	MountCreature(CreatureObject linkCreature, const String name, const String stf, 
 			unsigned int itnocrc, unsigned int objCRC, unsigned long oid) {
@@ -83,6 +85,8 @@ interface MountCreature implements Creature {
 	void parseItemAttributes();
 	//void setAttributes(String attributeString);
 	//String getAttributes();
+	
+	void setDatapadItem(SceneObject item);
 	
 	void repair();
 	

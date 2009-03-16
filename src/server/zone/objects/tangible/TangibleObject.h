@@ -9,8 +9,6 @@
 
 #include "engine/service/Message.h"
 
-#include "../../packets/scene/AttributeListMessage.h"
-
 class Zone;
 
 class SceneObject;
@@ -33,8 +31,6 @@ public:
 
 	TangibleObject(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempname, int tp = 0);
 
-	void generateAttributes(Player* player);
-
 	void updateCraftingValues(DraftSchematic* draftSchematic);
 
 	void close(Player* player);
@@ -48,12 +44,6 @@ public:
 	void repairItem(Player* player);
 
 	void setObjectName(Player* player);
-
-	void parseItemAttributes();
-
-	bool isPersistent();
-
-	bool isUpdated();
 
 	unsigned int getDefenderUpdateCounter();
 
@@ -155,8 +145,6 @@ public:
 
 	void setCraftedSerial(String& s);
 
-	void getCustomizationString(String& appearance);
-
 	void setPlayerUseMask(unsigned int mask);
 
 	unsigned int getPlayerUseMask();
@@ -171,7 +159,7 @@ public:
 
 	int getObjectCount();
 
-	int getConditionDamage();
+	float getConditionDamage();
 
 	int getMaxCondition();
 
@@ -183,12 +171,6 @@ public:
 
 	String& getCraftedSerial();
 
-	void setAttributes(String& attributeString);
-
-	String& getAttributes();
-
-	void addAttributes(AttributeListMessage* alm);
-
 	String& getMisoAsocKey();
 
 	void setLoot(bool l);
@@ -197,17 +179,7 @@ public:
 
 	void setObjectSubType(const int type);
 
-	void setPersistent(bool pers);
-
-	void setUpdated(bool upd);
-
 	void setConditionDamage(int damage);
-
-	void setCustomizationString(String& cust);
-
-	void setCustomizationVariable(const String& type, unsigned int value);
-
-	void setCustomizationVariable(unsigned char type, unsigned int value);
 
 	void setObjectCount(const int count);
 
@@ -221,24 +193,19 @@ public:
 
 	void onSlicingFailure(Player* slicer);
 
+	void onEquip(Player* player);
+
+	void onUnequip(Player* player);
+
 	void decay(float decayRate);
 
 	void slice(Player* slicer);
-
-	void setItnocrc(unsigned int itnocrc);
-
-	unsigned int getItnocrc();
-
-	IntangibleObject* getITNO();
-
-	void addToDatapad(Player* player);
 
 protected:
 	TangibleObject(DummyConstructorParameter* param);
 
 	virtual ~TangibleObject();
 
-	String _return_getAttributes;
 	String _return_getCraftedSerial;
 	String _return_getCraftersName;
 	String _return_getMisoAsocKey;
@@ -254,8 +221,6 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void generateAttributes(Player* player);
-
 	void updateCraftingValues(DraftSchematic* draftSchematic);
 
 	void close(Player* player);
@@ -269,12 +234,6 @@ public:
 	void repairItem(Player* player);
 
 	void setObjectName(Player* player);
-
-	void parseItemAttributes();
-
-	bool isPersistent();
-
-	bool isUpdated();
 
 	unsigned int getDefenderUpdateCounter();
 
@@ -376,8 +335,6 @@ public:
 
 	void setCraftedSerial(String& s);
 
-	void getCustomizationString(String& appearance);
-
 	void setPlayerUseMask(unsigned int mask);
 
 	unsigned int getPlayerUseMask();
@@ -392,7 +349,7 @@ public:
 
 	int getObjectCount();
 
-	int getConditionDamage();
+	float getConditionDamage();
 
 	int getMaxCondition();
 
@@ -404,12 +361,6 @@ public:
 
 	String& getCraftedSerial();
 
-	void setAttributes(String& attributeString);
-
-	String& getAttributes();
-
-	void addAttributes(AttributeListMessage* alm);
-
 	String& getMisoAsocKey();
 
 	void setLoot(bool l);
@@ -418,17 +369,7 @@ public:
 
 	void setObjectSubType(const int type);
 
-	void setPersistent(bool pers);
-
-	void setUpdated(bool upd);
-
 	void setConditionDamage(int damage);
-
-	void setCustomizationString(String& cust);
-
-	void setCustomizationVariable(const String& type, unsigned int value);
-
-	void setCustomizationVariable(unsigned char type, unsigned int value);
 
 	void setObjectCount(const int count);
 
@@ -442,25 +383,17 @@ public:
 
 	void onSlicingFailure(Player* slicer);
 
+	void onEquip(Player* player);
+
+	void onUnequip(Player* player);
+
 	void decay(float decayRate);
 
 	void slice(Player* slicer);
 
-	void setItnocrc(unsigned int itnocrc);
-
-	unsigned int getItnocrc();
-
-	IntangibleObject* getITNO();
-
-	void addToDatapad(Player* player);
-
 protected:
 	String _param0_setCraftersName__String_;
 	String _param0_setCraftedSerial__String_;
-	String _param0_getCustomizationString__String_;
-	String _param0_setAttributes__String_;
-	String _param0_setCustomizationString__String_;
-	String _param0_setCustomizationVariable__String_int_;
 	String _param0_setMisoAsocKey__String_;
 };
 

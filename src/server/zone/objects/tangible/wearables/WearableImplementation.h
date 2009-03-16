@@ -1,46 +1,46 @@
 /*
-Copyright (C) 2007 <SWGEmu>
+ Copyright (C) 2007 <SWGEmu>
 
-This File is part of Core3.
+ This File is part of Core3.
 
-This program is free software; you can redistribute
-it and/or modify it under the terms of the GNU Lesser
-General Public License as published by the Free Software
-Foundation; either version 2 of the License,
-or (at your option) any later version.
+ This program is free software; you can redistribute
+ it and/or modify it under the terms of the GNU Lesser
+ General Public License as published by the Free Software
+ Foundation; either version 2 of the License,
+ or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU Lesser General Public License for
-more details.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ See the GNU Lesser General Public License for
+ more details.
 
-You should have received a copy of the GNU Lesser General
-Public License along with this program; if not, write to
-the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ You should have received a copy of the GNU Lesser General
+ Public License along with this program; if not, write to
+ the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
-Linking Engine3 statically or dynamically with other modules
-is making a combined work based on Engine3.
-Thus, the terms and conditions of the GNU Lesser General Public License
-cover the whole combination.
+ Linking Engine3 statically or dynamically with other modules
+ is making a combined work based on Engine3.
+ Thus, the terms and conditions of the GNU Lesser General Public License
+ cover the whole combination.
 
-In addition, as a special exception, the copyright holders of Engine3
-give you permission to combine Engine3 program with free software
-programs or libraries that are released under the GNU LGPL and with
-code included in the standard release of Core3 under the GNU LGPL
-license (or modified versions of such code, with unchanged license).
-You may copy and distribute such a system following the terms of the
-GNU LGPL for Engine3 and the licenses of the other code concerned,
-provided that you include the source code of that other code when
-and as the GNU LGPL requires distribution of source code.
+ In addition, as a special exception, the copyright holders of Engine3
+ give you permission to combine Engine3 program with free software
+ programs or libraries that are released under the GNU LGPL and with
+ code included in the standard release of Core3 under the GNU LGPL
+ license (or modified versions of such code, with unchanged license).
+ You may copy and distribute such a system following the terms of the
+ GNU LGPL for Engine3 and the licenses of the other code concerned,
+ provided that you include the source code of that other code when
+ and as the GNU LGPL requires distribution of source code.
 
-Note that people who make modified versions of Engine3 are not obligated
-to grant this special exception for their modified versions;
-it is their choice whether to do so. The GNU Lesser General Public License
-gives permission to release a modified version without this exception;
-this exception also makes it possible to release a modified version
-which carries forward this exception.
-*/
+ Note that people who make modified versions of Engine3 are not obligated
+ to grant this special exception for their modified versions;
+ it is their choice whether to do so. The GNU Lesser General Public License
+ gives permission to release a modified version without this exception;
+ this exception also makes it possible to release a modified version
+ which carries forward this exception.
+ */
 
 #ifndef WEARABLEIMPLEMENTATION_H_
 #define WEARABLEIMPLEMENTATION_H_
@@ -48,212 +48,175 @@ which carries forward this exception.
 #include "../../creature/CreatureObject.h"
 
 #include "Wearable.h"
+#include "../attachment/Attachment.h"
+#include "../attachment/AttachmentImplementation.h"
 
-class WearableImplementation : public WearableServant {
-private:
+#include "WearableSkillModMap.h"
 
-	int skillMod0Type;
-	int skillMod0Value;
+/*
+ * WearableImplementation is a class the represents Armor and Clothing
+ */
+class WearableImplementation: public WearableSkillModMap, public WearableServant {
+protected:
 
-	int skillMod1Type;
-	int skillMod1Value;
+	int socketCount;
 
-	int skillMod2Type;
-	int skillMod2Value;
+	int healthEncumbrance;
+	int actionEncumbrance;
+	int mindEncumbrance;
 
-	int sockets;
+	int wearableType;
 
-	int socket0Type;
-	int socket0Value;
-
-	int socket1Type;
-	int socket1Value;
-
-	int socket2Type;
-	int socket2Value;
-
-	int socket3Type;
-	int socket3Value;
+	String EMPTY;
 
 public:
 
-	WearableImplementation(uint64 objid, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false);
-	WearableImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false);
-	WearableImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false);
+	const static int MAXSOCKETS = 4;
+	const static int MAXSKILLMODS = 3;
 
+	const static int WEARABLECLOTHING = 0x01;
+	const static int WEARABLEARMOR = 0x02;
+	const static int WEARABLEPSG = 0x03;
 
-	void parseItemAttributes();
+	const static bool REMOVABLEATTACHMENTS = true;
+
+public:
+
+	/*
+	 * Constructor
+	 */
+	WearableImplementation(uint64 objid, uint32 tempCRC,
+			const UnicodeString& n, const String& tempn, bool eqp = false);
+	/*
+	 * Constructor
+	 */
+	WearableImplementation(CreatureObject* creature, uint64 oid,
+			uint32 tempCRC, const UnicodeString& n, const String& tempn,
+			bool eqp = false);
+	/*
+	 * Constructor
+	 */
+	WearableImplementation(CreatureObject* creature, uint32 tempCRC,
+			const UnicodeString& n, const String& tempn, bool eqp = false);
+
+	/*
+	 * init Initializes values
+	 */
 	void init();
-
-	void sendTo(Player* player, bool doClose = true);
-
-	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
-
-	void updateCraftingValues(DraftSchematic* draftSchematic);
-
+	/*
+	 * generateAttributes is called when the client requests the items properties
+	 */
 	void generateAttributes(SceneObject* obj);
-
+	/*
+	 * addAttributes add properties to the bazaar and generateAttributes
+	 */
 	void addAttributes(AttributeListMessage* alm);
+	/*
+	 * parseItemAttributes changes ItemAttributes into the values fot the Wearable
+	 */
+	void parseItemAttributes();
+	/*
+	 * makeSkillModAttributeString makes a string from skillModMap to save as an ItemAttribute
+	 */
+	void saveSkillModMap();
+	/*
+	 * sendTo sends this baseline to the player
+	 */
+	void sendTo(Player* player, bool doClose = true);
+	/*
+	 * sendRadialResponseTo radials
+	 */
+	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
+	/*
+	 * updateCraftingValues is called during the crafting process
+	 * for the object to have access to the values created
+	 */
+	void updateCraftingValues(DraftSchematic* draftSchematic);
+	/*
+	 * generateSockets creates a random number of sockets based on the max value
+	 */
+	void generateSockets(DraftSchematic* draftSchematic);
 
-	int addSkillMod(int skillModType, int skillModValue);
+	void getBestAttachmentSkillMod(String& valueName, AttachmentEntry* entry);
 
-	void setSocket(int index, int type, int value);
-	void setSocketType(int index, int type);
-	void setSocketValue(int index, int type);
+	void rebuildActiveSkillModMap();
 
-	int getSocketType(int index);
-	int getSocketValue(int index);
-
-	inline void setSkillMod0Type(int skillModType) {
-		skillMod0Type = skillModType;
-		String name = "skillMod0Type";
-		itemAttributes->setIntAttribute(name, skillModType);
+	bool hasSkillMod(String skillModName) {
+		return contains(skillModName);
 	}
 
-	inline void setSkillMod1Type(int skillModType) {
-		skillMod1Type = skillModType;
-		String name = "skillMod1Type";
-		itemAttributes->setIntAttribute(name, skillModType);
+	inline void setHealthEncumbrance(int healthEnc) {
+		healthEncumbrance = healthEnc;
+		String name = "healthEncumberance";
+		itemAttributes->setIntAttribute(name, healthEnc);
 	}
 
-
-	inline void setSkillMod2Type(int skillModType) {
-		skillMod2Type = skillModType;
-		String name = "skillMod2Type";
-		itemAttributes->setIntAttribute(name, skillModType);
+	inline void setActionEncumbrance(int actionEnc) {
+		actionEncumbrance = actionEnc;
+		String name = "actionEncumberance";
+		itemAttributes->setIntAttribute(name, actionEnc);
 	}
 
-	inline void setSkillMod0Value(int skillModValue) {
-		skillMod0Value = skillModValue;
-		String name = "skillMod0Value";
-		itemAttributes->setIntAttribute(name, skillModValue);
+	inline void setMindEncumbrance(int mindEnc) {
+		mindEncumbrance = mindEnc;
+		String name = "mindEncumberance";
+		itemAttributes->setIntAttribute(name, mindEnc);
 	}
 
-	inline void setSkillMod1Value(int skillModValue) {
-		skillMod1Value = skillModValue;
-		String name = "skillMod1Value";
-		itemAttributes->setIntAttribute(name, skillModValue);
-	}
-
-	inline void setSkillMod2Value(int skillModValue) {
-		skillMod2Value = skillModValue;
-		String name = "skillMod2Value";
-		itemAttributes->setIntAttribute(name, skillModValue);
-	}
-
-	inline void setSockets(int socket) {
-		sockets = socket;
-		String key = "sockets";
+	inline void setMaxSockets(int socket) {
+		socketCount = socket;
+		String key = "socketCount";
 		itemAttributes->setIntAttribute(key, socket);
 	}
 
-	inline void setSocket0Type(int socketType) {
-		socket0Type = socketType;
-		String key = "socket0Type";
-		itemAttributes->setIntAttribute(key, socketType);
+	inline int socketsLeft() {
+		return socketCount - socketsUsed();
 	}
 
-	inline void setSocket1Type(int socketType) {
-		socket1Type = socketType;
-		String key = "socket1Type";
-		itemAttributes->setIntAttribute(key, socketType);
+	int getMaxSockets() {
+		return socketCount;
 	}
 
-	inline void setSocket2Type(int socketType) {
-		socket2Type = socketType;
-		String key = "socket2Type";
-		itemAttributes->setIntAttribute(key, socketType);
+	int socketsUsed() {
+		return getUsedSocketCount();
 	}
 
-	inline void setSocket3Type(int socketType) {
-		socket3Type = socketType;
-		String key = "socket3Type";
-		itemAttributes->setIntAttribute(key, socketType);
+	inline int getHealthEncumbrance() {
+		return healthEncumbrance;
 	}
 
-	inline void setSocket0Value(int socketValue) {
-		socket0Value = socketValue;
-		String key = "socket0Value";
-		itemAttributes->setIntAttribute(key, socketValue);
+	inline int getActionEncumbrance() {
+		return actionEncumbrance;
 	}
 
-	inline void setSocket1Value(int socketValue) {
-		socket1Value = socketValue;
-		String key = "socket1Value";
-		itemAttributes->setIntAttribute(key, socketValue);
+	inline int getMindEncumbrance() {
+		return mindEncumbrance;
 	}
 
-	inline void setSocket2Value(int socketValue) {
-		socket2Value = socketValue;
-		String key = "socket2Value";
-		itemAttributes->setIntAttribute(key, socketValue);
+	inline bool hasEmptySocket() {
+		return socketsLeft() > 0;
 	}
 
-	inline void setSocket3Value(int socketValue) {
-		socket3Value = socketValue;
-		String key = "socket3Value";
-		itemAttributes->setIntAttribute(key, socketValue);
+	void conditionReduction(float damage) {
+		conditionDamage += damage;
 	}
 
-	inline int getSkillMod0Type() {
-		return skillMod0Type;
-	}
+	bool attachmentMatches(Attachment* attachment);
 
-	inline int getSkillMod1Type() {
-		return skillMod1Type;
-	}
+	void setAttachmentMods(Player* player);
+	void unsetAttachmentMods(Player* player);
 
-	inline int getSkillMod2Type() {
-		return skillMod2Type;
-	}
+	String& getSkillModType(int i);
+	int getSkillModValue(String name);
+	void applyAttachment(Player* player, Attachment* attachment);
+	void reclaimAttachments(Player* player);
 
-	inline int getSkillMod0Value() {
-		return skillMod0Value;
-	}
 
-	inline int getSkillMod1Value() {
-		return skillMod1Value;
-	}
+	// Events
+	void onEquip(Player* player);
+	void onUnequip(Player* player);
+	void onBroken(Player* player);
 
-	inline int getSkillMod2Value() {
-		return skillMod2Value;
-	}
-
-	inline int getSockets() {
-		return sockets;
-	}
-
-	inline int getSocket0Type() {
-		return socket0Type;
-	}
-
-	inline int getSocket1Type() {
-		return socket1Type;
-	}
-
-	inline int getSocket2Type() {
-		return socket2Type;
-	}
-
-	inline int getSocket3Type() {
-		return socket3Type;
-	}
-
-	inline int getSocket0Value() {
-		return socket0Value;
-	}
-
-	inline int getSocket1Value() {
-		return socket1Value;
-	}
-
-	inline int getSocket2Value() {
-		return socket2Value;
-	}
-
-	inline int getSocket3Value() {
-		return socket3Value;
-	}
 };
 
 #endif /*WEARABLEIMPLEMENTATION_H_*/

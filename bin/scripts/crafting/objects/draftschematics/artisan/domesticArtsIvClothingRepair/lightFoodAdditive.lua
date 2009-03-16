@@ -45,6 +45,7 @@ lightFoodAdditive = Object:new {
 
    objectName = "Light Food Additive",
    stfName = "food_additive_light",
+   stfFile = "food_name",
    objectCRC = 363998896,
    groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ lightFoodAdditive = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8224:objectcrc=1231667281:objecttemp=food_additive_light:templatetype=food_name:itemmask=65535:",
+   tanoAttributes = "objecttype=8224:objectcrc=1231667281:objecttemp=food_additive_light:templatetype=food_name:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

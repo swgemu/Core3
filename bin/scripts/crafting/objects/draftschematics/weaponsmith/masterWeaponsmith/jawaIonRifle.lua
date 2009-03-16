@@ -45,6 +45,7 @@ jawaIonRifle = Object:new {
 
    objectName = "Jawa Ion Rifle",
    stfName = "rifle_jawa_ion",
+   stfFile = "weapon_name",
    objectCRC = 2607432911,
    groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
 

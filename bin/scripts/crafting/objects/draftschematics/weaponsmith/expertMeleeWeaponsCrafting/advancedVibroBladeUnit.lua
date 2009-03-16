@@ -45,6 +45,7 @@ advancedVibroBladeUnit = Object:new {
 
    objectName = "Advanced Vibro Blade Unit",
    stfName = "blade_vibro_unit_advanced",
+   stfFile = "craft_weapon_ingredients_n",
    objectCRC = 2591525916,
    groupName = "craftWeaponMeleeGroupD", -- Group schematic is awarded in (See skills table)
 

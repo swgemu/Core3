@@ -45,6 +45,7 @@ boneArmorChestPlate = Object:new {
 
    objectName = "Bone Armor Chest Plate",
    stfName = "armor_bone_s01_chest_plate",
+   stfFile = "wearables_name",
    objectCRC = 450361637,
    groupName = "craftArtisanEngineeringGroupD", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ boneArmorChestPlate = Object:new {
    experimentalMax = "0, 0, 0, 1000, 20, 12500, 34, 13, 2, 1, 2, 30, 12500",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=257:objectcrc=3552584942:objecttemp=armor_bone_s01_chest_plate:templatetype=wearables_name:itemmask=62975:",
+   tanoAttributes = "objecttype=257:objectcrc=3552584942:objecttemp=armor_bone_s01_chest_plate:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=energyeffectiveness;vunerability=kineticeffectiveness,blasteffectiveness,stuneffectiveness,heateffectiveness,coldeffectiveness,acideffectiveness,restraineffectiveness;armorType=256;armorStyle=4099;:",
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "7, 0",
    customizationSkill = "armor_customization"

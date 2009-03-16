@@ -45,6 +45,7 @@ weaponRepairTool = Object:new {
 
    objectName = "Weapon Repair Tool",
    stfName = "weapon_repair_name",
+   stfFile = "crafting",
    objectCRC = 1278219253,
    groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ weaponRepairTool = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32771:objectcrc=2607871827:objecttemp=weapon_repair_name:templatetype=crafting:itemmask=65535:",
+   tanoAttributes = "objecttype=32771:objectcrc=2607871827:objecttemp=weapon_repair_name:templatetype=crafting:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

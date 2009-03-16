@@ -45,6 +45,7 @@ srCombatPistol = Object:new {
 
    objectName = "SR Combat Pistol",
    stfName = "pistol_srcombat",
+   stfFile = "weapon_name",
    objectCRC = 3207190896,
    groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
 

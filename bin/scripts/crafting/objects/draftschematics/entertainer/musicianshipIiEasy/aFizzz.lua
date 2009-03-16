@@ -45,6 +45,7 @@ aFizzz = Object:new {
 
    objectName = "a Fizzz",
    stfName = "obj_fizzz",
+   stfFile = "obj_n",
    objectCRC = 1476982860,
    groupName = "craftInstrumentGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ aFizzz = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8204:objectcrc=197364379:objecttemp=obj_fizzz:templatetype=obj_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8204:objectcrc=197364379:objecttemp=obj_fizzz:templatetype=obj_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "instrument_customization"

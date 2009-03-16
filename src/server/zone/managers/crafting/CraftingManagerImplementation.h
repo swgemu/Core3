@@ -60,6 +60,9 @@
 #include "../../objects/draftschematic/DraftSchematicGroup.h"
 #include "../../objects/draftschematic/DraftSchematicGroupImplementation.h"
 
+#include "../../objects/manufacture/ManufactureSchematic.h"
+#include "../../objects/manufacture/ManufactureSchematicImplementation.h"
+
 #include "../../objects/tangible/TangibleObject.h"
 #include "../../objects/tangible/TangibleObjectImplementation.h"
 
@@ -92,6 +95,8 @@ class CraftingManagerImplementation : public CraftingManagerServant,
 
 	ZoneServer* server;
 	ZoneProcessServerImplementation * processor;
+
+	ItemManager* itemManager;
 
 	// Use a groupName to recieve a vector of draftSchematics back
 	VectorMap<String, DraftSchematicGroup*> draftSchematicsMap;
@@ -172,15 +177,18 @@ public:
 	// Methods relating to removing Items to the crafting process
 	void removeIngredientFromSlot(Player* player, int slot, int counter);
 
-	// Pretty Self explanitory
+	// Handles object deletion
+	void deleteItem(SceneObject* scno, TangibleObject* tano);
+
+	// Pretty Self explanatory
 	void putComponentBackInInventory(Player* player, Component* component);
 
 	// Crafting Methods
 	void nextCraftingStage(Player* player, String test);
 	void craftingCustomization(Player* player, String name, int condition, String customizationString);
 	void handleExperimenting(Player* player, int counter, int numRowsAttempted, String expString);
-	void createPrototype(Player* player, String count);
-	void createSchematic(Player* player, String count);
+	void createPrototype(Player* player, int counter, int practice);
+	void createSchematic(Player* player, int counter);
 
 
 	float getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type);
@@ -243,8 +251,8 @@ private:
 
 	void calculateAssemblySuccess(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, float modifier);
 	int calculateAssemblyFailureRate(Player* player, CraftingTool* craftingTool, float assemblyPoints);
-	float calculateExperimentationFailureRate(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int pointsUsed);
-	void calculateExperimentationSuccess(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, float failure);
+	int calculateExperimentationFailureRate(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int pointsUsed);
+	void calculateExperimentationSuccess(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int failure);
 	float calculateAssemblyModifier(CraftingTool* craftingTool);
 	float calculateExperimentationValueModifier(int assemblyResult, int pointsAttempted, float failure);
 	float getLog(float value);

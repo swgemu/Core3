@@ -45,6 +45,7 @@ muzzle = Object:new {
 
    objectName = "Muzzle",
    stfName = "weapon_ranged_muzzle",
+   stfFile = "powerup_n",
    objectCRC = 2672814198,
    groupName = "craftArtisanEngineeringGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ muzzle = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=524290:objectcrc=555906025:objecttemp=weapon_ranged:templatetype=powerup:itemmask=65535:",
+   tanoAttributes = "objecttype=524290:objectcrc=555906025:objecttemp=weapon_ranged:templatetype=powerup:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

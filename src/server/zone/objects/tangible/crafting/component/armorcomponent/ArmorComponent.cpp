@@ -28,11 +28,6 @@ ArmorComponent::ArmorComponent(CreatureObject* creature, unsigned int tempCRC, c
 	_impl->_setStub(this);
 }
 
-ArmorComponent::ArmorComponent(ArmorComponent* component, unsigned long long oid) : Component(DummyConstructorParameter::instance()) {
-	_impl = new ArmorComponentImplementation(component, oid);
-	_impl->_setStub(this);
-}
-
 ArmorComponent::ArmorComponent(DummyConstructorParameter* param) : Component(param) {
 }
 
@@ -157,10 +152,6 @@ ArmorComponentServant::ArmorComponentServant(unsigned long long oid, unsigned in
 }
 
 ArmorComponentServant::ArmorComponentServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : ComponentImplementation(creature, tempCRC, n, tempn) {
-	_classHelper = ArmorComponentHelper::instance();
-}
-
-ArmorComponentServant::ArmorComponentServant(ArmorComponent* component, unsigned long long oid) : ComponentImplementation(component, oid) {
 	_classHelper = ArmorComponentHelper::instance();
 }
 

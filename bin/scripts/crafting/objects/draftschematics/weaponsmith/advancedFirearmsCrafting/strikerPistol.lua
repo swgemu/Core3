@@ -45,6 +45,7 @@ strikerPistol = Object:new {
 
    objectName = "Striker Pistol",
    stfName = "pistol_striker",
+   stfFile = "weapon_name",
    objectCRC = 70825547,
    groupName = "craftWeaponRangedGroupC", -- Group schematic is awarded in (See skills table)
 

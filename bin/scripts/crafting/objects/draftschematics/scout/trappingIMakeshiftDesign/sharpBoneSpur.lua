@@ -45,6 +45,7 @@ sharpBoneSpur = Object:new {
 
    objectName = "Sharp Bone Spur",
    stfName = "trap_enraging_spur",
+   stfFile = "item_n",
    objectCRC = 253853379,
    groupName = "craftScoutTrapGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ sharpBoneSpur = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8212:objectcrc=3897339231:objecttemp=trap_enraging_spur:templatetype=item_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8212:objectcrc=3897339231:objecttemp=trap_enraging_spur:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

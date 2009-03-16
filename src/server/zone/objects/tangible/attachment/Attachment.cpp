@@ -12,6 +12,8 @@
 
 #include "../../player/Player.h"
 
+#include "../wearables/Wearable.h"
+
 /*
  *	AttachmentStub
  */
@@ -27,12 +29,53 @@ Attachment::Attachment(DummyConstructorParameter* param) : TangibleObject(param)
 Attachment::~Attachment() {
 }
 
-void Attachment::remove(Player* player) {
+void Attachment::addSkillMod(String& skillModType, int skillModValue) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+		method.addAsciiParameter(skillModType);
+		method.addSignedIntParameter(skillModValue);
+
+		method.executeWithVoidReturn();
+	} else
+		((AttachmentImplementation*) _impl)->addSkillMod(skillModType, skillModValue);
+}
+
+void Attachment::setSkillModCount(int modifier) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addSignedIntParameter(modifier);
+
+		method.executeWithVoidReturn();
+	} else
+		((AttachmentImplementation*) _impl)->setSkillModCount(modifier);
+}
+
+void Attachment::generateSkillMods(Player* player, int modifier) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(player);
+		method.addSignedIntParameter(modifier);
+
+		method.executeWithVoidReturn();
+	} else
+		((AttachmentImplementation*) _impl)->generateSkillMods(player, modifier);
+}
+
+void Attachment::remove(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -40,208 +83,32 @@ void Attachment::remove(Player* player) {
 		((AttachmentImplementation*) _impl)->remove(player);
 }
 
-void Attachment::setSkillMod0Type(int type) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 7);
-		method.addSignedIntParameter(type);
-
-		method.executeWithVoidReturn();
-	} else
-		((AttachmentImplementation*) _impl)->setSkillMod0Type(type);
-}
-
-void Attachment::setSkillMod1Type(int type) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 8);
-		method.addSignedIntParameter(type);
-
-		method.executeWithVoidReturn();
-	} else
-		((AttachmentImplementation*) _impl)->setSkillMod1Type(type);
-}
-
-void Attachment::setSkillMod2Type(int type) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
-		method.addSignedIntParameter(type);
-
-		method.executeWithVoidReturn();
-	} else
-		((AttachmentImplementation*) _impl)->setSkillMod2Type(type);
-}
-
-void Attachment::setSkillMod0Value(int value) {
+int Attachment::getRandomModValue(int luck, int modifier) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
-		method.addSignedIntParameter(value);
+		method.addSignedIntParameter(luck);
+		method.addSignedIntParameter(modifier);
 
-		method.executeWithVoidReturn();
+		return method.executeWithSignedIntReturn();
 	} else
-		((AttachmentImplementation*) _impl)->setSkillMod0Value(value);
+		return ((AttachmentImplementation*) _impl)->getRandomModValue(luck, modifier);
 }
 
-void Attachment::setSkillMod1Value(int value) {
+String& Attachment::getSkillModName(int index) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 11);
-		method.addSignedIntParameter(value);
-
-		method.executeWithVoidReturn();
-	} else
-		((AttachmentImplementation*) _impl)->setSkillMod1Value(value);
-}
-
-void Attachment::setSkillMod2Value(int value) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 12);
-		method.addSignedIntParameter(value);
-
-		method.executeWithVoidReturn();
-	} else
-		((AttachmentImplementation*) _impl)->setSkillMod2Value(value);
-}
-
-void Attachment::setSkillModValue(int index, int value) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 13);
-		method.addSignedIntParameter(index);
-		method.addSignedIntParameter(value);
-
-		method.executeWithVoidReturn();
-	} else
-		((AttachmentImplementation*) _impl)->setSkillModValue(index, value);
-}
-
-void Attachment::setSkillModType(int index, int type) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 14);
-		method.addSignedIntParameter(index);
-		method.addSignedIntParameter(type);
-
-		method.executeWithVoidReturn();
-	} else
-		((AttachmentImplementation*) _impl)->setSkillModType(index, type);
-}
-
-void Attachment::setSkillMods(int modifier) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 15);
-		method.addSignedIntParameter(modifier);
-
-		method.executeWithVoidReturn();
-	} else
-		((AttachmentImplementation*) _impl)->setSkillMods(modifier);
-}
-
-int Attachment::getSkillMod0Type() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 16);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((AttachmentImplementation*) _impl)->getSkillMod0Type();
-}
-
-int Attachment::getSkillMod1Type() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 17);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((AttachmentImplementation*) _impl)->getSkillMod1Type();
-}
-
-int Attachment::getSkillMod2Type() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 18);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((AttachmentImplementation*) _impl)->getSkillMod2Type();
-}
-
-int Attachment::getSkillMod0Value() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 19);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((AttachmentImplementation*) _impl)->getSkillMod0Value();
-}
-
-int Attachment::getSkillMod1Value() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 20);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((AttachmentImplementation*) _impl)->getSkillMod1Value();
-}
-
-int Attachment::getSkillMod2Value() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 21);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((AttachmentImplementation*) _impl)->getSkillMod2Value();
-}
-
-int Attachment::getSkillModType(int index) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 22);
 		method.addSignedIntParameter(index);
 
-		return method.executeWithSignedIntReturn();
+		method.executeWithAsciiReturn(_return_getSkillModName);
+		return _return_getSkillModName;
 	} else
-		return ((AttachmentImplementation*) _impl)->getSkillModType(index);
+		return ((AttachmentImplementation*) _impl)->getSkillModName(index);
 }
 
 int Attachment::getSkillModValue(int index) {
@@ -249,7 +116,7 @@ int Attachment::getSkillModValue(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 12);
 		method.addSignedIntParameter(index);
 
 		return method.executeWithSignedIntReturn();
@@ -257,16 +124,41 @@ int Attachment::getSkillModValue(int index) {
 		return ((AttachmentImplementation*) _impl)->getSkillModValue(index);
 }
 
-int Attachment::getBestSkillMod() {
+int Attachment::getSkillModValue(String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 13);
+		method.addAsciiParameter(name);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((AttachmentImplementation*) _impl)->getBestSkillMod();
+		return ((AttachmentImplementation*) _impl)->getSkillModValue(name);
+}
+
+int Attachment::getSkillModCount() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((AttachmentImplementation*) _impl)->getSkillModCount();
+}
+
+int Attachment::getAttachmentType() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((AttachmentImplementation*) _impl)->getAttachmentType();
 }
 
 /*
@@ -281,61 +173,34 @@ Packet* AttachmentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		remove((Player*) inv->getObjectParameter());
+		addSkillMod(inv->getAsciiParameter(_param0_addSkillMod__String_int_), inv->getSignedIntParameter());
 		break;
 	case 7:
-		setSkillMod0Type(inv->getSignedIntParameter());
+		setSkillModCount(inv->getSignedIntParameter());
 		break;
 	case 8:
-		setSkillMod1Type(inv->getSignedIntParameter());
+		generateSkillMods((Player*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 9:
-		setSkillMod2Type(inv->getSignedIntParameter());
+		remove((Player*) inv->getObjectParameter());
 		break;
 	case 10:
-		setSkillMod0Value(inv->getSignedIntParameter());
+		resp->insertSignedInt(getRandomModValue(inv->getSignedIntParameter(), inv->getSignedIntParameter()));
 		break;
 	case 11:
-		setSkillMod1Value(inv->getSignedIntParameter());
+		resp->insertAscii(getSkillModName(inv->getSignedIntParameter()));
 		break;
 	case 12:
-		setSkillMod2Value(inv->getSignedIntParameter());
-		break;
-	case 13:
-		setSkillModValue(inv->getSignedIntParameter(), inv->getSignedIntParameter());
-		break;
-	case 14:
-		setSkillModType(inv->getSignedIntParameter(), inv->getSignedIntParameter());
-		break;
-	case 15:
-		setSkillMods(inv->getSignedIntParameter());
-		break;
-	case 16:
-		resp->insertSignedInt(getSkillMod0Type());
-		break;
-	case 17:
-		resp->insertSignedInt(getSkillMod1Type());
-		break;
-	case 18:
-		resp->insertSignedInt(getSkillMod2Type());
-		break;
-	case 19:
-		resp->insertSignedInt(getSkillMod0Value());
-		break;
-	case 20:
-		resp->insertSignedInt(getSkillMod1Value());
-		break;
-	case 21:
-		resp->insertSignedInt(getSkillMod2Value());
-		break;
-	case 22:
-		resp->insertSignedInt(getSkillModType(inv->getSignedIntParameter()));
-		break;
-	case 23:
 		resp->insertSignedInt(getSkillModValue(inv->getSignedIntParameter()));
 		break;
-	case 24:
-		resp->insertSignedInt(getBestSkillMod());
+	case 13:
+		resp->insertSignedInt(getSkillModValue(inv->getAsciiParameter(_param0_getSkillModValue__String_)));
+		break;
+	case 14:
+		resp->insertSignedInt(getSkillModCount());
+		break;
+	case 15:
+		resp->insertSignedInt(getAttachmentType());
 		break;
 	default:
 		return NULL;
@@ -344,80 +209,44 @@ Packet* AttachmentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
+void AttachmentAdapter::addSkillMod(String& skillModType, int skillModValue) {
+	return ((AttachmentImplementation*) impl)->addSkillMod(skillModType, skillModValue);
+}
+
+void AttachmentAdapter::setSkillModCount(int modifier) {
+	return ((AttachmentImplementation*) impl)->setSkillModCount(modifier);
+}
+
+void AttachmentAdapter::generateSkillMods(Player* player, int modifier) {
+	return ((AttachmentImplementation*) impl)->generateSkillMods(player, modifier);
+}
+
 void AttachmentAdapter::remove(Player* player) {
 	return ((AttachmentImplementation*) impl)->remove(player);
 }
 
-void AttachmentAdapter::setSkillMod0Type(int type) {
-	return ((AttachmentImplementation*) impl)->setSkillMod0Type(type);
+int AttachmentAdapter::getRandomModValue(int luck, int modifier) {
+	return ((AttachmentImplementation*) impl)->getRandomModValue(luck, modifier);
 }
 
-void AttachmentAdapter::setSkillMod1Type(int type) {
-	return ((AttachmentImplementation*) impl)->setSkillMod1Type(type);
-}
-
-void AttachmentAdapter::setSkillMod2Type(int type) {
-	return ((AttachmentImplementation*) impl)->setSkillMod2Type(type);
-}
-
-void AttachmentAdapter::setSkillMod0Value(int value) {
-	return ((AttachmentImplementation*) impl)->setSkillMod0Value(value);
-}
-
-void AttachmentAdapter::setSkillMod1Value(int value) {
-	return ((AttachmentImplementation*) impl)->setSkillMod1Value(value);
-}
-
-void AttachmentAdapter::setSkillMod2Value(int value) {
-	return ((AttachmentImplementation*) impl)->setSkillMod2Value(value);
-}
-
-void AttachmentAdapter::setSkillModValue(int index, int value) {
-	return ((AttachmentImplementation*) impl)->setSkillModValue(index, value);
-}
-
-void AttachmentAdapter::setSkillModType(int index, int type) {
-	return ((AttachmentImplementation*) impl)->setSkillModType(index, type);
-}
-
-void AttachmentAdapter::setSkillMods(int modifier) {
-	return ((AttachmentImplementation*) impl)->setSkillMods(modifier);
-}
-
-int AttachmentAdapter::getSkillMod0Type() {
-	return ((AttachmentImplementation*) impl)->getSkillMod0Type();
-}
-
-int AttachmentAdapter::getSkillMod1Type() {
-	return ((AttachmentImplementation*) impl)->getSkillMod1Type();
-}
-
-int AttachmentAdapter::getSkillMod2Type() {
-	return ((AttachmentImplementation*) impl)->getSkillMod2Type();
-}
-
-int AttachmentAdapter::getSkillMod0Value() {
-	return ((AttachmentImplementation*) impl)->getSkillMod0Value();
-}
-
-int AttachmentAdapter::getSkillMod1Value() {
-	return ((AttachmentImplementation*) impl)->getSkillMod1Value();
-}
-
-int AttachmentAdapter::getSkillMod2Value() {
-	return ((AttachmentImplementation*) impl)->getSkillMod2Value();
-}
-
-int AttachmentAdapter::getSkillModType(int index) {
-	return ((AttachmentImplementation*) impl)->getSkillModType(index);
+String& AttachmentAdapter::getSkillModName(int index) {
+	return ((AttachmentImplementation*) impl)->getSkillModName(index);
 }
 
 int AttachmentAdapter::getSkillModValue(int index) {
 	return ((AttachmentImplementation*) impl)->getSkillModValue(index);
 }
 
-int AttachmentAdapter::getBestSkillMod() {
-	return ((AttachmentImplementation*) impl)->getBestSkillMod();
+int AttachmentAdapter::getSkillModValue(String& name) {
+	return ((AttachmentImplementation*) impl)->getSkillModValue(name);
+}
+
+int AttachmentAdapter::getSkillModCount() {
+	return ((AttachmentImplementation*) impl)->getSkillModCount();
+}
+
+int AttachmentAdapter::getAttachmentType() {
+	return ((AttachmentImplementation*) impl)->getAttachmentType();
 }
 
 /*

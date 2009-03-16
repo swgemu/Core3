@@ -45,6 +45,7 @@ deedForPersonalNaturalGasProcessor = Object:new {
 
    objectName = "Deed for: Personal Natural Gas Processor",
    stfName = "gas_harvester_deed_name",
+   stfFile = "deed",
    objectCRC = 140336833,
    groupName = "craftArtisanEngineeringGroupD", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ deedForPersonalNaturalGasProcessor = Object:new {
    experimentalMax = "0, 0, 5, 50000, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8388610:objectcrc=2231503385:objecttemp=gas_harvester_deed_name:templatetype=deed:itemmask=65535:",
+   tanoAttributes = "objecttype=8388610:objectcrc=2231503385:objecttemp=gas_harvester_deed_name:templatetype=deed:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

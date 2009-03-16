@@ -46,6 +46,7 @@ DraftSchematic = Object:new {
 
    objectName = "DraftSchematic", -- name of the lua Object
    stfName = "",
+   stfFile = "",
    objectCRC = 0,
    groupName = "",
 

@@ -9,11 +9,45 @@
 
 class SceneObject;
 
+class DraftSchematic;
+
+class TangibleObject;
+
+class CraftingTool;
+
+class Player;
+
+#include "../../packets/scene/AttributeListMessage.h"
+
 #include "../scene/SceneObject.h"
 
 class ManufactureSchematic : public SceneObject {
 public:
-	ManufactureSchematic(unsigned long long oid);
+	ManufactureSchematic(unsigned long long oid, String& n, String& stfFile, String& stfName, unsigned int crc);
+
+	ManufactureSchematic(unsigned long long oid, DraftSchematic* draftSchematic, CraftingTool* craftingTool);
+
+	void parseItemAttributes();
+
+	void generateAttributes(Player* player);
+
+	void addAttributes(AttributeListMessage* alm);
+
+	int getComplexity();
+
+	int getManufacturingLimit();
+
+	int getDataSize();
+
+	TangibleObject* getTangibleObject();
+
+	void setComplexity(int value);
+
+	void setManufacturingLimit(int value);
+
+	void setTangibleObject(TangibleObject* tano);
+
+	void setDataSize(int value);
 
 protected:
 	ManufactureSchematic(DummyConstructorParameter* param);
@@ -30,6 +64,28 @@ public:
 	ManufactureSchematicAdapter(ManufactureSchematicImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void parseItemAttributes();
+
+	void generateAttributes(Player* player);
+
+	void addAttributes(AttributeListMessage* alm);
+
+	int getComplexity();
+
+	int getManufacturingLimit();
+
+	int getDataSize();
+
+	TangibleObject* getTangibleObject();
+
+	void setComplexity(int value);
+
+	void setManufacturingLimit(int value);
+
+	void setTangibleObject(TangibleObject* tano);
+
+	void setDataSize(int value);
 
 };
 
@@ -55,7 +111,7 @@ public:
 	ManufactureSchematic* _this;
 
 public:
-	ManufactureSchematicServant(unsigned long long oid, int type);
+	ManufactureSchematicServant(unsigned long long oid, int tp);
 	virtual ~ManufactureSchematicServant();
 
 	void _setStub(DistributedObjectStub* stub);

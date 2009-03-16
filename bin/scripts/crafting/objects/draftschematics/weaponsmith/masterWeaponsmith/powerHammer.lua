@@ -45,6 +45,7 @@ powerHammer = Object:new {
 
    objectName = "Power Hammer",
    stfName = "sword_2h_maul",
+   stfFile = "weapon_name",
    objectCRC = 1312097223,
    groupName = "craftWeaponMeleeGroupF", -- Group schematic is awarded in (See skills table)
 

@@ -45,6 +45,7 @@ boneArmorRightBracer = Object:new {
 
    objectName = "Bone Armor Right Bracer",
    stfName = "armor_bone_s01_bracer_r",
+   stfFile = "wearables_name",
    objectCRC = 288791041,
    groupName = "craftArtisanEngineeringGroupD", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ boneArmorRightBracer = Object:new {
    experimentalMax = "0, 0, 0, 1000, 20, 12500, 4, 4, 2, 1, 2, 30, 12500",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=261:objectcrc=1586145940:objecttemp=armor_bone_s01_bracer_r:templatetype=wearables_name:itemmask=62975:",
+   tanoAttributes = "objecttype=261:objectcrc=1586145940:objecttemp=armor_bone_s01_bracer_r:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=energyeffectiveness;vunerability=kineticeffectiveness,blasteffectiveness,stuneffectiveness,heateffectiveness,coldeffectiveness,acideffectiveness,restraineffectiveness;armorType=260;armorStyle=4099;:",
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "7",
    customizationSkill = "armor_customization"

@@ -46,6 +46,8 @@ include "engine/core/ManagedObject";
 
 import "../scene/SceneObject";
 
+import "../intangible/IntangibleObject";
+
 import "../player/Player";
 import "DraftSchematicIngredient";
 import "DraftSchematicAttribute";
@@ -53,13 +55,17 @@ import "DraftSchematicValues";
 import "DraftSchematicExpPropGroup";
 import "../../packets/object/ObjectControllerMessage";
 
-interface DraftSchematic implements ManagedObject {
+interface DraftSchematic implements SceneObject {
 
-	DraftSchematic(unsigned int schematicID, const String objName, const String StringName, 
+	DraftSchematic(unsigned int oid, const String objName, const String StringFile, const String StringName, 
 			unsigned int objCRC, const String groupName, unsigned int complexity, 
-			unsigned int schematicSize, int craftingToolTab);
+			unsigned int schematicSize, int craftingToolTab) {
+		super();		
+	}
 
-	DraftSchematic(DraftSchematic draftSchematic);
+	DraftSchematic(DraftSchematic draftSchematic) {
+		super();		
+	}
 
 	DraftSchematic dsClone(DraftSchematic draftSchematic);
 
@@ -90,8 +96,8 @@ interface DraftSchematic implements ManagedObject {
 	
 	// setters
 	void setPersistent(boolean status);
-
-	void setObjectID(unsigned long objID);
+	
+	//void setObjectID(unsigned long id);
 
 	void setTanoAttributes(String attributes);
 
@@ -120,8 +126,12 @@ interface DraftSchematic implements ManagedObject {
 	void setFinished();
 
 	void setCrafter(Player crafter);
+	
+	void setManufacturingLimit(int value);
 
 	//getters
+	
+	//unsigned long getObjectID();
 
 	int getExpPropGroupListSize();
 
@@ -143,13 +153,13 @@ interface DraftSchematic implements ManagedObject {
 
 	String getStringName();
 	
+	String getStringFile();
+	
 	String getGroupName();
 	
 	unsigned int getComplexity();
 	
 	unsigned int getSchematicSize();
-
-	unsigned int getObjectID();
 
 	String getTanoAttributes();
 	
@@ -180,6 +190,8 @@ interface DraftSchematic implements ManagedObject {
 	float getExpFailure();
 
 	Player getCrafter();
+	
+	int getManufacturingLimit();
 
 	DraftSchematicValues getCraftingValues();
 

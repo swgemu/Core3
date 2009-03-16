@@ -45,6 +45,7 @@ shoulderStrap = Object:new {
 
    objectName = "Shoulder Strap",
    stfName = "bandolier_s07",
+   stfFile = "wearables_name",
    objectCRC = 956612065,
    groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ shoulderStrap = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777217:objectcrc=3487290288:objecttemp=bandolier_s07:templatetype=wearables_name:itemmask=65535:",
+   tanoAttributes = "objecttype=16777217:objectcrc=3487290288:objecttemp=bandolier_s07:templatetype=wearables_name:itemmask=65535::",
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "0",
    customizationSkill = "clothing_customization"

@@ -45,6 +45,7 @@ cargoVest = Object:new {
 
    objectName = "Cargo Vest",
    stfName = "vest_s09",
+   stfFile = "wearables_name",
    objectCRC = 3953554758,
    groupName = "craftClothingFieldGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ cargoVest = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777231:objectcrc=1904031382:objecttemp=vest_s09:templatetype=wearables_name:itemmask=62975:",
+   tanoAttributes = "objecttype=16777231:objectcrc=1904031382:objecttemp=vest_s09:templatetype=wearables_name:itemmask=62975::",
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "15",
    customizationSkill = "clothing_customization"

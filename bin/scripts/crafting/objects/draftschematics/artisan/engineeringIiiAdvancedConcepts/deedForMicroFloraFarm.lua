@@ -45,6 +45,7 @@ deedForMicroFloraFarm = Object:new {
 
    objectName = "Deed for: Micro Flora Farm",
    stfName = "flora_harvester_deed_name",
+   stfFile = "deed",
    objectCRC = 1809212659,
    groupName = "craftArtisanEngineeringGroupC", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ deedForMicroFloraFarm = Object:new {
    experimentalMax = "0, 0, 5, 50000, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8388610:objectcrc=2840949012:objecttemp=flora_harvester_deed_name:templatetype=deed:itemmask=65535:",
+   tanoAttributes = "objecttype=8388610:objectcrc=2840949012:objecttemp=flora_harvester_deed_name:templatetype=deed:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -45,6 +45,7 @@ greyGabaki = Object:new {
 
    objectName = "Grey Gabaki",
    stfName = "grey_gabaki",
+   stfFile = "food_name",
    objectCRC = 3344628504,
    groupName = "craftSmugglerSpiceNovice", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ greyGabaki = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=4012257661:objecttemp=grey_gabaki:templatetype=spice/spice:itemmask=65535:",
+   tanoAttributes = "objecttype=8202:objectcrc=4012257661:objecttemp=grey_gabaki:templatetype=spice/spice:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "spice_customization"

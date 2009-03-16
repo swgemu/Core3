@@ -45,6 +45,7 @@ genericMeleeWeaponKit = Object:new {
 
    objectName = "Generic Melee Weapon Kit",
    stfName = "weapon_melee_generic",
+   stfFile = "powerup_n",
    objectCRC = 247131041,
    groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ genericMeleeWeaponKit = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=524289:objectcrc=1375892401:objecttemp=weapon_melee:templatetype=powerup_n:itemmask=65535:",
+   tanoAttributes = "objecttype=524289:objectcrc=1375892401:objecttemp=weapon_melee:templatetype=powerup_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

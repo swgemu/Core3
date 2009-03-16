@@ -45,6 +45,7 @@ casualPants = Object:new {
 
    objectName = "Casual Pants",
    stfName = "pants_s25",
+   stfFile = "wearables_name",
    objectCRC = 3298508145,
    groupName = "craftArtisanNewbieGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ casualPants = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777228:objectcrc=1037699097:objecttemp=pants_s25:templatetype=wearables_name:itemmask=62975:",
+   tanoAttributes = "objecttype=16777228:objectcrc=1037699097:objecttemp=pants_s25:templatetype=wearables_name:itemmask=62975::",
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "27, 13",
    customizationSkill = "clothing_customization"

@@ -45,11 +45,12 @@ which carries forward this exception.
 #include "DraftSchematicImplementation.h"
 
 DraftSchematicImplementation::DraftSchematicImplementation(uint32 schematicID, const String& objName,
-		const String& StringName, uint32 objCRC, const String& groupName, uint32 complexity,
+		const String& StringFile, const String& StringName, uint32 objCRC, const String& groupName, uint32 complexity,
 		uint32 schematicSize, int craftingToolTab) :
 			DraftSchematicServant() {
 	DraftSchematicImplementation::schematicID = schematicID;
 	DraftSchematicImplementation::objName = objName;
+	DraftSchematicImplementation::StringFile = StringFile;
 	DraftSchematicImplementation::StringName = StringName;
 	DraftSchematicImplementation::schematicCRC = objCRC;
 	DraftSchematicImplementation::groupName = groupName;
@@ -71,6 +72,7 @@ DraftSchematicImplementation::DraftSchematicImplementation(
 
 	schematicID = draftSchematic->getSchematicID();
 	objName = draftSchematic->getName();
+	StringFile = draftSchematic->getStringFile();
 	StringName = draftSchematic->getStringName();
 	schematicCRC = draftSchematic->getSchematicCRC();
 	groupName = draftSchematic->getGroupName();

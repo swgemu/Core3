@@ -45,6 +45,7 @@ giggledust = Object:new {
 
    objectName = "Giggledust",
    stfName = "giggledust",
+   stfFile = "food_name",
    objectCRC = 3392956409,
    groupName = "craftSmugglerSpiceA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ giggledust = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=1878192398:objecttemp=giggledust:templatetype=food_name:itemmask=65535:",
+   tanoAttributes = "objecttype=8202:objectcrc=1878192398:objecttemp=giggledust:templatetype=food_name:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "spice_customization"
