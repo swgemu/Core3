@@ -40,33 +40,23 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/compositeArmorSet.lua");
-RunItemLUAFile("bluefrog/ithArmorSet.lua");
-RunItemLUAFile("bluefrog/wookieeArmorSet.lua");
+controllerfpPolearm = Weapon:new{
 
-RunItemLUAFile("bluefrog/enhancePackSet.lua");
-RunItemLUAFile("bluefrog/stimPackSet.lua");
-RunItemLUAFile("bluefrog/rangedStimPackSet.lua");
-RunItemLUAFile("bluefrog/areaStimPackSet.lua");
-RunItemLUAFile("bluefrog/woundPackSet.lua");
-RunItemLUAFile("bluefrog/statePackSet.lua");
-RunItemLUAFile("bluefrog/curePackSet.lua");
-RunItemLUAFile("bluefrog/poisonPackSet.lua");
-RunItemLUAFile("bluefrog/diseasePackSet.lua");
+	objectName = "Controllerfp lance",
 
-RunItemLUAFile("bluefrog/clothingSets.lua");
+	templateName = "object/weapon/melee/polearm/shared_lance_controllerfp.iff",
 
-RunItemLUAFile("bluefrog/instrumentSet.lua");
+	objectCRC = 1316875243,
 
---RunItemLUAFile("bluefrog/vehicleDeedSet.lua");
---RunItemLUAFile("bluefrog/housingDeedSet.lua");
+	objectType = POLEARM,
 
-RunItemLUAFile("bluefrog/weaponSets.lua");
+	damageType = WEAPON_KINETIC,
+	
+	certification = "cert_lance_controllerfp",
 
-RunItemLUAFile("bluefrog/surveyingKit.lua");
+	attackSpeed = 5.15,
 
-RunItemLUAFile("bluefrog/grenadeSet.lua");
---RunItemLUAFile("bluefrog/camokits.lua");
---RunItemLUAFile("bluefrog/trapSet.lua");
---RunItemLUAFile("bluefrog/campKits.lua");
---RunItemLUAFile("bluefrog/slicingTools.lua");
+	minDamage = 10,
+
+	maxDamage = 190
+}

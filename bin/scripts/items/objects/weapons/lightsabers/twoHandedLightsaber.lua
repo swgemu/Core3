@@ -40,33 +40,30 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/compositeArmorSet.lua");
-RunItemLUAFile("bluefrog/ithArmorSet.lua");
-RunItemLUAFile("bluefrog/wookieeArmorSet.lua");
 
-RunItemLUAFile("bluefrog/enhancePackSet.lua");
-RunItemLUAFile("bluefrog/stimPackSet.lua");
-RunItemLUAFile("bluefrog/rangedStimPackSet.lua");
-RunItemLUAFile("bluefrog/areaStimPackSet.lua");
-RunItemLUAFile("bluefrog/woundPackSet.lua");
-RunItemLUAFile("bluefrog/statePackSet.lua");
-RunItemLUAFile("bluefrog/curePackSet.lua");
-RunItemLUAFile("bluefrog/poisonPackSet.lua");
-RunItemLUAFile("bluefrog/diseasePackSet.lua");
+twoHandedLightsaber = Weapon:new{
+	
+	objectName = "Two-Handed Lightsaber",
 
-RunItemLUAFile("bluefrog/clothingSets.lua");
+	templateName = "object/weapon/melee/2h_sword/crafted_saber/shared_sword_lightsaber_two_handed_gen4.iff",
 
-RunItemLUAFile("bluefrog/instrumentSet.lua");
-
---RunItemLUAFile("bluefrog/vehicleDeedSet.lua");
---RunItemLUAFile("bluefrog/housingDeedSet.lua");
-
-RunItemLUAFile("bluefrog/weaponSets.lua");
-
-RunItemLUAFile("bluefrog/surveyingKit.lua");
-
-RunItemLUAFile("bluefrog/grenadeSet.lua");
---RunItemLUAFile("bluefrog/camokits.lua");
---RunItemLUAFile("bluefrog/trapSet.lua");
---RunItemLUAFile("bluefrog/campKits.lua");
---RunItemLUAFile("bluefrog/slicingTools.lua");
+	objectType = TWOHANDSABER,
+	
+	objectCRC = 722054148,
+	
+	damageType = WEAPON_LIGHTSABER,
+	
+	armorPiercing = WEAPON_MEDIUM,
+	
+	attackSpeed = 3.5, --4.6,
+	
+	forceCost = 30,
+	
+	--I know the dmg stats seem a bit low, but we will be using the stats from http://home.cfl.rr.com/vigilance/jedi_Guide.html when we are ready for official testing
+	
+	minDamage = 145, --191,
+	maxDamage = 355, --292,
+	
+	certification = "cert_twohandlightsaber_gen1"
+	
+}

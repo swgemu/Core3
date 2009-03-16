@@ -40,33 +40,30 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/compositeArmorSet.lua");
-RunItemLUAFile("bluefrog/ithArmorSet.lua");
-RunItemLUAFile("bluefrog/wookieeArmorSet.lua");
 
-RunItemLUAFile("bluefrog/enhancePackSet.lua");
-RunItemLUAFile("bluefrog/stimPackSet.lua");
-RunItemLUAFile("bluefrog/rangedStimPackSet.lua");
-RunItemLUAFile("bluefrog/areaStimPackSet.lua");
-RunItemLUAFile("bluefrog/woundPackSet.lua");
-RunItemLUAFile("bluefrog/statePackSet.lua");
-RunItemLUAFile("bluefrog/curePackSet.lua");
-RunItemLUAFile("bluefrog/poisonPackSet.lua");
-RunItemLUAFile("bluefrog/diseasePackSet.lua");
+polearmLightsaber = Weapon:new{
+	
+	objectName = "Polearm Lightsaber",
 
-RunItemLUAFile("bluefrog/clothingSets.lua");
+	templateName = "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s1_gen1.iff",
 
-RunItemLUAFile("bluefrog/instrumentSet.lua");
+	objectType = POLEARMSABER,
+	
+	objectCRC = 1459631692,
 
---RunItemLUAFile("bluefrog/vehicleDeedSet.lua");
---RunItemLUAFile("bluefrog/housingDeedSet.lua");
+	damageType = WEAPON_LIGHTSABER,
+	
+	armorPiercing = WEAPON_MEDIUM,
+	
+	attackSpeed = 3.5, --4.9,
+	
+	forceCost = 40,
+	
+	--I know the dmg stats seem a bit low, but we will be using the stats from http://home.cfl.rr.com/vigilance/jedi_Guide.html when we are ready for official testing
+	
+	minDamage = 155, --231,
+	maxDamage = 399, --319,
+	
+	certification = "cert_polearmlightsaber_gen1"
 
-RunItemLUAFile("bluefrog/weaponSets.lua");
-
-RunItemLUAFile("bluefrog/surveyingKit.lua");
-
-RunItemLUAFile("bluefrog/grenadeSet.lua");
---RunItemLUAFile("bluefrog/camokits.lua");
---RunItemLUAFile("bluefrog/trapSet.lua");
---RunItemLUAFile("bluefrog/campKits.lua");
---RunItemLUAFile("bluefrog/slicingTools.lua");
+}

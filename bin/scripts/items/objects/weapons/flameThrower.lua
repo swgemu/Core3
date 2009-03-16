@@ -40,33 +40,26 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/compositeArmorSet.lua");
-RunItemLUAFile("bluefrog/ithArmorSet.lua");
-RunItemLUAFile("bluefrog/wookieeArmorSet.lua");
+flameThrower = Weapon:new{
+	
+	objectName = "Flame Thrower",
 
-RunItemLUAFile("bluefrog/enhancePackSet.lua");
-RunItemLUAFile("bluefrog/stimPackSet.lua");
-RunItemLUAFile("bluefrog/rangedStimPackSet.lua");
-RunItemLUAFile("bluefrog/areaStimPackSet.lua");
-RunItemLUAFile("bluefrog/woundPackSet.lua");
-RunItemLUAFile("bluefrog/statePackSet.lua");
-RunItemLUAFile("bluefrog/curePackSet.lua");
-RunItemLUAFile("bluefrog/poisonPackSet.lua");
-RunItemLUAFile("bluefrog/diseasePackSet.lua");
+	templateName = "object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff",
 
-RunItemLUAFile("bluefrog/clothingSets.lua");
+	objectCRC = "3238374228",
 
-RunItemLUAFile("bluefrog/instrumentSet.lua");
+	objectType = SPECIALHEAVYWEAPON,
 
---RunItemLUAFile("bluefrog/vehicleDeedSet.lua");
---RunItemLUAFile("bluefrog/housingDeedSet.lua");
+	damageType = WEAPON_HEAT,
 
-RunItemLUAFile("bluefrog/weaponSets.lua");
+	armorPiercing = WEAPON_NONE,
 
-RunItemLUAFile("bluefrog/surveyingKit.lua");
+	certification = "cert_rifle_flame_thrower",
 
-RunItemLUAFile("bluefrog/grenadeSet.lua");
---RunItemLUAFile("bluefrog/camokits.lua");
---RunItemLUAFile("bluefrog/trapSet.lua");
---RunItemLUAFile("bluefrog/campKits.lua");
---RunItemLUAFile("bluefrog/slicingTools.lua");
+	attackSpeed = 3.7,
+
+	minDamage = 240,
+
+	maxDamage = 680
+
+}

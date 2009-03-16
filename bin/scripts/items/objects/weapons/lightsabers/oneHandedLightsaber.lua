@@ -40,33 +40,29 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/compositeArmorSet.lua");
-RunItemLUAFile("bluefrog/ithArmorSet.lua");
-RunItemLUAFile("bluefrog/wookieeArmorSet.lua");
 
-RunItemLUAFile("bluefrog/enhancePackSet.lua");
-RunItemLUAFile("bluefrog/stimPackSet.lua");
-RunItemLUAFile("bluefrog/rangedStimPackSet.lua");
-RunItemLUAFile("bluefrog/areaStimPackSet.lua");
-RunItemLUAFile("bluefrog/woundPackSet.lua");
-RunItemLUAFile("bluefrog/statePackSet.lua");
-RunItemLUAFile("bluefrog/curePackSet.lua");
-RunItemLUAFile("bluefrog/poisonPackSet.lua");
-RunItemLUAFile("bluefrog/diseasePackSet.lua");
+oneHandedLightsaber = Weapon:new{
+	
+	objectName = "One-Handed Lightsaber",
 
-RunItemLUAFile("bluefrog/clothingSets.lua");
+	templateName = "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_onehanded_s1_gen1.iff",
 
-RunItemLUAFile("bluefrog/instrumentSet.lua");
+	objectType = ONEHANDSABER,
+	
+	objectCRC = 3893856758,
 
---RunItemLUAFile("bluefrog/vehicleDeedSet.lua");
---RunItemLUAFile("bluefrog/housingDeedSet.lua");
+	damageType = WEAPON_LIGHTSABER,
+	
+	armorPiercing = WEAPON_MEDIUM,
+	
+	attackSpeed = 2.0,
+		
+	minDamage = 355,
 
-RunItemLUAFile("bluefrog/weaponSets.lua");
+	maxDamage = 470,
+	
+	forceCost = 20,
+	
+	certification = "cert_onehandlightsaber_gen1"
 
-RunItemLUAFile("bluefrog/surveyingKit.lua");
-
-RunItemLUAFile("bluefrog/grenadeSet.lua");
---RunItemLUAFile("bluefrog/camokits.lua");
---RunItemLUAFile("bluefrog/trapSet.lua");
---RunItemLUAFile("bluefrog/campKits.lua");
---RunItemLUAFile("bluefrog/slicingTools.lua");
+}

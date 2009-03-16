@@ -40,33 +40,25 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/compositeArmorSet.lua");
-RunItemLUAFile("bluefrog/ithArmorSet.lua");
-RunItemLUAFile("bluefrog/wookieeArmorSet.lua");
+dlt20aRifle = Weapon:new{
+	
 
-RunItemLUAFile("bluefrog/enhancePackSet.lua");
-RunItemLUAFile("bluefrog/stimPackSet.lua");
-RunItemLUAFile("bluefrog/rangedStimPackSet.lua");
-RunItemLUAFile("bluefrog/areaStimPackSet.lua");
-RunItemLUAFile("bluefrog/woundPackSet.lua");
-RunItemLUAFile("bluefrog/statePackSet.lua");
-RunItemLUAFile("bluefrog/curePackSet.lua");
-RunItemLUAFile("bluefrog/poisonPackSet.lua");
-RunItemLUAFile("bluefrog/diseasePackSet.lua");
+	objectName = "DLT20a Rifle",
 
-RunItemLUAFile("bluefrog/clothingSets.lua");
+	templateName = "object/weapon/ranged/rifle/shared_rifle_dlt20a.iff",
 
-RunItemLUAFile("bluefrog/instrumentSet.lua");
+	objectCRC = 2200111432,
 
---RunItemLUAFile("bluefrog/vehicleDeedSet.lua");
---RunItemLUAFile("bluefrog/housingDeedSet.lua");
+	objectType = RIFLE,
 
-RunItemLUAFile("bluefrog/weaponSets.lua");
+	damageType = WEAPON_ENERGY,
+	
+	certification = "cert_rifle_dlt20a",
 
-RunItemLUAFile("bluefrog/surveyingKit.lua");
+	attackSpeed = 6,
 
-RunItemLUAFile("bluefrog/grenadeSet.lua");
---RunItemLUAFile("bluefrog/camokits.lua");
---RunItemLUAFile("bluefrog/trapSet.lua");
---RunItemLUAFile("bluefrog/campKits.lua");
---RunItemLUAFile("bluefrog/slicingTools.lua");
+	minDamage = 95,
+
+	maxDamage = 130
+}
+

@@ -40,33 +40,21 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/compositeArmorSet.lua");
-RunItemLUAFile("bluefrog/ithArmorSet.lua");
-RunItemLUAFile("bluefrog/wookieeArmorSet.lua");
+gaderiffiBaton = Weapon:new{
+	
+	objectName = "Gaderiffi Baton",
 
-RunItemLUAFile("bluefrog/enhancePackSet.lua");
-RunItemLUAFile("bluefrog/stimPackSet.lua");
-RunItemLUAFile("bluefrog/rangedStimPackSet.lua");
-RunItemLUAFile("bluefrog/areaStimPackSet.lua");
-RunItemLUAFile("bluefrog/woundPackSet.lua");
-RunItemLUAFile("bluefrog/statePackSet.lua");
-RunItemLUAFile("bluefrog/curePackSet.lua");
-RunItemLUAFile("bluefrog/poisonPackSet.lua");
-RunItemLUAFile("bluefrog/diseasePackSet.lua");
+	templateName = "object/weapon/melee/baton/shared_baton_gaderiffi.iff",
 
-RunItemLUAFile("bluefrog/clothingSets.lua");
+	objectCRC = 1521219232,
 
-RunItemLUAFile("bluefrog/instrumentSet.lua");
+	objectType = ONEHANDMELEEWEAPON,
+	
+	certification = "cert_baton_gaderiffi",
 
---RunItemLUAFile("bluefrog/vehicleDeedSet.lua");
---RunItemLUAFile("bluefrog/housingDeedSet.lua");
+	attackSpeed = 3.1,
+	
+	minDamage = 180,
 
-RunItemLUAFile("bluefrog/weaponSets.lua");
-
-RunItemLUAFile("bluefrog/surveyingKit.lua");
-
-RunItemLUAFile("bluefrog/grenadeSet.lua");
---RunItemLUAFile("bluefrog/camokits.lua");
---RunItemLUAFile("bluefrog/trapSet.lua");
---RunItemLUAFile("bluefrog/campKits.lua");
---RunItemLUAFile("bluefrog/slicingTools.lua");
+	maxDamage = 320
+}

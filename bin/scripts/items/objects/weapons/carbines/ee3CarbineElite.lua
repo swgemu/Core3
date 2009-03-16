@@ -40,33 +40,23 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/compositeArmorSet.lua");
-RunItemLUAFile("bluefrog/ithArmorSet.lua");
-RunItemLUAFile("bluefrog/wookieeArmorSet.lua");
+ee3CarbineElite = Weapon:new{
 
-RunItemLUAFile("bluefrog/enhancePackSet.lua");
-RunItemLUAFile("bluefrog/stimPackSet.lua");
-RunItemLUAFile("bluefrog/rangedStimPackSet.lua");
-RunItemLUAFile("bluefrog/areaStimPackSet.lua");
-RunItemLUAFile("bluefrog/woundPackSet.lua");
-RunItemLUAFile("bluefrog/statePackSet.lua");
-RunItemLUAFile("bluefrog/curePackSet.lua");
-RunItemLUAFile("bluefrog/poisonPackSet.lua");
-RunItemLUAFile("bluefrog/diseasePackSet.lua");
+	objectName = "EE3 Carbine Elite",
 
-RunItemLUAFile("bluefrog/clothingSets.lua");
+	templateName = "object/weapon/ranged/carbine/shared_carbine_ee3.iff",
 
-RunItemLUAFile("bluefrog/instrumentSet.lua");
+	objectCRC = 749154215,
 
---RunItemLUAFile("bluefrog/vehicleDeedSet.lua");
---RunItemLUAFile("bluefrog/housingDeedSet.lua");
+	objectType = CARBINE,
 
-RunItemLUAFile("bluefrog/weaponSets.lua");
+	damageType = WEAPON_HEAT,
+	
+	certification = "cert_carbine_ee3",
 
-RunItemLUAFile("bluefrog/surveyingKit.lua");
+	attackSpeed = 3.1,
 
-RunItemLUAFile("bluefrog/grenadeSet.lua");
---RunItemLUAFile("bluefrog/camokits.lua");
---RunItemLUAFile("bluefrog/trapSet.lua");
---RunItemLUAFile("bluefrog/campKits.lua");
---RunItemLUAFile("bluefrog/slicingTools.lua");
+	minDamage = 128,
+
+	maxDamage = 241
+}

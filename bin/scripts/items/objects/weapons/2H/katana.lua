@@ -40,33 +40,25 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/compositeArmorSet.lua");
-RunItemLUAFile("bluefrog/ithArmorSet.lua");
-RunItemLUAFile("bluefrog/wookieeArmorSet.lua");
+katana = Weapon:new{
+	
 
-RunItemLUAFile("bluefrog/enhancePackSet.lua");
-RunItemLUAFile("bluefrog/stimPackSet.lua");
-RunItemLUAFile("bluefrog/rangedStimPackSet.lua");
-RunItemLUAFile("bluefrog/areaStimPackSet.lua");
-RunItemLUAFile("bluefrog/woundPackSet.lua");
-RunItemLUAFile("bluefrog/statePackSet.lua");
-RunItemLUAFile("bluefrog/curePackSet.lua");
-RunItemLUAFile("bluefrog/poisonPackSet.lua");
-RunItemLUAFile("bluefrog/diseasePackSet.lua");
+	objectName = "Katana",
 
-RunItemLUAFile("bluefrog/clothingSets.lua");
+	templateName = "object/weapon/melee/2h_sword/shared_2h_sword_katana.iff",
 
-RunItemLUAFile("bluefrog/instrumentSet.lua");
+	objectCRC = 1688331731,
+	
+	damageType = WEAPON_KINETIC,
 
---RunItemLUAFile("bluefrog/vehicleDeedSet.lua");
---RunItemLUAFile("bluefrog/housingDeedSet.lua");
+	objectType = TWOHANDMELEEWEAPON,
+	
+	certification = "cert_sword_2h_katana",
 
-RunItemLUAFile("bluefrog/weaponSets.lua");
+	attackSpeed = 3.5,
 
-RunItemLUAFile("bluefrog/surveyingKit.lua");
+	minDamage = 15,
 
-RunItemLUAFile("bluefrog/grenadeSet.lua");
---RunItemLUAFile("bluefrog/camokits.lua");
---RunItemLUAFile("bluefrog/trapSet.lua");
---RunItemLUAFile("bluefrog/campKits.lua");
---RunItemLUAFile("bluefrog/slicingTools.lua");
+	maxDamage = 160
+}
+

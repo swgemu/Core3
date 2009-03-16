@@ -40,33 +40,23 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/compositeArmorSet.lua");
-RunItemLUAFile("bluefrog/ithArmorSet.lua");
-RunItemLUAFile("bluefrog/wookieeArmorSet.lua");
+strikerPistol = Weapon:new{
 
-RunItemLUAFile("bluefrog/enhancePackSet.lua");
-RunItemLUAFile("bluefrog/stimPackSet.lua");
-RunItemLUAFile("bluefrog/rangedStimPackSet.lua");
-RunItemLUAFile("bluefrog/areaStimPackSet.lua");
-RunItemLUAFile("bluefrog/woundPackSet.lua");
-RunItemLUAFile("bluefrog/statePackSet.lua");
-RunItemLUAFile("bluefrog/curePackSet.lua");
-RunItemLUAFile("bluefrog/poisonPackSet.lua");
-RunItemLUAFile("bluefrog/diseasePackSet.lua");
+	objectName = "Striker pistol",
 
-RunItemLUAFile("bluefrog/clothingSets.lua");
+	templateName = "object/weapon/ranged/pistol/shared_pistol_striker.iff",
 
-RunItemLUAFile("bluefrog/instrumentSet.lua");
+	objectCRC = 1505820957,
 
---RunItemLUAFile("bluefrog/vehicleDeedSet.lua");
---RunItemLUAFile("bluefrog/housingDeedSet.lua");
+	objectType = PISTOL,
+	
+	damageType = WEAPON_ENERGY,
+	
+	certification = "cert_pistol_striker",
 
-RunItemLUAFile("bluefrog/weaponSets.lua");
+	attackSpeed = 3.4,
 
-RunItemLUAFile("bluefrog/surveyingKit.lua");
+	minDamage = 35,
 
-RunItemLUAFile("bluefrog/grenadeSet.lua");
---RunItemLUAFile("bluefrog/camokits.lua");
---RunItemLUAFile("bluefrog/trapSet.lua");
---RunItemLUAFile("bluefrog/campKits.lua");
---RunItemLUAFile("bluefrog/slicingTools.lua");
+	maxDamage = 90
+}
