@@ -3098,27 +3098,6 @@ staticTheedNpc153 = Creature:new {
 	cellID = 0
 }
 
-staticTheedNpc154 = Creature:new {
-	objectName = "staticTheedNpc154",
-	creatureType = NPC,
-
-	speciesName = "crackdown_scout_trooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2303490976,
-	positionX = -5279.6,
-	positionY = 4317.03,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.46926,
-	directionW = 0.88306,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
 
 staticTheedNpc155 = Creature:new {
 	objectName = "staticTheedNpc155",
