@@ -35,6 +35,8 @@ public:
 
 	bool isSold();
 
+	bool isRemovedByOwner();
+
 	unsigned long long getVendorID();
 
 	bool getAuction();
@@ -64,6 +66,8 @@ public:
 	void setBidderName(const String& name);
 
 	void setSold(bool sld);
+
+	void setRemovedByOwner(bool rmv);
 
 	void setLocationPointer(int locpt);
 
@@ -126,6 +130,8 @@ public:
 
 	bool isSold();
 
+	bool isRemovedByOwner();
+
 	unsigned long long getVendorID();
 
 	bool getAuction();
@@ -155,6 +161,8 @@ public:
 	void setBidderName(const String& name);
 
 	void setSold(bool sld);
+
+	void setRemovedByOwner(bool rmv);
 
 	void setLocationPointer(int locpt);
 

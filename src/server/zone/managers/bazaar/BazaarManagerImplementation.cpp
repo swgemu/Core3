@@ -371,6 +371,7 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 	item->setPrice(price);
 	item->setAuction(auction);
 	item->setSold(false);
+	item->setRemovedByOwner(false);
 	item->setExpireTime(expire);
 	item->setBuyerID(0);
 	item->setBidderName("");
@@ -488,7 +489,7 @@ void BazaarManagerImplementation::checkAuctions() {
 						UnicodeString subject("Auction Unsuccessful");
 
 						message << "Your auction of " << item->getItemName() <<
-						" has been completed and has not been  purchased.";
+						" has been completed and has not been purchased.";
 						UnicodeString body(message.toString());
 
 						cman->sendMail("Auctioner", subject, body, item->getOwnerName());
@@ -545,6 +546,18 @@ void BazaarManagerImplementation::checkAuctions() {
 						unlock();
 						return;
 					}
+				}
+			}
+
+			if(item->isRemovedByOwner()) {
+				//If this condition has been reached, the item has been removed from the db in retriveItem()
+				bazaarPlanets[item->getPlanet()]->removeBazaarItem(objectId);
+				if (removeItem(objectId, false)) {
+					//item->finalize(); the reference is still stored somewhere else
+				} else {
+					StringBuffer err;
+					err << "checkAuctions cannot remove bazaar item from items (item->isRemovedByOwner()) " << objectId;
+					error(err);
 				}
 			}
 
@@ -835,7 +848,7 @@ void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, 
 		item->wlock();
 
 		// only the owner can yank his own auction off the bazaar
-		if (!item->isSold() && item->getOwnerName() != playername ) {
+		if (!item->isSold() && (playername.toLowerCase() != item->getOwnerName().toLowerCase())) {
 			msg = new RetrieveAuctionItemResponseMessage(objectid, 1);
 			player->sendMessage(msg);
 
@@ -967,6 +980,7 @@ void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, 
 		tano->sendTo(player);
 
 		msg = new RetrieveAuctionItemResponseMessage(objectid, 0);
+		item->setRemovedByOwner(true);
 
 		item->unlock();
 		player->sendMessage(msg);
@@ -999,7 +1013,7 @@ void BazaarManagerImplementation::getItemAttributes(Player* player, uint64 objec
 	player->wlock();
 
 	ItemManager* itemManager = zoneServer->getItemManager();
-	TangibleObject* object = itemManager->getPlayerItem(NULL, objectid);
+	TangibleObject* object = itemManager->getPlayerItem(player, objectid);
 
 	if (object == NULL) {
 		player->unlock();
