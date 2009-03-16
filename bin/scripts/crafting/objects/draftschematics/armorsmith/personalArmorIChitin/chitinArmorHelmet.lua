@@ -41,12 +41,12 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-ithorianGuardianChestPlate = Object:new {
+chitinArmorHelmet = Object:new {
 
-   objectName = "Ithorian Guardian Chest Plate",
-   stfName = "ith_armor_s02_chest_plate",
+   objectName = "Chitin Armor Helmet",
+   stfName = "armor_chitin_s01_helmet",
    stfFile = "wearables_name",
-   objectCRC = 3841151972,
+   objectCRC = 1068889809,
    groupName = "craftArmorPersonalGroupB", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
@@ -54,7 +54,7 @@ ithorianGuardianChestPlate = Object:new {
    size = 3, 
 
    xpType = "crafting_clothing_armor", 
-   xp = 320, 
+   xp = 270, 
 
    assemblySkill = "armor_assembly", 
    experimentingSkill = "armor_experimentation", 
@@ -63,7 +63,7 @@ ithorianGuardianChestPlate = Object:new {
    ingredientTitleNames = "auxilary_coverage, body, liner, hardware_and_attachments, binding_and_reinforcement, padding, armor, load_bearing_harness, reinforcement",
    ingredientSlotType = "0, 0, 0, 0, 0, 0, 2, 2, 2",
    resourceTypes = "bone, hide_leathery, hide_scaley, metal_ferrous, petrochem_inert_polymer, hide_wooly, object/tangible/component/armor/shared_armor_segment_chitin.iff, object/tangible/component/clothing/shared_fiberplast_panel.iff, object/tangible/component/clothing/shared_reinforced_fiber_panels.iff",
-   resourceQuantities = "40, 40, 40, 20, 20, 20, 4, 1, 1",
+   resourceQuantities = "30, 30, 30, 15, 15, 15, 3, 1, 1",
    combineTypes = "0, 0, 0, 0, 0, 0, 1, 1, 1",
    contribution = "100, 100, 100, 100, 100, 100, 100, 100, 100",
 
@@ -73,15 +73,15 @@ ithorianGuardianChestPlate = Object:new {
    experimentalGroupTitles = "null, null, null, null, exp_quality, exp_durability, exp_durability, exp_durability, exp_durability, null, null, exp_resistance, null",
 
    experimentalSubGroupTitles = "null, null, sockets, hit_points, armor_effectiveness, armor_integrity, armor_health_encumbrance, armor_action_encumbrance, armor_mind_encumbrance, armor_rating, armor_special_type, armor_special_effectiveness, armor_special_integrity",
-   experimentalMin = "0, 0, 0, 1000, 5, 15000, 125, 38, 16, 1, 1, 5, 15000",
-   experimentalMax = "0, 0, 0, 1000, 30, 25000, 75, 23, 9, 1, 1, 40, 25000",
+   experimentalMin = "0, 0, 0, 1000, 5, 15000, 13, 13, 188, 1, 1, 5, 15000",
+   experimentalMax = "0, 0, 0, 1000, 30, 25000, 8, 8, 113, 1, 1, 40, 25000",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=257:objectcrc=1560721233:objecttemp=ith_armor_s01_bicep_l:templatetype=wearables_name:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=acideffectiveness,stuneffectiveness;armorType=256;armorStyle=4107;:",
-   customizationOptions = "",
-   customizationDefaults = "",
+   tanoAttributes = "objecttype=258:objectcrc=678202649:objecttemp=armor_chitin_s01_helmet:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness,heateffectiveness,coldeffectiveness,restraineffectiveness;armorType=264;armorStyle=4102;:",
+   customizationOptions = "/private/index_color_0, /private/index_color_1, /private/index_color_2",
+   customizationDefaults = "0, 6, 3",
    customizationSkill = "armor_customization"
 
 }
 
-DraftSchematics:addDraftSchematic(ithorianGuardianChestPlate, 3841151972)--- Add to global DraftSchematics table
+DraftSchematics:addDraftSchematic(chitinArmorHelmet, 1068889809)--- Add to global DraftSchematics table

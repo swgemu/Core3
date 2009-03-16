@@ -3948,7 +3948,7 @@ void ObjectControllerMessage::parseExperimentation(Player* player,
 
 		player->handleExperimenting(counter, numRowsAttempted, expString);
 	} else {
-		player->sendSystemMessage("Exploit attempt Denied");
+		player->sendSystemMessage("healing_response", "healing_must_wait");
 
 		ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x0113);
 		objMsg->insertInt(0x105);

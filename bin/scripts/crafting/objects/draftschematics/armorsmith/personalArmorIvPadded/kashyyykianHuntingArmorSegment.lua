@@ -77,7 +77,7 @@ kashyyykianHuntingArmorSegment = Object:new {
    experimentalMax = "0, 0, 1000, 10, 1000, 1, 1, 1, 1, 1, 15, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262144:objectcrc=3253647713:objecttemp=armor_segment_kashyyykian_hunting:templatetype=craft_armor_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=262145:objectcrc=3253647713:objecttemp=armor_segment_kashyyykian_hunting:templatetype=craft_armor_ingredients_n:itemmask=65535:customattributes=specialprotection=kineticeffectiveness;:",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

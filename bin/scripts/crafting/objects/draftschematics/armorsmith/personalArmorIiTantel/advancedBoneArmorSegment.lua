@@ -41,31 +41,31 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-advancedKashyyykianHuntingArmorSegment = Object:new {
+advancedBoneArmorSegment = Object:new {
 
-   objectName = "Advanced Kashyyykian Hunting Armor Segment",
-   stfName = "armor_segment_kashyyykian_hunting_advanced",
+   objectName = "Advanced Bone Armor Segment",
+   stfName = "armor_segment_bone_advanced",
    stfFile = "craft_clothing_ingredients_n",
-   objectCRC = 1703266289,
-   groupName = "craftArmorPersonalGroupF", -- Group schematic is awarded in (See skills table)
+   objectCRC = 1129609908,
+   groupName = "craftArmorPersonalGroupC", -- Group schematic is awarded in (See skills table)
 
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
-   complexity = 30, 
-   size = 1, 
+   complexity = 8, 
+   size = 4, 
 
    xpType = "crafting_clothing_armor", 
-   xp = 35, 
+   xp = 30, 
 
    assemblySkill = "armor_assembly", 
    experimentingSkill = "armor_experimentation", 
 
-   ingredientTemplateNames = "craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n",
-   ingredientTitleNames = "armor_segment_kashyyykian_hunting, armor_layer_track, segment_mounting_tabs, defensive_layer, defensive_layer_2, defensive_layer_3, segment_enhancement",
-   ingredientSlotType = "0, 0, 0, 4, 4, 4, 4",
-   resourceTypes = "hide_leathery_dantooine, bone_avian_dantooine, softwood_evergreen_yavin4, object/tangible/component/armor/shared_armor_layer.iff, object/tangible/component/armor/shared_armor_layer.iff, object/tangible/component/armor/shared_armor_layer.iff, object/tangible/component/armor/shared_base_armor_segment_enhancement.iff",
-   resourceQuantities = "25, 16, 8, 1, 1, 1, 1",
-   combineTypes = "0, 0, 0, 1, 1, 1, 1",
-   contribution = "100, 100, 100, 100, 100, 100, 100",
+   ingredientTemplateNames = "craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n",
+   ingredientTitleNames = "armor_segment_bone, segment_mounting_tabs, segment_enhancement",
+   ingredientSlotType = "0, 0, 4",
+   resourceTypes = "bone_mammal_rori, iron_kammris, object/tangible/component/armor/shared_base_armor_segment_enhancement.iff",
+   resourceQuantities = "23, 6, 1",
+   combineTypes = "0, 0, 1",
+   contribution = "100, 100, 100",
 
    numberExperimentalProperties = "1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 1",
    experimentalProperties = "XX, XX, XX, OQ, SR, OQ, UT, MA, OQ, MA, OQ, MA, OQ, XX, XX, OQ, SR, XX",
@@ -73,15 +73,15 @@ advancedKashyyykianHuntingArmorSegment = Object:new {
    experimentalGroupTitles = "null, null, exp_durability, exp_quality, exp_durability, exp_durability, exp_durability, exp_durability, null, null, exp_resistance, null",
 
    experimentalSubGroupTitles = "null, null, hit_points, armor_effectiveness, armor_integrity, armor_health_encumbrance, armor_action_encumbrance, armor_mind_encumbrance, armor_rating, armor_special_type, armor_special_effectiveness, armor_special_integrity",
-   experimentalMin = "0, 0, 1000, 1, 100, 13, 13, 16, 1, 1, 1, 100",
-   experimentalMax = "0, 0, 1000, 25, 1000, 1, 1, 1, 1, 1, 35, 1000",
+   experimentalMin = "0, 0, 1000, 1, 100, 6, 8, 4, 1, 2, 1, 100",
+   experimentalMax = "0, 0, 1000, 10, 1000, 1, 1, 1, 1, 2, 20, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262145:objectcrc=2762649224:objecttemp=armor_segment_kashyyykian_hunting_advanced:templatetype=craft_clothing_ingredients_n:itemmask=65535:customattributes=specialprotection=kineticeffectiveness;:",
+   tanoAttributes = "objecttype=262145:objectcrc=2814096223:objecttemp=armor_segment_bone_advanced:templatetype=craft_armor_ingredients_n:itemmask=65535:customattributes=specialprotection=energyeffectiveness;:",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"
 
 }
 
-DraftSchematics:addDraftSchematic(advancedKashyyykianHuntingArmorSegment, 1703266289)--- Add to global DraftSchematics table
+DraftSchematics:addDraftSchematic(advancedBoneArmorSegment, 1129609908)--- Add to global DraftSchematics table
