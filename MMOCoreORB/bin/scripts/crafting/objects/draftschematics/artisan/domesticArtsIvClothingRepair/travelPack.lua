@@ -45,6 +45,7 @@ travelPack = Object:new {
 
    objectName = "Travel Pack",
    stfName = "backpack_s01",
+   stfFile = "wearables_name",
    objectCRC = 2065293376,
    groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ travelPack = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=524288:objectcrc=4059441362:objecttemp=backpack_s01:templatetype=wearables_name:itemmask=65535:",
+   tanoAttributes = "objecttype=8213:objectcrc=4059441362:objecttemp=backpack_s01:templatetype=wearables_name:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

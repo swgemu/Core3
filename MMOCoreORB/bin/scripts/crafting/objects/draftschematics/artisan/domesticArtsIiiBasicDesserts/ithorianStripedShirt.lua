@@ -45,6 +45,7 @@ ithorianStripedShirt = Object:new {
 
    objectName = "Ithorian Striped Shirt",
    stfName = "ith_shirt_s07",
+   stfFile = "wearables_name",
    objectCRC = 4107021896,
    groupName = "craftArtisanDomesticGroupC", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ ithorianStripedShirt = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=2058:objectcrc=3367515818:objecttemp=ith_shirt_s07:templatetype=wearables_name:itemmask=63491:",
+   tanoAttributes = "objecttype=16777234:objectcrc=3367515818:objecttemp=ith_shirt_s07:templatetype=wearables_name:itemmask=63491::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

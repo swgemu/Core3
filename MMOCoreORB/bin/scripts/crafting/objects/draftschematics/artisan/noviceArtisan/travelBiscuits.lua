@@ -45,6 +45,7 @@ travelBiscuits = Object:new {
 
    objectName = "Travel Biscuits",
    stfName = "travel_biscuits",
+   stfFile = "food_name",
    objectCRC = 854764144,
    groupName = "craftArtisanNewbieGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -61,7 +62,7 @@ travelBiscuits = Object:new {
    ingredientTemplateNames = "craft_food_ingredients_n, craft_food_ingredients_n, craft_food_ingredients_n",
    ingredientTitleNames = "dried_bread, preservative_wrap, additive",
    ingredientSlotType = "0, 0, 4",
-   resourceTypes = "cereal, hide, object/tangible/food/crafted/additive/shared_addit",
+   resourceTypes = "cereal, hide, object/tangible/food/crafted/additive/shared_additive_light.iff",
    resourceQuantities = "3, 8, 1",
    combineTypes = "0, 0, 1",
    contribution = "100, 100, 100",
@@ -72,13 +73,14 @@ travelBiscuits = Object:new {
    experimentalGroupTitles = "null, null, null, exp_nutrition, exp_flavor, exp_quantity, exp_filling",
 
    experimentalSubGroupTitles = "null, null, hitpoints, nutrition, flavor, quantity, filling",
-   experimentalMin = "0, 0, 1000, 120, 120, 100, 120",
-   experimentalMax = "0, 0, 1000, 75, 60, 60, 80",
+   experimentalMin = "0, 0, 1000, 75, 60, 60, 80",
+   experimentalMax = "0, 0, 1000, 120, 120, 100, 120",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8201:objectcrc=2831837498:objecttemp=travel_biscuits:templatetype=food_name:itemmask=65535:",
+   tanoAttributes = "objecttype=:objectcrc=2831837498:objecttemp=travel_biscuits:templatetype=food_name:itemmask=65535::",
    customizationOptions = "",
-   customizationDefaults = ""
+   customizationDefaults = "",
+   customizationSkill = "clothing_customization"
 
 }
 

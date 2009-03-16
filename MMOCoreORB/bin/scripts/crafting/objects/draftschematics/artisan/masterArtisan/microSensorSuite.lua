@@ -45,6 +45,7 @@ microSensorSuite = Object:new {
 
    objectName = "Micro Sensor Suite",
    stfName = "micro_sensor_suite",
+   stfFile = "craft_item_ingredients_n",
    objectCRC = 622519855,
    groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -60,10 +61,10 @@ microSensorSuite = Object:new {
 
    ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
    ingredientTitleNames = "assembly_enclosure, assembly_frame, thermal_shielding, thermal_and_contaminant_shield, micro_transciever_net, base_pre_processing_unit, primary_array_processing_and_control_unit, sensor_array_wiring_harness",
-   ingredientSlotType = "0, 0, 0, 0, 0, 0, 0, 0",
-   resourceTypes = "steel, metal, ore, gas_inert, , object/tangible/component/item/shared_electronics_gp_module.iff, object/tangible/component/item/shared_electronic_control_unit.iff, object/tangible/component/item/shared_electronic_energy_distributor.iff",
-   resourceQuantities = "10, 6, 3, 15, 0, 1, 1, 1",
-   combineTypes = "0, 0, 0, 0, 0, 0, 0, 0",
+   ingredientSlotType = "0, 0, 0, 0, 0, 2, 2, 2",
+   resourceTypes = "steel, metal, ore, gas_inert, metal, object/tangible/component/item/shared_electronics_gp_module.iff, object/tangible/component/item/shared_electronic_control_unit.iff, object/tangible/component/item/shared_electronic_energy_distributor.iff",
+   resourceQuantities = "10, 6, 3, 15, 3, 1, 1, 1",
+   combineTypes = "0, 0, 0, 0, 0, 1, 1, 1",
    contribution = "100, 100, 100, 100, 100, 100, 100, 100",
 
    numberExperimentalProperties = "1, 1, 1, 2",
@@ -76,7 +77,7 @@ microSensorSuite = Object:new {
    experimentalMax = "0, 0, 150, 5",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8200:objectcrc=3198540321:objecttemp=micro_sensor_suite:templatetype=craft_item_ingredients_n:itemmask=65535:",
+   tanoAttributes = "objecttype=262150:objectcrc=3198540321:objecttemp=micro_sensor_suite:templatetype=craft_item_ingredients_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

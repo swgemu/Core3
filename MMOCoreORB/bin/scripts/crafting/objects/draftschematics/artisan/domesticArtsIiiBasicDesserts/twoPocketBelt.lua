@@ -77,7 +77,7 @@ twoPocketBelt = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777218:objectcrc=2403374044:objecttemp=belt_s11:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=:objectcrc=2403374044:objecttemp=belt_s11:templatetype=wearables_name:itemmask=62975::",
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "1",
    customizationSkill = "clothing_customization"

@@ -58,5 +58,6 @@ RunDraftSchematicFile("objects/draftschematics/smuggler/spicesIvChems/boosterBlu
 RunDraftSchematicFile("objects/draftschematics/smuggler/spicesIvChems/muonGold.lua")
 RunDraftSchematicFile("objects/draftschematics/smuggler/spicesIvChems/neutronPixie.lua")
 RunDraftSchematicFile("objects/draftschematics/smuggler/noviceSmuggler/precisionLaserKnife.lua")
+RunDraftSchematicFile("objects/draftschematics/smuggler/slicingIiWeaponBasic/flowAnalyzerNode.lua")
 RunDraftSchematicFile("objects/draftschematics/smuggler/slicingIvWeaponAdvanced/molecularClamp.lua")
 RunDraftSchematicFile("objects/draftschematics/smuggler/spicesIiiStims/crashNBurn.lua")

@@ -45,6 +45,7 @@ softUndershirt = Object:new {
 
    objectName = "Soft Undershirt",
    stfName = "shirt_s34",
+   stfFile = "wearables_name",
    objectCRC = 2380944721,
    groupName = "craftArtisanDomesticGroupC", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ softUndershirt = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=2058:objectcrc=2856458350:objecttemp=shirt_s34:templatetype=wearables_name:itemmask=62975:",
+   tanoAttributes = "objecttype=16777230:objectcrc=2856458350:objecttemp=shirt_s34:templatetype=wearables_name:itemmask=62975::",
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "16, 34",
    customizationSkill = "clothing_customization"

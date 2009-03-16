@@ -45,6 +45,7 @@ waterSurveyDevice = Object:new {
 
    objectName = "Water Survey Device",
    stfName = "survey_tool_moisture",
+   stfFile = "item_n",
    objectCRC = 3420859733,
    groupName = "craftArtisanSurveyGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ waterSurveyDevice = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32770:objectcrc=2175673400:objecttemp=survey_tool_moisture:templatetype=item_n:itemmask=65535:",
+   tanoAttributes = "objecttype=:objectcrc=2175673400:objecttemp=survey_tool_moisture:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

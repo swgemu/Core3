@@ -41,47 +41,47 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-cdefCarbine = Object:new {
+wrinkledPants = Object:new {
 
-   objectName = "CDEF Carbine",
-   stfName = "carbine_cdef",
-   stfFile = "weapon_name",
-   objectCRC = 76251144,
-   groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
+   objectName = "Wrinkled Pants",
+   stfName = "pants_s10",
+   stfFile = "wearables_name",
+   objectCRC = 2149240567,
+   groupName = "craftArtisanDomesticGroupA", -- Group schematic is awarded in (See skills table)
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
-   complexity = 8, 
+   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   complexity = 6, 
    size = 3, 
 
    xpType = "crafting_general", 
-   xp = 42, 
+   xp = 26, 
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
 
-   ingredientTemplateNames = "craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n",
-   ingredientTitleNames = "frame_assembly, receiver_assembly, grip_assembly",
-   ingredientSlotType = "0, 0, 0",
-   resourceTypes = "metal, chemical, metal",
-   resourceQuantities = "12, 6, 3",
-   combineTypes = "0, 0, 0",
-   contribution = "100, 100, 100",
+   ingredientTemplateNames = "craft_clothing_ingredients_n, craft_clothing_ingredients_n",
+   ingredientTitleNames = "binding_and_hardware, colorizable_cloth_panel",
+   ingredientSlotType = "0, 1",
+   resourceTypes = "petrochem_inert, object/tangible/component/clothing/shared_fiberplast_panel.iff",
+   resourceQuantities = "13, 1",
+   combineTypes = "0, 1",
+   contribution = "100, 100",
 
-   numberExperimentalProperties = "1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2",
-   experimentalProperties = "XX, XX, CD, OQ, CD, OQ, CD, OQ, CD, OQ, CD, OQ, CD, OQ, XX, XX, XX, CD, OQ, CD, OQ, CD, OQ, CD, OQ",
-   experimentalWeights = "1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1",
-   experimentalGroupTitles = "null, null, expDamage, expDamage, expDamage, expDamage, expEffeciency, exp_durability, null, null, null, expRange, expEffeciency, expEffeciency, expEffeciency",
+   numberExperimentalProperties = "1, 1, 1, 1",
+   experimentalProperties = "XX, XX, XX, XX",
+   experimentalWeights = "1, 1, 1, 1",
+   experimentalGroupTitles = "null, null, null, null",
 
-   experimentalSubGroupTitles = "null, null, mindamage, maxdamage, attackspeed, woundchance, roundsused, hitpoints, zerorangemod, maxrangemod, midrange, midrangemod, attackhealthcost, attackactioncost, attackmindcost",
-   experimentalMin = "0, 0, 17, 35, 4.6, 4, 5, 750, 0, -80, 35, 35, 10, 22, 10",
-   experimentalMax = "0, 0, 32, 65, 3.2, 5, 20, 1500, 0, -80, 35, 65, 7, 15, 7",
-   experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
+   experimentalSubGroupTitles = "null, null, sockets, hitpoints",
+   experimentalMin = "0, 0, 0, 1000",
+   experimentalMax = "0, 0, 0, 1000",
+   experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131083:objectcrc=583942574:objecttemp=carbine_cdef:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=2;:",
-   customizationOptions = "",
-   customizationDefaults = "",
+   tanoAttributes = "objecttype=:objectcrc=2036071327:objecttemp=pants_s10:templatetype=wearables_name:itemmask=62974::",
+   customizationOptions = "/private/index_color_1",
+   customizationDefaults = "15",
    customizationSkill = "clothing_customization"
 
 }
 
-DraftSchematics:addDraftSchematic(cdefCarbine, 76251144)--- Add to global DraftSchematics table
+DraftSchematics:addDraftSchematic(wrinkledPants, 2149240567)--- Add to global DraftSchematics table

@@ -41,47 +41,47 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-cdefCarbine = Object:new {
+flowAnalyzerNode = Object:new {
 
-   objectName = "CDEF Carbine",
-   stfName = "carbine_cdef",
-   stfFile = "weapon_name",
-   objectCRC = 76251144,
-   groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
+   objectName = "Flow Analyzer Node",
+   stfName = "flow_analyzer",
+   stfFile = "item_n",
+   objectCRC = 425747428,
+   groupName = "craftSmugglerToolsB", -- Group schematic is awarded in (See skills table)
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
-   complexity = 8, 
-   size = 3, 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 7, 
+   size = 1, 
 
-   xpType = "crafting_general", 
-   xp = 42, 
+   xpType = "crafting_spice", 
+   xp = 80, 
 
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
+   assemblySkill = "spice_assembly", 
+   experimentingSkill = "spice_experimentation", 
 
-   ingredientTemplateNames = "craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n",
-   ingredientTitleNames = "frame_assembly, receiver_assembly, grip_assembly",
+   ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
+   ingredientTitleNames = "assembly_enclosure, controller, scanner_assembly",
    ingredientSlotType = "0, 0, 0",
-   resourceTypes = "metal, chemical, metal",
-   resourceQuantities = "12, 6, 3",
+   resourceTypes = "metal, copper, metal",
+   resourceQuantities = "10, 20, 10",
    combineTypes = "0, 0, 0",
    contribution = "100, 100, 100",
 
-   numberExperimentalProperties = "1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2",
-   experimentalProperties = "XX, XX, CD, OQ, CD, OQ, CD, OQ, CD, OQ, CD, OQ, CD, OQ, XX, XX, XX, CD, OQ, CD, OQ, CD, OQ, CD, OQ",
-   experimentalWeights = "1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1",
-   experimentalGroupTitles = "null, null, expDamage, expDamage, expDamage, expDamage, expEffeciency, exp_durability, null, null, null, expRange, expEffeciency, expEffeciency, expEffeciency",
+   numberExperimentalProperties = "1, 1, 1, 1",
+   experimentalProperties = "XX, XX, XX, CD",
+   experimentalWeights = "1, 1, 1, 1",
+   experimentalGroupTitles = "null, null, null, exp_effectiveness",
 
-   experimentalSubGroupTitles = "null, null, mindamage, maxdamage, attackspeed, woundchance, roundsused, hitpoints, zerorangemod, maxrangemod, midrange, midrangemod, attackhealthcost, attackactioncost, attackmindcost",
-   experimentalMin = "0, 0, 17, 35, 4.6, 4, 5, 750, 0, -80, 35, 35, 10, 22, 10",
-   experimentalMax = "0, 0, 32, 65, 3.2, 5, 20, 1500, 0, -80, 35, 65, 7, 15, 7",
-   experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
+   experimentalSubGroupTitles = "null, null, hitpoints, usemodifier",
+   experimentalMin = "0, 0, 1000, -15",
+   experimentalMax = "0, 0, 1000, 15",
+   experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131083:objectcrc=583942574:objecttemp=carbine_cdef:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=2;:",
+   tanoAttributes = "objecttype=32768:objectcrc=352400896:objecttemp=flow_analyzer:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
-   customizationSkill = "clothing_customization"
+   customizationSkill = "spice_customization"
 
 }
 
-DraftSchematics:addDraftSchematic(cdefCarbine, 76251144)--- Add to global DraftSchematics table
+DraftSchematics:addDraftSchematic(flowAnalyzerNode, 425747428)--- Add to global DraftSchematics table

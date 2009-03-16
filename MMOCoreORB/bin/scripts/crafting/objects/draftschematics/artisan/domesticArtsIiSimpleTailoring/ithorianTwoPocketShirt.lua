@@ -45,6 +45,7 @@ ithorianTwoPocketShirt = Object:new {
 
    objectName = "Ithorian Two Pocket Shirt",
    stfName = "ith_shirt_s06",
+   stfFile = "wearables_name",
    objectCRC = 3183561157,
    groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ ithorianTwoPocketShirt = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=2058:objectcrc=2176143655:objecttemp=ith_shirt_s06:templatetype=wearables_name:itemmask=63491:",
+   tanoAttributes = "objecttype=16777230:objectcrc=2176143655:objecttemp=ith_shirt_s06:templatetype=wearables_name:itemmask=63491::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -45,6 +45,7 @@ frock = Object:new {
 
    objectName = "Frock",
    stfName = "dress_s26",
+   stfFile = "wearables_name",
    objectCRC = 3228851029,
    groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
 
@@ -60,7 +61,7 @@ frock = Object:new {
 
    ingredientTemplateNames = "craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n",
    ingredientTitleNames = "trim_and_binding, extra_trim, hardware, skirt, bodice",
-   ingredientSlotType = "0, 1, 1, 1, 1",
+   ingredientSlotType = "0, 2, 2, 2, 2",
    resourceTypes = "fiberplast, object/tangible/component/clothing/shared_fiberplast_panel.iff, object/tangible/component/clothing/shared_metal_fasteners.iff, object/tangible/component/clothing/shared_fiberplast_panel.iff, object/tangible/component/clothing/shared_fiberplast_panel.iff",
    resourceQuantities = "15, 1, 1, 1, 1",
    combineTypes = "0, 1, 1, 1, 1",
@@ -76,7 +77,7 @@ frock = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=2049:objectcrc=2160661616:objecttemp=dress_s26:templatetype=wearables_name:itemmask=62974:",
+   tanoAttributes = "objecttype=16777223:objectcrc=2160661616:objecttemp=dress_s26:templatetype=wearables_name:itemmask=62974::",
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "59, 31",
    customizationSkill = "clothing_customization"

@@ -45,6 +45,7 @@ vehicleCustomizationKit = Object:new {
 
    objectName = "Vehicle Customization Kit",
    stfName = "vehicle_customization_kit",
+   stfFile = "item_n",
    objectCRC = 4170918716,
    groupName = "craftArtisanVehicle", -- Group schematic is awarded in (See skills table)
 
@@ -60,7 +61,7 @@ vehicleCustomizationKit = Object:new {
 
    ingredientTemplateNames = "craft_item_ingredients_n, craft_droid_ingredients_n, craft_droid_ingredients_n, craft_item_ingredients_n, craft_droid_ingredients_n",
    ingredientTitleNames = "assembly_enclosure, thermal_shielding, colors, electronic_control_unit, color_stowage",
-   ingredientSlotType = "0, 0, 0, 1, 1",
+   ingredientSlotType = "0, 0, 0, 2, 2",
    resourceTypes = "metal, mineral, mineral, object/tangible/component/item/shared_electronic_control_unit.iff, object/tangible/component/droid/shared_droid_storage_compartment.iff",
    resourceQuantities = "12, 9, 6, 1, 1",
    combineTypes = "0, 0, 0, 1, 1",
@@ -76,7 +77,7 @@ vehicleCustomizationKit = Object:new {
    experimentalMax = "0, 0, 1000, 10",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=2052:objectcrc=3528062501:objecttemp=vehicle_customization_kit:templatetype=item_n:itemmask=65535:",
+   tanoAttributes = "objecttype=32768:objectcrc=3528062501:objecttemp=vehicle_customization_kit:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"
