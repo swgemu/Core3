@@ -52,7 +52,7 @@ SuiMessageBoxImplementation::SuiMessageBoxImplementation(Player* player, uint32 
 }
 
 BaseMessage* SuiMessageBoxImplementation::generateMessage() {
-	message = new SuiCreatePageMessage(boxID, "Script.messageBox");
+	SuiCreatePageMessage* message = new SuiCreatePageMessage(boxID, "Script.messageBox");
 
 	//Declare Headers:
 	addHeader("Prompt.lblPrompt", "Text");
@@ -74,9 +74,10 @@ BaseMessage* SuiMessageBoxImplementation::generateMessage() {
 	addSetting("3", "btnRevert", "Visible", "False");
 
 	//Generate Packet:
-	generateHeader("handleSUI");
-	generateBody();
-	generateFooter();
+	generateHeader(message, "handleSUI");
+	generateBody(message);
+	generateFooter(message);
+	hasGenerated = true;
 
-	return message->clone();
+	return message;
 }

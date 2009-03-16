@@ -91,12 +91,10 @@ protected:
 	Vector<String> optionSets;
 	int hdrOptCount; //header option count
 
-	SuiCreatePageMessage* message;
-
 protected:
-	void generateHeader(const String& handlerStr);
-	void generateBody();
-	void generateFooter(int type = 0);
+	void generateHeader(SuiCreatePageMessage* message, const String& handlerStr);
+	void generateBody(SuiCreatePageMessage* message);
+	void generateFooter(SuiCreatePageMessage* message, int type = 0);
 
 	bool hasGenerated;
 
@@ -120,10 +118,7 @@ public:
 	virtual BaseMessage* generateMessage() = 0;
 	BaseMessage* generateCloseMessage();
 
-	BaseMessage* getCurrentMessage();
 	inline bool hasGeneratedMessage() {
-		if(message != NULL)
-			hasGenerated = true;
 		return hasGenerated;
 	}
 
@@ -137,8 +132,6 @@ public:
 		headerSets.removeAll();
 		hdrOptCount = 0;
 		optionSets.removeAll();
-		if(message != NULL)
-			message->setOptionCount(0);
 	}
 
 	int compareTo(SuiBox* obj) {

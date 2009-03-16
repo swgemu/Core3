@@ -48,7 +48,6 @@ include "engine/service/proto/BaseMessage";
 
 interface SuiBox {
 
-	BaseMessage getCurrentMessage();
 	boolean hasGeneratedMessage();
 	BaseMessage generateCloseMessage();
 	

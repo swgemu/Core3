@@ -67,18 +67,12 @@ SuiBoxImplementation::SuiBoxImplementation(Player* play, uint32 windowType, uint
 	okButton = true;
 
 	hdrOptCount = 0; //header option count
-	message = NULL;
 	hasGenerated = false;
 }
 
 SuiBoxImplementation::~SuiBoxImplementation() {
 	headerSets.removeAll();
 	optionSets.removeAll();
-
-	if (message != NULL) {
-		delete message;
-		message = NULL;
-	}
 }
 
 /**
@@ -148,10 +142,7 @@ void SuiBoxImplementation::addHeader(const String& variable, const String& type)
  * the object with clearOptions()
  * \sa addHeader(), clearOptions()
  */
-void SuiBoxImplementation::generateHeader(const String& handlerStr) {
-	if(message == NULL)
-		return;
-
+void SuiBoxImplementation::generateHeader(SuiCreatePageMessage* message, const String& handlerStr) {
 	//[UI DECLARATION HEADER]
 	String hdrVar = "";
 	String hdrType = "";
@@ -184,10 +175,7 @@ void SuiBoxImplementation::generateHeader(const String& handlerStr) {
  * reset the object with clearOptions()
  * \sa addSetting(), clearOptions()
  */
-void SuiBoxImplementation::generateBody() {
-	if(message == NULL)
-		return;
-
+void SuiBoxImplementation::generateBody(SuiCreatePageMessage* message) {
 	//[UI BODY]
 	String bdyTypeStr = "";
 	int bdyType = 0;
@@ -213,10 +201,7 @@ void SuiBoxImplementation::generateBody() {
  * Footer of SuiCreatePageMessage is largely unknown. Subject to change based on research. See trac
  * \param type Type of footer to place into packet
  */
-void SuiBoxImplementation::generateFooter(int type) {
-	if(message == NULL)
-		return;
-
+void SuiBoxImplementation::generateFooter(SuiCreatePageMessage* message, int type) {
 	message->insertFooter(type);
 }
 
@@ -230,12 +215,4 @@ BaseMessage* SuiBoxImplementation::generateCloseMessage() {
 	return msg;
 }
 
-/**
- * Returns the instanced SuiCreatePageMessage packet object, in whatever state it is in.
- * \warning May be incomplete or null. Do not use this method unless absolutely necessary.
- * \deprecated Function will be removed when SUI facilities are complete.
- */
-BaseMessage* SuiBoxImplementation::getCurrentMessage() {
-	return message;
-}
 
