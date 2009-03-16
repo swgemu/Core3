@@ -98,11 +98,3 @@ RunCreatureFile("objects/npcs/imperial/imperialNoncom.lua")
 RunCreatureFile("objects/npcs/imperial/imperialAtAt.lua") -- Weapon "Cannon"
 RunCreatureFile("objects/npcs/imperial/imperialAtSt.lua") -- Weapon "Cannon"
 RunCreatureFile("objects/npcs/imperial/imperialProbot.lua") -- Weapon "Droid Attack"
-
-RunCreatureFile("objects/npcs/imperial/imperialJediKnight.lua") -- Weapon "Lightsaber"
-RunCreatureFile("objects/npcs/imperial/imperialJediMaster.lua") -- Weapon "Lightsaber"
-
-RunCreatureFile("objects/npcs/imperial/palpatine.lua")
-RunCreatureFile("objects/npcs/imperial/darthVader.lua")
-RunCreatureFile("objects/npcs/imperial/bobaFett.lua")
-

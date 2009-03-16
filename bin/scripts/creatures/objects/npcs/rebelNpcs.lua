@@ -48,8 +48,6 @@ RunCreatureFile("objects/npcs/rebel/rebelCorporal.lua") -- Weapon "Laser Carbine
 RunCreatureFile("objects/npcs/rebel/rebelFirstLieutenant.lua") -- Weapon "Power 5, Stun Baton"
 RunCreatureFile("objects/npcs/rebel/rebelGeneral.lua") -- Weapon "Gaderiffi, Stun Baton"
 RunCreatureFile("objects/npcs/rebel/rebelHighGeneral.lua") -- Weapon "Power 5, Stun Baton"
-RunCreatureFile("objects/npcs/rebel/rebelJediKnight.lua") -- Weapon "2handed Lightsaber"
-RunCreatureFile("objects/npcs/rebel/rebeljediMaster.lua") -- Weapon "Polearm Lightsaber"
 RunCreatureFile("objects/npcs/rebel/rebelLanceCorporal.lua") -- Weapon "Laser Carbine, Stun Baton"
 RunCreatureFile("objects/npcs/rebel/rebelLieutenantColonel.lua") -- Weapon "Power 5, Stun Baton"
 RunCreatureFile("objects/npcs/rebel/rebelMajor.lua") -- Weapon "Power 5, Stun Baton"
@@ -66,8 +64,3 @@ RunCreatureFile("objects/npcs/rebel/rebelTrooper.lua") -- Weapon "Laser Carbine,
 RunCreatureFile("objects/npcs/rebel/rebelWarrantOfficerI.lua") -- Weapon "Power 5, Stun Baton"
 RunCreatureFile("objects/npcs/rebel/rebelWarrantOfficerII.lua")
 RunCreatureFile("objects/npcs/rebel/misc.lua")
-
-RunCreatureFile("objects/npcs/rebel/oldMan.lua")
-RunCreatureFile("objects/npcs/rebel/luke.lua")
-RunCreatureFile("objects/npcs/rebel/hanSolo.lua")
-RunCreatureFile("objects/npcs/rebel/chewbacca.lua")
