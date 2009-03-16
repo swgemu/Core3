@@ -68,7 +68,7 @@ void SuiListBoxImplementation::init(){
 }
 
 BaseMessage* SuiListBoxImplementation::generateMessage() {
-	message = new SuiCreatePageMessage(boxID, "Script.listBox");
+	SuiCreatePageMessage* message = new SuiCreatePageMessage(boxID, "Script.listBox");
 
 	//Declare Headers:
 	addHeader("List.lstList", "SelectedRow");
@@ -126,18 +126,19 @@ BaseMessage* SuiListBoxImplementation::generateMessage() {
 	//Generate Packet:
 	switch(type) {
 	case HANDLESTATUSUI:
-		generateHeader("handleStatusUi");
+		generateHeader(message, "handleStatusUi");
 		break;
 	case HANDLEDESTROYUI:
-		generateHeader("handleDestroyUi");
+		generateHeader(message, "handleDestroyUi");
 		break;
 	default:
-		generateHeader("msgSelected");
+		generateHeader(message, "msgSelected");
 	}
-	generateBody();
-	generateFooter();
+	generateBody(message);
+	generateFooter(message);
+	hasGenerated = true;
 
-	return message->clone();
+	return message;
 }
 
 

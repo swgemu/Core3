@@ -55,7 +55,7 @@ SuiInputBoxImplementation::SuiInputBoxImplementation(Player* player, uint32 wind
 }
 
 BaseMessage* SuiInputBoxImplementation::generateMessage() {
-	message = new SuiCreatePageMessage(boxID, "Script.inputBox");
+	SuiCreatePageMessage* message = new SuiCreatePageMessage(boxID, "Script.inputBox");
 
 	//Declare Headers:
 	if (isFilterBox()) {
@@ -101,12 +101,13 @@ BaseMessage* SuiInputBoxImplementation::generateMessage() {
 
 	//Generate Packet:
 	if (isFilterBox()) {
-		generateHeader("handleFilterInput");
+		generateHeader(message, "handleFilterInput");
 	} else {
-		generateHeader("handleAutoLevelSelect");
+		generateHeader(message, "handleAutoLevelSelect");
 	}
-	generateBody();
-	generateFooter();
+	generateBody(message);
+	generateFooter(message);
+	hasGenerated = true;
 
-	return message->clone();
+	return message;
 }

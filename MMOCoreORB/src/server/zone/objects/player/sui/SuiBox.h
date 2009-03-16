@@ -13,8 +13,6 @@ class Player;
 
 class SuiBox : public DistributedObjectStub {
 public:
-	BaseMessage* getCurrentMessage();
-
 	bool hasGeneratedMessage();
 
 	BaseMessage* generateCloseMessage();
@@ -78,8 +76,6 @@ public:
 	SuiBoxAdapter(SuiBoxImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	BaseMessage* getCurrentMessage();
 
 	bool hasGeneratedMessage();
 

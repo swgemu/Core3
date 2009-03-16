@@ -43,9 +43,9 @@
 -----------------------------------------------------------------------------------------------------------------------
 
 -- Setup:
-RunMissionFile("object.lua")
-RunMissionFile("basemission.lua")
-RunMissionFile("baseaction.lua")
+--RunMissionFile("object.lua")
+--RunMissionFile("basemission.lua")
+--RunMissionFile("baseaction.lua")
 
 -- utils
 local sin, cos = math.sin, math.cos
