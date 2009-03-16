@@ -97,6 +97,8 @@ interface CraftingTool implements TangibleObject {
 	void clearIngredientInSlot(int slot);
 	void addTempIngredient(TangibleObject tano);
 
+	void clearWorkingTano();
+
 	//getters
 	float getToolEffectiveness();
 	int getCraftingState();

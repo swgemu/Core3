@@ -193,6 +193,8 @@ public:
 	static void parseTransferWeapon(Player* player, Message* pack);
 	static void parseTransferArmor(Player* player, Message* pack);
 
+	static void parseItemDropTrade(Player* player, Message* pack);
+
 	static void parseAddFriend(Player* player, Message* pack);
 	static void parseRemoveFriend(Player* player, Message* pack);
 	static void parseFindFriend(Player* player, Message* pack, PlayerManager* playerManager);

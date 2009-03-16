@@ -45,16 +45,91 @@ which carries forward this exception.
 #ifndef MANUFACTURESCHEMATICIMPLEMENTATION_H_
 #define MANUFACTURESCHEMATICIMPLEMENTATION_H_
 
+#include "engine/engine.h"
+
 #include "ManufactureSchematic.h"
+#include "../draftschematic/DraftSchematic.h"
+#include "../draftschematic/DraftSchematicIngredient.h"
+#include "../tangible/crafting/component/Component.h"
+#include "../tangible/crafting/CraftingTool.h"
+#include "../tangible/resource/ResourceContainer.h"
+#include "../player/Player.h"
+
+#include "../../objects.h"
+
+#include "ManufactureSchematicIngredientMap.h"
+
 
 class ManufactureSchematicImplementation : public ManufactureSchematicServant {
 
+private:
+
+	ManufactureSchematicIngredientMap ingredientMap;
+
+	int complexity;
+	int dataSize;
+	int manufacturingLimit;
 
 public:
 
-	ManufactureSchematicImplementation(uint64 oid) : ManufactureSchematicServant(oid, MANUFACTURESCHEMATIC) {
+	ManufactureSchematicImplementation(uint64 oid, String n, String stfFile, String stfName, uint32 crc);
+	ManufactureSchematicImplementation(uint64 oid, DraftSchematic* draftSchematic, CraftingTool* craftingTool);
+
+	~ManufactureSchematicImplementation();
+
+	void init();
+	void setIngredients(DraftSchematic* draftSchematic, CraftingTool* craftingTool);
+
+	void sendTo(Player* player, bool doClose = true);
+	void sendDestroyTo(Player* player);
+
+	void parseItemAttributes();
+	void generateAttributes(SceneObject* obj);
+	void addAttributes(AttributeListMessage* alm);
+
+	void parseResources(String resources);
+	void parseComponents(String components);
+
+	int getComplexity() {
+		return complexity;
 	}
 
+	int getManufacturingLimit() {
+		return manufacturingLimit;
+	}
+
+	int getDataSize() {
+		return dataSize;
+	}
+
+	TangibleObject* getTangibleObject() {
+		return (TangibleObject*) getObject(0);
+	}
+
+	void setManufacturingLimit(int value) {
+		manufacturingLimit = value;
+		String name = "manufacturinglimit";
+		itemAttributes->setIntAttribute(name, manufacturingLimit);
+	}
+
+	void setComplexity(int value) {
+		complexity = value;
+		String name = "complexity";
+		itemAttributes->setIntAttribute(name, complexity);
+	}
+
+	void setDataSize(int value) {
+		dataSize = value;
+		String name = "datasize";
+		itemAttributes->setIntAttribute(name, dataSize);
+	}
+
+	inline void setTangibleObject(TangibleObject* inTano) {
+		while(getContainerObjectsSize() > 0)
+			removeObject(0);
+
+		addObject(inTano);
+	}
 };
 
 #endif /*MANUFACTURESCHEMATICIMPLEMENTATION_H_*/

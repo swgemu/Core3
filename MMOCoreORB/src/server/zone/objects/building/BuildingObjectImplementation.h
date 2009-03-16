@@ -54,7 +54,7 @@ class Zone;
 
 #include "BuildingObject.h"
 
-#include "../tangible/ItemAttributes.h"
+#include "../scene/ItemAttributes.h"
 
 #include "StructurePermissionList.h"
 

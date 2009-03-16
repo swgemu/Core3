@@ -45,6 +45,7 @@ power5Pistol = Object:new {
 
    objectName = "Power5 Pistol",
    stfName = "pistol_power5",
+   stfFile = "weapon_name",
    objectCRC = 4124760882,
    groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
 

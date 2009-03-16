@@ -45,6 +45,7 @@ k18Rations = Object:new {
 
    objectName = "K-18 Rations",
    stfName = "rations",
+   stfFile = "food_name",
    objectCRC = 103531831,
    groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ k18Rations = Object:new {
    experimentalMax = "0, 0, 1000, 120, 120, 100, 120",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=1720551551:objecttemp=rations:templatetype=food_name:itemmask=65535:",
+   tanoAttributes = "objecttype=8202:objectcrc=1720551551:objecttemp=rations:templatetype=food_name:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -45,7 +45,9 @@ which carries forward this exception.
 #include "../../../ZoneClientSession.h"
 #include "../../player/Player.h"
 
-#include "../../../packets.h"
+#include "../../../packets/scene/AttributeListMessage.h"
+#include "../../../packets/tangible/TangibleObjectMessage3.h"
+#include "../../../packets/object/ObjectMenuResponse.h"
 
 #include "Wearable.h"
 #include "WearableImplementation.h"
@@ -55,7 +57,7 @@ which carries forward this exception.
 #include "../../../objects/draftschematic/DraftSchematicValuesImplementation.h"
 
 WearableImplementation::WearableImplementation(uint64 objid, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp)
-		: WearableServant(objid, CLOTHING) {
+		: WearableSkillModMap() , WearableServant(objid, CLOTHING) {
 	objectCRC = tempCRC;
 
 	customName = n;
@@ -68,7 +70,7 @@ WearableImplementation::WearableImplementation(uint64 objid, uint32 tempCRC, con
 }
 
 WearableImplementation::WearableImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp)
-		: WearableServant(oid, CLOTHING) {
+	: WearableSkillModMap()	, WearableServant(oid, CLOTHING) {
 
 	objectCRC = tempCRC;
 
@@ -85,7 +87,7 @@ WearableImplementation::WearableImplementation(CreatureObject* creature, uint64 
 }
 
 WearableImplementation::WearableImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp)
-		: WearableServant(creature->getNewItemID(), CLOTHING) {
+	: WearableSkillModMap() , WearableServant(creature->getNewItemID(), CLOTHING) {
 	//creature->getNewItemID();
 	objectCRC = tempCRC;
 
@@ -101,75 +103,101 @@ WearableImplementation::WearableImplementation(CreatureObject* creature, uint32 
 	init();
 }
 
+void WearableImplementation::init() {
+
+	EMPTY = "";
+
+	socketCount = 0;
+
+	setConditionDamage(0);
+	setCondition(100,100);
+
+	setHealthEncumbrance(0);
+	setActionEncumbrance(0);
+	setMindEncumbrance(0);
+
+	wearableType = WearableImplementation::WEARABLECLOTHING;
+
+}
+
+void WearableImplementation::generateAttributes(SceneObject* obj) {
+	if (!obj->isPlayer())
+		return;
+
+	Player* player = (Player*) obj;
+
+	AttributeListMessage* alm = new AttributeListMessage((TangibleObject*) _this);
+
+	addAttributes(alm);
+
+	player->sendMessage(alm);
+
+}
+
+void WearableImplementation::addAttributes(AttributeListMessage* alm) {
+
+	StringBuffer conditionStr;
+	conditionStr << getCondition() << '/' << maxCondition;
+	alm->insertAttribute("Condition", conditionStr);
+
+	alm->insertAttribute("Volume", "1");
+
+	if (socketsLeft() > 0)
+		alm->insertAttribute("Sockets", socketsLeft());
+
+	insertStatMods(alm);
+
+	if (craftersName != "") {
+
+		alm->insertAttribute("crafter", craftersName);
+	}
+	if (craftedSerial != "") {
+
+		alm->insertAttribute("serial_number", craftedSerial);
+	}
+}
+
 void WearableImplementation::parseItemAttributes() {
 
 	maxCondition = itemAttributes->getMaxCondition();
 	conditionDamage = maxCondition - itemAttributes->getCurrentCondition();
 
-	String name = "sockets";
-	sockets = itemAttributes->getIntAttribute(name);
+	String name = "socketCount";
+	setMaxSockets(itemAttributes->getIntAttribute(name));
 
-	name = "skillMod0Type";
-	skillMod0Type = itemAttributes->getIntAttribute(name);
-	name = "skillMod0Value";
-	skillMod0Value = itemAttributes->getIntAttribute(name);
+	name = "skillMods";
+	makeSkillModMap(itemAttributes->getStringAttribute(name));
 
-	name = "skillMod1Type";
-	skillMod1Type = itemAttributes->getIntAttribute(name);
-	name = "skillMod1Value";
-	skillMod1Value = itemAttributes->getIntAttribute(name);
+	name = "attachments";
+	makeAttachmentMap(itemAttributes->getStringAttribute(name));
 
-	name = "skillMod2Type";
-	skillMod2Type = itemAttributes->getIntAttribute(name);
-	name = "skillMod2Value";
-	skillMod2Value = itemAttributes->getIntAttribute(name);
+	name = "healthEncumberance";
+	healthEncumbrance = itemAttributes->getIntAttribute(name);
+	name = "actionEncumberance";
+	actionEncumbrance = itemAttributes->getIntAttribute(name);
+	name = "mindEncumberance";
+	mindEncumbrance = itemAttributes->getIntAttribute(name);
 
-	name = "socket0Type";
-	socket0Type = itemAttributes->getIntAttribute(name);
-	name = "socket0Value";
-	socket0Value = itemAttributes->getIntAttribute(name);
+	name = "craftedserial";
+	craftedSerial = itemAttributes->getStringAttribute(name);
 
-	name = "socket1Type";
-	socket1Type = itemAttributes->getIntAttribute(name);
-	name = "socket1Value";
-	socket1Value = itemAttributes->getIntAttribute(name);
+	name = "craftersname";
+	craftersName = itemAttributes->getStringAttribute(name);
 
-	name = "socket2Type";
-	socket2Type = itemAttributes->getIntAttribute(name);
-	name = "socket2Value";
-	socket2Value = itemAttributes->getIntAttribute(name);
-
-	name = "socket3Type";
-	socket3Type = itemAttributes->getIntAttribute(name);
-	name = "socket3Value";
-	socket3Value = itemAttributes->getIntAttribute(name);
+	rebuildActiveSkillModMap();
 }
 
-void WearableImplementation::init() {
-	setConditionDamage(0);
-	setCondition(10,10);
+void WearableImplementation::saveSkillModMap() {
 
-	skillMod0Type = 0;
-	skillMod0Value = 0;
+	String name, value;
 
-	skillMod1Type = 0;
-	skillMod1Value = 0;
+	name = "attachments";
+	value = getAttachmentString();
+	itemAttributes->setStringAttribute(name, value);
 
-	skillMod2Type = 0;
-	skillMod2Value = 0;
-
-	setSockets(0);
-	socket0Type = 0;
-	socket0Value = 0;
-
-	socket1Type = 0;
-	socket1Value = 0;
-
-	socket2Type = 0;
-	socket2Value = 0;
-
-	socket3Type = 0;
-	socket3Value = 0;
+	name = "skillMods";
+	value = getSkillModString();
+	itemAttributes->setStringAttribute(name, value);
 }
 
 void WearableImplementation::sendTo(Player* player, bool doClose) {
@@ -210,199 +238,234 @@ void WearableImplementation::sendRadialResponseTo(Player* player, ObjectMenuResp
 	player->sendMessage(omr);
 }
 
-void WearableImplementation::generateAttributes(SceneObject* obj) {
-	if (!obj->isPlayer())
-		return;
-
-	Player* player = (Player*) obj;
-
-	AttributeListMessage* alm = new AttributeListMessage((TangibleObject*) _this);
-
-	addAttributes(alm);
-
-	player->sendMessage(alm);
-
-}
-
 void WearableImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
 	/*
 	 * Values available:	Range:
-	 * sockets				0-0(novice artisan)
-	 * hitpoints			1000-1000
+	 * sockets				0-0(novice artisan) (Don't use)
+	 * hitpoints			1000-1000 (Don't Use)
 	 */
 	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
-	int hitPoints = (int)craftingValues->getCurrentValue("hitpoints");
-	setCondition(hitPoints,hitPoints);
-
-	int sockets = (int)craftingValues->getCurrentValue("sockets");
-	setSockets(sockets);
-
-}
-
-void WearableImplementation::setSocket(int index, int type, int value) {
-	switch (index) {
-	case 0:
-		setSocket0Value(value);
-		setSocket0Type(type);
-		break;
-	case 1:
-		setSocket1Value(value);
-		setSocket1Type(type);
-		break;
-	case 2:
-		setSocket2Value(value);
-		setSocket2Type(type);
-		break;
-	case 3:
-		setSocket3Value(value);
-		setSocket3Type(type);
-		break;
+	if(firstCraftingUpdate) {
+		generateSockets(draftSchematic);
+		firstCraftingUpdate = false;
 	}
 }
 
-void WearableImplementation::setSocketValue(int index, int value) {
-	switch (index) {
-	case 0:
-		setSocket0Value(value);
-		break;
-	case 1:
-		setSocket1Value(value);
-		break;
-	case 2:
-		setSocket2Value(value);
-		break;
-	case 3:
-		setSocket3Value(value);
-		break;
+void WearableImplementation::generateSockets(DraftSchematic* draftSchematic) {
+
+	String assemblySkill = draftSchematic->getAssemblySkill();
+	// Get assembly points from skill
+
+	Player* player = draftSchematic->getCrafter();
+
+	if (player == NULL) {
+
+		setMaxSockets(0);
+
+	} else {
+
+		int skill = player->getSkillMod(assemblySkill) * 2; // 0 to 250 max
+		int luck = System::random(player->getSkillMod("luck") + player->getSkillMod("force_luck")); //0 to 250
+		int random = (System::random(750)) - 250; // -250 to 500
+
+		float roll = System::random(skill + luck + random);
+
+		int generatedCount = int(float(MAXSOCKETS * roll) / float(MAXSOCKETS * 100));
+
+		if (generatedCount > MAXSOCKETS)
+			generatedCount = MAXSOCKETS;
+		if (generatedCount < 0)
+			generatedCount = 0;
+
+		setMaxSockets(generatedCount);
 	}
 }
 
-void WearableImplementation::setSocketType(int index, int type) {
-	switch (index) {
-	case 0:
-		setSocket0Type(type);
-		break;
-	case 1:
-		setSocket1Type(type);
-		break;
-	case 2:
-		setSocket2Type(type);
-		break;
-	case 3:
-		setSocket3Type(type);
-		break;
-	}
+String& WearableImplementation::getSkillModType(int i) {
+	if (getActiveSkillModCount() >= i)
+		return getActiveSkillModKey(i);
+	else
+		return EMPTY;
 }
 
-int WearableImplementation::getSocketType(int index) {
-	switch (index) {
-	case 0:
-		return socket0Type;
-		break;
-	case 1:
-		return socket1Type;
-		break;
-	case 2:
-		return socket2Type;
-		break;
-	case 3:
-		return socket3Type;
-		break;
-	}
-	return -1;
+int WearableImplementation::getSkillModValue(String name) {
+	return getActiveSkillModValue(name);
 }
 
-int WearableImplementation::getSocketValue(int index) {
-	switch (index) {
-	case 0:
-		return socket0Value;
-		break;
-	case 1:
-		return socket1Value;
-		break;
-	case 2:
-		return socket2Value;
-		break;
-	case 3:
-		return socket3Value;
-		break;
+void WearableImplementation::applyAttachment(Player* player, Attachment* attachment) {
+
+	if (hasEmptySocket() && attachmentMatches(attachment)) {
+
+		 if (isEquipped())
+			 unsetAttachmentMods(player);
+
+		 AttachmentEntry* entry = new AttachmentEntry();
+
+		 for(int i = 0; i < attachment->getSkillModCount(); ++i) {
+
+			 String name = attachment->getSkillModName(i);
+			 int value = attachment->getSkillModValue(name);
+
+			 entry->add(name, value);
+		}
+
+		addAttachment(entry);
+
+		saveSkillModMap();
+
+		rebuildActiveSkillModMap();
+
+		if (isEquipped())
+			setAttachmentMods(player);
+
+		attachment->remove(player);
+		attachment->finalize();
+
+		generateAttributes(player);
 	}
-	return 0;
 }
+void WearableImplementation::reclaimAttachments(Player* player) {
 
-int WearableImplementation::addSkillMod(int skillModType, int skillModValue) {
+	 if (isEquipped()) {
+		 player->sendSystemMessage("Cannot reclaim attachments while item is equipped");
+		 return;
+	 }
 
-	if (skillModType == 0 || skillModValue == 0) {
-		return -1;
-	}
+	AttachmentEntry* entry;
+	Attachment* newAttachment = NULL;
 
-	int i = 0;
+	for (int i = 0; i < attachmentVector.size(); ++i) {
+			entry = attachmentVector.get(i);
+			newAttachment = new Attachment(player->getNewItemID(), wearableType);
 
-	for (; i < 4; i++) {
-		if (getSocketType(i) == skillModType) {
-			int modValue = getSocketValue(i);
-
-			if (skillModValue <= modValue)
-				return -2;
-			else if (skillModValue > modValue){
-				setSocketValue(i, skillModValue);
-				updated = true;
-				return -3;
+			for(int j = 0; j < entry->size(); ++j) {
+				String key = entry->getKey(j);
+				int value = entry->get(key);
+				newAttachment->addSkillMod(key, value);
 			}
+
+			player->addInventoryItem(newAttachment);
+
+			newAttachment->sendTo(player, true);
+	}
+	newAttachment = NULL;
+	attachmentVector.removeAll();
+
+	saveSkillModMap();
+
+	rebuildActiveSkillModMap();
+}
+
+/*
+ * rebuildActiveSkillModMap build the active map for attachments based on known attachment rules
+ */
+void WearableImplementation::rebuildActiveSkillModMap() {
+
+	activeSkillModMap.removeAll();
+	AttachmentEntry* entry;
+	String statName;
+	int statValue;
+
+
+	for(int i = 0; i < innateSkillModMap.size(); ++i) {
+
+		statName = innateSkillModMap.elementAt(i)->getKey();
+		statValue = innateSkillModMap.get(statName);
+
+		if(activeSkillModMap.contains(statName) && statValue > activeSkillModMap.get(statName)) {
+			activeSkillModMap.drop(statName);
+			activeSkillModMap.put(statName, statValue);
+		} else if (!activeSkillModMap.contains(statName)) {
+			activeSkillModIndex.add(statName);
+			activeSkillModMap.put(statName, statValue);
 		}
 	}
 
-	if (sockets > 0)
-		for (i = 0; i < 4; i++)
-			if (getSocketValue(i) == 0) {
-				setSocket(i, skillModType, skillModValue);
-				updated = true;
-				setSockets(sockets - 1);
-				return i;
+	for (int i = 0; i < attachmentVector.size(); ++i) {
+		entry = attachmentVector.get(i);
+
+		if (entry != NULL) {
+
+			statName = "";
+
+			getBestAttachmentSkillMod(statName, entry);
+
+			if (statName != "") {
+				statValue = entry->get(statName);
+
+				activeSkillModIndex.add(statName);
+				activeSkillModMap.put(statName, statValue);
 			}
-
-	return -1;
-}
-
-void WearableImplementation::addAttributes(AttributeListMessage* alm) {
-	StringBuffer conditionStr;
-	conditionStr << getCondition() << '/' << maxCondition;
-	alm->insertAttribute("Condition", conditionStr);
-
-	alm->insertAttribute("Volume", "1");
-
-	if(sockets > 0)
-		alm->insertAttribute("Sockets", sockets);
-
-	if (skillMod0Type != 0)
-		generateSkillMods(alm, skillMod0Type, skillMod0Value);
-
-	if (skillMod1Type != 0)
-		generateSkillMods(alm, skillMod1Type, skillMod1Value);
-
-	if (skillMod2Type != 0)
-		generateSkillMods(alm, skillMod2Type, skillMod2Value);
-
-	if (socket0Type != 0)
-		generateSkillMods(alm, socket0Type, socket0Value);
-
-	if (socket1Type != 0)
-		generateSkillMods(alm, socket1Type, socket1Value);
-
-	if (socket2Type != 0)
-		generateSkillMods(alm, socket2Type, socket2Value);
-
-	if (socket3Type != 0)
-		generateSkillMods(alm, socket3Type, socket3Value);
-
-	if (craftersName != "") {
-
-		alm->insertAttribute("crafter", craftersName);
-	}
-	if (craftedSerial != "") {
-
-		alm->insertAttribute("serial_number", craftedSerial);
+		}
 	}
 }
 
+
+void WearableImplementation::getBestAttachmentSkillMod(String& valueName, AttachmentEntry* entry) {
+	String key = "";
+	int value;
+
+	int maxValue = -26;
+
+	for(int i = 0; i < entry->size(); ++i) {
+
+		key = entry->getKey(i);
+		value = entry->get(key);
+
+		if (value > maxValue) {
+			if((!activeSkillModMap.contains(key)))
+				valueName = key;
+			else
+				if(value > activeSkillModMap.get(key))
+					valueName = key;
+		}
+	}
+}
+
+bool WearableImplementation::attachmentMatches(Attachment* attachment) {
+
+	if(wearableType == WearableImplementation::WEARABLECLOTHING &&
+			attachment->getAttachmentType() == AttachmentImplementation::CLOTHINGATTACHMENT  ||
+			wearableType == WearableImplementation::WEARABLEARMOR &&
+			attachment->getAttachmentType() == AttachmentImplementation::ARMORATTACHMENT)
+		return true;
+	else
+		return false;
+}
+
+void WearableImplementation::setAttachmentMods(Player* player) {
+
+	for (int i = 0; i < getActiveSkillModCount(); ++i) {
+
+		String name = getActiveSkillModKey(i);
+		int value = getActiveSkillModValue(name);
+
+		player->addSkillModBonus(name, value, true);
+	}
+}
+
+void WearableImplementation::unsetAttachmentMods(Player* player) {
+
+	for (int i = 0; i < getActiveSkillModCount(); ++i) {
+
+		String name = getActiveSkillModKey(i);
+		int value = getActiveSkillModValue(name);
+
+		player->addSkillModBonus(name, -value, true);
+	}
+}
+
+void WearableImplementation::onEquip(Player* player) {
+
+	setAttachmentMods(player);
+
+}
+void WearableImplementation::onUnequip(Player* player) {
+
+	unsetAttachmentMods(player);
+
+}
+void WearableImplementation::onBroken(Player* player) {
+
+}

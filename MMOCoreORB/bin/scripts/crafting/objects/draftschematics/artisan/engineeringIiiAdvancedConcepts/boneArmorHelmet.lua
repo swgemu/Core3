@@ -45,6 +45,7 @@ boneArmorHelmet = Object:new {
 
    objectName = "Bone Armor Helmet",
    stfName = "armor_bone_s01_helmet",
+   stfFile = "wearables_name",
    objectCRC = 416146109,
    groupName = "craftArtisanEngineeringGroupC", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ boneArmorHelmet = Object:new {
    experimentalMax = "0, 0, 0, 1000, 20, 12500, 4, 4, 27, 1, 2, 30, 12500",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=258:objectcrc=1186889343:objecttemp=armor_bone_s01_helmet:templatetype=wearables_name:itemmask=62975:",
+   tanoAttributes = "objecttype=258:objectcrc=1186889343:objecttemp=armor_bone_s01_helmet:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=energyeffectiveness;vunerability=kineticeffectiveness,blasteffectiveness,stuneffectiveness,heateffectiveness,coldeffectiveness,acideffectiveness,restraineffectiveness;armorType=264;armorStyle=4099;:",
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "7",
    customizationSkill = "armor_customization"

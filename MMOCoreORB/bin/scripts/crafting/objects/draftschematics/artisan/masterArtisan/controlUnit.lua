@@ -45,6 +45,7 @@ controlUnit = Object:new {
 
    objectName = "Control Unit",
    stfName = "electronic_control_unit",
+   stfFile = "craft_item_ingredients_n",
    objectCRC = 989624055,
    groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ controlUnit = Object:new {
    experimentalMax = "0, 0, 150, 5",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8216:objectcrc=814846904:objecttemp=electronic_control_unit:templatetype=craft_item_ingredients_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8216:objectcrc=814846904:objecttemp=electronic_control_unit:templatetype=craft_item_ingredients_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

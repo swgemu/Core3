@@ -76,7 +76,7 @@ interface PlayerManager {
 	void save(Player player);
 
 	void handleAbortTradeMessage(Player player);
-	void handleAddItemMessage(Player player, unsigned long itemID);
+	void handleAddItemToTradeWindow(Player player, unsigned long itemID);
 	void handleGiveMoneyMessage(Player player, unsigned int value);
 	void handleAcceptTransactionMessage(Player player);
 	void handleUnAcceptTransactionMessage(Player player);

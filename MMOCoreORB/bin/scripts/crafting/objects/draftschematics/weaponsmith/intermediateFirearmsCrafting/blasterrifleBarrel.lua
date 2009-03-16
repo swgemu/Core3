@@ -45,6 +45,7 @@ blasterrifleBarrel = Object:new {
 
    objectName = "Blaster-rifle Barrel",
    stfName = "blaster_rifle_barrel",
+   stfFile = "craft_weapon_ingredients_n",
    objectCRC = 3017432687,
    groupName = "craftWeaponRangedGroupB", -- Group schematic is awarded in (See skills table)
 

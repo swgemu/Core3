@@ -50,7 +50,7 @@ which carries forward this exception.
 
 #include "CustomizationManager.h"
 #include "../../../objects/creature/CreatureObject.h"
-#include "../../../objects/tangible/CustomizationVariables.h"
+#include "../../../objects/scene/CustomizationVariables.h"
 
 class ZoneProcessServerImplementation;
 

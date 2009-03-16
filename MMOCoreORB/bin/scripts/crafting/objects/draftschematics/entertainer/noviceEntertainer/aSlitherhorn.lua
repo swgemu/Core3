@@ -45,6 +45,7 @@ aSlitherhorn = Object:new {
 
    objectName = "a Slitherhorn",
    stfName = "obj_slitherhorn",
+   stfFile = "obj_n",
    objectCRC = 2027141215,
    groupName = "craftInstrumentGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ aSlitherhorn = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8204:objectcrc=3533891079:objecttemp=obj_slitherhorn:templatetype=obj_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8204:objectcrc=3533891079:objecttemp=obj_slitherhorn:templatetype=obj_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "instrument_customization"

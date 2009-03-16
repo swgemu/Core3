@@ -45,6 +45,7 @@ ambientSolarEnergySurveyingTool = Object:new {
 
    objectName = "Ambient Solar Energy Surveying Tool",
    stfName = "survey_tool_solar",
+   stfFile = "item_n",
    objectCRC = 2148903380,
    groupName = "craftArtisanSurveyGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ ambientSolarEnergySurveyingTool = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32770:objectcrc=2341848205:objecttemp=survey_tool_solar:templatetype=item_n:itemmask=65535:",
+   tanoAttributes = "objecttype=32770:objectcrc=2341848205:objecttemp=survey_tool_solar:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -45,6 +45,7 @@ phecnacineDart = Object:new {
 
    objectName = "Phecnacine Dart",
    stfName = "trap_tranq_dart",
+   stfFile = "item_n",
    objectCRC = 4155383645,
    groupName = "craftScoutTrapGroupC", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ phecnacineDart = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8212:objectcrc=2472376515:objecttemp=trap_tranq_dart:templatetype=item_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8212:objectcrc=2472376515:objecttemp=trap_tranq_dart:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

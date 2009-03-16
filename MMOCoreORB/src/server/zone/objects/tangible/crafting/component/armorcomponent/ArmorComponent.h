@@ -25,8 +25,6 @@ public:
 
 	ArmorComponent(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
-	ArmorComponent(ArmorComponent* component, unsigned long long oid);
-
 	void updateCraftingValues(DraftSchematic* draftSchematic);
 
 	String& getSpecialResist(int i);
@@ -83,7 +81,6 @@ public:
 public:
 	ArmorComponentServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 	ArmorComponentServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
-	ArmorComponentServant(ArmorComponent* component, unsigned long long oid);
 	virtual ~ArmorComponentServant();
 
 	void _setStub(DistributedObjectStub* stub);

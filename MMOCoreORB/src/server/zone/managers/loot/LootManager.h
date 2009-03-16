@@ -73,12 +73,12 @@ public:
 
 	void createLoot(Creature* creature, Player* player);
 
-	void createWeaponLoot(Creature* creature, int creatureLevel);
+	/*void createWeaponLoot(Creature* creature, int creatureLevel);
 	void createArmorLoot(Creature* creature, int creatureLevel);
 	void createClothingLoot(Creature* creature, int creatureLevel);
 	void createJunkLoot(Creature* creature);
 	void createAttachmentLoot(Creature* creature, int creatureLevel);
-	void createPowerupLoot(Creature* creature, int creatureLevel);
+	void createPowerupLoot(Creature* creature, int creatureLevel);*/
 
 };
 

@@ -77,7 +77,7 @@ public:
 	}
 
 	void updateConditionDamage() {
-		addIntUpdate(8, tano->getConditionDamage());
+		addIntUpdate(8, int(tano->getConditionDamage()));
 	}
 
 	void updateMaxCondition() {

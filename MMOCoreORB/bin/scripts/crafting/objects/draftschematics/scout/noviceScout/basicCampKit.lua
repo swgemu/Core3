@@ -45,6 +45,7 @@ basicCampKit = Object:new {
 
    objectName = "Basic Camp Kit",
    stfName = "camp_basic",
+   stfFile = "item_n",
    objectCRC = 2508179971,
    groupName = "craftScoutCampGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ basicCampKit = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32772:objectcrc=1292354861:objecttemp=camp_basic:templatetype=item_n:itemmask=65535:",
+   tanoAttributes = "objecttype=32772:objectcrc=1292354861:objecttemp=camp_basic:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

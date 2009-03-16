@@ -45,6 +45,7 @@ gasPocketSurveyDevice = Object:new {
 
    objectName = "Gas Pocket Survey Device",
    stfName = "survey_tool_gas",
+   stfFile = "item_n",
    objectCRC = 256520291,
    groupName = "craftArtisanSurveyGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ gasPocketSurveyDevice = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32770:objectcrc=1059021891:objecttemp=survey_tool_gas:templatetype=item_n:itemmask=65535:",
+   tanoAttributes = "objecttype=32770:objectcrc=1059021891:objecttemp=survey_tool_gas:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

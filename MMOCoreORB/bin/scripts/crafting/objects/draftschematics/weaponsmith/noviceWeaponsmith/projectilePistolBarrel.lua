@@ -45,6 +45,7 @@ projectilePistolBarrel = Object:new {
 
    objectName = "Projectile Pistol Barrel",
    stfName = "projectile_pistol_barrel",
+   stfFile = "craft_weapon_ingredients_n",
    objectCRC = 2418709976,
    groupName = "craftWeaponRangedGroupA", -- Group schematic is awarded in (See skills table)
 

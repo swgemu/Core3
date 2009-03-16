@@ -77,61 +77,6 @@ ComponentImplementation::ComponentImplementation(CreatureObject* creature, uint3
 	init();
 }
 
-ComponentImplementation::ComponentImplementation(Component* component,
-		uint64 oid) :
-	ComponentServant(oid, COMPONENT) {
-
-	component->lock();
-
-	try {
-
-		objectCRC = component->getObjectCRC();
-		templateTypeName = component->getTemplateTypeName();
-		templateName = component->getTemplateName();
-		customName = component->getCustomName();
-		objectCount = component->getObjectCount();
-
-		craftersName = component->getCraftersName();
-		String tempattribute = "craftersname";
-		itemAttributes->setStringAttribute(tempattribute, craftersName);
-
-		String tempattribute2 = "craftedserial";
-		craftedSerial = component->getCraftedSerial();
-		itemAttributes->setStringAttribute(tempattribute2, craftedSerial);
-
-		String property;
-
-		for (int i = 0; i < component->getPropertyCount(); ++i) {
-			property = component->getProperty(i);
-
-			float value = component->getAttributeValue(property);
-			int precision = component->getAttributePrecision(property);
-			String title = component->getAttributeTitle(property);
-			bool hidden = component->getAttributeHidden(property);
-
-			keyList.add(property);
-			attributeMap.put(property, value);
-			itemAttributes->setFloatAttribute(property, value);
-			precisionMap.put(property, precision);
-			titleMap.put(property, title);
-			hiddenMap.put(property, hidden);
-		}
-
-		savePrecisionList();
-		saveTitleList();
-		saveHiddenList();
-
-		itemAttributes->getAttributeString(attributeString);
-
-		component->unlock();
-
-	} catch (...) {
-		component->unlock();
-		System::out << "Unable to clone a component, That makes kyle a sad panda" << endl;
-	}
-}
-
-
 ComponentImplementation::~ComponentImplementation(){
 	attributeMap.removeAll();
 	precisionMap.removeAll();
@@ -171,6 +116,17 @@ void ComponentImplementation::generateAttributes(SceneObject* obj) {
 	if (!obj->isPlayer())
 		return;
 
+	Player* player = (Player*) obj;
+
+	AttributeListMessage* alm = new AttributeListMessage(_this);
+
+	addAttributes(alm);
+
+	player->sendMessage(alm);
+}
+
+void ComponentImplementation::addAttributes(AttributeListMessage* alm) {
+
 	String attribute;
 
 	float value;
@@ -180,9 +136,6 @@ void ComponentImplementation::generateAttributes(SceneObject* obj) {
 
 	String footer;
 
-	Player* player = (Player*) obj;
-
-	AttributeListMessage* alm = new AttributeListMessage(_this);
 	alm->insertAttribute("volume", "1");
 
 	if (craftersName != "") {
@@ -217,7 +170,6 @@ void ComponentImplementation::generateAttributes(SceneObject* obj) {
 		}
 	}
 
-	player->sendMessage(alm);
 }
 
 void ComponentImplementation::parseItemAttributes(){

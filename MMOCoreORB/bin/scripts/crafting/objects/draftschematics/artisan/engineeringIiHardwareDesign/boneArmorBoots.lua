@@ -45,6 +45,7 @@ boneArmorBoots = Object:new {
 
    objectName = "Bone Armor Boots",
    stfName = "armor_bone_s01_boots",
+   stfFile = "wearables_name",
    objectCRC = 970979898,
    groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ boneArmorBoots = Object:new {
    experimentalMax = "0, 0, 0, 1000, 20, 12500, 4, 8, 2, 1, 2, 30, 12500",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=263:objectcrc=802627120:objecttemp=armor_bone_s01_boots:templatetype=wearables_name:itemmask=62967:",
+   tanoAttributes = "objecttype=263:objectcrc=802627120:objecttemp=armor_bone_s01_boots:templatetype=wearables_name:itemmask=62967:customattributes=specialprotection=energyeffectiveness;vunerability=kineticeffectiveness,blasteffectiveness,stuneffectiveness,heateffectiveness,coldeffectiveness,acideffectiveness,restraineffectiveness;armorType=263;armorStyle=4099;:",
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "7",
    customizationSkill = "armor_customization"

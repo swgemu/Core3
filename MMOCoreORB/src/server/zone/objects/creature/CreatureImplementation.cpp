@@ -1068,9 +1068,9 @@ void CreatureImplementation::updateCreaturePosition(bool lightUpdate) {
 			Player* player = (Player*) obj;
 
 			if (!lightUpdate) {
-				if (parent != NULL)
+				if (parent != NULL) {
 					player->sendMessage(new UpdateTransformWithParentMessage(_this));
-				else
+				} else
 					player->sendMessage(new UpdateTransformMessage(_this));
 			} else {
 				if (parent != NULL)

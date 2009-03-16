@@ -45,6 +45,7 @@ aTraz = Object:new {
 
    objectName = "a Traz",
    stfName = "obj_traz",
+   stfFile = "obj_n",
    objectCRC = 1146643573,
    groupName = "craftInstrumentGroupD", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ aTraz = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8204:objectcrc=395515554:objecttemp=obj_traz:templatetype=obj_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8204:objectcrc=395515554:objecttemp=obj_traz:templatetype=obj_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "instrument_customization"

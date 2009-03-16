@@ -45,6 +45,7 @@ scope = Object:new {
 
    objectName = "Scope",
    stfName = "weapon_ranged_scope",
+   stfFile = "powerup_n",
    objectCRC = 1412684588,
    groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ scope = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=524290:objectcrc=3758199555:objecttemp=weapon_ranged_scope:templatetype=powerup_n:itemmask=65535:",
+   tanoAttributes = "objecttype=524290:objectcrc=3758199555:objecttemp=weapon_ranged_scope:templatetype=powerup_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

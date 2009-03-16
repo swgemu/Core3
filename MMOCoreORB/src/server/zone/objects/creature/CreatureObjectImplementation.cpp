@@ -1960,7 +1960,7 @@ Armor* CreatureObjectImplementation::getArmor(int type) {
 		TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 
 		if (item->isArmor()) {
-			if (((Armor*) item)->getType() == type && item->isEquipped())
+			if (((Armor*) item)->getArmorPiece() == type && item->isEquipped())
 				return (Armor*) item;
 		}
 	}
@@ -3566,7 +3566,7 @@ void CreatureObjectImplementation::mountCreature(MountCreature* mnt, bool lockMo
 	mountCooldown.addMiliTime(3000);
 
 	setPosture(CreaturePosture::UPRIGHT);
-
+SceneObject* test = mount->getParent();
 	parent = mount;
 	linkType = 4;
 	broadcastMessage(link(mount));

@@ -45,6 +45,7 @@ sonicPulse = Object:new {
 
    objectName = "Sonic Pulse",
    stfName = "trap_sonic_pulse",
+   stfFile = "item_n",
    objectCRC = 2585913329,
    groupName = "craftRangerTrapGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ sonicPulse = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8212:objectcrc=3605514682:objecttemp=trap_sonic_pulse:templatetype=item_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8212:objectcrc=3605514682:objecttemp=trap_sonic_pulse:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -45,6 +45,7 @@ swoop = Object:new {
 
    objectName = "Swoop",
    stfName = "speederbike_swoop",
+   stfFile = "pet_deed",
    objectCRC = 4231876597,
    groupName = "craftArtisanVehicle", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ swoop = Object:new {
    experimentalMax = "0, 0, 2500",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8388613:objectcrc=495473751:objecttemp=swoop:templatetype=monster_name:itemmask=65535:",
+   tanoAttributes = "objecttype=8388613:objectcrc=495473751:objecttemp=speederbike_swoop:templatetype=monster_name:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

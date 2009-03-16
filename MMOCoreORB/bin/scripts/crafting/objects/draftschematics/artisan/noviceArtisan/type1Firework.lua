@@ -45,6 +45,7 @@ type1Firework = Object:new {
 
    objectName = "Type 1 Firework",
    stfName = "firework_one",
+   stfFile = "firework_n",
    objectCRC = 2052759177,
    groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ type1Firework = Object:new {
    experimentalMax = "0, 0, 1000, 10",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8209:objectcrc=4192390072:objecttemp=firework_one:templatetype=firework_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8209:objectcrc=4192390072:objecttemp=firework_one:templatetype=firework_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

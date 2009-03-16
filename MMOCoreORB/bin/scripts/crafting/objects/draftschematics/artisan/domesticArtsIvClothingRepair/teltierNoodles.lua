@@ -45,6 +45,7 @@ teltierNoodles = Object:new {
 
    objectName = "Teltier Noodles",
    stfName = "teltier_noodles",
+   stfFile = "food_name",
    objectCRC = 3118947489,
    groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ teltierNoodles = Object:new {
    experimentalMax = "0, 0, 1000, 120, 120, 100, 120",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=601858027:objecttemp=teltier_noodles:templatetype=food_name:itemmask=65535:",
+   tanoAttributes = "objecttype=8202:objectcrc=601858027:objecttemp=teltier_noodles:templatetype=food_name:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

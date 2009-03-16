@@ -45,6 +45,7 @@ e11Rifle = Object:new {
 
    objectName = "E11 Rifle",
    stfName = "rifle_e11",
+   stfFile = "weapon_name",
    objectCRC = 2213003971,
    groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
 

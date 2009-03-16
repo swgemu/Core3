@@ -45,6 +45,7 @@ dl44MetalPistol = Object:new {
 
    objectName = "DL44 Metal Pistol",
    stfName = "pistol_dl44_metal",
+   stfFile = "weapon_name",
    objectCRC = 2361580915,
    groupName = "craftWeaponRangedGroupC", -- Group schematic is awarded in (See skills table)
 

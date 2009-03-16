@@ -45,6 +45,7 @@ chemicalSurveyDevice = Object:new {
 
    objectName = "Chemical Survey Device",
    stfName = "survey_tool_liquid",
+   stfFile = "item_n",
    objectCRC = 780227147,
    groupName = "craftArtisanSurveyGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ chemicalSurveyDevice = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32770:objectcrc=2242363434:objecttemp=survey_tool_liquid:templatetype=item_n:itemmask=65535:",
+   tanoAttributes = "objecttype=32770:objectcrc=2242363434:objecttemp=survey_tool_liquid:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

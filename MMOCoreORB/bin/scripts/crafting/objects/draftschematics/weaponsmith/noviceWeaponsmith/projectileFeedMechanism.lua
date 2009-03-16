@@ -45,6 +45,7 @@ projectileFeedMechanism = Object:new {
 
    objectName = "Projectile Feed Mechanism",
    stfName = "projectile_feed_mechanism",
+   stfFile = "craft_weapon_ingredients_n",
    objectCRC = 3297087256,
    groupName = "craftWeaponRangedGroupA", -- Group schematic is awarded in (See skills table)
 

@@ -45,6 +45,7 @@ tuskenRifle = Object:new {
 
    objectName = "Tusken Rifle",
    stfName = "rifle_tusken",
+   stfFile = "weapon_name",
    objectCRC = 112067557,
    groupName = "craftWeaponRangedGroupC", -- Group schematic is awarded in (See skills table)
 

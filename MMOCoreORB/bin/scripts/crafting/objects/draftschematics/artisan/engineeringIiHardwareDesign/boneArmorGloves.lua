@@ -45,6 +45,7 @@ boneArmorGloves = Object:new {
 
    objectName = "Bone Armor Gloves",
    stfName = "armor_bone_s01_gloves",
+   stfFile = "wearables_name",
    objectCRC = 2920088501,
    groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ boneArmorGloves = Object:new {
    experimentalMax = "0, 0, 0, 1000, 20, 12500, 4, 8, 2, 1, 2, 30, 12500",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262:objectcrc=4034830199:objecttemp=armor_bone_s01_gloves:templatetype=wearables_name:itemmask=62975:",
+   tanoAttributes = "objecttype=262:objectcrc=4034830199:objecttemp=armor_bone_s01_gloves:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=energyeffectiveness;vunerability=kineticeffectiveness,blasteffectiveness,stuneffectiveness,heateffectiveness,coldeffectiveness,acideffectiveness,restraineffectiveness;armorType=257;armorStyle=4099;:",
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "7",
    customizationSkill = "armor_customization"

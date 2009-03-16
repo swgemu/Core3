@@ -45,6 +45,7 @@ advancedCompositeArmorSegment = Object:new {
 
    objectName = "Advanced Composite Armor Segment",
    stfName = "armor_segment_composite_advanced",
+   stfFile = "craft_clothing_ingredients_n",
    objectCRC = 2060695348,
    groupName = "craftArmorPersonalGroupF", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ advancedCompositeArmorSegment = Object:new {
    experimentalMax = "0, 0, 1000, 25, 1000, 1, 1, 1, 1, 256, 35, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262145:objectcrc=2764212654:objecttemp=armor_segment_composite_advanced:templatetype=craft_clothing_ingredients_n:itemmask=65535:",
+   tanoAttributes = "objecttype=262145:objectcrc=2764212654:objecttemp=armor_segment_composite_advanced:templatetype=craft_clothing_ingredients_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

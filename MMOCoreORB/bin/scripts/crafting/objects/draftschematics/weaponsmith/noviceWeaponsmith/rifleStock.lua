@@ -45,6 +45,7 @@ rifleStock = Object:new {
 
    objectName = "Rifle Stock",
    stfName = "stock_unit",
+   stfFile = "craft_weapon_ingredients_n",
    objectCRC = 507005578,
    groupName = "craftWeaponRangedGroupA", -- Group schematic is awarded in (See skills table)
 

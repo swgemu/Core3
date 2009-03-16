@@ -45,6 +45,7 @@ weaponScope = Object:new {
 
    objectName = "Weapon Scope",
    stfName = "scope_weapon",
+   stfFile = "craft_weapon_ingredients_n",
    objectCRC = 3596514252,
    groupName = "craftWeaponRangedGroupA", -- Group schematic is awarded in (See skills table)
 

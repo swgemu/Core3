@@ -117,7 +117,7 @@ protected:
 	static const uint16 SHIRT = 0x0400;  // special case as a shirt can go under most clothing.
 	static const uint16 PACK = 0x0800;
 	static const uint16 BANDOLIER = 0x1000;
-	static const uint16 PSG = 0x2000;	// Personal shield generator
+	static const uint16 PSG = 0x2000;	// Personal shield generator - uses belt slot
 	static const uint16 EYES = 0x4000;
 
 public:
@@ -250,7 +250,7 @@ public:
 			armor = (Armor*)item;
 			locations = getArmorLocations(armor);
 
-			if (!checkEncumbrance(armor, clothingLocations.get(armor->getArmorType())) && !forced) {
+			if (!checkEncumbrance(armor, clothingLocations.get(getLocationOfArmor(armor))) && !forced) {
 				player->sendSystemMessage("You don't have enough pool points to do that!");
 				return false;
 			}
@@ -258,7 +258,7 @@ public:
 			break;
 
 		case TangibleObjectImplementation::SHIELDGENERATOR:
-			locations = PSG;
+			locations = PSG + BELT;
 			break;
 
 		default:
@@ -277,12 +277,26 @@ public:
 			}
 			currentLocation <<= 1;
 		}
-		addEnhancements(item);
-		addEncumbrance(item, forced);
 
-		player->equipItem((TangibleObject*) item);
+		if (locations != 0) {
 
-		return true;
+			item->onEquip(player);
+
+			calculateCurrentEncumbrance();
+
+			player->equipItem((TangibleObject*) item);
+
+			return true;
+		} else
+			return false;
+	}
+
+	int getLocationOfArmor(Armor* armor) {
+		int type = armor->getArmorPiece();
+
+		type = 0x1 << (type);
+
+		return type;
 	}
 
 	bool unequipClothing (Wearable* it) {
@@ -300,8 +314,10 @@ public:
 			return false;
 		}
 
-		removeEnhancements(item);
-		removeEncumbrance(item);
+		it->onUnequip(player);
+
+		calculateCurrentEncumbrance();
+
 		player->unequipItem((TangibleObject*)item);
 
 		if (item->isArmor())
@@ -317,6 +333,24 @@ public:
 		unequipClothing(item);
 	}
 
+	void calculateCurrentEncumbrance() {
+
+		totalHealthEncumbrance = 0;
+		totalActionEncumbrance = 0;
+		totalMindEncumbrance = 0;
+
+		Wearable* item;
+
+		for (int i = 0; i < 15; i++) {
+			item = (Wearable*)clothingLocations.get(i);
+
+			if(item != NULL) {
+				totalHealthEncumbrance += item->getHealthEncumbrance();
+				totalActionEncumbrance += item->getActionEncumbrance();
+				totalMindEncumbrance += item->getMindEncumbrance();
+			}
+		}
+	}
 
 	bool equipWeapon(TangibleObject* item) {
 		if (!checkCertification(item))
@@ -456,7 +490,7 @@ public:
 			break;
 
 		default:
-			locations = 0x1 << (armor->getArmorType() - 1);
+			locations =  getLocationOfArmor(armor);
 			if (locations == HEAD)
 				locations += EYES;
 			break;
@@ -561,72 +595,12 @@ public:
 		return true;
 	}
 
-	void addEnhancements(Wearable* item) {
-		// TODO: CAs need to be added
-		if (!item->isArmor())
-			return;
-
-		Armor* armoritem = (Armor*)item;
-
-		setItemSkillMod(armoritem->getSkillMod0Type(), armoritem->getSkillMod0Value());
-		setItemSkillMod(armoritem->getSkillMod1Type(), armoritem->getSkillMod1Value());
-		setItemSkillMod(armoritem->getSkillMod2Type(), armoritem->getSkillMod2Value());
-
-		setItemSkillMod(armoritem->getSocket0Type(), armoritem->getSocket0Value());
-		setItemSkillMod(armoritem->getSocket1Type(), armoritem->getSocket1Value());
-		setItemSkillMod(armoritem->getSocket2Type(), armoritem->getSocket2Value());
-		setItemSkillMod(armoritem->getSocket3Type(), armoritem->getSocket3Value());
-
-	}
-
-	void removeEnhancements(Wearable* item) {
-		// TODO: CAs need to be added
-		if (!item->isArmor())
-			return;
-
-		Armor* armoritem = (Armor*)item;
-
-		setItemSkillMod(armoritem->getSkillMod0Type(), -armoritem->getSkillMod0Value());
-		setItemSkillMod(armoritem->getSkillMod1Type(), -armoritem->getSkillMod1Value());
-		setItemSkillMod(armoritem->getSkillMod2Type(), -armoritem->getSkillMod2Value());
-
-		setItemSkillMod(armoritem->getSocket0Type(), -armoritem->getSocket0Value());
-		setItemSkillMod(armoritem->getSocket1Type(), -armoritem->getSocket1Value());
-		setItemSkillMod(armoritem->getSocket2Type(), -armoritem->getSocket2Value());
-		setItemSkillMod(armoritem->getSocket3Type(), -armoritem->getSocket3Value());
-	}
-
 	void setItemSkillMod(int type, int value) {
 		if (type == 0)
 			return;
 
 		String enhanceName = getEnhancement(type);
 		player->addSkillModBonus(enhanceName, value, true);
-	}
-
-	void removeEncumbrance(Wearable* item) {
-		if (!item->isArmor())
-			return;
-		Armor* armor = (Armor*)item;
-
-		totalHealthEncumbrance -= armor->getHealthEncumbrance();
-		totalActionEncumbrance -= armor->getActionEncumbrance();
-		totalMindEncumbrance -= armor->getMindEncumbrance();
-
-		player->unsetArmorEncumbrance(armor);
-	}
-
-	void addEncumbrance(Wearable* item, bool forced) {
-		if (!item->isArmor())
-			return;
-
-		Armor* armor = (Armor*)item;
-
-		totalHealthEncumbrance += armor->getHealthEncumbrance();
-		totalActionEncumbrance += armor->getActionEncumbrance();
-		totalMindEncumbrance += armor->getMindEncumbrance();
-
-		player->setArmorEncumbrance(armor, forced);
 	}
 
 	int getHealthEncumbrance() {

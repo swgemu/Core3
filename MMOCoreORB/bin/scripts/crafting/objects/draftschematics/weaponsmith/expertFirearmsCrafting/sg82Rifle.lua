@@ -45,6 +45,7 @@ sg82Rifle = Object:new {
 
    objectName = "SG82 Rifle",
    stfName = "rifle_sg82",
+   stfFile = "weapon_name",
    objectCRC = 722478817,
    groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
 

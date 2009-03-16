@@ -45,6 +45,7 @@ dustcrepe = Object:new {
 
    objectName = "Dustcrepe",
    stfName = "dustcrepe",
+   stfFile = "food_name",
    objectCRC = 451779682,
    groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ dustcrepe = Object:new {
    experimentalMax = "0, 0, 1000, 120, 100, 120",
    experimentalPrecision = "0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=3723091380:objecttemp=dustcrepe:templatetype=food_name:itemmask=65535:",
+   tanoAttributes = "objecttype=8202:objectcrc=3723091380:objecttemp=dustcrepe:templatetype=food_name:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

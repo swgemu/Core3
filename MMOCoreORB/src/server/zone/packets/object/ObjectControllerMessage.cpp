@@ -2328,7 +2328,7 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 	pack->parseUnicode(unkPramString); //?
 
 	ManagedReference<WaypointObject> waypoint = player->getWaypoint(objid);
-	ManagedReference<IntangibleObject> datapadData = (IntangibleObject*) player->getDatapadItem(objid);
+	ManagedReference<SceneObject> datapadData =  player->getDatapadItem(objid);
 	ManagedReference<SceneObject> invObj = player->getInventoryItem(objid);
 	ManagedReference<SceneObject> bankObj = player->getBankItem(objid);
 
@@ -2340,8 +2340,7 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 		TangibleObject* tano = (TangibleObject*) invObj.get();
 
 		if (tano->isEquipped()) {
-			player->sendSystemMessage("You must unequip the item before destroying it.");
-			return;
+			player->unequipItem(tano);
 		}
 
 		if (tano->isContainer()) {
@@ -2397,8 +2396,24 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 	} else if (datapadData != NULL) {
 		player->removeDatapadItem(objid);
 
+		itemManager->deleteDatapadItem(player, datapadData.get(), true);
+
 		BaseMessage* msg = new SceneObjectDestroyMessage(datapadData);
 		player->getClient()->sendMessage(msg);
+
+		SceneObject* linkedItem = datapadData.get()->getObject(0);
+
+		datapadData->finalize();
+
+		if(linkedItem != NULL) {
+
+			if(linkedItem->isNonPlayerCreature() && linkedItem == player->getMount())
+				player->setMount(NULL);
+
+			linkedItem->finalize();
+			msg = new SceneObjectDestroyMessage(linkedItem);
+			player->getClient()->sendMessage(msg);
+		}
 	}
 }
 
@@ -3601,6 +3616,22 @@ void ObjectControllerMessage::parseRequestResourceWeightsBatch(Player* player,
 
 void ObjectControllerMessage::parseRequestCraftingSession(Player* player,
 		Message* packet) {
+
+	if(player->isMounted()) {
+		player->sendSystemMessage("error_message", "survey_on_mount");
+
+		// Start Object Controller **(Failed to start crafting Session************
+		ObjectControllerMessage* objMsg = new ObjectControllerMessage(
+				player->getObjectID(), 0x0B, 0x010C);
+		objMsg->insertInt(0x10F);
+		objMsg->insertInt(0);
+		objMsg->insertByte(0);
+
+		player->sendMessage(objMsg);
+
+		return;
+	}
+
 	uint64 ctSceneObjID = packet->parseLong();
 
 	//Check to see if the correct obj id is in the player's datapad
@@ -3618,9 +3649,17 @@ void ObjectControllerMessage::parseRequestCraftingSession(Player* player,
 
 		} else if (craftingTool->isFinished()) {
 
-			ChatSystemMessage* sysMessage = new ChatSystemMessage("system_msg",
-					"crafting_tool_full");
+			ChatSystemMessage* sysMessage = new ChatSystemMessage("system_msg", "crafting_tool_full");
 			player->sendMessage(sysMessage);
+
+			// Start Object Controller **(Failed to start crafting Session************
+			ObjectControllerMessage* objMsg = new ObjectControllerMessage(
+					player->getObjectID(), 0x0B, 0x010C);
+			objMsg->insertInt(0x10F);
+			objMsg->insertInt(0);
+			objMsg->insertByte(0);
+
+			player->sendMessage(objMsg);
 
 		} else {
 
@@ -3637,15 +3676,12 @@ void ObjectControllerMessage::parseRequestCraftingSession(Player* player,
 	} else {
 		// This case is reached if double clicking on a crafting station
 
-		CraftingStation
-				* craftingStation =
-						(CraftingStation*) player->getZone()->lookupObject(
-								ctSceneObjID);
+		CraftingStation* craftingStation =
+						(CraftingStation*) player->getZone()->lookupObject(ctSceneObjID);
 
 		if (craftingStation != NULL) {
 
-			craftingTool = player->getCraftingTool(
-					craftingStation->getStationType(), false);
+			craftingTool = player->getCraftingTool(craftingStation->getStationType(), false);
 
 			if (craftingTool != NULL) {
 
@@ -3659,8 +3695,7 @@ void ObjectControllerMessage::parseRequestCraftingSession(Player* player,
 
 		} else {
 
-			player->sendSystemMessage(
-					"Something happened that shouldn't have.  Not a tool or a station, contact Kyle");
+			player->sendSystemMessage("Something happened that shouldn't have.  Not a tool or a station, contact Kyle");
 
 		}
 
@@ -3843,24 +3878,41 @@ void ObjectControllerMessage::parseCreatePrototype(Player* player,
 	UnicodeString d;
 	packet->parseUnicode(d);
 
-	String count = d.toString();
+	int counter, practice;
 
-	if(!count.isEmpty())
-		player->createPrototype(count);
+	StringTokenizer tokenizer(d.toString());
+
+	if(tokenizer.hasMoreTokens())
+		counter = tokenizer.getIntToken();
+	else
+		return;
+
+	if(tokenizer.hasMoreTokens())
+		practice = tokenizer.getIntToken();
+	else
+		practice = 1;
+
+	player->createPrototype(counter, practice);
 
 }
 
-void ObjectControllerMessage::parseCreateSchematic(Player* player,
-		Message* packet) {
+void ObjectControllerMessage::parseCreateSchematic(Player* player, Message* packet) {
+
 	packet->shiftOffset(8);
 
 	UnicodeString str;
 	packet->parseUnicode(str);
 
-	String count = str.toString();
+	int counter;
 
-	if(!count.isEmpty())
-		player->createSchematic(count);
+	StringTokenizer tokenizer(str.toString());
+
+	if(tokenizer.hasMoreTokens())
+		counter = tokenizer.getIntToken();
+	else
+		return;
+
+	player->createSchematic(counter);
 }
 
 void ObjectControllerMessage::parseExperimentation(Player* player,
@@ -3871,28 +3923,50 @@ void ObjectControllerMessage::parseExperimentation(Player* player,
 	if (player == NULL)
 		return;
 
-	pack->shiftOffset(12);
+		pack->shiftOffset(12);
 
-	int counter = pack->parseByte();
+		int counter = pack->parseByte();
 
-	int numRowsAttempted = pack->parseInt();
+	if (player->canExperiment()) {
 
-	int rowEffected, pointsAttempted;
-	StringBuffer ss;
+		player->setLastExperimentationAttempt();
 
-	for (int i = 0; i < numRowsAttempted; ++i) {
+		int numRowsAttempted = pack->parseInt();
 
-		rowEffected = pack->parseInt();
-		pointsAttempted = pack->parseInt();
+		int rowEffected, pointsAttempted;
+		StringBuffer ss;
 
-		ss << rowEffected << " " << pointsAttempted << " ";
+		for (int i = 0; i < numRowsAttempted; ++i) {
 
+			rowEffected = pack->parseInt();
+			pointsAttempted = pack->parseInt();
+
+			ss << rowEffected << " " << pointsAttempted << " ";
+		}
+
+		String expString = ss.toString();
+
+		player->handleExperimenting(counter, numRowsAttempted, expString);
+	} else {
+		player->sendSystemMessage("Exploit attempt Denied");
+
+		ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x0113);
+		objMsg->insertInt(0x105);
+
+		objMsg->insertInt(8); // Experimentation Result
+		// 0 = Amazing
+		// 1 = Great
+		// 2 = Good
+		// 3 = Moderate
+		// 4 = A success
+		// 5 = Marginally Successful
+		// 6 = "ok"
+		// 7 = Barely Succeeded
+		// 8 = Critical Failure
+		objMsg->insertByte(counter);
+
+		player->sendMessage(objMsg);
 	}
-
-	String expString = ss.toString();
-
-	player->handleExperimenting(counter, numRowsAttempted, expString);
-
 }
 
 void ObjectControllerMessage::parsePickup(Player* player, Message* pack) {
@@ -3912,6 +3986,35 @@ void ObjectControllerMessage::parseTransferArmor(Player* player, Message* pack) 
 			inventory->moveObjectToTopLevel(player, targetTanoObject);
 
 		player->changeArmor(target, false);
+	}
+}
+
+void ObjectControllerMessage::parseItemDropTrade(Player* player, Message* pack) {
+	uint64 targetPlayerId = pack->parseLong();
+
+	pack->shiftOffset(16);
+
+	uint64 tradeItemId = pack->parseLong();
+
+	ManagedReference<SceneObject> obj = player->getZone()->lookupObject(targetPlayerId);
+	ManagedReference<SceneObject> item = player->getZone()->lookupObject(tradeItemId);
+
+	if(obj.get() == NULL || item.get() == NULL)
+		return;
+
+	Player* sender = (Player*) obj.get();
+	Player* receiver = (Player*) item.get();
+
+	if (sender != NULL && receiver != NULL) {
+
+		sender->setTradeRequestedPlayer(receiver->getObjectID());
+
+		StfParameter* params = new StfParameter();
+		params->addTU(player->getCharacterName().toString());
+
+		receiver->sendSystemMessage("ui_trade", "requested_prose", params);
+
+		delete params;
 	}
 }
 

@@ -45,6 +45,7 @@ scramjet = Object:new {
 
    objectName = "Scramjet",
    stfName = "scramjet",
+   stfFile = "food_name",
    objectCRC = 1617885526,
    groupName = "craftSmugglerSpiceNovice", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ scramjet = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=3992242678:objecttemp=scramjet:templatetype=food_name:itemmask=65535:",
+   tanoAttributes = "objecttype=8202:objectcrc=3992242678:objecttemp=scramjet:templatetype=food_name:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "spice_customization"

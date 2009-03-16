@@ -45,6 +45,7 @@ bofaTreat = Object:new {
 
    objectName = "Bofa Treat",
    stfName = "bofa_treat",
+   stfFile = "food_name",
    objectCRC = 2207249955,
    groupName = "craftArtisanNewbieGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ bofaTreat = Object:new {
    experimentalMax = "0, 0, 1000, 120, 120, 100, 120",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=2010692823:objecttemp=bofa_treat:templatetype=food_name:itemmask=65535:",
+   tanoAttributes = "objecttype=8202:objectcrc=2010692823:objecttemp=bofa_treat:templatetype=food_name:itemmask=65535:customattributes=buffCRC=2339561171;downerCRC=0;buffType=1;numAttributes=1;mods=;buffs=health=50,;heals=;quantity=10;filling=9;duration=3000;:",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

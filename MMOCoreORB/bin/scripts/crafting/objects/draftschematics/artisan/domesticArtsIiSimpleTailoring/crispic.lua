@@ -45,6 +45,7 @@ crispic = Object:new {
 
    objectName = "Crispic",
    stfName = "crispic",
+   stfFile = "food_name",
    objectCRC = 654822514,
    groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ crispic = Object:new {
    experimentalMax = "0, 0, 1000, 120, 120, 100, 120",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=1201766714:objecttemp=crispic:templatetype=food_name:itemmask=65535:",
+   tanoAttributes = "objecttype=8202:objectcrc=1201766714:objecttemp=crispic:templatetype=food_name:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

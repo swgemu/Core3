@@ -45,6 +45,7 @@ dh17Carbine = Object:new {
 
    objectName = "DH17 Carbine",
    stfName = "carbine_dh17",
+   stfFile = "weapon_name",
    objectCRC = 1774809121,
    groupName = "craftWeaponRangedGroupB", -- Group schematic is awarded in (See skills table)
 

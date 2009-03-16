@@ -52,6 +52,7 @@ which carries forward this exception.
 #include "PlayerMap.h"
 
 #include "../../ZoneProcessServerImplementation.h"
+#include "../../objects/manufacture/ManufactureSchematic.h"
 
 #include "PlayerManager.h"
 
@@ -116,7 +117,8 @@ public:
 	void updatePlayerBaseHAMToDatabase(Player* player);
 
 	void handleAbortTradeMessage(Player* player, bool doLock = true);
-	void handleAddItemMessage(Player* player, uint64 itemID);
+	void handleAddItemToTradeWindow(Player* player, uint64 itemID);
+	bool addItemToTrade(Player* player, Player* receiver, SceneObject* item, SceneObject* destinationContainer);
 	void handleGiveMoneyMessage(Player* player, uint32 value);
 	void handleAcceptTransactionMessage(Player* player);
 	void handleUnAcceptTransactionMessage(Player* player);
@@ -132,7 +134,7 @@ public:
 	void updateGuildStatus(Player* player);
 
 	void moveItem(Player* sender, Player* receiver, TangibleObject* item);
-	void moveItem(Player* sender, Player* receiver, IntangibleObject* item);
+	void moveItem(Player* sender, Player* receiver, SceneObject* item);
 
 	// setters
 	inline void setGuildManager(GuildManager* gmanager) {

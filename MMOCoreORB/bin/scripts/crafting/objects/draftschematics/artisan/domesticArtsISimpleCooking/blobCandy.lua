@@ -45,6 +45,7 @@ blobCandy = Object:new {
 
    objectName = "Blob Candy",
    stfName = "blob_candy",
+   stfFile = "food_name",
    objectCRC = 4218540665,
    groupName = "craftArtisanDomesticGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ blobCandy = Object:new {
    experimentalMax = "0, 0, 1000, 120, 120, 100, 120",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=254187661:objecttemp=blob_candy:templatetype=food_name:itemmask=65535:",
+   tanoAttributes = "objecttype=8202:objectcrc=254187661:objecttemp=blob_candy:templatetype=food_name:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

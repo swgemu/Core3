@@ -45,6 +45,7 @@ fiberplastPanel = Object:new {
 
    objectName = "Fiberplast Panel",
    stfName = "fiberplast_panel",
+   stfFile = "craft_clothing_ingredients_n",
    objectCRC = 656345238,
    groupName = "craftArtisanDomesticGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ fiberplastPanel = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=262144:objectcrc=967991397:objecttemp=fiberplast_panel:templatetype=craft_clothing_ingredients_n:itemmask=65535:",
+   tanoAttributes = "objecttype=262147:objectcrc=967991397:objecttemp=fiberplast_panel:templatetype=craft_clothing_ingredients_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

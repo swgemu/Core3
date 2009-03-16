@@ -281,7 +281,7 @@ void LootManager::createLoot(Creature* creature, Player* player) {
 }
 
 
-void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
+/*void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 	Weapon* item = NULL;
 
 	String certification = "";
@@ -1009,9 +1009,13 @@ void LootManager::createJunkLoot(Creature* creature) {
 }
 
 void LootManager::createAttachmentLoot(Creature* creature, int creatureLevel) {
-	Attachment* item = new Attachment(creature->getNewItemID(), AttachmentImplementation::ARMOR);
 
-	item->setSkillMods(creatureLevel / 2);
+	// 1 = Clothing, 2 = Armor
+	int type = System::random(1) + 1;
+
+	Attachment* item = new Attachment(creature->getNewItemID(), type);
+
+	item->generateSkillMods(creatureLevel / 2);
 
 	creature->addLootItem(item);
 }
@@ -1022,4 +1026,4 @@ void LootManager::createPowerupLoot(Creature* creature, int creatureLevel) {
 	item->setPowerupStats(creatureLevel);
 
 	creature->addLootItem(item);
-}
+} */

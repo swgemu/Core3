@@ -45,6 +45,7 @@ ee3Carbine = Object:new {
 
    objectName = "EE3 Carbine",
    stfName = "carbine_ee3",
+   stfFile = "weapon_name",
    objectCRC = 1756442314,
    groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
 

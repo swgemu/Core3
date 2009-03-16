@@ -188,6 +188,7 @@ public:
 	void getSchematicsForTool(Player* player, float workingStationComplexity);
 
 	void setWorkingTano(TangibleObject * tano);
+
 	void setWorkingDraftSchematic(DraftSchematic * draftSchematic);
 
 	void resetSlots();
@@ -247,6 +248,10 @@ public:
 	inline void clearIngredientInSlot(int slot){
 
 		craftingSlots->clearIngredientInSlot(slot);
+	}
+
+	void clearWorkingTano() {
+		currentTano = NULL;
 	}
 
 	inline void addTempIngredient(TangibleObject* tano){

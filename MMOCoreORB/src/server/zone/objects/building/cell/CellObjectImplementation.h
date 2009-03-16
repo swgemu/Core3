@@ -54,7 +54,7 @@ which carries forward this exception.
 #include "../../player/PlayerImplementation.h"
 #include "../../../Zone.h"
 
-#include "../../tangible/ItemAttributes.h"
+#include "../../scene/ItemAttributes.h"
 
 #include "../../../ZoneClientSessionImplementation.h"
 

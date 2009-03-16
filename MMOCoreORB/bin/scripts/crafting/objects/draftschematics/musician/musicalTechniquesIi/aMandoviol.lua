@@ -45,6 +45,7 @@ aMandoviol = Object:new {
 
    objectName = "a Mandoviol",
    stfName = "obj_mandoviol",
+   stfFile = "obj_n",
    objectCRC = 1835965889,
    groupName = "craftInstrumentGroupD", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ aMandoviol = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8204:objectcrc=1784205003:objecttemp=obj_mandoviol:templatetype=obj_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8204:objectcrc=1784205003:objecttemp=obj_mandoviol:templatetype=obj_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "instrument_customization"

@@ -44,8 +44,6 @@ which carries forward this exception.
 
 include "engine/service/Message";
 
-include "../../packets/scene/AttributeListMessage";
-
 import "../../Zone";
 
 import "../scene/SceneObject";
@@ -67,8 +65,6 @@ interface TangibleObject implements SceneObject {
 
 	TangibleObject(CreatureObject creature, unsigned int tempCRC, const UnicodeString n, const String tempname, int tp = 0);
 
-	void generateAttributes(Player player);
-
 	void updateCraftingValues(DraftSchematic draftSchematic);
 
 	void close(Player player);
@@ -83,11 +79,7 @@ interface TangibleObject implements SceneObject {
 
 	void setObjectName(Player player);
 
-	void parseItemAttributes();
-
 	// getters
-	boolean isPersistent();
-	boolean isUpdated();
 
 	unsigned int getDefenderUpdateCounter();
 	unsigned int getNewDefenderUpdateCounter(int cnt);
@@ -166,8 +158,6 @@ interface TangibleObject implements SceneObject {
 	void setCraftersName(String n);
 	void setCraftedSerial(String s);
 
-	void getCustomizationString(String appearance);
-
 	void setPlayerUseMask(unsigned int mask);
 	unsigned int getPlayerUseMask();
 
@@ -180,7 +170,7 @@ interface TangibleObject implements SceneObject {
 
 	int getObjectCount();
 
-	int getConditionDamage();
+	float getConditionDamage();
 	int getMaxCondition();
 	int getCondition();
 
@@ -188,11 +178,6 @@ interface TangibleObject implements SceneObject {
 
 	String getCraftersName();
 	String getCraftedSerial();
-
-	void setAttributes(String attributeString);
-	String getAttributes();
-
-	void addAttributes(AttributeListMessage alm);
 
 	String getMisoAsocKey();
 
@@ -202,16 +187,7 @@ interface TangibleObject implements SceneObject {
 
 	void setObjectSubType(const int type);
 
-	void setPersistent(boolean pers);
-
-	void setUpdated(boolean upd);
-
 	void setConditionDamage(int damage);
-
-	void setCustomizationString(String cust);
-
-	void setCustomizationVariable(const String type, unsigned int value);
-	void setCustomizationVariable(unsigned char type, unsigned int value);
 
 	void setObjectCount(const int count);
 
@@ -224,14 +200,10 @@ interface TangibleObject implements SceneObject {
 	//Event Handlers
 	void onBroken();
 	void onSlicingFailure(Player slicer);
+	void onEquip(Player player);
+    void onUnequip(Player player);
 
 	//Actions
 	void decay(float decayRate);
 	void slice(Player slicer);
-	
-	//Datapad
-	void setItnocrc(unsigned int itnocrc);
-	unsigned int getItnocrc();
-	IntangibleObject getITNO();
-	void addToDatapad(Player player);
 }

@@ -45,6 +45,7 @@ cdefRifle = Object:new {
 
    objectName = "CDEF Rifle",
    stfName = "rifle_cdef",
+   stfFile = "weapon_name",
    objectCRC = 3598018363,
    groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
 

@@ -45,6 +45,7 @@ precisionLaserKnife = Object:new {
 
    objectName = "Precision Laser Knife",
    stfName = "laser_knife",
+   stfFile = "item_n",
    objectCRC = 1575116633,
    groupName = "craftSmugglerToolsA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ precisionLaserKnife = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8211:objectcrc=3905355100:objecttemp=laser_knife:templatetype=item_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8211:objectcrc=3905355100:objecttemp=laser_knife:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "spice_customization"

@@ -45,6 +45,7 @@ tanglePistol = Object:new {
 
    objectName = "Tangle Pistol",
    stfName = "pistol_tangle",
+   stfFile = "weapon_name",
    objectCRC = 306573674,
    groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
 

@@ -45,6 +45,7 @@ noiseMaker = Object:new {
 
    objectName = "Noise Maker",
    stfName = "trap_noise_maker",
+   stfFile = "item_n",
    objectCRC = 4127661828,
    groupName = "craftScoutTrapGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ noiseMaker = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8212:objectcrc=3133223247:objecttemp=trap_noise_maker:templatetype=item_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8212:objectcrc=3133223247:objecttemp=trap_noise_maker:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

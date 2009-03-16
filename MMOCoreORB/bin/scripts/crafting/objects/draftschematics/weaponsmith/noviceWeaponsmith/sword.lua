@@ -45,6 +45,7 @@ sword = Object:new {
 
    objectName = "Sword",
    stfName = "sword_01",
+   stfFile = "weapon_name",
    objectCRC = 3572901439,
    groupName = "craftWeaponMeleeGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -73,7 +74,7 @@ sword = Object:new {
 
    experimentalSubGroupTitles = "null, null, mindamage, maxdamage, attackspeed, woundchance, hitpoints, zerorangemod, maxrangemod, midrange, midrangemod, maxrange, attackhealthcost, attackactioncost, attackmindcost",
    experimentalMin = "0, 0, 14, 63, 4.6, 9, 750, 5, 5, 3, 5, 4, 27, 29, 29",
-   experimentalMax = "0, 0, 26, 117, 3.2, 18, 1500, 15, 15, 3, 15, 1482184792, 15, 15, 15",
+   experimentalMax = "0, 0, 26, 117, 3.2, 18, 1500, 15, 15, 3, 15, 4, 15, 15, 15",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
    tanoAttributes = "objecttype=131079:objectcrc=2166507187:objecttemp=sword_01:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=1;:",

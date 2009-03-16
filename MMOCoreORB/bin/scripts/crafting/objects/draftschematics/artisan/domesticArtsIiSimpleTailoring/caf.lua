@@ -45,6 +45,7 @@ caf = Object:new {
 
    objectName = "Caf",
    stfName = "caf",
+   stfFile = "food_name",
    objectCRC = 3676820545,
    groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ caf = Object:new {
    experimentalMax = "0, 0, 1000, 0, 120, 120, 100, 120, 1",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777223:objectcrc=2701899786:objecttemp=caf:templatetype=food_name:itemmask=65535:",
+   tanoAttributes = "objecttype=16777223:objectcrc=2701899786:objecttemp=caf:templatetype=food_name:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

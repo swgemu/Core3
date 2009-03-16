@@ -981,106 +981,57 @@ void PlayerManagerImplementation::handleAbortTradeMessage(Player* player, bool d
 	}
 }
 
-void PlayerManagerImplementation::handleAddItemMessage(Player* player, uint64 itemID) {
+void PlayerManagerImplementation::handleAddItemToTradeWindow(Player* player, uint64 itemID) {
 	try {
 		player->wlock();
 
-		SceneObject* object = player->getInventoryItem(itemID);
+		// First Verify Target is Player
+		uint64 targID = player->getTradeRequestedPlayer();
+		SceneObject* obj = server->getZoneServer()->getObject(targID);
+		Player* receiver = (Player*)obj;
 
-		if (object != NULL) {
-			if (object->isTangible()) {
-				TangibleObject* item = (TangibleObject*)object;
+		if(receiver == NULL) {
+			player->unlock();
+			return;
+		}
 
-				if (item->isEquipped()) {
-					handleAbortTradeMessage(player, false);
-					player->sendSystemMessage("container_error_message", "container20"); //You can't trade equipped items!
+		// Then try to get inventory item
+		SceneObject* inventoryObject = player->getInventoryItem(itemID);
+		SceneObject* datapadObject = player->getDatapadItem(itemID);
 
-					player->unlock();
-					return;
-				}
+		if (inventoryObject == NULL && datapadObject == NULL) {
+			player->unlock();
+			return;
+		}
 
-				uint64 targID = player->getTradeRequestedPlayer();
-				SceneObject* obj = server->getZoneServer()->getObject(targID);
+		SceneObject* object = NULL;
+		SceneObject* destinationContainer = NULL;
 
-				if (obj != NULL && obj->isPlayer()) {
-					Player* receiver = (Player*)obj;
+		if(datapadObject != NULL) {
+			object = datapadObject;
+			destinationContainer = receiver->getDatapad();
+		} else if(inventoryObject != NULL) {
+			object = inventoryObject;
+			destinationContainer = receiver->getInventory();
+		} else {
+			return;
+		}
 
-					try {
-						receiver->wlock(player);
+		bool canTrade = addItemToTrade(player, receiver, object, destinationContainer);
 
-						Inventory* recvInventory = receiver->getInventory();
+		if (canTrade) {
+			player->addTradeItem(object);
 
-						if (recvInventory->isFull()) {
-							receiver->unlock();
+			object->sendTo(receiver);
 
-							handleAbortTradeMessage(player, false);
+			/*if(object->isTangible())
+				((TangibleObject*)object)->sendTo(receiver);
 
-							player->sendSystemMessage("Your targets inventory is full");
-							receiver->sendSystemMessage("You dont have enough space in your inventory");
+			if(object->isManufactureSchematic())
+				((ManufactureSchematic*)object)->sendTo(receiver);*/
 
-							player->unlock();
-							return;
-						}
-
-						receiver->unlock();
-
-						player->addTradeItem(item);
-
-						item->sendTo(receiver);
-
-						AddItemMessage* msg = new AddItemMessage(itemID);
-						receiver->sendMessage(msg);
-					} catch (...) {
-						receiver->error("unreported exception caught in PlayerManagerImplementation::handleAddItemMessage");
-						receiver->unlock();
-					}
-				}
-			}
-		} else{
-			SceneObject* object = player->getDatapadItem(itemID);
-
-			if (object != NULL){
-				if (object->isIntangible()){
-					IntangibleObject* item = (IntangibleObject*)object;
-
-					uint64 targID = player->getTradeRequestedPlayer();
-					SceneObject* obj = server->getZoneServer()->getObject(targID);
-
-					if (obj != NULL && obj->isPlayer()) {
-						Player* receiver = (Player*)obj;
-
-						try {
-							receiver->wlock(player);
-
-							Datapad* recvDatapad = receiver->getDatapad();
-
-							/*if (recvDatapad->isFull()) {
-								receiver->unlock();
-
-								handleAbortTradeMessage(player, false);
-
-								player->sendSystemMessage("Your targets inventory is full");
-								receiver->sendSystemMessage("You dont have enough space in your inventory");
-
-								player->unlock();
-								return;
-							}*/
-
-							receiver->unlock();
-
-							player->addTradeItem(item);
-
-							item->sendTo(receiver);
-
-							AddItemMessage* msg = new AddItemMessage(itemID);
-							receiver->sendMessage(msg);
-						} catch (...) {
-							receiver->error("unreported exception caught in PlayerManagerImplementation::handleAddItemMessage");
-							receiver->unlock();
-						}
-					}
-				}
-			}
+			AddItemMessage* msg = new AddItemMessage(itemID);
+			receiver->sendMessage(msg);
 		}
 
 		player->unlock();
@@ -1088,6 +1039,40 @@ void PlayerManagerImplementation::handleAddItemMessage(Player* player, uint64 it
 		player->unlock();
 		player->error("Unreported exception caught in PlayerManagerImplementation::handleAddItemMessage(Player* player, uint64 itemID)");
 	}
+}
+
+bool PlayerManagerImplementation::addItemToTrade(Player* player, Player* receiver, SceneObject* item, SceneObject* destinationContainer) {
+
+	if (item->isTangible() && ((TangibleObject*)item)->isEquipped()) {
+		handleAbortTradeMessage(player, false);
+		player->sendSystemMessage("container_error_message", "container20"); //You can't trade equipped items!
+		return false;
+	}
+
+	int itemsOfTradeType = 1;
+
+	for(int i = 0; i < player->getTradeSize(); ++i) {
+		SceneObject* tradeObject = player->getTradeItem(i);
+
+		if((item->isTangible() && tradeObject->isTangible()) ||
+				(!item->isTangible() && !tradeObject->isTangible()))
+			itemsOfTradeType++;
+	}
+
+	try {
+
+		if ((destinationContainer->getContainerObjectsSize() + itemsOfTradeType) >= destinationContainer->getContainerVolumeLimit()) {
+
+			handleAbortTradeMessage(player, false);
+
+			return false;
+		}
+
+	} catch (...) {
+		receiver->error("unreported exception caught in PlayerManagerImplementation::handleAddItemMessage");
+		receiver->unlock();
+	}
+	return true;
 }
 
 void PlayerManagerImplementation::handleGiveMoneyMessage(Player* player, uint32 value) {
@@ -1182,23 +1167,27 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(Player* player) {
 				if (receiver->hasVerifiedTrade()) {
 					for (int i = 0; i < player->getTradeSize(); ++i) {
 						ManagedReference<SceneObject> item = player->getTradeItem(i);
-						if (item->isTangible()){
-							TangibleObject* tano = (TangibleObject*) item.get();
-							moveItem(player, receiver, tano);
-						} else {
-							IntangibleObject* itno = (IntangibleObject*) item.get();
-							moveItem(player, receiver, itno);
+						if (item != NULL) {
+							if (item->isTangible()) {
+								TangibleObject* tano = (TangibleObject*) item.get();
+								moveItem(player, receiver, tano);
+							} else {
+								SceneObject* object = (SceneObject*) item.get();
+								moveItem(player, receiver, object);
+							}
 						}
 					}
 
 					for (int i = 0; i < receiver->getTradeSize(); ++i) {
 						ManagedReference<SceneObject> item = receiver->getTradeItem(i);
-						if (item->isTangible()){
-							TangibleObject* tano = (TangibleObject*) item.get();
-							moveItem(player, receiver, tano);
-						} else {
-							IntangibleObject* itno = (IntangibleObject*) item.get();
-							moveItem(player, receiver, itno);
+						if (item != NULL) {
+							if (item->isTangible()) {
+								TangibleObject* tano = (TangibleObject*) item.get();
+								moveItem(receiver, player, tano);
+							} else {
+								SceneObject* object = (SceneObject*) item.get();
+								moveItem(receiver, player, object);
+							}
 						}
 					}
 
@@ -1254,18 +1243,12 @@ void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, Tan
 	Inventory* recvInventory = receiver->getInventory();
 
 	if (recvInventory->isFull()) {
-		sender->sendSystemMessage("Your targets inventory is full");
-		receiver->sendSystemMessage("You don't have enough space in your inventory");
-
 		return;
 	}
 
 	ItemManager* itemManager = server->getItemManager();
 
 	if (item->isInstrument() && sender->isPlayingMusic()) {
-		receiver->sendSystemMessage("Your target can't do this right now");
-		sender->sendSystemMessage("You can't do this while playing music");
-
 		return;
 	}
 
@@ -1279,7 +1262,7 @@ void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, Tan
 
 	if (item->isPersistent()) {
 		item->setUpdated(true);
-		itemManager->savePlayerItem(receiver, item);
+		//itemManager->savePlayerItem(receiver, item);
 	}
 	/*
 	StringBuffer playertxt;
@@ -1292,63 +1275,23 @@ void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, Tan
 	target->sendSystemMessage(targettxt.toString());*/
 }
 
-void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, IntangibleObject* item) {
+void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, SceneObject* item) {
 	// Pre: both players locked
 	Datapad* recvDatapad = receiver->getDatapad();
 
-	/*if (recvDatapad->isFull()) {
-		sender->sendSystemMessage("Your targets datapad is full");
-		receiver->sendSystemMessage("You don't have enough space in your datapad");
-
+	if (recvDatapad->isContainerFull()) {
 		return;
-	}*/
-
-	ItemManager* itemManager = server->getItemManager();
-
-	SceneObject* scno = item->getWorldObject();
-
-	if (scno != NULL){
-		if (scno->isNonPlayerCreature()){
-			Creature* creature = (Creature*) scno;
-			if (creature->isMount()){
-				MountCreature* mount = (MountCreature*) scno;
-
-				//if (sender->isMounted() || sender->getMount() != NULL) { getMount() if they have it out but not riding it
-				if (sender->isMounted()){
-					receiver->sendSystemMessage("Your target can't do this right now");
-					sender->sendSystemMessage("You can't trade mounts while mounted");
-
-					return;
-				} else{
-					mount->setLinkedCreature(receiver);
-					UpdateContainmentMessage* ucm = new UpdateContainmentMessage(mount, recvDatapad, 0xFFFFFFFF);
-					receiver->sendMessage(ucm);
-				}
-			}
-		}
 	}
 
 	//item->setEquipped(false);
 	sender->removeDatapadItem(item->getObjectID());
-
 	item->sendDestroyTo(sender);
 
-	receiver->addDatapadItem((SceneObject*) item);
+	receiver->addDatapadItem(item);
 	item->sendTo(receiver);
 
-	//if (item->isPersistent()) {
-		//item->setUpdated(true);?
-		itemManager->savePlayerDatapadItem(receiver, item);
-	//}
-	/*
-	StringBuffer playertxt;
-	StringBuffer targettxt;
-
-	playertxt << "You gave a " << item->getName().toCharArray() << " to " << target->getFirstName() << ".";
-	targettxt << getFirstName() << " gave you a " << item->getName().toCharArray() << ".";
-
-	sendSystemMessage(playertxt.toString());
-	target->sendSystemMessage(targettxt.toString());*/
+	if(item->isPersistent())
+		item->setUpdated(true);
 }
 
 void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo) {

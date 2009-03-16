@@ -19,6 +19,8 @@ class IntangibleObject;
 
 class SceneObject;
 
+class ManufactureSchematic;
+
 class Weapon;
 
 class Armor;
@@ -47,6 +49,8 @@ public:
 
 	void unloadPlayerItems(Player* player);
 
+	void unloadDatapadItems(Player* player);
+
 	void createPlayerItem(Player* player, TangibleObject* item);
 
 	TangibleObject* clonePlayerObjectTemplate(unsigned long long objectid, TangibleObject* templ);
@@ -55,9 +59,11 @@ public:
 
 	void savePlayerItem(Player* player, TangibleObject* item);
 
-	void savePlayerDatapadItem(Player* player, IntangibleObject* itno);
+	void saveDatapadItem(Player* player, ManufactureSchematic* schematic);
 
 	void deletePlayerItem(Player* player, TangibleObject* item, bool notify);
+
+	void deleteDatapadItem(Player* player, SceneObject* item, bool notify);
 
 	void transferContainerItem(Player* player, TangibleObject* item, unsigned long long destinationID);
 
@@ -115,6 +121,8 @@ public:
 
 	void unloadPlayerItems(Player* player);
 
+	void unloadDatapadItems(Player* player);
+
 	void createPlayerItem(Player* player, TangibleObject* item);
 
 	TangibleObject* clonePlayerObjectTemplate(unsigned long long objectid, TangibleObject* templ);
@@ -123,9 +131,11 @@ public:
 
 	void savePlayerItem(Player* player, TangibleObject* item);
 
-	void savePlayerDatapadItem(Player* player, IntangibleObject* itno);
+	void saveDatapadItem(Player* player, ManufactureSchematic* schematic);
 
 	void deletePlayerItem(Player* player, TangibleObject* item, bool notify);
+
+	void deleteDatapadItem(Player* player, SceneObject* item, bool notify);
 
 	void transferContainerItem(Player* player, TangibleObject* item, unsigned long long destinationID);
 

@@ -45,6 +45,7 @@ republicBlaster = Object:new {
 
    objectName = "Republic Blaster",
    stfName = "pistol_republic_blaster",
+   stfFile = "weapon_name",
    objectCRC = 3999110437,
    groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
 

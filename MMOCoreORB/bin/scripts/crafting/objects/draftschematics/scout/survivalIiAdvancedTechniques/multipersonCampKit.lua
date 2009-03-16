@@ -45,6 +45,7 @@ multipersonCampKit = Object:new {
 
    objectName = "Multiperson Camp Kit",
    stfName = "camp_multi",
+   stfFile = "item_n",
    objectCRC = 3178673319,
    groupName = "craftScoutCampGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ multipersonCampKit = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32772:objectcrc=1695464329:objecttemp=camp_multi:templatetype=item_n:itemmask=65535:",
+   tanoAttributes = "objecttype=32772:objectcrc=1695464329:objecttemp=camp_multi:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

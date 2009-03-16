@@ -45,6 +45,7 @@ jaar = Object:new {
 
    objectName = "Jaar",
    stfName = "jaar",
+   stfFile = "food_name",
    objectCRC = 4135578942,
    groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ jaar = Object:new {
    experimentalMax = "0, 0, 1000, 0, 120, 100, 120",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777223:objectcrc=355298575:objecttemp=jaar:templatetype=food_name:itemmask=65535:",
+   tanoAttributes = "objecttype=16777223:objectcrc=355298575:objecttemp=jaar:templatetype=food_name:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

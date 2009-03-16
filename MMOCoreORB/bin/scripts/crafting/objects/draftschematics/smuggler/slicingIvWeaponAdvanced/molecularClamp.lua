@@ -45,6 +45,7 @@ molecularClamp = Object:new {
 
    objectName = "Molecular Clamp",
    stfName = "molecular_clamp",
+   stfFile = "item_n",
    objectCRC = 2888384407,
    groupName = "craftSmugglerToolsC", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ molecularClamp = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8211:objectcrc=2663745100:objecttemp=molecular_clamp:templatetype=item_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8211:objectcrc=2663745100:objecttemp=molecular_clamp:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "spice_customization"

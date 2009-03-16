@@ -45,6 +45,7 @@ shortsleeveJacket = Object:new {
 
    objectName = "Shortsleeve Jacket",
    stfName = "jacket_s02",
+   stfFile = "wearables_name",
    objectCRC = 2332919576,
    groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ shortsleeveJacket = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777227:objectcrc=1288064520:objecttemp=jacket_s02:templatetype=wearables_name:itemmask=62975:",
+   tanoAttributes = "objecttype=:objectcrc=1288064520:objecttemp=jacket_s02:templatetype=wearables_name:itemmask=62975::",
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "180",
    customizationSkill = "clothing_customization"

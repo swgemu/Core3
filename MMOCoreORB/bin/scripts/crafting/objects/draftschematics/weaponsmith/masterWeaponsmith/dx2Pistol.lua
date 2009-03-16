@@ -45,6 +45,7 @@ dx2Pistol = Object:new {
 
    objectName = "DX2 Pistol",
    stfName = "pistol_dx2",
+   stfFile = "weapon_name",
    objectCRC = 343860113,
    groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
 

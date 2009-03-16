@@ -45,6 +45,7 @@ starshipCraftingTool = Object:new {
 
    objectName = "Starship Crafting Tool",
    stfName = "space_tool_name",
+   stfFile = "crafting",
    objectCRC = 245803278,
    groupName = "craftArtisanToolGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ starshipCraftingTool = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32769:objectcrc=2903391664:objecttemp=space_tool_name:templatetype=crafting:itemmask=65535:",
+   tanoAttributes = "objecttype=32769:objectcrc=2903391664:objecttemp=space_tool_name:templatetype=crafting:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -45,6 +45,7 @@ stunBaton = Object:new {
 
    objectName = "Stun Baton",
    stfName = "baton_stun",
+   stfFile = "weapon_name",
    objectCRC = 366533914,
    groupName = "craftWeaponMeleeGroupE", -- Group schematic is awarded in (See skills table)
 

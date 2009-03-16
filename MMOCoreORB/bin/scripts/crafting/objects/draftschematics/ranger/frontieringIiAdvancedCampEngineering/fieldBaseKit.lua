@@ -45,6 +45,7 @@ fieldBaseKit = Object:new {
 
    objectName = "Field Base Kit",
    stfName = "camp_elite",
+   stfFile = "item_n",
    objectCRC = 102187210,
    groupName = "craftRangerCampGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ fieldBaseKit = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32772:objectcrc=3731836900:objecttemp=camp_elite:templatetype=item_n:itemmask=65535:",
+   tanoAttributes = "objecttype=32772:objectcrc=3731836900:objecttemp=camp_elite:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

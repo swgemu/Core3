@@ -992,12 +992,12 @@ void CombatManager::applyWounds(CreatureObject* attacker, CreatureObject* target
 		if (target->isPlayer())
 			armor = ((Player*)target)->getPlayerArmor(location);
 		if (armor != NULL) {
-			armor->setConditionDamage(armor->getConditionDamage() + 1);
+			armor->setConditionDamage(int(armor->getConditionDamage() + 1));
 			armor->setUpdated(true);
 		}
 
 		if (weapon != NULL && System::random(10) == 1) {
-			weapon->setConditionDamage(weapon->getConditionDamage() + 1);
+			weapon->setConditionDamage(int(weapon->getConditionDamage() + 1));
 			weapon->setUpdated(true);
 		}
 	}

@@ -45,6 +45,7 @@ longVibroAxe = Object:new {
 
    objectName = "Long Vibro Axe",
    stfName = "lance_vibro_axe",
+   stfFile = "weapon_name",
    objectCRC = 1580001250,
    groupName = "craftWeaponMeleeGroupF", -- Group schematic is awarded in (See skills table)
 

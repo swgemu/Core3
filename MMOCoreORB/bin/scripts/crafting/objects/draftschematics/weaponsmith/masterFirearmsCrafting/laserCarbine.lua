@@ -45,6 +45,7 @@ laserCarbine = Object:new {
 
    objectName = "Laser Carbine",
    stfName = "carbine_laser",
+   stfFile = "weapon_name",
    objectCRC = 638676086,
    groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
 

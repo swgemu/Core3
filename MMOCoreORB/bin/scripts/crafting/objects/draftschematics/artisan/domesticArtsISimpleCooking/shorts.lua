@@ -45,6 +45,7 @@ shorts = Object:new {
 
    objectName = "Shorts",
    stfName = "pants_s17",
+   stfFile = "wearables_name",
    objectCRC = 2079974883,
    groupName = "craftArtisanDomesticGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ shorts = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777228:objectcrc=2193150091:objecttemp=clothing_pants_shorts:templatetype=craft_clothing_ingredients_n:itemmask=62974:",
+   tanoAttributes = "objecttype=16777228:objectcrc=2193150091:objecttemp=clothing_pants_shorts:templatetype=craft_clothing_ingredients_n:itemmask=62974::",
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "136",
    customizationSkill = "clothing_customization"

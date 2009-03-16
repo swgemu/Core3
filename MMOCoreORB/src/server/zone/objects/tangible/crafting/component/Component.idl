@@ -62,9 +62,6 @@ interface Component implements TangibleObject {
 	Component(CreatureObject creature, unsigned int tempCRC, const UnicodeString n, const String tempn) {
 		super(creature, tempCRC, n, tempn, int tp);
 	}
-	Component(Component component, unsigned long oid) {
-		super(oid, int tp);
-	}
  
 	void sendTo(Player player, boolean doClose = true);
 	void generateAttributes(Player player);
@@ -73,7 +70,6 @@ interface Component implements TangibleObject {
  
 	int useObject(Player player);
 
-	Component cloneComponent(Component component, unsigned long oid);
 	float getAttributeValue(String attributeName);
 	int getAttributePrecision(String attributeName);
 	String getAttributeTitle(String attributeName);

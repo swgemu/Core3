@@ -45,6 +45,7 @@ twohandedAxe = Object:new {
 
    objectName = "Two-handed Axe",
    stfName = "sword_2h_axe",
+   stfFile = "weapon_name",
    objectCRC = 597539800,
    groupName = "craftWeaponMeleeGroupB", -- Group schematic is awarded in (See skills table)
 

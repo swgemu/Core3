@@ -45,6 +45,7 @@ mineralSurveyDevice = Object:new {
 
    objectName = "Mineral Survey Device",
    stfName = "survey_tool_mineral",
+   stfFile = "item_n",
    objectCRC = 1449938755,
    groupName = "craftArtisanSurveyGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ mineralSurveyDevice = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32770:objectcrc=2862265132:objecttemp=survey_tool_mineral:templatetype=item_n:itemmask=65535:",
+   tanoAttributes = "objecttype=32770:objectcrc=2862265132:objecttemp=survey_tool_mineral:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

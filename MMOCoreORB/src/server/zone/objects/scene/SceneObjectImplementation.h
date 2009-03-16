@@ -59,6 +59,10 @@ which carries forward this exception.
 
 #include "../../Zone.h"
 
+#include "ItemAttributes.h"
+
+#include "CustomizationVariables.h"
+
 #include "ContainerObject.h"
 
 #include "DamageDone.h"
@@ -71,6 +75,7 @@ class GroupObject;
 class ZoneProcessServerImplementation;
 
 class ObjectMenuResponse;
+class AttributeListMessage;
 
 class SceneObjectImplementation : public SceneObjectServant, public QuadTreeEntry, public ContainerObject, public Logger {
 
@@ -117,8 +122,16 @@ protected:
 
 	int zoneID;
 
+	String attributeString;
+
+	CustomizationVariables customizationVariables;
+
+	ItemAttributes* itemAttributes;
+
 	uint32 movementCounter;
 	bool moving;
+
+	bool persistent, updated, deleted;
 
 	float directionX;
 	float directionZ;
@@ -264,6 +277,8 @@ public:
 	}
 
 	virtual void generateAttributes(SceneObject* obj);
+	virtual void addAttributes(AttributeListMessage* alm);
+	virtual void parseItemAttributes();
 
 	void randomizePosition(float radius);
 
@@ -296,6 +311,18 @@ public:
 
 	inline void increaseMovementCounter() {
 		movementCounter++;
+	}
+
+	inline void setCustomizationString(String& cust) {
+		customizationVariables = cust;
+	}
+
+	inline void setCustomizationVariable(uint8 type, uint16 value) {
+		customizationVariables.setVariable(type, value);
+	}
+
+	inline void setCustomizationVariable(const String type, uint8 value) {
+		customizationVariables.setVariable(type, value);
 	}
 
 	inline void setNorthDirection() {
@@ -360,6 +387,19 @@ public:
 
 		precisionDirectionAngle = angle;
 		directionAngle = (uint8) ((angle/6.283f) * 100); //used for updating player clients.
+	}
+
+
+	inline void setPersistent(bool pers) {
+		persistent = pers;
+	}
+
+	inline void setUpdated(bool upd) {
+		updated = upd;
+	}
+
+	inline void setDeleted(bool del) {
+		deleted = del;
 	}
 
 	/**
@@ -623,6 +663,32 @@ public:
 		float power = pow(10, digits);
 		return float(floor(num * power + .05f) / power);
 	}
+
+	inline void getCustomizationString(String& appearance) {
+		return customizationVariables.toString(appearance);
+	}
+
+	inline bool isPersistent() {
+		return persistent;
+	}
+
+	inline bool isUpdated() {
+		return updated;
+	}
+
+	inline bool isDeleted() {
+		return deleted;
+	}
+
+	inline void setAttributes(String& attributeString) {
+		itemAttributes->setAttributes(attributeString);
+	}
+
+	inline String& getAttributes() {
+		itemAttributes->getAttributeString(attributeString);
+		return attributeString;
+	}
+
 
 	inline uint64 getAssociatedArea() {
 		return associatedArea;

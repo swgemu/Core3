@@ -45,6 +45,7 @@ dualWaveSynthesizer = Object:new {
 
    objectName = "Dual Wave Synthesizer",
    stfName = "dual_wave_synthesizer",
+   stfFile = "craft_furniture_ingredients_n",
    objectCRC = 658217892,
    groupName = "craftInstrumentGroupC", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ dualWaveSynthesizer = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=262144:objectcrc=264284589:objecttemp=dual_wave_synthesizer:templatetype=craft_furniture_ingredients_n:itemmask=65535:",
+   tanoAttributes = "objecttype=262144:objectcrc=264284589:objecttemp=dual_wave_synthesizer:templatetype=craft_furniture_ingredients_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "instrument_customization"

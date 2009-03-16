@@ -742,6 +742,7 @@ void RadialManager::handleVehicleStore(SceneObject* obj) {
 }
 
 void RadialManager::handleVehicleGenerate(SceneObject* obj) {
+
 	if (!obj->isIntangible())
 		return;
 
@@ -808,11 +809,14 @@ void RadialManager::handleTrade(Player* player, SceneObject* obj) {
 			target->sendMessage(msg2);
 
 		} else {
-			Player* target = (Player*)obj;
+			Player* receiver = (Player*)obj;
 
-			StringBuffer msg;
-			msg << player->getCharacterName().toString() << " requested a trade.";
-			target->sendSystemMessage(msg.toString());
+			StfParameter* params = new StfParameter();
+			params->addTU(player->getCharacterName().toString());
+
+			receiver->sendSystemMessage("ui_trade", "requested_prose", params);
+
+			delete params;
 		}
 
 		target->unlock();

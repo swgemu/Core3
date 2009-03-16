@@ -45,6 +45,7 @@ twohandedCurvedSword = Object:new {
 
    objectName = "Two-handed Curved Sword",
    stfName = "sword_2h_katana",
+   stfFile = "weapon_name",
    objectCRC = 3248015659,
    groupName = "craftWeaponMeleeGroupD", -- Group schematic is awarded in (See skills table)
 

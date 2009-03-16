@@ -45,6 +45,7 @@ aDroidBattery = Object:new {
 
    objectName = "A Droid Battery",
    stfName = "droid_battery",
+   stfFile = "obj_n",
    objectCRC = 3508567807,
    groupName = "craftArtisanEngineeringGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ aDroidBattery = Object:new {
    experimentalMax = "0, 0, 1000, 5",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8211:objectcrc=209388269:objecttemp=droid_battery:templatetype=obj_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8211:objectcrc=209388269:objecttemp=droid_battery:templatetype=obj_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

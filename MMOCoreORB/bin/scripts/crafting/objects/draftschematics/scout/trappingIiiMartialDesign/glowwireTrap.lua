@@ -45,6 +45,7 @@ glowwireTrap = Object:new {
 
    objectName = "Glow-Wire Trap",
    stfName = "trap_melee_ranged_def_1",
+   stfFile = "item_n",
    objectCRC = 2226010853,
    groupName = "craftScoutTrapGroupC", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ glowwireTrap = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8212:objectcrc=3453088617:objecttemp=trap_melee_ranged_def_1:templatetype=item_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8212:objectcrc=3453088617:objecttemp=trap_melee_ranged_def_1:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

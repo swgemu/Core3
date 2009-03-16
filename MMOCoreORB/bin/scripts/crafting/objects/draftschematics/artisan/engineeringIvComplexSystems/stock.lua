@@ -45,6 +45,7 @@ stock = Object:new {
 
    objectName = "Stock",
    stfName = "weapon_ranged_stock",
+   stfFile = "powerup_n",
    objectCRC = 1911715488,
    groupName = "craftArtisanEngineeringGroupD", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ stock = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=524290:objectcrc=2739120425:objecttemp=weapon_ranged_stock:templatetype=powerup_n:itemmask=65535:",
+   tanoAttributes = "objecttype=524290:objectcrc=2739120425:objecttemp=weapon_ranged_stock:templatetype=powerup_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -45,6 +45,7 @@ fireworksShowPackage = Object:new {
 
    objectName = "Fireworks Show Package",
    stfName = "show",
+   stfFile = "firework_n",
    objectCRC = 2196218270,
    groupName = "craftArtisanEngineeringGroupC", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ fireworksShowPackage = Object:new {
    experimentalMax = "0, 0, 1000, 10",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=4211144857:objecttemp=show:templatetype=firework_n:itemmask=65535:",
+   tanoAttributes = "objecttype=:objectcrc=4211144857:objecttemp=show:templatetype=firework_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

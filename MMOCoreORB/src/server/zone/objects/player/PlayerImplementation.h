@@ -70,6 +70,8 @@ which carries forward this exception.
 #include "../tangible/surveytool/SurveyTool.h"
 #include "../tangible/campkit/campsite/CampSite.h"
 
+#include "../tangible/attachment/Attachment.h"
+
 #include "engine/service/Message.h"
 
 #include "../tangible/Inventory.h"
@@ -198,6 +200,7 @@ class PlayerImplementation : public PlayerServant {
 	CraftingTool* currentCraftingTool;
 	DraftSchematic* currentDraftSchematic;
 	uint64 currentSchematicID;
+	Time lastExperimentationAttempt;
 
 	// misc
 	ManagedSortedVector<Player> duelList;
@@ -323,9 +326,9 @@ public:
 	static const int ADMIN = CSR | DEVELOPER;
 	static const int NORMAL = 4;
 	static const int QA = 8;
-	static const int EC = 16;	
-	static const int CSRJR = 32;	
-	static const int ECJR = 64;	
+	static const int EC = 16;
+	static const int CSRJR = 32;
+	static const int ECJR = 64;
 
 	static const int PVPRATING_MIN = 800;
 	static const int PVPRATING_DEFAULT = 1200;
@@ -405,8 +408,6 @@ public:
 	}
 
 	void loadItems(bool newcharacter = false);
-
-	void saveDatapad(Player* player);
 
 	void updateHair();
 
@@ -527,7 +528,7 @@ public:
 		return table[18];
 	}
 	void sendToOwner(bool doClose = true);
-	void sendPersonalContainers();
+	void sendDatapadItems();
 	void sendTo(Player* player, bool doClose = true);
 
 	// spatial methods
@@ -995,9 +996,6 @@ public:
 	void unsetWeaponSkillMods(Weapon* weapon);
 	void setWeaponAccuracy(Weapon* weapon);
 
-	void setArmorSkillMods(Armor* armoritem);
-	void unsetArmorSkillMods(Armor* armoritem);
-
 	bool setArmorEncumbrance(Armor* armor, bool forced);
 	void unsetArmorEncumbrance(Armor* armor);
 
@@ -1076,10 +1074,17 @@ public:
 	void removeResourceFromCraft(uint64 resID, int slot, int counter);
 	void nextCraftingStage(String test);
 	void craftingCustomization(String name, int condition, String customizationString);
-	void createPrototype(String count);
-	void createSchematic(String count);
+	void createPrototype(int counter, int practice);
+	void createSchematic(int counter);
 	void handleExperimenting(int count, int numRowsAttempted, String expString);
 
+	void setLastExperimentationAttempt() {
+		lastExperimentationAttempt.update();
+		lastExperimentationAttempt.addMiliTime(500);
+	}
+	bool canExperiment() {
+		return lastExperimentationAttempt.isPast();
+	}
 
 	bool checkCertification(String certification) {
 		if (certification == "")

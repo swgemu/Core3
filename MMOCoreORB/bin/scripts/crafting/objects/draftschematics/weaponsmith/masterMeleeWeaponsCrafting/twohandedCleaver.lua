@@ -45,6 +45,7 @@ twohandedCleaver = Object:new {
 
    objectName = "Two-handed Cleaver",
    stfName = "sword_2h_cleaver",
+   stfFile = "weapon_name",
    objectCRC = 3092291953,
    groupName = "craftWeaponMeleeGroupE", -- Group schematic is awarded in (See skills table)
 

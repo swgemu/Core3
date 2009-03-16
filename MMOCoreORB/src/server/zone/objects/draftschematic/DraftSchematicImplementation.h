@@ -75,6 +75,8 @@ class Player;
 class ObjectControllerMessage;
 
 class DraftSchematicImplementation: public DraftSchematicServant {
+	//uint64 objectID;
+
 	// example: 0x838FF623
 	uint32 schematicID;
 
@@ -86,6 +88,9 @@ class DraftSchematicImplementation: public DraftSchematicServant {
 
 	// example: @food_name:bofa_treat
 	String StringName;
+
+	// example: @food_name:bofa_treat
+	String StringFile;
 
 	// example: craftArtisanNewbieGroupA
 	String groupName;
@@ -121,9 +126,6 @@ class DraftSchematicImplementation: public DraftSchematicServant {
 	 * 524288 = Misc							1000 0000 0000 0000 0000
 	 * * */
 	int craftingToolTab;
-
-	// For when it becomes and object during crafting
-	uint64 objectID;
 
 	// Ingredient List
 	Vector<ManagedReference<DraftSchematicIngredient> > dsIngredients;
@@ -164,11 +166,13 @@ class DraftSchematicImplementation: public DraftSchematicServant {
 	bool finished;
 	bool resourcesRemoved;
 
+	int manufacturingLimit;
+
 	Player* crafter;
 
 public:
 	DraftSchematicImplementation(uint32 schematicID, const String& objName,
-			const String& StringName, uint32 objCRC, const String& groupName,
+			const String& StringFile, const String& StringName, uint32 objCRC, const String& groupName,
 			uint32 complexity, uint32 schematicSize, int craftingToolTab);
 
 	DraftSchematicImplementation(DraftSchematic* draftSchematic);
@@ -207,11 +211,12 @@ public:
 	void toString();
 
 	// setters
+	/*inline void setObjectID(uint64 id) {
+		objectID = id;
+	}*/
+
 	inline void setPersistent(bool status) {
 		persistent = status;
-	}
-	inline void setObjectID(uint64 objID) {
-		objectID = objID;
 	}
 
 	inline void setTanoAttributes(String attributes) {
@@ -290,7 +295,16 @@ public:
 		resourcesRemoved = true;
 	}
 
+	inline void setManufacturingLimit(int value) {
+		manufacturingLimit = value;
+	}
+
 	//getters
+
+	/*inline uint64 getObjectID() {
+		return objectID;
+	}*/
+
 	inline uint32 getSchematicID() {
 		return schematicID;
 	}
@@ -307,6 +321,10 @@ public:
 		return StringName;
 	}
 
+	inline String& getStringFile() {
+		return StringFile;
+	}
+
 	inline String& getGroupName() {
 		return groupName;
 	}
@@ -317,10 +335,6 @@ public:
 
 	inline uint32 getSchematicSize() {
 		return schematicSize;
-	}
-
-	inline uint64 getObjectID() {
-		return objectID;
 	}
 
 	inline String& getTanoAttributes() {
@@ -379,12 +393,16 @@ public:
 		return experimentalFailureRate;
 	}
 
-	int getIngredientListSize() {
+	inline int getIngredientListSize() {
 		return dsIngredients.size();
 	}
 
-	Player* getCrafter() {
+	inline Player* getCrafter() {
 		return crafter;
+	}
+
+	inline int getManufacturingLimit() {
+		return manufacturingLimit;
 	}
 
 	DraftSchematicIngredient* getIngredient(int index) {

@@ -60,9 +60,6 @@ interface ArmorComponent implements Component {
 	ArmorComponent(CreatureObject creature, unsigned int tempCRC, const UnicodeString n, const String tempn) {
 		super(creature, tempCRC, n, tempn);
 	}
-	ArmorComponent(ArmorComponent component, unsigned long oid) {
-		super(component, oid);
-	}
 
 	void updateCraftingValues(DraftSchematic draftSchematic);
 	

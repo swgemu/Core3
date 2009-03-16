@@ -45,6 +45,7 @@ clothingRepairTool = Object:new {
 
    objectName = "Clothing Repair Tool",
    stfName = "clothing_repair_name",
+   stfFile = "crafting",
    objectCRC = 2082185823,
    groupName = "craftArtisanDomesticGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ clothingRepairTool = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32771:objectcrc=4032677980:objecttemp=clothing_repair_name:templatetype=crafting:itemmask=65535:",
+   tanoAttributes = "objecttype=32771:objectcrc=4032677980:objecttemp=clothing_repair_name:templatetype=crafting:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

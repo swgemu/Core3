@@ -45,6 +45,7 @@ shadowpaw = Object:new {
 
    objectName = "Shadowpaw",
    stfName = "shadowpaw",
+   stfFile = "food_name",
    objectCRC = 1734826910,
    groupName = "craftSmugglerSpiceNovice", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ shadowpaw = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=2778111395:objecttemp=shadowpaw:templatetype=food_name:itemmask=65535:",
+   tanoAttributes = "objecttype=8202:objectcrc=2778111395:objecttemp=shadowpaw:templatetype=food_name:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "spice_customization"

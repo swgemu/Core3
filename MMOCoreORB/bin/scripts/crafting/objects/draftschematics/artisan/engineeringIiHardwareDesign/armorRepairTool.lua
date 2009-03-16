@@ -45,6 +45,7 @@ armorRepairTool = Object:new {
 
    objectName = "Armor Repair Tool",
    stfName = "armor_repair_name",
+   stfFile = "crafting",
    objectCRC = 1371712760,
    groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ armorRepairTool = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32771:objectcrc=3769226262:objecttemp=armor_repair_name:templatetype=crafting:itemmask=65535:",
+   tanoAttributes = "objecttype=32771:objectcrc=3769226262:objecttemp=armor_repair_name:templatetype=crafting:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

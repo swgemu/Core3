@@ -45,6 +45,7 @@ reinforcedCombatStaff = Object:new {
 
    objectName = "Reinforced Combat Staff",
    stfName = "lance_staff_wood_s2",
+   stfFile = "weapon_name",
    objectCRC = 2748771750,
    groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -72,11 +73,11 @@ reinforcedCombatStaff = Object:new {
    experimentalGroupTitles = "null, null, expDamage, expDamage, expDamage, expDamage, exp_durability, expRange, expRange, null, expRange, null, expEffeciency, expEffeciency, expEffeciency",
 
    experimentalSubGroupTitles = "null, null, mindamage, maxdamage, attackspeed, woundchance, hitpoints, zerorangemod, maxrangemod, midrange, midrangemod, maxrange, attackhealthcost, attackactioncost, attackmindcost",
-   experimentalMin = "0, 0, 41, 86, 58, 7, 750, 7, 7, 3, 7, 5, 20, 38, 15",
-   experimentalMax = "0, 0, 52, 111, 40, 7, 1500, 17, 17, 3, 17, 1482184792, 14, 27, 11",
+   experimentalMin = "0, 0, 41, 86, 5.8, 7, 750, 7, 7, 3, 7, 5, 20, 38, 15",
+   experimentalMax = "0, 0, 52, 111, 4, 7, 1500, 17, 17, 3, 17, 5, 14, 27, 11",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131081:objectcrc=2627673923:objecttemp=lance_staff_wood_s2:templatetype=weapon_name:itemmask=65535:",
+   tanoAttributes = "objecttype=131081:objectcrc=2627673923:objecttemp=lance_staff_wood_s2:templatetype=weapon_name:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

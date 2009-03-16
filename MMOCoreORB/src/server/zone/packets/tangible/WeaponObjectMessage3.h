@@ -76,7 +76,7 @@ public:
 		else
 			insertInt(0); //item count
 
-		insertInt(weao->getConditionDamage());
+		insertInt(int(weao->getConditionDamage()));
 		insertInt(weao->getMaxCondition());
 
 		insertByte(0);

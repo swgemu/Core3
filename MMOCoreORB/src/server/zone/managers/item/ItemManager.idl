@@ -1,5 +1,4 @@
-/*
-Copyright (C) 2007 <SWGEmu>
+/* Copyright (C) 2007 <SWGEmu>
  
 This File is part of Core3.
  
@@ -49,6 +48,7 @@ include "server/zone/ZoneProcessServerImplementation";
 import "../../objects/tangible/TangibleObject";
 import "../../objects/intangible/IntangibleObject";
 import "../../objects/scene/SceneObject";
+import "../../objects/manufacture/ManufactureSchematic";
 
 import "../../objects/tangible/weapons/Weapon";
 import "../../objects/tangible/wearables/Armor";
@@ -74,6 +74,7 @@ interface ItemManager {
 	void loadBankItems(Player player);
 	
 	void unloadPlayerItems(Player player);
+	void unloadDatapadItems(Player player);
 	
 	void createPlayerItem(Player player, TangibleObject item);
 
@@ -84,9 +85,10 @@ interface ItemManager {
 			String objecttemp, boolean equipped);
 
 	void savePlayerItem(Player player, TangibleObject item); 
-	void savePlayerDatapadItem(Player player, IntangibleObject itno);
+	void saveDatapadItem(Player player, ManufactureSchematic schematic);
 
 	void deletePlayerItem(Player player, TangibleObject item, boolean notify);
+	void deleteDatapadItem(Player player, SceneObject item, boolean notify);
 	
 	void transferContainerItem(Player player, TangibleObject item, unsigned long destinationID);
 	void loadStructurePlayerItems(Player player, unsigned long cellID);

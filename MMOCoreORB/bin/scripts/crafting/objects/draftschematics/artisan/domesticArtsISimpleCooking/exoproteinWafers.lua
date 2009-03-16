@@ -45,6 +45,7 @@ exoproteinWafers = Object:new {
 
    objectName = "Exo-Protein Wafers",
    stfName = "exo_protein_wafers",
+   stfFile = "food_name",
    objectCRC = 4045225099,
    groupName = "craftArtisanDomesticGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ exoproteinWafers = Object:new {
    experimentalMax = "0, 0, 1000, 120, 120, 100, 120",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=2915488362:objecttemp=exo_protein_wafers:templatetype=food_name:itemmask=65535:",
+   tanoAttributes = "objecttype=8202:objectcrc=2915488362:objecttemp=exo_protein_wafers:templatetype=food_name:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

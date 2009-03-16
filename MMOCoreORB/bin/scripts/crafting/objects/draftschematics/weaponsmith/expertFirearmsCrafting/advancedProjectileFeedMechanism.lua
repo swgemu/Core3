@@ -45,6 +45,7 @@ advancedProjectileFeedMechanism = Object:new {
 
    objectName = "Advanced Projectile Feed Mechanism",
    stfName = "projectile_feed_mechanism_advanced",
+   stfFile = "craft_weapon_ingredients_n",
    objectCRC = 262118266,
    groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
 

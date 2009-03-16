@@ -45,6 +45,7 @@ nemoidianBirdCage = Object:new {
 
    objectName = "Nemoidian Bird Cage",
    stfName = "bird_cage",
+   stfFile = "item_n",
    objectCRC = 2785425064,
    groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ nemoidianBirdCage = Object:new {
    experimentalMax = "0, 0, 150, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8211:objectcrc=1639031767:objecttemp=bird_cage:templatetype=item_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8211:objectcrc=1639031767:objecttemp=bird_cage:templatetype=item_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

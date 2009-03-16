@@ -49,25 +49,27 @@ import "../scene/SceneObject";
 import "../player/Player";
 
 interface IntangibleObject implements SceneObject {
-	IntangibleObject(SceneObject container, unsigned int objCRC, unsigned long oid) {
+	IntangibleObject(unsigned long oid, String n, String stringFile, 
+			String stringName, unsigned int objCRC, SceneObject cont) {
+		super(oid, int type);
+	}
+	
+	IntangibleObject(unsigned long oid, int tp) {
 		super(oid, int type);
 	}
 	
 	void sendTo(Player player, boolean doClose = true);
 	void sendDestroyTo(Player player);
-
-	void setName(const String name);
-	void setDetailName(const String detail);
-	
-	void setWorldObject(SceneObject obj);
 	
 	void updateStatus(unsigned int stat);
 	
 	//int useObject(Player player);
 
-	String getName();
-	String getDetailName();
 	SceneObject getWorldObject();
+
 	
 	unsigned int getStatus();
+
+	void setWorldObject(SceneObject obj);
+	
 }

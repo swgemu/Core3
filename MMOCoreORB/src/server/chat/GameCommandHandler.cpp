@@ -2310,8 +2310,31 @@ void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player* player)
 		}
 
 	} else if (itemType == "AA") {
-		Attachment* item = new Attachment(player->getNewItemID(), AttachmentImplementation::ARMOR);
-		item->setSkillMods(System::random(500));
+
+		int level;
+
+		if(tokenizer.hasMoreTokens())
+			level = tokenizer.getIntToken();
+		else
+			level = System::random(500);
+
+		Attachment* item = new Attachment(player->getNewItemID(), TangibleObjectImplementation::ARMORATTACHMENT);
+		item->generateSkillMods(player, level);
+
+		player->addInventoryItem(item);
+
+		item->sendTo(player);
+	} else if (itemType == "CA") {
+
+		int level;
+
+		if(tokenizer.hasMoreTokens())
+			level = tokenizer.getIntToken();
+		else
+			level = System::random(500);
+
+		Attachment* item = new Attachment(player->getNewItemID(), TangibleObjectImplementation::CLOTHINGATTACHMENT);
+		item->generateSkillMods(player, level);
 
 		server->addObject(item);
 		player->addInventoryItem(item);

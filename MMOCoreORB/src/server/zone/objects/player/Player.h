@@ -27,6 +27,8 @@ class Creature;
 
 class TangibleObject;
 
+class Wearable;
+
 class PlayerObject;
 
 class FactionPointList;
@@ -299,8 +301,6 @@ public:
 
 	void setWeaponAccuracy(Weapon* weapon);
 
-	void setArmorSkillMods(Armor* armor);
-
 	bool setArmorEncumbrance(Armor* armor, bool forced);
 
 	void unsetArmorEncumbrance(Armor* armor);
@@ -308,6 +308,8 @@ public:
 	void applyAttachment(unsigned long long attachmentID, unsigned long long targetID);
 
 	void applyPowerup(unsigned long long powerupID, unsigned long long targetID);
+
+	void setItemSkillMod(int type, int value);
 
 	void loadItems(bool newcharacter);
 
@@ -324,8 +326,6 @@ public:
 	void addInventoryResource(ResourceContainer* item);
 
 	void equipPlayerItem(TangibleObject* item, bool doUpdate);
-
-	void saveDatapad(Player* player);
 
 	void saveProfessions();
 
@@ -669,11 +669,15 @@ public:
 
 	void craftingCustomization(String& name, int condition, String& customizationString);
 
-	void createPrototype(String& count);
+	void createPrototype(int counter, int practice);
 
-	void createSchematic(String& count);
+	void createSchematic(int counter);
 
 	void handleExperimenting(int count, int numRowsAttempted, String& expString);
+
+	void setLastExperimentationAttempt();
+
+	bool canExperiment();
 
 	void sendDraftSchematics();
 
@@ -1264,8 +1268,6 @@ public:
 
 	void setWeaponAccuracy(Weapon* weapon);
 
-	void setArmorSkillMods(Armor* armor);
-
 	bool setArmorEncumbrance(Armor* armor, bool forced);
 
 	void unsetArmorEncumbrance(Armor* armor);
@@ -1273,6 +1275,8 @@ public:
 	void applyAttachment(unsigned long long attachmentID, unsigned long long targetID);
 
 	void applyPowerup(unsigned long long powerupID, unsigned long long targetID);
+
+	void setItemSkillMod(int type, int value);
 
 	void loadItems(bool newcharacter);
 
@@ -1289,8 +1293,6 @@ public:
 	void addInventoryResource(ResourceContainer* item);
 
 	void equipPlayerItem(TangibleObject* item, bool doUpdate);
-
-	void saveDatapad(Player* player);
 
 	void saveProfessions();
 
@@ -1634,11 +1636,15 @@ public:
 
 	void craftingCustomization(String& name, int condition, String& customizationString);
 
-	void createPrototype(String& count);
+	void createPrototype(int counter, int practice);
 
-	void createSchematic(String& count);
+	void createSchematic(int counter);
 
 	void handleExperimenting(int count, int numRowsAttempted, String& expString);
+
+	void setLastExperimentationAttempt();
+
+	bool canExperiment();
 
 	void sendDraftSchematics();
 
@@ -2019,8 +2025,6 @@ protected:
 	String _param0_nextCraftingStage__String_;
 	String _param0_craftingCustomization__String_int_String_;
 	String _param2_craftingCustomization__String_int_String_;
-	String _param0_createPrototype__String_;
-	String _param0_createSchematic__String_;
 	String _param2_handleExperimenting__int_int_String_;
 	String _param0_addDraftSchematicsFromGroupName__String_;
 	String _param0_subtractDraftSchematicsFromGroupName__String_;

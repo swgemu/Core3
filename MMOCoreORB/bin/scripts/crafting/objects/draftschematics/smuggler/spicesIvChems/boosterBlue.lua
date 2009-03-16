@@ -45,6 +45,7 @@ boosterBlue = Object:new {
 
    objectName = "Booster Blue",
    stfName = "booster_blue",
+   stfFile = "food_name",
    objectCRC = 1461060097,
    groupName = "craftSmugglerSpiceD", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ boosterBlue = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=2516008025:objecttemp=booster_blue:templatetype=spice/spice:itemmask=65535:",
+   tanoAttributes = "objecttype=8202:objectcrc=2516008025:objecttemp=booster_blue:templatetype=spice/spice:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "spice_customization"

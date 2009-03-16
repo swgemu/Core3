@@ -45,6 +45,7 @@ muonGold = Object:new {
 
    objectName = "Muon Gold",
    stfName = "muon_gold",
+   stfFile = "food_name",
    objectCRC = 2071554224,
    groupName = "craftSmugglerSpiceD", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ muonGold = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=3112742541:objecttemp=muon_gold:templatetype=spice/spice:itemmask=65535:",
+   tanoAttributes = "objecttype=8202:objectcrc=3112742541:objecttemp=muon_gold:templatetype=spice/spice:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "spice_customization"

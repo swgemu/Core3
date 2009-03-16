@@ -81,6 +81,8 @@ public:
 
 	void addTempIngredient(TangibleObject* tano);
 
+	void clearWorkingTano();
+
 	float getToolEffectiveness();
 
 	int getCraftingState();
@@ -176,6 +178,8 @@ public:
 	void clearIngredientInSlot(int slot);
 
 	void addTempIngredient(TangibleObject* tano);
+
+	void clearWorkingTano();
 
 	float getToolEffectiveness();
 

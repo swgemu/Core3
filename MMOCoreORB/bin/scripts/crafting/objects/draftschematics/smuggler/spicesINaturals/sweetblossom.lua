@@ -45,6 +45,7 @@ sweetblossom = Object:new {
 
    objectName = "Sweetblossom",
    stfName = "sweetblossom",
+   stfFile = "food_name",
    objectCRC = 2224540196,
    groupName = "craftSmugglerSpiceA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ sweetblossom = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=1182200956:objecttemp=sweetblossom:templatetype=spice/spice:itemmask=65535:",
+   tanoAttributes = "objecttype=8202:objectcrc=1182200956:objecttemp=sweetblossom:templatetype=spice/spice:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "spice_customization"

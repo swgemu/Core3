@@ -45,6 +45,7 @@ deedForPersonalMineralExtractor = Object:new {
 
    objectName = "Deed for: Personal Mineral Extractor",
    stfName = "ore_s1_harvester_deed_name",
+   stfFile = "deed",
    objectCRC = 2594390993,
    groupName = "craftArtisanEngineeringGroupC", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ deedForPersonalMineralExtractor = Object:new {
    experimentalMax = "0, 0, 5, 50000, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8388610:objectcrc=2126009375:objecttemp=ore_s1_harvester_deed_name:templatetype=deed:itemmask=65535:",
+   tanoAttributes = "objecttype=8388610:objectcrc=2126009375:objecttemp=ore_s1_harvester_deed_name:templatetype=deed:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

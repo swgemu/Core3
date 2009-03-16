@@ -45,6 +45,7 @@ crashNBurn = Object:new {
 
    objectName = "Crash n' Burn",
    stfName = "crash_n_burn",
+   stfFile = "food_name",
    objectCRC = 3344700100,
    groupName = "craftSmugglerSpiceC", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ crashNBurn = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=96283804:objecttemp=:templatetype=:itemmask=65535:",
+   tanoAttributes = "objecttype=:objectcrc=96283804:objecttemp=:templatetype=:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "spice_customization"

@@ -55,7 +55,6 @@ which carries forward this exception.
 #include "../scene/SceneObjectImplementation.h"
 
 #include "../../objects/player/Races.h"
-#include "../../objects/tangible/CustomizationVariables.h"
 #include "../../objects/group/GroupObject.h"
 
 #include "skills/Skill.h"

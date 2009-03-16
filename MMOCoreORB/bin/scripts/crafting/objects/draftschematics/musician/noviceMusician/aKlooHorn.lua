@@ -45,6 +45,7 @@ aKlooHorn = Object:new {
 
    objectName = "a Kloo Horn",
    stfName = "obj_kloo_horn",
+   stfFile = "obj_n",
    objectCRC = 4207775926,
    groupName = "craftInstrumentGroupC", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ aKlooHorn = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8204:objectcrc=4261135292:objecttemp=obj_kloo_horn:templatetype=obj_n:itemmask=65535:",
+   tanoAttributes = "objecttype=8204:objectcrc=4261135292:objecttemp=obj_kloo_horn:templatetype=obj_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "instrument_customization"

@@ -45,6 +45,7 @@ simpleWaistWrap = Object:new {
 
    objectName = "Simple Waist Wrap",
    stfName = "wke_skirt_s04",
+   stfFile = "wearables_name",
    objectCRC = 2305146453,
    groupName = "craftArtisanDomesticGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ simpleWaistWrap = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777232:objectcrc=3347266345:objecttemp=wke_skirt_s04:templatetype=wearables_name:itemmask=61955:",
+   tanoAttributes = "objecttype=16777232:objectcrc=3347266345:objecttemp=wke_skirt_s04:templatetype=wearables_name:itemmask=61955::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"
