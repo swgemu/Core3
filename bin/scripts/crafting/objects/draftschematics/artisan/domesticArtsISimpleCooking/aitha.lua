@@ -41,47 +41,47 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-cdefCarbine = Object:new {
+aitha = Object:new {
 
-   objectName = "CDEF Carbine",
-   stfName = "carbine_cdef",
-   stfFile = "weapon_name",
-   objectCRC = 76251144,
-   groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
+   objectName = "Aitha",
+   stfName = "aitha",
+   stfFile = "food_name",
+   objectCRC = 276726581,
+   groupName = "craftArtisanDomesticGroupA", -- Group schematic is awarded in (See skills table)
 
-   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
-   complexity = 8, 
-   size = 3, 
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 3, 
+   size = 1, 
 
    xpType = "crafting_general", 
-   xp = 42, 
+   xp = 45, 
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
 
-   ingredientTemplateNames = "craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n",
-   ingredientTitleNames = "frame_assembly, receiver_assembly, grip_assembly",
-   ingredientSlotType = "0, 0, 0",
-   resourceTypes = "metal, chemical, metal",
-   resourceQuantities = "12, 6, 3",
-   combineTypes = "0, 0, 0",
-   contribution = "100, 100, 100",
+   ingredientTemplateNames = "craft_food_ingredients_n, craft_food_ingredients_n, craft_food_ingredients_n, craft_food_ingredients_n",
+   ingredientTitleNames = "water, protein_fortifier, glass, additive",
+   ingredientSlotType = "0, 0, 2, 4",
+   resourceTypes = "water, meat, object/tangible/component/food/base/shared_drink_container_base.iff, object/tangible/food/crafted/additive/shared_additive_light.iff",
+   resourceQuantities = "20, 14, 1, 1",
+   combineTypes = "0, 0, 1, 1",
+   contribution = "100, 100, 100, 100",
 
-   numberExperimentalProperties = "1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2",
-   experimentalProperties = "XX, XX, CD, OQ, CD, OQ, CD, OQ, CD, OQ, CD, OQ, CD, OQ, XX, XX, XX, CD, OQ, CD, OQ, CD, OQ, CD, OQ",
-   experimentalWeights = "1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1",
-   experimentalGroupTitles = "null, null, expDamage, expDamage, expDamage, expDamage, expEffeciency, exp_durability, null, null, null, expRange, expEffeciency, expEffeciency, expEffeciency",
+   numberExperimentalProperties = "1, 1, 1, 1, 2, 2, 2, 1",
+   experimentalProperties = "XX, XX, XX, XX, PE, OQ, DR, PE, DR, OQ, XX",
+   experimentalWeights = "1, 1, 1, 1, 2, 1, 1, 3, 3, 1, 1",
+   experimentalGroupTitles = "null, null, null, null, exp_nutrition, exp_quantity, exp_filling, null",
 
-   experimentalSubGroupTitles = "null, null, mindamage, maxdamage, attackspeed, woundchance, roundsused, hitpoints, zerorangemod, maxrangemod, midrange, midrangemod, attackhealthcost, attackactioncost, attackmindcost",
-   experimentalMin = "0, 0, 17, 35, 4.6, 4, 5, 750, 0, -80, 35, 35, 10, 22, 10",
-   experimentalMax = "0, 0, 32, 65, 3.2, 5, 20, 1500, 0, -80, 35, 65, 7, 15, 7",
-   experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
+   experimentalSubGroupTitles = "null, null, hitpoints, quantity_bonus, nutrition, quantity, filling, stomach",
+   experimentalMin = "0, 0, 1000, 0, 75, 60, 80, 1",
+   experimentalMax = "0, 0, 1000, 0, 120, 100, 120, 1",
+   experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131083:objectcrc=583942574:objecttemp=carbine_cdef:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=2;:",
+   tanoAttributes = "objecttype=:objectcrc=2316612245:objecttemp=aitha:templatetype=food_name:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"
 
 }
 
-DraftSchematics:addDraftSchematic(cdefCarbine, 76251144)--- Add to global DraftSchematics table
+DraftSchematics:addDraftSchematic(aitha, 276726581)--- Add to global DraftSchematics table

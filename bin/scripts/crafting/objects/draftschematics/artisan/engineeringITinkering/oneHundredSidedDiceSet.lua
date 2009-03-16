@@ -45,6 +45,7 @@ oneHundredSidedDiceSet = Object:new {
 
    objectName = "One Hundred Sided Dice Set",
    stfName = "eqp_one_hundred_sided_dice_set_single",
+   stfFile = "dice/dice_details",
    objectCRC = 292809069,
    groupName = "craftArtisanEngineeringGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ oneHundredSidedDiceSet = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8211:objectcrc=2182985448:objecttemp=eqp_one_hundred_sided_dice_set_single:templatetype=dice_details:itemmask=65535:",
+   tanoAttributes = "objecttype=8211:objectcrc=2182985448:objecttemp=eqp_one_hundred_sided_dice_set_single:templatetype=dice/dice_details:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

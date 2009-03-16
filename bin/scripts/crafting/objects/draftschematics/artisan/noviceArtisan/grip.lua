@@ -45,6 +45,7 @@ grip = Object:new {
 
    objectName = "Grip",
    stfName = "weapon_ranged_grip",
+   stfFile = "powerup_n",
    objectCRC = 3562526879,
    groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ grip = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=524290:objectcrc=1312422379:objecttemp=weapon_ranged_grip:templatetype=powerup_n:itemmask=65535:",
+   tanoAttributes = "objecttype=:objectcrc=1312422379:objecttemp=weapon_ranged_grip:templatetype=powerup_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

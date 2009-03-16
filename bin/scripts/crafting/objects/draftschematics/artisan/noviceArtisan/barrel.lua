@@ -45,6 +45,7 @@ barrel = Object:new {
 
    objectName = "Barrel",
    stfName = "weapon_ranged_barrel",
+   stfFile = "powerup_n",
    objectCRC = 926910485,
    groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ barrel = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=524290:objectcrc=137262486:objecttemp=barrel:templatetype=powerup_n:itemmask=65535:",
+   tanoAttributes = "objecttype=:objectcrc=137262486:objecttemp=barrel:templatetype=powerup_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

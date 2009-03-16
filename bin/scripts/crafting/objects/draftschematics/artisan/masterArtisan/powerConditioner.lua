@@ -45,6 +45,7 @@ powerConditioner = Object:new {
 
    objectName = "Power Conditioner",
    stfName = "electronic_power_conditioner",
+   stfFile = "craft_item_ingredients_n",
    objectCRC = 3615264224,
    groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
 
@@ -76,7 +77,7 @@ powerConditioner = Object:new {
    experimentalMax = "0, 0, 150, 5",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8200:objectcrc=1024745663:objecttemp=power_conditioner:templatetype=craft_food_ingredients_n:itemmask=65535:",
+   tanoAttributes = "objecttype=262150:objectcrc=1024745663:objecttemp=power_conditioner:templatetype=craft_food_ingredients_n:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

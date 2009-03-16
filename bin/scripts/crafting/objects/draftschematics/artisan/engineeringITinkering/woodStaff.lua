@@ -45,6 +45,7 @@ woodStaff = Object:new {
 
    objectName = "Wood Staff",
    stfName = "lance_staff_wood_s1",
+   stfFile = "weapon_name",
    objectCRC = 2766431643,
    groupName = "craftArtisanEngineeringGroupA", -- Group schematic is awarded in (See skills table)
 

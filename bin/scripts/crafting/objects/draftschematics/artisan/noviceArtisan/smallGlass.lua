@@ -45,6 +45,7 @@ smallGlass = Object:new {
 
    objectName = "Small Glass",
    stfName = "small_glass",
+   stfFile = "craft_food_ingredients_n",
    objectCRC = 1819609352,
    groupName = "craftArtisanNewbieGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -76,9 +77,10 @@ smallGlass = Object:new {
    experimentalMax = "0, 0, 1",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=262144:objectcrc=4135258442:objecttemp=component:templatetype=component_n:itemmask=65535:",
+   tanoAttributes = "objecttype=262144:objectcrc=4135258442:objecttemp=component:templatetype=component_n:itemmask=65535::",
    customizationOptions = "",
-   customizationDefaults = ""
+   customizationDefaults = "",
+   customizationSkill = "clothing_customization"
 
 }
 

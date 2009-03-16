@@ -61,7 +61,7 @@ rubyBliel = Object:new {
 
    ingredientTemplateNames = "craft_food_ingredients_n, craft_food_ingredients_n, craft_food_ingredients_n, craft_food_ingredients_n",
    ingredientTitleNames = "water, fruit_flavoring, glass, additive",
-   ingredientSlotType = "0, 0, 1, 3",
+   ingredientSlotType = "0, 0, 2, 4",
    resourceTypes = "water, fruit, object/tangible/component/food/base/shared_drink_container_base.iff, object/tangible/food/crafted/additive/shared_additive_light.iff",
    resourceQuantities = "10, 15, 1, 1",
    combineTypes = "0, 0, 1, 1",
@@ -77,7 +77,7 @@ rubyBliel = Object:new {
    experimentalMax = "0, 0, 1000, 0, 120, 120, 100, 120, 1",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777223:objectcrc=4051771038:objecttemp=ruby_bliel:templatetype=food_name:itemmask=65535::",
+   tanoAttributes = "objecttype=:objectcrc=4051771038:objecttemp=ruby_bliel:templatetype=food_name:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -45,6 +45,7 @@ plainShortRobe = Object:new {
 
    objectName = "Plain Short Robe",
    stfName = "dress_s12",
+   stfFile = "wearables_name",
    objectCRC = 1679862896,
    groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
 
@@ -60,7 +61,7 @@ plainShortRobe = Object:new {
 
    ingredientTemplateNames = "craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n",
    ingredientTitleNames = "body, trim_and_binding, binding_and_hardware",
-   ingredientSlotType = "0, 0, 1",
+   ingredientSlotType = "0, 0, 2",
    resourceTypes = "fiberplast, hide, object/tangible/component/clothing/shared_metal_fasteners.iff",
    resourceQuantities = "15, 5, 1",
    combineTypes = "0, 0, 1",
@@ -76,7 +77,7 @@ plainShortRobe = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=2049:objectcrc=2370142331:objecttemp=dress_s12:templatetype=wearables_name:itemmask=62974:",
+   tanoAttributes = "objecttype=16777223:objectcrc=2370142331:objecttemp=dress_s12:templatetype=wearables_name:itemmask=62974::",
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "90, 83",
    customizationSkill = "clothing_customization"
