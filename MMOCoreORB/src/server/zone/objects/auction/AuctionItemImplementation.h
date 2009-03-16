@@ -1,44 +1,44 @@
 /*
 Copyright (C) 2007 <SWGEmu>
- 
+
 This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
+Foundation; either version 2 of the License,
 or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for
 more details.
- 
-You should have received a copy of the GNU Lesser General 
+
+You should have received a copy of the GNU Lesser General
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
 and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
@@ -52,152 +52,161 @@ which carries forward this exception.
 class AuctionItemImplementation : public AuctionItemServant {
 	uint64 id;
 	int itemType;
-	
+
 	uint64 ownerID;
 	String ownerName;
 	uint16 ownerPointer;
 	String bidderName;
-	
+
 	uint16 planet;
 	String region;
 	String location;
 	String terminalTitle;
 	uint16 locationPointer;
 	uint64 vendorID;
-	
+
 	String itemName;
 	String itemDescription;
-	
+
 	int price;
-	
+
 	bool auction;
 	bool sold;
+	bool ownerRemove;
 
 	uint64 buyerID;
-	
+
 	uint32 expireTime;
 	int remainingTime;
 
 	bool updated;
-	
+
 public:
 	AuctionItemImplementation(uint64 objectid) : AuctionItemServant() {
 		id = objectid;
 	}
-	
-	AuctionItemImplementation(uint64 objectid, String& name, int itemprice, int time, bool isauction, int type, String& owner) 
+
+	AuctionItemImplementation(uint64 objectid, String& name, int itemprice, int time, bool isauction, int type, String& owner)
 			: AuctionItemServant() {
 		id = objectid;
 		itemType = type;
 		itemName = name;
-		
+
 		price = price;
 		remainingTime = time;
 		auction = auction;
 
 		ownerName = owner;
 	}
-	
+
 	void setLocation(String& planet, String& header, long long vendorid, int x, int z, bool vendor) {
 		location = header;
-		
+
 		StringBuffer title;
 		title << planet << ".@";
-		
+
 		if (vendor)
 			title << "planet_n:" << planet <<  ".Vendor: " << header;
 		else
 			title << planet << "_region_names:" << header << ".@:";
-		
+
 		title << "." << vendorid << "#" << x << "," << z;
 		terminalTitle = title.toString();
 	}
-	
+
 	inline bool isSold() {
 		return sold;
 	}
-	
+
 	inline void setSold(bool sld) {
 		sold = sld;
 	}
-	
+
+	inline bool isRemovedByOwner() {
+		return ownerRemove;
+	}
+
+	inline void setRemovedByOwner(bool rmv) {
+		ownerRemove = rmv;
+	}
+
 	inline uint32 getItemType() {
 		return itemType;
 	}
-	
+
 	inline uint64 getOwnerID() {
 		return ownerID;
 	}
-	
+
 	inline void setOwnerID(uint64 ownerid) {
 		ownerID = ownerid;
 	}
-	
+
 	inline String& getBidderName() {
 		return bidderName;
 	}
-	
+
 	inline void setBidderName(const String& name) {
 		bidderName = name;
 	}
-	
+
 	inline String& getTerminalTitle() {
 		return terminalTitle;
 	}
-	
+
 	inline String& getOwnerName() {
 		return ownerName;
 	}
-		
+
 	inline void setOwnerName(const String& name) {
 		ownerName = name;
 	}
-	
+
 	inline void setLocationPointer(int locpt) {
 		locationPointer = locpt;
 	}
-	
+
 	inline int getLocationPointer() {
 		return locationPointer;
 	}
-	
+
 	inline void setOwnerPointer(int ownpt) {
 		ownerPointer = ownpt;
 	}
-	
+
 	inline int getOwnerPointer() {
 		return ownerPointer;
 	}
-	
+
 	inline int getPrice() {
 		return price;
 	}
-	
+
 	inline void setPrice(int prc) {
 		price = prc;
 	}
-	
+
 	inline uint32 getExpireTime() {
 		return expireTime;
 	}
-	
+
 	inline void setExpireTime(uint32 expiretime) {
 		expireTime = expiretime;
 	}
-	
+
 	inline bool getAuction() {
 		return auction;
 	}
-	
+
 	inline String& getLocation() {
 		return location;
 	}
-	
+
 	void dump() {
 		System::out << "id: " << id <<
 			" itemName: " << itemName <<
 			" itemType: " << itemType <<
-			" ownerID: " << ownerID << 
+			" ownerID: " << ownerID <<
 			" ownerName: " << ownerName <<
 			" ownerPointer: " << ownerPointer <<
 			" planet: " << planet <<
@@ -224,7 +233,7 @@ public:
 	inline uint16 getPlanet() {
 		return planet;
 	}
-	
+
 	inline uint64 getVendorID() {
 		return vendorID;
 	}
@@ -245,7 +254,7 @@ public:
 	inline void setVendorID(uint64 vid) {
 		vendorID = vid;
 	}
-	
+
 	inline void setPlanet(uint16 planet) {
 		this->planet = planet;
 	}
@@ -253,7 +262,7 @@ public:
 	inline void setItemType(int type) {
 		itemType = type;
 	}
-	
+
 	inline void setItemName(const String& name) {
 		itemName = name;
 	}
@@ -261,7 +270,7 @@ public:
 	inline void setItemDescription(const String& description) {
 		itemDescription = description;
 	}
-	
+
 	inline void setAuction(bool val) {
 		auction = val;
 	}

@@ -68,6 +68,8 @@ interface AuctionItem implements ManagedObject {
 	unsigned int getItemType();	
 	
 	boolean isSold();
+	
+	boolean isRemovedByOwner();
 
 	unsigned long getVendorID();
 	
@@ -99,6 +101,8 @@ interface AuctionItem implements ManagedObject {
 	void setBidderName(const String name);
 
 	void setSold(boolean sld);
+	
+	void setRemovedByOwner(boolean rmv);
 	
 	void setLocationPointer(int locpt);
 

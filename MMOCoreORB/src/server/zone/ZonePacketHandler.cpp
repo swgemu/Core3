@@ -132,13 +132,13 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		case 0x81EB4EF7: //GuildRequestMessage
 		    handleGuildRequestMessage(pack);
 		    break;
-		case 0x1E8D1356: // Adding Items to trade window
+		case 0x1E8D1356: // AddItemMessage
 			handleAddItemMessage(pack);
 			break;
 		case 0xD1527EE8: // GiveMoneyMessage
 			handleGiveMoneyMessage(pack);
 			break;
-		case 0xD36EFAE4: // Item attributes request
+		case 0xD36EFAE4: //GetAuctionDetails
 			handleGetAuctionItemAttributes(pack);
 			break;
 		case 0xD6D1B6D1: //ClientRandomNameRequest
@@ -164,10 +164,10 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		break;
 	case 3:
 		switch (opcode) {
-		case 0xD5899226:
+		case 0xD5899226: //	ClientIdMsg
 			handleClientPermissionsMessage(pack);
 			break;
-		case 0x07E3559F:
+		case 0x07E3559F: //ChatRequestPersistentMessage
 			handleRequestPersistentMsg(pack);
 			break;
 		case 0x7CA18726:
@@ -185,7 +185,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		case 0x493E3FFA: //  ChatRemoveAvatarFromRoom
 			handleChatRemoveAvatarFromRoom(pack);
 			break;
-		case 0x12B0D449: // Retrieve auction item
+		case 0x12B0D449: //RetrieveAuctionItemMessage
 			handleRetrieveAuctionItem(pack);
 			break;
 		case 0xBB8CAD45: // VerifyPlayerNameMessage
@@ -205,10 +205,10 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		case 0xD5899226:
 			handleClientPermissionsMessage(pack);
 			break;
-		case 0x092D3564: // Selection box return
+		case 0x092D3564: //SuiEventNotification
 			handleSuiEventNotification(pack);
 			break;
-		case 0x91125453: // Bazaar/Vendor bid
+		case 0x91125453: //BidAuctionMessage
 			handleBazaarBuy(pack);
 			break;
 		case 0xC9A5F98D: // GetTicketsMessage
@@ -221,7 +221,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		case 0x80CE5E46:
 			handleObjectControllerMessage(pack);
 			break;
-		case 0x84BB21F7:
+		case 0x84BB21F7: //ChatInstantMessageToCharacter
 			handleTellMessage(pack);
 			break;
 		case 0xD6D1B6D1: //ClientRandomNameRequest
@@ -230,7 +230,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		case 0x1A7AB839: //GetMapLocationsRequestMessage
 			handleGetMapLocationsRequestMessage(pack);
 			break;
-		case 0x20E4DBE3: //ClientChatRoomMessage
+		case 0x20E4DBE3: //ChatSendToRoom
 			handleChatRoomMessage(pack);
 			break;
 		}
@@ -238,17 +238,17 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		break;
 	case 6:
 		switch(opcode) {
-		case 0x25A29FA6:
+		case 0x25A29FA6: //	ChatPersistentMessageToServer
 			handleSendMail(pack);
 			break;
 		}
 		break;
 	case 7:
 		switch (opcode) {
-		case 0x35366BED:
+		case 0x35366BED: //ChatCreateRoom
 			handleChatCreateRoom(pack);
 			break;
-		case 0xAD47021D:
+		case 0xAD47021D: //CreateAuctionMessage
 			handleBazaarAddItem(pack, true);
 			break;
 		}
@@ -256,7 +256,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		break;
 	case 8:
 		switch (opcode) {
-		case 0x1E9CE308: //Bazaar
+		case 0x1E9CE308: //CreateImmediateAuctionMessage
 			handleBazaarAddItem(pack, false);
 			break;
 		}
@@ -277,7 +277,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		break;
 	case 14:
 		switch (opcode) {
-		case 0x679E0D00: // 14
+		case 0x679E0D00: //AuctionQueryHeadersMessage
 			handleBazaarScreens(pack);
 			break;
 		}
@@ -650,19 +650,36 @@ void ZonePacketHandler::handleSendMail(Message* pack) {
 
 	//System::out << pack->toString() << "\n";
 
-	UnicodeString header, body;
-	String name;
+	UnicodeString header, body, wpName;
+	int wpInfoSize = 0;
+	uint32 planetCrc = 0;
+	float wpX, wpY = 0.0f;
+	String recipientName;
 
 	pack->parseUnicode(body);
-	pack->shiftOffset(8);
 
-	pack->parseUnicode(header);
-	pack->shiftOffset(4);
+	//Handle Attachments: (see docs for more info on unk's)
+	wpInfoSize = pack->parseInt();
+	if(wpInfoSize > 0) {
+		pack->shiftOffset(11); //Shift past the STF param start(7) + unk int(4)
+		wpX = pack->parseFloat();
+		pack->shiftOffset(4); //skip Z, always 0.0f
+		wpY = pack->parseFloat();
+		pack->shiftOffset(4); //skip blank WP objid
+		planetCrc = pack->parseInt();
+		pack->parseUnicode(wpName);
+		pack->shiftOffset(11); //skip attachment footer
+	}
 
-	pack->parseAscii(name);
+	pack->shiftOffset(4); //skip the string count
+
+	pack->parseUnicode(header); //mail subject
+	pack->shiftOffset(4); //skip spacer
+
+	pack->parseAscii(recipientName);
 
 	ChatManager* chatManager = server->getChatManager();
-	chatManager->sendMail(player->getFirstName(), header, body, name);
+	chatManager->sendMail(player->getFirstName(), header, body, recipientName);
 }
 
 void ZonePacketHandler::handleRequestPersistentMsg(Message* pack) {
@@ -1125,7 +1142,6 @@ void ZonePacketHandler::handleGetAuctionItemAttributes(Message* pack) {
 
    	BazaarManager* bazaarManager = server->getBazaarManager();
    	bazaarManager->getItemAttributes(player, objectId);
-
 }
 
 void ZonePacketHandler::handleVerifyPlayerNameMessage(Message* pack) {
@@ -1167,13 +1183,12 @@ void ZonePacketHandler::handleNewbieTutorialResponse(Message* pack) {
 	if (player == NULL)
 		return;
 
-	//I DON'T THINK THIS IS RIGHT. BUT ITS HERE FOR NOW.
+	//The string is just "ClientReady" - meant to serve as a ClientReady for Tutorial
 	String req;
 	pack->parseAscii(req);
 
 	NewbieTutorialRequest* ntr = new NewbieTutorialRequest(req);
 	client->sendMessage(ntr);
-
 }
 
 void ZonePacketHandler::handleGetArticleMessage(Message* pack) {
@@ -1198,7 +1213,6 @@ void ZonePacketHandler::handleGetArticleMessage(Message* pack) {
 		   			foundarticle = true;
 		   			body = result->getString(2);
 		   			UnicodeString var(body);
-
 		   		}
 
 		   		delete result;
@@ -1380,9 +1394,10 @@ void ZonePacketHandler::handleRequestCategoriesMessage(Message* pack) {
 	if (player == NULL)
 		return;
 
-	//TODO: FIX THIS. AND RESEARCH THIS.
-	//In the client, theres 02 00 65 6E after the opcode.
-	//Check this precu.
+	//Make sure the client is actually sending this. Then add support
+	String lang;
+	//lang = pack->parseAscii(); //should be "en"
+
 	RequestCategoriesResponseMessage* rcrm = new RequestCategoriesResponseMessage();
 	rcrm->addMainCategory("Account/Billing", 0xB808, 1, 1, 1);
 	client->sendMessage(rcrm);

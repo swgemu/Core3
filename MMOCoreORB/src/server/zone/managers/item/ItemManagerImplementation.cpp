@@ -186,7 +186,7 @@ TangibleObject* ItemManagerImplementation::getPlayerItem(Player* player, uint64 
 		return NULL;
 
 	if (player != NULL)
-		SceneObject* item = player->getPlayerItem(objectid);
+		item = player->getPlayerItem(objectid);
 
 	if (item != NULL && item->isTangible())
 		return (TangibleObject*) item;

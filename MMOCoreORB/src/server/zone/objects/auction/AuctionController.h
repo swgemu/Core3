@@ -105,7 +105,7 @@ public:
 			for (int i = 0; (i < items.size()) && (displaying < (offset + 100)); i++) {
 				AuctionItem* item = items.get(i);
 
-				if (!item->isSold()) {
+				if (!item->isSold() && !item->isRemovedByOwner()) {
 					if (category & 255) { // Searching a sub category
 						if (item->getItemType() == category) {
 							if (displaying >= offset)
