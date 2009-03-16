@@ -77,7 +77,7 @@ kashyyykianBlackMountainArmorSegment = Object:new {
    experimentalMax = "0, 0, 1000, 8, 1000, 1, 1, 1, 1, 1, 15, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262144:objectcrc=923046063:objecttemp=armor_segment_kashyyykian_black_mtn:templatetype=craft_armor_ingredients_n:itemmask=65535:customattributes=specialprotection=kineticeffectiveness;vunerability=;armorType=262144;armorStyle=;:",
+   tanoAttributes = "objecttype=262145:objectcrc=923046063:objecttemp=armor_segment_kashyyykian_black_mtn:templatetype=craft_armor_ingredients_n:itemmask=65535:customattributes=specialprotection=kineticeffectiveness;:",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

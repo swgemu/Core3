@@ -41,47 +41,47 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-neutronPixie = Object:new {
+ubeseArmorShirt = Object:new {
 
-   objectName = "Neutron Pixie",
-   stfName = "neutron_pixey",
-   stfFile = "food_name",
-   objectCRC = 1790064822,
-   groupName = "craftSmugglerSpiceD", -- Group schematic is awarded in (See skills table)
+   objectName = "Ubese Armor Shirt",
+   stfName = "armor_ubese_shirt",
+   stfFile = "wearables_name",
+   objectCRC = 559189669,
+   groupName = "craftArmorPersonalGroupD", -- Group schematic is awarded in (See skills table)
 
-   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
-   complexity = 13, 
-   size = 1, 
+   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 4, 
 
-   xpType = "crafting_spice", 
-   xp = 240, 
+   xpType = "crafting_clothing_armor", 
+   xp = 120, 
 
-   assemblySkill = "spice_assembly", 
-   experimentingSkill = "spice_experimentation", 
+   assemblySkill = "armor_assembly", 
+   experimentingSkill = "armor_experimentation", 
 
-   ingredientTemplateNames = "craft_food_ingredients_n, craft_food_ingredients_n, craft_food_ingredients_n",
-   ingredientTitleNames = "crystalline_stratifier, neutron_impactor, fruit_flavoring",
+   ingredientTemplateNames = "craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n",
+   ingredientTitleNames = "auxilary_coverage, body, liner",
    ingredientSlotType = "0, 0, 0",
-   resourceTypes = "gemstone, mineral, fruit_fruits",
-   resourceQuantities = "15, 15, 15",
+   resourceTypes = "iron, steel, fiberplast",
+   resourceQuantities = "20, 30, 10",
    combineTypes = "0, 0, 0",
    contribution = "100, 100, 100",
 
-   numberExperimentalProperties = "1, 1, 3",
-   experimentalProperties = "XX, XX, DR, OQ, UT",
-   experimentalWeights = "1, 1, 4, 1, 1",
-   experimentalGroupTitles = "null, null, exp_nutrition",
+   numberExperimentalProperties = "1, 1, 1, 1",
+   experimentalProperties = "XX, XX, XX, UT",
+   experimentalWeights = "1, 1, 1, 1",
+   experimentalGroupTitles = "null, null, null, exp_durability",
 
-   experimentalSubGroupTitles = "null, null, hitpoints",
-   experimentalMin = "0, 0, 1000",
-   experimentalMax = "0, 0, 1000",
-   experimentalPrecision = "0, 0, 0",
+   experimentalSubGroupTitles = "null, null, sockets, hitpoints",
+   experimentalMin = "0, 0, 0, 1000",
+   experimentalMax = "0, 0, 0, 1000",
+   experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=3750021953:objecttemp=neutron_pixey:templatetype=food_name:itemmask=65535::",
-   customizationOptions = "",
-   customizationDefaults = "",
-   customizationSkill = "spice_customization"
+   tanoAttributes = "objecttype=16777230:objectcrc=758262636:objecttemp=armor_ubese_shirt:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=;vunerability=;armorType=16777230;armorStyle=;:",
+   customizationOptions = "/private/index_color_1",
+   customizationDefaults = "0",
+   customizationSkill = "armor_customization"
 
 }
 
-DraftSchematics:addDraftSchematic(neutronPixie, 1790064822)--- Add to global DraftSchematics table
+DraftSchematics:addDraftSchematic(ubeseArmorShirt, 559189669)--- Add to global DraftSchematics table

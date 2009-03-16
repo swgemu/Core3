@@ -77,7 +77,7 @@ advancedChitinArmorSegment = Object:new {
    experimentalMax = "0, 0, 1000, 15, 2000, 1, 1, 1, 1, 1, 30, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262145:objectcrc=2809337004:objecttemp=armor_segment_chitin_advanced:templatetype=craft_clothing_ingredients_n:itemmask=65535:customattributes=specialprotection=kineticeffectiveness;vunerability=;armorType=262145;armorStyle=;:",
+   tanoAttributes = "objecttype=262145:objectcrc=2809337004:objecttemp=armor_segment_chitin_advanced:templatetype=craft_clothing_ingredients_n:itemmask=65535:customattributes=specialprotection=kineticeffectiveness;:",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

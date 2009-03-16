@@ -77,7 +77,7 @@ zypoleneDroidLubricant = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=1700944368:objecttemp=droid_lube:templatetype=spice/spice:itemmask=65535::",
+   tanoAttributes = "objecttype=8202:objectcrc=1700944368:objecttemp=droid_lube:templatetype=food_name:itemmask=65535::",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "spice_customization"
