@@ -40,33 +40,22 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/compositeArmorSet.lua");
-RunItemLUAFile("bluefrog/ithArmorSet.lua");
-RunItemLUAFile("bluefrog/wookieeArmorSet.lua");
+ryykBlade = Weapon:new{
+	
+	objectName = "Ryyk Blade",
 
-RunItemLUAFile("bluefrog/enhancePackSet.lua");
-RunItemLUAFile("bluefrog/stimPackSet.lua");
-RunItemLUAFile("bluefrog/rangedStimPackSet.lua");
-RunItemLUAFile("bluefrog/areaStimPackSet.lua");
-RunItemLUAFile("bluefrog/woundPackSet.lua");
-RunItemLUAFile("bluefrog/statePackSet.lua");
-RunItemLUAFile("bluefrog/curePackSet.lua");
-RunItemLUAFile("bluefrog/poisonPackSet.lua");
-RunItemLUAFile("bluefrog/diseasePackSet.lua");
+	templateName = "object/weapon/melee/sword/shared_sword_blade_ryyk.iff",
 
-RunItemLUAFile("bluefrog/clothingSets.lua");
+	objectCRC = 1543947481,
 
-RunItemLUAFile("bluefrog/instrumentSet.lua");
+	objectType = ONEHANDMELEEWEAPON,
+	
+	certification = "cert_sword_blade_ryyk",
 
---RunItemLUAFile("bluefrog/vehicleDeedSet.lua");
---RunItemLUAFile("bluefrog/housingDeedSet.lua");
+	attackSpeed = 3.3,
+	
+	minDamage = 25,
 
-RunItemLUAFile("bluefrog/weaponSets.lua");
+	maxDamage = 140
+}
 
-RunItemLUAFile("bluefrog/surveyingKit.lua");
-
-RunItemLUAFile("bluefrog/grenadeSet.lua");
---RunItemLUAFile("bluefrog/camokits.lua");
---RunItemLUAFile("bluefrog/trapSet.lua");
---RunItemLUAFile("bluefrog/campKits.lua");
---RunItemLUAFile("bluefrog/slicingTools.lua");

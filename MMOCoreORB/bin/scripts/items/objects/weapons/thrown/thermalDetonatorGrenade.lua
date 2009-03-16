@@ -40,33 +40,29 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/compositeArmorSet.lua");
-RunItemLUAFile("bluefrog/ithArmorSet.lua");
-RunItemLUAFile("bluefrog/wookieeArmorSet.lua");
+thermalDetonatorGrenade = Weapon:new{
+	
 
-RunItemLUAFile("bluefrog/enhancePackSet.lua");
-RunItemLUAFile("bluefrog/stimPackSet.lua");
-RunItemLUAFile("bluefrog/rangedStimPackSet.lua");
-RunItemLUAFile("bluefrog/areaStimPackSet.lua");
-RunItemLUAFile("bluefrog/woundPackSet.lua");
-RunItemLUAFile("bluefrog/statePackSet.lua");
-RunItemLUAFile("bluefrog/curePackSet.lua");
-RunItemLUAFile("bluefrog/poisonPackSet.lua");
-RunItemLUAFile("bluefrog/diseasePackSet.lua");
+	objectName = "Thermal Detonator",
 
-RunItemLUAFile("bluefrog/clothingSets.lua");
+	templateName = "object/weapon/ranged/grenade/shared_grenade_thermal_detonator.iff",
 
-RunItemLUAFile("bluefrog/instrumentSet.lua");
+	objectCRC = 4094720749,
 
---RunItemLUAFile("bluefrog/vehicleDeedSet.lua");
---RunItemLUAFile("bluefrog/housingDeedSet.lua");
+	objectType = GRENADE,
 
-RunItemLUAFile("bluefrog/weaponSets.lua");
+	damageType = WEAPON_BLAST,
 
-RunItemLUAFile("bluefrog/surveyingKit.lua");
+	armorPiercing = WEAPON_LIGHT,
+	
+	certification = "cert_grenade_thermal_detonator",
 
-RunItemLUAFile("bluefrog/grenadeSet.lua");
---RunItemLUAFile("bluefrog/camokits.lua");
---RunItemLUAFile("bluefrog/trapSet.lua");
---RunItemLUAFile("bluefrog/campKits.lua");
---RunItemLUAFile("bluefrog/slicingTools.lua");
+	attackSpeed = 5,
+
+	minDamage = 100,
+
+	maxDamage = 400
+}
+
+
+

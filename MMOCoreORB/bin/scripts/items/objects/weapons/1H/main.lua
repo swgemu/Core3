@@ -40,33 +40,16 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/compositeArmorSet.lua");
-RunItemLUAFile("bluefrog/ithArmorSet.lua");
-RunItemLUAFile("bluefrog/wookieeArmorSet.lua");
 
-RunItemLUAFile("bluefrog/enhancePackSet.lua");
-RunItemLUAFile("bluefrog/stimPackSet.lua");
-RunItemLUAFile("bluefrog/rangedStimPackSet.lua");
-RunItemLUAFile("bluefrog/areaStimPackSet.lua");
-RunItemLUAFile("bluefrog/woundPackSet.lua");
-RunItemLUAFile("bluefrog/statePackSet.lua");
-RunItemLUAFile("bluefrog/curePackSet.lua");
-RunItemLUAFile("bluefrog/poisonPackSet.lua");
-RunItemLUAFile("bluefrog/diseasePackSet.lua");
-
-RunItemLUAFile("bluefrog/clothingSets.lua");
-
-RunItemLUAFile("bluefrog/instrumentSet.lua");
-
---RunItemLUAFile("bluefrog/vehicleDeedSet.lua");
---RunItemLUAFile("bluefrog/housingDeedSet.lua");
-
-RunItemLUAFile("bluefrog/weaponSets.lua");
-
-RunItemLUAFile("bluefrog/surveyingKit.lua");
-
-RunItemLUAFile("bluefrog/grenadeSet.lua");
---RunItemLUAFile("bluefrog/camokits.lua");
---RunItemLUAFile("bluefrog/trapSet.lua");
---RunItemLUAFile("bluefrog/campKits.lua");
---RunItemLUAFile("bluefrog/slicingTools.lua");
+RunItemLUAFile("objects/weapons/1H/dagger1h.lua");
+RunItemLUAFile("objects/weapons/1H/gaderiffiBaton.lua");
+RunItemLUAFile("objects/weapons/1H/jantaKnife.lua");
+RunItemLUAFile("objects/weapons/1H/rantokSword.lua");
+RunItemLUAFile("objects/weapons/1H/ryykBlade.lua");
+RunItemLUAFile("objects/weapons/1H/stoneKnife.lua");
+RunItemLUAFile("objects/weapons/1H/sword01.lua");
+RunItemLUAFile("objects/weapons/1H/sword02.lua");
+RunItemLUAFile("objects/weapons/1H/vibroBlade.lua");
+RunItemLUAFile("objects/weapons/1H/stunBaton.lua");
+RunItemLUAFile("objects/weapons/1H/stunBatonElite.lua");
+RunItemLUAFile("objects/weapons/1H/stunBatonWeak.lua");

@@ -40,33 +40,23 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/compositeArmorSet.lua");
-RunItemLUAFile("bluefrog/ithArmorSet.lua");
-RunItemLUAFile("bluefrog/wookieeArmorSet.lua");
 
-RunItemLUAFile("bluefrog/enhancePackSet.lua");
-RunItemLUAFile("bluefrog/stimPackSet.lua");
-RunItemLUAFile("bluefrog/rangedStimPackSet.lua");
-RunItemLUAFile("bluefrog/areaStimPackSet.lua");
-RunItemLUAFile("bluefrog/woundPackSet.lua");
-RunItemLUAFile("bluefrog/statePackSet.lua");
-RunItemLUAFile("bluefrog/curePackSet.lua");
-RunItemLUAFile("bluefrog/poisonPackSet.lua");
-RunItemLUAFile("bluefrog/diseasePackSet.lua");
+cdefCarbine = Weapon:new {
+	
 
-RunItemLUAFile("bluefrog/clothingSets.lua");
+	objectName = "CDEF Carbine",
 
-RunItemLUAFile("bluefrog/instrumentSet.lua");
+	templateName = "object/weapon/ranged/carbine/shared_carbine_cdef.iff",
 
---RunItemLUAFile("bluefrog/vehicleDeedSet.lua");
---RunItemLUAFile("bluefrog/housingDeedSet.lua");
+	objectCRC = 583942574,
 
-RunItemLUAFile("bluefrog/weaponSets.lua");
+	objectType = CARBINE,
 
-RunItemLUAFile("bluefrog/surveyingKit.lua");
+	damageType = WEAPON_ENERGY,
 
-RunItemLUAFile("bluefrog/grenadeSet.lua");
---RunItemLUAFile("bluefrog/camokits.lua");
---RunItemLUAFile("bluefrog/trapSet.lua");
---RunItemLUAFile("bluefrog/campKits.lua");
---RunItemLUAFile("bluefrog/slicingTools.lua");
+	attackSpeed = .6,
+
+	minDamage = 16,
+
+	maxDamage = 30
+}
