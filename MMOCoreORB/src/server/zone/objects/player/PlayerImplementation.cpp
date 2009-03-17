@@ -2878,50 +2878,7 @@ void PlayerImplementation::addBuff(uint32 buffcrc, float time) {
 	sendMessage(bf);
 }
 
-// TODO: clearBuffs
 void PlayerImplementation::clearBuffs(bool doUpdatePlayer) {
-	// Clear buff icons
-	/*
-	if (doUpdatePlayer) {
-		if (healthBuff)
-			addBuff(0x98321369, 0.0f);
-
-		if (strengthBuff)
-			addBuff(0x815D85C5, 0.0f);
-
-		if (constitutionBuff)
-			addBuff(0x7F86D2C6, 0.0f);
-
-		if (actionBuff)
-			addBuff(0x4BF616E2, 0.0f);
-
-		if (quicknessBuff)
-			addBuff(0x71B5C842, 0.0f);
-
-		if (staminaBuff)
-			addBuff(0xED0040D9, 0.0f);
-
-		if (mindBuff)
-			addBuff(0x11C1772E, 0.0f);
-
-		if (focusBuff)
-			addBuff(0x2E77F586, 0.0f);
-
-		if (willpowerBuff)
-			addBuff(0x3EC6FCB6, 0.0f);
-
-	}
-
-	healthBuff = false;
-	strengthBuff = false;
-	constitutionBuff = false;
-	actionBuff = false;
-	quicknessBuff = false;
-	staminaBuff = false;
-	mindBuff = false;
-	focusBuff = false;
-	willpowerBuff = false; */
-
 	removeBuffs(doUpdatePlayer);
 }
 
@@ -6051,6 +6008,9 @@ void PlayerImplementation::onDeath() {
 	clearStates();
 	setPosture(CreaturePosture::DEAD);
 
+	clearBuffs(true);
+	resetArmorEncumbrance();
+
 	cancelRecoveryEvent();
 
 	//TODO: Start Revive Countdown
@@ -6218,9 +6178,6 @@ void PlayerImplementation::onCloneDataAlreadyStored() {
 
 /// This event should follow after successfully cloning.
 void PlayerImplementation::onClone() {
-	clearStates();
-	clearBuffs(true);
-	resetArmorEncumbrance();
 
 	setPosture(CreaturePosture::UPRIGHT);
 

@@ -1250,6 +1250,8 @@ void CreatureObjectImplementation::setMaxCondition(int condition) {
 }
 
 void CreatureObjectImplementation::resetHAMBars(bool doUpdateClient) {
+
+	//reset maximums for all 9 stats to btheir base values
 	setHealthMax(getBaseHealth());
 	setStrengthMax(getBaseStrength());
 	setConstitutionMax(getBaseConstitution());
@@ -1262,16 +1264,44 @@ void CreatureObjectImplementation::resetHAMBars(bool doUpdateClient) {
 	setFocusMax(getBaseFocus());
 	setWillpowerMax(getBaseWillpower());
 
-	if (getHealthWounds() > getHealthMax()) {
+	//if wounds for any of the 9 stats have managed to grow larger than
+	//the base value then reset them to base - 1
+	if (getHealthWounds() > getHealthMax())
 		setHealthWounds(getHealthMax() - 1);
-	}
+	if (getStrengthWounds() > getStrengthMax())
+		setStrengthWounds(getStrengthMax() - 1);
+	if (getConstitutionWounds() > getConstitutionMax())
+		setConstitutionWounds(getConstitutionMax() - 1);
 
 	if (getActionWounds() > getActionMax())
 		setActionWounds(getActionMax() - 1);
+	if (getQuicknessWounds() > getQuicknessMax())
+		setQuicknessWounds(getQuicknessMax() - 1);
+	if (getStaminaWounds() > getStaminaMax())
+		setStaminaWounds(getStaminaMax() - 1);
 
 	if (getMindWounds() > getMindMax())
 		setMindWounds(getMindMax() - 1);
+	if (getFocusWounds() > getFocusMax())
+		setFocusWounds(getFocusMax() - 1);
+	if (getWillpowerWounds() > getWillpowerMax())
+		setWillpowerWounds(getWillpowerMax() - 1);
 
+	//if the wound value for any of the 9 stats has managed
+	//to become negative, reset it to zero
+	if (getHealthWounds() < 0) setHealthWounds(0);
+	if (getStrengthWounds() < 0) setStrengthWounds(0);
+	if (getConstitutionWounds() < 0) setConstitutionWounds(0);
+
+	if (getActionWounds() < 0) setActionWounds(0);
+	if (getQuicknessWounds() < 0) setQuicknessWounds(0);
+	if (getStaminaWounds() < 0) setStaminaWounds(0);
+
+	if (getMindWounds() < 0) setMindWounds(0);
+	if (getFocusWounds() < 0) setFocusWounds(0);
+	if (getWillpowerWounds() < 0) setWillpowerWounds(0);
+
+	//set the current values for each of the 9 stats to max - wounds
 	setHealth(getHealthMax() - getHealthWounds());
 	setStrength(getStrengthMax() - getStrengthWounds());
 	setConstitution(getConstitutionMax() - getConstitutionWounds());
@@ -3816,23 +3846,23 @@ void CreatureObjectImplementation::applyBuff(Buff *buff) {
 
 void CreatureObjectImplementation::removeBuffs(bool doUpdateClient) {
 
-	for (int i=0; i < creatureBuffs.size(); i++) {
-		Buff* buff = creatureBuffs.get(i);
+	//Changed loop style to while and set "removeFromList" to true
+	//to ensure that all the buffs are properly removed from player.
+	//Spice Downers were being applied in error on cloning! - Lak Moore
+	while (creatureBuffs.size() > 0) {
+		Buff* buff = creatureBuffs.get(0);
 		if (buff != NULL) {
-			removeBuff(buff->getBuffCRC(), false);
+			removeBuff(buff->getBuffCRC(), true);
 		}
 	}
 
+	//in theory this is now a redundant call - Lak Moore
 	creatureBuffs.removeAll();
 
 	if (doUpdateClient) {
 		resetHAMBars(true);
 	}
 
-	/*
-	CreatureObjectMessage6* msg = new CreatureObjectDeltaMessage6(_this);
-	broadcastMessage(msg);
-	*/
 }
 
 bool CreatureObjectImplementation::isLootOwner(CreatureObject* creature) {
