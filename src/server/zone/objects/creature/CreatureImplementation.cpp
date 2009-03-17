@@ -1992,7 +1992,8 @@ void CreatureImplementation::onIncapacitateTarget(CreatureObject* victim) {
 }
 
 void CreatureImplementation::onKilled(CreatureObject* killer) {
-	System::out << "in onKilled" << endl;
+	//This event is not firing when creatures are killed!
+	//System::out << "in onKilled" << endl;
 	die();
 }
 

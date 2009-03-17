@@ -218,6 +218,7 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 		return;
 	}
 
+	// Check if item price is valid (over max or less than 1)
 	if (price > MAXPRICE) {
 		BaseMessage* msg = new ItemSoldMessage(objectid, 14);
 		player->sendMessage(msg);
@@ -235,6 +236,7 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 		return;
 	}
 
+	// Check if player has enough credits to place the item on sale
 	if (player->getBankCredits() < SALESFEE) {
 		BaseMessage* msg = new ItemSoldMessage(objectid, 9);
 		player->sendMessage(msg);
@@ -244,11 +246,12 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 		return;
 	}
 
+	// Check if player has too many items out on the market (lim MAXSALES)
 	int numberOfItems;
 
 	try {
 		StringBuffer query1;
-		query1 << "SELECT count(*) from `bazaar_items` WHERE ownerid = " << player->getObjectID() << ";";
+		query1 << "SELECT count(*) from `bazaar_items` WHERE ownerid = " << player->getObjectID() << " and sold=0;";
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query1);
 
 		res->next();
@@ -279,6 +282,7 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 
 	SceneObject* invObj = player->getInventoryItem(objectid);
 
+	// Make sure item is not invalid (null or not tangible)
 	if (invObj == NULL || !invObj->isTangible()) {
 		BaseMessage* msg = new ItemSoldMessage(objectid, 2);
 		player->sendMessage(msg);
@@ -290,11 +294,12 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 
 	TangibleObject* obj = (TangibleObject*)invObj;
 
+	// If item is equipted, tell player to unequip
 	if (obj->isEquipped()) {
 		BaseMessage* msg = new ItemSoldMessage(objectid, 2);
 		player->sendMessage(msg);
 
-		player->sendSystemMessage("you must unequip your item!!");
+		player->sendSystemMessage("You must unequip your item before placing it for sale!");
 
 		player->unlock();
 		unlock();
@@ -330,6 +335,7 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 	String descr = description.toString();
 	MySqlDatabase::escapeString(descr);
 
+	// Insert the item into the bazaar_items table and remove from the seller's possession.
 	try {
 		StringBuffer query2;
 		query2 << "INSERT into `bazaar_items` (objectid, name, description, item_type, ownerid, ownername,"
