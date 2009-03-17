@@ -1201,7 +1201,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 
 	//ADD ATTRIBUTES
 	if (type & TangibleObjectImplementation::ARMOR) {
-		int armorType = itemconfig.getIntField("armorType");
+		int armorPiece = itemconfig.getIntField("armorType");
 		int actionEncum = itemconfig.getIntField("actionEncum");
 		int healthEncum = itemconfig.getIntField("healthEncum");
 		int mindEncum = itemconfig.getIntField("mindEncum");
@@ -1214,7 +1214,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		float kineticResist = itemconfig.getFloatField("kineticResist");
 		float lightSaberResist = itemconfig.getFloatField("lightSaberResist");
 
-		((Armor*) item)->setArmorPiece(armorType);
+		((Armor*) item)->setArmorPiece(armorPiece);
 		((Armor*) item)->setActionEncumbrance(actionEncum);
 		((Armor*) item)->setMindEncumbrance(mindEncum);
 		((Armor*) item)->setHealthEncumbrance(healthEncum);
