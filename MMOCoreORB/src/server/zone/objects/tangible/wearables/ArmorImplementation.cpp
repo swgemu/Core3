@@ -78,7 +78,7 @@ void ArmorImplementation::parseItemAttributes() {
 	String name = "rating";
 	rating = itemAttributes->getIntAttribute(name);
 
-	name = "armorType";
+	name = "armorPiece";
 	armorPiece = itemAttributes->getIntAttribute(name);
 
 	name = "armorStyle";

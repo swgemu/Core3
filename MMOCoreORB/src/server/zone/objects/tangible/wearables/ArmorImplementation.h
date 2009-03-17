@@ -245,10 +245,10 @@ public:
 		armorStyle = style;
 	}
 
-	inline void setArmorPiece(int armorSlot) {
-		String name = "armorType";
-		armorPiece = armorSlot;
-		itemAttributes->setIntAttribute(name, armorSlot);
+	inline void setArmorPiece(int piece) {
+		String name = "armorPiece";
+		armorPiece = piece;
+		itemAttributes->setIntAttribute(name, piece);
 
 		switch (armorPiece) {
 		case CHEST:

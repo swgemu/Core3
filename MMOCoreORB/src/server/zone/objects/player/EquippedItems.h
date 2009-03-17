@@ -170,6 +170,7 @@ public:
 
 	bool equipClothing (Wearable* item, bool forced = false) {
 		uint16 locations;
+		int locationIndex;
 		Armor* armor;
 
 		if(!checkPermissions(item)) { // Can player equip item
@@ -250,7 +251,12 @@ public:
 			armor = (Armor*)item;
 			locations = getArmorLocations(armor);
 
-			if (!checkEncumbrance(armor, clothingLocations.get(getLocationOfArmor(armor))) && !forced) {
+			locationIndex = getLocationOfArmor(armor);
+
+			if(locationIndex == -1)
+				return false;
+
+			if (!checkEncumbrance(armor, clothingLocations.get(locationIndex)) && !forced) {
 				player->sendSystemMessage("You don't have enough pool points to do that!");
 				return false;
 			}
@@ -296,7 +302,7 @@ public:
 
 		type -= 256;
 		if(type < 0 || type > 14)
-			type = 0;
+			type = -1;
 
 		return type;
 	}
