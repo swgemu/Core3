@@ -294,7 +294,9 @@ public:
 	int getLocationOfArmor(Armor* armor) {
 		int type = armor->getArmorPiece();
 
-		type = 0x1 << (type);
+		type -= 256;
+		if(type < 0 || type > 14)
+			type = 0;
 
 		return type;
 	}
@@ -490,7 +492,7 @@ public:
 			break;
 
 		default:
-			locations =  getLocationOfArmor(armor);
+			locations = 0x1 << (armor->getArmorPiece());
 			if (locations == HEAD)
 				locations += EYES;
 			break;
