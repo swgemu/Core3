@@ -111,14 +111,14 @@ void ManufactureSchematicImplementation::setIngredients(DraftSchematic* draftSch
 
 	try {
 
-		craftingTool->lock();
+		craftingTool->wlock();
 
 		for(int i = 0; i < craftingTool->getSlotCount(); ++i) {
-			TangibleObject* itemInSlot = craftingTool->getIngredientInSlot(i);
+			ManagedReference<TangibleObject> itemInSlot = craftingTool->getIngredientInSlot(i);
 			DraftSchematicIngredient* dsi = draftSchematic->getIngredient(i);
 
 			if(itemInSlot->isResource()) {
-				ResourceContainer* rcno = (ResourceContainer*) itemInSlot;
+				ResourceContainer* rcno = (ResourceContainer*) itemInSlot.get();
 				name = rcno->getResourceName();
 				value = rcno->getContents();
 

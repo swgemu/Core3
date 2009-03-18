@@ -78,8 +78,11 @@ public:
 	 */
 	void linkTangibleObject(TangibleObject* item);
 
-	TangibleObject* getTangibleObject(){
-		return (TangibleObject*)getObject(0);
+	TangibleObject* getTangibleObject() {
+		if (getContainerObjectsSize() > 0)
+			return (TangibleObject*)getObject(0);
+		else
+			return NULL;
 	}
 
 	void setTangibleObject(TangibleObject* item){
