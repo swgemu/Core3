@@ -66,6 +66,8 @@ interface Component implements TangibleObject {
 	void sendTo(Player player, boolean doClose = true);
 	void generateAttributes(Player player);
 
+	boolean compare(Component inCmpo);
+
 	void updateCraftingValues(DraftSchematic draftSchematic);
  
 	int useObject(Player player);

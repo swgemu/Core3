@@ -31,6 +31,10 @@ class BlueFrogVector;
 
 class Player;
 
+class Container;
+
+class FactoryObject;
+
 class ItemManager : public DistributedObjectStub {
 public:
 	ItemManager(ZoneServer* server, ZoneProcessServerImplementation* pServer);
@@ -68,6 +72,8 @@ public:
 	void transferContainerItem(Player* player, TangibleObject* item, unsigned long long destinationID);
 
 	void loadStructurePlayerItems(Player* player, unsigned long long cellID);
+
+	void loadFactoryContainerItems(FactoryObject* fact, Container* conti);
 
 	bool moveItemToDestination(Player* player, TangibleObject* item, SceneObject* destination);
 
@@ -140,6 +146,8 @@ public:
 	void transferContainerItem(Player* player, TangibleObject* item, unsigned long long destinationID);
 
 	void loadStructurePlayerItems(Player* player, unsigned long long cellID);
+
+	void loadFactoryContainerItems(FactoryObject* fact, Container* conti);
 
 	bool moveItemToDestination(Player* player, TangibleObject* item, SceneObject* destination);
 

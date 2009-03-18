@@ -45,6 +45,12 @@ public:
 
 	void setManufacturingLimit(int value);
 
+	int getIngredientSize();
+
+	String& getIngredientName(int i);
+
+	int getIngredientValue(int i);
+
 	void setTangibleObject(TangibleObject* tano);
 
 	void setDataSize(int value);
@@ -53,6 +59,8 @@ protected:
 	ManufactureSchematic(DummyConstructorParameter* param);
 
 	virtual ~ManufactureSchematic();
+
+	String _return_getIngredientName;
 
 	friend class ManufactureSchematicHelper;
 };
@@ -82,6 +90,12 @@ public:
 	void setComplexity(int value);
 
 	void setManufacturingLimit(int value);
+
+	int getIngredientSize();
+
+	String& getIngredientName(int i);
+
+	int getIngredientValue(int i);
 
 	void setTangibleObject(TangibleObject* tano);
 

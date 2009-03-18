@@ -58,6 +58,8 @@ import "../../objects/tangible/deed/DeedObject";
 import "../../objects/creature/bluefrog/BlueFrogVector";
 
 import "../../objects/player/Player";
+import "../../objects/tangible/Container";
+import "../../objects/installation/factory/FactoryObject";
 
 interface ItemManager {
 	ItemManager(ZoneServer server, ZoneProcessServerImplementation pServer) {
@@ -92,6 +94,8 @@ interface ItemManager {
 	
 	void transferContainerItem(Player player, TangibleObject item, unsigned long destinationID);
 	void loadStructurePlayerItems(Player player, unsigned long cellID);
+	void loadFactoryContainerItems(FactoryObject fact, Container conti);
+
 	boolean moveItemToDestination(Player player, TangibleObject item, SceneObject destination);
 	
 	void giveForageItem(Player player, int group, int count);                                                                     

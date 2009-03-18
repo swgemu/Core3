@@ -205,12 +205,33 @@ void StructureManager::spawnHarvester(Player* player, DeedObject* deed, float x,
 		((StructureManagerImplementation*) _impl)->spawnHarvester(player, deed, x, z, y, oX, oZ, oY, oW);
 }
 
-void StructureManager::spawnBuilding(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {
+void StructureManager::spawnFactory(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 17);
+		method.addObjectParameter(player);
+		method.addObjectParameter(deed);
+		method.addFloatParameter(x);
+		method.addFloatParameter(z);
+		method.addFloatParameter(y);
+		method.addFloatParameter(oX);
+		method.addFloatParameter(oZ);
+		method.addFloatParameter(oY);
+		method.addFloatParameter(oW);
+
+		method.executeWithVoidReturn();
+	} else
+		((StructureManagerImplementation*) _impl)->spawnFactory(player, deed, x, z, y, oX, oZ, oY, oW);
+}
+
+void StructureManager::spawnBuilding(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(player);
 		method.addObjectParameter(deed);
 		method.addFloatParameter(x);
@@ -231,7 +252,7 @@ void StructureManager::deleteInstallation(InstallationObject* inso) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 		method.addObjectParameter(inso);
 
 		method.executeWithVoidReturn();
@@ -244,7 +265,7 @@ void StructureManager::error(const String& message) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 		method.addAsciiParameter(message);
 
 		method.executeWithVoidReturn();
@@ -257,7 +278,7 @@ void StructureManager::info(const String& message) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 		method.addAsciiParameter(message);
 
 		method.executeWithVoidReturn();
@@ -310,15 +331,18 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		spawnHarvester((Player*) inv->getObjectParameter(), (DeedObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case 17:
-		spawnBuilding((Player*) inv->getObjectParameter(), (DeedObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		spawnFactory((Player*) inv->getObjectParameter(), (DeedObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case 18:
-		deleteInstallation((InstallationObject*) inv->getObjectParameter());
+		spawnBuilding((Player*) inv->getObjectParameter(), (DeedObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case 19:
-		error(inv->getAsciiParameter(_param0_error__String_));
+		deleteInstallation((InstallationObject*) inv->getObjectParameter());
 		break;
 	case 20:
+		error(inv->getAsciiParameter(_param0_error__String_));
+		break;
+	case 21:
 		info(inv->getAsciiParameter(_param0_info__String_));
 		break;
 	default:
@@ -370,6 +394,10 @@ void StructureManagerAdapter::spawnInstallation(Player* player, DeedObject* deed
 
 void StructureManagerAdapter::spawnHarvester(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {
 	return ((StructureManagerImplementation*) impl)->spawnHarvester(player, deed, x, z, y, oX, oZ, oY, oW);
+}
+
+void StructureManagerAdapter::spawnFactory(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {
+	return ((StructureManagerImplementation*) impl)->spawnFactory(player, deed, x, z, y, oX, oZ, oY, oW);
 }
 
 void StructureManagerAdapter::spawnBuilding(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {

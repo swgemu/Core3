@@ -382,9 +382,28 @@ bool CraftingManagerImplementation::slotIsFull(Player* player,
 
 	} else {
 
-		// deal with partial components in slot
+		Component* cmpo = (Component*) tano;
+		Component* cmpoInSlot = (Component*) ingredientInSlot;
 
+		if(cmpoInSlot == NULL)
+			return true;
 
+		if(cmpo->getObjectCount() != 0) {
+
+			if(quantity == cmpo->getObjectCount()) {
+
+				//If slot is full send slot is full message
+				sendSlotMessage(player, counter, SLOTFULL);
+				return true;
+			}
+
+			if(!cmpoInSlot->compare(cmpo)) {
+
+				//If component isnt the same, throw slot error
+				sendSlotMessage(player, counter, SLOTINVALIDINGREDIENT);
+				return true;
+			}
+		}
 	}
 
 	return false;

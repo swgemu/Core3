@@ -2,7 +2,9 @@ import "../../tangible/TangibleObject";
 import "../../creature/CreatureObject";
 import "../../player/Player";
 import "../../tangible/deed/factorydeed/FactoryDeed";
+import "../../manufacture/ManufactureSchematic";
 import "../InstallationObject";
+import "../../tangible/Container";
 
 import "../../../Zone";
 
@@ -17,4 +19,26 @@ interface FactoryObject implements InstallationObject {
 	FactoryObject(unsigned long oid, FactoryDeed theDeed) {
 		super (oid, theDeed);
 	}
+
+	void createHoppers(unsigned long inputHopperID, unsigned long outputHopperID);
+	void parseItemAttributes();
+	void setManufactureSchem(ManufactureSchematic manufactureSchem);
+	void setManufactureSchem(ManufactureSchematic manufactureSchem, Player player);
+	ManufactureSchematic getManufactureSchem();
+	
+	void setOperating(boolean state);
+	void scheduleItemCreation();
+	void createItem();
+	void sendInsertManSchemTo(Player player);
+	void sendViewIngredientsTo(Player player);
+	void sendInputHopperTo(Player player);
+	void sendOutputHopperTo(Player player);
+	void serializeHoppers();
+
+	int getFactoryItemTypes();
+	boolean isWearablesFactory();
+	boolean isEquipmentFactory();
+	boolean isFoodFactory();
+	boolean isStructureFactory();
+	boolean hasSchematic();
 }

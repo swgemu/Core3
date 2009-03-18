@@ -73,6 +73,7 @@ private:
 	String res_name;
 
 	uint64 resourceID;
+	bool energy;
 
 public:
 	static const int MAXQUANTITY = 1000000;
@@ -206,6 +207,12 @@ public:
 		objectSubType = subType;
 	}
 
+	inline void setIsEnergy(bool state) {
+		String temp = "isEnergy";
+		itemAttributes->setBooleanAttribute(temp, state);
+		energy = state;
+	}
+
 	inline int getContents() {
 		return quantity;
 	}
@@ -268,6 +275,10 @@ public:
 
 	inline uint64 getResourceID() {
 		return resourceID;
+	}
+
+	inline bool isEnergy() {
+		return energy;
 	}
 };
 

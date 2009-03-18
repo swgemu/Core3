@@ -73,6 +73,10 @@ interface ManufactureSchematic implements SceneObject {
 	void setComplexity(int value);
 	
 	void setManufacturingLimit(int value);
+
+	int getIngredientSize();
+	String getIngredientName(int i);
+	int getIngredientValue(int i);
 	
 	void setTangibleObject(TangibleObject tano);
 	

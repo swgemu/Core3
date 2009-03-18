@@ -132,6 +132,8 @@ interface TangibleObject implements SceneObject {
 
 	boolean isCraftingTool();
 
+	boolean isFactoryCrate();
+
 	boolean isComponent();
 	boolean isTrap();
 	boolean isGrenade();

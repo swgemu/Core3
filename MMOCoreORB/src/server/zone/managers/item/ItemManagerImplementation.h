@@ -165,6 +165,7 @@ public:
 	void loadStructurePlayerItems(Player* player, uint64 cellID);
 	void loadContainersInStructures(Player* player, BuildingObject* building, SceneObject* cell);
 	void loadItemsInContainersForStructure(Player* player, Container* conti);
+	void loadFactoryContainerItems(FactoryObject* fact, Container* conti);
 
 	void transferContainerItem(Player* player, TangibleObject* item, uint64 destinationID);
 	void deleteItemFromPlayerStorageDB(TangibleObject* item);

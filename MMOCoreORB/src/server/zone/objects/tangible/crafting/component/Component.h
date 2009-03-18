@@ -31,6 +31,8 @@ public:
 
 	void generateAttributes(Player* player);
 
+	bool compare(Component* inCmpo);
+
 	void updateCraftingValues(DraftSchematic* draftSchematic);
 
 	int useObject(Player* player);
@@ -75,6 +77,8 @@ public:
 	void sendTo(Player* player, bool doClose);
 
 	void generateAttributes(Player* player);
+
+	bool compare(Component* inCmpo);
 
 	void updateCraftingValues(DraftSchematic* draftSchematic);
 

@@ -649,6 +649,10 @@ public:
 		return objectSubType == CRAFTINGTOOL;
 	}
 
+	inline bool isFactoryCrate() {
+		return (objectSubType & TangibleObjectImplementation::FACTORYCRATE);
+	}
+
 	inline bool isComponent() {
 		return (objectSubType & TangibleObjectImplementation::COMPONENT);
 	}

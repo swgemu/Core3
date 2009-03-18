@@ -9,6 +9,8 @@
 
 class DeedObject;
 
+class FactoryObject;
+
 class TangibleObject;
 
 class packets;
@@ -25,6 +27,8 @@ public:
 
 	FactoryDeed(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn);
 
+	FactoryDeed(CreatureObject* creature, FactoryObject* fact);
+
 	void parseItemAttributes();
 
 	void setSurplusMaintenance(int maint);
@@ -33,9 +37,13 @@ public:
 
 	void setSurplusPower(int pow);
 
+	void setPowerRate(float rate);
+
 	void setHopperSize(float size);
 
 	void setLotSize(int size);
+
+	void setBuildRate(float rate);
 
 	int getSurplusMaintenance();
 
@@ -43,9 +51,13 @@ public:
 
 	int getSurplusPower();
 
+	float getPowerRate();
+
 	float getHopperSize();
 
 	int getLotSize();
+
+	float getBuildRate();
 
 protected:
 	FactoryDeed(DummyConstructorParameter* param);
@@ -71,9 +83,13 @@ public:
 
 	void setSurplusPower(int pow);
 
+	void setPowerRate(float rate);
+
 	void setHopperSize(float size);
 
 	void setLotSize(int size);
+
+	void setBuildRate(float rate);
 
 	int getSurplusMaintenance();
 
@@ -81,9 +97,13 @@ public:
 
 	int getSurplusPower();
 
+	float getPowerRate();
+
 	float getHopperSize();
 
 	int getLotSize();
+
+	float getBuildRate();
 
 };
 
@@ -111,6 +131,7 @@ public:
 public:
 	FactoryDeedServant(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
 	FactoryDeedServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
+	FactoryDeedServant(unsigned long long oid, int tp);
 	virtual ~FactoryDeedServant();
 
 	void _setStub(DistributedObjectStub* stub);

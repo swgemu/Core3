@@ -299,10 +299,11 @@ void InstallationObjectImplementation::handleMakeDeed(Player* player) {
 		switch(getObjectSubType()) {
 		case TangibleObjectImplementation::GENERATOR:
 		case TangibleObjectImplementation::HARVESTER:
-		{
 			deed = new HarvesterDeed((CreatureObject*)player, (HarvesterObject*)_this);
-		}
+			break;
 		case TangibleObjectImplementation::FACTORY:
+			deed = new FactoryDeed((CreatureObject*)player, (FactoryObject*)_this);
+			break;
 		default:
 			break;
 			//HarvesterDeedImplementation(CreatureObject* creature, HarvesterObject* hino)
@@ -1061,22 +1062,22 @@ void InstallationObjectImplementation::parseItemAttributes() {
 	setOperating(itemAttributes->getBooleanAttribute(attr));
 
 	attr = "owner";
-	setOwner(itemAttributes->getStringAttribute(attr));
+	_this->setOwner(itemAttributes->getStringAttribute(attr));
 
 	attr = "ownerID";
-	setOwnerID(itemAttributes->getUnsignedLongAttribute(attr));
+	_this->setOwnerID(itemAttributes->getUnsignedLongAttribute(attr));
 
 	attr = "surplusMaintenance";
 	setSurplusMaintenance(itemAttributes->getFloatAttribute(attr));
 
 	attr = "maintenanceRate";
-	setMaintenanceRate(itemAttributes->getFloatAttribute(attr));
+	_this->setMaintenanceRate(itemAttributes->getFloatAttribute(attr));
 
 	attr = "surplusPower";
 	setSurplusPower(itemAttributes->getFloatAttribute(attr));
 
 	attr = "powerRate";
-	setPowerRate(itemAttributes->getFloatAttribute(attr));
+	_this->setPowerRate(itemAttributes->getFloatAttribute(attr));
 }
 
 void InstallationObjectImplementation::addHeaderAttributes(AttributeListMessage* alm) {

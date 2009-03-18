@@ -140,6 +140,7 @@ public:
 	void spawnTempStructure(Player *player, DeedObject *deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 	void spawnInstallation(Player *player, DeedObject *deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 	void spawnHarvester(Player *player, DeedObject *deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
+	void spawnFactory(Player *player, DeedObject *deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 
 	void createInstallation(InstallationObject *inso);
 	void saveInstallation(InstallationObject *inso);

@@ -120,6 +120,8 @@ public:
 	static const int PERMISSION_LIST = 50;
 
 	static const int CAMP_INFO = 51;
+
+	static const int FACTORY_SCHEMATIC = 52;
 };
 
 #endif /*SuiWindowType_H_*/

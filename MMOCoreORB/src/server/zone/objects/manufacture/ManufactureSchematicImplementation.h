@@ -102,6 +102,18 @@ public:
 		return dataSize;
 	}
 
+	int getIngredientSize() {
+		return ingredientMap.size();
+	}
+
+	String& getIngredientName(int i) {
+		return ingredientMap.getKey(i);
+	}
+
+	int getIngredientValue(int i) {
+		return ingredientMap.get(i);
+	}
+
 	TangibleObject* getTangibleObject() {
 		return (TangibleObject*) getObject(0);
 	}

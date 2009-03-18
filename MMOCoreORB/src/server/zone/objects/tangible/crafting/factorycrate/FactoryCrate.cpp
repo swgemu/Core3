@@ -28,6 +28,11 @@ FactoryCrate::FactoryCrate(CreatureObject* creature, unsigned int tempCRC, const
 	_impl->_setStub(this);
 }
 
+FactoryCrate::FactoryCrate(unsigned long long oid, TangibleObject* item) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new FactoryCrateImplementation(oid, item);
+	_impl->_setStub(this);
+}
+
 FactoryCrate::FactoryCrate(DummyConstructorParameter* param) : TangibleObject(param) {
 }
 
@@ -100,7 +105,7 @@ void FactoryCrate::linkTangibleObject(TangibleObject* item) {
 		((FactoryCrateImplementation*) _impl)->linkTangibleObject(item);
 }
 
-TangibleObject* FactoryCrate::getLinkedItem() {
+TangibleObject* FactoryCrate::getTangibleObject() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -109,10 +114,10 @@ TangibleObject* FactoryCrate::getLinkedItem() {
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
-		return ((FactoryCrateImplementation*) _impl)->getLinkedItem();
+		return ((FactoryCrateImplementation*) _impl)->getTangibleObject();
 }
 
-void FactoryCrate::setLinkedItem(TangibleObject* item) {
+void FactoryCrate::setTangibleObject(TangibleObject* item) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -122,7 +127,7 @@ void FactoryCrate::setLinkedItem(TangibleObject* item) {
 
 		method.executeWithVoidReturn();
 	} else
-		((FactoryCrateImplementation*) _impl)->setLinkedItem(item);
+		((FactoryCrateImplementation*) _impl)->setTangibleObject(item);
 }
 
 /*
@@ -152,10 +157,10 @@ Packet* FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		linkTangibleObject((TangibleObject*) inv->getObjectParameter());
 		break;
 	case 11:
-		resp->insertLong(getLinkedItem()->_getObjectID());
+		resp->insertLong(getTangibleObject()->_getObjectID());
 		break;
 	case 12:
-		setLinkedItem((TangibleObject*) inv->getObjectParameter());
+		setTangibleObject((TangibleObject*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -184,12 +189,12 @@ void FactoryCrateAdapter::linkTangibleObject(TangibleObject* item) {
 	return ((FactoryCrateImplementation*) impl)->linkTangibleObject(item);
 }
 
-TangibleObject* FactoryCrateAdapter::getLinkedItem() {
-	return ((FactoryCrateImplementation*) impl)->getLinkedItem();
+TangibleObject* FactoryCrateAdapter::getTangibleObject() {
+	return ((FactoryCrateImplementation*) impl)->getTangibleObject();
 }
 
-void FactoryCrateAdapter::setLinkedItem(TangibleObject* item) {
-	return ((FactoryCrateImplementation*) impl)->setLinkedItem(item);
+void FactoryCrateAdapter::setTangibleObject(TangibleObject* item) {
+	return ((FactoryCrateImplementation*) impl)->setTangibleObject(item);
 }
 
 /*
@@ -232,6 +237,10 @@ FactoryCrateServant::FactoryCrateServant(unsigned long long oid, unsigned int te
 }
 
 FactoryCrateServant::FactoryCrateServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp) : TangibleObjectImplementation(creature, tempCRC, n, tempn, tp) {
+	_classHelper = FactoryCrateHelper::instance();
+}
+
+FactoryCrateServant::FactoryCrateServant(unsigned long long oid, unsigned long long objectCRC, UnicodeString& customName, String& templateName) : TangibleObjectImplementation(oid, objectCRC, customName, templateName) {
 	_classHelper = FactoryCrateHelper::instance();
 }
 

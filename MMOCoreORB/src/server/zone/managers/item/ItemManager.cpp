@@ -28,6 +28,10 @@
 
 #include "../../objects/player/Player.h"
 
+#include "../../objects/tangible/Container.h"
+
+#include "../../objects/installation/factory/FactoryObject.h"
+
 /*
  *	ItemManagerStub
  */
@@ -282,12 +286,26 @@ void ItemManager::loadStructurePlayerItems(Player* player, unsigned long long ce
 		((ItemManagerImplementation*) _impl)->loadStructurePlayerItems(player, cellID);
 }
 
-bool ItemManager::moveItemToDestination(Player* player, TangibleObject* item, SceneObject* destination) {
+void ItemManager::loadFactoryContainerItems(FactoryObject* fact, Container* conti) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 23);
+		method.addObjectParameter(fact);
+		method.addObjectParameter(conti);
+
+		method.executeWithVoidReturn();
+	} else
+		((ItemManagerImplementation*) _impl)->loadFactoryContainerItems(fact, conti);
+}
+
+bool ItemManager::moveItemToDestination(Player* player, TangibleObject* item, SceneObject* destination) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
 		method.addObjectParameter(player);
 		method.addObjectParameter(item);
 		method.addObjectParameter(destination);
@@ -302,7 +320,7 @@ void ItemManager::giveForageItem(Player* player, int group, int count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 25);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(group);
 		method.addSignedIntParameter(count);
@@ -317,7 +335,7 @@ void ItemManager::showDbStats(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 26);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -330,7 +348,7 @@ void ItemManager::showDbDeleted(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 27);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -343,7 +361,7 @@ void ItemManager::purgeDbDeleted(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 28);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -356,7 +374,7 @@ unsigned long long ItemManager::getNextStaticObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 29);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -368,7 +386,7 @@ BlueFrogVector* ItemManager::getBFItemList() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 30);
 
 		return (BlueFrogVector*) method.executeWithObjectReturn();
 	} else
@@ -380,7 +398,7 @@ BlueFrogVector* ItemManager::getBFProfList(String& group) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 		method.addAsciiParameter(group);
 
 		return (BlueFrogVector*) method.executeWithObjectReturn();
@@ -393,7 +411,7 @@ String& ItemManager::getBFProf(String& key) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 		method.addAsciiParameter(key);
 
 		method.executeWithAsciiReturn(_return_getBFProf);
@@ -407,7 +425,7 @@ void ItemManager::giveBFItemSet(Player* player, String& set) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(set);
 
@@ -479,33 +497,36 @@ Packet* ItemManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		loadStructurePlayerItems((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 23:
-		resp->insertBoolean(moveItemToDestination((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter()));
+		loadFactoryContainerItems((FactoryObject*) inv->getObjectParameter(), (Container*) inv->getObjectParameter());
 		break;
 	case 24:
-		giveForageItem((Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		resp->insertBoolean(moveItemToDestination((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter()));
 		break;
 	case 25:
-		showDbStats((Player*) inv->getObjectParameter());
+		giveForageItem((Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 26:
-		showDbDeleted((Player*) inv->getObjectParameter());
+		showDbStats((Player*) inv->getObjectParameter());
 		break;
 	case 27:
-		purgeDbDeleted((Player*) inv->getObjectParameter());
+		showDbDeleted((Player*) inv->getObjectParameter());
 		break;
 	case 28:
-		resp->insertLong(getNextStaticObjectID());
+		purgeDbDeleted((Player*) inv->getObjectParameter());
 		break;
 	case 29:
-		resp->insertLong(getBFItemList()->_getObjectID());
+		resp->insertLong(getNextStaticObjectID());
 		break;
 	case 30:
-		resp->insertLong(getBFProfList(inv->getAsciiParameter(_param0_getBFProfList__String_))->_getObjectID());
+		resp->insertLong(getBFItemList()->_getObjectID());
 		break;
 	case 31:
-		resp->insertAscii(getBFProf(inv->getAsciiParameter(_param0_getBFProf__String_)));
+		resp->insertLong(getBFProfList(inv->getAsciiParameter(_param0_getBFProfList__String_))->_getObjectID());
 		break;
 	case 32:
+		resp->insertAscii(getBFProf(inv->getAsciiParameter(_param0_getBFProf__String_)));
+		break;
+	case 33:
 		giveBFItemSet((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_giveBFItemSet__Player_String_));
 		break;
 	default:
@@ -581,6 +602,10 @@ void ItemManagerAdapter::transferContainerItem(Player* player, TangibleObject* i
 
 void ItemManagerAdapter::loadStructurePlayerItems(Player* player, unsigned long long cellID) {
 	return ((ItemManagerImplementation*) impl)->loadStructurePlayerItems(player, cellID);
+}
+
+void ItemManagerAdapter::loadFactoryContainerItems(FactoryObject* fact, Container* conti) {
+	return ((ItemManagerImplementation*) impl)->loadFactoryContainerItems(fact, conti);
 }
 
 bool ItemManagerAdapter::moveItemToDestination(Player* player, TangibleObject* item, SceneObject* destination) {

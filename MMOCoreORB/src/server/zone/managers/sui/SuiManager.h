@@ -77,8 +77,8 @@ public:
 	void handleRedeedStructure(uint32 boxID, Player* player, uint32 cancel, const int extra);
 	void handleRefreshStatusListBox(uint32 boxID, Player* player, uint32 cancel, const int extra);
 	void handleSetObjectName(uint32 boxID, Player* player, uint32 cancel, const String& name);
-	void handleManageMaintenance(uint32 boxID, Player* player,uint32 cancel, const String& name);
-	void handleAddEnergy(uint32 boxID, Player* player,uint32 cancel, const String& name);
+	void handleManageMaintenance(uint32 boxID, Player* player,uint32 cancel, const int amount);
+	void handleAddEnergy(uint32 boxID, Player* player,uint32 cancel, const int amount);
 
 	void handleColorPicker(uint32 boxID, Player* player, uint32 cancel, const String& value, int var);
 
@@ -107,6 +107,8 @@ public:
 	void handleBankTipConfirm(uint32 boxID, Player* player, uint32 cancel);
 	void handleSlicingMenu(uint32 boxID, Player* player, uint32 cancel, int index);
 	void handleRangerWhatToTrackBox(uint32 boxID, Player* player, uint32 cancel, int index);
+
+	void handleInsertFactorySchem(uint32 boxID, Player* player, uint32 cancel, int index);
 };
 
 #endif /*SUIMANAGER_H_*/

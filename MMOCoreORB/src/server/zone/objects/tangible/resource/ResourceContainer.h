@@ -77,6 +77,8 @@ public:
 
 	void setObjectSubType(int subType);
 
+	void setIsEnergy(bool state);
+
 	int getContents();
 
 	int getDecayResistance();
@@ -108,6 +110,8 @@ public:
 	unsigned long long getResourceID();
 
 	int getMaxContents();
+
+	bool isEnergy();
 
 protected:
 	ResourceContainer(DummyConstructorParameter* param);
@@ -180,6 +184,8 @@ public:
 
 	void setObjectSubType(int subType);
 
+	void setIsEnergy(bool state);
+
 	int getContents();
 
 	int getDecayResistance();
@@ -211,6 +217,8 @@ public:
 	unsigned long long getResourceID();
 
 	int getMaxContents();
+
+	bool isEnergy();
 
 protected:
 	String _param0_setClassSeven__String_;

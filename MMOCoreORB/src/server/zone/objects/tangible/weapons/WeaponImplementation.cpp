@@ -327,6 +327,12 @@ void WeaponImplementation::parseItemAttributes() {
 
 	name = "area";
 	area = itemAttributes->getFloatAttribute(name);
+
+	name = "damagetype";
+	damageType = itemAttributes->getIntAttribute(name);
+
+	name = "armorPiercing";
+	armorPiercing = itemAttributes->getIntAttribute(name);
 }
 
 void WeaponImplementation::updateCraftingValues(DraftSchematic* draftSchematic){

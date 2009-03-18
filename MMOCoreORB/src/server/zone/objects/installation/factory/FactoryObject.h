@@ -15,7 +15,11 @@ class Player;
 
 class FactoryDeed;
 
+class ManufactureSchematic;
+
 class InstallationObject;
+
+class Container;
 
 class Zone;
 
@@ -28,6 +32,44 @@ public:
 	FactoryObject(unsigned long long oid);
 
 	FactoryObject(unsigned long long oid, FactoryDeed* theDeed);
+
+	void createHoppers(unsigned long long inputHopperID, unsigned long long outputHopperID);
+
+	void parseItemAttributes();
+
+	void setManufactureSchem(ManufactureSchematic* manufactureSchem);
+
+	void setManufactureSchem(ManufactureSchematic* manufactureSchem, Player* player);
+
+	ManufactureSchematic* getManufactureSchem();
+
+	void setOperating(bool state);
+
+	void scheduleItemCreation();
+
+	void createItem();
+
+	void sendInsertManSchemTo(Player* player);
+
+	void sendViewIngredientsTo(Player* player);
+
+	void sendInputHopperTo(Player* player);
+
+	void sendOutputHopperTo(Player* player);
+
+	void serializeHoppers();
+
+	int getFactoryItemTypes();
+
+	bool isWearablesFactory();
+
+	bool isEquipmentFactory();
+
+	bool isFoodFactory();
+
+	bool isStructureFactory();
+
+	bool hasSchematic();
 
 protected:
 	FactoryObject(DummyConstructorParameter* param);
@@ -44,6 +86,44 @@ public:
 	FactoryObjectAdapter(FactoryObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void createHoppers(unsigned long long inputHopperID, unsigned long long outputHopperID);
+
+	void parseItemAttributes();
+
+	void setManufactureSchem(ManufactureSchematic* manufactureSchem);
+
+	void setManufactureSchem(ManufactureSchematic* manufactureSchem, Player* player);
+
+	ManufactureSchematic* getManufactureSchem();
+
+	void setOperating(bool state);
+
+	void scheduleItemCreation();
+
+	void createItem();
+
+	void sendInsertManSchemTo(Player* player);
+
+	void sendViewIngredientsTo(Player* player);
+
+	void sendInputHopperTo(Player* player);
+
+	void sendOutputHopperTo(Player* player);
+
+	void serializeHoppers();
+
+	int getFactoryItemTypes();
+
+	bool isWearablesFactory();
+
+	bool isEquipmentFactory();
+
+	bool isFoodFactory();
+
+	bool isStructureFactory();
+
+	bool hasSchematic();
 
 };
 

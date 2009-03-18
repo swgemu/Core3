@@ -148,12 +148,51 @@ void ManufactureSchematic::setManufacturingLimit(int value) {
 		((ManufactureSchematicImplementation*) _impl)->setManufacturingLimit(value);
 }
 
-void ManufactureSchematic::setTangibleObject(TangibleObject* tano) {
+int ManufactureSchematic::getIngredientSize() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 15);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ManufactureSchematicImplementation*) _impl)->getIngredientSize();
+}
+
+String& ManufactureSchematic::getIngredientName(int i) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+		method.addSignedIntParameter(i);
+
+		method.executeWithAsciiReturn(_return_getIngredientName);
+		return _return_getIngredientName;
+	} else
+		return ((ManufactureSchematicImplementation*) _impl)->getIngredientName(i);
+}
+
+int ManufactureSchematic::getIngredientValue(int i) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+		method.addSignedIntParameter(i);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ManufactureSchematicImplementation*) _impl)->getIngredientValue(i);
+}
+
+void ManufactureSchematic::setTangibleObject(TangibleObject* tano) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(tano);
 
 		method.executeWithVoidReturn();
@@ -166,7 +205,7 @@ void ManufactureSchematic::setDataSize(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 19);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -213,9 +252,18 @@ Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMeth
 		setManufacturingLimit(inv->getSignedIntParameter());
 		break;
 	case 15:
-		setTangibleObject((TangibleObject*) inv->getObjectParameter());
+		resp->insertSignedInt(getIngredientSize());
 		break;
 	case 16:
+		resp->insertAscii(getIngredientName(inv->getSignedIntParameter()));
+		break;
+	case 17:
+		resp->insertSignedInt(getIngredientValue(inv->getSignedIntParameter()));
+		break;
+	case 18:
+		setTangibleObject((TangibleObject*) inv->getObjectParameter());
+		break;
+	case 19:
 		setDataSize(inv->getSignedIntParameter());
 		break;
 	default:
@@ -259,6 +307,18 @@ void ManufactureSchematicAdapter::setComplexity(int value) {
 
 void ManufactureSchematicAdapter::setManufacturingLimit(int value) {
 	return ((ManufactureSchematicImplementation*) impl)->setManufacturingLimit(value);
+}
+
+int ManufactureSchematicAdapter::getIngredientSize() {
+	return ((ManufactureSchematicImplementation*) impl)->getIngredientSize();
+}
+
+String& ManufactureSchematicAdapter::getIngredientName(int i) {
+	return ((ManufactureSchematicImplementation*) impl)->getIngredientName(i);
+}
+
+int ManufactureSchematicAdapter::getIngredientValue(int i) {
+	return ((ManufactureSchematicImplementation*) impl)->getIngredientValue(i);
 }
 
 void ManufactureSchematicAdapter::setTangibleObject(TangibleObject* tano) {

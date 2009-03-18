@@ -53,6 +53,8 @@ public:
 						structureManager->spawnHarvester(player, deed, x, z, y, oX, oZ, oY, oW);
 						break;
 					case TangibleObjectImplementation::FACTORY:
+						structureManager->spawnFactory(player, deed, x, z, y, oX, oZ, oY, oW);
+						break;
 					case TangibleObjectImplementation::GENERATOR:
 					case TangibleObjectImplementation::TURRET:
 					case TangibleObjectImplementation::MINEFIELD:
