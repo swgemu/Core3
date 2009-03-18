@@ -69,6 +69,7 @@ public:
 	~ComponentImplementation();
 
 	void init();
+	bool compare(Component* inCmpo);
 
 	void generateAttributes(SceneObject* player);
 	void addAttributes(AttributeListMessage* alm);

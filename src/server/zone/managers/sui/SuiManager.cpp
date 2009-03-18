@@ -206,10 +206,10 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 		handleSetObjectName(boxID, player, cancel, value.toCharArray());
 		break;
 	case SuiWindowType::MANAGE_MAINTENANCE:    // Add/Remove Maintenance
-		handleManageMaintenance(boxID, player, cancel, value.toCharArray());
+		handleManageMaintenance(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	case SuiWindowType::ADD_ENERGY:    // Add Energy
-		handleAddEnergy(boxID, player, cancel, value.toCharArray());
+		handleAddEnergy(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	case SuiWindowType::INSTALLATION_REDEED:    // Redeed Verification Prompt
 		handleCodeForRedeed(boxID, player, cancel, value.toCharArray());
@@ -235,6 +235,9 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 	case SuiWindowType::SET_MOTD:
 		returnString = value;
 		handleSetMOTD(boxID, player, cancel, returnString);
+		break;
+	case SuiWindowType::FACTORY_SCHEMATIC:
+		handleInsertFactorySchem(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	default:
 		//Clean up players sui box:
@@ -457,7 +460,7 @@ void SuiManager::handleSetObjectName(uint32 boxID, Player* player,
 }
 
 void SuiManager::handleManageMaintenance(uint32 boxID, Player* player,
-		uint32 cancel, const String& newCashVal) {
+		uint32 cancel, const int newCashVal) {
 	try {
 
 		player->wlock();
@@ -481,14 +484,15 @@ void SuiManager::handleManageMaintenance(uint32 boxID, Player* player,
 				try {
 					inso->wlock(player);
 
-					int maint = (player->getCashCredits() - atoi(newCashVal.toCharArray()));
+					int maint = (player->getCashCredits() - newCashVal);
 
 					inso->addMaintenance(maint);
 					player->subtractCashCredits(maint);
 
 					StringBuffer report;
 					report << "You successfully make a payment of " << maint << " to "
-					<< inso->getCustomName().toString();
+					<< inso->getCustomName().toString() << ".\n"
+					<< "Maintenance is now at " << inso->getSurplusMaintenance() << " credits.";
 
 					player->sendSystemMessage(report.toString());
 
@@ -525,7 +529,7 @@ void SuiManager::handleManageMaintenance(uint32 boxID, Player* player,
 	}
 }
 void SuiManager::handleAddEnergy(uint32 boxID, Player* player,
-		uint32 cancel, const String& newEnergyVal) {
+		uint32 cancel, const int newEnergyVal) {
 	try {
 
 		player->wlock();
@@ -551,9 +555,9 @@ void SuiManager::handleAddEnergy(uint32 boxID, Player* player,
 				try {
 					inso->wlock(player);
 					// player->getEnergy() - atoi(newEnergyVal.toCharArray())
-					uint energy = player->getAvailablePower() - atoi(newEnergyVal.toCharArray());
+					uint energy = player->getAvailablePower() - newEnergyVal;
 					//inso->getSurplusPower()
-					msg << "SuiManager::handleAddEnergy(" << boxID << ", player, " << cancel << ", " << newEnergyVal << ") : atoi: " << atoi(newEnergyVal.toCharArray()) << " / available: " << player->getAvailablePower() << endl;
+					msg << "SuiManager::handleAddEnergy(" << boxID << ", player, " << cancel << ", " << newEnergyVal << ") : atoi: " << newEnergyVal << " / available: " << player->getAvailablePower() << endl;
 					info(msg.toString());
 
 					inso->addPower(energy);
@@ -1265,6 +1269,8 @@ void SuiManager::handleFreeResource(uint32 boxID, Player* player, uint32 cancel,
 			SuiListBox* listBox = (SuiListBox*)sui;
 			if (cancel!=1){
 				if (index==-1){//sui returns -1 if nothing is selected
+					if(listBox->hasGeneratedMessage())
+						listBox->clearOptions();
 					player->sendMessage(listBox->generateMessage());
 					player->unlock();
 					return;
@@ -1891,6 +1897,75 @@ void SuiManager::handleSetMOTD(uint32 boxID, Player* player, uint32 cancel, cons
 		player->unlock();
 	} catch (...) {
 		error("Unreported exception caught in SuiManager::handleSetMOTD");
+		player->unlock();
+	}
+}
+
+void SuiManager::handleInsertFactorySchem(uint32 boxID, Player* player, uint32 cancel, int index) {
+	try {
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		if(cancel !=1) {
+			if(index != -1) {
+				if(sui->isListBox()) {
+					SuiListBox* listBox = (SuiListBox*) sui;
+					uint64 oid = listBox->getMenuObjectID(index);
+
+					Datapad* datapad = player->getDatapad();
+					SceneObject* scno2 = datapad->getObject(oid);
+					if(scno2->isManufactureSchematic()){
+						ManufactureSchematic* manSchem = (ManufactureSchematic*) scno2;
+						if(manSchem == NULL){
+							player->removeSuiBox(boxID);
+							sui->finalize();
+							player->unlock();
+							return;
+						}
+
+						if (server != NULL){
+							uint64 factOid = listBox->getUsingObjectID();
+							SceneObject* scno = server->getZoneServer()->getObject(factOid);
+							if (scno == NULL){
+								player->removeSuiBox(boxID);
+								sui->finalize();
+								player->unlock();
+								return;
+							}
+
+							if (scno->isTangible()){
+								TangibleObject* tano = (TangibleObject*) scno;
+								if (tano->isInstallation()){
+									InstallationObject* inst = (InstallationObject*) scno;
+									if (inst->isFactory()){
+										FactoryObject* fact = (FactoryObject*) scno;
+
+										fact->setManufactureSchem(manSchem);
+										datapad->removeObject(oid);
+										//TODO:figure out where to save the manufacture schematic
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		player->removeSuiBox(boxID);
+		sui->finalize();
+		player->unlock();
+
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleInsertFactorySchem");
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleInsertFactorySchem");
 		player->unlock();
 	}
 }

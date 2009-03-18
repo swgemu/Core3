@@ -49,6 +49,8 @@ public:
 
 	void spawnHarvester(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 
+	void spawnFactory(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
+
 	void spawnBuilding(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 
 	void deleteInstallation(InstallationObject* inso);
@@ -94,6 +96,8 @@ public:
 	void spawnInstallation(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 
 	void spawnHarvester(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
+
+	void spawnFactory(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 
 	void spawnBuilding(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 

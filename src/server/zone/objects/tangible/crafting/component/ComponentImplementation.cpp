@@ -247,6 +247,15 @@ void ComponentImplementation::updateCraftingValues(DraftSchematic* draftSchemati
 	saveHiddenList();
 }
 
+bool ComponentImplementation::compare(Component* inCmpo){
+	for (int i = 0; i < attributeMap.size(); ++i){
+		//if(attributeMap.elementAt(i).compareTo(inCmpo->getProperty(i)) != 0)
+		if(_this->getProperty(i) != inCmpo->getProperty(i))
+			return false;
+	}
+	return true;
+}
+
 void ComponentImplementation::savePrecisionList(){
 	StringBuffer ss;
 	String element;

@@ -95,6 +95,7 @@ interface ResourceContainer implements TangibleObject {
 	void setObjectCRC(int tempCRC);
 	void setResourceID(unsigned long rid);
 	void setObjectSubType(int subType);
+	void setIsEnergy(boolean state);
 	
 	int getContents();
 	int getDecayResistance();
@@ -113,4 +114,5 @@ interface ResourceContainer implements TangibleObject {
 	unsigned long getResourceID();
 	
 	int getMaxContents();
+	boolean isEnergy();
 }

@@ -410,7 +410,7 @@ void StructureManagerImplementation::loadPlayerStructures() {
 				inso->setObjectType(type);
 				inso->setObjectSubType(subType);
 				inso->setCustomName(name);
-				inso->initializePosition(x, zone->getHeight(x, y), y);
+				inso->initializePosition(x, z, y);//inso->initializePosition(x, zone->getHeight(x, y), y);
 				inso->setDirection(oX, oZ, oY, oW);
 				inso->setPersistent(true); // we loaded it so it must be persistent
 				inso->setUpdated(false); // doesn't need updates
@@ -872,6 +872,12 @@ void StructureManagerImplementation::spawnInstallation(Player * player,
 
  	installationMap->put(inso->getObjectID(), inso);
 
+ 	BaseMessage* msg = new SceneObjectDestroyMessage(deed);
+ 	player->getClient()->sendMessage(msg);
+ 	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
+ 	if (itemManager != NULL)
+ 		itemManager->deletePlayerItem(player, deed, false);
+
  	deed->finalize();
 }
 
@@ -880,7 +886,7 @@ void StructureManagerImplementation::spawnHarvester(Player * player,
  	                float oY, float oW) {
 	HarvesterObject*  hino = new HarvesterObject(player->getNewItemID(), (HarvesterDeed*)deed);
 
-	int size = deed->getSize();
+	//int size = deed->getSize();
 
  	hino->initializePosition(x, z, y);
  	hino->setDirection(oX, oZ, oY, oW);
@@ -888,15 +894,52 @@ void StructureManagerImplementation::spawnHarvester(Player * player,
  	hino->setOwnerID(player->getCharacterID());
  	hino->setZoneProcessServer(server);
 
- 	hino->setMaintenanceRate(30.0f * size);
- 	hino->setPowerRate(25.0f * size);
+ 	//hino->setMaintenanceRate(30.0f * size);
+ 	//hino->setPowerRate(25.0f * size);
 
  	installationSpawnEvent = new InstallationSpawnEvent(player, hino, player->getZone());
  	server->addEvent(installationSpawnEvent, 100);
 
  	installationMap->put(hino->getObjectID(), hino);
 
+ 	BaseMessage* msg = new SceneObjectDestroyMessage(deed);
+ 	player->getClient()->sendMessage(msg);
+ 	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
+ 	if (itemManager != NULL)
+ 		itemManager->deletePlayerItem(player, deed, false);
  	deed->finalize();
+
+ 	createInstallation(hino);
+}
+
+void StructureManagerImplementation::spawnFactory(Player * player,
+ 	                DeedObject *deed, float x, float z, float y, float oX, float oZ,
+ 	                float oY, float oW) {
+	FactoryObject* fact = new FactoryObject(player->getNewItemID(), (FactoryDeed*)deed);
+
+	//int size = deed->getSize();
+
+ 	fact->initializePosition(x, z, y);
+ 	fact->setDirection(oX, oZ, oY, oW);
+ 	fact->setOwner(player->getFirstName());
+ 	fact->setOwnerID(player->getCharacterID());
+ 	fact->setZoneProcessServer(server);
+ 	//hino->setMaintenanceRate(30.0f * size);
+ 	//hino->setPowerRate(25.0f * size);
+
+ 	installationSpawnEvent = new InstallationSpawnEvent(player, fact, player->getZone());
+ 	server->addEvent(installationSpawnEvent, 100);
+
+ 	installationMap->put(fact->getObjectID(), fact);
+
+ 	BaseMessage* msg = new SceneObjectDestroyMessage(deed);
+	player->getClient()->sendMessage(msg);
+	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
+	if (itemManager != NULL)
+		itemManager->deletePlayerItem(player, deed, false);
+	deed->finalize();
+
+	createInstallation(fact);
 }
 
 void StructureManagerImplementation::spawnBuilding(Player * player,
@@ -919,6 +962,13 @@ void StructureManagerImplementation::spawnBuilding(Player * player,
 
 	buio->insertToZone(zone); // need to do a temp structure
 	buildingMap->put(buio->getObjectID(), buio);
+
+	BaseMessage* msg = new SceneObjectDestroyMessage(thedeed);
+	player->getClient()->sendMessage(msg);
+	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
+	if (itemManager != NULL)
+		itemManager->deletePlayerItem(player, thedeed, false);
+	thedeed->finalize();
 }
 
 void StructureManagerImplementation::createInstallation(InstallationObject* inso) {

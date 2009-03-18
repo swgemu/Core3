@@ -5257,14 +5257,12 @@ uint64 PlayerImplementation::getAvailablePower() {
 			if (tano->isResource()) {
 				ResourceContainer* rcno = (ResourceContainer*)tano;
 
-
-				int PE = rcno->getPotentialEnergy();
-				if(PE > 500)
-				{
-					power += (unsigned long long) ( (PE  * 1.0) / 500.0 * (rcno->getContents() * 1.0) );
-				} else
-				{
-					power += rcno->getContents();
+				if (rcno->isEnergy()){
+					int PE = rcno->getPotentialEnergy();
+					if(PE > 500)
+						power += (unsigned long long) ( (PE  * 1.0) / 500.0 * (rcno->getContents() * 1.0) );
+					else
+						power += rcno->getContents();
 				}
 			}
 		}
@@ -5285,50 +5283,48 @@ void PlayerImplementation::removePower(uint64 power) {
 			if (tano->isResource()) {
 				ResourceContainer* rcno = (ResourceContainer*)tano.get();
 
-				int PE = rcno->getPotentialEnergy();
-				if(PE > 500)
-				{
-					containerPower = (unsigned long long) ( (PE  * 1.0) / 500.0 * (rcno->getContents() * 1.0) );
-				} else
-				{
-					containerPower = rcno->getContents();
-				}
+				if (rcno->isEnergy()){
+					int PE = rcno->getPotentialEnergy();
+					if(PE > 500)
+						containerPower = (unsigned long long) ( (PE  * 1.0) / 500.0 * (rcno->getContents() * 1.0) );
+					else
+						containerPower = rcno->getContents();
 
 
-				if(containerPower > power) {
-					// remove
+					if(containerPower > power) {
+						// remove
 
-					uint64 consumedUnits = (unsigned long long) ( (power * 1.0) / ( (containerPower * 1.0) / rcno->getContents() ) );
-					power = 0; // zero it down
+						uint64 consumedUnits = (unsigned long long) ( (power * 1.0) / ( (containerPower * 1.0) / rcno->getContents() ) );
+						power = 0; // zero it down
 
-					rcno->setContents(rcno->getContents() - consumedUnits);
+						rcno->setContents(rcno->getContents() - consumedUnits);
 
-					// Update the ResourceContainer
-					rcno->sendDeltas(_this);
-					// Flag ResourceContainer for saving changes
-					rcno->setUpdated(true);
+						// Update the ResourceContainer
+						rcno->sendDeltas(_this);
+						// Flag ResourceContainer for saving changes
+						rcno->setUpdated(true);
 
-				} else {
+					} else {
 
-					power -= containerPower;
-					rcno->sendDestroyTo(_this);
+						power -= containerPower;
+						rcno->sendDestroyTo(_this);
 
-					Zone* zone = getZone();
+						Zone* zone = getZone();
 
-					if (zone != NULL) {
-						ZoneServer* zoneServer = zone->getZoneServer();
+						if (zone != NULL) {
+							ZoneServer* zoneServer = zone->getZoneServer();
 
-						ItemManager* itemManager;
-						if (zoneServer != NULL && ((itemManager = zoneServer->getItemManager()) != NULL)) {
-							removeInventoryItem(rcno->getObjectID());
+							ItemManager* itemManager;
+							if (zoneServer != NULL && ((itemManager = zoneServer->getItemManager()) != NULL)) {
+								removeInventoryItem(rcno->getObjectID());
 
-							itemManager->deletePlayerItem(_this, rcno, false);
+								itemManager->deletePlayerItem(_this, rcno, false);
 
-							rcno->finalize();
+								rcno->finalize();
+							}
 						}
 					}
 				}
-
 			}
 		}
 	}

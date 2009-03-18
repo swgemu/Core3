@@ -148,6 +148,13 @@ public:
 	//Healing
 	void handleHealWound(Player* player, SceneObject* obj, uint8 attribute = 9);
 	void handleHealEnhance(Player* player, SceneObject* obj, uint8 attribute = 9);
+
+	//Factories
+	void handleInsertFactorySchematic(Player* player, SceneObject* obj);
+	void handleViewFactoryIngredients(Player* player, SceneObject* obj);
+	void handleViewFactoryInput(Player* player, SceneObject* obj);
+	void handleViewFactoryOutput(Player* player, SceneObject* obj);
+	void handleFactoryRun(Player* player, SceneObject* obj);
 };
 
 #endif /*RADIALMANAGER_H_*/

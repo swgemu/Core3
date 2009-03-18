@@ -510,7 +510,7 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player,
 			float sampleRate = (player->getSkillMod("surveying") * density) + System::random(150);
 
 			if (sampleRate > 100) {
-				int resQuantity = int(density * 25 + System::random(3));
+				int resQuantity = int((density * 25 + System::random(3)) * (float(player->getSkillMod("surveying"))/100.0f));
 
 				if (!(resQuantity > 0))
 					resQuantity = 1;
@@ -868,6 +868,7 @@ bool ResourceManagerImplementation::useResourceDeed(Player* player, String& reso
 		return false;
 	}
 
+	newRcno->setPersistent(false);
 	player->addInventoryItem(newRcno);
 	newRcno->sendTo(player);
 	return true;
@@ -944,6 +945,8 @@ void ResourceManagerImplementation::setResourceData(ResourceContainer* resContai
 		resContainer->setContainerFile(resource->getType());
 		resContainer->setObjectCRC(resource->getContainerCRC());
 		resContainer->setObjectSubType(resource->getObjectSubType());
+		if(resource->getClass1()=="Energy")
+			resContainer->setIsEnergy(true);
 
 		resContainer->unlock();
 	} catch(...) {

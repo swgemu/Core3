@@ -8,6 +8,8 @@
 
 #include "../DeedObject.h"
 
+#include "../../../installation/factory/FactoryObject.h"
+
 #include "../../TangibleObject.h"
 
 #include "../../../../packets.h"
@@ -27,6 +29,11 @@ FactoryDeed::FactoryDeed(CreatureObject* creature, int tempCRC, const UnicodeStr
 
 FactoryDeed::FactoryDeed(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn) : DeedObject(DummyConstructorParameter::instance()) {
 	_impl = new FactoryDeedImplementation(oid, tempCRC, n, tempn);
+	_impl->_setStub(this);
+}
+
+FactoryDeed::FactoryDeed(CreatureObject* creature, FactoryObject* fact) : DeedObject(DummyConstructorParameter::instance()) {
+	_impl = new FactoryDeedImplementation(creature, fact);
 	_impl->_setStub(this);
 }
 
@@ -87,12 +94,25 @@ void FactoryDeed::setSurplusPower(int pow) {
 		((FactoryDeedImplementation*) _impl)->setSurplusPower(pow);
 }
 
-void FactoryDeed::setHopperSize(float size) {
+void FactoryDeed::setPowerRate(float rate) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
+		method.addFloatParameter(rate);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryDeedImplementation*) _impl)->setPowerRate(rate);
+}
+
+void FactoryDeed::setHopperSize(float size) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
 		method.addFloatParameter(size);
 
 		method.executeWithVoidReturn();
@@ -105,7 +125,7 @@ void FactoryDeed::setLotSize(int size) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addSignedIntParameter(size);
 
 		method.executeWithVoidReturn();
@@ -113,12 +133,25 @@ void FactoryDeed::setLotSize(int size) {
 		((FactoryDeedImplementation*) _impl)->setLotSize(size);
 }
 
+void FactoryDeed::setBuildRate(float rate) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addFloatParameter(rate);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryDeedImplementation*) _impl)->setBuildRate(rate);
+}
+
 int FactoryDeed::getSurplusMaintenance() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 14);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -130,7 +163,7 @@ float FactoryDeed::getMaintenanceRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 15);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -142,11 +175,23 @@ int FactoryDeed::getSurplusPower() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 16);
 
 		return method.executeWithSignedIntReturn();
 	} else
 		return ((FactoryDeedImplementation*) _impl)->getSurplusPower();
+}
+
+float FactoryDeed::getPowerRate() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((FactoryDeedImplementation*) _impl)->getPowerRate();
 }
 
 float FactoryDeed::getHopperSize() {
@@ -154,7 +199,7 @@ float FactoryDeed::getHopperSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -166,11 +211,23 @@ int FactoryDeed::getLotSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithSignedIntReturn();
 	} else
 		return ((FactoryDeedImplementation*) _impl)->getLotSize();
+}
+
+float FactoryDeed::getBuildRate() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((FactoryDeedImplementation*) _impl)->getBuildRate();
 }
 
 /*
@@ -197,25 +254,37 @@ Packet* FactoryDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		setSurplusPower(inv->getSignedIntParameter());
 		break;
 	case 10:
-		setHopperSize(inv->getFloatParameter());
+		setPowerRate(inv->getFloatParameter());
 		break;
 	case 11:
-		setLotSize(inv->getSignedIntParameter());
+		setHopperSize(inv->getFloatParameter());
 		break;
 	case 12:
-		resp->insertSignedInt(getSurplusMaintenance());
+		setLotSize(inv->getSignedIntParameter());
 		break;
 	case 13:
-		resp->insertFloat(getMaintenanceRate());
+		setBuildRate(inv->getFloatParameter());
 		break;
 	case 14:
-		resp->insertSignedInt(getSurplusPower());
+		resp->insertSignedInt(getSurplusMaintenance());
 		break;
 	case 15:
-		resp->insertFloat(getHopperSize());
+		resp->insertFloat(getMaintenanceRate());
 		break;
 	case 16:
+		resp->insertSignedInt(getSurplusPower());
+		break;
+	case 17:
+		resp->insertFloat(getPowerRate());
+		break;
+	case 18:
+		resp->insertFloat(getHopperSize());
+		break;
+	case 19:
 		resp->insertSignedInt(getLotSize());
+		break;
+	case 20:
+		resp->insertFloat(getBuildRate());
 		break;
 	default:
 		return NULL;
@@ -240,12 +309,20 @@ void FactoryDeedAdapter::setSurplusPower(int pow) {
 	return ((FactoryDeedImplementation*) impl)->setSurplusPower(pow);
 }
 
+void FactoryDeedAdapter::setPowerRate(float rate) {
+	return ((FactoryDeedImplementation*) impl)->setPowerRate(rate);
+}
+
 void FactoryDeedAdapter::setHopperSize(float size) {
 	return ((FactoryDeedImplementation*) impl)->setHopperSize(size);
 }
 
 void FactoryDeedAdapter::setLotSize(int size) {
 	return ((FactoryDeedImplementation*) impl)->setLotSize(size);
+}
+
+void FactoryDeedAdapter::setBuildRate(float rate) {
+	return ((FactoryDeedImplementation*) impl)->setBuildRate(rate);
 }
 
 int FactoryDeedAdapter::getSurplusMaintenance() {
@@ -260,12 +337,20 @@ int FactoryDeedAdapter::getSurplusPower() {
 	return ((FactoryDeedImplementation*) impl)->getSurplusPower();
 }
 
+float FactoryDeedAdapter::getPowerRate() {
+	return ((FactoryDeedImplementation*) impl)->getPowerRate();
+}
+
 float FactoryDeedAdapter::getHopperSize() {
 	return ((FactoryDeedImplementation*) impl)->getHopperSize();
 }
 
 int FactoryDeedAdapter::getLotSize() {
 	return ((FactoryDeedImplementation*) impl)->getLotSize();
+}
+
+float FactoryDeedAdapter::getBuildRate() {
+	return ((FactoryDeedImplementation*) impl)->getBuildRate();
 }
 
 /*
@@ -308,6 +393,10 @@ FactoryDeedServant::FactoryDeedServant(CreatureObject* creature, int tempCRC, co
 }
 
 FactoryDeedServant::FactoryDeedServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp) : DeedObjectImplementation(oid, tempCRC, n, tempn, tp) {
+	_classHelper = FactoryDeedHelper::instance();
+}
+
+FactoryDeedServant::FactoryDeedServant(unsigned long long oid, int tp) : DeedObjectImplementation(oid, tp) {
 	_classHelper = FactoryDeedHelper::instance();
 }
 

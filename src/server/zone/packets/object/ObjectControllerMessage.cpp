@@ -2486,6 +2486,12 @@ void ObjectControllerMessage::parseResourceEmptyHopper(Player* player,
 
 	bool makeNewResource = true;
 
+	//before we mess with the resources, we want to make sure we have room.
+	if (byte1 == 0 && player->getInventory()->getUnequippedItemCount() >= InventoryImplementation::MAXUNEQUIPPEDCOUNT) {
+		player->sendSystemMessage("You don't have enough space in your inventory");
+		return;
+	}
+
 	quantity = (uint32) inso->removeHopperItem(rId, quantity);
 	if (quantity >= 1) {
 		if (byte1 == 0) // Retreive vs Discard

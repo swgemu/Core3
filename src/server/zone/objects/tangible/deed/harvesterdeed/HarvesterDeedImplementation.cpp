@@ -68,6 +68,8 @@ void HarvesterDeedImplementation::init() {
 			targetTemplate = "small_ore_mine";
 			targetFile = "object/installation/mining_ore/shared_mining_ore_harvester_style_1.iff";
 
+			setMaintenanceRate(30.0f);
+			setPowerRate(25.0f);
 			targetName = UnicodeString("Personal Mineral Extractor");
 			break;
 		case MEDIUM:
@@ -75,6 +77,8 @@ void HarvesterDeedImplementation::init() {
 			targetFile
 					= "object/installation/mining_ore/shared_mining_ore_harvester_style_2.iff";
 
+			setMaintenanceRate(60.0f);
+			setPowerRate(50.0f);
 			targetName = UnicodeString("Mineral Mining Installation");
 			break;
 		case LARGE:
@@ -82,6 +86,8 @@ void HarvesterDeedImplementation::init() {
 			targetFile
 					= "object/installation/mining_ore/shared_mining_ore_harvester_heavy.iff";
 
+			setMaintenanceRate(90.0f);
+			setPowerRate(75.0f);
 			targetName = UnicodeString("Heavy Mineral Mining Installation");
 			break;
 		}
@@ -94,6 +100,8 @@ void HarvesterDeedImplementation::init() {
 			targetFile
 					= "object/installation/mining_liquid/shared_mining_liquid_moisture_harvester.iff";
 
+			setMaintenanceRate(30.0f);
+			setPowerRate(25.0f);
 			targetName = UnicodeString("Personal Moisture Vaporator");
 			break;
 		case MEDIUM:
@@ -101,6 +109,8 @@ void HarvesterDeedImplementation::init() {
 			targetFile
 					= "object/installation/mining_liquid/shared_mining_liquid_moisture_harvester_medium.iff";
 
+			setMaintenanceRate(60.0f);
+			setPowerRate(50.0f);
 			targetName = UnicodeString("Moisture Vaporator");
 			break;
 		case LARGE:
@@ -108,6 +118,8 @@ void HarvesterDeedImplementation::init() {
 			targetFile
 					= "object/installation/mining_liquid/shared_mining_liquid_moisture_harvester_heavy.iff";
 
+			setMaintenanceRate(90.0f);
+			setPowerRate(75.0f);
 			targetName = UnicodeString("High Efficiency Moisture Vaporator");
 			break;
 		}
@@ -120,18 +132,24 @@ void HarvesterDeedImplementation::init() {
 			targetFile
 					= "object/installation/mining_liquid/shared_mining_liquid_harvester_style_1.iff";
 
+			setMaintenanceRate(30.0f);
+			setPowerRate(25.0f);
 			targetName = UnicodeString("Personal Chemical Extractor");
 			break;
 		case MEDIUM:
 			targetTemplate = "liquid_mine_medium";
 			targetFile = "object/installation/mining_liquid/shared_mining_liquid_harvester_style_2.iff";
 
+			setMaintenanceRate(60.0f);
+			setPowerRate(50.0f);
 			targetName = UnicodeString("Chemical Extractor");
 			break;
 		case LARGE:
 			targetTemplate = "liquid_mine_large";
 			targetFile = "object/installation/mining_liquid/shared_mining_liquid_harvester_style_3.iff";
 
+			setMaintenanceRate(90.0f);
+			setPowerRate(75.0f);
 			targetName = UnicodeString("Deep Crust Chemical Extractor");
 			break;
 		}
@@ -144,6 +162,8 @@ void HarvesterDeedImplementation::init() {
 			targetFile
 					= "object/installation/mining_gas/shared_mining_gas_harvester_style_1.iff";
 
+			setMaintenanceRate(30.0f);
+			setPowerRate(25.0f);
 			targetName = UnicodeString("Personal Natural Gas Processor");
 			break;
 		case MEDIUM:
@@ -151,6 +171,8 @@ void HarvesterDeedImplementation::init() {
 			targetFile
 					= "object/installation/mining_gas/shared_mining_gas_harvester_style_2.iff";
 
+			setMaintenanceRate(60.0f);
+			setPowerRate(50.0f);
 			targetName = UnicodeString("Natural Gas Processor");
 			break;
 		case LARGE:
@@ -158,6 +180,8 @@ void HarvesterDeedImplementation::init() {
 			targetFile
 					= "object/installation/mining_gas/shared_mining_gas_harvester_style_3.iff";
 
+			setMaintenanceRate(90.0f);
+			setPowerRate(75.0f);
 			targetName = UnicodeString("Heavy Natural Gas Processor");
 			break;
 		}
@@ -170,6 +194,8 @@ void HarvesterDeedImplementation::init() {
 			targetFile
 					= "object/installation/mining_organic/shared_mining_organic_flora_farm.iff";
 
+			setMaintenanceRate(30.0f);
+			setPowerRate(25.0f);
 			targetName = UnicodeString("Micro Flora Farm");
 			break;
 		case MEDIUM:
@@ -177,6 +203,8 @@ void HarvesterDeedImplementation::init() {
 			targetFile
 					= "object/installation/mining_organic/shared_mining_organic_flora_farm_medium.iff";
 
+			setMaintenanceRate(60.0f);
+			setPowerRate(50.0f);
 			targetName = UnicodeString("Automated Flora Farm");
 			break;
 		case LARGE:
@@ -184,6 +212,8 @@ void HarvesterDeedImplementation::init() {
 			targetFile
 					= "object/installation/mining_organic/shared_mining_organic_flora_farm_heavy.iff";
 
+			setMaintenanceRate(90.0f);
+			setPowerRate(75.0f);
 			targetName = UnicodeString("High Capacity Flora Farm");
 			break;
 		}
@@ -194,6 +224,8 @@ void HarvesterDeedImplementation::init() {
 		targetFile
 				= "object/installation/mining_organic/shared_mining_organic_creature_farm.iff";
 
+		setMaintenanceRate(30.0f);
+		setPowerRate(25.0f);
 		targetName = UnicodeString("Creature Harvester");
 		break;
 	}
@@ -202,14 +234,20 @@ void HarvesterDeedImplementation::init() {
 	case SMALL:
 		targetTempFile
 			= "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_1.iff";
+		setMaintenanceRate(30.0f);
+		setPowerRate(25.0f);
 		break;
 	case MEDIUM:
 		targetTempFile
 				= "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_2.iff";
+		setMaintenanceRate(60.0f);
+		setPowerRate(50.0f);
 		break;
 	case LARGE:
 		targetTempFile
 				= "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_heavy.iff";
+		setMaintenanceRate(90.0f);
+		setPowerRate(75.0f);
 		break;
 	}
 }
@@ -234,6 +272,9 @@ void HarvesterDeedImplementation::parseItemAttributes() {
 
 	attr = "lotSize";
 	setLotSize(itemAttributes->getIntAttribute(attr));
+
+	attr = "powerRate";
+	setPowerRate(itemAttributes->getFloatAttribute(attr));
 }
 
 void HarvesterDeedImplementation::updateCraftingValues(DraftSchematic* draftSchematic) {
@@ -256,8 +297,7 @@ void HarvesterDeedImplementation::updateCraftingValues(DraftSchematic* draftSche
 
 	setSurplusMaintenance(0);
 	setSurplusPower(0);
-	setMaintenanceRate(10);//dunno what this is supposed to be set to for each harvester
-	//TODO: figure out lot sizes for all the different sizes.
+	//setMaintenanceRate(10);//dunno what this is supposed to be set to for each harvester
 	setLotSize(1);
 }
 

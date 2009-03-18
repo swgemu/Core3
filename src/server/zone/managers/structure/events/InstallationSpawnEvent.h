@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "../StructureManagerImplementation.h"
 #include "../../../../chat/ChatManagerImplementation.h"
+#include "../../../objects/installation/factory/FactoryObject.h"
 
 class InstallationSpawnEvent : public Event {
 	InstallationObject* inso;
@@ -69,6 +70,12 @@ public:
 			inso->wlock();
 			// need to lock inso
 			inso->insertToZone(z);
+			if(inso->isFactory()){
+				FactoryObject* fact = (FactoryObject*) inso;
+				//this is here because insertToZone sets the factory's zone
+				//there has to be a zone to add the hopper containers to otherwise you cant move items
+				fact->createHoppers(player->getNewItemID(), player->getNewItemID());
+			}
 
 			inso->unlock();
 		} catch (...) {

@@ -19,6 +19,8 @@ HarvesterObjectImplementation::HarvesterObjectImplementation(uint64 oid) : Harve
 	setLoggingName(logname.toString());
 	setLogging(false);
 	setGlobalLogging(true);
+	setMaintenanceRate(10.0f);
+	setPowerRate(10.0f);
 
 	InstallationObjectImplementation::init();
 
@@ -47,7 +49,7 @@ HarvesterObjectImplementation::HarvesterObjectImplementation(uint64 oid, Harvest
 	setSurplusMaintenance(deed->getSurplusMaintenance());
 	setMaintenanceRate(deed->getMaintenanceRate());
 	setSurplusPower(deed->getSurplusPower());
-	setPowerRate(getMaintenanceRate());
+	setPowerRate(deed->getPowerRate());
 	setHopperSizeMax(deed->getHopperSize());
 	setExtractionRate(deed->getExtractionRate());
 }
@@ -106,7 +108,8 @@ void HarvesterObjectImplementation::init() {
 	// Init to Zero
 	hopperResourceUpdateCounter = 0;
 	setHopperSizeMax(59000.0f);
-	setExtractionRate(10.0f);
+	//setExtractionRate(10.0f);
+	//setPowerRate(10.0f);
 	setOperating(false);
 	harvesterType = 0;
 }

@@ -3192,6 +3192,94 @@ bool ItemManagerImplementation::checkProhibitedNesting(Player* player, TangibleO
 	return true;
 }
 
+void ItemManagerImplementation::loadFactoryContainerItems(FactoryObject* fact, Container* conti) {
+	try {
+		conti->wlock();
+
+		uint64 contiID = conti->getObjectID();
+
+		StringBuffer query;
+		query << "select * from `player_storage` where `container` = " << contiID << ";";
+		ResultSet* contiResult = ServerDatabase::instance()->executeQuery(query);
+
+		while (contiResult->next())	{
+			uint64 objectid = contiResult->getUnsignedLong(0);
+			int objecttype = contiResult->getInt(4);
+			uint32 objectcrc = contiResult->getUnsignedInt(3);
+			String objectname = contiResult->getString(2);
+			char* objecttemp = contiResult->getString(5);
+			uint64 container = contiResult->getUnsignedLong(6);
+			uint64 parentID = contiResult->getUnsignedLong(7);
+			String appearance = contiResult->getString(9);
+			uint16 itemMask = contiResult->getUnsignedInt(10);
+			uint32 optionsBitmask = contiResult->getUnsignedInt(19);
+
+			BinaryData cust(appearance);
+
+			String custStr;
+			cust.decode(custStr);
+
+			bool equipped = false;
+
+			String attributes = contiResult->getString(8);
+
+			//TODO: figure out a way to get a player, any player
+			TangibleObject* item = createPlayerObjectTemplate(NULL, objecttype, objectid, objectcrc,
+					UnicodeString(objectname), objecttemp, false, false, "", 0);
+
+			if (item == NULL) {
+				delete contiResult;
+
+				conti->unlock();
+				return;
+			}
+
+			try {
+				item->wlock();
+
+				item->initializePosition(0,0,0);
+				item->setDirection(0,0,1,0);
+
+				item->setAttributes(attributes);
+				item->parseItemAttributes();
+
+				item->setPlayerUseMask(itemMask);
+				item->setOptionsBitmask(optionsBitmask);
+
+				item->setCustomizationString(custStr);
+
+				item->setPersistent(true);
+
+				server->addObject(item);
+
+				conti->addObject(item);
+
+				BaseMessage* linkmsg = item->link(conti);
+				fact->broadcastMessage(linkmsg);
+
+				UpdateTransformMessage* transformMessage = new UpdateTransformMessage(item, 0, 0, 0);
+				fact->broadcastMessage(transformMessage);
+
+				item->unlock();
+			} catch (...) {
+				item->unlock();
+			}
+		}
+
+		delete contiResult;
+
+		conti->unlock();
+	} catch (DatabaseException& e) {
+		System::out << e.getMessage() << "\n";
+
+		conti->unlock();
+	} catch (...) {
+		System::out << "unreported exception caught in ItemManagerImplementation::loadItemsInContainersForStructure(Player* player, Container* conti)\n";
+
+		conti->unlock();
+	}
+}
+
 bool ItemManagerImplementation::removeItemFromSource(Player* player, TangibleObject* item) {
 	//pre: item locked
 
@@ -3276,6 +3364,12 @@ void ItemManagerImplementation::reflectItemMovementInDB(Player* player, Tangible
 		} else if (topmost->isCell()) {
 			insertItemIntoPlayerStorage(player, item); //Nested in a cell
 			break;
+		} else if (topmost->isTangible()) {
+			TangibleObject* tano = (TangibleObject*) topmost;
+			if(tano->isContainer()) {
+				insertItemIntoPlayerStorage(player, item); //In a factory hopper
+				break;
+			}
 		}
 
 		topmost = topmost->getParent();

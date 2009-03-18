@@ -54,12 +54,10 @@ class SceneObject;
 class Player;
 
 class FactoryCrateImplementation : public FactoryCrateServant {
-protected:
-	TangibleObject* linkedItem;
-
 public:
 	FactoryCrateImplementation(uint64 object_id, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 	FactoryCrateImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
+	FactoryCrateImplementation(uint64 object_id, TangibleObject* item);
 
 	~FactoryCrateImplementation();
 
@@ -75,14 +73,20 @@ public:
 
 	void sendDeltas(Player* player);
 
+	/*
+	 * Sets the objectCRC and templateName of this factory crate to match the item inside.
+	 */
 	void linkTangibleObject(TangibleObject* item);
 
-	TangibleObject* getLinkedItem(){
-		return linkedItem;
+	TangibleObject* getTangibleObject(){
+		return (TangibleObject*)getObject(0);
 	}
 
-	void setLinkedItem(TangibleObject* item){
-		linkedItem = item;
+	void setTangibleObject(TangibleObject* item){
+		while(getContainerObjectsSize() > 0)
+			removeObject(0);
+
+		addObject(item);
 	}
 
 };

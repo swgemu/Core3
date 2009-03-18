@@ -630,6 +630,30 @@ float InstallationObject::removeHopperItem(unsigned long long rid, int quantity)
 		return ((InstallationObjectImplementation*) _impl)->removeHopperItem(rid, quantity);
 }
 
+bool InstallationObject::isHarvester() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 53);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->isHarvester();
+}
+
+bool InstallationObject::isFactory() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 54);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->isFactory();
+}
+
 /*
  *	InstallationObjectAdapter
  */
@@ -781,6 +805,12 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 		break;
 	case 52:
 		resp->insertFloat(removeHopperItem(inv->getUnsignedLongParameter(), inv->getSignedIntParameter()));
+		break;
+	case 53:
+		resp->insertBoolean(isHarvester());
+		break;
+	case 54:
+		resp->insertBoolean(isFactory());
 		break;
 	default:
 		return NULL;
@@ -975,6 +1005,14 @@ float InstallationObjectAdapter::getHopperItemQuantity(unsigned long long rid) {
 
 float InstallationObjectAdapter::removeHopperItem(unsigned long long rid, int quantity) {
 	return ((InstallationObjectImplementation*) impl)->removeHopperItem(rid, quantity);
+}
+
+bool InstallationObjectAdapter::isHarvester() {
+	return ((InstallationObjectImplementation*) impl)->isHarvester();
+}
+
+bool InstallationObjectAdapter::isFactory() {
+	return ((InstallationObjectImplementation*) impl)->isFactory();
 }
 
 /*

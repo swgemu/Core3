@@ -440,7 +440,7 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 			handleStructureDestroy(player, obj);
 			break;
 		case 129: //SERVER_TERMINAL_MANAGEMENT_PAY
-			handleStructurePayMaintenance(player, obj);
+			handleStructureManageMaintenance(player, obj);
 			break;
 		case 130: //SERVER_TERMINAL_CREATE_VENDOR
 			handleStructureCreateVendor(player, obj);
@@ -570,8 +570,14 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		case 194: //SERVER_GUILD_MEMBER_MANAGEMENT
 			break;
 		case 195: //SERVER_MANF_HOPPER_INPUT
+			handleViewFactoryInput(player, obj);
+			break;
 		case 196: //SERVER_MANF_HOPPER_OUTPUT
+			handleViewFactoryOutput(player, obj);
+			break;
 		case 197: //SERVER_MANF_STATION_SCHEMATIC
+			handleInsertFactorySchematic(player, obj);
+			break;
 		case 198: //ELEVATOR_UP
 		case 199: //ELEVATOR_DOWN
 		case 200: //SERVER_PET_OPEN
@@ -635,10 +641,16 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 			player->unlock();
 			handleGuildTransferLeader(player);
 			return;
-		case 252: // SERVER_GUILD_TRANSFER_LEADERSHIP
+		case 252: // CAMP_INFO
 			player->unlock();
 			handleCampInfo(player, obj);
 			return;
+		case 253: // FACTORY VIEW SCHEM INGREDIENTS
+			handleViewFactoryIngredients(player, obj);
+			break;
+		case 254: // FACTORY ACTIVATE/DEACTIVATE
+			handleFactoryRun(player, obj);
+			break;
 		default:
 
 			//System::out << "Unknown radial selection received:" << radialID << "\n";
@@ -1438,6 +1450,7 @@ void RadialManager::handleCampInfo(Player* player,SceneObject* obj) {
 
 }
 
+
 void RadialManager::handleInsureAllItems(Player* player, SceneObject* obj) {
 	if (obj->isTangible()) {
 		TangibleObject* tangibleObj = (TangibleObject*) obj;
@@ -1580,4 +1593,107 @@ void RadialManager::handleHealWound(Player* player, SceneObject* obj, uint8 attr
 	String actionModifier = CreatureAttribute::getName(attribute);
 	player->setActionCounter(player->getActionCounter() + 1);
 	player->queueAction(player, obj->getObjectID(), actionCRC, player->getActionCounter(), actionModifier.toCharArray());
+}
+
+void RadialManager::handleInsertFactorySchematic(Player* player, SceneObject* obj){
+
+	if(!obj->isTangible())
+		return;
+
+	TangibleObject* tano = (TangibleObject*) obj;
+
+	if(!tano->isInstallation())
+		return;
+
+	InstallationObject* inst = (InstallationObject*) obj;
+	if(!inst->isFactory())
+		return;
+
+	FactoryObject* fact = (FactoryObject*) obj;
+
+	fact->sendInsertManSchemTo(player);
+}
+void RadialManager::handleViewFactoryIngredients(Player* player, SceneObject* obj){
+
+	if(!obj->isTangible())
+		return;
+
+	TangibleObject* tano = (TangibleObject*) obj;
+
+	if(!tano->isInstallation())
+			return;
+
+	InstallationObject* inst = (InstallationObject*) obj;
+	if(!inst->isFactory())
+		return;
+
+	FactoryObject* fact = (FactoryObject*) obj;
+
+	fact->sendViewIngredientsTo(player);
+}
+void RadialManager::handleViewFactoryInput(Player* player, SceneObject* obj){
+	//open an inventory window with the factory input container
+	//Zone* zone = player->getZone();
+
+	if(!obj->isTangible())
+		return;
+
+	TangibleObject* tano = (TangibleObject*) obj;
+
+	if(!tano->isInstallation())
+		return;
+
+	InstallationObject* inst = (InstallationObject*) obj;
+	if(!inst->isFactory())
+		return;
+
+	FactoryObject* fact = (FactoryObject*) obj;
+
+	if(fact->getOwnerID() == player->getCharacterID()) {
+		fact->sendInputHopperTo(player);
+	}
+}
+void RadialManager::handleViewFactoryOutput(Player* player, SceneObject* obj){
+	//open an inventory window with the factory output container
+	//Zone* zone = player->getZone();
+
+	if(!obj->isTangible())
+		return;
+
+	TangibleObject* tano = (TangibleObject*) obj;
+
+	if(!tano->isInstallation())
+		return;
+
+	InstallationObject* inst = (InstallationObject*) obj;
+	if(!inst->isFactory())
+		return;
+
+	FactoryObject* fact = (FactoryObject*) obj;
+
+	if(fact->getOwnerID() == player->getCharacterID()) {
+		fact->sendOutputHopperTo(player);
+	}
+}
+void RadialManager::handleFactoryRun(Player* player, SceneObject* obj){
+	//if factory is on, turn it off
+	//else turn it on
+	if(!obj->isTangible())
+		return;
+
+	TangibleObject* tano = (TangibleObject*) obj;
+
+	if(!tano->isInstallation())
+		return;
+
+	InstallationObject* inst = (InstallationObject*) obj;
+	if(!inst->isFactory())
+		return;
+
+	FactoryObject* fact = (FactoryObject*) obj;
+
+	if(fact->isOperating())
+		fact->setOperating(false);
+	else
+		fact->setOperating(true);
 }

@@ -1,4 +1,5 @@
 import "../DeedObject";
+import "../../../installation/factory/FactoryObject";
 import "../../TangibleObject";
 import "../../../../packets";
 import "../../../player/Player";
@@ -11,18 +12,26 @@ interface FactoryDeed implements DeedObject {
 	FactoryDeed(unsigned long oid, int tempCRC, const UnicodeString n, const String tempn) {
 		super(oid, tempCRC, n, tempn, int tp);
 	}
+
+	FactoryDeed(CreatureObject creature, FactoryObject fact) {
+		super(unsigned long oid, int tp);
+	}
 	
 	void parseItemAttributes();
 	
 	void setSurplusMaintenance(int maint);
 	void setMaintenanceRate(float rate);
 	void setSurplusPower(int pow);
+	void setPowerRate(float rate);
 	void setHopperSize(float size);
 	void setLotSize(int size);
+	void setBuildRate(float rate);
 	
 	int getSurplusMaintenance();
 	float getMaintenanceRate();
 	int getSurplusPower();
+	float getPowerRate();
 	float getHopperSize();
 	int getLotSize();
+	float getBuildRate();
 }

@@ -132,6 +132,7 @@ void ResourceContainerImplementation::init() {
 	String temp = "";
 	setClassSeven(temp);
 	setResourceName(temp);
+	setIsEnergy(false);
 }
 
 void ResourceContainerImplementation::sendTo(Player* player, bool doClose) {
@@ -282,6 +283,9 @@ void ResourceContainerImplementation::parseItemAttributes() {
 
 	temp = "subtype";
 	objectSubType = itemAttributes->getUnsignedLongAttribute(temp);
+
+	temp = "isEnergy";
+	energy = itemAttributes->getBooleanAttribute(temp);
 
 }
 

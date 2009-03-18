@@ -41,6 +41,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
--- Architect
+-- architect
 
-RunDraftSchematicFile("objects/draftschematics/architect/installationsIvHeavyHarvesters/deedForHeavyMineralMiningInstallation.lua")
+--RunDraftSchematicFile("objects/draftschematics/architect/installationsiFactories/deedForWearablesFactory.lua")

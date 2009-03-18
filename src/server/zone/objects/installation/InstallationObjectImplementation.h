@@ -282,6 +282,14 @@ public:
 	virtual void updateMaintenance() {
 
 	}
+
+	inline bool isHarvester(){
+		return objectSubType == TangibleObjectImplementation::HARVESTER;
+	}
+
+	inline bool isFactory(){
+		return objectSubType == TangibleObjectImplementation::FACTORY;
+	}
 };
 
 #endif

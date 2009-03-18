@@ -25,6 +25,8 @@ public:
 
 	FactoryCrate(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
+	FactoryCrate(unsigned long long oid, TangibleObject* item);
+
 	void generateAttributes(Player* player);
 
 	int useObject(Player* player);
@@ -35,9 +37,9 @@ public:
 
 	void linkTangibleObject(TangibleObject* item);
 
-	TangibleObject* getLinkedItem();
+	TangibleObject* getTangibleObject();
 
-	void setLinkedItem(TangibleObject* item);
+	void setTangibleObject(TangibleObject* item);
 
 protected:
 	FactoryCrate(DummyConstructorParameter* param);
@@ -65,9 +67,9 @@ public:
 
 	void linkTangibleObject(TangibleObject* item);
 
-	TangibleObject* getLinkedItem();
+	TangibleObject* getTangibleObject();
 
-	void setLinkedItem(TangibleObject* item);
+	void setTangibleObject(TangibleObject* item);
 
 };
 
@@ -95,6 +97,7 @@ public:
 public:
 	FactoryCrateServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp);
 	FactoryCrateServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp);
+	FactoryCrateServant(unsigned long long oid, unsigned long long objectCRC, UnicodeString& customName, String& templateName);
 	virtual ~FactoryCrateServant();
 
 	void _setStub(DistributedObjectStub* stub);

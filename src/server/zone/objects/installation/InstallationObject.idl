@@ -123,4 +123,7 @@ interface InstallationObject implements TangibleObject {
 	float getHopperItemQuantity(int index);
 	float getHopperItemQuantity(unsigned long rid);
 	float removeHopperItem(unsigned long rid, int quantity);
+
+	boolean isHarvester();
+	boolean isFactory();
 }

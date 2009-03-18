@@ -107,6 +107,8 @@ public:
 
 	bool isCraftingTool();
 
+	bool isFactoryCrate();
+
 	bool isComponent();
 
 	bool isTrap();
@@ -296,6 +298,8 @@ public:
 	bool isCraftingStation();
 
 	bool isCraftingTool();
+
+	bool isFactoryCrate();
 
 	bool isComponent();
 

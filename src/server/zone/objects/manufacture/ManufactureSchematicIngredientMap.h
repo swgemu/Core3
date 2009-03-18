@@ -70,7 +70,7 @@ public:
 		values.add(value);
 	}
 
-	String getKey(int i) {
+	String& getKey(int i) {
 		return names.get(i);
 	}
 

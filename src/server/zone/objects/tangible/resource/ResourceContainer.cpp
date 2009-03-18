@@ -379,12 +379,25 @@ void ResourceContainer::setObjectSubType(int subType) {
 		((ResourceContainerImplementation*) _impl)->setObjectSubType(subType);
 }
 
-int ResourceContainer::getContents() {
+void ResourceContainer::setIsEnergy(bool state) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 32);
+		method.addBooleanParameter(state);
+
+		method.executeWithVoidReturn();
+	} else
+		((ResourceContainerImplementation*) _impl)->setIsEnergy(state);
+}
+
+int ResourceContainer::getContents() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 33);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -396,7 +409,7 @@ int ResourceContainer::getDecayResistance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -408,7 +421,7 @@ int ResourceContainer::getQuality() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -420,7 +433,7 @@ int ResourceContainer::getFlavor() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -432,7 +445,7 @@ int ResourceContainer::getPotentialEnergy() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -444,7 +457,7 @@ int ResourceContainer::getMalleability() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 38);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -456,7 +469,7 @@ int ResourceContainer::getToughness() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 39);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -468,7 +481,7 @@ int ResourceContainer::getShockResistance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 40);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -480,7 +493,7 @@ int ResourceContainer::getColdResistance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 41);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -492,7 +505,7 @@ int ResourceContainer::getHeatResistance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 42);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -504,7 +517,7 @@ int ResourceContainer::getConductivity() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 43);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -516,7 +529,7 @@ int ResourceContainer::getEntangleResistance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 44);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -528,7 +541,7 @@ String& ResourceContainer::getClassSeven() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 45);
 
 		method.executeWithAsciiReturn(_return_getClassSeven);
 		return _return_getClassSeven;
@@ -541,7 +554,7 @@ String& ResourceContainer::getResourceName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 46);
 
 		method.executeWithAsciiReturn(_return_getResourceName);
 		return _return_getResourceName;
@@ -554,7 +567,7 @@ unsigned long long ResourceContainer::getResourceID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 47);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -566,11 +579,23 @@ int ResourceContainer::getMaxContents() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 48);
 
 		return method.executeWithSignedIntReturn();
 	} else
 		return ((ResourceContainerImplementation*) _impl)->getMaxContents();
+}
+
+bool ResourceContainer::isEnergy() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 49);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((ResourceContainerImplementation*) _impl)->isEnergy();
 }
 
 /*
@@ -663,52 +688,58 @@ Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		setObjectSubType(inv->getSignedIntParameter());
 		break;
 	case 32:
-		resp->insertSignedInt(getContents());
+		setIsEnergy(inv->getBooleanParameter());
 		break;
 	case 33:
-		resp->insertSignedInt(getDecayResistance());
+		resp->insertSignedInt(getContents());
 		break;
 	case 34:
-		resp->insertSignedInt(getQuality());
+		resp->insertSignedInt(getDecayResistance());
 		break;
 	case 35:
-		resp->insertSignedInt(getFlavor());
+		resp->insertSignedInt(getQuality());
 		break;
 	case 36:
-		resp->insertSignedInt(getPotentialEnergy());
+		resp->insertSignedInt(getFlavor());
 		break;
 	case 37:
-		resp->insertSignedInt(getMalleability());
+		resp->insertSignedInt(getPotentialEnergy());
 		break;
 	case 38:
-		resp->insertSignedInt(getToughness());
+		resp->insertSignedInt(getMalleability());
 		break;
 	case 39:
-		resp->insertSignedInt(getShockResistance());
+		resp->insertSignedInt(getToughness());
 		break;
 	case 40:
-		resp->insertSignedInt(getColdResistance());
+		resp->insertSignedInt(getShockResistance());
 		break;
 	case 41:
-		resp->insertSignedInt(getHeatResistance());
+		resp->insertSignedInt(getColdResistance());
 		break;
 	case 42:
-		resp->insertSignedInt(getConductivity());
+		resp->insertSignedInt(getHeatResistance());
 		break;
 	case 43:
-		resp->insertSignedInt(getEntangleResistance());
+		resp->insertSignedInt(getConductivity());
 		break;
 	case 44:
-		resp->insertAscii(getClassSeven());
+		resp->insertSignedInt(getEntangleResistance());
 		break;
 	case 45:
-		resp->insertAscii(getResourceName());
+		resp->insertAscii(getClassSeven());
 		break;
 	case 46:
-		resp->insertLong(getResourceID());
+		resp->insertAscii(getResourceName());
 		break;
 	case 47:
+		resp->insertLong(getResourceID());
+		break;
+	case 48:
 		resp->insertSignedInt(getMaxContents());
+		break;
+	case 49:
+		resp->insertBoolean(isEnergy());
 		break;
 	default:
 		return NULL;
@@ -821,6 +852,10 @@ void ResourceContainerAdapter::setObjectSubType(int subType) {
 	return ((ResourceContainerImplementation*) impl)->setObjectSubType(subType);
 }
 
+void ResourceContainerAdapter::setIsEnergy(bool state) {
+	return ((ResourceContainerImplementation*) impl)->setIsEnergy(state);
+}
+
 int ResourceContainerAdapter::getContents() {
 	return ((ResourceContainerImplementation*) impl)->getContents();
 }
@@ -883,6 +918,10 @@ unsigned long long ResourceContainerAdapter::getResourceID() {
 
 int ResourceContainerAdapter::getMaxContents() {
 	return ((ResourceContainerImplementation*) impl)->getMaxContents();
+}
+
+bool ResourceContainerAdapter::isEnergy() {
+	return ((ResourceContainerImplementation*) impl)->isEnergy();
 }
 
 /*

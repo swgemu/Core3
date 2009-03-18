@@ -123,6 +123,10 @@ public:
 
 	float removeHopperItem(unsigned long long rid, int quantity);
 
+	bool isHarvester();
+
+	bool isFactory();
+
 protected:
 	InstallationObject(DummyConstructorParameter* param);
 
@@ -234,6 +238,10 @@ public:
 	float getHopperItemQuantity(unsigned long long rid);
 
 	float removeHopperItem(unsigned long long rid, int quantity);
+
+	bool isHarvester();
+
+	bool isFactory();
 
 protected:
 	String _param0_setOwner__String_;
