@@ -99,18 +99,18 @@ protected:
 	/*
 	 * Where the crafted item is stored during the crafting process
 	 */
-	TangibleObject* currentTano;
+	ManagedReference<TangibleObject> currentTano;
 
 	/*
 	 * Where the schematic clone is stored during the crafting process
 	 */
-	DraftSchematic* currentDraftSchematic;
+	ManagedReference<DraftSchematic> currentDraftSchematic;
 
 	/*
 	 * This vector holds references to an object that may fall into "limbo"
 	 * during the process, it is cleaned up on crafting close
 	 */
-	Vector<TangibleObject*> tempIngredient;
+	Vector<ManagedReference<TangibleObject> > tempIngredient;
 
 	/*
 	 * A representation of the ingredient slots for a schematic
@@ -120,7 +120,7 @@ protected:
 	/*
 	 * Crafting Hopper
 	 */
-	Container* hopper;
+	ManagedReference<Container> hopper;
 
 	/*
 	 * Current status of the tool @crafting:tool_status_ready, @crafting:tool_status_working

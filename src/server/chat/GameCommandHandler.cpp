@@ -1525,6 +1525,9 @@ void GameCommandHandler::ticketPurchase(StringTokenizer tokenizer, Player* playe
 }
 
 void GameCommandHandler::awardBadge(StringTokenizer tokenizer, Player* player) {
+	if (!tokenizer.hasMoreTokens())
+		return;
+
 	int badgeid = tokenizer.getIntToken();
 	CreatureObject* target = (CreatureObject*) player->getTarget();
 
