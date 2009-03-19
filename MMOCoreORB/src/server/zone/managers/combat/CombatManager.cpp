@@ -1129,7 +1129,8 @@ int CombatManager::getArmorReduction(CreatureObject* target, int damage, int loc
 		currentDamage -= currentDamage * resist / 100.0f;
 		if (DEBUG)
 			System::out << "\tAP/AR changes damage value to " << currentDamage << endl;
-	}
+	} else if (resist >= 100)
+		currentDamage = 0;
 
 	float armorReduction = preArmorDamage - currentDamage;
 
