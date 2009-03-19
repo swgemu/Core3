@@ -43,6 +43,14 @@ public:
 
 	ManufactureSchematic* getManufactureSchem();
 
+	bool containsIngredients(ManufactureSchematic* linkedSchematic, bool doLock = true);
+
+	bool removeIngredients(ManufactureSchematic* linkedSchematic);
+
+	bool putItemInOutputHopper(ManufactureSchematic* linkedSchematic, bool doLock = true);
+
+	void sendEmailToOwner(String& subject, String& bodyMsg);
+
 	void setOperating(bool state);
 
 	void scheduleItemCreation();
@@ -70,6 +78,8 @@ public:
 	bool isStructureFactory();
 
 	bool hasSchematic();
+
+	void clearManufactureSchem();
 
 protected:
 	FactoryObject(DummyConstructorParameter* param);
@@ -97,6 +107,14 @@ public:
 
 	ManufactureSchematic* getManufactureSchem();
 
+	bool containsIngredients(ManufactureSchematic* linkedSchematic, bool doLock);
+
+	bool removeIngredients(ManufactureSchematic* linkedSchematic);
+
+	bool putItemInOutputHopper(ManufactureSchematic* linkedSchematic, bool doLock);
+
+	void sendEmailToOwner(String& subject, String& bodyMsg);
+
 	void setOperating(bool state);
 
 	void scheduleItemCreation();
@@ -125,6 +143,11 @@ public:
 
 	bool hasSchematic();
 
+	void clearManufactureSchem();
+
+protected:
+	String _param0_sendEmailToOwner__String_String_;
+	String _param1_sendEmailToOwner__String_String_;
 };
 
 class FactoryObjectHelper : public DistributedObjectClassHelper, public Singleton<FactoryObjectHelper> {

@@ -187,6 +187,9 @@ void TangibleObjectImplementation::parseItemAttributes() {
 
 	attr = "slicerID";
 	setSlicerID(itemAttributes->getUnsignedLongAttribute(attr));
+
+	attr = "objectcount";
+	setObjectCount(itemAttributes->getIntAttribute(attr));
 }
 
 void TangibleObjectImplementation::generateSkillMods(AttributeListMessage* alm, int skillModType, int skillModValue) {

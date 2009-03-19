@@ -107,12 +107,67 @@ ManufactureSchematic* FactoryObject::getManufactureSchem() {
 		return ((FactoryObjectImplementation*) _impl)->getManufactureSchem();
 }
 
-void FactoryObject::setOperating(bool state) {
+bool FactoryObject::containsIngredients(ManufactureSchematic* linkedSchematic, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 11);
+		method.addObjectParameter(linkedSchematic);
+		method.addBooleanParameter(doLock);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((FactoryObjectImplementation*) _impl)->containsIngredients(linkedSchematic, doLock);
+}
+
+bool FactoryObject::removeIngredients(ManufactureSchematic* linkedSchematic) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addObjectParameter(linkedSchematic);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((FactoryObjectImplementation*) _impl)->removeIngredients(linkedSchematic);
+}
+
+bool FactoryObject::putItemInOutputHopper(ManufactureSchematic* linkedSchematic, bool doLock) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addObjectParameter(linkedSchematic);
+		method.addBooleanParameter(doLock);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((FactoryObjectImplementation*) _impl)->putItemInOutputHopper(linkedSchematic, doLock);
+}
+
+void FactoryObject::sendEmailToOwner(String& subject, String& bodyMsg) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+		method.addAsciiParameter(subject);
+		method.addAsciiParameter(bodyMsg);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryObjectImplementation*) _impl)->sendEmailToOwner(subject, bodyMsg);
+}
+
+void FactoryObject::setOperating(bool state) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
 		method.addBooleanParameter(state);
 
 		method.executeWithVoidReturn();
@@ -125,7 +180,7 @@ void FactoryObject::scheduleItemCreation() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 16);
 
 		method.executeWithVoidReturn();
 	} else
@@ -137,7 +192,7 @@ void FactoryObject::createItem() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 17);
 
 		method.executeWithVoidReturn();
 	} else
@@ -149,7 +204,7 @@ void FactoryObject::sendInsertManSchemTo(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -162,7 +217,7 @@ void FactoryObject::sendViewIngredientsTo(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 19);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -175,7 +230,7 @@ void FactoryObject::sendInputHopperTo(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 20);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -188,7 +243,7 @@ void FactoryObject::sendOutputHopperTo(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 21);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -201,7 +256,7 @@ void FactoryObject::serializeHoppers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 22);
 
 		method.executeWithVoidReturn();
 	} else
@@ -213,7 +268,7 @@ int FactoryObject::getFactoryItemTypes() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 23);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -225,7 +280,7 @@ bool FactoryObject::isWearablesFactory() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 24);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -237,7 +292,7 @@ bool FactoryObject::isEquipmentFactory() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 25);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -249,7 +304,7 @@ bool FactoryObject::isFoodFactory() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 26);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -261,7 +316,7 @@ bool FactoryObject::isStructureFactory() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 27);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -273,11 +328,23 @@ bool FactoryObject::hasSchematic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 28);
 
 		return method.executeWithBooleanReturn();
 	} else
 		return ((FactoryObjectImplementation*) _impl)->hasSchematic();
+}
+
+void FactoryObject::clearManufactureSchem() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 29);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryObjectImplementation*) _impl)->clearManufactureSchem();
 }
 
 /*
@@ -307,46 +374,61 @@ Packet* FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertLong(getManufactureSchem()->_getObjectID());
 		break;
 	case 11:
-		setOperating(inv->getBooleanParameter());
+		resp->insertBoolean(containsIngredients((ManufactureSchematic*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
 	case 12:
-		scheduleItemCreation();
+		resp->insertBoolean(removeIngredients((ManufactureSchematic*) inv->getObjectParameter()));
 		break;
 	case 13:
-		createItem();
+		resp->insertBoolean(putItemInOutputHopper((ManufactureSchematic*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
 	case 14:
-		sendInsertManSchemTo((Player*) inv->getObjectParameter());
+		sendEmailToOwner(inv->getAsciiParameter(_param0_sendEmailToOwner__String_String_), inv->getAsciiParameter(_param1_sendEmailToOwner__String_String_));
 		break;
 	case 15:
-		sendViewIngredientsTo((Player*) inv->getObjectParameter());
+		setOperating(inv->getBooleanParameter());
 		break;
 	case 16:
-		sendInputHopperTo((Player*) inv->getObjectParameter());
+		scheduleItemCreation();
 		break;
 	case 17:
-		sendOutputHopperTo((Player*) inv->getObjectParameter());
+		createItem();
 		break;
 	case 18:
-		serializeHoppers();
+		sendInsertManSchemTo((Player*) inv->getObjectParameter());
 		break;
 	case 19:
-		resp->insertSignedInt(getFactoryItemTypes());
+		sendViewIngredientsTo((Player*) inv->getObjectParameter());
 		break;
 	case 20:
-		resp->insertBoolean(isWearablesFactory());
+		sendInputHopperTo((Player*) inv->getObjectParameter());
 		break;
 	case 21:
-		resp->insertBoolean(isEquipmentFactory());
+		sendOutputHopperTo((Player*) inv->getObjectParameter());
 		break;
 	case 22:
-		resp->insertBoolean(isFoodFactory());
+		serializeHoppers();
 		break;
 	case 23:
-		resp->insertBoolean(isStructureFactory());
+		resp->insertSignedInt(getFactoryItemTypes());
 		break;
 	case 24:
+		resp->insertBoolean(isWearablesFactory());
+		break;
+	case 25:
+		resp->insertBoolean(isEquipmentFactory());
+		break;
+	case 26:
+		resp->insertBoolean(isFoodFactory());
+		break;
+	case 27:
+		resp->insertBoolean(isStructureFactory());
+		break;
+	case 28:
 		resp->insertBoolean(hasSchematic());
+		break;
+	case 29:
+		clearManufactureSchem();
 		break;
 	default:
 		return NULL;
@@ -373,6 +455,22 @@ void FactoryObjectAdapter::setManufactureSchem(ManufactureSchematic* manufacture
 
 ManufactureSchematic* FactoryObjectAdapter::getManufactureSchem() {
 	return ((FactoryObjectImplementation*) impl)->getManufactureSchem();
+}
+
+bool FactoryObjectAdapter::containsIngredients(ManufactureSchematic* linkedSchematic, bool doLock) {
+	return ((FactoryObjectImplementation*) impl)->containsIngredients(linkedSchematic, doLock);
+}
+
+bool FactoryObjectAdapter::removeIngredients(ManufactureSchematic* linkedSchematic) {
+	return ((FactoryObjectImplementation*) impl)->removeIngredients(linkedSchematic);
+}
+
+bool FactoryObjectAdapter::putItemInOutputHopper(ManufactureSchematic* linkedSchematic, bool doLock) {
+	return ((FactoryObjectImplementation*) impl)->putItemInOutputHopper(linkedSchematic, doLock);
+}
+
+void FactoryObjectAdapter::sendEmailToOwner(String& subject, String& bodyMsg) {
+	return ((FactoryObjectImplementation*) impl)->sendEmailToOwner(subject, bodyMsg);
 }
 
 void FactoryObjectAdapter::setOperating(bool state) {
@@ -429,6 +527,10 @@ bool FactoryObjectAdapter::isStructureFactory() {
 
 bool FactoryObjectAdapter::hasSchematic() {
 	return ((FactoryObjectImplementation*) impl)->hasSchematic();
+}
+
+void FactoryObjectAdapter::clearManufactureSchem() {
+	return ((FactoryObjectImplementation*) impl)->clearManufactureSchem();
 }
 
 /*

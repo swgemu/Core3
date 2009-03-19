@@ -60,30 +60,75 @@ FactoryCrateImplementation::FactoryCrateImplementation(uint64 object_id, uint32 
 	init();
 }
 
-FactoryCrateImplementation::FactoryCrateImplementation(CreatureObject* creature, uint32 tempCRC,
-		const UnicodeString& n, const String& tempn) : FactoryCrateServant(creature, tempCRC, n, tempn,
-				FACTORYCRATE) {
-	objectCRC = tempCRC;
+FactoryCrateImplementation::FactoryCrateImplementation(uint64 object_id, TangibleObject* tano)
+	: FactoryCrateServant(object_id, FACTORYCRATE) {
+
+	objectCRC = getCRC(tano);
 	templateTypeName = "factory_n";
-	templateName = tempn;
-	customName = n;
+	templateName = getTempN(tano);
+	String name = tano->getCustomName().toString();
+	if (name.isEmpty())
+		name = tano->getTemplateName() + "(" + tano->getCraftedSerial() + ")";
+	UnicodeString uniName(name);
+	customName = uniName;
 	init();
 }
 
-/*
- * Dont use this constructor until i get it working. use the other ones please :)
- */
-FactoryCrateImplementation::FactoryCrateImplementation(uint64 object_id, TangibleObject* item)
-	:FactoryCrateServant(object_id, objectCRC, customName, templateName) {
+FactoryCrateImplementation::FactoryCrateImplementation(uint64 object_id)
+	:FactoryCrateServant(object_id, FACTORYCRATE) {
 
-	linkTangibleObject(item);//sets this object's objectCRC and templateName
+	objectCRC = 0x28D7B8E0;
+	templateName = "A Factory Crate";
 	templateTypeName = "factory_n";
-	customName = item->getCustomName();
+	customName = "A Factory Crate";
 }
-
 
 FactoryCrateImplementation::~FactoryCrateImplementation(){
 
+}
+
+uint32 FactoryCrateImplementation::getCRC(TangibleObject* tano) {
+
+	if (tano->isWeapon())
+		return 0xF30332FF; //weapon
+	else if (tano->isArmor())
+		return 0x5F411179; //armor
+	else if (tano->isClothing())
+		return 0x8B99A193; //clothing
+	else if (tano->isConsumable())
+		return 0x46A16B2B;//food
+	else if (tano->isPharmaceutical())
+		return 0xCABDD3C7; //chemicals
+	else if (tano->isFurniture())
+		return 0xE75204A1; //furniture
+	else if (tano->isElectronics())
+		return 0x5E744B09; //electronics
+	else if (tano->isInstallation())
+		return 0x226A85F8; //installation
+	else
+		return 0x28D7B8E0; //generic items
+}
+
+String FactoryCrateImplementation::getTempN(TangibleObject* tano) {
+
+	if (tano->isWeapon())
+		return "weapons_factory_crate"; //weapon
+	else if (tano->isArmor())
+		return "armor_crate"; //armor
+	else if (tano->isClothing())
+		return "clothing_factory_crate"; //clothing
+	else if (tano->isConsumable())
+		return "food_crate";//food
+	else if (tano->isPharmaceutical())
+		return "chemicals_crate"; //chemicals
+	else if (tano->isFurniture())
+		return "furniture_crate"; //furniture
+	else if (tano->isElectronics())
+		return "electronics_crate"; //electronics
+	else if (tano->isInstallation())
+		return "installation_crate"; //installation
+	else
+		return "generic_items_crate"; //generic items
 }
 
 void FactoryCrateImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
@@ -105,53 +150,6 @@ void FactoryCrateImplementation::sendRadialResponseTo(Player* player, ObjectMenu
 void FactoryCrateImplementation::init() {
 	objectSubType = TangibleObjectImplementation::FACTORYCRATE;
 
-}
-
-void FactoryCrateImplementation::linkTangibleObject(TangibleObject* item){
-
-	if (item==NULL){
-		objectCRC = 0x28D7B8E0;
-		templateName = "generic_items_crate";
-	}
-
-	if (item->getObjectType() & TangibleObjectImplementation::WEAPON) {
-		objectCRC = 0xF30332FF; //weapon
-		templateName = "weapons_factory_crate";
-	}
-	else if (item->getObjectType() & TangibleObjectImplementation::ARMOR) {
-		objectCRC = 0x5F411179; //armor
-		templateName = "armor_crate";
-	}
-	else if (item->getObjectType() & TangibleObjectImplementation::CLOTHING) {
-		objectCRC = 0x8B99A193; //clothing
-		templateName = "clothing_factory_crate";
-	}
-	else if ((item->getObjectType() & TangibleObjectImplementation::FOOD) || (item->getObjectType() & TangibleObjectImplementation::DRINK)) {
-		objectCRC = 0x46A16B2B; //food
-		templateName = "food_crate";
-	}
-	else if (item->getObjectType() & TangibleObjectImplementation::INSTALLATIONDEED) {
-		objectCRC = 0x226A85F8; //installation
-		templateName = "installation_crate";
-	}
-	else if (item->getObjectType() & TangibleObjectImplementation::PHARMACEUTICAL) {
-		objectCRC = 0xCABDD3C7; //chemicals
-		templateName = "chemicals_crate";
-	}
-	else if (item->getObjectType() & TangibleObjectImplementation::FURNITURE) {
-		objectCRC = 0xE75204A1; //furniture
-		templateName = "furniture_crate";
-	}
-	else if (item->getObjectType() & TangibleObjectImplementation::ELECTRONICS) {
-		objectCRC = 0x5E744B09; //electronics
-		templateName = "electronics_crate";
-	}
-	else {
-		objectCRC = 0x28D7B8E0; //generic items
-		templateName = "generic_items_crate";
-	}
-
-	_this->setTangibleObject(item);
 }
 
 int FactoryCrateImplementation::useObject(Player* player) {
@@ -192,11 +190,14 @@ void FactoryCrateImplementation::sendDeltas(Player* player) {
 }
 
 void FactoryCrateImplementation::parseItemAttributes(){
+	String attr("objectcount");
+	setObjectCount(itemAttributes->getIntAttribute(attr));
 
 }
 
 void FactoryCrateImplementation::generateAttributes(SceneObject* obj) {
-	if (!obj->isPlayer() || _this->getTangibleObject()==NULL)
+	TangibleObject* tano = _this->getTangibleObject();
+	if (!obj->isPlayer() || tano == NULL)
 		return;
 	Player* player = (Player*) obj;
 	AttributeListMessage* alm = new AttributeListMessage(_this);
@@ -208,14 +209,18 @@ void FactoryCrateImplementation::generateAttributes(SceneObject* obj) {
 
 void FactoryCrateImplementation::addAttributes(AttributeListMessage* alm){
 
+	TangibleObject* tano = _this->getTangibleObject();
+	if(tano == NULL)
+		return;
+
 	alm->insertAttribute("volume", "1");
 	alm->insertAttribute("crafter", getCraftersName());
-	alm->insertAttribute("serial_number", _this->getTangibleObject()->getCraftedSerial());
+	alm->insertAttribute("serial_number", tano->getCraftedSerial());
 	alm->insertAttribute("factory_count", getObjectCount());
 	alm->insertAttribute("factory_attribs", "----------");//"#pcontrast2 ----------\\#");
-	alm->insertAttribute("object_type", _this->getTangibleObject()->getObjectType());//"@got_n:component_weapon_ranged");
-	alm->insertAttribute("original_name", _this->getTangibleObject()->getCustomName());//"@craft_weapon_ingredients_n:blaster_power_handler");
-	_this->getTangibleObject()->addAttributes(alm);
+	alm->insertAttribute("object_type", tano->getObjectType());//"@got_n:component_weapon_ranged");
+	alm->insertAttribute("original_name", tano->getCustomName());//"@craft_weapon_ingredients_n:blaster_power_handler");
+	tano->addAttributes(alm);
 }
 
 

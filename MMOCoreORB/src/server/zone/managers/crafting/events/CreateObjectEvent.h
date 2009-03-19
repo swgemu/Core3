@@ -118,8 +118,16 @@ public:
 				ChatSystemMessage* sysMessage = new ChatSystemMessage("system_msg", "prototype_transferred");
 				player->sendMessage(sysMessage);
 
-				FactoryCrate* crate = new FactoryCrate(player->getNewItemID(), 0x28D7B8E0, "A Factory Crate", "generic_items_crate");
-				crate->linkTangibleObject(tano);
+				String name = tano->getCustomName().toString();
+				if(name.isEmpty())
+					name = tano->getTemplateName() + "(" + tano->getCraftedSerial() + ")";
+				UnicodeString uniName(name);
+
+				//FactoryCrate* crate = new FactoryCrate(player->getNewItemID(), 0x28D7B8E0, "A Factory Crate", "generic_items_crate");
+				//FactoryCrate* crate = new FactoryCrate(player->getNewItemID(), tano->getObjectType(), uniName);
+				FactoryCrate* crate = new FactoryCrate(player->getNewItemID(), tano);
+				crate->setOptionsBitmask(8192);
+				crate->setTangibleObject(tano);
 				crate->setObjectCount(25);
 				tano->setPersistent(false);//false until i get them to save/load to the DB correctly
 				crate->setPersistent(false);

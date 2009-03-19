@@ -56,8 +56,8 @@ class Player;
 class FactoryCrateImplementation : public FactoryCrateServant {
 public:
 	FactoryCrateImplementation(uint64 object_id, uint32 tempCRC, const UnicodeString& n, const String& tempn);
-	FactoryCrateImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
-	FactoryCrateImplementation(uint64 object_id, TangibleObject* item);
+	FactoryCrateImplementation(uint64 object_id, TangibleObject* tano);
+	FactoryCrateImplementation(uint64 object_id);
 
 	~FactoryCrateImplementation();
 
@@ -73,11 +73,6 @@ public:
 
 	void sendDeltas(Player* player);
 
-	/*
-	 * Sets the objectCRC and templateName of this factory crate to match the item inside.
-	 */
-	void linkTangibleObject(TangibleObject* item);
-
 	TangibleObject* getTangibleObject() {
 		if (getContainerObjectsSize() > 0)
 			return (TangibleObject*)getObject(0);
@@ -91,6 +86,9 @@ public:
 
 		addObject(item);
 	}
+private:
+	uint32 getCRC(TangibleObject* tano);
+	String getTempN(TangibleObject* tano);
 
 };
 

@@ -380,12 +380,12 @@ bool CraftingManagerImplementation::slotIsFull(Player* player,
 			}
 		}
 
-	} else {
+	} else if(tano->isComponent()) {
 
 		Component* cmpo = (Component*) tano;
 		Component* cmpoInSlot = (Component*) ingredientInSlot;
 
-		if(cmpoInSlot == NULL)
+		if(cmpoInSlot == NULL || cmpo == NULL)
 			return true;
 
 		if(cmpo->getObjectCount() != 0) {
@@ -404,6 +404,16 @@ bool CraftingManagerImplementation::slotIsFull(Player* player,
 				return true;
 			}
 		}
+
+	} else if(tano->isFactoryCrate()) {
+
+		FactoryCrate* crate = (FactoryCrate*) tano;
+		TangibleObject* item = crate->getTangibleObject();
+		if (!item->isComponent())
+			return true;
+
+		return slotIsFull(player, craftingTool, item, ingredientInSlot,
+				ingredientInSlotQuantity, slot, quantity, counter);
 	}
 
 	return false;
@@ -438,6 +448,11 @@ TangibleObject* CraftingManagerImplementation::transferIngredientToSlot(
 		Component* component = (Component*) tano;
 		return transferComponentToSlot(player, component, craftingTool,
 				quantity);
+
+	} else if (tano->isFactoryCrate()) {
+
+		FactoryCrate* crate = (FactoryCrate*) tano;
+		return transferFactoryCrateToSlot(player, crate, craftingTool, quantity);
 
 	} else {
 
@@ -557,6 +572,78 @@ TangibleObject* CraftingManagerImplementation::transferComponentToSlot(
 	}
 
 	newComponent->setObjectCount(quantity);
+
+	// Here we are cloning the resource stack to prevent any operations
+	// From scene destroying the stack in the slot, as it would render the
+	// slot useless
+
+	//if (newComponent == NULL)
+	//return NULL;
+
+	// Add resource to object map
+	player->getZone()->getZoneServer()->addObject(newComponent, true);
+
+	// Sending resource to the player, but NOT to inventory
+	newComponent->sendTo(player);
+
+	// We don't want the temp component to save
+	newComponent->setPersistent(true);
+	newComponent->setUpdated(false);
+
+	//Send attributes to update crafting window (Or quality bars don't show up
+	newComponent->generateAttributes(player);
+
+	// Adding the ObjectID to a vector for proper clean up when the tool is closed
+	// Because otherwise the resource stack is lost in memory
+	craftingTool->addTempIngredient(newComponent);
+
+	return newComponent;
+
+}
+
+TangibleObject* CraftingManagerImplementation::transferFactoryCrateToSlot(
+		Player* player, FactoryCrate* crate, CraftingTool* craftingTool,
+		int& quantity) {
+
+	int objectCount = crate->getObjectCount();
+
+	if (objectCount == 0)
+		objectCount = 1;
+
+	if (objectCount - quantity < 1) {
+
+		// If crate is empty, remove it from inventory
+		deleteItem(player, crate);
+
+		quantity = objectCount;
+
+	} else {
+
+		try {
+
+			// Remove proper amount of item from chosen stack
+			crate->setObjectCount(objectCount - quantity);
+
+			// Update the Tano
+			crate->sendDeltas(player);
+
+			// Flag Tano for saving changes
+			crate->setUpdated(true);
+
+		} catch (...) {
+			info("CraftingManagerImplementation::transferFactoryCrateToSlot - Error changing contents");
+
+		}
+	}
+
+	TangibleObject* factObj = crate->getTangibleObject();
+	TangibleObject* newComponent = itemManager->clonePlayerObjectTemplate(player->getNewItemID(), factObj);
+
+	if (newComponent == NULL)
+		return NULL;
+
+	newComponent->setObjectCount(quantity);
+	newComponent->setOptionsBitmask(8192);
 
 	// Here we are cloning the resource stack to prevent any operations
 	// From scene destroying the stack in the slot, as it would render the

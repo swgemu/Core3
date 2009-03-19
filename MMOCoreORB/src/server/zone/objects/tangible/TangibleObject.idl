@@ -120,6 +120,9 @@ interface TangibleObject implements SceneObject {
 	boolean isSurveyTool();
 	boolean isPharmaceutical();
 
+	boolean isConsumable();
+	boolean isFurniture();
+	boolean isElectronics();
 	boolean isGenericItem();
 
 	boolean isLair();

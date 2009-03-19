@@ -56,13 +56,13 @@ interface FactoryCrate implements TangibleObject {
 	FactoryCrate(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn) {
 		super(oid, tempCRC, n, tempn, int tp);
 	}
-	
-	FactoryCrate(CreatureObject creature, unsigned int tempCRC, const UnicodeString n, const String tempn) {
-		super(creature, tempCRC, n, tempn, int tp);
+
+	FactoryCrate(unsigned long oid, TangibleObject tano) {
+		super(oid, int tp);
 	}
 
-	FactoryCrate(unsigned long oid, TangibleObject item) {
-		super(oid, unsigned long objectCRC, UnicodeString customName, String templateName);
+	FactoryCrate(unsigned long oid) {
+		super(oid, int tp);
 	}
 
 	void generateAttributes(Player player);
@@ -72,8 +72,6 @@ interface FactoryCrate implements TangibleObject {
 	void sendTo(Player player, boolean doClose);
 	
 	void sendDeltas(Player player);
-	
-	void linkTangibleObject(TangibleObject item);
 	
 	TangibleObject getTangibleObject();
 	

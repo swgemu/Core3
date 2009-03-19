@@ -95,6 +95,12 @@ public:
 
 	bool isPharmaceutical();
 
+	bool isConsumable();
+
+	bool isFurniture();
+
+	bool isElectronics();
+
 	bool isGenericItem();
 
 	bool isLair();
@@ -286,6 +292,12 @@ public:
 	bool isSurveyTool();
 
 	bool isPharmaceutical();
+
+	bool isConsumable();
+
+	bool isFurniture();
+
+	bool isElectronics();
 
 	bool isGenericItem();
 

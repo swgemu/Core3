@@ -87,7 +87,8 @@ void FactoryObjectImplementation::createHoppers(uint64 inputHopperID, uint64 out
 	outputHopper->setObjectSubType(TangibleObjectImplementation::CONTAINER);
 	//outputHopper->setSlots(100);
 
-	if(getZone()!=NULL){
+	Zone* zone = _this->getZone();
+	if(zone != NULL){
 		getZone()->getZoneServer()->addObject(inputHopper);
 		getZone()->getZoneServer()->addObject(outputHopper);
 	}
@@ -197,8 +198,10 @@ void FactoryObjectImplementation::setOperating(bool state){
 	if(state == true)
 		scheduleItemCreation();
 	else{
-		if(createItemEvent != NULL && createItemEvent->isQueued())
+		if(createItemEvent != NULL && createItemEvent->isQueued()){
 			server->removeEvent(createItemEvent);
+			createItemEvent->setQueued(false);
+		}
 	}
 
 	InstallationObjectImplementation::setOperating(state);
@@ -208,17 +211,28 @@ void FactoryObjectImplementation::setOperating(bool state){
  * Schedules an item creation event for 8seconds * complexity of the item
  */
 void FactoryObjectImplementation::scheduleItemCreation(){
-	//if outputhopper is not full
-	//schedule another event at 8*complexity seconds
-	//else send an email to player saying it's finished
+	if (outputHopper->getContainerObjectsSize() >= outputHopper->getContainerVolumeLimit()){
+		StringBuffer bodyMsg;
+		String subject("Output Hopper Is Full");
+		bodyMsg << "Please make room in the output hopper before continuing with factory production.";
+
+		sendEmailToOwner(subject, bodyMsg.toString());
+		_this->setOperating(false);
+		return;
+	}
 	int complexity = 1;
 
-	ManufactureSchematic* manufSchem = _this->getManufactureSchem();
-	if(manufSchem != NULL)
+	ManagedReference<ManufactureSchematic> manufSchem = _this->getManufactureSchem();
+	if (manufSchem != NULL)
 		complexity = manufSchem->getComplexity();
 
-	if (createItemEvent != NULL && !createItemEvent->isQueued())
+	if(_this->isOperating()){
+		if (createItemEvent != NULL && !createItemEvent->isQueued()){
 			server->addEvent(createItemEvent, 8000*complexity); // 8*complexity
+			createItemEvent->setQueued(true);
+		}
+	}
+
 }
 
 /*
@@ -226,176 +240,39 @@ void FactoryObjectImplementation::scheduleItemCreation(){
  */
 void FactoryObjectImplementation::createItem(){
 
-	ManufactureSchematic* linkedSchematic = _this->getManufactureSchem();
+	ManagedReference<ManufactureSchematic> linkedSchematic = _this->getManufactureSchem();
 
-	if(linkedSchematic == NULL)
+	if (linkedSchematic == NULL)
 		return;
-	if(_this->getZone() == NULL)
+	if (_this->getZone() == NULL)
 		return;
-	ItemManager* itemManager = _this->getZone()->getZoneServer()->getItemManager();
 
-	bool found = false;
 	linkedSchematic->wlock();
 	inputHopper->wlock();
 
-	/*go through each ingredient and compare with the input hopper
-	 *we cant take away the quantity on the first pass because we want to make sure
-	 *that we have all the resources. otherwise if we used up all of a resource, we couldnt delete
-	 *it in case we didnt have all the subsequent resources...therefore, we must check first.
-	 */
-	for (int i = 0; i < linkedSchematic->getIngredientSize(); ++i) {
-		String ingredientName = linkedSchematic->getIngredientName(i);
+	if (!containsIngredients(linkedSchematic, false)) {
+		StringBuffer bodyMsg;
+		String subject("Ingredients Not Found");
+		bodyMsg << "Your factory has run out of ingredients necessary to continue making items.";
 
-		int j = 0;
-		while ( j < inputHopper->getContainerObjectsSize() && !found) {
-			SceneObject* scno = (SceneObject*) inputHopper->getObject(j);
-			if(scno->isTangible()){
-				TangibleObject* tano = (TangibleObject*) scno;
-
-				if (tano->isResource()){
-					ResourceContainer* rsco = (ResourceContainer*) scno;
-
-					if (rsco->getResourceName() == ingredientName)
-						found = true;
-				}
-				else if (tano->isComponent()){
-					Component* comp = (Component*) scno;
-					String name;
-
-					if(comp->getCustomName().isEmpty())
-						name = "@" + comp->getTemplateTypeName() + "#" + comp->getTemplateName() + " ";
-					else
-						name = comp->getCustomName().toString();
-
-					name = name.concat(comp->getCraftedSerial());
-
-					if(name == ingredientName)
-						found = true;
-				}
-				else if (tano->isFactoryCrate()){
-					FactoryCrate* crate = (FactoryCrate*) scno;
-					TangibleObject* tano = crate->getTangibleObject();
-
-					if(tano->isComponent()){
-						Component* comp = (Component*) tano;
-						String name;
-
-						if(comp->getCustomName().isEmpty())
-							name = "@" + comp->getTemplateTypeName() + "#" + comp->getTemplateName() + " ";
-						else
-							name = comp->getCustomName().toString();
-
-						name = name.concat(comp->getCraftedSerial());
-
-						if(name == ingredientName)
-							found = true;
-					}
-				}
-			}
-			++j;
-		}
-
-		if(found == false){
-			ChatManager* chatManager = _this->getZone()->getZoneServer()->getChatManager();
-
-			String mailSender = _this->getCustomName().toString();
-
-			StringBuffer bodyMsg;
-			UnicodeString subjectSender("Ingredients Not Found");
-			bodyMsg << "Your factory has run out of ingredients necessary to continue making items.";
-			UnicodeString bodySender(bodyMsg.toString());
-
-			chatManager->sendMail(mailSender, subjectSender, bodySender, _this->getOwner());
-
-			inputHopper->unlock();
-			return;
-		}
-
-		++i;
-		found = false;
+		sendEmailToOwner(subject, bodyMsg.toString());
+		_this->setOperating(false);
+		inputHopper->unlock();
+		linkedSchematic->unlock();
+		return;
 	}
 
-	/*
-	 * If we've made it this far, we know all of the resources are present. now we just need to take
-	 * away the correct quantities. Unfortunately we have to search for the items again.
-	 */
-	for (int i = 0; i < linkedSchematic->getIngredientSize(); ++i) {
-		String ingredientName = linkedSchematic->getIngredientName(i);
-		int ingredientValue = linkedSchematic->getIngredientValue(i);
+	if (!removeIngredients(linkedSchematic)) {
+		StringBuffer bodyMsg;
+		String subject("Error Removing Ingredients");
+		bodyMsg << "There has been a problem with removing some ingredients in the hopper. ";
+		bodyMsg << "Please report this error.";
 
-		int j = 0;
-		while ( j < inputHopper->getContainerObjectsSize() && !found) {
-			SceneObject* scno = (SceneObject*) inputHopper->getObject(j);
-
-			if(scno->isTangible()){
-				TangibleObject* tano = (TangibleObject*) scno;
-
-				if (tano->isResource()){
-					ResourceContainer* resco = (ResourceContainer*) scno;
-					if (resco->getResourceName() == ingredientName){
-						resco->setContents(resco->getContents() - ingredientValue);
-
-						if(resco->getContents() < 1){
-							inputHopper->removeObject(resco->getObjectID());
-							//itemManager->deletePlayerStorageItem(rcno);
-							//TODO:delete this item from player_storage table
-							resco->finalize();
-						}
-					}
-				}
-				else if (tano->isComponent()){
-					Component* comp = (Component*) scno;
-					String name;
-
-					if(comp->getCustomName().isEmpty())
-						name = "@" + comp->getTemplateTypeName() + "#" + comp->getTemplateName() + " ";
-					else
-						name = comp->getCustomName().toString();
-
-					name = name.concat(comp->getCraftedSerial());
-
-					if(name == ingredientName){
-						comp->setObjectCount(comp->getObjectCount() - ingredientValue);
-
-						if(comp->getObjectCount() < 1){
-							inputHopper->removeObject(comp->getObjectID());
-							//itemManager->deletePlayerStorageItem(comp);
-							//TODO:delete this item from player_storage table
-							comp->finalize();
-						}
-					}
-				}
-				else if (tano->isFactoryCrate()){
-					FactoryCrate* crate = (FactoryCrate*) scno;
-					TangibleObject* tano = (TangibleObject*) crate->getTangibleObject();
-					String name;
-
-					if(tano->isComponent()){
-						Component* comp = (Component*) tano;
-
-						if(comp->getCustomName().isEmpty())
-							name = "@" + comp->getTemplateTypeName() + "#" + comp->getTemplateName() + " ";
-						else
-							name = comp->getCustomName().toString();
-
-						name = name.concat(comp->getCraftedSerial());
-
-						if(name == ingredientName){
-							crate->setObjectCount(crate->getObjectCount() - ingredientValue);
-
-							if(crate->getObjectCount() < 1){
-								inputHopper->removeObject(crate->getObjectID());
-								//itemManager->deletePlayerStorageItem(comp);
-								//TODO:delete this item from player_storage table
-								crate->finalize();
-							}
-						}
-					}
-				}
-			}
-			++j;
-		}
-		++i;
+		sendEmailToOwner(subject, bodyMsg.toString());
+		_this->setOperating(false);
+		inputHopper->unlock();
+		linkedSchematic->unlock();
+		return;
 	}
 
 	/*
@@ -405,60 +282,401 @@ void FactoryObjectImplementation::createItem(){
 	inputHopper->unlock();
 	outputHopper->wlock();
 
-	int i = 0;
-	found = false;
-	while ( i < outputHopper->getContainerObjectsSize() && !found) {
-		SceneObject* scno = (SceneObject*) outputHopper->getObject(i);
-		scno->wlock();
+	if (!putItemInOutputHopper(linkedSchematic, true)) {
+		StringBuffer bodyMsg;
+		String subject("Error Inserting Item In Output Hopper");
+		bodyMsg << "There has been a problem with inserting the item into the hopper. ";
+		bodyMsg << "Please report this error.";
 
-		if (scno->isTangible()){
-			TangibleObject* tano = (TangibleObject*) scno;
-			if(tano->isFactoryCrate()){
-				FactoryCrate* crate = (FactoryCrate*) scno;
-				TangibleObject* factObj = crate->getTangibleObject();
-				TangibleObject* manfObj = linkedSchematic->getTangibleObject();
-				factObj->wlock();
-				manfObj->wlock();
-
-				if ((factObj->getCraftedSerial() == manfObj->getCraftedSerial()) && crate->getObjectCount() < 25){
-					found = true;
-					if(crate->getObjectCount() == 0)
-						crate->setObjectCount(2);
-					else
-						crate->setObjectCount(crate->getObjectCount() + 1);
-				}
-				factObj->unlock();
-				manfObj->unlock();
-			}
-		}
-		scno->unlock();
-	}
-	if (!found){//TODO:After 1 crate of 25 items is made, it freezes the server somewhere in here.
-		TangibleObject* manfObj = linkedSchematic->getTangibleObject();
-		manfObj->wlock();
-
-		TangibleObject* clone = itemManager->clonePlayerObjectTemplate(_this->getZone()->getZoneServer()->getNextID(), manfObj);
-		manfObj->unlock();
-
-		//FactoryCrate* crate = new FactoryCrate(_this->getZone()->getZoneServer()->getNextID(), clone);
-		FactoryCrate* crate = new FactoryCrate(_this->getZone()->getZoneServer()->getNextID(), 0x28D7B8E0, "A Factory Crate", "generic_items_crate");
-		crate->setTangibleObject(clone);
-		clone->setPersistent(true);
-		crate->setPersistent(true);
-
-		_this->getZone()->getZoneServer()->addObject(crate);
-		outputHopper->addObject((SceneObject*)crate);
+		sendEmailToOwner(subject, bodyMsg.toString());
+		_this->setOperating(false);
+		outputHopper->unlock();
+		linkedSchematic->unlock();
+		return;
 	}
 
 	linkedSchematic->setManufacturingLimit(linkedSchematic->getManufacturingLimit() -1);
-	if(linkedSchematic->getManufacturingLimit() < 1){
+	if (linkedSchematic->getManufacturingLimit() < 1){
+		StringBuffer bodyMsg;
+		String subject("Achieved Manufacturing Limit");
+		bodyMsg << "The factory has depleted the manufacture limit on the current manufacturing schematic. ";
+
+		sendEmailToOwner(subject, bodyMsg.toString());
+		_this->setOperating(false);
+
+		_this->clearManufactureSchem();
+		outputHopper->unlock();
+		linkedSchematic->unlock();
 		linkedSchematic->finalize();
-		linkedSchematic = NULL;
+		return;
 	}
 
 	outputHopper->unlock();
 	linkedSchematic->unlock();
 
+}
+
+/*
+ * This checks for the exact ingredients and number of ingredients
+ * @return bool true if all ingredients in correct values are present. false if not.
+ */
+bool FactoryObjectImplementation::containsIngredients(ManufactureSchematic* linkedSchematic, bool doLock) {
+	try {
+		if(doLock)
+			linkedSchematic->wlock();
+
+		bool found = false;
+
+		/*go through each ingredient and compare with the input hopper
+		 *we cant take away the quantity on the first pass because we want to make sure
+		 *that we have all the resources. otherwise if we used up all of a resource, we couldnt delete
+		 *it in case we didnt have all the subsequent resources...therefore, we must check first.
+		 */
+		for (int i = 0; i < linkedSchematic->getIngredientSize(); ++i) {
+			String ingredientName = linkedSchematic->getIngredientName(i);
+			int ingredientValue = linkedSchematic->getIngredientValue(i);
+
+			int j = 0;
+			while ( j < inputHopper->getContainerObjectsSize() && !found) {
+				ManagedReference<SceneObject> scno = inputHopper->getObject(j);
+				if (scno != NULL) {
+					if (scno->isTangible()){
+						TangibleObject* tano = (TangibleObject*) scno.get();
+
+						if (tano->isResource()){
+							ResourceContainer* rsco = (ResourceContainer*) scno.get();
+
+							if ((rsco->getResourceName() == ingredientName) && (ingredientValue <= rsco->getContents()))
+								found = true;
+						}
+						else if (tano->isComponent()){
+							Component* comp = (Component*) scno.get();
+							String name;
+
+							if (comp->getCustomName().isEmpty())
+								name = "@" + comp->getTemplateTypeName() + "#" + comp->getTemplateName() + " ";
+							else
+								name = comp->getCustomName().toString();
+
+							name = name.concat(comp->getCraftedSerial());
+							int objectCount = comp->getObjectCount();
+							if (objectCount == 0)
+								objectCount = 1;
+
+							if ((name == ingredientName) && (objectCount >= ingredientValue))
+								found = true;
+						}
+						else if (tano->isFactoryCrate()){
+							FactoryCrate* crate = (FactoryCrate*) scno.get();
+							ManagedReference<TangibleObject> tano = crate->getTangibleObject();
+
+							if (tano->isComponent()){
+								Component* comp = (Component*) tano.get();
+								String name;
+
+								if (comp->getCustomName().isEmpty())
+									name = "@" + comp->getTemplateTypeName() + "#" + comp->getTemplateName() + " ";
+								else
+									name = comp->getCustomName().toString();
+
+								name = name.concat(comp->getCraftedSerial());
+								int objectCount = comp->getObjectCount();
+								if (objectCount == 0)
+									objectCount = 1;
+
+								if ((name == ingredientName) && (objectCount >= ingredientValue))
+									found = true;
+							}
+						}
+					}
+				}
+				++j;
+			}
+			if(found == false){
+				if(doLock)
+					linkedSchematic->unlock();
+				return false;
+			}
+
+			++i;
+			found = false;
+		}
+
+
+		if(doLock)
+			linkedSchematic->unlock();
+		return true;
+
+	} catch (...) {
+		if(doLock)
+			linkedSchematic->unlock();
+		System::out << "Unreported exception in FactoryObjectImplementation::containsIngredients()\n";
+		return false;
+	}
+}
+
+/*
+ * CAUTION. Call containsIngredients() first to check if all ingredients are present!
+ * Removes ingredients for creating 1 item based on the linkedSchematic.
+ * @return bool true if all resources were removed, false if only some.
+ */
+bool FactoryObjectImplementation::removeIngredients(ManufactureSchematic* linkedSchematic) {
+	if(linkedSchematic == NULL)
+		return false;
+
+	try {
+		bool found = false;
+		for (int i = 0; i < linkedSchematic->getIngredientSize(); ++i) {
+			String ingredientName = linkedSchematic->getIngredientName(i);
+			int ingredientValue = linkedSchematic->getIngredientValue(i);
+
+			int j = 0;
+			while ( j < inputHopper->getContainerObjectsSize() && !found) {
+				ManagedReference<SceneObject> scno = inputHopper->getObject(j);
+				if(scno != NULL) {
+
+					if(scno->isTangible()){
+						TangibleObject* tano = (TangibleObject*) scno.get();
+
+						if (tano->isResource()){
+							ResourceContainer* resco = (ResourceContainer*) scno.get();
+							if (resco->getResourceName() == ingredientName){
+								resco->setContents(resco->getContents() - ingredientValue);
+								found = true;
+
+								if(resco->getContents() < 1){
+									inputHopper->removeObject(resco->getObjectID());
+									updateItemForSurroundingPlayers((TangibleObject*)resco);
+									//itemManager->deletePlayerStorageItem(rcno);
+									//TODO:delete this item from player_storage table
+									resco->finalize();
+								}
+							}
+						}
+						else if (tano->isComponent()){
+							Component* comp = (Component*) scno.get();
+							String name;
+
+							if(comp->getCustomName().isEmpty())
+								name = "@" + comp->getTemplateTypeName() + "#" + comp->getTemplateName() + " ";
+							else
+								name = comp->getCustomName().toString();
+
+							name = name.concat(comp->getCraftedSerial());
+
+							if(name == ingredientName){
+								comp->setObjectCount(comp->getObjectCount() - ingredientValue);
+								found = true;
+
+								if(comp->getObjectCount() < 1){
+									inputHopper->removeObject(comp->getObjectID());
+									updateItemForSurroundingPlayers((TangibleObject*)comp);
+									//itemManager->deletePlayerStorageItem(comp);
+									//TODO:delete this item from player_storage table
+									comp->finalize();
+								}
+							}
+						}
+						else if (tano->isFactoryCrate()){
+							FactoryCrate* crate = (FactoryCrate*) scno.get();
+							ManagedReference<TangibleObject> tano = crate->getTangibleObject();
+							String name;
+
+							if(tano->isComponent()){
+								Component* comp = (Component*) tano.get();
+
+								if(comp->getCustomName().isEmpty())
+									name = "@" + comp->getTemplateTypeName() + "#" + comp->getTemplateName() + " ";
+								else
+									name = comp->getCustomName().toString();
+
+								name = name.concat(comp->getCraftedSerial());
+
+								if(name == ingredientName){
+									crate->setObjectCount(crate->getObjectCount() - ingredientValue);
+									found = true;
+
+									if(crate->getObjectCount() < 1){
+										inputHopper->removeObject(crate->getObjectID());
+										updateItemForSurroundingPlayers((TangibleObject*)crate);
+										//itemManager->deletePlayerStorageItem(comp);
+										//TODO:delete this item from player_storage table
+										crate->finalize();
+									}
+								}
+							}
+						}
+					}
+				}
+				++j;
+			}
+			if(found == false)
+				return false;
+			++i;
+		}
+		return true;
+	} catch (...) {
+		System::out << "Unreported Exception caught in FactoryObjectImplementation::removeIngredients()\n";
+		return false;
+	}
+}
+
+/*
+ *
+ */
+bool FactoryObjectImplementation::putItemInOutputHopper(ManufactureSchematic* linkedSchematic, bool doLock) {
+	int i = 0;
+	bool found = false;
+	//System::out << "starting the method\n";
+
+	ManagedReference<TangibleObject> manfObj = linkedSchematic->getTangibleObject();
+	if(manfObj == NULL)
+		return false;
+
+	try {
+		ItemManager* itemManager = _this->getZone()->getZoneServer()->getItemManager();
+
+		if(doLock)
+			manfObj->wlock();
+
+		while ( i < outputHopper->getContainerObjectsSize() && !found) {
+			//System::out << "checking...\n";
+			ManagedReference<SceneObject> scno = outputHopper->getObject(i);
+			if(scno != NULL) {
+				scno->wlock();
+
+				if (scno->isTangible()){
+					TangibleObject* tano = (TangibleObject*) scno.get();
+					if(tano->isFactoryCrate()){
+						FactoryCrate* crate = (FactoryCrate*) scno.get();
+						ManagedReference<TangibleObject> factObj = crate->getTangibleObject();
+						if(factObj != NULL) {
+							factObj->wlock();
+
+							if ((factObj->getCraftedSerial() == manfObj->getCraftedSerial()) && crate->getObjectCount() < 25){
+								//System::out << "found it\n";
+								found = true;
+								if(crate->getObjectCount() == 0)
+									crate->setObjectCount(2);
+								else
+									crate->setObjectCount(crate->getObjectCount() + 1);
+								updateItemForSurroundingPlayers((TangibleObject*)crate);
+							}
+							factObj->unlock();
+						}
+					}
+				}
+				scno->unlock();
+			}
+			i++;
+		}
+		if (!found){
+			//System::out << "didnt find it\n";
+
+			ManagedReference<TangibleObject> clone = itemManager->clonePlayerObjectTemplate(_this->getZone()->getZoneServer()->getNextID(), manfObj);
+			if(clone == NULL){
+				outputHopper->unlock();
+				linkedSchematic->unlock();
+				//System::out << "clone is null\n";
+				return false;
+			}
+
+			//FactoryCrate* crate = new FactoryCrate(_this->getZone()->getZoneServer()->getNextID(), clone);
+			String name = clone->getCustomName().toString();
+			if(name.isEmpty())
+				name = clone->getTemplateName() + "(" + clone->getCraftedSerial() + ")";
+			UnicodeString uniName(name);
+			FactoryCrate* crate = new FactoryCrate(_this->getZone()->getZoneServer()->getNextID(), clone.get());
+			crate->setTangibleObject(clone.get());
+			crate->setOptionsBitmask(8192);
+			crate->setPersistent(true);
+
+			//clone->setPersistent(true);
+
+			if(crate == NULL){
+				System::out << "Something wrong with the new factory crate in FactoryObjectImplementation::createItem()\n";
+				outputHopper->unlock();
+				linkedSchematic->unlock();
+				return false;
+			}
+			//System::out << "adding to zone\n";
+			_this->getZone()->getZoneServer()->addObject(crate, true);
+			//System::out << "adding to outputhopper\n";
+			outputHopper->addObject((SceneObject*)crate);
+			//System::out << "done\n";
+			updateItemForSurroundingPlayers((TangibleObject*)crate);
+
+		}
+
+		if(doLock)
+			manfObj->unlock();
+		//System::out << "unlocked manufatureobj\n----\n";
+		return true;
+	} catch (...) {
+		System::out << "Unreported exception caught in FactoryObjectImplementation::putItemInOutputHopper()\n";
+		if(doLock)
+			manfObj->unlock();
+		return false;
+	}
+}
+
+/*
+ * Send an email to the owner from the factory.
+ */
+void FactoryObjectImplementation::sendEmailToOwner(String subject, String bodyMsg) {
+
+	ChatManager* chatManager = _this->getZone()->getZoneServer()->getChatManager();
+
+	String mailSender = _this->getCustomName().toString();
+
+	UnicodeString subjectSender(subject);
+	UnicodeString bodySender(bodyMsg);
+
+	chatManager->sendMail(mailSender, subjectSender, bodySender, _this->getOwner());
+}
+
+/*
+ * This method is called within the other methods to send the items to the player.
+ * This ensures that even if they have the output hopper open, the numbers will still update.
+ */
+void FactoryObjectImplementation::updateItemForSurroundingPlayers(TangibleObject* item) {
+	Zone* zone = _this->getZone();
+	if (zone == NULL)
+		return;
+
+	try {
+		zone->lock();
+		//System::out << "publishing to surrounding players\n";
+		int meter = 32;
+
+		for (int k = 0; k < _this->inRangeObjectCount(); ++k) {
+			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) _this->getInRangeObject(k))->_this);
+
+			if (object->isPlayer()) {
+				Player* creature = (Player*) object;
+
+				if (_this->isInRange(creature, meter)) {
+					if(item->isResource()){
+						ResourceContainer* res = (ResourceContainer*) item;
+						if (res->getContents() < 1)
+							item->sendDestroyTo(creature);
+						else
+							item->sendTo(creature);
+					} else {
+						if (item->getObjectCount() < 0)
+							item->sendDestroyTo(creature);
+						else
+							item->sendTo(creature);
+					}
+				}
+			}
+		}
+
+		zone->unlock();
+	} catch (...) {
+		System::out << "Unreported exception in FactoryObjectImplementation::updateItemForSurroundingPlayers()\n";
+		zone->unlock();
+	}
 }
 
 /*
@@ -479,9 +697,10 @@ void FactoryObjectImplementation::sendInsertManSchemTo(Player* player){
 		if(datapad->getObject(i)->isManufactureSchematic()){
 			ManufactureSchematic* manSchem = (ManufactureSchematic*) datapad->getObject(i);
 
-			TangibleObject* tano = manSchem->getTangibleObject();
+			ManagedReference<TangibleObject> tano = manSchem->getTangibleObject();
 			//TODO:make it only accept certain schematics
-			//if (tano->getObjectType() & _this->getFactoryItemTypes()){
+			//if factory type == schematic type
+
 				String name;
 
 				if(manSchem->getCustomName().isEmpty())
@@ -504,11 +723,11 @@ void FactoryObjectImplementation::sendInsertManSchemTo(Player* player){
  */
 void FactoryObjectImplementation::setManufactureSchem(ManufactureSchematic* manufactureSchem, Player* player) {
 	if (_this->hasSchematic()) {
-		SceneObject* scno = getObject(0);
-		if (scno != NULL) {
-			ManufactureSchematic* linkedSchematic = (ManufactureSchematic*) getObject(0);
+		ManagedReference<ManufactureSchematic> linkedSchematic = _this->getManufactureSchem();
+		if (linkedSchematic != NULL) {
 			if (linkedSchematic->getManufacturingLimit() > 0){
 				player->addDatapadItem(linkedSchematic);
+				linkedSchematic->sendTo(player);
 			}
 			else
 				linkedSchematic->finalize();
@@ -530,7 +749,7 @@ void FactoryObjectImplementation::sendViewIngredientsTo(Player* player){
 	if(_this->hasSchematic()){
 		ingredients->setPromptText("@manf_station:examine_prompt");
 
-		ManufactureSchematic* linkedSchematic = _this->getManufactureSchem();
+		ManagedReference<ManufactureSchematic> linkedSchematic = _this->getManufactureSchem();
 		if(linkedSchematic == NULL)
 			return;
 

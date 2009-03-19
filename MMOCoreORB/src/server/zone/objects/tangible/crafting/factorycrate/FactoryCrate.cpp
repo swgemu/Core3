@@ -23,13 +23,13 @@ FactoryCrate::FactoryCrate(unsigned long long oid, unsigned int tempCRC, const U
 	_impl->_setStub(this);
 }
 
-FactoryCrate::FactoryCrate(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new FactoryCrateImplementation(creature, tempCRC, n, tempn);
+FactoryCrate::FactoryCrate(unsigned long long oid, TangibleObject* tano) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new FactoryCrateImplementation(oid, tano);
 	_impl->_setStub(this);
 }
 
-FactoryCrate::FactoryCrate(unsigned long long oid, TangibleObject* item) : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new FactoryCrateImplementation(oid, item);
+FactoryCrate::FactoryCrate(unsigned long long oid) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new FactoryCrateImplementation(oid);
 	_impl->_setStub(this);
 }
 
@@ -92,25 +92,12 @@ void FactoryCrate::sendDeltas(Player* player) {
 		((FactoryCrateImplementation*) _impl)->sendDeltas(player);
 }
 
-void FactoryCrate::linkTangibleObject(TangibleObject* item) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 10);
-		method.addObjectParameter(item);
-
-		method.executeWithVoidReturn();
-	} else
-		((FactoryCrateImplementation*) _impl)->linkTangibleObject(item);
-}
-
 TangibleObject* FactoryCrate::getTangibleObject() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 10);
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
@@ -122,7 +109,7 @@ void FactoryCrate::setTangibleObject(TangibleObject* item) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(item);
 
 		method.executeWithVoidReturn();
@@ -154,12 +141,9 @@ Packet* FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		sendDeltas((Player*) inv->getObjectParameter());
 		break;
 	case 10:
-		linkTangibleObject((TangibleObject*) inv->getObjectParameter());
-		break;
-	case 11:
 		resp->insertLong(getTangibleObject()->_getObjectID());
 		break;
-	case 12:
+	case 11:
 		setTangibleObject((TangibleObject*) inv->getObjectParameter());
 		break;
 	default:
@@ -183,10 +167,6 @@ void FactoryCrateAdapter::sendTo(Player* player, bool doClose) {
 
 void FactoryCrateAdapter::sendDeltas(Player* player) {
 	return ((FactoryCrateImplementation*) impl)->sendDeltas(player);
-}
-
-void FactoryCrateAdapter::linkTangibleObject(TangibleObject* item) {
-	return ((FactoryCrateImplementation*) impl)->linkTangibleObject(item);
 }
 
 TangibleObject* FactoryCrateAdapter::getTangibleObject() {
@@ -236,11 +216,7 @@ FactoryCrateServant::FactoryCrateServant(unsigned long long oid, unsigned int te
 	_classHelper = FactoryCrateHelper::instance();
 }
 
-FactoryCrateServant::FactoryCrateServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp) : TangibleObjectImplementation(creature, tempCRC, n, tempn, tp) {
-	_classHelper = FactoryCrateHelper::instance();
-}
-
-FactoryCrateServant::FactoryCrateServant(unsigned long long oid, unsigned long long objectCRC, UnicodeString& customName, String& templateName) : TangibleObjectImplementation(oid, objectCRC, customName, templateName) {
+FactoryCrateServant::FactoryCrateServant(unsigned long long oid, int tp) : TangibleObjectImplementation(oid, tp) {
 	_classHelper = FactoryCrateHelper::instance();
 }
 

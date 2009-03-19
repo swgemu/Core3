@@ -49,7 +49,8 @@
 
 class OptionalIdenticalSlot : public CraftingSlot {
 
-	ResourceContainer* contents;
+	TangibleObject* contents;
+	String serial;
 
 public:
 	OptionalIdenticalSlot() :
@@ -74,20 +75,32 @@ public:
 	inline int size() {
 
 		if (contents != NULL)
-			return contents->getContents();
-		else
-			return 0;
+			return contents->getObjectCount();
+		return 0;
 	}
 
 	inline bool add(TangibleObject* tano) {
 
-		ResourceContainer* incomingResource = (ResourceContainer*) tano;
+		if(contents == NULL){
+			contents = tano;
+			serial = tano->getCraftedSerial();
+		} else {
+			if(tano->isComponent() && contents->isComponent()) {
+				if(serial != tano->getCraftedSerial())
+					return false;
 
-		if (contents == NULL)
-			contents = incomingResource;
-		else
-			contents->setContents(contents->getContents()
-					+ incomingResource->getContents());
+				TangibleObject* incomingComponent = (TangibleObject*) tano;
+				int contentsCount = contents->getObjectCount();
+				int incomingCount = incomingComponent->getObjectCount();
+
+				if(contentsCount == 0)
+					contentsCount = 1;
+				if(incomingCount == 0)
+					incomingCount == 1;
+
+				contents->setObjectCount(contentsCount + incomingCount);
+			}
+		}
 
 		return true;
 	}
@@ -110,7 +123,7 @@ public:
 		} else {
 
 			System::out << "Name: " << contents->getCustomName().toString() << endl;
-			System::out << "Quantity: " << contents->getContents() << endl;
+			System::out << "Quantity: " << contents->getObjectCount() << endl;
 		}
 	}
 };
