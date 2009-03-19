@@ -105,7 +105,7 @@ void FactoryObjectImplementation::createHoppers(uint64 inputHopperID, uint64 out
 void FactoryObjectImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
 	if(_this->getOwnerID() == player->getCharacterID()){
 
-		RadialMenuParent* options = new RadialMenuParent(118, 3, "@manf_station:option");
+		RadialMenuParent* options = new RadialMenuParent(118, 3, "@manf_station:options");
 		options->addRadialMenuItem(197, 3, "@manf_station:schematic");
 		options->addRadialMenuItem(253, 3, "@manf_station:ingredients");
 		options->addRadialMenuItem(195, 3, "@manf_station:input_hopper");
@@ -118,10 +118,10 @@ void FactoryObjectImplementation::sendRadialResponseTo(Player* player, ObjectMen
 
 		RadialMenuParent* management = new RadialMenuParent(117, 3, "@player_structure:management");
 		management->addRadialMenuItem(128, 3, "@player_structure:permission_destroy");
-		management->addRadialMenuItem(124, 3, "@player_structure:mangement_status");
+		management->addRadialMenuItem(124, 3, "@player_structure:management_status");
 		management->addRadialMenuItem(50, 3, "@player_structure:set_name");
 		management->addRadialMenuItem(129, 3, "@player_structure:management_pay");
-		management->addRadialMenuItem(77, 3, "@player_strucutre:management_power");
+		management->addRadialMenuItem(77, 3, "@player_structure:management_power");
 
 		omr->addRadialParent(options);
 		omr->addRadialParent(management);
@@ -194,6 +194,7 @@ void FactoryObjectImplementation::sendOutputHopperTo(Player* player){
  * @param bool state true or false.
  */
 void FactoryObjectImplementation::setOperating(bool state){
+	InstallationObjectImplementation::setOperating(state);
 
 	if(state == true)
 		scheduleItemCreation();
@@ -203,8 +204,6 @@ void FactoryObjectImplementation::setOperating(bool state){
 			createItemEvent->setQueued(false);
 		}
 	}
-
-	InstallationObjectImplementation::setOperating(state);
 }
 
 /*
