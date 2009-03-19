@@ -244,7 +244,8 @@ void FactoryObjectImplementation::createItem(){
 
 	if (linkedSchematic == NULL)
 		return;
-	if (_this->getZone() == NULL)
+	Zone* zone = _this->getZone();
+	if (zone == NULL)
 		return;
 
 	linkedSchematic->wlock();
@@ -726,7 +727,7 @@ void FactoryObjectImplementation::setManufactureSchem(ManufactureSchematic* manu
 		ManagedReference<ManufactureSchematic> linkedSchematic = _this->getManufactureSchem();
 		if (linkedSchematic != NULL) {
 			if (linkedSchematic->getManufacturingLimit() > 0){
-				player->addDatapadItem(linkedSchematic);
+				player->addDatapadItem((SceneObject*)linkedSchematic.get());
 				linkedSchematic->sendTo(player);
 			}
 			else

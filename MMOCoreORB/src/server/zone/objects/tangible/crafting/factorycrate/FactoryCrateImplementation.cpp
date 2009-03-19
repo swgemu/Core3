@@ -78,7 +78,7 @@ FactoryCrateImplementation::FactoryCrateImplementation(uint64 object_id)
 	:FactoryCrateServant(object_id, FACTORYCRATE) {
 
 	objectCRC = 0x28D7B8E0;
-	templateName = "A Factory Crate";
+	templateName = "generic_items_crate";
 	templateTypeName = "factory_n";
 	customName = "A Factory Crate";
 }
@@ -153,7 +153,8 @@ void FactoryCrateImplementation::init() {
 }
 
 int FactoryCrateImplementation::useObject(Player* player) {
-	if (_this->getTangibleObject()==NULL)
+	ManagedReference<TangibleObject> tano = _this->getTangibleObject();
+	if (tano == NULL)
 		return 0;
 
 	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
@@ -172,7 +173,7 @@ int FactoryCrateImplementation::useObject(Player* player) {
 		player->removeInventoryItem(_this);
 		_this->sendDestroyTo(player);
 		itemManager->deletePlayerItem(player, _this, false);
-		_this->getTangibleObject()->finalize();
+		tano->finalize();
 		_this->finalize();
 	}
 	return 1;
@@ -209,7 +210,7 @@ void FactoryCrateImplementation::generateAttributes(SceneObject* obj) {
 
 void FactoryCrateImplementation::addAttributes(AttributeListMessage* alm){
 
-	TangibleObject* tano = _this->getTangibleObject();
+	ManagedReference<TangibleObject> tano = _this->getTangibleObject();
 	if(tano == NULL)
 		return;
 
