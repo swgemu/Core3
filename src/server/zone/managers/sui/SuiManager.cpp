@@ -1919,9 +1919,9 @@ void SuiManager::handleInsertFactorySchem(uint32 boxID, Player* player, uint32 c
 					uint64 oid = listBox->getMenuObjectID(index);
 
 					Datapad* datapad = player->getDatapad();
-					SceneObject* scno2 = datapad->getObject(oid);
+					ManagedReference<SceneObject> scno2 = datapad->getObject(oid);
 					if(scno2->isManufactureSchematic()){
-						ManufactureSchematic* manSchem = (ManufactureSchematic*) scno2;
+						ManufactureSchematic* manSchem = (ManufactureSchematic*) scno2.get();
 						if(manSchem == NULL){
 							player->removeSuiBox(boxID);
 							sui->finalize();
@@ -1931,7 +1931,7 @@ void SuiManager::handleInsertFactorySchem(uint32 boxID, Player* player, uint32 c
 
 						if (server != NULL){
 							uint64 factOid = listBox->getUsingObjectID();
-							SceneObject* scno = server->getZoneServer()->getObject(factOid);
+							ManagedReference<SceneObject> scno = server->getZoneServer()->getObject(factOid);
 							if (scno == NULL){
 								player->removeSuiBox(boxID);
 								sui->finalize();
@@ -1940,15 +1940,15 @@ void SuiManager::handleInsertFactorySchem(uint32 boxID, Player* player, uint32 c
 							}
 
 							if (scno->isTangible()){
-								TangibleObject* tano = (TangibleObject*) scno;
+								TangibleObject* tano = (TangibleObject*) scno.get();
 								if (tano->isInstallation()){
-									InstallationObject* inst = (InstallationObject*) scno;
+									InstallationObject* inst = (InstallationObject*) scno.get();
 									if (inst->isFactory()){
-										FactoryObject* fact = (FactoryObject*) scno;
+										FactoryObject* fact = (FactoryObject*) scno.get();
 
 										fact->setManufactureSchem(manSchem);
 										datapad->removeObject(oid);
-										//TODO:figure out where to save the manufacture schematic
+										manSchem->sendDestroyTo(player);
 									}
 								}
 							}

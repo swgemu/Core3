@@ -3367,7 +3367,8 @@ void ItemManagerImplementation::reflectItemMovementInDB(Player* player, Tangible
 		} else if (topmost->isTangible()) {
 			TangibleObject* tano = (TangibleObject*) topmost;
 			if(tano->isContainer()) {
-				insertItemIntoPlayerStorage(player, item); //In a factory hopper
+				//TODO:get saving working
+				//insertItemIntoPlayerStorage(player, item); //In a factory hopper
 				break;
 			}
 		}

@@ -455,6 +455,8 @@ public:
 			objectCount = count;
 
 		}
+		String temp = "objectcount";
+		itemAttributes->setIntAttribute(temp, count);
 	}
 
 	inline bool isInsured() {
@@ -660,6 +662,18 @@ public:
 	inline bool isPharmaceutical() {
 		return objectSubType == PHARMACEUTICAL;
     }
+
+	inline bool isConsumable() {
+		return (objectSubType == FOOD || objectSubType == DRINK);
+	}
+
+	inline bool isElectronics() {
+		return objectSubType == ELECTRONICS;
+	}
+
+	inline bool isFurniture() {
+		return objectSubType == FURNITURE;
+	}
 
     inline bool isGenericItem() {
         return objectSubType == GENERICITEM;

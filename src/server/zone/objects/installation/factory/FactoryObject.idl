@@ -26,6 +26,11 @@ interface FactoryObject implements InstallationObject {
 	void setManufactureSchem(ManufactureSchematic manufactureSchem, Player player);
 	ManufactureSchematic getManufactureSchem();
 	
+	boolean containsIngredients(ManufactureSchematic linkedSchematic, boolean doLock = true);
+	boolean removeIngredients(ManufactureSchematic linkedSchematic);
+	boolean putItemInOutputHopper(ManufactureSchematic linkedSchematic, boolean doLock = true);
+	void sendEmailToOwner(String subject, String bodyMsg);
+
 	void setOperating(boolean state);
 	void scheduleItemCreation();
 	void createItem();
@@ -41,4 +46,5 @@ interface FactoryObject implements InstallationObject {
 	boolean isFoodFactory();
 	boolean isStructureFactory();
 	boolean hasSchematic();
+	void clearManufactureSchem();
 }

@@ -82,14 +82,24 @@ public:
 
 	inline bool add(TangibleObject* tano) {
 
-		TangibleObject* incomingComponent = (TangibleObject*) tano;
+		if(contents == NULL){
+			contents = tano;
+			serial = tano->getCraftedSerial();
+		} else {
+			if(!contents->isComponent() || (serial != tano->getCraftedSerial()))
+				return false;
 
-		if (contents == NULL)
-			contents = incomingComponent;
-		else
-			contents->setObjectCount(contents->getObjectCount()
-					+ incomingComponent->getObjectCount());
+			TangibleObject* incomingComponent = (TangibleObject*) tano;
+			int contentsCount = contents->getObjectCount();
+			int incomingCount = incomingComponent->getObjectCount();
 
+			if(contentsCount == 0)
+				contentsCount = 1;
+			if(incomingCount == 0)
+				incomingCount == 1;
+
+			contents->setObjectCount(contentsCount + incomingCount);
+		}
 		return true;
 	}
 

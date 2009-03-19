@@ -224,6 +224,9 @@ private:
 	TangibleObject* transferComponentToSlot(
 			Player* player, Component* component, CraftingTool* craftingTool,
 			int& quantity);
+	TangibleObject* transferFactoryCrateToSlot(
+				Player* player, FactoryCrate* crate, CraftingTool* craftingTool,
+				int& quantity);
 
 	// Turn on Experimentation window
 	void enableExperimentation(Player* player, CraftingTool* craftingTool);

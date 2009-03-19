@@ -28,8 +28,8 @@ class ManufactureSchematic;
 class FactoryObjectImplementation : public FactoryObjectServant {
 protected:
 	float hopperSizeMax, buildRate;
-	Container* inputHopper;
-	Container* outputHopper;
+	ManagedReference<Container> inputHopper;
+	ManagedReference<Container> outputHopper;
 	FactoryCreateItemEvent* createItemEvent;
 
 public:
@@ -40,6 +40,12 @@ public:
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 	void createHoppers(uint64 inputHopperID, uint64 outputHopperID);
 	void parseItemAttributes();
+	void updateItemForSurroundingPlayers(TangibleObject* item);
+
+	bool containsIngredients(ManufactureSchematic* linkedSchematic, bool doLock = true);
+	bool removeIngredients(ManufactureSchematic* linkedSchematic);
+	bool putItemInOutputHopper(ManufactureSchematic* linkedSchematic, bool doLock = true);
+	void sendEmailToOwner(String subject, String bodyMsg);
 
 	void setOperating(bool state);
 	void scheduleItemCreation();
@@ -89,10 +95,14 @@ public:
 	}
 
 	inline ManufactureSchematic* getManufactureSchem(){
-		if(_this->getContainerObjectsSize() > 0)
-			return (ManufactureSchematic*)getObject(0);
-		else
-			return NULL;
+		if(_this->getContainerObjectsSize() > 0){
+			ManagedReference<SceneObject> scno = getObject(0);
+			if(scno->isManufactureSchematic()){
+				ManufactureSchematic* manuf = (ManufactureSchematic*) scno.get();
+				return manuf;
+			}
+		}
+		return NULL;
 	}
 
 	int getFactoryType();
@@ -116,6 +126,11 @@ public:
 
 	bool hasSchematic() {
 		return _this->getContainerObjectsSize() > 0;
+	}
+
+	void clearManufactureSchem() {
+		while (_this->getContainerObjectsSize() > 0)
+			removeObject(0);
 	}
 
 private:
