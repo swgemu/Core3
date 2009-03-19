@@ -61,7 +61,7 @@ void FactoryObjectImplementation::init() {
 
 	createItemEvent = new FactoryCreateItemEvent(this);
 
-	setOperating(false);
+	InstallationObjectImplementation::setOperating(false);
 }
 
 /*
@@ -73,19 +73,19 @@ void FactoryObjectImplementation::init() {
  */
 void FactoryObjectImplementation::createHoppers(uint64 inputHopperID, uint64 outputHopperID){
 
-	Container* input = new Container(inputHopperID);
-	input->setParent(_this);
-	input->setContainerVolumeLimit(50);
-	Container* output = new Container(outputHopperID);
-	output->setParent(_this);
-	output->setContainerVolumeLimit(50);
+	if (inputHopper == NULL) {
+		inputHopper = new Container(inputHopperID);
+		inputHopper->setParent(_this);
+		inputHopper->setContainerVolumeLimit(50);
+		inputHopper->setObjectSubType(TangibleObjectImplementation::CONTAINER);
+	}
 
-	inputHopper = input;
-	outputHopper = output;
-	inputHopper->setObjectSubType(TangibleObjectImplementation::CONTAINER);
-	//inputHopper->setSlots(100);
-	outputHopper->setObjectSubType(TangibleObjectImplementation::CONTAINER);
-	//outputHopper->setSlots(100);
+	if (outputHopper == NULL) {
+		outputHopper = new Container(outputHopperID);
+		outputHopper->setParent(_this);
+		outputHopper->setContainerVolumeLimit(50);
+		outputHopper->setObjectSubType(TangibleObjectImplementation::CONTAINER);
+	}
 
 	Zone* zone = _this->getZone();
 	if(zone != NULL){
@@ -93,7 +93,7 @@ void FactoryObjectImplementation::createHoppers(uint64 inputHopperID, uint64 out
 		getZone()->getZoneServer()->addObject(outputHopper);
 	}
 	serializeHoppers();
-	loadItems();
+	//loadItems();
 
 }
 
@@ -119,7 +119,7 @@ void FactoryObjectImplementation::sendRadialResponseTo(Player* player, ObjectMen
 		RadialMenuParent* management = new RadialMenuParent(117, 3, "@player_structure:management");
 		management->addRadialMenuItem(128, 3, "@player_structure:permission_destroy");
 		management->addRadialMenuItem(124, 3, "@player_structure:management_status");
-		management->addRadialMenuItem(50, 3, "@player_structure:set_name");
+		management->addRadialMenuItem(50, 3, "@ui_radial:set_name");
 		management->addRadialMenuItem(129, 3, "@player_structure:management_pay");
 		management->addRadialMenuItem(77, 3, "@player_structure:management_power");
 
@@ -194,6 +194,15 @@ void FactoryObjectImplementation::sendOutputHopperTo(Player* player){
  * @param bool state true or false.
  */
 void FactoryObjectImplementation::setOperating(bool state){
+	if(state == true && !_this->hasSchematic()){
+		StringBuffer bodyMsg;
+		String subject("No Manufacture Schematic In Station");
+		bodyMsg << "Please insert a manufacturing schematic before beginning production.";
+
+		sendEmailToOwner(subject, bodyMsg.toString());
+		return;
+	}
+
 	InstallationObjectImplementation::setOperating(state);
 
 	if(state == true)
@@ -446,11 +455,11 @@ bool FactoryObjectImplementation::removeIngredients(ManufactureSchematic* linked
 
 								if(resco->getContents() < 1){
 									inputHopper->removeObject(resco->getObjectID());
-									updateItemForSurroundingPlayers((TangibleObject*)resco);
 									//itemManager->deletePlayerStorageItem(rcno);
 									//TODO:delete this item from player_storage table
 									resco->finalize();
 								}
+								updateItemForSurroundingPlayers((TangibleObject*)resco);
 							}
 						}
 						else if (tano->isComponent()){
@@ -470,11 +479,11 @@ bool FactoryObjectImplementation::removeIngredients(ManufactureSchematic* linked
 
 								if(comp->getObjectCount() < 1){
 									inputHopper->removeObject(comp->getObjectID());
-									updateItemForSurroundingPlayers((TangibleObject*)comp);
 									//itemManager->deletePlayerStorageItem(comp);
 									//TODO:delete this item from player_storage table
 									comp->finalize();
 								}
+								updateItemForSurroundingPlayers((TangibleObject*)comp);
 							}
 						}
 						else if (tano->isFactoryCrate()){
@@ -498,11 +507,11 @@ bool FactoryObjectImplementation::removeIngredients(ManufactureSchematic* linked
 
 									if(crate->getObjectCount() < 1){
 										inputHopper->removeObject(crate->getObjectID());
-										updateItemForSurroundingPlayers((TangibleObject*)crate);
 										//itemManager->deletePlayerStorageItem(comp);
 										//TODO:delete this item from player_storage table
 										crate->finalize();
 									}
+									updateItemForSurroundingPlayers((TangibleObject*)crate);
 								}
 							}
 						}
@@ -807,12 +816,17 @@ int FactoryObjectImplementation::getFactoryItemTypes() {
  * Loads the items for this factory for the inputHopper and outputHopper.
  */
 void FactoryObjectImplementation::loadItems(){
-	if(getZone()!=NULL){
-		if(getZone()->getZoneServer()!=NULL){
-			ItemManager* itemManager = getZone()->getZoneServer()->getItemManager();
-			if(itemManager!=NULL){
-				itemManager->loadFactoryContainerItems(_this, inputHopper);
-				itemManager->loadFactoryContainerItems(_this, outputHopper);
+	Zone* zone = _this->getZone();
+	if(zone != NULL){
+		ZoneServer* zoneServ = zone->getZoneServer();
+		if(zoneServ != NULL){
+			ItemManager* itemManager = zoneServ->getItemManager();
+			if(itemManager != NULL){
+				if(inputHopper != NULL)
+					itemManager->loadFactoryContainerItems(_this, inputHopper.get());
+
+				if(outputHopper != NULL)
+					itemManager->loadFactoryContainerItems(_this, outputHopper.get());
 			}
 		}
 	}

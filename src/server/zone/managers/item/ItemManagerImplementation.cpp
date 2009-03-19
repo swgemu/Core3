@@ -3197,7 +3197,7 @@ void ItemManagerImplementation::loadFactoryContainerItems(FactoryObject* fact, C
 		conti->wlock();
 
 		uint64 contiID = conti->getObjectID();
-
+		System::out << "loading factory items\n\n\n\n\n\n";
 		StringBuffer query;
 		query << "select * from `player_storage` where `container` = " << contiID << ";";
 		ResultSet* contiResult = ServerDatabase::instance()->executeQuery(query);
@@ -3223,10 +3223,9 @@ void ItemManagerImplementation::loadFactoryContainerItems(FactoryObject* fact, C
 
 			String attributes = contiResult->getString(8);
 
-			//TODO: figure out a way to get a player, any player
 			TangibleObject* item = createPlayerObjectTemplate(NULL, objecttype, objectid, objectcrc,
 					UnicodeString(objectname), objecttemp, false, false, "", 0);
-
+			System::out << "trying to make an item\n\n\n\n";
 			if (item == NULL) {
 				delete contiResult;
 
@@ -3252,7 +3251,12 @@ void ItemManagerImplementation::loadFactoryContainerItems(FactoryObject* fact, C
 
 				server->addObject(item);
 
-				conti->addObject(item);
+				conti->addObject((SceneObject*)item);
+				System::out << conti->getContainerObjectsSize() << "\n";
+				//if(sc != NULL)
+				//	System::out << "item is NOT null\n";
+				//else
+				//	System::out << "item is NULL\n";
 
 				BaseMessage* linkmsg = item->link(conti);
 				fact->broadcastMessage(linkmsg);
