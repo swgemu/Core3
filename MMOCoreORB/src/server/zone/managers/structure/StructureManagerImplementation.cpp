@@ -416,9 +416,11 @@ void StructureManagerImplementation::loadPlayerStructures() {
 				inso->setUpdated(false); // doesn't need updates
 
 				inso->setAttributes(attributes);
-				inso->parseItemAttributes();
 
 				inso->insertToZone(zone);
+
+				inso->parseItemAttributes();//needs to be after the insertToZone for factories
+
 				zone->registerObject(inso);
 				installationMap->put(oid, inso);
 				break;
