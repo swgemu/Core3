@@ -1199,8 +1199,9 @@ bool CreatureImplementation::activate() {
 
 		bool needMoreActivity = false;
 
-		if (aggroedCreature != NULL && targetObject != aggroedCreature) {
-			updateTarget(aggroedCreature);
+		if (aggroedCreature != NULL) {
+			if (targetObject != aggroedCreature)
+				updateTarget(aggroedCreature);
 		} else if (doRandomMovement) {
 			doRandomMovement = false;
 
@@ -1541,6 +1542,11 @@ void CreatureImplementation::doAttack(CreatureObject* target, int damage) {
 bool CreatureImplementation::attack(CreatureObject* target) {
 	//info("attacking target");
 
+	// Not ready to attack yet
+	if (!nextAttackDelay.isPast()) {
+		return true;
+	}
+
 	doCamoCheck(target);
 
 	if (camoSet) {
@@ -1568,11 +1574,6 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 
 			return false;
 		}
-	}
-
-	if (!nextAttackDelay.isPast()) {
-		lastCombatAction.update();
-		return true;
 	}
 
 	CombatManager* combatManager = server->getCombatManager();
