@@ -182,14 +182,11 @@ TangibleObject* ItemManagerImplementation::getPlayerItem(Player* player, uint64 
 	TangibleObject* tano = NULL;
 	SceneObject* item = NULL;
 
-	if (player == NULL)
-		return NULL;
-
-	if (player != NULL)
+	if (player != NULL) {
 		item = player->getPlayerItem(objectid);
-
-	if (item != NULL && item->isTangible())
-		return (TangibleObject*) item;
+		if((item != NULL) && (item->isTangible()))
+				return (TangibleObject*) item;
+	}
 
 	try {
 		StringBuffer query;
