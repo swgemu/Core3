@@ -94,7 +94,9 @@ void BazaarPlanetManagerImplementation::removeBazaarItem(uint64 objectid) {
 	AuctionItem* item = getItem(objectid);
 
 	if (item == NULL) {
-		info("unable to retrieve bazaar item: " + objectid);
+		StringBuffer msg;
+		msg << "unable to retrieve bazaar item: " << objectid;
+		info(msg);
 		return;
 	}
 

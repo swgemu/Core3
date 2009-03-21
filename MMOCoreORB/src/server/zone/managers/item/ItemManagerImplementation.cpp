@@ -840,7 +840,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	} else if (player != NULL)
 		((CreatureObject*)player)->addInventoryItem(item);
 
-	if(item->isEquipped())
+	if(item->isEquipped() && player != NULL)
 		player->equipPlayerItem(item, false);
 
 	return item;
@@ -3194,7 +3194,7 @@ void ItemManagerImplementation::loadFactoryContainerItems(FactoryObject* fact, C
 		conti->wlock();
 
 		uint64 contiID = conti->getObjectID();
-		System::out << "loading factory items\n\n\n\n\n\n";
+		//System::out << "loading factory items\n\n\n\n\n\n";
 		StringBuffer query;
 		query << "select * from `player_storage` where `container` = " << contiID << ";";
 		ResultSet* contiResult = ServerDatabase::instance()->executeQuery(query);
@@ -3222,7 +3222,7 @@ void ItemManagerImplementation::loadFactoryContainerItems(FactoryObject* fact, C
 
 			TangibleObject* item = createPlayerObjectTemplate(NULL, objecttype, objectid, objectcrc,
 					UnicodeString(objectname), objecttemp, false, false, "", 0);
-			System::out << "trying to make an item\n\n\n\n";
+			//System::out << "trying to make an item\n\n\n\n";
 			if (item == NULL) {
 				delete contiResult;
 
@@ -3249,7 +3249,7 @@ void ItemManagerImplementation::loadFactoryContainerItems(FactoryObject* fact, C
 				server->addObject(item);
 
 				conti->addObject((SceneObject*)item);
-				System::out << conti->getContainerObjectsSize() << "\n";
+				//System::out << conti->getContainerObjectsSize() << "\n";
 				//if(sc != NULL)
 				//	System::out << "item is NOT null\n";
 				//else

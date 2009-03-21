@@ -117,6 +117,9 @@ void ManufactureSchematicImplementation::setIngredients(DraftSchematic* draftSch
 			ManagedReference<TangibleObject> itemInSlot = craftingTool->getIngredientInSlot(i);
 			DraftSchematicIngredient* dsi = draftSchematic->getIngredient(i);
 
+			if (itemInSlot == NULL)
+				continue;
+
 			if(itemInSlot->isResource()) {
 				ResourceContainer* rcno = (ResourceContainer*) itemInSlot.get();
 				name = rcno->getResourceName();
