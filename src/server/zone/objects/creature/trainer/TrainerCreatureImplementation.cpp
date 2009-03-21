@@ -54,7 +54,9 @@ which carries forward this exception.
 
 TrainerCreatureImplementation::TrainerCreatureImplementation(uint64 oid, Profession* prof) : TrainerCreatureServant(oid) {
 	profession = prof;
+
 	setType(CreatureImplementation::TRAINER);
+	setCreatureType("NPC");
 
 	optionsBitmask = 0x108;
 	pvpStatusBitmask = 0;

@@ -42,7 +42,7 @@
 
 researchOutpostNpc1 = Creature:new {
 	objectName = "researchOutpostNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ researchOutpostNpc1 = Creature:new {
 
 researchOutpostNpc3 = Creature:new {
 	objectName = "researchOutpostNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commando",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ researchOutpostNpc3 = Creature:new {
 
 researchOutpostNpc4 = Creature:new {
 	objectName = "researchOutpostNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ researchOutpostNpc4 = Creature:new {
 
 researchOutpostNpc5 = Creature:new {
 	objectName = "researchOutpostNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cll8_binary_load_lifter",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ researchOutpostNpc5 = Creature:new {
 
 researchOutpostNpc6 = Creature:new {
 	objectName = "researchOutpostNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ researchOutpostNpc6 = Creature:new {
 
 researchOutpostNpc7 = Creature:new {
 	objectName = "researchOutpostNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ researchOutpostNpc7 = Creature:new {
 
 researchOutpostNpc8 = Creature:new {
 	objectName = "researchOutpostNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ researchOutpostNpc8 = Creature:new {
 
 researchOutpostNpc9 = Creature:new {
 	objectName = "researchOutpostNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ researchOutpostNpc9 = Creature:new {
 
 researchOutpostNpc10 = Creature:new {
 	objectName = "researchOutpostNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ researchOutpostNpc10 = Creature:new {
 
 researchOutpostNpc11 = Creature:new {
 	objectName = "researchOutpostNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ researchOutpostNpc11 = Creature:new {
 
 researchOutpostNpc12 = Creature:new {
 	objectName = "researchOutpostNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ researchOutpostNpc12 = Creature:new {
 
 researchOutpostNpc13 = Creature:new {
 	objectName = "researchOutpostNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ researchOutpostNpc13 = Creature:new {
 
 researchOutpostNpc14 = Creature:new {
 	objectName = "researchOutpostNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ researchOutpostNpc14 = Creature:new {
 
 researchOutpostNpc15 = Creature:new {
 	objectName = "researchOutpostNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ researchOutpostNpc15 = Creature:new {
 
 researchOutpostNpc16 = Creature:new {
 	objectName = "researchOutpostNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commando",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ researchOutpostNpc16 = Creature:new {
 
 researchOutpostNpc17 = Creature:new {
 	objectName = "researchOutpostNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ researchOutpostNpc17 = Creature:new {
 
 researchOutpostNpc18 = Creature:new {
 	objectName = "researchOutpostNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ researchOutpostNpc18 = Creature:new {
 
 researchOutpostNpc19 = Creature:new {
 	objectName = "researchOutpostNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ researchOutpostNpc19 = Creature:new {
 
 researchOutpostNpc20 = Creature:new {
 	objectName = "researchOutpostNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ researchOutpostNpc20 = Creature:new {
 
 researchOutpostNpc21 = Creature:new {
 	objectName = "researchOutpostNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ researchOutpostNpc21 = Creature:new {
 
 researchOutpostNpc22 = Creature:new {
 	objectName = "researchOutpostNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ researchOutpostNpc22 = Creature:new {
 
 researchOutpostNpc23 = Creature:new {
 	objectName = "researchOutpostNpc23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ researchOutpostNpc23 = Creature:new {
 
 researchOutpostNpc24 = Creature:new {
 	objectName = "researchOutpostNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ researchOutpostNpc24 = Creature:new {
 
 researchOutpostNpc25 = Creature:new {
 	objectName = "researchOutpostNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ researchOutpostNpc25 = Creature:new {
 
 researchOutpostNpc27 = Creature:new {
 	objectName = "researchOutpostNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ researchOutpostNpc27 = Creature:new {
 
 researchOutpostNpc28 = Creature:new {
 	objectName = "researchOutpostNpc28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ researchOutpostNpc28 = Creature:new {
 
 researchOutpostNpc29 = Creature:new {
 	objectName = "researchOutpostNpc29",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kilnstrider",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ researchOutpostNpc29 = Creature:new {
 
 researchOutpostNpc30 = Creature:new {
 	objectName = "researchOutpostNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,

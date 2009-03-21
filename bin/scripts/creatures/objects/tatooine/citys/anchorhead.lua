@@ -42,7 +42,7 @@
 
 anchorheadNpc1 = Creature:new {
 	objectName = "anchorheadNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ anchorheadNpc1 = Creature:new {
 
 anchorheadNpc2 = Creature:new {
 	objectName = "anchorheadNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ anchorheadNpc2 = Creature:new {
 
 anchorheadNpc3 = Creature:new {
 	objectName = "anchorheadNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ anchorheadNpc3 = Creature:new {
 
 anchorheadNpc4 = Creature:new {
 	objectName = "anchorheadNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ anchorheadNpc4 = Creature:new {
 
 anchorheadNpc5 = Creature:new {
 	objectName = "anchorheadNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ anchorheadNpc5 = Creature:new {
 
 anchorheadNpc6 = Creature:new {
 	objectName = "anchorheadNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ anchorheadNpc6 = Creature:new {
 
 anchorheadNpc8 = Creature:new {
 	objectName = "anchorheadNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ anchorheadNpc8 = Creature:new {
 
 anchorheadNpc9 = Creature:new {
 	objectName = "anchorheadNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ anchorheadNpc9 = Creature:new {
 
 anchorheadNpc10 = Creature:new {
 	objectName = "anchorheadNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ anchorheadNpc10 = Creature:new {
 
 anchorheadNpc11 = Creature:new {
 	objectName = "anchorheadNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ anchorheadNpc11 = Creature:new {
 
 anchorheadNpc13 = Creature:new {
 	objectName = "anchorheadNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_command_security_guard",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ anchorheadNpc13 = Creature:new {
 
 anchorheadNpc14 = Creature:new {
 	objectName = "anchorheadNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_command_security_guard",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ anchorheadNpc14 = Creature:new {
 
 anchorheadNpc15 = Creature:new {
 	objectName = "anchorheadNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_command_security_guard",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ anchorheadNpc15 = Creature:new {
 
 anchorheadNpc16 = Creature:new {
 	objectName = "anchorheadNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ anchorheadNpc16 = Creature:new {
 
 anchorheadNpc17 = Creature:new {
 	objectName = "anchorheadNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ anchorheadNpc17 = Creature:new {
 
 anchorheadNpc18 = Creature:new {
 	objectName = "anchorheadNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ anchorheadNpc18 = Creature:new {
 
 anchorheadNpc19 = Creature:new {
 	objectName = "anchorheadNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ anchorheadNpc19 = Creature:new {
 
 anchorheadNpc21 = Creature:new {
 	objectName = "anchorheadNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r4",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ anchorheadNpc21 = Creature:new {
 
 anchorheadNpc22 = Creature:new {
 	objectName = "anchorheadNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_elite_sand_rat",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ anchorheadNpc22 = Creature:new {
 
 anchorheadNpc23 = Creature:new {
 	objectName = "anchorheadNpc23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ anchorheadNpc23 = Creature:new {
 
 anchorheadNpc24 = Creature:new {
 	objectName = "anchorheadNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guard_captain",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ anchorheadNpc24 = Creature:new {
 
 anchorheadNpc26 = Creature:new {
 	objectName = "anchorheadNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ anchorheadNpc26 = Creature:new {
 
 anchorheadNpc27 = Creature:new {
 	objectName = "anchorheadNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ anchorheadNpc27 = Creature:new {
 
 anchorheadNpc30 = Creature:new {
 	objectName = "anchorheadNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guard_captain",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ anchorheadNpc30 = Creature:new {
 
 anchorheadNpc31 = Creature:new {
 	objectName = "anchorheadNpc31",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_command_security_guard",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ anchorheadNpc31 = Creature:new {
 
 anchorheadNpc32 = Creature:new {
 	objectName = "anchorheadNpc32",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scyk",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ anchorheadNpc32 = Creature:new {
 
 anchorheadNpc34 = Creature:new {
 	objectName = "anchorheadNpc34",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cu_pa",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ anchorheadNpc34 = Creature:new {
 
 anchorheadNpc35 = Creature:new {
 	objectName = "anchorheadNpc35",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cu_pa",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ anchorheadNpc35 = Creature:new {
 
 anchorheadNpc36 = Creature:new {
 	objectName = "anchorheadNpc36",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scyk",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ anchorheadNpc36 = Creature:new {
 
 anchorheadNpc37 = Creature:new {
 	objectName = "anchorheadNpc37",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scyk",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ anchorheadNpc37 = Creature:new {
 
 anchorheadNpc38 = Creature:new {
 	objectName = "anchorheadNpc38",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "technician",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ anchorheadNpc38 = Creature:new {
 
 anchorheadNpc39 = Creature:new {
 	objectName = "anchorheadNpc39",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scavenger",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ anchorheadNpc39 = Creature:new {
 
 anchorheadNpc40 = Creature:new {
 	objectName = "anchorheadNpc40",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ anchorheadNpc40 = Creature:new {
 
 anchorheadNpc41 = Creature:new {
 	objectName = "anchorheadNpc41",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ anchorheadNpc41 = Creature:new {
 
 anchorheadNpc42 = Creature:new {
 	objectName = "anchorheadNpc42",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "pilot",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ anchorheadNpc42 = Creature:new {
 
 anchorheadNpc43 = Creature:new {
 	objectName = "anchorheadNpc43",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bounty_hunter",
 	combatFlags = 0,
@@ -834,7 +834,7 @@ anchorheadNpc43 = Creature:new {
 
 anchorheadNpc44 = Creature:new {
 	objectName = "anchorheadNpc44",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -856,7 +856,7 @@ anchorheadNpc44 = Creature:new {
 
 anchorheadNpc45 = Creature:new {
 	objectName = "anchorheadNpc45",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -878,7 +878,7 @@ anchorheadNpc45 = Creature:new {
 
 anchorheadNpc46 = Creature:new {
 	objectName = "anchorheadNpc46",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cu_pa",
 	combatFlags = 0,
@@ -900,7 +900,7 @@ anchorheadNpc46 = Creature:new {
 
 anchorheadNpc47 = Creature:new {
 	objectName = "anchorheadNpc47",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cu_pa",
 	combatFlags = 0,
@@ -922,7 +922,7 @@ anchorheadNpc47 = Creature:new {
 
 anchorheadNpc48 = Creature:new {
 	objectName = "anchorheadNpc48",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "zucca_boar",
 	combatFlags = 0,
@@ -944,7 +944,7 @@ anchorheadNpc48 = Creature:new {
 
 anchorheadNpc49 = Creature:new {
 	objectName = "anchorheadNpc49",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scyk",
 	combatFlags = 0,
@@ -966,7 +966,7 @@ anchorheadNpc49 = Creature:new {
 
 anchorheadNpc50 = Creature:new {
 	objectName = "anchorheadNpc50",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -988,7 +988,7 @@ anchorheadNpc50 = Creature:new {
 
 anchorheadNpc52 = Creature:new {
 	objectName = "anchorheadNpc52",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1010,7 +1010,7 @@ anchorheadNpc52 = Creature:new {
 
 anchorheadNpc53 = Creature:new {
 	objectName = "anchorheadNpc53",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1032,7 +1032,7 @@ anchorheadNpc53 = Creature:new {
 
 anchorheadNpc54 = Creature:new {
 	objectName = "anchorheadNpc54",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner_rodian_female",
 	combatFlags = 0,
@@ -1054,7 +1054,7 @@ anchorheadNpc54 = Creature:new {
 
 anchorheadNpc55 = Creature:new {
 	objectName = "anchorheadNpc55",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bantha",
 	combatFlags = 0,
@@ -1076,7 +1076,7 @@ anchorheadNpc55 = Creature:new {
 
 anchorheadNpc56 = Creature:new {
 	objectName = "anchorheadNpc56",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cu_pa",
 	combatFlags = 0,
@@ -1098,7 +1098,7 @@ anchorheadNpc56 = Creature:new {
 
 anchorheadNpc57 = Creature:new {
 	objectName = "anchorheadNpc57",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cu_pa",
 	combatFlags = 0,
@@ -1120,7 +1120,7 @@ anchorheadNpc57 = Creature:new {
 
 anchorheadNpc58 = Creature:new {
 	objectName = "anchorheadNpc58",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cu_pa",
 	combatFlags = 0,
@@ -1142,7 +1142,7 @@ anchorheadNpc58 = Creature:new {
 
 anchorheadNpc59 = Creature:new {
 	objectName = "anchorheadNpc59",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cu_pa",
 	combatFlags = 0,
@@ -1164,7 +1164,7 @@ anchorheadNpc59 = Creature:new {
 
 anchorheadNpc60 = Creature:new {
 	objectName = "anchorheadNpc60",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cu_pa",
 	combatFlags = 0,
@@ -1186,7 +1186,7 @@ anchorheadNpc60 = Creature:new {
 
 anchorheadNpc61 = Creature:new {
 	objectName = "anchorheadNpc61",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "zucca_boar",
 	combatFlags = 0,
@@ -1208,7 +1208,7 @@ anchorheadNpc61 = Creature:new {
 
 anchorheadNpc62 = Creature:new {
 	objectName = "anchorheadNpc62",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "zucca_boar",
 	combatFlags = 0,
@@ -1230,7 +1230,7 @@ anchorheadNpc62 = Creature:new {
 
 anchorheadNpc63 = Creature:new {
 	objectName = "anchorheadNpc63",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "zucca_boar",
 	combatFlags = 0,

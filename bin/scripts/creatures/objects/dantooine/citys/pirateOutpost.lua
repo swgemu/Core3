@@ -42,7 +42,7 @@
 
 aggroOutpostNpc1 = Creature:new {
 	objectName = "aggroOutpostNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ aggroOutpostNpc1 = Creature:new {
 
 aggroOutpostNpc2 = Creature:new {
 	objectName = "aggroOutpostNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ aggroOutpostNpc2 = Creature:new {
 
 aggroOutpostNpc3 = Creature:new {
 	objectName = "aggroOutpostNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ aggroOutpostNpc3 = Creature:new {
 
 aggroOutpostNpc4 = Creature:new {
 	objectName = "aggroOutpostNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ishi_tib_base_male",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ aggroOutpostNpc4 = Creature:new {
 
 aggroOutpostNpc5 = Creature:new {
 	objectName = "aggroOutpostNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ aggroOutpostNpc5 = Creature:new {
 
 aggroOutpostNpc6 = Creature:new {
 	objectName = "aggroOutpostNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "yras_shen_jen",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ aggroOutpostNpc6 = Creature:new {
 
 aggroOutpostNpc7 = Creature:new {
 	objectName = "aggroOutpostNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ aggroOutpostNpc7 = Creature:new {
 
 aggroOutpostNpc8 = Creature:new {
 	objectName = "aggroOutpostNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ aggroOutpostNpc8 = Creature:new {
 
 aggroOutpostNpc9 = Creature:new {
 	objectName = "aggroOutpostNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ aggroOutpostNpc9 = Creature:new {
 
 aggroOutpostNpc10 = Creature:new {
 	objectName = "aggroOutpostNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ aggroOutpostNpc10 = Creature:new {
 
 aggroOutpostNpc11 = Creature:new {
 	objectName = "aggroOutpostNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ aggroOutpostNpc11 = Creature:new {
 
 aggroOutpostNpc12 = Creature:new {
 	objectName = "aggroOutpostNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ aggroOutpostNpc12 = Creature:new {
 
 aggroOutpostNpc13 = Creature:new {
 	objectName = "aggroOutpostNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ aggroOutpostNpc13 = Creature:new {
 
 aggroOutpostNpc14 = Creature:new {
 	objectName = "aggroOutpostNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ aggroOutpostNpc14 = Creature:new {
 
 aggroOutpostNpc15 = Creature:new {
 	objectName = "aggroOutpostNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ aggroOutpostNpc15 = Creature:new {
 
 aggroOutpostNpc16 = Creature:new {
 	objectName = "aggroOutpostNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ aggroOutpostNpc16 = Creature:new {
 
 aggroOutpostNpc17 = Creature:new {
 	objectName = "aggroOutpostNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ aggroOutpostNpc17 = Creature:new {
 
 aggroOutpostNpc18 = Creature:new {
 	objectName = "aggroOutpostNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ aggroOutpostNpc18 = Creature:new {
 
 aggroOutpostNpc19 = Creature:new {
 	objectName = "aggroOutpostNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ aggroOutpostNpc19 = Creature:new {
 
 aggroOutpostNpc20 = Creature:new {
 	objectName = "aggroOutpostNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "patron_human_male_02",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ aggroOutpostNpc20 = Creature:new {
 
 aggroOutpostNpc21 = Creature:new {
 	objectName = "aggroOutpostNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ aggroOutpostNpc21 = Creature:new {
 
 aggroOutpostNpc22 = Creature:new {
 	objectName = "aggroOutpostNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cll8_binary_load_lifter",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ aggroOutpostNpc22 = Creature:new {
 
 aggroOutpostNpc23 = Creature:new {
 	objectName = "aggroOutpostNpc23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ aggroOutpostNpc23 = Creature:new {
 
 aggroOutpostNpc24 = Creature:new {
 	objectName = "aggroOutpostNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ aggroOutpostNpc24 = Creature:new {
 
 aggroOutpostNpc25 = Creature:new {
 	objectName = "aggroOutpostNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "pirate",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ aggroOutpostNpc25 = Creature:new {
 
 aggroOutpostNpc26 = Creature:new {
 	objectName = "aggroOutpostNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "trandoshan_base_male",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ aggroOutpostNpc26 = Creature:new {
 
 aggroOutpostNpc27 = Creature:new {
 	objectName = "aggroOutpostNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "trandoshan_base_male",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ aggroOutpostNpc27 = Creature:new {
 
 aggroOutpostNpc28 = Creature:new {
 	objectName = "aggroOutpostNpc28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "pirate",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ aggroOutpostNpc28 = Creature:new {
 
 aggroOutpostNpc29 = Creature:new {
 	objectName = "aggroOutpostNpc29",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ aggroOutpostNpc29 = Creature:new {
 
 aggroOutpostNpc30 = Creature:new {
 	objectName = "aggroOutpostNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,

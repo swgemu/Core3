@@ -42,7 +42,7 @@
 
 mosEnthaNpc1 = Creature:new {
 	objectName = "mosEnthaNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ mosEnthaNpc1 = Creature:new {
 
 mosEnthaNpc2 = Creature:new {
 	objectName = "mosEnthaNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ mosEnthaNpc2 = Creature:new {
 
 mosEnthaNpc3 = Creature:new {
 	objectName = "mosEnthaNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_clan_medic",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ mosEnthaNpc3 = Creature:new {
 
 mosEnthaNpc4 = Creature:new {
 	objectName = "mosEnthaNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "squatter",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ mosEnthaNpc4 = Creature:new {
 
 mosEnthaNpc5 = Creature:new {
 	objectName = "mosEnthaNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scavenger",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ mosEnthaNpc5 = Creature:new {
 
 mosEnthaNpc6 = Creature:new {
 	objectName = "mosEnthaNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "moisture_farmer",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ mosEnthaNpc6 = Creature:new {
 
 mosEnthaNpc7 = Creature:new {
 	objectName = "mosEnthaNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "hermit",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ mosEnthaNpc7 = Creature:new {
 
 mosEnthaNpc8 = Creature:new {
 	objectName = "mosEnthaNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ mosEnthaNpc8 = Creature:new {
 
 mosEnthaNpc9 = Creature:new {
 	objectName = "mosEnthaNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "dim_u_priestess",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ mosEnthaNpc9 = Creature:new {
 
 mosEnthaNpc10 = Creature:new {
 	objectName = "mosEnthaNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chassis_broker",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ mosEnthaNpc10 = Creature:new {
 
 mosEnthaNpc11 = Creature:new {
 	objectName = "mosEnthaNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ mosEnthaNpc11 = Creature:new {
 
 mosEnthaNpc12 = Creature:new {
 	objectName = "mosEnthaNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ mosEnthaNpc12 = Creature:new {
 
 mosEnthaNpc13 = Creature:new {
 	objectName = "mosEnthaNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ mosEnthaNpc13 = Creature:new {
 
 mosEnthaNpc14 = Creature:new {
 	objectName = "mosEnthaNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ mosEnthaNpc14 = Creature:new {
 
 mosEnthaNpc15 = Creature:new {
 	objectName = "mosEnthaNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ mosEnthaNpc15 = Creature:new {
 
 mosEnthaNpc16 = Creature:new {
 	objectName = "mosEnthaNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ mosEnthaNpc16 = Creature:new {
 
 mosEnthaNpc17 = Creature:new {
 	objectName = "mosEnthaNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ mosEnthaNpc17 = Creature:new {
 
 mosEnthaNpc18 = Creature:new {
 	objectName = "mosEnthaNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ mosEnthaNpc18 = Creature:new {
 
 mosEnthaNpc19 = Creature:new {
 	objectName = "mosEnthaNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ mosEnthaNpc19 = Creature:new {
 
 mosEnthaNpc20 = Creature:new {
 	objectName = "mosEnthaNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "dim_u_monastery_nun",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ mosEnthaNpc20 = Creature:new {
 
 mosEnthaNpc21 = Creature:new {
 	objectName = "mosEnthaNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ mosEnthaNpc21 = Creature:new {
 
 mosEnthaNpc22 = Creature:new {
 	objectName = "mosEnthaNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "settler",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ mosEnthaNpc22 = Creature:new {
 
 mosEnthaNpc24 = Creature:new {
 	objectName = "mosEnthaNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ mosEnthaNpc24 = Creature:new {
 
 mosEnthaNpc25 = Creature:new {
 	objectName = "mosEnthaNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_entha_police_officer",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ mosEnthaNpc25 = Creature:new {
 
 mosEnthaNpc26 = Creature:new {
 	objectName = "mosEnthaNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_storm_commando",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ mosEnthaNpc26 = Creature:new {
 
 mosEnthaNpc27 = Creature:new {
 	objectName = "mosEnthaNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_storm_commando",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ mosEnthaNpc27 = Creature:new {
 
 mosEnthaNpc28 = Creature:new {
 	objectName = "mosEnthaNpc28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ mosEnthaNpc28 = Creature:new {
 
 mosEnthaNpc29 = Creature:new {
 	objectName = "mosEnthaNpc29",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_rifleman",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ mosEnthaNpc29 = Creature:new {
 
 mosEnthaNpc30 = Creature:new {
 	objectName = "mosEnthaNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ mosEnthaNpc30 = Creature:new {
 
 mosEnthaNpc31 = Creature:new {
 	objectName = "mosEnthaNpc31",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ mosEnthaNpc31 = Creature:new {
 
 mosEnthaNpc32 = Creature:new {
 	objectName = "mosEnthaNpc32",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_entha_police_officer",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ mosEnthaNpc32 = Creature:new {
 
 mosEnthaNpc33 = Creature:new {
 	objectName = "mosEnthaNpc33",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ mosEnthaNpc33 = Creature:new {
 
 mosEnthaNpc34 = Creature:new {
 	objectName = "mosEnthaNpc34",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_warlord",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ mosEnthaNpc34 = Creature:new {
 
 mosEnthaNpc35 = Creature:new {
 	objectName = "mosEnthaNpc35",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ mosEnthaNpc35 = Creature:new {
 
 mosEnthaNpc36 = Creature:new {
 	objectName = "mosEnthaNpc36",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ mosEnthaNpc36 = Creature:new {
 
 mosEnthaNpc37 = Creature:new {
 	objectName = "mosEnthaNpc37",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_clan_medic",
 	combatFlags = 0,
@@ -834,7 +834,7 @@ mosEnthaNpc37 = Creature:new {
 
 mosEnthaNpc39 = Creature:new {
 	objectName = "mosEnthaNpc39",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_captain",
 	combatFlags = 0,
@@ -856,7 +856,7 @@ mosEnthaNpc39 = Creature:new {
 
 mosEnthaNpc41 = Creature:new {
 	objectName = "mosEnthaNpc41",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_entha_police_officer",
 	combatFlags = 0,
@@ -878,7 +878,7 @@ mosEnthaNpc41 = Creature:new {
 
 mosEnthaNpc42 = Creature:new {
 	objectName = "mosEnthaNpc42",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -900,7 +900,7 @@ mosEnthaNpc42 = Creature:new {
 
 mosEnthaNpc43 = Creature:new {
 	objectName = "mosEnthaNpc43",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -922,7 +922,7 @@ mosEnthaNpc43 = Creature:new {
 
 mosEnthaNpc44 = Creature:new {
 	objectName = "mosEnthaNpc44",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -944,7 +944,7 @@ mosEnthaNpc44 = Creature:new {
 
 mosEnthaNpc45 = Creature:new {
 	objectName = "mosEnthaNpc45",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -966,7 +966,7 @@ mosEnthaNpc45 = Creature:new {
 
 mosEnthaNpc46 = Creature:new {
 	objectName = "mosEnthaNpc46",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -988,7 +988,7 @@ mosEnthaNpc46 = Creature:new {
 
 mosEnthaNpc47 = Creature:new {
 	objectName = "mosEnthaNpc47",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1010,7 +1010,7 @@ mosEnthaNpc47 = Creature:new {
 
 mosEnthaNpc48 = Creature:new {
 	objectName = "mosEnthaNpc48",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -1032,7 +1032,7 @@ mosEnthaNpc48 = Creature:new {
 
 mosEnthaNpc49 = Creature:new {
 	objectName = "mosEnthaNpc49",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_entha_police_officer",
 	combatFlags = 0,
@@ -1054,7 +1054,7 @@ mosEnthaNpc49 = Creature:new {
 
 mosEnthaNpc50 = Creature:new {
 	objectName = "mosEnthaNpc50",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -1076,7 +1076,7 @@ mosEnthaNpc50 = Creature:new {
 
 mosEnthaNpc51 = Creature:new {
 	objectName = "mosEnthaNpc51",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1098,7 +1098,7 @@ mosEnthaNpc51 = Creature:new {
 
 mosEnthaNpc52 = Creature:new {
 	objectName = "mosEnthaNpc52",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -1120,7 +1120,7 @@ mosEnthaNpc52 = Creature:new {
 
 mosEnthaNpc53 = Creature:new {
 	objectName = "mosEnthaNpc53",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1142,7 +1142,7 @@ mosEnthaNpc53 = Creature:new {
 
 mosEnthaNpc54 = Creature:new {
 	objectName = "mosEnthaNpc54",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "hunter",
 	combatFlags = 0,
@@ -1164,7 +1164,7 @@ mosEnthaNpc54 = Creature:new {
 
 mosEnthaNpc55 = Creature:new {
 	objectName = "mosEnthaNpc55",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1186,7 +1186,7 @@ mosEnthaNpc55 = Creature:new {
 
 mosEnthaNpc56 = Creature:new {
 	objectName = "mosEnthaNpc56",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -1208,7 +1208,7 @@ mosEnthaNpc56 = Creature:new {
 
 mosEnthaNpc57 = Creature:new {
 	objectName = "mosEnthaNpc57",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1230,7 +1230,7 @@ mosEnthaNpc57 = Creature:new {
 
 mosEnthaNpc58 = Creature:new {
 	objectName = "mosEnthaNpc58",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "quest_gadget_specialist",
 	combatFlags = 0,
@@ -1252,7 +1252,7 @@ mosEnthaNpc58 = Creature:new {
 
 mosEnthaNpc59 = Creature:new {
 	objectName = "mosEnthaNpc59",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -1274,7 +1274,7 @@ mosEnthaNpc59 = Creature:new {
 
 mosEnthaNpc60 = Creature:new {
 	objectName = "mosEnthaNpc60",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -1296,7 +1296,7 @@ mosEnthaNpc60 = Creature:new {
 
 mosEnthaNpc61 = Creature:new {
 	objectName = "mosEnthaNpc61",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -1318,7 +1318,7 @@ mosEnthaNpc61 = Creature:new {
 
 mosEnthaNpc62 = Creature:new {
 	objectName = "mosEnthaNpc62",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -1340,7 +1340,7 @@ mosEnthaNpc62 = Creature:new {
 
 mosEnthaNpc63 = Creature:new {
 	objectName = "mosEnthaNpc63",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -1362,7 +1362,7 @@ mosEnthaNpc63 = Creature:new {
 
 mosEnthaNpc64 = Creature:new {
 	objectName = "mosEnthaNpc64",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -1384,7 +1384,7 @@ mosEnthaNpc64 = Creature:new {
 
 mosEnthaNpc65 = Creature:new {
 	objectName = "mosEnthaNpc65",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_entha_police_officer",
 	combatFlags = 0,
@@ -1406,7 +1406,7 @@ mosEnthaNpc65 = Creature:new {
 
 mosEnthaNpc66 = Creature:new {
 	objectName = "mosEnthaNpc66",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -1428,7 +1428,7 @@ mosEnthaNpc66 = Creature:new {
 
 mosEnthaNpc67 = Creature:new {
 	objectName = "mosEnthaNpc67",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -1450,7 +1450,7 @@ mosEnthaNpc67 = Creature:new {
 
 mosEnthaNpc68 = Creature:new {
 	objectName = "mosEnthaNpc68",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1472,7 +1472,7 @@ mosEnthaNpc68 = Creature:new {
 
 mosEnthaNpc69 = Creature:new {
 	objectName = "mosEnthaNpc69",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ikka_gesul",
 	combatFlags = 0,
@@ -1494,7 +1494,7 @@ mosEnthaNpc69 = Creature:new {
 
 mosEnthaNpc70 = Creature:new {
 	objectName = "mosEnthaNpc70",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -1516,7 +1516,7 @@ mosEnthaNpc70 = Creature:new {
 
 mosEnthaNpc71 = Creature:new {
 	objectName = "mosEnthaNpc71",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -1538,7 +1538,7 @@ mosEnthaNpc71 = Creature:new {
 
 mosEnthaNpc72 = Creature:new {
 	objectName = "mosEnthaNpc72",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -1560,7 +1560,7 @@ mosEnthaNpc72 = Creature:new {
 
 mosEnthaNpc73 = Creature:new {
 	objectName = "mosEnthaNpc73",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -1582,7 +1582,7 @@ mosEnthaNpc73 = Creature:new {
 
 mosEnthaNpc74 = Creature:new {
 	objectName = "mosEnthaNpc74",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -1604,7 +1604,7 @@ mosEnthaNpc74 = Creature:new {
 
 mosEnthaNpc76 = Creature:new {
 	objectName = "mosEnthaNpc76",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -1626,7 +1626,7 @@ mosEnthaNpc76 = Creature:new {
 
 mosEnthaNpc77 = Creature:new {
 	objectName = "mosEnthaNpc77",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -1648,7 +1648,7 @@ mosEnthaNpc77 = Creature:new {
 
 mosEnthaNpc78 = Creature:new {
 	objectName = "mosEnthaNpc78",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -1670,7 +1670,7 @@ mosEnthaNpc78 = Creature:new {
 
 mosEnthaNpc79 = Creature:new {
 	objectName = "mosEnthaNpc79",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1692,7 +1692,7 @@ mosEnthaNpc79 = Creature:new {
 
 mosEnthaNpc80 = Creature:new {
 	objectName = "mosEnthaNpc80",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_exterminator",
 	combatFlags = 0,
@@ -1714,7 +1714,7 @@ mosEnthaNpc80 = Creature:new {
 
 mosEnthaNpc81 = Creature:new {
 	objectName = "mosEnthaNpc81",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -1736,7 +1736,7 @@ mosEnthaNpc81 = Creature:new {
 
 mosEnthaNpc82 = Creature:new {
 	objectName = "mosEnthaNpc82",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -1758,7 +1758,7 @@ mosEnthaNpc82 = Creature:new {
 
 mosEnthaNpc83 = Creature:new {
 	objectName = "mosEnthaNpc83",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1780,7 +1780,7 @@ mosEnthaNpc83 = Creature:new {
 
 mosEnthaNpc84 = Creature:new {
 	objectName = "mosEnthaNpc84",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -1802,7 +1802,7 @@ mosEnthaNpc84 = Creature:new {
 
 mosEnthaNpc85 = Creature:new {
 	objectName = "mosEnthaNpc85",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -1824,7 +1824,7 @@ mosEnthaNpc85 = Creature:new {
 
 mosEnthaNpc86 = Creature:new {
 	objectName = "mosEnthaNpc86",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_clan_medic",
 	combatFlags = 0,
@@ -1846,7 +1846,7 @@ mosEnthaNpc86 = Creature:new {
 
 mosEnthaNpc87 = Creature:new {
 	objectName = "mosEnthaNpc87",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "tatooine_militiaman",
 	combatFlags = 0,
@@ -1868,7 +1868,7 @@ mosEnthaNpc87 = Creature:new {
 
 mosEnthaNpc88 = Creature:new {
 	objectName = "mosEnthaNpc88",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scavenger",
 	combatFlags = 0,
@@ -1890,7 +1890,7 @@ mosEnthaNpc88 = Creature:new {
 
 mosEnthaNpc89 = Creature:new {
 	objectName = "mosEnthaNpc89",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -1912,7 +1912,7 @@ mosEnthaNpc89 = Creature:new {
 
 mosEnthaNpc90 = Creature:new {
 	objectName = "mosEnthaNpc90",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "dim_u_abbot",
 	combatFlags = 0,
@@ -1934,7 +1934,7 @@ mosEnthaNpc90 = Creature:new {
 
 mosEnthaNpc91 = Creature:new {
 	objectName = "mosEnthaNpc91",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bounty_hunter",
 	combatFlags = 0,
@@ -1956,7 +1956,7 @@ mosEnthaNpc91 = Creature:new {
 
 mosEnthaNpc92 = Creature:new {
 	objectName = "mosEnthaNpc92",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1978,7 +1978,7 @@ mosEnthaNpc92 = Creature:new {
 
 mosEnthaNpc93 = Creature:new {
 	objectName = "mosEnthaNpc93",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2000,7 +2000,7 @@ mosEnthaNpc93 = Creature:new {
 
 mosEnthaNpc94 = Creature:new {
 	objectName = "mosEnthaNpc94",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -2022,7 +2022,7 @@ mosEnthaNpc94 = Creature:new {
 
 mosEnthaNpc95 = Creature:new {
 	objectName = "mosEnthaNpc95",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_base_male",
 	combatFlags = 0,
@@ -2044,7 +2044,7 @@ mosEnthaNpc95 = Creature:new {
 
 mosEnthaNpc96 = Creature:new {
 	objectName = "mosEnthaNpc96",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "dim_u_preacher",
 	combatFlags = 0,
@@ -2066,7 +2066,7 @@ mosEnthaNpc96 = Creature:new {
 
 mosEnthaNpc97 = Creature:new {
 	objectName = "mosEnthaNpc97",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -2088,7 +2088,7 @@ mosEnthaNpc97 = Creature:new {
 
 mosEnthaNpc98 = Creature:new {
 	objectName = "mosEnthaNpc98",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "tatooine_militiaman",
 	combatFlags = 0,
@@ -2110,7 +2110,7 @@ mosEnthaNpc98 = Creature:new {
 
 mosEnthaNpc99 = Creature:new {
 	objectName = "mosEnthaNpc99",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nomad",
 	combatFlags = 0,
@@ -2132,7 +2132,7 @@ mosEnthaNpc99 = Creature:new {
 
 mosEnthaNpc100 = Creature:new {
 	objectName = "mosEnthaNpc100",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2154,7 +2154,7 @@ mosEnthaNpc100 = Creature:new {
 
 mosEnthaNpc101 = Creature:new {
 	objectName = "mosEnthaNpc101",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2176,7 +2176,7 @@ mosEnthaNpc101 = Creature:new {
 
 mosEnthaNpc102 = Creature:new {
 	objectName = "mosEnthaNpc102",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -2198,7 +2198,7 @@ mosEnthaNpc102 = Creature:new {
 
 mosEnthaNpc103 = Creature:new {
 	objectName = "mosEnthaNpc103",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_clan_warchief",
 	combatFlags = 0,
@@ -2220,7 +2220,7 @@ mosEnthaNpc103 = Creature:new {
 
 mosEnthaNpc104 = Creature:new {
 	objectName = "mosEnthaNpc104",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "squatter",
 	combatFlags = 0,
@@ -2242,7 +2242,7 @@ mosEnthaNpc104 = Creature:new {
 
 mosEnthaNpc105 = Creature:new {
 	objectName = "mosEnthaNpc105",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -2264,7 +2264,7 @@ mosEnthaNpc105 = Creature:new {
 
 mosEnthaNpc106 = Creature:new {
 	objectName = "mosEnthaNpc106",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "spacer",
 	combatFlags = 0,
@@ -2286,7 +2286,7 @@ mosEnthaNpc106 = Creature:new {
 
 mosEnthaNpc107 = Creature:new {
 	objectName = "mosEnthaNpc107",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "squatter",
 	combatFlags = 0,
@@ -2308,7 +2308,7 @@ mosEnthaNpc107 = Creature:new {
 
 mosEnthaNpc108 = Creature:new {
 	objectName = "mosEnthaNpc108",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2330,7 +2330,7 @@ mosEnthaNpc108 = Creature:new {
 
 mosEnthaNpc109 = Creature:new {
 	objectName = "mosEnthaNpc109",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -2352,7 +2352,7 @@ mosEnthaNpc109 = Creature:new {
 
 mosEnthaNpc110 = Creature:new {
 	objectName = "mosEnthaNpc110",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -2374,7 +2374,7 @@ mosEnthaNpc110 = Creature:new {
 
 mosEnthaNpc111 = Creature:new {
 	objectName = "mosEnthaNpc111",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler",
 	combatFlags = 0,
@@ -2396,7 +2396,7 @@ mosEnthaNpc111 = Creature:new {
 
 mosEnthaNpc112 = Creature:new {
 	objectName = "mosEnthaNpc112",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -2418,7 +2418,7 @@ mosEnthaNpc112 = Creature:new {
 
 mosEnthaNpc113 = Creature:new {
 	objectName = "mosEnthaNpc113",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bith_base_male",
 	combatFlags = 0,
@@ -2440,7 +2440,7 @@ mosEnthaNpc113 = Creature:new {
 
 mosEnthaNpc114 = Creature:new {
 	objectName = "mosEnthaNpc114",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -2462,7 +2462,7 @@ mosEnthaNpc114 = Creature:new {
 
 mosEnthaNpc115 = Creature:new {
 	objectName = "mosEnthaNpc115",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -2484,7 +2484,7 @@ mosEnthaNpc115 = Creature:new {
 
 mosEnthaNpc116 = Creature:new {
 	objectName = "mosEnthaNpc116",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -2506,7 +2506,7 @@ mosEnthaNpc116 = Creature:new {
 
 mosEnthaNpc117 = Creature:new {
 	objectName = "mosEnthaNpc117",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -2528,7 +2528,7 @@ mosEnthaNpc117 = Creature:new {
 
 mosEnthaNpc118 = Creature:new {
 	objectName = "mosEnthaNpc118",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -2550,7 +2550,7 @@ mosEnthaNpc118 = Creature:new {
 
 mosEnthaNpc119 = Creature:new {
 	objectName = "mosEnthaNpc119",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -2572,7 +2572,7 @@ mosEnthaNpc119 = Creature:new {
 
 mosEnthaNpc120 = Creature:new {
 	objectName = "mosEnthaNpc120",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -2594,7 +2594,7 @@ mosEnthaNpc120 = Creature:new {
 
 mosEnthaNpc121 = Creature:new {
 	objectName = "mosEnthaNpc121",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_base_male",
 	combatFlags = 0,
@@ -2616,7 +2616,7 @@ mosEnthaNpc121 = Creature:new {
 
 mosEnthaNpc122 = Creature:new {
 	objectName = "mosEnthaNpc122",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -2638,7 +2638,7 @@ mosEnthaNpc122 = Creature:new {
 
 mosEnthaNpc123 = Creature:new {
 	objectName = "mosEnthaNpc123",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -2660,7 +2660,7 @@ mosEnthaNpc123 = Creature:new {
 
 mosEnthaNpc124 = Creature:new {
 	objectName = "mosEnthaNpc124",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -2682,7 +2682,7 @@ mosEnthaNpc124 = Creature:new {
 
 mosEnthaNpc125 = Creature:new {
 	objectName = "mosEnthaNpc125",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -2704,7 +2704,7 @@ mosEnthaNpc125 = Creature:new {
 
 mosEnthaNpc126 = Creature:new {
 	objectName = "mosEnthaNpc126",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -2726,7 +2726,7 @@ mosEnthaNpc126 = Creature:new {
 
 mosEnthaNpc127 = Creature:new {
 	objectName = "mosEnthaNpc127",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -2748,7 +2748,7 @@ mosEnthaNpc127 = Creature:new {
 
 mosEnthaNpc128 = Creature:new {
 	objectName = "mosEnthaNpc128",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -2770,7 +2770,7 @@ mosEnthaNpc128 = Creature:new {
 
 mosEnthaNpc129 = Creature:new {
 	objectName = "mosEnthaNpc129",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -2792,7 +2792,7 @@ mosEnthaNpc129 = Creature:new {
 
 mosEnthaNpc130 = Creature:new {
 	objectName = "mosEnthaNpc130",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -2814,7 +2814,7 @@ mosEnthaNpc130 = Creature:new {
 
 mosEnthaNpc131 = Creature:new {
 	objectName = "mosEnthaNpc131",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "pilot",
 	combatFlags = 0,
@@ -2836,7 +2836,7 @@ mosEnthaNpc131 = Creature:new {
 
 mosEnthaNpc132 = Creature:new {
 	objectName = "mosEnthaNpc132",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -2858,7 +2858,7 @@ mosEnthaNpc132 = Creature:new {
 
 mosEnthaNpc133 = Creature:new {
 	objectName = "mosEnthaNpc133",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -2880,7 +2880,7 @@ mosEnthaNpc133 = Creature:new {
 
 mosEnthaNpc134 = Creature:new {
 	objectName = "mosEnthaNpc134",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -2902,7 +2902,7 @@ mosEnthaNpc134 = Creature:new {
 
 mosEnthaNpc135 = Creature:new {
 	objectName = "mosEnthaNpc135",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "womprat",
 	combatFlags = 0,
@@ -2924,7 +2924,7 @@ mosEnthaNpc135 = Creature:new {
 
 mosEnthaNpc136 = Creature:new {
 	objectName = "mosEnthaNpc136",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -2946,7 +2946,7 @@ mosEnthaNpc136 = Creature:new {
 
 mosEnthaNpc137 = Creature:new {
 	objectName = "mosEnthaNpc137",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -2968,7 +2968,7 @@ mosEnthaNpc137 = Creature:new {
 
 mosEnthaNpc138 = Creature:new {
 	objectName = "mosEnthaNpc138",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -2990,7 +2990,7 @@ mosEnthaNpc138 = Creature:new {
 
 mosEnthaNpc139 = Creature:new {
 	objectName = "mosEnthaNpc139",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -3012,7 +3012,7 @@ mosEnthaNpc139 = Creature:new {
 
 mosEnthaNpc140 = Creature:new {
 	objectName = "mosEnthaNpc140",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -3034,7 +3034,7 @@ mosEnthaNpc140 = Creature:new {
 
 mosEnthaNpc141 = Creature:new {
 	objectName = "mosEnthaNpc141",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_clan_medic",
 	combatFlags = 0,
@@ -3056,7 +3056,7 @@ mosEnthaNpc141 = Creature:new {
 
 mosEnthaNpc142 = Creature:new {
 	objectName = "mosEnthaNpc142",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -3078,7 +3078,7 @@ mosEnthaNpc142 = Creature:new {
 
 mosEnthaNpc144 = Creature:new {
 	objectName = "mosEnthaNpc144",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -3100,7 +3100,7 @@ mosEnthaNpc144 = Creature:new {
 
 mosEnthaNpc145 = Creature:new {
 	objectName = "mosEnthaNpc145",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -3122,7 +3122,7 @@ mosEnthaNpc145 = Creature:new {
 
 mosEnthaNpc146 = Creature:new {
 	objectName = "mosEnthaNpc146",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -3144,7 +3144,7 @@ mosEnthaNpc146 = Creature:new {
 
 mosEnthaNpc147 = Creature:new {
 	objectName = "mosEnthaNpc147",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -3166,7 +3166,7 @@ mosEnthaNpc147 = Creature:new {
 
 mosEnthaNpc148 = Creature:new {
 	objectName = "mosEnthaNpc148",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -3188,7 +3188,7 @@ mosEnthaNpc148 = Creature:new {
 
 mosEnthaNpc149 = Creature:new {
 	objectName = "mosEnthaNpc149",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -3210,7 +3210,7 @@ mosEnthaNpc149 = Creature:new {
 
 mosEnthaNpc150 = Creature:new {
 	objectName = "mosEnthaNpc150",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -3232,7 +3232,7 @@ mosEnthaNpc150 = Creature:new {
 
 mosEnthaNpc151 = Creature:new {
 	objectName = "mosEnthaNpc151",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3254,7 +3254,7 @@ mosEnthaNpc151 = Creature:new {
 
 mosEnthaNpc152 = Creature:new {
 	objectName = "mosEnthaNpc152",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3276,7 +3276,7 @@ mosEnthaNpc152 = Creature:new {
 
 mosEnthaNpc153 = Creature:new {
 	objectName = "mosEnthaNpc153",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_entha_police_officer",
 	combatFlags = 0,
@@ -3298,7 +3298,7 @@ mosEnthaNpc153 = Creature:new {
 
 mosEnthaNpc154 = Creature:new {
 	objectName = "mosEnthaNpc154",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -3320,7 +3320,7 @@ mosEnthaNpc154 = Creature:new {
 
 mosEnthaNpc155 = Creature:new {
 	objectName = "mosEnthaNpc155",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "giant_sand_beetle",
 	combatFlags = 0,
@@ -3342,7 +3342,7 @@ mosEnthaNpc155 = Creature:new {
 
 mosEnthaNpc156 = Creature:new {
 	objectName = "mosEnthaNpc156",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "giant_sand_beetle",
 	combatFlags = 0,
@@ -3364,7 +3364,7 @@ mosEnthaNpc156 = Creature:new {
 
 mosEnthaNpc157 = Creature:new {
 	objectName = "mosEnthaNpc157",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -3386,7 +3386,7 @@ mosEnthaNpc157 = Creature:new {
 
 mosEnthaNpc158 = Creature:new {
 	objectName = "mosEnthaNpc158",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -3408,7 +3408,7 @@ mosEnthaNpc158 = Creature:new {
 
 mosEnthaNpc159 = Creature:new {
 	objectName = "mosEnthaNpc159",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -3430,7 +3430,7 @@ mosEnthaNpc159 = Creature:new {
 
 mosEnthaNpc160 = Creature:new {
 	objectName = "mosEnthaNpc160",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -3452,7 +3452,7 @@ mosEnthaNpc160 = Creature:new {
 
 mosEnthaNpc161 = Creature:new {
 	objectName = "mosEnthaNpc161",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -3474,7 +3474,7 @@ mosEnthaNpc161 = Creature:new {
 
 mosEnthaNpc162 = Creature:new {
 	objectName = "mosEnthaNpc162",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_entha_police_officer",
 	combatFlags = 0,
@@ -3496,7 +3496,7 @@ mosEnthaNpc162 = Creature:new {
 
 mosEnthaNpc163 = Creature:new {
 	objectName = "mosEnthaNpc163",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -3518,7 +3518,7 @@ mosEnthaNpc163 = Creature:new {
 
 mosEnthaNpc164 = Creature:new {
 	objectName = "mosEnthaNpc164",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -3540,7 +3540,7 @@ mosEnthaNpc164 = Creature:new {
 
 mosEnthaNpc165 = Creature:new {
 	objectName = "mosEnthaNpc165",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -3562,7 +3562,7 @@ mosEnthaNpc165 = Creature:new {
 
 mosEnthaNpc166 = Creature:new {
 	objectName = "mosEnthaNpc166",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -3584,7 +3584,7 @@ mosEnthaNpc166 = Creature:new {
 
 mosEnthaNpc167 = Creature:new {
 	objectName = "mosEnthaNpc167",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -3606,7 +3606,7 @@ mosEnthaNpc167 = Creature:new {
 
 mosEnthaNpc168 = Creature:new {
 	objectName = "mosEnthaNpc168",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -3628,7 +3628,7 @@ mosEnthaNpc168 = Creature:new {
 
 mosEnthaNpc169 = Creature:new {
 	objectName = "mosEnthaNpc169",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -3650,7 +3650,7 @@ mosEnthaNpc169 = Creature:new {
 
 mosEnthaNpc170 = Creature:new {
 	objectName = "mosEnthaNpc170",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -3672,7 +3672,7 @@ mosEnthaNpc170 = Creature:new {
 
 mosEnthaNpc171 = Creature:new {
 	objectName = "mosEnthaNpc171",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -3694,7 +3694,7 @@ mosEnthaNpc171 = Creature:new {
 
 mosEnthaNpc172 = Creature:new {
 	objectName = "mosEnthaNpc172",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -3716,7 +3716,7 @@ mosEnthaNpc172 = Creature:new {
 
 mosEnthaNpc173 = Creature:new {
 	objectName = "mosEnthaNpc173",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -3738,7 +3738,7 @@ mosEnthaNpc173 = Creature:new {
 
 mosEnthaNpc174 = Creature:new {
 	objectName = "mosEnthaNpc174",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -3760,7 +3760,7 @@ mosEnthaNpc174 = Creature:new {
 
 mosEnthaNpc175 = Creature:new {
 	objectName = "mosEnthaNpc175",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -3782,7 +3782,7 @@ mosEnthaNpc175 = Creature:new {
 
 mosEnthaNpc176 = Creature:new {
 	objectName = "mosEnthaNpc176",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -3804,7 +3804,7 @@ mosEnthaNpc176 = Creature:new {
 
 mosEnthaNpc177 = Creature:new {
 	objectName = "mosEnthaNpc177",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -3826,7 +3826,7 @@ mosEnthaNpc177 = Creature:new {
 
 mosEnthaNpc178 = Creature:new {
 	objectName = "mosEnthaNpc178",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3848,7 +3848,7 @@ mosEnthaNpc178 = Creature:new {
 
 mosEnthaNpc179 = Creature:new {
 	objectName = "mosEnthaNpc179",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -3870,7 +3870,7 @@ mosEnthaNpc179 = Creature:new {
 
 mosEnthaNpc180 = Creature:new {
 	objectName = "mosEnthaNpc180",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -3892,7 +3892,7 @@ mosEnthaNpc180 = Creature:new {
 
 mosEnthaNpc181 = Creature:new {
 	objectName = "mosEnthaNpc181",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "valarian_thug",
 	combatFlags = 0,
@@ -3914,7 +3914,7 @@ mosEnthaNpc181 = Creature:new {
 
 mosEnthaNpc182 = Creature:new {
 	objectName = "mosEnthaNpc182",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -3936,7 +3936,7 @@ mosEnthaNpc182 = Creature:new {
 
 mosEnthaNpc183 = Creature:new {
 	objectName = "mosEnthaNpc183",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_sergeant",
 	combatFlags = 0,
@@ -3958,7 +3958,7 @@ mosEnthaNpc183 = Creature:new {
 
 mosEnthaNpc184 = Creature:new {
 	objectName = "mosEnthaNpc184",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_entha_police_officer",
 	combatFlags = 0,
@@ -3980,7 +3980,7 @@ mosEnthaNpc184 = Creature:new {
 
 mosEnthaNpc185 = Creature:new {
 	objectName = "mosEnthaNpc185",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_entha_police_officer",
 	combatFlags = 0,
@@ -4002,7 +4002,7 @@ mosEnthaNpc185 = Creature:new {
 
 mosEnthaNpc186 = Creature:new {
 	objectName = "mosEnthaNpc186",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "valarian_thug",
 	combatFlags = 0,
@@ -4024,7 +4024,7 @@ mosEnthaNpc186 = Creature:new {
 
 mosEnthaNpc187 = Creature:new {
 	objectName = "mosEnthaNpc187",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -4046,7 +4046,7 @@ mosEnthaNpc187 = Creature:new {
 
 mosEnthaNpc188 = Creature:new {
 	objectName = "mosEnthaNpc188",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -4068,7 +4068,7 @@ mosEnthaNpc188 = Creature:new {
 
 mosEnthaNpc189 = Creature:new {
 	objectName = "mosEnthaNpc189",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "valarian_thug",
 	combatFlags = 0,
@@ -4090,7 +4090,7 @@ mosEnthaNpc189 = Creature:new {
 
 mosEnthaNpc190 = Creature:new {
 	objectName = "mosEnthaNpc190",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4112,7 +4112,7 @@ mosEnthaNpc190 = Creature:new {
 
 mosEnthaNpc191 = Creature:new {
 	objectName = "mosEnthaNpc191",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -4134,7 +4134,7 @@ mosEnthaNpc191 = Creature:new {
 
 mosEnthaNpc192 = Creature:new {
 	objectName = "mosEnthaNpc192",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -4156,7 +4156,7 @@ mosEnthaNpc192 = Creature:new {
 
 mosEnthaNpc193 = Creature:new {
 	objectName = "mosEnthaNpc193",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -4178,7 +4178,7 @@ mosEnthaNpc193 = Creature:new {
 
 mosEnthaNpc194 = Creature:new {
 	objectName = "mosEnthaNpc194",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_thief",
 	combatFlags = 0,
@@ -4200,7 +4200,7 @@ mosEnthaNpc194 = Creature:new {
 
 mosEnthaNpc195 = Creature:new {
 	objectName = "mosEnthaNpc195",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_smuggler",
 	combatFlags = 0,
@@ -4222,7 +4222,7 @@ mosEnthaNpc195 = Creature:new {
 
 mosEnthaNpc196 = Creature:new {
 	objectName = "mosEnthaNpc196",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -4244,7 +4244,7 @@ mosEnthaNpc196 = Creature:new {
 
 mosEnthaNpc197 = Creature:new {
 	objectName = "mosEnthaNpc197",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -4266,7 +4266,7 @@ mosEnthaNpc197 = Creature:new {
 
 mosEnthaNpc198 = Creature:new {
 	objectName = "mosEnthaNpc198",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_healer",
 	combatFlags = 0,
@@ -4288,7 +4288,7 @@ mosEnthaNpc198 = Creature:new {
 
 mosEnthaNpc199 = Creature:new {
 	objectName = "mosEnthaNpc199",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -4310,7 +4310,7 @@ mosEnthaNpc199 = Creature:new {
 
 mosEnthaNpc200 = Creature:new {
 	objectName = "mosEnthaNpc200",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -4332,7 +4332,7 @@ mosEnthaNpc200 = Creature:new {
 
 mosEnthaNpc201 = Creature:new {
 	objectName = "mosEnthaNpc201",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_engineer",
 	combatFlags = 0,
@@ -4354,7 +4354,7 @@ mosEnthaNpc201 = Creature:new {
 
 mosEnthaNpc202 = Creature:new {
 	objectName = "mosEnthaNpc202",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_healer",
 	combatFlags = 0,
@@ -4376,7 +4376,7 @@ mosEnthaNpc202 = Creature:new {
 
 mosEnthaNpc203 = Creature:new {
 	objectName = "mosEnthaNpc203",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_warlord",
 	combatFlags = 0,
@@ -4398,7 +4398,7 @@ mosEnthaNpc203 = Creature:new {
 
 mosEnthaNpc204 = Creature:new {
 	objectName = "mosEnthaNpc204",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_engineer",
 	combatFlags = 0,
@@ -4420,7 +4420,7 @@ mosEnthaNpc204 = Creature:new {
 
 mosEnthaNpc205 = Creature:new {
 	objectName = "mosEnthaNpc205",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_entha_police_officer",
 	combatFlags = 0,
@@ -4442,7 +4442,7 @@ mosEnthaNpc205 = Creature:new {
 
 mosEnthaNpc207 = Creature:new {
 	objectName = "mosEnthaNpc207",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4464,7 +4464,7 @@ mosEnthaNpc207 = Creature:new {
 
 mosEnthaNpc208 = Creature:new {
 	objectName = "mosEnthaNpc208",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_entha_police_officer",
 	combatFlags = 0,
@@ -4486,7 +4486,7 @@ mosEnthaNpc208 = Creature:new {
 
 mosEnthaNpc209 = Creature:new {
 	objectName = "mosEnthaNpc209",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -4508,7 +4508,7 @@ mosEnthaNpc209 = Creature:new {
 
 mosEnthaNpc210 = Creature:new {
 	objectName = "mosEnthaNpc210",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_entha_police_officer",
 	combatFlags = 0,
@@ -4530,7 +4530,7 @@ mosEnthaNpc210 = Creature:new {
 
 mosEnthaNpc211 = Creature:new {
 	objectName = "mosEnthaNpc211",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -4552,7 +4552,7 @@ mosEnthaNpc211 = Creature:new {
 
 mosEnthaNpc212 = Creature:new {
 	objectName = "mosEnthaNpc212",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_noncom",
 	combatFlags = 0,
@@ -4574,7 +4574,7 @@ mosEnthaNpc212 = Creature:new {
 
 mosEnthaNpc213 = Creature:new {
 	objectName = "mosEnthaNpc213",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_entha_police_officer",
 	combatFlags = 0,
@@ -4596,7 +4596,7 @@ mosEnthaNpc213 = Creature:new {
 
 mosEnthaNpc214 = Creature:new {
 	objectName = "mosEnthaNpc214",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_entha_police_officer",
 	combatFlags = 0,
@@ -4618,7 +4618,7 @@ mosEnthaNpc214 = Creature:new {
 
 mosEnthaNpc215 = Creature:new {
 	objectName = "mosEnthaNpc215",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_entha_police_officer",
 	combatFlags = 0,
@@ -4640,7 +4640,7 @@ mosEnthaNpc215 = Creature:new {
 
 mosEnthaNpc216 = Creature:new {
 	objectName = "mosEnthaNpc216",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_entha_police_officer",
 	combatFlags = 0,
@@ -4662,7 +4662,7 @@ mosEnthaNpc216 = Creature:new {
 
 mosEnthaNpc217 = Creature:new {
 	objectName = "mosEnthaNpc217",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -4684,7 +4684,7 @@ mosEnthaNpc217 = Creature:new {
 
 mosEnthaNpc218 = Creature:new {
 	objectName = "mosEnthaNpc218",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_entha_police_officer",
 	combatFlags = 0,
@@ -4706,7 +4706,7 @@ mosEnthaNpc218 = Creature:new {
 
 mosEnthaNpc219 = Creature:new {
 	objectName = "mosEnthaNpc219",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -4728,7 +4728,7 @@ mosEnthaNpc219 = Creature:new {
 
 mosEnthaNpc220 = Creature:new {
 	objectName = "mosEnthaNpc220",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_sharpshooter",
 	combatFlags = 0,
@@ -4750,7 +4750,7 @@ mosEnthaNpc220 = Creature:new {
 
 mosEnthaNpc221 = Creature:new {
 	objectName = "mosEnthaNpc221",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -4772,7 +4772,7 @@ mosEnthaNpc221 = Creature:new {
 
 mosEnthaNpc222 = Creature:new {
 	objectName = "mosEnthaNpc222",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -4794,7 +4794,7 @@ mosEnthaNpc222 = Creature:new {
 
 mosEnthaNpc223 = Creature:new {
 	objectName = "mosEnthaNpc223",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_smuggler",
 	combatFlags = 0,
@@ -4816,7 +4816,7 @@ mosEnthaNpc223 = Creature:new {
 
 mosEnthaNpc224 = Creature:new {
 	objectName = "mosEnthaNpc224",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_engineer",
 	combatFlags = 0,
@@ -4838,7 +4838,7 @@ mosEnthaNpc224 = Creature:new {
 
 mosEnthaNpc225 = Creature:new {
 	objectName = "mosEnthaNpc225",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_healer",
 	combatFlags = 0,
@@ -4860,7 +4860,7 @@ mosEnthaNpc225 = Creature:new {
 
 mosEnthaNpc226 = Creature:new {
 	objectName = "mosEnthaNpc226",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -4882,7 +4882,7 @@ mosEnthaNpc226 = Creature:new {
 
 mosEnthaNpc227 = Creature:new {
 	objectName = "mosEnthaNpc227",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -4904,7 +4904,7 @@ mosEnthaNpc227 = Creature:new {
 
 mosEnthaNpc228 = Creature:new {
 	objectName = "mosEnthaNpc228",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -4926,7 +4926,7 @@ mosEnthaNpc228 = Creature:new {
 
 mosEnthaNpc229 = Creature:new {
 	objectName = "mosEnthaNpc229",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4948,7 +4948,7 @@ mosEnthaNpc229 = Creature:new {
 
 mosEnthaNpc230 = Creature:new {
 	objectName = "mosEnthaNpc230",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -4970,7 +4970,7 @@ mosEnthaNpc230 = Creature:new {
 
 mosEnthaNpc231 = Creature:new {
 	objectName = "mosEnthaNpc231",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bestine_artist02",
 	combatFlags = 0,
@@ -4992,7 +4992,7 @@ mosEnthaNpc231 = Creature:new {
 
 mosEnthaNpc232 = Creature:new {
 	objectName = "mosEnthaNpc232",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_warlord",
 	combatFlags = 0,
@@ -5014,7 +5014,7 @@ mosEnthaNpc232 = Creature:new {
 
 mosEnthaNpc234 = Creature:new {
 	objectName = "mosEnthaNpc234",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -5036,7 +5036,7 @@ mosEnthaNpc234 = Creature:new {
 
 mosEnthaNpc235 = Creature:new {
 	objectName = "mosEnthaNpc235",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -5058,7 +5058,7 @@ mosEnthaNpc235 = Creature:new {
 
 mosEnthaNpc236 = Creature:new {
 	objectName = "mosEnthaNpc236",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -5080,7 +5080,7 @@ mosEnthaNpc236 = Creature:new {
 
 mosEnthaNpc237 = Creature:new {
 	objectName = "mosEnthaNpc237",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -5102,7 +5102,7 @@ mosEnthaNpc237 = Creature:new {
 
 mosEnthaNpc238 = Creature:new {
 	objectName = "mosEnthaNpc238",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5124,7 +5124,7 @@ mosEnthaNpc238 = Creature:new {
 
 mosEnthaNpc240 = Creature:new {
 	objectName = "mosEnthaNpc240",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -5146,7 +5146,7 @@ mosEnthaNpc240 = Creature:new {
 
 mosEnthaNpc241 = Creature:new {
 	objectName = "mosEnthaNpc241",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -5168,7 +5168,7 @@ mosEnthaNpc241 = Creature:new {
 
 mosEnthaNpc242 = Creature:new {
 	objectName = "mosEnthaNpc242",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_comm_operator",
 	combatFlags = 0,
@@ -5190,7 +5190,7 @@ mosEnthaNpc242 = Creature:new {
 
 mosEnthaNpc244 = Creature:new {
 	objectName = "mosEnthaNpc244",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -5212,7 +5212,7 @@ mosEnthaNpc244 = Creature:new {
 
 mosEnthaNpc245 = Creature:new {
 	objectName = "mosEnthaNpc245",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -5234,7 +5234,7 @@ mosEnthaNpc245 = Creature:new {
 
 mosEnthaNpc247 = Creature:new {
 	objectName = "mosEnthaNpc247",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -5256,7 +5256,7 @@ mosEnthaNpc247 = Creature:new {
 
 mosEnthaNpc248 = Creature:new {
 	objectName = "mosEnthaNpc248",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -5278,7 +5278,7 @@ mosEnthaNpc248 = Creature:new {
 
 mosEnthaNpc249 = Creature:new {
 	objectName = "mosEnthaNpc249",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -5300,7 +5300,7 @@ mosEnthaNpc249 = Creature:new {
 
 mosEnthaNpc250 = Creature:new {
 	objectName = "mosEnthaNpc250",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -5322,7 +5322,7 @@ mosEnthaNpc250 = Creature:new {
 
 mosEnthaNpc251 = Creature:new {
 	objectName = "mosEnthaNpc251",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "womprat",
 	combatFlags = 0,
@@ -5344,7 +5344,7 @@ mosEnthaNpc251 = Creature:new {
 
 mosEnthaNpc252 = Creature:new {
 	objectName = "mosEnthaNpc252",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -5366,7 +5366,7 @@ mosEnthaNpc252 = Creature:new {
 
 mosEnthaNpc253 = Creature:new {
 	objectName = "mosEnthaNpc253",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -5388,7 +5388,7 @@ mosEnthaNpc253 = Creature:new {
 
 mosEnthaNpc254 = Creature:new {
 	objectName = "mosEnthaNpc254",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -5410,7 +5410,7 @@ mosEnthaNpc254 = Creature:new {
 
 mosEnthaNpc255 = Creature:new {
 	objectName = "mosEnthaNpc255",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -5432,7 +5432,7 @@ mosEnthaNpc255 = Creature:new {
 
 mosEnthaNpc256 = Creature:new {
 	objectName = "mosEnthaNpc256",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -5454,7 +5454,7 @@ mosEnthaNpc256 = Creature:new {
 
 mosEnthaNpc257 = Creature:new {
 	objectName = "mosEnthaNpc257",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -5476,7 +5476,7 @@ mosEnthaNpc257 = Creature:new {
 
 mosEnthaNpc258 = Creature:new {
 	objectName = "mosEnthaNpc258",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -5498,7 +5498,7 @@ mosEnthaNpc258 = Creature:new {
 
 mosEnthaNpc259 = Creature:new {
 	objectName = "mosEnthaNpc259",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -5520,7 +5520,7 @@ mosEnthaNpc259 = Creature:new {
 
 mosEnthaNpc260 = Creature:new {
 	objectName = "mosEnthaNpc260",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -5542,7 +5542,7 @@ mosEnthaNpc260 = Creature:new {
 
 mosEnthaNpc261 = Creature:new {
 	objectName = "mosEnthaNpc261",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5564,7 +5564,7 @@ mosEnthaNpc261 = Creature:new {
 
 mosEnthaNpc262 = Creature:new {
 	objectName = "mosEnthaNpc262",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -5586,7 +5586,7 @@ mosEnthaNpc262 = Creature:new {
 
 mosEnthaNpc263 = Creature:new {
 	objectName = "mosEnthaNpc263",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -5608,7 +5608,7 @@ mosEnthaNpc263 = Creature:new {
 
 mosEnthaNpc264 = Creature:new {
 	objectName = "mosEnthaNpc264",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -5630,7 +5630,7 @@ mosEnthaNpc264 = Creature:new {
 
 mosEnthaNpc265 = Creature:new {
 	objectName = "mosEnthaNpc265",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -5652,7 +5652,7 @@ mosEnthaNpc265 = Creature:new {
 
 mosEnthaNpc266 = Creature:new {
 	objectName = "mosEnthaNpc266",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -5674,7 +5674,7 @@ mosEnthaNpc266 = Creature:new {
 
 mosEnthaNpc267 = Creature:new {
 	objectName = "mosEnthaNpc267",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5696,7 +5696,7 @@ mosEnthaNpc267 = Creature:new {
 
 mosEnthaNpc268 = Creature:new {
 	objectName = "mosEnthaNpc268",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -5718,7 +5718,7 @@ mosEnthaNpc268 = Creature:new {
 
 mosEnthaNpc269 = Creature:new {
 	objectName = "mosEnthaNpc269",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -5740,7 +5740,7 @@ mosEnthaNpc269 = Creature:new {
 
 mosEnthaNpc270 = Creature:new {
 	objectName = "mosEnthaNpc270",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -5762,7 +5762,7 @@ mosEnthaNpc270 = Creature:new {
 
 mosEnthaNpc271 = Creature:new {
 	objectName = "mosEnthaNpc271",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -5784,7 +5784,7 @@ mosEnthaNpc271 = Creature:new {
 
 mosEnthaNpc272 = Creature:new {
 	objectName = "mosEnthaNpc272",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -5806,7 +5806,7 @@ mosEnthaNpc272 = Creature:new {
 
 mosEnthaNpc273 = Creature:new {
 	objectName = "mosEnthaNpc273",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "womprat",
 	combatFlags = 0,
@@ -5828,7 +5828,7 @@ mosEnthaNpc273 = Creature:new {
 
 mosEnthaNpc274 = Creature:new {
 	objectName = "mosEnthaNpc274",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -5850,7 +5850,7 @@ mosEnthaNpc274 = Creature:new {
 
 mosEnthaNpc275 = Creature:new {
 	objectName = "mosEnthaNpc275",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -5872,7 +5872,7 @@ mosEnthaNpc275 = Creature:new {
 
 mosEnthaNpc276 = Creature:new {
 	objectName = "mosEnthaNpc276",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -5894,7 +5894,7 @@ mosEnthaNpc276 = Creature:new {
 
 mosEnthaNpc277 = Creature:new {
 	objectName = "mosEnthaNpc277",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -5916,7 +5916,7 @@ mosEnthaNpc277 = Creature:new {
 
 mosEnthaNpc278 = Creature:new {
 	objectName = "mosEnthaNpc278",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "womprat",
 	combatFlags = 0,
@@ -5938,7 +5938,7 @@ mosEnthaNpc278 = Creature:new {
 
 mosEnthaNpc279 = Creature:new {
 	objectName = "mosEnthaNpc279",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -5960,7 +5960,7 @@ mosEnthaNpc279 = Creature:new {
 
 mosEnthaNpc280 = Creature:new {
 	objectName = "mosEnthaNpc280",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -5982,7 +5982,7 @@ mosEnthaNpc280 = Creature:new {
 
 mosEnthaNpc281 = Creature:new {
 	objectName = "mosEnthaNpc281",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -6004,7 +6004,7 @@ mosEnthaNpc281 = Creature:new {
 
 mosEnthaNpc282 = Creature:new {
 	objectName = "mosEnthaNpc282",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -6026,7 +6026,7 @@ mosEnthaNpc282 = Creature:new {
 
 mosEnthaNpc283 = Creature:new {
 	objectName = "mosEnthaNpc283",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -6048,7 +6048,7 @@ mosEnthaNpc283 = Creature:new {
 
 mosEnthaNpc284 = Creature:new {
 	objectName = "mosEnthaNpc284",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -6070,7 +6070,7 @@ mosEnthaNpc284 = Creature:new {
 
 mosEnthaNpc285 = Creature:new {
 	objectName = "mosEnthaNpc285",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -6092,7 +6092,7 @@ mosEnthaNpc285 = Creature:new {
 
 mosEnthaNpc286 = Creature:new {
 	objectName = "mosEnthaNpc286",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_entha_police_officer",
 	combatFlags = 0,
@@ -6114,7 +6114,7 @@ mosEnthaNpc286 = Creature:new {
 
 mosEnthaNpc287 = Creature:new {
 	objectName = "mosEnthaNpc287",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -6136,7 +6136,7 @@ mosEnthaNpc287 = Creature:new {
 
 mosEnthaNpc288 = Creature:new {
 	objectName = "mosEnthaNpc288",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler",
 	combatFlags = 0,
@@ -6158,7 +6158,7 @@ mosEnthaNpc288 = Creature:new {
 
 mosEnthaNpc289 = Creature:new {
 	objectName = "mosEnthaNpc289",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "settler",
 	combatFlags = 0,
@@ -6180,7 +6180,7 @@ mosEnthaNpc289 = Creature:new {
 
 mosEnthaNpc290 = Creature:new {
 	objectName = "mosEnthaNpc290",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -6202,7 +6202,7 @@ mosEnthaNpc290 = Creature:new {
 
 mosEnthaNpc291 = Creature:new {
 	objectName = "mosEnthaNpc291",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -6224,7 +6224,7 @@ mosEnthaNpc291 = Creature:new {
 
 mosEnthaNpc292 = Creature:new {
 	objectName = "mosEnthaNpc292",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -6246,7 +6246,7 @@ mosEnthaNpc292 = Creature:new {
 
 mosEnthaNpc293 = Creature:new {
 	objectName = "mosEnthaNpc293",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -6268,7 +6268,7 @@ mosEnthaNpc293 = Creature:new {
 
 mosEnthaNpc294 = Creature:new {
 	objectName = "mosEnthaNpc294",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -6290,7 +6290,7 @@ mosEnthaNpc294 = Creature:new {
 
 mosEnthaNpc295 = Creature:new {
 	objectName = "mosEnthaNpc295",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -6312,7 +6312,7 @@ mosEnthaNpc295 = Creature:new {
 
 mosEnthaNpc296 = Creature:new {
 	objectName = "mosEnthaNpc296",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -6334,7 +6334,7 @@ mosEnthaNpc296 = Creature:new {
 
 mosEnthaNpc297 = Creature:new {
 	objectName = "mosEnthaNpc297",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -6356,7 +6356,7 @@ mosEnthaNpc297 = Creature:new {
 
 mosEnthaNpc298 = Creature:new {
 	objectName = "mosEnthaNpc298",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -6378,7 +6378,7 @@ mosEnthaNpc298 = Creature:new {
 
 mosEnthaNpc299 = Creature:new {
 	objectName = "mosEnthaNpc299",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -6400,7 +6400,7 @@ mosEnthaNpc299 = Creature:new {
 
 mosEnthaNpc300 = Creature:new {
 	objectName = "mosEnthaNpc300",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -6422,7 +6422,7 @@ mosEnthaNpc300 = Creature:new {
 
 mosEnthaNpc301 = Creature:new {
 	objectName = "mosEnthaNpc301",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_storm_commando",
 	combatFlags = 0,
@@ -6444,7 +6444,7 @@ mosEnthaNpc301 = Creature:new {
 
 mosEnthaNpc302 = Creature:new {
 	objectName = "mosEnthaNpc302",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -6466,7 +6466,7 @@ mosEnthaNpc302 = Creature:new {
 
 mosEnthaNpc303 = Creature:new {
 	objectName = "mosEnthaNpc303",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -6488,7 +6488,7 @@ mosEnthaNpc303 = Creature:new {
 
 mosEnthaNpc304 = Creature:new {
 	objectName = "mosEnthaNpc304",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -6510,7 +6510,7 @@ mosEnthaNpc304 = Creature:new {
 
 mosEnthaNpc305 = Creature:new {
 	objectName = "mosEnthaNpc305",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -6532,7 +6532,7 @@ mosEnthaNpc305 = Creature:new {
 
 mosEnthaNpc306 = Creature:new {
 	objectName = "mosEnthaNpc306",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -6554,7 +6554,7 @@ mosEnthaNpc306 = Creature:new {
 
 mosEnthaNpc307 = Creature:new {
 	objectName = "mosEnthaNpc307",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -6576,7 +6576,7 @@ mosEnthaNpc307 = Creature:new {
 
 mosEnthaNpc308 = Creature:new {
 	objectName = "mosEnthaNpc308",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -6598,7 +6598,7 @@ mosEnthaNpc308 = Creature:new {
 
 mosEnthaNpc309 = Creature:new {
 	objectName = "mosEnthaNpc309",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -6620,7 +6620,7 @@ mosEnthaNpc309 = Creature:new {
 
 mosEnthaNpc310 = Creature:new {
 	objectName = "mosEnthaNpc310",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -6642,7 +6642,7 @@ mosEnthaNpc310 = Creature:new {
 
 mosEnthaNpc311 = Creature:new {
 	objectName = "mosEnthaNpc311",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -6664,7 +6664,7 @@ mosEnthaNpc311 = Creature:new {
 
 mosEnthaNpc312 = Creature:new {
 	objectName = "mosEnthaNpc312",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -6686,7 +6686,7 @@ mosEnthaNpc312 = Creature:new {
 
 mosEnthaNpc313 = Creature:new {
 	objectName = "mosEnthaNpc313",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -6708,7 +6708,7 @@ mosEnthaNpc313 = Creature:new {
 
 mosEnthaNpc314 = Creature:new {
 	objectName = "mosEnthaNpc314",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -6730,7 +6730,7 @@ mosEnthaNpc314 = Creature:new {
 
 mosEnthaNpc315 = Creature:new {
 	objectName = "mosEnthaNpc315",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -6752,7 +6752,7 @@ mosEnthaNpc315 = Creature:new {
 
 mosEnthaNpc316 = Creature:new {
 	objectName = "mosEnthaNpc316",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -6774,7 +6774,7 @@ mosEnthaNpc316 = Creature:new {
 
 mosEnthaNpc317 = Creature:new {
 	objectName = "mosEnthaNpc317",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -6796,7 +6796,7 @@ mosEnthaNpc317 = Creature:new {
 
 mosEnthaNpc318 = Creature:new {
 	objectName = "mosEnthaNpc318",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -6818,7 +6818,7 @@ mosEnthaNpc318 = Creature:new {
 
 mosEnthaNpc319 = Creature:new {
 	objectName = "mosEnthaNpc319",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -6840,7 +6840,7 @@ mosEnthaNpc319 = Creature:new {
 
 mosEnthaNpc320 = Creature:new {
 	objectName = "mosEnthaNpc320",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -6862,7 +6862,7 @@ mosEnthaNpc320 = Creature:new {
 
 mosEnthaNpc321 = Creature:new {
 	objectName = "mosEnthaNpc321",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -6884,7 +6884,7 @@ mosEnthaNpc321 = Creature:new {
 
 mosEnthaNpc322 = Creature:new {
 	objectName = "mosEnthaNpc322",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -6906,7 +6906,7 @@ mosEnthaNpc322 = Creature:new {
 
 mosEnthaNpc323 = Creature:new {
 	objectName = "mosEnthaNpc323",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -6928,7 +6928,7 @@ mosEnthaNpc323 = Creature:new {
 
 mosEnthaNpc324 = Creature:new {
 	objectName = "mosEnthaNpc324",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -6950,7 +6950,7 @@ mosEnthaNpc324 = Creature:new {
 
 mosEnthaNpc325 = Creature:new {
 	objectName = "mosEnthaNpc325",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -6972,7 +6972,7 @@ mosEnthaNpc325 = Creature:new {
 
 mosEnthaNpc326 = Creature:new {
 	objectName = "mosEnthaNpc326",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -6994,7 +6994,7 @@ mosEnthaNpc326 = Creature:new {
 
 mosEnthaNpc327 = Creature:new {
 	objectName = "mosEnthaNpc327",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -7016,7 +7016,7 @@ mosEnthaNpc327 = Creature:new {
 
 mosEnthaNpc328 = Creature:new {
 	objectName = "mosEnthaNpc328",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -7038,7 +7038,7 @@ mosEnthaNpc328 = Creature:new {
 
 mosEnthaNpc329 = Creature:new {
 	objectName = "mosEnthaNpc329",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -7060,7 +7060,7 @@ mosEnthaNpc329 = Creature:new {
 
 mosEnthaNpc330 = Creature:new {
 	objectName = "mosEnthaNpc330",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "womprat",
 	combatFlags = 0,
@@ -7082,7 +7082,7 @@ mosEnthaNpc330 = Creature:new {
 
 mosEnthaNpc331 = Creature:new {
 	objectName = "mosEnthaNpc331",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -7104,7 +7104,7 @@ mosEnthaNpc331 = Creature:new {
 
 mosEnthaNpc332 = Creature:new {
 	objectName = "mosEnthaNpc332",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -7126,7 +7126,7 @@ mosEnthaNpc332 = Creature:new {
 
 mosEnthaNpc333 = Creature:new {
 	objectName = "mosEnthaNpc333",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -7148,7 +7148,7 @@ mosEnthaNpc333 = Creature:new {
 
 mosEnthaNpc334 = Creature:new {
 	objectName = "mosEnthaNpc334",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -7170,7 +7170,7 @@ mosEnthaNpc334 = Creature:new {
 
 mosEnthaNpc335 = Creature:new {
 	objectName = "mosEnthaNpc335",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -7192,7 +7192,7 @@ mosEnthaNpc335 = Creature:new {
 
 mosEnthaNpc336 = Creature:new {
 	objectName = "mosEnthaNpc336",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "womprat",
 	combatFlags = 0,
@@ -7214,7 +7214,7 @@ mosEnthaNpc336 = Creature:new {
 
 mosEnthaNpc337 = Creature:new {
 	objectName = "mosEnthaNpc337",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -7236,7 +7236,7 @@ mosEnthaNpc337 = Creature:new {
 
 mosEnthaNpc338 = Creature:new {
 	objectName = "mosEnthaNpc338",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -7258,7 +7258,7 @@ mosEnthaNpc338 = Creature:new {
 
 mosEnthaNpc339 = Creature:new {
 	objectName = "mosEnthaNpc339",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -7280,7 +7280,7 @@ mosEnthaNpc339 = Creature:new {
 
 mosEnthaNpc340 = Creature:new {
 	objectName = "mosEnthaNpc340",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -7302,7 +7302,7 @@ mosEnthaNpc340 = Creature:new {
 
 mosEnthaNpc341 = Creature:new {
 	objectName = "mosEnthaNpc341",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -7324,7 +7324,7 @@ mosEnthaNpc341 = Creature:new {
 
 mosEnthaNpc342 = Creature:new {
 	objectName = "mosEnthaNpc342",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -7346,7 +7346,7 @@ mosEnthaNpc342 = Creature:new {
 
 mosEnthaNpc343 = Creature:new {
 	objectName = "mosEnthaNpc343",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -7368,7 +7368,7 @@ mosEnthaNpc343 = Creature:new {
 
 mosEnthaNpc344 = Creature:new {
 	objectName = "mosEnthaNpc344",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -7390,7 +7390,7 @@ mosEnthaNpc344 = Creature:new {
 
 mosEnthaNpc345 = Creature:new {
 	objectName = "mosEnthaNpc345",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -7412,7 +7412,7 @@ mosEnthaNpc345 = Creature:new {
 
 mosEnthaNpc346 = Creature:new {
 	objectName = "mosEnthaNpc346",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -7434,7 +7434,7 @@ mosEnthaNpc346 = Creature:new {
 
 mosEnthaNpc347 = Creature:new {
 	objectName = "mosEnthaNpc347",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -7456,7 +7456,7 @@ mosEnthaNpc347 = Creature:new {
 
 mosEnthaNpc348 = Creature:new {
 	objectName = "mosEnthaNpc348",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -7478,7 +7478,7 @@ mosEnthaNpc348 = Creature:new {
 
 mosEnthaNpc350 = Creature:new {
 	objectName = "mosEnthaNpc350",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -7500,7 +7500,7 @@ mosEnthaNpc350 = Creature:new {
 
 mosEnthaNpc351 = Creature:new {
 	objectName = "mosEnthaNpc351",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -7522,7 +7522,7 @@ mosEnthaNpc351 = Creature:new {
 
 mosEnthaNpc352 = Creature:new {
 	objectName = "mosEnthaNpc352",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -7544,7 +7544,7 @@ mosEnthaNpc352 = Creature:new {
 
 mosEnthaNpc353 = Creature:new {
 	objectName = "mosEnthaNpc353",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -7566,7 +7566,7 @@ mosEnthaNpc353 = Creature:new {
 
 mosEnthaNpc354 = Creature:new {
 	objectName = "mosEnthaNpc354",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -7588,7 +7588,7 @@ mosEnthaNpc354 = Creature:new {
 
 mosEnthaNpc355 = Creature:new {
 	objectName = "mosEnthaNpc355",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -7610,7 +7610,7 @@ mosEnthaNpc355 = Creature:new {
 
 mosEnthaNpc356 = Creature:new {
 	objectName = "mosEnthaNpc356",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -7632,7 +7632,7 @@ mosEnthaNpc356 = Creature:new {
 
 mosEnthaNpc357 = Creature:new {
 	objectName = "mosEnthaNpc357",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -7654,7 +7654,7 @@ mosEnthaNpc357 = Creature:new {
 
 mosEnthaNpc358 = Creature:new {
 	objectName = "mosEnthaNpc358",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -7676,7 +7676,7 @@ mosEnthaNpc358 = Creature:new {
 
 mosEnthaNpc359 = Creature:new {
 	objectName = "mosEnthaNpc359",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -7698,7 +7698,7 @@ mosEnthaNpc359 = Creature:new {
 
 mosEnthaNpc360 = Creature:new {
 	objectName = "mosEnthaNpc360",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -7720,7 +7720,7 @@ mosEnthaNpc360 = Creature:new {
 
 mosEnthaNpc361 = Creature:new {
 	objectName = "mosEnthaNpc361",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -7742,7 +7742,7 @@ mosEnthaNpc361 = Creature:new {
 
 mosEnthaNpc362 = Creature:new {
 	objectName = "mosEnthaNpc362",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -7764,7 +7764,7 @@ mosEnthaNpc362 = Creature:new {
 
 mosEnthaNpc363 = Creature:new {
 	objectName = "mosEnthaNpc363",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -7786,7 +7786,7 @@ mosEnthaNpc363 = Creature:new {
 
 mosEnthaNpc364 = Creature:new {
 	objectName = "mosEnthaNpc364",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -7808,7 +7808,7 @@ mosEnthaNpc364 = Creature:new {
 
 mosEnthaNpc365 = Creature:new {
 	objectName = "mosEnthaNpc365",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -7830,7 +7830,7 @@ mosEnthaNpc365 = Creature:new {
 
 mosEnthaNpc366 = Creature:new {
 	objectName = "mosEnthaNpc366",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -7852,7 +7852,7 @@ mosEnthaNpc366 = Creature:new {
 
 mosEnthaNpc367 = Creature:new {
 	objectName = "mosEnthaNpc367",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -7874,7 +7874,7 @@ mosEnthaNpc367 = Creature:new {
 
 mosEnthaNpc368 = Creature:new {
 	objectName = "mosEnthaNpc368",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "moisture_farmer",
 	combatFlags = 0,
@@ -7896,7 +7896,7 @@ mosEnthaNpc368 = Creature:new {
 
 mosEnthaNpc369 = Creature:new {
 	objectName = "mosEnthaNpc369",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -7918,7 +7918,7 @@ mosEnthaNpc369 = Creature:new {
 
 mosEnthaNpc370 = Creature:new {
 	objectName = "mosEnthaNpc370",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "desert_razorback",
 	combatFlags = 0,
@@ -7940,7 +7940,7 @@ mosEnthaNpc370 = Creature:new {
 
 mosEnthaNpc371 = Creature:new {
 	objectName = "mosEnthaNpc371",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "desert_razorback",
 	combatFlags = 0,
@@ -7962,7 +7962,7 @@ mosEnthaNpc371 = Creature:new {
 
 mosEnthaNpc372 = Creature:new {
 	objectName = "mosEnthaNpc372",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "desert_razorback",
 	combatFlags = 0,
@@ -7984,7 +7984,7 @@ mosEnthaNpc372 = Creature:new {
 
 mosEnthaNpc373 = Creature:new {
 	objectName = "mosEnthaNpc373",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -8006,7 +8006,7 @@ mosEnthaNpc373 = Creature:new {
 
 mosEnthaNpc374 = Creature:new {
 	objectName = "mosEnthaNpc374",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -8028,7 +8028,7 @@ mosEnthaNpc374 = Creature:new {
 
 mosEnthaNpc375 = Creature:new {
 	objectName = "mosEnthaNpc375",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -8050,7 +8050,7 @@ mosEnthaNpc375 = Creature:new {
 
 mosEnthaNpc376 = Creature:new {
 	objectName = "mosEnthaNpc376",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -8072,7 +8072,7 @@ mosEnthaNpc376 = Creature:new {
 
 mosEnthaNpc377 = Creature:new {
 	objectName = "mosEnthaNpc377",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -8094,7 +8094,7 @@ mosEnthaNpc377 = Creature:new {
 
 mosEnthaNpc378 = Creature:new {
 	objectName = "mosEnthaNpc378",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -8116,7 +8116,7 @@ mosEnthaNpc378 = Creature:new {
 
 mosEnthaNpc379 = Creature:new {
 	objectName = "mosEnthaNpc379",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -8138,7 +8138,7 @@ mosEnthaNpc379 = Creature:new {
 
 mosEnthaNpc380 = Creature:new {
 	objectName = "mosEnthaNpc380",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rill",
 	combatFlags = 0,
@@ -8160,7 +8160,7 @@ mosEnthaNpc380 = Creature:new {
 
 mosEnthaNpc381 = Creature:new {
 	objectName = "mosEnthaNpc381",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "desert_razorback",
 	combatFlags = 0,
@@ -8182,7 +8182,7 @@ mosEnthaNpc381 = Creature:new {
 
 mosEnthaNpc382 = Creature:new {
 	objectName = "mosEnthaNpc382",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "desert_razorback",
 	combatFlags = 0,
@@ -8204,7 +8204,7 @@ mosEnthaNpc382 = Creature:new {
 
 mosEnthaNpc385 = Creature:new {
 	objectName = "mosEnthaNpc385",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jabba_scout",
 	combatFlags = 0,
@@ -8226,7 +8226,7 @@ mosEnthaNpc385 = Creature:new {
 
 mosEnthaNpc386 = Creature:new {
 	objectName = "mosEnthaNpc386",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jabba_scout",
 	combatFlags = 0,
@@ -8248,7 +8248,7 @@ mosEnthaNpc386 = Creature:new {
 
 mosEnthaNpc387 = Creature:new {
 	objectName = "mosEnthaNpc387",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jabba_scout",
 	combatFlags = 0,
@@ -8270,7 +8270,7 @@ mosEnthaNpc387 = Creature:new {
 
 mosEnthaNpc389 = Creature:new {
 	objectName = "mosEnthaNpc389",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r4",
 	combatFlags = 0,
@@ -8292,7 +8292,7 @@ mosEnthaNpc389 = Creature:new {
 
 mosEnthaNpc390 = Creature:new {
 	objectName = "mosEnthaNpc390",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -8314,7 +8314,7 @@ mosEnthaNpc390 = Creature:new {
 
 mosEnthaNpc391 = Creature:new {
 	objectName = "mosEnthaNpc391",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -8336,7 +8336,7 @@ mosEnthaNpc391 = Creature:new {
 
 mosEnthaNpc392 = Creature:new {
 	objectName = "mosEnthaNpc392",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r4",
 	combatFlags = 0,
@@ -8358,7 +8358,7 @@ mosEnthaNpc392 = Creature:new {
 
 mosEnthaNpc393 = Creature:new {
 	objectName = "mosEnthaNpc393",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -8380,7 +8380,7 @@ mosEnthaNpc393 = Creature:new {
 
 mosEnthaNpc394 = Creature:new {
 	objectName = "mosEnthaNpc394",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crafting_contractor",
 	combatFlags = 0,
@@ -8402,7 +8402,7 @@ mosEnthaNpc394 = Creature:new {
 
 mosEnthaNpc395 = Creature:new {
 	objectName = "mosEnthaNpc395",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -8424,7 +8424,7 @@ mosEnthaNpc395 = Creature:new {
 
 mosEnthaNpc396 = Creature:new {
 	objectName = "mosEnthaNpc396",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -8446,7 +8446,7 @@ mosEnthaNpc396 = Creature:new {
 
 mosEnthaNpc397 = Creature:new {
 	objectName = "mosEnthaNpc397",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bith_base_male",
 	combatFlags = 0,
@@ -8468,7 +8468,7 @@ mosEnthaNpc397 = Creature:new {
 
 mosEnthaNpc398 = Creature:new {
 	objectName = "mosEnthaNpc398",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -8490,7 +8490,7 @@ mosEnthaNpc398 = Creature:new {
 
 mosEnthaNpc399 = Creature:new {
 	objectName = "mosEnthaNpc399",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -8512,7 +8512,7 @@ mosEnthaNpc399 = Creature:new {
 
 mosEnthaNpc400 = Creature:new {
 	objectName = "mosEnthaNpc400",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -8534,7 +8534,7 @@ mosEnthaNpc400 = Creature:new {
 
 mosEnthaNpc401 = Creature:new {
 	objectName = "mosEnthaNpc401",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_exterminator",
 	combatFlags = 0,
@@ -8556,7 +8556,7 @@ mosEnthaNpc401 = Creature:new {
 
 mosEnthaNpc402 = Creature:new {
 	objectName = "mosEnthaNpc402",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_entha_police_officer",
 	combatFlags = 0,
@@ -8578,7 +8578,7 @@ mosEnthaNpc402 = Creature:new {
 
 mosEnthaNpc403 = Creature:new {
 	objectName = "mosEnthaNpc403",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -8600,7 +8600,7 @@ mosEnthaNpc403 = Creature:new {
 
 mosEnthaNpc404 = Creature:new {
 	objectName = "mosEnthaNpc404",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -8622,7 +8622,7 @@ mosEnthaNpc404 = Creature:new {
 
 mosEnthaNpc405 = Creature:new {
 	objectName = "mosEnthaNpc405",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_entha_police_officer",
 	combatFlags = 0,
@@ -8644,7 +8644,7 @@ mosEnthaNpc405 = Creature:new {
 
 mosEnthaNpc406 = Creature:new {
 	objectName = "mosEnthaNpc406",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bith_base_female",
 	combatFlags = 0,
@@ -8666,7 +8666,7 @@ mosEnthaNpc406 = Creature:new {
 
 mosEnthaNpc407 = Creature:new {
 	objectName = "mosEnthaNpc407",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -8688,7 +8688,7 @@ mosEnthaNpc407 = Creature:new {
 
 mosEnthaNpc408 = Creature:new {
 	objectName = "mosEnthaNpc408",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -8710,7 +8710,7 @@ mosEnthaNpc408 = Creature:new {
 
 mosEnthaNpc409 = Creature:new {
 	objectName = "mosEnthaNpc409",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -8732,7 +8732,7 @@ mosEnthaNpc409 = Creature:new {
 
 mosEnthaNpc410 = Creature:new {
 	objectName = "mosEnthaNpc410",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -8754,7 +8754,7 @@ mosEnthaNpc410 = Creature:new {
 
 mosEnthaNpc411 = Creature:new {
 	objectName = "mosEnthaNpc411",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -8776,7 +8776,7 @@ mosEnthaNpc411 = Creature:new {
 
 mosEnthaNpc412 = Creature:new {
 	objectName = "mosEnthaNpc412",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -8798,7 +8798,7 @@ mosEnthaNpc412 = Creature:new {
 
 mosEnthaNpc413 = Creature:new {
 	objectName = "mosEnthaNpc413",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -8820,7 +8820,7 @@ mosEnthaNpc413 = Creature:new {
 
 mosEnthaNpc414 = Creature:new {
 	objectName = "mosEnthaNpc414",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -8842,7 +8842,7 @@ mosEnthaNpc414 = Creature:new {
 
 mosEnthaNpc415 = Creature:new {
 	objectName = "mosEnthaNpc415",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -8864,7 +8864,7 @@ mosEnthaNpc415 = Creature:new {
 
 mosEnthaNpc416 = Creature:new {
 	objectName = "mosEnthaNpc416",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "quest_crowd_pleaser_theater_manager",
 	combatFlags = 0,
@@ -8886,7 +8886,7 @@ mosEnthaNpc416 = Creature:new {
 
 mosEnthaNpc417 = Creature:new {
 	objectName = "mosEnthaNpc417",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -8908,7 +8908,7 @@ mosEnthaNpc417 = Creature:new {
 
 mosEnthaNpc418 = Creature:new {
 	objectName = "mosEnthaNpc418",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "dim_u_monk",
 	combatFlags = 0,
@@ -8930,7 +8930,7 @@ mosEnthaNpc418 = Creature:new {
 
 mosEnthaNpc419 = Creature:new {
 	objectName = "mosEnthaNpc419",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -8952,7 +8952,7 @@ mosEnthaNpc419 = Creature:new {
 
 mosEnthaNpc420 = Creature:new {
 	objectName = "mosEnthaNpc420",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -8974,7 +8974,7 @@ mosEnthaNpc420 = Creature:new {
 
 mosEnthaNpc421 = Creature:new {
 	objectName = "mosEnthaNpc421",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler",
 	combatFlags = 0,
@@ -8996,7 +8996,7 @@ mosEnthaNpc421 = Creature:new {
 
 mosEnthaNpc422 = Creature:new {
 	objectName = "mosEnthaNpc422",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "info_broker",
 	combatFlags = 0,
@@ -9018,7 +9018,7 @@ mosEnthaNpc422 = Creature:new {
 
 mosEnthaNpc423 = Creature:new {
 	objectName = "mosEnthaNpc423",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_clan_warchief",
 	combatFlags = 0,
@@ -9040,7 +9040,7 @@ mosEnthaNpc423 = Creature:new {
 
 mosEnthaNpc424 = Creature:new {
 	objectName = "mosEnthaNpc424",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -9062,7 +9062,7 @@ mosEnthaNpc424 = Creature:new {
 
 mosEnthaNpc425 = Creature:new {
 	objectName = "mosEnthaNpc425",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r4",
 	combatFlags = 0,
@@ -9084,7 +9084,7 @@ mosEnthaNpc425 = Creature:new {
 
 mosEnthaNpc426 = Creature:new {
 	objectName = "mosEnthaNpc426",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -9106,7 +9106,7 @@ mosEnthaNpc426 = Creature:new {
 
 mosEnthaNpc428 = Creature:new {
 	objectName = "mosEnthaNpc428",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -9128,7 +9128,7 @@ mosEnthaNpc428 = Creature:new {
 
 mosEnthaNpc429 = Creature:new {
 	objectName = "mosEnthaNpc429",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "surgical_droid_21b",
 	combatFlags = 0,
@@ -9150,7 +9150,7 @@ mosEnthaNpc429 = Creature:new {
 
 mosEnthaNpc430 = Creature:new {
 	objectName = "mosEnthaNpc430",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -9172,7 +9172,7 @@ mosEnthaNpc430 = Creature:new {
 
 mosEnthaNpc431 = Creature:new {
 	objectName = "mosEnthaNpc431",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -9194,7 +9194,7 @@ mosEnthaNpc431 = Creature:new {
 
 mosEnthaNpc432 = Creature:new {
 	objectName = "mosEnthaNpc432",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,

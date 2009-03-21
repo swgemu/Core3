@@ -42,7 +42,7 @@
 
 vreniNpc1 = Creature:new {
 	objectName = "vreniNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ vreniNpc1 = Creature:new {
 
 vreniNpc2 = Creature:new {
 	objectName = "vreniNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ vreniNpc2 = Creature:new {
 
 vreniNpc3 = Creature:new {
 	objectName = "vreniNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ vreniNpc3 = Creature:new {
 
 vreniNpc4 = Creature:new {
 	objectName = "vreniNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_command_security_guard",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ vreniNpc4 = Creature:new {
 
 vreniNpc5 = Creature:new {
 	objectName = "vreniNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ vreniNpc5 = Creature:new {
 
 vreniNpc8 = Creature:new {
 	objectName = "vreniNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ vreniNpc8 = Creature:new {
 
 vreniNpc9 = Creature:new {
 	objectName = "vreniNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ vreniNpc9 = Creature:new {
 
 vreniNpc10 = Creature:new {
 	objectName = "vreniNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cll8_binary_load_lifter",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ vreniNpc10 = Creature:new {
 
 vreniNpc11 = Creature:new {
 	objectName = "vreniNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ vreniNpc11 = Creature:new {
 
 vreniNpc12 = Creature:new {
 	objectName = "vreniNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_cadet",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ vreniNpc12 = Creature:new {
 
 vreniNpc13 = Creature:new {
 	objectName = "vreniNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ vreniNpc13 = Creature:new {
 
 vreniNpc14 = Creature:new {
 	objectName = "vreniNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_comm_operator",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ vreniNpc14 = Creature:new {
 
 vreniNpc15 = Creature:new {
 	objectName = "vreniNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_soldier",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ vreniNpc15 = Creature:new {
 
 vreniNpc16 = Creature:new {
 	objectName = "vreniNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ vreniNpc16 = Creature:new {
 
 vreniNpc17 = Creature:new {
 	objectName = "vreniNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ vreniNpc17 = Creature:new {
 
 vreniNpc18 = Creature:new {
 	objectName = "vreniNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ vreniNpc18 = Creature:new {
 
 vreniNpc19 = Creature:new {
 	objectName = "vreniNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_liberator",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ vreniNpc19 = Creature:new {
 
 vreniNpc20 = Creature:new {
 	objectName = "vreniNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_liberator",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ vreniNpc20 = Creature:new {
 
 vreniNpc21 = Creature:new {
 	objectName = "vreniNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_soldier",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ vreniNpc21 = Creature:new {
 
 vreniNpc22 = Creature:new {
 	objectName = "vreniNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ vreniNpc22 = Creature:new {
 
 vreniNpc25 = Creature:new {
 	objectName = "vreniNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ vreniNpc25 = Creature:new {
 
 vreniNpc26 = Creature:new {
 	objectName = "vreniNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ vreniNpc26 = Creature:new {
 
 vreniNpc27 = Creature:new {
 	objectName = "vreniNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ vreniNpc27 = Creature:new {
 
 vreniNpc28 = Creature:new {
 	objectName = "vreniNpc28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ vreniNpc28 = Creature:new {
 
 vreniNpc29 = Creature:new {
 	objectName = "vreniNpc29",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ vreniNpc29 = Creature:new {
 
 vreniNpc30 = Creature:new {
 	objectName = "vreniNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ vreniNpc30 = Creature:new {
 
 vreniNpc31 = Creature:new {
 	objectName = "vreniNpc31",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ vreniNpc31 = Creature:new {
 
 vreniNpc32 = Creature:new {
 	objectName = "vreniNpc32",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_soldier",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ vreniNpc32 = Creature:new {
 
 vreniNpc33 = Creature:new {
 	objectName = "vreniNpc33",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ vreniNpc33 = Creature:new {
 
 vreniNpc34 = Creature:new {
 	objectName = "vreniNpc34",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ vreniNpc34 = Creature:new {
 
 vreniNpc36 = Creature:new {
 	objectName = "vreniNpc36",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_inspector_sergeant",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ vreniNpc36 = Creature:new {
 
 vreniNpc37 = Creature:new {
 	objectName = "vreniNpc37",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_investigator",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ vreniNpc37 = Creature:new {
 
 vreniNpc38 = Creature:new {
 	objectName = "vreniNpc38",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ vreniNpc38 = Creature:new {
 
 vreniNpc39 = Creature:new {
 	objectName = "vreniNpc39",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ vreniNpc39 = Creature:new {
 
 vreniNpc40 = Creature:new {
 	objectName = "vreniNpc40",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ vreniNpc40 = Creature:new {
 
 vreniNpc41 = Creature:new {
 	objectName = "vreniNpc41",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guard_captain",
 	combatFlags = 0,
@@ -834,7 +834,7 @@ vreniNpc41 = Creature:new {
 
 vreniNpc42 = Creature:new {
 	objectName = "vreniNpc42",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -856,7 +856,7 @@ vreniNpc42 = Creature:new {
 
 vreniNpc43 = Creature:new {
 	objectName = "vreniNpc43",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_soldier",
 	combatFlags = 0,
@@ -878,7 +878,7 @@ vreniNpc43 = Creature:new {
 
 vreniNpc44 = Creature:new {
 	objectName = "vreniNpc44",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,

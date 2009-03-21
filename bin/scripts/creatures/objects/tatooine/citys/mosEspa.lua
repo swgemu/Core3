@@ -42,7 +42,7 @@
 
 mosEspaNpc1 = Creature:new {
 	objectName = "mosEspaNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "tatooine_militiaman",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ mosEspaNpc1 = Creature:new {
 
 mosEspaNpc2 = Creature:new {
 	objectName = "mosEspaNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ mosEspaNpc2 = Creature:new {
 
 mosEspaNpc3 = Creature:new {
 	objectName = "mosEspaNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_male",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ mosEspaNpc3 = Creature:new {
 
 mosEspaNpc4 = Creature:new {
 	objectName = "mosEspaNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_female",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ mosEspaNpc4 = Creature:new {
 
 mosEspaNpc5 = Creature:new {
 	objectName = "mosEspaNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_base_male",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ mosEspaNpc5 = Creature:new {
 
 mosEspaNpc6 = Creature:new {
 	objectName = "mosEspaNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ mosEspaNpc6 = Creature:new {
 
 mosEspaNpc7 = Creature:new {
 	objectName = "mosEspaNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rel_keteris",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ mosEspaNpc7 = Creature:new {
 
 mosEspaNpc8 = Creature:new {
 	objectName = "mosEspaNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "anim_kahn",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ mosEspaNpc8 = Creature:new {
 
 mosEspaNpc9 = Creature:new {
 	objectName = "mosEspaNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "prost_roberts",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ mosEspaNpc9 = Creature:new {
 
 mosEspaNpc10 = Creature:new {
 	objectName = "mosEspaNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ mosEspaNpc10 = Creature:new {
 
 mosEspaNpc11 = Creature:new {
 	objectName = "mosEspaNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ mosEspaNpc11 = Creature:new {
 
 mosEspaNpc12 = Creature:new {
 	objectName = "mosEspaNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ mosEspaNpc12 = Creature:new {
 
 mosEspaNpc13 = Creature:new {
 	objectName = "mosEspaNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ mosEspaNpc13 = Creature:new {
 
 mosEspaNpc14 = Creature:new {
 	objectName = "mosEspaNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cll8_binary_load_lifter",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ mosEspaNpc14 = Creature:new {
 
 mosEspaNpc15 = Creature:new {
 	objectName = "mosEspaNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bestine_artist05",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ mosEspaNpc15 = Creature:new {
 
 mosEspaNpc16 = Creature:new {
 	objectName = "mosEspaNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_thief",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ mosEspaNpc16 = Creature:new {
 
 mosEspaNpc17 = Creature:new {
 	objectName = "mosEspaNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ mosEspaNpc17 = Creature:new {
 
 mosEspaNpc18 = Creature:new {
 	objectName = "mosEspaNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ mosEspaNpc18 = Creature:new {
 
 mosEspaNpc19 = Creature:new {
 	objectName = "mosEspaNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner_human_male",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ mosEspaNpc19 = Creature:new {
 
 mosEspaNpc20 = Creature:new {
 	objectName = "mosEspaNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ mosEspaNpc20 = Creature:new {
 
 mosEspaNpc21 = Creature:new {
 	objectName = "mosEspaNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ mosEspaNpc21 = Creature:new {
 
 mosEspaNpc22 = Creature:new {
 	objectName = "mosEspaNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ mosEspaNpc22 = Creature:new {
 
 mosEspaNpc23 = Creature:new {
 	objectName = "mosEspaNpc23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ mosEspaNpc23 = Creature:new {
 
 mosEspaNpc24 = Creature:new {
 	objectName = "mosEspaNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ mosEspaNpc24 = Creature:new {
 
 mosEspaNpc25 = Creature:new {
 	objectName = "mosEspaNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ mosEspaNpc25 = Creature:new {
 
 mosEspaNpc26 = Creature:new {
 	objectName = "mosEspaNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ mosEspaNpc26 = Creature:new {
 
 mosEspaNpc27 = Creature:new {
 	objectName = "mosEspaNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ mosEspaNpc27 = Creature:new {
 
 mosEspaNpc28 = Creature:new {
 	objectName = "mosEspaNpc28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ mosEspaNpc28 = Creature:new {
 
 mosEspaNpc29 = Creature:new {
 	objectName = "mosEspaNpc29",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ mosEspaNpc29 = Creature:new {
 
 mosEspaNpc30 = Creature:new {
 	objectName = "mosEspaNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ mosEspaNpc30 = Creature:new {
 
 mosEspaNpc31 = Creature:new {
 	objectName = "mosEspaNpc31",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ mosEspaNpc31 = Creature:new {
 
 mosEspaNpc32 = Creature:new {
 	objectName = "mosEspaNpc32",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r4",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ mosEspaNpc32 = Creature:new {
 
 mosEspaNpc33 = Creature:new {
 	objectName = "mosEspaNpc33",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ mosEspaNpc33 = Creature:new {
 
 mosEspaNpc34 = Creature:new {
 	objectName = "mosEspaNpc34",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_engineer",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ mosEspaNpc34 = Creature:new {
 
 mosEspaNpc35 = Creature:new {
 	objectName = "mosEspaNpc35",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_thief",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ mosEspaNpc35 = Creature:new {
 
 mosEspaNpc36 = Creature:new {
 	objectName = "mosEspaNpc36",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -834,7 +834,7 @@ mosEspaNpc36 = Creature:new {
 
 mosEspaNpc37 = Creature:new {
 	objectName = "mosEspaNpc37",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -856,7 +856,7 @@ mosEspaNpc37 = Creature:new {
 
 mosEspaNpc38 = Creature:new {
 	objectName = "mosEspaNpc38",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -878,7 +878,7 @@ mosEspaNpc38 = Creature:new {
 
 mosEspaNpc39 = Creature:new {
 	objectName = "mosEspaNpc39",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -900,7 +900,7 @@ mosEspaNpc39 = Creature:new {
 
 mosEspaNpc40 = Creature:new {
 	objectName = "mosEspaNpc40",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -922,7 +922,7 @@ mosEspaNpc40 = Creature:new {
 
 mosEspaNpc41 = Creature:new {
 	objectName = "mosEspaNpc41",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_healer",
 	combatFlags = 0,
@@ -944,7 +944,7 @@ mosEspaNpc41 = Creature:new {
 
 mosEspaNpc42 = Creature:new {
 	objectName = "mosEspaNpc42",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_thief",
 	combatFlags = 0,
@@ -966,7 +966,7 @@ mosEspaNpc42 = Creature:new {
 
 mosEspaNpc43 = Creature:new {
 	objectName = "mosEspaNpc43",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -988,7 +988,7 @@ mosEspaNpc43 = Creature:new {
 
 mosEspaNpc44 = Creature:new {
 	objectName = "mosEspaNpc44",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -1010,7 +1010,7 @@ mosEspaNpc44 = Creature:new {
 
 mosEspaNpc45 = Creature:new {
 	objectName = "mosEspaNpc45",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_engineer",
 	combatFlags = 0,
@@ -1032,7 +1032,7 @@ mosEspaNpc45 = Creature:new {
 
 mosEspaNpc46 = Creature:new {
 	objectName = "mosEspaNpc46",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -1054,7 +1054,7 @@ mosEspaNpc46 = Creature:new {
 
 mosEspaNpc47 = Creature:new {
 	objectName = "mosEspaNpc47",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_thief",
 	combatFlags = 0,
@@ -1076,7 +1076,7 @@ mosEspaNpc47 = Creature:new {
 
 mosEspaNpc48 = Creature:new {
 	objectName = "mosEspaNpc48",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -1098,7 +1098,7 @@ mosEspaNpc48 = Creature:new {
 
 mosEspaNpc49 = Creature:new {
 	objectName = "mosEspaNpc49",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_smuggler",
 	combatFlags = 0,
@@ -1120,7 +1120,7 @@ mosEspaNpc49 = Creature:new {
 
 mosEspaNpc50 = Creature:new {
 	objectName = "mosEspaNpc50",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -1142,7 +1142,7 @@ mosEspaNpc50 = Creature:new {
 
 mosEspaNpc51 = Creature:new {
 	objectName = "mosEspaNpc51",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -1164,7 +1164,7 @@ mosEspaNpc51 = Creature:new {
 
 mosEspaNpc52 = Creature:new {
 	objectName = "mosEspaNpc52",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_healer",
 	combatFlags = 0,
@@ -1186,7 +1186,7 @@ mosEspaNpc52 = Creature:new {
 
 mosEspaNpc53 = Creature:new {
 	objectName = "mosEspaNpc53",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1208,7 +1208,7 @@ mosEspaNpc53 = Creature:new {
 
 mosEspaNpc54 = Creature:new {
 	objectName = "mosEspaNpc54",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1230,7 +1230,7 @@ mosEspaNpc54 = Creature:new {
 
 mosEspaNpc55 = Creature:new {
 	objectName = "mosEspaNpc55",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -1252,7 +1252,7 @@ mosEspaNpc55 = Creature:new {
 
 mosEspaNpc57 = Creature:new {
 	objectName = "mosEspaNpc57",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1274,7 +1274,7 @@ mosEspaNpc57 = Creature:new {
 
 mosEspaNpc58 = Creature:new {
 	objectName = "mosEspaNpc58",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -1296,7 +1296,7 @@ mosEspaNpc58 = Creature:new {
 
 mosEspaNpc59 = Creature:new {
 	objectName = "mosEspaNpc59",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -1318,7 +1318,7 @@ mosEspaNpc59 = Creature:new {
 
 mosEspaNpc60 = Creature:new {
 	objectName = "mosEspaNpc60",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -1340,7 +1340,7 @@ mosEspaNpc60 = Creature:new {
 
 mosEspaNpc61 = Creature:new {
 	objectName = "mosEspaNpc61",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1362,7 +1362,7 @@ mosEspaNpc61 = Creature:new {
 
 mosEspaNpc62 = Creature:new {
 	objectName = "mosEspaNpc62",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1384,7 +1384,7 @@ mosEspaNpc62 = Creature:new {
 
 mosEspaNpc63 = Creature:new {
 	objectName = "mosEspaNpc63",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -1406,7 +1406,7 @@ mosEspaNpc63 = Creature:new {
 
 mosEspaNpc64 = Creature:new {
 	objectName = "mosEspaNpc64",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1428,7 +1428,7 @@ mosEspaNpc64 = Creature:new {
 
 mosEspaNpc65 = Creature:new {
 	objectName = "mosEspaNpc65",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -1450,7 +1450,7 @@ mosEspaNpc65 = Creature:new {
 
 mosEspaNpc66 = Creature:new {
 	objectName = "mosEspaNpc66",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1472,7 +1472,7 @@ mosEspaNpc66 = Creature:new {
 
 mosEspaNpc67 = Creature:new {
 	objectName = "mosEspaNpc67",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1494,7 +1494,7 @@ mosEspaNpc67 = Creature:new {
 
 mosEspaNpc68 = Creature:new {
 	objectName = "mosEspaNpc68",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1516,7 +1516,7 @@ mosEspaNpc68 = Creature:new {
 
 mosEspaNpc69 = Creature:new {
 	objectName = "mosEspaNpc69",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1538,7 +1538,7 @@ mosEspaNpc69 = Creature:new {
 
 mosEspaNpc70 = Creature:new {
 	objectName = "mosEspaNpc70",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -1560,7 +1560,7 @@ mosEspaNpc70 = Creature:new {
 
 mosEspaNpc71 = Creature:new {
 	objectName = "mosEspaNpc71",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -1582,7 +1582,7 @@ mosEspaNpc71 = Creature:new {
 
 mosEspaNpc72 = Creature:new {
 	objectName = "mosEspaNpc72",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_noncom",
 	combatFlags = 0,
@@ -1604,7 +1604,7 @@ mosEspaNpc72 = Creature:new {
 
 mosEspaNpc73 = Creature:new {
 	objectName = "mosEspaNpc73",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -1626,7 +1626,7 @@ mosEspaNpc73 = Creature:new {
 
 mosEspaNpc74 = Creature:new {
 	objectName = "mosEspaNpc74",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1648,7 +1648,7 @@ mosEspaNpc74 = Creature:new {
 
 mosEspaNpc75 = Creature:new {
 	objectName = "mosEspaNpc75",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1670,7 +1670,7 @@ mosEspaNpc75 = Creature:new {
 
 mosEspaNpc76 = Creature:new {
 	objectName = "mosEspaNpc76",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -1692,7 +1692,7 @@ mosEspaNpc76 = Creature:new {
 
 mosEspaNpc77 = Creature:new {
 	objectName = "mosEspaNpc77",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -1714,7 +1714,7 @@ mosEspaNpc77 = Creature:new {
 
 mosEspaNpc78 = Creature:new {
 	objectName = "mosEspaNpc78",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1736,7 +1736,7 @@ mosEspaNpc78 = Creature:new {
 
 mosEspaNpc79 = Creature:new {
 	objectName = "mosEspaNpc79",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -1758,7 +1758,7 @@ mosEspaNpc79 = Creature:new {
 
 mosEspaNpc81 = Creature:new {
 	objectName = "mosEspaNpc81",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -1780,7 +1780,7 @@ mosEspaNpc81 = Creature:new {
 
 mosEspaNpc82 = Creature:new {
 	objectName = "mosEspaNpc82",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -1802,7 +1802,7 @@ mosEspaNpc82 = Creature:new {
 
 mosEspaNpc83 = Creature:new {
 	objectName = "mosEspaNpc83",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -1824,7 +1824,7 @@ mosEspaNpc83 = Creature:new {
 
 mosEspaNpc85 = Creature:new {
 	objectName = "mosEspaNpc85",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -1846,7 +1846,7 @@ mosEspaNpc85 = Creature:new {
 
 mosEspaNpc91 = Creature:new {
 	objectName = "mosEspaNpc91",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -1868,7 +1868,7 @@ mosEspaNpc91 = Creature:new {
 
 mosEspaNpc95 = Creature:new {
 	objectName = "mosEspaNpc95",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -1890,7 +1890,7 @@ mosEspaNpc95 = Creature:new {
 
 mosEspaNpc97 = Creature:new {
 	objectName = "mosEspaNpc97",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -1912,7 +1912,7 @@ mosEspaNpc97 = Creature:new {
 
 mosEspaNpc98 = Creature:new {
 	objectName = "mosEspaNpc98",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -1934,7 +1934,7 @@ mosEspaNpc98 = Creature:new {
 
 mosEspaNpc99 = Creature:new {
 	objectName = "mosEspaNpc99",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_dark_trooper",
 	combatFlags = 0,
@@ -1956,7 +1956,7 @@ mosEspaNpc99 = Creature:new {
 
 mosEspaNpc100 = Creature:new {
 	objectName = "mosEspaNpc100",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "womprat",
 	combatFlags = 0,
@@ -1978,7 +1978,7 @@ mosEspaNpc100 = Creature:new {
 
 mosEspaNpc101 = Creature:new {
 	objectName = "mosEspaNpc101",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -2000,7 +2000,7 @@ mosEspaNpc101 = Creature:new {
 
 mosEspaNpc102 = Creature:new {
 	objectName = "mosEspaNpc102",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -2022,7 +2022,7 @@ mosEspaNpc102 = Creature:new {
 
 mosEspaNpc104 = Creature:new {
 	objectName = "mosEspaNpc104",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -2044,7 +2044,7 @@ mosEspaNpc104 = Creature:new {
 
 mosEspaNpc105 = Creature:new {
 	objectName = "mosEspaNpc105",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -2066,7 +2066,7 @@ mosEspaNpc105 = Creature:new {
 
 mosEspaNpc106 = Creature:new {
 	objectName = "mosEspaNpc106",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -2088,7 +2088,7 @@ mosEspaNpc106 = Creature:new {
 
 mosEspaNpc112 = Creature:new {
 	objectName = "mosEspaNpc112",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2110,7 +2110,7 @@ mosEspaNpc112 = Creature:new {
 
 mosEspaNpc119 = Creature:new {
 	objectName = "mosEspaNpc119",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "desert_demon",
 	combatFlags = 0,
@@ -2132,7 +2132,7 @@ mosEspaNpc119 = Creature:new {
 
 mosEspaNpc120 = Creature:new {
 	objectName = "mosEspaNpc120",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -2154,7 +2154,7 @@ mosEspaNpc120 = Creature:new {
 
 mosEspaNpc121 = Creature:new {
 	objectName = "mosEspaNpc121",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -2176,7 +2176,7 @@ mosEspaNpc121 = Creature:new {
 
 mosEspaNpc123 = Creature:new {
 	objectName = "mosEspaNpc123",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "desert_demon",
 	combatFlags = 0,
@@ -2198,7 +2198,7 @@ mosEspaNpc123 = Creature:new {
 
 mosEspaNpc127 = Creature:new {
 	objectName = "mosEspaNpc127",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -2220,7 +2220,7 @@ mosEspaNpc127 = Creature:new {
 
 mosEspaNpc128 = Creature:new {
 	objectName = "mosEspaNpc128",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "desert_demon",
 	combatFlags = 0,
@@ -2242,7 +2242,7 @@ mosEspaNpc128 = Creature:new {
 
 mosEspaNpc135 = Creature:new {
 	objectName = "mosEspaNpc135",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2264,7 +2264,7 @@ mosEspaNpc135 = Creature:new {
 
 mosEspaNpc136 = Creature:new {
 	objectName = "mosEspaNpc136",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -2286,7 +2286,7 @@ mosEspaNpc136 = Creature:new {
 
 mosEspaNpc139 = Creature:new {
 	objectName = "mosEspaNpc139",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2308,7 +2308,7 @@ mosEspaNpc139 = Creature:new {
 
 mosEspaNpc140 = Creature:new {
 	objectName = "mosEspaNpc140",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -2330,7 +2330,7 @@ mosEspaNpc140 = Creature:new {
 
 mosEspaNpc141 = Creature:new {
 	objectName = "mosEspaNpc141",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -2352,7 +2352,7 @@ mosEspaNpc141 = Creature:new {
 
 mosEspaNpc144 = Creature:new {
 	objectName = "mosEspaNpc144",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2374,7 +2374,7 @@ mosEspaNpc144 = Creature:new {
 
 mosEspaNpc147 = Creature:new {
 	objectName = "mosEspaNpc147",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -2396,7 +2396,7 @@ mosEspaNpc147 = Creature:new {
 
 mosEspaNpc148 = Creature:new {
 	objectName = "mosEspaNpc148",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -2418,7 +2418,7 @@ mosEspaNpc148 = Creature:new {
 
 mosEspaNpc150 = Creature:new {
 	objectName = "mosEspaNpc150",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2440,7 +2440,7 @@ mosEspaNpc150 = Creature:new {
 
 mosEspaNpc151 = Creature:new {
 	objectName = "mosEspaNpc151",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2462,7 +2462,7 @@ mosEspaNpc151 = Creature:new {
 
 mosEspaNpc152 = Creature:new {
 	objectName = "mosEspaNpc152",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2484,7 +2484,7 @@ mosEspaNpc152 = Creature:new {
 
 mosEspaNpc153 = Creature:new {
 	objectName = "mosEspaNpc153",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -2506,7 +2506,7 @@ mosEspaNpc153 = Creature:new {
 
 mosEspaNpc154 = Creature:new {
 	objectName = "mosEspaNpc154",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -2528,7 +2528,7 @@ mosEspaNpc154 = Creature:new {
 
 mosEspaNpc156 = Creature:new {
 	objectName = "mosEspaNpc156",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -2550,7 +2550,7 @@ mosEspaNpc156 = Creature:new {
 
 mosEspaNpc157 = Creature:new {
 	objectName = "mosEspaNpc157",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -2572,7 +2572,7 @@ mosEspaNpc157 = Creature:new {
 
 mosEspaNpc158 = Creature:new {
 	objectName = "mosEspaNpc158",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -2594,7 +2594,7 @@ mosEspaNpc158 = Creature:new {
 
 mosEspaNpc160 = Creature:new {
 	objectName = "mosEspaNpc160",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -2616,7 +2616,7 @@ mosEspaNpc160 = Creature:new {
 
 mosEspaNpc161 = Creature:new {
 	objectName = "mosEspaNpc161",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -2638,7 +2638,7 @@ mosEspaNpc161 = Creature:new {
 
 mosEspaNpc163 = Creature:new {
 	objectName = "mosEspaNpc163",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -2660,7 +2660,7 @@ mosEspaNpc163 = Creature:new {
 
 mosEspaNpc164 = Creature:new {
 	objectName = "mosEspaNpc164",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "coa2_rebel_coordinator",
 	combatFlags = 0,
@@ -2682,7 +2682,7 @@ mosEspaNpc164 = Creature:new {
 
 mosEspaNpc165 = Creature:new {
 	objectName = "mosEspaNpc165",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -2704,7 +2704,7 @@ mosEspaNpc165 = Creature:new {
 
 mosEspaNpc167 = Creature:new {
 	objectName = "mosEspaNpc167",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -2726,7 +2726,7 @@ mosEspaNpc167 = Creature:new {
 
 mosEspaNpc169 = Creature:new {
 	objectName = "mosEspaNpc169",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -2748,7 +2748,7 @@ mosEspaNpc169 = Creature:new {
 
 mosEspaNpc171 = Creature:new {
 	objectName = "mosEspaNpc171",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -2770,7 +2770,7 @@ mosEspaNpc171 = Creature:new {
 
 mosEspaNpc172 = Creature:new {
 	objectName = "mosEspaNpc172",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -2792,7 +2792,7 @@ mosEspaNpc172 = Creature:new {
 
 mosEspaNpc173 = Creature:new {
 	objectName = "mosEspaNpc173",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -2814,7 +2814,7 @@ mosEspaNpc173 = Creature:new {
 
 mosEspaNpc174 = Creature:new {
 	objectName = "mosEspaNpc174",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -2836,7 +2836,7 @@ mosEspaNpc174 = Creature:new {
 
 mosEspaNpc175 = Creature:new {
 	objectName = "mosEspaNpc175",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -2858,7 +2858,7 @@ mosEspaNpc175 = Creature:new {
 
 mosEspaNpc176 = Creature:new {
 	objectName = "mosEspaNpc176",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -2880,7 +2880,7 @@ mosEspaNpc176 = Creature:new {
 
 mosEspaNpc177 = Creature:new {
 	objectName = "mosEspaNpc177",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -2902,7 +2902,7 @@ mosEspaNpc177 = Creature:new {
 
 mosEspaNpc178 = Creature:new {
 	objectName = "mosEspaNpc178",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -2924,7 +2924,7 @@ mosEspaNpc178 = Creature:new {
 
 mosEspaNpc179 = Creature:new {
 	objectName = "mosEspaNpc179",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -2946,7 +2946,7 @@ mosEspaNpc179 = Creature:new {
 
 mosEspaNpc180 = Creature:new {
 	objectName = "mosEspaNpc180",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -2968,7 +2968,7 @@ mosEspaNpc180 = Creature:new {
 
 mosEspaNpc181 = Creature:new {
 	objectName = "mosEspaNpc181",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_espa_police_officer",
 	combatFlags = 0,
@@ -2990,7 +2990,7 @@ mosEspaNpc181 = Creature:new {
 
 mosEspaNpc182 = Creature:new {
 	objectName = "mosEspaNpc182",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_espa_police_officer",
 	combatFlags = 0,
@@ -3012,7 +3012,7 @@ mosEspaNpc182 = Creature:new {
 
 mosEspaNpc183 = Creature:new {
 	objectName = "mosEspaNpc183",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_espa_police_officer",
 	combatFlags = 0,
@@ -3034,7 +3034,7 @@ mosEspaNpc183 = Creature:new {
 
 mosEspaNpc185 = Creature:new {
 	objectName = "mosEspaNpc185",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_noncom",
 	combatFlags = 0,
@@ -3056,7 +3056,7 @@ mosEspaNpc185 = Creature:new {
 
 mosEspaNpc186 = Creature:new {
 	objectName = "mosEspaNpc186",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_master_sergeant",
 	combatFlags = 0,
@@ -3078,7 +3078,7 @@ mosEspaNpc186 = Creature:new {
 
 mosEspaNpc187 = Creature:new {
 	objectName = "mosEspaNpc187",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_dark_trooper",
 	combatFlags = 0,
@@ -3100,7 +3100,7 @@ mosEspaNpc187 = Creature:new {
 
 mosEspaNpc188 = Creature:new {
 	objectName = "mosEspaNpc188",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -3122,7 +3122,7 @@ mosEspaNpc188 = Creature:new {
 
 mosEspaNpc189 = Creature:new {
 	objectName = "mosEspaNpc189",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_captain",
 	combatFlags = 0,
@@ -3144,7 +3144,7 @@ mosEspaNpc189 = Creature:new {
 
 mosEspaNpc190 = Creature:new {
 	objectName = "mosEspaNpc190",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "womprat",
 	combatFlags = 0,
@@ -3166,7 +3166,7 @@ mosEspaNpc190 = Creature:new {
 
 mosEspaNpc193 = Creature:new {
 	objectName = "mosEspaNpc193",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -3188,7 +3188,7 @@ mosEspaNpc193 = Creature:new {
 
 mosEspaNpc200 = Creature:new {
 	objectName = "mosEspaNpc200",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3210,7 +3210,7 @@ mosEspaNpc200 = Creature:new {
 
 mosEspaNpc201 = Creature:new {
 	objectName = "mosEspaNpc201",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -3232,7 +3232,7 @@ mosEspaNpc201 = Creature:new {
 
 mosEspaNpc202 = Creature:new {
 	objectName = "mosEspaNpc202",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -3254,7 +3254,7 @@ mosEspaNpc202 = Creature:new {
 
 mosEspaNpc203 = Creature:new {
 	objectName = "mosEspaNpc203",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -3276,7 +3276,7 @@ mosEspaNpc203 = Creature:new {
 
 mosEspaNpc204 = Creature:new {
 	objectName = "mosEspaNpc204",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -3298,7 +3298,7 @@ mosEspaNpc204 = Creature:new {
 
 mosEspaNpc205 = Creature:new {
 	objectName = "mosEspaNpc205",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -3320,7 +3320,7 @@ mosEspaNpc205 = Creature:new {
 
 mosEspaNpc206 = Creature:new {
 	objectName = "mosEspaNpc206",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -3342,7 +3342,7 @@ mosEspaNpc206 = Creature:new {
 
 mosEspaNpc207 = Creature:new {
 	objectName = "mosEspaNpc207",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3364,7 +3364,7 @@ mosEspaNpc207 = Creature:new {
 
 mosEspaNpc211 = Creature:new {
 	objectName = "mosEspaNpc211",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -3386,7 +3386,7 @@ mosEspaNpc211 = Creature:new {
 
 mosEspaNpc215 = Creature:new {
 	objectName = "mosEspaNpc215",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -3408,7 +3408,7 @@ mosEspaNpc215 = Creature:new {
 
 mosEspaNpc218 = Creature:new {
 	objectName = "mosEspaNpc218",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_master_sergeant",
 	combatFlags = 0,
@@ -3430,7 +3430,7 @@ mosEspaNpc218 = Creature:new {
 
 mosEspaNpc220 = Creature:new {
 	objectName = "mosEspaNpc220",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -3452,7 +3452,7 @@ mosEspaNpc220 = Creature:new {
 
 mosEspaNpc225 = Creature:new {
 	objectName = "mosEspaNpc225",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -3474,7 +3474,7 @@ mosEspaNpc225 = Creature:new {
 
 mosEspaNpc227 = Creature:new {
 	objectName = "mosEspaNpc227",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_master_sergeant",
 	combatFlags = 0,
@@ -3496,7 +3496,7 @@ mosEspaNpc227 = Creature:new {
 
 mosEspaNpc229 = Creature:new {
 	objectName = "mosEspaNpc229",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -3518,7 +3518,7 @@ mosEspaNpc229 = Creature:new {
 
 mosEspaNpc230 = Creature:new {
 	objectName = "mosEspaNpc230",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -3540,7 +3540,7 @@ mosEspaNpc230 = Creature:new {
 
 mosEspaNpc238 = Creature:new {
 	objectName = "mosEspaNpc238",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -3562,7 +3562,7 @@ mosEspaNpc238 = Creature:new {
 
 mosEspaNpc239 = Creature:new {
 	objectName = "mosEspaNpc239",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -3584,7 +3584,7 @@ mosEspaNpc239 = Creature:new {
 
 mosEspaNpc245 = Creature:new {
 	objectName = "mosEspaNpc245",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -3606,7 +3606,7 @@ mosEspaNpc245 = Creature:new {
 
 mosEspaNpc249 = Creature:new {
 	objectName = "mosEspaNpc249",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -3628,7 +3628,7 @@ mosEspaNpc249 = Creature:new {
 
 mosEspaNpc251 = Creature:new {
 	objectName = "mosEspaNpc251",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -3650,7 +3650,7 @@ mosEspaNpc251 = Creature:new {
 
 mosEspaNpc252 = Creature:new {
 	objectName = "mosEspaNpc252",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bestine_artist03",
 	combatFlags = 0,
@@ -3672,7 +3672,7 @@ mosEspaNpc252 = Creature:new {
 
 mosEspaNpc253 = Creature:new {
 	objectName = "mosEspaNpc253",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_warrant_officer_ii",
 	combatFlags = 0,
@@ -3694,7 +3694,7 @@ mosEspaNpc253 = Creature:new {
 
 mosEspaNpc256 = Creature:new {
 	objectName = "mosEspaNpc256",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3716,7 +3716,7 @@ mosEspaNpc256 = Creature:new {
 
 mosEspaNpc257 = Creature:new {
 	objectName = "mosEspaNpc257",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "womprat",
 	combatFlags = 0,
@@ -3738,7 +3738,7 @@ mosEspaNpc257 = Creature:new {
 
 mosEspaNpc258 = Creature:new {
 	objectName = "mosEspaNpc258",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -3760,7 +3760,7 @@ mosEspaNpc258 = Creature:new {
 
 mosEspaNpc261 = Creature:new {
 	objectName = "mosEspaNpc261",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -3782,7 +3782,7 @@ mosEspaNpc261 = Creature:new {
 
 mosEspaNpc262 = Creature:new {
 	objectName = "mosEspaNpc262",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3804,7 +3804,7 @@ mosEspaNpc262 = Creature:new {
 
 mosEspaNpc263 = Creature:new {
 	objectName = "mosEspaNpc263",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -3826,7 +3826,7 @@ mosEspaNpc263 = Creature:new {
 
 mosEspaNpc266 = Creature:new {
 	objectName = "mosEspaNpc266",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -3848,7 +3848,7 @@ mosEspaNpc266 = Creature:new {
 
 mosEspaNpc267 = Creature:new {
 	objectName = "mosEspaNpc267",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "womprat",
 	combatFlags = 0,
@@ -3870,7 +3870,7 @@ mosEspaNpc267 = Creature:new {
 
 mosEspaNpc268 = Creature:new {
 	objectName = "mosEspaNpc268",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -3892,7 +3892,7 @@ mosEspaNpc268 = Creature:new {
 
 mosEspaNpc273 = Creature:new {
 	objectName = "mosEspaNpc273",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -3914,7 +3914,7 @@ mosEspaNpc273 = Creature:new {
 
 mosEspaNpc274 = Creature:new {
 	objectName = "mosEspaNpc274",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -3936,7 +3936,7 @@ mosEspaNpc274 = Creature:new {
 
 mosEspaNpc275 = Creature:new {
 	objectName = "mosEspaNpc275",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -3958,7 +3958,7 @@ mosEspaNpc275 = Creature:new {
 
 mosEspaNpc276 = Creature:new {
 	objectName = "mosEspaNpc276",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -3980,7 +3980,7 @@ mosEspaNpc276 = Creature:new {
 
 mosEspaNpc279 = Creature:new {
 	objectName = "mosEspaNpc279",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -4002,7 +4002,7 @@ mosEspaNpc279 = Creature:new {
 
 mosEspaNpc280 = Creature:new {
 	objectName = "mosEspaNpc280",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -4024,7 +4024,7 @@ mosEspaNpc280 = Creature:new {
 
 mosEspaNpc281 = Creature:new {
 	objectName = "mosEspaNpc281",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -4046,7 +4046,7 @@ mosEspaNpc281 = Creature:new {
 
 mosEspaNpc282 = Creature:new {
 	objectName = "mosEspaNpc282",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -4068,7 +4068,7 @@ mosEspaNpc282 = Creature:new {
 
 mosEspaNpc283 = Creature:new {
 	objectName = "mosEspaNpc283",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "minor_worrt",
 	combatFlags = 0,
@@ -4090,7 +4090,7 @@ mosEspaNpc283 = Creature:new {
 
 mosEspaNpc284 = Creature:new {
 	objectName = "mosEspaNpc284",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -4112,7 +4112,7 @@ mosEspaNpc284 = Creature:new {
 
 mosEspaNpc285 = Creature:new {
 	objectName = "mosEspaNpc285",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -4134,7 +4134,7 @@ mosEspaNpc285 = Creature:new {
 
 mosEspaNpc287 = Creature:new {
 	objectName = "mosEspaNpc287",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -4156,7 +4156,7 @@ mosEspaNpc287 = Creature:new {
 
 mosEspaNpc288 = Creature:new {
 	objectName = "mosEspaNpc288",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -4178,7 +4178,7 @@ mosEspaNpc288 = Creature:new {
 
 mosEspaNpc289 = Creature:new {
 	objectName = "mosEspaNpc289",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -4200,7 +4200,7 @@ mosEspaNpc289 = Creature:new {
 
 mosEspaNpc290 = Creature:new {
 	objectName = "mosEspaNpc290",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -4222,7 +4222,7 @@ mosEspaNpc290 = Creature:new {
 
 mosEspaNpc291 = Creature:new {
 	objectName = "mosEspaNpc291",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_squad_leader",
 	combatFlags = 0,
@@ -4244,7 +4244,7 @@ mosEspaNpc291 = Creature:new {
 
 mosEspaNpc292 = Creature:new {
 	objectName = "mosEspaNpc292",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -4266,7 +4266,7 @@ mosEspaNpc292 = Creature:new {
 
 mosEspaNpc293 = Creature:new {
 	objectName = "mosEspaNpc293",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "womprat",
 	combatFlags = 0,
@@ -4288,7 +4288,7 @@ mosEspaNpc293 = Creature:new {
 
 mosEspaNpc294 = Creature:new {
 	objectName = "mosEspaNpc294",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -4310,7 +4310,7 @@ mosEspaNpc294 = Creature:new {
 
 mosEspaNpc295 = Creature:new {
 	objectName = "mosEspaNpc295",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -4332,7 +4332,7 @@ mosEspaNpc295 = Creature:new {
 
 mosEspaNpc296 = Creature:new {
 	objectName = "mosEspaNpc296",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_comm_operator",
 	combatFlags = 0,
@@ -4354,7 +4354,7 @@ mosEspaNpc296 = Creature:new {
 
 mosEspaNpc297 = Creature:new {
 	objectName = "mosEspaNpc297",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_espa_police_officer",
 	combatFlags = 0,
@@ -4376,7 +4376,7 @@ mosEspaNpc297 = Creature:new {
 
 mosEspaNpc298 = Creature:new {
 	objectName = "mosEspaNpc298",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -4398,7 +4398,7 @@ mosEspaNpc298 = Creature:new {
 
 mosEspaNpc299 = Creature:new {
 	objectName = "mosEspaNpc299",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_espa_police_officer",
 	combatFlags = 0,
@@ -4420,7 +4420,7 @@ mosEspaNpc299 = Creature:new {
 
 mosEspaNpc300 = Creature:new {
 	objectName = "mosEspaNpc300",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_espa_police_officer",
 	combatFlags = 0,
@@ -4442,7 +4442,7 @@ mosEspaNpc300 = Creature:new {
 
 mosEspaNpc301 = Creature:new {
 	objectName = "mosEspaNpc301",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_dark_trooper",
 	combatFlags = 0,
@@ -4464,7 +4464,7 @@ mosEspaNpc301 = Creature:new {
 
 mosEspaNpc302 = Creature:new {
 	objectName = "mosEspaNpc302",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_master_sergeant",
 	combatFlags = 0,
@@ -4486,7 +4486,7 @@ mosEspaNpc302 = Creature:new {
 
 mosEspaNpc303 = Creature:new {
 	objectName = "mosEspaNpc303",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -4508,7 +4508,7 @@ mosEspaNpc303 = Creature:new {
 
 mosEspaNpc304 = Creature:new {
 	objectName = "mosEspaNpc304",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -4530,7 +4530,7 @@ mosEspaNpc304 = Creature:new {
 
 mosEspaNpc305 = Creature:new {
 	objectName = "mosEspaNpc305",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -4552,7 +4552,7 @@ mosEspaNpc305 = Creature:new {
 
 mosEspaNpc307 = Creature:new {
 	objectName = "mosEspaNpc307",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4574,7 +4574,7 @@ mosEspaNpc307 = Creature:new {
 
 mosEspaNpc308 = Creature:new {
 	objectName = "mosEspaNpc308",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -4596,7 +4596,7 @@ mosEspaNpc308 = Creature:new {
 
 mosEspaNpc309 = Creature:new {
 	objectName = "mosEspaNpc309",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -4618,7 +4618,7 @@ mosEspaNpc309 = Creature:new {
 
 mosEspaNpc310 = Creature:new {
 	objectName = "mosEspaNpc310",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -4640,7 +4640,7 @@ mosEspaNpc310 = Creature:new {
 
 mosEspaNpc312 = Creature:new {
 	objectName = "mosEspaNpc312",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -4662,7 +4662,7 @@ mosEspaNpc312 = Creature:new {
 
 mosEspaNpc313 = Creature:new {
 	objectName = "mosEspaNpc313",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -4684,7 +4684,7 @@ mosEspaNpc313 = Creature:new {
 
 mosEspaNpc314 = Creature:new {
 	objectName = "mosEspaNpc314",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -4706,7 +4706,7 @@ mosEspaNpc314 = Creature:new {
 
 mosEspaNpc315 = Creature:new {
 	objectName = "mosEspaNpc315",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -4728,7 +4728,7 @@ mosEspaNpc315 = Creature:new {
 
 mosEspaNpc316 = Creature:new {
 	objectName = "mosEspaNpc316",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -4750,7 +4750,7 @@ mosEspaNpc316 = Creature:new {
 
 mosEspaNpc317 = Creature:new {
 	objectName = "mosEspaNpc317",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_healer",
 	combatFlags = 0,
@@ -4772,7 +4772,7 @@ mosEspaNpc317 = Creature:new {
 
 mosEspaNpc318 = Creature:new {
 	objectName = "mosEspaNpc318",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4794,7 +4794,7 @@ mosEspaNpc318 = Creature:new {
 
 mosEspaNpc320 = Creature:new {
 	objectName = "mosEspaNpc320",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mound_mite",
 	combatFlags = 0,
@@ -4816,7 +4816,7 @@ mosEspaNpc320 = Creature:new {
 
 mosEspaNpc321 = Creature:new {
 	objectName = "mosEspaNpc321",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_engineer",
 	combatFlags = 0,
@@ -4838,7 +4838,7 @@ mosEspaNpc321 = Creature:new {
 
 mosEspaNpc322 = Creature:new {
 	objectName = "mosEspaNpc322",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -4860,7 +4860,7 @@ mosEspaNpc322 = Creature:new {
 
 mosEspaNpc323 = Creature:new {
 	objectName = "mosEspaNpc323",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_smuggler",
 	combatFlags = 0,
@@ -4882,7 +4882,7 @@ mosEspaNpc323 = Creature:new {
 
 mosEspaNpc324 = Creature:new {
 	objectName = "mosEspaNpc324",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_henchman",
 	combatFlags = 0,
@@ -4904,7 +4904,7 @@ mosEspaNpc324 = Creature:new {
 
 mosEspaNpc325 = Creature:new {
 	objectName = "mosEspaNpc325",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_engineer",
 	combatFlags = 0,
@@ -4926,7 +4926,7 @@ mosEspaNpc325 = Creature:new {
 
 mosEspaNpc326 = Creature:new {
 	objectName = "mosEspaNpc326",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_healer",
 	combatFlags = 0,
@@ -4948,7 +4948,7 @@ mosEspaNpc326 = Creature:new {
 
 mosEspaNpc327 = Creature:new {
 	objectName = "mosEspaNpc327",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_thief",
 	combatFlags = 0,
@@ -4970,7 +4970,7 @@ mosEspaNpc327 = Creature:new {
 
 mosEspaNpc328 = Creature:new {
 	objectName = "mosEspaNpc328",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -4992,7 +4992,7 @@ mosEspaNpc328 = Creature:new {
 
 mosEspaNpc329 = Creature:new {
 	objectName = "mosEspaNpc329",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_healer",
 	combatFlags = 0,
@@ -5014,7 +5014,7 @@ mosEspaNpc329 = Creature:new {
 
 mosEspaNpc330 = Creature:new {
 	objectName = "mosEspaNpc330",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -5036,7 +5036,7 @@ mosEspaNpc330 = Creature:new {
 
 mosEspaNpc331 = Creature:new {
 	objectName = "mosEspaNpc331",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_thief",
 	combatFlags = 0,
@@ -5058,7 +5058,7 @@ mosEspaNpc331 = Creature:new {
 
 mosEspaNpc332 = Creature:new {
 	objectName = "mosEspaNpc332",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_smuggler",
 	combatFlags = 0,
@@ -5080,7 +5080,7 @@ mosEspaNpc332 = Creature:new {
 
 mosEspaNpc333 = Creature:new {
 	objectName = "mosEspaNpc333",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -5102,7 +5102,7 @@ mosEspaNpc333 = Creature:new {
 
 mosEspaNpc334 = Creature:new {
 	objectName = "mosEspaNpc334",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -5124,7 +5124,7 @@ mosEspaNpc334 = Creature:new {
 
 mosEspaNpc335 = Creature:new {
 	objectName = "mosEspaNpc335",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_healer",
 	combatFlags = 0,
@@ -5146,7 +5146,7 @@ mosEspaNpc335 = Creature:new {
 
 mosEspaNpc336 = Creature:new {
 	objectName = "mosEspaNpc336",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_healer",
 	combatFlags = 0,
@@ -5168,7 +5168,7 @@ mosEspaNpc336 = Creature:new {
 
 mosEspaNpc339 = Creature:new {
 	objectName = "mosEspaNpc339",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -5190,7 +5190,7 @@ mosEspaNpc339 = Creature:new {
 
 mosEspaNpc340 = Creature:new {
 	objectName = "mosEspaNpc340",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -5212,7 +5212,7 @@ mosEspaNpc340 = Creature:new {
 
 mosEspaNpc341 = Creature:new {
 	objectName = "mosEspaNpc341",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kreetle",
 	combatFlags = 0,
@@ -5234,7 +5234,7 @@ mosEspaNpc341 = Creature:new {
 
 mosEspaNpc342 = Creature:new {
 	objectName = "mosEspaNpc342",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -5256,7 +5256,7 @@ mosEspaNpc342 = Creature:new {
 
 mosEspaNpc343 = Creature:new {
 	objectName = "mosEspaNpc343",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -5278,7 +5278,7 @@ mosEspaNpc343 = Creature:new {
 
 mosEspaNpc344 = Creature:new {
 	objectName = "mosEspaNpc344",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "worrt",
 	combatFlags = 0,
@@ -5300,7 +5300,7 @@ mosEspaNpc344 = Creature:new {
 
 mosEspaNpc345 = Creature:new {
 	objectName = "mosEspaNpc345",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "womprat",
 	combatFlags = 0,
@@ -5322,7 +5322,7 @@ mosEspaNpc345 = Creature:new {
 
 mosEspaNpc346 = Creature:new {
 	objectName = "mosEspaNpc346",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lesser_desert_womprat",
 	combatFlags = 0,
@@ -5344,7 +5344,7 @@ mosEspaNpc346 = Creature:new {
 
 mosEspaNpc347 = Creature:new {
 	objectName = "mosEspaNpc347",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "womprat",
 	combatFlags = 0,
@@ -5366,7 +5366,7 @@ mosEspaNpc347 = Creature:new {
 
 mosEspaNpc348 = Creature:new {
 	objectName = "mosEspaNpc348",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -5388,7 +5388,7 @@ mosEspaNpc348 = Creature:new {
 
 mosEspaNpc349 = Creature:new {
 	objectName = "mosEspaNpc349",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -5410,7 +5410,7 @@ mosEspaNpc349 = Creature:new {
 
 mosEspaNpc350 = Creature:new {
 	objectName = "mosEspaNpc350",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5432,7 +5432,7 @@ mosEspaNpc350 = Creature:new {
 
 mosEspaNpc351 = Creature:new {
 	objectName = "mosEspaNpc351",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -5454,7 +5454,7 @@ mosEspaNpc351 = Creature:new {
 
 mosEspaNpc352 = Creature:new {
 	objectName = "mosEspaNpc352",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -5476,7 +5476,7 @@ mosEspaNpc352 = Creature:new {
 
 mosEspaNpc353 = Creature:new {
 	objectName = "mosEspaNpc353",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -5498,7 +5498,7 @@ mosEspaNpc353 = Creature:new {
 
 mosEspaNpc354 = Creature:new {
 	objectName = "mosEspaNpc354",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "da_la_socuna",
 	combatFlags = 0,
@@ -5520,7 +5520,7 @@ mosEspaNpc354 = Creature:new {
 
 mosEspaNpc355 = Creature:new {
 	objectName = "mosEspaNpc355",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -5542,7 +5542,7 @@ mosEspaNpc355 = Creature:new {
 
 mosEspaNpc356 = Creature:new {
 	objectName = "mosEspaNpc356",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "dim_u_preacher",
 	combatFlags = 0,
@@ -5564,7 +5564,7 @@ mosEspaNpc356 = Creature:new {
 
 mosEspaNpc357 = Creature:new {
 	objectName = "mosEspaNpc357",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "tatooine_militiaman",
 	combatFlags = 0,
@@ -5586,7 +5586,7 @@ mosEspaNpc357 = Creature:new {
 
 mosEspaNpc358 = Creature:new {
 	objectName = "mosEspaNpc358",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -5608,7 +5608,7 @@ mosEspaNpc358 = Creature:new {
 
 mosEspaNpc359 = Creature:new {
 	objectName = "mosEspaNpc359",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bartender",
 	combatFlags = 0,
@@ -5630,7 +5630,7 @@ mosEspaNpc359 = Creature:new {
 
 mosEspaNpc360 = Creature:new {
 	objectName = "mosEspaNpc360",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_female",
 	combatFlags = 0,
@@ -5652,7 +5652,7 @@ mosEspaNpc360 = Creature:new {
 
 mosEspaNpc361 = Creature:new {
 	objectName = "mosEspaNpc361",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "squatter",
 	combatFlags = 0,
@@ -5674,7 +5674,7 @@ mosEspaNpc361 = Creature:new {
 
 mosEspaNpc362 = Creature:new {
 	objectName = "mosEspaNpc362",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -5696,7 +5696,7 @@ mosEspaNpc362 = Creature:new {
 
 mosEspaNpc363 = Creature:new {
 	objectName = "mosEspaNpc363",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner_human_male",
 	combatFlags = 0,
@@ -5718,7 +5718,7 @@ mosEspaNpc363 = Creature:new {
 
 mosEspaNpc364 = Creature:new {
 	objectName = "mosEspaNpc364",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5740,7 +5740,7 @@ mosEspaNpc364 = Creature:new {
 
 mosEspaNpc365 = Creature:new {
 	objectName = "mosEspaNpc365",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -5762,7 +5762,7 @@ mosEspaNpc365 = Creature:new {
 
 mosEspaNpc366 = Creature:new {
 	objectName = "mosEspaNpc366",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5784,7 +5784,7 @@ mosEspaNpc366 = Creature:new {
 
 mosEspaNpc367 = Creature:new {
 	objectName = "mosEspaNpc367",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "technician",
 	combatFlags = 0,
@@ -5806,7 +5806,7 @@ mosEspaNpc367 = Creature:new {
 
 mosEspaNpc368 = Creature:new {
 	objectName = "mosEspaNpc368",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "tatooine_militiaman",
 	combatFlags = 0,
@@ -5828,7 +5828,7 @@ mosEspaNpc368 = Creature:new {
 
 mosEspaNpc369 = Creature:new {
 	objectName = "mosEspaNpc369",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "technician",
 	combatFlags = 0,
@@ -5850,7 +5850,7 @@ mosEspaNpc369 = Creature:new {
 
 mosEspaNpc370 = Creature:new {
 	objectName = "mosEspaNpc370",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -5872,7 +5872,7 @@ mosEspaNpc370 = Creature:new {
 
 mosEspaNpc371 = Creature:new {
 	objectName = "mosEspaNpc371",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_clan_medic",
 	combatFlags = 0,
@@ -5894,7 +5894,7 @@ mosEspaNpc371 = Creature:new {
 
 mosEspaNpc372 = Creature:new {
 	objectName = "mosEspaNpc372",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -5916,7 +5916,7 @@ mosEspaNpc372 = Creature:new {
 
 mosEspaNpc373 = Creature:new {
 	objectName = "mosEspaNpc373",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -5938,7 +5938,7 @@ mosEspaNpc373 = Creature:new {
 
 mosEspaNpc374 = Creature:new {
 	objectName = "mosEspaNpc374",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -5960,7 +5960,7 @@ mosEspaNpc374 = Creature:new {
 
 mosEspaNpc375 = Creature:new {
 	objectName = "mosEspaNpc375",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5982,7 +5982,7 @@ mosEspaNpc375 = Creature:new {
 
 mosEspaNpc376 = Creature:new {
 	objectName = "mosEspaNpc376",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r4",
 	combatFlags = 0,
@@ -6004,7 +6004,7 @@ mosEspaNpc376 = Creature:new {
 
 mosEspaNpc377 = Creature:new {
 	objectName = "mosEspaNpc377",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crafting_contractor",
 	combatFlags = 0,
@@ -6026,7 +6026,7 @@ mosEspaNpc377 = Creature:new {
 
 mosEspaNpc378 = Creature:new {
 	objectName = "mosEspaNpc378",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -6048,7 +6048,7 @@ mosEspaNpc378 = Creature:new {
 
 mosEspaNpc379 = Creature:new {
 	objectName = "mosEspaNpc379",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "coa3_information_rebel",
 	combatFlags = 0,

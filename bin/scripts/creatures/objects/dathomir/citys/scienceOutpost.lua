@@ -42,7 +42,7 @@
 
 dathScienceOutpostNpc1 = Creature:new {
 	objectName = "dathScienceOutpostNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ dathScienceOutpostNpc1 = Creature:new {
 
 dathScienceOutpostNpc2 = Creature:new {
 	objectName = "dathScienceOutpostNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ dathScienceOutpostNpc2 = Creature:new {
 
 dathScienceOutpostNpc3 = Creature:new {
 	objectName = "dathScienceOutpostNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ dathScienceOutpostNpc3 = Creature:new {
 
 dathScienceOutpostNpc4 = Creature:new {
 	objectName = "dathScienceOutpostNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ dathScienceOutpostNpc4 = Creature:new {
 
 dathScienceOutpostNpc5 = Creature:new {
 	objectName = "dathScienceOutpostNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ dathScienceOutpostNpc5 = Creature:new {
 
 dathScienceOutpostNpc6 = Creature:new {
 	objectName = "dathScienceOutpostNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cll8_binary_load_lifter",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ dathScienceOutpostNpc6 = Creature:new {
 
 dathScienceOutpostNpc7 = Creature:new {
 	objectName = "dathScienceOutpostNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ dathScienceOutpostNpc7 = Creature:new {
 
 dathScienceOutpostNpc8 = Creature:new {
 	objectName = "dathScienceOutpostNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r4",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ dathScienceOutpostNpc8 = Creature:new {
 
 dathScienceOutpostNpc9 = Creature:new {
 	objectName = "dathScienceOutpostNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ dathScienceOutpostNpc9 = Creature:new {
 
 dathScienceOutpostNpc10 = Creature:new {
 	objectName = "dathScienceOutpostNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ dathScienceOutpostNpc10 = Creature:new {
 
 dathScienceOutpostNpc12 = Creature:new {
 	objectName = "dathScienceOutpostNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ dathScienceOutpostNpc12 = Creature:new {
 
 dathScienceOutpostNpc14 = Creature:new {
 	objectName = "dathScienceOutpostNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ dathScienceOutpostNpc14 = Creature:new {
 
 dathScienceOutpostNpc15 = Creature:new {
 	objectName = "dathScienceOutpostNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ dathScienceOutpostNpc15 = Creature:new {
 
 dathScienceOutpostNpc16 = Creature:new {
 	objectName = "dathScienceOutpostNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ dathScienceOutpostNpc16 = Creature:new {
 
 dathScienceOutpostNpc18 = Creature:new {
 	objectName = "dathScienceOutpostNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ dathScienceOutpostNpc18 = Creature:new {
 
 dathScienceOutpostNpc19 = Creature:new {
 	objectName = "dathScienceOutpostNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ dathScienceOutpostNpc19 = Creature:new {
 
 dathScienceOutpostNpc20 = Creature:new {
 	objectName = "dathScienceOutpostNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ dathScienceOutpostNpc20 = Creature:new {
 
 dathScienceOutpostNpc22 = Creature:new {
 	objectName = "dathScienceOutpostNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "arnecio_ulvaw_op",
 	combatFlags = 0,

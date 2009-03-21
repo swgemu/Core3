@@ -42,7 +42,7 @@
 
 corvetteNpc5 = Creature:new {
 	objectName = "corvetteNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ja_ce_yiaso",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ corvetteNpc5 = Creature:new {
 
 corvetteNpc6 = Creature:new {
 	objectName = "corvetteNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mouse_droid",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ corvetteNpc6 = Creature:new {
 
 corvetteNpc7 = Creature:new {
 	objectName = "corvetteNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lord_hethrir",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ corvetteNpc7 = Creature:new {
 
 corvetteNpc8 = Creature:new {
 	objectName = "corvetteNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ra7_bug_droid",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ corvetteNpc8 = Creature:new {
 
 corvetteNpc9 = Creature:new {
 	objectName = "corvetteNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "loam_redge",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ corvetteNpc9 = Creature:new {
 
 corvetteNpc10 = Creature:new {
 	objectName = "corvetteNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "vyrke",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ corvetteNpc10 = Creature:new {
 
 corvetteNpc11 = Creature:new {
 	objectName = "corvetteNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mouse_droid",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ corvetteNpc11 = Creature:new {
 
 corvetteNpc12 = Creature:new {
 	objectName = "corvetteNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	combatFlags = 0,
 	creatureBitmask = 264,
@@ -217,7 +217,7 @@ corvetteNpc12 = Creature:new {
 
 corvetteNpc17 = Creature:new {
 	objectName = "corvetteNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mouse_droid",
 	combatFlags = 0,
@@ -239,7 +239,7 @@ corvetteNpc17 = Creature:new {
 
 corvetteNpc18 = Creature:new {
 	objectName = "corvetteNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	combatFlags = 0,
 	creatureBitmask = 264,
@@ -260,7 +260,7 @@ corvetteNpc18 = Creature:new {
 
 corvetteNpc19 = Creature:new {
 	objectName = "corvetteNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kaja_orzee",
 	combatFlags = 0,
@@ -282,7 +282,7 @@ corvetteNpc19 = Creature:new {
 
 corvetteNpc20 = Creature:new {
 	objectName = "corvetteNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fa_zoll",
 	combatFlags = 0,
@@ -304,7 +304,7 @@ corvetteNpc20 = Creature:new {
 
 corvetteNpc21 = Creature:new {
 	objectName = "corvetteNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	combatFlags = 0,
 	creatureBitmask = 264,
@@ -325,7 +325,7 @@ corvetteNpc21 = Creature:new {
 
 corvetteNpc22 = Creature:new {
 	objectName = "corvetteNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	
 	combatFlags = 0,
@@ -347,7 +347,7 @@ corvetteNpc22 = Creature:new {
 
 corvetteNpc23 = Creature:new {
 	objectName = "corvetteNpc23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	combatFlags = 0,
 	creatureBitmask = 264,
@@ -368,7 +368,7 @@ corvetteNpc23 = Creature:new {
 
 corvetteNpc24 = Creature:new {
 	objectName = "corvetteNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	
 	combatFlags = 0,
@@ -390,7 +390,7 @@ corvetteNpc24 = Creature:new {
 
 corvetteNpc25 = Creature:new {
 	objectName = "corvetteNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "imperial_pilot",
 	combatFlags = 0,
@@ -412,7 +412,7 @@ corvetteNpc25 = Creature:new {
 
 corvetteNpc27 = Creature:new {
 	objectName = "corvetteNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	
 	combatFlags = 0,

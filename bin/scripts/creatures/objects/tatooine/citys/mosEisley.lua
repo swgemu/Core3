@@ -42,7 +42,7 @@
 
 mosEisleyNpc1 = Creature:new {
 	objectName = "mosEisleyNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ mosEisleyNpc1 = Creature:new {
 
 mosEisleyNpc3 = Creature:new {
 	objectName = "mosEisleyNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ mosEisleyNpc3 = Creature:new {
 
 mosEisleyNpc4 = Creature:new {
 	objectName = "mosEisleyNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ mosEisleyNpc4 = Creature:new {
 
 mosEisleyNpc5 = Creature:new {
 	objectName = "mosEisleyNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ mosEisleyNpc5 = Creature:new {
 
 mosEisleyNpc6 = Creature:new {
 	objectName = "mosEisleyNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ mosEisleyNpc6 = Creature:new {
 
 mosEisleyNpc7 = Creature:new {
 	objectName = "mosEisleyNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_base_male",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ mosEisleyNpc7 = Creature:new {
 
 mosEisleyNpc10 = Creature:new {
 	objectName = "mosEisleyNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ mosEisleyNpc10 = Creature:new {
 
 mosEisleyNpc11 = Creature:new {
 	objectName = "mosEisleyNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_engineer",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ mosEisleyNpc11 = Creature:new {
 
 mosEisleyNpc12 = Creature:new {
 	objectName = "mosEisleyNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ mosEisleyNpc12 = Creature:new {
 
 mosEisleyNpc13 = Creature:new {
 	objectName = "mosEisleyNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_warlord",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ mosEisleyNpc13 = Creature:new {
 
 mosEisleyNpc14 = Creature:new {
 	objectName = "mosEisleyNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ mosEisleyNpc14 = Creature:new {
 
 mosEisleyNpc15 = Creature:new {
 	objectName = "mosEisleyNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_warlord",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ mosEisleyNpc15 = Creature:new {
 
 mosEisleyNpc16 = Creature:new {
 	objectName = "mosEisleyNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_thief",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ mosEisleyNpc16 = Creature:new {
 
 mosEisleyNpc17 = Creature:new {
 	objectName = "mosEisleyNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ mosEisleyNpc17 = Creature:new {
 
 mosEisleyNpc18 = Creature:new {
 	objectName = "mosEisleyNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ mosEisleyNpc18 = Creature:new {
 
 mosEisleyNpc20 = Creature:new {
 	objectName = "mosEisleyNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ mosEisleyNpc20 = Creature:new {
 
 mosEisleyNpc21 = Creature:new {
 	objectName = "mosEisleyNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_thief",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ mosEisleyNpc21 = Creature:new {
 
 mosEisleyNpc22 = Creature:new {
 	objectName = "mosEisleyNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_henchman",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ mosEisleyNpc22 = Creature:new {
 
 mosEisleyNpc24 = Creature:new {
 	objectName = "mosEisleyNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_noncom",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ mosEisleyNpc24 = Creature:new {
 
 mosEisleyNpc25 = Creature:new {
 	objectName = "mosEisleyNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ mosEisleyNpc25 = Creature:new {
 
 mosEisleyNpc26 = Creature:new {
 	objectName = "mosEisleyNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ mosEisleyNpc26 = Creature:new {
 
 mosEisleyNpc27 = Creature:new {
 	objectName = "mosEisleyNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ mosEisleyNpc27 = Creature:new {
 
 mosEisleyNpc30 = Creature:new {
 	objectName = "mosEisleyNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_rifleman",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ mosEisleyNpc30 = Creature:new {
 
 mosEisleyNpc43 = Creature:new {
 	objectName = "mosEisleyNpc43",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ mosEisleyNpc43 = Creature:new {
 
 mosEisleyNpc54 = Creature:new {
 	objectName = "mosEisleyNpc54",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ mosEisleyNpc54 = Creature:new {
 
 mosEisleyNpc55 = Creature:new {
 	objectName = "mosEisleyNpc55",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ mosEisleyNpc55 = Creature:new {
 
 mosEisleyNpc62 = Creature:new {
 	objectName = "mosEisleyNpc62",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ mosEisleyNpc62 = Creature:new {
 
 mosEisleyNpc63 = Creature:new {
 	objectName = "mosEisleyNpc63",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ mosEisleyNpc63 = Creature:new {
 
 mosEisleyNpc64 = Creature:new {
 	objectName = "mosEisleyNpc64",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ mosEisleyNpc64 = Creature:new {
 
 mosEisleyNpc65 = Creature:new {
 	objectName = "mosEisleyNpc65",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ mosEisleyNpc65 = Creature:new {
 
 mosEisleyNpc66 = Creature:new {
 	objectName = "mosEisleyNpc66",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ mosEisleyNpc66 = Creature:new {
 
 mosEisleyNpc67 = Creature:new {
 	objectName = "mosEisleyNpc67",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ mosEisleyNpc67 = Creature:new {
 
 mosEisleyNpc69 = Creature:new {
 	objectName = "mosEisleyNpc69",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ mosEisleyNpc69 = Creature:new {
 
 mosEisleyNpc70 = Creature:new {
 	objectName = "mosEisleyNpc70",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "imperial_colonel",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ mosEisleyNpc70 = Creature:new {
 
 mosEisleyNpc72 = Creature:new {
 	objectName = "mosEisleyNpc72",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ mosEisleyNpc72 = Creature:new {
 
 mosEisleyNpc73 = Creature:new {
 	objectName = "mosEisleyNpc73",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_warlord",
 	combatFlags = 0,
@@ -834,7 +834,7 @@ mosEisleyNpc73 = Creature:new {
 
 mosEisleyNpc74 = Creature:new {
 	objectName = "mosEisleyNpc74",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_gladiator",
 	combatFlags = 0,
@@ -856,7 +856,7 @@ mosEisleyNpc74 = Creature:new {
 
 mosEisleyNpc75 = Creature:new {
 	objectName = "mosEisleyNpc75",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -878,7 +878,7 @@ mosEisleyNpc75 = Creature:new {
 
 mosEisleyNpc76 = Creature:new {
 	objectName = "mosEisleyNpc76",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -900,7 +900,7 @@ mosEisleyNpc76 = Creature:new {
 
 mosEisleyNpc77 = Creature:new {
 	objectName = "mosEisleyNpc77",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_clan_medic",
 	combatFlags = 0,
@@ -922,7 +922,7 @@ mosEisleyNpc77 = Creature:new {
 
 mosEisleyNpc78 = Creature:new {
 	objectName = "mosEisleyNpc78",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "dim_u_cleric",
 	combatFlags = 0,
@@ -944,7 +944,7 @@ mosEisleyNpc78 = Creature:new {
 
 mosEisleyNpc79 = Creature:new {
 	objectName = "mosEisleyNpc79",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_clan_warchief",
 	combatFlags = 0,
@@ -966,7 +966,7 @@ mosEisleyNpc79 = Creature:new {
 
 mosEisleyNpc80 = Creature:new {
 	objectName = "mosEisleyNpc80",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -988,7 +988,7 @@ mosEisleyNpc80 = Creature:new {
 
 mosEisleyNpc81 = Creature:new {
 	objectName = "mosEisleyNpc81",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -1010,7 +1010,7 @@ mosEisleyNpc81 = Creature:new {
 
 mosEisleyNpc82 = Creature:new {
 	objectName = "mosEisleyNpc82",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -1032,7 +1032,7 @@ mosEisleyNpc82 = Creature:new {
 
 mosEisleyNpc83 = Creature:new {
 	objectName = "mosEisleyNpc83",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1054,7 +1054,7 @@ mosEisleyNpc83 = Creature:new {
 
 mosEisleyNpc84 = Creature:new {
 	objectName = "mosEisleyNpc84",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "profession_spy_1_tatooine_kaesii",
 	combatFlags = 0,
@@ -1076,7 +1076,7 @@ mosEisleyNpc84 = Creature:new {
 
 mosEisleyNpc85 = Creature:new {
 	objectName = "mosEisleyNpc85",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -1098,7 +1098,7 @@ mosEisleyNpc85 = Creature:new {
 
 mosEisleyNpc86 = Creature:new {
 	objectName = "mosEisleyNpc86",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "dim_u_preacher",
 	combatFlags = 0,
@@ -1120,7 +1120,7 @@ mosEisleyNpc86 = Creature:new {
 
 mosEisleyNpc87 = Creature:new {
 	objectName = "mosEisleyNpc87",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "shamdon_kree",
 	combatFlags = 0,
@@ -1142,7 +1142,7 @@ mosEisleyNpc87 = Creature:new {
 
 mosEisleyNpc89 = Creature:new {
 	objectName = "mosEisleyNpc89",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -1164,7 +1164,7 @@ mosEisleyNpc89 = Creature:new {
 
 mosEisleyNpc90 = Creature:new {
 	objectName = "mosEisleyNpc90",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -1186,7 +1186,7 @@ mosEisleyNpc90 = Creature:new {
 
 mosEisleyNpc91 = Creature:new {
 	objectName = "mosEisleyNpc91",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mission_thug",
 	combatFlags = 0,
@@ -1208,7 +1208,7 @@ mosEisleyNpc91 = Creature:new {
 
 mosEisleyNpc92 = Creature:new {
 	objectName = "mosEisleyNpc92",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lady_valarian",
 	combatFlags = 0,
@@ -1230,7 +1230,7 @@ mosEisleyNpc92 = Creature:new {
 
 mosEisleyNpc93 = Creature:new {
 	objectName = "mosEisleyNpc93",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gran_base_male",
 	combatFlags = 0,
@@ -1252,7 +1252,7 @@ mosEisleyNpc93 = Creature:new {
 
 mosEisleyNpc94 = Creature:new {
 	objectName = "mosEisleyNpc94",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "devaronian_base_male",
 	combatFlags = 0,
@@ -1274,7 +1274,7 @@ mosEisleyNpc94 = Creature:new {
 
 mosEisleyNpc95 = Creature:new {
 	objectName = "mosEisleyNpc95",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mission_thug",
 	combatFlags = 0,
@@ -1296,7 +1296,7 @@ mosEisleyNpc95 = Creature:new {
 
 mosEisleyNpc97 = Creature:new {
 	objectName = "mosEisleyNpc97",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1318,7 +1318,7 @@ mosEisleyNpc97 = Creature:new {
 
 mosEisleyNpc98 = Creature:new {
 	objectName = "mosEisleyNpc98",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1340,7 +1340,7 @@ mosEisleyNpc98 = Creature:new {
 
 mosEisleyNpc99 = Creature:new {
 	objectName = "mosEisleyNpc99",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_comm_operator",
 	combatFlags = 0,
@@ -1362,7 +1362,7 @@ mosEisleyNpc99 = Creature:new {
 
 mosEisleyNpc100 = Creature:new {
 	objectName = "mosEisleyNpc100",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_female",
 	combatFlags = 0,
@@ -1384,7 +1384,7 @@ mosEisleyNpc100 = Creature:new {
 
 mosEisleyNpc101 = Creature:new {
 	objectName = "mosEisleyNpc101",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_eisley_police_officer",
 	combatFlags = 0,
@@ -1406,7 +1406,7 @@ mosEisleyNpc101 = Creature:new {
 
 mosEisleyNpc102 = Creature:new {
 	objectName = "mosEisleyNpc102",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1428,7 +1428,7 @@ mosEisleyNpc102 = Creature:new {
 
 mosEisleyNpc103 = Creature:new {
 	objectName = "mosEisleyNpc103",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -1450,7 +1450,7 @@ mosEisleyNpc103 = Creature:new {
 
 mosEisleyNpc104 = Creature:new {
 	objectName = "mosEisleyNpc104",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper_hard",
 	combatFlags = 0,
@@ -1472,7 +1472,7 @@ mosEisleyNpc104 = Creature:new {
 
 mosEisleyNpc106 = Creature:new {
 	objectName = "mosEisleyNpc106",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bestine_artist01",
 	combatFlags = 0,
@@ -1494,7 +1494,7 @@ mosEisleyNpc106 = Creature:new {
 
 mosEisleyNpc107 = Creature:new {
 	objectName = "mosEisleyNpc107",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -1516,7 +1516,7 @@ mosEisleyNpc107 = Creature:new {
 
 mosEisleyNpc108 = Creature:new {
 	objectName = "mosEisleyNpc108",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper_hard",
 	combatFlags = 0,
@@ -1538,7 +1538,7 @@ mosEisleyNpc108 = Creature:new {
 
 mosEisleyNpc109 = Creature:new {
 	objectName = "mosEisleyNpc109",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1560,7 +1560,7 @@ mosEisleyNpc109 = Creature:new {
 
 mosEisleyNpc110 = Creature:new {
 	objectName = "mosEisleyNpc110",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -1582,7 +1582,7 @@ mosEisleyNpc110 = Creature:new {
 
 mosEisleyNpc112 = Creature:new {
 	objectName = "mosEisleyNpc112",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -1604,7 +1604,7 @@ mosEisleyNpc112 = Creature:new {
 
 mosEisleyNpc113 = Creature:new {
 	objectName = "mosEisleyNpc113",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -1626,7 +1626,7 @@ mosEisleyNpc113 = Creature:new {
 
 mosEisleyNpc114 = Creature:new {
 	objectName = "mosEisleyNpc114",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1648,7 +1648,7 @@ mosEisleyNpc114 = Creature:new {
 
 mosEisleyNpc116 = Creature:new {
 	objectName = "mosEisleyNpc116",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_mos_eisly_1",
 	combatFlags = 0,
@@ -1670,7 +1670,7 @@ mosEisleyNpc116 = Creature:new {
 
 mosEisleyNpc117 = Creature:new {
 	objectName = "mosEisleyNpc117",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_mos_eisly_1",
 	combatFlags = 0,
@@ -1692,7 +1692,7 @@ mosEisleyNpc117 = Creature:new {
 
 mosEisleyNpc118 = Creature:new {
 	objectName = "mosEisleyNpc118",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -1714,7 +1714,7 @@ mosEisleyNpc118 = Creature:new {
 
 mosEisleyNpc119 = Creature:new {
 	objectName = "mosEisleyNpc119",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "coa2_rebel_coordinator",
 	combatFlags = 0,
@@ -1736,7 +1736,7 @@ mosEisleyNpc119 = Creature:new {
 
 mosEisleyNpc120 = Creature:new {
 	objectName = "mosEisleyNpc120",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_mos_eisly_1",
 	combatFlags = 0,
@@ -1758,7 +1758,7 @@ mosEisleyNpc120 = Creature:new {
 
 mosEisleyNpc121 = Creature:new {
 	objectName = "mosEisleyNpc121",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1780,7 +1780,7 @@ mosEisleyNpc121 = Creature:new {
 
 mosEisleyNpc122 = Creature:new {
 	objectName = "mosEisleyNpc122",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -1802,7 +1802,7 @@ mosEisleyNpc122 = Creature:new {
 
 mosEisleyNpc123 = Creature:new {
 	objectName = "mosEisleyNpc123",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "tatooine_herald_01",
 	combatFlags = 0,
@@ -1824,7 +1824,7 @@ mosEisleyNpc123 = Creature:new {
 
 mosEisleyNpc124 = Creature:new {
 	objectName = "mosEisleyNpc124",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_eisley_police_officer",
 	combatFlags = 0,
@@ -1846,7 +1846,7 @@ mosEisleyNpc124 = Creature:new {
 
 mosEisleyNpc125 = Creature:new {
 	objectName = "mosEisleyNpc125",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_eisley_police_officer",
 	combatFlags = 0,
@@ -1868,7 +1868,7 @@ mosEisleyNpc125 = Creature:new {
 
 mosEisleyNpc126 = Creature:new {
 	objectName = "mosEisleyNpc126",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_eisley_police_officer",
 	combatFlags = 0,
@@ -1890,7 +1890,7 @@ mosEisleyNpc126 = Creature:new {
 
 mosEisleyNpc131 = Creature:new {
 	objectName = "mosEisleyNpc131",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gran_base_male",
 	combatFlags = 0,
@@ -1912,7 +1912,7 @@ mosEisleyNpc131 = Creature:new {
 
 mosEisleyNpc132 = Creature:new {
 	objectName = "mosEisleyNpc132",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -1934,7 +1934,7 @@ mosEisleyNpc132 = Creature:new {
 
 mosEisleyNpc133 = Creature:new {
 	objectName = "mosEisleyNpc133",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -1956,7 +1956,7 @@ mosEisleyNpc133 = Creature:new {
 
 mosEisleyNpc134 = Creature:new {
 	objectName = "mosEisleyNpc134",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_clan_medic",
 	combatFlags = 0,
@@ -1978,7 +1978,7 @@ mosEisleyNpc134 = Creature:new {
 
 mosEisleyNpc135 = Creature:new {
 	objectName = "mosEisleyNpc135",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -2000,7 +2000,7 @@ mosEisleyNpc135 = Creature:new {
 
 mosEisleyNpc136 = Creature:new {
 	objectName = "mosEisleyNpc136",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "quest_crowd_pleaser_theater_manager",
 	combatFlags = 0,
@@ -2022,7 +2022,7 @@ mosEisleyNpc136 = Creature:new {
 
 mosEisleyNpc137 = Creature:new {
 	objectName = "mosEisleyNpc137",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -2044,7 +2044,7 @@ mosEisleyNpc137 = Creature:new {
 
 mosEisleyNpc138 = Creature:new {
 	objectName = "mosEisleyNpc138",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "comm_operator",
 	combatFlags = 0,
@@ -2066,7 +2066,7 @@ mosEisleyNpc138 = Creature:new {
 
 mosEisleyNpc139 = Creature:new {
 	objectName = "mosEisleyNpc139",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "dim_u_monastery_nun",
 	combatFlags = 0,
@@ -2088,7 +2088,7 @@ mosEisleyNpc139 = Creature:new {
 
 mosEisleyNpc140 = Creature:new {
 	objectName = "mosEisleyNpc140",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_clan_captain",
 	combatFlags = 0,
@@ -2110,7 +2110,7 @@ mosEisleyNpc140 = Creature:new {
 
 mosEisleyNpc141 = Creature:new {
 	objectName = "mosEisleyNpc141",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bounty_hunter",
 	combatFlags = 0,
@@ -2132,7 +2132,7 @@ mosEisleyNpc141 = Creature:new {
 
 mosEisleyNpc142 = Creature:new {
 	objectName = "mosEisleyNpc142",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "moisture_farmer",
 	combatFlags = 0,
@@ -2154,7 +2154,7 @@ mosEisleyNpc142 = Creature:new {
 
 mosEisleyNpc144 = Creature:new {
 	objectName = "mosEisleyNpc144",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2176,7 +2176,7 @@ mosEisleyNpc144 = Creature:new {
 
 mosEisleyNpc147 = Creature:new {
 	objectName = "mosEisleyNpc147",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -2198,7 +2198,7 @@ mosEisleyNpc147 = Creature:new {
 
 mosEisleyNpc148 = Creature:new {
 	objectName = "mosEisleyNpc148",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cll8_binary_load_lifter",
 	combatFlags = 0,
@@ -2220,7 +2220,7 @@ mosEisleyNpc148 = Creature:new {
 
 mosEisleyNpc152 = Creature:new {
 	objectName = "mosEisleyNpc152",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -2242,7 +2242,7 @@ mosEisleyNpc152 = Creature:new {
 
 mosEisleyNpc153 = Creature:new {
 	objectName = "mosEisleyNpc153",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_taike_guard_old",
 	combatFlags = 0,
@@ -2264,7 +2264,7 @@ mosEisleyNpc153 = Creature:new {
 
 mosEisleyNpc154 = Creature:new {
 	objectName = "mosEisleyNpc154",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2286,7 +2286,7 @@ mosEisleyNpc154 = Creature:new {
 
 mosEisleyNpc156 = Creature:new {
 	objectName = "mosEisleyNpc156",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_eisley_police_officer",
 	combatFlags = 0,
@@ -2308,7 +2308,7 @@ mosEisleyNpc156 = Creature:new {
 
 mosEisleyNpc157 = Creature:new {
 	objectName = "mosEisleyNpc157",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_eisley_police_officer",
 	combatFlags = 0,
@@ -2330,7 +2330,7 @@ mosEisleyNpc157 = Creature:new {
 
 mosEisleyNpc158 = Creature:new {
 	objectName = "mosEisleyNpc158",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2352,7 +2352,7 @@ mosEisleyNpc158 = Creature:new {
 
 mosEisleyNpc159 = Creature:new {
 	objectName = "mosEisleyNpc159",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -2374,7 +2374,7 @@ mosEisleyNpc159 = Creature:new {
 
 mosEisleyNpc160 = Creature:new {
 	objectName = "mosEisleyNpc160",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper_hard",
 	combatFlags = 0,
@@ -2396,7 +2396,7 @@ mosEisleyNpc160 = Creature:new {
 
 mosEisleyNpc162 = Creature:new {
 	objectName = "mosEisleyNpc162",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -2418,7 +2418,7 @@ mosEisleyNpc162 = Creature:new {
 
 mosEisleyNpc163 = Creature:new {
 	objectName = "mosEisleyNpc163",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scavenger",
 	combatFlags = 0,
@@ -2440,7 +2440,7 @@ mosEisleyNpc163 = Creature:new {
 
 mosEisleyNpc164 = Creature:new {
 	objectName = "mosEisleyNpc164",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_clan_warchief",
 	combatFlags = 0,
@@ -2462,7 +2462,7 @@ mosEisleyNpc164 = Creature:new {
 
 mosEisleyNpc165 = Creature:new {
 	objectName = "mosEisleyNpc165",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2484,7 +2484,7 @@ mosEisleyNpc165 = Creature:new {
 
 mosEisleyNpc166 = Creature:new {
 	objectName = "mosEisleyNpc166",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -2506,7 +2506,7 @@ mosEisleyNpc166 = Creature:new {
 
 mosEisleyNpc167 = Creature:new {
 	objectName = "mosEisleyNpc167",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -2528,7 +2528,7 @@ mosEisleyNpc167 = Creature:new {
 
 mosEisleyNpc168 = Creature:new {
 	objectName = "mosEisleyNpc168",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2550,7 +2550,7 @@ mosEisleyNpc168 = Creature:new {
 
 mosEisleyNpc169 = Creature:new {
 	objectName = "mosEisleyNpc169",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -2572,7 +2572,7 @@ mosEisleyNpc169 = Creature:new {
 
 mosEisleyNpc170 = Creature:new {
 	objectName = "mosEisleyNpc170",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -2594,7 +2594,7 @@ mosEisleyNpc170 = Creature:new {
 
 mosEisleyNpc171 = Creature:new {
 	objectName = "mosEisleyNpc171",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2616,7 +2616,7 @@ mosEisleyNpc171 = Creature:new {
 
 mosEisleyNpc176 = Creature:new {
 	objectName = "mosEisleyNpc176",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2638,7 +2638,7 @@ mosEisleyNpc176 = Creature:new {
 
 mosEisleyNpc177 = Creature:new {
 	objectName = "mosEisleyNpc177",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2660,7 +2660,7 @@ mosEisleyNpc177 = Creature:new {
 
 mosEisleyNpc178 = Creature:new {
 	objectName = "mosEisleyNpc178",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_thief",
 	combatFlags = 0,
@@ -2682,7 +2682,7 @@ mosEisleyNpc178 = Creature:new {
 
 mosEisleyNpc179 = Creature:new {
 	objectName = "mosEisleyNpc179",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -2704,7 +2704,7 @@ mosEisleyNpc179 = Creature:new {
 
 mosEisleyNpc180 = Creature:new {
 	objectName = "mosEisleyNpc180",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "hunter",
 	combatFlags = 0,
@@ -2726,7 +2726,7 @@ mosEisleyNpc180 = Creature:new {
 
 mosEisleyNpc181 = Creature:new {
 	objectName = "mosEisleyNpc181",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "dim_u_abbot",
 	combatFlags = 0,
@@ -2748,7 +2748,7 @@ mosEisleyNpc181 = Creature:new {
 
 mosEisleyNpc182 = Creature:new {
 	objectName = "mosEisleyNpc182",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner_rodian_male",
 	combatFlags = 0,
@@ -2770,7 +2770,7 @@ mosEisleyNpc182 = Creature:new {
 
 mosEisleyNpc183 = Creature:new {
 	objectName = "mosEisleyNpc183",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -2792,7 +2792,7 @@ mosEisleyNpc183 = Creature:new {
 
 mosEisleyNpc184 = Creature:new {
 	objectName = "mosEisleyNpc184",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2814,7 +2814,7 @@ mosEisleyNpc184 = Creature:new {
 
 mosEisleyNpc185 = Creature:new {
 	objectName = "mosEisleyNpc185",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -2836,7 +2836,7 @@ mosEisleyNpc185 = Creature:new {
 
 mosEisleyNpc186 = Creature:new {
 	objectName = "mosEisleyNpc186",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_smuggler",
 	combatFlags = 0,
@@ -2858,7 +2858,7 @@ mosEisleyNpc186 = Creature:new {
 
 mosEisleyNpc187 = Creature:new {
 	objectName = "mosEisleyNpc187",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r4",
 	combatFlags = 0,
@@ -2880,7 +2880,7 @@ mosEisleyNpc187 = Creature:new {
 
 mosEisleyNpc188 = Creature:new {
 	objectName = "mosEisleyNpc188",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_clan_captain",
 	combatFlags = 0,
@@ -2902,7 +2902,7 @@ mosEisleyNpc188 = Creature:new {
 
 mosEisleyNpc189 = Creature:new {
 	objectName = "mosEisleyNpc189",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -2924,7 +2924,7 @@ mosEisleyNpc189 = Creature:new {
 
 mosEisleyNpc190 = Creature:new {
 	objectName = "mosEisleyNpc190",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2946,7 +2946,7 @@ mosEisleyNpc190 = Creature:new {
 
 mosEisleyNpc191 = Creature:new {
 	objectName = "mosEisleyNpc191",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -2968,7 +2968,7 @@ mosEisleyNpc191 = Creature:new {
 
 mosEisleyNpc192 = Creature:new {
 	objectName = "mosEisleyNpc192",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_eisley_police_officer",
 	combatFlags = 0,
@@ -2990,7 +2990,7 @@ mosEisleyNpc192 = Creature:new {
 
 mosEisleyNpc193 = Creature:new {
 	objectName = "mosEisleyNpc193",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -3012,7 +3012,7 @@ mosEisleyNpc193 = Creature:new {
 
 mosEisleyNpc194 = Creature:new {
 	objectName = "mosEisleyNpc194",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -3034,7 +3034,7 @@ mosEisleyNpc194 = Creature:new {
 
 mosEisleyNpc195 = Creature:new {
 	objectName = "mosEisleyNpc195",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -3056,7 +3056,7 @@ mosEisleyNpc195 = Creature:new {
 
 mosEisleyNpc196 = Creature:new {
 	objectName = "mosEisleyNpc196",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -3078,7 +3078,7 @@ mosEisleyNpc196 = Creature:new {
 
 mosEisleyNpc197 = Creature:new {
 	objectName = "mosEisleyNpc197",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -3100,7 +3100,7 @@ mosEisleyNpc197 = Creature:new {
 
 mosEisleyNpc198 = Creature:new {
 	objectName = "mosEisleyNpc198",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -3122,7 +3122,7 @@ mosEisleyNpc198 = Creature:new {
 
 mosEisleyNpc199 = Creature:new {
 	objectName = "mosEisleyNpc199",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -3144,7 +3144,7 @@ mosEisleyNpc199 = Creature:new {
 
 mosEisleyNpc200 = Creature:new {
 	objectName = "mosEisleyNpc200",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_mos_eisly_2",
 	combatFlags = 0,
@@ -3166,7 +3166,7 @@ mosEisleyNpc200 = Creature:new {
 
 mosEisleyNpc201 = Creature:new {
 	objectName = "mosEisleyNpc201",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "talon_karrde",
 	combatFlags = 0,
@@ -3188,7 +3188,7 @@ mosEisleyNpc201 = Creature:new {
 
 mosEisleyNpc202 = Creature:new {
 	objectName = "mosEisleyNpc202",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "dravis",
 	combatFlags = 0,
@@ -3210,7 +3210,7 @@ mosEisleyNpc202 = Creature:new {
 
 mosEisleyNpc203 = Creature:new {
 	objectName = "mosEisleyNpc203",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -3232,7 +3232,7 @@ mosEisleyNpc203 = Creature:new {
 
 mosEisleyNpc204 = Creature:new {
 	objectName = "mosEisleyNpc204",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -3254,7 +3254,7 @@ mosEisleyNpc204 = Creature:new {
 
 mosEisleyNpc205 = Creature:new {
 	objectName = "mosEisleyNpc205",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -3276,7 +3276,7 @@ mosEisleyNpc205 = Creature:new {
 
 mosEisleyNpc206 = Creature:new {
 	objectName = "mosEisleyNpc206",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -3298,7 +3298,7 @@ mosEisleyNpc206 = Creature:new {
 
 mosEisleyNpc207 = Creature:new {
 	objectName = "mosEisleyNpc207",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bartender",
 	combatFlags = 0,
@@ -3320,7 +3320,7 @@ mosEisleyNpc207 = Creature:new {
 
 mosEisleyNpc208 = Creature:new {
 	objectName = "mosEisleyNpc208",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "patron_human_male_01",
 	combatFlags = 0,
@@ -3342,7 +3342,7 @@ mosEisleyNpc208 = Creature:new {
 
 mosEisleyNpc209 = Creature:new {
 	objectName = "mosEisleyNpc209",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -3364,7 +3364,7 @@ mosEisleyNpc209 = Creature:new {
 
 mosEisleyNpc210 = Creature:new {
 	objectName = "mosEisleyNpc210",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3386,7 +3386,7 @@ mosEisleyNpc210 = Creature:new {
 
 mosEisleyNpc211 = Creature:new {
 	objectName = "mosEisleyNpc211",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -3408,7 +3408,7 @@ mosEisleyNpc211 = Creature:new {
 
 mosEisleyNpc212 = Creature:new {
 	objectName = "mosEisleyNpc212",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -3430,7 +3430,7 @@ mosEisleyNpc212 = Creature:new {
 
 mosEisleyNpc213 = Creature:new {
 	objectName = "mosEisleyNpc213",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3452,7 +3452,7 @@ mosEisleyNpc213 = Creature:new {
 
 mosEisleyNpc214 = Creature:new {
 	objectName = "mosEisleyNpc214",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3474,7 +3474,7 @@ mosEisleyNpc214 = Creature:new {
 
 mosEisleyNpc215 = Creature:new {
 	objectName = "mosEisleyNpc215",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3496,7 +3496,7 @@ mosEisleyNpc215 = Creature:new {
 
 mosEisleyNpc216 = Creature:new {
 	objectName = "mosEisleyNpc216",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3518,7 +3518,7 @@ mosEisleyNpc216 = Creature:new {
 
 mosEisleyNpc217 = Creature:new {
 	objectName = "mosEisleyNpc217",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3540,7 +3540,7 @@ mosEisleyNpc217 = Creature:new {
 
 mosEisleyNpc218 = Creature:new {
 	objectName = "mosEisleyNpc218",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -3562,7 +3562,7 @@ mosEisleyNpc218 = Creature:new {
 
 mosEisleyNpc219 = Creature:new {
 	objectName = "mosEisleyNpc219",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "patron_human_female_02",
 	combatFlags = 0,
@@ -3584,7 +3584,7 @@ mosEisleyNpc219 = Creature:new {
 
 mosEisleyNpc220 = Creature:new {
 	objectName = "mosEisleyNpc220",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "patron_human_male_03",
 	combatFlags = 0,
@@ -3606,7 +3606,7 @@ mosEisleyNpc220 = Creature:new {
 
 mosEisleyNpc221 = Creature:new {
 	objectName = "mosEisleyNpc221",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "patron_human_female_03",
 	combatFlags = 0,
@@ -3628,7 +3628,7 @@ mosEisleyNpc221 = Creature:new {
 
 mosEisleyNpc222 = Creature:new {
 	objectName = "mosEisleyNpc222",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "patron_human_female_04",
 	combatFlags = 0,
@@ -3650,7 +3650,7 @@ mosEisleyNpc222 = Creature:new {
 
 mosEisleyNpc223 = Creature:new {
 	objectName = "mosEisleyNpc223",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "patron_human_male_04",
 	combatFlags = 0,
@@ -3672,7 +3672,7 @@ mosEisleyNpc223 = Creature:new {
 
 mosEisleyNpc224 = Creature:new {
 	objectName = "mosEisleyNpc224",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "patron_human_female_01",
 	combatFlags = 0,
@@ -3694,7 +3694,7 @@ mosEisleyNpc224 = Creature:new {
 
 mosEisleyNpc225 = Creature:new {
 	objectName = "mosEisleyNpc225",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "patron_human_male_01",
 	combatFlags = 0,
@@ -3716,7 +3716,7 @@ mosEisleyNpc225 = Creature:new {
 
 mosEisleyNpc226 = Creature:new {
 	objectName = "mosEisleyNpc226",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3738,7 +3738,7 @@ mosEisleyNpc226 = Creature:new {
 
 mosEisleyNpc227 = Creature:new {
 	objectName = "mosEisleyNpc227",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3760,7 +3760,7 @@ mosEisleyNpc227 = Creature:new {
 
 mosEisleyNpc228 = Creature:new {
 	objectName = "mosEisleyNpc228",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "stormtrooper_squad_leader",
 	combatFlags = 0,
@@ -3782,7 +3782,7 @@ mosEisleyNpc228 = Creature:new {
 
 mosEisleyNpc230 = Creature:new {
 	objectName = "mosEisleyNpc230",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "patron_chiss_female",
 	combatFlags = 0,
@@ -3804,7 +3804,7 @@ mosEisleyNpc230 = Creature:new {
 
 mosEisleyNpc231 = Creature:new {
 	objectName = "mosEisleyNpc231",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "patron_chiss_male",
 	combatFlags = 0,
@@ -3826,7 +3826,7 @@ mosEisleyNpc231 = Creature:new {
 
 mosEisleyNpc232 = Creature:new {
 	objectName = "mosEisleyNpc232",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "patron_ithorian_male",
 	combatFlags = 0,
@@ -3848,7 +3848,7 @@ mosEisleyNpc232 = Creature:new {
 
 mosEisleyNpc233 = Creature:new {
 	objectName = "mosEisleyNpc233",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3870,7 +3870,7 @@ mosEisleyNpc233 = Creature:new {
 
 mosEisleyNpc234 = Creature:new {
 	objectName = "mosEisleyNpc234",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "patron_ishitib_male",
 	combatFlags = 0,
@@ -3892,7 +3892,7 @@ mosEisleyNpc234 = Creature:new {
 
 mosEisleyNpc235 = Creature:new {
 	objectName = "mosEisleyNpc235",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "muftak",
 	combatFlags = 0,
@@ -3914,7 +3914,7 @@ mosEisleyNpc235 = Creature:new {
 
 mosEisleyNpc236 = Creature:new {
 	objectName = "mosEisleyNpc236",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "patron_devaronian_male",
 	combatFlags = 0,
@@ -3936,7 +3936,7 @@ mosEisleyNpc236 = Creature:new {
 
 mosEisleyNpc237 = Creature:new {
 	objectName = "mosEisleyNpc237",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "patron_nikto",
 	combatFlags = 0,
@@ -3958,7 +3958,7 @@ mosEisleyNpc237 = Creature:new {
 
 mosEisleyNpc238 = Creature:new {
 	objectName = "mosEisleyNpc238",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "patron_quarren",
 	combatFlags = 0,
@@ -3980,7 +3980,7 @@ mosEisleyNpc238 = Creature:new {
 
 mosEisleyNpc239 = Creature:new {
 	objectName = "mosEisleyNpc239",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "patron_klaatu",
 	combatFlags = 0,
@@ -4002,7 +4002,7 @@ mosEisleyNpc239 = Creature:new {
 
 mosEisleyNpc240 = Creature:new {
 	objectName = "mosEisleyNpc240",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chadra_fan_male",
 	combatFlags = 0,
@@ -4024,7 +4024,7 @@ mosEisleyNpc240 = Creature:new {
 
 mosEisleyNpc241 = Creature:new {
 	objectName = "mosEisleyNpc241",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chadra_fan_female",
 	combatFlags = 0,
@@ -4046,7 +4046,7 @@ mosEisleyNpc241 = Creature:new {
 
 mosEisleyNpc242 = Creature:new {
 	objectName = "mosEisleyNpc242",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3_crafted",
 	combatFlags = 0,
@@ -4068,7 +4068,7 @@ mosEisleyNpc242 = Creature:new {
 
 mosEisleyNpc243 = Creature:new {
 	objectName = "mosEisleyNpc243",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4090,7 +4090,7 @@ mosEisleyNpc243 = Creature:new {
 
 mosEisleyNpc244 = Creature:new {
 	objectName = "mosEisleyNpc244",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4112,7 +4112,7 @@ mosEisleyNpc244 = Creature:new {
 
 mosEisleyNpc245 = Creature:new {
 	objectName = "mosEisleyNpc245",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4134,7 +4134,7 @@ mosEisleyNpc245 = Creature:new {
 
 mosEisleyNpc246 = Creature:new {
 	objectName = "mosEisleyNpc246",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4156,7 +4156,7 @@ mosEisleyNpc246 = Creature:new {
 
 mosEisleyNpc247 = Creature:new {
 	objectName = "mosEisleyNpc247",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4178,7 +4178,7 @@ mosEisleyNpc247 = Creature:new {
 
 mosEisleyNpc248 = Creature:new {
 	objectName = "mosEisleyNpc248",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bestine_artist04",
 	combatFlags = 0,
@@ -4200,7 +4200,7 @@ mosEisleyNpc248 = Creature:new {
 
 mosEisleyNpc249 = Creature:new {
 	objectName = "mosEisleyNpc249",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -4222,7 +4222,7 @@ mosEisleyNpc249 = Creature:new {
 
 mosEisleyNpc251 = Creature:new {
 	objectName = "mosEisleyNpc251",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -4244,7 +4244,7 @@ mosEisleyNpc251 = Creature:new {
 
 mosEisleyNpc252 = Creature:new {
 	objectName = "mosEisleyNpc252",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4266,7 +4266,7 @@ mosEisleyNpc252 = Creature:new {
 
 mosEisleyNpc253 = Creature:new {
 	objectName = "mosEisleyNpc253",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_mos_eisly_2",
 	combatFlags = 0,
@@ -4288,7 +4288,7 @@ mosEisleyNpc253 = Creature:new {
 
 mosEisleyNpc254 = Creature:new {
 	objectName = "mosEisleyNpc254",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_mos_eisly_2",
 	combatFlags = 0,
@@ -4310,7 +4310,7 @@ mosEisleyNpc254 = Creature:new {
 
 mosEisleyNpc255 = Creature:new {
 	objectName = "mosEisleyNpc255",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_mos_eisly_2",
 	combatFlags = 0,
@@ -4332,7 +4332,7 @@ mosEisleyNpc255 = Creature:new {
 
 mosEisleyNpc256 = Creature:new {
 	objectName = "mosEisleyNpc256",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4354,7 +4354,7 @@ mosEisleyNpc256 = Creature:new {
 
 mosEisleyNpc257 = Creature:new {
 	objectName = "mosEisleyNpc257",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4376,7 +4376,7 @@ mosEisleyNpc257 = Creature:new {
 
 mosEisleyNpc258 = Creature:new {
 	objectName = "mosEisleyNpc258",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4398,7 +4398,7 @@ mosEisleyNpc258 = Creature:new {
 
 mosEisleyNpc259 = Creature:new {
 	objectName = "mosEisleyNpc259",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "settler",
 	combatFlags = 0,
@@ -4420,7 +4420,7 @@ mosEisleyNpc259 = Creature:new {
 
 mosEisleyNpc260 = Creature:new {
 	objectName = "mosEisleyNpc260",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4442,7 +4442,7 @@ mosEisleyNpc260 = Creature:new {
 
 mosEisleyNpc261 = Creature:new {
 	objectName = "mosEisleyNpc261",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4464,7 +4464,7 @@ mosEisleyNpc261 = Creature:new {
 
 mosEisleyNpc262 = Creature:new {
 	objectName = "mosEisleyNpc262",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -4486,7 +4486,7 @@ mosEisleyNpc262 = Creature:new {
 
 mosEisleyNpc264 = Creature:new {
 	objectName = "mosEisleyNpc264",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -4508,7 +4508,7 @@ mosEisleyNpc264 = Creature:new {
 
 mosEisleyNpc274 = Creature:new {
 	objectName = "mosEisleyNpc274",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "orphan_kreetle",
 	combatFlags = 0,
@@ -4530,7 +4530,7 @@ mosEisleyNpc274 = Creature:new {
 
 mosEisleyNpc282 = Creature:new {
 	objectName = "mosEisleyNpc282",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "orphan_kreetle",
 	combatFlags = 0,
@@ -4552,7 +4552,7 @@ mosEisleyNpc282 = Creature:new {
 
 mosEisleyNpc284 = Creature:new {
 	objectName = "mosEisleyNpc284",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "orphan_kreetle",
 	combatFlags = 0,
@@ -4574,7 +4574,7 @@ mosEisleyNpc284 = Creature:new {
 
 mosEisleyNpc285 = Creature:new {
 	objectName = "mosEisleyNpc285",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "orphan_kreetle",
 	combatFlags = 0,
@@ -4596,7 +4596,7 @@ mosEisleyNpc285 = Creature:new {
 
 mosEisleyNpc288 = Creature:new {
 	objectName = "mosEisleyNpc288",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "orphan_kreetle",
 	combatFlags = 0,
@@ -4618,7 +4618,7 @@ mosEisleyNpc288 = Creature:new {
 
 mosEisleyNpc305 = Creature:new {
 	objectName = "mosEisleyNpc305",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4640,7 +4640,7 @@ mosEisleyNpc305 = Creature:new {
 
 mosEisleyNpc310 = Creature:new {
 	objectName = "mosEisleyNpc310",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mos_eisley_police_officer",
 	combatFlags = 0,

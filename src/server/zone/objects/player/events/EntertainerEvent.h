@@ -55,27 +55,27 @@ class EntertainerEvent : public Event {
 public:
 	EntertainerEvent(Player* pl) : Event() {
 		player = pl;
-		
+
 		flourishXp = 0;
 		healingXp = 0;
 		flourishCount = 0;
 	}
-	
+
 	void addFlourishXp(int xp) {
 		if (flourishCount > 2)
 			return;
-			
+
 		flourishXp += xp;
-		
+
 		if (flourishXp > 2 * xp)
 			flourishXp = 2 * xp;
-		
+
 		flourishCount++;
 	}
-	
+
 	void addHealingXp(int xp) {
 		healingXp += xp;
-	}	
+	}
 
 	bool activate() {
 		try {
@@ -91,13 +91,14 @@ public:
 
 
 
-			if (player->isInBuilding()) {
+			if (player->isInBuilding() || player->isInCamp()) {
 
 				int buildingType = player->getBuildingType();
 				if (
 					buildingType == BuildingObjectImplementation::CANTINA ||
 					buildingType == BuildingObjectImplementation::GUILD_THEATER ||
-					buildingType == BuildingObjectImplementation::TAVERN )
+					buildingType == BuildingObjectImplementation::TAVERN ||
+					player->isInCamp())
 				{
 					//System::out << "calling: player->doEntertainerPatronEffects()" << endl;
 					// healShock, healWounds, addBuff
@@ -109,22 +110,22 @@ public:
 
 			// Tick Action
 			player->doPerformanceAction();
-			
+
 			if (flourishXp > 0) {
 				String xptype;
 				if (player->isDancing())
 					xptype = "dance";
 				else if (player->isPlayingMusic())
 					xptype = "music";
-				
+
 				player->addXp(xptype, flourishXp, true);
 				flourishXp--;
 			}
-			
+
 			if (healingXp > 0) {
 				String healxptype("entertainer_healing");
 				player->addXp(healxptype, healingXp, true);
-				
+
 				healingXp = 0;
 			}
 

@@ -42,7 +42,7 @@
 
 smugglersOutpostNpc1 = Creature:new {
 	objectName = "smugglersOutpostNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ smugglersOutpostNpc1 = Creature:new {
 
 smugglersOutpostNpc2 = Creature:new {
 	objectName = "smugglersOutpostNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ smugglersOutpostNpc2 = Creature:new {
 
 smugglersOutpostNpc3 = Creature:new {
 	objectName = "smugglersOutpostNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ smugglersOutpostNpc3 = Creature:new {
 
 smugglersOutpostNpc4 = Creature:new {
 	objectName = "smugglersOutpostNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ smugglersOutpostNpc4 = Creature:new {
 
 smugglersOutpostNpc5 = Creature:new {
 	objectName = "smugglersOutpostNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ smugglersOutpostNpc5 = Creature:new {
 
 smugglersOutpostNpc6 = Creature:new {
 	objectName = "smugglersOutpostNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ smugglersOutpostNpc6 = Creature:new {
 
 smugglersOutpostNpc7 = Creature:new {
 	objectName = "smugglersOutpostNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ smugglersOutpostNpc7 = Creature:new {
 
 smugglersOutpostNpc8 = Creature:new {
 	objectName = "smugglersOutpostNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ smugglersOutpostNpc8 = Creature:new {
 
 smugglersOutpostNpc9 = Creature:new {
 	objectName = "smugglersOutpostNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ smugglersOutpostNpc9 = Creature:new {
 
 smugglersOutpostNpc10 = Creature:new {
 	objectName = "smugglersOutpostNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ smugglersOutpostNpc10 = Creature:new {
 
 smugglersOutpostNpc11 = Creature:new {
 	objectName = "smugglersOutpostNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ smugglersOutpostNpc11 = Creature:new {
 
 smugglersOutpostNpc12 = Creature:new {
 	objectName = "smugglersOutpostNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ smugglersOutpostNpc12 = Creature:new {
 
 smugglersOutpostNpc13 = Creature:new {
 	objectName = "smugglersOutpostNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ smugglersOutpostNpc13 = Creature:new {
 
 smugglersOutpostNpc14 = Creature:new {
 	objectName = "smugglersOutpostNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ smugglersOutpostNpc14 = Creature:new {
 
 smugglersOutpostNpc15 = Creature:new {
 	objectName = "smugglersOutpostNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ smugglersOutpostNpc15 = Creature:new {
 
 smugglersOutpostNpc16 = Creature:new {
 	objectName = "smugglersOutpostNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ smugglersOutpostNpc16 = Creature:new {
 
 smugglersOutpostNpc17 = Creature:new {
 	objectName = "smugglersOutpostNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ smugglersOutpostNpc17 = Creature:new {
 
 smugglersOutpostNpc18 = Creature:new {
 	objectName = "smugglersOutpostNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler",
 	combatFlags = 0,

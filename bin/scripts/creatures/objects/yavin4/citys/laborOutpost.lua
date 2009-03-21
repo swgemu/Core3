@@ -42,7 +42,7 @@
 
 laborOutpostNpc1 = Creature:new {
 	objectName = "laborOutpostNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ laborOutpostNpc1 = Creature:new {
 
 laborOutpostNpc2 = Creature:new {
 	objectName = "laborOutpostNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "patron_chiss_male",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ laborOutpostNpc2 = Creature:new {
 
 laborOutpostNpc3 = Creature:new {
 	objectName = "laborOutpostNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ laborOutpostNpc3 = Creature:new {
 
 laborOutpostNpc4 = Creature:new {
 	objectName = "laborOutpostNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ laborOutpostNpc4 = Creature:new {
 
 laborOutpostNpc5 = Creature:new {
 	objectName = "laborOutpostNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ laborOutpostNpc5 = Creature:new {
 
 laborOutpostNpc6 = Creature:new {
 	objectName = "laborOutpostNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ laborOutpostNpc6 = Creature:new {
 
 laborOutpostNpc7 = Creature:new {
 	objectName = "laborOutpostNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ laborOutpostNpc7 = Creature:new {
 
 laborOutpostNpc8 = Creature:new {
 	objectName = "laborOutpostNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ laborOutpostNpc8 = Creature:new {
 
 laborOutpostNpc9 = Creature:new {
 	objectName = "laborOutpostNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r4",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ laborOutpostNpc9 = Creature:new {
 
 laborOutpostNpc10 = Creature:new {
 	objectName = "laborOutpostNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ laborOutpostNpc10 = Creature:new {
 
 laborOutpostNpc11 = Creature:new {
 	objectName = "laborOutpostNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ laborOutpostNpc11 = Creature:new {
 
 laborOutpostNpc12 = Creature:new {
 	objectName = "laborOutpostNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ laborOutpostNpc12 = Creature:new {
 
 laborOutpostNpc13 = Creature:new {
 	objectName = "laborOutpostNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ laborOutpostNpc13 = Creature:new {
 
 laborOutpostNpc14 = Creature:new {
 	objectName = "laborOutpostNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ laborOutpostNpc14 = Creature:new {
 
 laborOutpostNpc15 = Creature:new {
 	objectName = "laborOutpostNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ laborOutpostNpc15 = Creature:new {
 
 laborOutpostNpc16 = Creature:new {
 	objectName = "laborOutpostNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ laborOutpostNpc16 = Creature:new {
 
 laborOutpostNpc17 = Creature:new {
 	objectName = "laborOutpostNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ laborOutpostNpc17 = Creature:new {
 
 laborOutpostNpc18 = Creature:new {
 	objectName = "laborOutpostNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ laborOutpostNpc18 = Creature:new {
 
 laborOutpostNpc19 = Creature:new {
 	objectName = "laborOutpostNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ laborOutpostNpc19 = Creature:new {
 
 laborOutpostNpc20 = Creature:new {
 	objectName = "laborOutpostNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ laborOutpostNpc20 = Creature:new {
 
 laborOutpostNpc21 = Creature:new {
 	objectName = "laborOutpostNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "sharpshooter",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ laborOutpostNpc21 = Creature:new {
 
 laborOutpostNpc22 = Creature:new {
 	objectName = "laborOutpostNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commando",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ laborOutpostNpc22 = Creature:new {
 
 laborOutpostNpc23 = Creature:new {
 	objectName = "laborOutpostNpc23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ laborOutpostNpc23 = Creature:new {
 
 laborOutpostNpc24 = Creature:new {
 	objectName = "laborOutpostNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eker",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ laborOutpostNpc24 = Creature:new {
 
 laborOutpostNpc25 = Creature:new {
 	objectName = "laborOutpostNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_thief_14",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ laborOutpostNpc25 = Creature:new {
 
 laborOutpostNpc26 = Creature:new {
 	objectName = "laborOutpostNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_thief_14",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ laborOutpostNpc26 = Creature:new {
 
 laborOutpostNpc27 = Creature:new {
 	objectName = "laborOutpostNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_thief_14",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ laborOutpostNpc27 = Creature:new {
 
 laborOutpostNpc28 = Creature:new {
 	objectName = "laborOutpostNpc28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_thief_14",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ laborOutpostNpc28 = Creature:new {
 
 laborOutpostNpc29 = Creature:new {
 	objectName = "laborOutpostNpc29",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_thief_14",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ laborOutpostNpc29 = Creature:new {
 
 laborOutpostNpc30 = Creature:new {
 	objectName = "laborOutpostNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_thief_14",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ laborOutpostNpc30 = Creature:new {
 
 laborOutpostNpc31 = Creature:new {
 	objectName = "laborOutpostNpc31",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_thief_14",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ laborOutpostNpc31 = Creature:new {
 
 laborOutpostNpc32 = Creature:new {
 	objectName = "laborOutpostNpc32",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_thief_14",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ laborOutpostNpc32 = Creature:new {
 
 laborOutpostNpc33 = Creature:new {
 	objectName = "laborOutpostNpc33",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_thief_14",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ laborOutpostNpc33 = Creature:new {
 
 laborOutpostNpc34 = Creature:new {
 	objectName = "laborOutpostNpc34",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "technician",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ laborOutpostNpc34 = Creature:new {
 
 laborOutpostNpc35 = Creature:new {
 	objectName = "laborOutpostNpc35",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ laborOutpostNpc35 = Creature:new {
 
 laborOutpostNpc36 = Creature:new {
 	objectName = "laborOutpostNpc36",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fringer",
 	combatFlags = 0,
@@ -834,7 +834,7 @@ laborOutpostNpc36 = Creature:new {
 
 laborOutpostNpc37 = Creature:new {
 	objectName = "laborOutpostNpc37",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_female",
 	combatFlags = 0,
@@ -856,7 +856,7 @@ laborOutpostNpc37 = Creature:new {
 
 laborOutpostNpc38 = Creature:new {
 	objectName = "laborOutpostNpc38",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "vendor",
 	combatFlags = 0,
@@ -878,7 +878,7 @@ laborOutpostNpc38 = Creature:new {
 
 laborOutpostNpc39 = Creature:new {
 	objectName = "laborOutpostNpc39",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "aqzow",
 	combatFlags = 0,

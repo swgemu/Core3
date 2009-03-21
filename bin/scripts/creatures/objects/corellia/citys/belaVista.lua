@@ -42,7 +42,7 @@
 
 belavistNpc1 = Creature:new {
 	objectName = "belavistNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ belavistNpc1 = Creature:new {
 
 belavistNpc2 = Creature:new {
 	objectName = "belavistNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_noncom",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ belavistNpc2 = Creature:new {
 
 belavistNpc10 = Creature:new {
 	objectName = "belavistNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r4",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ belavistNpc10 = Creature:new {
 
 belavistNpc15 = Creature:new {
 	objectName = "belavistNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ belavistNpc15 = Creature:new {
 
 belavistNpc16 = Creature:new {
 	objectName = "belavistNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ belavistNpc16 = Creature:new {
 
 belavistNpc18 = Creature:new {
 	objectName = "belavistNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_specialist_noncom",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ belavistNpc18 = Creature:new {
 
 belavistNpc19 = Creature:new {
 	objectName = "belavistNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ belavistNpc19 = Creature:new {
 
 belavistNpc22 = Creature:new {
 	objectName = "belavistNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ belavistNpc22 = Creature:new {
 
 belavistNpc23 = Creature:new {
 	objectName = "belavistNpc23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ belavistNpc23 = Creature:new {
 
 belavistNpc24 = Creature:new {
 	objectName = "belavistNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ belavistNpc24 = Creature:new {
 
 belavistNpc27 = Creature:new {
 	objectName = "belavistNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ belavistNpc27 = Creature:new {
 
 belavistNpc28 = Creature:new {
 	objectName = "belavistNpc28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "comm_operator",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ belavistNpc28 = Creature:new {
 
 belavistNpc29 = Creature:new {
 	objectName = "belavistNpc29",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ belavistNpc29 = Creature:new {
 
 belavistNpc30 = Creature:new {
 	objectName = "belavistNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ belavistNpc30 = Creature:new {
 
 belavistNpc31 = Creature:new {
 	objectName = "belavistNpc31",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ging_darjeek",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ belavistNpc31 = Creature:new {
 
 belavistNpc32 = Creature:new {
 	objectName = "belavistNpc32",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ belavistNpc32 = Creature:new {
 
 belavistNpc33 = Creature:new {
 	objectName = "belavistNpc33",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ belavistNpc33 = Creature:new {
 
 belavistNpc34 = Creature:new {
 	objectName = "belavistNpc34",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ belavistNpc34 = Creature:new {
 
 belavistNpc35 = Creature:new {
 	objectName = "belavistNpc35",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "palejo_reshad",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ belavistNpc35 = Creature:new {
 
 belavistNpc36 = Creature:new {
 	objectName = "belavistNpc36",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bounty_hunter",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ belavistNpc36 = Creature:new {
 
 belavistNpc37 = Creature:new {
 	objectName = "belavistNpc37",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "info_broker",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ belavistNpc37 = Creature:new {
 
 belavistNpc38 = Creature:new {
 	objectName = "belavistNpc38",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bartender",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ belavistNpc38 = Creature:new {
 
 belavistNpc39 = Creature:new {
 	objectName = "belavistNpc39",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ belavistNpc39 = Creature:new {
 
 belavistNpc40 = Creature:new {
 	objectName = "belavistNpc40",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ belavistNpc40 = Creature:new {
 
 belavistNpc42 = Creature:new {
 	objectName = "belavistNpc42",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cll8_binary_load_lifter",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ belavistNpc42 = Creature:new {
 
 belavistNpc43 = Creature:new {
 	objectName = "belavistNpc43",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ belavistNpc43 = Creature:new {
 
 belavistNpc44 = Creature:new {
 	objectName = "belavistNpc44",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ belavistNpc44 = Creature:new {
 
 belavistNpc47 = Creature:new {
 	objectName = "belavistNpc47",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "grondorn_muse",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ belavistNpc47 = Creature:new {
 
 belavistNpc48 = Creature:new {
 	objectName = "belavistNpc48",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ belavistNpc48 = Creature:new {
 
 belavistNpc50 = Creature:new {
 	objectName = "belavistNpc50",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ belavistNpc50 = Creature:new {
 
 belavistNpc51 = Creature:new {
 	objectName = "belavistNpc51",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "moncal_base_male",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ belavistNpc51 = Creature:new {
 
 belavistNpc54 = Creature:new {
 	objectName = "belavistNpc54",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ belavistNpc54 = Creature:new {
 
 belavistNpc55 = Creature:new {
 	objectName = "belavistNpc55",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ belavistNpc55 = Creature:new {
 
 belavistNpc56 = Creature:new {
 	objectName = "belavistNpc56",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ belavistNpc56 = Creature:new {
 
 belavistNpc59 = Creature:new {
 	objectName = "belavistNpc59",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ belavistNpc59 = Creature:new {
 
 belavistNpc60 = Creature:new {
 	objectName = "belavistNpc60",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "hunter",
 	combatFlags = 0,
@@ -834,7 +834,7 @@ belavistNpc60 = Creature:new {
 
 belavistNpc61 = Creature:new {
 	objectName = "belavistNpc61",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -856,7 +856,7 @@ belavistNpc61 = Creature:new {
 
 belavistNpc62 = Creature:new {
 	objectName = "belavistNpc62",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_dark_trooper",
 	combatFlags = 0,
@@ -878,7 +878,7 @@ belavistNpc62 = Creature:new {
 
 belavistNpc63 = Creature:new {
 	objectName = "belavistNpc63",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -900,7 +900,7 @@ belavistNpc63 = Creature:new {
 
 belavistNpc65 = Creature:new {
 	objectName = "belavistNpc65",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -922,7 +922,7 @@ belavistNpc65 = Creature:new {
 
 belavistNpc66 = Creature:new {
 	objectName = "belavistNpc66",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -944,7 +944,7 @@ belavistNpc66 = Creature:new {
 
 belavistNpc67 = Creature:new {
 	objectName = "belavistNpc67",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -966,7 +966,7 @@ belavistNpc67 = Creature:new {
 
 belavistNpc69 = Creature:new {
 	objectName = "belavistNpc69",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -988,7 +988,7 @@ belavistNpc69 = Creature:new {
 
 belavistNpc71 = Creature:new {
 	objectName = "belavistNpc71",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1010,7 +1010,7 @@ belavistNpc71 = Creature:new {
 
 belavistNpc72 = Creature:new {
 	objectName = "belavistNpc72",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1032,7 +1032,7 @@ belavistNpc72 = Creature:new {
 
 belavistNpc75 = Creature:new {
 	objectName = "belavistNpc75",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1054,7 +1054,7 @@ belavistNpc75 = Creature:new {
 
 belavistNpc76 = Creature:new {
 	objectName = "belavistNpc76",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1076,7 +1076,7 @@ belavistNpc76 = Creature:new {
 
 belavistNpc79 = Creature:new {
 	objectName = "belavistNpc79",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,

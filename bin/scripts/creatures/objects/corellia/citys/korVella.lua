@@ -42,7 +42,7 @@
 
 korvellaNpc3 = Creature:new {
 	objectName = "korvellaNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_medic",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ korvellaNpc3 = Creature:new {
 
 korvellaNpc4 = Creature:new {
 	objectName = "korvellaNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ korvellaNpc4 = Creature:new {
 
 korvellaNpc5 = Creature:new {
 	objectName = "korvellaNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ korvellaNpc5 = Creature:new {
 
 korvellaNpc6 = Creature:new {
 	objectName = "korvellaNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_sergeant",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ korvellaNpc6 = Creature:new {
 
 korvellaNpc7 = Creature:new {
 	objectName = "korvellaNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_inspector_sergeant",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ korvellaNpc7 = Creature:new {
 
 korvellaNpc8 = Creature:new {
 	objectName = "korvellaNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ korvellaNpc8 = Creature:new {
 
 korvellaNpc9 = Creature:new {
 	objectName = "korvellaNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ korvellaNpc9 = Creature:new {
 
 korvellaNpc10 = Creature:new {
 	objectName = "korvellaNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ korvellaNpc10 = Creature:new {
 
 korvellaNpc11 = Creature:new {
 	objectName = "korvellaNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ korvellaNpc11 = Creature:new {
 
 korvellaNpc12 = Creature:new {
 	objectName = "korvellaNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chassis_broker",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ korvellaNpc12 = Creature:new {
 
 korvellaNpc13 = Creature:new {
 	objectName = "korvellaNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ korvellaNpc13 = Creature:new {
 
 korvellaNpc14 = Creature:new {
 	objectName = "korvellaNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ korvellaNpc14 = Creature:new {
 
 korvellaNpc15 = Creature:new {
 	objectName = "korvellaNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ korvellaNpc15 = Creature:new {
 
 korvellaNpc16 = Creature:new {
 	objectName = "korvellaNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_lieutenant",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ korvellaNpc16 = Creature:new {
 
 korvellaNpc17 = Creature:new {
 	objectName = "korvellaNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ korvellaNpc17 = Creature:new {
 
 korvellaNpc18 = Creature:new {
 	objectName = "korvellaNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ korvellaNpc18 = Creature:new {
 
 korvellaNpc19 = Creature:new {
 	objectName = "korvellaNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ korvellaNpc19 = Creature:new {
 
 korvellaNpc20 = Creature:new {
 	objectName = "korvellaNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_master_sergeant",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ korvellaNpc20 = Creature:new {
 
 korvellaNpc21 = Creature:new {
 	objectName = "korvellaNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ korvellaNpc21 = Creature:new {
 
 korvellaNpc22 = Creature:new {
 	objectName = "korvellaNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ korvellaNpc22 = Creature:new {
 
 korvellaNpc23 = Creature:new {
 	objectName = "korvellaNpc23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_comissioner",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ korvellaNpc23 = Creature:new {
 
 korvellaNpc24 = Creature:new {
 	objectName = "korvellaNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ korvellaNpc24 = Creature:new {
 
 korvellaNpc25 = Creature:new {
 	objectName = "korvellaNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_cadet",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ korvellaNpc25 = Creature:new {
 
 korvellaNpc26 = Creature:new {
 	objectName = "korvellaNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ korvellaNpc26 = Creature:new {
 
 korvellaNpc27 = Creature:new {
 	objectName = "korvellaNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ korvellaNpc27 = Creature:new {
 
 korvellaNpc28 = Creature:new {
 	objectName = "korvellaNpc28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ korvellaNpc28 = Creature:new {
 
 korvellaNpc29 = Creature:new {
 	objectName = "korvellaNpc29",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ korvellaNpc29 = Creature:new {
 
 korvellaNpc30 = Creature:new {
 	objectName = "korvellaNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ korvellaNpc30 = Creature:new {
 
 korvellaNpc31 = Creature:new {
 	objectName = "korvellaNpc31",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ korvellaNpc31 = Creature:new {
 
 korvellaNpc32 = Creature:new {
 	objectName = "korvellaNpc32",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "logro_elsin",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ korvellaNpc32 = Creature:new {
 
 korvellaNpc33 = Creature:new {
 	objectName = "korvellaNpc33",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eryk_chinn",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ korvellaNpc33 = Creature:new {
 
 korvellaNpc34 = Creature:new {
 	objectName = "korvellaNpc34",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "dac_axfow",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ korvellaNpc34 = Creature:new {
 
 korvellaNpc35 = Creature:new {
 	objectName = "korvellaNpc35",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ korvellaNpc35 = Creature:new {
 
 korvellaNpc36 = Creature:new {
 	objectName = "korvellaNpc36",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ korvellaNpc36 = Creature:new {
 
 korvellaNpc37 = Creature:new {
 	objectName = "korvellaNpc37",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ korvellaNpc37 = Creature:new {
 
 korvellaNpc38 = Creature:new {
 	objectName = "korvellaNpc38",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -834,7 +834,7 @@ korvellaNpc38 = Creature:new {
 
 korvellaNpc39 = Creature:new {
 	objectName = "korvellaNpc39",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -856,7 +856,7 @@ korvellaNpc39 = Creature:new {
 
 korvellaNpc40 = Creature:new {
 	objectName = "korvellaNpc40",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -878,7 +878,7 @@ korvellaNpc40 = Creature:new {
 
 korvellaNpc41 = Creature:new {
 	objectName = "korvellaNpc41",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -900,7 +900,7 @@ korvellaNpc41 = Creature:new {
 
 korvellaNpc42 = Creature:new {
 	objectName = "korvellaNpc42",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -922,7 +922,7 @@ korvellaNpc42 = Creature:new {
 
 korvellaNpc43 = Creature:new {
 	objectName = "korvellaNpc43",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -944,7 +944,7 @@ korvellaNpc43 = Creature:new {
 
 korvellaNpc45 = Creature:new {
 	objectName = "korvellaNpc45",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -966,7 +966,7 @@ korvellaNpc45 = Creature:new {
 
 korvellaNpc46 = Creature:new {
 	objectName = "korvellaNpc46",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_major",
 	combatFlags = 0,
@@ -988,7 +988,7 @@ korvellaNpc46 = Creature:new {
 
 korvellaNpc47 = Creature:new {
 	objectName = "korvellaNpc47",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -1010,7 +1010,7 @@ korvellaNpc47 = Creature:new {
 
 korvellaNpc48 = Creature:new {
 	objectName = "korvellaNpc48",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -1032,7 +1032,7 @@ korvellaNpc48 = Creature:new {
 
 korvellaNpc49 = Creature:new {
 	objectName = "korvellaNpc49",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_sergeant",
 	combatFlags = 0,
@@ -1054,7 +1054,7 @@ korvellaNpc49 = Creature:new {
 
 korvellaNpc50 = Creature:new {
 	objectName = "korvellaNpc50",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -1076,7 +1076,7 @@ korvellaNpc50 = Creature:new {
 
 korvellaNpc51 = Creature:new {
 	objectName = "korvellaNpc51",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -1098,7 +1098,7 @@ korvellaNpc51 = Creature:new {
 
 korvellaNpc52 = Creature:new {
 	objectName = "korvellaNpc52",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cll8_binary_load_lifter",
 	combatFlags = 0,
@@ -1120,7 +1120,7 @@ korvellaNpc52 = Creature:new {
 
 korvellaNpc53 = Creature:new {
 	objectName = "korvellaNpc53",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_inspector_sergeant",
 	combatFlags = 0,
@@ -1142,7 +1142,7 @@ korvellaNpc53 = Creature:new {
 
 korvellaNpc54 = Creature:new {
 	objectName = "korvellaNpc54",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "drall_guard",
 	combatFlags = 0,
@@ -1164,7 +1164,7 @@ korvellaNpc54 = Creature:new {
 
 korvellaNpc55 = Creature:new {
 	objectName = "korvellaNpc55",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "zabrak_base_male",
 	combatFlags = 0,
@@ -1186,7 +1186,7 @@ korvellaNpc55 = Creature:new {
 
 korvellaNpc56 = Creature:new {
 	objectName = "korvellaNpc56",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "zabrak_base_female",
 	combatFlags = 0,
@@ -1208,7 +1208,7 @@ korvellaNpc56 = Creature:new {
 
 korvellaNpc59 = Creature:new {
 	objectName = "korvellaNpc59",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -1230,7 +1230,7 @@ korvellaNpc59 = Creature:new {
 
 korvellaNpc60 = Creature:new {
 	objectName = "korvellaNpc60",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "zabrak_base_female",
 	combatFlags = 0,
@@ -1252,7 +1252,7 @@ korvellaNpc60 = Creature:new {
 
 korvellaNpc61 = Creature:new {
 	objectName = "korvellaNpc61",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1274,7 +1274,7 @@ korvellaNpc61 = Creature:new {
 
 korvellaNpc62 = Creature:new {
 	objectName = "korvellaNpc62",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1296,7 +1296,7 @@ korvellaNpc62 = Creature:new {
 
 korvellaNpc63 = Creature:new {
 	objectName = "korvellaNpc63",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1318,7 +1318,7 @@ korvellaNpc63 = Creature:new {
 
 korvellaNpc64 = Creature:new {
 	objectName = "korvellaNpc64",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -1340,7 +1340,7 @@ korvellaNpc64 = Creature:new {
 
 korvellaNpc65 = Creature:new {
 	objectName = "korvellaNpc65",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -1362,7 +1362,7 @@ korvellaNpc65 = Creature:new {
 
 korvellaNpc66 = Creature:new {
 	objectName = "korvellaNpc66",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly",
 	combatFlags = 0,
@@ -1384,7 +1384,7 @@ korvellaNpc66 = Creature:new {
 
 korvellaNpc67 = Creature:new {
 	objectName = "korvellaNpc67",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1406,7 +1406,7 @@ korvellaNpc67 = Creature:new {
 
 korvellaNpc68 = Creature:new {
 	objectName = "korvellaNpc68",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly",
 	combatFlags = 0,
@@ -1428,7 +1428,7 @@ korvellaNpc68 = Creature:new {
 
 korvellaNpc69 = Creature:new {
 	objectName = "korvellaNpc69",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -1450,7 +1450,7 @@ korvellaNpc69 = Creature:new {
 
 korvellaNpc70 = Creature:new {
 	objectName = "korvellaNpc70",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -1472,7 +1472,7 @@ korvellaNpc70 = Creature:new {
 
 korvellaNpc71 = Creature:new {
 	objectName = "korvellaNpc71",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly",
 	combatFlags = 0,
@@ -1494,7 +1494,7 @@ korvellaNpc71 = Creature:new {
 
 korvellaNpc72 = Creature:new {
 	objectName = "korvellaNpc72",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -1516,7 +1516,7 @@ korvellaNpc72 = Creature:new {
 
 korvellaNpc73 = Creature:new {
 	objectName = "korvellaNpc73",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly",
 	combatFlags = 0,
@@ -1538,7 +1538,7 @@ korvellaNpc73 = Creature:new {
 
 korvellaNpc74 = Creature:new {
 	objectName = "korvellaNpc74",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -1560,7 +1560,7 @@ korvellaNpc74 = Creature:new {
 
 korvellaNpc75 = Creature:new {
 	objectName = "korvellaNpc75",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -1582,7 +1582,7 @@ korvellaNpc75 = Creature:new {
 
 korvellaNpc76 = Creature:new {
 	objectName = "korvellaNpc76",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -1604,7 +1604,7 @@ korvellaNpc76 = Creature:new {
 
 korvellaNpc77 = Creature:new {
 	objectName = "korvellaNpc77",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -1626,7 +1626,7 @@ korvellaNpc77 = Creature:new {
 
 korvellaNpc78 = Creature:new {
 	objectName = "korvellaNpc78",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -1648,7 +1648,7 @@ korvellaNpc78 = Creature:new {
 
 korvellaNpc79 = Creature:new {
 	objectName = "korvellaNpc79",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -1670,7 +1670,7 @@ korvellaNpc79 = Creature:new {
 
 korvellaNpc80 = Creature:new {
 	objectName = "korvellaNpc80",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -1692,7 +1692,7 @@ korvellaNpc80 = Creature:new {
 
 korvellaNpc81 = Creature:new {
 	objectName = "korvellaNpc81",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -1714,7 +1714,7 @@ korvellaNpc81 = Creature:new {
 
 korvellaNpc82 = Creature:new {
 	objectName = "korvellaNpc82",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1736,7 +1736,7 @@ korvellaNpc82 = Creature:new {
 
 korvellaNpc83 = Creature:new {
 	objectName = "korvellaNpc83",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1758,7 +1758,7 @@ korvellaNpc83 = Creature:new {
 
 korvellaNpc84 = Creature:new {
 	objectName = "korvellaNpc84",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1780,7 +1780,7 @@ korvellaNpc84 = Creature:new {
 
 korvellaNpc85 = Creature:new {
 	objectName = "korvellaNpc85",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -1802,7 +1802,7 @@ korvellaNpc85 = Creature:new {
 
 korvellaNpc88 = Creature:new {
 	objectName = "korvellaNpc88",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1824,7 +1824,7 @@ korvellaNpc88 = Creature:new {
 
 korvellaNpc89 = Creature:new {
 	objectName = "korvellaNpc89",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_medic",
 	combatFlags = 0,
@@ -1846,7 +1846,7 @@ korvellaNpc89 = Creature:new {
 
 korvellaNpc90 = Creature:new {
 	objectName = "korvellaNpc90",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1868,7 +1868,7 @@ korvellaNpc90 = Creature:new {
 
 korvellaNpc91 = Creature:new {
 	objectName = "korvellaNpc91",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1890,7 +1890,7 @@ korvellaNpc91 = Creature:new {
 
 korvellaNpc92 = Creature:new {
 	objectName = "korvellaNpc92",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -1912,7 +1912,7 @@ korvellaNpc92 = Creature:new {
 
 korvellaNpc93 = Creature:new {
 	objectName = "korvellaNpc93",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "pilot",
 	combatFlags = 0,
@@ -1934,7 +1934,7 @@ korvellaNpc93 = Creature:new {
 
 korvellaNpc94 = Creature:new {
 	objectName = "korvellaNpc94",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1956,7 +1956,7 @@ korvellaNpc94 = Creature:new {
 
 korvellaNpc97 = Creature:new {
 	objectName = "korvellaNpc97",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1978,7 +1978,7 @@ korvellaNpc97 = Creature:new {
 
 korvellaNpc98 = Creature:new {
 	objectName = "korvellaNpc98",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -2000,7 +2000,7 @@ korvellaNpc98 = Creature:new {
 
 korvellaNpc99 = Creature:new {
 	objectName = "korvellaNpc99",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_detective",
 	combatFlags = 0,
@@ -2022,7 +2022,7 @@ korvellaNpc99 = Creature:new {
 
 korvellaNpc100 = Creature:new {
 	objectName = "korvellaNpc100",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2044,7 +2044,7 @@ korvellaNpc100 = Creature:new {
 
 korvellaNpc101 = Creature:new {
 	objectName = "korvellaNpc101",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2066,7 +2066,7 @@ korvellaNpc101 = Creature:new {
 
 korvellaNpc102 = Creature:new {
 	objectName = "korvellaNpc102",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -2088,7 +2088,7 @@ korvellaNpc102 = Creature:new {
 
 korvellaNpc103 = Creature:new {
 	objectName = "korvellaNpc103",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_lieutenant",
 	combatFlags = 0,
@@ -2110,7 +2110,7 @@ korvellaNpc103 = Creature:new {
 
 korvellaNpc114 = Creature:new {
 	objectName = "korvellaNpc114",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2132,7 +2132,7 @@ korvellaNpc114 = Creature:new {
 
 korvellaNpc115 = Creature:new {
 	objectName = "korvellaNpc115",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2154,7 +2154,7 @@ korvellaNpc115 = Creature:new {
 
 korvellaNpc116 = Creature:new {
 	objectName = "korvellaNpc116",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_female",
 	combatFlags = 0,
@@ -2176,7 +2176,7 @@ korvellaNpc116 = Creature:new {
 
 korvellaNpc117 = Creature:new {
 	objectName = "korvellaNpc117",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2198,7 +2198,7 @@ korvellaNpc117 = Creature:new {
 
 korvellaNpc118 = Creature:new {
 	objectName = "korvellaNpc118",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2220,7 +2220,7 @@ korvellaNpc118 = Creature:new {
 
 korvellaNpc119 = Creature:new {
 	objectName = "korvellaNpc119",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2242,7 +2242,7 @@ korvellaNpc119 = Creature:new {
 
 korvellaNpc120 = Creature:new {
 	objectName = "korvellaNpc120",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2264,7 +2264,7 @@ korvellaNpc120 = Creature:new {
 
 korvellaNpc122 = Creature:new {
 	objectName = "korvellaNpc122",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2286,7 +2286,7 @@ korvellaNpc122 = Creature:new {
 
 korvellaNpc123 = Creature:new {
 	objectName = "korvellaNpc123",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2308,7 +2308,7 @@ korvellaNpc123 = Creature:new {
 
 korvellaNpc124 = Creature:new {
 	objectName = "korvellaNpc124",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2330,7 +2330,7 @@ korvellaNpc124 = Creature:new {
 
 korvellaNpc126 = Creature:new {
 	objectName = "korvellaNpc126",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2352,7 +2352,7 @@ korvellaNpc126 = Creature:new {
 
 korvellaNpc127 = Creature:new {
 	objectName = "korvellaNpc127",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2374,7 +2374,7 @@ korvellaNpc127 = Creature:new {
 
 korvellaNpc129 = Creature:new {
 	objectName = "korvellaNpc129",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2396,7 +2396,7 @@ korvellaNpc129 = Creature:new {
 
 korvellaNpc130 = Creature:new {
 	objectName = "korvellaNpc130",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2418,7 +2418,7 @@ korvellaNpc130 = Creature:new {
 
 korvellaNpc131 = Creature:new {
 	objectName = "korvellaNpc131",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_pilot",
 	combatFlags = 0,
@@ -2440,7 +2440,7 @@ korvellaNpc131 = Creature:new {
 
 korvellaNpc132 = Creature:new {
 	objectName = "korvellaNpc132",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2462,7 +2462,7 @@ korvellaNpc132 = Creature:new {
 
 korvellaNpc133 = Creature:new {
 	objectName = "korvellaNpc133",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_rogue",
 	combatFlags = 0,
@@ -2484,7 +2484,7 @@ korvellaNpc133 = Creature:new {
 
 korvellaNpc134 = Creature:new {
 	objectName = "korvellaNpc134",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_comissioner",
 	combatFlags = 0,
@@ -2506,7 +2506,7 @@ korvellaNpc134 = Creature:new {
 
 korvellaNpc135 = Creature:new {
 	objectName = "korvellaNpc135",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -2528,7 +2528,7 @@ korvellaNpc135 = Creature:new {
 
 korvellaNpc136 = Creature:new {
 	objectName = "korvellaNpc136",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -2550,7 +2550,7 @@ korvellaNpc136 = Creature:new {
 
 korvellaNpc137 = Creature:new {
 	objectName = "korvellaNpc137",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -2572,7 +2572,7 @@ korvellaNpc137 = Creature:new {
 
 korvellaNpc138 = Creature:new {
 	objectName = "korvellaNpc138",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -2594,7 +2594,7 @@ korvellaNpc138 = Creature:new {
 
 korvellaNpc139 = Creature:new {
 	objectName = "korvellaNpc139",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -2616,7 +2616,7 @@ korvellaNpc139 = Creature:new {
 
 korvellaNpc140 = Creature:new {
 	objectName = "korvellaNpc140",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -2638,7 +2638,7 @@ korvellaNpc140 = Creature:new {
 
 korvellaNpc141 = Creature:new {
 	objectName = "korvellaNpc141",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -2660,7 +2660,7 @@ korvellaNpc141 = Creature:new {
 
 korvellaNpc142 = Creature:new {
 	objectName = "korvellaNpc142",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fringer",
 	combatFlags = 0,
@@ -2682,7 +2682,7 @@ korvellaNpc142 = Creature:new {
 
 korvellaNpc143 = Creature:new {
 	objectName = "korvellaNpc143",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2704,7 +2704,7 @@ korvellaNpc143 = Creature:new {
 
 korvellaNpc144 = Creature:new {
 	objectName = "korvellaNpc144",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -2726,7 +2726,7 @@ korvellaNpc144 = Creature:new {
 
 korvellaNpc145 = Creature:new {
 	objectName = "korvellaNpc145",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_chief",
 	combatFlags = 0,
@@ -2748,7 +2748,7 @@ korvellaNpc145 = Creature:new {
 
 korvellaNpc146 = Creature:new {
 	objectName = "korvellaNpc146",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bartender",
 	combatFlags = 0,
@@ -2770,7 +2770,7 @@ korvellaNpc146 = Creature:new {
 
 korvellaNpc147 = Creature:new {
 	objectName = "korvellaNpc147",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -2792,7 +2792,7 @@ korvellaNpc147 = Creature:new {
 
 korvellaNpc148 = Creature:new {
 	objectName = "korvellaNpc148",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -2814,7 +2814,7 @@ korvellaNpc148 = Creature:new {
 
 korvellaNpc149 = Creature:new {
 	objectName = "korvellaNpc149",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -2836,7 +2836,7 @@ korvellaNpc149 = Creature:new {
 
 korvellaNpc150 = Creature:new {
 	objectName = "korvellaNpc150",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2858,7 +2858,7 @@ korvellaNpc150 = Creature:new {
 
 korvellaNpc151 = Creature:new {
 	objectName = "korvellaNpc151",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_inspector_sergeant",
 	combatFlags = 0,
@@ -2880,7 +2880,7 @@ korvellaNpc151 = Creature:new {
 
 korvellaNpc152 = Creature:new {
 	objectName = "korvellaNpc152",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -2902,7 +2902,7 @@ korvellaNpc152 = Creature:new {
 
 korvellaNpc153 = Creature:new {
 	objectName = "korvellaNpc153",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2924,7 +2924,7 @@ korvellaNpc153 = Creature:new {
 
 korvellaNpc154 = Creature:new {
 	objectName = "korvellaNpc154",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2946,7 +2946,7 @@ korvellaNpc154 = Creature:new {
 
 korvellaNpc155 = Creature:new {
 	objectName = "korvellaNpc155",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2968,7 +2968,7 @@ korvellaNpc155 = Creature:new {
 
 korvellaNpc156 = Creature:new {
 	objectName = "korvellaNpc156",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2990,7 +2990,7 @@ korvellaNpc156 = Creature:new {
 
 korvellaNpc157 = Creature:new {
 	objectName = "korvellaNpc157",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -3012,7 +3012,7 @@ korvellaNpc157 = Creature:new {
 
 korvellaNpc159 = Creature:new {
 	objectName = "korvellaNpc159",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -3034,7 +3034,7 @@ korvellaNpc159 = Creature:new {
 
 korvellaNpc160 = Creature:new {
 	objectName = "korvellaNpc160",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -3056,7 +3056,7 @@ korvellaNpc160 = Creature:new {
 
 korvellaNpc161 = Creature:new {
 	objectName = "korvellaNpc161",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -3078,7 +3078,7 @@ korvellaNpc161 = Creature:new {
 
 korvellaNpc162 = Creature:new {
 	objectName = "korvellaNpc162",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -3100,7 +3100,7 @@ korvellaNpc162 = Creature:new {
 
 korvellaNpc163 = Creature:new {
 	objectName = "korvellaNpc163",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -3122,7 +3122,7 @@ korvellaNpc163 = Creature:new {
 
 korvellaNpc164 = Creature:new {
 	objectName = "korvellaNpc164",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -3144,7 +3144,7 @@ korvellaNpc164 = Creature:new {
 
 korvellaNpc165 = Creature:new {
 	objectName = "korvellaNpc165",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -3166,7 +3166,7 @@ korvellaNpc165 = Creature:new {
 
 korvellaNpc167 = Creature:new {
 	objectName = "korvellaNpc167",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3188,7 +3188,7 @@ korvellaNpc167 = Creature:new {
 
 korvellaNpc168 = Creature:new {
 	objectName = "korvellaNpc168",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3210,7 +3210,7 @@ korvellaNpc168 = Creature:new {
 
 korvellaNpc169 = Creature:new {
 	objectName = "korvellaNpc169",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -3232,7 +3232,7 @@ korvellaNpc169 = Creature:new {
 
 korvellaNpc170 = Creature:new {
 	objectName = "korvellaNpc170",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3254,7 +3254,7 @@ korvellaNpc170 = Creature:new {
 
 korvellaNpc171 = Creature:new {
 	objectName = "korvellaNpc171",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3276,7 +3276,7 @@ korvellaNpc171 = Creature:new {
 
 korvellaNpc172 = Creature:new {
 	objectName = "korvellaNpc172",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -3298,7 +3298,7 @@ korvellaNpc172 = Creature:new {
 
 korvellaNpc173 = Creature:new {
 	objectName = "korvellaNpc173",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -3320,7 +3320,7 @@ korvellaNpc173 = Creature:new {
 
 korvellaNpc177 = Creature:new {
 	objectName = "korvellaNpc177",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -3342,7 +3342,7 @@ korvellaNpc177 = Creature:new {
 
 korvellaNpc180 = Creature:new {
 	objectName = "korvellaNpc180",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -3364,7 +3364,7 @@ korvellaNpc180 = Creature:new {
 
 korvellaNpc181 = Creature:new {
 	objectName = "korvellaNpc181",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3386,7 +3386,7 @@ korvellaNpc181 = Creature:new {
 
 korvellaNpc183 = Creature:new {
 	objectName = "korvellaNpc183",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -3408,7 +3408,7 @@ korvellaNpc183 = Creature:new {
 
 korvellaNpc184 = Creature:new {
 	objectName = "korvellaNpc184",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -3430,7 +3430,7 @@ korvellaNpc184 = Creature:new {
 
 korvellaNpc185 = Creature:new {
 	objectName = "korvellaNpc185",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crafting_contractor",
 	combatFlags = 0,
@@ -3452,7 +3452,7 @@ korvellaNpc185 = Creature:new {
 
 korvellaNpc186 = Creature:new {
 	objectName = "korvellaNpc186",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3474,7 +3474,7 @@ korvellaNpc186 = Creature:new {
 
 korvellaNpc187 = Creature:new {
 	objectName = "korvellaNpc187",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3496,7 +3496,7 @@ korvellaNpc187 = Creature:new {
 
 korvellaNpc188 = Creature:new {
 	objectName = "korvellaNpc188",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3518,7 +3518,7 @@ korvellaNpc188 = Creature:new {
 
 korvellaNpc189 = Creature:new {
 	objectName = "korvellaNpc189",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3540,7 +3540,7 @@ korvellaNpc189 = Creature:new {
 
 korvellaNpc190 = Creature:new {
 	objectName = "korvellaNpc190",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3562,7 +3562,7 @@ korvellaNpc190 = Creature:new {
 
 korvellaNpc192 = Creature:new {
 	objectName = "korvellaNpc192",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3584,7 +3584,7 @@ korvellaNpc192 = Creature:new {
 
 korvellaNpc193 = Creature:new {
 	objectName = "korvellaNpc193",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_rogue",
 	combatFlags = 0,
@@ -3606,7 +3606,7 @@ korvellaNpc193 = Creature:new {
 
 korvellaNpc194 = Creature:new {
 	objectName = "korvellaNpc194",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_rogue",
 	combatFlags = 0,
@@ -3628,7 +3628,7 @@ korvellaNpc194 = Creature:new {
 
 korvellaNpc195 = Creature:new {
 	objectName = "korvellaNpc195",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_rogue",
 	combatFlags = 0,
@@ -3650,7 +3650,7 @@ korvellaNpc195 = Creature:new {
 
 korvellaNpc196 = Creature:new {
 	objectName = "korvellaNpc196",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3672,7 +3672,7 @@ korvellaNpc196 = Creature:new {
 
 korvellaNpc199 = Creature:new {
 	objectName = "korvellaNpc199",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -3694,7 +3694,7 @@ korvellaNpc199 = Creature:new {
 
 korvellaNpc200 = Creature:new {
 	objectName = "korvellaNpc200",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -3716,7 +3716,7 @@ korvellaNpc200 = Creature:new {
 
 korvellaNpc201 = Creature:new {
 	objectName = "korvellaNpc201",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3738,7 +3738,7 @@ korvellaNpc201 = Creature:new {
 
 korvellaNpc202 = Creature:new {
 	objectName = "korvellaNpc202",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -3760,7 +3760,7 @@ korvellaNpc202 = Creature:new {
 
 korvellaNpc205 = Creature:new {
 	objectName = "korvellaNpc205",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_jaylon_geissler",
 	combatFlags = 0,
@@ -3782,7 +3782,7 @@ korvellaNpc205 = Creature:new {
 
 korvellaNpc206 = Creature:new {
 	objectName = "korvellaNpc206",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3804,7 +3804,7 @@ korvellaNpc206 = Creature:new {
 
 korvellaNpc207 = Creature:new {
 	objectName = "korvellaNpc207",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cll8_binary_load_lifter",
 	combatFlags = 0,
@@ -3826,7 +3826,7 @@ korvellaNpc207 = Creature:new {
 
 korvellaNpc209 = Creature:new {
 	objectName = "korvellaNpc209",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -3848,7 +3848,7 @@ korvellaNpc209 = Creature:new {
 
 korvellaNpc210 = Creature:new {
 	objectName = "korvellaNpc210",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -3870,7 +3870,7 @@ korvellaNpc210 = Creature:new {
 
 korvellaNpc211 = Creature:new {
 	objectName = "korvellaNpc211",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -3892,7 +3892,7 @@ korvellaNpc211 = Creature:new {
 
 korvellaNpc212 = Creature:new {
 	objectName = "korvellaNpc212",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -3914,7 +3914,7 @@ korvellaNpc212 = Creature:new {
 
 korvellaNpc213 = Creature:new {
 	objectName = "korvellaNpc213",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -3936,7 +3936,7 @@ korvellaNpc213 = Creature:new {
 
 korvellaNpc214 = Creature:new {
 	objectName = "korvellaNpc214",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3958,7 +3958,7 @@ korvellaNpc214 = Creature:new {
 
 korvellaNpc215 = Creature:new {
 	objectName = "korvellaNpc215",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "info_broker",
 	combatFlags = 0,
@@ -3980,7 +3980,7 @@ korvellaNpc215 = Creature:new {
 
 korvellaNpc216 = Creature:new {
 	objectName = "korvellaNpc216",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -4002,7 +4002,7 @@ korvellaNpc216 = Creature:new {
 
 korvellaNpc218 = Creature:new {
 	objectName = "korvellaNpc218",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -4024,7 +4024,7 @@ korvellaNpc218 = Creature:new {
 
 korvellaNpc219 = Creature:new {
 	objectName = "korvellaNpc219",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_lieutenant",
 	combatFlags = 0,
@@ -4046,7 +4046,7 @@ korvellaNpc219 = Creature:new {
 
 korvellaNpc220 = Creature:new {
 	objectName = "korvellaNpc220",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -4068,7 +4068,7 @@ korvellaNpc220 = Creature:new {
 
 korvellaNpc221 = Creature:new {
 	objectName = "korvellaNpc221",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -4090,7 +4090,7 @@ korvellaNpc221 = Creature:new {
 
 korvellaNpc223 = Creature:new {
 	objectName = "korvellaNpc223",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -4112,7 +4112,7 @@ korvellaNpc223 = Creature:new {
 
 korvellaNpc224 = Creature:new {
 	objectName = "korvellaNpc224",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "drall_abbot",
 	combatFlags = 0,
@@ -4134,7 +4134,7 @@ korvellaNpc224 = Creature:new {
 
 korvellaNpc225 = Creature:new {
 	objectName = "korvellaNpc225",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -4156,7 +4156,7 @@ korvellaNpc225 = Creature:new {
 
 korvellaNpc226 = Creature:new {
 	objectName = "korvellaNpc226",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -4178,7 +4178,7 @@ korvellaNpc226 = Creature:new {
 
 korvellaNpc231 = Creature:new {
 	objectName = "korvellaNpc231",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -4200,7 +4200,7 @@ korvellaNpc231 = Creature:new {
 
 korvellaNpc232 = Creature:new {
 	objectName = "korvellaNpc232",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -4222,7 +4222,7 @@ korvellaNpc232 = Creature:new {
 
 korvellaNpc233 = Creature:new {
 	objectName = "korvellaNpc233",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_agent",
 	combatFlags = 0,
@@ -4244,7 +4244,7 @@ korvellaNpc233 = Creature:new {
 
 korvellaNpc234 = Creature:new {
 	objectName = "korvellaNpc234",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -4266,7 +4266,7 @@ korvellaNpc234 = Creature:new {
 
 korvellaNpc235 = Creature:new {
 	objectName = "korvellaNpc235",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,
@@ -4288,7 +4288,7 @@ korvellaNpc235 = Creature:new {
 
 korvellaNpc236 = Creature:new {
 	objectName = "korvellaNpc236",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -4310,7 +4310,7 @@ korvellaNpc236 = Creature:new {
 
 korvellaNpc237 = Creature:new {
 	objectName = "korvellaNpc237",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_chief",
 	combatFlags = 0,
@@ -4332,7 +4332,7 @@ korvellaNpc237 = Creature:new {
 
 korvellaNpc238 = Creature:new {
 	objectName = "korvellaNpc238",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -4354,7 +4354,7 @@ korvellaNpc238 = Creature:new {
 
 korvellaNpc239 = Creature:new {
 	objectName = "korvellaNpc239",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -4376,7 +4376,7 @@ korvellaNpc239 = Creature:new {
 
 korvellaNpc240 = Creature:new {
 	objectName = "korvellaNpc240",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -4398,7 +4398,7 @@ korvellaNpc240 = Creature:new {
 
 korvellaNpc241 = Creature:new {
 	objectName = "korvellaNpc241",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,
@@ -4420,7 +4420,7 @@ korvellaNpc241 = Creature:new {
 
 korvellaNpc243 = Creature:new {
 	objectName = "korvellaNpc243",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -4442,7 +4442,7 @@ korvellaNpc243 = Creature:new {
 
 korvellaNpc244 = Creature:new {
 	objectName = "korvellaNpc244",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -4464,7 +4464,7 @@ korvellaNpc244 = Creature:new {
 
 korvellaNpc245 = Creature:new {
 	objectName = "korvellaNpc245",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -4486,7 +4486,7 @@ korvellaNpc245 = Creature:new {
 
 korvellaNpc246 = Creature:new {
 	objectName = "korvellaNpc246",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -4508,7 +4508,7 @@ korvellaNpc246 = Creature:new {
 
 korvellaNpc247 = Creature:new {
 	objectName = "korvellaNpc247",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4530,7 +4530,7 @@ korvellaNpc247 = Creature:new {
 
 korvellaNpc248 = Creature:new {
 	objectName = "korvellaNpc248",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_specialist_noncom",
 	combatFlags = 0,
@@ -4552,7 +4552,7 @@ korvellaNpc248 = Creature:new {
 
 korvellaNpc249 = Creature:new {
 	objectName = "korvellaNpc249",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -4574,7 +4574,7 @@ korvellaNpc249 = Creature:new {
 
 korvellaNpc250 = Creature:new {
 	objectName = "korvellaNpc250",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -4596,7 +4596,7 @@ korvellaNpc250 = Creature:new {
 
 korvellaNpc251 = Creature:new {
 	objectName = "korvellaNpc251",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -4618,7 +4618,7 @@ korvellaNpc251 = Creature:new {
 
 korvellaNpc255 = Creature:new {
 	objectName = "korvellaNpc255",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fringer",
 	combatFlags = 0,
@@ -4640,7 +4640,7 @@ korvellaNpc255 = Creature:new {
 
 korvellaNpc257 = Creature:new {
 	objectName = "korvellaNpc257",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "drall_patriot",
 	combatFlags = 0,
@@ -4662,7 +4662,7 @@ korvellaNpc257 = Creature:new {
 
 korvellaNpc258 = Creature:new {
 	objectName = "korvellaNpc258",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -4684,7 +4684,7 @@ korvellaNpc258 = Creature:new {
 
 korvellaNpc261 = Creature:new {
 	objectName = "korvellaNpc261",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -4706,7 +4706,7 @@ korvellaNpc261 = Creature:new {
 
 korvellaNpc262 = Creature:new {
 	objectName = "korvellaNpc262",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -4728,7 +4728,7 @@ korvellaNpc262 = Creature:new {
 
 korvellaNpc267 = Creature:new {
 	objectName = "korvellaNpc267",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_warrant_officer_ii",
 	combatFlags = 0,
@@ -4750,7 +4750,7 @@ korvellaNpc267 = Creature:new {
 
 korvellaNpc270 = Creature:new {
 	objectName = "korvellaNpc270",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4772,7 +4772,7 @@ korvellaNpc270 = Creature:new {
 
 korvellaNpc271 = Creature:new {
 	objectName = "korvellaNpc271",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4794,7 +4794,7 @@ korvellaNpc271 = Creature:new {
 
 korvellaNpc272 = Creature:new {
 	objectName = "korvellaNpc272",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -4816,7 +4816,7 @@ korvellaNpc272 = Creature:new {
 
 korvellaNpc273 = Creature:new {
 	objectName = "korvellaNpc273",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_agent",
 	combatFlags = 0,
@@ -4838,7 +4838,7 @@ korvellaNpc273 = Creature:new {
 
 korvellaNpc274 = Creature:new {
 	objectName = "korvellaNpc274",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -4860,7 +4860,7 @@ korvellaNpc274 = Creature:new {
 
 korvellaNpc275 = Creature:new {
 	objectName = "korvellaNpc275",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -4882,7 +4882,7 @@ korvellaNpc275 = Creature:new {
 
 korvellaNpc276 = Creature:new {
 	objectName = "korvellaNpc276",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -4904,7 +4904,7 @@ korvellaNpc276 = Creature:new {
 
 korvellaNpc277 = Creature:new {
 	objectName = "korvellaNpc277",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -4926,7 +4926,7 @@ korvellaNpc277 = Creature:new {
 
 korvellaNpc278 = Creature:new {
 	objectName = "korvellaNpc278",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cll8_binary_load_lifter",
 	combatFlags = 0,
@@ -4948,7 +4948,7 @@ korvellaNpc278 = Creature:new {
 
 korvellaNpc279 = Creature:new {
 	objectName = "korvellaNpc279",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -4970,7 +4970,7 @@ korvellaNpc279 = Creature:new {
 
 korvellaNpc280 = Creature:new {
 	objectName = "korvellaNpc280",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -4992,7 +4992,7 @@ korvellaNpc280 = Creature:new {
 
 korvellaNpc281 = Creature:new {
 	objectName = "korvellaNpc281",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -5014,7 +5014,7 @@ korvellaNpc281 = Creature:new {
 
 korvellaNpc282 = Creature:new {
 	objectName = "korvellaNpc282",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -5036,7 +5036,7 @@ korvellaNpc282 = Creature:new {
 
 korvellaNpc283 = Creature:new {
 	objectName = "korvellaNpc283",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -5058,7 +5058,7 @@ korvellaNpc283 = Creature:new {
 
 korvellaNpc284 = Creature:new {
 	objectName = "korvellaNpc284",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_deel_draav",
 	combatFlags = 0,
@@ -5080,7 +5080,7 @@ korvellaNpc284 = Creature:new {
 
 korvellaNpc285 = Creature:new {
 	objectName = "korvellaNpc285",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -5102,7 +5102,7 @@ korvellaNpc285 = Creature:new {
 
 korvellaNpc286 = Creature:new {
 	objectName = "korvellaNpc286",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -5124,7 +5124,7 @@ korvellaNpc286 = Creature:new {
 
 korvellaNpc287 = Creature:new {
 	objectName = "korvellaNpc287",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -5146,7 +5146,7 @@ korvellaNpc287 = Creature:new {
 
 korvellaNpc288 = Creature:new {
 	objectName = "korvellaNpc288",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -5168,7 +5168,7 @@ korvellaNpc288 = Creature:new {
 
 korvellaNpc289 = Creature:new {
 	objectName = "korvellaNpc289",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -5190,7 +5190,7 @@ korvellaNpc289 = Creature:new {
 
 korvellaNpc290 = Creature:new {
 	objectName = "korvellaNpc290",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -5212,7 +5212,7 @@ korvellaNpc290 = Creature:new {
 
 korvellaNpc291 = Creature:new {
 	objectName = "korvellaNpc291",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -5234,7 +5234,7 @@ korvellaNpc291 = Creature:new {
 
 korvellaNpc292 = Creature:new {
 	objectName = "korvellaNpc292",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -5256,7 +5256,7 @@ korvellaNpc292 = Creature:new {
 
 korvellaNpc293 = Creature:new {
 	objectName = "korvellaNpc293",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -5278,7 +5278,7 @@ korvellaNpc293 = Creature:new {
 
 korvellaNpc294 = Creature:new {
 	objectName = "korvellaNpc294",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5300,7 +5300,7 @@ korvellaNpc294 = Creature:new {
 
 korvellaNpc295 = Creature:new {
 	objectName = "korvellaNpc295",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5322,7 +5322,7 @@ korvellaNpc295 = Creature:new {
 
 korvellaNpc296 = Creature:new {
 	objectName = "korvellaNpc296",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -5344,7 +5344,7 @@ korvellaNpc296 = Creature:new {
 
 korvellaNpc297 = Creature:new {
 	objectName = "korvellaNpc297",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5366,7 +5366,7 @@ korvellaNpc297 = Creature:new {
 
 korvellaNpc298 = Creature:new {
 	objectName = "korvellaNpc298",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5388,7 +5388,7 @@ korvellaNpc298 = Creature:new {
 
 korvellaNpc299 = Creature:new {
 	objectName = "korvellaNpc299",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5410,7 +5410,7 @@ korvellaNpc299 = Creature:new {
 
 korvellaNpc300 = Creature:new {
 	objectName = "korvellaNpc300",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -5432,7 +5432,7 @@ korvellaNpc300 = Creature:new {
 
 korvellaNpc301 = Creature:new {
 	objectName = "korvellaNpc301",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -5454,7 +5454,7 @@ korvellaNpc301 = Creature:new {
 
 korvellaNpc302 = Creature:new {
 	objectName = "korvellaNpc302",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -5476,7 +5476,7 @@ korvellaNpc302 = Creature:new {
 
 korvellaNpc303 = Creature:new {
 	objectName = "korvellaNpc303",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5498,7 +5498,7 @@ korvellaNpc303 = Creature:new {
 
 korvellaNpc304 = Creature:new {
 	objectName = "korvellaNpc304",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ta_667",
 	combatFlags = 0,
@@ -5520,7 +5520,7 @@ korvellaNpc304 = Creature:new {
 
 korvellaNpc305 = Creature:new {
 	objectName = "korvellaNpc305",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "zhanks",
 	combatFlags = 0,
@@ -5542,7 +5542,7 @@ korvellaNpc305 = Creature:new {
 
 korvellaNpc306 = Creature:new {
 	objectName = "korvellaNpc306",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "drall_monk",
 	combatFlags = 0,
@@ -5564,7 +5564,7 @@ korvellaNpc306 = Creature:new {
 
 korvellaNpc307 = Creature:new {
 	objectName = "korvellaNpc307",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -5586,7 +5586,7 @@ korvellaNpc307 = Creature:new {
 
 korvellaNpc308 = Creature:new {
 	objectName = "korvellaNpc308",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5608,7 +5608,7 @@ korvellaNpc308 = Creature:new {
 
 korvellaNpc309 = Creature:new {
 	objectName = "korvellaNpc309",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -5630,7 +5630,7 @@ korvellaNpc309 = Creature:new {
 
 korvellaNpc310 = Creature:new {
 	objectName = "korvellaNpc310",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -5652,7 +5652,7 @@ korvellaNpc310 = Creature:new {
 
 korvellaNpc311 = Creature:new {
 	objectName = "korvellaNpc311",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -5674,7 +5674,7 @@ korvellaNpc311 = Creature:new {
 
 korvellaNpc312 = Creature:new {
 	objectName = "korvellaNpc312",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -5696,7 +5696,7 @@ korvellaNpc312 = Creature:new {
 
 korvellaNpc313 = Creature:new {
 	objectName = "korvellaNpc313",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -5718,7 +5718,7 @@ korvellaNpc313 = Creature:new {
 
 korvellaNpc314 = Creature:new {
 	objectName = "korvellaNpc314",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -5740,7 +5740,7 @@ korvellaNpc314 = Creature:new {
 
 korvellaNpc315 = Creature:new {
 	objectName = "korvellaNpc315",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,

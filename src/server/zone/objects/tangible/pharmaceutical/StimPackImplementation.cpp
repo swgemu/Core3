@@ -66,14 +66,16 @@ int StimPackImplementation::useObject(Player* player) {
 		return 0;
 	}
 
-	//uint32 actionCRC = 0x0A9F00A0; //healdamage
+	if (!player->canTreatInjuries()) {
+		player->sendSystemMessage("healing_response", "healing_must_wait"); //You must wait before you can do that.
+		return 0;
+	}
 
 	StringBuffer cmd;
 	cmd << "/healdamage "<< getObjectID();
 	ExecuteConsoleCommand* msg =  new ExecuteConsoleCommand(cmd.toString());
 
 	player->sendMessage(msg);
-	//player->queueHeal((TangibleObject*)_this, actionCRC, String(""));
 
 	return 0;
 }

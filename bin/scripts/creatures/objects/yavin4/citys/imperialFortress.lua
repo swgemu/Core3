@@ -42,7 +42,7 @@
 
 imperialFortressNpc1 = Creature:new {
 	objectName = "imperialFortressNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "barlow",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ imperialFortressNpc1 = Creature:new {
 
 imperialFortressNpc2 = Creature:new {
 	objectName = "imperialFortressNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "alozen",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ imperialFortressNpc2 = Creature:new {
 
 imperialFortressNpc3 = Creature:new {
 	objectName = "imperialFortressNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "denner",
 	combatFlags = 0,

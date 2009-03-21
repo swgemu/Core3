@@ -42,7 +42,7 @@
 
 miningOutpostNpc1 = Creature:new {
 	objectName = "miningOutpostNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ miningOutpostNpc1 = Creature:new {
 
 miningOutpostNpc2 = Creature:new {
 	objectName = "miningOutpostNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gran_base_male",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ miningOutpostNpc2 = Creature:new {
 
 miningOutpostNpc4 = Creature:new {
 	objectName = "miningOutpostNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ miningOutpostNpc4 = Creature:new {
 
 miningOutpostNpc5 = Creature:new {
 	objectName = "miningOutpostNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ miningOutpostNpc5 = Creature:new {
 
 miningOutpostNpc6 = Creature:new {
 	objectName = "miningOutpostNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ miningOutpostNpc6 = Creature:new {
 
 miningOutpostNpc7 = Creature:new {
 	objectName = "miningOutpostNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ miningOutpostNpc7 = Creature:new {
 
 miningOutpostNpc8 = Creature:new {
 	objectName = "miningOutpostNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ miningOutpostNpc8 = Creature:new {
 
 miningOutpostNpc9 = Creature:new {
 	objectName = "miningOutpostNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ miningOutpostNpc9 = Creature:new {
 
 miningOutpostNpc10 = Creature:new {
 	objectName = "miningOutpostNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ miningOutpostNpc10 = Creature:new {
 
 miningOutpostNpc11 = Creature:new {
 	objectName = "miningOutpostNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ miningOutpostNpc11 = Creature:new {
 
 miningOutpostNpc12 = Creature:new {
 	objectName = "miningOutpostNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ miningOutpostNpc12 = Creature:new {
 
 miningOutpostNpc13 = Creature:new {
 	objectName = "miningOutpostNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ miningOutpostNpc13 = Creature:new {
 
 miningOutpostNpc14 = Creature:new {
 	objectName = "miningOutpostNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ miningOutpostNpc14 = Creature:new {
 
 miningOutpostNpc15 = Creature:new {
 	objectName = "miningOutpostNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ miningOutpostNpc15 = Creature:new {
 
 miningOutpostNpc16 = Creature:new {
 	objectName = "miningOutpostNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ miningOutpostNpc16 = Creature:new {
 
 miningOutpostNpc17 = Creature:new {
 	objectName = "miningOutpostNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ miningOutpostNpc17 = Creature:new {
 
 miningOutpostNpc19 = Creature:new {
 	objectName = "miningOutpostNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ miningOutpostNpc19 = Creature:new {
 
 miningOutpostNpc20 = Creature:new {
 	objectName = "miningOutpostNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ miningOutpostNpc20 = Creature:new {
 
 miningOutpostNpc21 = Creature:new {
 	objectName = "miningOutpostNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ miningOutpostNpc21 = Creature:new {
 
 miningOutpostNpc22 = Creature:new {
 	objectName = "miningOutpostNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ miningOutpostNpc22 = Creature:new {
 
 miningOutpostNpc23 = Creature:new {
 	objectName = "miningOutpostNpc23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ miningOutpostNpc23 = Creature:new {
 
 miningOutpostNpc24 = Creature:new {
 	objectName = "miningOutpostNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ miningOutpostNpc24 = Creature:new {
 
 miningOutpostNpc25 = Creature:new {
 	objectName = "miningOutpostNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kess_yarrow",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ miningOutpostNpc25 = Creature:new {
 
 miningOutpostNpc26 = Creature:new {
 	objectName = "miningOutpostNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fern_yarrow",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ miningOutpostNpc26 = Creature:new {
 
 miningOutpostNpc27 = Creature:new {
 	objectName = "miningOutpostNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rane_yarrow",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ miningOutpostNpc27 = Creature:new {
 
 miningOutpostNpc28 = Creature:new {
 	objectName = "miningOutpostNpc28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ miningOutpostNpc28 = Creature:new {
 
 miningOutpostNpc29 = Creature:new {
 	objectName = "miningOutpostNpc29",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r4",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ miningOutpostNpc29 = Creature:new {
 
 miningOutpostNpc30 = Creature:new {
 	objectName = "miningOutpostNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r4",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ miningOutpostNpc30 = Creature:new {
 
 miningOutpostNpc31 = Creature:new {
 	objectName = "miningOutpostNpc31",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ miningOutpostNpc31 = Creature:new {
 
 miningOutpostNpc32 = Creature:new {
 	objectName = "miningOutpostNpc32",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commando",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ miningOutpostNpc32 = Creature:new {
 
 miningOutpostNpc33 = Creature:new {
 	objectName = "miningOutpostNpc33",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ miningOutpostNpc33 = Creature:new {
 
 miningOutpostNpc34 = Creature:new {
 	objectName = "miningOutpostNpc34",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commando",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ miningOutpostNpc34 = Creature:new {
 
 miningOutpostNpc35 = Creature:new {
 	objectName = "miningOutpostNpc35",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ miningOutpostNpc35 = Creature:new {
 
 miningOutpostNpc36 = Creature:new {
 	objectName = "miningOutpostNpc36",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ miningOutpostNpc36 = Creature:new {
 
 miningOutpostNpc37 = Creature:new {
 	objectName = "miningOutpostNpc37",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ miningOutpostNpc37 = Creature:new {
 
 miningOutpostNpc38 = Creature:new {
 	objectName = "miningOutpostNpc38",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "adwan_turoldine",
 	combatFlags = 0,

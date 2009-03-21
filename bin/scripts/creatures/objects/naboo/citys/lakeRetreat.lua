@@ -42,7 +42,7 @@
 
 lakeRetreatNpc1 = Creature:new {
 	objectName = "lakeRetreatNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ lakeRetreatNpc1 = Creature:new {
 
 lakeRetreatNpc2 = Creature:new {
 	objectName = "lakeRetreatNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "technician",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ lakeRetreatNpc2 = Creature:new {
 
 lakeRetreatNpc3 = Creature:new {
 	objectName = "lakeRetreatNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_mercenary",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ lakeRetreatNpc3 = Creature:new {
 
 lakeRetreatNpc4 = Creature:new {
 	objectName = "lakeRetreatNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ankura_gungan",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ lakeRetreatNpc4 = Creature:new {
 
 lakeRetreatNpc5 = Creature:new {
 	objectName = "lakeRetreatNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ lakeRetreatNpc5 = Creature:new {
 
 lakeRetreatNpc6 = Creature:new {
 	objectName = "lakeRetreatNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "technician",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ lakeRetreatNpc6 = Creature:new {
 
 lakeRetreatNpc7 = Creature:new {
 	objectName = "lakeRetreatNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ lakeRetreatNpc7 = Creature:new {
 
 lakeRetreatNpc8 = Creature:new {
 	objectName = "lakeRetreatNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ lakeRetreatNpc8 = Creature:new {
 
 lakeRetreatNpc9 = Creature:new {
 	objectName = "lakeRetreatNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ lakeRetreatNpc9 = Creature:new {
 
 lakeRetreatNpc10 = Creature:new {
 	objectName = "lakeRetreatNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ lakeRetreatNpc10 = Creature:new {
 
 lakeRetreatNpc11 = Creature:new {
 	objectName = "lakeRetreatNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ lakeRetreatNpc11 = Creature:new {
 
 lakeRetreatNpc12 = Creature:new {
 	objectName = "lakeRetreatNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ lakeRetreatNpc12 = Creature:new {
 
 lakeRetreatNpc13 = Creature:new {
 	objectName = "lakeRetreatNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ lakeRetreatNpc13 = Creature:new {
 
 lakeRetreatNpc14 = Creature:new {
 	objectName = "lakeRetreatNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_female",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ lakeRetreatNpc14 = Creature:new {
 
 lakeRetreatNpc15 = Creature:new {
 	objectName = "lakeRetreatNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ lakeRetreatNpc15 = Creature:new {
 
 lakeRetreatNpc16 = Creature:new {
 	objectName = "lakeRetreatNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ lakeRetreatNpc16 = Creature:new {
 
 lakeRetreatNpc17 = Creature:new {
 	objectName = "lakeRetreatNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ lakeRetreatNpc17 = Creature:new {
 
 lakeRetreatNpc18 = Creature:new {
 	objectName = "lakeRetreatNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ lakeRetreatNpc18 = Creature:new {
 
 lakeRetreatNpc21 = Creature:new {
 	objectName = "lakeRetreatNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_officer",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ lakeRetreatNpc21 = Creature:new {
 
 lakeRetreatNpc22 = Creature:new {
 	objectName = "lakeRetreatNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_officer",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ lakeRetreatNpc22 = Creature:new {
 
 lakeRetreatNpc23 = Creature:new {
 	objectName = "lakeRetreatNpc23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_guard",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ lakeRetreatNpc23 = Creature:new {
 
 lakeRetreatNpc24 = Creature:new {
 	objectName = "lakeRetreatNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_guard",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ lakeRetreatNpc24 = Creature:new {
 
 lakeRetreatNpc25 = Creature:new {
 	objectName = "lakeRetreatNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_guard",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ lakeRetreatNpc25 = Creature:new {
 
 lakeRetreatNpc26 = Creature:new {
 	objectName = "lakeRetreatNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_guard",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ lakeRetreatNpc26 = Creature:new {
 
 lakeRetreatNpc27 = Creature:new {
 	objectName = "lakeRetreatNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_guard",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ lakeRetreatNpc27 = Creature:new {
 
 lakeRetreatNpc28 = Creature:new {
 	objectName = "lakeRetreatNpc28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_base_male",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ lakeRetreatNpc28 = Creature:new {
 
 lakeRetreatNpc29 = Creature:new {
 	objectName = "lakeRetreatNpc29",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ lakeRetreatNpc29 = Creature:new {
 
 lakeRetreatNpc30 = Creature:new {
 	objectName = "lakeRetreatNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "stormtrooper_sniper",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ lakeRetreatNpc30 = Creature:new {
 
 lakeRetreatNpc31 = Creature:new {
 	objectName = "lakeRetreatNpc31",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "giant_peko_peko",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ lakeRetreatNpc31 = Creature:new {
 
 lakeRetreatNpc32 = Creature:new {
 	objectName = "lakeRetreatNpc32",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "giant_peko_peko",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ lakeRetreatNpc32 = Creature:new {
 
 lakeRetreatNpc33 = Creature:new {
 	objectName = "lakeRetreatNpc33",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "stormtrooper_medic",
 	combatFlags = 0,

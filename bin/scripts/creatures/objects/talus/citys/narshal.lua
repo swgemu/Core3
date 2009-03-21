@@ -42,7 +42,7 @@
 
 narhsallNpc1 = Creature:new {
 	objectName = "narhsallNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ narhsallNpc1 = Creature:new {
 
 narhsallNpc2 = Creature:new {
 	objectName = "narhsallNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ narhsallNpc2 = Creature:new {
 
 narhsallNpc3 = Creature:new {
 	objectName = "narhsallNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scoundrel",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ narhsallNpc3 = Creature:new {
 
 narhsallNpc4 = Creature:new {
 	objectName = "narhsallNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ narhsallNpc4 = Creature:new {
 
 narhsallNpc5 = Creature:new {
 	objectName = "narhsallNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ narhsallNpc5 = Creature:new {
 
 narhsallNpc6 = Creature:new {
 	objectName = "narhsallNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ narhsallNpc6 = Creature:new {
 
 narhsallNpc7 = Creature:new {
 	objectName = "narhsallNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ narhsallNpc7 = Creature:new {
 
 narhsallNpc8 = Creature:new {
 	objectName = "narhsallNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "spacer",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ narhsallNpc8 = Creature:new {
 
 narhsallNpc9 = Creature:new {
 	objectName = "narhsallNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ narhsallNpc9 = Creature:new {
 
 narhsallNpc10 = Creature:new {
 	objectName = "narhsallNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "quarren_base_male",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ narhsallNpc10 = Creature:new {
 
 narhsallNpc11 = Creature:new {
 	objectName = "narhsallNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ narhsallNpc11 = Creature:new {
 
 narhsallNpc12 = Creature:new {
 	objectName = "narhsallNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "comm_operator",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ narhsallNpc12 = Creature:new {
 
 narhsallNpc13 = Creature:new {
 	objectName = "narhsallNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "spacer",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ narhsallNpc13 = Creature:new {
 
 narhsallNpc14 = Creature:new {
 	objectName = "narhsallNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ narhsallNpc14 = Creature:new {
 
 narhsallNpc15 = Creature:new {
 	objectName = "narhsallNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chassis_broker",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ narhsallNpc15 = Creature:new {
 
 narhsallNpc16 = Creature:new {
 	objectName = "narhsallNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "sleemo_delinquent",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ narhsallNpc16 = Creature:new {
 
 narhsallNpc17 = Creature:new {
 	objectName = "narhsallNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "sleemo_delinquent",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ narhsallNpc17 = Creature:new {
 
 narhsallNpc18 = Creature:new {
 	objectName = "narhsallNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "sleemo_delinquent",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ narhsallNpc18 = Creature:new {
 
 narhsallNpc19 = Creature:new {
 	objectName = "narhsallNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ narhsallNpc19 = Creature:new {
 
 narhsallNpc20 = Creature:new {
 	objectName = "narhsallNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ narhsallNpc20 = Creature:new {
 
 narhsallNpc21 = Creature:new {
 	objectName = "narhsallNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ narhsallNpc21 = Creature:new {
 
 narhsallNpc22 = Creature:new {
 	objectName = "narhsallNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ narhsallNpc22 = Creature:new {
 
 narhsallNpc23 = Creature:new {
 	objectName = "narhsallNpc23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ narhsallNpc23 = Creature:new {
 
 narhsallNpc24 = Creature:new {
 	objectName = "narhsallNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ narhsallNpc24 = Creature:new {
 
 narhsallNpc25 = Creature:new {
 	objectName = "narhsallNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ narhsallNpc25 = Creature:new {
 
 narhsallNpc26 = Creature:new {
 	objectName = "narhsallNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_rebel_guardsman_hard",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ narhsallNpc26 = Creature:new {
 
 narhsallNpc27 = Creature:new {
 	objectName = "narhsallNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_rebel_elite_heavy_trooper",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ narhsallNpc27 = Creature:new {
 
 narhsallNpc28 = Creature:new {
 	objectName = "narhsallNpc28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_rebel_cadet_extreme",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ narhsallNpc28 = Creature:new {
 
 narhsallNpc29 = Creature:new {
 	objectName = "narhsallNpc29",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ narhsallNpc29 = Creature:new {
 
 narhsallNpc30 = Creature:new {
 	objectName = "narhsallNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bounty_hunter",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ narhsallNpc30 = Creature:new {
 
 narhsallNpc31 = Creature:new {
 	objectName = "narhsallNpc31",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ narhsallNpc31 = Creature:new {
 
 narhsallNpc32 = Creature:new {
 	objectName = "narhsallNpc32",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ narhsallNpc32 = Creature:new {
 
 narhsallNpc33 = Creature:new {
 	objectName = "narhsallNpc33",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ narhsallNpc33 = Creature:new {
 
 narhsallNpc34 = Creature:new {
 	objectName = "narhsallNpc34",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ narhsallNpc34 = Creature:new {
 
 narhsallNpc35 = Creature:new {
 	objectName = "narhsallNpc35",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ narhsallNpc35 = Creature:new {
 
 narhsallNpc36 = Creature:new {
 	objectName = "narhsallNpc36",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "info_broker",
 	combatFlags = 0,
@@ -834,7 +834,7 @@ narhsallNpc36 = Creature:new {
 
 narhsallNpc37 = Creature:new {
 	objectName = "narhsallNpc37",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -856,7 +856,7 @@ narhsallNpc37 = Creature:new {
 
 narhsallNpc38 = Creature:new {
 	objectName = "narhsallNpc38",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "hunter",
 	combatFlags = 0,
@@ -878,7 +878,7 @@ narhsallNpc38 = Creature:new {
 
 narhsallNpc39 = Creature:new {
 	objectName = "narhsallNpc39",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -900,7 +900,7 @@ narhsallNpc39 = Creature:new {
 
 narhsallNpc40 = Creature:new {
 	objectName = "narhsallNpc40",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -922,7 +922,7 @@ narhsallNpc40 = Creature:new {
 
 narhsallNpc41 = Creature:new {
 	objectName = "narhsallNpc41",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -944,7 +944,7 @@ narhsallNpc41 = Creature:new {
 
 narhsallNpc42 = Creature:new {
 	objectName = "narhsallNpc42",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_rebel_rifleman_extreme",
 	combatFlags = 0,
@@ -966,7 +966,7 @@ narhsallNpc42 = Creature:new {
 
 narhsallNpc43 = Creature:new {
 	objectName = "narhsallNpc43",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_rebel_liberator_extreme",
 	combatFlags = 0,
@@ -988,7 +988,7 @@ narhsallNpc43 = Creature:new {
 
 narhsallNpc44 = Creature:new {
 	objectName = "narhsallNpc44",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -1010,7 +1010,7 @@ narhsallNpc44 = Creature:new {
 
 narhsallNpc45 = Creature:new {
 	objectName = "narhsallNpc45",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -1032,7 +1032,7 @@ narhsallNpc45 = Creature:new {
 
 narhsallNpc46 = Creature:new {
 	objectName = "narhsallNpc46",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1054,7 +1054,7 @@ narhsallNpc46 = Creature:new {
 
 narhsallNpc47 = Creature:new {
 	objectName = "narhsallNpc47",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -1076,7 +1076,7 @@ narhsallNpc47 = Creature:new {
 
 narhsallNpc48 = Creature:new {
 	objectName = "narhsallNpc48",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler",
 	combatFlags = 0,
@@ -1098,7 +1098,7 @@ narhsallNpc48 = Creature:new {
 
 narhsallNpc49 = Creature:new {
 	objectName = "narhsallNpc49",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1120,7 +1120,7 @@ narhsallNpc49 = Creature:new {
 
 narhsallNpc50 = Creature:new {
 	objectName = "narhsallNpc50",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_base_female",
 	combatFlags = 0,
@@ -1142,7 +1142,7 @@ narhsallNpc50 = Creature:new {
 
 narhsallNpc51 = Creature:new {
 	objectName = "narhsallNpc51",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -1164,7 +1164,7 @@ narhsallNpc51 = Creature:new {
 
 narhsallNpc52 = Creature:new {
 	objectName = "narhsallNpc52",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1186,7 +1186,7 @@ narhsallNpc52 = Creature:new {
 
 narhsallNpc53 = Creature:new {
 	objectName = "narhsallNpc53",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cll8_binary_load_lifter",
 	combatFlags = 0,
@@ -1208,7 +1208,7 @@ narhsallNpc53 = Creature:new {
 
 narhsallNpc54 = Creature:new {
 	objectName = "narhsallNpc54",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "itp_hethrir_operative",
 	combatFlags = 0,
@@ -1230,7 +1230,7 @@ narhsallNpc54 = Creature:new {
 
 narhsallNpc55 = Creature:new {
 	objectName = "narhsallNpc55",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_investigator",
 	combatFlags = 0,
@@ -1252,7 +1252,7 @@ narhsallNpc55 = Creature:new {
 
 narhsallNpc56 = Creature:new {
 	objectName = "narhsallNpc56",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1274,7 +1274,7 @@ narhsallNpc56 = Creature:new {
 
 narhsallNpc57 = Creature:new {
 	objectName = "narhsallNpc57",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cheerleader_rebel_squad_leader_hard",
 	combatFlags = 0,
@@ -1296,7 +1296,7 @@ narhsallNpc57 = Creature:new {
 
 narhsallNpc58 = Creature:new {
 	objectName = "narhsallNpc58",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_constable",
 	combatFlags = 0,
@@ -1318,7 +1318,7 @@ narhsallNpc58 = Creature:new {
 
 narhsallNpc59 = Creature:new {
 	objectName = "narhsallNpc59",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -1340,7 +1340,7 @@ narhsallNpc59 = Creature:new {
 
 narhsallNpc60 = Creature:new {
 	objectName = "narhsallNpc60",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -1362,7 +1362,7 @@ narhsallNpc60 = Creature:new {
 
 narhsallNpc61 = Creature:new {
 	objectName = "narhsallNpc61",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,
@@ -1384,7 +1384,7 @@ narhsallNpc61 = Creature:new {
 
 narhsallNpc62 = Creature:new {
 	objectName = "narhsallNpc62",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1406,7 +1406,7 @@ narhsallNpc62 = Creature:new {
 
 narhsallNpc63 = Creature:new {
 	objectName = "narhsallNpc63",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -1428,7 +1428,7 @@ narhsallNpc63 = Creature:new {
 
 narhsallNpc64 = Creature:new {
 	objectName = "narhsallNpc64",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1450,7 +1450,7 @@ narhsallNpc64 = Creature:new {
 
 narhsallNpc65 = Creature:new {
 	objectName = "narhsallNpc65",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1472,7 +1472,7 @@ narhsallNpc65 = Creature:new {
 
 narhsallNpc66 = Creature:new {
 	objectName = "narhsallNpc66",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -1494,7 +1494,7 @@ narhsallNpc66 = Creature:new {
 
 narhsallNpc67 = Creature:new {
 	objectName = "narhsallNpc67",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "coa3_information_rebel",
 	combatFlags = 0,
@@ -1516,7 +1516,7 @@ narhsallNpc67 = Creature:new {
 
 narhsallNpc68 = Creature:new {
 	objectName = "narhsallNpc68",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crafting_contractor",
 	combatFlags = 0,
@@ -1538,7 +1538,7 @@ narhsallNpc68 = Creature:new {
 
 narhsallNpc69 = Creature:new {
 	objectName = "narhsallNpc69",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1560,7 +1560,7 @@ narhsallNpc69 = Creature:new {
 
 narhsallNpc70 = Creature:new {
 	objectName = "narhsallNpc70",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1582,7 +1582,7 @@ narhsallNpc70 = Creature:new {
 
 narhsallNpc71 = Creature:new {
 	objectName = "narhsallNpc71",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -1604,7 +1604,7 @@ narhsallNpc71 = Creature:new {
 
 narhsallNpc72 = Creature:new {
 	objectName = "narhsallNpc72",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "spacer",
 	combatFlags = 0,
@@ -1626,7 +1626,7 @@ narhsallNpc72 = Creature:new {
 
 narhsallNpc73 = Creature:new {
 	objectName = "narhsallNpc73",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1648,7 +1648,7 @@ narhsallNpc73 = Creature:new {
 
 narhsallNpc74 = Creature:new {
 	objectName = "narhsallNpc74",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -1670,7 +1670,7 @@ narhsallNpc74 = Creature:new {
 
 narhsallNpc75 = Creature:new {
 	objectName = "narhsallNpc75",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -1692,7 +1692,7 @@ narhsallNpc75 = Creature:new {
 
 narhsallNpc76 = Creature:new {
 	objectName = "narhsallNpc76",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_rebel_army_captain_hard",
 	combatFlags = 0,
@@ -1714,7 +1714,7 @@ narhsallNpc76 = Creature:new {
 
 narhsallNpc77 = Creature:new {
 	objectName = "narhsallNpc77",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_rebel_rifleman_extreme",
 	combatFlags = 0,
@@ -1736,7 +1736,7 @@ narhsallNpc77 = Creature:new {
 
 narhsallNpc78 = Creature:new {
 	objectName = "narhsallNpc78",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1758,7 +1758,7 @@ narhsallNpc78 = Creature:new {
 
 narhsallNpc79 = Creature:new {
 	objectName = "narhsallNpc79",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "itp_hethrir_rebel_nashal_camper",
 	combatFlags = 0,
@@ -1780,7 +1780,7 @@ narhsallNpc79 = Creature:new {
 
 narhsallNpc80 = Creature:new {
 	objectName = "narhsallNpc80",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "itp_hethrir_rebel_nashal_camper",
 	combatFlags = 0,
@@ -1802,7 +1802,7 @@ narhsallNpc80 = Creature:new {
 
 narhsallNpc81 = Creature:new {
 	objectName = "narhsallNpc81",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_constable",
 	combatFlags = 0,
@@ -1824,7 +1824,7 @@ narhsallNpc81 = Creature:new {
 
 narhsallNpc82 = Creature:new {
 	objectName = "narhsallNpc82",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "itp_hethrir_rebel_nashal_camper",
 	combatFlags = 0,
@@ -1846,7 +1846,7 @@ narhsallNpc82 = Creature:new {
 
 narhsallNpc83 = Creature:new {
 	objectName = "narhsallNpc83",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -1868,7 +1868,7 @@ narhsallNpc83 = Creature:new {
 
 narhsallNpc84 = Creature:new {
 	objectName = "narhsallNpc84",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_captain",
 	combatFlags = 0,
@@ -1890,7 +1890,7 @@ narhsallNpc84 = Creature:new {
 
 narhsallNpc85 = Creature:new {
 	objectName = "narhsallNpc85",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -1912,7 +1912,7 @@ narhsallNpc85 = Creature:new {
 
 narhsallNpc86 = Creature:new {
 	objectName = "narhsallNpc86",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -1934,7 +1934,7 @@ narhsallNpc86 = Creature:new {
 
 narhsallNpc87 = Creature:new {
 	objectName = "narhsallNpc87",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "itp_hethrir_rebel_nashal_camper",
 	combatFlags = 0,
@@ -1956,7 +1956,7 @@ narhsallNpc87 = Creature:new {
 
 narhsallNpc88 = Creature:new {
 	objectName = "narhsallNpc88",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "itp_hethrir_rebel_nashal_camper",
 	combatFlags = 0,
@@ -1978,7 +1978,7 @@ narhsallNpc88 = Creature:new {
 
 narhsallNpc89 = Creature:new {
 	objectName = "narhsallNpc89",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "itp_hethrir_rebel_nashal_camper",
 	combatFlags = 0,
@@ -2000,7 +2000,7 @@ narhsallNpc89 = Creature:new {
 
 narhsallNpc90 = Creature:new {
 	objectName = "narhsallNpc90",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "itp_hethrir_rebel_nashal_camper",
 	combatFlags = 0,
@@ -2022,7 +2022,7 @@ narhsallNpc90 = Creature:new {
 
 narhsallNpc91 = Creature:new {
 	objectName = "narhsallNpc91",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "itp_hethrir_rebel_nashal_camper",
 	combatFlags = 0,
@@ -2044,7 +2044,7 @@ narhsallNpc91 = Creature:new {
 
 narhsallNpc92 = Creature:new {
 	objectName = "narhsallNpc92",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crazed_roba",
 	combatFlags = 0,
@@ -2066,7 +2066,7 @@ narhsallNpc92 = Creature:new {
 
 narhsallNpc93 = Creature:new {
 	objectName = "narhsallNpc93",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crazed_roba",
 	combatFlags = 0,
@@ -2088,7 +2088,7 @@ narhsallNpc93 = Creature:new {
 
 narhsallNpc94 = Creature:new {
 	objectName = "narhsallNpc94",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crazed_roba",
 	combatFlags = 0,
@@ -2110,7 +2110,7 @@ narhsallNpc94 = Creature:new {
 
 narhsallNpc95 = Creature:new {
 	objectName = "narhsallNpc95",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2132,7 +2132,7 @@ narhsallNpc95 = Creature:new {
 
 narhsallNpc96 = Creature:new {
 	objectName = "narhsallNpc96",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2154,7 +2154,7 @@ narhsallNpc96 = Creature:new {
 
 narhsallNpc97 = Creature:new {
 	objectName = "narhsallNpc97",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -2176,7 +2176,7 @@ narhsallNpc97 = Creature:new {
 
 narhsallNpc98 = Creature:new {
 	objectName = "narhsallNpc98",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -2198,7 +2198,7 @@ narhsallNpc98 = Creature:new {
 
 narhsallNpc99 = Creature:new {
 	objectName = "narhsallNpc99",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2220,7 +2220,7 @@ narhsallNpc99 = Creature:new {
 
 narhsallNpc100 = Creature:new {
 	objectName = "narhsallNpc100",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_rebel_liberator_hard",
 	combatFlags = 0,
@@ -2242,7 +2242,7 @@ narhsallNpc100 = Creature:new {
 
 narhsallNpc101 = Creature:new {
 	objectName = "narhsallNpc101",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_rebel_rifleman_hard",
 	combatFlags = 0,
@@ -2264,7 +2264,7 @@ narhsallNpc101 = Creature:new {
 
 narhsallNpc102 = Creature:new {
 	objectName = "narhsallNpc102",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rebel_battle_droid",
 	combatFlags = 0,
@@ -2286,7 +2286,7 @@ narhsallNpc102 = Creature:new {
 
 narhsallNpc103 = Creature:new {
 	objectName = "narhsallNpc103",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2308,7 +2308,7 @@ narhsallNpc103 = Creature:new {
 
 narhsallNpc104 = Creature:new {
 	objectName = "narhsallNpc104",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_rebel_grenadier_hard",
 	combatFlags = 0,
@@ -2330,7 +2330,7 @@ narhsallNpc104 = Creature:new {
 
 narhsallNpc105 = Creature:new {
 	objectName = "narhsallNpc105",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2352,7 +2352,7 @@ narhsallNpc105 = Creature:new {
 
 narhsallNpc106 = Creature:new {
 	objectName = "narhsallNpc106",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2374,7 +2374,7 @@ narhsallNpc106 = Creature:new {
 
 narhsallNpc107 = Creature:new {
 	objectName = "narhsallNpc107",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "hunter",
 	combatFlags = 0,
@@ -2396,7 +2396,7 @@ narhsallNpc107 = Creature:new {
 
 narhsallNpc108 = Creature:new {
 	objectName = "narhsallNpc108",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -2418,7 +2418,7 @@ narhsallNpc108 = Creature:new {
 
 narhsallNpc109 = Creature:new {
 	objectName = "narhsallNpc109",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "coa3_tactical_rebel",
 	combatFlags = 0,
@@ -2440,7 +2440,7 @@ narhsallNpc109 = Creature:new {
 
 narhsallNpc110 = Creature:new {
 	objectName = "narhsallNpc110",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_rebel_elite_heavy_trooper_extreme",
 	combatFlags = 0,
@@ -2462,7 +2462,7 @@ narhsallNpc110 = Creature:new {
 
 narhsallNpc111 = Creature:new {
 	objectName = "narhsallNpc111",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_rebel_elite_heavy_trooper_extreme",
 	combatFlags = 0,
@@ -2484,7 +2484,7 @@ narhsallNpc111 = Creature:new {
 
 narhsallNpc112 = Creature:new {
 	objectName = "narhsallNpc112",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -2506,7 +2506,7 @@ narhsallNpc112 = Creature:new {
 
 narhsallNpc113 = Creature:new {
 	objectName = "narhsallNpc113",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -2528,7 +2528,7 @@ narhsallNpc113 = Creature:new {
 
 narhsallNpc114 = Creature:new {
 	objectName = "narhsallNpc114",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bartender",
 	combatFlags = 0,
@@ -2550,7 +2550,7 @@ narhsallNpc114 = Creature:new {
 
 narhsallNpc115 = Creature:new {
 	objectName = "narhsallNpc115",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bith_base_male",
 	combatFlags = 0,
@@ -2572,7 +2572,7 @@ narhsallNpc115 = Creature:new {
 
 narhsallNpc116 = Creature:new {
 	objectName = "narhsallNpc116",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -2594,7 +2594,7 @@ narhsallNpc116 = Creature:new {
 
 narhsallNpc117 = Creature:new {
 	objectName = "narhsallNpc117",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "technician",
 	combatFlags = 0,
@@ -2616,7 +2616,7 @@ narhsallNpc117 = Creature:new {
 
 narhsallNpc118 = Creature:new {
 	objectName = "narhsallNpc118",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "info_broker",
 	combatFlags = 0,
@@ -2638,7 +2638,7 @@ narhsallNpc118 = Creature:new {
 
 narhsallNpc119 = Creature:new {
 	objectName = "narhsallNpc119",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -2660,7 +2660,7 @@ narhsallNpc119 = Creature:new {
 
 narhsallNpc120 = Creature:new {
 	objectName = "narhsallNpc120",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler",
 	combatFlags = 0,
@@ -2682,7 +2682,7 @@ narhsallNpc120 = Creature:new {
 
 narhsallNpc121 = Creature:new {
 	objectName = "narhsallNpc121",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bounty_hunter",
 	combatFlags = 0,
@@ -2704,7 +2704,7 @@ narhsallNpc121 = Creature:new {
 
 narhsallNpc122 = Creature:new {
 	objectName = "narhsallNpc122",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -2726,7 +2726,7 @@ narhsallNpc122 = Creature:new {
 
 narhsallNpc123 = Creature:new {
 	objectName = "narhsallNpc123",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2748,7 +2748,7 @@ narhsallNpc123 = Creature:new {
 
 narhsallNpc124 = Creature:new {
 	objectName = "narhsallNpc124",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cll8_binary_load_lifter",
 	combatFlags = 0,
@@ -2770,7 +2770,7 @@ narhsallNpc124 = Creature:new {
 
 narhsallNpc125 = Creature:new {
 	objectName = "narhsallNpc125",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2792,7 +2792,7 @@ narhsallNpc125 = Creature:new {
 
 narhsallNpc126 = Creature:new {
 	objectName = "narhsallNpc126",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "protocol_droid_3po",
 	combatFlags = 0,
@@ -2814,7 +2814,7 @@ narhsallNpc126 = Creature:new {
 
 narhsallNpc127 = Creature:new {
 	objectName = "narhsallNpc127",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rtp_leia_selonian_corpse",
 	combatFlags = 0,
@@ -2836,7 +2836,7 @@ narhsallNpc127 = Creature:new {
 
 narhsallNpc128 = Creature:new {
 	objectName = "narhsallNpc128",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -2858,7 +2858,7 @@ narhsallNpc128 = Creature:new {
 
 narhsallNpc129 = Creature:new {
 	objectName = "narhsallNpc129",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rtp_stormtrooper_elite_85",
 	combatFlags = 0,
@@ -2880,7 +2880,7 @@ narhsallNpc129 = Creature:new {
 
 narhsallNpc130 = Creature:new {
 	objectName = "narhsallNpc130",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rtp_stormtrooper_elite_85",
 	combatFlags = 0,
@@ -2902,7 +2902,7 @@ narhsallNpc130 = Creature:new {
 
 narhsallNpc131 = Creature:new {
 	objectName = "narhsallNpc131",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -2924,7 +2924,7 @@ narhsallNpc131 = Creature:new {
 
 narhsallNpc132 = Creature:new {
 	objectName = "narhsallNpc132",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -2946,7 +2946,7 @@ narhsallNpc132 = Creature:new {
 
 narhsallNpc133 = Creature:new {
 	objectName = "narhsallNpc133",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_thief_13",
 	combatFlags = 0,
@@ -2968,7 +2968,7 @@ narhsallNpc133 = Creature:new {
 
 narhsallNpc134 = Creature:new {
 	objectName = "narhsallNpc134",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2990,7 +2990,7 @@ narhsallNpc134 = Creature:new {
 
 narhsallNpc135 = Creature:new {
 	objectName = "narhsallNpc135",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3012,7 +3012,7 @@ narhsallNpc135 = Creature:new {
 
 narhsallNpc136 = Creature:new {
 	objectName = "narhsallNpc136",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3034,7 +3034,7 @@ narhsallNpc136 = Creature:new {
 
 narhsallNpc137 = Creature:new {
 	objectName = "narhsallNpc137",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -3056,7 +3056,7 @@ narhsallNpc137 = Creature:new {
 
 narhsallNpc138 = Creature:new {
 	objectName = "narhsallNpc138",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_thief_13",
 	combatFlags = 0,
@@ -3078,7 +3078,7 @@ narhsallNpc138 = Creature:new {
 
 narhsallNpc139 = Creature:new {
 	objectName = "narhsallNpc139",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_thief_13",
 	combatFlags = 0,
@@ -3100,7 +3100,7 @@ narhsallNpc139 = Creature:new {
 
 narhsallNpc140 = Creature:new {
 	objectName = "narhsallNpc140",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -3122,7 +3122,7 @@ narhsallNpc140 = Creature:new {
 
 narhsallNpc141 = Creature:new {
 	objectName = "narhsallNpc141",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_thief_13",
 	combatFlags = 0,
@@ -3144,7 +3144,7 @@ narhsallNpc141 = Creature:new {
 
 narhsallNpc142 = Creature:new {
 	objectName = "narhsallNpc142",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_mooch",
 	combatFlags = 0,
@@ -3166,7 +3166,7 @@ narhsallNpc142 = Creature:new {
 
 narhsallNpc143 = Creature:new {
 	objectName = "narhsallNpc143",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_mooch",
 	combatFlags = 0,
@@ -3188,7 +3188,7 @@ narhsallNpc143 = Creature:new {
 
 narhsallNpc144 = Creature:new {
 	objectName = "narhsallNpc144",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_mooch",
 	combatFlags = 0,
@@ -3210,7 +3210,7 @@ narhsallNpc144 = Creature:new {
 
 narhsallNpc145 = Creature:new {
 	objectName = "narhsallNpc145",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3232,7 +3232,7 @@ narhsallNpc145 = Creature:new {
 
 narhsallNpc146 = Creature:new {
 	objectName = "narhsallNpc146",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "coa2_rebel_coordinator",
 	combatFlags = 0,
@@ -3254,7 +3254,7 @@ narhsallNpc146 = Creature:new {
 
 narhsallNpc147 = Creature:new {
 	objectName = "narhsallNpc147",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3276,7 +3276,7 @@ narhsallNpc147 = Creature:new {
 
 narhsallNpc148 = Creature:new {
 	objectName = "narhsallNpc148",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -3298,7 +3298,7 @@ narhsallNpc148 = Creature:new {
 
 narhsallNpc149 = Creature:new {
 	objectName = "narhsallNpc149",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -3320,7 +3320,7 @@ narhsallNpc149 = Creature:new {
 
 narhsallNpc150 = Creature:new {
 	objectName = "narhsallNpc150",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_thief_13",
 	combatFlags = 0,
@@ -3342,7 +3342,7 @@ narhsallNpc150 = Creature:new {
 
 narhsallNpc151 = Creature:new {
 	objectName = "narhsallNpc151",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_thief_13",
 	combatFlags = 0,
@@ -3364,7 +3364,7 @@ narhsallNpc151 = Creature:new {
 
 narhsallNpc152 = Creature:new {
 	objectName = "narhsallNpc152",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,
@@ -3386,7 +3386,7 @@ narhsallNpc152 = Creature:new {
 
 narhsallNpc153 = Creature:new {
 	objectName = "narhsallNpc153",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,
@@ -3408,7 +3408,7 @@ narhsallNpc153 = Creature:new {
 
 narhsallNpc154 = Creature:new {
 	objectName = "narhsallNpc154",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3430,7 +3430,7 @@ narhsallNpc154 = Creature:new {
 
 narhsallNpc155 = Creature:new {
 	objectName = "narhsallNpc155",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -3452,7 +3452,7 @@ narhsallNpc155 = Creature:new {
 
 narhsallNpc156 = Creature:new {
 	objectName = "narhsallNpc156",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -3474,7 +3474,7 @@ narhsallNpc156 = Creature:new {
 
 narhsallNpc157 = Creature:new {
 	objectName = "narhsallNpc157",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3496,7 +3496,7 @@ narhsallNpc157 = Creature:new {
 
 narhsallNpc158 = Creature:new {
 	objectName = "narhsallNpc158",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -3518,7 +3518,7 @@ narhsallNpc158 = Creature:new {
 
 narhsallNpc159 = Creature:new {
 	objectName = "narhsallNpc159",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3540,7 +3540,7 @@ narhsallNpc159 = Creature:new {
 
 narhsallNpc160 = Creature:new {
 	objectName = "narhsallNpc160",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3562,7 +3562,7 @@ narhsallNpc160 = Creature:new {
 
 narhsallNpc161 = Creature:new {
 	objectName = "narhsallNpc161",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3584,7 +3584,7 @@ narhsallNpc161 = Creature:new {
 
 narhsallNpc162 = Creature:new {
 	objectName = "narhsallNpc162",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cheerleader_rebel_sergeant_hard",
 	combatFlags = 0,
@@ -3606,7 +3606,7 @@ narhsallNpc162 = Creature:new {
 
 narhsallNpc163 = Creature:new {
 	objectName = "narhsallNpc163",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -3628,7 +3628,7 @@ narhsallNpc163 = Creature:new {
 
 narhsallNpc164 = Creature:new {
 	objectName = "narhsallNpc164",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_captain",
 	combatFlags = 0,
@@ -3650,7 +3650,7 @@ narhsallNpc164 = Creature:new {
 
 narhsallNpc165 = Creature:new {
 	objectName = "narhsallNpc165",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "giant_dalyrake",
 	combatFlags = 0,
@@ -3672,7 +3672,7 @@ narhsallNpc165 = Creature:new {
 
 narhsallNpc166 = Creature:new {
 	objectName = "narhsallNpc166",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "giant_dalyrake",
 	combatFlags = 0,
@@ -3694,7 +3694,7 @@ narhsallNpc166 = Creature:new {
 
 narhsallNpc167 = Creature:new {
 	objectName = "narhsallNpc167",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "giant_dalyrake",
 	combatFlags = 0,
@@ -3716,7 +3716,7 @@ narhsallNpc167 = Creature:new {
 
 narhsallNpc168 = Creature:new {
 	objectName = "narhsallNpc168",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "giant_dalyrake",
 	combatFlags = 0,
@@ -3738,7 +3738,7 @@ narhsallNpc168 = Creature:new {
 
 narhsallNpc169 = Creature:new {
 	objectName = "narhsallNpc169",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "giant_dalyrake",
 	combatFlags = 0,
@@ -3760,7 +3760,7 @@ narhsallNpc169 = Creature:new {
 
 narhsallNpc170 = Creature:new {
 	objectName = "narhsallNpc170",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -3782,7 +3782,7 @@ narhsallNpc170 = Creature:new {
 
 narhsallNpc171 = Creature:new {
 	objectName = "narhsallNpc171",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "technician",
 	combatFlags = 0,
@@ -3804,7 +3804,7 @@ narhsallNpc171 = Creature:new {
 
 narhsallNpc172 = Creature:new {
 	objectName = "narhsallNpc172",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3826,7 +3826,7 @@ narhsallNpc172 = Creature:new {
 
 narhsallNpc173 = Creature:new {
 	objectName = "narhsallNpc173",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3848,7 +3848,7 @@ narhsallNpc173 = Creature:new {
 
 narhsallNpc174 = Creature:new {
 	objectName = "narhsallNpc174",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3870,7 +3870,7 @@ narhsallNpc174 = Creature:new {
 
 narhsallNpc175 = Creature:new {
 	objectName = "narhsallNpc175",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -3892,7 +3892,7 @@ narhsallNpc175 = Creature:new {
 
 narhsallNpc176 = Creature:new {
 	objectName = "narhsallNpc176",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -3914,7 +3914,7 @@ narhsallNpc176 = Creature:new {
 
 narhsallNpc177 = Creature:new {
 	objectName = "narhsallNpc177",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_nitwit",
 	combatFlags = 0,
@@ -3936,7 +3936,7 @@ narhsallNpc177 = Creature:new {
 
 narhsallNpc178 = Creature:new {
 	objectName = "narhsallNpc178",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3958,7 +3958,7 @@ narhsallNpc178 = Creature:new {
 
 narhsallNpc179 = Creature:new {
 	objectName = "narhsallNpc179",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3980,7 +3980,7 @@ narhsallNpc179 = Creature:new {
 
 narhsallNpc180 = Creature:new {
 	objectName = "narhsallNpc180",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4002,7 +4002,7 @@ narhsallNpc180 = Creature:new {
 
 narhsallNpc181 = Creature:new {
 	objectName = "narhsallNpc181",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4024,7 +4024,7 @@ narhsallNpc181 = Creature:new {
 
 narhsallNpc182 = Creature:new {
 	objectName = "narhsallNpc182",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_nitwit",
 	combatFlags = 0,
@@ -4046,7 +4046,7 @@ narhsallNpc182 = Creature:new {
 
 narhsallNpc183 = Creature:new {
 	objectName = "narhsallNpc183",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4068,7 +4068,7 @@ narhsallNpc183 = Creature:new {
 
 narhsallNpc184 = Creature:new {
 	objectName = "narhsallNpc184",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4090,7 +4090,7 @@ narhsallNpc184 = Creature:new {
 
 narhsallNpc185 = Creature:new {
 	objectName = "narhsallNpc185",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -4112,7 +4112,7 @@ narhsallNpc185 = Creature:new {
 
 narhsallNpc186 = Creature:new {
 	objectName = "narhsallNpc186",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "vendor",
 	combatFlags = 0,
@@ -4134,7 +4134,7 @@ narhsallNpc186 = Creature:new {
 
 narhsallNpc187 = Creature:new {
 	objectName = "narhsallNpc187",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cheerleader_rebel_master_sergeant_hard",
 	combatFlags = 0,
@@ -4156,7 +4156,7 @@ narhsallNpc187 = Creature:new {
 
 narhsallNpc188 = Creature:new {
 	objectName = "narhsallNpc188",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4178,7 +4178,7 @@ narhsallNpc188 = Creature:new {
 
 narhsallNpc189 = Creature:new {
 	objectName = "narhsallNpc189",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4200,7 +4200,7 @@ narhsallNpc189 = Creature:new {
 
 narhsallNpc190 = Creature:new {
 	objectName = "narhsallNpc190",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4222,7 +4222,7 @@ narhsallNpc190 = Creature:new {
 
 narhsallNpc191 = Creature:new {
 	objectName = "narhsallNpc191",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4244,7 +4244,7 @@ narhsallNpc191 = Creature:new {
 
 narhsallNpc192 = Creature:new {
 	objectName = "narhsallNpc192",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4266,7 +4266,7 @@ narhsallNpc192 = Creature:new {
 
 narhsallNpc193 = Creature:new {
 	objectName = "narhsallNpc193",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4288,7 +4288,7 @@ narhsallNpc193 = Creature:new {
 
 narhsallNpc194 = Creature:new {
 	objectName = "narhsallNpc194",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_nitwit",
 	combatFlags = 0,
@@ -4310,7 +4310,7 @@ narhsallNpc194 = Creature:new {
 
 narhsallNpc195 = Creature:new {
 	objectName = "narhsallNpc195",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4332,7 +4332,7 @@ narhsallNpc195 = Creature:new {
 
 narhsallNpc196 = Creature:new {
 	objectName = "narhsallNpc196",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -4354,7 +4354,7 @@ narhsallNpc196 = Creature:new {
 
 narhsallNpc197 = Creature:new {
 	objectName = "narhsallNpc197",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r4",
 	combatFlags = 0,
@@ -4376,7 +4376,7 @@ narhsallNpc197 = Creature:new {
 
 narhsallNpc198 = Creature:new {
 	objectName = "narhsallNpc198",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4398,7 +4398,7 @@ narhsallNpc198 = Creature:new {
 
 narhsallNpc199 = Creature:new {
 	objectName = "narhsallNpc199",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4420,7 +4420,7 @@ narhsallNpc199 = Creature:new {
 
 narhsallNpc200 = Creature:new {
 	objectName = "narhsallNpc200",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -4442,7 +4442,7 @@ narhsallNpc200 = Creature:new {
 
 narhsallNpc201 = Creature:new {
 	objectName = "narhsallNpc201",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "vendor",
 	combatFlags = 0,
@@ -4464,7 +4464,7 @@ narhsallNpc201 = Creature:new {
 
 narhsallNpc202 = Creature:new {
 	objectName = "narhsallNpc202",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -4486,7 +4486,7 @@ narhsallNpc202 = Creature:new {
 
 narhsallNpc203 = Creature:new {
 	objectName = "narhsallNpc203",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -4508,7 +4508,7 @@ narhsallNpc203 = Creature:new {
 
 narhsallNpc204 = Creature:new {
 	objectName = "narhsallNpc204",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,
@@ -4530,7 +4530,7 @@ narhsallNpc204 = Creature:new {
 
 narhsallNpc205 = Creature:new {
 	objectName = "narhsallNpc205",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gran_base_male",
 	combatFlags = 0,
@@ -4552,7 +4552,7 @@ narhsallNpc205 = Creature:new {
 
 narhsallNpc206 = Creature:new {
 	objectName = "narhsallNpc206",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "hunter",
 	combatFlags = 0,
@@ -4574,7 +4574,7 @@ narhsallNpc206 = Creature:new {
 
 narhsallNpc207 = Creature:new {
 	objectName = "narhsallNpc207",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -4596,7 +4596,7 @@ narhsallNpc207 = Creature:new {
 
 narhsallNpc208 = Creature:new {
 	objectName = "narhsallNpc208",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -4618,7 +4618,7 @@ narhsallNpc208 = Creature:new {
 
 narhsallNpc209 = Creature:new {
 	objectName = "narhsallNpc209",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -4640,7 +4640,7 @@ narhsallNpc209 = Creature:new {
 
 narhsallNpc210 = Creature:new {
 	objectName = "narhsallNpc210",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -4662,7 +4662,7 @@ narhsallNpc210 = Creature:new {
 
 narhsallNpc211 = Creature:new {
 	objectName = "narhsallNpc211",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scoundrel",
 	combatFlags = 0,
@@ -4684,7 +4684,7 @@ narhsallNpc211 = Creature:new {
 
 narhsallNpc212 = Creature:new {
 	objectName = "narhsallNpc212",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -4706,7 +4706,7 @@ narhsallNpc212 = Creature:new {
 
 narhsallNpc213 = Creature:new {
 	objectName = "narhsallNpc213",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "pilot",
 	combatFlags = 0,
@@ -4728,7 +4728,7 @@ narhsallNpc213 = Creature:new {
 
 narhsallNpc214 = Creature:new {
 	objectName = "narhsallNpc214",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -4750,7 +4750,7 @@ narhsallNpc214 = Creature:new {
 
 narhsallNpc215 = Creature:new {
 	objectName = "narhsallNpc215",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -4772,7 +4772,7 @@ narhsallNpc215 = Creature:new {
 
 narhsallNpc216 = Creature:new {
 	objectName = "narhsallNpc216",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4794,7 +4794,7 @@ narhsallNpc216 = Creature:new {
 
 narhsallNpc217 = Creature:new {
 	objectName = "narhsallNpc217",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4816,7 +4816,7 @@ narhsallNpc217 = Creature:new {
 
 narhsallNpc218 = Creature:new {
 	objectName = "narhsallNpc218",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cll8_binary_load_lifter",
 	combatFlags = 0,
@@ -4838,7 +4838,7 @@ narhsallNpc218 = Creature:new {
 
 narhsallNpc219 = Creature:new {
 	objectName = "narhsallNpc219",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4860,7 +4860,7 @@ narhsallNpc219 = Creature:new {
 
 narhsallNpc220 = Creature:new {
 	objectName = "narhsallNpc220",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cll8_binary_load_lifter",
 	combatFlags = 0,
@@ -4882,7 +4882,7 @@ narhsallNpc220 = Creature:new {
 
 narhsallNpc221 = Creature:new {
 	objectName = "narhsallNpc221",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -4904,7 +4904,7 @@ narhsallNpc221 = Creature:new {
 
 narhsallNpc222 = Creature:new {
 	objectName = "narhsallNpc222",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "aakuan_champion",
 	combatFlags = 0,
@@ -4926,7 +4926,7 @@ narhsallNpc222 = Creature:new {
 
 narhsallNpc223 = Creature:new {
 	objectName = "narhsallNpc223",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_nitwit",
 	combatFlags = 0,
@@ -4948,7 +4948,7 @@ narhsallNpc223 = Creature:new {
 
 narhsallNpc224 = Creature:new {
 	objectName = "narhsallNpc224",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_constable",
 	combatFlags = 0,
@@ -4970,7 +4970,7 @@ narhsallNpc224 = Creature:new {
 
 narhsallNpc225 = Creature:new {
 	objectName = "narhsallNpc225",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -4992,7 +4992,7 @@ narhsallNpc225 = Creature:new {
 
 narhsallNpc226 = Creature:new {
 	objectName = "narhsallNpc226",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_investigator",
 	combatFlags = 0,
@@ -5014,7 +5014,7 @@ narhsallNpc226 = Creature:new {
 
 narhsallNpc227 = Creature:new {
 	objectName = "narhsallNpc227",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5036,7 +5036,7 @@ narhsallNpc227 = Creature:new {
 
 narhsallNpc228 = Creature:new {
 	objectName = "narhsallNpc228",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5058,7 +5058,7 @@ narhsallNpc228 = Creature:new {
 
 narhsallNpc229 = Creature:new {
 	objectName = "narhsallNpc229",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -5080,7 +5080,7 @@ narhsallNpc229 = Creature:new {
 
 narhsallNpc230 = Creature:new {
 	objectName = "narhsallNpc230",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -5102,7 +5102,7 @@ narhsallNpc230 = Creature:new {
 
 narhsallNpc231 = Creature:new {
 	objectName = "narhsallNpc231",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5124,7 +5124,7 @@ narhsallNpc231 = Creature:new {
 
 narhsallNpc232 = Creature:new {
 	objectName = "narhsallNpc232",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5146,7 +5146,7 @@ narhsallNpc232 = Creature:new {
 
 narhsallNpc233 = Creature:new {
 	objectName = "narhsallNpc233",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler",
 	combatFlags = 0,
@@ -5168,7 +5168,7 @@ narhsallNpc233 = Creature:new {
 
 narhsallNpc234 = Creature:new {
 	objectName = "narhsallNpc234",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -5190,7 +5190,7 @@ narhsallNpc234 = Creature:new {
 
 narhsallNpc235 = Creature:new {
 	objectName = "narhsallNpc235",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5212,7 +5212,7 @@ narhsallNpc235 = Creature:new {
 
 narhsallNpc236 = Creature:new {
 	objectName = "narhsallNpc236",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5234,7 +5234,7 @@ narhsallNpc236 = Creature:new {
 
 narhsallNpc237 = Creature:new {
 	objectName = "narhsallNpc237",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5256,7 +5256,7 @@ narhsallNpc237 = Creature:new {
 
 narhsallNpc238 = Creature:new {
 	objectName = "narhsallNpc238",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5278,7 +5278,7 @@ narhsallNpc238 = Creature:new {
 
 narhsallNpc239 = Creature:new {
 	objectName = "narhsallNpc239",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5300,7 +5300,7 @@ narhsallNpc239 = Creature:new {
 
 narhsallNpc240 = Creature:new {
 	objectName = "narhsallNpc240",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "zabrak_base_female",
 	combatFlags = 0,
@@ -5322,7 +5322,7 @@ narhsallNpc240 = Creature:new {
 
 narhsallNpc241 = Creature:new {
 	objectName = "narhsallNpc241",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -5344,7 +5344,7 @@ narhsallNpc241 = Creature:new {
 
 narhsallNpc242 = Creature:new {
 	objectName = "narhsallNpc242",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5366,7 +5366,7 @@ narhsallNpc242 = Creature:new {
 
 narhsallNpc243 = Creature:new {
 	objectName = "narhsallNpc243",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5388,7 +5388,7 @@ narhsallNpc243 = Creature:new {
 
 narhsallNpc244 = Creature:new {
 	objectName = "narhsallNpc244",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_constable",
 	combatFlags = 0,
@@ -5410,7 +5410,7 @@ narhsallNpc244 = Creature:new {
 
 narhsallNpc245 = Creature:new {
 	objectName = "narhsallNpc245",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -5432,7 +5432,7 @@ narhsallNpc245 = Creature:new {
 
 narhsallNpc246 = Creature:new {
 	objectName = "narhsallNpc246",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -5454,7 +5454,7 @@ narhsallNpc246 = Creature:new {
 
 narhsallNpc247 = Creature:new {
 	objectName = "narhsallNpc247",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_constable",
 	combatFlags = 0,
@@ -5476,7 +5476,7 @@ narhsallNpc247 = Creature:new {
 
 narhsallNpc248 = Creature:new {
 	objectName = "narhsallNpc248",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_constable",
 	combatFlags = 0,
@@ -5498,7 +5498,7 @@ narhsallNpc248 = Creature:new {
 
 narhsallNpc249 = Creature:new {
 	objectName = "narhsallNpc249",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5520,7 +5520,7 @@ narhsallNpc249 = Creature:new {
 
 narhsallNpc250 = Creature:new {
 	objectName = "narhsallNpc250",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -5542,7 +5542,7 @@ narhsallNpc250 = Creature:new {
 
 narhsallNpc251 = Creature:new {
 	objectName = "narhsallNpc251",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "sleemo_hoodlum",
 	combatFlags = 0,
@@ -5564,7 +5564,7 @@ narhsallNpc251 = Creature:new {
 
 narhsallNpc252 = Creature:new {
 	objectName = "narhsallNpc252",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "sleemo_hoodlum",
 	combatFlags = 0,
@@ -5586,7 +5586,7 @@ narhsallNpc252 = Creature:new {
 
 narhsallNpc253 = Creature:new {
 	objectName = "narhsallNpc253",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "sleemo_hoodlum",
 	combatFlags = 0,
@@ -5608,7 +5608,7 @@ narhsallNpc253 = Creature:new {
 
 narhsallNpc254 = Creature:new {
 	objectName = "narhsallNpc254",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "sleemo_hoodlum",
 	combatFlags = 0,
@@ -5630,7 +5630,7 @@ narhsallNpc254 = Creature:new {
 
 narhsallNpc255 = Creature:new {
 	objectName = "narhsallNpc255",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5652,7 +5652,7 @@ narhsallNpc255 = Creature:new {
 
 narhsallNpc256 = Creature:new {
 	objectName = "narhsallNpc256",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -5674,7 +5674,7 @@ narhsallNpc256 = Creature:new {
 
 narhsallNpc257 = Creature:new {
 	objectName = "narhsallNpc257",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_constable",
 	combatFlags = 0,
@@ -5696,7 +5696,7 @@ narhsallNpc257 = Creature:new {
 
 narhsallNpc258 = Creature:new {
 	objectName = "narhsallNpc258",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -5718,7 +5718,7 @@ narhsallNpc258 = Creature:new {
 
 narhsallNpc259 = Creature:new {
 	objectName = "narhsallNpc259",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5740,7 +5740,7 @@ narhsallNpc259 = Creature:new {
 
 narhsallNpc260 = Creature:new {
 	objectName = "narhsallNpc260",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "info_broker",
 	combatFlags = 0,
@@ -5762,7 +5762,7 @@ narhsallNpc260 = Creature:new {
 
 narhsallNpc261 = Creature:new {
 	objectName = "narhsallNpc261",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -5784,7 +5784,7 @@ narhsallNpc261 = Creature:new {
 
 narhsallNpc262 = Creature:new {
 	objectName = "narhsallNpc262",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r4",
 	combatFlags = 0,
@@ -5806,7 +5806,7 @@ narhsallNpc262 = Creature:new {
 
 narhsallNpc263 = Creature:new {
 	objectName = "narhsallNpc263",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -5828,7 +5828,7 @@ narhsallNpc263 = Creature:new {
 
 narhsallNpc264 = Creature:new {
 	objectName = "narhsallNpc264",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_base_male",
 	combatFlags = 0,
@@ -5850,7 +5850,7 @@ narhsallNpc264 = Creature:new {
 
 narhsallNpc265 = Creature:new {
 	objectName = "narhsallNpc265",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5872,7 +5872,7 @@ narhsallNpc265 = Creature:new {
 
 narhsallNpc266 = Creature:new {
 	objectName = "narhsallNpc266",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -5894,7 +5894,7 @@ narhsallNpc266 = Creature:new {
 
 narhsallNpc267 = Creature:new {
 	objectName = "narhsallNpc267",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "pilot",
 	combatFlags = 0,
@@ -5916,7 +5916,7 @@ narhsallNpc267 = Creature:new {
 
 narhsallNpc268 = Creature:new {
 	objectName = "narhsallNpc268",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5938,7 +5938,7 @@ narhsallNpc268 = Creature:new {
 
 narhsallNpc269 = Creature:new {
 	objectName = "narhsallNpc269",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5960,7 +5960,7 @@ narhsallNpc269 = Creature:new {
 
 narhsallNpc270 = Creature:new {
 	objectName = "narhsallNpc270",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5982,7 +5982,7 @@ narhsallNpc270 = Creature:new {
 
 narhsallNpc271 = Creature:new {
 	objectName = "narhsallNpc271",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_investigator",
 	combatFlags = 0,
@@ -6004,7 +6004,7 @@ narhsallNpc271 = Creature:new {
 
 narhsallNpc272 = Creature:new {
 	objectName = "narhsallNpc272",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_captain",
 	combatFlags = 0,
@@ -6026,7 +6026,7 @@ narhsallNpc272 = Creature:new {
 
 narhsallNpc273 = Creature:new {
 	objectName = "narhsallNpc273",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,
@@ -6048,7 +6048,7 @@ narhsallNpc273 = Creature:new {
 
 narhsallNpc274 = Creature:new {
 	objectName = "narhsallNpc274",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -6070,7 +6070,7 @@ narhsallNpc274 = Creature:new {
 
 narhsallNpc275 = Creature:new {
 	objectName = "narhsallNpc275",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -6092,7 +6092,7 @@ narhsallNpc275 = Creature:new {
 
 narhsallNpc276 = Creature:new {
 	objectName = "narhsallNpc276",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -6114,7 +6114,7 @@ narhsallNpc276 = Creature:new {
 
 narhsallNpc277 = Creature:new {
 	objectName = "narhsallNpc277",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "zabrak_base_male",
 	combatFlags = 0,
@@ -6136,7 +6136,7 @@ narhsallNpc277 = Creature:new {
 
 narhsallNpc278 = Creature:new {
 	objectName = "narhsallNpc278",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "surgical_droid_21b",
 	combatFlags = 0,

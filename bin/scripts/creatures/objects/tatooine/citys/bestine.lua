@@ -42,7 +42,7 @@
 
 bestineNpc1 = Creature:new {
 	objectName = "bestineNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner_human_male",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ bestineNpc1 = Creature:new {
 
 bestineNpc2 = Creature:new {
 	objectName = "bestineNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_command_security_guard",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ bestineNpc2 = Creature:new {
 
 bestineNpc4 = Creature:new {
 	objectName = "bestineNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ bestineNpc4 = Creature:new {
 
 bestineNpc5 = Creature:new {
 	objectName = "bestineNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ bestineNpc5 = Creature:new {
 
 bestineNpc6 = Creature:new {
 	objectName = "bestineNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ bestineNpc6 = Creature:new {
 
 bestineNpc7 = Creature:new {
 	objectName = "bestineNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_base_female",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ bestineNpc7 = Creature:new {
 
 bestineNpc8 = Creature:new {
 	objectName = "bestineNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "trandoshan_base_female",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ bestineNpc8 = Creature:new {
 
 bestineNpc9 = Creature:new {
 	objectName = "bestineNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ bestineNpc9 = Creature:new {
 
 bestineNpc10 = Creature:new {
 	objectName = "bestineNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ bestineNpc10 = Creature:new {
 
 bestineNpc11 = Creature:new {
 	objectName = "bestineNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ bestineNpc11 = Creature:new {
 
 bestineNpc12 = Creature:new {
 	objectName = "bestineNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ bestineNpc12 = Creature:new {
 
 bestineNpc13 = Creature:new {
 	objectName = "bestineNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ bestineNpc13 = Creature:new {
 
 bestineNpc14 = Creature:new {
 	objectName = "bestineNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ bestineNpc14 = Creature:new {
 
 bestineNpc15 = Creature:new {
 	objectName = "bestineNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "wlinc_tchrr",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ bestineNpc15 = Creature:new {
 
 bestineNpc16 = Creature:new {
 	objectName = "bestineNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gert_talnin",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ bestineNpc16 = Creature:new {
 
 bestineNpc17 = Creature:new {
 	objectName = "bestineNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_storm_commando",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ bestineNpc17 = Creature:new {
 
 bestineNpc18 = Creature:new {
 	objectName = "bestineNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ bestineNpc18 = Creature:new {
 
 bestineNpc19 = Creature:new {
 	objectName = "bestineNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ bestineNpc19 = Creature:new {
 
 bestineNpc20 = Creature:new {
 	objectName = "bestineNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ bestineNpc20 = Creature:new {
 
 bestineNpc21 = Creature:new {
 	objectName = "bestineNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ bestineNpc21 = Creature:new {
 
 bestineNpc22 = Creature:new {
 	objectName = "bestineNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "imperial_colonel",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ bestineNpc22 = Creature:new {
 
 bestineNpc23 = Creature:new {
 	objectName = "bestineNpc23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ bestineNpc23 = Creature:new {
 
 bestineNpc24 = Creature:new {
 	objectName = "bestineNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ bestineNpc24 = Creature:new {
 
 bestineNpc25 = Creature:new {
 	objectName = "bestineNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ bestineNpc25 = Creature:new {
 
 bestineNpc26 = Creature:new {
 	objectName = "bestineNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ bestineNpc26 = Creature:new {
 
 bestineNpc27 = Creature:new {
 	objectName = "bestineNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "imperial_army_captain",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ bestineNpc27 = Creature:new {
 
 bestineNpc29 = Creature:new {
 	objectName = "bestineNpc29",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ bestineNpc29 = Creature:new {
 
 bestineNpc30 = Creature:new {
 	objectName = "bestineNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ bestineNpc30 = Creature:new {
 
 bestineNpc31 = Creature:new {
 	objectName = "bestineNpc31",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_dark_trooper",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ bestineNpc31 = Creature:new {
 
 bestineNpc34 = Creature:new {
 	objectName = "bestineNpc34",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_command_security_guard",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ bestineNpc34 = Creature:new {
 
 bestineNpc35 = Creature:new {
 	objectName = "bestineNpc35",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bartender",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ bestineNpc35 = Creature:new {
 
 bestineNpc36 = Creature:new {
 	objectName = "bestineNpc36",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_male",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ bestineNpc36 = Creature:new {
 
 bestineNpc37 = Creature:new {
 	objectName = "bestineNpc37",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_dark_trooper",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ bestineNpc37 = Creature:new {
 
 bestineNpc39 = Creature:new {
 	objectName = "bestineNpc39",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ bestineNpc39 = Creature:new {
 
 bestineNpc40 = Creature:new {
 	objectName = "bestineNpc40",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cll8_binary_load_lifter",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ bestineNpc40 = Creature:new {
 
 bestineNpc41 = Creature:new {
 	objectName = "bestineNpc41",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -834,7 +834,7 @@ bestineNpc41 = Creature:new {
 
 bestineNpc42 = Creature:new {
 	objectName = "bestineNpc42",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_storm_commando",
 	combatFlags = 0,
@@ -856,7 +856,7 @@ bestineNpc42 = Creature:new {
 
 bestineNpc43 = Creature:new {
 	objectName = "bestineNpc43",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -878,7 +878,7 @@ bestineNpc43 = Creature:new {
 
 bestineNpc44 = Creature:new {
 	objectName = "bestineNpc44",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -900,7 +900,7 @@ bestineNpc44 = Creature:new {
 
 bestineNpc45 = Creature:new {
 	objectName = "bestineNpc45",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -922,7 +922,7 @@ bestineNpc45 = Creature:new {
 
 bestineNpc46 = Creature:new {
 	objectName = "bestineNpc46",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -944,7 +944,7 @@ bestineNpc46 = Creature:new {
 
 bestineNpc47 = Creature:new {
 	objectName = "bestineNpc47",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -966,7 +966,7 @@ bestineNpc47 = Creature:new {
 
 bestineNpc48 = Creature:new {
 	objectName = "bestineNpc48",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -988,7 +988,7 @@ bestineNpc48 = Creature:new {
 
 bestineNpc49 = Creature:new {
 	objectName = "bestineNpc49",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -1010,7 +1010,7 @@ bestineNpc49 = Creature:new {
 
 bestineNpc50 = Creature:new {
 	objectName = "bestineNpc50",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -1032,7 +1032,7 @@ bestineNpc50 = Creature:new {
 
 bestineNpc51 = Creature:new {
 	objectName = "bestineNpc51",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -1054,7 +1054,7 @@ bestineNpc51 = Creature:new {
 
 bestineNpc52 = Creature:new {
 	objectName = "bestineNpc52",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -1076,7 +1076,7 @@ bestineNpc52 = Creature:new {
 
 bestineNpc53 = Creature:new {
 	objectName = "bestineNpc53",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -1098,7 +1098,7 @@ bestineNpc53 = Creature:new {
 
 bestineNpc54 = Creature:new {
 	objectName = "bestineNpc54",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -1120,7 +1120,7 @@ bestineNpc54 = Creature:new {
 
 bestineNpc55 = Creature:new {
 	objectName = "bestineNpc55",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "zabrak_base_male",
 	combatFlags = 0,
@@ -1142,7 +1142,7 @@ bestineNpc55 = Creature:new {
 
 bestineNpc56 = Creature:new {
 	objectName = "bestineNpc56",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "valarian_swooper_leader",
 	combatFlags = 0,
@@ -1164,7 +1164,7 @@ bestineNpc56 = Creature:new {
 
 bestineNpc57 = Creature:new {
 	objectName = "bestineNpc57",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1186,7 +1186,7 @@ bestineNpc57 = Creature:new {
 
 bestineNpc58 = Creature:new {
 	objectName = "bestineNpc58",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -1208,7 +1208,7 @@ bestineNpc58 = Creature:new {
 
 bestineNpc59 = Creature:new {
 	objectName = "bestineNpc59",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "hunter",
 	combatFlags = 0,
@@ -1230,7 +1230,7 @@ bestineNpc59 = Creature:new {
 
 bestineNpc60 = Creature:new {
 	objectName = "bestineNpc60",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1252,7 +1252,7 @@ bestineNpc60 = Creature:new {
 
 bestineNpc61 = Creature:new {
 	objectName = "bestineNpc61",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "coa3_tactical_imperial",
 	combatFlags = 0,
@@ -1274,7 +1274,7 @@ bestineNpc61 = Creature:new {
 
 bestineNpc62 = Creature:new {
 	objectName = "bestineNpc62",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "valarian_swooper_leader",
 	combatFlags = 0,
@@ -1296,7 +1296,7 @@ bestineNpc62 = Creature:new {
 
 bestineNpc63 = Creature:new {
 	objectName = "bestineNpc63",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "valarian_swooper_leader",
 	combatFlags = 0,
@@ -1318,7 +1318,7 @@ bestineNpc63 = Creature:new {
 
 bestineNpc64 = Creature:new {
 	objectName = "bestineNpc64",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1340,7 +1340,7 @@ bestineNpc64 = Creature:new {
 
 bestineNpc65 = Creature:new {
 	objectName = "bestineNpc65",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -1362,7 +1362,7 @@ bestineNpc65 = Creature:new {
 
 bestineNpc66 = Creature:new {
 	objectName = "bestineNpc66",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1384,7 +1384,7 @@ bestineNpc66 = Creature:new {
 
 bestineNpc67 = Creature:new {
 	objectName = "bestineNpc67",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1406,7 +1406,7 @@ bestineNpc67 = Creature:new {
 
 bestineNpc68 = Creature:new {
 	objectName = "bestineNpc68",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_dark_trooper",
 	combatFlags = 0,
@@ -1428,7 +1428,7 @@ bestineNpc68 = Creature:new {
 
 bestineNpc69 = Creature:new {
 	objectName = "bestineNpc69",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1450,7 +1450,7 @@ bestineNpc69 = Creature:new {
 
 bestineNpc70 = Creature:new {
 	objectName = "bestineNpc70",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gunham",
 	combatFlags = 0,
@@ -1472,7 +1472,7 @@ bestineNpc70 = Creature:new {
 
 bestineNpc71 = Creature:new {
 	objectName = "bestineNpc71",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "coa2_imperial_coordinator",
 	combatFlags = 0,
@@ -1494,7 +1494,7 @@ bestineNpc71 = Creature:new {
 
 bestineNpc72 = Creature:new {
 	objectName = "bestineNpc72",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_dark_trooper",
 	combatFlags = 0,
@@ -1516,7 +1516,7 @@ bestineNpc72 = Creature:new {
 
 bestineNpc73 = Creature:new {
 	objectName = "bestineNpc73",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_storm_commando",
 	combatFlags = 0,
@@ -1538,7 +1538,7 @@ bestineNpc73 = Creature:new {
 
 bestineNpc74 = Creature:new {
 	objectName = "bestineNpc74",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "indigo_siyan",
 	combatFlags = 0,
@@ -1560,7 +1560,7 @@ bestineNpc74 = Creature:new {
 
 bestineNpc75 = Creature:new {
 	objectName = "bestineNpc75",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "sean_trenwell",
 	combatFlags = 0,
@@ -1582,7 +1582,7 @@ bestineNpc75 = Creature:new {
 
 bestineNpc76 = Creature:new {
 	objectName = "bestineNpc76",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "oberhaur",
 	combatFlags = 0,
@@ -1604,7 +1604,7 @@ bestineNpc76 = Creature:new {
 
 bestineNpc77 = Creature:new {
 	objectName = "bestineNpc77",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -1626,7 +1626,7 @@ bestineNpc77 = Creature:new {
 
 bestineNpc78 = Creature:new {
 	objectName = "bestineNpc78",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "keanna_likyna",
 	combatFlags = 0,
@@ -1648,7 +1648,7 @@ bestineNpc78 = Creature:new {
 
 bestineNpc79 = Creature:new {
 	objectName = "bestineNpc79",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -1670,7 +1670,7 @@ bestineNpc79 = Creature:new {
 
 bestineNpc80 = Creature:new {
 	objectName = "bestineNpc80",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_base_male",
 	combatFlags = 0,
@@ -1692,7 +1692,7 @@ bestineNpc80 = Creature:new {
 
 bestineNpc81 = Creature:new {
 	objectName = "bestineNpc81",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "prefect_talmont",
 	combatFlags = 0,
@@ -1714,7 +1714,7 @@ bestineNpc81 = Creature:new {
 
 bestineNpc82 = Creature:new {
 	objectName = "bestineNpc82",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -1736,7 +1736,7 @@ bestineNpc82 = Creature:new {
 
 bestineNpc83 = Creature:new {
 	objectName = "bestineNpc83",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "moncal_base_female",
 	combatFlags = 0,
@@ -1758,7 +1758,7 @@ bestineNpc83 = Creature:new {
 
 bestineNpc84 = Creature:new {
 	objectName = "bestineNpc84",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -1780,7 +1780,7 @@ bestineNpc84 = Creature:new {
 
 bestineNpc85 = Creature:new {
 	objectName = "bestineNpc85",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -1802,7 +1802,7 @@ bestineNpc85 = Creature:new {
 
 bestineNpc86 = Creature:new {
 	objectName = "bestineNpc86",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_female",
 	combatFlags = 0,
@@ -1824,7 +1824,7 @@ bestineNpc86 = Creature:new {
 
 bestineNpc87 = Creature:new {
 	objectName = "bestineNpc87",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "zabrak_base_male",
 	combatFlags = 0,
@@ -1846,7 +1846,7 @@ bestineNpc87 = Creature:new {
 
 bestineNpc88 = Creature:new {
 	objectName = "bestineNpc88",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -1868,7 +1868,7 @@ bestineNpc88 = Creature:new {
 
 bestineNpc89 = Creature:new {
 	objectName = "bestineNpc89",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1890,7 +1890,7 @@ bestineNpc89 = Creature:new {
 
 bestineNpc90 = Creature:new {
 	objectName = "bestineNpc90",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -1912,7 +1912,7 @@ bestineNpc90 = Creature:new {
 
 bestineNpc91 = Creature:new {
 	objectName = "bestineNpc91",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -1934,7 +1934,7 @@ bestineNpc91 = Creature:new {
 
 bestineNpc92 = Creature:new {
 	objectName = "bestineNpc92",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1956,7 +1956,7 @@ bestineNpc92 = Creature:new {
 
 bestineNpc93 = Creature:new {
 	objectName = "bestineNpc93",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -1978,7 +1978,7 @@ bestineNpc93 = Creature:new {
 
 bestineNpc94 = Creature:new {
 	objectName = "bestineNpc94",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_base_male",
 	combatFlags = 0,
@@ -2000,7 +2000,7 @@ bestineNpc94 = Creature:new {
 
 bestineNpc95 = Creature:new {
 	objectName = "bestineNpc95",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2022,7 +2022,7 @@ bestineNpc95 = Creature:new {
 
 bestineNpc96 = Creature:new {
 	objectName = "bestineNpc96",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2044,7 +2044,7 @@ bestineNpc96 = Creature:new {
 
 bestineNpc97 = Creature:new {
 	objectName = "bestineNpc97",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2066,7 +2066,7 @@ bestineNpc97 = Creature:new {
 
 bestineNpc98 = Creature:new {
 	objectName = "bestineNpc98",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -2088,7 +2088,7 @@ bestineNpc98 = Creature:new {
 
 bestineNpc99 = Creature:new {
 	objectName = "bestineNpc99",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "freelance_pilot",
 	combatFlags = 0,
@@ -2110,7 +2110,7 @@ bestineNpc99 = Creature:new {
 
 bestineNpc100 = Creature:new {
 	objectName = "bestineNpc100",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "dim_u_cleric",
 	combatFlags = 0,
@@ -2132,7 +2132,7 @@ bestineNpc100 = Creature:new {
 
 bestineNpc101 = Creature:new {
 	objectName = "bestineNpc101",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "darklighter_guard",
 	combatFlags = 0,
@@ -2154,7 +2154,7 @@ bestineNpc101 = Creature:new {
 
 bestineNpc102 = Creature:new {
 	objectName = "bestineNpc102",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_male",
 	combatFlags = 0,
@@ -2176,7 +2176,7 @@ bestineNpc102 = Creature:new {
 
 bestineNpc103 = Creature:new {
 	objectName = "bestineNpc103",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gil_burtin",
 	combatFlags = 0,
@@ -2198,7 +2198,7 @@ bestineNpc103 = Creature:new {
 
 bestineNpc104 = Creature:new {
 	objectName = "bestineNpc104",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ty_vila",
 	combatFlags = 0,
@@ -2220,7 +2220,7 @@ bestineNpc104 = Creature:new {
 
 bestineNpc105 = Creature:new {
 	objectName = "bestineNpc105",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "spacer",
 	combatFlags = 0,
@@ -2242,7 +2242,7 @@ bestineNpc105 = Creature:new {
 
 bestineNpc106 = Creature:new {
 	objectName = "bestineNpc106",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -2264,7 +2264,7 @@ bestineNpc106 = Creature:new {
 
 bestineNpc107 = Creature:new {
 	objectName = "bestineNpc107",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_command_security_guard",
 	combatFlags = 0,
@@ -2286,7 +2286,7 @@ bestineNpc107 = Creature:new {
 
 bestineNpc109 = Creature:new {
 	objectName = "bestineNpc109",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2308,7 +2308,7 @@ bestineNpc109 = Creature:new {
 
 bestineNpc110 = Creature:new {
 	objectName = "bestineNpc110",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -2330,7 +2330,7 @@ bestineNpc110 = Creature:new {
 
 bestineNpc111 = Creature:new {
 	objectName = "bestineNpc111",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_sniper",
 	combatFlags = 0,
@@ -2352,7 +2352,7 @@ bestineNpc111 = Creature:new {
 
 bestineNpc112 = Creature:new {
 	objectName = "bestineNpc112",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2374,7 +2374,7 @@ bestineNpc112 = Creature:new {
 
 bestineNpc113 = Creature:new {
 	objectName = "bestineNpc113",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -2396,7 +2396,7 @@ bestineNpc113 = Creature:new {
 
 bestineNpc114 = Creature:new {
 	objectName = "bestineNpc114",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -2418,7 +2418,7 @@ bestineNpc114 = Creature:new {
 
 bestineNpc115 = Creature:new {
 	objectName = "bestineNpc115",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2440,7 +2440,7 @@ bestineNpc115 = Creature:new {
 
 bestineNpc116 = Creature:new {
 	objectName = "bestineNpc116",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2462,7 +2462,7 @@ bestineNpc116 = Creature:new {
 
 bestineNpc117 = Creature:new {
 	objectName = "bestineNpc117",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2484,7 +2484,7 @@ bestineNpc117 = Creature:new {
 
 bestineNpc118 = Creature:new {
 	objectName = "bestineNpc118",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2506,7 +2506,7 @@ bestineNpc118 = Creature:new {
 
 bestineNpc119 = Creature:new {
 	objectName = "bestineNpc119",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -2528,7 +2528,7 @@ bestineNpc119 = Creature:new {
 
 bestineNpc120 = Creature:new {
 	objectName = "bestineNpc120",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r4",
 	combatFlags = 0,
@@ -2550,7 +2550,7 @@ bestineNpc120 = Creature:new {
 
 bestineNpc121 = Creature:new {
 	objectName = "bestineNpc121",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "trandoshan_base_female",
 	combatFlags = 0,
@@ -2572,7 +2572,7 @@ bestineNpc121 = Creature:new {
 
 bestineNpc122 = Creature:new {
 	objectName = "bestineNpc122",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2594,7 +2594,7 @@ bestineNpc122 = Creature:new {
 
 bestineNpc123 = Creature:new {
 	objectName = "bestineNpc123",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -2616,7 +2616,7 @@ bestineNpc123 = Creature:new {
 
 bestineNpc124 = Creature:new {
 	objectName = "bestineNpc124",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2638,7 +2638,7 @@ bestineNpc124 = Creature:new {
 
 bestineNpc125 = Creature:new {
 	objectName = "bestineNpc125",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2660,7 +2660,7 @@ bestineNpc125 = Creature:new {
 
 bestineNpc126 = Creature:new {
 	objectName = "bestineNpc126",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2682,7 +2682,7 @@ bestineNpc126 = Creature:new {
 
 bestineNpc127 = Creature:new {
 	objectName = "bestineNpc127",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -2704,7 +2704,7 @@ bestineNpc127 = Creature:new {
 
 bestineNpc128 = Creature:new {
 	objectName = "bestineNpc128",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2726,7 +2726,7 @@ bestineNpc128 = Creature:new {
 
 bestineNpc130 = Creature:new {
 	objectName = "bestineNpc130",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2748,7 +2748,7 @@ bestineNpc130 = Creature:new {
 
 bestineNpc131 = Creature:new {
 	objectName = "bestineNpc131",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2770,7 +2770,7 @@ bestineNpc131 = Creature:new {
 
 bestineNpc132 = Creature:new {
 	objectName = "bestineNpc132",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -2792,7 +2792,7 @@ bestineNpc132 = Creature:new {
 
 bestineNpc133 = Creature:new {
 	objectName = "bestineNpc133",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_clan_warchief",
 	combatFlags = 0,
@@ -2814,7 +2814,7 @@ bestineNpc133 = Creature:new {
 
 bestineNpc134 = Creature:new {
 	objectName = "bestineNpc134",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -2836,7 +2836,7 @@ bestineNpc134 = Creature:new {
 
 bestineNpc135 = Creature:new {
 	objectName = "bestineNpc135",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2858,7 +2858,7 @@ bestineNpc135 = Creature:new {
 
 bestineNpc136 = Creature:new {
 	objectName = "bestineNpc136",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -2880,7 +2880,7 @@ bestineNpc136 = Creature:new {
 
 bestineNpc137 = Creature:new {
 	objectName = "bestineNpc137",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -2902,7 +2902,7 @@ bestineNpc137 = Creature:new {
 
 bestineNpc138 = Creature:new {
 	objectName = "bestineNpc138",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -2924,7 +2924,7 @@ bestineNpc138 = Creature:new {
 
 bestineNpc139 = Creature:new {
 	objectName = "bestineNpc139",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -2946,7 +2946,7 @@ bestineNpc139 = Creature:new {
 
 bestineNpc140 = Creature:new {
 	objectName = "bestineNpc140",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "moncal_base_female",
 	combatFlags = 0,
@@ -2968,7 +2968,7 @@ bestineNpc140 = Creature:new {
 
 bestineNpc147 = Creature:new {
 	objectName = "bestineNpc147",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -2990,7 +2990,7 @@ bestineNpc147 = Creature:new {
 
 bestineNpc148 = Creature:new {
 	objectName = "bestineNpc148",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -3012,7 +3012,7 @@ bestineNpc148 = Creature:new {
 
 bestineNpc149 = Creature:new {
 	objectName = "bestineNpc149",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -3034,7 +3034,7 @@ bestineNpc149 = Creature:new {
 
 bestineNpc150 = Creature:new {
 	objectName = "bestineNpc150",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_dark_trooper",
 	combatFlags = 0,
@@ -3056,7 +3056,7 @@ bestineNpc150 = Creature:new {
 
 bestineNpc151 = Creature:new {
 	objectName = "bestineNpc151",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_dark_trooper",
 	combatFlags = 0,
@@ -3078,7 +3078,7 @@ bestineNpc151 = Creature:new {
 
 bestineNpc158 = Creature:new {
 	objectName = "bestineNpc158",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_sand_trooper",
 	combatFlags = 0,
@@ -3100,7 +3100,7 @@ bestineNpc158 = Creature:new {
 
 bestineNpc159 = Creature:new {
 	objectName = "bestineNpc159",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3122,7 +3122,7 @@ bestineNpc159 = Creature:new {
 
 bestineNpc188 = Creature:new {
 	objectName = "bestineNpc188",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "tatooine_herald_02",
 	combatFlags = 0,
@@ -3144,7 +3144,7 @@ bestineNpc188 = Creature:new {
 
 bestineNpc191 = Creature:new {
 	objectName = "bestineNpc191",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -3166,7 +3166,7 @@ bestineNpc191 = Creature:new {
 
 bestineNpc192 = Creature:new {
 	objectName = "bestineNpc192",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -3188,7 +3188,7 @@ bestineNpc192 = Creature:new {
 
 bestineNpc193 = Creature:new {
 	objectName = "bestineNpc193",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3210,7 +3210,7 @@ bestineNpc193 = Creature:new {
 
 bestineNpc194 = Creature:new {
 	objectName = "bestineNpc194",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_command_security_guard",
 	combatFlags = 0,
@@ -3232,7 +3232,7 @@ bestineNpc194 = Creature:new {
 
 bestineNpc197 = Creature:new {
 	objectName = "bestineNpc197",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -3254,7 +3254,7 @@ bestineNpc197 = Creature:new {
 
 bestineNpc198 = Creature:new {
 	objectName = "bestineNpc198",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "dim_u_priestess",
 	combatFlags = 0,
@@ -3276,7 +3276,7 @@ bestineNpc198 = Creature:new {
 
 bestineNpc199 = Creature:new {
 	objectName = "bestineNpc199",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -3298,7 +3298,7 @@ bestineNpc199 = Creature:new {
 
 bestineNpc200 = Creature:new {
 	objectName = "bestineNpc200",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rockmite",
 	combatFlags = 0,
@@ -3320,7 +3320,7 @@ bestineNpc200 = Creature:new {
 
 bestineNpc219 = Creature:new {
 	objectName = "bestineNpc219",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "akal_colzet",
 	combatFlags = 0,
@@ -3342,7 +3342,7 @@ bestineNpc219 = Creature:new {
 
 bestineNpc220 = Creature:new {
 	objectName = "bestineNpc220",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -3364,7 +3364,7 @@ bestineNpc220 = Creature:new {
 
 bestineNpc221 = Creature:new {
 	objectName = "bestineNpc221",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "coa3_information_imperial",
 	combatFlags = 0,
@@ -3386,7 +3386,7 @@ bestineNpc221 = Creature:new {
 
 bestineNpc222 = Creature:new {
 	objectName = "bestineNpc222",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crafting_contractor",
 	combatFlags = 0,
@@ -3408,7 +3408,7 @@ bestineNpc222 = Creature:new {
 
 bestineNpc223 = Creature:new {
 	objectName = "bestineNpc223",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "moncal_base_male",
 	combatFlags = 0,
@@ -3430,7 +3430,7 @@ bestineNpc223 = Creature:new {
 
 bestineNpc224 = Creature:new {
 	objectName = "bestineNpc224",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "orphan_kreetle",
 	combatFlags = 0,
@@ -3452,7 +3452,7 @@ bestineNpc224 = Creature:new {
 
 bestineNpc225 = Creature:new {
 	objectName = "bestineNpc225",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "orphan_kreetle",
 	combatFlags = 0,
@@ -3474,7 +3474,7 @@ bestineNpc225 = Creature:new {
 
 bestineNpc226 = Creature:new {
 	objectName = "bestineNpc226",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "orphan_kreetle",
 	combatFlags = 0,
@@ -3496,7 +3496,7 @@ bestineNpc226 = Creature:new {
 
 bestineNpc227 = Creature:new {
 	objectName = "bestineNpc227",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "orphan_kreetle",
 	combatFlags = 0,

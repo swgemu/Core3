@@ -42,7 +42,7 @@
 
 yavinMiningOutpostNpc1 = Creature:new {
 	objectName = "yavinMiningOutpostNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ yavinMiningOutpostNpc1 = Creature:new {
 
 yavinMiningOutpostNpc2 = Creature:new {
 	objectName = "yavinMiningOutpostNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ yavinMiningOutpostNpc2 = Creature:new {
 
 yavinMiningOutpostNpc3 = Creature:new {
 	objectName = "yavinMiningOutpostNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ yavinMiningOutpostNpc3 = Creature:new {
 
 yavinMiningOutpostNpc4 = Creature:new {
 	objectName = "yavinMiningOutpostNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ yavinMiningOutpostNpc4 = Creature:new {
 
 yavinMiningOutpostNpc5 = Creature:new {
 	objectName = "yavinMiningOutpostNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ yavinMiningOutpostNpc5 = Creature:new {
 
 yavinMiningOutpostNpc6 = Creature:new {
 	objectName = "yavinMiningOutpostNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ yavinMiningOutpostNpc6 = Creature:new {
 
 yavinMiningOutpostNpc7 = Creature:new {
 	objectName = "yavinMiningOutpostNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ yavinMiningOutpostNpc7 = Creature:new {
 
 yavinMiningOutpostNpc8 = Creature:new {
 	objectName = "yavinMiningOutpostNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ yavinMiningOutpostNpc8 = Creature:new {
 
 yavinMiningOutpostNpc9 = Creature:new {
 	objectName = "yavinMiningOutpostNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ yavinMiningOutpostNpc9 = Creature:new {
 
 yavinMiningOutpostNpc10 = Creature:new {
 	objectName = "yavinMiningOutpostNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ yavinMiningOutpostNpc10 = Creature:new {
 
 yavinMiningOutpostNpc11 = Creature:new {
 	objectName = "yavinMiningOutpostNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ yavinMiningOutpostNpc11 = Creature:new {
 
 yavinMiningOutpostNpc12 = Creature:new {
 	objectName = "yavinMiningOutpostNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ yavinMiningOutpostNpc12 = Creature:new {
 
 yavinMiningOutpostNpc13 = Creature:new {
 	objectName = "yavinMiningOutpostNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ yavinMiningOutpostNpc13 = Creature:new {
 
 yavinMiningOutpostNpc14 = Creature:new {
 	objectName = "yavinMiningOutpostNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ yavinMiningOutpostNpc14 = Creature:new {
 
 yavinMiningOutpostNpc15 = Creature:new {
 	objectName = "yavinMiningOutpostNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ yavinMiningOutpostNpc15 = Creature:new {
 
 yavinMiningOutpostNpc16 = Creature:new {
 	objectName = "yavinMiningOutpostNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,

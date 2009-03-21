@@ -223,6 +223,7 @@ am_core3_OBJECTS = $(am__objects_1) \
 	DraftSchematicImplementation.$(OBJEXT) \
 	DraftSchematicIngredientImplementation.$(OBJEXT) \
 	DraftSchematicValuesImplementation.$(OBJEXT) \
+	ManufactureSchematicImplementation.$(OBJEXT) \
 	GroupObjectImplementation.$(OBJEXT) \
 	GuildImplementation.$(OBJEXT) \
 	FactoryObjectImplementation.$(OBJEXT) \
@@ -243,6 +244,7 @@ am_core3_OBJECTS = $(am__objects_1) \
 	SuiBoxImplementation.$(OBJEXT) \
 	SuiTransferBoxImplementation.$(OBJEXT) \
 	SceneObjectImplementation.$(OBJEXT) ContainerObject.$(OBJEXT) \
+	CustomizationVariables.$(OBJEXT) \
 	ShipObjectImplementation.$(OBJEXT) \
 	StaticObjectImplementation.$(OBJEXT) \
 	AttachmentImplementation.$(OBJEXT) \
@@ -259,7 +261,6 @@ am_core3_OBJECTS = $(am__objects_1) \
 	FoodImplementation.$(OBJEXT) DrinkImplementation.$(OBJEXT) \
 	ContainerImplementation.$(OBJEXT) \
 	InventoryImplementation.$(OBJEXT) \
-	CustomizationVariables.$(OBJEXT) \
 	ComponentImplementation.$(OBJEXT) \
 	ArmorComponentImplementation.$(OBJEXT) \
 	CraftingStationImplementation.$(OBJEXT) \
@@ -679,6 +680,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/draftschematic/DraftSchematicImplementation.cpp \
 		server/zone/objects/draftschematic/DraftSchematicIngredientImplementation.cpp \
 		server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp \
+		server/zone/objects/manufacture/ManufactureSchematicImplementation.cpp \
 		server/zone/objects/group/GroupObjectImplementation.cpp \
 		server/zone/objects/guild/GuildImplementation.cpp \
 		server/zone/objects/installation/factory/FactoryObjectImplementation.cpp \
@@ -701,6 +703,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/scene/ContainerObject.cpp \
+		server/zone/objects/scene/CustomizationVariables.cpp \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \
 		server/zone/objects/static/StaticObjectImplementation.cpp \
 		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
@@ -718,7 +721,6 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/consumable/drink/DrinkImplementation.cpp \
 		server/zone/objects/tangible/ContainerImplementation.cpp \
 		server/zone/objects/tangible/InventoryImplementation.cpp \
-		server/zone/objects/tangible/CustomizationVariables.cpp \
 		server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp \
 		server/zone/objects/tangible/crafting/component/armorcomponent/ArmorComponentImplementation.cpp \
 		server/zone/objects/tangible/crafting/CraftingStationImplementation.cpp \
@@ -1021,6 +1023,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LootTableManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LugjackMachine.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ManufactureSchematic.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ManufactureSchematicImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MeleeWeapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MissionBag.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MissionManager.Po@am__quote@
@@ -4586,6 +4589,20 @@ DraftSchematicValuesImplementation.obj: server/zone/objects/draftschematic/Draft
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicValuesImplementation.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp'; fi`
 
+ManufactureSchematicImplementation.o: server/zone/objects/manufacture/ManufactureSchematicImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ManufactureSchematicImplementation.o -MD -MP -MF $(DEPDIR)/ManufactureSchematicImplementation.Tpo -c -o ManufactureSchematicImplementation.o `test -f 'server/zone/objects/manufacture/ManufactureSchematicImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/manufacture/ManufactureSchematicImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ManufactureSchematicImplementation.Tpo $(DEPDIR)/ManufactureSchematicImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/manufacture/ManufactureSchematicImplementation.cpp' object='ManufactureSchematicImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ManufactureSchematicImplementation.o `test -f 'server/zone/objects/manufacture/ManufactureSchematicImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/manufacture/ManufactureSchematicImplementation.cpp
+
+ManufactureSchematicImplementation.obj: server/zone/objects/manufacture/ManufactureSchematicImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ManufactureSchematicImplementation.obj -MD -MP -MF $(DEPDIR)/ManufactureSchematicImplementation.Tpo -c -o ManufactureSchematicImplementation.obj `if test -f 'server/zone/objects/manufacture/ManufactureSchematicImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/manufacture/ManufactureSchematicImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/manufacture/ManufactureSchematicImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ManufactureSchematicImplementation.Tpo $(DEPDIR)/ManufactureSchematicImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/manufacture/ManufactureSchematicImplementation.cpp' object='ManufactureSchematicImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ManufactureSchematicImplementation.obj `if test -f 'server/zone/objects/manufacture/ManufactureSchematicImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/manufacture/ManufactureSchematicImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/manufacture/ManufactureSchematicImplementation.cpp'; fi`
+
 GroupObjectImplementation.o: server/zone/objects/group/GroupObjectImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT GroupObjectImplementation.o -MD -MP -MF $(DEPDIR)/GroupObjectImplementation.Tpo -c -o GroupObjectImplementation.o `test -f 'server/zone/objects/group/GroupObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/group/GroupObjectImplementation.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/GroupObjectImplementation.Tpo $(DEPDIR)/GroupObjectImplementation.Po
@@ -4894,6 +4911,20 @@ ContainerObject.obj: server/zone/objects/scene/ContainerObject.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ContainerObject.obj `if test -f 'server/zone/objects/scene/ContainerObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/scene/ContainerObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/scene/ContainerObject.cpp'; fi`
 
+CustomizationVariables.o: server/zone/objects/scene/CustomizationVariables.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CustomizationVariables.o -MD -MP -MF $(DEPDIR)/CustomizationVariables.Tpo -c -o CustomizationVariables.o `test -f 'server/zone/objects/scene/CustomizationVariables.cpp' || echo '$(srcdir)/'`server/zone/objects/scene/CustomizationVariables.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CustomizationVariables.Tpo $(DEPDIR)/CustomizationVariables.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/scene/CustomizationVariables.cpp' object='CustomizationVariables.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CustomizationVariables.o `test -f 'server/zone/objects/scene/CustomizationVariables.cpp' || echo '$(srcdir)/'`server/zone/objects/scene/CustomizationVariables.cpp
+
+CustomizationVariables.obj: server/zone/objects/scene/CustomizationVariables.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CustomizationVariables.obj -MD -MP -MF $(DEPDIR)/CustomizationVariables.Tpo -c -o CustomizationVariables.obj `if test -f 'server/zone/objects/scene/CustomizationVariables.cpp'; then $(CYGPATH_W) 'server/zone/objects/scene/CustomizationVariables.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/scene/CustomizationVariables.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CustomizationVariables.Tpo $(DEPDIR)/CustomizationVariables.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/scene/CustomizationVariables.cpp' object='CustomizationVariables.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CustomizationVariables.obj `if test -f 'server/zone/objects/scene/CustomizationVariables.cpp'; then $(CYGPATH_W) 'server/zone/objects/scene/CustomizationVariables.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/scene/CustomizationVariables.cpp'; fi`
+
 ShipObjectImplementation.o: server/zone/objects/ship/ShipObjectImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ShipObjectImplementation.o -MD -MP -MF $(DEPDIR)/ShipObjectImplementation.Tpo -c -o ShipObjectImplementation.o `test -f 'server/zone/objects/ship/ShipObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/ship/ShipObjectImplementation.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ShipObjectImplementation.Tpo $(DEPDIR)/ShipObjectImplementation.Po
@@ -5131,20 +5162,6 @@ InventoryImplementation.obj: server/zone/objects/tangible/InventoryImplementatio
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/InventoryImplementation.cpp' object='InventoryImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o InventoryImplementation.obj `if test -f 'server/zone/objects/tangible/InventoryImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/InventoryImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/InventoryImplementation.cpp'; fi`
-
-CustomizationVariables.o: server/zone/objects/tangible/CustomizationVariables.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CustomizationVariables.o -MD -MP -MF $(DEPDIR)/CustomizationVariables.Tpo -c -o CustomizationVariables.o `test -f 'server/zone/objects/tangible/CustomizationVariables.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/CustomizationVariables.cpp
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CustomizationVariables.Tpo $(DEPDIR)/CustomizationVariables.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/CustomizationVariables.cpp' object='CustomizationVariables.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CustomizationVariables.o `test -f 'server/zone/objects/tangible/CustomizationVariables.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/CustomizationVariables.cpp
-
-CustomizationVariables.obj: server/zone/objects/tangible/CustomizationVariables.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CustomizationVariables.obj -MD -MP -MF $(DEPDIR)/CustomizationVariables.Tpo -c -o CustomizationVariables.obj `if test -f 'server/zone/objects/tangible/CustomizationVariables.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/CustomizationVariables.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/CustomizationVariables.cpp'; fi`
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CustomizationVariables.Tpo $(DEPDIR)/CustomizationVariables.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/CustomizationVariables.cpp' object='CustomizationVariables.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CustomizationVariables.obj `if test -f 'server/zone/objects/tangible/CustomizationVariables.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/CustomizationVariables.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/CustomizationVariables.cpp'; fi`
 
 ComponentImplementation.o: server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ComponentImplementation.o -MD -MP -MF $(DEPDIR)/ComponentImplementation.Tpo -c -o ComponentImplementation.o `test -f 'server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp

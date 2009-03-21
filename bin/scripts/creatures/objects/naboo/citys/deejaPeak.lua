@@ -42,7 +42,7 @@
 
 deejaPeakNpc1 = Creature:new {
 	objectName = "deejaPeakNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_priest",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ deejaPeakNpc1 = Creature:new {
 
 deejaPeakNpc2 = Creature:new {
 	objectName = "deejaPeakNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ deejaPeakNpc2 = Creature:new {
 
 deejaPeakNpc3 = Creature:new {
 	objectName = "deejaPeakNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bounty_hunter",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ deejaPeakNpc3 = Creature:new {
 
 deejaPeakNpc4 = Creature:new {
 	objectName = "deejaPeakNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ deejaPeakNpc4 = Creature:new {
 
 deejaPeakNpc5 = Creature:new {
 	objectName = "deejaPeakNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ deejaPeakNpc5 = Creature:new {
 
 deejaPeakNpc6 = Creature:new {
 	objectName = "deejaPeakNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ deejaPeakNpc6 = Creature:new {
 
 deejaPeakNpc7 = Creature:new {
 	objectName = "deejaPeakNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_medic_hard",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ deejaPeakNpc7 = Creature:new {
 
 deejaPeakNpc8 = Creature:new {
 	objectName = "deejaPeakNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_squad_leader_hard",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ deejaPeakNpc8 = Creature:new {
 
 deejaPeakNpc9 = Creature:new {
 	objectName = "deejaPeakNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper_hard",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ deejaPeakNpc9 = Creature:new {
 
 deejaPeakNpc10 = Creature:new {
 	objectName = "deejaPeakNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_command_security_guard",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ deejaPeakNpc10 = Creature:new {
 
 deejaPeakNpc11 = Creature:new {
 	objectName = "deejaPeakNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ deejaPeakNpc11 = Creature:new {
 
 deejaPeakNpc12 = Creature:new {
 	objectName = "deejaPeakNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper_hard",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ deejaPeakNpc12 = Creature:new {
 
 deejaPeakNpc13 = Creature:new {
 	objectName = "deejaPeakNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_hard",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ deejaPeakNpc13 = Creature:new {
 
 deejaPeakNpc14 = Creature:new {
 	objectName = "deejaPeakNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ deejaPeakNpc14 = Creature:new {
 
 deejaPeakNpc15 = Creature:new {
 	objectName = "deejaPeakNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ deejaPeakNpc15 = Creature:new {
 
 deejaPeakNpc16 = Creature:new {
 	objectName = "deejaPeakNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ deejaPeakNpc16 = Creature:new {
 
 deejaPeakNpc18 = Creature:new {
 	objectName = "deejaPeakNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_hard",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ deejaPeakNpc18 = Creature:new {
 
 deejaPeakNpc19 = Creature:new {
 	objectName = "deejaPeakNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ deejaPeakNpc19 = Creature:new {
 
 deejaPeakNpc20 = Creature:new {
 	objectName = "deejaPeakNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ deejaPeakNpc20 = Creature:new {
 
 deejaPeakNpc21 = Creature:new {
 	objectName = "deejaPeakNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ deejaPeakNpc21 = Creature:new {
 
 deejaPeakNpc22 = Creature:new {
 	objectName = "deejaPeakNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ deejaPeakNpc22 = Creature:new {
 
 deejaPeakNpc23 = Creature:new {
 	objectName = "deejaPeakNpc23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ deejaPeakNpc23 = Creature:new {
 
 deejaPeakNpc24 = Creature:new {
 	objectName = "deejaPeakNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ deejaPeakNpc24 = Creature:new {
 
 deejaPeakNpc25 = Creature:new {
 	objectName = "deejaPeakNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ deejaPeakNpc25 = Creature:new {
 
 deejaPeakNpc26 = Creature:new {
 	objectName = "deejaPeakNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_officer",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ deejaPeakNpc26 = Creature:new {
 
 deejaPeakNpc27 = Creature:new {
 	objectName = "deejaPeakNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_boss",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ deejaPeakNpc27 = Creature:new {
 
 deejaPeakNpc28 = Creature:new {
 	objectName = "deejaPeakNpc28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scoundrel",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ deejaPeakNpc28 = Creature:new {
 
 deejaPeakNpc29 = Creature:new {
 	objectName = "deejaPeakNpc29",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "comm_operator",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ deejaPeakNpc29 = Creature:new {
 
 deejaPeakNpc30 = Creature:new {
 	objectName = "deejaPeakNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ deejaPeakNpc30 = Creature:new {
 
 deejaPeakNpc31 = Creature:new {
 	objectName = "deejaPeakNpc31",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ deejaPeakNpc31 = Creature:new {
 
 deejaPeakNpc32 = Creature:new {
 	objectName = "deejaPeakNpc32",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ deejaPeakNpc32 = Creature:new {
 
 deejaPeakNpc33 = Creature:new {
 	objectName = "deejaPeakNpc33",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ deejaPeakNpc33 = Creature:new {
 
 deejaPeakNpc34 = Creature:new {
 	objectName = "deejaPeakNpc34",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_female",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ deejaPeakNpc34 = Creature:new {
 
 deejaPeakNpc35 = Creature:new {
 	objectName = "deejaPeakNpc35",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ deejaPeakNpc35 = Creature:new {
 
 deejaPeakNpc36 = Creature:new {
 	objectName = "deejaPeakNpc36",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ deejaPeakNpc36 = Creature:new {
 
 deejaPeakNpc37 = Creature:new {
 	objectName = "deejaPeakNpc37",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_officer",
 	combatFlags = 0,
@@ -834,7 +834,7 @@ deejaPeakNpc37 = Creature:new {
 
 deejaPeakNpc38 = Creature:new {
 	objectName = "deejaPeakNpc38",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -856,7 +856,7 @@ deejaPeakNpc38 = Creature:new {
 
 deejaPeakNpc39 = Creature:new {
 	objectName = "deejaPeakNpc39",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -878,7 +878,7 @@ deejaPeakNpc39 = Creature:new {
 
 deejaPeakNpc40 = Creature:new {
 	objectName = "deejaPeakNpc40",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -900,7 +900,7 @@ deejaPeakNpc40 = Creature:new {
 
 deejaPeakNpc41 = Creature:new {
 	objectName = "deejaPeakNpc41",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -922,7 +922,7 @@ deejaPeakNpc41 = Creature:new {
 
 deejaPeakNpc42 = Creature:new {
 	objectName = "deejaPeakNpc42",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -944,7 +944,7 @@ deejaPeakNpc42 = Creature:new {
 
 deejaPeakNpc47 = Creature:new {
 	objectName = "deejaPeakNpc47",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -966,7 +966,7 @@ deejaPeakNpc47 = Creature:new {
 
 deejaPeakNpc48 = Creature:new {
 	objectName = "deejaPeakNpc48",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -988,7 +988,7 @@ deejaPeakNpc48 = Creature:new {
 
 deejaPeakNpc49 = Creature:new {
 	objectName = "deejaPeakNpc49",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler",
 	combatFlags = 0,
@@ -1010,7 +1010,7 @@ deejaPeakNpc49 = Creature:new {
 
 deejaPeakNpc50 = Creature:new {
 	objectName = "deejaPeakNpc50",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bounty_hunter",
 	combatFlags = 0,
@@ -1032,7 +1032,7 @@ deejaPeakNpc50 = Creature:new {
 
 deejaPeakNpc51 = Creature:new {
 	objectName = "deejaPeakNpc51",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -1054,7 +1054,7 @@ deejaPeakNpc51 = Creature:new {
 
 deejaPeakNpc52 = Creature:new {
 	objectName = "deejaPeakNpc52",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1076,7 +1076,7 @@ deejaPeakNpc52 = Creature:new {
 
 deejaPeakNpc53 = Creature:new {
 	objectName = "deejaPeakNpc53",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1098,7 +1098,7 @@ deejaPeakNpc53 = Creature:new {
 
 deejaPeakNpc54 = Creature:new {
 	objectName = "deejaPeakNpc54",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_command_security_guard",
 	combatFlags = 0,
@@ -1120,7 +1120,7 @@ deejaPeakNpc54 = Creature:new {
 
 deejaPeakNpc55 = Creature:new {
 	objectName = "deejaPeakNpc55",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -1142,7 +1142,7 @@ deejaPeakNpc55 = Creature:new {
 
 deejaPeakNpc56 = Creature:new {
 	objectName = "deejaPeakNpc56",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_officer",
 	combatFlags = 0,
@@ -1164,7 +1164,7 @@ deejaPeakNpc56 = Creature:new {
 
 deejaPeakNpc57 = Creature:new {
 	objectName = "deejaPeakNpc57",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -1186,7 +1186,7 @@ deejaPeakNpc57 = Creature:new {
 
 deejaPeakNpc58 = Creature:new {
 	objectName = "deejaPeakNpc58",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -1208,7 +1208,7 @@ deejaPeakNpc58 = Creature:new {
 
 deejaPeakNpc59 = Creature:new {
 	objectName = "deejaPeakNpc59",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "quest_crowd_pleaser_theater_manager",
 	combatFlags = 0,
@@ -1230,7 +1230,7 @@ deejaPeakNpc59 = Creature:new {
 
 deejaPeakNpc60 = Creature:new {
 	objectName = "deejaPeakNpc60",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -1252,7 +1252,7 @@ deejaPeakNpc60 = Creature:new {
 
 deejaPeakNpc61 = Creature:new {
 	objectName = "deejaPeakNpc61",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -1274,7 +1274,7 @@ deejaPeakNpc61 = Creature:new {
 
 deejaPeakNpc62 = Creature:new {
 	objectName = "deejaPeakNpc62",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -1296,7 +1296,7 @@ deejaPeakNpc62 = Creature:new {
 
 deejaPeakNpc63 = Creature:new {
 	objectName = "deejaPeakNpc63",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "swamp_villager",
 	combatFlags = 0,
@@ -1318,7 +1318,7 @@ deejaPeakNpc63 = Creature:new {
 
 deejaPeakNpc64 = Creature:new {
 	objectName = "deejaPeakNpc64",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_guard",
 	combatFlags = 0,
@@ -1340,7 +1340,7 @@ deejaPeakNpc64 = Creature:new {
 
 deejaPeakNpc65 = Creature:new {
 	objectName = "deejaPeakNpc65",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -1362,7 +1362,7 @@ deejaPeakNpc65 = Creature:new {
 
 deejaPeakNpc66 = Creature:new {
 	objectName = "deejaPeakNpc66",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1384,7 +1384,7 @@ deejaPeakNpc66 = Creature:new {
 
 deejaPeakNpc67 = Creature:new {
 	objectName = "deejaPeakNpc67",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1406,7 +1406,7 @@ deejaPeakNpc67 = Creature:new {
 
 deejaPeakNpc68 = Creature:new {
 	objectName = "deejaPeakNpc68",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1428,7 +1428,7 @@ deejaPeakNpc68 = Creature:new {
 
 deejaPeakNpc69 = Creature:new {
 	objectName = "deejaPeakNpc69",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1450,7 +1450,7 @@ deejaPeakNpc69 = Creature:new {
 
 deejaPeakNpc70 = Creature:new {
 	objectName = "deejaPeakNpc70",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1472,7 +1472,7 @@ deejaPeakNpc70 = Creature:new {
 
 deejaPeakNpc71 = Creature:new {
 	objectName = "deejaPeakNpc71",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1494,7 +1494,7 @@ deejaPeakNpc71 = Creature:new {
 
 deejaPeakNpc73 = Creature:new {
 	objectName = "deejaPeakNpc73",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1516,7 +1516,7 @@ deejaPeakNpc73 = Creature:new {
 
 deejaPeakNpc74 = Creature:new {
 	objectName = "deejaPeakNpc74",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1538,7 +1538,7 @@ deejaPeakNpc74 = Creature:new {
 
 deejaPeakNpc75 = Creature:new {
 	objectName = "deejaPeakNpc75",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1560,7 +1560,7 @@ deejaPeakNpc75 = Creature:new {
 
 deejaPeakNpc76 = Creature:new {
 	objectName = "deejaPeakNpc76",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1582,7 +1582,7 @@ deejaPeakNpc76 = Creature:new {
 
 deejaPeakNpc77 = Creature:new {
 	objectName = "deejaPeakNpc77",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1604,7 +1604,7 @@ deejaPeakNpc77 = Creature:new {
 
 deejaPeakNpc78 = Creature:new {
 	objectName = "deejaPeakNpc78",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_storm_commando",
 	combatFlags = 0,
@@ -1626,7 +1626,7 @@ deejaPeakNpc78 = Creature:new {
 
 deejaPeakNpc79 = Creature:new {
 	objectName = "deejaPeakNpc79",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -1648,7 +1648,7 @@ deejaPeakNpc79 = Creature:new {
 
 deejaPeakNpc80 = Creature:new {
 	objectName = "deejaPeakNpc80",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_captain",
 	combatFlags = 0,
@@ -1670,7 +1670,7 @@ deejaPeakNpc80 = Creature:new {
 
 deejaPeakNpc81 = Creature:new {
 	objectName = "deejaPeakNpc81",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_dark_trooper",
 	combatFlags = 0,
@@ -1692,7 +1692,7 @@ deejaPeakNpc81 = Creature:new {
 
 deejaPeakNpc82 = Creature:new {
 	objectName = "deejaPeakNpc82",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -1714,7 +1714,7 @@ deejaPeakNpc82 = Creature:new {
 
 deejaPeakNpc83 = Creature:new {
 	objectName = "deejaPeakNpc83",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -1736,7 +1736,7 @@ deejaPeakNpc83 = Creature:new {
 
 deejaPeakNpc84 = Creature:new {
 	objectName = "deejaPeakNpc84",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1758,7 +1758,7 @@ deejaPeakNpc84 = Creature:new {
 
 deejaPeakNpc85 = Creature:new {
 	objectName = "deejaPeakNpc85",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_mercenary",
 	combatFlags = 0,
@@ -1780,7 +1780,7 @@ deejaPeakNpc85 = Creature:new {
 
 deejaPeakNpc86 = Creature:new {
 	objectName = "deejaPeakNpc86",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -1802,7 +1802,7 @@ deejaPeakNpc86 = Creature:new {
 
 deejaPeakNpc87 = Creature:new {
 	objectName = "deejaPeakNpc87",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -1824,7 +1824,7 @@ deejaPeakNpc87 = Creature:new {
 
 deejaPeakNpc88 = Creature:new {
 	objectName = "deejaPeakNpc88",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1846,7 +1846,7 @@ deejaPeakNpc88 = Creature:new {
 
 deejaPeakNpc89 = Creature:new {
 	objectName = "deejaPeakNpc89",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1868,7 +1868,7 @@ deejaPeakNpc89 = Creature:new {
 
 deejaPeakNpc90 = Creature:new {
 	objectName = "deejaPeakNpc90",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_pilot",
 	combatFlags = 0,
@@ -1890,7 +1890,7 @@ deejaPeakNpc90 = Creature:new {
 
 deejaPeakNpc91 = Creature:new {
 	objectName = "deejaPeakNpc91",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1912,7 +1912,7 @@ deejaPeakNpc91 = Creature:new {
 
 deejaPeakNpc92 = Creature:new {
 	objectName = "deejaPeakNpc92",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "comm_operator",
 	combatFlags = 0,
@@ -1934,7 +1934,7 @@ deejaPeakNpc92 = Creature:new {
 
 deejaPeakNpc93 = Creature:new {
 	objectName = "deejaPeakNpc93",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,
@@ -1956,7 +1956,7 @@ deejaPeakNpc93 = Creature:new {
 
 deejaPeakNpc94 = Creature:new {
 	objectName = "deejaPeakNpc94",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fringer",
 	combatFlags = 0,
@@ -1978,7 +1978,7 @@ deejaPeakNpc94 = Creature:new {
 
 deejaPeakNpc95 = Creature:new {
 	objectName = "deejaPeakNpc95",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_palace_guard",
 	combatFlags = 0,
@@ -2000,7 +2000,7 @@ deejaPeakNpc95 = Creature:new {
 
 deejaPeakNpc96 = Creature:new {
 	objectName = "deejaPeakNpc96",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -2022,7 +2022,7 @@ deejaPeakNpc96 = Creature:new {
 
 deejaPeakNpc97 = Creature:new {
 	objectName = "deejaPeakNpc97",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_hermit",
 	combatFlags = 0,
@@ -2044,7 +2044,7 @@ deejaPeakNpc97 = Creature:new {
 
 deejaPeakNpc98 = Creature:new {
 	objectName = "deejaPeakNpc98",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "philosopher",
 	combatFlags = 0,
@@ -2066,7 +2066,7 @@ deejaPeakNpc98 = Creature:new {
 
 deejaPeakNpc99 = Creature:new {
 	objectName = "deejaPeakNpc99",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -2088,7 +2088,7 @@ deejaPeakNpc99 = Creature:new {
 
 deejaPeakNpc100 = Creature:new {
 	objectName = "deejaPeakNpc100",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "swamp_villager",
 	combatFlags = 0,
@@ -2110,7 +2110,7 @@ deejaPeakNpc100 = Creature:new {
 
 deejaPeakNpc101 = Creature:new {
 	objectName = "deejaPeakNpc101",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mountain_villager",
 	combatFlags = 0,
@@ -2132,7 +2132,7 @@ deejaPeakNpc101 = Creature:new {
 
 deejaPeakNpc102 = Creature:new {
 	objectName = "deejaPeakNpc102",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scout_trooper",
 	combatFlags = 0,
@@ -2154,7 +2154,7 @@ deejaPeakNpc102 = Creature:new {
 
 deejaPeakNpc103 = Creature:new {
 	objectName = "deejaPeakNpc103",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_mercenary",
 	combatFlags = 0,
@@ -2176,7 +2176,7 @@ deejaPeakNpc103 = Creature:new {
 
 deejaPeakNpc104 = Creature:new {
 	objectName = "deejaPeakNpc104",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "otolla_gungan",
 	combatFlags = 0,
@@ -2198,7 +2198,7 @@ deejaPeakNpc104 = Creature:new {
 
 deejaPeakNpc105 = Creature:new {
 	objectName = "deejaPeakNpc105",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_hunter",
 	combatFlags = 0,
@@ -2220,7 +2220,7 @@ deejaPeakNpc105 = Creature:new {
 
 deejaPeakNpc106 = Creature:new {
 	objectName = "deejaPeakNpc106",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -2242,7 +2242,7 @@ deejaPeakNpc106 = Creature:new {
 
 deejaPeakNpc107 = Creature:new {
 	objectName = "deejaPeakNpc107",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -2264,7 +2264,7 @@ deejaPeakNpc107 = Creature:new {
 
 deejaPeakNpc108 = Creature:new {
 	objectName = "deejaPeakNpc108",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "hunter",
 	combatFlags = 0,
@@ -2286,7 +2286,7 @@ deejaPeakNpc108 = Creature:new {
 
 deejaPeakNpc109 = Creature:new {
 	objectName = "deejaPeakNpc109",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_grand_army_soldier",
 	combatFlags = 0,
@@ -2308,7 +2308,7 @@ deejaPeakNpc109 = Creature:new {
 
 deejaPeakNpc110 = Creature:new {
 	objectName = "deejaPeakNpc110",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_mercenary",
 	combatFlags = 0,
@@ -2330,7 +2330,7 @@ deejaPeakNpc110 = Creature:new {
 
 deejaPeakNpc111 = Creature:new {
 	objectName = "deejaPeakNpc111",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "hunter",
 	combatFlags = 0,
@@ -2352,7 +2352,7 @@ deejaPeakNpc111 = Creature:new {
 
 deejaPeakNpc112 = Creature:new {
 	objectName = "deejaPeakNpc112",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -2374,7 +2374,7 @@ deejaPeakNpc112 = Creature:new {
 
 deejaPeakNpc113 = Creature:new {
 	objectName = "deejaPeakNpc113",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mountain_villager",
 	combatFlags = 0,
@@ -2396,7 +2396,7 @@ deejaPeakNpc113 = Creature:new {
 
 deejaPeakNpc114 = Creature:new {
 	objectName = "deejaPeakNpc114",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "technician",
 	combatFlags = 0,
@@ -2418,7 +2418,7 @@ deejaPeakNpc114 = Creature:new {
 
 deejaPeakNpc115 = Creature:new {
 	objectName = "deejaPeakNpc115",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,
@@ -2440,7 +2440,7 @@ deejaPeakNpc115 = Creature:new {
 
 deejaPeakNpc116 = Creature:new {
 	objectName = "deejaPeakNpc116",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -2462,7 +2462,7 @@ deejaPeakNpc116 = Creature:new {
 
 deejaPeakNpc117 = Creature:new {
 	objectName = "deejaPeakNpc117",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -2484,7 +2484,7 @@ deejaPeakNpc117 = Creature:new {
 
 deejaPeakNpc118 = Creature:new {
 	objectName = "deejaPeakNpc118",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_priest",
 	combatFlags = 0,
@@ -2506,7 +2506,7 @@ deejaPeakNpc118 = Creature:new {
 
 deejaPeakNpc119 = Creature:new {
 	objectName = "deejaPeakNpc119",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_nomad",
 	combatFlags = 0,
@@ -2528,7 +2528,7 @@ deejaPeakNpc119 = Creature:new {
 
 deejaPeakNpc120 = Creature:new {
 	objectName = "deejaPeakNpc120",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -2550,7 +2550,7 @@ deejaPeakNpc120 = Creature:new {
 
 deejaPeakNpc121 = Creature:new {
 	objectName = "deejaPeakNpc121",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_outcast",
 	combatFlags = 0,
@@ -2572,7 +2572,7 @@ deejaPeakNpc121 = Creature:new {
 
 deejaPeakNpc122 = Creature:new {
 	objectName = "deejaPeakNpc122",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -2594,7 +2594,7 @@ deejaPeakNpc122 = Creature:new {
 
 deejaPeakNpc123 = Creature:new {
 	objectName = "deejaPeakNpc123",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -2616,7 +2616,7 @@ deejaPeakNpc123 = Creature:new {
 
 deejaPeakNpc124 = Creature:new {
 	objectName = "deejaPeakNpc124",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "plainsfolk",
 	combatFlags = 0,
@@ -2638,7 +2638,7 @@ deejaPeakNpc124 = Creature:new {
 
 deejaPeakNpc125 = Creature:new {
 	objectName = "deejaPeakNpc125",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -2660,7 +2660,7 @@ deejaPeakNpc125 = Creature:new {
 
 deejaPeakNpc126 = Creature:new {
 	objectName = "deejaPeakNpc126",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -2682,7 +2682,7 @@ deejaPeakNpc126 = Creature:new {
 
 deejaPeakNpc127 = Creature:new {
 	objectName = "deejaPeakNpc127",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_captain",
 	combatFlags = 0,
@@ -2704,7 +2704,7 @@ deejaPeakNpc127 = Creature:new {
 
 deejaPeakNpc128 = Creature:new {
 	objectName = "deejaPeakNpc128",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2726,7 +2726,7 @@ deejaPeakNpc128 = Creature:new {
 
 deejaPeakNpc129 = Creature:new {
 	objectName = "deejaPeakNpc129",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2748,7 +2748,7 @@ deejaPeakNpc129 = Creature:new {
 
 deejaPeakNpc130 = Creature:new {
 	objectName = "deejaPeakNpc130",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -2770,7 +2770,7 @@ deejaPeakNpc130 = Creature:new {
 
 deejaPeakNpc131 = Creature:new {
 	objectName = "deejaPeakNpc131",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_command_security_guard",
 	combatFlags = 0,
@@ -2792,7 +2792,7 @@ deejaPeakNpc131 = Creature:new {
 
 deejaPeakNpc132 = Creature:new {
 	objectName = "deejaPeakNpc132",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "clone_relics_morkov_courier_bodyguard",
 	combatFlags = 0,
@@ -2814,7 +2814,7 @@ deejaPeakNpc132 = Creature:new {
 
 deejaPeakNpc133 = Creature:new {
 	objectName = "deejaPeakNpc133",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "clone_relics_morkov_courier_bodyguard",
 	combatFlags = 0,

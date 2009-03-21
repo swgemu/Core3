@@ -42,7 +42,7 @@
 
 doabaNpc1 = Creature:new {
 	objectName = "doabaNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_master_sergeant",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ doabaNpc1 = Creature:new {
 
 doabaNpc2 = Creature:new {
 	objectName = "doabaNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ doabaNpc2 = Creature:new {
 
 doabaNpc3 = Creature:new {
 	objectName = "doabaNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ doabaNpc3 = Creature:new {
 
 doabaNpc4 = Creature:new {
 	objectName = "doabaNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ doabaNpc4 = Creature:new {
 
 doabaNpc5 = Creature:new {
 	objectName = "doabaNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ doabaNpc5 = Creature:new {
 
 doabaNpc6 = Creature:new {
 	objectName = "doabaNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ doabaNpc6 = Creature:new {
 
 doabaNpc7 = Creature:new {
 	objectName = "doabaNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ doabaNpc7 = Creature:new {
 
 doabaNpc8 = Creature:new {
 	objectName = "doabaNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chassis_broker",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ doabaNpc8 = Creature:new {
 
 doabaNpc9 = Creature:new {
 	objectName = "doabaNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_comissioner",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ doabaNpc9 = Creature:new {
 
 doabaNpc10 = Creature:new {
 	objectName = "doabaNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ doabaNpc10 = Creature:new {
 
 doabaNpc11 = Creature:new {
 	objectName = "doabaNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "drall_abbot",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ doabaNpc11 = Creature:new {
 
 doabaNpc12 = Creature:new {
 	objectName = "doabaNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ doabaNpc12 = Creature:new {
 
 doabaNpc13 = Creature:new {
 	objectName = "doabaNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "drall_monk",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ doabaNpc13 = Creature:new {
 
 doabaNpc14 = Creature:new {
 	objectName = "doabaNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ doabaNpc14 = Creature:new {
 
 doabaNpc15 = Creature:new {
 	objectName = "doabaNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ doabaNpc15 = Creature:new {
 
 doabaNpc16 = Creature:new {
 	objectName = "doabaNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ doabaNpc16 = Creature:new {
 
 doabaNpc17 = Creature:new {
 	objectName = "doabaNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ doabaNpc17 = Creature:new {
 
 doabaNpc18 = Creature:new {
 	objectName = "doabaNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ doabaNpc18 = Creature:new {
 
 doabaNpc19 = Creature:new {
 	objectName = "doabaNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ doabaNpc19 = Creature:new {
 
 doabaNpc20 = Creature:new {
 	objectName = "doabaNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ doabaNpc20 = Creature:new {
 
 doabaNpc21 = Creature:new {
 	objectName = "doabaNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ doabaNpc21 = Creature:new {
 
 doabaNpc22 = Creature:new {
 	objectName = "doabaNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ doabaNpc22 = Creature:new {
 
 doabaNpc23 = Creature:new {
 	objectName = "doabaNpc23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_noncom",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ doabaNpc23 = Creature:new {
 
 doabaNpc24 = Creature:new {
 	objectName = "doabaNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ doabaNpc24 = Creature:new {
 
 doabaNpc25 = Creature:new {
 	objectName = "doabaNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_comm_operator",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ doabaNpc25 = Creature:new {
 
 doabaNpc26 = Creature:new {
 	objectName = "doabaNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_corporal",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ doabaNpc26 = Creature:new {
 
 doabaNpc27 = Creature:new {
 	objectName = "doabaNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ doabaNpc27 = Creature:new {
 
 doabaNpc28 = Creature:new {
 	objectName = "doabaNpc28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ doabaNpc28 = Creature:new {
 
 doabaNpc29 = Creature:new {
 	objectName = "doabaNpc29",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ doabaNpc29 = Creature:new {
 
 doabaNpc30 = Creature:new {
 	objectName = "doabaNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ doabaNpc30 = Creature:new {
 
 doabaNpc32 = Creature:new {
 	objectName = "doabaNpc32",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ doabaNpc32 = Creature:new {
 
 doabaNpc33 = Creature:new {
 	objectName = "doabaNpc33",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ doabaNpc33 = Creature:new {
 
 doabaNpc35 = Creature:new {
 	objectName = "doabaNpc35",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ doabaNpc35 = Creature:new {
 
 doabaNpc36 = Creature:new {
 	objectName = "doabaNpc36",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_sergeant",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ doabaNpc36 = Creature:new {
 
 doabaNpc37 = Creature:new {
 	objectName = "doabaNpc37",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "surgical_droid_21b",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ doabaNpc37 = Creature:new {
 
 doabaNpc39 = Creature:new {
 	objectName = "doabaNpc39",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -834,7 +834,7 @@ doabaNpc39 = Creature:new {
 
 doabaNpc40 = Creature:new {
 	objectName = "doabaNpc40",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bounty_hunter",
 	combatFlags = 0,
@@ -856,7 +856,7 @@ doabaNpc40 = Creature:new {
 
 doabaNpc41 = Creature:new {
 	objectName = "doabaNpc41",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,
@@ -878,7 +878,7 @@ doabaNpc41 = Creature:new {
 
 doabaNpc42 = Creature:new {
 	objectName = "doabaNpc42",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -900,7 +900,7 @@ doabaNpc42 = Creature:new {
 
 doabaNpc43 = Creature:new {
 	objectName = "doabaNpc43",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -922,7 +922,7 @@ doabaNpc43 = Creature:new {
 
 doabaNpc44 = Creature:new {
 	objectName = "doabaNpc44",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_comissioner",
 	combatFlags = 0,
@@ -944,7 +944,7 @@ doabaNpc44 = Creature:new {
 
 doabaNpc45 = Creature:new {
 	objectName = "doabaNpc45",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -966,7 +966,7 @@ doabaNpc45 = Creature:new {
 
 doabaNpc46 = Creature:new {
 	objectName = "doabaNpc46",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bartender",
 	combatFlags = 0,
@@ -988,7 +988,7 @@ doabaNpc46 = Creature:new {
 
 doabaNpc47 = Creature:new {
 	objectName = "doabaNpc47",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_sergeant",
 	combatFlags = 0,
@@ -1010,7 +1010,7 @@ doabaNpc47 = Creature:new {
 
 doabaNpc48 = Creature:new {
 	objectName = "doabaNpc48",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -1032,7 +1032,7 @@ doabaNpc48 = Creature:new {
 
 doabaNpc49 = Creature:new {
 	objectName = "doabaNpc49",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_investigator",
 	combatFlags = 0,
@@ -1054,7 +1054,7 @@ doabaNpc49 = Creature:new {
 
 doabaNpc50 = Creature:new {
 	objectName = "doabaNpc50",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -1076,7 +1076,7 @@ doabaNpc50 = Creature:new {
 
 doabaNpc51 = Creature:new {
 	objectName = "doabaNpc51",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1098,7 +1098,7 @@ doabaNpc51 = Creature:new {
 
 doabaNpc52 = Creature:new {
 	objectName = "doabaNpc52",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1120,7 +1120,7 @@ doabaNpc52 = Creature:new {
 
 doabaNpc53 = Creature:new {
 	objectName = "doabaNpc53",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1142,7 +1142,7 @@ doabaNpc53 = Creature:new {
 
 doabaNpc54 = Creature:new {
 	objectName = "doabaNpc54",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1164,7 +1164,7 @@ doabaNpc54 = Creature:new {
 
 doabaNpc55 = Creature:new {
 	objectName = "doabaNpc55",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1186,7 +1186,7 @@ doabaNpc55 = Creature:new {
 
 doabaNpc56 = Creature:new {
 	objectName = "doabaNpc56",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_sergeant",
 	combatFlags = 0,
@@ -1208,7 +1208,7 @@ doabaNpc56 = Creature:new {
 
 doabaNpc57 = Creature:new {
 	objectName = "doabaNpc57",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_chief",
 	combatFlags = 0,
@@ -1230,7 +1230,7 @@ doabaNpc57 = Creature:new {
 
 doabaNpc58 = Creature:new {
 	objectName = "doabaNpc58",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "hunter",
 	combatFlags = 0,
@@ -1252,7 +1252,7 @@ doabaNpc58 = Creature:new {
 
 doabaNpc59 = Creature:new {
 	objectName = "doabaNpc59",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1274,7 +1274,7 @@ doabaNpc59 = Creature:new {
 
 doabaNpc60 = Creature:new {
 	objectName = "doabaNpc60",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -1296,7 +1296,7 @@ doabaNpc60 = Creature:new {
 
 doabaNpc61 = Creature:new {
 	objectName = "doabaNpc61",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1318,7 +1318,7 @@ doabaNpc61 = Creature:new {
 
 doabaNpc63 = Creature:new {
 	objectName = "doabaNpc63",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -1340,7 +1340,7 @@ doabaNpc63 = Creature:new {
 
 doabaNpc64 = Creature:new {
 	objectName = "doabaNpc64",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -1362,7 +1362,7 @@ doabaNpc64 = Creature:new {
 
 doabaNpc66 = Creature:new {
 	objectName = "doabaNpc66",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_thief_5",
 	combatFlags = 0,
@@ -1384,7 +1384,7 @@ doabaNpc66 = Creature:new {
 
 doabaNpc68 = Creature:new {
 	objectName = "doabaNpc68",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1406,7 +1406,7 @@ doabaNpc68 = Creature:new {
 
 doabaNpc69 = Creature:new {
 	objectName = "doabaNpc69",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_dark_trooper",
 	combatFlags = 0,
@@ -1428,7 +1428,7 @@ doabaNpc69 = Creature:new {
 
 doabaNpc70 = Creature:new {
 	objectName = "doabaNpc70",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_storm_commando",
 	combatFlags = 0,
@@ -1450,7 +1450,7 @@ doabaNpc70 = Creature:new {
 
 doabaNpc72 = Creature:new {
 	objectName = "doabaNpc72",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -1472,7 +1472,7 @@ doabaNpc72 = Creature:new {
 
 doabaNpc73 = Creature:new {
 	objectName = "doabaNpc73",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -1494,7 +1494,7 @@ doabaNpc73 = Creature:new {
 
 doabaNpc74 = Creature:new {
 	objectName = "doabaNpc74",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_squad_leader",
 	combatFlags = 0,
@@ -1516,7 +1516,7 @@ doabaNpc74 = Creature:new {
 
 doabaNpc76 = Creature:new {
 	objectName = "doabaNpc76",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1538,7 +1538,7 @@ doabaNpc76 = Creature:new {
 
 doabaNpc77 = Creature:new {
 	objectName = "doabaNpc77",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bounty_hunter",
 	combatFlags = 0,
@@ -1560,7 +1560,7 @@ doabaNpc77 = Creature:new {
 
 doabaNpc78 = Creature:new {
 	objectName = "doabaNpc78",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_investigator",
 	combatFlags = 0,
@@ -1582,7 +1582,7 @@ doabaNpc78 = Creature:new {
 
 doabaNpc79 = Creature:new {
 	objectName = "doabaNpc79",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_rogue",
 	combatFlags = 0,
@@ -1604,7 +1604,7 @@ doabaNpc79 = Creature:new {
 
 doabaNpc80 = Creature:new {
 	objectName = "doabaNpc80",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_comissioner",
 	combatFlags = 0,
@@ -1626,7 +1626,7 @@ doabaNpc80 = Creature:new {
 
 doabaNpc81 = Creature:new {
 	objectName = "doabaNpc81",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -1648,7 +1648,7 @@ doabaNpc81 = Creature:new {
 
 doabaNpc82 = Creature:new {
 	objectName = "doabaNpc82",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_times_investigator",
 	combatFlags = 0,
@@ -1670,7 +1670,7 @@ doabaNpc82 = Creature:new {
 
 doabaNpc83 = Creature:new {
 	objectName = "doabaNpc83",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_deserter",
 	combatFlags = 0,
@@ -1692,7 +1692,7 @@ doabaNpc83 = Creature:new {
 
 doabaNpc84 = Creature:new {
 	objectName = "doabaNpc84",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "zo_ssa",
 	combatFlags = 0,
@@ -1714,7 +1714,7 @@ doabaNpc84 = Creature:new {
 
 doabaNpc85 = Creature:new {
 	objectName = "doabaNpc85",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "willham_burke",
 	combatFlags = 0,
@@ -1736,7 +1736,7 @@ doabaNpc85 = Creature:new {
 
 doabaNpc86 = Creature:new {
 	objectName = "doabaNpc86",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -1758,7 +1758,7 @@ doabaNpc86 = Creature:new {
 
 doabaNpc87 = Creature:new {
 	objectName = "doabaNpc87",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "hunter",
 	combatFlags = 0,
@@ -1780,7 +1780,7 @@ doabaNpc87 = Creature:new {
 
 doabaNpc89 = Creature:new {
 	objectName = "doabaNpc89",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1802,7 +1802,7 @@ doabaNpc89 = Creature:new {
 
 doabaNpc91 = Creature:new {
 	objectName = "doabaNpc91",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -1824,7 +1824,7 @@ doabaNpc91 = Creature:new {
 
 doabaNpc92 = Creature:new {
 	objectName = "doabaNpc92",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_chief",
 	combatFlags = 0,
@@ -1846,7 +1846,7 @@ doabaNpc92 = Creature:new {
 
 doabaNpc93 = Creature:new {
 	objectName = "doabaNpc93",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -1868,7 +1868,7 @@ doabaNpc93 = Creature:new {
 
 doabaNpc94 = Creature:new {
 	objectName = "doabaNpc94",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1890,7 +1890,7 @@ doabaNpc94 = Creature:new {
 
 doabaNpc95 = Creature:new {
 	objectName = "doabaNpc95",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "pilot",
 	combatFlags = 0,
@@ -1912,7 +1912,7 @@ doabaNpc95 = Creature:new {
 
 doabaNpc96 = Creature:new {
 	objectName = "doabaNpc96",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1934,7 +1934,7 @@ doabaNpc96 = Creature:new {
 
 doabaNpc97 = Creature:new {
 	objectName = "doabaNpc97",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_rifleman",
 	combatFlags = 0,
@@ -1956,7 +1956,7 @@ doabaNpc97 = Creature:new {
 
 doabaNpc98 = Creature:new {
 	objectName = "doabaNpc98",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_dark_trooper",
 	combatFlags = 0,
@@ -1978,7 +1978,7 @@ doabaNpc98 = Creature:new {
 
 doabaNpc99 = Creature:new {
 	objectName = "doabaNpc99",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -2000,7 +2000,7 @@ doabaNpc99 = Creature:new {
 
 doabaNpc100 = Creature:new {
 	objectName = "doabaNpc100",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -2022,7 +2022,7 @@ doabaNpc100 = Creature:new {
 
 doabaNpc101 = Creature:new {
 	objectName = "doabaNpc101",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crafting_contractor",
 	combatFlags = 0,
@@ -2044,7 +2044,7 @@ doabaNpc101 = Creature:new {
 
 doabaNpc111 = Creature:new {
 	objectName = "doabaNpc111",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2066,7 +2066,7 @@ doabaNpc111 = Creature:new {
 
 doabaNpc112 = Creature:new {
 	objectName = "doabaNpc112",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2088,7 +2088,7 @@ doabaNpc112 = Creature:new {
 
 doabaNpc113 = Creature:new {
 	objectName = "doabaNpc113",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_chirq_kazic_pendre",
 	combatFlags = 0,
@@ -2110,7 +2110,7 @@ doabaNpc113 = Creature:new {
 
 doabaNpc114 = Creature:new {
 	objectName = "doabaNpc114",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_security",
 	combatFlags = 0,
@@ -2132,7 +2132,7 @@ doabaNpc114 = Creature:new {
 
 doabaNpc115 = Creature:new {
 	objectName = "doabaNpc115",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2154,7 +2154,7 @@ doabaNpc115 = Creature:new {
 
 doabaNpc116 = Creature:new {
 	objectName = "doabaNpc116",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2176,7 +2176,7 @@ doabaNpc116 = Creature:new {
 
 doabaNpc117 = Creature:new {
 	objectName = "doabaNpc117",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2198,7 +2198,7 @@ doabaNpc117 = Creature:new {
 
 doabaNpc118 = Creature:new {
 	objectName = "doabaNpc118",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2220,7 +2220,7 @@ doabaNpc118 = Creature:new {
 
 doabaNpc119 = Creature:new {
 	objectName = "doabaNpc119",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2242,7 +2242,7 @@ doabaNpc119 = Creature:new {
 
 doabaNpc120 = Creature:new {
 	objectName = "doabaNpc120",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2264,7 +2264,7 @@ doabaNpc120 = Creature:new {
 
 doabaNpc121 = Creature:new {
 	objectName = "doabaNpc121",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2286,7 +2286,7 @@ doabaNpc121 = Creature:new {
 
 doabaNpc122 = Creature:new {
 	objectName = "doabaNpc122",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2308,7 +2308,7 @@ doabaNpc122 = Creature:new {
 
 doabaNpc123 = Creature:new {
 	objectName = "doabaNpc123",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2330,7 +2330,7 @@ doabaNpc123 = Creature:new {
 
 doabaNpc124 = Creature:new {
 	objectName = "doabaNpc124",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2352,7 +2352,7 @@ doabaNpc124 = Creature:new {
 
 doabaNpc125 = Creature:new {
 	objectName = "doabaNpc125",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2374,7 +2374,7 @@ doabaNpc125 = Creature:new {
 
 doabaNpc126 = Creature:new {
 	objectName = "doabaNpc126",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_security",
 	combatFlags = 0,
@@ -2396,7 +2396,7 @@ doabaNpc126 = Creature:new {
 
 doabaNpc127 = Creature:new {
 	objectName = "doabaNpc127",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2418,7 +2418,7 @@ doabaNpc127 = Creature:new {
 
 doabaNpc128 = Creature:new {
 	objectName = "doabaNpc128",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2440,7 +2440,7 @@ doabaNpc128 = Creature:new {
 
 doabaNpc129 = Creature:new {
 	objectName = "doabaNpc129",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2462,7 +2462,7 @@ doabaNpc129 = Creature:new {
 
 doabaNpc130 = Creature:new {
 	objectName = "doabaNpc130",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2484,7 +2484,7 @@ doabaNpc130 = Creature:new {
 
 doabaNpc131 = Creature:new {
 	objectName = "doabaNpc131",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2506,7 +2506,7 @@ doabaNpc131 = Creature:new {
 
 doabaNpc132 = Creature:new {
 	objectName = "doabaNpc132",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2528,7 +2528,7 @@ doabaNpc132 = Creature:new {
 
 doabaNpc133 = Creature:new {
 	objectName = "doabaNpc133",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2550,7 +2550,7 @@ doabaNpc133 = Creature:new {
 
 doabaNpc134 = Creature:new {
 	objectName = "doabaNpc134",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2572,7 +2572,7 @@ doabaNpc134 = Creature:new {
 
 doabaNpc135 = Creature:new {
 	objectName = "doabaNpc135",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2594,7 +2594,7 @@ doabaNpc135 = Creature:new {
 
 doabaNpc136 = Creature:new {
 	objectName = "doabaNpc136",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2616,7 +2616,7 @@ doabaNpc136 = Creature:new {
 
 doabaNpc137 = Creature:new {
 	objectName = "doabaNpc137",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2638,7 +2638,7 @@ doabaNpc137 = Creature:new {
 
 doabaNpc138 = Creature:new {
 	objectName = "doabaNpc138",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2660,7 +2660,7 @@ doabaNpc138 = Creature:new {
 
 doabaNpc139 = Creature:new {
 	objectName = "doabaNpc139",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2682,7 +2682,7 @@ doabaNpc139 = Creature:new {
 
 doabaNpc140 = Creature:new {
 	objectName = "doabaNpc140",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_security",
 	combatFlags = 0,
@@ -2704,7 +2704,7 @@ doabaNpc140 = Creature:new {
 
 doabaNpc141 = Creature:new {
 	objectName = "doabaNpc141",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_shobbo_durron",
 	combatFlags = 0,
@@ -2726,7 +2726,7 @@ doabaNpc141 = Creature:new {
 
 doabaNpc142 = Creature:new {
 	objectName = "doabaNpc142",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pendretronics_employee",
 	combatFlags = 0,
@@ -2748,7 +2748,7 @@ doabaNpc142 = Creature:new {
 
 doabaNpc143 = Creature:new {
 	objectName = "doabaNpc143",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2770,7 +2770,7 @@ doabaNpc143 = Creature:new {
 
 doabaNpc144 = Creature:new {
 	objectName = "doabaNpc144",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "hunter",
 	combatFlags = 0,
@@ -2792,7 +2792,7 @@ doabaNpc144 = Creature:new {
 
 doabaNpc145 = Creature:new {
 	objectName = "doabaNpc145",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fringer",
 	combatFlags = 0,
@@ -2814,7 +2814,7 @@ doabaNpc145 = Creature:new {
 
 doabaNpc146 = Creature:new {
 	objectName = "doabaNpc146",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -2836,7 +2836,7 @@ doabaNpc146 = Creature:new {
 
 doabaNpc147 = Creature:new {
 	objectName = "doabaNpc147",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -2858,7 +2858,7 @@ doabaNpc147 = Creature:new {
 
 doabaNpc148 = Creature:new {
 	objectName = "doabaNpc148",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -2880,7 +2880,7 @@ doabaNpc148 = Creature:new {
 
 doabaNpc149 = Creature:new {
 	objectName = "doabaNpc149",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -2902,7 +2902,7 @@ doabaNpc149 = Creature:new {
 
 doabaNpc150 = Creature:new {
 	objectName = "doabaNpc150",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -2924,7 +2924,7 @@ doabaNpc150 = Creature:new {
 
 doabaNpc151 = Creature:new {
 	objectName = "doabaNpc151",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -2946,7 +2946,7 @@ doabaNpc151 = Creature:new {
 
 doabaNpc152 = Creature:new {
 	objectName = "doabaNpc152",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "quest_crowd_pleaser_theater_manager",
 	combatFlags = 0,
@@ -2968,7 +2968,7 @@ doabaNpc152 = Creature:new {
 
 doabaNpc153 = Creature:new {
 	objectName = "doabaNpc153",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -2990,7 +2990,7 @@ doabaNpc153 = Creature:new {
 
 doabaNpc154 = Creature:new {
 	objectName = "doabaNpc154",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -3012,7 +3012,7 @@ doabaNpc154 = Creature:new {
 
 doabaNpc155 = Creature:new {
 	objectName = "doabaNpc155",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -3034,7 +3034,7 @@ doabaNpc155 = Creature:new {
 
 doabaNpc156 = Creature:new {
 	objectName = "doabaNpc156",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -3056,7 +3056,7 @@ doabaNpc156 = Creature:new {
 
 doabaNpc157 = Creature:new {
 	objectName = "doabaNpc157",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -3078,7 +3078,7 @@ doabaNpc157 = Creature:new {
 
 doabaNpc158 = Creature:new {
 	objectName = "doabaNpc158",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -3100,7 +3100,7 @@ doabaNpc158 = Creature:new {
 
 doabaNpc159 = Creature:new {
 	objectName = "doabaNpc159",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -3122,7 +3122,7 @@ doabaNpc159 = Creature:new {
 
 doabaNpc160 = Creature:new {
 	objectName = "doabaNpc160",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_master_sergeant",
 	combatFlags = 0,
@@ -3144,7 +3144,7 @@ doabaNpc160 = Creature:new {
 
 doabaNpc161 = Creature:new {
 	objectName = "doabaNpc161",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "info_broker",
 	combatFlags = 0,
@@ -3166,7 +3166,7 @@ doabaNpc161 = Creature:new {
 
 doabaNpc162 = Creature:new {
 	objectName = "doabaNpc162",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -3188,7 +3188,7 @@ doabaNpc162 = Creature:new {
 
 doabaNpc163 = Creature:new {
 	objectName = "doabaNpc163",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3210,7 +3210,7 @@ doabaNpc163 = Creature:new {
 
 doabaNpc164 = Creature:new {
 	objectName = "doabaNpc164",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -3232,7 +3232,7 @@ doabaNpc164 = Creature:new {
 
 doabaNpc165 = Creature:new {
 	objectName = "doabaNpc165",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -3254,7 +3254,7 @@ doabaNpc165 = Creature:new {
 
 doabaNpc166 = Creature:new {
 	objectName = "doabaNpc166",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -3276,7 +3276,7 @@ doabaNpc166 = Creature:new {
 
 doabaNpc167 = Creature:new {
 	objectName = "doabaNpc167",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -3298,7 +3298,7 @@ doabaNpc167 = Creature:new {
 
 doabaNpc168 = Creature:new {
 	objectName = "doabaNpc168",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -3320,7 +3320,7 @@ doabaNpc168 = Creature:new {
 
 doabaNpc169 = Creature:new {
 	objectName = "doabaNpc169",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly",
 	combatFlags = 0,
@@ -3342,7 +3342,7 @@ doabaNpc169 = Creature:new {
 
 doabaNpc170 = Creature:new {
 	objectName = "doabaNpc170",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -3364,7 +3364,7 @@ doabaNpc170 = Creature:new {
 
 doabaNpc171 = Creature:new {
 	objectName = "doabaNpc171",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -3386,7 +3386,7 @@ doabaNpc171 = Creature:new {
 
 doabaNpc172 = Creature:new {
 	objectName = "doabaNpc172",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -3408,7 +3408,7 @@ doabaNpc172 = Creature:new {
 
 doabaNpc173 = Creature:new {
 	objectName = "doabaNpc173",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -3430,7 +3430,7 @@ doabaNpc173 = Creature:new {
 
 doabaNpc174 = Creature:new {
 	objectName = "doabaNpc174",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3452,7 +3452,7 @@ doabaNpc174 = Creature:new {
 
 doabaNpc175 = Creature:new {
 	objectName = "doabaNpc175",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3474,7 +3474,7 @@ doabaNpc175 = Creature:new {
 
 doabaNpc176 = Creature:new {
 	objectName = "doabaNpc176",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -3496,7 +3496,7 @@ doabaNpc176 = Creature:new {
 
 doabaNpc177 = Creature:new {
 	objectName = "doabaNpc177",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly",
 	combatFlags = 0,
@@ -3518,7 +3518,7 @@ doabaNpc177 = Creature:new {
 
 doabaNpc178 = Creature:new {
 	objectName = "doabaNpc178",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -3540,7 +3540,7 @@ doabaNpc178 = Creature:new {
 
 doabaNpc179 = Creature:new {
 	objectName = "doabaNpc179",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly",
 	combatFlags = 0,
@@ -3562,7 +3562,7 @@ doabaNpc179 = Creature:new {
 
 doabaNpc180 = Creature:new {
 	objectName = "doabaNpc180",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -3584,7 +3584,7 @@ doabaNpc180 = Creature:new {
 
 doabaNpc181 = Creature:new {
 	objectName = "doabaNpc181",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -3606,7 +3606,7 @@ doabaNpc181 = Creature:new {
 
 doabaNpc182 = Creature:new {
 	objectName = "doabaNpc182",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -3628,7 +3628,7 @@ doabaNpc182 = Creature:new {
 
 doabaNpc183 = Creature:new {
 	objectName = "doabaNpc183",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -3650,7 +3650,7 @@ doabaNpc183 = Creature:new {
 
 doabaNpc184 = Creature:new {
 	objectName = "doabaNpc184",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -3672,7 +3672,7 @@ doabaNpc184 = Creature:new {
 
 doabaNpc185 = Creature:new {
 	objectName = "doabaNpc185",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -3694,7 +3694,7 @@ doabaNpc185 = Creature:new {
 
 doabaNpc186 = Creature:new {
 	objectName = "doabaNpc186",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -3716,7 +3716,7 @@ doabaNpc186 = Creature:new {
 
 doabaNpc187 = Creature:new {
 	objectName = "doabaNpc187",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -3738,7 +3738,7 @@ doabaNpc187 = Creature:new {
 
 doabaNpc188 = Creature:new {
 	objectName = "doabaNpc188",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,

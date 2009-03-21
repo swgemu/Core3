@@ -3084,8 +3084,12 @@ void CreatureObjectImplementation::activateEntertainerBuff(int performanceType) 
 	// Returns the Number of Seconds for the Buff Duration
 	float buffDuration = getEntertainerBuffDuration(performanceType);
 	// Returns a % of base stat
-	float buffStrength = getEntertainerBuffStrength(performanceType);
+	int campMod = 100;
 
+	if (isInCamp())
+		campMod = getCampModifier();
+
+	float buffStrength = getEntertainerBuffStrength(performanceType) * campMod / 100;
 
 	//System::out << "activateEntertainerBuff(" << performanceType << ") called for " << getCharacterName().toString() << " with duration: " << buffDuration << " strength: ";
 	//System::out.precision(4);
@@ -3263,6 +3267,11 @@ void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bo
 	SkillManager* skillManager = server->getSkillManager();
 	Performance* performance = NULL;
 	float enhancementSkill = 0.0f;
+	int campMod = 100;
+
+	if (isInCamp()) {
+		campMod = getCampModifier();
+	}
 
 	if (getPerformanceName() == "")
 		return;
@@ -3288,8 +3297,8 @@ void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bo
 		return;
 	}
 
-	int woundHeal = -1 * performance->getHealMindWound();
-	int shockHeal = -1 * performance->getHealShockWound();
+	int woundHeal = -1 * performance->getHealMindWound() * campMod / 100;
+	int shockHeal = -1 * performance->getHealShockWound() * campMod / 100;
 
 	// Entertainer can heal their own BF/Wounds
 	if (healWounds)

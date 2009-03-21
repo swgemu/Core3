@@ -66,7 +66,7 @@ RunItemLUAFile("bluefrog/weaponSets.lua");
 RunItemLUAFile("bluefrog/surveyingKit.lua");
 
 RunItemLUAFile("bluefrog/grenadeSet.lua");
---RunItemLUAFile("bluefrog/camokits.lua");
---RunItemLUAFile("bluefrog/trapSet.lua");
---RunItemLUAFile("bluefrog/campKits.lua");
+RunItemLUAFile("bluefrog/camokits.lua");
+RunItemLUAFile("bluefrog/trapSet.lua");
+RunItemLUAFile("bluefrog/campKits.lua");
 --RunItemLUAFile("bluefrog/slicingTools.lua");

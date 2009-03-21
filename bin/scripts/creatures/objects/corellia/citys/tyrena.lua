@@ -42,7 +42,7 @@
 
 tyrenaNpc1 = Creature:new {
 	objectName = "tyrenaNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_command_security_guard",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ tyrenaNpc1 = Creature:new {
 
 tyrenaNpc2 = Creature:new {
 	objectName = "tyrenaNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ tyrenaNpc2 = Creature:new {
 
 tyrenaNpc3 = Creature:new {
 	objectName = "tyrenaNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ tyrenaNpc3 = Creature:new {
 
 tyrenaNpc4 = Creature:new {
 	objectName = "tyrenaNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cll_8",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ tyrenaNpc4 = Creature:new {
 
 tyrenaNpc5 = Creature:new {
 	objectName = "tyrenaNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "larek_tatham",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ tyrenaNpc5 = Creature:new {
 
 tyrenaNpc6 = Creature:new {
 	objectName = "tyrenaNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ulaire_roye",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ tyrenaNpc6 = Creature:new {
 
 tyrenaNpc7 = Creature:new {
 	objectName = "tyrenaNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_bombardier",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ tyrenaNpc7 = Creature:new {
 
 tyrenaNpc8 = Creature:new {
 	objectName = "tyrenaNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ tyrenaNpc8 = Creature:new {
 
 tyrenaNpc9 = Creature:new {
 	objectName = "tyrenaNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ tyrenaNpc9 = Creature:new {
 
 tyrenaNpc10 = Creature:new {
 	objectName = "tyrenaNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ tyrenaNpc10 = Creature:new {
 
 tyrenaNpc11 = Creature:new {
 	objectName = "tyrenaNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ tyrenaNpc11 = Creature:new {
 
 tyrenaNpc12 = Creature:new {
 	objectName = "tyrenaNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_times_investigator",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ tyrenaNpc12 = Creature:new {
 
 tyrenaNpc13 = Creature:new {
 	objectName = "tyrenaNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_master_sergeant",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ tyrenaNpc13 = Creature:new {
 
 tyrenaNpc14 = Creature:new {
 	objectName = "tyrenaNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_detective",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ tyrenaNpc14 = Creature:new {
 
 tyrenaNpc15 = Creature:new {
 	objectName = "tyrenaNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner_human_male",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ tyrenaNpc15 = Creature:new {
 
 tyrenaNpc16 = Creature:new {
 	objectName = "tyrenaNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chassis_broker",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ tyrenaNpc16 = Creature:new {
 
 tyrenaNpc17 = Creature:new {
 	objectName = "tyrenaNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ tyrenaNpc17 = Creature:new {
 
 tyrenaNpc18 = Creature:new {
 	objectName = "tyrenaNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_agent",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ tyrenaNpc18 = Creature:new {
 
 tyrenaNpc25 = Creature:new {
 	objectName = "tyrenaNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_command_security_guard",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ tyrenaNpc25 = Creature:new {
 
 tyrenaNpc26 = Creature:new {
 	objectName = "tyrenaNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "j_pai_brek",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ tyrenaNpc26 = Creature:new {
 
 tyrenaNpc28 = Creature:new {
 	objectName = "tyrenaNpc28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ tyrenaNpc28 = Creature:new {
 
 tyrenaNpc31 = Creature:new {
 	objectName = "tyrenaNpc31",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ tyrenaNpc31 = Creature:new {
 
 tyrenaNpc32 = Creature:new {
 	objectName = "tyrenaNpc32",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ tyrenaNpc32 = Creature:new {
 
 tyrenaNpc33 = Creature:new {
 	objectName = "tyrenaNpc33",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ tyrenaNpc33 = Creature:new {
 
 tyrenaNpc34 = Creature:new {
 	objectName = "tyrenaNpc34",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ tyrenaNpc34 = Creature:new {
 
 tyrenaNpc35 = Creature:new {
 	objectName = "tyrenaNpc35",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_rogue",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ tyrenaNpc35 = Creature:new {
 
 tyrenaNpc36 = Creature:new {
 	objectName = "tyrenaNpc36",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ tyrenaNpc36 = Creature:new {
 
 tyrenaNpc38 = Creature:new {
 	objectName = "tyrenaNpc38",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ tyrenaNpc38 = Creature:new {
 
 tyrenaNpc39 = Creature:new {
 	objectName = "tyrenaNpc39",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ tyrenaNpc39 = Creature:new {
 
 tyrenaNpc40 = Creature:new {
 	objectName = "tyrenaNpc40",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ tyrenaNpc40 = Creature:new {
 
 tyrenaNpc41 = Creature:new {
 	objectName = "tyrenaNpc41",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_rifleman",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ tyrenaNpc41 = Creature:new {
 
 tyrenaNpc44 = Creature:new {
 	objectName = "tyrenaNpc44",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ tyrenaNpc44 = Creature:new {
 
 tyrenaNpc47 = Creature:new {
 	objectName = "tyrenaNpc47",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_noncom",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ tyrenaNpc47 = Creature:new {
 
 tyrenaNpc49 = Creature:new {
 	objectName = "tyrenaNpc49",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ tyrenaNpc49 = Creature:new {
 
 tyrenaNpc51 = Creature:new {
 	objectName = "tyrenaNpc51",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_sniper",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ tyrenaNpc51 = Creature:new {
 
 tyrenaNpc52 = Creature:new {
 	objectName = "tyrenaNpc52",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -834,7 +834,7 @@ tyrenaNpc52 = Creature:new {
 
 tyrenaNpc53 = Creature:new {
 	objectName = "tyrenaNpc53",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -856,7 +856,7 @@ tyrenaNpc53 = Creature:new {
 
 tyrenaNpc54 = Creature:new {
 	objectName = "tyrenaNpc54",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -878,7 +878,7 @@ tyrenaNpc54 = Creature:new {
 
 tyrenaNpc55 = Creature:new {
 	objectName = "tyrenaNpc55",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -900,7 +900,7 @@ tyrenaNpc55 = Creature:new {
 
 tyrenaNpc56 = Creature:new {
 	objectName = "tyrenaNpc56",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_storm_commando",
 	combatFlags = 0,
@@ -922,7 +922,7 @@ tyrenaNpc56 = Creature:new {
 
 tyrenaNpc69 = Creature:new {
 	objectName = "tyrenaNpc69",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_medic",
 	combatFlags = 0,
@@ -944,7 +944,7 @@ tyrenaNpc69 = Creature:new {
 
 tyrenaNpc70 = Creature:new {
 	objectName = "tyrenaNpc70",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -966,7 +966,7 @@ tyrenaNpc70 = Creature:new {
 
 tyrenaNpc75 = Creature:new {
 	objectName = "tyrenaNpc75",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -988,7 +988,7 @@ tyrenaNpc75 = Creature:new {
 
 tyrenaNpc76 = Creature:new {
 	objectName = "tyrenaNpc76",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -1010,7 +1010,7 @@ tyrenaNpc76 = Creature:new {
 
 tyrenaNpc77 = Creature:new {
 	objectName = "tyrenaNpc77",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -1032,7 +1032,7 @@ tyrenaNpc77 = Creature:new {
 
 tyrenaNpc78 = Creature:new {
 	objectName = "tyrenaNpc78",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -1054,7 +1054,7 @@ tyrenaNpc78 = Creature:new {
 
 tyrenaNpc79 = Creature:new {
 	objectName = "tyrenaNpc79",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly",
 	combatFlags = 0,
@@ -1076,7 +1076,7 @@ tyrenaNpc79 = Creature:new {
 
 tyrenaNpc80 = Creature:new {
 	objectName = "tyrenaNpc80",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1098,7 +1098,7 @@ tyrenaNpc80 = Creature:new {
 
 tyrenaNpc83 = Creature:new {
 	objectName = "tyrenaNpc83",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "swooper_leader",
 	combatFlags = 0,
@@ -1120,7 +1120,7 @@ tyrenaNpc83 = Creature:new {
 
 tyrenaNpc84 = Creature:new {
 	objectName = "tyrenaNpc84",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "swooper_leader",
 	combatFlags = 0,
@@ -1142,7 +1142,7 @@ tyrenaNpc84 = Creature:new {
 
 tyrenaNpc85 = Creature:new {
 	objectName = "tyrenaNpc85",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "swooper_leader",
 	combatFlags = 0,
@@ -1164,7 +1164,7 @@ tyrenaNpc85 = Creature:new {
 
 tyrenaNpc87 = Creature:new {
 	objectName = "tyrenaNpc87",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -1186,7 +1186,7 @@ tyrenaNpc87 = Creature:new {
 
 tyrenaNpc88 = Creature:new {
 	objectName = "tyrenaNpc88",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly",
 	combatFlags = 0,
@@ -1208,7 +1208,7 @@ tyrenaNpc88 = Creature:new {
 
 tyrenaNpc89 = Creature:new {
 	objectName = "tyrenaNpc89",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -1230,7 +1230,7 @@ tyrenaNpc89 = Creature:new {
 
 tyrenaNpc90 = Creature:new {
 	objectName = "tyrenaNpc90",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1252,7 +1252,7 @@ tyrenaNpc90 = Creature:new {
 
 tyrenaNpc91 = Creature:new {
 	objectName = "tyrenaNpc91",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1274,7 +1274,7 @@ tyrenaNpc91 = Creature:new {
 
 tyrenaNpc93 = Creature:new {
 	objectName = "tyrenaNpc93",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_specialist_noncom",
 	combatFlags = 0,
@@ -1296,7 +1296,7 @@ tyrenaNpc93 = Creature:new {
 
 tyrenaNpc95 = Creature:new {
 	objectName = "tyrenaNpc95",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1318,7 +1318,7 @@ tyrenaNpc95 = Creature:new {
 
 tyrenaNpc96 = Creature:new {
 	objectName = "tyrenaNpc96",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -1340,7 +1340,7 @@ tyrenaNpc96 = Creature:new {
 
 tyrenaNpc97 = Creature:new {
 	objectName = "tyrenaNpc97",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly",
 	combatFlags = 0,
@@ -1362,7 +1362,7 @@ tyrenaNpc97 = Creature:new {
 
 tyrenaNpc98 = Creature:new {
 	objectName = "tyrenaNpc98",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -1384,7 +1384,7 @@ tyrenaNpc98 = Creature:new {
 
 tyrenaNpc99 = Creature:new {
 	objectName = "tyrenaNpc99",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -1406,7 +1406,7 @@ tyrenaNpc99 = Creature:new {
 
 tyrenaNpc100 = Creature:new {
 	objectName = "tyrenaNpc100",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -1428,7 +1428,7 @@ tyrenaNpc100 = Creature:new {
 
 tyrenaNpc101 = Creature:new {
 	objectName = "tyrenaNpc101",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -1450,7 +1450,7 @@ tyrenaNpc101 = Creature:new {
 
 tyrenaNpc102 = Creature:new {
 	objectName = "tyrenaNpc102",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_army_captain",
 	combatFlags = 0,
@@ -1472,7 +1472,7 @@ tyrenaNpc102 = Creature:new {
 
 tyrenaNpc104 = Creature:new {
 	objectName = "tyrenaNpc104",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_command_security_guard",
 	combatFlags = 0,
@@ -1494,7 +1494,7 @@ tyrenaNpc104 = Creature:new {
 
 tyrenaNpc105 = Creature:new {
 	objectName = "tyrenaNpc105",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1516,7 +1516,7 @@ tyrenaNpc105 = Creature:new {
 
 tyrenaNpc106 = Creature:new {
 	objectName = "tyrenaNpc106",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -1538,7 +1538,7 @@ tyrenaNpc106 = Creature:new {
 
 tyrenaNpc108 = Creature:new {
 	objectName = "tyrenaNpc108",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -1560,7 +1560,7 @@ tyrenaNpc108 = Creature:new {
 
 tyrenaNpc110 = Creature:new {
 	objectName = "tyrenaNpc110",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -1582,7 +1582,7 @@ tyrenaNpc110 = Creature:new {
 
 tyrenaNpc112 = Creature:new {
 	objectName = "tyrenaNpc112",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -1604,7 +1604,7 @@ tyrenaNpc112 = Creature:new {
 
 tyrenaNpc113 = Creature:new {
 	objectName = "tyrenaNpc113",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -1626,7 +1626,7 @@ tyrenaNpc113 = Creature:new {
 
 tyrenaNpc114 = Creature:new {
 	objectName = "tyrenaNpc114",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1648,7 +1648,7 @@ tyrenaNpc114 = Creature:new {
 
 tyrenaNpc115 = Creature:new {
 	objectName = "tyrenaNpc115",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1670,7 +1670,7 @@ tyrenaNpc115 = Creature:new {
 
 tyrenaNpc117 = Creature:new {
 	objectName = "tyrenaNpc117",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -1692,7 +1692,7 @@ tyrenaNpc117 = Creature:new {
 
 tyrenaNpc118 = Creature:new {
 	objectName = "tyrenaNpc118",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -1714,7 +1714,7 @@ tyrenaNpc118 = Creature:new {
 
 tyrenaNpc119 = Creature:new {
 	objectName = "tyrenaNpc119",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -1736,7 +1736,7 @@ tyrenaNpc119 = Creature:new {
 
 tyrenaNpc120 = Creature:new {
 	objectName = "tyrenaNpc120",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -1758,7 +1758,7 @@ tyrenaNpc120 = Creature:new {
 
 tyrenaNpc121 = Creature:new {
 	objectName = "tyrenaNpc121",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1780,7 +1780,7 @@ tyrenaNpc121 = Creature:new {
 
 tyrenaNpc122 = Creature:new {
 	objectName = "tyrenaNpc122",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -1802,7 +1802,7 @@ tyrenaNpc122 = Creature:new {
 
 tyrenaNpc123 = Creature:new {
 	objectName = "tyrenaNpc123",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -1824,7 +1824,7 @@ tyrenaNpc123 = Creature:new {
 
 tyrenaNpc124 = Creature:new {
 	objectName = "tyrenaNpc124",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1846,7 +1846,7 @@ tyrenaNpc124 = Creature:new {
 
 tyrenaNpc125 = Creature:new {
 	objectName = "tyrenaNpc125",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -1868,7 +1868,7 @@ tyrenaNpc125 = Creature:new {
 
 tyrenaNpc126 = Creature:new {
 	objectName = "tyrenaNpc126",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1890,7 +1890,7 @@ tyrenaNpc126 = Creature:new {
 
 tyrenaNpc127 = Creature:new {
 	objectName = "tyrenaNpc127",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_investigator",
 	combatFlags = 0,
@@ -1912,7 +1912,7 @@ tyrenaNpc127 = Creature:new {
 
 tyrenaNpc128 = Creature:new {
 	objectName = "tyrenaNpc128",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1934,7 +1934,7 @@ tyrenaNpc128 = Creature:new {
 
 tyrenaNpc129 = Creature:new {
 	objectName = "tyrenaNpc129",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "pilot",
 	combatFlags = 0,
@@ -1956,7 +1956,7 @@ tyrenaNpc129 = Creature:new {
 
 tyrenaNpc130 = Creature:new {
 	objectName = "tyrenaNpc130",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1978,7 +1978,7 @@ tyrenaNpc130 = Creature:new {
 
 tyrenaNpc131 = Creature:new {
 	objectName = "tyrenaNpc131",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_rogue",
 	combatFlags = 0,
@@ -2000,7 +2000,7 @@ tyrenaNpc131 = Creature:new {
 
 tyrenaNpc133 = Creature:new {
 	objectName = "tyrenaNpc133",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_rifleman",
 	combatFlags = 0,
@@ -2022,7 +2022,7 @@ tyrenaNpc133 = Creature:new {
 
 tyrenaNpc134 = Creature:new {
 	objectName = "tyrenaNpc134",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -2044,7 +2044,7 @@ tyrenaNpc134 = Creature:new {
 
 tyrenaNpc136 = Creature:new {
 	objectName = "tyrenaNpc136",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -2066,7 +2066,7 @@ tyrenaNpc136 = Creature:new {
 
 tyrenaNpc137 = Creature:new {
 	objectName = "tyrenaNpc137",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "drall_monk",
 	combatFlags = 0,
@@ -2088,7 +2088,7 @@ tyrenaNpc137 = Creature:new {
 
 tyrenaNpc138 = Creature:new {
 	objectName = "tyrenaNpc138",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -2110,7 +2110,7 @@ tyrenaNpc138 = Creature:new {
 
 tyrenaNpc139 = Creature:new {
 	objectName = "tyrenaNpc139",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -2132,7 +2132,7 @@ tyrenaNpc139 = Creature:new {
 
 tyrenaNpc140 = Creature:new {
 	objectName = "tyrenaNpc140",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -2154,7 +2154,7 @@ tyrenaNpc140 = Creature:new {
 
 tyrenaNpc141 = Creature:new {
 	objectName = "tyrenaNpc141",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "drall_monk",
 	combatFlags = 0,
@@ -2176,7 +2176,7 @@ tyrenaNpc141 = Creature:new {
 
 tyrenaNpc142 = Creature:new {
 	objectName = "tyrenaNpc142",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -2198,7 +2198,7 @@ tyrenaNpc142 = Creature:new {
 
 tyrenaNpc143 = Creature:new {
 	objectName = "tyrenaNpc143",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -2220,7 +2220,7 @@ tyrenaNpc143 = Creature:new {
 
 tyrenaNpc144 = Creature:new {
 	objectName = "tyrenaNpc144",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "info_broker",
 	combatFlags = 0,
@@ -2242,7 +2242,7 @@ tyrenaNpc144 = Creature:new {
 
 tyrenaNpc145 = Creature:new {
 	objectName = "tyrenaNpc145",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "drall_guard",
 	combatFlags = 0,
@@ -2264,7 +2264,7 @@ tyrenaNpc145 = Creature:new {
 
 tyrenaNpc146 = Creature:new {
 	objectName = "tyrenaNpc146",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_major",
 	combatFlags = 0,
@@ -2286,7 +2286,7 @@ tyrenaNpc146 = Creature:new {
 
 tyrenaNpc147 = Creature:new {
 	objectName = "tyrenaNpc147",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -2308,7 +2308,7 @@ tyrenaNpc147 = Creature:new {
 
 tyrenaNpc148 = Creature:new {
 	objectName = "tyrenaNpc148",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -2330,7 +2330,7 @@ tyrenaNpc148 = Creature:new {
 
 tyrenaNpc149 = Creature:new {
 	objectName = "tyrenaNpc149",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "quest_crowd_pleaser_theater_manager",
 	combatFlags = 0,
@@ -2352,7 +2352,7 @@ tyrenaNpc149 = Creature:new {
 
 tyrenaNpc150 = Creature:new {
 	objectName = "tyrenaNpc150",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_times_investigator",
 	combatFlags = 0,
@@ -2374,7 +2374,7 @@ tyrenaNpc150 = Creature:new {
 
 tyrenaNpc151 = Creature:new {
 	objectName = "tyrenaNpc151",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -2396,7 +2396,7 @@ tyrenaNpc151 = Creature:new {
 
 tyrenaNpc152 = Creature:new {
 	objectName = "tyrenaNpc152",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -2418,7 +2418,7 @@ tyrenaNpc152 = Creature:new {
 
 tyrenaNpc153 = Creature:new {
 	objectName = "tyrenaNpc153",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -2440,7 +2440,7 @@ tyrenaNpc153 = Creature:new {
 
 tyrenaNpc154 = Creature:new {
 	objectName = "tyrenaNpc154",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -2462,7 +2462,7 @@ tyrenaNpc154 = Creature:new {
 
 tyrenaNpc155 = Creature:new {
 	objectName = "tyrenaNpc155",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly",
 	combatFlags = 0,
@@ -2484,7 +2484,7 @@ tyrenaNpc155 = Creature:new {
 
 tyrenaNpc156 = Creature:new {
 	objectName = "tyrenaNpc156",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "info_broker",
 	combatFlags = 0,
@@ -2506,7 +2506,7 @@ tyrenaNpc156 = Creature:new {
 
 tyrenaNpc157 = Creature:new {
 	objectName = "tyrenaNpc157",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2528,7 +2528,7 @@ tyrenaNpc157 = Creature:new {
 
 tyrenaNpc158 = Creature:new {
 	objectName = "tyrenaNpc158",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2550,7 +2550,7 @@ tyrenaNpc158 = Creature:new {
 
 tyrenaNpc159 = Creature:new {
 	objectName = "tyrenaNpc159",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "vynock",
 	combatFlags = 0,
@@ -2572,7 +2572,7 @@ tyrenaNpc159 = Creature:new {
 
 tyrenaNpc160 = Creature:new {
 	objectName = "tyrenaNpc160",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2594,7 +2594,7 @@ tyrenaNpc160 = Creature:new {
 
 tyrenaNpc161 = Creature:new {
 	objectName = "tyrenaNpc161",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2616,7 +2616,7 @@ tyrenaNpc161 = Creature:new {
 
 tyrenaNpc162 = Creature:new {
 	objectName = "tyrenaNpc162",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2638,7 +2638,7 @@ tyrenaNpc162 = Creature:new {
 
 tyrenaNpc163 = Creature:new {
 	objectName = "tyrenaNpc163",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "vynock",
 	combatFlags = 0,
@@ -2660,7 +2660,7 @@ tyrenaNpc163 = Creature:new {
 
 tyrenaNpc164 = Creature:new {
 	objectName = "tyrenaNpc164",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "vynock",
 	combatFlags = 0,
@@ -2682,7 +2682,7 @@ tyrenaNpc164 = Creature:new {
 
 tyrenaNpc165 = Creature:new {
 	objectName = "tyrenaNpc165",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2704,7 +2704,7 @@ tyrenaNpc165 = Creature:new {
 
 tyrenaNpc166 = Creature:new {
 	objectName = "tyrenaNpc166",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2726,7 +2726,7 @@ tyrenaNpc166 = Creature:new {
 
 tyrenaNpc167 = Creature:new {
 	objectName = "tyrenaNpc167",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2748,7 +2748,7 @@ tyrenaNpc167 = Creature:new {
 
 tyrenaNpc168 = Creature:new {
 	objectName = "tyrenaNpc168",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2770,7 +2770,7 @@ tyrenaNpc168 = Creature:new {
 
 tyrenaNpc169 = Creature:new {
 	objectName = "tyrenaNpc169",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2792,7 +2792,7 @@ tyrenaNpc169 = Creature:new {
 
 tyrenaNpc170 = Creature:new {
 	objectName = "tyrenaNpc170",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -2814,7 +2814,7 @@ tyrenaNpc170 = Creature:new {
 
 tyrenaNpc171 = Creature:new {
 	objectName = "tyrenaNpc171",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -2836,7 +2836,7 @@ tyrenaNpc171 = Creature:new {
 
 tyrenaNpc172 = Creature:new {
 	objectName = "tyrenaNpc172",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -2858,7 +2858,7 @@ tyrenaNpc172 = Creature:new {
 
 tyrenaNpc175 = Creature:new {
 	objectName = "tyrenaNpc175",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_dark_trooper",
 	combatFlags = 0,
@@ -2880,7 +2880,7 @@ tyrenaNpc175 = Creature:new {
 
 tyrenaNpc181 = Creature:new {
 	objectName = "tyrenaNpc181",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2902,7 +2902,7 @@ tyrenaNpc181 = Creature:new {
 
 tyrenaNpc190 = Creature:new {
 	objectName = "tyrenaNpc190",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2924,7 +2924,7 @@ tyrenaNpc190 = Creature:new {
 
 tyrenaNpc196 = Creature:new {
 	objectName = "tyrenaNpc196",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2946,7 +2946,7 @@ tyrenaNpc196 = Creature:new {
 
 tyrenaNpc197 = Creature:new {
 	objectName = "tyrenaNpc197",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -2968,7 +2968,7 @@ tyrenaNpc197 = Creature:new {
 
 tyrenaNpc198 = Creature:new {
 	objectName = "tyrenaNpc198",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "drall_guard",
 	combatFlags = 0,
@@ -2990,7 +2990,7 @@ tyrenaNpc198 = Creature:new {
 
 tyrenaNpc200 = Creature:new {
 	objectName = "tyrenaNpc200",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_sniper",
 	combatFlags = 0,
@@ -3012,7 +3012,7 @@ tyrenaNpc200 = Creature:new {
 
 tyrenaNpc203 = Creature:new {
 	objectName = "tyrenaNpc203",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -3034,7 +3034,7 @@ tyrenaNpc203 = Creature:new {
 
 tyrenaNpc204 = Creature:new {
 	objectName = "tyrenaNpc204",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_dark_trooper",
 	combatFlags = 0,
@@ -3056,7 +3056,7 @@ tyrenaNpc204 = Creature:new {
 
 tyrenaNpc205 = Creature:new {
 	objectName = "tyrenaNpc205",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -3078,7 +3078,7 @@ tyrenaNpc205 = Creature:new {
 
 tyrenaNpc206 = Creature:new {
 	objectName = "tyrenaNpc206",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -3100,7 +3100,7 @@ tyrenaNpc206 = Creature:new {
 
 tyrenaNpc207 = Creature:new {
 	objectName = "tyrenaNpc207",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -3122,7 +3122,7 @@ tyrenaNpc207 = Creature:new {
 
 tyrenaNpc208 = Creature:new {
 	objectName = "tyrenaNpc208",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -3144,7 +3144,7 @@ tyrenaNpc208 = Creature:new {
 
 tyrenaNpc209 = Creature:new {
 	objectName = "tyrenaNpc209",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -3166,7 +3166,7 @@ tyrenaNpc209 = Creature:new {
 
 tyrenaNpc210 = Creature:new {
 	objectName = "tyrenaNpc210",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -3188,7 +3188,7 @@ tyrenaNpc210 = Creature:new {
 
 tyrenaNpc211 = Creature:new {
 	objectName = "tyrenaNpc211",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -3210,7 +3210,7 @@ tyrenaNpc211 = Creature:new {
 
 tyrenaNpc212 = Creature:new {
 	objectName = "tyrenaNpc212",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -3232,7 +3232,7 @@ tyrenaNpc212 = Creature:new {
 
 tyrenaNpc213 = Creature:new {
 	objectName = "tyrenaNpc213",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_times_investigator",
 	combatFlags = 0,
@@ -3254,7 +3254,7 @@ tyrenaNpc213 = Creature:new {
 
 tyrenaNpc214 = Creature:new {
 	objectName = "tyrenaNpc214",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_investigator",
 	combatFlags = 0,
@@ -3276,7 +3276,7 @@ tyrenaNpc214 = Creature:new {
 
 tyrenaNpc215 = Creature:new {
 	objectName = "tyrenaNpc215",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -3298,7 +3298,7 @@ tyrenaNpc215 = Creature:new {
 
 tyrenaNpc216 = Creature:new {
 	objectName = "tyrenaNpc216",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -3320,7 +3320,7 @@ tyrenaNpc216 = Creature:new {
 
 tyrenaNpc217 = Creature:new {
 	objectName = "tyrenaNpc217",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3342,7 +3342,7 @@ tyrenaNpc217 = Creature:new {
 
 tyrenaNpc218 = Creature:new {
 	objectName = "tyrenaNpc218",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -3364,7 +3364,7 @@ tyrenaNpc218 = Creature:new {
 
 tyrenaNpc219 = Creature:new {
 	objectName = "tyrenaNpc219",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -3386,7 +3386,7 @@ tyrenaNpc219 = Creature:new {
 
 tyrenaNpc220 = Creature:new {
 	objectName = "tyrenaNpc220",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly",
 	combatFlags = 0,
@@ -3408,7 +3408,7 @@ tyrenaNpc220 = Creature:new {
 
 tyrenaNpc221 = Creature:new {
 	objectName = "tyrenaNpc221",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly",
 	combatFlags = 0,
@@ -3430,7 +3430,7 @@ tyrenaNpc221 = Creature:new {
 
 tyrenaNpc222 = Creature:new {
 	objectName = "tyrenaNpc222",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "comm_operator",
 	combatFlags = 0,
@@ -3452,7 +3452,7 @@ tyrenaNpc222 = Creature:new {
 
 tyrenaNpc223 = Creature:new {
 	objectName = "tyrenaNpc223",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_deserter",
 	combatFlags = 0,
@@ -3474,7 +3474,7 @@ tyrenaNpc223 = Creature:new {
 
 tyrenaNpc226 = Creature:new {
 	objectName = "tyrenaNpc226",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -3496,7 +3496,7 @@ tyrenaNpc226 = Creature:new {
 
 tyrenaNpc227 = Creature:new {
 	objectName = "tyrenaNpc227",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -3518,7 +3518,7 @@ tyrenaNpc227 = Creature:new {
 
 tyrenaNpc228 = Creature:new {
 	objectName = "tyrenaNpc228",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -3540,7 +3540,7 @@ tyrenaNpc228 = Creature:new {
 
 tyrenaNpc229 = Creature:new {
 	objectName = "tyrenaNpc229",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -3562,7 +3562,7 @@ tyrenaNpc229 = Creature:new {
 
 tyrenaNpc230 = Creature:new {
 	objectName = "tyrenaNpc230",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -3584,7 +3584,7 @@ tyrenaNpc230 = Creature:new {
 
 tyrenaNpc231 = Creature:new {
 	objectName = "tyrenaNpc231",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -3606,7 +3606,7 @@ tyrenaNpc231 = Creature:new {
 
 tyrenaNpc232 = Creature:new {
 	objectName = "tyrenaNpc232",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -3628,7 +3628,7 @@ tyrenaNpc232 = Creature:new {
 
 tyrenaNpc233 = Creature:new {
 	objectName = "tyrenaNpc233",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -3650,7 +3650,7 @@ tyrenaNpc233 = Creature:new {
 
 tyrenaNpc234 = Creature:new {
 	objectName = "tyrenaNpc234",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -3672,7 +3672,7 @@ tyrenaNpc234 = Creature:new {
 
 tyrenaNpc235 = Creature:new {
 	objectName = "tyrenaNpc235",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -3694,7 +3694,7 @@ tyrenaNpc235 = Creature:new {
 
 tyrenaNpc236 = Creature:new {
 	objectName = "tyrenaNpc236",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -3716,7 +3716,7 @@ tyrenaNpc236 = Creature:new {
 
 tyrenaNpc237 = Creature:new {
 	objectName = "tyrenaNpc237",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_detective",
 	combatFlags = 0,
@@ -3738,7 +3738,7 @@ tyrenaNpc237 = Creature:new {
 
 tyrenaNpc238 = Creature:new {
 	objectName = "tyrenaNpc238",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_deserter",
 	combatFlags = 0,
@@ -3760,7 +3760,7 @@ tyrenaNpc238 = Creature:new {
 
 tyrenaNpc239 = Creature:new {
 	objectName = "tyrenaNpc239",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3782,7 +3782,7 @@ tyrenaNpc239 = Creature:new {
 
 tyrenaNpc240 = Creature:new {
 	objectName = "tyrenaNpc240",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3804,7 +3804,7 @@ tyrenaNpc240 = Creature:new {
 
 tyrenaNpc241 = Creature:new {
 	objectName = "tyrenaNpc241",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -3826,7 +3826,7 @@ tyrenaNpc241 = Creature:new {
 
 tyrenaNpc242 = Creature:new {
 	objectName = "tyrenaNpc242",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_herald_01",
 	combatFlags = 0,
@@ -3848,7 +3848,7 @@ tyrenaNpc242 = Creature:new {
 
 tyrenaNpc243 = Creature:new {
 	objectName = "tyrenaNpc243",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_rifleman",
 	combatFlags = 0,
@@ -3870,7 +3870,7 @@ tyrenaNpc243 = Creature:new {
 
 tyrenaNpc244 = Creature:new {
 	objectName = "tyrenaNpc244",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_agent",
 	combatFlags = 0,
@@ -3892,7 +3892,7 @@ tyrenaNpc244 = Creature:new {
 
 tyrenaNpc245 = Creature:new {
 	objectName = "tyrenaNpc245",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_sergeant",
 	combatFlags = 0,
@@ -3914,7 +3914,7 @@ tyrenaNpc245 = Creature:new {
 
 tyrenaNpc248 = Creature:new {
 	objectName = "tyrenaNpc248",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_dark_trooper",
 	combatFlags = 0,
@@ -3936,7 +3936,7 @@ tyrenaNpc248 = Creature:new {
 
 tyrenaNpc249 = Creature:new {
 	objectName = "tyrenaNpc249",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3958,7 +3958,7 @@ tyrenaNpc249 = Creature:new {
 
 tyrenaNpc250 = Creature:new {
 	objectName = "tyrenaNpc250",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -3980,7 +3980,7 @@ tyrenaNpc250 = Creature:new {
 
 tyrenaNpc253 = Creature:new {
 	objectName = "tyrenaNpc253",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -4002,7 +4002,7 @@ tyrenaNpc253 = Creature:new {
 
 tyrenaNpc254 = Creature:new {
 	objectName = "tyrenaNpc254",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "coa3_information_rebel",
 	combatFlags = 0,
@@ -4024,7 +4024,7 @@ tyrenaNpc254 = Creature:new {
 
 tyrenaNpc255 = Creature:new {
 	objectName = "tyrenaNpc255",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crafting_contractor",
 	combatFlags = 0,
@@ -4046,7 +4046,7 @@ tyrenaNpc255 = Creature:new {
 
 tyrenaNpc256 = Creature:new {
 	objectName = "tyrenaNpc256",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -4068,7 +4068,7 @@ tyrenaNpc256 = Creature:new {
 
 tyrenaNpc257 = Creature:new {
 	objectName = "tyrenaNpc257",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -4090,7 +4090,7 @@ tyrenaNpc257 = Creature:new {
 
 tyrenaNpc258 = Creature:new {
 	objectName = "tyrenaNpc258",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -4112,7 +4112,7 @@ tyrenaNpc258 = Creature:new {
 
 tyrenaNpc259 = Creature:new {
 	objectName = "tyrenaNpc259",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4134,7 +4134,7 @@ tyrenaNpc259 = Creature:new {
 
 tyrenaNpc260 = Creature:new {
 	objectName = "tyrenaNpc260",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_rifleman",
 	combatFlags = 0,
@@ -4156,7 +4156,7 @@ tyrenaNpc260 = Creature:new {
 
 tyrenaNpc262 = Creature:new {
 	objectName = "tyrenaNpc262",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "coa2_rebel_coordinator",
 	combatFlags = 0,
@@ -4178,7 +4178,7 @@ tyrenaNpc262 = Creature:new {
 
 tyrenaNpc263 = Creature:new {
 	objectName = "tyrenaNpc263",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4200,7 +4200,7 @@ tyrenaNpc263 = Creature:new {
 
 tyrenaNpc264 = Creature:new {
 	objectName = "tyrenaNpc264",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4222,7 +4222,7 @@ tyrenaNpc264 = Creature:new {
 
 tyrenaNpc266 = Creature:new {
 	objectName = "tyrenaNpc266",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -4244,7 +4244,7 @@ tyrenaNpc266 = Creature:new {
 
 tyrenaNpc268 = Creature:new {
 	objectName = "tyrenaNpc268",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4266,7 +4266,7 @@ tyrenaNpc268 = Creature:new {
 
 tyrenaNpc269 = Creature:new {
 	objectName = "tyrenaNpc269",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4288,7 +4288,7 @@ tyrenaNpc269 = Creature:new {
 
 tyrenaNpc270 = Creature:new {
 	objectName = "tyrenaNpc270",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_investigator",
 	combatFlags = 0,
@@ -4310,7 +4310,7 @@ tyrenaNpc270 = Creature:new {
 
 tyrenaNpc271 = Creature:new {
 	objectName = "tyrenaNpc271",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -4332,7 +4332,7 @@ tyrenaNpc271 = Creature:new {
 
 tyrenaNpc273 = Creature:new {
 	objectName = "tyrenaNpc273",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -4354,7 +4354,7 @@ tyrenaNpc273 = Creature:new {
 
 tyrenaNpc275 = Creature:new {
 	objectName = "tyrenaNpc275",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4376,7 +4376,7 @@ tyrenaNpc275 = Creature:new {
 
 tyrenaNpc276 = Creature:new {
 	objectName = "tyrenaNpc276",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -4398,7 +4398,7 @@ tyrenaNpc276 = Creature:new {
 
 tyrenaNpc277 = Creature:new {
 	objectName = "tyrenaNpc277",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_sergeant",
 	combatFlags = 0,
@@ -4420,7 +4420,7 @@ tyrenaNpc277 = Creature:new {
 
 tyrenaNpc279 = Creature:new {
 	objectName = "tyrenaNpc279",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_storm_commando",
 	combatFlags = 0,
@@ -4442,7 +4442,7 @@ tyrenaNpc279 = Creature:new {
 
 tyrenaNpc280 = Creature:new {
 	objectName = "tyrenaNpc280",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -4464,7 +4464,7 @@ tyrenaNpc280 = Creature:new {
 
 tyrenaNpc281 = Creature:new {
 	objectName = "tyrenaNpc281",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4486,7 +4486,7 @@ tyrenaNpc281 = Creature:new {
 
 tyrenaNpc282 = Creature:new {
 	objectName = "tyrenaNpc282",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_inspector_sergeant",
 	combatFlags = 0,
@@ -4508,7 +4508,7 @@ tyrenaNpc282 = Creature:new {
 
 tyrenaNpc283 = Creature:new {
 	objectName = "tyrenaNpc283",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -4530,7 +4530,7 @@ tyrenaNpc283 = Creature:new {
 
 tyrenaNpc284 = Creature:new {
 	objectName = "tyrenaNpc284",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4552,7 +4552,7 @@ tyrenaNpc284 = Creature:new {
 
 tyrenaNpc285 = Creature:new {
 	objectName = "tyrenaNpc285",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_chief",
 	combatFlags = 0,
@@ -4574,7 +4574,7 @@ tyrenaNpc285 = Creature:new {
 
 tyrenaNpc286 = Creature:new {
 	objectName = "tyrenaNpc286",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -4596,7 +4596,7 @@ tyrenaNpc286 = Creature:new {
 
 tyrenaNpc287 = Creature:new {
 	objectName = "tyrenaNpc287",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -4618,7 +4618,7 @@ tyrenaNpc287 = Creature:new {
 
 tyrenaNpc288 = Creature:new {
 	objectName = "tyrenaNpc288",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_detective",
 	combatFlags = 0,
@@ -4640,7 +4640,7 @@ tyrenaNpc288 = Creature:new {
 
 tyrenaNpc289 = Creature:new {
 	objectName = "tyrenaNpc289",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_dark_trooper",
 	combatFlags = 0,
@@ -4662,7 +4662,7 @@ tyrenaNpc289 = Creature:new {
 
 tyrenaNpc290 = Creature:new {
 	objectName = "tyrenaNpc290",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -4684,7 +4684,7 @@ tyrenaNpc290 = Creature:new {
 
 tyrenaNpc291 = Creature:new {
 	objectName = "tyrenaNpc291",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_major",
 	combatFlags = 0,
@@ -4706,7 +4706,7 @@ tyrenaNpc291 = Creature:new {
 
 tyrenaNpc292 = Creature:new {
 	objectName = "tyrenaNpc292",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -4728,7 +4728,7 @@ tyrenaNpc292 = Creature:new {
 
 tyrenaNpc293 = Creature:new {
 	objectName = "tyrenaNpc293",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4750,7 +4750,7 @@ tyrenaNpc293 = Creature:new {
 
 tyrenaNpc294 = Creature:new {
 	objectName = "tyrenaNpc294",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "info_broker",
 	combatFlags = 0,
@@ -4772,7 +4772,7 @@ tyrenaNpc294 = Creature:new {
 
 tyrenaNpc295 = Creature:new {
 	objectName = "tyrenaNpc295",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -4794,7 +4794,7 @@ tyrenaNpc295 = Creature:new {
 
 tyrenaNpc296 = Creature:new {
 	objectName = "tyrenaNpc296",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_cadet",
 	combatFlags = 0,
@@ -4816,7 +4816,7 @@ tyrenaNpc296 = Creature:new {
 
 tyrenaNpc298 = Creature:new {
 	objectName = "tyrenaNpc298",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -4838,7 +4838,7 @@ tyrenaNpc298 = Creature:new {
 
 tyrenaNpc299 = Creature:new {
 	objectName = "tyrenaNpc299",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -4860,7 +4860,7 @@ tyrenaNpc299 = Creature:new {
 
 tyrenaNpc300 = Creature:new {
 	objectName = "tyrenaNpc300",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -4882,7 +4882,7 @@ tyrenaNpc300 = Creature:new {
 
 tyrenaNpc301 = Creature:new {
 	objectName = "tyrenaNpc301",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -4904,7 +4904,7 @@ tyrenaNpc301 = Creature:new {
 
 tyrenaNpc302 = Creature:new {
 	objectName = "tyrenaNpc302",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4926,7 +4926,7 @@ tyrenaNpc302 = Creature:new {
 
 tyrenaNpc303 = Creature:new {
 	objectName = "tyrenaNpc303",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -4948,7 +4948,7 @@ tyrenaNpc303 = Creature:new {
 
 tyrenaNpc304 = Creature:new {
 	objectName = "tyrenaNpc304",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_sergeant",
 	combatFlags = 0,
@@ -4970,7 +4970,7 @@ tyrenaNpc304 = Creature:new {
 
 tyrenaNpc305 = Creature:new {
 	objectName = "tyrenaNpc305",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -4992,7 +4992,7 @@ tyrenaNpc305 = Creature:new {
 
 tyrenaNpc306 = Creature:new {
 	objectName = "tyrenaNpc306",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -5014,7 +5014,7 @@ tyrenaNpc306 = Creature:new {
 
 tyrenaNpc307 = Creature:new {
 	objectName = "tyrenaNpc307",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "surgical_droid_21b",
 	combatFlags = 0,
@@ -5036,7 +5036,7 @@ tyrenaNpc307 = Creature:new {
 
 tyrenaNpc308 = Creature:new {
 	objectName = "tyrenaNpc308",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -5058,7 +5058,7 @@ tyrenaNpc308 = Creature:new {
 
 tyrenaNpc309 = Creature:new {
 	objectName = "tyrenaNpc309",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -5080,7 +5080,7 @@ tyrenaNpc309 = Creature:new {
 
 tyrenaNpc310 = Creature:new {
 	objectName = "tyrenaNpc310",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -5102,7 +5102,7 @@ tyrenaNpc310 = Creature:new {
 
 tyrenaNpc312 = Creature:new {
 	objectName = "tyrenaNpc312",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -5124,7 +5124,7 @@ tyrenaNpc312 = Creature:new {
 
 tyrenaNpc313 = Creature:new {
 	objectName = "tyrenaNpc313",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_sniper",
 	combatFlags = 0,
@@ -5146,7 +5146,7 @@ tyrenaNpc313 = Creature:new {
 
 tyrenaNpc316 = Creature:new {
 	objectName = "tyrenaNpc316",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5168,7 +5168,7 @@ tyrenaNpc316 = Creature:new {
 
 tyrenaNpc317 = Creature:new {
 	objectName = "tyrenaNpc317",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -5190,7 +5190,7 @@ tyrenaNpc317 = Creature:new {
 
 tyrenaNpc318 = Creature:new {
 	objectName = "tyrenaNpc318",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -5212,7 +5212,7 @@ tyrenaNpc318 = Creature:new {
 
 tyrenaNpc319 = Creature:new {
 	objectName = "tyrenaNpc319",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -5234,7 +5234,7 @@ tyrenaNpc319 = Creature:new {
 
 tyrenaNpc320 = Creature:new {
 	objectName = "tyrenaNpc320",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -5256,7 +5256,7 @@ tyrenaNpc320 = Creature:new {
 
 tyrenaNpc321 = Creature:new {
 	objectName = "tyrenaNpc321",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -5278,7 +5278,7 @@ tyrenaNpc321 = Creature:new {
 
 tyrenaNpc322 = Creature:new {
 	objectName = "tyrenaNpc322",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -5300,7 +5300,7 @@ tyrenaNpc322 = Creature:new {
 
 tyrenaNpc323 = Creature:new {
 	objectName = "tyrenaNpc323",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -5322,7 +5322,7 @@ tyrenaNpc323 = Creature:new {
 
 tyrenaNpc324 = Creature:new {
 	objectName = "tyrenaNpc324",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -5344,7 +5344,7 @@ tyrenaNpc324 = Creature:new {
 
 tyrenaNpc325 = Creature:new {
 	objectName = "tyrenaNpc325",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -5366,7 +5366,7 @@ tyrenaNpc325 = Creature:new {
 
 tyrenaNpc326 = Creature:new {
 	objectName = "tyrenaNpc326",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -5388,7 +5388,7 @@ tyrenaNpc326 = Creature:new {
 
 tyrenaNpc327 = Creature:new {
 	objectName = "tyrenaNpc327",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "vynock",
 	combatFlags = 0,
@@ -5410,7 +5410,7 @@ tyrenaNpc327 = Creature:new {
 
 tyrenaNpc328 = Creature:new {
 	objectName = "tyrenaNpc328",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -5432,7 +5432,7 @@ tyrenaNpc328 = Creature:new {
 
 tyrenaNpc329 = Creature:new {
 	objectName = "tyrenaNpc329",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "sand_panther_cub",
 	combatFlags = 0,
@@ -5454,7 +5454,7 @@ tyrenaNpc329 = Creature:new {
 
 tyrenaNpc330 = Creature:new {
 	objectName = "tyrenaNpc330",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gurrcat",
 	combatFlags = 0,
@@ -5476,7 +5476,7 @@ tyrenaNpc330 = Creature:new {
 
 tyrenaNpc331 = Creature:new {
 	objectName = "tyrenaNpc331",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -5498,7 +5498,7 @@ tyrenaNpc331 = Creature:new {
 
 tyrenaNpc332 = Creature:new {
 	objectName = "tyrenaNpc332",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -5520,7 +5520,7 @@ tyrenaNpc332 = Creature:new {
 
 tyrenaNpc333 = Creature:new {
 	objectName = "tyrenaNpc333",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -5542,7 +5542,7 @@ tyrenaNpc333 = Creature:new {
 
 tyrenaNpc334 = Creature:new {
 	objectName = "tyrenaNpc334",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -5564,7 +5564,7 @@ tyrenaNpc334 = Creature:new {
 
 tyrenaNpc335 = Creature:new {
 	objectName = "tyrenaNpc335",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -5586,7 +5586,7 @@ tyrenaNpc335 = Creature:new {
 
 tyrenaNpc336 = Creature:new {
 	objectName = "tyrenaNpc336",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -5608,7 +5608,7 @@ tyrenaNpc336 = Creature:new {
 
 tyrenaNpc337 = Creature:new {
 	objectName = "tyrenaNpc337",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "vynock",
 	combatFlags = 0,
@@ -5630,7 +5630,7 @@ tyrenaNpc337 = Creature:new {
 
 tyrenaNpc338 = Creature:new {
 	objectName = "tyrenaNpc338",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -5652,7 +5652,7 @@ tyrenaNpc338 = Creature:new {
 
 tyrenaNpc339 = Creature:new {
 	objectName = "tyrenaNpc339",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -5674,7 +5674,7 @@ tyrenaNpc339 = Creature:new {
 
 tyrenaNpc340 = Creature:new {
 	objectName = "tyrenaNpc340",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly",
 	combatFlags = 0,
@@ -5696,7 +5696,7 @@ tyrenaNpc340 = Creature:new {
 
 tyrenaNpc341 = Creature:new {
 	objectName = "tyrenaNpc341",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -5718,7 +5718,7 @@ tyrenaNpc341 = Creature:new {
 
 tyrenaNpc342 = Creature:new {
 	objectName = "tyrenaNpc342",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5740,7 +5740,7 @@ tyrenaNpc342 = Creature:new {
 
 tyrenaNpc344 = Creature:new {
 	objectName = "tyrenaNpc344",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -5762,7 +5762,7 @@ tyrenaNpc344 = Creature:new {
 
 tyrenaNpc345 = Creature:new {
 	objectName = "tyrenaNpc345",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -5784,7 +5784,7 @@ tyrenaNpc345 = Creature:new {
 
 tyrenaNpc346 = Creature:new {
 	objectName = "tyrenaNpc346",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -5806,7 +5806,7 @@ tyrenaNpc346 = Creature:new {
 
 tyrenaNpc347 = Creature:new {
 	objectName = "tyrenaNpc347",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5828,7 +5828,7 @@ tyrenaNpc347 = Creature:new {
 
 tyrenaNpc348 = Creature:new {
 	objectName = "tyrenaNpc348",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5850,7 +5850,7 @@ tyrenaNpc348 = Creature:new {
 
 tyrenaNpc349 = Creature:new {
 	objectName = "tyrenaNpc349",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -5872,7 +5872,7 @@ tyrenaNpc349 = Creature:new {
 
 tyrenaNpc350 = Creature:new {
 	objectName = "tyrenaNpc350",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,
@@ -5894,7 +5894,7 @@ tyrenaNpc350 = Creature:new {
 
 tyrenaNpc351 = Creature:new {
 	objectName = "tyrenaNpc351",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5916,7 +5916,7 @@ tyrenaNpc351 = Creature:new {
 
 tyrenaNpc352 = Creature:new {
 	objectName = "tyrenaNpc352",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5938,7 +5938,7 @@ tyrenaNpc352 = Creature:new {
 
 tyrenaNpc353 = Creature:new {
 	objectName = "tyrenaNpc353",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5960,7 +5960,7 @@ tyrenaNpc353 = Creature:new {
 
 tyrenaNpc354 = Creature:new {
 	objectName = "tyrenaNpc354",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -5982,7 +5982,7 @@ tyrenaNpc354 = Creature:new {
 
 tyrenaNpc355 = Creature:new {
 	objectName = "tyrenaNpc355",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -6004,7 +6004,7 @@ tyrenaNpc355 = Creature:new {
 
 tyrenaNpc356 = Creature:new {
 	objectName = "tyrenaNpc356",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "drall_guard",
 	combatFlags = 0,
@@ -6026,7 +6026,7 @@ tyrenaNpc356 = Creature:new {
 
 tyrenaNpc358 = Creature:new {
 	objectName = "tyrenaNpc358",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,
@@ -6048,7 +6048,7 @@ tyrenaNpc358 = Creature:new {
 
 tyrenaNpc359 = Creature:new {
 	objectName = "tyrenaNpc359",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_chief",
 	combatFlags = 0,
@@ -6070,7 +6070,7 @@ tyrenaNpc359 = Creature:new {
 
 tyrenaNpc360 = Creature:new {
 	objectName = "tyrenaNpc360",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -6092,7 +6092,7 @@ tyrenaNpc360 = Creature:new {
 
 tyrenaNpc361 = Creature:new {
 	objectName = "tyrenaNpc361",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -6114,7 +6114,7 @@ tyrenaNpc361 = Creature:new {
 
 tyrenaNpc362 = Creature:new {
 	objectName = "tyrenaNpc362",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,
@@ -6136,7 +6136,7 @@ tyrenaNpc362 = Creature:new {
 
 tyrenaNpc363 = Creature:new {
 	objectName = "tyrenaNpc363",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -6158,7 +6158,7 @@ tyrenaNpc363 = Creature:new {
 
 tyrenaNpc364 = Creature:new {
 	objectName = "tyrenaNpc364",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -6180,7 +6180,7 @@ tyrenaNpc364 = Creature:new {
 
 tyrenaNpc365 = Creature:new {
 	objectName = "tyrenaNpc365",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_times_investigator",
 	combatFlags = 0,
@@ -6202,7 +6202,7 @@ tyrenaNpc365 = Creature:new {
 
 tyrenaNpc366 = Creature:new {
 	objectName = "tyrenaNpc366",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_comissioner",
 	combatFlags = 0,
@@ -6224,7 +6224,7 @@ tyrenaNpc366 = Creature:new {
 
 tyrenaNpc367 = Creature:new {
 	objectName = "tyrenaNpc367",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -6246,7 +6246,7 @@ tyrenaNpc367 = Creature:new {
 
 tyrenaNpc368 = Creature:new {
 	objectName = "tyrenaNpc368",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "zabrak_base_female",
 	combatFlags = 0,
@@ -6268,7 +6268,7 @@ tyrenaNpc368 = Creature:new {
 
 tyrenaNpc369 = Creature:new {
 	objectName = "tyrenaNpc369",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -6290,7 +6290,7 @@ tyrenaNpc369 = Creature:new {
 
 tyrenaNpc370 = Creature:new {
 	objectName = "tyrenaNpc370",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_agent",
 	combatFlags = 0,
@@ -6312,7 +6312,7 @@ tyrenaNpc370 = Creature:new {
 
 tyrenaNpc371 = Creature:new {
 	objectName = "tyrenaNpc371",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_base_male",
 	combatFlags = 0,
@@ -6334,7 +6334,7 @@ tyrenaNpc371 = Creature:new {
 
 tyrenaNpc372 = Creature:new {
 	objectName = "tyrenaNpc372",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bartender",
 	combatFlags = 0,
@@ -6356,7 +6356,7 @@ tyrenaNpc372 = Creature:new {
 
 tyrenaNpc373 = Creature:new {
 	objectName = "tyrenaNpc373",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -6378,7 +6378,7 @@ tyrenaNpc373 = Creature:new {
 
 tyrenaNpc374 = Creature:new {
 	objectName = "tyrenaNpc374",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "hutt_base_female",
 	combatFlags = 0,
@@ -6400,7 +6400,7 @@ tyrenaNpc374 = Creature:new {
 
 tyrenaNpc375 = Creature:new {
 	objectName = "tyrenaNpc375",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "vrak",
 	combatFlags = 0,
@@ -6422,7 +6422,7 @@ tyrenaNpc375 = Creature:new {
 
 tyrenaNpc376 = Creature:new {
 	objectName = "tyrenaNpc376",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -6444,7 +6444,7 @@ tyrenaNpc376 = Creature:new {
 
 tyrenaNpc377 = Creature:new {
 	objectName = "tyrenaNpc377",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -6466,7 +6466,7 @@ tyrenaNpc377 = Creature:new {
 
 tyrenaNpc378 = Creature:new {
 	objectName = "tyrenaNpc378",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -6488,7 +6488,7 @@ tyrenaNpc378 = Creature:new {
 
 tyrenaNpc379 = Creature:new {
 	objectName = "tyrenaNpc379",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -6510,7 +6510,7 @@ tyrenaNpc379 = Creature:new {
 
 tyrenaNpc380 = Creature:new {
 	objectName = "tyrenaNpc380",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -6532,7 +6532,7 @@ tyrenaNpc380 = Creature:new {
 
 tyrenaNpc381 = Creature:new {
 	objectName = "tyrenaNpc381",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "hunter",
 	combatFlags = 0,
@@ -6554,7 +6554,7 @@ tyrenaNpc381 = Creature:new {
 
 tyrenaNpc382 = Creature:new {
 	objectName = "tyrenaNpc382",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -6576,7 +6576,7 @@ tyrenaNpc382 = Creature:new {
 
 tyrenaNpc383 = Creature:new {
 	objectName = "tyrenaNpc383",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "coa3_tactical_rebel",
 	combatFlags = 0,

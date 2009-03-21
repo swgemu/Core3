@@ -42,7 +42,7 @@
 
 coronetNpc1 = Creature:new {
 	objectName = "coronetNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ coronetNpc1 = Creature:new {
 
 coronetNpc2 = Creature:new {
 	objectName = "coronetNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "io_tsomcren",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ coronetNpc2 = Creature:new {
 
 coronetNpc3 = Creature:new {
 	objectName = "coronetNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "tarth_jaxx",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ coronetNpc3 = Creature:new {
 
 coronetNpc5 = Creature:new {
 	objectName = "coronetNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ coronetNpc5 = Creature:new {
 
 coronetNpc6 = Creature:new {
 	objectName = "coronetNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cll8_binary_load_lifter",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ coronetNpc6 = Creature:new {
 
 coronetNpc7 = Creature:new {
 	objectName = "coronetNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ coronetNpc7 = Creature:new {
 
 coronetNpc8 = Creature:new {
 	objectName = "coronetNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ coronetNpc8 = Creature:new {
 
 coronetNpc9 = Creature:new {
 	objectName = "coronetNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ coronetNpc9 = Creature:new {
 
 coronetNpc10 = Creature:new {
 	objectName = "coronetNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ coronetNpc10 = Creature:new {
 
 coronetNpc11 = Creature:new {
 	objectName = "coronetNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_cadet",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ coronetNpc11 = Creature:new {
 
 coronetNpc12 = Creature:new {
 	objectName = "coronetNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ coronetNpc12 = Creature:new {
 
 coronetNpc13 = Creature:new {
 	objectName = "coronetNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ coronetNpc13 = Creature:new {
 
 coronetNpc14 = Creature:new {
 	objectName = "coronetNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bounty_hunter",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ coronetNpc14 = Creature:new {
 
 coronetNpc15 = Creature:new {
 	objectName = "coronetNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ coronetNpc15 = Creature:new {
 
 coronetNpc16 = Creature:new {
 	objectName = "coronetNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ coronetNpc16 = Creature:new {
 
 coronetNpc17 = Creature:new {
 	objectName = "coronetNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ coronetNpc17 = Creature:new {
 
 coronetNpc18 = Creature:new {
 	objectName = "coronetNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ coronetNpc18 = Creature:new {
 
 coronetNpc19 = Creature:new {
 	objectName = "coronetNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "hunter",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ coronetNpc19 = Creature:new {
 
 coronetNpc20 = Creature:new {
 	objectName = "coronetNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner_rodian_male",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ coronetNpc20 = Creature:new {
 
 coronetNpc21 = Creature:new {
 	objectName = "coronetNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ coronetNpc21 = Creature:new {
 
 coronetNpc25 = Creature:new {
 	objectName = "coronetNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_army_captain",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ coronetNpc25 = Creature:new {
 
 coronetNpc27 = Creature:new {
 	objectName = "coronetNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_command_security_guard",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ coronetNpc27 = Creature:new {
 
 coronetNpc30 = Creature:new {
 	objectName = "coronetNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ coronetNpc30 = Creature:new {
 
 coronetNpc31 = Creature:new {
 	objectName = "coronetNpc31",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ coronetNpc31 = Creature:new {
 
 coronetNpc32 = Creature:new {
 	objectName = "coronetNpc32",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ral_mundi",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ coronetNpc32 = Creature:new {
 
 coronetNpc34 = Creature:new {
 	objectName = "coronetNpc34",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_army_captain",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ coronetNpc34 = Creature:new {
 
 coronetNpc36 = Creature:new {
 	objectName = "coronetNpc36",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ coronetNpc36 = Creature:new {
 
 coronetNpc38 = Creature:new {
 	objectName = "coronetNpc38",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ coronetNpc38 = Creature:new {
 
 coronetNpc39 = Creature:new {
 	objectName = "coronetNpc39",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ coronetNpc39 = Creature:new {
 
 coronetNpc40 = Creature:new {
 	objectName = "coronetNpc40",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ coronetNpc40 = Creature:new {
 
 coronetNpc41 = Creature:new {
 	objectName = "coronetNpc41",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ coronetNpc41 = Creature:new {
 
 coronetNpc42 = Creature:new {
 	objectName = "coronetNpc42",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "quest_gadget_specialist",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ coronetNpc42 = Creature:new {
 
 coronetNpc43 = Creature:new {
 	objectName = "coronetNpc43",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ coronetNpc43 = Creature:new {
 
 coronetNpc45 = Creature:new {
 	objectName = "coronetNpc45",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ coronetNpc45 = Creature:new {
 
 coronetNpc46 = Creature:new {
 	objectName = "coronetNpc46",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ coronetNpc46 = Creature:new {
 
 coronetNpc47 = Creature:new {
 	objectName = "coronetNpc47",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -834,7 +834,7 @@ coronetNpc47 = Creature:new {
 
 coronetNpc48 = Creature:new {
 	objectName = "coronetNpc48",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -856,7 +856,7 @@ coronetNpc48 = Creature:new {
 
 coronetNpc49 = Creature:new {
 	objectName = "coronetNpc49",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -878,7 +878,7 @@ coronetNpc49 = Creature:new {
 
 coronetNpc50 = Creature:new {
 	objectName = "coronetNpc50",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -900,7 +900,7 @@ coronetNpc50 = Creature:new {
 
 coronetNpc51 = Creature:new {
 	objectName = "coronetNpc51",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "zabrak_base_female",
 	combatFlags = 0,
@@ -922,7 +922,7 @@ coronetNpc51 = Creature:new {
 
 coronetNpc54 = Creature:new {
 	objectName = "coronetNpc54",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -944,7 +944,7 @@ coronetNpc54 = Creature:new {
 
 coronetNpc55 = Creature:new {
 	objectName = "coronetNpc55",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -966,7 +966,7 @@ coronetNpc55 = Creature:new {
 
 coronetNpc58 = Creature:new {
 	objectName = "coronetNpc58",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -988,7 +988,7 @@ coronetNpc58 = Creature:new {
 
 coronetNpc59 = Creature:new {
 	objectName = "coronetNpc59",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -1010,7 +1010,7 @@ coronetNpc59 = Creature:new {
 
 coronetNpc60 = Creature:new {
 	objectName = "coronetNpc60",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -1032,7 +1032,7 @@ coronetNpc60 = Creature:new {
 
 coronetNpc61 = Creature:new {
 	objectName = "coronetNpc61",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -1054,7 +1054,7 @@ coronetNpc61 = Creature:new {
 
 coronetNpc62 = Creature:new {
 	objectName = "coronetNpc62",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "coa2_rebel_coordinator",
 	combatFlags = 0,
@@ -1076,7 +1076,7 @@ coronetNpc62 = Creature:new {
 
 coronetNpc63 = Creature:new {
 	objectName = "coronetNpc63",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1098,7 +1098,7 @@ coronetNpc63 = Creature:new {
 
 coronetNpc64 = Creature:new {
 	objectName = "coronetNpc64",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -1120,7 +1120,7 @@ coronetNpc64 = Creature:new {
 
 coronetNpc68 = Creature:new {
 	objectName = "coronetNpc68",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -1142,7 +1142,7 @@ coronetNpc68 = Creature:new {
 
 coronetNpc69 = Creature:new {
 	objectName = "coronetNpc69",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -1164,7 +1164,7 @@ coronetNpc69 = Creature:new {
 
 coronetNpc70 = Creature:new {
 	objectName = "coronetNpc70",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -1186,7 +1186,7 @@ coronetNpc70 = Creature:new {
 
 coronetNpc73 = Creature:new {
 	objectName = "coronetNpc73",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1208,7 +1208,7 @@ coronetNpc73 = Creature:new {
 
 coronetNpc74 = Creature:new {
 	objectName = "coronetNpc74",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -1230,7 +1230,7 @@ coronetNpc74 = Creature:new {
 
 coronetNpc75 = Creature:new {
 	objectName = "coronetNpc75",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1252,7 +1252,7 @@ coronetNpc75 = Creature:new {
 
 coronetNpc76 = Creature:new {
 	objectName = "coronetNpc76",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -1274,7 +1274,7 @@ coronetNpc76 = Creature:new {
 
 coronetNpc77 = Creature:new {
 	objectName = "coronetNpc77",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -1296,7 +1296,7 @@ coronetNpc77 = Creature:new {
 
 coronetNpc78 = Creature:new {
 	objectName = "coronetNpc78",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1318,7 +1318,7 @@ coronetNpc78 = Creature:new {
 
 coronetNpc80 = Creature:new {
 	objectName = "coronetNpc80",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -1340,7 +1340,7 @@ coronetNpc80 = Creature:new {
 
 coronetNpc82 = Creature:new {
 	objectName = "coronetNpc82",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_captain",
 	combatFlags = 0,
@@ -1362,7 +1362,7 @@ coronetNpc82 = Creature:new {
 
 coronetNpc84 = Creature:new {
 	objectName = "coronetNpc84",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1384,7 +1384,7 @@ coronetNpc84 = Creature:new {
 
 coronetNpc85 = Creature:new {
 	objectName = "coronetNpc85",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_pol_handerin",
 	combatFlags = 0,
@@ -1406,7 +1406,7 @@ coronetNpc85 = Creature:new {
 
 coronetNpc87 = Creature:new {
 	objectName = "coronetNpc87",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1428,7 +1428,7 @@ coronetNpc87 = Creature:new {
 
 coronetNpc88 = Creature:new {
 	objectName = "coronetNpc88",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1450,7 +1450,7 @@ coronetNpc88 = Creature:new {
 
 coronetNpc89 = Creature:new {
 	objectName = "coronetNpc89",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1472,7 +1472,7 @@ coronetNpc89 = Creature:new {
 
 coronetNpc91 = Creature:new {
 	objectName = "coronetNpc91",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1494,7 +1494,7 @@ coronetNpc91 = Creature:new {
 
 coronetNpc92 = Creature:new {
 	objectName = "coronetNpc92",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1516,7 +1516,7 @@ coronetNpc92 = Creature:new {
 
 coronetNpc93 = Creature:new {
 	objectName = "coronetNpc93",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1538,7 +1538,7 @@ coronetNpc93 = Creature:new {
 
 coronetNpc95 = Creature:new {
 	objectName = "coronetNpc95",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -1560,7 +1560,7 @@ coronetNpc95 = Creature:new {
 
 coronetNpc97 = Creature:new {
 	objectName = "coronetNpc97",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "drall_abbot",
 	combatFlags = 0,
@@ -1582,7 +1582,7 @@ coronetNpc97 = Creature:new {
 
 coronetNpc98 = Creature:new {
 	objectName = "coronetNpc98",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -1604,7 +1604,7 @@ coronetNpc98 = Creature:new {
 
 coronetNpc99 = Creature:new {
 	objectName = "coronetNpc99",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -1626,7 +1626,7 @@ coronetNpc99 = Creature:new {
 
 coronetNpc100 = Creature:new {
 	objectName = "coronetNpc100",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -1648,7 +1648,7 @@ coronetNpc100 = Creature:new {
 
 coronetNpc101 = Creature:new {
 	objectName = "coronetNpc101",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -1670,7 +1670,7 @@ coronetNpc101 = Creature:new {
 
 coronetNpc102 = Creature:new {
 	objectName = "coronetNpc102",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "quest_crowd_pleaser_theater_manager",
 	combatFlags = 0,
@@ -1692,7 +1692,7 @@ coronetNpc102 = Creature:new {
 
 coronetNpc103 = Creature:new {
 	objectName = "coronetNpc103",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -1714,7 +1714,7 @@ coronetNpc103 = Creature:new {
 
 coronetNpc104 = Creature:new {
 	objectName = "coronetNpc104",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1736,7 +1736,7 @@ coronetNpc104 = Creature:new {
 
 coronetNpc105 = Creature:new {
 	objectName = "coronetNpc105",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -1758,7 +1758,7 @@ coronetNpc105 = Creature:new {
 
 coronetNpc106 = Creature:new {
 	objectName = "coronetNpc106",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -1780,7 +1780,7 @@ coronetNpc106 = Creature:new {
 
 coronetNpc107 = Creature:new {
 	objectName = "coronetNpc107",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_comissioner",
 	combatFlags = 0,
@@ -1802,7 +1802,7 @@ coronetNpc107 = Creature:new {
 
 coronetNpc108 = Creature:new {
 	objectName = "coronetNpc108",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -1824,7 +1824,7 @@ coronetNpc108 = Creature:new {
 
 coronetNpc109 = Creature:new {
 	objectName = "coronetNpc109",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "info_broker",
 	combatFlags = 0,
@@ -1846,7 +1846,7 @@ coronetNpc109 = Creature:new {
 
 coronetNpc110 = Creature:new {
 	objectName = "coronetNpc110",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -1868,7 +1868,7 @@ coronetNpc110 = Creature:new {
 
 coronetNpc111 = Creature:new {
 	objectName = "coronetNpc111",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -1890,7 +1890,7 @@ coronetNpc111 = Creature:new {
 
 coronetNpc112 = Creature:new {
 	objectName = "coronetNpc112",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "drall_abbot",
 	combatFlags = 0,
@@ -1912,7 +1912,7 @@ coronetNpc112 = Creature:new {
 
 coronetNpc113 = Creature:new {
 	objectName = "coronetNpc113",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fringer",
 	combatFlags = 0,
@@ -1934,7 +1934,7 @@ coronetNpc113 = Creature:new {
 
 coronetNpc114 = Creature:new {
 	objectName = "coronetNpc114",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1956,7 +1956,7 @@ coronetNpc114 = Creature:new {
 
 coronetNpc115 = Creature:new {
 	objectName = "coronetNpc115",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_master_sergeant",
 	combatFlags = 0,
@@ -1978,7 +1978,7 @@ coronetNpc115 = Creature:new {
 
 coronetNpc118 = Creature:new {
 	objectName = "coronetNpc118",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -2000,7 +2000,7 @@ coronetNpc118 = Creature:new {
 
 coronetNpc122 = Creature:new {
 	objectName = "coronetNpc122",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -2022,7 +2022,7 @@ coronetNpc122 = Creature:new {
 
 coronetNpc123 = Creature:new {
 	objectName = "coronetNpc123",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -2044,7 +2044,7 @@ coronetNpc123 = Creature:new {
 
 coronetNpc126 = Creature:new {
 	objectName = "coronetNpc126",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -2066,7 +2066,7 @@ coronetNpc126 = Creature:new {
 
 coronetNpc127 = Creature:new {
 	objectName = "coronetNpc127",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -2088,7 +2088,7 @@ coronetNpc127 = Creature:new {
 
 coronetNpc128 = Creature:new {
 	objectName = "coronetNpc128",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -2110,7 +2110,7 @@ coronetNpc128 = Creature:new {
 
 coronetNpc131 = Creature:new {
 	objectName = "coronetNpc131",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -2132,7 +2132,7 @@ coronetNpc131 = Creature:new {
 
 coronetNpc132 = Creature:new {
 	objectName = "coronetNpc132",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -2154,7 +2154,7 @@ coronetNpc132 = Creature:new {
 
 coronetNpc134 = Creature:new {
 	objectName = "coronetNpc134",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -2176,7 +2176,7 @@ coronetNpc134 = Creature:new {
 
 coronetNpc135 = Creature:new {
 	objectName = "coronetNpc135",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "durni",
 	combatFlags = 0,
@@ -2198,7 +2198,7 @@ coronetNpc135 = Creature:new {
 
 coronetNpc136 = Creature:new {
 	objectName = "coronetNpc136",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -2220,7 +2220,7 @@ coronetNpc136 = Creature:new {
 
 coronetNpc137 = Creature:new {
 	objectName = "coronetNpc137",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -2242,7 +2242,7 @@ coronetNpc137 = Creature:new {
 
 coronetNpc138 = Creature:new {
 	objectName = "coronetNpc138",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -2264,7 +2264,7 @@ coronetNpc138 = Creature:new {
 
 coronetNpc139 = Creature:new {
 	objectName = "coronetNpc139",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2286,7 +2286,7 @@ coronetNpc139 = Creature:new {
 
 coronetNpc141 = Creature:new {
 	objectName = "coronetNpc141",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -2308,7 +2308,7 @@ coronetNpc141 = Creature:new {
 
 coronetNpc142 = Creature:new {
 	objectName = "coronetNpc142",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -2330,7 +2330,7 @@ coronetNpc142 = Creature:new {
 
 coronetNpc144 = Creature:new {
 	objectName = "coronetNpc144",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -2352,7 +2352,7 @@ coronetNpc144 = Creature:new {
 
 coronetNpc145 = Creature:new {
 	objectName = "coronetNpc145",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -2374,7 +2374,7 @@ coronetNpc145 = Creature:new {
 
 coronetNpc149 = Creature:new {
 	objectName = "coronetNpc149",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -2396,7 +2396,7 @@ coronetNpc149 = Creature:new {
 
 coronetNpc151 = Creature:new {
 	objectName = "coronetNpc151",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -2418,7 +2418,7 @@ coronetNpc151 = Creature:new {
 
 coronetNpc152 = Creature:new {
 	objectName = "coronetNpc152",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_renegade",
 	combatFlags = 0,
@@ -2440,7 +2440,7 @@ coronetNpc152 = Creature:new {
 
 coronetNpc155 = Creature:new {
 	objectName = "coronetNpc155",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_ragtag_blackjack",
 	combatFlags = 0,
@@ -2462,7 +2462,7 @@ coronetNpc155 = Creature:new {
 
 coronetNpc160 = Creature:new {
 	objectName = "coronetNpc160",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_traitor",
 	combatFlags = 0,
@@ -2484,7 +2484,7 @@ coronetNpc160 = Creature:new {
 
 coronetNpc161 = Creature:new {
 	objectName = "coronetNpc161",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_maniac",
 	combatFlags = 0,
@@ -2506,7 +2506,7 @@ coronetNpc161 = Creature:new {
 
 coronetNpc162 = Creature:new {
 	objectName = "coronetNpc162",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_deserter",
 	combatFlags = 0,
@@ -2528,7 +2528,7 @@ coronetNpc162 = Creature:new {
 
 coronetNpc163 = Creature:new {
 	objectName = "coronetNpc163",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_ragtag_blackjack",
 	combatFlags = 0,
@@ -2550,7 +2550,7 @@ coronetNpc163 = Creature:new {
 
 coronetNpc166 = Creature:new {
 	objectName = "coronetNpc166",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_lunatic",
 	combatFlags = 0,
@@ -2572,7 +2572,7 @@ coronetNpc166 = Creature:new {
 
 coronetNpc167 = Creature:new {
 	objectName = "coronetNpc167",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_ragtag_sentry",
 	combatFlags = 0,
@@ -2594,7 +2594,7 @@ coronetNpc167 = Creature:new {
 
 coronetNpc170 = Creature:new {
 	objectName = "coronetNpc170",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2616,7 +2616,7 @@ coronetNpc170 = Creature:new {
 
 coronetNpc176 = Creature:new {
 	objectName = "coronetNpc176",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2638,7 +2638,7 @@ coronetNpc176 = Creature:new {
 
 coronetNpc188 = Creature:new {
 	objectName = "coronetNpc188",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_warrant_officer_ii",
 	combatFlags = 0,
@@ -2660,7 +2660,7 @@ coronetNpc188 = Creature:new {
 
 coronetNpc191 = Creature:new {
 	objectName = "coronetNpc191",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_bombardier",
 	combatFlags = 0,
@@ -2682,7 +2682,7 @@ coronetNpc191 = Creature:new {
 
 coronetNpc192 = Creature:new {
 	objectName = "coronetNpc192",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -2704,7 +2704,7 @@ coronetNpc192 = Creature:new {
 
 coronetNpc195 = Creature:new {
 	objectName = "coronetNpc195",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -2726,7 +2726,7 @@ coronetNpc195 = Creature:new {
 
 coronetNpc196 = Creature:new {
 	objectName = "coronetNpc196",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gubbur",
 	combatFlags = 0,
@@ -2748,7 +2748,7 @@ coronetNpc196 = Creature:new {
 
 coronetNpc197 = Creature:new {
 	objectName = "coronetNpc197",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellian_butterfly_drone",
 	combatFlags = 0,
@@ -2770,7 +2770,7 @@ coronetNpc197 = Creature:new {
 
 coronetNpc200 = Creature:new {
 	objectName = "coronetNpc200",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2792,7 +2792,7 @@ coronetNpc200 = Creature:new {
 
 coronetNpc201 = Creature:new {
 	objectName = "coronetNpc201",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2814,7 +2814,7 @@ coronetNpc201 = Creature:new {
 
 coronetNpc202 = Creature:new {
 	objectName = "coronetNpc202",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2836,7 +2836,7 @@ coronetNpc202 = Creature:new {
 
 coronetNpc203 = Creature:new {
 	objectName = "coronetNpc203",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_detective",
 	combatFlags = 0,
@@ -2858,7 +2858,7 @@ coronetNpc203 = Creature:new {
 
 coronetNpc204 = Creature:new {
 	objectName = "coronetNpc204",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_kook",
 	combatFlags = 0,
@@ -2880,7 +2880,7 @@ coronetNpc204 = Creature:new {
 
 coronetNpc209 = Creature:new {
 	objectName = "coronetNpc209",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_captain",
 	combatFlags = 0,
@@ -2902,7 +2902,7 @@ coronetNpc209 = Creature:new {
 
 coronetNpc210 = Creature:new {
 	objectName = "coronetNpc210",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -2924,7 +2924,7 @@ coronetNpc210 = Creature:new {
 
 coronetNpc211 = Creature:new {
 	objectName = "coronetNpc211",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -2946,7 +2946,7 @@ coronetNpc211 = Creature:new {
 
 coronetNpc212 = Creature:new {
 	objectName = "coronetNpc212",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -2968,7 +2968,7 @@ coronetNpc212 = Creature:new {
 
 coronetNpc213 = Creature:new {
 	objectName = "coronetNpc213",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ragtag_loon",
 	combatFlags = 0,
@@ -2990,7 +2990,7 @@ coronetNpc213 = Creature:new {
 
 coronetNpc216 = Creature:new {
 	objectName = "coronetNpc216",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -3012,7 +3012,7 @@ coronetNpc216 = Creature:new {
 
 coronetNpc217 = Creature:new {
 	objectName = "coronetNpc217",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_traitor",
 	combatFlags = 0,
@@ -3034,7 +3034,7 @@ coronetNpc217 = Creature:new {
 
 coronetNpc218 = Creature:new {
 	objectName = "coronetNpc218",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_renegade",
 	combatFlags = 0,
@@ -3056,7 +3056,7 @@ coronetNpc218 = Creature:new {
 
 coronetNpc219 = Creature:new {
 	objectName = "coronetNpc219",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_the_informant",
 	combatFlags = 0,
@@ -3078,7 +3078,7 @@ coronetNpc219 = Creature:new {
 
 coronetNpc220 = Creature:new {
 	objectName = "coronetNpc220",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_renegade",
 	combatFlags = 0,
@@ -3100,7 +3100,7 @@ coronetNpc220 = Creature:new {
 
 coronetNpc221 = Creature:new {
 	objectName = "coronetNpc221",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_traitor",
 	combatFlags = 0,
@@ -3122,7 +3122,7 @@ coronetNpc221 = Creature:new {
 
 coronetNpc222 = Creature:new {
 	objectName = "coronetNpc222",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_rogue",
 	combatFlags = 0,
@@ -3144,7 +3144,7 @@ coronetNpc222 = Creature:new {
 
 coronetNpc223 = Creature:new {
 	objectName = "coronetNpc223",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_renegade",
 	combatFlags = 0,
@@ -3166,7 +3166,7 @@ coronetNpc223 = Creature:new {
 
 coronetNpc224 = Creature:new {
 	objectName = "coronetNpc224",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_corsec_rogue_sentry",
 	combatFlags = 0,
@@ -3188,7 +3188,7 @@ coronetNpc224 = Creature:new {
 
 coronetNpc225 = Creature:new {
 	objectName = "coronetNpc225",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_corsec_rogue",
 	combatFlags = 0,
@@ -3210,7 +3210,7 @@ coronetNpc225 = Creature:new {
 
 coronetNpc226 = Creature:new {
 	objectName = "coronetNpc226",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_traitor",
 	combatFlags = 0,
@@ -3232,7 +3232,7 @@ coronetNpc226 = Creature:new {
 
 coronetNpc227 = Creature:new {
 	objectName = "coronetNpc227",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3254,7 +3254,7 @@ coronetNpc227 = Creature:new {
 
 coronetNpc228 = Creature:new {
 	objectName = "coronetNpc228",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3276,7 +3276,7 @@ coronetNpc228 = Creature:new {
 
 coronetNpc230 = Creature:new {
 	objectName = "coronetNpc230",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3298,7 +3298,7 @@ coronetNpc230 = Creature:new {
 
 coronetNpc231 = Creature:new {
 	objectName = "coronetNpc231",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3320,7 +3320,7 @@ coronetNpc231 = Creature:new {
 
 coronetNpc232 = Creature:new {
 	objectName = "coronetNpc232",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3342,7 +3342,7 @@ coronetNpc232 = Creature:new {
 
 coronetNpc233 = Creature:new {
 	objectName = "coronetNpc233",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3364,7 +3364,7 @@ coronetNpc233 = Creature:new {
 
 coronetNpc234 = Creature:new {
 	objectName = "coronetNpc234",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3386,7 +3386,7 @@ coronetNpc234 = Creature:new {
 
 coronetNpc235 = Creature:new {
 	objectName = "coronetNpc235",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3408,7 +3408,7 @@ coronetNpc235 = Creature:new {
 
 coronetNpc236 = Creature:new {
 	objectName = "coronetNpc236",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3430,7 +3430,7 @@ coronetNpc236 = Creature:new {
 
 coronetNpc237 = Creature:new {
 	objectName = "coronetNpc237",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3452,7 +3452,7 @@ coronetNpc237 = Creature:new {
 
 coronetNpc238 = Creature:new {
 	objectName = "coronetNpc238",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3474,7 +3474,7 @@ coronetNpc238 = Creature:new {
 
 coronetNpc239 = Creature:new {
 	objectName = "coronetNpc239",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3496,7 +3496,7 @@ coronetNpc239 = Creature:new {
 
 coronetNpc240 = Creature:new {
 	objectName = "coronetNpc240",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3518,7 +3518,7 @@ coronetNpc240 = Creature:new {
 
 coronetNpc241 = Creature:new {
 	objectName = "coronetNpc241",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_times_investigator",
 	combatFlags = 0,
@@ -3540,7 +3540,7 @@ coronetNpc241 = Creature:new {
 
 coronetNpc242 = Creature:new {
 	objectName = "coronetNpc242",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -3562,7 +3562,7 @@ coronetNpc242 = Creature:new {
 
 coronetNpc243 = Creature:new {
 	objectName = "coronetNpc243",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "surgical_droid_21b",
 	combatFlags = 0,
@@ -3584,7 +3584,7 @@ coronetNpc243 = Creature:new {
 
 coronetNpc244 = Creature:new {
 	objectName = "coronetNpc244",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3606,7 +3606,7 @@ coronetNpc244 = Creature:new {
 
 coronetNpc245 = Creature:new {
 	objectName = "coronetNpc245",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3628,7 +3628,7 @@ coronetNpc245 = Creature:new {
 
 coronetNpc246 = Creature:new {
 	objectName = "coronetNpc246",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3650,7 +3650,7 @@ coronetNpc246 = Creature:new {
 
 coronetNpc247 = Creature:new {
 	objectName = "coronetNpc247",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3672,7 +3672,7 @@ coronetNpc247 = Creature:new {
 
 coronetNpc248 = Creature:new {
 	objectName = "coronetNpc248",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3694,7 +3694,7 @@ coronetNpc248 = Creature:new {
 
 coronetNpc249 = Creature:new {
 	objectName = "coronetNpc249",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_warrant_officer_ii",
 	combatFlags = 0,
@@ -3716,7 +3716,7 @@ coronetNpc249 = Creature:new {
 
 coronetNpc250 = Creature:new {
 	objectName = "coronetNpc250",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3738,7 +3738,7 @@ coronetNpc250 = Creature:new {
 
 coronetNpc252 = Creature:new {
 	objectName = "coronetNpc252",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -3760,7 +3760,7 @@ coronetNpc252 = Creature:new {
 
 coronetNpc254 = Creature:new {
 	objectName = "coronetNpc254",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_specialist_noncom",
 	combatFlags = 0,
@@ -3782,7 +3782,7 @@ coronetNpc254 = Creature:new {
 
 coronetNpc258 = Creature:new {
 	objectName = "coronetNpc258",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -3804,7 +3804,7 @@ coronetNpc258 = Creature:new {
 
 coronetNpc259 = Creature:new {
 	objectName = "coronetNpc259",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -3826,7 +3826,7 @@ coronetNpc259 = Creature:new {
 
 coronetNpc260 = Creature:new {
 	objectName = "coronetNpc260",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bartender",
 	combatFlags = 0,
@@ -3848,7 +3848,7 @@ coronetNpc260 = Creature:new {
 
 coronetNpc261 = Creature:new {
 	objectName = "coronetNpc261",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -3870,7 +3870,7 @@ coronetNpc261 = Creature:new {
 
 coronetNpc262 = Creature:new {
 	objectName = "coronetNpc262",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_rogue",
 	combatFlags = 0,
@@ -3892,7 +3892,7 @@ coronetNpc262 = Creature:new {
 
 coronetNpc263 = Creature:new {
 	objectName = "coronetNpc263",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -3914,7 +3914,7 @@ coronetNpc263 = Creature:new {
 
 coronetNpc264 = Creature:new {
 	objectName = "coronetNpc264",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -3936,7 +3936,7 @@ coronetNpc264 = Creature:new {
 
 coronetNpc265 = Creature:new {
 	objectName = "coronetNpc265",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -3958,7 +3958,7 @@ coronetNpc265 = Creature:new {
 
 coronetNpc266 = Creature:new {
 	objectName = "coronetNpc266",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_major",
 	combatFlags = 0,
@@ -3980,7 +3980,7 @@ coronetNpc266 = Creature:new {
 
 coronetNpc267 = Creature:new {
 	objectName = "coronetNpc267",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -4002,7 +4002,7 @@ coronetNpc267 = Creature:new {
 
 coronetNpc268 = Creature:new {
 	objectName = "coronetNpc268",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4024,7 +4024,7 @@ coronetNpc268 = Creature:new {
 
 coronetNpc269 = Creature:new {
 	objectName = "coronetNpc269",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,
@@ -4046,7 +4046,7 @@ coronetNpc269 = Creature:new {
 
 coronetNpc271 = Creature:new {
 	objectName = "coronetNpc271",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "zabrak_base_male",
 	combatFlags = 0,
@@ -4068,7 +4068,7 @@ coronetNpc271 = Creature:new {
 
 coronetNpc274 = Creature:new {
 	objectName = "coronetNpc274",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -4090,7 +4090,7 @@ coronetNpc274 = Creature:new {
 
 coronetNpc275 = Creature:new {
 	objectName = "coronetNpc275",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4112,7 +4112,7 @@ coronetNpc275 = Creature:new {
 
 coronetNpc277 = Creature:new {
 	objectName = "coronetNpc277",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_base_male",
 	combatFlags = 0,
@@ -4134,7 +4134,7 @@ coronetNpc277 = Creature:new {
 
 coronetNpc278 = Creature:new {
 	objectName = "coronetNpc278",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4156,7 +4156,7 @@ coronetNpc278 = Creature:new {
 
 coronetNpc279 = Creature:new {
 	objectName = "coronetNpc279",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_male",
 	combatFlags = 0,
@@ -4178,7 +4178,7 @@ coronetNpc279 = Creature:new {
 
 coronetNpc280 = Creature:new {
 	objectName = "coronetNpc280",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_sergeant",
 	combatFlags = 0,
@@ -4200,7 +4200,7 @@ coronetNpc280 = Creature:new {
 
 coronetNpc281 = Creature:new {
 	objectName = "coronetNpc281",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -4222,7 +4222,7 @@ coronetNpc281 = Creature:new {
 
 coronetNpc282 = Creature:new {
 	objectName = "coronetNpc282",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "drall_guard",
 	combatFlags = 0,
@@ -4244,7 +4244,7 @@ coronetNpc282 = Creature:new {
 
 coronetNpc283 = Creature:new {
 	objectName = "coronetNpc283",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -4266,7 +4266,7 @@ coronetNpc283 = Creature:new {
 
 coronetNpc284 = Creature:new {
 	objectName = "coronetNpc284",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_times_investigator",
 	combatFlags = 0,
@@ -4288,7 +4288,7 @@ coronetNpc284 = Creature:new {
 
 coronetNpc285 = Creature:new {
 	objectName = "coronetNpc285",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_agent",
 	combatFlags = 0,
@@ -4310,7 +4310,7 @@ coronetNpc285 = Creature:new {
 
 coronetNpc286 = Creature:new {
 	objectName = "coronetNpc286",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4332,7 +4332,7 @@ coronetNpc286 = Creature:new {
 
 coronetNpc287 = Creature:new {
 	objectName = "coronetNpc287",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -4354,7 +4354,7 @@ coronetNpc287 = Creature:new {
 
 coronetNpc288 = Creature:new {
 	objectName = "coronetNpc288",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -4376,7 +4376,7 @@ coronetNpc288 = Creature:new {
 
 coronetNpc289 = Creature:new {
 	objectName = "coronetNpc289",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -4398,7 +4398,7 @@ coronetNpc289 = Creature:new {
 
 coronetNpc290 = Creature:new {
 	objectName = "coronetNpc290",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_agent",
 	combatFlags = 0,
@@ -4420,7 +4420,7 @@ coronetNpc290 = Creature:new {
 
 coronetNpc291 = Creature:new {
 	objectName = "coronetNpc291",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rikkh",
 	combatFlags = 0,
@@ -4442,7 +4442,7 @@ coronetNpc291 = Creature:new {
 
 coronetNpc292 = Creature:new {
 	objectName = "coronetNpc292",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -4464,7 +4464,7 @@ coronetNpc292 = Creature:new {
 
 coronetNpc293 = Creature:new {
 	objectName = "coronetNpc293",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -4486,7 +4486,7 @@ coronetNpc293 = Creature:new {
 
 coronetNpc294 = Creature:new {
 	objectName = "coronetNpc294",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_cadet",
 	combatFlags = 0,
@@ -4508,7 +4508,7 @@ coronetNpc294 = Creature:new {
 
 coronetNpc295 = Creature:new {
 	objectName = "coronetNpc295",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -4530,7 +4530,7 @@ coronetNpc295 = Creature:new {
 
 coronetNpc296 = Creature:new {
 	objectName = "coronetNpc296",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rhea",
 	combatFlags = 0,
@@ -4552,7 +4552,7 @@ coronetNpc296 = Creature:new {
 
 coronetNpc297 = Creature:new {
 	objectName = "coronetNpc297",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -4574,7 +4574,7 @@ coronetNpc297 = Creature:new {
 
 coronetNpc298 = Creature:new {
 	objectName = "coronetNpc298",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -4596,7 +4596,7 @@ coronetNpc298 = Creature:new {
 
 coronetNpc299 = Creature:new {
 	objectName = "coronetNpc299",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_lieutenant",
 	combatFlags = 0,
@@ -4618,7 +4618,7 @@ coronetNpc299 = Creature:new {
 
 coronetNpc300 = Creature:new {
 	objectName = "coronetNpc300",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "info_broker",
 	combatFlags = 0,
@@ -4640,7 +4640,7 @@ coronetNpc300 = Creature:new {
 
 coronetNpc301 = Creature:new {
 	objectName = "coronetNpc301",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -4662,7 +4662,7 @@ coronetNpc301 = Creature:new {
 
 coronetNpc302 = Creature:new {
 	objectName = "coronetNpc302",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_detective",
 	combatFlags = 0,
@@ -4684,7 +4684,7 @@ coronetNpc302 = Creature:new {
 
 coronetNpc303 = Creature:new {
 	objectName = "coronetNpc303",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "drall_guard",
 	combatFlags = 0,
@@ -4705,7 +4705,7 @@ coronetNpc303 = Creature:new {
 }
 coronetNpc305 = Creature:new {
 	objectName = "coronetNpc305",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -4727,7 +4727,7 @@ coronetNpc305 = Creature:new {
 
 coronetNpc306 = Creature:new {
 	objectName = "coronetNpc306",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -4749,7 +4749,7 @@ coronetNpc306 = Creature:new {
 
 coronetNpc307 = Creature:new {
 	objectName = "coronetNpc307",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -4771,7 +4771,7 @@ coronetNpc307 = Creature:new {
 
 coronetNpc308 = Creature:new {
 	objectName = "coronetNpc308",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -4793,7 +4793,7 @@ coronetNpc308 = Creature:new {
 
 coronetNpc309 = Creature:new {
 	objectName = "coronetNpc309",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,
@@ -4815,7 +4815,7 @@ coronetNpc309 = Creature:new {
 
 coronetNpc310 = Creature:new {
 	objectName = "coronetNpc310",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -4837,7 +4837,7 @@ coronetNpc310 = Creature:new {
 
 coronetNpc311 = Creature:new {
 	objectName = "coronetNpc311",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -4859,7 +4859,7 @@ coronetNpc311 = Creature:new {
 
 coronetNpc312 = Creature:new {
 	objectName = "coronetNpc312",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -4881,7 +4881,7 @@ coronetNpc312 = Creature:new {
 
 coronetNpc313 = Creature:new {
 	objectName = "coronetNpc313",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -4903,7 +4903,7 @@ coronetNpc313 = Creature:new {
 
 coronetNpc314 = Creature:new {
 	objectName = "coronetNpc314",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_agent",
 	combatFlags = 0,
@@ -4925,7 +4925,7 @@ coronetNpc314 = Creature:new {
 
 coronetNpc315 = Creature:new {
 	objectName = "coronetNpc315",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -4947,7 +4947,7 @@ coronetNpc315 = Creature:new {
 
 coronetNpc317 = Creature:new {
 	objectName = "coronetNpc317",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -4969,7 +4969,7 @@ coronetNpc317 = Creature:new {
 
 coronetNpc318 = Creature:new {
 	objectName = "coronetNpc318",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -4991,7 +4991,7 @@ coronetNpc318 = Creature:new {
 
 coronetNpc323 = Creature:new {
 	objectName = "coronetNpc323",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5013,7 +5013,7 @@ coronetNpc323 = Creature:new {
 
 coronetNpc324 = Creature:new {
 	objectName = "coronetNpc324",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5035,7 +5035,7 @@ coronetNpc324 = Creature:new {
 
 coronetNpc325 = Creature:new {
 	objectName = "coronetNpc325",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -5057,7 +5057,7 @@ coronetNpc325 = Creature:new {
 
 coronetNpc326 = Creature:new {
 	objectName = "coronetNpc326",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5079,7 +5079,7 @@ coronetNpc326 = Creature:new {
 
 coronetNpc327 = Creature:new {
 	objectName = "coronetNpc327",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corellia_herald_02",
 	combatFlags = 0,
@@ -5101,7 +5101,7 @@ coronetNpc327 = Creature:new {
 
 coronetNpc328 = Creature:new {
 	objectName = "coronetNpc328",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "moncal_base_male",
 	combatFlags = 0,
@@ -5123,7 +5123,7 @@ coronetNpc328 = Creature:new {
 
 coronetNpc329 = Creature:new {
 	objectName = "coronetNpc329",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "corsec_trooper",
 	combatFlags = 0,

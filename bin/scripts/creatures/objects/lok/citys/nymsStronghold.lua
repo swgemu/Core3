@@ -42,7 +42,7 @@
 
 nymsStrongholdCityNpc1 = Creature:new {
 	objectName = "nymsStrongholdCityNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ nymsStrongholdCityNpc1 = Creature:new {
 
 nymsStrongholdCityNpc2 = Creature:new {
 	objectName = "nymsStrongholdCityNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ nymsStrongholdCityNpc2 = Creature:new {
 
 nymsStrongholdCityNpc3 = Creature:new {
 	objectName = "nymsStrongholdCityNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_fuel_tech",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ nymsStrongholdCityNpc3 = Creature:new {
 
 nymsStrongholdCityNpc4 = Creature:new {
 	objectName = "nymsStrongholdCityNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_elite",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ nymsStrongholdCityNpc4 = Creature:new {
 
 nymsStrongholdCityNpc5 = Creature:new {
 	objectName = "nymsStrongholdCityNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_weak",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ nymsStrongholdCityNpc5 = Creature:new {
 
 nymsStrongholdCityNpc6 = Creature:new {
 	objectName = "nymsStrongholdCityNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ nymsStrongholdCityNpc6 = Creature:new {
 
 nymsStrongholdCityNpc7 = Creature:new {
 	objectName = "nymsStrongholdCityNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ nymsStrongholdCityNpc7 = Creature:new {
 
 nymsStrongholdCityNpc8 = Creature:new {
 	objectName = "nymsStrongholdCityNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "vendor",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ nymsStrongholdCityNpc8 = Creature:new {
 
 nymsStrongholdCityNpc9 = Creature:new {
 	objectName = "nymsStrongholdCityNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ nymsStrongholdCityNpc9 = Creature:new {
 
 nymsStrongholdCityNpc10 = Creature:new {
 	objectName = "nymsStrongholdCityNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_female",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ nymsStrongholdCityNpc10 = Creature:new {
 
 nymsStrongholdCityNpc11 = Creature:new {
 	objectName = "nymsStrongholdCityNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ nymsStrongholdCityNpc11 = Creature:new {
 
 nymsStrongholdCityNpc12 = Creature:new {
 	objectName = "nymsStrongholdCityNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ nymsStrongholdCityNpc12 = Creature:new {
 
 nymsStrongholdCityNpc13 = Creature:new {
 	objectName = "nymsStrongholdCityNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "spacer",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ nymsStrongholdCityNpc13 = Creature:new {
 
 nymsStrongholdCityNpc14 = Creature:new {
 	objectName = "nymsStrongholdCityNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "pilot",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ nymsStrongholdCityNpc14 = Creature:new {
 
 nymsStrongholdCityNpc15 = Creature:new {
 	objectName = "nymsStrongholdCityNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ nymsStrongholdCityNpc15 = Creature:new {
 
 nymsStrongholdCityNpc16 = Creature:new {
 	objectName = "nymsStrongholdCityNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bounty_hunter",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ nymsStrongholdCityNpc16 = Creature:new {
 
 nymsStrongholdCityNpc17 = Creature:new {
 	objectName = "nymsStrongholdCityNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ nymsStrongholdCityNpc17 = Creature:new {
 
 nymsStrongholdCityNpc18 = Creature:new {
 	objectName = "nymsStrongholdCityNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_base_female",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ nymsStrongholdCityNpc18 = Creature:new {
 
 nymsStrongholdCityNpc19 = Creature:new {
 	objectName = "nymsStrongholdCityNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "vendor",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ nymsStrongholdCityNpc19 = Creature:new {
 
 nymsStrongholdCityNpc20 = Creature:new {
 	objectName = "nymsStrongholdCityNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ nymsStrongholdCityNpc20 = Creature:new {
 
 nymsStrongholdCityNpc21 = Creature:new {
 	objectName = "nymsStrongholdCityNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_female",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ nymsStrongholdCityNpc21 = Creature:new {
 
 nymsStrongholdCityNpc22 = Creature:new {
 	objectName = "nymsStrongholdCityNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ nymsStrongholdCityNpc22 = Creature:new {
 
 nymsStrongholdCityNpc23 = Creature:new {
 	objectName = "nymsStrongholdCityNpc23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "technician",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ nymsStrongholdCityNpc23 = Creature:new {
 
 nymsStrongholdCityNpc24 = Creature:new {
 	objectName = "nymsStrongholdCityNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ nymsStrongholdCityNpc24 = Creature:new {
 
 nymsStrongholdCityNpc25 = Creature:new {
 	objectName = "nymsStrongholdCityNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ nymsStrongholdCityNpc25 = Creature:new {
 
 nymsStrongholdCityNpc26 = Creature:new {
 	objectName = "nymsStrongholdCityNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ nymsStrongholdCityNpc26 = Creature:new {
 
 nymsStrongholdCityNpc27 = Creature:new {
 	objectName = "nymsStrongholdCityNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ nymsStrongholdCityNpc27 = Creature:new {
 
 nymsStrongholdCityNpc28 = Creature:new {
 	objectName = "nymsStrongholdCityNpc28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ nymsStrongholdCityNpc28 = Creature:new {
 
 nymsStrongholdCityNpc29 = Creature:new {
 	objectName = "nymsStrongholdCityNpc29",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ nymsStrongholdCityNpc29 = Creature:new {
 
 nymsStrongholdCityNpc30 = Creature:new {
 	objectName = "nymsStrongholdCityNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ nymsStrongholdCityNpc30 = Creature:new {
 
 nymsStrongholdCityNpc31 = Creature:new {
 	objectName = "nymsStrongholdCityNpc31",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "spacer",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ nymsStrongholdCityNpc31 = Creature:new {
 
 nymsStrongholdCityNpc32 = Creature:new {
 	objectName = "nymsStrongholdCityNpc32",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ nymsStrongholdCityNpc32 = Creature:new {
 
 nymsStrongholdCityNpc33 = Creature:new {
 	objectName = "nymsStrongholdCityNpc33",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ nymsStrongholdCityNpc33 = Creature:new {
 
 nymsStrongholdCityNpc34 = Creature:new {
 	objectName = "nymsStrongholdCityNpc34",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ nymsStrongholdCityNpc34 = Creature:new {
 
 nymsStrongholdCityNpc35 = Creature:new {
 	objectName = "nymsStrongholdCityNpc35",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ nymsStrongholdCityNpc35 = Creature:new {
 
 nymsStrongholdCityNpc36 = Creature:new {
 	objectName = "nymsStrongholdCityNpc36",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -834,7 +834,7 @@ nymsStrongholdCityNpc36 = Creature:new {
 
 nymsStrongholdCityNpc37 = Creature:new {
 	objectName = "nymsStrongholdCityNpc37",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -856,7 +856,7 @@ nymsStrongholdCityNpc37 = Creature:new {
 
 nymsStrongholdCityNpc38 = Creature:new {
 	objectName = "nymsStrongholdCityNpc38",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -878,7 +878,7 @@ nymsStrongholdCityNpc38 = Creature:new {
 
 nymsStrongholdCityNpc39 = Creature:new {
 	objectName = "nymsStrongholdCityNpc39",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scoundrel",
 	combatFlags = 0,
@@ -900,7 +900,7 @@ nymsStrongholdCityNpc39 = Creature:new {
 
 nymsStrongholdCityNpc40 = Creature:new {
 	objectName = "nymsStrongholdCityNpc40",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "surgical_droid_21b",
 	combatFlags = 0,
@@ -922,7 +922,7 @@ nymsStrongholdCityNpc40 = Creature:new {
 
 nymsStrongholdCityNpc41 = Creature:new {
 	objectName = "nymsStrongholdCityNpc41",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -944,7 +944,7 @@ nymsStrongholdCityNpc41 = Creature:new {
 
 nymsStrongholdCityNpc42 = Creature:new {
 	objectName = "nymsStrongholdCityNpc42",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -966,7 +966,7 @@ nymsStrongholdCityNpc42 = Creature:new {
 
 nymsStrongholdCityNpc43 = Creature:new {
 	objectName = "nymsStrongholdCityNpc43",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bounty_hunter",
 	combatFlags = 0,
@@ -988,7 +988,7 @@ nymsStrongholdCityNpc43 = Creature:new {
 
 nymsStrongholdCityNpc44 = Creature:new {
 	objectName = "nymsStrongholdCityNpc44",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1010,7 +1010,7 @@ nymsStrongholdCityNpc44 = Creature:new {
 
 nymsStrongholdCityNpc45 = Creature:new {
 	objectName = "nymsStrongholdCityNpc45",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler",
 	combatFlags = 0,
@@ -1032,7 +1032,7 @@ nymsStrongholdCityNpc45 = Creature:new {
 
 nymsStrongholdCityNpc46 = Creature:new {
 	objectName = "nymsStrongholdCityNpc46",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fringer",
 	combatFlags = 0,
@@ -1054,7 +1054,7 @@ nymsStrongholdCityNpc46 = Creature:new {
 
 nymsStrongholdCityNpc47 = Creature:new {
 	objectName = "nymsStrongholdCityNpc47",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -1076,7 +1076,7 @@ nymsStrongholdCityNpc47 = Creature:new {
 
 nymsStrongholdCityNpc48 = Creature:new {
 	objectName = "nymsStrongholdCityNpc48",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "spacer",
 	combatFlags = 0,
@@ -1098,7 +1098,7 @@ nymsStrongholdCityNpc48 = Creature:new {
 
 nymsStrongholdCityNpc49 = Creature:new {
 	objectName = "nymsStrongholdCityNpc49",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1120,7 +1120,7 @@ nymsStrongholdCityNpc49 = Creature:new {
 
 nymsStrongholdCityNpc50 = Creature:new {
 	objectName = "nymsStrongholdCityNpc50",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_elite",
 	combatFlags = 0,
@@ -1142,7 +1142,7 @@ nymsStrongholdCityNpc50 = Creature:new {
 
 nymsStrongholdCityNpc51 = Creature:new {
 	objectName = "nymsStrongholdCityNpc51",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_elite",
 	combatFlags = 0,
@@ -1164,7 +1164,7 @@ nymsStrongholdCityNpc51 = Creature:new {
 
 nymsStrongholdCityNpc52 = Creature:new {
 	objectName = "nymsStrongholdCityNpc52",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_strong",
 	combatFlags = 0,
@@ -1186,7 +1186,7 @@ nymsStrongholdCityNpc52 = Creature:new {
 
 nymsStrongholdCityNpc53 = Creature:new {
 	objectName = "nymsStrongholdCityNpc53",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_fuel_tech",
 	combatFlags = 0,
@@ -1208,7 +1208,7 @@ nymsStrongholdCityNpc53 = Creature:new {
 
 nymsStrongholdCityNpc54 = Creature:new {
 	objectName = "nymsStrongholdCityNpc54",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gran_base_male",
 	combatFlags = 0,
@@ -1230,7 +1230,7 @@ nymsStrongholdCityNpc54 = Creature:new {
 
 nymsStrongholdCityNpc55 = Creature:new {
 	objectName = "nymsStrongholdCityNpc55",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_elite",
 	combatFlags = 0,
@@ -1252,7 +1252,7 @@ nymsStrongholdCityNpc55 = Creature:new {
 
 nymsStrongholdCityNpc56 = Creature:new {
 	objectName = "nymsStrongholdCityNpc56",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_strong",
 	combatFlags = 0,
@@ -1274,7 +1274,7 @@ nymsStrongholdCityNpc56 = Creature:new {
 
 nymsStrongholdCityNpc57 = Creature:new {
 	objectName = "nymsStrongholdCityNpc57",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_elite",
 	combatFlags = 0,
@@ -1296,7 +1296,7 @@ nymsStrongholdCityNpc57 = Creature:new {
 
 nymsStrongholdCityNpc58 = Creature:new {
 	objectName = "nymsStrongholdCityNpc58",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_elite",
 	combatFlags = 0,
@@ -1318,7 +1318,7 @@ nymsStrongholdCityNpc58 = Creature:new {
 
 nymsStrongholdCityNpc59 = Creature:new {
 	objectName = "nymsStrongholdCityNpc59",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_elite",
 	combatFlags = 0,
@@ -1340,7 +1340,7 @@ nymsStrongholdCityNpc59 = Creature:new {
 
 nymsStrongholdCityNpc60 = Creature:new {
 	objectName = "nymsStrongholdCityNpc60",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_strong",
 	combatFlags = 0,
@@ -1362,7 +1362,7 @@ nymsStrongholdCityNpc60 = Creature:new {
 
 nymsStrongholdCityNpc61 = Creature:new {
 	objectName = "nymsStrongholdCityNpc61",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_weak",
 	combatFlags = 0,
@@ -1384,7 +1384,7 @@ nymsStrongholdCityNpc61 = Creature:new {
 
 nymsStrongholdCityNpc62 = Creature:new {
 	objectName = "nymsStrongholdCityNpc62",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "spacer",
 	combatFlags = 0,
@@ -1406,7 +1406,7 @@ nymsStrongholdCityNpc62 = Creature:new {
 
 nymsStrongholdCityNpc63 = Creature:new {
 	objectName = "nymsStrongholdCityNpc63",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -1428,7 +1428,7 @@ nymsStrongholdCityNpc63 = Creature:new {
 
 nymsStrongholdCityNpc64 = Creature:new {
 	objectName = "nymsStrongholdCityNpc64",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_weak",
 	combatFlags = 0,
@@ -1450,7 +1450,7 @@ nymsStrongholdCityNpc64 = Creature:new {
 
 nymsStrongholdCityNpc65 = Creature:new {
 	objectName = "nymsStrongholdCityNpc65",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1472,7 +1472,7 @@ nymsStrongholdCityNpc65 = Creature:new {
 
 nymsStrongholdCityNpc66 = Creature:new {
 	objectName = "nymsStrongholdCityNpc66",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_surveyer",
 	combatFlags = 0,
@@ -1494,7 +1494,7 @@ nymsStrongholdCityNpc66 = Creature:new {
 
 nymsStrongholdCityNpc67 = Creature:new {
 	objectName = "nymsStrongholdCityNpc67",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -1516,7 +1516,7 @@ nymsStrongholdCityNpc67 = Creature:new {
 
 nymsStrongholdCityNpc68 = Creature:new {
 	objectName = "nymsStrongholdCityNpc68",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1538,7 +1538,7 @@ nymsStrongholdCityNpc68 = Creature:new {
 
 nymsStrongholdCityNpc69 = Creature:new {
 	objectName = "nymsStrongholdCityNpc69",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_weak",
 	combatFlags = 0,
@@ -1560,7 +1560,7 @@ nymsStrongholdCityNpc69 = Creature:new {
 
 nymsStrongholdCityNpc70 = Creature:new {
 	objectName = "nymsStrongholdCityNpc70",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_strong",
 	combatFlags = 0,
@@ -1582,7 +1582,7 @@ nymsStrongholdCityNpc70 = Creature:new {
 
 nymsStrongholdCityNpc71 = Creature:new {
 	objectName = "nymsStrongholdCityNpc71",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_elite",
 	combatFlags = 0,
@@ -1604,7 +1604,7 @@ nymsStrongholdCityNpc71 = Creature:new {
 
 nymsStrongholdCityNpc72 = Creature:new {
 	objectName = "nymsStrongholdCityNpc72",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1626,7 +1626,7 @@ nymsStrongholdCityNpc72 = Creature:new {
 
 nymsStrongholdCityNpc73 = Creature:new {
 	objectName = "nymsStrongholdCityNpc73",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -1648,7 +1648,7 @@ nymsStrongholdCityNpc73 = Creature:new {
 
 nymsStrongholdCityNpc74 = Creature:new {
 	objectName = "nymsStrongholdCityNpc74",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1670,7 +1670,7 @@ nymsStrongholdCityNpc74 = Creature:new {
 
 nymsStrongholdCityNpc75 = Creature:new {
 	objectName = "nymsStrongholdCityNpc75",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1692,7 +1692,7 @@ nymsStrongholdCityNpc75 = Creature:new {
 
 nymsStrongholdCityNpc76 = Creature:new {
 	objectName = "nymsStrongholdCityNpc76",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1714,7 +1714,7 @@ nymsStrongholdCityNpc76 = Creature:new {
 
 nymsStrongholdCityNpc77 = Creature:new {
 	objectName = "nymsStrongholdCityNpc77",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1736,7 +1736,7 @@ nymsStrongholdCityNpc77 = Creature:new {
 
 nymsStrongholdCityNpc78 = Creature:new {
 	objectName = "nymsStrongholdCityNpc78",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1758,7 +1758,7 @@ nymsStrongholdCityNpc78 = Creature:new {
 
 nymsStrongholdCityNpc79 = Creature:new {
 	objectName = "nymsStrongholdCityNpc79",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lok_herald_01",
 	combatFlags = 0,
@@ -1780,7 +1780,7 @@ nymsStrongholdCityNpc79 = Creature:new {
 
 nymsStrongholdCityNpc80 = Creature:new {
 	objectName = "nymsStrongholdCityNpc80",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "pilot",
 	combatFlags = 0,
@@ -1802,7 +1802,7 @@ nymsStrongholdCityNpc80 = Creature:new {
 
 nymsStrongholdCityNpc81 = Creature:new {
 	objectName = "nymsStrongholdCityNpc81",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -1824,7 +1824,7 @@ nymsStrongholdCityNpc81 = Creature:new {
 
 nymsStrongholdCityNpc82 = Creature:new {
 	objectName = "nymsStrongholdCityNpc82",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -1846,7 +1846,7 @@ nymsStrongholdCityNpc82 = Creature:new {
 
 nymsStrongholdCityNpc83 = Creature:new {
 	objectName = "nymsStrongholdCityNpc83",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -1868,7 +1868,7 @@ nymsStrongholdCityNpc83 = Creature:new {
 
 nymsStrongholdCityNpc84 = Creature:new {
 	objectName = "nymsStrongholdCityNpc84",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1890,7 +1890,7 @@ nymsStrongholdCityNpc84 = Creature:new {
 
 nymsStrongholdCityNpc85 = Creature:new {
 	objectName = "nymsStrongholdCityNpc85",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -1912,7 +1912,7 @@ nymsStrongholdCityNpc85 = Creature:new {
 
 nymsStrongholdCityNpc86 = Creature:new {
 	objectName = "nymsStrongholdCityNpc86",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,
@@ -1934,7 +1934,7 @@ nymsStrongholdCityNpc86 = Creature:new {
 
 nymsStrongholdCityNpc87 = Creature:new {
 	objectName = "nymsStrongholdCityNpc87",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "warvog_arkon",
 	combatFlags = 0,
@@ -1956,7 +1956,7 @@ nymsStrongholdCityNpc87 = Creature:new {
 
 nymsStrongholdCityNpc88 = Creature:new {
 	objectName = "nymsStrongholdCityNpc88",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -1978,7 +1978,7 @@ nymsStrongholdCityNpc88 = Creature:new {
 
 nymsStrongholdCityNpc89 = Creature:new {
 	objectName = "nymsStrongholdCityNpc89",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -2000,7 +2000,7 @@ nymsStrongholdCityNpc89 = Creature:new {
 
 nymsStrongholdCityNpc90 = Creature:new {
 	objectName = "nymsStrongholdCityNpc90",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2022,7 +2022,7 @@ nymsStrongholdCityNpc90 = Creature:new {
 
 nymsStrongholdCityNpc91 = Creature:new {
 	objectName = "nymsStrongholdCityNpc91",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -2044,7 +2044,7 @@ nymsStrongholdCityNpc91 = Creature:new {
 
 nymsStrongholdCityNpc92 = Creature:new {
 	objectName = "nymsStrongholdCityNpc92",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -2066,7 +2066,7 @@ nymsStrongholdCityNpc92 = Creature:new {
 
 nymsStrongholdCityNpc93 = Creature:new {
 	objectName = "nymsStrongholdCityNpc93",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -2088,7 +2088,7 @@ nymsStrongholdCityNpc93 = Creature:new {
 
 nymsStrongholdCityNpc94 = Creature:new {
 	objectName = "nymsStrongholdCityNpc94",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -2110,7 +2110,7 @@ nymsStrongholdCityNpc94 = Creature:new {
 
 nymsStrongholdCityNpc95 = Creature:new {
 	objectName = "nymsStrongholdCityNpc95",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2132,7 +2132,7 @@ nymsStrongholdCityNpc95 = Creature:new {
 
 nymsStrongholdCityNpc96 = Creature:new {
 	objectName = "nymsStrongholdCityNpc96",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -2154,7 +2154,7 @@ nymsStrongholdCityNpc96 = Creature:new {
 
 nymsStrongholdCityNpc97 = Creature:new {
 	objectName = "nymsStrongholdCityNpc97",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -2176,7 +2176,7 @@ nymsStrongholdCityNpc97 = Creature:new {
 
 nymsStrongholdCityNpc98 = Creature:new {
 	objectName = "nymsStrongholdCityNpc98",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "spacer",
 	combatFlags = 0,
@@ -2198,7 +2198,7 @@ nymsStrongholdCityNpc98 = Creature:new {
 
 nymsStrongholdCityNpc99 = Creature:new {
 	objectName = "nymsStrongholdCityNpc99",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -2220,7 +2220,7 @@ nymsStrongholdCityNpc99 = Creature:new {
 
 nymsStrongholdCityNpc100 = Creature:new {
 	objectName = "nymsStrongholdCityNpc100",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -2242,7 +2242,7 @@ nymsStrongholdCityNpc100 = Creature:new {
 
 nymsStrongholdCityNpc101 = Creature:new {
 	objectName = "nymsStrongholdCityNpc101",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -2264,7 +2264,7 @@ nymsStrongholdCityNpc101 = Creature:new {
 
 nymsStrongholdCityNpc102 = Creature:new {
 	objectName = "nymsStrongholdCityNpc102",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -2286,7 +2286,7 @@ nymsStrongholdCityNpc102 = Creature:new {
 
 nymsStrongholdCityNpc103 = Creature:new {
 	objectName = "nymsStrongholdCityNpc103",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2308,7 +2308,7 @@ nymsStrongholdCityNpc103 = Creature:new {
 
 nymsStrongholdCityNpc104 = Creature:new {
 	objectName = "nymsStrongholdCityNpc104",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -2330,7 +2330,7 @@ nymsStrongholdCityNpc104 = Creature:new {
 
 nymsStrongholdCityNpc105 = Creature:new {
 	objectName = "nymsStrongholdCityNpc105",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -2352,7 +2352,7 @@ nymsStrongholdCityNpc105 = Creature:new {
 
 nymsStrongholdCityNpc106 = Creature:new {
 	objectName = "nymsStrongholdCityNpc106",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -2374,7 +2374,7 @@ nymsStrongholdCityNpc106 = Creature:new {
 
 nymsStrongholdCityNpc107 = Creature:new {
 	objectName = "nymsStrongholdCityNpc107",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "info_broker",
 	combatFlags = 0,
@@ -2396,7 +2396,7 @@ nymsStrongholdCityNpc107 = Creature:new {
 
 nymsStrongholdCityNpc108 = Creature:new {
 	objectName = "nymsStrongholdCityNpc108",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_strong",
 	combatFlags = 0,
@@ -2418,7 +2418,7 @@ nymsStrongholdCityNpc108 = Creature:new {
 
 nymsStrongholdCityNpc109 = Creature:new {
 	objectName = "nymsStrongholdCityNpc109",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2440,7 +2440,7 @@ nymsStrongholdCityNpc109 = Creature:new {
 
 nymsStrongholdCityNpc110 = Creature:new {
 	objectName = "nymsStrongholdCityNpc110",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_strong",
 	combatFlags = 0,
@@ -2462,7 +2462,7 @@ nymsStrongholdCityNpc110 = Creature:new {
 
 nymsStrongholdCityNpc111 = Creature:new {
 	objectName = "nymsStrongholdCityNpc111",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_elite",
 	combatFlags = 0,
@@ -2484,7 +2484,7 @@ nymsStrongholdCityNpc111 = Creature:new {
 
 nymsStrongholdCityNpc112 = Creature:new {
 	objectName = "nymsStrongholdCityNpc112",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_weak",
 	combatFlags = 0,
@@ -2506,7 +2506,7 @@ nymsStrongholdCityNpc112 = Creature:new {
 
 nymsStrongholdCityNpc113 = Creature:new {
 	objectName = "nymsStrongholdCityNpc113",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2528,7 +2528,7 @@ nymsStrongholdCityNpc113 = Creature:new {
 
 nymsStrongholdCityNpc114 = Creature:new {
 	objectName = "nymsStrongholdCityNpc114",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2550,7 +2550,7 @@ nymsStrongholdCityNpc114 = Creature:new {
 
 nymsStrongholdCityNpc115 = Creature:new {
 	objectName = "nymsStrongholdCityNpc115",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_weak",
 	combatFlags = 0,
@@ -2572,7 +2572,7 @@ nymsStrongholdCityNpc115 = Creature:new {
 
 nymsStrongholdCityNpc116 = Creature:new {
 	objectName = "nymsStrongholdCityNpc116",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_strong",
 	combatFlags = 0,
@@ -2594,7 +2594,7 @@ nymsStrongholdCityNpc116 = Creature:new {
 
 nymsStrongholdCityNpc117 = Creature:new {
 	objectName = "nymsStrongholdCityNpc117",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -2616,7 +2616,7 @@ nymsStrongholdCityNpc117 = Creature:new {
 
 nymsStrongholdCityNpc118 = Creature:new {
 	objectName = "nymsStrongholdCityNpc118",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -2638,7 +2638,7 @@ nymsStrongholdCityNpc118 = Creature:new {
 
 nymsStrongholdCityNpc119 = Creature:new {
 	objectName = "nymsStrongholdCityNpc119",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -2660,7 +2660,7 @@ nymsStrongholdCityNpc119 = Creature:new {
 
 nymsStrongholdCityNpc120 = Creature:new {
 	objectName = "nymsStrongholdCityNpc120",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2682,7 +2682,7 @@ nymsStrongholdCityNpc120 = Creature:new {
 
 nymsStrongholdCityNpc121 = Creature:new {
 	objectName = "nymsStrongholdCityNpc121",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "han_solo",
 	combatFlags = 0,
@@ -2704,7 +2704,7 @@ nymsStrongholdCityNpc121 = Creature:new {
 
 nymsStrongholdCityNpc122 = Creature:new {
 	objectName = "nymsStrongholdCityNpc122",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chewbacca",
 	combatFlags = 0,
@@ -2726,7 +2726,7 @@ nymsStrongholdCityNpc122 = Creature:new {
 
 nymsStrongholdCityNpc123 = Creature:new {
 	objectName = "nymsStrongholdCityNpc123",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scoundrel",
 	combatFlags = 0,
@@ -2748,7 +2748,7 @@ nymsStrongholdCityNpc123 = Creature:new {
 
 nymsStrongholdCityNpc124 = Creature:new {
 	objectName = "nymsStrongholdCityNpc124",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -2770,7 +2770,7 @@ nymsStrongholdCityNpc124 = Creature:new {
 
 nymsStrongholdCityNpc125 = Creature:new {
 	objectName = "nymsStrongholdCityNpc125",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -2792,7 +2792,7 @@ nymsStrongholdCityNpc125 = Creature:new {
 
 nymsStrongholdCityNpc126 = Creature:new {
 	objectName = "nymsStrongholdCityNpc126",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -2814,7 +2814,7 @@ nymsStrongholdCityNpc126 = Creature:new {
 
 nymsStrongholdCityNpc127 = Creature:new {
 	objectName = "nymsStrongholdCityNpc127",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary_weak",
 	combatFlags = 0,
@@ -2836,7 +2836,7 @@ nymsStrongholdCityNpc127 = Creature:new {
 
 nymsStrongholdCityNpc128 = Creature:new {
 	objectName = "nymsStrongholdCityNpc128",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler",
 	combatFlags = 0,
@@ -2858,7 +2858,7 @@ nymsStrongholdCityNpc128 = Creature:new {
 
 nymsStrongholdCityNpc129 = Creature:new {
 	objectName = "nymsStrongholdCityNpc129",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_base_male",
 	combatFlags = 0,
@@ -2880,7 +2880,7 @@ nymsStrongholdCityNpc129 = Creature:new {
 
 nymsStrongholdCityNpc130 = Creature:new {
 	objectName = "nymsStrongholdCityNpc130",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2902,7 +2902,7 @@ nymsStrongholdCityNpc130 = Creature:new {
 
 nymsStrongholdCityNpc131 = Creature:new {
 	objectName = "nymsStrongholdCityNpc131",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "spacer",
 	combatFlags = 0,
@@ -2924,7 +2924,7 @@ nymsStrongholdCityNpc131 = Creature:new {
 
 nymsStrongholdCityNpc132 = Creature:new {
 	objectName = "nymsStrongholdCityNpc132",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_surveyer",
 	combatFlags = 0,
@@ -2946,7 +2946,7 @@ nymsStrongholdCityNpc132 = Creature:new {
 
 nymsStrongholdCityNpc133 = Creature:new {
 	objectName = "nymsStrongholdCityNpc133",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2968,7 +2968,7 @@ nymsStrongholdCityNpc133 = Creature:new {
 
 nymsStrongholdCityNpc134 = Creature:new {
 	objectName = "nymsStrongholdCityNpc134",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -2990,7 +2990,7 @@ nymsStrongholdCityNpc134 = Creature:new {
 
 nymsStrongholdCityNpc135 = Creature:new {
 	objectName = "nymsStrongholdCityNpc135",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bartender",
 	combatFlags = 0,
@@ -3012,7 +3012,7 @@ nymsStrongholdCityNpc135 = Creature:new {
 
 nymsStrongholdCityNpc136 = Creature:new {
 	objectName = "nymsStrongholdCityNpc136",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -3034,7 +3034,7 @@ nymsStrongholdCityNpc136 = Creature:new {
 
 nymsStrongholdCityNpc137 = Creature:new {
 	objectName = "nymsStrongholdCityNpc137",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary_weak",
 	combatFlags = 0,
@@ -3056,7 +3056,7 @@ nymsStrongholdCityNpc137 = Creature:new {
 
 nymsStrongholdCityNpc138 = Creature:new {
 	objectName = "nymsStrongholdCityNpc138",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_surveyer",
 	combatFlags = 0,
@@ -3078,7 +3078,7 @@ nymsStrongholdCityNpc138 = Creature:new {
 
 nymsStrongholdCityNpc139 = Creature:new {
 	objectName = "nymsStrongholdCityNpc139",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -3100,7 +3100,7 @@ nymsStrongholdCityNpc139 = Creature:new {
 
 nymsStrongholdCityNpc140 = Creature:new {
 	objectName = "nymsStrongholdCityNpc140",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -3122,7 +3122,7 @@ nymsStrongholdCityNpc140 = Creature:new {
 
 nymsStrongholdCityNpc141 = Creature:new {
 	objectName = "nymsStrongholdCityNpc141",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -3144,7 +3144,7 @@ nymsStrongholdCityNpc141 = Creature:new {
 
 nymsStrongholdCityNpc142 = Creature:new {
 	objectName = "nymsStrongholdCityNpc142",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler",
 	combatFlags = 0,
@@ -3166,7 +3166,7 @@ nymsStrongholdCityNpc142 = Creature:new {
 
 nymsStrongholdCityNpc143 = Creature:new {
 	objectName = "nymsStrongholdCityNpc143",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -3188,7 +3188,7 @@ nymsStrongholdCityNpc143 = Creature:new {
 
 nymsStrongholdCityNpc144 = Creature:new {
 	objectName = "nymsStrongholdCityNpc144",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -3210,7 +3210,7 @@ nymsStrongholdCityNpc144 = Creature:new {
 
 nymsStrongholdCityNpc145 = Creature:new {
 	objectName = "nymsStrongholdCityNpc145",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -3232,7 +3232,7 @@ nymsStrongholdCityNpc145 = Creature:new {
 
 nymsStrongholdCityNpc146 = Creature:new {
 	objectName = "nymsStrongholdCityNpc146",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -3254,7 +3254,7 @@ nymsStrongholdCityNpc146 = Creature:new {
 
 nymsStrongholdCityNpc147 = Creature:new {
 	objectName = "nymsStrongholdCityNpc147",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -3276,7 +3276,7 @@ nymsStrongholdCityNpc147 = Creature:new {
 
 nymsStrongholdCityNpc148 = Creature:new {
 	objectName = "nymsStrongholdCityNpc148",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -3298,7 +3298,7 @@ nymsStrongholdCityNpc148 = Creature:new {
 
 nymsStrongholdCityNpc149 = Creature:new {
 	objectName = "nymsStrongholdCityNpc149",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3320,7 +3320,7 @@ nymsStrongholdCityNpc149 = Creature:new {
 
 nymsStrongholdCityNpc150 = Creature:new {
 	objectName = "nymsStrongholdCityNpc150",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -3342,7 +3342,7 @@ nymsStrongholdCityNpc150 = Creature:new {
 
 nymsStrongholdCityNpc151 = Creature:new {
 	objectName = "nymsStrongholdCityNpc151",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3364,7 +3364,7 @@ nymsStrongholdCityNpc151 = Creature:new {
 
 nymsStrongholdCityNpc152 = Creature:new {
 	objectName = "nymsStrongholdCityNpc152",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nien_nunb",
 	combatFlags = 0,
@@ -3386,7 +3386,7 @@ nymsStrongholdCityNpc152 = Creature:new {
 
 nymsStrongholdCityNpc153 = Creature:new {
 	objectName = "nymsStrongholdCityNpc153",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "spacer",
 	combatFlags = 0,
@@ -3408,7 +3408,7 @@ nymsStrongholdCityNpc153 = Creature:new {
 
 nymsStrongholdCityNpc154 = Creature:new {
 	objectName = "nymsStrongholdCityNpc154",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -3430,7 +3430,7 @@ nymsStrongholdCityNpc154 = Creature:new {
 
 nymsStrongholdCityNpc155 = Creature:new {
 	objectName = "nymsStrongholdCityNpc155",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -3452,7 +3452,7 @@ nymsStrongholdCityNpc155 = Creature:new {
 
 nymsStrongholdCityNpc156 = Creature:new {
 	objectName = "nymsStrongholdCityNpc156",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "pilot",
 	combatFlags = 0,
@@ -3474,7 +3474,7 @@ nymsStrongholdCityNpc156 = Creature:new {
 
 nymsStrongholdCityNpc157 = Creature:new {
 	objectName = "nymsStrongholdCityNpc157",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -3496,7 +3496,7 @@ nymsStrongholdCityNpc157 = Creature:new {
 
 nymsStrongholdCityNpc158 = Creature:new {
 	objectName = "nymsStrongholdCityNpc158",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ramna",
 	combatFlags = 0,
@@ -3518,7 +3518,7 @@ nymsStrongholdCityNpc158 = Creature:new {
 
 nymsStrongholdCityNpc159 = Creature:new {
 	objectName = "nymsStrongholdCityNpc159",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_weak",
 	combatFlags = 0,
@@ -3540,7 +3540,7 @@ nymsStrongholdCityNpc159 = Creature:new {
 
 nymsStrongholdCityNpc160 = Creature:new {
 	objectName = "nymsStrongholdCityNpc160",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_elite",
 	combatFlags = 0,
@@ -3562,7 +3562,7 @@ nymsStrongholdCityNpc160 = Creature:new {
 
 nymsStrongholdCityNpc161 = Creature:new {
 	objectName = "nymsStrongholdCityNpc161",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -3584,7 +3584,7 @@ nymsStrongholdCityNpc161 = Creature:new {
 
 nymsStrongholdCityNpc162 = Creature:new {
 	objectName = "nymsStrongholdCityNpc162",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3606,7 +3606,7 @@ nymsStrongholdCityNpc162 = Creature:new {
 
 nymsStrongholdCityNpc163 = Creature:new {
 	objectName = "nymsStrongholdCityNpc163",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -3628,7 +3628,7 @@ nymsStrongholdCityNpc163 = Creature:new {
 
 nymsStrongholdCityNpc164 = Creature:new {
 	objectName = "nymsStrongholdCityNpc164",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "comm_operator",
 	combatFlags = 0,
@@ -3650,7 +3650,7 @@ nymsStrongholdCityNpc164 = Creature:new {
 
 nymsStrongholdCityNpc165 = Creature:new {
 	objectName = "nymsStrongholdCityNpc165",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "protocol_droid_3po",
 	combatFlags = 0,
@@ -3672,7 +3672,7 @@ nymsStrongholdCityNpc165 = Creature:new {
 
 nymsStrongholdCityNpc166 = Creature:new {
 	objectName = "nymsStrongholdCityNpc166",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3694,7 +3694,7 @@ nymsStrongholdCityNpc166 = Creature:new {
 
 nymsStrongholdCityNpc167 = Creature:new {
 	objectName = "nymsStrongholdCityNpc167",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lok_herald_02",
 	combatFlags = 0,
@@ -3716,7 +3716,7 @@ nymsStrongholdCityNpc167 = Creature:new {
 
 nymsStrongholdCityNpc168 = Creature:new {
 	objectName = "nymsStrongholdCityNpc168",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3738,7 +3738,7 @@ nymsStrongholdCityNpc168 = Creature:new {
 
 nymsStrongholdCityNpc169 = Creature:new {
 	objectName = "nymsStrongholdCityNpc169",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_weak",
 	combatFlags = 0,
@@ -3760,7 +3760,7 @@ nymsStrongholdCityNpc169 = Creature:new {
 
 nymsStrongholdCityNpc170 = Creature:new {
 	objectName = "nymsStrongholdCityNpc170",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -3782,7 +3782,7 @@ nymsStrongholdCityNpc170 = Creature:new {
 
 nymsStrongholdCityNpc171 = Creature:new {
 	objectName = "nymsStrongholdCityNpc171",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -3804,7 +3804,7 @@ nymsStrongholdCityNpc171 = Creature:new {
 
 nymsStrongholdCityNpc172 = Creature:new {
 	objectName = "nymsStrongholdCityNpc172",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_pirate_elite",
 	combatFlags = 0,
@@ -3826,7 +3826,7 @@ nymsStrongholdCityNpc172 = Creature:new {
 
 nymsStrongholdCityNpc173 = Creature:new {
 	objectName = "nymsStrongholdCityNpc173",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_pirate_elite",
 	combatFlags = 0,
@@ -3848,7 +3848,7 @@ nymsStrongholdCityNpc173 = Creature:new {
 
 nymsStrongholdCityNpc174 = Creature:new {
 	objectName = "nymsStrongholdCityNpc174",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_pirate_weak",
 	combatFlags = 0,
@@ -3870,7 +3870,7 @@ nymsStrongholdCityNpc174 = Creature:new {
 
 nymsStrongholdCityNpc175 = Creature:new {
 	objectName = "nymsStrongholdCityNpc175",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_pirate_weak",
 	combatFlags = 0,
@@ -3892,7 +3892,7 @@ nymsStrongholdCityNpc175 = Creature:new {
 
 nymsStrongholdCityNpc176 = Creature:new {
 	objectName = "nymsStrongholdCityNpc176",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_pirate_strong",
 	combatFlags = 0,
@@ -3914,7 +3914,7 @@ nymsStrongholdCityNpc176 = Creature:new {
 
 nymsStrongholdCityNpc177 = Creature:new {
 	objectName = "nymsStrongholdCityNpc177",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_bodyguard",
 	combatFlags = 0,
@@ -3936,7 +3936,7 @@ nymsStrongholdCityNpc177 = Creature:new {
 
 nymsStrongholdCityNpc178 = Creature:new {
 	objectName = "nymsStrongholdCityNpc178",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_fuel_tech",
 	combatFlags = 0,
@@ -3958,7 +3958,7 @@ nymsStrongholdCityNpc178 = Creature:new {
 
 nymsStrongholdCityNpc179 = Creature:new {
 	objectName = "nymsStrongholdCityNpc179",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym",
 	combatFlags = 0,
@@ -3980,7 +3980,7 @@ nymsStrongholdCityNpc179 = Creature:new {
 
 nymsStrongholdCityNpc180 = Creature:new {
 	objectName = "nymsStrongholdCityNpc180",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kole",
 	combatFlags = 0,
@@ -4002,7 +4002,7 @@ nymsStrongholdCityNpc180 = Creature:new {
 
 nymsStrongholdCityNpc181 = Creature:new {
 	objectName = "nymsStrongholdCityNpc181",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jinkins",
 	combatFlags = 0,
@@ -4024,7 +4024,7 @@ nymsStrongholdCityNpc181 = Creature:new {
 
 nymsStrongholdCityNpc182 = Creature:new {
 	objectName = "nymsStrongholdCityNpc182",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_kusak_guardian",
 	combatFlags = 0,
@@ -4046,7 +4046,7 @@ nymsStrongholdCityNpc182 = Creature:new {
 
 nymsStrongholdCityNpc183 = Creature:new {
 	objectName = "nymsStrongholdCityNpc183",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_kusak_guardian",
 	combatFlags = 0,
@@ -4068,7 +4068,7 @@ nymsStrongholdCityNpc183 = Creature:new {
 
 nymsStrongholdCityNpc184 = Creature:new {
 	objectName = "nymsStrongholdCityNpc184",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "viopa",
 	combatFlags = 0,
@@ -4090,7 +4090,7 @@ nymsStrongholdCityNpc184 = Creature:new {
 
 nymsStrongholdCityNpc185 = Creature:new {
 	objectName = "nymsStrongholdCityNpc185",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_elite",
 	combatFlags = 0,
@@ -4112,7 +4112,7 @@ nymsStrongholdCityNpc185 = Creature:new {
 
 nymsStrongholdCityNpc186 = Creature:new {
 	objectName = "nymsStrongholdCityNpc186",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_elite",
 	combatFlags = 0,
@@ -4134,7 +4134,7 @@ nymsStrongholdCityNpc186 = Creature:new {
 
 nymsStrongholdCityNpc187 = Creature:new {
 	objectName = "nymsStrongholdCityNpc187",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_elite",
 	combatFlags = 0,
@@ -4156,7 +4156,7 @@ nymsStrongholdCityNpc187 = Creature:new {
 
 nymsStrongholdCityNpc188 = Creature:new {
 	objectName = "nymsStrongholdCityNpc188",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_elite",
 	combatFlags = 0,
@@ -4178,7 +4178,7 @@ nymsStrongholdCityNpc188 = Creature:new {
 
 nymsStrongholdCityNpc189 = Creature:new {
 	objectName = "nymsStrongholdCityNpc189",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_strong",
 	combatFlags = 0,
@@ -4200,7 +4200,7 @@ nymsStrongholdCityNpc189 = Creature:new {
 
 nymsStrongholdCityNpc190 = Creature:new {
 	objectName = "nymsStrongholdCityNpc190",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_weak",
 	combatFlags = 0,
@@ -4222,7 +4222,7 @@ nymsStrongholdCityNpc190 = Creature:new {
 
 nymsStrongholdCityNpc191 = Creature:new {
 	objectName = "nymsStrongholdCityNpc191",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_guard_weak",
 	combatFlags = 0,
@@ -4244,7 +4244,7 @@ nymsStrongholdCityNpc191 = Creature:new {
 
 nymsStrongholdCityNpc192 = Creature:new {
 	objectName = "nymsStrongholdCityNpc192",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_brawler",
 	combatFlags = 0,
@@ -4266,7 +4266,7 @@ nymsStrongholdCityNpc192 = Creature:new {
 
 nymsStrongholdCityNpc193 = Creature:new {
 	objectName = "nymsStrongholdCityNpc193",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_surveyer",
 	combatFlags = 0,
@@ -4288,7 +4288,7 @@ nymsStrongholdCityNpc193 = Creature:new {
 
 nymsStrongholdCityNpc194 = Creature:new {
 	objectName = "nymsStrongholdCityNpc194",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_brawler",
 	combatFlags = 0,
@@ -4310,7 +4310,7 @@ nymsStrongholdCityNpc194 = Creature:new {
 
 nymsStrongholdCityNpc195 = Creature:new {
 	objectName = "nymsStrongholdCityNpc195",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_bodyguard",
 	combatFlags = 0,
@@ -4332,7 +4332,7 @@ nymsStrongholdCityNpc195 = Creature:new {
 
 nymsStrongholdCityNpc196 = Creature:new {
 	objectName = "nymsStrongholdCityNpc196",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_surveyer",
 	combatFlags = 0,
@@ -4354,7 +4354,7 @@ nymsStrongholdCityNpc196 = Creature:new {
 
 nymsStrongholdCityNpc197 = Creature:new {
 	objectName = "nymsStrongholdCityNpc197",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_bodyguard",
 	combatFlags = 0,
@@ -4376,7 +4376,7 @@ nymsStrongholdCityNpc197 = Creature:new {
 
 nymsStrongholdCityNpc198 = Creature:new {
 	objectName = "nymsStrongholdCityNpc198",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nym_destroyer",
 	combatFlags = 0,
