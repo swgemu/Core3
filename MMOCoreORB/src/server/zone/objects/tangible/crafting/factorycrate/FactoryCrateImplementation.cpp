@@ -161,7 +161,7 @@ int FactoryCrateImplementation::useObject(Player* player) {
 	if (_this->getObjectCount() >= 0){
 		_this->setObjectCount(_this->getObjectCount()-1);
 
-		TangibleObject* newItem = itemManager->clonePlayerObjectTemplate(player->getNewItemID(), _this->getTangibleObject());
+		TangibleObject* newItem = itemManager->clonePlayerObjectTemplate(player->getNewItemID(), tano.get());
 
 		player->addInventoryItem(newItem);
 		newItem->sendTo(player);

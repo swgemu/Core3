@@ -74,8 +74,12 @@ public:
 
 	inline int size() {
 
-		if (contents != NULL)
-			return contents->getObjectCount();
+		if (contents != NULL) {
+			int count = contents->getObjectCount();
+			if (count == 0)
+				count = 1;
+			return count;
+		}
 		else
 			return 0;
 	}
@@ -96,9 +100,10 @@ public:
 			if(contentsCount == 0)
 				contentsCount = 1;
 			if(incomingCount == 0)
-				incomingCount == 1;
+				incomingCount = 1;
 
 			contents->setObjectCount(contentsCount + incomingCount);
+
 		}
 		return true;
 	}
