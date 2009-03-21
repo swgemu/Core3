@@ -42,7 +42,7 @@
 
 wayfarNpc1 = Creature:new {
 	objectName = "wayfarNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ wayfarNpc1 = Creature:new {
 
 wayfarNpc2 = Creature:new {
 	objectName = "wayfarNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ wayfarNpc2 = Creature:new {
 
 wayfarNpc3 = Creature:new {
 	objectName = "wayfarNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ wayfarNpc3 = Creature:new {
 
 wayfarNpc4 = Creature:new {
 	objectName = "wayfarNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ wayfarNpc4 = Creature:new {
 
 wayfarNpc5 = Creature:new {
 	objectName = "wayfarNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ wayfarNpc5 = Creature:new {
 
 wayfarNpc6 = Creature:new {
 	objectName = "wayfarNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ wayfarNpc6 = Creature:new {
 
 wayfarNpc7 = Creature:new {
 	objectName = "wayfarNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ wayfarNpc7 = Creature:new {
 
 wayfarNpc8 = Creature:new {
 	objectName = "wayfarNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ wayfarNpc8 = Creature:new {
 
 wayfarNpc9 = Creature:new {
 	objectName = "wayfarNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ wayfarNpc9 = Creature:new {
 
 wayfarNpc10 = Creature:new {
 	objectName = "wayfarNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_thief",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ wayfarNpc10 = Creature:new {
 
 wayfarNpc11 = Creature:new {
 	objectName = "wayfarNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ wayfarNpc11 = Creature:new {
 
 wayfarNpc12 = Creature:new {
 	objectName = "wayfarNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_engineer",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ wayfarNpc12 = Creature:new {
 
 wayfarNpc13 = Creature:new {
 	objectName = "wayfarNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jabba_enforcer",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ wayfarNpc13 = Creature:new {
 
 wayfarNpc14 = Creature:new {
 	objectName = "wayfarNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ wayfarNpc14 = Creature:new {
 
 wayfarNpc15 = Creature:new {
 	objectName = "wayfarNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jabba_enforcer",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ wayfarNpc15 = Creature:new {
 
 wayfarNpc16 = Creature:new {
 	objectName = "wayfarNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ wayfarNpc16 = Creature:new {
 
 wayfarNpc17 = Creature:new {
 	objectName = "wayfarNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jabba_enforcer",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ wayfarNpc17 = Creature:new {
 
 wayfarNpc18 = Creature:new {
 	objectName = "wayfarNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_warlord",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ wayfarNpc18 = Creature:new {
 
 wayfarNpc19 = Creature:new {
 	objectName = "wayfarNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jabba_enforcer",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ wayfarNpc19 = Creature:new {
 
 wayfarNpc20 = Creature:new {
 	objectName = "wayfarNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_warlord",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ wayfarNpc20 = Creature:new {
 
 wayfarNpc21 = Creature:new {
 	objectName = "wayfarNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ wayfarNpc21 = Creature:new {
 
 wayfarNpc22 = Creature:new {
 	objectName = "wayfarNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_smuggler",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ wayfarNpc22 = Creature:new {
 
 wayfarNpc23 = Creature:new {
 	objectName = "wayfarNpc23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ wayfarNpc23 = Creature:new {
 
 wayfarNpc24 = Creature:new {
 	objectName = "wayfarNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_smuggler",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ wayfarNpc24 = Creature:new {
 
 wayfarNpc25 = Creature:new {
 	objectName = "wayfarNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cll8_binary_load_lifter",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ wayfarNpc25 = Creature:new {
 
 wayfarNpc26 = Creature:new {
 	objectName = "wayfarNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ wayfarNpc26 = Creature:new {
 
 wayfarNpc27 = Creature:new {
 	objectName = "wayfarNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ wayfarNpc27 = Creature:new {
 
 wayfarNpc28 = Creature:new {
 	objectName = "wayfarNpc28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ wayfarNpc28 = Creature:new {
 
 wayfarNpc29 = Creature:new {
 	objectName = "wayfarNpc29",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ wayfarNpc29 = Creature:new {
 
 wayfarNpc30 = Creature:new {
 	objectName = "wayfarNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ wayfarNpc30 = Creature:new {
 
 wayfarNpc31 = Creature:new {
 	objectName = "wayfarNpc31",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ wayfarNpc31 = Creature:new {
 
 wayfarNpc32 = Creature:new {
 	objectName = "wayfarNpc32",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ wayfarNpc32 = Creature:new {
 
 wayfarNpc33 = Creature:new {
 	objectName = "wayfarNpc33",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_clan_captain",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ wayfarNpc33 = Creature:new {
 
 wayfarNpc34 = Creature:new {
 	objectName = "wayfarNpc34",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_clan_warchief",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ wayfarNpc34 = Creature:new {
 
 wayfarNpc35 = Creature:new {
 	objectName = "wayfarNpc35",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ wayfarNpc35 = Creature:new {
 
 wayfarNpc36 = Creature:new {
 	objectName = "wayfarNpc36",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_male",
 	combatFlags = 0,
@@ -834,7 +834,7 @@ wayfarNpc36 = Creature:new {
 
 wayfarNpc37 = Creature:new {
 	objectName = "wayfarNpc37",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "zabrak_base_female",
 	combatFlags = 0,
@@ -856,7 +856,7 @@ wayfarNpc37 = Creature:new {
 
 wayfarNpc38 = Creature:new {
 	objectName = "wayfarNpc38",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bartender",
 	combatFlags = 0,
@@ -878,7 +878,7 @@ wayfarNpc38 = Creature:new {
 
 wayfarNpc39 = Creature:new {
 	objectName = "wayfarNpc39",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -900,7 +900,7 @@ wayfarNpc39 = Creature:new {
 
 wayfarNpc40 = Creature:new {
 	objectName = "wayfarNpc40",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -922,7 +922,7 @@ wayfarNpc40 = Creature:new {
 
 wayfarNpc41 = Creature:new {
 	objectName = "wayfarNpc41",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "squatter",
 	combatFlags = 0,
@@ -944,7 +944,7 @@ wayfarNpc41 = Creature:new {
 
 wayfarNpc42 = Creature:new {
 	objectName = "wayfarNpc42",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_clan_medic",
 	combatFlags = 0,
@@ -966,7 +966,7 @@ wayfarNpc42 = Creature:new {
 
 wayfarNpc43 = Creature:new {
 	objectName = "wayfarNpc43",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_female",
 	combatFlags = 0,
@@ -988,7 +988,7 @@ wayfarNpc43 = Creature:new {
 
 wayfarNpc44 = Creature:new {
 	objectName = "wayfarNpc44",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_clan_warchief",
 	combatFlags = 0,
@@ -1010,7 +1010,7 @@ wayfarNpc44 = Creature:new {
 
 wayfarNpc45 = Creature:new {
 	objectName = "wayfarNpc45",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1032,7 +1032,7 @@ wayfarNpc45 = Creature:new {
 
 wayfarNpc46 = Creature:new {
 	objectName = "wayfarNpc46",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler",
 	combatFlags = 0,
@@ -1054,7 +1054,7 @@ wayfarNpc46 = Creature:new {
 
 wayfarNpc47 = Creature:new {
 	objectName = "wayfarNpc47",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -1076,7 +1076,7 @@ wayfarNpc47 = Creature:new {
 
 wayfarNpc48 = Creature:new {
 	objectName = "wayfarNpc48",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -1098,7 +1098,7 @@ wayfarNpc48 = Creature:new {
 
 wayfarNpc49 = Creature:new {
 	objectName = "wayfarNpc49",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jabba_henchman",
 	combatFlags = 0,
@@ -1120,7 +1120,7 @@ wayfarNpc49 = Creature:new {
 
 wayfarNpc50 = Creature:new {
 	objectName = "wayfarNpc50",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jabba_enforcer",
 	combatFlags = 0,
@@ -1142,7 +1142,7 @@ wayfarNpc50 = Creature:new {
 
 wayfarNpc51 = Creature:new {
 	objectName = "wayfarNpc51",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jabba_enforcer",
 	combatFlags = 0,
@@ -1164,7 +1164,7 @@ wayfarNpc51 = Creature:new {
 
 wayfarNpc54 = Creature:new {
 	objectName = "wayfarNpc54",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_smuggler",
 	combatFlags = 0,
@@ -1186,7 +1186,7 @@ wayfarNpc54 = Creature:new {
 
 wayfarNpc55 = Creature:new {
 	objectName = "wayfarNpc55",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cll8_binary_load_lifter",
 	combatFlags = 0,
@@ -1208,7 +1208,7 @@ wayfarNpc55 = Creature:new {
 
 wayfarNpc56 = Creature:new {
 	objectName = "wayfarNpc56",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -1230,7 +1230,7 @@ wayfarNpc56 = Creature:new {
 
 wayfarNpc57 = Creature:new {
 	objectName = "wayfarNpc57",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "dim_u_priestess",
 	combatFlags = 0,
@@ -1252,7 +1252,7 @@ wayfarNpc57 = Creature:new {
 
 wayfarNpc58 = Creature:new {
 	objectName = "wayfarNpc58",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1274,7 +1274,7 @@ wayfarNpc58 = Creature:new {
 
 wayfarNpc59 = Creature:new {
 	objectName = "wayfarNpc59",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -1296,7 +1296,7 @@ wayfarNpc59 = Creature:new {
 
 wayfarNpc60 = Creature:new {
 	objectName = "wayfarNpc60",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -1318,7 +1318,7 @@ wayfarNpc60 = Creature:new {
 
 wayfarNpc61 = Creature:new {
 	objectName = "wayfarNpc61",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,
@@ -1340,7 +1340,7 @@ wayfarNpc61 = Creature:new {
 
 wayfarNpc62 = Creature:new {
 	objectName = "wayfarNpc62",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nomad",
 	combatFlags = 0,
@@ -1362,7 +1362,7 @@ wayfarNpc62 = Creature:new {
 
 wayfarNpc63 = Creature:new {
 	objectName = "wayfarNpc63",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1384,7 +1384,7 @@ wayfarNpc63 = Creature:new {
 
 wayfarNpc64 = Creature:new {
 	objectName = "wayfarNpc64",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "patron_sullustan",
 	combatFlags = 0,
@@ -1406,7 +1406,7 @@ wayfarNpc64 = Creature:new {
 
 wayfarNpc65 = Creature:new {
 	objectName = "wayfarNpc65",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1428,7 +1428,7 @@ wayfarNpc65 = Creature:new {
 
 wayfarNpc66 = Creature:new {
 	objectName = "wayfarNpc66",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1450,7 +1450,7 @@ wayfarNpc66 = Creature:new {
 
 wayfarNpc67 = Creature:new {
 	objectName = "wayfarNpc67",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_warlord",
 	combatFlags = 0,
@@ -1472,7 +1472,7 @@ wayfarNpc67 = Creature:new {
 
 wayfarNpc68 = Creature:new {
 	objectName = "wayfarNpc68",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_warlord",
 	combatFlags = 0,
@@ -1494,7 +1494,7 @@ wayfarNpc68 = Creature:new {
 
 wayfarNpc69 = Creature:new {
 	objectName = "wayfarNpc69",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -1516,7 +1516,7 @@ wayfarNpc69 = Creature:new {
 
 wayfarNpc70 = Creature:new {
 	objectName = "wayfarNpc70",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jabba_enforcer",
 	combatFlags = 0,
@@ -1538,7 +1538,7 @@ wayfarNpc70 = Creature:new {
 
 wayfarNpc71 = Creature:new {
 	objectName = "wayfarNpc71",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1560,7 +1560,7 @@ wayfarNpc71 = Creature:new {
 
 wayfarNpc72 = Creature:new {
 	objectName = "wayfarNpc72",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_healer",
 	combatFlags = 0,
@@ -1582,7 +1582,7 @@ wayfarNpc72 = Creature:new {
 
 wayfarNpc73 = Creature:new {
 	objectName = "wayfarNpc73",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa_thief",
 	combatFlags = 0,
@@ -1604,7 +1604,7 @@ wayfarNpc73 = Creature:new {
 
 wayfarNpc74 = Creature:new {
 	objectName = "wayfarNpc74",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1626,7 +1626,7 @@ wayfarNpc74 = Creature:new {
 
 wayfarNpc75 = Creature:new {
 	objectName = "wayfarNpc75",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -1648,7 +1648,7 @@ wayfarNpc75 = Creature:new {
 
 wayfarNpc76 = Creature:new {
 	objectName = "wayfarNpc76",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -1670,7 +1670,7 @@ wayfarNpc76 = Creature:new {
 
 wayfarNpc77 = Creature:new {
 	objectName = "wayfarNpc77",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -1692,7 +1692,7 @@ wayfarNpc77 = Creature:new {
 
 wayfarNpc78 = Creature:new {
 	objectName = "wayfarNpc78",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jabba_henchman",
 	combatFlags = 0,
@@ -1714,7 +1714,7 @@ wayfarNpc78 = Creature:new {
 
 wayfarNpc79 = Creature:new {
 	objectName = "wayfarNpc79",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1736,7 +1736,7 @@ wayfarNpc79 = Creature:new {
 
 wayfarNpc80 = Creature:new {
 	objectName = "wayfarNpc80",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jabba_enforcer",
 	combatFlags = 0,
@@ -1758,7 +1758,7 @@ wayfarNpc80 = Creature:new {
 
 wayfarNpc81 = Creature:new {
 	objectName = "wayfarNpc81",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jabba_enforcer",
 	combatFlags = 0,
@@ -1780,7 +1780,7 @@ wayfarNpc81 = Creature:new {
 
 wayfarNpc82 = Creature:new {
 	objectName = "wayfarNpc82",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bestine_artist06",
 	combatFlags = 0,
@@ -1802,7 +1802,7 @@ wayfarNpc82 = Creature:new {
 
 wayfarNpc83 = Creature:new {
 	objectName = "wayfarNpc83",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1824,7 +1824,7 @@ wayfarNpc83 = Creature:new {
 
 wayfarNpc84 = Creature:new {
 	objectName = "wayfarNpc84",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -1846,7 +1846,7 @@ wayfarNpc84 = Creature:new {
 
 wayfarNpc85 = Creature:new {
 	objectName = "wayfarNpc85",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -1868,7 +1868,7 @@ wayfarNpc85 = Creature:new {
 
 wayfarNpc86 = Creature:new {
 	objectName = "wayfarNpc86",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rodian_clan_warchief",
 	combatFlags = 0,
@@ -1890,7 +1890,7 @@ wayfarNpc86 = Creature:new {
 
 wayfarNpc87 = Creature:new {
 	objectName = "wayfarNpc87",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "technician",
 	combatFlags = 0,

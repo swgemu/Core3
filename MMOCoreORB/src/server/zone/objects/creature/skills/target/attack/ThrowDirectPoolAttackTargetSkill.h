@@ -119,10 +119,10 @@ public:
 		CreatureObject* targetCreature = (CreatureObject*) target;
 		Player* player = (Player*) creature;
 
-		if (!player->hasCooldownExpired(getSkillName())) {
+		/*if (!player->hasCooldownExpired(getSkillName())) {
 			player->sendSystemMessage("trap/trap", "sys_not_ready");
 			return 0;
-		}
+		}*/
 
 		if (!targetCreature->isCreature()) {
 			player->sendSystemMessage("traps/traps", "sys_creatures_only");

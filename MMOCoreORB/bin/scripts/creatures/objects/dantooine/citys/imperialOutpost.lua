@@ -42,7 +42,7 @@
 
 dantImpOutpostNpc1 = Creature:new {
 	objectName = "dantImpOutpostNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ dantImpOutpostNpc1 = Creature:new {
 
 dantImpOutpostNpc2 = Creature:new {
 	objectName = "dantImpOutpostNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ dantImpOutpostNpc2 = Creature:new {
 
 dantImpOutpostNpc3 = Creature:new {
 	objectName = "dantImpOutpostNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ dantImpOutpostNpc3 = Creature:new {
 
 dantImpOutpostNpc4 = Creature:new {
 	objectName = "dantImpOutpostNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ dantImpOutpostNpc4 = Creature:new {
 
 dantImpOutpostNpc5 = Creature:new {
 	objectName = "dantImpOutpostNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ dantImpOutpostNpc5 = Creature:new {
 
 dantImpOutpostNpc6 = Creature:new {
 	objectName = "dantImpOutpostNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ dantImpOutpostNpc6 = Creature:new {
 
 dantImpOutpostNpc7 = Creature:new {
 	objectName = "dantImpOutpostNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ dantImpOutpostNpc7 = Creature:new {
 
 dantImpOutpostNpc8 = Creature:new {
 	objectName = "dantImpOutpostNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ dantImpOutpostNpc8 = Creature:new {
 
 dantImpOutpostNpc9 = Creature:new {
 	objectName = "dantImpOutpostNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ dantImpOutpostNpc9 = Creature:new {
 
 dantImpOutpostNpc10 = Creature:new {
 	objectName = "dantImpOutpostNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ dantImpOutpostNpc10 = Creature:new {
 
 dantImpOutpostNpc11 = Creature:new {
 	objectName = "dantImpOutpostNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ dantImpOutpostNpc11 = Creature:new {
 
 dantImpOutpostNpc12 = Creature:new {
 	objectName = "dantImpOutpostNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ dantImpOutpostNpc12 = Creature:new {
 
 dantImpOutpostNpc13 = Creature:new {
 	objectName = "dantImpOutpostNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "juntah_herm",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ dantImpOutpostNpc13 = Creature:new {
 
 dantImpOutpostNpc14 = Creature:new {
 	objectName = "dantImpOutpostNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bek_rabor",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ dantImpOutpostNpc14 = Creature:new {
 
 dantImpOutpostNpc15 = Creature:new {
 	objectName = "dantImpOutpostNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ dantImpOutpostNpc15 = Creature:new {
 
 dantImpOutpostNpc16 = Creature:new {
 	objectName = "dantImpOutpostNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ dantImpOutpostNpc16 = Creature:new {
 
 dantImpOutpostNpc17 = Creature:new {
 	objectName = "dantImpOutpostNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ dantImpOutpostNpc17 = Creature:new {
 
 dantImpOutpostNpc18 = Creature:new {
 	objectName = "dantImpOutpostNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cll8_binary_load_lifter",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ dantImpOutpostNpc18 = Creature:new {
 
 dantImpOutpostNpc19 = Creature:new {
 	objectName = "dantImpOutpostNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r4",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ dantImpOutpostNpc19 = Creature:new {
 
 dantImpOutpostNpc21 = Creature:new {
 	objectName = "dantImpOutpostNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ dantImpOutpostNpc21 = Creature:new {
 
 dantImpOutpostNpc46 = Creature:new {
 	objectName = "dantImpOutpostNpc46",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ dantImpOutpostNpc46 = Creature:new {
 
 dantImpOutpostNpc47 = Creature:new {
 	objectName = "dantImpOutpostNpc47",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ dantImpOutpostNpc47 = Creature:new {
 
 dantImpOutpostNpc48 = Creature:new {
 	objectName = "dantImpOutpostNpc48",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "insurgent",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ dantImpOutpostNpc48 = Creature:new {
 
 dantImpOutpostNpc49 = Creature:new {
 	objectName = "dantImpOutpostNpc49",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,

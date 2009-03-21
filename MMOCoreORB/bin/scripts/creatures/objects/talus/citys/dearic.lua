@@ -42,7 +42,7 @@
 
 dearicNpc1 = Creature:new {
 	objectName = "dearicNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_punk",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ dearicNpc1 = Creature:new {
 
 dearicNpc2 = Creature:new {
 	objectName = "dearicNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_punk",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ dearicNpc2 = Creature:new {
 
 dearicNpc3 = Creature:new {
 	objectName = "dearicNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ dearicNpc3 = Creature:new {
 
 dearicNpc4 = Creature:new {
 	objectName = "dearicNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ dearicNpc4 = Creature:new {
 
 dearicNpc5 = Creature:new {
 	objectName = "dearicNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ dearicNpc5 = Creature:new {
 
 dearicNpc6 = Creature:new {
 	objectName = "dearicNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ dearicNpc6 = Creature:new {
 
 dearicNpc7 = Creature:new {
 	objectName = "dearicNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ dearicNpc7 = Creature:new {
 
 dearicNpc8 = Creature:new {
 	objectName = "dearicNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ dearicNpc8 = Creature:new {
 
 dearicNpc9 = Creature:new {
 	objectName = "dearicNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ dearicNpc9 = Creature:new {
 
 dearicNpc10 = Creature:new {
 	objectName = "dearicNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "vendor",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ dearicNpc10 = Creature:new {
 
 dearicNpc11 = Creature:new {
 	objectName = "dearicNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ dearicNpc11 = Creature:new {
 
 dearicNpc12 = Creature:new {
 	objectName = "dearicNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ dearicNpc12 = Creature:new {
 
 dearicNpc13 = Creature:new {
 	objectName = "dearicNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ dearicNpc13 = Creature:new {
 
 dearicNpc14 = Creature:new {
 	objectName = "dearicNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "zabrak_base_male",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ dearicNpc14 = Creature:new {
 
 dearicNpc15 = Creature:new {
 	objectName = "dearicNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ dearicNpc15 = Creature:new {
 
 dearicNpc16 = Creature:new {
 	objectName = "dearicNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_male",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ dearicNpc16 = Creature:new {
 
 dearicNpc17 = Creature:new {
 	objectName = "dearicNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scoundrel",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ dearicNpc17 = Creature:new {
 
 dearicNpc18 = Creature:new {
 	objectName = "dearicNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ dearicNpc18 = Creature:new {
 
 dearicNpc19 = Creature:new {
 	objectName = "dearicNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ dearicNpc19 = Creature:new {
 
 dearicNpc20 = Creature:new {
 	objectName = "dearicNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ dearicNpc20 = Creature:new {
 
 dearicNpc21 = Creature:new {
 	objectName = "dearicNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ dearicNpc21 = Creature:new {
 
 dearicNpc22 = Creature:new {
 	objectName = "dearicNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chassis_broker",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ dearicNpc22 = Creature:new {
 
 dearicNpc23 = Creature:new {
 	objectName = "dearicNpc23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ dearicNpc23 = Creature:new {
 
 dearicNpc24 = Creature:new {
 	objectName = "dearicNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ dearicNpc24 = Creature:new {
 
 dearicNpc25 = Creature:new {
 	objectName = "dearicNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ dearicNpc25 = Creature:new {
 
 dearicNpc26 = Creature:new {
 	objectName = "dearicNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ dearicNpc26 = Creature:new {
 
 dearicNpc27 = Creature:new {
 	objectName = "dearicNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ dearicNpc27 = Creature:new {
 
 dearicNpc28 = Creature:new {
 	objectName = "dearicNpc28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ dearicNpc28 = Creature:new {
 
 dearicNpc29 = Creature:new {
 	objectName = "dearicNpc29",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ dearicNpc29 = Creature:new {
 
 dearicNpc30 = Creature:new {
 	objectName = "dearicNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ dearicNpc30 = Creature:new {
 
 dearicNpc31 = Creature:new {
 	objectName = "dearicNpc31",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ dearicNpc31 = Creature:new {
 
 dearicNpc32 = Creature:new {
 	objectName = "dearicNpc32",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_constable",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ dearicNpc32 = Creature:new {
 
 dearicNpc33 = Creature:new {
 	objectName = "dearicNpc33",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_nitwit",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ dearicNpc33 = Creature:new {
 
 dearicNpc34 = Creature:new {
 	objectName = "dearicNpc34",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_punk",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ dearicNpc34 = Creature:new {
 
 dearicNpc35 = Creature:new {
 	objectName = "dearicNpc35",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_punk",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ dearicNpc35 = Creature:new {
 
 dearicNpc36 = Creature:new {
 	objectName = "dearicNpc36",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_nitwit",
 	combatFlags = 0,
@@ -834,7 +834,7 @@ dearicNpc36 = Creature:new {
 
 dearicNpc37 = Creature:new {
 	objectName = "dearicNpc37",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_nitwit",
 	combatFlags = 0,
@@ -856,7 +856,7 @@ dearicNpc37 = Creature:new {
 
 dearicNpc38 = Creature:new {
 	objectName = "dearicNpc38",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_investigator",
 	combatFlags = 0,
@@ -878,7 +878,7 @@ dearicNpc38 = Creature:new {
 
 dearicNpc39 = Creature:new {
 	objectName = "dearicNpc39",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -900,7 +900,7 @@ dearicNpc39 = Creature:new {
 
 dearicNpc40 = Creature:new {
 	objectName = "dearicNpc40",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -922,7 +922,7 @@ dearicNpc40 = Creature:new {
 
 dearicNpc41 = Creature:new {
 	objectName = "dearicNpc41",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -944,7 +944,7 @@ dearicNpc41 = Creature:new {
 
 dearicNpc42 = Creature:new {
 	objectName = "dearicNpc42",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_investigator",
 	combatFlags = 0,
@@ -966,7 +966,7 @@ dearicNpc42 = Creature:new {
 
 dearicNpc43 = Creature:new {
 	objectName = "dearicNpc43",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_captain",
 	combatFlags = 0,
@@ -988,7 +988,7 @@ dearicNpc43 = Creature:new {
 
 dearicNpc44 = Creature:new {
 	objectName = "dearicNpc44",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -1010,7 +1010,7 @@ dearicNpc44 = Creature:new {
 
 dearicNpc45 = Creature:new {
 	objectName = "dearicNpc45",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -1032,7 +1032,7 @@ dearicNpc45 = Creature:new {
 
 dearicNpc46 = Creature:new {
 	objectName = "dearicNpc46",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1054,7 +1054,7 @@ dearicNpc46 = Creature:new {
 
 dearicNpc47 = Creature:new {
 	objectName = "dearicNpc47",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -1076,7 +1076,7 @@ dearicNpc47 = Creature:new {
 
 dearicNpc48 = Creature:new {
 	objectName = "dearicNpc48",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_constable",
 	combatFlags = 0,
@@ -1098,7 +1098,7 @@ dearicNpc48 = Creature:new {
 
 dearicNpc49 = Creature:new {
 	objectName = "dearicNpc49",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1120,7 +1120,7 @@ dearicNpc49 = Creature:new {
 
 dearicNpc50 = Creature:new {
 	objectName = "dearicNpc50",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1142,7 +1142,7 @@ dearicNpc50 = Creature:new {
 
 dearicNpc51 = Creature:new {
 	objectName = "dearicNpc51",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1164,7 +1164,7 @@ dearicNpc51 = Creature:new {
 
 dearicNpc52 = Creature:new {
 	objectName = "dearicNpc52",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -1186,7 +1186,7 @@ dearicNpc52 = Creature:new {
 
 dearicNpc53 = Creature:new {
 	objectName = "dearicNpc53",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1208,7 +1208,7 @@ dearicNpc53 = Creature:new {
 
 dearicNpc54 = Creature:new {
 	objectName = "dearicNpc54",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1230,7 +1230,7 @@ dearicNpc54 = Creature:new {
 
 dearicNpc55 = Creature:new {
 	objectName = "dearicNpc55",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -1252,7 +1252,7 @@ dearicNpc55 = Creature:new {
 
 dearicNpc56 = Creature:new {
 	objectName = "dearicNpc56",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -1274,7 +1274,7 @@ dearicNpc56 = Creature:new {
 
 dearicNpc57 = Creature:new {
 	objectName = "dearicNpc57",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -1296,7 +1296,7 @@ dearicNpc57 = Creature:new {
 
 dearicNpc58 = Creature:new {
 	objectName = "dearicNpc58",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1318,7 +1318,7 @@ dearicNpc58 = Creature:new {
 
 dearicNpc59 = Creature:new {
 	objectName = "dearicNpc59",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rtp_leia_bothan_spy",
 	combatFlags = 0,
@@ -1340,7 +1340,7 @@ dearicNpc59 = Creature:new {
 
 dearicNpc60 = Creature:new {
 	objectName = "dearicNpc60",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1362,7 +1362,7 @@ dearicNpc60 = Creature:new {
 
 dearicNpc61 = Creature:new {
 	objectName = "dearicNpc61",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1384,7 +1384,7 @@ dearicNpc61 = Creature:new {
 
 dearicNpc62 = Creature:new {
 	objectName = "dearicNpc62",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -1406,7 +1406,7 @@ dearicNpc62 = Creature:new {
 
 dearicNpc63 = Creature:new {
 	objectName = "dearicNpc63",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -1428,7 +1428,7 @@ dearicNpc63 = Creature:new {
 
 dearicNpc64 = Creature:new {
 	objectName = "dearicNpc64",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1450,7 +1450,7 @@ dearicNpc64 = Creature:new {
 
 dearicNpc65 = Creature:new {
 	objectName = "dearicNpc65",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1472,7 +1472,7 @@ dearicNpc65 = Creature:new {
 
 dearicNpc66 = Creature:new {
 	objectName = "dearicNpc66",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -1494,7 +1494,7 @@ dearicNpc66 = Creature:new {
 
 dearicNpc67 = Creature:new {
 	objectName = "dearicNpc67",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -1516,7 +1516,7 @@ dearicNpc67 = Creature:new {
 
 dearicNpc68 = Creature:new {
 	objectName = "dearicNpc68",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1538,7 +1538,7 @@ dearicNpc68 = Creature:new {
 
 dearicNpc69 = Creature:new {
 	objectName = "dearicNpc69",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1560,7 +1560,7 @@ dearicNpc69 = Creature:new {
 
 dearicNpc70 = Creature:new {
 	objectName = "dearicNpc70",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_swindler",
 	combatFlags = 0,
@@ -1582,7 +1582,7 @@ dearicNpc70 = Creature:new {
 
 dearicNpc71 = Creature:new {
 	objectName = "dearicNpc71",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_swindler",
 	combatFlags = 0,
@@ -1604,7 +1604,7 @@ dearicNpc71 = Creature:new {
 
 dearicNpc72 = Creature:new {
 	objectName = "dearicNpc72",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_swindler",
 	combatFlags = 0,
@@ -1626,7 +1626,7 @@ dearicNpc72 = Creature:new {
 
 dearicNpc73 = Creature:new {
 	objectName = "dearicNpc73",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1648,7 +1648,7 @@ dearicNpc73 = Creature:new {
 
 dearicNpc74 = Creature:new {
 	objectName = "dearicNpc74",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1670,7 +1670,7 @@ dearicNpc74 = Creature:new {
 
 dearicNpc75 = Creature:new {
 	objectName = "dearicNpc75",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_constable",
 	combatFlags = 0,
@@ -1692,7 +1692,7 @@ dearicNpc75 = Creature:new {
 
 dearicNpc76 = Creature:new {
 	objectName = "dearicNpc76",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1714,7 +1714,7 @@ dearicNpc76 = Creature:new {
 
 dearicNpc77 = Creature:new {
 	objectName = "dearicNpc77",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1736,7 +1736,7 @@ dearicNpc77 = Creature:new {
 
 dearicNpc78 = Creature:new {
 	objectName = "dearicNpc78",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1758,7 +1758,7 @@ dearicNpc78 = Creature:new {
 
 dearicNpc79 = Creature:new {
 	objectName = "dearicNpc79",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1780,7 +1780,7 @@ dearicNpc79 = Creature:new {
 
 dearicNpc80 = Creature:new {
 	objectName = "dearicNpc80",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1802,7 +1802,7 @@ dearicNpc80 = Creature:new {
 
 dearicNpc81 = Creature:new {
 	objectName = "dearicNpc81",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1824,7 +1824,7 @@ dearicNpc81 = Creature:new {
 
 dearicNpc82 = Creature:new {
 	objectName = "dearicNpc82",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1846,7 +1846,7 @@ dearicNpc82 = Creature:new {
 
 dearicNpc83 = Creature:new {
 	objectName = "dearicNpc83",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -1868,7 +1868,7 @@ dearicNpc83 = Creature:new {
 
 dearicNpc84 = Creature:new {
 	objectName = "dearicNpc84",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_nitwit",
 	combatFlags = 0,
@@ -1890,7 +1890,7 @@ dearicNpc84 = Creature:new {
 
 dearicNpc85 = Creature:new {
 	objectName = "dearicNpc85",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1912,7 +1912,7 @@ dearicNpc85 = Creature:new {
 
 dearicNpc86 = Creature:new {
 	objectName = "dearicNpc86",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1934,7 +1934,7 @@ dearicNpc86 = Creature:new {
 
 dearicNpc87 = Creature:new {
 	objectName = "dearicNpc87",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1956,7 +1956,7 @@ dearicNpc87 = Creature:new {
 
 dearicNpc88 = Creature:new {
 	objectName = "dearicNpc88",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_investigator",
 	combatFlags = 0,
@@ -1978,7 +1978,7 @@ dearicNpc88 = Creature:new {
 
 dearicNpc89 = Creature:new {
 	objectName = "dearicNpc89",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -2000,7 +2000,7 @@ dearicNpc89 = Creature:new {
 
 dearicNpc90 = Creature:new {
 	objectName = "dearicNpc90",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_constable",
 	combatFlags = 0,
@@ -2022,7 +2022,7 @@ dearicNpc90 = Creature:new {
 
 dearicNpc91 = Creature:new {
 	objectName = "dearicNpc91",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -2044,7 +2044,7 @@ dearicNpc91 = Creature:new {
 
 dearicNpc92 = Creature:new {
 	objectName = "dearicNpc92",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_nitwit",
 	combatFlags = 0,
@@ -2066,7 +2066,7 @@ dearicNpc92 = Creature:new {
 
 dearicNpc93 = Creature:new {
 	objectName = "dearicNpc93",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_nitwit",
 	combatFlags = 0,
@@ -2088,7 +2088,7 @@ dearicNpc93 = Creature:new {
 
 dearicNpc94 = Creature:new {
 	objectName = "dearicNpc94",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2110,7 +2110,7 @@ dearicNpc94 = Creature:new {
 
 dearicNpc95 = Creature:new {
 	objectName = "dearicNpc95",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2132,7 +2132,7 @@ dearicNpc95 = Creature:new {
 
 dearicNpc96 = Creature:new {
 	objectName = "dearicNpc96",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2154,7 +2154,7 @@ dearicNpc96 = Creature:new {
 
 dearicNpc97 = Creature:new {
 	objectName = "dearicNpc97",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_constable",
 	combatFlags = 0,
@@ -2176,7 +2176,7 @@ dearicNpc97 = Creature:new {
 
 dearicNpc98 = Creature:new {
 	objectName = "dearicNpc98",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -2198,7 +2198,7 @@ dearicNpc98 = Creature:new {
 
 dearicNpc99 = Creature:new {
 	objectName = "dearicNpc99",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_constable",
 	combatFlags = 0,
@@ -2220,7 +2220,7 @@ dearicNpc99 = Creature:new {
 
 dearicNpc100 = Creature:new {
 	objectName = "dearicNpc100",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_constable",
 	combatFlags = 0,
@@ -2242,7 +2242,7 @@ dearicNpc100 = Creature:new {
 
 dearicNpc101 = Creature:new {
 	objectName = "dearicNpc101",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2264,7 +2264,7 @@ dearicNpc101 = Creature:new {
 
 dearicNpc102 = Creature:new {
 	objectName = "dearicNpc102",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -2286,7 +2286,7 @@ dearicNpc102 = Creature:new {
 
 dearicNpc103 = Creature:new {
 	objectName = "dearicNpc103",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -2308,7 +2308,7 @@ dearicNpc103 = Creature:new {
 
 dearicNpc104 = Creature:new {
 	objectName = "dearicNpc104",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2330,7 +2330,7 @@ dearicNpc104 = Creature:new {
 
 dearicNpc105 = Creature:new {
 	objectName = "dearicNpc105",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -2352,7 +2352,7 @@ dearicNpc105 = Creature:new {
 
 dearicNpc106 = Creature:new {
 	objectName = "dearicNpc106",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -2374,7 +2374,7 @@ dearicNpc106 = Creature:new {
 
 dearicNpc107 = Creature:new {
 	objectName = "dearicNpc107",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "quest_crowd_pleaser_theater_manager",
 	combatFlags = 0,
@@ -2396,7 +2396,7 @@ dearicNpc107 = Creature:new {
 
 dearicNpc108 = Creature:new {
 	objectName = "dearicNpc108",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -2418,7 +2418,7 @@ dearicNpc108 = Creature:new {
 
 dearicNpc109 = Creature:new {
 	objectName = "dearicNpc109",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_male",
 	combatFlags = 0,
@@ -2440,7 +2440,7 @@ dearicNpc109 = Creature:new {
 
 dearicNpc110 = Creature:new {
 	objectName = "dearicNpc110",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -2462,7 +2462,7 @@ dearicNpc110 = Creature:new {
 
 dearicNpc111 = Creature:new {
 	objectName = "dearicNpc111",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -2484,7 +2484,7 @@ dearicNpc111 = Creature:new {
 
 dearicNpc112 = Creature:new {
 	objectName = "dearicNpc112",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "extok_evin",
 	combatFlags = 0,
@@ -2506,7 +2506,7 @@ dearicNpc112 = Creature:new {
 
 dearicNpc113 = Creature:new {
 	objectName = "dearicNpc113",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2528,7 +2528,7 @@ dearicNpc113 = Creature:new {
 
 dearicNpc114 = Creature:new {
 	objectName = "dearicNpc114",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2550,7 +2550,7 @@ dearicNpc114 = Creature:new {
 
 dearicNpc115 = Creature:new {
 	objectName = "dearicNpc115",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2572,7 +2572,7 @@ dearicNpc115 = Creature:new {
 
 dearicNpc116 = Creature:new {
 	objectName = "dearicNpc116",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -2594,7 +2594,7 @@ dearicNpc116 = Creature:new {
 
 dearicNpc117 = Creature:new {
 	objectName = "dearicNpc117",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2616,7 +2616,7 @@ dearicNpc117 = Creature:new {
 
 dearicNpc118 = Creature:new {
 	objectName = "dearicNpc118",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2638,7 +2638,7 @@ dearicNpc118 = Creature:new {
 
 dearicNpc119 = Creature:new {
 	objectName = "dearicNpc119",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2660,7 +2660,7 @@ dearicNpc119 = Creature:new {
 
 dearicNpc120 = Creature:new {
 	objectName = "dearicNpc120",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -2682,7 +2682,7 @@ dearicNpc120 = Creature:new {
 
 dearicNpc121 = Creature:new {
 	objectName = "dearicNpc121",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -2704,7 +2704,7 @@ dearicNpc121 = Creature:new {
 
 dearicNpc122 = Creature:new {
 	objectName = "dearicNpc122",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -2726,7 +2726,7 @@ dearicNpc122 = Creature:new {
 
 dearicNpc123 = Creature:new {
 	objectName = "dearicNpc123",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fringer",
 	combatFlags = 0,
@@ -2748,7 +2748,7 @@ dearicNpc123 = Creature:new {
 
 dearicNpc124 = Creature:new {
 	objectName = "dearicNpc124",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,
@@ -2770,7 +2770,7 @@ dearicNpc124 = Creature:new {
 
 dearicNpc125 = Creature:new {
 	objectName = "dearicNpc125",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -2792,7 +2792,7 @@ dearicNpc125 = Creature:new {
 
 dearicNpc126 = Creature:new {
 	objectName = "dearicNpc126",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -2814,7 +2814,7 @@ dearicNpc126 = Creature:new {
 
 dearicNpc127 = Creature:new {
 	objectName = "dearicNpc127",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2836,7 +2836,7 @@ dearicNpc127 = Creature:new {
 
 dearicNpc128 = Creature:new {
 	objectName = "dearicNpc128",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_captain",
 	combatFlags = 0,
@@ -2858,7 +2858,7 @@ dearicNpc128 = Creature:new {
 
 dearicNpc129 = Creature:new {
 	objectName = "dearicNpc129",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_punk",
 	combatFlags = 0,
@@ -2880,7 +2880,7 @@ dearicNpc129 = Creature:new {
 
 dearicNpc130 = Creature:new {
 	objectName = "dearicNpc130",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_punk",
 	combatFlags = 0,
@@ -2902,7 +2902,7 @@ dearicNpc130 = Creature:new {
 
 dearicNpc131 = Creature:new {
 	objectName = "dearicNpc131",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_punk",
 	combatFlags = 0,
@@ -2924,7 +2924,7 @@ dearicNpc131 = Creature:new {
 
 dearicNpc132 = Creature:new {
 	objectName = "dearicNpc132",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_punk",
 	combatFlags = 0,
@@ -2946,7 +2946,7 @@ dearicNpc132 = Creature:new {
 
 dearicNpc133 = Creature:new {
 	objectName = "dearicNpc133",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2968,7 +2968,7 @@ dearicNpc133 = Creature:new {
 
 dearicNpc134 = Creature:new {
 	objectName = "dearicNpc134",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2990,7 +2990,7 @@ dearicNpc134 = Creature:new {
 
 dearicNpc135 = Creature:new {
 	objectName = "dearicNpc135",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -3012,7 +3012,7 @@ dearicNpc135 = Creature:new {
 
 dearicNpc136 = Creature:new {
 	objectName = "dearicNpc136",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3034,7 +3034,7 @@ dearicNpc136 = Creature:new {
 
 dearicNpc137 = Creature:new {
 	objectName = "dearicNpc137",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_constable",
 	combatFlags = 0,
@@ -3056,7 +3056,7 @@ dearicNpc137 = Creature:new {
 
 dearicNpc138 = Creature:new {
 	objectName = "dearicNpc138",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -3078,7 +3078,7 @@ dearicNpc138 = Creature:new {
 
 dearicNpc139 = Creature:new {
 	objectName = "dearicNpc139",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3100,7 +3100,7 @@ dearicNpc139 = Creature:new {
 
 dearicNpc140 = Creature:new {
 	objectName = "dearicNpc140",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -3122,7 +3122,7 @@ dearicNpc140 = Creature:new {
 
 dearicNpc141 = Creature:new {
 	objectName = "dearicNpc141",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3144,7 +3144,7 @@ dearicNpc141 = Creature:new {
 
 dearicNpc142 = Creature:new {
 	objectName = "dearicNpc142",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3166,7 +3166,7 @@ dearicNpc142 = Creature:new {
 
 dearicNpc143 = Creature:new {
 	objectName = "dearicNpc143",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3188,7 +3188,7 @@ dearicNpc143 = Creature:new {
 
 dearicNpc144 = Creature:new {
 	objectName = "dearicNpc144",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3210,7 +3210,7 @@ dearicNpc144 = Creature:new {
 
 dearicNpc145 = Creature:new {
 	objectName = "dearicNpc145",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3232,7 +3232,7 @@ dearicNpc145 = Creature:new {
 
 dearicNpc146 = Creature:new {
 	objectName = "dearicNpc146",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -3254,7 +3254,7 @@ dearicNpc146 = Creature:new {
 
 dearicNpc147 = Creature:new {
 	objectName = "dearicNpc147",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -3276,7 +3276,7 @@ dearicNpc147 = Creature:new {
 
 dearicNpc148 = Creature:new {
 	objectName = "dearicNpc148",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3298,7 +3298,7 @@ dearicNpc148 = Creature:new {
 
 dearicNpc149 = Creature:new {
 	objectName = "dearicNpc149",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_captain",
 	combatFlags = 0,
@@ -3320,7 +3320,7 @@ dearicNpc149 = Creature:new {
 
 dearicNpc150 = Creature:new {
 	objectName = "dearicNpc150",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3342,7 +3342,7 @@ dearicNpc150 = Creature:new {
 
 dearicNpc151 = Creature:new {
 	objectName = "dearicNpc151",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -3364,7 +3364,7 @@ dearicNpc151 = Creature:new {
 
 dearicNpc152 = Creature:new {
 	objectName = "dearicNpc152",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3386,7 +3386,7 @@ dearicNpc152 = Creature:new {
 
 dearicNpc153 = Creature:new {
 	objectName = "dearicNpc153",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3408,7 +3408,7 @@ dearicNpc153 = Creature:new {
 
 dearicNpc154 = Creature:new {
 	objectName = "dearicNpc154",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3430,7 +3430,7 @@ dearicNpc154 = Creature:new {
 
 dearicNpc155 = Creature:new {
 	objectName = "dearicNpc155",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3452,7 +3452,7 @@ dearicNpc155 = Creature:new {
 
 dearicNpc156 = Creature:new {
 	objectName = "dearicNpc156",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3474,7 +3474,7 @@ dearicNpc156 = Creature:new {
 
 dearicNpc157 = Creature:new {
 	objectName = "dearicNpc157",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3496,7 +3496,7 @@ dearicNpc157 = Creature:new {
 
 dearicNpc158 = Creature:new {
 	objectName = "dearicNpc158",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3518,7 +3518,7 @@ dearicNpc158 = Creature:new {
 
 dearicNpc159 = Creature:new {
 	objectName = "dearicNpc159",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3540,7 +3540,7 @@ dearicNpc159 = Creature:new {
 
 dearicNpc163 = Creature:new {
 	objectName = "dearicNpc163",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3562,7 +3562,7 @@ dearicNpc163 = Creature:new {
 
 dearicNpc164 = Creature:new {
 	objectName = "dearicNpc164",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3584,7 +3584,7 @@ dearicNpc164 = Creature:new {
 
 dearicNpc165 = Creature:new {
 	objectName = "dearicNpc165",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -3606,7 +3606,7 @@ dearicNpc165 = Creature:new {
 
 dearicNpc166 = Creature:new {
 	objectName = "dearicNpc166",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3628,7 +3628,7 @@ dearicNpc166 = Creature:new {
 
 dearicNpc167 = Creature:new {
 	objectName = "dearicNpc167",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -3650,7 +3650,7 @@ dearicNpc167 = Creature:new {
 
 dearicNpc168 = Creature:new {
 	objectName = "dearicNpc168",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3672,7 +3672,7 @@ dearicNpc168 = Creature:new {
 
 dearicNpc169 = Creature:new {
 	objectName = "dearicNpc169",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -3694,7 +3694,7 @@ dearicNpc169 = Creature:new {
 
 dearicNpc170 = Creature:new {
 	objectName = "dearicNpc170",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -3716,7 +3716,7 @@ dearicNpc170 = Creature:new {
 
 dearicNpc171 = Creature:new {
 	objectName = "dearicNpc171",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -3738,7 +3738,7 @@ dearicNpc171 = Creature:new {
 
 dearicNpc172 = Creature:new {
 	objectName = "dearicNpc172",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_investigator",
 	combatFlags = 0,
@@ -3760,7 +3760,7 @@ dearicNpc172 = Creature:new {
 
 dearicNpc173 = Creature:new {
 	objectName = "dearicNpc173",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3782,7 +3782,7 @@ dearicNpc173 = Creature:new {
 
 dearicNpc174 = Creature:new {
 	objectName = "dearicNpc174",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3804,7 +3804,7 @@ dearicNpc174 = Creature:new {
 
 dearicNpc175 = Creature:new {
 	objectName = "dearicNpc175",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_nitwit",
 	combatFlags = 0,
@@ -3826,7 +3826,7 @@ dearicNpc175 = Creature:new {
 
 dearicNpc176 = Creature:new {
 	objectName = "dearicNpc176",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_nitwit",
 	combatFlags = 0,
@@ -3848,7 +3848,7 @@ dearicNpc176 = Creature:new {
 
 dearicNpc177 = Creature:new {
 	objectName = "dearicNpc177",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_nitwit",
 	combatFlags = 0,
@@ -3870,7 +3870,7 @@ dearicNpc177 = Creature:new {
 
 dearicNpc178 = Creature:new {
 	objectName = "dearicNpc178",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_nitwit",
 	combatFlags = 0,
@@ -3892,7 +3892,7 @@ dearicNpc178 = Creature:new {
 
 dearicNpc179 = Creature:new {
 	objectName = "dearicNpc179",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_nitwit",
 	combatFlags = 0,
@@ -3914,7 +3914,7 @@ dearicNpc179 = Creature:new {
 
 dearicNpc180 = Creature:new {
 	objectName = "dearicNpc180",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -3936,7 +3936,7 @@ dearicNpc180 = Creature:new {
 
 dearicNpc181 = Creature:new {
 	objectName = "dearicNpc181",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "champhra_biahin",
 	combatFlags = 0,
@@ -3958,7 +3958,7 @@ dearicNpc181 = Creature:new {
 
 dearicNpc182 = Creature:new {
 	objectName = "dearicNpc182",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_constable",
 	combatFlags = 0,
@@ -3980,7 +3980,7 @@ dearicNpc182 = Creature:new {
 
 dearicNpc183 = Creature:new {
 	objectName = "dearicNpc183",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -4002,7 +4002,7 @@ dearicNpc183 = Creature:new {
 
 dearicNpc184 = Creature:new {
 	objectName = "dearicNpc184",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_constable",
 	combatFlags = 0,
@@ -4024,7 +4024,7 @@ dearicNpc184 = Creature:new {
 
 dearicNpc185 = Creature:new {
 	objectName = "dearicNpc185",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_investigator",
 	combatFlags = 0,
@@ -4046,7 +4046,7 @@ dearicNpc185 = Creature:new {
 
 dearicNpc186 = Creature:new {
 	objectName = "dearicNpc186",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4068,7 +4068,7 @@ dearicNpc186 = Creature:new {
 
 dearicNpc187 = Creature:new {
 	objectName = "dearicNpc187",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -4090,7 +4090,7 @@ dearicNpc187 = Creature:new {
 
 dearicNpc188 = Creature:new {
 	objectName = "dearicNpc188",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "chunker_nitwit",
 	combatFlags = 0,
@@ -4112,7 +4112,7 @@ dearicNpc188 = Creature:new {
 
 dearicNpc189 = Creature:new {
 	objectName = "dearicNpc189",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4134,7 +4134,7 @@ dearicNpc189 = Creature:new {
 
 dearicNpc190 = Creature:new {
 	objectName = "dearicNpc190",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -4156,7 +4156,7 @@ dearicNpc190 = Creature:new {
 
 dearicNpc191 = Creature:new {
 	objectName = "dearicNpc191",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -4178,7 +4178,7 @@ dearicNpc191 = Creature:new {
 
 dearicNpc192 = Creature:new {
 	objectName = "dearicNpc192",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4200,7 +4200,7 @@ dearicNpc192 = Creature:new {
 
 dearicNpc193 = Creature:new {
 	objectName = "dearicNpc193",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -4222,7 +4222,7 @@ dearicNpc193 = Creature:new {
 
 dearicNpc194 = Creature:new {
 	objectName = "dearicNpc194",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crafting_contractor",
 	combatFlags = 0,
@@ -4244,7 +4244,7 @@ dearicNpc194 = Creature:new {
 
 dearicNpc195 = Creature:new {
 	objectName = "dearicNpc195",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_patrolman",
 	combatFlags = 0,
@@ -4266,7 +4266,7 @@ dearicNpc195 = Creature:new {
 
 dearicNpc196 = Creature:new {
 	objectName = "dearicNpc196",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4288,7 +4288,7 @@ dearicNpc196 = Creature:new {
 
 dearicNpc197 = Creature:new {
 	objectName = "dearicNpc197",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4310,7 +4310,7 @@ dearicNpc197 = Creature:new {
 
 dearicNpc198 = Creature:new {
 	objectName = "dearicNpc198",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fed_dub_constable",
 	combatFlags = 0,
@@ -4332,7 +4332,7 @@ dearicNpc198 = Creature:new {
 
 dearicNpc199 = Creature:new {
 	objectName = "dearicNpc199",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -4354,7 +4354,7 @@ dearicNpc199 = Creature:new {
 
 dearicNpc200 = Creature:new {
 	objectName = "dearicNpc200",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -4376,7 +4376,7 @@ dearicNpc200 = Creature:new {
 
 dearicNpc201 = Creature:new {
 	objectName = "dearicNpc201",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "pilot",
 	combatFlags = 0,
@@ -4398,7 +4398,7 @@ dearicNpc201 = Creature:new {
 
 dearicNpc202 = Creature:new {
 	objectName = "dearicNpc202",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4420,7 +4420,7 @@ dearicNpc202 = Creature:new {
 
 dearicNpc203 = Creature:new {
 	objectName = "dearicNpc203",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -4442,7 +4442,7 @@ dearicNpc203 = Creature:new {
 
 dearicNpc204 = Creature:new {
 	objectName = "dearicNpc204",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -4464,7 +4464,7 @@ dearicNpc204 = Creature:new {
 
 dearicNpc205 = Creature:new {
 	objectName = "dearicNpc205",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -4486,7 +4486,7 @@ dearicNpc205 = Creature:new {
 
 dearicNpc206 = Creature:new {
 	objectName = "dearicNpc206",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -4508,7 +4508,7 @@ dearicNpc206 = Creature:new {
 
 dearicNpc207 = Creature:new {
 	objectName = "dearicNpc207",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -4530,7 +4530,7 @@ dearicNpc207 = Creature:new {
 
 dearicNpc208 = Creature:new {
 	objectName = "dearicNpc208",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -4552,7 +4552,7 @@ dearicNpc208 = Creature:new {
 
 dearicNpc209 = Creature:new {
 	objectName = "dearicNpc209",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -4574,7 +4574,7 @@ dearicNpc209 = Creature:new {
 
 dearicNpc210 = Creature:new {
 	objectName = "dearicNpc210",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4596,7 +4596,7 @@ dearicNpc210 = Creature:new {
 
 dearicNpc211 = Creature:new {
 	objectName = "dearicNpc211",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -4618,7 +4618,7 @@ dearicNpc211 = Creature:new {
 
 dearicNpc212 = Creature:new {
 	objectName = "dearicNpc212",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "pilot",
 	combatFlags = 0,
@@ -4640,7 +4640,7 @@ dearicNpc212 = Creature:new {
 
 dearicNpc213 = Creature:new {
 	objectName = "dearicNpc213",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_female",
 	combatFlags = 0,
@@ -4662,7 +4662,7 @@ dearicNpc213 = Creature:new {
 
 dearicNpc214 = Creature:new {
 	objectName = "dearicNpc214",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -4684,7 +4684,7 @@ dearicNpc214 = Creature:new {
 
 dearicNpc215 = Creature:new {
 	objectName = "dearicNpc215",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -4706,7 +4706,7 @@ dearicNpc215 = Creature:new {
 
 dearicNpc216 = Creature:new {
 	objectName = "dearicNpc216",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "vendor",
 	combatFlags = 0,
@@ -4728,7 +4728,7 @@ dearicNpc216 = Creature:new {
 
 dearicNpc217 = Creature:new {
 	objectName = "dearicNpc217",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bartender",
 	combatFlags = 0,
@@ -4750,7 +4750,7 @@ dearicNpc217 = Creature:new {
 
 dearicNpc218 = Creature:new {
 	objectName = "dearicNpc218",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -4772,7 +4772,7 @@ dearicNpc218 = Creature:new {
 
 dearicNpc219 = Creature:new {
 	objectName = "dearicNpc219",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -4794,7 +4794,7 @@ dearicNpc219 = Creature:new {
 
 dearicNpc220 = Creature:new {
 	objectName = "dearicNpc220",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scoundrel",
 	combatFlags = 0,
@@ -4816,7 +4816,7 @@ dearicNpc220 = Creature:new {
 
 dearicNpc221 = Creature:new {
 	objectName = "dearicNpc221",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_female",
 	combatFlags = 0,
@@ -4838,7 +4838,7 @@ dearicNpc221 = Creature:new {
 
 dearicNpc222 = Creature:new {
 	objectName = "dearicNpc222",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -4860,7 +4860,7 @@ dearicNpc222 = Creature:new {
 
 dearicNpc223 = Creature:new {
 	objectName = "dearicNpc223",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bounty_hunter",
 	combatFlags = 0,
@@ -4882,7 +4882,7 @@ dearicNpc223 = Creature:new {
 
 dearicNpc224 = Creature:new {
 	objectName = "dearicNpc224",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -4904,7 +4904,7 @@ dearicNpc224 = Creature:new {
 
 dearicNpc225 = Creature:new {
 	objectName = "dearicNpc225",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler",
 	combatFlags = 0,
@@ -4926,7 +4926,7 @@ dearicNpc225 = Creature:new {
 
 dearicNpc226 = Creature:new {
 	objectName = "dearicNpc226",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,

@@ -42,7 +42,7 @@
 
 moeniaNpc1 = Creature:new {
 	objectName = "moeniaNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "plainsfolk",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ moeniaNpc1 = Creature:new {
 
 moeniaNpc2 = Creature:new {
 	objectName = "moeniaNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ moeniaNpc2 = Creature:new {
 
 moeniaNpc3 = Creature:new {
 	objectName = "moeniaNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fringer",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ moeniaNpc3 = Creature:new {
 
 moeniaNpc4 = Creature:new {
 	objectName = "moeniaNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_hermit",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ moeniaNpc4 = Creature:new {
 
 moeniaNpc5 = Creature:new {
 	objectName = "moeniaNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ moeniaNpc5 = Creature:new {
 
 moeniaNpc6 = Creature:new {
 	objectName = "moeniaNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "pilot",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ moeniaNpc6 = Creature:new {
 
 moeniaNpc7 = Creature:new {
 	objectName = "moeniaNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ moeniaNpc7 = Creature:new {
 
 moeniaNpc8 = Creature:new {
 	objectName = "moeniaNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner_human_female",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ moeniaNpc8 = Creature:new {
 
 moeniaNpc9 = Creature:new {
 	objectName = "moeniaNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ moeniaNpc9 = Creature:new {
 
 moeniaNpc10 = Creature:new {
 	objectName = "moeniaNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ moeniaNpc10 = Creature:new {
 
 moeniaNpc11 = Creature:new {
 	objectName = "moeniaNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "plasma_thief",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ moeniaNpc11 = Creature:new {
 
 moeniaNpc12 = Creature:new {
 	objectName = "moeniaNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "v3_fx",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ moeniaNpc12 = Creature:new {
 
 moeniaNpc13 = Creature:new {
 	objectName = "moeniaNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ moeniaNpc13 = Creature:new {
 
 moeniaNpc14 = Creature:new {
 	objectName = "moeniaNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ moeniaNpc14 = Creature:new {
 
 moeniaNpc15 = Creature:new {
 	objectName = "moeniaNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ moeniaNpc15 = Creature:new {
 
 moeniaNpc16 = Creature:new {
 	objectName = "moeniaNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ moeniaNpc16 = Creature:new {
 
 moeniaNpc17 = Creature:new {
 	objectName = "moeniaNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ moeniaNpc17 = Creature:new {
 
 moeniaNpc18 = Creature:new {
 	objectName = "moeniaNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ moeniaNpc18 = Creature:new {
 
 moeniaNpc19 = Creature:new {
 	objectName = "moeniaNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ moeniaNpc19 = Creature:new {
 
 moeniaNpc20 = Creature:new {
 	objectName = "moeniaNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ moeniaNpc20 = Creature:new {
 
 moeniaNpc21 = Creature:new {
 	objectName = "moeniaNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ moeniaNpc21 = Creature:new {
 
 moeniaNpc22 = Creature:new {
 	objectName = "moeniaNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ moeniaNpc22 = Creature:new {
 
 moeniaNpc23 = Creature:new {
 	objectName = "moeniaNpc23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ moeniaNpc23 = Creature:new {
 
 moeniaNpc24 = Creature:new {
 	objectName = "moeniaNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ moeniaNpc24 = Creature:new {
 
 moeniaNpc25 = Creature:new {
 	objectName = "moeniaNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ moeniaNpc25 = Creature:new {
 
 moeniaNpc26 = Creature:new {
 	objectName = "moeniaNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ moeniaNpc26 = Creature:new {
 
 moeniaNpc27 = Creature:new {
 	objectName = "moeniaNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ moeniaNpc27 = Creature:new {
 
 moeniaNpc28 = Creature:new {
 	objectName = "moeniaNpc28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ moeniaNpc28 = Creature:new {
 
 moeniaNpc29 = Creature:new {
 	objectName = "moeniaNpc29",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kiizete",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ moeniaNpc29 = Creature:new {
 
 moeniaNpc30 = Creature:new {
 	objectName = "moeniaNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bertos_goodner",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ moeniaNpc30 = Creature:new {
 
 moeniaNpc31 = Creature:new {
 	objectName = "moeniaNpc31",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "plainsfolk",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ moeniaNpc31 = Creature:new {
 
 moeniaNpc32 = Creature:new {
 	objectName = "moeniaNpc32",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scoundrel",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ moeniaNpc32 = Creature:new {
 
 moeniaNpc33 = Creature:new {
 	objectName = "moeniaNpc33",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ moeniaNpc33 = Creature:new {
 
 moeniaNpc34 = Creature:new {
 	objectName = "moeniaNpc34",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_grand_army_soldier",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ moeniaNpc34 = Creature:new {
 
 moeniaNpc35 = Creature:new {
 	objectName = "moeniaNpc35",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "swamp_villager",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ moeniaNpc35 = Creature:new {
 
 moeniaNpc36 = Creature:new {
 	objectName = "moeniaNpc36",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -834,7 +834,7 @@ moeniaNpc36 = Creature:new {
 
 moeniaNpc37 = Creature:new {
 	objectName = "moeniaNpc37",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bounty_hunter",
 	combatFlags = 0,
@@ -856,7 +856,7 @@ moeniaNpc37 = Creature:new {
 
 moeniaNpc38 = Creature:new {
 	objectName = "moeniaNpc38",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cll8_binary_load_lifter",
 	combatFlags = 0,
@@ -878,7 +878,7 @@ moeniaNpc38 = Creature:new {
 
 moeniaNpc39 = Creature:new {
 	objectName = "moeniaNpc39",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -900,7 +900,7 @@ moeniaNpc39 = Creature:new {
 
 moeniaNpc40 = Creature:new {
 	objectName = "moeniaNpc40",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r4",
 	combatFlags = 0,
@@ -922,7 +922,7 @@ moeniaNpc40 = Creature:new {
 
 moeniaNpc41 = Creature:new {
 	objectName = "moeniaNpc41",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_sergeant",
 	combatFlags = 0,
@@ -944,7 +944,7 @@ moeniaNpc41 = Creature:new {
 
 moeniaNpc42 = Creature:new {
 	objectName = "moeniaNpc42",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_squad_leader",
 	combatFlags = 0,
@@ -966,7 +966,7 @@ moeniaNpc42 = Creature:new {
 
 moeniaNpc43 = Creature:new {
 	objectName = "moeniaNpc43",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "plasma_thief",
 	combatFlags = 0,
@@ -988,7 +988,7 @@ moeniaNpc43 = Creature:new {
 
 moeniaNpc44 = Creature:new {
 	objectName = "moeniaNpc44",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "plasma_thief",
 	combatFlags = 0,
@@ -1010,7 +1010,7 @@ moeniaNpc44 = Creature:new {
 
 moeniaNpc45 = Creature:new {
 	objectName = "moeniaNpc45",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_commando",
 	combatFlags = 0,
@@ -1032,7 +1032,7 @@ moeniaNpc45 = Creature:new {
 
 moeniaNpc46 = Creature:new {
 	objectName = "moeniaNpc46",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_elite_heavy_trooper",
 	combatFlags = 0,
@@ -1054,7 +1054,7 @@ moeniaNpc46 = Creature:new {
 
 moeniaNpc47 = Creature:new {
 	objectName = "moeniaNpc47",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1076,7 +1076,7 @@ moeniaNpc47 = Creature:new {
 
 moeniaNpc48 = Creature:new {
 	objectName = "moeniaNpc48",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1098,7 +1098,7 @@ moeniaNpc48 = Creature:new {
 
 moeniaNpc49 = Creature:new {
 	objectName = "moeniaNpc49",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -1120,7 +1120,7 @@ moeniaNpc49 = Creature:new {
 
 moeniaNpc50 = Creature:new {
 	objectName = "moeniaNpc50",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "info_broker",
 	combatFlags = 0,
@@ -1142,7 +1142,7 @@ moeniaNpc50 = Creature:new {
 
 moeniaNpc51 = Creature:new {
 	objectName = "moeniaNpc51",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -1164,7 +1164,7 @@ moeniaNpc51 = Creature:new {
 
 moeniaNpc52 = Creature:new {
 	objectName = "moeniaNpc52",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -1186,7 +1186,7 @@ moeniaNpc52 = Creature:new {
 
 moeniaNpc53 = Creature:new {
 	objectName = "moeniaNpc53",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -1208,7 +1208,7 @@ moeniaNpc53 = Creature:new {
 
 moeniaNpc54 = Creature:new {
 	objectName = "moeniaNpc54",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_palace_guard",
 	combatFlags = 0,
@@ -1230,7 +1230,7 @@ moeniaNpc54 = Creature:new {
 
 moeniaNpc55 = Creature:new {
 	objectName = "moeniaNpc55",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "skaak_tipper_prowler",
 	combatFlags = 0,
@@ -1252,7 +1252,7 @@ moeniaNpc55 = Creature:new {
 
 moeniaNpc56 = Creature:new {
 	objectName = "moeniaNpc56",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "skaak_tipper_prowler",
 	combatFlags = 0,
@@ -1274,7 +1274,7 @@ moeniaNpc56 = Creature:new {
 
 moeniaNpc57 = Creature:new {
 	objectName = "moeniaNpc57",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "skaak_tipper_prowler",
 	combatFlags = 0,
@@ -1296,7 +1296,7 @@ moeniaNpc57 = Creature:new {
 
 moeniaNpc58 = Creature:new {
 	objectName = "moeniaNpc58",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "skaak_tipper_prowler",
 	combatFlags = 0,
@@ -1318,7 +1318,7 @@ moeniaNpc58 = Creature:new {
 
 moeniaNpc59 = Creature:new {
 	objectName = "moeniaNpc59",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -1340,7 +1340,7 @@ moeniaNpc59 = Creature:new {
 
 moeniaNpc60 = Creature:new {
 	objectName = "moeniaNpc60",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1362,7 +1362,7 @@ moeniaNpc60 = Creature:new {
 
 moeniaNpc61 = Creature:new {
 	objectName = "moeniaNpc61",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -1384,7 +1384,7 @@ moeniaNpc61 = Creature:new {
 
 moeniaNpc62 = Creature:new {
 	objectName = "moeniaNpc62",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -1406,7 +1406,7 @@ moeniaNpc62 = Creature:new {
 
 moeniaNpc63 = Creature:new {
 	objectName = "moeniaNpc63",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1428,7 +1428,7 @@ moeniaNpc63 = Creature:new {
 
 moeniaNpc64 = Creature:new {
 	objectName = "moeniaNpc64",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1450,7 +1450,7 @@ moeniaNpc64 = Creature:new {
 
 moeniaNpc65 = Creature:new {
 	objectName = "moeniaNpc65",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1472,7 +1472,7 @@ moeniaNpc65 = Creature:new {
 
 moeniaNpc66 = Creature:new {
 	objectName = "moeniaNpc66",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1494,7 +1494,7 @@ moeniaNpc66 = Creature:new {
 
 moeniaNpc67 = Creature:new {
 	objectName = "moeniaNpc67",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1516,7 +1516,7 @@ moeniaNpc67 = Creature:new {
 
 moeniaNpc68 = Creature:new {
 	objectName = "moeniaNpc68",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -1538,7 +1538,7 @@ moeniaNpc68 = Creature:new {
 
 moeniaNpc69 = Creature:new {
 	objectName = "moeniaNpc69",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -1560,7 +1560,7 @@ moeniaNpc69 = Creature:new {
 
 moeniaNpc71 = Creature:new {
 	objectName = "moeniaNpc71",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -1582,7 +1582,7 @@ moeniaNpc71 = Creature:new {
 
 moeniaNpc73 = Creature:new {
 	objectName = "moeniaNpc73",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "borvo_the_hutt",
 	combatFlags = 0,
@@ -1604,7 +1604,7 @@ moeniaNpc73 = Creature:new {
 
 moeniaNpc76 = Creature:new {
 	objectName = "moeniaNpc76",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -1626,7 +1626,7 @@ moeniaNpc76 = Creature:new {
 
 moeniaNpc77 = Creature:new {
 	objectName = "moeniaNpc77",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -1648,7 +1648,7 @@ moeniaNpc77 = Creature:new {
 
 moeniaNpc78 = Creature:new {
 	objectName = "moeniaNpc78",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -1670,7 +1670,7 @@ moeniaNpc78 = Creature:new {
 
 moeniaNpc79 = Creature:new {
 	objectName = "moeniaNpc79",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scoundrel",
 	combatFlags = 0,
@@ -1692,7 +1692,7 @@ moeniaNpc79 = Creature:new {
 
 moeniaNpc80 = Creature:new {
 	objectName = "moeniaNpc80",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1714,7 +1714,7 @@ moeniaNpc80 = Creature:new {
 
 moeniaNpc81 = Creature:new {
 	objectName = "moeniaNpc81",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bith_base_female",
 	combatFlags = 0,
@@ -1736,7 +1736,7 @@ moeniaNpc81 = Creature:new {
 
 moeniaNpc82 = Creature:new {
 	objectName = "moeniaNpc82",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_palace_guard",
 	combatFlags = 0,
@@ -1758,7 +1758,7 @@ moeniaNpc82 = Creature:new {
 
 moeniaNpc83 = Creature:new {
 	objectName = "moeniaNpc83",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bartender",
 	combatFlags = 0,
@@ -1780,7 +1780,7 @@ moeniaNpc83 = Creature:new {
 
 moeniaNpc84 = Creature:new {
 	objectName = "moeniaNpc84",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_captain",
 	combatFlags = 0,
@@ -1802,7 +1802,7 @@ moeniaNpc84 = Creature:new {
 
 moeniaNpc85 = Creature:new {
 	objectName = "moeniaNpc85",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_scout",
 	combatFlags = 0,
@@ -1824,7 +1824,7 @@ moeniaNpc85 = Creature:new {
 
 moeniaNpc86 = Creature:new {
 	objectName = "moeniaNpc86",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -1846,7 +1846,7 @@ moeniaNpc86 = Creature:new {
 
 moeniaNpc87 = Creature:new {
 	objectName = "moeniaNpc87",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -1868,7 +1868,7 @@ moeniaNpc87 = Creature:new {
 
 moeniaNpc88 = Creature:new {
 	objectName = "moeniaNpc88",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_command_security_guard",
 	combatFlags = 0,
@@ -1890,7 +1890,7 @@ moeniaNpc88 = Creature:new {
 
 moeniaNpc89 = Creature:new {
 	objectName = "moeniaNpc89",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1912,7 +1912,7 @@ moeniaNpc89 = Creature:new {
 
 moeniaNpc90 = Creature:new {
 	objectName = "moeniaNpc90",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_soldier",
 	combatFlags = 0,
@@ -1934,7 +1934,7 @@ moeniaNpc90 = Creature:new {
 
 moeniaNpc91 = Creature:new {
 	objectName = "moeniaNpc91",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -1956,7 +1956,7 @@ moeniaNpc91 = Creature:new {
 
 moeniaNpc92 = Creature:new {
 	objectName = "moeniaNpc92",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -1978,7 +1978,7 @@ moeniaNpc92 = Creature:new {
 
 moeniaNpc93 = Creature:new {
 	objectName = "moeniaNpc93",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_medic",
 	combatFlags = 0,
@@ -2000,7 +2000,7 @@ moeniaNpc93 = Creature:new {
 
 moeniaNpc94 = Creature:new {
 	objectName = "moeniaNpc94",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -2022,7 +2022,7 @@ moeniaNpc94 = Creature:new {
 
 moeniaNpc95 = Creature:new {
 	objectName = "moeniaNpc95",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -2044,7 +2044,7 @@ moeniaNpc95 = Creature:new {
 
 moeniaNpc96 = Creature:new {
 	objectName = "moeniaNpc96",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -2066,7 +2066,7 @@ moeniaNpc96 = Creature:new {
 
 moeniaNpc97 = Creature:new {
 	objectName = "moeniaNpc97",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -2088,7 +2088,7 @@ moeniaNpc97 = Creature:new {
 
 moeniaNpc98 = Creature:new {
 	objectName = "moeniaNpc98",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -2110,7 +2110,7 @@ moeniaNpc98 = Creature:new {
 
 moeniaNpc99 = Creature:new {
 	objectName = "moeniaNpc99",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -2132,7 +2132,7 @@ moeniaNpc99 = Creature:new {
 
 moeniaNpc100 = Creature:new {
 	objectName = "moeniaNpc100",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -2154,7 +2154,7 @@ moeniaNpc100 = Creature:new {
 
 moeniaNpc101 = Creature:new {
 	objectName = "moeniaNpc101",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nightspider",
 	combatFlags = 0,
@@ -2176,7 +2176,7 @@ moeniaNpc101 = Creature:new {
 
 moeniaNpc102 = Creature:new {
 	objectName = "moeniaNpc102",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nightspider",
 	combatFlags = 0,
@@ -2198,7 +2198,7 @@ moeniaNpc102 = Creature:new {
 
 moeniaNpc103 = Creature:new {
 	objectName = "moeniaNpc103",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -2220,7 +2220,7 @@ moeniaNpc103 = Creature:new {
 
 moeniaNpc104 = Creature:new {
 	objectName = "moeniaNpc104",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -2242,7 +2242,7 @@ moeniaNpc104 = Creature:new {
 
 moeniaNpc105 = Creature:new {
 	objectName = "moeniaNpc105",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -2264,7 +2264,7 @@ moeniaNpc105 = Creature:new {
 
 moeniaNpc106 = Creature:new {
 	objectName = "moeniaNpc106",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -2286,7 +2286,7 @@ moeniaNpc106 = Creature:new {
 
 moeniaNpc107 = Creature:new {
 	objectName = "moeniaNpc107",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -2308,7 +2308,7 @@ moeniaNpc107 = Creature:new {
 
 moeniaNpc108 = Creature:new {
 	objectName = "moeniaNpc108",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -2330,7 +2330,7 @@ moeniaNpc108 = Creature:new {
 
 moeniaNpc109 = Creature:new {
 	objectName = "moeniaNpc109",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "peko_peko",
 	combatFlags = 0,
@@ -2352,7 +2352,7 @@ moeniaNpc109 = Creature:new {
 
 moeniaNpc110 = Creature:new {
 	objectName = "moeniaNpc110",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "giant_peko_peko",
 	combatFlags = 0,
@@ -2374,7 +2374,7 @@ moeniaNpc110 = Creature:new {
 
 moeniaNpc111 = Creature:new {
 	objectName = "moeniaNpc111",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -2396,7 +2396,7 @@ moeniaNpc111 = Creature:new {
 
 moeniaNpc112 = Creature:new {
 	objectName = "moeniaNpc112",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -2418,7 +2418,7 @@ moeniaNpc112 = Creature:new {
 
 moeniaNpc113 = Creature:new {
 	objectName = "moeniaNpc113",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2440,7 +2440,7 @@ moeniaNpc113 = Creature:new {
 
 moeniaNpc114 = Creature:new {
 	objectName = "moeniaNpc114",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2462,7 +2462,7 @@ moeniaNpc114 = Creature:new {
 
 moeniaNpc115 = Creature:new {
 	objectName = "moeniaNpc115",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2484,7 +2484,7 @@ moeniaNpc115 = Creature:new {
 
 moeniaNpc116 = Creature:new {
 	objectName = "moeniaNpc116",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_liberator",
 	combatFlags = 0,
@@ -2506,7 +2506,7 @@ moeniaNpc116 = Creature:new {
 
 moeniaNpc117 = Creature:new {
 	objectName = "moeniaNpc117",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -2528,7 +2528,7 @@ moeniaNpc117 = Creature:new {
 
 moeniaNpc118 = Creature:new {
 	objectName = "moeniaNpc118",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -2550,7 +2550,7 @@ moeniaNpc118 = Creature:new {
 
 moeniaNpc119 = Creature:new {
 	objectName = "moeniaNpc119",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2572,7 +2572,7 @@ moeniaNpc119 = Creature:new {
 
 moeniaNpc120 = Creature:new {
 	objectName = "moeniaNpc120",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -2594,7 +2594,7 @@ moeniaNpc120 = Creature:new {
 
 moeniaNpc121 = Creature:new {
 	objectName = "moeniaNpc121",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_liberator",
 	combatFlags = 0,
@@ -2616,7 +2616,7 @@ moeniaNpc121 = Creature:new {
 
 moeniaNpc122 = Creature:new {
 	objectName = "moeniaNpc122",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -2638,7 +2638,7 @@ moeniaNpc122 = Creature:new {
 
 moeniaNpc123 = Creature:new {
 	objectName = "moeniaNpc123",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -2660,7 +2660,7 @@ moeniaNpc123 = Creature:new {
 
 moeniaNpc124 = Creature:new {
 	objectName = "moeniaNpc124",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2682,7 +2682,7 @@ moeniaNpc124 = Creature:new {
 
 moeniaNpc125 = Creature:new {
 	objectName = "moeniaNpc125",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "hunter",
 	combatFlags = 0,
@@ -2704,7 +2704,7 @@ moeniaNpc125 = Creature:new {
 
 moeniaNpc126 = Creature:new {
 	objectName = "moeniaNpc126",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r4",
 	combatFlags = 0,
@@ -2726,7 +2726,7 @@ moeniaNpc126 = Creature:new {
 
 moeniaNpc127 = Creature:new {
 	objectName = "moeniaNpc127",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -2748,7 +2748,7 @@ moeniaNpc127 = Creature:new {
 
 moeniaNpc128 = Creature:new {
 	objectName = "moeniaNpc128",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2770,7 +2770,7 @@ moeniaNpc128 = Creature:new {
 
 moeniaNpc129 = Creature:new {
 	objectName = "moeniaNpc129",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2792,7 +2792,7 @@ moeniaNpc129 = Creature:new {
 
 moeniaNpc130 = Creature:new {
 	objectName = "moeniaNpc130",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2814,7 +2814,7 @@ moeniaNpc130 = Creature:new {
 
 moeniaNpc131 = Creature:new {
 	objectName = "moeniaNpc131",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2836,7 +2836,7 @@ moeniaNpc131 = Creature:new {
 
 moeniaNpc132 = Creature:new {
 	objectName = "moeniaNpc132",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_grand_army_soldier",
 	combatFlags = 0,
@@ -2858,7 +2858,7 @@ moeniaNpc132 = Creature:new {
 
 moeniaNpc133 = Creature:new {
 	objectName = "moeniaNpc133",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_commando",
 	combatFlags = 0,
@@ -2880,7 +2880,7 @@ moeniaNpc133 = Creature:new {
 
 moeniaNpc134 = Creature:new {
 	objectName = "moeniaNpc134",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -2902,7 +2902,7 @@ moeniaNpc134 = Creature:new {
 
 moeniaNpc135 = Creature:new {
 	objectName = "moeniaNpc135",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guard_captain",
 	combatFlags = 0,
@@ -2924,7 +2924,7 @@ moeniaNpc135 = Creature:new {
 
 moeniaNpc136 = Creature:new {
 	objectName = "moeniaNpc136",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -2946,7 +2946,7 @@ moeniaNpc136 = Creature:new {
 
 moeniaNpc137 = Creature:new {
 	objectName = "moeniaNpc137",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -2968,7 +2968,7 @@ moeniaNpc137 = Creature:new {
 
 moeniaNpc138 = Creature:new {
 	objectName = "moeniaNpc138",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "otolla_gungan",
 	combatFlags = 0,
@@ -2990,7 +2990,7 @@ moeniaNpc138 = Creature:new {
 
 moeniaNpc139 = Creature:new {
 	objectName = "moeniaNpc139",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -3012,7 +3012,7 @@ moeniaNpc139 = Creature:new {
 
 moeniaNpc140 = Creature:new {
 	objectName = "moeniaNpc140",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3034,7 +3034,7 @@ moeniaNpc140 = Creature:new {
 
 moeniaNpc141 = Creature:new {
 	objectName = "moeniaNpc141",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3056,7 +3056,7 @@ moeniaNpc141 = Creature:new {
 
 moeniaNpc142 = Creature:new {
 	objectName = "moeniaNpc142",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3078,7 +3078,7 @@ moeniaNpc142 = Creature:new {
 
 moeniaNpc143 = Creature:new {
 	objectName = "moeniaNpc143",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_palace_guard",
 	combatFlags = 0,
@@ -3100,7 +3100,7 @@ moeniaNpc143 = Creature:new {
 
 moeniaNpc144 = Creature:new {
 	objectName = "moeniaNpc144",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "official",
 	combatFlags = 0,
@@ -3122,7 +3122,7 @@ moeniaNpc144 = Creature:new {
 
 moeniaNpc145 = Creature:new {
 	objectName = "moeniaNpc145",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3144,7 +3144,7 @@ moeniaNpc145 = Creature:new {
 
 moeniaNpc147 = Creature:new {
 	objectName = "moeniaNpc147",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -3166,7 +3166,7 @@ moeniaNpc147 = Creature:new {
 
 moeniaNpc148 = Creature:new {
 	objectName = "moeniaNpc148",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_rifleman",
 	combatFlags = 0,
@@ -3188,7 +3188,7 @@ moeniaNpc148 = Creature:new {
 
 moeniaNpc149 = Creature:new {
 	objectName = "moeniaNpc149",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3210,7 +3210,7 @@ moeniaNpc149 = Creature:new {
 
 moeniaNpc150 = Creature:new {
 	objectName = "moeniaNpc150",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -3232,7 +3232,7 @@ moeniaNpc150 = Creature:new {
 
 moeniaNpc151 = Creature:new {
 	objectName = "moeniaNpc151",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ankura_gungan",
 	combatFlags = 0,
@@ -3254,7 +3254,7 @@ moeniaNpc151 = Creature:new {
 
 moeniaNpc152 = Creature:new {
 	objectName = "moeniaNpc152",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3276,7 +3276,7 @@ moeniaNpc152 = Creature:new {
 
 moeniaNpc153 = Creature:new {
 	objectName = "moeniaNpc153",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3298,7 +3298,7 @@ moeniaNpc153 = Creature:new {
 
 moeniaNpc154 = Creature:new {
 	objectName = "moeniaNpc154",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3320,7 +3320,7 @@ moeniaNpc154 = Creature:new {
 
 moeniaNpc155 = Creature:new {
 	objectName = "moeniaNpc155",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_soldier",
 	combatFlags = 0,
@@ -3342,7 +3342,7 @@ moeniaNpc155 = Creature:new {
 
 moeniaNpc156 = Creature:new {
 	objectName = "moeniaNpc156",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_soldier",
 	combatFlags = 0,
@@ -3364,7 +3364,7 @@ moeniaNpc156 = Creature:new {
 
 moeniaNpc157 = Creature:new {
 	objectName = "moeniaNpc157",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_soldier",
 	combatFlags = 0,
@@ -3386,7 +3386,7 @@ moeniaNpc157 = Creature:new {
 
 moeniaNpc160 = Creature:new {
 	objectName = "moeniaNpc160",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3408,7 +3408,7 @@ moeniaNpc160 = Creature:new {
 
 moeniaNpc161 = Creature:new {
 	objectName = "moeniaNpc161",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3430,7 +3430,7 @@ moeniaNpc161 = Creature:new {
 
 moeniaNpc162 = Creature:new {
 	objectName = "moeniaNpc162",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3452,7 +3452,7 @@ moeniaNpc162 = Creature:new {
 
 moeniaNpc163 = Creature:new {
 	objectName = "moeniaNpc163",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_guard",
 	combatFlags = 0,
@@ -3474,7 +3474,7 @@ moeniaNpc163 = Creature:new {
 
 moeniaNpc164 = Creature:new {
 	objectName = "moeniaNpc164",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_hunter",
 	combatFlags = 0,
@@ -3496,7 +3496,7 @@ moeniaNpc164 = Creature:new {
 
 moeniaNpc165 = Creature:new {
 	objectName = "moeniaNpc165",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -3518,7 +3518,7 @@ moeniaNpc165 = Creature:new {
 
 moeniaNpc166 = Creature:new {
 	objectName = "moeniaNpc166",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crafting_contractor",
 	combatFlags = 0,
@@ -3540,7 +3540,7 @@ moeniaNpc166 = Creature:new {
 
 moeniaNpc167 = Creature:new {
 	objectName = "moeniaNpc167",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3562,7 +3562,7 @@ moeniaNpc167 = Creature:new {
 
 moeniaNpc168 = Creature:new {
 	objectName = "moeniaNpc168",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -3584,7 +3584,7 @@ moeniaNpc168 = Creature:new {
 
 moeniaNpc169 = Creature:new {
 	objectName = "moeniaNpc169",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3606,7 +3606,7 @@ moeniaNpc169 = Creature:new {
 
 moeniaNpc170 = Creature:new {
 	objectName = "moeniaNpc170",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3628,7 +3628,7 @@ moeniaNpc170 = Creature:new {
 
 moeniaNpc171 = Creature:new {
 	objectName = "moeniaNpc171",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3650,7 +3650,7 @@ moeniaNpc171 = Creature:new {
 
 moeniaNpc172 = Creature:new {
 	objectName = "moeniaNpc172",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_recruit",
 	combatFlags = 0,
@@ -3672,7 +3672,7 @@ moeniaNpc172 = Creature:new {
 
 moeniaNpc173 = Creature:new {
 	objectName = "moeniaNpc173",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_commando_hard",
 	combatFlags = 0,
@@ -3694,7 +3694,7 @@ moeniaNpc173 = Creature:new {
 
 moeniaNpc174 = Creature:new {
 	objectName = "moeniaNpc174",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "skaak_tipper_prowler",
 	combatFlags = 0,
@@ -3716,7 +3716,7 @@ moeniaNpc174 = Creature:new {
 
 moeniaNpc175 = Creature:new {
 	objectName = "moeniaNpc175",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "skaak_tipper_prowler",
 	combatFlags = 0,
@@ -3738,7 +3738,7 @@ moeniaNpc175 = Creature:new {
 
 moeniaNpc176 = Creature:new {
 	objectName = "moeniaNpc176",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3760,7 +3760,7 @@ moeniaNpc176 = Creature:new {
 
 moeniaNpc177 = Creature:new {
 	objectName = "moeniaNpc177",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "skaak_tipper_prowler",
 	combatFlags = 0,
@@ -3782,7 +3782,7 @@ moeniaNpc177 = Creature:new {
 
 moeniaNpc178 = Creature:new {
 	objectName = "moeniaNpc178",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3804,7 +3804,7 @@ moeniaNpc178 = Creature:new {
 
 moeniaNpc179 = Creature:new {
 	objectName = "moeniaNpc179",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3826,7 +3826,7 @@ moeniaNpc179 = Creature:new {
 
 moeniaNpc180 = Creature:new {
 	objectName = "moeniaNpc180",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3848,7 +3848,7 @@ moeniaNpc180 = Creature:new {
 
 moeniaNpc181 = Creature:new {
 	objectName = "moeniaNpc181",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "spacer",
 	combatFlags = 0,
@@ -3870,7 +3870,7 @@ moeniaNpc181 = Creature:new {
 
 moeniaNpc182 = Creature:new {
 	objectName = "moeniaNpc182",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "plainsfolk",
 	combatFlags = 0,
@@ -3892,7 +3892,7 @@ moeniaNpc182 = Creature:new {
 
 moeniaNpc183 = Creature:new {
 	objectName = "moeniaNpc183",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "skaak_tipper_prowler",
 	combatFlags = 0,
@@ -3914,7 +3914,7 @@ moeniaNpc183 = Creature:new {
 
 moeniaNpc184 = Creature:new {
 	objectName = "moeniaNpc184",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -3936,7 +3936,7 @@ moeniaNpc184 = Creature:new {
 
 moeniaNpc185 = Creature:new {
 	objectName = "moeniaNpc185",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3958,7 +3958,7 @@ moeniaNpc185 = Creature:new {
 
 moeniaNpc186 = Creature:new {
 	objectName = "moeniaNpc186",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3980,7 +3980,7 @@ moeniaNpc186 = Creature:new {
 
 moeniaNpc187 = Creature:new {
 	objectName = "moeniaNpc187",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4002,7 +4002,7 @@ moeniaNpc187 = Creature:new {
 
 moeniaNpc188 = Creature:new {
 	objectName = "moeniaNpc188",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4024,7 +4024,7 @@ moeniaNpc188 = Creature:new {
 
 moeniaNpc189 = Creature:new {
 	objectName = "moeniaNpc189",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -4046,7 +4046,7 @@ moeniaNpc189 = Creature:new {
 
 moeniaNpc190 = Creature:new {
 	objectName = "moeniaNpc190",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -4068,7 +4068,7 @@ moeniaNpc190 = Creature:new {
 
 moeniaNpc191 = Creature:new {
 	objectName = "moeniaNpc191",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_captain",
 	combatFlags = 0,
@@ -4090,7 +4090,7 @@ moeniaNpc191 = Creature:new {
 
 moeniaNpc192 = Creature:new {
 	objectName = "moeniaNpc192",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "technician",
 	combatFlags = 0,
@@ -4112,7 +4112,7 @@ moeniaNpc192 = Creature:new {
 
 moeniaNpc193 = Creature:new {
 	objectName = "moeniaNpc193",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "technician",
 	combatFlags = 0,
@@ -4134,7 +4134,7 @@ moeniaNpc193 = Creature:new {
 
 moeniaNpc194 = Creature:new {
 	objectName = "moeniaNpc194",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -4156,7 +4156,7 @@ moeniaNpc194 = Creature:new {
 
 moeniaNpc195 = Creature:new {
 	objectName = "moeniaNpc195",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "surgical_droid_21b",
 	combatFlags = 0,
@@ -4178,7 +4178,7 @@ moeniaNpc195 = Creature:new {
 
 moeniaNpc196 = Creature:new {
 	objectName = "moeniaNpc196",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4200,7 +4200,7 @@ moeniaNpc196 = Creature:new {
 
 moeniaNpc197 = Creature:new {
 	objectName = "moeniaNpc197",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4222,7 +4222,7 @@ moeniaNpc197 = Creature:new {
 
 moeniaNpc198 = Creature:new {
 	objectName = "moeniaNpc198",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_captain",
 	combatFlags = 0,
@@ -4244,7 +4244,7 @@ moeniaNpc198 = Creature:new {
 
 moeniaNpc199 = Creature:new {
 	objectName = "moeniaNpc199",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_officer",
 	combatFlags = 0,
@@ -4266,7 +4266,7 @@ moeniaNpc199 = Creature:new {
 
 moeniaNpc200 = Creature:new {
 	objectName = "moeniaNpc200",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_sergeant",
 	combatFlags = 0,
@@ -4288,7 +4288,7 @@ moeniaNpc200 = Creature:new {
 
 moeniaNpc201 = Creature:new {
 	objectName = "moeniaNpc201",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4310,7 +4310,7 @@ moeniaNpc201 = Creature:new {
 
 moeniaNpc202 = Creature:new {
 	objectName = "moeniaNpc202",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4332,7 +4332,7 @@ moeniaNpc202 = Creature:new {
 
 moeniaNpc203 = Creature:new {
 	objectName = "moeniaNpc203",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4354,7 +4354,7 @@ moeniaNpc203 = Creature:new {
 
 moeniaNpc204 = Creature:new {
 	objectName = "moeniaNpc204",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_rifleman",
 	combatFlags = 0,
@@ -4376,7 +4376,7 @@ moeniaNpc204 = Creature:new {
 
 moeniaNpc205 = Creature:new {
 	objectName = "moeniaNpc205",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_herald_02",
 	combatFlags = 0,
@@ -4398,7 +4398,7 @@ moeniaNpc205 = Creature:new {
 
 moeniaNpc206 = Creature:new {
 	objectName = "moeniaNpc206",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4420,7 +4420,7 @@ moeniaNpc206 = Creature:new {
 
 moeniaNpc207 = Creature:new {
 	objectName = "moeniaNpc207",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -4442,7 +4442,7 @@ moeniaNpc207 = Creature:new {
 
 moeniaNpc208 = Creature:new {
 	objectName = "moeniaNpc208",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "hunter",
 	combatFlags = 0,
@@ -4464,7 +4464,7 @@ moeniaNpc208 = Creature:new {
 
 moeniaNpc209 = Creature:new {
 	objectName = "moeniaNpc209",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4486,7 +4486,7 @@ moeniaNpc209 = Creature:new {
 
 moeniaNpc210 = Creature:new {
 	objectName = "moeniaNpc210",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4508,7 +4508,7 @@ moeniaNpc210 = Creature:new {
 
 moeniaNpc211 = Creature:new {
 	objectName = "moeniaNpc211",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -4530,7 +4530,7 @@ moeniaNpc211 = Creature:new {
 
 moeniaNpc212 = Creature:new {
 	objectName = "moeniaNpc212",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -4552,7 +4552,7 @@ moeniaNpc212 = Creature:new {
 
 moeniaNpc213 = Creature:new {
 	objectName = "moeniaNpc213",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4574,7 +4574,7 @@ moeniaNpc213 = Creature:new {
 
 moeniaNpc214 = Creature:new {
 	objectName = "moeniaNpc214",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_command_security_guard",
 	combatFlags = 0,
@@ -4596,7 +4596,7 @@ moeniaNpc214 = Creature:new {
 
 moeniaNpc215 = Creature:new {
 	objectName = "moeniaNpc215",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_command_security_guard",
 	combatFlags = 0,
@@ -4618,7 +4618,7 @@ moeniaNpc215 = Creature:new {
 
 moeniaNpc216 = Creature:new {
 	objectName = "moeniaNpc216",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -4640,7 +4640,7 @@ moeniaNpc216 = Creature:new {
 
 moeniaNpc217 = Creature:new {
 	objectName = "moeniaNpc217",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "protocol_droid_3po_red",
 	combatFlags = 0,
@@ -4662,7 +4662,7 @@ moeniaNpc217 = Creature:new {
 
 moeniaNpc218 = Creature:new {
 	objectName = "moeniaNpc218",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -4684,7 +4684,7 @@ moeniaNpc218 = Creature:new {
 
 moeniaNpc219 = Creature:new {
 	objectName = "moeniaNpc219",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -4706,7 +4706,7 @@ moeniaNpc219 = Creature:new {
 
 moeniaNpc220 = Creature:new {
 	objectName = "moeniaNpc220",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -4728,7 +4728,7 @@ moeniaNpc220 = Creature:new {
 
 moeniaNpc221 = Creature:new {
 	objectName = "moeniaNpc221",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -4750,7 +4750,7 @@ moeniaNpc221 = Creature:new {
 
 moeniaNpc222 = Creature:new {
 	objectName = "moeniaNpc222",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -4772,7 +4772,7 @@ moeniaNpc222 = Creature:new {
 
 moeniaNpc223 = Creature:new {
 	objectName = "moeniaNpc223",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4794,7 +4794,7 @@ moeniaNpc223 = Creature:new {
 
 moeniaNpc224 = Creature:new {
 	objectName = "moeniaNpc224",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4816,7 +4816,7 @@ moeniaNpc224 = Creature:new {
 
 moeniaNpc225 = Creature:new {
 	objectName = "moeniaNpc225",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4838,7 +4838,7 @@ moeniaNpc225 = Creature:new {
 
 moeniaNpc226 = Creature:new {
 	objectName = "moeniaNpc226",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -4860,7 +4860,7 @@ moeniaNpc226 = Creature:new {
 
 moeniaNpc227 = Creature:new {
 	objectName = "moeniaNpc227",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4882,7 +4882,7 @@ moeniaNpc227 = Creature:new {
 
 moeniaNpc228 = Creature:new {
 	objectName = "moeniaNpc228",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "hunter",
 	combatFlags = 0,
@@ -4904,7 +4904,7 @@ moeniaNpc228 = Creature:new {
 
 moeniaNpc229 = Creature:new {
 	objectName = "moeniaNpc229",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -4926,7 +4926,7 @@ moeniaNpc229 = Creature:new {
 
 moeniaNpc230 = Creature:new {
 	objectName = "moeniaNpc230",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_first_lieutenant",
 	combatFlags = 0,
@@ -4948,7 +4948,7 @@ moeniaNpc230 = Creature:new {
 
 moeniaNpc231 = Creature:new {
 	objectName = "moeniaNpc231",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_soldier",
 	combatFlags = 0,
@@ -4970,7 +4970,7 @@ moeniaNpc231 = Creature:new {
 
 moeniaNpc232 = Creature:new {
 	objectName = "moeniaNpc232",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_warrant_officer_ii",
 	combatFlags = 0,
@@ -4992,7 +4992,7 @@ moeniaNpc232 = Creature:new {
 
 moeniaNpc233 = Creature:new {
 	objectName = "moeniaNpc233",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5014,7 +5014,7 @@ moeniaNpc233 = Creature:new {
 
 moeniaNpc234 = Creature:new {
 	objectName = "moeniaNpc234",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -5036,7 +5036,7 @@ moeniaNpc234 = Creature:new {
 
 moeniaNpc235 = Creature:new {
 	objectName = "moeniaNpc235",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -5058,7 +5058,7 @@ moeniaNpc235 = Creature:new {
 
 moeniaNpc236 = Creature:new {
 	objectName = "moeniaNpc236",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -5080,7 +5080,7 @@ moeniaNpc236 = Creature:new {
 
 moeniaNpc237 = Creature:new {
 	objectName = "moeniaNpc237",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_holy_man",
 	combatFlags = 0,
@@ -5102,7 +5102,7 @@ moeniaNpc237 = Creature:new {
 
 moeniaNpc238 = Creature:new {
 	objectName = "moeniaNpc238",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -5124,7 +5124,7 @@ moeniaNpc238 = Creature:new {
 
 moeniaNpc239 = Creature:new {
 	objectName = "moeniaNpc239",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -5146,7 +5146,7 @@ moeniaNpc239 = Creature:new {
 
 moeniaNpc240 = Creature:new {
 	objectName = "moeniaNpc240",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,

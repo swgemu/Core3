@@ -42,7 +42,7 @@
 
 jabbaPalace1 = Creature:new {
 	objectName = "jabbaPalace1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jabbas_palace_rancor",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ jabbaPalace1 = Creature:new {
 
 jabbaPalace2 = Creature:new {
 	objectName = "jabbaPalace2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "malakili",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ jabbaPalace2 = Creature:new {
 
 jabbaPalace3 = Creature:new {
 	objectName = "jabbaPalace3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bomarr_monk",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ jabbaPalace3 = Creature:new {
 
 jabbaPalace4 = Creature:new {
 	objectName = "jabbaPalace4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ jabbaPalace4 = Creature:new {
 
 jabbaPalace5 = Creature:new {
 	objectName = "jabbaPalace5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ jabbaPalace5 = Creature:new {
 
 jabbaPalace6 = Creature:new {
 	objectName = "jabbaPalace6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bomarr_monk",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ jabbaPalace6 = Creature:new {
 
 jabbaPalace7 = Creature:new {
 	objectName = "jabbaPalace7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "barada",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ jabbaPalace7 = Creature:new {
 
 jabbaPalace8 = Creature:new {
 	objectName = "jabbaPalace8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ jabbaPalace8 = Creature:new {
 
 jabbaPalace9 = Creature:new {
 	objectName = "jabbaPalace9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ jabbaPalace9 = Creature:new {
 
 jabbaPalace10 = Creature:new {
 	objectName = "jabbaPalace10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ jabbaPalace10 = Creature:new {
 
 jabbaPalace11 = Creature:new {
 	objectName = "jabbaPalace11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ jabbaPalace11 = Creature:new {
 
 jabbaPalace12 = Creature:new {
 	objectName = "jabbaPalace12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ jabbaPalace12 = Creature:new {
 
 jabbaPalace13 = Creature:new {
 	objectName = "jabbaPalace13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ jabbaPalace13 = Creature:new {
 
 jabbaPalace14 = Creature:new {
 	objectName = "jabbaPalace14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ jabbaPalace14 = Creature:new {
 
 jabbaPalace15 = Creature:new {
 	objectName = "jabbaPalace15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ jabbaPalace15 = Creature:new {
 
 jabbaPalace16 = Creature:new {
 	objectName = "jabbaPalace16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ jabbaPalace16 = Creature:new {
 
 jabbaPalace17 = Creature:new {
 	objectName = "jabbaPalace17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gamorrean_guard",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ jabbaPalace17 = Creature:new {
 
 jabbaPalace18 = Creature:new {
 	objectName = "jabbaPalace18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bomarr_monk",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ jabbaPalace18 = Creature:new {
 
 jabbaPalace19 = Creature:new {
 	objectName = "jabbaPalace19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gamorrean_guard",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ jabbaPalace19 = Creature:new {
 
 jabbaPalace20 = Creature:new {
 	objectName = "jabbaPalace20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "beissa",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ jabbaPalace20 = Creature:new {
 
 jabbaPalace21 = Creature:new {
 	objectName = "jabbaPalace21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "oola",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ jabbaPalace21 = Creature:new {
 
 jabbaPalace22 = Creature:new {
 	objectName = "jabbaPalace22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "max_rebo",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ jabbaPalace22 = Creature:new {
 
 jabbaPalace23 = Creature:new {
 	objectName = "jabbaPalace23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "sy_snootles",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ jabbaPalace23 = Creature:new {
 
 jabbaPalace24 = Creature:new {
 	objectName = "jabbaPalace24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "droopy_mccool",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ jabbaPalace24 = Creature:new {
 
 jabbaPalace25 = Creature:new {
 	objectName = "jabbaPalace25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jabba_the_hutt",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ jabbaPalace25 = Creature:new {
 
 jabbaPalace26 = Creature:new {
 	objectName = "jabbaPalace26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "protocol_droid_3po",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ jabbaPalace26 = Creature:new {
 
 jabbaPalace27 = Creature:new {
 	objectName = "jabbaPalace27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "boba_fett",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ jabbaPalace27 = Creature:new {
 
 jabbaPalace28 = Creature:new {
 	objectName = "jabbaPalace28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "salacious_crumb",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ jabbaPalace28 = Creature:new {
 
 jabbaPalace29 = Creature:new {
 	objectName = "jabbaPalace29",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bib_fortuna",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ jabbaPalace29 = Creature:new {
 
 jabbaPalace30 = Creature:new {
 	objectName = "jabbaPalace30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gamorrean_guard",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ jabbaPalace30 = Creature:new {
 
 jabbaPalace31 = Creature:new {
 	objectName = "jabbaPalace31",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gamorrean_guard",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ jabbaPalace31 = Creature:new {
 
 jabbaPalace32 = Creature:new {
 	objectName = "jabbaPalace32",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ jabbaPalace32 = Creature:new {
 
 jabbaPalace33 = Creature:new {
 	objectName = "jabbaPalace33",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ jabbaPalace33 = Creature:new {
 
 jabbaPalace34 = Creature:new {
 	objectName = "jabbaPalace34",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ jabbaPalace34 = Creature:new {
 
 jabbaPalace35 = Creature:new {
 	objectName = "jabbaPalace35",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ jabbaPalace35 = Creature:new {
 
 jabbaPalace36 = Creature:new {
 	objectName = "jabbaPalace36",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -834,7 +834,7 @@ jabbaPalace36 = Creature:new {
 
 jabbaPalace37 = Creature:new {
 	objectName = "jabbaPalace37",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scoundrel",
 	combatFlags = 0,
@@ -856,7 +856,7 @@ jabbaPalace37 = Creature:new {
 
 jabbaPalace38 = Creature:new {
 	objectName = "jabbaPalace38",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "wastrel",
 	combatFlags = 0,
@@ -878,7 +878,7 @@ jabbaPalace38 = Creature:new {
 
 jabbaPalace39 = Creature:new {
 	objectName = "jabbaPalace39",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "spacer",
 	combatFlags = 0,
@@ -900,7 +900,7 @@ jabbaPalace39 = Creature:new {
 
 jabbaPalace40 = Creature:new {
 	objectName = "jabbaPalace40",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -922,7 +922,7 @@ jabbaPalace40 = Creature:new {
 
 jabbaPalace41 = Creature:new {
 	objectName = "jabbaPalace41",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -944,7 +944,7 @@ jabbaPalace41 = Creature:new {
 
 jabbaPalace42 = Creature:new {
 	objectName = "jabbaPalace42",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fringer",
 	combatFlags = 0,
@@ -966,7 +966,7 @@ jabbaPalace42 = Creature:new {
 
 jabbaPalace43 = Creature:new {
 	objectName = "jabbaPalace43",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "roughneck",
 	combatFlags = 0,
@@ -988,7 +988,7 @@ jabbaPalace43 = Creature:new {
 
 jabbaPalace44 = Creature:new {
 	objectName = "jabbaPalace44",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "roughneck",
 	combatFlags = 0,
@@ -1010,7 +1010,7 @@ jabbaPalace44 = Creature:new {
 
 jabbaPalace45 = Creature:new {
 	objectName = "jabbaPalace45",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scoundrel",
 	combatFlags = 0,
@@ -1032,7 +1032,7 @@ jabbaPalace45 = Creature:new {
 
 jabbaPalace46 = Creature:new {
 	objectName = "jabbaPalace46",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -1054,7 +1054,7 @@ jabbaPalace46 = Creature:new {
 
 jabbaPalace47 = Creature:new {
 	objectName = "jabbaPalace47",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -1076,7 +1076,7 @@ jabbaPalace47 = Creature:new {
 
 jabbaPalace48 = Creature:new {
 	objectName = "jabbaPalace48",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -1098,7 +1098,7 @@ jabbaPalace48 = Creature:new {
 
 jabbaPalace49 = Creature:new {
 	objectName = "jabbaPalace49",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gamorrean_guard",
 	combatFlags = 0,
@@ -1120,7 +1120,7 @@ jabbaPalace49 = Creature:new {
 
 jabbaPalace50 = Creature:new {
 	objectName = "jabbaPalace50",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -1142,7 +1142,7 @@ jabbaPalace50 = Creature:new {
 
 jabbaPalace51 = Creature:new {
 	objectName = "jabbaPalace51",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gamorrean_guard",
 	combatFlags = 0,
@@ -1164,7 +1164,7 @@ jabbaPalace51 = Creature:new {
 
 jabbaPalace52 = Creature:new {
 	objectName = "jabbaPalace52",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gamorrean_guard",
 	combatFlags = 0,
@@ -1186,7 +1186,7 @@ jabbaPalace52 = Creature:new {
 
 jabbaPalace53 = Creature:new {
 	objectName = "jabbaPalace53",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ev_9d9",
 	combatFlags = 0,
@@ -1208,7 +1208,7 @@ jabbaPalace53 = Creature:new {
 
 jabbaPalace54 = Creature:new {
 	objectName = "jabbaPalace54",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -1230,7 +1230,7 @@ jabbaPalace54 = Creature:new {
 
 jabbaPalace55 = Creature:new {
 	objectName = "jabbaPalace55",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ra7_bug_droid",
 	combatFlags = 0,
@@ -1252,7 +1252,7 @@ jabbaPalace55 = Creature:new {
 
 jabbaPalace56 = Creature:new {
 	objectName = "jabbaPalace56",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "protocol_droid_3po_red",
 	combatFlags = 0,
@@ -1274,7 +1274,7 @@ jabbaPalace56 = Creature:new {
 
 jabbaPalace57 = Creature:new {
 	objectName = "jabbaPalace57",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -1296,7 +1296,7 @@ jabbaPalace57 = Creature:new {
 
 jabbaPalace58 = Creature:new {
 	objectName = "jabbaPalace58",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "le_repair_droid",
 	combatFlags = 0,
@@ -1318,7 +1318,7 @@ jabbaPalace58 = Creature:new {
 
 jabbaPalace59 = Creature:new {
 	objectName = "jabbaPalace59",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "porcellus",
 	combatFlags = 0,
@@ -1340,7 +1340,7 @@ jabbaPalace59 = Creature:new {
 
 jabbaPalace60 = Creature:new {
 	objectName = "jabbaPalace60",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gamorrean_guard",
 	combatFlags = 0,
@@ -1362,7 +1362,7 @@ jabbaPalace60 = Creature:new {
 
 jabbaPalace61 = Creature:new {
 	objectName = "jabbaPalace61",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gamorrean_guard",
 	combatFlags = 0,
@@ -1384,7 +1384,7 @@ jabbaPalace61 = Creature:new {
 
 jabbaPalace62 = Creature:new {
 	objectName = "jabbaPalace62",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -1406,7 +1406,7 @@ jabbaPalace62 = Creature:new {
 
 jabbaPalace63 = Creature:new {
 	objectName = "jabbaPalace63",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -1428,7 +1428,7 @@ jabbaPalace63 = Creature:new {
 
 jabbaPalace64 = Creature:new {
 	objectName = "jabbaPalace64",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "roughneck",
 	combatFlags = 0,
@@ -1450,7 +1450,7 @@ jabbaPalace64 = Creature:new {
 
 jabbaPalace65 = Creature:new {
 	objectName = "jabbaPalace65",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gamorrean_guard",
 	combatFlags = 0,
@@ -1472,7 +1472,7 @@ jabbaPalace65 = Creature:new {
 
 jabbaPalace66 = Creature:new {
 	objectName = "jabbaPalace66",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -1494,7 +1494,7 @@ jabbaPalace66 = Creature:new {
 
 jabbaPalace67 = Creature:new {
 	objectName = "jabbaPalace67",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jawa",
 	combatFlags = 0,
@@ -1516,7 +1516,7 @@ jabbaPalace67 = Creature:new {
 
 jabbaPalace68 = Creature:new {
 	objectName = "jabbaPalace68",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bomarr_monk",
 	combatFlags = 0,
@@ -1538,7 +1538,7 @@ jabbaPalace68 = Creature:new {
 
 jabbaPalace69 = Creature:new {
 	objectName = "jabbaPalace69",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gamorrean_guard",
 	combatFlags = 0,
@@ -1560,7 +1560,7 @@ jabbaPalace69 = Creature:new {
 
 jabbaPalace70 = Creature:new {
 	objectName = "jabbaPalace70",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "outlaw",
 	combatFlags = 0,
@@ -1582,7 +1582,7 @@ jabbaPalace70 = Creature:new {
 
 jabbaPalace71 = Creature:new {
 	objectName = "jabbaPalace71",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bomarr_monk",
 	combatFlags = 0,
@@ -1604,7 +1604,7 @@ jabbaPalace71 = Creature:new {
 
 jabbaPalace72 = Creature:new {
 	objectName = "jabbaPalace72",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "moncal_base_male",
 	combatFlags = 0,
@@ -1626,7 +1626,7 @@ jabbaPalace72 = Creature:new {
 
 jabbaPalace73 = Creature:new {
 	objectName = "jabbaPalace73",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ephant_mon",
 	combatFlags = 0,
@@ -1648,7 +1648,7 @@ jabbaPalace73 = Creature:new {
 
 jabbaPalace74 = Creature:new {
 	objectName = "jabbaPalace74",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gamorrean_guard",
 	combatFlags = 0,
@@ -1670,7 +1670,7 @@ jabbaPalace74 = Creature:new {
 
 jabbaPalace75 = Creature:new {
 	objectName = "jabbaPalace75",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gamorrean_guard",
 	combatFlags = 0,
@@ -1692,7 +1692,7 @@ jabbaPalace75 = Creature:new {
 
 jabbaPalace76 = Creature:new {
 	objectName = "jabbaPalace76",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bomarr_monk",
 	combatFlags = 0,
@@ -1714,7 +1714,7 @@ jabbaPalace76 = Creature:new {
 
 jabbaPalace77 = Creature:new {
 	objectName = "jabbaPalace77",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "reelo_baruk",
 	combatFlags = 0,
@@ -1736,7 +1736,7 @@ jabbaPalace77 = Creature:new {
 
 jabbaPalace78 = Creature:new {
 	objectName = "jabbaPalace78",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "ree_yees",
 	combatFlags = 0,
@@ -1758,7 +1758,7 @@ jabbaPalace78 = Creature:new {
 
 jabbaPalace79 = Creature:new {
 	objectName = "jabbaPalace79",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "quarren_base_male",
 	combatFlags = 0,
@@ -1780,7 +1780,7 @@ jabbaPalace79 = Creature:new {
 
 jabbaPalace80 = Creature:new {
 	objectName = "jabbaPalace80",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "aqualish_base_male",
 	combatFlags = 0,
@@ -1802,7 +1802,7 @@ jabbaPalace80 = Creature:new {
 
 jabbaPalace81 = Creature:new {
 	objectName = "jabbaPalace81",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_pilot",
 	combatFlags = 0,

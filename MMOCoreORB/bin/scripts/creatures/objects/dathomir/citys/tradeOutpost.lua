@@ -42,7 +42,7 @@
 
 dathTradeNpc1 = Creature:new {
 	objectName = "dathTradeNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ dathTradeNpc1 = Creature:new {
 
 dathTradeNpc2 = Creature:new {
 	objectName = "dathTradeNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ dathTradeNpc2 = Creature:new {
 
 dathTradeNpc3 = Creature:new {
 	objectName = "dathTradeNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ dathTradeNpc3 = Creature:new {
 
 dathTradeNpc4 = Creature:new {
 	objectName = "dathTradeNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ dathTradeNpc4 = Creature:new {
 
 dathTradeNpc5 = Creature:new {
 	objectName = "dathTradeNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ dathTradeNpc5 = Creature:new {
 
 dathTradeNpc6 = Creature:new {
 	objectName = "dathTradeNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ dathTradeNpc6 = Creature:new {
 
 dathTradeNpc7 = Creature:new {
 	objectName = "dathTradeNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ dathTradeNpc7 = Creature:new {
 
 dathTradeNpc8 = Creature:new {
 	objectName = "dathTradeNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ dathTradeNpc8 = Creature:new {
 
 dathTradeNpc9 = Creature:new {
 	objectName = "dathTradeNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r4",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ dathTradeNpc9 = Creature:new {
 
 dathTradeNpc10 = Creature:new {
 	objectName = "dathTradeNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ dathTradeNpc10 = Creature:new {
 
 dathTradeNpc11 = Creature:new {
 	objectName = "dathTradeNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r4",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ dathTradeNpc11 = Creature:new {
 
 dathTradeNpc12 = Creature:new {
 	objectName = "dathTradeNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "singular_nak",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ dathTradeNpc12 = Creature:new {
 
 dathTradeNpc14 = Creature:new {
 	objectName = "dathTradeNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ dathTradeNpc14 = Creature:new {
 
 dathTradeNpc15 = Creature:new {
 	objectName = "dathTradeNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ dathTradeNpc15 = Creature:new {
 
 dathTradeNpc16 = Creature:new {
 	objectName = "dathTradeNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ dathTradeNpc16 = Creature:new {
 
 dathTradeNpc17 = Creature:new {
 	objectName = "dathTradeNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ dathTradeNpc17 = Creature:new {
 
 dathTradeNpc18 = Creature:new {
 	objectName = "dathTradeNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ dathTradeNpc18 = Creature:new {
 
 dathTradeNpc19 = Creature:new {
 	objectName = "dathTradeNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ dathTradeNpc19 = Creature:new {
 
 dathTradeNpc20 = Creature:new {
 	objectName = "dathTradeNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ dathTradeNpc20 = Creature:new {
 
 dathTradeNpc21 = Creature:new {
 	objectName = "dathTradeNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ dathTradeNpc21 = Creature:new {
 
 dathTradeNpc22 = Creature:new {
 	objectName = "dathTradeNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ dathTradeNpc22 = Creature:new {
 
 dathTradeNpc23 = Creature:new {
 	objectName = "dathTradeNpc23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ dathTradeNpc23 = Creature:new {
 
 dathTradeNpc24 = Creature:new {
 	objectName = "dathTradeNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ dathTradeNpc24 = Creature:new {
 
 dathTradeNpc26 = Creature:new {
 	objectName = "dathTradeNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ dathTradeNpc26 = Creature:new {
 
 dathTradeNpc27 = Creature:new {
 	objectName = "dathTradeNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nirame_sakute",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ dathTradeNpc27 = Creature:new {
 
 dathTradeNpc28 = Creature:new {
 	objectName = "dathTradeNpc28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,

@@ -42,7 +42,7 @@
 
 theature2 = Creature:new {
 	objectName = "theature2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -66,7 +66,7 @@ theature2 = Creature:new {
 
 theature3 = Creature:new {
 	objectName = "theature3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -90,7 +90,7 @@ theature3 = Creature:new {
 
 theature4 = Creature:new {
 	objectName = "theature4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -114,7 +114,7 @@ theature4 = Creature:new {
 
 theature5 = Creature:new {
 	objectName = "theature5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -138,7 +138,7 @@ theature5 = Creature:new {
 
 theature6 = Creature:new {
 	objectName = "theature6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -162,7 +162,7 @@ theature6 = Creature:new {
 
 theature7 = Creature:new {
 	objectName = "theature7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -186,7 +186,7 @@ theature7 = Creature:new {
 
 theature8 = Creature:new {
 	objectName = "theature8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_command_security_guard",
 	combatFlags = 0,
@@ -210,7 +210,7 @@ theature8 = Creature:new {
 
 theature9 = Creature:new {
 	objectName = "theature9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_soldier",
 	combatFlags = 0,
@@ -234,7 +234,7 @@ theature9 = Creature:new {
 
 theature10 = Creature:new {
 	objectName = "theature10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guard_captain",
 	combatFlags = 0,
@@ -258,7 +258,7 @@ theature10 = Creature:new {
 
 theature11 = Creature:new {
 	objectName = "theature11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -282,7 +282,7 @@ theature11 = Creature:new {
 
 theature12 = Creature:new {
 	objectName = "theature12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_soldier",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ theature12 = Creature:new {
 
 theature13 = Creature:new {
 	objectName = "theature13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_guardsman",
 	combatFlags = 0,
@@ -330,7 +330,7 @@ theature13 = Creature:new {
 
 theature14 = Creature:new {
 	objectName = "theature14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_rebel_liberator",
 	combatFlags = 0,
@@ -354,7 +354,7 @@ theature14 = Creature:new {
 
 theature15 = Creature:new {
 	objectName = "theature15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -378,7 +378,7 @@ theature15 = Creature:new {
 
 theature16 = Creature:new {
 	objectName = "theature16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_thief_5",
 	combatFlags = 0,
@@ -402,7 +402,7 @@ theature16 = Creature:new {
 
 theature17 = Creature:new {
 	objectName = "theature17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler_patrol_thief_5",
 	combatFlags = 0,
@@ -426,7 +426,7 @@ theature17 = Creature:new {
 
 theature18 = Creature:new {
 	objectName = "theature18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rebel_recruiter",
 	combatFlags = 0,

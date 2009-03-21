@@ -55,6 +55,7 @@ which carries forward this exception.
 
 RecruiterCreatureImplementation::RecruiterCreatureImplementation(uint64 oid) : RecruiterCreatureServant(oid) {
 	setType(CreatureImplementation::RECRUITER);
+	setCreatureType("NPC");
 
 	optionsBitmask = 0x108;
 

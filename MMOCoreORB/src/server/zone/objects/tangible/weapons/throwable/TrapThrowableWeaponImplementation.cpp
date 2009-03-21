@@ -184,13 +184,10 @@ int TrapThrowableWeaponImplementation::useObject(Player* player) {
 		return 0;
 	}
 
-	/*
-	 * Moved to skills
 	if (!player->hasCooldownExpired(getSkill())) {
 		player->sendSystemMessage("trap/trap", "sys_not_ready");
 		return 0;
 	}
-	 */
 
 	ManagedReference<SceneObject> obj = player->getTarget();
 	if (obj == NULL || !obj->isNonPlayerCreature()) {

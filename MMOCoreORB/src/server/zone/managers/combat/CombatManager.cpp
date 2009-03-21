@@ -186,8 +186,22 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 			return 0.0f;
 		}
 		else {
-			if (creature->isPlayer())
-				throwWeapon->useCharge((Player*)creature);
+			if (creature->isPlayer()) {
+				Player* player = (Player*) creature;
+				if (tarSkill->isTrapSkill()) {
+					if (!player->hasCooldownExpired(tarSkill->getSkillName())) {
+						player->sendSystemMessage("trap/trap", "sys_not_ready");
+						return 0.0f;
+					}
+				} else {
+					if (!player->hasCooldownExpired(tarSkill->getSkillName())) {
+						player->sendSystemMessage("This grenade is not ready to be used again");
+						return 0.0f;
+					}
+				}
+
+				throwWeapon->useCharge(player);
+			}
 			actionMessage = new CombatAction(creature, animCRC,throwWeapon->getObjectID());
 		}
 	} else {

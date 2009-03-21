@@ -42,7 +42,7 @@
 
 staticTheedNpc1 = Creature:new {
 	objectName = "staticTheedNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "comm_operator",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ staticTheedNpc1 = Creature:new {
 
 staticTheedNpc2 = Creature:new {
 	objectName = "staticTheedNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "pilot",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ staticTheedNpc2 = Creature:new {
 
 staticTheedNpc3 = Creature:new {
 	objectName = "staticTheedNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "surgical_droid_21b",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ staticTheedNpc3 = Creature:new {
 
 staticTheedNpc4 = Creature:new {
 	objectName = "staticTheedNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ staticTheedNpc4 = Creature:new {
 
 staticTheedNpc5 = Creature:new {
 	objectName = "staticTheedNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "technician",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ staticTheedNpc5 = Creature:new {
 
 staticTheedNpc6 = Creature:new {
 	objectName = "staticTheedNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ staticTheedNpc6 = Creature:new {
 
 staticTheedNpc7 = Creature:new {
 	objectName = "staticTheedNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ staticTheedNpc7 = Creature:new {
 
 staticTheedNpc8 = Creature:new {
 	objectName = "staticTheedNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ staticTheedNpc8 = Creature:new {
 
 staticTheedNpc9 = Creature:new {
 	objectName = "staticTheedNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ staticTheedNpc9 = Creature:new {
 
 staticTheedNpc10 = Creature:new {
 	objectName = "staticTheedNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ staticTheedNpc10 = Creature:new {
 
 staticTheedNpc11 = Creature:new {
 	objectName = "staticTheedNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ staticTheedNpc11 = Creature:new {
 
 staticTheedNpc12 = Creature:new {
 	objectName = "staticTheedNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ staticTheedNpc12 = Creature:new {
 
 staticTheedNpc13 = Creature:new {
 	objectName = "staticTheedNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ staticTheedNpc13 = Creature:new {
 
 staticTheedNpc14 = Creature:new {
 	objectName = "staticTheedNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ staticTheedNpc14 = Creature:new {
 
 staticTheedNpc15 = Creature:new {
 	objectName = "staticTheedNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ staticTheedNpc15 = Creature:new {
 
 staticTheedNpc16 = Creature:new {
 	objectName = "staticTheedNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ staticTheedNpc16 = Creature:new {
 
 staticTheedNpc17 = Creature:new {
 	objectName = "staticTheedNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ staticTheedNpc17 = Creature:new {
 
 staticTheedNpc18 = Creature:new {
 	objectName = "staticTheedNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ staticTheedNpc18 = Creature:new {
 
 staticTheedNpc19 = Creature:new {
 	objectName = "staticTheedNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ staticTheedNpc19 = Creature:new {
 
 staticTheedNpc20 = Creature:new {
 	objectName = "staticTheedNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ staticTheedNpc20 = Creature:new {
 
 staticTheedNpc21 = Creature:new {
 	objectName = "staticTheedNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_hunter",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ staticTheedNpc21 = Creature:new {
 
 staticTheedNpc22 = Creature:new {
 	objectName = "staticTheedNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ staticTheedNpc22 = Creature:new {
 
 staticTheedNpc23 = Creature:new {
 	objectName = "staticTheedNpc23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ staticTheedNpc23 = Creature:new {
 
 staticTheedNpc24 = Creature:new {
 	objectName = "staticTheedNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mountain_villager",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ staticTheedNpc24 = Creature:new {
 
 staticTheedNpc25 = Creature:new {
 	objectName = "staticTheedNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ staticTheedNpc25 = Creature:new {
 
 staticTheedNpc26 = Creature:new {
 	objectName = "staticTheedNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ staticTheedNpc26 = Creature:new {
 
 staticTheedNpc27 = Creature:new {
 	objectName = "staticTheedNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bounty_hunter",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ staticTheedNpc27 = Creature:new {
 
 staticTheedNpc28 = Creature:new {
 	objectName = "staticTheedNpc28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ staticTheedNpc28 = Creature:new {
 
 staticTheedNpc29 = Creature:new {
 	objectName = "staticTheedNpc29",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scout_trooper",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ staticTheedNpc29 = Creature:new {
 
 staticTheedNpc30 = Creature:new {
 	objectName = "staticTheedNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "pilot",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ staticTheedNpc30 = Creature:new {
 
 staticTheedNpc31 = Creature:new {
 	objectName = "staticTheedNpc31",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ staticTheedNpc31 = Creature:new {
 
 staticTheedNpc33 = Creature:new {
 	objectName = "staticTheedNpc33",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ staticTheedNpc33 = Creature:new {
 
 staticTheedNpc34 = Creature:new {
 	objectName = "staticTheedNpc34",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ staticTheedNpc34 = Creature:new {
 
 staticTheedNpc35 = Creature:new {
 	objectName = "staticTheedNpc35",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ staticTheedNpc35 = Creature:new {
 
 staticTheedNpc36 = Creature:new {
 	objectName = "staticTheedNpc36",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ staticTheedNpc36 = Creature:new {
 
 staticTheedNpc37 = Creature:new {
 	objectName = "staticTheedNpc37",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -834,7 +834,7 @@ staticTheedNpc37 = Creature:new {
 
 staticTheedNpc38 = Creature:new {
 	objectName = "staticTheedNpc38",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -856,7 +856,7 @@ staticTheedNpc38 = Creature:new {
 
 staticTheedNpc39 = Creature:new {
 	objectName = "staticTheedNpc39",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -878,7 +878,7 @@ staticTheedNpc39 = Creature:new {
 
 staticTheedNpc40 = Creature:new {
 	objectName = "staticTheedNpc40",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -900,7 +900,7 @@ staticTheedNpc40 = Creature:new {
 
 staticTheedNpc41 = Creature:new {
 	objectName = "staticTheedNpc41",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -922,7 +922,7 @@ staticTheedNpc41 = Creature:new {
 
 staticTheedNpc42 = Creature:new {
 	objectName = "staticTheedNpc42",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -944,7 +944,7 @@ staticTheedNpc42 = Creature:new {
 
 staticTheedNpc43 = Creature:new {
 	objectName = "staticTheedNpc43",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "official",
 	combatFlags = 0,
@@ -966,7 +966,7 @@ staticTheedNpc43 = Creature:new {
 
 staticTheedNpc44 = Creature:new {
 	objectName = "staticTheedNpc44",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -988,7 +988,7 @@ staticTheedNpc44 = Creature:new {
 
 staticTheedNpc45 = Creature:new {
 	objectName = "staticTheedNpc45",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_outcast",
 	combatFlags = 0,
@@ -1010,7 +1010,7 @@ staticTheedNpc45 = Creature:new {
 
 staticTheedNpc46 = Creature:new {
 	objectName = "staticTheedNpc46",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -1032,7 +1032,7 @@ staticTheedNpc46 = Creature:new {
 
 staticTheedNpc47 = Creature:new {
 	objectName = "staticTheedNpc47",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_elite_sand_trooper_hard",
 	combatFlags = 0,
@@ -1054,7 +1054,7 @@ staticTheedNpc47 = Creature:new {
 
 staticTheedNpc49 = Creature:new {
 	objectName = "staticTheedNpc49",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_comm_operator",
 	combatFlags = 0,
@@ -1076,7 +1076,7 @@ staticTheedNpc49 = Creature:new {
 
 staticTheedNpc50 = Creature:new {
 	objectName = "staticTheedNpc50",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "philosopher",
 	combatFlags = 0,
@@ -1098,7 +1098,7 @@ staticTheedNpc50 = Creature:new {
 
 staticTheedNpc51 = Creature:new {
 	objectName = "staticTheedNpc51",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_guard",
 	combatFlags = 0,
@@ -1120,7 +1120,7 @@ staticTheedNpc51 = Creature:new {
 
 staticTheedNpc53 = Creature:new {
 	objectName = "staticTheedNpc53",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1142,7 +1142,7 @@ staticTheedNpc53 = Creature:new {
 
 staticTheedNpc54 = Creature:new {
 	objectName = "staticTheedNpc54",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_rifleman",
 	combatFlags = 0,
@@ -1164,7 +1164,7 @@ staticTheedNpc54 = Creature:new {
 
 staticTheedNpc55 = Creature:new {
 	objectName = "staticTheedNpc55",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1186,7 +1186,7 @@ staticTheedNpc55 = Creature:new {
 
 staticTheedNpc56 = Creature:new {
 	objectName = "staticTheedNpc56",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1208,7 +1208,7 @@ staticTheedNpc56 = Creature:new {
 
 staticTheedNpc57 = Creature:new {
 	objectName = "staticTheedNpc57",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1230,7 +1230,7 @@ staticTheedNpc57 = Creature:new {
 
 staticTheedNpc58 = Creature:new {
 	objectName = "staticTheedNpc58",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -1252,7 +1252,7 @@ staticTheedNpc58 = Creature:new {
 
 staticTheedNpc59 = Creature:new {
 	objectName = "staticTheedNpc59",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "pilot",
 	combatFlags = 0,
@@ -1274,7 +1274,7 @@ staticTheedNpc59 = Creature:new {
 
 staticTheedNpc61 = Creature:new {
 	objectName = "staticTheedNpc61",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1296,7 +1296,7 @@ staticTheedNpc61 = Creature:new {
 
 staticTheedNpc62 = Creature:new {
 	objectName = "staticTheedNpc62",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1318,7 +1318,7 @@ staticTheedNpc62 = Creature:new {
 
 staticTheedNpc63 = Creature:new {
 	objectName = "staticTheedNpc63",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "j1_po",
 	combatFlags = 0,
@@ -1340,7 +1340,7 @@ staticTheedNpc63 = Creature:new {
 
 staticTheedNpc64 = Creature:new {
 	objectName = "staticTheedNpc64",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "official",
 	combatFlags = 0,
@@ -1362,7 +1362,7 @@ staticTheedNpc64 = Creature:new {
 
 staticTheedNpc65 = Creature:new {
 	objectName = "staticTheedNpc65",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_female",
 	combatFlags = 0,
@@ -1384,7 +1384,7 @@ staticTheedNpc65 = Creature:new {
 
 staticTheedNpc66 = Creature:new {
 	objectName = "staticTheedNpc66",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_rifleman",
 	combatFlags = 0,
@@ -1406,7 +1406,7 @@ staticTheedNpc66 = Creature:new {
 
 staticTheedNpc68 = Creature:new {
 	objectName = "staticTheedNpc68",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kultin_woodle",
 	combatFlags = 0,
@@ -1428,7 +1428,7 @@ staticTheedNpc68 = Creature:new {
 
 staticTheedNpc70 = Creature:new {
 	objectName = "staticTheedNpc70",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_guard",
 	combatFlags = 0,
@@ -1450,7 +1450,7 @@ staticTheedNpc70 = Creature:new {
 
 staticTheedNpc71 = Creature:new {
 	objectName = "staticTheedNpc71",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -1472,7 +1472,7 @@ staticTheedNpc71 = Creature:new {
 
 staticTheedNpc72 = Creature:new {
 	objectName = "staticTheedNpc72",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -1494,7 +1494,7 @@ staticTheedNpc72 = Creature:new {
 
 staticTheedNpc74 = Creature:new {
 	objectName = "staticTheedNpc74",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "pilot",
 	combatFlags = 0,
@@ -1516,7 +1516,7 @@ staticTheedNpc74 = Creature:new {
 
 staticTheedNpc75 = Creature:new {
 	objectName = "staticTheedNpc75",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -1538,7 +1538,7 @@ staticTheedNpc75 = Creature:new {
 
 staticTheedNpc76 = Creature:new {
 	objectName = "staticTheedNpc76",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -1560,7 +1560,7 @@ staticTheedNpc76 = Creature:new {
 
 staticTheedNpc77 = Creature:new {
 	objectName = "staticTheedNpc77",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "swamp_villager",
 	combatFlags = 0,
@@ -1582,7 +1582,7 @@ staticTheedNpc77 = Creature:new {
 
 staticTheedNpc78 = Creature:new {
 	objectName = "staticTheedNpc78",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1604,7 +1604,7 @@ staticTheedNpc78 = Creature:new {
 
 staticTheedNpc79 = Creature:new {
 	objectName = "staticTheedNpc79",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1626,7 +1626,7 @@ staticTheedNpc79 = Creature:new {
 
 staticTheedNpc80 = Creature:new {
 	objectName = "staticTheedNpc80",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -1648,7 +1648,7 @@ staticTheedNpc80 = Creature:new {
 
 staticTheedNpc81 = Creature:new {
 	objectName = "staticTheedNpc81",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scoundrel",
 	combatFlags = 0,
@@ -1670,7 +1670,7 @@ staticTheedNpc81 = Creature:new {
 
 staticTheedNpc82 = Creature:new {
 	objectName = "staticTheedNpc82",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_mercenary",
 	combatFlags = 0,
@@ -1692,7 +1692,7 @@ staticTheedNpc82 = Creature:new {
 
 staticTheedNpc83 = Creature:new {
 	objectName = "staticTheedNpc83",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1714,7 +1714,7 @@ staticTheedNpc83 = Creature:new {
 
 staticTheedNpc84 = Creature:new {
 	objectName = "staticTheedNpc84",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1736,7 +1736,7 @@ staticTheedNpc84 = Creature:new {
 
 staticTheedNpc85 = Creature:new {
 	objectName = "staticTheedNpc85",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "swamp_villager",
 	combatFlags = 0,
@@ -1758,7 +1758,7 @@ staticTheedNpc85 = Creature:new {
 
 staticTheedNpc86 = Creature:new {
 	objectName = "staticTheedNpc86",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -1780,7 +1780,7 @@ staticTheedNpc86 = Creature:new {
 
 staticTheedNpc87 = Creature:new {
 	objectName = "staticTheedNpc87",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1802,7 +1802,7 @@ staticTheedNpc87 = Creature:new {
 
 staticTheedNpc89 = Creature:new {
 	objectName = "staticTheedNpc89",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1824,7 +1824,7 @@ staticTheedNpc89 = Creature:new {
 
 staticTheedNpc90 = Creature:new {
 	objectName = "staticTheedNpc90",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "pilot",
 	combatFlags = 0,
@@ -1846,7 +1846,7 @@ staticTheedNpc90 = Creature:new {
 
 staticTheedNpc91 = Creature:new {
 	objectName = "staticTheedNpc91",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -1868,7 +1868,7 @@ staticTheedNpc91 = Creature:new {
 
 staticTheedNpc93 = Creature:new {
 	objectName = "staticTheedNpc93",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "stormtrooper_novatrooper_elite",
 	combatFlags = 0,
@@ -1890,7 +1890,7 @@ staticTheedNpc93 = Creature:new {
 
 staticTheedNpc94 = Creature:new {
 	objectName = "staticTheedNpc94",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "stormtrooper_novatrooper_squad_leader",
 	combatFlags = 0,
@@ -1912,7 +1912,7 @@ staticTheedNpc94 = Creature:new {
 
 staticTheedNpc95 = Creature:new {
 	objectName = "staticTheedNpc95",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1934,7 +1934,7 @@ staticTheedNpc95 = Creature:new {
 
 staticTheedNpc96 = Creature:new {
 	objectName = "staticTheedNpc96",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1956,7 +1956,7 @@ staticTheedNpc96 = Creature:new {
 
 staticTheedNpc97 = Creature:new {
 	objectName = "staticTheedNpc97",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1978,7 +1978,7 @@ staticTheedNpc97 = Creature:new {
 
 staticTheedNpc98 = Creature:new {
 	objectName = "staticTheedNpc98",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2000,7 +2000,7 @@ staticTheedNpc98 = Creature:new {
 
 staticTheedNpc99 = Creature:new {
 	objectName = "staticTheedNpc99",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_rifleman",
 	combatFlags = 0,
@@ -2022,7 +2022,7 @@ staticTheedNpc99 = Creature:new {
 
 staticTheedNpc100 = Creature:new {
 	objectName = "staticTheedNpc100",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_sniper",
 	combatFlags = 0,
@@ -2044,7 +2044,7 @@ staticTheedNpc100 = Creature:new {
 
 staticTheedNpc101 = Creature:new {
 	objectName = "staticTheedNpc101",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_army_captain",
 	combatFlags = 0,
@@ -2066,7 +2066,7 @@ staticTheedNpc101 = Creature:new {
 
 staticTheedNpc102 = Creature:new {
 	objectName = "staticTheedNpc102",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2088,7 +2088,7 @@ staticTheedNpc102 = Creature:new {
 
 staticTheedNpc103 = Creature:new {
 	objectName = "staticTheedNpc103",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "swamp_villager",
 	combatFlags = 0,
@@ -2110,7 +2110,7 @@ staticTheedNpc103 = Creature:new {
 
 staticTheedNpc104 = Creature:new {
 	objectName = "staticTheedNpc104",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -2132,7 +2132,7 @@ staticTheedNpc104 = Creature:new {
 
 staticTheedNpc105 = Creature:new {
 	objectName = "staticTheedNpc105",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -2154,7 +2154,7 @@ staticTheedNpc105 = Creature:new {
 
 staticTheedNpc106 = Creature:new {
 	objectName = "staticTheedNpc106",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -2176,7 +2176,7 @@ staticTheedNpc106 = Creature:new {
 
 staticTheedNpc107 = Creature:new {
 	objectName = "staticTheedNpc107",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_monk",
 	combatFlags = 0,
@@ -2198,7 +2198,7 @@ staticTheedNpc107 = Creature:new {
 
 staticTheedNpc108 = Creature:new {
 	objectName = "staticTheedNpc108",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mountain_villager",
 	combatFlags = 0,
@@ -2220,7 +2220,7 @@ staticTheedNpc108 = Creature:new {
 
 staticTheedNpc109 = Creature:new {
 	objectName = "staticTheedNpc109",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "swamp_villager",
 	combatFlags = 0,
@@ -2242,7 +2242,7 @@ staticTheedNpc109 = Creature:new {
 
 staticTheedNpc110 = Creature:new {
 	objectName = "staticTheedNpc110",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -2264,7 +2264,7 @@ staticTheedNpc110 = Creature:new {
 
 staticTheedNpc111 = Creature:new {
 	objectName = "staticTheedNpc111",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_information_broker",
 	combatFlags = 0,
@@ -2286,7 +2286,7 @@ staticTheedNpc111 = Creature:new {
 
 staticTheedNpc112 = Creature:new {
 	objectName = "staticTheedNpc112",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -2308,7 +2308,7 @@ staticTheedNpc112 = Creature:new {
 
 staticTheedNpc113 = Creature:new {
 	objectName = "staticTheedNpc113",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_pilot",
 	combatFlags = 0,
@@ -2330,7 +2330,7 @@ staticTheedNpc113 = Creature:new {
 
 staticTheedNpc114 = Creature:new {
 	objectName = "staticTheedNpc114",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,
@@ -2352,7 +2352,7 @@ staticTheedNpc114 = Creature:new {
 
 staticTheedNpc115 = Creature:new {
 	objectName = "staticTheedNpc115",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "plainsfolk",
 	combatFlags = 0,
@@ -2374,7 +2374,7 @@ staticTheedNpc115 = Creature:new {
 
 staticTheedNpc116 = Creature:new {
 	objectName = "staticTheedNpc116",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_diplomat",
 	combatFlags = 0,
@@ -2396,7 +2396,7 @@ staticTheedNpc116 = Creature:new {
 
 staticTheedNpc117 = Creature:new {
 	objectName = "staticTheedNpc117",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "hunter",
 	combatFlags = 0,
@@ -2418,7 +2418,7 @@ staticTheedNpc117 = Creature:new {
 
 staticTheedNpc118 = Creature:new {
 	objectName = "staticTheedNpc118",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "moncal_base_female",
 	combatFlags = 0,
@@ -2440,7 +2440,7 @@ staticTheedNpc118 = Creature:new {
 
 staticTheedNpc119 = Creature:new {
 	objectName = "staticTheedNpc119",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -2462,7 +2462,7 @@ staticTheedNpc119 = Creature:new {
 
 staticTheedNpc120 = Creature:new {
 	objectName = "staticTheedNpc120",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "plainsfolk",
 	combatFlags = 0,
@@ -2484,7 +2484,7 @@ staticTheedNpc120 = Creature:new {
 
 staticTheedNpc121 = Creature:new {
 	objectName = "staticTheedNpc121",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mountain_villager",
 	combatFlags = 0,
@@ -2506,7 +2506,7 @@ staticTheedNpc121 = Creature:new {
 
 staticTheedNpc122 = Creature:new {
 	objectName = "staticTheedNpc122",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -2528,7 +2528,7 @@ staticTheedNpc122 = Creature:new {
 
 staticTheedNpc123 = Creature:new {
 	objectName = "staticTheedNpc123",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "technician",
 	combatFlags = 0,
@@ -2550,7 +2550,7 @@ staticTheedNpc123 = Creature:new {
 
 staticTheedNpc124 = Creature:new {
 	objectName = "staticTheedNpc124",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_hermit",
 	combatFlags = 0,
@@ -2572,7 +2572,7 @@ staticTheedNpc124 = Creature:new {
 
 staticTheedNpc125 = Creature:new {
 	objectName = "staticTheedNpc125",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_outcast",
 	combatFlags = 0,
@@ -2594,7 +2594,7 @@ staticTheedNpc125 = Creature:new {
 
 staticTheedNpc126 = Creature:new {
 	objectName = "staticTheedNpc126",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "hunter",
 	combatFlags = 0,
@@ -2616,7 +2616,7 @@ staticTheedNpc126 = Creature:new {
 
 staticTheedNpc127 = Creature:new {
 	objectName = "staticTheedNpc127",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "otolla_gungan",
 	combatFlags = 0,
@@ -2638,7 +2638,7 @@ staticTheedNpc127 = Creature:new {
 
 staticTheedNpc128 = Creature:new {
 	objectName = "staticTheedNpc128",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scoundrel",
 	combatFlags = 0,
@@ -2660,7 +2660,7 @@ staticTheedNpc128 = Creature:new {
 
 staticTheedNpc129 = Creature:new {
 	objectName = "staticTheedNpc129",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -2682,7 +2682,7 @@ staticTheedNpc129 = Creature:new {
 
 staticTheedNpc130 = Creature:new {
 	objectName = "staticTheedNpc130",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "philosopher",
 	combatFlags = 0,
@@ -2704,7 +2704,7 @@ staticTheedNpc130 = Creature:new {
 
 staticTheedNpc131 = Creature:new {
 	objectName = "staticTheedNpc131",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -2726,7 +2726,7 @@ staticTheedNpc131 = Creature:new {
 
 staticTheedNpc132 = Creature:new {
 	objectName = "staticTheedNpc132",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "otolla_gungan",
 	combatFlags = 0,
@@ -2748,7 +2748,7 @@ staticTheedNpc132 = Creature:new {
 
 staticTheedNpc133 = Creature:new {
 	objectName = "staticTheedNpc133",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_scout",
 	combatFlags = 0,
@@ -2770,7 +2770,7 @@ staticTheedNpc133 = Creature:new {
 
 staticTheedNpc134 = Creature:new {
 	objectName = "staticTheedNpc134",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2792,7 +2792,7 @@ staticTheedNpc134 = Creature:new {
 
 staticTheedNpc135 = Creature:new {
 	objectName = "staticTheedNpc135",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2814,7 +2814,7 @@ staticTheedNpc135 = Creature:new {
 
 staticTheedNpc136 = Creature:new {
 	objectName = "staticTheedNpc136",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r4",
 	combatFlags = 0,
@@ -2836,7 +2836,7 @@ staticTheedNpc136 = Creature:new {
 
 staticTheedNpc137 = Creature:new {
 	objectName = "staticTheedNpc137",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_squad_leader",
 	combatFlags = 0,
@@ -2858,7 +2858,7 @@ staticTheedNpc137 = Creature:new {
 
 staticTheedNpc139 = Creature:new {
 	objectName = "staticTheedNpc139",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_sharpshooter",
 	combatFlags = 0,
@@ -2880,7 +2880,7 @@ staticTheedNpc139 = Creature:new {
 
 staticTheedNpc140 = Creature:new {
 	objectName = "staticTheedNpc140",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner_rodian_male",
 	combatFlags = 0,
@@ -2902,7 +2902,7 @@ staticTheedNpc140 = Creature:new {
 
 staticTheedNpc141 = Creature:new {
 	objectName = "staticTheedNpc141",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2924,7 +2924,7 @@ staticTheedNpc141 = Creature:new {
 
 staticTheedNpc142 = Creature:new {
 	objectName = "staticTheedNpc142",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2946,7 +2946,7 @@ staticTheedNpc142 = Creature:new {
 
 staticTheedNpc143 = Creature:new {
 	objectName = "staticTheedNpc143",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2968,7 +2968,7 @@ staticTheedNpc143 = Creature:new {
 
 staticTheedNpc146 = Creature:new {
 	objectName = "staticTheedNpc146",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_stormtrooper_rifleman_hard",
 	combatFlags = 0,
@@ -2990,7 +2990,7 @@ staticTheedNpc146 = Creature:new {
 
 staticTheedNpc148 = Creature:new {
 	objectName = "staticTheedNpc148",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -3012,7 +3012,7 @@ staticTheedNpc148 = Creature:new {
 
 staticTheedNpc149 = Creature:new {
 	objectName = "staticTheedNpc149",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scout_trooper",
 	combatFlags = 0,
@@ -3034,7 +3034,7 @@ staticTheedNpc149 = Creature:new {
 
 staticTheedNpc150 = Creature:new {
 	objectName = "staticTheedNpc150",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3056,7 +3056,7 @@ staticTheedNpc150 = Creature:new {
 
 staticTheedNpc152 = Creature:new {
 	objectName = "staticTheedNpc152",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner_human_female",
 	combatFlags = 0,
@@ -3078,7 +3078,7 @@ staticTheedNpc152 = Creature:new {
 
 staticTheedNpc153 = Creature:new {
 	objectName = "staticTheedNpc153",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3101,7 +3101,7 @@ staticTheedNpc153 = Creature:new {
 
 staticTheedNpc155 = Creature:new {
 	objectName = "staticTheedNpc155",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -3123,7 +3123,7 @@ staticTheedNpc155 = Creature:new {
 
 staticTheedNpc156 = Creature:new {
 	objectName = "staticTheedNpc156",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3145,7 +3145,7 @@ staticTheedNpc156 = Creature:new {
 
 staticTheedNpc157 = Creature:new {
 	objectName = "staticTheedNpc157",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_stormtrooper_sniper_extreme",
 	combatFlags = 0,
@@ -3167,7 +3167,7 @@ staticTheedNpc157 = Creature:new {
 
 staticTheedNpc158 = Creature:new {
 	objectName = "staticTheedNpc158",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_dark_trooper_extreme",
 	combatFlags = 0,
@@ -3189,7 +3189,7 @@ staticTheedNpc158 = Creature:new {
 
 staticTheedNpc159 = Creature:new {
 	objectName = "staticTheedNpc159",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_elite_dark_trooper_extreme",
 	combatFlags = 0,
@@ -3211,7 +3211,7 @@ staticTheedNpc159 = Creature:new {
 
 staticTheedNpc160 = Creature:new {
 	objectName = "staticTheedNpc160",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -3233,7 +3233,7 @@ staticTheedNpc160 = Creature:new {
 
 staticTheedNpc161 = Creature:new {
 	objectName = "staticTheedNpc161",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -3255,7 +3255,7 @@ staticTheedNpc161 = Creature:new {
 
 staticTheedNpc162 = Creature:new {
 	objectName = "staticTheedNpc162",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3277,7 +3277,7 @@ staticTheedNpc162 = Creature:new {
 
 staticTheedNpc163 = Creature:new {
 	objectName = "staticTheedNpc163",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3299,7 +3299,7 @@ staticTheedNpc163 = Creature:new {
 
 staticTheedNpc164 = Creature:new {
 	objectName = "staticTheedNpc164",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3321,7 +3321,7 @@ staticTheedNpc164 = Creature:new {
 
 staticTheedNpc165 = Creature:new {
 	objectName = "staticTheedNpc165",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3343,7 +3343,7 @@ staticTheedNpc165 = Creature:new {
 
 staticTheedNpc166 = Creature:new {
 	objectName = "staticTheedNpc166",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3365,7 +3365,7 @@ staticTheedNpc166 = Creature:new {
 
 staticTheedNpc167 = Creature:new {
 	objectName = "staticTheedNpc167",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3387,7 +3387,7 @@ staticTheedNpc167 = Creature:new {
 
 staticTheedNpc168 = Creature:new {
 	objectName = "staticTheedNpc168",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3409,7 +3409,7 @@ staticTheedNpc168 = Creature:new {
 
 staticTheedNpc169 = Creature:new {
 	objectName = "staticTheedNpc169",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3431,7 +3431,7 @@ staticTheedNpc169 = Creature:new {
 
 staticTheedNpc171 = Creature:new {
 	objectName = "staticTheedNpc171",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_dark_trooper",
 	combatFlags = 0,
@@ -3453,7 +3453,7 @@ staticTheedNpc171 = Creature:new {
 
 staticTheedNpc172 = Creature:new {
 	objectName = "staticTheedNpc172",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3475,7 +3475,7 @@ staticTheedNpc172 = Creature:new {
 
 staticTheedNpc173 = Creature:new {
 	objectName = "staticTheedNpc173",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3497,7 +3497,7 @@ staticTheedNpc173 = Creature:new {
 
 staticTheedNpc177 = Creature:new {
 	objectName = "staticTheedNpc177",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3519,7 +3519,7 @@ staticTheedNpc177 = Creature:new {
 
 staticTheedNpc178 = Creature:new {
 	objectName = "staticTheedNpc178",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3541,7 +3541,7 @@ staticTheedNpc178 = Creature:new {
 
 staticTheedNpc179 = Creature:new {
 	objectName = "staticTheedNpc179",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_stormtrooper_captain_extreme",
 	combatFlags = 0,
@@ -3563,7 +3563,7 @@ staticTheedNpc179 = Creature:new {
 
 staticTheedNpc180 = Creature:new {
 	objectName = "staticTheedNpc180",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3585,7 +3585,7 @@ staticTheedNpc180 = Creature:new {
 
 staticTheedNpc181 = Creature:new {
 	objectName = "staticTheedNpc181",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3607,7 +3607,7 @@ staticTheedNpc181 = Creature:new {
 
 staticTheedNpc182 = Creature:new {
 	objectName = "staticTheedNpc182",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "technician",
 	combatFlags = 0,
@@ -3629,7 +3629,7 @@ staticTheedNpc182 = Creature:new {
 
 staticTheedNpc183 = Creature:new {
 	objectName = "staticTheedNpc183",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scoundrel",
 	combatFlags = 0,
@@ -3651,7 +3651,7 @@ staticTheedNpc183 = Creature:new {
 
 staticTheedNpc184 = Creature:new {
 	objectName = "staticTheedNpc184",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "philosopher",
 	combatFlags = 0,
@@ -3673,7 +3673,7 @@ staticTheedNpc184 = Creature:new {
 
 staticTheedNpc185 = Creature:new {
 	objectName = "staticTheedNpc185",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "plainsfolk",
 	combatFlags = 0,
@@ -3695,7 +3695,7 @@ staticTheedNpc185 = Creature:new {
 
 staticTheedNpc186 = Creature:new {
 	objectName = "staticTheedNpc186",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fringer",
 	combatFlags = 0,
@@ -3717,7 +3717,7 @@ staticTheedNpc186 = Creature:new {
 
 staticTheedNpc187 = Creature:new {
 	objectName = "staticTheedNpc187",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -3739,7 +3739,7 @@ staticTheedNpc187 = Creature:new {
 
 staticTheedNpc188 = Creature:new {
 	objectName = "staticTheedNpc188",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3761,7 +3761,7 @@ staticTheedNpc188 = Creature:new {
 
 staticTheedNpc189 = Creature:new {
 	objectName = "staticTheedNpc189",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3783,7 +3783,7 @@ staticTheedNpc189 = Creature:new {
 
 staticTheedNpc191 = Creature:new {
 	objectName = "staticTheedNpc191",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3805,7 +3805,7 @@ staticTheedNpc191 = Creature:new {
 
 staticTheedNpc192 = Creature:new {
 	objectName = "staticTheedNpc192",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_guard",
 	combatFlags = 0,
@@ -3827,7 +3827,7 @@ staticTheedNpc192 = Creature:new {
 
 staticTheedNpc193 = Creature:new {
 	objectName = "staticTheedNpc193",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_officer",
 	combatFlags = 0,
@@ -3849,7 +3849,7 @@ staticTheedNpc193 = Creature:new {
 
 staticTheedNpc194 = Creature:new {
 	objectName = "staticTheedNpc194",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -3871,7 +3871,7 @@ staticTheedNpc194 = Creature:new {
 
 staticTheedNpc195 = Creature:new {
 	objectName = "staticTheedNpc195",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3893,7 +3893,7 @@ staticTheedNpc195 = Creature:new {
 
 staticTheedNpc200 = Creature:new {
 	objectName = "staticTheedNpc200",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diness_imler",
 	combatFlags = 0,
@@ -3915,7 +3915,7 @@ staticTheedNpc200 = Creature:new {
 
 staticTheedNpc201 = Creature:new {
 	objectName = "staticTheedNpc201",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "dulios",
 	combatFlags = 0,
@@ -3937,7 +3937,7 @@ staticTheedNpc201 = Creature:new {
 
 staticTheedNpc202 = Creature:new {
 	objectName = "staticTheedNpc202",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "trivia_librarian",
 	combatFlags = 0,
@@ -3959,7 +3959,7 @@ staticTheedNpc202 = Creature:new {
 
 staticTheedNpc203 = Creature:new {
 	objectName = "staticTheedNpc203",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "tk_9h4",
 	combatFlags = 0,
@@ -3981,7 +3981,7 @@ staticTheedNpc203 = Creature:new {
 
 staticTheedNpc204 = Creature:new {
 	objectName = "staticTheedNpc204",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "tk_8h2",
 	combatFlags = 0,
@@ -4003,7 +4003,7 @@ staticTheedNpc204 = Creature:new {
 
 staticTheedNpc205 = Creature:new {
 	objectName = "staticTheedNpc205",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nial_declann",
 	combatFlags = 0,
@@ -4025,7 +4025,7 @@ staticTheedNpc205 = Creature:new {
 
 staticTheedNpc206 = Creature:new {
 	objectName = "staticTheedNpc206",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kaydine",
 	combatFlags = 0,
@@ -4047,7 +4047,7 @@ staticTheedNpc206 = Creature:new {
 
 staticTheedNpc207 = Creature:new {
 	objectName = "staticTheedNpc207",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "dinge",
 	combatFlags = 0,
@@ -4069,7 +4069,7 @@ staticTheedNpc207 = Creature:new {
 
 staticTheedNpc208 = Creature:new {
 	objectName = "staticTheedNpc208",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4091,7 +4091,7 @@ staticTheedNpc208 = Creature:new {
 
 staticTheedNpc209 = Creature:new {
 	objectName = "staticTheedNpc209",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4113,7 +4113,7 @@ staticTheedNpc209 = Creature:new {
 
 staticTheedNpc210 = Creature:new {
 	objectName = "staticTheedNpc210",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4135,7 +4135,7 @@ staticTheedNpc210 = Creature:new {
 
 staticTheedNpc211 = Creature:new {
 	objectName = "staticTheedNpc211",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_officer",
 	combatFlags = 0,
@@ -4157,7 +4157,7 @@ staticTheedNpc211 = Creature:new {
 
 staticTheedNpc212 = Creature:new {
 	objectName = "staticTheedNpc212",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -4179,7 +4179,7 @@ staticTheedNpc212 = Creature:new {
 
 staticTheedNpc213 = Creature:new {
 	objectName = "staticTheedNpc213",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_hunter",
 	combatFlags = 0,
@@ -4201,7 +4201,7 @@ staticTheedNpc213 = Creature:new {
 
 staticTheedNpc214 = Creature:new {
 	objectName = "staticTheedNpc214",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4223,7 +4223,7 @@ staticTheedNpc214 = Creature:new {
 
 staticTheedNpc215 = Creature:new {
 	objectName = "staticTheedNpc215",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_stormtrooper_captain_extreme",
 	combatFlags = 0,
@@ -4245,7 +4245,7 @@ staticTheedNpc215 = Creature:new {
 
 staticTheedNpc216 = Creature:new {
 	objectName = "staticTheedNpc216",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_stormtrooper_squad_leader_extreme",
 	combatFlags = 0,
@@ -4267,7 +4267,7 @@ staticTheedNpc216 = Creature:new {
 
 staticTheedNpc217 = Creature:new {
 	objectName = "staticTheedNpc217",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4289,7 +4289,7 @@ staticTheedNpc217 = Creature:new {
 
 staticTheedNpc218 = Creature:new {
 	objectName = "staticTheedNpc218",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4311,7 +4311,7 @@ staticTheedNpc218 = Creature:new {
 
 staticTheedNpc219 = Creature:new {
 	objectName = "staticTheedNpc219",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_female",
 	combatFlags = 0,
@@ -4333,7 +4333,7 @@ staticTheedNpc219 = Creature:new {
 
 staticTheedNpc220 = Creature:new {
 	objectName = "staticTheedNpc220",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_sergeant",
 	combatFlags = 0,
@@ -4355,7 +4355,7 @@ staticTheedNpc220 = Creature:new {
 
 staticTheedNpc221 = Creature:new {
 	objectName = "staticTheedNpc221",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_corporal",
 	combatFlags = 0,
@@ -4377,7 +4377,7 @@ staticTheedNpc221 = Creature:new {
 
 staticTheedNpc223 = Creature:new {
 	objectName = "staticTheedNpc223",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -4399,7 +4399,7 @@ staticTheedNpc223 = Creature:new {
 
 staticTheedNpc224 = Creature:new {
 	objectName = "staticTheedNpc224",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -4421,7 +4421,7 @@ staticTheedNpc224 = Creature:new {
 
 staticTheedNpc225 = Creature:new {
 	objectName = "staticTheedNpc225",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4443,7 +4443,7 @@ staticTheedNpc225 = Creature:new {
 
 staticTheedNpc226 = Creature:new {
 	objectName = "staticTheedNpc226",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4465,7 +4465,7 @@ staticTheedNpc226 = Creature:new {
 
 staticTheedNpc227 = Creature:new {
 	objectName = "staticTheedNpc227",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4487,7 +4487,7 @@ staticTheedNpc227 = Creature:new {
 
 staticTheedNpc228 = Creature:new {
 	objectName = "staticTheedNpc228",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4509,7 +4509,7 @@ staticTheedNpc228 = Creature:new {
 
 staticTheedNpc229 = Creature:new {
 	objectName = "staticTheedNpc229",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4531,7 +4531,7 @@ staticTheedNpc229 = Creature:new {
 
 staticTheedNpc230 = Creature:new {
 	objectName = "staticTheedNpc230",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_sergeant",
 	combatFlags = 0,
@@ -4553,7 +4553,7 @@ staticTheedNpc230 = Creature:new {
 
 staticTheedNpc231 = Creature:new {
 	objectName = "staticTheedNpc231",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_herald_01",
 	combatFlags = 0,
@@ -4575,7 +4575,7 @@ staticTheedNpc231 = Creature:new {
 
 staticTheedNpc232 = Creature:new {
 	objectName = "staticTheedNpc232",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "swamp_villager",
 	combatFlags = 0,
@@ -4597,7 +4597,7 @@ staticTheedNpc232 = Creature:new {
 
 staticTheedNpc233 = Creature:new {
 	objectName = "staticTheedNpc233",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "patron_human_male_04",
 	combatFlags = 0,
@@ -4619,7 +4619,7 @@ staticTheedNpc233 = Creature:new {
 
 staticTheedNpc234 = Creature:new {
 	objectName = "staticTheedNpc234",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4641,7 +4641,7 @@ staticTheedNpc234 = Creature:new {
 
 staticTheedNpc235 = Creature:new {
 	objectName = "staticTheedNpc235",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "landau",
 	combatFlags = 0,
@@ -4663,7 +4663,7 @@ staticTheedNpc235 = Creature:new {
 
 staticTheedNpc236 = Creature:new {
 	objectName = "staticTheedNpc236",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4685,7 +4685,7 @@ staticTheedNpc236 = Creature:new {
 
 staticTheedNpc237 = Creature:new {
 	objectName = "staticTheedNpc237",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4707,7 +4707,7 @@ staticTheedNpc237 = Creature:new {
 
 staticTheedNpc239 = Creature:new {
 	objectName = "staticTheedNpc239",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -4729,7 +4729,7 @@ staticTheedNpc239 = Creature:new {
 
 staticTheedNpc240 = Creature:new {
 	objectName = "staticTheedNpc240",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4751,7 +4751,7 @@ staticTheedNpc240 = Creature:new {
 
 staticTheedNpc241 = Creature:new {
 	objectName = "staticTheedNpc241",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4773,7 +4773,7 @@ staticTheedNpc241 = Creature:new {
 
 staticTheedNpc242 = Creature:new {
 	objectName = "staticTheedNpc242",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4795,7 +4795,7 @@ staticTheedNpc242 = Creature:new {
 
 staticTheedNpc243 = Creature:new {
 	objectName = "staticTheedNpc243",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4817,7 +4817,7 @@ staticTheedNpc243 = Creature:new {
 
 staticTheedNpc244 = Creature:new {
 	objectName = "staticTheedNpc244",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4839,7 +4839,7 @@ staticTheedNpc244 = Creature:new {
 
 staticTheedNpc245 = Creature:new {
 	objectName = "staticTheedNpc245",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "vendor",
 	combatFlags = 0,
@@ -4861,7 +4861,7 @@ staticTheedNpc245 = Creature:new {
 
 staticTheedNpc246 = Creature:new {
 	objectName = "staticTheedNpc246",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_mercenary",
 	combatFlags = 0,
@@ -4883,7 +4883,7 @@ staticTheedNpc246 = Creature:new {
 
 staticTheedNpc247 = Creature:new {
 	objectName = "staticTheedNpc247",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "swamp_villager",
 	combatFlags = 0,
@@ -4905,7 +4905,7 @@ staticTheedNpc247 = Creature:new {
 
 staticTheedNpc248 = Creature:new {
 	objectName = "staticTheedNpc248",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_mercenary",
 	combatFlags = 0,
@@ -4927,7 +4927,7 @@ staticTheedNpc248 = Creature:new {
 
 staticTheedNpc249 = Creature:new {
 	objectName = "staticTheedNpc249",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -4949,7 +4949,7 @@ staticTheedNpc249 = Creature:new {
 
 staticTheedNpc250 = Creature:new {
 	objectName = "staticTheedNpc250",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_female",
 	combatFlags = 0,
@@ -4971,7 +4971,7 @@ staticTheedNpc250 = Creature:new {
 
 staticTheedNpc251 = Creature:new {
 	objectName = "staticTheedNpc251",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -4993,7 +4993,7 @@ staticTheedNpc251 = Creature:new {
 
 staticTheedNpc252 = Creature:new {
 	objectName = "staticTheedNpc252",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "plainsfolk",
 	combatFlags = 0,
@@ -5015,7 +5015,7 @@ staticTheedNpc252 = Creature:new {
 
 staticTheedNpc253 = Creature:new {
 	objectName = "staticTheedNpc253",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -5037,7 +5037,7 @@ staticTheedNpc253 = Creature:new {
 
 staticTheedNpc254 = Creature:new {
 	objectName = "staticTheedNpc254",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5059,7 +5059,7 @@ staticTheedNpc254 = Creature:new {
 
 staticTheedNpc255 = Creature:new {
 	objectName = "staticTheedNpc255",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5081,7 +5081,7 @@ staticTheedNpc255 = Creature:new {
 
 staticTheedNpc256 = Creature:new {
 	objectName = "staticTheedNpc256",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r2",
 	combatFlags = 0,
@@ -5103,7 +5103,7 @@ staticTheedNpc256 = Creature:new {
 
 staticTheedNpc257 = Creature:new {
 	objectName = "staticTheedNpc257",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5125,7 +5125,7 @@ staticTheedNpc257 = Creature:new {
 
 staticTheedNpc258 = Creature:new {
 	objectName = "staticTheedNpc258",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5147,7 +5147,7 @@ staticTheedNpc258 = Creature:new {
 
 staticTheedNpc259 = Creature:new {
 	objectName = "staticTheedNpc259",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "coa2_imperial_coordinator",
 	combatFlags = 0,
@@ -5169,7 +5169,7 @@ staticTheedNpc259 = Creature:new {
 
 staticTheedNpc260 = Creature:new {
 	objectName = "staticTheedNpc260",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5191,7 +5191,7 @@ staticTheedNpc260 = Creature:new {
 
 staticTheedNpc261 = Creature:new {
 	objectName = "staticTheedNpc261",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5213,7 +5213,7 @@ staticTheedNpc261 = Creature:new {
 
 staticTheedNpc262 = Creature:new {
 	objectName = "staticTheedNpc262",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5235,7 +5235,7 @@ staticTheedNpc262 = Creature:new {
 
 staticTheedNpc263 = Creature:new {
 	objectName = "staticTheedNpc263",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5257,7 +5257,7 @@ staticTheedNpc263 = Creature:new {
 
 staticTheedNpc264 = Creature:new {
 	objectName = "staticTheedNpc264",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5279,7 +5279,7 @@ staticTheedNpc264 = Creature:new {
 
 staticTheedNpc265 = Creature:new {
 	objectName = "staticTheedNpc265",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_dark_trooper_extreme",
 	combatFlags = 0,
@@ -5301,7 +5301,7 @@ staticTheedNpc265 = Creature:new {
 
 staticTheedNpc266 = Creature:new {
 	objectName = "staticTheedNpc266",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_dark_trooper_extreme",
 	combatFlags = 0,
@@ -5323,7 +5323,7 @@ staticTheedNpc266 = Creature:new {
 
 staticTheedNpc267 = Creature:new {
 	objectName = "staticTheedNpc267",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_base_male",
 	combatFlags = 0,
@@ -5345,7 +5345,7 @@ staticTheedNpc267 = Creature:new {
 
 staticTheedNpc268 = Creature:new {
 	objectName = "staticTheedNpc268",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -5367,7 +5367,7 @@ staticTheedNpc268 = Creature:new {
 
 staticTheedNpc269 = Creature:new {
 	objectName = "staticTheedNpc269",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5389,7 +5389,7 @@ staticTheedNpc269 = Creature:new {
 
 staticTheedNpc271 = Creature:new {
 	objectName = "staticTheedNpc271",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5411,7 +5411,7 @@ staticTheedNpc271 = Creature:new {
 
 staticTheedNpc277 = Creature:new {
 	objectName = "staticTheedNpc277",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_rifleman",
 	combatFlags = 0,
@@ -5433,7 +5433,7 @@ staticTheedNpc277 = Creature:new {
 
 staticTheedNpc278 = Creature:new {
 	objectName = "staticTheedNpc278",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5455,7 +5455,7 @@ staticTheedNpc278 = Creature:new {
 
 staticTheedNpc279 = Creature:new {
 	objectName = "staticTheedNpc279",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5477,7 +5477,7 @@ staticTheedNpc279 = Creature:new {
 
 staticTheedNpc280 = Creature:new {
 	objectName = "staticTheedNpc280",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5499,7 +5499,7 @@ staticTheedNpc280 = Creature:new {
 
 staticTheedNpc281 = Creature:new {
 	objectName = "staticTheedNpc281",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5521,7 +5521,7 @@ staticTheedNpc281 = Creature:new {
 
 staticTheedNpc282 = Creature:new {
 	objectName = "staticTheedNpc282",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5543,7 +5543,7 @@ staticTheedNpc282 = Creature:new {
 
 staticTheedNpc283 = Creature:new {
 	objectName = "staticTheedNpc283",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5565,7 +5565,7 @@ staticTheedNpc283 = Creature:new {
 
 staticTheedNpc284 = Creature:new {
 	objectName = "staticTheedNpc284",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5587,7 +5587,7 @@ staticTheedNpc284 = Creature:new {
 
 staticTheedNpc285 = Creature:new {
 	objectName = "staticTheedNpc285",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5609,7 +5609,7 @@ staticTheedNpc285 = Creature:new {
 
 staticTheedNpc286 = Creature:new {
 	objectName = "staticTheedNpc286",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_imperial_colonel_extreme",
 	combatFlags = 0,
@@ -5631,7 +5631,7 @@ staticTheedNpc286 = Creature:new {
 
 staticTheedNpc287 = Creature:new {
 	objectName = "staticTheedNpc287",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_dark_trooper_extreme",
 	combatFlags = 0,
@@ -5653,7 +5653,7 @@ staticTheedNpc287 = Creature:new {
 
 staticTheedNpc288 = Creature:new {
 	objectName = "staticTheedNpc288",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_stormtrooper_medic_extreme",
 	combatFlags = 0,
@@ -5675,7 +5675,7 @@ staticTheedNpc288 = Creature:new {
 
 staticTheedNpc289 = Creature:new {
 	objectName = "staticTheedNpc289",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5697,7 +5697,7 @@ staticTheedNpc289 = Creature:new {
 
 staticTheedNpc290 = Creature:new {
 	objectName = "staticTheedNpc290",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "zabrak_base_male",
 	combatFlags = 0,
@@ -5719,7 +5719,7 @@ staticTheedNpc290 = Creature:new {
 
 staticTheedNpc291 = Creature:new {
 	objectName = "staticTheedNpc291",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "philosopher",
 	combatFlags = 0,
@@ -5741,7 +5741,7 @@ staticTheedNpc291 = Creature:new {
 
 staticTheedNpc292 = Creature:new {
 	objectName = "staticTheedNpc292",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -5763,7 +5763,7 @@ staticTheedNpc292 = Creature:new {
 
 staticTheedNpc293 = Creature:new {
 	objectName = "staticTheedNpc293",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5785,7 +5785,7 @@ staticTheedNpc293 = Creature:new {
 
 staticTheedNpc294 = Creature:new {
 	objectName = "staticTheedNpc294",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5807,7 +5807,7 @@ staticTheedNpc294 = Creature:new {
 
 staticTheedNpc295 = Creature:new {
 	objectName = "staticTheedNpc295",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_hunter",
 	combatFlags = 0,
@@ -5829,7 +5829,7 @@ staticTheedNpc295 = Creature:new {
 
 staticTheedNpc296 = Creature:new {
 	objectName = "staticTheedNpc296",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -5851,7 +5851,7 @@ staticTheedNpc296 = Creature:new {
 
 staticTheedNpc298 = Creature:new {
 	objectName = "staticTheedNpc298",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5873,7 +5873,7 @@ staticTheedNpc298 = Creature:new {
 
 staticTheedNpc299 = Creature:new {
 	objectName = "staticTheedNpc299",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5895,7 +5895,7 @@ staticTheedNpc299 = Creature:new {
 
 staticTheedNpc300 = Creature:new {
 	objectName = "staticTheedNpc300",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_elite_dark_trooper",
 	combatFlags = 0,
@@ -5917,7 +5917,7 @@ staticTheedNpc300 = Creature:new {
 
 staticTheedNpc302 = Creature:new {
 	objectName = "staticTheedNpc302",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5939,7 +5939,7 @@ staticTheedNpc302 = Creature:new {
 
 staticTheedNpc303 = Creature:new {
 	objectName = "staticTheedNpc303",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5961,7 +5961,7 @@ staticTheedNpc303 = Creature:new {
 
 staticTheedNpc304 = Creature:new {
 	objectName = "staticTheedNpc304",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_holy_man",
 	combatFlags = 0,
@@ -5983,7 +5983,7 @@ staticTheedNpc304 = Creature:new {
 
 staticTheedNpc305 = Creature:new {
 	objectName = "staticTheedNpc305",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_hermit",
 	combatFlags = 0,
@@ -6005,7 +6005,7 @@ staticTheedNpc305 = Creature:new {
 
 staticTheedNpc306 = Creature:new {
 	objectName = "staticTheedNpc306",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -6027,7 +6027,7 @@ staticTheedNpc306 = Creature:new {
 
 staticTheedNpc307 = Creature:new {
 	objectName = "staticTheedNpc307",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -6049,7 +6049,7 @@ staticTheedNpc307 = Creature:new {
 
 staticTheedNpc308 = Creature:new {
 	objectName = "staticTheedNpc308",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "philosopher",
 	combatFlags = 0,
@@ -6071,7 +6071,7 @@ staticTheedNpc308 = Creature:new {
 
 staticTheedNpc309 = Creature:new {
 	objectName = "staticTheedNpc309",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_nomad",
 	combatFlags = 0,
@@ -6093,7 +6093,7 @@ staticTheedNpc309 = Creature:new {
 
 staticTheedNpc310 = Creature:new {
 	objectName = "staticTheedNpc310",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scout_trooper",
 	combatFlags = 0,
@@ -6115,7 +6115,7 @@ staticTheedNpc310 = Creature:new {
 
 staticTheedNpc311 = Creature:new {
 	objectName = "staticTheedNpc311",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -6137,7 +6137,7 @@ staticTheedNpc311 = Creature:new {
 
 staticTheedNpc312 = Creature:new {
 	objectName = "staticTheedNpc312",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -6159,7 +6159,7 @@ staticTheedNpc312 = Creature:new {
 
 staticTheedNpc313 = Creature:new {
 	objectName = "staticTheedNpc313",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "twilek_base_female",
 	combatFlags = 0,
@@ -6181,7 +6181,7 @@ staticTheedNpc313 = Creature:new {
 
 staticTheedNpc314 = Creature:new {
 	objectName = "staticTheedNpc314",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scoundrel",
 	combatFlags = 0,
@@ -6203,7 +6203,7 @@ staticTheedNpc314 = Creature:new {
 
 staticTheedNpc315 = Creature:new {
 	objectName = "staticTheedNpc315",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -6225,7 +6225,7 @@ staticTheedNpc315 = Creature:new {
 
 staticTheedNpc316 = Creature:new {
 	objectName = "staticTheedNpc316",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -6247,7 +6247,7 @@ staticTheedNpc316 = Creature:new {
 
 staticTheedNpc317 = Creature:new {
 	objectName = "staticTheedNpc317",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -6269,7 +6269,7 @@ staticTheedNpc317 = Creature:new {
 
 staticTheedNpc318 = Creature:new {
 	objectName = "staticTheedNpc318",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -6291,7 +6291,7 @@ staticTheedNpc318 = Creature:new {
 
 staticTheedNpc319 = Creature:new {
 	objectName = "staticTheedNpc319",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -6313,7 +6313,7 @@ staticTheedNpc319 = Creature:new {
 
 staticTheedNpc320 = Creature:new {
 	objectName = "staticTheedNpc320",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -6335,7 +6335,7 @@ staticTheedNpc320 = Creature:new {
 
 staticTheedNpc321 = Creature:new {
 	objectName = "staticTheedNpc321",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_rifleman",
 	combatFlags = 0,
@@ -6357,7 +6357,7 @@ staticTheedNpc321 = Creature:new {
 
 staticTheedNpc323 = Creature:new {
 	objectName = "staticTheedNpc323",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "stormtrooper_novatrooper_squad_leader",
 	combatFlags = 0,
@@ -6379,7 +6379,7 @@ staticTheedNpc323 = Creature:new {
 
 staticTheedNpc324 = Creature:new {
 	objectName = "staticTheedNpc324",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "stormtrooper_novatrooper_elite",
 	combatFlags = 0,
@@ -6401,7 +6401,7 @@ staticTheedNpc324 = Creature:new {
 
 staticTheedNpc325 = Creature:new {
 	objectName = "staticTheedNpc325",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -6423,7 +6423,7 @@ staticTheedNpc325 = Creature:new {
 
 staticTheedNpc328 = Creature:new {
 	objectName = "staticTheedNpc328",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -6445,7 +6445,7 @@ staticTheedNpc328 = Creature:new {
 
 staticTheedNpc330 = Creature:new {
 	objectName = "staticTheedNpc330",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -6467,7 +6467,7 @@ staticTheedNpc330 = Creature:new {
 
 staticTheedNpc331 = Creature:new {
 	objectName = "staticTheedNpc331",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fringer",
 	combatFlags = 0,
@@ -6489,7 +6489,7 @@ staticTheedNpc331 = Creature:new {
 
 staticTheedNpc332 = Creature:new {
 	objectName = "staticTheedNpc332",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -6511,7 +6511,7 @@ staticTheedNpc332 = Creature:new {
 
 staticTheedNpc333 = Creature:new {
 	objectName = "staticTheedNpc333",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -6533,7 +6533,7 @@ staticTheedNpc333 = Creature:new {
 
 staticTheedNpc334 = Creature:new {
 	objectName = "staticTheedNpc334",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "vendor",
 	combatFlags = 0,
@@ -6555,7 +6555,7 @@ staticTheedNpc334 = Creature:new {
 
 staticTheedNpc335 = Creature:new {
 	objectName = "staticTheedNpc335",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -6577,7 +6577,7 @@ staticTheedNpc335 = Creature:new {
 
 staticTheedNpc336 = Creature:new {
 	objectName = "staticTheedNpc336",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "quest_crowd_pleaser_theater_manager",
 	combatFlags = 0,
@@ -6599,7 +6599,7 @@ staticTheedNpc336 = Creature:new {
 
 staticTheedNpc337 = Creature:new {
 	objectName = "staticTheedNpc337",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -6621,7 +6621,7 @@ staticTheedNpc337 = Creature:new {
 
 staticTheedNpc338 = Creature:new {
 	objectName = "staticTheedNpc338",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_pilot",
 	combatFlags = 0,
@@ -6643,7 +6643,7 @@ staticTheedNpc338 = Creature:new {
 
 staticTheedNpc339 = Creature:new {
 	objectName = "staticTheedNpc339",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -6665,7 +6665,7 @@ staticTheedNpc339 = Creature:new {
 
 staticTheedNpc340 = Creature:new {
 	objectName = "staticTheedNpc340",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -6687,7 +6687,7 @@ staticTheedNpc340 = Creature:new {
 
 staticTheedNpc341 = Creature:new {
 	objectName = "staticTheedNpc341",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -6709,7 +6709,7 @@ staticTheedNpc341 = Creature:new {
 
 staticTheedNpc342 = Creature:new {
 	objectName = "staticTheedNpc342",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_palace_guard",
 	combatFlags = 0,
@@ -6731,7 +6731,7 @@ staticTheedNpc342 = Creature:new {
 
 staticTheedNpc343 = Creature:new {
 	objectName = "staticTheedNpc343",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_guard",
 	combatFlags = 0,
@@ -6753,7 +6753,7 @@ staticTheedNpc343 = Creature:new {
 
 staticTheedNpc344 = Creature:new {
 	objectName = "staticTheedNpc344",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bothan_base_male",
 	combatFlags = 0,
@@ -6775,7 +6775,7 @@ staticTheedNpc344 = Creature:new {
 
 staticTheedNpc345 = Creature:new {
 	objectName = "staticTheedNpc345",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "technician",
 	combatFlags = 0,
@@ -6797,7 +6797,7 @@ staticTheedNpc345 = Creature:new {
 
 staticTheedNpc346 = Creature:new {
 	objectName = "staticTheedNpc346",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_pilot",
 	combatFlags = 0,
@@ -6819,7 +6819,7 @@ staticTheedNpc346 = Creature:new {
 
 staticTheedNpc347 = Creature:new {
 	objectName = "staticTheedNpc347",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -6841,7 +6841,7 @@ staticTheedNpc347 = Creature:new {
 
 staticTheedNpc348 = Creature:new {
 	objectName = "staticTheedNpc348",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_palace_guard",
 	combatFlags = 0,
@@ -6863,7 +6863,7 @@ staticTheedNpc348 = Creature:new {
 
 staticTheedNpc349 = Creature:new {
 	objectName = "staticTheedNpc349",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_outcast",
 	combatFlags = 0,
@@ -6885,7 +6885,7 @@ staticTheedNpc349 = Creature:new {
 
 staticTheedNpc350 = Creature:new {
 	objectName = "staticTheedNpc350",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -6907,7 +6907,7 @@ staticTheedNpc350 = Creature:new {
 
 staticTheedNpc352 = Creature:new {
 	objectName = "staticTheedNpc352",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_dark_trooper",
 	combatFlags = 0,
@@ -6929,7 +6929,7 @@ staticTheedNpc352 = Creature:new {
 
 staticTheedNpc353 = Creature:new {
 	objectName = "staticTheedNpc353",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -6951,7 +6951,7 @@ staticTheedNpc353 = Creature:new {
 
 staticTheedNpc354 = Creature:new {
 	objectName = "staticTheedNpc354",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_storm_commando",
 	combatFlags = 0,
@@ -6973,7 +6973,7 @@ staticTheedNpc354 = Creature:new {
 
 staticTheedNpc355 = Creature:new {
 	objectName = "staticTheedNpc355",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_corporal",
 	combatFlags = 0,
@@ -6995,7 +6995,7 @@ staticTheedNpc355 = Creature:new {
 
 staticTheedNpc356 = Creature:new {
 	objectName = "staticTheedNpc356",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_bombardier",
 	combatFlags = 0,
@@ -7017,7 +7017,7 @@ staticTheedNpc356 = Creature:new {
 
 staticTheedNpc357 = Creature:new {
 	objectName = "staticTheedNpc357",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -7039,7 +7039,7 @@ staticTheedNpc357 = Creature:new {
 
 staticTheedNpc358 = Creature:new {
 	objectName = "staticTheedNpc358",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -7061,7 +7061,7 @@ staticTheedNpc358 = Creature:new {
 
 staticTheedNpc359 = Creature:new {
 	objectName = "staticTheedNpc359",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_warrant_officer_ii",
 	combatFlags = 0,
@@ -7083,7 +7083,7 @@ staticTheedNpc359 = Creature:new {
 
 staticTheedNpc360 = Creature:new {
 	objectName = "staticTheedNpc360",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_colonel",
 	combatFlags = 0,
@@ -7105,7 +7105,7 @@ staticTheedNpc360 = Creature:new {
 
 staticTheedNpc361 = Creature:new {
 	objectName = "staticTheedNpc361",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_medic",
 	combatFlags = 0,
@@ -7127,7 +7127,7 @@ staticTheedNpc361 = Creature:new {
 
 staticTheedNpc362 = Creature:new {
 	objectName = "staticTheedNpc362",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_command_security_guard",
 	combatFlags = 0,
@@ -7149,7 +7149,7 @@ staticTheedNpc362 = Creature:new {
 
 staticTheedNpc363 = Creature:new {
 	objectName = "staticTheedNpc363",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -7171,7 +7171,7 @@ staticTheedNpc363 = Creature:new {
 
 staticTheedNpc364 = Creature:new {
 	objectName = "staticTheedNpc364",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -7193,7 +7193,7 @@ staticTheedNpc364 = Creature:new {
 
 staticTheedNpc365 = Creature:new {
 	objectName = "staticTheedNpc365",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "",
 	combatFlags = 0,
@@ -7215,7 +7215,7 @@ staticTheedNpc365 = Creature:new {
 
 staticTheedNpc366 = Creature:new {
 	objectName = "staticTheedNpc366",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_stormtrooper_squad_leader_hard",
 	combatFlags = 0,
@@ -7237,7 +7237,7 @@ staticTheedNpc366 = Creature:new {
 
 staticTheedNpc367 = Creature:new {
 	objectName = "staticTheedNpc367",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -7259,7 +7259,7 @@ staticTheedNpc367 = Creature:new {
 
 staticTheedNpc368 = Creature:new {
 	objectName = "staticTheedNpc368",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -7281,7 +7281,7 @@ staticTheedNpc368 = Creature:new {
 
 staticTheedNpc369 = Creature:new {
 	objectName = "staticTheedNpc369",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -7303,7 +7303,7 @@ staticTheedNpc369 = Creature:new {
 
 staticTheedNpc370 = Creature:new {
 	objectName = "staticTheedNpc370",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -7325,7 +7325,7 @@ staticTheedNpc370 = Creature:new {
 
 staticTheedNpc371 = Creature:new {
 	objectName = "staticTheedNpc371",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -7347,7 +7347,7 @@ staticTheedNpc371 = Creature:new {
 
 staticTheedNpc372 = Creature:new {
 	objectName = "staticTheedNpc372",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -7369,7 +7369,7 @@ staticTheedNpc372 = Creature:new {
 
 staticTheedNpc373 = Creature:new {
 	objectName = "staticTheedNpc373",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -7391,7 +7391,7 @@ staticTheedNpc373 = Creature:new {
 
 staticTheedNpc374 = Creature:new {
 	objectName = "staticTheedNpc374",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "official",
 	combatFlags = 0,
@@ -7413,7 +7413,7 @@ staticTheedNpc374 = Creature:new {
 
 staticTheedNpc375 = Creature:new {
 	objectName = "staticTheedNpc375",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -7435,7 +7435,7 @@ staticTheedNpc375 = Creature:new {
 
 staticTheedNpc376 = Creature:new {
 	objectName = "staticTheedNpc376",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -7457,7 +7457,7 @@ staticTheedNpc376 = Creature:new {
 
 staticTheedNpc377 = Creature:new {
 	objectName = "staticTheedNpc377",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -7479,7 +7479,7 @@ staticTheedNpc377 = Creature:new {
 
 staticTheedNpc378 = Creature:new {
 	objectName = "staticTheedNpc378",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -7501,7 +7501,7 @@ staticTheedNpc378 = Creature:new {
 
 staticTheedNpc379 = Creature:new {
 	objectName = "staticTheedNpc379",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -7523,7 +7523,7 @@ staticTheedNpc379 = Creature:new {
 
 staticTheedNpc380 = Creature:new {
 	objectName = "staticTheedNpc380",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_stormtrooper_rifleman_extreme",
 	combatFlags = 0,
@@ -7545,7 +7545,7 @@ staticTheedNpc380 = Creature:new {
 
 staticTheedNpc381 = Creature:new {
 	objectName = "staticTheedNpc381",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_elite_dark_trooper_hard",
 	combatFlags = 0,
@@ -7567,7 +7567,7 @@ staticTheedNpc381 = Creature:new {
 
 staticTheedNpc382 = Creature:new {
 	objectName = "staticTheedNpc382",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -7589,7 +7589,7 @@ staticTheedNpc382 = Creature:new {
 
 staticTheedNpc383 = Creature:new {
 	objectName = "staticTheedNpc383",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_imperial_colonel_hard",
 	combatFlags = 0,
@@ -7611,7 +7611,7 @@ staticTheedNpc383 = Creature:new {
 
 staticTheedNpc384 = Creature:new {
 	objectName = "staticTheedNpc384",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_storm_commando_hard",
 	combatFlags = 0,
@@ -7633,7 +7633,7 @@ staticTheedNpc384 = Creature:new {
 
 staticTheedNpc385 = Creature:new {
 	objectName = "staticTheedNpc385",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fbase_storm_commando_hard",
 	combatFlags = 0,

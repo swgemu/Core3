@@ -42,7 +42,7 @@
 
 kadaaraNpc1 = Creature:new {
 	objectName = "kadaaraNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_first_lieutenant",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ kadaaraNpc1 = Creature:new {
 
 kadaaraNpc2 = Creature:new {
 	objectName = "kadaaraNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_medic",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ kadaaraNpc2 = Creature:new {
 
 kadaaraNpc3 = Creature:new {
 	objectName = "kadaaraNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_corporal",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ kadaaraNpc3 = Creature:new {
 
 kadaaraNpc4 = Creature:new {
 	objectName = "kadaaraNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_army_captain",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ kadaaraNpc4 = Creature:new {
 
 kadaaraNpc5 = Creature:new {
 	objectName = "kadaaraNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_at_st",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ kadaaraNpc5 = Creature:new {
 
 kadaaraNpc6 = Creature:new {
 	objectName = "kadaaraNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ kadaaraNpc6 = Creature:new {
 
 kadaaraNpc7 = Creature:new {
 	objectName = "kadaaraNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_officer",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ kadaaraNpc7 = Creature:new {
 
 kadaaraNpc8 = Creature:new {
 	objectName = "kadaaraNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ kadaaraNpc8 = Creature:new {
 
 kadaaraNpc9 = Creature:new {
 	objectName = "kadaaraNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ kadaaraNpc9 = Creature:new {
 
 kadaaraNpc10 = Creature:new {
 	objectName = "kadaaraNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_officer",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ kadaaraNpc10 = Creature:new {
 
 kadaaraNpc11 = Creature:new {
 	objectName = "kadaaraNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "brawler",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ kadaaraNpc11 = Creature:new {
 
 kadaaraNpc12 = Creature:new {
 	objectName = "kadaaraNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ kadaaraNpc12 = Creature:new {
 
 kadaaraNpc13 = Creature:new {
 	objectName = "kadaaraNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ kadaaraNpc13 = Creature:new {
 
 kadaaraNpc14 = Creature:new {
 	objectName = "kadaaraNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ kadaaraNpc14 = Creature:new {
 
 kadaaraNpc15 = Creature:new {
 	objectName = "kadaaraNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "stormtrooper",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ kadaaraNpc15 = Creature:new {
 
 kadaaraNpc16 = Creature:new {
 	objectName = "kadaaraNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ kadaaraNpc16 = Creature:new {
 
 kadaaraNpc17 = Creature:new {
 	objectName = "kadaaraNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ kadaaraNpc17 = Creature:new {
 
 kadaaraNpc18 = Creature:new {
 	objectName = "kadaaraNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ kadaaraNpc18 = Creature:new {
 
 kadaaraNpc19 = Creature:new {
 	objectName = "kadaaraNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ kadaaraNpc19 = Creature:new {
 
 kadaaraNpc20 = Creature:new {
 	objectName = "kadaaraNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ kadaaraNpc20 = Creature:new {
 
 kadaaraNpc21 = Creature:new {
 	objectName = "kadaaraNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ kadaaraNpc21 = Creature:new {
 
 kadaaraNpc22 = Creature:new {
 	objectName = "kadaaraNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ kadaaraNpc22 = Creature:new {
 
 kadaaraNpc23 = Creature:new {
 	objectName = "kadaaraNpc23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ kadaaraNpc23 = Creature:new {
 
 kadaaraNpc24 = Creature:new {
 	objectName = "kadaaraNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ kadaaraNpc24 = Creature:new {
 
 kadaaraNpc25 = Creature:new {
 	objectName = "kadaaraNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ kadaaraNpc25 = Creature:new {
 
 kadaaraNpc26 = Creature:new {
 	objectName = "kadaaraNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gi_a_pei",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ kadaaraNpc26 = Creature:new {
 
 kadaaraNpc27 = Creature:new {
 	objectName = "kadaaraNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "jaden_dala",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ kadaaraNpc27 = Creature:new {
 
 kadaaraNpc28 = Creature:new {
 	objectName = "kadaaraNpc28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ kadaaraNpc28 = Creature:new {
 
 kadaaraNpc29 = Creature:new {
 	objectName = "kadaaraNpc29",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "quest_crowd_pleaser_theater_manager",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ kadaaraNpc29 = Creature:new {
 
 kadaaraNpc30 = Creature:new {
 	objectName = "kadaaraNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ kadaaraNpc30 = Creature:new {
 
 kadaaraNpc31 = Creature:new {
 	objectName = "kadaaraNpc31",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ kadaaraNpc31 = Creature:new {
 
 kadaaraNpc32 = Creature:new {
 	objectName = "kadaaraNpc32",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ kadaaraNpc32 = Creature:new {
 
 kadaaraNpc33 = Creature:new {
 	objectName = "kadaaraNpc33",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ kadaaraNpc33 = Creature:new {
 
 kadaaraNpc34 = Creature:new {
 	objectName = "kadaaraNpc34",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "spacer",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ kadaaraNpc34 = Creature:new {
 
 kadaaraNpc35 = Creature:new {
 	objectName = "kadaaraNpc35",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ kadaaraNpc35 = Creature:new {
 
 kadaaraNpc36 = Creature:new {
 	objectName = "kadaaraNpc36",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -834,7 +834,7 @@ kadaaraNpc36 = Creature:new {
 
 kadaaraNpc37 = Creature:new {
 	objectName = "kadaaraNpc37",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -856,7 +856,7 @@ kadaaraNpc37 = Creature:new {
 
 kadaaraNpc38 = Creature:new {
 	objectName = "kadaaraNpc38",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -878,7 +878,7 @@ kadaaraNpc38 = Creature:new {
 
 kadaaraNpc39 = Creature:new {
 	objectName = "kadaaraNpc39",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -900,7 +900,7 @@ kadaaraNpc39 = Creature:new {
 
 kadaaraNpc40 = Creature:new {
 	objectName = "kadaaraNpc40",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -922,7 +922,7 @@ kadaaraNpc40 = Creature:new {
 
 kadaaraNpc41 = Creature:new {
 	objectName = "kadaaraNpc41",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "eg6_power_droid",
 	combatFlags = 0,
@@ -944,7 +944,7 @@ kadaaraNpc41 = Creature:new {
 
 kadaaraNpc42 = Creature:new {
 	objectName = "kadaaraNpc42",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "cll8_binary_load_lifter",
 	combatFlags = 0,
@@ -966,7 +966,7 @@ kadaaraNpc42 = Creature:new {
 
 kadaaraNpc43 = Creature:new {
 	objectName = "kadaaraNpc43",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_guard",
 	combatFlags = 0,
@@ -988,7 +988,7 @@ kadaaraNpc43 = Creature:new {
 
 kadaaraNpc44 = Creature:new {
 	objectName = "kadaaraNpc44",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_officer",
 	combatFlags = 0,
@@ -1010,7 +1010,7 @@ kadaaraNpc44 = Creature:new {
 
 kadaaraNpc45 = Creature:new {
 	objectName = "kadaaraNpc45",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_officer",
 	combatFlags = 0,
@@ -1032,7 +1032,7 @@ kadaaraNpc45 = Creature:new {
 
 kadaaraNpc46 = Creature:new {
 	objectName = "kadaaraNpc46",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1054,7 +1054,7 @@ kadaaraNpc46 = Creature:new {
 
 kadaaraNpc47 = Creature:new {
 	objectName = "kadaaraNpc47",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -1076,7 +1076,7 @@ kadaaraNpc47 = Creature:new {
 
 kadaaraNpc48 = Creature:new {
 	objectName = "kadaaraNpc48",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -1098,7 +1098,7 @@ kadaaraNpc48 = Creature:new {
 
 kadaaraNpc49 = Creature:new {
 	objectName = "kadaaraNpc49",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_warrant_officer_ii_hard",
 	combatFlags = 0,
@@ -1120,7 +1120,7 @@ kadaaraNpc49 = Creature:new {
 
 kadaaraNpc50 = Creature:new {
 	objectName = "kadaaraNpc50",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -1142,7 +1142,7 @@ kadaaraNpc50 = Creature:new {
 
 kadaaraNpc51 = Creature:new {
 	objectName = "kadaaraNpc51",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1164,7 +1164,7 @@ kadaaraNpc51 = Creature:new {
 
 kadaaraNpc52 = Creature:new {
 	objectName = "kadaaraNpc52",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1186,7 +1186,7 @@ kadaaraNpc52 = Creature:new {
 
 kadaaraNpc53 = Creature:new {
 	objectName = "kadaaraNpc53",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -1208,7 +1208,7 @@ kadaaraNpc53 = Creature:new {
 
 kadaaraNpc54 = Creature:new {
 	objectName = "kadaaraNpc54",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -1230,7 +1230,7 @@ kadaaraNpc54 = Creature:new {
 
 kadaaraNpc55 = Creature:new {
 	objectName = "kadaaraNpc55",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -1252,7 +1252,7 @@ kadaaraNpc55 = Creature:new {
 
 kadaaraNpc56 = Creature:new {
 	objectName = "kadaaraNpc56",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_squad_leader",
 	combatFlags = 0,
@@ -1274,7 +1274,7 @@ kadaaraNpc56 = Creature:new {
 
 kadaaraNpc57 = Creature:new {
 	objectName = "kadaaraNpc57",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_sniper",
 	combatFlags = 0,
@@ -1296,7 +1296,7 @@ kadaaraNpc57 = Creature:new {
 
 kadaaraNpc58 = Creature:new {
 	objectName = "kadaaraNpc58",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1318,7 +1318,7 @@ kadaaraNpc58 = Creature:new {
 
 kadaaraNpc59 = Creature:new {
 	objectName = "kadaaraNpc59",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1340,7 +1340,7 @@ kadaaraNpc59 = Creature:new {
 
 kadaaraNpc60 = Creature:new {
 	objectName = "kadaaraNpc60",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -1362,7 +1362,7 @@ kadaaraNpc60 = Creature:new {
 
 kadaaraNpc61 = Creature:new {
 	objectName = "kadaaraNpc61",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_corporal",
 	combatFlags = 0,
@@ -1384,7 +1384,7 @@ kadaaraNpc61 = Creature:new {
 
 kadaaraNpc62 = Creature:new {
 	objectName = "kadaaraNpc62",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -1406,7 +1406,7 @@ kadaaraNpc62 = Creature:new {
 
 kadaaraNpc63 = Creature:new {
 	objectName = "kadaaraNpc63",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "coa2_imperial_coordinator",
 	combatFlags = 0,
@@ -1428,7 +1428,7 @@ kadaaraNpc63 = Creature:new {
 
 kadaaraNpc64 = Creature:new {
 	objectName = "kadaaraNpc64",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1450,7 +1450,7 @@ kadaaraNpc64 = Creature:new {
 
 kadaaraNpc66 = Creature:new {
 	objectName = "kadaaraNpc66",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -1472,7 +1472,7 @@ kadaaraNpc66 = Creature:new {
 
 kadaaraNpc67 = Creature:new {
 	objectName = "kadaaraNpc67",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -1494,7 +1494,7 @@ kadaaraNpc67 = Creature:new {
 
 kadaaraNpc68 = Creature:new {
 	objectName = "kadaaraNpc68",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -1516,7 +1516,7 @@ kadaaraNpc68 = Creature:new {
 
 kadaaraNpc69 = Creature:new {
 	objectName = "kadaaraNpc69",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1538,7 +1538,7 @@ kadaaraNpc69 = Creature:new {
 
 kadaaraNpc70 = Creature:new {
 	objectName = "kadaaraNpc70",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_warrant_officer_ii",
 	combatFlags = 0,
@@ -1560,7 +1560,7 @@ kadaaraNpc70 = Creature:new {
 
 kadaaraNpc71 = Creature:new {
 	objectName = "kadaaraNpc71",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "",
 	combatFlags = 0,
@@ -1582,7 +1582,7 @@ kadaaraNpc71 = Creature:new {
 
 kadaaraNpc72 = Creature:new {
 	objectName = "kadaaraNpc72",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1604,7 +1604,7 @@ kadaaraNpc72 = Creature:new {
 
 kadaaraNpc73 = Creature:new {
 	objectName = "kadaaraNpc73",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -1626,7 +1626,7 @@ kadaaraNpc73 = Creature:new {
 
 kadaaraNpc74 = Creature:new {
 	objectName = "kadaaraNpc74",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -1648,7 +1648,7 @@ kadaaraNpc74 = Creature:new {
 
 kadaaraNpc75 = Creature:new {
 	objectName = "kadaaraNpc75",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1670,7 +1670,7 @@ kadaaraNpc75 = Creature:new {
 
 kadaaraNpc76 = Creature:new {
 	objectName = "kadaaraNpc76",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -1692,7 +1692,7 @@ kadaaraNpc76 = Creature:new {
 
 kadaaraNpc77 = Creature:new {
 	objectName = "kadaaraNpc77",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "coa3_information_imperial",
 	combatFlags = 0,
@@ -1714,7 +1714,7 @@ kadaaraNpc77 = Creature:new {
 
 kadaaraNpc78 = Creature:new {
 	objectName = "kadaaraNpc78",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crafting_contractor",
 	combatFlags = 0,
@@ -1736,7 +1736,7 @@ kadaaraNpc78 = Creature:new {
 
 kadaaraNpc79 = Creature:new {
 	objectName = "kadaaraNpc79",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "stormtrooper",
 	combatFlags = 0,
@@ -1758,7 +1758,7 @@ kadaaraNpc79 = Creature:new {
 
 kadaaraNpc81 = Creature:new {
 	objectName = "kadaaraNpc81",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_sharpshooter",
 	combatFlags = 0,
@@ -1780,7 +1780,7 @@ kadaaraNpc81 = Creature:new {
 
 kadaaraNpc82 = Creature:new {
 	objectName = "kadaaraNpc82",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1802,7 +1802,7 @@ kadaaraNpc82 = Creature:new {
 
 kadaaraNpc83 = Creature:new {
 	objectName = "kadaaraNpc83",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "spacer",
 	combatFlags = 0,
@@ -1824,7 +1824,7 @@ kadaaraNpc83 = Creature:new {
 
 kadaaraNpc84 = Creature:new {
 	objectName = "kadaaraNpc84",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_holy_man",
 	combatFlags = 0,
@@ -1846,7 +1846,7 @@ kadaaraNpc84 = Creature:new {
 
 kadaaraNpc85 = Creature:new {
 	objectName = "kadaaraNpc85",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "surgical_droid_21b",
 	combatFlags = 0,
@@ -1868,7 +1868,7 @@ kadaaraNpc85 = Creature:new {
 
 kadaaraNpc86 = Creature:new {
 	objectName = "kadaaraNpc86",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -1890,7 +1890,7 @@ kadaaraNpc86 = Creature:new {
 
 kadaaraNpc87 = Creature:new {
 	objectName = "kadaaraNpc87",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -1912,7 +1912,7 @@ kadaaraNpc87 = Creature:new {
 
 kadaaraNpc88 = Creature:new {
 	objectName = "kadaaraNpc88",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -1934,7 +1934,7 @@ kadaaraNpc88 = Creature:new {
 
 kadaaraNpc90 = Creature:new {
 	objectName = "kadaaraNpc90",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -1956,7 +1956,7 @@ kadaaraNpc90 = Creature:new {
 
 kadaaraNpc92 = Creature:new {
 	objectName = "kadaaraNpc92",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1978,7 +1978,7 @@ kadaaraNpc92 = Creature:new {
 
 kadaaraNpc93 = Creature:new {
 	objectName = "kadaaraNpc93",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_guard",
 	combatFlags = 0,
@@ -2000,7 +2000,7 @@ kadaaraNpc93 = Creature:new {
 
 kadaaraNpc94 = Creature:new {
 	objectName = "kadaaraNpc94",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_noncom",
 	combatFlags = 0,
@@ -2022,7 +2022,7 @@ kadaaraNpc94 = Creature:new {
 
 kadaaraNpc95 = Creature:new {
 	objectName = "kadaaraNpc95",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -2044,7 +2044,7 @@ kadaaraNpc95 = Creature:new {
 
 kadaaraNpc96 = Creature:new {
 	objectName = "kadaaraNpc96",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_sniper",
 	combatFlags = 0,
@@ -2066,7 +2066,7 @@ kadaaraNpc96 = Creature:new {
 
 kadaaraNpc99 = Creature:new {
 	objectName = "kadaaraNpc99",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2088,7 +2088,7 @@ kadaaraNpc99 = Creature:new {
 
 kadaaraNpc100 = Creature:new {
 	objectName = "kadaaraNpc100",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "itp_emperor_imperial_tech",
 	combatFlags = 0,
@@ -2110,7 +2110,7 @@ kadaaraNpc100 = Creature:new {
 
 kadaaraNpc101 = Creature:new {
 	objectName = "kadaaraNpc101",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_master_sergeant",
 	combatFlags = 0,
@@ -2132,7 +2132,7 @@ kadaaraNpc101 = Creature:new {
 
 kadaaraNpc102 = Creature:new {
 	objectName = "kadaaraNpc102",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_sergeant",
 	combatFlags = 0,
@@ -2154,7 +2154,7 @@ kadaaraNpc102 = Creature:new {
 
 kadaaraNpc103 = Creature:new {
 	objectName = "kadaaraNpc103",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2176,7 +2176,7 @@ kadaaraNpc103 = Creature:new {
 
 kadaaraNpc104 = Creature:new {
 	objectName = "kadaaraNpc104",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2198,7 +2198,7 @@ kadaaraNpc104 = Creature:new {
 
 kadaaraNpc105 = Creature:new {
 	objectName = "kadaaraNpc105",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2220,7 +2220,7 @@ kadaaraNpc105 = Creature:new {
 
 kadaaraNpc106 = Creature:new {
 	objectName = "kadaaraNpc106",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -2242,7 +2242,7 @@ kadaaraNpc106 = Creature:new {
 
 kadaaraNpc107 = Creature:new {
 	objectName = "kadaaraNpc107",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -2264,7 +2264,7 @@ kadaaraNpc107 = Creature:new {
 
 kadaaraNpc108 = Creature:new {
 	objectName = "kadaaraNpc108",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -2286,7 +2286,7 @@ kadaaraNpc108 = Creature:new {
 
 kadaaraNpc109 = Creature:new {
 	objectName = "kadaaraNpc109",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -2308,7 +2308,7 @@ kadaaraNpc109 = Creature:new {
 
 kadaaraNpc110 = Creature:new {
 	objectName = "kadaaraNpc110",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2330,7 +2330,7 @@ kadaaraNpc110 = Creature:new {
 
 kadaaraNpc112 = Creature:new {
 	objectName = "kadaaraNpc112",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -2352,7 +2352,7 @@ kadaaraNpc112 = Creature:new {
 
 kadaaraNpc113 = Creature:new {
 	objectName = "kadaaraNpc113",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2374,7 +2374,7 @@ kadaaraNpc113 = Creature:new {
 
 kadaaraNpc114 = Creature:new {
 	objectName = "kadaaraNpc114",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "hunter",
 	combatFlags = 0,
@@ -2396,7 +2396,7 @@ kadaaraNpc114 = Creature:new {
 
 kadaaraNpc115 = Creature:new {
 	objectName = "kadaaraNpc115",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -2418,7 +2418,7 @@ kadaaraNpc115 = Creature:new {
 
 kadaaraNpc116 = Creature:new {
 	objectName = "kadaaraNpc116",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "coa3_tactical_imperial",
 	combatFlags = 0,
@@ -2440,7 +2440,7 @@ kadaaraNpc116 = Creature:new {
 
 kadaaraNpc117 = Creature:new {
 	objectName = "kadaaraNpc117",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2462,7 +2462,7 @@ kadaaraNpc117 = Creature:new {
 
 kadaaraNpc118 = Creature:new {
 	objectName = "kadaaraNpc118",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2484,7 +2484,7 @@ kadaaraNpc118 = Creature:new {
 
 kadaaraNpc119 = Creature:new {
 	objectName = "kadaaraNpc119",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -2506,7 +2506,7 @@ kadaaraNpc119 = Creature:new {
 
 kadaaraNpc120 = Creature:new {
 	objectName = "kadaaraNpc120",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_corporal",
 	combatFlags = 0,
@@ -2528,7 +2528,7 @@ kadaaraNpc120 = Creature:new {
 
 kadaaraNpc121 = Creature:new {
 	objectName = "kadaaraNpc121",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -2550,7 +2550,7 @@ kadaaraNpc121 = Creature:new {
 
 kadaaraNpc122 = Creature:new {
 	objectName = "kadaaraNpc122",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2572,7 +2572,7 @@ kadaaraNpc122 = Creature:new {
 
 kadaaraNpc123 = Creature:new {
 	objectName = "kadaaraNpc123",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2594,7 +2594,7 @@ kadaaraNpc123 = Creature:new {
 
 kadaaraNpc124 = Creature:new {
 	objectName = "kadaaraNpc124",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2616,7 +2616,7 @@ kadaaraNpc124 = Creature:new {
 
 kadaaraNpc125 = Creature:new {
 	objectName = "kadaaraNpc125",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_swamp_trooper",
 	combatFlags = 0,
@@ -2638,7 +2638,7 @@ kadaaraNpc125 = Creature:new {
 
 kadaaraNpc126 = Creature:new {
 	objectName = "kadaaraNpc126",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -2660,7 +2660,7 @@ kadaaraNpc126 = Creature:new {
 
 kadaaraNpc127 = Creature:new {
 	objectName = "kadaaraNpc127",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_sergeant",
 	combatFlags = 0,
@@ -2682,7 +2682,7 @@ kadaaraNpc127 = Creature:new {
 
 kadaaraNpc128 = Creature:new {
 	objectName = "kadaaraNpc128",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -2704,7 +2704,7 @@ kadaaraNpc128 = Creature:new {
 
 kadaaraNpc129 = Creature:new {
 	objectName = "kadaaraNpc129",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_imperial_corporal",
 	combatFlags = 0,
@@ -2726,7 +2726,7 @@ kadaaraNpc129 = Creature:new {
 
 kadaaraNpc130 = Creature:new {
 	objectName = "kadaaraNpc130",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r4",
 	combatFlags = 0,
@@ -2748,7 +2748,7 @@ kadaaraNpc130 = Creature:new {
 
 kadaaraNpc131 = Creature:new {
 	objectName = "kadaaraNpc131",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r3",
 	combatFlags = 0,
@@ -2770,7 +2770,7 @@ kadaaraNpc131 = Creature:new {
 
 kadaaraNpc132 = Creature:new {
 	objectName = "kadaaraNpc132",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -2792,7 +2792,7 @@ kadaaraNpc132 = Creature:new {
 
 kadaaraNpc133 = Creature:new {
 	objectName = "kadaaraNpc133",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -2814,7 +2814,7 @@ kadaaraNpc133 = Creature:new {
 
 kadaaraNpc134 = Creature:new {
 	objectName = "kadaaraNpc134",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -2836,7 +2836,7 @@ kadaaraNpc134 = Creature:new {
 
 kadaaraNpc135 = Creature:new {
 	objectName = "kadaaraNpc135",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -2858,7 +2858,7 @@ kadaaraNpc135 = Creature:new {
 
 kadaaraNpc136 = Creature:new {
 	objectName = "kadaaraNpc136",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2880,7 +2880,7 @@ kadaaraNpc136 = Creature:new {
 
 kadaaraNpc137 = Creature:new {
 	objectName = "kadaaraNpc137",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -2902,7 +2902,7 @@ kadaaraNpc137 = Creature:new {
 
 kadaaraNpc138 = Creature:new {
 	objectName = "kadaaraNpc138",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -2924,7 +2924,7 @@ kadaaraNpc138 = Creature:new {
 
 kadaaraNpc139 = Creature:new {
 	objectName = "kadaaraNpc139",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2946,7 +2946,7 @@ kadaaraNpc139 = Creature:new {
 
 kadaaraNpc140 = Creature:new {
 	objectName = "kadaaraNpc140",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -2968,7 +2968,7 @@ kadaaraNpc140 = Creature:new {
 
 kadaaraNpc141 = Creature:new {
 	objectName = "kadaaraNpc141",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bartender",
 	combatFlags = 0,
@@ -2990,7 +2990,7 @@ kadaaraNpc141 = Creature:new {
 
 kadaaraNpc143 = Creature:new {
 	objectName = "kadaaraNpc143",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -3012,7 +3012,7 @@ kadaaraNpc143 = Creature:new {
 
 kadaaraNpc144 = Creature:new {
 	objectName = "kadaaraNpc144",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -3034,7 +3034,7 @@ kadaaraNpc144 = Creature:new {
 
 kadaaraNpc145 = Creature:new {
 	objectName = "kadaaraNpc145",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -3056,7 +3056,7 @@ kadaaraNpc145 = Creature:new {
 
 kadaaraNpc146 = Creature:new {
 	objectName = "kadaaraNpc146",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3078,7 +3078,7 @@ kadaaraNpc146 = Creature:new {
 
 kadaaraNpc147 = Creature:new {
 	objectName = "kadaaraNpc147",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -3100,7 +3100,7 @@ kadaaraNpc147 = Creature:new {
 
 kadaaraNpc148 = Creature:new {
 	objectName = "kadaaraNpc148",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -3122,7 +3122,7 @@ kadaaraNpc148 = Creature:new {
 
 kadaaraNpc149 = Creature:new {
 	objectName = "kadaaraNpc149",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -3144,7 +3144,7 @@ kadaaraNpc149 = Creature:new {
 
 kadaaraNpc150 = Creature:new {
 	objectName = "kadaaraNpc150",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -3166,7 +3166,7 @@ kadaaraNpc150 = Creature:new {
 
 kadaaraNpc151 = Creature:new {
 	objectName = "kadaaraNpc151",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -3188,7 +3188,7 @@ kadaaraNpc151 = Creature:new {
 
 kadaaraNpc152 = Creature:new {
 	objectName = "kadaaraNpc152",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -3210,7 +3210,7 @@ kadaaraNpc152 = Creature:new {
 
 kadaaraNpc153 = Creature:new {
 	objectName = "kadaaraNpc153",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -3232,7 +3232,7 @@ kadaaraNpc153 = Creature:new {
 
 kadaaraNpc154 = Creature:new {
 	objectName = "kadaaraNpc154",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -3254,7 +3254,7 @@ kadaaraNpc154 = Creature:new {
 
 kadaaraNpc155 = Creature:new {
 	objectName = "kadaaraNpc155",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "plasma_thief",
 	combatFlags = 0,
@@ -3276,7 +3276,7 @@ kadaaraNpc155 = Creature:new {
 
 kadaaraNpc156 = Creature:new {
 	objectName = "kadaaraNpc156",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "plasma_thief",
 	combatFlags = 0,
@@ -3298,7 +3298,7 @@ kadaaraNpc156 = Creature:new {
 
 kadaaraNpc157 = Creature:new {
 	objectName = "kadaaraNpc157",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "plasma_thief",
 	combatFlags = 0,
@@ -3320,7 +3320,7 @@ kadaaraNpc157 = Creature:new {
 
 kadaaraNpc159 = Creature:new {
 	objectName = "kadaaraNpc159",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3342,7 +3342,7 @@ kadaaraNpc159 = Creature:new {
 
 kadaaraNpc160 = Creature:new {
 	objectName = "kadaaraNpc160",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -3364,7 +3364,7 @@ kadaaraNpc160 = Creature:new {
 
 kadaaraNpc161 = Creature:new {
 	objectName = "kadaaraNpc161",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3386,7 +3386,7 @@ kadaaraNpc161 = Creature:new {
 
 kadaaraNpc162 = Creature:new {
 	objectName = "kadaaraNpc162",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -3408,7 +3408,7 @@ kadaaraNpc162 = Creature:new {
 
 kadaaraNpc163 = Creature:new {
 	objectName = "kadaaraNpc163",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -3430,7 +3430,7 @@ kadaaraNpc163 = Creature:new {
 
 kadaaraNpc164 = Creature:new {
 	objectName = "kadaaraNpc164",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -3452,7 +3452,7 @@ kadaaraNpc164 = Creature:new {
 
 kadaaraNpc167 = Creature:new {
 	objectName = "kadaaraNpc167",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -3474,7 +3474,7 @@ kadaaraNpc167 = Creature:new {
 
 kadaaraNpc168 = Creature:new {
 	objectName = "kadaaraNpc168",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -3496,7 +3496,7 @@ kadaaraNpc168 = Creature:new {
 
 kadaaraNpc169 = Creature:new {
 	objectName = "kadaaraNpc169",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -3518,7 +3518,7 @@ kadaaraNpc169 = Creature:new {
 
 kadaaraNpc170 = Creature:new {
 	objectName = "kadaaraNpc170",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -3540,7 +3540,7 @@ kadaaraNpc170 = Creature:new {
 
 kadaaraNpc171 = Creature:new {
 	objectName = "kadaaraNpc171",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -3562,7 +3562,7 @@ kadaaraNpc171 = Creature:new {
 
 kadaaraNpc173 = Creature:new {
 	objectName = "kadaaraNpc173",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -3584,7 +3584,7 @@ kadaaraNpc173 = Creature:new {
 
 kadaaraNpc174 = Creature:new {
 	objectName = "kadaaraNpc174",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -3606,7 +3606,7 @@ kadaaraNpc174 = Creature:new {
 
 kadaaraNpc175 = Creature:new {
 	objectName = "kadaaraNpc175",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -3628,7 +3628,7 @@ kadaaraNpc175 = Creature:new {
 
 kadaaraNpc176 = Creature:new {
 	objectName = "kadaaraNpc176",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -3650,7 +3650,7 @@ kadaaraNpc176 = Creature:new {
 
 kadaaraNpc177 = Creature:new {
 	objectName = "kadaaraNpc177",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nightspider",
 	combatFlags = 0,
@@ -3672,7 +3672,7 @@ kadaaraNpc177 = Creature:new {
 
 kadaaraNpc181 = Creature:new {
 	objectName = "kadaaraNpc181",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -3694,7 +3694,7 @@ kadaaraNpc181 = Creature:new {
 
 kadaaraNpc182 = Creature:new {
 	objectName = "kadaaraNpc182",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -3716,7 +3716,7 @@ kadaaraNpc182 = Creature:new {
 
 kadaaraNpc183 = Creature:new {
 	objectName = "kadaaraNpc183",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -3738,7 +3738,7 @@ kadaaraNpc183 = Creature:new {
 
 kadaaraNpc184 = Creature:new {
 	objectName = "kadaaraNpc184",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -3760,7 +3760,7 @@ kadaaraNpc184 = Creature:new {
 
 kadaaraNpc185 = Creature:new {
 	objectName = "kadaaraNpc185",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -3782,7 +3782,7 @@ kadaaraNpc185 = Creature:new {
 
 kadaaraNpc186 = Creature:new {
 	objectName = "kadaaraNpc186",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -3804,7 +3804,7 @@ kadaaraNpc186 = Creature:new {
 
 kadaaraNpc192 = Creature:new {
 	objectName = "kadaaraNpc192",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -3826,7 +3826,7 @@ kadaaraNpc192 = Creature:new {
 
 kadaaraNpc193 = Creature:new {
 	objectName = "kadaaraNpc193",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -3848,7 +3848,7 @@ kadaaraNpc193 = Creature:new {
 
 kadaaraNpc194 = Creature:new {
 	objectName = "kadaaraNpc194",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -3870,7 +3870,7 @@ kadaaraNpc194 = Creature:new {
 
 kadaaraNpc195 = Creature:new {
 	objectName = "kadaaraNpc195",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -3892,7 +3892,7 @@ kadaaraNpc195 = Creature:new {
 
 kadaaraNpc196 = Creature:new {
 	objectName = "kadaaraNpc196",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -3914,7 +3914,7 @@ kadaaraNpc196 = Creature:new {
 
 kadaaraNpc197 = Creature:new {
 	objectName = "kadaaraNpc197",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -3936,7 +3936,7 @@ kadaaraNpc197 = Creature:new {
 
 kadaaraNpc198 = Creature:new {
 	objectName = "kadaaraNpc198",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -3958,7 +3958,7 @@ kadaaraNpc198 = Creature:new {
 
 kadaaraNpc199 = Creature:new {
 	objectName = "kadaaraNpc199",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -3980,7 +3980,7 @@ kadaaraNpc199 = Creature:new {
 
 kadaaraNpc200 = Creature:new {
 	objectName = "kadaaraNpc200",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -4002,7 +4002,7 @@ kadaaraNpc200 = Creature:new {
 
 kadaaraNpc201 = Creature:new {
 	objectName = "kadaaraNpc201",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -4024,7 +4024,7 @@ kadaaraNpc201 = Creature:new {
 
 kadaaraNpc202 = Creature:new {
 	objectName = "kadaaraNpc202",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4046,7 +4046,7 @@ kadaaraNpc202 = Creature:new {
 
 kadaaraNpc203 = Creature:new {
 	objectName = "kadaaraNpc203",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -4068,7 +4068,7 @@ kadaaraNpc203 = Creature:new {
 
 kadaaraNpc204 = Creature:new {
 	objectName = "kadaaraNpc204",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -4090,7 +4090,7 @@ kadaaraNpc204 = Creature:new {
 
 kadaaraNpc205 = Creature:new {
 	objectName = "kadaaraNpc205",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -4112,7 +4112,7 @@ kadaaraNpc205 = Creature:new {
 
 kadaaraNpc206 = Creature:new {
 	objectName = "kadaaraNpc206",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_thug",
 	combatFlags = 0,
@@ -4134,7 +4134,7 @@ kadaaraNpc206 = Creature:new {
 
 kadaaraNpc207 = Creature:new {
 	objectName = "kadaaraNpc207",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_thug",
 	combatFlags = 0,
@@ -4156,7 +4156,7 @@ kadaaraNpc207 = Creature:new {
 
 kadaaraNpc208 = Creature:new {
 	objectName = "kadaaraNpc208",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_thug",
 	combatFlags = 0,
@@ -4178,7 +4178,7 @@ kadaaraNpc208 = Creature:new {
 
 kadaaraNpc210 = Creature:new {
 	objectName = "kadaaraNpc210",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "criminal",
 	combatFlags = 0,
@@ -4200,7 +4200,7 @@ kadaaraNpc210 = Creature:new {
 
 kadaaraNpc211 = Creature:new {
 	objectName = "kadaaraNpc211",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -4222,7 +4222,7 @@ kadaaraNpc211 = Creature:new {
 
 kadaaraNpc212 = Creature:new {
 	objectName = "kadaaraNpc212",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -4244,7 +4244,7 @@ kadaaraNpc212 = Creature:new {
 
 kadaaraNpc213 = Creature:new {
 	objectName = "kadaaraNpc213",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -4266,7 +4266,7 @@ kadaaraNpc213 = Creature:new {
 
 kadaaraNpc214 = Creature:new {
 	objectName = "kadaaraNpc214",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -4288,7 +4288,7 @@ kadaaraNpc214 = Creature:new {
 
 kadaaraNpc216 = Creature:new {
 	objectName = "kadaaraNpc216",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -4310,7 +4310,7 @@ kadaaraNpc216 = Creature:new {
 
 kadaaraNpc217 = Creature:new {
 	objectName = "kadaaraNpc217",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -4332,7 +4332,7 @@ kadaaraNpc217 = Creature:new {
 
 kadaaraNpc218 = Creature:new {
 	objectName = "kadaaraNpc218",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -4354,7 +4354,7 @@ kadaaraNpc218 = Creature:new {
 
 kadaaraNpc219 = Creature:new {
 	objectName = "kadaaraNpc219",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_thug",
 	combatFlags = 0,
@@ -4376,7 +4376,7 @@ kadaaraNpc219 = Creature:new {
 
 kadaaraNpc220 = Creature:new {
 	objectName = "kadaaraNpc220",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_punk",
 	combatFlags = 0,
@@ -4398,7 +4398,7 @@ kadaaraNpc220 = Creature:new {
 
 kadaaraNpc221 = Creature:new {
 	objectName = "kadaaraNpc221",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_punk",
 	combatFlags = 0,
@@ -4420,7 +4420,7 @@ kadaaraNpc221 = Creature:new {
 
 kadaaraNpc222 = Creature:new {
 	objectName = "kadaaraNpc222",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -4442,7 +4442,7 @@ kadaaraNpc222 = Creature:new {
 
 kadaaraNpc223 = Creature:new {
 	objectName = "kadaaraNpc223",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -4464,7 +4464,7 @@ kadaaraNpc223 = Creature:new {
 
 kadaaraNpc224 = Creature:new {
 	objectName = "kadaaraNpc224",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -4486,7 +4486,7 @@ kadaaraNpc224 = Creature:new {
 
 kadaaraNpc225 = Creature:new {
 	objectName = "kadaaraNpc225",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -4508,7 +4508,7 @@ kadaaraNpc225 = Creature:new {
 
 kadaaraNpc226 = Creature:new {
 	objectName = "kadaaraNpc226",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mummer_bully",
 	combatFlags = 0,
@@ -4530,7 +4530,7 @@ kadaaraNpc226 = Creature:new {
 
 kadaaraNpc227 = Creature:new {
 	objectName = "kadaaraNpc227",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -4552,7 +4552,7 @@ kadaaraNpc227 = Creature:new {
 
 kadaaraNpc228 = Creature:new {
 	objectName = "kadaaraNpc228",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -4574,7 +4574,7 @@ kadaaraNpc228 = Creature:new {
 
 kadaaraNpc229 = Creature:new {
 	objectName = "kadaaraNpc229",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4596,7 +4596,7 @@ kadaaraNpc229 = Creature:new {
 
 kadaaraNpc230 = Creature:new {
 	objectName = "kadaaraNpc230",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_hermit",
 	combatFlags = 0,
@@ -4618,7 +4618,7 @@ kadaaraNpc230 = Creature:new {
 
 kadaaraNpc231 = Creature:new {
 	objectName = "kadaaraNpc231",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_pilot",
 	combatFlags = 0,
@@ -4640,7 +4640,7 @@ kadaaraNpc231 = Creature:new {
 
 kadaaraNpc232 = Creature:new {
 	objectName = "kadaaraNpc232",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "barn_sinkko",
 	combatFlags = 0,
@@ -4662,7 +4662,7 @@ kadaaraNpc232 = Creature:new {
 
 kadaaraNpc233 = Creature:new {
 	objectName = "kadaaraNpc233",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,
@@ -4684,7 +4684,7 @@ kadaaraNpc233 = Creature:new {
 
 kadaaraNpc234 = Creature:new {
 	objectName = "kadaaraNpc234",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -4706,7 +4706,7 @@ kadaaraNpc234 = Creature:new {
 
 kadaaraNpc235 = Creature:new {
 	objectName = "kadaaraNpc235",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "thug",
 	combatFlags = 0,

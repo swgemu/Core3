@@ -623,6 +623,8 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 
 		String faction = result.getStringField("faction");
 
+		String creatureType = result.getStringField("creatureType");
+
 		creature->setFaction(faction.hashCode());
 
 		creature->setFPValue(result.getIntField("factionPoints"));
@@ -637,6 +639,11 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 		else
 			creature->setCharacterName(UnicodeString(makeCreatureName(name)));
 
+		if (!creatureType.isEmpty()) {
+			creature->setCreatureType(creatureType);
+		} else {
+			creature->setCreatureType("NPC");
+		}
 		creature->setTerrainName(Terrain::getTerrainName(getZone()->getZoneID()));
 
 		setCreatureAttributes(creature, &result);

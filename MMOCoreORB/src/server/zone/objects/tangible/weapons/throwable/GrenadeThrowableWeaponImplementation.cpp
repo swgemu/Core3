@@ -170,12 +170,11 @@ int GrenadeThrowableWeaponImplementation::useObject(Player* player) {
 		return 0;
 	}
 
-	/*
-	 * Moved to skill
+
 	 if (!player->hasCooldownExpired(getSkill())) {
 		player->sendSystemMessage("This grenade is not ready to be used again");
 		return 0;
-	}*/
+	}
 
 	if (!player->isInRange(target,getRange())) {
 		player->sendSystemMessage("Your target is too far away.");

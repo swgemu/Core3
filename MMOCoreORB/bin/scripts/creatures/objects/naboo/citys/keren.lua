@@ -42,7 +42,7 @@
 
 kerenNpc1 = Creature:new {
 	objectName = "kerenNpc1",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -64,7 +64,7 @@ kerenNpc1 = Creature:new {
 
 kerenNpc2 = Creature:new {
 	objectName = "kerenNpc2",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -86,7 +86,7 @@ kerenNpc2 = Creature:new {
 
 kerenNpc3 = Creature:new {
 	objectName = "kerenNpc3",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -108,7 +108,7 @@ kerenNpc3 = Creature:new {
 
 kerenNpc4 = Creature:new {
 	objectName = "kerenNpc4",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -130,7 +130,7 @@ kerenNpc4 = Creature:new {
 
 kerenNpc5 = Creature:new {
 	objectName = "kerenNpc5",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -152,7 +152,7 @@ kerenNpc5 = Creature:new {
 
 kerenNpc6 = Creature:new {
 	objectName = "kerenNpc6",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_female",
 	combatFlags = 0,
@@ -174,7 +174,7 @@ kerenNpc6 = Creature:new {
 
 kerenNpc7 = Creature:new {
 	objectName = "kerenNpc7",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "plainsfolk",
 	combatFlags = 0,
@@ -196,7 +196,7 @@ kerenNpc7 = Creature:new {
 
 kerenNpc8 = Creature:new {
 	objectName = "kerenNpc8",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "spacer",
 	combatFlags = 0,
@@ -218,7 +218,7 @@ kerenNpc8 = Creature:new {
 
 kerenNpc9 = Creature:new {
 	objectName = "kerenNpc9",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer",
 	combatFlags = 0,
@@ -240,7 +240,7 @@ kerenNpc9 = Creature:new {
 
 kerenNpc10 = Creature:new {
 	objectName = "kerenNpc10",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -262,7 +262,7 @@ kerenNpc10 = Creature:new {
 
 kerenNpc11 = Creature:new {
 	objectName = "kerenNpc11",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_pilot",
 	combatFlags = 0,
@@ -284,7 +284,7 @@ kerenNpc11 = Creature:new {
 
 kerenNpc12 = Creature:new {
 	objectName = "kerenNpc12",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -306,7 +306,7 @@ kerenNpc12 = Creature:new {
 
 kerenNpc13 = Creature:new {
 	objectName = "kerenNpc13",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -328,7 +328,7 @@ kerenNpc13 = Creature:new {
 
 kerenNpc14 = Creature:new {
 	objectName = "kerenNpc14",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "swamp_villager",
 	combatFlags = 0,
@@ -350,7 +350,7 @@ kerenNpc14 = Creature:new {
 
 kerenNpc15 = Creature:new {
 	objectName = "kerenNpc15",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "smuggler",
 	combatFlags = 0,
@@ -372,7 +372,7 @@ kerenNpc15 = Creature:new {
 
 kerenNpc16 = Creature:new {
 	objectName = "kerenNpc16",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -394,7 +394,7 @@ kerenNpc16 = Creature:new {
 
 kerenNpc17 = Creature:new {
 	objectName = "kerenNpc17",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -416,7 +416,7 @@ kerenNpc17 = Creature:new {
 
 kerenNpc18 = Creature:new {
 	objectName = "kerenNpc18",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -438,7 +438,7 @@ kerenNpc18 = Creature:new {
 
 kerenNpc19 = Creature:new {
 	objectName = "kerenNpc19",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -460,7 +460,7 @@ kerenNpc19 = Creature:new {
 
 kerenNpc20 = Creature:new {
 	objectName = "kerenNpc20",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -482,7 +482,7 @@ kerenNpc20 = Creature:new {
 
 kerenNpc21 = Creature:new {
 	objectName = "kerenNpc21",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "protocol_droid_3po",
 	combatFlags = 0,
@@ -504,7 +504,7 @@ kerenNpc21 = Creature:new {
 
 kerenNpc22 = Creature:new {
 	objectName = "kerenNpc22",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -526,7 +526,7 @@ kerenNpc22 = Creature:new {
 
 kerenNpc23 = Creature:new {
 	objectName = "kerenNpc23",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "stormtrooper",
 	combatFlags = 0,
@@ -548,7 +548,7 @@ kerenNpc23 = Creature:new {
 
 kerenNpc24 = Creature:new {
 	objectName = "kerenNpc24",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -570,7 +570,7 @@ kerenNpc24 = Creature:new {
 
 kerenNpc25 = Creature:new {
 	objectName = "kerenNpc25",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -592,7 +592,7 @@ kerenNpc25 = Creature:new {
 
 kerenNpc26 = Creature:new {
 	objectName = "kerenNpc26",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -614,7 +614,7 @@ kerenNpc26 = Creature:new {
 
 kerenNpc27 = Creature:new {
 	objectName = "kerenNpc27",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -636,7 +636,7 @@ kerenNpc27 = Creature:new {
 
 kerenNpc28 = Creature:new {
 	objectName = "kerenNpc28",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -658,7 +658,7 @@ kerenNpc28 = Creature:new {
 
 kerenNpc29 = Creature:new {
 	objectName = "kerenNpc29",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "medic",
 	combatFlags = 0,
@@ -680,7 +680,7 @@ kerenNpc29 = Creature:new {
 
 kerenNpc30 = Creature:new {
 	objectName = "kerenNpc30",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -702,7 +702,7 @@ kerenNpc30 = Creature:new {
 
 kerenNpc31 = Creature:new {
 	objectName = "kerenNpc31",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -724,7 +724,7 @@ kerenNpc31 = Creature:new {
 
 kerenNpc32 = Creature:new {
 	objectName = "kerenNpc32",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -746,7 +746,7 @@ kerenNpc32 = Creature:new {
 
 kerenNpc33 = Creature:new {
 	objectName = "kerenNpc33",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -768,7 +768,7 @@ kerenNpc33 = Creature:new {
 
 kerenNpc34 = Creature:new {
 	objectName = "kerenNpc34",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -790,7 +790,7 @@ kerenNpc34 = Creature:new {
 
 kerenNpc35 = Creature:new {
 	objectName = "kerenNpc35",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -812,7 +812,7 @@ kerenNpc35 = Creature:new {
 
 kerenNpc36 = Creature:new {
 	objectName = "kerenNpc36",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -834,7 +834,7 @@ kerenNpc36 = Creature:new {
 
 kerenNpc37 = Creature:new {
 	objectName = "kerenNpc37",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -856,7 +856,7 @@ kerenNpc37 = Creature:new {
 
 kerenNpc38 = Creature:new {
 	objectName = "kerenNpc38",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -878,7 +878,7 @@ kerenNpc38 = Creature:new {
 
 kerenNpc39 = Creature:new {
 	objectName = "kerenNpc39",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -900,7 +900,7 @@ kerenNpc39 = Creature:new {
 
 kerenNpc40 = Creature:new {
 	objectName = "kerenNpc40",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -922,7 +922,7 @@ kerenNpc40 = Creature:new {
 
 kerenNpc41 = Creature:new {
 	objectName = "kerenNpc41",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -944,7 +944,7 @@ kerenNpc41 = Creature:new {
 
 kerenNpc42 = Creature:new {
 	objectName = "kerenNpc42",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -966,7 +966,7 @@ kerenNpc42 = Creature:new {
 
 kerenNpc43 = Creature:new {
 	objectName = "kerenNpc43",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nightspider",
 	combatFlags = 0,
@@ -988,7 +988,7 @@ kerenNpc43 = Creature:new {
 
 kerenNpc44 = Creature:new {
 	objectName = "kerenNpc44",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -1010,7 +1010,7 @@ kerenNpc44 = Creature:new {
 
 kerenNpc45 = Creature:new {
 	objectName = "kerenNpc45",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -1032,7 +1032,7 @@ kerenNpc45 = Creature:new {
 
 kerenNpc46 = Creature:new {
 	objectName = "kerenNpc46",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nightspider",
 	combatFlags = 0,
@@ -1054,7 +1054,7 @@ kerenNpc46 = Creature:new {
 
 kerenNpc47 = Creature:new {
 	objectName = "kerenNpc47",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -1076,7 +1076,7 @@ kerenNpc47 = Creature:new {
 
 kerenNpc48 = Creature:new {
 	objectName = "kerenNpc48",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -1098,7 +1098,7 @@ kerenNpc48 = Creature:new {
 
 kerenNpc49 = Creature:new {
 	objectName = "kerenNpc49",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -1120,7 +1120,7 @@ kerenNpc49 = Creature:new {
 
 kerenNpc50 = Creature:new {
 	objectName = "kerenNpc50",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1142,7 +1142,7 @@ kerenNpc50 = Creature:new {
 
 kerenNpc51 = Creature:new {
 	objectName = "kerenNpc51",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "quest_gadget_specialist",
 	combatFlags = 0,
@@ -1164,7 +1164,7 @@ kerenNpc51 = Creature:new {
 
 kerenNpc52 = Creature:new {
 	objectName = "kerenNpc52",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -1186,7 +1186,7 @@ kerenNpc52 = Creature:new {
 
 kerenNpc53 = Creature:new {
 	objectName = "kerenNpc53",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -1208,7 +1208,7 @@ kerenNpc53 = Creature:new {
 
 kerenNpc54 = Creature:new {
 	objectName = "kerenNpc54",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -1230,7 +1230,7 @@ kerenNpc54 = Creature:new {
 
 kerenNpc55 = Creature:new {
 	objectName = "kerenNpc55",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -1252,7 +1252,7 @@ kerenNpc55 = Creature:new {
 
 kerenNpc56 = Creature:new {
 	objectName = "kerenNpc56",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -1274,7 +1274,7 @@ kerenNpc56 = Creature:new {
 
 kerenNpc57 = Creature:new {
 	objectName = "kerenNpc57",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -1296,7 +1296,7 @@ kerenNpc57 = Creature:new {
 
 kerenNpc58 = Creature:new {
 	objectName = "kerenNpc58",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -1318,7 +1318,7 @@ kerenNpc58 = Creature:new {
 
 kerenNpc59 = Creature:new {
 	objectName = "kerenNpc59",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -1340,7 +1340,7 @@ kerenNpc59 = Creature:new {
 
 kerenNpc60 = Creature:new {
 	objectName = "kerenNpc60",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -1362,7 +1362,7 @@ kerenNpc60 = Creature:new {
 
 kerenNpc61 = Creature:new {
 	objectName = "kerenNpc61",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1384,7 +1384,7 @@ kerenNpc61 = Creature:new {
 
 kerenNpc62 = Creature:new {
 	objectName = "kerenNpc62",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -1406,7 +1406,7 @@ kerenNpc62 = Creature:new {
 
 kerenNpc63 = Creature:new {
 	objectName = "kerenNpc63",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -1428,7 +1428,7 @@ kerenNpc63 = Creature:new {
 
 kerenNpc64 = Creature:new {
 	objectName = "kerenNpc64",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -1450,7 +1450,7 @@ kerenNpc64 = Creature:new {
 
 kerenNpc65 = Creature:new {
 	objectName = "kerenNpc65",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -1472,7 +1472,7 @@ kerenNpc65 = Creature:new {
 
 kerenNpc66 = Creature:new {
 	objectName = "kerenNpc66",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -1494,7 +1494,7 @@ kerenNpc66 = Creature:new {
 
 kerenNpc67 = Creature:new {
 	objectName = "kerenNpc67",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -1516,7 +1516,7 @@ kerenNpc67 = Creature:new {
 
 kerenNpc68 = Creature:new {
 	objectName = "kerenNpc68",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -1538,7 +1538,7 @@ kerenNpc68 = Creature:new {
 
 kerenNpc69 = Creature:new {
 	objectName = "kerenNpc69",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -1560,7 +1560,7 @@ kerenNpc69 = Creature:new {
 
 kerenNpc70 = Creature:new {
 	objectName = "kerenNpc70",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -1582,7 +1582,7 @@ kerenNpc70 = Creature:new {
 
 kerenNpc71 = Creature:new {
 	objectName = "kerenNpc71",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -1604,7 +1604,7 @@ kerenNpc71 = Creature:new {
 
 kerenNpc72 = Creature:new {
 	objectName = "kerenNpc72",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -1626,7 +1626,7 @@ kerenNpc72 = Creature:new {
 
 kerenNpc73 = Creature:new {
 	objectName = "kerenNpc73",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -1648,7 +1648,7 @@ kerenNpc73 = Creature:new {
 
 kerenNpc74 = Creature:new {
 	objectName = "kerenNpc74",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -1670,7 +1670,7 @@ kerenNpc74 = Creature:new {
 
 kerenNpc75 = Creature:new {
 	objectName = "kerenNpc75",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nightspider",
 	combatFlags = 0,
@@ -1692,7 +1692,7 @@ kerenNpc75 = Creature:new {
 
 kerenNpc76 = Creature:new {
 	objectName = "kerenNpc76",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nightspider",
 	combatFlags = 0,
@@ -1714,7 +1714,7 @@ kerenNpc76 = Creature:new {
 
 kerenNpc77 = Creature:new {
 	objectName = "kerenNpc77",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nightspider",
 	combatFlags = 0,
@@ -1736,7 +1736,7 @@ kerenNpc77 = Creature:new {
 
 kerenNpc78 = Creature:new {
 	objectName = "kerenNpc78",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nightspider",
 	combatFlags = 0,
@@ -1758,7 +1758,7 @@ kerenNpc78 = Creature:new {
 
 kerenNpc79 = Creature:new {
 	objectName = "kerenNpc79",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -1780,7 +1780,7 @@ kerenNpc79 = Creature:new {
 
 kerenNpc80 = Creature:new {
 	objectName = "kerenNpc80",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -1802,7 +1802,7 @@ kerenNpc80 = Creature:new {
 
 kerenNpc81 = Creature:new {
 	objectName = "kerenNpc81",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -1824,7 +1824,7 @@ kerenNpc81 = Creature:new {
 
 kerenNpc82 = Creature:new {
 	objectName = "kerenNpc82",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -1846,7 +1846,7 @@ kerenNpc82 = Creature:new {
 
 kerenNpc83 = Creature:new {
 	objectName = "kerenNpc83",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -1868,7 +1868,7 @@ kerenNpc83 = Creature:new {
 
 kerenNpc84 = Creature:new {
 	objectName = "kerenNpc84",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -1890,7 +1890,7 @@ kerenNpc84 = Creature:new {
 
 kerenNpc85 = Creature:new {
 	objectName = "kerenNpc85",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -1912,7 +1912,7 @@ kerenNpc85 = Creature:new {
 
 kerenNpc86 = Creature:new {
 	objectName = "kerenNpc86",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nightspider",
 	combatFlags = 0,
@@ -1934,7 +1934,7 @@ kerenNpc86 = Creature:new {
 
 kerenNpc87 = Creature:new {
 	objectName = "kerenNpc87",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nightspider",
 	combatFlags = 0,
@@ -1956,7 +1956,7 @@ kerenNpc87 = Creature:new {
 
 kerenNpc88 = Creature:new {
 	objectName = "kerenNpc88",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -1978,7 +1978,7 @@ kerenNpc88 = Creature:new {
 
 kerenNpc89 = Creature:new {
 	objectName = "kerenNpc89",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -2000,7 +2000,7 @@ kerenNpc89 = Creature:new {
 
 kerenNpc90 = Creature:new {
 	objectName = "kerenNpc90",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -2022,7 +2022,7 @@ kerenNpc90 = Creature:new {
 
 kerenNpc91 = Creature:new {
 	objectName = "kerenNpc91",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -2044,7 +2044,7 @@ kerenNpc91 = Creature:new {
 
 kerenNpc92 = Creature:new {
 	objectName = "kerenNpc92",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -2066,7 +2066,7 @@ kerenNpc92 = Creature:new {
 
 kerenNpc93 = Creature:new {
 	objectName = "kerenNpc93",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -2088,7 +2088,7 @@ kerenNpc93 = Creature:new {
 
 kerenNpc94 = Creature:new {
 	objectName = "kerenNpc94",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2110,7 +2110,7 @@ kerenNpc94 = Creature:new {
 
 kerenNpc95 = Creature:new {
 	objectName = "kerenNpc95",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -2132,7 +2132,7 @@ kerenNpc95 = Creature:new {
 
 kerenNpc96 = Creature:new {
 	objectName = "kerenNpc96",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -2154,7 +2154,7 @@ kerenNpc96 = Creature:new {
 
 kerenNpc97 = Creature:new {
 	objectName = "kerenNpc97",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -2176,7 +2176,7 @@ kerenNpc97 = Creature:new {
 
 kerenNpc98 = Creature:new {
 	objectName = "kerenNpc98",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -2198,7 +2198,7 @@ kerenNpc98 = Creature:new {
 
 kerenNpc99 = Creature:new {
 	objectName = "kerenNpc99",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -2220,7 +2220,7 @@ kerenNpc99 = Creature:new {
 
 kerenNpc100 = Creature:new {
 	objectName = "kerenNpc100",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -2242,7 +2242,7 @@ kerenNpc100 = Creature:new {
 
 kerenNpc101 = Creature:new {
 	objectName = "kerenNpc101",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police_chief",
 	combatFlags = 0,
@@ -2264,7 +2264,7 @@ kerenNpc101 = Creature:new {
 
 kerenNpc102 = Creature:new {
 	objectName = "kerenNpc102",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2286,7 +2286,7 @@ kerenNpc102 = Creature:new {
 
 kerenNpc103 = Creature:new {
 	objectName = "kerenNpc103",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_pilot",
 	combatFlags = 0,
@@ -2308,7 +2308,7 @@ kerenNpc103 = Creature:new {
 
 kerenNpc104 = Creature:new {
 	objectName = "kerenNpc104",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mountain_villager",
 	combatFlags = 0,
@@ -2330,7 +2330,7 @@ kerenNpc104 = Creature:new {
 
 kerenNpc105 = Creature:new {
 	objectName = "kerenNpc105",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_agriculturalist",
 	combatFlags = 0,
@@ -2352,7 +2352,7 @@ kerenNpc105 = Creature:new {
 
 kerenNpc106 = Creature:new {
 	objectName = "kerenNpc106",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_palace_guard",
 	combatFlags = 0,
@@ -2374,7 +2374,7 @@ kerenNpc106 = Creature:new {
 
 kerenNpc107 = Creature:new {
 	objectName = "kerenNpc107",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_scout",
 	combatFlags = 0,
@@ -2396,7 +2396,7 @@ kerenNpc107 = Creature:new {
 
 kerenNpc108 = Creature:new {
 	objectName = "kerenNpc108",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2418,7 +2418,7 @@ kerenNpc108 = Creature:new {
 
 kerenNpc109 = Creature:new {
 	objectName = "kerenNpc109",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -2440,7 +2440,7 @@ kerenNpc109 = Creature:new {
 
 kerenNpc110 = Creature:new {
 	objectName = "kerenNpc110",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "businessman",
 	combatFlags = 0,
@@ -2462,7 +2462,7 @@ kerenNpc110 = Creature:new {
 
 kerenNpc111 = Creature:new {
 	objectName = "kerenNpc111",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -2484,7 +2484,7 @@ kerenNpc111 = Creature:new {
 
 kerenNpc112 = Creature:new {
 	objectName = "kerenNpc112",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -2506,7 +2506,7 @@ kerenNpc112 = Creature:new {
 
 kerenNpc113 = Creature:new {
 	objectName = "kerenNpc113",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2528,7 +2528,7 @@ kerenNpc113 = Creature:new {
 
 kerenNpc114 = Creature:new {
 	objectName = "kerenNpc114",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "comm_operator",
 	combatFlags = 0,
@@ -2550,7 +2550,7 @@ kerenNpc114 = Creature:new {
 
 kerenNpc115 = Creature:new {
 	objectName = "kerenNpc115",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "official",
 	combatFlags = 0,
@@ -2572,7 +2572,7 @@ kerenNpc115 = Creature:new {
 
 kerenNpc116 = Creature:new {
 	objectName = "kerenNpc116",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "artisan",
 	combatFlags = 0,
@@ -2594,7 +2594,7 @@ kerenNpc116 = Creature:new {
 
 kerenNpc117 = Creature:new {
 	objectName = "kerenNpc117",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -2616,7 +2616,7 @@ kerenNpc117 = Creature:new {
 
 kerenNpc118 = Creature:new {
 	objectName = "kerenNpc118",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -2638,7 +2638,7 @@ kerenNpc118 = Creature:new {
 
 kerenNpc119 = Creature:new {
 	objectName = "kerenNpc119",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_sniper",
 	combatFlags = 0,
@@ -2660,7 +2660,7 @@ kerenNpc119 = Creature:new {
 
 kerenNpc120 = Creature:new {
 	objectName = "kerenNpc120",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_dark_trooper",
 	combatFlags = 0,
@@ -2682,7 +2682,7 @@ kerenNpc120 = Creature:new {
 
 kerenNpc121 = Creature:new {
 	objectName = "kerenNpc121",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2704,7 +2704,7 @@ kerenNpc121 = Creature:new {
 
 kerenNpc122 = Creature:new {
 	objectName = "kerenNpc122",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2726,7 +2726,7 @@ kerenNpc122 = Creature:new {
 
 kerenNpc123 = Creature:new {
 	objectName = "kerenNpc123",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2748,7 +2748,7 @@ kerenNpc123 = Creature:new {
 
 kerenNpc124 = Creature:new {
 	objectName = "kerenNpc124",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2770,7 +2770,7 @@ kerenNpc124 = Creature:new {
 
 kerenNpc125 = Creature:new {
 	objectName = "kerenNpc125",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -2792,7 +2792,7 @@ kerenNpc125 = Creature:new {
 
 kerenNpc126 = Creature:new {
 	objectName = "kerenNpc126",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "human_base_male",
 	combatFlags = 0,
@@ -2814,7 +2814,7 @@ kerenNpc126 = Creature:new {
 
 kerenNpc127 = Creature:new {
 	objectName = "kerenNpc127",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "r5",
 	combatFlags = 0,
@@ -2836,7 +2836,7 @@ kerenNpc127 = Creature:new {
 
 kerenNpc128 = Creature:new {
 	objectName = "kerenNpc128",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -2858,7 +2858,7 @@ kerenNpc128 = Creature:new {
 
 kerenNpc129 = Creature:new {
 	objectName = "kerenNpc129",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -2880,7 +2880,7 @@ kerenNpc129 = Creature:new {
 
 kerenNpc130 = Creature:new {
 	objectName = "kerenNpc130",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -2902,7 +2902,7 @@ kerenNpc130 = Creature:new {
 
 kerenNpc131 = Creature:new {
 	objectName = "kerenNpc131",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -2924,7 +2924,7 @@ kerenNpc131 = Creature:new {
 
 kerenNpc132 = Creature:new {
 	objectName = "kerenNpc132",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -2946,7 +2946,7 @@ kerenNpc132 = Creature:new {
 
 kerenNpc133 = Creature:new {
 	objectName = "kerenNpc133",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -2968,7 +2968,7 @@ kerenNpc133 = Creature:new {
 
 kerenNpc134 = Creature:new {
 	objectName = "kerenNpc134",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -2990,7 +2990,7 @@ kerenNpc134 = Creature:new {
 
 kerenNpc135 = Creature:new {
 	objectName = "kerenNpc135",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_guard",
 	combatFlags = 0,
@@ -3012,7 +3012,7 @@ kerenNpc135 = Creature:new {
 
 kerenNpc136 = Creature:new {
 	objectName = "kerenNpc136",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scientist",
 	combatFlags = 0,
@@ -3034,7 +3034,7 @@ kerenNpc136 = Creature:new {
 
 kerenNpc137 = Creature:new {
 	objectName = "kerenNpc137",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3056,7 +3056,7 @@ kerenNpc137 = Creature:new {
 
 kerenNpc138 = Creature:new {
 	objectName = "kerenNpc138",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_commando",
 	combatFlags = 0,
@@ -3078,7 +3078,7 @@ kerenNpc138 = Creature:new {
 
 kerenNpc139 = Creature:new {
 	objectName = "kerenNpc139",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -3100,7 +3100,7 @@ kerenNpc139 = Creature:new {
 
 kerenNpc140 = Creature:new {
 	objectName = "kerenNpc140",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "quest_crowd_pleaser_theater_manager",
 	combatFlags = 0,
@@ -3122,7 +3122,7 @@ kerenNpc140 = Creature:new {
 
 kerenNpc141 = Creature:new {
 	objectName = "kerenNpc141",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -3144,7 +3144,7 @@ kerenNpc141 = Creature:new {
 
 kerenNpc142 = Creature:new {
 	objectName = "kerenNpc142",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -3166,7 +3166,7 @@ kerenNpc142 = Creature:new {
 
 kerenNpc143 = Creature:new {
 	objectName = "kerenNpc143",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -3188,7 +3188,7 @@ kerenNpc143 = Creature:new {
 
 kerenNpc144 = Creature:new {
 	objectName = "kerenNpc144",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_palace_guard",
 	combatFlags = 0,
@@ -3210,7 +3210,7 @@ kerenNpc144 = Creature:new {
 
 kerenNpc145 = Creature:new {
 	objectName = "kerenNpc145",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "slicer",
 	combatFlags = 0,
@@ -3232,7 +3232,7 @@ kerenNpc145 = Creature:new {
 
 kerenNpc146 = Creature:new {
 	objectName = "kerenNpc146",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "explorer",
 	combatFlags = 0,
@@ -3254,7 +3254,7 @@ kerenNpc146 = Creature:new {
 
 kerenNpc147 = Creature:new {
 	objectName = "kerenNpc147",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "swamp_villager",
 	combatFlags = 0,
@@ -3276,7 +3276,7 @@ kerenNpc147 = Creature:new {
 
 kerenNpc148 = Creature:new {
 	objectName = "kerenNpc148",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -3298,7 +3298,7 @@ kerenNpc148 = Creature:new {
 
 kerenNpc149 = Creature:new {
 	objectName = "kerenNpc149",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "pilot",
 	combatFlags = 0,
@@ -3320,7 +3320,7 @@ kerenNpc149 = Creature:new {
 
 kerenNpc150 = Creature:new {
 	objectName = "kerenNpc150",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "miner",
 	combatFlags = 0,
@@ -3342,7 +3342,7 @@ kerenNpc150 = Creature:new {
 
 kerenNpc151 = Creature:new {
 	objectName = "kerenNpc151",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3364,7 +3364,7 @@ kerenNpc151 = Creature:new {
 
 kerenNpc152 = Creature:new {
 	objectName = "kerenNpc152",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_guard",
 	combatFlags = 0,
@@ -3386,7 +3386,7 @@ kerenNpc152 = Creature:new {
 
 kerenNpc153 = Creature:new {
 	objectName = "kerenNpc153",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "rsf_security_guard",
 	combatFlags = 0,
@@ -3408,7 +3408,7 @@ kerenNpc153 = Creature:new {
 
 kerenNpc154 = Creature:new {
 	objectName = "kerenNpc154",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "athok_dinvar",
 	combatFlags = 0,
@@ -3430,7 +3430,7 @@ kerenNpc154 = Creature:new {
 
 kerenNpc155 = Creature:new {
 	objectName = "kerenNpc155",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "kritus_morven",
 	combatFlags = 0,
@@ -3452,7 +3452,7 @@ kerenNpc155 = Creature:new {
 
 kerenNpc156 = Creature:new {
 	objectName = "kerenNpc156",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3474,7 +3474,7 @@ kerenNpc156 = Creature:new {
 
 kerenNpc157 = Creature:new {
 	objectName = "kerenNpc157",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3496,7 +3496,7 @@ kerenNpc157 = Creature:new {
 
 kerenNpc158 = Creature:new {
 	objectName = "kerenNpc158",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3518,7 +3518,7 @@ kerenNpc158 = Creature:new {
 
 kerenNpc159 = Creature:new {
 	objectName = "kerenNpc159",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "official",
 	combatFlags = 0,
@@ -3540,7 +3540,7 @@ kerenNpc159 = Creature:new {
 
 kerenNpc160 = Creature:new {
 	objectName = "kerenNpc160",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3562,7 +3562,7 @@ kerenNpc160 = Creature:new {
 
 kerenNpc161 = Creature:new {
 	objectName = "kerenNpc161",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3584,7 +3584,7 @@ kerenNpc161 = Creature:new {
 
 kerenNpc162 = Creature:new {
 	objectName = "kerenNpc162",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3606,7 +3606,7 @@ kerenNpc162 = Creature:new {
 
 kerenNpc163 = Creature:new {
 	objectName = "kerenNpc163",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -3628,7 +3628,7 @@ kerenNpc163 = Creature:new {
 
 kerenNpc164 = Creature:new {
 	objectName = "kerenNpc164",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "scoundrel",
 	combatFlags = 0,
@@ -3650,7 +3650,7 @@ kerenNpc164 = Creature:new {
 
 kerenNpc165 = Creature:new {
 	objectName = "kerenNpc165",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3672,7 +3672,7 @@ kerenNpc165 = Creature:new {
 
 kerenNpc166 = Creature:new {
 	objectName = "kerenNpc166",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "entertainer",
 	combatFlags = 0,
@@ -3694,7 +3694,7 @@ kerenNpc166 = Creature:new {
 
 kerenNpc167 = Creature:new {
 	objectName = "kerenNpc167",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -3716,7 +3716,7 @@ kerenNpc167 = Creature:new {
 
 kerenNpc168 = Creature:new {
 	objectName = "kerenNpc168",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -3738,7 +3738,7 @@ kerenNpc168 = Creature:new {
 
 kerenNpc169 = Creature:new {
 	objectName = "kerenNpc169",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -3760,7 +3760,7 @@ kerenNpc169 = Creature:new {
 
 kerenNpc170 = Creature:new {
 	objectName = "kerenNpc170",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -3782,7 +3782,7 @@ kerenNpc170 = Creature:new {
 
 kerenNpc171 = Creature:new {
 	objectName = "kerenNpc171",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -3804,7 +3804,7 @@ kerenNpc171 = Creature:new {
 
 kerenNpc172 = Creature:new {
 	objectName = "kerenNpc172",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3826,7 +3826,7 @@ kerenNpc172 = Creature:new {
 
 kerenNpc173 = Creature:new {
 	objectName = "kerenNpc173",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3848,7 +3848,7 @@ kerenNpc173 = Creature:new {
 
 kerenNpc174 = Creature:new {
 	objectName = "kerenNpc174",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_sniper",
 	combatFlags = 0,
@@ -3870,7 +3870,7 @@ kerenNpc174 = Creature:new {
 
 kerenNpc175 = Creature:new {
 	objectName = "kerenNpc175",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3892,7 +3892,7 @@ kerenNpc175 = Creature:new {
 
 kerenNpc176 = Creature:new {
 	objectName = "kerenNpc176",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_outcast",
 	combatFlags = 0,
@@ -3914,7 +3914,7 @@ kerenNpc176 = Creature:new {
 
 kerenNpc177 = Creature:new {
 	objectName = "kerenNpc177",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "farmer_rancher",
 	combatFlags = 0,
@@ -3936,7 +3936,7 @@ kerenNpc177 = Creature:new {
 
 kerenNpc178 = Creature:new {
 	objectName = "kerenNpc178",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3958,7 +3958,7 @@ kerenNpc178 = Creature:new {
 
 kerenNpc179 = Creature:new {
 	objectName = "kerenNpc179",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -3980,7 +3980,7 @@ kerenNpc179 = Creature:new {
 
 kerenNpc180 = Creature:new {
 	objectName = "kerenNpc180",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -4002,7 +4002,7 @@ kerenNpc180 = Creature:new {
 
 kerenNpc181 = Creature:new {
 	objectName = "kerenNpc181",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -4024,7 +4024,7 @@ kerenNpc181 = Creature:new {
 
 kerenNpc182 = Creature:new {
 	objectName = "kerenNpc182",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mountain_villager",
 	combatFlags = 0,
@@ -4046,7 +4046,7 @@ kerenNpc182 = Creature:new {
 
 kerenNpc183 = Creature:new {
 	objectName = "kerenNpc183",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4068,7 +4068,7 @@ kerenNpc183 = Creature:new {
 
 kerenNpc184 = Creature:new {
 	objectName = "kerenNpc184",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4090,7 +4090,7 @@ kerenNpc184 = Creature:new {
 
 kerenNpc185 = Creature:new {
 	objectName = "kerenNpc185",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4112,7 +4112,7 @@ kerenNpc185 = Creature:new {
 
 kerenNpc186 = Creature:new {
 	objectName = "kerenNpc186",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -4134,7 +4134,7 @@ kerenNpc186 = Creature:new {
 
 kerenNpc187 = Creature:new {
 	objectName = "kerenNpc187",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4156,7 +4156,7 @@ kerenNpc187 = Creature:new {
 
 kerenNpc188 = Creature:new {
 	objectName = "kerenNpc188",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4178,7 +4178,7 @@ kerenNpc188 = Creature:new {
 
 kerenNpc189 = Creature:new {
 	objectName = "kerenNpc189",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4200,7 +4200,7 @@ kerenNpc189 = Creature:new {
 
 kerenNpc190 = Creature:new {
 	objectName = "kerenNpc190",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4222,7 +4222,7 @@ kerenNpc190 = Creature:new {
 
 kerenNpc191 = Creature:new {
 	objectName = "kerenNpc191",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -4244,7 +4244,7 @@ kerenNpc191 = Creature:new {
 
 kerenNpc192 = Creature:new {
 	objectName = "kerenNpc192",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4266,7 +4266,7 @@ kerenNpc192 = Creature:new {
 
 kerenNpc193 = Creature:new {
 	objectName = "kerenNpc193",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_sniper",
 	combatFlags = 0,
@@ -4288,7 +4288,7 @@ kerenNpc193 = Creature:new {
 
 kerenNpc194 = Creature:new {
 	objectName = "kerenNpc194",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -4310,7 +4310,7 @@ kerenNpc194 = Creature:new {
 
 kerenNpc195 = Creature:new {
 	objectName = "kerenNpc195",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bounty_hunter",
 	combatFlags = 0,
@@ -4332,7 +4332,7 @@ kerenNpc195 = Creature:new {
 
 kerenNpc196 = Creature:new {
 	objectName = "kerenNpc196",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -4354,7 +4354,7 @@ kerenNpc196 = Creature:new {
 
 kerenNpc197 = Creature:new {
 	objectName = "kerenNpc197",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4376,7 +4376,7 @@ kerenNpc197 = Creature:new {
 
 kerenNpc198 = Creature:new {
 	objectName = "kerenNpc198",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4398,7 +4398,7 @@ kerenNpc198 = Creature:new {
 
 kerenNpc199 = Creature:new {
 	objectName = "kerenNpc199",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -4420,7 +4420,7 @@ kerenNpc199 = Creature:new {
 
 kerenNpc200 = Creature:new {
 	objectName = "kerenNpc200",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_bombardier",
 	combatFlags = 0,
@@ -4442,7 +4442,7 @@ kerenNpc200 = Creature:new {
 
 kerenNpc201 = Creature:new {
 	objectName = "kerenNpc201",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_specialist_noncom",
 	combatFlags = 0,
@@ -4464,7 +4464,7 @@ kerenNpc201 = Creature:new {
 
 kerenNpc202 = Creature:new {
 	objectName = "kerenNpc202",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_elite_sand_trooper",
 	combatFlags = 0,
@@ -4486,7 +4486,7 @@ kerenNpc202 = Creature:new {
 
 kerenNpc203 = Creature:new {
 	objectName = "kerenNpc203",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -4508,7 +4508,7 @@ kerenNpc203 = Creature:new {
 
 kerenNpc204 = Creature:new {
 	objectName = "kerenNpc204",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -4530,7 +4530,7 @@ kerenNpc204 = Creature:new {
 
 kerenNpc205 = Creature:new {
 	objectName = "kerenNpc205",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -4552,7 +4552,7 @@ kerenNpc205 = Creature:new {
 
 kerenNpc206 = Creature:new {
 	objectName = "kerenNpc206",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "flesh_eating_chuba",
 	combatFlags = 0,
@@ -4574,7 +4574,7 @@ kerenNpc206 = Creature:new {
 
 kerenNpc207 = Creature:new {
 	objectName = "kerenNpc207",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -4596,7 +4596,7 @@ kerenNpc207 = Creature:new {
 
 kerenNpc208 = Creature:new {
 	objectName = "kerenNpc208",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -4618,7 +4618,7 @@ kerenNpc208 = Creature:new {
 
 kerenNpc209 = Creature:new {
 	objectName = "kerenNpc209",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -4640,7 +4640,7 @@ kerenNpc209 = Creature:new {
 
 kerenNpc210 = Creature:new {
 	objectName = "kerenNpc210",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -4662,7 +4662,7 @@ kerenNpc210 = Creature:new {
 
 kerenNpc211 = Creature:new {
 	objectName = "kerenNpc211",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -4684,7 +4684,7 @@ kerenNpc211 = Creature:new {
 
 kerenNpc212 = Creature:new {
 	objectName = "kerenNpc212",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -4706,7 +4706,7 @@ kerenNpc212 = Creature:new {
 
 kerenNpc213 = Creature:new {
 	objectName = "kerenNpc213",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -4728,7 +4728,7 @@ kerenNpc213 = Creature:new {
 
 kerenNpc214 = Creature:new {
 	objectName = "kerenNpc214",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -4750,7 +4750,7 @@ kerenNpc214 = Creature:new {
 
 kerenNpc215 = Creature:new {
 	objectName = "kerenNpc215",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "diseased_nuna",
 	combatFlags = 0,
@@ -4772,7 +4772,7 @@ kerenNpc215 = Creature:new {
 
 kerenNpc216 = Creature:new {
 	objectName = "kerenNpc216",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "capper_spineflap",
 	combatFlags = 0,
@@ -4794,7 +4794,7 @@ kerenNpc216 = Creature:new {
 
 kerenNpc217 = Creature:new {
 	objectName = "kerenNpc217",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -4816,7 +4816,7 @@ kerenNpc217 = Creature:new {
 
 kerenNpc218 = Creature:new {
 	objectName = "kerenNpc218",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4838,7 +4838,7 @@ kerenNpc218 = Creature:new {
 
 kerenNpc219 = Creature:new {
 	objectName = "kerenNpc219",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -4860,7 +4860,7 @@ kerenNpc219 = Creature:new {
 
 kerenNpc220 = Creature:new {
 	objectName = "kerenNpc220",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -4882,7 +4882,7 @@ kerenNpc220 = Creature:new {
 
 kerenNpc221 = Creature:new {
 	objectName = "kerenNpc221",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -4904,7 +4904,7 @@ kerenNpc221 = Creature:new {
 
 kerenNpc222 = Creature:new {
 	objectName = "kerenNpc222",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4926,7 +4926,7 @@ kerenNpc222 = Creature:new {
 
 kerenNpc223 = Creature:new {
 	objectName = "kerenNpc223",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -4948,7 +4948,7 @@ kerenNpc223 = Creature:new {
 
 kerenNpc224 = Creature:new {
 	objectName = "kerenNpc224",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -4970,7 +4970,7 @@ kerenNpc224 = Creature:new {
 
 kerenNpc225 = Creature:new {
 	objectName = "kerenNpc225",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -4992,7 +4992,7 @@ kerenNpc225 = Creature:new {
 
 kerenNpc226 = Creature:new {
 	objectName = "kerenNpc226",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5014,7 +5014,7 @@ kerenNpc226 = Creature:new {
 
 kerenNpc227 = Creature:new {
 	objectName = "kerenNpc227",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5036,7 +5036,7 @@ kerenNpc227 = Creature:new {
 
 kerenNpc228 = Creature:new {
 	objectName = "kerenNpc228",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bodyguard",
 	combatFlags = 0,
@@ -5058,7 +5058,7 @@ kerenNpc228 = Creature:new {
 
 kerenNpc229 = Creature:new {
 	objectName = "kerenNpc229",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "technician",
 	combatFlags = 0,
@@ -5080,7 +5080,7 @@ kerenNpc229 = Creature:new {
 
 kerenNpc230 = Creature:new {
 	objectName = "kerenNpc230",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_rifleman",
 	combatFlags = 0,
@@ -5102,7 +5102,7 @@ kerenNpc230 = Creature:new {
 
 kerenNpc231 = Creature:new {
 	objectName = "kerenNpc231",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_dark_trooper",
 	combatFlags = 0,
@@ -5124,7 +5124,7 @@ kerenNpc231 = Creature:new {
 
 kerenNpc232 = Creature:new {
 	objectName = "kerenNpc232",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5146,7 +5146,7 @@ kerenNpc232 = Creature:new {
 
 kerenNpc233 = Creature:new {
 	objectName = "kerenNpc233",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -5168,7 +5168,7 @@ kerenNpc233 = Creature:new {
 
 kerenNpc234 = Creature:new {
 	objectName = "kerenNpc234",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -5190,7 +5190,7 @@ kerenNpc234 = Creature:new {
 
 kerenNpc235 = Creature:new {
 	objectName = "kerenNpc235",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -5212,7 +5212,7 @@ kerenNpc235 = Creature:new {
 
 kerenNpc236 = Creature:new {
 	objectName = "kerenNpc236",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "bartender",
 	combatFlags = 0,
@@ -5234,7 +5234,7 @@ kerenNpc236 = Creature:new {
 
 kerenNpc237 = Creature:new {
 	objectName = "kerenNpc237",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "lergo_brazee",
 	combatFlags = 0,
@@ -5256,7 +5256,7 @@ kerenNpc237 = Creature:new {
 
 kerenNpc238 = Creature:new {
 	objectName = "kerenNpc238",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_scout_trooper",
 	combatFlags = 0,
@@ -5278,7 +5278,7 @@ kerenNpc238 = Creature:new {
 
 kerenNpc239 = Creature:new {
 	objectName = "kerenNpc239",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -5300,7 +5300,7 @@ kerenNpc239 = Creature:new {
 
 kerenNpc240 = Creature:new {
 	objectName = "kerenNpc240",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5322,7 +5322,7 @@ kerenNpc240 = Creature:new {
 
 kerenNpc241 = Creature:new {
 	objectName = "kerenNpc241",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5344,7 +5344,7 @@ kerenNpc241 = Creature:new {
 
 kerenNpc242 = Creature:new {
 	objectName = "kerenNpc242",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -5366,7 +5366,7 @@ kerenNpc242 = Creature:new {
 
 kerenNpc243 = Creature:new {
 	objectName = "kerenNpc243",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
@@ -5388,7 +5388,7 @@ kerenNpc243 = Creature:new {
 
 kerenNpc244 = Creature:new {
 	objectName = "kerenNpc244",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper_sniper",
 	combatFlags = 0,
@@ -5410,7 +5410,7 @@ kerenNpc244 = Creature:new {
 
 kerenNpc245 = Creature:new {
 	objectName = "kerenNpc245",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "fanned_rawl",
 	combatFlags = 0,
@@ -5432,7 +5432,7 @@ kerenNpc245 = Creature:new {
 
 kerenNpc246 = Creature:new {
 	objectName = "kerenNpc246",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "nightspider",
 	combatFlags = 0,
@@ -5454,7 +5454,7 @@ kerenNpc246 = Creature:new {
 
 kerenNpc247 = Creature:new {
 	objectName = "kerenNpc247",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "mercenary",
 	combatFlags = 0,
@@ -5476,7 +5476,7 @@ kerenNpc247 = Creature:new {
 
 kerenNpc248 = Creature:new {
 	objectName = "kerenNpc248",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "moncal_base_female",
 	combatFlags = 0,
@@ -5498,7 +5498,7 @@ kerenNpc248 = Creature:new {
 
 kerenNpc249 = Creature:new {
 	objectName = "kerenNpc249",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "noble",
 	combatFlags = 0,
@@ -5520,7 +5520,7 @@ kerenNpc249 = Creature:new {
 
 kerenNpc250 = Creature:new {
 	objectName = "kerenNpc250",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gungan_scout",
 	combatFlags = 0,
@@ -5542,7 +5542,7 @@ kerenNpc250 = Creature:new {
 
 kerenNpc251 = Creature:new {
 	objectName = "kerenNpc251",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "crackdown_stormtrooper",
 	combatFlags = 0,
@@ -5564,7 +5564,7 @@ kerenNpc251 = Creature:new {
 
 kerenNpc252 = Creature:new {
 	objectName = "kerenNpc252",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "gambler",
 	combatFlags = 0,
@@ -5586,7 +5586,7 @@ kerenNpc252 = Creature:new {
 
 kerenNpc253 = Creature:new {
 	objectName = "kerenNpc253",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "naboo_police",
 	combatFlags = 0,
@@ -5608,7 +5608,7 @@ kerenNpc253 = Creature:new {
 
 kerenNpc254 = Creature:new {
 	objectName = "kerenNpc254",
-	creatureType = NPC,
+	creatureType = "NPC",
 
 	speciesName = "commoner",
 	combatFlags = 0,
