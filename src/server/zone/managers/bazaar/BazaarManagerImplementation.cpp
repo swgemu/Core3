@@ -1019,7 +1019,7 @@ void BazaarManagerImplementation::getItemAttributes(Player* player, uint64 objec
 	player->wlock();
 
 	ItemManager* itemManager = zoneServer->getItemManager();
-	TangibleObject* object = itemManager->getPlayerItem(player, objectid);
+	TangibleObject* object = itemManager->getPlayerItem(NULL, objectid);
 
 	if (object == NULL) {
 		player->unlock();
