@@ -647,6 +647,7 @@ void FactoryObjectImplementation::sendEmailToOwner(String subject, String bodyMs
 /*
  * This method is called within the other methods to send the items to the player.
  * This ensures that even if they have the output hopper open, the numbers will still update.
+ * This method only sends items to people on the permissions list.
  */
 void FactoryObjectImplementation::updateItemForSurroundingPlayers(TangibleObject* item) {
 	Zone* zone = _this->getZone();
@@ -664,6 +665,7 @@ void FactoryObjectImplementation::updateItemForSurroundingPlayers(TangibleObject
 			if (object->isPlayer()) {
 				Player* creature = (Player*) object;
 
+				//TODO: add check for if the player is on the permission list.
 				if (_this->isInRange(creature, meter)) {
 					if(item->isResource()){
 						ResourceContainer* res = (ResourceContainer*) item;
