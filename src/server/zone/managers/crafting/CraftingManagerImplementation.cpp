@@ -1782,7 +1782,7 @@ TangibleObject* CraftingManagerImplementation::generateTangibleObject(
 
 	tano->setPlayerUseMask(mask);
 
-	tano->setTemplateTypeName(templatetype);
+	tano->setStfFile(templatetype);
 
 	tano->setAttributes(customattributes);
 

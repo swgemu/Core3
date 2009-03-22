@@ -58,7 +58,7 @@ public:
 		UnicodeString u_str = UnicodeString("");
 		insertUnicode(u_str); // Container Name
 		insertInt(rcno->getMaxContents()); // Max stack size
-		insertAscii(rcno->getTemplateName()); // Resource Type: planet specific
+		insertAscii(rcno->getStfName()); // Resource Type: planet specific
 		insertUnicode(rcno->getCustomName());  // Resource name.
 		setSize();
 	}

@@ -89,8 +89,8 @@ public:
 
 		customName = n;
 
-		templateTypeName = "terminal_name";
-		templateName = tempn;
+		stfFile = "terminal_name";
+		stfName = tempn;
 
 		terminalType = terminaltype;
 

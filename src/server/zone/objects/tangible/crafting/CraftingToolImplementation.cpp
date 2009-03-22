@@ -52,8 +52,8 @@ CraftingToolImplementation::CraftingToolImplementation(uint64 object_id, uint32 
 		const UnicodeString& n, const String& tempn) : CraftingToolServant(object_id, tempCRC, n, tempn,
 				CRAFTINGTOOL) {
 	objectCRC = tempCRC;
-	templateTypeName = "obj_n";
-	templateName = tempn;
+	stfFile = "obj_n";
+	stfName = tempn;
 	customName = n;
 	init();
 }
@@ -62,8 +62,8 @@ CraftingToolImplementation::CraftingToolImplementation(CreatureObject* creature,
 		const UnicodeString& n, const String& tempn) : CraftingToolServant(creature, tempCRC, n, tempn,
 				CRAFTINGTOOL) {
 	objectCRC = tempCRC;
-	templateTypeName = "obj_n";
-	templateName = tempn;
+	stfFile = "obj_n";
+	stfName = tempn;
 	customName = n;
 	init();
 }

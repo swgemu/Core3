@@ -66,7 +66,7 @@ ArmorImplementation::ArmorImplementation(CreatureObject* creature,
 
 	//objectCRC = String::hashCode(temp);
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	init();
 }

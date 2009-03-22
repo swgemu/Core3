@@ -64,7 +64,7 @@ BlueFrogCreatureImplementation::BlueFrogCreatureImplementation(uint64 oid) : Blu
 	optionsBitmask = 0x108;
 
 	customName = UnicodeString("a Jawa Trader");
-	templateName = "bluefrog";
+	stfName = "bluefrog";
 	objectCRC = 1350586805;
 
 	StringBuffer loggingname;

@@ -62,8 +62,8 @@ CampKitImplementation::CampKitImplementation(unsigned long long oid, unsigned in
 	: CampKitServant(oid, CAMPKIT) {
 		objectCRC = tempCRC;
 
-		templateTypeName = "obj_n";
-		templateName = tempn;
+		stfFile = "obj_n";
+		stfName = tempn;
 
 		customName = n;
 
@@ -79,8 +79,8 @@ CampKitImplementation::CampKitImplementation(Player* player, unsigned int tempCR
 : CampKitServant(player->getNewItemID(), CAMPKIT) {
 	objectCRC = tempCRC;
 
-	templateTypeName = "obj_n";
-	templateName = tempn;
+	stfFile = "obj_n";
+	stfName = tempn;
 
 	customName = n;
 

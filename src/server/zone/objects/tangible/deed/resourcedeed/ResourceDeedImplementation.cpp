@@ -16,7 +16,7 @@ ResourceDeedImplementation::ResourceDeedImplementation(CreatureObject* creature,
 	objectID = creature->getNewItemID();
 	objectCRC = tempcrc;
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 	init();
 }
 
@@ -26,7 +26,7 @@ ResourceDeedImplementation::ResourceDeedImplementation(uint64 objid, uint32 temp
 	objectID = objid;
 	objectCRC = tempcrc;
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 	init();
 }
 

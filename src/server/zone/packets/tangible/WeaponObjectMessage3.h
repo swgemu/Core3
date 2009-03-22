@@ -54,9 +54,9 @@ public:
 	WeaponObjectMessage3(Weapon* weao) : BaseLineMessage(weao->getObjectID(), 0x5745414F, 3, 0x11) {
 		insertFloat(100);
 
-		insertAscii(weao->getTemplateTypeName());
+		insertAscii(weao->getStfFile());
 		insertInt(0);
-		insertAscii(weao->getTemplateName());
+		insertAscii(weao->getStfName());
 
 		insertUnicode(weao->getCustomName());
 

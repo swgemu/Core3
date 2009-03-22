@@ -51,8 +51,8 @@ ToolImplementation::ToolImplementation(uint64 oid, uint32 tempCRC, const Unicode
 	objectCRC = tempCRC;
 
 	customName = n;
-	templateName = tempn;
-	templateTypeName = "obj_n";
+	stfName = tempn;
+	stfFile = "obj_n";
 
 	setToolType(tooltype);
 	init();

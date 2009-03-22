@@ -65,8 +65,8 @@ MountCreatureImplementation::MountCreatureImplementation(CreatureObject* linkCre
 
 	linkedCreature = linkCreature;
 
-	templateTypeName = stf;
-	templateName = name;
+	stfFile = stf;
+	stfName = name;
 
 	objectCRC = objCRC;
 
@@ -83,8 +83,8 @@ MountCreatureImplementation::MountCreatureImplementation(uint64 oid, uint32 temp
 	objectCRC = tempcrc;
 
 	customName = n;
-	templateTypeName = tempn;
-	templateName = tempn;
+	stfFile = tempn;
+	stfName = tempn;
 
 	StringBuffer loggingname;
 	loggingname << "Mount = 0x" << oid;

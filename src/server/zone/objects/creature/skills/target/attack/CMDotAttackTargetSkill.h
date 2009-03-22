@@ -264,8 +264,8 @@ public:
 
 		if (!creatureTarget->isPlayer()) {
 			StringBuffer creatureName;
-			creatureName << "@" << creatureTarget->getTemplateTypeName() << ":"
-					<< creatureTarget->getTemplateName();
+			creatureName << "@" << creatureTarget->getStfFile() << ":"
+					<< creatureTarget->getStfName();
 			params->addTT(creatureName.toString());
 			params->addTU(creatureName.toString());
 

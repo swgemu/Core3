@@ -62,8 +62,8 @@ which carries forward this exception.
 ManufactureSchematicImplementation::ManufactureSchematicImplementation(uint64 oid, String n, String stfFile, String stfName, uint32 crc) :
 	ManufactureSchematicServant(oid, SceneObjectImplementation::MANUFACTURESCHEMATIC) {
 
-	templateTypeName = stfFile;
-	templateName = stfName;
+	stfFile = stfFile;
+	stfName = stfName;
 	customName = UnicodeString(n);
 	objectCRC = crc;
 
@@ -76,8 +76,8 @@ ManufactureSchematicImplementation::ManufactureSchematicImplementation(uint64 oi
 	init();
 
 	setComplexity(draftSchematic->getComplexity());
-	templateTypeName = draftSchematic->getStringFile();
-	templateName = draftSchematic->getStringName();
+	stfFile = draftSchematic->getStringFile();
+	stfName = draftSchematic->getStringName();
 	customName = draftSchematic->getName();
 	objectCRC = draftSchematic->getSchematicCRC();
 	setDataSize(draftSchematic->getSchematicSize());
@@ -133,7 +133,7 @@ void ManufactureSchematicImplementation::setIngredients(DraftSchematic* draftSch
 			} else {
 
 				if(itemInSlot->getCustomName().isEmpty())
-					name = "@" + itemInSlot->getTemplateTypeName() + "#" + itemInSlot->getTemplateName() + " ";
+					name = "@" + itemInSlot->getStfFile() + "#" + itemInSlot->getStfName() + " ";
 				else
 					name = itemInSlot->getCustomName().toString();
 

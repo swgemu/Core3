@@ -116,9 +116,9 @@ public:
 			: BaseLineMessage(manufactureSchematic->getObjectID(), 0x4D53434F, 3, 0x09) {
 
 		insertFloat(manufactureSchematic->getComplexity());
-		insertAscii(manufactureSchematic->getTemplateTypeName());
+		insertAscii(manufactureSchematic->getStfFile());
 		insertInt(0);
-		insertAscii(manufactureSchematic->getTemplateName());
+		insertAscii(manufactureSchematic->getStfName());
 
 		insertUnicode(manufactureSchematic->getCustomName());
 

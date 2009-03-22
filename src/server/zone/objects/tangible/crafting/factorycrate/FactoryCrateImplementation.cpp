@@ -54,8 +54,8 @@ FactoryCrateImplementation::FactoryCrateImplementation(uint64 object_id, uint32 
 		const UnicodeString& n, const String& tempn) : FactoryCrateServant(object_id, tempCRC, n, tempn,
 				FACTORYCRATE) {
 	objectCRC = tempCRC;
-	templateTypeName = "factory_n";
-	templateName = tempn;
+	stfFile = "factory_n";
+	stfName = tempn;
 	customName = n;
 	init();
 }
@@ -64,11 +64,11 @@ FactoryCrateImplementation::FactoryCrateImplementation(uint64 object_id, Tangibl
 	: FactoryCrateServant(object_id, FACTORYCRATE) {
 
 	objectCRC = getCRC(tano);
-	templateTypeName = "factory_n";
-	templateName = getTempN(tano);
+	stfFile = "factory_n";
+	stfName = getTempN(tano);
 	String name = tano->getCustomName().toString();
 	if (name.isEmpty())
-		name = tano->getTemplateName() + "(" + tano->getCraftedSerial() + ")";
+		name = tano->getStfName() + "(" + tano->getCraftedSerial() + ")";
 	UnicodeString uniName(name);
 	customName = uniName;
 	init();
@@ -78,8 +78,8 @@ FactoryCrateImplementation::FactoryCrateImplementation(uint64 object_id)
 	:FactoryCrateServant(object_id, FACTORYCRATE) {
 
 	objectCRC = 0x28D7B8E0;
-	templateName = "generic_items_crate";
-	templateTypeName = "factory_n";
+	stfName = "generic_items_crate";
+	stfFile = "factory_n";
 	customName = "A Factory Crate";
 }
 

@@ -59,7 +59,7 @@ LairObjectImplementation::LairObjectImplementation(uint32 objCRC, uint64 oid)
 	conditionDamage = 0;
 	maxCondition = 20000;
 
-	templateTypeName = "lair_n";
+	stfFile = "lair_n";
 
 	customName = UnicodeString("");
 

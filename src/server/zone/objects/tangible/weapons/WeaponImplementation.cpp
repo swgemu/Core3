@@ -70,7 +70,7 @@ WeaponImplementation::WeaponImplementation(CreatureObject* creature, const Strin
 	type = tp;
 	setCategory(cat);
 
-	templateName = tempn;
+	stfName = tempn;
 
 	if ((equipped = eqp))
 		setParent(creature, 0x04);
@@ -81,7 +81,7 @@ WeaponImplementation::WeaponImplementation(CreatureObject* creature, const Strin
 }
 
 void WeaponImplementation::init() {
-	templateTypeName = "weapon_name";
+	stfFile = "weapon_name";
 	cert = "";
 	certified = true;
 

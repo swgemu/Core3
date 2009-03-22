@@ -243,9 +243,11 @@ public:
 
 	UnicodeString& getCustomName();
 
-	String& getTemplateName();
+	String& getStfName();
 
-	String& getTemplateTypeName();
+	String& getStfFile();
+
+	String& getStfDetail();
 
 	unsigned long long getAssociatedArea();
 
@@ -297,9 +299,11 @@ public:
 
 	ZoneProcessServerImplementation* getZoneProcessServer();
 
-	void setTemplateName(const String& tempName);
+	void setStfName(const String& name);
 
-	void setTemplateTypeName(const String& tempTypeName);
+	void setStfFile(const String& file);
+
+	void setStfDetail(const String& detail);
 
 	void setCombatState();
 
@@ -388,8 +392,9 @@ protected:
 
 	String _return_getAttributes;
 	String _return_getLoggingName;
-	String _return_getTemplateName;
-	String _return_getTemplateTypeName;
+	String _return_getStfDetail;
+	String _return_getStfFile;
+	String _return_getStfName;
 
 	UnicodeString _return_getCustomName;
 
@@ -606,9 +611,11 @@ public:
 
 	UnicodeString& getCustomName();
 
-	String& getTemplateName();
+	String& getStfName();
 
-	String& getTemplateTypeName();
+	String& getStfFile();
+
+	String& getStfDetail();
 
 	unsigned long long getAssociatedArea();
 
@@ -658,9 +665,11 @@ public:
 
 	bool doKeepObject();
 
-	void setTemplateName(const String& tempName);
+	void setStfName(const String& name);
 
-	void setTemplateTypeName(const String& tempTypeName);
+	void setStfFile(const String& file);
+
+	void setStfDetail(const String& detail);
 
 	void setCombatState();
 
@@ -749,8 +758,9 @@ protected:
 	String _param0_setCustomizationString__String_;
 	String _param0_setCustomizationVariable__String_int_;
 	String _param0_getCustomizationString__String_;
-	String _param0_setTemplateName__String_;
-	String _param0_setTemplateTypeName__String_;
+	String _param0_setStfName__String_;
+	String _param0_setStfFile__String_;
+	String _param0_setStfDetail__String_;
 	String _param2_addDamageDone__CreatureObject_int_String_;
 };
 

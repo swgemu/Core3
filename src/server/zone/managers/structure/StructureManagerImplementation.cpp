@@ -833,7 +833,7 @@ void StructureManagerImplementation::spawnTempStructure(Player * player,
 
 	inso->setObjectCRC(deed->getTargetTempFile().hashCode());
 	inso->setCustomName(deed->getTargetName());
-	inso->setTemplateName(deed->getTargetTemplate());
+	inso->setStfName(deed->getTargetTemplate());
 
 	inso->initializePosition(x, z, y);
 	inso->setDirection(oX, oZ, oY, oW);
@@ -992,7 +992,7 @@ void StructureManagerImplementation::createInstallation(InstallationObject* inso
 		<< ", " << inso->getObjectCRC()
 		<< ", " << inso->getObjectType()
 		<< ", " << inso->getObjectSubType()
-		<< ", " << "'" << inso->getTemplateName() << "'"
+		<< ", " << "'" << inso->getStfName() << "'"
 		<< ", " << inso->getDirectionX()
 		<< ", " << inso->getDirectionY()
 		<< ", " << inso->getDirectionZ()
@@ -1035,7 +1035,7 @@ void StructureManagerImplementation::saveInstallation(InstallationObject* inso) 
 		<< ", template_crc = " << inso->getObjectCRC()
 		<< ", template_type = " << inso->getObjectType()
 		<< ", template_subtype = " << inso->getObjectSubType()
-		<< ", template_name = " << "'" << inso->getTemplateName() << "'"
+		<< ", template_name = " << "'" << inso->getStfName() << "'"
 		<< ", oX = " << inso->getDirectionX()
 		<< ", oY = " << inso->getDirectionY()
 		<< ", oZ = " << inso->getDirectionZ()
@@ -1097,7 +1097,7 @@ void StructureManagerImplementation::createBuilding(BuildingObject* buio) {
 		<< ", '" << itemname << "'"
 		<< ", " << buio->getObjectCRC()
 		<< ", " << buio->getObjectType()
-		<< ", '" << buio->getTemplateName() << "'"
+		<< ", '" << buio->getStfName() << "'"
 		<< ", " << buio->getDirectionX()
 		<< ", " << buio->getDirectionY()
 		<< ", " << buio->getDirectionZ()
@@ -1129,7 +1129,7 @@ void StructureManagerImplementation::createBuilding(BuildingObject* buio) {
 				<< ", " << (i+1) // cell number
 				<< ", " << buio->getOwnerID() // owner
 				<< ", " << cell->getObjectCRC()
-				<< ", " << "'" << cell->getTemplateName() << "'"
+				<< ", " << "'" << cell->getStfName() << "'"
 				<< ", " << cell->getDirectionX()
 				<< ", " << cell->getDirectionY()
 				<< ", " << cell->getDirectionZ()

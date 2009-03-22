@@ -12,7 +12,7 @@ HarvesterDeedImplementation::HarvesterDeedImplementation(CreatureObject* creatur
 	objectCRC = tempcrc;
 
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	init();
 }
@@ -24,7 +24,7 @@ HarvesterDeedImplementation::HarvesterDeedImplementation(uint64 objid, uint32 te
 	objectCRC = tempcrc;
 
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	init();
 }
@@ -35,9 +35,9 @@ HarvesterDeedImplementation::HarvesterDeedImplementation(CreatureObject* creatur
 	info("HarvesterDeedImplementation(CreatureObject* creature, HarvesterObject* hino)");
 
 	objectCRC = hino->getDeedCRC();
-	templateTypeName = "deed"; // STF
-	templateName = getDefaultTemplateName(objectCRC);
-	info(templateName);
+	stfFile = "deed"; // STF
+	stfName = getDefaultTemplateName(objectCRC);
+	info(stfName);
 	customName = "";
 
 	setSurplusMaintenance((uint32)hino->getSurplusMaintenance());
@@ -314,24 +314,24 @@ void HarvesterDeedImplementation::addAttributes(AttributeListMessage* alm) {
 }
 
 void HarvesterDeedImplementation::initType(){
-	if ((templateName.indexOf("ore") != -1))
+	if ((stfName.indexOf("ore") != -1))
 		type = ORE;
-	else if ((templateName.indexOf("flora") != -1))
+	else if ((stfName.indexOf("flora") != -1))
 		type = FLORA;
-	else if ((templateName.indexOf("gas") != -1))
+	else if ((stfName.indexOf("gas") != -1))
 		type = GAS;
-	else if ((templateName.indexOf("liquid") != -1))
+	else if ((stfName.indexOf("liquid") != -1))
 		type = LIQUID;
-	else if ((templateName.indexOf("moisture") != -1))
+	else if ((stfName.indexOf("moisture") != -1))
 		type = MOISTURE;
-	else if ((templateName.indexOf("creature") != -1))
+	else if ((stfName.indexOf("creature") != -1))
 		type = CREATURE;
 }
 
 void HarvesterDeedImplementation::initSize() {
-	if ((templateName.indexOf("heavy") != -1))
+	if ((stfName.indexOf("heavy") != -1))
 		size = LARGE;
-	else if ((templateName.indexOf("medium") != -1) || (templateName.indexOf("s2") != -1))
+	else if ((stfName.indexOf("medium") != -1) || (stfName.indexOf("s2") != -1))
 		size = MEDIUM;
 	else
 		size = SMALL;

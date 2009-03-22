@@ -56,8 +56,8 @@ ComponentImplementation::ComponentImplementation(uint64 objectid, uint32 tempCRC
 				COMPONENT) {
 	objectCRC = tempCRC;
 
-	templateTypeName = "obj_n";
-	templateName = tempn;
+	stfFile = "obj_n";
+	stfName = tempn;
 
 	customName = n;
 
@@ -69,8 +69,8 @@ ComponentImplementation::ComponentImplementation(CreatureObject* creature, uint3
 				COMPONENT) {
 	objectCRC = tempCRC;
 
-	templateTypeName = "obj_n";
-	templateName = tempn;
+	stfFile = "obj_n";
+	stfName = tempn;
 
 	customName = n;
 

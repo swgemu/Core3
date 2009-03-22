@@ -87,7 +87,7 @@ void ClientCreateCharacter::parse(Packet* pack, Player* player) {
 	int raceid = Races::getRaceID(racefile);
 	player->setRaceID(raceid);
 	player->setRaceName(Races::getRace(raceid));
-	player->setTemplateName(Races::getSpecies(raceid));
+	player->setStfName(Races::getSpecies(raceid));
 	player->setGender(Races::getGender(raceid));
 
 	player->makeCharacterMask();

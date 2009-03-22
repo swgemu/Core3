@@ -94,8 +94,8 @@ public:
 
 		customName = n;
 
-		templateTypeName = "wearables_name"; //figure out what this is for components
-		templateName = tempn;
+		stfFile = "wearables_name"; //figure out what this is for components
+		stfName = tempn;
 
 		ply = player;
 

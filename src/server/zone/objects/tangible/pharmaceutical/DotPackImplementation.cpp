@@ -58,7 +58,7 @@ DotPackImplementation::DotPackImplementation(CreatureObject* creature, uint32 te
 		: DotPackServant(creature, tempCRC, n, tempn, 0) {
 
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	init();
 }
@@ -124,40 +124,40 @@ void DotPackImplementation::init() {
 	setPool(CreatureAttribute::HEALTH);
 	setDuration(120);
 	rangeMod = 1.0;
-	if ((templateName.indexOf("poison") != -1))
+	if ((stfName.indexOf("poison") != -1))
 		setMedpackType(POISONDELIVERYUNIT);
-	else if (templateName.indexOf("disease") != -1)
+	else if (stfName.indexOf("disease") != -1)
 		setMedpackType(DISEASEDELIVERYUNIT);
 
-	if ((templateName.indexOf("area") != -1))
+	if ((stfName.indexOf("area") != -1))
 		setArea(8.0f);
 	else
 		setArea(0.0f);
 
-	if ((templateName.indexOf("_a.iff") != -1))
+	if ((stfName.indexOf("_a.iff") != -1))
 		rangeMod = 1.0;
-	else if ((templateName.indexOf("_b.iff") != -1))
+	else if ((stfName.indexOf("_b.iff") != -1))
 		rangeMod = 0.6;
-	else if ((templateName.indexOf("_c.iff") != -1))
+	else if ((stfName.indexOf("_c.iff") != -1))
 		rangeMod = 0.3;
 
-	if ((templateName.indexOf("health") != -1))
+	if ((stfName.indexOf("health") != -1))
 		setPool(CreatureAttribute::HEALTH);
-	else if ((templateName.indexOf("strength") != -1))
+	else if ((stfName.indexOf("strength") != -1))
 		setPool(CreatureAttribute::STRENGTH);
-	else if ((templateName.indexOf("constitution") != -1))
+	else if ((stfName.indexOf("constitution") != -1))
 		setPool(CreatureAttribute::CONSTITUTION);
-	else if ((templateName.indexOf("action") != -1))
+	else if ((stfName.indexOf("action") != -1))
 		setPool(CreatureAttribute::ACTION);
-	else if ((templateName.indexOf("quickness") != -1))
+	else if ((stfName.indexOf("quickness") != -1))
 		setPool(CreatureAttribute::QUICKNESS);
-	else if ((templateName.indexOf("stamina") != -1))
+	else if ((stfName.indexOf("stamina") != -1))
 		setPool(CreatureAttribute::STAMINA);
-	else if ((templateName.indexOf("mind") != -1))
+	else if ((stfName.indexOf("mind") != -1))
 		setPool(CreatureAttribute::MIND);
-	else if ((templateName.indexOf("focus") != -1))
+	else if ((stfName.indexOf("focus") != -1))
 		setPool(CreatureAttribute::FOCUS);
-	else if ((templateName.indexOf("willpower") != -1))
+	else if ((stfName.indexOf("willpower") != -1))
 		setPool(CreatureAttribute::WILLPOWER);
 }
 

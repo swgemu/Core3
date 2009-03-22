@@ -49,8 +49,8 @@ which carries forward this exception.
 RepairToolImplementation::RepairToolImplementation(uint64 object_id, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 	: RepairToolServant(object_id, REPAIRTOOL) {
 	objectCRC = tempCRC;
-	templateTypeName = "obj_n";
-	templateName = tempn;
+	stfFile = "obj_n";
+	stfName = tempn;
 	customName = n;
 	init();
 }
@@ -58,8 +58,8 @@ RepairToolImplementation::RepairToolImplementation(uint64 object_id, uint32 temp
 RepairToolImplementation::RepairToolImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 	: RepairToolServant(oid, REPAIRTOOL) {
 	objectCRC = tempCRC;
-	templateTypeName = "obj_n";
-	templateName = tempn;
+	stfFile = "obj_n";
+	stfName = tempn;
 	customName = n;
 	init();
 }

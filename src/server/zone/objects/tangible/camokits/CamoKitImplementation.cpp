@@ -56,8 +56,8 @@ CamoKitImplementation::CamoKitImplementation(unsigned long long oid, unsigned in
 	: CamoKitServant(oid, CAMOKIT) {
 	objectCRC = tempCRC;
 
-	templateTypeName = "obj_n";
-	templateName = tempn;
+	stfFile = "obj_n";
+	stfName = tempn;
 
 	customName = n;
 
@@ -71,8 +71,8 @@ CamoKitImplementation::CamoKitImplementation(Player* player, unsigned int tempCR
 	: CamoKitServant(player->getNewItemID(), CAMOKIT) {
 	objectCRC = tempCRC;
 
-	templateTypeName = "obj_n";
-	templateName = tempn;
+	stfFile = "obj_n";
+	stfName = tempn;
 
 	customName = n;
 

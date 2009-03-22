@@ -52,8 +52,8 @@ CraftingStationImplementation::CraftingStationImplementation(uint64 object_id, u
 		const UnicodeString& n, const String& tempn) : CraftingStationServant(object_id, tempCRC, n, tempn,
 				CRAFTINGTOOL) {
 	objectCRC = tempCRC;
-	templateTypeName = "obj_n";
-	templateName = tempn;
+	stfFile = "obj_n";
+	stfName = tempn;
 	customName = n;
 	init();
 }
@@ -62,8 +62,8 @@ CraftingStationImplementation::CraftingStationImplementation(CreatureObject* cre
 		const UnicodeString& n, const String& tempn) : CraftingStationServant(creature, tempCRC, n, tempn,
 				CRAFTINGTOOL) {
 	objectCRC = tempCRC;
-	templateTypeName = "obj_n";
-	templateName = tempn;
+	stfFile = "obj_n";
+	stfName = tempn;
 	customName = n;
 	init();
 }

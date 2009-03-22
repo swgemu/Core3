@@ -55,7 +55,7 @@ RevivePackImplementation::RevivePackImplementation(CreatureObject* creature, uin
 		: RevivePackServant(creature, tempCRC, n, tempn, REVIVEPACK) {
 
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	init();
 }

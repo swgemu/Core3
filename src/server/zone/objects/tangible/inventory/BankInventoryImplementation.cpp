@@ -57,8 +57,8 @@ BankInventoryImplementation::BankInventoryImplementation(CreatureObject* creatur
 	objectType = BANKINVENTORYSTORAGE;
 
     customName = UnicodeString("Bank Storage");
-    templateTypeName = "item_n";
-    templateName = "bank";
+    stfFile = "item_n";
+    stfName = "bank";
 
     parent = creature;
 

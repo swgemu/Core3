@@ -11,7 +11,7 @@ GeneratorDeedImplementation::GeneratorDeedImplementation(CreatureObject* creatur
 	objectCRC = tempcrc;
 
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	init();
 }
@@ -22,7 +22,7 @@ GeneratorDeedImplementation::GeneratorDeedImplementation(uint64 objid, uint32 te
 	objectCRC = tempcrc;
 
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	init();
 }
@@ -91,28 +91,28 @@ void GeneratorDeedImplementation::init() {
 
 	targetTempFile = "object/installation/base/shared_construction_installation_base.iff";
 
-	if ((templateName.indexOf("fusion") != -1)){
+	if ((stfName.indexOf("fusion") != -1)){
 		type = FUSION;
 
 		targetTemplate = "fusion_generator";
 		targetFile = "object/installation/generators/shared_power_generator_fusion_style_1.iff";
 
 		targetName = String("Fusion Power Generator");
-	} else if ((templateName.indexOf("photo") != -1)){
+	} else if ((stfName.indexOf("photo") != -1)){
 		type = PHOTOBIO;
 
 		targetTemplate = "photobio_generator";
 		targetFile = "object/installation/generators/shared_power_generator_photo_bio_style_1.iff";
 
 		targetName = String("Photo Power Generator");
-	} else if ((templateName.indexOf("solar") != -1)){
+	} else if ((stfName.indexOf("solar") != -1)){
 		type = SOLAR;
 
 		targetTemplate = "solar_generator";
 		targetFile = "object/installation/generators/shared_power_generator_solar_style_1.iff";
 
 		targetName = String("Solar Power Generator");
-	} else if ((templateName.indexOf("wind") != -1)){
+	} else if ((stfName.indexOf("wind") != -1)){
 		type = WIND;
 
 		targetTempFile = "object/installation/base/shared_construction_installation_base.iff";

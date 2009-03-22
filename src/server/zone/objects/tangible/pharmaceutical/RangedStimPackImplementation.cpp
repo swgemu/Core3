@@ -54,7 +54,7 @@ RangedStimPackImplementation::RangedStimPackImplementation(uint64 oid, uint32 te
 RangedStimPackImplementation::RangedStimPackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: RangedStimPackServant(creature, tempCRC, n, tempn) {
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	init();
 }

@@ -194,7 +194,7 @@ public:
 	}
 
 	inline void setContainerFile(String& tempn) {
-		templateName = tempn;
+		stfName = tempn;
 	}
 
 	inline void setObjectCRC(uint32 tempCRC) {

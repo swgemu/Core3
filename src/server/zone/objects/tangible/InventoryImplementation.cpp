@@ -57,8 +57,8 @@ InventoryImplementation::InventoryImplementation(CreatureObject* creature) :
 
 	customName = UnicodeString("");
 
-	templateTypeName = "item_n";
-	templateName = "inventory";
+	stfFile = "item_n";
+	stfName = "inventory";
 
 	parent = (SceneObject*) creature;
 }

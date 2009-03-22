@@ -52,30 +52,30 @@ ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid)
 		: ResourceContainerServant(oid, RESOURCECONTAINER) {
 	objectCRC = 741847407;
 
-	templateTypeName = "obj_n";
+	stfFile = "obj_n";
 
 	customName = UnicodeString("");
-	templateName = "";
+	stfName = "";
 
 	init();
 }
 
 ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n,
 		const String& tempn) : ResourceContainerServant(oid, tempCRC, n, tempn, RESOURCECONTAINER) {
-	templateTypeName = "obj_n";
+	stfFile = "obj_n";
 
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	init();
 }
 
 ResourceContainerImplementation::ResourceContainerImplementation(CreatureObject* creature, uint32 tempCRC,
 		const UnicodeString& n, const String& tempn) : ResourceContainerServant(creature, tempCRC, n, tempn, RESOURCECONTAINER) {
-	templateTypeName = "obj_n";
+	stfFile = "obj_n";
 
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	init();
 }
@@ -88,7 +88,7 @@ bool ResourceContainerImplementation::compare(ResourceContainer* inResource){
 	//System::out << hex << _this->getObjectSubType() << "   " <<  inResource->getObjectSubType() << dec << endl;
 
 	if (_this->getResourceName() == inResource->getResourceName() &&
-			_this->getTemplateName() == inResource->getTemplateName() &&
+			_this->getStfName() == inResource->getStfName() &&
 			_this->getObjectSubType() == inResource->getObjectSubType() &&
 			_this->getDecayResistance() == inResource->getDecayResistance() &&
 			_this->getQuality() == inResource->getQuality() &&
@@ -187,7 +187,7 @@ void ResourceContainerImplementation::splitContainer(Player* player, int newQuan
 	int oldQuantity = getContents();
 
 	if (newQuantity < oldQuantity) {
-		ResourceContainer* container = new ResourceContainer(player->getNewItemID(), getObjectCRC(), getCustomName(), getTemplateName());
+		ResourceContainer* container = new ResourceContainer(player->getNewItemID(), getObjectCRC(), getCustomName(), getStfName());
 		container->setResourceName(getResourceName());
 		container->setContents(newQuantity);
 

@@ -57,7 +57,7 @@ public:
 		objectID = objID;
 
 		customName = n;
-		templateName = tempn;
+		stfName = tempn;
 
 		init();
 	}

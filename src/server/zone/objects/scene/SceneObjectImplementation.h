@@ -117,8 +117,10 @@ protected:
 	uint32 objectCRC;
 
 	UnicodeString customName;
-	String templateTypeName;
-	String templateName;
+
+	String stfFile;
+	String stfName;
+	String stfDetail;
 
 	int zoneID;
 
@@ -643,20 +645,28 @@ public:
 		customName = n;
 	}
 
-	inline void setTemplateName(const String& tempName) {
-		templateName = tempName;
+	inline void setStfName(const String& name) {
+		stfName = name;
 	}
 
-	inline String& getTemplateName() {
-		return templateName;
+	inline String& getStfName() {
+		return stfName;
 	}
 
-	inline void setTemplateTypeName(const String& tempTypeName) {
-		templateTypeName = tempTypeName;
+	inline void setStfFile(const String& file) {
+		stfFile = file;
 	}
 
-	inline String& getTemplateTypeName() {
-		return templateTypeName;
+	inline String& getStfFile() {
+		return stfFile;
+	}
+
+	inline void setStfDetail(const String& detail) {
+		stfDetail = detail;
+	}
+
+	inline String& getStfDetail() {
+		return stfDetail;
 	}
 
 	inline float getPrecision(float num, int digits) {

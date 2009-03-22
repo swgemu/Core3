@@ -429,7 +429,7 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 
 	player->create(client);
 
-	String species = player->getTemplateName();
+	String species = player->getStfName();
 	String firstName = player->getFirstName();
 	String name = player->getCharacterName().toString();
 

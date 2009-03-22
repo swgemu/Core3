@@ -55,8 +55,8 @@ TicketCollectorImplementation::TicketCollectorImplementation(ShuttleCreature* sh
 
 	customName = n;
 
-	templateTypeName = "terminal_name";
-	templateName = tempn;
+	stfFile = "terminal_name";
+	stfName = tempn;
 
 	initializePosition(x, z, y);
 

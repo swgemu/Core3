@@ -400,7 +400,7 @@ void MissionManagerImplementation::doMissionAccept(Player* player, uint64& oid, 
 		//Give deliver item to player:
 		if (miso->getTypeStr() == "mission_deliver" && (miso->getDeliverItem() != NULL)) {
 			TangibleObject* itemTemp = miso->getDeliverItem();
-			TangibleObject* playerItem = new TangibleObject(player->getNewItemID(), itemTemp->getObjectCRC(), itemTemp->getCustomName(), itemTemp->getTemplateName());
+			TangibleObject* playerItem = new TangibleObject(player->getNewItemID(), itemTemp->getObjectCRC(), itemTemp->getCustomName(), itemTemp->getStfName());
 
 			playerItem->setMisoAsocKey(miso->getDBKey());
 			player->addInventoryItem(playerItem);
@@ -1154,8 +1154,8 @@ ActionCreature* MissionManagerImplementation::addActionCreature(lua_State* L, in
 		creature->setObjectCRC(creatureConfig.getIntField("objectCRC"));
 
 		if (!stfname.isEmpty() && !speciesName.isEmpty()) {
-			creature->setTemplateTypeName(stfname);
-			creature->setTemplateName(speciesName);
+			creature->setStfFile(stfname);
+			creature->setStfName(speciesName);
 		} else if (!stfname.isEmpty()) {
 			creature->setCharacterName(stfname);
 		}
@@ -1419,7 +1419,7 @@ void MissionManagerImplementation::setCreatureAttributes(ActionCreature* creatur
 
 		creature->setMind(creatureConfig->getIntField("mind"));
 		creature->setMind(creature->getMind() + (creature->getMind() * (System::random(100)) / 1111));
-		System::out << "ATTENTION: The LUA creature script for " << creature->getTemplateName()  << " is obv. still in the old format ! \n";
+		System::out << "ATTENTION: The LUA creature script for " << creature->getStfName()  << " is obv. still in the old format ! \n";
 	} else {
 		//red
 		creature->setHealth(creatureConfig->getIntField("healthMin") + System::random(creatureConfig->getIntField("healthMax")-creatureConfig->getIntField("healthMin")));

@@ -54,7 +54,7 @@ GenericItemImplementation::GenericItemImplementation(uint64 oid, uint32 tempCRC,
 	objectCRC = tempCRC;
 
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	setGenericItemType(gitype);
 }
@@ -65,7 +65,7 @@ GenericItemImplementation::GenericItemImplementation(CreatureObject* creature, u
 	objectCRC = tempCRC;
 
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	setParent((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);
 
@@ -79,7 +79,7 @@ GenericItemImplementation::GenericItemImplementation(CreatureObject* creature, u
 	objectCRC = tempCRC;
 
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	//setContainer((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);
 
