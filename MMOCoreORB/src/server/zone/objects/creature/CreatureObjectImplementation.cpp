@@ -3005,7 +3005,6 @@ void CreatureObjectImplementation::stopWatch(uint64 entid, bool doSendPackets, b
 			msg << "You stop watching " << entName << ".";
 
 		sendSystemMessage(msg.toString());
-		sendSystemMessage("healing", "performance_enhance_dance_mind_d");
 	}
 
 	activateEntertainerBuff(PerformanceType::DANCE);
@@ -3065,8 +3064,6 @@ void CreatureObjectImplementation::stopListen(uint64 entid, bool doSendPackets, 
 			msg << "You stop listening to " << entName << ".";
 
 		sendSystemMessage(msg.toString());
-		sendSystemMessage("healing", "performance_enhance_music_focus_d");
-		sendSystemMessage("healing", "performance_enhance_music_willpower_d");
 	}
 
 	//TODO: Activate Buff
@@ -3081,8 +3078,13 @@ void CreatureObjectImplementation::stopListen(uint64 entid, bool doSendPackets, 
 
 void CreatureObjectImplementation::activateEntertainerBuff(int performanceType) {
 
-	// Returns the Number of Seconds for the Buff Duration
+	// Returns the Number of Minutes for the Buff Duration
 	float buffDuration = getEntertainerBuffDuration(performanceType);
+
+	if (buffDuration * 60 < 10.0f) { //10 sec minimum buff duration
+		return;
+	}
+
 	// Returns a % of base stat
 	int campMod = 100;
 
@@ -3090,7 +3092,6 @@ void CreatureObjectImplementation::activateEntertainerBuff(int performanceType) 
 		campMod = getCampModifier();
 
 	float buffStrength = getEntertainerBuffStrength(performanceType) * campMod / 100;
-
 	//System::out << "activateEntertainerBuff(" << performanceType << ") called for " << getCharacterName().toString() << " with duration: " << buffDuration << " strength: ";
 	//System::out.precision(4);
 	//System::out << buffStrength << endl;
@@ -3105,11 +3106,16 @@ void CreatureObjectImplementation::activateEntertainerBuff(int performanceType) 
 			buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_WILLPOWER, BuffType::PERFORMANCE, buffDuration * 60);
 			buff->setWillpowerBuff((int)round(buffStrength * getBaseWillpower()));
 			applyBuff(buff);
+
+			sendSystemMessage("healing", "performance_enhance_music_focus_d");
+			sendSystemMessage("healing", "performance_enhance_music_willpower_d");
 			break;
 		case PerformanceType::DANCE:
 			buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_DANCE_MIND, BuffType::PERFORMANCE, buffDuration * 60);
 			buff->setMindBuff((int)round(buffStrength * getBaseMind()));
 			applyBuff(buff);
+
+			sendSystemMessage("healing", "performance_enhance_dance_mind_d");
 	}
 
 }

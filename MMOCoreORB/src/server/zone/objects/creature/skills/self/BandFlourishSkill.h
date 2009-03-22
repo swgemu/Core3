@@ -46,7 +46,6 @@ which carries forward this exception.
 #define BANDFLOURISHSKILL_H_
 
 #include "../SelfSkill.h"
-//#include "engine/engine.h"
 
 class BandFlourishSkill : public SelfSkill {
 
@@ -69,10 +68,10 @@ public:
 			return;
 
 		//Check if leader specified an instrument to flourish.
-		int instrumentID = 0;
+		int instrumentType = 0;
 		if (!stringB.isEmpty()) {
-			instrumentID = determineInstrumentID(stringB);
-			if (instrumentID < 0) {
+			instrumentType = determineInstrumentType(stringB);
+			if (instrumentType < 0) {
 				leader->sendSystemMessage("performance", "flourish_instrument_unknown");
 				return;
 			}
@@ -83,10 +82,10 @@ public:
 
 		if (number > 0 && number < 9) {
 			if (leader->isDancing()) {
-				doBandFlourish(leader, stringA, false, instrumentID);
+				doBandFlourish(leader, stringA, false, instrumentType);
 
 			} else if (leader->isPlayingMusic()) {
-				doBandFlourish(leader, stringA, true, instrumentID);
+				doBandFlourish(leader, stringA, true, instrumentType);
 
 			} else {
 				leader->sendSystemMessage("performance", "flourish_not_performing");
@@ -179,9 +178,7 @@ public:
 	}
 
 
-	int determineInstrumentID(String& input) {
-		String instrument = input.toLowerCase();
-
+	int determineInstrumentType(String& instrument) {
 		if (instrument == "traz") {
 			return InstrumentImplementation::TRAZ;
 		} else if (instrument == "slitherhorn") {
@@ -208,13 +205,13 @@ public:
 	}
 
 
-	void doBandFlourish(Player* leader, String& number, bool musicflourish, int instrumentID) {
+	void doBandFlourish(Player* leader, String& number, bool musicflourish, int instrumentType) {
 		GroupObject* group = leader->getGroupObject();
 
 		//Make the leader flourish.
 		if (group == NULL) { //leader is not in a group.
-			if (instrumentID > 0) { //the leader specified a valid instrument.
-				if (!leader->isPlayingMusic() || leader->getInstrumentType() != instrumentID) {
+			if (instrumentType > 0) { //the leader specified a valid instrument.
+				if (!leader->isPlayingMusic() || leader->getInstrumentType() != instrumentType) {
 					return;
 				}
 			}
@@ -226,12 +223,12 @@ public:
 			return;
 
 		} else { //leader is in a group.
-			if (instrumentID > 0) { //the leader specified a valid instrument.
+			if (instrumentType > 0) { //the leader specified a valid instrument.
 				if (!musicflourish) {
 					return;
 				}
 				leader->sendSystemMessage("performance", "flourish_perform_band_self"); //"Your band performs a flourish."
-				if (leader->isPlayingMusic() && leader->getInstrumentType() == instrumentID && leader->isAcceptingBandFlourishes()) {
+				if (leader->isPlayingMusic() && leader->getInstrumentType() == instrumentType && leader->isAcceptingBandFlourishes()) {
 					leader->doFlourish(number);
 				}
 
@@ -272,7 +269,7 @@ public:
 
 							//Handle music flourish
 							if (musicflourish && player->isPlayingMusic()) {
-								if (instrumentID < 1 || (player->getInstrumentType() == instrumentID)) {
+								if (instrumentType < 1 || (player->getInstrumentType() == instrumentType)) {
 									player->sendSystemMessage("performance", "flourish_perform_band_member", params);
 									player->doFlourish(number);
 								}
