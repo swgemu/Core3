@@ -401,7 +401,7 @@ public:
 	}
 
 	inline static int getMoodID(const String& name) {
-    	for (int i = 0; i < 189; i++) {
+    	for (int i = 0; i < 190; i++) {
         	if (strcmp(name.toCharArray(), MoodStr[i][0]) == 0)
             	return i;
     	}
@@ -410,7 +410,7 @@ public:
 	}
 
 	inline const static char* getMoodStr(const String& name) {
-		for (int i = 0; i < 189; i++) {
+		for (int i = 0; i < 190; i++) {
 		        	if (strcmp(name.toCharArray(), MoodStr[i][0]) == 0)
 		            	return MoodStr[i][1];
 		    	}
