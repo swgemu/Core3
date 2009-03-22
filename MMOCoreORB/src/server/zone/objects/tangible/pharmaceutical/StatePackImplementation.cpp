@@ -55,7 +55,7 @@ StatePackImplementation::StatePackImplementation(CreatureObject* creature, uint3
 		: StatePackServant(creature, tempCRC, n, tempn, STATEPACK) {
 
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	init();
 }

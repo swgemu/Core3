@@ -259,8 +259,9 @@ interface SceneObject implements ManagedObject {
 	String getLoggingName();
 
 	UnicodeString getCustomName();
-	String getTemplateName();
-	String getTemplateTypeName();
+	String getStfName();
+	String getStfFile();
+	String getStfDetail();
 
 	unsigned long getAssociatedArea();
 	
@@ -312,8 +313,9 @@ interface SceneObject implements ManagedObject {
 
 	local ZoneProcessServerImplementation getZoneProcessServer();
 
-	void setTemplateName(const String tempName);
-	void setTemplateTypeName(const String tempTypeName);
+	void setStfName(const String name);
+	void setStfFile(const String file);
+	void setStfDetail(const String detail);
 
 	// Virtual functions for combat
 	void setCombatState();

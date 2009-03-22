@@ -56,7 +56,7 @@ public:
 		objectID = objID;
 
 		customName = n;
-		templateName = tempn;
+		stfName = tempn;
 	}
 
 	FlowAnalyzerNodeImplementation(uint64 objID) :

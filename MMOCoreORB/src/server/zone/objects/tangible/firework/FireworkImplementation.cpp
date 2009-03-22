@@ -54,8 +54,8 @@ FireworkImplementation::FireworkImplementation(Player* player, uint32 tempCRC, c
 
 	customName = n;
 
-	templateTypeName = "firework_n";
-	templateName = tempn;
+	stfFile = "firework_n";
+	stfName = tempn;
 
 	ply = player;
 
@@ -69,8 +69,8 @@ FireworkImplementation::FireworkImplementation(unsigned long oid, unsigned int t
 
 	customName = n;
 
-	templateTypeName = "firework_n";
-	templateName = tempname;
+	stfFile = "firework_n";
+	stfName = tempname;
 
 	ply = NULL;
 

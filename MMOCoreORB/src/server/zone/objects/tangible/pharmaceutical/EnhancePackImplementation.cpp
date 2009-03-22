@@ -55,7 +55,7 @@ EnhancePackImplementation::EnhancePackImplementation(CreatureObject* creature, u
 		: EnhancePackServant(creature, tempCRC, n, tempn, ENHANCEPACK) {
 
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	init();
 }

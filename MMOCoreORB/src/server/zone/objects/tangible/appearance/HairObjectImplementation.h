@@ -60,8 +60,8 @@ public:
 
 		customName = n;
 
-		templateTypeName = "hair_name";
-		templateName = tempn;
+		stfFile = "hair_name";
+		stfName = tempn;
 
 		if ((equipped = eqp))
 			setParent(creature, 0x04);

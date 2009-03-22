@@ -120,7 +120,7 @@ public:
 
 				String name = tano->getCustomName().toString();
 				if(name.isEmpty())
-					name = tano->getTemplateName() + "(" + tano->getCraftedSerial() + ")";
+					name = tano->getStfName() + "(" + tano->getCraftedSerial() + ")";
 				UnicodeString uniName(name);
 
 				//FactoryCrate* crate = new FactoryCrate(player->getNewItemID(), 0x28D7B8E0, "A Factory Crate", "generic_items_crate");

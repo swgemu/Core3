@@ -141,7 +141,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 
 	player->setObjectCRC(Races::getRaceCRC(race));
 	player->setRaceName(Races::getRace(race));
-	player->setTemplateName(Races::getSpecies(race));
+	player->setStfName(Races::getSpecies(race));
 	player->setGender(Races::getGender(race));
 
 	int gender = 0;
@@ -512,7 +512,7 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	player->setRaceID(raceID);
 	player->setObjectCRC(Races::getRaceCRC(raceID));
 	player->setRaceName(Races::getRace(raceID));
-	player->setTemplateName(Races::getSpecies(raceID));
+	player->setStfName(Races::getSpecies(raceID));
 	player->setGender(Races::getGender(raceID));
 	player->setHairObject(character->getString(27));
 

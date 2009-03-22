@@ -55,7 +55,7 @@ WoundPackImplementation::WoundPackImplementation(CreatureObject* creature, uint3
 		: WoundPackServant(creature, tempCRC, n, tempn, WOUNDPACK) {
 
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	init();
 }

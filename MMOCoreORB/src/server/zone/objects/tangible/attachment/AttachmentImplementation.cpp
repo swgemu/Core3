@@ -74,16 +74,16 @@ void AttachmentImplementation::init() {
 		objectSubType = TangibleObjectImplementation::ARMORATTACHMENT;
 		setOptionsBitmask(TangibleObjectImplementation::OPTIONS_YELLOW);
 		attachmentType = AttachmentImplementation::ARMORATTACHMENT;
-		templateName = "socket_gem_armor";
+		stfName = "socket_gem_armor";
 	} else {
 		objectCRC = 0xC0FCFE34;
 		objectSubType = TangibleObjectImplementation::CLOTHINGATTACHMENT;
 		setOptionsBitmask(TangibleObjectImplementation::OPTIONS_YELLOW);
-		templateName = "socket_gem_clothing";
+		stfName = "socket_gem_clothing";
 		attachmentType = AttachmentImplementation::CLOTHINGATTACHMENT;
 	}
 
-	templateTypeName = "item_n";
+	stfFile = "item_n";
 
 	maxmods = 3;
 

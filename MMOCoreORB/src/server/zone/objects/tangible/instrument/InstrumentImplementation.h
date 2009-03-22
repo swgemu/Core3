@@ -91,8 +91,8 @@ public:
 		String key = "instrumentType";
 		itemAttributes->setIntAttribute(key, instrumentType);
 
-		templateTypeName = "obj_n";
-		templateName = tempn;
+		stfFile = "obj_n";
+		stfName = tempn;
 
 		customName = n;
 
@@ -104,8 +104,8 @@ public:
 
 		objectCRC = tempCRC;
 
-		templateTypeName = "obj_n";
-		templateName = tempn;
+		stfFile = "obj_n";
+		stfName = tempn;
 
 		customName = n;
 

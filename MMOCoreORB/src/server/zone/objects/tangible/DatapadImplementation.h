@@ -59,8 +59,8 @@ public:
 
 		customName = UnicodeString("");
 
-		templateTypeName = "item_n";
-		templateName = "datapad";
+		stfFile = "item_n";
+		stfName = "datapad";
 
 		parent = (SceneObject*) creature;
 	}

@@ -199,7 +199,7 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 		lootTableTemp = lootTableMap[lootGroup]->get(i);
 
 		if (lootTableTemp->getLootItemLevel() <= level) {
-			int compare = lootTableTemp->getLootItemRace().indexOf(player->getTemplateName());
+			int compare = lootTableTemp->getLootItemRace().indexOf(player->getStfName());
 
 			if (compare >= 0 || lootTableTemp->getLootItemRace() == "all" )
 				selectedLootTableMap.add(lootTableTemp);

@@ -55,9 +55,9 @@ public:
 			: BaseLineMessage(itno->getObjectID(), 0x4F4E5449, 3, 5) {
 
 		insertFloat(1);
-		insertAscii(itno->getTemplateName()); //real stf name
+		insertAscii(itno->getStfName()); //real stf name
 		insertInt(0);
-		insertAscii(itno->getTemplateTypeName());
+		insertAscii(itno->getStfFile());
 		insertInt(0);
 
 		insertInt(1);

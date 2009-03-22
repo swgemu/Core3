@@ -55,7 +55,7 @@ CurePackImplementation::CurePackImplementation(CreatureObject* creature, uint32 
 		: CurePackServant(creature, tempCRC, n, tempn, CUREPACK) {
 
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	init();
 }

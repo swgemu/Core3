@@ -54,7 +54,7 @@ FoodImplementation::FoodImplementation(uint64 oid, uint32 tempCRC, const Unicode
 	objectCRC = tempCRC;
 
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	init();
 }
@@ -65,7 +65,7 @@ FoodImplementation::FoodImplementation(CreatureObject* creature, uint64 oid, uin
 	objectCRC = tempCRC;
 
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	setParent((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);
 

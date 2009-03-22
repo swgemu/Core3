@@ -57,8 +57,8 @@ IntangibleObjectImplementation::IntangibleObjectImplementation(uint64 oid, Strin
 
 	customName = n;
 
-	templateName = stringFile;
-	templateTypeName = stringName;
+	stfName = stringFile;
+	stfFile = stringName;
 
 	objectCRC = objCRC;
 

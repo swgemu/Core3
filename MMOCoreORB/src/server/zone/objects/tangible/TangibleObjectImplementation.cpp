@@ -75,7 +75,7 @@ TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, uint32 te
 
 	customName = n;
 
-	templateName = tempname;
+	stfName = tempname;
 
 	objectSubType = tp;
 
@@ -94,7 +94,7 @@ TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creat
 	customName = n;
 
 	objectCRC = tempCRC;
-	templateName = tempname;
+	stfName = tempname;
 	objectID = creature->getNewItemID();
 
 	objectType = TANGIBLE;
@@ -108,7 +108,7 @@ TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creat
 
 TangibleObjectImplementation::~TangibleObjectImplementation() {
 	if (parent != NULL && !isPlayer() && !isNonPlayerCreature()) {
-		error(_this->getTemplateName() + "item still in container on delete");
+		error(_this->getStfName() + "item still in container on delete");
 
 		StackTrace::printStackTrace();
 

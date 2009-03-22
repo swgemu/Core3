@@ -56,7 +56,7 @@ public:
 		insertFloat(1.0);
 		insertAscii("installation_n"); // STF File
 		insertInt(0); //nothing.
-		insertAscii(hino->getTemplateName()); // Key for Default Name
+		insertAscii(hino->getStfName()); // Key for Default Name
 		insertUnicode(hino->getName()); // Object Name
 
 		insertInt(1);

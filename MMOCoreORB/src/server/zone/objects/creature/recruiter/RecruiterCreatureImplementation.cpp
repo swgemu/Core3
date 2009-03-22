@@ -63,7 +63,7 @@ RecruiterCreatureImplementation::RecruiterCreatureImplementation(uint64 oid) : R
 	loggingname << "Recruiter = 0x" << oid;
 	setLoggingName(loggingname.toString());
 
-	templateTypeName = "mob/creature_names";
+	stfFile = "mob/creature_names";
 
 	setLogging(false);
 	setGlobalLogging(true);

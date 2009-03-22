@@ -291,7 +291,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(Player* pl
 			item->setObjectCRC(objectcrc);
 			item->setCustomName(objectname);
 			item->setObjectSubType(objecttype);
-			item->setTemplateName(objecttemp);
+			item->setStfName(objecttemp);
 			item->setEquipped(equipped);
 			if (makeStats) {
 				item->setAttributes(lootAttributes );
@@ -877,9 +877,9 @@ TangibleObject* ItemManagerImplementation::clonePlayerObjectTemplate(uint64 obje
 	//the name is passed in a hackish way to stop buffer overflows.. anyone know why it was doing that?
 	TangibleObject* newTempl = createPlayerObjectTemplate(NULL, templ->getObjectSubType(),
 			objectid, templ->getObjectCRC(), UnicodeString(templ->getCustomName()),
-			(char *) templ->getTemplateName().toCharArray(), templ->isEquipped(), false, "", 0);
+			(char *) templ->getStfName().toCharArray(), templ->isEquipped(), false, "", 0);
 
-	newTempl->setTemplateTypeName(templ->getTemplateTypeName());
+	newTempl->setStfFile(templ->getStfFile());
 
 	newTempl->setAttributes(templ->getAttributes());
 	newTempl->parseItemAttributes();
@@ -1919,7 +1919,7 @@ void ItemManagerImplementation::createDatapadItem(Player* player, SceneObject* i
 		<< "(`object_id`,`character_id`,`object_type`,`custom_name`,`stringFile`,`stringName`,`object_crc`,`attributes`,`appearance`, `linked_tano_id`)"
 		<< " VALUES(" << item->getObjectID() << "," << player->getCharacterID()
 		<< "," << item->getObjectType() << ",'" << itemname << "','"
-	    << item->getTemplateTypeName() << "','"<< item->getTemplateName() << "',"<< item->getObjectCRC() << ",'"
+	    << item->getStfFile() << "','"<< item->getStfName() << "',"<< item->getObjectCRC() << ",'"
 		<< attr << "','" << appearance.subString(0, appearance.length() - 1) << "', " << worldID <<")";
 
 		ServerDatabase::instance()->executeStatement(query);
@@ -1962,7 +1962,7 @@ void ItemManagerImplementation::createDatapadLinkedItem(Player* player, SceneObj
 			<< "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_type_name`,`template_name`,`equipped`,`deleted`,`attributes`,`appearance`, `itemMask`, `optionsBitmask`)"
 			<< " VALUES(" << tano->getObjectID() << "," << player->getCharacterID()
 			<< ",'" << itemname << "',"
-			<< tano->getObjectCRC() << "," << tano->getObjectSubType() << ",'" << tano->getTemplateTypeName() << "','"<< tano->getTemplateName() << "',"
+			<< tano->getObjectCRC() << "," << tano->getObjectSubType() << ",'" << tano->getStfFile() << "','"<< tano->getStfName() << "',"
 			<< tano->isEquipped() << ",0,'" << attr
 			<< "','" << appearance.subString(0, appearance.length() - 1) << "', " << tano->getPlayerUseMask() << ", " << tano->getOptionsBitmask() << ")";
 
@@ -1972,7 +1972,7 @@ void ItemManagerImplementation::createDatapadLinkedItem(Player* player, SceneObj
 			<< "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_type_name`,`template_name`,`equipped`,`deleted`,`attributes`,`appearance`)"
 			<< " VALUES(" << item->getObjectID() << "," << player->getCharacterID()
 			<< ",'" << itemname << "',"
-			<< item->getObjectCRC() << "," << item->getObjectType() << ",'" << item->getTemplateTypeName() << "','"<< item->getTemplateName() << "',"
+			<< item->getObjectCRC() << "," << item->getObjectType() << ",'" << item->getStfFile() << "','"<< item->getStfName() << "',"
 			<< false << ",0,'" << attr
 			<< "','" << appearance.subString(0, appearance.length() - 1) << "')";
 		}
@@ -2008,7 +2008,7 @@ void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject*
 		<< "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_type_name`,`template_name`,`equipped`,`deleted`,`attributes`,`appearance`, `itemMask`, `optionsBitmask`)"
 		<< " VALUES(" << item->getObjectID() << "," << player->getCharacterID()
 		<< ",'" << itemname << "',"
-		<< item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateTypeName() << "','"<< item->getTemplateName() << "',"
+		<< item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getStfFile() << "','"<< item->getStfName() << "',"
 		<< item->isEquipped() << ",0,'" << attr
 		<< "','" << appearance.subString(0, appearance.length() - 1) << "', " << item->getPlayerUseMask() << ", " << item->getOptionsBitmask() << ")";
 
@@ -2570,7 +2570,7 @@ void ItemManagerImplementation::moveNestedItemsToPlayerStorage(Player* player, C
 				<< "(`item_id`,`structure_id`,`name`,`template_crc`,`template_type`"
 				<< ",`template_name`,`container`,`parent_id`,`appearance`, `attributes`,`itemMask`,`optionsBitmask`,X,Y,Z,oX,oY,oZ,oW,dropped_by_character) "
 				<< "VALUES (" << item->getObjectID() << ",0,'" << itemname << "',"
-				<< item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
+				<< item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getStfName() << "',"
 				<< containerID << ",0,'" << appearance.subString(0, appearance.length() - 1)
 				<< "','" << attr << "'," << item->getPlayerUseMask() << "," << item->getOptionsBitmask() << ","
 				<< x << "," << y << "," << z << "," << oX << "," << oY << "," << oZ << "," << oW << "," << player->getCharacterID() << ")";
@@ -2719,7 +2719,7 @@ void ItemManagerImplementation::insertItemIntoPlayerStorage(Player* player, Tang
 		<< "(`item_id`,`structure_id`,`name`,`template_crc`,`template_type`"
 		<< ",`template_name`,`container`,`parent_id`,`appearance`, `attributes`,`itemMask`,`optionsBitmask`,X,Y,Z,oX,oY,oZ,oW,dropped_by_character) "
 		<< "VALUES (" << item->getObjectID() << "," << structureID << ",'" << itemname << "',"
-		<< item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
+		<< item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getStfName() << "',"
 		<< containerID << "," << parentID << ",'" << appearance.subString(0, appearance.length() - 1)
 		<< "','" << attr << "'," << item->getPlayerUseMask() << "," << item->getOptionsBitmask() << ","
 		<< x << "," << y << "," << z << "," << oX << "," << oY << "," << oZ << "," << oW << "," << player->getCharacterID() << ")";

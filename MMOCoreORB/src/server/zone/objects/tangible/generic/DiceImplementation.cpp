@@ -51,8 +51,8 @@ which carries forward this exception.
 DiceImplementation::DiceImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: DiceServant(oid, tempCRC, n, tempn, DICE) {
 	customName = n;
-	templateTypeName = "obj_n";
-	templateName = tempn;
+	stfFile = "obj_n";
+	stfName = tempn;
 
 	diceType = objectCRC;
 	diceSides = 0;

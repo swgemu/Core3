@@ -10,8 +10,8 @@ DeedObjectImplementation::DeedObjectImplementation(uint64 oid, uint32 tempCRC, c
 	: DeedObjectServant(oid, tempCRC, n, tempname, DEED) {
 	objectID = oid;
 	objectCRC = tempCRC;
-	templateTypeName = "deed";
-	templateName = tempname;
+	stfFile = "deed";
+	stfName = tempname;
 	customName = n;
 
 	init();
@@ -20,8 +20,8 @@ DeedObjectImplementation::DeedObjectImplementation(uint64 oid, uint32 tempCRC, c
 DeedObjectImplementation::DeedObjectImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempname)
 	: DeedObjectServant(creature->getObjectID(), tempCRC, n, tempname, DEED) {
 	objectCRC = tempCRC;
-	templateTypeName = "deed";
-	templateName = tempname;
+	stfFile = "deed";
+	stfName = tempname;
 	customName = n;
 
 	init();
@@ -31,8 +31,8 @@ DeedObjectImplementation::DeedObjectImplementation(uint64 oid, uint32 tempCRC, c
 	: DeedObjectServant(oid, tempCRC, n, tempname, type) {
 	objectID = oid;
 	objectCRC = tempCRC;
-	templateTypeName = "deed";
-	templateName = tempname;
+	stfFile = "deed";
+	stfName = tempname;
 	customName = n;
 
 	init();
@@ -41,8 +41,8 @@ DeedObjectImplementation::DeedObjectImplementation(uint64 oid, uint32 tempCRC, c
 DeedObjectImplementation::DeedObjectImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempname, int type)
 	: DeedObjectServant(creature->getObjectID(), tempCRC, n, tempname, type) {
 	objectCRC = tempCRC;
-	templateTypeName = "deed";
-	templateName = tempname;
+	stfFile = "deed";
+	stfName = tempname;
 	customName = n;
 
 	init();

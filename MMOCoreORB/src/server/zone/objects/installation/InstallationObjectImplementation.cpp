@@ -82,7 +82,7 @@ InstallationObjectImplementation::InstallationObjectImplementation(uint64 oid, D
 	objectSubType = getObjectSubType();
 	customName = deed->getTargetName();
 	file = deed->getTargetFile();
-	templateName = deed->getTargetTemplate();
+	stfName = deed->getTargetTemplate();
 
 	/*maintenance = deed->getSurplusMaintenance();
 	energy = deed->getSurplusPower();
@@ -106,7 +106,7 @@ void InstallationObjectImplementation::init() {
 
 	complexity = 1.f;
 
-	templateTypeName = "installation_n";
+	stfFile = "installation_n";
 
 	optionsBitmask = 0x00000100;
 

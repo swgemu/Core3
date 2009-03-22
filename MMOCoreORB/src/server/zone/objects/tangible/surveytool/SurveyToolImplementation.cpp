@@ -55,9 +55,9 @@ which carries forward this exception.
 SurveyToolImplementation::SurveyToolImplementation(uint64 object_id, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: SurveyToolServant(object_id, tempCRC, n, tempn, SURVEYTOOL) {
 	objectCRC = tempCRC;
-	templateTypeName = "obj_n";
+	stfFile = "obj_n";
 
-	templateName = tempn;
+	stfName = tempn;
 
 	customName = n;
 
@@ -68,8 +68,8 @@ SurveyToolImplementation::SurveyToolImplementation(CreatureObject* creature, uin
 		: SurveyToolServant(creature, tempCRC, n, tempn, SURVEYTOOL) {
 	objectCRC = tempCRC;
 
-	templateTypeName = "obj_n";
-	templateName = tempn;
+	stfFile = "obj_n";
+	stfName = tempn;
 
 	customName = n;
 
@@ -81,21 +81,21 @@ SurveyToolImplementation::~SurveyToolImplementation() {
 }
 
 void SurveyToolImplementation::init() {
-	if (templateName == "survey_tool_mineral") {
+	if (stfName == "survey_tool_mineral") {
 		surveyToolType = ResourceHarvestType::MINERAL;
-	} else if (templateName == "survey_tool_solar") {
+	} else if (stfName == "survey_tool_solar") {
 		surveyToolType = ResourceHarvestType::SOLAR;
-	} else if (templateName == "survey_tool_liquid") {
+	} else if (stfName == "survey_tool_liquid") {
 		surveyToolType = ResourceHarvestType::CHEMICAL;
-	} else if (templateName == "survey_tool_lumber") {
+	} else if (stfName == "survey_tool_lumber") {
 		surveyToolType = ResourceHarvestType::FLORA;
-	} else if (templateName == "survey_tool_gas") {
+	} else if (stfName == "survey_tool_gas") {
 		surveyToolType = ResourceHarvestType::GAS;
-	} else if (templateName == "survey_tool_geothermal") {
+	} else if (stfName == "survey_tool_geothermal") {
 		surveyToolType = ResourceHarvestType::GEOTHERMAL;
-	} else if (templateName == "survey_tool_moisture") {
+	} else if (stfName == "survey_tool_moisture") {
 		surveyToolType = ResourceHarvestType::WATER;
-	} else if (templateName == "survey_tool_wind") {
+	} else if (stfName == "survey_tool_wind") {
 		surveyToolType = ResourceHarvestType::WIND;
 	}
 

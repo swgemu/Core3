@@ -89,7 +89,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	cooldownMap.setInsertPlan(SortedVector<String>::NO_DUPLICATE);
 	cooldownMap.setNullValue(0);
 
-	templateTypeName = "species";
+	stfFile = "species";
 
 	boneType = "";
 	hideType = "";

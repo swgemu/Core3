@@ -112,7 +112,7 @@ public:
 						CreatureObject* trackee = (CreatureObject*) object;
 
 						if(type == 0 && trackee->isCreature()) {
-							results << "@mob/creature_names:" << trackee->getTemplateName();
+							results << "@mob/creature_names:" << trackee->getStfName();
 
 							if(trackee->isBaby())
 								results << " (baby)";
@@ -123,7 +123,7 @@ public:
 
 							rangerTrackResults->addMenuItem(results.toString());
 						} else if(type == 1 && trackee->isNPC()) {
-							results << "@mob/creature_names:" << trackee->getTemplateName();
+							results << "@mob/creature_names:" << trackee->getStfName();
 
 							if(canGetDirection)
 								results << " | " + getDirection(tracker, trackee);

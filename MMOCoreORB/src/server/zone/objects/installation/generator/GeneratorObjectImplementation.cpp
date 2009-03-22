@@ -31,7 +31,7 @@ GeneratorObjectImplementation::GeneratorObjectImplementation(uint64 oid, Generat
 	objectCRC = deed->getTargetFile().hashCode();
 	customName = deed->getTargetName();
 	file = deed->getTargetFile();
-	templateName = deed->getTargetTemplate();
+	stfName = deed->getTargetTemplate();
 
 	setSurplusMaintenance(deed->getSurplusMaintenance());
 	setMaintenanceRate(deed->getMaintenanceRate());

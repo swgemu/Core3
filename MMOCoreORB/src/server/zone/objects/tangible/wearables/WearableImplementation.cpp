@@ -62,8 +62,8 @@ WearableImplementation::WearableImplementation(uint64 objid, uint32 tempCRC, con
 
 	customName = n;
 
-	templateTypeName = "wearables_name";
-	templateName = tempn;
+	stfFile = "wearables_name";
+	stfName = tempn;
 
 	equipped = eqp;
 	init();
@@ -76,8 +76,8 @@ WearableImplementation::WearableImplementation(CreatureObject* creature, uint64 
 
 	customName = n;
 
-	templateTypeName = "wearables_name";
-	templateName = tempn;
+	stfFile = "wearables_name";
+	stfName = tempn;
 
 	if ((equipped = eqp))
 		setParent(creature, 0x04);
@@ -93,8 +93,8 @@ WearableImplementation::WearableImplementation(CreatureObject* creature, uint32 
 
 	customName = n;
 
-	templateTypeName = "wearables_name";
-	templateName = tempn;
+	stfFile = "wearables_name";
+	stfName = tempn;
 
 	if ((equipped = eqp))
 		setParent(creature, 0x04);

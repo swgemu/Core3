@@ -59,8 +59,8 @@ public:
 
 		customName = UnicodeString("");
 
-		templateTypeName = "item_n";
-		templateName = "mission_bag";
+		stfFile = "item_n";
+		stfName = "mission_bag";
 
 		parent = creature;
 	}

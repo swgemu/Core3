@@ -25,7 +25,7 @@ VehicleDeedImplementation::VehicleDeedImplementation(CreatureObject* creature, u
 	objectCRC = tempcrc;
 
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	init();
 }
@@ -37,7 +37,7 @@ VehicleDeedImplementation::VehicleDeedImplementation(uint64 objid, uint32 tempcr
 	objectCRC = tempcrc;
 
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	init();
 }
@@ -51,43 +51,43 @@ void VehicleDeedImplementation::init() {
 	setHitPoints(1000);
 
 	//speederbike_swoop is the old crafting lua's, swoop is the new crafting luas so remove speederbike_swoop after all old deeds are gone
-	if (templateName == "speederbike_swoop" || templateName == "swoop") {
+	if (stfName == "speederbike_swoop" || stfName == "swoop") {
 		targetName = UnicodeString("speederbike_swoop");
 		targetFile = "object/intangible/vehicle/shared_speederbike_swoop_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_speederbike_swoop.iff";
-	} else if (templateName == "speederbike") {
+	} else if (stfName == "speederbike") {
 		targetName = UnicodeString("speederbike");
 		targetFile = "object/intangible/vehicle/shared_speederbike_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_speederbike.iff";
-	} else if (templateName == "landspeeder_x34"){
+	} else if (stfName == "landspeeder_x34"){
 		targetName = UnicodeString("landspeeder_x34");
 		targetFile = "object/intangible/vehicle/shared_landspeeder_x34_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_landspeeder_x34.iff";
-	} else if (templateName == "speederbike_swoop_deed") {
+	} else if (stfName == "speederbike_swoop_deed") {
 		targetName = UnicodeString("speederbike_swoop");
 		targetFile = "object/intangible/vehicle/shared_speederbike_swoop_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_speederbike_swoop.iff";
-	} else if (templateName == "jetpack_deed") {
+	} else if (stfName == "jetpack_deed") {
 		targetName = UnicodeString("jetpack");
 		targetFile = "object/intangible/vehicle/shared_jetpack_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_jetpack.iff";
-	} else if (templateName == "landspeeder_av21_deed") {
+	} else if (stfName == "landspeeder_av21_deed") {
 		targetName = UnicodeString("landspeeder_av21");
 		targetFile = "object/intangible/vehicle/shared_landspeeder_av21_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_landspeeder_av21.iff";
-	} else if (templateName == "landspeeder_x31_deed") {
+	} else if (stfName == "landspeeder_x31_deed") {
 		targetName = UnicodeString("landspeeder_x31");
 		targetFile = "object/intangible/vehicle/shared_landspeeder_x31_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_landspeeder_x31.iff";
-	} else if (templateName == "landspeeder_x34_deed") {
+	} else if (stfName == "landspeeder_x34_deed") {
 		targetName = UnicodeString("landspeeder_x34");
 		targetFile = "object/intangible/vehicle/shared_landspeeder_x34_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_landspeeder_x34.iff";
-	} else if (templateName == "speederbike_deed") {
+	} else if (stfName == "speederbike_deed") {
 		targetName = UnicodeString("speederbike");
 		targetFile = "object/intangible/vehicle/shared_speederbike_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_speederbike.iff";
-	} else if (templateName == "speederbike_flash_deed") {
+	} else if (stfName == "speederbike_flash_deed") {
 		targetName = UnicodeString("speederbike_flash");
 		targetFile = "object/intangible/vehicle/shared_speederbike_flash_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_speederbike_flash.iff";

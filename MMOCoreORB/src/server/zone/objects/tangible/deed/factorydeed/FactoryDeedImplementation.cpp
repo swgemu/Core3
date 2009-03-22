@@ -12,7 +12,7 @@ FactoryDeedImplementation::FactoryDeedImplementation(CreatureObject* creature, u
 	objectCRC = tempcrc;
 
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	init();
 }
@@ -24,7 +24,7 @@ FactoryDeedImplementation::FactoryDeedImplementation(uint64 objid, uint32 tempcr
 	objectCRC = tempcrc;
 
 	customName = n;
-	templateName = tempn;
+	stfName = tempn;
 
 	init();
 }
@@ -35,9 +35,9 @@ FactoryDeedImplementation::FactoryDeedImplementation(CreatureObject* creature, F
 	info("FactoryDeedImplementation(CreatureObject* creature, FactoryObject* fact)");
 
 	objectCRC = fact->getDeedCRC();
-	templateTypeName = "deed"; // STF
-	templateName = getDefaultTemplateName(objectCRC);
-	info(templateName);
+	stfFile = "deed"; // STF
+	stfName = getDefaultTemplateName(objectCRC);
+	info(stfName);
 	customName = "";
 
 	setSurplusMaintenance((uint32)fact->getSurplusMaintenance());
@@ -120,21 +120,21 @@ void FactoryDeedImplementation::init() {
 
 	targetTempFile = "object/installation/base/shared_construction_installation_base.iff";
 
-	if (templateName.indexOf("clothing") != -1){
+	if (stfName.indexOf("clothing") != -1){
 		type = WEARABLES;
 
 		targetTemplate = "clothing_factory";
 		targetFile = "object/installation/manufacture/shared_clothing_factory.iff";
 
 		targetName = String("Clothing Factory");
-	} else if (templateName.indexOf("food") != -1){
+	} else if (stfName.indexOf("food") != -1){
 		type = FOOD;
 
 		targetTemplate = "food_factory";
 		targetFile = "object/installation/manufacture/shared_food_factory.iff";
 
 		targetName = String("Food Factory");
-	} else if (templateName.indexOf("structure") != -1){
+	} else if (stfName.indexOf("structure") != -1){
 		type = STRUCTURE;
 
 		targetTemplate = "structure_factory";

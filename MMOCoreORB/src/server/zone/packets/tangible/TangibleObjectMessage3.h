@@ -55,9 +55,9 @@ public:
 			: BaseLineMessage(tano->getObjectID(), objType, 3, opcnt) {
 		insertFloat(tano->getComplexity());
 
-		insertAscii(tano->getTemplateTypeName());
+		insertAscii(tano->getStfFile());
 		insertInt(0);
-		insertAscii(tano->getTemplateName());
+		insertAscii(tano->getStfName());
 
 		insertUnicode(tano->getCustomName());
 

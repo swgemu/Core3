@@ -63,8 +63,8 @@ public:
 
 		customName = n;
 
-		templateTypeName = "wearables_name";
-		templateName = tempn;
+		stfFile = "wearables_name";
+		stfName = tempn;
 
 		ply = player;
 

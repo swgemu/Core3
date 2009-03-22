@@ -33,7 +33,7 @@ FactoryObjectImplementation::FactoryObjectImplementation(uint64 oid, FactoryDeed
 	objectCRC = deed->getTargetFile().hashCode();
 	customName = deed->getTargetName();
 	file = deed->getTargetFile();
-	templateName = deed->getTargetTemplate();
+	stfName = deed->getTargetTemplate();
 
 
 	setSurplusMaintenance(deed->getSurplusMaintenance());
@@ -363,7 +363,7 @@ bool FactoryObjectImplementation::containsIngredients(ManufactureSchematic* link
 							String name;
 
 							if (comp->getCustomName().isEmpty())
-								name = "@" + comp->getTemplateTypeName() + "#" + comp->getTemplateName() + " ";
+								name = "@" + comp->getStfFile() + "#" + comp->getStfName() + " ";
 							else
 								name = comp->getCustomName().toString();
 
@@ -384,7 +384,7 @@ bool FactoryObjectImplementation::containsIngredients(ManufactureSchematic* link
 								String name;
 
 								if (comp->getCustomName().isEmpty())
-									name = "@" + comp->getTemplateTypeName() + "#" + comp->getTemplateName() + " ";
+									name = "@" + comp->getStfFile() + "#" + comp->getStfName() + " ";
 								else
 									name = comp->getCustomName().toString();
 
@@ -467,7 +467,7 @@ bool FactoryObjectImplementation::removeIngredients(ManufactureSchematic* linked
 							String name;
 
 							if(comp->getCustomName().isEmpty())
-								name = "@" + comp->getTemplateTypeName() + "#" + comp->getTemplateName() + " ";
+								name = "@" + comp->getStfFile() + "#" + comp->getStfName() + " ";
 							else
 								name = comp->getCustomName().toString();
 
@@ -495,7 +495,7 @@ bool FactoryObjectImplementation::removeIngredients(ManufactureSchematic* linked
 								Component* comp = (Component*) tano.get();
 
 								if(comp->getCustomName().isEmpty())
-									name = "@" + comp->getTemplateTypeName() + "#" + comp->getTemplateName() + " ";
+									name = "@" + comp->getStfFile() + "#" + comp->getStfName() + " ";
 								else
 									name = comp->getCustomName().toString();
 
@@ -593,7 +593,7 @@ bool FactoryObjectImplementation::putItemInOutputHopper(ManufactureSchematic* li
 			//FactoryCrate* crate = new FactoryCrate(_this->getZone()->getZoneServer()->getNextID(), clone);
 			String name = clone->getCustomName().toString();
 			if(name.isEmpty())
-				name = clone->getTemplateName() + "(" + clone->getCraftedSerial() + ")";
+				name = clone->getStfName() + "(" + clone->getCraftedSerial() + ")";
 			UnicodeString uniName(name);
 			FactoryCrate* crate = new FactoryCrate(_this->getZone()->getZoneServer()->getNextID(), clone.get());
 			crate->setTangibleObject(clone.get());
@@ -715,7 +715,7 @@ void FactoryObjectImplementation::sendInsertManSchemTo(Player* player){
 				String name;
 
 				if(manSchem->getCustomName().isEmpty())
-					name = "@" + tano->getTemplateTypeName() + "#" + tano->getTemplateName();
+					name = "@" + tano->getStfFile() + "#" + tano->getStfName();
 				else
 					name = manSchem->getCustomName().toString();
 

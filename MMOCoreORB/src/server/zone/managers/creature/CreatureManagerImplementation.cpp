@@ -432,7 +432,7 @@ TrainerCreature* CreatureManagerImplementation::spawnTrainer(const String& profe
 		trainer->deploy();
 
 		if (!stfname.isEmpty())
-			trainer->setTemplateName(stfname);
+			trainer->setStfName(stfname);
 		//else
 		if (!name.isEmpty())
 			trainer->setCharacterName(UnicodeString(name));
@@ -630,8 +630,8 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 		creature->setFPValue(result.getIntField("factionPoints"));
 
 		if (!stfname.isEmpty() && !species.isEmpty()) {
-			creature->setTemplateTypeName(stfname);
-			creature->setTemplateName(species);
+			creature->setStfFile(stfname);
+			creature->setStfName(species);
 		} else if (!name.isEmpty())
 			creature->setCharacterName(name);
 		else if (objcrc == 0xBA7F23CD)
@@ -793,7 +793,7 @@ void CreatureManagerImplementation::setCreatureAttributes(Creature* creature, Lu
 
 		creature->setMind(creatureConfig->getIntField("mind"));
 		creature->setMind(creature->getMind() + (creature->getMind() * (System::random(100)) / 1111));
-		System::out << "ATTENTION: The LUA creature script for " << creature->getTemplateName()  << " is obv. still in the old format ! \n";
+		System::out << "ATTENTION: The LUA creature script for " << creature->getStfName()  << " is obv. still in the old format ! \n";
 	} else {
 		//red
 		creature->setHealth(creatureConfig->getIntField("healthMin") + System::random(creatureConfig->getIntField("healthMax")-creatureConfig->getIntField("healthMin")));
@@ -923,7 +923,7 @@ LairObject* CreatureManagerImplementation::spawnLair(const String& type, float x
 
 		String stfName = result.getStringField("stfName");
 
-		lair->setTemplateName(stfName);
+		lair->setStfName(stfName);
 
 		uint32 creatureCRC = result.getIntField("creatureCRC");
 		int	spawnSize = result.getIntField("spawnSize");
@@ -1061,8 +1061,8 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 	spawnInfoMap->addCRC(objectName, creatureConfig.getIntField("objectCRC"));
 
 	if (!stfname.isEmpty() && !speciesName.isEmpty()) {
-		creature->setTemplateTypeName(stfname);
-		creature->setTemplateName(speciesName);
+		creature->setStfFile(stfname);
+		creature->setStfName(speciesName);
 	} else if (!stfname.isEmpty())
 		creature->setCharacterName(stfname);
 	else
@@ -1158,7 +1158,7 @@ int CreatureManagerImplementation::addLair(lua_State * L) {
 
 		String stfName = object.getStringField("stfName");
 
-		lair->setTemplateName(stfName);
+		lair->setStfName(stfName);
 
 		uint32 creatureCRC = object.getIntField("creatureCRC");
 		int	spawnSize = object.getIntField("spawnSize");

@@ -230,7 +230,7 @@ void PlayerImplementation::initializePlayer() {
 	datapad = NULL;
 	equippedItems = NULL;
 
-	templateTypeName = "species";
+	stfFile = "species";
 
 	// modifiers
 	weaponSpeedModifier = 1;

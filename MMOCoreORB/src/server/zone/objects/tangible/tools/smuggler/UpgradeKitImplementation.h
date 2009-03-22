@@ -63,7 +63,7 @@ public:
 		objectID = objID;
 
 		customName = n;
-		templateName = tempn;
+		stfName = tempn;
 
 		setKitType(ktype);
 	}
