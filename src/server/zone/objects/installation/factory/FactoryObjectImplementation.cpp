@@ -133,7 +133,7 @@ void FactoryObjectImplementation::sendRadialResponseTo(Player* player, ObjectMen
 
 /*
  * Parses the attributes for a factory, including buildRate, inputHopperID, and outputHopperID.
- * After loading the hopperID's it attemps to create the hoppers and load items from the DB.
+ * After loading the hopperID's it attempts to create the hoppers and load items from the DB.
  */
 void FactoryObjectImplementation::parseItemAttributes(){
 	InstallationObjectImplementation::parseItemAttributes();
@@ -171,8 +171,12 @@ void FactoryObjectImplementation::serializeHoppers(){
  * @param Player* player Reference of the player to send the input inventory screen to.
  */
 void FactoryObjectImplementation::sendInputHopperTo(Player* player){
-	if(inputHopper==NULL)
+	if (inputHopper==NULL) {
+		String subject("Cannot Find Input Hopper");
+		String bodyMsg("@system_msg:manf_error_5");
+		sendEmailToOwner(subject, bodyMsg);
 		return;
+	}
 	inputHopper->sendTo(player);
 	inputHopper->openTo(player);
 }
@@ -182,8 +186,12 @@ void FactoryObjectImplementation::sendInputHopperTo(Player* player){
  * @param Player* player Reference of the player to send the output inventory screen to.
  */
 void FactoryObjectImplementation::sendOutputHopperTo(Player* player){
-	if(outputHopper==NULL)
+	if(outputHopper==NULL) {
+		String subject("Cannot Find Ouput Hopper");
+		String bodyMsg("@system_msg:manf_error_6");
+		sendEmailToOwner(subject, bodyMsg);
 		return;
+	}
 	outputHopper->sendTo(player);
 	outputHopper->openTo(player);
 }
@@ -407,7 +415,6 @@ bool FactoryObjectImplementation::containsIngredients(ManufactureSchematic* link
 				return false;
 			}
 
-			++i;
 			found = false;
 		}
 
@@ -521,7 +528,8 @@ bool FactoryObjectImplementation::removeIngredients(ManufactureSchematic* linked
 			}
 			if(found == false)
 				return false;
-			++i;
+
+			found = false;
 		}
 		return true;
 	} catch (...) {
@@ -598,7 +606,7 @@ bool FactoryObjectImplementation::putItemInOutputHopper(ManufactureSchematic* li
 			FactoryCrate* crate = new FactoryCrate(_this->getZone()->getZoneServer()->getNextID(), clone.get());
 			crate->setTangibleObject(clone.get());
 			crate->setOptionsBitmask(8192);
-			crate->setPersistent(true);
+			crate->setPersistent(false);
 
 			//clone->setPersistent(true);
 
@@ -633,8 +641,63 @@ bool FactoryObjectImplementation::putItemInOutputHopper(ManufactureSchematic* li
  * Send an email to the owner from the factory.
  */
 void FactoryObjectImplementation::sendEmailToOwner(String subject, String bodyMsg) {
-
+/*
+ * @system_msg:manf_done
+ * Your manufacturing station, %TT, has stopped making items. %DI items were made.
+ *
+ * @system_msg:manf_done_sub
+ * Manufacturing station finished
+ *
+ * @system_msg:manf_no_power
+ * Your manufacturing station, %TT, has run out of power.
+ *
+ * @system_msg:manf_no_component
+ * Your manufacturing station, %TT, has run out of component %TO.
+ *
+ * @system_msg:manf_no_named_resource
+ * Your manufacturing station, %TT, has run out of resource %TO.
+ *
+ * @system_msg:manf_no_unknown_resource
+ * Your manufacturing station, %TT, has run out of a resource.
+ *
+ * @system_msg:manf_error
+ * Internal Manufacturing Error
+ *
+ * @system_msg:manf_error_1
+ * No schematic for station, please file a bug report.
+ *
+ * @system_msg:manf_error_2
+ * Manufacturing station has an invalid item count, please file a bug report.
+ *
+ * @system_msg:manf_error_3
+ * No schematic found when trying to create an object, please file a bug report.
+ *
+ * @system_msg:manf_error_4
+ * Manufacturing station found schematic with a count of <= 0 when trying to create an object, please file a bug report.
+ *
+ * @system_msg:manf_error_5
+ * Can't find input hopper for manufacturing station when trying to create an object, please file a bug report.
+ *
+ * @system_msg:manf_error_6
+ * Can't find output hopper for manufacturing station when trying to create an object, please file a bug report.
+ *
+ * @system_msg:manf_error_7
+ * Manufacturing station unable to create crate to store objects in, please file a bug report.
+ *
+ * @system_msg:manf_error_8
+ * Error creating object for manufacturing station, please file a bug report.
+ *
+ * @system_msg:manf_error_9
+ * Error transferring new object to output hopper of manufacturing station, please file a bug report.
+ *
+ * @system_msg:manf_output_hopper_full
+ * Your manufacturing station, %TT, has stopped making items because the output hopper is full.
+ *
+ */
 	ChatManager* chatManager = _this->getZone()->getZoneServer()->getChatManager();
+
+	if(chatManager == NULL)
+		return;
 
 	String mailSender = _this->getCustomName().toString();
 
@@ -772,6 +835,10 @@ void FactoryObjectImplementation::sendViewIngredientsTo(Player* player){
 
 			ingredients->addMenuItem(text.toString());
 		}
+
+		StringBuffer text;
+		text << "_Count_ : " << linkedSchematic->getManufacturingLimit();
+		ingredients->addMenuItem(text.toString());
 	}
 	else
 		ingredients->setPromptText("@manf_station:no_schematic_examine_prompt");
@@ -832,4 +899,48 @@ void FactoryObjectImplementation::loadItems(){
 			}
 		}
 	}
+}
+
+void FactoryObjectImplementation::handleStructureRedeed(Player * player) {
+	/*
+	 *
+	 * @player_structure:clear_input_hopper_for_delete
+	 * Please remove all items from the factory's input hopper before deleting it.
+	 *
+	 * @player_structure:clear_output_hopper_for_delete
+	 * Please remove all items from the factory's output hopper before deleting it.
+	 *
+	 * @player_structure:deactivate_factory_for_delete
+	 * You must deactivate the factory before you can delete it. The hoppers must also be empty, and the schematic removed.
+	 *
+	 * @player_structure:remove_schematic_for_delete
+	 * Please removed the schematic from the factory before deleting it.
+	 *
+	 */
+	//System::out << "inside factory redeed\n";
+	if (inputHopper != NULL) {
+		if (inputHopper->getContainerObjectsSize() > 0) {
+			player->sendSystemMessage("@player_structure:clear_input_hopper_for_delete");
+			return;
+		}
+	}
+
+	if (outputHopper != NULL) {
+		if (outputHopper->getContainerObjectsSize() > 0) {
+			player->sendSystemMessage("@player_structure:clear_output_hopper_for_delete");
+			return;
+		}
+	}
+
+	if (_this->isOperating()) {
+		player->sendSystemMessage("@player_structure:deactivate_factory_for_delete");
+		return;
+	}
+
+	if (_this->hasSchematic()) {
+		player->sendSystemMessage("@remove_schematic_for_delete");
+		return;
+	}
+
+	InstallationObjectImplementation::handleStructureRedeed(player);
 }

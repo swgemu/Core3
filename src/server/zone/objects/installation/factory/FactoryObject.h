@@ -51,6 +51,12 @@ public:
 
 	void sendEmailToOwner(String& subject, String& bodyMsg);
 
+	void handleStructureRedeed(Player* player);
+
+	float getHopperSizeMax();
+
+	float getBuildRate();
+
 	void setOperating(bool state);
 
 	void scheduleItemCreation();
@@ -114,6 +120,12 @@ public:
 	bool putItemInOutputHopper(ManufactureSchematic* linkedSchematic, bool doLock);
 
 	void sendEmailToOwner(String& subject, String& bodyMsg);
+
+	void handleStructureRedeed(Player* player);
+
+	float getHopperSizeMax();
+
+	float getBuildRate();
 
 	void setOperating(bool state);
 
