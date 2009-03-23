@@ -30,6 +30,10 @@ interface FactoryObject implements InstallationObject {
 	boolean removeIngredients(ManufactureSchematic linkedSchematic);
 	boolean putItemInOutputHopper(ManufactureSchematic linkedSchematic, boolean doLock = true);
 	void sendEmailToOwner(String subject, String bodyMsg);
+	void handleStructureRedeed(Player player);
+
+	float getHopperSizeMax();
+	float getBuildRate();
 
 	void setOperating(boolean state);
 	void scheduleItemCreation();
@@ -40,6 +44,7 @@ interface FactoryObject implements InstallationObject {
 	void sendOutputHopperTo(Player player);
 	void serializeHoppers();
 
+	
 	int getFactoryItemTypes();
 	boolean isWearablesFactory();
 	boolean isEquipmentFactory();

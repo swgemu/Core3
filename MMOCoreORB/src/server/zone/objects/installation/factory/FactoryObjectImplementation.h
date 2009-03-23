@@ -41,6 +41,7 @@ public:
 	void createHoppers(uint64 inputHopperID, uint64 outputHopperID);
 	void parseItemAttributes();
 	void updateItemForSurroundingPlayers(TangibleObject* item);
+	void handleStructureRedeed(Player * player);
 
 	bool containsIngredients(ManufactureSchematic* linkedSchematic, bool doLock = true);
 	bool removeIngredients(ManufactureSchematic* linkedSchematic);

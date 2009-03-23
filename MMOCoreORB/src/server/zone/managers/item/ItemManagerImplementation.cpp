@@ -886,6 +886,9 @@ TangibleObject* ItemManagerImplementation::clonePlayerObjectTemplate(uint64 obje
 
 	newTempl->setPlayerUseMask(templ->getPlayerUseMask());
 	newTempl->setOptionsBitmask(templ->getOptionsBitmask());
+	String customization;
+	templ->getCustomizationString(customization);
+	newTempl->setCustomizationString(customization);
 
 	return newTempl;
 }

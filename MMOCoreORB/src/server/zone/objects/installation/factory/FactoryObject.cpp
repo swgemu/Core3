@@ -162,12 +162,49 @@ void FactoryObject::sendEmailToOwner(String& subject, String& bodyMsg) {
 		((FactoryObjectImplementation*) _impl)->sendEmailToOwner(subject, bodyMsg);
 }
 
-void FactoryObject::setOperating(bool state) {
+void FactoryObject::handleStructureRedeed(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 15);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryObjectImplementation*) _impl)->handleStructureRedeed(player);
+}
+
+float FactoryObject::getHopperSizeMax() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((FactoryObjectImplementation*) _impl)->getHopperSizeMax();
+}
+
+float FactoryObject::getBuildRate() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((FactoryObjectImplementation*) _impl)->getBuildRate();
+}
+
+void FactoryObject::setOperating(bool state) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
 		method.addBooleanParameter(state);
 
 		method.executeWithVoidReturn();
@@ -180,7 +217,7 @@ void FactoryObject::scheduleItemCreation() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 19);
 
 		method.executeWithVoidReturn();
 	} else
@@ -192,7 +229,7 @@ void FactoryObject::createItem() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 20);
 
 		method.executeWithVoidReturn();
 	} else
@@ -204,7 +241,7 @@ void FactoryObject::sendInsertManSchemTo(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 21);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -217,7 +254,7 @@ void FactoryObject::sendViewIngredientsTo(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 22);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -230,7 +267,7 @@ void FactoryObject::sendInputHopperTo(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 23);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -243,7 +280,7 @@ void FactoryObject::sendOutputHopperTo(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 24);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -256,7 +293,7 @@ void FactoryObject::serializeHoppers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 25);
 
 		method.executeWithVoidReturn();
 	} else
@@ -268,7 +305,7 @@ int FactoryObject::getFactoryItemTypes() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 26);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -280,7 +317,7 @@ bool FactoryObject::isWearablesFactory() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 27);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -292,7 +329,7 @@ bool FactoryObject::isEquipmentFactory() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 28);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -304,7 +341,7 @@ bool FactoryObject::isFoodFactory() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 29);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -316,7 +353,7 @@ bool FactoryObject::isStructureFactory() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 30);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -328,7 +365,7 @@ bool FactoryObject::hasSchematic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 31);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -340,7 +377,7 @@ void FactoryObject::clearManufactureSchem() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 32);
 
 		method.executeWithVoidReturn();
 	} else
@@ -386,48 +423,57 @@ Packet* FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		sendEmailToOwner(inv->getAsciiParameter(_param0_sendEmailToOwner__String_String_), inv->getAsciiParameter(_param1_sendEmailToOwner__String_String_));
 		break;
 	case 15:
-		setOperating(inv->getBooleanParameter());
+		handleStructureRedeed((Player*) inv->getObjectParameter());
 		break;
 	case 16:
-		scheduleItemCreation();
+		resp->insertFloat(getHopperSizeMax());
 		break;
 	case 17:
-		createItem();
+		resp->insertFloat(getBuildRate());
 		break;
 	case 18:
-		sendInsertManSchemTo((Player*) inv->getObjectParameter());
+		setOperating(inv->getBooleanParameter());
 		break;
 	case 19:
-		sendViewIngredientsTo((Player*) inv->getObjectParameter());
+		scheduleItemCreation();
 		break;
 	case 20:
-		sendInputHopperTo((Player*) inv->getObjectParameter());
+		createItem();
 		break;
 	case 21:
-		sendOutputHopperTo((Player*) inv->getObjectParameter());
+		sendInsertManSchemTo((Player*) inv->getObjectParameter());
 		break;
 	case 22:
-		serializeHoppers();
+		sendViewIngredientsTo((Player*) inv->getObjectParameter());
 		break;
 	case 23:
-		resp->insertSignedInt(getFactoryItemTypes());
+		sendInputHopperTo((Player*) inv->getObjectParameter());
 		break;
 	case 24:
-		resp->insertBoolean(isWearablesFactory());
+		sendOutputHopperTo((Player*) inv->getObjectParameter());
 		break;
 	case 25:
-		resp->insertBoolean(isEquipmentFactory());
+		serializeHoppers();
 		break;
 	case 26:
-		resp->insertBoolean(isFoodFactory());
+		resp->insertSignedInt(getFactoryItemTypes());
 		break;
 	case 27:
-		resp->insertBoolean(isStructureFactory());
+		resp->insertBoolean(isWearablesFactory());
 		break;
 	case 28:
-		resp->insertBoolean(hasSchematic());
+		resp->insertBoolean(isEquipmentFactory());
 		break;
 	case 29:
+		resp->insertBoolean(isFoodFactory());
+		break;
+	case 30:
+		resp->insertBoolean(isStructureFactory());
+		break;
+	case 31:
+		resp->insertBoolean(hasSchematic());
+		break;
+	case 32:
 		clearManufactureSchem();
 		break;
 	default:
@@ -471,6 +517,18 @@ bool FactoryObjectAdapter::putItemInOutputHopper(ManufactureSchematic* linkedSch
 
 void FactoryObjectAdapter::sendEmailToOwner(String& subject, String& bodyMsg) {
 	return ((FactoryObjectImplementation*) impl)->sendEmailToOwner(subject, bodyMsg);
+}
+
+void FactoryObjectAdapter::handleStructureRedeed(Player* player) {
+	return ((FactoryObjectImplementation*) impl)->handleStructureRedeed(player);
+}
+
+float FactoryObjectAdapter::getHopperSizeMax() {
+	return ((FactoryObjectImplementation*) impl)->getHopperSizeMax();
+}
+
+float FactoryObjectAdapter::getBuildRate() {
+	return ((FactoryObjectImplementation*) impl)->getBuildRate();
 }
 
 void FactoryObjectAdapter::setOperating(bool state) {

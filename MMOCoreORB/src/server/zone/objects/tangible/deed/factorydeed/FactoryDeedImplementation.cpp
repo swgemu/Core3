@@ -45,6 +45,7 @@ FactoryDeedImplementation::FactoryDeedImplementation(CreatureObject* creature, F
 	setSurplusPower((uint32)fact->getSurplusPower());
 	setPowerRate(fact->getPowerRate());
 	setHopperSize(fact->getHopperSizeMax());
+	setBuildRate(fact->getBuildRate());
 
 	init();
 }
@@ -108,7 +109,7 @@ void FactoryDeedImplementation::addAttributes(AttributeListMessage* alm) {
 	alm->insertAttribute("examine_maintenance", (int) getSurplusMaintenance());
 	alm->insertAttribute("examine_maintenance_rate", (float) getMaintenanceRate());
 	alm->insertAttribute("examine_power", (int) getSurplusPower());
-	alm->insertAttribute("examine_power_rate", (float) getPowerRate());
+	//alm->insertAttribute("examine_power_rate", (float) getPowerRate());
 	alm->insertAttribute("examine_hoppersize", (float) getHopperSize());
 
 	addFooterAttributes(alm);
