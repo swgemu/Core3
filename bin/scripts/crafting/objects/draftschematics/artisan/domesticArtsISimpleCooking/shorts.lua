@@ -77,7 +77,11 @@ shorts = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777228:objectcrc=2193150091:objecttemp=clothing_pants_shorts:templatetype=craft_clothing_ingredients_n:itemmask=62974::",
+   tanoAttributes = "objecttype=16777228:objectcrc=2193150091:stfFile=craft_clothing_ingredients_n:stfName=clothing_pants_shorts:stfDetail=:itemmask=62974::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "136",
    customizationSkill = "clothing_customization"

@@ -77,7 +77,11 @@ ithorianLightPullover = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777227:objectcrc=3114262018:objecttemp=ith_jacket_s14:templatetype=wearables_name:itemmask=63491::",
+   tanoAttributes = "objecttype=16777227:objectcrc=3114262018:stfFile=wearables_name:stfName=ith_jacket_s14:stfDetail=:itemmask=63491::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

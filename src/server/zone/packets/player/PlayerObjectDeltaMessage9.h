@@ -110,7 +110,7 @@ public:
 		for (int i = 0; i < schematicSize; i++) {
 			insertByte(1);
 			insertShort(i+1);
-			insertInt(player->getDraftSchematic(i)->getSchematicCRC());
+			insertInt(player->getDraftSchematic(i)->getObjectCRC());
 			insertInt(player->getDraftSchematic(i)->getSchematicID());
 		}
 	}
@@ -125,7 +125,7 @@ public:
 
 		insertShort(schematicSize + 1);
 		insertInt(draftSchematic->getSchematicID());
-		insertInt(draftSchematic->getSchematicCRC());
+		insertInt(draftSchematic->getObjectCRC());
 	}
 
 	void removeDraftSchematic(DraftSchematic* draftSchematic) {
@@ -141,8 +141,8 @@ public:
 			tempSchematic = player->getDraftSchematic(i);
 
 			if (tempSchematic->getGroupName() == draftSchematic->getGroupName()
-					&& tempSchematic->getSchematicCRC()
-							== draftSchematic->getSchematicCRC()) {
+					&& tempSchematic->getObjectCRC()
+							== draftSchematic->getObjectCRC()) {
 				index = i;
 				break;
 			}
@@ -150,7 +150,7 @@ public:
 
 		insertShort(index);
 		insertInt(tempSchematic->getSchematicID());
-		insertInt(tempSchematic->getSchematicCRC());
+		insertInt(tempSchematic->getObjectCRC());
 	}
 
 	void setExperimentationPoints(int points){

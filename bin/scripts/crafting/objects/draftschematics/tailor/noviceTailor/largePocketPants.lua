@@ -77,7 +77,11 @@ largePocketPants = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777228:objectcrc=1504671772:objecttemp=clothing_pants_field_14:templatetype=craft_clothing_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=16777228:objectcrc=1504671772:stfFile=craft_clothing_ingredients_n:stfName=clothing_pants_field_14:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "138, 101",
    customizationSkill = "clothing_customization"

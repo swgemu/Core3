@@ -77,7 +77,11 @@ jawaIonRifle = Object:new {
    experimentalMax = "0, 0, 104, 195, 5.9, 5, 55, 1500, -50, -80, 40, 5, 8, 18, 28",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131084:objectcrc=1928416827:objecttemp=rifle_jawa_ion:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=4;:",
+   tanoAttributes = "objecttype=131084:objectcrc=1928416827:stfFile=weapon_name:stfName=rifle_jawa_ion:stfDetail=:itemmask=65535:customattributes=damagetype=4;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

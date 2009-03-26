@@ -77,7 +77,11 @@ deedForWindPowerGenerator = Object:new {
    experimentalMax = "0, 0, 10, 50000, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8388610:objectcrc=3871805863:objecttemp=wind_generator_deed_name:templatetype=deed:itemmask=65535::",
+   tanoAttributes = "objecttype=8388610:objectcrc=3871805863:stfFile=deed:stfName=wind_generator_deed_name:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

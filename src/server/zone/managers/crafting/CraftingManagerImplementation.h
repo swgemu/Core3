@@ -101,6 +101,11 @@ class CraftingManagerImplementation : public CraftingManagerServant,
 	// Use a groupName to recieve a vector of draftSchematics back
 	VectorMap<String, DraftSchematicGroup*> draftSchematicsMap;
 
+	/*
+	 * templateMap is a map of all the schematics keyed to the tangible's stfName
+	 */
+	VectorMap<String, DraftSchematic*> templateMap;
+
 	String generatedSerial;
 
 	int tempMask;
@@ -198,11 +203,15 @@ public:
 	void addDraftSchematicsFromGroupName(Player* player, const String& schematicGroupName);
 	void subtractDraftSchematicsFromGroupName(Player* player, const String& schematicGroupName);
 
+	TangibleObject* requestObjectTemplate(String stfName);
+	TangibleObject* requestBlueFrogObjectTemplate(String stfName);
+
 	void refreshDraftSchematics(Player* player);
 
 	String& generateCraftedSerial();
 
 private:
+	void mapTemplate(String stfName, DraftSchematic* draftSchematic);
 	void mapDraftSchematic(DraftSchematic* draftSchematic);
 	// End LUA Methods
 
@@ -210,7 +219,8 @@ private:
 	void createDraftSchematic(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
 	TangibleObject* createTangibleObject(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
 	void setupIngredients(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
-	TangibleObject * generateTangibleObject(Player* player, DraftSchematic* draftSchematic);
+	TangibleObject* generateTangibleObject(uint64 oid, Player* player, DraftSchematic* draftSchematic);
+	TangibleObject* generateTangibleObject(Player* player, DraftSchematic* draftSchematic);
 
 	// Slot manipulation
 	void sendSlotMessage(Player* player, int counter, short message);

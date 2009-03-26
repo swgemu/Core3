@@ -77,7 +77,11 @@ compositeArmorBoots = Object:new {
    experimentalMax = "0, 0, 0, 1000, 40, 50000, 15, 26, 15, 1, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=263:objectcrc=3683772891:objecttemp=armor_composite_boots:templatetype=wearables_name:itemmask=62967:customattributes=specialprotection=restraineffectiveness;vunerability=stuneffectiveness;armorType=263;armorStyle=4097;:",
+   tanoAttributes = "objecttype=263:objectcrc=3683772891:stfFile=wearables_name:stfName=armor_composite_boots:stfDetail=:itemmask=62967:customattributes=specialprotection=restraineffectiveness;vunerability=stuneffectiveness;armorPiece=263;armorStyle=4097;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "0",
    customizationSkill = "armor_customization"

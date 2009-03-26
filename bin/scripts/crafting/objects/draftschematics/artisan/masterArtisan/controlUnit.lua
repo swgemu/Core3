@@ -77,7 +77,11 @@ controlUnit = Object:new {
    experimentalMax = "0, 0, 150, 5",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8216:objectcrc=814846904:objecttemp=electronic_control_unit:templatetype=craft_item_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=8216:objectcrc=814846904:stfFile=craft_item_ingredients_n:stfName=electronic_control_unit:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

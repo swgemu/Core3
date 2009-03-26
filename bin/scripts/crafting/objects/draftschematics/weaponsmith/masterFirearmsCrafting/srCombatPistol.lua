@@ -77,7 +77,11 @@ srCombatPistol = Object:new {
    experimentalMax = "0, 0, 59, 130, 3.8, 17, 20, 1500, 10, -80, 12, -20, 16, 25, 9",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131082:objectcrc=874294352:objecttemp=pistol_srcombat:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=2;:",
+   tanoAttributes = "objecttype=131082:objectcrc=874294352:stfFile=weapon_name:stfName=pistol_srcombat:stfDetail=:itemmask=65535:customattributes=damagetype=2;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

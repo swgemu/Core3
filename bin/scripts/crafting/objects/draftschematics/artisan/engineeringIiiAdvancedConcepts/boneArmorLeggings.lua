@@ -77,7 +77,11 @@ boneArmorLeggings = Object:new {
    experimentalMax = "0, 0, 0, 1000, 20, 12500, 10, 36, 2, 1, 2, 30, 12500",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=260:objectcrc=2709205528:objecttemp=armor_bone_s01_leggings:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=energyeffectiveness;vunerability=kineticeffectiveness,blasteffectiveness,stuneffectiveness,heateffectiveness,coldeffectiveness,acideffectiveness,restraineffectiveness;armorType=262;armorStyle=4099;:",
+   tanoAttributes = "objecttype=260:objectcrc=2709205528:stfFile=wearables_name:stfName=armor_bone_s01_leggings:stfDetail=:itemmask=62975:customattributes=specialprotection=energyeffectiveness;vunerability=kineticeffectiveness,blasteffectiveness,stuneffectiveness,heateffectiveness,coldeffectiveness,acideffectiveness,restraineffectiveness;armorPiece=262;armorStyle=4099;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "7, 0",
    customizationSkill = "armor_customization"

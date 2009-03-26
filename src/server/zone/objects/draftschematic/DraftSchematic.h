@@ -55,11 +55,11 @@ public:
 
 	void addIngredient(const String& ingredientTemplateName, const String& ingredientTitleName, const int optional, const String& resourceType, unsigned int resourceQuantity, unsigned int combineType, unsigned int contribution);
 
-	void setPersistent(bool status);
-
 	void setTanoAttributes(String& attributes);
 
-	void setContainer(SceneObject* container);
+	void setBlueFrogAttributes(String& attributes);
+
+	void setBlueFrogEnabled(bool enabled);
 
 	void setXpType(String& type);
 
@@ -87,6 +87,8 @@ public:
 
 	void setManufacturingLimit(int value);
 
+	String& getTanoStfName();
+
 	int getExpPropGroupListSize();
 
 	DraftSchematicExpPropGroup* getExpPropGroup(int index);
@@ -94,8 +96,6 @@ public:
 	DraftSchematicExpPropGroup* cloneExpPropGroup(int index);
 
 	unsigned int getSchematicID();
-
-	unsigned int getSchematicCRC();
 
 	DraftSchematicIngredient* getIngredient(int index);
 
@@ -105,12 +105,6 @@ public:
 
 	int getRequiredIngredientCount();
 
-	String& getName();
-
-	String& getStringName();
-
-	String& getStringFile();
-
 	String& getGroupName();
 
 	unsigned int getComplexity();
@@ -119,9 +113,11 @@ public:
 
 	String& getTanoAttributes();
 
-	int getCraftingToolTab();
+	String& getBlueFrogAttributes();
 
-	SceneObject* getContainer();
+	bool getBlueFrogEnabled();
+
+	int getCraftingToolTab();
 
 	String& getXpType();
 
@@ -155,6 +151,8 @@ public:
 
 	bool resourcesWereRemoved();
 
+	void resetCraftingValues();
+
 	void toString();
 
 protected:
@@ -163,14 +161,13 @@ protected:
 	virtual ~DraftSchematic();
 
 	String _return_getAssemblySkill;
+	String _return_getBlueFrogAttributes;
 	String _return_getCustomizationOption;
 	String _return_getCustomizationSkill;
 	String _return_getExperimentingSkill;
 	String _return_getGroupName;
-	String _return_getName;
-	String _return_getStringFile;
-	String _return_getStringName;
 	String _return_getTanoAttributes;
+	String _return_getTanoStfName;
 	String _return_getXpType;
 
 	friend class DraftSchematicHelper;
@@ -206,11 +203,11 @@ public:
 
 	void addIngredient(const String& ingredientTemplateName, const String& ingredientTitleName, const int optional, const String& resourceType, unsigned int resourceQuantity, unsigned int combineType, unsigned int contribution);
 
-	void setPersistent(bool status);
-
 	void setTanoAttributes(String& attributes);
 
-	void setContainer(SceneObject* container);
+	void setBlueFrogAttributes(String& attributes);
+
+	void setBlueFrogEnabled(bool enabled);
 
 	void setXpType(String& type);
 
@@ -238,6 +235,8 @@ public:
 
 	void setManufacturingLimit(int value);
 
+	String& getTanoStfName();
+
 	int getExpPropGroupListSize();
 
 	DraftSchematicExpPropGroup* getExpPropGroup(int index);
@@ -245,8 +244,6 @@ public:
 	DraftSchematicExpPropGroup* cloneExpPropGroup(int index);
 
 	unsigned int getSchematicID();
-
-	unsigned int getSchematicCRC();
 
 	DraftSchematicIngredient* getIngredient(int index);
 
@@ -256,12 +253,6 @@ public:
 
 	int getRequiredIngredientCount();
 
-	String& getName();
-
-	String& getStringName();
-
-	String& getStringFile();
-
 	String& getGroupName();
 
 	unsigned int getComplexity();
@@ -270,9 +261,11 @@ public:
 
 	String& getTanoAttributes();
 
-	int getCraftingToolTab();
+	String& getBlueFrogAttributes();
 
-	SceneObject* getContainer();
+	bool getBlueFrogEnabled();
+
+	int getCraftingToolTab();
 
 	String& getXpType();
 
@@ -306,6 +299,8 @@ public:
 
 	bool resourcesWereRemoved();
 
+	void resetCraftingValues();
+
 	void toString();
 
 protected:
@@ -316,6 +311,7 @@ protected:
 	String _param1_addIngredient__String_String_int_String_int_int_int_;
 	String _param3_addIngredient__String_String_int_String_int_int_int_;
 	String _param0_setTanoAttributes__String_;
+	String _param0_setBlueFrogAttributes__String_;
 	String _param0_setXpType__String_;
 	String _param0_setExperimentingSkill__String_;
 	String _param0_setCustomizationSkill__String_;

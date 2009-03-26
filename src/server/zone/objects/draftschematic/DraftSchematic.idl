@@ -95,13 +95,10 @@ interface DraftSchematic implements SceneObject {
 		unsigned int combineType, unsigned int contribution);
 	
 	// setters
-	void setPersistent(boolean status);
-	
-	//void setObjectID(unsigned long id);
 
 	void setTanoAttributes(String attributes);
-
-	void setContainer(SceneObject container);
+	void setBlueFrogAttributes(String attributes);
+	void setBlueFrogEnabled(boolean enabled);
 
 	void setXpType(String type);
 
@@ -131,7 +128,7 @@ interface DraftSchematic implements SceneObject {
 
 	//getters
 	
-	//unsigned long getObjectID();
+	String getTanoStfName();
 
 	int getExpPropGroupListSize();
 
@@ -139,8 +136,6 @@ interface DraftSchematic implements SceneObject {
 	DraftSchematicExpPropGroup cloneExpPropGroup(int index);
 
 	unsigned int getSchematicID();
-	
-	unsigned int getSchematicCRC();
 
 	DraftSchematicIngredient getIngredient(int index);
 	DraftSchematicIngredient cloneIngredient(int index);
@@ -148,13 +143,7 @@ interface DraftSchematic implements SceneObject {
 	int getIngredientListSize();
 
 	int getRequiredIngredientCount();
-	
-	String getName();
 
-	String getStringName();
-	
-	String getStringFile();
-	
 	String getGroupName();
 	
 	unsigned int getComplexity();
@@ -162,10 +151,10 @@ interface DraftSchematic implements SceneObject {
 	unsigned int getSchematicSize();
 
 	String getTanoAttributes();
+	String getBlueFrogAttributes();
+	boolean getBlueFrogEnabled();
 	
 	int getCraftingToolTab();
-
-	SceneObject getContainer();
 
 	String getXpType();
 
@@ -198,6 +187,8 @@ interface DraftSchematic implements SceneObject {
 	boolean isFinished();
 	
 	boolean resourcesWereRemoved();
+	
+	void resetCraftingValues();
 
 	void toString();
 }

@@ -77,7 +77,11 @@ reinforcedFiberPanel = Object:new {
    experimentalMax = "0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262147:objectcrc=142903413:objecttemp=reinforced_fiber_panels:templatetype=craft_clothing_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=262147:objectcrc=142903413:stfFile=craft_clothing_ingredients_n:stfName=reinforced_fiber_panels:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

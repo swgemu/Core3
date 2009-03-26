@@ -77,7 +77,11 @@ ithorianElegantGemstoneNecklace = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=16777216:objectcrc=2103474446:objecttemp=ith_necklace_s12:templatetype=wearables_name:itemmask=63491::",
+   tanoAttributes = "objecttype=16777216:objectcrc=2103474446:stfFile=wearables_name:stfName=ith_necklace_s12:stfDetail=:itemmask=63491::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

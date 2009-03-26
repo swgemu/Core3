@@ -77,7 +77,11 @@ reinforcedJumpsuit = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777219:objectcrc=1492714777:objecttemp=bodysuit_s13:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777219:objectcrc=1492714777:stfFile=wearables_name:stfName=bodysuit_s13:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "14, 14",
    customizationSkill = "clothing_customization"

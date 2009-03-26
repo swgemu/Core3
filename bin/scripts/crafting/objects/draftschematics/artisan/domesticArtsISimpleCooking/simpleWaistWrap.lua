@@ -77,7 +77,11 @@ simpleWaistWrap = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777232:objectcrc=3347266345:objecttemp=wke_skirt_s04:templatetype=wearables_name:itemmask=61955::",
+   tanoAttributes = "objecttype=16777232:objectcrc=3347266345:stfFile=wearables_name:stfName=wke_skirt_s04:stfDetail=:itemmask=61955::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

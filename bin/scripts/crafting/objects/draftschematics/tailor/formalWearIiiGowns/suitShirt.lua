@@ -77,7 +77,11 @@ suitShirt = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777230:objectcrc=413947127:objecttemp=clothing_shirt_formal_32:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777230:objectcrc=413947127:stfFile=wearables_name:stfName=clothing_shirt_formal_32:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "79, 52",
    customizationSkill = "clothing_customization"

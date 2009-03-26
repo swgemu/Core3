@@ -77,7 +77,11 @@ specopsPack = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8213:objectcrc=169149382:objecttemp=backpack_s06:templatetype=wearables_name:itemmask=65535::",
+   tanoAttributes = "objecttype=8213:objectcrc=169149382:stfFile=wearables_name:stfName=backpack_s06:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

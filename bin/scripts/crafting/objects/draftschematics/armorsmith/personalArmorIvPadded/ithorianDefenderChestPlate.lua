@@ -77,7 +77,11 @@ ithorianDefenderChestPlate = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 31250, 103, 39, 14, 1, 4, 40, 31250",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=257:objectcrc=2075456355:objecttemp=ith_armor_s01_chest_plate:templatetype=wearables_name:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=heateffectiveness,stuneffectiveness,coldeffectiveness;armorType=256;armorStyle=4106;:",
+   tanoAttributes = "objecttype=257:objectcrc=2075456355:stfFile=wearables_name:stfName=ith_armor_s01_chest_plate:stfDetail=:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=heateffectiveness,stuneffectiveness,coldeffectiveness;armorPiece=256;armorStyle=4106;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

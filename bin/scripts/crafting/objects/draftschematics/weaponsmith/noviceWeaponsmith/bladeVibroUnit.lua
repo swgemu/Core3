@@ -77,7 +77,11 @@ bladeVibroUnit = Object:new {
    experimentalMax = "0, 0, 20, 30, -0.5, 10, 100, 10, 10, 10, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262153:objectcrc=2075249202:objecttemp=blade_vibro_unit:templatetype=craft_weapon_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=262153:objectcrc=2075249202:stfFile=craft_weapon_ingredients_n:stfName=blade_vibro_unit:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

@@ -77,7 +77,11 @@ revealingFleshwrap = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777219:objectcrc=707325039:objecttemp=bodysuit_s06:templatetype=wearables_name:itemmask=62974::",
+   tanoAttributes = "objecttype=16777219:objectcrc=707325039:stfFile=wearables_name:stfName=bodysuit_s06:stfDetail=:itemmask=62974::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "207",
    customizationSkill = "clothing_customization"

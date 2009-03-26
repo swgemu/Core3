@@ -77,7 +77,11 @@ sleevelessDress = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777223:objectcrc=985872482:objecttemp=clothing_dress_formal_29:templatetype=craft_clothing_ingredients_n:itemmask=62974::",
+   tanoAttributes = "objecttype=16777223:objectcrc=985872482:stfFile=craft_clothing_ingredients_n:stfName=clothing_dress_formal_29:stfDetail=:itemmask=62974::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "17, 96",
    customizationSkill = "clothing_customization"

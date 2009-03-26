@@ -77,7 +77,11 @@ ithorianNathNathBallOutfit = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777219:objectcrc=1075919059:objecttemp=ith_bodysuit_s05:templatetype=:itemmask=63491::",
+   tanoAttributes = "objecttype=16777219:objectcrc=1075919059:stfFile=:stfName=ith_bodysuit_s05:stfDetail=:itemmask=63491::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

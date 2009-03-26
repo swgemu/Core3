@@ -77,7 +77,11 @@ jewelrySetting = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=262144:objectcrc=3580972841:objecttemp=clothing_jewelry_setting:templatetype=wearables_name:itemmask=65535::",
+   tanoAttributes = "objecttype=262144:objectcrc=3580972841:stfFile=wearables_name:stfName=clothing_jewelry_setting:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

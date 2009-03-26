@@ -77,7 +77,11 @@ intricateDress = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777223:objectcrc=3138755211:objecttemp=dress_s32:templatetype=wearables_name:itemmask=62974::",
+   tanoAttributes = "objecttype=16777223:objectcrc=3138755211:stfFile=wearables_name:stfName=dress_s32:stfDetail=:itemmask=62974::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "85",
    customizationSkill = "clothing_customization"

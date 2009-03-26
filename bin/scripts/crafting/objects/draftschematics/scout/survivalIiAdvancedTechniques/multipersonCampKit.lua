@@ -77,7 +77,11 @@ multipersonCampKit = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32772:objectcrc=1695464329:objecttemp=camp_multi:templatetype=item_n:itemmask=65535::",
+   tanoAttributes = "objecttype=32772:objectcrc=1695464329:stfFile=item_n:stfName=camp_multi:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

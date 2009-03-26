@@ -77,7 +77,11 @@ ithorianOvershirt = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777227:objectcrc=2326212722:objecttemp=ith_jacket_s09:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777227:objectcrc=2326212722:stfFile=wearables_name:stfName=ith_jacket_s09:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

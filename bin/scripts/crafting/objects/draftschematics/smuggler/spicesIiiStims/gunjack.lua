@@ -77,7 +77,11 @@ gunjack = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=3162646760:objecttemp=gunjack:templatetype=food_name:itemmask=65535::",
+   tanoAttributes = "objecttype=8202:objectcrc=3162646760:stfFile=food_name:stfName=gunjack:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "spice_customization"

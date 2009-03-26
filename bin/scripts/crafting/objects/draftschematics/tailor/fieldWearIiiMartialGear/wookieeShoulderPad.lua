@@ -77,7 +77,11 @@ wookieeShoulderPad = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777232:objectcrc=2466968394:objecttemp=wke_shoulder_pads_s02:templatetype=wearables_name:itemmask=61955::",
+   tanoAttributes = "objecttype=16777232:objectcrc=2466968394:stfFile=wearables_name:stfName=wke_shoulder_pads_s02:stfDetail=:itemmask=61955::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "20, 29",
    customizationSkill = "clothing_customization"

@@ -77,7 +77,11 @@ cloak = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777221:objectcrc=1453209817:objecttemp=clothing_cloak:templatetype=got_n:itemmask=62975::",
+   tanoAttributes = "objecttype=16777221:objectcrc=1453209817:stfFile=got_n:stfName=clothing_cloak:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "4",
    customizationSkill = "clothing_customization"

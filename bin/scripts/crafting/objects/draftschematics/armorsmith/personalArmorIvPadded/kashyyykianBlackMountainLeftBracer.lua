@@ -77,7 +77,11 @@ kashyyykianBlackMountainLeftBracer = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 31250, 10, 13, 14, 1, 1, 40, 31250",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=261:objectcrc=2400154328:objecttemp=armor_kashyyykian_black_mtn_bracer_l:templatetype=wearables_name:itemmask=61955:customattributes=specialprotection=kineticeffectiveness;vunerability=heateffectiveness,stuneffectiveness,coldeffectiveness;armorType=258;armorStyle=4109;:",
+   tanoAttributes = "objecttype=261:objectcrc=2400154328:stfFile=wearables_name:stfName=armor_kashyyykian_black_mtn_bracer_l:stfDetail=:itemmask=61955:customattributes=specialprotection=kineticeffectiveness;vunerability=heateffectiveness,stuneffectiveness,coldeffectiveness;armorPiece=258;armorStyle=4109;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

@@ -77,7 +77,11 @@ blastProtectionArmorLayer = Object:new {
    experimentalMax = "0, 0, 1000, 5, 1000, 0, 0, 0, 1, 4, 15, 50",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262145:objectcrc=3979633097:objecttemp=armor_layer_blast:templatetype=craft_armor_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=262145:objectcrc=3979633097:stfFile=craft_armor_ingredients_n:stfName=armor_layer_blast:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

@@ -77,7 +77,11 @@ advancedWeaponScope = Object:new {
    experimentalMax = "0, 0, 20, 100, 0, 0, 45, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262155:objectcrc=210395856:objecttemp=scope_weapon_advanced:templatetype=craft_weapon_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=262155:objectcrc=210395856:stfFile=craft_weapon_ingredients_n:stfName=scope_weapon_advanced:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

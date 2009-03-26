@@ -77,7 +77,11 @@ sandals = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777222:objectcrc=1635672216:objecttemp=clothing_shoes_sandals:templatetype=craft_clothing_ingredients_n:itemmask=62975::",
+   tanoAttributes = "objecttype=16777222:objectcrc=1635672216:stfFile=craft_clothing_ingredients_n:stfName=clothing_shoes_sandals:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "10, 33",
    customizationSkill = "clothing_customization"

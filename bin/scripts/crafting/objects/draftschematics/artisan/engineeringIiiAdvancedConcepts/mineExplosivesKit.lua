@@ -77,7 +77,11 @@ mineExplosivesKit = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=524293:objectcrc=3665923080:objecttemp=weapon_mine_explosive:templatetype=powerup_n:itemmask=65535::",
+   tanoAttributes = "objecttype=524293:objectcrc=3665923080:stfFile=powerup_n:stfName=weapon_mine_explosive:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

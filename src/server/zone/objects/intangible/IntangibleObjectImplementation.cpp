@@ -155,3 +155,15 @@ void IntangibleObjectImplementation::updateStatus(uint32 stat) {
 
 	player->sendMessage(itno3);
 }
+
+void IntangibleObjectImplementation::onTrade(Player* sender, Player* receiver) {
+	SceneObject* scno = getObject(0);
+
+	if(scno->isNonPlayerCreature()) {
+		MountCreature* mount = (MountCreature*) scno;
+
+		if(mount != NULL) {
+			mount->setLinkedCreature(receiver);
+		}
+	}
+}

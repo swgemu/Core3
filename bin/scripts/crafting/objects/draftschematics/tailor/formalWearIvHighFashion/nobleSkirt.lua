@@ -77,7 +77,11 @@ nobleSkirt = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777234:objectcrc=2946835442:objecttemp=skirt_s11:templatetype=wearables_name:itemmask=62974::",
+   tanoAttributes = "objecttype=16777234:objectcrc=2946835442:stfFile=wearables_name:stfName=skirt_s11:stfDetail=:itemmask=62974::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "0, 0",
    customizationSkill = "clothing_customization"

@@ -77,7 +77,11 @@ suitBelt = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777218:objectcrc=1415002955:objecttemp=clothing_belt_formal_12:templatetype=wearables_name:itemmask=65535::",
+   tanoAttributes = "objecttype=16777218:objectcrc=1415002955:stfFile=wearables_name:stfName=clothing_belt_formal_12:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "0, 0",
    customizationSkill = "clothing_customization"

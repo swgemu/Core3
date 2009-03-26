@@ -77,7 +77,11 @@ wookieeStrappedGloves = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777232:objectcrc=1400019669:objecttemp=wke_gloves_s04:templatetype=wearables_name:itemmask=61955::",
+   tanoAttributes = "objecttype=16777232:objectcrc=1400019669:stfFile=wearables_name:stfName=wke_gloves_s04:stfDetail=:itemmask=61955::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

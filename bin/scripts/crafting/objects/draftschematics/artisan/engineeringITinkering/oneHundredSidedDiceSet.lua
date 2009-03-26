@@ -77,7 +77,11 @@ oneHundredSidedDiceSet = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8211:objectcrc=2182985448:objecttemp=eqp_one_hundred_sided_dice_set_single:templatetype=dice/dice_details:itemmask=65535::",
+   tanoAttributes = "objecttype=8211:objectcrc=2182985448:stfFile=dice/dice_details:stfName=eqp_one_hundred_sided_dice_set_single:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

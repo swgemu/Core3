@@ -77,7 +77,11 @@ mabariArmorweaveBelt = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 1, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777218:objectcrc=1255925428:objecttemp=armor_zam_wesell_belt:templatetype=wearables_name:itemmask=65535:customattributes=specialprotection=;vunerability=;armorType=16777218;armorStyle=;:",
+   tanoAttributes = "objecttype=16777218:objectcrc=1255925428:stfFile=wearables_name:stfName=armor_zam_wesell_belt:stfDetail=:itemmask=65535:customattributes=specialprotection=;vunerability=;armorPiece=16777218;armorStyle=;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_2",
    customizationDefaults = "82",
    customizationSkill = "armor_customization"

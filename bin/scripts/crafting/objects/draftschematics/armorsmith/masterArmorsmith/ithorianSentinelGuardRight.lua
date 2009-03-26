@@ -77,7 +77,11 @@ ithorianSentinelGuardRight = Object:new {
    experimentalMax = "0, 0, 0, 1000, 40, 50000, 15, 13, 15, 1, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=261:objectcrc=4155123702:objecttemp=ith_armor_s03_bicep_r:templatetype=wearables_name:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness;armorType=261;armorStyle=4108;:",
+   tanoAttributes = "objecttype=261:objectcrc=4155123702:stfFile=wearables_name:stfName=ith_armor_s03_bicep_r:stfDetail=:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness;armorPiece=261;armorStyle=4108;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

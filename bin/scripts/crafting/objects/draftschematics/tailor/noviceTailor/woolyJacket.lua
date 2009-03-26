@@ -77,7 +77,11 @@ woolyJacket = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=3841986537:objecttemp=jacket_s14:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=:objectcrc=3841986537:stfFile=wearables_name:stfName=jacket_s14:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "5",
    customizationSkill = "clothing_customization"

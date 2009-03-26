@@ -77,7 +77,11 @@ militaryTravelPack = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8213:objectcrc=1676470216:objecttemp=clothing_backpack_field_03:templatetype=craft_clothing_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=8213:objectcrc=1676470216:stfFile=craft_clothing_ingredients_n:stfName=clothing_backpack_field_03:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

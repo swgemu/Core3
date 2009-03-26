@@ -77,7 +77,11 @@ decorativeHeaddress = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777226:objectcrc=1292052643:objecttemp=hat_s13:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777226:objectcrc=1292052643:stfFile=wearables_name:stfName=hat_s13:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "157, 62",
    customizationSkill = "clothing_customization"

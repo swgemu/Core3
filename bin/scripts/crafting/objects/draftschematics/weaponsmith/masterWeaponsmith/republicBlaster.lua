@@ -77,7 +77,11 @@ republicBlaster = Object:new {
    experimentalMax = "0, 0, 39, 182, 3.1, 20, 1500, -28, 10, 28, 10",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131082:objectcrc=258355020:objecttemp=pistol_republic_blaster:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=2;:",
+   tanoAttributes = "objecttype=131082:objectcrc=258355020:stfFile=weapon_name:stfName=pistol_republic_blaster:stfDetail=:itemmask=65535:customattributes=damagetype=2;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

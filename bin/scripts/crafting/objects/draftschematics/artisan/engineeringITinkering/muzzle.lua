@@ -77,7 +77,11 @@ muzzle = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=524290:objectcrc=555906025:objecttemp=weapon_ranged:templatetype=powerup:itemmask=65535::",
+   tanoAttributes = "objecttype=524290:objectcrc=555906025:stfFile=powerup:stfName=weapon_ranged:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -77,7 +77,11 @@ aKlooHorn = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8204:objectcrc=4261135292:objecttemp=obj_kloo_horn:templatetype=obj_n:itemmask=65535::",
+   tanoAttributes = "objecttype=8204:objectcrc=4261135292:stfFile=obj_n:stfName=obj_kloo_horn:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "instrument_customization"

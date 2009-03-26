@@ -77,7 +77,11 @@ stunProtectionArmorLayer = Object:new {
    experimentalMax = "0, 0, 1000, 5, 1000, 0, 0, 0, 1, 8, 15, 50",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262145:objectcrc=203108001:objecttemp=armor_layer_stun:templatetype=craft_armor_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=262145:objectcrc=203108001:stfFile=craft_armor_ingredients_n:stfName=armor_layer_stun:stfDetail=:itemmask=65535:customattributes=specialprotection=stuneffectiveness;vunerability=energyeffectiveness,kineticeffectiveness,blasteffectiveness,electricaleffectiveness,heateffectiveness,coldeffectiveness,acideffectiveness,restraineffectiveness;armorPiece=262145;armorStyle=:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

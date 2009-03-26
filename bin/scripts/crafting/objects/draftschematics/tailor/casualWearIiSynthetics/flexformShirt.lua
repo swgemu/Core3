@@ -77,7 +77,11 @@ flexformShirt = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777230:objectcrc=3412040939:objecttemp=shirt_s38:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777230:objectcrc=3412040939:stfFile=wearables_name:stfName=shirt_s38:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "36, 24",
    customizationSkill = "clothing_customization"

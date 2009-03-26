@@ -77,7 +77,11 @@ tanglePistol = Object:new {
    experimentalMax = "0, 0, 50, 72, 3.3, 4, 8, 1500, 5, -80, 10, -10, 8, 18, 14",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131082:objectcrc=2758629867:objecttemp=pistol_tangle:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=1;:",
+   tanoAttributes = "objecttype=131082:objectcrc=2758629867:stfFile=weapon_name:stfName=pistol_tangle:stfDetail=:itemmask=65535:customattributes=damagetype=1;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

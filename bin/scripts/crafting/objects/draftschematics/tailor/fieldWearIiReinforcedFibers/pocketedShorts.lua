@@ -77,7 +77,11 @@ pocketedShorts = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777228:objectcrc=2948646659:objecttemp=pants_s27:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777228:objectcrc=2948646659:stfFile=wearables_name:stfName=pants_s27:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2, /private/index_color_3",
    customizationDefaults = "57, 12, 9",
    customizationSkill = "clothing_customization"

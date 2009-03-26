@@ -77,7 +77,11 @@ ithorianSentinelHelmet = Object:new {
    experimentalMax = "0, 0, 0, 1000, 40, 50000, 15, 13, 180, 1, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=258:objectcrc=618689855:objecttemp=ith_armor_s03_helmet:templatetype=wearables_name:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness;armorType=264;armorStyle=4108;:",
+   tanoAttributes = "objecttype=258:objectcrc=618689855:stfFile=wearables_name:stfName=ith_armor_s03_helmet:stfDetail=:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness;armorPiece=264;armorStyle=4108;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

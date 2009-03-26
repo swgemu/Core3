@@ -77,7 +77,11 @@ heavyAxe = Object:new {
    experimentalMax = "0, 0, 46, 182, 4.5, 20, 1500, 5, 5, 3, 5, 4, 42, 22, 7",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131080:objectcrc=3808952162:objecttemp=axe_heavy_duty:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=1;:",
+   tanoAttributes = "objecttype=131080:objectcrc=3808952162:stfFile=weapon_name:stfName=axe_heavy_duty:stfDetail=:itemmask=65535:customattributes=damagetype=1;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

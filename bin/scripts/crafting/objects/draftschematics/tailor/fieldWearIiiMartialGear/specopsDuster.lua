@@ -77,7 +77,11 @@ specopsDuster = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777227:objectcrc=2709650543:objecttemp=jacket_s21:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777227:objectcrc=2709650543:stfFile=wearables_name:stfName=jacket_s21:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "29, 47",
    customizationSkill = "clothing_customization"

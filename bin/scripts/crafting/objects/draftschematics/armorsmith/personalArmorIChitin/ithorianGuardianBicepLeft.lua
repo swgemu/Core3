@@ -77,7 +77,7 @@ ithorianGuardianBicepLeft = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 25000, 8, 8, 9, 1, 1, 40, 25000",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=261:objectcrc=1211170670:objecttemp=ith_armor_s02_bicep_l:templatetype=wearables_name:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=acideffectiveness,stuneffectiveness;armorType=259;armorStyle=4107;:",
+   tanoAttributes = "objecttype=261:objectcrc=1211170670:stfFile=wearables_name:stfName=ith_armor_s02_bicep_l:stfDetail=:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=acideffectiveness,stuneffectiveness;armorPiece=259;armorStyle=4107;:",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

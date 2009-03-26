@@ -77,7 +77,11 @@ snowBoots = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=2804071472:objecttemp=boots_s34:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=:objectcrc=2804071472:stfFile=wearables_name:stfName=boots_s34:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "46, 47",
    customizationSkill = "clothing_customization"

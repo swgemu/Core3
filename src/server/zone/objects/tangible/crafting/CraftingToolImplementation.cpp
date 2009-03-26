@@ -350,7 +350,7 @@ void CraftingToolImplementation::sendToolStart(Player* player) {
 		draftSchematic = schematicsToSend.get(i);
 
 		ocm->insertInt(draftSchematic->getSchematicID());
-		ocm->insertInt(draftSchematic->getSchematicCRC());
+		ocm->insertInt(draftSchematic->getObjectCRC());
 		ocm->insertInt(draftSchematic->getCraftingToolTab()); // this number decides what tab the schematic goes in (ex: 4 = food tab in crafting window)
 	}
 	player->sendMessage(ocm);
@@ -483,8 +483,9 @@ void CraftingToolImplementation::setWorkingDraftSchematic(
 	try {
 
 		if (currentDraftSchematic != NULL) {
-			currentDraftSchematic->setContainer(NULL);
+			currentDraftSchematic->setParent(NULL);
 			currentDraftSchematic->finalize();
+
 			currentDraftSchematic = NULL;
 		}
 
@@ -587,7 +588,7 @@ void CraftingToolImplementation::cleanUp(Player* player) {
 		SceneObjectDestroyMessage* destroy = new SceneObjectDestroyMessage(currentDraftSchematic->getObjectID());
 		player->sendMessage(destroy);
 
-		currentDraftSchematic->setContainer(NULL);
+		currentDraftSchematic->setParent(NULL);
 		currentDraftSchematic->finalize();
 		currentDraftSchematic = NULL;
 	}

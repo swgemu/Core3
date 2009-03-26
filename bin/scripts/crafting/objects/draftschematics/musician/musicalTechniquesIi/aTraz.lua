@@ -77,7 +77,11 @@ aTraz = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8204:objectcrc=395515554:objecttemp=obj_traz:templatetype=obj_n:itemmask=65535::",
+   tanoAttributes = "objecttype=8204:objectcrc=395515554:stfFile=obj_n:stfName=obj_traz:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "instrument_customization"

@@ -77,7 +77,11 @@ coldWeatherJacket = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777227:objectcrc=1998242035:objecttemp=clothing_jacket_field_16:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777227:objectcrc=1998242035:stfFile=wearables_name:stfName=clothing_jacket_field_16:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "94, 11",
    customizationSkill = "clothing_customization"

@@ -77,7 +77,11 @@ tacticalSkinsuit = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777219:objectcrc=3927394688:objecttemp=bodysuit_s15:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777219:objectcrc=3927394688:stfFile=wearables_name:stfName=bodysuit_s15:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "55, 40",
    customizationSkill = "clothing_customization"

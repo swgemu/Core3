@@ -77,7 +77,11 @@ weightedWaistWrap = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=1012928573:objecttemp=wke_skirt_s03:templatetype=wearables_name:itemmask=61955::",
+   tanoAttributes = "objecttype=:objectcrc=1012928573:stfFile=wearables_name:stfName=wke_skirt_s03:stfDetail=:itemmask=61955::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -77,7 +77,11 @@ advancedChemicalDispersionMechanism = Object:new {
    experimentalMax = "0, 0, 20, 20, 100",
    experimentalPrecision = "0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262155:objectcrc=1411275981:objecttemp=chemical_dispersion_mechanism_advanced:templatetype=craft_weapon_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=262155:objectcrc=1411275981:stfFile=craft_weapon_ingredients_n:stfName=chemical_dispersion_mechanism_advanced:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

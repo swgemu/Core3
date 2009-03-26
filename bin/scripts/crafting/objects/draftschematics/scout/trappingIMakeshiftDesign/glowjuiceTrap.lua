@@ -77,7 +77,11 @@ glowjuiceTrap = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8212:objectcrc=46866220:objecttemp=trap_ranged_def_1:templatetype=item_n:itemmask=65535::",
+   tanoAttributes = "objecttype=8212:objectcrc=46866220:stfFile=item_n:stfName=trap_ranged_def_1:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

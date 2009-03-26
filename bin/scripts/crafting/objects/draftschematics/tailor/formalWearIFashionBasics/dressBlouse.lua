@@ -77,7 +77,11 @@ dressBlouse = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777230:objectcrc=3497496979:objecttemp=clothing_shirt_formal_28:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777230:objectcrc=3497496979:stfFile=wearables_name:stfName=clothing_shirt_formal_28:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_0",
    customizationDefaults = "81",
    customizationSkill = "clothing_customization"

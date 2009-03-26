@@ -77,7 +77,11 @@ kashyyykianBlackMountainLeggings = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 31250, 31, 105, 14, 1, 1, 40, 31250",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=260:objectcrc=2863047:objecttemp=armor_kashyyykian_black_mtn_leggings:templatetype=wearables_name:itemmask=61955:customattributes=specialprotection=kineticeffectiveness;vunerability=heateffectiveness,stuneffectiveness,coldeffectiveness;armorType=262;armorStyle=4109;:",
+   tanoAttributes = "objecttype=260:objectcrc=2863047:stfFile=wearables_name:stfName=armor_kashyyykian_black_mtn_leggings:stfDetail=:itemmask=61955:customattributes=specialprotection=kineticeffectiveness;vunerability=heateffectiveness,stuneffectiveness,coldeffectiveness;armorPiece=262;armorStyle=4109;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

@@ -77,7 +77,11 @@ chitinArmorLeggings = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 25000, 23, 60, 9, 1, 1, 40, 25000",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=260:objectcrc=1149232129:objecttemp=armor_chitin_s01_leggings:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness,heateffectiveness,coldeffectiveness,restraineffectiveness;armorType=260;armorStyle=4102;:",
+   tanoAttributes = "objecttype=260:objectcrc=1149232129:stfFile=wearables_name:stfName=armor_chitin_s01_leggings:stfDetail=:itemmask=62975:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness,heateffectiveness,coldeffectiveness,restraineffectiveness;armorPiece=260;armorStyle=4102;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_0, /private/index_color_1",
    customizationDefaults = "0, 6",
    customizationSkill = "armor_customization"

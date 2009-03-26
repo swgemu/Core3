@@ -77,7 +77,11 @@ wrappedSkirt = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777234:objectcrc=3869787263:objecttemp=skirt_s10:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777234:objectcrc=3869787263:stfFile=wearables_name:stfName=skirt_s10:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "25, 62",
    customizationSkill = "clothing_customization"

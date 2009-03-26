@@ -77,7 +77,11 @@ kashyyykianHuntingChestPlate = Object:new {
    experimentalMax = "0, 0, 0, 1000, 40, 50000, 210, 93, 240, 1, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=257:objectcrc=3776759545:objecttemp=armor_kashyyykian_hunting_chest_plate:templatetype=wearables_name:itemmask=61955:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness;armorType=256;armorStyle=4111;:",
+   tanoAttributes = "objecttype=257:objectcrc=3776759545:stfFile=wearables_name:stfName=armor_kashyyykian_hunting_chest_plate:stfDetail=:itemmask=61955:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness;armorPiece=256;armorStyle=4111;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

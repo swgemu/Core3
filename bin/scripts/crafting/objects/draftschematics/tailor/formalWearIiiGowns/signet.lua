@@ -77,7 +77,11 @@ signet = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=16777216:objectcrc=2526338017:objecttemp=ring_s02:templatetype=wearables_name:itemmask=65535::",
+   tanoAttributes = "objecttype=16777216:objectcrc=2526338017:stfFile=wearables_name:stfName=ring_s02:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

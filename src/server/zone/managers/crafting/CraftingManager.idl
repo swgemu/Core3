@@ -85,5 +85,8 @@ interface CraftingManager {
 
 	void refreshDraftSchematics(Player player);
 	
+	TangibleObject requestObjectTemplate(String stfName);
+	TangibleObject requestBlueFrogObjectTemplate(String stfName);
+	
 	String generateCraftedSerial();
 }

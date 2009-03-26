@@ -77,7 +77,11 @@ longVibroAxe = Object:new {
    experimentalMax = "0, 0, 91, 364, 4.5, 43, 1500, -20, -20, 3, -20, 7, 45, 35, 15",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131081:objectcrc=1723256113:objecttemp=lance_vibro_axe:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=2;:",
+   tanoAttributes = "objecttype=131081:objectcrc=1723256113:stfFile=weapon_name:stfName=lance_vibro_axe:stfDetail=:itemmask=65535:customattributes=damagetype=2;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

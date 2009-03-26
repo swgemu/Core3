@@ -44,15 +44,15 @@ which carries forward this exception.
 
 #include "DraftSchematicImplementation.h"
 
-DraftSchematicImplementation::DraftSchematicImplementation(uint32 schematicID, const String& objName,
-		const String& StringFile, const String& StringName, uint32 objCRC, const String& groupName, uint32 complexity,
+DraftSchematicImplementation::DraftSchematicImplementation(uint32 oid, const String& n,
+		const String& file, const String& sname, uint32 objCRC, const String& groupName, uint32 complexity,
 		uint32 schematicSize, int craftingToolTab) :
 			DraftSchematicServant() {
-	DraftSchematicImplementation::schematicID = schematicID;
-	DraftSchematicImplementation::objName = objName;
-	DraftSchematicImplementation::StringFile = StringFile;
-	DraftSchematicImplementation::StringName = StringName;
-	DraftSchematicImplementation::schematicCRC = objCRC;
+	DraftSchematicImplementation::schematicID = oid;
+	DraftSchematicImplementation::customName = n;
+	DraftSchematicImplementation::stfFile = file;
+	DraftSchematicImplementation::stfName = sname;
+	DraftSchematicImplementation::objectCRC = objCRC;
 	DraftSchematicImplementation::groupName = groupName;
 	DraftSchematicImplementation::complexity = complexity;
 	DraftSchematicImplementation::schematicSize = schematicSize;
@@ -71,10 +71,10 @@ DraftSchematicImplementation::DraftSchematicImplementation(
 	DraftSchematicServant() {
 
 	schematicID = draftSchematic->getSchematicID();
-	objName = draftSchematic->getName();
-	StringFile = draftSchematic->getStringFile();
-	StringName = draftSchematic->getStringName();
-	schematicCRC = draftSchematic->getSchematicCRC();
+	customName = draftSchematic->getCustomName();
+	stfFile = draftSchematic->getStfFile();
+	stfName = draftSchematic->getStfName();
+	objectCRC = draftSchematic->getObjectCRC();
 	groupName = draftSchematic->getGroupName();
 	complexity = draftSchematic->getComplexity();
 	schematicSize = draftSchematic->getSchematicSize();
@@ -159,7 +159,7 @@ void DraftSchematicImplementation::sendTo(Player* player) {
 	player->sendMessage(create);
 
 	// Link to Crafting Tool
-	BaseMessage* link = new UpdateContainmentMessage(_this->getObjectID(), _this->getContainer()->getObjectID(), 4);
+	BaseMessage* link = new UpdateContainmentMessage(_this->getObjectID(), _this->getParent()->getObjectID(), 4);
 	player->sendMessage(link);
 
 	// MSCO3
@@ -171,7 +171,7 @@ void DraftSchematicImplementation::sendTo(Player* player) {
 
 	// MSCO6
 	ManufactureSchematicObjectMessage6* msco6 =
-		new ManufactureSchematicObjectMessage6(_this->getObjectID(), _this->getSchematicCRC());
+		new ManufactureSchematicObjectMessage6(_this->getObjectID(), _this->getObjectCRC());
 	player->sendMessage(msco6);
 
 	// MSCO8
@@ -210,7 +210,7 @@ void DraftSchematicImplementation::sendIngredientsToPlayer(Player* player) {
 	ObjectControllerMessage* msg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01BF);
 
 	msg->insertInt(schematicID); // ex: 0x838FF623838FF623 (objID is always the crc value in the upper 4 bytes and the lower 4 bytes)
-	msg->insertInt(schematicCRC);
+	msg->insertInt(objectCRC);
 	msg->insertInt(complexity); // ex: 3
 	msg->insertInt(schematicSize); // ex: 1
 	msg->insertByte(2);
@@ -256,7 +256,7 @@ void DraftSchematicImplementation::sendExperimentalPropertiesToPlayer(Player* pl
 	ObjectControllerMessage* msg = new ObjectControllerMessage(player->getObjectID(), 0x1B, 0x0207);
 
 	msg->insertInt(schematicID);
-	msg->insertInt(schematicCRC);
+	msg->insertInt(objectCRC);
 
 	uint8 listSize = dsExpPropGroups.size();
 
@@ -318,10 +318,10 @@ int DraftSchematicImplementation::getRequiredIngredientCount() {
 }
 
 void DraftSchematicImplementation::toString() {
-	System::out << "Name: " << objName;
+	System::out << "Name: " << customName.toString();
 	System::out << "\nSchematicID: " << schematicID;
 	System::out << "\nobjectID: " << objectID;
-	System::out << "\nschematicCRC: " << schematicCRC;
+	System::out << "\nschematicCRC: " << objectCRC;
 	System::out << "\ngroupName: " << groupName;
 	System::out << "\ncomplexity: " << complexity;
 	System::out << "\nschematicSize: " << schematicSize;

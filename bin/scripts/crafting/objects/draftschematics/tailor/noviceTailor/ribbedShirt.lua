@@ -77,7 +77,11 @@ ribbedShirt = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777230:objectcrc=2938825966:objecttemp=clothing_shirt_field_09:templatetype=craft_clothing_ingredients_n:itemmask=62975::",
+   tanoAttributes = "objecttype=16777230:objectcrc=2938825966:stfFile=craft_clothing_ingredients_n:stfName=clothing_shirt_field_09:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "158, 255",
    customizationSkill = "clothing_customization"

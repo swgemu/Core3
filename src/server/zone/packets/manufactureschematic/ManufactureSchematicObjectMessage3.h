@@ -87,11 +87,11 @@ public:
 			: BaseLineMessage(draftSchematic->getObjectID(), 0x4D53434F, 3, 0x09) {
 
 		insertFloat(draftSchematic->getComplexity());
-		insertAscii(draftSchematic->getStringFile());
+		insertAscii(draftSchematic->getStfFile());
 		insertInt(0);
-		insertAscii(draftSchematic->getStringName());
+		insertAscii(draftSchematic->getStfName());
 
-		insertUnicode(draftSchematic->getName());
+		insertUnicode(draftSchematic->getCustomName());
 
 		insertInt(0);  // Unknown
 		insertInt(draftSchematic->getManufacturingLimit()); // Manufacturing Count

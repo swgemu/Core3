@@ -77,7 +77,11 @@ advancedCompositeArmorSegment = Object:new {
    experimentalMax = "0, 0, 1000, 25, 1000, 1, 1, 1, 1, 256, 35, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262145:objectcrc=2764212654:objecttemp=armor_segment_composite_advanced:templatetype=craft_clothing_ingredients_n:itemmask=65535:customattributes=specialprotection=electricaleffectiveness;:",
+   tanoAttributes = "objecttype=262145:objectcrc=2764212654:stfFile=craft_clothing_ingredients_n:stfName=armor_segment_composite_advanced:stfDetail=:itemmask=65535:customattributes=specialprotection=electricaleffectiveness;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

@@ -77,7 +77,11 @@ creatureHabitat = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8211:objectcrc=3865262015:objecttemp=bug_habitat:templatetype=craft_item_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=8211:objectcrc=3865262015:stfFile=craft_item_ingredients_n:stfName=bug_habitat:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

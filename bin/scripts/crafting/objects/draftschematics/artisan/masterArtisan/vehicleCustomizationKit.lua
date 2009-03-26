@@ -77,7 +77,11 @@ vehicleCustomizationKit = Object:new {
    experimentalMax = "0, 0, 1000, 10",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32768:objectcrc=3528062501:objecttemp=vehicle_customization_kit:templatetype=item_n:itemmask=65535::",
+   tanoAttributes = "objecttype=32768:objectcrc=3528062501:stfFile=item_n:stfName=vehicle_customization_kit:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

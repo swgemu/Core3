@@ -77,7 +77,11 @@ speederbike = Object:new {
    experimentalMax = "0, 0, 2500",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8388613:objectcrc=4075476273:objecttemp=speederbike:templatetype=monster_name:itemmask=65535::",
+   tanoAttributes = "objecttype=8388613:objectcrc=4075476273:stfFile=monster_name:stfName=speederbike:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

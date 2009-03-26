@@ -77,7 +77,11 @@ armorSegment = Object:new {
    experimentalMax = "0, 0, 1000, 5, 1000, 1, 1, 1, 1, 2, 10, 1000",
    experimentalPrecision = "0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262145:objectcrc=1357044619:objecttemp=armor_segment:templatetype=craft_clothing_ingredients_n:itemmask=65535:customattributes=specialprotection=energyeffectiveness;:",
+   tanoAttributes = "objecttype=262145:objectcrc=1357044619:stfFile=craft_clothing_ingredients_n:stfName=armor_segment:stfDetail=:itemmask=65535:customattributes=specialprotection=energyeffectiveness;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

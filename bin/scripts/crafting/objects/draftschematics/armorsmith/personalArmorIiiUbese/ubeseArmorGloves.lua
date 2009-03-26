@@ -77,7 +77,11 @@ ubeseArmorGloves = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 25000, 7, 17, 11, 1, 1, 40, 31250",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262:objectcrc=1597327192:objecttemp=armor_ubese_gloves:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=kineticeffectiveness;vunerability=heateffectiveness,stuneffectiveness,coldeffectiveness;armorType=257;armorStyle=4127;:",
+   tanoAttributes = "objecttype=262:objectcrc=1597327192:stfFile=wearables_name:stfName=armor_ubese_gloves:stfDetail=:itemmask=62975:customattributes=specialprotection=kineticeffectiveness;vunerability=heateffectiveness,stuneffectiveness,coldeffectiveness;armorPiece=257;armorStyle=4127;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

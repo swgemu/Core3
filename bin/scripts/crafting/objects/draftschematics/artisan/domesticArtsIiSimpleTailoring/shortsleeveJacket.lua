@@ -77,7 +77,11 @@ shortsleeveJacket = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=1288064520:objecttemp=jacket_s02:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=:objectcrc=1288064520:stfFile=wearables_name:stfName=jacket_s02:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "180",
    customizationSkill = "clothing_customization"

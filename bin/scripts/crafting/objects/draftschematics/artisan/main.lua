@@ -103,7 +103,6 @@ RunDraftSchematicFile("objects/draftschematics/artisan/engineeringIiiAdvancedCon
 RunDraftSchematicFile("objects/draftschematics/artisan/engineeringIvComplexSystems/heavyAxe.lua")
 RunDraftSchematicFile("objects/draftschematics/artisan/engineeringIvComplexSystems/boneArmorLeftBracer.lua")
 RunDraftSchematicFile("objects/draftschematics/artisan/engineeringIvComplexSystems/boneArmorRightBracer.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/engineeringIvComplexSystems/boneArmorChestPlate.lua")
 RunDraftSchematicFile("objects/draftschematics/artisan/engineeringIvComplexSystems/deedForPersonalNaturalGasProcessor.lua")
 RunDraftSchematicFile("objects/draftschematics/artisan/engineeringIvComplexSystems/deedForPersonalChemicalExtractor.lua")
 RunDraftSchematicFile("objects/draftschematics/artisan/engineeringIvComplexSystems/deedForPersonalMoistureVaporator.lua")

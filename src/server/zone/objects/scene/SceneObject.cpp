@@ -2069,12 +2069,26 @@ void SceneObject::onReceivePaymentFrom(CreatureObject* sender, unsigned int amou
 		((SceneObjectImplementation*) _impl)->onReceivePaymentFrom(sender, amount);
 }
 
-bool SceneObject::inflictDamage(CreatureObject* victim, unsigned char attribute, unsigned int damage) {
+void SceneObject::onTrade(Player* sender, Player* receiver) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 163);
+		method.addObjectParameter(sender);
+		method.addObjectParameter(receiver);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->onTrade(sender, receiver);
+}
+
+bool SceneObject::inflictDamage(CreatureObject* victim, unsigned char attribute, unsigned int damage) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 164);
 		method.addObjectParameter(victim);
 		method.addUnsignedCharParameter(attribute);
 		method.addUnsignedIntParameter(damage);
@@ -2089,7 +2103,7 @@ void SceneObject::incapacitate(CreatureObject* victim) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 164);
+		DistributedMethod method(this, 165);
 		method.addObjectParameter(victim);
 
 		method.executeWithVoidReturn();
@@ -2102,7 +2116,7 @@ void SceneObject::kill(CreatureObject* victim) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 165);
+		DistributedMethod method(this, 166);
 		method.addObjectParameter(victim);
 
 		method.executeWithVoidReturn();
@@ -2115,7 +2129,7 @@ void SceneObject::deathblow(Player* victim) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 166);
+		DistributedMethod method(this, 167);
 		method.addObjectParameter(victim);
 
 		method.executeWithVoidReturn();
@@ -2128,7 +2142,7 @@ unsigned int SceneObject::healDamage(CreatureObject* patient, unsigned char attr
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 167);
+		DistributedMethod method(this, 168);
 		method.addObjectParameter(patient);
 		method.addUnsignedCharParameter(attribute);
 		method.addUnsignedIntParameter(amount);
@@ -2143,7 +2157,7 @@ unsigned int SceneObject::healWound(CreatureObject* patient, unsigned char attri
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 168);
+		DistributedMethod method(this, 169);
 		method.addObjectParameter(patient);
 		method.addUnsignedCharParameter(attribute);
 		method.addUnsignedIntParameter(amount);
@@ -2158,7 +2172,7 @@ unsigned int SceneObject::healEnhance(CreatureObject* patient, unsigned char att
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 169);
+		DistributedMethod method(this, 170);
 		method.addObjectParameter(patient);
 		method.addUnsignedCharParameter(attribute);
 		method.addUnsignedIntParameter(amount);
@@ -2174,7 +2188,7 @@ void SceneObject::resuscitate(CreatureObject* patient, bool forced) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 170);
+		DistributedMethod method(this, 171);
 		method.addObjectParameter(patient);
 		method.addBooleanParameter(forced);
 
@@ -2188,7 +2202,7 @@ void SceneObject::receivePaymentFrom(CreatureObject* sender, unsigned int amount
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 171);
+		DistributedMethod method(this, 172);
 		method.addObjectParameter(sender);
 		method.addUnsignedIntParameter(amount);
 
@@ -2202,7 +2216,7 @@ void SceneObject::warpTo(float x, float z, float y, unsigned long long parentID)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 172);
+		DistributedMethod method(this, 173);
 		method.addFloatParameter(x);
 		method.addFloatParameter(z);
 		method.addFloatParameter(y);
@@ -2218,7 +2232,7 @@ float SceneObject::calculateDistance(SceneObject* scno) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 173);
+		DistributedMethod method(this, 174);
 		method.addObjectParameter(scno);
 
 		return method.executeWithFloatReturn();
@@ -2231,7 +2245,7 @@ bool SceneObject::getPickupFlag() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 174);
+		DistributedMethod method(this, 175);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2243,7 +2257,7 @@ void SceneObject::setPickupFlag(bool pickup) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 175);
+		DistributedMethod method(this, 176);
 		method.addBooleanParameter(pickup);
 
 		method.executeWithVoidReturn();
@@ -2734,42 +2748,45 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		onReceivePaymentFrom((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 163:
-		resp->insertBoolean(inflictDamage((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedCharParameter(), inv->getUnsignedIntParameter()));
+		onTrade((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter());
 		break;
 	case 164:
-		incapacitate((CreatureObject*) inv->getObjectParameter());
+		resp->insertBoolean(inflictDamage((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedCharParameter(), inv->getUnsignedIntParameter()));
 		break;
 	case 165:
-		kill((CreatureObject*) inv->getObjectParameter());
+		incapacitate((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 166:
-		deathblow((Player*) inv->getObjectParameter());
+		kill((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 167:
-		resp->insertInt(healDamage((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedCharParameter(), inv->getUnsignedIntParameter()));
+		deathblow((Player*) inv->getObjectParameter());
 		break;
 	case 168:
-		resp->insertInt(healWound((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedCharParameter(), inv->getUnsignedIntParameter()));
+		resp->insertInt(healDamage((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedCharParameter(), inv->getUnsignedIntParameter()));
 		break;
 	case 169:
-		resp->insertInt(healEnhance((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedCharParameter(), inv->getUnsignedIntParameter(), inv->getFloatParameter()));
+		resp->insertInt(healWound((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedCharParameter(), inv->getUnsignedIntParameter()));
 		break;
 	case 170:
-		resuscitate((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		resp->insertInt(healEnhance((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedCharParameter(), inv->getUnsignedIntParameter(), inv->getFloatParameter()));
 		break;
 	case 171:
-		receivePaymentFrom((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		resuscitate((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 172:
-		warpTo(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
+		receivePaymentFrom((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 173:
-		resp->insertFloat(calculateDistance((SceneObject*) inv->getObjectParameter()));
+		warpTo(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 174:
-		resp->insertBoolean(getPickupFlag());
+		resp->insertFloat(calculateDistance((SceneObject*) inv->getObjectParameter()));
 		break;
 	case 175:
+		resp->insertBoolean(getPickupFlag());
+		break;
+	case 176:
 		setPickupFlag(inv->getBooleanParameter());
 		break;
 	default:
@@ -3405,6 +3422,10 @@ void SceneObjectAdapter::onHealEnhanceTarget(CreatureObject* patient, unsigned c
 
 void SceneObjectAdapter::onReceivePaymentFrom(CreatureObject* sender, unsigned int amount) {
 	return ((SceneObjectImplementation*) impl)->onReceivePaymentFrom(sender, amount);
+}
+
+void SceneObjectAdapter::onTrade(Player* sender, Player* receiver) {
+	return ((SceneObjectImplementation*) impl)->onTrade(sender, receiver);
 }
 
 bool SceneObjectAdapter::inflictDamage(CreatureObject* victim, unsigned char attribute, unsigned int damage) {

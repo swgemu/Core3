@@ -77,7 +77,11 @@ revealingBikini = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777230:objectcrc=798815144:objecttemp=bikini_s01:templatetype=wearables_name:itemmask=62974::",
+   tanoAttributes = "objecttype=16777230:objectcrc=798815144:stfFile=wearables_name:stfName=bikini_s01:stfDetail=:itemmask=62974::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "63",
    customizationSkill = "clothing_customization"

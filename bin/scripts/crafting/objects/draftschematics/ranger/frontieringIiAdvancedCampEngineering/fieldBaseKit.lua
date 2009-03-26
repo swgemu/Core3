@@ -77,7 +77,11 @@ fieldBaseKit = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32772:objectcrc=3731836900:objecttemp=camp_elite:templatetype=item_n:itemmask=65535::",
+   tanoAttributes = "objecttype=32772:objectcrc=3731836900:stfFile=item_n:stfName=camp_elite:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

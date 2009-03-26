@@ -77,7 +77,11 @@ advancedBoneArmorSegment = Object:new {
    experimentalMax = "0, 0, 1000, 10, 1000, 1, 1, 1, 1, 2, 20, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262145:objectcrc=2814096223:objecttemp=armor_segment_bone_advanced:templatetype=craft_armor_ingredients_n:itemmask=65535:customattributes=specialprotection=energyeffectiveness;:",
+   tanoAttributes = "objecttype=262145:objectcrc=2814096223:stfFile=craft_armor_ingredients_n:stfName=armor_segment_bone_advanced:stfDetail=:itemmask=65535:customattributes=specialprotection=energyeffectiveness;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

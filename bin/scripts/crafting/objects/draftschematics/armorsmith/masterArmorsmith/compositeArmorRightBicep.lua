@@ -77,7 +77,11 @@ compositeArmorRightBicep = Object:new {
    experimentalMax = "0, 0, 0, 1000, 40, 50000, 15, 13, 15, 1, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=261:objectcrc=1668390786:objecttemp=armor_composite_bicep_r:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=restraineffectiveness;vunerability=stuneffectiveness;armorType=261;armorStyle=4097;:",
+   tanoAttributes = "objecttype=261:objectcrc=1668390786:stfFile=wearables_name:stfName=armor_composite_bicep_r:stfDetail=:itemmask=62975:customattributes=specialprotection=restraineffectiveness;vunerability=stuneffectiveness;armorPiece=261;armorStyle=4097;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "0",
    customizationSkill = "armor_customization"

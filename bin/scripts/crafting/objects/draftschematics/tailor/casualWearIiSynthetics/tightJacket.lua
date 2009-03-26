@@ -77,7 +77,11 @@ tightJacket = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777227:objectcrc=3440438497:objecttemp=jacket_s19:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777227:objectcrc=3440438497:stfFile=wearables_name:stfName=jacket_s19:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "73, 2",
    customizationSkill = "clothing_customization"

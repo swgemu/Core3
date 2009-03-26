@@ -77,7 +77,11 @@ kashyyykianCeremonialChestPlate = Object:new {
    experimentalMax = "0, 0, 0, 1000, 25, 31250, 85, 33, 59, 1, 1, 40, 31250",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=257:objectcrc=2342857990:objecttemp=armor_kashyyykian_ceremonial_chest_plate:templatetype=wearables_name:itemmask=61955:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness,acideffectiveness;armorType=256;armorStyle=4110;:",
+   tanoAttributes = "objecttype=257:objectcrc=2342857990:stfFile=wearables_name:stfName=armor_kashyyykian_ceremonial_chest_plate:stfDetail=:itemmask=61955:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness,acideffectiveness;armorPiece=256;armorStyle=4110;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

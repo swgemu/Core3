@@ -77,7 +77,11 @@ allPurposeShipRepairKit = Object:new {
    experimentalMax = "0, 0, 10000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=805306374:objectcrc=807989435:objecttemp=repair_kit_ship_n:templatetype=space/space_item:itemmask=65535::",
+   tanoAttributes = "objecttype=805306374:objectcrc=807989435:stfFile=space/space_item:stfName=repair_kit_ship_n:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

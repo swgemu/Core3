@@ -77,7 +77,11 @@ infiltrationSuit = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777219:objectcrc=822141207:objecttemp=bodysuit_s16:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777219:objectcrc=822141207:stfFile=wearables_name:stfName=bodysuit_s16:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "41",
    customizationSkill = "clothing_customization"

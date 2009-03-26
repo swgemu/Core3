@@ -77,7 +77,11 @@ scoutJacket = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777227:objectcrc=624929286:objecttemp=jacket_s07:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777227:objectcrc=624929286:stfFile=wearables_name:stfName=jacket_s07:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "41, 84",
    customizationSkill = "clothing_customization"

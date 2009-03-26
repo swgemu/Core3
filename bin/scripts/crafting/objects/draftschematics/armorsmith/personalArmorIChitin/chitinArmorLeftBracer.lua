@@ -77,7 +77,11 @@ chitinArmorLeftBracer = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 25000, 8, 8, 9, 1, 1, 40, 25000",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=261:objectcrc=3411753246:objecttemp=clothing_armor_chitin_bracer_l:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness,heateffectiveness,coldeffectiveness,restraineffectiveness;armorType=261;armorStyle=4102;:",
+   tanoAttributes = "objecttype=261:objectcrc=3411753246:stfFile=wearables_name:stfName=clothing_armor_chitin_bracer_l:stfDetail=:itemmask=62975:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness,heateffectiveness,coldeffectiveness,restraineffectiveness;armorPiece=261;armorStyle=4102;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_0, /private/index_color_1",
    customizationDefaults = "0, 6",
    customizationSkill = "armor_customization"

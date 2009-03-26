@@ -77,7 +77,11 @@ fashionablyPleatedSkirt = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777234:objectcrc=107176467:objecttemp=clothing_skirt_formal_07:templatetype=wearables_name:itemmask=62974::",
+   tanoAttributes = "objecttype=16777234:objectcrc=107176467:stfFile=wearables_name:stfName=clothing_skirt_formal_07:stfDetail=:itemmask=62974::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "90, 239",
    customizationSkill = "clothing_customization"

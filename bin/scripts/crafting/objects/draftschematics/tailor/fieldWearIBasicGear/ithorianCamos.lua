@@ -77,7 +77,11 @@ ithorianCamos = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777228:objectcrc=1672135181:objecttemp=clothing_ith_pants_field_05:templatetype=wearables_name:itemmask=63491::",
+   tanoAttributes = "objecttype=16777228:objectcrc=1672135181:stfFile=wearables_name:stfName=clothing_ith_pants_field_05:stfDetail=:itemmask=63491::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

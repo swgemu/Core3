@@ -77,7 +77,11 @@ dx2Pistol = Object:new {
    experimentalMax = "0, 0, 78, 117, 3.2, 16, 60, 1500, 33, -90, 16, 30, 14, 25, 9",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131082:objectcrc=260330479:objecttemp=pistol_dx2:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=2;:",
+   tanoAttributes = "objecttype=131082:objectcrc=260330479:stfFile=weapon_name:stfName=pistol_dx2:stfDetail=:itemmask=65535:customattributes=damagetype=2;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

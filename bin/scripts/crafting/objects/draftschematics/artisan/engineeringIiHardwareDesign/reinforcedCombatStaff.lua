@@ -77,7 +77,11 @@ reinforcedCombatStaff = Object:new {
    experimentalMax = "0, 0, 52, 111, 4, 7, 1500, 17, 17, 3, 17, 5, 14, 27, 11",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131081:objectcrc=2627673923:objecttemp=lance_staff_wood_s2:templatetype=weapon_name:itemmask=65535::",
+   tanoAttributes = "objecttype=131081:objectcrc=2627673923:stfFile=weapon_name:stfName=lance_staff_wood_s2:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

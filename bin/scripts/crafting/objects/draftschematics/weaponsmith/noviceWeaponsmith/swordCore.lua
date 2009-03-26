@@ -77,7 +77,11 @@ swordCore = Object:new {
    experimentalMax = "0, 0, 20, 20, -0.5, 10, 100, 10, 10, 10, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262153:objectcrc=3001742780:objecttemp=sword_core:templatetype=craft_weapon_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=262153:objectcrc=3001742780:stfFile=craft_weapon_ingredients_n:stfName=sword_core:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

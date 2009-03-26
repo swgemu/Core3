@@ -77,7 +77,11 @@ twostrapBandolier = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777217:objectcrc=4012855347:objecttemp=bandolier_s03:templatetype=wearables_name:itemmask=65535::",
+   tanoAttributes = "objecttype=16777217:objectcrc=4012855347:stfFile=wearables_name:stfName=bandolier_s03:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "0",
    customizationSkill = "clothing_customization"

@@ -77,7 +77,11 @@ lekkuYsrak = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=2076841175:objecttemp=:templatetype=:itemmask=65535::",
+   tanoAttributes = "objecttype=:objectcrc=2076841175:stfFile=:stfName=:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "65, 100",
    customizationSkill = "clothing_customization"

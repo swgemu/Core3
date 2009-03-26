@@ -77,7 +77,11 @@ wookieeSmock = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777229:objectcrc=1705432745:objecttemp=robe_s18:templatetype=wearables_name:itemmask=61955::",
+   tanoAttributes = "objecttype=16777229:objectcrc=1705432745:stfFile=wearables_name:stfName=robe_s18:stfDetail=:itemmask=61955::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "19",
    customizationSkill = "clothing_customization"

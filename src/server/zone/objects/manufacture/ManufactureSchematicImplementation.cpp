@@ -76,10 +76,10 @@ ManufactureSchematicImplementation::ManufactureSchematicImplementation(uint64 oi
 	init();
 
 	setComplexity(draftSchematic->getComplexity());
-	stfFile = draftSchematic->getStringFile();
-	stfName = draftSchematic->getStringName();
-	customName = draftSchematic->getName();
-	objectCRC = draftSchematic->getSchematicCRC();
+	stfFile = draftSchematic->getStfFile();
+	stfName = draftSchematic->getStfName();
+	customName = draftSchematic->getCustomName();
+	objectCRC = draftSchematic->getObjectCRC();
 	setDataSize(draftSchematic->getSchematicSize());
 	setManufacturingLimit(draftSchematic->getManufacturingLimit());
 

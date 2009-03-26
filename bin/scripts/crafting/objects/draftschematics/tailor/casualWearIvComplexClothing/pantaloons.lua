@@ -77,7 +77,11 @@ pantaloons = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777228:objectcrc=1960275860:objecttemp=pants_s24:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777228:objectcrc=1960275860:stfFile=wearables_name:stfName=pants_s24:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "5",
    customizationSkill = "clothing_customization"

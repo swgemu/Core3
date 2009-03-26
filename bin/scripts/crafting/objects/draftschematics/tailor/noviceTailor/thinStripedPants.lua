@@ -77,7 +77,11 @@ thinStripedPants = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777228:objectcrc=193598185:objecttemp=clothing_pants_casual_05:templatetype=craft_clothing_ingredients_n:itemmask=62975::",
+   tanoAttributes = "objecttype=16777228:objectcrc=193598185:stfFile=craft_clothing_ingredients_n:stfName=clothing_pants_casual_05:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "159, 253",
    customizationSkill = "clothing_customization"

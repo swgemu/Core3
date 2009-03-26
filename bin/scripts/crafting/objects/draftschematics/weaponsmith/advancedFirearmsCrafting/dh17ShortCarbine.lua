@@ -77,7 +77,11 @@ dh17ShortCarbine = Object:new {
    experimentalMax = "0, 0, 52, 150, 3.1, 12, 65, 1500, -25, -80, 25, 5, 15, 17, 8",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131083:objectcrc=1881783933:objecttemp=carbine_dh17_short:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=2;:",
+   tanoAttributes = "objecttype=131083:objectcrc=1881783933:stfFile=weapon_name:stfName=carbine_dh17_short:stfDetail=:itemmask=65535:customattributes=damagetype=2;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

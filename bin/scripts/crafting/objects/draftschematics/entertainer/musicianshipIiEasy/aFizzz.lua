@@ -77,7 +77,11 @@ aFizzz = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8204:objectcrc=197364379:objecttemp=obj_fizzz:templatetype=obj_n:itemmask=65535::",
+   tanoAttributes = "objecttype=8204:objectcrc=197364379:stfFile=obj_n:stfName=obj_fizzz:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "instrument_customization"

@@ -77,7 +77,11 @@ ruggedJacket = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777227:objectcrc=2671085076:objecttemp=clothing_jacket_field_08:templatetype=craft_clothing_ingredients_n:itemmask=62975::",
+   tanoAttributes = "objecttype=16777227:objectcrc=2671085076:stfFile=craft_clothing_ingredients_n:stfName=clothing_jacket_field_08:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "219, 144",
    customizationSkill = "clothing_customization"

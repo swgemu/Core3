@@ -77,7 +77,11 @@ ithorianHalfSweater = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777230:objectcrc=330276413:objecttemp=ith_shirt_s04:templatetype=wearables_name:itemmask=63491::",
+   tanoAttributes = "objecttype=16777230:objectcrc=330276413:stfFile=wearables_name:stfName=ith_shirt_s04:stfDetail=:itemmask=63491::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

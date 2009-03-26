@@ -77,7 +77,11 @@ ithorianStripedShirt = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777234:objectcrc=3367515818:objecttemp=ith_shirt_s07:templatetype=wearables_name:itemmask=63491::",
+   tanoAttributes = "objecttype=16777234:objectcrc=3367515818:stfFile=wearables_name:stfName=ith_shirt_s07:stfDetail=:itemmask=63491::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

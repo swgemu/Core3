@@ -77,7 +77,11 @@ camoKitDathomir = Object:new {
    experimentalMax = "0, 0, 1000, 20",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8232:objectcrc=372534846:objecttemp=camokit_dathomir:templatetype=item_n:itemmask=65535::",
+   tanoAttributes = "objecttype=8232:objectcrc=372534846:stfFile=item_n:stfName=camokit_dathomir:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

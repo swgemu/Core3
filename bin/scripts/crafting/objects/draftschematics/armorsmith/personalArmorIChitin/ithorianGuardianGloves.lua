@@ -77,7 +77,11 @@ ithorianGuardianGloves = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 25000, 8, 15, 9, 1, 1, 40, 25000",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262:objectcrc=889238444:objecttemp=clothing_armor_ithorian_guardian_gloves:templatetype=wearables_name:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=acideffectiveness,stuneffectiveness;armorType=257;armorStyle=4107;:",
+   tanoAttributes = "objecttype=262:objectcrc=889238444:stfFile=wearables_name:stfName=clothing_armor_ithorian_guardian_gloves:stfDetail=:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=acideffectiveness,stuneffectiveness;armorPiece=257;armorStyle=4107;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

@@ -77,7 +77,11 @@ ithorianAthleticGear = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777219:objectcrc=153902942:objecttemp=ith_bodysuit_s04:templatetype=wearables_name:itemmask=63491::",
+   tanoAttributes = "objecttype=16777219:objectcrc=153902942:stfFile=wearables_name:stfName=ith_bodysuit_s04:stfDetail=:itemmask=63491::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

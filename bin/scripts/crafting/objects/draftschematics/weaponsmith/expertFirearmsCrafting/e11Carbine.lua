@@ -77,7 +77,11 @@ e11Carbine = Object:new {
    experimentalMax = "0, 0, 52, 124, 3, 13, 45, 1500, -40, -80, 30, 5, 18, 22, 11",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131083:objectcrc=3034123480:objecttemp=carbine_e11:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=2;:",
+   tanoAttributes = "objecttype=131083:objectcrc=3034123480:stfFile=weapon_name:stfName=carbine_e11:stfDetail=:itemmask=65535:customattributes=damagetype=2;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

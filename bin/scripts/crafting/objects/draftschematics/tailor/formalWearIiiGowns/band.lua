@@ -61,10 +61,10 @@ band = Object:new {
 
    ingredientTemplateNames = "craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n",
    ingredientTitleNames = "trim, ring, jewelry_setting",
-   ingredientSlotType = "0, 0, 0",
+   ingredientSlotType = "0, 0, 1",
    resourceTypes = "metal, metal, object/tangible/component/clothing/shared_jewelry_setting.iff",
    resourceQuantities = "20, 20, 3",
-   combineTypes = "0, 0, 0",
+   combineTypes = "0, 0, 1",
    contribution = "100, 100, 100",
 
    numberExperimentalProperties = "1, 1, 1",
@@ -77,7 +77,11 @@ band = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=16777216:objectcrc=1300460406:objecttemp=ring_s01:templatetype=wearables_name:itemmask=65535::",
+   tanoAttributes = "objecttype=16777216:objectcrc=1300460406:stfFile=wearables_name:stfName=ring_s01:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

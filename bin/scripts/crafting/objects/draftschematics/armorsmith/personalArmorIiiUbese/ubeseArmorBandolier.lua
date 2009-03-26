@@ -77,7 +77,11 @@ ubeseArmorBandolier = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8197:objectcrc=3989520572:objecttemp=armor_ubese_bandolier:templatetype=wearables_name:itemmask=65535:customattributes=:",
+   tanoAttributes = "objecttype=8197:objectcrc=3989520572:stfFile=wearables_name:stfName=armor_ubese_bandolier:stfDetail=:itemmask=65535:customattributes=:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

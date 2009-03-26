@@ -77,7 +77,11 @@ powerConditioner = Object:new {
    experimentalMax = "0, 0, 150, 5",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262150:objectcrc=1024745663:objecttemp=power_conditioner:templatetype=craft_food_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=262150:objectcrc=1024745663:stfFile=craft_food_ingredients_n:stfName=power_conditioner:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

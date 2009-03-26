@@ -77,7 +77,11 @@ kashyyykianCeremonialLeftBracer = Object:new {
    experimentalMax = "0, 0, 0, 1000, 25, 25000, 18, 18, 19, 1, 1, 40, 25000",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=261:objectcrc=107997252:objecttemp=armor_kashyyykian_ceremonial_bracer_l:templatetype=wearables_name:itemmask=61955:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness,acideffectiveness;armorType=258;armorStyle=4110;:",
+   tanoAttributes = "objecttype=261:objectcrc=107997252:stfFile=wearables_name:stfName=armor_kashyyykian_ceremonial_bracer_l:stfDetail=:itemmask=61955:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness,acideffectiveness;armorPiece=258;armorStyle=4110;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

@@ -77,7 +77,11 @@ starshipCraftingTool = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32769:objectcrc=2903391664:objecttemp=space_tool_name:templatetype=crafting:itemmask=65535::",
+   tanoAttributes = "objecttype=32769:objectcrc=2903391664:stfFile=crafting:stfName=space_tool_name:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -77,7 +77,11 @@ metalBand = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=16777216:objectcrc=3949931361:objecttemp=bracelet_s02:templatetype=wearables_name:itemmask=65535::",
+   tanoAttributes = "objecttype=16777216:objectcrc=3949931361:stfFile=wearables_name:stfName=bracelet_s02:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

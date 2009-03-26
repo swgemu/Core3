@@ -77,7 +77,11 @@ cloakHoodUp = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777221:objectcrc=956309254:objecttemp=robe_s05b:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777221:objectcrc=956309254:stfFile=wearables_name:stfName=robe_s05b:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "4",
    customizationSkill = "clothing_customization"

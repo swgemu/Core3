@@ -77,7 +77,11 @@ ubeseArmorShirt = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777230:objectcrc=758262636:objecttemp=armor_ubese_shirt:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=;vunerability=;armorType=16777230;armorStyle=;:",
+   tanoAttributes = "objecttype=16777230:objectcrc=758262636:stfFile=wearables_name:stfName=armor_ubese_shirt:stfDetail=:itemmask=62975:customattributes=specialprotection=;vunerability=;armorPiece=16777230;armorStyle=;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "0",
    customizationSkill = "armor_customization"

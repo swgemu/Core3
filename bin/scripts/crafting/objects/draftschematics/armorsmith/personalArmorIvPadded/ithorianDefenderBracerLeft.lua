@@ -77,7 +77,11 @@ ithorianDefenderBracerLeft = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 31250, 10, 13, 14, 1, 4, 40, 31250",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=261:objectcrc=3020283121:objecttemp=ith_armor_s01_bracer_l:templatetype=wearables_name:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=heateffectiveness,stuneffectiveness,coldeffectiveness;armorType=258;armorStyle=4106;:",
+   tanoAttributes = "objecttype=261:objectcrc=3020283121:stfFile=wearables_name:stfName=ith_armor_s01_bracer_l:stfDetail=:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=heateffectiveness,stuneffectiveness,coldeffectiveness;armorPiece=258;armorStyle=4106;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

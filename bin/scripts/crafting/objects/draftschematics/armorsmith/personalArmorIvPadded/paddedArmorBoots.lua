@@ -77,7 +77,11 @@ paddedArmorBoots = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 31250, 10, 26, 14, 1, 4, 40, 31250",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=263:objectcrc=343908402:objecttemp=armor_padded_s01_boots:templatetype=wearables_name:itemmask=62967:customattributes=specialprotection=blasteffectiveness;vunerability=stuneffectiveness,heateffectiveness,acideffectiveness;armorType=263;armorStyle=4121;:",
+   tanoAttributes = "objecttype=263:objectcrc=343908402:stfFile=wearables_name:stfName=armor_padded_s01_boots:stfDetail=:itemmask=62967:customattributes=specialprotection=blasteffectiveness;vunerability=stuneffectiveness,heateffectiveness,acideffectiveness;armorPiece=263;armorStyle=4121;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "117, 159",
    customizationSkill = "armor_customization"

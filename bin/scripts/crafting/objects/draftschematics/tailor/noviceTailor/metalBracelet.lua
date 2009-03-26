@@ -77,7 +77,11 @@ metalBracelet = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=3539179154:objecttemp=clothing_jewelry_bracelet_06:templatetype=craft_clothing_ingredients_n:itemmask=62975::",
+   tanoAttributes = "objecttype=:objectcrc=3539179154:stfFile=craft_clothing_ingredients_n:stfName=clothing_jewelry_bracelet_06:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "0, 0",
    customizationSkill = "clothing_customization"

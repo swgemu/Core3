@@ -77,7 +77,11 @@ compositeArmorChestPlate = Object:new {
    experimentalMax = "0, 0, 0, 1000, 40, 50000, 150, 39, 15, 1, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=257:objectcrc=2068279078:objecttemp=armor_composite_chest_plate:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=restraineffectiveness;vunerability=stuneffectiveness;armorType=256;armorStyle=4097;:",
+   tanoAttributes = "objecttype=257:objectcrc=2068279078:stfFile=wearables_name:stfName=armor_composite_chest_plate:stfDetail=:itemmask=62975:customattributes=specialprotection=restraineffectiveness;vunerability=stuneffectiveness;armorPiece=256;armorStyle=4097;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "0",
    customizationSkill = "armor_customization"

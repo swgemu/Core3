@@ -77,7 +77,11 @@ ithorianTightFitJumpsuit = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777219:objectcrc=4073681994:objecttemp=ith_bodysuit_s03:templatetype=wearables_name:itemmask=63491::",
+   tanoAttributes = "objecttype=16777219:objectcrc=4073681994:stfFile=wearables_name:stfName=ith_bodysuit_s03:stfDetail=:itemmask=63491::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

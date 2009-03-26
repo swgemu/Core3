@@ -77,7 +77,11 @@ chitinArmorHelmet = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 25000, 8, 8, 113, 1, 1, 40, 25000",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=258:objectcrc=678202649:objecttemp=armor_chitin_s01_helmet:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness,heateffectiveness,coldeffectiveness,restraineffectiveness;armorType=264;armorStyle=4102;:",
+   tanoAttributes = "objecttype=258:objectcrc=678202649:stfFile=wearables_name:stfName=armor_chitin_s01_helmet:stfDetail=:itemmask=62975:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness,heateffectiveness,coldeffectiveness,restraineffectiveness;armorPiece=264;armorStyle=4102;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_0, /private/index_color_1, /private/index_color_2",
    customizationDefaults = "0, 6, 3",
    customizationSkill = "armor_customization"

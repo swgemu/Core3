@@ -77,7 +77,11 @@ statelyNecklace = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=16777216:objectcrc=4045235798:objecttemp=necklace_s02:templatetype=wearables_name:itemmask=65535::",
+   tanoAttributes = "objecttype=16777216:objectcrc=4045235798:stfFile=wearables_name:stfName=necklace_s02:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "49, 153",
    customizationSkill = "clothing_customization"

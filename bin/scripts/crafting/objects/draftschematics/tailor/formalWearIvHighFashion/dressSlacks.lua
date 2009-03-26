@@ -77,7 +77,11 @@ dressSlacks = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777228:objectcrc=279060369:objecttemp=pants_s15:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777228:objectcrc=279060369:stfFile=wearables_name:stfName=pants_s15:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "88",
    customizationSkill = "clothing_customization"

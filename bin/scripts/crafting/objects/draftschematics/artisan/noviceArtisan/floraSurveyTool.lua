@@ -77,7 +77,11 @@ floraSurveyTool = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32770:objectcrc=1329114448:objecttemp=survey_tool_lumber:templatetype=item_n:itemmask=65535::",
+   tanoAttributes = "objecttype=32770:objectcrc=1329114448:stfFile=item_n:stfName=survey_tool_lumber:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

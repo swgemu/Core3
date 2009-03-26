@@ -77,7 +77,11 @@ advancedReinforcementCore = Object:new {
    experimentalMax = "0, 0, 50, 50, -0.7, 15, 100, 40, 40, 40, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262153:objectcrc=276012891:objecttemp=reinforcement_core_advanced:templatetype=craft_weapon_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=262153:objectcrc=276012891:stfFile=craft_weapon_ingredients_n:stfName=reinforcement_core_advanced:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

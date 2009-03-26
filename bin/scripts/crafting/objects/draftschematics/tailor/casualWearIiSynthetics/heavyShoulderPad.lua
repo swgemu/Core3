@@ -77,7 +77,11 @@ heavyShoulderPad = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777232:objectcrc=1209883613:objecttemp=wke_shoulder_pads_s01:templatetype=wearables_name:itemmask=61955::",
+   tanoAttributes = "objecttype=16777232:objectcrc=1209883613:stfFile=wearables_name:stfName=wke_shoulder_pads_s01:stfDetail=:itemmask=61955::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "5, 29",
    customizationSkill = "clothing_customization"

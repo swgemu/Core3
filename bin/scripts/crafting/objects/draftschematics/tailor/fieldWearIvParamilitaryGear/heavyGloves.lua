@@ -77,7 +77,11 @@ heavyGloves = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777224:objectcrc=3964437147:objecttemp=gloves_s10:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777224:objectcrc=3964437147:stfFile=wearables_name:stfName=gloves_s10:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "31",
    customizationSkill = "clothing_customization"

@@ -77,7 +77,11 @@ armorPadding = Object:new {
    experimentalMax = "0, 0, 1000, 5, 500, 1, 1, 1, 1",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262147:objectcrc=449019087:objecttemp=padding_segment:templatetype=craft_clothing_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=262147:objectcrc=449019087:stfFile=craft_clothing_ingredients_n:stfName=padding_segment:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

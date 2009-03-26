@@ -77,7 +77,11 @@ kashyyykianBlackMountainChestPlate = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 31250, 143, 88, 221, 1, 1, 40, 31250",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=257:objectcrc=2677805339:objecttemp=armor_kashyyykian_black_mtn_chest_plate:templatetype=wearables_name:itemmask=61955:customattributes=specialprotection=kineticeffectiveness;vunerability=heateffectiveness,stuneffectiveness,coldeffectiveness;armorType=256;armorStyle=4109;:",
+   tanoAttributes = "objecttype=257:objectcrc=2677805339:stfFile=wearables_name:stfName=armor_kashyyykian_black_mtn_chest_plate:stfDetail=:itemmask=61955:customattributes=specialprotection=kineticeffectiveness;vunerability=heateffectiveness,stuneffectiveness,coldeffectiveness;armorPiece=256;armorStyle=4109;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

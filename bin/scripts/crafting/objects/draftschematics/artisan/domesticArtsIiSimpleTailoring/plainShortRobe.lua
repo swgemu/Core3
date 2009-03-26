@@ -77,7 +77,11 @@ plainShortRobe = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=16777223:objectcrc=2370142331:objecttemp=dress_s12:templatetype=wearables_name:itemmask=62974::",
+   tanoAttributes = "objecttype=16777223:objectcrc=2370142331:stfFile=wearables_name:stfName=dress_s12:stfDetail=:itemmask=62974::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "90, 83",
    customizationSkill = "clothing_customization"

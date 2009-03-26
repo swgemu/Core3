@@ -77,7 +77,11 @@ vibroLance = Object:new {
    experimentalMax = "0, 0, 78, 286, 4, 26, 1500, 0, 0, 3, 0, 5, 32, 43, 15",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131081:objectcrc=22784428:objecttemp=lance_vibrolance:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=2;:",
+   tanoAttributes = "objecttype=131081:objectcrc=22784428:stfFile=weapon_name:stfName=lance_vibrolance:stfDetail=:itemmask=65535:customattributes=damagetype=2;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

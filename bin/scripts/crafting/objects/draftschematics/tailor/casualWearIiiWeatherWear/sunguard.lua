@@ -77,7 +77,11 @@ sunguard = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777226:objectcrc=2517925940:objecttemp=hat_s10:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777226:objectcrc=2517925940:stfFile=wearables_name:stfName=hat_s10:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "1, 37",
    customizationSkill = "clothing_customization"

@@ -77,7 +77,11 @@ bristleHideBelt = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777218:objectcrc=2275734359:objecttemp=clothing_belt_formal_18:templatetype=wearables_name:itemmask=65535::",
+   tanoAttributes = "objecttype=16777218:objectcrc=2275734359:stfFile=wearables_name:stfName=clothing_belt_formal_18:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "0, 0",
    customizationSkill = "clothing_customization"

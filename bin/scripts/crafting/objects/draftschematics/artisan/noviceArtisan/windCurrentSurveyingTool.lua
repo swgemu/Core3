@@ -77,7 +77,11 @@ windCurrentSurveyingTool = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32770:objectcrc=566467536:objecttemp=survey_tool_wind:templatetype=item_n:itemmask=65535::",
+   tanoAttributes = "objecttype=32770:objectcrc=566467536:stfFile=item_n:stfName=survey_tool_wind:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

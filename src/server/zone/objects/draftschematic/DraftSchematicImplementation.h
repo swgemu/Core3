@@ -75,25 +75,14 @@ class Player;
 class ObjectControllerMessage;
 
 class DraftSchematicImplementation: public DraftSchematicServant {
-	//uint64 objectID;
 
 	// example: 0x838FF623
 	uint32 schematicID;
 
-	// example: 0x838FF623
-	uint32 schematicCRC;
-
-	// example: Bofa Treat
-	String objName;
-
-	// example: @food_name:bofa_treat
-	String StringName;
-
-	// example: @food_name:bofa_treat
-	String StringFile;
-
 	// example: craftArtisanNewbieGroupA
 	String groupName;
+
+	String tanoStfName;
 
 	// example: 3
 	uint32 complexity;
@@ -142,10 +131,7 @@ class DraftSchematicImplementation: public DraftSchematicServant {
 
 	// Tano Attributes
 	String tanoAttributes;
-
-	bool persistent;
-
-	SceneObject* parent;
+	String blueFrogAttributes;
 
 	String xpType;
 	int xp;
@@ -169,6 +155,8 @@ class DraftSchematicImplementation: public DraftSchematicServant {
 	int manufacturingLimit;
 
 	Player* crafter;
+
+	bool blueFrogEnabled;
 
 public:
 	DraftSchematicImplementation(uint32 schematicID, const String& objName,
@@ -215,16 +203,21 @@ public:
 		objectID = id;
 	}*/
 
-	inline void setPersistent(bool status) {
-		persistent = status;
-	}
-
 	inline void setTanoAttributes(String attributes) {
 		tanoAttributes = attributes;
+		ItemAttributes attrib;
+		attrib.setAttributes(attributes);
+
+		String name = "stfName";
+		tanoStfName = attrib.getStringAttribute(name);
 	}
 
-	inline void setContainer(SceneObject* obj) {
-		parent = obj;
+	inline void setBlueFrogAttributes(String attributes) {
+		blueFrogAttributes = attributes;
+	}
+
+	inline void setBlueFrogEnabled(bool enabled) {
+		blueFrogEnabled = enabled;
 	}
 
 	inline void setXpType(String type) {
@@ -301,28 +294,12 @@ public:
 
 	//getters
 
-	/*inline uint64 getObjectID() {
-		return objectID;
-	}*/
-
 	inline uint32 getSchematicID() {
 		return schematicID;
 	}
 
-	inline uint32 getSchematicCRC() {
-		return schematicCRC;
-	}
-
-	inline String& getName() {
-		return objName;
-	}
-
-	inline String& getStringName() {
-		return StringName;
-	}
-
-	inline String& getStringFile() {
-		return StringFile;
+	inline String& getTanoStfName() {
+		return tanoStfName;
 	}
 
 	inline String& getGroupName() {
@@ -341,12 +318,16 @@ public:
 		return tanoAttributes;
 	}
 
-	inline int getCraftingToolTab() {
-		return craftingToolTab;
+	inline String& getBlueFrogAttributes() {
+		return blueFrogAttributes;
 	}
 
-	inline SceneObject* getContainer() {
-		return parent;
+	inline bool getBlueFrogEnabled() {
+		return blueFrogEnabled;
+	}
+
+	inline int getCraftingToolTab() {
+		return craftingToolTab;
 	}
 
 	inline String& getXpType() {
@@ -437,6 +418,14 @@ public:
 
 	inline bool resourcesWereRemoved() {
 		return resourcesRemoved;
+	}
+
+	inline void resetCraftingValues() {
+
+		if(craftingValues != NULL)
+			craftingValues->finalize();
+
+		craftingValues = new DraftSchematicValues();
 	}
 };
 

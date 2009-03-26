@@ -77,7 +77,11 @@ bangles = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=16777216:objectcrc=1944021810:objecttemp=clothing_jewelry_bracelet_05:templatetype=craft_clothing_ingredients_n:itemmask=62975::",
+   tanoAttributes = "objecttype=16777216:objectcrc=1944021810:stfFile=craft_clothing_ingredients_n:stfName=clothing_jewelry_bracelet_05:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "0",
    customizationSkill = "clothing_customization"

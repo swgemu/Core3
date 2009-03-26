@@ -77,7 +77,11 @@ largeHeadwrap = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777226:objectcrc=68046638:objecttemp=hat_s12:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777226:objectcrc=68046638:stfFile=wearables_name:stfName=hat_s12:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "16",
    customizationSkill = "clothing_customization"

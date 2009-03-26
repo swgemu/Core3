@@ -77,7 +77,11 @@ cloakedDress = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777223:objectcrc=2914059256:objecttemp=dress_s16:templatetype=wearables_name:itemmask=62974::",
+   tanoAttributes = "objecttype=16777223:objectcrc=2914059256:stfFile=wearables_name:stfName=dress_s16:stfDetail=:itemmask=62974::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "18, 5",
    customizationSkill = "clothing_customization"

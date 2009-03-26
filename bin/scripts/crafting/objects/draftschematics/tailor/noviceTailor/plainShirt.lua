@@ -77,7 +77,11 @@ plainShirt = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=2094605554:objecttemp=shirt_s03:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=:objectcrc=2094605554:stfFile=wearables_name:stfName=shirt_s03:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "11",
    customizationSkill = "clothing_customization"

@@ -77,7 +77,11 @@ pocketedWorkPants = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=1116173668:objecttemp=pants_s04:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=:objectcrc=1116173668:stfFile=wearables_name:stfName=pants_s04:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "4",
    customizationSkill = "clothing_customization"

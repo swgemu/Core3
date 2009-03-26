@@ -77,7 +77,11 @@ electricalProtectionArmorLayer = Object:new {
    experimentalMax = "0, 0, 1000, 5, 1000, 0, 0, 0, 1, 256, 15, 50",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262145:objectcrc=2194125131:objecttemp=armor_layer_electrical:templatetype=craft_armor_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=262145:objectcrc=2194125131:stfFile=craft_armor_ingredients_n:stfName=armor_layer_electrical:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

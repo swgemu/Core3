@@ -77,7 +77,11 @@ structureAndFurnitureCraftingTool = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32769:objectcrc=4275700789:objecttemp=structure_tool_name:templatetype=crafting:itemmask=65535::",
+   tanoAttributes = "objecttype=32769:objectcrc=4275700789:stfFile=crafting:stfName=structure_tool_name:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"
