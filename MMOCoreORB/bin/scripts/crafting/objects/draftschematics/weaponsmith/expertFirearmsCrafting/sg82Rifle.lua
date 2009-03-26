@@ -77,7 +77,11 @@ sg82Rifle = Object:new {
    experimentalMax = "0, 0, 110, 169, 5.2, 18, 65, 1500, -50, -50, 35, 21, 15, 14, 26",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131084:objectcrc=3248736753:objecttemp=rifle_sg82:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=7;:",
+   tanoAttributes = "objecttype=131084:objectcrc=3248736753:stfFile=weapon_name:stfName=rifle_sg82:stfDetail=:itemmask=65535:customattributes=damagetype=7;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

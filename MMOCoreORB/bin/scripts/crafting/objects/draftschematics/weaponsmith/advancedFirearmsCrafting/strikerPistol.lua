@@ -77,7 +77,11 @@ strikerPistol = Object:new {
    experimentalMax = "0, 0, 46, 78, 3.1, 13, 5, 1500, -10, -70, 20, 15, 7, 18, 12",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131082:objectcrc=1505820957:objecttemp=pistol_striker:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=1;:",
+   tanoAttributes = "objecttype=131082:objectcrc=1505820957:stfFile=weapon_name:stfName=pistol_striker:stfDetail=:itemmask=65535:customattributes=damagetype=1;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

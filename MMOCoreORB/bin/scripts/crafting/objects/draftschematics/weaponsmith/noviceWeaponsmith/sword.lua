@@ -77,7 +77,11 @@ sword = Object:new {
    experimentalMax = "0, 0, 26, 117, 3.2, 18, 1500, 15, 15, 3, 15, 4, 15, 15, 15",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131079:objectcrc=2166507187:objecttemp=sword_01:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=1;:",
+   tanoAttributes = "objecttype=131079:objectcrc=2166507187:stfFile=weapon_name:stfName=sword_01:stfDetail=:itemmask=65535:customattributes=damagetype=1;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

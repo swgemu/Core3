@@ -77,7 +77,11 @@ ithorianMetalNecklace = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=16777233:objectcrc=1186789365:objecttemp=clothing_ith_jewelry_necklace_06:templatetype=craft_clothing_ingredients_n:itemmask=63491::",
+   tanoAttributes = "objecttype=16777233:objectcrc=1186789365:stfFile=craft_clothing_ingredients_n:stfName=clothing_ith_jewelry_necklace_06:stfDetail=:itemmask=63491::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

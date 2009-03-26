@@ -77,7 +77,11 @@ wrinkledPants = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=2036071327:objecttemp=pants_s10:templatetype=wearables_name:itemmask=62974::",
+   tanoAttributes = "objecttype=:objectcrc=2036071327:stfFile=wearables_name:stfName=pants_s10:stfDetail=:itemmask=62974::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "15",
    customizationSkill = "clothing_customization"

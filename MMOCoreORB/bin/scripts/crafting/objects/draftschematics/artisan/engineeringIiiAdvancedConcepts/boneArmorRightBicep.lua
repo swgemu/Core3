@@ -77,7 +77,11 @@ boneArmorRightBicep = Object:new {
    experimentalMax = "0, 0, 0, 1000, 20, 12500, 4, 4, 2, 1, 2, 30, 12500",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=261:objectcrc=210147855:objecttemp=armor_bone_s01_bicep_r:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=energyeffectiveness;vunerability=kineticeffectiveness,blasteffectiveness,stuneffectiveness,heateffectiveness,coldeffectiveness,acideffectiveness,restraineffectiveness;armorType=261;armorStyle=4099;:",
+   tanoAttributes = "objecttype=261:objectcrc=210147855:stfFile=wearables_name:stfName=armor_bone_s01_bicep_r:stfDetail=:itemmask=62975:customattributes=specialprotection=energyeffectiveness;vunerability=kineticeffectiveness,blasteffectiveness,stuneffectiveness,heateffectiveness,coldeffectiveness,acideffectiveness,restraineffectiveness;armorPiece=261;armorStyle=4099;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "7",
    customizationSkill = "armor_customization"

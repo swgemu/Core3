@@ -77,7 +77,11 @@ sedativeH4b = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=4072023421:objecttemp=sedative_h4b:templatetype=food_name:itemmask=65535::",
+   tanoAttributes = "objecttype=8202:objectcrc=4072023421:stfFile=food_name:stfName=sedative_h4b:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "spice_customization"

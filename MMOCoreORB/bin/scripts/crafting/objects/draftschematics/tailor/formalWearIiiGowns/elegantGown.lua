@@ -77,7 +77,11 @@ elegantGown = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777223:objectcrc=688870801:objecttemp=dress_s30:templatetype=wearables_name:itemmask=62974::",
+   tanoAttributes = "objecttype=16777223:objectcrc=688870801:stfFile=wearables_name:stfName=dress_s30:stfDetail=:itemmask=62974::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "139, 61",
    customizationSkill = "clothing_customization"

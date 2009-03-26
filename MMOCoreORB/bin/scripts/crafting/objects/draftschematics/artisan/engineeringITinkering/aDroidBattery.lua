@@ -77,7 +77,11 @@ aDroidBattery = Object:new {
    experimentalMax = "0, 0, 1000, 5",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8211:objectcrc=209388269:objecttemp=droid_battery:templatetype=obj_n:itemmask=65535::",
+   tanoAttributes = "objecttype=8211:objectcrc=209388269:stfFile=obj_n:stfName=droid_battery:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -77,7 +77,11 @@ jaar = Object:new {
    experimentalMax = "0, 0, 1000, 0, 120, 100, 120",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=355298575:objecttemp=jaar:templatetype=food_name:itemmask=65535::",
+   tanoAttributes = "objecttype=:objectcrc=355298575:stfFile=food_name:stfName=jaar:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -77,7 +77,7 @@ ithorianGuardianChestPlate = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 25000, 75, 23, 9, 1, 1, 40, 25000",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=257:objectcrc=1560721233:objecttemp=ith_armor_s01_bicep_l:templatetype=wearables_name:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=acideffectiveness,stuneffectiveness;armorType=256;armorStyle=4107;:",
+   tanoAttributes = "objecttype=257:objectcrc=1560721233:stfFile=wearables_name:stfName=ith_armor_s01_bicep_l:stfDetail=:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=acideffectiveness,stuneffectiveness;armorPiece=256;armorStyle=4107;:",
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

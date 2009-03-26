@@ -77,7 +77,11 @@ rifleStock = Object:new {
    experimentalMax = "0, 0, 20, 20, 0, 5, 100, 20, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262155:objectcrc=2306652479:objecttemp=stock_unit:templatetype=craft_weapon_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=262155:objectcrc=2306652479:stfFile=craft_weapon_ingredients_n:stfName=stock_unit:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

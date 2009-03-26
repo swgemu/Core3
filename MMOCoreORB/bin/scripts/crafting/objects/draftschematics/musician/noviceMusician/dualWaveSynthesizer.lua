@@ -77,7 +77,11 @@ dualWaveSynthesizer = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=262144:objectcrc=264284589:objecttemp=dual_wave_synthesizer:templatetype=craft_furniture_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=262144:objectcrc=264284589:stfFile=craft_furniture_ingredients_n:stfName=dual_wave_synthesizer:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "instrument_customization"

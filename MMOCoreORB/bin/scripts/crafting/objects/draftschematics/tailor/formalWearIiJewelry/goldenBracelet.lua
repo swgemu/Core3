@@ -77,7 +77,11 @@ goldenBracelet = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=16777216:objectcrc=3572303587:objecttemp=bracelet_s03:templatetype=wearables_name:itemmask=65535::",
+   tanoAttributes = "objecttype=16777216:objectcrc=3572303587:stfFile=wearables_name:stfName=bracelet_s03:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -91,6 +91,8 @@ public:
 		objects.removeAll();
 		addObject(obj);
 	}
+
+	void onTrade(Player* sender, Player* receiver);
 };
 
 #endif /*INTANGIBLEOBJECTIMPLEMENTATION_H_*/

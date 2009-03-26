@@ -77,7 +77,11 @@ barrel = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=137262486:objecttemp=barrel:templatetype=powerup_n:itemmask=65535::",
+   tanoAttributes = "objecttype=:objectcrc=137262486:stfFile=powerup_n:stfName=barrel:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

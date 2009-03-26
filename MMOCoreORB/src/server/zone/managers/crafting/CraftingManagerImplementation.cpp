@@ -142,7 +142,7 @@ void CraftingManagerImplementation::createDraftSchematic(Player* player,
 	draftSchematic->setObjectID(player->getNewItemID());
 
 	// Link the DraftSchematic to the Crafting Tool
-	draftSchematic->setContainer(craftingTool);
+	draftSchematic->setParent(craftingTool);
 
 	// Send the Baselines to the player
 	draftSchematic->sendTo(player);
@@ -1002,6 +1002,8 @@ void CraftingManagerImplementation::initialAssembly(Player* player,
 	// Remove all resources - Not recovering them
 	if (craftingTool->getAssemblyResults() == 8) {
 
+		draftSchematic->resetCraftingValues();
+
 		// re-setup the slots and ingredients
 		setupIngredients(player, craftingTool, draftSchematic);
 
@@ -1722,8 +1724,7 @@ void CraftingManagerImplementation::createObjectInInventory(Player* player,
 	}
 }
 
-TangibleObject* CraftingManagerImplementation::generateTangibleObject(
-		Player* player, DraftSchematic* draftSchematic) {
+TangibleObject* CraftingManagerImplementation::generateTangibleObject(uint64 oid, Player* player, DraftSchematic* draftSchematic) {
 
 	TangibleObject* tano = NULL;
 
@@ -1732,7 +1733,7 @@ TangibleObject* CraftingManagerImplementation::generateTangibleObject(
 	ItemAttributes* itemAttributes = new ItemAttributes();
 	itemAttributes->setAttributes(attributes);
 
-	uint64 objectid = player->getNewItemID();
+	uint64 objectid = oid;
 
 	String temp = "objecttype";
 	int objecttype = itemAttributes->getIntAttribute(temp);
@@ -1742,11 +1743,11 @@ TangibleObject* CraftingManagerImplementation::generateTangibleObject(
 
 	String objectname = "";
 
-	temp = "objecttemp";
-	String objecttemp = itemAttributes->getStringAttribute(temp);
+	temp = "stfName";
+	String stfName = itemAttributes->getStringAttribute(temp);
 
-	temp = "templatetype";
-	String templatetype = itemAttributes->getStringAttribute(temp);
+	temp = "stfFile";
+	String stfFile = itemAttributes->getStringAttribute(temp);
 
 	temp = "itemmask";
 	int mask = itemAttributes->getIntAttribute(temp);
@@ -1764,8 +1765,37 @@ TangibleObject* CraftingManagerImplementation::generateTangibleObject(
 
 	bool equipped = false;
 
-	tano = itemManager->initializeTangibleForCrafting(player, objecttype, objectid,
-			objectcrc, objectname, objecttemp, equipped);
+		tano = itemManager->initializeTangibleForCrafting(player, objecttype, objectid,
+				objectcrc, objectname, stfName, equipped);
+
+		if (tano == NULL) {
+
+			player->sendSystemMessage("Failed to make tangible item, perhaps the Object type is wrong, or it doesn't exist in ItemManager");
+			return NULL;
+
+		}
+
+		tano->setZone(player->getZone());
+
+		tano->setZoneProcessServer(player->getZoneProcessServer());
+
+		tano->initScriptedValues();
+
+		tano->setPlayerUseMask(mask);
+
+		tano->setStfFile(stfFile);
+
+		tano->setAttributes(customattributes);
+
+		tano->parseItemAttributes();
+
+		//item->setCustomizationString(custStr);
+		return tano;
+}
+
+TangibleObject* CraftingManagerImplementation::generateTangibleObject(Player* player, DraftSchematic* draftSchematic) {
+
+	TangibleObject* tano = generateTangibleObject(player->getNewItemID(), player, draftSchematic);
 
 	if (tano == NULL) {
 
@@ -1778,17 +1808,35 @@ TangibleObject* CraftingManagerImplementation::generateTangibleObject(
 
 	tano->setZoneProcessServer(player->getZoneProcessServer());
 
-	tano->initScriptedValues();
+	return tano;
+}
 
-	tano->setPlayerUseMask(mask);
+TangibleObject* CraftingManagerImplementation::requestObjectTemplate(String stfName) {
 
-	tano->setStfFile(templatetype);
+	DraftSchematic* draftSchematic = templateMap.get(stfName);
 
-	tano->setAttributes(customattributes);
+	if(draftSchematic == NULL)
+		return NULL;
 
+	TangibleObject* tano = generateTangibleObject(server->getNextID(), NULL, draftSchematic);
+
+	tano->setZoneProcessServer(processor);
+
+	return tano;
+}
+TangibleObject* CraftingManagerImplementation::requestBlueFrogObjectTemplate(String stfName) {
+	DraftSchematic* draftSchematic = templateMap.get(stfName);
+
+	if(draftSchematic == NULL)
+		return NULL;
+
+	TangibleObject* tano = generateTangibleObject(server->getNextID(), NULL, draftSchematic);
+
+	tano->setAttributes(draftSchematic->getBlueFrogAttributes());
 	tano->parseItemAttributes();
 
-	//item->setCustomizationString(custStr);
+	tano->setZoneProcessServer(processor);
+
 	return tano;
 }
 
@@ -2520,6 +2568,14 @@ int CraftingManagerImplementation::addDraftSchematicToServer(lua_State *L) {
 		String tanoAttributes = schematic.getStringField("tanoAttributes");
 		draftSchematic->setTanoAttributes(tanoAttributes);
 
+		// Save blue frog attributes
+		String blueFrogAttributes = schematic.getStringField("blueFrogAttributes");
+		draftSchematic->setBlueFrogAttributes(blueFrogAttributes);
+
+		// Save blue frog status
+		bool blueFrogEnabled = schematic.getIntField("blueFrogEnabled");
+		draftSchematic->setBlueFrogEnabled(blueFrogEnabled);
+
 		// Set Customization options
 		String unparCustomizationOptions = schematic.getStringField(
 				"customizationOptions");
@@ -2541,6 +2597,8 @@ int CraftingManagerImplementation::addDraftSchematicToServer(lua_State *L) {
 		String customizationSkill = schematic.getStringField("customizationSkill");
 		draftSchematic->setCustomizationSkill(customizationSkill);
 
+
+		instance->mapTemplate(draftSchematic->getTanoStfName(), draftSchematic);
 
 		instance->mapDraftSchematic(draftSchematic);
 		instance->unlock();
@@ -2566,6 +2624,21 @@ void CraftingManagerImplementation::mapDraftSchematic(
 	} else
 		draftSchematicsMap.get(draftSchematic->getGroupName())->addDraftSchematic(
 				draftSchematic);
+}
+
+void CraftingManagerImplementation::mapTemplate(String stfName, DraftSchematic* draftSchematic) {
+
+	if (!templateMap.contains(stfName)) {
+
+		templateMap.put(stfName, draftSchematic);
+
+	} else {
+
+		DraftSchematic* draftSchematic2 = templateMap.get(stfName);
+
+		System::out << "Existing template for - " << draftSchematic2->getTanoStfName() << " in " << draftSchematic2->getStfFile() << " " << draftSchematic2->getStfName() << endl;
+		System::out << "   Duplicate template for - " << stfName << " in " << draftSchematic->getStfFile() << " " << draftSchematic->getStfName() << endl;
+	}
 }
 
 int CraftingManagerImplementation::runDraftSchematicFile(lua_State* L) {

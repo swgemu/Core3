@@ -77,7 +77,11 @@ twilekLekkuWrap = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=3374602318:objecttemp=:templatetype=:itemmask=65535::",
+   tanoAttributes = "objecttype=:objectcrc=3374602318:stfFile=:stfName=:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "103",
    customizationSkill = "clothing_customization"

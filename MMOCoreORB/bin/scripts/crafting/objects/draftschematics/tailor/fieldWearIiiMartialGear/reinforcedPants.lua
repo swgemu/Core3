@@ -77,7 +77,11 @@ reinforcedPants = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777228:objectcrc=365619985:objecttemp=pants_s28:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777228:objectcrc=365619985:stfFile=wearables_name:stfName=pants_s28:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "39, 31",
    customizationSkill = "clothing_customization"

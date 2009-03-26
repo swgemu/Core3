@@ -77,7 +77,11 @@ ithorianCrestedNeckpiece = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=16777216:objectcrc=793056251:objecttemp=ith_necklace_s03:templatetype=wearables_name:itemmask=63491::",
+   tanoAttributes = "objecttype=16777216:objectcrc=793056251:stfFile=wearables_name:stfName=ith_necklace_s03:stfDetail=:itemmask=63491::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -77,7 +77,11 @@ linksteelReinforcedGloves = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777224:objectcrc=3434610968:objecttemp=gloves_s14:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777224:objectcrc=3434610968:stfFile=wearables_name:stfName=gloves_s14:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "66",
    customizationSkill = "clothing_customization"

@@ -77,7 +77,11 @@ ubeseArmorHelmet = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 25000, 7, 8, 135, 1, 1, 40, 31250",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=258:objectcrc=3925190224:objecttemp=armor_ubese_helmet:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=kineticeffectiveness;vunerability=heateffectiveness,stuneffectiveness,coldeffectiveness;armorType=264;armorStyle=4127;:",
+   tanoAttributes = "objecttype=258:objectcrc=3925190224:stfFile=wearables_name:stfName=armor_ubese_helmet:stfDetail=:itemmask=62975:customattributes=specialprotection=kineticeffectiveness;vunerability=heateffectiveness,stuneffectiveness,coldeffectiveness;armorPiece=264;armorStyle=4127;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_0, /private/index_color_1",
    customizationDefaults = "0, 0",
    customizationSkill = "armor_customization"

@@ -77,7 +77,11 @@ armorUpgradeKit = Object:new {
    experimentalMax = "0, 0, 1000, 15, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32768:objectcrc=2423629000:objecttemp=armor_upgrade_kit:templatetype=item_n:itemmask=65535::",
+   tanoAttributes = "objecttype=32768:objectcrc=2423629000:stfFile=item_n:stfName=armor_upgrade_kit:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

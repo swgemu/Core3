@@ -77,7 +77,11 @@ weaponDroidAndGeneralItemCraftingTool = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32769:objectcrc=1693896753:objecttemp=weapon_tool_name:templatetype=crafting:itemmask=65535::",
+   tanoAttributes = "objecttype=32769:objectcrc=1693896753:stfFile=crafting:stfName=weapon_tool_name:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

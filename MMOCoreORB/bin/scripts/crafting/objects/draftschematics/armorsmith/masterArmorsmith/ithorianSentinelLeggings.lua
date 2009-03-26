@@ -77,7 +77,11 @@ ithorianSentinelLeggings = Object:new {
    experimentalMax = "0, 0, 0, 1000, 40, 50000, 45, 105, 15, 1, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=260:objectcrc=792067440:objecttemp=ith_armor_s03_leggings:templatetype=wearables_name:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness;armorType=262;armorStyle=4108;:",
+   tanoAttributes = "objecttype=260:objectcrc=792067440:stfFile=wearables_name:stfName=ith_armor_s03_leggings:stfDetail=:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness;armorPiece=262;armorStyle=4108;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

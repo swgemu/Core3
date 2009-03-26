@@ -77,7 +77,11 @@ dagger = Object:new {
    experimentalMax = "0, 0, 26, 59, 2.7, 12, 1500, 33, 33, 3, 33, 4, 4, 20, 4",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131073:objectcrc=4040009714:objecttemp=knife_dagger:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=1;:",
+   tanoAttributes = "objecttype=131073:objectcrc=4040009714:stfFile=weapon_name:stfName=knife_dagger:stfDetail=:itemmask=65535:customattributes=damagetype=1;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

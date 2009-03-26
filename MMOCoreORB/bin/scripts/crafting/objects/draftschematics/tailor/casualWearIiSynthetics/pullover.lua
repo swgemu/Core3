@@ -77,7 +77,11 @@ pullover = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777231:objectcrc=274772499:objecttemp=vest_s05:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777231:objectcrc=274772499:stfFile=wearables_name:stfName=vest_s05:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "14",
    customizationSkill = "clothing_customization"

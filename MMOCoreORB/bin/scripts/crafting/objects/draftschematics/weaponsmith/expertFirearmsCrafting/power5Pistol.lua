@@ -77,7 +77,11 @@ power5Pistol = Object:new {
    experimentalMax = "0, 0, 33, 163, 3.2, 13, 50, 1500, -12, -70, 10, 7, 10, 23, 9",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131082:objectcrc=148689854:objecttemp=pistol_power5:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=2;:",
+   tanoAttributes = "objecttype=131082:objectcrc=148689854:stfFile=weapon_name:stfName=pistol_power5:stfDetail=:itemmask=65535:customattributes=damagetype=2;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

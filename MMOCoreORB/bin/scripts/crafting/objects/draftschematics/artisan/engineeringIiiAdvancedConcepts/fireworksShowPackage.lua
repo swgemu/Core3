@@ -77,7 +77,11 @@ fireworksShowPackage = Object:new {
    experimentalMax = "0, 0, 1000, 10",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=4211144857:objecttemp=show:templatetype=firework_n:itemmask=65535::",
+   tanoAttributes = "objecttype=:objectcrc=4211144857:stfFile=firework_n:stfName=show:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

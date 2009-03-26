@@ -77,7 +77,11 @@ ithorianDefenderBoots = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 31250, 10, 26, 14, 1, 4, 40, 31250",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=263:objectcrc=2766594033:objecttemp=ith_armor_s01_boots:templatetype=wearables_name:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=heateffectiveness,stuneffectiveness,coldeffectiveness;armorType=263;armorStyle=4106;:",
+   tanoAttributes = "objecttype=263:objectcrc=2766594033:stfFile=wearables_name:stfName=ith_armor_s01_boots:stfDetail=:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=heateffectiveness,stuneffectiveness,coldeffectiveness;armorPiece=263;armorStyle=4106;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

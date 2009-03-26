@@ -134,14 +134,14 @@ void VehicleDeedImplementation::parseItemAttributes(){
 int VehicleDeedImplementation::useObject(Player* player) {
 	Datapad* datapad = player->getDatapad();
 
-	String tempName = "monster_name";
+	String sfile = "monster_name";
 	String cName = customName.toString();
-	String tarName = targetName.toString();
+	String sname = targetName.toString();
 
-	IntangibleObject* datapadItem = new IntangibleObject(player->getNewItemID(), cName, tarName,
-			tempName, targetFile.hashCode(), (SceneObject*) datapad);
+	IntangibleObject* datapadItem = new IntangibleObject(player->getNewItemID(), cName, sfile,
+			sname, targetFile.hashCode(), (SceneObject*) datapad);
 
-	MountCreature* vehicle = new MountCreature(player, tarName, tempName,
+	MountCreature* vehicle = new MountCreature(player, sname, sfile,
 			targetFile.hashCode(), vehicleFile.hashCode(), player->getNewItemID());
 
 	try {

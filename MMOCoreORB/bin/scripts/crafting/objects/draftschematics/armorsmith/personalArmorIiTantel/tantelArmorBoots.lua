@@ -77,7 +77,11 @@ tantelArmorBoots = Object:new {
    experimentalMax = "0, 0, 0, 1000, 20, 18750, 6, 13, 5, 1, 2, 30, 18750",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=263:objectcrc=917083893:objecttemp=armor_tantel_skreej_boots:templatetype=wearables_name:itemmask=62967:customattributes=specialprotection=energyeffectiveness;vunerability=;armorType=263;armorStyle=;:",
+   tanoAttributes = "objecttype=263:objectcrc=917083893:stfFile=wearables_name:stfName=armor_tantel_skreej_boots:stfDetail=:itemmask=62967:customattributes=specialprotection=energyeffectiveness;vunerability=;armorPiece=263;armorStyle=;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "7",
    customizationSkill = "armor_customization"

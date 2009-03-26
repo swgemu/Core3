@@ -77,7 +77,11 @@ lightBustier = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777230:objectcrc=2813298237:objecttemp=bustier_s01:templatetype=wearables_name:itemmask=62974::",
+   tanoAttributes = "objecttype=16777230:objectcrc=2813298237:stfFile=wearables_name:stfName=bustier_s01:stfDetail=:itemmask=62974::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_0, /private/index_color_1",
    customizationDefaults = "0, 246",
    customizationSkill = "clothing_customization"

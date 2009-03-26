@@ -77,7 +77,11 @@ formalShirt = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=1743858058:objecttemp=clothing_shirt_formal:templatetype=craft_clothing_ingredients_n:itemmask=62975::",
+   tanoAttributes = "objecttype=:objectcrc=1743858058:stfFile=craft_clothing_ingredients_n:stfName=clothing_shirt_formal:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "91",
    customizationSkill = "clothing_customization"

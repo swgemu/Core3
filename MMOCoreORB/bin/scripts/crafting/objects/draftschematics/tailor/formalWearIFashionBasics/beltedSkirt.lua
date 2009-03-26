@@ -77,7 +77,11 @@ beltedSkirt = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777234:objectcrc=1332610462:objecttemp=clothing_skirt_formal_06:templatetype=wearables_name:itemmask=62974::",
+   tanoAttributes = "objecttype=16777234:objectcrc=1332610462:stfFile=wearables_name:stfName=clothing_skirt_formal_06:stfDetail=:itemmask=62974::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "61, 181",
    customizationSkill = "clothing_customization"

@@ -77,7 +77,11 @@ ithorianSentinelBoots = Object:new {
    experimentalMax = "0, 0, 0, 1000, 40, 50000, 15, 26, 15, 1, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=263:objectcrc=3974465933:objecttemp=ith_armor_s03_boots:templatetype=wearables_name:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness;armorType=263;armorStyle=4108;:",
+   tanoAttributes = "objecttype=263:objectcrc=3974465933:stfFile=wearables_name:stfName=ith_armor_s03_boots:stfDetail=:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness;armorPiece=263;armorStyle=4108;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

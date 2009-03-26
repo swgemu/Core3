@@ -77,7 +77,11 @@ ithorianGuardianHelmet = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 25000, 8, 8, 113, 1, 1, 40, 25000",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=258:objectcrc=2210419364:objecttemp=clothing_armor_ithorian_guardian_helmet:templatetype=wearables_name:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=acideffectiveness,stuneffectiveness;armorType=264;armorStyle=4107;:",
+   tanoAttributes = "objecttype=258:objectcrc=2210419364:stfFile=wearables_name:stfName=clothing_armor_ithorian_guardian_helmet:stfDetail=:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=acideffectiveness,stuneffectiveness;armorPiece=264;armorStyle=4107;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

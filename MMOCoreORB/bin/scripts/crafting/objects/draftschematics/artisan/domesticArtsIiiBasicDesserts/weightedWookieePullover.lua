@@ -77,7 +77,11 @@ weightedWookieePullover = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777232:objectcrc=2104906426:objecttemp=wke_shirt_s02:templatetype=wearables_name:itemmask=61955::",
+   tanoAttributes = "objecttype=16777232:objectcrc=2104906426:stfFile=wearables_name:stfName=wke_shirt_s02:stfDetail=:itemmask=61955::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

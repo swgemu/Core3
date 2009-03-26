@@ -195,20 +195,20 @@ void DraftSchematic::addIngredient(const String& ingredientTemplateName, const S
 		((DraftSchematicImplementation*) _impl)->addIngredient(ingredientTemplateName, ingredientTitleName, optional, resourceType, resourceQuantity, combineType, contribution);
 }
 
-void DraftSchematic::setPersistent(bool status) {
+void DraftSchematic::setTanoAttributes(String& attributes) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 17);
-		method.addBooleanParameter(status);
+		method.addAsciiParameter(attributes);
 
 		method.executeWithVoidReturn();
 	} else
-		((DraftSchematicImplementation*) _impl)->setPersistent(status);
+		((DraftSchematicImplementation*) _impl)->setTanoAttributes(attributes);
 }
 
-void DraftSchematic::setTanoAttributes(String& attributes) {
+void DraftSchematic::setBlueFrogAttributes(String& attributes) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -218,20 +218,20 @@ void DraftSchematic::setTanoAttributes(String& attributes) {
 
 		method.executeWithVoidReturn();
 	} else
-		((DraftSchematicImplementation*) _impl)->setTanoAttributes(attributes);
+		((DraftSchematicImplementation*) _impl)->setBlueFrogAttributes(attributes);
 }
 
-void DraftSchematic::setContainer(SceneObject* container) {
+void DraftSchematic::setBlueFrogEnabled(bool enabled) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 19);
-		method.addObjectParameter(container);
+		method.addBooleanParameter(enabled);
 
 		method.executeWithVoidReturn();
 	} else
-		((DraftSchematicImplementation*) _impl)->setContainer(container);
+		((DraftSchematicImplementation*) _impl)->setBlueFrogEnabled(enabled);
 }
 
 void DraftSchematic::setXpType(String& type) {
@@ -402,12 +402,25 @@ void DraftSchematic::setManufacturingLimit(int value) {
 		((DraftSchematicImplementation*) _impl)->setManufacturingLimit(value);
 }
 
-int DraftSchematic::getExpPropGroupListSize() {
+String& DraftSchematic::getTanoStfName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 33);
+
+		method.executeWithAsciiReturn(_return_getTanoStfName);
+		return _return_getTanoStfName;
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getTanoStfName();
+}
+
+int DraftSchematic::getExpPropGroupListSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 34);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -419,7 +432,7 @@ DraftSchematicExpPropGroup* DraftSchematic::getExpPropGroup(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 		method.addSignedIntParameter(index);
 
 		return (DraftSchematicExpPropGroup*) method.executeWithObjectReturn();
@@ -432,7 +445,7 @@ DraftSchematicExpPropGroup* DraftSchematic::cloneExpPropGroup(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 		method.addSignedIntParameter(index);
 
 		return (DraftSchematicExpPropGroup*) method.executeWithObjectReturn();
@@ -445,23 +458,11 @@ unsigned int DraftSchematic::getSchematicID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
-
-		return method.executeWithUnsignedIntReturn();
-	} else
-		return ((DraftSchematicImplementation*) _impl)->getSchematicID();
-}
-
-unsigned int DraftSchematic::getSchematicCRC() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
 		DistributedMethod method(this, 37);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getSchematicCRC();
+		return ((DraftSchematicImplementation*) _impl)->getSchematicID();
 }
 
 DraftSchematicIngredient* DraftSchematic::getIngredient(int index) {
@@ -514,51 +515,12 @@ int DraftSchematic::getRequiredIngredientCount() {
 		return ((DraftSchematicImplementation*) _impl)->getRequiredIngredientCount();
 }
 
-String& DraftSchematic::getName() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 42);
-
-		method.executeWithAsciiReturn(_return_getName);
-		return _return_getName;
-	} else
-		return ((DraftSchematicImplementation*) _impl)->getName();
-}
-
-String& DraftSchematic::getStringName() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 43);
-
-		method.executeWithAsciiReturn(_return_getStringName);
-		return _return_getStringName;
-	} else
-		return ((DraftSchematicImplementation*) _impl)->getStringName();
-}
-
-String& DraftSchematic::getStringFile() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 44);
-
-		method.executeWithAsciiReturn(_return_getStringFile);
-		return _return_getStringFile;
-	} else
-		return ((DraftSchematicImplementation*) _impl)->getStringFile();
-}
-
 String& DraftSchematic::getGroupName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 42);
 
 		method.executeWithAsciiReturn(_return_getGroupName);
 		return _return_getGroupName;
@@ -571,7 +533,7 @@ unsigned int DraftSchematic::getComplexity() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 43);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -583,7 +545,7 @@ unsigned int DraftSchematic::getSchematicSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 44);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -595,7 +557,7 @@ String& DraftSchematic::getTanoAttributes() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 45);
 
 		method.executeWithAsciiReturn(_return_getTanoAttributes);
 		return _return_getTanoAttributes;
@@ -603,28 +565,41 @@ String& DraftSchematic::getTanoAttributes() {
 		return ((DraftSchematicImplementation*) _impl)->getTanoAttributes();
 }
 
+String& DraftSchematic::getBlueFrogAttributes() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 46);
+
+		method.executeWithAsciiReturn(_return_getBlueFrogAttributes);
+		return _return_getBlueFrogAttributes;
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getBlueFrogAttributes();
+}
+
+bool DraftSchematic::getBlueFrogEnabled() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 47);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getBlueFrogEnabled();
+}
+
 int DraftSchematic::getCraftingToolTab() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, 48);
 
 		return method.executeWithSignedIntReturn();
 	} else
 		return ((DraftSchematicImplementation*) _impl)->getCraftingToolTab();
-}
-
-SceneObject* DraftSchematic::getContainer() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 50);
-
-		return (SceneObject*) method.executeWithObjectReturn();
-	} else
-		return ((DraftSchematicImplementation*) _impl)->getContainer();
 }
 
 String& DraftSchematic::getXpType() {
@@ -632,7 +607,7 @@ String& DraftSchematic::getXpType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, 49);
 
 		method.executeWithAsciiReturn(_return_getXpType);
 		return _return_getXpType;
@@ -645,7 +620,7 @@ int DraftSchematic::getXp() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, 50);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -657,7 +632,7 @@ String& DraftSchematic::getExperimentingSkill() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, 51);
 
 		method.executeWithAsciiReturn(_return_getExperimentingSkill);
 		return _return_getExperimentingSkill;
@@ -670,7 +645,7 @@ String& DraftSchematic::getCustomizationSkill() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, 52);
 
 		method.executeWithAsciiReturn(_return_getCustomizationSkill);
 		return _return_getCustomizationSkill;
@@ -683,7 +658,7 @@ String& DraftSchematic::getCustomizationOption(const int i) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, 53);
 		method.addSignedIntParameter(i);
 
 		method.executeWithAsciiReturn(_return_getCustomizationOption);
@@ -697,7 +672,7 @@ int DraftSchematic::getCustomizationDefaultValue(const int i) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 56);
+		DistributedMethod method(this, 54);
 		method.addSignedIntParameter(i);
 
 		return method.executeWithSignedIntReturn();
@@ -710,7 +685,7 @@ int DraftSchematic::getCustomizationOptionCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, 55);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -722,7 +697,7 @@ String& DraftSchematic::getAssemblySkill() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, 56);
 
 		method.executeWithAsciiReturn(_return_getAssemblySkill);
 		return _return_getAssemblySkill;
@@ -735,7 +710,7 @@ int DraftSchematic::getExpPoints() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, 57);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -747,7 +722,7 @@ int DraftSchematic::getExpCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, 58);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -759,7 +734,7 @@ float DraftSchematic::getExpFailure() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, 59);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -771,7 +746,7 @@ Player* DraftSchematic::getCrafter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 62);
+		DistributedMethod method(this, 60);
 
 		return (Player*) method.executeWithObjectReturn();
 	} else
@@ -783,7 +758,7 @@ int DraftSchematic::getManufacturingLimit() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 63);
+		DistributedMethod method(this, 61);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -795,7 +770,7 @@ DraftSchematicValues* DraftSchematic::getCraftingValues() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 64);
+		DistributedMethod method(this, 62);
 
 		return (DraftSchematicValues*) method.executeWithObjectReturn();
 	} else
@@ -807,7 +782,7 @@ bool DraftSchematic::isFinished() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 65);
+		DistributedMethod method(this, 63);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -819,11 +794,23 @@ bool DraftSchematic::resourcesWereRemoved() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 66);
+		DistributedMethod method(this, 64);
 
 		return method.executeWithBooleanReturn();
 	} else
 		return ((DraftSchematicImplementation*) _impl)->resourcesWereRemoved();
+}
+
+void DraftSchematic::resetCraftingValues() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 65);
+
+		method.executeWithVoidReturn();
+	} else
+		((DraftSchematicImplementation*) _impl)->resetCraftingValues();
 }
 
 void DraftSchematic::toString() {
@@ -831,7 +818,7 @@ void DraftSchematic::toString() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 67);
+		DistributedMethod method(this, 66);
 
 		method.executeWithVoidReturn();
 	} else
@@ -883,13 +870,13 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		addIngredient(inv->getAsciiParameter(_param0_addIngredient__String_String_int_String_int_int_int_), inv->getAsciiParameter(_param1_addIngredient__String_String_int_String_int_int_int_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addIngredient__String_String_int_String_int_int_int_), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 17:
-		setPersistent(inv->getBooleanParameter());
-		break;
-	case 18:
 		setTanoAttributes(inv->getAsciiParameter(_param0_setTanoAttributes__String_));
 		break;
+	case 18:
+		setBlueFrogAttributes(inv->getAsciiParameter(_param0_setBlueFrogAttributes__String_));
+		break;
 	case 19:
-		setContainer((SceneObject*) inv->getObjectParameter());
+		setBlueFrogEnabled(inv->getBooleanParameter());
 		break;
 	case 20:
 		setXpType(inv->getAsciiParameter(_param0_setXpType__String_));
@@ -931,19 +918,19 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setManufacturingLimit(inv->getSignedIntParameter());
 		break;
 	case 33:
-		resp->insertSignedInt(getExpPropGroupListSize());
+		resp->insertAscii(getTanoStfName());
 		break;
 	case 34:
-		resp->insertLong(getExpPropGroup(inv->getSignedIntParameter())->_getObjectID());
+		resp->insertSignedInt(getExpPropGroupListSize());
 		break;
 	case 35:
-		resp->insertLong(cloneExpPropGroup(inv->getSignedIntParameter())->_getObjectID());
+		resp->insertLong(getExpPropGroup(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 36:
-		resp->insertInt(getSchematicID());
+		resp->insertLong(cloneExpPropGroup(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 37:
-		resp->insertInt(getSchematicCRC());
+		resp->insertInt(getSchematicID());
 		break;
 	case 38:
 		resp->insertLong(getIngredient(inv->getSignedIntParameter())->_getObjectID());
@@ -958,81 +945,78 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertSignedInt(getRequiredIngredientCount());
 		break;
 	case 42:
-		resp->insertAscii(getName());
-		break;
-	case 43:
-		resp->insertAscii(getStringName());
-		break;
-	case 44:
-		resp->insertAscii(getStringFile());
-		break;
-	case 45:
 		resp->insertAscii(getGroupName());
 		break;
-	case 46:
+	case 43:
 		resp->insertInt(getComplexity());
 		break;
-	case 47:
+	case 44:
 		resp->insertInt(getSchematicSize());
 		break;
-	case 48:
+	case 45:
 		resp->insertAscii(getTanoAttributes());
 		break;
-	case 49:
+	case 46:
+		resp->insertAscii(getBlueFrogAttributes());
+		break;
+	case 47:
+		resp->insertBoolean(getBlueFrogEnabled());
+		break;
+	case 48:
 		resp->insertSignedInt(getCraftingToolTab());
 		break;
-	case 50:
-		resp->insertLong(getContainer()->_getObjectID());
-		break;
-	case 51:
+	case 49:
 		resp->insertAscii(getXpType());
 		break;
-	case 52:
+	case 50:
 		resp->insertSignedInt(getXp());
 		break;
-	case 53:
+	case 51:
 		resp->insertAscii(getExperimentingSkill());
 		break;
-	case 54:
+	case 52:
 		resp->insertAscii(getCustomizationSkill());
 		break;
-	case 55:
+	case 53:
 		resp->insertAscii(getCustomizationOption(inv->getSignedIntParameter()));
 		break;
-	case 56:
+	case 54:
 		resp->insertSignedInt(getCustomizationDefaultValue(inv->getSignedIntParameter()));
 		break;
-	case 57:
+	case 55:
 		resp->insertSignedInt(getCustomizationOptionCount());
 		break;
-	case 58:
+	case 56:
 		resp->insertAscii(getAssemblySkill());
 		break;
-	case 59:
+	case 57:
 		resp->insertSignedInt(getExpPoints());
 		break;
-	case 60:
+	case 58:
 		resp->insertSignedInt(getExpCounter());
 		break;
-	case 61:
+	case 59:
 		resp->insertFloat(getExpFailure());
 		break;
-	case 62:
+	case 60:
 		resp->insertLong(getCrafter()->_getObjectID());
 		break;
-	case 63:
+	case 61:
 		resp->insertSignedInt(getManufacturingLimit());
 		break;
-	case 64:
+	case 62:
 		resp->insertLong(getCraftingValues()->_getObjectID());
 		break;
-	case 65:
+	case 63:
 		resp->insertBoolean(isFinished());
 		break;
-	case 66:
+	case 64:
 		resp->insertBoolean(resourcesWereRemoved());
 		break;
-	case 67:
+	case 65:
+		resetCraftingValues();
+		break;
+	case 66:
 		toString();
 		break;
 	default:
@@ -1086,16 +1070,16 @@ void DraftSchematicAdapter::addIngredient(const String& ingredientTemplateName, 
 	return ((DraftSchematicImplementation*) impl)->addIngredient(ingredientTemplateName, ingredientTitleName, optional, resourceType, resourceQuantity, combineType, contribution);
 }
 
-void DraftSchematicAdapter::setPersistent(bool status) {
-	return ((DraftSchematicImplementation*) impl)->setPersistent(status);
-}
-
 void DraftSchematicAdapter::setTanoAttributes(String& attributes) {
 	return ((DraftSchematicImplementation*) impl)->setTanoAttributes(attributes);
 }
 
-void DraftSchematicAdapter::setContainer(SceneObject* container) {
-	return ((DraftSchematicImplementation*) impl)->setContainer(container);
+void DraftSchematicAdapter::setBlueFrogAttributes(String& attributes) {
+	return ((DraftSchematicImplementation*) impl)->setBlueFrogAttributes(attributes);
+}
+
+void DraftSchematicAdapter::setBlueFrogEnabled(bool enabled) {
+	return ((DraftSchematicImplementation*) impl)->setBlueFrogEnabled(enabled);
 }
 
 void DraftSchematicAdapter::setXpType(String& type) {
@@ -1150,6 +1134,10 @@ void DraftSchematicAdapter::setManufacturingLimit(int value) {
 	return ((DraftSchematicImplementation*) impl)->setManufacturingLimit(value);
 }
 
+String& DraftSchematicAdapter::getTanoStfName() {
+	return ((DraftSchematicImplementation*) impl)->getTanoStfName();
+}
+
 int DraftSchematicAdapter::getExpPropGroupListSize() {
 	return ((DraftSchematicImplementation*) impl)->getExpPropGroupListSize();
 }
@@ -1164,10 +1152,6 @@ DraftSchematicExpPropGroup* DraftSchematicAdapter::cloneExpPropGroup(int index) 
 
 unsigned int DraftSchematicAdapter::getSchematicID() {
 	return ((DraftSchematicImplementation*) impl)->getSchematicID();
-}
-
-unsigned int DraftSchematicAdapter::getSchematicCRC() {
-	return ((DraftSchematicImplementation*) impl)->getSchematicCRC();
 }
 
 DraftSchematicIngredient* DraftSchematicAdapter::getIngredient(int index) {
@@ -1186,18 +1170,6 @@ int DraftSchematicAdapter::getRequiredIngredientCount() {
 	return ((DraftSchematicImplementation*) impl)->getRequiredIngredientCount();
 }
 
-String& DraftSchematicAdapter::getName() {
-	return ((DraftSchematicImplementation*) impl)->getName();
-}
-
-String& DraftSchematicAdapter::getStringName() {
-	return ((DraftSchematicImplementation*) impl)->getStringName();
-}
-
-String& DraftSchematicAdapter::getStringFile() {
-	return ((DraftSchematicImplementation*) impl)->getStringFile();
-}
-
 String& DraftSchematicAdapter::getGroupName() {
 	return ((DraftSchematicImplementation*) impl)->getGroupName();
 }
@@ -1214,12 +1186,16 @@ String& DraftSchematicAdapter::getTanoAttributes() {
 	return ((DraftSchematicImplementation*) impl)->getTanoAttributes();
 }
 
-int DraftSchematicAdapter::getCraftingToolTab() {
-	return ((DraftSchematicImplementation*) impl)->getCraftingToolTab();
+String& DraftSchematicAdapter::getBlueFrogAttributes() {
+	return ((DraftSchematicImplementation*) impl)->getBlueFrogAttributes();
 }
 
-SceneObject* DraftSchematicAdapter::getContainer() {
-	return ((DraftSchematicImplementation*) impl)->getContainer();
+bool DraftSchematicAdapter::getBlueFrogEnabled() {
+	return ((DraftSchematicImplementation*) impl)->getBlueFrogEnabled();
+}
+
+int DraftSchematicAdapter::getCraftingToolTab() {
+	return ((DraftSchematicImplementation*) impl)->getCraftingToolTab();
 }
 
 String& DraftSchematicAdapter::getXpType() {
@@ -1284,6 +1260,10 @@ bool DraftSchematicAdapter::isFinished() {
 
 bool DraftSchematicAdapter::resourcesWereRemoved() {
 	return ((DraftSchematicImplementation*) impl)->resourcesWereRemoved();
+}
+
+void DraftSchematicAdapter::resetCraftingValues() {
+	return ((DraftSchematicImplementation*) impl)->resetCraftingValues();
 }
 
 void DraftSchematicAdapter::toString() {

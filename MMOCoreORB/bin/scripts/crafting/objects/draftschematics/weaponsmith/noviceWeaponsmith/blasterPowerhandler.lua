@@ -77,7 +77,11 @@ blasterPowerhandler = Object:new {
    experimentalMax = "0, 0, 10, 20, -0.5, 100",
    experimentalPrecision = "0, 0, 0, 0, 1, 0",
 
-   tanoAttributes = "objecttype=262155:objectcrc=3399297408:objecttemp=blaster_power_handler:templatetype=craft_weapon_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=262155:objectcrc=3399297408:stfFile=craft_weapon_ingredients_n:stfName=blaster_power_handler:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

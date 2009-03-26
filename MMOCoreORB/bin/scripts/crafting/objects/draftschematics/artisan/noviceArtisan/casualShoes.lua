@@ -77,7 +77,11 @@ casualShoes = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777222:objectcrc=143099030:objecttemp=shoes_s02:templatetype=wearables_name:itemmask=62967::",
+   tanoAttributes = "objecttype=16777222:objectcrc=143099030:stfFile=wearables_name:stfName=shoes_s02:stfDetail=:itemmask=62967::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "29, 44",
    customizationSkill = "clothing_customization"

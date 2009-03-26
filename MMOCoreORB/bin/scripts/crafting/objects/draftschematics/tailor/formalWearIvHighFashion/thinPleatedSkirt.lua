@@ -77,7 +77,11 @@ thinPleatedSkirt = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777234:objectcrc=1035988200:objecttemp=skirt_s13:templatetype=wearables_name:itemmask=62974::",
+   tanoAttributes = "objecttype=16777234:objectcrc=1035988200:stfFile=wearables_name:stfName=skirt_s13:stfDetail=:itemmask=62974::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2, /private/index_color_3",
    customizationDefaults = "12, 61, 10",
    customizationSkill = "clothing_customization"

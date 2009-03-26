@@ -77,7 +77,11 @@ blasterrifleBarrel = Object:new {
    experimentalMax = "0, 0, 10, 10, -0.5, 5, 100, 0, 0, 0, 20",
    experimentalPrecision = "0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262155:objectcrc=260681278:objecttemp=blaster_rifle_barrel:templatetype=craft_weapon_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=262155:objectcrc=260681278:stfFile=craft_weapon_ingredients_n:stfName=blaster_rifle_barrel:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

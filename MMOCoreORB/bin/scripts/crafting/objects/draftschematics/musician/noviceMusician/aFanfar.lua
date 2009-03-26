@@ -77,7 +77,11 @@ aFanfar = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8204:objectcrc=2024043623:objecttemp=obj_fanfar:templatetype=obj_n:itemmask=65535::",
+   tanoAttributes = "objecttype=8204:objectcrc=2024043623:stfFile=obj_n:stfName=obj_fanfar:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "instrument_customization"

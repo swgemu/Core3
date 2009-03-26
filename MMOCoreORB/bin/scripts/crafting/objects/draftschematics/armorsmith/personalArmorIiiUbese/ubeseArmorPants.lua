@@ -77,7 +77,11 @@ ubeseArmorPants = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 25000, 20, 68, 11, 1, 1, 40, 31250",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=260:objectcrc=4188653633:objecttemp=armor_ubese_pants:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=kineticeffectiveness;vunerability=heateffectiveness,stuneffectiveness,coldeffectiveness;armorType=262;armorStyle=4127;:",
+   tanoAttributes = "objecttype=260:objectcrc=4188653633:stfFile=wearables_name:stfName=armor_ubese_pants:stfDetail=:itemmask=62975:customattributes=specialprotection=kineticeffectiveness;vunerability=heateffectiveness,stuneffectiveness,coldeffectiveness;armorPiece=262;armorStyle=4127;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "0",
    customizationSkill = "armor_customization"

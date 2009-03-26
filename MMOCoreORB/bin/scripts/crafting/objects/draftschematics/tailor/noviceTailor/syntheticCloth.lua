@@ -77,7 +77,11 @@ syntheticCloth = Object:new {
    experimentalMax = "0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262147:objectcrc=2133284732:objecttemp=clothing_synthetic_cloth:templatetype=craft_clothing_ingredients_n:itemmask=65535:customattributes=specialprotection=;vunerability=;armorType=262147;armorStyle=;:",
+   tanoAttributes = "objecttype=262147:objectcrc=2133284732:stfFile=craft_clothing_ingredients_n:stfName=clothing_synthetic_cloth:stfDetail=:itemmask=65535:customattributes=specialprotection=;vunerability=;armorPiece=262147;armorStyle=;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

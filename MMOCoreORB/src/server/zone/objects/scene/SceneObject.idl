@@ -354,6 +354,7 @@ interface SceneObject implements ManagedObject {
 	void onHealTargetWound(CreatureObject patient, unsigned char attribute, unsigned int amount);
 	void onHealEnhanceTarget(CreatureObject patient, unsigned char attribute, unsigned int amount, float duration);
 	void onReceivePaymentFrom(CreatureObject sender, unsigned int amount);
+	void onTrade(Player sender, Player receiver);
 
 	//Actions
 	boolean inflictDamage(CreatureObject victim, unsigned char attribute, unsigned int damage);

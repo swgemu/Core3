@@ -77,7 +77,11 @@ ithorianSentinelChestPlate = Object:new {
    experimentalMax = "0, 0, 0, 1000, 40, 50000, 150, 39, 15, 1, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=257:objectcrc=379409880:objecttemp=ith_armor_s03_chest_plate:templatetype=wearables_name:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness;armorType=256;armorStyle=4108;:",
+   tanoAttributes = "objecttype=257:objectcrc=379409880:stfFile=wearables_name:stfName=ith_armor_s03_chest_plate:stfDetail=:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness;armorPiece=256;armorStyle=4108;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

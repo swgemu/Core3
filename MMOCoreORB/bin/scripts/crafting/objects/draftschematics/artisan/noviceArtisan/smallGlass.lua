@@ -77,7 +77,11 @@ smallGlass = Object:new {
    experimentalMax = "0, 0, 1",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=262144:objectcrc=4135258442:objecttemp=component:templatetype=component_n:itemmask=65535::",
+   tanoAttributes = "objecttype=262144:objectcrc=4135258442:stfFile=component_n:stfName=component:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

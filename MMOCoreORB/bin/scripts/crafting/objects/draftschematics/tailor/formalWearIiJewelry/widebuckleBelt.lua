@@ -77,7 +77,11 @@ widebuckleBelt = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777218:objectcrc=3467220186:objecttemp=belt_s19:templatetype=wearables_name:itemmask=65535::",
+   tanoAttributes = "objecttype=16777218:objectcrc=3467220186:stfFile=wearables_name:stfName=belt_s19:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "0, 0",
    customizationSkill = "clothing_customization"

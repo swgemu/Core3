@@ -77,7 +77,11 @@ advancedProjectilePistolBarrel = Object:new {
    experimentalMax = "0, 0, 25, 25, -1.2, 10, 100, 0, 0, 0, 25",
    experimentalPrecision = "0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262155:objectcrc=3447151631:objecttemp=projectile_pistol_barrel_advanced:templatetype=craft_weapon_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=262155:objectcrc=3447151631:stfFile=craft_weapon_ingredients_n:stfName=projectile_pistol_barrel_advanced:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

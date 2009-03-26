@@ -70,7 +70,6 @@ RunDraftSchematicFile("objects/draftschematics/weaponsmith/noviceWeaponsmith/rif
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/intermediateFirearmsCrafting/blasterrifleBarrel.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/intermediateFirearmsCrafting/projectileRifleBarrel.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/intermediateFirearmsCrafting/chemicaldispersionMechanism.lua")
-RunDraftSchematicFile("objects/draftschematics/weaponsmith/intermediateFirearmsCrafting/dl44Pistol.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/intermediateFirearmsCrafting/scoutBlaster.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/advancedFirearmsCrafting/fwg5Pistol.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/advancedFirearmsCrafting/strikerPistol.lua")

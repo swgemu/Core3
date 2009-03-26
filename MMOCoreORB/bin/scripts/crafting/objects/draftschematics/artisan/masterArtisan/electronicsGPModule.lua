@@ -77,7 +77,11 @@ electronicsGPModule = Object:new {
    experimentalMax = "0, 0, 150, 5",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8200:objectcrc=3786408832:objecttemp=electronics_gp_module:templatetype=craft_item_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=8200:objectcrc=3786408832:stfFile=craft_item_ingredients_n:stfName=electronics_gp_module:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

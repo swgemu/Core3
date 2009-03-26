@@ -77,7 +77,11 @@ paramilitaryCamos = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777228:objectcrc=489589658:objecttemp=pants_s21:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777228:objectcrc=489589658:stfFile=wearables_name:stfName=pants_s21:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "16, 19",
    customizationSkill = "clothing_customization"

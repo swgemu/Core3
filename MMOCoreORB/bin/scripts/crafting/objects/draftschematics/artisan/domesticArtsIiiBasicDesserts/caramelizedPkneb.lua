@@ -77,7 +77,11 @@ caramelizedPkneb = Object:new {
    experimentalMax = "0, 0, 1000, 120, 120, 100, 120",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=128351778:objecttemp=pkneb:templatetype=food_name:itemmask=65535::",
+   tanoAttributes = "objecttype=8202:objectcrc=128351778:stfFile=food_name:stfName=pkneb:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

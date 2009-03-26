@@ -77,7 +77,11 @@ casualShirt = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=1546495857:objecttemp=clothing_shirt_casual:templatetype=craft_clothing_ingredients_n:itemmask=62975::",
+   tanoAttributes = "objecttype=:objectcrc=1546495857:stfFile=craft_clothing_ingredients_n:stfName=clothing_shirt_casual:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "0, 227",
    customizationSkill = "clothing_customization"

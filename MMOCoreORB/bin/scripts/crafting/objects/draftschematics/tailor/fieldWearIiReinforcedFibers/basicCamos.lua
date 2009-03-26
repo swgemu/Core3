@@ -77,7 +77,11 @@ basicCamos = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777228:objectcrc=2576408051:objecttemp=pants_s07:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777228:objectcrc=2576408051:stfFile=wearables_name:stfName=pants_s07:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "36, 47",
    customizationSkill = "clothing_customization"

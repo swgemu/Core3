@@ -828,6 +828,10 @@ void SceneObjectImplementation::onHealEnhanceTarget(CreatureObject* patient, uin
 
 }
 
+void SceneObjectImplementation::onTrade(Player* sender, Player* receiver) {
+
+}
+
 /**
  * This event handler is called following receiving a payment from a creature.
  * \param sender The creature whom sent the payment.

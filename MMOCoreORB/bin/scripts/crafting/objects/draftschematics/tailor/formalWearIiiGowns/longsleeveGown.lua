@@ -77,7 +77,11 @@ longsleeveGown = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777223:objectcrc=1610756636:objecttemp=dress_s31:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777223:objectcrc=1610756636:stfFile=wearables_name:stfName=dress_s31:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "181, 12",
    customizationSkill = "clothing_customization"

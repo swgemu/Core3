@@ -77,7 +77,11 @@ boneArmorGloves = Object:new {
    experimentalMax = "0, 0, 0, 1000, 20, 12500, 4, 8, 2, 1, 2, 30, 12500",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262:objectcrc=4034830199:objecttemp=armor_bone_s01_gloves:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=energyeffectiveness;vunerability=kineticeffectiveness,blasteffectiveness,stuneffectiveness,heateffectiveness,coldeffectiveness,acideffectiveness,restraineffectiveness;armorType=257;armorStyle=4099;:",
+   tanoAttributes = "objecttype=262:objectcrc=4034830199:stfFile=wearables_name:stfName=armor_bone_s01_gloves:stfDetail=:itemmask=62975:customattributes=specialprotection=energyeffectiveness;vunerability=kineticeffectiveness,blasteffectiveness,stuneffectiveness,heateffectiveness,coldeffectiveness,acideffectiveness,restraineffectiveness;armorPiece=257;armorStyle=4099;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "7",
    customizationSkill = "armor_customization"

@@ -77,7 +77,11 @@ ammoBandolier = Object:new {
    experimentalMax = "0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777217:objectcrc=1572936874:objecttemp=bandolier_s05:templatetype=wearables_name:itemmask=65535::",
+   tanoAttributes = "objecttype=16777217:objectcrc=1572936874:stfFile=wearables_name:stfName=bandolier_s05:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "0, 0",
    customizationSkill = "clothing_customization"

@@ -763,6 +763,7 @@ public:
 	virtual void onHealTargetWound(CreatureObject* patient, uint8 attribute, uint32 amount);
 	virtual void onHealEnhanceTarget(CreatureObject* patient, uint8 attribute, uint32 amount, float duration);
 	virtual void onReceivePaymentFrom(CreatureObject* sender, uint32 amount);
+	virtual void onTrade(Player* sender, Player* receiver);
 
 	//Actions
 	virtual bool inflictDamage(CreatureObject* victim, uint8 attribute, uint32 damage);

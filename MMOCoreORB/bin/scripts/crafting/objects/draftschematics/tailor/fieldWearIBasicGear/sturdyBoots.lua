@@ -77,7 +77,11 @@ sturdyBoots = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777222:objectcrc=3277311029:objecttemp=boots_s05:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777222:objectcrc=3277311029:stfFile=wearables_name:stfName=boots_s05:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "28, 11",
    customizationSkill = "clothing_customization"

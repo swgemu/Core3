@@ -268,12 +268,38 @@ void CraftingManager::refreshDraftSchematics(Player* player) {
 		((CraftingManagerImplementation*) _impl)->refreshDraftSchematics(player);
 }
 
-String& CraftingManager::generateCraftedSerial() {
+TangibleObject* CraftingManager::requestObjectTemplate(String& stfName) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 22);
+		method.addAsciiParameter(stfName);
+
+		return (TangibleObject*) method.executeWithObjectReturn();
+	} else
+		return ((CraftingManagerImplementation*) _impl)->requestObjectTemplate(stfName);
+}
+
+TangibleObject* CraftingManager::requestBlueFrogObjectTemplate(String& stfName) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+		method.addAsciiParameter(stfName);
+
+		return (TangibleObject*) method.executeWithObjectReturn();
+	} else
+		return ((CraftingManagerImplementation*) _impl)->requestBlueFrogObjectTemplate(stfName);
+}
+
+String& CraftingManager::generateCraftedSerial() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
 
 		method.executeWithAsciiReturn(_return_generateCraftedSerial);
 		return _return_generateCraftedSerial;
@@ -341,6 +367,12 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		refreshDraftSchematics((Player*) inv->getObjectParameter());
 		break;
 	case 22:
+		resp->insertLong(requestObjectTemplate(inv->getAsciiParameter(_param0_requestObjectTemplate__String_))->_getObjectID());
+		break;
+	case 23:
+		resp->insertLong(requestBlueFrogObjectTemplate(inv->getAsciiParameter(_param0_requestBlueFrogObjectTemplate__String_))->_getObjectID());
+		break;
+	case 24:
 		resp->insertAscii(generateCraftedSerial());
 		break;
 	default:
@@ -412,6 +444,14 @@ void CraftingManagerAdapter::subtractDraftSchematicsFromGroupName(Player* player
 
 void CraftingManagerAdapter::refreshDraftSchematics(Player* player) {
 	return ((CraftingManagerImplementation*) impl)->refreshDraftSchematics(player);
+}
+
+TangibleObject* CraftingManagerAdapter::requestObjectTemplate(String& stfName) {
+	return ((CraftingManagerImplementation*) impl)->requestObjectTemplate(stfName);
+}
+
+TangibleObject* CraftingManagerAdapter::requestBlueFrogObjectTemplate(String& stfName) {
+	return ((CraftingManagerImplementation*) impl)->requestBlueFrogObjectTemplate(stfName);
 }
 
 String& CraftingManagerAdapter::generateCraftedSerial() {

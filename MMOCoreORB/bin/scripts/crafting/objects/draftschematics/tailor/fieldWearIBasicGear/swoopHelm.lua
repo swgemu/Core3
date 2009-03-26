@@ -77,7 +77,11 @@ swoopHelm = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777226:objectcrc=2915569359:objecttemp=hat_s04:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777226:objectcrc=2915569359:stfFile=wearables_name:stfName=hat_s04:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "19, 7",
    customizationSkill = "clothing_customization"

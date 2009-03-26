@@ -77,7 +77,11 @@ beltedVest = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777231:objectcrc=815018384:objecttemp=vest_s01:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777231:objectcrc=815018384:stfFile=wearables_name:stfName=vest_s01:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "17, 158",
    customizationSkill = "clothing_customization"

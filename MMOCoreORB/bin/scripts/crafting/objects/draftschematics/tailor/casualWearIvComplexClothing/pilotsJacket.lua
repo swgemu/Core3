@@ -77,7 +77,11 @@ pilotsJacket = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=1095424515:objecttemp=:templatetype=:itemmask=65535::",
+   tanoAttributes = "objecttype=:objectcrc=1095424515:stfFile=:stfName=:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "68, 15",
    customizationSkill = "clothing_customization"

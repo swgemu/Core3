@@ -77,7 +77,11 @@ smock = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777223:objectcrc=3293112310:objecttemp=clothing_dress_formal_13:templatetype=craft_clothing_ingredients_n:itemmask=62973::",
+   tanoAttributes = "objecttype=16777223:objectcrc=3293112310:stfFile=craft_clothing_ingredients_n:stfName=clothing_dress_formal_13:stfDetail=:itemmask=62973::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "55, 97",
    customizationSkill = "clothing_customization"

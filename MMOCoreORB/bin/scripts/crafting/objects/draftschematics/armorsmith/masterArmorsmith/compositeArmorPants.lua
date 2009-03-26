@@ -77,7 +77,11 @@ compositeArmorPants = Object:new {
    experimentalMax = "0, 0, 0, 1000, 40, 50000, 45, 105, 15, 1, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=260:objectcrc=3264529458:objecttemp=armor_composite_leggings:templatetype=wearables_detail:itemmask=62975:customattributes=specialprotection=restraineffectiveness;vunerability=stuneffectiveness;armorType=262;armorStyle=4097;:",
+   tanoAttributes = "objecttype=260:objectcrc=3264529458:stfFile=wearables_detail:stfName=armor_composite_leggings:stfDetail=:itemmask=62975:customattributes=specialprotection=restraineffectiveness;vunerability=stuneffectiveness;armorPiece=262;armorStyle=4097;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "0",
    customizationSkill = "armor_customization"

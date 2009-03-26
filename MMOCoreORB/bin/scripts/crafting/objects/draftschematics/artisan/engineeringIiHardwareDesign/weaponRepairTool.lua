@@ -77,7 +77,11 @@ weaponRepairTool = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=32771:objectcrc=2607871827:objecttemp=weapon_repair_name:templatetype=crafting:itemmask=65535::",
+   tanoAttributes = "objecttype=32771:objectcrc=2607871827:stfFile=crafting:stfName=weapon_repair_name:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

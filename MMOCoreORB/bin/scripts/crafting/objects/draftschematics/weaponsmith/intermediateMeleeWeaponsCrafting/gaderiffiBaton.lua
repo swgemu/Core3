@@ -77,7 +77,11 @@ gaderiffiBaton = Object:new {
    experimentalMax = "0, 0, 91, 182, 4, 21, 1500, -5, -5, 3, -5, 4, 30, 15, 4",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131079:objectcrc=1521219232:objecttemp=baton_gaderiffi:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=1;:",
+   tanoAttributes = "objecttype=131079:objectcrc=1521219232:stfFile=weapon_name:stfName=baton_gaderiffi:stfDetail=:itemmask=65535:customattributes=damagetype=1;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

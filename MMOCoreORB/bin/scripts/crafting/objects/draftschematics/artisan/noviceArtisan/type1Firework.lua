@@ -77,7 +77,11 @@ type1Firework = Object:new {
    experimentalMax = "0, 0, 1000, 10",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8209:objectcrc=4192390072:objecttemp=firework_one:templatetype=firework_n:itemmask=65535::",
+   tanoAttributes = "objecttype=8209:objectcrc=4192390072:stfFile=firework_n:stfName=firework_one:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

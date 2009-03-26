@@ -61,8 +61,8 @@ function getDraftSchematic(crc)
 end
 -- DraftSchematics objects
 
-RunDraftSchematicFile("objects/draftschematics/armorsmith/main.lua")
 RunDraftSchematicFile("objects/draftschematics/architect/main.lua")
+RunDraftSchematicFile("objects/draftschematics/armorsmith/main.lua")
 RunDraftSchematicFile("objects/draftschematics/artisan/main.lua")
 RunDraftSchematicFile("objects/draftschematics/entertainer/main.lua")
 RunDraftSchematicFile("objects/draftschematics/musician/main.lua")

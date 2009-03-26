@@ -77,7 +77,11 @@ ithorianAquaticPantaloon = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777228:objectcrc=1351756925:objecttemp=ith_pants_s18:templatetype=wearables_name:itemmask=63491::",
+   tanoAttributes = "objecttype=16777228:objectcrc=1351756925:stfFile=wearables_name:stfName=ith_pants_s18:stfDetail=:itemmask=63491::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

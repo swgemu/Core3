@@ -77,7 +77,11 @@ wingedHawtpants = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777228:objectcrc=4033427965:objecttemp=pants_s02:templatetype=wearables_name:itemmask=62974::",
+   tanoAttributes = "objecttype=16777228:objectcrc=4033427965:stfFile=wearables_name:stfName=pants_s02:stfDetail=:itemmask=62974::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "65, 95",
    customizationSkill = "clothing_customization"

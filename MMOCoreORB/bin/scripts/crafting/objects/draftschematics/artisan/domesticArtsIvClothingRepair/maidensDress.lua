@@ -43,7 +43,7 @@
 
 maidensDress = Object:new {
 
-   objectName = "Maiden's Dress",
+   objectName = "Maidens Dress",
    stfName = "dress_s06",
    stfFile = "wearables_name",
    objectCRC = 1610359435,
@@ -77,7 +77,11 @@ maidensDress = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=3063484032:objecttemp=:templatetype=:itemmask=65535::",
+   tanoAttributes = "objecttype=16777223:objectcrc=3063484032:stfFile=wearables_name:stfName=dress_s06:stfDetail=:itemmask=62974::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "57, 14",
    customizationSkill = "clothing_customization"

@@ -77,7 +77,11 @@ paddedArmorSegment = Object:new {
    experimentalMax = "0, 0, 1000, 8, 1000, 1, 1, 1, 1, 4, 15, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262145:objectcrc=1728449296:objecttemp=armor_segment_padded:templatetype=craft_armor_ingredients_n:itemmask=65535:customattributes=specialprotection=blasteffectiveness;:",
+   tanoAttributes = "objecttype=262145:objectcrc=1728449296:stfFile=craft_armor_ingredients_n:stfName=armor_segment_padded:stfDetail=:itemmask=65535:customattributes=specialprotection=blasteffectiveness;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

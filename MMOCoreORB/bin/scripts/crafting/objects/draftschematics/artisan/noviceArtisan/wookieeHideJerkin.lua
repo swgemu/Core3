@@ -77,7 +77,11 @@ wookieeHideJerkin = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777232:objectcrc=2791438893:objecttemp=wke_shirt_s01:templatetype=wearables_name:itemmask=61955::",
+   tanoAttributes = "objecttype=16777232:objectcrc=2791438893:stfFile=wearables_name:stfName=wke_shirt_s01:stfDetail=:itemmask=61955::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "8, 22",
    customizationSkill = "clothing_customization"

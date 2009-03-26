@@ -77,7 +77,11 @@ mabariArmorweaveBoots = Object:new {
    experimentalMax = "0, 0, 0, 1000, 20, 18750, 5, 5, 3, 1, 32, 40, 31250",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=263:objectcrc=509585055:objecttemp=armor_zam_wesell_boots:templatetype=wearables_name:itemmask=62967:customattributes=specialprotection=blasteffectiveness,heateffectiveness;vunerability=energyeffectiveness,acideffectiveness,stuneffectiveness;armorType=263;armorStyle=4129;:",
+   tanoAttributes = "objecttype=263:objectcrc=509585055:stfFile=wearables_name:stfName=armor_zam_wesell_boots:stfDetail=:itemmask=62967:customattributes=specialprotection=blasteffectiveness,heateffectiveness;vunerability=energyeffectiveness,acideffectiveness,stuneffectiveness;armorPiece=263;armorStyle=4129;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "20, 29",
    customizationSkill = "armor_customization"

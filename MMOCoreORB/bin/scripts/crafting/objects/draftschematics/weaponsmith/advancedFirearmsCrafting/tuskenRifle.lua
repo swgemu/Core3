@@ -77,7 +77,11 @@ tuskenRifle = Object:new {
    experimentalMax = "0, 0, 130, 195, 6.3, 12, 65, 1500, -60, -50, 60, 26, 7, 13, 30",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131084:objectcrc=2874182418:objecttemp=rifle_tusken:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=1;:",
+   tanoAttributes = "objecttype=131084:objectcrc=2874182418:stfFile=weapon_name:stfName=rifle_tusken:stfDetail=:itemmask=65535:customattributes=damagetype=1;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

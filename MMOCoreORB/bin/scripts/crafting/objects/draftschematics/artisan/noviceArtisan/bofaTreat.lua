@@ -77,7 +77,11 @@ bofaTreat = Object:new {
    experimentalMax = "0, 0, 1000, 120, 120, 100, 120",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=2010692823:objecttemp=bofa_treat:templatetype=food_name:itemmask=65535:customattributes=buffCRC=2339561171;downerCRC=0;buffType=1;numAttributes=1;mods=;buffs=health=50,;heals=;quantity=10;filling=9;duration=3000;:",
+   tanoAttributes = "objecttype=8202:objectcrc=2010692823:stfFile=food_name:stfName=bofa_treat:stfDetail=:itemmask=65535:customattributes=buffCRC=2339561171;downerCRC=0;buffType=1;numAttributes=1;mods=;buffs=health=50,;heals=;quantity=10;filling=9;duration=3000;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

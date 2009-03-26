@@ -77,7 +77,11 @@ dl44MetalPistol = Object:new {
    experimentalMax = "0, 0, 26, 130, 3.1, 9, 50, 1500, -12, -80, 8, 21, 7, 20, 7",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131082:objectcrc=1831044635:objecttemp=pistol_dl44_metal:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=2;:",
+   tanoAttributes = "objecttype=131082:objectcrc=1831044635:stfFile=weapon_name:stfName=pistol_dl44_metal:stfDetail=:itemmask=65535:customattributes=damagetype=2;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

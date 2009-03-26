@@ -77,7 +77,11 @@ ithorianSentinelGloves = Object:new {
    experimentalMax = "0, 0, 0, 1000, 40, 50000, 15, 13, 15, 1, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262:objectcrc=2451608631:objecttemp=ith_armor_s03_gloves:templatetype=wearables_name:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness;armorType=257;armorStyle=4108;:",
+   tanoAttributes = "objecttype=262:objectcrc=2451608631:stfFile=wearables_name:stfName=ith_armor_s03_gloves:stfDetail=:itemmask=63491:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness;armorPiece=257;armorStyle=4108;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

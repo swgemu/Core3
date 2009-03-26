@@ -77,7 +77,11 @@ woodStaff = Object:new {
    experimentalMax = "0, 0, 46, 104, 4, 7, 1500, 26, 26, 3, 26, 5, 11, 27, 11",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131081:objectcrc=1200142292:objecttemp=lance_staff_wood_s1:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=1;:",
+   tanoAttributes = "objecttype=131081:objectcrc=1200142292:stfFile=weapon_name:stfName=lance_staff_wood_s1:stfDetail=:itemmask=65535:customattributes=damagetype=1;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

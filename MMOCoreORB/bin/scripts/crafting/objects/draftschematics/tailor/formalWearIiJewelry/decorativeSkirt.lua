@@ -77,7 +77,11 @@ decorativeSkirt = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777234:objectcrc=4116982156:objecttemp=clothing_skirt_formal_09:templatetype=wearables_name:itemmask=62974::",
+   tanoAttributes = "objecttype=16777234:objectcrc=4116982156:stfFile=wearables_name:stfName=clothing_skirt_formal_09:stfDetail=:itemmask=62974::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "22, 90",
    customizationSkill = "clothing_customization"

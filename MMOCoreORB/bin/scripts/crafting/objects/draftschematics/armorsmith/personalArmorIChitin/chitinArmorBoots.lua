@@ -77,7 +77,11 @@ chitinArmorBoots = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 25000, 8, 15, 9, 1, 1, 40, 25000",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=263:objectcrc=1961496739:objecttemp=armor_chitin_s01_boots:templatetype=wearables_name:itemmask=62967:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness,heateffectiveness,coldeffectiveness,restraineffectiveness;armorType=263;armorStyle=4102;:",
+   tanoAttributes = "objecttype=263:objectcrc=1961496739:stfFile=wearables_name:stfName=armor_chitin_s01_boots:stfDetail=:itemmask=62967:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness,heateffectiveness,coldeffectiveness,restraineffectiveness;armorPiece=263;armorStyle=4102;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_0, /private/index_color_1",
    customizationDefaults = "0, 6",
    customizationSkill = "armor_customization"

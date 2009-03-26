@@ -77,7 +77,11 @@ e11Rifle = Object:new {
    experimentalMax = "0, 0, 78, 156, 4.7, 13, 45, 1500, -70, -50, 50, 39, 8, 14, 23",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131084:objectcrc=4027327053:objecttemp=rifle_e11:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=2;:",
+   tanoAttributes = "objecttype=131084:objectcrc=4027327053:stfFile=weapon_name:stfName=rifle_e11:stfDetail=:itemmask=65535:customattributes=damagetype=2;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

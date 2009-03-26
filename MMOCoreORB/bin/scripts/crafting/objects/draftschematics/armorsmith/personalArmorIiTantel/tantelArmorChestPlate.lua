@@ -77,7 +77,11 @@ tantelArmorChestPlate = Object:new {
    experimentalMax = "0, 0, 0, 1000, 20, 18750, 56, 20, 5, 1, 2, 30, 18750",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=257:objectcrc=290985679:objecttemp=armor_tantel_skreej_chest_plate:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=energyeffectiveness;vunerability=;armorType=256;armorStyle=;:",
+   tanoAttributes = "objecttype=257:objectcrc=290985679:stfFile=wearables_name:stfName=armor_tantel_skreej_chest_plate:stfDetail=:itemmask=62975:customattributes=specialprotection=energyeffectiveness;vunerability=;armorPiece=256;armorStyle=;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2, /private/index_color_3",
    customizationDefaults = "22, 29, 14",
    customizationSkill = "armor_customization"

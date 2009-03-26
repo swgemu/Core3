@@ -77,7 +77,11 @@ caf = Object:new {
    experimentalMax = "0, 0, 1000, 0, 120, 120, 100, 120, 1",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=2701899786:objecttemp=caf:templatetype=food_name:itemmask=65535::",
+   tanoAttributes = "objecttype=:objectcrc=2701899786:stfFile=food_name:stfName=caf:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -77,7 +77,11 @@ longVest = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777231:objectcrc=733756648:objecttemp=vest_s11:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777231:objectcrc=733756648:stfFile=wearables_name:stfName=vest_s11:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "41",
    customizationSkill = "clothing_customization"

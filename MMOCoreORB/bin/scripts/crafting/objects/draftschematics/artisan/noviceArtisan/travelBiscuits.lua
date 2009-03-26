@@ -77,7 +77,11 @@ travelBiscuits = Object:new {
    experimentalMax = "0, 0, 1000, 120, 120, 100, 120",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=2831837498:objecttemp=travel_biscuits:templatetype=food_name:itemmask=65535::",
+   tanoAttributes = "objecttype=:objectcrc=2831837498:stfFile=food_name:stfName=travel_biscuits:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

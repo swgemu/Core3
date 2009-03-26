@@ -77,7 +77,11 @@ kashyyykianCeremonialLeggings = Object:new {
    experimentalMax = "0, 0, 0, 1000, 25, 25000, 33, 70, 19, 1, 1, 40, 25000",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=260:objectcrc=2303407451:objecttemp=armor_kashyyykian_ceremonial_leggings:templatetype=wearables_name:itemmask=61955:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness,acideffectiveness;armorType=262;armorStyle=4110;:",
+   tanoAttributes = "objecttype=260:objectcrc=2303407451:stfFile=wearables_name:stfName=armor_kashyyykian_ceremonial_leggings:stfDetail=:itemmask=61955:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness,acideffectiveness;armorPiece=262;armorStyle=4110;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

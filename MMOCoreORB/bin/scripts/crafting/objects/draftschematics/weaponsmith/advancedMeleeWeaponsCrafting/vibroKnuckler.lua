@@ -77,7 +77,11 @@ vibroKnuckler = Object:new {
    experimentalMax = "0, 0, 13, 111, 2.5, 26, 1500, 15, 15, 1, 15, 5, 18, 30, 18",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131073:objectcrc=1697024206:objecttemp=vibroknuckler:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=2;:",
+   tanoAttributes = "objecttype=131073:objectcrc=1697024206:stfFile=weapon_name:stfName=vibroknuckler:stfDetail=:itemmask=65535:customattributes=damagetype=2;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

@@ -77,7 +77,11 @@ grenadeWiringKit = Object:new {
    experimentalMax = "0, 0, 1000, 100",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=524291:objectcrc=569969360:objecttemp=weapon_thrown_wiring:templatetype=powerup_n:itemmask=65535::",
+   tanoAttributes = "objecttype=524291:objectcrc=569969360:stfFile=powerup_n:stfName=weapon_thrown_wiring:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

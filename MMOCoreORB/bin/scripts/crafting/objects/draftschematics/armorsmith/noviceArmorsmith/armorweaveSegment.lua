@@ -77,7 +77,11 @@ armorweaveSegment = Object:new {
    experimentalMax = "0, 0, 1000, 40, 5, 1000, 1, 1, 1, 1, 32, 7, 1000",
    experimentalPrecision = "0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262145:objectcrc=2378288672:objecttemp=armor_segment_zam:templatetype=craft_armor_ingredients_n:itemmask=65535:customattributes=specialprotection=blasteffectiveness,heateffectiveness;:",
+   tanoAttributes = "objecttype=262145:objectcrc=2378288672:stfFile=craft_armor_ingredients_n:stfName=armor_segment_zam:stfDetail=:itemmask=65535:customattributes=specialprotection=blasteffectiveness,heateffectiveness;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

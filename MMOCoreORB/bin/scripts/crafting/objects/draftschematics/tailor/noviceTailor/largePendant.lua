@@ -77,7 +77,11 @@ largePendant = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=16777233:objectcrc=586067530:objecttemp=clothing_jewelry_necklace_08:templatetype=craft_clothing_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=16777233:objectcrc=586067530:stfFile=craft_clothing_ingredients_n:stfName=clothing_jewelry_necklace_08:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "0",
    customizationSkill = "clothing_customization"

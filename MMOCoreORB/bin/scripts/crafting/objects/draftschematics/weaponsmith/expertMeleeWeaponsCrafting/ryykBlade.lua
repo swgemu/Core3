@@ -77,7 +77,11 @@ ryykBlade = Object:new {
    experimentalMax = "0, 0, 33, 132, 3, 29, 1500, -10, -10, 3, -10, 4, 27, 21, 18",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131079:objectcrc=1543947481:objecttemp=sword_blade_ryyk:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=1;:",
+   tanoAttributes = "objecttype=131079:objectcrc=1543947481:stfFile=weapon_name:stfName=sword_blade_ryyk:stfDetail=:itemmask=65535:customattributes=damagetype=1;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

@@ -77,7 +77,11 @@ mabariArmorweaveChestPlate = Object:new {
    experimentalMax = "0, 0, 0, 1000, 20, 18750, 45, 7, 3, 1, 32, 40, 31250",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=257:objectcrc=3303691594:objecttemp=armor_zam_wesell_chest_plate:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=blasteffectiveness,heateffectiveness;vunerability=energyeffectiveness,acideffectiveness,stuneffectiveness;armorType=256;armorStyle=4129;:",
+   tanoAttributes = "objecttype=257:objectcrc=3303691594:stfFile=wearables_name:stfName=armor_zam_wesell_chest_plate:stfDetail=:itemmask=62975:customattributes=specialprotection=;vunerability=;armorPiece=256;armorStyle=;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2, /private/index_color_3",
    customizationDefaults = "108, 82, 20",
    customizationSkill = "armor_customization"

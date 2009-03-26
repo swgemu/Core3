@@ -77,7 +77,11 @@ shadowpaw = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=2778111395:objecttemp=shadowpaw:templatetype=food_name:itemmask=65535::",
+   tanoAttributes = "objecttype=8202:objectcrc=2778111395:stfFile=food_name:stfName=shadowpaw:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "spice_customization"

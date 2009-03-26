@@ -77,7 +77,11 @@ dustcrepe = Object:new {
    experimentalMax = "0, 0, 1000, 120, 100, 120",
    experimentalPrecision = "0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=3723091380:objecttemp=dustcrepe:templatetype=food_name:itemmask=65535::",
+   tanoAttributes = "objecttype=8202:objectcrc=3723091380:stfFile=food_name:stfName=dustcrepe:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

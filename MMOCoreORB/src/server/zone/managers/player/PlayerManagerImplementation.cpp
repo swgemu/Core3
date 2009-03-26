@@ -1260,6 +1260,8 @@ void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, Tan
 	((CreatureObject*)receiver)->addInventoryItem(item);
 	item->sendTo(receiver);
 
+	item->onTrade(sender, receiver);
+
 	if (item->isPersistent()) {
 		item->setUpdated(true);
 		//itemManager->savePlayerItem(receiver, item);
@@ -1289,6 +1291,8 @@ void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, Sce
 
 	receiver->addDatapadItem(item);
 	item->sendTo(receiver);
+
+	item->onTrade(sender, receiver);
 
 	if(item->isPersistent())
 		item->setUpdated(true);

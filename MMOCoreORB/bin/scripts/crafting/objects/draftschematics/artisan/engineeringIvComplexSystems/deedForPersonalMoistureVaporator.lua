@@ -77,7 +77,11 @@ deedForPersonalMoistureVaporator = Object:new {
    experimentalMax = "0, 0, 5, 50000, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8388610:objectcrc=1578846375:objecttemp=moisture_harvester_deed_name:templatetype=deed:itemmask=65535::",
+   tanoAttributes = "objecttype=8388610:objectcrc=1578846375:stfFile=deed:stfName=moisture_harvester_deed_name:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

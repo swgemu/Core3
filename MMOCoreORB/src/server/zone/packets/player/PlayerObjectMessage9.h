@@ -113,7 +113,7 @@ public:
 		insertInt(dsUpdateCount);
 
 		for (int i = 0; i < dsListSize; i++) {
-			insertInt(play->player->getDraftSchematic(i)->getSchematicCRC());
+			insertInt(play->player->getDraftSchematic(i)->getObjectCRC());
 			insertInt(play->player->getDraftSchematic(i)->getSchematicID());
 		}
 	}

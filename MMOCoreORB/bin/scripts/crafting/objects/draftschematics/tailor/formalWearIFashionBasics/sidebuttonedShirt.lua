@@ -77,7 +77,11 @@ sidebuttonedShirt = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777230:objectcrc=3861351267:objecttemp=shirt_s08:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777230:objectcrc=3861351267:stfFile=wearables_name:stfName=shirt_s08:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "41",
    customizationSkill = "clothing_customization"

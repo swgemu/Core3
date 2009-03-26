@@ -77,7 +77,11 @@ starshineSurprise = Object:new {
    experimentalMax = "0, 0, 1000, 0, 120, 100, 120, 1",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=789489529:objecttemp=starshine_surprise:templatetype=food_name:itemmask=65535::",
+   tanoAttributes = "objecttype=:objectcrc=789489529:stfFile=food_name:stfName=starshine_surprise:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

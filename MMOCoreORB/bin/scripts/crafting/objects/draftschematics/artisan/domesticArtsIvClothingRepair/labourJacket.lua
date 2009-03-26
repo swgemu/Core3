@@ -77,7 +77,11 @@ labourJacket = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777227:objectcrc=2886559844:objecttemp=jacket_s15:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777227:objectcrc=2886559844:stfFile=wearables_name:stfName=jacket_s15:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "19",
    customizationSkill = "clothing_customization"

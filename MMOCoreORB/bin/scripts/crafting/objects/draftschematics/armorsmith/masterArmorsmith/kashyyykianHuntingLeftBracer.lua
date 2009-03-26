@@ -77,7 +77,11 @@ kashyyykianHuntingLeftBracer = Object:new {
    experimentalMax = "0, 0, 0, 1000, 40, 50000, 15, 13, 15, 1, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=261:objectcrc=2126287876:objecttemp=armor_kashyyykian_hunting_bracer_l:templatetype=wearables_name:itemmask=61955:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness;armorType=258;armorStyle=4111;:",
+   tanoAttributes = "objecttype=261:objectcrc=2126287876:stfFile=wearables_name:stfName=armor_kashyyykian_hunting_bracer_l:stfDetail=:itemmask=61955:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness;armorPiece=258;armorStyle=4111;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

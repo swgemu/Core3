@@ -77,7 +77,11 @@ ithorianFadePatternJacket = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777227:objectcrc=4036147599:objecttemp=ith_jacket_s15:templatetype=wearables_name:itemmask=63491::",
+   tanoAttributes = "objecttype=16777227:objectcrc=4036147599:stfFile=wearables_name:stfName=ith_jacket_s15:stfDetail=:itemmask=63491::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

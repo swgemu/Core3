@@ -77,7 +77,11 @@ crestedVest = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777231:objectcrc=3951270151:objecttemp=vest_s02:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777231:objectcrc=3951270151:stfFile=wearables_name:stfName=vest_s02:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "254, 13",
    customizationSkill = "clothing_customization"

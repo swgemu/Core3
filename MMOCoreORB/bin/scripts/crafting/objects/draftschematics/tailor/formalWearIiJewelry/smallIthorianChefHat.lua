@@ -77,7 +77,11 @@ smallIthorianChefHat = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777226:objectcrc=1184665728:objecttemp=hat_chef_s02_ith:templatetype=wearables_name:itemmask=63491::",
+   tanoAttributes = "objecttype=16777226:objectcrc=1184665728:stfFile=wearables_name:stfName=hat_chef_s02_ith:stfDetail=:itemmask=63491::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

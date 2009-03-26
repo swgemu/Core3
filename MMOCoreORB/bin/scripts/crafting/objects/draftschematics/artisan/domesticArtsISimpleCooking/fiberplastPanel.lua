@@ -77,7 +77,11 @@ fiberplastPanel = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=262147:objectcrc=967991397:objecttemp=fiberplast_panel:templatetype=craft_clothing_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=262147:objectcrc=967991397:stfFile=craft_clothing_ingredients_n:stfName=fiberplast_panel:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -77,7 +77,11 @@ microSensorSuite = Object:new {
    experimentalMax = "0, 0, 150, 5",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262150:objectcrc=3198540321:objecttemp=micro_sensor_suite:templatetype=craft_item_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=262150:objectcrc=3198540321:stfFile=craft_item_ingredients_n:stfName=micro_sensor_suite:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -77,7 +77,11 @@ ithorianRacingGear = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777226:objectcrc=947496096:objecttemp=ith_hat_s03:templatetype=wearables_name:itemmask=63491::",
+   tanoAttributes = "objecttype=16777226:objectcrc=947496096:stfFile=wearables_name:stfName=ith_hat_s03:stfDetail=:itemmask=63491::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

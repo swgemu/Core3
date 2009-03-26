@@ -77,7 +77,11 @@ camoKitNaboo = Object:new {
    experimentalMax = "0, 0, 1000, 20",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8232:objectcrc=1097832374:objecttemp=camokit_naboo:templatetype=item_n:itemmask=65535::",
+   tanoAttributes = "objecttype=8232:objectcrc=1097832374:stfFile=item_n:stfName=camokit_naboo:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

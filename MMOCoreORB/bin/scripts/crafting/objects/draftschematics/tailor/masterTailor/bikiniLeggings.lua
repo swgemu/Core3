@@ -77,7 +77,11 @@ bikiniLeggings = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777228:objectcrc=389872487:objecttemp=bikini_s01_leggings:templatetype=wearables_name:itemmask=62974::",
+   tanoAttributes = "objecttype=16777228:objectcrc=389872487:stfFile=wearables_name:stfName=bikini_s01_leggings:stfDetail=:itemmask=62974::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "63, 227",
    customizationSkill = "clothing_customization"

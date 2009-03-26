@@ -77,7 +77,11 @@ paddedArmorHelmet = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 31250, 10, 13, 169, 1, 4, 40, 31250",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=258:objectcrc=293198478:objecttemp=armor_padded_s01_helmet:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=blasteffectiveness;vunerability=stuneffectiveness,heateffectiveness,acideffectiveness;armorType=264;armorStyle=4121;:",
+   tanoAttributes = "objecttype=258:objectcrc=293198478:stfFile=wearables_name:stfName=armor_padded_s01_helmet:stfDetail=:itemmask=62975:customattributes=specialprotection=blasteffectiveness;vunerability=stuneffectiveness,heateffectiveness,acideffectiveness;armorPiece=264;armorStyle=4121;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "117, 159",
    customizationSkill = "armor_customization"

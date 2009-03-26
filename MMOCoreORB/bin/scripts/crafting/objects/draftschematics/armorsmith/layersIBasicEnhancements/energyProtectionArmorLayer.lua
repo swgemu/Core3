@@ -77,7 +77,11 @@ energyProtectionArmorLayer = Object:new {
    experimentalMax = "0, 0, 1000, 5, 1000, 0, 0, 0, 1, 2, 15, 50",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262145:objectcrc=2938969271:objecttemp=armor_layer_energy:templatetype=craft_armor_ingredients_n:itemmask=65535:customattributes=specialprotection=energyeffectiveness;:",
+   tanoAttributes = "objecttype=262145:objectcrc=2938969271:stfFile=craft_armor_ingredients_n:stfName=armor_layer_energy:stfDetail=:itemmask=65535:customattributes=specialprotection=energyeffectiveness;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

@@ -77,7 +77,11 @@ projectileFeedMechanism = Object:new {
    experimentalMax = "0, 0, 10, 20, -0.5, 100",
    experimentalPrecision = "0, 0, 0, 0, 1, 0",
 
-   tanoAttributes = "objecttype=262155:objectcrc=1361510729:objecttemp=projectile_feed_mechanism:templatetype=craft_weapon_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=262155:objectcrc=1361510729:stfFile=craft_weapon_ingredients_n:stfName=projectile_feed_mechanism:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

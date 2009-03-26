@@ -77,7 +77,11 @@ compositeArmorHelmet = Object:new {
    experimentalMax = "0, 0, 0, 1000, 40, 50000, 15, 13, 180, 1, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=258:objectcrc=2599755434:objecttemp=armor_composite_helmet:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=restraineffectiveness;vunerability=stuneffectiveness;armorType=264;armorStyle=4097;:",
+   tanoAttributes = "objecttype=258:objectcrc=2599755434:stfFile=wearables_name:stfName=armor_composite_helmet:stfDetail=:itemmask=62975:customattributes=specialprotection=restraineffectiveness;vunerability=stuneffectiveness;armorPiece=264;armorStyle=4097;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "0",
    customizationSkill = "armor_customization"

@@ -77,7 +77,11 @@ tiplessGloves = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777224:objectcrc=1166721914:objecttemp=gloves_s06:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777224:objectcrc=1166721914:stfFile=wearables_name:stfName=gloves_s06:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "30, 18",
    customizationSkill = "clothing_customization"

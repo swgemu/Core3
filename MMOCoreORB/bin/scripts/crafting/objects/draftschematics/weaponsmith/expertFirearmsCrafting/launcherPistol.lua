@@ -77,7 +77,11 @@ launcherPistol = Object:new {
    experimentalMax = "0, 0, 33, 169, 3.7, 23, 3, 1500, 0, 10, 31, 10",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131082:objectcrc=650380647:objecttemp=pistol_launcher:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=1;:",
+   tanoAttributes = "objecttype=131082:objectcrc=650380647:stfFile=weapon_name:stfName=pistol_launcher:stfDetail=:itemmask=65535:customattributes=damagetype=1;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

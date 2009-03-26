@@ -77,7 +77,11 @@ x34Landspeeder = Object:new {
    experimentalMax = "0, 0, 3000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8388613:objectcrc=905926205:objecttemp=landspeeder_x34:templatetype=monster_name:itemmask=65535::",
+   tanoAttributes = "objecttype=8388613:objectcrc=905926205:stfFile=monster_name:stfName=landspeeder_x34:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

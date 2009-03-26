@@ -77,7 +77,11 @@ ithorianFrillyShirt = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777230:objectcrc=2705445540:objecttemp=ith_shirt_s02:templatetype=wearables_name:itemmask=63491::",
+   tanoAttributes = "objecttype=16777230:objectcrc=2705445540:stfFile=wearables_name:stfName=ith_shirt_s02:stfDetail=:itemmask=63491::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

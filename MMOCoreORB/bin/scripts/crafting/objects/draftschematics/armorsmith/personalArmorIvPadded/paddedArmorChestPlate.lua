@@ -77,7 +77,11 @@ paddedArmorChestPlate = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 31250, 103, 39, 14, 1, 4, 40, 31250",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=257:objectcrc=927787210:objecttemp=armor_padded_s01_chest_plate:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=blasteffectiveness;vunerability=stuneffectiveness,heateffectiveness,acideffectiveness;armorType=256;armorStyle=4121;:",
+   tanoAttributes = "objecttype=257:objectcrc=927787210:stfFile=wearables_name:stfName=armor_padded_s01_chest_plate:stfDetail=:itemmask=62975:customattributes=specialprotection=blasteffectiveness;vunerability=stuneffectiveness,heateffectiveness,acideffectiveness;armorPiece=256;armorStyle=4121;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "117, 159",
    customizationSkill = "armor_customization"

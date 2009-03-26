@@ -77,7 +77,11 @@ laserCarbine = Object:new {
    experimentalMax = "0, 0, 13, 240, 4.1, 16, 65, 1500, -45, -40, 50, 10, 18, 28, 14",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131083:objectcrc=2121432077:objecttemp=carbine_laser:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=2;:",
+   tanoAttributes = "objecttype=131083:objectcrc=2121432077:stfFile=weapon_name:stfName=carbine_laser:stfDetail=:itemmask=65535:customattributes=damagetype=2;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

@@ -77,7 +77,11 @@ waterSurveyDevice = Object:new {
    experimentalMax = "0, 0, 1000, 15",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=2175673400:objecttemp=survey_tool_moisture:templatetype=item_n:itemmask=65535::",
+   tanoAttributes = "objecttype=:objectcrc=2175673400:stfFile=item_n:stfName=survey_tool_moisture:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

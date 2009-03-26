@@ -77,7 +77,11 @@ scoutBlaster = Object:new {
    experimentalMax = "0, 0, 46, 104, 2.8, 9, 50, 1500, 26, -90, 19, 0, 7, 14, 7",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=131082:objectcrc=3883785442:objecttemp=pistol_scout_blaster:templatetype=weapon_name:itemmask=65535:customattributes=damagetype=2;:",
+   tanoAttributes = "objecttype=131082:objectcrc=3883785442:stfFile=weapon_name:stfName=pistol_scout_blaster:stfDetail=:itemmask=65535:customattributes=damagetype=2;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "weapon_customization"

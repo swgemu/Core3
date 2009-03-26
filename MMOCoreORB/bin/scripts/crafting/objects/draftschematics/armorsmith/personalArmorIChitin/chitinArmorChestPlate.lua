@@ -77,7 +77,11 @@ chitinArmorChestPlate = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 25000, 75, 23, 9, 1, 1, 40, 25000",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=257:objectcrc=590081831:objecttemp=armor_chitin_s01_chest_plate:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness,heateffectiveness,coldeffectiveness,restraineffectiveness;armorType=256;armorStyle=4102;:",
+   tanoAttributes = "objecttype=257:objectcrc=590081831:stfFile=wearables_name:stfName=armor_chitin_s01_chest_plate:stfDetail=:itemmask=62975:customattributes=specialprotection=kineticeffectiveness;vunerability=stuneffectiveness,heateffectiveness,coldeffectiveness,restraineffectiveness;armorPiece=256;armorStyle=4102;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_0, /private/index_color_1",
    customizationDefaults = "0, 6",
    customizationSkill = "armor_customization"

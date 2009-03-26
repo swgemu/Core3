@@ -77,7 +77,11 @@ tantelArmorHelmet = Object:new {
    experimentalMax = "0, 0, 0, 1000, 20, 18750, 6, 7, 63, 1, 2, 30, 18750",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=258:objectcrc=1458475008:objecttemp=armor_tantel_skreej_helmet:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=energyeffectiveness;vunerability=;armorType=264;armorStyle=;:",
+   tanoAttributes = "objecttype=258:objectcrc=1458475008:stfFile=wearables_name:stfName=armor_tantel_skreej_helmet:stfDetail=:itemmask=62975:customattributes=specialprotection=energyeffectiveness;vunerability=;armorPiece=264;armorStyle=;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "7",
    customizationSkill = "armor_customization"

@@ -77,7 +77,11 @@ tradersFlightsuit = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=301228692:objecttemp=:templatetype=:itemmask=65535::",
+   tanoAttributes = "objecttype=:objectcrc=301228692:stfFile=:stfName=:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_0, /private/index_color_1",
    customizationDefaults = "0, 90",
    customizationSkill = "clothing_customization"

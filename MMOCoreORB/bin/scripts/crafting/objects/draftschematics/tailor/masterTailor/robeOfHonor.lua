@@ -77,7 +77,11 @@ robeOfHonor = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777229:objectcrc=1986706266:objecttemp=robe_s01:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777229:objectcrc=1986706266:stfFile=wearables_name:stfName=robe_s01:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "41, 13",
    customizationSkill = "clothing_customization"

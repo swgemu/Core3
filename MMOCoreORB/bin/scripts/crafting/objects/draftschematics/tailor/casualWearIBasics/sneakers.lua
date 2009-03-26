@@ -77,7 +77,11 @@ sneakers = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777222:objectcrc=1099621147:objecttemp=shoes_s03:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777222:objectcrc=1099621147:stfFile=wearables_name:stfName=shoes_s03:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "27, 19",
    customizationSkill = "clothing_customization"

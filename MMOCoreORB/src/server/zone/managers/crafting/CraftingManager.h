@@ -61,6 +61,10 @@ public:
 
 	void refreshDraftSchematics(Player* player);
 
+	TangibleObject* requestObjectTemplate(String& stfName);
+
+	TangibleObject* requestBlueFrogObjectTemplate(String& stfName);
+
 	String& generateCraftedSerial();
 
 protected:
@@ -113,6 +117,10 @@ public:
 
 	void refreshDraftSchematics(Player* player);
 
+	TangibleObject* requestObjectTemplate(String& stfName);
+
+	TangibleObject* requestBlueFrogObjectTemplate(String& stfName);
+
 	String& generateCraftedSerial();
 
 protected:
@@ -122,6 +130,8 @@ protected:
 	String _param3_handleExperimenting__Player_int_int_String_;
 	String _param1_addDraftSchematicsFromGroupName__Player_String_;
 	String _param1_subtractDraftSchematicsFromGroupName__Player_String_;
+	String _param0_requestObjectTemplate__String_;
+	String _param0_requestBlueFrogObjectTemplate__String_;
 };
 
 class CraftingManagerHelper : public DistributedObjectClassHelper, public Singleton<CraftingManagerHelper> {

@@ -77,7 +77,11 @@ thermalBoots = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777222:objectcrc=3110225352:objecttemp=boots_s19:templatetype=wearables_name:itemmask=62967::",
+   tanoAttributes = "objecttype=16777222:objectcrc=3110225352:stfFile=wearables_name:stfName=boots_s19:stfDetail=:itemmask=62967::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "44, 55",
    customizationSkill = "clothing_customization"

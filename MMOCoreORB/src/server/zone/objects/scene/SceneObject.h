@@ -357,6 +357,8 @@ public:
 
 	void onReceivePaymentFrom(CreatureObject* sender, unsigned int amount);
 
+	void onTrade(Player* sender, Player* receiver);
+
 	bool inflictDamage(CreatureObject* victim, unsigned char attribute, unsigned int damage);
 
 	void incapacitate(CreatureObject* victim);
@@ -722,6 +724,8 @@ public:
 	void onHealEnhanceTarget(CreatureObject* patient, unsigned char attribute, unsigned int amount, float duration);
 
 	void onReceivePaymentFrom(CreatureObject* sender, unsigned int amount);
+
+	void onTrade(Player* sender, Player* receiver);
 
 	bool inflictDamage(CreatureObject* victim, unsigned char attribute, unsigned int damage);
 

@@ -77,7 +77,11 @@ ubeseArmorLeftBracer = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 25000, 7, 8, 11, 1, 1, 40, 31250",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=261:objectcrc=4128606087:objecttemp=armor_ubese_bracer_l:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=kineticeffectiveness;vunerability=heateffectiveness,stuneffectiveness,coldeffectiveness;armorType=258;armorStyle=4127;:",
+   tanoAttributes = "objecttype=261:objectcrc=4128606087:stfFile=wearables_name:stfName=armor_ubese_bracer_l:stfDetail=:itemmask=62975:customattributes=specialprotection=kineticeffectiveness;vunerability=heateffectiveness,stuneffectiveness,coldeffectiveness;armorPiece=258;armorStyle=4127;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "0",
    customizationSkill = "armor_customization"

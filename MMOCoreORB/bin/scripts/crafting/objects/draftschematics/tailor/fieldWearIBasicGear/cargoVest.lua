@@ -77,7 +77,11 @@ cargoVest = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777231:objectcrc=1904031382:objecttemp=vest_s09:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777231:objectcrc=1904031382:stfFile=wearables_name:stfName=vest_s09:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1",
    customizationDefaults = "15",
    customizationSkill = "clothing_customization"

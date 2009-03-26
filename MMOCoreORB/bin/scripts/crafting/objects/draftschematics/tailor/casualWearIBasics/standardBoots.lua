@@ -77,7 +77,11 @@ standardBoots = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777222:objectcrc=3632251213:objecttemp=boots_s15:templatetype=wearables_name:itemmask=62967::",
+   tanoAttributes = "objecttype=16777222:objectcrc=3632251213:stfFile=wearables_name:stfName=boots_s15:stfDetail=:itemmask=62967::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "4, 14",
    customizationSkill = "clothing_customization"

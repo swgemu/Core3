@@ -77,7 +77,11 @@ aitha = Object:new {
    experimentalMax = "0, 0, 1000, 0, 120, 100, 120, 1",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=:objectcrc=2316612245:objecttemp=aitha:templatetype=food_name:itemmask=65535::",
+   tanoAttributes = "objecttype=:objectcrc=2316612245:stfFile=food_name:stfName=aitha:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

@@ -77,7 +77,11 @@ ithorianLifejacket = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777231:objectcrc=1675163714:objecttemp=ith_vest_s01:templatetype=wearables_name:itemmask=63491::",
+   tanoAttributes = "objecttype=16777231:objectcrc=1675163714:stfFile=wearables_name:stfName=ith_vest_s01:stfDetail=:itemmask=63491::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

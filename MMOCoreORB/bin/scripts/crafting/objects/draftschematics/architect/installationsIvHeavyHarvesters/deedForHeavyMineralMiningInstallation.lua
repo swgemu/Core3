@@ -77,7 +77,11 @@ deedForHeavyMineralMiningInstallation = Object:new {
    experimentalMax = "0, 0, 7, 150000, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8388610:objectcrc=3224287923:objecttemp=deed_installation:templatetype=deed:itemmask=65535::",
+   tanoAttributes = "objecttype=8388610:objectcrc=3224287923:stfFile=deed:stfName=deed_installation:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "structure_customization"

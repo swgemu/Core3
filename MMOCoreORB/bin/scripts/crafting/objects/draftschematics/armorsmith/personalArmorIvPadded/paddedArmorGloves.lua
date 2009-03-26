@@ -77,7 +77,11 @@ paddedArmorGloves = Object:new {
    experimentalMax = "0, 0, 0, 1000, 30, 31250, 10, 26, 14, 1, 4, 40, 31250",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=262:objectcrc=2813934470:objecttemp=armor_padded_s01_gloves:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=blasteffectiveness;vunerability=stuneffectiveness,heateffectiveness,acideffectiveness;armorType=257;armorStyle=4121;:",
+   tanoAttributes = "objecttype=262:objectcrc=2813934470:stfFile=wearables_name:stfName=armor_padded_s01_gloves:stfDetail=:itemmask=62975:customattributes=specialprotection=blasteffectiveness;vunerability=stuneffectiveness,heateffectiveness,acideffectiveness;armorPiece=257;armorStyle=4121;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "/private/index_color_1, /private/index_color_2",
    customizationDefaults = "117, 159",
    customizationSkill = "armor_customization"

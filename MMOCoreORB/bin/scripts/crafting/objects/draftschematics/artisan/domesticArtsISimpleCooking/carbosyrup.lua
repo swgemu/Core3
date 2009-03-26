@@ -77,7 +77,11 @@ carbosyrup = Object:new {
    experimentalMax = "0, 0, 1000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=3067661591:objecttemp=carbosyrup:templatetype=craft_food_ingredients_n:itemmask=65535::",
+   tanoAttributes = "objecttype=8202:objectcrc=3067661591:stfFile=craft_food_ingredients_n:stfName=carbosyrup:stfDetail=:itemmask=65535::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"

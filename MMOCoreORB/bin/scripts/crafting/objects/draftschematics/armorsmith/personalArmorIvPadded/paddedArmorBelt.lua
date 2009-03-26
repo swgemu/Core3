@@ -77,7 +77,11 @@ paddedArmorBelt = Object:new {
    experimentalMax = "0, 0, 0, 1000, 0, 0, 0, 0, 0, 1, 0, 0, 0",
    experimentalPrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777218:objectcrc=4150080953:objecttemp=armor_padded_s01_belt:templatetype=wearables_name:itemmask=62975:customattributes=specialprotection=;vunerability=;armorType=16777218;armorStyle=;:",
+   tanoAttributes = "objecttype=16777218:objectcrc=4150080953:stfFile=wearables_name:stfName=armor_padded_s01_belt:stfDetail=:itemmask=62975:customattributes=specialprotection=;vunerability=;armorPiece=16777218;armorStyle=;:",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "armor_customization"

@@ -503,13 +503,15 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(Player* pl
 			item->parseItemAttributes();
 		}
 	} else if (objecttype & TangibleObjectImplementation::VEHICLE){
-		item = new MountCreature(objectid, objectcrc, objectname, objecttemp);
-		MountCreature* mount = (MountCreature*)item;
-		mount->setLinkedCreature(player);
-		item->setZoneProcessServer(player->getZoneProcessServer());
-		if (makeStats && item !=NULL) {
-			item->setAttributes(lootAttributes);
-			item->parseItemAttributes();
+		if (player != NULL) {
+			item = new MountCreature(objectid, objectcrc, objectname, objecttemp);
+			MountCreature* mount = (MountCreature*) item;
+			mount->setLinkedCreature(player);
+			item->setZoneProcessServer(player->getZoneProcessServer());
+			if (makeStats && item != NULL) {
+				item->setAttributes(lootAttributes);
+				item->parseItemAttributes();
+			}
 		}
 	}
 	/*else {

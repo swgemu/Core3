@@ -77,7 +77,11 @@ ithorianLeatherGear = Object:new {
    experimentalMax = "0, 0, 0, 1000",
    experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=16777219:objectcrc=2604044356:objecttemp=ith_bodysuit_s06:templatetype=wearables_name:itemmask=62975::",
+   tanoAttributes = "objecttype=16777219:objectcrc=2604044356:stfFile=wearables_name:stfName=ith_bodysuit_s06:stfDetail=:itemmask=62975::",
+
+   blueFrogAttributes = "",
+   blueFrogEnabled = False,
+
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"
