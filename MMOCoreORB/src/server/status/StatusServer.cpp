@@ -101,7 +101,7 @@ Packet* StatusServer::getStatusXMLPacket() {
 	str << "<?xml version=\"1.0\" standalone=\"yes\"?>" << endl;
 	str << "<zoneServer>" << endl;
 
-	if (lastStatus = testZone()) {
+	if ((lastStatus = testZone())) {
 		str << "<name>" << zoneServer->getServerName() << "</name>";
 		str << "<status>up</status>" << endl;
 		str << "<users>" << endl;

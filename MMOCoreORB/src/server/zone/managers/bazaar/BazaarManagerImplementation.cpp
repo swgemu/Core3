@@ -280,7 +280,7 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 	BazaarMap* bazaarLocations = bazaarTerminals->getBazaarMap();
 	BazaarTerminalDetails* bazaar = bazaarLocations->get(bazaarid);
 
-	SceneObject* invObj = player->getInventoryItem(objectid);
+	ManagedReference<SceneObject> invObj = player->getInventoryItem(objectid);
 
 	// Make sure item is not invalid (null or not tangible)
 	if (invObj == NULL || !invObj->isTangible()) {
@@ -292,7 +292,7 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 		return;
 	}
 
-	TangibleObject* obj = (TangibleObject*)invObj;
+	TangibleObject* obj = (TangibleObject*)invObj.get();
 
 	// If item is equipted, tell player to unequip
 	if (obj->isEquipped()) {

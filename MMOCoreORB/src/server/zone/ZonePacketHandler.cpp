@@ -661,14 +661,15 @@ void ZonePacketHandler::handleSendMail(Message* pack) {
 	//Handle Attachments: (see docs for more info on unk's)
 	wpInfoSize = pack->parseInt();
 	if(wpInfoSize > 0) {
-		pack->shiftOffset(11); //Shift past the STF param start(7) + unk int(4)
+		return;
+		/*pack->shiftOffset(11); //Shift past the STF param start(7) + unk int(4)
 		wpX = pack->parseFloat();
 		pack->shiftOffset(4); //skip Z, always 0.0f
 		wpY = pack->parseFloat();
 		pack->shiftOffset(4); //skip blank WP objid
 		planetCrc = pack->parseInt();
 		pack->parseUnicode(wpName);
-		pack->shiftOffset(11); //skip attachment footer
+		pack->shiftOffset(11); //skip attachment footer*/
 	}
 
 	pack->shiftOffset(4); //skip the string count
