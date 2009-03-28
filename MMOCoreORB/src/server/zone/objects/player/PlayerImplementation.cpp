@@ -5942,7 +5942,7 @@ void PlayerImplementation::onIncapacitated(SceneObject* attacker) {
 	//Dismount has to take place before clearStates! ClearStates() also
 	//clears the "mount state" so we need to check "isMounted()" before cleared
 
-	if (attacker != _this)
+	if (attacker != _this && attacker != NULL)
 		attacker->unlock();
 
 	try {
@@ -5955,7 +5955,7 @@ void PlayerImplementation::onIncapacitated(SceneObject* attacker) {
 		error("unreported exception caught in void PlayerImplementation::onIncapacitated(SceneObject* attacker)");
 	}
 
-	if (attacker != _this)
+	if (attacker != _this && attacker != NULL)
 		attacker->wlock(_this);
 
 	if (isMounted())

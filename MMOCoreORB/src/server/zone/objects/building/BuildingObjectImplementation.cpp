@@ -105,8 +105,8 @@ BuildingObjectImplementation::~BuildingObjectImplementation() {
 	delete permissionList;
 	permissionList = NULL;
 
-	error("DELETING A BUILDING OBJECT");
-	StackTrace::printStackTrace();
+	/*error("DELETING A BUILDING OBJECT");
+	StackTrace::printStackTrace();*/
 }
 
 void BuildingObjectImplementation::removeFromZone(bool doLock) {
