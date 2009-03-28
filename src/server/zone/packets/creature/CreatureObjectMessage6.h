@@ -57,7 +57,7 @@ public:
 
 		insertShort((uint16)creo->getLevel());
 
-		insertAscii(creo->getPerformanceName());
+		insertAscii(creo->getPerformanceAnimation());
 
 		insertAscii(creo->getMoodStr());
 
