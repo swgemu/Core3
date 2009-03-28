@@ -2742,7 +2742,9 @@ void CreatureObjectImplementation::startPlayingMusic(const String& modifier, boo
 
 	setPosture(CreaturePosture::SKILLANIMATING);
 	setPerformanceName(isdigit(music[0]) ? availableSongs.get(atoi(music.toCharArray())) : music);
+	setListenID(objectID);
 	setPlayingMusic(true);
+
 
 
 	// instrid instrument->getInstrumentType()
@@ -2952,7 +2954,7 @@ void CreatureObjectImplementation::startListen(uint64 entid) {
 
 	info("started listening [" + creature->getCharacterName().toString() + "]");
 
-	listenID = entid;
+	setListenID(entid);
 
 	creature->unlock();
 }
@@ -3073,7 +3075,7 @@ void CreatureObjectImplementation::stopListen(uint64 entid, bool doSendPackets, 
 	info("stopped listening [" + entName + "]");
 
 	doListening = false;
-	listenID = 0;
+	setListenID(0);
 }
 
 void CreatureObjectImplementation::activateEntertainerBuff(int performanceType) {
