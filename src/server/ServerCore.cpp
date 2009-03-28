@@ -90,7 +90,7 @@ void ServerCore::init() {
 		}
 
 		if (configManager.getMakeZone()) {
-			zoneServer = new ZoneServer(configManager.getZoneProcessingThreads());
+			zoneServer = new ZoneServer(configManager.getZoneProcessingThreads(), configManager.getZoneGalaxyID());
 			zoneServer->deploy("ZoneServer");
 		}
 

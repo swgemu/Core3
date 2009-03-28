@@ -66,7 +66,7 @@ import "Zone";
 include "../db/ServerDatabase";
 
 interface ZoneServer {
-	ZoneServer(int threadcount) {
+	ZoneServer(int threadcount, int galaxyid = 2) {
 		super(threadcount);
 	}
 
@@ -131,6 +131,7 @@ interface ZoneServer {
 	Zone getZone(int index);
 	
 	String getServerName();
+	int getGalaxyID();
 	
 	boolean isServerLocked();
 	boolean isServerOnline();

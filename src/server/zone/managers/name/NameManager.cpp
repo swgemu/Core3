@@ -153,7 +153,7 @@ int NameManager::validateName(CreatureObject* obj) {
 }
 
 int NameManager::validateName(const String& name, const String& species) {
-	if (name == "")
+	if (name.isEmpty())
 		return NameManagerResult::DECLINED_EMPTY;
 
 	if (isProfane(name))
@@ -168,11 +168,13 @@ int NameManager::validateName(const String& name, const String& species) {
 	if (isReserved(name))
 		return NameManagerResult::DECLINED_RESERVED;
 
+	//Make sure that only valid characters are allowed in the name.
 	if (strspn(name.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'- ") != name.length())
 		return NameManagerResult::DECLINED_SYNTAX;
 
 	String fname, lname;
 
+	//Split the name into first and last
 	int spc = name.indexOf(" ");
 	if (spc != -1) {
 		fname = name.subString(0, spc);
@@ -185,28 +187,28 @@ int NameManager::validateName(const String& name, const String& species) {
 	if (fname.length() < 3 || fname.length() > 15 || lname.length() > 20)
 		return NameManagerResult::DECLINED_RACE_INAPP;
 
-	if (lname != "" && species == "wookiee")
+	//Wookies are not allowed to have last names.
+	if (!lname.isEmpty() && species == "wookiee")
 		return NameManagerResult::DECLINED_RACE_INAPP;
 
+	//If the name has a hyphen or apostrophe, make sure they are the proper species.
 	if (name.indexOf("'") != -1 || name.indexOf("-") != -1) {
-		if ( species != "human" && species != "twilek" && species != "moncal")
-			return NameManagerResult::DECLINED_RACE_INAPP;
-		if (species == "moncal" && name.indexOf("-") != -1)
+		//Must be a human, twilek, or moncal to have a hyphen or apostrophe.
+		if (species != "human" && species != "twilek" && species != "moncal")
 			return NameManagerResult::DECLINED_RACE_INAPP;
 
-		if (fname.indexOf('\'') != fname.lastIndexOf('\'') ||
-				fname.indexOf('-') != fname.lastIndexOf('-') ||
-				lname.indexOf('\'') != lname.lastIndexOf('\'') ||
-				lname.indexOf('-') != lname.lastIndexOf('-')) {
+		//Moncal's aren't allowed to have apostrophes.
+		if (species == "moncal" && name.indexOf("'") != -1)
 			return NameManagerResult::DECLINED_RACE_INAPP;
-		}
+
+		//Make sure they only have one hyphen and apostrophe in firstname.
+		if (fname.indexOf('\'') != fname.lastIndexOf('\'') || fname.indexOf('-') != fname.lastIndexOf('-'))
+			return NameManagerResult::DECLINED_RACE_INAPP;
+
+		//Make sure they only have one hyphen and apostrophe in lastname.
+		if (lname.indexOf('\'') != lname.lastIndexOf('\'') || lname.indexOf('-') != lname.lastIndexOf('-'))
+			return NameManagerResult::DECLINED_RACE_INAPP;
 	}
-
-	//I am disabling ' in names.  It's allowed by the rules, but it messes with most of the sql queries
-	if (name.indexOf("'") != -1)
-		return NameManagerResult::DECLINED_RACE_INAPP;
-
-	//THE ABOVE SHOULD BE REMOVED AFTER ALL THE QUERIES ARE UPDATED
 
 	return NameManagerResult::ACCEPTED;
 }

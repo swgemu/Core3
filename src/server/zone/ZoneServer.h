@@ -41,7 +41,7 @@ class Zone;
 
 class ZoneServer : public DistributedObjectStub {
 public:
-	ZoneServer(int threadcount);
+	ZoneServer(int threadcount, int galaxyid = 2);
 
 	void start(int port, int conn);
 
@@ -118,6 +118,8 @@ public:
 	Zone* getZone(int index);
 
 	String& getServerName();
+
+	int getGalaxyID();
 
 	bool isServerLocked();
 
@@ -247,6 +249,8 @@ public:
 	Zone* getZone(int index);
 
 	String& getServerName();
+
+	int getGalaxyID();
 
 	bool isServerLocked();
 

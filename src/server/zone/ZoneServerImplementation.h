@@ -119,6 +119,8 @@ class ZoneServerImplementation : public DatagramServiceThread, public ZoneServer
 	String name;
 	String messageoftheDay;
 
+	int galaxyID;
+
 public:
 	const static int OFFLINE = 0;
 	const static int LOADING = 1;
@@ -126,7 +128,7 @@ public:
 	const static int LOCKED = 3;
 
 public:
-	ZoneServerImplementation(int processingThreads);
+	ZoneServerImplementation(int processingThreads, int galaxyid = 2);
 
 	~ZoneServerImplementation();
 
@@ -190,6 +192,9 @@ public:
 	}
 
 	// setters and getters
+	inline int getGalaxyID() {
+		return galaxyID;
+	}
 
 	inline String& getServerName() {
 		return name;
@@ -292,6 +297,14 @@ public:
 	uint64 getNextCellID(bool doLock = true);
 
 	//setters
+
+	inline void setServerName(const String& servername) {
+		name = servername;
+	}
+
+	inline void setGalaxyID(int galaxyid) {
+		galaxyID = galaxyid;
+	}
 
 	inline void setServerState(int state) {
 		lock();

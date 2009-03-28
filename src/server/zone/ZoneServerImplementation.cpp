@@ -92,8 +92,10 @@ which carries forward this exception.
 
 #include "../ServerCore.h"
 
-ZoneServerImplementation::ZoneServerImplementation(int processingThreads) :
+ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int galaxyid) :
 		DatagramServiceThread("ZoneServer"), ZoneServerServant() {
+	galaxyID = galaxyid;
+
 	name = "Core3";
 
 	phandler = NULL;
@@ -211,13 +213,30 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 void ZoneServerImplementation::init() {
 	serverState = LOADING;
 
+	//Load the galaxy name from the galaxy table.
+	try {
+		info("Loading galaxy name from the database.");
+		String query = "SELECT name FROM galaxy WHERE galaxy_id = " + galaxyID;
+		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+		if (result->next())
+			name = result->getString(0);
+
+		delete result;
+
+	} catch (DatabaseException& e) {
+		info("Unhandled exception when getting galaxy name from database.");
+	} catch (...) {
+		info("Unhandled exception initializing galaxy name.");
+	}
+
 	processor = new ZoneProcessServerImplementation(_this, procThreadCount);
 	processor->init();
 
 	phandler = new BasePacketHandler("ZoneServer", processor->getMessageQueue());
 	phandler->setLogging(false);
 
-	info("initializing zones", true);
+	info("Initializing zones", true);
 
 	for (int i = 0; i < 45; ++i) {
 		Zone * zone;

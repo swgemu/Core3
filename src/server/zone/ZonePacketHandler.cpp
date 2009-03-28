@@ -328,6 +328,7 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 			obj = server->getCachedObject(playerID, false);
 
 		if (obj != NULL) {
+			//Loading a cached player.
 			if (!obj->isPlayer()) {
 				server->unlock();
 				return;
@@ -344,6 +345,7 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 			playerManager->updatePlayerCreditsFromDatabase(player);
 			playerManager->putPlayer(player);
 		} else {
+			//Loading the player from the database
 			player = playerManager->load(characterID);
 			player->setZone(server->getZone(player->getZoneIndex()));
 
@@ -442,6 +444,7 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 	try {
 		server->lock();
 
+		//Name failed creation because its name failed. (or is in use? safety net?)
 		if (msg != NULL || (DistributedObjectBroker::instance()->lookUp("Player " + firstName) != NULL)) {
 			if (msg == NULL)
 				msg = new ClientCreateCharacterFailed("name_declined_in_use");
@@ -457,6 +460,7 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 
 		server->unlock();
 
+		//Try to finish completing character creation.
 		msg = playerManager->attemptPlayerCreation(player, client);
 		client->sendMessage(msg);
 	} catch (Exception& e) {
