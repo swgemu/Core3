@@ -819,7 +819,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 
 	server->addObject(item);
 
-	if (container != 0) {
+	if (container != 0 && player != NULL) {
 		Zone* zone = player->getZone();
 
 		if (zone != NULL) {
