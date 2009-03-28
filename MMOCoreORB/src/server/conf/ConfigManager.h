@@ -83,6 +83,7 @@ class ConfigManager : public Lua {
 
 	int zoneProcessingThreads;
 	int zoneAllowedConnections;
+	int zoneGalaxyID;
 
 	int statusAllowedConnections;
 	unsigned int statusInterval;
@@ -127,6 +128,7 @@ public:
 
 		zoneProcessingThreads = 10;
 		zoneAllowedConnections = 300;
+		zoneGalaxyID = 2;
 
 		statusAllowedConnections = 100;
 		statusInterval = 60;
@@ -267,6 +269,10 @@ public:
 
 	inline int getZoneAllowedConnections() {
 		return zoneAllowedConnections;
+	}
+
+	inline int getZoneGalaxyID() {
+		return zoneGalaxyID;
 	}
 
 };

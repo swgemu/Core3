@@ -71,7 +71,6 @@ public:
 	inline static Database* instance() {
 		return impl;
 	}
-
 };
 
 #endif /*SERVERDATABASE_H_*/

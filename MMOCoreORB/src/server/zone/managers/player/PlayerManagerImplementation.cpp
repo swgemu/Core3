@@ -118,7 +118,7 @@ void PlayerManagerImplementation::stop() {
 
 bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	int accountID = sessionkey;
-	int galaxyID = 2;
+	int galaxyID = server->getZoneServer()->getGalaxyID();
 
 	player->setZoneIndex(42);
 	player->setTerrainName(Terrain::getTerrainName(42));
@@ -179,6 +179,13 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	player->resetHAMBars(false);
 
 	try {
+		String fname = player->getFirstName();
+		String lname = player->getLastName();
+
+		//Sanitize our strings for safe entry to the db.
+		MySqlDatabase::escapeString(fname);
+		MySqlDatabase::escapeString(lname);
+
 		StringBuffer query;
 		query << "INSERT INTO `characters` "
 		<< "(`account_id`,`galaxy_id`,`firstname`,`surname`,"
@@ -192,7 +199,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 		<< "`PvpRating`, adminLevel, `experience`"
 		<< ") VALUES ("
 		<< accountID << "," << galaxyID << ",'"
-		<< player->getFirstName() << "','" << player->getLastName() << "','"
+		<< fname << "','" << lname << "','"
 		<< appearance.subString(0, appearance.length() - 1) << "','"
 		<< player->getStartingProfession() << "'," <<  race << "," << gender << ",10,"
 		<< creditsCash << "," << creditsBank << ",0,"
@@ -243,18 +250,19 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 }
 
 BaseMessage* PlayerManagerImplementation::checkPlayerName(const String& name, const String& species) {
-	NameManager * nm = server->getNameManager();
+	NameManager* nm = server->getNameManager();
 	BaseMessage* msg = NULL;
 
 	String firstName;
 
+	//Get the firstname
 	int idx = name.indexOf(" ");
 	if (idx != -1)
 		firstName = name.subString(0, idx);
 	else
 		firstName = name;
 
-	//Name passes filters, does it already exist?
+	//Does this name already exist?
 	if (!validateName(firstName))
 		return msg = new ClientCreateCharacterFailed("name_declined_in_use");
 
@@ -336,6 +344,7 @@ BaseMessage* PlayerManagerImplementation::attemptPlayerCreation(Player* player, 
 	try {
 		player->wlock();
 
+		//If PlayerManagerImplementation::create() == true) then continue loading the player.
 		if (create(player, client->getSessionKey())) {
 			BaseMessage* hb = new HeartBeat();
 			client->sendMessage(hb);
@@ -347,10 +356,11 @@ BaseMessage* PlayerManagerImplementation::attemptPlayerCreation(Player* player, 
 
 			zone->registerObject(player);
 
-			player->info("trying to createItems and train professions");
+			player->info("Creating starting items and training professions.");
 			player->loadItems(true);
 			player->trainStartingProfession();
 
+			//TODO: Can we do this a different way maybe...
 			player->unload(); // force a save of items, client will relogin
 
 			zone->deleteObject(player->getObjectID());
@@ -359,6 +369,7 @@ BaseMessage* PlayerManagerImplementation::attemptPlayerCreation(Player* player, 
 
 			player->unlock();
 		} else {
+			//Character creation failed.
 			client->info("name refused for character creation");
 
 			msg = new ClientCreateCharacterFailed("name_declined_retry");

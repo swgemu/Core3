@@ -425,10 +425,10 @@ void WearableImplementation::getBestAttachmentSkillMod(String& valueName, Attach
 
 bool WearableImplementation::attachmentMatches(Attachment* attachment) {
 
-	if(wearableType == WearableImplementation::WEARABLECLOTHING &&
-			attachment->getAttachmentType() == AttachmentImplementation::CLOTHINGATTACHMENT  ||
-			wearableType == WearableImplementation::WEARABLEARMOR &&
-			attachment->getAttachmentType() == AttachmentImplementation::ARMORATTACHMENT)
+	if((wearableType == WearableImplementation::WEARABLECLOTHING &&
+			attachment->getAttachmentType() == AttachmentImplementation::CLOTHINGATTACHMENT)  ||
+			(wearableType == WearableImplementation::WEARABLEARMOR &&
+			attachment->getAttachmentType() == AttachmentImplementation::ARMORATTACHMENT))
 		return true;
 	else
 		return false;
