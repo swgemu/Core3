@@ -76,6 +76,7 @@ public:
 		insertByte(creo->getMoodID());
 
 		insertInt(creo->getPerformanceCounter()); //might be switched
+
 		insertInt(creo->getInstrumentID()); //might be switched
 
 		insertInt(9);

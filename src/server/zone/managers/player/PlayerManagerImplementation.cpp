@@ -595,6 +595,11 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	//Posture
 	player->changePosture(character->getInt(61));
 
+	//Prevent the "invisible bandfill" bug on login.
+	if (player->getPosture() == CreaturePosture::SKILLANIMATING) {
+		player->setPosture(CreaturePosture::UPRIGHT);
+	}
+
 	//If a player is incapacitated when the server saves, and subsequently are unloaded from memory, they should be loaded as standing.
 	if (player->isIncapacitated())
 		player->setPosture(CreaturePosture::UPRIGHT);

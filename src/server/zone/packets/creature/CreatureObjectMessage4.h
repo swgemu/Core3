@@ -72,7 +72,7 @@ public:
 		insertFloat(1);
 
 		// listenToID
-		insertLong(0);
+		insertLong(creo->getListenID());
 
 		insertFloat(creo->speed);
 
