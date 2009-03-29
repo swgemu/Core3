@@ -2995,6 +2995,8 @@ void CreatureObjectImplementation::stopWatch(uint64 entid, bool doSendPackets, b
 		return;
 	}
 
+	setMood(moodid);
+
 	if (doSendPackets)
 		sendEntertainmentUpdate(0, moodStr);
 
@@ -3053,6 +3055,8 @@ void CreatureObjectImplementation::stopListen(uint64 entid, bool doSendPackets, 
 
 		return;
 	}
+
+	setMood(moodid);
 
 	if (doSendPackets)
 		sendEntertainmentUpdate(0, moodStr);
@@ -3484,6 +3488,7 @@ void CreatureObjectImplementation::sendEntertainmentUpdate(uint64 entid, const S
 
 	CreatureObjectDeltaMessage6* codm6 = new CreatureObjectDeltaMessage6(_this);
 	String str = Races::getMoodStr(mood);
+	setMood(mood);
 	codm6->updateMoodAnimation(str);
 	codm6->close();
 	broadcastMessage(codm6);
@@ -4423,12 +4428,6 @@ void CreatureObjectImplementation::onReceiveDamage(SceneObject* attacker, uint8 
  * Event handler that occurs when HAM regeneration takes place.
  */
 void CreatureObjectImplementation::onRegenerateHAM() {
-	//Shock Wounds Regeneration:
-	if (isListening() || isWatching()) {
-		if (getShockWounds() > 0 && System::random(1) == 1)
-			changeShockWounds(-System::random(3) - 1);
-	}
-
 	float modifier = (isInCombat()) ? combatRegenModifier : peacedRegenModifier;
 
 	if (isKneeling())
