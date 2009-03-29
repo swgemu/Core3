@@ -89,10 +89,7 @@ public:
 				return true; // don't tick action if they aren't doing anything
 			}
 
-
-
 			if (player->isInBuilding() || player->isInCamp()) {
-
 				int buildingType = player->getBuildingType();
 				if (
 					buildingType == BuildingObjectImplementation::CANTINA ||
@@ -103,7 +100,6 @@ public:
 					//System::out << "calling: player->doEntertainerPatronEffects()" << endl;
 					// healShock, healWounds, addBuff
 					player->doEntertainerPatronEffects(true, true, true);
-
 
 				}
 			}

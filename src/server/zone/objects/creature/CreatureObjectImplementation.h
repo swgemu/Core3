@@ -756,6 +756,10 @@ public:
 		return postureState == CreaturePosture::SITTING;
 	}
 
+	inline bool isSkillAnimating() {
+		return postureState == CreaturePosture::SKILLANIMATING;
+	}
+
 	inline bool isInCombat() {
 		return stateBitmask & CreatureState::COMBAT;
 	}

@@ -120,6 +120,7 @@ interface CreatureObject implements TangibleObject {
 	boolean isKneeling();
 	boolean isProne();
 	boolean isStanding();
+	boolean isSkillAnimating();
 	boolean isInCombat();
 	boolean isDizzied();
 	boolean isStunned();
