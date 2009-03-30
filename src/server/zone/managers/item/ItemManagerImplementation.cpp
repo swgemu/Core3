@@ -1493,11 +1493,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		//camoKit->setConcealMin(cMin);
 	} else if (type == TangibleObjectImplementation::CAMPKIT) {
 				CampKit* campKit = (CampKit*) item;
-				int xp = itemconfig.getIntField("xp");
-				int duration = itemconfig.getIntField("duration");
 				int campCRC = itemconfig.getIntField("campType");;
-				campKit->setXP(xp);
-				campKit->setDuration(duration);
 				campKit->setCampType(campCRC);
     } else if (type == TangibleObjectImplementation::COMPONENT) {
 	    Component* component = (Component*) item;

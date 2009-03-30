@@ -499,9 +499,9 @@ public:
 
 	void startListen(unsigned long long entid);
 
-	void stopWatch(unsigned long long entid, bool doSendPackets = true, bool forced = false, bool doLock = true);
+	void stopWatch(unsigned long long entid, bool doSendPackets = true, bool forced = false, bool doLock = true, bool outOfRange = false);
 
-	void stopListen(unsigned long long entid, bool doSendPackets = true, bool forced = false, bool doLock = true);
+	void stopListen(unsigned long long entid, bool doSendPackets = true, bool forced = false, bool doLock = true, bool outOfRange = false);
 
 	bool isPlayingMusic();
 
@@ -523,7 +523,7 @@ public:
 
 	void doPerformanceAction();
 
-	void doEntertainerPatronEffects(bool healShock = false, bool healWounds = false, bool addBuff = false);
+	void doEntertainerPatronEffects();
 
 	void addEntertainerFlourishBuff();
 
@@ -1790,9 +1790,9 @@ public:
 
 	void startListen(unsigned long long entid);
 
-	void stopWatch(unsigned long long entid, bool doSendPackets, bool forced, bool doLock);
+	void stopWatch(unsigned long long entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange);
 
-	void stopListen(unsigned long long entid, bool doSendPackets, bool forced, bool doLock);
+	void stopListen(unsigned long long entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange);
 
 	bool isPlayingMusic();
 
@@ -1814,7 +1814,7 @@ public:
 
 	void doPerformanceAction();
 
-	void doEntertainerPatronEffects(bool healShock, bool healWounds, bool addBuff);
+	void doEntertainerPatronEffects();
 
 	void addEntertainerFlourishBuff();
 
