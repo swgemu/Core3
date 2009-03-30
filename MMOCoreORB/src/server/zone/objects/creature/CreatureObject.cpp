@@ -2991,7 +2991,7 @@ void CreatureObject::startListen(unsigned long long entid) {
 		((CreatureObjectImplementation*) _impl)->startListen(entid);
 }
 
-void CreatureObject::stopWatch(unsigned long long entid, bool doSendPackets, bool forced, bool doLock) {
+void CreatureObject::stopWatch(unsigned long long entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3001,13 +3001,14 @@ void CreatureObject::stopWatch(unsigned long long entid, bool doSendPackets, boo
 		method.addBooleanParameter(doSendPackets);
 		method.addBooleanParameter(forced);
 		method.addBooleanParameter(doLock);
+		method.addBooleanParameter(outOfRange);
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureObjectImplementation*) _impl)->stopWatch(entid, doSendPackets, forced, doLock);
+		((CreatureObjectImplementation*) _impl)->stopWatch(entid, doSendPackets, forced, doLock, outOfRange);
 }
 
-void CreatureObject::stopListen(unsigned long long entid, bool doSendPackets, bool forced, bool doLock) {
+void CreatureObject::stopListen(unsigned long long entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3017,10 +3018,11 @@ void CreatureObject::stopListen(unsigned long long entid, bool doSendPackets, bo
 		method.addBooleanParameter(doSendPackets);
 		method.addBooleanParameter(forced);
 		method.addBooleanParameter(doLock);
+		method.addBooleanParameter(outOfRange);
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureObjectImplementation*) _impl)->stopListen(entid, doSendPackets, forced, doLock);
+		((CreatureObjectImplementation*) _impl)->stopListen(entid, doSendPackets, forced, doLock, outOfRange);
 }
 
 bool CreatureObject::isPlayingMusic() {
@@ -3148,19 +3150,16 @@ void CreatureObject::doPerformanceAction() {
 		((CreatureObjectImplementation*) _impl)->doPerformanceAction();
 }
 
-void CreatureObject::doEntertainerPatronEffects(bool healShock, bool healWounds, bool addBuff) {
+void CreatureObject::doEntertainerPatronEffects() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 241);
-		method.addBooleanParameter(healShock);
-		method.addBooleanParameter(healWounds);
-		method.addBooleanParameter(addBuff);
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureObjectImplementation*) _impl)->doEntertainerPatronEffects(healShock, healWounds, addBuff);
+		((CreatureObjectImplementation*) _impl)->doEntertainerPatronEffects();
 }
 
 void CreatureObject::addEntertainerFlourishBuff() {
@@ -8773,10 +8772,10 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		startListen(inv->getUnsignedLongParameter());
 		break;
 	case 229:
-		stopWatch(inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		stopWatch(inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case 230:
-		stopListen(inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		stopListen(inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case 231:
 		resp->insertBoolean(isPlayingMusic());
@@ -8809,7 +8808,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		doPerformanceAction();
 		break;
 	case 241:
-		doEntertainerPatronEffects(inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		doEntertainerPatronEffects();
 		break;
 	case 242:
 		addEntertainerFlourishBuff();
@@ -10874,12 +10873,12 @@ void CreatureObjectAdapter::startListen(unsigned long long entid) {
 	return ((CreatureObjectImplementation*) impl)->startListen(entid);
 }
 
-void CreatureObjectAdapter::stopWatch(unsigned long long entid, bool doSendPackets, bool forced, bool doLock) {
-	return ((CreatureObjectImplementation*) impl)->stopWatch(entid, doSendPackets, forced, doLock);
+void CreatureObjectAdapter::stopWatch(unsigned long long entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
+	return ((CreatureObjectImplementation*) impl)->stopWatch(entid, doSendPackets, forced, doLock, outOfRange);
 }
 
-void CreatureObjectAdapter::stopListen(unsigned long long entid, bool doSendPackets, bool forced, bool doLock) {
-	return ((CreatureObjectImplementation*) impl)->stopListen(entid, doSendPackets, forced, doLock);
+void CreatureObjectAdapter::stopListen(unsigned long long entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
+	return ((CreatureObjectImplementation*) impl)->stopListen(entid, doSendPackets, forced, doLock, outOfRange);
 }
 
 bool CreatureObjectAdapter::isPlayingMusic() {
@@ -10922,8 +10921,8 @@ void CreatureObjectAdapter::doPerformanceAction() {
 	return ((CreatureObjectImplementation*) impl)->doPerformanceAction();
 }
 
-void CreatureObjectAdapter::doEntertainerPatronEffects(bool healShock, bool healWounds, bool addBuff) {
-	return ((CreatureObjectImplementation*) impl)->doEntertainerPatronEffects(healShock, healWounds, addBuff);
+void CreatureObjectAdapter::doEntertainerPatronEffects() {
+	return ((CreatureObjectImplementation*) impl)->doEntertainerPatronEffects();
 }
 
 void CreatureObjectAdapter::addEntertainerFlourishBuff() {

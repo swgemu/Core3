@@ -221,30 +221,34 @@ bool CampKitImplementation::isUsefull(Player* player) {
 }
 
 bool CampKitImplementation::canNotUse(Player* player) {
-	String box;
+	String skillBox = "outdoors_scout_novice";
+	if (!player->hasSkillBox(skillBox))
+		return true;
+
+	int campMod = 5;
 	switch(campType) {
 	case 0:
-			box = "outdoors_scout_novice";
+			campMod = 5;
 			break;
 		case 1:
-			box = "outdoors_scout_camp_02";
+			campMod = 10;
 			break;
 		case 2:
-			box = "outdoors_scout_camp_04";
+			campMod = 30;
 			break;
 		case 3:
-			box = "outdoors_ranger_novice";
+			campMod = 50;
 			break;
 		case 4:
-			box = "outdoors_ranger_tracking_02";
+			campMod = 65;
 			break;
 		case 5:
-			box = "outdoors_ranger_tracking_04";
+			campMod = 85;
 			break;
 		default:
 			return true;
 	}
-	return !player->hasSkillBox(box);
+	return player->getSkillMod("camp") < campMod;
 }
 
 /*
