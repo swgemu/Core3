@@ -89,20 +89,7 @@ public:
 				return true; // don't tick action if they aren't doing anything
 			}
 
-			if (player->isInBuilding() || player->isInCamp()) {
-				int buildingType = player->getBuildingType();
-				if (
-					buildingType == BuildingObjectImplementation::CANTINA ||
-					buildingType == BuildingObjectImplementation::GUILD_THEATER ||
-					buildingType == BuildingObjectImplementation::TAVERN ||
-					player->isInCamp())
-				{
-					//System::out << "calling: player->doEntertainerPatronEffects()" << endl;
-					// healShock, healWounds, addBuff
-					player->doEntertainerPatronEffects(true, true, true);
-
-				}
-			}
+			player->doEntertainerPatronEffects();
 
 			// Tick Action
 			player->doPerformanceAction();
