@@ -137,7 +137,7 @@ void GameCommandHandler::init() {
 			"Kills a player or creature.",
 			"Usage: @kill <player name or current-target>",
 			&kill);
-	gmCommands->addCommand("ecKill", CSREVENTSJR,
+	gmCommands->addCommand("ecKill", STAFF,
 			"Kills a creature. EC version of the kill command.",
 			"Usage: @ecKill <current-target>",
 			&ecKill);
@@ -217,7 +217,7 @@ void GameCommandHandler::init() {
 			"Prints your current HAM stats.",
 			"Usage: @HAMStats",
 			&HAMStats);
-	gmCommands->addCommand("buff", CSREVENTSJR,
+	gmCommands->addCommand("buff", STAFF,
 			"Buffs your player or target player.",
 			"Usage: @buff <target>",
 			&buff);
@@ -241,7 +241,7 @@ void GameCommandHandler::init() {
 			"Gives full details of targeted object location.",
 			"Usage: @getTargetLocation",
 			&getTargetLocation);
-	gmCommands->addCommand("giveItemTemp", CSREVENTS,
+	gmCommands->addCommand("giveItemTemp", CSREVENTS | QA,
 			"Adds a requested item to your inventory.",
 			"Usage: @giveItemTemp <Item Type> [item sub-type]",
 			&giveItemTemp);
@@ -249,11 +249,11 @@ void GameCommandHandler::init() {
 			"Plays a client effect animation around your character.",
 			"Usage: @clientEffect <effect>",
 			&clientEffect);
-	gmCommands->addCommand("rez", CSREVENTSJR,
+	gmCommands->addCommand("rez", STAFF,
 			"Resurrects a player.",
 			"Usage: @rez <playername or target player>",
 			&rez);
-	gmCommands->addCommand("immune", CSREVENTSJR,
+	gmCommands->addCommand("immune", STAFF,
 			"Toggles immunity.",
 			"Usage: @immune",
 			&immune);
@@ -289,7 +289,7 @@ void GameCommandHandler::init() {
 			"Gives you cash credits",
 			"Usage: @getCredits [amount]",
 			&getCredits);
-	gmCommands->addCommand("getXP", DEVELOPER,
+	gmCommands->addCommand("getXP", DEVELOPER | QA,
 			"Gives you specified type of experience",
 			"USAGE: @getXP [type] [amount]",
 			&getXP);
@@ -372,7 +372,7 @@ void GameCommandHandler::init() {
 				"Plays the specified audio file",
 				"USAGE: @playAudio [soundfile]",
 				&playAudio);
-	gmCommands->addCommand("eventMessage", CSREVENTSJR,
+	gmCommands->addCommand("eventMessage", STAFF,
 				"Sends a system message, tailored for announcing events.",
 				"USAGE: @eventMessage <message>",
 				&eventMessage);
