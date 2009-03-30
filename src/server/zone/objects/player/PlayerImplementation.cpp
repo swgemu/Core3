@@ -4152,10 +4152,13 @@ void PlayerImplementation::addCertifications(Vector<Certification*>& certs, bool
 
 	for (int i = 0; i < certs.size(); i++) {
 		Certification* cert = certs.get(i);
-		certificationList.put(cert->getName(), cert);
+		if (!certificationList.contains(cert->getName())) {
+			certificationList.put(cert->getName(), cert);
+			skillsAndCertifications.add(cert->getName());
 
-		if (updateClient)
-			dplay9->addSkill(cert->getName());
+			if (updateClient)
+				dplay9->addSkill(cert->getName(), skillsAndCertifications.size() - 1);
+		}
 	}
 
 	if (updateClient) {
@@ -4165,14 +4168,31 @@ void PlayerImplementation::addCertifications(Vector<Certification*>& certs, bool
 }
 
 void PlayerImplementation::removeCertifications(Vector<Certification*>& certs, bool updateClient) {
+	Vector<int> indexes;
+
 	for (int i = 0; i < certs.size(); i++) {
 		Certification* cert = certs.get(i);
 		certificationList.drop(cert->getName());
+
+		for (int j = 0; j < skillsAndCertifications.size(); ++j) {
+			if (cert->getName() == skillsAndCertifications.get(j)) {
+				indexes.add(j);
+
+				skillsAndCertifications.remove(j);
+			}
+		}
 	}
 
 	if (updateClient) {
 		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(playerObject);
-		dplay9->updateSkilsAndCertifications();
+		dplay9->startSkillListUpdate(certs.size());
+
+		for (int i = 0; i < certs.size(); ++i) {
+			int idx = indexes.get(i);
+
+			dplay9->removeSkill(idx);
+		}
+
 		dplay9->close();
 		sendMessage(dplay9);
 	}

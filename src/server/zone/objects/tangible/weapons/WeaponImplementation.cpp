@@ -85,6 +85,8 @@ void WeaponImplementation::init() {
 	cert = "";
 	certified = true;
 
+	unknownByte = 0;
+
 	usesRemaining = -1;
 
 	setMaxCondition(750);

@@ -439,6 +439,10 @@ interface CreatureObject implements TangibleObject {
 	int getCreatureSkillsSize();
 	String getSkill(int idx);
 	boolean hasSkill(unsigned int skillCRC);
+	
+	
+	String getSkillOrCertification(int idx);
+	int getSkillAndCertificationSize();
 
 	// mount methods
 	void mountCreature(MountCreature mnt, boolean lockMount = true);

@@ -119,18 +119,14 @@ public:
 	}
 
 	void insertSkills(PlayerObjectImplementation* play) {
-		int certSize = play->player->getCertificationListSize();
-		int skillsSize = play->player->getCreatureSkillsSize();
+		int size = play->player->getSkillAndCertificationSize();
 
-		insertInt(skillsSize + certSize);
+		insertInt(size);
 		insertInt(play->player->getCreatureSkillsCount());
 
-		for (int i = 0; i < skillsSize; i++) {
-			insertAscii(play->player->getSkill(i));
+		for (int i = 0; i < size; ++i) {
+			insertAscii(play->player->getSkillOrCertification(i));
 		}
-
-		for (int i = 0; i < certSize; i++)
-			insertAscii(play->player->getCertification(i));
 	}
 
 };

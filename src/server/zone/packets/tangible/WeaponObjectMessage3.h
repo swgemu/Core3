@@ -45,42 +45,14 @@ which carries forward this exception.
 #ifndef WEAPONOBJECTMESSAGE3_H_
 #define WEAPONOBJECTMESSAGE3_H_
 
-#include "../BaseLineMessage.h"
+#include "TangibleObjectMessage3.h"
 
 #include "../../objects/tangible/weapons/Weapon.h"
 
-class WeaponObjectMessage3 : public BaseLineMessage {
+class WeaponObjectMessage3 : public TangibleObjectMessage3 {
 public:
-	WeaponObjectMessage3(Weapon* weao) : BaseLineMessage(weao->getObjectID(), 0x5745414F, 3, 0x11) {
-		insertFloat(100);
-
-		insertAscii(weao->getStfFile());
-		insertInt(0);
-		insertAscii(weao->getStfName());
-
-		insertUnicode(weao->getCustomName());
-
-		insertInt(0);
-
-		String app;
-		weao->getCustomizationString(app);
-		insertAscii(app);
-
-		insertInt(0);
-		insertInt(0);
-
-		insertInt(0);
-
-		if(weao->getUsesRemaining() > 1)
-			insertInt(weao->getUsesRemaining()); //item count
-		else
-			insertInt(0); //item count
-
-		insertInt(int(weao->getConditionDamage()));
-		insertInt(weao->getMaxCondition());
-
-		insertByte(0);
-
+	WeaponObjectMessage3(Weapon* weao)
+			: TangibleObjectMessage3(weao, 0x5745414F, 0x11) {
 		insertInt(0xE8000000);
 
 		insertInt(3);
