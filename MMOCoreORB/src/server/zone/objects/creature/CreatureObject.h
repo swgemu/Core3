@@ -107,6 +107,8 @@ public:
 
 	bool isStanding();
 
+	bool isSkillAnimating();
+
 	bool isInCombat();
 
 	bool isDizzied();
@@ -542,6 +544,10 @@ public:
 	String& getSkill(int idx);
 
 	bool hasSkill(unsigned int skillCRC);
+
+	String& getSkillOrCertification(int idx);
+
+	int getSkillAndCertificationSize();
 
 	void mountCreature(MountCreature* mnt, bool lockMount = true);
 
@@ -1321,6 +1327,7 @@ protected:
 	String _return_getPerformanceName;
 	String _return_getRaceName;
 	String _return_getSkill;
+	String _return_getSkillOrCertification;
 	String _return_getTemplateString;
 	String _return_getTerrainName;
 
@@ -1392,6 +1399,8 @@ public:
 	bool isProne();
 
 	bool isStanding();
+
+	bool isSkillAnimating();
 
 	bool isInCombat();
 
@@ -1826,6 +1835,10 @@ public:
 	String& getSkill(int idx);
 
 	bool hasSkill(unsigned int skillCRC);
+
+	String& getSkillOrCertification(int idx);
+
+	int getSkillAndCertificationSize();
 
 	void mountCreature(MountCreature* mnt, bool lockMount);
 

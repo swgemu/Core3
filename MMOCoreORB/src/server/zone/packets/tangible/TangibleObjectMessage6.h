@@ -52,7 +52,7 @@ which carries forward this exception.
 class TangibleObjectMessage6 : public BaseLineMessage {
 public:
 	TangibleObjectMessage6(TangibleObject* tano, uint32 objType = 0x54414E4F, uint16 opcnt = 0x02)
-			: BaseLineMessage(tano->getObjectID(), 0x54414E4F, 6, 0x02) {
+			: BaseLineMessage(tano->getObjectID(), objType, 6, opcnt) {
 		insertInt(0x76); // 0x3D in creos
 
 		insertDefenders(tano);

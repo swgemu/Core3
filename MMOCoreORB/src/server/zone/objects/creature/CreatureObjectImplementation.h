@@ -162,6 +162,7 @@ protected:
 	uint32 actionCounter;
 
 	VectorMap<uint32, Skill*> creatureSkills;
+	Vector<String> skillsAndCertifications;
 	uint32 creatureSkillsCount;
 
 	//creature objects
@@ -610,8 +611,23 @@ public:
 		return creatureSkills.get(idx)->getSkillName();
 	}
 
+	inline String& getSkillOrCertification(int idx) {
+		return skillsAndCertifications.get(idx);
+	}
+
+	inline int getSkillAndCertificationSize() {
+		return skillsAndCertifications.size();
+	}
+
 	void removeSkill(Skill* skill) {
 		creatureSkills.drop(skill->getNameCRC());
+
+		for (int i = 0; i < skillsAndCertifications.size(); ++i) {
+			if (skillsAndCertifications.get(i) == skill->getSkillName()) {
+				skillsAndCertifications.remove(i);
+				break;
+			}
+		}
 	}
 
 	bool hasSkill(uint32 skillCRC) {

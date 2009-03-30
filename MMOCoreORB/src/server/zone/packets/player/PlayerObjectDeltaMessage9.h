@@ -69,10 +69,15 @@ public:
 		startList(skillsToUpdate, play->getPlayer()->getNewCreatureSkillsCount(skillsToUpdate));
 	}
 
-	void addSkill(const String& name) {
+	void addSkill(const String& name, uint16 idx) {
 		insertByte(1);
-		insertShort(0);
+		insertShort(idx);
 		insertAscii(name.toCharArray());
+	}
+
+	void removeSkill(uint16 idx) {
+		insertByte(0);
+		insertShort(idx);
 	}
 
 	void setExperimentationEnabled(bool experimenting) {

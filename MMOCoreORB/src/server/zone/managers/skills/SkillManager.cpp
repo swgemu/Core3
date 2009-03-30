@@ -155,7 +155,7 @@ void SkillManager::removeSkillBox(SkillBox* skillBox, PlayerImplementation* play
 	player->removeSkillBox(skillBox, updateClient);
 	player->removeSkillPoints(skillBox->getSkillPointsRequired());
 
-	removeSkillCommands(skillBox, player, false);
+	removeSkillCommands(skillBox, player, updateClient);
 	removeSkillCertifications(skillBox, player, updateClient);
 	removeSkillMods(skillBox, player, updateClient);
 	removeGrantedDraftSchematics(skillBox, player, updateClient);
@@ -202,8 +202,10 @@ void SkillManager::removeGrantedDraftSchematics(SkillBox* skillBox, PlayerImplem
 		player->subtractDraftSchematicsFromGroupName(schematicGroupName);
 	}
 
-	if (updateClient)
+	if (updateClient) {
 		player->sendDraftSchematics();
+		//player->removeDraftSchematics(skillBox->skillSchematicsGranted, updateClient);
+	}
 }
 
 void SkillManager::loadSkills(CreatureObject* creature) {

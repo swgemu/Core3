@@ -2179,11 +2179,17 @@ void CreatureObjectImplementation::addSkills(Vector<Skill*>& skills, bool update
 
 	for (int i = 0; i < skills.size(); i++) {
 		Skill* skill = skills.get(i);
-		if (!creatureSkills.contains(skill->getNameCRC()))
+		if (!creatureSkills.contains(skill->getNameCRC())) {
 			creatureSkills.put(skill->getNameCRC(), skill);
+			skillsAndCertifications.add(skill->getSkillName());
+		}
 
-		if (updateClient)
-			dplay9->addSkill(skill->getSkillName());
+		if (updateClient) {
+			dplay9->addSkill(skill->getSkillName(), skillsAndCertifications.size() - 1);
+			/*dplay9->insertByte(1);
+			dplay9->insertShort(skillsAndCertifications.size() - 1);
+			dplay9->insertAscii(skill->getSkillName().toCharArray());*/
+		}
 	}
 
 	if (updateClient) {
@@ -2193,16 +2199,32 @@ void CreatureObjectImplementation::addSkills(Vector<Skill*>& skills, bool update
 }
 
 void CreatureObjectImplementation::removeSkills(Vector<Skill*>& skills, bool updateClient) {
-	for (int i = 0; i < skills.size(); i++) {
+	Vector<int> indexes;
+
+	for (int i = 0; i < skills.size(); ++i) {
 		Skill* skill = skills.get(i);
 		creatureSkills.drop(skill->getNameCRC());
+
+		for (int j = 0; j < skillsAndCertifications.size(); ++j) {
+			if (skill->getSkillName() == skillsAndCertifications.get(j)) {
+				indexes.add(j);
+
+				skillsAndCertifications.remove(j);
+			}
+		}
 	}
 
 	if (updateClient) {
 		PlayerObject* player = ((PlayerImplementation*)this)->getPlayerObject();
 
 		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player);
-		dplay9->updateSkilsAndCertifications();
+		dplay9->startSkillListUpdate(skills.size());
+
+		for (int i = 0; i < skills.size(); ++i) {
+			int idx = indexes.get(i);
+			dplay9->removeSkill(idx);
+		}
+
 		dplay9->close();
 
 		((PlayerImplementation*) this)->sendMessage(dplay9);
