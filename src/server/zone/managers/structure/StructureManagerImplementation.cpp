@@ -682,6 +682,8 @@ int StructureManagerImplementation::guessBuildingType(uint64 oid, String file) {
 		return BuildingObjectImplementation::TAVERN;
 	case 6955366: // Dathomir	Trade Outpost	Tavern
 		return BuildingObjectImplementation::TAVERN;
+	case 2835569: // Dathomir	Science Outpost	Tavern
+		return BuildingObjectImplementation::TAVERN;
 
 		// Medical Centers
 	case 1414856: // Endor	Smuggler's Outpost	Medical Center

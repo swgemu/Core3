@@ -403,8 +403,8 @@ interface CreatureObject implements TangibleObject {
 	void startWatch(unsigned long entid);
 	void startListen(unsigned long entid);
 
-	void stopWatch(unsigned long entid, boolean doSendPackets = true, boolean forced = false, boolean doLock = true);
-	void stopListen(unsigned long entid, boolean doSendPackets = true, boolean forced = false, boolean doLock = true);
+	void stopWatch(unsigned long entid, boolean doSendPackets = true, boolean forced = false, boolean doLock = true, boolean outOfRange = false);
+	void stopListen(unsigned long entid, boolean doSendPackets = true, boolean forced = false, boolean doLock = true, boolean outOfRange = false);
 
 	boolean isPlayingMusic();
 	boolean isDancing();
@@ -423,7 +423,7 @@ interface CreatureObject implements TangibleObject {
 	void doHealMindWounds();*/
 	void doPerformanceAction();
 
-	void doEntertainerPatronEffects(boolean healShock = false, boolean healWounds = false, boolean addBuff = false);
+	void doEntertainerPatronEffects();
 	void addEntertainerFlourishBuff();
 
 	void addEntertainerBuffDuration(int performanceType, float duration);

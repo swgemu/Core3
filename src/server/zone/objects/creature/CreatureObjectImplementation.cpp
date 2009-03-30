@@ -2981,7 +2981,7 @@ void CreatureObjectImplementation::startListen(uint64 entid) {
 	creature->unlock();
 }
 
-void CreatureObjectImplementation::stopWatch(uint64 entid, bool doSendPackets, bool forced, bool doLock) {
+void CreatureObjectImplementation::stopWatch(uint64 entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
 	SceneObject* object = zone->lookupObject(entid);
 
 	if (object == NULL)
@@ -2992,26 +2992,26 @@ void CreatureObjectImplementation::stopWatch(uint64 entid, bool doSendPackets, b
 		return;
 	}
 
-	CreatureObject* creature = (CreatureObject*) object;
+	CreatureObject* entertainer = (CreatureObject*) object;
 
-	if (creature == _this)
+	if (entertainer == _this)
 		return;
 
 	String entName;
-	if (creature != NULL) {
-		if (doLock && (creature != _this))
-			creature->wlock(_this);
+	if (entertainer != NULL) {
+		if (doLock && (entertainer != _this))
+			entertainer->wlock(_this);
 
-		entName = creature->getCharacterName().toString();
+		entName = entertainer->getCharacterName().toString();
 
-		creature->removeWatcher(_this);
+		entertainer->removeWatcher(_this);
 
-		if (doLock && (creature != _this))
-			creature->unlock();
+		if (doLock && (entertainer != _this))
+			entertainer->unlock();
 	}
 
 	if (entid != watchID) {
-		if (isPlayer() && creature != NULL)
+		if (isPlayer() && entertainer != NULL)
 			sendSystemMessage("You are not currently watching " + entName + ".");
 
 		return;
@@ -3022,15 +3022,27 @@ void CreatureObjectImplementation::stopWatch(uint64 entid, bool doSendPackets, b
 	if (doSendPackets)
 		sendEntertainmentUpdate(0, moodStr);
 
-	if (isPlayer() && creature != NULL) {
-		StringBuffer msg;
+	//System Message.
+	if (isPlayer() && entertainer != NULL) {
+		Player* player = (Player*)_this;
+		StfParameter* params = new StfParameter;
 
-		if (forced)
-			msg << entName << " stops dancing.";
-		else
-			msg << "You stop watching " << entName << ".";
+		if (forced) {
+			params->addTU(entid);
+			player->sendSystemMessage("performance", "dance_stop_other", params); //"%TU stops dancing."
+		} else if (outOfRange) {
+			StringBuffer msg;
+			msg << "You stop watching " << entertainer->getCharacterName().toString() << " because they are too far away.";
+			sendSystemMessage(msg.toString());
 
-		sendSystemMessage(msg.toString());
+			//TODO: Why does %OT say "him/her" instead of "he/she"?
+			//params->addTT(entid);
+			//player->sendSystemMessage("performance", "dance_watch_out_of_range", params); //"You stop watching %TT because %OT is too far away."
+		} else {
+			player->sendSystemMessage("performance", "dance_watch_stop_self"); //"You stop watching."
+		}
+
+		delete params;
 	}
 
 	activateEntertainerBuff(PerformanceType::DANCE);
@@ -3042,7 +3054,7 @@ void CreatureObjectImplementation::stopWatch(uint64 entid, bool doSendPackets, b
 	watchID = 0;
 }
 
-void CreatureObjectImplementation::stopListen(uint64 entid, bool doSendPackets, bool forced, bool doLock) {
+void CreatureObjectImplementation::stopListen(uint64 entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
 	SceneObject* object = zone->lookupObject(entid);
 
 	if (object == NULL)
@@ -3053,26 +3065,26 @@ void CreatureObjectImplementation::stopListen(uint64 entid, bool doSendPackets, 
 		return;
 	}
 
-	CreatureObject* creature = (CreatureObject*) object;
+	CreatureObject* entertainer = (CreatureObject*) object;
 
-	if (creature == _this)
+	if (entertainer == _this)
 		return;
 
 	String entName;
-	if (creature != NULL) {
-		if (doLock && (creature != _this))
-			creature->wlock(_this);
+	if (entertainer != NULL) {
+		if (doLock && (entertainer != _this))
+			entertainer->wlock(_this);
 
-		entName = creature->getCharacterName().toString();
+		entName = entertainer->getCharacterName().toString();
 
-		creature->removeListener(_this);
+		entertainer->removeListener(_this);
 
-		if (doLock && (creature != _this))
-			creature->unlock();
+		if (doLock && (entertainer != _this))
+			entertainer->unlock();
 	}
 
 	if (entid != listenID) {
-		if (isPlayer() && creature != NULL)
+		if (isPlayer() && entertainer != NULL)
 			sendSystemMessage("You are not currently listening to " + entName + ".");
 
 		return;
@@ -3083,15 +3095,27 @@ void CreatureObjectImplementation::stopListen(uint64 entid, bool doSendPackets, 
 	if (doSendPackets)
 		sendEntertainmentUpdate(0, moodStr);
 
-	if (isPlayer() && creature != NULL) {
-		StringBuffer msg;
+	//System Message.
+	if (isPlayer() && entertainer != NULL) {
+		Player* player = (Player*)_this;
+		StfParameter* params = new StfParameter;
 
-		if (forced)
-			msg << entName << " stops playing music.";
-		else
-			msg << "You stop listening to " << entName << ".";
+		if (forced) {
+			params->addTU(entid);
+			player->sendSystemMessage("performance", "music_stop_other", params); //"%TU stops playing."
+		} else if (outOfRange) {
+			StringBuffer msg;
+			msg << "You stop listening to " << entertainer->getCharacterName().toString() << " because they are too far away.";
+			sendSystemMessage(msg.toString());
 
-		sendSystemMessage(msg.toString());
+			//TODO: Why does %OT say "him/her" instead of "he/she"?
+			//params->addTT(entid);
+			//player->sendSystemMessage("performance", "music_listen_out_of_range", params); //"You stop listening to %TT because %OT is too far away."
+		} else {
+			player->sendSystemMessage("performance", "music_listen_stop_self"); //"You stop listening."
+		}
+
+		delete params;
 	}
 
 	//TODO: Activate Buff
@@ -3292,16 +3316,17 @@ void CreatureObjectImplementation::addEntertainerFlourishBuff() {
 }
 
 // Handle the Entertainer 'tick's
-void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bool healWounds, bool addBuff) {
+void CreatureObjectImplementation::doEntertainerPatronEffects() {
 	info("CreatureObjectImplementation::doEntertainerPatronEffects() begin");
-	ManagedSortedVector<CreatureObject>* patrons = NULL;
-	int healingXp = 0;
 
-	//System::out << "CreatureObjectImplementation::doEntertainerPatronEffects()" << endl;
+	//**DECLARATIONS**
+	ManagedSortedVector<CreatureObject>* patrons = NULL;
 	SkillManager* skillManager = server->getSkillManager();
 	Performance* performance = NULL;
 	float enhancementSkill = 0.0f;
+	int healingXp = 0;
 	int campMod = 100;
+	bool canHeal = false;
 
 	if (isInCamp()) {
 		campMod = getCampModifier();
@@ -3310,120 +3335,120 @@ void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bo
 	if (getPerformanceName() == "")
 		return;
 
+	//**LOAD PATRONS, GET THE PERFORMANCE AND ENT'S HEALING SKILL.**
 	if (isDancing()) {
 		//woundAbility = getSkillMod("healing_dance_wound");
 		patrons = &watchers;
 		performance = skillManager->getDance(getPerformanceName());
 		enhancementSkill = (float)getSkillMod("healing_dance_mind");
+
 	} else if (isPlayingMusic() && getInstrument() != NULL) {
 		//woundAbility = getSkillMod("healing_music_wound");
 		patrons = &listeners;
 		performance = skillManager->getSong(getPerformanceName(), getInstrument()->getInstrumentType());
 		enhancementSkill = (float)getSkillMod("healing_music_mind");
+
 	} else
 		return;
 
-	if (performance == NULL) { // shouldn't happen
-		StringBuffer msg;
-		msg << "Performance was null.  Please report to McMahon! Name: " << getPerformanceName() << " and Type: " << dec << getInstrument()->getInstrumentType();
-
-		sendSystemMessage(msg.toString());
+	if (performance == NULL) {
 		return;
 	}
 
-	int woundHeal = -1 * performance->getHealMindWound() * campMod / 100;
-	int shockHeal = -1 * performance->getHealShockWound() * campMod / 100;
+	//**DETERMINE IF THE ENT CAN HEAL.**
+	if (isInBuilding() || isInCamp()) {
+		int buildingType = getBuildingType();
 
-	// Entertainer can heal their own BF/Wounds
-	if (healWounds)
-	{
-		changeMindWoundsBar(woundHeal, false);
-		changeFocusWoundsBar(woundHeal, false);
-		changeWillpowerWoundsBar(woundHeal, false);
+		if (buildingType == BuildingObjectImplementation::CANTINA ||
+			buildingType == BuildingObjectImplementation::GUILD_THEATER ||
+			buildingType == BuildingObjectImplementation::TAVERN ||
+			isInCamp()) {
 
-		healingXp += -1 * woundHeal;
+			canHeal = true;
+		}
 	}
 
-	if (healShock) {
-		changeShockWounds(shockHeal);
-		healingXp += -1 * shockHeal;
+	//**DETERMINE WOUND HEAL AMOUNTS.**
+	int woundHeal = performance->getHealMindWound() * campMod / 100;
+	int shockHeal = performance->getHealShockWound() * campMod / 100;
+
+
+	//**ENTERTAINER HEALS THEIR OWN MIND.**
+	if (canHeal) {
+		changeMindWoundsBar(-woundHeal, false);
+		changeFocusWoundsBar(-woundHeal, false);
+		changeWillpowerWoundsBar(-woundHeal, false);
+		changeShockWounds(-shockHeal);
+
+		healingXp += shockHeal;
+		healingXp += woundHeal;
 	}
 
-
+	//**APPLY EFFECTS TO PATRONS.**
 	if (patrons != NULL && patrons->size() > 0) {
+
 		for (int i = 0; i < patrons->size(); ++i) {
-			//System::out << "looping patron: " << i << endl;
-			CreatureObject* obj = patrons->get(i);
-
+			CreatureObject* patron = patrons->get(i);
 			try {
-				if (obj != _this)
-					obj->wlock(_this);
+				if (patron != _this)
+					patron->wlock(_this);
 
-				//performance->get
-				//if (!isInRange(obj->getPositionX(), obj->getPositionY(), skill->getRange())) {
-					//obj->stopListen()
-				//}
-				// verify patron is in the same building as performer
-
+				//**VERIFY THE PATRON IS IN RANGE OF THE ENT.
 				bool patronInRange = false;
-
-				if (obj->getBuilding() == getBuilding())
+				if (isInRange(patron, 40.0f) && patron->getBuilding() == getBuilding()) {
 					patronInRange = true;
+				}
 
 				if (patronInRange) {
-					if (healWounds)
+					if (canHeal)
 					{
-						obj->changeMindWoundsBar(woundHeal, false);
-						obj->changeFocusWoundsBar(woundHeal, false);
-						obj->changeWillpowerWoundsBar(woundHeal, false);
+						patron->changeMindWoundsBar(-woundHeal, false);
+						patron->changeFocusWoundsBar(-woundHeal, false);
+						patron->changeWillpowerWoundsBar(-woundHeal, false);
+						patron->changeShockWounds(-shockHeal);
 
-						healingXp += -1 * woundHeal;
-					}
-
-					if (healShock) {
-						obj->changeShockWounds(shockHeal);
-
-						healingXp += -1 * woundHeal;
+						healingXp += shockHeal;
+						healingXp += woundHeal;
 					}
 
 					// Handle Passive Buff
-					if (addBuff && isInAGroup() && (getGroupID() == obj->getGroupID())) {
+					if (canHeal && isInAGroup() && (getGroupID() == patron->getGroupID())) {
 						// Add 1 minute per tick
-						obj->addEntertainerBuffDuration(performance->getType(), 1.0f);
+						patron->addEntertainerBuffDuration(performance->getType(), 1.0f);
 						// TODO: In theory the buff isn't always the max, in practice after enough flourishes it maxes out way before duration
-						obj->setEntertainerBuffStrength(performance->getType(), enhancementSkill / 100.0f);
+						patron->setEntertainerBuffStrength(performance->getType(), enhancementSkill / 100.0f);
 					}
-				} else {
-					if (isDancing()) {
-						obj->stopWatch(objectID, true, true, false);
 
-						if (!obj->isListening())
+				} else { //patron is not in range
+					if (isDancing()) {
+						patron->stopWatch(objectID, true, false, false, true);
+
+						if (!patron->isListening())
 							sendEntertainmentUpdate(0, "", true);
 
 					} else if (isPlayingMusic()) {
-						obj->stopListen(objectID, true, true, false);
+						patron->stopListen(objectID, true, false, false, true);
 
-						if (!obj->isWatching())
+						if (!patron->isWatching())
 							sendEntertainmentUpdate(0, "", true);
 					}
 				}
 
-				if (obj != _this)
-					obj->unlock();
+				if (patron != _this)
+					patron->unlock();
 			} catch (...) {
-				if (obj != _this)
-					obj->unlock();
+				if (patron != _this)
+					patron->unlock();
 
-				error("Unreported exception caught in CreatureObjectImplementation::doHealMindWounds()");
+				error("Unreported exception caught in CreatureObjectImplementation::doEntertainerPatronEffects()");
 			}
 		}
-	} /*else
-		System::out << "no patrons";*/
+	} else
+		//System::out << "There are no patrons.\n";
 
-	// Add Experience
+	//**ADD XP.**
 	if (healingXp > 0 && isPlayer()) {
 		Player* player = (Player*)_this;
-
 		player->addEntertainerHealingXp(healingXp);
 	}
 

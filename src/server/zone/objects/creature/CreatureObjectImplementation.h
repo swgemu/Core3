@@ -910,14 +910,14 @@ public:
 
 	void startWatch(uint64 entid);
 	void startListen(uint64 entid);
-	void stopWatch(uint64 entid, bool doSendPackets = true, bool forced = false, bool doLock = true);
-	void stopListen(uint64 entid, bool doSendPackets = true, bool forced = false, bool doLock = true);
+	void stopWatch(uint64 entid, bool doSendPackets = true, bool forced = false, bool doLock = true, bool outOfRange = false);
+	void stopListen(uint64 entid, bool doSendPackets = true, bool forced = false, bool doLock = true, bool outOfRange = false);
 	void activateEntertainerBuff(int performanceType);
 
 	void doFlourish(const String& modifier = "");
 	void addEntertainerFlourishBuff();
 	// Rename to Tick Patron?
-	void doEntertainerPatronEffects(bool healShock = false, bool healWounds = false, bool addBuff = false);
+	void doEntertainerPatronEffects();
 	void doPerformanceAction();
 
 	bool isInBuilding();
