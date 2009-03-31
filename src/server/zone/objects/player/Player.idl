@@ -465,6 +465,7 @@ interface Player implements CreatureObject {
 	void broadcastMessageToOthersAround(Player player, BaseMessage msg);
 
 	boolean isJedi();
+	void checkForceStatus();
 
 	void mutePlayer();
 	void toggleImmune();

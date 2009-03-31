@@ -689,14 +689,14 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 			player->clearQueueAction(actioncntr, 0, 1, 16);
 			return;
 		}
-		parseStopListen(player, pack);
+		player->stopListen();
 		break;
 	case (0x6651AD9A): //stopwatching
 		if (player->isMounted()) {
 			player->clearQueueAction(actioncntr, 0, 1, 16);
 			return;
 		}
-		parseStopWatch(player, pack);
+		player->stopWatch();
 		break;
 	case (0x9B9FE4A8): // toggleawayfromkeyboard
 		player->toggleCharacterBit(PlayerObjectImplementation::AFK);
@@ -918,6 +918,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	case (0x549BE67): //throwtrap
 	case (0xBBAF8943): //throwgrenade
 		parseThrowItem(player, pack, actionCRC, actioncntr);
+		break;
+	case (0xD2E938DB): //checkforcestatus
+		player->checkForceStatus();
 		break;
 	default:
 		target = pack->parseLong();
@@ -1930,19 +1933,6 @@ void ObjectControllerMessage::parseListen(Player* player, Message* pack) {
 	uint64 listenID = pack->parseLong();
 
 	player->startListen(listenID);
-}
-
-void ObjectControllerMessage::parseStopWatch(Player* player, Message* pack) {
-	Zone* zone = player->getZone();
-
-	uint64 watchID = pack->parseLong();
-	player->stopWatch(watchID);
-}
-
-void ObjectControllerMessage::parseStopListen(Player* player, Message* pack) {
-	uint64 listenID = pack->parseLong();
-
-	player->stopListen(listenID);
 }
 
 void ObjectControllerMessage::parseImageDesign(Player* player, Message* pack) {

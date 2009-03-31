@@ -180,6 +180,7 @@ class PlayerImplementation : public PlayerServant {
 	VectorMap<String, int> xpCapList;
 	int skillPoints;
 	int playerLevel;
+	int forceStatus;
 
 	// Foraging
 	bool foraging;
@@ -866,6 +867,8 @@ public:
 	}
 
 	// jedi methods
+	void checkForceStatus();
+
 	void calculateForceRegen();
 
 	bool changeForcePowerBar(int32 fp);
