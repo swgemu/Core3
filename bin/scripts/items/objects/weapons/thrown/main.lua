@@ -40,12 +40,10 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-
-RunItemLUAFile("objects/weapons/thrown/cryobanGrenade.lua");
-RunItemLUAFile("objects/weapons/thrown/fallbackGrenade.lua");
+RunItemLUAFile("objects/weapons/thrown/c12Grenade.lua");
 RunItemLUAFile("objects/weapons/thrown/fragmentationGrenade.lua");
+RunItemLUAFile("objects/weapons/thrown/cryobanGrenade.lua");
 RunItemLUAFile("objects/weapons/thrown/glopGrenade.lua");
-RunItemLUAFile("objects/weapons/thrown/imperialDetonatorGrenade.lua");
-RunItemLUAFile("objects/weapons/thrown/lightFragmentationGrenade.lua");
+RunItemLUAFile("objects/weapons/thrown/imperialDetonator.lua");
+RunItemLUAFile("objects/weapons/thrown/thermalDetonator.lua");
 RunItemLUAFile("objects/weapons/thrown/protonGrenade.lua");
-RunItemLUAFile("objects/weapons/thrown/thermalDetonatorGrenade.lua");

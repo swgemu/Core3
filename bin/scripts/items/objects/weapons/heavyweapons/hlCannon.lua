@@ -40,25 +40,28 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-vibrolance = Weapon:new{
+hpCannon = Weapon:new{
+	
 
-	objectName = "Vibrolance",
+	objectName = "Heavy Lightning Beam Cannon",
 
-	templateName = "object/weapon/melee/polearm/shared_lance_vibrolance.iff",
+	templateName = "object/weapon/ranged/heavy/shared_heavy_lightning_beam.iff",
 
-	objectCRC = 22784428,
+	objectCRC = 1073082434,
+	
+	damageType = WEAPON_ELECTRICITY,
 
-	objectType = POLEARM,
-
-	damageType = WEAPON_ELECTRICAL,
+	objectType = HEAVYWEAPON,
 
 	armorPiercing = WEAPON_LIGHT,
 	
-	certification = "cert_lance_vibrolance",
+	certification = "cert_heavy_lightning_beam",
 
-	attackSpeed = 4.5,
+	attackSpeed = 6.1,
 
-	minDamage = 149,
+	area = 6,
 
-	maxDamage = 272
+	minDamage = 1349,
+
+	maxDamage = 3082
 }

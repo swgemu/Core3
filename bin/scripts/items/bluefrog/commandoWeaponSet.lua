@@ -40,6 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-commandoWeaponSet = {acidBeam, flameThrower, launcherPistol}
+commandoWeaponSet = {rocketLuncher,hpCannon,haCannon,hlCannon}
 
 addBFItemSet("Commando Weapon Set" , commandoWeaponSet);

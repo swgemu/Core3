@@ -83,7 +83,8 @@ public:
 	static const int THROW = 12;
 	static const int FORAGE = 13;
 	static const int DRAG = 14;
-	static const int CMDOT =15;
+	static const int CMDOT = 15;
+	static const int HEAVYWEAPON = 16;
 
 	static const int TARGET = 1;
 	static const int SELF = 2;
@@ -141,7 +142,7 @@ public:
 	}
 
 	inline bool isAttackSkill() {
-		return type == ATTACK || type == THROW || type == CMDOT;
+		return type == ATTACK || type == THROW || type == CMDOT || type == HEAVYWEAPON;
 	}
 
 	inline bool isHealSkill() {
@@ -232,6 +233,10 @@ public:
 	inline bool isThrowSkill(){
 		return type == THROW;
 	}
+
+	inline bool isHeavyWeaponSkill(){
+			return type == HEAVYWEAPON;
+		}
 
 	inline bool isGroupSkill(){
 		return category == GROUP;

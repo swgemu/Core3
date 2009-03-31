@@ -40,8 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-cryobanGrenade = Weapon:new{
-	
+cryobanGrenade = Weapon:new {
 
 	objectName = "Cryoban Grenade",
 
@@ -53,14 +52,17 @@ cryobanGrenade = Weapon:new{
 
 	damageType = WEAPON_COLD,
 
-	armorPiercing = WEAPON_LIGHT,
-	
+	armorPiercing = WEAPON_NONE,
+
 	certification = "cert_grenade_cryoban",
 
-	attackSpeed = 7,
+	uses = 15,
+	
+	attackSpeed = 9.0,
 
-	minDamage = 20,
+	area = 8,
 
-	maxDamage = 250
+	minDamage = 114,
+
+	maxDamage = 388
 }
-

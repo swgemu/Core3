@@ -40,27 +40,29 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-fragmentationGrenade = Weapon:new {
+imperialDetonator = Weapon:new {
 
-	objectName = "Fragmentation Grenade",
+	objectName = "Imperial Detonator",
 
-	templateName = "object/weapon/ranged/grenade/shared_grenade_fragmentation.iff",
+	templateName = "object/weapon/ranged/grenade/shared_grenade_imperial_detonator.iff",
 
-	objectCRC = 2723525196,
+	objectCRC = 4036235024,
 
 	objectType = GRENADE,
 
-	damageType = WEAPON_ENERGY,
+	damageType = WEAPON_BLAST,
 
 	armorPiercing = WEAPON_LIGHT,
 
-	certification = "cert_grenade_fragmentation",
+	certification = "cert_grenade_imperial_detonator",
 
 	uses = 15,
 	
-	attackSpeed = 3.5,
+	attackSpeed = 5.2,
 
-	minDamage = 326,
+	area = 8,
 
-	maxDamage = 2974
+	minDamage = 829,
+
+	maxDamage = 1717
 }

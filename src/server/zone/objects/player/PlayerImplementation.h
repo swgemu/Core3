@@ -1964,6 +1964,8 @@ public:
 	void updateWeather();
 	void queueThrow(TangibleObject* throwItem, uint32 actionCRC);
 
+	void fireHeavyWeapon(TangibleObject* heavyWeapon, uint32 actionCRC);
+
 	inline ActiveArea * getActiveArea() {
 		return activeArea;
 	}
@@ -1973,6 +1975,8 @@ public:
 	}
 
 	void throwTrap(uint64 targetID);
+	void throwGrenade(uint64 targetID);
+
 	Armor* getPlayerArmor (int location) {
 		if (location > 14 || location < 0)
 			return NULL;

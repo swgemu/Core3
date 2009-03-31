@@ -85,7 +85,9 @@ interface Weapon implements TangibleObject {
 	boolean isRanged();
 
 	boolean isCertified();
-	
+
+	boolean isHeavyWeapon();
+
 	int getType();
 
 	int getCategory();
@@ -158,6 +160,8 @@ interface Weapon implements TangibleObject {
 
 	String& getCert();
 	String& getXpType();
+	
+	float getArea();
 
 	// setters
 	void setType(int type);
@@ -191,6 +195,7 @@ interface Weapon implements TangibleObject {
 	void setMaxRangeAccuracy(int maxRangeAcc);
 	void setIdealRange(int idealRnge);
 	void setIdealAccuracy(int idealAcc);
+	void setArea(float ar);
 	
 	void powerupMinDamage(float powerupValue);
 	void powerupMaxDamage(float powerupValue);

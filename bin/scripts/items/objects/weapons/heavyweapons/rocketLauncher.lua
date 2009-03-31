@@ -40,23 +40,31 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-
-cdef_carbine = Weapon:new {
+rocketLuncher = Weapon:new{
 	
 
-	objectName = "CDEF Carbine",
+	objectName = "Rocket Launcher",
 
-	templateName = "object/weapon/ranged/carbine/shared_carbine_cdef.iff",
+	templateName = "object/weapon/ranged/heavy/shared_heavy_rocket_launcher.iff",
 
-	objectCRC = 583942574,
+	objectCRC = 3022005655,
+	
+	damageType = WEAPON_BLAST,
 
-	objectType = CARBINE,
+	objectType = HEAVYWEAPON,
 
-	damageType = WEAPON_ENERGY,
+	armorPiercing = WEAPON_HEAVY,
+	
+	certification = "cert_heavy_rocket_launcher",
+	skill = "firerocketlauncher",
 
-	attackSpeed = .6,
+	attackSpeed = 8.1,
 
-	minDamage = 16,
+	area = 8,
 
-	maxDamage = 30
+	minDamage = 1220,
+
+	maxDamage = 3507,
+
+	area = 6.0
 }

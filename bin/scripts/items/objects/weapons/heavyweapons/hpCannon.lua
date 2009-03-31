@@ -40,23 +40,28 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-fwg5_pistol = Weapon:new{
-
-	objectName = "FWG5",
-
-	templateName = "object/weapon/ranged/pistol/shared_pistol_fwg5.iff",
-
-	objectCRC = 1508397938,
-
-	objectType = PISTOL,
+hpCannon = Weapon:new{
 	
-	damageType = WEAPON_HEAT,
+
+	objectName = "Heavy Particle Beam Cannon",
+
+	templateName = "object/weapon/ranged/heavy/shared_heavy_particle_beam.iff",
+
+	objectCRC = 1442646668,
 	
-	certification = "cert_pistol_fwg5",
+	damageType = WEAPON_ENERGY,
 
-	attackSpeed = 2.0,
+	objectType = HEAVYWEAPON,
 
-	minDamage = 88,
+	armorPiercing = WEAPON_HEAVY,
+	
+	certification = "cert_heavy_particle_beam",
 
-	maxDamage = 242
+	attackSpeed = 5.1,
+
+	area = 6,
+
+	minDamage = 2019,
+
+	maxDamage = 3305
 }

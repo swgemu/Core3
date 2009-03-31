@@ -296,6 +296,7 @@ am_core3_OBJECTS = $(am__objects_1) \
 	TangibleObjectImplementation.$(OBJEXT) \
 	TicketCollectorImplementation.$(OBJEXT) \
 	TicketImplementation.$(OBJEXT) WeaponImplementation.$(OBJEXT) \
+	HeavyRangedWeaponImplementation.$(OBJEXT) \
 	ThrowableWeaponImplementation.$(OBJEXT) \
 	TrapThrowableWeaponImplementation.$(OBJEXT) \
 	GrenadeThrowableWeaponImplementation.$(OBJEXT) \
@@ -757,6 +758,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
 		server/zone/objects/tangible/ticket/TicketImplementation.cpp \
 		server/zone/objects/tangible/weapons/WeaponImplementation.cpp \
+		server/zone/objects/tangible/weapons/ranged/HeavyRangedWeaponImplementation.cpp \
 		server/zone/objects/tangible/weapons/ThrowableWeaponImplementation.cpp \
 		server/zone/objects/tangible/weapons/throwable/TrapThrowableWeaponImplementation.cpp \
 		server/zone/objects/tangible/weapons/throwable/GrenadeThrowableWeaponImplementation.cpp \
@@ -990,6 +992,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HarvesterObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HarvesterObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HeavyRangedWeapon.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HeavyRangedWeaponImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HeightMap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Holocron.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/IgnoreList.Po@am__quote@
@@ -5666,6 +5669,20 @@ WeaponImplementation.obj: server/zone/objects/tangible/weapons/WeaponImplementat
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/weapons/WeaponImplementation.cpp' object='WeaponImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o WeaponImplementation.obj `if test -f 'server/zone/objects/tangible/weapons/WeaponImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/weapons/WeaponImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/weapons/WeaponImplementation.cpp'; fi`
+
+HeavyRangedWeaponImplementation.o: server/zone/objects/tangible/weapons/ranged/HeavyRangedWeaponImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT HeavyRangedWeaponImplementation.o -MD -MP -MF $(DEPDIR)/HeavyRangedWeaponImplementation.Tpo -c -o HeavyRangedWeaponImplementation.o `test -f 'server/zone/objects/tangible/weapons/ranged/HeavyRangedWeaponImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/weapons/ranged/HeavyRangedWeaponImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/HeavyRangedWeaponImplementation.Tpo $(DEPDIR)/HeavyRangedWeaponImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/weapons/ranged/HeavyRangedWeaponImplementation.cpp' object='HeavyRangedWeaponImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o HeavyRangedWeaponImplementation.o `test -f 'server/zone/objects/tangible/weapons/ranged/HeavyRangedWeaponImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/weapons/ranged/HeavyRangedWeaponImplementation.cpp
+
+HeavyRangedWeaponImplementation.obj: server/zone/objects/tangible/weapons/ranged/HeavyRangedWeaponImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT HeavyRangedWeaponImplementation.obj -MD -MP -MF $(DEPDIR)/HeavyRangedWeaponImplementation.Tpo -c -o HeavyRangedWeaponImplementation.obj `if test -f 'server/zone/objects/tangible/weapons/ranged/HeavyRangedWeaponImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/weapons/ranged/HeavyRangedWeaponImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/weapons/ranged/HeavyRangedWeaponImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/HeavyRangedWeaponImplementation.Tpo $(DEPDIR)/HeavyRangedWeaponImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/weapons/ranged/HeavyRangedWeaponImplementation.cpp' object='HeavyRangedWeaponImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o HeavyRangedWeaponImplementation.obj `if test -f 'server/zone/objects/tangible/weapons/ranged/HeavyRangedWeaponImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/weapons/ranged/HeavyRangedWeaponImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/weapons/ranged/HeavyRangedWeaponImplementation.cpp'; fi`
 
 ThrowableWeaponImplementation.o: server/zone/objects/tangible/weapons/ThrowableWeaponImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ThrowableWeaponImplementation.o -MD -MP -MF $(DEPDIR)/ThrowableWeaponImplementation.Tpo -c -o ThrowableWeaponImplementation.o `test -f 'server/zone/objects/tangible/weapons/ThrowableWeaponImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/weapons/ThrowableWeaponImplementation.cpp

@@ -40,27 +40,29 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-protonGrenade = Weapon:new {
+thermalDetonator = Weapon:new {
 
-	objectName = "Proton Grenade",
+	objectName = "Thermal Detonator",
 
-	templateName = "object/weapon/ranged/grenade/shared_grenade_proton.iff",
+	templateName = "object/weapon/ranged/grenade/shared_grenade_thermal_detonator.iff",
 
-	objectCRC = 904042039,
+	objectCRC = 4094720749,
 
 	objectType = GRENADE,
 
-	damageType = WEAPON_HEAT,
+	damageType = WEAPON_BLAST,
 
-	armorPiercing = WEAPON_LIGHT,
+	armorPiercing = WEAPON_MEDIUM,
 
-	certification = "cert_grenade_proton",
+	certification = "cert_grenade_thermal_detonator",
 
-	uses = 5,
+	uses = 15,
 	
-	attackSpeed = 5.6,
+	attackSpeed = 5.2,
 
-	minDamage = 1552,
+	area = 8,
 
-	maxDamage = 3157
+	minDamage = 829,
+
+	maxDamage = 1717
 }

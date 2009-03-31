@@ -40,8 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-fragmentationGrenade = Weapon:new{
-	
+fragmentationGrenade = Weapon:new {
 
 	objectName = "Fragmentation Grenade",
 
@@ -51,16 +50,19 @@ fragmentationGrenade = Weapon:new{
 
 	objectType = GRENADE,
 
-	damageType = WEAPON_BLAST,
+	damageType = WEAPON_ENERGY,
 
 	armorPiercing = WEAPON_LIGHT,
-	
+
 	certification = "cert_grenade_fragmentation",
 
-	attackSpeed = 4,
+	uses = 15,
+	
+	attackSpeed = 3.5,
 
-	minDamage = 50,
+	area = 8,
 
-	maxDamage = 300
+	minDamage = 326,
+
+	maxDamage = 2974
 }
-

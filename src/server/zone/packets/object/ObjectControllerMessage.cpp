@@ -426,11 +426,6 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 
 	player->setActionCounter(actioncntr);
 
-	/*StringBuffer msg;
-	 msg << "parsing CommandQueueEnqueue actionCRC = (0x" << hex << actionCRC << dec <<  ")";
-	 player->info(msg.toString());
-	 System::out << msg.toString() << endl;*/
-
 	ChatManager* chatManager;
 	CombatManager* combatManager = serv->getCombatManager();
 	GuildManager* pGuild = serv->getGuildManager();
@@ -916,8 +911,12 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		doInstantAction(player, pack, actionCRC, actioncntr);
 		break;
 	case (0x549BE67): //throwtrap
+		parseThrowTrap(player, pack, actionCRC, actioncntr);
 	case (0xBBAF8943): //throwgrenade
-		parseThrowItem(player, pack, actionCRC, actioncntr);
+		parseThrowGrenade(player, pack, actionCRC, actioncntr);
+		break;
+	case (0xA04EB6B8): //fireheavyweapon
+		parseFireHeavyWeapon(player, pack, actionCRC, actioncntr);
 		break;
 	case (0xD2E938DB): //checkforcestatus
 		player->checkForceStatus();
@@ -4716,7 +4715,7 @@ void ObjectControllerMessage::parseNewbieSelectStartingLocation(Player* player,
 
 }
 
-void ObjectControllerMessage::parseThrowItem(Player* player, Message* pack, uint32 actionCRC, uint32 actionCntr) {
+void ObjectControllerMessage::parseThrowTrap(Player* player, Message* pack, uint32 actionCRC, uint32 actionCntr) {
 	uint64 target = pack->parseLong();
 	UnicodeString option = UnicodeString("");
 	String actionModifier = "";
@@ -4751,6 +4750,79 @@ void ObjectControllerMessage::parseThrowItem(Player* player, Message* pack, uint
 
 	if (obj->isTangible() && ((TangibleObject*)obj)->isThrowable()) {
 		((ThrowableWeapon*)obj)->activateSkill(player);
+	}
+
+}
+
+void ObjectControllerMessage::parseThrowGrenade(Player* player, Message* pack, uint32 actionCRC, uint32 actionCntr) {
+	uint64 target = pack->parseLong();
+	UnicodeString option = UnicodeString("");
+	String actionModifier = "";
+
+	pack->parseUnicode(option);
+	actionModifier = option.toString();
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+	if (zoneServer == NULL)
+		return;
+	uint64 objectId = 0;
+	if (!actionModifier.isEmpty())
+		objectId = Long::valueOf(actionModifier);
+	else {
+		player->throwGrenade(target);
+	}
+
+
+	SceneObject* obj = player->getInventoryItem(objectId);
+
+	if (obj == NULL)
+		return;
+
+	if (obj->isTangible() && ((TangibleObject*)obj)->isThrowable()) {
+		player->queueAction(player, target, ((ThrowableWeapon*)obj)->getSkillCRC(), actionCntr,
+						actionModifier.toCharArray());
+
+		//((ThrowableWeapon*)obj)->activateSkill(player);
+	}
+}
+
+void ObjectControllerMessage::parseFireHeavyWeapon(Player* player, Message* pack, uint32 actionCRC, uint32 actionCntr) {
+	uint64 target = pack->parseLong();
+	UnicodeString option = UnicodeString("");
+	String actionModifier = "";
+
+	pack->parseUnicode(option);
+	actionModifier = option.toString();
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+	if (zoneServer == NULL)
+		return;
+	uint64 objectId = 0;
+	if (!actionModifier.isEmpty())
+		objectId = Long::valueOf(actionModifier);
+	else {
+		//TODO : find hw
+	}
+
+
+	SceneObject* obj = player->getInventoryItem(objectId);
+
+	if (obj == NULL)
+		return;
+
+	if (obj->isTangible() && ((TangibleObject*)obj)->isWeapon() && ((Weapon*)obj)->isHeavyWeapon()) {
+		player->queueAction(player, target, ((HeavyRangedWeapon*)obj)->getSkillCRC(), actionCntr,
+				actionModifier.toCharArray());
+
+		//((HeavyRangedWeapon*)obj)->activateSkill(player);
 	}
 
 }

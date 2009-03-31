@@ -225,7 +225,9 @@ public:
 
 	static void doInstantAction(Player* player, Message* pack, uint32 actionCRC, uint32 actionCntr);
 
-	static void parseThrowItem(Player* player, Message* pack, uint32 actionCRC, uint32 actionCntr);
+	static void parseThrowTrap(Player* player, Message* pack, uint32 actionCRC, uint32 actionCntr);
+	static void parseThrowGrenade(Player* player, Message* pack, uint32 actionCRC, uint32 actionCntr);
+	static void parseFireHeavyWeapon(Player* player, Message* pack, uint32 actionCRC, uint32 actionCntr);
 
 };
 

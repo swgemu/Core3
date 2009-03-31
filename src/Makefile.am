@@ -376,6 +376,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
 		server/zone/objects/tangible/ticket/TicketImplementation.cpp \
 		server/zone/objects/tangible/weapons/WeaponImplementation.cpp \
+		server/zone/objects/tangible/weapons/ranged/HeavyRangedWeaponImplementation.cpp \
 		server/zone/objects/tangible/weapons/ThrowableWeaponImplementation.cpp \
 		server/zone/objects/tangible/weapons/throwable/TrapThrowableWeaponImplementation.cpp \
 		server/zone/objects/tangible/weapons/throwable/GrenadeThrowableWeaponImplementation.cpp \

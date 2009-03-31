@@ -325,7 +325,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLELIGHTNING,
 	
-	range = 0,
+	range = 16,
 	damageRatio = 3.0,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -365,7 +365,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLELIGHTNING,
 	
-	range = 0,
+	range = 16,
 	damageRatio = 3.0,
 	speedRatio = 2.0,
 	coneAngle = 60,
@@ -405,7 +405,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLELIGHTNING,
 	
-	range = 0,
+	range = 16,
 	damageRatio = 5.0,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -481,7 +481,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLELIGHTNING,
 	
-	range = 0,
+	range = 16,
 	damageRatio = 4.0,
 	speedRatio = 2.0,
 	coneAngle = 60,

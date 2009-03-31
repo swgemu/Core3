@@ -40,25 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-fallbackGrenade = Weapon:new{
-	
+heavyWeapon_set = {flameThrower, lightLightningCannon, acidBeam}
 
-	objectName = "Fallback Grenade",
-
-	templateName = "object/weapon/ranged/grenade/shared_grenade_fallback.iff",
-
-	objectCRC = 1363204393,
-
-	objectType = GRENADE,
-
-	damageType = WEAPON_BLAST,
-	
-	certification = "cert_grenade_fallback",
-
-	attackSpeed = 2.3,
-
-	minDamage = 98,
-
-	maxDamage = 200
-}
-
+addBFItemSet("Heavy Weapon Set" , heavyWeapon_set);

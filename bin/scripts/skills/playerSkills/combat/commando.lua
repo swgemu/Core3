@@ -384,6 +384,162 @@ AddRandomPoolAttackTargetSkill(RandPoolAtt)
 
 -----------------------------------------------------------------------
 
+FireHWWeapon = {
+	attackname = "firerocketlauncher",
+	animation = "fire_heavy_rocket_launcher_medium",
+
+	requiredWeaponType = ALL,
+	
+	range = 64,
+	damageRatio = 1.0,
+	speedRatio = 1.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 75,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "rocket_launcher_block",
+	CbtSpamCounter = "rocket_launcher_counter",
+	CbtSpamEvade = "rocket_launcher_evade",
+	CbtSpamHit = "rocket_launcher_hit",
+	CbtSpamMiss = "rocket_launcher_miss",
+	
+	deBuffStrFile = "",
+	deBuffHitMessage = "",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+AddHeavyWeaponSkill(FireHWWeapon)
+
+FireHWWeapon = {
+	attackname = "firelightningbeam",
+	animation = "fire_heavy_lightning_beam_medium",
+
+	requiredWeaponType = ALL,
+	
+	range = 64,
+	damageRatio = 1.0,
+	speedRatio = 1.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "lightning_beam_block",
+	CbtSpamCounter = "lightning_beam_counter",
+	CbtSpamEvade = "lightning_beam_evade",
+	CbtSpamHit = "lightning_beam_hit",
+	CbtSpamMiss = "lightning_beam_miss",
+	
+	deBuffStrFile = "",
+	deBuffHitMessage = "",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+AddHeavyWeaponSkill(FireHWWeapon)
+
+FireHWWeapon = {
+	attackname = "fireacidbeam",
+	animation = "fire_heavy_acid_beam_medium",
+
+	requiredWeaponType = ALL,
+	
+	range = 64,
+	damageRatio = 1.0,
+	speedRatio = 1.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "acid_beam_block",
+	CbtSpamCounter = "acid_beam_counter",
+	CbtSpamEvade = "acid_beam_evade",
+	CbtSpamHit = "acid_beam_hit",
+	CbtSpamMiss = "acid_beam_miss",
+	
+	deBuffStrFile = "",
+	deBuffHitMessage = "",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+AddHeavyWeaponSkill(FireHWWeapon)
+
+FireHWWeapon = {
+	attackname = "fireparticlebeam",
+	animation = "fire_heavy_patricle_beam_medium",
+
+	requiredWeaponType = ALL,
+	
+	range = 64,
+	damageRatio = 1.0,
+	speedRatio = 1.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "particle_beam_block",
+	CbtSpamCounter = "particle_beam_counter",
+	CbtSpamEvade = "particle_beam_evade",
+	CbtSpamHit = "particle_beam_hit",
+	CbtSpamMiss = "particle_beam_miss",
+	
+	deBuffStrFile = "",
+	deBuffHitMessage = "",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+AddHeavyWeaponSkill(FireHWWeapon)
+
 --- Fragment Grenade (Novice Commando)ThrowSkill = { 
 	attackname = "throwgrenadefragmentation",
 	animation = "throw_grenade_medium_fragmentation",
