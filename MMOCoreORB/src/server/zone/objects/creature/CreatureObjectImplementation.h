@@ -910,8 +910,8 @@ public:
 
 	void startWatch(uint64 entid);
 	void startListen(uint64 entid);
-	void stopWatch(uint64 entid, bool doSendPackets = true, bool forced = false, bool doLock = true, bool outOfRange = false);
-	void stopListen(uint64 entid, bool doSendPackets = true, bool forced = false, bool doLock = true, bool outOfRange = false);
+	void stopWatch(bool doSendPackets = true, bool forced = false, bool doLock = true, bool outOfRange = false);
+	void stopListen(bool doSendPackets = true, bool forced = false, bool doLock = true, bool outOfRange = false);
 	void activateEntertainerBuff(int performanceType);
 
 	void doFlourish(const String& modifier = "");

@@ -101,8 +101,6 @@ public:
     static void parseImageDesign(Player* player, Message* pack);
     static void parseWatch(Player* player, Message* pack);
     static void parseListen(Player* player, Message* pack);
-   	static void parseStopWatch(Player* player, Message* pack);
-    static void parseStopListen(Player* player, Message* pack);
     static void parseFlourish(Player* player, Message* pack);
     static void parseBandFlourish(Player* player, Message* pack, uint32 actionCRC, uint32 actionCntr);
     static void parseChangeMusic(Player* player, Message* pack);

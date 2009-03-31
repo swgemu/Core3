@@ -248,6 +248,7 @@ void PlayerImplementation::initializePlayer() {
 
 	// profession
 	skillPoints = 0;
+	forceStatus = System::random(5);
 	skillBoxesToSave.setInsertPlan(SortedVector<SkillBox*>::NO_DUPLICATE);
 	certificationList.setInsertPlan(SortedVector<Certification*>::NO_DUPLICATE);
 	xpCapList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
@@ -2848,6 +2849,32 @@ void PlayerImplementation::lootObject(Creature* creature, SceneObject* object) {
 	LootManager* lootManager = server->getLootManager();
 
 	lootManager->lootObject(_this, creature, object->getObjectID());
+}
+
+void PlayerImplementation::checkForceStatus() {
+	switch (forceStatus) {
+	case (0):
+		sendSystemMessage("jedi_spam", "fs_progress_0");
+		break;
+	case (1):
+		sendSystemMessage("jedi_spam", "fs_progress_1");
+		break;
+	case (2):
+		sendSystemMessage("jedi_spam", "fs_progress_2");
+		break;
+	case (3):
+		sendSystemMessage("jedi_spam", "fs_progress_3");
+		break;
+	case (4):
+		sendSystemMessage("jedi_spam", "fs_progress_4");
+		break;
+	case (5):
+		sendSystemMessage("jedi_spam", "fs_progress_5");
+		break;
+	default:
+		sendSystemMessage("jedi_spam", "fs_progress_0");
+		break;
+	}
 }
 
 void PlayerImplementation::calculateForceRegen() {
