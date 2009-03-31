@@ -405,8 +405,10 @@ bool PlayerManagerImplementation::validateName(const String& name) {
 		return false;
 
 	try {
+		String fname = name.toLowerCase();
+		MySqlDatabase::escapeString(fname);
 		String query = "SELECT * FROM characters WHERE lower(firstname) = \""
-					   + name.toLowerCase() + "\"";
+					   + fname + "\"";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 		bool nameExists = res->next();
@@ -1583,7 +1585,9 @@ void PlayerManagerImplementation::updateConsentList(Player* player) {
 		StringBuffer insertSets;
 
 		for (int i=0; i < size; i++) {
-			insertSets << "(" << player->getCharacterID() << ",IFNULL((SELECT character_id FROM characters WHERE firstname = '" << player->getConsentEntry(i) << "'),0))";
+			String fname = player->getConsentEntry(i);
+			MySqlDatabase::escapeString(fname);
+			insertSets << "(" << player->getCharacterID() << ",IFNULL((SELECT character_id FROM characters WHERE firstname = '" << fname << "'),0))";
 
 			if (i < size - 1)
 				insertSets << ",";

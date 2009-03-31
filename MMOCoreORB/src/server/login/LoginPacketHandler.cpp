@@ -172,6 +172,8 @@ void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
     try {
 		StringBuffer query;
 
+		MySqlDatabase::escapeString(firstName);
+
 		query << "SELECT lower(firstname) FROM characters WHERE character_id = " << charId <<" and galaxy_id = " << ServerId << ";";
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 

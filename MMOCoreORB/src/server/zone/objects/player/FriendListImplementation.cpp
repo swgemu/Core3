@@ -450,6 +450,7 @@ void FriendsListImplementation::saveFriends() {
 	for (int i = 0; i < friendName.size(); ++i){
 		try {
 			String lcaseName = friendName.get(i).toLowerCase();
+			MySqlDatabase::escapeString(lcaseName);
 
 			StringBuffer query;
 			query << "SELECT * FROM characters WHERE lower(firstname) = \"" + lcaseName + "\"";
