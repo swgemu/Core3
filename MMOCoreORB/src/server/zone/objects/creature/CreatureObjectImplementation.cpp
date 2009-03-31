@@ -2218,9 +2218,9 @@ void CreatureObjectImplementation::removeSkills(Vector<Skill*>& skills, bool upd
 		PlayerObject* player = ((PlayerImplementation*)this)->getPlayerObject();
 
 		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player);
-		dplay9->startSkillListUpdate(skills.size());
+		dplay9->startSkillListUpdate(indexes.size());
 
-		for (int i = 0; i < skills.size(); ++i) {
+		for (int i = 0; i < indexes.size(); ++i) {
 			int idx = indexes.get(i);
 			dplay9->removeSkill(idx);
 		}
@@ -2798,7 +2798,7 @@ void CreatureObjectImplementation::stopDancing() {
 			info("stopping dance for [" + creo->getCharacterName().toString() + "]");
 			// dance_stop_other	%TU stops dancing.
 
-			creo->stopWatch(objectID, true, true, false);
+			creo->stopWatch(true, true, false);
 
 			if (!creo->isListening())
 				sendEntertainmentUpdate(0, "", true);
@@ -2833,7 +2833,7 @@ void CreatureObjectImplementation::stopPlayingMusic() {
 
 			info("stopping music for [" + creo->getCharacterName().toString() + "]");
 
-			creo->stopListen(objectID, true, true, false);
+			creo->stopListen(true, true, false);
 
 			if (!creo->isWatching())
 				sendEntertainmentUpdate(0, "", true);
@@ -2904,7 +2904,7 @@ void CreatureObjectImplementation::startWatch(uint64 entid) {
 	}
 
 	if (isWatching()) {
-		stopWatch(watchID, false);
+		stopWatch(false);
 		sendEntertainmentUpdate(entid, "entertained");
 		entertainer->addWatcher(_this);
 
@@ -2981,7 +2981,7 @@ void CreatureObjectImplementation::startListen(uint64 entid) {
 	}
 
 	if (isListening()) {
-		stopListen(listenID, false);
+		stopListen(false);
 		sendEntertainmentUpdate(entid, "entertained");
 		entertainer->addListener(_this);
 
@@ -4419,8 +4419,8 @@ void CreatureObjectImplementation::onResuscitated(SceneObject* healer) {
 void CreatureObjectImplementation::onDamageHealed(SceneObject* healer, uint8 attribute, uint32 amount) {
 	if (canRecoverFromIncapacitation()) {
 		if (healer->isPlayer()) {
-			((Player*)healer)->stopWatch(objectID, true, true, false);
-			((Player*)healer)->stopListen(objectID, true, true, false);
+			((Player*)healer)->stopWatch(true, true, false);
+			((Player*)healer)->stopListen(true, true, false);
 		}
 
 		recoverFromIncapacitation();
