@@ -205,6 +205,12 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 			actionMessage = new CombatAction(creature, animCRC,throwWeapon->getObjectID());
 		}
 	} else {
+		if (tskill->isHeavyWeaponSkill() && creature->isPlayer()) {
+			FireHeavyWeaponAttackTarget* tarSkill = (FireHeavyWeaponAttackTarget*) tskill;
+			HeavyRangedWeapon* heavyWeapon= tarSkill->getHeavyRangedWeapon(creature,actionModifier);
+
+			heavyWeapon->useCharge((Player*) creature);
+		}
 		actionMessage = new CombatAction(creature, animCRC);
 	}
 
@@ -218,7 +224,7 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 
 	creature->broadcastMessage(actionMessage);
 
-	return tskill->calculateSpeed(creature);
+	return tskill->calculateSpeed(creature,action);
 }
 
 float CombatManager::doSelfSkill(CommandQueueAction* action) {
@@ -328,6 +334,19 @@ void CombatManager::handleAreaAction(CreatureObject* creature, TangibleObject* t
 		if (skill->getRange() != 0)
 			areaRange = (int)skill->getAreaRange();
 
+		if (skill->isThrowSkill()) {
+			ThrowableWeapon* throwWeapon = ((ThrowAttackTargetSkill*)skill)->getThrowableWeapon(creature,actionModifier);
+			if (throwWeapon != NULL && throwWeapon->isGrenade())
+				areaRange = throwWeapon->getArea();
+		}
+
+		if (skill->isHeavyWeaponSkill()) {
+			HeavyRangedWeapon* heavyWeeapon = ((FireHeavyWeaponAttackTarget*)skill)->getHeavyRangedWeapon(creature,actionModifier);
+			areaRange = heavyWeeapon->getArea();
+		}
+
+		bool rangeArea = skill->isThrowSkill() || skill->isHeavyWeaponSkill();
+
 		for (int i = 0; i < creature->inRangeObjectCount(); i++) {
 			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) creature->getInRangeObject(i))->_this);
 
@@ -366,9 +385,9 @@ void CombatManager::handleAreaAction(CreatureObject* creature, TangibleObject* t
 				if (angle > coneAngle || angle < -coneAngle)
 					continue;
 
-			} else if (!skill->isThrowSkill() &&!(creature->isInRange(object, areaRange))) {
+			} else if (!rangeArea &&!(creature->isInRange(object, areaRange))) {
 				continue;
-			} else if (skill->isThrowSkill() &&!(target->isInRange(object, areaRange))) {
+			} else if (rangeArea &&!(target->isInRange(object, areaRange))) {
 				continue;
 			}
 
@@ -758,11 +777,22 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	if (creature->isNonPlayerCreature())  // Temporary until accuracies fixed
 		attackerAccuracy = creature->getLevel();
 	else if (attackType == MELEEATTACK || attackType == RANGEDATTACK) {
-		attackerAccuracy = creature->getAccuracy() + creature->getAccuracyBonus();
+		attackerAccuracy = creature->getAccuracy() ;
 	} else if (attackType == TRAPATTACK) {
 		attackerAccuracy = creature->getSkillMod("trapping");
-	} else if (attackType == GRENADEATTACK)
+	} else if (attackType == GRENADEATTACK) {
 		attackerAccuracy = creature->getSkillMod("thrown_accuracy");
+	} else if (attackType == HEAVYROCKETLAUNCHERATTACK) {
+		attackerAccuracy = creature->getSkillMod("heavy_rocket_launcher_accuracy") + creature->getSkillMod("heavyweapon_accuracy");
+	} else if (attackType == HEAVYACIDBEAMATTACK) {
+		attackerAccuracy = creature->getSkillMod("heavy_acid_beam_accuracy") + creature->getSkillMod("heavyweapon_accuracy");
+	} else if (attackType == HEAVYLIGHTNINGBEAMATTACK) {
+		attackerAccuracy = creature->getSkillMod("heavy_lightning_beam_accuracy") + creature->getSkillMod("heavyweapon_accuracy");
+	} else if (attackType == HEAVYPARTICLEBEAMATTACK) {
+		attackerAccuracy = creature->getSkillMod("heavy_particle_beam_accuracy") + creature->getSkillMod("heavyweapon_accuracy");
+	}
+
+	attackerAccuracy += creature->getAccuracyBonus();
 
 	if (DEBUG)
 		System::out << "\tBase attacker accuracy is " << attackerAccuracy << endl;
@@ -1224,7 +1254,7 @@ bool CombatManager::calculateCost(CreatureObject* creature, float healthMultipli
 	return true;
 }
 
-float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, TargetSkill* tskill) {
+float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, TargetSkill* tskill,CommandQueueAction* action) {
 	Weapon* weapon = creature->getWeapon();
 	float weaponSpeed;
 	int speedMod = 0;
@@ -1262,8 +1292,11 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 					speedMod = ((Player*)creature)->getSkillMod("heavy_flame_thrower_speed");
 				else if (weapon->getType() == WeaponImplementation::RIFLELIGHTNING)
 					speedMod = ((Player*)creature)->getSkillMod("heavy_rifle_lightning_speed");
-					speedMod += ((Player*)creature)->getSkillMod("heavyweapon_speed");
-					break;
+				else if (weapon->getType() == WeaponImplementation::RIFLEACIDBEAM)
+					speedMod = ((Player*)creature)->getSkillMod("heavy_rifle_acid_speed");
+
+				speedMod += ((Player*)creature)->getSkillMod("heavyweapon_speed");
+				break;
 			case TangibleObjectImplementation::ONEHANDSABER:
 				speedMod = ((Player*)creature)->getSkillMod("onehandlightsaber_speed");
 				break;
@@ -1273,6 +1306,40 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 			case TangibleObjectImplementation::POLEARMSABER:
 				speedMod = ((Player*)creature)->getSkillMod("polearmlightsaber_speed");
 				break;
+		}
+	}
+
+	if (action != NULL) {
+		String actionModifier = action->getActionModifier();
+		if (tskill->isTrapSkill()) {
+			speedMod = ((Player*)creature)->getSkillMod("trapping");
+
+			weapon = ((ThrowAttackTargetSkill*)tskill)->getThrowableWeapon(creature,actionModifier);
+
+
+		} else if (tskill->isThrowSkill()) {
+			speedMod = ((Player*)creature)->getSkillMod("thrown_speed");
+
+			weapon = ((ThrowAttackTargetSkill*)tskill)->getThrowableWeapon(creature,actionModifier);
+
+
+		} else if (tskill->isHeavyWeaponSkill()) {
+			weapon = ((FireHeavyWeaponAttackTarget*)tskill)->getHeavyRangedWeapon(creature,actionModifier);
+
+			switch(weapon->getType()) {
+			case HEAVYROCKETLAUNCHERATTACK:
+				speedMod = ((Player*)creature)->getSkillMod("heavy_rocket_launcher_speed");
+				break;
+			case HEAVYACIDBEAMATTACK:
+				speedMod = ((Player*)creature)->getSkillMod("heavy_acid_beam_speed");
+				break;
+			case HEAVYLIGHTNINGBEAMATTACK:
+				speedMod = ((Player*)creature)->getSkillMod("heavy_lightning_beam_speed");
+				break;
+			case HEAVYPARTICLEBEAMATTACK:
+				speedMod = ((Player*)creature)->getSkillMod("heavy_particle_beam_speed");
+				break;
+			}
 		}
 	}
 
@@ -1761,12 +1828,37 @@ int CombatManager::calculateThrowItemDamage(CreatureObject* creature, TangibleOb
 	float maxDamage = weapon->getMaxDamage();
 	int damageType = weapon->getDamageType();
 	int attackType = TRAPATTACK;
-	int armorPiercing = 1;
+	int armorPiercing = weapon->getArmorPiercing();
 
 	int damage = calculateDamage(creature, target, weapon, skill, attackType, damageType, armorPiercing, minDamage, maxDamage, randompoolhit, canKill);
 
 	if (damage > 0 && (skill->isStateTap() || skill->isDebuffTrap()))
 		calculateThrowItemStates(creature, targetCreature, skill);
+
+	return damage;
+}
+
+int CombatManager::calculateHeavyWeaponDamage(CreatureObject* creature, TangibleObject* target, FireHeavyWeaponAttackTarget* skill, Weapon* weapon) {
+
+	CreatureObject* targetCreature = (CreatureObject*)target;
+
+	// Test for hit
+	if (target->isNonPlayerCreature() || target->isPlayer()) {
+		int rand = System::random(100);
+
+		if (rand > getHitChance(creature, (CreatureObject*)target, weapon, skill->getAccuracyBonus(), weapon->getType())) {
+			skill->doMiss(creature, (CreatureObject*)target, 0);
+			return -1;
+		}
+	}
+
+	float minDamage = weapon->getMinDamage();
+	float maxDamage = weapon->getMaxDamage();
+	int damageType = weapon->getDamageType();
+	int attackType = weapon->getType();
+	int armorPiercing = weapon->getArmorPiercing();
+
+	int damage = calculateDamage(creature, target, weapon, skill, attackType, damageType, armorPiercing, minDamage, maxDamage, true, true);
 
 	return damage;
 }

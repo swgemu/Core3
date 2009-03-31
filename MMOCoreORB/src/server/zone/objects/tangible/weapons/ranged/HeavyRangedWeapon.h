@@ -23,10 +23,24 @@ public:
 
 	int useObject(Player* player);
 
+	void activateSkill(Player* player);
+
+	void setSkill(const String& sk);
+
+	String& getSkill();
+
+	unsigned int getSkillCRC();
+
+	void useCharge(Player* player);
+
+	void sendDeltas(Player* player);
+
 protected:
 	HeavyRangedWeapon(DummyConstructorParameter* param);
 
 	virtual ~HeavyRangedWeapon();
+
+	String _return_getSkill;
 
 	friend class HeavyRangedWeaponHelper;
 };
@@ -41,6 +55,20 @@ public:
 
 	int useObject(Player* player);
 
+	void activateSkill(Player* player);
+
+	void setSkill(const String& sk);
+
+	String& getSkill();
+
+	unsigned int getSkillCRC();
+
+	void useCharge(Player* player);
+
+	void sendDeltas(Player* player);
+
+protected:
+	String _param0_setSkill__String_;
 };
 
 class HeavyRangedWeaponHelper : public DistributedObjectClassHelper, public Singleton<HeavyRangedWeaponHelper> {

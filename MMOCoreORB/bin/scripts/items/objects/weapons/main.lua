@@ -40,19 +40,12 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-
-RunItemLUAFile("objects/weapons/bowcaster.lua");
-RunItemLUAFile("objects/weapons/survivalKnife.lua");
-RunItemLUAFile("objects/weapons/vibroknuckler.lua");
---RunItemLUAFile("objects/weapons/acidBeam.lua");
-RunItemLUAFile("objects/weapons/flameThrower.lua");
 RunItemLUAFile("objects/weapons/carbines/main.lua");
 RunItemLUAFile("objects/weapons/pistols/main.lua");
 RunItemLUAFile("objects/weapons/rifles/main.lua");
 RunItemLUAFile("objects/weapons/1H/main.lua");
 RunItemLUAFile("objects/weapons/2H/main.lua");
 RunItemLUAFile("objects/weapons/polearm/main.lua");
---RunItemLUAFile("objects/weapons/thrown/main.lua");
---RunItemLUAFile("objects/weapons/polearm_lightsaber.lua");
---RunItemLUAFile("objects/weapons/onehanded_lightsaber.lua");
---RunItemLUAFile("objects/weapons/twohanded_lightsaber.lua");
+RunItemLUAFile("objects/weapons/thrown/main.lua");
+RunItemLUAFile("objects/weapons/heavyweapons/main.lua");
+RunItemLUAFile("objects/weapons/unarmed/main.lua");

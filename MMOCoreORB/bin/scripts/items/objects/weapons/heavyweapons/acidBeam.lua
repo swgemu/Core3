@@ -40,28 +40,25 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-imperialDetonatorGrenade = Weapon:new{
-	
+acidBeam = Weapon:new{
 
-	objectName = "Imperial detonator",
+	objectName = "Heavy Acid Rifle",
 
-	templateName = "object/weapon/ranged/grenade/shared_grenade_imperial_detonator.iff",
+	templateName = "object/weapon/ranged/rifle/shared_rifle_acid_beam.iff",
 
-	objectCRC = 4036235024,
+	objectCRC = "3329701535",
 
-	objectType = GRENADE,
+	objectType = SPECIALHEAVYWEAPON,
 
-	damageType = WEAPON_BLAST,
+	damageType = WEAPON_ACID,
 
-	armorPiercing = WEAPON_HEAVY,
-	
-	certification = "cert_grenade_imperial_detonator",
+	armorPiercing = WEAPON_NONE,
 
-	attackSpeed = 6,
+	certification = "cert_rifle_acid_beam",
 
-	minDamage = 100,
+	attackSpeed = 2.9,
 
-	maxDamage = 550
+	minDamage = 340,
+
+	maxDamage = 750
 }
-
-

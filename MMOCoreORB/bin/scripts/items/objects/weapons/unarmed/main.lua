@@ -40,27 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-lightFragmentationGrenade = Weapon:new{
-	
 
-	objectName = "Light Fragmentation Grenade",
-
-	templateName = "object/weapon/ranged/grenade/shared_grenade_fragmentation_light.iff",
-
-	objectCRC = 2839802123,
-
-	objectType = GRENADE,
-
-	damageType = WEAPON_BLAST,
-	
-	certification = "cert_grenade_fragmentation_light",
-
-	attackSpeed = 4,
-
-	minDamage = 50,
-
-	maxDamage = 150
-}
-
-
+RunItemLUAFile("objects/weapons/unarmed/vibroknuckler.lua");
 

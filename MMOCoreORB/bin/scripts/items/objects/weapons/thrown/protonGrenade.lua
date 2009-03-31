@@ -40,8 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-protonGrenade = Weapon:new{
-	
+protonGrenade = Weapon:new {
 
 	objectName = "Proton Grenade",
 
@@ -53,15 +52,17 @@ protonGrenade = Weapon:new{
 
 	damageType = WEAPON_HEAT,
 
-	armorPiercing = WEAPON_MEDIUM,
-	
+	armorPiercing = WEAPON_LIGHT,
+
 	certification = "cert_grenade_proton",
 
-	attackSpeed = 10,
+	uses = 5,
+	
+	attackSpeed = 5.6,
 
-	minDamage = 100,
+	area = 8,
 
-	maxDamage = 300
+	minDamage = 1552,
+
+	maxDamage = 3157
 }
-
-

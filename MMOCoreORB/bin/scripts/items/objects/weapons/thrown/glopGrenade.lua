@@ -40,8 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-glopGrenade = Weapon:new{
-	
+glopGrenade = Weapon:new {
 
 	objectName = "Glop Grenade",
 
@@ -52,14 +51,18 @@ glopGrenade = Weapon:new{
 	objectType = GRENADE,
 
 	damageType = WEAPON_ACID,
-	
+
+	armorPiercing = WEAPON_NONE,
+
 	certification = "cert_grenade_glop",
 
-	attackSpeed = 5,
+	uses = 5,
+	
+	attackSpeed = 3.6,
 
-	minDamage = 100,
+	area = 8,
 
-	maxDamage = 350
+	minDamage = 443,
+
+	maxDamage = 3150
 }
-
-

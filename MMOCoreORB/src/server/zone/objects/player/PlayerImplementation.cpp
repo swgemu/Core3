@@ -3185,14 +3185,16 @@ void PlayerImplementation::setWeaponAccuracy(Weapon* weapon) {
 			accuracy = getSkillMod("heavyweapon_accuracy");
 			break;
 
-		case WeaponImplementation::SPECIALHEAVYWEAPON:
-			if (weapon->getType() == WeaponImplementation::RIFLEFLAMETHROWER)
-				accuracy = getSkillMod("heavy_flame_thrower_accuracy");
+		case WeaponImplementation::RIFLEFLAMETHROWER:
+			accuracy = getSkillMod("heavy_flame_thrower_accuracy") + getSkillMod("heavyweapon_accuracy");
+			break;
 
-			else if (weapon->getType() == WeaponImplementation::RIFLELIGHTNING)
-				accuracy = getSkillMod("heavy_rifle_lightning_accuracy");
+		case WeaponImplementation::RIFLELIGHTNING:
+			accuracy = getSkillMod("heavy_rifle_lightning_accuracy") + getSkillMod("heavyweapon_accuracy");
+			break;
 
-			accuracy += getSkillMod("heavyweapon_accuracy");
+		case WeaponImplementation::RIFLEACIDBEAM:
+			accuracy = getSkillMod("heavy_rifle_acid_accuracy") + getSkillMod("heavyweapon_accuracy");
 			break;
 
 		case WeaponImplementation::ONEHANDSABER:
@@ -3207,6 +3209,7 @@ void PlayerImplementation::setWeaponAccuracy(Weapon* weapon) {
 			accuracy = getSkillMod("polearmlightsaber_accuracy");
 			break;
 	}
+
 }
 
 void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
@@ -3332,7 +3335,7 @@ void PlayerImplementation::setItemSkillMod(int type, int value) {
 		break;
 	}
 }
-
+//TODO: never used ? delete
 void PlayerImplementation::setWeaponSkillMods(Weapon* weapon) {
 	switch (weapon->getType()) {
 		case WeaponImplementation::UNARMED:
@@ -3367,14 +3370,16 @@ void PlayerImplementation::setWeaponSkillMods(Weapon* weapon) {
 			accuracy = getSkillMod("heavyweapon_accuracy");
 			break;
 
-		case WeaponImplementation::SPECIALHEAVYWEAPON:
-			if (weapon->getType() == WeaponImplementation::RIFLEFLAMETHROWER)
-				accuracy = getSkillMod("heavy_flame_thrower_accuracy");
+		case WeaponImplementation::RIFLEFLAMETHROWER:
+			accuracy = getSkillMod("heavy_flame_thrower_accuracy") + getSkillMod("heavyweapon_accuracy");
+			break;
 
-			else if (weapon->getType() == WeaponImplementation::RIFLELIGHTNING)
-				accuracy = getSkillMod("heavy_rifle_lightning_accuracy");
+		case WeaponImplementation::RIFLELIGHTNING:
+			accuracy = getSkillMod("heavy_rifle_lightning_accuracy") + getSkillMod("heavyweapon_accuracy");
+			break;
 
-			accuracy += getSkillMod("heavyweapon_accuracy");
+		case WeaponImplementation::RIFLEACIDBEAM:
+			accuracy = getSkillMod("heavy_rifle_acid_accuracy") + getSkillMod("heavyweapon_accuracy");
 			break;
 
 		/*case Weapon::ONEHANDSABER:
@@ -3400,7 +3405,7 @@ void PlayerImplementation::setWeaponSkillMods(Weapon* weapon) {
 		weapon->setCertified(false);
 	}
 }
-
+//TODO: never used ? delete
 void PlayerImplementation::unsetWeaponSkillMods(Weapon* weapon) {
 	setItemSkillMod(weapon->getSkillMod0Type(), -weapon->getSkillMod0Value());
 	setItemSkillMod(weapon->getSkillMod1Type(), -weapon->getSkillMod1Value());
@@ -4690,11 +4695,6 @@ void PlayerImplementation::queueHeal(TangibleObject* medPack, uint32 actionCRC, 
 }
 
 void PlayerImplementation::queueThrow(TangibleObject* throwItem, uint32 actionCRC) {
-	//if (medPack == NULL || !medPack->isPharmaceutical()) {
-	//	sendSystemMessage("healing_response", "healing_resonse_60"); //No valid medicine found.
-	//	return;
-	//}
-
 	uint64 objectID = throwItem->getObjectID();
 
 	StringBuffer actionModifier;
@@ -4703,6 +4703,16 @@ void PlayerImplementation::queueThrow(TangibleObject* throwItem, uint32 actionCR
 
 	queueAction(_this, getTargetID(), actionCRC, ++actionCounter, actionModifier.toString());
 }
+
+void PlayerImplementation::fireHeavyWeapon(TangibleObject* heavyWeapon, uint32 actionCRC) {
+	uint64 objectID = heavyWeapon->getObjectID();
+	actionCounter += 32;
+	StringBuffer actionModifier;
+
+	CommandQueueEnqueue* msg = new CommandQueueEnqueue(_this, actionCounter, actionCRC);
+	sendMessage(msg);
+}
+
 
 void PlayerImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
 	//player = the player requesting the radial
@@ -5265,7 +5275,29 @@ void PlayerImplementation::throwTrap(uint64 targetID) {
 	}
 }
 
+/**
+ * Executes the /throwtrap command. Searchs for a usefull grenade and activates id.
+ * \param targetID The targets id.
+ */
+void PlayerImplementation::throwGrenade(uint64 targetID) {
+	Inventory* inventory = getInventory();
 
+	if (inventory != NULL) {
+		for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
+			TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+
+			if (item->isGrenade()) {
+				GrenadeThrowableWeapon* greande = (GrenadeThrowableWeapon*) item;
+
+				if (greande->isUsefull(_this) && hasCooldownExpired(greande->getSkill())) {
+
+					greande->useObject(_this);
+					return;
+				}
+			}
+		}
+	}
+}
 
 void PlayerImplementation::removeOldSuiBoxIfPresent(const int suiWindowType) {
 	if (hasSuiBoxWindowType(suiWindowType)) {

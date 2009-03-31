@@ -330,7 +330,7 @@ void WeaponImplementation::parseItemAttributes() {
 	name = "area";
 	area = itemAttributes->getFloatAttribute(name);
 
-	name = "damagetype";
+	name = "damageType";
 	damageType = itemAttributes->getIntAttribute(name);
 
 	name = "armorPiercing";

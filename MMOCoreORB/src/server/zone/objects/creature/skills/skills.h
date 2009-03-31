@@ -59,6 +59,7 @@ which carries forward this exception.
 #include "target/attack/ThrowDirectPoolAttackTargetSkill.h"
 #include "target/attack/ThrowGrenadeAttackTargetSkill.h"
 #include "target/attack/CMDotAttackTargetSkill.h"
+#include "target/attack/FireHeavyWeaponAttackTargetSkill.h"
 
 #include "target/HealEnhanceTargetSkill.h"
 #include "target/HealDamageTargetSkill.h"

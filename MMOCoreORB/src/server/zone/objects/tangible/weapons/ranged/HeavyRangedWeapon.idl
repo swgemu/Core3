@@ -58,4 +58,16 @@ interface HeavyRangedWeapon implements RangedWeapon {
 	}
 
 	int useObject(Player player);
+
+	void activateSkill(Player player);
+
+	void setSkill(const String sk);
+	String getSkill();
+
+	unsigned int getSkillCRC();
+
+	void useCharge(Player player);
+
+	void sendDeltas(Player player);
+
 }

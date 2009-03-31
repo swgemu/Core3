@@ -40,6 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-rifleWeaponSet = {bowcasterRifle, cdefRifle, dlt20aRifle, dlt20Rifle, e11Rifle, jawaIonRifle, laserNoobRifle, laserRifle, sg82Rifle, spraystickRifle, t21Rifle, tuskenRifle, lightLightningCannon}
+rifleWeaponSet = {bowcasterRifle, cdefRifle, dlt20aRifle, dlt20Rifle, e11Rifle, jawaIonRifle, laserNoobRifle, laserRifle, sg82Rifle, spraystickRifle, t21Rifle, tuskenRifle}
 
 addBFItemSet("Rifle Weapon Set" , rifleWeaponSet);

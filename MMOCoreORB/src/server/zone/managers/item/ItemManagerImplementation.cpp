@@ -1241,6 +1241,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		float as = itemconfig.getFloatField("attackSpeed");
 		float mindmg = itemconfig.getFloatField("minDamage");
 		float maxdmg = itemconfig.getFloatField("maxDamage");
+		float area = itemconfig.getFloatField("area");
 
 		Weapon* weapon = (Weapon*) item;
 		weapon->setDamageType(damageType);
@@ -1248,6 +1249,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		weapon->setAttackSpeed(as);
 		weapon->setMinDamage(mindmg);
 		weapon->setMaxDamage(maxdmg);
+		weapon->setArea(area);
 
 		if (type & TangibleObjectImplementation::LIGHTSABER) {
 			int forceCost = itemconfig.getIntField("forceCost");
@@ -1256,7 +1258,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 
 		if (weapon->isTrap()) {
 			int uses =  itemconfig.getIntField("uses");
-			String skill = itemconfig.getStringField("skill");  // TODO:  Should use certification
+			String skill = itemconfig.getStringField("skill");
 
 			((TrapThrowableWeapon*) weapon)->setUsesRemaining(uses);
 			((TrapThrowableWeapon*) weapon)->setSkill(skill);

@@ -40,27 +40,12 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-cryobanGrenade = Weapon:new {
+RunItemLUAFile("objects/weapons/heavyweapons/flameThrower.lua");
+RunItemLUAFile("objects/weapons/heavyweapons/acidBeam.lua");
+RunItemLUAFile("objects/weapons/heavyweapons/lightLightningCannon.lua");
 
-	objectName = "Cryoban Grenade",
+RunItemLUAFile("objects/weapons/heavyweapons/rocketLauncher.lua");
+--RunItemLUAFile("objects/weapons/heavyweapons/hpCannon.lua");
+RunItemLUAFile("objects/weapons/heavyweapons/haCannon.lua");
+RunItemLUAFile("objects/weapons/heavyweapons/hlCannon.lua");
 
-	templateName = "object/weapon/ranged/grenade/shared_grenade_cryoban.iff",
-
-	objectCRC = 2139866976,
-
-	objectType = GRENADE,
-
-	damageType = WEAPON_COLD,
-
-	armorPiercing = WEAPON_NONE,
-
-	certification = "cert_grenade_cryoban",
-
-	uses = 15,
-	
-	attackSpeed = 9.0,
-
-	minDamage = 114,
-
-	maxDamage = 388
-}

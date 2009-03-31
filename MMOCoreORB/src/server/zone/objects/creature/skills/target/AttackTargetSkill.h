@@ -443,8 +443,8 @@ public:
 		return accuracyBonus;
 	}
 
-	virtual float calculateSpeed(CreatureObject* creature) {
-		return server->getCombatManager()->calculateWeaponAttackSpeed(creature, this);
+	virtual float calculateSpeed(CreatureObject* creature,CommandQueueAction* action) {
+		return server->getCombatManager()->calculateWeaponAttackSpeed(creature, this, action);
 	}
 
 	float getDamageRatio() {

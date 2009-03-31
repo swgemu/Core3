@@ -577,6 +577,9 @@ void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int dama
 	case AttackTargetSkill::DOT:
 	case AttackTargetSkill::RANDOM:
 	case AttackTargetSkill::WOUNDS:
+	case AttackTargetSkill::HEAVYWEAPON:
+		xptype = String("combat_rangedspecialize_heavy");
+		break;
 	case AttackTargetSkill::OTHER:
 		if (creature->getWeapon() == NULL)
 			xptype = String("combat_meleespecialize_unarmed");

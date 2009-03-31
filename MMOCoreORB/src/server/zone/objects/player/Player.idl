@@ -704,6 +704,8 @@ interface Player implements CreatureObject {
 	unsigned long getResourceDeedID();
 
 	void queueThrow(TangibleObject throwItem, unsigned int actionCRC);
+	void fireHeavyWeapon(TangibleObject heavyWeapon, unsigned int actionCRC);
+	
 	void setImagedesignXpGiven(boolean given);
 	boolean getImagedesignXpGiven();
 
@@ -723,6 +725,8 @@ interface Player implements CreatureObject {
 	void setActiveArea(ActiveArea area);
 
 	void throwTrap(unsigned int targetID);
+	void throwGrenade(unsigned int targetID);
+	
 	void equipItem(TangibleObject item);
 	void unequipItem(TangibleObject item);
 

@@ -58,6 +58,8 @@ c12Grenade = Weapon:new {
 	
 	attackSpeed = 5.0,
 
+	area = 8,
+
 	minDamage = 35,
 
 	maxDamage = 105,

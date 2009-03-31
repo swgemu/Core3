@@ -51,6 +51,8 @@ public:
 
 	bool isCertified();
 
+	bool isHeavyWeapon();
+
 	int getType();
 
 	int getCategory();
@@ -145,6 +147,8 @@ public:
 
 	String& getXpType();
 
+	float getArea();
+
 	void setType(int type);
 
 	void setDamageType(int type);
@@ -194,6 +198,8 @@ public:
 	void setIdealRange(int idealRnge);
 
 	void setIdealAccuracy(int idealAcc);
+
+	void setArea(float ar);
 
 	void powerupMinDamage(float powerupValue);
 
@@ -278,6 +284,8 @@ public:
 
 	bool isCertified();
 
+	bool isHeavyWeapon();
+
 	int getType();
 
 	int getCategory();
@@ -372,6 +380,8 @@ public:
 
 	String& getXpType();
 
+	float getArea();
+
 	void setType(int type);
 
 	void setDamageType(int type);
@@ -421,6 +431,8 @@ public:
 	void setIdealRange(int idealRnge);
 
 	void setIdealAccuracy(int idealAcc);
+
+	void setArea(float ar);
 
 	void powerupMinDamage(float powerupValue);
 

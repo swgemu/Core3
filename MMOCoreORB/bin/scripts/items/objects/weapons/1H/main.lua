@@ -52,4 +52,4 @@ RunItemLUAFile("objects/weapons/1H/sword02.lua");
 RunItemLUAFile("objects/weapons/1H/vibroBlade.lua");
 RunItemLUAFile("objects/weapons/1H/stunBaton.lua");
 RunItemLUAFile("objects/weapons/1H/stunBatonElite.lua");
-RunItemLUAFile("objects/weapons/1H/stunBatonWeak.lua");
+RunItemLUAFile("objects/weapons/1H/stunBatonWeak.lua");RunItemLUAFile("objects/weapons/1H/survivalKnife.lua");

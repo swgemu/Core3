@@ -52,10 +52,16 @@ which carries forward this exception.
 #define FORCEATTACK 2
 #define TRAPATTACK 3
 #define GRENADEATTACK 4
+#define HEAVYACIDBEAMATTACK 14
+#define HEAVYLIGHTNINGBEAMATTACK 15
+#define HEAVYPARTICLEBEAMATTACK 17
+#define HEAVYROCKETLAUNCHERATTACK 18
+#define HEAVYLAUNCHERATTACK 19
 
 #define MELEEWEAPON(weapontype) ((weapontype < 4 || (weapontype > 6 && weapontype < 10)) ? true : false)
 #define RANGEDWEAPON(weapontype) (((weapontype > 3 && weapontype < 7) || (weapontype > 6 && weapontype < 20)) ? true : false)
 #define THROWNWEAPON(weapontype) ((weapontype > 19 && weapontype < 21) ? true : false)
+#define HEAVYWEAPON(weapontype) ((weapontype > 13 && weapontype < 20) ? true : false)
 
 class SceneObject;
 class TangibleObject;
@@ -70,6 +76,7 @@ class Skill;
 class TargetSkill;
 class AttackTargetSkill;
 class ThrowAttackTargetSkill;
+class FireHeavyWeaponAttackTarget;
 class ForcePowersPoolAttackTargetSkill;
 class ZoneProcessServerImplementation;
 class CombatAction;
@@ -143,7 +150,7 @@ public:
 	int getArmorReduction(CreatureObject* target, int damage, int location, int attacktype, int damagetype, int armorpiercing);
 	void applyWounds(CreatureObject* attacker, CreatureObject* target, Weapon* weapon, int location);
 	bool calculateCost(CreatureObject* creature, float healthMultiplier, float actionMultiplier, float mindMultiplier, float forceMultiplier);
-	float calculateWeaponAttackSpeed(CreatureObject* creature, TargetSkill* tskill);
+	float calculateWeaponAttackSpeed(CreatureObject* creature, TargetSkill* tskill, CommandQueueAction* action = NULL);
 	float calculateHealSpeed(CreatureObject* creature, TargetSkill* tskill);
 	void calculateStates(CreatureObject* creature, CreatureObject* targetCreature, AttackTargetSkill* tskill);
 	void calculateThrowItemStates(CreatureObject* creature, CreatureObject* targetCreature, ThrowAttackTargetSkill* tskill);
@@ -152,6 +159,8 @@ public:
 	void checkPostureUp(CreatureObject* creature, CreatureObject* targetCreature, int chance);
 	int calculateWeaponDamage(CreatureObject* creature, TangibleObject* target, AttackTargetSkill* skill, bool randompoolhit);
 	int calculateThrowItemDamage(CreatureObject* creature, TangibleObject* target, ThrowAttackTargetSkill* skill, bool randompoolhit, bool canKill, Weapon* weapon);
+	int calculateHeavyWeaponDamage(CreatureObject* creature, TangibleObject* target, FireHeavyWeaponAttackTarget* skill, Weapon* weapon);
+
 	int calculateForceDamage(CreatureObject* creature, TangibleObject* target, ForcePowersPoolAttackTargetSkill* skill, int forceAttackType, int damageType, float mindmg, float maxdmg);
 	int calculateDamage(CreatureObject* creature, TangibleObject* target, Weapon* weapon, AttackTargetSkill* skill, int attackType,
 			int damageType, int armorPiercing, float minDmg, float maxDmg, bool randompoolhit, bool cankill);

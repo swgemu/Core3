@@ -40,23 +40,25 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-ee3_carbine = Weapon:new{
-
-	objectName = "EE3 Carbine",
-
-	templateName = "object/weapon/ranged/carbine/shared_carbine_ee3.iff",
-
-	objectCRC = 749154215,
-
-	objectType = CARBINE,
-
-	damageType = WEAPON_HEAT,
+haCannon = Weapon:new{
 	
-	certification = "cert_carbine_ee3",
 
-	attackSpeed = 3.5,
+	objectName = "Heavy Acid Beam Cannon",
 
-	minDamage = 128,
+	templateName = "object/weapon/ranged/heavy/shared_heavy_acid_beam.iff",
 
-	maxDamage = 211
+	objectCRC = 337224478,
+	
+	damageType = WEAPON_ACID,
+
+	objectType = HEAVYWEAPON,
+
+	armorPiercing = WEAPON_MEDIUM,
+	
+	certification = "cert_heavy_acid_beam",
+
+	attackSpeed = 5.5,
+	minDamage = 1041,
+
+	maxDamage = 3170
 }

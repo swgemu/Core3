@@ -53,4 +53,4 @@ RunItemLUAFile("objects/weapons/rifles/sg82Rifle.lua");
 RunItemLUAFile("objects/weapons/rifles/spraystickRifle.lua");
 RunItemLUAFile("objects/weapons/rifles/t21Rifle.lua");
 RunItemLUAFile("objects/weapons/rifles/tuskenRifle.lua");
-RunItemLUAFile("objects/weapons/rifles/lightLightningCannon.lua");
+

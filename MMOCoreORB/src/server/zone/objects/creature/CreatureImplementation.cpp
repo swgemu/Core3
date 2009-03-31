@@ -1502,6 +1502,7 @@ void CreatureImplementation::createHarvestList() {
 		return;
 
 	playerCanHarvest.add(owner->getFirstName());
+
 	if (owner->isInAGroup()) {
 
 		group = owner->getGroupObject();
@@ -2007,6 +2008,7 @@ void CreatureImplementation::onDeath() {
 
 	//TODO: Currently doesn't work with groups does it?
 	CreatureObject* lootOwner = getLootOwner();
+
 	if ((isImperial() || isRebel()) && lootOwner != NULL && lootOwner->isPlayer()) {
 		Player* lootOwnerPlayer = (Player *) lootOwner;
 
@@ -2019,8 +2021,6 @@ void CreatureImplementation::onDeath() {
 	}
 
 	creatureHealth = System::random(3) + 1;
-
 	createHarvestList();
-
 	scheduleDespawnCreature(180000);
 }

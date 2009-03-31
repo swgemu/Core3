@@ -45,6 +45,83 @@ int HeavyRangedWeapon::useObject(Player* player) {
 		return ((HeavyRangedWeaponImplementation*) _impl)->useObject(player);
 }
 
+void HeavyRangedWeapon::activateSkill(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((HeavyRangedWeaponImplementation*) _impl)->activateSkill(player);
+}
+
+void HeavyRangedWeapon::setSkill(const String& sk) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addAsciiParameter(sk);
+
+		method.executeWithVoidReturn();
+	} else
+		((HeavyRangedWeaponImplementation*) _impl)->setSkill(sk);
+}
+
+String& HeavyRangedWeapon::getSkill() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		method.executeWithAsciiReturn(_return_getSkill);
+		return _return_getSkill;
+	} else
+		return ((HeavyRangedWeaponImplementation*) _impl)->getSkill();
+}
+
+unsigned int HeavyRangedWeapon::getSkillCRC() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((HeavyRangedWeaponImplementation*) _impl)->getSkillCRC();
+}
+
+void HeavyRangedWeapon::useCharge(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((HeavyRangedWeaponImplementation*) _impl)->useCharge(player);
+}
+
+void HeavyRangedWeapon::sendDeltas(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((HeavyRangedWeaponImplementation*) _impl)->sendDeltas(player);
+}
+
 /*
  *	HeavyRangedWeaponAdapter
  */
@@ -59,6 +136,24 @@ Packet* HeavyRangedWeaponAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	case 6:
 		resp->insertSignedInt(useObject((Player*) inv->getObjectParameter()));
 		break;
+	case 7:
+		activateSkill((Player*) inv->getObjectParameter());
+		break;
+	case 8:
+		setSkill(inv->getAsciiParameter(_param0_setSkill__String_));
+		break;
+	case 9:
+		resp->insertAscii(getSkill());
+		break;
+	case 10:
+		resp->insertInt(getSkillCRC());
+		break;
+	case 11:
+		useCharge((Player*) inv->getObjectParameter());
+		break;
+	case 12:
+		sendDeltas((Player*) inv->getObjectParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -68,6 +163,30 @@ Packet* HeavyRangedWeaponAdapter::invokeMethod(uint32 methid, DistributedMethod*
 
 int HeavyRangedWeaponAdapter::useObject(Player* player) {
 	return ((HeavyRangedWeaponImplementation*) impl)->useObject(player);
+}
+
+void HeavyRangedWeaponAdapter::activateSkill(Player* player) {
+	return ((HeavyRangedWeaponImplementation*) impl)->activateSkill(player);
+}
+
+void HeavyRangedWeaponAdapter::setSkill(const String& sk) {
+	return ((HeavyRangedWeaponImplementation*) impl)->setSkill(sk);
+}
+
+String& HeavyRangedWeaponAdapter::getSkill() {
+	return ((HeavyRangedWeaponImplementation*) impl)->getSkill();
+}
+
+unsigned int HeavyRangedWeaponAdapter::getSkillCRC() {
+	return ((HeavyRangedWeaponImplementation*) impl)->getSkillCRC();
+}
+
+void HeavyRangedWeaponAdapter::useCharge(Player* player) {
+	return ((HeavyRangedWeaponImplementation*) impl)->useCharge(player);
+}
+
+void HeavyRangedWeaponAdapter::sendDeltas(Player* player) {
+	return ((HeavyRangedWeaponImplementation*) impl)->sendDeltas(player);
 }
 
 /*

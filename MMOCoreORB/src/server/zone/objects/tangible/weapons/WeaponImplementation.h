@@ -179,6 +179,7 @@ public:
 	static const int HEAVYLAUNCHER = 19;
 	static const int GRENADE = 20;
 	static const int TRAP = 21;
+	static const int SPECIALHEAVYWEAPON = 22;
 
 	static const int NONE = 0;
 	static const int LIGHT = 1;
@@ -702,7 +703,11 @@ public:
 	}
 
 	inline bool isRanged() {
-		return (category == RANGED) ;
+		return (category == RANGED || category == HEAVYWEAPON) ;
+	}
+
+	inline bool isHeavyWeapon() {
+		return (category == HEAVYWEAPON);
 	}
 
 	inline bool isCertified() {

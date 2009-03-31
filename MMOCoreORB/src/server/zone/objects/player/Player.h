@@ -541,6 +541,8 @@ public:
 
 	bool isJedi();
 
+	void checkForceStatus();
+
 	void mutePlayer();
 
 	void toggleImmune();
@@ -835,6 +837,8 @@ public:
 
 	void queueThrow(TangibleObject* throwItem, unsigned int actionCRC);
 
+	void fireHeavyWeapon(TangibleObject* heavyWeapon, unsigned int actionCRC);
+
 	void setImagedesignXpGiven(bool given);
 
 	bool getImagedesignXpGiven();
@@ -866,6 +870,8 @@ public:
 	void setActiveArea(ActiveArea* area);
 
 	void throwTrap(unsigned int targetID);
+
+	void throwGrenade(unsigned int targetID);
 
 	void equipItem(TangibleObject* item);
 
@@ -1508,6 +1514,8 @@ public:
 
 	bool isJedi();
 
+	void checkForceStatus();
+
 	void mutePlayer();
 
 	void toggleImmune();
@@ -1802,6 +1810,8 @@ public:
 
 	void queueThrow(TangibleObject* throwItem, unsigned int actionCRC);
 
+	void fireHeavyWeapon(TangibleObject* heavyWeapon, unsigned int actionCRC);
+
 	void setImagedesignXpGiven(bool given);
 
 	bool getImagedesignXpGiven();
@@ -1833,6 +1843,8 @@ public:
 	void setActiveArea(ActiveArea* area);
 
 	void throwTrap(unsigned int targetID);
+
+	void throwGrenade(unsigned int targetID);
 
 	void equipItem(TangibleObject* item);
 

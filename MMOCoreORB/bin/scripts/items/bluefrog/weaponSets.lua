@@ -46,6 +46,9 @@ RunItemLUAFile("bluefrog/rifleWeaponSet.lua");
 RunItemLUAFile("bluefrog/oneHandWeaponSet.lua");
 RunItemLUAFile("bluefrog/twoHandWeaponSet.lua");
 RunItemLUAFile("bluefrog/polearmWeaponSet.lua");
-RunItemLUAFile("bluefrog/commandoWeaponSet.lua");
 RunItemLUAFile("bluefrog/tkaWeaponSet.lua");
+RunItemLUAFile("bluefrog/grenadeSet.lua");
+RunItemLUAFile("bluefrog/heavyWeaponSet.lua");
+RunItemLUAFile("bluefrog/commandoWeaponSet.lua");
+
 --RunItemLUAFile("bluefrog/jediWeaponSet.lua");
