@@ -141,10 +141,10 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 	}
 
 	if (creature->isWatching() && !tskill->isHealSkill())
-		creature->stopWatch(creature->getWatchID());
+		creature->stopWatch();
 
 	if (creature->isListening() && !tskill->isHealSkill())
-		creature->stopListen(creature->getListenID());
+		creature->stopListen();
 
 	if (tskill->isHealSkill()) {
 		if (!tskill->calculateCost(creature))
@@ -2055,10 +2055,10 @@ void CombatManager::requestDuel(Player* player, Player* targetPlayer) {
 	 */
 
 	if (player->isListening())
-		player->stopListen(player->getListenID());
+		player->stopListen();
 
 	if (player->isWatching())
-		player->stopWatch(player->getWatchID());
+		player->stopWatch();
 
 	try {
 		targetPlayer->wlock(player);
@@ -2134,10 +2134,10 @@ void CombatManager::requestEndDuel(Player* player, Player* targetPlayer) {
 	 */
 
 	if (player->isListening())
-		player->stopListen(player->getListenID());
+		player->stopListen();
 
 	if (player->isWatching())
-		player->stopWatch(player->getWatchID());
+		player->stopWatch();
 
 	try {
 		targetPlayer->wlock(player);
@@ -2183,10 +2183,10 @@ void CombatManager::freeDuelList(Player* player) {
 		return;
 
 	if (player->isListening())
-		player->stopListen(player->getListenID());
+		player->stopListen();
 
 	if (player->isWatching())
-		player->stopWatch(player->getWatchID());
+		player->stopWatch();
 
 	player->info("freeing duel list");
 
@@ -2249,10 +2249,10 @@ void CombatManager::declineDuel(Player* player, Player* targetPlayer) {
 	 */
 
 	if (player->isListening())
-		player->stopListen(player->getListenID());
+		player->stopListen();
 
 	if (player->isWatching())
-		player->stopWatch(player->getWatchID());
+		player->stopWatch();
 
 	try {
 		targetPlayer->wlock(player);
