@@ -295,6 +295,8 @@ uint64 GuildManagerImplementation::getOfflineGuildMemberID(String name) {
 
 		StringBuffer query;
 
+		MySqlDatabase::escapeString(checkName);
+
 		query << "SELECT character_id FROM characters "
 			<< "Where lcase(firstname) = '" << checkName << "';";
 
@@ -987,8 +989,11 @@ bool GuildManagerImplementation::insertSponsorshipDB(Player* inviter, uint64 oth
 
 		StringBuffer inmqry;
 
+		String guildtag = inviter->getGuild()->getGuildTag();
+		MySqlDatabase::escapeString(guildtag);
+
 		inmqry << "INSERT into guilds_sponsoring set guild_id = " << inviter->getGuildID()
-			<< ",guild_name ='" << inviter->getGuild()->getGuildTag() << "', sponsored_time = 0, "
+			<< ",guild_name ='" << guildtag << "', sponsored_time = 0, "
 			<< "sponsored_by = " << inviter->getCharacterID() << ", sponsored = " << otherPlayerID << ";";
 
 		ServerDatabase::instance()->executeStatement(inmqry);
@@ -2415,6 +2420,7 @@ uint32 GuildManagerImplementation::getGuildPermissionsFromDB(String proband) {
 	uint32 permissions = 0;
 
 	String checkName = proband.toLowerCase();
+	MySqlDatabase::escapeString(checkName);
 
 	try {
 		query << "SELECT guildpermission FROM characters where lcase(firstname) = '" << checkName << "';";
@@ -2611,6 +2617,8 @@ void GuildManagerImplementation::updateGuildPermissionsToDB(String proband, uint
 
 	try {
 		StringBuffer query;
+
+		MySqlDatabase::escapeString(lProband);
 
 		query << "UPDATE characters set guildpermission = " << permissions
 			  << " WHERE lcase(`firstname`) = '" << lProband << "';";

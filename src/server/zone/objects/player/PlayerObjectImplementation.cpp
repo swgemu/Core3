@@ -436,6 +436,9 @@ void PlayerObjectImplementation::saveWaypoints(Player* player) {
 			name = wpl->getName();
 			MySqlDatabase::escapeString(name);
 
+			String internalnote = wpl->getInternalNote();
+			MySqlDatabase::escapeString(internalnote);
+
 			query.deleteAll();
 			query << "INSERT DELAYED INTO waypoints (`waypoint_id`,`owner_id`,`waypoint_name`,`x`,`y`,`planet_name`,`internal_note`,`active`)"
 				  << " VALUES ('"
@@ -443,7 +446,7 @@ void PlayerObjectImplementation::saveWaypoints(Player* player) {
 				  << player->getCharacterID() << "','" << name << "','"
 				  << wpl->getPositionX() << "','"  << wpl->getPositionY() << "','"
 				  << wpl->getPlanetName() << "','"
-				  << wpl->getInternalNote() << "',"
+				  << internalnote << "',"
 				  << wpl->getStatus() << ");" ;
 
 			ServerDatabase::instance()->executeStatement(query);

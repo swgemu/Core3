@@ -585,6 +585,7 @@ void ChatManagerImplementation::sendMail(const String& sendername, UnicodeString
 
 	try {
 		//receiver->wlock();
+		MySqlDatabase::escapeString(playerName);
 
 		StringBuffer query;
 		query << "SELECT mail_id FROM mail WHERE time = " << currentTime << " and lower(recv_name) = '" << playerName << "';";

@@ -791,7 +791,11 @@ void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int p
 			}
 
 			StringBuffer update;
-			update << "UPDATE `bazaar_items` SET price = " << price1 << ", bidderName = '" << item->getBidderName() << "', buyerid = " << player->getObjectID() << " where objectid = " << objectid << ";";
+
+			String biddername = item->getBidderName();
+			MySqlDatabase::escapeString(biddername);
+
+			update << "UPDATE `bazaar_items` SET price = " << price1 << ", bidderName = '" << biddername << "', buyerid = " << player->getObjectID() << " where objectid = " << objectid << ";";
 			try {
 
 				ServerDatabase::instance()->executeStatement(update);
