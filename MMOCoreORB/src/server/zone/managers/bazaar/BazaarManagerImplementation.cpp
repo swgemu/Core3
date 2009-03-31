@@ -535,10 +535,15 @@ void BazaarManagerImplementation::checkAuctions() {
 					item->setExpireTime(availableTime);
 					item->setBuyerID(item->getOwnerID());
 
+					String bidderName = item->getBidderName();
+					String ownerName = item->getOwnerName();
+					MySqlDatabase::escapeString(bidderName);
+					MySqlDatabase::escapeString(ownerName);
+
 					StringBuffer update;
 					update << "UPDATE `bazaar_items` SET sold = 1, expire = " << availableTime << ", buyerid = "
-					<< item->getBuyerID() << ", bidderName = '" << item->getBidderName() << "', ownerid = "
-					<< item->getOwnerID() << ", ownerName = '" << item->getOwnerName() << "' where objectid = " << item->getID() << ";";
+					<< item->getBuyerID() << ", bidderName = '" << bidderName << "', ownerid = "
+					<< item->getOwnerID() << ", ownerName = '" << ownerName << "' where objectid = " << item->getID() << ";";
 
 					try {
 						ServerDatabase::instance()->executeStatement(update);
@@ -639,9 +644,13 @@ void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int p
 			item->setBuyerID(player->getObjectID());
 			item->setBidderName(playername);
 
+			String bidderName = item->getBidderName();
+			MySqlDatabase::escapeString(bidderName);
+
+
 			StringBuffer update;
 			update << "UPDATE `bazaar_items` SET sold = 1, expire = " << availableTime << ", buyerid = "
-			<< item->getBuyerID() << ", bidderName='" << item->getBidderName() << "' where objectid = " << item->getID() << ";";
+			<< item->getBuyerID() << ", bidderName='" << bidderName << "' where objectid = " << item->getID() << ";";
 
 			try {
 				ServerDatabase::instance()->executeStatement(update);

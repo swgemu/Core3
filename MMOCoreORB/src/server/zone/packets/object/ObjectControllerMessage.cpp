@@ -1039,6 +1039,10 @@ void ObjectControllerMessage::parseSurrenderSkillBox(Player* player,
 		pack->parseUnicode(skillBox);
 
 		player->surrenderSkillBox(skillBox.toString());
+	} catch (Exception& e) {
+		System::out
+				<< "unreported ObjectControllerMessage::parseSurrenderSkillBox(Player* player, Message* pack) exception\n";
+		e.printStackTrace();
 	} catch (...) {
 		System::out
 				<< "unreported ObjectControllerMessage::parseSurrenderSkillBox(Player* player, Message* pack) exception\n";
