@@ -451,17 +451,21 @@ GameCommandHandler::~GameCommandHandler() {
 }
 
 void GameCommandHandler::handleCommand(String cmd, StringTokenizer tokenizer, Player* player) {
-	String cmdLower = cmd.toLowerCase();
-	if (!gmCommands->containsKey(cmdLower)) {
-		player->sendSystemMessage("Command not found.");
-		return;
-	}
+	try {
+		String cmdLower = cmd.toLowerCase();
+		if (!gmCommands->containsKey(cmdLower)) {
+			player->sendSystemMessage("Command not found.");
+			return;
+		}
 
-	GMCommand * command = gmCommands->get(cmdLower);
-	if (command->getRequiredAdminLevel() & player->getAdminLevel())
-		command->exec(tokenizer, player);
-	else
-		player->sendSystemMessage("You do not have permission to use this command.");
+		GMCommand * command = gmCommands->get(cmdLower);
+		if (command->getRequiredAdminLevel() & player->getAdminLevel())
+			command->exec(tokenizer, player);
+		else
+			player->sendSystemMessage("You do not have permission to use this command.");
+	} catch (...) {
+		player->sendSystemMessage("Command not found.");
+	}
 }
 
 void GameCommandHandler::commands(StringTokenizer tokenizer, Player* player) {

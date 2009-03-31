@@ -1437,7 +1437,9 @@ void RadialManager::handleDisbandCamp(Player* player,SceneObject* obj) {
 		return;
 	CampTerminal* terminal = (CampTerminal*) obj;
 	CampSite* camp = terminal->getCampSite();
-	camp->disbandCamp();
+
+	if (camp != NULL)
+		camp->disbandCamp();
 
 }
 
