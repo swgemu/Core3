@@ -2218,9 +2218,9 @@ void CreatureObjectImplementation::removeSkills(Vector<Skill*>& skills, bool upd
 		PlayerObject* player = ((PlayerImplementation*)this)->getPlayerObject();
 
 		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player);
-		dplay9->startSkillListUpdate(indexes.size());
+		dplay9->startSkillListUpdate(skills.size());
 
-		for (int i = 0; i < indexes.size(); ++i) {
+		for (int i = 0; i < skills.size(); ++i) {
 			int idx = indexes.get(i);
 			dplay9->removeSkill(idx);
 		}
@@ -2798,7 +2798,7 @@ void CreatureObjectImplementation::stopDancing() {
 			info("stopping dance for [" + creo->getCharacterName().toString() + "]");
 			// dance_stop_other	%TU stops dancing.
 
-			creo->stopWatch(true, true, false);
+			creo->stopWatch(objectID, true, true, false);
 
 			if (!creo->isListening())
 				sendEntertainmentUpdate(0, "", true);
@@ -2833,7 +2833,7 @@ void CreatureObjectImplementation::stopPlayingMusic() {
 
 			info("stopping music for [" + creo->getCharacterName().toString() + "]");
 
-			creo->stopListen(true, true, false);
+			creo->stopListen(objectID, true, true, false);
 
 			if (!creo->isWatching())
 				sendEntertainmentUpdate(0, "", true);
@@ -2850,7 +2850,6 @@ void CreatureObjectImplementation::stopPlayingMusic() {
 
 void CreatureObjectImplementation::startWatch(uint64 entid) {
 	SceneObject* object = zone->lookupObject(entid);
-	StfParameter* params;
 
 	if (object == NULL)
 		return;
@@ -2865,74 +2864,61 @@ void CreatureObjectImplementation::startWatch(uint64 entid) {
 		return;
 	}
 
-	CreatureObject* entertainer = (CreatureObject*) object;
-	Player* player = (Player*)_this;
+	CreatureObject* creature = (CreatureObject*) object;
 
-	if (entertainer == _this)
+	if (creature == _this)
 		return;
 
-	//Check range.
-	if (!isInRange(entertainer, 40.0f) || !(entertainer->getBuilding() == getBuilding())) {
-		params = new StfParameter;
-		params->addTO("radial_performance", "watch");
-		player->sendSystemMessage("cmd_err", "target_range_prose", params); //"Your target is too far away to %TO."
-		delete params;
-		return;
-	}
-
-	entertainer->wlock(_this);
+	creature->wlock(_this);
 
 	if (isDancing() || isPlayingMusic()) {
 		sendSystemMessage("You cannot /watch while skill animating.");
-		entertainer->unlock();
+
+		creature->unlock();
 		return;
+	} else if (!creature->isDancing()) {
+		sendSystemMessage(creature->getCharacterName().toString() + " is not currently dancing.");
 
-	} else if (!entertainer->isDancing()) {
-		params = new StfParameter;
-		params->addTT(entid);
-		player->sendSystemMessage("performance", "dance_watch_not_dancing", params); //"%TT is not dancing."
-		delete params;
-
-		entertainer->unlock();
+		creature->unlock();
 		return;
-
 	} else if (entid == watchID) {
-		sendSystemMessage("You are already watching " + entertainer->getCharacterName().toString() + ".");
+		sendSystemMessage("You are already watching " + creature->getCharacterName().toString() + ".");
 
-		entertainer->unlock();
+		creature->unlock();
 		return;
 	}
 
 	if (isWatching()) {
-		stopWatch(false);
+		stopWatch(watchID, false);
+
 		sendEntertainmentUpdate(entid, "entertained");
-		entertainer->addWatcher(_this);
+
+		creature->addWatcher(_this);
 
 		if (isPlayer())
-			sendSystemMessage("You begin watching " + entertainer->getCharacterName().toString() + ".");
-
+			sendSystemMessage("You begin watching " + creature->getCharacterName().toString() + ".");
 	} else {
 		sendEntertainmentUpdate(entid, "entertained");
-		entertainer->addWatcher(_this);
+
+		creature->addWatcher(_this);
 
 		if (isPlayer())
-			sendSystemMessage("You begin watching " + entertainer->getCharacterName().toString() + ".");
+			sendSystemMessage("You begin watching " + creature->getCharacterName().toString() + ".");
 
 		doWatching = true;
 	}
 	setEntertainerBuffDuration(PerformanceType::DANCE, 0.0f);
 	setEntertainerBuffStrength(PerformanceType::DANCE, 0.0f);
 
-	info("started watching [" + entertainer->getCharacterName().toString() + "]");
+	info("started watching [" + creature->getCharacterName().toString() + "]");
 
 	watchID =  entid;
 
-	entertainer->unlock();
+	creature->unlock();
 }
 
 void CreatureObjectImplementation::startListen(uint64 entid) {
 	SceneObject* object = zone->lookupObject(entid);
-	StfParameter* params;
 
 	if (object == NULL)
 		return;
@@ -2942,76 +2928,69 @@ void CreatureObjectImplementation::startListen(uint64 entid) {
 		return;
 	}
 
-	CreatureObject* entertainer = (CreatureObject*) object;
-	Player* player = (Player*)_this;
+	CreatureObject* creature = (CreatureObject*) object;
 
-	if (entertainer == _this)
+	if (creature == _this)
 		return;
 
-	//Check range.
-	if (!isInRange(entertainer, 40.0f) || !(entertainer->getBuilding() == getBuilding())) {
-		params = new StfParameter;
-		params->addTO("radial_performance", "listen");
-		player->sendSystemMessage("cmd_err", "target_range_prose", params); //"Your target is too far away to %TO."
-		delete params;
-		return;
-	}
-
-	entertainer->wlock(_this);
+	creature->wlock(_this);
 
 	if (isDancing() || isPlayingMusic()) {
 		sendSystemMessage("You cannot /listen while skill animating.");
-		entertainer->unlock();
+
+		creature->unlock();
 		return;
+	} else 	if (!creature->isPlayingMusic()) {
+		sendSystemMessage(creature->getCharacterName().toString() + " is not currently playing music.");
 
-	} else 	if (!entertainer->isPlayingMusic()) {
-		params = new StfParameter;
-		params->addTT(entid);
-		player->sendSystemMessage("performance", "music_listen_not_playing", params); //"%TT is not playing a song."
-		delete params;
-
-		entertainer->unlock();
+		creature->unlock();
 		return;
-
 	} else if (entid == listenID) {
-		sendSystemMessage("You are already listening to " + entertainer->getCharacterName().toString() + ".");
+		sendSystemMessage("You are already listening to " + creature->getCharacterName().toString() + ".");
 
-		entertainer->unlock();
+		creature->unlock();
 		return;
 	}
 
 	if (isListening()) {
-		stopListen(false);
+		stopListen(listenID, false);
+
 		sendEntertainmentUpdate(entid, "entertained");
-		entertainer->addListener(_this);
+
+		creature->addListener(_this);
 
 		if (isPlayer())
-			sendSystemMessage("You begin listening to " + entertainer->getCharacterName().toString() + ".");
-
+			sendSystemMessage("You begin listening to " + creature->getCharacterName().toString() + ".");
 	} else {
 		sendEntertainmentUpdate(entid, "entertained");
-		entertainer->addListener(_this);
+
+		creature->addListener(_this);
 
 		if (isPlayer())
-			sendSystemMessage("You begin listening to " + entertainer->getCharacterName().toString() + ".");
+			sendSystemMessage("You begin listening to " + creature->getCharacterName().toString() + ".");
 
 		doListening = true;
 	}
 	setEntertainerBuffDuration(PerformanceType::MUSIC, 0.0f);
 	setEntertainerBuffStrength(PerformanceType::MUSIC, 0.0f);
 
-	info("started listening [" + entertainer->getCharacterName().toString() + "]");
+	info("started listening [" + creature->getCharacterName().toString() + "]");
 
 	setListenID(entid);
 
-	entertainer->unlock();
+	creature->unlock();
 }
 
-void CreatureObjectImplementation::stopWatch(bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
-	SceneObject* object = zone->lookupObject(watchID);
+void CreatureObjectImplementation::stopWatch(uint64 entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
+	SceneObject* object = zone->lookupObject(entid);
 
 	if (object == NULL)
 		return;
+
+	if (!object->isPlayer() && !object->isNonPlayerCreature()) {
+		sendSystemMessage("You cannot stop watching an object.");
+		return;
+	}
 
 	CreatureObject* entertainer = (CreatureObject*) object;
 
@@ -3031,6 +3010,13 @@ void CreatureObjectImplementation::stopWatch(bool doSendPackets, bool forced, bo
 			entertainer->unlock();
 	}
 
+	if (entid != watchID) {
+		if (isPlayer() && entertainer != NULL)
+			sendSystemMessage("You are not currently watching " + entName + ".");
+
+		return;
+	}
+
 	setMood(moodid);
 
 	if (doSendPackets)
@@ -3042,7 +3028,7 @@ void CreatureObjectImplementation::stopWatch(bool doSendPackets, bool forced, bo
 		StfParameter* params = new StfParameter;
 
 		if (forced) {
-			params->addTU(watchID);
+			params->addTU(entid);
 			player->sendSystemMessage("performance", "dance_stop_other", params); //"%TU stops dancing."
 		} else if (outOfRange) {
 			StringBuffer msg;
@@ -3050,7 +3036,7 @@ void CreatureObjectImplementation::stopWatch(bool doSendPackets, bool forced, bo
 			sendSystemMessage(msg.toString());
 
 			//TODO: Why does %OT say "him/her" instead of "he/she"?
-			//params->addTT(watchID);
+			//params->addTT(entid);
 			//player->sendSystemMessage("performance", "dance_watch_out_of_range", params); //"You stop watching %TT because %OT is too far away."
 		} else {
 			player->sendSystemMessage("performance", "dance_watch_stop_self"); //"You stop watching."
@@ -3068,11 +3054,16 @@ void CreatureObjectImplementation::stopWatch(bool doSendPackets, bool forced, bo
 	watchID = 0;
 }
 
-void CreatureObjectImplementation::stopListen(bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
-	SceneObject* object = zone->lookupObject(listenID);
+void CreatureObjectImplementation::stopListen(uint64 entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
+	SceneObject* object = zone->lookupObject(entid);
 
 	if (object == NULL)
 		return;
+
+	if (!object->isPlayer() && !object->isNonPlayerCreature()) {
+		sendSystemMessage("You cannot stop listening an object.");
+		return;
+	}
 
 	CreatureObject* entertainer = (CreatureObject*) object;
 
@@ -3092,6 +3083,13 @@ void CreatureObjectImplementation::stopListen(bool doSendPackets, bool forced, b
 			entertainer->unlock();
 	}
 
+	if (entid != listenID) {
+		if (isPlayer() && entertainer != NULL)
+			sendSystemMessage("You are not currently listening to " + entName + ".");
+
+		return;
+	}
+
 	setMood(moodid);
 
 	if (doSendPackets)
@@ -3103,7 +3101,7 @@ void CreatureObjectImplementation::stopListen(bool doSendPackets, bool forced, b
 		StfParameter* params = new StfParameter;
 
 		if (forced) {
-			params->addTU(listenID);
+			params->addTU(entid);
 			player->sendSystemMessage("performance", "music_stop_other", params); //"%TU stops playing."
 		} else if (outOfRange) {
 			StringBuffer msg;
@@ -3111,7 +3109,7 @@ void CreatureObjectImplementation::stopListen(bool doSendPackets, bool forced, b
 			sendSystemMessage(msg.toString());
 
 			//TODO: Why does %OT say "him/her" instead of "he/she"?
-			//params->addTT(listenID);
+			//params->addTT(entid);
 			//player->sendSystemMessage("performance", "music_listen_out_of_range", params); //"You stop listening to %TT because %OT is too far away."
 		} else {
 			player->sendSystemMessage("performance", "music_listen_stop_self"); //"You stop listening."
@@ -3423,13 +3421,13 @@ void CreatureObjectImplementation::doEntertainerPatronEffects() {
 
 				} else { //patron is not in range
 					if (isDancing()) {
-						patron->stopWatch(true, false, false, true);
+						patron->stopWatch(objectID, true, false, false, true);
 
 						if (!patron->isListening())
 							sendEntertainmentUpdate(0, "", true);
 
 					} else if (isPlayingMusic()) {
-						patron->stopListen(true, false, false, true);
+						patron->stopListen(objectID, true, false, false, true);
 
 						if (!patron->isWatching())
 							sendEntertainmentUpdate(0, "", true);
@@ -4419,8 +4417,8 @@ void CreatureObjectImplementation::onResuscitated(SceneObject* healer) {
 void CreatureObjectImplementation::onDamageHealed(SceneObject* healer, uint8 attribute, uint32 amount) {
 	if (canRecoverFromIncapacitation()) {
 		if (healer->isPlayer()) {
-			((Player*)healer)->stopWatch(true, true, false);
-			((Player*)healer)->stopListen(true, true, false);
+			((Player*)healer)->stopWatch(objectID, true, true, false);
+			((Player*)healer)->stopListen(objectID, true, true, false);
 		}
 
 		recoverFromIncapacitation();

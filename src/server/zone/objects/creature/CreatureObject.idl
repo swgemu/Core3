@@ -403,8 +403,9 @@ interface CreatureObject implements TangibleObject {
 	void startWatch(unsigned long entid);
 	void startListen(unsigned long entid);
 
-	void stopWatch(boolean doSendPackets = true, boolean forced = false, boolean doLock = true, boolean outOfRange = false);
-	void stopListen(boolean doSendPackets = true, boolean forced = false, boolean doLock = true, boolean outOfRange = false);
+
+	void stopWatch(unsigned long entid, boolean doSendPackets = true, boolean forced = false, boolean doLock = true, boolean outOfRange = false);
+	void stopListen(unsigned long entid, boolean doSendPackets = true, boolean forced = false, boolean doLock = true, boolean outOfRange = false);
 
 	boolean isPlayingMusic();
 	boolean isDancing();

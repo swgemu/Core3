@@ -499,9 +499,9 @@ public:
 
 	void startListen(unsigned long long entid);
 
-	void stopWatch(bool doSendPackets = true, bool forced = false, bool doLock = true, bool outOfRange = false);
+	void stopWatch(unsigned long long entid, bool doSendPackets = true, bool forced = false, bool doLock = true, bool outOfRange = false);
 
-	void stopListen(bool doSendPackets = true, bool forced = false, bool doLock = true, bool outOfRange = false);
+	void stopListen(unsigned long long entid, bool doSendPackets = true, bool forced = false, bool doLock = true, bool outOfRange = false);
 
 	bool isPlayingMusic();
 
@@ -1790,9 +1790,9 @@ public:
 
 	void startListen(unsigned long long entid);
 
-	void stopWatch(bool doSendPackets, bool forced, bool doLock, bool outOfRange);
+	void stopWatch(unsigned long long entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange);
 
-	void stopListen(bool doSendPackets, bool forced, bool doLock, bool outOfRange);
+	void stopListen(unsigned long long entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange);
 
 	bool isPlayingMusic();
 

@@ -141,10 +141,10 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 	}
 
 	if (creature->isWatching() && !tskill->isHealSkill())
-		creature->stopWatch();
+		creature->stopWatch(creature->getWatchID());
 
 	if (creature->isListening() && !tskill->isHealSkill())
-		creature->stopListen();
+		creature->stopListen(creature->getListenID());
 
 	if (tskill->isHealSkill()) {
 		if (!tskill->calculateCost(creature))
@@ -2055,10 +2055,10 @@ void CombatManager::requestDuel(Player* player, Player* targetPlayer) {
 	 */
 
 	if (player->isListening())
-		player->stopListen();
+		player->stopListen(player->getListenID());
 
 	if (player->isWatching())
-		player->stopWatch();
+		player->stopWatch(player->getWatchID());
 
 	try {
 		targetPlayer->wlock(player);

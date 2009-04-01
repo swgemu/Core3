@@ -2991,12 +2991,13 @@ void CreatureObject::startListen(unsigned long long entid) {
 		((CreatureObjectImplementation*) _impl)->startListen(entid);
 }
 
-void CreatureObject::stopWatch(bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
+void CreatureObject::stopWatch(unsigned long long entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 229);
+		method.addUnsignedLongParameter(entid);
 		method.addBooleanParameter(doSendPackets);
 		method.addBooleanParameter(forced);
 		method.addBooleanParameter(doLock);
@@ -3004,15 +3005,16 @@ void CreatureObject::stopWatch(bool doSendPackets, bool forced, bool doLock, boo
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureObjectImplementation*) _impl)->stopWatch(doSendPackets, forced, doLock, outOfRange);
+		((CreatureObjectImplementation*) _impl)->stopWatch(entid, doSendPackets, forced, doLock, outOfRange);
 }
 
-void CreatureObject::stopListen(bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
+void CreatureObject::stopListen(unsigned long long entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 230);
+		method.addUnsignedLongParameter(entid);
 		method.addBooleanParameter(doSendPackets);
 		method.addBooleanParameter(forced);
 		method.addBooleanParameter(doLock);
@@ -3020,7 +3022,7 @@ void CreatureObject::stopListen(bool doSendPackets, bool forced, bool doLock, bo
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureObjectImplementation*) _impl)->stopListen(doSendPackets, forced, doLock, outOfRange);
+		((CreatureObjectImplementation*) _impl)->stopListen(entid, doSendPackets, forced, doLock, outOfRange);
 }
 
 bool CreatureObject::isPlayingMusic() {
@@ -8770,10 +8772,10 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		startListen(inv->getUnsignedLongParameter());
 		break;
 	case 229:
-		stopWatch(inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		stopWatch(inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case 230:
-		stopListen(inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		stopListen(inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case 231:
 		resp->insertBoolean(isPlayingMusic());
@@ -10871,12 +10873,12 @@ void CreatureObjectAdapter::startListen(unsigned long long entid) {
 	return ((CreatureObjectImplementation*) impl)->startListen(entid);
 }
 
-void CreatureObjectAdapter::stopWatch(bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
-	return ((CreatureObjectImplementation*) impl)->stopWatch(doSendPackets, forced, doLock, outOfRange);
+void CreatureObjectAdapter::stopWatch(unsigned long long entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
+	return ((CreatureObjectImplementation*) impl)->stopWatch(entid, doSendPackets, forced, doLock, outOfRange);
 }
 
-void CreatureObjectAdapter::stopListen(bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
-	return ((CreatureObjectImplementation*) impl)->stopListen(doSendPackets, forced, doLock, outOfRange);
+void CreatureObjectAdapter::stopListen(unsigned long long entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
+	return ((CreatureObjectImplementation*) impl)->stopListen(entid, doSendPackets, forced, doLock, outOfRange);
 }
 
 bool CreatureObjectAdapter::isPlayingMusic() {

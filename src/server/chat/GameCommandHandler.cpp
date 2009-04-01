@@ -257,10 +257,10 @@ void GameCommandHandler::init() {
 			"Toggles immunity.",
 			"Usage: @immune",
 			&immune);
-	/*gmCommands->addCommand("invisible", PRIVILEGED ,
+	gmCommands->addCommand("invisible", PRIVILEGED ,
 			"Toggles invisibility",
 			"Usage: @invisible",
-			&invisible);*/ // TA: review this, remove inRangeObject hacks
+			&invisible);
 	gmCommands->addCommand("flare", PRIVILEGED,
 			"Fires a flare at your position...",
 			"Usage: @flare",
