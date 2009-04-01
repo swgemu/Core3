@@ -2218,9 +2218,9 @@ void CreatureObjectImplementation::removeSkills(Vector<Skill*>& skills, bool upd
 		PlayerObject* player = ((PlayerImplementation*)this)->getPlayerObject();
 
 		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player);
-		dplay9->startSkillListUpdate(skills.size());
+		dplay9->startSkillListUpdate(indexes.size());
 
-		for (int i = 0; i < skills.size(); ++i) {
+		for (int i = 0; i < indexes.size(); ++i) {
 			int idx = indexes.get(i);
 			dplay9->removeSkill(idx);
 		}

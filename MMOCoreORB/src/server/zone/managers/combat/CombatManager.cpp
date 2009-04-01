@@ -2134,10 +2134,10 @@ void CombatManager::requestEndDuel(Player* player, Player* targetPlayer) {
 	 */
 
 	if (player->isListening())
-		player->stopListen();
+		player->stopListen(player->getListenID());
 
 	if (player->isWatching())
-		player->stopWatch();
+		player->stopWatch(player->getWatchID());
 
 	try {
 		targetPlayer->wlock(player);
@@ -2183,10 +2183,10 @@ void CombatManager::freeDuelList(Player* player) {
 		return;
 
 	if (player->isListening())
-		player->stopListen();
+		player->stopListen(player->getListenID());
 
 	if (player->isWatching())
-		player->stopWatch();
+		player->stopWatch(player->getWatchID());
 
 	player->info("freeing duel list");
 
@@ -2249,10 +2249,10 @@ void CombatManager::declineDuel(Player* player, Player* targetPlayer) {
 	 */
 
 	if (player->isListening())
-		player->stopListen();
+		player->stopListen(player->getListenID());
 
 	if (player->isWatching())
-		player->stopWatch();
+		player->stopWatch(player->getWatchID());
 
 	try {
 		targetPlayer->wlock(player);
