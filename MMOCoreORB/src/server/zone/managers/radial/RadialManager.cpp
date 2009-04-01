@@ -1335,7 +1335,7 @@ void RadialManager::handleEntertainerActions(Player* player, SceneObject* obj) {
 			if (!player->isWatching())
 				player->startWatch(targetID);
 			else
-				player->stopWatch();
+				player->stopWatch(player->getWatchID());
 
 			return;
 		}
@@ -1344,7 +1344,7 @@ void RadialManager::handleEntertainerActions(Player* player, SceneObject* obj) {
 			if (!player->isListening())
 				player->startListen(targetID);
 			else
-				player->stopListen();
+				player->stopListen(player->getListenID());
 
 			return;
 		}

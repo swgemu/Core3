@@ -684,14 +684,16 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 			player->clearQueueAction(actioncntr, 0, 1, 16);
 			return;
 		}
-		player->stopListen();
+		//player->stopListen();
+		parseStopListen(player, pack);
 		break;
 	case (0x6651AD9A): //stopwatching
 		if (player->isMounted()) {
 			player->clearQueueAction(actioncntr, 0, 1, 16);
 			return;
 		}
-		player->stopWatch();
+		//player->stopWatch();
+		parseStopWatch(player, pack);
 		break;
 	case (0x9B9FE4A8): // toggleawayfromkeyboard
 		player->toggleCharacterBit(PlayerObjectImplementation::AFK);
@@ -4825,4 +4827,16 @@ void ObjectControllerMessage::parseFireHeavyWeapon(Player* player, Message* pack
 		//((HeavyRangedWeapon*)obj)->activateSkill(player);
 	}
 
+}
+
+void ObjectControllerMessage::parseStopWatch(Player* player, Message* pack) {
+	uint64 watchID = pack->parseLong();
+
+	player->stopWatch(watchID);
+}
+
+void ObjectControllerMessage::parseStopListen(Player* player, Message* pack) {
+	uint64 listenID = pack->parseLong();
+
+	player->stopListen(listenID);
 }

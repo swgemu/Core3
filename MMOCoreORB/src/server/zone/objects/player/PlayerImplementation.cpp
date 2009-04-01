@@ -678,10 +678,10 @@ void PlayerImplementation::unload() {
 				stopPlayingMusic();
 
 			if (isWatching())
-				stopWatch();
+				stopWatch(watchID);
 
 			if (isListening())
-				stopListen();
+				stopListen(listenID);
 
 			clearTarget();
 

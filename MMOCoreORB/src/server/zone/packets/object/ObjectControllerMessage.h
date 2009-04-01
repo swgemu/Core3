@@ -229,6 +229,9 @@ public:
 	static void parseThrowGrenade(Player* player, Message* pack, uint32 actionCRC, uint32 actionCntr);
 	static void parseFireHeavyWeapon(Player* player, Message* pack, uint32 actionCRC, uint32 actionCntr);
 
+	static void parseStopWatch(Player* player, Message* pack);
+	static void parseStopListen(Player* player, Message* pack);
+
 };
 
 #endif /*OBJECTCONTROLLERMESSAGE_H_*/
