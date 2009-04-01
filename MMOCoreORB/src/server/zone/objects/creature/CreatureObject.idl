@@ -137,7 +137,8 @@ interface CreatureObject implements TangibleObject {
 	boolean isMeditating();
 	boolean isCreature();
 	boolean isNPC();
-
+	boolean isBerserked();
+	
 	boolean isTanoObjEquipped(TangibleObject tano);
 
 	//Future Creature Handler Stuff
@@ -791,6 +792,7 @@ interface CreatureObject implements TangibleObject {
 	void setIntimidatedState();
 	void setSnaredState();
 	void setRootedState();
+	void setBerserkedState(unsigned int duration);
 
 	int addDotState(CreatureObject attacker,unsigned long dotID, unsigned long dotType,int str, int type, int duration,float potency,int defense);
 	boolean healDot(int dotType,int reduction);
@@ -973,5 +975,6 @@ interface CreatureObject implements TangibleObject {
 
 	//Getters
 	boolean canRecoverFromIncapacitation();
-
+	void setBerserkDamage(unsigned int damage);
+	unsigned int getBerserkDamage();
 }

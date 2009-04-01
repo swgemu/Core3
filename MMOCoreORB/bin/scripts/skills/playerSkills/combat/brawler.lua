@@ -76,28 +76,6 @@ AddDeBuffAttackTargetSkill(CmbtEnhaceSkill)
 
 -----------------------------------------------------------------------
 
-HealEnhaceSkill = {
-	skillname = "berserk1",
-	effect = "clienteffect/combat_special_attacker_berserk.cef",
-	
-	duration = 15.0,
-	
-	speed = 1.0,
-
-	healthBonus = 0,
-	actionBonus = 0,
-	mindBonus = 0,
-
-	damageBonus = 10,
-	accuracyBonus = -10,
-
-	defenseBonus = 0,
-	speedBonus = 0,
-
-	StartFlyText = "go_berserk", 
-	FinishFlyText = "no_berserk",
-}
-
 --AddEnhanceSelfSkill(HealEnhaceSkill)
 
 -----------------------------------------------------------------------
@@ -1078,30 +1056,7 @@ CmbtEnhaceSkill = {
 }
 
 AddDeBuffAttackTargetSkill(CmbtEnhaceSkill)
-
------------------------------------------------------------------------
-
-HealEnhaceSkill = {
-	skillname = "berserk2",
-	effect = "clienteffect/combat_special_attacker_berserk.cef",
-	
-	duration = 40.0,
-	
-	speed = 1.0,
-
-	damageBonus = 20,
-	accuracyBonus = -10,
-	
-	defenseBonus = 0,
-	speedBonus = 0,
-
-	StartFlyText = "go_berserk", 
-	FinishFlyText = "no_berserk",
-}
-
---AddEnhanceSelfSkill(HealEnhaceSkill)
-
------------------------------------------------------------------------
+-----------------------------------------------------------------------
 
 CmbtEnhaceSkill = {
 	skillname = "warcry2",
@@ -1136,3 +1091,22 @@ CmbtEnhaceSkill = {
 }
 
 AddDeBuffAttackTargetSkill(CmbtEnhaceSkill)
+
+Berserk = {
+	skillname = "berserk1",
+
+	duration = 20,
+	
+	damage = 25
+}
+
+AddBerserkSelfSkill(Berserk)
+Berserk = {
+	skillname = "berserk2",
+
+	duration = 40,
+	
+	damage = 75
+}
+
+AddBerserkSelfSkill(Berserk)

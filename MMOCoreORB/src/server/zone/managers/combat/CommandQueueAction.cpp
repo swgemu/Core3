@@ -100,6 +100,12 @@ bool CommandQueueAction::check() {
 				target = creature;
 		}
 		else {
+			if (creature->isBerserked() && skill->getNameCRC() != 0xA8FEF90A) {
+				clearError(0);
+				if (player != NULL)
+					player->sendSystemMessage("You can not use this skill while berserked.");
+				return false;
+			}
 			if (target == NULL || !target->isAttackable()) {
 				clearError(3);
 				return false;

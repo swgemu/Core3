@@ -568,7 +568,6 @@ void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int dama
 	if (skill->isAttackSkill())
 		askill = (AttackTargetSkill*)skill;
 
-
 	switch (askill->getSkillType()) {
 	case AttackTargetSkill::DEBUFF:
 		return;
@@ -577,9 +576,6 @@ void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int dama
 	case AttackTargetSkill::DOT:
 	case AttackTargetSkill::RANDOM:
 	case AttackTargetSkill::WOUNDS:
-	case AttackTargetSkill::HEAVYWEAPON:
-		xptype = String("combat_rangedspecialize_heavy");
-		break;
 	case AttackTargetSkill::OTHER:
 		if (creature->getWeapon() == NULL)
 			xptype = String("combat_meleespecialize_unarmed");
@@ -591,6 +587,9 @@ void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int dama
 		break;
 	case AttackTargetSkill::FORCE:
 		xptype = "jedi_general";
+		break;
+	case AttackTargetSkill::HEAVYWEAPON:
+		xptype = String("combat_rangedspecialize_heavy");
 		break;
 	default:
 		xptype = "none";

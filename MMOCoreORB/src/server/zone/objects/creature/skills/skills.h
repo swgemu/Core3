@@ -60,6 +60,7 @@ which carries forward this exception.
 #include "target/attack/ThrowGrenadeAttackTargetSkill.h"
 #include "target/attack/CMDotAttackTargetSkill.h"
 #include "target/attack/FireHeavyWeaponAttackTargetSkill.h"
+#include "target/attack/PostureChangeRandomPoolAttackTargetSkill.h"
 
 #include "target/HealEnhanceTargetSkill.h"
 #include "target/HealDamageTargetSkill.h"
@@ -81,6 +82,7 @@ which carries forward this exception.
 #include "self/ChangePostureSelfSkill.h"
 #include "self/MeditateSelfSkill.h"
 #include "self/PowerboostSelfSkill.h"
+#include "self/BerserkSelfSkill.h"
 
 #include "self/EntertainSelfSkill.h"
 #include "self/EntertainEffectSelfSkill.h"

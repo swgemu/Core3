@@ -100,6 +100,8 @@ public:
 	static int AddDragTargetSkill(lua_State* L);
 	static int AddCMDotAttackTargetSkill(lua_State* L);
 	static int AddThrowGrenadeTargetSkill(lua_State* L);
+	static int AddPosutreChangeRandomPoolAttackTargetSkill(lua_State *L);
+	static int AddBerserkSelfSkill(lua_State* L);
 
 	static int AddEntertainSkill(lua_State* L);
 	static int AddEntertainEffectSkill(lua_State* L);

@@ -1885,6 +1885,11 @@ void CreatureImplementation::doStatesRecovery() {
 	if (isSnared() && snareRecoveryTime.isPast())
 		clearState(CreatureState::SNARED);
 
+	if (isBerserked() && berserkRecoveryTime.isPast()) {
+		clearState(CreatureState::BERSERK);
+		setBerserkDamage(0);
+	}
+
 	applyDots();
 
 	updateStates();

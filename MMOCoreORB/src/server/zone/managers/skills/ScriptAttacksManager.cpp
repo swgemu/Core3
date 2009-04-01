@@ -89,6 +89,8 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddMindHealTargetSkill", AddMindHealTargetSkill);
 	lua_register(getLuaState(), "AddDragTargetSkill", AddDragTargetSkill);
 	lua_register(getLuaState(), "AddHeavyWeaponSkill", AddHeavyWeaponSkill);
+	lua_register(getLuaState(), "AddPosutreChangeRandomPoolAttackTargetSkill", AddPosutreChangeRandomPoolAttackTargetSkill);
+	lua_register(getLuaState(), "AddBerserkSelfSkill", AddBerserkSelfSkill);
 
 	lua_register(getLuaState(), "AddDeBuffAttackTargetSkill", AddDeBuffAttackTargetSkill);
 	lua_register(getLuaState(), "AddEnhanceSelfSkill", AddEnhanceSelfSkill);
@@ -2223,4 +2225,109 @@ int ScriptAttacksManager::AddAreaTrackSkill(lua_State* L) {
 		System::out << "[ERROR] when attempting to add AddAreaTrackSkill!" << endl;
 		return -1;
 	}
+}
+
+int ScriptAttacksManager::AddPosutreChangeRandomPoolAttackTargetSkill(lua_State *L) {
+	LuaObject skill(L);
+
+	if (!skill.isValidTable())
+		return 0;
+
+	PostureChangeRandomPoolAttackTargetSkill* attack;
+
+	String attackname = skill.getStringField("attackname");
+	String animation = skill.getStringField("animation");
+	String postureAnimation = skill.getStringField("postureAnimation");
+
+	int weaponType = skill.getIntField("requiredWeaponType");
+
+	int range = skill.getIntField("range");
+	float DamageRatio = skill.getFloatField("damageRatio");
+	float SpeedRatio = skill.getFloatField("speedRatio");
+	int areaRangeDamage = skill.getIntField("areaRange");
+	int cone = skill.getIntField("coneAngle");
+	int accuracyBonus = skill.getIntField("accuracyBonus");
+
+	int knockdownStateChance = skill.getIntField("knockdownChance");
+	int postureDownStateChance = skill.getIntField("postureDownChance");
+	int postureUpStateChance = skill.getIntField("postureUpChance");
+	int dizzyStateChance = skill.getIntField("dizzyChance");
+	int blindStateChance = skill.getIntField("blindChance");
+	int stunStateChance = skill.getIntField("stunChance");
+	int intimidateStateChance = skill.getIntField("intimidateChance");
+
+	String CbtSpamBlock = skill.getStringField("CbtSpamBlock");
+	String CbtSpamCounter = skill.getStringField("CbtSpamCounter");
+	String CbtSpamEvade = skill.getStringField("CbtSpamEvade");
+	String CbtSpamHit = skill.getStringField("CbtSpamHit");
+	String CbtSpamMiss = skill.getStringField("CbtSpamMiss");
+
+	float healthCostMultiplier = skill.getFloatField("healthCostMultiplier");
+	float actionCostMultiplier = skill.getFloatField("actionCostMultiplier");
+	float mindCostMultiplier = skill.getFloatField("mindCostMultiplier");
+	float forceCostMultiplier = skill.getFloatField("forceCostMultiplier");
+	int posture = skill.getIntField("postureChange");
+
+	// For force powers
+	int forceCost = skill.getIntField("forceCost");
+
+	attack = new PostureChangeRandomPoolAttackTargetSkill(attackname, animation, server);
+
+	attack->setPostureAnimation(postureAnimation);
+	attack->setRequiredWeaponType(weaponType);
+	attack->setRange(range);
+	attack->setAreaRangeDamage(areaRangeDamage);
+	attack->setConeAngle(cone);
+	attack->setDamageRatio(DamageRatio);
+	attack->setSpeedRatio(SpeedRatio);
+	attack->setAccuracyBonus(accuracyBonus);
+
+	attack->setKnockdownChance(knockdownStateChance);
+	attack->setPostureDownChance(postureDownStateChance);
+	attack->setPostureUpChance(postureUpStateChance);
+	attack->setDizzyChance(dizzyStateChance);
+	attack->setBlindChance(blindStateChance);
+	attack->setStunChance(stunStateChance);
+	attack->setIntimidateChance(intimidateStateChance);
+
+	attack->setCbtSpamHit(CbtSpamHit);
+	attack->setCbtSpamMiss(CbtSpamMiss);
+	attack->setCbtSpamEvade(CbtSpamEvade);
+	attack->setCbtSpamCounter(CbtSpamCounter);
+	attack->setCbtSpamBlock(CbtSpamBlock);
+
+	attack->setHealthCostMultiplier(healthCostMultiplier);
+	attack->setActionCostMultiplier(actionCostMultiplier);
+	attack->setMindCostMultiplier(mindCostMultiplier);
+	attack->setForceCostMultiplier(forceCostMultiplier);
+
+	attack->setPosture(posture);
+
+	CombatActions->put(attack);
+	return 0;
+}
+
+int ScriptAttacksManager::AddBerserkSelfSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	if (!skill.isValidTable())
+		return 0;
+
+	BerserkSelfSkill* Skill;
+
+	String skillname = skill.getStringField("skillname");
+
+	float speed = skill.getFloatField("speed");
+
+	int duration = skill.getIntField("duration");
+	int damage = skill.getIntField("damage");
+
+	Skill = new BerserkSelfSkill(skillname, server);
+
+	Skill->setDuration(duration);
+	Skill->setBerserkDamage(damage);
+
+	CombatActions->put(Skill);
+
+	return 0;
 }

@@ -219,6 +219,7 @@ bool ProfessionManager::trainSkillBox(SkillBox* skillBox, PlayerImplementation* 
 
 bool ProfessionManager::trainSkillBox(const String& skillBox, PlayerImplementation* player, bool updateClient) {
 	SkillBox* sBox = skillBoxMap.get(skillBox);
+
 	if (sBox != NULL)
 		return trainSkillBox(sBox, player, updateClient);
 	else
@@ -281,12 +282,16 @@ void ProfessionManager::loadProfessionsFromDatabase() {
 	while (result->next()) {
 		bool isProfession = result->getInt(6);
 
-		if (isProfession) {
+		String name = String(result->getString(1));
+		bool isSpecies = (name.indexOf("species_") != -1);
+
+		if (isProfession || isSpecies) {
 			Profession* prof = loadProfession(result);
 			if (prof != NULL)
 				if (!professionMap.containsKey(prof->getName()))
 					professionMap.put(prof->getName(), prof);
 		}
+
 	}
 
 	delete result;
