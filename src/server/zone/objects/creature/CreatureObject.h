@@ -141,6 +141,8 @@ public:
 
 	bool isNPC();
 
+	bool isBerserked();
+
 	bool isTanoObjEquipped(TangibleObject* tano);
 
 	bool isPet();
@@ -1065,6 +1067,8 @@ public:
 
 	void setRootedState();
 
+	void setBerserkedState(unsigned int duration);
+
 	int addDotState(CreatureObject* attacker, unsigned long long dotID, unsigned long long dotType, int str, int type, int duration, float potency, int defense);
 
 	bool healDot(int dotType, int reduction);
@@ -1301,6 +1305,10 @@ public:
 
 	bool canRecoverFromIncapacitation();
 
+	void setBerserkDamage(unsigned int damage);
+
+	unsigned int getBerserkDamage();
+
 protected:
 	CreatureObject(DummyConstructorParameter* param);
 
@@ -1433,6 +1441,8 @@ public:
 	bool isCreature();
 
 	bool isNPC();
+
+	bool isBerserked();
 
 	bool isTanoObjEquipped(TangibleObject* tano);
 
@@ -2356,6 +2366,8 @@ public:
 
 	void setRootedState();
 
+	void setBerserkedState(unsigned int duration);
+
 	int addDotState(CreatureObject* attacker, unsigned long long dotID, unsigned long long dotType, int str, int type, int duration, float potency, int defense);
 
 	bool healDot(int dotType, int reduction);
@@ -2591,6 +2603,10 @@ public:
 	void unequipItem(TangibleObject* item);
 
 	bool canRecoverFromIncapacitation();
+
+	void setBerserkDamage(unsigned int damage);
+
+	unsigned int getBerserkDamage();
 
 protected:
 	String _param0_info__String_bool_;

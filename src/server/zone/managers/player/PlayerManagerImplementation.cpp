@@ -144,6 +144,9 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	player->setStfName(Races::getSpecies(race));
 	player->setGender(Races::getGender(race));
 
+	String speciesBox = String("species_") + Races::getSpecies(race);
+	player->trainSkillBox(speciesBox);
+
 	int gender = 0;
 	int creditsCash = 100000;
 	int creditsBank = 100000;
@@ -523,6 +526,10 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	int raceID = character->getInt(7);
 
 	player->setRaceID(raceID);
+
+	String speciesBox = String("species_") + Races::getSpecies(raceID);
+	player->trainSkillBox(speciesBox);
+
 	player->setObjectCRC(Races::getRaceCRC(raceID));
 	player->setRaceName(Races::getRace(raceID));
 	player->setStfName(Races::getSpecies(raceID));

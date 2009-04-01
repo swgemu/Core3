@@ -42,38 +42,53 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CHANGEPOSTURESELFSKILL_H_
-#define CHANGEPOSTURESELFSKILL_H_
+#ifndef BERSERKSELFSKILL_H_
+#define BERSERKSELFSKILL_H_
 
 #include "../SelfSkill.h"
-#include "events/PostureChangeEvent.h"
-#include "../../../../ZoneProcessServerImplementation.h"
 
-class ChangePostureSelfSkill : public SelfSkill {
+class BerserkSelfSkill : public SelfSkill {
 protected:
-	String anim;
-
 	float speed;
-	uint8 posture;
-
+	int duration;
+	int berserkDamage;
 public:
-	ChangePostureSelfSkill(const String& Name, const String& Anim, ZoneProcessServerImplementation* serv) : SelfSkill(Name, "", OTHER, serv) {
-		anim = Anim;
-		speed = 0;
-		posture = 0;
+	BerserkSelfSkill(const String& Name, ZoneProcessServerImplementation* serv) : SelfSkill(Name, "", OTHER, serv) {
+		speed = 2.0;
+		duration = 0;
+		berserkDamage = 0;
 	}
 
 	void doSkill(CreatureObject* creature, String& modifier) {
-		creature->setPosture(posture);
+		if (creature->getWeapon() != NULL && !creature->getWeapon()->isMelee()) {
+			if (creature->isPlayer())
+				((Player*)creature)->sendSystemMessage("cbt_spam", "berserk_fail_single");
 
-		PostureChangeEvent* postureChange = new PostureChangeEvent(creature,anim,500);
-		ZoneProcessServerImplementation* server = creature->getZoneProcessServer();
-		server->addEvent(postureChange);
+			return;
+		}
+
+		if (!creature->isInCombat()) {
+			if (creature->isPlayer())
+				((Player*)creature)->sendSystemMessage("cbt_spam", "berserk_fail_single");
+
+			return;
+		}
+
+		if (!creature->changeActionBar(-50)) {
+			if (creature->isPlayer())
+				((Player*)creature)->sendSystemMessage("cbt_spam", "berserk_fail_single");
+
+			return;
+		}
+
+		creature->setBerserkedState(duration * 1000);
+		creature->setBerserkDamage(berserkDamage);
+		if (creature->isPlayer())
+			((Player*)creature)->sendSystemMessage("cbt_spam", "berserk_success_single");
+
 	}
 
 	void doAnimations(CreatureObject* creature) {
-		if (!anim.isEmpty())
-			creature->doAnimation(anim);
 	}
 
 	float calculateSpeed(CreatureObject* creature) {
@@ -81,17 +96,16 @@ public:
 	}
 
 	virtual bool calculateCost(CreatureObject* creature) {
-		return creature->changeActionBar(-50);
+		return true;
 	}
 
-	void setPosture(uint8 post) {
-		posture = post;
+	void setDuration(int dur) {
+		duration = dur;
 	}
 
-	void setSpeed(float sp) {
-		speed = sp;
+	void setBerserkDamage(int damage) {
+		berserkDamage = damage;
 	}
-
 };
 
 #endif /*CHANGEPOSTURESELFSKILL_H_*/

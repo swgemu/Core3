@@ -297,6 +297,8 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	dotMap = new DamageOverTimeMap();
 
 	timeOfDeath = 0;
+
+	berserkDamage = 0;
 }
 
 CreatureObjectImplementation::~CreatureObjectImplementation() {
@@ -774,6 +776,17 @@ void CreatureObjectImplementation::setDizziedState() {
 	}
 }
 
+void CreatureObjectImplementation::setBerserkedState(uint32 duration) {
+	if (!berserkRecoveryTime.isPast())
+		return;
+
+	if (setState(CreatureState::BERSERK)) {
+		playEffect("clienteffect/combat_special_attacker_berserk.cef");
+		showFlyText("combat_effects", "go_berserk", 0, 0xFF, 0);
+		berserkRecoveryTime.update();
+		berserkRecoveryTime.addMiliTime(duration);
+	}
+}
 void CreatureObjectImplementation::setStunnedState() {
 	//TODO: remove this once npcs gets state defences
 	if (stunRecoveryTime.miliDifference() > -(1000 + System::random(5000)))
@@ -929,6 +942,9 @@ bool CreatureObjectImplementation::clearState(uint64 state) {
 			break;
 		case CreatureState::RALLIED:
 			showFlyText("combat_effects", "no_rally", 0xFF, 0, 0);
+			break;
+		case CreatureState::BERSERK:
+			showFlyText("combat_effects", "no_berserk", 0xFF, 0, 0);
 			break;
 		default:
 			break;
@@ -1789,6 +1805,8 @@ void CreatureObjectImplementation::activateBurstRun(bool bypassChecks) {
 			//Update the cool down timer.
 			String skillName = "burstrun";
 			addCooldown(skillName, delay);
+
+			activateRecovery();
 		}
 	}
 }

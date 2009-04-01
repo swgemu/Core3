@@ -1036,6 +1036,7 @@ void PlayerImplementation::trainStartingProfession() {
 
 	ProfessionManager* professionManager = server->getProfessionManager();
 	professionManager->loadDefaultSkills(this);
+
 }
 
 void PlayerImplementation::decayInventory() {
@@ -2393,6 +2394,11 @@ void PlayerImplementation::doStateRecovery() {
 			clearState(CreatureState::BLEEDING);
 		else doBleedingTick();
 	}*/
+
+	if (isBerserked() && berserkRecoveryTime.isPast()) {
+		clearState(CreatureState::BERSERK);
+		setBerserkDamage(0);
+	}
 
 	applyDots();
 
@@ -4511,6 +4517,11 @@ void PlayerImplementation::surrenderAll() {
 	ProfessionManager* professionManager = server->getProfessionManager();
 
 	professionManager->surrenderAll(this);
+
+	int race = Races::getRaceID(getRaceFileName());
+
+	String speciesBox = String("species_") + Races::getSpecies(race);
+	trainSkillBox(speciesBox);
 }
 
 void PlayerImplementation::newChangeFactionStatusEvent(uint8 stat, uint32 timer) {

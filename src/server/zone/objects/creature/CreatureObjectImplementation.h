@@ -206,11 +206,11 @@ protected:
 	Time intimidateRecoveryTime;
 	Time rootRecoveryTime;
 	Time snareRecoveryTime;
-
-	Time fireRecoveryTime;
-	Time poisonRecoveryTime;
-	Time bleedingRecoveryTime;
-	Time diseasedRecoveryTime;
+	Time berserkRecoveryTime;
+	//Time fireRecoveryTime;
+	//Time poisonRecoveryTime;
+	//Time bleedingRecoveryTime;
+	//Time diseasedRecoveryTime;
 
  	//CREO4 operands
 	float speed;
@@ -386,6 +386,9 @@ protected:
 	float peacedRegenModifier;
 
 	DamageOverTimeMap* dotMap;
+
+	uint16 berserkDamage;
+
 public:
 	static const float DEFAULT_SPEED = 5.376f;
 	static const float DEFAULT_ACCELERATION = 1.549f;
@@ -533,6 +536,7 @@ public:
 	void setIntimidatedState();
 	void setSnaredState();
 	void setRootedState();
+	void setBerserkedState(uint32 duration);
 
 	bool isTanoObjEquipped(TangibleObject* tano);
 
@@ -782,6 +786,10 @@ public:
 
 	inline bool isDizzied() {
 		return stateBitmask & CreatureState::DIZZY;
+	}
+
+	inline bool isBerserked() {
+		return stateBitmask & CreatureState::BERSERK;
 	}
 
 	inline bool isStunned() {
@@ -2855,7 +2863,12 @@ public:
 	inline void setCampAggroMod(uint8 mod) {
 		campAggro = mod;
 	}
-
+	void setBerserkDamage(uint16 damage) {
+		berserkDamage = damage;
+	}
+	uint16 getBerserkDamage() {
+		return berserkDamage;
+	}
 	friend class CombatManager;
 	friend class SkillManager;
 

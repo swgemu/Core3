@@ -42,56 +42,36 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CHANGEPOSTURESELFSKILL_H_
-#define CHANGEPOSTURESELFSKILL_H_
+#ifndef POSTURECHANGEEVENT_H_
+#define POSTURECHANGEEVENT_H_
 
-#include "../SelfSkill.h"
-#include "events/PostureChangeEvent.h"
-#include "../../../../ZoneProcessServerImplementation.h"
+#include "../../../CreatureObjectImplementation.h"
 
-class ChangePostureSelfSkill : public SelfSkill {
-protected:
+class PostureChangeEvent : public Event {
+	ManagedReference<CreatureObject> creo;
 	String anim;
 
-	float speed;
-	uint8 posture;
-
 public:
-	ChangePostureSelfSkill(const String& Name, const String& Anim, ZoneProcessServerImplementation* serv) : SelfSkill(Name, "", OTHER, serv) {
-		anim = Anim;
-		speed = 0;
-		posture = 0;
+	PostureChangeEvent(CreatureObject* cr, String anim, int delay) : Event(delay) {
+		this->creo = cr;
+		this->anim = anim;
 	}
 
-	void doSkill(CreatureObject* creature, String& modifier) {
-		creature->setPosture(posture);
+	bool activate() {
+		try {
+			creo->wlock();
 
-		PostureChangeEvent* postureChange = new PostureChangeEvent(creature,anim,500);
-		ZoneProcessServerImplementation* server = creature->getZoneProcessServer();
-		server->addEvent(postureChange);
-	}
+			creo->doAnimation(anim);
 
-	void doAnimations(CreatureObject* creature) {
-		if (!anim.isEmpty())
-			creature->doAnimation(anim);
-	}
+			creo->unlock();
+		} catch (...) {
+			creo->error("unreported exception caught in ChangePosutreEvent::activate");
+			creo->unlock();
+		}
 
-	float calculateSpeed(CreatureObject* creature) {
-		return speed;
-	}
-
-	virtual bool calculateCost(CreatureObject* creature) {
-		return creature->changeActionBar(-50);
-	}
-
-	void setPosture(uint8 post) {
-		posture = post;
-	}
-
-	void setSpeed(float sp) {
-		speed = sp;
+		return true;
 	}
 
 };
 
-#endif /*CHANGEPOSTURESELFSKILL_H_*/
+#endif /* POSTURECHANGEEVENT_H_ */

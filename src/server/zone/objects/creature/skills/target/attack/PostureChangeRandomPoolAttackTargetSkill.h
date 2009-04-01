@@ -42,56 +42,56 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CHANGEPOSTURESELFSKILL_H_
-#define CHANGEPOSTURESELFSKILL_H_
+#ifndef POSTURECHANGERANDOMPOOLATTACKTARGETSKILL_H_
+#define POSTURECHANGERANDOMPOOLATTACKTARGETSKILL_H_
 
-#include "../SelfSkill.h"
-#include "events/PostureChangeEvent.h"
-#include "../../../../ZoneProcessServerImplementation.h"
+#include "../AttackTargetSkill.h"
+#include "../../self/events/PostureChangeEvent.h"
 
-class ChangePostureSelfSkill : public SelfSkill {
-protected:
-	String anim;
-
-	float speed;
-	uint8 posture;
-
+class PostureChangeRandomPoolAttackTargetSkill : public AttackTargetSkill {
 public:
-	ChangePostureSelfSkill(const String& Name, const String& Anim, ZoneProcessServerImplementation* serv) : SelfSkill(Name, "", OTHER, serv) {
-		anim = Anim;
-		speed = 0;
-		posture = 0;
+	uint8 posture;
+	String postureAnimation;
+	PostureChangeRandomPoolAttackTargetSkill(const String& name, const String& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(name, anim, RANDOM, serv) {
+		healthPoolAttackChance = 50;
+		actionPoolAttackChance = 35;
+		mindPoolAttackChance = 15;
 	}
 
-	void doSkill(CreatureObject* creature, String& modifier) {
+	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
+		if (!target->isAttackable())
+			return 0;
+
+		int damage = calculateDamage(creature, target);
+
+
+		if (target->isPlayer() || target->isNonPlayerCreature()) {
+			CreatureObject* targetCreature = (CreatureObject*) target;
+			if (damage && targetCreature->hasAttackDelay())
+				targetCreature->clearAttackDelay();
+		}
+
+		doAnimations(creature, target);
 		creature->setPosture(posture);
 
-		PostureChangeEvent* postureChange = new PostureChangeEvent(creature,anim,500);
+		PostureChangeEvent* postureChange = new PostureChangeEvent(creature,String(postureAnimation),200);
 		ZoneProcessServerImplementation* server = creature->getZoneProcessServer();
 		server->addEvent(postureChange);
+
+		return damage;
 	}
 
-	void doAnimations(CreatureObject* creature) {
-		if (!anim.isEmpty())
-			creature->doAnimation(anim);
+	int calculateDamage(CreatureObject* creature, SceneObject* target) {
+		return server->getCombatManager()->calculateWeaponDamage(creature, (TangibleObject*)target, this, true);
 	}
 
-	float calculateSpeed(CreatureObject* creature) {
-		return speed;
+	void setPosture(int pos) {
+		posture = pos;
 	}
 
-	virtual bool calculateCost(CreatureObject* creature) {
-		return creature->changeActionBar(-50);
+	void setPostureAnimation(String anim) {
+		postureAnimation = anim;
 	}
-
-	void setPosture(uint8 post) {
-		posture = post;
-	}
-
-	void setSpeed(float sp) {
-		speed = sp;
-	}
-
 };
 
-#endif /*CHANGEPOSTURESELFSKILL_H_*/
+#endif /*POSTURECHANGERANDOMPOOLATTACKTARGETSKILL_H_*/

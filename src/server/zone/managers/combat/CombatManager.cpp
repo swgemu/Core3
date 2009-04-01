@@ -794,6 +794,9 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 	attackerAccuracy += creature->getAccuracyBonus();
 
+	if (creature->isBerserked() && attackType == MELEEATTACK) {
+		attackerAccuracy -= 10;
+	}
 	if (DEBUG)
 		System::out << "\tBase attacker accuracy is " << attackerAccuracy << endl;
 
@@ -1907,6 +1910,10 @@ int CombatManager::calculateDamage(CreatureObject* creature, TangibleObject* tar
 	int diff = (int)maxDamage - (int)minDamage;
 	if (diff >= 0)
 		average = System::random(diff) + (int)minDamage;
+
+	if (creature->isBerserked() && (weapon == NULL || weapon->isMelee() || weapon->isJedi())) {
+		average += creature->getBerserkDamage();
+	}
 
 	float globalMultiplier = 1.0f;
 	if (creature->isPlayer()) {

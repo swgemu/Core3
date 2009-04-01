@@ -446,6 +446,173 @@ DotPoolAtt = {
 
 AddDotPoolAttackTargetSkill(DotPoolAtt)
 
+Attack = { 
+	attackname = "kipupshot",
+	animation = "fire_1_special_single_light",
+	postureAnimation = "tumble_to_stand",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 0,
+	damageRatio = 2.5,
+	speedRatio = 1.5,
+	areaRange = 0,
+	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
+
+	healthAttackChance = 100,
+	strengthAttackChance = 0,
+	constitutionAttackChance = 0,
+
+	actionAttackChance = 0,
+	quicknessAttackChance = 0,
+	staminaAttackChance = 0,
+
+	mindAttackChance = 0,
+	focusAttackChance = 0,
+	willpowerAttackChance = 0,
+		
+	dotChance = 30,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0,
+	fireType = 0,
+
+	bleedingStrength = 1,
+	bleedingType = HEALTH,
+
+	poisonStrength = 0,
+	poisonType = 0,
+
+	diseaseStrength = 0,
+	diseaseType = 0,
+
+	postureChange = UPRIGHT_POSTURE,
+	
+	CbtSpamBlock = "kipup_block",
+	CbtSpamCounter = "kipup_counter",
+	CbtSpamEvade = "kipup_evade",
+	CbtSpamHit = "kipup_hit",
+	CbtSpamMiss = "kipup_miss",
+}
+
+--AddPosutreChangeRandomPoolAttackTargetSkill(Attack)
+
+Attack = { 
+	attackname = "diveshot",
+	animation = "fire_1_special_single_light",
+	postureAnimation = "tumble_to_prone",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 0,
+	damageRatio = 2.5,
+	speedRatio = 1.8,
+	areaRange = 0,
+	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
+
+	healthAttackChance = 100,
+	strengthAttackChance = 0,
+	constitutionAttackChance = 0,
+
+	actionAttackChance = 0,
+	quicknessAttackChance = 0,
+	staminaAttackChance = 0,
+
+	mindAttackChance = 0,
+	focusAttackChance = 0,
+	willpowerAttackChance = 0,
+		
+	dotChance = 30,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0,
+	fireType = 0,
+
+	bleedingStrength = 1,
+	bleedingType = HEALTH,
+
+	poisonStrength = 0,
+	poisonType = 0,
+
+	diseaseStrength = 0,
+	diseaseType = 0,
+
+	postureChange = PRONE_POSTURE,
+	
+	CbtSpamBlock = "diveshot_block",
+	CbtSpamCounter = "diveshot_counter",
+	CbtSpamEvade = "diveshot_evade",
+	CbtSpamHit = "diveshot_hit",
+	CbtSpamMiss = "diveshot_miss",
+}
+
+--AddPosutreChangeRandomPoolAttackTargetSkill(Attack)
+
+Attack = { 
+	attackname = "rollshot",
+	animation = "fire_1_special_single_light",
+	postureAnimation = "tumble_to_kneeling",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 0,
+	damageRatio = 2.5,
+	speedRatio = 1.5,
+	areaRange = 0,
+	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
+
+	healthAttackChance = 100,
+	strengthAttackChance = 0,
+	constitutionAttackChance = 0,
+
+	actionAttackChance = 0,
+	quicknessAttackChance = 0,
+	staminaAttackChance = 0,
+
+	mindAttackChance = 0,
+	focusAttackChance = 0,
+	willpowerAttackChance = 0,
+		
+	dotChance = 30,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0,
+	fireType = 0,
+
+	bleedingStrength = 1,
+	bleedingType = HEALTH,
+
+	poisonStrength = 0,
+	poisonType = 0,
+
+	diseaseStrength = 0,
+	diseaseType = 0,
+
+	postureChange = CROUCHED_POSTURE,
+	
+	CbtSpamBlock = "rollshot_block",
+	CbtSpamCounter = "rollshot_counter",
+	CbtSpamEvade = "rollshot_evade",
+	CbtSpamHit = "rollshot_hit",
+	CbtSpamMiss = "rollshot_miss",
+}
+
+--AddPosutreChangeRandomPoolAttackTargetSkill(Attack)
 ----------------------------CARBINES--------------------------------
 
 DirectPoolAtt = { 

@@ -664,6 +664,9 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 
 			creature->setHeight(creature->getHeight() / 2);
 			creature->setBaby(true);
+			StringBuffer costumName;
+			costumName << "a " << creature->getStfName() << " (baby)";
+			creature->setCustomName(costumName.toString().replaceAll("_"," "));
 		}
 
 		creature->initializePosition(x, 0.0, y);
