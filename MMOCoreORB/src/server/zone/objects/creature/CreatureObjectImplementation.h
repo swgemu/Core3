@@ -207,6 +207,8 @@ protected:
 	Time rootRecoveryTime;
 	Time snareRecoveryTime;
 	Time berserkRecoveryTime;
+	Time aimRecoveryTime;
+
 	//Time fireRecoveryTime;
 	//Time poisonRecoveryTime;
 	//Time bleedingRecoveryTime;
@@ -388,6 +390,12 @@ protected:
 	DamageOverTimeMap* dotMap;
 
 	uint16 berserkDamage;
+	uint16 aimMod;
+	uint64 aimTarget;
+
+	bool escaping;
+	Time escapeTime;
+	Time escapeProtection;
 
 public:
 	static const float DEFAULT_SPEED = 5.376f;
@@ -846,6 +854,14 @@ public:
 
 	inline bool isBurstRunning() {
 		return burstRunning;
+	}
+
+	inline bool isAiming() {
+		return stateBitmask & CreatureState::AIMING;
+	}
+
+	inline bool isInCover() {
+		return stateBitmask & CreatureState::COVER;
 	}
 
 	inline bool isCreature() {
@@ -2869,6 +2885,30 @@ public:
 	uint16 getBerserkDamage() {
 		return berserkDamage;
 	}
+
+	inline uint16 getAimMod() {
+		return aimMod;
+	}
+
+	inline void setAimMod(uint16 mod) {
+		aimMod = mod;
+	}
+
+	void setAimingState();
+	void setCoverState();
+	void resetMovementSpeed();
+
+	inline bool isEscaping() {
+		return escaping;
+	}
+
+	inline void setEscaping(bool escape) {
+		escaping = escape;
+	}
+
+	void acitvateEscape();
+	void deacitvateEscape();
+
 	friend class CombatManager;
 	friend class SkillManager;
 

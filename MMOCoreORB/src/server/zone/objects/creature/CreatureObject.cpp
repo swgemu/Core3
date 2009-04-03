@@ -8141,6 +8141,128 @@ unsigned int CreatureObject::getBerserkDamage() {
 		return ((CreatureObjectImplementation*) _impl)->getBerserkDamage();
 }
 
+unsigned int CreatureObject::getAimMod() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 634);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getAimMod();
+}
+
+void CreatureObject::setAimMod(unsigned int mod) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 635);
+		method.addUnsignedIntParameter(mod);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setAimMod(mod);
+}
+
+bool CreatureObject::isAiming() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 636);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->isAiming();
+}
+
+void CreatureObject::setAimingState() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 637);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setAimingState();
+}
+
+bool CreatureObject::isInCover() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 638);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->isInCover();
+}
+
+void CreatureObject::setCoverState() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 639);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setCoverState();
+}
+
+bool CreatureObject::isEscaping() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 640);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->isEscaping();
+}
+
+void CreatureObject::setEscaping(bool escape) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 641);
+		method.addBooleanParameter(escape);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setEscaping(escape);
+}
+
+void CreatureObject::acitvateEscape() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 642);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->acitvateEscape();
+}
+
+void CreatureObject::deacitvateEscape() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 643);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->deacitvateEscape();
+}
+
 /*
  *	CreatureObjectAdapter
  */
@@ -10035,6 +10157,36 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 633:
 		resp->insertInt(getBerserkDamage());
+		break;
+	case 634:
+		resp->insertInt(getAimMod());
+		break;
+	case 635:
+		setAimMod(inv->getUnsignedIntParameter());
+		break;
+	case 636:
+		resp->insertBoolean(isAiming());
+		break;
+	case 637:
+		setAimingState();
+		break;
+	case 638:
+		resp->insertBoolean(isInCover());
+		break;
+	case 639:
+		setCoverState();
+		break;
+	case 640:
+		resp->insertBoolean(isEscaping());
+		break;
+	case 641:
+		setEscaping(inv->getBooleanParameter());
+		break;
+	case 642:
+		acitvateEscape();
+		break;
+	case 643:
+		deacitvateEscape();
 		break;
 	default:
 		return NULL;
@@ -12553,6 +12705,46 @@ void CreatureObjectAdapter::setBerserkDamage(unsigned int damage) {
 
 unsigned int CreatureObjectAdapter::getBerserkDamage() {
 	return ((CreatureObjectImplementation*) impl)->getBerserkDamage();
+}
+
+unsigned int CreatureObjectAdapter::getAimMod() {
+	return ((CreatureObjectImplementation*) impl)->getAimMod();
+}
+
+void CreatureObjectAdapter::setAimMod(unsigned int mod) {
+	return ((CreatureObjectImplementation*) impl)->setAimMod(mod);
+}
+
+bool CreatureObjectAdapter::isAiming() {
+	return ((CreatureObjectImplementation*) impl)->isAiming();
+}
+
+void CreatureObjectAdapter::setAimingState() {
+	return ((CreatureObjectImplementation*) impl)->setAimingState();
+}
+
+bool CreatureObjectAdapter::isInCover() {
+	return ((CreatureObjectImplementation*) impl)->isInCover();
+}
+
+void CreatureObjectAdapter::setCoverState() {
+	return ((CreatureObjectImplementation*) impl)->setCoverState();
+}
+
+bool CreatureObjectAdapter::isEscaping() {
+	return ((CreatureObjectImplementation*) impl)->isEscaping();
+}
+
+void CreatureObjectAdapter::setEscaping(bool escape) {
+	return ((CreatureObjectImplementation*) impl)->setEscaping(escape);
+}
+
+void CreatureObjectAdapter::acitvateEscape() {
+	return ((CreatureObjectImplementation*) impl)->acitvateEscape();
+}
+
+void CreatureObjectAdapter::deacitvateEscape() {
+	return ((CreatureObjectImplementation*) impl)->deacitvateEscape();
 }
 
 /*

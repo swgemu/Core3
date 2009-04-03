@@ -102,6 +102,8 @@ public:
 	static int AddThrowGrenadeTargetSkill(lua_State* L);
 	static int AddPosutreChangeRandomPoolAttackTargetSkill(lua_State *L);
 	static int AddBerserkSelfSkill(lua_State* L);
+	static int AddAimTargetSkill(lua_State* L);
+	static int AddCoverSelfSkill(lua_State* L);
 
 	static int AddEntertainSkill(lua_State* L);
 	static int AddEntertainEffectSkill(lua_State* L);
@@ -116,6 +118,7 @@ public:
 	static int AddThrowDirectPoolTargetSkill(lua_State *L);
 	static int AddHeavyWeaponSkill(lua_State *L);
 	static int AddAreaTrackSkill(lua_State* L);
+	static int AddThreatenAttackTargetSkill(lua_State *L);
 
 	// Squad Leader
 	static int AddSystemGroupMessageSkill(lua_State *L);

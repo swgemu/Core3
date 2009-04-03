@@ -2371,33 +2371,13 @@ void PlayerImplementation::doStateRecovery() {
 	if (isIntimidated() && intimidateRecoveryTime.isPast())
 		clearState(CreatureState::INTIMIDATED);
 
-	/*if (isPoisoned()) {
-		if (poisonRecoveryTime.isPast())
-			clearState(CreatureState::POISONED);
-		else doPoisonTick();
-	}
-
-	if (isDiseased()) {
-		if (diseasedRecoveryTime.isPast())
-			clearState(CreatureState::DISEASED);
-		else doDiseaseTick();
-	}
-
-	if (isOnFire()) {
-		if (fireRecoveryTime.isPast())
-			clearState(CreatureState::ONFIRE);
-		else doFireTick();
-	}
-
-	if (isBleeding()) {
-		if (bleedingRecoveryTime.isPast())
-			clearState(CreatureState::BLEEDING);
-		else doBleedingTick();
-	}*/
-
 	if (isBerserked() && berserkRecoveryTime.isPast()) {
 		clearState(CreatureState::BERSERK);
 		setBerserkDamage(0);
+	}
+
+	if (isAiming() && aimRecoveryTime.isPast()) {
+		clearState(CreatureState::AIMING);
 	}
 
 	applyDots();
@@ -6377,5 +6357,3 @@ void PlayerImplementation::onNoValidInsurables() {
 void PlayerImplementation::onBankTipSuccessful() {
 	sendSystemMessage("base_player", "wire_pass_self"); //Your /tip transaction was successfully completed.
 }
-
-

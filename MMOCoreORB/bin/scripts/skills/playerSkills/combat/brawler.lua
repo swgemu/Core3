@@ -1097,7 +1097,9 @@ Berserk = {
 
 	duration = 20,
 	
-	damage = 25
+	damage = 25,
+
+	requiredWeaponType = MELEE
 }
 
 AddBerserkSelfSkill(Berserk)
@@ -1106,7 +1108,9 @@ Berserk = {
 
 	duration = 40,
 	
-	damage = 75
+	damage = 75,
+
+	requiredWeaponType = MELEE	
 }
 
 AddBerserkSelfSkill(Berserk)

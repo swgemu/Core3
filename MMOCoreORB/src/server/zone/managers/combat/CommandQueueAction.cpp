@@ -406,9 +406,9 @@ bool CommandQueueAction::checkHealSkill() {
 bool CommandQueueAction::checkWeapon() {
 	int requiredWeapon = skill->getRequiredWeaponType();
 
-	if (requiredWeapon != 0xFF) {
-		weapon = creature->getWeapon();
+	weapon = creature->getWeapon();
 
+	if (requiredWeapon != 0xFF) {
 		if (weapon != NULL) {
 			if (requiredWeapon == 0x10 || requiredWeapon == 0x20 ||
 					requiredWeapon == 0x30) {
@@ -431,6 +431,9 @@ bool CommandQueueAction::checkWeapon() {
 			return false;
 		}
 	}
+
+	if (weapon != NULL && weapon->isRanged())
+		return true;
 
 	if (creature->isKneeling()) {
 		if (requiredWeapon < 4 || requiredWeapon == 0x10) {
