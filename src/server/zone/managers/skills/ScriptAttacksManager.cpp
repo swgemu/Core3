@@ -91,6 +91,8 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddHeavyWeaponSkill", AddHeavyWeaponSkill);
 	lua_register(getLuaState(), "AddPosutreChangeRandomPoolAttackTargetSkill", AddPosutreChangeRandomPoolAttackTargetSkill);
 	lua_register(getLuaState(), "AddBerserkSelfSkill", AddBerserkSelfSkill);
+	lua_register(getLuaState(), "AddAimTargetSkill", AddAimTargetSkill);
+	lua_register(getLuaState(), "AddCoverSelfSkill", AddCoverSelfSkill);
 
 	lua_register(getLuaState(), "AddDeBuffAttackTargetSkill", AddDeBuffAttackTargetSkill);
 	lua_register(getLuaState(), "AddEnhanceSelfSkill", AddEnhanceSelfSkill);
@@ -125,7 +127,7 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddSystemGroupMessageSkill", AddSystemGroupMessageSkill);
 
 	lua_register(getLuaState(), "AddCMDotAttackTargetSkill", AddCMDotAttackTargetSkill);
-
+	lua_register(getLuaState(), "AddThreatenAttackTargetSkill", AddThreatenAttackTargetSkill);
 }
 
 void ScriptAttacksManager::registerGlobals() {
@@ -2329,5 +2331,114 @@ int ScriptAttacksManager::AddBerserkSelfSkill(lua_State* L) {
 
 	CombatActions->put(Skill);
 
+	return 0;
+}
+
+int ScriptAttacksManager::AddAimTargetSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	if (!skill.isValidTable())
+		return 0;
+
+	AimTargetSkill* Skill;
+
+	String skillname = skill.getStringField("skillname");
+
+	Skill = new AimTargetSkill(skillname, server);
+
+	CombatActions->put(Skill);
+
+	return 0;
+}
+
+int ScriptAttacksManager::AddCoverSelfSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	if (!skill.isValidTable())
+		return 0;
+
+	CoverSelfSkill* Skill;
+
+	String skillname = skill.getStringField("skillname");
+
+	Skill = new CoverSelfSkill(skillname, server);
+
+	CombatActions->put(Skill);
+
+	return 0;
+}
+
+int ScriptAttacksManager::AddThreatenAttackTargetSkill(lua_State *L) {
+	LuaObject skill(L);
+
+	if (!skill.isValidTable())
+		return 0;
+
+	AttackTargetSkill* attack;
+
+	String attackname = skill.getStringField("attackname");
+	String animation = skill.getStringField("animation");
+
+	int weaponType = skill.getIntField("requiredWeaponType");
+
+	int range = skill.getIntField("range");
+	float DamageRatio = skill.getFloatField("damageRatio");
+	float SpeedRatio = skill.getFloatField("speedRatio");
+	int areaRangeDamage = skill.getIntField("areaRange");
+	int cone = skill.getIntField("coneAngle");
+	int accuracyBonus = skill.getIntField("accuracyBonus");
+
+	int knockdownStateChance = skill.getIntField("knockdownChance");
+	int postureDownStateChance = skill.getIntField("postureDownChance");
+	int postureUpStateChance = skill.getIntField("postureUpChance");
+	int dizzyStateChance = skill.getIntField("dizzyChance");
+	int blindStateChance = skill.getIntField("blindChance");
+	int stunStateChance = skill.getIntField("stunChance");
+	int intimidateStateChance = skill.getIntField("intimidateChance");
+
+	String CbtSpamBlock = skill.getStringField("CbtSpamBlock");
+	String CbtSpamCounter = skill.getStringField("CbtSpamCounter");
+	String CbtSpamEvade = skill.getStringField("CbtSpamEvade");
+	String CbtSpamHit = skill.getStringField("CbtSpamHit");
+	String CbtSpamMiss = skill.getStringField("CbtSpamMiss");
+
+	float healthCostMultiplier = skill.getFloatField("healthCostMultiplier");
+	float actionCostMultiplier = skill.getFloatField("actionCostMultiplier");
+	float mindCostMultiplier = skill.getFloatField("mindCostMultiplier");
+	float forceCostMultiplier = skill.getFloatField("forceCostMultiplier");
+
+	// For force powers
+	int forceCost = skill.getIntField("forceCost");
+
+	attack = new ThreatenTargetSkill(attackname, animation, server);
+
+	attack->setRequiredWeaponType(weaponType);
+	attack->setRange(range);
+	attack->setAreaRangeDamage(areaRangeDamage);
+	attack->setConeAngle(cone);
+	attack->setDamageRatio(DamageRatio);
+	attack->setSpeedRatio(SpeedRatio);
+	attack->setAccuracyBonus(accuracyBonus);
+
+	attack->setKnockdownChance(knockdownStateChance);
+	attack->setPostureDownChance(postureDownStateChance);
+	attack->setPostureUpChance(postureUpStateChance);
+	attack->setDizzyChance(dizzyStateChance);
+	attack->setBlindChance(blindStateChance);
+	attack->setStunChance(stunStateChance);
+	attack->setIntimidateChance(intimidateStateChance);
+
+	attack->setCbtSpamHit(CbtSpamHit);
+	attack->setCbtSpamMiss(CbtSpamMiss);
+	attack->setCbtSpamEvade(CbtSpamEvade);
+	attack->setCbtSpamCounter(CbtSpamCounter);
+	attack->setCbtSpamBlock(CbtSpamBlock);
+
+	attack->setHealthCostMultiplier(healthCostMultiplier);
+	attack->setActionCostMultiplier(actionCostMultiplier);
+	attack->setMindCostMultiplier(mindCostMultiplier);
+	attack->setForceCostMultiplier(forceCostMultiplier);
+
+	CombatActions->put(attack);
 	return 0;
 }

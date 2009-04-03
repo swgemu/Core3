@@ -42,58 +42,56 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef POSTURECHANGERANDOMPOOLATTACKTARGETSKILL_H_
-#define POSTURECHANGERANDOMPOOLATTACKTARGETSKILL_H_
+#ifndef COVERSELFSKILL_H_
+#define COVERSELFSKILL_H_
 
-#include "../AttackTargetSkill.h"
-#include "../../self/events/PostureChangeEvent.h"
+#include "../SelfSkill.h"
 
-class PostureChangeRandomPoolAttackTargetSkill : public AttackTargetSkill {
+class CoverSelfSkill : public SelfSkill {
+protected:
 public:
-	uint8 posture;
-	String postureAnimation;
+	CoverSelfSkill(const String& Name, ZoneProcessServerImplementation* serv) : SelfSkill(Name, "", OTHER, serv) {
 
-	PostureChangeRandomPoolAttackTargetSkill(const String& name, const String& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(name, anim, RANDOM, serv) {
-		healthPoolAttackChance = 50;
-		actionPoolAttackChance = 35;
-		mindPoolAttackChance = 15;
 	}
 
-	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
-		if (!target->isAttackable())
-			return 0;
+	void doSkill(CreatureObject* creature, String& modifier) {
+		if (creature->getWeapon() == NULL || creature->getWeapon()->getType() != WeaponImplementation::RIFLE) {
+			if (creature->isPlayer())
+				((Player*)creature)->sendSystemMessage("cbt_spam", "cover_fail_single");
 
-		int damage = calculateDamage(creature, target);
-
-		CreatureObject* targetCreature;
-		if (target->isPlayer() || target->isNonPlayerCreature()) {
-			CreatureObject* targetCreature = (CreatureObject*) target;
-			if (damage && targetCreature->hasAttackDelay())
-				targetCreature->clearAttackDelay();
+			return;
 		}
 
-		doAnimations(creature, target);
-		creature->setPosture(posture);
+		if (creature->isInCombat()) {
+			int coverChance = creature->getSkillMod("take_cover");
 
-		ZoneProcessServerImplementation* server = creature->getZoneProcessServer();
+			if (coverChance < System::random(100) || 9 < System::random(10)) {
+				if (creature->isPlayer())
+					((Player*)creature)->sendSystemMessage("cbt_spam", "cover_fail_single");
+				return;
+			}
+		}
 
-		PostureChangeEvent* postureChange = new PostureChangeEvent(creature, String(postureAnimation), 50);
-		server->addEvent(postureChange);
+		if (!creature->changeActionBar(-50)) {
+			if (creature->isPlayer())
+				((Player*)creature)->sendSystemMessage("cbt_spam", "cover_fail_single");
+			return;
+		}
 
-		return damage;
+		creature->setCoverState();
+
 	}
 
-	int calculateDamage(CreatureObject* creature, SceneObject* target) {
-		return server->getCombatManager()->calculateWeaponDamage(creature, (TangibleObject*)target, this, true);
+	void doAnimations(CreatureObject* creature) {
 	}
 
-	void setPosture(int pos) {
-		posture = pos;
+	float calculateSpeed(CreatureObject* creature) {
+		return 1.0f;
 	}
 
-	void setPostureAnimation(String anim) {
-		postureAnimation = anim;
+	virtual bool calculateCost(CreatureObject* creature) {
+		return true;
 	}
 };
 
-#endif /*POSTURECHANGERANDOMPOOLATTACKTARGETSKILL_H_*/
+#endif /*CHANGEPOSTURESELFSKILL_H_*/

@@ -299,6 +299,9 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	timeOfDeath = 0;
 
 	berserkDamage = 0;
+
+	aimMod = 0;
+	aimTarget = 0;
 }
 
 CreatureObjectImplementation::~CreatureObjectImplementation() {
@@ -715,6 +718,11 @@ void CreatureObjectImplementation::setPosture(uint8 state, bool overrideDizzy, b
 				updateSpeed(0.7f * proneModifier, 0.7745f / proneModifier);
 			}
 		}
+
+		if (isInCover()) {
+			clearState(CreatureState::COVER);
+		}
+
 	}
 }
 
@@ -773,6 +781,35 @@ void CreatureObjectImplementation::setDizziedState() {
 
 		dizzyRecoveryTime.update();
 		dizzyRecoveryTime.addMiliTime(5000 + System::random(20000));
+	}
+}
+
+void CreatureObjectImplementation::setAimingState() {
+	if (setState(CreatureState::AIMING)) {
+		playEffect("clienteffect/combat_special_attacker_aim.cef");
+
+		aimRecoveryTime.update();
+		aimRecoveryTime.addMiliTime(5000);
+	}
+}
+
+void CreatureObjectImplementation::setCoverState() {
+	setPosture(CreaturePosture::PRONE);
+
+	if (setState(CreatureState::COVER)) {
+		playEffect("clienteffect/combat_special_attacker_cover.cef");
+		showFlyText("combat_effects", "go_cover", 0, 0xFF, 0);
+		sendSystemMessage("cbt_spam", "cover_success_single");
+
+		uint32 sneakSkill = 0x3903080B;
+
+		if (hasSkill(sneakSkill)) {
+			float proneModifier = calculateProneSpeedModifier();
+
+			updateSpeed(0.35f * proneModifier, 0.7745f / proneModifier);
+		} else {
+			updateSpeed(0.0f,0.0f);
+		}
 	}
 }
 
@@ -946,6 +983,12 @@ bool CreatureObjectImplementation::clearState(uint64 state) {
 		case CreatureState::BERSERK:
 			showFlyText("combat_effects", "no_berserk", 0xFF, 0, 0);
 			break;
+		case CreatureState::AIMING:
+			break;
+		case CreatureState::COVER:
+			showFlyText("combat_effects", "no_cover", 0xFF, 0, 0);
+			resetMovementSpeed();
+			break;
 		default:
 			break;
 		}
@@ -954,6 +997,25 @@ bool CreatureObjectImplementation::clearState(uint64 state) {
 		return true;
 	} else
 		return false;
+}
+
+void CreatureObjectImplementation::resetMovementSpeed() {
+	if (isBurstRunning()) {
+		if (isProne()) {
+				float proneModifier = calculateProneSpeedModifier();
+				updateSpeed(1.2f * proneModifier, 0.7745f / proneModifier);
+			} else {
+				updateSpeed(8.0f, 0.922938f);
+			}
+	} else {
+		if (isProne()) {
+			float proneModifier = calculateProneSpeedModifier();
+			updateSpeed(0.7f * proneModifier, 0.7745f / proneModifier);
+
+		} else {
+			updateSpeed(5.376, 1.549f);
+		}
+	}
 }
 
 void CreatureObjectImplementation::removeState(uint64 state) {
@@ -990,6 +1052,8 @@ void CreatureObjectImplementation::clearStates() {
 	removeDefenders();
 	dotMap->clear();
 	updateStates();
+
+	resetMovementSpeed();
 }
 
 bool CreatureObjectImplementation::changeHAMBars(int32 health, int32 action, int32 mind, bool forcedChange) {
@@ -4534,4 +4598,22 @@ void CreatureObjectImplementation::applyDots() {
 	}
 	//else
 	//	dotList->clear();
+}
+
+void CreatureObjectImplementation::acitvateEscape() {
+	if (!escapeProtection.isPast()) {
+		setEscaping(false);
+		return;
+	}
+
+	setEscaping(true);
+	escapeTime.update();
+	escapeTime.addMiliTime(5000 + System::random(10000));
+}
+
+void CreatureObjectImplementation::deacitvateEscape() {
+	setEscaping(false);
+	escapeTime.update();
+	escapeProtection.update();
+	escapeProtection.addMiliTime(20000);
 }

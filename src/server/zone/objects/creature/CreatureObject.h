@@ -1309,6 +1309,26 @@ public:
 
 	unsigned int getBerserkDamage();
 
+	unsigned int getAimMod();
+
+	void setAimMod(unsigned int mod);
+
+	bool isAiming();
+
+	void setAimingState();
+
+	bool isInCover();
+
+	void setCoverState();
+
+	bool isEscaping();
+
+	void setEscaping(bool escape);
+
+	void acitvateEscape();
+
+	void deacitvateEscape();
+
 protected:
 	CreatureObject(DummyConstructorParameter* param);
 
@@ -2607,6 +2627,26 @@ public:
 	void setBerserkDamage(unsigned int damage);
 
 	unsigned int getBerserkDamage();
+
+	unsigned int getAimMod();
+
+	void setAimMod(unsigned int mod);
+
+	bool isAiming();
+
+	void setAimingState();
+
+	bool isInCover();
+
+	void setCoverState();
+
+	bool isEscaping();
+
+	void setEscaping(bool escape);
+
+	void acitvateEscape();
+
+	void deacitvateEscape();
 
 protected:
 	String _param0_info__String_bool_;

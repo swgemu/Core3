@@ -71,6 +71,8 @@
 #include "../../managers/combat/CommandQueueAction.h"
 #include "../../managers/loot/LootManager.h"
 
+#include "engine/util/Coordinate.h"
+
 CreatureImplementation::CreatureImplementation(uint64 oid, CreatureGroup* group) :
 	CreatureServant(oid), Event() {
 	objectID = oid;
@@ -88,6 +90,8 @@ CreatureImplementation::CreatureImplementation(uint64 oid, CreatureGroup* group)
 
 	camoCount = 0;
 	camoSet = false;
+
+	escaping = false;
 }
 
 CreatureImplementation::~CreatureImplementation() {
@@ -1548,6 +1552,20 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 		return true;
 	}
 
+	if (isEscaping()) {
+		if (isInCombat()) {
+			deacitvateEscape();
+			setOnEscpae(false);
+		}
+
+		if (!isOnEscpae()) {
+			activateEscapeRoute();
+		}
+
+		if (isOnEscpae())
+			return false;
+	}
+
 	doCamoCheck(target);
 
 	if (camoSet) {
@@ -1890,6 +1908,11 @@ void CreatureImplementation::doStatesRecovery() {
 		setBerserkDamage(0);
 	}
 
+	if (isAiming() && aimRecoveryTime.isPast()) {
+		System::out << "remove aim\n";
+		clearState(CreatureState::AIMING);
+	}
+
 	applyDots();
 
 	updateStates();
@@ -1956,17 +1979,20 @@ void CreatureImplementation::addPatrolPoint(SceneObject* obj, bool doLock) {
 
 void CreatureImplementation::addPatrolPoint(PatrolPoint* cord, bool doLock) {
 	try {
-		wlock(doLock);
+		if (doLock)
+			wlock(doLock);
 
 		patrolPoints.add(cord);
 
 		if (!isActive())
 			creatureManager->queueActivity(this);
 
-		unlock(doLock);
+		if (doLock)
+			unlock(doLock);
 	} catch (...) {
 		System::out << "exception CreatureImplementation::addPatrolPoint()\n";
-		unlock(doLock);
+		if (doLock)
+			unlock(doLock);
 	}
 }
 
@@ -2028,4 +2054,14 @@ void CreatureImplementation::onDeath() {
 	creatureHealth = System::random(3) + 1;
 	createHarvestList();
 	scheduleDespawnCreature(180000);
+}
+
+void CreatureImplementation::activateEscapeRoute() {
+	setOnEscpae(true);
+	deaggro();
+
+	Coordinate* escapePoint = new Coordinate(positionX, positionZ, positionY);
+	escapePoint->randomizePosition(15.0f);
+
+	addPatrolPoint(escapePoint->getPositionX(),escapePoint->getPositionY(),false);
 }

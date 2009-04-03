@@ -141,6 +141,8 @@ protected:
 
 	void doCamoCheck(CreatureObject* target);
 
+	bool onEscape;
+
 public:
 
 	const static int CREATURE = 1;
@@ -505,13 +507,20 @@ public:
 		return fpValue;
 	}
 
-
+	void activateEscapeRoute();
 
 	//Event Handlers
 	void onIncapacitateTarget(CreatureObject* victim);
 	void onKilled(CreatureObject* killer);
 	void onDeath();
 
+	inline bool isOnEscpae() {
+		return onEscape;
+	}
+
+	inline void setOnEscpae(bool escape) {
+		onEscape = escape;
+	}
 
 	friend class CreatureManagerImplementation;
 

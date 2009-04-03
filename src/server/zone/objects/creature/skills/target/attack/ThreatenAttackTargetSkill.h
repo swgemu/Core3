@@ -42,18 +42,14 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef POSTURECHANGERANDOMPOOLATTACKTARGETSKILL_H_
-#define POSTURECHANGERANDOMPOOLATTACKTARGETSKILL_H_
+#ifndef THREATENATTACKTARGETSKILL_H_
+#define THREATENPOOLATTACKTARGETSKILL_H_
 
 #include "../AttackTargetSkill.h"
-#include "../../self/events/PostureChangeEvent.h"
 
-class PostureChangeRandomPoolAttackTargetSkill : public AttackTargetSkill {
+class ThreatenTargetSkill : public AttackTargetSkill {
 public:
-	uint8 posture;
-	String postureAnimation;
-
-	PostureChangeRandomPoolAttackTargetSkill(const String& name, const String& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(name, anim, RANDOM, serv) {
+	ThreatenTargetSkill(const String& name, const String& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(name, anim, RANDOM, serv) {
 		healthPoolAttackChance = 50;
 		actionPoolAttackChance = 35;
 		mindPoolAttackChance = 15;
@@ -65,20 +61,31 @@ public:
 
 		int damage = calculateDamage(creature, target);
 
-		CreatureObject* targetCreature;
+
 		if (target->isPlayer() || target->isNonPlayerCreature()) {
 			CreatureObject* targetCreature = (CreatureObject*) target;
-			if (damage && targetCreature->hasAttackDelay())
+			if (target->isNonPlayerCreature()) {
+
+				if (targetCreature->isEscaping()) {
+					targetCreature->deacitvateEscape();
+				} else {
+					targetCreature->acitvateEscape();
+
+					if (targetCreature->isEscaping()) {
+						targetCreature->clearTarget();
+						targetCreature->clearCombatState(false);
+					}
+				}
+			}
+			if (!targetCreature->isEscaping() && damage && targetCreature->hasAttackDelay()) {
 				targetCreature->clearAttackDelay();
+			}
 		}
 
+
+
+
 		doAnimations(creature, target);
-		creature->setPosture(posture);
-
-		ZoneProcessServerImplementation* server = creature->getZoneProcessServer();
-
-		PostureChangeEvent* postureChange = new PostureChangeEvent(creature, String(postureAnimation), 50);
-		server->addEvent(postureChange);
 
 		return damage;
 	}
@@ -87,13 +94,6 @@ public:
 		return server->getCombatManager()->calculateWeaponDamage(creature, (TangibleObject*)target, this, true);
 	}
 
-	void setPosture(int pos) {
-		posture = pos;
-	}
-
-	void setPostureAnimation(String anim) {
-		postureAnimation = anim;
-	}
 };
 
-#endif /*POSTURECHANGERANDOMPOOLATTACKTARGETSKILL_H_*/
+#endif /*THREATENATTACKTARGETSKILL_H_*/

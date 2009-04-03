@@ -166,6 +166,26 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 		return calculateHealSpeed(creature, tskill);
 	}
 
+	if (tskill->isEnhanceSkill()) {
+		if (!tskill->calculateCost(creature))
+			return 0.0f;
+
+		try {
+			if (creature != target)
+				target->wlock(creature);
+
+			tskill->doSkill(creature, target, actionModifier);
+
+			if (creature != target)
+				target->unlock();
+		} catch (...) {
+			if (creature != target)
+				target->unlock();
+		}
+
+		return calculateWeaponAttackSpeed(creature,tskill,action);
+	}
+
 	// Attack skills
 	TangibleObject* targetObject = (TangibleObject*) target;
 
@@ -770,7 +790,6 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	if (DEBUG)
 		System::out << "\tAttacker weapon accuracy is " << weaponAccuracy << endl;
 
-	// TODO: add Aim mod
 	float aimMod = 0.0;
 	float attackerAccuracy = 0;
 
@@ -810,6 +829,14 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	if (targetCreature->isStunned())
 		targetDefense -= 50;
 
+	if (creature->isAiming() && creature->getAimMod() > 0) {
+		aimMod = (float) creature->getAimMod();
+
+		if (DEBUG)
+			System::out << "\tAttacker aiming mod is " << aimMod << endl;
+
+		creature->clearState(CreatureState::AIMING);
+	}
 	if (targetDefense > 125)
 		targetDefense = 125;
 
@@ -905,7 +932,6 @@ uint32 CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject*
 		uint32 force = targetCreature->getSkillMod("force_defense");
 		defense = force;
 	} else {
-
 		// TODO: Add defenses into creature luas.
 		if (!targetCreature->isPlayer()) {
 			defense = targetCreature->getLevel();
@@ -915,6 +941,11 @@ uint32 CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject*
 		} else {
 			defense = targetCreature->getSkillMod("ranged_defense");
 		}
+
+		if (targetCreature->isInCover()) {
+			defense += 10;
+		}
+
 	}
 
 	return defense - (uint32)(defense * targetCreature->calculateBFRatio());

@@ -449,7 +449,7 @@ AddDotPoolAttackTargetSkill(DotPoolAtt)
 Attack = { 
 	attackname = "kipupshot",
 	animation = "fire_1_special_single_light",
-	postureAnimation = "tumble_to_stand",
+	postureAnimation = "tumble_to_kneeling",
 
 	requiredWeaponType = PISTOL,
 	
@@ -500,12 +500,12 @@ Attack = {
 	CbtSpamMiss = "kipup_miss",
 }
 
---AddPosutreChangeRandomPoolAttackTargetSkill(Attack)
+AddPosutreChangeRandomPoolAttackTargetSkill(Attack)
 
 Attack = { 
 	attackname = "diveshot",
 	animation = "fire_1_special_single_light",
-	postureAnimation = "tumble_to_prone",
+	postureAnimation = "tumble_to_kneeling",
 
 	requiredWeaponType = PISTOL,
 	
@@ -556,7 +556,7 @@ Attack = {
 	CbtSpamMiss = "diveshot_miss",
 }
 
---AddPosutreChangeRandomPoolAttackTargetSkill(Attack)
+AddPosutreChangeRandomPoolAttackTargetSkill(Attack)
 
 Attack = { 
 	attackname = "rollshot",
@@ -612,7 +612,7 @@ Attack = {
 	CbtSpamMiss = "rollshot_miss",
 }
 
---AddPosutreChangeRandomPoolAttackTargetSkill(Attack)
+AddPosutreChangeRandomPoolAttackTargetSkill(Attack)
 ----------------------------CARBINES--------------------------------
 
 DirectPoolAtt = { 
@@ -840,7 +840,7 @@ RandPoolAtt = {
 	CbtSpamMiss = "threatenshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(RandPoolAtt)
+AddThreatenAttackTargetSkill(RandPoolAtt)
 
 -----------------------------------------------------------------------
 
@@ -860,7 +860,7 @@ AddChangePostureSelfSkill(ChangePost)
 
 ChangePost = {
 	skillname = "tumbletoprone",
-	animation = "tumble_to_prone",
+	animation = "tumble_to_kneeling",
 
 	posture = PRONE_POSTURE,
 
@@ -873,7 +873,7 @@ AddChangePostureSelfSkill(ChangePost)
 
 ChangePost = {
 	skillname = "tumbletostanding",
-	animation = "tumble_to_standing",
+	animation = "tumble_to_kneeling",
 
 	posture = UPRIGHT_POSTURE,
 
@@ -989,6 +989,23 @@ RandPoolAtt = {
 }
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
 
+Aim = {
+	skillname = "aim",
+	animation = "",
+
+	requiredWeaponType = RANGED
+}
+
+AddAimTargetSkill(Aim)
+
+TakeCover = {
+	skillname = "takecover",
+	animation = "",
+
+	requiredWeaponType = RIFLE
+}
+
+AddCoverSelfSkill(TakeCover)
 
 
 

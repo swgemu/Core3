@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "../tangible/wearables/Wearable.h"
 #include "../tangible/wearables/Armor.h"
 #include "../tangible/weapons/Weapon.h"
+#include "../tangible/weapons/WeaponImplementation.h"
 #include "../tangible/instrument/Instrument.h"
 
 #include "engine/engine.h"
@@ -376,6 +377,31 @@ public:
 			//setWeaponSkillMods(weapon);
 			player->setWeaponAccuracy(weapon);
 			player->setWeapon(weapon);
+
+			uint32 aimMod = 0;
+
+			if (weapon->isRanged()) {
+				aimMod = player->getSkillMod("aim");
+
+				switch (weapon->getType()) {
+				case WeaponImplementation::RIFLE:
+					aimMod += player->getSkillMod("rifle_aim");
+					break;
+				case WeaponImplementation::PISTOL:
+					aimMod += player->getSkillMod("pistol_aim");
+					break;
+				case WeaponImplementation::CARBINE:
+					aimMod += player->getSkillMod("carbine_aim");
+					break;
+				}
+			}
+
+			player->setAimMod(aimMod);
+
+			if (player->isInCover() && (weapon->getType() != WeaponImplementation::RIFLE)) {
+				player->clearState(CreatureState::COVER);
+			}
+
 			weapon->onEquip(player);
 		} else {
 			instrument = (Instrument*)item;
@@ -399,6 +425,7 @@ public:
 			weapon = NULL;
 			//unsetWeaponSkillMods((Weapon*)item.get());
 			player->setWeaponAccuracy(NULL);
+			player->setAimMod(0);
 		} else {
 			instrument = NULL;
 		}

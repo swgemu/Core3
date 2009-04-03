@@ -977,4 +977,19 @@ interface CreatureObject implements TangibleObject {
 	boolean canRecoverFromIncapacitation();
 	void setBerserkDamage(unsigned int damage);
 	unsigned int getBerserkDamage();
+
+	unsigned int getAimMod();
+	void setAimMod(unsigned int mod);
+
+	boolean isAiming();
+	void setAimingState();
+
+	boolean isInCover();
+	void setCoverState();
+
+	boolean isEscaping();
+	void setEscaping(boolean escape);
+	void acitvateEscape();
+	void deacitvateEscape();
+
 }
