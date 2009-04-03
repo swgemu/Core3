@@ -989,7 +989,7 @@ interface CreatureObject implements TangibleObject {
 
 	boolean isEscaping();
 	void setEscaping(boolean escape);
-	void acitvateEscape();
-	void deacitvateEscape();
+	void activateEscape();
+	void deactivateEscape();
 
 }

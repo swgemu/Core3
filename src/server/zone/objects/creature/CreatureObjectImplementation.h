@@ -2906,8 +2906,8 @@ public:
 		escaping = escape;
 	}
 
-	void acitvateEscape();
-	void deacitvateEscape();
+	void activateEscape();
+	void deactivateEscape();
 
 	friend class CombatManager;
 	friend class SkillManager;

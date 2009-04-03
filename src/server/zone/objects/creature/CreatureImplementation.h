@@ -514,11 +514,11 @@ public:
 	void onKilled(CreatureObject* killer);
 	void onDeath();
 
-	inline bool isOnEscpae() {
+	inline bool isOnEscape() {
 		return onEscape;
 	}
 
-	inline void setOnEscpae(bool escape) {
+	inline void setOnEscape(bool escape) {
 		onEscape = escape;
 	}
 

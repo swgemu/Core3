@@ -8239,7 +8239,7 @@ void CreatureObject::setEscaping(bool escape) {
 		((CreatureObjectImplementation*) _impl)->setEscaping(escape);
 }
 
-void CreatureObject::acitvateEscape() {
+void CreatureObject::activateEscape() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -8248,10 +8248,10 @@ void CreatureObject::acitvateEscape() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureObjectImplementation*) _impl)->acitvateEscape();
+		((CreatureObjectImplementation*) _impl)->activateEscape();
 }
 
-void CreatureObject::deacitvateEscape() {
+void CreatureObject::deactivateEscape() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -8260,7 +8260,7 @@ void CreatureObject::deacitvateEscape() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureObjectImplementation*) _impl)->deacitvateEscape();
+		((CreatureObjectImplementation*) _impl)->deactivateEscape();
 }
 
 /*
@@ -10183,10 +10183,10 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setEscaping(inv->getBooleanParameter());
 		break;
 	case 642:
-		acitvateEscape();
+		activateEscape();
 		break;
 	case 643:
-		deacitvateEscape();
+		deactivateEscape();
 		break;
 	default:
 		return NULL;
@@ -12739,12 +12739,12 @@ void CreatureObjectAdapter::setEscaping(bool escape) {
 	return ((CreatureObjectImplementation*) impl)->setEscaping(escape);
 }
 
-void CreatureObjectAdapter::acitvateEscape() {
-	return ((CreatureObjectImplementation*) impl)->acitvateEscape();
+void CreatureObjectAdapter::activateEscape() {
+	return ((CreatureObjectImplementation*) impl)->activateEscape();
 }
 
-void CreatureObjectAdapter::deacitvateEscape() {
-	return ((CreatureObjectImplementation*) impl)->deacitvateEscape();
+void CreatureObjectAdapter::deactivateEscape() {
+	return ((CreatureObjectImplementation*) impl)->deactivateEscape();
 }
 
 /*

@@ -1325,9 +1325,9 @@ public:
 
 	void setEscaping(bool escape);
 
-	void acitvateEscape();
+	void activateEscape();
 
-	void deacitvateEscape();
+	void deactivateEscape();
 
 protected:
 	CreatureObject(DummyConstructorParameter* param);
@@ -2644,9 +2644,9 @@ public:
 
 	void setEscaping(bool escape);
 
-	void acitvateEscape();
+	void activateEscape();
 
-	void deacitvateEscape();
+	void deactivateEscape();
 
 protected:
 	String _param0_info__String_bool_;
