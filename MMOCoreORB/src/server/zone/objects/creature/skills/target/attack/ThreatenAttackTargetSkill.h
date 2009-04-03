@@ -67,9 +67,9 @@ public:
 			if (target->isNonPlayerCreature()) {
 
 				if (targetCreature->isEscaping()) {
-					targetCreature->deacitvateEscape();
+					targetCreature->deactivateEscape();
 				} else {
-					targetCreature->acitvateEscape();
+					targetCreature->activateEscape();
 
 					if (targetCreature->isEscaping()) {
 						targetCreature->clearTarget();

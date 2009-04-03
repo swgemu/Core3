@@ -1554,15 +1554,15 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 
 	if (isEscaping()) {
 		if (isInCombat()) {
-			deacitvateEscape();
-			setOnEscpae(false);
+			deactivateEscape();
+			setOnEscape(false);
 		}
 
-		if (!isOnEscpae()) {
+		if (!isOnEscape()) {
 			activateEscapeRoute();
 		}
 
-		if (isOnEscpae())
+		if (isOnEscape())
 			return false;
 	}
 
@@ -2057,7 +2057,7 @@ void CreatureImplementation::onDeath() {
 }
 
 void CreatureImplementation::activateEscapeRoute() {
-	setOnEscpae(true);
+	setOnEscape(true);
 	deaggro();
 
 	Coordinate* escapePoint = new Coordinate(positionX, positionZ, positionY);

@@ -4600,7 +4600,7 @@ void CreatureObjectImplementation::applyDots() {
 	//	dotList->clear();
 }
 
-void CreatureObjectImplementation::acitvateEscape() {
+void CreatureObjectImplementation::activateEscape() {
 	if (!escapeProtection.isPast()) {
 		setEscaping(false);
 		return;
@@ -4611,7 +4611,7 @@ void CreatureObjectImplementation::acitvateEscape() {
 	escapeTime.addMiliTime(5000 + System::random(10000));
 }
 
-void CreatureObjectImplementation::deacitvateEscape() {
+void CreatureObjectImplementation::deactivateEscape() {
 	setEscaping(false);
 	escapeTime.update();
 	escapeProtection.update();
