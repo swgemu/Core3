@@ -52,7 +52,7 @@ which carries forward this exception.
 #include "WeaponImplementation.h"
 
 WeaponImplementation::WeaponImplementation(uint64 objid, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat)
-		: WeaponServant(objid, tempCRC, n, tempn, WEAPON) {
+		: WeaponSkillModMap(), WeaponServant(objid, tempCRC, n, tempn, WEAPON) {
 	type = tp;
 	setCategory(cat);
 
@@ -62,7 +62,7 @@ WeaponImplementation::WeaponImplementation(uint64 objid, uint32 tempCRC, const U
 }
 
 WeaponImplementation::WeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat)
-		: WeaponServant(creature->getNewItemID(), WEAPON) {
+		: WeaponSkillModMap(), WeaponServant(creature->getNewItemID(), WEAPON) {
 	objectCRC = temp.hashCode();
 
 	customName = n;
@@ -92,15 +92,6 @@ void WeaponImplementation::init() {
 	setMaxCondition(750);
 	setConditionDamage(0);
 
-	skillMod0Type = 0;
-	skillMod0Value = 0;
-
-	skillMod1Type = 0;
-	skillMod1Value = 0;
-
-	skillMod2Type = 0;
-	skillMod2Value = 0;
-
 	setDamageType(KINETIC);
 	setMinDamage(50);
 	setMaxDamage(100);
@@ -126,27 +117,6 @@ void WeaponImplementation::init() {
 	setWoundsRatio(10);
 
 	setArmorPiercing(NONE);
-
-	dot0Type = 0;
-	dot0Attribute = 0;
-	dot0Strength = 0;
-	dot0Duration = 0;
-	dot0Potency = 0;
-	dot0Uses = 0;
-
-	dot1Type = 0;
-	dot1Attribute = 0;
-	dot1Strength = 0;
-	dot1Duration = 0;
-	dot1Potency = 0;
-	dot1Uses = 0;
-
-	dot2Type = 0;
-	dot2Attribute = 0;
-	dot2Strength = 0;
-	dot2Duration = 0;
-	dot2Potency = 0;
-	dot2Uses = 0;
 
 	powerupUses = 0;
 
@@ -189,21 +159,6 @@ void WeaponImplementation::parseItemAttributes() {
 	name = "usesRemaining";
 	usesRemaining = itemAttributes->getIntAttribute(name);
 
-	name = "skillMod0Type";
-	skillMod0Type = itemAttributes->getIntAttribute(name);
-	name = "skillMod0Value";
-	skillMod0Value = itemAttributes->getIntAttribute(name);
-
-	name = "skillMod1Type";
-	skillMod1Type = itemAttributes->getIntAttribute(name);
-	name = "skillMod1Value";
-	skillMod1Value = itemAttributes->getIntAttribute(name);
-
-	name = "skillMod2Type";
-	skillMod2Type = itemAttributes->getIntAttribute(name);
-	name = "skillMod2Value";
-	skillMod2Value = itemAttributes->getIntAttribute(name);
-
 	name = "damageType";
 	damageType = itemAttributes->getIntAttribute(name);
 
@@ -244,45 +199,6 @@ void WeaponImplementation::parseItemAttributes() {
 
 	name = "armorPiercing";
 	armorPiercing = itemAttributes->getIntAttribute(name);
-
-	name = "dot0Type";
-	dot0Type = itemAttributes->getIntAttribute(name);
-	name = "dot0Attribute";
-	dot0Attribute = itemAttributes->getIntAttribute(name);
-	name = "dot0Strength";
-	dot0Strength = itemAttributes->getIntAttribute(name);
-	name = "dot0Duration";
-	dot0Duration = itemAttributes->getIntAttribute(name);
-	name = "dot0Potency";
-	dot0Potency = itemAttributes->getIntAttribute(name);
-	name = "dot0Uses";
-	dot0Uses = itemAttributes->getIntAttribute(name);
-
-	name = "dot1Type";
-	dot1Type = itemAttributes->getIntAttribute(name);
-	name = "dot1Attribute";
-	dot1Attribute = itemAttributes->getIntAttribute(name);
-	name = "dot1Strength";
-	dot1Strength = itemAttributes->getIntAttribute(name);
-	name = "dot1Duration";
-	dot1Duration = itemAttributes->getIntAttribute(name);
-	name = "dot1Potency";
-	dot1Potency = itemAttributes->getIntAttribute(name);
-	name = "dot1Uses";
-	dot1Uses = itemAttributes->getIntAttribute(name);
-
-	name = "dot2Type";
-	dot2Type = itemAttributes->getIntAttribute(name);
-	name = "dot2Attribute";
-	dot2Attribute = itemAttributes->getIntAttribute(name);
-	name = "dot2Strength";
-	dot2Strength = itemAttributes->getIntAttribute(name);
-	name = "dot2Duration";
-	dot2Duration = itemAttributes->getIntAttribute(name);
-	name = "dot2Potency";
-	dot2Potency = itemAttributes->getIntAttribute(name);
-	name = "dot2Uses";
-	dot2Uses = itemAttributes->getIntAttribute(name);
 
 	name = "powerupUses";
 	powerupUses = itemAttributes->getIntAttribute(name);
@@ -330,11 +246,39 @@ void WeaponImplementation::parseItemAttributes() {
 	name = "area";
 	area = itemAttributes->getFloatAttribute(name);
 
-	name = "damageType";
+	name = "damagetype";
 	damageType = itemAttributes->getIntAttribute(name);
 
-	name = "armorPiercing";
-	armorPiercing = itemAttributes->getIntAttribute(name);
+	name = "armorpiercing";
+	int type = itemAttributes->getIntAttribute(name);
+	if (type != 0)
+		armorPiercing = type;
+	else
+		armorPiercing = 0;
+
+	name = "skillMods";
+	makeSkillModMap(itemAttributes->getStringAttribute(name));
+
+	name = "dots";
+	makeDotMap(itemAttributes->getStringAttribute(name));
+}
+
+void WeaponImplementation::saveSkillModMap() {
+
+	String name, value;
+
+	name = "skillMods";
+	value = getSkillModString();
+	itemAttributes->setStringAttribute(name, value);
+}
+
+void WeaponImplementation::saveDotMap() {
+
+	String name, value;
+
+	name = "dots";
+	value = getDotString();
+	itemAttributes->setStringAttribute(name, value);
 }
 
 void WeaponImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
@@ -367,6 +311,7 @@ void WeaponImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
 			_this->setActionAttackCost((int)craftingValues->getCurrentValue("attackactioncost"));
 			_this->setMindAttackCost((int)craftingValues->getCurrentValue("attackmindcost"));
 			//_this->setDamageType((int)craftingValues->getCurrentValue("damagetype"));
+			//_this->setArmorPiercing((int)craftingValues->getCurrentValue("armorpiercing"));
 
 			value = craftingValues->getCurrentValue("woundchance");
 			if(value != DraftSchematicValuesImplementation::VALUENOTFOUND)
@@ -474,186 +419,84 @@ void WeaponImplementation::generateAttributes(SceneObject* obj) {
 }
 
 void WeaponImplementation::generateDotAttributes(AttributeListMessage* alm) {
-	if (dot0Uses != 0) {
-		//Sends the information along for the first DOT, if it exists
+	if (getDotCount() > 0) {
+		StringBuffer key;
+		StringBuffer duration;
+		StringBuffer potency;
+		for (int i = 0; i < getDotCount(); ++i) {
+			Dot* dot = dotVector.get(i);
 
-		switch (dot0Type) {
-		case CreatureState::BLEEDING:
-			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_type", "Bleed");
-			break;
-		case CreatureState::DISEASED:
-			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_type", "Disease");
-			break;
-		case CreatureState::ONFIRE:
-			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_type", "Fire");
-			break;
-		case CreatureState::POISONED:
-			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_type", "Poison");
-			break;
+			key.deleteAll();
+			key << "cat_wpn_dot_0" << i << ".wpn_dot_type";
+
+			switch (dot->getType()) {
+			case CreatureState::BLEEDING:
+				alm->insertAttribute(key.toString(), "Bleed");
+				break;
+			case CreatureState::DISEASED:
+				alm->insertAttribute(key.toString(), "Disease");
+				break;
+			case CreatureState::ONFIRE:
+				alm->insertAttribute(key.toString(), "Fire");
+				break;
+			case CreatureState::POISONED:
+				alm->insertAttribute(key.toString(), "Poison");
+				break;
+			}
+
+			key.deleteAll();
+			key << "cat_wpn_dot_0" << i << ".wpn_dot_attrib";
+
+			switch (dot->getAttribute()) {
+			case CreatureAttribute::HEALTH:
+				alm->insertAttribute(key.toString(), "Health");
+				break;
+			case CreatureAttribute::STRENGTH:
+				alm->insertAttribute(key.toString(), "Strength");
+				break;
+			case CreatureAttribute::CONSTITUTION:
+				alm->insertAttribute(key.toString(), "Constitution");
+				break;
+			case CreatureAttribute::ACTION:
+				alm->insertAttribute(key.toString(), "Action");
+				break;
+			case CreatureAttribute::QUICKNESS:
+				alm->insertAttribute(key.toString(), "Quickness");
+				break;
+			case CreatureAttribute::STAMINA:
+				alm->insertAttribute(key.toString(), "Stamina");
+				break;
+			case CreatureAttribute::MIND:
+				alm->insertAttribute(key.toString(), "Mind");
+				break;
+			case CreatureAttribute::FOCUS:
+				alm->insertAttribute(key.toString(), "Focus");
+				break;
+			case CreatureAttribute::WILLPOWER:
+				alm->insertAttribute(key.toString(), "Willpower");
+				break;
+			}
+
+			key.deleteAll();
+			key << "cat_wpn_dot_0" << i << ".wpn_dot_strength";
+			alm->insertAttribute(key.toString(), dot->getStrength());
+
+			key.deleteAll();
+			key << "cat_wpn_dot_0" << i << ".wpn_dot_duration";
+			duration.deleteAll();
+			duration << dot->getDuration() << "s";
+			alm->insertAttribute(key.toString(), duration);
+
+			key.deleteAll();
+			key << "cat_wpn_dot_0" << i << ".wpn_dot_potency";
+			potency.deleteAll();
+			potency << dot->getPotency() << "%";
+			alm->insertAttribute(key.toString(), potency);
+
+			key.deleteAll();
+			key << "cat_wpn_dot_0" << i << ".wpn_dot_uses";
+			alm->insertAttribute(key.toString(), dot->getUses());
 		}
-
-		switch (dot0Attribute) {
-		case CreatureAttribute::HEALTH:
-			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Health");
-			break;
-		case CreatureAttribute::STRENGTH:
-			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Strength");
-			break;
-		case CreatureAttribute::CONSTITUTION:
-			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Constitution");
-			break;
-		case CreatureAttribute::ACTION:
-			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Action");
-			break;
-		case CreatureAttribute::QUICKNESS:
-			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Quickness");
-			break;
-		case CreatureAttribute::STAMINA:
-			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Stamina");
-			break;
-		case CreatureAttribute::MIND:
-			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Mind");
-			break;
-		case CreatureAttribute::FOCUS:
-			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Focus");
-			break;
-		case CreatureAttribute::WILLPOWER:
-			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Willpower");
-			break;
-		}
-		alm->insertAttribute("cat_wpn_dot_00.wpn_dot_strength", dot0Strength);
-
-		StringBuffer dur;
-		dur << dot0Duration << "s";
-		alm->insertAttribute("cat_wpn_dot_00.wpn_dot_duration", dur);
-
-		StringBuffer pot;
-		pot << dot0Potency << "%";
-		alm->insertAttribute("cat_wpn_dot_00.wpn_dot_potency", pot);
-
-		alm->insertAttribute("cat_wpn_dot_00.wpn_dot_uses", dot0Uses);
-	}
-
-	if (dot1Uses != 0) {
-		//Sends the information for the second DOT, if it exists
-
-		switch (dot1Type) {
-		case CreatureState::BLEEDING:
-			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_type", "Bleed");
-			break;
-		case CreatureState::DISEASED:
-			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_type", "Disease");
-			break;
-		case CreatureState::ONFIRE:
-			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_type", "Fire");
-			break;
-		case CreatureState::POISONED:
-			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_type", "Poison");
-			break;
-		}
-
-		switch (dot1Attribute) {
-		case CreatureAttribute::HEALTH:
-			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Health");
-			break;
-		case CreatureAttribute::STRENGTH:
-			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Strength");
-			break;
-		case CreatureAttribute::CONSTITUTION:
-			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Constitution");
-			break;
-		case CreatureAttribute::ACTION:
-			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Action");
-			break;
-		case CreatureAttribute::QUICKNESS:
-			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Quickness");
-			break;
-		case CreatureAttribute::STAMINA:
-			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Stamina");
-			break;
-		case CreatureAttribute::MIND:
-			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Mind");
-			break;
-		case CreatureAttribute::FOCUS:
-			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Focus");
-			break;
-		case CreatureAttribute::WILLPOWER:
-			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Willpower");
-			break;
-		}
-
-		alm->insertAttribute("cat_wpn_dot_01.wpn_dot_strength", dot1Strength);
-
-		StringBuffer dur;
-		dur << dot1Duration << "s";
-		alm->insertAttribute("cat_wpn_dot_01.wpn_dot_duration", dur);
-
-		StringBuffer pot;
-		pot << dot1Potency << "%";
-		alm->insertAttribute("cat_wpn_dot_01.wpn_dot_potency", pot);
-
-		alm->insertAttribute("cat_wpn_dot_01.wpn_dot_uses", dot1Uses);
-	}
-
-	if (dot2Uses != 0) {
-		//The third DOT, if it exists
-
-		switch (dot2Type) {
-		case CreatureState::BLEEDING:
-			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_type", "Bleed");
-			break;
-		case CreatureState::DISEASED:
-			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_type", "Disease");
-			break;
-		case CreatureState::ONFIRE:
-			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_type", "Fire");
-			break;
-		case CreatureState::POISONED:
-			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_type", "Poison");
-			break;
-		}
-
-		switch (dot2Attribute) {
-		case CreatureAttribute::HEALTH:
-			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Health");
-			break;
-		case CreatureAttribute::STRENGTH:
-			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Strength");
-			break;
-		case CreatureAttribute::CONSTITUTION:
-			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Constitution");
-			break;
-		case CreatureAttribute::ACTION:
-			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Action");
-			break;
-		case CreatureAttribute::QUICKNESS:
-			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Quickness");
-			break;
-		case CreatureAttribute::STAMINA:
-			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Stamina");
-			break;
-		case CreatureAttribute::MIND:
-			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Mind");
-			break;
-		case CreatureAttribute::FOCUS:
-			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Focus");
-			break;
-		case CreatureAttribute::WILLPOWER:
-			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Willpower");
-			break;
-		}
-
-		alm->insertAttribute("cat_wpn_dot_02.wpn_dot_strength", dot2Strength);
-
-		StringBuffer dur;
-		dur << dot2Duration << "s";
-		alm->insertAttribute("cat_wpn_dot_02.wpn_dot_duration", dur);
-
-		StringBuffer pot;
-		pot << dot2Potency << "%";
-		alm->insertAttribute("cat_wpn_dot_02.wpn_dot_potency", pot);
-
-		alm->insertAttribute("cat_wpn_dot_02.wpn_dot_uses", dot2Uses);
 	}
 }
 
@@ -685,6 +528,14 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	wlock();
 
 	int maxLevel = 120;
+	/*
+	 * the maximum value for skill mods generated for a weapon
+	 */
+	maxValue = 25;
+	/*
+	 * the maximum number of dots generated for a weapon
+	 */
+	maxDots = 3;
 
 	if (modifier > maxLevel){
 		int diff = System::random(modifier - maxLevel);
@@ -754,91 +605,93 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		setWoundsRatio(woundsRatio + (woundsRatio * luck / 173));
 
 	if (playerRoll > 12000 && System::random(3) == 1) {
-		setSkillMod0Type(System::random(30) + 1);
-		setSkillMod0Value(luck / (System::random(3) + 10));
+		putSkillMod(System::random(30) + 1, (luck / (System::random(3) +10)));
 	}
 	if (playerRoll > 20000 && System::random(2) == 1) {
-		setSkillMod1Type(System::random(30) + 1);
-		setSkillMod1Value(luck / (System::random(3) + 10));
+		putSkillMod(System::random(30) + 1, (luck / (System::random(3) + 10)));
 	}
 	if (playerRoll > 30000) {
-		setSkillMod2Type(System::random(30) + 1);
-		setSkillMod2Value(luck / (System::random(3) + 10));
+		putSkillMod(System::random(30) + 1, (luck / (System::random(3) + 10)));
 	}
 
 	if (playerRoll > 13000 && System::random(1) == 1)	{
 		if (objectCRC != 0xE24F970E) {
+			Dot* dot = new Dot();
 			switch (System::random(3)) {
 			case 0:
-				setDot0Type(CreatureState::BLEEDING);
-				setDot0Attribute((System::random(2) * 3));
+				dot->setType(CreatureState::BLEEDING);
+				dot->setAttribute(System::random(2) * 3);
 				break;
 			case 1:
-				setDot0Type(CreatureState::DISEASED);
-				setDot0Attribute((System::random(8)));
+				dot->setType(CreatureState::DISEASED);
+				dot->setAttribute(System::random(8));
 				break;
 			case 2:
-				setDot0Type(CreatureState::ONFIRE);
-				setDot0Attribute((System::random(2) * 3));
+				dot->setType(CreatureState::ONFIRE);
+				dot->setAttribute(System::random(2) * 3);
 				break;
 			case 3:
-				setDot0Type(CreatureState::POISONED);
-				setDot0Attribute((System::random(2) * 3));
+				dot->setType(CreatureState::POISONED);
+				dot->setAttribute(System::random(2) * 3);
 				break;
 			}
-			setDot0Strength((modifier / 3) + (luck / 2));
-			setDot0Duration(((luck * 4) + modifier) / 7);
-			setDot0Potency(System::random(luck / 3) + (luck / 5));
-			setDot0Uses((modifier + luck) * 11);
+			dot->setStrength((modifier / 3) + (luck / 2));
+			dot->setDuration(((luck * 4) + modifier) / 7);
+			dot->setPotency(System::random(luck / 3) + (luck / 5));
+			dot->setUses((modifier + luck) * 11);
+			addDot(dot);
 		}
 
 		if (playerRoll > 13000 && System::random(2) == 1)	{
+			Dot* dot = new Dot();
 			switch (System::random(3)) {
 			case 0:
-				setDot1Type(CreatureState::BLEEDING);
-				setDot1Attribute((System::random(2) * 3));
+				dot->setType(CreatureState::BLEEDING);
+				dot->setAttribute(System::random(2) * 3);
 				break;
 			case 1:
-				setDot1Type(CreatureState::DISEASED);
-				setDot1Attribute((System::random(8)));
+				dot->setType(CreatureState::DISEASED);
+				dot->setAttribute(System::random(8));
 				break;
 			case 2:
-				setDot1Type(CreatureState::ONFIRE);
-				setDot1Attribute((System::random(2) * 3));
+				dot->setType(CreatureState::ONFIRE);
+				dot->setAttribute(System::random(2) * 3);
 				break;
 			case 3:
-				setDot1Type(CreatureState::POISONED);
-				setDot1Attribute((System::random(2) * 3));
+				dot->setType(CreatureState::POISONED);
+				dot->setAttribute(System::random(2) * 3);
 				break;
 			}
-			setDot1Strength((modifier / 3) + (luck / 2));
-			setDot1Duration(((luck * 4) + modifier) / 7);
-			setDot1Potency(System::random(luck / 3) + (luck / 5));
-			setDot1Uses((modifier + luck) * 11);
+			dot->setStrength((modifier / 3) + (luck / 2));
+			dot->setDuration(((luck * 4) + modifier) / 7);
+			dot->setPotency(System::random(luck / 3) + (luck / 5));
+			dot->setUses((modifier + luck) * 11);
+			addDot(dot);
 
 			if (playerRoll > 13000 && System::random(4) == 1)	{
 				switch (System::random(3)) {
 				case 0:
-					setDot2Type(CreatureState::BLEEDING);
-					setDot2Attribute((System::random(2) * 3));
+					dot->setType(CreatureState::BLEEDING);
+					dot->setAttribute(System::random(2) * 3);
 					break;
 				case 1:
-					setDot2Type(CreatureState::DISEASED);
-					setDot2Attribute((System::random(8)));
+					dot->setType(CreatureState::DISEASED);
+					dot->setAttribute(System::random(8));
 					break;
 				case 2:
-					setDot2Type(CreatureState::ONFIRE);
-					setDot2Attribute((System::random(2) * 3));
+					dot->setType(CreatureState::ONFIRE);
+					dot->setAttribute(System::random(2) * 3);
 					break;
 				case 3:
-					setDot2Type(CreatureState::POISONED);
-					setDot2Attribute((System::random(2) * 3));
+					dot->setType(CreatureState::POISONED);
+					dot->setAttribute(System::random(2) * 3);
 					break;
 				}
-				setDot2Strength((modifier / 3) + (luck / 2));
-				setDot2Duration(((luck * 4) + modifier) / 7);
-				setDot2Potency(System::random(luck / 3) + (luck / 5));
-				setDot2Uses((modifier + luck) * 11);
+				dot->setStrength((modifier / 3) + (luck / 2));
+				dot->setDuration(((luck * 4) + modifier) / 7);
+				dot->setPotency(System::random(luck / 3) + (luck / 5));
+				dot->setUses((modifier + luck) * 11);
+				addDot(dot);
 
 			}
 		}
@@ -872,45 +725,32 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	else if (maxDamage > 800)
 		setMaxDamage(700 + System::random(350));
 
-	if (dot1Strength > 225) {
-		setDot1Strength(100 + System::random(200));
+	//helps randomize the dot strength
+	if (getDotCount() > 0){
+		Dot* dot = dotVector.get(0);
+		if (dot->getStrength() > 225) {
+			dot->setStrength(100 + System::random(200));
 
-	} else if (dot1Strength > 150) {
-		setDot1Strength(100 + System::random(100));
+		} else if (dot->getStrength() > 150) {
+			dot->setStrength(100 + System::random(100));
 
-	} else if (dot1Strength > 75) {
-		setDot1Strength(50 + System::random(75));
+		} else if (dot->getStrength() > 75) {
+			dot->setStrength(50 + System::random(75));
 
-	} else { setDot1Strength(1 + System::random(50));
+		} else { dot->setStrength(1 + System::random(50));
 
+		}
 	}
 
 	if (minDamage > maxDamage)
 		setMinDamage(round(0.8 * maxDamage));
 
-	if (skillMod0Value > 25)
-		setSkillMod0Value(25);
-
-	if (skillMod1Value > 25)
-		setSkillMod1Value(25);
-
-	if (skillMod2Value > 25)
-		setSkillMod2Value(25);
-
-	if (skillMod2Type == skillMod1Type || skillMod2Type == skillMod0Type) {
-		setSkillMod2Type(0);
-		setSkillMod2Value(0);
-	}
-
-	if (skillMod1Type == skillMod0Type || skillMod1Type == skillMod2Type) {
-		setSkillMod1Type(0);
-		setSkillMod1Value(0);
-	}
-
 	equipped = false;
 
 	persistent = false;
 	updated = true;
+
+	saveSkillModMap();
 
 	unlock();
 }
@@ -1079,14 +919,14 @@ void WeaponImplementation::addAttributes(AttributeListMessage* alm) {
 	if (usesRemaining > 0)
 		alm->insertAttribute("count", usesRemaining);
 
-	if (skillMod0Type > 0)
-		generateSkillMods(alm, skillMod0Type, skillMod0Value);
+	int key = 0;
+	int value = 0;
+	for (int i = 0; i < innateSkillModMap.size(); ++i) {
+		key = innateSkillModMap.elementAt(i)->getKey();
+		value = innateSkillModMap.elementAt(i)->getValue();
 
-	if (skillMod1Type > 0)
-		generateSkillMods(alm, skillMod1Type, skillMod1Value);
-
-	if (skillMod2Type > 0)
-		generateSkillMods(alm, skillMod2Type, skillMod2Value);
+		generateSkillMods(alm, key, value);
+	}
 
 	String ap;
 
@@ -1207,7 +1047,7 @@ void WeaponImplementation::addAttributes(AttributeListMessage* alm) {
 	if (getForceCost() > 0)
 		alm->insertAttribute("force_cost", getForceCost());
 
-	if (dot0Uses !=0 || dot1Uses != 0 || dot2Uses != 0)
+	if (getDotCount() > 0)
 		generateDotAttributes(alm);
 
 	if (sliced == 1)
@@ -1271,8 +1111,88 @@ void WeaponImplementation::setXpType() {
 	};
 }
 
+void WeaponImplementation::createTestDot(int type) {
+	Dot* dot = new Dot();
+	switch(type) {
+	case 1:
+		type = CreatureState::BLEEDING;
+		break;
+	case 2:
+		type = CreatureState::ONFIRE;
+		break;
+	case 3:
+		type = CreatureState::POISONED;
+		break;
+	case 4:
+		type = CreatureState::DISEASED;
+		break;
+	}
+
+	int attr = 0;
+	int pool = System::random(3);
+	switch (pool) {
+	case 0:
+		attr = CreatureAttribute::ACTION;
+		break;
+	case 1:
+		attr = CreatureAttribute::MIND;
+		break;
+	default:
+		attr = CreatureAttribute::HEALTH;
+		break;
+	}
+
+	dot->setType(type);
+	dot->setAttribute(attr);
+	dot->setUses(System::random(1000));
+	dot->setPotency(100);
+	dot->setStrength(System::random(100));
+	dot->setDuration(System::random(60));
+	addDot(dot);
+}
+
+void WeaponImplementation::setInnateMods(Player* player) {
+	for (int i = 0; i < innateSkillModMap.size(); ++i) {
+		int skillModType = innateSkillModMap.elementAt(i)->getKey();
+		int skillModValue = innateSkillModMap.elementAt(i)->getValue();
+
+		if (skillModType == 0)
+			return;
+
+		String enhanceName = weaponSkillMods.getEnhancement(skillModType);
+		player->addSkillModBonus(enhanceName, skillModValue, true);
+	}
+}
+
+void WeaponImplementation::unsetInnateMods(Player* player) {
+	for (int i = 0; i < innateSkillModMap.size(); ++i) {
+		int skillModType = innateSkillModMap.elementAt(i)->getKey();
+		int skillModValue = innateSkillModMap.elementAt(i)->getValue();
+
+		if (skillModType == 0)
+			return;
+
+		String enhanceName = weaponSkillMods.getEnhancement(skillModType);
+		player->addSkillModBonus(enhanceName, -skillModValue, true);
+	}
+}
+
 
 //Event Handlers
+/*
+ * This function gets called from EquippedItems.h in equipWeapon()
+ */
+void WeaponImplementation::onEquip(Player* player) {
+	setInnateMods(player);
+}
+
+/*
+ * This function gets called from EquippedItems.h in unEquipWeapon()
+ */
+void WeaponImplementation::onUnequip(Player* player) {
+	unsetInnateMods(player);
+}
+
 /**
  * This event occurs following a successful damage slice.
  * \param slicer The Player doing the slicing.

@@ -71,9 +71,9 @@ interface Weapon implements TangibleObject {
 
 	void removePowerup(Player player, boolean notify);
 
-	boolean decreaseDot0Uses();
-	boolean decreaseDot1Uses();
-	boolean decreaseDot2Uses();
+	//boolean decreaseDot0Uses();
+	//boolean decreaseDot1Uses();
+	//boolean decreaseDot2Uses();
 	boolean decreasePowerupUses();
 	boolean decreaseUsesRemaining();
 	
@@ -126,7 +126,7 @@ interface Weapon implements TangibleObject {
 
 	int getArmorPiercing();
 
-	int getDot0Type();
+	/*int getDot0Type();
 	int getDot0Attribute();
 	int getDot0Strength();
 	int getDot0Duration();
@@ -153,7 +153,7 @@ interface Weapon implements TangibleObject {
 	
 	int getSkillMod0Value();
 	int getSkillMod1Value();
-	int getSkillMod2Value();
+	int getSkillMod2Value();*/
 
 	int getPowerupUses();
 	boolean hasPowerup();
@@ -180,14 +180,14 @@ interface Weapon implements TangibleObject {
 	
 	void setArmorPiercing(int armorPierce);
 
-	void setDot0Type(int type);
+	/*void setDot0Type(int type);
 	void setDot0Attribute(int attribute);
 	void setDot0Strength(int strength);
 	void setDot0Duration(int duration);
 	void setDot0Potency(int potency);
 	void setDot0Uses(int uses);
 	void setDot1Uses(int uses);
-	void setDot2Uses(int uses);
+	void setDot2Uses(int uses);*/
 	
 	void setPointBlankRange(int pointBlankRnge);
 	void setPointBlankAccuracy(int pointBlankAcc);
@@ -209,6 +209,17 @@ interface Weapon implements TangibleObject {
 	void powerupIdealAccuracy(float powerupValue);
 	void powerupMaxRangeAccuracy(float powerupValue);
 
+	//dots
+	int getNumDots();
+	int getDotType(int i);
+	int getDotAttribute(int i);
+	int getDotStrength(int i);
+	int getDotPotency(int i);
+	int getDotDuration(int i);
+	int getDotUses(int i);
+	boolean decreaseDotUses(int i);
+	void createTestDot(int type);
+
 	void setPowerupUses(int uses);
 	void setUsesRemaining(int charges);
 
@@ -218,6 +229,8 @@ interface Weapon implements TangibleObject {
 	void setXpType();
 
 	//Event Handlers
+	void onEquip(Player player);
+	void onUnequip(Player player);
 	void onBroken();
 	void onSlicingFailure(Player slicer);
 

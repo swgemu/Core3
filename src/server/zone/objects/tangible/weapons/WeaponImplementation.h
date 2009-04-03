@@ -59,10 +59,13 @@ which carries forward this exception.
 #include "../powerup/Powerup.h"
 #include "../powerup/PowerupImplementation.h"
 
+#include "WeaponSkillModMap.h"
+#include "WeaponSkillMods.h"
+
 class CombatManager;
 class Powerup;
 
-class WeaponImplementation : public WeaponServant {
+class WeaponImplementation : public WeaponSkillModMap, public WeaponServant {
 protected:
 	int type;
 
@@ -72,15 +75,6 @@ protected:
 	bool certified;
 
 	int usesRemaining;
-
-	int skillMod0Type;
-	int skillMod0Value;
-
-	int skillMod1Type;
-	int skillMod1Value;
-
-	int skillMod2Type;
-	int skillMod2Value;
 
 	int damageType;
 	float minDamage;
@@ -106,27 +100,6 @@ protected:
 
 	int armorPiercing;
 
-	int dot0Type;
-	int dot0Attribute;
-	int dot0Strength;
-	int dot0Duration;
-	int dot0Potency;
-	int dot0Uses;
-
-	int dot1Type;
-	int dot1Attribute;
-	int dot1Strength;
-	int dot1Duration;
-	int dot1Potency;
-	int dot1Uses;
-
-	int dot2Type;
-	int dot2Attribute;
-	int dot2Strength;
-	int dot2Duration;
-	int dot2Potency;
-	int dot2Uses;
-
 	int powerupUses;
 
 	float bonusMinDamage;
@@ -151,6 +124,8 @@ protected:
 
 	String xpType;
 	float area;
+
+	WeaponSkillMods weaponSkillMods;
 
 public:
 
@@ -237,35 +212,17 @@ public:
 	void powerupIdealAccuracy(float powerupValue);
 	void powerupMaxRangeAccuracy(float powerupValue);
 
+	void saveSkillModMap();
+	void saveDotMap();
+	void setInnateMods(Player* player);
+	void unsetInnateMods(Player* player);
+
+	void createTestDot(int type);
+
+	void onEquip(Player* player);
+	void onUnequip(Player* player);
+
 	void addAttributes(AttributeListMessage* alm);
-
-	// dots
-	inline bool decreaseDot0Uses() {
-		if (dot0Uses != -1) {
-			String name = "dot0Uses";
-			itemAttributes->setIntAttribute(name, --dot0Uses);
-			return true;
-		} else
-			return false;
-	}
-
-	inline bool decreaseDot1Uses() {
-		if (dot1Uses != -1) {
-			String name = "dot1Uses";
-			itemAttributes->setIntAttribute(name, --dot1Uses);
-			return true;
-		} else
-			return false;
-	}
-
-	inline bool decreaseDot2Uses() {
-		if (dot2Uses != -1) {
-			String name = "dot2Uses";
-			itemAttributes->setIntAttribute(name, --dot2Uses);
-			return true;
-		} else
-			return false;
-	}
 
 	inline bool decreasePowerupUses() {
 		if (powerupUses > 0) {
@@ -398,150 +355,6 @@ public:
 		armorPiercing = armorPierce;
 		String name = "armorPiercing";
 		itemAttributes->setIntAttribute(name, armorPierce);
-	}
-
-	inline void setDot0Type(int type) {
-		dot0Type = type;
-		String name = "dot0Type";
-		itemAttributes->setIntAttribute(name, type);
-	}
-
-	inline void setDot0Attribute(int attribute) {
-		dot0Attribute = attribute;
-		String name = "dot0Attribute";
-		itemAttributes->setIntAttribute(name, attribute);
-	}
-
-	inline void setDot0Strength(int strength) {
-		dot0Strength = strength;
-		String name = "dot0Strength";
-		itemAttributes->setIntAttribute(name, strength);
-	}
-
-	inline void setDot0Duration(int duration) {
-		dot0Duration = duration;
-		String name = "dot0Duration";
-		itemAttributes->setIntAttribute(name, duration);
-	}
-
-	inline void setDot0Potency(int potency) {
-		dot0Potency = potency;
-		String name = "dot0Potency";
-		itemAttributes->setIntAttribute(name, potency);
-	}
-
-	inline void setDot0Uses(int uses) {
-		dot0Uses = uses;
-		String name = "dot0Uses";
-		itemAttributes->setIntAttribute(name, uses);
-	}
-
-	inline void setDot1Type(int type) {
-		dot1Type = type;
-		String name = "dot1Type";
-		itemAttributes->setIntAttribute(name, type);
-	}
-
-	inline void setDot1Attribute(int attribute) {
-		dot1Attribute = attribute;
-		String name = "dot1Attribute";
-		itemAttributes->setIntAttribute(name, attribute);
-	}
-
-	inline void setDot1Strength(int strength) {
-		dot1Strength = strength;
-		String name = "dot1Strength";
-		itemAttributes->setIntAttribute(name, strength);
-	}
-
-	inline void setDot1Duration(int duration) {
-		dot1Duration = duration;
-		String name = "dot1Duration";
-		itemAttributes->setIntAttribute(name, duration);
-	}
-
-	inline void setDot1Potency(int potency) {
-		dot1Potency = potency;
-		String name = "dot1Potency";
-		itemAttributes->setIntAttribute(name, potency);
-	}
-
-	inline void setDot1Uses(int uses) {
-		dot1Uses = uses;
-		String name = "dot1Uses";
-		itemAttributes->setIntAttribute(name, uses);
-	}
-
-	inline void setDot2Type(int type) {
-		dot2Type = type;
-		String name = "dot2Type";
-		itemAttributes->setIntAttribute(name, type);
-	}
-
-	inline void setDot2Attribute(int attribute) {
-		dot2Attribute = attribute;
-		String name = "dot2Attribute";
-		itemAttributes->setIntAttribute(name, attribute);
-	}
-
-	inline void setDot2Strength(int strength) {
-		dot2Strength = strength;
-		String name = "dot2Strength";
-		itemAttributes->setIntAttribute(name, strength);
-	}
-
-	inline void setDot2Duration(int duration) {
-		dot2Duration = duration;
-		String name = "dot2Duration";
-		itemAttributes->setIntAttribute(name, duration);
-	}
-
-	inline void setDot2Potency(int potency) {
-		dot2Potency = potency;
-		String name = "dot2Potency";
-		itemAttributes->setIntAttribute(name, potency);
-	}
-
-	inline void setDot2Uses(int uses) {
-		dot2Uses = uses;
-		String name = "dot2Uses";
-		itemAttributes->setIntAttribute(name, uses);
-	}
-
-	inline void setSkillMod0Type(int skillModType) {
-		skillMod0Type = skillModType;
-		String name = "skillMod0Type";
-		itemAttributes->setIntAttribute(name, skillModType);
-	}
-
-	inline void setSkillMod1Type(int skillModType) {
-		skillMod1Type = skillModType;
-		String name = "skillMod1Type";
-		itemAttributes->setIntAttribute(name, skillModType);
-	}
-
-	inline void setSkillMod2Type(int skillModType) {
-		skillMod2Type = skillModType;
-		String name = "skillMod2Type";
-		itemAttributes->setIntAttribute(name, skillModType);
-	}
-
-	inline void setSkillMod0Value(int skillModValue) {
-		skillMod0Value = skillModValue;
-		String name = "skillMod0Value";
-		itemAttributes->setIntAttribute(name, skillModValue);
-	}
-
-	inline void setSkillMod1Value(int skillModValue) {
-		skillMod1Value = skillModValue;
-		String name = "skillMod1Value";
-		itemAttributes->setIntAttribute(name, skillModValue);
-	}
-
-	inline void setSkillMod2Value(int skillModValue) {
-		skillMod2Value = skillModValue;
-		String name = "skillMod2Value";
-		itemAttributes->setIntAttribute(name, skillModValue);
 	}
 
 	inline void setPowerupUses(int uses) {
@@ -750,100 +563,112 @@ public:
 		return armorPiercing;
 	}
 
-	inline int getDot0Type() {
-		return dot0Type;
+	/*
+	 * returns the number of dots this weapon has
+	 */
+	inline int getNumDots() {
+		return getDotCount();
 	}
 
-	inline int getDot0Attribute() {
-		return dot0Attribute;
+	/*
+	 * Get the dot type of a dot at index i
+	 * @param i int index of the dot
+	 * @return int type corresponding to CreatureAttribute. Ex. CreatureAttribute::POISON
+	 */
+	inline int getDotType(int i) {
+		if (getDotCount() > i && i >= 0){
+			Dot* dot = dotVector.get(i);
+			if (dot != NULL)
+				return dot->getType();
+		}
+		return 0;
 	}
 
-	inline int getDot0Strength() {
-		return dot0Strength;
+	/*
+	 * Get the affected attribute of a dot at index i
+	 * @param i int index of the dot
+	 * @return int attribute corresponding to CreatureAttribute. Ex. CreatureAttribute::HEALTH
+	 */
+	inline int getDotAttribute(int i) {
+		if (getDotCount() > i && i >= 0){
+			Dot* dot = dotVector.get(i);
+			if (dot != NULL)
+				return dot->getAttribute();
+		}
+		return 0;
 	}
 
-	inline int getDot0Duration() {
-		return dot0Duration;
+	/*
+	 * Get the strength of a dot at index i
+	 * @param i int index of the dot
+	 * @return int strength of the dot.
+	 */
+	inline int getDotStrength(int i) {
+		if (getDotCount() > i && i >= 0){
+			Dot* dot = dotVector.get(i);
+			if (dot != NULL)
+				return dot->getStrength();
+		}
+		return 0;
 	}
 
-	inline int getDot0Potency() {
-		return dot0Potency;
+	/*
+	 * Get the potency of a dot at index i
+	 * @param i int index of the dot
+	 * @return int potency of the dot. ex 100% potency will return 100
+	 */
+	inline int getDotPotency(int i) {
+		if (getDotCount() > i && i >= 0){
+			Dot* dot = dotVector.get(i);
+			if (dot != NULL)
+				return dot->getPotency();
+		}
+		return 0;
 	}
 
-	inline int getDot0Uses() {
-		return dot0Uses;
+	/*
+	 * Get the duration in seconds for a dot at index i
+	 * @param i int index of the dot
+	 * @return int duration in seconds
+	 */
+	inline int getDotDuration(int i) {
+		if (getDotCount() > i && i >= 0){
+			Dot* dot = dotVector.get(i);
+			if (dot != NULL)
+				return dot->getDuration();
+		}
+		return 0;
 	}
 
-	inline int getDot1Type() {
-		return dot1Type;
+	/*
+	 * Get the uses remaining on a dot at index i
+	 * @param i int index of the dot
+	 * @return int uses remaining or 0 if the dot is null
+	 */
+	inline int getDotUses(int i) {
+		if (getDotCount() > i && i >= 0){
+			Dot* dot = dotVector.get(i);
+			if (dot != NULL)
+				return dot->getUses();
+		}
+		return 0;
 	}
 
-	inline int getDot1Attribute() {
-		return dot1Attribute;
-	}
-
-	inline int getDot1Strength() {
-		return dot1Strength;
-	}
-
-	inline int getDot1Duration() {
-		return dot1Duration;
-	}
-
-	inline int getDot1Potency() {
-		return dot1Potency;
-	}
-
-	inline int getDot1Uses() {
-		return dot1Uses;
-	}
-
-	inline int getDot2Type() {
-		return dot2Type;
-	}
-
-	inline int getDot2Attribute() {
-		return dot2Attribute;
-	}
-
-	inline int getDot2Strength() {
-		return dot2Strength;
-	}
-
-	inline int getDot2Duration() {
-		return dot2Duration;
-	}
-
-	inline int getDot2Potency() {
-		return dot2Potency;
-	}
-
-	inline int getDot2Uses() {
-		return dot2Uses;
-	}
-
-	inline int getSkillMod0Type() {
-		return skillMod0Type;
-	}
-
-	inline int getSkillMod1Type() {
-		return skillMod1Type;
-	}
-
-	inline int getSkillMod2Type() {
-		return skillMod2Type;
-	}
-
-	inline int getSkillMod0Value() {
-		return skillMod0Value;
-	}
-
-	inline int getSkillMod1Value() {
-		return skillMod1Value;
-	}
-
-	inline int getSkillMod2Value() {
-		return skillMod2Value;
+	/*
+	 * Decrease the uses remaining for a dot at index i
+	 *@param i int index of the dot to decrease uses
+	 *@return boolean true if successful, false if not.
+	 */
+	inline bool decreaseDotUses(int i) {
+		if (getDotCount() > i && i >= 0){
+			Dot* dot = dotVector.get(i);
+			if (dot != NULL) {
+				dot->setUses(dot->getUses() - 1);
+				saveDotMap();
+				return true;
+			}
+		}
+		return false;
 	}
 
 	inline int getPowerupUses() {

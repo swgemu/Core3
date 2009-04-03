@@ -2368,33 +2368,9 @@ void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player* player)
 		if (tokenizer.hasMoreTokens()) {
 			uint64 type = 0;
 			int token = tokenizer.getIntToken();
-			if (token == 1)
-				type = CreatureState::BLEEDING;
-			if (token == 2)
-				type = CreatureState::ONFIRE;
-			if (token == 3)
-				type = CreatureState::POISONED;
-			if (token == 4)
-				type = CreatureState::DISEASED;
-
-			item->setDot0Type(type);
-
-			int pool = System::random(3);
-			int attr = 0;
-			if (pool == 0)
-				attr = CreatureAttribute::ACTION;
-			if (pool == 1)
-				attr = CreatureAttribute::MIND;
-			else
-				attr = CreatureAttribute::HEALTH;
-
-			item->setDot0Attribute(attr);
-			item->setDot0Uses(System::random(1000));
-			item->setDot0Potency(100);
-			item->setDot0Strength(System::random(100));
-			item->setDot0Duration(System::random(60));
+			item->createTestDot(token);
 		}
-
+		item->generateAttributes(player);
 		server->addObject(item);
 		player->addInventoryItem(item);
 		item->sendTo(player);
