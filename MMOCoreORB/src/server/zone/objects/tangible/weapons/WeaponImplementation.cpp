@@ -634,6 +634,10 @@ void WeaponImplementation::setWeaponStats(int modifier){
 				dot->setType(CreatureState::POISONED);
 				dot->setAttribute(System::random(2) * 3);
 				break;
+			default:
+				dot->setType(CreatureState::BLEEDING);
+				dot->setAttribute(System::random(2) *3);
+				break;
 			}
 			dot->setStrength((modifier / 3) + (luck / 2));
 			dot->setDuration(((luck * 4) + modifier) / 7);
@@ -661,6 +665,10 @@ void WeaponImplementation::setWeaponStats(int modifier){
 				dot->setType(CreatureState::POISONED);
 				dot->setAttribute(System::random(2) * 3);
 				break;
+			default:
+				dot->setType(CreatureState::BLEEDING);
+				dot->setAttribute(System::random(2) *3);
+				break;
 			}
 			dot->setStrength((modifier / 3) + (luck / 2));
 			dot->setDuration(((luck * 4) + modifier) / 7);
@@ -685,6 +693,10 @@ void WeaponImplementation::setWeaponStats(int modifier){
 				case 3:
 					dot->setType(CreatureState::POISONED);
 					dot->setAttribute(System::random(2) * 3);
+					break;
+				default:
+					dot->setType(CreatureState::BLEEDING);
+					dot->setAttribute(System::random(2) *3);
 					break;
 				}
 				dot->setStrength((modifier / 3) + (luck / 2));
@@ -1125,6 +1137,9 @@ void WeaponImplementation::createTestDot(int type) {
 		break;
 	case 4:
 		type = CreatureState::DISEASED;
+		break;
+	default:
+		type = CreatureState::BLEEDING;
 		break;
 	}
 
