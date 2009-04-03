@@ -33,12 +33,6 @@ public:
 
 	void removePowerup(Player* player, bool notify);
 
-	bool decreaseDot0Uses();
-
-	bool decreaseDot1Uses();
-
-	bool decreaseDot2Uses();
-
 	bool decreasePowerupUses();
 
 	bool decreaseUsesRemaining();
@@ -91,54 +85,6 @@ public:
 
 	int getArmorPiercing();
 
-	int getDot0Type();
-
-	int getDot0Attribute();
-
-	int getDot0Strength();
-
-	int getDot0Duration();
-
-	int getDot0Potency();
-
-	int getDot0Uses();
-
-	int getDot1Type();
-
-	int getDot1Attribute();
-
-	int getDot1Strength();
-
-	int getDot1Duration();
-
-	int getDot1Potency();
-
-	int getDot1Uses();
-
-	int getDot2Type();
-
-	int getDot2Attribute();
-
-	int getDot2Strength();
-
-	int getDot2Duration();
-
-	int getDot2Potency();
-
-	int getDot2Uses();
-
-	int getSkillMod0Type();
-
-	int getSkillMod1Type();
-
-	int getSkillMod2Type();
-
-	int getSkillMod0Value();
-
-	int getSkillMod1Value();
-
-	int getSkillMod2Value();
-
 	int getPowerupUses();
 
 	bool hasPowerup();
@@ -170,22 +116,6 @@ public:
 	void setWoundsRatio(float woundsRat);
 
 	void setArmorPiercing(int armorPierce);
-
-	void setDot0Type(int type);
-
-	void setDot0Attribute(int attribute);
-
-	void setDot0Strength(int strength);
-
-	void setDot0Duration(int duration);
-
-	void setDot0Potency(int potency);
-
-	void setDot0Uses(int uses);
-
-	void setDot1Uses(int uses);
-
-	void setDot2Uses(int uses);
 
 	void setPointBlankRange(int pointBlankRnge);
 
@@ -223,6 +153,24 @@ public:
 
 	void powerupMaxRangeAccuracy(float powerupValue);
 
+	int getNumDots();
+
+	int getDotType(int i);
+
+	int getDotAttribute(int i);
+
+	int getDotStrength(int i);
+
+	int getDotPotency(int i);
+
+	int getDotDuration(int i);
+
+	int getDotUses(int i);
+
+	bool decreaseDotUses(int i);
+
+	void createTestDot(int type);
+
 	void setPowerupUses(int uses);
 
 	void setUsesRemaining(int charges);
@@ -232,6 +180,10 @@ public:
 	void setCertified(bool crt);
 
 	void setXpType();
+
+	void onEquip(Player* player);
+
+	void onUnequip(Player* player);
 
 	void onBroken();
 
@@ -266,12 +218,6 @@ public:
 
 	void removePowerup(Player* player, bool notify);
 
-	bool decreaseDot0Uses();
-
-	bool decreaseDot1Uses();
-
-	bool decreaseDot2Uses();
-
 	bool decreasePowerupUses();
 
 	bool decreaseUsesRemaining();
@@ -324,54 +270,6 @@ public:
 
 	int getArmorPiercing();
 
-	int getDot0Type();
-
-	int getDot0Attribute();
-
-	int getDot0Strength();
-
-	int getDot0Duration();
-
-	int getDot0Potency();
-
-	int getDot0Uses();
-
-	int getDot1Type();
-
-	int getDot1Attribute();
-
-	int getDot1Strength();
-
-	int getDot1Duration();
-
-	int getDot1Potency();
-
-	int getDot1Uses();
-
-	int getDot2Type();
-
-	int getDot2Attribute();
-
-	int getDot2Strength();
-
-	int getDot2Duration();
-
-	int getDot2Potency();
-
-	int getDot2Uses();
-
-	int getSkillMod0Type();
-
-	int getSkillMod1Type();
-
-	int getSkillMod2Type();
-
-	int getSkillMod0Value();
-
-	int getSkillMod1Value();
-
-	int getSkillMod2Value();
-
 	int getPowerupUses();
 
 	bool hasPowerup();
@@ -403,22 +301,6 @@ public:
 	void setWoundsRatio(float woundsRat);
 
 	void setArmorPiercing(int armorPierce);
-
-	void setDot0Type(int type);
-
-	void setDot0Attribute(int attribute);
-
-	void setDot0Strength(int strength);
-
-	void setDot0Duration(int duration);
-
-	void setDot0Potency(int potency);
-
-	void setDot0Uses(int uses);
-
-	void setDot1Uses(int uses);
-
-	void setDot2Uses(int uses);
 
 	void setPointBlankRange(int pointBlankRnge);
 
@@ -456,6 +338,24 @@ public:
 
 	void powerupMaxRangeAccuracy(float powerupValue);
 
+	int getNumDots();
+
+	int getDotType(int i);
+
+	int getDotAttribute(int i);
+
+	int getDotStrength(int i);
+
+	int getDotPotency(int i);
+
+	int getDotDuration(int i);
+
+	int getDotUses(int i);
+
+	bool decreaseDotUses(int i);
+
+	void createTestDot(int type);
+
 	void setPowerupUses(int uses);
 
 	void setUsesRemaining(int charges);
@@ -465,6 +365,10 @@ public:
 	void setCertified(bool crt);
 
 	void setXpType();
+
+	void onEquip(Player* player);
+
+	void onUnequip(Player* player);
 
 	void onBroken();
 

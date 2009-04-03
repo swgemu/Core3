@@ -53,7 +53,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 // This could be moved to wearable or armor
-static const char* enhancements[] =
+/*static const char* enhancements[] =
 {
 	"no_enhancement", "melee_defense", "ranged_defense", "stun_defense",
 	"dizzy_defense", "blind_defense", "knockdown_defense", "intimidate_defense",
@@ -63,7 +63,7 @@ static const char* enhancements[] =
 	"twohandmelee_accuracy", "polearm_accuracy", "dodge", "block",
 	"counterattack", "resistance_bleeding",	"resistance_disease", "resistance_fire",
 	"resistance_poison", "slope_move", "heavyweapon_speed", "heavyweapon_accuracy"
-};
+};*/
 
 // This could be move to instrument
 static const char* instrumentSkills[] =
@@ -140,12 +140,12 @@ public:
 		return instrumentSkills[idx];
 	}
 
-	const static char* getEnhancement(int idx) {
+	/*const static char* getEnhancement(int idx) {
 		if (idx > 31)
 			throw ArrayIndexOutOfBoundsException(idx);
 
 		return enhancements[idx];
-	}
+	}*/
 
 	void equipItem (TangibleObject* item) {
 		if (item->isArmor() || item->isClothing() || item->isWearableContainer())
@@ -373,9 +373,10 @@ public:
 			if (!checkPermissions(item) && !item->isEquipped())
 				return false;
 			weapon = (Weapon*)item;
-			setWeaponSkillMods(weapon);
+			//setWeaponSkillMods(weapon);
 			player->setWeaponAccuracy(weapon);
 			player->setWeapon(weapon);
+			weapon->onEquip(player);
 		} else {
 			instrument = (Instrument*)item;
 			player->setWeaponAccuracy(NULL);
@@ -394,8 +395,9 @@ public:
 			player->stopPlayingMusic();
 
 		if (item->isWeapon()) {
+			item->onUnequip(player);
 			weapon = NULL;
-			unsetWeaponSkillMods((Weapon*)item.get());
+			//unsetWeaponSkillMods((Weapon*)item.get());
 			player->setWeaponAccuracy(NULL);
 		} else {
 			instrument = NULL;
@@ -507,7 +509,7 @@ public:
 		return locations;
 	}
 
-	void setWeaponSkillMods(Weapon* weapon) {
+	/*void setWeaponSkillMods(Weapon* weapon) {
 		setItemSkillMod(weapon->getSkillMod0Type(), weapon->getSkillMod0Value());
 		setItemSkillMod(weapon->getSkillMod1Type(), weapon->getSkillMod1Value());
 		setItemSkillMod(weapon->getSkillMod2Type(), weapon->getSkillMod2Value());
@@ -517,7 +519,7 @@ public:
 		setItemSkillMod(weapon->getSkillMod0Type(), -weapon->getSkillMod0Value());
 		setItemSkillMod(weapon->getSkillMod1Type(), -weapon->getSkillMod1Value());
 		setItemSkillMod(weapon->getSkillMod2Type(), -weapon->getSkillMod2Value());
-	}
+	}*/
 
 	bool checkEncumbrance(Armor* item, Wearable* originalitem) {
 		int strength = player->getStrength();
@@ -603,13 +605,13 @@ public:
 		return true;
 	}
 
-	void setItemSkillMod(int type, int value) {
+	/*void setItemSkillMod(int type, int value) {
 		if (type == 0)
 			return;
 
 		String enhanceName = getEnhancement(type);
 		player->addSkillModBonus(enhanceName, value, true);
-	}
+	}*/
 
 	int getHealthEncumbrance() {
 		return totalHealthEncumbrance;

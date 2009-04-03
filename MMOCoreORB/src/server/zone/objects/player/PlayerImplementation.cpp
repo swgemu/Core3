@@ -3400,9 +3400,7 @@ void PlayerImplementation::setWeaponSkillMods(Weapon* weapon) {
 			accuracy = SkillMods.get("");
 			break;*/
 	}
-	setItemSkillMod(weapon->getSkillMod0Type(), weapon->getSkillMod0Value());
-	setItemSkillMod(weapon->getSkillMod1Type(), weapon->getSkillMod1Value());
-	setItemSkillMod(weapon->getSkillMod2Type(), weapon->getSkillMod2Value());
+	weapon->onEquip(_this);
 
 	if (checkCertification(weapon->getCert())) {
 		weapon->setCertified(true);
@@ -3413,9 +3411,7 @@ void PlayerImplementation::setWeaponSkillMods(Weapon* weapon) {
 }
 //TODO: never used ? delete
 void PlayerImplementation::unsetWeaponSkillMods(Weapon* weapon) {
-	setItemSkillMod(weapon->getSkillMod0Type(), -weapon->getSkillMod0Value());
-	setItemSkillMod(weapon->getSkillMod1Type(), -weapon->getSkillMod1Value());
-	setItemSkillMod(weapon->getSkillMod2Type(), -weapon->getSkillMod2Value());
+	weapon->onUnequip(_this);
 
 	accuracy = getSkillMod("unarmed_accuracy");
 }
