@@ -66,19 +66,28 @@ function spawnCreature(creature, Planet, PositionX, PositionY)
 	newCreature = creature:new { planet = Planet, positionX = PositionX, positionY = PositionY }
 	AddCreatureToServer(newCreature)
 end
+
 -- Spawning with Respawn Time
 function spawnCreature(creature, Planet, PositionX, PositionY, respawnTime)
 	newCreature = creature:new { planet = Planet, positionX = PositionX, positionY = PositionY, respawnTimer = respawnTime }
 	AddCreatureToServer(newCreature)
 end
+
 -- Spawning With Direction
 function spawnCreature(creature, Planet, PositionX, PositionY, DirectionX, DirectionZ, DirectionY, DirectionW)
 	newCreature = creature:new { planet = Planet, positionX = PositionX, positionY = PositionY, directionX = DirectionX,  directionZ = DirectionZ,  directionY = DirectionY,  directionY = DirectionW }
 	AddCreatureToServer(newCreature)
 end
+
 -- Spawning Inside Cells
 function spawnCreatureInCell(creature, Planet, PositionX, PositionZ, PositionY, cellid)
 	newCreature = creature:new { planet = Planet, positionX = PositionX, positionZ = PositionZ, positionY = PositionY, cellID = cellid }
+	AddCreatureToServer(newCreature)
+end
+
+-- Spawning Inside Cells With Direction
+function spawnCreatureInCell(creature, Planet, PositionX, PositionZ, PositionY, DirectionX, DirectionZ, DirectionY, DirectionW, cellid)
+	newCreature = creature:new { planet = Planet, positionX = PositionX, positionZ = PositionZ, positionY = PositionY, directionX = DirectionX,  directionZ = DirectionZ,  directionY = DirectionY,  directionY = DirectionW, cellID = cellid }
 	AddCreatureToServer(newCreature)
 end
 
@@ -87,6 +96,7 @@ function spawnBlueFrog(x, y, oy, ow, bftype, cellid)
 	AddBlueFrogToServer(bluefrog)
 end
 
+-- Spawning Mutiple Creatures with Radius
 function spawnCreatures(creature, Planet, PositionX, PositionY, radius, number)
 	for i=1,number do
 		angle = math.random(359)
@@ -99,6 +109,7 @@ function spawnCreatures(creature, Planet, PositionX, PositionY, radius, number)
 	end	
 end
 
+-- Spawning Mutiple Creatures with Radius and Respawn time
 function spawnCreatures(creature, Planet, PositionX, PositionY, radius, number, respawnTime)
 	for i=1,number do
 		angle = math.random(359)
