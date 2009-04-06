@@ -41,107 +41,107 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 geonosianFireBreathingSpider = Creature:new {
-      objectName = "geonosianFireBreathingSpider",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      
-      gender = "",
+  objectName = "geonosianFireBreathingSpider",  -- Lua Object Name
+  creatureType = "ANIMAL",
+  
+  gender = "",
 
-      stfName = "Fire Breathing Spider",
-      objectCRC = 874176443, 
-      socialGroup = "self",
-      
-      level = 108,
-      
+  stfName = "Fire Breathing Spider",
+  objectCRC = 874176443, 
+  socialGroup = "self",
+  
+  level = 108,
+  
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+  combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-      healthMax = 40000,
-      healthMin = 35000,
-      strength = 10000,
-      constitution = 10000,
+  healthMax = 40000,
+  healthMin = 35000,
+  strength = 10000,
+  constitution = 10000,
 
-      actionMax = 40000,
-      actionMin = 35000,
-      quickness = 10000,
-      stamina = 10000,
+  actionMax = 40000,
+  actionMin = 35000,
+  quickness = 10000,
+  stamina = 10000,
 
-      mindMax = 40000,
-      mindMin = 35000,
-      focus = 10000,
-      willpower = 10000,
+  mindMax = 40000,
+  mindMin = 35000,
+  focus = 10000,
+  willpower = 10000,
 
-      height = 1.7, -- Size of creature
-      armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 50,
-      energy = 10,
-      electricity = 10,
-      stun = 10,
-      blast = -1,
-      heat = 95,
-      cold = -1,
-      acid = 10,
-      lightsaber = 0,
+  height = 1.7, -- Size of creature
+  armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+  kinetic = 50,
+  energy = 10,
+  electricity = 10,
+  stun = 10,
+  blast = -1,
+  heat = 95,
+  cold = -1,
+  acid = 10,
+  lightsaber = 0,
 
-      accuracy = 350,
+  accuracy = 350,
 
-      healer = 0,
+  healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      ferocity = 0,
+  pack = 1,
+  herd = 0,
+  stalker = 0,
+  killer = 1,
+  ferocity = 0,
 	aggressive = 1,
-      invincible = 0, 
+  invincible = 0, 
 
-      meleeDefense = 1,  
-      rangedDefense = 1,
+  meleeDefense = 1,  
+  rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+  attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
-      weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 450,
-      weaponMaxDamage = 750,
-      weaponAttackSpeed = 1,
-      weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+  weapon = "object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff", -- File path to weapon -> object\xxx\xxx\xx
+  weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
+  weaponTemp = "rifle_flame_thrower", -- Weapon Template ex. 'lance_vibrolance'
+  weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+  weaponEquipped = 1,
+  weaponMinDamage = 450,
+  weaponMaxDamage = 750,
+  weaponAttackSpeed = 1,
+  weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
+  weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+  alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+  alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+  alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+  alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+  alternateWeaponEquipped = 0,
+  alternateWeaponMinDamage = 0,
+  alternateWeaponMaxDamage = 0,
+  alternateWeaponAttackSpeed = 0,
+  alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+  alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+  internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+  lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+  tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+  milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+  boneType = "",
+  boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+  hideType = "",
+  hideMax = 0,
 
-      meatType = "meat_insect_yavin4",
-      meatMax = 50,
+  meatType = "meat_insect_yavin4",
+  meatMax = 50,
 
-      skills = { "geonosianFBSAttack1", "geonosianFBSAttack2", "geonosianFBSAttack3", "geonosianFBSAttack4" },
-      respawnTimer = 3600,
+  skills = { "geonosianFBSAttack1", "geonosianFBSAttack2", "geonosianFBSAttack3", "geonosianFBSAttack4" },
+  respawnTimer = 3600,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+  behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(geonosianFireBreathingSpider, 874176443) --  Add to Global Table
