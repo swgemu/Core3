@@ -75,7 +75,7 @@ end
 
 -- Spawning With Direction
 function spawnCreature(creature, Planet, PositionX, PositionY, DirectionX, DirectionZ, DirectionY, DirectionW)
-	newCreature = creature:new { planet = Planet, positionX = PositionX, positionY = PositionY, directionX = DirectionX,  directionZ = DirectionZ,  directionY = DirectionY,  directionY = DirectionW }
+	newCreature = creature:new { planet = Planet, positionX = PositionX, positionY = PositionY, directionX = DirectionX,  directionZ = DirectionZ,  directionY = DirectionY,  directionW = DirectionW }
 	AddCreatureToServer(newCreature)
 end
 
