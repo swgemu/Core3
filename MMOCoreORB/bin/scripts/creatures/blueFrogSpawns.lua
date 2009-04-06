@@ -63,3 +63,9 @@ if (PLANET_ID == 3) then
  spawnBlueFrog(3221, -3451, .99154, 0.04113, EWOK, 0);
 end
 
+--Corellia
+if (PLANET_ID == 0) then
+ spawnBlueFrog(39.7053, 2.76636, 0.908367, 0.418174, BARTENDER, 8105494);
+ spawnBlueFrog(-136.522, -4729.71, .707743, -0.70647, BARTENDER, 0);
+end
+
