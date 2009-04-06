@@ -40,6 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-oneHandWeaponSet = {dagger1h, gaderiffiBaton, jantaKnife, rantokSword, ryykBlade, stoneKnife, stunBaton, stunBatonElite, stunBatonWeak, sword01, sword02, vibroBlade}
+oneHandWeaponSet = {dagger1h, gaderiffiBaton, jantaKnife, rantokSword, ryykBlade, stoneKnife, stunBaton, sword01, sword02, vibroBlade}
 
 addBFItemSet("1H Weapon Set" , oneHandWeaponSet);

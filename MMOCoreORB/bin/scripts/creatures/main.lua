@@ -75,7 +75,7 @@ end
 
 -- Spawning With Direction
 function spawnCreature(creature, Planet, PositionX, PositionY, DirectionX, DirectionZ, DirectionY, DirectionW)
-	newCreature = creature:new { planet = Planet, positionX = PositionX, positionY = PositionY, directionX = DirectionX,  directionZ = DirectionZ,  directionY = DirectionY,  directionW = DirectionW }
+	newCreature = creature:new { planet = Planet, positionX = PositionX, positionY = PositionY, directionX = DirectionX, directionZ = DirectionZ, directionY = DirectionY, directionW = DirectionW }
 	AddCreatureToServer(newCreature)
 end
 
@@ -87,7 +87,7 @@ end
 
 -- Spawning Inside Cells With Direction
 function spawnCreatureInCell(creature, Planet, PositionX, PositionZ, PositionY, DirectionX, DirectionZ, DirectionY, DirectionW, cellid)
-	newCreature = creature:new { planet = Planet, positionX = PositionX, positionZ = PositionZ, positionY = PositionY, directionX = DirectionX,  directionZ = DirectionZ,  directionY = DirectionY,  directionY = DirectionW, cellID = cellid }
+	newCreature = creature:new { planet = Planet, positionX = PositionX, positionZ = PositionZ, positionY = PositionY, directionX = DirectionX, directionZ = DirectionZ, directionY = DirectionY, directionW = DirectionW, cellID = cellid }
 	AddCreatureToServer(newCreature)
 end
 
