@@ -135,7 +135,7 @@ geonosianCaveSpider = Creature:new {
       hideType = "",
       hideMax = 0,
 
-      meatType = "meat_insect_dathomir",
+      meatType = "meat_insect_yavin4",
       meatMax = 35,
 
       skills = { "geonosianCaveSpiderAttack1", "geonosianCaveSpiderAttack2", "geonosianCaveSpiderAttack3" },
