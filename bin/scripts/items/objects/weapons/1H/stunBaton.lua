@@ -56,9 +56,9 @@ stunBaton = Weapon:new{
 	
 	certification = "cert_baton_stun",
 
-	attackSpeed = 3.1,
+	attackSpeed = 2.5,
 	
-	minDamage = 150,
+	minDamage = 89,
 
-	maxDamage = 271
+	maxDamage = 164
 }

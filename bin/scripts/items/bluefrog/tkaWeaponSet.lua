@@ -40,6 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-tkaWeaponSet = {vibroknuckler}
+tkaWeaponSet = {vibroknuckler, razorknuckler}
 
 addBFItemSet("TKA Weapon Set" , tkaWeaponSet);

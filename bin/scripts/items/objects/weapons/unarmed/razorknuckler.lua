@@ -40,7 +40,26 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+vibroknuckler = Weapon:new{
+	
 
-RunItemLUAFile("objects/weapons/unarmed/vibroknuckler.lua");
-RunItemLUAFile("objects/weapons/unarmed/razorknuckler.lua");
+	objectName = "Blacksun Razor Knuckler",
 
+	templateName = "object/weapon/melee/special/shared_blacksun_razor.iff",
+
+	objectCRC = 3357199743,
+
+	objectType = MELEEWEAPON,
+
+	armorPiercing = WEAPON_LIGHT,
+	
+	certification = "cert_blacksun_razor",
+
+	damageType = WEAPON_HEAT,
+
+	attackSpeed = 2.5,
+
+	minDamage = 36,
+
+	maxDamage = 139
+}

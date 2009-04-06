@@ -57,7 +57,7 @@ vibroknuckler = Weapon:new{
 
 	attackSpeed = 2.2,
 
-	minDamage = 51,
+	minDamage = 36,
 
-	maxDamage = 199
+	maxDamage = 139
 }
