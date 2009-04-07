@@ -40,8 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-t21Rifle = Weapon:new{
-	
+t21Rifle = Weapon:new{	
 
 	objectName = "T21 Rifle",
 
