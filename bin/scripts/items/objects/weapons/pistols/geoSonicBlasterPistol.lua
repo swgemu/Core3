@@ -53,11 +53,11 @@ geoSonicBlasterPistol = Weapon:new{
 
 	damageType = WEAPON_STUN,
 
-	armorPiercing = WEAPON_LIGHT,
+	armorPiercing = WEAPON_NONE,
 	
 	certification = "cert_pistol_dx2",
 
-	attackSpeed = 1.4,
+	attackSpeed = 2.4,
 
 	minDamage = 100,
 

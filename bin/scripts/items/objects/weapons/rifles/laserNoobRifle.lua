@@ -52,6 +52,8 @@ laserNoobRifle = Weapon:new{
 	objectType = RIFLE,
 
 	damageType = WEAPON_ENERGY,
+
+	armorPiercing = WEAPON_MEDIUM,
 	
 	certification = "cert_rifle_laser",
 

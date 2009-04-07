@@ -54,7 +54,9 @@ cdefCarbine = Weapon:new {
 
 	damageType = WEAPON_ENERGY,
 
-	attackSpeed = .6,
+	certification = "cert_carbine_cdef",
+
+	attackSpeed = 1.6,	
 
 	minDamage = 16,
 

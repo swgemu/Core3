@@ -54,7 +54,9 @@ cdefRifle = Weapon:new{
 
 	damageType = WEAPON_ENERGY,
 
-	attackSpeed = .8,
+	certification = "cert_rifle_cdef",
+
+	attackSpeed = 1.8,
 
 	minDamage = 19,
 

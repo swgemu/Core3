@@ -52,8 +52,10 @@ cdefPistol = Weapon:new{
 	objectType = PISTOL,
 
 	damageType = WEAPON_ENERGY,
+
+	certification = "cert_pistol_cdef",
 	
-	attackSpeed = 0.4,
+	attackSpeed = 1.4,
 
 	minDamage = 9,
 

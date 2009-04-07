@@ -50,8 +50,9 @@ scatterPistol = Weapon:new{
 
 	objectType = PISTOL,
 	
-	damageType = WEAPON_KINETIC,
-	
+	damageType = WEAPON_ACID,
+
+	armorPiercing = WEAPON_LIGHT,	
 	certification = "cert_pistol_scatter",
 
 	attackSpeed = 2.2,

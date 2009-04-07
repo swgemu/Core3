@@ -121,6 +121,7 @@ void HeavyRangedWeaponImplementation::init() {
 			setArea(8.0f);
 			break;
 	}
+	setXpType();
 }
 
 int HeavyRangedWeaponImplementation::useObject(Player* player) {

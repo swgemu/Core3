@@ -51,7 +51,8 @@ dx2Pistol = Weapon:new{
 	objectType = PISTOL,
 	
 	damageType = WEAPON_ACID,
-	
+
+	armorPiercing = WEAPON_LIGHT,	
 	certification = "cert_pistol_dx2",
 
 	attackSpeed = 3.5,

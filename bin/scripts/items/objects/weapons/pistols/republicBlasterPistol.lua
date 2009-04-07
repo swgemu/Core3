@@ -51,7 +51,8 @@ republicBlasterPistol = Weapon:new{
 	objectType = PISTOL,
 	
 	damageType = WEAPON_ENERGY,
-	
+
+	armorPiercing = WEAPON_LIGHT,	
 	certification = "cert_pistol_republic_blaster",
 
 	attackSpeed = 2.4,
