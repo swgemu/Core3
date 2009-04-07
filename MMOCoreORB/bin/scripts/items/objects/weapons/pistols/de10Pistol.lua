@@ -51,12 +51,13 @@ de10Pistol = Weapon:new{
 	objectType = PISTOL,
 	
 	damageType = WEAPON_ENERGY,
-	
+
+	armorPiercing = WEAPON_LIGHT,	
 	certification = "cert_pistol_de_10",
 
 	attackSpeed = 3.3,
 
-	minDamage = 52,
+	minDamage = 150,
 
-	maxDamage = 190
+	maxDamage = 290
 }

@@ -974,10 +974,10 @@ uint32 CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject*
  */
 int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part,
 		AttackTargetSkill* askill, int attacktype, int damagetype, int armorpiercing, bool cankill) {
-
 	int reduction = getArmorReduction(target, damage, part, attacktype, damagetype, armorpiercing);
 
 	damage -= reduction;
+
 	if (damage < 0)
 		damage = 0;
 
@@ -996,8 +996,9 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target,
 
 	//target->addDamage(attacker, damage);
 	target->addDamageDone(attacker, damage, askill->getSkillName());
-	if (part < 6)
+	if (part < 6) {
 		attacker->inflictDamage(target, CreatureAttribute::HEALTH, damage);
+	}
 	else if (part < 8)
 		attacker->inflictDamage(target, CreatureAttribute::ACTION, damage);
 	else
@@ -1189,12 +1190,14 @@ int CombatManager::getArmorReduction(CreatureObject* target, int damage, int loc
 
 	float preArmorDamage = currentDamage;
 
-	if (resist > 0 && resist < 100) {
+	bool noVulnerability = resist > 0;
+
+	if ((noVulnerability && resist < 100) ||  armorpiercing > 0) {
 		int armorResistance = 0;
-		if (armor != NULL) {
-			armorResistance = armor->getRating() / 16;
+		if (armor != NULL && noVulnerability) {
+			armorResistance = armor->getRating();// / 16;
 		}
-		else if (target->isNonPlayerCreature()) {
+		else if (target->isNonPlayerCreature() && noVulnerability) {
 			armorResistance = ((Creature*)target)->getArmor();
 		}
 		if (armorpiercing > armorResistance)
@@ -1206,21 +1209,11 @@ int CombatManager::getArmorReduction(CreatureObject* target, int damage, int loc
 
 		currentDamage -= currentDamage * resist / 100.0f;
 		if (DEBUG)
-			System::out << "\tAP/AR changes damage value to " << currentDamage << endl;
+			System::out << "\tAP("<< armorResistance << ")/AR("<< resist <<") changes damage value to " << currentDamage << endl;
 	} else if (resist >= 100)
 		currentDamage = 0;
 
 	float armorReduction = preArmorDamage - currentDamage;
-
-	/*if (armor != NULL && resist > 0 && target->isPlayer()) {
-		armor->conditionReduction(currentDamage);
-
-		StfParameter* params = new StfParameter();
-		params->addTO(armor->getObjectID());
-		params->addDI((int)armorReduction);
-		((Player*)target)->sendSystemMessage("cbt_spam",
-				"armor_damaged", params);
-	}*/
 
 	if (target->isPlayer() && resist > 0 && armor != NULL)
 		target->sendCombatSpam(target,(TangibleObject*)armor, (int)(preArmorDamage - currentDamage), "armor_damaged", false);
@@ -1949,6 +1942,9 @@ int CombatManager::calculateDamage(CreatureObject* creature, TangibleObject* tar
 		//damage = skill->damageRatio * average * globalMultiplier;
 		float individualDamage = damage / poolsAffected;
 
+		if (!skill->isTrapSkill() && skill->hasCbtSpamHit())
+			creature->sendCombatSpam(targetCreature, NULL, (int32)damage, skill->getCbtSpamHit());
+
 		for (int i = 0; i < poolsAffected; i++) {
 			int pool = System::random(totalPercentage);
 
@@ -1980,14 +1976,17 @@ int CombatManager::calculateDamage(CreatureObject* creature, TangibleObject* tar
 				bodyPart = 8;
 			}
 
-			if (!skill->isTrapSkill() && skill->hasCbtSpamHit())
-				creature->sendCombatSpam(targetCreature, NULL, (int32)individualDamage, skill->getCbtSpamHit());
+			//if (!skill->isTrapSkill() && skill->hasCbtSpamHit())
+			//	creature->sendCombatSpam(targetCreature, NULL, (int32)individualDamage, skill->getCbtSpamHit());
 
 			int tempReduction = applyDamage(creature, targetCreature, (int32)individualDamage, bodyPart, skill, attackType, damageType, armorPiercing, cankill);
 			if (individualDamage > tempReduction)
 				applyWounds(creature, targetCreature, weapon, bodyPart);
 			reduction += tempReduction;
 		}
+		//if (!skill->isTrapSkill() && skill->hasCbtSpamHit())
+		//	creature->sendCombatSpam(targetCreature, NULL, (int32)damage, skill->getCbtSpamHit());
+
 	} else { // Non creature attackable objects
 		return (int32)skill->damageRatio * average;
 		// TODO: Add weapon damage

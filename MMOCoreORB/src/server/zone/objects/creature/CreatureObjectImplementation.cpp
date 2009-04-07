@@ -4366,7 +4366,7 @@ void CreatureObjectImplementation::recoverFromIncapacitation() {
  * Action performed when a player dies, whether by deathblow or kill.
  */
 void CreatureObjectImplementation::die() {
-
+	deactivateCamo(false);
 	clearStates();
 	setPosture(CreaturePosture::DEAD);
 	timeOfDeath = Time().getMiliTime();

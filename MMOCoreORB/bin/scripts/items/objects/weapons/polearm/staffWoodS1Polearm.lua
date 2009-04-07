@@ -52,7 +52,7 @@ staffWoodS1Polearm = Weapon:new{
 
 	damageType = WEAPON_KINETIC,
 	
-	certification = "cert_lance_staff_wood_s2",
+	certification = "cert_lance_staff_wood_s1", --"cert_lance_staff_wood_s2",
 
 	attackSpeed = 4.75,
 

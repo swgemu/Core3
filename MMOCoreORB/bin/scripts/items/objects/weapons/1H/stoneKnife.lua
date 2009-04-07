@@ -50,7 +50,9 @@ stoneKnife = Weapon:new{
 
 	objectType = ONEHANDMELEEWEAPON,
 	
-	certification = "cert_knife_dagger",
+	damageType = WEAPON_KINETIC,
+
+	certification = "cert_knife_stone",--"cert_knife_dagger",
 
 	attackSpeed = 3.5,
 	

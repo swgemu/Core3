@@ -53,7 +53,7 @@ heavyDutyAxe = Weapon:new{
 
 	objectType = TWOHANDMELEEWEAPON,
 	
-	certification = "cert_sword_2h_axe",
+	certification = "cert_axe_heavy_duty", --"cert_sword_2h_axe",
 
 	attackSpeed = 5,
 

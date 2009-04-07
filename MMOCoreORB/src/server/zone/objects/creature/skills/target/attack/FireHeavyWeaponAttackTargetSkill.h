@@ -58,7 +58,7 @@ public:
 	 * \param anim The animation.
 	 * \param serv The ZoneProcessServerImplementation.
 	 */
-	FireHeavyWeaponAttackTarget(const String& name, const String& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(name, anim, RANDOM, serv) {
+	FireHeavyWeaponAttackTarget(const String& name, const String& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(name, anim, HEAVYWEAPON, serv) {
 		healthPoolAttackChance = 50;
 		actionPoolAttackChance = 35;
 		mindPoolAttackChance = 15;

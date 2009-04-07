@@ -51,6 +51,10 @@ survival_knife = Weapon:new{
 
 	objectType = ONEHANDMELEEWEAPON,
 
+	damageType = WEAPON_KINETIC,
+
+	certification = "cert_knife_survival",
+
 	attackSpeed = 1,
 
 	minDamage = 25,

@@ -409,15 +409,15 @@ void CreatureImplementation::generateAttributes(SceneObject* obj) {
 
 	if (creaKnowledge >= 20) {
 		if (!getHideType().isEmpty())
-			alm->insertAttribute("res_hide", getHideType());
+			alm->insertAttribute("res_hide", getHideType());//.subString(4).replaceAll("_"," "));
 		else
 			alm->insertAttribute("res_hide", "---");
 		if (!getBoneType().isEmpty())
-			alm->insertAttribute("res_bone", getBoneType());
+			alm->insertAttribute("res_bone", getBoneType());//.subString(5).replaceAll("_"," "));
 		else
 			alm->insertAttribute("res_bone", "---");
 		if (!getMeatType().isEmpty())
-			alm->insertAttribute("res_meat", getMeatType());
+			alm->insertAttribute("res_meat", getMeatType());//.subString(4).replaceAll("_"," "));
 		else
 			alm->insertAttribute("res_meat", "---");
 	}

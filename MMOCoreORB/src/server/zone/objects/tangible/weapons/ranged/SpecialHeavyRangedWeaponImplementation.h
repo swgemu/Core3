@@ -110,6 +110,8 @@ public:
 			cert = "cert_rifle_acid_beam";
 			break;
 		}
+
+		setXpType();
 	}
 };
 

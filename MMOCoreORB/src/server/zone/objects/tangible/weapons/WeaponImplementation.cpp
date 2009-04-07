@@ -197,9 +197,6 @@ void WeaponImplementation::parseItemAttributes() {
 	name = "woundsRatio";
 	woundsRatio = itemAttributes->getFloatAttribute(name);
 
-	name = "armorPiercing";
-	armorPiercing = itemAttributes->getIntAttribute(name);
-
 	name = "powerupUses";
 	powerupUses = itemAttributes->getIntAttribute(name);
 
@@ -246,10 +243,7 @@ void WeaponImplementation::parseItemAttributes() {
 	name = "area";
 	area = itemAttributes->getFloatAttribute(name);
 
-	name = "damagetype";
-	damageType = itemAttributes->getIntAttribute(name);
-
-	name = "armorpiercing";
+	name = "armorPiercing";
 	int type = itemAttributes->getIntAttribute(name);
 	if (type != 0)
 		armorPiercing = type;
