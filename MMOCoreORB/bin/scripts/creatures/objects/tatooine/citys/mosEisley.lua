@@ -1646,50 +1646,6 @@ mosEisleyNpc114 = Creature:new {
 	cellID = 0
 }
 
-mosEisleyNpc116 = Creature:new {
-	objectName = "mosEisleyNpc116",
-	creatureType = "NPC",
-
-	speciesName = "smuggler_patrol_mos_eisly_1",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 300124372,
-	positionX = 3204.93,
-	positionY = -4634.44,
-	positionZ = 5,
-
-	directionX = -0.0350587,
-	directionZ = 0.0506141,
-	directionY = 0.9492,
-	directionW = -0.308592,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEisleyNpc117 = Creature:new {
-	objectName = "mosEisleyNpc117",
-	creatureType = "NPC",
-
-	speciesName = "smuggler_patrol_mos_eisly_1",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3754430175,
-	positionX = 3212.47,
-	positionY = -4645.33,
-	positionZ = 5,
-
-	directionX = 0.00638303,
-	directionZ = -0.17649,
-	directionY = 0.841957,
-	directionW = -0.509822,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 mosEisleyNpc118 = Creature:new {
 	objectName = "mosEisleyNpc118",
 	creatureType = "NPC",
@@ -1729,28 +1685,6 @@ mosEisleyNpc119 = Creature:new {
 	directionZ = 0,
 	directionY = -0.309081,
 	directionW = 0.951036,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEisleyNpc120 = Creature:new {
-	objectName = "mosEisleyNpc120",
-	creatureType = "NPC",
-
-	speciesName = "smuggler_patrol_mos_eisly_1",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3754430175,
-	positionX = 3202.45,
-	positionY = -4638,
-	positionZ = 4.99989,
-
-	directionX = -0.0724675,
-	directionZ = 0.0704945,
-	directionY = -0.453093,
-	directionW = 0.885712,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -3142,28 +3076,6 @@ mosEisleyNpc199 = Creature:new {
 	cellID = 0
 }
 
-mosEisleyNpc200 = Creature:new {
-	objectName = "mosEisleyNpc200",
-	creatureType = "NPC",
-
-	speciesName = "smuggler_patrol_mos_eisly_2",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3754430175,
-	positionX = 3425.04,
-	positionY = -4997.14,
-	positionZ = 4.31076,
-
-	directionX = 0.00353108,
-	directionZ = 0.0116016,
-	directionY = 0.916563,
-	directionW = -0.399706,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEisleyNpc201 = Creature:new {
 	objectName = "mosEisleyNpc201",
 	creatureType = "NPC",
@@ -4259,72 +4171,6 @@ mosEisleyNpc252 = Creature:new {
 	directionZ = 0,
 	directionY = 0.914095,
 	directionW = -0.405501,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEisleyNpc253 = Creature:new {
-	objectName = "mosEisleyNpc253",
-	creatureType = "NPC",
-
-	speciesName = "smuggler_patrol_mos_eisly_2",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 746676233,
-	positionX = 3479.1,
-	positionY = -5005.07,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.901895,
-	directionW = 0.431955,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEisleyNpc254 = Creature:new {
-	objectName = "mosEisleyNpc254",
-	creatureType = "NPC",
-
-	speciesName = "smuggler_patrol_mos_eisly_2",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3885288051,
-	positionX = 3478.74,
-	positionY = -5004.19,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = -0,
-	directionY = 0.418022,
-	directionW = 0.908437,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEisleyNpc255 = Creature:new {
-	objectName = "mosEisleyNpc255",
-	creatureType = "NPC",
-
-	speciesName = "smuggler_patrol_mos_eisly_2",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 42070043,
-	positionX = 3480.08,
-	positionY = -5004.15,
-	positionZ = 5,
-
-	directionX = -0,
-	directionZ = 0,
-	directionY = -0.455669,
-	directionW = 0.890149,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0

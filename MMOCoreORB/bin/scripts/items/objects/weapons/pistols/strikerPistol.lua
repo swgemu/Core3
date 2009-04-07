@@ -50,7 +50,7 @@ strikerPistol = Weapon:new{
 
 	objectType = PISTOL,
 	
-	damageType = WEAPON_ENERGY,
+	damageType = WEAPON_KINETIC,
 	
 	certification = "cert_pistol_striker",
 

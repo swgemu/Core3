@@ -46,7 +46,7 @@ igAssassinDroid = Creature:new {
 	faction = "self",
 	gender = "",
 	
-	speciesName = "ig_assassin_droid ",
+	speciesName = "ig_assassin_droid",
 	stfName = "mob/creature_names", 
 	objectCRC = 2794810877, 
 	socialGroup = "self",
