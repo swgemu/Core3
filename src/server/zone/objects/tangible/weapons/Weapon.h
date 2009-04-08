@@ -55,9 +55,15 @@ public:
 
 	int getUsesRemaining();
 
+	float getBaseMinDamage();
+
 	float getMinDamage();
 
+	float getBaseMaxDamage();
+
 	float getMaxDamage();
+
+	float getBaseAttackSpeed();
 
 	float getAttackSpeed();
 
@@ -240,9 +246,15 @@ public:
 
 	int getUsesRemaining();
 
+	float getBaseMinDamage();
+
 	float getMinDamage();
 
+	float getBaseMaxDamage();
+
 	float getMaxDamage();
+
+	float getBaseAttackSpeed();
 
 	float getAttackSpeed();
 

@@ -470,12 +470,29 @@ public:
 		return usesRemaining;
 	}
 
+	inline float getBaseMinDamage() {
+		return minDamage;
+	}
+
 	inline float getMinDamage() {
 		return minDamage + bonusMinDamage;
 	}
 
+	inline float getBaseMaxDamage() {
+		return maxDamage;
+	}
+
 	inline float getMaxDamage() {
 		return maxDamage + bonusMaxDamage;
+	}
+
+	inline float getBaseAttackSpeed() {
+		float spd = attackSpeed;
+
+		if (spd < 1.0f)
+			return 1.0f;
+		else
+			return spd;
 	}
 
 	inline float getAttackSpeed() {

@@ -503,10 +503,10 @@ void WeaponImplementation::decay(float decayRate) {
 		if (ratio > 0.99f) {
 			onBroken();
 		} else if (ratio > 0.75f) {
-			setMaxDamage(getMaxDamage() * (1 - decayRate));
-			setMinDamage(getMinDamage() * (1 - decayRate));
+			setMaxDamage(getBaseMaxDamage() * (1 - decayRate));
+			setMinDamage(getBaseMinDamage() * (1 - decayRate));
 
-			setAttackSpeed(getAttackSpeed() * (1 + decayRate));
+			setAttackSpeed(getBaseAttackSpeed() * (1 + decayRate));
 		}
 	}
 }
