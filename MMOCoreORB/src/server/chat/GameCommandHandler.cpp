@@ -2140,7 +2140,7 @@ void GameCommandHandler::setAdminLevel(StringTokenizer tokenizer, Player* player
 		StringBuffer query;
 		query << "UPDATE characters SET " << "adminLevel ='"
 		  << level
-		  << "' WHERE firstname=\'" << name << "\';";
+		  << "' WHERE firstname='" << name << "';";
 
 		ServerDatabase::instance()->executeStatement(query);
 

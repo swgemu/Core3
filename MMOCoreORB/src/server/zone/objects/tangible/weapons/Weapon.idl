@@ -71,9 +71,6 @@ interface Weapon implements TangibleObject {
 
 	void removePowerup(Player player, boolean notify);
 
-	//boolean decreaseDot0Uses();
-	//boolean decreaseDot1Uses();
-	//boolean decreaseDot2Uses();
 	boolean decreasePowerupUses();
 	boolean decreaseUsesRemaining();
 	
@@ -96,9 +93,15 @@ interface Weapon implements TangibleObject {
 
 	int getUsesRemaining();
 
+	float getBaseMinDamage();
+
 	float getMinDamage();
 
+	float getBaseMaxDamage();
+
 	float getMaxDamage();
+
+	float getBaseAttackSpeed();
 
 	float getAttackSpeed();
 
@@ -125,35 +128,6 @@ interface Weapon implements TangibleObject {
 	float getWoundsRatio();
 
 	int getArmorPiercing();
-
-	/*int getDot0Type();
-	int getDot0Attribute();
-	int getDot0Strength();
-	int getDot0Duration();
-	int getDot0Potency();
-	int getDot0Uses();
-
-	int getDot1Type();
-	int getDot1Attribute();
-	int getDot1Strength();
-	int getDot1Duration();
-	int getDot1Potency();
-	int getDot1Uses();
-
-	int getDot2Type();
-	int getDot2Attribute();
-	int getDot2Strength();
-	int getDot2Duration();
-	int getDot2Potency();
-	int getDot2Uses();
-	
-	int getSkillMod0Type();
-	int getSkillMod1Type();
-	int getSkillMod2Type();
-	
-	int getSkillMod0Value();
-	int getSkillMod1Value();
-	int getSkillMod2Value();*/
 
 	int getPowerupUses();
 	boolean hasPowerup();
