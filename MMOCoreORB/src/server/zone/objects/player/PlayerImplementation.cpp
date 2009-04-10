@@ -3459,50 +3459,51 @@ void PlayerImplementation::unsetArmorEncumbrance(Armor* armor) {
 
 void PlayerImplementation::applyPowerup(uint64 powerupID, uint64 targetID) {
 	SceneObject* invObj = getInventoryItem(powerupID);
-
 	if (invObj == NULL || !invObj->isTangible())
 		return;
 
 	TangibleObject* tano = (TangibleObject*) invObj;
-
 	if (!tano->isWeaponPowerup())
 		return;
 
 	Powerup* powerup = (Powerup*) tano;
 
 	invObj = getInventoryItem(targetID);
-
 	if (invObj == NULL || !invObj->isTangible())
 		return;
 
 	tano = (TangibleObject*) invObj;
-
 	if (!tano->isWeapon())
 		return;
 
 	Weapon* weapon = (Weapon*) tano;
 
-	weapon->wlock();
-	powerup->wlock();
+	weapon->wlock(_this);
+
+	powerup->wlock(_this);
 
 	if (weapon->getPowerupUses() == 0) {
 		StringBuffer msg;
 		msg << "You powerup your " << weapon->getCustomName().toString() << " with " << powerup->getCustomName().toString();
 		sendSystemMessage(msg.toString());
+
 		powerup->apply(weapon);
+
 		powerup->remove(_this);
 
-		weapon->unlock();
 		powerup->unlock();
 		powerup->finalize();
 
+		weapon->unlock();
+
 		return;
-	}
-	else
+	} else {
 		sendSystemMessage("This weapon is already powered up!");
 
-	weapon->unlock();
-	powerup->unlock();
+		powerup->unlock();
+
+		weapon->unlock();
+	}
 }
 
 

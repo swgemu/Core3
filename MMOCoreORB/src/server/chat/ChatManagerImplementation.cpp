@@ -481,9 +481,18 @@ void ChatManagerImplementation::addPlayer(Player* player) {
 Player* ChatManagerImplementation::getPlayer(String& name) {
 	lock();
 
-	String lName = name.toLowerCase();
+	Player* player = NULL;
 
-	Player* player = playerMap->get(lName, false);
+	try {
+		String lName = name.toLowerCase();
+
+		player = playerMap->get(lName, false);
+	} catch (Exception& e) {
+		System::out << e.getMessage();
+		e.printStackTrace();
+	} catch (...) {
+		System::out << "unreported exception caught in ChatManagerImplementation::getPlayer";
+	}
 
 	unlock();
 	return player;

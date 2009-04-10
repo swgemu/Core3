@@ -2146,6 +2146,7 @@ void GameCommandHandler::setAdminLevel(StringTokenizer tokenizer, Player* player
 
 		player->sendSystemMessage("Admin level set.");
 
+		player->info(player->getFirstName() + " has changed your admin level to " + String::valueOf(level));
 	} else {
 		player->sendSystemMessage("The specified player was not found.");
 		return;
