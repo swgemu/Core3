@@ -66,10 +66,18 @@ public:
 
 		lock(doLock);
 
-		play = HashTable<String, Player*>::put(name.toLowerCase(), player);
+		try {
+			play = HashTable<String, Player*>::put(name.toLowerCase(), player);
 
-		if (play == NULL)
-			player->acquire();
+			if (play == NULL)
+				player->acquire();
+
+		} catch (Exception& e) {
+			System::out << e.getMessage();
+			e.printStackTrace();
+		} catch (...) {
+			System::out << "unreported exception caught in PlayerMapImplementation::put";
+		}
 
 		unlock(doLock);
 
@@ -81,7 +89,16 @@ public:
 
 		lock(doLock);
 
-		player = HashTable<String, Player*>::get(name.toLowerCase());
+		try {
+
+			player = HashTable<String, Player*>::get(name.toLowerCase());
+
+		} catch (Exception& e) {
+			System::out << e.getMessage();
+			e.printStackTrace();
+		} catch (...) {
+			System::out << "unreported exception caught in PlayerMapImpl::get";
+		}
 
 		unlock(doLock);
 
@@ -93,10 +110,19 @@ public:
 
 		lock(doLock);
 
-		player = HashTable<String, Player*>::remove(name.toLowerCase());
+		try {
 
-		if (player != NULL)
-			player->release();
+			player = HashTable<String, Player*>::remove(name.toLowerCase());
+
+			if (player != NULL)
+				player->release();
+
+		} catch (Exception& e) {
+			System::out << e.getMessage();
+			e.printStackTrace();
+		} catch (...) {
+			System::out << "unreported exception caught in PlayerMapImpl::remove";
+		}
 
 		unlock(doLock);
 
