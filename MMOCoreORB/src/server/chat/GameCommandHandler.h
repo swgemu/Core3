@@ -231,6 +231,7 @@ private:
 	static void eventMessage(StringTokenizer tokenizer, Player* player);
 	static void eventCloner(StringTokenizer tokenizer, Player* player);
 
+	static void storeVehicle(StringTokenizer tokenizer, Player* player);
 	void init();
 
 public:
