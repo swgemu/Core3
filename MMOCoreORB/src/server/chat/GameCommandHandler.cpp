@@ -3758,29 +3758,35 @@ void GameCommandHandler::eventCloner(StringTokenizer tokenizer, Player* player) 
 }
 
 void GameCommandHandler::storeVehicle(StringTokenizer tokenizer, Player* player) {
-		SceneObject* obj = player->getTarget();
-		
-		//ensure target is valid
-		
-		if (!obj->isNonPlayerCreature())
-			return;
-			
+	SceneObject* obj = player->getTarget();
 
-		if (!((Creature*)obj)->isMount())
-			return;
-			
-			
-		try {
-				obj->wlock();
-				
-				player->unlock();
-				((MountCreature*)obj)->store();
-				player->lock();
-				
-				player->sendSystemMessage("Vehicle Stored");
-				obj->unlock();
-			} catch (...) {
-				obj->unlock();
-				player->sendSystemMessage("Failure");
-			}
+	if (obj == NULL)
+		return;
+
+	//ensure target is valid
+
+	if (!obj->isNonPlayerCreature())
+		return;
+
+
+	if (!((Creature*)obj)->isMount())
+		return;
+
+	player->unlock();
+
+
+	try {
+		obj->wlock();
+
+		((MountCreature*)obj)->store();
+
+		player->sendSystemMessage("Vehicle Stored");
+
+		obj->unlock();
+	} catch (...) {
+		obj->unlock();
+		player->sendSystemMessage("Failure");
+	}
+
+	player->wlock();
 }
