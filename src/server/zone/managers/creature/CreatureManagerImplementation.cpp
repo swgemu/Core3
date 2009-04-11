@@ -263,14 +263,16 @@ void CreatureManagerImplementation::loadTrainers() {
 	}
 
 	delete result;
-
+	
+	//Temporary trainer line in Theed.
 	if (zone->getZoneID() == 5) {
 		professionManager->professionMap.resetIterator();
 
 		for (int i = 0; professionManager->professionMap.hasNext(); i++) {
 			Profession* prof = professionManager->professionMap.getNextValue();
-
-			if (prof->getName().indexOf("jedi") != -1 || prof->getName().indexOf("force") != -1)
+			
+			//check for jedi skills, and species trainers
+			if (prof->getName().indexOf("jedi") != -1 || prof->getName().indexOf("force") != -1 || prof->getName().indexOf("species") != -1)
 				continue;
 
 			TrainerCreature* trainer = spawnTrainer(prof->getName(), "trainer_unknown", prof->getName(), 0x8C73B91, 0, -4967 - (i*1), 4043, 6, 0, 0);

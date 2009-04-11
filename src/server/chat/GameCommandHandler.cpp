@@ -388,6 +388,10 @@ void GameCommandHandler::init() {
 				"Displays the current Message of the Day",
 				"USAGE: @tasks",
 				&displayMOTD);
+	gmCommands->addCommand("storeVehicle", CSREVENTSJR,
+				"Stores the targeted vehicle",
+				"USAGE: @storeVehicle <target vehicle>",
+				&storeVehicle);
 	/* Disabled Commands
 
 	gmCommands->addCommand("applyDot", DEVELOPER,
@@ -3753,3 +3757,30 @@ void GameCommandHandler::eventCloner(StringTokenizer tokenizer, Player* player) 
 	//Set the options it has
 }
 
+void GameCommandHandler::storeVehicle(StringTokenizer tokenizer, Player* player) {
+		SceneObject* obj = player->getTarget();
+		
+		//ensure target is valid
+		
+		if (!obj->isNonPlayerCreature())
+			return;
+			
+
+		if (!((Creature*)obj)->isMount())
+			return;
+			
+			
+		try {
+				obj->wlock();
+				
+				player->unlock();
+				((MountCreature*)obj)->store();
+				player->lock();
+				
+				player->sendSystemMessage("Vehicle Stored");
+				obj->unlock();
+			} catch (...) {
+				obj->unlock();
+				player->sendSystemMessage("Failure");
+			}
+}
