@@ -166,8 +166,11 @@ public:
 	}
 
 	~WeaponSkillModMap() {
-		while(dotVector.size() > 0)
-			delete dotVector.get(0);
+		while(dotVector.size() > 0) {
+			Dot* dot = dotVector.remove(0);
+
+			delete dot;
+		}
 	}
 
 /*	void insertStatMods(AttributeListMessage* alm) {

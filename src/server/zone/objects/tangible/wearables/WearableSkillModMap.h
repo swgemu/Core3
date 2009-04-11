@@ -124,8 +124,10 @@ public:
 	}
 
 	~WearableSkillModMap() {
-		while(attachmentVector.size() > 0)
-			delete attachmentVector.get(0);
+		while (attachmentVector.size() > 0) {
+			AttachmentEntry* entry = attachmentVector.remove(0);
+			delete entry;
+		}
 	}
 
 	void insertStatMods(AttributeListMessage* alm) {

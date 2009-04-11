@@ -3508,28 +3508,28 @@ void PlayerImplementation::applyPowerup(uint64 powerupID, uint64 targetID) {
 
 
 void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID) {
-	SceneObject* invObj = getInventoryItem(attachmentID);
+	ManagedReference<SceneObject> invObj = getInventoryItem(attachmentID);
 
 	if (invObj == NULL || !invObj->isTangible())
 		return;
 
-	TangibleObject* tano = (TangibleObject*) invObj;
+	ManagedReference<TangibleObject> tano = (TangibleObject*) invObj.get();
 
 	if (!tano->isAttachment())
 		return;
 
-	Attachment* attachment = (Attachment*) tano;
+	ManagedReference<Attachment> attachment = (Attachment*) tano.get();
 
 	invObj = getInventoryItem(targetID);
 
 	if (invObj == NULL || !invObj->isTangible())
 		return;
 
-	tano = (TangibleObject*) invObj;
+	tano = (TangibleObject*) invObj.get();
 
 	if (tano->isArmor() || tano->isClothing()) {
 
-		Wearable* wearable = (Wearable*) tano;
+		ManagedReference<Wearable> wearable = (Wearable*) tano.get();
 
 		if(wearable == NULL)
 			return;
@@ -3541,13 +3541,14 @@ void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID)
 
 			wearable->applyAttachment(_this, attachment);
 
-			wearable->unlock();
 			attachment->unlock();
+			wearable->unlock();
 
 		} catch (...) {
 
-			wearable->unlock();
 			attachment->unlock();
+			wearable->unlock();
+
 		}
 	}
 }
