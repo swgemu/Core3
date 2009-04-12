@@ -927,21 +927,27 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 		try {
 			StringBuffer query, query2, query3, query4, query5;
 
+			MySqlDatabase::escapeString(name);
+
 			query   << "SELECT account.account_id, account.username FROM account "
 					<< "INNER JOIN characters ON "
 					<< "characters.account_id = account.account_id WHERE characters.firstname = '"
 					<< name << "'";
 
+			String tempname = player->getFirstName();
+			MySqlDatabase::escapeString(tempname);
+
 			query2  << "SELECT account.account_id, account.username FROM account "
 					<< "INNER JOIN characters ON "
 					<< "characters.account_id = account.account_id WHERE characters.firstname = '"
-					<< player->getFirstName() << "'";
+					<< tempname << "'";
 
 			ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
 			if (res->next()) {
 				offendersAccountId = res->getInt(0);
 				offendersAccountName = res->getString(1);
+				MySqlDatabase::escapeString(offendersAccountName);
 			}
 
 			res = ServerDatabase::instance()->executeQuery(query2);
@@ -949,6 +955,7 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 			if (res->next()) {
 				adminsAccountId = res->getInt(0);
 				adminsAccountName = res->getString(1);
+				MySqlDatabase::escapeString(adminsAccountName);
 			}
 
 			delete res;
@@ -1099,6 +1106,8 @@ void GameCommandHandler::getForumName(StringTokenizer tokenizer, Player* player)
 		}
 
 	}
+
+	MySqlDatabase::escapeString(name);
 
 	if (ForumsDatabase::instance() != NULL) {
 		try {
