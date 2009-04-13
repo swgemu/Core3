@@ -4775,9 +4775,9 @@ void PlayerImplementation::addFactionPoints(String faction, uint32 points) {
 	int currentPoints = factionPointsMap.getFactionPoints(faction);
 
 	uint32 maxPoints = getMaxFactionPoints(faction);
-	uint32 pointsToAdd;
+	uint32 pointsToAdd = 0;
 
-	if (currentPoints + (int) points > maxPoints)
+	if ((currentPoints + (int) points) > maxPoints)
 		pointsToAdd = (int) maxPoints - currentPoints;
 	else
 		pointsToAdd = points;
@@ -4802,7 +4802,7 @@ void PlayerImplementation::addFactionPoints(String faction, uint32 points) {
 
 void PlayerImplementation::subtractFactionPoints(String faction, uint32 points) {
 	int currentPoints = factionPointsMap.getFactionPoints(faction);
-	uint32 pointsToAdd;
+	uint32 pointsToAdd = 0;
 
 	if ((currentPoints - (int) points) < -5000)
 		pointsToAdd = currentPoints - -5000;

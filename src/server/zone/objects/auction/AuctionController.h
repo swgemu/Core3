@@ -65,7 +65,8 @@ public:
 	inline void addItem(AuctionItem* item, bool doLock = true) {
 		lock(doLock);
 
-		items.put(item->getID(), item);
+		if (items.put(item->getID(), item) != -1)
+			item->acquire();
 
 		unlock(doLock);
 	}
@@ -73,7 +74,11 @@ public:
 	inline bool removeItem(uint64 objectid, bool doLock = true) {
 		lock(doLock);
 
+		AuctionItem* item = items.get(objectid);
 		bool ret = items.drop(objectid);
+
+		if (item != NULL)
+			item->release();
 
 		unlock(doLock);
 

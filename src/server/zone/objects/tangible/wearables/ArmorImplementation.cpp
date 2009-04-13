@@ -545,7 +545,7 @@ void ArmorImplementation::addAttributes(AttributeListMessage* alm) {
 
 	alm->insertAttribute("Volume", "1");
 
-	if (sockets > 0)
+	if (socketCount > 0)
 		alm->insertAttribute("Sockets", socketsLeft());
 
 	insertStatMods(alm);

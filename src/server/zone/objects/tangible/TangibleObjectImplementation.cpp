@@ -156,6 +156,8 @@ void TangibleObjectImplementation::init() {
 
 	pvpStatusBitmask = 0;
 
+	firstCraftingUpdate = true;
+
 	setLoot(false);
 
 	setSliced(false);

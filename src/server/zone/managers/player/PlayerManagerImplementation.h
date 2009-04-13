@@ -136,6 +136,8 @@ public:
 	void moveItem(Player* sender, Player* receiver, TangibleObject* item);
 	void moveItem(Player* sender, Player* receiver, SceneObject* item);
 
+	//bool checkSpeedHack(TransformVariables* postions);
+
 	// setters
 	inline void setGuildManager(GuildManager* gmanager) {
 		guildManager = gmanager;

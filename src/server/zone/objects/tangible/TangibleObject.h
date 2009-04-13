@@ -71,6 +71,8 @@ public:
 
 	bool isContainer2();
 
+	bool isWearable();
+
 	bool isInstrument();
 
 	bool isAttachment();
@@ -268,6 +270,8 @@ public:
 	bool isContainer1();
 
 	bool isContainer2();
+
+	bool isWearable();
 
 	bool isInstrument();
 
