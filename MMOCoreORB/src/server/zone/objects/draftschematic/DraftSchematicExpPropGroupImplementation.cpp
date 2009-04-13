@@ -24,7 +24,7 @@ is making a combined work based on Engine3.
 Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
 
-In addition, as a special exception, the copyright holders of Engine3
+In addition, as a special exception, the copyright holders of Engine3minValue
 give you permission to combine Engine3 program with free software
 programs or libraries that are released under the GNU LGPL and with
 code included in the standard release of Core3 under the GNU LGPL
@@ -56,6 +56,11 @@ DraftSchematicExpPropGroupImplementation::DraftSchematicExpPropGroupImplementati
 	expPropGroupListSize = 0;
 
 	filler = true;
+
+	minValue = 0.f;
+	maxValue = 0.f;
+
+	decimalPrecision = 0;
 }
 DraftSchematicExpPropGroupImplementation::DraftSchematicExpPropGroupImplementation(
 		DraftSchematicExpPropGroup* group) :

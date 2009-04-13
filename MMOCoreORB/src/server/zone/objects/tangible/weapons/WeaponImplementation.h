@@ -470,6 +470,10 @@ public:
 		return usesRemaining;
 	}
 
+	inline int getObjectCount() {
+		return usesRemaining;
+	}
+
 	inline float getBaseMinDamage() {
 		return minDamage;
 	}

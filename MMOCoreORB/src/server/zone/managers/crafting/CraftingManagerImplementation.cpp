@@ -1917,7 +1917,9 @@ void CraftingManagerImplementation::calculateExperimentationSuccess(
 	// Skill + Luck roll and crafting station effectiveness determine the
 	// Success of the crafting result
 
-	int result, preresult;
+	int result = 0, preresult = 0;
+
+	int failureRate = -1;
 
 	// Get modifier from tool to modify success
 	float stationModifier = .80;//calculateExperimentationModifier(craftingTool);
@@ -1926,9 +1928,9 @@ void CraftingManagerImplementation::calculateExperimentationSuccess(
 	// Get experiemtnation points from skill
 	int expPoints = player->getSkillMod(expSkill);
 
-	int failureRate = 100 - failure;
+	failureRate = 100 - failure;
 
-	if(failureRate < 0)
+	if (failureRate < 0)
 		failureRate = 0;
 
 	int luck = System::random(100);

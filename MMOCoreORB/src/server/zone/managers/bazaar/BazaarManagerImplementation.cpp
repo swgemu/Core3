@@ -434,7 +434,7 @@ void BazaarManagerImplementation::checkAuctions() {
 	uint64 availableTime = currentTime + 2592000;
 
 	for (int i = 0; i < items.size(); ++i) {
-		AuctionItem* item = items.get(i);
+		ManagedReference<AuctionItem> item = items.get(i);
 		uint64 objectId = item->getID();
 
 		try {

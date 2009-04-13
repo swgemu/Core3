@@ -103,6 +103,8 @@ interface TangibleObject implements SceneObject {
 	boolean isWearableContainer();
 	boolean isContainer1();
 	boolean isContainer2();
+	
+	boolean isWearable();
 
 	boolean isInstrument();
 

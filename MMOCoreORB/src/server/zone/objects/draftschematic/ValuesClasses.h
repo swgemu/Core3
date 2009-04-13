@@ -62,7 +62,7 @@ class Values {
 	bool experimentalProperties;
 
 public:
-	Values(const String& n, const float tempmin, const float tempmax, const int prec, const bool filler) {
+	Values(const String& n, const float& tempmin, const float& tempmax, const int& prec, const bool& filler) {
 		name = n;
 
 		minValue = tempmin;
@@ -120,7 +120,7 @@ public:
 		locked = true;
 	}
 
-	inline void setValue(const float value) {
+	inline void setValue(const float& value) {
 		if (locked)
 			return;
 		if (values.contains("currentValue")) {
@@ -142,25 +142,25 @@ public:
 		values.put("currentPercentage", newpercentage);
 	}
 
-	inline void setMinValue(const float value) {
+	inline void setMinValue(const float& value) {
 		if (locked)
 			return;
 		minValue = value;
 	}
 
-	inline void setMaxValue(const float value) {
+	inline void setMaxValue(const float& value) {
 		if (locked)
 			return;
 		maxValue = value;
 	}
 
-	inline void setPrecision(const int value) {
+	inline void setPrecision(const int& value) {
 		if (locked)
 			return;
 		precision = value;
 	}
 
-	inline void setMaxPercentage(const float value) {
+	inline void setMaxPercentage(const float& value) {
 		if (locked)
 			return;
 		if (values.contains("maxPercentage")) {
@@ -170,7 +170,7 @@ public:
 		values.put("maxPercentage", value);
 	}
 
-	inline void setPercentage(const float value) {
+	inline void setPercentage(const float& value) {
 		if (locked)
 			return;
 		if (values.contains("currentPercentage")) {

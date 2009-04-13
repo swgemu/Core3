@@ -296,7 +296,7 @@ void WeaponImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
 		 */
 			DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
-			float value;
+			float value = 0.f;
 			_this->setMinDamage(craftingValues->getCurrentValue("mindamage"));
 			_this->setMaxDamage(craftingValues->getCurrentValue("maxdamage"));
 

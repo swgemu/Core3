@@ -493,7 +493,7 @@ public:
 		return volume;
 	}
 
-	inline int getObjectCount() {
+	inline virtual int getObjectCount() {
 		return objectCount;
 	}
 
@@ -563,6 +563,10 @@ public:
 
 	inline bool isWearableContainer() {
 		return (objectSubType == WEARABLECONTAINER);
+	}
+
+	inline bool isWearable() {
+		return (objectSubType == CLOTHING || objectSubType == ARMOR);
 	}
 
 	inline bool isContainer1() {

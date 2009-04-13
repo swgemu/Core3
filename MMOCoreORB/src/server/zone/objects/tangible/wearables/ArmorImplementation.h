@@ -53,8 +53,6 @@ class ArmorImplementation : public ArmorServant {
 private:
 	int rating;
 
-	int sockets;
-
 	float kinetic;
 	float energy;
 	float electricity;

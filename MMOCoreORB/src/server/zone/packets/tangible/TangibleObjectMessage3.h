@@ -74,7 +74,7 @@ public:
 
 		int count = tano->getObjectCount();
 
-		if (count == 1)
+		if (count <= 1)
 			count = 0;
 
 		insertInt(count); //item count

@@ -727,10 +727,9 @@ void DraftSchematicValuesImplementation::setPrecision(const String& attribute, c
 }
 
 void DraftSchematicValuesImplementation::recalculateValues(DraftSchematic* draftSchematic, bool initial) {
-
 	String experimentalPropTitle, attributeName;
-	float percentage, min, max, newValue, oldValue;
-	bool hidden;
+	float percentage = 0.f, min = 0.f, max = 0.f, newValue = 0.f, oldValue = 0.f;
+	bool hidden = false;
 
 	for (int i = 0; i < getSubtitleCount(); ++i) {
 
