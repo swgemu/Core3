@@ -116,7 +116,7 @@ void SceneObjectImplementation::init() {
 	canPickup = false;
 
 	persistent = false;
-	updated = false;
+	updated = true;
 	deleted = false;
 
 	attackable = false;

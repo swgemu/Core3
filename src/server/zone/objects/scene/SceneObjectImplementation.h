@@ -523,10 +523,10 @@ public:
 
 	// setters
 	inline void setParent(SceneObject* par, uint32 linktype = 0x04) {
-		//if (par != _this) {
+		if (par != _this) {
 			parent = par;
 			linkType = linktype;
-		//}
+		}
 	}
 
 	void setZoneProcessServer(ZoneProcessServerImplementation* serv) {

@@ -149,13 +149,13 @@ public:
 	}*/
 
 	void equipItem (TangibleObject* item) {
-		if (item->isWearable())
+		if (item->isWearable() || item->isWearableContainer())
 			changeWearable((Wearable*)item);
 		else if (item->isWeapon() || item->isInstrument())
 			changeWeapon(item);
 	}
 
-	bool changeWearable (Wearable* item, bool forced = false){
+	bool changeWearable (TangibleObject* item, bool forced = false){
 		if (item->isEquipped())
 			return unequipClothing(item);
 		else
@@ -169,7 +169,7 @@ public:
 			return equipWeapon(item);
 	}
 
-	bool equipClothing (Wearable* item, bool forced = false) {
+	bool equipClothing (TangibleObject* item, bool forced = false) {
 		uint16 locations;
 		int locationIndex;
 		Armor* armor;
@@ -181,7 +181,8 @@ public:
 		switch (item->getObjectSubType()) {
 
 		case TangibleObjectImplementation::WOOKIEGARB:
-			locations = getWookieWearLocations(item);
+			if (item->isWearable())
+				locations = getWookieWearLocations((Wearable*)item);
 			break;
 
 		case TangibleObjectImplementation::VEST:
@@ -280,7 +281,7 @@ public:
 				if ((clothingLocations.get(i) != NULL) && (item != clothingLocations.get(i)))
 					// This location already has another item equipped
 					unequipClothing(i); // So unequip it
-				clothingLocations.setElementAt(i, item);  // Equip the new item
+				clothingLocations.setElementAt(i, (Wearable*)item);  // Equip the new item
 			}
 			currentLocation <<= 1;
 		}
@@ -289,9 +290,10 @@ public:
 
 			item->onEquip(player);
 
-			calculateCurrentEncumbrance();
+			if (item->isWearable())
+				calculateCurrentEncumbrance();
 
-			player->equipItem((TangibleObject*) item);
+			player->equipItem(item);
 
 			return true;
 		} else
@@ -308,8 +310,8 @@ public:
 		return type;
 	}
 
-	bool unequipClothing (Wearable* it) {
-		ManagedReference<Wearable> item = it;
+	bool unequipClothing (TangibleObject* it) {
+		ManagedReference<TangibleObject> item = it;
 
 		bool equipped = false;
 
@@ -325,7 +327,8 @@ public:
 
 		it->onUnequip(player);
 
-		calculateCurrentEncumbrance();
+		if (item->isWearable())
+			calculateCurrentEncumbrance();
 
 		player->unequipItem((TangibleObject*)item);
 
@@ -336,7 +339,7 @@ public:
 	}
 
 	void unequipClothing (uint16 location) {
-		Wearable* item = clothingLocations.get(location);
+		TangibleObject* item = clothingLocations.get(location);
 		if (item == NULL)
 			return;
 		unequipClothing(item);

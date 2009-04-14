@@ -566,7 +566,7 @@ public:
 	}
 
 	inline bool isWearable() {
-		return (objectSubType == CLOTHING || objectSubType == ARMOR);
+		return (objectSubType & CLOTHING || objectSubType & ARMOR);
 	}
 
 	inline bool isContainer1() {
