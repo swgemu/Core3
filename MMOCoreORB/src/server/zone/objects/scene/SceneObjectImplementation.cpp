@@ -250,6 +250,8 @@ void SceneObjectImplementation::generateAttributes(SceneObject* obj) {
 	addAttributes(alm);
 
 	player->sendMessage(alm);
+
+	log("Unhandled attributes message for: " + stfName);
 }
 
 void SceneObjectImplementation::addAttributes(AttributeListMessage* alm) {
@@ -257,6 +259,18 @@ void SceneObjectImplementation::addAttributes(AttributeListMessage* alm) {
 }
 
 void SceneObjectImplementation::parseItemAttributes() {
+
+}
+
+void SceneObjectImplementation::synchronizedUIListen(Player* player, int value) {
+
+	log("Unhandled synchronizedUIListen message for: " + stfName);
+
+}
+
+void SceneObjectImplementation::synchronizedUIStopListen(Player* player, int value) {
+
+	log("Unhandled synchronizedUIStopListen message for: " + stfName);
 
 }
 

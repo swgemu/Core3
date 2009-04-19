@@ -179,6 +179,10 @@ interface SceneObject implements ManagedObject {
 	void generateAttributes(Player player);
 	void addAttributes(AttributeListMessage alm);
 	void parseItemAttributes();
+	
+	// UI Listen Methods
+	void synchronizedUIListen(Player player, int value);
+	void synchronizedUIStopListen(Player player, int value);
 
 	// logger methods
 	void info(const String message, boolean forcedLog = false);

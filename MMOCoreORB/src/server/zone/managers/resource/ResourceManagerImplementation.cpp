@@ -110,6 +110,15 @@ ResourceManagerImplementation::~ResourceManagerImplementation() {
 		nativepool = NULL;
 	}
 
+	while (resourceMap->size() > 0) {
+		ResourceSpawn* resourceSpawn = resourceMap->get(0);
+		resourceMap->remove(0);
+		resourceSpawn->finalize();
+	}
+
+	if (resourceMap != NULL)
+		resourceMap->removeAll();
+
 	if (resourceMap != NULL) {
 		delete resourceMap;
 		resourceMap = NULL;
@@ -133,7 +142,7 @@ ResourceManagerImplementation::~ResourceManagerImplementation() {
 void ResourceManagerImplementation::init() {
 	Lua::init();
 
-	resourceMap = new VectorMap<String, ResourceTemplate*>();
+	resourceMap = new VectorMap<String, ResourceSpawn*>();
 	resourceMap->setNullValue(NULL);
 
 	resourceIDNameMap = new VectorMap<uint64, String>();
@@ -207,12 +216,6 @@ void ResourceManagerImplementation::stop() {
 
 	if (spawnResourcesEvent->isQueued())
 		serv->removeEvent(spawnResourcesEvent);
-
-	for (int i = 0; i < resourceMap->size(); ++i)
-		delete resourceMap->get(i);
-
-	if (resourceMap != NULL)
-		resourceMap->removeAll();
 
 	if (resourceIDNameMap != NULL)
 		resourceIDNameMap->removeAll();
@@ -337,13 +340,13 @@ float ResourceManagerImplementation::getDensity(int planet, String& resname,
 
 		SpawnLocation* sl;
 
-		ResourceTemplate* resource = resourceMap->get(resname);
+		ResourceSpawn* resourceSpawn = resourceMap->get(resname);
 
-		if (resource == NULL)
+		if (resourceSpawn == NULL)
 			return max_density;
 
-		for (int i = resource->getSpawnSize() - 1; i >= 0; i--) {
-			sl = resource->getSpawn(i);
+		for (int i = resourceSpawn->getSpawnLocationSize() - 1; i >= 0; i--) {
+			sl = resourceSpawn->getSpawnLocation(i);
 
 			if (sl->getPlanet() == planet) {
 				x = sl->getX();
@@ -601,23 +604,23 @@ ResourceList* ResourceManagerImplementation::getResourceListAtLocation(int zone,
 
 	ResourceList *list = new ResourceList();
 
-	ResourceTemplate* resource;
+	ResourceSpawn* resourceSpawn;
 
 	for (int i = resourceMap->size() - 1; i > 0; i--) {
-		resource = resourceMap->get(i);
-		if (resource->getSpawnSize() > 0 && (strcmp(resource->getClass2().toCharArray(), class2.toCharArray()) == 0 || strcmp(resource->getClass2().toCharArray(), class2re.toCharArray()) == 0)) {
-			for (int i = resource->getSpawnSize() - 1; i >= 0; i--) {
-				SpawnLocation* sl = resource->getSpawn(i);
+		resourceSpawn = resourceMap->get(i);
+		if (resourceSpawn->getSpawnLocationSize() > 0 && (strcmp(resourceSpawn->getClass2().toCharArray(), class2.toCharArray()) == 0 || strcmp(resourceSpawn->getClass2().toCharArray(), class2re.toCharArray()) == 0)) {
+			for (int i = resourceSpawn->getSpawnLocationSize() - 1; i >= 0; i--) {
+				SpawnLocation* sl = resourceSpawn->getSpawnLocation(i);
 				if (sl->getPlanet() == zone) {
-					if (!list->contains(resource->getName())) {
+					if (!list->contains(resourceSpawn->getName())) {
 
 						//list->put(resource->getName(), Resource());
-						float density = getDensity(zone, resource->getName(), x, y);
+						float density = getDensity(zone, resourceSpawn->getName(), x, y);
 						if (density >= .01)
 						{
-							ResourceItem* ri = new ResourceItem(resource->getResourceID(), sl->getID(), sl->getExpireTime(), resource->getName(), resource->getType(), (int) (density * 100) );
+							ResourceItem* ri = new ResourceItem(resourceSpawn->getObjectID(), sl->getObjectID(), sl->getExpireTime(), resourceSpawn->getName(), resourceSpawn->getType(), (int) (density * 100) );
 
-							list->put(resource->getName(), ri);
+							list->put(resourceSpawn->getName(), ri);
 						}
 
 						//Resource *r = new Resource(resource->getResourceID(), resource->getName(), resource->getType(), 50);
@@ -875,13 +878,13 @@ bool ResourceManagerImplementation::useResourceDeed(Player* player, String& reso
 }
 
 String ResourceManagerImplementation::getCurrentNameFromType(String type){
-	ResourceTemplate* resTemp;
+	ResourceSpawn* resTemp;
 
 	for (int i = 0; i < resourceMap->size(); ++i){
 		resTemp = resourceMap->get(i);
 
 		if (resTemp->getType() == type){
-			if (resTemp->getSpawnSize() == 1)
+			if (resTemp->getSpawnLocationSize() == 1)
 				return resTemp->getName();
 		}
 	}
@@ -912,7 +915,7 @@ void ResourceManagerImplementation::setResourceData(ResourceContainer* resContai
 	lock(doLock);
 
 	String resourceName = resContainer->getResourceName().toCharArray();
-	ResourceTemplate* resource = resourceMap->get(resourceName);
+	ResourceSpawn* resource = resourceMap->get(resourceName);
 
 	if (resource == NULL) {
 		unlock(doLock);
@@ -927,7 +930,7 @@ void ResourceManagerImplementation::setResourceData(ResourceContainer* resContai
 		UnicodeString cName = UnicodeString(contName.toCharArray());
 		resContainer->setName(cName);
 
-		resContainer->setResourceID(resource->getResourceID());
+		resContainer->setResourceID(resource->getObjectID());
 
 		resContainer->setDecayResistance(resource->getAtt1Stat());
 		resContainer->setQuality(resource->getAtt2Stat());
@@ -943,8 +946,8 @@ void ResourceManagerImplementation::setResourceData(ResourceContainer* resContai
 		resContainer->setClassSeven(resource->getClass7());
 
 		resContainer->setContainerFile(resource->getType());
-		resContainer->setObjectCRC(resource->getContainerCRC());
-		resContainer->setObjectSubType(resource->getObjectSubType());
+		resContainer->setObjectCRC(resource->getObjectCRC());
+		resContainer->setObjectSubType(resource->getObjectType());
 		if(resource->getClass1()=="Energy")
 			resContainer->setIsEnergy(true);
 
@@ -961,7 +964,7 @@ bool ResourceManagerImplementation::checkResource(Player* player, String& resour
 	// Added by Ritter
 	lock(doLock);
 
-	ResourceTemplate* resource = resourceMap->get(resourceName);
+	ResourceSpawn* resource = resourceMap->get(resourceName);
 
 	String surveyType, class2, class2re = "";
 	switch(SurveyToolType) {
@@ -998,8 +1001,8 @@ bool ResourceManagerImplementation::checkResource(Player* player, String& resour
 
 	if (resource != NULL) {
 		if (strcmp(resource->getClass2().toCharArray(), class2.toCharArray()) == 0 || strcmp(resource->getClass2().toCharArray(), class2re.toCharArray()) == 0) {
-			for (int i = resource->getSpawnSize() - 1; i >= 0; i--) {
-				SpawnLocation* sl = resource->getSpawn(i);
+			for (int i = resource->getSpawnLocationSize() - 1; i >= 0; i--) {
+				SpawnLocation* sl = resource->getSpawnLocation(i);
 
 				if (sl->getPlanet() == player->getZoneID()) {
 					unlock(doLock);
@@ -1066,16 +1069,16 @@ bool ResourceManagerImplementation::sendSurveyResources(Player* player, int Surv
 
 	ResourceListForSurvey* packet = new ResourceListForSurvey();
 
-	ResourceTemplate* resource;
+	ResourceSpawn* resourceSpawn;
 
 	for (int i = resourceMap->size() - 1; i > 0; i--) {
-		resource = resourceMap->get(i);
-		if (resource->getSpawnSize() > 0 && (strcmp(resource->getClass2().toCharArray(), class2.toCharArray()) == 0 || strcmp(resource->getClass2().toCharArray(), class2re.toCharArray()) == 0)) {
-			for (int i = resource->getSpawnSize() - 1; i >= 0; i--) {
-				SpawnLocation* sl = resource->getSpawn(i);
+		resourceSpawn = resourceMap->get(i);
+		if (resourceSpawn->getSpawnLocationSize() > 0 && (strcmp(resourceSpawn->getClass2().toCharArray(), class2.toCharArray()) == 0 || strcmp(resourceSpawn->getClass2().toCharArray(), class2re.toCharArray()) == 0)) {
+			for (int i = resourceSpawn->getSpawnLocationSize() - 1; i >= 0; i--) {
+				SpawnLocation* sl = resourceSpawn->getSpawnLocation(i);
 				if (sl->getPlanet() == player->getZoneID()) {
-					if (!isDuplicate(resourceList, resource->getName())) {
-						packet->addResource(resource->getName(), resource->getType(), resource->getResourceID());
+					if (!isDuplicate(resourceList, resourceSpawn->getName())) {
+						packet->addResource(resourceSpawn->getName(), resourceSpawn->getType(), resourceSpawn->getObjectID());
 					}
 				}
 			}
@@ -1097,12 +1100,12 @@ bool ResourceManagerImplementation::sendSurveyResources(Player* player, int Surv
 
 void ResourceManagerImplementation::sendSurveyResourceStats(Player* player, Vector<String>* rList) {
 	// Added by Ritter
-	ResourceTemplate* resource;
+	ResourceSpawn* resource;
 
 	for (int i = rList->size() - 1; i >= 0; i--) {
 		resource = resourceMap->get(rList->get(i));
 
-		AttributeListMessage* packet = new AttributeListMessage(resource->getResourceID());
+		AttributeListMessage* packet = new AttributeListMessage(resource->getObjectID());
 
 		if (resource->getAtt1Stat() != 0) {
 			packet->insertAttribute(resource->getAtt1(),resource->getAtt1Stat());
@@ -1155,7 +1158,7 @@ void ResourceManagerImplementation::sendSurveyResourceStats(Player* player, Vect
 void ResourceManagerImplementation::getClassSeven(const String& resource, String& clas, bool doLock) {
 	lock(doLock);
 
-	ResourceTemplate* resTemp = resourceMap->get(resource);
+	ResourceSpawn* resTemp = resourceMap->get(resource);
 
 	if (resTemp != NULL)
 		clas = resTemp->getClass7();
@@ -1166,7 +1169,7 @@ void ResourceManagerImplementation::getClassSeven(const String& resource, String
 void ResourceManagerImplementation::getResourceContainerName(const String& resource, String& name, bool doLock) {
 	lock(doLock);
 
-	ResourceTemplate* resTemp = resourceMap->get(resource);
+	ResourceSpawn* resTemp = resourceMap->get(resource);
 
 	if (resTemp != NULL) {
 		if ( resTemp->getClass6() != "" && resTemp->getClass6() != "JTL")
@@ -1205,7 +1208,7 @@ bool ResourceManagerImplementation::isDuplicate(Vector<String>* rList, String& r
 }
 
 void ResourceManagerImplementation::buildResourceMap() {
-	ResourceTemplate* resTemp;
+	ResourceSpawn* resTemp;
 	SpawnLocation* sl;
 	String resname;
 	String query = "SELECT resource_data.`INDEX`, resource_data.resource_name, resource_data.resource_type, "
@@ -1230,9 +1233,10 @@ void ResourceManagerImplementation::buildResourceMap() {
 
 				if (!resourceMap->contains(resname)) {
 
-					resTemp = new ResourceTemplate(res->getString(2));
+					String type = res->getString(2);
+					resTemp = new ResourceSpawn(type);
 					resTemp->setName(resname);
-					resTemp->setResourceID(res->getUnsignedLong(0));
+					resTemp->setObjectID(res->getUnsignedLong(0));
 
 					resTemp->setClass1(res->getString(3));
 					resTemp->setClass2(res->getString(4));
@@ -1271,12 +1275,12 @@ void ResourceManagerImplementation::buildResourceMap() {
 					resTemp->setAtt10Stat(res->getInt(19));
 					resTemp->setAtt11Stat(res->getInt(20));
 
-					resTemp->setContainer(res->getString(23));
-					resTemp->setContainerCRC(res->getUnsignedInt(24));
+					resTemp->setContainerName(res->getString(23));
+					resTemp->setObjectCRC(res->getUnsignedInt(24));
 
-					setObjectSubType(resTemp);
+					setObjectType(resTemp);
 
-					resourceIDNameMap->put(resTemp->getResourceID(), resname);
+					resourceIDNameMap->put(resTemp->getObjectID(), resname);
 					resourceMap->put(resname, resTemp);
 				} else {
 					resTemp = resourceMap->get(resname);
@@ -1286,12 +1290,11 @@ void ResourceManagerImplementation::buildResourceMap() {
 
 					String pool = res->getString(33);
 					// SpawnLocation(uint64 id, int inPlanet, float inX, float inY, float inRadius, float inMax, String& inPool) {
-					sl
-							= new SpawnLocation(res->getUnsignedLong(25), res->getInt(
+					sl = new SpawnLocation(res->getUnsignedLong(25), res->getInt(
 									27), res->getFloat(28), res->getFloat(29), res->getFloat(
 									30), res->getFloat(31), res->getUnsignedLong(32), pool);
 
-					resTemp->addSpawn(sl);
+					resTemp->addSpawnLocation(sl);
 
 				} catch (...) {
 
@@ -1308,98 +1311,6 @@ void ResourceManagerImplementation::buildResourceMap() {
 	}
 }
 
-void ResourceManagerImplementation::verifyResourceMap() {
-	ResourceTemplate* resTemp;
-
-	for (int i = 0; i < resourceMap->size(); ++i){
-		resTemp = resourceMap->get(i);
-
-		verifyResourceData(i, resTemp);
-	}
-}
-
-void ResourceManagerImplementation::verifyResourceData(int i, ResourceTemplate* resTemp) {
-	ResourceTemplate* resNew;
-	String resname;
-	String query = "SELECT `INDEX`, `resource_name`, `resource_type`, `class_1`, `class_2`, `class_3`, `class_4`,"
-		" `class_5`, `class_6`, `class_7`, `res_decay_resist`, `res_quality`, `res_flavor`, `res_potential_energy`,"
-		" `res_malleability`, `res_toughness`, `res_shock_resistance`, `res_cold_resist`, `res_heat_resist`,"
-		" `res_conductivity`, `entangle_resistance`, `shiftedIn`, `shiftedOut`, `container`, `containerCRC`"
-		"  FROM resource_data WHERE `resource_name` = '" + resTemp->getName() + "'";
-	try {
-		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-
-		if (res->size() == 1) {
-			while (res->next()) {
-				resname = res->getString(1);
-				resNew = new ResourceTemplate(res->getString(2));
-				resNew->setName(resname);
-				resNew->setResourceID(res->getUnsignedLong(0));
-
-				resNew->setClass1(res->getString(3));
-				resNew->setClass2(res->getString(4));
-				resNew->setClass3(res->getString(5));
-				resNew->setClass4(res->getString(6));
-				resNew->setClass5(res->getString(7));
-				resNew->setClass6(res->getString(8));
-				resNew->setClass7(res->getString(9));
-
-				resNew->setMaxType(0);
-				resNew->setMinType(0);
-				resNew->setMinPool(0);
-				resNew->setMaxPool(0);
-
-				resNew->setAtt1("res_decay_resist");
-				resNew->setAtt2("res_quality");
-				resNew->setAtt3("res_flavor");
-				resNew->setAtt4("res_potential_energy");
-				resNew->setAtt5("res_malleability");
-				resNew->setAtt6("res_toughness");
-				resNew->setAtt7("res_shock_resistance");
-				resNew->setAtt8("res_cold_resist");
-				resNew->setAtt9("res_heat_resist");
-				resNew->setAtt10("res_conductivity");
-				resNew->setAtt11("entangle_resistance");
-
-				resNew->setAtt1Stat(res->getInt(10));
-				resNew->setAtt2Stat(res->getInt(11));
-				resNew->setAtt3Stat(res->getInt(12));
-				resNew->setAtt4Stat(res->getInt(13));
-				resNew->setAtt5Stat(res->getInt(14));
-				resNew->setAtt6Stat(res->getInt(15));
-				resNew->setAtt7Stat(res->getInt(16));
-				resNew->setAtt8Stat(res->getInt(17));
-				resNew->setAtt9Stat(res->getInt(18));
-				resNew->setAtt10Stat(res->getInt(19));
-				resNew->setAtt11Stat(res->getInt(20));
-
-				resNew->setContainer(res->getString(23));
-				resNew->setContainerCRC(res->getUnsignedInt(24));
-
-				setObjectSubType(resNew);
-
-				if (!resNew->compare(resTemp)) {
-					info("******* Resource: " + resname + " is inconsistant ********");
-
-					//resTemp->toString();
-					//resNew->toString();
-				} else {
-					//System::out << i << ". " << resname << " is good!\n";
-				}
-			}
-		} else {
-			info("Multiple Resource with name: " + resTemp->getName());
-		}
-
-		delete res;
-	} catch (DatabaseException& e) {
-		System::out << "Database error in verifyMap\n";
-		System::out << e.getMessage() << endl;
-	} catch (...) {
-		System::out << "unreported exception caught in ResourceManagerImplementation::verifyResourceData\n";
-	}
-}
-
 void ResourceManagerImplementation::removeExpiredResources() {
 	try {
 		numFunctions++;
@@ -1413,12 +1324,12 @@ void ResourceManagerImplementation::removeExpiredResources() {
 
 		if (res->size() != 0) {
 			while (res->next()) {
-				uint64 sid = res->getUnsignedLong(0);
+				uint64 oid = res->getUnsignedLong(0);
 				String rname = res->getString(1);
-				ResourceTemplate* resource = resourceMap->get(rname);
+				ResourceSpawn* resource = resourceMap->get(rname);
 
 				if (resource != NULL) {
-					SpawnLocation* sl = resource->removeSpawn(sid);
+					SpawnLocation* sl = resource->removeSpawnLocation(oid);
 				} else {
 					info("Error removing spawn location.");
 				}
@@ -1761,7 +1672,7 @@ void ResourceManagerImplementation::createResource(String restype, String pool, 
 
 	int planet, therand, thex, they, numplanets, numspawns;
 
-	ResourceTemplate* resource = new ResourceTemplate(restype);
+	ResourceSpawn* resource = new ResourceSpawn(restype);
 
 	generateResourceStats(resource);
 
@@ -1814,12 +1725,12 @@ void ResourceManagerImplementation::createResource(String restype, String pool, 
 		}
 	}
 
-	resourceIDNameMap->put(resource->getResourceID(), resource->getName());
+	resourceIDNameMap->put(resource->getObjectID(), resource->getName());
 	resourceMap->put(resource->getName(), resource);
 	addToResourceTree(resource);
 }
 
-void ResourceManagerImplementation::generateResourceStats(ResourceTemplate* resource) {
+void ResourceManagerImplementation::generateResourceStats(ResourceSpawn* resource) {
 	String resname;
 
 	int stat1, stat2, stat3, stat4, stat5, stat6, stat7, stat8, stat9, stat10, stat11;
@@ -1902,10 +1813,10 @@ void ResourceManagerImplementation::generateResourceStats(ResourceTemplate* reso
 				stat11 =  randomize(res->getInt(44), res->getInt(45));
 				setAttStat(resource, res->getString(23), stat11);
 
-				resource->setContainer(res->getString(46));
-				resource->setContainerCRC(res->getUnsignedInt(47));
+				resource->setContainerName(res->getString(46));
+				resource->setObjectCRC(res->getUnsignedInt(47));
 
-				setObjectSubType(resource);
+				setObjectType(resource);
 			} else {
 				System::out << "Resource Database error generateResourceStats" << endl;
 			}
@@ -1956,7 +1867,7 @@ int ResourceManagerImplementation::randomize(int min, int max) {
 	return randomStat;
 }
 
-void ResourceManagerImplementation::setAttStat(ResourceTemplate* resource, String statTitle, int stat){
+void ResourceManagerImplementation::setAttStat(ResourceSpawn* resource, String statTitle, int stat){
 	if (statTitle == "res_decay_resist") {
 		resource->setAtt1Stat(stat);
 		return;
@@ -2025,7 +1936,7 @@ void ResourceManagerImplementation::makeResourceTree() {
 		resourceTree->setClassName(root);
 
 		for (int i=0; i<resourceMap->size(); i++){
-			ResourceTemplate* resTemp = resourceMap->get(i);
+			ResourceSpawn* resTemp = resourceMap->get(i);
 
 			resourceTree->addResource(resTemp);
 		}
@@ -2041,7 +1952,7 @@ void ResourceManagerImplementation::makeResourceTree() {
 	}
 }
 
-void ResourceManagerImplementation::addToResourceTree(ResourceTemplate* resource){
+void ResourceManagerImplementation::addToResourceTree(ResourceSpawn* resource){
 	numFunctions++;
 
 	try{
@@ -2172,7 +2083,7 @@ int ResourceManagerImplementation::getPlanet(const String type) {
 
 	return 99;
 }
-bool ResourceManagerImplementation::isType(ResourceTemplate* resource, String type) {
+bool ResourceManagerImplementation::isType(ResourceSpawn* resource, String type) {
 	numFunctions++;
 
 	if (resource->getClass1() == type || resource->getClass2() == type
@@ -2184,7 +2095,7 @@ bool ResourceManagerImplementation::isType(ResourceTemplate* resource, String ty
 		return false;
 }
 
-void ResourceManagerImplementation::insertResource(ResourceTemplate* resource) {
+void ResourceManagerImplementation::insertResource(ResourceSpawn* resource) {
 	numFunctions++;
 
 	try {
@@ -2222,8 +2133,8 @@ void ResourceManagerImplementation::insertResource(ResourceTemplate* resource) {
 		<< checkInsertValue(resource->getAtt9Stat())
 		<< checkInsertValue(resource->getAtt10Stat())
 		<< checkInsertValue(resource->getAtt11Stat())
-		<< ", " << (long)time(0) << ",'" << resource->getContainer()
-		<< "'," << resource->getContainerCRC() << ")";
+		<< ", " << (long)time(0) << ",'" << resource->getContainerName()
+		<< "'," << resource->getObjectCRC() << ")";
 
 		ServerDatabase::instance()->executeStatement(query.toString());
 
@@ -2235,7 +2146,7 @@ void ResourceManagerImplementation::insertResource(ResourceTemplate* resource) {
 		System::out << "unreported exception caught in ResourceManagerImplementation::insertResource(ResourceTemplate* resource)" << endl;
 	}
 }
-void ResourceManagerImplementation::insertSpawn(ResourceTemplate* resource, int planet_id,
+void ResourceManagerImplementation::insertSpawn(ResourceSpawn* resource, int planet_id,
 		float x, float y, float radius, float max, String pool, bool& jtl) {
 	numFunctions++;
 
@@ -2274,7 +2185,7 @@ void ResourceManagerImplementation::insertSpawn(ResourceTemplate* resource, int 
 
 		SpawnLocation* sl = new SpawnLocation(id, planet_id, x, y, radius, max, despawn, pool);
 
-		resource->addSpawn(sl);
+		resource->addSpawnLocation(sl);
 
 		delete res;
 
@@ -2372,52 +2283,52 @@ bool ResourceManagerImplementation::isDumbPhrase(const String inname) {
 	return false;
 }
 
-void ResourceManagerImplementation::setObjectSubType(ResourceTemplate* resImpl) {
+void ResourceManagerImplementation::setObjectType(ResourceSpawn* resImpl) {
 	if (resImpl->getClass1() == "Inorganic") {
 		if (resImpl->getClass2() == "Mineral") {
-			resImpl->setObjectSubType(TangibleObjectImplementation::INORGANICMINERAL);
+			resImpl->setObjectType(TangibleObjectImplementation::INORGANICMINERAL);
 			return;
 		} else if (resImpl->getClass2() == "Chemical") {
-			resImpl->setObjectSubType(TangibleObjectImplementation::INORGANICCHEMICAL);
+			resImpl->setObjectType(TangibleObjectImplementation::INORGANICCHEMICAL);
 			return;
 		} else if (resImpl->getClass2() == "Gas") {
-			resImpl->setObjectSubType(TangibleObjectImplementation::INORGANICGAS);
+			resImpl->setObjectType(TangibleObjectImplementation::INORGANICGAS);
 			return;
 		} else if (resImpl->getClass2() == "Water") {
-			resImpl->setObjectSubType(TangibleObjectImplementation::WATER);
+			resImpl->setObjectType(TangibleObjectImplementation::WATER);
 			return;
 		}
 	} else if (resImpl->getClass1() == "Organic") {
 		if (resImpl->getClass3() == "Flora Food") {
-			resImpl->setObjectSubType(TangibleObjectImplementation::ORGANICFOOD);
+			resImpl->setObjectType(TangibleObjectImplementation::ORGANICFOOD);
 			return;
 		} else if (resImpl->getClass3() == "Flora Structural") {
-			resImpl->setObjectSubType(TangibleObjectImplementation::ORGANICSTRUCTURAL);
+			resImpl->setObjectType(TangibleObjectImplementation::ORGANICSTRUCTURAL);
 			return;
 		} else if (resImpl->getClass3() == "Creature Food") {
-			resImpl->setObjectSubType(TangibleObjectImplementation::ORGANICFOOD);
+			resImpl->setObjectType(TangibleObjectImplementation::ORGANICFOOD);
 			return;
 		} else if (resImpl->getClass3() == "Creature Structural") {
 			if (resImpl->getClass4() == "Bone") {
-				resImpl->setObjectSubType(TangibleObjectImplementation::ORGANICSTRUCTURAL);
+				resImpl->setObjectType(TangibleObjectImplementation::ORGANICSTRUCTURAL);
 				return;
 			} else if (resImpl->getClass4() == "Hide") {
-				resImpl->setObjectSubType(TangibleObjectImplementation::ORGANICHIDE);
+				resImpl->setObjectType(TangibleObjectImplementation::ORGANICHIDE);
 				return;
 			} else if (resImpl->getClass4() == "Horn") {
-				resImpl->setObjectSubType(TangibleObjectImplementation::ORGANICSTRUCTURAL);
+				resImpl->setObjectType(TangibleObjectImplementation::ORGANICSTRUCTURAL);
 				return;
 			}
 		}
 	} else if (resImpl->getClass1() == "Energy") {
 		if (resImpl->getClass2() == "Wind Energy") {
-			resImpl->setObjectSubType(TangibleObjectImplementation::ENERGYLIQUID);
+			resImpl->setObjectType(TangibleObjectImplementation::ENERGYLIQUID);
 			return;
 		} else if (resImpl->getClass2() == "Solar Energy") {
-			resImpl->setObjectSubType(TangibleObjectImplementation::ENERGYLIQUID);
+			resImpl->setObjectType(TangibleObjectImplementation::ENERGYLIQUID);
 			return;
 		} else if (resImpl->getClass2() == "Radioactive Energy") {
-			resImpl->setObjectSubType(TangibleObjectImplementation::ENERGYRADIOACTIVE);
+			resImpl->setObjectType(TangibleObjectImplementation::ENERGYRADIOACTIVE);
 			return;
 		}
 	}

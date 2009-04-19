@@ -190,6 +190,31 @@ void DraftSchematicImplementation::sendTo(Player* player) {
 
 }
 
+void DraftSchematicImplementation::synchronizedUIListen(Player* player, int value) {
+
+	ManufactureSchematicObjectMessage7 * msco7 = new ManufactureSchematicObjectMessage7(_this);
+	player->sendMessage(msco7);
+
+	// Object Controller w/ Ingredients ***************************
+	ObjectControllerMessage* objMsg =
+			new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x0103);
+	objMsg->insertLong(player->getActiveCraftingTool()->getObjectID()); // Crafting Tool Object ID
+	objMsg->insertLong(objectID); // Draft Schematic Object ID
+	objMsg->insertLong(player->getActiveCraftingTool()->getWorkingTano()->getObjectID()); // Crafting Tangible Object ID
+	objMsg->insertInt(2);
+	objMsg->insertByte(1);
+
+	// Sends requested ingredients to the player
+	helperSendIngredientsToPlayer(objMsg);
+
+	player->sendMessage(objMsg);
+	// End Object Controller w/ Ingredients ************************
+}
+
+void DraftSchematicImplementation::synchronizedUIStopListen(Player* player, int value) {
+
+}
+
 // Ingredient Methods
 void DraftSchematicImplementation::addIngredient(const String& ingredientTemplateName, const String& ingredientTitleName,
 		const int slotoption, const String& resourceType, uint32 resourceQuantity, uint32 combineType, uint32 contribution) {
@@ -246,6 +271,7 @@ void DraftSchematicImplementation::addExperimentalProperty(uint32 groupNumber, S
 		dsExpPropGroups.get(groupNumber)->addExperimentalProperty(experimentalProperty,	weight, min, max, precision);
 	} else {
 		DraftSchematicExpPropGroup* dsEpg = new DraftSchematicExpPropGroup(title, subtitle);
+
 		dsEpg->addExperimentalProperty(experimentalProperty, weight, min, max, precision);
 
 		dsExpPropGroups.add(dsEpg);
@@ -260,46 +286,21 @@ void DraftSchematicImplementation::sendExperimentalPropertiesToPlayer(Player* pl
 
 	uint8 listSize = dsExpPropGroups.size();
 
-	/*uint32 padding = 0;
-		 if (draftSchematicIngredients.size() > 0) {
-		 String templateName = draftSchematicIngredients.get(0)->getTemplateName();
+	msg->insertByte(listSize);
+	// Send all the resource batch property data
+	for (int i = 0; i < listSize; i++) {
 
-		 if ( templateName == "craft_chemical_ingredients_n" || templateName == "craft_droid_ingredients_n"
-		 || templateName == "craft_munition_ingredients_n" || templateName == "craft_structure_ingredients_n"
-		 || templateName == "craft_tissue_ingredients_n" || templateName == "craft_vehicle_ingredients_n"
-		 || templateName == "craft_weapon_ingredients_n") {
-		 padding = 2;
-		 } else {
-		 padding = 3;
-		 }
-		 }*/
-
-	// Have to run the loop twice.  Ask soe why :/
-
-	for (int soeFtl = 0; soeFtl < 2; soeFtl++) {
-		// The +3 is for the padding
-		//msg->insertByte(listSize + padding);
-
-		msg->insertByte(listSize);
-
-		/* This loop adds the padding required for this packet to work
-			 for (int soeIsDumb = 0; soeIsDumb < padding; soeIsDumb++) {
-			 msg->insertByte(1);
-			 msg->insertByte(0);
-			 }*/
-
-		int count = getRequiredIngredientCount();
-
-		// Send all the experimental property data
-		for (int i = 0; i < listSize; i++) {
-
-			DraftSchematicExpPropGroup* dsEpg = dsExpPropGroups.get(i);
-			// OLD dsEpg->sendToPlayer(msg);
-			dsEpg->sendToPlayer(msg, count);
-			count++;
-		}
+		DraftSchematicExpPropGroup* dsEpg = dsExpPropGroups.get(i);
+		dsEpg->sendBatchToPlayer(msg);
 	}
 
+	msg->insertByte(listSize);
+	// Send all the experimental property data
+	for (int i = 0; i < listSize; i++) {
+
+		DraftSchematicExpPropGroup* dsEpg = dsExpPropGroups.get(i);
+		dsEpg->sendToPlayer(msg);
+	}
 	player->sendMessage(msg);
 }
 

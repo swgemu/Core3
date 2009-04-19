@@ -76,6 +76,8 @@ core3_IDLS =	server/chat/ChatManager.cpp \
 		server/zone/managers/resource/ResourceManager.cpp \
 		server/zone/managers/resource/ResourceList.cpp \
 		server/zone/managers/resource/ResourceItem.cpp \
+	    server/zone/managers/resource/ResourceSpawn.cpp \
+	    server/zone/managers/resource/SpawnLocation.cpp \
 		server/zone/managers/structure/StructureManager.cpp \
 		server/zone/managers/user/UserManager.cpp \
 		server/zone/objects/area/Area.cpp \

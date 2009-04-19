@@ -259,8 +259,6 @@ void PlayerImplementation::initializePlayer() {
 	draftSchematicUpdateCount = 0;
 
 	//Crafting
-	currentCraftingTool = NULL;
-
 	resourceDeedID = 0;
 
 	//GM Flags
@@ -3940,9 +3938,6 @@ void PlayerImplementation::fillMissionSaveVars() {
 }
 
 // Crafting
-CraftingTool* PlayerImplementation::getCurrentCraftingTool() {
-	return currentCraftingTool;
-}
 
 CraftingTool* PlayerImplementation::getCraftingTool(const int type, bool doLock) {
 
@@ -3973,53 +3968,6 @@ CraftingTool* PlayerImplementation::getCraftingTool(const int type, bool doLock)
 
 }
 
-void PlayerImplementation::setCurrentCraftingTool(CraftingTool* ct) {
-	currentCraftingTool = ct;
-}
-
-void PlayerImplementation::clearCurrentCraftingTool() {
-	currentCraftingTool = NULL;
-}
-
-void PlayerImplementation::prepareCraftingSession(CraftingTool* ct, DraftSchematic* ds) {
-	CraftingManager* craftingManager = server->getCraftingManager();
-	craftingManager->prepareCraftingSession(_this, ct, ds);
-}
-
-void PlayerImplementation::addIngredientToSlot(TangibleObject* tano, int slot, int counter) {
-	CraftingManager* craftingManager = server->getCraftingManager();
-	craftingManager->addIngredientToSlot(_this, tano, slot, counter);
-}
-
-void PlayerImplementation::removeResourceFromCraft(uint64 resID, int slot, int counter) {
-	CraftingManager* craftingManager = server->getCraftingManager();
-	craftingManager->removeIngredientFromSlot(_this, slot, counter);
-}
-
-void PlayerImplementation::nextCraftingStage(String test) {
-	CraftingManager* craftingManager = server->getCraftingManager();
-	craftingManager->nextCraftingStage(_this, test);
-}
-
-void PlayerImplementation::craftingCustomization(String name, int condition, String customizationString) {
-	CraftingManager* craftingManager = server->getCraftingManager();
-	craftingManager->craftingCustomization(_this, name, condition, customizationString);
-}
-
-void PlayerImplementation::createPrototype(int counter, int practice) {
-	CraftingManager* craftingManager = server->getCraftingManager();
-	craftingManager->createPrototype(_this, counter, practice);
-}
-
-void PlayerImplementation::createSchematic(int counter) {
-	CraftingManager* craftingManager = server->getCraftingManager();
-	craftingManager->createSchematic(_this, counter);
-}
-
-void PlayerImplementation::handleExperimenting(int count, int numRowsAttempted, String expString) {
-	CraftingManager* craftingManager = server->getCraftingManager();
-	craftingManager->handleExperimenting(_this, count, numRowsAttempted, expString);
-}
 // Draft Schematics
 
 void PlayerImplementation::addDraftSchematicsFromGroupName(const String& schematicGroupName) {

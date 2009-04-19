@@ -17,7 +17,9 @@ public:
 
 	void addExperimentalProperty(const String& experimentalPropertyType, unsigned int weight, float min, float max, int precision);
 
-	void sendToPlayer(ObjectControllerMessage* msg, int count);
+	void sendBatchToPlayer(ObjectControllerMessage* msg);
+
+	void sendToPlayer(ObjectControllerMessage* msg);
 
 	bool containsExpPropType(const String& expPropType);
 
@@ -26,6 +28,8 @@ public:
 	unsigned int getExpPropPercentageListSize();
 
 	float getExpPropPercentage(unsigned int index);
+
+	unsigned char getBatchTypeAndWeight(unsigned int index);
 
 	unsigned char getTypeAndWeight(unsigned int index);
 
@@ -90,7 +94,9 @@ public:
 
 	void addExperimentalProperty(const String& experimentalPropertyType, unsigned int weight, float min, float max, int precision);
 
-	void sendToPlayer(ObjectControllerMessage* msg, int count);
+	void sendBatchToPlayer(ObjectControllerMessage* msg);
+
+	void sendToPlayer(ObjectControllerMessage* msg);
 
 	bool containsExpPropType(const String& expPropType);
 
@@ -99,6 +105,8 @@ public:
 	unsigned int getExpPropPercentageListSize();
 
 	float getExpPropPercentage(unsigned int index);
+
+	unsigned char getBatchTypeAndWeight(unsigned int index);
 
 	unsigned char getTypeAndWeight(unsigned int index);
 

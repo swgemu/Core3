@@ -46,18 +46,30 @@ void DraftSchematicExpPropGroup::addExperimentalProperty(const String& experimen
 		((DraftSchematicExpPropGroupImplementation*) _impl)->addExperimentalProperty(experimentalPropertyType, weight, min, max, precision);
 }
 
-void DraftSchematicExpPropGroup::sendToPlayer(ObjectControllerMessage* msg, int count) {
+void DraftSchematicExpPropGroup::sendBatchToPlayer(ObjectControllerMessage* msg) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
 		method.addObjectParameter(msg);
-		method.addSignedIntParameter(count);
 
 		method.executeWithVoidReturn();
 	} else
-		((DraftSchematicExpPropGroupImplementation*) _impl)->sendToPlayer(msg, count);
+		((DraftSchematicExpPropGroupImplementation*) _impl)->sendBatchToPlayer(msg);
+}
+
+void DraftSchematicExpPropGroup::sendToPlayer(ObjectControllerMessage* msg) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(msg);
+
+		method.executeWithVoidReturn();
+	} else
+		((DraftSchematicExpPropGroupImplementation*) _impl)->sendToPlayer(msg);
 }
 
 bool DraftSchematicExpPropGroup::containsExpPropType(const String& expPropType) {
@@ -65,7 +77,7 @@ bool DraftSchematicExpPropGroup::containsExpPropType(const String& expPropType) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 		method.addAsciiParameter(expPropType);
 
 		return method.executeWithBooleanReturn();
@@ -78,7 +90,7 @@ float DraftSchematicExpPropGroup::getExpPropPercentage(const String& expPropType
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 		method.addAsciiParameter(expPropType);
 
 		return method.executeWithFloatReturn();
@@ -91,7 +103,7 @@ unsigned int DraftSchematicExpPropGroup::getExpPropPercentageListSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -103,7 +115,7 @@ float DraftSchematicExpPropGroup::getExpPropPercentage(unsigned int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addUnsignedIntParameter(index);
 
 		return method.executeWithFloatReturn();
@@ -111,12 +123,25 @@ float DraftSchematicExpPropGroup::getExpPropPercentage(unsigned int index) {
 		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getExpPropPercentage(index);
 }
 
+unsigned char DraftSchematicExpPropGroup::getBatchTypeAndWeight(unsigned int index) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addUnsignedIntParameter(index);
+
+		return method.executeWithUnsignedCharReturn();
+	} else
+		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getBatchTypeAndWeight(index);
+}
+
 unsigned char DraftSchematicExpPropGroup::getTypeAndWeight(unsigned int index) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 14);
 		method.addUnsignedIntParameter(index);
 
 		return method.executeWithUnsignedCharReturn();
@@ -129,7 +154,7 @@ String& DraftSchematicExpPropGroup::getKey(int i) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 15);
 		method.addSignedIntParameter(i);
 
 		method.executeWithAsciiReturn(_return_getKey);
@@ -143,7 +168,7 @@ int DraftSchematicExpPropGroup::getKeyCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 16);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -155,7 +180,7 @@ String& DraftSchematicExpPropGroup::getExpPropTypesKey(int i) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 17);
 		method.addSignedIntParameter(i);
 
 		method.executeWithAsciiReturn(_return_getExpPropTypesKey);
@@ -169,7 +194,7 @@ unsigned char DraftSchematicExpPropGroup::getExpPropTypesValue(int i) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 18);
 		method.addSignedIntParameter(i);
 
 		return method.executeWithUnsignedCharReturn();
@@ -182,7 +207,7 @@ int DraftSchematicExpPropGroup::getExpPropTypesSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -194,7 +219,7 @@ String& DraftSchematicExpPropGroup::getExpPropWeightsKey(int i) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 20);
 		method.addSignedIntParameter(i);
 
 		method.executeWithAsciiReturn(_return_getExpPropWeightsKey);
@@ -208,7 +233,7 @@ unsigned char DraftSchematicExpPropGroup::getExpPropWeightsValue(int i) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 21);
 		method.addSignedIntParameter(i);
 
 		return method.executeWithUnsignedCharReturn();
@@ -221,7 +246,7 @@ int DraftSchematicExpPropGroup::getExpPropWeightsSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 22);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -233,7 +258,7 @@ String& DraftSchematicExpPropGroup::getExpPropWeightPercentagesKey(int i) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 23);
 		method.addSignedIntParameter(i);
 
 		method.executeWithAsciiReturn(_return_getExpPropWeightPercentagesKey);
@@ -247,7 +272,7 @@ float DraftSchematicExpPropGroup::getExpPropWeightPercentagesValue(int i) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 24);
 		method.addSignedIntParameter(i);
 
 		return method.executeWithFloatReturn();
@@ -260,7 +285,7 @@ int DraftSchematicExpPropGroup::getExpPropWeightPercentagesSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 25);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -272,7 +297,7 @@ String& DraftSchematicExpPropGroup::getSubtitle() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 26);
 
 		method.executeWithAsciiReturn(_return_getSubtitle);
 		return _return_getSubtitle;
@@ -285,7 +310,7 @@ String& DraftSchematicExpPropGroup::getTitle() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 27);
 
 		method.executeWithAsciiReturn(_return_getTitle);
 		return _return_getTitle;
@@ -298,7 +323,7 @@ float DraftSchematicExpPropGroup::getMinValue() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 28);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -310,7 +335,7 @@ float DraftSchematicExpPropGroup::getMaxValue() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 29);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -322,7 +347,7 @@ float DraftSchematicExpPropGroup::getRange() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 30);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -334,7 +359,7 @@ int DraftSchematicExpPropGroup::getPrecision() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 31);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -346,7 +371,7 @@ bool DraftSchematicExpPropGroup::isFiller() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 32);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -368,75 +393,81 @@ Packet* DraftSchematicExpPropGroupAdapter::invokeMethod(uint32 methid, Distribut
 		addExperimentalProperty(inv->getAsciiParameter(_param0_addExperimentalProperty__String_int_float_float_int_), inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter());
 		break;
 	case 7:
-		sendToPlayer((ObjectControllerMessage*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		sendBatchToPlayer((ObjectControllerMessage*) inv->getObjectParameter());
 		break;
 	case 8:
-		resp->insertBoolean(containsExpPropType(inv->getAsciiParameter(_param0_containsExpPropType__String_)));
+		sendToPlayer((ObjectControllerMessage*) inv->getObjectParameter());
 		break;
 	case 9:
-		resp->insertFloat(getExpPropPercentage(inv->getAsciiParameter(_param0_getExpPropPercentage__String_)));
+		resp->insertBoolean(containsExpPropType(inv->getAsciiParameter(_param0_containsExpPropType__String_)));
 		break;
 	case 10:
-		resp->insertInt(getExpPropPercentageListSize());
+		resp->insertFloat(getExpPropPercentage(inv->getAsciiParameter(_param0_getExpPropPercentage__String_)));
 		break;
 	case 11:
-		resp->insertFloat(getExpPropPercentage(inv->getUnsignedIntParameter()));
+		resp->insertInt(getExpPropPercentageListSize());
 		break;
 	case 12:
-		resp->insertByte(getTypeAndWeight(inv->getUnsignedIntParameter()));
+		resp->insertFloat(getExpPropPercentage(inv->getUnsignedIntParameter()));
 		break;
 	case 13:
-		resp->insertAscii(getKey(inv->getSignedIntParameter()));
+		resp->insertByte(getBatchTypeAndWeight(inv->getUnsignedIntParameter()));
 		break;
 	case 14:
-		resp->insertSignedInt(getKeyCount());
+		resp->insertByte(getTypeAndWeight(inv->getUnsignedIntParameter()));
 		break;
 	case 15:
-		resp->insertAscii(getExpPropTypesKey(inv->getSignedIntParameter()));
+		resp->insertAscii(getKey(inv->getSignedIntParameter()));
 		break;
 	case 16:
-		resp->insertByte(getExpPropTypesValue(inv->getSignedIntParameter()));
+		resp->insertSignedInt(getKeyCount());
 		break;
 	case 17:
-		resp->insertSignedInt(getExpPropTypesSize());
+		resp->insertAscii(getExpPropTypesKey(inv->getSignedIntParameter()));
 		break;
 	case 18:
-		resp->insertAscii(getExpPropWeightsKey(inv->getSignedIntParameter()));
+		resp->insertByte(getExpPropTypesValue(inv->getSignedIntParameter()));
 		break;
 	case 19:
-		resp->insertByte(getExpPropWeightsValue(inv->getSignedIntParameter()));
+		resp->insertSignedInt(getExpPropTypesSize());
 		break;
 	case 20:
-		resp->insertSignedInt(getExpPropWeightsSize());
+		resp->insertAscii(getExpPropWeightsKey(inv->getSignedIntParameter()));
 		break;
 	case 21:
-		resp->insertAscii(getExpPropWeightPercentagesKey(inv->getSignedIntParameter()));
+		resp->insertByte(getExpPropWeightsValue(inv->getSignedIntParameter()));
 		break;
 	case 22:
-		resp->insertFloat(getExpPropWeightPercentagesValue(inv->getSignedIntParameter()));
+		resp->insertSignedInt(getExpPropWeightsSize());
 		break;
 	case 23:
-		resp->insertSignedInt(getExpPropWeightPercentagesSize());
+		resp->insertAscii(getExpPropWeightPercentagesKey(inv->getSignedIntParameter()));
 		break;
 	case 24:
-		resp->insertAscii(getSubtitle());
+		resp->insertFloat(getExpPropWeightPercentagesValue(inv->getSignedIntParameter()));
 		break;
 	case 25:
-		resp->insertAscii(getTitle());
+		resp->insertSignedInt(getExpPropWeightPercentagesSize());
 		break;
 	case 26:
-		resp->insertFloat(getMinValue());
+		resp->insertAscii(getSubtitle());
 		break;
 	case 27:
-		resp->insertFloat(getMaxValue());
+		resp->insertAscii(getTitle());
 		break;
 	case 28:
-		resp->insertFloat(getRange());
+		resp->insertFloat(getMinValue());
 		break;
 	case 29:
-		resp->insertSignedInt(getPrecision());
+		resp->insertFloat(getMaxValue());
 		break;
 	case 30:
+		resp->insertFloat(getRange());
+		break;
+	case 31:
+		resp->insertSignedInt(getPrecision());
+		break;
+	case 32:
 		resp->insertBoolean(isFiller());
 		break;
 	default:
@@ -450,8 +481,12 @@ void DraftSchematicExpPropGroupAdapter::addExperimentalProperty(const String& ex
 	return ((DraftSchematicExpPropGroupImplementation*) impl)->addExperimentalProperty(experimentalPropertyType, weight, min, max, precision);
 }
 
-void DraftSchematicExpPropGroupAdapter::sendToPlayer(ObjectControllerMessage* msg, int count) {
-	return ((DraftSchematicExpPropGroupImplementation*) impl)->sendToPlayer(msg, count);
+void DraftSchematicExpPropGroupAdapter::sendBatchToPlayer(ObjectControllerMessage* msg) {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->sendBatchToPlayer(msg);
+}
+
+void DraftSchematicExpPropGroupAdapter::sendToPlayer(ObjectControllerMessage* msg) {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->sendToPlayer(msg);
 }
 
 bool DraftSchematicExpPropGroupAdapter::containsExpPropType(const String& expPropType) {
@@ -468,6 +503,10 @@ unsigned int DraftSchematicExpPropGroupAdapter::getExpPropPercentageListSize() {
 
 float DraftSchematicExpPropGroupAdapter::getExpPropPercentage(unsigned int index) {
 	return ((DraftSchematicExpPropGroupImplementation*) impl)->getExpPropPercentage(index);
+}
+
+unsigned char DraftSchematicExpPropGroupAdapter::getBatchTypeAndWeight(unsigned int index) {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->getBatchTypeAndWeight(index);
 }
 
 unsigned char DraftSchematicExpPropGroupAdapter::getTypeAndWeight(unsigned int index) {

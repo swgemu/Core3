@@ -39,6 +39,8 @@ public:
 	~HarvesterObjectImplementation();
 
 	void parseItemAttributes();
+	void synchronizedUIListen(Player* player, int value);
+	void synchronizedUIStopListen(Player* player, int value);
 
 	// Attribute Setters
 	inline void setHopperSizeMax(float size) {

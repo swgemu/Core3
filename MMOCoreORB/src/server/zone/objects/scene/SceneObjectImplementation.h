@@ -282,6 +282,9 @@ public:
 	virtual void addAttributes(AttributeListMessage* alm);
 	virtual void parseItemAttributes();
 
+	virtual void synchronizedUIListen(Player* player, int value);
+	virtual void synchronizedUIStopListen(Player* player, int value);
+
 	void randomizePosition(float radius);
 
 	//TODO: figure out why gcc don't fookin see these shit from ManagedObjectImplementation directly

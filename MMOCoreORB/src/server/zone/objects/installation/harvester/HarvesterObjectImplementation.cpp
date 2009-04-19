@@ -4,6 +4,9 @@
 #include "../../../packets.h"
 #include "../../../objects.h"
 
+#include "HarvesterObject.h"
+#include "HarvesterObjectImplementation.h"
+
 #include "../../../managers/resource/ResourceHarvestType.h"
 
 
@@ -96,6 +99,24 @@ void HarvesterObjectImplementation::parseItemAttributes() {
 }
 
 HarvesterObjectImplementation::~HarvesterObjectImplementation(){
+
+}
+
+void HarvesterObjectImplementation::synchronizedUIListen(Player* player, int value) {
+
+	// Send Hino7 Baseline
+	setHopperUpdateCounter(0); // reset counter
+	InstallationObjectMessage7* inso7 = new InstallationObjectMessage7(_this);
+	player->sendMessage(inso7);
+
+	addOperator(player);
+	activateSync();
+
+}
+
+void HarvesterObjectImplementation::synchronizedUIStopListen(Player* player, int value) {
+
+	removeOperator(player);
 
 }
 

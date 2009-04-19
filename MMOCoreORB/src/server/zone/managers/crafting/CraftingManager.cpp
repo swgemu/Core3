@@ -65,12 +65,13 @@ void CraftingManager::prepareCraftingSession(Player* player, CraftingTool* craft
 		((CraftingManagerImplementation*) _impl)->prepareCraftingSession(player, craftingTool, draftSchematic);
 }
 
-void CraftingManager::addIngredientToSlot(Player* player, TangibleObject* tano, int slot, int counter) {
+void CraftingManager::addIngredientToSlot(CraftingTool* craftingTool, Player* player, TangibleObject* tano, int slot, int counter) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+		method.addObjectParameter(craftingTool);
 		method.addObjectParameter(player);
 		method.addObjectParameter(tano);
 		method.addSignedIntParameter(slot);
@@ -78,22 +79,23 @@ void CraftingManager::addIngredientToSlot(Player* player, TangibleObject* tano, 
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingManagerImplementation*) _impl)->addIngredientToSlot(player, tano, slot, counter);
+		((CraftingManagerImplementation*) _impl)->addIngredientToSlot(craftingTool, player, tano, slot, counter);
 }
 
-void CraftingManager::removeIngredientFromSlot(Player* player, int slot, int counter) {
+void CraftingManager::removeIngredientFromSlot(CraftingTool* craftingTool, Player* player, int slot, int counter) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
+		method.addObjectParameter(craftingTool);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(slot);
 		method.addSignedIntParameter(counter);
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingManagerImplementation*) _impl)->removeIngredientFromSlot(player, slot, counter);
+		((CraftingManagerImplementation*) _impl)->removeIngredientFromSlot(craftingTool, player, slot, counter);
 }
 
 void CraftingManager::putComponentBackInInventory(Player* player, Component* component) {
@@ -110,26 +112,28 @@ void CraftingManager::putComponentBackInInventory(Player* player, Component* com
 		((CraftingManagerImplementation*) _impl)->putComponentBackInInventory(player, component);
 }
 
-void CraftingManager::nextCraftingStage(Player* player, String& test) {
+void CraftingManager::nextCraftingStage(CraftingTool* craftingTool, Player* player, String& test) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 11);
+		method.addObjectParameter(craftingTool);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(test);
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingManagerImplementation*) _impl)->nextCraftingStage(player, test);
+		((CraftingManagerImplementation*) _impl)->nextCraftingStage(craftingTool, player, test);
 }
 
-void CraftingManager::craftingCustomization(Player* player, String& name, int condition, String& customizationString) {
+void CraftingManager::craftingCustomization(CraftingTool* craftingTool, Player* player, String& name, int condition, String& customizationString) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 12);
+		method.addObjectParameter(craftingTool);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(name);
 		method.addSignedIntParameter(condition);
@@ -137,15 +141,16 @@ void CraftingManager::craftingCustomization(Player* player, String& name, int co
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingManagerImplementation*) _impl)->craftingCustomization(player, name, condition, customizationString);
+		((CraftingManagerImplementation*) _impl)->craftingCustomization(craftingTool, player, name, condition, customizationString);
 }
 
-void CraftingManager::handleExperimenting(Player* player, int counter, int numRowsAttempted, String& expString) {
+void CraftingManager::handleExperimenting(CraftingTool* craftingTool, Player* player, int counter, int numRowsAttempted, String& expString) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 13);
+		method.addObjectParameter(craftingTool);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(counter);
 		method.addSignedIntParameter(numRowsAttempted);
@@ -153,36 +158,38 @@ void CraftingManager::handleExperimenting(Player* player, int counter, int numRo
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingManagerImplementation*) _impl)->handleExperimenting(player, counter, numRowsAttempted, expString);
+		((CraftingManagerImplementation*) _impl)->handleExperimenting(craftingTool, player, counter, numRowsAttempted, expString);
 }
 
-void CraftingManager::createPrototype(Player* player, int counter, int practice) {
+void CraftingManager::createPrototype(CraftingTool* craftingTool, Player* player, int counter, int practice) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 14);
+		method.addObjectParameter(craftingTool);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(counter);
 		method.addSignedIntParameter(practice);
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingManagerImplementation*) _impl)->createPrototype(player, counter, practice);
+		((CraftingManagerImplementation*) _impl)->createPrototype(craftingTool, player, counter, practice);
 }
 
-void CraftingManager::createSchematic(Player* player, int counter) {
+void CraftingManager::createSchematic(CraftingTool* craftingTool, Player* player, int counter) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 15);
+		method.addObjectParameter(craftingTool);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(counter);
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingManagerImplementation*) _impl)->createSchematic(player, counter);
+		((CraftingManagerImplementation*) _impl)->createSchematic(craftingTool, player, counter);
 }
 
 float CraftingManager::getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type) {
@@ -325,28 +332,28 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		prepareCraftingSession((Player*) inv->getObjectParameter(), (CraftingTool*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 8:
-		addIngredientToSlot((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		addIngredientToSlot((CraftingTool*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 9:
-		removeIngredientFromSlot((Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		removeIngredientFromSlot((CraftingTool*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 10:
 		putComponentBackInInventory((Player*) inv->getObjectParameter(), (Component*) inv->getObjectParameter());
 		break;
 	case 11:
-		nextCraftingStage((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_nextCraftingStage__Player_String_));
+		nextCraftingStage((CraftingTool*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_nextCraftingStage__CraftingTool_Player_String_));
 		break;
 	case 12:
-		craftingCustomization((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_craftingCustomization__Player_String_int_String_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_craftingCustomization__Player_String_int_String_));
+		craftingCustomization((CraftingTool*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_craftingCustomization__CraftingTool_Player_String_int_String_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param4_craftingCustomization__CraftingTool_Player_String_int_String_));
 		break;
 	case 13:
-		handleExperimenting((Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_handleExperimenting__Player_int_int_String_));
+		handleExperimenting((CraftingTool*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param4_handleExperimenting__CraftingTool_Player_int_int_String_));
 		break;
 	case 14:
-		createPrototype((Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		createPrototype((CraftingTool*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 15:
-		createSchematic((Player*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		createSchematic((CraftingTool*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 16:
 		resp->insertFloat(getWeightedValue((Player*) inv->getObjectParameter(), (CraftingTool*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter(), inv->getSignedIntParameter()));
@@ -390,36 +397,36 @@ void CraftingManagerAdapter::prepareCraftingSession(Player* player, CraftingTool
 	return ((CraftingManagerImplementation*) impl)->prepareCraftingSession(player, craftingTool, draftSchematic);
 }
 
-void CraftingManagerAdapter::addIngredientToSlot(Player* player, TangibleObject* tano, int slot, int counter) {
-	return ((CraftingManagerImplementation*) impl)->addIngredientToSlot(player, tano, slot, counter);
+void CraftingManagerAdapter::addIngredientToSlot(CraftingTool* craftingTool, Player* player, TangibleObject* tano, int slot, int counter) {
+	return ((CraftingManagerImplementation*) impl)->addIngredientToSlot(craftingTool, player, tano, slot, counter);
 }
 
-void CraftingManagerAdapter::removeIngredientFromSlot(Player* player, int slot, int counter) {
-	return ((CraftingManagerImplementation*) impl)->removeIngredientFromSlot(player, slot, counter);
+void CraftingManagerAdapter::removeIngredientFromSlot(CraftingTool* craftingTool, Player* player, int slot, int counter) {
+	return ((CraftingManagerImplementation*) impl)->removeIngredientFromSlot(craftingTool, player, slot, counter);
 }
 
 void CraftingManagerAdapter::putComponentBackInInventory(Player* player, Component* component) {
 	return ((CraftingManagerImplementation*) impl)->putComponentBackInInventory(player, component);
 }
 
-void CraftingManagerAdapter::nextCraftingStage(Player* player, String& test) {
-	return ((CraftingManagerImplementation*) impl)->nextCraftingStage(player, test);
+void CraftingManagerAdapter::nextCraftingStage(CraftingTool* craftingTool, Player* player, String& test) {
+	return ((CraftingManagerImplementation*) impl)->nextCraftingStage(craftingTool, player, test);
 }
 
-void CraftingManagerAdapter::craftingCustomization(Player* player, String& name, int condition, String& customizationString) {
-	return ((CraftingManagerImplementation*) impl)->craftingCustomization(player, name, condition, customizationString);
+void CraftingManagerAdapter::craftingCustomization(CraftingTool* craftingTool, Player* player, String& name, int condition, String& customizationString) {
+	return ((CraftingManagerImplementation*) impl)->craftingCustomization(craftingTool, player, name, condition, customizationString);
 }
 
-void CraftingManagerAdapter::handleExperimenting(Player* player, int counter, int numRowsAttempted, String& expString) {
-	return ((CraftingManagerImplementation*) impl)->handleExperimenting(player, counter, numRowsAttempted, expString);
+void CraftingManagerAdapter::handleExperimenting(CraftingTool* craftingTool, Player* player, int counter, int numRowsAttempted, String& expString) {
+	return ((CraftingManagerImplementation*) impl)->handleExperimenting(craftingTool, player, counter, numRowsAttempted, expString);
 }
 
-void CraftingManagerAdapter::createPrototype(Player* player, int counter, int practice) {
-	return ((CraftingManagerImplementation*) impl)->createPrototype(player, counter, practice);
+void CraftingManagerAdapter::createPrototype(CraftingTool* craftingTool, Player* player, int counter, int practice) {
+	return ((CraftingManagerImplementation*) impl)->createPrototype(craftingTool, player, counter, practice);
 }
 
-void CraftingManagerAdapter::createSchematic(Player* player, int counter) {
-	return ((CraftingManagerImplementation*) impl)->createSchematic(player, counter);
+void CraftingManagerAdapter::createSchematic(CraftingTool* craftingTool, Player* player, int counter) {
+	return ((CraftingManagerImplementation*) impl)->createSchematic(craftingTool, player, counter);
 }
 
 float CraftingManagerAdapter::getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type) {

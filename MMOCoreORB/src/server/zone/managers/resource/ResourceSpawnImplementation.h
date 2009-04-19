@@ -42,15 +42,17 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef RESOURCETEMPLATE_H_
-#define RESOURCETEMPLATE_H_
+#ifndef RESOURCESPAWNIMPLEMENTATION_H_
+#define RESOURCESPAWNIMPLEMENTATION_H_
 
 #include "engine/engine.h"
 
+#include "ResourceSpawn.h"
 #include "SpawnLocation.h"
+#include "../../packets/scene/AttributeListMessage.h"
+#include "../../objects/player/Player.h"
 
-class ResourceTemplate {
-	uint64 rid;
+class ResourceSpawnImplementation : public ResourceSpawnServant {
 
 	String resname;
 	String restype;
@@ -61,7 +63,7 @@ class ResourceTemplate {
 	String class5;
 	String class6;
 	String class7;
-	String container;
+	String containerName;
 	String att1;
 	String att2;
 	String att3;
@@ -90,14 +92,11 @@ class ResourceTemplate {
 
 	int minpool;
 	int maxpool;
-	int objectSubType;
-
-	uint32 containerCRC;
 
 	Vector<SpawnLocation*> * spawnLocations;
 
 public:
-	ResourceTemplate(const String& inType) {
+	ResourceSpawnImplementation(const String& inType) : ResourceSpawnServant() {
 		resname = "";
 		restype = "";
 		class1 = "";
@@ -107,7 +106,7 @@ public:
 		class5 = "";
 		class6 = "";
 		class7 = "";
-		container = "";
+		containerName = "";
 		att1 = "";
 		att2 = "";
 		att3 = "";
@@ -136,16 +135,19 @@ public:
 
 		minpool;
 		maxpool;
-		objectSubType;
 
 		restype = inType;
 		spawnLocations = new Vector<SpawnLocation*>();
+
+		stfName = "resource_spawn";
 	}
 
-	~ResourceTemplate() {
+	~ResourceSpawnImplementation() {
 		if (spawnLocations != NULL) {
-			for (int i = 0; i < spawnLocations->size(); ++i)
-				delete spawnLocations->get(i);
+			while(spawnLocations->size() > 0) {
+				SpawnLocation* location = spawnLocations->remove(0);
+				location->finalize();
+			}
 
 			delete spawnLocations;
 
@@ -153,160 +155,77 @@ public:
 		}
 	}
 
-	bool compare(ResourceTemplate* inResource) {
+	void generateAttributes(SceneObject* obj) {
+		if (!obj->isPlayer())
+			return;
 
-		StringBuffer error;
+		Player* player = (Player*) obj;
 
-		if (resname != inResource->resname)
-			error << "resname: " << resname << " != " << inResource->resname
-					<< "\n";
+		AttributeListMessage* alm = new AttributeListMessage(_this);
+		addAttributes(alm);
 
-		if (restype != inResource->restype)
-			error << "restype: " << restype << " != " << inResource->restype
-					<< "\n";
+		player->sendMessage(alm);
+	}
+	void addAttributes(AttributeListMessage* alm) {
 
-		if (class1 != inResource->class1)
-			error << "class1: " << class1 << " != " << inResource->class1
-					<< "\n";
+			alm->insertAttribute("resource_name", resname);
 
-		if (class2 != inResource->class2)
-			error << "class2: " << class2 << " != " << inResource->class2
-					<< "\n";
+			alm->insertAttribute("resource_class", class7);
 
-		if (class3 != inResource->class3)
-			error << "class3: " << class3 << " != " << inResource->class3
-					<< "\n";
+			if (att1 != "")
+				alm->insertAttribute(att1, att1stat);
 
-		if (class4 != inResource->class4)
-			error << "class4: " << class4 << " != " << inResource->class4
-					<< "\n";
+			if (att2 != "")
+				alm->insertAttribute(att2, att2stat);
 
-		if (class5 != inResource->class5)
-			error << "class5: " << class5 << " != " << inResource->class5
-					<< "\n";
+			if (att3 != "")
+				alm->insertAttribute(att3, att3stat);
 
-		if (class6 != inResource->class6)
-			error << "class6: " << class6 << " != " << inResource->class6
-					<< "\n";
+			if (att4 != "")
+				alm->insertAttribute(att4, att4stat);
 
-		if (class7 != inResource->class7)
-			error << "class7: " << class7 << " != " << inResource->class7
-					<< "\n";
+			if (att5 != "")
+				alm->insertAttribute(att5, att5stat);
 
-		if (container != inResource->container)
-			error << "container: " << container << " != "
-					<< inResource->container << "\n";
+			if (att6 != "")
+				alm->insertAttribute(att6, att6stat);
 
-		if ((att1 != inResource->att1) && !att1.isEmpty())
-			error << "att1: " << att1 << " != " << inResource->att1 << "\n";
+			if (att7 != "")
+				alm->insertAttribute(att7, att7stat);
 
-		if ((att2 != inResource->att2) && !att2.isEmpty())
-			error << "att2: " << att2 << " != " << inResource->att2 << "\n";
+			if (att8 != "")
+				alm->insertAttribute(att8, att8stat);
 
-		if ((att3 != inResource->att3) && !att3.isEmpty())
-			error << "att3: " << att3 << " != " << inResource->att3 << "\n";
+			if (att9 != "")
+				alm->insertAttribute(att9, att9stat);
 
-		if ((att4 != inResource->att4) && !att4.isEmpty())
-			error << "att4: " << att4 << " != " << inResource->att4 << "\n";
+			if (att10 != "")
+				alm->insertAttribute(att10, att10stat);
 
-		if ((att5 != inResource->att5) && !att5.isEmpty())
-			error << "att5: " << att5 << " != " << inResource->att5 << "\n";
-
-		if ((att6 != inResource->att6) && !att6.isEmpty())
-			error << "att6: " << att6 << " != " << inResource->att6 << "\n";
-
-		if ((att7 != inResource->att7) && !att7.isEmpty())
-			error << "att7: " << att7 << " != " << inResource->att7 << "\n";
-
-		if ((att8 != inResource->att8) && !att8.isEmpty())
-			error << "att8: " << att8 << " != " << inResource->att8 << "\n";
-
-		if ((att9 != inResource->att9) && !att9.isEmpty())
-			error << "att9: " << att9 << " != " << inResource->att9 << "\n";
-
-		if ((att10 != inResource->att10) && !att10.isEmpty())
-			error << "att10: " << att10 << " != " << inResource->att10 << "\n";
-
-		if ((att11 != inResource->att11) && !att11.isEmpty())
-			error << "att11: " << att11 << " != " << inResource->att11 << "\n";
-
-		if (((att1stat != inResource->att1stat) && att1stat != 0))
-			error << "att1stat: " << att1stat << " != " << inResource->att1stat
-					<< "\n";
-
-		if (((att2stat != inResource->att2stat) && att2stat != 0))
-			error << "att2stat: " << att2stat << " != " << inResource->att2stat
-					<< "\n";
-
-		if (((att3stat != inResource->att3stat) && att3stat != 0))
-			error << "att3stat: " << att3stat << " != " << inResource->att3stat
-					<< "\n";
-
-		if (((att4stat != inResource->att4stat) && att4stat != 0))
-			error << "att4stat: " << att4stat << " != " << inResource->att4stat
-					<< "\n";
-
-		if (((att5stat != inResource->att5stat) && att5stat != 0))
-			error << "att5stat: " << att5stat << " != " << inResource->att5stat
-					<< "\n";
-
-		if (((att6stat != inResource->att6stat) && att6stat != 0))
-			error << "att6stat: " << att6stat << " != " << inResource->att6stat
-					<< "\n";
-
-		if (((att7stat != inResource->att7stat) && att7stat != 0))
-			error << "att7stat: " << att7stat << " != " << inResource->att7stat
-					<< "\n";
-
-		if (((att8stat != inResource->att8stat) && att7stat != 0))
-			error << "att7stat: " << att7stat << " != " << inResource->att7stat
-					<< "\n";
-
-		if (((att9stat != inResource->att9stat) && att9stat != 0))
-			error << "att9stat: " << att9stat << " != " << inResource->att9stat
-					<< "\n";
-
-		if (((att10stat != inResource->att10stat) && att10stat != 0))
-			error << "att10stat: " << att10stat << " != "
-					<< inResource->att10stat << "\n";
-
-		if (((att11stat != inResource->att11stat) && att11stat != 0))
-			error << "att11stat: " << att11stat << " != "
-					<< inResource->att11stat << "\n";
-
-		if (objectSubType != inResource->objectSubType)
-			error << "objectSubType: " << hex << objectSubType << " != "
-					<< inResource->objectSubType << "\n";
-
-		if (containerCRC != inResource->containerCRC)
-			error << "containerCRC: " << containerCRC << " != " << inResource->containerCRC << dec << "\n";
-
-		if (error.toString() == "") {
-			return true;
-		} else {
-			System::out << error.toString();
-			return false;
-		}
+			if (att11 != "")
+				alm->insertAttribute(att11, att11stat);
+	}
+	void parseItemAttributes() {
 
 	}
 
 	// Spawn Stuff
-	inline SpawnLocation* getSpawn(int i) {
+	inline SpawnLocation* getSpawnLocation(int i) {
 		return spawnLocations->get(i);
 	}
 
-	inline int getSpawnSize() {
+	inline int getSpawnLocationSize() {
 		return spawnLocations->size();
 	}
 
-	inline void addSpawn(SpawnLocation* sl) {
+	inline void addSpawnLocation(SpawnLocation* sl) {
 		spawnLocations->add(sl);
 	}
 
-	inline SpawnLocation* removeSpawn(int sid) {
+	inline SpawnLocation* removeSpawnLocation(int sid) {
 		for (int i = spawnLocations->size() - 1; i >= 0; i--) {
 			SpawnLocation* sl = spawnLocations->get(i);
-			if (sl->getID() == sid) {
+			if (sl->getObjectID() == sid) {
 				spawnLocations->remove(i);
 				return sl;
 			}
@@ -451,20 +370,8 @@ public:
 		minpool = inInt;
 	}
 
-	inline void setContainer(const String& inString) {
-		container  = inString;
-	}
-
-	inline void setContainerCRC(uint32 inCRC) {
-		containerCRC = inCRC;
-	}
-
-	inline void setResourceID(uint64 inID) {
-		rid = inID;
-	}
-
-	inline void setObjectSubType(int subType) {
-		objectSubType = subType;
+	inline void setContainerName(const String& inString) {
+		containerName  = inString;
 	}
 
 	// getters
@@ -608,26 +515,15 @@ public:
 		return minpool;
 	}
 
-	inline String& getContainer() {
-		return container;
+	inline String& getContainerName() {
+		return containerName;
 	}
 
-	inline uint32 getContainerCRC() {
-		return containerCRC;
-	}
-
-	inline uint64 getResourceID() {
-		return rid;
-	}
-
-	inline int getObjectSubType() {
-		return objectSubType;
-	}
 
 	void toString(){
 
 		System::out << "************ Resource Template ********************\n";
-		System::out << "Resource ID = " << rid << endl;
+		System::out << "Resource ID = " << objectID << endl;
 
 		System::out << "Resource ID = " << resname << endl;
 		System::out << "Resource Type = " << restype << endl;
@@ -638,7 +534,7 @@ public:
 		System::out << "Class5 = " << class5 << endl;
 		System::out << "Class6 = " << class6 << endl;
 		System::out << "Class7 = " << class7 << endl;
-		System::out << "Container = " << container << endl;
+		System::out << "Container = " << containerName << endl;
 		System::out << att1 << " = " << att1stat << endl;
 		System::out << att2 << " = " << att2stat << endl;
 		System::out << att3 << " = " << att3stat << endl;
@@ -651,11 +547,11 @@ public:
 		System::out << att10 << " = " << att10stat << endl;
 		System::out << att11 << " = " << att11stat << endl;
 
-		System::out << "Subtype = " << objectSubType  << endl;
-		System::out << "containerCRC = " << containerCRC  << endl;
+		System::out << "Subtype = " << objectType  << endl;
+		System::out << "objectCRC = " << objectCRC  << endl;
 
 	}
 
 };
 
-#endif /*RESOURCETEMPLATE_H_*/
+#endif /*RESOURCESPAWNIMPLEMENTATION_H_*/

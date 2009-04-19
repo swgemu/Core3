@@ -562,19 +562,10 @@ interface Player implements CreatureObject {
 	void saveMissions();
 
 	// Crafting
-	CraftingTool getCurrentCraftingTool();
+	void setActiveCraftingTool(CraftingTool craftingTool);
+	CraftingTool getActiveCraftingTool();
 	CraftingTool getCraftingTool(const int type, boolean doLock = true);
-	void setCurrentCraftingTool(CraftingTool ct);
-	void clearCurrentCraftingTool();
 
-	void prepareCraftingSession(CraftingTool ct, DraftSchematic ds);
-	void addIngredientToSlot(TangibleObject tano, int slot, int counter);
-	void removeResourceFromCraft(unsigned long resID, int slot, int counter);
-	void nextCraftingStage(String test);
-	void craftingCustomization(String name, int condition, String customizationString);
-	void createPrototype(int counter, int practice);
-	void createSchematic(int counter);
-	void handleExperimenting(int count, int numRowsAttempted, String expString);
 	
     void setLastExperimentationAttempt();
     boolean canExperiment();

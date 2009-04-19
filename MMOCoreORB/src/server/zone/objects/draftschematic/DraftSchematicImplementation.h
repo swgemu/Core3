@@ -175,6 +175,9 @@ public:
 
 	void sendTo(Player* player);
 
+	void synchronizedUIListen(Player* player, int value);
+	void synchronizedUIStopListen(Player* player, int value);
+
 	// Ingredient Methods
 	void addIngredient(const String& ingredientTemplateName,
 			const String& ingredientTitleName, const int slotoption,

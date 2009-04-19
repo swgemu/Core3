@@ -177,10 +177,10 @@ public:
 	void prepareCraftingSession(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
 
 	// Methods relating to adding Items to the crafting process
-	void addIngredientToSlot(Player* player, TangibleObject* tano, int slot, int counter);
+	void addIngredientToSlot(CraftingTool* craftingTool, Player* player, TangibleObject* tano, int slot, int counter);
 
 	// Methods relating to removing Items to the crafting process
-	void removeIngredientFromSlot(Player* player, int slot, int counter);
+	void removeIngredientFromSlot(CraftingTool* craftingTool, Player* player, int slot, int counter);
 
 	// Handles object deletion
 	void deleteItem(SceneObject* scno, TangibleObject* tano);
@@ -189,11 +189,11 @@ public:
 	void putComponentBackInInventory(Player* player, Component* component);
 
 	// Crafting Methods
-	void nextCraftingStage(Player* player, String test);
-	void craftingCustomization(Player* player, String name, int condition, String customizationString);
-	void handleExperimenting(Player* player, int counter, int numRowsAttempted, String expString);
-	void createPrototype(Player* player, int counter, int practice);
-	void createSchematic(Player* player, int counter);
+	void nextCraftingStage(CraftingTool* craftingTool, Player* player, String test);
+	void craftingCustomization(CraftingTool* craftingTool, Player* player, String name, int condition, String customizationString);
+	void handleExperimenting(CraftingTool* craftingTool, Player* player, int counter, int numRowsAttempted, String expString);
+	void createPrototype(CraftingTool* craftingTool, Player* player, int counter, int practice);
+	void createSchematic(CraftingTool* craftingTool, Player* player, int counter);
 
 
 	float getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type);
@@ -218,7 +218,6 @@ private:
 	// Methods to setup the crafting sequence
 	void createDraftSchematic(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
 	TangibleObject* createTangibleObject(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
-	void setupIngredients(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
 	TangibleObject* generateTangibleObject(uint64 oid, Player* player, DraftSchematic* draftSchematic);
 	TangibleObject* generateTangibleObject(Player* player, DraftSchematic* draftSchematic);
 
@@ -254,9 +253,9 @@ private:
 
 	// Final creation methods
 	void finishAssembly(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int counter);
-	void finishStage1(Player* player, int counter);
-	void finishStage2(Player* player, int counter);
-	void createObjectInInventory(Player* player, int timer, bool create);
+	void finishStage1(CraftingTool* craftingTool, Player* player, int counter);
+	void finishStage2(CraftingTool* craftingTool, Player* player, int counter);
+	void createObjectInInventory(CraftingTool* craftingTool, Player* player, int timer, bool create);
 
 	void closeCraftingWindow(Player* player, int counter);
 
