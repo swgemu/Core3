@@ -1080,6 +1080,18 @@ void InstallationObjectImplementation::parseItemAttributes() {
 	_this->setPowerRate(itemAttributes->getFloatAttribute(attr));
 }
 
+void InstallationObjectImplementation::synchronizedUIListen(Player* player, int value) {
+
+	log("Unhandled InstallationObjectImplementation::synchronizedUIListen message for: " + stfName);
+
+}
+
+void InstallationObjectImplementation::synchronizedUIStopListen(Player* player, int value) {
+
+	log("Unhandled InstallationObjectImplementation::synchronizedUIStopListen message for: " + stfName);
+
+}
+
 void InstallationObjectImplementation::addHeaderAttributes(AttributeListMessage* alm) {
 	alm->insertAttribute("volume", "1");
 

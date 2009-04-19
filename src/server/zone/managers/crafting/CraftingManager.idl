@@ -64,16 +64,16 @@ interface CraftingManager {
 	
 	void prepareCraftingSession(Player player, CraftingTool craftingTool, DraftSchematic draftSchematic);
 	
-	void addIngredientToSlot(Player player, TangibleObject tano, int slot, int counter);
-	void removeIngredientFromSlot(Player player, int slot, int counter);
+	void addIngredientToSlot(CraftingTool craftingTool, Player player, TangibleObject tano, int slot, int counter);
+	void removeIngredientFromSlot(CraftingTool craftingTool, Player player, int slot, int counter);
 
 	void putComponentBackInInventory(Player player, Component component);
 	
-	void nextCraftingStage(Player player, String test);
-	void craftingCustomization(Player player, String name, int condition, String customizationString);
-	void handleExperimenting(Player player, int counter, int numRowsAttempted, String expString);
-	void createPrototype(Player player, int counter, int practice);
-	void createSchematic(Player player, int counter);
+	void nextCraftingStage(CraftingTool craftingTool, Player player, String test);
+	void craftingCustomization(CraftingTool craftingTool, Player player, String name, int condition, String customizationString);
+	void handleExperimenting(CraftingTool craftingTool, Player player, int counter, int numRowsAttempted, String expString);
+	void createPrototype(CraftingTool craftingTool, Player player, int counter, int practice);
+	void createSchematic(CraftingTool craftingTool, Player player, int counter);
 
 
 	float getWeightedValue(Player player, CraftingTool craftingTool, DraftSchematic draftSchematic, int type);

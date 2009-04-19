@@ -77,7 +77,7 @@ public:
 
 		//UnicodeString playerName = "Link";
 		insertUnicode(playerName);
-		insertInt(50);
+		insertInt(25);
 		insertFloat(8.0f);
 
 		setSize();
@@ -106,7 +106,7 @@ public:
 
 		//UnicodeString playerName = "Link";
 		insertUnicode(playerName);
-		insertInt(50);
+		insertInt(25);
 		insertFloat(8.0f);
 
 		setSize();
@@ -135,7 +135,7 @@ public:
 
 		//UnicodeString playerName = "Link";
 		insertUnicode(playerName);
-		insertInt(50);
+		insertInt(25);
 		insertFloat(8.0f);
 
 		setSize();

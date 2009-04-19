@@ -33,21 +33,21 @@ public:
 
 	void prepareCraftingSession(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
 
-	void addIngredientToSlot(Player* player, TangibleObject* tano, int slot, int counter);
+	void addIngredientToSlot(CraftingTool* craftingTool, Player* player, TangibleObject* tano, int slot, int counter);
 
-	void removeIngredientFromSlot(Player* player, int slot, int counter);
+	void removeIngredientFromSlot(CraftingTool* craftingTool, Player* player, int slot, int counter);
 
 	void putComponentBackInInventory(Player* player, Component* component);
 
-	void nextCraftingStage(Player* player, String& test);
+	void nextCraftingStage(CraftingTool* craftingTool, Player* player, String& test);
 
-	void craftingCustomization(Player* player, String& name, int condition, String& customizationString);
+	void craftingCustomization(CraftingTool* craftingTool, Player* player, String& name, int condition, String& customizationString);
 
-	void handleExperimenting(Player* player, int counter, int numRowsAttempted, String& expString);
+	void handleExperimenting(CraftingTool* craftingTool, Player* player, int counter, int numRowsAttempted, String& expString);
 
-	void createPrototype(Player* player, int counter, int practice);
+	void createPrototype(CraftingTool* craftingTool, Player* player, int counter, int practice);
 
-	void createSchematic(Player* player, int counter);
+	void createSchematic(CraftingTool* craftingTool, Player* player, int counter);
 
 	float getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type);
 
@@ -89,21 +89,21 @@ public:
 
 	void prepareCraftingSession(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
 
-	void addIngredientToSlot(Player* player, TangibleObject* tano, int slot, int counter);
+	void addIngredientToSlot(CraftingTool* craftingTool, Player* player, TangibleObject* tano, int slot, int counter);
 
-	void removeIngredientFromSlot(Player* player, int slot, int counter);
+	void removeIngredientFromSlot(CraftingTool* craftingTool, Player* player, int slot, int counter);
 
 	void putComponentBackInInventory(Player* player, Component* component);
 
-	void nextCraftingStage(Player* player, String& test);
+	void nextCraftingStage(CraftingTool* craftingTool, Player* player, String& test);
 
-	void craftingCustomization(Player* player, String& name, int condition, String& customizationString);
+	void craftingCustomization(CraftingTool* craftingTool, Player* player, String& name, int condition, String& customizationString);
 
-	void handleExperimenting(Player* player, int counter, int numRowsAttempted, String& expString);
+	void handleExperimenting(CraftingTool* craftingTool, Player* player, int counter, int numRowsAttempted, String& expString);
 
-	void createPrototype(Player* player, int counter, int practice);
+	void createPrototype(CraftingTool* craftingTool, Player* player, int counter, int practice);
 
-	void createSchematic(Player* player, int counter);
+	void createSchematic(CraftingTool* craftingTool, Player* player, int counter);
 
 	float getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type);
 
@@ -124,10 +124,10 @@ public:
 	String& generateCraftedSerial();
 
 protected:
-	String _param1_nextCraftingStage__Player_String_;
-	String _param1_craftingCustomization__Player_String_int_String_;
-	String _param3_craftingCustomization__Player_String_int_String_;
-	String _param3_handleExperimenting__Player_int_int_String_;
+	String _param2_nextCraftingStage__CraftingTool_Player_String_;
+	String _param2_craftingCustomization__CraftingTool_Player_String_int_String_;
+	String _param4_craftingCustomization__CraftingTool_Player_String_int_String_;
+	String _param4_handleExperimenting__CraftingTool_Player_int_int_String_;
 	String _param1_addDraftSchematicsFromGroupName__Player_String_;
 	String _param1_subtractDraftSchematicsFromGroupName__Player_String_;
 	String _param0_requestObjectTemplate__String_;

@@ -297,8 +297,8 @@ void ResourceContainerImplementation::addAttributes(AttributeListMessage* alm) {
 	StringBuffer ssQuantity;
 	ssQuantity << quantity << "/" << getMaxContents();
 
-	alm->insertAttribute("resource_contents", ssQuantity);
 	alm->insertAttribute("resource_name", res_name);
+	alm->insertAttribute("resource_contents", ssQuantity);
 
 	alm->insertAttribute("resource_class", res_class7);
 
@@ -334,6 +334,8 @@ void ResourceContainerImplementation::addAttributes(AttributeListMessage* alm) {
 
 	if (res_er > 0)
 		alm->insertAttribute("entangle_resistance", res_er);
+
+	alm->insertInt(0);
 }
 
 

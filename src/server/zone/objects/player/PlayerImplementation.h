@@ -198,9 +198,7 @@ class PlayerImplementation : public PlayerServant {
 	VectorMap<uint32, DraftSchematic*> draftSchematicList;
 
 	// Crafting
-	CraftingTool* currentCraftingTool;
-	DraftSchematic* currentDraftSchematic;
-	uint64 currentSchematicID;
+	CraftingTool* activeCraftingTool;
 	Time lastExperimentationAttempt;
 
 	// misc
@@ -1067,20 +1065,14 @@ public:
 
 
 	// Crafting
-	CraftingTool* getCurrentCraftingTool();
+	// This located a certain type of crafting tool in a players inventory
+	void setActiveCraftingTool(CraftingTool* craftingTool) {
+		activeCraftingTool = craftingTool;
+	}
+	CraftingTool* getActiveCraftingTool() {
+		return activeCraftingTool;
+	}
 	CraftingTool* getCraftingTool(const int type, bool doLock);
-	void setCurrentCraftingTool(CraftingTool* ct);
-	void clearCurrentCraftingTool();
-
-	void prepareCraftingSession(CraftingTool* ct, DraftSchematic* ds);
-	void addIngredientToSlot(TangibleObject* tano, int slot, int counter);
-	void removeResourceFromCraft(uint64 resID, int slot, int counter);
-	void nextCraftingStage(String test);
-	void craftingCustomization(String name, int condition, String customizationString);
-	void createPrototype(int counter, int practice);
-	void createSchematic(int counter);
-	void handleExperimenting(int count, int numRowsAttempted, String expString);
-
 	void setLastExperimentationAttempt() {
 		lastExperimentationAttempt.update();
 		lastExperimentationAttempt.addMiliTime(500);

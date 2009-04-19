@@ -159,6 +159,9 @@ public:
 	void addHeaderAttributes(AttributeListMessage* alm);
 	void addFooterAttributes(AttributeListMessage* alm);
 
+	void synchronizedUIListen(Player* player, int value);
+	void synchronizedUIStopListen(Player* player, int value);
+
 
 	// Handle Multiple Operators
 	virtual void updateOperators() {

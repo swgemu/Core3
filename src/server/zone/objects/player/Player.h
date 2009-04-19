@@ -653,29 +653,11 @@ public:
 
 	void saveMissions();
 
-	CraftingTool* getCurrentCraftingTool();
+	void setActiveCraftingTool(CraftingTool* craftingTool);
+
+	CraftingTool* getActiveCraftingTool();
 
 	CraftingTool* getCraftingTool(const int type, bool doLock = true);
-
-	void setCurrentCraftingTool(CraftingTool* ct);
-
-	void clearCurrentCraftingTool();
-
-	void prepareCraftingSession(CraftingTool* ct, DraftSchematic* ds);
-
-	void addIngredientToSlot(TangibleObject* tano, int slot, int counter);
-
-	void removeResourceFromCraft(unsigned long long resID, int slot, int counter);
-
-	void nextCraftingStage(String& test);
-
-	void craftingCustomization(String& name, int condition, String& customizationString);
-
-	void createPrototype(int counter, int practice);
-
-	void createSchematic(int counter);
-
-	void handleExperimenting(int count, int numRowsAttempted, String& expString);
 
 	void setLastExperimentationAttempt();
 
@@ -1626,29 +1608,11 @@ public:
 
 	void saveMissions();
 
-	CraftingTool* getCurrentCraftingTool();
+	void setActiveCraftingTool(CraftingTool* craftingTool);
+
+	CraftingTool* getActiveCraftingTool();
 
 	CraftingTool* getCraftingTool(const int type, bool doLock);
-
-	void setCurrentCraftingTool(CraftingTool* ct);
-
-	void clearCurrentCraftingTool();
-
-	void prepareCraftingSession(CraftingTool* ct, DraftSchematic* ds);
-
-	void addIngredientToSlot(TangibleObject* tano, int slot, int counter);
-
-	void removeResourceFromCraft(unsigned long long resID, int slot, int counter);
-
-	void nextCraftingStage(String& test);
-
-	void craftingCustomization(String& name, int condition, String& customizationString);
-
-	void createPrototype(int counter, int practice);
-
-	void createSchematic(int counter);
-
-	void handleExperimenting(int count, int numRowsAttempted, String& expString);
 
 	void setLastExperimentationAttempt();
 
@@ -2034,10 +1998,6 @@ protected:
 	String _param1_updateMissionSave__String_String_String_String_bool_;
 	String _param2_updateMissionSave__String_String_String_String_bool_;
 	String _param3_updateMissionSave__String_String_String_String_bool_;
-	String _param0_nextCraftingStage__String_;
-	String _param0_craftingCustomization__String_int_String_;
-	String _param2_craftingCustomization__String_int_String_;
-	String _param2_handleExperimenting__int_int_String_;
 	String _param0_addDraftSchematicsFromGroupName__String_;
 	String _param0_subtractDraftSchematicsFromGroupName__String_;
 	String _param0_setSurveyEvent__String_;

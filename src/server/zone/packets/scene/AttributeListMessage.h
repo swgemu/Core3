@@ -57,7 +57,7 @@ class AttributeListMessage : public BaseMessage {
 
 public:
 	AttributeListMessage(SceneObject* object) : BaseMessage() {
-		insertShort(0x03);
+		insertShort(0x04);
 		insertInt(0xF3F12F2A); // opcode
 
 		insertLong(object->getObjectID());
@@ -68,7 +68,7 @@ public:
 	}
 
 	AttributeListMessage(uint64 objectID) : BaseMessage() {
-		insertShort(0x03);
+		insertShort(0x04);
 		insertInt(0xF3F12F2A);
 		insertLong(objectID);
 		insertInt(0); // list count

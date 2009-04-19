@@ -111,38 +111,32 @@ void CraftingManagerImplementation::reloadSchematicTable() {
 void CraftingManagerImplementation::prepareCraftingSession(Player* player,
 		CraftingTool* craftingTool, DraftSchematic* draftSchematic) {
 
+	// Send the appropriate DraftSchematic to Player
+	createDraftSchematic(player, craftingTool, draftSchematic);
+
+	// Creates the Appropriate TangibleObject and sends to player
+	createTangibleObject(player, craftingTool, draftSchematic);
+}
+
+void CraftingManagerImplementation::createDraftSchematic(Player* player,
+		CraftingTool* craftingTool, DraftSchematic* draftSchematic) {
+
 	// Clones the global Draft Schematic for use locally within the crafting tool
 	craftingTool->setWorkingDraftSchematic(draftSchematic);
 
 	// Set draftSchematic to the new cloned schematic
 	draftSchematic = craftingTool->getWorkingDraftSchematic();
 
+	//Add schematic object Map
+	draftSchematic->setObjectID(player->getNewItemID());
+
+	server->addObject(draftSchematic, true);
+
 	// Set active crafter is schematic
 	draftSchematic->setCrafter(player);
 
-	// Send the appropriate DraftSchematic to Player
-	createDraftSchematic(player, craftingTool, draftSchematic);
-
-	// Creates the Appropriate TangibleObject and sends to player
-	if(!createTangibleObject(player, craftingTool, draftSchematic))
-		return;
-
-	// Object Message to send necissart ingredients to player
-	setupIngredients(player, craftingTool, draftSchematic);
-
-	// If the crafting session is closed, this will recover the resources
-	craftingTool->setRecoverResources(true);
-
-}
-
-void CraftingManagerImplementation::createDraftSchematic(Player* player,
-		CraftingTool* craftingTool, DraftSchematic* draftSchematic) {
-
-	// Give the newly clones draft schematic a unique ID
-	draftSchematic->setObjectID(player->getNewItemID());
-
 	// Link the DraftSchematic to the Crafting Tool
-	draftSchematic->setParent(craftingTool);
+	draftSchematic->setParent(craftingTool, 0x4);
 
 	// Send the Baselines to the player
 	draftSchematic->sendTo(player);
@@ -157,8 +151,11 @@ TangibleObject* CraftingManagerImplementation::createTangibleObject(Player* play
 	if(tano == NULL)
 		return NULL;
 
+	//Add to object Map
+	server->addObject(tano, true);
+
 	// Link TangibleObject to the CraftingTool
-	tano->setParent(craftingTool);
+	tano->setParent(craftingTool, 0xFFFFFFFF);
 
 	// Send TangibleObject baselines to player
 	tano->sendTo(player, true);
@@ -189,9 +186,6 @@ TangibleObject* CraftingManagerImplementation::createTangibleObject(Player* play
 	// Set the created tano to current tano in the crafting tool
 	craftingTool->setWorkingTano(tano);
 
-	//Add to object Map
-	server->addObject(tano, true);
-
 	// Start the insert count so inserts and removals work
 	craftingTool->setInsertCount(1);
 
@@ -199,41 +193,11 @@ TangibleObject* CraftingManagerImplementation::createTangibleObject(Player* play
 
 }
 
-void CraftingManagerImplementation::setupIngredients(Player* player,
-		CraftingTool* craftingTool, DraftSchematic* draftSchematic) {
-
-	// Object Controller w/ Ingredients ***************************
-	ObjectControllerMessage* objMsg =
-			new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x0103);
-	objMsg->insertLong(craftingTool->getObjectID()); // Crafting Tool Object ID
-	objMsg->insertLong(draftSchematic->getObjectID()); // Draft Schematic Object ID
-	objMsg->insertLong(craftingTool->getWorkingTano()->getObjectID()); // Crafting Tangible Object ID
-	objMsg->insertInt(3);
-	objMsg->insertByte(1);
-
-	// Sends requested ingredients to the player
-	draftSchematic->helperSendIngredientsToPlayer(objMsg);
-
-	player->sendMessage(objMsg);
-	// End Object Controller w/ Ingredients ************************
-
-
-	// MSCO7 *******************************************************
-	ManufactureSchematicObjectMessage7 * msco7 =
-			new ManufactureSchematicObjectMessage7(draftSchematic->getObjectID(), draftSchematic);
-
-	player->sendMessage(msco7);
-	// End MSCO7 ***************************************************
-
-}
-
 // Methods to Add items to the crafting process
-void CraftingManagerImplementation::addIngredientToSlot(Player* player,
+void CraftingManagerImplementation::addIngredientToSlot(CraftingTool* craftingTool, Player* player,
 		TangibleObject* tano, int slot, int counter) {
 
 	TangibleObject* newTano;
-
-	CraftingTool* craftingTool = player->getCurrentCraftingTool();
 
 	if (craftingTool == NULL) {
 
@@ -692,10 +656,8 @@ void CraftingManagerImplementation::deleteItem(SceneObject* scno, TangibleObject
 	}
 }
 
-void CraftingManagerImplementation::removeIngredientFromSlot(Player* player,
+void CraftingManagerImplementation::removeIngredientFromSlot(CraftingTool* craftingTool, Player* player,
 		int slot, int counter) {
-
-	CraftingTool* craftingTool = player->getCurrentCraftingTool();
 
 	if (craftingTool == NULL) {
 
@@ -832,9 +794,8 @@ void CraftingManagerImplementation::putComponentBackInInventory(Player* player,
 
 }
 
-void CraftingManagerImplementation::nextCraftingStage(Player* player, String test) {
+void CraftingManagerImplementation::nextCraftingStage(CraftingTool* craftingTool, Player* player, String test) {
 
-	CraftingTool* craftingTool = player->getCurrentCraftingTool();
 	if (craftingTool == NULL)
 		return;
 
@@ -885,11 +846,11 @@ void CraftingManagerImplementation::nextCraftingStage(Player* player, String tes
 
 	} else if (craftingTool->getCraftingState() == 5) {
 
-		finishStage1(player, counter);
+		finishStage1(craftingTool, player, counter);
 
 	} else if (craftingTool->getCraftingState() == 6) {
 
-		finishStage2(player, counter);
+		finishStage2(craftingTool, player, counter);
 	}
 
 }
@@ -1005,7 +966,7 @@ void CraftingManagerImplementation::initialAssembly(Player* player,
 		draftSchematic->resetCraftingValues();
 
 		// re-setup the slots and ingredients
-		setupIngredients(player, craftingTool, draftSchematic);
+		draftSchematic->synchronizedUIListen(player, 0);
 
 		// Start Dplay9 **************************************
 		// Reset crafting state
@@ -1213,10 +1174,8 @@ void CraftingManagerImplementation::finishAssembly(Player* player,
 
 }
 
-void CraftingManagerImplementation::handleExperimenting(Player* player,
+void CraftingManagerImplementation::handleExperimenting(CraftingTool* craftingTool, Player* player,
 		int counter, int numRowsAttempted, String expString) {
-
-	CraftingTool* craftingTool = player->getCurrentCraftingTool();
 
 	if (craftingTool == NULL) {
 
@@ -1392,16 +1351,12 @@ void CraftingManagerImplementation::experimentRow(
 	}
 }
 
-void CraftingManagerImplementation::createPrototype(Player* player, int counter, int practice) {
+void CraftingManagerImplementation::createPrototype(CraftingTool* craftingTool, Player* player, int counter, int practice) {
 
-	CraftingTool* craftingTool;
 	DraftSchematic* draftSchematic;
 	TangibleObject* workingTano;
 
-
 	try {
-
-		craftingTool = player->getCurrentCraftingTool();
 
 		if (craftingTool == NULL) {
 
@@ -1437,12 +1392,12 @@ void CraftingManagerImplementation::createPrototype(Player* player, int counter,
 
 			if (practice != 0) {
 
-				createObjectInInventory(player, draftSchematic->getComplexity() * 2, true);
+				createObjectInInventory(craftingTool, player, draftSchematic->getComplexity() * 2, true);
 
 			} else {
 
 				// This is for practiceing
-				createObjectInInventory(player, draftSchematic->getComplexity() * 2, false);
+				createObjectInInventory(craftingTool, player, draftSchematic->getComplexity() * 2, false);
 				xp *= int(1.05f);
 			}
 
@@ -1481,15 +1436,12 @@ void CraftingManagerImplementation::closeCraftingWindow(Player* player, int coun
 	player->sendMessage(objMsg);
 }
 
-void CraftingManagerImplementation::createSchematic(Player* player, int counter) {
+void CraftingManagerImplementation::createSchematic(CraftingTool* craftingTool, Player* player, int counter) {
 
-	CraftingTool* craftingTool;
 	DraftSchematic* draftSchematic;
 	TangibleObject* workingTano;
 
 	try {
-
-		craftingTool = player->getCurrentCraftingTool();
 
 		if (craftingTool == NULL) {
 
@@ -1557,10 +1509,8 @@ void CraftingManagerImplementation::createSchematic(Player* player, int counter)
 	}
 }
 
-void CraftingManagerImplementation::craftingCustomization(Player* player,
+void CraftingManagerImplementation::craftingCustomization(CraftingTool* craftingTool, Player* player,
 		String name, int manufacturingSchematicLimit, String customizationString) {
-
-	CraftingTool* craftingTool = player->getCurrentCraftingTool();
 
 	if (craftingTool == NULL)
 		return;
@@ -1627,9 +1577,7 @@ void CraftingManagerImplementation::craftingCustomization(Player* player,
 	craftingTool->setCraftingState(5);
 
 }
-void CraftingManagerImplementation::finishStage1(Player* player, int counter) {
-
-	CraftingTool* craftingTool = player->getCurrentCraftingTool();
+void CraftingManagerImplementation::finishStage1(CraftingTool* craftingTool, Player* player, int counter) {
 
 	if (craftingTool == NULL) {
 
@@ -1657,9 +1605,7 @@ void CraftingManagerImplementation::finishStage1(Player* player, int counter) {
 	craftingTool->setCraftingState(6);
 }
 
-void CraftingManagerImplementation::finishStage2(Player* player, int counter) {
-
-	CraftingTool* craftingTool = player->getCurrentCraftingTool();
+void CraftingManagerImplementation::finishStage2(CraftingTool* craftingTool, Player* player, int counter) {
 
 	if (craftingTool == NULL) {
 
@@ -1687,10 +1633,13 @@ void CraftingManagerImplementation::finishStage2(Player* player, int counter) {
 
 }
 
-void CraftingManagerImplementation::createObjectInInventory(Player* player,
+void CraftingManagerImplementation::createObjectInInventory(CraftingTool* craftingTool, Player* player,
 		int timer, bool create) {
+
+	if(craftingTool == NULL)
+		return;
+
 	int timer2 = 0;
-	CraftingTool* craftingTool = player->getCurrentCraftingTool();
 
 	CreateObjectEvent* createObjectEvent;
 	UpdateToolCountdownEvent* updateToolCountdownEvent;

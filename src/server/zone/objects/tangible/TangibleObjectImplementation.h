@@ -353,6 +353,9 @@ public:
 
 	virtual void parseItemAttributes();
 
+	void synchronizedUIListen(Player* player, int value);
+	void synchronizedUIStopListen(Player* player, int value);
+
 	virtual void updateCraftingValues(DraftSchematic* draftSchematic) {
 
 	}

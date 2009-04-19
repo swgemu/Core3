@@ -49,6 +49,8 @@ public:
 
 	void sendToolStart(Player* player);
 
+	void sendToolStartFailure(Player* player, const String& stfFile, const String& stfValue);
+
 	bool hasAllRequiredResources(DraftSchematic* draftSchematic);
 
 	void setToolEffectiveness(float eff);
@@ -147,6 +149,8 @@ public:
 
 	void sendToolStart(Player* player);
 
+	void sendToolStartFailure(Player* player, const String& stfFile, const String& stfValue);
+
 	bool hasAllRequiredResources(DraftSchematic* draftSchematic);
 
 	void setToolEffectiveness(float eff);
@@ -215,6 +219,9 @@ public:
 
 	bool isWorking();
 
+protected:
+	String _param1_sendToolStartFailure__Player_String_String_;
+	String _param2_sendToolStartFailure__Player_String_String_;
 };
 
 class CraftingToolHelper : public DistributedObjectClassHelper, public Singleton<CraftingToolHelper> {

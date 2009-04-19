@@ -80,9 +80,11 @@ public:
 	void addExperimentalProperty(const String& experimentalPropertyType,
 			uint32 weight, float min, float max, int precision);
 
-	void sendToPlayer(ObjectControllerMessage* msg, int count);
+	void sendBatchToPlayer(ObjectControllerMessage* msg);
+	void sendToPlayer(ObjectControllerMessage* msg);
 
 	// Zero is returned if index is out of bounds
+	uint8 getBatchTypeAndWeight(uint32 index);
 	uint8 getTypeAndWeight(uint32 index);
 
 	bool containsExpPropType(const String& expPropType) {

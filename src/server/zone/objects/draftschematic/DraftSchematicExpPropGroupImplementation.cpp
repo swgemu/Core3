@@ -165,9 +165,6 @@ void DraftSchematicExpPropGroupImplementation::addExperimentalProperty(const Str
 		return;
 	}
 
-	if(minValue == maxValue)
-		filler = true;
-
 	expPropTypes.put(experimentalPropertyType, expPropType);
 
 	if (expPropType != 0x00)
@@ -203,8 +200,7 @@ void DraftSchematicExpPropGroupImplementation::addExperimentalProperty(const Str
 
 	------------------------------- */
 
-void DraftSchematicExpPropGroupImplementation::sendToPlayer(
-		ObjectControllerMessage* msg, int count) {
+void DraftSchematicExpPropGroupImplementation::sendToPlayer(ObjectControllerMessage* msg) {
 	if (getTypeAndWeight(0) == 0) {
 		msg->insertByte(0);
 		//msg->insertByte(0x00);
@@ -217,6 +213,19 @@ void DraftSchematicExpPropGroupImplementation::sendToPlayer(
 	}
 }
 
+void DraftSchematicExpPropGroupImplementation::sendBatchToPlayer(ObjectControllerMessage* msg) {
+	if (getTypeAndWeight(0) == 0) {
+		msg->insertByte(0);
+		//msg->insertByte(0x00);
+	} else {
+		msg->insertByte(expPropGroupListSize);
+
+		for (int i = 0; i < expPropGroupListSize; i++) {
+			msg->insertByte(getBatchTypeAndWeight(i));
+		}
+	}
+}
+
 // Zero is returned if index is out of bounds
 uint8 DraftSchematicExpPropGroupImplementation::getTypeAndWeight(uint32 index) {
 	if (index < expPropTypes.size()) {
@@ -224,6 +233,18 @@ uint8 DraftSchematicExpPropGroupImplementation::getTypeAndWeight(uint32 index) {
 
 		typeAndWeight = (typeAndWeight << 4);
 		typeAndWeight += expPropWeights.get(index);
+
+		return typeAndWeight;
+	} else
+		return 0x00;  // 0
+}
+
+uint8 DraftSchematicExpPropGroupImplementation::getBatchTypeAndWeight(uint32 index) {
+	if (index < expPropTypes.size()) {
+		uint8 typeAndWeight =  expPropTypes.get(index);
+
+		typeAndWeight = (typeAndWeight << 4);
+		typeAndWeight += 1;
 
 		return typeAndWeight;
 	} else

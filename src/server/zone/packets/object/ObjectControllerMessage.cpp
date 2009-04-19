@@ -353,7 +353,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 
 	pack->shiftOffset(12); // skip ObjectID and size
 
-	//uint32 objectid = pack->parseLong(); // grab object id
+	//uint64 objectid = pack->parseLong(); // grab object id
 	//pack->shiftOffset(4); // skip size
 
 	uint32 actioncntr = pack->parseInt();
@@ -856,11 +856,11 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	case (0x094AC516): // Request Crafting Session
 		parseRequestCraftingSession(player, pack);
 		break;
-	case (0x89242E02): // Select Draft Schematic
-		parseSelectDraftSchematic(player, pack);
-		break;
 	case (0x83250E2A): // Cancel Crafting Session
 		parseCancelCraftingSession(player, pack);
+		break;
+	case (0x89242E02): // Select Draft Schematic
+		parseSelectDraftSchematic(player, pack);
 		break;
 	case (0x6AD8ED4D): // Next crafting stage
 		parseNextCraftingStage(player, pack);
@@ -1391,6 +1391,7 @@ void ObjectControllerMessage::parseGetAttributes(Player* player, Message* pack) 
 
 		try {
 			objid = ids.getLongToken();
+
 		} catch (...) {
 		}
 
@@ -2354,14 +2355,14 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 
 		//System::out << "Server destroy happening\n";
 
-		if (player->getCurrentCraftingTool() == tano) {
-			CraftingTool* tool = (CraftingTool*) tano;
+		if(tano->isCraftingTool()) {
+
+		CraftingTool* tool = (CraftingTool*) tano;
 
 			if (!tool->isReady()) {
-				player->sendSystemMessage("You cant delete a working crafting tool!");
+				player->sendSystemMessage("You cant delete an active crafting tool!");
 				return;
-			} else
-				player->clearCurrentCraftingTool();
+			}
 		}
 
 		itemManager->deletePlayerItem(player, tano, true);
@@ -3103,52 +3104,29 @@ void ObjectControllerMessage::parsePlaceStructure(Player* player,
 
 void ObjectControllerMessage::parseSynchronizedUIListen(Player *player,
 		Message *pack) {
-	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
+	uint64 objectid = pack->parseLong();  // Object ID
+	int value = pack->parseInt();
 
 	SceneObject* object = player->getZone()->lookupObject(objectid);
 
 	if (object == NULL)
 		return;
 
-	if (!object->isTangible())
-		return;
-
-	TangibleObject* tano = (TangibleObject*) object;
-
-	if (tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
-		return;
-
-	InstallationObject* inso = (InstallationObject*) tano;
-
-	// Send INSO7 Baseline
-	inso->setHopperUpdateCounter(0); // reset counter
-	InstallationObjectMessage7* inso7 = new InstallationObjectMessage7(inso);
-	player->sendMessage(inso7);
-
-	inso->addOperator(player);
-	inso->activateSync();
+	object->synchronizedUIListen(player, value);
 }
 
 void ObjectControllerMessage::parseSynchronizedUIStopListening(Player *player,
 		Message *pack) {
-	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
+	uint64 objectid = pack->parseLong(); // Object ID
+	int value = pack->parseInt();
 
 	SceneObject* object = player->getZone()->lookupObject(objectid);
 
 	if (object == NULL)
 		return;
 
-	if (!object->isTangible())
-		return;
+	object->synchronizedUIStopListen(player, value);
 
-	TangibleObject* tano = (TangibleObject*) object;
-
-	if (tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
-		return;
-
-	InstallationObject* inso = (InstallationObject*) tano;
-
-	inso->removeOperator(player);
 }
 
 void ObjectControllerMessage::parseHarvesterActivate(Player *player,
@@ -3571,8 +3549,127 @@ void ObjectControllerMessage::parseResourceContainerTransfer(Player* player,
 	}
 }
 
-void ObjectControllerMessage::parseRequestDraftSlotsBatch(Player* player,
-		Message* packet) {
+
+void ObjectControllerMessage::parseRequestCraftingSession(Player* player, Message* packet) {
+
+	uint64 oid = packet->parseLong();
+	SceneObject* scno = player->getZone()->lookupObject(oid);
+
+	if (scno == NULL)
+		return;
+
+	CraftingTool* craftingTool = (CraftingTool*) scno;
+
+	if(craftingTool != NULL) {
+
+		if(player->isMounted()) {
+			craftingTool->sendToolStartFailure(player, "error_message", "survey_on_mount");
+			return;
+		}
+
+		if (craftingTool->isReady())
+
+			craftingTool->sendToolStart(player);
+
+		else if (craftingTool->isFinished())
+
+			craftingTool->sendToolStartFailure(player, "system_msg", "crafting_tool_full");
+
+		else
+
+			craftingTool->sendToolStartFailure(player, "system_msg", "crafting_tool_creating_prototype");
+
+	} else {
+
+		CraftingStation* craftingStation = (CraftingStation*) scno;
+
+		if (craftingStation == NULL)
+			return;
+
+		craftingTool = player->getCraftingTool(craftingStation->getStationType(), false);
+
+		if (craftingTool != NULL)
+			craftingTool->sendToolStart(player);
+		else
+			player->sendSystemMessage("No tool available to start.");
+	}
+}
+
+void ObjectControllerMessage::parseCancelCraftingSession(Player* player, Message* packet) {
+
+
+	CraftingTool* craftingTool = player->getActiveCraftingTool();
+
+	if (craftingTool == NULL)
+		return;
+
+	// DPlay9
+	PlayerObjectDeltaMessage9* dplay9 =
+			new PlayerObjectDeltaMessage9(player->getPlayerObject());
+	dplay9->setCraftingState(0);
+	craftingTool->setCraftingState(0);
+	dplay9->close();
+	player->sendMessage(dplay9);
+
+	// Clean up crafting here, delete, sceneremove unneeded objects
+	craftingTool->cleanUp(player);
+
+	// Object Controller ********************************************
+	ObjectControllerMessage* objMsg =
+			new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01C2);
+	objMsg->insertByte(0);
+
+	player->sendMessage(objMsg);
+	//End Object Controller ******************************************
+}
+
+void ObjectControllerMessage::parseSelectDraftSchematic(Player* player, Message* packet) {
+
+	CraftingTool* craftingTool = player->getActiveCraftingTool();
+
+	if(craftingTool == NULL)
+		return;
+
+	uint64 unknown = packet->parseLong();
+
+	if(unknown != 0)
+		System::out << "parseSelectDraftSchematic's unknown is " << unknown << endl;
+
+	UnicodeString uniIndexOfSelectedSchematic;
+	packet->parseUnicode(uniIndexOfSelectedSchematic);
+
+	StringTokenizer tokenizer(uniIndexOfSelectedSchematic.toString());
+
+	int indexOfSelectedSchematic;
+
+	if (tokenizer.hasMoreTokens()) {
+		indexOfSelectedSchematic = tokenizer.getIntToken();
+
+		DraftSchematic* draftSchematic =
+			craftingTool->getCurrentDraftSchematic(indexOfSelectedSchematic);
+
+		if (draftSchematic == NULL) {
+
+			parseCancelCraftingSession(player, packet);
+			craftingTool->sendToolStart(player);
+			draftSchematic = craftingTool->getCurrentDraftSchematic(indexOfSelectedSchematic);
+		}
+
+		if (draftSchematic != NULL) {
+
+			CraftingManager* craftingManager =
+				player->getZone()->getZoneServer()->getCraftingManager();
+
+			craftingManager->prepareCraftingSession(player, craftingTool, draftSchematic);
+
+		} else {
+			// This else should never execute
+			player->sendSystemMessage("Selected Draft Schematic was invalid.  Please inform Kyle of this error.");
+		}
+	}
+}
+
+void ObjectControllerMessage::parseRequestDraftSlotsBatch(Player* player, Message* packet) {
 	packet->shiftOffset(8);
 
 	UnicodeString crcAndID;
@@ -3595,8 +3692,10 @@ void ObjectControllerMessage::parseRequestDraftSlotsBatch(Player* player,
 	}
 }
 
-void ObjectControllerMessage::parseRequestResourceWeightsBatch(Player* player,
-		Message* packet) {
+
+
+void ObjectControllerMessage::parseRequestResourceWeightsBatch(Player* player, Message* packet) {
+
 	packet->shiftOffset(8);
 
 	UnicodeString id;
@@ -3615,176 +3714,14 @@ void ObjectControllerMessage::parseRequestResourceWeightsBatch(Player* player,
 	}
 }
 
-void ObjectControllerMessage::parseRequestCraftingSession(Player* player,
-		Message* packet) {
 
-	if(player->isMounted()) {
-		player->sendSystemMessage("error_message", "survey_on_mount");
-
-		// Start Object Controller **(Failed to start crafting Session************
-		ObjectControllerMessage* objMsg = new ObjectControllerMessage(
-				player->getObjectID(), 0x0B, 0x010C);
-		objMsg->insertInt(0x10F);
-		objMsg->insertInt(0);
-		objMsg->insertByte(0);
-
-		player->sendMessage(objMsg);
-
-		return;
-	}
-
-	uint64 ctSceneObjID = packet->parseLong();
-
-	//Check to see if the correct obj id is in the player's datapad
-	SceneObject* invObj = player->getInventoryItem(ctSceneObjID);
-
-	CraftingTool* craftingTool = NULL;
-
-	if (invObj != NULL && invObj->isTangible()
-			&& ((TangibleObject*) invObj)->isCraftingTool()) {
-		craftingTool = (CraftingTool*) invObj;
-
-		if (craftingTool->isReady()) {
-
-			craftingTool->sendToolStart(player);
-
-		} else if (craftingTool->isFinished()) {
-
-			ChatSystemMessage* sysMessage = new ChatSystemMessage("system_msg", "crafting_tool_full");
-			player->sendMessage(sysMessage);
-
-			// Start Object Controller **(Failed to start crafting Session************
-			ObjectControllerMessage* objMsg = new ObjectControllerMessage(
-					player->getObjectID(), 0x0B, 0x010C);
-			objMsg->insertInt(0x10F);
-			objMsg->insertInt(0);
-			objMsg->insertByte(0);
-
-			player->sendMessage(objMsg);
-
-		} else {
-
-			// Start Object Controller **************************************
-			ObjectControllerMessage* objMsg = new ObjectControllerMessage(
-					player->getObjectID(), 0x0B, 0x010C);
-			objMsg->insertInt(0x10F);
-			objMsg->insertInt(0);
-			objMsg->insertByte(0);
-
-			player->sendMessage(objMsg);
-
-		}
-	} else {
-		// This case is reached if double clicking on a crafting station
-
-		CraftingStation* craftingStation =
-						(CraftingStation*) player->getZone()->lookupObject(ctSceneObjID);
-
-		if (craftingStation != NULL) {
-
-			craftingTool = player->getCraftingTool(craftingStation->getStationType(), false);
-
-			if (craftingTool != NULL) {
-
-				craftingTool->sendToolStart(player);
-
-			} else {
-
-				player->sendSystemMessage("No tool available to start.");
-
-			}
-
-		} else {
-
-			player->sendSystemMessage("Something happened that shouldn't have.  Not a tool or a station, contact Kyle");
-
-		}
-
-	}
-}
-
-void ObjectControllerMessage::parseCancelCraftingSession(Player* player,
-		Message* packet) {
-
-	//TODO: Try to find a Cancel Crafting Session server->client packet in live for researching
-
-	// This is just a guess as to what the client wants when it sends a Cancel Crafting Session packet
-	CraftingTool * ct = player->getCurrentCraftingTool();
-
-	if (ct != NULL) {
-		// DPlay9
-		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(
-				player->getPlayerObject());
-		dplay9->setCraftingState(0);
-		ct->setCraftingState(0);
-		dplay9->close();
-		player->sendMessage(dplay9);
-
-		// Clean up crafting here, delete, sceneremove unneeded objects
-		ct->cleanUp(player);
-	}
-
-}
-
-void ObjectControllerMessage::parseSelectDraftSchematic(Player* player,
-		Message* packet) {
-
-	packet->shiftOffset(8);
-
-	UnicodeString uniIndexOfSelectedSchematic;
-	packet->parseUnicode(uniIndexOfSelectedSchematic);
-
-	StringTokenizer tokenizer(uniIndexOfSelectedSchematic.toString());
-
-	int indexOfSelectedSchematic;
-
-	if (tokenizer.hasMoreTokens())
-		indexOfSelectedSchematic = tokenizer.getIntToken();
-
-	// Find the selected schematic
-
-	CraftingTool * craftingTool = player->getCurrentCraftingTool();
-
-	if (craftingTool != NULL) {
-
-		DraftSchematic
-				* draftSchematic = craftingTool->getCurrentDraftSchematic(
-						indexOfSelectedSchematic);
-
-		if (draftSchematic == NULL) {
-
-			parseCancelCraftingSession(player, packet);
-			craftingTool->sendToolStart(player);
-			draftSchematic = craftingTool->getCurrentDraftSchematic(
-					indexOfSelectedSchematic);
-		}
-
-		if (draftSchematic != NULL) {
-
-			try {
-
-				craftingTool->wlock();
-
-				player->prepareCraftingSession(craftingTool, draftSchematic);
-
-				craftingTool->unlock();
-
-			} catch (...) {
-
-				craftingTool->unlock();
-
-			}
-		}
-
-	} else {
-		// This eles should never execute
-		player->sendSystemMessage(
-				"Selected Draft Schematic was invalid.  Please inform Link of this error.");
-	}
-
-}
 void ObjectControllerMessage::parseAddCraftingResource(Player* player,
 		Message* packet) {
+
+	CraftingTool* craftingTool = player->getActiveCraftingTool();
+
+	if(craftingTool == NULL)
+		return;
 
 	packet->shiftOffset(12);
 
@@ -3801,16 +3738,22 @@ void ObjectControllerMessage::parseAddCraftingResource(Player* player,
 	if (invObj != NULL && invObj->isTangible()) {
 		TangibleObject* tano = (TangibleObject*) invObj.get();
 
-		player->addIngredientToSlot(tano, slot, counter);
+		CraftingManager* craftingManager = player->getZone()->getZoneServer()->getCraftingManager();
+		craftingManager->addIngredientToSlot(craftingTool, player, tano, slot, counter);
 
 	} else {
-		// This eles should never execute
+		// This else should never execute
 		player->sendSystemMessage("Add resource invalid, contact kyle");
 
 	}
 }
 void ObjectControllerMessage::parseRemoveCraftingResource(Player* player,
 		Message* packet) {
+
+	CraftingTool* craftingTool = player->getActiveCraftingTool();
+
+	if(craftingTool == NULL)
+		return;
 
 	packet->shiftOffset(12);
 
@@ -3820,11 +3763,16 @@ void ObjectControllerMessage::parseRemoveCraftingResource(Player* player,
 
 	int counter = packet->parseByte();
 
-	player->removeResourceFromCraft(resID, slot, counter);
+	CraftingManager* craftingManager = player->getZone()->getZoneServer()->getCraftingManager();
+	craftingManager->removeIngredientFromSlot(craftingTool, player, slot, counter);
 
 }
-void ObjectControllerMessage::parseNextCraftingStage(Player* player,
-		Message* packet) {
+void ObjectControllerMessage::parseNextCraftingStage(Player* player, Message* packet) {
+
+	CraftingTool* craftingTool = player->getActiveCraftingTool();
+
+	if(craftingTool == NULL)
+		return;
 
 	packet->shiftOffset(8);
 
@@ -3833,11 +3781,15 @@ void ObjectControllerMessage::parseNextCraftingStage(Player* player,
 
 	String data = d.toString();
 
-	player->nextCraftingStage(data);
-
+	CraftingManager* craftingManager = player->getZone()->getZoneServer()->getCraftingManager();
+	craftingManager->nextCraftingStage(craftingTool, player, data);
 }
-void ObjectControllerMessage::parseCraftCustomization(Player* player,
-		Message* packet) {
+void ObjectControllerMessage::parseCraftCustomization(Player* player, Message* packet) {
+
+	CraftingTool* craftingTool = player->getActiveCraftingTool();
+
+	if(craftingTool == NULL)
+		return;
 
 	packet->shiftOffset(12);
 
@@ -3870,10 +3822,16 @@ void ObjectControllerMessage::parseCraftCustomization(Player* player,
 
 	String customizationString = ss.toString();
 
-	player->craftingCustomization(name, manufacturingSchematicCount, customizationString);
+	CraftingManager* craftingManager = player->getZone()->getZoneServer()->getCraftingManager();
+	craftingManager->craftingCustomization(craftingTool, player, name, manufacturingSchematicCount, customizationString);
 }
-void ObjectControllerMessage::parseCreatePrototype(Player* player,
-		Message* packet) {
+void ObjectControllerMessage::parseCreatePrototype(Player* player, Message* packet) {
+
+	CraftingTool* craftingTool = player->getActiveCraftingTool();
+
+	if(craftingTool == NULL)
+		return;
+
 	packet->shiftOffset(8);
 
 	UnicodeString d;
@@ -3893,11 +3851,16 @@ void ObjectControllerMessage::parseCreatePrototype(Player* player,
 	else
 		practice = 1;
 
-	player->createPrototype(counter, practice);
-
+	CraftingManager* craftingManager = player->getZone()->getZoneServer()->getCraftingManager();
+	craftingManager->createPrototype(craftingTool, player, counter, practice);
 }
 
 void ObjectControllerMessage::parseCreateSchematic(Player* player, Message* packet) {
+
+	CraftingTool* craftingTool = player->getActiveCraftingTool();
+
+	if(craftingTool == NULL)
+		return;
 
 	packet->shiftOffset(8);
 
@@ -3913,20 +3876,20 @@ void ObjectControllerMessage::parseCreateSchematic(Player* player, Message* pack
 	else
 		return;
 
-	player->createSchematic(counter);
+	CraftingManager* craftingManager = player->getZone()->getZoneServer()->getCraftingManager();
+	craftingManager->createSchematic(craftingTool, player, counter);
 }
 
-void ObjectControllerMessage::parseExperimentation(Player* player,
-		Message* pack) {
-	ZoneClientSessionImplementation* client =
-			(ZoneClientSessionImplementation*) pack->getClient();
+void ObjectControllerMessage::parseExperimentation(Player* player, Message* pack) {
 
-	if (player == NULL)
+	CraftingTool* craftingTool = player->getActiveCraftingTool();
+
+	if(craftingTool == NULL)
 		return;
 
-		pack->shiftOffset(12);
+	pack->shiftOffset(12);
 
-		int counter = pack->parseByte();
+	int counter = pack->parseByte();
 
 	if (player->canExperiment()) {
 
@@ -3947,7 +3910,9 @@ void ObjectControllerMessage::parseExperimentation(Player* player,
 
 		String expString = ss.toString();
 
-		player->handleExperimenting(counter, numRowsAttempted, expString);
+		CraftingManager* craftingManager = player->getZone()->getZoneServer()->getCraftingManager();
+		craftingManager->handleExperimenting(craftingTool, player, counter, numRowsAttempted, expString);
+
 	} else {
 		player->sendSystemMessage("healing_response", "healing_must_wait");
 

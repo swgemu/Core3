@@ -182,6 +182,7 @@ public:
 	void addAttributes(AttributeListMessage* alm);
 
 	void sendToolStart(Player* player);
+	void sendToolStartFailure(Player* player, const String& stfFile, const String& stfValue);
 
 	uint64 findCraftingStation(Player* player, float& workingStationComplexity);
 

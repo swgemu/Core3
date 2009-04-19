@@ -55,8 +55,8 @@ which carries forward this exception.
 
 class ManufactureSchematicObjectMessage7 : public BaseLineMessage {
 public:
-	ManufactureSchematicObjectMessage7(uint64 oid, DraftSchematic* draftSchematic)
-			: BaseLineMessage(oid, 0x4D53434F, 7, 0x15) {
+	ManufactureSchematicObjectMessage7(DraftSchematic* draftSchematic)
+			: BaseLineMessage(draftSchematic->getObjectID(), 0x4D53434F, 7, 0x15) {
 
 		int ingredientListSize = draftSchematic->getIngredientListSize();
 		int updateCount = ingredientListSize;

@@ -163,6 +163,10 @@ public:
 
 	void parseItemAttributes();
 
+	void synchronizedUIListen(Player* player, int value);
+
+	void synchronizedUIStopListen(Player* player, int value);
+
 	void info(const String& message, bool forcedLog = false);
 
 	void error(const String& message);
@@ -534,6 +538,10 @@ public:
 	void addAttributes(AttributeListMessage* alm);
 
 	void parseItemAttributes();
+
+	void synchronizedUIListen(Player* player, int value);
+
+	void synchronizedUIStopListen(Player* player, int value);
 
 	void info(const String& message, bool forcedLog);
 

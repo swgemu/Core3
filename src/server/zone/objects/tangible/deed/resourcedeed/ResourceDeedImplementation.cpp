@@ -6,7 +6,6 @@
 
 #include "../../../../managers/resource/ResourceManager.h"
 #include "../../../../managers/resource/ResourceManagerImplementation.h"
-#include "../../../../managers/resource/ResourceTemplate.h"
 
 #include "../../../../managers/item/ItemManager.h"
 

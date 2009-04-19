@@ -194,6 +194,17 @@ void TangibleObjectImplementation::parseItemAttributes() {
 	setObjectCount(itemAttributes->getIntAttribute(attr));
 }
 
+void TangibleObjectImplementation::synchronizedUIListen(Player* player, int value) {
+
+	// Send TANO7 Baseline
+	TangibleObjectMessage7* tano7 = new TangibleObjectMessage7(_this);
+	player->sendMessage(tano7);
+}
+
+void TangibleObjectImplementation::synchronizedUIStopListen(Player* player, int value) {
+
+}
+
 void TangibleObjectImplementation::generateSkillMods(AttributeListMessage* alm, int skillModType, int skillModValue) {
 	switch (skillModType) {
 	case 1:

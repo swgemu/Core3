@@ -65,7 +65,7 @@ which carries forward this exception.
 
 #include "ResourceManager.h"
 
-#include "ResourceTemplate.h"
+#include "ResourceSpawn.h"
 
 #include "ResourceList.h"
 
@@ -85,7 +85,7 @@ class ResourceManagerImplementation : public ResourceManagerServant, public Mute
 	Vector<String>* nativepool;
 	Vector<String>* itemStrings;
 
-	VectorMap<String, ResourceTemplate*>* resourceMap;
+	VectorMap<String, ResourceSpawn*>* resourceMap;
 	VectorMap<uint64, String>* resourceIDNameMap;
 
 	ClassMap* resourceTree;
@@ -187,11 +187,11 @@ private:
 
 	String getRandomResourceFromType(String restype, String exclusion);
 
-	void insertResource(ResourceTemplate* resource);
-	void insertSpawn(ResourceTemplate* resource, int planet_id, float x,
+	void insertResource(ResourceSpawn* resource);
+	void insertSpawn(ResourceSpawn* resource, int planet_id, float x,
 			float y, float radius, float max, String pool, bool& jtl);
 
-	void addToResourceTree(ResourceTemplate* resource);
+	void addToResourceTree(ResourceSpawn* resource);
 	void makeResourceTree();
 	void makeMinimumPoolVector();
 	void makeFixedPoolVector();
@@ -204,11 +204,11 @@ private:
 
 	int randomize(int min, int max);
 
-	void generateResourceStats(ResourceTemplate * resource);
+	void generateResourceStats(ResourceSpawn * resource);
 
-	void setAttStat(ResourceTemplate* resource, String statTitle, int stat);
+	void setAttStat(ResourceSpawn* resource, String statTitle, int stat);
 
-	bool isType(ResourceTemplate* resource, String type);
+	bool isType(ResourceSpawn* resource, String type);
 
 	String checkInsertCategory(String inString);
 	String checkInsertValue(int inval);
@@ -219,10 +219,7 @@ private:
 	// Resource Naming Scheme
 	void makeResourceName(String& resname, bool isOrganic);
 
-	void setObjectSubType(ResourceTemplate* resImpl);
-
-	void verifyResourceMap();
-	void verifyResourceData(int i, ResourceTemplate* resTemp);
+	void setObjectType(ResourceSpawn* resImpl);
 
 	String getCurrentNameFromType(String type);
 
@@ -239,7 +236,7 @@ class SuiListBoxVector;
 class ClassMap {
 private:
 	VectorMap<String, ClassMap*>* classTree;
-	VectorMap<String, ResourceTemplate*>* resTree;
+	VectorMap<String, ResourceSpawn*>* resTree;
 	Vector<String>* classList;
 	String className;
 	bool containsResources;
@@ -248,7 +245,7 @@ private:
 public:
 	ClassMap(){
 		classTree = new VectorMap<String, ClassMap*>();
-		resTree = new VectorMap<String, ResourceTemplate*>();
+		resTree = new VectorMap<String, ResourceSpawn*>();
 		classList = new Vector<String>();
 		className = "";
 		init();
@@ -290,7 +287,7 @@ public:
 	/*
 	 * Adds a resource and all of its subclasses to the tree
 	 */
-	void addResource(ResourceTemplate* resTemp){
+	void addResource(ResourceSpawn* resTemp){
 		String classToAdd = resTemp->getClass1();
 		ClassMap* temp = this;
 		temp = temp->addClass(classToAdd);
@@ -389,9 +386,9 @@ public:
 	 * Ex. resourceTree->getResourcesFromClass("Flora");
 	 * returns every ResourceTemplate that is of type "Flora"
 	 */
-	Vector<ResourceTemplate*>* getResourcesFromClass(String className){
+	Vector<ResourceSpawn*>* getResourcesFromClass(String className){
 		ClassMap* temp = this;
-		Vector<ResourceTemplate*>* resources = new Vector<ResourceTemplate*>();
+		Vector<ResourceSpawn*>* resources = new Vector<ResourceSpawn*>();
 		resources->removeAll();
 		if (getClassName()==className){
 			temp->findResourcesFromClass(resources, className);
@@ -459,7 +456,7 @@ private:
 	 * Starts at the class you specified as the "root"
 	 * and then adds all child resources based off of that root to a vector
 	 */
-	bool findResourcesFromClass(Vector<ResourceTemplate*>* resources, String className){
+	bool findResourcesFromClass(Vector<ResourceSpawn*>* resources, String className){
 		ClassMap* temp = this;
 		if (classTree->size()==0){
 			for (int i=0; i<resTree->size(); i++){
@@ -483,7 +480,7 @@ private:
 	 * displayed in a SUI for the resourceDeed
 	 */
 	Vector<String>* getResourceStatsList(String& resourceName){
-		ResourceTemplate* resTemp = resTree->get(resourceName);
+		ResourceSpawn* resTemp = resTree->get(resourceName);
 		Vector<String>* resStats = new Vector<String>();
 		resStats->removeAll();
 		String temp = ("Resource Name = " + resTemp->getName());
@@ -561,7 +558,7 @@ private:
 		return classTree->get(name);
 	}
 
-	ResourceTemplate* getResourceTemplate(String& name){
+	ResourceSpawn* getResourceTemplate(String& name){
 		return resTree->get(name);
 	}
 
@@ -596,7 +593,7 @@ private:
 	 * this adds a resource to the end of a class "branch"
 	 * of the tree
 	 */
-	void addChildResource(ResourceTemplate* resTemp){
+	void addChildResource(ResourceSpawn* resTemp){
 		if (!resTree->contains(resTemp->getName())){
 			resTree->put(resTemp->getName(), resTemp);
 			classList->add(resTemp->getName());

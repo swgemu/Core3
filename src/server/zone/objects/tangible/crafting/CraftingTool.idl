@@ -77,6 +77,7 @@ interface CraftingTool implements TangibleObject {
 	int useObject(Player player);
 
 	void sendToolStart(Player player);
+	void sendToolStartFailure(Player player, const String& stfFile, const String& stfValue);
 	boolean hasAllRequiredResources(DraftSchematic draftSchematic);
 
 	//setters
