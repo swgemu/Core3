@@ -1,0 +1,48 @@
+# Project: Zone Dummy
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = CoreServer.o log.o Main.o packetfunctions.o pHandler.o namegen.o ConfigFile.o $(RES)
+LINKOBJ  = CoreServer.o log.o Main.o packetfunctions.o pHandler.o namegen.o ConfigFile.o $(RES)
+LIBS =  -L"D:/Dev-Cpp/lib" -L"C:/Documents and Settings/Akimaki/Dokumentumok/SWG Dummy/ZoneDummy/Lib" -L"H:/workspaceTest/MMOCoreORB/doc/dummies/ZoneDummyReversing/Lib" -lzdll -lwsock32  -s -march=k8 -msse2 
+INCS =  -I"D:/Dev-Cpp/include" 
+CXXINCS =  -I"D:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"D:/Dev-Cpp/include/c++/3.4.2/backward"  -I"D:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"D:/Dev-Cpp/include/c++/3.4.2"  -I"D:/Dev-Cpp/include" 
+BIN  = "Zone Server.exe"
+CXXFLAGS = $(CXXINCS)   -fexpensive-optimizations -O3 -march=k8 -msse2
+CFLAGS = $(INCS)   -fexpensive-optimizations -O3 -march=k8 -msse2
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before "Zone Server.exe" all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "Zone Server.exe" $(LIBS)
+
+CoreServer.o: CoreServer.cpp
+	$(CPP) -c CoreServer.cpp -o CoreServer.o $(CXXFLAGS)
+
+log.o: log.cpp
+	$(CPP) -c log.cpp -o log.o $(CXXFLAGS)
+
+Main.o: Main.cpp
+	$(CPP) -c Main.cpp -o Main.o $(CXXFLAGS)
+
+packetfunctions.o: packetfunctions.cpp
+	$(CPP) -c packetfunctions.cpp -o packetfunctions.o $(CXXFLAGS)
+
+pHandler.o: pHandler.cpp
+	$(CPP) -c pHandler.cpp -o pHandler.o $(CXXFLAGS)
+
+namegen.o: namegen.cpp
+	$(CPP) -c namegen.cpp -o namegen.o $(CXXFLAGS)
+
+ConfigFile.o: ConfigFile.cpp
+	$(CPP) -c ConfigFile.cpp -o ConfigFile.o $(CXXFLAGS)

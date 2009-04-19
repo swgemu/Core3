@@ -1,0 +1,10 @@
+RunItemLUAFile("objects/camokit/corelliaKit.lua");
+RunItemLUAFile("objects/camokit/dantooineKit.lua");
+RunItemLUAFile("objects/camokit/dathomirKit.lua");
+RunItemLUAFile("objects/camokit/endorKit.lua");
+RunItemLUAFile("objects/camokit/lokKit.lua");
+RunItemLUAFile("objects/camokit/nabooKit.lua");
+RunItemLUAFile("objects/camokit/roriKit.lua");
+RunItemLUAFile("objects/camokit/talusKit.lua");
+RunItemLUAFile("objects/camokit/tatooineKit.lua");
+RunItemLUAFile("objects/camokit/yavinKit.lua");

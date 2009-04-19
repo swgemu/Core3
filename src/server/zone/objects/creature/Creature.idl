@@ -1,0 +1,179 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
+
+import "../../managers/creature/CreatureManagerImplementation";
+
+import "../../Zone";
+
+import "../player/Player";
+
+import "../tangible/wearables/Armor";
+
+import "../tangible/lair/LairObject";
+
+import "CreatureObject";
+
+import "CreatureGroup";
+
+interface Creature implements CreatureObject {
+	Creature(unsigned long oid, CreatureGroup group = NULL) {
+		super(oid);
+	}
+
+	void init();
+
+	void unload();
+
+	// spatial methods
+	void updateZone();
+
+	//void update(unsigned int time);
+
+	void loadItems();
+
+	// combat methods
+	boolean activate();
+
+	boolean isActive();
+
+	void removeFromQueue();
+
+	boolean doMovement();
+
+	void doStandUp();
+
+	void setArmor(unsigned int ar);
+
+	unsigned int getArmor();
+	float getArmorResist(int resistType);
+
+	void setKinetic(float kin);
+	void setEnergy(float ene);
+	void setElectricity(float ele);
+	void setStun(float stu);
+	void setBlast(float bla);
+	void setHeat(float hea);
+	void setCold(float col);
+	void setAcid(float aci);
+	void setLightSaber(float lig);
+
+
+
+	//void agro(boolean all);
+
+	void doAttack(CreatureObject target, int damage);
+	boolean attack(CreatureObject target);
+
+	void deaggro();
+
+	void activateRecovery();
+	boolean doRecovery();
+	void doStatesRecovery();
+
+	void queueRespawn();
+
+	// waypoint methods
+	void addPatrolPoint(float x, float y, boolean doLock = true);
+	void resetPatrolPoints(boolean doLock = true);
+
+	void setSpawnPosition(float posX, float posZ, float posY, unsigned long cellid = 0);
+
+	int compareTo(Creature creature);
+
+	// getters
+	int getType();
+
+	boolean isTrainer();
+	boolean isRecruiter();
+	boolean isMount();
+
+	String getName();
+
+	int getZoneIndex();
+
+	Zone getZone();
+
+	CreatureObject getAggroedCreature();
+
+	unsigned long getNewItemID();
+
+	unsigned int getRespawnTimer();
+
+	LairObject getLair();
+
+	boolean hasLootCreated();
+
+	// setters
+	local void setCreatureManager(CreatureManagerImplementation manager);
+
+	void setLair(LairObject Lair);
+
+	void setCreatureGroup(CreatureGroup group);
+
+	void setObjectFileName(const String name);
+
+	String getObjectFileName();
+
+	void setType(int tp);
+
+	void setRespawnTimer(unsigned int seconds);
+
+	void removePlayerFromHarvestList(String firstName);
+	boolean canHarvest(String firstName);
+	boolean beenLooted();
+	void wasLooted();
+
+	void setLootCreated(boolean value);
+
+	void setRandomMovement(boolean value);
+
+	unsigned int getFPValue();
+
+	void setFPValue(unsigned int value);
+
+	//Event Handlers
+	void onIncapacitateTarget(CreatureObject victim);
+	void onKilled(CreatureObject killer);
+	void onDeath();
+}
