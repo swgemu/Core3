@@ -53,7 +53,7 @@ de10Pistol = Weapon:new{
 	damageType = WEAPON_ENERGY,
 
 	armorPiercing = WEAPON_LIGHT,	
-	certification = "cert_pistol_de10",
+	certification = "cert_pistol_de_10",
 
 	attackSpeed = 3.3,
 

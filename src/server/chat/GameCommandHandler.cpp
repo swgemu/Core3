@@ -117,7 +117,7 @@ void GameCommandHandler::init() {
 			"Disconnects a player from the game.",
 			"Usage: @kick <player>",
 			&kick);
-	gmCommands->addCommand("kickArea", DEVELOPER,
+	gmCommands->addCommand("kickArea", PRIVILEGED,
 			"Disconnects all players in a certain range.",
 			"Usage: @kickArea [distance]",
 			&kickArea);
@@ -141,7 +141,7 @@ void GameCommandHandler::init() {
 			"Kills a creature. EC version of the kill command.",
 			"Usage: @ecKill <current-target>",
 			&ecKill);
-	gmCommands->addCommand("killArea", DEVELOPER,
+	gmCommands->addCommand("killArea", PRIVILEGED,
 			"Kills all players or creatures within a certain range.",
 			"Usage: @killArea [distance]",
 			&killArea);
@@ -261,7 +261,7 @@ void GameCommandHandler::init() {
 			"Toggles invisibility",
 			"Usage: @invisible",
 			&invisible);
-	gmCommands->addCommand("flare", PRIVILEGED,
+	gmCommands->addCommand("flare", CSREVENTSJR,
 			"Fires a flare at your position...",
 			"Usage: @flare",
 			&flare);
@@ -269,7 +269,7 @@ void GameCommandHandler::init() {
 			"Hot Loads schematic tables.",
 			"Usage: @reloadSchematics",
 			&reloadSchematics);
-	gmCommands->addCommand("spawn", CSREVENTS,
+	gmCommands->addCommand("spawn", CSREVENTSJR,
 			"Spawn a creature.",
 			"Usage: @spawn <creaturetype> <moves (0,1)> <height> <x> <y> <baby>",
 			&spawn);
@@ -293,7 +293,7 @@ void GameCommandHandler::init() {
 			"Gives you specified type of experience",
 			"USAGE: @getXP [type] [amount]",
 			&getXP);
-	gmCommands->addCommand("adminList", DEVELOPER,
+	gmCommands->addCommand("adminList", PRIVILEGED,
 			"Returns a list of players with a level higher than normal (4)",
 			"USAGE: @adminList",
 			&adminList);
@@ -339,11 +339,11 @@ void GameCommandHandler::init() {
 			"Shows the characters name who dropped the current target (item).",
 			"USAGE: @whoDroppedThis <target>",
 			&whoDroppedThis);
-	gmCommands->addCommand("freezePlayer", PRIVILEGED,
+	gmCommands->addCommand("freezePlayer", PRIVILEGEDJR,
 			"Freezes a player to prevent movement.",
 			"Usage: @freezePlayer name.",
 			&freezePlayer);
-	gmCommands->addCommand("unfreezePlayer", PRIVILEGED,
+	gmCommands->addCommand("unfreezePlayer", PRIVILEGEDJR,
 			"Freezes a player to prevent movement.",
 			"Usage: @unfreezePlayer name.",
 			&unfreezePlayer);
@@ -356,7 +356,7 @@ void GameCommandHandler::init() {
 			"Sets the height of a player or creature.",
 			"Usage: @setHeight number.",
 			&setHeight);
-	gmCommands->addCommand("warpAreaToWP", CSREVENTS,
+	gmCommands->addCommand("warpAreaToWP", CSREVENTSJR,
 			"Warps all players in a set radius to a specific waypoint",
 			"Usage: @warpAreaToWP <waypointName> <radius>",
 			&warpAreaToWP);
@@ -390,7 +390,7 @@ void GameCommandHandler::init() {
 				&displayMOTD);
 	gmCommands->addCommand("storeVehicle", CSREVENTSJR,
 				"Stores the targeted vehicle",
-				"USAGE: @storeVehicle <target vehicle>",
+				"USAGE: @storeVehicle <target vehicle> (do not perform while invisible)",
 				&storeVehicle);
 	/* Disabled Commands
 
@@ -3768,34 +3768,38 @@ void GameCommandHandler::eventCloner(StringTokenizer tokenizer, Player* player) 
 
 void GameCommandHandler::storeVehicle(StringTokenizer tokenizer, Player* player) {
 	SceneObject* obj = player->getTarget();
+	
+	if (!player->isInvisible()) {
 
-	if (obj == NULL)
-		return;
+		if (obj == NULL)
+			return;
 
-	//ensure target is valid
+		//ensure target is valid
 
-	if (!obj->isNonPlayerCreature())
-		return;
-
-
-	if (!((Creature*)obj)->isMount())
-		return;
-
-	player->unlock();
+		if (!obj->isNonPlayerCreature())
+			return;
 
 
-	try {
-		obj->wlock();
+		if (!((Creature*)obj)->isMount())
+			return;
 
-		((MountCreature*)obj)->store();
+		player->unlock();
 
-		player->sendSystemMessage("Vehicle Stored");
 
-		obj->unlock();
-	} catch (...) {
-		obj->unlock();
-		player->sendSystemMessage("Failure");
+		try {
+			obj->wlock();
+
+			((MountCreature*)obj)->store();
+
+			player->sendSystemMessage("Vehicle Stored");
+
+			obj->unlock();
+		} catch (...) {
+			obj->unlock();
+			player->sendSystemMessage("Failure");
+		}
+		player->wlock();
+	} else {
+		player->sendSystemMessage("Cannot store vehicle while invisible");
 	}
-
-	player->wlock();
 }
