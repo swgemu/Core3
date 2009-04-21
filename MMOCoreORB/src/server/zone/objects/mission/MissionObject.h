@@ -13,13 +13,19 @@ class Player;
 
 class TangibleObject;
 
+class MissionObjective;
+
 #include "../scene/SceneObject.h"
 
 class MissionObject : public SceneObject {
 public:
-	MissionObject(unsigned long long oid);
+	MissionObject(unsigned long long oid, Player* owner = NULL);
 
 	void init();
+
+	void assetSetup();
+
+	void assetPart(bool award);
 
 	void sendTo(Player* player, bool doClose = true);
 
@@ -29,7 +35,11 @@ public:
 
 	void sendDestroyTo(Player* player);
 
-	void setDBKey(String& tdbk);
+	void setOwner(Player* player);
+
+	Player* getOwner();
+
+	void setDBKey(const String& tdbk);
 
 	String& getDBKey();
 
@@ -37,9 +47,41 @@ public:
 
 	int getTerminalMask();
 
-	void setDeliverItem(TangibleObject* tdi);
+	String& getStatusStr();
 
-	TangibleObject* getDeliverItem();
+	void addDeliverItem(TangibleObject* item);
+
+	TangibleObject* getDeliverItem(unsigned long long oid);
+
+	void removeDeliverItem(SceneObject* item);
+
+	void addAwardItem(TangibleObject* item);
+
+	TangibleObject* getAwardItem(unsigned long long oid);
+
+	void removeAwardItem(SceneObject* item);
+
+	void setObjectiveDefaults(const String& od);
+
+	String& getObjectiveDefaults();
+
+	bool isInstantComplete();
+
+	void setInstantComplete(bool temp);
+
+	bool isComplete();
+
+	bool isFailure();
+
+	void addObjective(MissionObjective* mo);
+
+	void spawnObjectives(const String& objectives);
+
+	void serializeObjectives(String& ret);
+
+	int updateStatus(int type, unsigned int objCrc, const String& str, String& updateStr, int increment);
+
+	void checkComplete();
 
 	void setTypeStr(const String& tstr);
 
@@ -89,6 +131,10 @@ public:
 
 	unsigned int getTargetPlanetCrc();
 
+	void setTargetName(const String& tds);
+
+	String& getTargetName();
+
 	void setDepictedObjCrc(unsigned int tsdc);
 
 	unsigned int getDepictedObjCrc();
@@ -97,9 +143,17 @@ public:
 
 	String& getDescriptionStf();
 
+	void setDescription(const String& tds);
+
+	String& getDescription();
+
 	void setTitleStf(const String& tts);
 
 	String& getTitleStf();
+
+	void setTitle(const String& tts);
+
+	String& getTitle();
 
 	void setRefreshCount(unsigned int trc);
 
@@ -115,7 +169,12 @@ protected:
 	virtual ~MissionObject();
 
 	String _return_getDBKey;
+	String _return_getDescription;
 	String _return_getDescriptionStf;
+	String _return_getObjectiveDefaults;
+	String _return_getStatusStr;
+	String _return_getTargetName;
+	String _return_getTitle;
 	String _return_getTitleStf;
 	String _return_getTypeStr;
 
@@ -134,6 +193,10 @@ public:
 
 	void init();
 
+	void assetSetup();
+
+	void assetPart(bool award);
+
 	void sendTo(Player* player, bool doClose);
 
 	void sendDeltaTo(Player* player);
@@ -142,7 +205,11 @@ public:
 
 	void sendDestroyTo(Player* player);
 
-	void setDBKey(String& tdbk);
+	void setOwner(Player* player);
+
+	Player* getOwner();
+
+	void setDBKey(const String& tdbk);
 
 	String& getDBKey();
 
@@ -150,9 +217,41 @@ public:
 
 	int getTerminalMask();
 
-	void setDeliverItem(TangibleObject* tdi);
+	String& getStatusStr();
 
-	TangibleObject* getDeliverItem();
+	void addDeliverItem(TangibleObject* item);
+
+	TangibleObject* getDeliverItem(unsigned long long oid);
+
+	void removeDeliverItem(SceneObject* item);
+
+	void addAwardItem(TangibleObject* item);
+
+	TangibleObject* getAwardItem(unsigned long long oid);
+
+	void removeAwardItem(SceneObject* item);
+
+	void setObjectiveDefaults(const String& od);
+
+	String& getObjectiveDefaults();
+
+	bool isInstantComplete();
+
+	void setInstantComplete(bool temp);
+
+	bool isComplete();
+
+	bool isFailure();
+
+	void addObjective(MissionObjective* mo);
+
+	void spawnObjectives(const String& objectives);
+
+	void serializeObjectives(String& ret);
+
+	int updateStatus(int type, unsigned int objCrc, const String& str, String& updateStr, int increment);
+
+	void checkComplete();
 
 	void setTypeStr(const String& tstr);
 
@@ -202,6 +301,10 @@ public:
 
 	unsigned int getTargetPlanetCrc();
 
+	void setTargetName(const String& tds);
+
+	String& getTargetName();
+
 	void setDepictedObjCrc(unsigned int tsdc);
 
 	unsigned int getDepictedObjCrc();
@@ -210,9 +313,17 @@ public:
 
 	String& getDescriptionStf();
 
+	void setDescription(const String& tds);
+
+	String& getDescription();
+
 	void setTitleStf(const String& tts);
 
 	String& getTitleStf();
+
+	void setTitle(const String& tts);
+
+	String& getTitle();
 
 	void setRefreshCount(unsigned int trc);
 
@@ -224,10 +335,18 @@ public:
 
 protected:
 	String _param0_setDBKey__String_;
+	String _param0_setObjectiveDefaults__String_;
+	String _param0_spawnObjectives__String_;
+	String _param0_serializeObjectives__String_;
+	String _param2_updateStatus__int_int_String_String_int_;
+	String _param3_updateStatus__int_int_String_String_int_;
 	String _param0_setTypeStr__String_;
 	UnicodeString _param0_setCreatorName__UnicodeString_;
+	String _param0_setTargetName__String_;
 	String _param0_setDescriptionStf__String_;
+	String _param0_setDescription__String_;
 	String _param0_setTitleStf__String_;
+	String _param0_setTitle__String_;
 };
 
 class MissionObjectHelper : public DistributedObjectClassHelper, public Singleton<MissionObjectHelper> {

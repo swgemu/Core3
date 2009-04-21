@@ -90,6 +90,7 @@ interface SceneObject implements ManagedObject {
 
 	void sendConversationStartTo(SceneObject obj);
 	void selectConversationOption(int option, SceneObject obj);
+	void sendConversationStopTo(SceneObject obj);
 
 	void close(ZoneClientSession client);
 	

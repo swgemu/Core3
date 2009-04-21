@@ -119,7 +119,10 @@ Creature = Object:new {
 
 	randomizeRespawnPoint = false,
 	
-	mood = ""
+	mood = "",
+
+	screenCount = 1,
+	conversation = { }
 }
 
 -- setters
@@ -155,6 +158,11 @@ function Creature:addSkill(skill)
 	table.insert(skill, self.skills)
 end
 
+function Creature:addConvoScreen(screen)
+	self.conversation[self.screenCount] = screen
+	self.screenCount = self.screenCount + 1
+end
+
 -- getters
 function Creature:getPosition()
 	return self.x, self.y, self.z
@@ -183,3 +191,12 @@ end
 function Creature:getNumberOfSkills()
 	return table.getn(self.skills)
 end
+
+function Creature:getConvoScreen(index)
+	return self.conversation[index]
+end
+
+function Creature:getNumberOfScreens()
+	return self.screenCount
+end
+

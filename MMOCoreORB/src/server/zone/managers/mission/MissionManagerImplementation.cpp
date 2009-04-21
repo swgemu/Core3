@@ -47,8 +47,6 @@ which carries forward this exception.
 #include "../../objects/terrain/PlanetNames.h"
 
 #include "../../objects/player/Player.h"
-#include "../../objects/creature/action/ActionCreature.h"
-#include "../../objects/creature/action/Action.h"
 
 #include "../../packets.h"
 #include "../../objects.h"
@@ -71,7 +69,7 @@ MissionManagerImplementation::MissionManagerImplementation(ZoneServer* zs, ZoneP
 
 	setLoggingName("MissionManager");
 
-	setLogging(true); //set to false after debugging
+	setLogging(false); //set to false after debugging
 	setGlobalLogging(true);
 
 	init();
@@ -100,9 +98,9 @@ void MissionManagerImplementation::unloadManager() {
 }
 
 //Standard Functions:
-MissionObject* MissionManagerImplementation::poolMission(String& dbKey, int termMask, const String& typeStr, uint32 descKey, uint32 titleKey, uint32 diffLv, float destX, float destY, uint32 destPlanetCrc,
-		const String& creatorName, uint32 rewardAmount, float targetX, float targetY, uint32 targetPlanetCrc, uint32 depictedObjCrc,
-		const String& descriptionStf, const String& titleStf, uint32 typeCrc, TangibleObject* deliverItem, bool doLock) {
+MissionObject* MissionManagerImplementation::poolMission(const String& dbKey, int termMask, const String& typeStr, uint32 descKey, uint32 titleKey, uint32 diffLv, float destX, float destY, uint32 destPlanetCrc,
+		const String& creatorName, uint32 rewardAmount, float targetX, float targetY, uint32 targetPlanetCrc, uint32 depictedObjCrc, const String& targetName,
+		const String& description, const String& title, uint32 typeCrc, const String& objectiveDefaults, bool instantComplete, bool doLock) {
 	try {
 		lock(doLock);
 
@@ -114,14 +112,15 @@ MissionObject* MissionManagerImplementation::poolMission(String& dbKey, int term
 		miso->applyTerminalMask(termMask);
 
 		miso->setTypeStr(typeStr);
-		miso->setDescKey(descKey);
-		miso->setTitleKey(titleKey);
+		//miso->setDescKey(descKey);
+		//miso->setTitleKey(titleKey);
 		miso->setDifficultyLevel(diffLv);
 
 		miso->setDestX(destX);
 		miso->setDestY(destY);
 		miso->setDestPlanetCrc(destPlanetCrc);
 
+		miso->setTargetName(targetName);
 		miso->setCreatorName(UnicodeString(creatorName));
 		miso->setReward(rewardAmount);
 
@@ -130,11 +129,14 @@ MissionObject* MissionManagerImplementation::poolMission(String& dbKey, int term
 		miso->setTargetPlanetCrc(targetPlanetCrc);
 
 		miso->setDepictedObjCrc(depictedObjCrc);
-		miso->setDescriptionStf(descriptionStf);
-		miso->setTitleStf(titleStf);
+		//miso->setDescriptionStf(descriptionStf);
+		//miso->setTitleStf(titleStf);
+		miso->setTitle(title);
+		miso->setDescription(description);
 		miso->setTypeCrc(typeCrc);
 
-		miso->setDeliverItem(deliverItem);
+		miso->setObjectiveDefaults(objectiveDefaults);
+		miso->setInstantComplete(instantComplete);
 
 		//load(miso);
 
@@ -159,96 +161,62 @@ MissionObject* MissionManagerImplementation::poolMission(String& dbKey, int term
 	}
 }
 
+/**
+ * Copies mission vars from the default mission in the pool
+ * Creates a new mission object for a player, spawns personalized objectives
+ * Used whenever a player is online an owns a mission. Released when a player logs out
+ */
+void MissionManagerImplementation::instanceMission(Player* player, MissionObject* misoCopy, const String& objectives) {
+	if(misoCopy == NULL/* || objectives.isEmpty()*/) {
+		System::out << "instanceMission: misoCopy is null or objectives is empty. objectives: " << objectives << endl;
+		return;
+	}
+
+	//object id can be the same, no need to waste id space. Also set owner object
+	MissionObject* miso = new MissionObject(misoCopy->getObjectID(), player);
+	miso->deploy();
+
+	miso->lock();
+
+	// Clone vars:
+	miso->setDBKey(misoCopy->getDBKey());
+	miso->applyTerminalMask(misoCopy->getTerminalMask());
+	miso->setTypeStr(misoCopy->getTypeStr());
+	miso->setDifficultyLevel(misoCopy->getDifficultyLevel());
+	miso->setDestX(misoCopy->getDestX());
+	miso->setDestY(misoCopy->getDestY());
+	miso->setDestPlanetCrc(misoCopy->getDestPlanetCrc());
+	miso->setTargetName(misoCopy->getTargetName());
+	miso->setCreatorName(misoCopy->getCreatorName());
+	miso->setReward(misoCopy->getReward());
+	miso->setTargetX(misoCopy->getTargetX());
+	miso->setTargetY(misoCopy->getTargetY());
+	miso->setTargetPlanetCrc(misoCopy->getTargetPlanetCrc());
+	miso->setDepictedObjCrc(misoCopy->getDepictedObjCrc());
+	miso->setDescription(misoCopy->getDescription());
+	miso->setTitle(misoCopy->getTitle());
+	miso->setTypeCrc(misoCopy->getTypeCrc());
+	miso->setInstantComplete(misoCopy->isInstantComplete());
+
+	//Spawn objectives:
+	miso->spawnObjectives(objectives);
+
+	//Add the mission to the player:
+	player->addMission(miso->getDBKey(), miso);
+
+	//Setup Mission assets
+	miso->assetSetup();
+
+	miso->unlock();
+}
+
 void MissionManagerImplementation::setupHardcodeMissions() {
-	String dbKey = "";
-	dbKey = "testM27";
-	int tmask = TMASK_GENERAL; //terminal mask (GENERAL)
-	String typeStr = "mission_deliver";
-
-	//uint32 descKey = htonl(atoi("m27d"));
-	//uint32 titleKey = htonl(atoi("m27t"));
-	//For custom missions:
-	uint32 descKey = 0;
-	uint32 titleKey = 0;
-
-	uint32 diffLv = 1;
-	float destX = -5049.0f;
-	float destY = 4225.0f;
-	uint32 destPlanetCrc = Planet::getPlanetCRC("naboo");
-	String creatorName = "Ramsey";
-	uint32 rewardAmount = 50;
-	float targetX = -4844.0f;
-	float targetY = 4155.0f;
-	uint32 targetPlanetCrc = Planet::getPlanetCRC("naboo");
-	uint32 depictedObjCrc = 0x9BA06548; //holocron/secret box crc
-
-	//String descriptionStf = "mission/mission_deliver_neutral_easy";
-	//String titleStf = "mission/mission_deliver_neutral_easy";
-	//For custom missions:
-	String descriptionStf = "Deliver this secret box to MAN O' Action. The last time I checked he was at -5049, 4225.";
-	String titleStf = "The Box";
-
-	uint32 typeCrc = 0xE5C27EC6; //0xC6, 0x7E, 0xC2, 0xE5, //crc("deliver");
-
-	//Deliver Item:
-	TangibleObject* dvli = new TangibleObject(getNextMissionID(), 0x9BA06548, UnicodeString("Secret Box"), "object/tangible/jedi/shared_jedi_holocron_light.iff");
-
-	poolMission(dbKey, tmask, typeStr, descKey, titleKey, diffLv, destX, destY, destPlanetCrc,
-			creatorName, rewardAmount, targetX, targetY, targetPlanetCrc, depictedObjCrc,
-			descriptionStf, titleStf, typeCrc, dvli, true);
-
-	//Setup NPC:
-	CreatureManager* cm = zoneServer->getCreatureManager(5);
-
-	String name = "MAN O' ACTION";
-	String stf = "";
-	ActionCreature* tac;
-	tac = cm->spawnActionCreature(name, stf, 0x8C73B91, "testM27", -5049.0f, 4225.0f, -0.0339502f, 0.999424f);
-	tac->setMisoMgr(this);
-
-	String actionKey = "KEYA";
-	int actmsk = 0;
-	actmsk |= ActionImplementation::TYPE_CONVERSE;
-	Action* act = new Action((SceneObject*)tac, actionKey, actmsk, 0);
-	String scrnId = "0";
-	String leftBox = "Do you have...it?";
-	String Options = "Yes, here.|The weather is quite nice!|No, sorry I forgot."; //separate by |
-	String optLink = "1,none|2,none|ENDCNV,none"; //separate by | (nextScreenID,actionKey)
-	act->addConvoScreen(scrnId, leftBox, 3, Options, optLink);
-
-	//Converstaion window in response to Yes, Here:
-	scrnId = "1";
-	leftBox = "Cool you have it? Give it to me!";
-	Options = "Here|No, bye.";
-	optLink = "EXECACTION,finm27|ENDCNV,none";
-	act->addConvoScreen(scrnId, leftBox, 1, Options, optLink);
-
-	//Conversation window in response to weather:
-	scrnId = "2";
-	leftBox = "Yea the weather is pretty nice..";
-	Options = "Bye.";
-	optLink = "ENDCNV,none";
-	act->addConvoScreen(scrnId, leftBox, 1, Options, optLink);
-
-	tac->addActionObj(actionKey, act);
-	tac->onConverse(actionKey); //link onConverse to action "KEYA"
-
-	//Complete Mission Key:
-	actionKey = "finm27";
-	actmsk = 0;
-	actmsk |= ActionImplementation::TYPE_TAKEITEM;
-	actmsk |= ActionImplementation::TYPE_COMPMISSION;
-	Action* act2 = new Action((SceneObject*)tac, actionKey, actmsk, 0);
-
-	tac->addActionObj(actionKey, act2);
 }
 
 //terminal
 void MissionManagerImplementation::sendTerminalData(Player* player, int termBitmask, bool doLock) {
 	try {
 		lock(doLock);
-
-		int sentBases = 0;
 
 		for (int i = 0; i < misoMap->size(); i++) {
 			MissionObject* miso = misoMap->get(i);
@@ -258,78 +226,69 @@ void MissionManagerImplementation::sendTerminalData(Player* player, int termBitm
 			//Do planet mission check here using the current player class:
 
 			//Check if player is already on mission:
-			if (player->isOnCurMisoKey(miso->getDBKey())) {
-				//error("player is already on mission, continuing to next miso in list.");
+			if (player->isOnCurMisoKey(miso->getDBKey()))
 				continue;
+
+			if(player->getMisoRFC() == 0x01) {
+				sendMissionBase(player, miso);
+			} else {
+				sendMissionDelta(player, miso);
 			}
+		}
+
+		player->nextMisoRFC();
 
 			//Make sure the terminal and mission in the misoMap are in the same category:
 
-			if ((termBitmask & TMASK_GENERAL) && (miso->getTerminalMask() & TMASK_GENERAL)) {
-				if (!player->checkMisoBSB(TMASK_GENERAL)) {
+			/*if ((termBitmask & TMASK_GENERAL) && (miso->getTerminalMask() & TMASK_GENERAL)) {
+				if (player->getMisoRFC() == 0x01)
 					sendMissionBase(player, miso);
-					sentBases |= TMASK_GENERAL;
-				}
 				sendMissionDelta(player, miso);
 				continue;
 			}
 
 			if ((termBitmask & TMASK_ENTERTAINER) && (miso->getTerminalMask() & TMASK_ENTERTAINER)) {
-				if (!player->checkMisoBSB(TMASK_ENTERTAINER)) {
+				if (player->getMisoRFC() == 0x01)
 					sendMissionBase(player, miso);
-					sentBases |= TMASK_ENTERTAINER;
-				}
 				sendMissionDelta(player, miso);
 				continue;
 			}
 
 			if ((termBitmask & TMASK_EXPLORER) && (miso->getTerminalMask() & TMASK_EXPLORER)) {
-				if (!player->checkMisoBSB(TMASK_EXPLORER)) {
+				if (player->getMisoRFC() == 0x01)
 					sendMissionBase(player, miso);
-					sentBases |= TMASK_EXPLORER;
-				}
 				sendMissionDelta(player, miso);
 				continue;
 			}
 
 			if ((termBitmask & TMASK_BOUNTY) && (miso->getTerminalMask() & TMASK_BOUNTY)) {
-				if (!player->checkMisoBSB(TMASK_BOUNTY)) {
+				if (player->getMisoRFC() == 0x01)
 					sendMissionBase(player, miso);
-					sentBases |= TMASK_BOUNTY;
-				}
 				sendMissionDelta(player, miso);
 				continue;
 			}
 
 			if ((termBitmask & TMASK_ARTISAN) && (miso->getTerminalMask() & TMASK_ARTISAN)) {
-				if (!player->checkMisoBSB(TMASK_ARTISAN)) {
+				if (player->getMisoRFC() == 0x01)
 					sendMissionBase(player, miso);
-					sentBases |= TMASK_ARTISAN;
-				}
 				sendMissionDelta(player, miso);
 				continue;
 			}
 
 			if ((termBitmask & TMASK_REBEL) && (miso->getTerminalMask() & TMASK_REBEL)) {
-				if (!player->checkMisoBSB(TMASK_REBEL)) {
+				if (player->getMisoRFC() == 0x01)
 					sendMissionBase(player, miso);
-					sentBases |= TMASK_REBEL;
-				}
 				sendMissionDelta(player, miso);
 				continue;
 			}
 
 			if ((termBitmask & TMASK_IMPERIAL) && (miso->getTerminalMask() & TMASK_IMPERIAL)) {
-				if (!player->checkMisoBSB(TMASK_IMPERIAL)) {
+				if (player->getMisoRFC() == 0x01)
 					sendMissionBase(player, miso);
-					sentBases |= TMASK_IMPERIAL;
-				}
 				sendMissionDelta(player, miso);
 				continue;
 			}
-		}
-
-		player->setMisoBSB(sentBases);
+		}*/
 
 		unlock(doLock);
 	} catch (...) {
@@ -339,7 +298,7 @@ void MissionManagerImplementation::sendTerminalData(Player* player, int termBitm
 	}
 }
 
-void MissionManagerImplementation::sendMission(Player* player, String& tKey, bool doLock) {
+void MissionManagerImplementation::sendMission(Player* player, const String& tKey, bool doLock) {
 	try {
 		lock(doLock);
 
@@ -363,7 +322,14 @@ void MissionManagerImplementation::sendMission(Player* player, String& tKey, boo
 	}
 }
 
-//events:
+/**
+ * Mission Events
+ * Triggered by ingame actions. Accept, complete, abort, evaluate
+ */
+
+/**
+ * Mission Accept (from terminal or npc)
+ */
 void MissionManagerImplementation::doMissionAccept(Player* player, uint64& oid, bool doLock) {
 	try {
 		lock(doLock);
@@ -376,36 +342,17 @@ void MissionManagerImplementation::doMissionAccept(Player* player, uint64& oid, 
 		}
 
 		//Check if player is already on mission:
-		if (player->isOnCurMisoKey(miso->getDBKey())) {
-			//error("Player is already on mission!");
+		if (player->isOnCurMisoKey(miso->getDBKey()))
 			return;
-		}
 
+		// Give the mission to the player:
 		miso->doLinkToPlayer(player);
-
-		player->addToCurMisoKeys(miso->getDBKey());
+		instanceMission(player, miso, miso->getObjectiveDefaults());
 		player->sendSystemMessage("You have accepted the mission and it has been added to your datapad.");
 
+		// Play acceptance music:
 		PlayMusicMessage* pmm = new PlayMusicMessage("sound/music_mission_accepted.snd");
 		player->sendMessage(pmm);
-
-		//Set mission key in "currentMissionKeys" (db)
-		setMisoKeyCurrent(player, miso->getDBKey(), false, false);
-
-		//Create a mission save in the db:
-		hasMissionSave(player, miso->getDBKey(), true, false);
-
-		//Create Mission Waypoint here
-
-		//Give deliver item to player:
-		if (miso->getTypeStr() == "mission_deliver" && (miso->getDeliverItem() != NULL)) {
-			TangibleObject* itemTemp = miso->getDeliverItem();
-			TangibleObject* playerItem = new TangibleObject(player->getNewItemID(), itemTemp->getObjectCRC(), itemTemp->getCustomName(), itemTemp->getStfName());
-
-			playerItem->setMisoAsocKey(miso->getDBKey());
-			player->addInventoryItem(playerItem);
-			playerItem->sendTo(player);
-		}
 
 		unlock(doLock);
 	} catch (...) {
@@ -415,25 +362,24 @@ void MissionManagerImplementation::doMissionAccept(Player* player, uint64& oid, 
 	}
 }
 
-void MissionManagerImplementation::doMissionComplete(Player* player, String& tKey, bool doLock) {
+/**
+ * Mission Complete events
+ */
+void MissionManagerImplementation::doMissionComplete(Player* player, const String& tKey, bool doLock) {
 	try {
 		lock(doLock);
 
-		removeMisoFromPlayer(player, tKey, false);
-
 		//Remove any mission save from the DB:
-		deleteMissionSave(player, tKey, false);
+		deleteMissionSave(player, tKey);
 
-		//Remove mission key from "currentMissionKeys", add to "finishedMissionKeys"
-		setMisoKeyCurrent(player, tKey, true, false);
-		setMisoKeyFinished(player, tKey, false, false);
-
-		//system msg: "Mission Complete. You have been awarded: <rewards>"
+		//Drop the mission from the the player
+		removeMisoFromPlayer(player, tKey, false);
+		player->dropMission(tKey, true);
 		player->sendSystemMessage("Mission Complete.");
-		//PlayMusicMessage* pmm = new PlayMusicMessage("sound/music_mission_complete.snd");
-		//player->sendMessage(pmm);
-		player->addToFinMisoKeys(tKey);
-		player->removeFromCurMisoKeys(tKey);
+
+		// Play mission complete music:
+		PlayMusicMessage* pmm = new PlayMusicMessage("sound/music_mission_complete.snd");
+		player->sendMessage(pmm);
 
 		unlock(doLock);
 	} catch (...) {
@@ -443,6 +389,9 @@ void MissionManagerImplementation::doMissionComplete(Player* player, String& tKe
 	}
 }
 
+/**
+ * Mission Abort Events
+ */
 void MissionManagerImplementation::doMissionAbort(Player* player, uint64& oid, bool doLock) {
 	try {
 		lock(doLock);
@@ -454,17 +403,7 @@ void MissionManagerImplementation::doMissionAbort(Player* player, uint64& oid, b
 			return;
 		}
 
-		String misoKey = miso->getDBKey();
-
-		//Remove any mission save from the DB:
-		deleteMissionSave(player, misoKey, false);
-
-		//Remove mission key from "currentMissionKeys"
-		setMisoKeyCurrent(player, misoKey, true, false);
-
-		removeMisoFromPlayer(miso, player);
-		player->sendSystemMessage("Mission Failed.");
-		player->removeFromCurMisoKeys(miso->getDBKey());
+		doMissionAbort(player, miso);
 
 		unlock(doLock);
 	} catch (...) {
@@ -474,7 +413,7 @@ void MissionManagerImplementation::doMissionAbort(Player* player, uint64& oid, b
 	}
 }
 
-void MissionManagerImplementation::doMissionAbort(Player* player, String& tKey, bool doLock) {
+void MissionManagerImplementation::doMissionAbort(Player* player, const String& tKey, bool doLock) {
 	try {
 		lock(doLock);
 
@@ -485,15 +424,7 @@ void MissionManagerImplementation::doMissionAbort(Player* player, String& tKey, 
 			return;
 		}
 
-		//Remove any mission save from the DB:
-		deleteMissionSave(player, tKey, false);
-
-		//Remove mission key from "currentMissionKeys"
-		setMisoKeyCurrent(player, tKey, true, false);
-
-		removeMisoFromPlayer(miso, player);
-		player->sendSystemMessage("Mission Failed.");
-		player->removeFromCurMisoKeys(tKey);
+		doMissionAbort(player, miso);
 
 		unlock(doLock);
 	} catch (...) {
@@ -503,302 +434,253 @@ void MissionManagerImplementation::doMissionAbort(Player* player, String& tKey, 
 	}
 }
 
-void MissionManagerImplementation::doMissionSave(Player* player, const String& mkey, const String& objectivevars, const String& killcountvars, bool doLock) {
+void MissionManagerImplementation::doMissionAbort(Player* player, MissionObject* miso) {
+	String tKey = miso->getDBKey();
+
+	//Remove any mission save from the DB:
+	deleteMissionSave(player, tKey);
+
+	//Drop the mission from the player
+	player->dropMission(tKey, false);
+	removeMisoFromPlayer(miso, player);
+	player->sendSystemMessage("Mission Failed.");
+}
+
+/**
+ * Initiate reward calcs, kill counts etc for a mission. Called when player objectives need to be evaluated
+ * This will call doMissionComplete (on completion) and abort (if failed)
+ * The retSay is an update on the status of the mission. Can be "said" by an NPC or systemMsg
+ * ex. You do not have: ___. You have not killed enough _____ or even: You are not assigned to any of my missions
+ */
+bool MissionManagerImplementation::evalMission(Player* player, const String& tKey, String& retSay) {
+	if(!player->isOnCurMisoKey(tKey))
+		return false;
+
+	MissionObject* miso = player->getPlayerMission(tKey);
+	if(miso == NULL)
+		return false;
+
+	// checkComplete() in MissionObject should have already been called after a condition was updated.
+	// Run the appropriate event handler and build the return string
+	if(miso->isFailure()) {
+		doMissionAbort(player, miso);
+		retSay = "You have violated a condition of the mission...come back when you are competent.";
+	} else if(miso->isComplete()) {
+		doMissionComplete(player, tKey, false);
+		retSay = "Thank you! You have done exactly what was asked.";
+	} else {
+		retSay = "You have not completed all mission conditions.";
+	}
+
+	return true;
+}
+
+/**
+ * Alternate evalMission if return str is no desired (instantComplete)
+ */
+bool MissionManagerImplementation::evalMission(Player* player, MissionObject* miso) {
+	if(player == NULL || miso == NULL) {
+		System::out << "player or miso is null, aborting evalMission" << endl;
+		return false;
+	}
+
+	// checkComplete() in MissionObject should have already been called after a condition was updated.
+	// Run the appropriate event handler and build the return string
+	if(miso->isFailure()) {
+		doMissionAbort(player, miso);
+	} else if(miso->isComplete()) {
+		doMissionComplete(player, miso->getDBKey(), false);
+	} else {
+		return false;
+	}
+
+	return true;
+}
+
+//Loads all missions for a player from mission_saves:
+void MissionManagerImplementation::loadPlayerMissions(Player* player, bool doLock) {
 	try {
 		lock(doLock);
 
-		//if mission save does not exist, dont save.
-		if(!hasMissionSave(player, mkey, false, false))
-			return;
+		// Grab and instance all missions based on the saves:
+		StringBuffer query;
+		query << "SELECT * FROM mission_save WHERE character_id = " << player->getCharacterID();
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query.toString());
 
-		//Update the mission save:
+		while (res->next()) {
+			String misoKey = res->getString(2);
+			String objectiveSer = res->getString(3);
 
-		//If no update vars are passed, abort save.
-		if((objectivevars.length() == 0) && (killcountvars.length() == 0)) {
-			return;
+			// Now send the mission packets:
+			MissionObject* miso = misoMap->get(misoKey);
+			if (miso == NULL) {
+				// If the mission, for some reason, no longer exists on the server: delete the save
+				deleteMissionSave(player, misoKey);
+				continue;
+			}
+
+			sendMissionBase(player, miso);
+			sendMissionDelta(player, miso);
+			miso->doLinkToPlayer(player);
+
+			// Instance the mission for the player:
+			instanceMission(player, misoMap->get(misoKey), objectiveSer);
 		}
 
-		//Build save query
-		StringBuffer query2;
-		bool prevStr = false;
+		delete res;
 
-		query2 << "UPDATE mission_save set ";
-		if(objectivevars.length() != 0) {
-			query2 << "objective_vars = '" << objectivevars << "'";
-			prevStr = true;
-		}
 
-		if(killcountvars.length() == 0) {
-			query2 << "kill_count_vars = '" << killcountvars << "'";
-			prevStr = true;
-		}
+		// Load and set currentMissionKeys & finishedMissionKeys:
+		StringBuffer qCur, qFin;
+		ResultSet* resCur;
+		ResultSet* resFin;
+		qCur << "SELECT currentMissionKeys FROM characters WHERE character_id = " << player->getCharacterID() << " and currentMissionKeys is not null;";
+		resCur = ServerDatabase::instance()->executeQuery(qCur.toString());
+		qFin << "SELECT finishedMissionKeys FROM characters WHERE character_id = " << player->getCharacterID() << " and finishedMissionKeys is not null;";
+		resFin = ServerDatabase::instance()->executeQuery(qFin.toString());
 
-		if(!prevStr) //If we havent added anything to the query, bail.
-			return;
+		if (resCur->next())
+			player->setCurrentMissionKeys(resCur->getString(0));
 
-		query2 << "WHERE character_id = " << player->getCharacterID() << " and miso_key = '" << mkey << "';";
-		ServerDatabase::instance()->executeStatement(query2);
+		if (resFin->next())
+			player->setFinishedMissionKeys(resFin->getString(0));
+
+		delete resCur;
+		delete resFin;
 
 		unlock(doLock);
 	} catch (DatabaseException& e) {
 		System::out << e.getMessage() << "\n";
-		error("DB Exception in MissionManagerImplementation::doMissionSave()");
+		error("DB Exception in MissionManagerImplementation::loadPlayerMissions");
 	} catch (...) {
-		error("unreported Exception caught on doMissionSave()");
+		error("unreported Exception caught on loadPlayerMissions");
 
 		unlock(doLock);
 	}
 }
 
-void MissionManagerImplementation::deleteMissionSave(Player* player, const String& mkey, bool doLock) {
-	try {
-		lock(doLock);
+//Saves OR updates missions for a player in mission_saves:
+void MissionManagerImplementation::savePlayerMission(Player* player, MissionObject* miso) {
+	ResultSet* msRes;
 
-		//Check to see if player even has a mission save to delete. Abort if false.
-		if(!hasMissionSave(player, mkey, false, false))
+	try {
+		if(miso == NULL)
 			return;
+
+		// Get the mission key and serialized object strings:
+		String mkey = miso->getDBKey();
+		String objectiveSer = "";
+		miso->serializeObjectives(objectiveSer);
+
+		if(mkey.isEmpty())
+			return;
+
+		// Check if the mission exists:
+		StringBuffer query;
+		query << "SELECT * FROM mission_save WHERE character_id = " << player->getCharacterID() << " and miso_key = '" << mkey << "';";
+		msRes = ServerDatabase::instance()->executeQuery(query.toString());
+
+		if (msRes->size() <= 0) { //Create a save if there is none:
+			StringBuffer queryIns;
+			queryIns << "INSERT INTO mission_save "
+				<< "(character_id,miso_key,objective_vars) "
+				<< "VALUES (" << player->getCharacterID() << ",'" << mkey << "','"
+				<< objectiveSer << "');";
+
+			ServerDatabase::instance()->executeStatement(queryIns.toString());
+		} else { //A save is present, so update it:
+			StringBuffer qUpdate;
+
+			qUpdate << "UPDATE mission_save set "
+				 << "objective_vars = '" << objectiveSer << "' ";
+
+			qUpdate << "WHERE character_id = " << player->getCharacterID() << " and miso_key = '" << mkey << "';";
+			ServerDatabase::instance()->executeStatement(qUpdate.toString());
+		}
+	} catch (DatabaseException& e) {
+		System::out << e.getMessage() << "\n";
+		error("DB Exception in MissionManagerImplementation::savePlayerMission()");
+	} catch (...) {
+		error("unreported Exception caught on savePlayerMission()");
+	}
+
+	delete msRes;
+}
+
+/**
+ * Delete a mission save from the mission_save table
+ */
+void MissionManagerImplementation::deleteMissionSave(Player* player, const String& mkey) {
+	try {
 
 		StringBuffer query;
 		query << "DELETE FROM mission_save WHERE character_id = " << player->getCharacterID() << " and ";
 		query << "miso_key = '" << mkey << "';";
-		ServerDatabase::instance()->executeStatement(query);
+		ServerDatabase::instance()->executeStatement(query.toString());
 
 	} catch (DatabaseException& e) {
 		System::out << e.getMessage() << "\n";
 		error("DB Exception in MissionManagerImplementation::deleteMissionSave()");
 	} catch (...) {
 		error("unreported Exception caught on deleteMissionSave()");
-
-		unlock(doLock);
 	}
 }
 
-bool MissionManagerImplementation::hasMissionSave(Player* player, const String& mkey, bool createIfNone, bool doLock) {
-	bool ret = false;
-	ResultSet* msRes;
+/**
+ * Save player data on current and completed missions
+ */
+void MissionManagerImplementation::savePlayerKeys(Player* player, const String& curMisoKeys, const String& finMisoKeys) {
 	try {
-		lock(doLock);
+		StringBuffer qUpdate;
 
-		StringBuffer query;
-		//Check if the database has an entry for the playerid & misokey:
-		query << "SELECT * FROM mission_save WHERE character_id = " << player->getCharacterID() << " and miso_key = '" << mkey << "';";
-		msRes = ServerDatabase::instance()->executeQuery(query);
+		qUpdate << "UPDATE characters set currentMissionKeys = '" << curMisoKeys << "', finishedMissionKeys = '" << finMisoKeys << "' "
+			<< "WHERE character_id = " << player->getCharacterID();
 
-		//If db doesnt have an entry AND createIfNone is true, we'll create one
-		if ((msRes->size() <= 0) && createIfNone) {
-			ret = true;
+		ServerDatabase::instance()->executeStatement(qUpdate);
 
-			StringBuffer queryIns;
-			queryIns << "INSERT INTO mission_save "
-				<< "(character_id,miso_key,objective_vars,kill_count_vars) "
-				<< "VALUES (" << player->getCharacterID() << ",'" << mkey << "',"
-				<< "'','');";
-
-			ServerDatabase::instance()->executeStatement(queryIns);
-		} else if ((msRes->size() <= 0)) { //No db entry, create is false
-			ret = false;
-		} else { //If an entry is present, just set the return to true
-			ret = true;
-		}
-
-		unlock(doLock);
 	} catch (DatabaseException& e) {
 		System::out << e.getMessage() << "\n";
-		error("DB Exception in MissionManagerImplementation::hasMissionSave()");
+		error("DB Exception in MissionManagerImplementation::deleteMissionSave()");
 	} catch (...) {
-		error("unreported Exception caught on hasMissionSave()");
-
-		unlock(doLock);
-	}
-
-	delete msRes;
-
-	return ret;
-}
-
-void MissionManagerImplementation::getMissionSaveVarLine(Player* player, const String& mkey, const String& dbVar, String& retStr, bool doLock) {
-	try {
-		lock(doLock);
-
-		StringBuffer query;
-		String varline = "none";
-
-		query << "SELECT " << dbVar << " FROM mission_save WHERE character_id = " << player->getCharacterID() << " and miso_key = '" << mkey << "';";
-		ResultSet* res = ServerDatabase::instance()->executeQuery(query.toString());
-
-		System::out << "getMissionSaveVarLine: query'd dbVar: " << dbVar << endl;
-
-		if (res->next())
-			varline = res->getString(0);
-
-		retStr = varline;
-
-		delete res;
-
-		unlock(doLock);
-	} catch (DatabaseException& e) {
-		System::out << e.getMessage() << "\n";
-		error("DB Exception in MissionManagerImplementation::getMissionSaveVarLine()");
-	} catch (...) {
-		error("unreported Exception caught on getMissionSaveVarLine()");
-
-		unlock(doLock);
+		error("unreported Exception caught on deleteMissionSave()");
 	}
 }
 
-void MissionManagerImplementation::getMisoKeysStatus(Player* player, bool finKeys, String& retStr, bool doLock) {
-	StringBuffer query;
-	ResultSet* res;
-	String misoKeys = "";
-
+/**
+ * This function is called by server admins. Clears all mission variables for a player in the event such action needs to be done
+ */
+void MissionManagerImplementation::clearPlayerMissions(Player* target, bool lockTarget) {
 	try {
-		lock(doLock);
+		if(target == NULL)
+			return;
 
-		String dbCol = "";
-		if(finKeys) {
-			dbCol = "finishedMissionKeys";
-		} else {
-			dbCol = "currentMissionKeys";
-		}
+		// Clear entries in mission_saves
+		StringBuffer qSaves;
+		qSaves << "DELETE FROM mission_save WHERE character_id = " << target->getCharacterID();
+		ServerDatabase::instance()->executeStatement(qSaves);
 
-		query << "SELECT " << dbCol << " FROM characters WHERE character_id = " << player->getCharacterID() << " and " << dbCol << " is not null;";
-		res = ServerDatabase::instance()->executeQuery(query);
+		// Clear current & finished mission keys:
+		StringBuffer qUpdate;
+		qUpdate << "UPDATE characters set currentMissionKeys = '', finishedMissionKeys = '' WHERE character_id = " << target->getCharacterID();
+		ServerDatabase::instance()->executeStatement(qUpdate);
 
-		if (res->next())
-			misoKeys = res->getString(0);
+		target->lock(lockTarget);
 
-		System::out << "got status for misokey. db col: " << dbCol << ". returned: " << misoKeys << endl;
+		// Clear all missions on the player object:
+		target->dropAllMissions();
 
-		retStr = misoKeys;
-
-		unlock(doLock);
+		target->unlock(lockTarget);
 	} catch (DatabaseException& e) {
 		System::out << e.getMessage() << "\n";
-		error("DB Exception in MissionManagerImplementation::getMisoKeysStatus()");
+		error("DB Exception in MissionManagerImplementation::deleteMissionSave()");
 	} catch (...) {
-		error("unreported Exception caught on getMisoKeysStatus");
-
-		unlock(doLock);
-	}
-
-	delete res;
-}
-
-void MissionManagerImplementation::setMisoKeyCurrent(Player* player, String misoKey, bool remove, bool doLock) {
-	try {
-		lock(doLock);
-
-		StringBuffer query;
-		String keyList;
-
-		//Get either the current or finished miso
-		query << "SELECT `currentMissionKeys` from `characters` WHERE `character_id` = " << player->getCharacterID() << ";";
-		ResultSet* res = ServerDatabase::instance()->executeQuery(query.toString());
-
-		if (res->next())
-			keyList = res->getString(0);
-
-		//Check if the key already exists in the list:
-		StringTokenizer klistTok(keyList);
-		String newList = "";
-
-		klistTok.setDelimeter(",");
-
-		while (klistTok.hasMoreTokens()) {
-			String tk;
-			klistTok.getStringToken(tk);
-
-			if(tk.isEmpty())
-				continue;
-
-			//If there isnt a collision and we arent trying to remove it, add the existing key back into the new list
-			if ((misoKey.compareTo(tk) != 0) && (!remove)) {
-				newList+=(tk+",");
-			}
-		}
-
-		//add the miso key. We made sure above that there werent any duplicates
-		if (!remove) {
-			newList+=(misoKey+",");
-		}
-
-		//Commit the list into the DB:
-		StringBuffer query2;
-		query2 << "UPDATE characters set currentMissionKeys = '" << newList << "' WHERE character_id = " << player->getCharacterID() << ";";
-		ServerDatabase::instance()->executeStatement(query2.toString());
-
-		delete res;
-
-		unlock(doLock);
-	} catch (DatabaseException& e) {
-		System::out << e.getMessage() << "\n";
-		error("DB Exception in MissionManagerImplementation::setMisoKeyCurrent()");
-	} catch (...) {
-		error("unreported Exception caught on setMisoKeyCurrent");
-		unlock(doLock);
-	}
-}
-
-void MissionManagerImplementation::setMisoKeyFinished(Player* player, String misoKey, bool remove, bool doLock) {
-	StringBuffer query;
-
-	try {
-		lock(doLock);
-
-		String keyList = "";
-
-		//Get either the current or finished miso
-		query << "SELECT finishedMissionKeys FROM characters WHERE character_id = " << player->getCharacterID() << ";";
-		ResultSet* res = ServerDatabase::instance()->executeQuery(query.toString());
-
-		if (res->next())
-			keyList = res->getString(0);
-
-		//Check if the key already exists in the list:
-		StringTokenizer klistTok(keyList);
-		String newList = "";
-
-		klistTok.setDelimeter(",");
-
-		while (klistTok.hasMoreTokens()) {
-			String tk;
-			klistTok.getStringToken(tk);
-
-			if(tk.isEmpty())
-				continue;
-
-			//If there isnt a collision and we arent trying to remove it, add the existing key back into the new list
-			if ((misoKey.compareTo(tk) != 0) && (!remove)) {
-				newList+=(tk+",");
-			}
-		}
-
-		//add the miso key. We made sure above that there werent any duplicates
-		if (!remove) {
-			newList+=(misoKey+",");
-		}
-
-		//Commit the list into the DB:
-		StringBuffer query2;
-		query2 << "UPDATE characters set finishedMissionKeys = '" << newList << "' WHERE character_id = " << player->getCharacterID() << ";";
-		ServerDatabase::instance()->executeStatement(query2.toString());
-
-		delete res;
-
-		unlock(doLock);
-	} catch (DatabaseException& e) {
-		System::out << e.getMessage() << "\n";
-		error("DB Exception in MissionManagerImplementation::setMisoKeyFinished()");
-	} catch (...) {
-		error("unreported Exception caught on setMisoKeyFinished");
-
-		unlock(doLock);
+		error("unreported Exception caught on clearPlayerMissions()");
 	}
 }
 
 /// END OF SAVE FUNCS
 
-void MissionManagerImplementation::sendMissionBase(Player* player, String& tKey, bool doLock) {
+void MissionManagerImplementation::sendMissionBase(Player* player, const String& tKey, bool doLock) {
 	try {
 		lock(doLock);
 
@@ -842,7 +724,7 @@ void MissionManagerImplementation::sendMissionBase(Player* player, MissionObject
 	sMiso->sendTo(player, true);
 }
 
-void MissionManagerImplementation::sendMissionDelta(Player* player, String& tKey, bool doLock) {
+void MissionManagerImplementation::sendMissionDelta(Player* player, const String& tKey, bool doLock) {
 	try {
 		lock(doLock);
 
@@ -900,7 +782,7 @@ void MissionManagerImplementation::removeMisoFromPool(MissionObject* miso, bool 
 	}
 }
 
-void MissionManagerImplementation::removeMisoFromPlayer(Player* player, String& tKey, bool doLock) {
+void MissionManagerImplementation::removeMisoFromPlayer(Player* player, const String& tKey, bool doLock) {
 	MissionObject* miso;
 
 	try {
@@ -920,11 +802,6 @@ void MissionManagerImplementation::removeMisoFromPlayer(Player* player, String& 
 
 		unlock(doLock);
 	}
-
-	if (miso == NULL)
-		return;
-
-	player->removeAllInventoryByMisoKey(miso->getDBKey());
 }
 
 void MissionManagerImplementation::removeMisoFromPlayer(Player* player, uint64& oid, bool doLock) {
@@ -951,13 +828,13 @@ void MissionManagerImplementation::removeMisoFromPlayer(Player* player, uint64& 
 	if (miso == NULL)
 		return;
 
-	player->removeAllInventoryByMisoKey(miso->getDBKey());
+	//player->removeAllInventoryByMisoKey(miso->getDBKey());
 }
 
 void MissionManagerImplementation::removeMisoFromPlayer(MissionObject* miso, Player* player) {
 	miso->sendDestroyTo(player);
 
-	player->removeAllInventoryByMisoKey(miso->getDBKey());
+	//player->removeAllInventoryByMisoKey(miso->getDBKey());
 }
 
 void MissionManagerImplementation::removeMissions() {
@@ -969,28 +846,11 @@ void MissionManagerImplementation::removeMissions() {
 	misoMap->removeAll();
 }
 
-uint32 MissionManagerImplementation::getMissionItemCrc(String& tKey, bool doLock) {
-	uint32 crc = 0;
-
-	try {
-		lock(doLock);
-		MissionObject* miso = misoMap->get(tKey);
-		TangibleObject* ttano = miso->getDeliverItem();
-		crc = ttano->getObjectCRC();
-		unlock(doLock);
-	} catch (...) {
-		error("unreported Exception caught on removeMisoFromPlayer() (objid)");
-		unlock(doLock);
-	}
-	return crc;
-}
-
 //Script Functions:
 
 void MissionManagerImplementation::registerFunctions() {
 	lua_register(getLuaState(), "RunMissionFile", runMissionFile);
 	lua_register(getLuaState(), "AddMissionToServer", addMissionToServer);
-	lua_register(getLuaState(), "AddActionCreatureToServer", addActionCreatureToServer);
 }
 
 void MissionManagerImplementation::registerGlobals() {
@@ -1002,22 +862,6 @@ void MissionManagerImplementation::registerGlobals() {
 	setGlobalInt("TMASK_ARTISAN", 16);
 	setGlobalInt("TMASK_REBEL", 32);
 	setGlobalInt("TMASK_IMPERIAL", 64);
-
-	//Action Masks:
-	setGlobalInt("ATYPE_MOVE", 1);
-	setGlobalInt("ATYPE_PATROL", 2);
-	setGlobalInt("ATYPE_CONVERSE", 4);
-	setGlobalInt("ATYPE_SAY", 8);
-	setGlobalInt("ATYPE_GIVEITEM", 16);
-	setGlobalInt("ATYPE_TAKEITEM", 32);
-	setGlobalInt("ATYPE_GIVEMISSION", 64);
-	setGlobalInt("ATYPE_COMPMISSION", 128);
-	setGlobalInt("ATYPE_FAILMISSION", 256);
-	setGlobalInt("ATYPE_ADDKILL", 512);
-
-	//Action Prereq:
-	setGlobalInt("AMEET_HASMISSION", 1);
-	setGlobalInt("AMEET_KILLCOUNTLIMIT", 2);
 }
 
 void MissionManagerImplementation::loadMissionScripts() {
@@ -1064,6 +908,7 @@ int MissionManagerImplementation::addMissionToServer(lua_State* L) {
 
 		float destX = mission.getFloatField("destinationX");
 		float destY = mission.getFloatField("destinationY");
+		//String targetName = mission.getStringField("targetName");
 		uint32 destPlanetCrc = Planet::getPlanetCRC(mission.getStringField("destinationPlanetStr"));
 
 		String creatorName = mission.getStringField("creatorName");
@@ -1073,6 +918,7 @@ int MissionManagerImplementation::addMissionToServer(lua_State* L) {
 		float startY = mission.getFloatField("startY");
 		uint32 startPlanetCrc = Planet::getPlanetCRC(mission.getStringField("startPlanetStr"));
 
+		String targetName = mission.getStringField("targetName");
 		uint32 depictedObjCrc = mission.getIntField("depictedObjectCrc");
 		String descriptionStf = mission.getStringField("descriptionStf");
 		if(descriptionStf.length() == 0) {
@@ -1085,10 +931,14 @@ int MissionManagerImplementation::addMissionToServer(lua_State* L) {
 
 		uint32 typeCrc = mission.getIntField("typeCrc");
 
+		//Objectives:
+		String objectives = mission.getStringField("objectiveDefaults");
+		bool instantComplete = mission.getByteField("instantComplete");
+
 		//Add mission to pool:
 		instance->poolMission(dbKey, terminalMask, typeStr, stfDescriptionKey, stfTitleKey, difficultyLevel, destX, destY, destPlanetCrc,
-				creatorName, rewardAmount, startX, startY, startPlanetCrc, depictedObjCrc,
-				descriptionStf, titleStf, typeCrc, NULL, false);
+				creatorName, rewardAmount, startX, startY, startPlanetCrc, depictedObjCrc, targetName,
+				descriptionStf, titleStf, typeCrc, objectives, instantComplete, false);
 
 		instance->unlock();
 	} catch (...) {
@@ -1098,389 +948,6 @@ int MissionManagerImplementation::addMissionToServer(lua_State* L) {
 	}
 
 	return 0;
-}
-
-int MissionManagerImplementation::addActionCreatureToServer(lua_State* L) {
-	int actCount = lua_gettop(L);
-	ActionCreature* actCreature;
-
-	for(int i = actCount; i >= 1; i--) {
-
-		if(i == actCount) {
-			actCreature = addActionCreature(L, i);
-		} else {
-			if(actCreature != NULL) {
-				addAction(L, i, actCreature);
-			}
-		}
-		lua_settop(L, i-1);
-	}
-
-	//Clear stack
-	lua_settop(L, 0);
-
-	return 0;
-}
-
-ActionCreature* MissionManagerImplementation::addActionCreature(lua_State* L, int sIdx) {
-	char numBuf[10];
-	sprintf(numBuf,"%d",sIdx);
-	LuaObject creatureConfig(L, numBuf);
-	ActionCreature* creature;
-
-	if (!creatureConfig.isValidTable())
-		return NULL;
-
-	try {
-		instance->lock();
-
-		String objectName = creatureConfig.getStringField("objectName");
-
-		String stfname = creatureConfig.getStringField("stfName");
-		String name = creatureConfig.getStringField("name");
-		String speciesName = creatureConfig.getStringField("speciesName");
-
-		String misoKey = creatureConfig.getStringField("missionKey");
-
-		int planet = creatureConfig.getIntField("planet");
-		if(planet == -1) {
-			System::out << "Planet not set in ActionCreature script. Mission Key = " << misoKey << ", ActionCreature Name = " << name << endl;
-			return NULL;
-		}
-
-		CreatureManager* cm = instance->zoneServer->getCreatureManager(planet);
-		creature = new ActionCreature(0, creatureConfig.getIntField("objectCRC"), name, stfname, misoKey);
-		creature->deploy();
-		creature->setObjectCRC(creatureConfig.getIntField("objectCRC"));
-
-		if (!stfname.isEmpty() && !speciesName.isEmpty()) {
-			creature->setStfFile(stfname);
-			creature->setStfName(speciesName);
-		} else if (!stfname.isEmpty()) {
-			creature->setCharacterName(stfname);
-		}
-
-		instance->setCreatureAttributes(creature, &creatureConfig);
-
-		uint64 cellID = creatureConfig.getLongField("cellID");
-
-		float x = creatureConfig.getFloatField("positionX");
-		float y = creatureConfig.getFloatField("positionY");
-		float z = creatureConfig.getFloatField("positionZ");
-
-		float oY = creatureConfig.getFloatField("directionY");
-		float oX = creatureConfig.getFloatField("directionX");
-		float oW = creatureConfig.getFloatField("directionW");
-		float oZ = creatureConfig.getFloatField("directionZ");
-
-		uint8 randMovement = creatureConfig.getByteField("randomMovement");
-
-		creature->setRandomMovement(randMovement);
-
-		creature->initializePosition(x, z, y);
-
-		creature->setDirection(oX, oZ, oY, oW);
-
-		uint32 creatureBitmask = creatureConfig.getIntField("creatureBitmask");
-		if (creatureBitmask != 0)
-			creature->setOptionsBitmask(creatureBitmask);
-
-		creature->setSpawnPosition(x, z, y, cellID);
-
-		creature->setMisoMgr(instance);
-
-		//TODO: Ramsey...:
-		//Is this calling the "wrong" function ?
-		//It's calling spawnActionCreature(ActionCreature* tac, bool doLock = true);
-		//But i think it should call:
-		//ActionCreature* spawnActionCreature(String& name, String& stfname, uint32 objCrc, const String misoKey, float x, float y, float oY, float oW, uint64 cellid = 0, bool doLock = true);
-
-		//Changing/fixing the compiler warning for now:
-		//cm->spawnActionCreature(creature, &creatureConfig);
-		cm->spawnActionCreature(creature, true);
-
-		instance->unlock();
-	} catch (...) {
-		System::out << "Failed to load action creature in mission script." << endl;
-		instance->unlock();
-	}
-
-	return creature;
-}
-
-void MissionManagerImplementation::addAction(lua_State* L, int sIdx, ActionCreature* actCreature) {
-	char numBuf[10];
-	sprintf(numBuf,"%d",sIdx);
-	LuaObject actionConfig(L, numBuf);
-	String actionKey = "";
-	Action* action = new Action((SceneObject*)actCreature, actionKey, 0, 0);
-
-	if (!actionConfig.isValidTable())
-		return;
-
-	try {
-		instance->lock();
-
-		actionKey = actionConfig.getStringField("actionKey");
-		action->setActionKey(actionKey);
-
-		int prereqMask = actionConfig.getIntField("prereqMask");
-		action->setPrereq(prereqMask);
-
-		int actionMask = actionConfig.getIntField("actionMask");
-		action->setActionMask(actionMask);
-
-		// Load Optional Triggers: (set in ActionCreature later)
-		bool onConverse = actionConfig.getByteField("onConverse");
-		if(onConverse)
-			actCreature->onConverse(actionKey);
-
-		bool onTrade = actionConfig.getByteField("onTrade");
-		if(onTrade)
-			actCreature->onTrade(actionKey);
-
-		bool onAttack = actionConfig.getByteField("onAttack");
-		if(onAttack)
-			actCreature->onAttack(actionKey);
-
-		bool onDeath = actionConfig.getByteField("onDeath");
-		if(onDeath)
-			actCreature->onDeath(actionKey);
-
-		/////////////////////
-		// Prereq Vars
-		/////////////////////
-
-		//prereq:HASMISSION:
-		String hasMisoKey = actionConfig.getStringField("meet_hasMission");
-		action->setMeetHasMission(hasMisoKey);
-
-		//prereq:killcountlimit
-		String killCountLimitList = actionConfig.getStringField("meet_killLimitList");
-		action->setMeetKillLimitList(killCountLimitList);
-
-		/////////////////////
-		// ACTION VARS
-		/////////////////////
-
-		//Action:GiveItem:
-
-		if((actionMask & ATYPE_GIVEITEM)) {
-
-		}
-
-		//Action:Conversation:
-		if ((actionMask & ATYPE_CONVERSE)) {
-			//Grab list with convo screen ids
-			String convoScreenList = actionConfig.getStringField("convoScreenList");
-
-			//Parse convoScreenList String (format: key,key,key,")
-			StringTokenizer cslist(convoScreenList);
-			cslist.setDelimeter(",");
-			String sid = "";
-
-			//Loop through screen keys, grab screen from from the lua table. Parse. Add to C action convo screens
-			while (cslist.hasMoreTokens()) {
-				cslist.getStringToken(sid);
-
-				if (!sid.isEmpty()) {
-					//Call lua function "getConvoScreen(id)" to grab conversation screen from table:
-					LuaFunction getConvoScreen(L, "getConvoScreen", 1);
-					getConvoScreen << sid.toCharArray(); // push first argument
-					callFunction(&getConvoScreen);
-
-					//Parse lua screen object:
-					LuaObject retScreen(L);
-					if (!retScreen.isValidTable())
-						return;
-
-					//Get screen id
-					String screenId = retScreen.getStringField("id");
-
-					//Get dialog (left) box for the current screen
-					String leftBox = retScreen.getStringField("leftDialog");
-
-					//Get option count
-					int optCount = retScreen.getIntField("optionCount");
-
-					//Get compiled options String
-					String compOptionText = retScreen.getStringField("compOptionText");
-
-					//Get compiled option links
-					String compOptionLinks = retScreen.getStringField("compOptionLinks");
-
-					//Add the screen to the action
-					action->addConvoScreen(screenId, leftBox, optCount, compOptionText, compOptionLinks);
-
-					retScreen.pop(); // remove screen from stack
-				}
-			}
-			//Call lua function "clearGlobalScreens()". Cleans up for next actions
-			LuaFunction clearScreenTable(L, "clearScreenTable", 0);
-			callFunction(&clearScreenTable);
-		} //End of conversation var check
-
-		//Add the action to the ActionCreature:
-		actCreature->addActionObj(actionKey, action);
-
-		instance->unlock();
-	} catch (...) {
-		System::out << "Failed to load action in mission script." << endl;
-		instance->unlock();
-	}
-}
-
-void MissionManagerImplementation::setCreatureAttributes(ActionCreature* creature, LuaObject* creatureConfig) {
-
-	creature->setCreatureFaction(creatureConfig->getStringField("faction"));
-	creature->setGender(creatureConfig->getStringField("gender"));
-
-	creature->setMood(creatureConfig->getStringField("mood"));
-
-	creature->setXP(creatureConfig->getIntField("xp"));
-
-	creature->setHealer(creatureConfig->getIntField("healer"));
-	creature->setPack(creatureConfig->getIntField("pack"));
-	creature->setHerd(creatureConfig->getIntField("herd"));
-	creature->setStalker(creatureConfig->getIntField("stalker"));
-	creature->setKiller(creatureConfig->getIntField("killer"));
-	creature->setAggressive(creatureConfig->getIntField("aggressive"));
-
-	//creature->setBehaviorScript(creatureConfig.getStringField("behaviorScript"));
-
-
-	//Harvesting stuff
-	creature->setBoneType(creatureConfig->getStringField("boneType"));
-	creature->setBoneMax(creatureConfig->getIntField("boneMax"));
-
-	creature->setHideType(creatureConfig->getStringField("hideType"));
-	creature->setHideMax(creatureConfig->getIntField("hideMax"));
-
-	creature->setMeatType(creatureConfig->getStringField("meatType"));
-	creature->setMeatMax(creatureConfig->getIntField("meatMax"));
-
-	creature->setMilk(creatureConfig->getIntField("milk"));
-
-
-	//Loot
-	creature->setLootGroup(creatureConfig->getStringField("lootGroup"));
-
-	//CH stuff
-	creature->setTame(creatureConfig->getFloatField("tame"));
-
-	String preLead;
-	try {
-		//Testing, if this creature has the alternate weapon field set
-		(creature->setCreatureWeapon(creatureConfig->getStringField("alternateWeapon")));
-		if (creatureConfig->getStringField("alternateWeapon") !="" ) {
-			// No exception: Creature got two weapons
-			switch (System::random(1)) {
-			case 0:
-				preLead = "w";
-				break;
-			case 1:
-				preLead = "alternateW";
-				break;
-			}
-		} else
-			preLead = "w";
-
-	} catch (...) {
-		//Exception - So likely the creature has only one weapon (if any...)
-		preLead = "w";
-	}
-
-	try {
-		creature->setCreatureWeapon(creatureConfig->getStringField(preLead + "eapon"));
-		creature->setCreatureWeaponName(creatureConfig->getStringField(preLead + "eaponName"));
-		creature->setCreatureWeaponTemp(creatureConfig->getStringField(preLead + "eaponTemp"));
-		creature->setCreatureWeaponClass(creatureConfig->getStringField(preLead + "eaponClass"));
-		creature->setCreatureWeaponEquipped(creatureConfig->getIntField(preLead + "eaponEquipped"));
-		creature->setCreatureWeaponMinDamage(creatureConfig->getIntField(preLead + "eaponMinDamage"));
-		creature->setCreatureWeaponMaxDamage(creatureConfig->getIntField(preLead + "eaponMaxDamage"));
-		creature->setCreatureWeaponAttackSpeed(creatureConfig->getFloatField(preLead + "eaponAttackSpeed"));
-		creature->setCreatureWeaponDamageType(creatureConfig->getStringField(preLead + "eaponDamageType"));
-		creature->setCreatureWeaponArmorPiercing(creatureConfig->getStringField(preLead + "eaponArmorPiercing"));
-	} catch (...) {
-			// ...the creature has no weapon at all
-			System::out << "loading action creature - set attrib: creature has no wep" << endl;
-	}
-
-	creature->setInternalNPCDamageModifier(creatureConfig->getFloatField("internalNPCDamageModifier"));
-
-	//ham stuff - Please remove these IF lines till ELSE after all creature lua's have been changed, its just a safety-net !
-	//Test for LUA-line healthMax. Very likely, if this one is missing the others are too..
-	if (!creatureConfig->getIntField("healthMax")) {
-		creature->setHealth(creatureConfig->getIntField("health"));
-		creature->setHealth(creature->getHealth() + (creature->getHealth() * (System::random(100)) / 1111));
-
-		creature->setAction(creatureConfig->getIntField("action"));
-		creature->setAction(creature->getAction() + (creature->getAction() * (System::random(100)) / 1111));
-
-		creature->setMind(creatureConfig->getIntField("mind"));
-		creature->setMind(creature->getMind() + (creature->getMind() * (System::random(100)) / 1111));
-		System::out << "ATTENTION: The LUA creature script for " << creature->getStfName()  << " is obv. still in the old format ! \n";
-	} else {
-		//red
-		creature->setHealth(creatureConfig->getIntField("healthMin") + System::random(creatureConfig->getIntField("healthMax")-creatureConfig->getIntField("healthMin")));
-		creature->setStrength(creatureConfig->getIntField("strength"));
-		creature->setConstitution(creatureConfig->getIntField("constitution"));
-
-		//green
-		creature->setAction(creatureConfig->getIntField("actionMin") + System::random(creatureConfig->getIntField("actionMax")-creatureConfig->getIntField("actionMin")));
-		creature->setQuickness(creatureConfig->getIntField("quickness"));
-		creature->setStamina(creatureConfig->getIntField("stamina"));
-
-		//blue
-		creature->setMind(creatureConfig->getIntField("mindMin") + System::random(creatureConfig->getIntField("mindMax")-creatureConfig->getIntField("mindMin")));
-		creature->setFocus(creatureConfig->getIntField("focus"));
-		creature->setWillpower(creatureConfig->getIntField("willpower"));
-	}
-
-	creature->setHealth(creature->getHealth() + (creature->getHealth() * (System::random(100)) / 1111));
-	creature->setAction(creature->getAction() + (creature->getAction() * (System::random(100)) / 1111));
-	creature->setMind(creature->getMind() + (creature->getMind() * (System::random(100)) / 1111));
-
-	creature->setHealthMax(creature->getHealth());
-	creature->setStrengthMax(creature->getStrength());
-	creature->setConstitutionMax(creature->getConstitution());
-	creature->setActionMax(creature->getAction());
-	creature->setQuicknessMax(creature->getQuickness());
-	creature->setStaminaMax(creature->getStamina());
-	creature->setMindMax(creature->getMind());
-	creature->setFocusMax(creature->getFocus());
-	creature->setWillpowerMax(creature->getWillpower());
-
-	creature->setBaseHealth(creature->getHealth());
-	creature->setBaseStrength(creature->getStrength());
-	creature->setBaseConstitution(creature->getConstitution());
-	creature->setBaseAction(creature->getAction());
-	creature->setBaseQuickness(creature->getQuickness());
-	creature->setBaseStamina(creature->getStamina());
-	creature->setBaseMind(creature->getMind());
-	creature->setBaseFocus(creature->getFocus());
-	creature->setBaseWillpower(creature->getWillpower());
-
-	creature->setArmor(creatureConfig->getIntField("armor"));
-
-	creature->setKinetic(creatureConfig->getFloatField("kinetic"));
-	creature->setEnergy(creatureConfig->getFloatField("energy"));
-	creature->setElectricity(creatureConfig->getFloatField("electricity"));
-	creature->setStun(creatureConfig->getFloatField("stun"));
-	creature->setBlast(creatureConfig->getFloatField("blast"));
-	creature->setHeat(creatureConfig->getFloatField("heat"));
-	creature->setCold(creatureConfig->getFloatField("cold"));
-	creature->setAcid(creatureConfig->getFloatField("acid"));
-	creature->setLightSaber(creatureConfig->getFloatField("lightSaber"));
-
-	creature->setHeight(creatureConfig->getFloatField("height"));
-
-	creature->setAccuracy(creatureConfig->getIntField("accuracy"));
-	creature->setSpeed(creatureConfig->getFloatField("speed"));
-	creature->setAcceleration(creatureConfig->getFloatField("acceleration"));
-	creature->setRespawnTimer(creatureConfig->getIntField("respawnTimer"));
-	creature->setLevel(creatureConfig->getIntField("level"));
-	creature->setPvpStatusBitmask(creatureConfig->getIntField("combatFlags"));
 }
 
 uint64 MissionManagerImplementation::getNextMissionID() {

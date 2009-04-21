@@ -79,6 +79,7 @@ which carries forward this exception.
 #include "dots/DamageOverTimeMap.h"
 
 class CombatManager;
+class MissionManager;
 
 class Player;
 //class Npc;
@@ -174,6 +175,12 @@ protected:
 	Time lastCombatAction;
 
 	Vector<BaseMessage*> broadcastBuffer;
+
+	// Conversation
+	// Option Responses. <screenID, "Left Box Text|Option1Text|O2|O3">
+	VectorMap<String, String> convoScreens;
+	// Conversation Option Links <"screenID,OptionNumber","nextScreenID">
+	VectorMap<String, String> convoOptLink;
 
 	// modifiers
 	int weaponSpeedModifier;
@@ -949,6 +956,13 @@ public:
 	int getBuildingType();
 
 	bool canGiveEntertainBuff();
+
+	// Conversation Methods
+	virtual void sendConversationStartTo(SceneObject* obj);
+	virtual void selectConversationOption(int option, SceneObject* obj);
+	virtual void sendConversationStopTo(SceneObject* obj);
+	void addConvoScreen(const String& screenID, const String& leftBoxText, int numOptions, const String& Options, const String& optLinks);
+	void sendConvoScreen(Player* player, const String& screenID);
 
 	// guild methods
 	void sendGuildTo();
@@ -2719,7 +2733,7 @@ public:
 
 	int getMedicalFacilityRating();
 
-	inline void say(UnicodeString& message, uint32 moodid = 0, uint32 mood2 = 0) {
+	inline void say(const UnicodeString& message, uint32 moodid = 0, uint32 mood2 = 0) {
 		ChatManager * chatManager = this->getZone()->getChatManager();
 		chatManager->broadcastMessage(_this, message, this->getTargetID(),moodid, mood2);
 	}
@@ -2823,6 +2837,7 @@ public:
 	//Event Handlers
 	virtual void onIncapacitated(SceneObject* attacker);
 	virtual void onIncapacitationRecovery();
+	virtual void onConverse(Player* player);
 	virtual void onDeath();
 	virtual void onKilled(SceneObject* killer);
 	virtual void onResuscitated(SceneObject* healer);

@@ -261,7 +261,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const S
 	}
 }
 
-void ChatManagerImplementation::broadcastMessage(CreatureObject* player, UnicodeString& message,  uint64 target, uint32 moodid, uint32 mood2) {
+void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const UnicodeString& message,  uint64 target, uint32 moodid, uint32 mood2) {
 	if ( !player->isPlayer() || !((Player *)player)->isChatMuted() ) {
 		Zone* zone = player->getZone();
 

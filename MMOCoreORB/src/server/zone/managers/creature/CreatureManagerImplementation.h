@@ -58,8 +58,6 @@ which carries forward this exception.
 #include "../../objects/creature/CreatureImplementation.h"
 #include "../../objects/creature/bluefrog/BlueFrogCreature.h"
 #include "../../objects/creature/bluefrog/BlueFrogCreatureImplementation.h"
-#include "../../objects/creature/action/ActionCreature.h"
-#include "../../objects/creature/action/ActionCreatureImplementation.h"
 
 #include "CreatureMap.h"
 #include "LairMap.h"
@@ -125,8 +123,6 @@ public:
 	RecruiterCreature* spawnRecruiter(float x, float y, float oY, float oW, uint8 type = 1, uint64 cellid = 0, bool doLock = true);
 	BlueFrogCreature* spawnBlueFrog(float x, float y, float oY, float oW, int type = 0, uint64 cellid = 0, bool doLock = true);
 
-	ActionCreature* spawnActionCreature(String& name, String& stfname, uint32 objCrc, const String misoKey, float x, float y, float oY, float oW, uint64 cellid = 0, bool doLock = true);
-	ActionCreature* spawnActionCreature(ActionCreature* tac, bool doLock = true);
 	//CreatureGroup* spawnCreatureGroup(int count, const String& stfname, const String& name, int objCrc, float x, float y, int bitmask = 0x00, int layout = LINE_LAYOUT);
 
 	LairObject* spawnLair(const String& type, float x, float y, float z, bool doLock = true);
@@ -207,3 +203,4 @@ public:
 
 
 #endif /*CREATUREMANAGERIMPLEMENTATION_H_*/
+

@@ -133,6 +133,13 @@ PlayerImplementation::~PlayerImplementation() {
 		box->finalize();
 	}
 
+	for (int i = 0; i < missionMap.size(); ++i) {
+		MissionObject* miso = missionMap.get(i);
+		miso->finalize();
+	}
+
+	missionMap.removeAll();
+
 	if (playerObject != NULL) {
 		playerObject->finalize();
 		playerObject = NULL;
@@ -271,7 +278,7 @@ void PlayerImplementation::initializePlayer() {
 	misoBSB = 0;
 	curMisoKeys = "";
 	finMisoKeys = "";
-	//missionSaveList.setNullValue(NULL);
+	missionMap.setNullValue(NULL);
 
  	regionId = 31; //Ancorhead I think lols.
 
@@ -495,7 +502,9 @@ void PlayerImplementation::load(ZoneClientSession* client) {
 
 		resetArmorEncumbrance();
 
-		//fillMissionSaveVars(); //REAL
+		missionMap.removeAll();
+		MissionManager* mMgr = server->getMissionManager();
+		mMgr->loadPlayerMissions(_this, true);
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 		playerManager->updateOtherFriendlists(_this, true);
@@ -602,7 +611,6 @@ void PlayerImplementation::reload(ZoneClientSession* client) {
 		//reset mission vars:
 		misoRFC = 0x01;
 		misoBSB = 0;
-		//_this->fillMissionSaveVars(); //REAL
 
 		playerManager->updateOtherFriendlists(_this, true);
 		displayMessageoftheDay();
@@ -712,8 +720,6 @@ void PlayerImplementation::savePlayerState(bool doSchedule) {
 
 	saveWaypoints(_this);
 
-	//_this->saveMissions(); //REAL
-
 	playerObject->saveFriends();
 	playerObject->saveIgnore();
 
@@ -726,6 +732,8 @@ void PlayerImplementation::savePlayerState(bool doSchedule) {
 		ItemManager* itemManager = zserver->getItemManager();
 		itemManager->unloadPlayerItems(_this);
 		itemManager->unloadDatapadItems(_this);
+
+		saveMissions();
 	}
 
 	if (doSchedule)
@@ -1673,7 +1681,6 @@ void PlayerImplementation::switchMap(int planetid) {
 	//reset mission vars:
 	misoRFC = 0x01;
 	misoBSB = 0;
-	//_this->fillMissionSaveVars(); //REAL
 
 	initializePosition(positionX, zone->getHeight(positionX, positionY), positionY);
 
@@ -3739,202 +3746,123 @@ void PlayerImplementation::clearDuelList() {
 }
 
 // Mission Functions
-bool PlayerImplementation::isOnCurMisoKey(String tmk) {
-	tmk += ",";
-
-	if (curMisoKeys.indexOf(tmk) == -1) {
-		//printf("PlayerImplementation::isOnCurMisoKey() : player does not have mission.");
-		return false;
-	} else {
-		//printf("PlayerImplementation::isOnCurMisoKey() : player has mission.");
+bool PlayerImplementation::isOnCurMisoKey(const String& tmk) {
+	if (curMisoKeys.indexOf(tmk) >= 0)
 		return true;
+	else
+		return false;
+}
+
+bool PlayerImplementation::hasCompletedMisoKey(const String& tmk) {
+	if (finMisoKeys.indexOf(tmk) >= 0)
+		return true;
+	else
+		return false;
+}
+
+//Called by the mission manager when a new mission is added
+void PlayerImplementation::addMission(const String& key, MissionObject* miso) {
+	curMisoKeys += (key + ",");
+	missionMap.put(key, miso);
+}
+
+/**
+ * Runs through all missions and updates the appropriate objectives
+ */
+void PlayerImplementation::updateMissions(int type, uint32 objCrc, const String& str, int increment) {
+	for(int i = 0; i < missionMap.size(); i++) {
+		MissionObject* mo = missionMap.get(i);
+		if(mo != NULL) {
+			if(!mo->isComplete()) {
+				String updateStr = "";
+				// If objective update completes, send the player a friendly notification
+				int ret = mo->updateStatus(type, objCrc, str, updateStr, increment);
+				if(ret >= 1) {
+					if(ret == 1) { // Progress Update
+						_this->sendSystemMessage(updateStr);
+					} else { // Instant Complete
+						MissionManager* mm = server->getMissionManager();
+						if(mm != NULL)
+							mm->evalMission((Player*)_this, mo);
+					}
+					break;
+				}
+			}
+		}
 	}
 }
 
-void PlayerImplementation::removeFromCurMisoKeys(String tck) {
-	tck += ",";
+/**
+ * Returns a mission object belonging to a player
+ */
+MissionObject* PlayerImplementation::getPlayerMission(const String& key) {
+	return missionMap.get(key);
+}
 
-	int pos = curMisoKeys.indexOf(tck);
-	if (pos == -1) {
-		printf("PlayerImplementation::removeFromCurMisoKeys() : player does not have mission.");
+/**
+ * Save all missions & mission vars belonging to the player. Called on player save intervals
+ */
+void PlayerImplementation::saveMissions() {
+	MissionManager* mm = server->getMissionManager();
+
+	if(mm == NULL)
 		return;
+
+	for(int i = 0; i < missionMap.size(); i++) {
+		mm->savePlayerMission(_this, missionMap.get(i));
 	}
 
-	//printf("Debug: erasing tck = %s. curMisoKeys = %s\n", tck.toCharArray(), curMisoKeys.toCharArray());
+	mm->savePlayerKeys(_this, curMisoKeys, finMisoKeys);
+}
+
+
+//Called by the mission manager when a mission is dropped
+void PlayerImplementation::dropMission(const String& key, bool finished) {
+	MissionObject* miso = missionMap.get(key);
+	if(miso == NULL)
+		return;
+
+	String tck = key + ",";
+
+	//Add to finished keys if the mission was completed successfully. Distribute rewards
+	if(finished) {
+		// Add to completed keys if the mission was completed for the first time
+		if(!hasCompletedMisoKey(key))
+			finMisoKeys += tck;
+		miso->assetPart(true);
+	}
+
+	miso->finalize();
+	missionMap.drop(key);
+
+	//Drop from the current mission key set:
+	int pos = curMisoKeys.indexOf(tck);
+	if (pos == -1) {
+		System::out << "PlayerImplementation::dropMission() : player does not have mission." << endl;
+		return;
+	}
 
 	StringBuffer tempKeys(curMisoKeys);
 	tempKeys.deleteRange(pos, pos + tck.length());
 
 	curMisoKeys = tempKeys.toString();
-
-	//printf("Debug: Tck erased = %s. curMisoKeys = %s\n", tck.toCharArray(), curMisoKeys.toCharArray());
 }
 
-bool PlayerImplementation::hasCompletedMisoKey(String& tmk) {
-	tmk += ",";
-
-	if (finMisoKeys.indexOf(tmk) == -1) {
-		//printf("PlayerImplementation::hasCompletedMisoKey() : player hasnt completed the mission.");
-		return false;
-	} else {
-		//printf("PlayerImplementation::hasCompletedMisoKey() : player has completed mission.");
-		return true;
+/**
+ * Administrative purposes only.
+ */
+void PlayerImplementation::dropAllMissions() {
+	for(int i = 0; i < missionMap.size(); i++) {
+		MissionObject* miso = missionMap.get(i);
+		if(miso != NULL) {
+			miso->sendDestroyTo(_this);
+			miso->finalize();
+		}
 	}
-}
+	missionMap.removeAll();
 
-//Must loop through mission save list, combine dbvarname with ALL related listvalues
-void PlayerImplementation::saveMissions() {
-	try {
-		String getStr = "";
-		String curKey = "";
-		String curVal = "";
-
-		//Get the mission manager:
-		MissionManager* misoMgr = server->getMissionManager();
-
-		StringTokenizer mkeyTok(curMisoKeys);
-		mkeyTok.setDelimeter(",");
-		while(mkeyTok.hasMoreTokens()) {
-			//Get next mission key to save:
-			mkeyTok.getStringToken(curKey);
-
-			//Compile objective_vars for db:
-			getStr = curKey + ",objective_vars";
-			if (missionSaveList.contains(getStr)) {
-				curVal = missionSaveList.get(getStr);
-
-				//Commit to db:
-				misoMgr->doMissionSave(_this, curKey, curVal, "", true);
-			}
-
-			//Compile kill_count_vars for db:
-			getStr = curKey + ",kill_count_vars";
-			if (missionSaveList.contains(getStr)) {
-				curVal = missionSaveList.get(getStr);
-				//Commit to db:
-				misoMgr->doMissionSave(_this, curKey, "", curVal, true);
-			}
-		}
-	} catch (...) {
-		info("Unreported Exception in PlayerImplementation::saveMissions()");
-	}
-}
-
-//Updates mission save in missionSaveList. List key = "misokey,dbvarname" List value: "51452=5,23232=2,"
-void PlayerImplementation::updateMissionSave(String misoKey, const String& dbVar, String& varName, String& varData, bool doLock) {
-	try {
-		lock(doLock);
-
-		if(varName.length() == 0 || varData.length() == 0 || dbVar.length() == 0 || misoKey.length() == 0)
-			return;
-
-		String getStr = misoKey + "," + dbVar;
-
-		//If the misokey/dbvar pair exists in the missionSaveList, update. If not, put it.
-		if(missionSaveList.contains(getStr)) {
-			//Grab the full varName/varData list for the corresponding dbVar
-			String oldValNameDataList = missionSaveList.get(getStr);
-			String newValNameDataList = "";
-			String curPairStr, curPairName, curPairValue = "";
-
-			//Tokenize the entire list. Grab pairs
-			StringTokenizer oldList(oldValNameDataList);
-			oldList.setDelimeter(",");
-
-			//Drop the misokey/dbvar from the save list. We're rebuilding it here:
-			missionSaveList.drop(getStr);
-
-			//Loop through name/value list for the particular db var.
-			while(oldList.hasMoreTokens()) {
-				//Set current pair
-				oldList.getStringToken(curPairStr);
-
-				//Separate current pair. Name, value. ex. 51452=5
-				StringTokenizer curPairTok(curPairStr);
-				curPairTok.setDelimeter("=");
-				curPairTok.getStringToken(curPairName);
-				curPairTok.getStringToken(curPairValue);
-
-				//If the we find the var we are trying to update, update the value.
-				if (curPairName == varName) {
-					//add to end of new value list
-					newValNameDataList += curPairName + "=" + varData + ",";
-				} else { //If we havent found the var we are trying to update, add old name/val list pair back
-					newValNameDataList += curPairName + "=" + curPairValue + ",";
-				}
-			}
-
-			//Put the new name/value pairs under the recreated key:
-			missionSaveList.put(getStr, newValNameDataList);
-		} else {
-			String listStr = missionSaveList.get(getStr);
-
-			//Tack on the new name/value pair to the missionSaveList:
-			listStr += (varName + "=" + varData + ",");
-
-			//Drop the misokey/dbvar from the save list.
-			missionSaveList.drop(getStr);
-
-			//Add new list back in:
-			missionSaveList.put(getStr, listStr);
-		}
-
-		unlock(doLock);
-	} catch (...) {
-		info("Unreported Exception in PlayerImplementation::updateMissionSave");
-	}
-}
-
-//Called on player load. Clears mission save vars. Grabs all from DB
-void PlayerImplementation::fillMissionSaveVars() {
-	try {
-		//Get the mission manager:
-		MissionManager* misoMgr = server->getMissionManager();
-
-		//Grab complete statuses for missions
-		curMisoKeys = "none";
-		finMisoKeys = "none";
-		misoMgr->getMisoKeysStatus(_this, false, curMisoKeys, true);
-		misoMgr->getMisoKeysStatus(_this, true, finMisoKeys, true);
-
-		if(curMisoKeys == "none" || finMisoKeys == "none") {
-			return;
-		}
-
-		//Tokenize all current mission keys.
-		StringTokenizer mkeyTok(curMisoKeys);
-		mkeyTok.setDelimeter(",");
-
-		//If the missionSaveList has already been filled, bail out.
-		if(missionSaveList.size() != 0) {
-			return;
-			//for(int i = 0; i <= missionSaveList.size(); i++) {
-			//	missionSaveList.drop();
-			//}
-		}
-
-		//Loop through all current mission keys
-		String curMisoKey = "";
-		while (mkeyTok.hasMoreTokens()) {
-			mkeyTok.getStringToken(curMisoKey);
-
-			String objective_vars, kill_count_vars;
-			misoMgr->getMissionSaveVarLine(_this, curMisoKey, "objective_vars", objective_vars, true);
-			misoMgr->getMissionSaveVarLine(_this, curMisoKey, "kill_count_vars", kill_count_vars, true);
-
-			if (objective_vars == "none" || kill_count_vars == "none") {
-				//System::out << "error in fillMissionSaveVars, objective_vars and kill_count_vars never touched" << endl;
-				continue;
-			}
-
-			//Add to missionSaveList:
-			missionSaveList.put(curMisoKey + ",objective_vars", objective_vars);
-			missionSaveList.put(curMisoKey + ",kill_count_vars", kill_count_vars);
-		}
-
-	} catch (...) {
-		info("Unreported Exception in PlayerImplementation::fillMissionSaveVars");
-	}
+	curMisoKeys = "";
+	finMisoKeys = "";
 }
 
 // Crafting

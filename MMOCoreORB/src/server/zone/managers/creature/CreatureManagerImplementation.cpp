@@ -59,7 +59,6 @@ which carries forward this exception.
 #include "../../objects/creature/recruiter/imperial/ImperialRecruiterCreature.h"
 #include "../../objects/creature/recruiter/rebel/RebelRecruiterCreature.h"
 #include "../../objects/creature/shuttle/ShuttleCreature.h"
-#include "../../objects/creature/action/ActionCreature.h"
 
 #include "../../objects/creature/CreatureGroup.h"
 
@@ -263,14 +262,14 @@ void CreatureManagerImplementation::loadTrainers() {
 	}
 
 	delete result;
-	
+
 	//Temporary trainer line in Theed.
 	if (zone->getZoneID() == 5) {
 		professionManager->professionMap.resetIterator();
 
 		for (int i = 0; professionManager->professionMap.hasNext(); i++) {
 			Profession* prof = professionManager->professionMap.getNextValue();
-			
+
 			//check for jedi skills, and species trainers
 			if (prof->getName().indexOf("jedi") != -1 || prof->getName().indexOf("force") != -1 || prof->getName().indexOf("species") != -1)
 				continue;
@@ -321,69 +320,6 @@ CreatureGroup* CreatureManagerImplementation::spawnCreatureGroup(int count, cons
 	}
 }
 */
-
-ActionCreature* CreatureManagerImplementation::spawnActionCreature(String& name, String& stfname, uint32 objCrc, String misoKey, float x, float y, float oY, float oW, uint64 cellid, bool doLock) {
-	try {
-		lock(doLock);
-
-		ActionCreature* actCr = new ActionCreature(getNextCreatureID(), objCrc, name, stfname, misoKey);
-
-		actCr->setTerrainName(Terrain::getTerrainName(zone->getZoneID()));
-
-		actCr->setHeight(1.0f);
-		actCr->initializePosition(x, 0, y);
-		actCr->setParent(getZone()->lookupObject(cellid));
-		actCr->setDirection(0, 0, oY, oW);
-		actCr->setPvpStatusBitmask(0);
-		actCr->setZoneProcessServer(server);
-
-		load(actCr);
-
-		actCr->insertToZone(zone);
-
-		creatureMap->put(actCr->getObjectID(), actCr);
-
-		unlock(doLock);
-		return actCr;
-	} catch (...) {
-		error("unreported Exception caught on spawnActionCreature()");
-
-		unlock(doLock);
-		return NULL;
-	}
-}
-
-ActionCreature* CreatureManagerImplementation::spawnActionCreature(ActionCreature* tac, bool doLock) {
-	try {
-		lock(doLock);
-
-		ActionCreature* actCr = tac;
-
-		actCr->setObjectID(getNextCreatureID());
-		actCr->setTerrainName(Terrain::getTerrainName(zone->getZoneID()));
-
-		/*actCr->setHeight(1.0f);
-		actCr->initializePosition(x, 0, y);
-		actCr->setParent(getZone()->lookupObject(cellid));
-		actCr->setDirection(0, 0, oY, oW);
-		actCr->setPvpStatusBitmask(0);*/
-		actCr->setZoneProcessServer(server);
-
-		load(actCr);
-
-		actCr->insertToZone(zone);
-
-		creatureMap->put(actCr->getObjectID(), actCr);
-
-		unlock(doLock);
-		return actCr;
-	} catch (...) {
-		error("unreported Exception caught on spawnActionCreature()");
-
-		unlock(doLock);
-		return NULL;
-	}
-}
 
 BlueFrogCreature* CreatureManagerImplementation::spawnBlueFrog(float x, float y, float oY, float oW, int type, uint64 cellid, bool doLock) {
 	try {
@@ -1000,6 +936,45 @@ void CreatureManagerImplementation::load(Creature* creature) {
 		}
 
 		creature->addSkill(s);
+	}
+
+	// Load conversation from lua
+	LuaFunction getScreenN(getLuaState(), objectName, "getNumberOfScreens", 1);
+	callFunction(&getScreenN);
+	int nscreens = getIntParameter(getLuaState());
+
+	/*if(nscreens > 1)
+		System::out << "initial nscreens: " << nscreens << endl;*/
+
+	for (int i = 1; i <= nscreens; i++) {
+		LuaFunction getScreen(getLuaState(), objectName, "getConvoScreen", 1);
+		getScreen << i; // push arg (screen index)
+		callFunction(&getScreen);
+
+		//Parse lua screen object:
+		LuaObject retScreen(getLuaState());
+		if (!retScreen.isValidTable())
+			continue;
+
+		//Get screen id
+		String screenId = retScreen.getStringField("id");
+
+		//Get dialog (left) box for the current screen
+		String leftBox = retScreen.getStringField("leftDialog");
+
+		//Get option count
+		int optCount = retScreen.getIntField("optionCount");
+
+		//Get compiled options String
+		String compOptionText = retScreen.getStringField("compOptionText");
+
+		//Get compiled option links
+		String compOptionLinks = retScreen.getStringField("compOptionLinks");
+
+		//System::out << "cur nscreens = " << i << ". adding screen for " << objectName << ". screenId: " << screenId << endl;
+
+		//Add the screen to the Creature (on server)
+		creature->addConvoScreen(screenId, leftBox, optCount, compOptionText, compOptionLinks);
 	}
 
 }

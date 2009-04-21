@@ -19,19 +19,21 @@ class ZoneClientSession;
 
 class Zone;
 
-class SceneObject;
+class CloningFacility;
 
 class CreatureObject;
 
 class Creature;
 
-class TangibleObject;
+class GroupObject;
 
-class Wearable;
+class Guild;
 
 class PlayerObject;
 
-class FactionPointList;
+class TangibleObject;
+
+class Wearable;
 
 class Weapon;
 
@@ -47,9 +49,19 @@ class SurveyTool;
 
 class CampSite;
 
-class GroupObject;
+class CraftingTool;
 
-class Guild;
+class ResourceContainer;
+
+class CloningTerminal;
+
+class InsuranceTerminal;
+
+class DraftSchematic;
+
+class MissionObject;
+
+class SceneObject;
 
 class WaypointObject;
 
@@ -59,21 +71,11 @@ class SuiBox;
 
 class SuiListBoxVector;
 
-class DraftSchematic;
-
-class CraftingTool;
-
-class ResourceContainer;
-
 class Badges;
 
+class FactionPointList;
+
 class ActiveArea;
-
-class CloningTerminal;
-
-class CloningFacility;
-
-class InsuranceTerminal;
 
 #include "../creature/CreatureObject.h"
 
@@ -633,25 +635,37 @@ public:
 
 	unsigned int nextMisoRFC();
 
+	void setMisoRFC(unsigned int r);
+
+	unsigned int getMisoRFC();
+
+	void resetMisoBSB();
+
 	int checkMisoBSB(int tcb);
 
 	void setMisoBSB(int tms);
 
-	void addToCurMisoKeys(String& tck);
+	void setCurrentMissionKeys(const String& cur);
 
-	bool isOnCurMisoKey(String& tmk);
+	void setFinishedMissionKeys(const String& fin);
 
-	void removeFromCurMisoKeys(String& tck);
+	bool isOnCurMisoKey(const String& tmk);
 
-	void addToFinMisoKeys(String& tmp);
+	bool hasCompletedMisoKey(const String& tmk);
 
-	bool hasCompletedMisoKey(String& tmk);
+	int missionCount();
 
-	void updateMissionSave(String& misoKey, const String& dbVar, String& varName, String& varData, bool doLock = false);
+	void addMission(const String& key, MissionObject* miso);
 
-	void fillMissionSaveVars();
+	void updateMissions(int type, unsigned int objCrc, const String& str, int increment = 1);
+
+	MissionObject* getPlayerMission(const String& key);
 
 	void saveMissions();
+
+	void dropMission(const String& key, bool finished);
+
+	void dropAllMissions();
 
 	void setActiveCraftingTool(CraftingTool* craftingTool);
 
@@ -1588,25 +1602,37 @@ public:
 
 	unsigned int nextMisoRFC();
 
+	void setMisoRFC(unsigned int r);
+
+	unsigned int getMisoRFC();
+
+	void resetMisoBSB();
+
 	int checkMisoBSB(int tcb);
 
 	void setMisoBSB(int tms);
 
-	void addToCurMisoKeys(String& tck);
+	void setCurrentMissionKeys(const String& cur);
 
-	bool isOnCurMisoKey(String& tmk);
+	void setFinishedMissionKeys(const String& fin);
 
-	void removeFromCurMisoKeys(String& tck);
+	bool isOnCurMisoKey(const String& tmk);
 
-	void addToFinMisoKeys(String& tmp);
+	bool hasCompletedMisoKey(const String& tmk);
 
-	bool hasCompletedMisoKey(String& tmk);
+	int missionCount();
 
-	void updateMissionSave(String& misoKey, const String& dbVar, String& varName, String& varData, bool doLock);
+	void addMission(const String& key, MissionObject* miso);
 
-	void fillMissionSaveVars();
+	void updateMissions(int type, unsigned int objCrc, const String& str, int increment);
+
+	MissionObject* getPlayerMission(const String& key);
 
 	void saveMissions();
+
+	void dropMission(const String& key, bool finished);
+
+	void dropAllMissions();
 
 	void setActiveCraftingTool(CraftingTool* craftingTool);
 
@@ -1989,15 +2015,14 @@ protected:
 	String _param0_setRaceFileName__String_;
 	String _param0_setStartingLocation__String_;
 	String _param0_checkCertification__String_;
-	String _param0_addToCurMisoKeys__String_;
+	String _param0_setCurrentMissionKeys__String_;
+	String _param0_setFinishedMissionKeys__String_;
 	String _param0_isOnCurMisoKey__String_;
-	String _param0_removeFromCurMisoKeys__String_;
-	String _param0_addToFinMisoKeys__String_;
 	String _param0_hasCompletedMisoKey__String_;
-	String _param0_updateMissionSave__String_String_String_String_bool_;
-	String _param1_updateMissionSave__String_String_String_String_bool_;
-	String _param2_updateMissionSave__String_String_String_String_bool_;
-	String _param3_updateMissionSave__String_String_String_String_bool_;
+	String _param0_addMission__String_MissionObject_;
+	String _param2_updateMissions__int_int_String_int_;
+	String _param0_getPlayerMission__String_;
+	String _param0_dropMission__String_bool_;
 	String _param0_addDraftSchematicsFromGroupName__String_;
 	String _param0_subtractDraftSchematicsFromGroupName__String_;
 	String _param0_setSurveyEvent__String_;

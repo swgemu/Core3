@@ -272,6 +272,9 @@ public:
 	virtual void selectConversationOption(int option, SceneObject* obj) {
 	}
 
+	virtual void sendConversationStopTo(SceneObject* obj) {
+	}
+
 	virtual void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 
 	virtual int useObject(Player* player) {

@@ -49,8 +49,6 @@ which carries forward this exception.
 
 #include "../../../player/Player.h"
 
-#include "../../../../managers/mission/MissionManager.h"
-
 #include "../../../../packets.h"
 
 class MissionTerminalImplementation : public MissionTerminalServant {

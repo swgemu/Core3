@@ -61,6 +61,8 @@ public:
 
 	void selectConversationOption(int option, SceneObject* obj);
 
+	void sendConversationStopTo(SceneObject* obj);
+
 	void close(ZoneClientSession* client);
 
 	void init();
@@ -436,6 +438,8 @@ public:
 	void sendConversationStartTo(SceneObject* obj);
 
 	void selectConversationOption(int option, SceneObject* obj);
+
+	void sendConversationStopTo(SceneObject* obj);
 
 	void close(ZoneClientSession* client);
 

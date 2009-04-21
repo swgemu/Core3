@@ -50,6 +50,7 @@ which carries forward this exception.
 class ZoneProcessServerImplementation;
 class GroupManager;
 class RadialManager;
+class MissionManager;
 class PlayerManager;
 class Player;
 class CombatManager;

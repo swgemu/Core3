@@ -53,22 +53,16 @@ which carries forward this exception.
 #include "PingClient.h"
 
 class PingMessageProcessorThread : public ServiceProcessThread {
-	//LoginPacketHandler* phandler;
 
 public:
 	PingMessageProcessorThread(String s) : ServiceProcessThread(s) {
-		//phandler = phand;
 	}
 
 	void run() {
 		Message* msg;
 
 		while ((msg = server->getMessage()) != NULL) {
-			//ServerCore::workLock.lock();
-			//info("processing login message");
-
 			try {
-				//phandler->handleMessage(msg);
 				PingClient* client = (PingClient*) msg->getClient();
 
 				client->sendMessage(msg);
@@ -87,11 +81,9 @@ public:
 				msg << e.getMessage();
 				error(msg);
 			} catch (...) {
-				System::out << "[LoginMessageProcessor] unreported Exception caught\n";
+				System::out << "[PingMessageProcessor] unreported Exception caught\n";
 			}
 
-			//info("finished processing login message");
-			//ServerCore::workLock.unlock();
 			delete msg;
 		}
 

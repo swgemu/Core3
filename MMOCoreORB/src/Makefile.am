@@ -90,8 +90,6 @@ core3_IDLS =	server/chat/ChatManager.cpp \
 		server/zone/objects/building/BuildingObject.cpp \
 		server/zone/objects/building/cell/CellObject.cpp \
 		server/zone/objects/building/cloningfacility/CloningFacility.cpp \
-		server/zone/objects/creature/action/Action.cpp \
-		server/zone/objects/creature/action/ActionCreature.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogVector.cpp \
 		server/zone/objects/creature/Creature.cpp \
@@ -118,6 +116,7 @@ core3_IDLS =	server/chat/ChatManager.cpp \
 		server/zone/objects/intangible/IntangibleObject.cpp \
 		server/zone/objects/manufacture/ManufactureSchematic.cpp \
 		server/zone/objects/mission/MissionObject.cpp \
+		server/zone/objects/mission/MissionObjective.cpp \
 		server/zone/objects/player/faction/FactionPointList.cpp \
 		server/zone/objects/player/FriendsList.cpp \
 		server/zone/objects/player/IgnoreList.cpp \
@@ -284,8 +283,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/building/cell/CellObjectImplementation.cpp \
 		server/zone/objects/building/StructurePermissionList.cpp \
-		server/zone/objects/creature/action/ActionCreatureImplementation.cpp \
-		server/zone/objects/creature/action/ActionImplementation.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp \
 		server/zone/objects/creature/buffs/Buff.cpp \
 		server/zone/objects/creature/dots/DamageOverTime.cpp \
@@ -310,6 +307,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/installation/InstallationObjectImplementation.cpp \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
 		server/zone/objects/mission/MissionObjectImplementation.cpp \
+		server/zone/objects/mission/MissionObjectiveImplementation.cpp \
 		server/zone/objects/player/FriendListImplementation.cpp \
 		server/zone/objects/player/IgnoreListImplementation.cpp \
 		server/zone/objects/player/PlayerImplementation.cpp \

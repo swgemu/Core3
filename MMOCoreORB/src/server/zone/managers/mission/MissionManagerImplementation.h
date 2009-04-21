@@ -60,11 +60,6 @@ which carries forward this exception.
 #include "../../objects/tangible/TangibleObject.h"
 #include "../../objects/tangible/TangibleObjectImplementation.h"
 
-#include "../../objects/creature/action/ActionCreature.h"
-#include "../../objects/creature/action/ActionCreatureImplementation.h"
-#include "../../objects/creature/action/Action.h"
-#include "../../objects/creature/action/ActionImplementation.h"
-
 #include "MissionMap.h"
 
 #include "MissionManager.h"
@@ -90,50 +85,86 @@ public:
 	void removeMissions();
 
 	// creation methods
-	MissionObject* poolMission(String& dbKey, int termMask, const String& typeStr, uint32 descKey, uint32 titleKey, uint32 diffLv, float destX,
-			float destY, uint32 destPlanetCrc, const String& creatorName, uint32 rewardAmount, float targetX, float targetY, uint32 targetPlanetCrc,
-			uint32 depictedObjCrc, const String& descriptionStf, const String& titleStf, uint32 typeCrc, TangibleObject* deliverItem = NULL, bool doLock = true);
+	MissionObject* poolMission(const String& dbKey, int termMask, const String& typeStr, uint32 descKey, uint32 titleKey, uint32 diffLv, float destX, float destY, uint32 destPlanetCrc,
+			const String& creatorName, uint32 rewardAmount, float targetX, float targetY, uint32 targetPlanetCrc, uint32 depictedObjCrc, const String& targetName,
+			const String& description, const String& title, uint32 typeCrc, const String& objectiveDefaults, bool instantComplete, bool doLock = true);
+
+	void instanceMission(Player* player, MissionObject* misoCopy, const String& objectives);
 
 	//Test
 	void setupHardcodeMissions();
 
 	//data setup
 	void sendTerminalData(Player* player, int termBitmask, bool doLock = true);
-	void sendMission(Player* player, String& tKey, bool doLock = true);
+	void sendMission(Player* player, const String& tKey, bool doLock = true);
 
 	//events
 	void doMissionAccept(Player* player, uint64& oid, bool doLock = true);
-	void doMissionComplete(Player* player, String& tKey, bool doLock = true);
+	void doMissionComplete(Player* player, const String& tKey, bool doLock = true);
 	void doMissionAbort(Player* player, uint64& oid, bool doLock = true);
-	void doMissionAbort(Player* player, String& tKey, bool doLock = true);
+	void doMissionAbort(Player* player, const String& tKey, bool doLock = true);
 
-	//Save functions
-	void doMissionSave(Player* player, const String& mkey, const String& objectivevars, const String& killcountvars, bool doLock = false);
-	void deleteMissionSave(Player* player, const String& mkey, bool doLock = false);
-	bool hasMissionSave(Player* player, const String& mkey, bool createIfNone = false, bool doLock = false);
-	void getMissionSaveVarLine(Player* player, const String& mkey, const String& dbVar, String& retStr, bool doLock = false);
-	void getMisoKeysStatus(Player* player, bool finKeys, String& retStr, bool doLock = false);
-	//Called by doAbort,complete,accept
-	void setMisoKeyCurrent(Player* player, String misoKey, bool remove, bool doLock = false);
-	void setMisoKeyFinished(Player* player, String misoKey, bool remove, bool doLock = false);
+	//Evaluate Mission, Fire abort/completion events if necessary
+	bool evalMission(Player* player, const String& tKey, String& retSay);
+	bool evalMission(Player* player, MissionObject* miso);
 
-	//Completely remove the mission from the server:
-	void removeMisoFromPool(MissionObject* miso, bool doLock = true);
+	////
+	//New Save Mission State Functions:
+	//Save functions should be called on state saves and login/logout
+	//-> Variables that are saved should ALWAYS be in memory. There is NO reason to call these functions
+	//to regularly grab data.
+	//-> Save States / Mission Saves are only for missions the player is CURRENTLY on. Not for completed
+	// or past missions (failed etc)
+	////
 
-	uint32 getMissionItemCrc(String& tKey, bool doLock = true);
+	//Loads all missions for a player from mission_saves:
+	void loadPlayerMissions(Player* player, bool doLock = true);
+
+	//Saves OR updates a mission for a player in mission_saves:
+	void savePlayerMission(Player* player, MissionObject* miso);
+
+	//Saves mission keys to the DB, called automatically on player save event
+	void savePlayerKeys(Player* player, const String& curMisoKeys, const String& finMisoKeys);
+
+	void clearPlayerMissions(Player* target, bool lockTarget = false);
 
 	// Script methods
 	void registerFunctions();
 	void registerGlobals();
 	void loadMissionScripts();
-	void setCreatureAttributes(ActionCreature* creature, LuaObject* creatureConfig);
 
 	// Lua functions
 	static int runMissionFile(lua_State* L);
-	static int addActionCreatureToServer(lua_State* L);
 	static int addMissionToServer(lua_State *L);
-	static ActionCreature* addActionCreature(lua_State* L, int sIdx);
-	static void addAction(lua_State* L, int sIdx, ActionCreature* actCreature);
+
+private:
+
+	//Private events
+	void doMissionAbort(Player* player, MissionObject* miso);
+
+	//Called by various internal functions to delete a mission save:
+	void deleteMissionSave(Player* player, const String& mkey);
+
+	//Completely remove the mission from the server:
+	void removeMisoFromPool(MissionObject* miso, bool doLock = true);
+
+	//Send mission baselines to the player:
+	void sendMissionBase(Player* player, const String& tKey, bool doLock = true);
+	void sendMissionBase(Player* player, uint64& oid, bool doLock = true);
+	void sendMissionBase(Player* player, MissionObject* sMiso);
+
+	//Send mission delta to player (for mission listing):
+	void sendMissionDelta(Player* player, const String& tKey, bool doLock = true);
+	void sendMissionDelta(Player* player, uint64& oid, bool doLock = true);
+	void sendMissionDelta(Player* player, MissionObject* sMiso);
+
+	//These functions will essentially "hide" the mission from the player.
+	//Use these methods when the player completes/abandons/fails the mission.
+	void removeMisoFromPlayer(Player* player, const String& tKey, bool doLock = true);
+	void removeMisoFromPlayer(Player* player, uint64& oid, bool doLock = true);
+	void removeMisoFromPlayer(MissionObject* miso, Player* player);
+
+	uint64 getNextMissionID();
 
 public:
 	//terminal masks. If this is changed, modify in missionterminal object and lua global register
@@ -145,42 +176,6 @@ public:
 	const static int TMASK_REBEL = 32;
 	const static int TMASK_IMPERIAL = 64;
 	//128, 256, 512, 1024 = reserved
-
-private:
-	//Action Masks
-	const static int ATYPE_MOVE = 1;
-	const static int ATYPE_PATROL = 2;
-	const static int ATYPE_CONVERSE = 4;
-	const static int ATYPE_SAY = 8;
-	const static int ATYPE_GIVEITEM = 16;
-	const static int ATYPE_TAKEITEM = 32;
-	const static int ATYPE_GIVEMISSION = 64;
-	const static int ATYPE_COMPMISSION = 128;
-	const static int ATYPE_FAILMISSION = 256;
-	const static int ATYPE_ADDKILL = 512;
-
-	//Action Prereq mask:
-	const static int AMEET_HASMISSION = 1;
-	const static int AMEET_KILLCOUNTLIMIT = 2;
-
-private:
-	uint64 getNextMissionID();
-
-	//Send mission baselines to the player:
-	void sendMissionBase(Player* player, String& tKey, bool doLock = true);
-	void sendMissionBase(Player* player, uint64& oid, bool doLock = true);
-	void sendMissionBase(Player* player, MissionObject* sMiso);
-
-	//Send mission delta to player (for mission listing):
-	void sendMissionDelta(Player* player, String& tKey, bool doLock = true);
-	void sendMissionDelta(Player* player, uint64& oid, bool doLock = true);
-	void sendMissionDelta(Player* player, MissionObject* sMiso);
-
-	//These functions will essentially "hide" the mission from the player.
-	//Use these methods when the player completes/abandons/fails the mission.
-	void removeMisoFromPlayer(Player* player, String& tKey, bool doLock = true);
-	void removeMisoFromPlayer(Player* player, uint64& oid, bool doLock = true);
-	void removeMisoFromPlayer(MissionObject* miso, Player* player);
 
 };
 

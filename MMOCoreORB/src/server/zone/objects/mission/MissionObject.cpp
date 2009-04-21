@@ -12,12 +12,14 @@
 
 #include "../tangible/TangibleObject.h"
 
+#include "MissionObjective.h"
+
 /*
  *	MissionObjectStub
  */
 
-MissionObject::MissionObject(unsigned long long oid) : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new MissionObjectImplementation(oid);
+MissionObject::MissionObject(unsigned long long oid, Player* owner) : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new MissionObjectImplementation(oid, owner);
 	_impl->_setStub(this);
 }
 
@@ -39,12 +41,37 @@ void MissionObject::init() {
 		((MissionObjectImplementation*) _impl)->init();
 }
 
-void MissionObject::sendTo(Player* player, bool doClose) {
+void MissionObject::assetSetup() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionObjectImplementation*) _impl)->assetSetup();
+}
+
+void MissionObject::assetPart(bool award) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addBooleanParameter(award);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionObjectImplementation*) _impl)->assetPart(award);
+}
+
+void MissionObject::sendTo(Player* player, bool doClose) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(doClose);
 
@@ -58,7 +85,7 @@ void MissionObject::sendDeltaTo(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -71,7 +98,7 @@ void MissionObject::doLinkToPlayer(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -84,7 +111,7 @@ void MissionObject::sendDestroyTo(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -92,12 +119,37 @@ void MissionObject::sendDestroyTo(Player* player) {
 		((MissionObjectImplementation*) _impl)->sendDestroyTo(player);
 }
 
-void MissionObject::setDBKey(String& tdbk) {
+void MissionObject::setOwner(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 13);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionObjectImplementation*) _impl)->setOwner(player);
+}
+
+Player* MissionObject::getOwner() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return (Player*) method.executeWithObjectReturn();
+	} else
+		return ((MissionObjectImplementation*) _impl)->getOwner();
+}
+
+void MissionObject::setDBKey(const String& tdbk) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
 		method.addAsciiParameter(tdbk);
 
 		method.executeWithVoidReturn();
@@ -110,7 +162,7 @@ String& MissionObject::getDBKey() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 16);
 
 		method.executeWithAsciiReturn(_return_getDBKey);
 		return _return_getDBKey;
@@ -123,7 +175,7 @@ void MissionObject::applyTerminalMask(int tam) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 17);
 		method.addSignedIntParameter(tam);
 
 		method.executeWithVoidReturn();
@@ -136,36 +188,245 @@ int MissionObject::getTerminalMask() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithSignedIntReturn();
 	} else
 		return ((MissionObjectImplementation*) _impl)->getTerminalMask();
 }
 
-void MissionObject::setDeliverItem(TangibleObject* tdi) {
+String& MissionObject::getStatusStr() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
-		method.addObjectParameter(tdi);
+		DistributedMethod method(this, 19);
+
+		method.executeWithAsciiReturn(_return_getStatusStr);
+		return _return_getStatusStr;
+	} else
+		return ((MissionObjectImplementation*) _impl)->getStatusStr();
+}
+
+void MissionObject::addDeliverItem(TangibleObject* item) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+		method.addObjectParameter(item);
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _impl)->setDeliverItem(tdi);
+		((MissionObjectImplementation*) _impl)->addDeliverItem(item);
 }
 
-TangibleObject* MissionObject::getDeliverItem() {
+TangibleObject* MissionObject::getDeliverItem(unsigned long long oid) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 21);
+		method.addUnsignedLongParameter(oid);
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
-		return ((MissionObjectImplementation*) _impl)->getDeliverItem();
+		return ((MissionObjectImplementation*) _impl)->getDeliverItem(oid);
+}
+
+void MissionObject::removeDeliverItem(SceneObject* item) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+		method.addObjectParameter(item);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionObjectImplementation*) _impl)->removeDeliverItem(item);
+}
+
+void MissionObject::addAwardItem(TangibleObject* item) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+		method.addObjectParameter(item);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionObjectImplementation*) _impl)->addAwardItem(item);
+}
+
+TangibleObject* MissionObject::getAwardItem(unsigned long long oid) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
+		method.addUnsignedLongParameter(oid);
+
+		return (TangibleObject*) method.executeWithObjectReturn();
+	} else
+		return ((MissionObjectImplementation*) _impl)->getAwardItem(oid);
+}
+
+void MissionObject::removeAwardItem(SceneObject* item) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 25);
+		method.addObjectParameter(item);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionObjectImplementation*) _impl)->removeAwardItem(item);
+}
+
+void MissionObject::setObjectiveDefaults(const String& od) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 26);
+		method.addAsciiParameter(od);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionObjectImplementation*) _impl)->setObjectiveDefaults(od);
+}
+
+String& MissionObject::getObjectiveDefaults() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 27);
+
+		method.executeWithAsciiReturn(_return_getObjectiveDefaults);
+		return _return_getObjectiveDefaults;
+	} else
+		return ((MissionObjectImplementation*) _impl)->getObjectiveDefaults();
+}
+
+bool MissionObject::isInstantComplete() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((MissionObjectImplementation*) _impl)->isInstantComplete();
+}
+
+void MissionObject::setInstantComplete(bool temp) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 29);
+		method.addBooleanParameter(temp);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionObjectImplementation*) _impl)->setInstantComplete(temp);
+}
+
+bool MissionObject::isComplete() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 30);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((MissionObjectImplementation*) _impl)->isComplete();
+}
+
+bool MissionObject::isFailure() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 31);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((MissionObjectImplementation*) _impl)->isFailure();
+}
+
+void MissionObject::addObjective(MissionObjective* mo) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 32);
+		method.addObjectParameter(mo);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionObjectImplementation*) _impl)->addObjective(mo);
+}
+
+void MissionObject::spawnObjectives(const String& objectives) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 33);
+		method.addAsciiParameter(objectives);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionObjectImplementation*) _impl)->spawnObjectives(objectives);
+}
+
+void MissionObject::serializeObjectives(String& ret) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 34);
+		method.addAsciiParameter(ret);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionObjectImplementation*) _impl)->serializeObjectives(ret);
+}
+
+int MissionObject::updateStatus(int type, unsigned int objCrc, const String& str, String& updateStr, int increment) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 35);
+		method.addSignedIntParameter(type);
+		method.addUnsignedIntParameter(objCrc);
+		method.addAsciiParameter(str);
+		method.addAsciiParameter(updateStr);
+		method.addSignedIntParameter(increment);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((MissionObjectImplementation*) _impl)->updateStatus(type, objCrc, str, updateStr, increment);
+}
+
+void MissionObject::checkComplete() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 36);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionObjectImplementation*) _impl)->checkComplete();
 }
 
 void MissionObject::setTypeStr(const String& tstr) {
@@ -173,7 +434,7 @@ void MissionObject::setTypeStr(const String& tstr) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 37);
 		method.addAsciiParameter(tstr);
 
 		method.executeWithVoidReturn();
@@ -186,7 +447,7 @@ String& MissionObject::getTypeStr() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 38);
 
 		method.executeWithAsciiReturn(_return_getTypeStr);
 		return _return_getTypeStr;
@@ -199,7 +460,7 @@ void MissionObject::setDescKey(int tdk) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 39);
 		method.addSignedIntParameter(tdk);
 
 		method.executeWithVoidReturn();
@@ -212,7 +473,7 @@ unsigned int MissionObject::getDescKey() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 40);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -224,7 +485,7 @@ void MissionObject::setTitleKey(int ttk) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 41);
 		method.addSignedIntParameter(ttk);
 
 		method.executeWithVoidReturn();
@@ -237,7 +498,7 @@ unsigned int MissionObject::getTitleKey() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 42);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -249,7 +510,7 @@ void MissionObject::setDifficultyLevel(unsigned int tdlv) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 43);
 		method.addUnsignedIntParameter(tdlv);
 
 		method.executeWithVoidReturn();
@@ -262,7 +523,7 @@ unsigned int MissionObject::getDifficultyLevel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 44);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -274,7 +535,7 @@ void MissionObject::setDestX(float tdx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 45);
 		method.addFloatParameter(tdx);
 
 		method.executeWithVoidReturn();
@@ -287,7 +548,7 @@ float MissionObject::getDestX() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 46);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -299,7 +560,7 @@ void MissionObject::setDestY(float tdy) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 47);
 		method.addFloatParameter(tdy);
 
 		method.executeWithVoidReturn();
@@ -312,7 +573,7 @@ float MissionObject::getDestY() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 48);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -324,7 +585,7 @@ void MissionObject::setDestPlanetCrc(unsigned int tpc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 49);
 		method.addUnsignedIntParameter(tpc);
 
 		method.executeWithVoidReturn();
@@ -337,7 +598,7 @@ unsigned int MissionObject::getDestPlanetCrc() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 50);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -349,7 +610,7 @@ void MissionObject::setCreatorName(const UnicodeString& tcn) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 51);
 		method.addUnicodeParameter(tcn);
 
 		method.executeWithVoidReturn();
@@ -362,7 +623,7 @@ UnicodeString& MissionObject::getCreatorName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 52);
 
 		method.executeWithUnicodeReturn(_return_getCreatorName);
 		return _return_getCreatorName;
@@ -375,7 +636,7 @@ void MissionObject::setReward(unsigned int tr) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 53);
 		method.addUnsignedIntParameter(tr);
 
 		method.executeWithVoidReturn();
@@ -388,7 +649,7 @@ unsigned int MissionObject::getReward() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 54);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -400,7 +661,7 @@ void MissionObject::setTargetX(float ttx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 55);
 		method.addFloatParameter(ttx);
 
 		method.executeWithVoidReturn();
@@ -413,7 +674,7 @@ float MissionObject::getTargetX() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 56);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -425,7 +686,7 @@ void MissionObject::setTargetY(float tty) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 57);
 		method.addFloatParameter(tty);
 
 		method.executeWithVoidReturn();
@@ -438,7 +699,7 @@ float MissionObject::getTargetY() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 58);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -450,7 +711,7 @@ void MissionObject::setTargetPlanetCrc(unsigned int tpc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 59);
 		method.addUnsignedIntParameter(tpc);
 
 		method.executeWithVoidReturn();
@@ -463,11 +724,37 @@ unsigned int MissionObject::getTargetPlanetCrc() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 60);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
 		return ((MissionObjectImplementation*) _impl)->getTargetPlanetCrc();
+}
+
+void MissionObject::setTargetName(const String& tds) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 61);
+		method.addAsciiParameter(tds);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionObjectImplementation*) _impl)->setTargetName(tds);
+}
+
+String& MissionObject::getTargetName() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 62);
+
+		method.executeWithAsciiReturn(_return_getTargetName);
+		return _return_getTargetName;
+	} else
+		return ((MissionObjectImplementation*) _impl)->getTargetName();
 }
 
 void MissionObject::setDepictedObjCrc(unsigned int tsdc) {
@@ -475,7 +762,7 @@ void MissionObject::setDepictedObjCrc(unsigned int tsdc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 63);
 		method.addUnsignedIntParameter(tsdc);
 
 		method.executeWithVoidReturn();
@@ -488,7 +775,7 @@ unsigned int MissionObject::getDepictedObjCrc() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 64);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -500,7 +787,7 @@ void MissionObject::setDescriptionStf(const String& tds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 65);
 		method.addAsciiParameter(tds);
 
 		method.executeWithVoidReturn();
@@ -513,7 +800,7 @@ String& MissionObject::getDescriptionStf() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 66);
 
 		method.executeWithAsciiReturn(_return_getDescriptionStf);
 		return _return_getDescriptionStf;
@@ -521,12 +808,38 @@ String& MissionObject::getDescriptionStf() {
 		return ((MissionObjectImplementation*) _impl)->getDescriptionStf();
 }
 
+void MissionObject::setDescription(const String& tds) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 67);
+		method.addAsciiParameter(tds);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionObjectImplementation*) _impl)->setDescription(tds);
+}
+
+String& MissionObject::getDescription() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 68);
+
+		method.executeWithAsciiReturn(_return_getDescription);
+		return _return_getDescription;
+	} else
+		return ((MissionObjectImplementation*) _impl)->getDescription();
+}
+
 void MissionObject::setTitleStf(const String& tts) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 69);
 		method.addAsciiParameter(tts);
 
 		method.executeWithVoidReturn();
@@ -539,7 +852,7 @@ String& MissionObject::getTitleStf() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 70);
 
 		method.executeWithAsciiReturn(_return_getTitleStf);
 		return _return_getTitleStf;
@@ -547,12 +860,38 @@ String& MissionObject::getTitleStf() {
 		return ((MissionObjectImplementation*) _impl)->getTitleStf();
 }
 
+void MissionObject::setTitle(const String& tts) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 71);
+		method.addAsciiParameter(tts);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionObjectImplementation*) _impl)->setTitle(tts);
+}
+
+String& MissionObject::getTitle() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 72);
+
+		method.executeWithAsciiReturn(_return_getTitle);
+		return _return_getTitle;
+	} else
+		return ((MissionObjectImplementation*) _impl)->getTitle();
+}
+
 void MissionObject::setRefreshCount(unsigned int trc) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 73);
 		method.addUnsignedIntParameter(trc);
 
 		method.executeWithVoidReturn();
@@ -565,7 +904,7 @@ unsigned int MissionObject::getRefreshCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 74);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -577,7 +916,7 @@ void MissionObject::setTypeCrc(unsigned int ttc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, 75);
 		method.addUnsignedIntParameter(ttc);
 
 		method.executeWithVoidReturn();
@@ -590,7 +929,7 @@ unsigned int MissionObject::getTypeCrc() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, 76);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -612,135 +951,213 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		init();
 		break;
 	case 7:
-		sendTo((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
+		assetSetup();
 		break;
 	case 8:
-		sendDeltaTo((Player*) inv->getObjectParameter());
+		assetPart(inv->getBooleanParameter());
 		break;
 	case 9:
-		doLinkToPlayer((Player*) inv->getObjectParameter());
+		sendTo((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 10:
-		sendDestroyTo((Player*) inv->getObjectParameter());
+		sendDeltaTo((Player*) inv->getObjectParameter());
 		break;
 	case 11:
-		setDBKey(inv->getAsciiParameter(_param0_setDBKey__String_));
+		doLinkToPlayer((Player*) inv->getObjectParameter());
 		break;
 	case 12:
-		resp->insertAscii(getDBKey());
+		sendDestroyTo((Player*) inv->getObjectParameter());
 		break;
 	case 13:
-		applyTerminalMask(inv->getSignedIntParameter());
+		setOwner((Player*) inv->getObjectParameter());
 		break;
 	case 14:
-		resp->insertSignedInt(getTerminalMask());
+		resp->insertLong(getOwner()->_getObjectID());
 		break;
 	case 15:
-		setDeliverItem((TangibleObject*) inv->getObjectParameter());
+		setDBKey(inv->getAsciiParameter(_param0_setDBKey__String_));
 		break;
 	case 16:
-		resp->insertLong(getDeliverItem()->_getObjectID());
+		resp->insertAscii(getDBKey());
 		break;
 	case 17:
-		setTypeStr(inv->getAsciiParameter(_param0_setTypeStr__String_));
+		applyTerminalMask(inv->getSignedIntParameter());
 		break;
 	case 18:
-		resp->insertAscii(getTypeStr());
+		resp->insertSignedInt(getTerminalMask());
 		break;
 	case 19:
-		setDescKey(inv->getSignedIntParameter());
+		resp->insertAscii(getStatusStr());
 		break;
 	case 20:
-		resp->insertInt(getDescKey());
+		addDeliverItem((TangibleObject*) inv->getObjectParameter());
 		break;
 	case 21:
-		setTitleKey(inv->getSignedIntParameter());
+		resp->insertLong(getDeliverItem(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 22:
-		resp->insertInt(getTitleKey());
+		removeDeliverItem((SceneObject*) inv->getObjectParameter());
 		break;
 	case 23:
-		setDifficultyLevel(inv->getUnsignedIntParameter());
+		addAwardItem((TangibleObject*) inv->getObjectParameter());
 		break;
 	case 24:
-		resp->insertInt(getDifficultyLevel());
+		resp->insertLong(getAwardItem(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 25:
-		setDestX(inv->getFloatParameter());
+		removeAwardItem((SceneObject*) inv->getObjectParameter());
 		break;
 	case 26:
-		resp->insertFloat(getDestX());
+		setObjectiveDefaults(inv->getAsciiParameter(_param0_setObjectiveDefaults__String_));
 		break;
 	case 27:
-		setDestY(inv->getFloatParameter());
+		resp->insertAscii(getObjectiveDefaults());
 		break;
 	case 28:
-		resp->insertFloat(getDestY());
+		resp->insertBoolean(isInstantComplete());
 		break;
 	case 29:
-		setDestPlanetCrc(inv->getUnsignedIntParameter());
+		setInstantComplete(inv->getBooleanParameter());
 		break;
 	case 30:
-		resp->insertInt(getDestPlanetCrc());
+		resp->insertBoolean(isComplete());
 		break;
 	case 31:
-		setCreatorName(inv->getUnicodeParameter(_param0_setCreatorName__UnicodeString_));
+		resp->insertBoolean(isFailure());
 		break;
 	case 32:
-		resp->insertUnicode(getCreatorName());
+		addObjective((MissionObjective*) inv->getObjectParameter());
 		break;
 	case 33:
-		setReward(inv->getUnsignedIntParameter());
+		spawnObjectives(inv->getAsciiParameter(_param0_spawnObjectives__String_));
 		break;
 	case 34:
-		resp->insertInt(getReward());
+		serializeObjectives(inv->getAsciiParameter(_param0_serializeObjectives__String_));
 		break;
 	case 35:
-		setTargetX(inv->getFloatParameter());
+		resp->insertSignedInt(updateStatus(inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param2_updateStatus__int_int_String_String_int_), inv->getAsciiParameter(_param3_updateStatus__int_int_String_String_int_), inv->getSignedIntParameter()));
 		break;
 	case 36:
-		resp->insertFloat(getTargetX());
+		checkComplete();
 		break;
 	case 37:
-		setTargetY(inv->getFloatParameter());
+		setTypeStr(inv->getAsciiParameter(_param0_setTypeStr__String_));
 		break;
 	case 38:
-		resp->insertFloat(getTargetY());
+		resp->insertAscii(getTypeStr());
 		break;
 	case 39:
-		setTargetPlanetCrc(inv->getUnsignedIntParameter());
+		setDescKey(inv->getSignedIntParameter());
 		break;
 	case 40:
-		resp->insertInt(getTargetPlanetCrc());
+		resp->insertInt(getDescKey());
 		break;
 	case 41:
-		setDepictedObjCrc(inv->getUnsignedIntParameter());
+		setTitleKey(inv->getSignedIntParameter());
 		break;
 	case 42:
-		resp->insertInt(getDepictedObjCrc());
+		resp->insertInt(getTitleKey());
 		break;
 	case 43:
-		setDescriptionStf(inv->getAsciiParameter(_param0_setDescriptionStf__String_));
+		setDifficultyLevel(inv->getUnsignedIntParameter());
 		break;
 	case 44:
-		resp->insertAscii(getDescriptionStf());
+		resp->insertInt(getDifficultyLevel());
 		break;
 	case 45:
-		setTitleStf(inv->getAsciiParameter(_param0_setTitleStf__String_));
+		setDestX(inv->getFloatParameter());
 		break;
 	case 46:
-		resp->insertAscii(getTitleStf());
+		resp->insertFloat(getDestX());
 		break;
 	case 47:
-		setRefreshCount(inv->getUnsignedIntParameter());
+		setDestY(inv->getFloatParameter());
 		break;
 	case 48:
-		resp->insertInt(getRefreshCount());
+		resp->insertFloat(getDestY());
 		break;
 	case 49:
-		setTypeCrc(inv->getUnsignedIntParameter());
+		setDestPlanetCrc(inv->getUnsignedIntParameter());
 		break;
 	case 50:
+		resp->insertInt(getDestPlanetCrc());
+		break;
+	case 51:
+		setCreatorName(inv->getUnicodeParameter(_param0_setCreatorName__UnicodeString_));
+		break;
+	case 52:
+		resp->insertUnicode(getCreatorName());
+		break;
+	case 53:
+		setReward(inv->getUnsignedIntParameter());
+		break;
+	case 54:
+		resp->insertInt(getReward());
+		break;
+	case 55:
+		setTargetX(inv->getFloatParameter());
+		break;
+	case 56:
+		resp->insertFloat(getTargetX());
+		break;
+	case 57:
+		setTargetY(inv->getFloatParameter());
+		break;
+	case 58:
+		resp->insertFloat(getTargetY());
+		break;
+	case 59:
+		setTargetPlanetCrc(inv->getUnsignedIntParameter());
+		break;
+	case 60:
+		resp->insertInt(getTargetPlanetCrc());
+		break;
+	case 61:
+		setTargetName(inv->getAsciiParameter(_param0_setTargetName__String_));
+		break;
+	case 62:
+		resp->insertAscii(getTargetName());
+		break;
+	case 63:
+		setDepictedObjCrc(inv->getUnsignedIntParameter());
+		break;
+	case 64:
+		resp->insertInt(getDepictedObjCrc());
+		break;
+	case 65:
+		setDescriptionStf(inv->getAsciiParameter(_param0_setDescriptionStf__String_));
+		break;
+	case 66:
+		resp->insertAscii(getDescriptionStf());
+		break;
+	case 67:
+		setDescription(inv->getAsciiParameter(_param0_setDescription__String_));
+		break;
+	case 68:
+		resp->insertAscii(getDescription());
+		break;
+	case 69:
+		setTitleStf(inv->getAsciiParameter(_param0_setTitleStf__String_));
+		break;
+	case 70:
+		resp->insertAscii(getTitleStf());
+		break;
+	case 71:
+		setTitle(inv->getAsciiParameter(_param0_setTitle__String_));
+		break;
+	case 72:
+		resp->insertAscii(getTitle());
+		break;
+	case 73:
+		setRefreshCount(inv->getUnsignedIntParameter());
+		break;
+	case 74:
+		resp->insertInt(getRefreshCount());
+		break;
+	case 75:
+		setTypeCrc(inv->getUnsignedIntParameter());
+		break;
+	case 76:
 		resp->insertInt(getTypeCrc());
 		break;
 	default:
@@ -752,6 +1169,14 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 
 void MissionObjectAdapter::init() {
 	return ((MissionObjectImplementation*) impl)->init();
+}
+
+void MissionObjectAdapter::assetSetup() {
+	return ((MissionObjectImplementation*) impl)->assetSetup();
+}
+
+void MissionObjectAdapter::assetPart(bool award) {
+	return ((MissionObjectImplementation*) impl)->assetPart(award);
 }
 
 void MissionObjectAdapter::sendTo(Player* player, bool doClose) {
@@ -770,7 +1195,15 @@ void MissionObjectAdapter::sendDestroyTo(Player* player) {
 	return ((MissionObjectImplementation*) impl)->sendDestroyTo(player);
 }
 
-void MissionObjectAdapter::setDBKey(String& tdbk) {
+void MissionObjectAdapter::setOwner(Player* player) {
+	return ((MissionObjectImplementation*) impl)->setOwner(player);
+}
+
+Player* MissionObjectAdapter::getOwner() {
+	return ((MissionObjectImplementation*) impl)->getOwner();
+}
+
+void MissionObjectAdapter::setDBKey(const String& tdbk) {
 	return ((MissionObjectImplementation*) impl)->setDBKey(tdbk);
 }
 
@@ -786,12 +1219,76 @@ int MissionObjectAdapter::getTerminalMask() {
 	return ((MissionObjectImplementation*) impl)->getTerminalMask();
 }
 
-void MissionObjectAdapter::setDeliverItem(TangibleObject* tdi) {
-	return ((MissionObjectImplementation*) impl)->setDeliverItem(tdi);
+String& MissionObjectAdapter::getStatusStr() {
+	return ((MissionObjectImplementation*) impl)->getStatusStr();
 }
 
-TangibleObject* MissionObjectAdapter::getDeliverItem() {
-	return ((MissionObjectImplementation*) impl)->getDeliverItem();
+void MissionObjectAdapter::addDeliverItem(TangibleObject* item) {
+	return ((MissionObjectImplementation*) impl)->addDeliverItem(item);
+}
+
+TangibleObject* MissionObjectAdapter::getDeliverItem(unsigned long long oid) {
+	return ((MissionObjectImplementation*) impl)->getDeliverItem(oid);
+}
+
+void MissionObjectAdapter::removeDeliverItem(SceneObject* item) {
+	return ((MissionObjectImplementation*) impl)->removeDeliverItem(item);
+}
+
+void MissionObjectAdapter::addAwardItem(TangibleObject* item) {
+	return ((MissionObjectImplementation*) impl)->addAwardItem(item);
+}
+
+TangibleObject* MissionObjectAdapter::getAwardItem(unsigned long long oid) {
+	return ((MissionObjectImplementation*) impl)->getAwardItem(oid);
+}
+
+void MissionObjectAdapter::removeAwardItem(SceneObject* item) {
+	return ((MissionObjectImplementation*) impl)->removeAwardItem(item);
+}
+
+void MissionObjectAdapter::setObjectiveDefaults(const String& od) {
+	return ((MissionObjectImplementation*) impl)->setObjectiveDefaults(od);
+}
+
+String& MissionObjectAdapter::getObjectiveDefaults() {
+	return ((MissionObjectImplementation*) impl)->getObjectiveDefaults();
+}
+
+bool MissionObjectAdapter::isInstantComplete() {
+	return ((MissionObjectImplementation*) impl)->isInstantComplete();
+}
+
+void MissionObjectAdapter::setInstantComplete(bool temp) {
+	return ((MissionObjectImplementation*) impl)->setInstantComplete(temp);
+}
+
+bool MissionObjectAdapter::isComplete() {
+	return ((MissionObjectImplementation*) impl)->isComplete();
+}
+
+bool MissionObjectAdapter::isFailure() {
+	return ((MissionObjectImplementation*) impl)->isFailure();
+}
+
+void MissionObjectAdapter::addObjective(MissionObjective* mo) {
+	return ((MissionObjectImplementation*) impl)->addObjective(mo);
+}
+
+void MissionObjectAdapter::spawnObjectives(const String& objectives) {
+	return ((MissionObjectImplementation*) impl)->spawnObjectives(objectives);
+}
+
+void MissionObjectAdapter::serializeObjectives(String& ret) {
+	return ((MissionObjectImplementation*) impl)->serializeObjectives(ret);
+}
+
+int MissionObjectAdapter::updateStatus(int type, unsigned int objCrc, const String& str, String& updateStr, int increment) {
+	return ((MissionObjectImplementation*) impl)->updateStatus(type, objCrc, str, updateStr, increment);
+}
+
+void MissionObjectAdapter::checkComplete() {
+	return ((MissionObjectImplementation*) impl)->checkComplete();
 }
 
 void MissionObjectAdapter::setTypeStr(const String& tstr) {
@@ -890,6 +1387,14 @@ unsigned int MissionObjectAdapter::getTargetPlanetCrc() {
 	return ((MissionObjectImplementation*) impl)->getTargetPlanetCrc();
 }
 
+void MissionObjectAdapter::setTargetName(const String& tds) {
+	return ((MissionObjectImplementation*) impl)->setTargetName(tds);
+}
+
+String& MissionObjectAdapter::getTargetName() {
+	return ((MissionObjectImplementation*) impl)->getTargetName();
+}
+
 void MissionObjectAdapter::setDepictedObjCrc(unsigned int tsdc) {
 	return ((MissionObjectImplementation*) impl)->setDepictedObjCrc(tsdc);
 }
@@ -906,12 +1411,28 @@ String& MissionObjectAdapter::getDescriptionStf() {
 	return ((MissionObjectImplementation*) impl)->getDescriptionStf();
 }
 
+void MissionObjectAdapter::setDescription(const String& tds) {
+	return ((MissionObjectImplementation*) impl)->setDescription(tds);
+}
+
+String& MissionObjectAdapter::getDescription() {
+	return ((MissionObjectImplementation*) impl)->getDescription();
+}
+
 void MissionObjectAdapter::setTitleStf(const String& tts) {
 	return ((MissionObjectImplementation*) impl)->setTitleStf(tts);
 }
 
 String& MissionObjectAdapter::getTitleStf() {
 	return ((MissionObjectImplementation*) impl)->getTitleStf();
+}
+
+void MissionObjectAdapter::setTitle(const String& tts) {
+	return ((MissionObjectImplementation*) impl)->setTitle(tts);
+}
+
+String& MissionObjectAdapter::getTitle() {
+	return ((MissionObjectImplementation*) impl)->getTitle();
 }
 
 void MissionObjectAdapter::setRefreshCount(unsigned int trc) {

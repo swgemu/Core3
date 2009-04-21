@@ -404,7 +404,6 @@ interface CreatureObject implements TangibleObject {
 	void startWatch(unsigned long entid);
 	void startListen(unsigned long entid);
 
-
 	void stopWatch(unsigned long entid, boolean doSendPackets = true, boolean forced = false, boolean doLock = true, boolean outOfRange = false);
 	void stopListen(unsigned long entid, boolean doSendPackets = true, boolean forced = false, boolean doLock = true, boolean outOfRange = false);
 
@@ -445,6 +444,13 @@ interface CreatureObject implements TangibleObject {
 	
 	String getSkillOrCertification(int idx);
 	int getSkillAndCertificationSize();
+	
+	// Conversation Methods
+	void sendConversationStartTo(SceneObject obj);
+	void selectConversationOption(int option, SceneObject obj);
+	void sendConversationStopTo(SceneObject obj);
+	void addConvoScreen(const String screenID, const String leftBoxText, int numOptions, const String Options, const String optLinks);
+	void sendConvoScreen(Player player, const String screenID);
 
 	// mount methods
 	void mountCreature(MountCreature mnt, boolean lockMount = true);
@@ -911,7 +917,7 @@ interface CreatureObject implements TangibleObject {
 	void setTemplateString(const String tmpString);
 	void clearTemplateString();
 
-	void say(UnicodeString message, unsigned int moodid = 0, unsigned int mood2 = 0);
+	void say(const UnicodeString message, unsigned int moodid = 0, unsigned int mood2 = 0);
 
 	void say(const String file, const String str, StfParameter param, unsigned int moodid = 0, unsigned int mood2 = 0);
 
@@ -944,6 +950,7 @@ interface CreatureObject implements TangibleObject {
 	//Event handlers
 	void onIncapacitated(SceneObject attacker);
 	void onIncapacitationRecovery();
+	void onConverse(Player player);
 	void onDeath();
 	void onKilled(SceneObject killer);
 	void onResuscitated(SceneObject healer);

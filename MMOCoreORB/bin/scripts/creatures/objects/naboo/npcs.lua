@@ -108,3 +108,6 @@
  RunCreatureFile("objects/naboo/npcs/tradeFederation/tradeFederationLoyalist.lua")
  RunCreatureFile("objects/naboo/npcs/tradeFederation/tradeFederationPirate.lua")
  RunCreatureFile("objects/naboo/npcs/tradeFederation/tradeFederationZealot.lua")
+
+--Missions
+ RunCreatureFile("objects/naboo/npcs/misc/davidKarivalis.lua")

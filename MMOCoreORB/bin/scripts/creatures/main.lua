@@ -43,6 +43,7 @@
 -- utils
 -- creatures lua files
 RunCreatureFile("objects/object.lua") -- basic object
+RunCreatureFile("objects/conversation.lua") -- Optional conversation object
 RunCreatureFile("objects/creature.lua") -- Creature Object
 
 local sin, cos = math.sin, math.cos
