@@ -285,6 +285,7 @@ void PlayerImplementation::initializePlayer() {
  	conversatingCreature = NULL;
 
  	chatRooms.setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
+ 	missionMap.setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
 
  	setLotsRemaining(10);
  	centered = false;
@@ -3767,7 +3768,8 @@ bool PlayerImplementation::hasCompletedMisoKey(const String& tmk) {
 //Called by the mission manager when a new mission is added
 void PlayerImplementation::addMission(const String& key, MissionObject* miso) {
 	curMisoKeys += (key + ",");
-	missionMap.put(key, miso);
+	if (missionMap.put(key, miso) != -1)
+		miso->acquire();
 }
 
 /**
@@ -3837,7 +3839,9 @@ void PlayerImplementation::dropMission(const String& key, bool finished) {
 	}
 
 	miso->finalize();
-	missionMap.drop(key);
+
+	if (missionMap.drop(key))
+		miso->release();
 
 	//Drop from the current mission key set:
 	int pos = curMisoKeys.indexOf(tck);
@@ -3861,6 +3865,7 @@ void PlayerImplementation::dropAllMissions() {
 		if(miso != NULL) {
 			miso->sendDestroyTo(_this);
 			miso->finalize();
+			miso->release();
 		}
 	}
 	missionMap.removeAll();
