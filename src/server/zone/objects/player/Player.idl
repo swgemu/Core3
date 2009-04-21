@@ -50,33 +50,35 @@ include "professions/SkillBox";
 import "../../ZoneClientSession";
 import "../../Zone";
 
-import "../scene/SceneObject";
+import "../building/cloningfacility/CloningFacility";
 
 import "../creature/CreatureObject";
 import "../creature/Creature";
 
-import "../tangible/TangibleObject";
-
-import "../tangible/wearables/Wearable";
-
-import "PlayerObject";
-
-import "faction/FactionPointList";
-
-import "../tangible/weapons/Weapon";
-import "../tangible/wearables/Armor";
-
-import "../tangible/attachment/Attachment";
-
-import "../tangible/powerup/Powerup";
-
-import "../tangible/Datapad";
-import "../tangible/surveytool/SurveyTool";
-import "../tangible/campkit/campsite/CampSite";
-
 import "../group/GroupObject";
 
 import "../guild/Guild";
+
+import "PlayerObject";
+
+import "../tangible/TangibleObject";
+import "../tangible/wearables/Wearable";
+import "../tangible/weapons/Weapon";
+import "../tangible/wearables/Armor";
+import "../tangible/attachment/Attachment";
+import "../tangible/powerup/Powerup";
+import "../tangible/Datapad";
+import "../tangible/surveytool/SurveyTool";
+import "../tangible/campkit/campsite/CampSite";
+import "../tangible/crafting/CraftingTool";
+import "../tangible/resource/ResourceContainer";
+import "../tangible/terminal/cloning/CloningTerminal";
+import "../tangible/terminal/cloning/InsuranceTerminal";
+import "../draftschematic/DraftSchematic";
+
+import "../mission/MissionObject";
+
+import "../scene/SceneObject";
 
 import "../waypoint/WaypointObject";
 
@@ -85,18 +87,10 @@ import "../../../chat/room/ChatRoom";
 import "sui/SuiBox";
 import "sui/listbox/SuiListBoxVector";
 
-import "../draftschematic/DraftSchematic";
-import "../tangible/crafting/CraftingTool";
-import "../tangible/resource/ResourceContainer";
-
 import "badges/Badges";
 
+import "faction/FactionPointList";
 import "../area/ActiveArea";
-
-import "../tangible/terminal/cloning/CloningTerminal";
-import "../building/cloningfacility/CloningFacility";
-
-import "../tangible/terminal/cloning/InsuranceTerminal";
 
 interface Player implements CreatureObject {
 	Player() {
@@ -548,18 +542,24 @@ interface Player implements CreatureObject {
 
 	// mission stuff
 	unsigned int nextMisoRFC();
+	void setMisoRFC(unsigned int r);
+	unsigned int getMisoRFC();
+	void resetMisoBSB();
 	int checkMisoBSB(int tcb);
 	void setMisoBSB(int tms);
-	void addToCurMisoKeys(String& tck);
-	boolean isOnCurMisoKey(String tmk);
-	void removeFromCurMisoKeys(String tck);
-	void addToFinMisoKeys(String tmp);
-	boolean hasCompletedMisoKey(String tmk);
-
-	void updateMissionSave(String misoKey, const String dbVar, String varName, String varData, boolean doLock = false);
-
-	void fillMissionSaveVars();
+	void setCurrentMissionKeys(const String cur);
+	void setFinishedMissionKeys(const String fin);
+	boolean isOnCurMisoKey(const String tmk);
+	boolean hasCompletedMisoKey(const String tmk);
+	
+	int missionCount();
+	
+	void addMission(const String key, MissionObject miso);
+	void updateMissions(int type, unsigned int objCrc, const String str, int increment = 1);
+	MissionObject getPlayerMission(const String key);
 	void saveMissions();
+	void dropMission(const String key, boolean finished);
+	void dropAllMissions();
 
 	// Crafting
 	void setActiveCraftingTool(CraftingTool craftingTool);

@@ -53,7 +53,7 @@ public:
 
 	void sendSystemMessage(Player* player, const String& file, const String& str, StfParameter* param);
 
-	void broadcastMessage(CreatureObject* player, UnicodeString& message, unsigned long long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
+	void broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
 
 	void broadcastMessage(CreatureObject* player, const String& file, const String& str, StfParameter* param, unsigned long long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
 
@@ -157,7 +157,7 @@ public:
 
 	void sendSystemMessage(Player* player, const String& file, const String& str, StfParameter* param);
 
-	void broadcastMessage(CreatureObject* player, UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2);
+	void broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2);
 
 	void broadcastMessage(CreatureObject* player, const String& file, const String& str, StfParameter* param, unsigned long long target, unsigned int moodid, unsigned int mood2);
 

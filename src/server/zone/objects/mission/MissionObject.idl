@@ -48,26 +48,76 @@ import "../player/Player";
 
 import "../tangible/TangibleObject";
 
+import "MissionObjective";
+
 interface MissionObject implements SceneObject {
-	MissionObject(unsigned long oid) {
+	MissionObject(unsigned long oid, Player owner = NULL) {
 		super(oid, int type);
 	}
 	
 	void init();
 	
+	void assetSetup();
+	void assetPart(boolean award);
+	
+	/////
+	//Network Sends:
+	/////
 	void sendTo(Player player, boolean doClose = true);
 	void sendDeltaTo(Player player);
 	void doLinkToPlayer(Player player);
 	void sendDestroyTo(Player player);
 	
-	void setDBKey(String tdbk);
+	/////
+
+	void setOwner(Player player);
+	Player getOwner();
+	
+	/////
+	//Internal Tracking Methods:
+	/////
+	
+	void setDBKey(const String tdbk);
 	String getDBKey();
 	
 	void applyTerminalMask(int tam);
 	int getTerminalMask();
 	
-	void setDeliverItem(TangibleObject tdi);
-	TangibleObject getDeliverItem();
+	String getStatusStr();
+	
+	//Container: For giving to player to complete a delivery
+	void addDeliverItem(TangibleObject item);
+	TangibleObject getDeliverItem(unsigned long oid);
+	void removeDeliverItem(SceneObject item);
+
+	//Container: Items to award player on mission completion
+	void addAwardItem(TangibleObject item);
+	TangibleObject getAwardItem(unsigned long oid);
+	void removeAwardItem(SceneObject item);
+
+	/////
+	//Objectives
+	/////
+	
+	void setObjectiveDefaults(const String od);
+	String getObjectiveDefaults();
+	boolean isInstantComplete();
+	void setInstantComplete(boolean temp);
+	boolean isComplete();
+	boolean isFailure();
+
+	void addObjective(MissionObjective mo);
+	void spawnObjectives(const String objectives);
+	void serializeObjectives(String ret);
+	int updateStatus(int type, unsigned int objCrc, const String str, String updateStr, int increment);
+	void checkComplete();
+
+
+
+	/////
+	//Generic Mission Information Variables:
+	//All are used in the MissionObject3 packet
+	/////
 	
 	void setTypeStr(const String tstr);
 	String getTypeStr();
@@ -100,15 +150,21 @@ interface MissionObject implements SceneObject {
 	float getTargetY();
 	void setTargetPlanetCrc(unsigned int tpc);
 	unsigned int getTargetPlanetCrc();
+	void setTargetName(const String tds);
+	String getTargetName();
 	
 	void setDepictedObjCrc(unsigned int tsdc);
 	unsigned int getDepictedObjCrc();
 	
 	void setDescriptionStf(const String tds);
 	String getDescriptionStf();
+	void setDescription(const String tds);
+	String getDescription();
 	
 	void setTitleStf(const String tts);
 	String getTitleStf();
+	void setTitle(const String tts);
+	String getTitle();
 	
 	void setRefreshCount(unsigned int trc);
 	unsigned int getRefreshCount();

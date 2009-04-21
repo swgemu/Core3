@@ -43,6 +43,6 @@
 -- Naboo Missions
 
 -- Deliver:
-RunMissionFile("corellia/destroy/Bugs.lua")
+--RunMissionFile("corellia/destroy/Bugs.lua")
 
 -- Destroy:

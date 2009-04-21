@@ -58,8 +58,6 @@ which carries forward this exception.
 #include "objects/creature/CreatureImplementation.h"
 #include "objects/creature/CreatureObject.h"
 #include "objects/creature/CreatureObjectImplementation.h"
-#include "objects/creature/action/ActionCreature.h"
-#include "objects/creature/action/ActionCreatureImplementation.h"
 #include "objects/creature/trainer/TrainerCreature.h"
 #include "objects/creature/trainer/TrainerCreatureImplementation.h"
 #include "objects/creature/bluefrog/BlueFrogCreature.h"
@@ -270,6 +268,9 @@ which carries forward this exception.
 
 #include "objects/mission/MissionObject.h"
 #include "objects/mission/MissionObjectImplementation.h"
+
+#include "objects/mission/MissionObjective.h"
+#include "objects/mission/MissionObjectiveImplementation.h"
 
 #include "objects/waypoint/WaypointObject.h"
 #include "objects/waypoint/WaypointObjectImplementation.h"

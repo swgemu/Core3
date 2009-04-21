@@ -232,6 +232,7 @@ private:
 	static void eventCloner(StringTokenizer tokenizer, Player* player);
 
 	static void storeVehicle(StringTokenizer tokenizer, Player* player);
+	static void clearMissions(StringTokenizer tokenizer, Player* player);
 	void init();
 
 public:

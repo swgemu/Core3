@@ -99,8 +99,6 @@ public:
 
 	bool isMount();
 
-	bool isActionCreature();
-
 	String& getName();
 
 	int getZoneIndex();
@@ -243,8 +241,6 @@ public:
 	bool isRecruiter();
 
 	bool isMount();
-
-	bool isActionCreature();
 
 	String& getName();
 

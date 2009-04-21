@@ -50,7 +50,7 @@
 
 class SpatialChat: public ObjectControllerMessage {
 public:
-	SpatialChat(uint64 senderid, uint64 recvid, UnicodeString& message, uint64 target, uint32 moodid,
+	SpatialChat(uint64 senderid, uint64 recvid, const UnicodeString& message, uint64 target, uint32 moodid,
 			uint32 mood2) :
 		ObjectControllerMessage(recvid, 0x0B, 0xF4) {
 		insertLong(senderid);

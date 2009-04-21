@@ -57,8 +57,6 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/creature/Creature.idl \
 				server/zone/objects/creature/CreatureGroup.idl \
 				server/zone/objects/creature/shuttle/ShuttleCreature.idl \
-				server/zone/objects/creature/action/ActionCreature.idl \
-				server/zone/objects/creature/action/Action.idl \
 				server/zone/objects/creature/trainer/TrainerCreature.idl \
 				server/zone/objects/creature/bluefrog/BlueFrogCreature.idl \
 				server/zone/objects/creature/bluefrog/BlueFrogVector.idl \
@@ -196,6 +194,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/draftschematic/DraftSchematicValues.idl \
 				server/zone/objects/manufacture/ManufactureSchematic.idl \
 				server/zone/objects/mission/MissionObject.idl \
+				server/zone/objects/mission/MissionObjective.idl \
 				server/zone/objects/waypoint/WaypointObject.idl \
 				server/zone/objects/tangible/component/ShipComponent.idl \
 				server/zone/objects/ship/ShipObject.idl \
@@ -214,6 +213,8 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/managers/resource/ResourceManager.idl \
 				server/zone/managers/resource/ResourceList.idl \
 				server/zone/managers/resource/ResourceItem.idl \
+				server/zone/managers/resource/ResourceSpawn.idl \
+				server/zone/managers/resource/SpawnLocation.idl \
 				server/zone/managers/structure/StructureManager.idl \
 				server/zone/managers/user/UserManager.idl \
 				server/chat/room/ChatRoom.idl \

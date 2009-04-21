@@ -58,7 +58,7 @@ spawnCreatures(nightspider, 5, -4864.8, 3923.57, 40, 5)
 -- spawnCreatures(fleshEatingChuba, 5, -4864.8, 3923.57, 40, 5)
 spawnCreatures(capperSpineflap, 5, -4864.8, 3923.57, 40, 5)
 spawnCreatures(diseasedNuna, 5, -4864.8, 3923.57, 40, 5)
-spawnCreatures(shaupaut, 5, -4864.8, 3923.57, 40, 5)
+spawnCreatures(shaupaut, 5, -4864.8, 3923.57, 40, 50)
 spawnCreatures(nightspider, 5, -4869.36, 3853.99, 40, 5)
 spawnCreatures(shaupaut, 5, -4869.36, 3853.99, 40, 5)
 spawnCreatures(capperSpineflap, 5, -4869.36, 3853.99, 40, 5)
@@ -144,3 +144,7 @@ spawnCreatures(capperSpineflap, 5, -5060.8, 3806.97, 40, 5)
 -- spawnCreatures(fleshEatingChuba, 5, -5060.8, 3806.97, 40, 5)
 spawnCreatures(nightspider, 5, -5060.8, 3806.97, 40, 5)
 spawnCreatures(shaupaut, 5, -5060.8, 3806.97, 40, 5)
+
+-- Jurassic Peko
+spawnCreatures(pekoPeko, 5, -4570, 3850, 70, 150)
+

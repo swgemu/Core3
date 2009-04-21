@@ -43,9 +43,8 @@
 -----------------------------------------------------------------------------------------------------------------------
 
 -- Setup:
---RunMissionFile("object.lua")
---RunMissionFile("basemission.lua")
---RunMissionFile("baseaction.lua")
+RunMissionFile("object.lua")
+RunMissionFile("basemission.lua")
 
 -- utils
 local sin, cos = math.sin, math.cos
@@ -53,6 +52,7 @@ local deg, rad = math.deg, math.rad
 math.sin = function (x) return sin(rad(x)) end
 math.cos = function (x) return cos(rad(x)) end
 
+--[[
 -- Global Mission Table:
 MissionTable = { }
 
@@ -65,12 +65,12 @@ end
 
 function getMission(dbkey)
 	return MissionTable[dbkey]
-end
+end]]--
 
 -- Mission Scripts:
 
 --- Corellia
---RunMissionFile("corellia/corellia_main.lua")
+RunMissionFile("corellia/corellia_main.lua")
 
 --- Naboo
---RunMissionFile("naboo/naboo_main.lua")
+RunMissionFile("naboo/naboo_main.lua")

@@ -67,7 +67,7 @@ public:
 		Logger::getTime(time);
 
 		StringBuffer msg;
-		msg << time << " [LoginServer] disconnecting client \'" << ip << "\'\n";
+		msg << time << " [PingServer] disconnecting client \'" << ip << "\'\n";
 		Logger::console.log(msg);
 
 		BaseClientProxy::disconnect(doLock);

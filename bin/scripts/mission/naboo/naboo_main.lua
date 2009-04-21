@@ -46,3 +46,8 @@
 --RunMissionFile("naboo/deliver/TheBoxTwo.lua")
 
 -- Destroy:
+RunMissionFile("naboo/destroy/shaupautHunt.lua")
+--RunMissionFile("naboo/destroy/ticTacPeko.lua")
+--RunMissionFile("naboo/destroy/jurassicPeko.lua")
+--RunMissionFile("naboo/destroy/hairball.lua")
+--RunMissionFile("naboo/destroy/narlgatchTest.lua")

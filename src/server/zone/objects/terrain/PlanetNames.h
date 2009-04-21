@@ -151,6 +151,15 @@ public:
 		return planetNames[id];
 	}
 
+	inline const static char* getPlanetNameByCrc(int crc) {
+		int id = 0;
+		for(int i = 0; i < 10; ++i) {
+			if (crc == planetCrcs[i])
+				return getPlanetName(i);
+		}
+		return "";
+	}
+
 	static int getPlanetID(const String& name) {
 		for (int i = 0; i < 10; ++i) {
 			if (name == planetNames[i])

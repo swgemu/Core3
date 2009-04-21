@@ -67,6 +67,7 @@ which carries forward this exception.
 #include "skills/CamoSkill.h"
 
 #include "../../managers/skills/SkillManager.h"
+#include "../../managers/mission/MissionManager.h"
 
 CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : CreatureObjectServant(oid + 0x15, NONPLAYERCREATURE) {
 	objectType = NONPLAYERCREATURE;
@@ -3668,6 +3669,140 @@ SceneObject *CreatureObjectImplementation::getBuilding() {
 	return NULL;
 }
 
+/**
+ * Conversation methods
+ */
+
+/**
+ * Called in ObjControllerMessage when a player->npc conversation is started
+ */
+void CreatureObjectImplementation::sendConversationStartTo(SceneObject* obj) {
+	if (!obj->isPlayer())
+		return;
+
+	Player* player = (Player*) obj;
+
+	// This should be expanded on later, for random npc spatial spew
+	if(convoScreens.size() == 0) {
+		sendConversationStopTo(player);
+		_this->say(UnicodeString("I have nothing to say to you."));
+		return;
+	}
+
+	// Set initial conversation vars
+	player->setLastNpcConvStr(("npc_" + getCharacterName().toString()));
+	player->setLastNpcConvMessStr("0,init");
+
+	// Call the onConverse event handler to take over
+	onConverse(player);
+}
+
+/**
+ * Called in ObjControllerMessage when a player selects a conversation option
+ */
+void CreatureObjectImplementation::selectConversationOption(int option, SceneObject* obj) {
+	if (!obj->isPlayer())
+		return;
+
+	Player* player = (Player*) obj;
+
+	if (player->getLastNpcConvStr() != ("npc_" + getCharacterName().toString())) {
+		return;
+	}
+
+	String chk = player->getLastNpcConvMessStr();
+	String tScreenID;
+	StringTokenizer token(chk);
+	token.setDelimeter(",");
+	token.getStringToken(tScreenID);
+
+	// Convert option to String:
+	String optionStr = String::valueOf(option);
+
+	// Retrieve the next screen id using the current Screen/Option pair from convoOptLink
+	String newId = convoOptLink.get(tScreenID + "," + optionStr);
+
+	player->setLastNpcConvMessStr(newId + "," + optionStr);
+
+	// Call the onConverse event handler to take over
+	onConverse(player);
+}
+
+void CreatureObjectImplementation::sendConversationStopTo(SceneObject* obj) {
+	if (!obj->isPlayer())
+		return;
+
+	Player* player = (Player*) obj;
+
+	StopNpcConversation* scv = new StopNpcConversation(player, getObjectID());
+	player->sendMessage(scv);
+	player->setLastNpcConvStr("");
+	player->setLastNpcConvMessStr("");
+	player->setConversatingCreature(NULL);
+}
+
+/**
+ * Used to add conversation screens to the conversation map
+ */
+
+void CreatureObjectImplementation::addConvoScreen(const String& screenID, const String& leftBoxText, int numOptions, const String& Options, const String& optLinks) {
+	//optLinks syntax: nextScreenID|next|next etc. Goes to convoOptLink<"screenID,OptionNumber","nextScreenID">
+	String screenStr;
+	screenStr += leftBoxText + Options;
+	convoScreens.put(screenID, screenStr);
+	//System::out << "added screen.. ScreenID: " << screenID << ". screenStr: " << screenStr << endl;
+
+	StringTokenizer token(optLinks);
+	token.setDelimeter("|");
+
+	for(int i = 0; i < numOptions; i++) {
+		String key = "";
+		char numBuf[10];
+		sprintf(numBuf,"%d",i);
+		key = screenID + "," + numBuf;
+
+		String link = "";
+		token.getStringToken(link);
+
+		convoOptLink.put(key, link);
+	}
+}
+
+/**
+ * Used to send the needed packets (convo screen) to initiate / carry a conversation window
+ */
+void CreatureObjectImplementation::sendConvoScreen(Player* player, const String& screenID) {
+	String windowStr = convoScreens.get(screenID);
+	//Take the windowStr = "Left Box Text|Option1Text|O2|O3". Parse it and send the convo screen packet.
+
+	//System::out << "windowStr: " << windowStr << endl;
+
+	if(windowStr.isEmpty())
+		return;
+
+	// Parse and send the left box of the conversation:
+	StringTokenizer token(windowStr);
+	token.setDelimeter("|");
+	String temp;
+	token.getStringToken(temp);
+	UnicodeString utemp = temp;
+
+	//System::out << "sendConvoScreen: screenId: " << screenID << ". windowStr: " << windowStr << ". left text: " << temp << endl;
+
+	NpcConversationMessage* m1 = new NpcConversationMessage(player, utemp);
+	player->sendMessage(m1);
+
+	// Parse and send the options:
+	StringList* slist = new StringList(player);
+
+	while(token.hasMoreTokens()) {
+		String tempOpt;
+		token.getStringToken(tempOpt);
+		slist->insertOption(tempOpt);
+	}
+	player->sendMessage(slist);
+}
+
 void CreatureObjectImplementation::sendGuildTo() {
 	CreatureObjectDeltaMessage6* codm6 = new CreatureObjectDeltaMessage6(_this);
 	codm6->updateGuild(guild->getGuildID());
@@ -4474,6 +4609,79 @@ void CreatureObjectImplementation::onIncapacitationRecovery() {
 }
 
 /**
+ * The onConverse event handler is fired when a Conversation window is opened by a player w/ an NPC
+ */
+void CreatureObjectImplementation::onConverse(Player* player) {
+	if(player->getLastNpcConvStr() != ("npc_" + getCharacterName().toString()))
+		return;
+
+	// Grab the Screen ID and selected option
+	String chk = player->getLastNpcConvMessStr();
+	String screenId, tOptStr;
+	StringTokenizer token(chk);
+	token.setDelimeter(",");
+	token.getStringToken(screenId);
+	token.getStringToken(tOptStr);
+
+	//System::out << "onConverse: screenId: " << screenId << ". tOptStr: " << tOptStr << endl;
+
+	if(screenId.isEmpty())
+		return;
+
+	// This will be rewritten so more general evaluations can be made...not necesarily for missions.
+	if(screenId.indexOf("misoEval:") >= 0) { // Do an objective check for the mission. tOptStr = mission:missionkey
+		// Get the mission key
+		String key;
+		StringTokenizer mkTok(screenId);
+		mkTok.setDelimeter(":");
+		mkTok.getStringToken(key); //"mission"
+		if(mkTok.hasMoreTokens())
+			mkTok.getStringToken(key); //the actual key
+
+		if(key.isEmpty() || key == "mission")
+			return;
+
+		//Get any possible fallback key
+		String fallKey;
+		StringTokenizer fTok(key);
+		fTok.setDelimeter(";");
+		fTok.getStringToken(key); //mission key
+		if(fTok.hasMoreTokens())
+			fTok.getStringToken(fallKey); //possible fallback
+
+		//System::out << "onConverse: mission key: " << key << ". fall key: " << fallKey << endl;
+
+		// Grab the status string from the mission
+		MissionManager* mm = server->getMissionManager();
+		String retSay;
+		// If there is a problem, send to fallback key
+		if((!mm->evalMission(player, key, retSay)) && fallKey != key) {
+			player->setLastNpcConvMessStr(fallKey + ",0");
+			sendConvoScreen(player, fallKey);
+			return;
+		}
+
+		if(retSay.isEmpty())
+			return;
+
+		// Have the creature "say" the status string
+		say(UnicodeString(retSay));
+
+		// Close out the convo: (temporary..we show allow scripting to continue convos if necessary)
+		sendConversationStopTo(player);
+	} else if(screenId.indexOf("ENDCNV") >= 0) {
+		sendConversationStopTo(player);
+	} else {
+		if(tOptStr == "init") {
+			StartNpcConversation* conv = new StartNpcConversation(player, getObjectID(), "");
+			player->sendMessage(conv);
+		}
+		// Send the next screen
+		sendConvoScreen(player, screenId);
+	}
+}
+
+/**
  * onDeath are the actions that occur for every type of death.
  */
 void CreatureObjectImplementation::onDeath() {
@@ -4487,6 +4695,14 @@ void CreatureObjectImplementation::onDeath() {
  * \param killer The invoker of the kill()
  */
 void CreatureObjectImplementation::onKilled(SceneObject* killer) {
+	//Objective checks (if any)
+	if(_this->isNonPlayerCreature() && killer->isPlayer()) {
+		Player* killerPl = (Player*) killer;
+		if(killerPl->missionCount() > 0) {
+			killerPl->updateMissions(MissionObjectiveImplementation::HAS_KILLS, _this->getObjectCRC(), _this->getStfName(), 1);
+		}
+	}
+
 	//Lose any faction points
 	//Lose experience (Jedi)
 	die();

@@ -47,6 +47,6 @@
  RunCreatureFile("objects/corellia/citys/korVella.lua")
  RunCreatureFile("objects/corellia/citys/tyrena.lua")
  RunCreatureFile("objects/corellia/citys/vreniIsland.lua")
- RunCreatureFile("objects/corellia/citys/theater.lua") 
+ RunCreatureFile("objects/corellia/citys/theater.lua")
  
  

@@ -55,6 +55,7 @@
 
 #include "../../managers/item/ItemManager.h"
 #include "../../managers/combat/CombatManager.h"
+#include "../../managers/mission/MissionManager.h"
 #include "../../managers/player/ProfessionManager.h"
 #include "../../managers/radial/RadialManager.h"
 #include "../../managers/group/GroupManager.h"
@@ -1109,11 +1110,7 @@ void ObjectControllerMessage::parseNpcStopConversation(Player* player,
 			if (npc != player)
 				npc->wlock(player);
 
-			StopNpcConversation* conv = new StopNpcConversation(player,
-					npc->getObjectID());
-			player->setConversatingCreature(NULL);
-
-			player->sendMessage(conv);
+				npc->sendConversationStopTo(player);
 
 			if (npc != player)
 				npc->unlock();
@@ -4805,3 +4802,4 @@ void ObjectControllerMessage::parseStopListen(Player* player, Message* pack) {
 
 	player->stopListen(listenID);
 }
+

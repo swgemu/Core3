@@ -51,30 +51,56 @@ which carries forward this exception.
 #include "MissionObject.h"
 #include "MissionObjectImplementation.h"
 
-MissionObjectImplementation::MissionObjectImplementation(uint64 oid) : SceneObjectImplementation(oid, MISSION) {
-	objectCRC = 0xDF064E7A; //0x7a,0x4e,0x06,0xdf,
+#include "../../managers/mission/MissionManager.h"
+#include "../../managers/mission/MissionManagerImplementation.h"
 
-	objectType = SceneObjectImplementation::MISSION;
-
+MissionObjectImplementation::MissionObjectImplementation(uint64 oid, Player* owner) : SceneObjectImplementation(oid, MISSION) {
 	StringBuffer name;
 	name << "MissionObject :" << oid;
 	setLoggingName(name.toString());
 
-	setLogging(false);
+	setLogging(false); //set false after debug
 	setGlobalLogging(true);
+
+	ownerObject = owner;
 
 	init();
 }
 
 MissionObjectImplementation::~MissionObjectImplementation() {
+	for (int i = 0; i < objectiveList.size(); ++i) {
+		MissionObjective* mo = objectiveList.get(i);
+		mo->finalize();
+	}
+
+	objectiveList.removeAll();
+
+	if(deliverContainer != NULL) {
+		deliverContainer->finalize();
+		deliverContainer = NULL;
+	}
+
+	if(awardContainer != NULL) {
+		awardContainer->finalize();
+		awardContainer = NULL;
+	}
 }
 
 void MissionObjectImplementation::init() {
+	deliverContainer = NULL;
+	awardContainer = NULL;
+
+	objectiveDefaults = "";
+	instantComplete = true;
+	completed = false;
+	failed = false;
+	statusStr = "";
+
+	objectCRC = 0xDF064E7A; //0x7a,0x4e,0x06,0xdf,
+	objectType = SceneObjectImplementation::MISSION;
+
 	dbKey = "";
-
 	terminalMask = 0;
-
-	deliverItem = NULL;
 
 	//MISO3:
 	typeStr = ""; //3
@@ -92,11 +118,14 @@ void MissionObjectImplementation::init() {
 		targetX = 0.0f;
 		targetY = 0.0f;
 		targetPlanetCrc = 0;
+		targetName = "";
 	//
 	depictedObjCrc = 0; //10 (0A)
 	descriptionStf = ""; //11 (0B)
+	descriptionStr = "";
 	titleStf = ""; //12 (0C)
-	refreshCount = 0x01; //13 (0D)
+	titleStr = "";
+	refreshCount = 0x00; //13 (0D)
 	typeCrc = 0; //14 (0E)
 }
 
@@ -125,7 +154,7 @@ void MissionObjectImplementation::sendDeltaTo(Player* player) {
 
 	MissionObjectDeltaMessage3* dmiso3 = new MissionObjectDeltaMessage3((MissionObject*) _this);
 
-	int posD = descriptionStf.indexOf("mission/");
+	/*int posD = descriptionStf.indexOf("mission/");
 	int posT = titleStf.indexOf("mission/");
 
 	if (posD == -1) {
@@ -148,7 +177,7 @@ void MissionObjectImplementation::sendDeltaTo(Player* player) {
 	} else {
 		dmiso3->updateTitleStf(true); //12 (0C)
 		dmiso3->updateTitleKey(); //4
-	}
+	}*/
 
 	dmiso3->updateRefreshCount(player->nextMisoRFC()); //13 (0D)
 
@@ -169,5 +198,208 @@ void MissionObjectImplementation::sendDestroyTo(Player* player) {
 		return;
 
 	destroy(client);
+}
+
+//Asset Setup:
+/**
+ * When owner accepts a mission, this function will send mission specific assets like
+ * deliver items, waypoints etc
+ */
+void MissionObjectImplementation::assetSetup() {
+	if(ownerObject == NULL)
+		return;
+
+	//Create & Send destination waypoint
+	WaypointObject* waypoint = new WaypointObject(ownerObject, ownerObject->getNewItemID());
+	waypoint->setPlanetName(Planet::getPlanetNameByCrc(destPlanetCrc));
+	waypoint->setPosition(destX, 0, destY);
+	waypoint->setName(titleStr);
+	waypoint->changeStatus(true);
+
+	ownerObject->addWaypoint(waypoint);
+}
+
+/**
+ * Called when an owner is "parting" with a mission.
+ * This function will remove deliver items on mission complete/abort and send rewards on complete
+ */
+void MissionObjectImplementation::assetPart(bool award) {
+	if(ownerObject == NULL)
+		return;
+
+	if(award) {
+		ownerObject->addCashCredits(rewardAmount);
+		ownerObject->sendSystemMessage("You have been awarded " + String::valueOf(rewardAmount) + " for your efforts");
+	}
+}
+
+//Container Methods:
+
+void MissionObjectImplementation::addDeliverItem(TangibleObject* item) {
+	deliverContainer->addObject(item);
+}
+
+TangibleObject* MissionObjectImplementation::getDeliverItem(uint64 oid) {
+	if (deliverContainer != NULL)
+		return (TangibleObject*) deliverContainer->getObject(oid);
+	else
+		return NULL;
+}
+
+void MissionObjectImplementation::removeDeliverItem(SceneObject* item) {
+	deliverContainer->removeObject(item->getObjectID());
+}
+
+void MissionObjectImplementation::addAwardItem(TangibleObject* item) {
+	awardContainer->addObject(item);
+}
+
+TangibleObject* MissionObjectImplementation::getAwardItem(uint64 oid) {
+	if (awardContainer != NULL)
+		return (TangibleObject*) awardContainer->getObject(oid);
+	else
+		return NULL;
+}
+
+void MissionObjectImplementation::removeAwardItem(SceneObject* item) {
+	awardContainer->removeObject(item->getObjectID());
+}
+
+/////
+//Objectives:
+/////
+
+/**
+ * Add an objective to the map
+ */
+void MissionObjectImplementation::addObjective(MissionObjective* mo) {
+	if(mo == NULL)
+		return;
+
+	objectiveList.add(mo);
+}
+
+/**
+ * Deserialize the objectives from serialized string and creates the actual objective objects
+ * If a player accepts a mission from the first time, defaults are loaded. If a player already has
+ * the mission and is spawning, load from mission_saves
+ * Default objectives are kept in a serialized string while in the mission manager pool. objective spawning
+ * only takes place when a player owns the mission object
+ */
+
+void MissionObjectImplementation::spawnObjectives(const String& objectives) {
+	if(objectives.isEmpty())
+		return;
+
+	//Deserialize objective chain:
+	StringTokenizer serTok(objectives);
+	String objt = "";
+	serTok.setDelimeter("~");
+
+	// Go through the serialized string and spawn each individual objective
+	while(serTok.hasMoreTokens()) {
+		serTok.getStringToken(objt);
+		MissionObjective* mo = new MissionObjective(objt);
+		objectiveList.add(mo);
+	}
+	checkComplete();
+}
+
+//Combines all objectives into a serialized string for saving
+void MissionObjectImplementation::serializeObjectives(String& ret) {
+	String temp;
+	for(int i = 0; i < objectiveList.size(); i++) {
+		MissionObjective* mo = objectiveList.get(i);
+		temp += mo->serializeObjective();
+		if((i+1) != objectiveList.size())
+			ret.concat("~");
+	}
+	ret = temp;
+}
+
+/**
+ * Used to update the objective set when a new event (kill, delivery attempt, death) is fired
+ * Returns true if an objective was changed
+ */
+int MissionObjectImplementation::updateStatus(int type, uint32 objCrc, const String& str, String& updateStr, int increment) {
+	int doUpdate = 0;
+
+	for(int i = 0; i < objectiveList.size(); i++) {
+		MissionObjective* mo = objectiveList.get(i);
+		if(mo == NULL)
+			continue;
+
+		/*System::out << "MissionObject,updateStatus: stored targetcrc: " << mo->getTargetCrc() << ". objCrc: " << objCrc
+				<< "stored str var: " << mo->getStrVar() << ". str: " << str << endl;*/
+
+		// Make sure crc & str vars match, if applicable
+		if((mo->getTargetCrc() == 0) || (mo->getTargetCrc() == objCrc)) {
+			if((mo->getStrVar().compareTo("null") == 0) || (str.compareTo(mo->getStrVar()) == 0))
+				doUpdate = 1;
+		}
+
+		if(doUpdate == 1) {
+			switch(type) {
+				case MissionObjectiveImplementation::HAS_KILLS:
+					// Increment the # of confirmed kills
+					mo->incrementVar(increment);
+
+					// Update the kill specific status string:
+					updateStr += "(" + String::valueOf(mo->getVar()) + "/" + String::valueOf(mo->getLimit()) + ") confirmed ";
+					if(mo->getStrVar().compareTo("null") != 0)
+						updateStr += mo->getStrVar() + " kills.";
+				break;
+
+				case MissionObjectiveImplementation::WAS_KIA:
+					mo->incrementVar(increment);
+				break;
+
+				/**
+				 * Do an inventory check for this. Modify getItemByMisoKey
+				 case MissionObjectiveImplementation::HAS_ITEMS:
+					 checkOwnerDelivery(); //checks owners inventory against the delivery container
+					mo-updateVar(increment);
+				break;*/
+
+				default:
+					doUpdate = 0;
+				break;
+			}
+			// Run completion checks at the end of an objective update
+			mo->checkObjectiveStatus();
+			checkComplete();
+			break;
+		}
+	}
+
+	// Check if objective is instant complete (used when npc return is not desired for eval)
+	// Note: instant complete also means instant fail.
+	if((failed || completed) && instantComplete) {
+		doUpdate = 2;
+	}
+
+	return doUpdate;
+}
+
+/**
+ * Checks all objectives in the list. Updates completed or failed status
+ */
+void MissionObjectImplementation::checkComplete() {
+	for(int i = 0; i < objectiveList.size(); i++) {
+		MissionObjective* mo = objectiveList.get(i);
+		if(mo == NULL)
+			continue;
+
+		if(mo->hasFailed()) {
+			completed = false;
+			failed = true;
+			break;
+		}
+
+		if(mo->hasCompleted())
+			completed = true;
+		else
+			completed = false;
+	}
 }
 

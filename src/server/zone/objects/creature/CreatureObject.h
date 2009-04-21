@@ -551,6 +551,16 @@ public:
 
 	int getSkillAndCertificationSize();
 
+	void sendConversationStartTo(SceneObject* obj);
+
+	void selectConversationOption(int option, SceneObject* obj);
+
+	void sendConversationStopTo(SceneObject* obj);
+
+	void addConvoScreen(const String& screenID, const String& leftBoxText, int numOptions, const String& Options, const String& optLinks);
+
+	void sendConvoScreen(Player* player, const String& screenID);
+
 	void mountCreature(MountCreature* mnt, bool lockMount = true);
 
 	void dismount(bool lockMount = true, bool ignoreCooldown = true);
@@ -1213,7 +1223,7 @@ public:
 
 	void clearTemplateString();
 
-	void say(UnicodeString& message, unsigned int moodid = 0, unsigned int mood2 = 0);
+	void say(const UnicodeString& message, unsigned int moodid = 0, unsigned int mood2 = 0);
 
 	void say(const String& file, const String& str, StfParameter* param, unsigned int moodid = 0, unsigned int mood2 = 0);
 
@@ -1258,6 +1268,8 @@ public:
 	void onIncapacitated(SceneObject* attacker);
 
 	void onIncapacitationRecovery();
+
+	void onConverse(Player* player);
 
 	void onDeath();
 
@@ -1869,6 +1881,16 @@ public:
 	String& getSkillOrCertification(int idx);
 
 	int getSkillAndCertificationSize();
+
+	void sendConversationStartTo(SceneObject* obj);
+
+	void selectConversationOption(int option, SceneObject* obj);
+
+	void sendConversationStopTo(SceneObject* obj);
+
+	void addConvoScreen(const String& screenID, const String& leftBoxText, int numOptions, const String& Options, const String& optLinks);
+
+	void sendConvoScreen(Player* player, const String& screenID);
 
 	void mountCreature(MountCreature* mnt, bool lockMount);
 
@@ -2532,7 +2554,7 @@ public:
 
 	void clearTemplateString();
 
-	void say(UnicodeString& message, unsigned int moodid, unsigned int mood2);
+	void say(const UnicodeString& message, unsigned int moodid, unsigned int mood2);
 
 	void say(const String& file, const String& str, StfParameter* param, unsigned int moodid, unsigned int mood2);
 
@@ -2577,6 +2599,8 @@ public:
 	void onIncapacitated(SceneObject* attacker);
 
 	void onIncapacitationRecovery();
+
+	void onConverse(Player* player);
 
 	void onDeath();
 
@@ -2679,6 +2703,11 @@ protected:
 	String _param0_startDancing__String_bool_;
 	String _param0_startPlayingMusic__String_bool_;
 	String _param0_doFlourish__String_;
+	String _param0_addConvoScreen__String_String_int_String_String_;
+	String _param1_addConvoScreen__String_String_int_String_String_;
+	String _param3_addConvoScreen__String_String_int_String_String_;
+	String _param4_addConvoScreen__String_String_int_String_String_;
+	String _param1_sendConvoScreen__Player_String_;
 	String _param0_getHairAppearance__String_;
 	String _param0_setCharacterName__String_;
 	UnicodeString _param0_setCharacterName__UnicodeString_;

@@ -56,6 +56,7 @@ Mission = Object:new {
 	destinationY = 0.0, -- Y coordinate for destination of mission (06)
 	destinationPlanetStr = "", -- Destination planet name, must be lowercase (06)
 
+	targetName = "", --Name of target to display
 	creatorName = "", -- Name that appears in game as the assigner of the mission (usually an npc name) (07)
 	rewardAmount = 0, -- Amount of credits awarded (08)
 
@@ -69,6 +70,9 @@ Mission = Object:new {
 	titleStf = "", -- TRE path to title stf. Can be blank if stfTitleKey isnt used (12,0B)
 	customTitle = "", -- if stfTitleKey is not used, set a custom title here (04)
 
-	typeCrc = 0 -- SWGCRC of mission type. (14, 0E)
+	typeCrc = 0, -- SWGCRC of mission type. (14, 0E)
+
+	objectiveDefaults = "", --Objective String. See documentation for formatting
+	instantComplete = 1, --do Mission complete as soon as objectives are complete (no return to npc for evaluation)
 }
 

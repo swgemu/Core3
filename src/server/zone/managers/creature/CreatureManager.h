@@ -21,8 +21,6 @@ class CreatureGroup;
 
 class LairObject;
 
-class ActionCreature;
-
 class TrainerCreature;
 
 class RecruiterCreature;
@@ -62,10 +60,6 @@ public:
 	RecruiterCreature* spawnRecruiter(float x, float y, float oY, float oW, unsigned char type = 1, unsigned long long cellid = 0, bool doLock = true);
 
 	LairObject* spawnLair(const String& type, float x, float y, float z, bool doLock = true);
-
-	ActionCreature* spawnActionCreature(String& name, String& stfname, unsigned int objCrc, const String& misoKey, float x, float y, float oY, float oW, unsigned long long cellid = 0, bool doLock = true);
-
-	ActionCreature* spawnActionCreature(ActionCreature* tac, bool doLock = true);
 
 	unsigned int getCreatureCrc(String& name);
 
@@ -131,10 +125,6 @@ public:
 
 	LairObject* spawnLair(const String& type, float x, float y, float z, bool doLock);
 
-	ActionCreature* spawnActionCreature(String& name, String& stfname, unsigned int objCrc, const String& misoKey, float x, float y, float oY, float oW, unsigned long long cellid, bool doLock);
-
-	ActionCreature* spawnActionCreature(ActionCreature* tac, bool doLock);
-
 	unsigned int getCreatureCrc(String& name);
 
 	bool hotLoadCreature(String& name);
@@ -161,9 +151,6 @@ protected:
 	String _param0_spawnShuttle__String_String_Coordinate_long_float_float_float_int_bool_bool_;
 	String _param1_spawnShuttle__String_String_Coordinate_long_float_float_float_int_bool_bool_;
 	String _param0_spawnLair__String_float_float_float_bool_;
-	String _param0_spawnActionCreature__String_String_int_String_float_float_float_float_long_bool_;
-	String _param1_spawnActionCreature__String_String_int_String_float_float_float_float_long_bool_;
-	String _param3_spawnActionCreature__String_String_int_String_float_float_float_float_long_bool_;
 	String _param0_getCreatureCrc__String_;
 	String _param0_hotLoadCreature__String_;
 };

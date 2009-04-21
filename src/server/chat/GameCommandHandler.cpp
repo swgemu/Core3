@@ -60,6 +60,7 @@ which carries forward this exception.
 #include "../zone/managers/planet/PlanetManager.h"
 #include "../zone/managers/structure/StructureManager.h"
 #include "../zone/managers/combat/CombatManager.h"
+#include "../zone/managers/mission/MissionManager.h"
 
 #include "../zone/objects/area/TestActiveArea.h"
 
@@ -392,6 +393,10 @@ void GameCommandHandler::init() {
 				"Stores the targeted vehicle",
 				"USAGE: @storeVehicle <target vehicle> (do not perform while invisible)",
 				&storeVehicle);
+	gmCommands->addCommand("clearMissions", PRIVILEGED,
+				"Clears mission vars for a player, in the event they are having problems",
+				"USAGE: @clearMissions <player name>",
+				&clearMissions);
 	/* Disabled Commands
 
 	gmCommands->addCommand("applyDot", DEVELOPER,
@@ -3803,3 +3808,37 @@ void GameCommandHandler::storeVehicle(StringTokenizer tokenizer, Player* player)
 		player->sendSystemMessage("Cannot store vehicle while invisible");
 	}
 }
+
+void GameCommandHandler::clearMissions(StringTokenizer tokenizer, Player* player) {
+	String targetName = "";
+	Player* targetPlayer;
+
+	try {
+		if (!tokenizer.hasMoreTokens())
+			return;
+		tokenizer.getStringToken(targetName);
+
+		ZoneServer * server = player->getZone()->getZoneServer();
+		ChatManager * chatManager = player->getZone()->getChatManager();
+		targetPlayer = chatManager->getPlayer(targetName);
+
+		if (targetPlayer == NULL)
+			return;
+
+		if(targetPlayer != player)
+			targetPlayer->wlock(player);
+
+		MissionManager* mm = server->getMissionManager();
+		mm->clearPlayerMissions(targetPlayer);
+
+		if(targetPlayer != player)
+			targetPlayer->unlock();
+
+		player->sendSystemMessage(targetName + " now has no missions.");
+	} catch (...) {
+		if(targetPlayer != player)
+			targetPlayer->unlock();
+		player->sendSystemMessage("clearing missions failed");
+	}
+}
+

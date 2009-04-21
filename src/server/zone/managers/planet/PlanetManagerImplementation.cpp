@@ -394,7 +394,7 @@ void PlanetManagerImplementation::loadStaticPlanetObjects() {
 	loadGuildTerminals();
 	//loadVendorTerminals();
 	loadCraftingStations();
-	//loadMissionTerminals();
+	loadMissionTerminals();
 	loadStaticTangibleObjects();
 	loadCloningTerminals();
 	loadInsuranceTerminals();
@@ -794,17 +794,16 @@ void PlanetManagerImplementation::loadVendorTerminals() {
 
 void PlanetManagerImplementation::loadMissionTerminals() {
 	//The following code is temporary.
-	//TODO: Have a discussion w/ team about having one single "terminal map"
 
 	int planetId = zone->getZoneID();
 
-	if (planetId != 0)
+	if (planetId != 5)
 		return;
 
 	lock();
 
-	//tyren start term
-	MissionTerminal* missionTerminal = new MissionTerminal(getNextStaticObjectID(false), -5100.0f, 21.0f, -2351.0f, planetId, MissionTerminalImplementation::TMASK_GENERAL);
+	//theed mission terminal
+	MissionTerminal* missionTerminal = new MissionTerminal(getNextStaticObjectID(false), -4885.0f, 6.0f, 4185.0f, planetId, MissionTerminalImplementation::TMASK_GENERAL);
 	missionTerminal->setDirection(0, 0, 0, 0);
 
 	missionTerminal->setZoneProcessServer(server);

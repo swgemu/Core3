@@ -79,7 +79,7 @@ interface ChatManager {
 	void sendSystemMessage(Player player, UnicodeString message);
 	void sendSystemMessage(Player player, const String file, const String str, StfParameter param);
 
-	void broadcastMessage(CreatureObject player, UnicodeString message, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
+	void broadcastMessage(CreatureObject player, const UnicodeString message, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
 	void broadcastMessage(CreatureObject player, const String file, const String str, StfParameter param, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
 	void broadcastMessage(const String message);
 	void broadcastMessageRange(Player player, const String message, float range);

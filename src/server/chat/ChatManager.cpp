@@ -237,7 +237,7 @@ void ChatManager::sendSystemMessage(Player* player, const String& file, const St
 		((ChatManagerImplementation*) _impl)->sendSystemMessage(player, file, str, param);
 }
 
-void ChatManager::broadcastMessage(CreatureObject* player, UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2) {
+void ChatManager::broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -842,7 +842,7 @@ void ChatManagerAdapter::sendSystemMessage(Player* player, const String& file, c
 	return ((ChatManagerImplementation*) impl)->sendSystemMessage(player, file, str, param);
 }
 
-void ChatManagerAdapter::broadcastMessage(CreatureObject* player, UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2) {
+void ChatManagerAdapter::broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2) {
 	return ((ChatManagerImplementation*) impl)->broadcastMessage(player, message, target, moodid, mood2);
 }
 

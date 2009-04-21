@@ -46,12 +46,18 @@ which carries forward this exception.
 #define PLAYERIMPLEMENTATION_H_
 
 #include "engine/engine.h"
+#include "engine/service/Message.h"
 
 #include "../../ZoneClientSession.h"
 
+#include "../../managers/player/PlayerManager.h"
+
 #include "../../packets/object/StfParameter.h"
 
+#include "Player.h"
 #include "PlayerObject.h"
+
+#include "../mission/MissionObject.h"
 
 #include "professions/SkillBoxMap.h"
 #include "professions/SkillBox.h"
@@ -59,31 +65,23 @@ which carries forward this exception.
 
 #include "../terrain/RegionNames.h"
 
+#include "../../../chat/room/ChatRoom.h"
 #include "sui/SuiWindowType.h"
 #include "sui/SuiBoxImplementation.h"
 #include "sui/listbox/SuiListBoxImplementation.h"
 
-#include "../../../chat/room/ChatRoom.h"
-
-#include "Player.h"
-
 #include "../tangible/surveytool/SurveyTool.h"
 #include "../tangible/campkit/campsite/CampSite.h"
-
 #include "../tangible/attachment/Attachment.h"
-
-#include "engine/service/Message.h"
-
 #include "../tangible/Inventory.h"
+#include "EquippedItems.h"
 
 #include "faction/FactionPointsMap.h"
 #include "faction/FactionRankTable.h"
 #include "faction/FactionPointList.h"
 
-#include "../../managers/player/PlayerManager.h"
 #include "badges/Badges.h"
 #include "badges/Badge.h"
-#include "EquippedItems.h"
 
 //#include "../tangible/terminal/cloning/CloningTerminal.h"
 
@@ -253,7 +251,7 @@ class PlayerImplementation : public PlayerServant {
 	String curMisoKeys; //mission keys the player is currently on
 	String finMisoKeys; //mission keys the player has completed.
 
-	VectorMap<String, String> missionSaveList;
+	VectorMap<String, MissionObject*> missionMap;
 
 	// Entertainer - Dance + Music
 	Event* entertainerEvent;
@@ -809,6 +807,18 @@ public:
 		return misoRFC++;
 	}
 
+	inline void setMisoRFC(uint32 r) {
+		misoRFC = r;
+	}
+
+	uint32 getMisoRFC() {
+		return misoRFC;
+	}
+
+	inline void resetMisoBSB() {
+		misoBSB = 0;
+	}
+
 	int checkMisoBSB(int tcb) { //mission baseline send bitmask - check for existance of a set bit.
 		return (misoBSB & tcb);
 	}
@@ -817,24 +827,27 @@ public:
 		misoBSB |= tms;
 	}
 
-	void addToCurMisoKeys(String& tck) {
-		curMisoKeys += (tck + ",");
+	void setCurrentMissionKeys(const String& cur) {
+		curMisoKeys = cur;
 	}
 
-	bool isOnCurMisoKey(String tmk); //player is currently on the mission key
-	void removeFromCurMisoKeys(String tck);
-
-	void addToFinMisoKeys(String& tmp) {
-		finMisoKeys += (tmp + ",");
+	void setFinishedMissionKeys(const String& fin) {
+		finMisoKeys = fin;
 	}
 
-	bool hasCompletedMisoKey(String& tmk);
+	bool isOnCurMisoKey(const String& tmk);
+	bool hasCompletedMisoKey(const String& tmk);
 
+	inline int missionCount() {
+		return missionMap.size();
+	}
+
+	void addMission(const String& key, MissionObject* miso);
+	void updateMissions(int type, uint32 objCrc, const String& str, int increment = 1);
+	MissionObject* getPlayerMission(const String& key);
 	void saveMissions();
-
-	void updateMissionSave(String misoKey, const String& dbVar, String& varName, String& varData, bool doLock = false);
-
-	void fillMissionSaveVars();
+	void dropMission(const String& key, bool finished);
+	void dropAllMissions();
 
 	// buffing methods
 	void addBuff(uint32 buffcrc, float time);
