@@ -393,11 +393,11 @@ void GameCommandHandler::init() {
 				"Stores the targeted vehicle",
 				"USAGE: @storeVehicle <target vehicle> (do not perform while invisible)",
 				&storeVehicle);
-	/* Disabled Commands
 	gmCommands->addCommand("clearMissions", PRIVILEGED,
 				"Clears mission vars for a player, in the event they are having problems",
 				"USAGE: @clearMissions <player name>",
 				&clearMissions);
+	/* Disabled Commands
 	gmCommands->addCommand("applyDot", DEVELOPER,
 				"applyDot",
 				"USAGE: @applyDot ",

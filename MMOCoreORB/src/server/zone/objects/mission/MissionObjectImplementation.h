@@ -198,11 +198,11 @@ public:
 		return failed;
 	}
 
-	void addObjective(MissionObjective* mo);
-	void spawnObjectives(const String& objectives);
-	void serializeObjectives(String& ret);
-	int updateStatus(int type, uint32 objCrc, const String& str, String& updateStr, int increment);
-	void checkComplete();
+	void addObjective(MissionObjective* mo, bool doLock = true);
+	void spawnObjectives(const String& objectives, bool doLock = true);
+	void serializeObjectives(String& ret, bool doLock = true);
+	int updateStatus(int type, uint32 objCrc, const String& str, String& updateStr, int increment, bool doLock = true);
+	void checkComplete(bool doLock = false);
 
 
 

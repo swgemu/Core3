@@ -106,11 +106,11 @@ interface MissionObject implements SceneObject {
 	boolean isComplete();
 	boolean isFailure();
 
-	void addObjective(MissionObjective mo);
-	void spawnObjectives(const String objectives);
-	void serializeObjectives(String ret);
-	int updateStatus(int type, unsigned int objCrc, const String str, String updateStr, int increment);
-	void checkComplete();
+	void addObjective(MissionObjective mo, boolean doLock = true);
+	void spawnObjectives(const String objectives, boolean doLock = true);
+	void serializeObjectives(String ret, boolean doLock = true);
+	int updateStatus(int type, unsigned int objCrc, const String str, String updateStr, int increment, boolean doLock = true);
+	void checkComplete(boolean doLock = false);
 
 
 

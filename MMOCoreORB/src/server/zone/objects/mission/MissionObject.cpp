@@ -361,46 +361,49 @@ bool MissionObject::isFailure() {
 		return ((MissionObjectImplementation*) _impl)->isFailure();
 }
 
-void MissionObject::addObjective(MissionObjective* mo) {
+void MissionObject::addObjective(MissionObjective* mo, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 32);
 		method.addObjectParameter(mo);
+		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _impl)->addObjective(mo);
+		((MissionObjectImplementation*) _impl)->addObjective(mo, doLock);
 }
 
-void MissionObject::spawnObjectives(const String& objectives) {
+void MissionObject::spawnObjectives(const String& objectives, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 33);
 		method.addAsciiParameter(objectives);
+		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _impl)->spawnObjectives(objectives);
+		((MissionObjectImplementation*) _impl)->spawnObjectives(objectives, doLock);
 }
 
-void MissionObject::serializeObjectives(String& ret) {
+void MissionObject::serializeObjectives(String& ret, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 34);
 		method.addAsciiParameter(ret);
+		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _impl)->serializeObjectives(ret);
+		((MissionObjectImplementation*) _impl)->serializeObjectives(ret, doLock);
 }
 
-int MissionObject::updateStatus(int type, unsigned int objCrc, const String& str, String& updateStr, int increment) {
+int MissionObject::updateStatus(int type, unsigned int objCrc, const String& str, String& updateStr, int increment, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -411,22 +414,24 @@ int MissionObject::updateStatus(int type, unsigned int objCrc, const String& str
 		method.addAsciiParameter(str);
 		method.addAsciiParameter(updateStr);
 		method.addSignedIntParameter(increment);
+		method.addBooleanParameter(doLock);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((MissionObjectImplementation*) _impl)->updateStatus(type, objCrc, str, updateStr, increment);
+		return ((MissionObjectImplementation*) _impl)->updateStatus(type, objCrc, str, updateStr, increment, doLock);
 }
 
-void MissionObject::checkComplete() {
+void MissionObject::checkComplete(bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 36);
+		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _impl)->checkComplete();
+		((MissionObjectImplementation*) _impl)->checkComplete(doLock);
 }
 
 void MissionObject::setTypeStr(const String& tstr) {
@@ -1026,19 +1031,19 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertBoolean(isFailure());
 		break;
 	case 32:
-		addObjective((MissionObjective*) inv->getObjectParameter());
+		addObjective((MissionObjective*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 33:
-		spawnObjectives(inv->getAsciiParameter(_param0_spawnObjectives__String_));
+		spawnObjectives(inv->getAsciiParameter(_param0_spawnObjectives__String_bool_), inv->getBooleanParameter());
 		break;
 	case 34:
-		serializeObjectives(inv->getAsciiParameter(_param0_serializeObjectives__String_));
+		serializeObjectives(inv->getAsciiParameter(_param0_serializeObjectives__String_bool_), inv->getBooleanParameter());
 		break;
 	case 35:
-		resp->insertSignedInt(updateStatus(inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param2_updateStatus__int_int_String_String_int_), inv->getAsciiParameter(_param3_updateStatus__int_int_String_String_int_), inv->getSignedIntParameter()));
+		resp->insertSignedInt(updateStatus(inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param2_updateStatus__int_int_String_String_int_bool_), inv->getAsciiParameter(_param3_updateStatus__int_int_String_String_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case 36:
-		checkComplete();
+		checkComplete(inv->getBooleanParameter());
 		break;
 	case 37:
 		setTypeStr(inv->getAsciiParameter(_param0_setTypeStr__String_));
@@ -1271,24 +1276,24 @@ bool MissionObjectAdapter::isFailure() {
 	return ((MissionObjectImplementation*) impl)->isFailure();
 }
 
-void MissionObjectAdapter::addObjective(MissionObjective* mo) {
-	return ((MissionObjectImplementation*) impl)->addObjective(mo);
+void MissionObjectAdapter::addObjective(MissionObjective* mo, bool doLock) {
+	return ((MissionObjectImplementation*) impl)->addObjective(mo, doLock);
 }
 
-void MissionObjectAdapter::spawnObjectives(const String& objectives) {
-	return ((MissionObjectImplementation*) impl)->spawnObjectives(objectives);
+void MissionObjectAdapter::spawnObjectives(const String& objectives, bool doLock) {
+	return ((MissionObjectImplementation*) impl)->spawnObjectives(objectives, doLock);
 }
 
-void MissionObjectAdapter::serializeObjectives(String& ret) {
-	return ((MissionObjectImplementation*) impl)->serializeObjectives(ret);
+void MissionObjectAdapter::serializeObjectives(String& ret, bool doLock) {
+	return ((MissionObjectImplementation*) impl)->serializeObjectives(ret, doLock);
 }
 
-int MissionObjectAdapter::updateStatus(int type, unsigned int objCrc, const String& str, String& updateStr, int increment) {
-	return ((MissionObjectImplementation*) impl)->updateStatus(type, objCrc, str, updateStr, increment);
+int MissionObjectAdapter::updateStatus(int type, unsigned int objCrc, const String& str, String& updateStr, int increment, bool doLock) {
+	return ((MissionObjectImplementation*) impl)->updateStatus(type, objCrc, str, updateStr, increment, doLock);
 }
 
-void MissionObjectAdapter::checkComplete() {
-	return ((MissionObjectImplementation*) impl)->checkComplete();
+void MissionObjectAdapter::checkComplete(bool doLock) {
+	return ((MissionObjectImplementation*) impl)->checkComplete(doLock);
 }
 
 void MissionObjectAdapter::setTypeStr(const String& tstr) {
