@@ -73,15 +73,15 @@ public:
 
 	bool isFailure();
 
-	void addObjective(MissionObjective* mo);
+	void addObjective(MissionObjective* mo, bool doLock = true);
 
-	void spawnObjectives(const String& objectives);
+	void spawnObjectives(const String& objectives, bool doLock = true);
 
-	void serializeObjectives(String& ret);
+	void serializeObjectives(String& ret, bool doLock = true);
 
-	int updateStatus(int type, unsigned int objCrc, const String& str, String& updateStr, int increment);
+	int updateStatus(int type, unsigned int objCrc, const String& str, String& updateStr, int increment, bool doLock = true);
 
-	void checkComplete();
+	void checkComplete(bool doLock = false);
 
 	void setTypeStr(const String& tstr);
 
@@ -243,15 +243,15 @@ public:
 
 	bool isFailure();
 
-	void addObjective(MissionObjective* mo);
+	void addObjective(MissionObjective* mo, bool doLock);
 
-	void spawnObjectives(const String& objectives);
+	void spawnObjectives(const String& objectives, bool doLock);
 
-	void serializeObjectives(String& ret);
+	void serializeObjectives(String& ret, bool doLock);
 
-	int updateStatus(int type, unsigned int objCrc, const String& str, String& updateStr, int increment);
+	int updateStatus(int type, unsigned int objCrc, const String& str, String& updateStr, int increment, bool doLock);
 
-	void checkComplete();
+	void checkComplete(bool doLock);
 
 	void setTypeStr(const String& tstr);
 
@@ -336,10 +336,10 @@ public:
 protected:
 	String _param0_setDBKey__String_;
 	String _param0_setObjectiveDefaults__String_;
-	String _param0_spawnObjectives__String_;
-	String _param0_serializeObjectives__String_;
-	String _param2_updateStatus__int_int_String_String_int_;
-	String _param3_updateStatus__int_int_String_String_int_;
+	String _param0_spawnObjectives__String_bool_;
+	String _param0_serializeObjectives__String_bool_;
+	String _param2_updateStatus__int_int_String_String_int_bool_;
+	String _param3_updateStatus__int_int_String_String_int_bool_;
 	String _param0_setTypeStr__String_;
 	UnicodeString _param0_setCreatorName__UnicodeString_;
 	String _param0_setTargetName__String_;

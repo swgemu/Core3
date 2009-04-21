@@ -199,7 +199,7 @@ void MissionManagerImplementation::instanceMission(Player* player, MissionObject
 	miso->setInstantComplete(misoCopy->isInstantComplete());
 
 	//Spawn objectives:
-	miso->spawnObjectives(objectives);
+	miso->spawnObjectives(objectives, false);
 
 	//Add the mission to the player:
 	player->addMission(miso->getDBKey(), miso);
@@ -245,58 +245,6 @@ void MissionManagerImplementation::sendTerminalData(Player* player, int termBitm
 				sendMissionDelta(player, miso);
 			}
 		}
-
-			//Make sure the terminal and mission in the misoMap are in the same category:
-
-			/*if ((termBitmask & TMASK_GENERAL) && (miso->getTerminalMask() & TMASK_GENERAL)) {
-				if (player->getMisoRFC() == 0x01)
-					sendMissionBase(player, miso);
-				sendMissionDelta(player, miso);
-				continue;
-			}
-
-			if ((termBitmask & TMASK_ENTERTAINER) && (miso->getTerminalMask() & TMASK_ENTERTAINER)) {
-				if (player->getMisoRFC() == 0x01)
-					sendMissionBase(player, miso);
-				sendMissionDelta(player, miso);
-				continue;
-			}
-
-			if ((termBitmask & TMASK_EXPLORER) && (miso->getTerminalMask() & TMASK_EXPLORER)) {
-				if (player->getMisoRFC() == 0x01)
-					sendMissionBase(player, miso);
-				sendMissionDelta(player, miso);
-				continue;
-			}
-
-			if ((termBitmask & TMASK_BOUNTY) && (miso->getTerminalMask() & TMASK_BOUNTY)) {
-				if (player->getMisoRFC() == 0x01)
-					sendMissionBase(player, miso);
-				sendMissionDelta(player, miso);
-				continue;
-			}
-
-			if ((termBitmask & TMASK_ARTISAN) && (miso->getTerminalMask() & TMASK_ARTISAN)) {
-				if (player->getMisoRFC() == 0x01)
-					sendMissionBase(player, miso);
-				sendMissionDelta(player, miso);
-				continue;
-			}
-
-			if ((termBitmask & TMASK_REBEL) && (miso->getTerminalMask() & TMASK_REBEL)) {
-				if (player->getMisoRFC() == 0x01)
-					sendMissionBase(player, miso);
-				sendMissionDelta(player, miso);
-				continue;
-			}
-
-			if ((termBitmask & TMASK_IMPERIAL) && (miso->getTerminalMask() & TMASK_IMPERIAL)) {
-				if (player->getMisoRFC() == 0x01)
-					sendMissionBase(player, miso);
-				sendMissionDelta(player, miso);
-				continue;
-			}
-		}*/
 
 		unlock(doLock);
 	} catch (...) {
@@ -350,8 +298,10 @@ void MissionManagerImplementation::doMissionAccept(Player* player, uint64& oid, 
 		}
 
 		//Check if player is already on mission:
-		if (player->isOnCurMisoKey(miso->getDBKey()))
+		if (player->isOnCurMisoKey(miso->getDBKey())) {
+			unlock(doLock);
 			return;
+		}
 
 		// Give the mission to the player:
 		miso->doLinkToPlayer(player);

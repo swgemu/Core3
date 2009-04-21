@@ -272,11 +272,21 @@ void MissionObjectImplementation::removeAwardItem(SceneObject* item) {
 /**
  * Add an objective to the map
  */
-void MissionObjectImplementation::addObjective(MissionObjective* mo) {
+void MissionObjectImplementation::addObjective(MissionObjective* mo, bool doLock) {
 	if(mo == NULL)
 		return;
 
-	objectiveList.add(mo);
+	try {
+		lock(doLock);
+
+		objectiveList.add(mo);
+
+		unlock(doLock);
+	} catch (...) {
+		error("unreported Exception caught on addObjective()\n");
+
+		unlock(doLock);
+	}
 }
 
 /**
@@ -287,95 +297,125 @@ void MissionObjectImplementation::addObjective(MissionObjective* mo) {
  * only takes place when a player owns the mission object
  */
 
-void MissionObjectImplementation::spawnObjectives(const String& objectives) {
+void MissionObjectImplementation::spawnObjectives(const String& objectives, bool doLock) {
 	if(objectives.isEmpty())
 		return;
 
-	//Deserialize objective chain:
-	StringTokenizer serTok(objectives);
-	String objt = "";
-	serTok.setDelimeter("~");
+	try {
+		lock(doLock);
 
-	// Go through the serialized string and spawn each individual objective
-	while(serTok.hasMoreTokens()) {
-		serTok.getStringToken(objt);
-		MissionObjective* mo = new MissionObjective(objt);
-		objectiveList.add(mo);
+		//Deserialize objective chain:
+		StringTokenizer serTok(objectives);
+		String objt = "";
+		serTok.setDelimeter("~");
+
+		// Go through the serialized string and spawn each individual objective
+		while(serTok.hasMoreTokens()) {
+			serTok.getStringToken(objt);
+			MissionObjective* mo = new MissionObjective(objt);
+			objectiveList.add(mo);
+		}
+
+		checkComplete(false);
+
+		unlock(doLock);
+	} catch (...) {
+		error("unreported Exception caught on spawnObjectives()\n");
+
+		unlock(doLock);
 	}
-	checkComplete();
 }
 
 //Combines all objectives into a serialized string for saving
-void MissionObjectImplementation::serializeObjectives(String& ret) {
-	String temp;
-	for(int i = 0; i < objectiveList.size(); i++) {
-		MissionObjective* mo = objectiveList.get(i);
-		temp += mo->serializeObjective();
-		if((i+1) != objectiveList.size())
-			ret.concat("~");
+void MissionObjectImplementation::serializeObjectives(String& ret, bool doLock) {
+	try {
+		lock(doLock);
+
+		String temp;
+		for(int i = 0; i < objectiveList.size(); i++) {
+			MissionObjective* mo = objectiveList.get(i);
+			temp += mo->serializeObjective();
+			if((i+1) != objectiveList.size())
+				ret.concat("~");
+		}
+		ret = temp;
+
+		unlock(doLock);
+
+	} catch (...) {
+		error("unreported Exception caught on serializeObjectives()\n");
+
+		unlock(doLock);
 	}
-	ret = temp;
 }
 
 /**
  * Used to update the objective set when a new event (kill, delivery attempt, death) is fired
  * Returns true if an objective was changed
  */
-int MissionObjectImplementation::updateStatus(int type, uint32 objCrc, const String& str, String& updateStr, int increment) {
+int MissionObjectImplementation::updateStatus(int type, uint32 objCrc, const String& str, String& updateStr, int increment, bool doLock) {
 	int doUpdate = 0;
+	try {
+		lock(doLock);
+		for(int i = 0; i < objectiveList.size(); i++) {
+			MissionObjective* mo = objectiveList.get(i);
+			if(mo == NULL)
+				continue;
 
-	for(int i = 0; i < objectiveList.size(); i++) {
-		MissionObjective* mo = objectiveList.get(i);
-		if(mo == NULL)
-			continue;
+			/*System::out << "MissionObject,updateStatus: stored targetcrc: " << mo->getTargetCrc() << ". objCrc: " << objCrc
+					<< "stored str var: " << mo->getStrVar() << ". str: " << str << endl;*/
 
-		/*System::out << "MissionObject,updateStatus: stored targetcrc: " << mo->getTargetCrc() << ". objCrc: " << objCrc
-				<< "stored str var: " << mo->getStrVar() << ". str: " << str << endl;*/
+			// Make sure crc & str vars match, if applicable
+			if((mo->getTargetCrc() == 0) || (mo->getTargetCrc() == objCrc)) {
+				if((mo->getStrVar().compareTo("null") == 0) || (str.compareTo(mo->getStrVar()) == 0))
+					doUpdate = 1;
+			}
 
-		// Make sure crc & str vars match, if applicable
-		if((mo->getTargetCrc() == 0) || (mo->getTargetCrc() == objCrc)) {
-			if((mo->getStrVar().compareTo("null") == 0) || (str.compareTo(mo->getStrVar()) == 0))
-				doUpdate = 1;
-		}
+			if(doUpdate == 1) {
+				switch(type) {
+					case MissionObjectiveImplementation::HAS_KILLS:
+						// Increment the # of confirmed kills
+						mo->incrementVar(increment);
 
-		if(doUpdate == 1) {
-			switch(type) {
-				case MissionObjectiveImplementation::HAS_KILLS:
-					// Increment the # of confirmed kills
-					mo->incrementVar(increment);
+						// Update the kill specific status string:
+						updateStr += "(" + String::valueOf(mo->getVar()) + "/" + String::valueOf(mo->getLimit()) + ") confirmed ";
+						if(mo->getStrVar().compareTo("null") != 0)
+							updateStr += mo->getStrVar() + " kills.";
+					break;
 
-					// Update the kill specific status string:
-					updateStr += "(" + String::valueOf(mo->getVar()) + "/" + String::valueOf(mo->getLimit()) + ") confirmed ";
-					if(mo->getStrVar().compareTo("null") != 0)
-						updateStr += mo->getStrVar() + " kills.";
-				break;
+					case MissionObjectiveImplementation::WAS_KIA:
+						mo->incrementVar(increment);
+					break;
 
-				case MissionObjectiveImplementation::WAS_KIA:
-					mo->incrementVar(increment);
-				break;
+					/**
+					 * Do an inventory check for this. Modify getItemByMisoKey
+					 case MissionObjectiveImplementation::HAS_ITEMS:
+						 checkOwnerDelivery(); //checks owners inventory against the delivery container
+						mo-updateVar(increment);
+					break;*/
 
-				/**
-				 * Do an inventory check for this. Modify getItemByMisoKey
-				 case MissionObjectiveImplementation::HAS_ITEMS:
-					 checkOwnerDelivery(); //checks owners inventory against the delivery container
-					mo-updateVar(increment);
-				break;*/
-
-				default:
-					doUpdate = 0;
+					default:
+						doUpdate = 0;
+					break;
+				}
+				// Run completion checks at the end of an objective update
+				mo->checkObjectiveStatus();
+				checkComplete(false);
 				break;
 			}
-			// Run completion checks at the end of an objective update
-			mo->checkObjectiveStatus();
-			checkComplete();
-			break;
 		}
-	}
 
-	// Check if objective is instant complete (used when npc return is not desired for eval)
-	// Note: instant complete also means instant fail.
-	if((failed || completed) && instantComplete) {
-		doUpdate = 2;
+		// Check if objective is instant complete (used when npc return is not desired for eval)
+		// Note: instant complete also means instant fail.
+		if((failed || completed) && instantComplete) {
+			doUpdate = 2;
+		}
+
+		unlock(doLock);
+	} catch (...) {
+		error("unreported Exception caught on updateStatus()\n");
+
+		unlock(doLock);
 	}
 
 	return doUpdate;
@@ -384,22 +424,32 @@ int MissionObjectImplementation::updateStatus(int type, uint32 objCrc, const Str
 /**
  * Checks all objectives in the list. Updates completed or failed status
  */
-void MissionObjectImplementation::checkComplete() {
-	for(int i = 0; i < objectiveList.size(); i++) {
-		MissionObjective* mo = objectiveList.get(i);
-		if(mo == NULL)
-			continue;
+void MissionObjectImplementation::checkComplete(bool doLock) {
+	try {
+		lock(doLock);
 
-		if(mo->hasFailed()) {
-			completed = false;
-			failed = true;
-			break;
+		for(int i = 0; i < objectiveList.size(); i++) {
+			MissionObjective* mo = objectiveList.get(i);
+			if(mo == NULL)
+				continue;
+
+			if(mo->hasFailed()) {
+				completed = false;
+				failed = true;
+				break;
+			}
+
+			if(mo->hasCompleted())
+				completed = true;
+			else
+				completed = false;
 		}
 
-		if(mo->hasCompleted())
-			completed = true;
-		else
-			completed = false;
+		unlock(doLock);
+	} catch (...) {
+		error("unreported Exception caught on checkComplete()\n");
+
+		unlock(doLock);
 	}
 }
 
