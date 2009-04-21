@@ -72,7 +72,7 @@ jurassicPeko = Mission:new {
 
 	typeCrc = 1961860067, -- deliver(E5C27EC6,3854728902) or destroy(74EF9BE3,1961860067) crc SWGCRC of mission type. (14, 0E)
 
-	objectiveDefaults = "1:2319882660:0:7:null:0",
+	objectiveDefaults = "1:0:0:7:peko_peko:0",
 	instantComplete = 1, --do Mission complete as soon as objectives are complete (no return to npc for evaluation)
 }
 
