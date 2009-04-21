@@ -94,7 +94,6 @@ void MissionObjectImplementation::init() {
 	instantComplete = true;
 	completed = false;
 	failed = false;
-	statusStr = "";
 
 	objectCRC = 0xDF064E7A; //0x7a,0x4e,0x06,0xdf,
 	objectType = SceneObjectImplementation::MISSION;
@@ -127,6 +126,7 @@ void MissionObjectImplementation::init() {
 	titleStr = "";
 	refreshCount = 0x00; //13 (0D)
 	typeCrc = 0; //14 (0E)
+	targetWaypoint = NULL;
 }
 
 void MissionObjectImplementation::sendTo(Player* player, bool doClose) {
@@ -210,13 +210,13 @@ void MissionObjectImplementation::assetSetup() {
 		return;
 
 	//Create & Send destination waypoint
-	WaypointObject* waypoint = new WaypointObject(ownerObject, ownerObject->getNewItemID());
-	waypoint->setPlanetName(Planet::getPlanetNameByCrc(destPlanetCrc));
-	waypoint->setPosition(destX, 0, destY);
-	waypoint->setName(titleStr);
-	waypoint->changeStatus(true);
+	targetWaypoint = new WaypointObject(ownerObject, ownerObject->getNewItemID());
+	targetWaypoint->setPlanetName(Planet::getPlanetNameByCrc(destPlanetCrc));
+	targetWaypoint->setPosition(destX, 0, destY);
+	targetWaypoint->setName(titleStr);
+	targetWaypoint->changeStatus(true);
 
-	ownerObject->addWaypoint(waypoint);
+	ownerObject->addWaypoint(targetWaypoint);
 }
 
 /**
@@ -231,6 +231,15 @@ void MissionObjectImplementation::assetPart(bool award) {
 		ownerObject->addCashCredits(rewardAmount);
 		ownerObject->sendSystemMessage("You have been awarded " + String::valueOf(rewardAmount) + " for your efforts");
 	}
+
+
+	//Remove the waypoint
+
+	if(targetWaypoint == NULL)
+		return;
+
+	ownerObject->removeWaypoint(targetWaypoint);
+	targetWaypoint->finalize();
 }
 
 //Container Methods:
@@ -307,7 +316,7 @@ void MissionObjectImplementation::spawnObjectives(const String& objectives, bool
 		//Deserialize objective chain:
 		StringTokenizer serTok(objectives);
 		String objt = "";
-		serTok.setDelimeter("~");
+		serTok.setDelimeter(";");
 
 		// Go through the serialized string and spawn each individual objective
 		while(serTok.hasMoreTokens()) {
@@ -336,7 +345,7 @@ void MissionObjectImplementation::serializeObjectives(String& ret, bool doLock) 
 			MissionObjective* mo = objectiveList.get(i);
 			temp += mo->serializeObjective();
 			if((i+1) != objectiveList.size())
-				ret.concat("~");
+				ret.concat(";");
 		}
 		ret = temp;
 
@@ -362,6 +371,10 @@ int MissionObjectImplementation::updateStatus(int type, uint32 objCrc, const Str
 			if(mo == NULL)
 				continue;
 
+			//No need to update the mission objective if its already complete/failed
+			if(mo->hasCompleted() || mo->hasFailed())
+				continue;
+
 			/*System::out << "MissionObject,updateStatus: stored targetcrc: " << mo->getTargetCrc() << ". objCrc: " << objCrc
 					<< "stored str var: " << mo->getStrVar() << ". str: " << str << endl;*/
 
@@ -372,6 +385,7 @@ int MissionObjectImplementation::updateStatus(int type, uint32 objCrc, const Str
 			}
 
 			if(doUpdate == 1) {
+				updateStr += "Mission " + titleStr + ": ";
 				switch(type) {
 					case MissionObjectiveImplementation::HAS_KILLS:
 						// Increment the # of confirmed kills
@@ -433,16 +447,20 @@ void MissionObjectImplementation::checkComplete(bool doLock) {
 			if(mo == NULL)
 				continue;
 
-			if(mo->hasFailed()) {
+			// If any objective fails, the mission fails. If the mission has already been marked as a failure, bail out
+			if(mo->hasFailed() || failed) {
 				completed = false;
 				failed = true;
 				break;
 			}
 
-			if(mo->hasCompleted())
-				completed = true;
-			else
+			// ALL objectives must be complete for the mission to be considered complete.
+			if(!mo->hasCompleted()) {
 				completed = false;
+				break;
+			} else {
+				completed = true;
+			}
 		}
 
 		unlock(doLock);

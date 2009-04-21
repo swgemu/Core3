@@ -47,8 +47,6 @@ public:
 
 	int getTerminalMask();
 
-	String& getStatusStr();
-
 	void addDeliverItem(TangibleObject* item);
 
 	TangibleObject* getDeliverItem(unsigned long long oid);
@@ -172,7 +170,6 @@ protected:
 	String _return_getDescription;
 	String _return_getDescriptionStf;
 	String _return_getObjectiveDefaults;
-	String _return_getStatusStr;
 	String _return_getTargetName;
 	String _return_getTitle;
 	String _return_getTitleStf;
@@ -216,8 +213,6 @@ public:
 	void applyTerminalMask(int tam);
 
 	int getTerminalMask();
-
-	String& getStatusStr();
 
 	void addDeliverItem(TangibleObject* item);
 
