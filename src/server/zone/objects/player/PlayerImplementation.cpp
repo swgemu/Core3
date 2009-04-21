@@ -3838,11 +3838,10 @@ void PlayerImplementation::dropMission(const String& key, bool finished) {
 		miso->assetPart(true);
 	}
 
-	missionMap.drop(key);
-	miso->finalize();
-
 	if (missionMap.drop(key))
 		miso->release();
+
+	miso->finalize();
 
 	//Drop from the current mission key set:
 	int pos = curMisoKeys.indexOf(tck);
