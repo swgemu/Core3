@@ -47,8 +47,8 @@ public:
 
 public:
 	//MissionObjectiveImplementation::MissionObjectiveImplementation();
-	MissionObjectiveImplementation::MissionObjectiveImplementation(String serialized);
-	MissionObjectiveImplementation::~MissionObjectiveImplementation();
+	MissionObjectiveImplementation(String serialized);
+	~MissionObjectiveImplementation();
 
 	void init();
 

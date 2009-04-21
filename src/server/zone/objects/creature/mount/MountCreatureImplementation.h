@@ -60,7 +60,7 @@ class MountCreatureImplementation : public MountCreatureServant {
 
 	bool instantMount;
 
-	IntangibleObject* datapadItem;
+	ManagedReference<IntangibleObject> datapadItem;
 
 protected:
 	//String attributeString;
