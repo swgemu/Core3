@@ -1657,6 +1657,8 @@ void PlayerImplementation::switchMap(int planetid) {
 	if (zone == NULL)
 		return;
 
+	saveMissions();
+
 	if (mount != NULL) {
 		MountCreature* mnt = mount;
 		mnt->wlock();
@@ -1690,6 +1692,8 @@ void PlayerImplementation::switchMap(int planetid) {
 void PlayerImplementation::doWarp(float x, float y, float z, float randomizeDistance, uint64 parentID) {
 	if (zone == NULL)
 		return;
+
+	saveMissions();
 
 	if (isMounted())
 		dismount(true, true);
