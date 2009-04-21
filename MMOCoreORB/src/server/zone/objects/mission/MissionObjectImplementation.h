@@ -56,6 +56,9 @@ which carries forward this exception.
 #include "../tangible/TangibleObject.h"
 #include "../tangible/TangibleObjectImplementation.h"
 
+#include "../waypoint/WaypointObject.h"
+#include "../waypoint/WaypointObjectImplementation.h"
+
 #include "MissionObjective.h"
 #include "MissionObjectiveImplementation.h"
 
@@ -103,6 +106,7 @@ class MissionObjectImplementation : public SceneObjectImplementation {
 	String titleStr;
 	uint32 refreshCount; //13 (0D)
 	uint32 typeCrc; //14 (0E)
+	ManagedReference<WaypointObject> targetWaypoint;
 
 public:
 
@@ -154,10 +158,6 @@ public:
 
 	inline int getTerminalMask() {
 		return terminalMask;
-	}
-
-	inline String& getStatusStr() {
-		return statusStr;
 	}
 
 	//Container: For giving to player to complete a delivery

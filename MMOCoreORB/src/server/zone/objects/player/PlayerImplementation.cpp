@@ -3785,7 +3785,8 @@ void PlayerImplementation::updateMissions(int type, uint32 objCrc, const String&
 				int ret = mo->updateStatus(type, objCrc, str, updateStr, increment);
 				if(ret >= 1) {
 					if(ret == 1) { // Progress Update
-						_this->sendSystemMessage(updateStr);
+						if(updateStr.length() > 0)
+							_this->sendSystemMessage(updateStr);
 					} else { // Instant Complete
 						MissionManager* mm = server->getMissionManager();
 						if(mm != NULL)
@@ -3835,8 +3836,10 @@ void PlayerImplementation::dropMission(const String& key, bool finished) {
 		// Add to completed keys if the mission was completed for the first time
 		if(!hasCompletedMisoKey(key))
 			finMisoKeys += tck;
-		miso->assetPart(true);
 	}
+
+	//Relinquish all mission specific assets
+	miso->assetPart(finished);
 
 	if (missionMap.drop(key))
 		miso->release();

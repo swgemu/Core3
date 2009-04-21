@@ -148,3 +148,5 @@ spawnCreatures(shaupaut, 5, -5060.8, 3806.97, 40, 5)
 -- Jurassic Peko
 spawnCreatures(pekoPeko, 5, -4570, 3850, 70, 150)
 
+-- Cat and Peko
+spawnCreatures(domesticTuskCat, 5, -4570, 3600, 100, 150)

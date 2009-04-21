@@ -83,8 +83,6 @@ interface MissionObject implements SceneObject {
 	void applyTerminalMask(int tam);
 	int getTerminalMask();
 	
-	String getStatusStr();
-	
 	//Container: For giving to player to complete a delivery
 	void addDeliverItem(TangibleObject item);
 	TangibleObject getDeliverItem(unsigned long oid);
