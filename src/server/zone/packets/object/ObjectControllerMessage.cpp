@@ -3550,12 +3550,18 @@ void ObjectControllerMessage::parseResourceContainerTransfer(Player* player,
 void ObjectControllerMessage::parseRequestCraftingSession(Player* player, Message* packet) {
 
 	uint64 oid = packet->parseLong();
-	SceneObject* scno = player->getZone()->lookupObject(oid);
+	ManagedReference<SceneObject> scno = player->getZone()->lookupObject(oid);
 
 	if (scno == NULL)
 		return;
 
-	CraftingTool* craftingTool = (CraftingTool*) scno;
+	if (!scno->isTangible())
+		return;
+
+	if (!((TangibleObject*)scno.get())->isCraftingTool())
+		return;
+
+	CraftingTool* craftingTool = (CraftingTool*) scno.get();
 
 	if(craftingTool != NULL) {
 
@@ -3578,7 +3584,7 @@ void ObjectControllerMessage::parseRequestCraftingSession(Player* player, Messag
 
 	} else {
 
-		CraftingStation* craftingStation = (CraftingStation*) scno;
+		CraftingStation* craftingStation = (CraftingStation*) scno.get();
 
 		if (craftingStation == NULL)
 			return;
