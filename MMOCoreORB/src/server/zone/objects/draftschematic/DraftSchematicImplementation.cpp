@@ -191,6 +191,15 @@ void DraftSchematicImplementation::sendTo(Player* player) {
 }
 
 void DraftSchematicImplementation::synchronizedUIListen(Player* player, int value) {
+	ManagedReference<CraftingTool> tool = player->getActiveCraftingTool();
+
+	if (tool == NULL)
+		return;
+
+	ManagedReference<TangibleObject> workingTano = tool->getWorkingTano();
+
+	if (workingTano == NULL)
+		return;
 
 	ManufactureSchematicObjectMessage7 * msco7 = new ManufactureSchematicObjectMessage7(_this);
 	player->sendMessage(msco7);
@@ -198,9 +207,9 @@ void DraftSchematicImplementation::synchronizedUIListen(Player* player, int valu
 	// Object Controller w/ Ingredients ***************************
 	ObjectControllerMessage* objMsg =
 			new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x0103);
-	objMsg->insertLong(player->getActiveCraftingTool()->getObjectID()); // Crafting Tool Object ID
+	objMsg->insertLong(tool->getObjectID()); // Crafting Tool Object ID
 	objMsg->insertLong(objectID); // Draft Schematic Object ID
-	objMsg->insertLong(player->getActiveCraftingTool()->getWorkingTano()->getObjectID()); // Crafting Tangible Object ID
+	objMsg->insertLong(workingTano->getObjectID()); // Crafting Tangible Object ID
 	objMsg->insertInt(2);
 	objMsg->insertByte(1);
 
