@@ -218,25 +218,33 @@ void MissionManagerImplementation::sendTerminalData(Player* player, int termBitm
 	try {
 		lock(doLock);
 
-		for (int i = 0; i < misoMap->size(); i++) {
-			MissionObject* miso = misoMap->get(i);
-			if (miso == NULL)
-				continue;
+		//List baselines if player needs completely new refresh:
+		if(player->getMisoRFC() == 0x01) {
+			for (int i = 0; i < misoMap->size(); i++) {
+				MissionObject* miso = misoMap->get(i);
+				if (miso == NULL)
+					continue;
 
-			//Do planet mission check here using the current player class:
+				//Check if player is already on mission:
+				if (player->isOnCurMisoKey(miso->getDBKey()))
+					continue;
 
-			//Check if player is already on mission:
-			if (player->isOnCurMisoKey(miso->getDBKey()))
-				continue;
-
-			if(player->getMisoRFC() == 0x01) {
 				sendMissionBase(player, miso);
-			} else {
+				player->nextMisoRFC();
+			}
+		} else {
+			for (int i = 0; i < misoMap->size(); i++) {
+				MissionObject* miso = misoMap->get(i);
+				if (miso == NULL)
+					continue;
+
+				//Check if player is already on mission:
+				if (player->isOnCurMisoKey(miso->getDBKey()))
+					continue;
+
 				sendMissionDelta(player, miso);
 			}
 		}
-
-		player->nextMisoRFC();
 
 			//Make sure the terminal and mission in the misoMap are in the same category:
 
@@ -381,6 +389,9 @@ void MissionManagerImplementation::doMissionComplete(Player* player, const Strin
 		PlayMusicMessage* pmm = new PlayMusicMessage("sound/music_mission_complete.snd");
 		player->sendMessage(pmm);
 
+		// Reset terminal refresh
+		player->setMisoRFC(0x01);
+
 		unlock(doLock);
 	} catch (...) {
 		error("unreported Exception caught on doMissionComplete()\n");
@@ -444,6 +455,9 @@ void MissionManagerImplementation::doMissionAbort(Player* player, MissionObject*
 	player->dropMission(tKey, false);
 	removeMisoFromPlayer(miso, player);
 	player->sendSystemMessage("Mission Failed.");
+
+	// Reset terminal refresh
+	player->setMisoRFC(0x01);
 }
 
 /**
