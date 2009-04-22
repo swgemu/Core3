@@ -1096,40 +1096,13 @@ void RadialManager::sendRadialResponseForSurveyTools(Player* player, SurveyTool*
 }
 
 void RadialManager::sendRadialResponseForSurveyToolRange(Player* player, SceneObject* obj) {
-	String skillBox = "crafting_artisan_novice";
+	if(obj->isTangible()) {
 
-	if (!player->hasSkillBox(skillBox)) {
-		player->sendSystemMessage("error_message", "insufficient_skill");
-		return;
+		TangibleObject* tano = (TangibleObject*) obj;
+
+		if(tano->isSurveyTool())
+			((SurveyTool*)tano)->setRangeFromRadial(player);
 	}
-
-	String surveying = "surveying";
-
-	int surveyMod = player->getSkillMod(surveying);
-
-	SuiListBox* suiToolRangeBox = new SuiListBox(player, SuiWindowType::SURVEY_TOOL_RANGE);
-	suiToolRangeBox->setPromptTitle("@base_player:swg");
-	suiToolRangeBox->setPromptText("@survey:select_range");
-
-	if (surveyMod >= 0)
-		suiToolRangeBox->addMenuItem("64m x 3pts");
-
-	if (surveyMod > 20)
-		suiToolRangeBox->addMenuItem("128m x 4pts");
-
-	if (surveyMod > 40)
-		suiToolRangeBox->addMenuItem("192m x 4pts");
-
-	if (surveyMod > 60)
-		suiToolRangeBox->addMenuItem("256m x 5pts");
-
-	if (surveyMod > 80)
-		suiToolRangeBox->addMenuItem("320m x 5pts");
-
-	player->addSuiBox(suiToolRangeBox);
-	player->sendMessage(suiToolRangeBox->generateMessage());
-
-	player->setSurveyTool((SurveyTool*) obj);
 }
 
 void RadialManager::handleOpenCraftingToolHopper(Player* player, SceneObject* obj) {

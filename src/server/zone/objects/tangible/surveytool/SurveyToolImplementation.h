@@ -78,6 +78,8 @@ public:
 	void surveyRequest(Player* player, String resourceName);
 	void sampleRequest(Player* player, String resourceName);
 
+	void setRangeFromRadial(Player* player);
+
 	inline int getSurveyToolType() {
 		return surveyToolType;
 	}

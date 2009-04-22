@@ -99,7 +99,7 @@ void SurveyToolImplementation::init() {
 		surveyToolType = ResourceHarvestType::WIND;
 	}
 
-	setSurveyToolRange(64);
+	setSurveyToolRange(0);
 }
 
 int SurveyToolImplementation::useObject(Player* player) {
@@ -122,13 +122,51 @@ int SurveyToolImplementation::useObject(Player* player) {
 				player->setSurveyTool(_this);
 			}
 		} else {
-			player->sendSystemMessage("survey","select_range");
+			setRangeFromRadial(player);
 		}
 	} else {
 		player->sendSystemMessage("error_message", "insufficient_skill");
 	}
 
 	return 0;
+}
+
+void SurveyToolImplementation::setRangeFromRadial(Player* player) {
+
+	String skillBox = "crafting_artisan_novice";
+
+		if (!player->hasSkillBox(skillBox)) {
+			player->sendSystemMessage("error_message", "insufficient_skill");
+			return;
+		}
+
+		String surveying = "surveying";
+
+		int surveyMod = player->getSkillMod(surveying);
+
+		SuiListBox* suiToolRangeBox = new SuiListBox(player, SuiWindowType::SURVEY_TOOL_RANGE);
+		suiToolRangeBox->setPromptTitle("@base_player:swg");
+		suiToolRangeBox->setPromptText("@survey:select_range");
+
+		if (surveyMod >= 0)
+			suiToolRangeBox->addMenuItem("64m x 3pts");
+
+		if (surveyMod > 20)
+			suiToolRangeBox->addMenuItem("128m x 4pts");
+
+		if (surveyMod > 40)
+			suiToolRangeBox->addMenuItem("192m x 4pts");
+
+		if (surveyMod > 60)
+			suiToolRangeBox->addMenuItem("256m x 5pts");
+
+		if (surveyMod > 80)
+			suiToolRangeBox->addMenuItem("320m x 5pts");
+
+		player->addSuiBox(suiToolRangeBox);
+		player->sendMessage(suiToolRangeBox->generateMessage());
+
+		player->setSurveyTool(_this);
 }
 
 void SurveyToolImplementation::checkSurveyRange(Player* player) {
@@ -219,7 +257,7 @@ void SurveyToolImplementation::addAttributes(AttributeListMessage* alm) {
 		alm->insertAttribute("serial_number", craftedSerial);
 	}
 
-	alm->insertAttribute("range", surveyToolRange);
+	//alm->insertAttribute("range", surveyToolRange);
 
 }
 

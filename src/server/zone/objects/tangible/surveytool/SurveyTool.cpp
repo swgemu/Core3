@@ -81,12 +81,25 @@ int SurveyTool::getSurveyToolRange() {
 		return ((SurveyToolImplementation*) _impl)->getSurveyToolRange();
 }
 
-void SurveyTool::setSurveyToolRange(int range) {
+void SurveyTool::setRangeFromRadial(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((SurveyToolImplementation*) _impl)->setRangeFromRadial(player);
+}
+
+void SurveyTool::setSurveyToolRange(int range) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
 		method.addSignedIntParameter(range);
 
 		method.executeWithVoidReturn();
@@ -99,7 +112,7 @@ void SurveyTool::sendSurveyEffect(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -112,7 +125,7 @@ void SurveyTool::sendSampleEffect(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -125,7 +138,7 @@ void SurveyTool::surveyRequest(Player* player, String& resourceName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(resourceName);
 
@@ -139,7 +152,7 @@ void SurveyTool::sampleRequest(Player* player, String& resourceName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(resourceName);
 
@@ -172,18 +185,21 @@ Packet* SurveyToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertSignedInt(getSurveyToolRange());
 		break;
 	case 10:
-		setSurveyToolRange(inv->getSignedIntParameter());
+		setRangeFromRadial((Player*) inv->getObjectParameter());
 		break;
 	case 11:
-		sendSurveyEffect((Player*) inv->getObjectParameter());
+		setSurveyToolRange(inv->getSignedIntParameter());
 		break;
 	case 12:
-		sendSampleEffect((Player*) inv->getObjectParameter());
+		sendSurveyEffect((Player*) inv->getObjectParameter());
 		break;
 	case 13:
-		surveyRequest((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_surveyRequest__Player_String_));
+		sendSampleEffect((Player*) inv->getObjectParameter());
 		break;
 	case 14:
+		surveyRequest((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_surveyRequest__Player_String_));
+		break;
+	case 15:
 		sampleRequest((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sampleRequest__Player_String_));
 		break;
 	default:
@@ -207,6 +223,10 @@ int SurveyToolAdapter::getSamplingToolType() {
 
 int SurveyToolAdapter::getSurveyToolRange() {
 	return ((SurveyToolImplementation*) impl)->getSurveyToolRange();
+}
+
+void SurveyToolAdapter::setRangeFromRadial(Player* player) {
+	return ((SurveyToolImplementation*) impl)->setRangeFromRadial(player);
 }
 
 void SurveyToolAdapter::setSurveyToolRange(int range) {
