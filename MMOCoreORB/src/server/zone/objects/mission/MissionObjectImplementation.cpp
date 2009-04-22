@@ -228,8 +228,8 @@ void MissionObjectImplementation::assetPart(bool award) {
 		return;
 
 	if(award) {
-		ownerObject->addCashCredits(rewardAmount);
-		ownerObject->sendSystemMessage("You have been awarded " + String::valueOf(rewardAmount) + " for your efforts");
+		ownerObject->addBankCredits(rewardAmount);
+		ownerObject->sendSystemMessage("You have been awarded " + String::valueOf(rewardAmount) + " credits for completing '" + titleStr + "'. The amount has been wired to your Galactic Bank Account.");
 	}
 
 
