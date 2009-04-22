@@ -270,8 +270,21 @@ void RecruiterCreatureImplementation::setPlayerOvert(Player * player, uint32 tim
 
 void RecruiterCreatureImplementation::promotePlayer(Player * player) {
 	uint8 rank = player->getFactionRank() + 1;
+	uint32 requiredPoints = FactionRankTable::getRequiredPoints(rank);
+
+	if (player->getFactionPoints(factionString) < (requiredPoints + MINFACTIONSTANDING)) {
+		StfParameter * param = new StfParameter();
+		param->addDI(MINFACTIONSTANDING);
+		param->addTO("pvp_factions", factionString);
+
+		player->sendMessage(new NpcConversationMessage(player, "faction_recruiter", "not_enough_standing_spend", param));
+
+		delete param;
+		return;
+	}
+
+	player->subtractFactionPoints(factionString, requiredPoints);
 	player->setFactionRank(rank);
-	player->subtractFactionPoints(factionString, FactionRankTable::getRequiredPoints(rank));
 }
 
 void RecruiterCreatureImplementation::grantBribe(Player * player, uint32 cost, uint32 fp) {
