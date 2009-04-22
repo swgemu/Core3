@@ -284,10 +284,17 @@ void CraftingToolImplementation::updateCraftingValues(DraftSchematic* draftSchem
 
 bool CraftingToolImplementation::hasAllRequiredResources(DraftSchematic* draftSchematic) {
 
-	for(int i = 0; i < getSlotCount(); ++i) {
+	/*for(int i = 0; i < getSlotCount(); ++i) {
 		bool optional = draftSchematic->getIngredient(i)->isOptionalSlot();
 		if(!optional && getIngredientInSlot(i) == NULL ||
 				getIngredientInSlotQuantity(i) != draftSchematic->getIngredient(i)->getResourceQuantity())
+			return false;
+	}
+	return true;*/
+
+	for(int i = 0; i < getSlotCount(); ++i) {
+		bool optional = draftSchematic->getIngredient(i)->isOptionalSlot();
+		if(!optional && getIngredientInSlot(i) == NULL)
 			return false;
 	}
 	return true;

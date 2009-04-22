@@ -31,6 +31,8 @@ public:
 
 	int getSurveyToolRange();
 
+	void setRangeFromRadial(Player* player);
+
 	void setSurveyToolRange(int range);
 
 	void sendSurveyEffect(Player* player);
@@ -64,6 +66,8 @@ public:
 	int getSamplingToolType();
 
 	int getSurveyToolRange();
+
+	void setRangeFromRadial(Player* player);
 
 	void setSurveyToolRange(int range);
 
