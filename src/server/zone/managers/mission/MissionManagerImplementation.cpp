@@ -218,6 +218,8 @@ void MissionManagerImplementation::sendTerminalData(Player* player, int termBitm
 	try {
 		lock(doLock);
 
+		//TODO: Ditch the misoBSB, just lookup player's current planet & ifIsInGroup and use terminal type
+
 		//List baselines if player needs completely new refresh:
 		if(player->getMisoRFC() == 0x01) {
 			for (int i = 0; i < misoMap->size(); i++) {
@@ -491,9 +493,6 @@ void MissionManagerImplementation::loadPlayerMissions(Player* player, bool doLoc
 			instanceMission(player, misoMap->get(misoKey), objectiveSer);
 		}
 
-		delete res;
-
-
 		// Load and set currentMissionKeys & finishedMissionKeys:
 		StringBuffer qCur, qFin;
 		ResultSet* resCur;
@@ -506,9 +505,14 @@ void MissionManagerImplementation::loadPlayerMissions(Player* player, bool doLoc
 		if (resCur->next())
 			player->setCurrentMissionKeys(resCur->getString(0));
 
+		//If there are no saves, cleanup the mission keys. Useful for recovering from server crashes
+		if(res->size() == 0)
+			player->setCurrentMissionKeys("");
+
 		if (resFin->next())
 			player->setFinishedMissionKeys(resFin->getString(0));
 
+		delete res;
 		delete resCur;
 		delete resFin;
 

@@ -68,8 +68,6 @@ bool MissionObjectiveImplementation::deserializeObjective(String localTemp, bool
 	int idx = 0;
 	// Parse objective limiteters. ex. 1:23232:0:32:null:1 (objective type:crc:var:limit:strVar:failure flag)
 
-	System::out << "deserializing objective: " << localTemp << endl;
-
 	StringTokenizer localTok(localTemp);
 	localTok.setDelimeter(":");
 
