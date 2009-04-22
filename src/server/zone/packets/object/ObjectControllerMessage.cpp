@@ -3547,7 +3547,8 @@ void ObjectControllerMessage::parseResourceContainerTransfer(Player* player,
 }
 
 
-void ObjectControllerMessage::parseRequestCraftingSession(Player* player, Message* packet) {
+void ObjectControllerMessage::parseRequestCraftingSession(Player* player,
+		Message* packet) {
 
 	uint64 oid = packet->parseLong();
 	ManagedReference<SceneObject> scno = player->getZone()->lookupObject(oid);
@@ -3558,38 +3559,45 @@ void ObjectControllerMessage::parseRequestCraftingSession(Player* player, Messag
 	if (!scno->isTangible())
 		return;
 
-	if (!((TangibleObject*)scno.get())->isCraftingTool())
-		return;
+	if (((TangibleObject*) scno.get())->isCraftingTool()) {
 
-	CraftingTool* craftingTool = (CraftingTool*) scno.get();
+		CraftingTool* craftingTool = (CraftingTool*) scno.get();
 
-	if(craftingTool != NULL) {
+		if (craftingTool != NULL) {
 
-		if(player->isMounted()) {
-			craftingTool->sendToolStartFailure(player, "error_message", "survey_on_mount");
-			return;
+			if (player->isMounted()) {
+				craftingTool->sendToolStartFailure(player, "error_message",
+						"survey_on_mount");
+				return;
+			}
+
+			if (craftingTool->isReady())
+
+				craftingTool->sendToolStart(player);
+
+			else if (craftingTool->isFinished())
+
+				craftingTool->sendToolStartFailure(player, "system_msg",
+						"crafting_tool_full");
+
+			else
+
+				craftingTool->sendToolStartFailure(player, "system_msg",
+						"crafting_tool_creating_prototype");
+
 		}
-
-		if (craftingTool->isReady())
-
-			craftingTool->sendToolStart(player);
-
-		else if (craftingTool->isFinished())
-
-			craftingTool->sendToolStartFailure(player, "system_msg", "crafting_tool_full");
-
-		else
-
-			craftingTool->sendToolStartFailure(player, "system_msg", "crafting_tool_creating_prototype");
-
 	} else {
+
+		if (!((TangibleObject*) scno.get())->isCraftingStation())
+			return;
 
 		CraftingStation* craftingStation = (CraftingStation*) scno.get();
 
 		if (craftingStation == NULL)
 			return;
 
-		craftingTool = player->getCraftingTool(craftingStation->getStationType(), false);
+		CraftingTool* craftingTool = player->getCraftingTool(
+				craftingStation->getStationType(), false);
 
 		if (craftingTool != NULL)
 			craftingTool->sendToolStart(player);
