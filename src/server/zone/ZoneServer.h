@@ -65,6 +65,8 @@ public:
 
 	SceneObject* removeCachedObject(SceneObject* obj, bool doLock = true);
 
+	SceneObject* createObject(unsigned int objectCRC, bool doLock = true);
+
 	bool banUser(String& name, String& admin);
 
 	bool kickUser(String& name, String& admin);
@@ -195,6 +197,8 @@ public:
 	SceneObject* removeCachedObject(unsigned long long oid, bool doLock);
 
 	SceneObject* removeCachedObject(SceneObject* obj, bool doLock);
+
+	SceneObject* createObject(unsigned int objectCRC, bool doLock);
 
 	bool banUser(String& name, String& admin);
 

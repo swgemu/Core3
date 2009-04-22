@@ -90,6 +90,8 @@ interface ZoneServer {
 
 	SceneObject removeCachedObject(unsigned long oid, boolean doLock = true);
 	SceneObject removeCachedObject(SceneObject obj, boolean doLock = true);
+	
+	SceneObject createObject(unsigned int objectCRC, boolean doLock = true);
 
 	// administration methods
 	boolean banUser(String name, String admin);
