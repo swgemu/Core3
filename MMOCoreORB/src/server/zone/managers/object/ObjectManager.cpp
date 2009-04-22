@@ -44,11 +44,20 @@ which carries forward this exception.
 
 #include "ObjectManager.h"
 
+Lua* ObjectManager::luaTemplatesInstance = NULL;
+
 ObjectManager::ObjectManager(ServiceThread* serv) : Logger("ObjectManager") {
 	server = serv;
 
 	objectMap = new ObjectMap(100000);
 	objectCacheMap = new ObjectMap(20000);
+
+	luaTemplatesInstance = new Lua();
+	luaTemplatesInstance->init();
+
+	info("loading object templates...", true);
+	registerFunctions();
+	luaTemplatesInstance->runFile("scripts/object/main.lua");
 
 	setLogging(false);
 	setGlobalLogging(true);
@@ -56,6 +65,7 @@ ObjectManager::ObjectManager(ServiceThread* serv) : Logger("ObjectManager") {
 
 ObjectManager::~ObjectManager() {
 	delete objectMap;
+	objectMap = NULL;
 
 	info("cleaning up objects..");
 
@@ -71,6 +81,10 @@ ObjectManager::~ObjectManager() {
 	info("objects cleaned up", true);
 
 	delete objectCacheMap;
+	objectCacheMap = NULL;
+
+	delete luaTemplatesInstance;
+	luaTemplatesInstance = NULL;
 }
 
 SceneObject* ObjectManager::add(SceneObject* obj) {
@@ -137,4 +151,36 @@ SceneObject* ObjectManager::removeCachedObject(uint64 oid) {
 		obj->info("removed from ObjectManager cache");
 
 	return obj;
+}
+
+SceneObject* ObjectManager::createObject(uint32 objectCRC) {
+	LuaFunction getTemplate(luaTemplatesInstance->getLuaState(), "getTemplate", 1);
+	getTemplate << objectCRC; // push first argument
+	luaTemplatesInstance->callFunction(&getTemplate);
+
+	LuaObject result(luaTemplatesInstance->getLuaState());
+
+	if (!result.isValidTable())
+		return NULL;
+
+	uint32 gameObjectType = result.getIntField("gameObjectType");
+
+	StringBuffer msg;
+	msg << "Object crc:[0x" <<  hex << objectCRC << "]" << " is a [0x" << hex << gameObjectType << "] gameObjectType";
+	info(msg, true);
+
+	return NULL;
+}
+
+void ObjectManager::registerFunctions() {
+	//lua generic
+	lua_register(luaTemplatesInstance->getLuaState(), "includeFile", includeFile);
+}
+
+int ObjectManager::includeFile(lua_State* L) {
+	String filename = Lua::getStringParameter(L);
+
+	Lua::runFile("scripts/object/" + filename, L);
+
+	return 0;
 }

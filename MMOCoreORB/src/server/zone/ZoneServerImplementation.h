@@ -163,6 +163,8 @@ public:
 	SceneObject* removeCachedObject(uint64 oid, bool doLock = true);
 	SceneObject* removeCachedObject(SceneObject* obj, bool doLock = true);
 
+	SceneObject* createObject(uint32 objectCRC, bool doLock = true);
+
 	// server methods
 	void addTotalSentPacket(int count);
 	void addTotalResentPacket(int count);

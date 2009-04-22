@@ -558,6 +558,22 @@ SceneObject* ZoneServerImplementation::removeCachedObject(SceneObject* obj, bool
 	return removeCachedObject(obj->getObjectID(), doLock);
 }
 
+SceneObject* ZoneServerImplementation::createObject(uint32 objectCRC, bool doLock) {
+	SceneObject* obj = NULL;
+
+	try {
+		lock(doLock);
+
+		obj = objectManager->createObject(objectCRC);
+
+		unlock(doLock);
+	} catch (...) {
+		unlock(doLock);
+	}
+
+	return obj;
+}
+
 bool ZoneServerImplementation::banUser(String& name, String& admin) {
 	lock();
 
