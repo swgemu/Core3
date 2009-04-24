@@ -74,6 +74,7 @@ which carries forward this exception.
 #include "../tangible/campkit/campsite/CampSite.h"
 #include "../tangible/attachment/Attachment.h"
 #include "../tangible/Inventory.h"
+#include "../tangible/crafting/CraftingTool.h"
 #include "EquippedItems.h"
 
 #include "faction/FactionPointsMap.h"
@@ -196,7 +197,7 @@ class PlayerImplementation : public PlayerServant {
 	VectorMap<uint32, DraftSchematic*> draftSchematicList;
 
 	// Crafting
-	CraftingTool* activeCraftingTool;
+	ManagedReference<CraftingTool> activeCraftingTool;
 	Time lastExperimentationAttempt;
 
 	// misc

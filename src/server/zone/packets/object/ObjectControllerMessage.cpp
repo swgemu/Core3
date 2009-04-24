@@ -3607,9 +3607,7 @@ void ObjectControllerMessage::parseRequestCraftingSession(Player* player,
 }
 
 void ObjectControllerMessage::parseCancelCraftingSession(Player* player, Message* packet) {
-
-
-	CraftingTool* craftingTool = player->getActiveCraftingTool();
+	ManagedReference<CraftingTool> craftingTool = player->getActiveCraftingTool();
 
 	if (craftingTool == NULL)
 		return;

@@ -319,6 +319,8 @@ void PlayerImplementation::initializePlayer() {
 	surveyErrorMessage = false;
 	sampleErrorMessage = false;
 
+	activeCraftingTool = NULL;
+
 	// Stat Migration
 	setMigrationHealth(0);
 	setMigrationStrength(0);
@@ -3867,10 +3869,12 @@ void PlayerImplementation::dropAllMissions() {
 		MissionObject* miso = missionMap.get(i);
 		if(miso != NULL) {
 			miso->sendDestroyTo(_this);
-			miso->finalize();
+
 			miso->release();
+			miso->finalize();
 		}
 	}
+
 	missionMap.removeAll();
 
 	curMisoKeys = "";
