@@ -1394,6 +1394,7 @@ void SuiManager::handleFreeResource(uint32 boxID, Player* player, uint32 cancel,
 void SuiManager::handleGiveFreeResource(uint32 boxID, Player* player, uint32 cancel, int index) {
 	try{
 		player->wlock();
+
 		if (!player->hasSuiBox(boxID)){
 			player->unlock();
 			return;
@@ -1401,9 +1402,11 @@ void SuiManager::handleGiveFreeResource(uint32 boxID, Player* player, uint32 can
 
 		SuiBox* sui = player->getSuiBox(boxID);
 		ResourceManager* resManager = player->getZone()->getZoneServer()->getResourceManager();
+
 		if (sui->isListBox()) {
 			SuiListBox* listBox = (SuiListBox*)sui;
-			if (cancel!=1){//give the resources to the player then remove all listboxes
+
+			if (cancel != 1) {//give the resources to the player then remove all listboxes
 				SuiListBoxVector* choicesList = player->getSuiBoxChoices();
 				resManager->useResourceDeed(player, choicesList->get(choicesList->size()-1), ResourceManagerImplementation::RESOURCE_DEED_QUANTITY);
 				player->clearSuiBoxChoices();
@@ -1412,29 +1415,41 @@ void SuiManager::handleGiveFreeResource(uint32 boxID, Player* player, uint32 can
 				uint64 oID = player->getResourceDeedID();
 
 				SceneObject* obj = player->getPlayerItem(oID);
+
+				if (obj == NULL) {
+					player->unlock();
+					return;
+				}
+
 				ResourceDeed* deed = (ResourceDeed*)obj;
 				deed->destroyDeed(player);
 
 				uint32 zero = 0;
-				while (listBox->getPreviousBox()!=0 && player->hasSuiBox(listBox->getPreviousBox())){
-					if (player->getSuiBox(listBox->getPreviousBox())->isListBox()){
+
+				while ((listBox->getPreviousBox() != 0) && player->hasSuiBox(listBox->getPreviousBox())) {
+					if (player->getSuiBox(listBox->getPreviousBox())->isListBox()) {
 						uint32 prevBox = listBox->getPreviousBox();
 						player->removeSuiBox(listBox->getBoxID());
+
 						listBox->setNextBox(zero);
 						listBox->setPreviousBox(zero);
 						listBox->finalize();
 						listBox = (SuiListBox*)player->getSuiBox(prevBox);
 					}
 				}
+
 				if (player->hasSuiBox(listBox->getBoxID())){
 					listBox->setNextBox(zero);
 					player->removeSuiBox(listBox->getBoxID());
 					listBox->finalize();
 				}
+
 				player->clearSuiBoxChoices();
 			}
-			if (cancel==1 && listBox->getPreviousBox()!=0){//clicked BACK. just remove the final box.
+
+			if ((cancel == 1) && (listBox->getPreviousBox() != 0)) {//clicked BACK. just remove the final box.
 				SuiBox* prevSui = player->getSuiBox(listBox->getPreviousBox());
+
 				if (prevSui->isListBox()){
 					SuiListBox* prevListBox = (SuiListBox*)prevSui;
 					player->removeLastSuiBoxChoice();
@@ -1443,8 +1458,10 @@ void SuiManager::handleGiveFreeResource(uint32 boxID, Player* player, uint32 can
 					prevListBox->setNextBox(zero);
 					listBox->setPreviousBox(zero);
 					listBox->finalize();
-					if(prevListBox->hasGeneratedMessage())
+
+					if (prevListBox->hasGeneratedMessage())
 						prevListBox->clearOptions();
+
 					player->sendMessage(prevListBox->generateMessage());
 				}
 			}
