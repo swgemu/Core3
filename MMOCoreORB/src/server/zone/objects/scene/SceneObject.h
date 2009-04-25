@@ -119,6 +119,10 @@ public:
 
 	QuadTreeEntry* getQuadTreeEntry();
 
+	void serialize(String& str);
+
+	void deSerialize(String& str);
+
 	int compareTo(SceneObject* obj);
 
 	BaseMessage* link(SceneObject* obj);
@@ -497,6 +501,10 @@ public:
 
 	QuadTreeEntry* getQuadTreeEntry();
 
+	void serialize(String& str);
+
+	void deSerialize(String& str);
+
 	int compareTo(SceneObject* obj);
 
 	BaseMessage* link(SceneObject* obj);
@@ -766,6 +774,8 @@ public:
 	void setPickupFlag(bool pickup);
 
 protected:
+	String _param0_serialize__String_;
+	String _param0_deSerialize__String_;
 	String _param0_info__String_bool_;
 	String _param0_error__String_;
 	String _param0_setCustomName__String_;

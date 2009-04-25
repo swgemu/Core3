@@ -110,10 +110,6 @@ void CellObjectImplementation::addChild(SceneObject* obj, bool doLock) {
 bool CellObjectImplementation::addObject(SceneObject* obj) {
 	uint64 oid = obj->getObjectID();
 
-	if (!objects.contains(oid)) {
-		obj->acquire();
-	}
-
 	objects.put(oid, obj);
 
 	return true;

@@ -95,10 +95,6 @@ void CreatureInventoryImplementation::sendItemsTo(Player* player) {
 bool CreatureInventoryImplementation::addObject(SceneObject* obj) {
 	uint64 oid = obj->getObjectID();
 
-	if (!objects.contains(oid)) {
-		obj->acquire();
-	}
-
 	objects.put(oid, obj);
 
 	if (!((TangibleObject*) obj)->isEquipped())
@@ -115,11 +111,9 @@ bool CreatureInventoryImplementation::removeObject(int index) {
 	if (item == NULL)
 		return false;
 
-	objects.remove(index);
-
 	item->setParent(NULL);
 
-	item->release();
+	objects.remove(index);
 
 	return true;
 }
@@ -130,12 +124,9 @@ bool CreatureInventoryImplementation::removeObject(uint64 oid) {
 	if (item == NULL)
 		return false;
 
+	item->setParent(NULL);
+
 	objects.drop(oid);
-
-	if (item != NULL)
-		item->setParent(NULL);
-
-	item->release();
 
 	return true;
 }

@@ -252,7 +252,7 @@ class PlayerImplementation : public PlayerServant {
 	String curMisoKeys; //mission keys the player is currently on
 	String finMisoKeys; //mission keys the player has completed.
 
-	VectorMap<String, MissionObject*> missionMap;
+	VectorMap<String, ManagedReference<MissionObject> > missionMap;
 
 	// Entertainer - Dance + Music
 	Event* entertainerEvent;

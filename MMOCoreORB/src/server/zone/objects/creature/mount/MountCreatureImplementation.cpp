@@ -164,8 +164,6 @@ void MountCreatureImplementation::die() {
 	while (damageMap.size() > 0) {
 		CreatureObject* object = damageMap.elementAt(0)->getKey();
 		damageMap.drop(object);
-
-		object->release();
 	}
 
 	defenderList.removeAll();

@@ -4198,16 +4198,13 @@ CreatureObject* CreatureObjectImplementation::getLootOwner() {
 }
 
 void CreatureObjectImplementation::removeFromDamageMap(CreatureObject* target) {
-	if (damageMap.drop(target)) {
-		target->release();
-	}
+	damageMap.drop(target);
 }
 
 void CreatureObjectImplementation::addDamage(CreatureObject* creature, uint32 damage) {
 	if (damageMap.contains(creature))
 		damageMap.get(creature) += damage;
 	else {
-		creature->acquire();
 		damageMap.put(creature, damage);
 	}
 

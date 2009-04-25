@@ -316,7 +316,7 @@ protected:
 	BurstRunNotifyAvailableEvent* burstRunNotifyAvailableEvent;
 	DizzyFallDownEvent* dizzyFallDownEvent;
 
-	VectorMap<CreatureObject*, uint32> damageMap;
+	VectorMap<ManagedReference<CreatureObject>, uint32> damageMap;
 
 	VectorMap<String, Time> cooldownMap;
 

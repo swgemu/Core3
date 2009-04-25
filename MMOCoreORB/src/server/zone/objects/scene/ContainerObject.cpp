@@ -63,11 +63,10 @@ ContainerObject::ContainerObject(SceneObjectImplementation* obj) {
 
 ContainerObject::~ContainerObject() {
 	while (objects.size() > 0) {
-		SceneObject* item = objects.get(0);
+		ManagedReference<SceneObject> item = objects.get(0);
 
 		objects.drop(item->getObjectID());
 
-		item->release();
 		item->setParent(NULL);
 
 		item->finalize();
@@ -76,10 +75,6 @@ ContainerObject::~ContainerObject() {
 
 bool ContainerObject::addObject(SceneObject* obj) {
 	uint64 oid = obj->getObjectID();
-
-	if (!objects.contains(oid)) {
-		obj->acquire();
-	}
 
 	obj->setPickupFlag(true);
 	objects.put(oid, obj);
@@ -95,10 +90,9 @@ bool ContainerObject::removeObject(int index) {
 	if (item == NULL)
 		return false;
 
-	objects.remove(index);
-
 	item->setParent(NULL);
-	item->release();
+
+	objects.remove(index);
 
 	return true;
 }
@@ -109,10 +103,9 @@ bool ContainerObject::removeObject(uint64 oid) {
 	if (item == NULL)
 		return false;
 
-	objects.drop(oid);
-
 	item->setParent(NULL);
-	item->release();
+
+	objects.drop(oid);
 
 	return true;
 }

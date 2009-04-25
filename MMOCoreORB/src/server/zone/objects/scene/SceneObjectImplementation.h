@@ -158,7 +158,7 @@ protected:
 	bool attackable;
 
 	VectorMap<GroupObject*, int> groupDamageList;
-	VectorMap<CreatureObject*, DamageDone*> playerDamageList;
+	VectorMap<ManagedReference<CreatureObject>, DamageDone*> playerDamageList;
 
 public:
 	static const int NONPLAYERCREATURE = 1;
@@ -207,6 +207,9 @@ public:
 	BaseMessage* link(uint64 container, uint32 type);
 
 	void close(ZoneClientSession* client);
+
+	virtual void serialize(String& str);
+	virtual void deSerialize(const String& str);
 
 	void init();
 	virtual void initScriptedValues();
