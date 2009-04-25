@@ -131,12 +131,6 @@ SceneObjectImplementation::~SceneObjectImplementation() {
 		StackTrace::printStackTrace();
 	}
 
-	for (int i = 0; i < playerDamageList.size(); i++) {
-		VectorMapEntry<CreatureObject*, DamageDone*> *entry = playerDamageList.SortedVector<VectorMapEntry<CreatureObject*, DamageDone*>*>::get(i);
-		CreatureObject *creature = entry->getKey();
-		creature->release();
-	}
-
 	undeploy();
 }
 
@@ -327,6 +321,14 @@ void SceneObjectImplementation::setLockName(const String& name) {
 }
 
 void SceneObjectImplementation::initScriptedValues() {
+
+}
+
+void SceneObjectImplementation::serialize(String& str) {
+
+}
+
+void SceneObjectImplementation::deSerialize(const String& str) {
 
 }
 
@@ -619,7 +621,6 @@ void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int dama
 		return;
 
 	if (!playerDamageList.contains(creature)) {
-		creature->acquire();
 		dmg = new DamageDone;
 	} else
 		dmg = playerDamageList.get(creature);
@@ -655,8 +656,7 @@ void SceneObjectImplementation::dropDamageDone(CreatureObject* creature) {
 
 	int damage = damageDone->getTotalDamage();
 
-	if (playerDamageList.drop(creature))
-		creature->release();
+	playerDamageList.drop(creature);
 
 	delete damageDone;
 
@@ -687,7 +687,7 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 	float total = (float)getTotalDamage();
 
 	for (int i = 0; i < playerDamageList.size(); i++) {
-		VectorMapEntry<CreatureObject*, DamageDone*> *entry = playerDamageList.SortedVector<VectorMapEntry<CreatureObject*, DamageDone*>*>::get(i);
+		VectorMapEntry<ManagedReference<CreatureObject>, DamageDone*> *entry = playerDamageList.SortedVector<VectorMapEntry<ManagedReference<CreatureObject>, DamageDone*>*>::get(i);
 		CreatureObject *creature = entry->getKey();
 		DamageDone *dmg = entry->getValue();
 
@@ -784,12 +784,11 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 
 void SceneObjectImplementation::cleanupDamageDone() {
 	while ( !playerDamageList.isEmpty() ) {
-		VectorMapEntry<CreatureObject*, DamageDone*> *entry = playerDamageList.SortedVector<VectorMapEntry<CreatureObject*, DamageDone*>*>::get(0);
+		VectorMapEntry<ManagedReference<CreatureObject>, DamageDone*> *entry = playerDamageList.SortedVector<VectorMapEntry<ManagedReference<CreatureObject>, DamageDone*>*>::get(0);
 		CreatureObject *creature = entry->getKey();
 		DamageDone *dmg = entry->getValue();
 
-		if (playerDamageList.drop(creature))
-			creature->release();
+		playerDamageList.drop(creature);
 
 		delete dmg;
 	}

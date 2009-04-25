@@ -55,7 +55,7 @@ which carries forward this exception.
 class AuctionController : public Mutex {
 
 public:
-	VectorMap<uint64, AuctionItem*> items;
+	VectorMap<uint64, ManagedReference<AuctionItem> > items;
 
 	AuctionController() : Mutex ("AuctionController") {
 		items.setNullValue(NULL);
@@ -65,8 +65,7 @@ public:
 	inline void addItem(AuctionItem* item, bool doLock = true) {
 		lock(doLock);
 
-		if (items.put(item->getID(), item) != -1)
-			item->acquire();
+		items.put(item->getID(), item);
 
 		unlock(doLock);
 	}
@@ -74,11 +73,7 @@ public:
 	inline bool removeItem(uint64 objectid, bool doLock = true) {
 		lock(doLock);
 
-		AuctionItem* item = items.get(objectid);
 		bool ret = items.drop(objectid);
-
-		if (item != NULL)
-			item->release();
 
 		unlock(doLock);
 

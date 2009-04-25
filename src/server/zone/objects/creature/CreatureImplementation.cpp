@@ -109,12 +109,7 @@ CreatureImplementation::~CreatureImplementation() {
 
 	playerCanHarvest.removeAll();
 
-	while (damageMap.size() > 0) {
-		CreatureObject* object = damageMap.elementAt(0)->getKey();
-		damageMap.drop(object);
-
-		object->release();
-	}
+	damageMap.removeAll();
 }
 
 void CreatureImplementation::init() {
@@ -489,8 +484,6 @@ void CreatureImplementation::unload() {
 	while (damageMap.size() > 0) {
 		CreatureObject* object = damageMap.elementAt(0)->getKey();
 		damageMap.drop(object);
-
-		object->release();
 	}
 
 	if (zone != NULL && isInQuadTree())
@@ -1306,8 +1299,6 @@ void CreatureImplementation::resetState() {
 	while (damageMap.size() > 0) {
 		CreatureObject* object = damageMap.elementAt(0)->getKey();
 		damageMap.drop(object);
-
-		object->release();
 	}
 
 	defenderList.removeAll();

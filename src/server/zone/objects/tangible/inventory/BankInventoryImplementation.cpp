@@ -103,10 +103,6 @@ void BankInventoryImplementation::sendItemsTo(Player* player) {
 bool BankInventoryImplementation::addObject(SceneObject* obj) {
 	uint64 oid = obj->getObjectID();
 
-	if (!objects.contains(oid)) {
-		obj->acquire();
-	}
-
 	obj->setParent(_this, 0xFFFFFFFF);
 
 	obj->setPickupFlag(true);
@@ -122,10 +118,9 @@ bool BankInventoryImplementation::removeObject(int index) {
 	if (item == NULL)
 		return false;
 
-	objects.remove(index);
-
 	item->setParent(NULL);
-	item->release();
+
+	objects.remove(index);
 
 	return true;
 }
@@ -136,10 +131,9 @@ bool BankInventoryImplementation::removeObject(uint64 oid) {
 	if (item == NULL)
 		return false;
 
-	objects.drop(oid);
-
 	item->setParent(NULL);
-	item->release();
+
+	objects.drop(oid);
 
 	return true;
 }

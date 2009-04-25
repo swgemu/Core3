@@ -141,6 +141,9 @@ interface SceneObject implements ManagedObject {
 	boolean isInQuadTree();
 
 	QuadTreeEntry getQuadTreeEntry();
+	
+	void serialize(String str);
+	void deSerialize(String str);
 
 	int compareTo(SceneObject obj);
 

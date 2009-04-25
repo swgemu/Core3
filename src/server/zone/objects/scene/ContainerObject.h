@@ -61,7 +61,7 @@ class ContainerObject {
 	int slots;
 
 protected:
-	VectorMap<uint64, SceneObject*> objects;
+	VectorMap<uint64, ManagedReference<SceneObject> > objects;
 	SceneObjectImplementation* sceneObject;
 
 public:

@@ -3770,8 +3770,7 @@ bool PlayerImplementation::hasCompletedMisoKey(const String& tmk) {
 //Called by the mission manager when a new mission is added
 void PlayerImplementation::addMission(const String& key, MissionObject* miso) {
 	curMisoKeys += (key + ",");
-	if (missionMap.put(key, miso) != -1)
-		miso->acquire();
+	missionMap.put(key, miso);
 }
 
 /**
@@ -3843,8 +3842,7 @@ void PlayerImplementation::dropMission(const String& key, bool finished) {
 	//Relinquish all mission specific assets
 	miso->assetPart(finished);
 
-	if (missionMap.drop(key))
-		miso->release();
+	missionMap.drop(key);
 
 	miso->finalize();
 
@@ -3870,7 +3868,6 @@ void PlayerImplementation::dropAllMissions() {
 		if(miso != NULL) {
 			miso->sendDestroyTo(_this);
 
-			miso->release();
 			miso->finalize();
 		}
 	}

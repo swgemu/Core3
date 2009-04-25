@@ -142,8 +142,6 @@ int InventoryImplementation::getUnequippedItemCount() {
 bool InventoryImplementation::addObject(SceneObject* obj) {
 	uint64 oid = obj->getObjectID();
 
-	if (!objects.contains(oid))
-		obj->acquire();
 
 	if (!((TangibleObject*) obj)->isEquipped())
 		obj->setParent(_this, 0xFFFFFFFF);
@@ -161,10 +159,9 @@ bool InventoryImplementation::removeObject(int index) {
 	if (item == NULL)
 		return false;
 
-	objects.remove(index);
-
 	item->setParent(NULL);
-	item->release();
+
+	objects.remove(index);
 
 	return true;
 }
@@ -175,10 +172,9 @@ bool InventoryImplementation::removeObject(uint64 oid) {
 	if (item == NULL)
 		return false;
 
-	objects.drop(oid);
-
 	item->setParent(NULL);
-	item->release();
+
+	objects.drop(oid);
 
 	return true;
 }
