@@ -59,7 +59,7 @@ class RecruiterCreatureImplementation : public RecruiterCreatureServant {
 public:
 	static const uint8 IMPERIAL = 1;
 	static const uint8 REBEL = 2;
-	static const uint8 MINFACTIONSTANDING = 0; //TEMPORARY!!!
+	static const uint8 MINFACTIONSTANDING = 200;
 
 protected:
 	uint64 factionCRC;
@@ -126,7 +126,6 @@ protected:
 			return false;
 
 		uint32 requiredPoints = FactionRankTable::getRequiredPoints(player->getFactionRank() + 1) + MINFACTIONSTANDING;
-
 		return (player->getFactionPoints(factionString) >= requiredPoints);
 	}
 

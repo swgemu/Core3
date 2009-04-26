@@ -85,11 +85,9 @@ public:
 	void removeMissions();
 
 	// creation methods
-	MissionObject* poolMission(const String& dbKey, int termMask, const String& typeStr, uint32 descKey, uint32 titleKey, uint32 diffLv, float destX, float destY, uint32 destPlanetCrc,
-			const String& creatorName, uint32 rewardAmount, float targetX, float targetY, uint32 targetPlanetCrc, uint32 depictedObjCrc, const String& targetName,
-			const String& description, const String& title, uint32 typeCrc, const String& objectiveDefaults, bool instantComplete, bool doLock = true);
+	MissionObject* poolMission(MissionObject* miso, bool doLock = true);
 
-	void instanceMission(Player* player, MissionObject* misoCopy, const String& objectives);
+	void instanceMission(Player* player, MissionObject* misoCopy, const String& objectives, bool isNew);
 
 	//Test
 	void setupHardcodeMissions();

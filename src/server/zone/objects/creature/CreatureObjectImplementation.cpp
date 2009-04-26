@@ -2193,12 +2193,8 @@ SceneObject* CreatureObjectImplementation::getInventoryItem(uint64 oid) {
 	return NULL;
 }
 
-void CreatureObjectImplementation::removeAllInventoryByMisoKey(String& mkey) {
-	inventory->removeAllByMisoKey(_this, mkey);
-}
-
-TangibleObject* CreatureObjectImplementation::getItemByMisoKey(String& tma) {
-	return inventory->getItemByMisoKey(tma);
+void CreatureObjectImplementation::removeAllUnequippedInventory() {
+	inventory->removeAllUnequipped(_this);
 }
 
 void CreatureObjectImplementation::removeInventoryItem(SceneObject* item) {

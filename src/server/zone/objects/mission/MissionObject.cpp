@@ -623,7 +623,7 @@ UnicodeString& MissionObject::getCreatorName() {
 		return ((MissionObjectImplementation*) _impl)->getCreatorName();
 }
 
-void MissionObject::setReward(unsigned int tr) {
+void MissionObject::setRewardCredits(unsigned int tr) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -633,10 +633,10 @@ void MissionObject::setReward(unsigned int tr) {
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionObjectImplementation*) _impl)->setReward(tr);
+		((MissionObjectImplementation*) _impl)->setRewardCredits(tr);
 }
 
-unsigned int MissionObject::getReward() {
+unsigned int MissionObject::getRewardCredits() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -645,7 +645,7 @@ unsigned int MissionObject::getReward() {
 
 		return method.executeWithUnsignedIntReturn();
 	} else
-		return ((MissionObjectImplementation*) _impl)->getReward();
+		return ((MissionObjectImplementation*) _impl)->getRewardCredits();
 }
 
 void MissionObject::setTargetX(float ttx) {
@@ -1078,10 +1078,10 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertUnicode(getCreatorName());
 		break;
 	case 52:
-		setReward(inv->getUnsignedIntParameter());
+		setRewardCredits(inv->getUnsignedIntParameter());
 		break;
 	case 53:
-		resp->insertInt(getReward());
+		resp->insertInt(getRewardCredits());
 		break;
 	case 54:
 		setTargetX(inv->getFloatParameter());
@@ -1340,12 +1340,12 @@ UnicodeString& MissionObjectAdapter::getCreatorName() {
 	return ((MissionObjectImplementation*) impl)->getCreatorName();
 }
 
-void MissionObjectAdapter::setReward(unsigned int tr) {
-	return ((MissionObjectImplementation*) impl)->setReward(tr);
+void MissionObjectAdapter::setRewardCredits(unsigned int tr) {
+	return ((MissionObjectImplementation*) impl)->setRewardCredits(tr);
 }
 
-unsigned int MissionObjectAdapter::getReward() {
-	return ((MissionObjectImplementation*) impl)->getReward();
+unsigned int MissionObjectAdapter::getRewardCredits() {
+	return ((MissionObjectImplementation*) impl)->getRewardCredits();
 }
 
 void MissionObjectAdapter::setTargetX(float ttx) {

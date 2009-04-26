@@ -113,9 +113,9 @@ public:
 
 	UnicodeString& getCreatorName();
 
-	void setReward(unsigned int tr);
+	void setRewardCredits(unsigned int tr);
 
-	unsigned int getReward();
+	unsigned int getRewardCredits();
 
 	void setTargetX(float ttx);
 
@@ -280,9 +280,9 @@ public:
 
 	UnicodeString& getCreatorName();
 
-	void setReward(unsigned int tr);
+	void setRewardCredits(unsigned int tr);
 
-	unsigned int getReward();
+	unsigned int getRewardCredits();
 
 	void setTargetX(float ttx);
 

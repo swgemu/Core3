@@ -132,7 +132,7 @@ int ContainerObject::getContainerObjectsWithChildsSize() {
 	for (int i = 0; i < getContainerObjectsSize(); ++i) {
 		TangibleObject* nestedItem = (TangibleObject*) getObject(i);
 		if (nestedItem->isContainer())
-			offset = offset + nestedItem->getContainerObjectsSize();
+			offset += nestedItem->getContainerObjectsSize();
 	}
 
 	return offset;

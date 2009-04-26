@@ -54,10 +54,6 @@ public:
 
 	const static int MAXUNEQUIPPEDCOUNT = 80;
 
-	TangibleObject* getItemByMisoKey(String& misKey);
-
-	void removeAllByMisoKey(CreatureObject* owner, String& misKey);
-
 	int getUnequippedItemCount();
 
 	inline bool isFull() {
@@ -66,6 +62,7 @@ public:
 
 	bool addObject(SceneObject* obj);
 
+	void removeAllUnequipped(CreatureObject* owner);
 	bool removeObject(int index);
 	bool removeObject(uint64 oid);
 	void moveObjectToTopLevel(CreatureObject* owner, TangibleObject* obj);

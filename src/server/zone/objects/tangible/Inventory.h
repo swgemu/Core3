@@ -19,13 +19,11 @@ class Inventory : public Container {
 public:
 	Inventory(CreatureObject* creature);
 
-	TangibleObject* getItemByMisoKey(String& misKey);
-
-	void removeAllByMisoKey(CreatureObject* owner, String& misKey);
-
 	int getUnequippedItemCount();
 
 	bool isFull();
+
+	void removeAllUnequipped(CreatureObject* owner);
 
 	void moveObjectToTopLevel(CreatureObject* owner, TangibleObject* obj);
 
@@ -45,19 +43,14 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	TangibleObject* getItemByMisoKey(String& misKey);
-
-	void removeAllByMisoKey(CreatureObject* owner, String& misKey);
-
 	int getUnequippedItemCount();
 
 	bool isFull();
 
+	void removeAllUnequipped(CreatureObject* owner);
+
 	void moveObjectToTopLevel(CreatureObject* owner, TangibleObject* obj);
 
-protected:
-	String _param0_getItemByMisoKey__String_;
-	String _param1_removeAllByMisoKey__CreatureObject_String_;
 };
 
 class InventoryHelper : public DistributedObjectClassHelper, public Singleton<InventoryHelper> {

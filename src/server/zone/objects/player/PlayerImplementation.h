@@ -847,6 +847,7 @@ public:
 	void updateMissions(int type, uint32 objCrc, const String& str, int increment = 1);
 	MissionObject* getPlayerMission(const String& key);
 	void saveMissions();
+	void loadMissions();
 	void dropMission(const String& key, bool finished);
 	void dropAllMissions();
 

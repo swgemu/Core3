@@ -399,9 +399,7 @@ public:
 
 	SceneObject* getInventoryItem(unsigned long long oid);
 
-	void removeAllInventoryByMisoKey(String& mkey);
-
-	TangibleObject* getItemByMisoKey(String& tma);
+	void removeAllUnequippedInventory();
 
 	void removeInventoryItem(unsigned long long oid);
 
@@ -1732,9 +1730,7 @@ public:
 
 	SceneObject* getInventoryItem(unsigned long long oid);
 
-	void removeAllInventoryByMisoKey(String& mkey);
-
-	TangibleObject* getItemByMisoKey(String& tma);
+	void removeAllUnequippedInventory();
 
 	void removeInventoryItem(unsigned long long oid);
 
@@ -2688,8 +2684,6 @@ protected:
 	String _param0_getCooldownTimeRemaining__String_;
 	String _param0_hasCooldownExpired__String_;
 	String _param0_updateMood__String_;
-	String _param0_removeAllInventoryByMisoKey__String_;
-	String _param0_getItemByMisoKey__String_;
 	String _param0_addSkillMod__String_int_bool_;
 	String _param0_getSkillMod__String_;
 	String _param0_hasSkillMod__String_;

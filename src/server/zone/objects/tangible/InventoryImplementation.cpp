@@ -67,52 +67,32 @@ InventoryImplementation::~InventoryImplementation() {
 	setParent(NULL);
 }
 
-TangibleObject* InventoryImplementation::getItemByMisoKey(String& misKey) {
-	TangibleObject* retTano = NULL;
+/**
+ * This partially works. Needs to make sure all stacked items are deleted
+ */
+void InventoryImplementation::removeAllUnequipped(CreatureObject* owner) {
 	TangibleObject* tano = NULL;
 
-	for (int i = 0; i < getContainerObjectsSize(); ++i) {
+	for (int i = 0; i < objects.size(); ++i) {
 		SceneObject* obj = getObject(i);
 
 		if (obj->isTangible()) {
 			tano = (TangibleObject*)obj;
 
-			if ((tano->getMisoAsocKey() == misKey) && !tano->isEquipped()) {
-				break;
-			} else {
-				tano = NULL;
-			}
-		}
-	}
+			if (!tano->isEquipped()) {
+				if (owner->isPlayer())
+					tano->sendDestroyTo((Player*) owner);
 
-	if (tano != NULL) {
-		retTano = tano;
-	}
+				Zone* zone = owner->getZone();
+				ItemManager* itemmanager;
+				if(zone != NULL)
+					zone->getZoneServer()->getItemManager();
 
-	return retTano;
-}
-
-void InventoryImplementation::removeAllByMisoKey(CreatureObject* owner, String& misKey) {
-	TangibleObject* tano = NULL;
-
-	for (int i = 0; i < getContainerObjectsSize(); ++i) {
-		SceneObject* obj = getObject(i);
-
-		if (obj->isTangible()) {
-			tano = (TangibleObject*)obj;
-
-			if ((tano->getMisoAsocKey() == misKey) && (!tano->isEquipped())) {
-				if (tano != NULL) {
+				if ((tano != NULL) && (itemmanager != NULL)) {
 					removeObject(tano->getObjectID());
-
-					if (owner->isPlayer()) {
-						tano->sendDestroyTo((Player*) owner);
-					}
-
+					itemmanager->deletePlayerItem((Player*) owner, tano, false);
 					tano->finalize();
 				}
-			} else {
-				tano = NULL;
 			}
 		}
 	}
@@ -131,7 +111,7 @@ int InventoryImplementation::getUnequippedItemCount() {
 				++count;
 
 				if (tano->isContainer())
-					count = count + tano->getContainerObjectsWithChildsSize();
+					count += tano->getContainerObjectsWithChildsSize();
 			}
 		}
 	}

@@ -139,8 +139,8 @@ interface MissionObject implements SceneObject {
 	void setCreatorName(const UnicodeString tcn);
 	UnicodeString getCreatorName();
 	
-	void setReward(unsigned int tr);
-	unsigned int getReward();
+	void setRewardCredits(unsigned int tr);
+	unsigned int getRewardCredits();
 	
 	void setTargetX(float ttx);
 	float getTargetX();

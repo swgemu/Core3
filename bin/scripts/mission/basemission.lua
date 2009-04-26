@@ -41,37 +41,45 @@
 --which carries forward this exception.
 
 Mission = Object:new {
-	-- Server Vars:
-	missionKey = "", -- UNIQUE internal key used to identify the mission. No spaces, keep small but informational
-	terminalMask = TMASK_GENERAL, -- Terminal Bitmask
-
-	-- Basic Mission Info setup:
-	typeStr = "", -- SWG mission type string (03)
-	stfDescriptionKey = "", -- key used by client to look up description in mission stf. Can be blank if custom is set (04)
-	stfTitleKey = "", -- key used by client to look up title in mission stf. Can be blank if custom is set (04)
-
-	difficultyLevel = 1, -- Mission difficulty level (05)
-
-	destinationX = 0.0, -- X coordinate for destination of mission (06)
-	destinationY = 0.0, -- Y coordinate for destination of mission (06)
-	destinationPlanetStr = "", -- Destination planet name, must be lowercase (06)
-
-	targetName = "", --Name of target to display
-	creatorName = "", -- Name that appears in game as the assigner of the mission (usually an npc name) (07)
-	rewardAmount = 0, -- Amount of credits awarded (08)
-
-	startX = 0.0, -- X coordinate for start (aka "target/assigner npc") of mission (09)
-	startY = 0.0, -- Y coordinate for start (aka "target/assigner npc") of mission (09)
-	startPlanetStr = "", -- start planet name, must be lowercase (09)
+	missionKey = "", -- UNIQUE internal key used to identify the mission. No spaces, keep small
 	
-	depictedObjectCrc = 0, -- Object CRC of the object pictured in mission window (10,0A)
-	descriptionStf = "", -- TRE path to description stf. Can be blank if stfDescriptionKey isnt used (11,0B)
-	customDescription = "", -- if stfDescriptionKey is not used, set a custom description here (04)
-	titleStf = "", -- TRE path to title stf. Can be blank if stfTitleKey isnt used (12,0B)
-	customTitle = "", -- if stfTitleKey is not used, set a custom title here (04)
+	-- Title/Name:
+	stfTitleKey = "", -- key used by client to look up title in mission stf. Can be blank if custom is set
+	titleStf = "", -- TRE path to title stf. Can be blank if stfTitleKey isnt used
+	customTitle = "", -- if stfTitleKey is not used, set a custom title here
 
-	typeCrc = 0, -- SWGCRC of mission type. (14, 0E)
+	-- General: (type, terminal etc)
+	terminalMask = TMASK_GENERAL, -- Terminal Bitmask
+	typeStr = "", -- SWG mission type string 
+	typeCrc = 0, -- deliver(E5C27EC6,3854728902) or destroy(74EF9BE3,1961860067) SWGCRC of mission type
+	creatorName = "", -- Name that appears in game as the assigner of the mission (usually an npc name)
+	difficultyLevel = 1, -- Mission difficulty level
 
+	-- Location: Start (npc assigner)
+	startX = 0.0, -- X coordinate for start (aka "target/assigner npc") of mission
+	startY = 0.0, -- Y coordinate for start (aka "target/assigner npc") of mission
+	startPlanetStr = "", -- start planet name, must be lowercase
+
+	-- Location: Destination (target)
+	destinationX = 0.0, -- X coordinate for destination of mission
+	destinationY = 0.0, -- Y coordinate for destination of mission
+	destinationPlanetStr = "", -- Destination planet name, must be lowercase
+
+	-- Rewards
+	rewardCredits = 0, -- Amount of credits awarded to bank
+	rewardXP = "", -- (xpType:value;xpType:value etc) Xp to reward upon mission completion
+	rewardBadgeIds = "", -- (badge ids, delimited by commas) Ids of the badge to award
+	rewardFactions = "", -- (factionName:points;factionName:points etc) Faction & points to award to that faction. If points are negative, they will be subtracted from the faction
+	rewardObjects = "", -- Serialized string of objects (items) to award the player. See documentation for details
+
+	-- Description
+	stfDescriptionKey = "", -- key used by client to look up description in mission stf. Can be blank if custom is set
+	descriptionStf = "", -- TRE path to description stf. Can be blank if stfDescriptionKey isnt used
+	customDescription = "", -- if stfDescriptionKey is not used, set a custom description here
+
+	-- Objective & Target
+	targetName = "", --Name of target to display
+	depictedObjectCrc = 0, -- Object CRC of the object pictured in mission window
 	objectiveDefaults = "", --Objective String. See documentation for formatting
 	instantComplete = 1, --do Mission complete as soon as objectives are complete (no return to npc for evaluation)
 }

@@ -196,6 +196,7 @@ private:
 	static void factionSet(StringTokenizer tokenizer, Player* player);
 	static void getCredits(StringTokenizer tokenizer, Player* player);
 	static void getXP(StringTokenizer tokenizer, Player* player);
+	static void adjustFP(StringTokenizer tokenizer, Player* player);
 	static void adminList(StringTokenizer tokenizer, Player* player);
 	static void showChars(StringTokenizer tokenizer, Player* player);
 
@@ -233,6 +234,7 @@ private:
 
 	static void storeVehicle(StringTokenizer tokenizer, Player* player);
 	static void clearMissions(StringTokenizer tokenizer, Player* player);
+	static void clearInventory(StringTokenizer tokenizer, Player* player);
 	void init();
 
 public:

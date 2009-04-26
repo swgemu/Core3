@@ -66,41 +66,21 @@ void MissionManager::removeMissions() {
 		((MissionManagerImplementation*) _impl)->removeMissions();
 }
 
-MissionObject* MissionManager::poolMission(const String& dbKey, int termMask, const String& typeStr, unsigned int descKey, unsigned int titleKey, unsigned int diffLv, float destX, float destY, unsigned int destPlanetCrc, const String& creatorName, unsigned int rewardAmount, float targetX, float targetY, unsigned int targetPlanetCrc, unsigned int depictedObjCrc, const String& targetName, const String& description, const String& title, unsigned int typeCrc, const String& objectiveDefaults, bool instantComplete, bool doLock) {
+MissionObject* MissionManager::poolMission(MissionObject* miso, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
-		method.addAsciiParameter(dbKey);
-		method.addSignedIntParameter(termMask);
-		method.addAsciiParameter(typeStr);
-		method.addUnsignedIntParameter(descKey);
-		method.addUnsignedIntParameter(titleKey);
-		method.addUnsignedIntParameter(diffLv);
-		method.addFloatParameter(destX);
-		method.addFloatParameter(destY);
-		method.addUnsignedIntParameter(destPlanetCrc);
-		method.addAsciiParameter(creatorName);
-		method.addUnsignedIntParameter(rewardAmount);
-		method.addFloatParameter(targetX);
-		method.addFloatParameter(targetY);
-		method.addUnsignedIntParameter(targetPlanetCrc);
-		method.addUnsignedIntParameter(depictedObjCrc);
-		method.addAsciiParameter(targetName);
-		method.addAsciiParameter(description);
-		method.addAsciiParameter(title);
-		method.addUnsignedIntParameter(typeCrc);
-		method.addAsciiParameter(objectiveDefaults);
-		method.addBooleanParameter(instantComplete);
+		method.addObjectParameter(miso);
 		method.addBooleanParameter(doLock);
 
 		return (MissionObject*) method.executeWithObjectReturn();
 	} else
-		return ((MissionManagerImplementation*) _impl)->poolMission(dbKey, termMask, typeStr, descKey, titleKey, diffLv, destX, destY, destPlanetCrc, creatorName, rewardAmount, targetX, targetY, targetPlanetCrc, depictedObjCrc, targetName, description, title, typeCrc, objectiveDefaults, instantComplete, doLock);
+		return ((MissionManagerImplementation*) _impl)->poolMission(miso, doLock);
 }
 
-void MissionManager::instanceMission(Player* player, MissionObject* misoCopy, const String& objectives) {
+void MissionManager::instanceMission(Player* player, MissionObject* misoCopy, const String& objectives, bool isNew) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -109,10 +89,11 @@ void MissionManager::instanceMission(Player* player, MissionObject* misoCopy, co
 		method.addObjectParameter(player);
 		method.addObjectParameter(misoCopy);
 		method.addAsciiParameter(objectives);
+		method.addBooleanParameter(isNew);
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->instanceMission(player, misoCopy, objectives);
+		((MissionManagerImplementation*) _impl)->instanceMission(player, misoCopy, objectives, isNew);
 }
 
 void MissionManager::setupHardcodeMissions() {
@@ -360,10 +341,10 @@ Packet* MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		removeMissions();
 		break;
 	case 9:
-		resp->insertLong(poolMission(inv->getAsciiParameter(_param0_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_String_int_String_bool_bool_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_String_int_String_bool_bool_), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param9_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_String_int_String_bool_bool_), inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param15_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_String_int_String_bool_bool_), inv->getAsciiParameter(_param16_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_String_int_String_bool_bool_), inv->getAsciiParameter(_param17_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_String_int_String_bool_bool_), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param19_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_String_int_String_bool_bool_), inv->getBooleanParameter(), inv->getBooleanParameter())->_getObjectID());
+		resp->insertLong(poolMission((MissionObject*) inv->getObjectParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 10:
-		instanceMission((Player*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_instanceMission__Player_MissionObject_String_));
+		instanceMission((Player*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_instanceMission__Player_MissionObject_String_bool_), inv->getBooleanParameter());
 		break;
 	case 11:
 		setupHardcodeMissions();
@@ -432,12 +413,12 @@ void MissionManagerAdapter::removeMissions() {
 	return ((MissionManagerImplementation*) impl)->removeMissions();
 }
 
-MissionObject* MissionManagerAdapter::poolMission(const String& dbKey, int termMask, const String& typeStr, unsigned int descKey, unsigned int titleKey, unsigned int diffLv, float destX, float destY, unsigned int destPlanetCrc, const String& creatorName, unsigned int rewardAmount, float targetX, float targetY, unsigned int targetPlanetCrc, unsigned int depictedObjCrc, const String& targetName, const String& description, const String& title, unsigned int typeCrc, const String& objectiveDefaults, bool instantComplete, bool doLock) {
-	return ((MissionManagerImplementation*) impl)->poolMission(dbKey, termMask, typeStr, descKey, titleKey, diffLv, destX, destY, destPlanetCrc, creatorName, rewardAmount, targetX, targetY, targetPlanetCrc, depictedObjCrc, targetName, description, title, typeCrc, objectiveDefaults, instantComplete, doLock);
+MissionObject* MissionManagerAdapter::poolMission(MissionObject* miso, bool doLock) {
+	return ((MissionManagerImplementation*) impl)->poolMission(miso, doLock);
 }
 
-void MissionManagerAdapter::instanceMission(Player* player, MissionObject* misoCopy, const String& objectives) {
-	return ((MissionManagerImplementation*) impl)->instanceMission(player, misoCopy, objectives);
+void MissionManagerAdapter::instanceMission(Player* player, MissionObject* misoCopy, const String& objectives, bool isNew) {
+	return ((MissionManagerImplementation*) impl)->instanceMission(player, misoCopy, objectives, isNew);
 }
 
 void MissionManagerAdapter::setupHardcodeMissions() {

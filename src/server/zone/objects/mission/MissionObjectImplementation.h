@@ -275,11 +275,11 @@ public:
 		return creatorName;
 	}
 
-	inline void setReward(uint32 tr) {
+	inline void setRewardCredits(uint32 tr) {
 		rewardAmount = tr;
 	}
 
-	inline uint32 getReward() {
+	inline uint32 getRewardCredits() {
 		return rewardAmount;
 	}
 

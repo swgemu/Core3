@@ -321,10 +321,7 @@ interface CreatureObject implements TangibleObject {
 
 	SceneObject getInventoryItem(unsigned long oid);
 
-	void removeAllInventoryByMisoKey(String mkey);
-
-	TangibleObject getItemByMisoKey(String tma);
-
+	void removeAllUnequippedInventory();
 	void removeInventoryItem(unsigned long oid);
 	void removeInventoryItem(SceneObject item);
 

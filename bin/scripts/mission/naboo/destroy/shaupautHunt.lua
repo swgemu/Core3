@@ -41,40 +41,47 @@
 --which carries forward this exception.
 
 theShaupautHunt = Mission:new {
-	-- Server Vars:
-	missionKey = "tsh1", -- UNIQUE internal key used to identify the mission. No spaces, keep small but informational
-	terminalMask = TMASK_GENERAL, -- Terminal Bitmask
-
-	-- Basic Mission Info setup:
-	typeStr = "mission_destroy", -- SWG mission type string (03)
-	stfDescriptionKey = "", -- key used by client to look up description in mission stf. Can be blank if custom is set (04)
-	stfTitleKey = "", -- key used by client to look up title in mission stf. Can be blank if custom is set (04)
-
-	difficultyLevel = 1, -- Mission difficulty level (05)
-
-	destinationX = -4865.0, -- X coordinate for destination of mission (06)
-	destinationY = 3916.0, -- Y coordinate for destination of mission (06)
-	destinationPlanetStr = "naboo", -- SWGCRC for destination planet name (06)
-
-	targetName = "(10x) shaupaut",
-	creatorName = "David Karivalis", -- Name that appears in game as the assigner of the mission (usually an npc name) (07)
-	rewardAmount = 1500, -- Amount of credits awarded (08)
-
-	startX = -4844.0, -- X coordinate for start (aka "target/assigner npc") of mission (09)
-	startY = 4155.0, -- Y coordinate for start (aka "target/assigner npc") of mission (09)
-	startPlanetStr = "naboo", -- SWGCRC for start (aka "target/assigner npc") planet name (09)
+	missionKey = "tsh1", -- UNIQUE internal key used to identify the mission. No spaces, keep small
 	
-	depictedObjectCrc = 176125140, -- Object CRC of the object pictured in mission window (10,0A)
-	descriptionStf = "", -- TRE path to description stf. Can be blank if stfDescriptionKey isnt used (11,0B)
-	customDescription = "A bag fertilizer I use for my farm dropped off my ship as I was landing at the starport. Unforunately, local shaupaut have ingested the stuff and, as a side effect, have been reproducing at ten times the natural rate. Please kill 10 of the shaupaut right outside of the city and return to me at (-4895,4193) for your reward.", -- if stfDescriptionKey is not used, set a custom description here (04)
-	titleStf = "", -- TRE path to title stf. Can be blank if stfTitleKey isnt used (12,0B)
-	customTitle = "The Shaupaut Hunt", -- if stfTitleKey is not used, set a custom title here (04)
+	-- Title/Name:
+	stfTitleKey = "", -- key used by client to look up title in mission stf. Can be blank if custom is set
+	titleStf = "", -- TRE path to title stf. Can be blank if stfTitleKey isnt used
+	customTitle = "The Shaupaut Hunt", -- if stfTitleKey is not used, set a custom title here
 
-	typeCrc = 1961860067, -- deliver(E5C27EC6,3854728902) or destroy(74EF9BE3,1961860067) crc SWGCRC of mission type. (14, 0E)
+	-- General: (type, terminal etc)
+	terminalMask = TMASK_GENERAL, -- Terminal Bitmask
+	typeStr = "mission_destroy", -- SWG mission type string 
+	typeCrc = 1961860067, -- deliver(E5C27EC6,3854728902) or destroy(74EF9BE3,1961860067) SWGCRC of mission type
+	creatorName = "David Karivalis", -- Name that appears in game as the assigner of the mission (usually an npc name)
+	difficultyLevel = 1, -- Mission difficulty level
 
-	objectiveDefaults = "1:176125140:0:10:shaupaut:0",
+	-- Location: Start (npc assigner)
+	startX = -4844.0, -- X coordinate for start (aka "target/assigner npc") of mission
+	startY = 4155.0, -- Y coordinate for start (aka "target/assigner npc") of mission
+	startPlanetStr = "naboo", -- start planet name, must be lowercase
+
+	-- Location: Destination (target)
+	destinationX = -4865.0, -- X coordinate for destination of mission
+	destinationY = 3916.0, -- Y coordinate for destination of mission
+	destinationPlanetStr = "naboo", -- Destination planet name, must be lowercase
+
+	-- Rewards
+	rewardCredits = 1500, -- Amount of credits awarded to bank
+	rewardXP = "", -- (xpType:value;xpType:value etc) Xp to reward upon mission completion
+	rewardBadgeIds = "", -- (badge ids, delimited by commas) Ids of the badge to award
+	rewardFactions = "", -- (factionName:points;factionName:points) Faction & points to award to that faction. If points are negative, they will be subtracted from the faction
+	rewardObjects = "", -- Serialized string of objects (items) to award the player. See documentation for details
+
+	-- Description
+	stfDescriptionKey = "", -- key used by client to look up description in mission stf. Can be blank if custom is set
+	descriptionStf = "", -- TRE path to description stf. Can be blank if stfDescriptionKey isnt used
+	customDescription = "A bag fertilizer I use for my farm dropped off my ship as I was landing at the starport. Unforunately, local shaupaut have ingested the stuff and, as a side effect, have been reproducing at ten times the natural rate. Please kill 10 of the shaupaut right outside of the city and return to me at (-4895,4193) for your reward.", -- if stfDescriptionKey is not used, set a custom description here
+
+	-- Objective & Target
+	targetName = "(10x) shaupaut", --Name of target to display
+	depictedObjectCrc = 176125140, -- Object CRC of the object pictured in mission window
+	objectiveDefaults = "1:176125140:0:10:shaupaut:0", --Objective String. See documentation for formatting
 	instantComplete = 0, --do Mission complete as soon as objectives are complete (no return to npc for evaluation)
 }
 
---MissionTable:addMission(theShaupautHunt, "tsh1")
 AddMissionToServer(theShaupautHunt)

@@ -294,6 +294,10 @@ void GameCommandHandler::init() {
 			"Gives you specified type of experience",
 			"USAGE: @getXP [type] [amount]",
 			&getXP);
+	gmCommands->addCommand("adjustFP", DEVELOPER | QA,
+			"Adjusts your faction points for specified faction",
+			"USAGE: @adjustFP [faction] [points]",
+			&adjustFP);
 	gmCommands->addCommand("adminList", PRIVILEGED,
 			"Returns a list of players with a level higher than normal (4)",
 			"USAGE: @adminList",
@@ -398,6 +402,10 @@ void GameCommandHandler::init() {
 				"USAGE: @clearMissions <player name>",
 				&clearMissions);
 	/* Disabled Commands
+	gmCommands->addCommand("clearInventory", PRIVILEGED,
+				"Clears all unequipped items in a player inventory, in the event they are having problems",
+				"USAGE: @clearInventory <player name>",
+				&clearInventory);
 	gmCommands->addCommand("applyDot", DEVELOPER,
 				"applyDot",
 				"USAGE: @applyDot ",
@@ -2804,6 +2812,35 @@ void GameCommandHandler::getXP(StringTokenizer tokenizer, Player* player) {
 	player->addXp(xptype, xpamount, true);
 }
 
+void GameCommandHandler::adjustFP(StringTokenizer tokenizer, Player* player) {
+	int fpoints;
+	String ftype;
+
+	if (tokenizer.hasMoreTokens()) {
+		tokenizer.getStringToken(ftype);
+		if (tokenizer.hasMoreTokens())
+			fpoints = tokenizer.getIntToken();
+		else {
+			player->sendSystemMessage("Usage: @adjustFP [faction] [points]");
+			return;
+		}
+	} else {
+		player->sendSystemMessage("Usage: @adjustFP [faction] [points]");
+		return;
+	}
+	if (ftype != "imperial" && ftype != "rebel") {
+		player->sendSystemMessage("Usage: @adjustFP [faction] [points]");
+		return;
+	} else {
+		if (fpoints == 0)
+			return;
+		else if (fpoints > 0)
+			player->addFactionPoints(ftype, fpoints);
+		else if (fpoints < 0)
+			player->subtractFactionPoints(ftype, (fpoints * -1));
+	}
+}
+
 void GameCommandHandler::adminList(StringTokenizer tokenizer, Player* player) {
 	try {
 		StringBuffer query;
@@ -3838,6 +3875,38 @@ void GameCommandHandler::clearMissions(StringTokenizer tokenizer, Player* player
 		if(targetPlayer != player)
 			targetPlayer->unlock();
 		player->sendSystemMessage("clearing missions failed");
+	}
+}
+
+void GameCommandHandler::clearInventory(StringTokenizer tokenizer, Player* player) {
+	String targetName = "";
+	Player* targetPlayer;
+
+	try {
+		if (!tokenizer.hasMoreTokens())
+			return;
+		tokenizer.getStringToken(targetName);
+
+		ZoneServer * server = player->getZone()->getZoneServer();
+		ChatManager * chatManager = player->getZone()->getChatManager();
+		targetPlayer = chatManager->getPlayer(targetName);
+
+		if (targetPlayer == NULL)
+			return;
+
+		if(targetPlayer != player)
+			targetPlayer->wlock(player);
+
+		targetPlayer->removeAllUnequippedInventory();
+
+		if(targetPlayer != player)
+			targetPlayer->unlock();
+
+		player->sendSystemMessage(targetName + " has had all their unequipped inventory items cleared.");
+	} catch (...) {
+		if(targetPlayer != player)
+			targetPlayer->unlock();
+		player->sendSystemMessage("clearing inventory failed");
 	}
 }
 

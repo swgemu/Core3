@@ -27,39 +27,12 @@ Inventory::Inventory(DummyConstructorParameter* param) : Container(param) {
 Inventory::~Inventory() {
 }
 
-TangibleObject* Inventory::getItemByMisoKey(String& misKey) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 6);
-		method.addAsciiParameter(misKey);
-
-		return (TangibleObject*) method.executeWithObjectReturn();
-	} else
-		return ((InventoryImplementation*) _impl)->getItemByMisoKey(misKey);
-}
-
-void Inventory::removeAllByMisoKey(CreatureObject* owner, String& misKey) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 7);
-		method.addObjectParameter(owner);
-		method.addAsciiParameter(misKey);
-
-		method.executeWithVoidReturn();
-	} else
-		((InventoryImplementation*) _impl)->removeAllByMisoKey(owner, misKey);
-}
-
 int Inventory::getUnequippedItemCount() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 6);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -71,11 +44,24 @@ bool Inventory::isFull() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 7);
 
 		return method.executeWithBooleanReturn();
 	} else
 		return ((InventoryImplementation*) _impl)->isFull();
+}
+
+void Inventory::removeAllUnequipped(CreatureObject* owner) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(owner);
+
+		method.executeWithVoidReturn();
+	} else
+		((InventoryImplementation*) _impl)->removeAllUnequipped(owner);
 }
 
 void Inventory::moveObjectToTopLevel(CreatureObject* owner, TangibleObject* obj) {
@@ -83,7 +69,7 @@ void Inventory::moveObjectToTopLevel(CreatureObject* owner, TangibleObject* obj)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(owner);
 		method.addObjectParameter(obj);
 
@@ -104,18 +90,15 @@ Packet* InventoryAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		resp->insertLong(getItemByMisoKey(inv->getAsciiParameter(_param0_getItemByMisoKey__String_))->_getObjectID());
-		break;
-	case 7:
-		removeAllByMisoKey((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_removeAllByMisoKey__CreatureObject_String_));
-		break;
-	case 8:
 		resp->insertSignedInt(getUnequippedItemCount());
 		break;
-	case 9:
+	case 7:
 		resp->insertBoolean(isFull());
 		break;
-	case 10:
+	case 8:
+		removeAllUnequipped((CreatureObject*) inv->getObjectParameter());
+		break;
+	case 9:
 		moveObjectToTopLevel((CreatureObject*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
 		break;
 	default:
@@ -125,20 +108,16 @@ Packet* InventoryAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
-TangibleObject* InventoryAdapter::getItemByMisoKey(String& misKey) {
-	return ((InventoryImplementation*) impl)->getItemByMisoKey(misKey);
-}
-
-void InventoryAdapter::removeAllByMisoKey(CreatureObject* owner, String& misKey) {
-	return ((InventoryImplementation*) impl)->removeAllByMisoKey(owner, misKey);
-}
-
 int InventoryAdapter::getUnequippedItemCount() {
 	return ((InventoryImplementation*) impl)->getUnequippedItemCount();
 }
 
 bool InventoryAdapter::isFull() {
 	return ((InventoryImplementation*) impl)->isFull();
+}
+
+void InventoryAdapter::removeAllUnequipped(CreatureObject* owner) {
+	return ((InventoryImplementation*) impl)->removeAllUnequipped(owner);
 }
 
 void InventoryAdapter::moveObjectToTopLevel(CreatureObject* owner, TangibleObject* obj) {
