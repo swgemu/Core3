@@ -27,9 +27,9 @@ public:
 
 	void removeMissions();
 
-	MissionObject* poolMission(const String& dbKey, int termMask, const String& typeStr, unsigned int descKey, unsigned int titleKey, unsigned int diffLv, float destX, float destY, unsigned int destPlanetCrc, const String& creatorName, unsigned int rewardAmount, float targetX, float targetY, unsigned int targetPlanetCrc, unsigned int depictedObjCrc, const String& targetName, const String& description, const String& title, unsigned int typeCrc, const String& objectiveDefaults, bool instantComplete, bool doLock);
+	MissionObject* poolMission(MissionObject* miso, bool doLock);
 
-	void instanceMission(Player* player, MissionObject* misoCopy, const String& objectives);
+	void instanceMission(Player* player, MissionObject* misoCopy, const String& objectives, bool isNew);
 
 	void setupHardcodeMissions();
 
@@ -85,9 +85,9 @@ public:
 
 	void removeMissions();
 
-	MissionObject* poolMission(const String& dbKey, int termMask, const String& typeStr, unsigned int descKey, unsigned int titleKey, unsigned int diffLv, float destX, float destY, unsigned int destPlanetCrc, const String& creatorName, unsigned int rewardAmount, float targetX, float targetY, unsigned int targetPlanetCrc, unsigned int depictedObjCrc, const String& targetName, const String& description, const String& title, unsigned int typeCrc, const String& objectiveDefaults, bool instantComplete, bool doLock);
+	MissionObject* poolMission(MissionObject* miso, bool doLock);
 
-	void instanceMission(Player* player, MissionObject* misoCopy, const String& objectives);
+	void instanceMission(Player* player, MissionObject* misoCopy, const String& objectives, bool isNew);
 
 	void setupHardcodeMissions();
 
@@ -122,14 +122,7 @@ public:
 	void registerGlobals();
 
 protected:
-	String _param0_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_String_int_String_bool_bool_;
-	String _param2_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_String_int_String_bool_bool_;
-	String _param9_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_String_int_String_bool_bool_;
-	String _param15_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_String_int_String_bool_bool_;
-	String _param16_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_String_int_String_bool_bool_;
-	String _param17_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_String_int_String_bool_bool_;
-	String _param19_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_String_int_String_bool_bool_;
-	String _param2_instanceMission__Player_MissionObject_String_;
+	String _param2_instanceMission__Player_MissionObject_String_bool_;
 	String _param1_sendMission__Player_String_bool_;
 	String _param1_doMissionComplete__Player_String_bool_;
 	String _param1_doMissionAbort__Player_String_bool_;

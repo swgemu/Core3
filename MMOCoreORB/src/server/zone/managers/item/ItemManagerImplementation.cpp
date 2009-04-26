@@ -2064,11 +2064,12 @@ void ItemManagerImplementation::deletePlayerItem(Player* player, TangibleObject*
 
 		ServerDatabase::instance()->executeStatement(query);
 
-		StringBuffer playertxt;
-		if (notify)
+		if (notify) {
+			StringBuffer playertxt;
 			playertxt << "You have destroyed " << item->getCustomName().toString() << ".";
+			player->sendSystemMessage(playertxt.toString());
+		}
 
-		player->sendSystemMessage(playertxt.toString());
 	} catch (DatabaseException& e) {
 		System::out << e.getMessage() << "\n";
 	}

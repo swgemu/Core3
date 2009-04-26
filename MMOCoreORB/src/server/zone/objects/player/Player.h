@@ -663,6 +663,8 @@ public:
 
 	void saveMissions();
 
+	void loadMissions();
+
 	void dropMission(const String& key, bool finished);
 
 	void dropAllMissions();
@@ -1629,6 +1631,8 @@ public:
 	MissionObject* getPlayerMission(const String& key);
 
 	void saveMissions();
+
+	void loadMissions();
 
 	void dropMission(const String& key, bool finished);
 

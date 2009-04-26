@@ -48,7 +48,7 @@ which carries forward this exception.
 /*
 Imperial/Rebel (Cost:0/200) 1,000 (Delegate Costs 650 to send 100)
 
-Private (Cost:10)  1,000 (Delegate Costs 650 to send 100)
+Private (Cost:200)  1,000 (Delegate Costs 650 to send 100)
 
 Lance Corporal (Cost:400) 8,000 (Delegate Costs 500 to send 100)
 
@@ -87,7 +87,7 @@ static const String rankNames[16] = { "", "private",
 		"warrant_officer_1", "second_lieutenant", "lieutenant", "captain",
 		"major", "lieutenant_colonel", "colonel" };
 
-static const uint16 points[16] = { 0, 10, 400, 800, 1200, 1600,
+static const uint16 points[16] = { 0, 200, 400, 800, 1200, 1600,
 		2000, 2500, 3000, 3500, 4000, 5000, 5000, 5500, 5500, 6000 };
 
 static const float ratio[16] = { 6.5, 6.5, 5, 4, 4, 2.86, 2.5, 2.3,

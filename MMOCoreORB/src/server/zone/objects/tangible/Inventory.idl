@@ -53,12 +53,10 @@ interface Inventory implements Container {
 		super(unsigned long oid);
 	}
 
-	TangibleObject getItemByMisoKey(String misKey);
-	void removeAllByMisoKey(CreatureObject owner, String misKey);
-
 	int getUnequippedItemCount();
 
 	boolean isFull();
 	
+	void removeAllUnequipped(CreatureObject owner);
 	void moveObjectToTopLevel(CreatureObject owner, TangibleObject obj);
 }

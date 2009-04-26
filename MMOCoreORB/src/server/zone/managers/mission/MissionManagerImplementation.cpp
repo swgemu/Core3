@@ -98,50 +98,14 @@ void MissionManagerImplementation::unloadManager() {
 }
 
 //Standard Functions:
-MissionObject* MissionManagerImplementation::poolMission(const String& dbKey, int termMask, const String& typeStr, uint32 descKey, uint32 titleKey, uint32 diffLv, float destX, float destY, uint32 destPlanetCrc,
-		const String& creatorName, uint32 rewardAmount, float targetX, float targetY, uint32 targetPlanetCrc, uint32 depictedObjCrc, const String& targetName,
-		const String& description, const String& title, uint32 typeCrc, const String& objectiveDefaults, bool instantComplete, bool doLock) {
+MissionObject* MissionManagerImplementation::poolMission(MissionObject* miso, bool doLock) {
 	try {
 		lock(doLock);
 
-		MissionObject* miso = new MissionObject(getNextMissionID());
 		miso->deploy();
 
-		//Internal key that we use to identify the mission, referenced in db. Set in script.
-		miso->setDBKey(dbKey);
-		miso->applyTerminalMask(termMask);
-
-		miso->setTypeStr(typeStr);
-		//miso->setDescKey(descKey);
-		//miso->setTitleKey(titleKey);
-		miso->setDifficultyLevel(diffLv);
-
-		miso->setDestX(destX);
-		miso->setDestY(destY);
-		miso->setDestPlanetCrc(destPlanetCrc);
-
-		miso->setTargetName(targetName);
-		miso->setCreatorName(UnicodeString(creatorName));
-		miso->setReward(rewardAmount);
-
-		miso->setTargetX(targetX);
-		miso->setTargetY(targetY);
-		miso->setTargetPlanetCrc(targetPlanetCrc);
-
-		miso->setDepictedObjCrc(depictedObjCrc);
-		//miso->setDescriptionStf(descriptionStf);
-		//miso->setTitleStf(titleStf);
-		miso->setTitle(title);
-		miso->setDescription(description);
-		miso->setTypeCrc(typeCrc);
-
-		miso->setObjectiveDefaults(objectiveDefaults);
-		miso->setInstantComplete(instantComplete);
-
-		//load(miso);
-
-		if (misoMap->get(dbKey) != NULL) {
-			String err = "Mission Key Collision with " + dbKey;
+		if (misoMap->get(miso->getDBKey()) != NULL) {
+			String err = "Mission Key Collision with " + miso->getDBKey();
 			error(err);
 
 			unlock(doLock);
@@ -166,7 +130,7 @@ MissionObject* MissionManagerImplementation::poolMission(const String& dbKey, in
  * Creates a new mission object for a player, spawns personalized objectives
  * Used whenever a player is online an owns a mission. Released when a player logs out
  */
-void MissionManagerImplementation::instanceMission(Player* player, MissionObject* misoCopy, const String& objectives) {
+void MissionManagerImplementation::instanceMission(Player* player, MissionObject* misoCopy, const String& objectives, bool isNew) {
 	if(misoCopy == NULL/* || objectives.isEmpty()*/) {
 		System::out << "instanceMission: misoCopy is null or objectives is empty. objectives: " << objectives << endl;
 		return;
@@ -179,33 +143,58 @@ void MissionManagerImplementation::instanceMission(Player* player, MissionObject
 	miso->lock();
 
 	// Clone vars:
+	//Server Vars
 	miso->setDBKey(misoCopy->getDBKey());
+
+	// Title/Name
+	miso->setTitleKey(misoCopy->getTitleKey());
+	miso->setTitleStf(misoCopy->getTitleStf());
+	miso->setTitle(misoCopy->getTitle());
+
+	// General: (type, terminal)
 	miso->applyTerminalMask(misoCopy->getTerminalMask());
 	miso->setTypeStr(misoCopy->getTypeStr());
-	miso->setDifficultyLevel(misoCopy->getDifficultyLevel());
-	miso->setDestX(misoCopy->getDestX());
-	miso->setDestY(misoCopy->getDestY());
-	miso->setDestPlanetCrc(misoCopy->getDestPlanetCrc());
-	miso->setTargetName(misoCopy->getTargetName());
+	miso->setTypeCrc(misoCopy->getTypeCrc());
 	miso->setCreatorName(misoCopy->getCreatorName());
-	miso->setReward(misoCopy->getReward());
+	miso->setDifficultyLevel(misoCopy->getDifficultyLevel());
+
+	// Location: Start (npc assigner)
 	miso->setTargetX(misoCopy->getTargetX());
 	miso->setTargetY(misoCopy->getTargetY());
 	miso->setTargetPlanetCrc(misoCopy->getTargetPlanetCrc());
-	miso->setDepictedObjCrc(misoCopy->getDepictedObjCrc());
+
+	// Location: Destination (target)
+	miso->setDestX(misoCopy->getDestX());
+	miso->setDestY(misoCopy->getDestY());
+	miso->setDestPlanetCrc(misoCopy->getDestPlanetCrc());
+
+	// Rewards
+	miso->setRewardCredits(misoCopy->getRewardCredits());
+	/*String rewardXp = mission.getStringField("rewardXP");
+	String rewardBadgeIds = mission.getStringField("rewardBadgeIds");
+	String rewardFactions = mission.getStringField("rewardFactions");
+	String rewardObjects = mission.getStringField("rewardObjects");*/
+
+	// Description
+	miso->setDescKey(misoCopy->getDescKey());
+	miso->setDescriptionStf(misoCopy->getDescriptionStf());
 	miso->setDescription(misoCopy->getDescription());
-	miso->setTitle(misoCopy->getTitle());
-	miso->setTypeCrc(misoCopy->getTypeCrc());
+
+	//Objective & target
+	miso->setTargetName(misoCopy->getTargetName());
+	miso->setDepictedObjCrc(misoCopy->getDepictedObjCrc());
+	miso->setObjectiveDefaults(misoCopy->getObjectiveDefaults());
 	miso->setInstantComplete(misoCopy->isInstantComplete());
 
 	//Spawn objectives:
-	miso->spawnObjectives(objectives, false);
+	miso->spawnObjectives(misoCopy->getObjectiveDefaults(), false);
 
 	//Add the mission to the player:
 	player->addMission(miso->getDBKey(), miso);
 
-	//Setup Mission assets
-	miso->assetSetup();
+	//Setup Mission assets if the mission is being given for the first time
+	if(isNew)
+		miso->assetSetup();
 
 	miso->unlock();
 }
@@ -232,7 +221,7 @@ void MissionManagerImplementation::sendTerminalData(Player* player, int termBitm
 					continue;
 
 				sendMissionBase(player, miso);
-				player->nextMisoRFC();
+				sendMissionDelta(player, miso);
 			}
 		} else {
 			for (int i = 0; i < misoMap->size(); i++) {
@@ -307,7 +296,7 @@ void MissionManagerImplementation::doMissionAccept(Player* player, uint64& oid, 
 
 		// Give the mission to the player:
 		miso->doLinkToPlayer(player);
-		instanceMission(player, miso, miso->getObjectiveDefaults());
+		instanceMission(player, miso, miso->getObjectiveDefaults(), true);
 		player->sendSystemMessage("You have accepted the mission and it has been added to your datapad.");
 
 		// Play acceptance music:
@@ -463,7 +452,9 @@ bool MissionManagerImplementation::evalMission(Player* player, MissionObject* mi
 	return true;
 }
 
-//Loads all missions for a player from mission_saves:
+/**
+ * Loads all missions for a player from mission_saves:
+ */
 void MissionManagerImplementation::loadPlayerMissions(Player* player, bool doLock) {
 	try {
 		lock(doLock);
@@ -485,12 +476,12 @@ void MissionManagerImplementation::loadPlayerMissions(Player* player, bool doLoc
 				continue;
 			}
 
+			// Only need to send the baseline and link. Delta should only be used for refresh.
 			sendMissionBase(player, miso);
-			sendMissionDelta(player, miso);
 			miso->doLinkToPlayer(player);
 
 			// Instance the mission for the player:
-			instanceMission(player, misoMap->get(misoKey), objectiveSer);
+			instanceMission(player, misoMap->get(misoKey), objectiveSer, false);
 		}
 
 		// Load and set currentMissionKeys & finishedMissionKeys:
@@ -862,51 +853,98 @@ int MissionManagerImplementation::addMissionToServer(lua_State* L) {
 			return 1;
 		}
 
-		int terminalMask = mission.getIntField("terminalMask");
-
-		//Basic mission info setup:
-		String typeStr = mission.getStringField("typeStr");
-
-		String tempk = mission.getStringField("stfDescriptionKey");
-		uint32 stfDescriptionKey = htonl(Integer::valueOf(tempk));
-		tempk = mission.getStringField("stfTitleKey");
+		// Title/Name
+		String tempk = mission.getStringField("stfTitleKey");
 		uint32 stfTitleKey = htonl(Integer::valueOf(tempk));
+		String titleStf = mission.getStringField("titleStf");
+		String customTitle = mission.getStringField("customTitle");
 
+		// General: (type, terminal)
+		int terminalMask = mission.getIntField("terminalMask");
+		String typeStr = mission.getStringField("typeStr");
+		uint32 typeCrc = mission.getIntField("typeCrc");
+		String creatorName = mission.getStringField("creatorName");
 		int difficultyLevel = mission.getIntField("difficultyLevel");
 
-		float destX = mission.getFloatField("destinationX");
-		float destY = mission.getFloatField("destinationY");
-		//String targetName = mission.getStringField("targetName");
-		uint32 destPlanetCrc = Planet::getPlanetCRC(mission.getStringField("destinationPlanetStr"));
-
-		String creatorName = mission.getStringField("creatorName");
-		int rewardAmount = mission.getIntField("rewardAmount");
-
+		// Location: Start (npc assigner)
 		float startX = mission.getFloatField("startX");
 		float startY = mission.getFloatField("startY");
 		uint32 startPlanetCrc = Planet::getPlanetCRC(mission.getStringField("startPlanetStr"));
 
+		// Location: Destination (target)
+		float destX = mission.getFloatField("destinationX");
+		float destY = mission.getFloatField("destinationY");
+		uint32 destPlanetCrc = Planet::getPlanetCRC(mission.getStringField("destinationPlanetStr"));
+
+		// Rewards
+		int rewardCredits = mission.getIntField("rewardCredits");
+		String rewardXp = mission.getStringField("rewardXP");
+		String rewardBadgeIds = mission.getStringField("rewardBadgeIds");
+		String rewardFactions = mission.getStringField("rewardFactions");
+		String rewardObjects = mission.getStringField("rewardObjects");
+
+		// Description
+		tempk = mission.getStringField("stfDescriptionKey");
+		uint32 stfDescriptionKey = htonl(Integer::valueOf(tempk));
+		String descriptionStf = mission.getStringField("descriptionStf");
+		String customDescription = mission.getStringField("customDescription");
+
+		//Objective & target
 		String targetName = mission.getStringField("targetName");
 		uint32 depictedObjCrc = mission.getIntField("depictedObjectCrc");
-		String descriptionStf = mission.getStringField("descriptionStf");
-		if(descriptionStf.length() == 0) {
-			descriptionStf = mission.getStringField("customDescription");
-		}
-		String titleStf = mission.getStringField("titleStf");
-		if(titleStf.length() == 0) {
-			titleStf = mission.getStringField("customTitle");
-		}
-
-		uint32 typeCrc = mission.getIntField("typeCrc");
-
-		//Objectives:
 		String objectives = mission.getStringField("objectiveDefaults");
 		bool instantComplete = mission.getByteField("instantComplete");
 
+		///////////
+		//Create Mission Object, set vars
+		///////////
+		MissionObject* miso = new MissionObject(instance->getNextMissionID());
+
+		//Server Vars
+		miso->setDBKey(dbKey);
+
+		// Title/Name
+		miso->setTitleKey(stfTitleKey);
+		miso->setTitleStf(titleStf);
+		miso->setTitle(customTitle);
+
+		// General: (type, terminal)
+		miso->applyTerminalMask(terminalMask);
+		miso->setTypeStr(typeStr);
+		miso->setTypeCrc(typeCrc);
+		miso->setCreatorName(creatorName);
+		miso->setDifficultyLevel(difficultyLevel);
+
+		// Location: Start (npc assigner)
+		miso->setTargetX(startX);
+		miso->setTargetY(startY);
+		miso->setTargetPlanetCrc(startPlanetCrc);
+
+		// Location: Destination (target)
+		miso->setDestX(destX);
+		miso->setDestY(destY);
+		miso->setDestPlanetCrc(destPlanetCrc);
+
+		// Rewards
+		miso->setRewardCredits(rewardCredits);
+		/*String rewardXp = mission.getStringField("rewardXP");
+		String rewardBadgeIds = mission.getStringField("rewardBadgeIds");
+		String rewardFactions = mission.getStringField("rewardFactions");
+		String rewardObjects = mission.getStringField("rewardObjects");*/
+
+		// Description
+		miso->setDescKey(stfDescriptionKey);
+		miso->setDescriptionStf(descriptionStf);
+		miso->setDescription(customDescription);
+
+		//Objective & target
+		miso->setTargetName(targetName);
+		miso->setDepictedObjCrc(depictedObjCrc);
+		miso->setObjectiveDefaults(objectives);
+		miso->setInstantComplete(instantComplete);
+
 		//Add mission to pool:
-		instance->poolMission(dbKey, terminalMask, typeStr, stfDescriptionKey, stfTitleKey, difficultyLevel, destX, destY, destPlanetCrc,
-				creatorName, rewardAmount, startX, startY, startPlanetCrc, depictedObjCrc, targetName,
-				descriptionStf, titleStf, typeCrc, objectives, instantComplete, false);
+		instance->poolMission(miso, false);
 
 		instance->unlock();
 	} catch (...) {

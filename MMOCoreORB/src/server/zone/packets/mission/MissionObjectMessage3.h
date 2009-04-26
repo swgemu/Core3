@@ -93,7 +93,7 @@ public:
 		insertUnicode(mi->getCreatorName());
 
 		//Reward (cr)
-		insertInt(mi->getReward());
+		insertInt(mi->getRewardCredits());
 
 		//Dest Location
 		insertFloat(mi->getDestX()); //x

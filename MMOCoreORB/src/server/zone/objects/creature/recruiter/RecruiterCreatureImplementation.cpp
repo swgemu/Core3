@@ -113,7 +113,7 @@ void RecruiterCreatureImplementation::selectConversationOption(int option, Scene
 	if (player->getLastNpcConvMessStr() == "neutral_start") {
 		switch (option) {
 		case 0:
-			if (player->getFactionPoints(factionString) < MINFACTIONSTANDING)
+			if (player->getFactionPoints(factionString) < 0) // TEMPORARY!!! Change 0 to MINFACTIONSTANDING when the 200 point minimum should be required for enlistment
 				rejectJoinFaction(player);
 			else
 				confirmJoinFaction(player);

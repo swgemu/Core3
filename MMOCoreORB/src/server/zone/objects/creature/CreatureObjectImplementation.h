@@ -919,9 +919,7 @@ public:
 
 	SceneObject* getInventoryItem(uint64 oid);
 
-	void removeAllInventoryByMisoKey(String& mkey);
-	TangibleObject* getItemByMisoKey(String& tma);
-
+	void removeAllUnequippedInventory();
 	void removeInventoryItem(SceneObject* item);
 	void removeInventoryItem(uint64 oid);
 

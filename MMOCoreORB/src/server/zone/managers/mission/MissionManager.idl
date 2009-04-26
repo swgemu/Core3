@@ -59,11 +59,8 @@ interface MissionManager {
 	void removeMissions();
 	
 	// creation methods
-	MissionObject poolMission(const String dbKey, int termMask, const String typeStr, unsigned int descKey, unsigned int titleKey, unsigned int diffLv, float destX, float destY, unsigned int destPlanetCrc,
-		const String creatorName, unsigned int rewardAmount, float targetX, float targetY, unsigned int targetPlanetCrc, unsigned int depictedObjCrc, const String targetName,
-		const String description, const String title, unsigned int typeCrc, const String objectiveDefaults, boolean instantComplete, boolean doLock);
-	
-	void instanceMission(Player player, MissionObject misoCopy, const String objectives);
+	MissionObject poolMission(MissionObject miso, boolean doLock);
+	void instanceMission(Player player, MissionObject misoCopy, const String objectives, boolean isNew);
 	
 	//Test
 	void setupHardcodeMissions();

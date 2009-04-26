@@ -95,7 +95,7 @@ bool MissionObjectiveImplementation::deserializeObjective(String localTemp, bool
 	}
 
 	if(idx != 6) {
-		System::out << "MissionObjectiveImpl: objective limiter count mismatch[" << idx << "]" << endl;
+		System::out << "MissionObjectiveImpl: objective[" << localTemp << "] limiter count mismatch[" << idx << "]" << endl;
 		success = false;
 	}
 

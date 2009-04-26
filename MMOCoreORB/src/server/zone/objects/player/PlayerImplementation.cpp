@@ -506,8 +506,7 @@ void PlayerImplementation::load(ZoneClientSession* client) {
 		resetArmorEncumbrance();
 
 		missionMap.removeAll();
-		MissionManager* mMgr = server->getMissionManager();
-		mMgr->loadPlayerMissions(_this, true);
+		loadMissions();
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 		playerManager->updateOtherFriendlists(_this, true);
@@ -612,8 +611,7 @@ void PlayerImplementation::reload(ZoneClientSession* client) {
 		activateRecovery();
 
 		//reset mission vars:
-		misoRFC = 0x01;
-		misoBSB = 0;
+		loadMissions();
 
 		playerManager->updateOtherFriendlists(_this, true);
 		displayMessageoftheDay();
@@ -1683,13 +1681,12 @@ void PlayerImplementation::switchMap(int planetid) {
 
 	terrainName = Terrain::getTerrainName(zoneID);
 
-	//reset mission vars:
-	misoRFC = 0x01;
-	misoBSB = 0;
-
 	initializePosition(positionX, zone->getHeight(positionX, positionY), positionY);
 
 	insertToZone(zone);
+
+	// Reload Missions after changing level
+	loadMissions();
 }
 
 void PlayerImplementation::doWarp(float x, float y, float z, float randomizeDistance, uint64 parentID) {
@@ -1720,6 +1717,8 @@ void PlayerImplementation::doWarp(float x, float y, float z, float randomizeDist
 		randomizePosition(randomizeDistance);
 
 	insertToZone(zone);
+
+	loadMissions();
 }
 
 void PlayerImplementation::bounceBack() {
@@ -3812,7 +3811,6 @@ MissionObject* PlayerImplementation::getPlayerMission(const String& key) {
  */
 void PlayerImplementation::saveMissions() {
 	MissionManager* mm = server->getMissionManager();
-
 	if(mm == NULL)
 		return;
 
@@ -3823,6 +3821,32 @@ void PlayerImplementation::saveMissions() {
 	mm->savePlayerKeys(_this, curMisoKeys, finMisoKeys);
 }
 
+/**
+ * Load missions
+ */
+
+void PlayerImplementation::loadMissions() {
+	misoRFC = 0x01;
+	misoBSB = 0;
+
+	MissionManager* mm = server->getMissionManager();
+	if(mm == NULL)
+		return;
+
+	//If the mission map is empty:
+	if(missionMap.size() == 0) {
+		mm->loadPlayerMissions(_this, true);
+	} else { //Else, resend missions that are cached
+		String temp;
+		StringTokenizer mTok(curMisoKeys);
+		mTok.setDelimeter(",");
+
+		while(mTok.hasMoreTokens()) {
+			mTok.getStringToken(temp);
+			mm->sendMission(_this, temp, true);
+		}
+	}
+}
 
 //Called by the mission manager when a mission is dropped
 void PlayerImplementation::dropMission(const String& key, bool finished) {

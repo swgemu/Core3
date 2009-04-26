@@ -558,6 +558,7 @@ interface Player implements CreatureObject {
 	void updateMissions(int type, unsigned int objCrc, const String str, int increment = 1);
 	MissionObject getPlayerMission(const String key);
 	void saveMissions();
+	void loadMissions();
 	void dropMission(const String key, boolean finished);
 	void dropAllMissions();
 
