@@ -10,8 +10,6 @@
 
 #include "../../objects/mission/MissionObject.h"
 
-#include "../../objects/tangible/TangibleObject.h"
-
 #include "server/zone/ZoneServer.h"
 
 /*
@@ -96,24 +94,12 @@ void MissionManager::instanceMission(Player* player, MissionObject* misoCopy, co
 		((MissionManagerImplementation*) _impl)->instanceMission(player, misoCopy, objectives, isNew);
 }
 
-void MissionManager::setupHardcodeMissions() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 11);
-
-		method.executeWithVoidReturn();
-	} else
-		((MissionManagerImplementation*) _impl)->setupHardcodeMissions();
-}
-
 void MissionManager::sendTerminalData(Player* player, int termBitmask, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(termBitmask);
 		method.addBooleanParameter(doLock);
@@ -128,7 +114,7 @@ void MissionManager::sendMission(Player* player, String& tKey, bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(tKey);
 		method.addBooleanParameter(doLock);
@@ -143,7 +129,7 @@ void MissionManager::doMissionAccept(Player* player, unsigned long long oid, boo
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 13);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(oid);
 		method.addBooleanParameter(doLock);
@@ -158,7 +144,7 @@ void MissionManager::doMissionComplete(Player* player, const String& tKey, bool 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 14);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(tKey);
 		method.addBooleanParameter(doLock);
@@ -173,7 +159,7 @@ void MissionManager::doMissionAbort(Player* player, unsigned long long oid, bool
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(oid);
 		method.addBooleanParameter(doLock);
@@ -188,7 +174,7 @@ void MissionManager::doMissionAbort(Player* player, const String& tKey, bool doL
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(tKey);
 		method.addBooleanParameter(doLock);
@@ -203,7 +189,7 @@ bool MissionManager::evalMission(Player* player, const String& tKey, String& ret
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 17);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(tKey);
 		method.addAsciiParameter(retSay);
@@ -218,7 +204,7 @@ bool MissionManager::evalMission(Player* player, MissionObject* miso) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(player);
 		method.addObjectParameter(miso);
 
@@ -232,7 +218,7 @@ void MissionManager::loadPlayerMissions(Player* player, bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 19);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(doLock);
 
@@ -246,7 +232,7 @@ void MissionManager::savePlayerMission(Player* player, MissionObject* miso) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 20);
 		method.addObjectParameter(player);
 		method.addObjectParameter(miso);
 
@@ -260,7 +246,7 @@ void MissionManager::savePlayerKeys(Player* player, const String& curMisoKeys, c
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 21);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(curMisoKeys);
 		method.addAsciiParameter(finMisoKeys);
@@ -275,7 +261,7 @@ void MissionManager::clearPlayerMissions(Player* target, bool lockTarget) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 22);
 		method.addObjectParameter(target);
 		method.addBooleanParameter(lockTarget);
 
@@ -289,7 +275,7 @@ void MissionManager::loadMissionScripts() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 23);
 
 		method.executeWithVoidReturn();
 	} else
@@ -301,7 +287,7 @@ void MissionManager::registerFunctions() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 24);
 
 		method.executeWithVoidReturn();
 	} else
@@ -313,7 +299,7 @@ void MissionManager::registerGlobals() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 25);
 
 		method.executeWithVoidReturn();
 	} else
@@ -347,51 +333,48 @@ Packet* MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		instanceMission((Player*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_instanceMission__Player_MissionObject_String_bool_), inv->getBooleanParameter());
 		break;
 	case 11:
-		setupHardcodeMissions();
-		break;
-	case 12:
 		sendTerminalData((Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case 13:
+	case 12:
 		sendMission((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendMission__Player_String_bool_), inv->getBooleanParameter());
 		break;
-	case 14:
+	case 13:
 		doMissionAccept((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getBooleanParameter());
 		break;
-	case 15:
+	case 14:
 		doMissionComplete((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_doMissionComplete__Player_String_bool_), inv->getBooleanParameter());
 		break;
-	case 16:
+	case 15:
 		doMissionAbort((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getBooleanParameter());
 		break;
-	case 17:
+	case 16:
 		doMissionAbort((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_doMissionAbort__Player_String_bool_), inv->getBooleanParameter());
 		break;
-	case 18:
+	case 17:
 		resp->insertBoolean(evalMission((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_evalMission__Player_String_String_), inv->getAsciiParameter(_param2_evalMission__Player_String_String_)));
 		break;
-	case 19:
+	case 18:
 		resp->insertBoolean(evalMission((Player*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter()));
 		break;
-	case 20:
+	case 19:
 		loadPlayerMissions((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 21:
+	case 20:
 		savePlayerMission((Player*) inv->getObjectParameter(), (MissionObject*) inv->getObjectParameter());
 		break;
-	case 22:
+	case 21:
 		savePlayerKeys((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_savePlayerKeys__Player_String_String_), inv->getAsciiParameter(_param2_savePlayerKeys__Player_String_String_));
 		break;
-	case 23:
+	case 22:
 		clearPlayerMissions((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 24:
+	case 23:
 		loadMissionScripts();
 		break;
-	case 25:
+	case 24:
 		registerFunctions();
 		break;
-	case 26:
+	case 25:
 		registerGlobals();
 		break;
 	default:
@@ -419,10 +402,6 @@ MissionObject* MissionManagerAdapter::poolMission(MissionObject* miso, bool doLo
 
 void MissionManagerAdapter::instanceMission(Player* player, MissionObject* misoCopy, const String& objectives, bool isNew) {
 	return ((MissionManagerImplementation*) impl)->instanceMission(player, misoCopy, objectives, isNew);
-}
-
-void MissionManagerAdapter::setupHardcodeMissions() {
-	return ((MissionManagerImplementation*) impl)->setupHardcodeMissions();
 }
 
 void MissionManagerAdapter::sendTerminalData(Player* player, int termBitmask, bool doLock) {

@@ -70,7 +70,7 @@ class MissionManagerImplementation : public MissionManagerServant, public Mutex,
 	MissionMap* misoMap;
 	static MissionManagerImplementation* instance;
 
-	static int MAX_MISSIONS_PER_PLAYER = 2;
+	const static int MAX_MISSIONS_PER_PLAYER = 2;
 
 public:
 	MissionManagerImplementation(ZoneServer* zs, ZoneProcessServerImplementation* ps);
