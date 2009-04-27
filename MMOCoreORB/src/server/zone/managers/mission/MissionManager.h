@@ -11,8 +11,6 @@ class Player;
 
 class MissionObject;
 
-class TangibleObject;
-
 class ZoneServer;
 
 #include "server/zone/ZoneProcessServerImplementation.h"
@@ -30,8 +28,6 @@ public:
 	MissionObject* poolMission(MissionObject* miso, bool doLock);
 
 	void instanceMission(Player* player, MissionObject* misoCopy, const String& objectives, bool isNew);
-
-	void setupHardcodeMissions();
 
 	void sendTerminalData(Player* player, int termBitmask, bool doLock = true);
 
@@ -88,8 +84,6 @@ public:
 	MissionObject* poolMission(MissionObject* miso, bool doLock);
 
 	void instanceMission(Player* player, MissionObject* misoCopy, const String& objectives, bool isNew);
-
-	void setupHardcodeMissions();
 
 	void sendTerminalData(Player* player, int termBitmask, bool doLock);
 

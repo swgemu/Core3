@@ -283,8 +283,8 @@ void MissionManagerImplementation::doMissionAccept(Player* player, uint64& oid, 
 		lock(doLock);
 
 		// Check if the player has more than the max amount of missions allowed
-		if(player->getMissionCount() > MAX_MISSIONS_PER_PLAYER)
-			player->sendSystemMessage("You cannot have more than " + MAX_MISSIONS_PER_PLAYER + " missions at a time");
+		if(player->missionCount() > MAX_MISSIONS_PER_PLAYER)
+			player->sendSystemMessage("You cannot have more than " + String::valueOf(MAX_MISSIONS_PER_PLAYER) + " missions at a time");
 
 		MissionObject* miso = misoMap->get(oid);
 		if (miso == NULL) {
