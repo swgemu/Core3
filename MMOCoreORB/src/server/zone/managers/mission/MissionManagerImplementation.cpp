@@ -89,15 +89,14 @@ void MissionManagerImplementation::init() {
 	registerGlobals();
 	instance = this;
 	loadMissionScripts();
-
-	// Temporary Hardcode missions
-	//setupHardcodeMissions();
 }
 
 void MissionManagerImplementation::unloadManager() {
 }
 
-//Standard Functions:
+/**
+ * Deploy a mission to the server and add to the Manager's pool of available missions
+ */
 MissionObject* MissionManagerImplementation::poolMission(MissionObject* miso, bool doLock) {
 	try {
 		lock(doLock);
@@ -131,8 +130,8 @@ MissionObject* MissionManagerImplementation::poolMission(MissionObject* miso, bo
  * Used whenever a player is online an owns a mission. Released when a player logs out
  */
 void MissionManagerImplementation::instanceMission(Player* player, MissionObject* misoCopy, const String& objectives, bool isNew) {
-	if(misoCopy == NULL/* || objectives.isEmpty()*/) {
-		System::out << "instanceMission: misoCopy is null or objectives is empty. objectives: " << objectives << endl;
+	if(misoCopy == NULL) {
+		System::out << "instanceMission: misoCopy is null" << endl;
 		return;
 	}
 
@@ -142,8 +141,8 @@ void MissionManagerImplementation::instanceMission(Player* player, MissionObject
 
 	miso->lock();
 
-	// Clone vars:
-	//Server Vars
+	//Clone vars:
+	// Server Vars
 	miso->setDBKey(misoCopy->getDBKey());
 
 	// Title/Name
@@ -180,29 +179,28 @@ void MissionManagerImplementation::instanceMission(Player* player, MissionObject
 	miso->setDescriptionStf(misoCopy->getDescriptionStf());
 	miso->setDescription(misoCopy->getDescription());
 
-	//Objective & target
+	// Objective & target
 	miso->setTargetName(misoCopy->getTargetName());
 	miso->setDepictedObjCrc(misoCopy->getDepictedObjCrc());
 	miso->setObjectiveDefaults(misoCopy->getObjectiveDefaults());
 	miso->setInstantComplete(misoCopy->isInstantComplete());
 
-	//Spawn objectives:
+	// Spawn objectives:
 	miso->spawnObjectives(misoCopy->getObjectiveDefaults(), false);
 
-	//Add the mission to the player:
+	// Add the mission to the player:
 	player->addMission(miso->getDBKey(), miso);
 
-	//Setup Mission assets if the mission is being given for the first time
+	// Setup Mission assets if the mission is being given for the first time
 	if(isNew)
 		miso->assetSetup();
 
 	miso->unlock();
 }
 
-void MissionManagerImplementation::setupHardcodeMissions() {
-}
-
-//terminal
+/**
+ * Send the appropriate data for a given terminal in the galaxy
+ */
 void MissionManagerImplementation::sendTerminalData(Player* player, int termBitmask, bool doLock) {
 	try {
 		lock(doLock);
@@ -245,6 +243,9 @@ void MissionManagerImplementation::sendTerminalData(Player* player, int termBitm
 	}
 }
 
+/**
+ * Send all mission packets and link them to a player
+ */
 void MissionManagerImplementation::sendMission(Player* player, const String& tKey, bool doLock) {
 	try {
 		lock(doLock);
@@ -252,7 +253,7 @@ void MissionManagerImplementation::sendMission(Player* player, const String& tKe
 		MissionObject* miso = misoMap->get(tKey);
 
 		if (miso == NULL) {
-			error("miso object is NULL, exiting function: sendMission()");
+			error("miso object[" + tKey + "] is NULL for player: " + player->getFirstName() + ", exiting function: sendMission()");
 			unlock(doLock);
 			return;
 		}
@@ -281,6 +282,10 @@ void MissionManagerImplementation::doMissionAccept(Player* player, uint64& oid, 
 	try {
 		lock(doLock);
 
+		// Check if the player has more than the max amount of missions allowed
+		if(player->getMissionCount() > MAX_MISSIONS_PER_PLAYER)
+			player->sendSystemMessage("You cannot have more than " + MAX_MISSIONS_PER_PLAYER + " missions at a time");
+
 		MissionObject* miso = misoMap->get(oid);
 		if (miso == NULL) {
 			error("miso object is NULL, exiting function: doMissionAccept()");
@@ -288,7 +293,7 @@ void MissionManagerImplementation::doMissionAccept(Player* player, uint64& oid, 
 			return;
 		}
 
-		//Check if player is already on mission:
+		// Check if player is already on mission:
 		if (player->isOnCurMisoKey(miso->getDBKey())) {
 			unlock(doLock);
 			return;
@@ -318,10 +323,10 @@ void MissionManagerImplementation::doMissionComplete(Player* player, const Strin
 	try {
 		lock(doLock);
 
-		//Remove any mission save from the DB:
+		// Remove any mission save from the DB:
 		deleteMissionSave(player, tKey);
 
-		//Drop the mission from the the player
+		// Drop the mission from the the player
 		removeMisoFromPlayer(player, tKey, false);
 		player->dropMission(tKey, true);
 		player->sendSystemMessage("Mission Complete.");
@@ -639,6 +644,10 @@ void MissionManagerImplementation::clearPlayerMissions(Player* target, bool lock
 
 /// END OF SAVE FUNCS
 
+/**
+ * Packet send functions for missions in the pool
+ */
+
 void MissionManagerImplementation::sendMissionBase(Player* player, const String& tKey, bool doLock) {
 	try {
 		lock(doLock);
@@ -786,14 +795,10 @@ void MissionManagerImplementation::removeMisoFromPlayer(Player* player, uint64& 
 
 	if (miso == NULL)
 		return;
-
-	//player->removeAllInventoryByMisoKey(miso->getDBKey());
 }
 
 void MissionManagerImplementation::removeMisoFromPlayer(MissionObject* miso, Player* player) {
 	miso->sendDestroyTo(player);
-
-	//player->removeAllInventoryByMisoKey(miso->getDBKey());
 }
 
 void MissionManagerImplementation::removeMissions() {

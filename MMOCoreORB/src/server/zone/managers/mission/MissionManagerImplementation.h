@@ -57,9 +57,6 @@ which carries forward this exception.
 #include "../../objects/mission/MissionObject.h"
 #include "../../objects/mission/MissionObjectImplementation.h"
 
-#include "../../objects/tangible/TangibleObject.h"
-#include "../../objects/tangible/TangibleObjectImplementation.h"
-
 #include "MissionMap.h"
 
 #include "MissionManager.h"
@@ -70,10 +67,10 @@ class ZoneProcessServerImplementation;
 class MissionManagerImplementation : public MissionManagerServant, public Mutex, public Lua {
 	ZoneProcessServerImplementation* processServer;
 	ZoneServer*	zoneServer;
-
 	MissionMap* misoMap;
-
 	static MissionManagerImplementation* instance;
+
+	static int MAX_MISSIONS_PER_PLAYER = 2;
 
 public:
 	MissionManagerImplementation(ZoneServer* zs, ZoneProcessServerImplementation* ps);
@@ -84,30 +81,26 @@ public:
 	void unloadManager();
 	void removeMissions();
 
-	// creation methods
+	// Creation methods
 	MissionObject* poolMission(MissionObject* miso, bool doLock = true);
-
 	void instanceMission(Player* player, MissionObject* misoCopy, const String& objectives, bool isNew);
 
-	//Test
-	void setupHardcodeMissions();
-
-	//data setup
+	// Data setup
 	void sendTerminalData(Player* player, int termBitmask, bool doLock = true);
 	void sendMission(Player* player, const String& tKey, bool doLock = true);
 
-	//events
+	// Events
 	void doMissionAccept(Player* player, uint64& oid, bool doLock = true);
 	void doMissionComplete(Player* player, const String& tKey, bool doLock = true);
 	void doMissionAbort(Player* player, uint64& oid, bool doLock = true);
 	void doMissionAbort(Player* player, const String& tKey, bool doLock = true);
 
-	//Evaluate Mission, Fire abort/completion events if necessary
+	// Evaluate Mission, Fire abort/completion events if necessary
 	bool evalMission(Player* player, const String& tKey, String& retSay);
 	bool evalMission(Player* player, MissionObject* miso);
 
 	////
-	//New Save Mission State Functions:
+	//Save Mission State Functions:
 	//Save functions should be called on state saves and login/logout
 	//-> Variables that are saved should ALWAYS be in memory. There is NO reason to call these functions
 	//to regularly grab data.
@@ -115,15 +108,16 @@ public:
 	// or past missions (failed etc)
 	////
 
-	//Loads all missions for a player from mission_saves:
+	// Loads all missions for a player from mission_saves:
 	void loadPlayerMissions(Player* player, bool doLock = true);
 
-	//Saves OR updates a mission for a player in mission_saves:
+	// Saves OR updates a mission for a player in mission_saves:
 	void savePlayerMission(Player* player, MissionObject* miso);
 
-	//Saves mission keys to the DB, called automatically on player save event
+	// Saves mission keys to the DB, called automatically on player save event
 	void savePlayerKeys(Player* player, const String& curMisoKeys, const String& finMisoKeys);
 
+	// Clear all player mission vars for a player.
 	void clearPlayerMissions(Player* target, bool lockTarget = false);
 
 	// Script methods

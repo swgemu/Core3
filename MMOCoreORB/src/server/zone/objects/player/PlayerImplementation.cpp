@@ -3773,7 +3773,8 @@ void PlayerImplementation::addMission(const String& key, MissionObject* miso) {
 }
 
 /**
- * Runs through all missions and updates the appropriate objectives
+ * Runs through all missions notifying the objectives within those missions of special
+ * tracked events like a kill, player death etc
  */
 void PlayerImplementation::updateMissions(int type, uint32 objCrc, const String& str, int increment) {
 	for(int i = 0; i < missionMap.size(); i++) {
@@ -3792,7 +3793,6 @@ void PlayerImplementation::updateMissions(int type, uint32 objCrc, const String&
 						if(mm != NULL)
 							mm->evalMission((Player*)_this, mo);
 					}
-					break;
 				}
 			}
 		}
@@ -3843,7 +3843,8 @@ void PlayerImplementation::loadMissions() {
 
 		while(mTok.hasMoreTokens()) {
 			mTok.getStringToken(temp);
-			mm->sendMission(_this, temp, true);
+			if(!temp.isEmpty())
+				mm->sendMission(_this, temp, true);
 		}
 	}
 }

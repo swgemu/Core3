@@ -44,7 +44,6 @@ which carries forward this exception.
 
 import "../../objects/player/Player";
 import "../../objects/mission/MissionObject";
-import "../../objects/tangible/TangibleObject";
 
 import "server/zone/ZoneServer";
 include "server/zone/ZoneProcessServerImplementation";
@@ -58,12 +57,9 @@ interface MissionManager {
 	void unloadManager();
 	void removeMissions();
 	
-	// creation methods
+	// Creation methods
 	MissionObject poolMission(MissionObject miso, boolean doLock);
 	void instanceMission(Player player, MissionObject misoCopy, const String objectives, boolean isNew);
-	
-	//Test
-	void setupHardcodeMissions();
 	
 	//data setup
 	void sendTerminalData(Player player, int termBitmask, boolean doLock = true);
@@ -79,18 +75,19 @@ interface MissionManager {
 	boolean evalMission(Player player, MissionObject miso);
 	
 	//Save functions
-	//Loads all missions for a player from mission_saves:
+	// Loads all missions for a player from mission_saves:
 	void loadPlayerMissions(Player player, boolean doLock = true);
 
-	//Saves OR updates a mission for a player in mission_saves:
+	// Saves OR updates a mission for a player in mission_saves:
 	void savePlayerMission(Player player, MissionObject miso);
 
-	//Saves mission keys to the DB
+	// Saves mission keys to the DB
 	void savePlayerKeys(Player player, const String curMisoKeys, const String finMisoKeys);
 
+	// Clear all player mission vars for a player.
 	void clearPlayerMissions(Player target, boolean lockTarget = false);
 
-	//script methods
+	// Script methods
 	void loadMissionScripts();
 	void registerFunctions();
 	void registerGlobals();
