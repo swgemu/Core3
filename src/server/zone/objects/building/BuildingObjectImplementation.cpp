@@ -111,7 +111,7 @@ BuildingObjectImplementation::~BuildingObjectImplementation() {
 
 void BuildingObjectImplementation::removeFromZone(bool doLock) {
 	try {
-		//System::out << "SceneObjectImplementation::removeFromZone(bool doLock) Entered" << endl;
+		System::out << "SceneObjectImplementation::removeFromZone(bool doLock) Entered" << endl;
 		if (zone == NULL || !isInQuadTree())
 			return;
 
@@ -214,8 +214,11 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 					child->addInRangeObject(obj, false);
 
 					SceneObjectImplementation* a = (SceneObjectImplementation*) child->_getImplementation();
-					if (a != NULL)
+					if (a != NULL) {
 						obj->addInRangeObject(a, false);
+					} else {
+						error("null implementation in buildingObj::notifyInsert");
+					}
 				}
 			}
 		}
@@ -235,8 +238,11 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 
 			SceneObjectImplementation* a = (SceneObjectImplementation*) child->_getImplementation();
 
-			if (a != NULL)
+			if (a != NULL) {
 				obj->removeInRangeObject(a);
+			} else {
+				error("implementation null in building::notifyDiss");
+			}
 		}
 	}
 }

@@ -852,8 +852,11 @@ void ResourceManagerImplementation::generateSUI(Player* player, SuiListBox* sui)
 
 	if (choicesList->size() > 0 && !resourceMap->contains(choicesList->get(choicesList->size()-1)) && resourceTree->classContainsResources(choicesList))
 		sui->setPromptText("Choose resource type from " + choicesList->get(choicesList->size()-1));
-	for (int i=0; i<menuList->size(); i++){
-		sui->addMenuItem(menuList->get(i));
+
+	if (menuList != NULL) {
+		for (int i =0 ; i < menuList->size(); i++){
+			sui->addMenuItem(menuList->get(i));
+		}
 	}
 }
 

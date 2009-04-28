@@ -745,18 +745,21 @@ void GameCommandHandler::summon(StringTokenizer tokenizer, Player* player) {
 	if (targetPlayer == NULL || targetPlayer == player)
 		return;
 
+	player->unlock();
+
 	try {
-		targetPlayer->wlock(player);
+		targetPlayer->wlock();
 
 		if (targetPlayer->isMounted()) {
 			targetPlayer->dismount(true, true);
-			}
+		}
 
 
 		Zone* targetZone = targetPlayer->getZone();
 
 		if (targetZone == NULL) {
 			targetPlayer->unlock();
+			player->wlock();
 			return;
 		}
 
@@ -769,11 +772,14 @@ void GameCommandHandler::summon(StringTokenizer tokenizer, Player* player) {
 		} else {
 			targetPlayer->unlock();
 			player->sendSystemMessage("Usage: @summon <SUPPLY PLAYERNAME OR CURRENT TARGET> \n");
+			player->wlock();
 			return;
 		}
 	} catch (...) {
 		targetPlayer->unlock();
 	}
+
+	player->wlock();
 }
 
 void GameCommandHandler::kick(StringTokenizer tokenizer, Player* player) {

@@ -100,6 +100,8 @@ public:
 
 	void save(Player* player);
 
+	//void savePlayers();
+
 	bool validateName(const String& name);
 	bool hasAdminRights(uint32 characterID);
 

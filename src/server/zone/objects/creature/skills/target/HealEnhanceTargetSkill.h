@@ -191,7 +191,7 @@ public:
 			return 0;
 		}
 
-		EnhancePack* enhancePack = (EnhancePack*) enhancer->getInventoryItem(objectId);
+		ManagedReference<EnhancePack> enhancePack = (EnhancePack*) enhancer->getInventoryItem(objectId);
 
 		if (enhancePack == NULL)
 			enhancePack = findEnhancePack(enhancer, attribute);

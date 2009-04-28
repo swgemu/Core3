@@ -1181,7 +1181,7 @@ void PlayerImplementation::insertToBuilding(BuildingObject* building, bool doLoc
 		return;
 
 	try {
-		//building->lock(doLock);
+		building->lock();
 
 		info("PlayerImplementation::insertToBuilding");
 
@@ -1190,7 +1190,7 @@ void PlayerImplementation::insertToBuilding(BuildingObject* building, bool doLoc
 		building->insert(this);
 		building->inRange(this, 128);
 
-		//building->unlock(doLock);
+		building->unlock();
 
 		building->notifyInsertToZone(_this);
 
@@ -1202,7 +1202,7 @@ void PlayerImplementation::insertToBuilding(BuildingObject* building, bool doLoc
 	} catch (...) {
 		error("exception PlayerImplementation::insertToBuilding(BuildingObject* building)");
 
-		//building->unlock(doLock);
+		building->unlock();
 	}
 }
 
@@ -1352,8 +1352,12 @@ void PlayerImplementation::updateZoneWithParent(uint64 Parent, bool lightUpdate)
 			insertToBuilding(building, false);
 
 		} else {
+			building->lock();
+
 			building->update(this);
 			building->inRange(this, 128);
+
+			building->unlock();
 		}
 
 		updatePlayerPosition(lightUpdate);
@@ -1538,7 +1542,7 @@ void PlayerImplementation::removeFromBuilding(BuildingObject* building, bool doL
 		return;
 
 	try {
-		//building->lock(doLock);
+		building->lock();
 
 		info("removing from building");
 
@@ -1549,7 +1553,7 @@ void PlayerImplementation::removeFromBuilding(BuildingObject* building, bool doL
 
 		building->remove(this);
 
-		//building->unlock(doLock);
+		building->unlock();
 	} catch (...) {
 		error("exception PlayerImplementation::removeFromBuilding(BuildingObject* building, bool doLock)");
 

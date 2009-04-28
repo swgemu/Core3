@@ -1040,8 +1040,12 @@ void CreatureImplementation::updateZoneWithParent(uint64 par, bool lightUpdate,
 		if (insert) {
 			insertToBuilding(building);
 		} else {
+			building->lock();
+
 			building->update(this);
 			building->inRange(this, 128);
+
+			building->unlock();
 		}
 
 		if (sendPackets)

@@ -95,6 +95,9 @@ void CreatureInventoryImplementation::sendItemsTo(Player* player) {
 bool CreatureInventoryImplementation::addObject(SceneObject* obj) {
 	uint64 oid = obj->getObjectID();
 
+	if (objects.contains(oid))
+		return true;
+
 	objects.put(oid, obj);
 
 	if (!((TangibleObject*) obj)->isEquipped())

@@ -157,7 +157,7 @@ void PharmaceuticalImplementation::useCharge(Player* player) {
 	setUsesRemaining(getUsesRemaining() - 1);
 
 	if (getUsesRemaining() <= 0) {
-		_this->sendDestroyTo(player);
+		sendDestroyTo(player);
 
 		Zone* zone = player->getZone();
 

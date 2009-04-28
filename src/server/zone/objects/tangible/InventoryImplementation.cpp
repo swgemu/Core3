@@ -122,6 +122,8 @@ int InventoryImplementation::getUnequippedItemCount() {
 bool InventoryImplementation::addObject(SceneObject* obj) {
 	uint64 oid = obj->getObjectID();
 
+	if (objects.contains(oid))
+		return true;
 
 	if (!((TangibleObject*) obj)->isEquipped())
 		obj->setParent(_this, 0xFFFFFFFF);
