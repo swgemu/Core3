@@ -1744,7 +1744,7 @@ void ItemManagerImplementation::loadDatapadItem(Player* player, ResultSet* resul
 
 		item = new IntangibleObject(objectid, name, stringFile, stringName, objectcrc, player->getDatapad());
 
-		if(!scno->isNonPlayerCreature())
+		if(scno == NULL || !scno->isNonPlayerCreature())
 			return;
 
 		((MountCreature*)scno)->setDatapadItem(item);

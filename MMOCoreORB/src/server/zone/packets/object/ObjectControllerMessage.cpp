@@ -3977,6 +3977,12 @@ void ObjectControllerMessage::parseItemDropTrade(Player* player, Message* pack) 
 	if(obj.get() == NULL || item.get() == NULL)
 		return;
 
+	if (!obj->isPlayer())
+		return;
+
+	if (!item->isPlayer())
+		return;
+
 	Player* sender = (Player*) obj.get();
 	Player* receiver = (Player*) item.get();
 

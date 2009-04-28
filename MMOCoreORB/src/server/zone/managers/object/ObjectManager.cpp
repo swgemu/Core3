@@ -115,7 +115,7 @@ SceneObject* ObjectManager::remove(uint64 oid) {
 	if (obj->isPlayer()) {
 		objectCacheMap->put(oid, obj);
 
-		obj->scheduleUndeploy();
+		//obj->scheduleUndeploy();
 	}
 
 	return obj;

@@ -200,6 +200,7 @@ void StructureManagerImplementation::loadStaticBuildings() {
 				info(msg.toString());
 
 				CellObject* cell = new CellObject(oid, buio);
+				cell->deploy();
 
 				cell->setObjectCRC(file.hashCode());
 				cell->initializePosition(x, z, y);

@@ -373,7 +373,7 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 		return;
 
 	try {
-		//building->lock(doLock);
+		building->lock();
 		info("SceneObjectImplementation::insertToBuilding");
 
 		((CellObject*)parent)->addChild(_this);
@@ -381,7 +381,9 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 		building->insert(this);
 		building->inRange(this, 128);
 
-		//building->unlock(doLock);
+		building->unlock();
+
+		building->notifyInsertToZone(_this);
 
 		linkType = 0xFFFFFFFF;
 		broadcastMessage(link(parent), 128, false);
@@ -562,7 +564,7 @@ void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
 		return;
 
 	try {
-		//building->lock(doLock);
+		building->lock();
 
 		info("removing from building");
 
@@ -572,7 +574,7 @@ void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
 
 		building->remove(this);
 
-		//building->unlock(doLock);
+		building->unlock();
 	} catch (...) {
 		error("exception SceneObjectImplementation::removeFromBuilding(BuildingObject* building, bool doLock)");
 

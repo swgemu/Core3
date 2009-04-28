@@ -76,7 +76,11 @@ ContainerObject::~ContainerObject() {
 bool ContainerObject::addObject(SceneObject* obj) {
 	uint64 oid = obj->getObjectID();
 
+	if (objects.contains(oid))
+		return true;
+
 	obj->setPickupFlag(true);
+
 	objects.put(oid, obj);
 
 	obj->setParent((SceneObject*)sceneObject->_getStub());
