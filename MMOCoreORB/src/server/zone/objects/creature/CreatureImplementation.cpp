@@ -378,8 +378,7 @@ void CreatureImplementation::generateAttributes(SceneObject* obj) {
 	if (lightSaber == 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_restraint", "-");
 
-	if (getHideType().isEmpty() && getBoneType().isEmpty()
-			&& getMeatType().isEmpty()) {
+	if (getCreatureType() != "ANIMAL" && getCreatureType() != "PET") {
 		player->sendMessage(alm);
 		return;
 	}
@@ -452,7 +451,11 @@ void CreatureImplementation::generateAttributes(SceneObject* obj) {
 
 	if (creaKnowledge >= 100) {
 		StringBuffer damageMsg;
-		damageMsg << creatureWeaponMinDamage << "-" << creatureWeaponMaxDamage;
+		Weapon* creatureWeapon = getWeapon();
+		if (weaponObject != NULL)
+			damageMsg << weaponObject->getMinDamage() << "-" << weaponObject->getMaxDamage();
+		else
+			damageMsg << creatureWeaponMinDamage << "-" << creatureWeaponMaxDamage;
 		alm->insertAttribute("cat_wpn_damage", damageMsg.toString());
 	}
 
@@ -644,443 +647,6 @@ void CreatureImplementation::loadItems() {
 		}
 	} else
 		return;
-	/*
-	 //old before new LUAs june 2008
-	 if (objectCRC == 0x738E0B1F) { //Zealot of Lord Nyax + Diciple of Lord Nyax
-	 weapon = new CarbineRangedWeapon(_this, "object/weapon/ranged/carbine/shared_carbine_laser.iff", UnicodeString("a Laser Carbine"), "carbine_laser", true);
-	 weapon->setMinDamage(350);
-	 weapon->setMaxDamage(400);
-	 weapon->setAttackSpeed(1.5);
-	 weapon->setDamageType(WeaponImplementation::ENERGY);
-	 weapon->setArmorPiercing(WeaponImplementation::MEDIUM);
-	 }
-	 else if (objectCRC == 0xE275ECBB || objectCRC == 0xE275ECBB || objectCRC == 0xA1048F8A || objectCRC == 0xD084273F || objectCRC == 0x7477AB80) {
-	 //Imperial GeneralMajor // Imperial General // Imperial High Colonel / Imperial Surface Marshall // Imperial Major
-	 weapon = new PistolRangedWeapon(_this, "object/weapon/ranged/pistol/shared_pistol_dl44.iff", UnicodeString("a DL-44 Pistol"), "pistol_dl44", true);
-	 weapon->setMinDamage(350);
-	 weapon->setMaxDamage(400);
-	 weapon->setAttackSpeed(2.5);
-	 weapon->setDamageType(WeaponImplementation::ENERGY);
-	 weapon->setArmorPiercing(WeaponImplementation::LIGHT);
-	 setImperial();
-	 }
-	 else if (objectCRC == 0xBA7F23CD) { //storm trooper
-	 weapon = new RifleRangedWeapon(_this, "object/weapon/ranged/rifle/shared_rifle_t21.iff", UnicodeString("Teh Pwn"), "rifle_t21", true);
-	 weapon->setMinDamage(350);
-	 weapon->setMaxDamage(400);
-	 weapon->setAttackSpeed(4);
-	 weapon->setDamageType(WeaponImplementation::ENERGY);
-	 weapon->setArmorPiercing(WeaponImplementation::LIGHT);
-	 setImperial();
-	 }
-	 else if (objectCRC == 0x4E38DA33) { //Dark trooper
-	 //we assign but do not equip the weapon! We just need the line "setImperial" - but without an assigned weapon we will crash
-	 weapon = new RifleRangedWeapon(_this, "object/weapon/ranged/rifle/shared_rifle_t21.iff", UnicodeString("Teh Pwn"), "rifle_t21", false);
-	 weapon->setMinDamage(350);
-	 weapon->setMaxDamage(400);
-	 weapon->setAttackSpeed(4);
-	 weapon->setDamageType(WeaponImplementation::ENERGY);
-	 weapon->setArmorPiercing(WeaponImplementation::LIGHT);
-	 setImperial();
-	 }
-	 else if (objectCRC == 0xFCA399 || objectCRC == 0x1BCAE981 ||
-	 objectCRC == 0x75A7387A || objectCRC == 0xEF5997EB ||
-	 objectCRC == 0xFCA399 || objectCRC == 0xE0B389E5 ||
-	 objectCRC == 0xFECB7C04 || objectCRC == 0xD96A33B7) { //Corsecs (also used for Rogue Corsecs!)
-	 weapon = new PistolRangedWeapon(_this, "object/weapon/ranged/pistol/shared_pistol_cdef_corsec.iff", UnicodeString("Corsec CDEF Pistol"), "pistol_cdef_corsec", true);
-	 weapon->setMinDamage(150);
-	 weapon->setMaxDamage(200);
-	 weapon->setAttackSpeed(3);
-	 weapon->setDamageType(WeaponImplementation::ENERGY);
-	 weapon->setArmorPiercing(WeaponImplementation::LIGHT);
-	 }
-	 else if (objectCRC == 0xFECDC4DE || objectCRC == 0x7EDC1419) { //  AT AT    / AT ST
-	 weapon = new RifleRangedWeapon(_this,"object/weapon/ranged/vehicle/shared_vehicle_atst_ranged.iff", UnicodeString("Imperial Cannon"), "vehicle_atst_ranged");
-	 weapon->setAttackSpeed(1.5f);
-	 setImperial();
-	 }
-	 else if (objectCRC == 0x8C70914) {
-	 weapon = new OneHandedJediWeapon(_this,
-	 "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff",
-	 UnicodeString("Darth Saber"), "sword_lightsaber_one_handed_s4_gen4", true);
-	 weapon->setDamageType(WeaponImplementation::LIGHTSABER);
-	 weapon->setArmorPiercing(WeaponImplementation::NONE);
-	 } else if (objectCRC == 0x2B0C220E || objectCRC == 0x476794EB || objectCRC == 0x4A889CCF ||
-	 objectCRC == 0x6D029623 || objectCRC == 0x4A48B6CC || objectCRC == 0x1527DF01) {
-	 // low level SMC, Rebel General
-	 switch (System::random(1)) {
-	 case 0 :
-	 weapon = new OneHandedMeleeWeapon(_this, "object/weapon/melee/baton/shared_baton_gaderiffi.iff", UnicodeString("a Gaderiffi"), "baton_gaderiffi", true);
-	 weapon->setMinDamage(175 + level);
-	 weapon->setMaxDamage(200 + level);
-	 weapon->setAttackSpeed(1.5);
-	 weapon->setDamageType(WeaponImplementation::KINETIC);
-	 weapon->setArmorPiercing(WeaponImplementation::NONE);
-	 break;
-	 case 1 :
-	 weapon = new OneHandedMeleeWeapon(_this,
-	 "object/weapon/melee/baton/shared_baton_stun.iff", UnicodeString("a Stun Baton"), "baton_stun", true);
-	 weapon->setMinDamage(175 + level);
-	 weapon->setMaxDamage(250 + level);
-	 weapon->setAttackSpeed(1.5);
-	 weapon->setDamageType(WeaponImplementation::STUN);
-	 weapon->setArmorPiercing(WeaponImplementation::NONE);
-	 break;
-	 }
-	 } else if (objectCRC == 0xE158FEC1) {
-	 //ranged tusken raider
-	 weapon = new RifleRangedWeapon(_this, "object/weapon/ranged/rifle/shared_rifle_tusken.iff", UnicodeString("a Tusken Rifle"), "rifle_tusken", true);
-	 weapon->setMinDamage(175 + level);
-	 weapon->setMaxDamage(200 + level);
-	 weapon->setAttackSpeed(4);
-	 weapon->setDamageType(WeaponImplementation::ENERGY);
-	 weapon->setArmorPiercing(WeaponImplementation::LIGHT);
-
-	 } else if (objectCRC ==0x148D60AA) {
-	 //melee tusken raider
-	 weapon = new OneHandedMeleeWeapon(_this, "object/weapon/melee/baton/shared_baton_gaderiffi.iff", UnicodeString("a Gaderiffi"), "baton_gaderiffi", true);
-	 weapon->setMinDamage(175 + level);
-	 weapon->setMaxDamage(200 + level);
-	 weapon->setAttackSpeed(1.5);
-	 weapon->setDamageType(WeaponImplementation::KINETIC);
-	 weapon->setArmorPiercing(WeaponImplementation::NONE);
-
-	 } else if (objectCRC ==0xE21E6148) {
-	 //SBD 0xE21E6148
-	 weapon = new CarbineRangedWeapon(_this, "object/weapon/ranged/droid/shared_droid_droideka_ranged.iff", UnicodeString("a SBD"), "droideka_ranged", true);
-	 weapon->setMinDamage(600 + level);
-	 weapon->setMaxDamage(1300 + level);
-	 weapon->setAttackSpeed(1.5);
-	 weapon->setDamageType(WeaponImplementation::ENERGY);
-	 weapon->setArmorPiercing(WeaponImplementation::MEDIUM);
-
-	 } else if (objectCRC ==0xD3C915F9 || objectCRC ==0xB8270A11) {
-	 //Death Watch Wraith // Ghosts
-	 weapon = new RifleRangedWeapon(_this, "object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff", UnicodeString("a Dxr6_Disrupter"), "rifle_dxr6", true);
-	 weapon->setMinDamage(500 + level);
-	 weapon->setMaxDamage(800 + level);
-	 weapon->setAttackSpeed(1.5);
-	 weapon->setDamageType(WeaponImplementation::ENERGY);
-	 weapon->setArmorPiercing(WeaponImplementation::MEDIUM);
-
-	 } else if (objectCRC ==0xD83D2DEC || objectCRC ==0x730E66DF || objectCRC ==0xAD30C613) {
-	 //Black Sun Henchmen Assassin Thug
-	 weapon = new RifleRangedWeapon(_this, "object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff", UnicodeString("a Dxr6_Disrupter"), "rifle_dxr6", true);
-	 weapon->setMinDamage(400 + level);
-	 weapon->setMaxDamage(600 + level);
-	 weapon->setAttackSpeed(1.5);
-	 weapon->setDamageType(WeaponImplementation::ENERGY);
-	 weapon->setArmorPiercing(WeaponImplementation::MEDIUM);
-
-	 } else if (objectCRC ==0x79BC6EB3) {
-	 //Battle Droid
-	 weapon = new CarbineRangedWeapon(_this, "object/weapon/ranged/carbine/shared_carbine_elite.iff", UnicodeString("a E5_Carbine"), "carbine_elite", true);
-	 weapon->setMinDamage(400 + level);
-	 weapon->setMaxDamage(600 + level);
-	 weapon->setAttackSpeed(1.5);
-	 weapon->setDamageType(WeaponImplementation::ENERGY);
-	 weapon->setArmorPiercing(WeaponImplementation::MEDIUM);
-
-	 } else if (objectCRC ==0xC3DE9EF6) {
-	 //Death Watch Blood Guards
-	 weapon = new OneHandedMeleeWeapon(_this, "object/weapon/melee/baton/shared_baton_stun.iff", UnicodeString("a Stun_Baton"), "baton_stun", true);
-	 weapon->setMinDamage(440 + level);
-	 weapon->setMaxDamage(600 + level);
-	 weapon->setAttackSpeed(2);
-	 weapon->setDamageType(WeaponImplementation::STUN);
-	 weapon->setArmorPiercing(WeaponImplementation::MEDIUM);
-
-	 } else if (objectCRC ==0x320DD865) {
-	 //Death Watch Overlord
-	 weapon = new OneHandedMeleeWeapon(_this, "object/weapon/melee/baton/shared_baton_stun.iff", UnicodeString("a Stun_Baton"), "baton_stun", true);
-	 weapon->setMinDamage(1850 + level);
-	 weapon->setMaxDamage(2250 + level);
-	 weapon->setAttackSpeed(3);
-	 weapon->setDamageType(WeaponImplementation::STUN);
-	 weapon->setArmorPiercing(WeaponImplementation::HEAVY);
-
-	 } else if (objectCRC ==0xEA0D8178 || objectCRC ==0x42DB151E || objectCRC ==0xD5A733A8) {
-	 //DWB Miners
-	 weapon = new PistolRangedWeapon(_this, "object/weapon/ranged/pistol/shared_pistol_cdef.iff", UnicodeString("a CDEF_Pistol"), "pistol_cdef", true);
-	 weapon->setMinDamage(100 + level);
-	 weapon->setMaxDamage(175 + level);
-	 weapon->setAttackSpeed(2.5);
-	 weapon->setDamageType(WeaponImplementation::ENERGY);
-	 weapon->setArmorPiercing(WeaponImplementation::LIGHT);
-
-	 } else if (objectCRC == 0x6BABDCC0 || objectCRC == 0x35F5AD39 || objectCRC == 0x113E9DB3 ||
-	 objectCRC == 0x6050E92E || objectCRC == 0x46ABF8A1 || objectCRC == 0x71F874) {
-	 // High level SMC, Rebel Surface Marshal
-	 switch (System::random(1)) {
-	 case 0 :
-	 weapon = new PolearmMeleeWeapon(_this,
-	 "object/weapon/melee/polearm/shared_lance_vibrolance.iff", UnicodeString("a Vibrolance"), "lance_vibrolance", true);
-	 weapon->setMinDamage(250 + level);
-	 weapon->setMaxDamage(450 + level);
-	 weapon->setAttackSpeed(1.5);
-	 weapon->setDamageType(WeaponImplementation::ELECTRICITY);
-	 weapon->setArmorPiercing(WeaponImplementation::LIGHT);
-	 break;
-	 case 1 :
-	 weapon = new PolearmMeleeWeapon(_this,
-	 "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", UnicodeString("a Long Vibro Axe"), "lance_vibro_axe", true);
-	 weapon->setMinDamage(250 + level);
-	 weapon->setMaxDamage(450 + level);
-	 weapon->setAttackSpeed(1.5);
-	 weapon->setDamageType(WeaponImplementation::KINETIC);
-	 weapon->setArmorPiercing(WeaponImplementation::MEDIUM);
-	 break;
-	 }
-
-	 } else if (objectCRC == 0xD84925C2 || objectCRC == 0x90D8EBF8 || objectCRC == 0x1FA893FD || objectCRC == 0x2E831404 ||
-	 objectCRC == 0x2D98A9B3) {
-	 // low level NS
-	 switch (System::random(1)) {
-	 case 0 :
-	 weapon = new OneHandedMeleeWeapon(_this,
-	 "object/weapon/melee/baton/shared_baton_gaderiffi.iff", UnicodeString("a Gaderiffi"), "baton_gaderiffi", true);
-	 weapon->setMinDamage(175 + level);
-	 weapon->setMaxDamage(200 + level);
-	 weapon->setAttackSpeed(1.5);
-	 weapon->setDamageType(WeaponImplementation::KINETIC);
-	 weapon->setArmorPiercing(WeaponImplementation::NONE);
-	 break;
-	 case 1 :
-	 weapon = new OneHandedMeleeWeapon(_this,
-	 "object/weapon/melee/baton/shared_baton_stun.iff", UnicodeString("a Stun Baton"), "baton_stun", true);
-	 weapon->setMinDamage(175 + level);
-	 weapon->setMaxDamage(250 + level);
-	 weapon->setAttackSpeed(1.5);
-	 weapon->setDamageType(WeaponImplementation::STUN);
-	 weapon->setArmorPiercing(WeaponImplementation::NONE);
-	 break;
-	 }
-
-	 } else if (objectCRC == 0xF0663601 || objectCRC == 0xAC722907 || objectCRC == 0x889ADF8D || objectCRC == 0xC4E5A41E ||
-	 objectCRC == 0x44F934A9) {
-	 // High Level NS
-	 switch (System::random(1)) {
-	 case 0 :
-	 weapon = new PolearmMeleeWeapon(_this,
-	 "object/weapon/melee/polearm/shared_lance_vibrolance.iff", UnicodeString("a Vibrolance"), "lance_vibrolance", true);
-	 weapon->setMinDamage(250 + level);
-	 weapon->setMaxDamage(450 + level);
-	 weapon->setAttackSpeed(1.5);
-	 weapon->setDamageType(WeaponImplementation::ELECTRICITY);
-	 weapon->setArmorPiercing(WeaponImplementation::LIGHT);
-	 break;
-	 case 1 :
-	 weapon = new PolearmMeleeWeapon(_this,
-	 "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", UnicodeString("a Long Vibro Axe"), "lance_vibro_axe", true);
-	 weapon->setMinDamage(250 + level);
-	 weapon->setMaxDamage(450 + level);
-	 weapon->setAttackSpeed(1.5);
-	 weapon->setDamageType(WeaponImplementation::KINETIC);
-	 weapon->setArmorPiercing(WeaponImplementation::MEDIUM);
-	 break;
-	 }
-	 } else if (objectCRC == 0xC5A39C12 || objectCRC == 0x5CECC950) {
-	 //Hutt Hideout
-	 weapon = new OneHandedMeleeWeapon(_this,
-	 "object/weapon/melee/baton/shared_baton_stun.iff", UnicodeString("a Stun Baton"), "baton_stun", true);
-	 weapon->setMinDamage(175 + level);
-	 weapon->setMaxDamage(250 + level);
-	 weapon->setAttackSpeed(1.5);
-	 weapon->setDamageType(WeaponImplementation::STUN);
-	 weapon->setArmorPiercing(WeaponImplementation::NONE);
-	 } else if (objectCRC == 0x3517D918) {
-	 //Gamorrean Guard
-	 weapon = new PolearmMeleeWeapon(_this,
-	 "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", UnicodeString("a Long Vibro Axe"), "lance_vibro_axe", true);
-	 weapon->setMinDamage(250 + level);
-	 weapon->setMaxDamage(450 + level);
-	 weapon->setAttackSpeed(1.5);
-	 weapon->setDamageType(WeaponImplementation::KINETIC);
-	 weapon->setArmorPiercing(WeaponImplementation::MEDIUM);
-	 } else if (objectCRC == 0xAA197516) {
-	 // NS Queen
-	 switch (System::random(1)) {
-	 case 0 :
-	 weapon = new OneHandedMeleeWeapon(_this,
-	 "object/weapon/melee/baton/shared_baton_gaderiffi.iff", UnicodeString("a Gaderiffi"), "baton_gaderiffi", true);
-	 weapon->setMinDamage(800 + level);
-	 weapon->setMaxDamage(1600 + level);
-	 weapon->setAttackSpeed(1.5);
-	 weapon->setDamageType(WeaponImplementation::KINETIC);
-	 weapon->setArmorPiercing(WeaponImplementation::NONE);
-	 break;
-	 case 1 :
-	 weapon = new OneHandedMeleeWeapon(_this,
-	 "object/weapon/melee/baton/shared_baton_stun.iff", UnicodeString("a Stun Baton"), "baton_stun", true);
-	 weapon->setMinDamage(900 + level);
-	 weapon->setMaxDamage(1700 + level);
-	 weapon->setAttackSpeed(1.5);
-	 weapon->setDamageType(WeaponImplementation::STUN);
-	 weapon->setArmorPiercing(WeaponImplementation::NONE);
-	 break;
-	 }
-	 } else if (objectCRC == 0x9242B53A || objectCRC == 0x49551DAD || objectCRC == 0x587A20 ||
-	 objectCRC == 0xFBBB5134 || objectCRC == 0xB2B636B9 || objectCRC == 0x69A19E2E) {
-	 // Sennex Cave
-	 switch (System::random(1)) {
-	 case 0 :
-	 weapon = new PolearmMeleeWeapon(_this,
-	 "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", UnicodeString("a Long Vibro Axe"), "lance_vibro_axe", true);
-	 weapon->setMinDamage(250 + level);
-	 weapon->setMaxDamage(450 + level);
-	 weapon->setAttackSpeed(1.5);
-	 weapon->setDamageType(WeaponImplementation::KINETIC);
-	 weapon->setArmorPiercing(WeaponImplementation::MEDIUM);
-	 break;
-	 case 1 :
-	 weapon = new TwoHandedMeleeWeapon(_this,
-	 "object/weapon/melee/axe/shared_axe_vibroaxe.iff", UnicodeString("a Vibro Axe"), "axe_vibro", true);
-	 weapon->setMinDamage(200 + level);
-	 weapon->setMaxDamage(400 + level);
-	 weapon->setAttackSpeed(1.5);
-	 weapon->setDamageType(WeaponImplementation::KINETIC);
-	 weapon->setArmorPiercing(WeaponImplementation::MEDIUM);
-	 break;
-	 }
-	 } else if (objectCRC == 0xFB872285) { // lord nyax
-	 weapon = new CarbineRangedWeapon(_this,
-	 "object/weapon/ranged/carbine/shared_carbine_e11.iff", UnicodeString("a e11 Carbine"), "carbine_e11", true);
-	 weapon->setMinDamage(550);
-	 weapon->setMaxDamage(880);
-	 weapon->setAttackSpeed(1.5);
-	 weapon->setDamageType(WeaponImplementation::ENERGY);
-	 weapon->setArmorPiercing(WeaponImplementation::MEDIUM);
-	 } else
-	 return;
-
-	 addInventoryItem(weapon);
-	 setWeapon(weapon);
-	 */
-}
-
-void CreatureImplementation::updateZone(bool lightUpdate, bool sendPackets) {
-	bool insert = false;
-
-	try {
-		zone->lock();
-
-		if (parent != NULL && parent->isCell()) {
-			CellObject* cell = (CellObject*) parent;
-
-			removeFromBuilding((BuildingObject*) cell->getParent());
-
-			parent = NULL;
-			insert = true;
-		}
-
-		if (insert)
-			zone->insert(this);
-		else
-			zone->update(this);
-
-		zone->inRange(this, 128);
-
-		if (sendPackets)
-			updateCreaturePosition(lightUpdate);
-
-		zone->unlock();
-	} catch (...) {
-		System::out << "exception CreatureImplementation::updateZone()\n";
-
-		zone->unlock();
-	}
-}
-
-void CreatureImplementation::updateZoneWithParent(uint64 par, bool lightUpdate,
-		bool sendPackets) {
-	if (zone == NULL)
-		return;
-
-	SceneObject* newParent = parent;
-
-	if (parent == NULL || (parent != NULL && parent->getObjectID() != par))
-		newParent = zone->lookupObject(par);
-
-	if (newParent == NULL)
-		return;
-
-	bool insert = false;
-
-	try {
-		zone->lock();
-
-		if (newParent != parent) {
-			if (parent == NULL) {
-				zone->remove(this);
-				insert = true;
-			} else {
-				BuildingObject* building =
-						(BuildingObject*) parent->getParent();
-				SceneObject* newObj = newParent->getParent();
-
-				if (newObj->isBuilding()) {
-					BuildingObject* newBuilding = (BuildingObject*) newObj;
-
-					if (building != newBuilding) {
-						removeFromBuilding(building);
-
-						insert = true;
-					}
-				}
-
-				if (parent != NULL)
-					((CellObject*) parent)->removeChild(_this);
-			}
-			parent = newParent;
-			((CellObject*) parent)->addChild(_this);
-		}
-
-		BuildingObject* building = (BuildingObject*) parent->getParent();
-
-		if (insert) {
-			insertToBuilding(building);
-		} else {
-			building->lock();
-
-			building->update(this);
-			building->inRange(this, 128);
-
-			building->unlock();
-		}
-
-		if (sendPackets)
-			updateCreaturePosition(lightUpdate);
-
-		zone->unlock();
-	} catch (...) {
-		zone->unlock();
-		error("Exception in CreatureImplementation::updateZoneWithParent");
-	}
-}
-
-void CreatureImplementation::updateCreaturePosition(bool lightUpdate) {
-	++movementCounter;
-
-	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		SceneObject* obj =
-				(SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_getStub());
-
-		if (obj->isPlayer()) {
-			Player* player = (Player*) obj;
-
-			if (!lightUpdate) {
-				if (parent != NULL) {
-					player->sendMessage(new UpdateTransformWithParentMessage(_this));
-				} else
-					player->sendMessage(new UpdateTransformMessage(_this));
-			} else {
-				if (parent != NULL)
-					player->sendMessage(new LightUpdateTransformWithParentMessage(_this));
-				else
-					player->sendMessage(new LightUpdateTransformMessage(_this));
-			}
-		}
-	}
 }
 
 void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
@@ -1146,7 +712,6 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 }
 
 bool CreatureImplementation::shouldAgro(SceneObject * target) {
-
 	if (this->isDead() || this->isIncapacitated())
 		return false;
 
@@ -1167,16 +732,13 @@ bool CreatureImplementation::shouldAgro(SceneObject * target) {
 			return true;
 	}
 
-	if (target->isNonPlayerCreature()) {
-		Creature * npc = (Creature *) target;
+	if (creature->isVehicle() && this->isAgressive()) {
+		return (System::random(10) == 7);
+	}
 
-		if (npc->isMount() && this->isAgressive()) {
-
-			if(System::random(10) == 7)
-				return true;
-			else
-				return false;
-		}
+	if (creature->isPet()) {
+		//if (this->isAgressive())
+		return false;
 	}
 
 	if (this->hatesFaction(creature->getFaction())) {
@@ -1212,18 +774,20 @@ bool CreatureImplementation::activate() {
 		needMoreActivity |= doMovement();
 
 		if (aggroedCreature != NULL) {
-			if (!aggroedCreature->isAttackable())
+			if (!aggroedCreature->isAttackable()) {
 				deaggro();
-			else
+			}
+			else {
 				needMoreActivity |= attack(aggroedCreature);
-		} else if (isInCombat())
+			}
+		} else if (isInCombat()) {
 			clearCombatState();
+		}
 
 		needMoreActivity |= doRecovery();
 
 		if (needMoreActivity && zone != NULL) {
 			//info("queuing more activities");
-
 			creatureManager->queueActivity(this);
 		} else {
 			//info("no more activities needed");
@@ -1493,14 +1057,24 @@ bool CreatureImplementation::doMovement() {
 void CreatureImplementation::createHarvestList() {
 	Player* tempPlayer;
 	GroupObject* group;
-	Player* owner = (Player*) getLootOwner();
+
+	CreatureObject* lootOwner = getLootOwner();
+
+
+	Player* owner = NULL;
+
+	if (lootOwner->isPlayer())
+		owner = (Player*) getLootOwner();
+	else if (lootOwner->isPet())
+		owner = ((CreaturePet*)lootOwner)->getLinkedCreature();
 
 	String skillBox = "outdoors_scout_novice";
 
 	if (owner == NULL || !hasOrganics())
 		return;
 
-	playerCanHarvest.add(owner->getFirstName());
+	if (owner->isPlayer())
+		playerCanHarvest.add(owner->getFirstName());
 
 	if (owner->isInAGroup()) {
 
@@ -1522,7 +1096,6 @@ void CreatureImplementation::doStandUp() {
 }
 
 void CreatureImplementation::doAttack(CreatureObject* target, int damage) {
-
 	if (target != aggroedCreature && highestMadeDamage < damage) {
 		highestMadeDamage = damage;
 
@@ -1534,9 +1107,10 @@ void CreatureImplementation::doAttack(CreatureObject* target, int damage) {
 
 		//info("new target locked");
 	}
-
-	if (aggroedCreature != NULL && !isActive() && creatureManager != NULL)
+	if (aggroedCreature != NULL && !isActive() && creatureManager != NULL) {
 		creatureManager->queueActivity(this, 10);
+
+	}
 }
 
 bool CreatureImplementation::attack(CreatureObject* target) {
@@ -1575,7 +1149,6 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 
 	if (target->isIncapacitated() || target->isDead()) {
 		deaggro();
-
 		return false;
 	}
 
@@ -1596,8 +1169,9 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 
 	Skill* skill = NULL;
 
-	if (skills == 0)
+	if (skills == 0) {
 		return false;
+	}
 	else {
 		int rand = System::random(skills - 1);
 		skill = creatureSkills.get(rand);
@@ -1609,15 +1183,15 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 	uint32 actionCRC = skill->getNameCRC();
 
 	//updateTarget(target->getObjectID());
-
 	if (isDead() || isKnockedDown())
 		return false;
 
 	if (weaponObject != NULL
 			&& (!isInRange(target, weaponObject->getMaxRange()))) {
 		return true;
-	} else if (!isInRange(target, skill->getRange()))
+	} else if (!isInRange(target, skill->getRange())) {
 		return true;
+	}
 
 	//info("queuing attacking");
 
@@ -1637,7 +1211,9 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 		return false;
 	}
 
-	if (target->isNonPlayerCreature() && ((Creature *)target)->isMount() && ((MountCreature *) target)->isDisabled()) {
+	//if (target->isNonPlayerCreature() && target->isMount() && target->isDisabled()) {
+
+	if (target->isVehicle() && target->isDisabled()) {
 		deaggro();
 
 		return false;
@@ -1652,7 +1228,6 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 
 	nextAttackDelay.update();
 	nextAttackDelay.addMiliTime((uint64) (delay * 1000));
-
 	return true;
 }
 
@@ -1796,17 +1371,13 @@ void CreatureImplementation::deaggro() {
 		msg << "deaggroed (0x" << hex << aggroedCreature->getObjectID() << dec
 				<< ")";
 		//info(msg);
-
 		if (aggroedCreature->isDead()) {
 			removeFromDamageMap(aggroedCreature);
 			dropDamageDone(aggroedCreature);
 		}
-
 		removeDefender(aggroedCreature);
-
 		aggroedCreature = NULL;
 	}
-
 	clearTarget();
 	clearCombatState();
 }
@@ -1976,12 +1547,10 @@ void CreatureImplementation::addPatrolPoint(PatrolPoint* cord, bool doLock) {
 	try {
 		if (doLock)
 			wlock(doLock);
-
 		patrolPoints.add(cord);
-
-		if (!isActive())
+		if (!isActive()) {
 			creatureManager->queueActivity(this);
-
+		}
 		if (doLock)
 			unlock(doLock);
 	} catch (...) {
@@ -2035,15 +1604,22 @@ void CreatureImplementation::onDeath() {
 	//TODO: Currently doesn't work with groups does it?
 	CreatureObject* lootOwner = getLootOwner();
 
-	if ((isImperial() || isRebel()) && lootOwner != NULL && lootOwner->isPlayer()) {
-		Player* lootOwnerPlayer = (Player *) lootOwner;
+	if ((isImperial() || isRebel()) && lootOwner != NULL) {
+		Player* lootOwnerPlayer = NULL;
 
-		String pfaction = (lootOwnerPlayer->isImperial()) ? "imperial" : "rebel";
+		if (lootOwner->isPlayer())
+			lootOwnerPlayer = (Player *) lootOwner;
+		else if (lootOwner->isPet())
+			lootOwnerPlayer = ((CreaturePet*)lootOwner)->getLinkedCreature();
 
-		String myfaction = (isImperial()) ? "imperial" : "rebel";
+		if (lootOwner != NULL) {
+			String pfaction = (lootOwnerPlayer->isImperial()) ? "imperial" : "rebel";
 
-		lootOwnerPlayer->addFactionPoints(pfaction, fpValue);
-		lootOwnerPlayer->subtractFactionPoints(myfaction, fpValue);
+			String myfaction = (isImperial()) ? "imperial" : "rebel";
+
+			lootOwnerPlayer->addFactionPoints(pfaction, fpValue);
+			lootOwnerPlayer->subtractFactionPoints(myfaction, fpValue);
+		}
 	}
 
 	creatureHealth = System::random(3) + 1;

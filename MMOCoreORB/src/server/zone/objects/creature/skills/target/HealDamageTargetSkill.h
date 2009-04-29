@@ -229,7 +229,7 @@ public:
 		if (stimPack != NULL)
 			stimPack->useCharge((Player*) creature);
 
-		if (creatureTarget != creature)
+		if (creatureTarget != creature && !creatureTarget->isPet())
 			awardXp(creature, "medical", (healthHealed + actionHealed)); //No experience for healing yourself.
 
 		if (stimPack->isArea()) {
@@ -293,8 +293,9 @@ public:
 
 			msgTarget << player->getCharacterName().toString() << " heals you for " << msgBody.toString() << msgTail.toString();
 			playerTarget->sendSystemMessage(msgTarget.toString());
-		} else {
-			//TODO: Pet Message
+		} else if (creatureTarget->isPet()) {
+			msgPlayer << "You heal " << creatureTarget->getCustomName().toString() << " for " << msgBody.toString() << msgTail.toString();
+			player->sendSystemMessage(msgPlayer.toString());
 		}
 	}
 

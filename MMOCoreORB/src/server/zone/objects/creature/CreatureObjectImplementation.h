@@ -77,6 +77,7 @@ which carries forward this exception.
 #include "skills/CamoSkill.h"
 
 #include "dots/DamageOverTimeMap.h"
+#include "mount/VehicleObject.h"
 
 class CombatManager;
 class MissionManager;
@@ -91,7 +92,6 @@ class Weapon;
 class Armor;
 class Instrument;
 
-class MountCreature;
 class DizzyFallDownEvent;
 class WoundTreatmentOverEvent;
 class InjuryTreatmentOverEvent;
@@ -100,7 +100,7 @@ class ConditionTreatmentOverEvent;
 class BurstRunOverEvent;
 class BurstRunNotifyAvailableEvent;
 
-class MountCreature;
+class VehicleObject;
 class BuildingObject;
 class CreatureObjectServant;
 class CreatureInventory;
@@ -199,7 +199,7 @@ protected:
 	uint64 stateBitmask;
 	uint64 oldStateBitmask;
 
-	MountCreature* mount;
+	CreatureObject* mount;
 	Time mountCooldown;
 
 	uint64 creatureLinkID;
@@ -389,7 +389,6 @@ protected:
 
 	uint8 campMod;
 	uint8 campAggro;
-	uint8 petNumber;
 
 	float combatRegenModifier;
 	float peacedRegenModifier;
@@ -879,9 +878,21 @@ public:
 		return creatureType == "NPC";
 	}
 
+	virtual bool isMount() {
+		return false;
+	}
+
+	inline bool isVehicle() {
+		return objectSubType == TangibleObjectImplementation::VEHICLE;
+	}
+
+	inline bool isDisabled() {
+		return conditionDamage >= maxCondition;
+	}
+
 	//Future Creature Handler methods
 	inline bool isPet() {
-		return false;
+		return creatureType == "PET";
 	}
 
 	// misc methods
@@ -966,7 +977,7 @@ public:
 	void sendGuildTo();
 
 	// mount methods
-	void mountCreature(MountCreature* mnt, bool lockMount = true);
+	void mountCreature(CreatureObject* mnt, bool lockMount = true);
 	void dismount(bool lockMount = true, bool ignoreCooldown = false);
 
 	// buffing methods
@@ -1185,11 +1196,11 @@ public:
 		return ignoreMovementTests;
 	}
 
-	inline void setMount(MountCreature* mnt) {
+	inline void setMount(CreatureObject* mnt) {
 		mount = mnt;
 	}
 
-	inline MountCreature* getMount() {
+	inline CreatureObject* getMount() {
 		return mount;
 	}
 
@@ -2822,13 +2833,6 @@ public:
 		return campMod > 1;
 	}
 
-	void setNumberOfPets(int num) {
-		petNumber = num;
-	}
-	int getNumberOfPets() {
-		return petNumber;
-	}
-
 
 
 
@@ -2921,6 +2925,15 @@ public:
 
 	void activateEscape();
 	void deactivateEscape();
+
+	int getNumberOfSkills() {
+		return creatureSkills.size();;
+	}
+
+	void updateZone(bool lightUpdate = false, bool sendPackets = true);
+	void updateZoneWithParent(uint64 par, bool lightUpdate = false, bool sendPackets = true);
+	void updateCreaturePosition(bool lightUpdate = false);
+
 
 	friend class CombatManager;
 	friend class SkillManager;

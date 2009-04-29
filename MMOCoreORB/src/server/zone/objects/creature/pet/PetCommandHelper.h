@@ -42,68 +42,58 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../../../managers/creature/CreatureManagerImplementation";
+#ifndef PETCOMMANDHELPER_H_
+#define PETCOMMANDHELPER_H_
 
-import "../Creature";
+#include "system/lang.h"
+#include "CreaturePet.h"
 
-import "../CreatureObject";
+class PetCommandHelper : public Vector<String> {
+public:
+	//novice ch
+	static const int PETATTACK = 0;
+	static const int PETFOLLOW = 1;
+	static const int PETSTORE = 2;
+	static const int PETRELEASE = 3;
 
-import "../../player/Player";
+	//taming tree
+	static const int PETSPECIALATTACK1 = 4;
+	static const int PETSPECIALATTACK2 = 5;
 
-import "../../intangible/IntangibleObject";
+	//training tree
+	static const int PETSTAY = 6;
+	static const int PETGUARD = 7;
+	static const int PETPATROL = 8;
+	static const int PETPATROLPOINTADD = 9;
+	static const int PETPATROLPOINTCLEAR = 10;
+	static const int PETFORMATION1= 11;
+	static const int PETFORMATION2= 12;
 
-import "../../scene/SceneObject";
+	//training tree
+	static const int PETTRICK1 = 13;
+	static const int PETEMBOLDEN = 14;
+	static const int PETTRICK2 = 15;
+	static const int PETENRAGE = 16;
 
-interface CreaturePet implements Creature {
+	//management tree
+	static const int PETGROUP = 17;
+	static const int PETFOLLOWOTHER = 18;
+	static const int PETFRIEND = 19;
 
-	CreaturePet(Player owner, unsigned long oid) {
-		super(oid);	
-	}
+	//master
+	static const int PETRANGEDATTACK = 20;
+	static const int PETTRANSFER = 21;
+protected:
+	//Vector<String>* commandList;
 
-	void init(Creature creature , float growth);
-	void createDataPad();
-	
-	void setLinkedCreature(Player linkCreature);
-	Player getLinkedCreature();
-	void setDatapadItem(SceneObject item);
-	IntangibleObject getDatapadItem();
-	void parseItemAttributes();
+public:
+	PetCommandHelper();
+	virtual ~PetCommandHelper();
 
-	void call();
-	void store(boolean doLock = true);
-	boolean canCall();
+	String& getBaseCommand(int command);
+	void trainCommand(int command, String& commandMessage);
 
-	boolean isAttackable();
-	boolean isAttackableBy(CreatureObject creature);
-	void onIncapacitated(SceneObject attacker);
-	void recoverFromIncapacitation();
+	void trainName(CreaturePet* pet);
+};
 
-	void setFaction(unsigned int fac);
-	void setMaxLevel(unsigned int level);
-
-	boolean isCHPet();
-	boolean isDroid();
-	boolean isFactionPet();
-
-	boolean isInFollowState();
-
-	boolean isInStayState();
-
-	boolean isInGuardState();
-
-	void doGrowUp(boolean updateTime = true);
-
-	void initTrainingState(int command);
-	void setPetName(String name);
-	void parseCommandMessage(const UnicodeString message);
-	void setCommmandState(unsigned int state);
-
-	boolean activate();
-	void deaggro();
-
-	void handleAttackCommand();
-	void handleFollowCommand();
-	void handleStayCommand();
-	void handleGuardCommand();
-	void handleStoreCommand();
-}
+#endif /* PETCOMMANDHELPER_H_ */

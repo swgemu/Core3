@@ -68,6 +68,10 @@ which carries forward this exception.
 #include "objects/creature/recruiter/RecruiterCreatureImplementation.h"
 #include "objects/creature/mount/MountCreature.h"
 #include "objects/creature/mount/MountCreatureImplementation.h"
+#include "objects/creature/mount/VehicleObject.h"
+#include "objects/creature/mount/VehicleObjectImplementation.h"
+#include "objects/creature/pet/CreaturePet.h"
+#include "objects/creature/pet/CreaturePetImplementation.h"
 
 #include "objects/group/GroupObject.h"
 #include "objects/group/GroupObjectImplementation.h"

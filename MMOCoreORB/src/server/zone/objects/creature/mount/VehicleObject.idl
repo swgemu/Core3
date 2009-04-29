@@ -51,40 +51,22 @@ import "../../intangible/IntangibleObject";
 
 import "../../scene/SceneObject";
 
-import "VehicleObject";
+interface VehicleObject {
+	VehicleObject(Player linkCreature) {
+		super();
+	}
 
-include "../../../packets/object/ObjectMenuResponse";
-
-interface MountCreature implements CreatureObject {
-	MountCreature(Player linkCreature, const String name, unsigned int itnocrc, unsigned int objCRC, unsigned long oid) {
-		super(oid);
+	VehicleObject() {
+		super();
 	}
 	
-	MountCreature(Player linkCreature, unsigned long oid, unsigned int tempcrc, const UnicodeString n, const String tempn){
-		super(oid);
-	}
-	
-	boolean isDisabled();
-	boolean isJetpack();
-	boolean isMount();
-	
-	void call();
-	void store(boolean doLock = true);
-	
-	int useObject(Player player);
-		
-	void parseItemAttributes();
-
-	void sendRadialResponseTo(Player player, ObjectMenuResponse omr);
-	//boolean isAttackable();
-	//boolean isAttackableBy(CreatureObject creature);
-
 	void setLinkedCreature(Player linkCreature);
 	Player getLinkedCreature();
+	
 	void setDatapadItem(SceneObject item);
 	IntangibleObject getDatapadItem();
 
-	boolean isInWorld();
-
-	void repair();	
+	void call();
+	void store(boolean doLock = true);
+	
 }

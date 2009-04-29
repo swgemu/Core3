@@ -232,9 +232,13 @@ private:
 	static void eventMessage(StringTokenizer tokenizer, Player* player);
 	static void eventCloner(StringTokenizer tokenizer, Player* player);
 
+	static void createTestPet(StringTokenizer tokenizer, Player* player);
+	static void moveToMe(StringTokenizer tokenizer, Player* player);
+
 	static void storeVehicle(StringTokenizer tokenizer, Player* player);
 	static void clearMissions(StringTokenizer tokenizer, Player* player);
 	static void clearInventory(StringTokenizer tokenizer, Player* player);
+
 	void init();
 
 public:

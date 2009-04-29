@@ -2387,6 +2387,24 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 			waypoint->finalize();
 
 	} else if (datapadData != NULL) {
+		if (datapadData->isIntangible()) {
+			IntangibleObject* itno = (IntangibleObject*)datapadData.get();
+			SceneObject* worldObject = itno->getWorldObject();
+
+			if (worldObject->isNonPlayerCreature()) {
+				CreatureObject* crea = (Creature*) worldObject;
+				if (crea->isPet()) {
+					try {
+						((CreaturePet*)crea)->wlock();
+						((CreaturePet*)crea)->store();
+						((CreaturePet*)crea)->unlock();
+					} catch (...) {
+						System::out << "Unreported exception caught in RadialManager::handlePetCall\n";
+						((CreaturePet*)crea)->unlock();
+					}
+				}
+			}
+		}
 		player->removeDatapadItem(objid);
 
 		itemManager->deleteDatapadItem(player, datapadData.get(), true);
@@ -2400,7 +2418,7 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 
 		if(linkedItem != NULL) {
 
-			if(linkedItem->isNonPlayerCreature() && linkedItem == player->getMount())
+			if(linkedItem->isNonPlayerCreature() && linkedItem == (CreatureObject*)player->getMount())
 				player->setMount(NULL);
 
 			linkedItem->finalize();
@@ -2771,21 +2789,22 @@ void ObjectControllerMessage::parseMount(Player* player, Message* pack) {
 
 	if (object == NULL || object->isPlayer() || object == player)
 		return;
+	CreatureObject* creo;
+	if (object->isNonPlayerCreature())
+		creo = (CreatureObject*) object;
 
-	MountCreature* mount = player->getMount();
-
-	if (object != (SceneObject*) mount)
+	if (creo == NULL || !creo->isMount())
 		return;
 	else {
 		if (player->isMounted())
 			player->dismount();
 		else
-			player->mountCreature(mount);
+			player->mountCreature(creo);
 	}
 }
 
 void ObjectControllerMessage::parseDismount(Player* player, Message* pack) {
-	MountCreature* mount = player->getMount();
+	CreatureObject* mount = player->getMount();
 
 	if (mount == NULL)
 		return;

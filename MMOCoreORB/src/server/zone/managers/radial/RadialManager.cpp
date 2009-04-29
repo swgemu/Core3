@@ -250,7 +250,9 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		case 42: //GROUP_DECLINE
 		case 43: //EXTRACT_OBJECT
 		case 44: //PET_CALL
-			break;
+			player->unlock();
+			handlePetCall(obj);
+			return;
 		case 45: //TERMINAL_AUCTION_USE
 			sendRadialResponseForBazaar(obj->getObjectID(), player);
 			break;
@@ -287,8 +289,9 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 			//obj->move(down, amount);
 			break;
 		case 59: //PET_STORE
-			//player->storePet(obj);
-			break;
+			player->unlock();
+			handlePetStore(obj);
+			return;
 		case 60: // VEHICLE_GENERATE
 			player->unlock();
 			handleVehicleGenerate(obj);
@@ -465,28 +468,69 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 			handleTeach(obj, player);
 			break;
 		case 141: //PET_COMMAND
+			break;
 		case 142: //PET_FOLLOW
+			handlePetTraining(obj,PetCommandHelper::PETFOLLOW);
+			break;
 		case 143: //PET_STAY
+			handlePetTraining(obj,PetCommandHelper::PETSTAY);
+			break;
 		case 144: //PET_GUARD
+			handlePetTraining(obj,PetCommandHelper::PETGUARD);
+			break;
 		case 145: //PET_FRIEND
+			handlePetTraining(obj,PetCommandHelper::PETFRIEND);
+			break;
 		case 146: //PET_ATTACK
+			handlePetTraining(obj,PetCommandHelper::PETATTACK);
+			break;
 		case 147: //PET_PATROL
+			handlePetTraining(obj,PetCommandHelper::PETPATROL);
+			break;
 		case 148: //PET_GET_PATROL_POINT
+			handlePetTraining(obj,PetCommandHelper::PETPATROLPOINTADD);
+			break;
 		case 149: //PET_CLEAR_PATROL_POINTS
+			handlePetTraining(obj,PetCommandHelper::PETPATROLPOINTCLEAR);
+			break;
 		case 150: //PET_ASSUME_FORMATION_1
+			handlePetTraining(obj,PetCommandHelper::PETFORMATION1);
+			break;
 		case 151: //PET_ASSUME_FORMATION_2
+			handlePetTraining(obj,PetCommandHelper::PETFORMATION2);
+			break;
 		case 152: //PET_TRANSFER
+			handlePetTraining(obj,PetCommandHelper::PETTRANSFER);
+			break;
 		case 153: //PET_RELEASE
+			handlePetTraining(obj,PetCommandHelper::PETRELEASE);
+			break;
 		case 154: //PET_TRICK_1
+			handlePetTraining(obj,PetCommandHelper::PETTRICK1);
+			break;
 		case 155: //PET_TRICK_2
+			handlePetTraining(obj,PetCommandHelper::PETTRICK2);
+			break;
 		case 156: //PET_TRICK_3
+			handlePetTraining(obj,PetCommandHelper::PETEMBOLDEN);
+			break;
 		case 157: //PET_TRICK_4
+			handlePetTraining(obj,PetCommandHelper::PETENRAGE);
+			break;
 		case 158: //PET_GROUP
+			handlePetTraining(obj,PetCommandHelper::PETGROUP);
+			break;
 		case 159: //PET_TAME
 		case 160: //PET_FEED
+			break;
 		case 161: //PET_SPECIAL_ATTACK_ONE
+			handlePetTraining(obj,PetCommandHelper::PETSPECIALATTACK1);
+			break;
 		case 162: //PET_SPECIAL_ATTACK_TWO
+			handlePetTraining(obj,PetCommandHelper::PETSPECIALATTACK2);
+			break;
 		case 163: //PET_RANGED_ATTACK
+			handlePetTraining(obj,PetCommandHelper::PETRANGEDATTACK);
 			break;
 		case 164: // ROLL_DICE (Configure)
 			// nothing here, has sub-members
@@ -669,7 +713,6 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 
 ObjectMenuResponse* RadialManager::parseDefaults(Player* player, uint64 objectid, Packet* pack) {
 	int size = pack->parseInt();
-
 	ObjectMenuResponse* omr = new ObjectMenuResponse(player, objectid, 0);
 
 	for (int i = 0; i < size; i++) {
@@ -711,41 +754,33 @@ void RadialManager::sendRadialResponseForBazaar(uint64 objectId, Player* player)
 
 void RadialManager::handleVehicleStore(SceneObject* obj) {
 	if (obj->isIntangible()) {
-
 		SceneObject* mount = ((IntangibleObject*)obj)->getWorldObject();
-		if (mount == NULL)
-			return;
 
 		if (!mount->isNonPlayerCreature())
 			return;
 
-		if (!((Creature*)mount)->isMount())
+		if (!((CreatureObject*)mount)->isVehicle())
 			return;
 
 		try {
 			mount->wlock();
-
 			((MountCreature*)mount)->store();
-
 			mount->unlock();
 		} catch (...) {
-			mount->unlock();
+			obj->unlock();
 		}
-
 		return;
 	}
 
 	if (!obj->isNonPlayerCreature())
 		return;
 
-	if (!((Creature*)obj)->isMount())
+	if (!((CreatureObject*)obj)->isVehicle())
 		return;
 
 	try {
 		obj->wlock();
-
 		((MountCreature*)obj)->store();
-
 		obj->unlock();
 	} catch (...) {
 		System::out << "Unreported exception caught in RadialManager::handleVehicleStore(Player* player, SceneObject* obj)\n";
@@ -754,26 +789,20 @@ void RadialManager::handleVehicleStore(SceneObject* obj) {
 }
 
 void RadialManager::handleVehicleGenerate(SceneObject* obj) {
-
 	if (!obj->isIntangible())
 		return;
 
 	SceneObject* mount = ((IntangibleObject*)obj)->getWorldObject();
 
-	if (mount == NULL)
-		return;
-
 	if (!mount->isNonPlayerCreature())
 		return;
 
-	if (!((Creature*)mount)->isMount())
+	if (!((CreatureObject*)mount)->isMount())
 		return;
 
 	try {
 		mount->wlock();
-
 		((MountCreature*)mount)->call();
-
 		mount->unlock();
 	} catch (...) {
 		System::out << "Unreported exception caught in RadialManager::handleVehicleGenerate\n";
@@ -1672,3 +1701,81 @@ void RadialManager::handleFactoryRun(Player* player, SceneObject* obj){
 	else
 		fact->setOperating(true);
 }
+
+
+void RadialManager::handlePetCall(SceneObject* obj) {
+	if (!obj->isIntangible())
+		return;
+
+	SceneObject* pet = ((IntangibleObject*)obj)->getWorldObject();
+
+	if (pet == NULL)
+		return;
+
+	if (!pet->isNonPlayerCreature())
+		return;
+
+	try {
+		pet->wlock();
+		((CreaturePet*)pet)->call();
+		pet->unlock();
+	} catch (...) {
+		System::out << "Unreported exception caught in RadialManager::handlePetCall\n";
+		pet->unlock();
+	}
+}
+
+void RadialManager::handlePetStore(SceneObject* obj) {
+	if (obj->isIntangible()) {
+
+		SceneObject* pet = ((IntangibleObject*)obj)->getWorldObject();
+
+		if (pet == NULL)
+			return;
+
+		if (!pet->isNonPlayerCreature())
+			return;
+
+
+		try {
+			pet->wlock();
+			((CreaturePet*)pet)->store();
+			pet->unlock();
+		} catch (...) {
+			System::out << "Unreported exception caught in RadialManager::handlePetStore\n";
+			pet->unlock();
+		}
+
+		return;
+	}
+	if (!obj->isNonPlayerCreature())
+		return;
+	if (!((CreatureObject*)obj)->isPet())
+		return;
+	try {
+		obj->wlock();
+		((CreaturePet*)obj)->store();
+		obj->unlock();
+	} catch (...) {
+		System::out << "Unreported exception caught in RadialManager::handleVehicleStore(Player* player, SceneObject* obj)\n";
+		obj->unlock();
+	}
+}
+
+void RadialManager::handlePetTraining(SceneObject* obj,int command) {
+	if (!obj->isNonPlayerCreature())
+			return;
+
+		if (!((CreatureObject*)obj)->isPet())
+			return;
+
+		try {
+			obj->wlock();
+			((CreaturePet*)obj)->initTrainingState(command);
+			obj->unlock();
+		} catch (...) {
+			System::out << "Unreported exception caught in RadialManager::handleVehicleStore(Player* player, SceneObject* obj)\n";
+			obj->unlock();
+		}
+}
+

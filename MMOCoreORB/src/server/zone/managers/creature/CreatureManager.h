@@ -27,6 +27,8 @@ class RecruiterCreature;
 
 class ShuttleCreature;
 
+class CreaturePet;
+
 class CreatureManager : public DistributedObjectStub {
 public:
 	CreatureManager(Zone* zone, ZoneProcessServerImplementation* processor);
@@ -78,6 +80,10 @@ public:
 	void setGlobalNPCRegen(float value);
 
 	float getGlobalNPCRegen();
+
+	void insertCreaturePet(CreaturePet* pet, bool doLock = true);
+
+	void setPetDefaultAttributes(CreaturePet* creature, bool doLock = true);
 
 protected:
 	CreatureManager(DummyConstructorParameter* param);
@@ -142,6 +148,10 @@ public:
 	void setGlobalNPCRegen(float value);
 
 	float getGlobalNPCRegen();
+
+	void insertCreaturePet(CreaturePet* pet, bool doLock);
+
+	void setPetDefaultAttributes(CreaturePet* creature, bool doLock);
 
 protected:
 	String _param0_verifyCreatureSpawn__String_;

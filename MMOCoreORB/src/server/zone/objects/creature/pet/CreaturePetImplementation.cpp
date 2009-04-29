@@ -43,13 +43,1363 @@ which carries forward this exception.
 */
 
 #include "CreaturePetImplementation.h"
+#include "CreaturePet.h"
 
 #include "../Creature.h"
 #include "../CreatureImplementation.h"
+#include "../CreatureObject.h"
+#include "../CreatureObjectImplementation.h"
 
 #include "../../player/Player.h"
 
-CreaturePetImplementation::CreaturePetImplementation(CreatureObject* ownerCreature, const String& name, const String& stf, uint32 itnocrc, uint32 objCRC, uint64 oid) {
-	owner = ownerCreature;
-	ownerID = ownerCreature->getObjectID();
+#include "../../intangible/IntangibleObject.h"
+#include "../../intangible/IntangibleObjectImplementation.h"
+
+#include "../../../packets.h"
+#include "../../../packets/creature/CreatureObjectMessage3.h"
+
+#include "../../../ZoneClientSession.h"
+#include "../../tangible/Datapad.h"
+
+#include "../../../managers/creature/CreatureManagerImplementation.h"
+#include "../../../ZoneProcessServerImplementation.h"
+
+#include "events/CreaturePetIncapacitationRecoveryEvent.h"
+#include "events/CreaturePetGrowEvent.h"
+
+#include "../../../objects.h"
+
+CreaturePetImplementation::CreaturePetImplementation(Player* owner, uint64 oid) : CreaturePetServant(oid) ,VehicleObject(owner){
+	creatureLinkID = owner->getObjectID();
+
+	setLinkedCreature(owner);
+
+	objectCRC  = 0;
+
+	objectType = NONPLAYERCREATURE;
+	setCreatureType("PET");
+	StringBuffer loggingname;
+	loggingname << "Pet = 0x" << oid;
+	setLoggingName(loggingname.toString());
+
+	pvpStatusBitmask = 0x01;
+	setHeight(growth);
+	setLastGrowth(lastGrowth.getTime());
+
+	setInternalNPCDamageModifier(1.0f);
+	init();
+}
+
+CreaturePetImplementation::~CreaturePetImplementation() {
+
+	delete itemAttributes;
+
+	itemAttributes = NULL;
+
+	delete commandHelper;
+
+	commandHelper = NULL;
+}
+
+void CreaturePetImplementation::init() {
+	commandHelper = new PetCommandHelper();
+	commandToTrain = -1;
+	setZone(getLinkedCreature()->getZone());
+	setZoneProcessServer(getLinkedCreature()->getZoneProcessServer());
+
+	inventory = NULL;
+
+	lootContainer = NULL;
+
+}
+
+void CreaturePetImplementation::init(Creature* creature, float growth) {
+	setCreatureType("PET");
+
+	setGrowth(growth);
+	setHeight(growth);
+
+	// init species
+	setObjectCRC(creature->getObjectCRC());
+	//setObjectCRC(0x6AC9AA60);
+	setStfFile(creature->getStfFile());
+	setStfName(creature->getStfName());
+	setCustomName(creature->getCustomName());
+	setPetType(CHPET);
+
+	//copy ham & bar stat
+	setBaseHealth(creature->getBaseHealth());
+	setHealthMax((int) ((float)getBaseHealth() * growth));
+	setHealth((int) ((float)getBaseHealth() * growth));
+
+	setBaseStrength(creature->getBaseStrength());
+	setStrengthMax(getBaseStrength());
+	setStrength(getBaseStrength());
+
+	setBaseConstitution(creature->getBaseConstitution());
+	setConstitutionMax(getBaseConstitution());
+	setConstitution(getBaseConstitution());
+
+	setBaseAction(creature->getBaseAction());
+	setActionMax((int) ((float)getBaseAction() * growth));
+	setAction((int) ((float)getBaseAction() * growth));
+
+	setBaseQuickness(creature->getBaseQuickness());
+	setQuicknessMax(getBaseQuickness());
+	setQuickness(getBaseQuickness());
+
+	setBaseStamina(creature->getBaseStamina());
+	setStaminaMax(getBaseStamina());
+	setStamina(getBaseStamina());
+
+	setBaseMind(creature->getBaseMind());
+	setMindMax((int) ((float)getBaseMind() * growth));
+	setMind((int) ((float)getBaseMind() * growth));
+
+	setBaseFocus(creature->getBaseFocus());
+	setFocusMax(getBaseFocus());
+	setFocus(getBaseFocus());
+
+	setBaseWillpower(creature->getBaseWillpower());
+	setWillpowerMax(getBaseWillpower());
+	setWillpower(getBaseWillpower());
+
+	// copy armor
+	setArmor(creature->getArmor());
+	setKinetic(creature->getArmorResist(1));
+	setEnergy(creature->getArmorResist(2));
+	setElectricity(creature->getArmorResist(3));
+	setStun(creature->getArmorResist(4));
+	setBlast(creature->getArmorResist(5));
+	setHeat(creature->getArmorResist(6));
+	setCold(creature->getArmorResist(7));
+	setAcid(creature->getArmorResist(8));
+	setLightSaber(creature->getArmorResist(9));
+
+	//copy weapon
+	/*setWeapon(creature->getWeapon());
+	setCreatureWeapon(creature->getCreatureWeapon());
+	setCreatureWeaponName(creature->getCreatureWeaponName());
+	setCreatureWeaponTemp(creature->getCreatureWeaponTemp());
+	setCreatureWeaponClass(creature->getCreatureWeaponClass());
+	setCreatureWeaponEquipped(creature->getCreatureWeaponEquipped());
+	setCreatureWeaponAttackSpeed(creature->getCreatureWeaponAttackSpeed());
+	setCreatureWeaponDamageType(creature->getCreatureWeaponDamageType());
+	setCreatureWeaponArmorPiercing(creature->getCreatureWeaponArmorPiercing());
+*/
+	CreatureManager* creatureManager = zone->getCreatureManager();
+	creatureManager->setPetDefaultAttributes(_this,false);
+
+	loadItems();
+
+	SkillManager* sManager = server->getSkillManager();
+	Skill* skill;
+
+	for (int i = 0; i < creature->getNumberOfSkills() ;i++) {
+		skill = sManager->getSkill(creature->getSkill(i));
+		if (skill != NULL) {
+			addSkill(skill);
+		}
+	}
+
+	createItemAttributes();
+}
+
+void CreaturePetImplementation::createItemAttributes() {
+	String attr;
+
+	//init species
+	attr = "objectCRC";
+	itemAttributes->setIntAttribute(attr, getObjectCRC());
+
+	attr = "petType";
+	itemAttributes->setIntAttribute(attr, petType);
+
+	attr = "stfFile";
+	itemAttributes->setStringAttribute(attr, getStfFile());
+
+	attr = "stfName";
+	itemAttributes->setStringAttribute(attr, getStfName());
+
+	attr = "health";
+	itemAttributes->setIntAttribute(attr, getBaseHealth());
+	attr = "strength";
+	itemAttributes->setIntAttribute(attr, getBaseStrength());
+	attr = "constitution";
+	itemAttributes->setIntAttribute(attr, getBaseConstitution());
+	attr = "action";
+	itemAttributes->setIntAttribute(attr, getBaseAction());
+	attr = "quickness";
+	itemAttributes->setIntAttribute(attr, getBaseQuickness());
+	attr = "stamina";
+	itemAttributes->setIntAttribute(attr, getBaseStamina());
+	attr = "mind";
+	itemAttributes->setIntAttribute(attr, getBaseMind());
+	attr = "focus";
+	itemAttributes->setIntAttribute(attr, getBaseFocus());
+	attr = "willpower";
+	itemAttributes->setIntAttribute(attr, getBaseWillpower());
+
+	/*attr = "weapon";
+	itemAttributes->setStringAttribute(attr, getCreatureWeapon());
+	attr = "weaponName";
+	itemAttributes->setStringAttribute(attr, getCreatureWeaponName());
+	attr = "weaponTemp";
+	itemAttributes->setStringAttribute(attr, getCreatureWeaponTemp());
+	attr = "weaponClass";
+	itemAttributes->setStringAttribute(attr, getCreatureWeaponClass());
+	attr = "weaponEquipped";
+	itemAttributes->setIntAttribute(attr, getCreatureWeaponEquipped());
+	attr = "weaponMinDamage";
+	itemAttributes->setIntAttribute(attr, getCreatureWeaponMinDamage());
+	attr = "weaponMaxDamae";
+	itemAttributes->setIntAttribute(attr, getCreatureWeaponMaxDamage());
+	attr = "weaponSpeed";
+	itemAttributes->setFloatAttribute(attr, getCreatureWeaponAttackSpeed());
+	attr = "weaponDamageType";
+	itemAttributes->setStringAttribute(attr, getCreatureWeaponDamageType());
+	attr = "weaponAP";
+	itemAttributes->setStringAttribute(attr, getCreatureWeaponArmorPiercing());
+*/
+	attr = "numSkill";
+	itemAttributes->setIntAttribute(attr, getNumberOfSkills());
+	for (int i = 0 ;  i < getNumberOfSkills() ; i++) {
+		StringBuffer skillAttr;
+		skillAttr << "skill_" << i;
+		itemAttributes->setStringAttribute(skillAttr.toString(), getSkill(i));
+	}
+
+	for (int i = 0 ;  i < 22 ; i++) {
+		StringBuffer customCommand;
+		customCommand << "command_" << i;
+		itemAttributes->setStringAttribute(customCommand.toString(), commandHelper->getBaseCommand(i));
+	}
+
+}
+
+void CreaturePetImplementation::parseItemAttributes() {
+	String attr;
+
+	attr = "growth";
+	setGrowth(itemAttributes->getFloatAttribute(attr));
+	setHeight(growth);
+
+	attr = "lastGrowth";
+	setLastGrowth(itemAttributes->getUnsignedLongAttribute(attr));
+
+	attr = "objectCRC";
+	setObjectCRC(itemAttributes->getIntAttribute(attr));
+
+	attr = "petType";
+	setPetType(itemAttributes->getIntAttribute(attr));
+
+	//init species
+	attr = "stfFile";
+	setStfFile(itemAttributes->getStringAttribute(attr));
+
+	attr = "stfName";
+	setStfName(itemAttributes->getStringAttribute(attr));
+
+	attr = "petType";
+	setPetType((uint8)itemAttributes->getIntAttribute(attr));
+
+	attr = "maxLevel";
+	setMaxLevel(itemAttributes->getIntAttribute(attr));
+
+	attr = "health";
+	int health = itemAttributes->getIntAttribute(attr);
+	setBaseHealth(health);
+	setHealthMax((int) ((float)health * growth));
+	setHealth((int) ((float)health * growth));
+
+	attr = "strength";
+	int strength = itemAttributes->getIntAttribute(attr);
+	setBaseStrength(strength);
+	setStrengthMax(strength);
+	setStrength(strength);
+
+	attr = "constitution";
+	int constitution = itemAttributes->getIntAttribute(attr);
+	setBaseConstitution(constitution);
+	setConstitutionMax(constitution);
+	setConstitution(constitution);
+
+	attr = "action";
+	int action = itemAttributes->getIntAttribute(attr);
+	setBaseAction(action);
+	setActionMax((int) ((float)action * growth));
+	setAction((int) ((float)action * growth));
+
+	attr = "quickness";
+	int quickness = itemAttributes->getIntAttribute(attr);
+	setBaseQuickness(quickness);
+	setQuicknessMax(quickness);
+	setQuickness(quickness);
+
+	attr = "stamina";
+	int stamina = itemAttributes->getIntAttribute(attr);
+	setBaseStamina(stamina);
+	setStaminaMax(stamina);
+	setStamina(stamina);
+
+	attr = "mind";
+	int mind = itemAttributes->getIntAttribute(attr);
+	setBaseMind(mind);
+	setMindMax((int) ((float)mind * growth));
+	setMind((int) ((float)mind * growth));
+
+	attr = "focus";
+	int focus = itemAttributes->getIntAttribute(attr);
+	setBaseFocus(focus);
+	setFocusMax(focus);
+	setFocus(focus);
+
+	attr = "willpower";
+	int willpower = itemAttributes->getIntAttribute(attr);
+	setBaseWillpower(willpower);
+	setWillpowerMax(willpower);
+	setWillpower(willpower);
+
+	/*attr = "weapon";
+	setCreatureWeapon(itemAttributes->getStringAttribute(attr));
+	attr = "weaponName";
+	setCreatureWeaponName(itemAttributes->getStringAttribute(attr));
+	attr = "weaponTemp";
+	setCreatureWeaponTemp(itemAttributes->getStringAttribute(attr));
+	attr = "weaponClass";
+	setCreatureWeaponClass(itemAttributes->getStringAttribute(attr));
+	attr = "weaponEquipped";
+	setCreatureWeaponEquipped(itemAttributes->getIntAttribute(attr));
+	attr = "weaponMinDamage";
+	setCreatureWeaponMinDamage(itemAttributes->getIntAttribute(attr));
+	attr = "weaponMaxDamae";
+	setCreatureWeaponMaxDamage(itemAttributes->getIntAttribute(attr));
+	attr = "weaponSpeed";
+	setCreatureWeaponAttackSpeed(itemAttributes->getFloatAttribute(attr));
+	attr = "weaponDamageType";
+	setCreatureWeaponDamageType(itemAttributes->getStringAttribute(attr));
+	attr = "weaponAP";
+	setCreatureWeaponArmorPiercing(itemAttributes->getStringAttribute(attr));
+*/
+	CreatureManager* creatureManager = zone->getCreatureManager();
+	creatureManager->setPetDefaultAttributes(_this,false);
+
+	loadItems();
+
+	SkillManager* sManager = server->getSkillManager();
+	Skill* skill;
+	attr = "numSkill";
+	String skillName;
+
+	int skillNumber = itemAttributes->getIntAttribute(attr);
+	for (int i = 0 ;  i < skillNumber ; i++) {
+		StringBuffer skillAttr;
+		skillAttr << "skill_" << i;
+		skillName = itemAttributes->getStringAttribute(skillAttr.toString());
+		skill = sManager->getSkill(skillName);
+		if (skill != NULL) {
+			addSkill(skill);
+		}
+	}
+
+	String customCommand;
+	for (int i = 0 ;  i < 22 ; i++) {
+		StringBuffer commandAttr;
+		commandAttr << "command_" << i;
+		customCommand = itemAttributes->getStringAttribute(commandAttr.toString());
+		commandHelper->trainCommand(i,customCommand);
+	}
+}
+
+void CreaturePetImplementation::loadItems() {
+	if (inventory == NULL)
+		inventory = new Inventory(_this);
+
+	lootContainer = NULL;
+
+	Weapon* weapon = NULL;
+
+	String wpName = getCreatureWeaponName();
+	if (wpName != "") {
+		try {
+			String wpObject = getCreatureWeapon();
+			String wpName = getCreatureWeaponName();
+			String wpTemp = getCreatureWeaponTemp();
+			bool wpEq = (bool) getCreatureWeaponEquipped();
+			int wpMinDamage = (int)((float) getCreatureWeaponMinDamage() * growth);
+			int wpMaxDamage = (int)((float) getCreatureWeaponMaxDamage() * growth);
+			float wpAttackSpeed = getCreatureWeaponAttackSpeed();
+			String wpDamType = getCreatureWeaponDamageType();
+			String wpArmorPiercing = getCreatureWeaponArmorPiercing();
+			String wpClass = getCreatureWeaponClass();
+
+			if (wpClass == "CarbineRangedWeapon")
+				weapon = new CarbineRangedWeapon(_this, wpObject, UnicodeString(
+						wpName), wpTemp, wpEq);
+			else if (wpClass == "RifleRangedWeapon")
+				weapon
+						= new RifleRangedWeapon(_this, wpObject, UnicodeString(wpName), wpTemp, wpEq);
+			else if (wpClass == "PistolRangedWeapon")
+				weapon
+						= new PistolRangedWeapon(_this, wpObject, UnicodeString(
+								wpName), wpTemp, wpEq);
+			else if (wpClass == "UnarmedMeleeWeapon")
+				weapon
+						= new UnarmedMeleeWeapon(_this, wpObject, UnicodeString(
+								wpName), wpTemp, wpEq);
+			else if (wpClass == "OneHandedMeleeWeapon")
+				weapon = new OneHandedMeleeWeapon(_this, wpObject, UnicodeString(
+						wpName), wpTemp, wpEq);
+			else if (wpClass == "TwoHandedMeleeWeapon")
+				weapon = new TwoHandedMeleeWeapon(_this, wpObject, UnicodeString(
+						wpName), wpTemp, wpEq);
+			else if (wpClass == "PolearmMeleeWeapon")
+				weapon
+						= new PolearmMeleeWeapon(_this, wpObject, UnicodeString(
+								wpName), wpTemp, wpEq);
+			else if (wpClass == "OneHandedJediWeapon")
+				weapon = new OneHandedJediWeapon(_this, wpObject, UnicodeString(
+						wpName), wpTemp, wpEq);
+			else if (wpClass == "TwoHandedJediWeapon")
+				weapon = new TwoHandedJediWeapon(_this, wpObject, UnicodeString(
+						wpName), wpTemp, wpEq);
+			else if (wpClass == "PolearmJediWeapon")
+				weapon
+						= new PolearmJediWeapon(_this, wpObject, UnicodeString(wpName), wpTemp, wpEq);
+			else if (wpClass == "SpecialHeavyRangedWeapon")
+				weapon = new SpecialHeavyRangedWeapon(_this, wpObject, UnicodeString(
+						wpName), wpTemp, wpEq);
+			else if (wpClass == "HeavyRangedWeapon")
+				weapon
+						= new HeavyRangedWeapon(_this, wpObject, UnicodeString(wpName), wpTemp, wpEq);
+
+			//DAMAGE TYPE
+			if (wpDamType == "ENERGY")
+				weapon->setDamageType(WeaponImplementation::ENERGY);
+			else if (wpDamType == "KINECTIC")
+				weapon->setDamageType(WeaponImplementation::KINETIC);
+			else if (wpDamType == "ELECTRICITY")
+				weapon->setDamageType(WeaponImplementation::ELECTRICITY);
+			else if (wpDamType == "STUN")
+				weapon->setDamageType(WeaponImplementation::STUN);
+			else if (wpDamType == "BLAST")
+				weapon->setDamageType(WeaponImplementation::BLAST);
+			else if (wpDamType == "HEAT")
+				weapon->setDamageType(WeaponImplementation::HEAT);
+			else if (wpDamType == "COLD")
+				weapon->setDamageType(WeaponImplementation::COLD);
+			else if (wpDamType == "ACID")
+				weapon->setDamageType(WeaponImplementation::ACID);
+			else if (wpDamType == "LIGHTSABER")
+				weapon->setDamageType(WeaponImplementation::LIGHTSABER);
+
+			//ARMOR PIERCING
+			if (wpArmorPiercing == "NONE")
+				weapon->setArmorPiercing(WeaponImplementation::NONE);
+			else if (wpArmorPiercing == "LIGHT")
+				weapon->setArmorPiercing(WeaponImplementation::LIGHT);
+			else if (wpArmorPiercing == "MEDIUM")
+				weapon->setArmorPiercing(WeaponImplementation::MEDIUM);
+			else if (wpArmorPiercing == "HEAVY")
+				weapon->setArmorPiercing(WeaponImplementation::HEAVY);
+
+			//MODFIERS
+			weapon->setMinDamage(wpMinDamage);
+			weapon->setMaxDamage(wpMaxDamage);
+			weapon->setAttackSpeed(wpAttackSpeed);
+			weapon->setEquipped(true);
+
+			addInventoryItem(weapon);
+			setWeapon(weapon);
+		} catch (...) {
+			//ouch..something in the lua isnt right
+			System::out
+					<< "exception CreaturePetImplementation::loadItems()  -  Weaponloading for creature "
+					<< objectID << "\n";
+			return;
+		}
+	} else
+		return;
+}
+
+void CreaturePetImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+	String skillBox = "outdoors_creaturehandler_novice";
+	if (!player->hasSkillBox(skillBox)) {
+		omr->finish();
+
+		player->sendMessage(omr);
+		return;
+	}
+	if (player == getLinkedCreature()) {
+		omr->addRadialParent(59, 3, "");
+
+		RadialMenuParent* training = new RadialMenuParent(141, 1, "Training");
+		training->addRadialMenuItem(146, 3, "Attack");
+		training->addRadialMenuItem(142, 3, "Follow");
+		//training->addRadialMenuItem(257, 3, "Store");
+
+		String skillBox = "outdoors_creaturehandler_taming_03";
+		if (player->hasSkillBox(skillBox))
+			training->addRadialMenuItem(161, 3, "Special Attack 1");
+
+		skillBox = "outdoors_creaturehandler_taming_04";
+		if (player->hasSkillBox(skillBox))
+			training->addRadialMenuItem(162, 3, "Special Attack 2");
+
+		skillBox = "outdoors_creaturehandler_training_01";
+		if (player->hasSkillBox(skillBox))
+			training->addRadialMenuItem(143, 3, "Stay");
+
+		skillBox = "outdoors_creaturehandler_training_02";
+		if (player->hasSkillBox(skillBox))
+			training->addRadialMenuItem(144, 3, "Guard");
+
+		skillBox = "outdoors_creaturehandler_training_03";
+		if (player->hasSkillBox(skillBox)) {
+			training->addRadialMenuItem(147, 3, "Start Patrol");
+			training->addRadialMenuItem(148, 3, "Add Patrol Point");
+			training->addRadialMenuItem(149, 3, "Clear Patrol Point");
+		}
+		/*skillBox = " outdoors_creaturehandler_training_04";
+		if (getLinkedCreature()->hasSkillBox(skillBox)) {
+			training->addRadialMenuItem(263, 3, "Formation 1");
+		}*/
+		skillBox = "outdoors_creaturehandler_healing_01";
+		if (player->hasSkillBox(skillBox))
+			training->addRadialMenuItem(154, 3, "Trick 1");
+
+		skillBox = "outdoors_creaturehandler_healing_02";
+		if (player->hasSkillBox(skillBox))
+			training->addRadialMenuItem(156, 3, "Embolden");
+
+		skillBox = "outdoors_creaturehandler_healing_03";
+		if (player->hasSkillBox(skillBox))
+			training->addRadialMenuItem(155, 3, "Trick 2");
+
+		skillBox = "outdoors_creaturehandler_healing_04";
+		if (player->hasSkillBox(skillBox))
+			training->addRadialMenuItem(157, 3, "Enrage");
+
+		skillBox = "outdoors_creaturehandler_support_01";
+		if (player->hasSkillBox(skillBox))
+			training->addRadialMenuItem(158, 3, "Group");
+
+		//skillBox = "outdoors_creaturehandler_support_02";
+		//if (getLinkedCreature()->hasSkillBox(skillBox))
+		//	training->addRadialMenuItem(269, 3, "Follow Other");
+
+		skillBox = "outdoors_creaturehandler_support_03";
+		if (player->hasSkillBox(skillBox))
+			training->addRadialMenuItem(145, 3, "Friend");
+
+		skillBox = "outdoors_creaturehandler_master";
+		if (player->hasSkillBox(skillBox)){
+			training->addRadialMenuItem(163, 3, "Ranged Attack");
+			training->addRadialMenuItem(153, 3, "Release");
+		}
+		omr->addRadialParent(training);
+	}
+
+	omr->finish();
+
+	player->sendMessage(omr);
+}
+
+
+void CreaturePetImplementation::createDataPad() {
+	 Datapad* datapad = getLinkedCreature()->getDatapad();
+
+	 uint32 objCRC = 0x2320411A;
+
+	 if(stfName.indexOf("angler") != -1)
+	 	objCRC = 0x2320411A;
+	 else if(stfName.indexOf("bageraset") != -1)
+	 	objCRC = 0xE3EAD76B;
+	 else if(stfName.indexOf("bantha") != -1)
+	 	objCRC = 0xFD13ABAE;
+	 else if(stfName.indexOf("bark_mite") != -1)
+	 	objCRC = 0x92A57735;
+	 else if(stfName.indexOf("bearded_jax") != -1)
+	 	objCRC = 0x7D7C54B5;
+	 else if(stfName.indexOf("blurrg") != -1)
+	 	objCRC = 0xAD494074;
+	 else if(stfName.indexOf("boar_wolf") != -1)
+	 	objCRC = 0xEC271F10;
+	 else if(stfName.indexOf("bocatt") != -1)
+	 	objCRC = 0x572A942B;
+	 else if(stfName.indexOf("bol") != -1)
+	 	objCRC = 0xC89F0554;
+	 else if(stfName.indexOf("bolle_bol") != -1)
+	 	objCRC = 0xCE8E6559;
+	 else if(stfName.indexOf("bolma") != -1)
+	 	objCRC = 0x7DE2DE89;
+	 else if(stfName.indexOf("bordok") != -1)
+	 	objCRC = 0xC19AEE44;
+	 else if(stfName.indexOf("borgle") != -1)
+	 	objCRC = 0xE11D43D0;
+	 else if(stfName.indexOf("brackaset") != -1)
+	 	objCRC = 0x37926FEA;
+	 else if(stfName.indexOf("capper_spineflap") != -1)
+	 	objCRC = 0x51ABA1D;
+	 else if(stfName.indexOf("carrion_spat") != -1)
+	 	objCRC = 0x6FD1A2BC;
+	 else if(stfName.indexOf("choku") != -1)
+	 	objCRC = 0x5F96C70C;
+	 else if(stfName.indexOf("chuba") != -1)
+	 	objCRC = 0x93BF3850;
+	 else if(stfName.indexOf("condor_dragon") != -1)
+	 	objCRC = 0xF7D40042;
+	 else if(stfName.indexOf("corellian_butterfly") != -1)
+	 	objCRC = 0x588A342F;
+	 else if(stfName.indexOf("corellian_sand_panther") != -1)
+	 	objCRC = 0xF9D744D;
+	 else if(stfName.indexOf("corellian_slice_hound") != -1)
+	 	objCRC = 0x25F22E01;
+	 else if(stfName.indexOf("cu_pa") != -1)
+	 	objCRC = 0x84DC2FBC;
+	 else if(stfName.indexOf("dalyrake") != -1)
+	 	objCRC = 0xDECFB92E;
+	 else if(stfName.indexOf("dewback") != -1)
+	 	objCRC = 0xA3A3D20F;
+	 else if(stfName.indexOf("dune_lizard") != -1)
+	 	objCRC = 0x8DB8EE2A;
+	 else if(stfName.indexOf("durni") != -1)
+	 	objCRC = 0x2E7286AC;
+	 else if(stfName.indexOf("dwarf_nuna") != -1)
+	 	objCRC = 0x8AB2BE02;
+	 else if(stfName.indexOf("eopie") != -1)
+	 	objCRC = 0xBBC9E706;
+	 else if(stfName.indexOf("falumpaset") != -1)
+	 	objCRC = 0xA01F4C25;
+	 else if(stfName.indexOf("fambaa") != -1)
+	 	objCRC = 0xC7E995C3;
+	 else if(stfName.indexOf("fanned_rawl") != -1)
+	 	objCRC = 0x6EAEDBEF;
+	 else if(stfName.indexOf("flewt") != -1)
+	 	objCRC = 0xE2C3907A;
+	 else if(stfName.indexOf("flit") != -1)
+	 	objCRC = 0xAE42BA5D;
+	 else if(stfName.indexOf("fynock") != -1)
+	 	objCRC = 0x88405673;
+	 else if(stfName.indexOf("gackle_bat") != -1)
+	 	objCRC = 0xAF83294;
+	 else if(stfName.indexOf("gaping_spider") != -1)
+	 	objCRC = 0xC6C7012C;
+	 else if(stfName.indexOf("gnort") != -1)
+	 	objCRC = 0xAA6167F8;
+	 else if(stfName.indexOf("graul") != -1)
+	 	objCRC = 0x229ED8CB;
+	 else if(stfName.indexOf("gronda") != -1)
+	 	objCRC = 0xB797F66D;
+	 else if(stfName.indexOf("gualama") != -1)
+	 	objCRC = 0x3838F3CD;
+	 else if(stfName.indexOf("gubbur") != -1)
+	 	objCRC = 0x9F37FD4D;
+	 else if(stfName.indexOf("guf_drolg") != -1)
+	 	objCRC = 0x8B232BEC;
+	 else if(stfName.indexOf("gulginaw") != -1)
+	 	objCRC = 0x356D1175;
+	 else if(stfName.indexOf("gurk") != -1)
+	 	objCRC = 0xDDC9651B;
+	 else if(stfName.indexOf("gurnaset") != -1)
+	 	objCRC = 0xD5798BE;
+	 else if(stfName.indexOf("gurreck") != -1)
+	 	objCRC = 0x7FE3572B;
+	 else if(stfName.indexOf("hanadak") != -1)
+	 	objCRC = 0x2994A101;
+	 else if(stfName.indexOf("hermit_spider") != -1)
+	 	objCRC = 0x8D18AD37;
+	 else if(stfName.indexOf("horned_krevol") != -1)
+	 	objCRC = 0x8ED4E4A0;
+	 else if(stfName.indexOf("horned_rasp") != -1)
+	 	objCRC = 0xD0A3D4C2;
+	 else if(stfName.indexOf("huf_dun") != -1)
+	 	objCRC = 0xB8278BCA;
+	 else if(stfName.indexOf("huurton") != -1)
+	 	objCRC = 0x7563BBCE;
+	 else if(stfName.indexOf("ikopi") != -1)
+	 	objCRC = 0x37D4470D;
+	 else if(stfName.indexOf("kaadu") != -1)
+	 	objCRC = 0x6AC9AA60;
+	 else if(stfName.indexOf("kai_tok") != -1)
+	 	objCRC = 0xCDAF55E3;
+	 else if(stfName.indexOf("kima") != -1)
+	 	objCRC = 0xBF41F7F4;
+	 else if(stfName.indexOf("kimogila") != -1)
+	 	objCRC = 0xEFBA1F80;
+	 else if(stfName.indexOf("kliknik") != -1)
+	 	objCRC = 0xB10F7587;
+	 else if(stfName.indexOf("krahbu") != -1)
+	 	objCRC = 0x7A799781;
+	 else if(stfName.indexOf("kusak") != -1)
+	 	objCRC = 0x67B50369;
+	 else if(stfName.indexOf("kwi") != -1)
+	 	objCRC = 0xEDD256C4;
+	 else if(stfName.indexOf("langlatch") != -1)
+	 	objCRC = 0xA2D6F35E;
+	 else if(stfName.indexOf("lantern_bird") != -1)
+	 	objCRC = 0x210D9CE7;
+	 else if(stfName.indexOf("malkloc") != -1)
+	 	objCRC = 0x2CF472CC;
+	 else if(stfName.indexOf("mamien") != -1)
+	 	objCRC = 0xB6D9A48D;
+	 else if(stfName.indexOf("mawgax") != -1)
+	 	objCRC = 0xA369BB;
+	 else if(stfName.indexOf("merek") != -1)
+	 	objCRC = 0x90ECC165;
+	 else if(stfName.indexOf("mott") != -1)
+	 	objCRC = 0x2409965B;
+	 else if(stfName.indexOf("murra") != -1)
+	 	objCRC = 0x20B2176F;
+	 else if(stfName.indexOf("mynock") != -1)
+	 	objCRC = 0x76644856;
+	 else if(stfName.indexOf("narglatch") != -1)
+	 	objCRC = 0xE7C6E524;
+	 else if(stfName.indexOf("nuna") != -1)
+	 	objCRC = 0xB849F0BD;
+	 else if(stfName.indexOf("peko_peko") != -1)
+	 	objCRC = 0x176373C4;
+	 else if(stfName.indexOf("perlek") != -1)
+	 	objCRC = 0x6DA3FF72;
+	 else if(stfName.indexOf("piket") != -1)
+	 	objCRC = 0xD3D60280;
+	 else if(stfName.indexOf("plumed_rasp") != -1)
+	 	objCRC = 0xB14F236F;
+	 else if(stfName.indexOf("pugoriss") != -1)
+	 	objCRC = 0xEE77825B;
+	 else if(stfName.indexOf("purbole") != -1)
+	 	objCRC = 0xED5AE191;
+	 else if(stfName.indexOf("quenker") != -1)
+	 	objCRC = 0x87295687;
+	 else if(stfName.indexOf("rancor") != -1)
+	 	objCRC = 0x521CE1F7;
+	 else if(stfName.indexOf("reptilian_flier") != -1)
+	 	objCRC = 0x78EDD589;
+	 else if(stfName.indexOf("roba") != -1)
+	 	objCRC = 0x7D3625A0;
+	 else if(stfName.indexOf("rock_mite") != -1)
+	 	objCRC = 0x4FA66928;
+	 else if(stfName.indexOf("ronto") != -1)
+	 	objCRC = 0x2F61F7FC;
+	 else if(stfName.indexOf("salt_mynock") != -1)
+	 	objCRC = 0x7C50FD73;
+	 else if(stfName.indexOf("sharnaff") != -1)
+	 	objCRC = 0x104861B3;
+	 else if(stfName.indexOf("shaupaut") != -1)
+	 	objCRC = 0x80AFDEF2;
+	 else if(stfName.indexOf("shear_mite") != -1)
+	 	objCRC = 0xB0D73676;
+	 else if(stfName.indexOf("skreeg") != -1)
+	 	objCRC = 0xE509E783;
+	 else if(stfName.indexOf("snorbal") != -1)
+	 	objCRC = 0xE88C745E;
+	 else if(stfName.indexOf("spined_puc") != -1)
+	 	objCRC = 0xFDA719A3;
+	 else if(stfName.indexOf("spined_snake") != -1)
+	 	objCRC = 0x7DF683A2;
+	 else if(stfName.indexOf("squall") != -1)
+	 	objCRC = 0x2A8CD391;
+	 else if(stfName.indexOf("squill") != -1)
+	 	objCRC = 0xF9AFBCE4;
+	 else if(stfName.indexOf("stintaril") != -1)
+	 	objCRC = 0x2C95DE68;
+	 else if(stfName.indexOf("swirl_prong") != -1)
+	 	objCRC = 0xAB2B80F9;
+	 else if(stfName.indexOf("tanc_mite") != -1)
+	 	objCRC = 0xC737E13A;
+	 else if(stfName.indexOf("thune") != -1)
+	 	objCRC = 0x6E8B2128;
+	 else if(stfName.indexOf("torton") != -1)
+	 	objCRC = 0xACD529C3;
+	 else if(stfName.indexOf("tusk_cat") != -1)
+	 	objCRC = 0x88830C1C;
+	 else if(stfName.indexOf("tybis") != -1)
+	 	objCRC = 0xE22507FC;
+	 else if(stfName.indexOf("veermok") != -1)
+	 	objCRC = 0xC4F1442A;
+	 else if(stfName.indexOf("verne") != -1)
+	 	objCRC = 0x795D4B5F;
+	 else if(stfName.indexOf("vesp") != -1)
+	 	objCRC = 0x3812EB2;
+	 else if(stfName.indexOf("vir_vur") != -1)
+	 	objCRC = 0x32552948;
+	 else if(stfName.indexOf("voritor_lizard") != -1)
+	 	objCRC = 0x5E178DBC;
+	 else if(stfName.indexOf("vynock") != -1)
+	 	objCRC = 0xE438CCBF;
+	 else if(stfName.indexOf("womp_rat") != -1)
+	 	objCRC = 0x10522A37;
+	 else if(stfName.indexOf("woolamander") != -1)
+	 	objCRC = 0xBDB7AF8A;
+	 else if(stfName.indexOf("worrt") != -1)
+	 	objCRC = 0x78A55603;
+	 else if(stfName.indexOf("zucca_boar") != -1)
+	 	objCRC = 0x2F9DB65;
+
+	 String cName = customName.toString();
+
+	 setDatapadItem(new IntangibleObject(getLinkedCreature()->getNewItemID(), cName, stfFile,
+			 stfName, objCRC, (SceneObject*) datapad));
+
+	try {
+		getDatapadItem()->setWorldObject(_this);
+		getDatapadItem()->setParent(datapad);
+
+		getLinkedCreature()->addDatapadItem(getDatapadItem());
+
+		getDatapadItem()->sendTo(getLinkedCreature(), true);
+
+	} catch(...) {
+		System::out << "Unreported exception caught in CreaturePetImplementation::init\n";
+		return;
+	}
+}
+
+void CreaturePetImplementation::call() {
+	if (!canCall())
+		return;
+
+	if (isInQuadTree())
+		return;
+
+	try {
+		parent = NULL;
+		getLinkedCreature()->wlock(_this);
+
+		if (getLinkedCreature()->getParent() != NULL) {
+			getLinkedCreature()->unlock();
+			return;
+		}
+
+		if (getLinkedCreature()->isInCombat()) {
+			getLinkedCreature()->unlock();
+			return;
+		}
+		initializePosition(getLinkedCreature()->getPositionX(), getLinkedCreature()->getPositionZ(), getLinkedCreature()->getPositionY());
+		zone = getLinkedCreature()->getZone();
+
+		if (zone == NULL) {
+			getLinkedCreature()->unlock();
+			return;
+		}
+		getLinkedCreature()->unlock();
+
+		if (getDatapadItem() != NULL) {
+			getDatapadItem()->wlock();
+			getDatapadItem()->updateStatus(1);
+			getDatapadItem()->unlock();
+		}
+
+		setFaction(getLinkedCreature()->getFaction());
+
+		setCommmandState(STATEFOLLOW);
+		getLinkedCreature()->registerPet(_this);
+		getLinkedCreature()->setNumberOfCHPets(getLinkedCreature()->getNumberOfCHPets() + 1);
+		getLinkedCreature()->setLevelOfCHPets(getLinkedCreature()->getLevelOfCHPets() + getLevel());
+
+		lastGrowth.update();
+
+		if (growth <= 1.0f)	{
+			CreaturePetGrowEvent* growthRecovery = new CreaturePetGrowEvent(_this);
+			server->addEvent(growthRecovery);
+		}
+
+		CreatureManager* cManager = zone->getCreatureManager();
+		cManager->insertCreaturePet(_this);
+		//TODO: CH check why this is needed, compare MountCreature
+		getDatapadItem()->sendTo(getLinkedCreature());
+	} catch (Exception& e) {
+		getLinkedCreature()->unlock();
+
+		error("calling CreaturePet");
+		error(e.getMessage());
+	}
+}
+
+void CreaturePetImplementation::store(bool doLock) {
+	//System::out << "store\n";
+	if (zone == NULL || getLinkedCreature() == NULL || !isInQuadTree())
+		return;
+
+	if (isInCombat() || getLinkedCreature()->isInCombat())
+		return;
+
+	try {
+		if (getDatapadItem() != NULL) {
+			getDatapadItem()->wlock();
+
+			getDatapadItem()->updateStatus(0);
+
+			getDatapadItem()->unlock();
+		}
+		if (isQueued())
+			creatureManager->dequeueActivity(this);
+
+		removeFromZone();
+
+		getLinkedCreature()->unregisterPet(_this);
+		getLinkedCreature()->setNumberOfCHPets(getLinkedCreature()->getNumberOfCHPets() - 1);
+		getLinkedCreature()->setLevelOfCHPets(getLinkedCreature()->getLevelOfCHPets() - getLevel());
+
+		getLinkedCreature()->unregisterPet(_this);
+
+		zone->unlock();
+		//TODO: CH check why this is needed, compare MountCreature
+		getDatapadItem()->sendTo(getLinkedCreature());
+	} catch (Exception& e) {
+		if (doLock)
+			getLinkedCreature()->unlock();
+
+		error("storing CreaturePet");
+		error(e.getMessage());
+	}
+}
+
+bool CreaturePetImplementation::canCall() {
+	if (isCHPet()) {
+		int chSkill = getLinkedCreature()->getSkillMod("tame_level");
+		//System::out << "ch level ("<< getLevel() <<")" << chSkill <<"\n";
+		if (chSkill < 10)
+			chSkill = 10;
+
+		chSkill -= getLinkedCreature()->getLevelOfCHPets();
+		//System::out << "ch level rest" << chSkill <<"\n";
+
+		if (isAggressive() && chSkill < 12) {
+			getLinkedCreature()->sendSystemMessage("pet/pet_menu","lack_skill");
+			return false;
+		}
+
+		if (getLevel() > chSkill) {
+			getLinkedCreature()->sendSystemMessage("pet/pet_menu","pet_nolearn");
+			return false;
+		}
+
+		int chNum = getLinkedCreature()->getSkillMod("keep_creature");
+		//System::out << "ch number " << chNum <<"\n";
+		if (chNum < 1)
+			chNum = 1;
+
+		if (chNum > getLinkedCreature()->getNumberOfCHPets())
+			return true;
+
+		getLinkedCreature()->sendSystemMessage("pet/pet_menu","too_many");
+		return false;
+	}
+	else if (isDroid()) {
+		return !getLinkedCreature()->hasDroidCalled();
+	}
+	else if (isFactionPet() && getFaction() == getLinkedCreature()->getFaction()) {
+		return !getLinkedCreature()->hasFactionPetCalled();
+	}
+
+	return false;
+}
+
+bool CreaturePetImplementation::isAttackable() {
+	return getLinkedCreature()->isAttackable();
+}
+
+bool CreaturePetImplementation::isAttackableBy(CreatureObject* creature) {
+	return getLinkedCreature()->isAttackableBy(creature);
+}
+
+void CreaturePetImplementation::setFaction(uint32 fac) {
+	if (isFactionPet())
+		return;
+
+	faction = fac;
+}
+
+void CreaturePetImplementation::onIncapacitated(SceneObject* attacker) {
+	deaggro();
+
+	setPosture(CreaturePosture::INCAPACITATED);
+
+	if (isQueued()) {
+		creatureManager->dequeueActivity(this);
+	}
+
+	CreaturePetIncapacitationRecoveryEvent* incapRecovery = new CreaturePetIncapacitationRecoveryEvent(_this);
+	server->addEvent(incapRecovery);
+}
+
+void CreaturePetImplementation::recoverFromIncapacitation() {
+	setPosture(CreaturePosture::UPRIGHT);
+	onIncapacitationRecovery();
+
+	doRecovery();
+
+	if (zone != NULL)
+		creatureManager->queueActivity(this,10);
+}
+
+void CreaturePetImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
+	if (isInStayState()) {
+		//System::out << "\ttnotifyPositionUpdate stay\n";
+		return;
+	}
+	try {
+		if (obj == this)
+			return;
+		//System::out << "CreaturePetImplementation::notifyPositionUpdate\n";
+
+		SceneObject* scno =
+			(SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
+
+		if (scno->isPlayer()) {
+			//System::out << "\tnotifyPositionUpdate : is player\n" ;
+			Player* player = (Player*) scno;
+
+			if (player == getLinkedCreature()) {
+				//System::out << "\tnotifyPositionUpdate : is owner\n" ;
+				if (!getLinkedCreature()->isInCombat() && aggroedCreature == NULL) {
+					//System::out << "\tnotifyPositionUpdate : not aggro\n" ;
+					if (isInGuardState()) {
+						//System::out << "\tnotifyPositionUpdate : isInGuardState\n" ;
+						QuadTreeEntry* entry;
+						SceneObject* object;
+						uint64 oid;
+						CreatureObject* creature;
+
+						zone->lock();
+
+						ZoneServer* zoneServer = server->getZoneServer();
+
+						int closeObjectCount = player->inRangeObjectCount();
+
+						for (int i = 0; i < closeObjectCount; ++i) {
+
+							entry = player->getInRangeObject(i);
+
+							oid = entry->getObjectID();
+
+							object = zoneServer->getObject(oid);
+
+							if (object != NULL && object->isNonPlayerCreature() && object != getLinkedCreature()) {
+								creature = (CreatureObject*) object;
+								if (creature->isInCombat() && creature->getTarget() == player) {
+									aggroedCreature = creature;
+									break;
+								}
+							}
+						}
+
+						zone->unlock();
+
+						if (aggroedCreature != NULL) {
+							//updateTarget(aggroedCreature);
+
+							//System::out << "\tnotifyPositionUpdate :aggro\n";
+							if (isQueued())
+								creatureManager->dequeueActivity(this);
+
+							creatureManager->queueActivity(this, 10);
+							return;
+						}
+					}
+
+					if (aggroedCreature == NULL) {
+						//System::out << "\tnotifyPositionUpdate : move to player\n";
+						resetPatrolPoints();
+						addPatrolPoint(getLinkedCreature(),false);
+					}
+				} if (getLinkedCreature()->isInCombat() && (aggroedCreature == NULL)) {
+					//System::out << "\tnotifyPositionUpdate : aggro player combat\n";
+
+					SceneObject* scno = getLinkedCreature()->getTarget();
+					if (scno != NULL && (scno->isNonPlayerCreature() || scno->isPlayer())) {
+						//System::out << "\tnotifyPositionUpdate :aggro more\n";
+
+						if (aggroedCreature != targetObject) {
+							//System::out << "\tnotifyPositionUpdate : new target\n";
+
+							aggroedCreature = (CreatureObject*) scno;
+						}
+						//updateTarget(aggroedCreature);
+						if (isQueued())
+							creatureManager->dequeueActivity(this);
+						creatureManager->queueActivity(this, 10);
+					}
+				}
+			}
+		}
+
+	} catch (...) {
+		error(
+				"Unreported exception caught in void CreaturePetImplementation::notifyPositionUpdate(QuadTreeEntry* obj)\n");
+	}
+}
+
+bool CreaturePetImplementation::activate() {
+	//System::out << "activate\n";
+	if (isIncapacitated()) {
+		return false;
+	}
+	bool needMoreActivity = false;
+
+	try {
+		_this->wlock();
+
+		//System::out << "\tactivate : zone check\n";
+
+		if (!checkState() || zone == NULL) {
+			_this->unlock();
+			return false;
+		}
+		//System::out << "\tactivate : movement\n";
+
+		needMoreActivity |= doMovement();
+
+		if (!isInCombat() && !needMoreActivity && !isInRange(getLinkedCreature(),5.0f)) {
+			addPatrolPoint(getLinkedCreature(),false);
+		}
+
+
+		if (getLinkedCreature()->isInCombat() && !isInCombat()) {
+			//System::out << "\tactivate : player is attack\n";
+			SceneObject* scno = getLinkedCreature()->getTarget();
+			if (scno != NULL && (scno->isNonPlayerCreature() || scno->isPlayer())) {
+				//System::out << "\tactivate :aggro player target\n";
+
+				aggroedCreature = (CreatureObject*) scno;
+
+				if (aggroedCreature != targetObject) {
+					//System::out << "\tactivate : new target\n";
+
+					updateTarget(aggroedCreature);
+				}
+				//updateTarget(aggroedCreature);
+			}
+		}
+
+		if (aggroedCreature != NULL) {
+			if(aggroedCreature->isIncapacitated() || aggroedCreature->isDead()) {
+				//System::out << "\tactivate : deaggro\n";
+				deaggro();
+			} else {
+				//System::out << "\tactivate : attack(" << aggroedCreature->getStfName()<<","<< aggroedCreature->getStfFile() <<")\n";
+				//System::out << "\tactivate : attack , num skills = " << getNumberOfSkills() <<"\n";
+
+				needMoreActivity |= attack(aggroedCreature);
+			}
+			if(!getLinkedCreature()->isInCombat() && !isInRange(getLinkedCreature(),100.0f)) {
+				//System::out << "\tactivate : abort combat retun to owner\n";
+
+				deaggro();
+				addPatrolPoint(getLinkedCreature(),false);
+			}
+
+		} else if (isInCombat()) {
+			System::out << "activate : clear combat\n";
+			clearCombatState();
+			aggroedCreature == NULL;
+		}
+		//System::out << "\tactivate : recovery\n";
+		needMoreActivity |= doRecovery();
+
+		if (zone != NULL && needMoreActivity) {
+			//info("queuing more activities");
+			//System::out << "\tactivate : queue\n";
+			creatureManager->queueActivity(this);
+		}
+
+		_this->unlock();
+	} catch (...) {
+		System::out << "exception CreaturePetImplementation::activate()\n";
+
+		_this->unlock();
+	}
+
+	return needMoreActivity;
+}
+
+void CreaturePetImplementation::deaggro() {
+	aggroedCreature = NULL;
+	clearTarget();
+	clearCombatState();
+
+	if (!isInStayState() && isInRange(getLinkedCreature(),8.0f)) {
+		resetPatrolPoints(false);
+		addPatrolPoint(getLinkedCreature(),false);
+	}
+}
+
+void CreaturePetImplementation::doGrowUp(bool updateTime) {
+	Time currentTime;
+
+	uint32 elapsedTime = currentTime.getTime() - lastGrowth.getTime();
+
+	float growCycles = (float)round((float)elapsedTime / 3600000);
+	growth += 0.1 * growCycles;
+	if (growth > 1.0f)
+		growth = 1.0f;
+
+	setHeight(growth);
+	setBaby(false);
+
+	lastGrowth.update();
+	setLastGrowth(lastGrowth.getTime());
+
+	setHealthMax((int) ((float)getBaseHealth() * growth));
+	//setHealth((int) ((float)getHealth() * growthMod));
+
+	setActionMax((int) ((float)getBaseAction() * growth));
+	//setAction((int) ((float)getAction() * growth));
+
+	setMindMax((int) ((float)getBaseMind() * growth));
+
+	int oldLevel = level;
+
+	setLevel((uint32) ((float)maxLevel * growth));
+	getLinkedCreature()->setLevelOfCHPets(getLinkedCreature()->getLevelOfCHPets() -oldLevel + level);
+
+	loadItems();
+	int babyPos = customName.indexOf(UnicodeString(" (baby)"));
+	if (growth > 0.7 && babyPos != -1) {
+		customName = customName.subString(0,baby);
+	}
+
+	if (isInQuadTree()) {
+		updateHAMBars();
+
+		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
+		dcreo3->updateHeight();
+		dcreo3->close();
+		broadcastMessage(dcreo3);
+	}
+
+	if (growth < 1.0f)	{
+		CreaturePetGrowEvent* incapRecovery = new CreaturePetGrowEvent(_this);
+		server->addEvent(incapRecovery);
+	}
+	getDatapadItem()->setUpdated(true);
+}
+
+
+void CreaturePetImplementation::initTrainingState(int command) {
+	//say("?");
+	commandToTrain = command;
+}
+
+void CreaturePetImplementation::setPetName(String& name) {
+
+	customName = name;
+
+	TangibleObjectDeltaMessage3* nameChangeMessage = new TangibleObjectDeltaMessage3(_this);
+	nameChangeMessage->updateName(name);
+	nameChangeMessage->close();
+	broadcastMessage(nameChangeMessage);
+
+	getDatapadItem()->setCustomName(name);
+	IntangibleObjectDeltaMessage3* datapadChangeMessage = new IntangibleObjectDeltaMessage3(getDatapadItem());
+	datapadChangeMessage->updateName(name);
+	datapadChangeMessage->close();
+
+	getLinkedCreature()->sendMessage((StandaloneBaseMessage*)datapadChangeMessage->clone());
+
+}
+
+void CreaturePetImplementation::parseCommandMessage(const UnicodeString& message) {
+	//System::out << customName.toString() << " says, " << message.toString() << "\n";
+
+	String command = message.toString();
+	//System::out << "command : -" << command << "-\n";
+	int namePos = message.indexOf(customName.toString() +" ");
+
+	if (namePos == 0) {
+		command = message.subString(customName.length()+1,message.length()).toString();
+	}
+	//System::out << "command : -" << command << "-\n";
+	if (isInTrainingState()) {
+		if(System::random(1) == 1) {
+			commandToTrain = -1;
+			getLinkedCreature()->sendSystemMessage("pet/pet_menu","pet_nolearn");
+			return;
+		}
+		getLinkedCreature()->sendSystemMessage("pet/pet_menu","pet_learn");
+		commandHelper->trainCommand(commandToTrain,command);
+		commandHelper->trainName(_this);
+		commandToTrain = -1;
+
+		createItemAttributes();
+		getDatapadItem()->setUpdated(true);
+
+		String chType = "creaturehandler";
+		getLinkedCreature()->addXp(chType, 100,true);
+
+		return;
+	}
+
+	if (command == commandHelper->getBaseCommand(PetCommandHelper::PETATTACK)) {
+		handleAttackCommand();
+		return;
+	}
+	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETFOLLOW)) {
+		handleFollowCommand();
+		return;
+	}
+	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETGUARD)) {
+		handleGuardCommand();
+		return;
+	}
+	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETSTAY)) {
+		handleStayCommand();
+		return;
+	}
+	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETSTORE)) {
+		handleStoreCommand();
+		return;
+	}
+}
+
+void CreaturePetImplementation::handleAttackCommand() {
+	//System::out << "handleAttackCommand\n";
+	SceneObject* scno = getLinkedCreature()->getTarget();
+	if (scno != NULL && (scno->isNonPlayerCreature() || scno->isPlayer())) {
+		//System::out << "\thandleAttackCommand : aggro attack target\n";
+		CreatureObject* creo = (CreatureObject*)scno;
+		if(!creo->isAttackableBy(getLinkedCreature())) {
+			return;
+		}
+		aggroedCreature = creo;
+
+		if (aggroedCreature != targetObject) {
+			//System::out << "\thandleAttackCommand : new target\n";
+
+			updateTarget(aggroedCreature);
+		}
+		setCombatState();
+		if (isQueued())
+			creatureManager->dequeueActivity(this);
+		creatureManager->queueActivity(this, 10);
+	}
+}
+
+void CreaturePetImplementation::handleFollowCommand() {
+	setCommmandState(STATEFOLLOW);
+
+	if (aggroedCreature != NULL)
+		deaggro();
+}
+
+void CreaturePetImplementation::handleStayCommand() {
+	setCommmandState(STATESTAY);
+}
+
+void CreaturePetImplementation::handleGuardCommand() {
+	setCommmandState(STATEGUARD);
+}
+
+void CreaturePetImplementation::handleStoreCommand() {
+	try {
+	_this->wlock();
+	store();
+	_this->unlock();
+
+	} catch (...) {
+		System::out << "exception CreaturePetImplementation::handleStoreCommand()\n";
+
+		_this->unlock();
+	}
 }

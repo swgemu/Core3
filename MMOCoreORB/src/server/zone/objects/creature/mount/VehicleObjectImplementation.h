@@ -42,68 +42,50 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../../../managers/creature/CreatureManagerImplementation";
+#ifndef VEHICLEOBJECTIMPLEMENTATION_H_
+#define VEHICLEOBJECTIMPLEMENTATION_H_
 
-import "../Creature";
+class Player;
+class CreatureObject;
+class Creature;
 
-import "../CreatureObject";
+#include "VehicleObject.h"
+#include "../../scene/ItemAttributes.h"
+#include "../../../packets/scene/AttributeListMessage.h"
+#include "../../intangible/IntangibleObject.h"
 
-import "../../player/Player";
+class VehicleObjectImplementation : public VehicleObjectServant {
+protected:
+	Player* linkedCreature;
 
-import "../../intangible/IntangibleObject";
+	ManagedReference<IntangibleObject> datapadItem;
 
-import "../../scene/SceneObject";
+public:
+	VehicleObjectImplementation(Player* linkCreature);
+	VehicleObjectImplementation();
 
-interface CreaturePet implements Creature {
+	~VehicleObjectImplementation();
 
-	CreaturePet(Player owner, unsigned long oid) {
-		super(oid);	
+	void setLinkedCreature(Player* linkCreature) {
+		linkedCreature = linkCreature;
 	}
 
-	void init(Creature creature , float growth);
-	void createDataPad();
-	
-	void setLinkedCreature(Player linkCreature);
-	Player getLinkedCreature();
-	void setDatapadItem(SceneObject item);
-	IntangibleObject getDatapadItem();
-	void parseItemAttributes();
+	inline Player* getLinkedCreature() {
+		return linkedCreature;
+	}
 
-	void call();
-	void store(boolean doLock = true);
-	boolean canCall();
+	inline void setDatapadItem(SceneObject* item) {
+		if(item->isIntangible())
+			datapadItem = (IntangibleObject*) item;
+	}
 
-	boolean isAttackable();
-	boolean isAttackableBy(CreatureObject creature);
-	void onIncapacitated(SceneObject attacker);
-	void recoverFromIncapacitation();
+	inline IntangibleObject* getDatapadItem() {
+		return datapadItem;
+	}
 
-	void setFaction(unsigned int fac);
-	void setMaxLevel(unsigned int level);
+	void call() {System::out << "veh::call\n";};
+	void store(bool doLock = true) {System::out << "veh::store\n";};
 
-	boolean isCHPet();
-	boolean isDroid();
-	boolean isFactionPet();
+};
 
-	boolean isInFollowState();
-
-	boolean isInStayState();
-
-	boolean isInGuardState();
-
-	void doGrowUp(boolean updateTime = true);
-
-	void initTrainingState(int command);
-	void setPetName(String name);
-	void parseCommandMessage(const UnicodeString message);
-	void setCommmandState(unsigned int state);
-
-	boolean activate();
-	void deaggro();
-
-	void handleAttackCommand();
-	void handleFollowCommand();
-	void handleStayCommand();
-	void handleGuardCommand();
-	void handleStoreCommand();
-}
+#endif /*VEHICLEOBJECTIMPLEMENTATION_H_*/

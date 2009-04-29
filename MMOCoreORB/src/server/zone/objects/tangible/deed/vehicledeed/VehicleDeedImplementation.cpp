@@ -24,6 +24,7 @@ VehicleDeedImplementation::VehicleDeedImplementation(CreatureObject* creature, u
 
 	objectCRC = tempcrc;
 
+	customName = n;
 	stfName = tempn;
 
 	init();
@@ -35,6 +36,7 @@ VehicleDeedImplementation::VehicleDeedImplementation(uint64 objid, uint32 tempcr
 
 	objectCRC = tempcrc;
 
+	customName = n;
 	stfName = tempn;
 
 	init();
@@ -51,52 +53,42 @@ void VehicleDeedImplementation::init() {
 	//speederbike_swoop is the old crafting lua's, swoop is the new crafting luas so remove speederbike_swoop after all old deeds are gone
 	if (stfName == "speederbike_swoop" || stfName == "swoop") {
 		targetName = UnicodeString("speederbike_swoop");
-		customName = UnicodeString("Speederbike Swoop");
 		targetFile = "object/intangible/vehicle/shared_speederbike_swoop_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_speederbike_swoop.iff";
 	} else if (stfName == "speederbike") {
 		targetName = UnicodeString("speederbike");
-		customName = UnicodeString("Speederbike");
 		targetFile = "object/intangible/vehicle/shared_speederbike_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_speederbike.iff";
 	} else if (stfName == "landspeeder_x34"){
 		targetName = UnicodeString("landspeeder_x34");
-		customName = UnicodeString("X-34 Landspeeder");
 		targetFile = "object/intangible/vehicle/shared_landspeeder_x34_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_landspeeder_x34.iff";
 	} else if (stfName == "speederbike_swoop_deed") {
 		targetName = UnicodeString("speederbike_swoop");
-		customName = UnicodeString("Speederbike Swoop");
 		targetFile = "object/intangible/vehicle/shared_speederbike_swoop_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_speederbike_swoop.iff";
 	} else if (stfName == "jetpack_deed") {
 		targetName = UnicodeString("jetpack");
-		customName = UnicodeString("Jetpack");
 		targetFile = "object/intangible/vehicle/shared_jetpack_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_jetpack.iff";
 	} else if (stfName == "landspeeder_av21_deed") {
 		targetName = UnicodeString("landspeeder_av21");
-		customName = UnicodeString("AV-21 Landspeeder");
 		targetFile = "object/intangible/vehicle/shared_landspeeder_av21_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_landspeeder_av21.iff";
 	} else if (stfName == "landspeeder_x31_deed") {
 		targetName = UnicodeString("landspeeder_x31");
-		customName = UnicodeString("X-31 Landspeeder");
 		targetFile = "object/intangible/vehicle/shared_landspeeder_x31_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_landspeeder_x31.iff";
 	} else if (stfName == "landspeeder_x34_deed") {
 		targetName = UnicodeString("landspeeder_x34");
-		customName = UnicodeString("X-34 Landspeeder");
 		targetFile = "object/intangible/vehicle/shared_landspeeder_x34_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_landspeeder_x34.iff";
 	} else if (stfName == "speederbike_deed") {
 		targetName = UnicodeString("speederbike");
-		customName = UnicodeString("Speederbike");
 		targetFile = "object/intangible/vehicle/shared_speederbike_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_speederbike.iff";
 	} else if (stfName == "speederbike_flash_deed") {
 		targetName = UnicodeString("speederbike_flash");
-		customName = UnicodeString("Flash Speeder");
 		targetFile = "object/intangible/vehicle/shared_speederbike_flash_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_speederbike_flash.iff";
 	}
@@ -142,20 +134,20 @@ void VehicleDeedImplementation::parseItemAttributes(){
 int VehicleDeedImplementation::useObject(Player* player) {
 	Datapad* datapad = player->getDatapad();
 
-	String sfile = "monster_name";
 	String cName = customName.toString();
 	String sname = targetName.toString();
+	String sfile = "monster_name";
 
 	IntangibleObject* datapadItem = new IntangibleObject(player->getNewItemID(), cName, sfile,
 			sname, targetFile.hashCode(), (SceneObject*) datapad);
 
-	MountCreature* vehicle = new MountCreature(player, sname, sfile,
+	MountCreature* vehicle = new MountCreature(player, sname,
 			targetFile.hashCode(), vehicleFile.hashCode(), player->getNewItemID());
 
 	try {
 		vehicle->setMaxCondition(getHitPoints());
-		vehicle->setObjectFileName(vehicleFile);
-		vehicle->setZoneProcessServer(player->getZoneProcessServer());
+		//vehicle->setObjectFileName(vehicleFile);
+		//vehicle->setZoneProcessServer(player->getZoneProcessServer());
 
 		vehicle->setDatapadItem(datapadItem);
 		datapadItem->setWorldObject(vehicle);

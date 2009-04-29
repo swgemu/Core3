@@ -504,9 +504,9 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(Player* pl
 		}
 	} else if (objecttype & TangibleObjectImplementation::VEHICLE){
 		if (player != NULL) {
-			item = new MountCreature(objectid, objectcrc, objectname, objecttemp);
+			item = new MountCreature(player,objectid, objectcrc, objectname, objecttemp);
 			MountCreature* mount = (MountCreature*) item;
-			mount->setLinkedCreature(player);
+
 			item->setZoneProcessServer(player->getZoneProcessServer());
 			if (makeStats && item != NULL) {
 				item->setAttributes(lootAttributes);
@@ -514,6 +514,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(Player* pl
 			}
 		}
 	}
+	//System::out << "on: " << objectname.toString() << " = " << objecttype << "\n";
 	/*else {
 		item = new TangibleObjectImplementation(objectid, objectname, objecttemp, objectcrc, equipped);
 	} */
@@ -858,12 +859,6 @@ TangibleObject* ItemManagerImplementation::initializeTangibleForCrafting(Player*
 
 	item = createPlayerObjectTemplate(player, objecttype, objectid, objectcrc,
 			objectname.toString(), objecttemp, equipped, false, "", 0);
-
-	/*if (item == NULL) {
-		System::out << "NULL ITEM" << endl;
-		return NULL;
-
-	}*/
 
 	return item;
 }
@@ -1702,7 +1697,6 @@ void ItemManagerImplementation::loadPlayerDatapadItems(Player* player) {
 }
 
 void ItemManagerImplementation::loadDatapadItem(Player* player, ResultSet* result) {
-
 	SceneObject* item = NULL;
 
 	uint64 objectid = result->getUnsignedLong(0);
@@ -1726,11 +1720,9 @@ void ItemManagerImplementation::loadDatapadItem(Player* player, ResultSet* resul
 	String custStr;
 	cust.decode(custStr);
 
-
 	SceneObject* scno = loadDatapadLinkedItem(player, tanoID);
 
 	if (objecttype == SceneObjectImplementation::MANUFACTURESCHEMATIC) {
-
 		item = new ManufactureSchematic(objectid, name, stringFile, stringName, objectcrc);
 
 		if(scno != NULL && scno->isTangible()) {
@@ -1741,16 +1733,23 @@ void ItemManagerImplementation::loadDatapadItem(Player* player, ResultSet* resul
 		//will implement this with more info on missions.
 
 	} else if (objecttype == SceneObjectImplementation::INTANGIBLE) {
-
 		item = new IntangibleObject(objectid, name, stringFile, stringName, objectcrc, player->getDatapad());
 
 		if(scno == NULL || !scno->isNonPlayerCreature())
 			return;
 
-		((MountCreature*)scno)->setDatapadItem(item);
-		((MountCreature*)scno)->setLinkedCreature(player);
+		Creature* creo = (Creature*) scno;
+		if (creo->isVehicle()) {
+			((MountCreature*)scno)->setDatapadItem(item);
+			//((MountCreature*)scno)->setLinkedCreature(player);
 
-		((IntangibleObject*)item)->setWorldObject(scno);
+			((IntangibleObject*)item)->setWorldObject(scno);
+		} else {
+			((CreaturePet*)scno)->setDatapadItem(item);
+			//((CreaturePet*)scno)->setLinkedCreature(player);
+
+			((IntangibleObject*)item)->setWorldObject(scno);
+		}
 	}
 
 	if (item == NULL)
@@ -1821,9 +1820,26 @@ SceneObject* ItemManagerImplementation::loadDatapadLinkedItem(Player* player, ui
 				equipped, false, "", 0);
 
 		if(item == NULL) {
+			switch(objectcrc) {
+			case 0x60250B32:
+			case 0xA965DDBA:
+			case 0x25D1DAF3:
+			case 0x273A9C02:
+			case 0x4EC3780C:
+			case 0x3F6E7BA7:
+			case 0x729517EF:
+			case 0x7E1D9C63:
+			case 0x4E3534:
+			case 0xAF6D9F4F:
+			case 0x5FAC5956:
+				item = new MountCreature(player, objectid, objectcrc, UnicodeString(objectname), objecttemp);
 
-			item = new MountCreature(objectid, objectcrc, UnicodeString(objectname), objecttemp);
-
+				break;
+			default:
+				item = new CreaturePet(player,objectid);
+				item->setCustomName(UnicodeString(objectname));
+				break;
+			}
 		}
 
 		if (item == NULL)
@@ -1887,8 +1903,20 @@ void ItemManagerImplementation::unloadDatapadItems(Player* player) {
 
 			if (!item->isPersistent()) {
 				createDatapadItem(player, item);
+				if (item->isIntangible()) {
+					IntangibleObject* itno = (IntangibleObject*)item;
+					SceneObject* worldObject = itno->getWorldObject();
+					if (worldObject != NULL)
+						createDatapadLinkedItem(player, worldObject);
+				}
 			} else if (item->isUpdated()) {
 				saveDatapadItem(player, item);
+				if (item->isIntangible()) {
+					IntangibleObject* itno = (IntangibleObject*)item;
+					SceneObject* worldObject = itno->getWorldObject();
+					if (worldObject != NULL)
+						saveDatapadLinkedItem(player, worldObject);
+				}
 			}
 		}
 	}
@@ -1922,7 +1950,7 @@ void ItemManagerImplementation::createDatapadItem(Player* player, SceneObject* i
 		<< "(`object_id`,`character_id`,`object_type`,`custom_name`,`stringFile`,`stringName`,`object_crc`,`attributes`,`appearance`, `linked_tano_id`)"
 		<< " VALUES(" << item->getObjectID() << "," << player->getCharacterID()
 		<< "," << item->getObjectType() << ",'" << itemname << "','"
-	    << item->getStfFile() << "','"<< item->getStfName() << "',"<< item->getObjectCRC() << ",'"
+	    << item->getStfName() << "','"<< item->getStfFile() << "',"<< item->getObjectCRC() << ",'"
 		<< attr << "','" << appearance.subString(0, appearance.length() - 1) << "', " << worldID <<")";
 
 		ServerDatabase::instance()->executeStatement(query);
@@ -1933,7 +1961,6 @@ void ItemManagerImplementation::createDatapadItem(Player* player, SceneObject* i
 		if(scno != NULL) {
 			createDatapadLinkedItem(player, scno);
 		}
-
 	} catch (DatabaseException& e) {
 		System::out << e.getMessage() << "\n";
 	} catch (...) {
@@ -1958,7 +1985,6 @@ void ItemManagerImplementation::createDatapadLinkedItem(Player* player, SceneObj
 		StringBuffer query;
 
 		if(item->isTangible()) {
-
 			TangibleObject* tano = (TangibleObject*) item;
 
 			query << "REPLACE DELAYED INTO `datapad_items` "
@@ -1970,7 +1996,6 @@ void ItemManagerImplementation::createDatapadLinkedItem(Player* player, SceneObj
 			<< "','" << appearance.subString(0, appearance.length() - 1) << "', " << tano->getPlayerUseMask() << ", " << tano->getOptionsBitmask() << ")";
 
 		} else {
-
 			query << "REPLACE DELAYED INTO `datapad_items` "
 			<< "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_type_name`,`template_name`,`equipped`,`deleted`,`attributes`,`appearance`)"
 			<< " VALUES(" << item->getObjectID() << "," << player->getCharacterID()
@@ -2100,7 +2125,10 @@ void ItemManagerImplementation::saveDatapadItem(Player* player, SceneObject* ite
 
 		query << "UPDATE `datapad` set character_id = " << player->getCharacterID() << " ";
 		query << ", attributes = '" << item->getAttributes() << "' ";
+		query << ", custom_name = '" << item->getCustomName().toString() << "' ";
 		query << "where object_id = " << item->getObjectID();
+
+		//System::out << "query : " << query.toString() << "\n";
 
 		ServerDatabase::instance()->executeStatement(query);
 
@@ -2111,6 +2139,25 @@ void ItemManagerImplementation::saveDatapadItem(Player* player, SceneObject* ite
 	}
 }
 
+void ItemManagerImplementation::saveDatapadLinkedItem(Player* player, SceneObject* item) {
+	try {
+
+		StringBuffer query;
+
+		query << "UPDATE `datapad_items` set attributes = '" << item->getAttributes() << "' ";
+		query << ", name = '" << item->getCustomName().toString() << "' ";
+		query << "where item_id = " << item->getObjectID();
+
+		//System::out << "query : " << query.toString() << "\n";
+
+		ServerDatabase::instance()->executeStatement(query);
+
+	} catch (DatabaseException& e) {
+		System::out << e.getMessage() << "\n";
+	} catch (...) {
+		System::out << "unreported exception caught in ItemManagerImplementation::savePlayerDatapadLinkedItem(Player* player, IntangibleObject* item)\n";
+	}
+}
 void ItemManagerImplementation::deleteDatapadItem(Player* player, SceneObject* item, bool notify) {
 	try {
 

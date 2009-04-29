@@ -64,6 +64,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/creature/recruiter/imperial/ImperialRecruiterCreature.idl \
 				server/zone/objects/creature/recruiter/rebel/RebelRecruiterCreature.idl \
 				server/zone/objects/creature/mount/MountCreature.idl \
+				server/zone/objects/creature/mount/VehicleObject.idl \
 				server/zone/objects/player/Player.idl \
 				server/zone/objects/player/FriendsList.idl \
 				server/zone/objects/player/IgnoreList.idl \
@@ -218,8 +219,8 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/managers/structure/StructureManager.idl \
 				server/zone/managers/user/UserManager.idl \
 				server/chat/room/ChatRoom.idl \
-				server/chat/ChatManager.idl
-
+				server/chat/ChatManager.idl \
+				server/zone/objects/creature/pet/CreaturePet.idl
 all:
 	cd src && $(IDLC) $(IDL_SOURCES)
 	cd build/unix && ../../configure && make

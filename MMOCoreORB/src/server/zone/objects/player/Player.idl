@@ -92,6 +92,8 @@ import "badges/Badges";
 import "faction/FactionPointList";
 import "../area/ActiveArea";
 
+import "../creature/pet/CreaturePet";
+
 interface Player implements CreatureObject {
 	Player() {
 		super(unsigned long oid);
@@ -130,17 +132,21 @@ interface Player implements CreatureObject {
 	void insertToZone(Zone zone);
 	void reinsertToZone(Zone zone);
 
-    void increaseMovementCounter();
-    void updatePlayerPosition(boolean doLightUpdate);
-    void setRadialDirection(float radangle);
+	void increaseMovementCounter();
+	void updatePlayerPosition(boolean doLightUpdate);
+	void setRadialDirection(float radangle);
 
-    void drag(Player targetPlayer, float range, float maxMovement, boolean needsConsent = true, boolean canDragLiveTarget = false);
+	void drag(Player targetPlayer, float range, float maxMovement, boolean needsConsent = true, boolean canDragLiveTarget = false);
 
 	//void lightUpdateZone();
+	//void updateZone(boolean lightUpdate = false);
+
+	//void updateZoneWithParent(unsigned long cell, boolean lightUpdate = false);
+	//void lightUpdateZoneWithParent(unsigned long cell);
+
 	void updateZone(boolean lightUpdate = false);
 
 	void updateZoneWithParent(unsigned long cell, boolean lightUpdate = false);
-	//void lightUpdateZoneWithParent(unsigned long cell);
 
 	void switchMap(int planetid);
 	void doWarp(float x, float y, float z = 0, float randomizeDistance = 0, unsigned long parentID = 0);
@@ -814,4 +820,25 @@ interface Player implements CreatureObject {
 	void displayMessageoftheDay();
 	
 	void crashClient();
+
+	//pet
+	void setNumberOfCHPets(unsigned int number);
+	unsigned int getNumberOfCHPets();
+
+	void setLevelOfCHPets(unsigned int level);
+	unsigned int getLevelOfCHPets();
+
+	void setDroidCalled(boolean hasDroidPet);
+	boolean hasDroidCalled();
+
+	void setFactionPetCalled(boolean hasFactionPet);
+	boolean hasFactionPetCalled();
+
+	boolean hasPetCalled();
+	void registerPet(CreaturePet pet);
+	void unregisterPet(CreaturePet pet);
+	void sendChatMessageToPets(const UnicodeString message);
+	void sendTellToPets(String& name, const UnicodeString message);
+
+
 }

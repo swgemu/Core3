@@ -31,8 +31,6 @@ public:
 
 	void unload();
 
-	void updateZone();
-
 	void loadItems();
 
 	bool activate();
@@ -96,8 +94,6 @@ public:
 	bool isTrainer();
 
 	bool isRecruiter();
-
-	bool isMount();
 
 	String& getName();
 
@@ -174,8 +170,6 @@ public:
 
 	void unload();
 
-	void updateZone();
-
 	void loadItems();
 
 	bool activate();
@@ -239,8 +233,6 @@ public:
 	bool isTrainer();
 
 	bool isRecruiter();
-
-	bool isMount();
 
 	String& getName();
 

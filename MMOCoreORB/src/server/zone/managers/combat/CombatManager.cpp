@@ -117,20 +117,23 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 	}
 
 	//If the target is a mount, make it attackable (and only then) if the owner is attackable
-	if (target->isNonPlayerCreature() && ((Creature*)target)->isMount()) {
+	if (target->isNonPlayerCreature() && ((CreatureObject*)target)->isVehicle()) {
 		try {
 			target->wlock(creature);
 
-			MountCreature* mount = (MountCreature*) target;
-			CreatureObject* linkCreo = mount->getLinkedCreature();
+			if (creature->getMount() != target) {
+				//CreatureObject* linkCreo = vehicle->getLinkedCreature();
 
-			if (!linkCreo->isAttackableBy(creature)) {
-				target->unlock();
-				return false;
+
+
+				/*if (!linkCreo->isAttackableBy(creature)) {
+					target->unlock();
+					return false;
+				}*/
+				MountCreature* mount = (MountCreature*) target;
+
+				handleMountDamage(creature, (MountCreature*) target);
 			}
-
-			handleMountDamage(creature, mount);
-
 			target->unlock();
 			return 0.0f;
 
@@ -184,6 +187,23 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 		}
 
 		return calculateWeaponAttackSpeed(creature,tskill,action);
+	}
+
+	if (tskill->isTameSkill()) {
+				try {
+			if (creature != target)
+				target->wlock(creature);
+
+				tskill->doSkill(creature, target, actionModifier);
+
+			if (creature != target)
+				target->unlock();
+		} catch (...) {
+			if (creature != target)
+				target->unlock();
+		}
+
+		return 0.0f;
 	}
 
 	// Attack skills
@@ -540,7 +560,7 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* tar
 			attacker->setDefender(target);
 
 		//No defender for bare metal vehicles (but for pets)
-		if (!targetCreature->isMount()/* && !((MountCreature*) targetCreature)->isVehicle()*/)
+		if (!targetCreature->isVehicle())
 			target->addDefender(attacker);
 
 
@@ -557,7 +577,8 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* tar
 
 			//bare metal vehicles shouldn't fight back - but pets should
 			if(targetCreature->isNonPlayerCreature()) {
-				if ( !targetCreature->isMount())
+
+				if (!targetCreature->isVehicle())
 					targetCreature->doAttack(attacker, damage);
 			}
 
@@ -996,6 +1017,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target,
 
 	//target->addDamage(attacker, damage);
 	target->addDamageDone(attacker, damage, askill->getSkillName());
+
 	if (part < 6) {
 		attacker->inflictDamage(target, CreatureAttribute::HEALTH, damage);
 	}
@@ -2238,9 +2260,6 @@ void CombatManager::declineDuel(Player* player, Player* targetPlayer) {
 }
 
 bool CombatManager::handleMountDamage(CreatureObject* attacker, MountCreature* mount) {
-	if (attacker->getMount() == mount)
-		return false;
-
 	CreatureObject* owner = mount->getLinkedCreature();
 
 	if (mount->isDisabled())
@@ -2249,21 +2268,21 @@ bool CombatManager::handleMountDamage(CreatureObject* attacker, MountCreature* m
 	if (!mount->isInWorld())
 		return false;
 
-	if (owner == attacker)
-		return false;
+	//if (owner == attacker)
+	//	return false;
 
 	if (owner->isPlayer() && attacker->isPlayer()) {
-		Player* player = (Player*) owner;
+		//Player* player = (Player*) owner;
 
-		if (player == attacker)
-			return false;
+		//if (player == attacker)
+		//	return false;
 
-		if (!canAttack((Player*)attacker, player))
+		if (!canAttack((Player*)attacker, (Player*) owner))
 			return false;
 
 	}
 
-	mount->changeConditionDamage(System::random(20000));
+	mount->changeConditionDamage(System::random(2000));
 
 	if (mount->isDisabled()) {
 		CreatureObject* creature = mount->getLinkedCreature();

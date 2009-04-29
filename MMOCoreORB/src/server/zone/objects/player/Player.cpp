@@ -68,6 +68,8 @@
 
 #include "../area/ActiveArea.h"
 
+#include "../creature/pet/CreaturePet.h"
+
 /*
  *	PlayerStub
  */
@@ -6055,6 +6057,171 @@ void Player::crashClient() {
 		((PlayerImplementation*) _impl)->crashClient();
 }
 
+void Player::setNumberOfCHPets(unsigned int number) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 473);
+		method.addUnsignedIntParameter(number);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->setNumberOfCHPets(number);
+}
+
+unsigned int Player::getNumberOfCHPets() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 474);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getNumberOfCHPets();
+}
+
+void Player::setLevelOfCHPets(unsigned int level) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 475);
+		method.addUnsignedIntParameter(level);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->setLevelOfCHPets(level);
+}
+
+unsigned int Player::getLevelOfCHPets() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 476);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getLevelOfCHPets();
+}
+
+void Player::setDroidCalled(bool hasDroidPet) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 477);
+		method.addBooleanParameter(hasDroidPet);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->setDroidCalled(hasDroidPet);
+}
+
+bool Player::hasDroidCalled() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 478);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->hasDroidCalled();
+}
+
+void Player::setFactionPetCalled(bool hasFactionPet) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 479);
+		method.addBooleanParameter(hasFactionPet);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->setFactionPetCalled(hasFactionPet);
+}
+
+bool Player::hasFactionPetCalled() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 480);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->hasFactionPetCalled();
+}
+
+bool Player::hasPetCalled() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 481);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->hasPetCalled();
+}
+
+void Player::registerPet(CreaturePet* pet) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 482);
+		method.addObjectParameter(pet);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->registerPet(pet);
+}
+
+void Player::unregisterPet(CreaturePet* pet) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 483);
+		method.addObjectParameter(pet);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->unregisterPet(pet);
+}
+
+void Player::sendChatMessageToPets(const UnicodeString& message) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 484);
+		method.addUnicodeParameter(message);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->sendChatMessageToPets(message);
+}
+
+void Player::sendTellToPets(String& name, const UnicodeString& message) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 485);
+		method.addAsciiParameter(name);
+		method.addUnicodeParameter(message);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->sendTellToPets(name, message);
+}
+
 /*
  *	PlayerAdapter
  */
@@ -7466,6 +7633,45 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 472:
 		crashClient();
+		break;
+	case 473:
+		setNumberOfCHPets(inv->getUnsignedIntParameter());
+		break;
+	case 474:
+		resp->insertInt(getNumberOfCHPets());
+		break;
+	case 475:
+		setLevelOfCHPets(inv->getUnsignedIntParameter());
+		break;
+	case 476:
+		resp->insertInt(getLevelOfCHPets());
+		break;
+	case 477:
+		setDroidCalled(inv->getBooleanParameter());
+		break;
+	case 478:
+		resp->insertBoolean(hasDroidCalled());
+		break;
+	case 479:
+		setFactionPetCalled(inv->getBooleanParameter());
+		break;
+	case 480:
+		resp->insertBoolean(hasFactionPetCalled());
+		break;
+	case 481:
+		resp->insertBoolean(hasPetCalled());
+		break;
+	case 482:
+		registerPet((CreaturePet*) inv->getObjectParameter());
+		break;
+	case 483:
+		unregisterPet((CreaturePet*) inv->getObjectParameter());
+		break;
+	case 484:
+		sendChatMessageToPets(inv->getUnicodeParameter(_param0_sendChatMessageToPets__UnicodeString_));
+		break;
+	case 485:
+		sendTellToPets(inv->getAsciiParameter(_param0_sendTellToPets__String_UnicodeString_), inv->getUnicodeParameter(_param1_sendTellToPets__String_UnicodeString_));
 		break;
 	default:
 		return NULL;
@@ -9340,6 +9546,58 @@ void PlayerAdapter::displayMessageoftheDay() {
 
 void PlayerAdapter::crashClient() {
 	return ((PlayerImplementation*) impl)->crashClient();
+}
+
+void PlayerAdapter::setNumberOfCHPets(unsigned int number) {
+	return ((PlayerImplementation*) impl)->setNumberOfCHPets(number);
+}
+
+unsigned int PlayerAdapter::getNumberOfCHPets() {
+	return ((PlayerImplementation*) impl)->getNumberOfCHPets();
+}
+
+void PlayerAdapter::setLevelOfCHPets(unsigned int level) {
+	return ((PlayerImplementation*) impl)->setLevelOfCHPets(level);
+}
+
+unsigned int PlayerAdapter::getLevelOfCHPets() {
+	return ((PlayerImplementation*) impl)->getLevelOfCHPets();
+}
+
+void PlayerAdapter::setDroidCalled(bool hasDroidPet) {
+	return ((PlayerImplementation*) impl)->setDroidCalled(hasDroidPet);
+}
+
+bool PlayerAdapter::hasDroidCalled() {
+	return ((PlayerImplementation*) impl)->hasDroidCalled();
+}
+
+void PlayerAdapter::setFactionPetCalled(bool hasFactionPet) {
+	return ((PlayerImplementation*) impl)->setFactionPetCalled(hasFactionPet);
+}
+
+bool PlayerAdapter::hasFactionPetCalled() {
+	return ((PlayerImplementation*) impl)->hasFactionPetCalled();
+}
+
+bool PlayerAdapter::hasPetCalled() {
+	return ((PlayerImplementation*) impl)->hasPetCalled();
+}
+
+void PlayerAdapter::registerPet(CreaturePet* pet) {
+	return ((PlayerImplementation*) impl)->registerPet(pet);
+}
+
+void PlayerAdapter::unregisterPet(CreaturePet* pet) {
+	return ((PlayerImplementation*) impl)->unregisterPet(pet);
+}
+
+void PlayerAdapter::sendChatMessageToPets(const UnicodeString& message) {
+	return ((PlayerImplementation*) impl)->sendChatMessageToPets(message);
+}
+
+void PlayerAdapter::sendTellToPets(String& name, const UnicodeString& message) {
+	return ((PlayerImplementation*) impl)->sendTellToPets(name, message);
 }
 
 /*

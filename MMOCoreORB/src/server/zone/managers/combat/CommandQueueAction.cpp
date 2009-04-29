@@ -96,8 +96,9 @@ bool CommandQueueAction::check() {
 		}
 
 		if (skill->isHealSkill()) {
-			if (target == NULL || !target->isAttackable())
+			if (target == NULL || !target->isAttackable()) {
 				target = creature;
+			}
 		}
 		else {
 			if (creature->isBerserked() && skill->getNameCRC() != 0xA8FEF90A) {
@@ -310,9 +311,10 @@ bool CommandQueueAction::checkHealSkill() {
 				target = creature;
 			else if (!player->isOvert() && targetPlayer->isOvert())
 				target = creature;
-		} else if (target->isNonPlayerCreature() && !skill->isDiagnoseSkill() && !skill->isDragSkill())
+		} else if ((target->isNonPlayerCreature() && !targetObject->isPet()) && !skill->isDiagnoseSkill() && !skill->isDragSkill()) {
+			System::out << "healt change 1\n";
 			target = creature;
-
+		}
 		// range check stimpacks
 		if (skill->getNameCRC() == 0x0A9F00A0) {
 			float range = 5.0f;

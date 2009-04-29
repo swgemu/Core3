@@ -16,99 +16,26 @@
 
 #include "../../scene/SceneObject.h"
 
+#include "VehicleObject.h"
+
 /*
  *	MountCreatureStub
  */
 
-MountCreature::MountCreature(CreatureObject* linkCreature, const String& name, const String& stf, unsigned int itnocrc, unsigned int objCRC, unsigned long long oid) : Creature(DummyConstructorParameter::instance()) {
-	_impl = new MountCreatureImplementation(linkCreature, name, stf, itnocrc, objCRC, oid);
+MountCreature::MountCreature(Player* linkCreature, const String& name, unsigned int itnocrc, unsigned int objCRC, unsigned long long oid) : CreatureObject(DummyConstructorParameter::instance()) {
+	_impl = new MountCreatureImplementation(linkCreature, name, itnocrc, objCRC, oid);
 	_impl->_setStub(this);
 }
 
-MountCreature::MountCreature(unsigned long long oid, unsigned int tempcrc, const UnicodeString& n, const String& tempn) : Creature(DummyConstructorParameter::instance()) {
-	_impl = new MountCreatureImplementation(oid, tempcrc, n, tempn);
+MountCreature::MountCreature(Player* linkCreature, unsigned long long oid, unsigned int tempcrc, const UnicodeString& n, const String& tempn) : CreatureObject(DummyConstructorParameter::instance()) {
+	_impl = new MountCreatureImplementation(linkCreature, oid, tempcrc, n, tempn);
 	_impl->_setStub(this);
 }
 
-MountCreature::MountCreature(DummyConstructorParameter* param) : Creature(param) {
+MountCreature::MountCreature(DummyConstructorParameter* param) : CreatureObject(param) {
 }
 
 MountCreature::~MountCreature() {
-}
-
-void MountCreature::setMountType(int type) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 6);
-		method.addSignedIntParameter(type);
-
-		method.executeWithVoidReturn();
-	} else
-		((MountCreatureImplementation*) _impl)->setMountType(type);
-}
-
-void MountCreature::setLinkedCreature(CreatureObject* linkCreature) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 7);
-		method.addObjectParameter(linkCreature);
-
-		method.executeWithVoidReturn();
-	} else
-		((MountCreatureImplementation*) _impl)->setLinkedCreature(linkCreature);
-}
-
-void MountCreature::setObjectFileName(String& name) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 8);
-		method.addAsciiParameter(name);
-
-		method.executeWithVoidReturn();
-	} else
-		((MountCreatureImplementation*) _impl)->setObjectFileName(name);
-}
-
-int MountCreature::getMountType() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((MountCreatureImplementation*) _impl)->getMountType();
-}
-
-bool MountCreature::isVehicle() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 10);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((MountCreatureImplementation*) _impl)->isVehicle();
-}
-
-bool MountCreature::isPet() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 11);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((MountCreatureImplementation*) _impl)->isPet();
 }
 
 bool MountCreature::isDisabled() {
@@ -116,7 +43,7 @@ bool MountCreature::isDisabled() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 6);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -128,23 +55,23 @@ bool MountCreature::isJetpack() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 7);
 
 		return method.executeWithBooleanReturn();
 	} else
 		return ((MountCreatureImplementation*) _impl)->isJetpack();
 }
 
-CreatureObject* MountCreature::getLinkedCreature() {
+bool MountCreature::isMount() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 8);
 
-		return (CreatureObject*) method.executeWithObjectReturn();
+		return method.executeWithBooleanReturn();
 	} else
-		return ((MountCreatureImplementation*) _impl)->getLinkedCreature();
+		return ((MountCreatureImplementation*) _impl)->isMount();
 }
 
 void MountCreature::call() {
@@ -152,7 +79,7 @@ void MountCreature::call() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 9);
 
 		method.executeWithVoidReturn();
 	} else
@@ -164,7 +91,7 @@ void MountCreature::store(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 10);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
@@ -177,7 +104,7 @@ int MountCreature::useObject(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -185,41 +112,55 @@ int MountCreature::useObject(Player* player) {
 		return ((MountCreatureImplementation*) _impl)->useObject(player);
 }
 
-void MountCreature::setInstantMount(bool val) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 18);
-		method.addBooleanParameter(val);
-
-		method.executeWithVoidReturn();
-	} else
-		((MountCreatureImplementation*) _impl)->setInstantMount(val);
-}
-
-bool MountCreature::isInWorld() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 19);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((MountCreatureImplementation*) _impl)->isInWorld();
-}
-
 void MountCreature::parseItemAttributes() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 12);
 
 		method.executeWithVoidReturn();
 	} else
 		((MountCreatureImplementation*) _impl)->parseItemAttributes();
+}
+
+void MountCreature::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addObjectParameter(player);
+		method.addObjectParameter(omr);
+
+		method.executeWithVoidReturn();
+	} else
+		((MountCreatureImplementation*) _impl)->sendRadialResponseTo(player, omr);
+}
+
+void MountCreature::setLinkedCreature(Player* linkCreature) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+		method.addObjectParameter(linkCreature);
+
+		method.executeWithVoidReturn();
+	} else
+		((MountCreatureImplementation*) _impl)->setLinkedCreature(linkCreature);
+}
+
+Player* MountCreature::getLinkedCreature() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		return (Player*) method.executeWithObjectReturn();
+	} else
+		return ((MountCreatureImplementation*) _impl)->getLinkedCreature();
 }
 
 void MountCreature::setDatapadItem(SceneObject* item) {
@@ -227,7 +168,7 @@ void MountCreature::setDatapadItem(SceneObject* item) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(item);
 
 		method.executeWithVoidReturn();
@@ -235,12 +176,36 @@ void MountCreature::setDatapadItem(SceneObject* item) {
 		((MountCreatureImplementation*) _impl)->setDatapadItem(item);
 }
 
+IntangibleObject* MountCreature::getDatapadItem() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+
+		return (IntangibleObject*) method.executeWithObjectReturn();
+	} else
+		return ((MountCreatureImplementation*) _impl)->getDatapadItem();
+}
+
+bool MountCreature::isInWorld() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((MountCreatureImplementation*) _impl)->isInWorld();
+}
+
 void MountCreature::repair() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 19);
 
 		method.executeWithVoidReturn();
 	} else
@@ -251,7 +216,7 @@ void MountCreature::repair() {
  *	MountCreatureAdapter
  */
 
-MountCreatureAdapter::MountCreatureAdapter(MountCreatureImplementation* obj) : CreatureAdapter(obj) {
+MountCreatureAdapter::MountCreatureAdapter(MountCreatureImplementation* obj) : CreatureObjectAdapter(obj) {
 }
 
 Packet* MountCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -259,54 +224,45 @@ Packet* MountCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 
 	switch (methid) {
 	case 6:
-		setMountType(inv->getSignedIntParameter());
-		break;
-	case 7:
-		setLinkedCreature((CreatureObject*) inv->getObjectParameter());
-		break;
-	case 8:
-		setObjectFileName(inv->getAsciiParameter(_param0_setObjectFileName__String_));
-		break;
-	case 9:
-		resp->insertSignedInt(getMountType());
-		break;
-	case 10:
-		resp->insertBoolean(isVehicle());
-		break;
-	case 11:
-		resp->insertBoolean(isPet());
-		break;
-	case 12:
 		resp->insertBoolean(isDisabled());
 		break;
-	case 13:
+	case 7:
 		resp->insertBoolean(isJetpack());
 		break;
-	case 14:
-		resp->insertLong(getLinkedCreature()->_getObjectID());
+	case 8:
+		resp->insertBoolean(isMount());
 		break;
-	case 15:
+	case 9:
 		call();
 		break;
-	case 16:
+	case 10:
 		store(inv->getBooleanParameter());
 		break;
-	case 17:
+	case 11:
 		resp->insertSignedInt(useObject((Player*) inv->getObjectParameter()));
 		break;
-	case 18:
-		setInstantMount(inv->getBooleanParameter());
-		break;
-	case 19:
-		resp->insertBoolean(isInWorld());
-		break;
-	case 20:
+	case 12:
 		parseItemAttributes();
 		break;
-	case 21:
+	case 13:
+		sendRadialResponseTo((Player*) inv->getObjectParameter(), (ObjectMenuResponse*) inv->getObjectParameter());
+		break;
+	case 14:
+		setLinkedCreature((Player*) inv->getObjectParameter());
+		break;
+	case 15:
+		resp->insertLong(getLinkedCreature()->_getObjectID());
+		break;
+	case 16:
 		setDatapadItem((SceneObject*) inv->getObjectParameter());
 		break;
-	case 22:
+	case 17:
+		resp->insertLong(getDatapadItem()->_getObjectID());
+		break;
+	case 18:
+		resp->insertBoolean(isInWorld());
+		break;
+	case 19:
 		repair();
 		break;
 	default:
@@ -314,30 +270,6 @@ Packet* MountCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	}
 
 	return resp;
-}
-
-void MountCreatureAdapter::setMountType(int type) {
-	return ((MountCreatureImplementation*) impl)->setMountType(type);
-}
-
-void MountCreatureAdapter::setLinkedCreature(CreatureObject* linkCreature) {
-	return ((MountCreatureImplementation*) impl)->setLinkedCreature(linkCreature);
-}
-
-void MountCreatureAdapter::setObjectFileName(String& name) {
-	return ((MountCreatureImplementation*) impl)->setObjectFileName(name);
-}
-
-int MountCreatureAdapter::getMountType() {
-	return ((MountCreatureImplementation*) impl)->getMountType();
-}
-
-bool MountCreatureAdapter::isVehicle() {
-	return ((MountCreatureImplementation*) impl)->isVehicle();
-}
-
-bool MountCreatureAdapter::isPet() {
-	return ((MountCreatureImplementation*) impl)->isPet();
 }
 
 bool MountCreatureAdapter::isDisabled() {
@@ -348,8 +280,8 @@ bool MountCreatureAdapter::isJetpack() {
 	return ((MountCreatureImplementation*) impl)->isJetpack();
 }
 
-CreatureObject* MountCreatureAdapter::getLinkedCreature() {
-	return ((MountCreatureImplementation*) impl)->getLinkedCreature();
+bool MountCreatureAdapter::isMount() {
+	return ((MountCreatureImplementation*) impl)->isMount();
 }
 
 void MountCreatureAdapter::call() {
@@ -364,20 +296,32 @@ int MountCreatureAdapter::useObject(Player* player) {
 	return ((MountCreatureImplementation*) impl)->useObject(player);
 }
 
-void MountCreatureAdapter::setInstantMount(bool val) {
-	return ((MountCreatureImplementation*) impl)->setInstantMount(val);
-}
-
-bool MountCreatureAdapter::isInWorld() {
-	return ((MountCreatureImplementation*) impl)->isInWorld();
-}
-
 void MountCreatureAdapter::parseItemAttributes() {
 	return ((MountCreatureImplementation*) impl)->parseItemAttributes();
 }
 
+void MountCreatureAdapter::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+	return ((MountCreatureImplementation*) impl)->sendRadialResponseTo(player, omr);
+}
+
+void MountCreatureAdapter::setLinkedCreature(Player* linkCreature) {
+	return ((MountCreatureImplementation*) impl)->setLinkedCreature(linkCreature);
+}
+
+Player* MountCreatureAdapter::getLinkedCreature() {
+	return ((MountCreatureImplementation*) impl)->getLinkedCreature();
+}
+
 void MountCreatureAdapter::setDatapadItem(SceneObject* item) {
 	return ((MountCreatureImplementation*) impl)->setDatapadItem(item);
+}
+
+IntangibleObject* MountCreatureAdapter::getDatapadItem() {
+	return ((MountCreatureImplementation*) impl)->getDatapadItem();
+}
+
+bool MountCreatureAdapter::isInWorld() {
+	return ((MountCreatureImplementation*) impl)->isInWorld();
 }
 
 void MountCreatureAdapter::repair() {
@@ -419,7 +363,7 @@ DistributedObjectAdapter* MountCreatureHelper::createAdapter(DistributedObjectSt
  *	MountCreatureServant
  */
 
-MountCreatureServant::MountCreatureServant(unsigned long long oid) : CreatureImplementation(oid) {
+MountCreatureServant::MountCreatureServant(unsigned long long oid) : CreatureObjectImplementation(oid) {
 	_classHelper = MountCreatureHelper::instance();
 }
 
@@ -428,7 +372,7 @@ MountCreatureServant::~MountCreatureServant() {
 
 void MountCreatureServant::_setStub(DistributedObjectStub* stub) {
 	_this = (MountCreature*) stub;
-	CreatureServant::_setStub(stub);
+	CreatureObjectServant::_setStub(stub);
 }
 
 DistributedObjectStub* MountCreatureServant::_getStub() {
