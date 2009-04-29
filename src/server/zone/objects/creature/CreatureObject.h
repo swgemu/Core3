@@ -33,8 +33,6 @@ class Player;
 
 class BuildingObject;
 
-class MountCreature;
-
 class Creature;
 
 class Guild;
@@ -141,9 +139,13 @@ public:
 
 	bool isNPC();
 
+	bool isMount();
+
 	bool isBerserked();
 
 	bool isTanoObjEquipped(TangibleObject* tano);
+
+	bool isVehicle();
 
 	bool isPet();
 
@@ -455,7 +457,7 @@ public:
 
 	int getCondition();
 
-	MountCreature* getMount();
+	CreatureObject* getMount();
 
 	unsigned long long getLastServerMovementStamp();
 
@@ -559,7 +561,7 @@ public:
 
 	void sendConvoScreen(Player* player, const String& screenID);
 
-	void mountCreature(MountCreature* mnt, bool lockMount = true);
+	void mountCreature(CreatureObject* mnt, bool lockMount = true);
 
 	void dismount(bool lockMount = true, bool ignoreCooldown = true);
 
@@ -1113,7 +1115,7 @@ public:
 
 	void setGroup(GroupObject* Group);
 
-	void setMount(MountCreature* mount);
+	void setMount(CreatureObject* mount);
 
 	void explode(int level = 1, bool destroy = true);
 
@@ -1257,10 +1259,6 @@ public:
 
 	void setCampAggroMod(int mod);
 
-	int getNumberOfPets();
-
-	void setNumberOfPets(int num);
-
 	unsigned char getLowestHAMAttribute();
 
 	void onIncapacitated(SceneObject* attacker);
@@ -1338,6 +1336,14 @@ public:
 	void activateEscape();
 
 	void deactivateEscape();
+
+	int getNumberOfSkills();
+
+	void updateZone(bool lightUpdate = false, bool sendPackets = true);
+
+	void updateZoneWithParent(unsigned long long cell, bool lightUpdate = false, bool sendPackets = true);
+
+	bool isDisabled();
 
 protected:
 	CreatureObject(DummyConstructorParameter* param);
@@ -1472,9 +1478,13 @@ public:
 
 	bool isNPC();
 
+	bool isMount();
+
 	bool isBerserked();
 
 	bool isTanoObjEquipped(TangibleObject* tano);
+
+	bool isVehicle();
 
 	bool isPet();
 
@@ -1784,7 +1794,7 @@ public:
 
 	int getCondition();
 
-	MountCreature* getMount();
+	CreatureObject* getMount();
 
 	unsigned long long getLastServerMovementStamp();
 
@@ -1888,7 +1898,7 @@ public:
 
 	void sendConvoScreen(Player* player, const String& screenID);
 
-	void mountCreature(MountCreature* mnt, bool lockMount);
+	void mountCreature(CreatureObject* mnt, bool lockMount);
 
 	void dismount(bool lockMount, bool ignoreCooldown);
 
@@ -2442,7 +2452,7 @@ public:
 
 	void setGroup(GroupObject* Group);
 
-	void setMount(MountCreature* mount);
+	void setMount(CreatureObject* mount);
 
 	void explode(int level, bool destroy);
 
@@ -2586,10 +2596,6 @@ public:
 
 	void setCampAggroMod(int mod);
 
-	int getNumberOfPets();
-
-	void setNumberOfPets(int num);
-
 	unsigned char getLowestHAMAttribute();
 
 	void onIncapacitated(SceneObject* attacker);
@@ -2667,6 +2673,14 @@ public:
 	void activateEscape();
 
 	void deactivateEscape();
+
+	int getNumberOfSkills();
+
+	void updateZone(bool lightUpdate, bool sendPackets);
+
+	void updateZoneWithParent(unsigned long long cell, bool lightUpdate, bool sendPackets);
+
+	bool isDisabled();
 
 protected:
 	String _param0_info__String_bool_;

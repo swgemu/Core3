@@ -66,7 +66,7 @@ import "../player/Player";
 
 import "../building/BuildingObject";
 
-import "../creature/mount/MountCreature";
+//import "../creature/mount/VehicleObject";
 import "../creature/Creature";
 
 import "../guild/Guild";
@@ -137,9 +137,12 @@ interface CreatureObject implements TangibleObject {
 	boolean isMeditating();
 	boolean isCreature();
 	boolean isNPC();
+	boolean isMount();
 	boolean isBerserked();
 	
 	boolean isTanoObjEquipped(TangibleObject tano);
+
+	boolean isVehicle();
 
 	//Future Creature Handler Stuff
 	boolean isPet();
@@ -365,7 +368,7 @@ interface CreatureObject implements TangibleObject {
 	int getConditionDamage();
 	int getMaxCondition();
 	int getCondition();
-	MountCreature getMount();
+	CreatureObject getMount();
 
 	unsigned long getLastServerMovementStamp();
 
@@ -450,7 +453,7 @@ interface CreatureObject implements TangibleObject {
 	void sendConvoScreen(Player player, const String screenID);
 
 	// mount methods
-	void mountCreature(MountCreature mnt, boolean lockMount = true);
+	void mountCreature(CreatureObject mnt, boolean lockMount = true);
 	void dismount(boolean lockMount = true, boolean ignoreCooldown = true);
 
 	//tip methods
@@ -827,7 +830,7 @@ interface CreatureObject implements TangibleObject {
 
 	void setGroup(GroupObject Group);
 
-	void setMount(MountCreature mount);
+	void setMount(CreatureObject mount);
 
 	void explode(int level = 1, boolean destroy = true);
 
@@ -937,10 +940,6 @@ interface CreatureObject implements TangibleObject {
 	int getCampAggroMod();
 	void setCampAggroMod(int mod);
 
-	int getNumberOfPets();
-	void setNumberOfPets(int num);
-
-
 	unsigned char getLowestHAMAttribute();
 
 
@@ -996,4 +995,13 @@ interface CreatureObject implements TangibleObject {
 	void activateEscape();
 	void deactivateEscape();
 
+	int getNumberOfSkills();
+
+	
+	void updateZone(boolean lightUpdate = false, boolean sendPackets = true);
+
+	void updateZoneWithParent(unsigned long cell, boolean lightUpdate = false, boolean sendPackets = true);
+
+	boolean isDisabled();
+	
 }

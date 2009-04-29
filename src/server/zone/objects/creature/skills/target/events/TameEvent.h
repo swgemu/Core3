@@ -42,30 +42,47 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef INTANGIBLEOBJECTMESSAGE3_H_
-#define INTANGIBLEOBJECTMESSAGE3_H_
+#ifndef TAMEEVENT_H_
+#define TAMEEVENT_H_
 
-#include "../BaseLineMessage.h"
+#include "../../../pet/CreaturePet.h"
+#include "../../../../player/Player.h"
+#include "../../../../../ZoneProcessServerImplementation.h"
+#include "../../Skill.h"
 
-#include "../../objects/intangible/IntangibleObject.h"
+class TameEvent : public Event {
+	ManagedReference<Creature> crea;
+	ManagedReference<Player> player;
+	int stage;
 
-class IntangibleObjectMessage3 : public BaseLineMessage {
 public:
-	IntangibleObjectMessage3(IntangibleObject* itno)
-			: BaseLineMessage(itno->getObjectID(), 0x4F4E5449, 3, 5) {
-		insertFloat(1);
-		insertAscii(itno->getStfName()); //real stf name
-		insertInt(0);
-		insertAscii(itno->getStfFile());
-		insertUnicode(itno->getCustomName());
-		insertInt(0);
+	TameEvent(Player* pl, Creature* target, int st) : Event(2000) {
+		player = pl;
+		crea = target;
+		stage = st;
+		setKeeping(true);
+	}
 
-		//insertInt(1);
-		insertInt(itno->getStatus());
+	bool activate() {
+		try {
+			crea->wlock();
+			SkillManager* sm = player->getZoneProcessServer()->getSkillManager();
+			TargetSkill* skill = (TargetSkill*) sm->getSkill("tame");
+			if(skill != NULL) {
+				StringBuffer mod;
+				mod << stage;
+				skill->doSkill(player,crea,mod.toString());
+			}
 
-		setSize();
+			crea->unlock();
+		} catch (...) {
+			crea->error("unreported exception caught in CreatureRecoveryEvent::activate");
+			crea->unlock();
+		}
+
+		return true;
 	}
 
 };
 
-#endif /*INTANGIBLEOBJECTMESSAGE3_H_*/
+#endif /*TAMEEVENT_H_*/

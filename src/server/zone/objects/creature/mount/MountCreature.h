@@ -17,31 +17,23 @@ class IntangibleObject;
 
 class SceneObject;
 
-#include "../Creature.h"
+class VehicleObject;
 
-class MountCreature : public Creature {
+#include "../../../packets/object/ObjectMenuResponse.h"
+
+#include "../CreatureObject.h"
+
+class MountCreature : public CreatureObject {
 public:
-	MountCreature(CreatureObject* linkCreature, const String& name, const String& stf, unsigned int itnocrc, unsigned int objCRC, unsigned long long oid);
+	MountCreature(Player* linkCreature, const String& name, unsigned int itnocrc, unsigned int objCRC, unsigned long long oid);
 
-	MountCreature(unsigned long long oid, unsigned int tempcrc, const UnicodeString& n, const String& tempn);
-
-	void setMountType(int type);
-
-	void setLinkedCreature(CreatureObject* linkCreature);
-
-	void setObjectFileName(String& name);
-
-	int getMountType();
-
-	bool isVehicle();
-
-	bool isPet();
+	MountCreature(Player* linkCreature, unsigned long long oid, unsigned int tempcrc, const UnicodeString& n, const String& tempn);
 
 	bool isDisabled();
 
 	bool isJetpack();
 
-	CreatureObject* getLinkedCreature();
+	bool isMount();
 
 	void call();
 
@@ -49,13 +41,19 @@ public:
 
 	int useObject(Player* player);
 
-	void setInstantMount(bool val);
-
-	bool isInWorld();
-
 	void parseItemAttributes();
 
+	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
+
+	void setLinkedCreature(Player* linkCreature);
+
+	Player* getLinkedCreature();
+
 	void setDatapadItem(SceneObject* item);
+
+	IntangibleObject* getDatapadItem();
+
+	bool isInWorld();
 
 	void repair();
 
@@ -69,29 +67,17 @@ protected:
 
 class MountCreatureImplementation;
 
-class MountCreatureAdapter : public CreatureAdapter {
+class MountCreatureAdapter : public CreatureObjectAdapter {
 public:
 	MountCreatureAdapter(MountCreatureImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void setMountType(int type);
-
-	void setLinkedCreature(CreatureObject* linkCreature);
-
-	void setObjectFileName(String& name);
-
-	int getMountType();
-
-	bool isVehicle();
-
-	bool isPet();
-
 	bool isDisabled();
 
 	bool isJetpack();
 
-	CreatureObject* getLinkedCreature();
+	bool isMount();
 
 	void call();
 
@@ -99,18 +85,22 @@ public:
 
 	int useObject(Player* player);
 
-	void setInstantMount(bool val);
-
-	bool isInWorld();
-
 	void parseItemAttributes();
+
+	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
+
+	void setLinkedCreature(Player* linkCreature);
+
+	Player* getLinkedCreature();
 
 	void setDatapadItem(SceneObject* item);
 
+	IntangibleObject* getDatapadItem();
+
+	bool isInWorld();
+
 	void repair();
 
-protected:
-	String _param0_setObjectFileName__String_;
 };
 
 class MountCreatureHelper : public DistributedObjectClassHelper, public Singleton<MountCreatureHelper> {
@@ -128,9 +118,9 @@ public:
 	friend class SingletonWrapper<MountCreatureHelper>;
 };
 
-#include "../CreatureImplementation.h"
+#include "../CreatureObjectImplementation.h"
 
-class MountCreatureServant : public CreatureImplementation {
+class MountCreatureServant : public CreatureObjectImplementation {
 public:
 	MountCreature* _this;
 

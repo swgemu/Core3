@@ -189,6 +189,10 @@ void ChatManagerImplementation::handleTellMessage(Player* sender, Message* pack)
 
 	uint32 seq = ChatInstantMessageToCharacter::parse(pack, game, galaxy, name, message);
 
+	if (sender->hasPetCalled()) {
+		sender->sendTellToPets(name, message);
+	}
+
 	Player* receiver = getPlayer(name);
 
 	if (receiver == NULL || !receiver->isOnline() || receiver->isLoggingOut()) {
@@ -251,6 +255,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const S
 				}
 			}
 			delete param;
+
 			zone->unlock();
 		} catch (...) {
 
@@ -296,8 +301,10 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 					}
 				}
 			}
-
 			zone->unlock();
+			if (((Player*)player)->hasPetCalled()) {
+				((Player*)player)->sendChatMessageToPets(message);
+			}
 		} catch (...) {
 
 			zone->unlock();

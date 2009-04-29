@@ -77,6 +77,8 @@ class FactionPointList;
 
 class ActiveArea;
 
+class CreaturePet;
+
 #include "../creature/CreatureObject.h"
 
 class Player : public CreatureObject {
@@ -1018,6 +1020,32 @@ public:
 	void displayMessageoftheDay();
 
 	void crashClient();
+
+	void setNumberOfCHPets(unsigned int number);
+
+	unsigned int getNumberOfCHPets();
+
+	void setLevelOfCHPets(unsigned int level);
+
+	unsigned int getLevelOfCHPets();
+
+	void setDroidCalled(bool hasDroidPet);
+
+	bool hasDroidCalled();
+
+	void setFactionPetCalled(bool hasFactionPet);
+
+	bool hasFactionPetCalled();
+
+	bool hasPetCalled();
+
+	void registerPet(CreaturePet* pet);
+
+	void unregisterPet(CreaturePet* pet);
+
+	void sendChatMessageToPets(const UnicodeString& message);
+
+	void sendTellToPets(String& name, const UnicodeString& message);
 
 protected:
 	Player(DummyConstructorParameter* param);
@@ -1988,6 +2016,32 @@ public:
 
 	void crashClient();
 
+	void setNumberOfCHPets(unsigned int number);
+
+	unsigned int getNumberOfCHPets();
+
+	void setLevelOfCHPets(unsigned int level);
+
+	unsigned int getLevelOfCHPets();
+
+	void setDroidCalled(bool hasDroidPet);
+
+	bool hasDroidCalled();
+
+	void setFactionPetCalled(bool hasFactionPet);
+
+	bool hasFactionPetCalled();
+
+	bool hasPetCalled();
+
+	void registerPet(CreaturePet* pet);
+
+	void unregisterPet(CreaturePet* pet);
+
+	void sendChatMessageToPets(const UnicodeString& message);
+
+	void sendTellToPets(String& name, const UnicodeString& message);
+
 protected:
 	String _param0_queueFlourish__String_long_int_;
 	String _param4_queueAction__Player_long_int_int_String_;
@@ -2052,6 +2106,9 @@ protected:
 	String _param0_addConsentEntry__String_;
 	String _param0_removeConsentEntry__String_;
 	String _param0_hasConsented__String_;
+	UnicodeString _param0_sendChatMessageToPets__UnicodeString_;
+	String _param0_sendTellToPets__String_UnicodeString_;
+	UnicodeString _param1_sendTellToPets__String_UnicodeString_;
 };
 
 class PlayerHelper : public DistributedObjectClassHelper, public Singleton<PlayerHelper> {

@@ -109,4 +109,5 @@ which carries forward this exception.
 #include "group/RallyGroupSkill.h"
 #include "group/RetreatGroupSkill.h"
 
+#include "target/TameTargetSkill.h"
 #endif /*SKILLS_H_*/

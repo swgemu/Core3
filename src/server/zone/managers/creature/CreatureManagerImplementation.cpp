@@ -552,7 +552,7 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 		}
 
 		String objectName = result.getStringField("objectName");
-
+		System::out << "oname = " << objectName << "\n";
 		String name = result.getStringField("name");
 
 		String stfname = result.getStringField("stfName");
@@ -588,23 +588,7 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 
 		// TODO: Implement baby stats properly
 		if (baby) {
-			creature->setHealth(creature->getHealth() / 2);
-			creature->setAction(creature->getAction() / 2);
-			creature->setMind(creature->getMind() / 2);
-
-			creature->setHealthMax(creature->getHealth());
-			creature->setActionMax(creature->getAction());
-			creature->setMindMax(creature->getMind());
-
-			creature->setBaseHealth(creature->getHealth());
-			creature->setBaseAction(creature->getAction());
-			creature->setBaseMind(creature->getMind());
-
-			creature->setHeight(creature->getHeight() / 2);
-			creature->setBaby(true);
-			StringBuffer costumName;
-			costumName << "a " << creature->getStfName() << " (baby)";
-			creature->setCustomName(costumName.toString().replaceAll("_"," "));
+			changeStatsToBaby(creature);
 		}
 
 		creature->initializePosition(x, 0.0, y);
@@ -936,6 +920,10 @@ void CreatureManagerImplementation::load(Creature* creature) {
 		}
 
 		creature->addSkill(s);
+	}
+
+	if (((CreatureObject*)creature)->getTame() > 0.0f && System::random(10) == 1) {
+		changeStatsToBaby(creature);
 	}
 
 	// Load conversation from lua
@@ -1332,4 +1320,130 @@ String CreatureManagerImplementation::makeCreatureName(String charname) {
 	newname << server->getNameManager()->makeCreatureName(System::random(1)) << " (" << charname << ")";
 
 	return newname.toString();
+}
+
+void CreatureManagerImplementation::insertCreaturePet(CreaturePet* pet, bool doLock) {
+	try {
+		lock(doLock);
+
+		pet->setTerrainName(Terrain::getTerrainName(zone->getZoneID()));
+
+		pet->setZoneProcessServer(server);
+
+		pet->setCreatureManager(this);
+
+		pet->insertToZone(zone);
+
+		if (!creatureMap->containsKey(pet->getObjectID())) {
+			creatureMap->put(pet->getObjectID(), pet);
+		}
+
+		unlock(doLock);
+	} catch (...) {
+		error("unreported Exception caught on spawnActionCreature()");
+
+		unlock(doLock);
+	}
+}
+
+void CreatureManagerImplementation::setPetDefaultAttributes(CreaturePet* creature,bool doLock) {
+	lock(doLock);
+	try {
+		if (doLock)
+			creature->wlock();
+
+		// Load creature from lua
+		LuaFunction getCreature(getLuaState(), "getCreature", 1);
+		getCreature << creature->getStfName(); // push first argument
+		callFunction(&getCreature);
+
+		LuaObject creatureConfig(getLuaState());
+		if (!creatureConfig.isValidTable()) {
+			StringBuffer ss;
+			ss << "Unknown object CRC " << creature->getObjectCRC();
+			info(ss.toString());
+			creature->unlock();
+			creature->finalize();
+			if (doLock)
+				unlock();
+			return;
+		}
+
+		String objectName = creatureConfig.getStringField("objectName");
+
+		creature->setHealer(creatureConfig.getIntField("healer"));
+		creature->setPack(creatureConfig.getIntField("pack"));
+		creature->setHerd(creatureConfig.getIntField("herd"));
+		creature->setStalker(creatureConfig.getIntField("stalker"));
+		creature->setKiller(creatureConfig.getIntField("killer"));
+		creature->setAggressive(creatureConfig.getIntField("aggressive"));
+		creature->setFerocity(5);
+
+		creature->setMaxLevel(creatureConfig.getIntField("level"));
+		//creature->setCreatureType(creatureConfig.getStringField("creatureType"));
+		//creature->setBaby(false);
+		//creature->setBehaviorScript(creatureConfig.getStringField("behaviorScript"));
+
+
+		//Harvesting stuff
+		creature->setBoneType(creatureConfig.getStringField("boneType"));
+		creature->setBoneMax(creatureConfig.getIntField("boneMax"));
+
+		creature->setHideType(creatureConfig.getStringField("hideType"));
+		creature->setHideMax(creatureConfig.getIntField("hideMax"));
+
+		creature->setMeatType(creatureConfig.getStringField("meatType"));
+		creature->setMeatMax(creatureConfig.getIntField("meatMax"));
+
+		creature->setMilk(creatureConfig.getIntField("milk"));
+
+		String preLead = "w";
+		creature->setCreatureWeapon(creatureConfig.getStringField(preLead + "eapon"));
+		creature->setCreatureWeaponName(creatureConfig.getStringField(preLead + "eaponName"));
+		creature->setCreatureWeaponTemp(creatureConfig.getStringField(preLead + "eaponTemp"));
+		creature->setCreatureWeaponClass(creatureConfig.getStringField(preLead + "eaponClass"));
+		creature->setCreatureWeaponEquipped(creatureConfig.getIntField(preLead + "eaponEquipped"));
+		creature->setCreatureWeaponMinDamage(creatureConfig.getIntField(preLead + "eaponMinDamage"));
+		creature->setCreatureWeaponMaxDamage(creatureConfig.getIntField(preLead + "eaponMaxDamage"));
+		creature->setCreatureWeaponAttackSpeed(creatureConfig.getFloatField(preLead + "eaponAttackSpeed"));
+		creature->setCreatureWeaponDamageType(creatureConfig.getStringField(preLead + "eaponDamageType"));
+		creature->setCreatureWeaponArmorPiercing(creatureConfig.getStringField(preLead + "eaponArmorPiercing"));
+
+		//Loot
+		creature->setLootGroup(creatureConfig.getStringField("lootGroup"));
+
+		if (doLock)
+			creature->unlock();
+	} catch (...) {
+		if (doLock)
+			creature->unlock();
+		unlock(doLock);
+		return;
+	}
+	if (doLock)
+		unlock();
+}
+
+void CreatureManagerImplementation::changeStatsToBaby(Creature* creature) {
+	creature->setHealth(creature->getHealth() / 2);
+	creature->setAction(creature->getAction() / 2);
+	creature->setMind(creature->getMind() / 2);
+
+	creature->setHealthMax(creature->getHealth() / 2);
+	creature->setActionMax(creature->getAction() / 2);
+	creature->setMindMax(creature->getMind() / 2);
+
+	creature->setHeight(creature->getHeight() / 2);
+	creature->setBaby(true);
+	creature->setLevel(creature->getLevel() / 2);
+
+	creature->setCreatureWeaponMinDamage(creature->getCreatureWeaponMinDamage() / 2);
+	creature->setCreatureWeaponMaxDamage(creature->getCreatureWeaponMaxDamage() / 2);
+	creature->loadItems();
+
+	StringBuffer costumName;
+	costumName << "a " << creature->getStfName() << " (baby)";
+	creature->setCustomName(costumName.toString().replaceAll("_"," "));
+
+
 }

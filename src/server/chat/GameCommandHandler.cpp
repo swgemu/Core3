@@ -401,7 +401,13 @@ void GameCommandHandler::init() {
 				"Clears mission vars for a player, in the event they are having problems",
 				"USAGE: @clearMissions <player name>",
 				&clearMissions);
+
 	/* Disabled Commands
+	gmCommands->addCommand("createTestPet", DEVELOPER,
+				"createTestPet",
+				"USAGE: @createTestPet <player name>",
+				&createTestPet);
+
 	gmCommands->addCommand("clearInventory", PRIVILEGED,
 				"Clears all unequipped items in a player inventory, in the event they are having problems",
 				"USAGE: @clearInventory <player name>",
@@ -3916,3 +3922,25 @@ void GameCommandHandler::clearInventory(StringTokenizer tokenizer, Player* playe
 	}
 }
 
+void GameCommandHandler::createTestPet(StringTokenizer tokenizer, Player* player) {
+	CreaturePet* pet = new CreaturePet(player,player->getNewItemID());
+
+	if (player->getTarget() != NULL) {
+		SceneObject* sco = player->getTarget();
+		if (sco->isNonPlayerCreature()) {
+			Creature* creature = (Creature*)sco;
+			if (creature->isBaby()) {
+				pet->init(creature,0.5f);
+				creature->unload();
+				pet->createDataPad();
+			} else {
+				return;
+			}
+		}
+
+		//pet->call();
+		System::out << pet->isCreature() << "/" << pet->isNPC() << "/" << pet->isPlayer() <<"\n";
+		System::out << pet->isAggressive() << "/" << pet->isKiller() << "\n";
+		System::out << pet->isCHPet() << "/" << pet->isDroid() << "/" << pet->isFactionPet() << "\n";
+	}
+}

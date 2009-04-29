@@ -95,7 +95,10 @@ core3_IDLS =	server/chat/ChatManager.cpp \
 		server/zone/objects/creature/Creature.cpp \
 		server/zone/objects/creature/CreatureGroup.cpp \
 		server/zone/objects/creature/CreatureObject.cpp \
+		server/zone/objects/creature/pet/CreaturePet.cpp \
+		server/zone/objects/creature/pet/PetCommandHelper.cpp \
 		server/zone/objects/creature/mount/MountCreature.cpp \
+		server/zone/objects/creature/mount/VehicleObject.cpp \
 		server/zone/objects/creature/recruiter/imperial/ImperialRecruiterCreature.cpp \
 		server/zone/objects/creature/recruiter/rebel/RebelRecruiterCreature.cpp \
 		server/zone/objects/creature/recruiter/RecruiterCreature.cpp \
@@ -290,7 +293,9 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/dots/DamageOverTimeMap.cpp \
 		server/zone/objects/creature/CreatureImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
+		server/zone/objects/creature/pet/CreaturePetImplementation.cpp \
 		server/zone/objects/creature/mount/MountCreatureImplementation.cpp \
+		server/zone/objects/creature/mount/VehicleObjectImplementation.cpp \
 		server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp \
 		server/zone/objects/creature/shuttle/ShuttleCreatureImplementation.cpp \
 		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \

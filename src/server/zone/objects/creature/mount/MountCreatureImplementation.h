@@ -48,108 +48,45 @@ which carries forward this exception.
 class Player;
 class CreatureObject;
 class Creature;
+class VehicleObject;
+class TangibleObject;
 
 #include "MountCreature.h"
 #include "../../scene/ItemAttributes.h"
 #include "../../../packets/scene/AttributeListMessage.h"
+#include "VehicleObject.h"
 
-class MountCreatureImplementation : public MountCreatureServant {
-	int mountType;
-
-	CreatureObject* linkedCreature;
-
-	bool instantMount;
-
-	ManagedReference<IntangibleObject> datapadItem;
-
-protected:
-	//String attributeString;
-
-	//ItemAttributes* itemAttributes;
+class MountCreatureImplementation : public MountCreatureServant, public VehicleObject {
 
 public:
-
-	const static int UNKNOWN = 0;
-	const static int VEHICLE = 1;
-	const static int PET = 2;
-
-public:
-	MountCreatureImplementation(CreatureObject* linkCreature, const String& name,
-			const String& stf, uint32 itnocrc, uint32 objCRC, uint64 oid);
-	MountCreatureImplementation(uint64 oid, uint32 tempcrc, const UnicodeString& n, const String& tempn);
+	MountCreatureImplementation(Player* linkCreature, const String& name, uint32 itnocrc, uint32 objCRC, uint64 oid);
+	MountCreatureImplementation(Player* linkCreature, uint64 oid, uint32 tempcrc, const UnicodeString& n, const String& tempn);
 
 	~MountCreatureImplementation();
 
 	void init();
 
-	void setLinkedCreature(CreatureObject* linkCreature);
-
 	void sendTo(Player* player, bool doClose = true);
-
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 
 	void parseItemAttributes();
 	void generateAttributes(SceneObject* obj);
 	void addAttributes(AttributeListMessage* alm);
 
+	bool isAttackable();
+	bool isAttackableBy(CreatureObject* creature);
+
 	void call();
 	void store(bool doLock = true);
 
-	// setters and getters
-	//inline void setAttributes(String& attributeString) {
-	//	itemAttributes->setAttributes(attributeString);
-	//}
-
-	//inline String& getAttributes() {
-	//	itemAttributes->getAttributeString(attributeString);
-	//	return attributeString;
-	//}
-
-	inline void setObjectFileName(String& name) {
-		objectFile = name;
-		const String aName = "objectFileName";
-		itemAttributes->setStringAttribute(aName, name);
-	}
-
 	void repair();
 
-	inline void setMountType(int type) {
-		mountType = type;
-	}
-
-	inline void setInstantMount(bool val) {
-		instantMount = val;
-	}
-
-	inline void setDatapadItem(SceneObject* item) {
-		if(item->isIntangible())
-			datapadItem = (IntangibleObject*) item;
-	}
-
-	CreatureObject* getLinkedCreature() {
-		return linkedCreature;
-	}
-
-	inline bool isDisabled() {
-		return conditionDamage >= maxCondition;
-	}
-
-	void die();
-
-	inline int getMountType() {
-		return mountType;
-	}
-
-	inline bool isVehicle() {
-		return mountType == VEHICLE;
+	inline bool isMount() {
+		return true;
 	}
 
 	inline bool isJetpack() {
 		return objectCRC == 0x60250B32;
-	}
-
-	inline bool isPet() {
-		return mountType == PET;
 	}
 
 	inline bool isInWorld() {

@@ -372,6 +372,14 @@ void PlayerImplementation::initializePlayer() {
 
 	if (!isDead() && !isIncapacitated() && (!isOnFullHealth() || hasWounds() || hasShockWounds() || hasStates()))
 		activateRecovery();
+
+	numberOfCHPets = 0;
+	levelOfCHPets = 0;
+	droidCalled = false;
+	factionPetCalled = false;
+	petList.setInsertPlan(SortedVector<CreaturePet*>::NO_DUPLICATE);
+
+
 }
 
 void PlayerImplementation::create(ZoneClientSession* client) {
@@ -662,12 +670,12 @@ void PlayerImplementation::unload() {
 
 	// unload mount from world
 	if (mount != NULL) {
-		MountCreature* mnt = mount;
-		mnt->wlock();
+		//CreatureObject* mnt = (CreatureObject*) mount;
+		mount->wlock();
 
-		mnt->store(false);
+		((VehicleObject*)mount)->store(false);
 
-		mnt->unlock();
+		mount->unlock();
 	}
 
 	savePlayerState();
@@ -1146,7 +1154,6 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 		if (parent != NULL && parent->isCell()) {
 			info("parent is not null and is a cell");
 			BuildingObject* building = (BuildingObject*) parent->getParent();
-
 			insertToBuilding(building);
 
 			if (!building->getStorageLoaded()) {
@@ -1240,16 +1247,16 @@ void PlayerImplementation::updateZone(bool lightUpdate) {
 	if (zone == NULL || isIncapacitated() || isDead())
 		return;
 
-	bool insert = false;
+	//bool insert = false;
 
 	/*if (zone->getZoneID() == 8) {
 		float height = zone->getHeight(positionX, positionY);
 		System::out << "(" << positionX << "," << height << "," << positionY << "\n";
 	}*/
 
-	if (isMounted())
+	if (isMounted()) {
 		updateMountPosition();
-
+	}
 	try {
 		//info("updating player in Zone");
 
@@ -1261,14 +1268,18 @@ void PlayerImplementation::updateZone(bool lightUpdate) {
 			removeFromBuilding((BuildingObject*)cell->getParent());
 
 			parent = NULL;
-			insert = true;
-		}
+//			insert = true;
+			zone->insert(this);
 
-		if (insert)
+		}
+		else {
+			zone->update(this);
+		}
+	/*	if (insert)
 			zone->insert(this);
 		else
 			zone->update(this);
-
+*/
 		zone->inRange(this, 128);
 
 		if (!isMounted())
@@ -1398,7 +1409,7 @@ void PlayerImplementation::updatePlayerPosition(bool doLightUpdate) {
 }
 
 void PlayerImplementation::updateMountPosition() {
-	if (parent == NULL || parent != mount)
+	if (parent == NULL || !isMounted())
 		return;
 
 	try {
@@ -1406,7 +1417,6 @@ void PlayerImplementation::updateMountPosition() {
 
 		mount->setDirection(directionX, directionZ, directionY, directionW);
 		mount->setPosition(positionX, positionZ, positionY);
-
 		mount->updateZone();
 
 		mount->unlock();
@@ -1665,12 +1675,12 @@ void PlayerImplementation::switchMap(int planetid) {
 	saveMissions();
 
 	if (mount != NULL) {
-		MountCreature* mnt = mount;
-		mnt->wlock();
+		//MountCreature* mnt = mount;
+		mount->wlock();
 
-		mnt->store(false);
+		((VehicleObject*)mount)->store(false);
 
-		mnt->unlock();
+		mount->unlock();
 	}
 
 	removeFromZone();
@@ -6276,4 +6286,29 @@ void PlayerImplementation::onNoValidInsurables() {
 /// This event is fired when a bank tip has completed successfully to an offline recipient.
 void PlayerImplementation::onBankTipSuccessful() {
 	sendSystemMessage("base_player", "wire_pass_self"); //Your /tip transaction was successfully completed.
+}
+
+void PlayerImplementation::registerPet(CreaturePet* pet) {
+	petList.put(pet->getObjectID(),pet);
+}
+
+void PlayerImplementation::unregisterPet(CreaturePet* pet) {
+	petList.drop(pet->getObjectID());
+}
+
+void PlayerImplementation::sendChatMessageToPets(const UnicodeString& message) {
+	for (int i = 0 ; i < petList.size() ; i++) {
+		CreaturePet* pet = petList.get(i);
+		if (isInRange(pet,128.0f))
+			pet->parseCommandMessage(message);
+	}
+}
+
+void PlayerImplementation::sendTellToPets(String& name, const UnicodeString& message) {
+	for (int i = 0 ; i < petList.size() ; i++) {
+		CreaturePet* pet = petList.get(i);
+		if (name.toLowerCase() == pet->getCustomName().toString().toLowerCase()) {
+			pet->parseCommandMessage(message);
+		}
+	}
 }

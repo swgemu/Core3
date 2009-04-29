@@ -65,6 +65,8 @@ public:
 
 	void saveDatapadItem(Player* player, ManufactureSchematic* schematic);
 
+	void saveDatapadLinkedItem(Player* player, SceneObject* item);
+
 	void deletePlayerItem(Player* player, TangibleObject* item, bool notify);
 
 	void deleteDatapadItem(Player* player, SceneObject* item, bool notify);
@@ -138,6 +140,8 @@ public:
 	void savePlayerItem(Player* player, TangibleObject* item);
 
 	void saveDatapadItem(Player* player, ManufactureSchematic* schematic);
+
+	void saveDatapadLinkedItem(Player* player, SceneObject* item);
 
 	void deletePlayerItem(Player* player, TangibleObject* item, bool notify);
 

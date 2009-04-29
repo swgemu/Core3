@@ -127,6 +127,9 @@ public:
 	static int AddFormupGroupSkill(lua_State* L);
 	static int AddRallyGroupSkill(lua_State* L);
 	static int AddRetreatGroupSkill(lua_State *L);
+
+	// ch skill
+	static int AddTameTargetSkill(lua_State* L);
 };
 
 

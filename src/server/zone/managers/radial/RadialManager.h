@@ -155,6 +155,11 @@ public:
 	void handleViewFactoryInput(Player* player, SceneObject* obj);
 	void handleViewFactoryOutput(Player* player, SceneObject* obj);
 	void handleFactoryRun(Player* player, SceneObject* obj);
+
+	//pet
+	void handlePetCall(SceneObject* obj);
+	void handlePetStore(SceneObject* obj);
+	void handlePetTraining(SceneObject* obj,int command);
 };
 
 #endif /*RADIALMANAGER_H_*/

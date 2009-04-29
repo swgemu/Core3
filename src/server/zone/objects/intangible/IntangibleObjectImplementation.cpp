@@ -110,6 +110,7 @@ void IntangibleObjectImplementation::sendTo(Player* player, bool doClose) {
 }
 
 void IntangibleObjectImplementation::sendDestroyTo(Player* player) {
+	System::out << "IntangibleObjectImplementation::sendDestroyTo\n";
 	SceneObjectImplementation::destroy(player->getClient());
 }
 

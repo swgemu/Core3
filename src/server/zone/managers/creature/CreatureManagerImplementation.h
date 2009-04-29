@@ -173,6 +173,11 @@ public:
 		creatureActivityQueue.remove(creature);
 	}
 
+	void insertCreaturePet(CreaturePet* pet, bool doLock = true);
+	void setPetDefaultAttributes(CreaturePet* creature,bool doLock = true);
+	void changeStatsToBaby(Creature* creature);
+
+
 
 private:
 	uint64 getNextCreatureID();

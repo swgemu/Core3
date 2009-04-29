@@ -42,30 +42,34 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef INTANGIBLEOBJECTMESSAGE3_H_
-#define INTANGIBLEOBJECTMESSAGE3_H_
+#ifndef CREATUREPETINCAPACITATIONRECOVERYEVENT_H_
+#define CREATUREPETINCAPACITATIONRECOVERYEVENT_H_
 
-#include "../BaseLineMessage.h"
+#include "../CreaturePet.h"
 
-#include "../../objects/intangible/IntangibleObject.h"
+class CreaturePetIncapacitationRecoveryEvent : public Event {
+	CreaturePet* creature;
 
-class IntangibleObjectMessage3 : public BaseLineMessage {
 public:
-	IntangibleObjectMessage3(IntangibleObject* itno)
-			: BaseLineMessage(itno->getObjectID(), 0x4F4E5449, 3, 5) {
-		insertFloat(1);
-		insertAscii(itno->getStfName()); //real stf name
-		insertInt(0);
-		insertAscii(itno->getStfFile());
-		insertUnicode(itno->getCustomName());
-		insertInt(0);
+	CreaturePetIncapacitationRecoveryEvent(CreaturePet* cr) : Event(10000) {
+		creature = cr;
 
-		//insertInt(1);
-		insertInt(itno->getStatus());
+		setKeeping(true);
+	}
 
-		setSize();
+	bool activate() {
+		try {
+			creature->wlock();
+			creature->recoverFromIncapacitation();
+			creature->unlock();
+		} catch (...) {
+			creature->error("unreported exception caught in CreatureRecoveryEvent::activate");
+			creature->unlock();
+		}
+
+		return true;
 	}
 
 };
 
-#endif /*INTANGIBLEOBJECTMESSAGE3_H_*/
+#endif /*CREATUREPETINCAPACITATIONRECOVERYEVENT_H_*/

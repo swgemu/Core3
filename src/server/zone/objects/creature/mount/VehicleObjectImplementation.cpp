@@ -42,68 +42,37 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../../../managers/creature/CreatureManagerImplementation";
+#include "VehicleObjectImplementation.h"
 
-import "../Creature";
+#include "../Creature.h"
+#include "../CreatureImplementation.h"
 
-import "../CreatureObject";
+#include "../../player/Player.h"
 
-import "../../player/Player";
+#include "../../intangible/IntangibleObject.h"
+#include "../../intangible/IntangibleObjectImplementation.h"
 
-import "../../intangible/IntangibleObject";
+#include "../../../packets.h"
+#include "../../../packets/creature/CreatureObjectMessage3.h"
 
-import "../../scene/SceneObject";
+#include "../../../ZoneClientSession.h"
 
-interface CreaturePet implements Creature {
 
-	CreaturePet(Player owner, unsigned long oid) {
-		super(oid);	
-	}
+VehicleObjectImplementation::VehicleObjectImplementation(Player* linkCreature) : VehicleObjectServant() {
+	linkedCreature = linkCreature;
 
-	void init(Creature creature , float growth);
-	void createDataPad();
-	
-	void setLinkedCreature(Player linkCreature);
-	Player getLinkedCreature();
-	void setDatapadItem(SceneObject item);
-	IntangibleObject getDatapadItem();
-	void parseItemAttributes();
+}
 
-	void call();
-	void store(boolean doLock = true);
-	boolean canCall();
+VehicleObjectImplementation::VehicleObjectImplementation() : VehicleObjectServant() {
+	linkedCreature = NULL;
 
-	boolean isAttackable();
-	boolean isAttackableBy(CreatureObject creature);
-	void onIncapacitated(SceneObject attacker);
-	void recoverFromIncapacitation();
+}
 
-	void setFaction(unsigned int fac);
-	void setMaxLevel(unsigned int level);
 
-	boolean isCHPet();
-	boolean isDroid();
-	boolean isFactionPet();
+VehicleObjectImplementation::~VehicleObjectImplementation() {
 
-	boolean isInFollowState();
-
-	boolean isInStayState();
-
-	boolean isInGuardState();
-
-	void doGrowUp(boolean updateTime = true);
-
-	void initTrainingState(int command);
-	void setPetName(String name);
-	void parseCommandMessage(const UnicodeString message);
-	void setCommmandState(unsigned int state);
-
-	boolean activate();
-	void deaggro();
-
-	void handleAttackCommand();
-	void handleFollowCommand();
-	void handleStayCommand();
-	void handleGuardCommand();
-	void handleStoreCommand();
+	if (linkedCreature != NULL)
+		linkedCreature = NULL;
+	if (datapadItem != NULL)
+		datapadItem = NULL;
 }

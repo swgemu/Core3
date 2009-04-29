@@ -61,10 +61,10 @@ which carries forward this exception.
 
 
 class CreatureManagerImplementation;
-class CreatureGroup;
 class LairObject;
 class BuildingObject;
 
+class CreatureGroup;
 class CreatureImplementation : public CreatureServant, public Event {
 protected:
 	CreatureManagerImplementation* creatureManager;
@@ -174,12 +174,6 @@ public:
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 
 	void generateAttributes(SceneObject* obj);
-
-	// spatial methods
-
-	void updateZone(bool lightUpdate = false, bool sendPackets = true);
-	void updateZoneWithParent(uint64 par, bool lightUpdate = false, bool sendPackets = true);
-	void updateCreaturePosition(bool lightUpdate);
 
 	void loadItems();
 
@@ -410,9 +404,9 @@ public:
 		return type == RECRUITER;
 	}
 
-	inline bool isMount() {
-		return type == MOUNT;
-	}
+	/*inline bool isMount() {
+		return objectSubType == TangibleObjectImplementation::VEHICLE;
+	}*/
 
 	inline bool isInActiveState() {
 		return creatureState == ACTIVE;

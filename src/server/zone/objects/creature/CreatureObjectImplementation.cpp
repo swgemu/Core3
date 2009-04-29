@@ -286,7 +286,6 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	maskScent = 0;
 	camoXPTraget = NULL;
 	campMod = 0;
-	petNumber = 0;
 
 	ferocity = 0;
 	baby = false;
@@ -402,6 +401,7 @@ CreatureObjectImplementation::~CreatureObjectImplementation() {
 }
 
 void CreatureObjectImplementation::sendToOwner(Player* player, bool doClose) {
+
 	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
@@ -3864,11 +3864,8 @@ float CreatureObjectImplementation::getDistanceTo(SceneObject* targetCreature) {
 	return sqrt(deltaX * deltaX + deltaY * deltaY);
 }
 
-void CreatureObjectImplementation::mountCreature(MountCreature* mnt, bool lockMount) {
-	if (mnt != mount || isMounted() || mnt == NULL)
-		return;
-
-	if (mount->isDisabled() || !isInRange(mount, 5) || isKnockedDown())
+void CreatureObjectImplementation::mountCreature(CreatureObject* mnt, bool lockMount) {
+	if (isMounted() || mnt == NULL || !mnt->isMount())
 		return;
 
 	if (!mountCooldown.isPast())
@@ -3877,34 +3874,35 @@ void CreatureObjectImplementation::mountCreature(MountCreature* mnt, bool lockMo
 	mountCooldown.update();
 	mountCooldown.addMiliTime(3000);
 
+	if (!mnt->isMount())
+		return;
+
+	if (!mnt->isMount() || !isInRange(mnt, 5) || isKnockedDown())
+		return;
+
+	mount = mnt;
+
 	setPosture(CreaturePosture::UPRIGHT);
-SceneObject* test = mount->getParent();
+
 	parent = mount;
 	linkType = 4;
+
 	broadcastMessage(link(mount));
 
 	try {
 		if (lockMount)
-			mnt->wlock(_this);
-
-		if (mount == NULL) {
-			if (lockMount)
-				mnt->unlock();
-			return;
-		}
+			mount->wlock(_this);
 
 		mount->setState(CreatureState::MOUNTEDCREATURE);
 		mount->updateStates();
-
 		updateSpeed(mount->getSpeed(), mount->getAcceleration());
 		setState(CreatureState::RIDINGMOUNT);
 		updateStates();
-
 		if (lockMount)
-			mnt->unlock();
+			mount->unlock();
 	} catch (...) {
 		if (lockMount)
-			mnt->unlock();
+			mount->unlock();
 	}
 }
 
@@ -3922,11 +3920,9 @@ void CreatureObjectImplementation::dismount(bool lockMount, bool ignoreCooldown)
 	UpdateContainmentMessage* msg = new UpdateContainmentMessage(objectID, 0, 0xFFFFFFFF);
 	broadcastMessage(msg);
 
-	MountCreature* mnt = mount;
-
 	try {
 		if (lockMount)
-			mnt->wlock(_this);
+			mount->wlock(_this);
 
 		if (mount != NULL) {
 			mount->clearState(CreatureState::MOUNTEDCREATURE);
@@ -3943,10 +3939,11 @@ void CreatureObjectImplementation::dismount(bool lockMount, bool ignoreCooldown)
 		updateStates();
 
 		if (lockMount)
-			mnt->unlock();
+			mount->unlock();
+		mount = NULL;
 	} catch (...) {
 		if (lockMount)
-			mnt->unlock();
+			mount->unlock();
 	}
 
 	parent = NULL;
@@ -4148,7 +4145,35 @@ void CreatureObjectImplementation::removeBuffs(bool doUpdateClient) {
 }
 
 bool CreatureObjectImplementation::isLootOwner(CreatureObject* creature) {
-	int maxDmg = 0;
+	CreatureObject* lootOwner = getLootOwner();
+	if (lootOwner == creature)
+		return true;
+
+	if (lootOwner->isPet()) {
+
+	}
+
+	Player* playerLootOwner;
+
+	GroupObject* group = NULL;
+	if (creature->isPlayer()) {
+		group = ((Player*)creature)->getGroupObject();
+	} else if (creature->isPet()) {
+		Player* petOwner = ((CreaturePet*)creature)->getLinkedCreature();
+
+		if (creature == petOwner)
+			return true;
+
+		group = petOwner->getGroupObject();
+	}
+
+	if (group != NULL)
+		for (int i = 0; i < group->getGroupSize(); i++)
+			if (group->getGroupMember(i) == creature)
+				return true;
+
+	return false;
+	/*int maxDmg = 0;
 	int i = 0;
 
 	for (; i < damageMap.size(); i++) {
@@ -4168,7 +4193,7 @@ bool CreatureObjectImplementation::isLootOwner(CreatureObject* creature) {
 			if (damageMap.get(group->getGroupMember(i)) == maxDmg)
 				return true;
 
-	return false;
+	return false;*/
 }
 
 CreatureObject* CreatureObjectImplementation::getLootOwner() {
@@ -4369,8 +4394,8 @@ bool CreatureObjectImplementation::hatesFaction(uint faction) {
 }
 
 bool CreatureObjectImplementation::isAttackable() {
-	if (isNonPlayerCreature() && ((Creature *) _this)->isMount())
-		return !((MountCreature *) _this)->isDisabled();
+	if (isNonPlayerCreature() && isVehicle())
+		return !isDisabled();
 	else
 		return !isIncapacitated() && !isDead();
 }
@@ -4825,4 +4850,125 @@ void CreatureObjectImplementation::deactivateEscape() {
 	escapeTime.update();
 	escapeProtection.update();
 	escapeProtection.addMiliTime(20000);
+}
+
+void CreatureObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
+	bool insert = false;
+
+	try {
+		zone->lock();
+
+		if (parent != NULL && parent->isCell()) {
+			CellObject* cell = (CellObject*) parent;
+
+			removeFromBuilding((BuildingObject*) cell->getParent());
+
+			parent = NULL;
+			insert = true;
+		}
+
+		if (insert)
+			zone->insert(this);
+		else
+			zone->update(this);
+
+		zone->inRange(this, 128);
+
+		if (sendPackets)
+			updateCreaturePosition(lightUpdate);
+
+		zone->unlock();
+	} catch (...) {
+		System::out << "exception CreatureImplementation::updateZone()\n";
+
+		zone->unlock();
+	}
+}
+
+void CreatureObjectImplementation::updateZoneWithParent(uint64 par, bool lightUpdate,
+		bool sendPackets) {
+	if (zone == NULL)
+		return;
+
+	SceneObject* newParent = parent;
+
+	if (parent == NULL || (parent != NULL && parent->getObjectID() != par))
+		newParent = zone->lookupObject(par);
+
+	if (newParent == NULL)
+		return;
+
+	bool insert = false;
+
+	try {
+		zone->lock();
+
+		if (newParent != parent) {
+			if (parent == NULL) {
+				zone->remove(this);
+				insert = true;
+			} else {
+				BuildingObject* building =
+						(BuildingObject*) parent->getParent();
+				SceneObject* newObj = newParent->getParent();
+
+				if (newObj->isBuilding()) {
+					BuildingObject* newBuilding = (BuildingObject*) newObj;
+
+					if (building != newBuilding) {
+						removeFromBuilding(building);
+
+						insert = true;
+					}
+				}
+
+				if (parent != NULL)
+					((CellObject*) parent)->removeChild(_this);
+			}
+			parent = newParent;
+			((CellObject*) parent)->addChild(_this);
+		}
+
+		BuildingObject* building = (BuildingObject*) parent->getParent();
+
+		if (insert) {
+			insertToBuilding(building);
+		} else {
+			building->update(this);
+			building->inRange(this, 128);
+		}
+
+		if (sendPackets)
+			updateCreaturePosition(lightUpdate);
+
+		zone->unlock();
+	} catch (...) {
+		zone->unlock();
+		error("Exception in CreatureImplementation::updateZoneWithParent");
+	}
+}
+
+void CreatureObjectImplementation::updateCreaturePosition(bool lightUpdate) {
+	++movementCounter;
+
+	for (int i = 0; i < inRangeObjectCount(); ++i) {
+		SceneObject* obj =
+				(SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_getStub());
+
+		if (obj->isPlayer()) {
+			Player* player = (Player*) obj;
+
+			if (!lightUpdate) {
+				if (parent != NULL) {
+					player->sendMessage(new UpdateTransformWithParentMessage(_this));
+				} else
+					player->sendMessage(new UpdateTransformMessage(_this));
+			} else {
+				if (parent != NULL)
+					player->sendMessage(new LightUpdateTransformWithParentMessage(_this));
+				else
+					player->sendMessage(new LightUpdateTransformMessage(_this));
+			}
+		}
+	}
 }

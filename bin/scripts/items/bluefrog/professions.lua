@@ -76,4 +76,4 @@ addBFGroup("Non-Combatant Professions", "root");
   addBFGroup("Outdoor Professions", "Non-Combatant Professions");
     addBFProfession("Master Scout", "Outdoor Professions", "outdoors_scout_master");
     addBFProfession("Master Ranger", "Outdoor Professions", "outdoors_ranger_master");
-    addBFProfession("Master Squad Leader", "Outdoor Professions", "outdoors_squadleader_master");     
+    addBFProfession("Master Squad Leader", "Outdoor Professions", "outdoors_squadleader_master");         addBFProfession("Master Creature Handler", "Outdoor Professions", "outdoors_creaturehandler_master");    

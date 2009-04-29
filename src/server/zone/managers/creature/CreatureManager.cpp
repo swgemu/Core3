@@ -22,6 +22,8 @@
 
 #include "../../objects/creature/shuttle/ShuttleCreature.h"
 
+#include "../../objects/creature/pet/CreaturePet.h"
+
 /*
  *	CreatureManagerStub
  */
@@ -375,6 +377,34 @@ float CreatureManager::getGlobalNPCRegen() {
 		return ((CreatureManagerImplementation*) _impl)->getGlobalNPCRegen();
 }
 
+void CreatureManager::insertCreaturePet(CreaturePet* pet, bool doLock) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 30);
+		method.addObjectParameter(pet);
+		method.addBooleanParameter(doLock);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureManagerImplementation*) _impl)->insertCreaturePet(pet, doLock);
+}
+
+void CreatureManager::setPetDefaultAttributes(CreaturePet* creature, bool doLock) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 31);
+		method.addObjectParameter(creature);
+		method.addBooleanParameter(doLock);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureManagerImplementation*) _impl)->setPetDefaultAttributes(creature, doLock);
+}
+
 /*
  *	CreatureManagerAdapter
  */
@@ -457,6 +487,12 @@ Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		break;
 	case 29:
 		resp->insertFloat(getGlobalNPCRegen());
+		break;
+	case 30:
+		insertCreaturePet((CreaturePet*) inv->getObjectParameter(), inv->getBooleanParameter());
+		break;
+	case 31:
+		setPetDefaultAttributes((CreaturePet*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	default:
 		return NULL;
@@ -559,6 +595,14 @@ void CreatureManagerAdapter::setGlobalNPCRegen(float value) {
 
 float CreatureManagerAdapter::getGlobalNPCRegen() {
 	return ((CreatureManagerImplementation*) impl)->getGlobalNPCRegen();
+}
+
+void CreatureManagerAdapter::insertCreaturePet(CreaturePet* pet, bool doLock) {
+	return ((CreatureManagerImplementation*) impl)->insertCreaturePet(pet, doLock);
+}
+
+void CreatureManagerAdapter::setPetDefaultAttributes(CreaturePet* creature, bool doLock) {
+	return ((CreatureManagerImplementation*) impl)->setPetDefaultAttributes(creature, doLock);
 }
 
 /*

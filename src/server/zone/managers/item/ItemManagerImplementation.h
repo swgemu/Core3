@@ -149,6 +149,7 @@ public:
 	void createDatapadItem(Player* player, SceneObject* item);
 	void createDatapadLinkedItem(Player* player, SceneObject* item);
 	void saveDatapadItem(Player* player, SceneObject* item);
+	void saveDatapadLinkedItem(Player* player, SceneObject* item);
 	void deleteDatapadItem(Player* player, SceneObject* item, bool notify);
 
 	void createPlayerDeed(Player* player, DeedObject* item);

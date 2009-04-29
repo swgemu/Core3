@@ -57,15 +57,13 @@ which carries forward this exception.
 #include "../../../packets/creature/CreatureObjectMessage3.h"
 
 #include "../../../ZoneClientSession.h"
+#include "VehicleObject.h"
 
+MountCreatureImplementation::MountCreatureImplementation(Player* linkCreature, const String& name, uint32 itnocrc, uint32 objCRC, uint64 oid) : MountCreatureServant(oid), VehicleObject(linkCreature) {
 
-MountCreatureImplementation::MountCreatureImplementation(CreatureObject* linkCreature, const String& name,
-		const String& stf, uint32 itnocrc, uint32 objCRC, uint64 oid) : MountCreatureServant(oid) {
 	creatureLinkID = linkCreature->getObjectID();
 
-	linkedCreature = linkCreature;
-
-	stfFile = stf;
+	stfFile = "monster_name";
 	stfName = name;
 
 	objectCRC = objCRC;
@@ -73,17 +71,19 @@ MountCreatureImplementation::MountCreatureImplementation(CreatureObject* linkCre
 	StringBuffer loggingname;
 	loggingname << "Mount = 0x" << oid;
 	setLoggingName(loggingname.toString());
-
+	setZoneProcessServer(linkCreature->getZoneProcessServer());
 	init();
 }
 
-MountCreatureImplementation::MountCreatureImplementation(uint64 oid, uint32 tempcrc, const UnicodeString& n, const String& tempn)
-	: MountCreatureServant(oid) {
+MountCreatureImplementation::MountCreatureImplementation(Player* linkCreature, uint64 oid, uint32 tempcrc, const UnicodeString& n, const String& tempn)
+	: MountCreatureServant(oid), VehicleObject(linkCreature) {
+
+	creatureLinkID = linkCreature->getObjectID();
 
 	objectCRC = tempcrc;
 
 	customName = n;
-	stfFile = tempn;
+	stfFile = "monster_name";
 	stfName = tempn;
 
 	StringBuffer loggingname;
@@ -101,13 +101,12 @@ MountCreatureImplementation::~MountCreatureImplementation() {
 }
 
 void MountCreatureImplementation::init(){
+	objectType = TangibleObjectImplementation::NONPLAYERCREATURE;
 	objectSubType = TangibleObjectImplementation::VEHICLE;
-
-	mountType = 0;
 
 	parent = NULL;
 
-	setType(CreatureImplementation::MOUNT);
+	//setType(CreatureImplementation::MOUNT);
 
 	optionsBitmask = 0x1080;
 	pvpStatusBitmask = 0x01;
@@ -119,66 +118,25 @@ void MountCreatureImplementation::init(){
 	maxCondition = 20000;
 
 	itemAttributes = new ItemAttributes();
-
-	instantMount = false;
-
+	attackable = true;
 	setLogging(false);
 	setGlobalLogging(true);
 
 }
 
-void MountCreatureImplementation::setLinkedCreature(CreatureObject* linkCreature) {
-	creatureLinkID = linkCreature->getObjectID();
-
-	linkedCreature = linkCreature;
+bool MountCreatureImplementation::isAttackable() {
+	return !isDisabled();
 }
 
-void MountCreatureImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClientSession* client = player->getClient();
-	if (client == NULL)
-		return;
-
-	create(client);
-
-	BaseMessage* creo3 = new CreatureObjectMessage3(_this);
-	client->sendMessage(creo3);
-
-	BaseMessage* creo6 = new CreatureObjectMessage6(_this);
-	client->sendMessage(creo6);
-
-	sendFactionStatusTo(player);
-
-	if (isRidingCreature()) {
-		linkedCreature->sendTo(player);
-		linkedCreature->sendItemsTo(player);
-	}
-
-	if (doClose)
-		SceneObjectImplementation::close(client);
-}
-
-void MountCreatureImplementation::die() {
-	/*
-	 * Pets need to be handled here later
-	 *
-	while (damageMap.size() > 0) {
-		CreatureObject* object = damageMap.elementAt(0)->getKey();
-		damageMap.drop(object);
-	}
-
-	defenderList.removeAll();
-
-	clearStates();
-
-	aggroedCreature = NULL;
-	*/
+bool MountCreatureImplementation::isAttackableBy(CreatureObject* creature) {
+	return getLinkedCreature()->isAttackableBy(creature);
 }
 
 void MountCreatureImplementation::repair() {
-	if (linkedCreature == NULL || !linkedCreature->isPlayer())
+	if (getLinkedCreature() == NULL || !getLinkedCreature()->isPlayer())
 		return;
 
-	Player* linkedPlayer = (Player*)linkedCreature;
+	Player* linkedPlayer = (Player*)getLinkedCreature();
 
 	ZoneClientSession* client = linkedPlayer->getClient();
 	if (client == NULL)
@@ -225,7 +183,7 @@ void MountCreatureImplementation::repair() {
 }
 
 void MountCreatureImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
-	if (player->getMount() == _this) {
+	if (player == getLinkedCreature()) {
 		omr->addRadialParent(205, 1, "@pet/pet_menu:menu_enter_exit");
 		omr->addRadialParent(61, 3, "");
 
@@ -238,14 +196,37 @@ void MountCreatureImplementation::sendRadialResponseTo(Player* player, ObjectMen
 	player->sendMessage(omr);
 }
 
+void MountCreatureImplementation::sendTo(Player* player, bool doClose) {
+	ZoneClientSession* client = player->getClient();
+	if (client == NULL)
+		return;
+
+	create(client);
+
+	BaseMessage* creo3 = new CreatureObjectMessage3(_this);
+	client->sendMessage(creo3);
+
+	BaseMessage* creo6 = new CreatureObjectMessage6(_this);
+	client->sendMessage(creo6);
+
+	sendFactionStatusTo(player);
+
+	if (isRidingCreature()) {
+		getLinkedCreature()->sendTo(player);
+		getLinkedCreature()->sendItemsTo(player);
+	}
+
+	if (doClose)
+		SceneObjectImplementation::close(client);
+}
 
 void MountCreatureImplementation::parseItemAttributes() {
 
 	maxCondition = itemAttributes->getMaxCondition();
 	conditionDamage = maxCondition - itemAttributes->getCurrentCondition();
 
-	String temp = "objectFileName";
-	setObjectFileName(itemAttributes->getStringAttribute(temp));
+	//String temp = "objectFileName";
+	//setObjectFileName(itemAttributes->getStringAttribute(temp));
 }
 
 
@@ -281,56 +262,54 @@ void MountCreatureImplementation::addAttributes(AttributeListMessage* alm) {
 void MountCreatureImplementation::call() {
 	if (isInQuadTree())
 		return;
-
 	try {
+
+		if (getLinkedCreature() == NULL)
+			return;
+
 		parent = NULL;
 
-		linkedCreature->wlock(_this);
+		getLinkedCreature()->wlock(_this);
 
-		if (linkedCreature->getParent() != NULL) {
-			linkedCreature->unlock();
+		if (getLinkedCreature()->getParent() != NULL) {
+			getLinkedCreature()->unlock();
 			return;
 		}
 
-
-		if (linkedCreature->getMount() != NULL) {
-			linkedCreature->getMount()->store(false);
+		if (getLinkedCreature()->getMount() != NULL) {
+			((VehicleObject*)getLinkedCreature()->getMount())->store(false);
 		}
 
-		if (linkedCreature->isInCombat()) {
-			linkedCreature->unlock();
+		if (getLinkedCreature()->isInCombat()) {
+			getLinkedCreature()->unlock();
 			return;
 		}
 
 		// Jet Pack
 		if (isJetpack()) {
-			//initializePosition(linkedCreature->getPositionX(), linkedCreature->getPositionZ() + 4, linkedCreature->getPositionY());
 			setCustomizationVariable("index_hover_height", 40); // 32 = 9m, 64 = 12m
-			//setHeight(4.0f);
 		}
-		//else
-			initializePosition(linkedCreature->getPositionX(), linkedCreature->getPositionZ(), linkedCreature->getPositionY());
 
-		zone = linkedCreature->getZone();
+		initializePosition(getLinkedCreature()->getPositionX(), getLinkedCreature()->getPositionZ(), getLinkedCreature()->getPositionY());
+
+		zone = getLinkedCreature()->getZone();
 
 		if (zone == NULL) {
-			linkedCreature->unlock();
+			getLinkedCreature()->unlock();
 			return;
 		}
 
-		linkedCreature->setMount(_this);
+		getLinkedCreature()->unlock();
 
-		linkedCreature->unlock();
+		if (getDatapadItem() != NULL) {
+			getDatapadItem()->wlock();
 
-		if (datapadItem != NULL) {
-			datapadItem->wlock();
+			getDatapadItem()->updateStatus(1);
 
-			datapadItem->updateStatus(1);
-
-			datapadItem->unlock();
+			getDatapadItem()->unlock();
 		}
 
-		setFaction(linkedCreature->getFaction());
+		setFaction(getLinkedCreature()->getFaction());
 
 		if (getObjectCRC()==0xAF6D9F4F)//swoop
 			changeConditionDamage(25);
@@ -350,15 +329,16 @@ void MountCreatureImplementation::call() {
 
 		insertToZone(zone);
 
-		if (instantMount) {
-			linkedCreature->wlock(_this);
+		if (isJetpack()) {
+			getLinkedCreature()->wlock(_this);
 
-			linkedCreature->mountCreature(_this, false);
+			getLinkedCreature()->mountCreature(_this, false);
 
-			linkedCreature->unlock();
+			getLinkedCreature()->unlock();
 		}
+
 	} catch (Exception& e) {
-		linkedCreature->unlock();
+		getLinkedCreature()->unlock();
 
 		error("calling MountCreature");
 		error(e.getMessage());
@@ -366,33 +346,30 @@ void MountCreatureImplementation::call() {
 }
 
 void MountCreatureImplementation::store(bool doLock) {
-	if (zone == NULL || linkedCreature == NULL || !isInQuadTree())
+	if (zone == NULL || getLinkedCreature() == NULL || !isInQuadTree())
 		return;
 
 	try {
 		if (doLock)
-			linkedCreature->wlock(_this);
+			getLinkedCreature()->wlock(_this);
 
-		if (linkedCreature->isMounted())
-			linkedCreature->dismount(false, true);
+		if (getLinkedCreature()->isMounted())
+			getLinkedCreature()->dismount(false, true);
 
-		linkedCreature->setMount(NULL);
-
+		getLinkedCreature()->setMount(NULL);
 		if (doLock)
-			linkedCreature->unlock();
+			getLinkedCreature()->unlock();
 
-		if (datapadItem != NULL) {
-			datapadItem->wlock();
-
-			datapadItem->updateStatus(0);
-
-			datapadItem->unlock();
+		if (getDatapadItem() != NULL) {
+			getDatapadItem()->wlock();
+			getDatapadItem()->updateStatus(0);
+			getDatapadItem()->unlock();
 		}
 
 		removeFromZone();
 	} catch (Exception& e) {
 		if (doLock)
-			linkedCreature->unlock();
+			getLinkedCreature()->unlock();
 
 		error("storing MountCreature");
 		error(e.getMessage());

@@ -88,6 +88,7 @@ interface ItemManager {
 
 	void savePlayerItem(Player player, TangibleObject item); 
 	void saveDatapadItem(Player player, ManufactureSchematic schematic);
+	void saveDatapadLinkedItem(Player player, SceneObject item);
 
 	void deletePlayerItem(Player player, TangibleObject item, boolean notify);
 	void deleteDatapadItem(Player player, SceneObject item, boolean notify);

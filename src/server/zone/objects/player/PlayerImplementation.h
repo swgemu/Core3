@@ -84,6 +84,7 @@ which carries forward this exception.
 #include "badges/Badges.h"
 #include "badges/Badge.h"
 
+#include "../creature/pet/CreaturePet.h"
 //#include "../tangible/terminal/cloning/CloningTerminal.h"
 
 class PlayerManager;
@@ -311,6 +312,12 @@ class PlayerImplementation : public PlayerServant {
 	//Cloning
 	CloningFacility* cloningFacility;
 
+	uint8 numberOfCHPets;
+	uint8 levelOfCHPets;
+	bool droidCalled;
+	bool factionPetCalled;
+	VectorMap<uint64, CreaturePet*> petList;
+
 public:
 	static const int ONLINE = 1;
 	static const int OFFLINE = 2;
@@ -535,10 +542,7 @@ public:
 	void reinsertToZone(Zone* zone);
 
 	void updateZone(bool lightUpdate = false);
-	//void lightUpdateZone();
-
-	void updateZoneWithParent(uint64 Parent, bool lightUpdate = false);
-	//void lightUpdateZoneWithParent(uint64 Parent);
+	void updateZoneWithParent(uint64 Parent, bool lightUpdate = false);	//void lightUpdateZoneWithParent(uint64 Parent);
 
 	void updatePlayerPosition(bool doLightUpdate = false);
 	void updateMountPosition();
@@ -2134,6 +2138,46 @@ public:
 	inline bool isPowerboosted() {
 		return powerboosted;
 	}
+
+	inline void setNumberOfCHPets(uint8 number) {
+		numberOfCHPets = number;
+	}
+	inline uint8 getNumberOfCHPets() {
+		return numberOfCHPets;
+	}
+
+	inline void setLevelOfCHPets(uint8 level) {
+		levelOfCHPets = level;
+	}
+
+	inline uint8 getLevelOfCHPets() {
+		return levelOfCHPets;
+	}
+
+	inline void setDroidCalled(bool hasDroidPet) {
+		droidCalled = hasDroidPet;
+	}
+
+	inline bool hasDroidCalled() {
+		return droidCalled;
+	}
+
+	inline void setFactionPetCalled(bool hasFactionPet) {
+		factionPetCalled = hasFactionPet;
+	}
+
+	inline bool hasFactionPetCalled() {
+		return factionPetCalled;
+	}
+
+	inline bool hasPetCalled() {
+		return (0 < petList.size());
+	}
+	void registerPet(CreaturePet* pet);
+	void unregisterPet(CreaturePet* pet);
+	void sendChatMessageToPets(const UnicodeString& message);
+	void sendTellToPets(String& name, const UnicodeString& message);
+
 
 	friend class PlayerManager;
 	friend class ProfessionManager;

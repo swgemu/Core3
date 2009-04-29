@@ -128,6 +128,9 @@ void ScriptAttacksManager::registerFunctions() {
 
 	lua_register(getLuaState(), "AddCMDotAttackTargetSkill", AddCMDotAttackTargetSkill);
 	lua_register(getLuaState(), "AddThreatenAttackTargetSkill", AddThreatenAttackTargetSkill);
+
+	lua_register(getLuaState(), "AddTameTargetSkill", AddTameTargetSkill);
+
 }
 
 void ScriptAttacksManager::registerGlobals() {
@@ -2440,5 +2443,22 @@ int ScriptAttacksManager::AddThreatenAttackTargetSkill(lua_State *L) {
 	attack->setForceCostMultiplier(forceCostMultiplier);
 
 	CombatActions->put(attack);
+	return 0;
+}
+
+int ScriptAttacksManager::AddTameTargetSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	if (!skill.isValidTable())
+		return 0;
+
+	TameTargetSkill* tame;
+
+	String skillname = skill.getStringField("skillname");
+
+	tame = new TameTargetSkill(skillname, server);
+
+	CombatActions->put(tame);
+
 	return 0;
 }

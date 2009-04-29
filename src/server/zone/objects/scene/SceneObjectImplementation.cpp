@@ -343,7 +343,6 @@ void SceneObjectImplementation::insertToZone(Zone* zone) {
 
 		if (parent != NULL && parent->isCell()) {
 			BuildingObject* building = (BuildingObject*)parent->getParent();
-
 			insertToBuilding(building);
 
 			building->notifyInsertToZone(_this);
@@ -627,8 +626,9 @@ void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int dama
 	} else
 		dmg = playerDamageList.get(creature);
 
-	if (!creature->isPlayer())
+	if (!creature->isPlayer()) {
 		dmg->addDamage(xptype, damage, 0);
+	}
 	else {
 		Player* player = (Player*)creature;
 		dmg->addDamage(xptype, damage, player->calcPlayerLevel(xptype));
@@ -693,6 +693,38 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 		CreatureObject *creature = entry->getKey();
 		DamageDone *dmg = entry->getValue();
 
+		if (creature->isPet()) {
+			CreaturePet* pet = (CreaturePet*) creature;
+			if (pet->isCHPet()) {
+				String chType = "creaturehandler";
+				float xpaddsingle = 0.0f;
+				int petLevel = creature->getLevel();
+
+				for ( int j = 0; j < dmg->getSize(); j++) {
+					float damage = (float)dmg->getDamage(j);
+
+					xpaddsingle = (damage/total)*20.0f*((float)levels);
+
+					if (levels > 25)
+						xpaddsingle += (petLevel - levels) * 20.0f;
+					else if (petLevel > levels)
+						xpaddsingle += (levels - petLevel) * 1.5f;
+				}
+
+				if (!((petLevel - 7) < levels && levels < (petLevel + 7)))
+					xpaddsingle /= 10.0f;
+
+				PlayerManager* pmng = server->getPlayerManager();
+				if (pmng != NULL)
+					xpaddsingle *= pmng->getXpScale();
+
+				Player * petOwner = (Player*)pet->getLinkedCreature();
+				String skillBox = "outdoors_creaturehandler_novice";
+				if (petOwner->hasSkillBox(skillBox))
+					petOwner->addXp(chType, (int) xpaddsingle,true);
+			}
+		}
+
 		// don't do any of this if this isn't a player
 		if (!creature->isPlayer()) {
 			//delete dmg; ?
@@ -717,7 +749,7 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 			String xptype = dmg->getXpType(j);
 			float xpaddsingle = 0.0f;
 
-			if (player->isInAGroup()) { // use group calculation
+			if (creature->isInAGroup()) { // use group calculation
 				GroupObject *group = player->getGroupObject();
 				if (isNonPlayerCreature()) {
 					xpaddsingle = (groupDamageList.get(group)/total)*(damage/totaldamage)*40.0f*((float)levels)*((multiplier)/(group->getGroupSize()))*(1.0f+((group->getGroupSize()+5.0f)*.01f));
@@ -771,6 +803,9 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 
 			if (xptype != "jedi_general")
 				xpadd += xpaddsingle;
+			if (creature->isPet()) {
+				System::out << "ch xp = " << xpaddsingle << "\n";
+			}
 		}
 
 		xpadd /= 10.0f;
