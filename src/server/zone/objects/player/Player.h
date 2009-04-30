@@ -1043,9 +1043,9 @@ public:
 
 	void unregisterPet(CreaturePet* pet);
 
-	void sendChatMessageToPets(const UnicodeString& message);
+	void sendMessageToPets(const UnicodeString& message);
 
-	void sendTellToPets(String& name, const UnicodeString& message);
+	bool canStoreMorePets();
 
 protected:
 	Player(DummyConstructorParameter* param);
@@ -2038,9 +2038,9 @@ public:
 
 	void unregisterPet(CreaturePet* pet);
 
-	void sendChatMessageToPets(const UnicodeString& message);
+	void sendMessageToPets(const UnicodeString& message);
 
-	void sendTellToPets(String& name, const UnicodeString& message);
+	bool canStoreMorePets();
 
 protected:
 	String _param0_queueFlourish__String_long_int_;
@@ -2106,9 +2106,7 @@ protected:
 	String _param0_addConsentEntry__String_;
 	String _param0_removeConsentEntry__String_;
 	String _param0_hasConsented__String_;
-	UnicodeString _param0_sendChatMessageToPets__UnicodeString_;
-	String _param0_sendTellToPets__String_UnicodeString_;
-	UnicodeString _param1_sendTellToPets__String_UnicodeString_;
+	UnicodeString _param0_sendMessageToPets__UnicodeString_;
 };
 
 class PlayerHelper : public DistributedObjectClassHelper, public Singleton<PlayerHelper> {

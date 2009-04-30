@@ -95,6 +95,10 @@ public:
 			return 0;
 		}
 
+		if (!player->isInRange(targetCreature,10.0f)) {
+			player->sendSystemMessage("Failed to tame creature");
+			return 0;
+		}
 
 		int stage = 0;
 
@@ -107,41 +111,9 @@ public:
 	}
 
 	void tame(Player* player, Creature* creature, int stage) {
-		Datapad* datapad = NULL;
-		int chPet = 0;
-		int chPetNumMax = 0;
-
 		switch(stage) {
 			case 0:
-				datapad = player->getDatapad();
-				chPet = 0;
-				chPetNumMax = player->getSkillMod("stored_pets");
-
-				//TODO: move datapad check to player class
-				if (datapad == NULL)
-					return;
-				for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
-					SceneObject* item = datapad->getObject(i);
-					if (item->isIntangible()) {
-						if (item->isIntangible()) {
-							IntangibleObject* itno = (IntangibleObject*)item;
-							SceneObject* worldObject = itno->getWorldObject();
-
-							if (worldObject->isNonPlayerCreature()) {
-								CreatureObject* crea = (Creature*) worldObject;
-								if (crea->isPet()) {
-									if (((CreaturePet*)crea)->isCHPet())
-										chPet++;
-								}
-							}
-						}
-					}
-				}
-
-				if (chPetNumMax == 0)
-					chPetNumMax = 1;
-
-				if (chPetNumMax <= chPet) {
+				if (!player->canStoreMorePets()) {
 					player->sendSystemMessage("pet/pet_menu","sys_too_many_stored");
 					return;
 				}

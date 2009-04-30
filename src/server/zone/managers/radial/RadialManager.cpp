@@ -511,17 +511,19 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		case 155: //PET_TRICK_2
 			handlePetTraining(obj,PetCommandHelper::PETTRICK2);
 			break;
-		case 156: //PET_TRICK_3
-			handlePetTraining(obj,PetCommandHelper::PETEMBOLDEN);
+		case 156: //FOLLOW_OTHER
+			handlePetTraining(obj,PetCommandHelper::PETFOLLOWOTHER);
 			break;
 		case 157: //PET_TRICK_4
-			handlePetTraining(obj,PetCommandHelper::PETENRAGE);
 			break;
 		case 158: //PET_GROUP
 			handlePetTraining(obj,PetCommandHelper::PETGROUP);
 			break;
-		case 159: //PET_TAME
-		case 160: //PET_FEED
+		case 159: //PET_TRANSFER
+			handlePetTraining(obj,PetCommandHelper::PETTRANSFER);
+			break;
+		case 160: //PET_STORE
+			handlePetTraining(obj,PetCommandHelper::PETSTORE);
 			break;
 		case 161: //PET_SPECIAL_ATTACK_ONE
 			handlePetTraining(obj,PetCommandHelper::PETSPECIALATTACK1);

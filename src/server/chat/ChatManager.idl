@@ -71,7 +71,7 @@ interface ChatManager {
 	void deleteMail(unsigned int mailid);
 
 	void handleTellMessage(Player player, Message pack);
-
+	
 	void handleMessage(Player player, Message pack);
 	void handleEmote(Player player, Message pack);
 	void handleMood(Player player, Message pack);

@@ -143,3 +143,70 @@ void PetCommandHelper::trainName(CreaturePet* pet) {
 	delete nameCandidates;
 	nameCandidates = NULL;
 }
+
+String PetCommandHelper::getStfDesc(int command) {
+	String stfDesc = "";
+	switch(command) {
+		case PETATTACK :
+			stfDesc = "@pet/pet_menu:menu_attack";
+			break;
+		case PETFOLLOW :
+			stfDesc = "@pet/pet_menu:menu_follow";
+			break;
+		case PETSTORE :
+			stfDesc = "@pet/pet_menu:menu_store";
+			break;
+		case PETRELEASE :
+			stfDesc = "@pet/pet_menu:menu_release";
+			break;
+		case PETSPECIALATTACK1 :
+			stfDesc = "@pet/pet_menu:menu_specialattack_one";
+			break;
+		case PETSPECIALATTACK2 :
+			stfDesc = "@pet/pet_menu:menu_specialattack_two";
+			break;
+		case PETSTAY :
+			stfDesc = "@pet/pet_menu:menu_stay";
+			break;
+		case PETGUARD :
+			stfDesc = "@pet/pet_menu:menu_guard";
+			break;
+		case PETPATROL :
+			stfDesc = "@pet/pet_menu:menu_patrol";
+			break;
+		case PETPATROLPOINTADD :
+			stfDesc = "@pet/pet_menu:menu_get_patrol_point";
+			break;
+		case PETPATROLPOINTCLEAR :
+			stfDesc = "@pet/pet_menu:menu_clear_patrol_points";
+			break;
+		case PETFORMATION1:
+			stfDesc = "@pet/pet_menu:menu_assume_formation_1";
+			break;
+		case PETFORMATION2:
+			stfDesc = "@pet/pet_menu:menu_assume_formation_2";
+			break;
+		case PETTRICK1 :
+			stfDesc = "@pet/pet_menu:menu_trick_1";
+			break;
+		case PETTRICK2 :
+			stfDesc = "@pet/pet_menu:menu_trick_2";
+			break;
+		case PETGROUP :
+			stfDesc = "@pet/pet_menu:menu_group";
+			break;
+		case PETFOLLOWOTHER :
+			stfDesc = "@pet/pet_menu:menu_follow_other";
+			break;
+		case PETFRIEND :
+			stfDesc = "@pet/pet_menu:menu_friend";
+			break;
+		case PETRANGEDATTACK :
+			stfDesc = "@pet/pet_menu:menu_ranged_attack";
+			break;
+		case PETTRANSFER :
+			stfDesc = "@pet/pet_menu:menu_transfer";
+			break;
+	}
+	return stfDesc;
+}

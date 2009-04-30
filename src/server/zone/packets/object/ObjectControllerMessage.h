@@ -233,6 +233,7 @@ public:
 	static void parseStopWatch(Player* player, Message* pack);
 	static void parseStopListen(Player* player, Message* pack);
 
+	static void parseTellPet(Player* player, Message* pack);
 };
 
 #endif /*OBJECTCONTROLLERMESSAGE_H_*/

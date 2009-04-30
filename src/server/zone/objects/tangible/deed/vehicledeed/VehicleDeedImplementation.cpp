@@ -134,7 +134,7 @@ void VehicleDeedImplementation::parseItemAttributes(){
 int VehicleDeedImplementation::useObject(Player* player) {
 	Datapad* datapad = player->getDatapad();
 
-	String cName = customName.toString();
+	String cName = "";
 	String sname = targetName.toString();
 	String sfile = "monster_name";
 

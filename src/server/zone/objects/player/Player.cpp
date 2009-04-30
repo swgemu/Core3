@@ -6195,7 +6195,7 @@ void Player::unregisterPet(CreaturePet* pet) {
 		((PlayerImplementation*) _impl)->unregisterPet(pet);
 }
 
-void Player::sendChatMessageToPets(const UnicodeString& message) {
+void Player::sendMessageToPets(const UnicodeString& message) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6205,21 +6205,19 @@ void Player::sendChatMessageToPets(const UnicodeString& message) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerImplementation*) _impl)->sendChatMessageToPets(message);
+		((PlayerImplementation*) _impl)->sendMessageToPets(message);
 }
 
-void Player::sendTellToPets(String& name, const UnicodeString& message) {
+bool Player::canStoreMorePets() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 485);
-		method.addAsciiParameter(name);
-		method.addUnicodeParameter(message);
 
-		method.executeWithVoidReturn();
+		return method.executeWithBooleanReturn();
 	} else
-		((PlayerImplementation*) _impl)->sendTellToPets(name, message);
+		return ((PlayerImplementation*) _impl)->canStoreMorePets();
 }
 
 /*
@@ -7668,10 +7666,10 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		unregisterPet((CreaturePet*) inv->getObjectParameter());
 		break;
 	case 484:
-		sendChatMessageToPets(inv->getUnicodeParameter(_param0_sendChatMessageToPets__UnicodeString_));
+		sendMessageToPets(inv->getUnicodeParameter(_param0_sendMessageToPets__UnicodeString_));
 		break;
 	case 485:
-		sendTellToPets(inv->getAsciiParameter(_param0_sendTellToPets__String_UnicodeString_), inv->getUnicodeParameter(_param1_sendTellToPets__String_UnicodeString_));
+		resp->insertBoolean(canStoreMorePets());
 		break;
 	default:
 		return NULL;
@@ -9592,12 +9590,12 @@ void PlayerAdapter::unregisterPet(CreaturePet* pet) {
 	return ((PlayerImplementation*) impl)->unregisterPet(pet);
 }
 
-void PlayerAdapter::sendChatMessageToPets(const UnicodeString& message) {
-	return ((PlayerImplementation*) impl)->sendChatMessageToPets(message);
+void PlayerAdapter::sendMessageToPets(const UnicodeString& message) {
+	return ((PlayerImplementation*) impl)->sendMessageToPets(message);
 }
 
-void PlayerAdapter::sendTellToPets(String& name, const UnicodeString& message) {
-	return ((PlayerImplementation*) impl)->sendTellToPets(name, message);
+bool PlayerAdapter::canStoreMorePets() {
+	return ((PlayerImplementation*) impl)->canStoreMorePets();
 }
 
 /*

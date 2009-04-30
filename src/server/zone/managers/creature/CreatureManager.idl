@@ -82,8 +82,10 @@ interface CreatureManager {
 
 	//Creature spawnCreature(String objname, unsigned long cellid, float x, float y, int bitmask = 0, boolean baby = false, boolean doLock = true, float height = 1);
 	boolean verifyCreatureSpawn(String name);
+	boolean verifyCreatureNameByStfName(String stfName);
 
 	Creature spawnCreature(unsigned int objcrc, unsigned long cellid, float x, float y, int bitmask = 0, boolean baby = false, boolean doLock = true, float height = 1);
+	Creature spawnCreature(String stfName, unsigned long cellid, float x, float y, int bitmask = 0, boolean baby = false, boolean doLock = true, float height = 1);
 
 	TrainerCreature spawnTrainer(const String profession, const String stfname, const String name, int objCrc, unsigned long cell, float x, float y, float z, float oy, float ow, boolean doLock = true);
 	ShuttleCreature spawnShuttle(const String Planet, const String City, Coordinate playerSpawnPoint, unsigned long cellid, float x, float y, float z, int tax = 0, boolean starport = false, boolean doLock = true);

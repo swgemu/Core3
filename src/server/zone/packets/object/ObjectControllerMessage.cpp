@@ -362,6 +362,8 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	uint64 target;
 	UnicodeString name;
 
+	//System::out << "acrc: " << actionCRC << "\n";
+
 	if (actionCRC == 0) {
 		player->clearQueueAction(actioncntr, 0.0f, 0, 0);
 		return;
@@ -417,6 +419,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	case (0x30BE6EE9): // Find Friend
 	case (0x8E9091D7): // Remove Friend
 	case (0x029D0CC5): // Harvest
+	case (0xBD7DF918): // tellpet
 		break;
 	default:
 		if (player->isIncapacitated() || player->isDead()) {
@@ -924,6 +927,10 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	case (0xD2E938DB): //checkforcestatus
 		player->checkForceStatus();
 		break;
+	case (0xBD7DF918):
+		parseTellPet(player,pack);
+		break;
+
 	default:
 		target = pack->parseLong();
 		String actionModifier = "";
@@ -4840,3 +4847,11 @@ void ObjectControllerMessage::parseStopListen(Player* player, Message* pack) {
 	player->stopListen(listenID);
 }
 
+void ObjectControllerMessage::parseTellPet(Player* player, Message* pack) {
+	pack->parseLong(); // skip passed target
+
+	UnicodeString msg = UnicodeString("");
+	pack->parseUnicode(msg);
+
+	player->sendMessageToPets(msg);
+}

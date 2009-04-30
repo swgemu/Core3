@@ -2006,6 +2006,10 @@ int CombatManager::calculateDamage(CreatureObject* creature, TangibleObject* tar
 				applyWounds(creature, targetCreature, weapon, bodyPart);
 			reduction += tempReduction;
 		}
+		if (damage > 0.0f && skill->isDotSkill()) {
+			DotPoolAttackTargetSkill* dotSkill = (DotPoolAttackTargetSkill*) skill;
+			dotSkill->checkDots(creature,targetCreature,damage);
+		}
 		//if (!skill->isTrapSkill() && skill->hasCbtSpamHit())
 		//	creature->sendCombatSpam(targetCreature, NULL, (int32)damage, skill->getCbtSpamHit());
 

@@ -93,6 +93,14 @@ public:
 
 	void handleStoreCommand();
 
+	void handleTransferCommand();
+
+	void handleTrickCommand(String& anim, int mod, int cost);
+
+	void handleEnrageCommand();
+
+	void handleSpecialAttackCommand(int att);
+
 protected:
 	CreaturePet(DummyConstructorParameter* param);
 
@@ -177,9 +185,18 @@ public:
 
 	void handleStoreCommand();
 
+	void handleTransferCommand();
+
+	void handleTrickCommand(String& anim, int mod, int cost);
+
+	void handleEnrageCommand();
+
+	void handleSpecialAttackCommand(int att);
+
 protected:
 	String _param0_setPetName__String_;
 	UnicodeString _param0_parseCommandMessage__UnicodeString_;
+	String _param0_handleTrickCommand__String_int_int_;
 };
 
 class CreaturePetHelper : public DistributedObjectClassHelper, public Singleton<CreaturePetHelper> {

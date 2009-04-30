@@ -51,7 +51,7 @@ class CreaturePetGrowEvent : public Event {
 	CreaturePet* creature;
 
 public:
-	CreaturePetGrowEvent(CreaturePet* cr) : Event(3600000) {
+	CreaturePetGrowEvent(CreaturePet* cr) : Event(3600) {
 		creature = cr;
 
 		setKeeping(true);

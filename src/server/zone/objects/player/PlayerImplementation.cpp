@@ -6296,7 +6296,7 @@ void PlayerImplementation::unregisterPet(CreaturePet* pet) {
 	petList.drop(pet->getObjectID());
 }
 
-void PlayerImplementation::sendChatMessageToPets(const UnicodeString& message) {
+void PlayerImplementation::sendMessageToPets(const UnicodeString& message) {
 	for (int i = 0 ; i < petList.size() ; i++) {
 		CreaturePet* pet = petList.get(i);
 		if (isInRange(pet,128.0f))
@@ -6304,11 +6304,32 @@ void PlayerImplementation::sendChatMessageToPets(const UnicodeString& message) {
 	}
 }
 
-void PlayerImplementation::sendTellToPets(String& name, const UnicodeString& message) {
-	for (int i = 0 ; i < petList.size() ; i++) {
-		CreaturePet* pet = petList.get(i);
-		if (name.toLowerCase() == pet->getCustomName().toString().toLowerCase()) {
-			pet->parseCommandMessage(message);
+bool PlayerImplementation::canStoreMorePets() {
+	int chPet = 0;
+	int chPetNumMax = getSkillMod("stored_pets");
+
+	if (datapad == NULL)
+		return false;
+	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
+		SceneObject* item = datapad->getObject(i);
+		if (item->isIntangible()) {
+			if (item->isIntangible()) {
+				IntangibleObject* itno = (IntangibleObject*)item;
+				SceneObject* worldObject = itno->getWorldObject();
+
+				if (worldObject->isNonPlayerCreature()) {
+					CreatureObject* crea = (Creature*) worldObject;
+					if (crea->isPet()) {
+						if (((CreaturePet*)crea)->isCHPet())
+							chPet++;
+					}
+				}
+			}
 		}
 	}
+
+	if (chPetNumMax == 0)
+		chPetNumMax = 1;
+
+	return (chPetNumMax > chPet);
 }
