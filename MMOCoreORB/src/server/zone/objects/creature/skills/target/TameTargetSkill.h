@@ -81,7 +81,12 @@ public:
 			return 0;
 
 		if (!targetCreature->isBaby()) {
-			player->sendSystemMessage("not baby");
+			player->sendSystemMessage("Failed to tame creature");
+			return 0;
+		}
+
+		if (targetCreature->isInCombat()) {
+			player->sendSystemMessage("Failed to tame creature");
 			return 0;
 		}
 
@@ -113,6 +118,10 @@ public:
 	void tame(Player* player, Creature* creature, int stage) {
 		if (player == NULL || creature == NULL)
 			return;
+		if (creature->isInCombat()) {
+			player->sendSystemMessage("Failed to tame creature");
+			return;
+		}
 		switch(stage) {
 			case 0:
 				if (!player->canStoreMorePets()) {
@@ -134,21 +143,22 @@ public:
 			break;
 			case 2:
 				player->say("Don't bite me.");
-				bool notInRange = (!player->isInRange(creature,10.0f) || creature->isInCombat() || player->isInCombat());
+				bool notInRange = !player->isInRange(creature,10.0f);
 
-				if (notInRange || (creature->isAggressive() && System::random(creature->getLevel()) > player->getSkillMod("tame_aggro"))) {
-					player->sendSystemMessage("Failed to tame creature");
+				if (notInRange || (creature->isAggressive() && creature->getLevel() > System::random(player->getSkillMod("tame_aggro")))) {
+					player->sendSystemMessage("Failed to tame Creature");
 					if (System::random(1) == 1) {
+						/*System::out << "attack aggro\n";
 						creature->updateTarget(player);
-						creature->setCombatState();
+						creature->setCombatState();*/
 					}
-					creature->unlock();
 					return;
-				}else if (notInRange || (System::random(creature->getLevel()) > player->getSkillMod("tame_non_aggro"))) {
+				}else if (notInRange || creature->getLevel() > System::random(player->getSkillMod("tame_non_aggro"))) {
 					player->sendSystemMessage("Failed to tame creature");
 					if (System::random(4) == 1) {
+						/*System::out << "attack\n";
 						creature->updateTarget(player);
-						creature->setCombatState();
+						creature->setCombatState();*/
 					}
 					return;
 				}
