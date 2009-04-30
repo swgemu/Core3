@@ -103,10 +103,10 @@ public:
 
 	int calculateDamage(CreatureObject* creature, SceneObject* target) {
 		int damage = server->getCombatManager()->calculateWeaponDamage(creature, (TangibleObject*)target, this, true);
-		if (damage > 0 && (target->isPlayer() || target->isNonPlayerCreature())) {
+		/*if (damage > 0 && (target->isPlayer() || target->isNonPlayerCreature())) {
 			CreatureObject* targetCreature = (CreatureObject*)target;
-			checkDots(creature,targetCreature, damage);
-		}
+			//checkDots(creature,targetCreature, damage);
+		}*/
 
 		return damage;
 	}
@@ -130,7 +130,7 @@ public:
 		if (fireDotStrength > 0 && dotChanceState > 0 && System::random(100) < (dotChanceState-fireResist)) {
 			int dotDamage = 0;
 			if (tickStrengthOfHit)
-				dotDamage = fireDotStrength * (int)(damage / 5);
+				dotDamage = fireDotStrength * (int)(damage / 10);
 			float potency = (float)(dotChanceState / 2) + (float) System::random((dotChanceState / 2));
 			targetCreature->addDotState(creature,nameCRC,CreatureState::ONFIRE, dotDamage, fireDotType, 60,potency,fireResist);
 		}
@@ -138,7 +138,7 @@ public:
 		if (bleedingDotStrength > 0 && dotChanceState > 0 && System::random(100) < (dotChanceState-bleedResist)) {
 			int dotDamage = 0;
 			if (tickStrengthOfHit)
-				dotDamage = bleedingDotStrength * (int)(damage / 5);
+				dotDamage = bleedingDotStrength * (int)(damage / 10);
 			float potency = (float)(dotChanceState / 2) + (float) System::random((dotChanceState / 2));
 			targetCreature->addDotState(creature,nameCRC,CreatureState::BLEEDING, dotDamage, bleedingDotType, 60,potency,bleedResist);
 		}

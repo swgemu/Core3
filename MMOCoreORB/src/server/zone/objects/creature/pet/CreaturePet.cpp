@@ -455,6 +455,58 @@ void CreaturePet::handleStoreCommand() {
 		((CreaturePetImplementation*) _impl)->handleStoreCommand();
 }
 
+void CreaturePet::handleTransferCommand() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 40);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreaturePetImplementation*) _impl)->handleTransferCommand();
+}
+
+void CreaturePet::handleTrickCommand(String& anim, int mod, int cost) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 41);
+		method.addAsciiParameter(anim);
+		method.addSignedIntParameter(mod);
+		method.addSignedIntParameter(cost);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreaturePetImplementation*) _impl)->handleTrickCommand(anim, mod, cost);
+}
+
+void CreaturePet::handleEnrageCommand() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 42);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreaturePetImplementation*) _impl)->handleEnrageCommand();
+}
+
+void CreaturePet::handleSpecialAttackCommand(int att) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 43);
+		method.addSignedIntParameter(att);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreaturePetImplementation*) _impl)->handleSpecialAttackCommand(att);
+}
+
 /*
  *	CreaturePetAdapter
  */
@@ -567,6 +619,18 @@ Packet* CreaturePetAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		break;
 	case 39:
 		handleStoreCommand();
+		break;
+	case 40:
+		handleTransferCommand();
+		break;
+	case 41:
+		handleTrickCommand(inv->getAsciiParameter(_param0_handleTrickCommand__String_int_int_), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		break;
+	case 42:
+		handleEnrageCommand();
+		break;
+	case 43:
+		handleSpecialAttackCommand(inv->getSignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -709,6 +773,22 @@ void CreaturePetAdapter::handleGuardCommand() {
 
 void CreaturePetAdapter::handleStoreCommand() {
 	return ((CreaturePetImplementation*) impl)->handleStoreCommand();
+}
+
+void CreaturePetAdapter::handleTransferCommand() {
+	return ((CreaturePetImplementation*) impl)->handleTransferCommand();
+}
+
+void CreaturePetAdapter::handleTrickCommand(String& anim, int mod, int cost) {
+	return ((CreaturePetImplementation*) impl)->handleTrickCommand(anim, mod, cost);
+}
+
+void CreaturePetAdapter::handleEnrageCommand() {
+	return ((CreaturePetImplementation*) impl)->handleEnrageCommand();
+}
+
+void CreaturePetAdapter::handleSpecialAttackCommand(int att) {
+	return ((CreaturePetImplementation*) impl)->handleSpecialAttackCommand(att);
 }
 
 /*

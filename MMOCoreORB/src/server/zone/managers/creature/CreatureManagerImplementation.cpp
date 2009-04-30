@@ -524,6 +524,32 @@ bool CreatureManagerImplementation::verifyCreatureSpawn(String objname) {
 	}
 
 }
+
+bool CreatureManagerImplementation::verifyCreatureNameByStfName(String stfName) {
+
+	try {
+		lock();
+
+		// Load creature from lua
+		LuaFunction getCreature(getLuaState(), "getCreature", 1);
+		getCreature << stfName; // push first argument
+		callFunction(&getCreature);
+
+		LuaObject creatureConfig(getLuaState());
+		if (!creatureConfig.isValidTable()) {
+			unlock();
+			return false;
+		}
+		unlock();
+		return true;
+
+
+	} catch (...) {
+		unlock();
+		return false;
+	}
+
+}
 Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cellid, float x, float y, int bitmask, bool baby, bool doLock, float height) {
 	lock(doLock);
 	Creature* creature = new Creature(getNextCreatureID());
@@ -552,7 +578,115 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 		}
 
 		String objectName = result.getStringField("objectName");
-		System::out << "oname = " << objectName << "\n";
+
+		String name = result.getStringField("name");
+
+		String stfname = result.getStringField("stfName");
+
+		String species = result.getStringField("speciesName");
+
+		String faction = result.getStringField("faction");
+
+		String creatureType = result.getStringField("creatureType");
+
+		creature->setFaction(faction.hashCode());
+
+		creature->setFPValue(result.getIntField("factionPoints"));
+
+		if (!stfname.isEmpty() && !species.isEmpty()) {
+			creature->setStfFile(stfname);
+			creature->setStfName(species);
+		} else if (!name.isEmpty())
+			creature->setCharacterName(name);
+		else if (objcrc == 0xBA7F23CD)
+			creature->setCharacterName(UnicodeString(makeStormTrooperName()));
+		else
+			creature->setCharacterName(UnicodeString(makeCreatureName(name)));
+
+		if (!creatureType.isEmpty()) {
+			creature->setCreatureType(creatureType);
+		} else {
+			creature->setCreatureType("NPC");
+		}
+		creature->setTerrainName(Terrain::getTerrainName(getZone()->getZoneID()));
+
+		setCreatureAttributes(creature, &result);
+
+		// TODO: Implement baby stats properly
+		if (baby) {
+			changeStatsToBaby(creature);
+		}
+
+		creature->initializePosition(x, 0.0, y);
+
+		//TODO: add code to set random direction
+		float oY = 0;
+		float oW = 0;
+
+		creature->setRespawnTimer(0);
+
+		SceneObject* object = getZone()->lookupObject(cellid);
+
+		if (object != NULL && object->isCell())
+			creature->setParent(object);
+
+		creature->setDirection(0, 0, oY, oW);
+
+		if (height != 1)
+			creature->setHeight(height);
+
+		result.pop(); // remove table from stack
+
+		load(creature);
+
+		creature->loadItems();
+		creature->insertToZone(zone);
+
+		creatureMap->put(creature->getObjectID(), creature);
+
+		creature->unlock();
+	} catch (...) {
+		creature->unlock();
+		unlock(doLock);
+		return NULL;
+	}
+
+	unlock(doLock);
+	return creature;
+}
+
+Creature* CreatureManagerImplementation::spawnCreature(String stfName, uint64 cellid, float x, float y, int bitmask, bool baby, bool doLock, float height) {
+	lock(doLock);
+	Creature* creature = new Creature(getNextCreatureID());
+
+	try {
+		creature->wlock();
+
+		creature->setZoneProcessServer(server);
+		creature->setCreatureManager(this);
+
+		// Load creature from lua
+		LuaFunction getCreature(getLuaState(), "getCreature", 1);
+		getCreature << stfName; // push first argument
+		callFunction(&getCreature);
+
+		LuaObject result(getLuaState());
+		if (!result.isValidTable()) {
+			StringBuffer ss;
+			ss << "Unknown object stfName " << stfName;
+			System::out << ss.toString() <<"\n";
+			info(ss.toString());
+			creature->unlock();
+			creature->finalize();
+			unlock(doLock);
+			return NULL;
+		}
+		uint32 objcrc = result.getLongField("objectCRC");
+
+		creature->setObjectCRC(objcrc);
+
+		String objectName = result.getStringField("objectName");
+
 		String name = result.getStringField("name");
 
 		String stfname = result.getStringField("stfName");
@@ -1360,7 +1494,7 @@ void CreatureManagerImplementation::setPetDefaultAttributes(CreaturePet* creatur
 		LuaObject creatureConfig(getLuaState());
 		if (!creatureConfig.isValidTable()) {
 			StringBuffer ss;
-			ss << "Unknown object CRC " << creature->getObjectCRC();
+			ss << "Unknown object stfName " << creature->getStfName();
 			info(ss.toString());
 			creature->unlock();
 			creature->finalize();
@@ -1411,6 +1545,22 @@ void CreatureManagerImplementation::setPetDefaultAttributes(CreaturePet* creatur
 
 		//Loot
 		creature->setLootGroup(creatureConfig.getStringField("lootGroup"));
+
+		creature->setArmor(creatureConfig.getIntField("armor"));
+
+		creature->setKinetic(creatureConfig.getFloatField("kinetic"));
+		creature->setEnergy(creatureConfig.getFloatField("energy"));
+		creature->setElectricity(creatureConfig.getFloatField("electricity"));
+		creature->setStun(creatureConfig.getFloatField("stun"));
+		creature->setBlast(creatureConfig.getFloatField("blast"));
+		creature->setHeat(creatureConfig.getFloatField("heat"));
+		creature->setCold(creatureConfig.getFloatField("cold"));
+		creature->setAcid(creatureConfig.getFloatField("acid"));
+		creature->setLightSaber(creatureConfig.getFloatField("lightSaber"));
+
+		creature->setAccuracy(creatureConfig.getIntField("accuracy"));
+		creature->setSpeed(creatureConfig.getFloatField("speed"));
+		creature->setAcceleration(creatureConfig.getFloatField("acceleration"));
 
 		if (doLock)
 			creature->unlock();

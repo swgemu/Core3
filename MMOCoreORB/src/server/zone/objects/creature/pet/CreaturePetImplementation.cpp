@@ -68,6 +68,9 @@ which carries forward this exception.
 #include "events/CreaturePetGrowEvent.h"
 
 #include "../../../objects.h"
+#include "../../../managers/combat/CommandQueueAction.h"
+#include "../../../managers/combat/CombatManager.h"
+#include "../../../managers/item/ItemManager.h"
 
 CreaturePetImplementation::CreaturePetImplementation(Player* owner, uint64 oid) : CreaturePetServant(oid) ,VehicleObject(owner){
 	creatureLinkID = owner->getObjectID();
@@ -111,6 +114,8 @@ void CreaturePetImplementation::init() {
 
 	lootContainer = NULL;
 
+	nextAttack = -1;
+
 }
 
 void CreaturePetImplementation::init(Creature* creature, float growth) {
@@ -121,7 +126,7 @@ void CreaturePetImplementation::init(Creature* creature, float growth) {
 
 	// init species
 	setObjectCRC(creature->getObjectCRC());
-	//setObjectCRC(0x6AC9AA60);
+
 	setStfFile(creature->getStfFile());
 	setStfName(creature->getStfName());
 	setCustomName(creature->getCustomName());
@@ -176,17 +181,6 @@ void CreaturePetImplementation::init(Creature* creature, float growth) {
 	setAcid(creature->getArmorResist(8));
 	setLightSaber(creature->getArmorResist(9));
 
-	//copy weapon
-	/*setWeapon(creature->getWeapon());
-	setCreatureWeapon(creature->getCreatureWeapon());
-	setCreatureWeaponName(creature->getCreatureWeaponName());
-	setCreatureWeaponTemp(creature->getCreatureWeaponTemp());
-	setCreatureWeaponClass(creature->getCreatureWeaponClass());
-	setCreatureWeaponEquipped(creature->getCreatureWeaponEquipped());
-	setCreatureWeaponAttackSpeed(creature->getCreatureWeaponAttackSpeed());
-	setCreatureWeaponDamageType(creature->getCreatureWeaponDamageType());
-	setCreatureWeaponArmorPiercing(creature->getCreatureWeaponArmorPiercing());
-*/
 	CreatureManager* creatureManager = zone->getCreatureManager();
 	creatureManager->setPetDefaultAttributes(_this,false);
 
@@ -240,27 +234,6 @@ void CreaturePetImplementation::createItemAttributes() {
 	attr = "willpower";
 	itemAttributes->setIntAttribute(attr, getBaseWillpower());
 
-	/*attr = "weapon";
-	itemAttributes->setStringAttribute(attr, getCreatureWeapon());
-	attr = "weaponName";
-	itemAttributes->setStringAttribute(attr, getCreatureWeaponName());
-	attr = "weaponTemp";
-	itemAttributes->setStringAttribute(attr, getCreatureWeaponTemp());
-	attr = "weaponClass";
-	itemAttributes->setStringAttribute(attr, getCreatureWeaponClass());
-	attr = "weaponEquipped";
-	itemAttributes->setIntAttribute(attr, getCreatureWeaponEquipped());
-	attr = "weaponMinDamage";
-	itemAttributes->setIntAttribute(attr, getCreatureWeaponMinDamage());
-	attr = "weaponMaxDamae";
-	itemAttributes->setIntAttribute(attr, getCreatureWeaponMaxDamage());
-	attr = "weaponSpeed";
-	itemAttributes->setFloatAttribute(attr, getCreatureWeaponAttackSpeed());
-	attr = "weaponDamageType";
-	itemAttributes->setStringAttribute(attr, getCreatureWeaponDamageType());
-	attr = "weaponAP";
-	itemAttributes->setStringAttribute(attr, getCreatureWeaponArmorPiercing());
-*/
 	attr = "numSkill";
 	itemAttributes->setIntAttribute(attr, getNumberOfSkills());
 	for (int i = 0 ;  i < getNumberOfSkills() ; i++) {
@@ -269,7 +242,7 @@ void CreaturePetImplementation::createItemAttributes() {
 		itemAttributes->setStringAttribute(skillAttr.toString(), getSkill(i));
 	}
 
-	for (int i = 0 ;  i < 22 ; i++) {
+	for (int i = 0 ;  i < 20 ; i++) {
 		StringBuffer customCommand;
 		customCommand << "command_" << i;
 		itemAttributes->setStringAttribute(customCommand.toString(), commandHelper->getBaseCommand(i));
@@ -360,27 +333,6 @@ void CreaturePetImplementation::parseItemAttributes() {
 	setWillpowerMax(willpower);
 	setWillpower(willpower);
 
-	/*attr = "weapon";
-	setCreatureWeapon(itemAttributes->getStringAttribute(attr));
-	attr = "weaponName";
-	setCreatureWeaponName(itemAttributes->getStringAttribute(attr));
-	attr = "weaponTemp";
-	setCreatureWeaponTemp(itemAttributes->getStringAttribute(attr));
-	attr = "weaponClass";
-	setCreatureWeaponClass(itemAttributes->getStringAttribute(attr));
-	attr = "weaponEquipped";
-	setCreatureWeaponEquipped(itemAttributes->getIntAttribute(attr));
-	attr = "weaponMinDamage";
-	setCreatureWeaponMinDamage(itemAttributes->getIntAttribute(attr));
-	attr = "weaponMaxDamae";
-	setCreatureWeaponMaxDamage(itemAttributes->getIntAttribute(attr));
-	attr = "weaponSpeed";
-	setCreatureWeaponAttackSpeed(itemAttributes->getFloatAttribute(attr));
-	attr = "weaponDamageType";
-	setCreatureWeaponDamageType(itemAttributes->getStringAttribute(attr));
-	attr = "weaponAP";
-	setCreatureWeaponArmorPiercing(itemAttributes->getStringAttribute(attr));
-*/
 	CreatureManager* creatureManager = zone->getCreatureManager();
 	creatureManager->setPetDefaultAttributes(_this,false);
 
@@ -403,7 +355,7 @@ void CreaturePetImplementation::parseItemAttributes() {
 	}
 
 	String customCommand;
-	for (int i = 0 ;  i < 22 ; i++) {
+	for (int i = 0 ;  i < 20 ; i++) {
 		StringBuffer commandAttr;
 		commandAttr << "command_" << i;
 		customCommand = itemAttributes->getStringAttribute(commandAttr.toString());
@@ -534,68 +486,62 @@ void CreaturePetImplementation::sendRadialResponseTo(Player* player, ObjectMenuR
 		omr->addRadialParent(59, 3, "");
 
 		RadialMenuParent* training = new RadialMenuParent(141, 1, "Training");
-		training->addRadialMenuItem(146, 3, "Attack");
-		training->addRadialMenuItem(142, 3, "Follow");
-		//training->addRadialMenuItem(257, 3, "Store");
+		training->addRadialMenuItem(146, 3, commandHelper->getStfDesc(PetCommandHelper::PETATTACK));
+		training->addRadialMenuItem(142, 3, commandHelper->getStfDesc(PetCommandHelper::PETFOLLOW));
+		training->addRadialMenuItem(160, 3, commandHelper->getStfDesc(PetCommandHelper::PETSTORE));
 
 		String skillBox = "outdoors_creaturehandler_taming_03";
 		if (player->hasSkillBox(skillBox))
-			training->addRadialMenuItem(161, 3, "Special Attack 1");
+			training->addRadialMenuItem(161, 3, commandHelper->getStfDesc(PetCommandHelper::PETSPECIALATTACK1));
 
 		skillBox = "outdoors_creaturehandler_taming_04";
 		if (player->hasSkillBox(skillBox))
-			training->addRadialMenuItem(162, 3, "Special Attack 2");
+			training->addRadialMenuItem(162, 3, commandHelper->getStfDesc(PetCommandHelper::PETSPECIALATTACK2));
 
 		skillBox = "outdoors_creaturehandler_training_01";
 		if (player->hasSkillBox(skillBox))
-			training->addRadialMenuItem(143, 3, "Stay");
+			training->addRadialMenuItem(143, 3, commandHelper->getStfDesc(PetCommandHelper::PETSTAY));
 
 		skillBox = "outdoors_creaturehandler_training_02";
 		if (player->hasSkillBox(skillBox))
-			training->addRadialMenuItem(144, 3, "Guard");
+			training->addRadialMenuItem(144, 3, commandHelper->getStfDesc(PetCommandHelper::PETGUARD));
 
 		skillBox = "outdoors_creaturehandler_training_03";
 		if (player->hasSkillBox(skillBox)) {
-			training->addRadialMenuItem(147, 3, "Start Patrol");
-			training->addRadialMenuItem(148, 3, "Add Patrol Point");
-			training->addRadialMenuItem(149, 3, "Clear Patrol Point");
+			training->addRadialMenuItem(147, 3, commandHelper->getStfDesc(PetCommandHelper::PETPATROL));
+			training->addRadialMenuItem(148, 3, commandHelper->getStfDesc(PetCommandHelper::PETPATROLPOINTADD));
+			training->addRadialMenuItem(149, 3, commandHelper->getStfDesc(PetCommandHelper::PETPATROLPOINTCLEAR));
 		}
-		/*skillBox = " outdoors_creaturehandler_training_04";
+		skillBox = " outdoors_creaturehandler_training_04";
 		if (getLinkedCreature()->hasSkillBox(skillBox)) {
-			training->addRadialMenuItem(263, 3, "Formation 1");
-		}*/
+			training->addRadialMenuItem(150, 3, commandHelper->getStfDesc(PetCommandHelper::PETFORMATION1));
+			training->addRadialMenuItem(150, 3, commandHelper->getStfDesc(PetCommandHelper::PETFORMATION2));
+		}
 		skillBox = "outdoors_creaturehandler_healing_01";
 		if (player->hasSkillBox(skillBox))
-			training->addRadialMenuItem(154, 3, "Trick 1");
-
-		skillBox = "outdoors_creaturehandler_healing_02";
-		if (player->hasSkillBox(skillBox))
-			training->addRadialMenuItem(156, 3, "Embolden");
+			training->addRadialMenuItem(154, 3, commandHelper->getStfDesc(PetCommandHelper::PETTRICK1));
 
 		skillBox = "outdoors_creaturehandler_healing_03";
 		if (player->hasSkillBox(skillBox))
-			training->addRadialMenuItem(155, 3, "Trick 2");
-
-		skillBox = "outdoors_creaturehandler_healing_04";
-		if (player->hasSkillBox(skillBox))
-			training->addRadialMenuItem(157, 3, "Enrage");
+			training->addRadialMenuItem(155, 3, commandHelper->getStfDesc(PetCommandHelper::PETTRICK2));
 
 		skillBox = "outdoors_creaturehandler_support_01";
 		if (player->hasSkillBox(skillBox))
-			training->addRadialMenuItem(158, 3, "Group");
+			training->addRadialMenuItem(158, 3, commandHelper->getStfDesc(PetCommandHelper::PETGROUP));
 
-		//skillBox = "outdoors_creaturehandler_support_02";
-		//if (getLinkedCreature()->hasSkillBox(skillBox))
-		//	training->addRadialMenuItem(269, 3, "Follow Other");
+		skillBox = "outdoors_creaturehandler_support_02";
+		if (getLinkedCreature()->hasSkillBox(skillBox))
+			training->addRadialMenuItem(156, 3, commandHelper->getStfDesc(PetCommandHelper::PETFOLLOWOTHER));
 
 		skillBox = "outdoors_creaturehandler_support_03";
 		if (player->hasSkillBox(skillBox))
-			training->addRadialMenuItem(145, 3, "Friend");
+			training->addRadialMenuItem(145, 3, commandHelper->getStfDesc(PetCommandHelper::PETFRIEND));
 
 		skillBox = "outdoors_creaturehandler_master";
 		if (player->hasSkillBox(skillBox)){
-			training->addRadialMenuItem(163, 3, "Ranged Attack");
-			training->addRadialMenuItem(153, 3, "Release");
+			training->addRadialMenuItem(163, 3, commandHelper->getStfDesc(PetCommandHelper::PETRANGEDATTACK));
+			training->addRadialMenuItem(153, 3, commandHelper->getStfDesc(PetCommandHelper::PETRELEASE));
+			training->addRadialMenuItem(159, 3, commandHelper->getStfDesc(PetCommandHelper::PETTRANSFER));
 		}
 		omr->addRadialParent(training);
 	}
@@ -603,6 +549,16 @@ void CreaturePetImplementation::sendRadialResponseTo(Player* player, ObjectMenuR
 	omr->finish();
 
 	player->sendMessage(omr);
+}
+
+void CreaturePetImplementation::addAttributes(AttributeListMessage* alm) {
+	alm->insertAttribute("@obj_attr_n:creature_vitality" ,":)");
+	for (int i = 0 ; i < commandHelper->size() ; i++) {
+		String cmd = commandHelper->getBaseCommand(i);
+
+		if (!cmd.isEmpty())
+			alm->insertAttribute(commandHelper->getStfDesc(i),cmd);
+	}
 }
 
 
@@ -848,9 +804,10 @@ void CreaturePetImplementation::createDataPad() {
 		getLinkedCreature()->addDatapadItem(getDatapadItem());
 
 		getDatapadItem()->sendTo(getLinkedCreature(), true);
+		getLinkedCreature()->sendSystemMessage("pet/pet_menu","device_added");
 
 	} catch(...) {
-		System::out << "Unreported exception caught in CreaturePetImplementation::init\n";
+		System::out << "Unreported exception caught in CreaturePetImplementation::createDataPad\n";
 		return;
 	}
 }
@@ -956,6 +913,10 @@ void CreaturePetImplementation::store(bool doLock) {
 }
 
 bool CreaturePetImplementation::canCall() {
+	if (isDead()) {
+		getLinkedCreature()->sendSystemMessage("pet/pet_menu","dead_pet");
+		return false;
+	}
 	if (isCHPet()) {
 		int chSkill = getLinkedCreature()->getSkillMod("tame_level");
 		//System::out << "ch level ("<< getLevel() <<")" << chSkill <<"\n";
@@ -1174,7 +1135,7 @@ bool CreaturePetImplementation::activate() {
 		}
 
 		if (aggroedCreature != NULL) {
-			if(aggroedCreature->isIncapacitated() || aggroedCreature->isDead()) {
+			if(!aggroedCreature->isAttackable()) {
 				//System::out << "\tactivate : deaggro\n";
 				deaggro();
 			} else {
@@ -1214,10 +1175,103 @@ bool CreaturePetImplementation::activate() {
 	return needMoreActivity;
 }
 
+bool CreaturePetImplementation::attack(CreatureObject* target) {
+	//info("attacking target");
+
+	// Not ready to attack yet
+	if (!nextAttackDelay.isPast()) {
+		return true;
+	}
+
+	if (target == NULL) {
+		deaggro();
+		return false;
+	}
+
+	if (!isInRange(target, 100)) {
+		if (((parent != NULL) && (nextPosition->getCellID() == 0)) || (parent
+				== NULL && nextPosition->getCellID() != 0))
+			return true;
+		else {
+			deaggro();
+
+			return false;
+		}
+	}
+
+	if (isDead() || isKnockedDown()) {
+		return false;
+	}
+
+	int skills = creatureSkills.size();
+
+	Skill* skill = NULL;
+
+	if (skills == 0) {
+		return false;
+	}
+	if (nextAttack != -1 && nextAttack < skills) {
+		skill = creatureSkills.get(nextAttack);
+		nextAttack = -1;
+	}
+	else {
+		int rand = System::random(skills - 1);
+		skill = creatureSkills.get(rand);
+	}
+
+	if (skill == NULL) {
+		return false;
+	}
+
+	uint32 actionCRC = skill->getNameCRC();
+
+	if (weaponObject != NULL
+			&& (!isInRange(target, weaponObject->getMaxRange()))) {
+		return true;
+	} else if (!isInRange(target, skill->getRange())) {
+		return true;
+	}
+
+	//info("queuing attacking");
+
+	String modifier = "";
+	CommandQueueAction* action =
+					new CommandQueueAction(_this, target->getObjectID(), 0, actionCRC, modifier);
+
+	action->setSkill(skill);
+	action->setTarget(target);
+
+	CombatManager* combatManager = server->getCombatManager();
+	combatManager->handleAction(action);
+
+	delete action;
+
+	if (target->isIncapacitated() || target->isDead()) {
+		deaggro();
+		return false;
+	}
+
+	//if (target->isNonPlayerCreature() && target->isMount() && target->isDisabled()) {
+
+	if (target->isVehicle() && target->isDisabled()) {
+		deaggro();
+		return false;
+	}
+
+	lastCombatAction.update();
+
+	float delay = skill->getSpeedRatio();
+
+	if (weaponObject != NULL)
+		delay = delay * weaponObject->getAttackSpeed();
+
+	nextAttackDelay.update();
+	nextAttackDelay.addMiliTime((uint64) (delay * 1000));
+	return true;
+}
+
 void CreaturePetImplementation::deaggro() {
-	aggroedCreature = NULL;
-	clearTarget();
-	clearCombatState();
+	CreatureImplementation::deaggro();
 
 	if (!isInStayState() && isInRange(getLinkedCreature(),8.0f)) {
 		resetPatrolPoints(false);
@@ -1230,7 +1284,11 @@ void CreaturePetImplementation::doGrowUp(bool updateTime) {
 
 	uint32 elapsedTime = currentTime.getTime() - lastGrowth.getTime();
 
-	float growCycles = (float)round((float)elapsedTime / 3600000);
+	float growCycles = (float)round((float)elapsedTime / 3600);
+
+	if (growCycles == 0)
+		return;
+
 	growth += 0.1 * growCycles;
 	if (growth > 1.0f)
 		growth = 1.0f;
@@ -1301,6 +1359,7 @@ void CreaturePetImplementation::setPetName(String& name) {
 }
 
 void CreaturePetImplementation::parseCommandMessage(const UnicodeString& message) {
+	try {
 	//System::out << customName.toString() << " says, " << message.toString() << "\n";
 
 	String command = message.toString();
@@ -1351,6 +1410,31 @@ void CreaturePetImplementation::parseCommandMessage(const UnicodeString& message
 		handleStoreCommand();
 		return;
 	}
+	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETTRANSFER)) {
+		handleTransferCommand();
+		return;
+	}
+	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETTRICK1)) {
+		handleTrickCommand("trick_1",20,-100);
+		return;
+	}
+	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETTRICK2)) {
+		handleTrickCommand("trick_2",10,-200);
+		return;
+	}
+	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETSPECIALATTACK1)) {
+		handleSpecialAttackCommand(0);
+		return;
+	}
+	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETSPECIALATTACK2)) {
+		handleSpecialAttackCommand(1);
+		return;
+	}
+	} catch (...) {
+		System::out << "exception CreaturePetImplementation::parseCommandMessage()\n";
+
+		_this->unlock();
+	}
 }
 
 void CreaturePetImplementation::handleAttackCommand() {
@@ -1392,14 +1476,109 @@ void CreaturePetImplementation::handleGuardCommand() {
 }
 
 void CreaturePetImplementation::handleStoreCommand() {
-	try {
-	_this->wlock();
 	store();
-	_this->unlock();
+}
 
-	} catch (...) {
-		System::out << "exception CreaturePetImplementation::handleStoreCommand()\n";
+void CreaturePetImplementation::handleTransferCommand() {
+	SceneObject* scno = getLinkedCreature()->getTarget();
+	Player* newOwner = NULL;
+	if (scno->isPlayer())
+		newOwner = (Player*) scno;
 
-		_this->unlock();
+	if (newOwner == NULL) {
+		return;
+	}
+
+	if (isAggressive() && !newOwner->getSkillMod("tame_level") < 12) {
+		getLinkedCreature()->sendSystemMessage("pet/pet_menu","bad_type");
+
+		return;
+	}
+
+	if (!newOwner->canStoreMorePets()) {
+		getLinkedCreature()->sendSystemMessage("pet/pet_menu","targ_too_many_stored");
+		return;
+	}
+	getLinkedCreature()->sendSystemMessage("pet/pet_menu","pet_transfer_succeed");
+
+	store();
+
+	getDatapadItem()->sendDestroyTo(getLinkedCreature());
+
+	creatureLinkID = newOwner->getObjectID();
+	setLinkedCreature(newOwner);
+
+	newOwner->sendSystemMessage("pet/pet_menu","device_added");
+
+	Datapad* datapad = newOwner->getDatapad();
+	getDatapadItem()->setParent(datapad);
+	getDatapadItem()->setUpdated(true);
+
+	newOwner->addDatapadItem(getDatapadItem());
+	newOwner->sendSystemMessage("pet/pet_menu","device_added");
+
+	getDatapadItem()->sendTo(newOwner, true);
+	newOwner->sendSystemMessage("pet/pet_menu","device_added");
+}
+
+void CreaturePetImplementation::handleTrickCommand(String anim,int mod,int cost) {
+	if (isInCombat() || getLinkedCreature()->isInCombat()) {
+		getLinkedCreature()->sendSystemMessage("pet/pet_menu","sys_cant_trick");
+		return;
+	}
+
+	if (!consumeOwnerHam(0,cost,0)) {
+		getLinkedCreature()->sendSystemMessage("pet/pet_menu","cant_trick");
+		return;
+	}
+
+	healPetMind(mod);
+	doAnimation(anim);
+}
+
+void CreaturePetImplementation::healPetMind(int mod) {
+	int woundPower = 0;
+	if (getMindWounds() > 0) {
+		woundPower = getMindMax() / mod;
+		healWound(_this, CreatureAttribute::MIND, woundPower);
+	}
+	if (getWillpowerWounds() > 0) {
+		woundPower = getWillpowerMax() / mod;
+		healWound(_this, CreatureAttribute::WILLPOWER, woundPower);
+	}
+	if (getFocusWounds() > 0) {
+		woundPower = getFocusMax() / mod;
+		healWound(_this, CreatureAttribute::FOCUS, woundPower);
 	}
 }
+
+bool CreaturePetImplementation::consumeOwnerHam(int h,int a, int m) {
+	if (!getLinkedCreature()->changeHAMBars(h,a,m)) {
+		getLinkedCreature()->unlock();
+		return false;
+	}
+
+	return true;
+}
+
+void CreaturePetImplementation::handleEnrageCommand() {
+		if (!consumeOwnerHam(0,-200,0)) {
+			getLinkedCreature()->sendSystemMessage("pet/pet_menu","sys_fail_enrage");
+
+			return;
+		}
+
+		if (getWeapon() == NULL) {
+			return;
+		}
+		setBerserkDamage((int) getWeapon()->getMinDamage());
+		setBerserkedState(30*1000);
+}
+
+void CreaturePetImplementation::handleSpecialAttackCommand(int att) {
+		if (!isInCombat())
+			handleAttackCommand();
+
+		nextAttack = att;
+}
+

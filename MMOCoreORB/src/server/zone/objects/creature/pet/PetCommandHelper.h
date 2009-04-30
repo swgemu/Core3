@@ -71,18 +71,16 @@ public:
 
 	//training tree
 	static const int PETTRICK1 = 13;
-	static const int PETEMBOLDEN = 14;
-	static const int PETTRICK2 = 15;
-	static const int PETENRAGE = 16;
+	static const int PETTRICK2 = 14;
 
 	//management tree
-	static const int PETGROUP = 17;
-	static const int PETFOLLOWOTHER = 18;
-	static const int PETFRIEND = 19;
+	static const int PETGROUP = 15;
+	static const int PETFOLLOWOTHER = 16;
+	static const int PETFRIEND = 17;
 
 	//master
-	static const int PETRANGEDATTACK = 20;
-	static const int PETTRANSFER = 21;
+	static const int PETRANGEDATTACK = 18;
+	static const int PETTRANSFER = 19;
 protected:
 	//Vector<String>* commandList;
 
@@ -94,6 +92,8 @@ public:
 	void trainCommand(int command, String& commandMessage);
 
 	void trainName(CreaturePet* pet);
+
+	static String getStfDesc(int command);
 };
 
 #endif /* PETCOMMANDHELPER_H_ */

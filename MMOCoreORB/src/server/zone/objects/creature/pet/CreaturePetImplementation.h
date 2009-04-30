@@ -72,6 +72,8 @@ class CreaturePetImplementation : public CreaturePetServant ,public VehicleObjec
 	float growth;
 
 	uint32 maxLevel;
+
+	int nextAttack;
 public:
 	static const uint8 CHPET = 0x10;
 	static const uint8 CHPETUNTRAINEDMOUNT = 0x12;
@@ -135,6 +137,7 @@ public:
 	 */
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 
+	void addAttributes(AttributeListMessage* alm);
 
 	// pet managment
 
@@ -254,7 +257,7 @@ public:
 
 	void notifyPositionUpdate(QuadTreeEntry* obj);
 	bool activate();
-
+	bool attack(CreatureObject* target);
 	void deaggro();
 
 	void handleAttackCommand();
@@ -262,6 +265,12 @@ public:
 	void handleStayCommand();
 	void handleGuardCommand();
 	void handleStoreCommand();
+	void handleTransferCommand();
+	void handleTrickCommand(String anim,int mod,int cost);
+	void handleEnrageCommand();
+	void handleSpecialAttackCommand(int att);
+	bool consumeOwnerHam(int h, int a, int m);
+	void healPetMind(int mod);
 };
 
 #endif /* CREATUREPETIMPLEMENTATION_H_ */

@@ -653,7 +653,7 @@ void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int dama
 void SceneObjectImplementation::dropDamageDone(CreatureObject* creature) {
 	DamageDone* damageDone = playerDamageList.get(creature);
 
-	if (damageDone == NULL || !creature->isCreature())
+	if (damageDone == NULL || (creature != NULL && !creature->isCreature()))
 		return;
 
 	int damage = damageDone->getTotalDamage();

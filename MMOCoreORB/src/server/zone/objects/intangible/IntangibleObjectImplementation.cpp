@@ -110,7 +110,6 @@ void IntangibleObjectImplementation::sendTo(Player* player, bool doClose) {
 }
 
 void IntangibleObjectImplementation::sendDestroyTo(Player* player) {
-	System::out << "IntangibleObjectImplementation::sendDestroyTo\n";
 	SceneObjectImplementation::destroy(player->getClient());
 }
 
@@ -132,6 +131,9 @@ void IntangibleObjectImplementation::generateAttributes(SceneObject* obj) {
 
 
 void IntangibleObjectImplementation::addAttributes(AttributeListMessage* alm) {
+	if (getWorldObject() != NULL) {
+		getWorldObject()->addAttributes(alm);
+	}
 
 }
 

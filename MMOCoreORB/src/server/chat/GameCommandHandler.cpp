@@ -403,6 +403,12 @@ void GameCommandHandler::init() {
 				&clearMissions);
 
 	/* Disabled Commands
+	 *
+	gmCommands->addCommand("woundPet", DEVELOPER,
+				"woundPet",
+				"USAGE: @woundPet",
+				&woundPet);
+	 *
 	gmCommands->addCommand("createTestPet", DEVELOPER,
 				"createTestPet",
 				"USAGE: @createTestPet <player name>",
@@ -2531,7 +2537,7 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 
 	String name;
 	uint64 cellid;
-	uint32 objcrc;
+
 	float x, y;
 	bool stationary = false;
 	bool baby = false;
@@ -2542,7 +2548,6 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 	} else {
 		return;
 	}
-
 
 	if (player->getParent() != NULL) {
 		cellid = player->getParent()->getObjectID();
@@ -2590,11 +2595,9 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 	if (y < -7680)
 		y = -7680;
 
-	if (creatureManager->verifyCreatureSpawn(name)) {
+	if (creatureManager->verifyCreatureNameByStfName(name)) {
 
-		uint32 objcrc = creatureManager->getCreatureCrc(name);
-
-		Creature* creature = creatureManager->spawnCreature(objcrc, cellid, x, y,
+		Creature* creature = creatureManager->spawnCreature(name, cellid, x, y,
 				0, baby, true, height);
 
 		Zone* zone;
@@ -3942,5 +3945,26 @@ void GameCommandHandler::createTestPet(StringTokenizer tokenizer, Player* player
 		System::out << pet->isCreature() << "/" << pet->isNPC() << "/" << pet->isPlayer() <<"\n";
 		System::out << pet->isAggressive() << "/" << pet->isKiller() << "\n";
 		System::out << pet->isCHPet() << "/" << pet->isDroid() << "/" << pet->isFactionPet() << "\n";
+	}
+}
+
+void GameCommandHandler::woundPet(StringTokenizer tokenizer, Player* player) {
+	if (player->getTarget() != NULL) {
+		SceneObject* sco = player->getTarget();
+		if (sco->isNonPlayerCreature()) {
+			Creature* crea = (Creature*) sco;
+			if (crea->isPet()) {
+				CreaturePet* pet = (CreaturePet*) crea;
+				try {
+					pet->wlock();
+					pet->changeMindWoundsBar(100, false);
+					pet->unlock();
+				}catch (...) {
+					pet->unlock();
+				}
+
+
+			}
+		}
 	}
 }

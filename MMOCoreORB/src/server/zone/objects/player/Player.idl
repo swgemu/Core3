@@ -837,8 +837,7 @@ interface Player implements CreatureObject {
 	boolean hasPetCalled();
 	void registerPet(CreaturePet pet);
 	void unregisterPet(CreaturePet pet);
-	void sendChatMessageToPets(const UnicodeString message);
-	void sendTellToPets(String& name, const UnicodeString message);
-
+	void sendMessageToPets(const UnicodeString message);
+	boolean canStoreMorePets();
 
 }

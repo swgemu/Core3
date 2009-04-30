@@ -53,7 +53,11 @@ public:
 
 	bool verifyCreatureSpawn(String& name);
 
+	bool verifyCreatureNameByStfName(String& stfName);
+
 	Creature* spawnCreature(unsigned int objcrc, unsigned long long cellid, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true, float height = 1);
+
+	Creature* spawnCreature(String& stfName, unsigned long long cellid, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true, float height = 1);
 
 	TrainerCreature* spawnTrainer(const String& profession, const String& stfname, const String& name, int objCrc, unsigned long long cell, float x, float y, float z, float oy, float ow, bool doLock = true);
 
@@ -121,7 +125,11 @@ public:
 
 	bool verifyCreatureSpawn(String& name);
 
+	bool verifyCreatureNameByStfName(String& stfName);
+
 	Creature* spawnCreature(unsigned int objcrc, unsigned long long cellid, float x, float y, int bitmask, bool baby, bool doLock, float height);
+
+	Creature* spawnCreature(String& stfName, unsigned long long cellid, float x, float y, int bitmask, bool baby, bool doLock, float height);
 
 	TrainerCreature* spawnTrainer(const String& profession, const String& stfname, const String& name, int objCrc, unsigned long long cell, float x, float y, float z, float oy, float ow, bool doLock);
 
@@ -155,6 +163,8 @@ public:
 
 protected:
 	String _param0_verifyCreatureSpawn__String_;
+	String _param0_verifyCreatureNameByStfName__String_;
+	String _param0_spawnCreature__String_long_float_float_int_bool_bool_float_;
 	String _param0_spawnTrainer__String_String_String_int_long_float_float_float_float_float_bool_;
 	String _param1_spawnTrainer__String_String_String_int_long_float_float_float_float_float_bool_;
 	String _param2_spawnTrainer__String_String_String_int_long_float_float_float_float_float_bool_;

@@ -106,4 +106,8 @@ interface CreaturePet implements Creature {
 	void handleStayCommand();
 	void handleGuardCommand();
 	void handleStoreCommand();
+	void handleTransferCommand();
+	void handleTrickCommand(String anim,int mod,int cost);
+	void handleEnrageCommand();
+	void handleSpecialAttackCommand(int att);
 }

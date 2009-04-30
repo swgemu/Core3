@@ -1082,12 +1082,13 @@ bool CreatureObjectImplementation::changeHAMBars(int32 health, int32 action, int
 			return false;
 
 		} else {
-			if (newHealth <= 0)
+			/*if (newHealth <= 0)
 				newHealth = 1;
 			if (newAction <= 0)
 				newAction = 1;
 			if (newMind <= 0)
-				newMind = 1;
+				newMind = 1;*/
+			return false;
 		}
 	}
 

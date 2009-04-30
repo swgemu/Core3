@@ -116,8 +116,11 @@ public:
 	//Creature* spawnCreature(String objname, uint64 cellid, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true, float height = 1);
 
 	bool verifyCreatureSpawn(String objname);
+	bool verifyCreatureNameByStfName(String stfName);
 
 	Creature* spawnCreature(uint32 objcrc, uint64 cellid, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true, float height = 1);
+	Creature* spawnCreature(String sftName, uint64 cellid, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true, float height = 1);
+
 	TrainerCreature* spawnTrainer(const String& profession, const String& stfname, const String& name, int objCrc, uint64 cell, float x, float y, float z, float oy, float ow, bool doLock = true);
 	ShuttleCreature* spawnShuttle(const String& Planet, const String& City, Coordinate* playerSpawnPoint, uint64 cellid,float x, float y, float z, uint32 tax = 0, bool starport = false, bool doLock = true);
 	RecruiterCreature* spawnRecruiter(float x, float y, float oY, float oW, uint8 type = 1, uint64 cellid = 0, bool doLock = true);

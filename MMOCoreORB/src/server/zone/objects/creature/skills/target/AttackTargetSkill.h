@@ -451,6 +451,10 @@ public:
 		return damageRatio;
 	}
 
+	inline bool isDotSkill() {
+		return skillType == DOT;
+	}
+
 	//void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, Pharmaceutical* pharma) {
 	//	System::out <<"yyyy\n";
 	//	return;

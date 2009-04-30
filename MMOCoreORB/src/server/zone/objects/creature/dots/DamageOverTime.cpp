@@ -161,11 +161,18 @@ uint32 DamageOverTime::doBleedingTick(CreatureObject* attacker, CreatureObject* 
 }
 
 uint32 DamageOverTime::doFireTick(CreatureObject* attacker, CreatureObject* victim) {
+		uint32 shockWounds = victim->getShockWounds();
+
 		uint32 attr = victim->getAttribute(attribute);
-		victim->changeWoundsBar(attribute,strength,false);
+		uint32 woundDmg = (strength * (shockWounds + 100) / 500);
+
+		victim->changeWoundsBar(attribute,woundDmg,false);
+
+		victim->changeShockWounds((int)(woundDmg / 3 ));
 
 		if (attr < strength)
 			strength = attr - 1;
+
 
 		attacker->inflictDamage(victim,attribute,strength);
 
