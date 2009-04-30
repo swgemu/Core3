@@ -924,7 +924,7 @@ void CreaturePetImplementation::store(bool doLock) {
 	if (zone == NULL || getLinkedCreature() == NULL || !isInQuadTree())
 		return;
 
-	if (isInCombat() || getLinkedCreature()->isInCombat())
+	if (isInCombat() || getLinkedCreature()->isInCombat() || isIncapacitated() || getLinkedCreature()->isIncapacitated())
 		return;
 
 	try {
