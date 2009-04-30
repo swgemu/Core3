@@ -111,6 +111,8 @@ public:
 	}
 
 	void tame(Player* player, Creature* creature, int stage) {
+		if (player == NULL || creature == NULL)
+			return;
 		switch(stage) {
 			case 0:
 				if (!player->canStoreMorePets()) {
@@ -132,7 +134,7 @@ public:
 			break;
 			case 2:
 				player->say("Don't bite me.");
-				bool notInRange = !player->isInRange(creature,10.0f);
+				bool notInRange = (!player->isInRange(creature,10.0f) || creature->isInCombat() || player->isInCombat());
 
 				if (notInRange || (creature->isAggressive() && System::random(creature->getLevel()) > player->getSkillMod("tame_aggro"))) {
 					player->sendSystemMessage("Failed to tame creature");
@@ -140,6 +142,7 @@ public:
 						creature->updateTarget(player);
 						creature->setCombatState();
 					}
+					creature->unlock();
 					return;
 				}else if (notInRange || (System::random(creature->getLevel()) > player->getSkillMod("tame_non_aggro"))) {
 					player->sendSystemMessage("Failed to tame creature");
@@ -152,17 +155,20 @@ public:
 
 				CreaturePet* pet = new CreaturePet(player,player->getNewItemID());
 
+				if (pet == NULL) {
+					return;
+				}
 				pet->init(creature,0.5f);
 				creature->unload();
 				pet->createDataPad();
 
 				String chType = "creaturehandler";
 				player->addXp(chType, pet->getLevel() * 50,true);
-
 				//System::out << pet->isCreature() << "/" << pet->isNPC() << "/" << pet->isPlayer() <<"\n";
 				//System::out << pet->isAggressive() << "/" << pet->isKiller() << "\n";
 				//System::out << pet->isCHPet() << "/" << pet->isDroid() << "/" << pet->isFactionPet() <<"\n";
 				return;
+
 		}
 
 		TameEvent* event = new TameEvent(player,creature,++stage);

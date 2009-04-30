@@ -119,6 +119,9 @@ void CreaturePetImplementation::init() {
 }
 
 void CreaturePetImplementation::init(Creature* creature, float growth) {
+	if (creature == NULL)
+		return;
+
 	setCreatureType("PET");
 
 	setGrowth(growth);
@@ -181,12 +184,29 @@ void CreaturePetImplementation::init(Creature* creature, float growth) {
 	setAcid(creature->getArmorResist(8));
 	setLightSaber(creature->getArmorResist(9));
 
+	if (zone == NULL)
+		return;
+
 	CreatureManager* creatureManager = zone->getCreatureManager();
+
+	if (creatureManager == NULL) {
+		return;
+	}
+
 	creatureManager->setPetDefaultAttributes(_this,false);
 
 	loadItems();
 
+	if (server == NULL)
+		return;
+
+
 	SkillManager* sManager = server->getSkillManager();
+
+	if (sManager == NULL) {
+		return;
+	}
+
 	Skill* skill;
 
 	for (int i = 0; i < creature->getNumberOfSkills() ;i++) {
@@ -333,12 +353,28 @@ void CreaturePetImplementation::parseItemAttributes() {
 	setWillpowerMax(willpower);
 	setWillpower(willpower);
 
+	if (zone == NULL)
+		return;
+
 	CreatureManager* creatureManager = zone->getCreatureManager();
+
+	if (creatureManager == NULL) {
+		return;
+	}
+
 	creatureManager->setPetDefaultAttributes(_this,false);
 
 	loadItems();
 
+	if (server == NULL)
+		return;
+
 	SkillManager* sManager = server->getSkillManager();
+
+	if (sManager == NULL) {
+		return;
+	}
+
 	Skill* skill;
 	attr = "numSkill";
 	String skillName;
@@ -861,7 +897,17 @@ void CreaturePetImplementation::call() {
 			server->addEvent(growthRecovery);
 		}
 
+		if (zone == NULL) {
+			getLinkedCreature()->unlock();
+			return;
+		}
 		CreatureManager* cManager = zone->getCreatureManager();
+
+		if (cManager == NULL) {
+			getLinkedCreature()->unlock();
+			return;
+		}
+
 		cManager->insertCreaturePet(_this);
 		//TODO: CH check why this is needed, compare MountCreature
 		getDatapadItem()->sendTo(getLinkedCreature());
@@ -889,7 +935,7 @@ void CreaturePetImplementation::store(bool doLock) {
 
 			getDatapadItem()->unlock();
 		}
-		if (isQueued())
+		if (isQueued() && creatureManager != NULL)
 			creatureManager->dequeueActivity(this);
 
 		removeFromZone();
@@ -913,6 +959,9 @@ void CreaturePetImplementation::store(bool doLock) {
 }
 
 bool CreaturePetImplementation::canCall() {
+	if (getLinkedCreature() == NULL)
+		return false;
+
 	if (isDead()) {
 		getLinkedCreature()->sendSystemMessage("pet/pet_menu","dead_pet");
 		return false;
@@ -958,10 +1007,14 @@ bool CreaturePetImplementation::canCall() {
 }
 
 bool CreaturePetImplementation::isAttackable() {
+	if (getLinkedCreature() == NULL)
+		return false;
 	return getLinkedCreature()->isAttackable();
 }
 
 bool CreaturePetImplementation::isAttackableBy(CreatureObject* creature) {
+	if (getLinkedCreature() == NULL)
+		return false;
 	return getLinkedCreature()->isAttackableBy(creature);
 }
 
@@ -978,7 +1031,8 @@ void CreaturePetImplementation::onIncapacitated(SceneObject* attacker) {
 	setPosture(CreaturePosture::INCAPACITATED);
 
 	if (isQueued()) {
-		creatureManager->dequeueActivity(this);
+		if (creatureManager != NULL)
+			creatureManager->dequeueActivity(this);
 	}
 
 	CreaturePetIncapacitationRecoveryEvent* incapRecovery = new CreaturePetIncapacitationRecoveryEvent(_this);
@@ -1000,6 +1054,8 @@ void CreaturePetImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 		//System::out << "\ttnotifyPositionUpdate stay\n";
 		return;
 	}
+	if (creatureManager == NULL)
+		return;
 	try {
 		if (obj == this)
 			return;
@@ -1016,7 +1072,7 @@ void CreaturePetImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 				//System::out << "\tnotifyPositionUpdate : is owner\n" ;
 				if (!getLinkedCreature()->isInCombat() && aggroedCreature == NULL) {
 					//System::out << "\tnotifyPositionUpdate : not aggro\n" ;
-					if (isInGuardState()) {
+					/*if (isInGuardState()) {
 						//System::out << "\tnotifyPositionUpdate : isInGuardState\n" ;
 						QuadTreeEntry* entry;
 						SceneObject* object;
@@ -1058,7 +1114,7 @@ void CreaturePetImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 							creatureManager->queueActivity(this, 10);
 							return;
 						}
-					}
+					}*/
 
 					if (aggroedCreature == NULL) {
 						//System::out << "\tnotifyPositionUpdate : move to player\n";
@@ -1159,7 +1215,7 @@ bool CreaturePetImplementation::activate() {
 		//System::out << "\tactivate : recovery\n";
 		needMoreActivity |= doRecovery();
 
-		if (zone != NULL && needMoreActivity) {
+		if (zone != NULL && needMoreActivity && creatureManager != NULL) {
 			//info("queuing more activities");
 			//System::out << "\tactivate : queue\n";
 			creatureManager->queueActivity(this);
@@ -1438,7 +1494,8 @@ void CreaturePetImplementation::parseCommandMessage(const UnicodeString& message
 }
 
 void CreaturePetImplementation::handleAttackCommand() {
-	//System::out << "handleAttackCommand\n";
+	if (getLinkedCreature() == NULL || creatureManager == NULL)
+		return;
 	SceneObject* scno = getLinkedCreature()->getTarget();
 	if (scno != NULL && (scno->isNonPlayerCreature() || scno->isPlayer())) {
 		//System::out << "\thandleAttackCommand : aggro attack target\n";
@@ -1480,6 +1537,9 @@ void CreaturePetImplementation::handleStoreCommand() {
 }
 
 void CreaturePetImplementation::handleTransferCommand() {
+	if (getLinkedCreature() == NULL)
+		return;
+
 	SceneObject* scno = getLinkedCreature()->getTarget();
 	Player* newOwner = NULL;
 	if (scno->isPlayer())
@@ -1522,6 +1582,9 @@ void CreaturePetImplementation::handleTransferCommand() {
 }
 
 void CreaturePetImplementation::handleTrickCommand(String anim,int mod,int cost) {
+	if (getLinkedCreature() == NULL)
+		return;
+
 	if (isInCombat() || getLinkedCreature()->isInCombat()) {
 		getLinkedCreature()->sendSystemMessage("pet/pet_menu","sys_cant_trick");
 		return;
@@ -1562,17 +1625,20 @@ bool CreaturePetImplementation::consumeOwnerHam(int h,int a, int m) {
 }
 
 void CreaturePetImplementation::handleEnrageCommand() {
-		if (!consumeOwnerHam(0,-200,0)) {
-			getLinkedCreature()->sendSystemMessage("pet/pet_menu","sys_fail_enrage");
-
+	if (getLinkedCreature() == NULL)
 			return;
-		}
 
-		if (getWeapon() == NULL) {
-			return;
-		}
-		setBerserkDamage((int) getWeapon()->getMinDamage());
-		setBerserkedState(30*1000);
+	if (!consumeOwnerHam(0,-200,0)) {
+		getLinkedCreature()->sendSystemMessage("pet/pet_menu","sys_fail_enrage");
+
+		return;
+	}
+
+	if (getWeapon() == NULL) {
+		return;
+	}
+	setBerserkDamage((int) getWeapon()->getMinDamage());
+	setBerserkedState(30*1000);
 }
 
 void CreaturePetImplementation::handleSpecialAttackCommand(int att) {
