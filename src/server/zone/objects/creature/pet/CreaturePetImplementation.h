@@ -77,6 +77,8 @@ class CreaturePetImplementation : public CreaturePetServant ,public VehicleObjec
 	uint32 maxLevel;
 
 	int nextAttack;
+
+	static const bool debug = true;
 public:
 	static const uint8 CHPET = 0x10;
 	static const uint8 CHPETUNTRAINEDMOUNT = 0x12;
