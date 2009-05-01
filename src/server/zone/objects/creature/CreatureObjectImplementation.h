@@ -77,7 +77,6 @@ which carries forward this exception.
 #include "skills/CamoSkill.h"
 
 #include "dots/DamageOverTimeMap.h"
-#include "mount/VehicleObject.h"
 
 class CombatManager;
 class MissionManager;

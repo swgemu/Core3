@@ -87,6 +87,7 @@ ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* inserve
 	setGlobalLogging(true);
 
 	EMPTY = "";
+	resourceMap->setNullValue(NULL);
 }
 
 ResourceManagerImplementation::~ResourceManagerImplementation() {

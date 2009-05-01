@@ -66,6 +66,7 @@ ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, const String& N
 	isPublicRoom = true;
 
 	subRooms.setNullValue(NULL);
+	playerList.setNullValue(NULL);
 	playerList.setInsertPlan(SortedVector<Player*>::NO_DUPLICATE);
 	subRooms.setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
 }
@@ -88,6 +89,7 @@ ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, ChatRoom* Paren
 	isPublicRoom = true;
 
 	subRooms.setNullValue(NULL);
+	playerList.setNullValue(NULL);
 	playerList.setInsertPlan(SortedVector<Player*>::NO_DUPLICATE);
 	subRooms.setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
 

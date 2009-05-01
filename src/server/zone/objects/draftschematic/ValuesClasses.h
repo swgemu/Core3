@@ -210,6 +210,7 @@ public:
 
 		Values* values = new Values(subtitle ,min, max, precision, filler);
 
+		valueList.setNullValue(NULL);
 		valueList.put(subtitle, values);
 
 		if(classTitle == "null" || classTitle == "" || (name == "")) {

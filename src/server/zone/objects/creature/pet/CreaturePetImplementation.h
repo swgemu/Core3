@@ -51,6 +51,7 @@ which carries forward this exception.
 #include "../../scene/ItemAttributes.h"
 #include "../../../packets/scene/AttributeListMessage.h"
 #include "PetCommandHelper.h"
+#include "../mount/VehicleObject.h"
 
 class Player;
 
@@ -59,6 +60,8 @@ class CreatureObject;
 class Creature;
 
 class CreatureManagerImplementation;
+
+class VehicleObject;
 
 class CreaturePetImplementation : public CreaturePetServant ,public VehicleObject {
 

@@ -217,7 +217,6 @@ am_core3_OBJECTS = $(am__objects_1) \
 	CreatureObjectImplementation.$(OBJEXT) \
 	CreaturePetImplementation.$(OBJEXT) \
 	MountCreatureImplementation.$(OBJEXT) \
-	VehicleObjectImplementation.$(OBJEXT) \
 	RecruiterCreatureImplementation.$(OBJEXT) \
 	ShuttleCreatureImplementation.$(OBJEXT) \
 	TrainerCreatureImplementation.$(OBJEXT) \
@@ -680,7 +679,6 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/creature/pet/CreaturePetImplementation.cpp \
 		server/zone/objects/creature/mount/MountCreatureImplementation.cpp \
-		server/zone/objects/creature/mount/VehicleObjectImplementation.cpp \
 		server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp \
 		server/zone/objects/creature/shuttle/ShuttleCreatureImplementation.cpp \
 		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \
@@ -1169,7 +1167,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/VehicleDeed.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/VehicleDeedImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/VehicleObject.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/VehicleObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/VendorTerminal.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/WaypointObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Weapon.Po@am__quote@
@@ -4548,20 +4545,6 @@ MountCreatureImplementation.obj: server/zone/objects/creature/mount/MountCreatur
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/creature/mount/MountCreatureImplementation.cpp' object='MountCreatureImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o MountCreatureImplementation.obj `if test -f 'server/zone/objects/creature/mount/MountCreatureImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/mount/MountCreatureImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/mount/MountCreatureImplementation.cpp'; fi`
-
-VehicleObjectImplementation.o: server/zone/objects/creature/mount/VehicleObjectImplementation.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT VehicleObjectImplementation.o -MD -MP -MF $(DEPDIR)/VehicleObjectImplementation.Tpo -c -o VehicleObjectImplementation.o `test -f 'server/zone/objects/creature/mount/VehicleObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/mount/VehicleObjectImplementation.cpp
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/VehicleObjectImplementation.Tpo $(DEPDIR)/VehicleObjectImplementation.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/creature/mount/VehicleObjectImplementation.cpp' object='VehicleObjectImplementation.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o VehicleObjectImplementation.o `test -f 'server/zone/objects/creature/mount/VehicleObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/mount/VehicleObjectImplementation.cpp
-
-VehicleObjectImplementation.obj: server/zone/objects/creature/mount/VehicleObjectImplementation.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT VehicleObjectImplementation.obj -MD -MP -MF $(DEPDIR)/VehicleObjectImplementation.Tpo -c -o VehicleObjectImplementation.obj `if test -f 'server/zone/objects/creature/mount/VehicleObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/mount/VehicleObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/mount/VehicleObjectImplementation.cpp'; fi`
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/VehicleObjectImplementation.Tpo $(DEPDIR)/VehicleObjectImplementation.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/creature/mount/VehicleObjectImplementation.cpp' object='VehicleObjectImplementation.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o VehicleObjectImplementation.obj `if test -f 'server/zone/objects/creature/mount/VehicleObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/mount/VehicleObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/mount/VehicleObjectImplementation.cpp'; fi`
 
 RecruiterCreatureImplementation.o: server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT RecruiterCreatureImplementation.o -MD -MP -MF $(DEPDIR)/RecruiterCreatureImplementation.Tpo -c -o RecruiterCreatureImplementation.o `test -f 'server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp

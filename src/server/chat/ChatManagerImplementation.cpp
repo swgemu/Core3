@@ -124,6 +124,7 @@ void ChatManagerImplementation::initiateRooms() {
 	mainRoom->setPrivate();
 	addRoom(mainRoom);
 	gameRooms.put("SWG", mainRoom);
+	gameRooms.setNullValue(NULL);
 
 	ChatRoom* core3Room = new ChatRoom(server, mainRoom, server->getServerName(), getNextRoomID());
 	core3Room->deploy();

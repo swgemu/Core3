@@ -500,7 +500,6 @@ void CreaturePetImplementation::loadItems() {
 			addInventoryItem(weapon);
 			setWeapon(weapon);
 		} catch (...) {
-			//ouch..something in the lua isnt right
 			System::out
 					<< "exception CreaturePetImplementation::loadItems()  -  Weaponloading for creature "
 					<< objectID << "\n";
@@ -946,7 +945,6 @@ void CreaturePetImplementation::store(bool doLock) {
 
 		getLinkedCreature()->unregisterPet(_this);
 
-		zone->unlock();
 		//TODO: CH check why this is needed, compare MountCreature
 		getDatapadItem()->sendTo(getLinkedCreature());
 	} catch (Exception& e) {
@@ -1156,12 +1154,12 @@ bool CreaturePetImplementation::activate() {
 	bool needMoreActivity = false;
 
 	try {
-		_this->wlock();
+		wlock();
 
 		//System::out << "\tactivate : zone check\n";
 
 		if (!checkState() || zone == NULL) {
-			_this->unlock();
+			unlock();
 			return false;
 		}
 		//System::out << "\tactivate : movement\n";
@@ -1208,7 +1206,7 @@ bool CreaturePetImplementation::activate() {
 			}
 
 		} else if (isInCombat()) {
-			System::out << "activate : clear combat\n";
+			//System::out << "activate : clear combat\n";
 			clearCombatState();
 			aggroedCreature == NULL;
 		}
@@ -1221,11 +1219,11 @@ bool CreaturePetImplementation::activate() {
 			creatureManager->queueActivity(this);
 		}
 
-		_this->unlock();
+		unlock();
 	} catch (...) {
 		System::out << "exception CreaturePetImplementation::activate()\n";
 
-		_this->unlock();
+		unlock();
 	}
 
 	return needMoreActivity;
@@ -1489,7 +1487,7 @@ void CreaturePetImplementation::parseCommandMessage(const UnicodeString& message
 	} catch (...) {
 		System::out << "exception CreaturePetImplementation::parseCommandMessage()\n";
 
-		_this->unlock();
+		unlock();
 	}
 }
 

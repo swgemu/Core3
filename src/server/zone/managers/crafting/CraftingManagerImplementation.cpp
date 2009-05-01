@@ -68,6 +68,8 @@ CraftingManagerImplementation::CraftingManagerImplementation(ZoneServer* serv,
 
 	tempMask = 0;
 
+	draftSchematicsMap.setNullValue(NULL);
+	templateMap.setNullValue(NULL);
 	init();
 }
 
