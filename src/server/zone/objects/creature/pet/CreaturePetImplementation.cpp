@@ -943,8 +943,6 @@ void CreaturePetImplementation::store(bool doLock) {
 		getLinkedCreature()->setNumberOfCHPets(getLinkedCreature()->getNumberOfCHPets() - 1);
 		getLinkedCreature()->setLevelOfCHPets(getLinkedCreature()->getLevelOfCHPets() - getLevel());
 
-		getLinkedCreature()->unregisterPet(_this);
-
 		//TODO: CH check why this is needed, compare MountCreature
 		getDatapadItem()->sendTo(getLinkedCreature());
 	} catch (Exception& e) {
@@ -1531,7 +1529,12 @@ void CreaturePetImplementation::handleTransferCommand() {
 		return;
 	}
 
-	if (isAggressive() && !newOwner->getSkillMod("tame_level") < 12) {
+	if (!newOwner->isInRange(getLinkedCreature(),10.0f)) {
+		getLinkedCreature()->sendSystemMessage("That person is too far away. Transfer failed.");
+		return;
+	}
+
+	if (isAggressive() && newOwner->getSkillMod("tame_level") < 12) {
 		getLinkedCreature()->sendSystemMessage("pet/pet_menu","bad_type");
 
 		return;
@@ -1545,22 +1548,23 @@ void CreaturePetImplementation::handleTransferCommand() {
 
 	store();
 
+	ItemManager* itemManager = getLinkedCreature()->getZone()->getZoneServer()->getItemManager();
+
+	if (itemManager == NULL) {
+		System::out << "Error: CreaturePetImplementation::handleTransferCommand()\n";
+		return;
+	}
+
 	getDatapadItem()->sendDestroyTo(getLinkedCreature());
+	getLinkedCreature()->removeDatapadItem(getDatapadItem()->getObjectID());
+	itemManager->deleteDatapadItem(getLinkedCreature(), getDatapadItem(), true);
+
+	setDatapadItem(NULL);
 
 	creatureLinkID = newOwner->getObjectID();
 	setLinkedCreature(newOwner);
 
-	newOwner->sendSystemMessage("pet/pet_menu","device_added");
-
-	Datapad* datapad = newOwner->getDatapad();
-	getDatapadItem()->setParent(datapad);
-	getDatapadItem()->setUpdated(true);
-
-	newOwner->addDatapadItem(getDatapadItem());
-	newOwner->sendSystemMessage("pet/pet_menu","device_added");
-
-	getDatapadItem()->sendTo(newOwner, true);
-	newOwner->sendSystemMessage("pet/pet_menu","device_added");
+	createDataPad();
 }
 
 void CreaturePetImplementation::handleTrickCommand(String anim,int mod,int cost) {
