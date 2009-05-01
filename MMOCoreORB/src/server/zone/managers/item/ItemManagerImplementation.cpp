@@ -2126,6 +2126,7 @@ void ItemManagerImplementation::saveDatapadItem(Player* player, SceneObject* ite
 		query << "UPDATE `datapad` set character_id = " << player->getCharacterID() << " ";
 		query << ", attributes = '" << item->getAttributes() << "' ";
 		query << ", custom_name = '" << item->getCustomName().toString() << "' ";
+		query << ", deleted = 0 ";
 		query << "where object_id = " << item->getObjectID();
 
 		//System::out << "query : " << query.toString() << "\n";
@@ -2147,6 +2148,7 @@ void ItemManagerImplementation::saveDatapadLinkedItem(Player* player, SceneObjec
 		query << "UPDATE `datapad_items` set attributes = '" << item->getAttributes() << "' ";
 		query << ", name = '" << item->getCustomName().toString() << "' ";
 		query << ", character_id = '" << player->getCharacterID() << "' ";
+		query << ", deleted = 0 ";
 		query << "where item_id = " << item->getObjectID();
 
 		//System::out << "query : " << query.toString() << "\n";

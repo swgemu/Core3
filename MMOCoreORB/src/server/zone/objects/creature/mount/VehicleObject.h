@@ -72,7 +72,7 @@ public:
 	}
 
 	inline void setDatapadItem(SceneObject* item) {
-		if(item->isIntangible())
+		if(item == NULL || item->isIntangible())
 			datapadItem = (IntangibleObject*) item;
 	}
 
