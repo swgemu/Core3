@@ -118,7 +118,9 @@ public:
 	void tame(Player* player, Creature* creature, int stage) {
 		if (player == NULL || creature == NULL)
 			return;
-		if (creature->isInCombat()) {
+		if (creature->isInCombat() || player->isInCombat() ||
+				creature->isIncapacitated() || creature->isDead() ||
+				player->isIncapacitated() || player->isDead()) {
 			player->sendSystemMessage("Failed to tame creature");
 			return;
 		}
@@ -162,6 +164,7 @@ public:
 					}
 					return;
 				}
+				creature->deaggro();
 
 				CreaturePet* pet = new CreaturePet(player,player->getNewItemID());
 

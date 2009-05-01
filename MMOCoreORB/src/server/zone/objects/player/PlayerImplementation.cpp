@@ -258,6 +258,7 @@ void PlayerImplementation::initializePlayer() {
 	forceStatus = System::random(5);
 	skillBoxesToSave.setInsertPlan(SortedVector<SkillBox*>::NO_DUPLICATE);
 	certificationList.setInsertPlan(SortedVector<Certification*>::NO_DUPLICATE);
+	certificationList.setNullValue(NULL);
 	xpCapList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
 
 	// Draft Schematics
@@ -286,6 +287,7 @@ void PlayerImplementation::initializePlayer() {
 
  	chatRooms.setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
  	missionMap.setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
+ 	missionMap.setNullValue(NULL);
 
  	setLotsRemaining(10);
  	centered = false;
@@ -378,7 +380,7 @@ void PlayerImplementation::initializePlayer() {
 	droidCalled = false;
 	factionPetCalled = false;
 	petList.setInsertPlan(SortedVector<CreaturePet*>::NO_DUPLICATE);
-
+	petList.setNullValue(NULL);
 
 }
 

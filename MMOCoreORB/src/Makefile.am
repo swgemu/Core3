@@ -295,7 +295,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/creature/pet/CreaturePetImplementation.cpp \
 		server/zone/objects/creature/mount/MountCreatureImplementation.cpp \
-		server/zone/objects/creature/mount/VehicleObjectImplementation.cpp \
 		server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp \
 		server/zone/objects/creature/shuttle/ShuttleCreatureImplementation.cpp \
 		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \

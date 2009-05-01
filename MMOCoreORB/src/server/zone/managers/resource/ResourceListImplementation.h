@@ -55,7 +55,7 @@ class ResourceListImplementation : public ResourceListServant, public VectorMap<
 
 public:
 	ResourceListImplementation() : ResourceListServant(), VectorMap<String, ResourceItem*>() {
-
+		setNullValue(NULL);
 	}
 
 	inline bool contains(const String& key) {

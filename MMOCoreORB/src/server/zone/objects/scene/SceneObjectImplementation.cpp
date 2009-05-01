@@ -103,8 +103,9 @@ void SceneObjectImplementation::init() {
 	parent = NULL;
 
 	groupDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
+	groupDamageList.setNullValue(0);
 	playerDamageList.setInsertPlan(SortedVector<DamageDone>::ALLOW_OVERWRITE);
-
+	playerDamageList.setNullValue(NULL);
 	itemAttributes = new ItemAttributes();
 
 	linkType = 0x04;
@@ -617,7 +618,7 @@ void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int dama
 		break;
 	};
 
-	DamageDone *dmg;
+	DamageDone *dmg = NULL;
 	if (creature->isIncapacitated() || creature->isDead())
 		return;
 
@@ -661,6 +662,7 @@ void SceneObjectImplementation::dropDamageDone(CreatureObject* creature) {
 	playerDamageList.drop(creature);
 
 	delete damageDone;
+	damageDone = NULL;
 
 	if (creature->isInAGroup() && creature->isPlayer()) {
 		Player *player = (Player*)creature;

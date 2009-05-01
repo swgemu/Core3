@@ -64,7 +64,6 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/creature/recruiter/imperial/ImperialRecruiterCreature.idl \
 				server/zone/objects/creature/recruiter/rebel/RebelRecruiterCreature.idl \
 				server/zone/objects/creature/mount/MountCreature.idl \
-				server/zone/objects/creature/mount/VehicleObject.idl \
 				server/zone/objects/player/Player.idl \
 				server/zone/objects/player/FriendsList.idl \
 				server/zone/objects/player/IgnoreList.idl \

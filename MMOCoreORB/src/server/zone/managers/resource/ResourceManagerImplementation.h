@@ -245,7 +245,9 @@ private:
 public:
 	ClassMap(){
 		classTree = new VectorMap<String, ClassMap*>();
+		classTree->setNullValue(NULL);
 		resTree = new VectorMap<String, ResourceSpawn*>();
+		resTree->setNullValue(NULL);
 		classList = new Vector<String>();
 		className = "";
 		init();
