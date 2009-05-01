@@ -1056,7 +1056,7 @@ void CreatureManagerImplementation::load(Creature* creature) {
 		creature->addSkill(s);
 	}
 
-	if (((CreatureObject*)creature)->getTame() > 0.0f && System::random(10) == 1) {
+	if (creature->getTame() > 0.0f && System::random(10) == 1) {
 		changeStatsToBaby(creature);
 	}
 

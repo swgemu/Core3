@@ -6301,8 +6301,16 @@ void PlayerImplementation::unregisterPet(CreaturePet* pet) {
 void PlayerImplementation::sendMessageToPets(const UnicodeString& message) {
 	for (int i = 0 ; i < petList.size() ; i++) {
 		CreaturePet* pet = petList.get(i);
-		if (isInRange(pet,128.0f))
-			pet->parseCommandMessage(message);
+		if (isInRange(pet,128.0f)) {
+			try {
+				pet->lock();
+				pet->parseCommandMessage(message);
+				pet->unlock();
+			} catch (...) {
+				pet->unlock();
+				System::out << "exception PlayerImplementation::sendMessageToPets\n";
+			}
+		}
 	}
 }
 

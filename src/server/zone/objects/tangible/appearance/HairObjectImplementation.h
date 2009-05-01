@@ -63,10 +63,21 @@ public:
 		stfFile = "hair_name";
 		stfName = tempn;
 
-		if ((equipped = eqp))
+		/*if ((equipped = eqp))
 			setParent(creature, 0x04);
 		else
 			setParent((SceneObject*) creature->getInventory(), 0xFFFFFFFF);
+		*/
+		if ((equipped = eqp)) {
+			parent = creature;
+			linkType = 0x04;
+			//setParent(creature, 0x04);
+		}
+		else {
+			parent = (SceneObject*)creature->getInventory();
+			linkType = 0xFFFFFFFF;
+			//setParent(creature->getInventory(), 0xFFFFFFFF);
+		}
 	}
 
 	~HairObjectImplementation() {
