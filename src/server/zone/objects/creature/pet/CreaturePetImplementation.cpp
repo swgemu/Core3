@@ -1602,7 +1602,6 @@ void CreaturePetImplementation::healPetMind(int mod) {
 
 bool CreaturePetImplementation::consumeOwnerHam(int h,int a, int m) {
 	if (!getLinkedCreature()->changeHAMBars(h,a,m)) {
-		getLinkedCreature()->unlock();
 		return false;
 	}
 
