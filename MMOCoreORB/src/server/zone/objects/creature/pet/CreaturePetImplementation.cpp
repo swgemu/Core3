@@ -510,6 +510,11 @@ void CreaturePetImplementation::loadItems() {
 }
 
 void CreaturePetImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::sendRadialResponseTo() " << objectCRC;
+		info(ss.toString());
+	}
 	String skillBox = "outdoors_creaturehandler_novice";
 	if (!player->hasSkillBox(skillBox)) {
 		omr->finish();
@@ -598,6 +603,11 @@ void CreaturePetImplementation::addAttributes(AttributeListMessage* alm) {
 
 
 void CreaturePetImplementation::createDataPad() {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::createDatapadItem() " << objectCRC;
+		info(ss.toString());
+	}
 	 Datapad* datapad = getLinkedCreature()->getDatapad();
 
 	 uint32 objCRC = 0x2320411A;
@@ -848,6 +858,11 @@ void CreaturePetImplementation::createDataPad() {
 }
 
 void CreaturePetImplementation::call() {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::call() " << objectCRC;
+		info(ss.toString());
+	}
 	if (!canCall())
 		return;
 
@@ -919,6 +934,11 @@ void CreaturePetImplementation::call() {
 }
 
 void CreaturePetImplementation::store(bool doLock) {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::store() " << objectCRC;
+		info(ss.toString());
+	}
 	//System::out << "store\n";
 	if (zone == NULL || getLinkedCreature() == NULL || !isInQuadTree())
 		return;
@@ -1036,6 +1056,11 @@ void CreaturePetImplementation::onIncapacitated(SceneObject* attacker) {
 }
 
 void CreaturePetImplementation::recoverFromIncapacitation() {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::recoverFromIncapacitation() " << objectCRC;
+		info(ss.toString());
+	}
 	setPosture(CreaturePosture::UPRIGHT);
 	onIncapacitationRecovery();
 
@@ -1046,6 +1071,11 @@ void CreaturePetImplementation::recoverFromIncapacitation() {
 }
 
 void CreaturePetImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::notifyPositionUpdate() " << objectCRC;
+		info(ss.toString());
+	}
 	if (isInStayState()) {
 		//System::out << "\ttnotifyPositionUpdate stay\n";
 		return;
@@ -1145,6 +1175,11 @@ void CreaturePetImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 }
 
 bool CreaturePetImplementation::activate() {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::activate() " << objectCRC;
+		info(ss.toString());
+	}
 	//System::out << "activate\n";
 	if (isIncapacitated()) {
 		return false;
@@ -1228,6 +1263,11 @@ bool CreaturePetImplementation::activate() {
 }
 
 bool CreaturePetImplementation::attack(CreatureObject* target) {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::attack() " << objectCRC;
+		info(ss.toString());
+	}
 	//info("attacking target");
 
 	// Not ready to attack yet
@@ -1323,6 +1363,11 @@ bool CreaturePetImplementation::attack(CreatureObject* target) {
 }
 
 void CreaturePetImplementation::deaggro() {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::deaggro() " << objectCRC;
+		info(ss.toString());
+	}
 	CreatureImplementation::deaggro();
 
 	if (!isInStayState() && isInRange(getLinkedCreature(),8.0f)) {
@@ -1332,6 +1377,11 @@ void CreaturePetImplementation::deaggro() {
 }
 
 void CreaturePetImplementation::doGrowUp(bool updateTime) {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::doGrowUp() " << objectCRC;
+		info(ss.toString());
+	}
 	Time currentTime;
 
 	uint32 elapsedTime = currentTime.getTime() - lastGrowth.getTime();
@@ -1411,6 +1461,11 @@ void CreaturePetImplementation::setPetName(String& name) {
 }
 
 void CreaturePetImplementation::parseCommandMessage(const UnicodeString& message) {
+	if (debug) {
+			StringBuffer ss;
+			ss << "CreaturePetImplementation::parseCommandMessage() " << objectCRC;
+			info(ss.toString());
+		}
 	//System::out << customName.toString() << " says, " << message.toString() << "\n";
 
 	String command = message.toString();
@@ -1474,8 +1529,14 @@ void CreaturePetImplementation::parseCommandMessage(const UnicodeString& message
 }
 
 void CreaturePetImplementation::handleAttackCommand() {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::handleAttackCommand() " << objectCRC;
+		info(ss.toString());
+	}
 	if (getLinkedCreature() == NULL || creatureManager == NULL)
 		return;
+
 	SceneObject* scno = getLinkedCreature()->getTarget();
 	if (scno != NULL && (scno->isNonPlayerCreature() || scno->isPlayer())) {
 		//System::out << "\thandleAttackCommand : aggro attack target\n";
@@ -1498,6 +1559,11 @@ void CreaturePetImplementation::handleAttackCommand() {
 }
 
 void CreaturePetImplementation::handleFollowCommand() {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::handleFollowCommand() " << objectCRC;
+		info(ss.toString());
+	}
 	setCommmandState(STATEFOLLOW);
 
 	if (aggroedCreature != NULL)
@@ -1505,18 +1571,38 @@ void CreaturePetImplementation::handleFollowCommand() {
 }
 
 void CreaturePetImplementation::handleStayCommand() {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::handleStayCommand() " << objectCRC;
+		info(ss.toString());
+	}
 	setCommmandState(STATESTAY);
 }
 
 void CreaturePetImplementation::handleGuardCommand() {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::handleGuardCommand() " << objectCRC;
+		info(ss.toString());
+	}
 	setCommmandState(STATEGUARD);
 }
 
 void CreaturePetImplementation::handleStoreCommand() {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::handleStoreCommand() " << objectCRC;
+		info(ss.toString());
+	}
 	store();
 }
 
 void CreaturePetImplementation::handleTransferCommand() {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::handleTransferCommand() " << objectCRC;
+		info(ss.toString());
+	}
 	if (getLinkedCreature() == NULL)
 		return;
 
@@ -1568,6 +1654,11 @@ void CreaturePetImplementation::handleTransferCommand() {
 }
 
 void CreaturePetImplementation::handleTrickCommand(String anim,int mod,int cost) {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::handleTrickCommand() " << objectCRC;
+		info(ss.toString());
+	}
 	if (getLinkedCreature() == NULL)
 		return;
 
@@ -1609,6 +1700,11 @@ bool CreaturePetImplementation::consumeOwnerHam(int h,int a, int m) {
 }
 
 void CreaturePetImplementation::handleEnrageCommand() {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::handleEnrageCommand() " << objectCRC;
+		info(ss.toString());
+	}
 	if (getLinkedCreature() == NULL)
 			return;
 
@@ -1626,6 +1722,11 @@ void CreaturePetImplementation::handleEnrageCommand() {
 }
 
 void CreaturePetImplementation::handleSpecialAttackCommand(int att) {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::handleSpecialCommand() " << objectCRC;
+		info(ss.toString());
+	}
 		if (!isInCombat())
 			handleAttackCommand();
 
