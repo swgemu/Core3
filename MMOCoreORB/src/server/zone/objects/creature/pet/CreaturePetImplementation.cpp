@@ -1413,7 +1413,6 @@ void CreaturePetImplementation::setPetName(String& name) {
 }
 
 void CreaturePetImplementation::parseCommandMessage(const UnicodeString& message) {
-	try {
 	//System::out << customName.toString() << " says, " << message.toString() << "\n";
 
 	String command = message.toString();
@@ -1446,48 +1445,33 @@ void CreaturePetImplementation::parseCommandMessage(const UnicodeString& message
 
 	if (command == commandHelper->getBaseCommand(PetCommandHelper::PETATTACK)) {
 		handleAttackCommand();
-		return;
 	}
 	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETFOLLOW)) {
 		handleFollowCommand();
-		return;
 	}
 	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETGUARD)) {
 		handleGuardCommand();
-		return;
 	}
 	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETSTAY)) {
 		handleStayCommand();
-		return;
 	}
 	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETSTORE)) {
 		handleStoreCommand();
-		return;
 	}
 	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETTRANSFER)) {
 		handleTransferCommand();
-		return;
 	}
 	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETTRICK1)) {
 		handleTrickCommand("trick_1",20,-100);
-		return;
 	}
 	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETTRICK2)) {
 		handleTrickCommand("trick_2",10,-200);
-		return;
 	}
 	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETSPECIALATTACK1)) {
 		handleSpecialAttackCommand(0);
-		return;
 	}
 	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETSPECIALATTACK2)) {
 		handleSpecialAttackCommand(1);
-		return;
-	}
-	} catch (...) {
-		System::out << "exception CreaturePetImplementation::parseCommandMessage()\n";
-
-		unlock();
 	}
 }
 
@@ -1592,7 +1576,6 @@ void CreaturePetImplementation::handleTrickCommand(String anim,int mod,int cost)
 		getLinkedCreature()->sendSystemMessage("pet/pet_menu","cant_trick");
 		return;
 	}
-
 	healPetMind(mod);
 	doAnimation(anim);
 }
