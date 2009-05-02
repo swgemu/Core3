@@ -6195,17 +6195,18 @@ void Player::unregisterPet(CreaturePet* pet) {
 		((PlayerImplementation*) _impl)->unregisterPet(pet);
 }
 
-void Player::sendMessageToPets(const UnicodeString& message) {
+void Player::sendMessageToPets(const UnicodeString& message, unsigned long long petID) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 484);
 		method.addUnicodeParameter(message);
+		method.addUnsignedLongParameter(petID);
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerImplementation*) _impl)->sendMessageToPets(message);
+		((PlayerImplementation*) _impl)->sendMessageToPets(message, petID);
 }
 
 bool Player::canStoreMorePets() {
@@ -7666,7 +7667,7 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		unregisterPet((CreaturePet*) inv->getObjectParameter());
 		break;
 	case 484:
-		sendMessageToPets(inv->getUnicodeParameter(_param0_sendMessageToPets__UnicodeString_));
+		sendMessageToPets(inv->getUnicodeParameter(_param0_sendMessageToPets__UnicodeString_long_), inv->getUnsignedLongParameter());
 		break;
 	case 485:
 		resp->insertBoolean(canStoreMorePets());
@@ -9590,8 +9591,8 @@ void PlayerAdapter::unregisterPet(CreaturePet* pet) {
 	return ((PlayerImplementation*) impl)->unregisterPet(pet);
 }
 
-void PlayerAdapter::sendMessageToPets(const UnicodeString& message) {
-	return ((PlayerImplementation*) impl)->sendMessageToPets(message);
+void PlayerAdapter::sendMessageToPets(const UnicodeString& message, unsigned long long petID) {
+	return ((PlayerImplementation*) impl)->sendMessageToPets(message, petID);
 }
 
 bool PlayerAdapter::canStoreMorePets() {

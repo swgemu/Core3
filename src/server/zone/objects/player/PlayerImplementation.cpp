@@ -6298,7 +6298,25 @@ void PlayerImplementation::unregisterPet(CreaturePet* pet) {
 	petList.drop(pet->getObjectID());
 }
 
-void PlayerImplementation::sendMessageToPets(const UnicodeString& message) {
+void PlayerImplementation::sendMessageToPets(const UnicodeString& message, uint64 petID) {
+	if (petID != 0) {
+		CreaturePet* pet = petList.get(petID);
+
+		if (pet == NULL)
+			return;
+
+		if (isInRange(pet,128.0f)) {
+			try {
+				pet->lock();
+				pet->parseCommandMessage(message);
+				pet->unlock();
+			} catch (...) {
+				pet->unlock();
+				System::out << "exception PlayerImplementation::sendMessageToPets\n";
+			}
+		}
+		return;
+	}
 	for (int i = 0 ; i < petList.size() ; i++) {
 		CreaturePet* pet = petList.get(i);
 		if (isInRange(pet,128.0f)) {

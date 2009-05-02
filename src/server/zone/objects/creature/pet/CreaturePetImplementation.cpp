@@ -904,13 +904,6 @@ void CreaturePetImplementation::call() {
 		getLinkedCreature()->setNumberOfCHPets(getLinkedCreature()->getNumberOfCHPets() + 1);
 		getLinkedCreature()->setLevelOfCHPets(getLinkedCreature()->getLevelOfCHPets() + getLevel());
 
-		lastGrowth.update();
-
-		if (growth <= 1.0f)	{
-			CreaturePetGrowEvent* growthRecovery = new CreaturePetGrowEvent(_this);
-			server->addEvent(growthRecovery);
-		}
-
 		if (zone == NULL) {
 			getLinkedCreature()->unlock();
 			return;
@@ -925,6 +918,10 @@ void CreaturePetImplementation::call() {
 		cManager->insertCreaturePet(_this);
 		//TODO: CH check why this is needed, compare MountCreature
 		getDatapadItem()->sendTo(getLinkedCreature());
+
+		if (growth < 1.0f)	{
+			doGrowUp();
+		}
 	} catch (Exception& e) {
 		getLinkedCreature()->unlock();
 
@@ -1388,7 +1385,7 @@ void CreaturePetImplementation::doGrowUp(bool updateTime) {
 
 	float growCycles = (float)round((float)elapsedTime / 3600);
 
-	if (growCycles == 0)
+	if (growCycles < 0.05f)
 		return;
 
 	growth += 0.1 * growCycles;
@@ -1398,16 +1395,14 @@ void CreaturePetImplementation::doGrowUp(bool updateTime) {
 	setHeight(growth);
 	setBaby(false);
 
-	lastGrowth.update();
-	setLastGrowth(lastGrowth.getTime());
-
 	setHealthMax((int) ((float)getBaseHealth() * growth));
-	//setHealth((int) ((float)getHealth() * growthMod));
+	setHealth(getHealthMax() - getHealthWounds());
 
 	setActionMax((int) ((float)getBaseAction() * growth));
-	//setAction((int) ((float)getAction() * growth));
+	setAction(getActionMax() - getActionWounds());
 
 	setMindMax((int) ((float)getBaseMind() * growth));
+	setMind(getMindMax() - getMindWounds());
 
 	int oldLevel = level;
 
@@ -1430,8 +1425,11 @@ void CreaturePetImplementation::doGrowUp(bool updateTime) {
 	}
 
 	if (growth < 1.0f)	{
-		CreaturePetGrowEvent* incapRecovery = new CreaturePetGrowEvent(_this);
-		server->addEvent(incapRecovery);
+		lastGrowth.update();
+		setLastGrowth(lastGrowth.getTime());
+
+		CreaturePetGrowEvent* growEvent = new CreaturePetGrowEvent(_this);
+		server->addEvent(growEvent);
 	}
 	getDatapadItem()->setUpdated(true);
 }
@@ -1466,16 +1464,16 @@ void CreaturePetImplementation::parseCommandMessage(const UnicodeString& message
 			ss << "CreaturePetImplementation::parseCommandMessage() " << objectCRC;
 			info(ss.toString());
 		}
-	//System::out << customName.toString() << " says, " << message.toString() << "\n";
+	//System::out << getObjectID() << " : " << customName.toString() << " says, " << message.toString() << "\n";
 
 	String command = message.toString();
-	//System::out << "command : -" << command << "-\n";
+	//System::out << customName.toString() << " command : -" << command << "-\n";
 	int namePos = message.indexOf(customName.toString() +" ");
 
 	if (namePos == 0) {
 		command = message.subString(customName.length()+1,message.length()).toString();
 	}
-	//System::out << "command : -" << command << "-\n";
+	//System::out << customName.toString() << " command : -" << command << "-\n";
 	if (isInTrainingState()) {
 		if(System::random(1) == 1) {
 			commandToTrain = -1;
