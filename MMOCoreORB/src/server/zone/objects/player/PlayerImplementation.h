@@ -2175,7 +2175,7 @@ public:
 	}
 	void registerPet(CreaturePet* pet);
 	void unregisterPet(CreaturePet* pet);
-	void sendMessageToPets(const UnicodeString& message);
+	void sendMessageToPets(const UnicodeString& message, uint64 petID = 0);
 	bool canStoreMorePets();
 
 	friend class PlayerManager;

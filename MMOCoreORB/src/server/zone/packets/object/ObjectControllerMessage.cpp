@@ -4848,10 +4848,10 @@ void ObjectControllerMessage::parseStopListen(Player* player, Message* pack) {
 }
 
 void ObjectControllerMessage::parseTellPet(Player* player, Message* pack) {
-	pack->parseLong(); // skip passed target
+	uint64 petID = pack->parseLong(); // skip passed target
 
 	UnicodeString msg = UnicodeString("");
 	pack->parseUnicode(msg);
 
-	player->sendMessageToPets(msg);
+	player->sendMessageToPets(msg,petID);
 }

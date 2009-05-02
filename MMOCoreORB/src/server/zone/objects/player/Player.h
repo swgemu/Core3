@@ -1043,7 +1043,7 @@ public:
 
 	void unregisterPet(CreaturePet* pet);
 
-	void sendMessageToPets(const UnicodeString& message);
+	void sendMessageToPets(const UnicodeString& message, unsigned long long petID = 0);
 
 	bool canStoreMorePets();
 
@@ -2038,7 +2038,7 @@ public:
 
 	void unregisterPet(CreaturePet* pet);
 
-	void sendMessageToPets(const UnicodeString& message);
+	void sendMessageToPets(const UnicodeString& message, unsigned long long petID);
 
 	bool canStoreMorePets();
 
@@ -2106,7 +2106,7 @@ protected:
 	String _param0_addConsentEntry__String_;
 	String _param0_removeConsentEntry__String_;
 	String _param0_hasConsented__String_;
-	UnicodeString _param0_sendMessageToPets__UnicodeString_;
+	UnicodeString _param0_sendMessageToPets__UnicodeString_long_;
 };
 
 class PlayerHelper : public DistributedObjectClassHelper, public Singleton<PlayerHelper> {

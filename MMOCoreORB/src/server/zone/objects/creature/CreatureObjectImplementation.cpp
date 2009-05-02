@@ -4148,20 +4148,23 @@ void CreatureObjectImplementation::removeBuffs(bool doUpdateClient) {
 
 bool CreatureObjectImplementation::isLootOwner(CreatureObject* creature) {
 	CreatureObject* lootOwner = getLootOwner();
+
+	if (lootOwner == NULL)
+		return false;
+
 	if (lootOwner == creature)
 		return true;
-
-	if (lootOwner->isPet()) {
-
-	}
 
 	Player* playerLootOwner;
 
 	GroupObject* group = NULL;
-	if (creature->isPlayer()) {
+	if (lootOwner->isPlayer()) {
 		group = ((Player*)creature)->getGroupObject();
-	} else if (creature->isPet()) {
-		Player* petOwner = ((CreaturePet*)creature)->getLinkedCreature();
+	} else if (lootOwner->isPet()) {
+		Player* petOwner = ((CreaturePet*)lootOwner)->getLinkedCreature();
+
+		if (petOwner == NULL)
+			return false;
 
 		if (creature == petOwner)
 			return true;
@@ -4720,6 +4723,17 @@ void CreatureObjectImplementation::onKilled(SceneObject* killer) {
 		Player* killerPl = (Player*) killer;
 		if(killerPl->missionCount() > 0) {
 			killerPl->updateMissions(MissionObjectiveImplementation::HAS_KILLS, _this->getObjectCRC(), _this->getStfName(), 1);
+		}
+	}
+	// pet check
+	if(_this->isNonPlayerCreature() && killer->isNonPlayerCreature()) {
+		Creature* attacker = (Creature*) killer;
+		if (attacker->isPet()) {
+
+			Player* killerPl = (Player*) ((CreaturePet*)attacker)->getLinkedCreature();
+			if(killerPl != NULL && killerPl->missionCount() > 0) {
+				killerPl->updateMissions(MissionObjectiveImplementation::HAS_KILLS, _this->getObjectCRC(), _this->getStfName(), 1);
+			}
 		}
 	}
 
