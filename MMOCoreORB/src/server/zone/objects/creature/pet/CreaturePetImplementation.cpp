@@ -1272,7 +1272,7 @@ bool CreaturePetImplementation::attack(CreatureObject* target) {
 		return true;
 	}
 
-	if (target == NULL) {
+	if (target == NULL || !target->isAttackableBy(getLinkedCreature())) {
 		deaggro();
 		return false;
 	}
