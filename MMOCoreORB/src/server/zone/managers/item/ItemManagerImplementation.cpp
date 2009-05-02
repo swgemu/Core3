@@ -1700,20 +1700,13 @@ void ItemManagerImplementation::loadDatapadItem(Player* player, ResultSet* resul
 	SceneObject* item = NULL;
 
 	uint64 objectid = result->getUnsignedLong(0);
-
 	uint64 objecttype = result->getUnsignedLong(2);
-
 	String name = result->getString(3);
-
 	String stringFile = result->getString(4);
 	String stringName = result->getString(5);
-
 	uint32 objectcrc = result->getUnsignedInt(6);
-
 	String attributes = result->getString(7);
-
 	String appearance = result->getString(8);
-
 	uint64 tanoID = result->getUnsignedLong(9);
 
 	BinaryData cust(appearance);
@@ -1750,10 +1743,9 @@ void ItemManagerImplementation::loadDatapadItem(Player* player, ResultSet* resul
 
 			((IntangibleObject*)item)->setWorldObject(scno);
 		}
-	}
-
-	if (item == NULL)
+	} else {
 		return;
+	}
 
 	item->setCustomizationString(custStr);
 

@@ -65,7 +65,7 @@ public:
 	}
 
 
-	int16 getFactionPoints(String faction) {
+	int32 getFactionPoints(String faction) {
 		if (!containsKey(faction))
 			return 0;
 		else

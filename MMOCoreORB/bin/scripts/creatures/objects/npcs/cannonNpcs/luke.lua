@@ -57,18 +57,18 @@ luke = Creature:new {
 
 	healthMax = 30000,
 	healthMin = 24000,
-	strength = 0,
-	constitution = 0,
+	strength = 80000,
+	constitution = 80000,
 
 	actionMax = 30000,
 	actionMin = 24000,
-	quickness = 0,
-	stamina = 0,
+	quickness = 80000,
+	stamina = 80000,
 
 	mindMax = 30000,
 	mindMin = 24000,
-	focus = 0,
-	willpower = 0,
+	focus = 80000,
+	willpower = 80000,
 
 	height = 1, -- Size of creature
 	armor = 3, -- Just a guess

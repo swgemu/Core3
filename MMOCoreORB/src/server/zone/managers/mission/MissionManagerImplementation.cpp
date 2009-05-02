@@ -288,7 +288,7 @@ void MissionManagerImplementation::doMissionAccept(Player* player, uint64& oid, 
 
 		MissionObject* miso = misoMap->get(oid);
 		if (miso == NULL) {
-			error("miso object is NULL, exiting function: doMissionAccept()");
+			error("miso object[id = " + String::valueOf(oid) + " is NULL, exiting function: doMissionAccept()");
 			unlock(doLock);
 			return;
 		}
@@ -355,7 +355,7 @@ void MissionManagerImplementation::doMissionAbort(Player* player, uint64& oid, b
 
 		MissionObject* miso = misoMap->get(oid);
 		if (miso == NULL) {
-			error("miso object is NULL, exiting function: doMissionAbort()");
+			error("miso object[id = " + String::valueOf(oid) + "] is NULL, exiting function: doMissionAbort()");
 			unlock(doLock);
 			return;
 		}
@@ -376,7 +376,7 @@ void MissionManagerImplementation::doMissionAbort(Player* player, const String& 
 
 		MissionObject* miso = misoMap->get(tKey);
 		if (miso == NULL) {
-			error("miso object is NULL, exiting function: doMissionAbort()");
+			error("miso object[" + tKey + "] is NULL, exiting function: doMissionAbort()");
 			unlock(doLock);
 			return;
 		}
