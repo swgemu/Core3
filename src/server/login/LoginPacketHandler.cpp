@@ -92,7 +92,7 @@ void LoginPacketHandler::handleLoginClientID(Message* pack) {
 
 	if (!account.checkVersion()) {
 		errtype = "Login Error";
-		errmsg = "The client you are using is out of date. Go to the SWGEmu Updates forum and read the 11/03/07 Client Notice.";
+		errmsg = "The client you are using is out of date. Exit the game and run the Launchpad Enhanced patcher.";
 		ver = new ErrorMessage(errtype, errmsg, 0x00);
 		client->sendMessage(ver);
 	} else {
@@ -172,13 +172,13 @@ void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
     try {
 		StringBuffer query;
 
-		MySqlDatabase::escapeString(firstName);
-
 		query << "SELECT lower(firstname) FROM characters WHERE character_id = " << charId <<" and galaxy_id = " << ServerId << ";";
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
 		if (res->next())
 			firstName = res->getString(0);
+
+		MySqlDatabase::escapeString(firstName);
 
 		query.deleteAll(); // clear stream
 		query << "DELETE FROM character_items WHERE character_id = '" << charId <<"';";
@@ -220,6 +220,10 @@ void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
 		query << "DELETE FROM mail WHERE lower(recv_name) = '" << firstName <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
+		query.deleteAll();
+		query << "DELETE FROM mission_save WHERE character_id = '" << charId <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+
 
 		/* ToDO: Revisit this, when mail attachments are functionally
 		query.deleteAll();
@@ -238,7 +242,6 @@ void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
 		delete res;
 		dbDelete = 0;
     } catch(DatabaseException& e) {
-
    		dbDelete = 1;
    	}
 
