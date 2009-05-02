@@ -4702,13 +4702,13 @@ void PlayerImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespon
 }
 
 void PlayerImplementation::addFactionPoints(String faction, uint32 points) {
-	int currentPoints = factionPointsMap.getFactionPoints(faction);
+	uint32 currentPoints = factionPointsMap.getFactionPoints(faction);
 
 	uint32 maxPoints = getMaxFactionPoints(faction);
 	uint32 pointsToAdd = 0;
 
-	if ((currentPoints + (int) points) > maxPoints)
-		pointsToAdd = (int) maxPoints - currentPoints;
+	if ((currentPoints + points) > maxPoints)
+		pointsToAdd = maxPoints - currentPoints;
 	else
 		pointsToAdd = points;
 

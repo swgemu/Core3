@@ -4779,7 +4779,12 @@ void ObjectControllerMessage::parseThrowGrenade(Player* player, Message* pack, u
 		return;
 	uint64 objectId = 0;
 	if (!actionModifier.isEmpty())
-		objectId = Long::valueOf(actionModifier);
+		try {
+			objectId = Long::valueOf(actionModifier);
+		} catch (...) {
+			System::out << "cant convert long:[" << actionModifier << "]\n";
+			//player->throwTrap(target);
+		}
 	else {
 		player->throwGrenade(target);
 	}
