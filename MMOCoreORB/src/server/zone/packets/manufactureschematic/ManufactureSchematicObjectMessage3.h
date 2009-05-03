@@ -68,6 +68,7 @@ public:
 		insertInt(0x0A);
 		insertInt(1);
 		insertInt(1);
+
 		insertByte(0);
 
 		insertAscii("crafting");

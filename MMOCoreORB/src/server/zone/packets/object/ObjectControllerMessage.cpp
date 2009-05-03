@@ -860,11 +860,11 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	case (0x094AC516): // Request Crafting Session
 		parseRequestCraftingSession(player, pack);
 		break;
-	case (0x83250E2A): // Cancel Crafting Session
-		parseCancelCraftingSession(player, pack);
-		break;
 	case (0x89242E02): // Select Draft Schematic
 		parseSelectDraftSchematic(player, pack);
+		break;
+	case (0x83250E2A): // Cancel Crafting Session
+		parseCancelCraftingSession(player, pack);
 		break;
 	case (0x6AD8ED4D): // Next crafting stage
 		parseNextCraftingStage(player, pack);
@@ -1395,7 +1395,6 @@ void ObjectControllerMessage::parseGetAttributes(Player* player, Message* pack) 
 
 		try {
 			objid = ids.getLongToken();
-
 		} catch (...) {
 		}
 
@@ -2359,12 +2358,11 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 
 		//System::out << "Server destroy happening\n";
 
-		if(tano->isCraftingTool()) {
-
-		CraftingTool* tool = (CraftingTool*) tano;
+		if (tano->isCraftingTool()) {
+			CraftingTool* tool = (CraftingTool*) tano;
 
 			if (!tool->isReady()) {
-				player->sendSystemMessage("You cant delete an active crafting tool!");
+				player->sendSystemMessage("You cant delete a working crafting tool!");
 				return;
 			}
 		}
@@ -3139,7 +3137,7 @@ void ObjectControllerMessage::parsePlaceStructure(Player* player,
 
 void ObjectControllerMessage::parseSynchronizedUIListen(Player *player,
 		Message *pack) {
-	uint64 objectid = pack->parseLong();  // Object ID
+	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
 	int value = pack->parseInt();
 
 	SceneObject* object = player->getZone()->lookupObject(objectid);
@@ -3152,7 +3150,7 @@ void ObjectControllerMessage::parseSynchronizedUIListen(Player *player,
 
 void ObjectControllerMessage::parseSynchronizedUIStopListening(Player *player,
 		Message *pack) {
-	uint64 objectid = pack->parseLong(); // Object ID
+	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
 	int value = pack->parseInt();
 
 	SceneObject* object = player->getZone()->lookupObject(objectid);
@@ -3161,7 +3159,6 @@ void ObjectControllerMessage::parseSynchronizedUIStopListening(Player *player,
 		return;
 
 	object->synchronizedUIStopListen(player, value);
-
 }
 
 void ObjectControllerMessage::parseHarvesterActivate(Player *player,
@@ -3584,7 +3581,6 @@ void ObjectControllerMessage::parseResourceContainerTransfer(Player* player,
 	}
 }
 
-
 void ObjectControllerMessage::parseRequestCraftingSession(Player* player,
 		Message* packet) {
 
@@ -3645,6 +3641,8 @@ void ObjectControllerMessage::parseRequestCraftingSession(Player* player,
 }
 
 void ObjectControllerMessage::parseCancelCraftingSession(Player* player, Message* packet) {
+
+
 	ManagedReference<CraftingTool> craftingTool = player->getActiveCraftingTool();
 
 	if (craftingTool == NULL)
@@ -3658,16 +3656,10 @@ void ObjectControllerMessage::parseCancelCraftingSession(Player* player, Message
 	dplay9->close();
 	player->sendMessage(dplay9);
 
+	player->setActiveCraftingTool(NULL);
+
 	// Clean up crafting here, delete, sceneremove unneeded objects
 	craftingTool->cleanUp(player);
-
-	// Object Controller ********************************************
-	ObjectControllerMessage* objMsg =
-			new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01C2);
-	objMsg->insertByte(0);
-
-	player->sendMessage(objMsg);
-	//End Object Controller ******************************************
 }
 
 void ObjectControllerMessage::parseSelectDraftSchematic(Player* player, Message* packet) {
@@ -3725,17 +3717,18 @@ void ObjectControllerMessage::parseRequestDraftSlotsBatch(Player* player, Messag
 	StringTokenizer tokenizer(crcAndID.toString());
 
 	uint32 schematicID;
-	uint32 schematicCRC;
+	uint32 objectCRC;
 	// CHANGE THIS WHEN .getIntToken WORKS RIGHT
 	if (tokenizer.hasMoreTokens())
 		schematicID = tokenizer.getLongToken();
 	if (tokenizer.hasMoreTokens())
-		schematicCRC = tokenizer.getLongToken();
+		objectCRC = tokenizer.getLongToken();
 
 	//Check to see if the correct obj id is in the players vector of draft schematics
-	DraftSchematic* ds = player->getDraftSchematic(schematicID);
+	DraftSchematic* ds = player->getDraftSchematicByID(schematicID);
 	if (ds != NULL) {
 		ds->sendIngredientsToPlayer(player);
+		ds->sendExperimentalPropertiesToPlayer(player);
 	}
 }
 
@@ -3755,8 +3748,9 @@ void ObjectControllerMessage::parseRequestResourceWeightsBatch(Player* player, M
 		schematicID = tokenizer.getIntToken();
 
 	//Check to see if the correct obj id is in the players vector of draft schematics
-	DraftSchematic* ds = player->getDraftSchematic(schematicID);
+	DraftSchematic* ds = player->getDraftSchematicByID(schematicID);
 	if (ds != NULL) {
+		ds->sendIngredientsToPlayer(player);
 		ds->sendExperimentalPropertiesToPlayer(player);
 	}
 }
@@ -4013,12 +4007,6 @@ void ObjectControllerMessage::parseItemDropTrade(Player* player, Message* pack) 
 	ManagedReference<SceneObject> item = player->getZone()->lookupObject(tradeItemId);
 
 	if(obj.get() == NULL || item.get() == NULL)
-		return;
-
-	if (!obj->isPlayer())
-		return;
-
-	if (!item->isPlayer())
 		return;
 
 	Player* sender = (Player*) obj.get();

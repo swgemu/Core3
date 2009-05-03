@@ -324,6 +324,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
 		server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp \
+		server/zone/objects/player/DraftSchematicMap.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/scene/ContainerObject.cpp \
 		server/zone/objects/scene/CustomizationVariables.cpp \

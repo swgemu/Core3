@@ -67,16 +67,17 @@ which carries forward this exception.
 ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* inserver,
 		ZoneProcessServerImplementation* inserv) : ResourceManagerServant(), Mutex("ResourceManager"), Lua() {
 
+	pserv = inserv;
+	server = inserver;
+
 	setLoggingName("ResourceManager");
 
 	itemStrings = NULL;
 
 	init();
 
-	serv = inserv;
-
 	spawnResourcesEvent = new SpawnResourcesEvent(this);
-	serv->addEvent(spawnResourcesEvent, 1000);
+	pserv->addEvent(spawnResourcesEvent, 1000);
 	//  This dictates the first time the spawner will run
 	//  Spawner does take a good bit of time to populate an
 	//  Empty database.
@@ -149,11 +150,9 @@ void ResourceManagerImplementation::init() {
 	resourceIDNameMap = new VectorMap<uint64, String>();
 	//resourceIDNameMap->setNullValue(NULL);
 
-
 	info("Initializing Resource Manager");
 
 	buildResourceMap();
-
 	info("Resources built from database.");
 
 	if (!loadConfigData()) {
@@ -216,7 +215,7 @@ void ResourceManagerImplementation::stop() {
 	lock();
 
 	if (spawnResourcesEvent->isQueued())
-		serv->removeEvent(spawnResourcesEvent);
+		pserv->removeEvent(spawnResourcesEvent);
 
 	if (resourceIDNameMap != NULL)
 		resourceIDNameMap->removeAll();
@@ -225,6 +224,7 @@ void ResourceManagerImplementation::stop() {
 }
 
 void ResourceManagerImplementation::theShift() {
+
 	lock();
 	// Much of this method can be removed, the output statements
 	// Make it easier to see what the spawner is doing and what
@@ -257,7 +257,7 @@ void ResourceManagerImplementation::theShift() {
 
 	info("resource Spawner Finished");
 
-	serv->addEvent(spawnResourcesEvent, averageShiftTime);
+	pserv->addEvent(spawnResourcesEvent, averageShiftTime);
 	unlock();
 
 	//System::out << "Throttled at " << spawnThrottling << "   Over = " << tempOver << "   under = " << tempUnder << endl;
@@ -1212,10 +1212,10 @@ bool ResourceManagerImplementation::isDuplicate(Vector<String>* rList, String& r
 }
 
 void ResourceManagerImplementation::buildResourceMap() {
-	ResourceSpawn* resTemp;
+	ResourceSpawn* tempSpawn;
 	SpawnLocation* sl;
 	String resname;
-	String query = "SELECT resource_data.`INDEX`, resource_data.resource_name, resource_data.resource_type, "
+	String query = "SELECT resource_data.`objectID`, resource_data.resource_name, resource_data.resource_type, "
 		"resource_data.class_1, resource_data.class_2, resource_data.class_3, resource_data.class_4, "
 		"resource_data.class_5, resource_data.class_6, resource_data.class_7, resource_data.res_decay_resist, "
 		"resource_data.res_quality, resource_data.res_flavor, resource_data.res_potential_energy, "
@@ -1238,56 +1238,58 @@ void ResourceManagerImplementation::buildResourceMap() {
 				if (!resourceMap->contains(resname)) {
 
 					String type = res->getString(2);
-					resTemp = new ResourceSpawn(type);
-					resTemp->setName(resname);
-					resTemp->setObjectID(res->getUnsignedLong(0));
+					tempSpawn = new ResourceSpawn(type);
+					tempSpawn->setName(resname);
+					tempSpawn->setObjectID(res->getUnsignedLong(0));
 
-					resTemp->setClass1(res->getString(3));
-					resTemp->setClass2(res->getString(4));
-					resTemp->setClass3(res->getString(5));
-					resTemp->setClass4(res->getString(6));
-					resTemp->setClass5(res->getString(7));
-					resTemp->setClass6(res->getString(8));
-					resTemp->setClass7(res->getString(9));
+					tempSpawn->setClass1(res->getString(3));
+					tempSpawn->setClass2(res->getString(4));
+					tempSpawn->setClass3(res->getString(5));
+					tempSpawn->setClass4(res->getString(6));
+					tempSpawn->setClass5(res->getString(7));
+					tempSpawn->setClass6(res->getString(8));
+					tempSpawn->setClass7(res->getString(9));
 
-					resTemp->setMaxType(0);
-					resTemp->setMinType(0);
-					resTemp->setMinPool(0);
-					resTemp->setMaxPool(0);
+					tempSpawn->setMaxType(0);
+					tempSpawn->setMinType(0);
+					tempSpawn->setMinPool(0);
+					tempSpawn->setMaxPool(0);
 
-					resTemp->setAtt1("res_decay_resist");
-					resTemp->setAtt2("res_quality");
-					resTemp->setAtt3("res_flavor");
-					resTemp->setAtt4("res_potential_energy");
-					resTemp->setAtt5("res_malleability");
-					resTemp->setAtt6("res_toughness");
-					resTemp->setAtt7("res_shock_resistance");
-					resTemp->setAtt8("res_cold_resist");
-					resTemp->setAtt9("res_heat_resist");
-					resTemp->setAtt10("res_conductivity");
-					resTemp->setAtt11("entangle_resistance");
+					tempSpawn->setAtt1("res_decay_resist");
+					tempSpawn->setAtt2("res_quality");
+					tempSpawn->setAtt3("res_flavor");
+					tempSpawn->setAtt4("res_potential_energy");
+					tempSpawn->setAtt5("res_malleability");
+					tempSpawn->setAtt6("res_toughness");
+					tempSpawn->setAtt7("res_shock_resistance");
+					tempSpawn->setAtt8("res_cold_resist");
+					tempSpawn->setAtt9("res_heat_resist");
+					tempSpawn->setAtt10("res_conductivity");
+					tempSpawn->setAtt11("entangle_resistance");
 
-					resTemp->setAtt1Stat(res->getInt(10));
-					resTemp->setAtt2Stat(res->getInt(11));
-					resTemp->setAtt3Stat(res->getInt(12));
-					resTemp->setAtt4Stat(res->getInt(13));
-					resTemp->setAtt5Stat(res->getInt(14));
-					resTemp->setAtt6Stat(res->getInt(15));
-					resTemp->setAtt7Stat(res->getInt(16));
-					resTemp->setAtt8Stat(res->getInt(17));
-					resTemp->setAtt9Stat(res->getInt(18));
-					resTemp->setAtt10Stat(res->getInt(19));
-					resTemp->setAtt11Stat(res->getInt(20));
+					tempSpawn->setAtt1Stat(res->getInt(10));
+					tempSpawn->setAtt2Stat(res->getInt(11));
+					tempSpawn->setAtt3Stat(res->getInt(12));
+					tempSpawn->setAtt4Stat(res->getInt(13));
+					tempSpawn->setAtt5Stat(res->getInt(14));
+					tempSpawn->setAtt6Stat(res->getInt(15));
+					tempSpawn->setAtt7Stat(res->getInt(16));
+					tempSpawn->setAtt8Stat(res->getInt(17));
+					tempSpawn->setAtt9Stat(res->getInt(18));
+					tempSpawn->setAtt10Stat(res->getInt(19));
+					tempSpawn->setAtt11Stat(res->getInt(20));
 
-					resTemp->setContainerName(res->getString(23));
-					resTemp->setObjectCRC(res->getUnsignedInt(24));
+					tempSpawn->setContainerName(res->getString(23));
+					tempSpawn->setObjectCRC(res->getUnsignedInt(24));
 
-					setObjectType(resTemp);
+					setObjectType(tempSpawn);
 
-					resourceIDNameMap->put(resTemp->getObjectID(), resname);
-					resourceMap->put(resname, resTemp);
+					resourceIDNameMap->put(tempSpawn->getObjectID(), resname);
+					resourceMap->put(resname, tempSpawn);
+
+					server->addObject(tempSpawn);
 				} else {
-					resTemp = resourceMap->get(resname);
+					tempSpawn = resourceMap->get(resname);
 				}
 
 				try {
@@ -1298,7 +1300,7 @@ void ResourceManagerImplementation::buildResourceMap() {
 									27), res->getFloat(28), res->getFloat(29), res->getFloat(
 									30), res->getFloat(31), res->getUnsignedLong(32), pool);
 
-					resTemp->addSpawnLocation(sl);
+					tempSpawn->addSpawnLocation(sl);
 
 				} catch (...) {
 
@@ -1677,6 +1679,7 @@ void ResourceManagerImplementation::createResource(String restype, String pool, 
 	int planet, therand, thex, they, numplanets, numspawns;
 
 	ResourceSpawn* resource = new ResourceSpawn(restype);
+	resource->setObjectID(server->getNextID());
 
 	generateResourceStats(resource);
 
@@ -1732,6 +1735,8 @@ void ResourceManagerImplementation::createResource(String restype, String pool, 
 	resourceIDNameMap->put(resource->getObjectID(), resource->getName());
 	resourceMap->put(resource->getName(), resource);
 	addToResourceTree(resource);
+
+	server->addObject(resource);
 }
 
 void ResourceManagerImplementation::generateResourceStats(ResourceSpawn* resource) {
@@ -2105,7 +2110,7 @@ void ResourceManagerImplementation::insertResource(ResourceSpawn* resource) {
 	try {
 		StringBuffer query;
 		query << "INSERT INTO `resource_data` "
-		<< "(`resource_name`,`resource_type`,`class_1`,"
+		<< "(`objectID`,`resource_name`,`resource_type`,`class_1`,"
 		<< "`class_2`,`class_3`,`class_4`,"
 		<< "`class_5`,`class_6`,`class_7`"
 		<< checkInsertCategory(resource->getAtt1())
@@ -2121,6 +2126,7 @@ void ResourceManagerImplementation::insertResource(ResourceSpawn* resource) {
 		<< checkInsertCategory(resource->getAtt11())
 		<< ",`shiftedIn`,`container`, `containerCRC`)"
 		<< " VALUES ('"
+		<< resource->getObjectID() << "','"
 		<< resource->getName() << "','" << resource->getType() << "','"
 		<< resource->getClass1() << "','" << resource->getClass2() << "','"
 		<< resource->getClass3() << "','" << resource->getClass4() << "','"
@@ -2227,7 +2233,7 @@ void ResourceManagerImplementation::makeResourceName(String& resname, bool isOrg
 	String randname;
 
 	while (true) {
-		randname = serv->getNameManager()->makeResourceName(isOrganic);
+		randname = pserv->getNameManager()->makeResourceName(isOrganic);
 
 		if (checkResourceName(randname))
 			break;

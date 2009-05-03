@@ -135,6 +135,9 @@ void ProfessionManager::loadProfessions(PlayerImplementation* player) {
 		data++;
 	}
 
+	if(player->isOnline())
+		player->sendDraftSchematics();
+
 	loadDefaultSkills(player);
 }
 
@@ -210,6 +213,8 @@ bool ProfessionManager::trainSkillBox(SkillBox* skillBox, PlayerImplementation* 
 
 	skillManager->loadSkillBox(skillBox, player, false, updateClient);
 
+	player->sendDraftSchematics();
+
 	if (skillBox->isMasterBox()) {
 		player->awardBadge(Badge::getID(skillBox->getName()));
 	}
@@ -238,6 +243,8 @@ bool ProfessionManager::surrenderSkillBox(SkillBox* skillBox, PlayerImplementati
 			SkillBox* sBox = skillBox->requiredSkills.get(i);
 			player->skillBoxesToSave.put(sBox);
 		}
+
+		player->sendDraftSchematics();
 
 		return true;
 	}

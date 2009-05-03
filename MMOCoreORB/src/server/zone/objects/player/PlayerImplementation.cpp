@@ -203,6 +203,10 @@ PlayerImplementation::~PlayerImplementation() {
 		camp = NULL;
 	}
 
+	if (draftSchematicMap != NULL) {
+		delete draftSchematicMap;
+	}
+
 	server->getZoneServer()->increaseTotalDeletedPlayers();
 
 	info("undeploying player");
@@ -262,12 +266,12 @@ void PlayerImplementation::initializePlayer() {
 	xpCapList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
 
 	// Draft Schematics
-	draftSchematicList.setInsertPlan(SortedVector<DraftSchematic*>::NO_DUPLICATE);
-	draftSchematicList.setNullValue(NULL);
 	draftSchematicUpdateCount = 0;
+	draftSchematicMap = new DraftSchematicMap(_this);
 
 	//Crafting
 	resourceDeedID = 0;
+	activeCraftingTool = NULL;
 
 	//GM Flags
 	chatMuted = false;
@@ -3963,53 +3967,29 @@ void PlayerImplementation::subtractDraftSchematicsFromGroupName(const String& sc
 }
 
 void PlayerImplementation::addDraftSchematic(DraftSchematic* ds) {
-	draftSchematicList.put(ds->getSchematicID(), ds);
+	draftSchematicMap->add(ds);
 }
 
-void PlayerImplementation::subtractDraftSchematic(DraftSchematic* ds) {
-	draftSchematicList.drop(ds->getSchematicID());
+void PlayerImplementation::subtractDraftSchematic(const uint32 objectCRC) {
+	draftSchematicMap->remove(objectCRC);
 }
 
 void PlayerImplementation::sendDraftSchematics() {
-	PlayerObjectDeltaMessage9* dplay9;
+	draftSchematicMap->sendTo();
+}
 
-	dplay9 = new PlayerObjectDeltaMessage9(playerObject);
-
-	dplay9->updateDraftSchematics();
-
-	dplay9->close();
-	sendMessage(dplay9);
-
-	// Sending all the ingredients and experimental properties when draft schematics are sent
-	// is the only way I can think of at the moment to prevent the bug if the client
-	// leaves their datapad open and they surrender a skill that has draft schematics.
-	// The draft schematics that are suppose to be deleted when surrendering only disappear
-	// when the datapad is refreshed (close datapad, open datapad to refresh), if the client
-	// clicks on a draft schematic he doesn't have, it screws up their retreiveing the information
-	// of the draft schematic because they don't really have that schematic
-	for (int i = 0; i < draftSchematicList.size(); i++) {
-		DraftSchematic* schematic = draftSchematicList.get(i);
-		schematic->sendIngredientsToPlayer(_this);
-		schematic->sendExperimentalPropertiesToPlayer(_this);
-	}
+int PlayerImplementation::getDraftSchematicIndex(uint32 schematicID) {
+	return draftSchematicMap->getIndexOf(schematicID);
 }
 
 // Get by key
-DraftSchematic* PlayerImplementation::getDraftSchematic(uint32 schematicID) {
-	if (draftSchematicList.contains(schematicID)) {
-		return draftSchematicList.get(schematicID);
-	} else {
-		return NULL;
-	}
+DraftSchematic* PlayerImplementation::getDraftSchematicByID(uint32 schematicID) {
+	return draftSchematicMap->getByID(schematicID);
 }
 
 // Get by index
-DraftSchematic* PlayerImplementation::getDraftSchematic(int index) {
-	if (index >= 0 && index < draftSchematicList.size()) {
-		return draftSchematicList.get(index);
-	} else {
-		return NULL;
-	}
+DraftSchematic* PlayerImplementation::getDraftSchematicByIndex(int index) {
+	return draftSchematicMap->getByIndex(index);
 }
 
 void PlayerImplementation::broadcastMessageToOthersAround(Player* player, BaseMessage* msg) {

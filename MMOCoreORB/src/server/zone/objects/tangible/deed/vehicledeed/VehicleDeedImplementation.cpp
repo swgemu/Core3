@@ -141,13 +141,11 @@ int VehicleDeedImplementation::useObject(Player* player) {
 	IntangibleObject* datapadItem = new IntangibleObject(player->getNewItemID(), cName, sfile,
 			sname, targetFile.hashCode(), (SceneObject*) datapad);
 
-	MountCreature* vehicle = new MountCreature(player, sname,
+	MountCreature* vehicle = new MountCreature(player, sname, 
 			targetFile.hashCode(), vehicleFile.hashCode(), player->getNewItemID());
 
 	try {
 		vehicle->setMaxCondition(getHitPoints());
-		//vehicle->setObjectFileName(vehicleFile);
-		//vehicle->setZoneProcessServer(player->getZoneProcessServer());
 
 		vehicle->setDatapadItem(datapadItem);
 		datapadItem->setWorldObject(vehicle);

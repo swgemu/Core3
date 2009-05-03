@@ -102,6 +102,8 @@ public:
 
 	//void savePlayers();
 
+	void deletePlayerFromDatabase(Player* adminPlayer, String firstName);
+
 	bool validateName(const String& name);
 	bool hasAdminRights(uint32 characterID);
 

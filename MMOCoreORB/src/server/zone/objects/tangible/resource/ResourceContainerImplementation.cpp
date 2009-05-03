@@ -52,7 +52,7 @@ ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid)
 		: ResourceContainerServant(oid, RESOURCECONTAINER) {
 	objectCRC = 741847407;
 
-	stfFile = "obj_n";
+	stfFile = "kb/kb_resources_n"; //
 
 	customName = UnicodeString("");
 	stfName = "";
@@ -62,7 +62,7 @@ ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid)
 
 ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n,
 		const String& tempn) : ResourceContainerServant(oid, tempCRC, n, tempn, RESOURCECONTAINER) {
-	stfFile = "obj_n";
+	stfFile = "kb/kb_resources_n";
 
 	customName = n;
 	stfName = tempn;
@@ -72,7 +72,7 @@ ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid, uin
 
 ResourceContainerImplementation::ResourceContainerImplementation(CreatureObject* creature, uint32 tempCRC,
 		const UnicodeString& n, const String& tempn) : ResourceContainerServant(creature, tempCRC, n, tempn, RESOURCECONTAINER) {
-	stfFile = "obj_n";
+	stfFile = "kb/kb_resources_n";
 
 	customName = n;
 	stfName = tempn;
@@ -133,6 +133,8 @@ void ResourceContainerImplementation::init() {
 	setClassSeven(temp);
 	setResourceName(temp);
 	setIsEnergy(false);
+
+	setOptionsBitmask(1);
 }
 
 void ResourceContainerImplementation::sendTo(Player* player, bool doClose) {
@@ -152,6 +154,12 @@ void ResourceContainerImplementation::sendTo(Player* player, bool doClose) {
 
 	BaseMessage* rcno6 = new ResourceContainerObjectMessage6(_this);
 	client->sendMessage(rcno6);
+
+	//BaseMessage* rcno8 = new ResourceContainerObjectMessage8(_this);
+	//client->sendMessage(rcno8);
+
+	//BaseMessage* rcno9 = new ResourceContainerObjectMessage9(_this);
+	//client->sendMessage(rcno9);
 
 	if (doClose)
 		SceneObjectImplementation::close(client);
@@ -291,8 +299,8 @@ void ResourceContainerImplementation::parseItemAttributes() {
 
 void ResourceContainerImplementation::addAttributes(AttributeListMessage* alm) {
 
-	alm->insertAttribute("condition", "100/100");
-	alm->insertAttribute("volume", "1");
+	//alm->insertAttribute("condition", "100/100");
+	//alm->insertAttribute("volume", "1");
 
 	StringBuffer ssQuantity;
 	ssQuantity << quantity << "/" << getMaxContents();

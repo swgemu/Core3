@@ -106,15 +106,16 @@ public:
 	}
 
 	void insertDraftSchematics(PlayerObjectImplementation* play) {
-		uint32 dsListSize = play->player->getDraftSchematicListSize();
+		uint32 dsListSize = play->player->getDraftSchematicMapSize();
 		uint32 dsUpdateCount = play->player->getDraftSchematicUpdateCount(0);
 
 		insertInt(dsListSize);
 		insertInt(dsUpdateCount);
 
 		for (int i = 0; i < dsListSize; i++) {
-			insertInt(play->player->getDraftSchematic(i)->getObjectCRC());
-			insertInt(play->player->getDraftSchematic(i)->getSchematicID());
+			//insertLong(play->player->getDraftSchematic(i)->getObjectID());
+			insertInt(play->player->getDraftSchematicByIndex(i)->getSchematicID());
+			insertInt(play->player->getDraftSchematicByIndex(i)->getObjectCRC());
 		}
 	}
 

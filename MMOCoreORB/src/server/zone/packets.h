@@ -272,6 +272,8 @@ which carries forward this exception.
 #include "packets/resource/SurveyMessage.h"
 #include "packets/resource/ResourceContainerObjectMessage3.h"
 #include "packets/resource/ResourceContainerObjectMessage6.h"
+#include "packets/resource/ResourceContainerObjectMessage8.h"
+#include "packets/resource/ResourceContainerObjectMessage9.h"
 #include "packets/resource/ResourceContainerObjectDeltaMessage3.h"
 #include "packets/resource/ResourceContainerObjectDeltaMessage6.h"
 

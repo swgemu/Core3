@@ -60,6 +60,10 @@ public:
 		insertInt(rcno->getMaxContents()); // Max stack size
 		insertAscii(rcno->getStfName()); // Resource Type: planet specific
 		insertUnicode(rcno->getCustomName());  // Resource name.
+
+		insertInt(0);
+		insertInt(0);
+
 		setSize();
 	}
 };

@@ -45,6 +45,8 @@ public:
 
 	void save(Player* player);
 
+	void deletePlayerFromDatabase(Player* adminPlayer, String& firstName);
+
 	void handleAbortTradeMessage(Player* player);
 
 	void handleAddItemToTradeWindow(Player* player, unsigned long long itemID);
@@ -127,6 +129,8 @@ public:
 
 	void save(Player* player);
 
+	void deletePlayerFromDatabase(Player* adminPlayer, String& firstName);
+
 	void handleAbortTradeMessage(Player* player);
 
 	void handleAddItemToTradeWindow(Player* player, unsigned long long itemID);
@@ -179,6 +183,7 @@ protected:
 	String _param0_validateName__String_;
 	String _param0_checkPlayerName__String_String_;
 	String _param1_checkPlayerName__String_String_;
+	String _param1_deletePlayerFromDatabase__Player_String_;
 	String _param1_modifyOfflineBank__Player_String_int_;
 	String _param0_modifyRecipientOfflineBank__String_int_;
 	String _param0_getPlayer__String_;

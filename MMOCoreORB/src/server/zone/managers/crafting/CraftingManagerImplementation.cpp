@@ -66,7 +66,7 @@ CraftingManagerImplementation::CraftingManagerImplementation(ZoneServer* serv,
 	setLogging(true);
 	setGlobalLogging(true);
 
-	tempMask = 0;
+	nextSchematicID = 0x1000000;
 
 	draftSchematicsMap.setNullValue(NULL);
 	templateMap.setNullValue(NULL);
@@ -113,11 +113,25 @@ void CraftingManagerImplementation::reloadSchematicTable() {
 void CraftingManagerImplementation::prepareCraftingSession(Player* player,
 		CraftingTool* craftingTool, DraftSchematic* draftSchematic) {
 
-	// Send the appropriate DraftSchematic to Player
-	createDraftSchematic(player, craftingTool, draftSchematic);
+	DraftSchematic* newSchematic = cloneSchematic(player, draftSchematic);
 
-	// Creates the Appropriate TangibleObject and sends to player
-	createTangibleObject(player, craftingTool, draftSchematic);
+	// Send the appropriate DraftSchematic to Player
+	createDraftSchematic(player, craftingTool, newSchematic);
+
+	// Send the appropriate Tangible to Player
+	createTangibleObject(player, craftingTool, newSchematic);
+}
+
+DraftSchematic* CraftingManagerImplementation::cloneSchematic(Player* player, DraftSchematic* schematic) {
+
+	uint32 schematicID = instance->getNextSchematicID();
+	DraftSchematic* newSchematic = new DraftSchematic(schematic, schematicID);
+
+	uint64 oid = player->getNewItemID();
+
+	newSchematic->setObjectID(oid);
+
+	return newSchematic;
 }
 
 void CraftingManagerImplementation::createDraftSchematic(Player* player,
@@ -128,9 +142,6 @@ void CraftingManagerImplementation::createDraftSchematic(Player* player,
 
 	// Set draftSchematic to the new cloned schematic
 	draftSchematic = craftingTool->getWorkingDraftSchematic();
-
-	//Add schematic object Map
-	draftSchematic->setObjectID(player->getNewItemID());
 
 	server->addObject(draftSchematic, true);
 
@@ -479,10 +490,9 @@ TangibleObject* CraftingManagerImplementation::transferResourceToSlot(
 	// Add resource to object map
 	player->getZone()->getZoneServer()->addObject(newRcno, true);
 
-	// Sending resource to the player, but NOT to inventory
-	newRcno->sendTo(player);
-
 	newRcno->setPersistent(false);
+
+	newRcno->sendTo(player);
 
 	//Send attributes to update crafting window (Or quality bars don't show up
 	newRcno->generateAttributes(player);
@@ -2195,6 +2205,8 @@ int CraftingManagerImplementation::lookUpResourceAttribute(Player* player,
 String& CraftingManagerImplementation::generateCraftedSerial() {
 
 	StringBuffer ss;
+
+
 	char a;
 
 	ss << "(";
@@ -2244,22 +2256,12 @@ void CraftingManagerImplementation::addDraftSchematicsFromGroupName(
 			for (int i = 0; i < dsg->getSizeOfDraftSchematicList(); i++) {
 				DraftSchematic* draftSchematic = dsg->getDraftSchematic(i);
 
-				player->addDraftSchematic(draftSchematic);
+				DraftSchematic* newSchematic = cloneSchematic(player, draftSchematic);
 
-				/*PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(player->getPlayerObject());
-				msg->addDraftSchematic(draftSchematic);
-				msg->close();
-				player->sendMessage(msg);
+				//newSchematic->toString();
 
-				draftSchematic->sendIngredientsToPlayer(player);
-				draftSchematic->sendExperimentalPropertiesToPlayer(player);*/
+				player->addDraftSchematic(newSchematic);
 			}
-
-			PlayerObjectDeltaMessage9* msg =
-					new PlayerObjectDeltaMessage9(player->getPlayerObject());
-			msg->updateDraftSchematics();
-			msg->close();
-			player->sendMessage(msg);
 		}
 	}
 
@@ -2277,23 +2279,10 @@ void CraftingManagerImplementation::subtractDraftSchematicsFromGroupName(
 			for (int i = 0; i < dsg->getSizeOfDraftSchematicList(); i++) {
 				DraftSchematic* draftSchematic = dsg->getDraftSchematic(i);
 
-				player->subtractDraftSchematic(draftSchematic);
-
-				/*PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(player->getPlayerObject());
-				msg->removeDraftSchematic(draftSchematic);
-				msg->close();
-
-				player->sendMessage(msg);*/
+				player->subtractDraftSchematic(draftSchematic->getObjectCRC());
 			}
-			PlayerObjectDeltaMessage9* msg =
-					new PlayerObjectDeltaMessage9(player->getPlayerObject());
-			msg->updateDraftSchematics();
-			msg->close();
-			player->sendMessage(msg);
 		}
 	}
-
-
 
 	unlock();
 }
@@ -2301,7 +2290,9 @@ void CraftingManagerImplementation::subtractDraftSchematicsFromGroupName(
 void CraftingManagerImplementation::refreshDraftSchematics(Player* player) {
 	lock();
 
-	for (int i = 0; i < draftSchematicsMap.size(); ++i) {
+	uint16 index;
+
+	/*for (int i = 0; i < draftSchematicsMap.size(); ++i) {
 		DraftSchematicGroup* dsg = draftSchematicsMap.get(i);
 
 		for (int j = 0; j < dsg->getSizeOfDraftSchematicList(); ++j) {
@@ -2309,13 +2300,13 @@ void CraftingManagerImplementation::refreshDraftSchematics(Player* player) {
 			if (dsg != NULL) {
 
 				DraftSchematic* draftSchematic = dsg->getDraftSchematic(j);
-				player->subtractDraftSchematic(draftSchematic);
+				player->subtractDraftSchematic(index, draftSchematic->getSchematicID());
 
 				player->addDraftSchematic(draftSchematic);
 
 			}
 		}
-	}
+	}*/
 
 	unlock();
 }
@@ -2381,6 +2372,10 @@ int CraftingManagerImplementation::addDraftSchematicToServer(lua_State *L) {
 		DraftSchematic* draftSchematic = new DraftSchematic(schematicID,
 				objectName, stfFile, stfName, objCRC, groupName, complexity, schematicSize,
 				craftingToolTab);
+
+		uint64 temp = (((uint64)schematicID) << 32);
+		temp += objCRC;
+		draftSchematic->setObjectID(temp);
 
 		String xptype = schematic.getStringField("xpType");
 		draftSchematic->setXpType(xptype);
