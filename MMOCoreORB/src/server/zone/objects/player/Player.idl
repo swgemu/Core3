@@ -523,8 +523,6 @@ interface Player implements CreatureObject {
 
 	ZoneClientSession getClient();
 
-	GroupObject getGroupObject();
-
 	int getPvpRating();
 	void setPvpRating(int value);
 

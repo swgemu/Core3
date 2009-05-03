@@ -3918,7 +3918,7 @@ void CreatureObjectImplementation::dismount(bool lockMount, bool ignoreCooldown)
 	mountCooldown.update();
 	mountCooldown.addMiliTime(1000);
 
-	linkType = 4;
+	linkType = 0xFFFFFFFF;//;
 	UpdateContainmentMessage* msg = new UpdateContainmentMessage(objectID, 0, 0xFFFFFFFF);
 	broadcastMessage(msg);
 

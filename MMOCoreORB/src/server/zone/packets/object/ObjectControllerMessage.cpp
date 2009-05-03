@@ -2675,11 +2675,21 @@ void ObjectControllerMessage::parseGroupInvite(Player* player, Message* pack,
 	uint64 objectID = pack->parseLong();
 	SceneObject* object = player->getZone()->lookupObject(objectID);
 
-	if (object == NULL || !object->isPlayer() || object == player)
+	if (object == NULL || (!object->isPlayer() &&
+			!(object->isNonPlayerCreature() && ((CreatureObject*)object)->isPet())) ||
+			object == player)
 		return;
 
-	Player* invitePlayer = (Player*) object;
-	groupManager->inviteToGroup(player, invitePlayer);
+	if (object->isPlayer()) {
+		Player* invitePlayer = (Player*) object;
+		groupManager->inviteToGroup(player, invitePlayer);
+	}
+	if (object->isNonPlayerCreature()) {
+		CreatureObject* creo = (CreatureObject*) object;
+		if (creo->isPet()) {
+			groupManager->invitePetToGroup(player,(CreaturePet*)creo);
+		}
+	}
 }
 
 void ObjectControllerMessage::parseGroupJoin(Player* player, Message* pack,
@@ -2748,7 +2758,9 @@ void ObjectControllerMessage::parseGroupKick(Player* player, Message* pack,
 	uint64 target = pack->parseLong();
 	SceneObject* object = player->getZone()->lookupObject(target);
 
-	if (object == NULL || !object->isPlayer() || object == player)
+	if (object == NULL || (!object->isPlayer() &&
+			!(object->isNonPlayerCreature() && ((CreatureObject*)object)->isPet())) ||
+			object == player)
 		return;
 
 	Player* targetObject = (Player*) object;
@@ -4853,10 +4865,9 @@ void ObjectControllerMessage::parseStopListen(Player* player, Message* pack) {
 }
 
 void ObjectControllerMessage::parseTellPet(Player* player, Message* pack) {
-	uint64 petID = pack->parseLong(); // skip passed target
+	uint64 petID = pack->parseLong();
 
 	UnicodeString msg = UnicodeString("");
 	pack->parseUnicode(msg);
-
 	player->sendMessageToPets(msg,petID);
 }

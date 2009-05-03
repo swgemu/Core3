@@ -141,6 +141,7 @@ public:
 	 * \param omr - the radial response mendu.
 	 */
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
+	void sendTo(Player* player, bool doClose = true);
 
 	void addAttributes(AttributeListMessage* alm);
 
@@ -260,6 +261,9 @@ public:
 		commandState = state;
 	}
 
+	inline bool hasCommandTrained(int command) {
+		return !commandHelper->getBaseCommand(command).isEmpty();
+	}
 	void notifyPositionUpdate(QuadTreeEntry* obj);
 	bool activate();
 	bool attack(CreatureObject* target);
@@ -276,6 +280,8 @@ public:
 	void handleSpecialAttackCommand(int att);
 	bool consumeOwnerHam(int h, int a, int m);
 	void healPetMind(int mod);
+	void handleGroupCommand();
+	void trainMount();
 };
 
 #endif /* CREATUREPETIMPLEMENTATION_H_ */

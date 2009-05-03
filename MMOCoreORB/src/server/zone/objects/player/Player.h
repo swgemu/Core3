@@ -609,8 +609,6 @@ public:
 
 	ZoneClientSession* getClient();
 
-	GroupObject* getGroupObject();
-
 	int getPvpRating();
 
 	void setPvpRating(int value);
@@ -1603,8 +1601,6 @@ public:
 	String& getHairObject();
 
 	ZoneClientSession* getClient();
-
-	GroupObject* getGroupObject();
 
 	int getPvpRating();
 

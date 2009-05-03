@@ -71,6 +71,7 @@ which carries forward this exception.
 #include "../../../managers/combat/CommandQueueAction.h"
 #include "../../../managers/combat/CombatManager.h"
 #include "../../../managers/item/ItemManager.h"
+#include "../../../managers/group/GroupManager.h"
 
 CreaturePetImplementation::CreaturePetImplementation(Player* owner, uint64 oid) : CreaturePetServant(oid) ,VehicleObject(owner){
 	creatureLinkID = owner->getObjectID();
@@ -515,6 +516,23 @@ void CreaturePetImplementation::sendRadialResponseTo(Player* player, ObjectMenuR
 		ss << "CreaturePetImplementation::sendRadialResponseTo() " << objectCRC;
 		info(ss.toString());
 	}
+	if (getGroupID() != 0 && player->getGroupID() == getGroupID()) {
+		if (player == player->getGroupObject()->getLeader()) {
+			if (getGroupID() == player->getGroupID()) {
+				RadialMenuParent* kick = new RadialMenuParent(40, 1, "Kick from Group");
+				kick->addRadialMenuItem(41, 3, "Disband");
+				omr->addRadialParent(kick);
+			}
+			else
+				omr->addRadialParent(37, 3, "Group Invite");
+		}
+	} else if ((player == getLinkedCreature() && getLinkedCreature()->getGroupID() == 0) ||
+			(getLinkedCreature()->getGroupID() != 0 && player->getGroupID() == getLinkedCreature()->getGroupID() && player == getLinkedCreature()->getGroupObject()->getLeader())) {
+			omr->addRadialParent(37, 3, "Group Invite");
+	}
+	if (petType == CHPETTRAINEDMOUNT) {
+		omr->addRadialParent(205, 1, "@pet/pet_menu:menu_enter_exit");
+	}
 	String skillBox = "outdoors_creaturehandler_novice";
 	if (!player->hasSkillBox(skillBox)) {
 		omr->finish();
@@ -569,6 +587,10 @@ void CreaturePetImplementation::sendRadialResponseTo(Player* player, ObjectMenuR
 		if (player->hasSkillBox(skillBox))
 			training->addRadialMenuItem(158, 3, commandHelper->getStfDesc(PetCommandHelper::PETGROUP));
 
+		/*skillBox = "outdoors_creaturehandler_support_01";
+		if (player->hasSkillBox(skillBox))
+			omr->addRadialParent(157, 3, "Train Mount");*/
+
 		skillBox = "outdoors_creaturehandler_support_02";
 		if (getLinkedCreature()->hasSkillBox(skillBox))
 			training->addRadialMenuItem(156, 3, commandHelper->getStfDesc(PetCommandHelper::PETFOLLOWOTHER));
@@ -589,6 +611,24 @@ void CreaturePetImplementation::sendRadialResponseTo(Player* player, ObjectMenuR
 	omr->finish();
 
 	player->sendMessage(omr);
+}
+
+void CreaturePetImplementation::sendTo(Player* player, bool doClose) {
+	CreatureObjectImplementation::sendTo(player, doClose);
+
+	ZoneClientSession* client = player->getClient();
+	if (client == NULL)
+		return;
+
+	create(client);
+
+	if (isRidingCreature()) {
+		getLinkedCreature()->sendTo(player);
+		getLinkedCreature()->sendItemsTo(player);
+	}
+
+	if (doClose)
+		SceneObjectImplementation::close(client);
 }
 
 void CreaturePetImplementation::addAttributes(AttributeListMessage* alm) {
@@ -956,16 +996,35 @@ void CreaturePetImplementation::store(bool doLock) {
 
 		removeFromZone();
 
+		if (doLock)
+			getLinkedCreature()->lock();
 		getLinkedCreature()->unregisterPet(_this);
 		getLinkedCreature()->setNumberOfCHPets(getLinkedCreature()->getNumberOfCHPets() - 1);
 		getLinkedCreature()->setLevelOfCHPets(getLinkedCreature()->getLevelOfCHPets() - getLevel());
-
+		if (doLock)
+			getLinkedCreature()->unlock();
 		//TODO: CH check why this is needed, compare MountCreature
 		getDatapadItem()->sendTo(getLinkedCreature());
+
+		if (getGroupObject() != NULL) {
+			GroupManager* groupManager = server->getGroupManager();
+			if (groupManager == NULL)
+				return;
+			try {
+			if(!doLock)
+				getLinkedCreature()->unlock();
+			groupManager->leaveGroup(getGroupObject(),_this);
+			if(!doLock)
+				getLinkedCreature()->lock();
+			}catch (...) {
+				error("CreaturePetImplementation::store()");
+				if(!doLock)
+					getLinkedCreature()->lock();
+			}
+		}
 	} catch (Exception& e) {
 		if (doLock)
 			getLinkedCreature()->unlock();
-
 		error("storing CreaturePet");
 		error(e.getMessage());
 	}
@@ -1524,6 +1583,9 @@ void CreaturePetImplementation::parseCommandMessage(const UnicodeString& message
 	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETSPECIALATTACK2)) {
 		handleSpecialAttackCommand(1);
 	}
+	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETGROUP)) {
+		handleGroupCommand();
+	}
 }
 
 void CreaturePetImplementation::handleAttackCommand() {
@@ -1592,7 +1654,7 @@ void CreaturePetImplementation::handleStoreCommand() {
 		ss << "CreaturePetImplementation::handleStoreCommand() " << objectCRC;
 		info(ss.toString());
 	}
-	store();
+	store(false);
 }
 
 void CreaturePetImplementation::handleTransferCommand() {
@@ -1630,7 +1692,7 @@ void CreaturePetImplementation::handleTransferCommand() {
 	}
 	getLinkedCreature()->sendSystemMessage("pet/pet_menu","pet_transfer_succeed");
 
-	store();
+	store(false);
 
 	ItemManager* itemManager = getLinkedCreature()->getZone()->getZoneServer()->getItemManager();
 
@@ -1729,5 +1791,35 @@ void CreaturePetImplementation::handleSpecialAttackCommand(int att) {
 			handleAttackCommand();
 
 		nextAttack = att;
+}
+
+void CreaturePetImplementation::handleGroupCommand() {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::handleGroupCommand() " << objectCRC;
+		info(ss.toString());
+	}
+
+	GroupManager* groupManager = server->getGroupManager();
+	if (groupManager == NULL)
+		return;
+
+	try {
+		unlock();
+		groupManager->invitePetToGroup(getLinkedCreature(),_this);
+		lock();
+	} catch (...) {
+		error("CreaturePetImplementation::handleGroupCommand()");
+		lock();
+	}
+
+}
+
+void CreaturePetImplementation::trainMount() {
+	setPetType(CHPETTRAINEDMOUNT);
+	setObjectCRC(0x715AA7CD);
+	setSpeed(getLinkedCreature()->getSpeed() * 5.0f);
+	setAcceleration(getLinkedCreature()->getAcceleration() * 5.0f);
+	setCustomizationVariable("index_hover_height", 10);
 }
 

@@ -13,6 +13,8 @@ class SceneObject;
 
 class Player;
 
+class CreatureObject;
+
 class ChatRoom;
 
 #include "../../packets/object/StfParameter.h"
@@ -33,15 +35,15 @@ public:
 
 	void sendSystemMessage(Player* player, const String& file, const String& str, StfParameter* param, bool sendToSelf = false);
 
-	void addPlayer(Player* player);
+	void addCreature(CreatureObject* creatureObject);
 
-	void removePlayer(Player* player);
+	void removeCreature(CreatureObject* creatureObject);
 
 	void disband();
 
 	void makeLeader(Player* player);
 
-	bool hasMember(Player* player);
+	bool hasMember(CreatureObject* creatureObject);
 
 	void startChannel();
 
@@ -51,9 +53,9 @@ public:
 
 	int getGroupSize();
 
-	Player* getGroupMember(int index);
+	CreatureObject* getGroupMember(int index);
 
-	void addMember(Player* player);
+	void addMember(CreatureObject* creatureObject);
 
 	Player* getLeader();
 
@@ -93,15 +95,15 @@ public:
 
 	void sendSystemMessage(Player* player, const String& file, const String& str, StfParameter* param, bool sendToSelf);
 
-	void addPlayer(Player* player);
+	void addCreature(CreatureObject* creatureObject);
 
-	void removePlayer(Player* player);
+	void removeCreature(CreatureObject* creatureObject);
 
 	void disband();
 
 	void makeLeader(Player* player);
 
-	bool hasMember(Player* player);
+	bool hasMember(CreatureObject* creatureObject);
 
 	void startChannel();
 
@@ -111,9 +113,9 @@ public:
 
 	int getGroupSize();
 
-	Player* getGroupMember(int index);
+	CreatureObject* getGroupMember(int index);
 
-	void addMember(Player* player);
+	void addMember(CreatureObject* creatureObject);
 
 	Player* getLeader();
 

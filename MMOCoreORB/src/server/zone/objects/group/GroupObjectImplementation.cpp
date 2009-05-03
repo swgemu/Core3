@@ -45,6 +45,7 @@ which carries forward this exception.
 #include "../../Zone.h"
 #include "../../ZoneClientSession.h"
 #include "../creature/CreatureObject.h"
+#include "../creature/pet/CreaturePet.h"
 
 #include "../../packets.h"
 
@@ -100,24 +101,23 @@ void GroupObjectImplementation::sendTo(Player* player, bool doClose) {
 		groupChannel->sendTo(player);
 }
 
-void GroupObjectImplementation::addPlayer(Player* player) {
+void GroupObjectImplementation::addCreature(CreatureObject* creatureObject) {
 	int index = groupMembers.size();
 
-	groupMembers.add(player);
+	groupMembers.add(creatureObject);
 	calcGroupLevel();
-	addSquadLeaderBonuses(player);
+	addSquadLeaderBonuses(creatureObject);
 
 	GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6((GroupObject*) _this);
-	grp->addMember(player, index);
+	grp->addMember(creatureObject, index);
 	grp->updateLevel(groupLevel);
 	grp->close();
 
 	broadcastMessage(grp);
 
-	//groupMembers.add(player);
-	//calcGroupLevel();
+	if (creatureObject->isPlayer())
+		sendTo((Player*) creatureObject);
 
-	sendTo(player);
 }
 
 void GroupObjectImplementation::calcGroupLevel() {
@@ -131,40 +131,70 @@ void GroupObjectImplementation::calcGroupLevel() {
 	}
 }
 
-void GroupObjectImplementation::removePlayer(Player* player) {
+void GroupObjectImplementation::removeCreature(CreatureObject* creatureObject) {
 	int size = groupMembers.size();
+	GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6((GroupObject*) _this);
+	int oldLeaderPos = 0;
+	int i = 0;
+	while (i < groupMembers.size()) {
+		CreatureObject* creo = groupMembers.get(i);
 
-	for (int i = 0; i < size; i++) {
-		Player* play = groupMembers.get(i);
-
-		if (play == player) {
+		if (creo == creatureObject) {
 			groupMembers.remove(i);
 
-			calcGroupLevel();
-			removeSquadLeaderBonuses(play);
+			removeSquadLeaderBonuses(creo);
 
-			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6((GroupObject*) _this);
 			grp->removeMember(i);
-			grp->updateLevel(groupLevel);
-			grp->close();
+			creo->updateGroupId(0);
+			creo->setGroup(NULL);
 
-			broadcastMessage(grp);
+			oldLeaderPos = i;
 
-			break;
+			i--;
+		}
+		if (creo->isPet() && ((CreaturePet*)creo)->getLinkedCreature() == creatureObject) {
+			groupMembers.remove(i);
+
+			removeSquadLeaderBonuses(creo);
+
+			grp->removeMember(i);
+			creo->updateGroupId(0);
+			creo->setGroup(NULL);
+			i--;
+		}
+		i++;
+	}
+
+	if ((creatureObject == leader) && groupMembers.size() > 0) {
+		leader = NULL;
+		for (int i = 0; i < size; i++) {
+			CreatureObject* creo = groupMembers.get(i);
+			if (creo->isPlayer()) {
+				leader = (Player*) creo;
+				grp->updateLeader((Player*) creo,(Player*)creatureObject,oldLeaderPos);
+				break;
+			}
 		}
 	}
 
-	if ((player == leader) && groupMembers.size() > 0)
-		leader = groupMembers.get(0);
+	if (groupMembers.size() == 1) {
+		return;
+	}
 
 	calcGroupLevel();
+
+	grp->updateLevel(groupLevel);
+
+	grp->close();
+
+	broadcastMessage(grp);
 }
 
-bool GroupObjectImplementation::hasMember(Player* player) {
+bool GroupObjectImplementation::hasMember(CreatureObject* creatureObject) {
 	for (int i = 0; i < groupMembers.size(); i++) {
-		Player* play = groupMembers.get(i);
+		CreatureObject* creo = groupMembers.get(i);
 
-		if (play == player)
+		if (creo == creatureObject)
 			return true;
 	}
 	return false;
@@ -173,24 +203,25 @@ bool GroupObjectImplementation::hasMember(Player* player) {
 void GroupObjectImplementation::disband() {
 	// this locked
 	for (int i = 0; i < groupMembers.size(); i++) {
-		Player* play = groupMembers.get(i);
+		CreatureObject* creo = groupMembers.get(i);
 		try {
-			play->wlock((GroupObject*) _this);
+			creo->wlock((GroupObject*) _this);
 
-			play->removeChatRoom(groupChannel);
-
-			play->setGroup(NULL);
-			play->updateGroupId(0);
-			removeSquadLeaderBonuses(play);
-
-			BaseMessage* msg = new SceneObjectDestroyMessage((GroupObject*) _this);
-			play->sendMessage(msg);
-
-			play->unlock();
-
+			creo->setGroup(NULL);
+			creo->updateGroupId(0);
+			removeSquadLeaderBonuses(creo);
+			if (creo->isPlayer()) {
+				Player* play = (Player*) creo;
+				play->removeChatRoom(groupChannel);
+				if (play) {
+					BaseMessage* msg = new SceneObjectDestroyMessage((GroupObject*) _this);
+					play->sendMessage(msg);
+				}
+			}
+			creo->unlock();
 		} catch (...) {
 			System::out << "Exception in GroupObject::disband(Player* player)\n";
-			play->unlock();
+			creo->unlock();
 		}
 	}
 
@@ -212,9 +243,12 @@ void GroupObjectImplementation::disband() {
 
 void GroupObjectImplementation::broadcastMessage(BaseMessage* msg) {
 	for (int i = 0; i < groupMembers.size(); i++) {
-		Player* play = groupMembers.get(i);
+		CreatureObject* creo = groupMembers.get(i);
+		if (creo->isPlayer()) {
+			Player* play = (Player*) creo;
 
-		play->sendMessage(msg->clone());
+			play->sendMessage(msg->clone());
+		}
 	}
 
 	delete msg;
@@ -223,16 +257,19 @@ void GroupObjectImplementation::broadcastMessage(BaseMessage* msg) {
 void GroupObjectImplementation::sendSystemMessage(Player* player,
 		const String& message, bool sendToSelf) {
 	for (int i = 0; i < groupMembers.size(); i++) {
-		Player* play = groupMembers.get(i);
+		CreatureObject* creo = groupMembers.get(i);
+			if (creo->isPlayer()) {
+				Player* play = (Player*) creo;
 
-		if (play != player) {
+			if (play != player) {
 
-			play->sendSystemMessage(message);
-
-		} else {
-
-			if (sendToSelf)
 				play->sendSystemMessage(message);
+
+			} else {
+
+				if (sendToSelf)
+					play->sendSystemMessage(message);
+			}
 		}
 	}
 }
@@ -240,16 +277,18 @@ void GroupObjectImplementation::sendSystemMessage(Player* player,
 void GroupObjectImplementation::sendSystemMessage(Player* player,
 		const String& file, const String& str, uint64 targetid, bool sendToSelf) {
 	for (int i = 0; i < groupMembers.size(); i++) {
-		Player* play = groupMembers.get(i);
+		CreatureObject* creo = groupMembers.get(i);
+		if (creo->isPlayer()) {
+			Player* play = (Player*) creo;
+			if (play != player) {
 
-		if (play != player) {
-
-			play->sendSystemMessage(file, str, targetid);
-
-		} else {
-
-			if (sendToSelf)
 				play->sendSystemMessage(file, str, targetid);
+
+			} else {
+
+				if (sendToSelf)
+					play->sendSystemMessage(file, str, targetid);
+			}
 		}
 	}
 }
@@ -258,16 +297,19 @@ void GroupObjectImplementation::sendSystemMessage(Player* player,
 		const String& file, const String& str, StfParameter* param,
 		bool sendToSelf) {
 	for (int i = 0; i < groupMembers.size(); i++) {
-		Player* play = groupMembers.get(i);
+		CreatureObject* creo = groupMembers.get(i);
+		if (creo->isPlayer()) {
+			Player* play = (Player*) creo;
 
-		if (play != player) {
+			if (play != player) {
 
-			play->sendSystemMessage(file, str, param);
-
-		} else {
-
-			if (sendToSelf)
 				play->sendSystemMessage(file, str, param);
+
+			} else {
+
+				if (sendToSelf)
+					play->sendSystemMessage(file, str, param);
+			}
 		}
 	}
 }
@@ -310,32 +352,33 @@ float GroupObjectImplementation::getRangerBonusForHarvesting(Player* player) {
 
 	int i = 0;
 	for (; i < groupMembers.size(); i++) {
+		CreatureObject* creo = groupMembers.get(i);
+		if (creo->isPlayer()) {
+			temp = (Player*) creo;
 
-		temp = groupMembers.get(i);
+			try {
+				if (temp != player)
+					temp->wlock(player);
 
-		try {
-			if (temp != player)
-				temp->wlock(player);
+				if (temp->getFirstName() != player->getFirstName() && temp->isInRange(player, 64.0f) &&
+						player->getZoneID() == temp->getZoneID())
+					closeEnough = true;
 
-			if (temp->getFirstName() != player->getFirstName() && temp->isInRange(player, 64.0f) &&
-					player->getZoneID() == temp->getZoneID())
-				closeEnough = true;
+				if (temp->hasSkillBox(skillBox))
+					bonus = .3f;
 
-			if (temp->hasSkillBox(skillBox))
-				bonus = .3f;
+				if (temp->hasSkillBox(skillBox2))
+					bonus = .4f;
 
-			if (temp->hasSkillBox(skillBox2))
-				bonus = .4f;
+				if (temp != player)
+					temp->unlock();
+			} catch (...) {
+				temp->error("unreported exception caught in GroupObjectImplementation::getRangerBonusForHarvesting");
 
-			if (temp != player)
-				temp->unlock();
-		} catch (...) {
-			temp->error("unreported exception caught in GroupObjectImplementation::getRangerBonusForHarvesting");
-
-			if (temp != player)
-				temp->unlock();
+				if (temp != player)
+					temp->unlock();
+			}
 		}
-
 	}
 
 	if (closeEnough)

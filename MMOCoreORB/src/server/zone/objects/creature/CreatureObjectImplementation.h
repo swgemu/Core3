@@ -757,6 +757,10 @@ public:
 		return groupId;
 	}
 
+	inline GroupObject* getGroupObject() {
+		return group;
+	}
+
 	inline void setGroupID(uint64 gid) {
 		groupId = gid;
 	}

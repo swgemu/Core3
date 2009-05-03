@@ -96,7 +96,8 @@ interface CreaturePet implements Creature {
 	void initTrainingState(int command);
 	void setPetName(String name);
 	void parseCommandMessage(const UnicodeString message);
-	void setCommmandState(unsigned int state);
+	void setCommmandState(int command);
+	boolean hasCommandTrained(unsigned int state);
 
 	boolean activate();
 	void deaggro();
@@ -110,4 +111,6 @@ interface CreaturePet implements Creature {
 	void handleTrickCommand(String anim,int mod,int cost);
 	void handleEnrageCommand();
 	void handleSpecialAttackCommand(int att);
+	void handleGroupCommand();
+	void trainMount();
 }

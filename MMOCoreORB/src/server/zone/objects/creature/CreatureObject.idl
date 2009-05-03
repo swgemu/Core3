@@ -282,6 +282,7 @@ interface CreatureObject implements TangibleObject {
 	boolean isGuilded();
 
 	void removeGroup();
+	GroupObject getGroupObject();
 
 	boolean isInAGroup();
 

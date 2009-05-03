@@ -160,6 +160,8 @@ public:
 	void handlePetCall(SceneObject* obj);
 	void handlePetStore(SceneObject* obj);
 	void handlePetTraining(SceneObject* obj,int command);
+	void handlePetTrainMount(SceneObject* obj);
+
 };
 
 #endif /*RADIALMANAGER_H_*/

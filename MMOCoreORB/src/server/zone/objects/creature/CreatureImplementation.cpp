@@ -1081,11 +1081,13 @@ void CreatureImplementation::createHarvestList() {
 		group = owner->getGroupObject();
 
 		for (int i = 0; i < group->getGroupSize(); ++i) {
+			CreatureObject* creo = group->getGroupMember(i);
+			if (creo->isPlayer()) {
+				tempPlayer = (Player*) creo;
 
-			tempPlayer = group->getGroupMember(i);
-
-			if (tempPlayer != NULL && tempPlayer->hasSkillBox(skillBox))
-				playerCanHarvest.add(tempPlayer->getFirstName());
+				if (tempPlayer != NULL && tempPlayer->hasSkillBox(skillBox))
+					playerCanHarvest.add(tempPlayer->getFirstName());
+			}
 		}
 
 	}

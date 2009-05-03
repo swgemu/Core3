@@ -48,6 +48,8 @@ import "../scene/SceneObject";
 
 import "../player/Player";
 
+import "../creature/CreatureObject";
+
 import "../../../chat/room/ChatRoom";
 
 include "../../packets/object/StfParameter";
@@ -65,13 +67,13 @@ interface GroupObject implements SceneObject {
 	void sendSystemMessage(Player player, const String file, const String str, unsigned long targetid = 0, boolean sendToSelf = false);
 	void sendSystemMessage(Player player, const String file, const String str, StfParameter param, boolean sendToSelf = false);
 
-	void addPlayer(Player player);
-	void removePlayer(Player player);
+	void addCreature(CreatureObject creatureObject);
+	void removeCreature(CreatureObject creatureObject);
 
 	void disband();
 	void makeLeader(Player player);
 
-	boolean hasMember(Player player);
+	boolean hasMember(CreatureObject creatureObject);
 
 	void startChannel();
 
@@ -81,9 +83,9 @@ interface GroupObject implements SceneObject {
 
 	int getGroupSize();
 
-	Player getGroupMember(int index);
+	CreatureObject getGroupMember(int index);
 
-	void addMember(Player player);
+	void addMember(CreatureObject creatureObject);
 
 	Player getLeader();
 
