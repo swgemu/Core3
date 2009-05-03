@@ -50,6 +50,8 @@ which carries forward this exception.
 class Player;
 class GroupObject;
 class ZoneServer;
+class CreatureObject;
+class CreaturePet;
 
 class GroupManager {
 
@@ -57,10 +59,11 @@ public:
 	GroupManager();
 
 	void inviteToGroup(Player* leader, Player* player);
-	void joinGroup(Player* player);
+	void invitePetToGroup(Player* leader, CreaturePet* pet);
+	void joinGroup(CreatureObject* creatureObject);
 
-	void kickFromGroup(GroupObject* group, Player* player, Player* playerToKick);
-	void leaveGroup(GroupObject* group, Player* player);
+	void kickFromGroup(GroupObject* group, Player* player, CreatureObject* creatureToKick);
+	void leaveGroup(GroupObject* group, CreatureObject* player);
 	void makeLeader(GroupObject* group, Player* player, Player* newLeader);
 
 	void disbandGroup(GroupObject* group, Player* player);

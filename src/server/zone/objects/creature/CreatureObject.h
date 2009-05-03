@@ -349,6 +349,8 @@ public:
 
 	void removeGroup();
 
+	GroupObject* getGroupObject();
+
 	bool isInAGroup();
 
 	bool isInGroupWith(CreatureObject* creature);
@@ -1687,6 +1689,8 @@ public:
 	bool isGuilded();
 
 	void removeGroup();
+
+	GroupObject* getGroupObject();
 
 	bool isInAGroup();
 

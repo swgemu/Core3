@@ -10,6 +10,8 @@
 
 #include "../player/Player.h"
 
+#include "../creature/CreatureObject.h"
+
 #include "../../../chat/room/ChatRoom.h"
 
 /*
@@ -102,30 +104,30 @@ void GroupObject::sendSystemMessage(Player* player, const String& file, const St
 		((GroupObjectImplementation*) _impl)->sendSystemMessage(player, file, str, param, sendToSelf);
 }
 
-void GroupObject::addPlayer(Player* player) {
+void GroupObject::addCreature(CreatureObject* creatureObject) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 11);
-		method.addObjectParameter(player);
+		method.addObjectParameter(creatureObject);
 
 		method.executeWithVoidReturn();
 	} else
-		((GroupObjectImplementation*) _impl)->addPlayer(player);
+		((GroupObjectImplementation*) _impl)->addCreature(creatureObject);
 }
 
-void GroupObject::removePlayer(Player* player) {
+void GroupObject::removeCreature(CreatureObject* creatureObject) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 12);
-		method.addObjectParameter(player);
+		method.addObjectParameter(creatureObject);
 
 		method.executeWithVoidReturn();
 	} else
-		((GroupObjectImplementation*) _impl)->removePlayer(player);
+		((GroupObjectImplementation*) _impl)->removeCreature(creatureObject);
 }
 
 void GroupObject::disband() {
@@ -153,17 +155,17 @@ void GroupObject::makeLeader(Player* player) {
 		((GroupObjectImplementation*) _impl)->makeLeader(player);
 }
 
-bool GroupObject::hasMember(Player* player) {
+bool GroupObject::hasMember(CreatureObject* creatureObject) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 15);
-		method.addObjectParameter(player);
+		method.addObjectParameter(creatureObject);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((GroupObjectImplementation*) _impl)->hasMember(player);
+		return ((GroupObjectImplementation*) _impl)->hasMember(creatureObject);
 }
 
 void GroupObject::startChannel() {
@@ -214,7 +216,7 @@ int GroupObject::getGroupSize() {
 		return ((GroupObjectImplementation*) _impl)->getGroupSize();
 }
 
-Player* GroupObject::getGroupMember(int index) {
+CreatureObject* GroupObject::getGroupMember(int index) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -222,22 +224,22 @@ Player* GroupObject::getGroupMember(int index) {
 		DistributedMethod method(this, 20);
 		method.addSignedIntParameter(index);
 
-		return (Player*) method.executeWithObjectReturn();
+		return (CreatureObject*) method.executeWithObjectReturn();
 	} else
 		return ((GroupObjectImplementation*) _impl)->getGroupMember(index);
 }
 
-void GroupObject::addMember(Player* player) {
+void GroupObject::addMember(CreatureObject* creatureObject) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 21);
-		method.addObjectParameter(player);
+		method.addObjectParameter(creatureObject);
 
 		method.executeWithVoidReturn();
 	} else
-		((GroupObjectImplementation*) _impl)->addMember(player);
+		((GroupObjectImplementation*) _impl)->addMember(creatureObject);
 }
 
 Player* GroupObject::getLeader() {
@@ -341,10 +343,10 @@ Packet* GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		sendSystemMessage((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSystemMessage__Player_String_String_StfParameter_bool_), inv->getAsciiParameter(_param2_sendSystemMessage__Player_String_String_StfParameter_bool_), (StfParameter*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 11:
-		addPlayer((Player*) inv->getObjectParameter());
+		addCreature((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 12:
-		removePlayer((Player*) inv->getObjectParameter());
+		removeCreature((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 13:
 		disband();
@@ -353,7 +355,7 @@ Packet* GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		makeLeader((Player*) inv->getObjectParameter());
 		break;
 	case 15:
-		resp->insertBoolean(hasMember((Player*) inv->getObjectParameter()));
+		resp->insertBoolean(hasMember((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case 16:
 		startChannel();
@@ -371,7 +373,7 @@ Packet* GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertLong(getGroupMember(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 21:
-		addMember((Player*) inv->getObjectParameter());
+		addMember((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 22:
 		resp->insertLong(getLeader()->_getObjectID());
@@ -418,12 +420,12 @@ void GroupObjectAdapter::sendSystemMessage(Player* player, const String& file, c
 	return ((GroupObjectImplementation*) impl)->sendSystemMessage(player, file, str, param, sendToSelf);
 }
 
-void GroupObjectAdapter::addPlayer(Player* player) {
-	return ((GroupObjectImplementation*) impl)->addPlayer(player);
+void GroupObjectAdapter::addCreature(CreatureObject* creatureObject) {
+	return ((GroupObjectImplementation*) impl)->addCreature(creatureObject);
 }
 
-void GroupObjectAdapter::removePlayer(Player* player) {
-	return ((GroupObjectImplementation*) impl)->removePlayer(player);
+void GroupObjectAdapter::removeCreature(CreatureObject* creatureObject) {
+	return ((GroupObjectImplementation*) impl)->removeCreature(creatureObject);
 }
 
 void GroupObjectAdapter::disband() {
@@ -434,8 +436,8 @@ void GroupObjectAdapter::makeLeader(Player* player) {
 	return ((GroupObjectImplementation*) impl)->makeLeader(player);
 }
 
-bool GroupObjectAdapter::hasMember(Player* player) {
-	return ((GroupObjectImplementation*) impl)->hasMember(player);
+bool GroupObjectAdapter::hasMember(CreatureObject* creatureObject) {
+	return ((GroupObjectImplementation*) impl)->hasMember(creatureObject);
 }
 
 void GroupObjectAdapter::startChannel() {
@@ -454,12 +456,12 @@ int GroupObjectAdapter::getGroupSize() {
 	return ((GroupObjectImplementation*) impl)->getGroupSize();
 }
 
-Player* GroupObjectAdapter::getGroupMember(int index) {
+CreatureObject* GroupObjectAdapter::getGroupMember(int index) {
 	return ((GroupObjectImplementation*) impl)->getGroupMember(index);
 }
 
-void GroupObjectAdapter::addMember(Player* player) {
-	return ((GroupObjectImplementation*) impl)->addMember(player);
+void GroupObjectAdapter::addMember(CreatureObject* creatureObject) {
+	return ((GroupObjectImplementation*) impl)->addMember(creatureObject);
 }
 
 Player* GroupObjectAdapter::getLeader() {

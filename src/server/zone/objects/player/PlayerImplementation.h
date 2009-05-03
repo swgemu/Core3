@@ -1427,10 +1427,6 @@ public:
 	//	return hairData;
 	//}
 
-	inline GroupObject* getGroupObject() {
-		return group;
-	}
-
 	inline bool isOnline() {
 		return onlineStatus != OFFLINE && onlineStatus != LINKDEAD;
 	}

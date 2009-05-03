@@ -173,8 +173,14 @@ public:
 				}
 				pet->init(creature,0.5f);
 				creature->unload();
-				pet->createDataPad();
-
+				try {
+					player->wlock();
+					pet->createDataPad();
+					player->unlock();
+				} catch(...) {
+					System::out <<"tame lock\n";
+					player->unlock();
+				}
 				String chType = "creaturehandler";
 				player->addXp(chType, pet->getLevel() * 50,true);
 				//System::out << pet->isCreature() << "/" << pet->isNPC() << "/" << pet->isPlayer() <<"\n";

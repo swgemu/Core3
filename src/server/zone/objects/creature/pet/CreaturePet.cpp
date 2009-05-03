@@ -358,17 +358,30 @@ void CreaturePet::parseCommandMessage(const UnicodeString& message) {
 		((CreaturePetImplementation*) _impl)->parseCommandMessage(message);
 }
 
-void CreaturePet::setCommmandState(unsigned int state) {
+void CreaturePet::setCommmandState(int command) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 32);
-		method.addUnsignedIntParameter(state);
+		method.addSignedIntParameter(command);
 
 		method.executeWithVoidReturn();
 	} else
-		((CreaturePetImplementation*) _impl)->setCommmandState(state);
+		((CreaturePetImplementation*) _impl)->setCommmandState(command);
+}
+
+bool CreaturePet::hasCommandTrained(unsigned int state) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 33);
+		method.addUnsignedIntParameter(state);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreaturePetImplementation*) _impl)->hasCommandTrained(state);
 }
 
 bool CreaturePet::activate() {
@@ -376,7 +389,7 @@ bool CreaturePet::activate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -388,7 +401,7 @@ void CreaturePet::deaggro() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 
 		method.executeWithVoidReturn();
 	} else
@@ -400,7 +413,7 @@ void CreaturePet::handleAttackCommand() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 
 		method.executeWithVoidReturn();
 	} else
@@ -412,7 +425,7 @@ void CreaturePet::handleFollowCommand() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 
 		method.executeWithVoidReturn();
 	} else
@@ -424,7 +437,7 @@ void CreaturePet::handleStayCommand() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 38);
 
 		method.executeWithVoidReturn();
 	} else
@@ -436,7 +449,7 @@ void CreaturePet::handleGuardCommand() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 39);
 
 		method.executeWithVoidReturn();
 	} else
@@ -448,7 +461,7 @@ void CreaturePet::handleStoreCommand() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 40);
 
 		method.executeWithVoidReturn();
 	} else
@@ -460,7 +473,7 @@ void CreaturePet::handleTransferCommand() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 41);
 
 		method.executeWithVoidReturn();
 	} else
@@ -472,7 +485,7 @@ void CreaturePet::handleTrickCommand(String& anim, int mod, int cost) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 42);
 		method.addAsciiParameter(anim);
 		method.addSignedIntParameter(mod);
 		method.addSignedIntParameter(cost);
@@ -487,7 +500,7 @@ void CreaturePet::handleEnrageCommand() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 43);
 
 		method.executeWithVoidReturn();
 	} else
@@ -499,12 +512,36 @@ void CreaturePet::handleSpecialAttackCommand(int att) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 44);
 		method.addSignedIntParameter(att);
 
 		method.executeWithVoidReturn();
 	} else
 		((CreaturePetImplementation*) _impl)->handleSpecialAttackCommand(att);
+}
+
+void CreaturePet::handleGroupCommand() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 45);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreaturePetImplementation*) _impl)->handleGroupCommand();
+}
+
+void CreaturePet::trainMount() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 46);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreaturePetImplementation*) _impl)->trainMount();
 }
 
 /*
@@ -597,40 +634,49 @@ Packet* CreaturePetAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		parseCommandMessage(inv->getUnicodeParameter(_param0_parseCommandMessage__UnicodeString_));
 		break;
 	case 32:
-		setCommmandState(inv->getUnsignedIntParameter());
+		setCommmandState(inv->getSignedIntParameter());
 		break;
 	case 33:
-		resp->insertBoolean(activate());
+		resp->insertBoolean(hasCommandTrained(inv->getUnsignedIntParameter()));
 		break;
 	case 34:
-		deaggro();
+		resp->insertBoolean(activate());
 		break;
 	case 35:
-		handleAttackCommand();
+		deaggro();
 		break;
 	case 36:
-		handleFollowCommand();
+		handleAttackCommand();
 		break;
 	case 37:
-		handleStayCommand();
+		handleFollowCommand();
 		break;
 	case 38:
-		handleGuardCommand();
+		handleStayCommand();
 		break;
 	case 39:
-		handleStoreCommand();
+		handleGuardCommand();
 		break;
 	case 40:
-		handleTransferCommand();
+		handleStoreCommand();
 		break;
 	case 41:
-		handleTrickCommand(inv->getAsciiParameter(_param0_handleTrickCommand__String_int_int_), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		handleTransferCommand();
 		break;
 	case 42:
-		handleEnrageCommand();
+		handleTrickCommand(inv->getAsciiParameter(_param0_handleTrickCommand__String_int_int_), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 43:
+		handleEnrageCommand();
+		break;
+	case 44:
 		handleSpecialAttackCommand(inv->getSignedIntParameter());
+		break;
+	case 45:
+		handleGroupCommand();
+		break;
+	case 46:
+		trainMount();
 		break;
 	default:
 		return NULL;
@@ -743,8 +789,12 @@ void CreaturePetAdapter::parseCommandMessage(const UnicodeString& message) {
 	return ((CreaturePetImplementation*) impl)->parseCommandMessage(message);
 }
 
-void CreaturePetAdapter::setCommmandState(unsigned int state) {
-	return ((CreaturePetImplementation*) impl)->setCommmandState(state);
+void CreaturePetAdapter::setCommmandState(int command) {
+	return ((CreaturePetImplementation*) impl)->setCommmandState(command);
+}
+
+bool CreaturePetAdapter::hasCommandTrained(unsigned int state) {
+	return ((CreaturePetImplementation*) impl)->hasCommandTrained(state);
 }
 
 bool CreaturePetAdapter::activate() {
@@ -789,6 +839,14 @@ void CreaturePetAdapter::handleEnrageCommand() {
 
 void CreaturePetAdapter::handleSpecialAttackCommand(int att) {
 	return ((CreaturePetImplementation*) impl)->handleSpecialAttackCommand(att);
+}
+
+void CreaturePetAdapter::handleGroupCommand() {
+	return ((CreaturePetImplementation*) impl)->handleGroupCommand();
+}
+
+void CreaturePetAdapter::trainMount() {
+	return ((CreaturePetImplementation*) impl)->trainMount();
 }
 
 /*

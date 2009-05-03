@@ -52,6 +52,8 @@ which carries forward this exception.
 
 #include "../player/Player.h"
 
+#include "../creature/Creature.h"
+
 #include "../../../chat/room/ChatRoom.h"
 
 #include "GroupObject.h"
@@ -61,7 +63,7 @@ class CreatureObject;
 class GroupObjectImplementation : public GroupObjectServant {
 	Player* leader;
 
-	Vector<Player*> groupMembers;
+	Vector<CreatureObject*> groupMembers;
 
 	uint32 listCount;
 
@@ -79,13 +81,13 @@ public:
 	void sendSystemMessage(Player* player, const String& file, const String& str, uint64 targetid = 0, bool sendToSelf = false);
 	void sendSystemMessage(Player* player, const String& file, const String& str, StfParameter* param, bool sendToSelf = false);
 
-	void addPlayer(Player* player);
-	void removePlayer(Player* player);
+	void addCreature(CreatureObject* creatureObject);
+	void removeCreature(CreatureObject* creatureObject);
 
 	void disband();
 	void makeLeader(Player* player);
 
-	bool hasMember(Player* player);
+	bool hasMember(CreatureObject* CreatureObject);
 
 	void startChannel();
 
@@ -112,12 +114,12 @@ public:
 		return groupMembers.size();
 	}
 
-	inline Player* getGroupMember(int index) {
+	inline CreatureObject* getGroupMember(int index) {
 		return groupMembers.get(index);
 	}
 
-	void addMember(Player* player) {
-		groupMembers.add(player);
+	void addMember(CreatureObject* creatureObject) {
+		groupMembers.add(creatureObject);
 	}
 
 	inline Player* getLeader() {

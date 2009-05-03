@@ -246,9 +246,12 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		case 38: //GROUP_JOIN
 		case 39: //GROUP_LEAVE
 		case 40: //GROUP_KICK
+			break;
 		case 41: //GROUP_DISBAND
+			break;
 		case 42: //GROUP_DECLINE
 		case 43: //EXTRACT_OBJECT
+			break;
 		case 44: //PET_CALL
 			player->unlock();
 			handlePetCall(obj);
@@ -514,7 +517,8 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		case 156: //FOLLOW_OTHER
 			handlePetTraining(obj,PetCommandHelper::PETFOLLOWOTHER);
 			break;
-		case 157: //PET_TRICK_4
+		case 157: //TRAIN MOUNT
+			handlePetTrainMount(obj);
 			break;
 		case 158: //PET_GROUP
 			handlePetTraining(obj,PetCommandHelper::PETGROUP);
@@ -1780,4 +1784,19 @@ void RadialManager::handlePetTraining(SceneObject* obj,int command) {
 			obj->unlock();
 		}
 }
+void RadialManager::handlePetTrainMount(SceneObject* obj) {
+	if (!obj->isNonPlayerCreature())
+			return;
 
+		if (!((CreatureObject*)obj)->isPet())
+			return;
+
+		try {
+			obj->wlock();
+			((CreaturePet*)obj)->trainMount();
+			obj->unlock();
+		} catch (...) {
+			System::out << "Unreported exception caught in RadialManager::handleVehicleStore(Player* player, SceneObject* obj)\n";
+			obj->unlock();
+		}
+}

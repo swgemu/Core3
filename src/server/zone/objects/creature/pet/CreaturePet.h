@@ -77,7 +77,9 @@ public:
 
 	void parseCommandMessage(const UnicodeString& message);
 
-	void setCommmandState(unsigned int state);
+	void setCommmandState(int command);
+
+	bool hasCommandTrained(unsigned int state);
 
 	bool activate();
 
@@ -100,6 +102,10 @@ public:
 	void handleEnrageCommand();
 
 	void handleSpecialAttackCommand(int att);
+
+	void handleGroupCommand();
+
+	void trainMount();
 
 protected:
 	CreaturePet(DummyConstructorParameter* param);
@@ -169,7 +175,9 @@ public:
 
 	void parseCommandMessage(const UnicodeString& message);
 
-	void setCommmandState(unsigned int state);
+	void setCommmandState(int command);
+
+	bool hasCommandTrained(unsigned int state);
 
 	bool activate();
 
@@ -192,6 +200,10 @@ public:
 	void handleEnrageCommand();
 
 	void handleSpecialAttackCommand(int att);
+
+	void handleGroupCommand();
+
+	void trainMount();
 
 protected:
 	String _param0_setPetName__String_;
