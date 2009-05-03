@@ -144,8 +144,8 @@ void SkillManager::loadDraftSchematics(SkillBox* skillBox, PlayerImplementation*
 		player->addDraftSchematicsFromGroupName(schematicGroupName);
 	}
 
-	if (updateClient)
-		player->sendDraftSchematics();
+	/*if (updateClient)
+		player->sendDraftSchematics();*/
 }
 
 void SkillManager::removeSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient) {
@@ -202,10 +202,8 @@ void SkillManager::removeGrantedDraftSchematics(SkillBox* skillBox, PlayerImplem
 		player->subtractDraftSchematicsFromGroupName(schematicGroupName);
 	}
 
-	if (updateClient) {
-		player->sendDraftSchematics();
-		//player->removeDraftSchematics(skillBox->skillSchematicsGranted, updateClient);
-	}
+	/*if (updateClient)
+		player->sendDraftSchematics();*/
 }
 
 void SkillManager::loadSkills(CreatureObject* creature) {

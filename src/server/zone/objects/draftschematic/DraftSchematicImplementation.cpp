@@ -44,11 +44,11 @@ which carries forward this exception.
 
 #include "DraftSchematicImplementation.h"
 
-DraftSchematicImplementation::DraftSchematicImplementation(uint32 oid, const String& n,
+DraftSchematicImplementation::DraftSchematicImplementation(uint32 sID, const String& n,
 		const String& file, const String& sname, uint32 objCRC, const String& groupName, uint32 complexity,
 		uint32 schematicSize, int craftingToolTab) :
 			DraftSchematicServant() {
-	DraftSchematicImplementation::schematicID = oid;
+	DraftSchematicImplementation::schematicID = sID;
 	DraftSchematicImplementation::customName = n;
 	DraftSchematicImplementation::stfFile = file;
 	DraftSchematicImplementation::stfName = sname;
@@ -67,10 +67,10 @@ DraftSchematicImplementation::DraftSchematicImplementation(uint32 oid, const Str
 }
 
 DraftSchematicImplementation::DraftSchematicImplementation(
-		DraftSchematic* draftSchematic) :
+		DraftSchematic* draftSchematic, uint32 sID) :
 	DraftSchematicServant() {
 
-	schematicID = draftSchematic->getSchematicID();
+	schematicID = sID;
 	customName = draftSchematic->getCustomName();
 	stfFile = draftSchematic->getStfFile();
 	stfName = draftSchematic->getStfName();
@@ -127,7 +127,7 @@ DraftSchematicImplementation::~DraftSchematicImplementation(){
 
 DraftSchematic* DraftSchematicImplementation::dsClone(DraftSchematic* draftSchematic) {
 	if (draftSchematic != NULL) {
-		return new DraftSchematic(draftSchematic);
+		return new DraftSchematic(draftSchematic, draftSchematic->getSchematicID());
 	} else {
 		return NULL;
 	}
@@ -190,6 +190,29 @@ void DraftSchematicImplementation::sendTo(Player* player) {
 
 }
 
+void DraftSchematicImplementation::generateAttributes(SceneObject* obj) {
+	if (!obj->isPlayer())
+		return;
+
+	Player* player = (Player*) obj;
+
+	/*AttributeListMessage* alm = new AttributeListMessage(_this);
+
+	addAttributes(alm);
+
+	player->sendMessage(alm);*/
+
+	sendIngredientsToPlayer(player);
+	sendExperimentalPropertiesToPlayer(player);
+}
+
+void DraftSchematicImplementation::addAttributes(AttributeListMessage* alm) {
+
+}
+
+void DraftSchematicImplementation::parseItemAttributes() {
+
+}
 void DraftSchematicImplementation::synchronizedUIListen(Player* player, int value) {
 	ManagedReference<CraftingTool> tool = player->getActiveCraftingTool();
 
@@ -208,7 +231,9 @@ void DraftSchematicImplementation::synchronizedUIListen(Player* player, int valu
 	ObjectControllerMessage* objMsg =
 			new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x0103);
 	objMsg->insertLong(tool->getObjectID()); // Crafting Tool Object ID
-	objMsg->insertLong(objectID); // Draft Schematic Object ID
+	objMsg->insertLong(objectID);// Draft Schematic Object ID
+	//objMsg->insertInt(schematicID);
+	//objMsg->insertInt(objectCRC);
 	objMsg->insertLong(workingTano->getObjectID()); // Crafting Tangible Object ID
 	objMsg->insertInt(2);
 	objMsg->insertByte(1);
@@ -223,7 +248,6 @@ void DraftSchematicImplementation::synchronizedUIListen(Player* player, int valu
 void DraftSchematicImplementation::synchronizedUIStopListen(Player* player, int value) {
 
 }
-
 // Ingredient Methods
 void DraftSchematicImplementation::addIngredient(const String& ingredientTemplateName, const String& ingredientTitleName,
 		const int slotoption, const String& resourceType, uint32 resourceQuantity, uint32 combineType, uint32 contribution) {
@@ -236,15 +260,14 @@ void DraftSchematicImplementation::addIngredient(const String& ingredientTemplat
 	dsIngredients.add(ingredient);
 }
 
-// THERE IS A BUG WHEN YOU LEAVE YOUR DATAPAD UP AND SURRENDER A SKILL, THE DRAFT SCHEMATICS
-// STILL ARE IN YOUR DATAPAD, SO IF YOU CLICK THEM, IT WILL SAY SCHEMATIC NOT FOUND AND WILL
-// SCREW UP THE CLIENT TRYING TO GET THE INGREDIENTS AND EXP PROPS FROM THERE ON UNTIL THE CLIENT
-// FULLY EXITS THE GAME
 void DraftSchematicImplementation::sendIngredientsToPlayer(Player* player) {
 	ObjectControllerMessage* msg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01BF);
 
-	msg->insertInt(schematicID); // ex: 0x838FF623838FF623 (objID is always the crc value in the upper 4 bytes and the lower 4 bytes)
+	//msg->insertLong(objectID);
+
+	msg->insertInt(schematicID);
 	msg->insertInt(objectCRC);
+
 	msg->insertInt(complexity); // ex: 3
 	msg->insertInt(schematicSize); // ex: 1
 	msg->insertByte(2);
@@ -280,7 +303,6 @@ void DraftSchematicImplementation::addExperimentalProperty(uint32 groupNumber, S
 		dsExpPropGroups.get(groupNumber)->addExperimentalProperty(experimentalProperty,	weight, min, max, precision);
 	} else {
 		DraftSchematicExpPropGroup* dsEpg = new DraftSchematicExpPropGroup(title, subtitle);
-
 		dsEpg->addExperimentalProperty(experimentalProperty, weight, min, max, precision);
 
 		dsExpPropGroups.add(dsEpg);
@@ -290,6 +312,7 @@ void DraftSchematicImplementation::addExperimentalProperty(uint32 groupNumber, S
 void DraftSchematicImplementation::sendExperimentalPropertiesToPlayer(Player* player) {
 	ObjectControllerMessage* msg = new ObjectControllerMessage(player->getObjectID(), 0x1B, 0x0207);
 
+	//msg->insertLong(objectID);
 	msg->insertInt(schematicID);
 	msg->insertInt(objectCRC);
 
@@ -312,6 +335,7 @@ void DraftSchematicImplementation::sendExperimentalPropertiesToPlayer(Player* pl
 	}
 	player->sendMessage(msg);
 }
+
 
 int DraftSchematicImplementation::getRequiredIngredientCount() {
 	DraftSchematicIngredient* dsi;

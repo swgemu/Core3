@@ -159,11 +159,11 @@ class DraftSchematicImplementation: public DraftSchematicServant {
 	bool blueFrogEnabled;
 
 public:
-	DraftSchematicImplementation(uint32 schematicID, const String& objName,
+	DraftSchematicImplementation(uint32 sID, const String& objName,
 			const String& StringFile, const String& StringName, uint32 objCRC, const String& groupName,
 			uint32 complexity, uint32 schematicSize, int craftingToolTab);
 
-	DraftSchematicImplementation(DraftSchematic* draftSchematic);
+	DraftSchematicImplementation(DraftSchematic* draftSchematic, uint32 sID);
 
 	~DraftSchematicImplementation();
 
@@ -174,6 +174,10 @@ public:
 	void destroy(Player* player);
 
 	void sendTo(Player* player);
+
+	void generateAttributes(SceneObject* obj);
+	void addAttributes(AttributeListMessage* alm);
+	void parseItemAttributes();
 
 	void synchronizedUIListen(Player* player, int value);
 	void synchronizedUIStopListen(Player* player, int value);

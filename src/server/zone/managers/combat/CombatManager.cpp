@@ -377,12 +377,12 @@ void CombatManager::handleAreaAction(CreatureObject* creature, TangibleObject* t
 		if (skill->isThrowSkill()) {
 			ThrowableWeapon* throwWeapon = ((ThrowAttackTargetSkill*)skill)->getThrowableWeapon(creature,actionModifier);
 			if (throwWeapon != NULL && throwWeapon->isGrenade())
-				areaRange = throwWeapon->getArea();
+				areaRange = (int)throwWeapon->getArea();
 		}
 
 		if (skill->isHeavyWeaponSkill()) {
 			HeavyRangedWeapon* heavyWeeapon = ((FireHeavyWeaponAttackTarget*)skill)->getHeavyRangedWeapon(creature,actionModifier);
-			areaRange = heavyWeeapon->getArea();
+			areaRange = (int)heavyWeeapon->getArea();
 		}
 
 		bool rangeArea = skill->isThrowSkill() || skill->isHeavyWeaponSkill();

@@ -100,62 +100,69 @@ public:
 		insertLong(oid);
 	}
 
-		// startUpdate(1), insertInt(2) closes the datapad (i think)
-	void updateDraftSchematics() {
+	void startUpdateDraftSchematics(int count) {
+
 		Player* player = play->getPlayer();
-		int schematicSize = player->getDraftSchematicListSize();
+
 		startUpdate(4);
+		startList(count, player->getDraftSchematicUpdateCount(count));
+	}
 
-		startList(schematicSize + 1, player->getDraftSchematicUpdateCount(schematicSize + 1));
+	void removeDraftSchematic(uint16 index) {
 
-		// This deletes all the draft schematics on the client
-		insertByte(3);
-		insertShort(0);
-
-		for (int i = 0; i < schematicSize; i++) {
-			insertByte(1);
-			insertShort(i+1);
-			insertInt(player->getDraftSchematic(i)->getObjectCRC());
-			insertInt(player->getDraftSchematic(i)->getSchematicID());
-		}
+		insertByte(0);
+		insertShort(index);
 	}
 
 	void addDraftSchematic(DraftSchematic* draftSchematic) {
+
 		Player* player = play->getPlayer();
-		int schematicSize = player->getDraftSchematicListSize();
-		startUpdate(4);
+		int index = player->getDraftSchematicMapSize();
 
-		// This deletes all the draft schematics on the client
-		insertByte(0);
+		insertByte(1);
 
-		insertShort(schematicSize + 1);
+		insertShort(index);
+
+		//insertLong(draftSchematic->getObjectID());
+
 		insertInt(draftSchematic->getSchematicID());
 		insertInt(draftSchematic->getObjectCRC());
 	}
 
-	void removeDraftSchematic(DraftSchematic* draftSchematic) {
-		Player* player = play->getPlayer();
-		int schematicSize = player->getDraftSchematicListSize();
-		startUpdate(4);
 
-		insertByte(1);
+	void changeDraftSchematic(uint16 index, DraftSchematic* draftSchematic) {
 
-		DraftSchematic* tempSchematic;
-		int index = -1;
-		for (int i = 0; i < schematicSize; i++) {
-			tempSchematic = player->getDraftSchematic(i);
-
-			if (tempSchematic->getGroupName() == draftSchematic->getGroupName()
-					&& tempSchematic->getObjectCRC()
-							== draftSchematic->getObjectCRC()) {
-				index = i;
-				break;
-			}
-		}
-
+		insertByte(2);
 		insertShort(index);
-		insertInt(tempSchematic->getSchematicID());
-		insertInt(tempSchematic->getObjectCRC());
+
+		//insertLong(draftSchematic->getObjectID());
+		insertInt(draftSchematic->getSchematicID());
+		insertInt(draftSchematic->getObjectCRC());
+	}
+
+	void clearDraftSchematics() {
+
+		DraftSchematic* draftSchematic;
+		Player* player = play->getPlayer();
+
+		insertByte(4);
+	}
+
+	void resetDraftSchematics() {
+
+		DraftSchematic* draftSchematic;
+		Player* player = play->getPlayer();
+
+		insertByte(3);
+
+		for(int i = 0; i < player->getDraftSchematicMapSize(); ++i) {
+
+			draftSchematic = player->getDraftSchematicByIndex(i);
+
+			//insertLong(draftSchematic->getObjectID());
+			insertInt(draftSchematic->getSchematicID());
+			insertInt(draftSchematic->getObjectCRC());
+		}
 	}
 
 	void setExperimentationPoints(int points){

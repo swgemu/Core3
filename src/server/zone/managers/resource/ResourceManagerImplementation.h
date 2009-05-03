@@ -76,7 +76,8 @@ class SpawnResourcesEvent;
 class ClassMap;
 
 class ResourceManagerImplementation : public ResourceManagerServant, public Mutex, public Lua  {
-	ZoneProcessServerImplementation* serv;
+	ZoneProcessServerImplementation* pserv;
+	ZoneServer* server;
 
 	Event* spawnResourcesEvent;
 
@@ -108,6 +109,8 @@ class ResourceManagerImplementation : public ResourceManagerServant, public Mute
 	int lowerGateOverride;
 
 	bool forageResource;
+
+	uint64 nextResourceID;
 
 	String EMPTY;
 
@@ -224,9 +227,6 @@ private:
 	String getCurrentNameFromType(String type);
 
 	void getHarvestingType(CreatureObject* creatureObj, String& harvestType, int& harvestAmount, int type);
-
-
-
 };
 
 #include "../../objects/player/sui/listbox/SuiListBoxVector.h"

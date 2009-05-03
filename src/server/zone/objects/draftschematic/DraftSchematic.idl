@@ -63,7 +63,7 @@ interface DraftSchematic implements SceneObject {
 		super();		
 	}
 
-	DraftSchematic(DraftSchematic draftSchematic) {
+	DraftSchematic(DraftSchematic draftSchematic, unsigned int id) {
 		super();		
 	}
 

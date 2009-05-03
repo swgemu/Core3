@@ -70,6 +70,8 @@ which carries forward this exception.
 #include "sui/SuiBoxImplementation.h"
 #include "sui/listbox/SuiListBoxImplementation.h"
 
+#include "DraftSchematicMap.h"
+
 #include "../tangible/surveytool/SurveyTool.h"
 #include "../tangible/campkit/campsite/CampSite.h"
 #include "../tangible/attachment/Attachment.h"
@@ -194,8 +196,8 @@ class PlayerImplementation : public PlayerServant {
 	Vector<ForageZone*> medForageZones;
 
 	// Draft Schematics
+	DraftSchematicMap* draftSchematicMap;
 	uint32 draftSchematicUpdateCount;
-	VectorMap<uint32, DraftSchematic*> draftSchematicList;
 
 	// Crafting
 	ManagedReference<CraftingTool> activeCraftingTool;
@@ -258,13 +260,11 @@ class PlayerImplementation : public PlayerServant {
 	// Entertainer - Dance + Music
 	Event* entertainerEvent;
 
+	// Survey Methods
 	WaypointObject* surveyWaypoint;
-
 	ManagedReference<SurveyTool> surveyTool;
 	ManagedReference<SurveyTool> sampleTool;
-
 	bool cancelSample;
-
 	bool surveyErrorMessage;
 	bool sampleErrorMessage;
 
@@ -1115,10 +1115,11 @@ public:
 	void addDraftSchematicsFromGroupName(const String& schematicGroupName);
 	void subtractDraftSchematicsFromGroupName(const String& schematicGroupName);
 	void addDraftSchematic(DraftSchematic* ds);
-	void subtractDraftSchematic(DraftSchematic* ds);
+	void addToSchematicIndex(uint32 schematicID);
+	void subtractDraftSchematic(const uint32 schematicID);
 
-	uint32 getDraftSchematicListSize() {
-		return draftSchematicList.size();
+	uint32 getDraftSchematicMapSize() {
+		return draftSchematicMap->size();
 	}
 
 	uint32 getDraftSchematicUpdateCount(uint32 count) {
@@ -1127,9 +1128,10 @@ public:
 	}
 
 	// Get by key
-	DraftSchematic* getDraftSchematic(uint32 schematicID);
+	DraftSchematic* getDraftSchematicByID(uint32 schematicID);
+	int getDraftSchematicIndex(uint32 schematicID);
 	// Get by index
-	DraftSchematic* getDraftSchematic(int index);
+	DraftSchematic* getDraftSchematicByIndex(int index);
 	uint32 getSchematicCRC(int index);
 
 

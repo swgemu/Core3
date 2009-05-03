@@ -1,0 +1,1 @@
+alter table resource_data change INDEX objectID;

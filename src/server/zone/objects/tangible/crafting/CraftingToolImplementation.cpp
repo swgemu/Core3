@@ -76,7 +76,6 @@ CraftingToolImplementation::~CraftingToolImplementation(){
 	schematicsToSend.removeAll();
 
 	delete craftingSlots;
-
 	craftingSlots = NULL;
 }
 
@@ -87,7 +86,6 @@ void CraftingToolImplementation::init() {
 	setCraftingState(0);
 	currentDraftSchematic = NULL;
 	currentTano = NULL;
-	recoverResources = true;
 
 	craftingSlots = new CraftingSlots();
 
@@ -286,8 +284,7 @@ bool CraftingToolImplementation::hasAllRequiredResources(DraftSchematic* draftSc
 
 	/*for(int i = 0; i < getSlotCount(); ++i) {
 		bool optional = draftSchematic->getIngredient(i)->isOptionalSlot();
-		if(!optional && getIngredientInSlot(i) == NULL ||
-				getIngredientInSlotQuantity(i) != draftSchematic->getIngredient(i)->getResourceQuantity())
+		if(!optional && getIngredientInSlot(i) == NULL)
 			return false;
 	}
 	return true;*/
@@ -311,8 +308,6 @@ void CraftingToolImplementation::sendToolStart(Player* player) {
 	/// Temporary reference for schematic objects
 	DraftSchematic* draftSchematic;
 
-	setRecoverResources(true);
-
 	/// Default Crafting station complexity
 	float workingStationComplexity = 15;
 
@@ -334,6 +329,11 @@ void CraftingToolImplementation::sendToolStart(Player* player) {
 
 	/// Packet Sending Start
 
+	/// Tano7
+	TangibleObjectMessage7* tano7 = new TangibleObjectMessage7(_this);
+	player->sendMessage(tano7);
+	// End Tano7***********************************
+
 	/// DPlay9
 	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
 	dplay9->setExperimentationEnabled(experimentingEnabled);
@@ -347,7 +347,7 @@ void CraftingToolImplementation::sendToolStart(Player* player) {
 
 	/// Object Controller Message 102 - Schematic List
 	ObjectControllerMessage* ocm = new ObjectControllerMessage(player->getObjectID(),0x0B, 0x102);
-	ocm->insertLong(getObjectID());
+	ocm->insertLong(objectID);
 	ocm->insertLong(oidOfLocatedCraftingStation);
 	uint32 draftSchematicListSize = schematicsToSend.size();
 	ocm->insertInt(draftSchematicListSize);
@@ -355,35 +355,34 @@ void CraftingToolImplementation::sendToolStart(Player* player) {
 	for (int i = 0; i < draftSchematicListSize; ++i){
 
 		draftSchematic = schematicsToSend.get(i);
-
+		//ocm->insertLong(draftSchematic->getObjectID());
 		ocm->insertInt(draftSchematic->getSchematicID());
 		ocm->insertInt(draftSchematic->getObjectCRC());
-
 		ocm->insertInt(draftSchematic->getCraftingToolTab()); // this number decides what tab the schematic goes in (ex: 4 = food tab in crafting window)
 	}
 	player->sendMessage(ocm);
-	// End OBJC 102***********************************
 
 	/// Send all the ingredients to the player
-	for (int i = 0; i < draftSchematicListSize; ++i){
+		for (int i = 0; i < draftSchematicListSize; ++i){
 
-		draftSchematic = schematicsToSend.get(i);
+			draftSchematic = schematicsToSend.get(i);
 
-		/// Object Controller Message 1BF
-		draftSchematic->sendIngredientsToPlayer(player);
-		// End OBJC 1BF***********************************
-	}
+			/// Object Controller Message 1BF
+			draftSchematic->sendIngredientsToPlayer(player);
+			// End OBJC 1BF***********************************
+		}
 
-	/// Send all the experimental properties to the player
-	for (int i = 0; i < draftSchematicListSize; ++i){
+		/// Send all the experimental properties to the player
+		for (int i = 0; i < draftSchematicListSize; ++i){
 
-		draftSchematic = schematicsToSend.get(i);
+			draftSchematic = schematicsToSend.get(i);
 
-		/// Object Controller Message 207
-		draftSchematic->sendExperimentalPropertiesToPlayer(player);
-		// End OBJC 207***********************************
-	}
+			/// Object Controller Message 207
+			draftSchematic->sendExperimentalPropertiesToPlayer(player);
+			// End OBJC 207***********************************
+		}
 
+	/// Sets this crafting tool as active in the player object
 	player->setActiveCraftingTool(_this);
 }
 
@@ -406,8 +405,8 @@ void CraftingToolImplementation::getSchematicsForTool(Player* player, float work
 	bool toolUsesTab;
 	schematicsToSend.removeAll();
 
-	for (int i = 0; i < player->getDraftSchematicListSize(); i++) {
-		DraftSchematic* draftSchematic = player->getDraftSchematic(i);
+	for (int i = 0; i < player->getDraftSchematicMapSize(); i++) {
+		DraftSchematic* draftSchematic = player->getDraftSchematicByIndex(i);
 
 		if (draftSchematic != NULL) {
 
@@ -471,6 +470,8 @@ uint64 CraftingToolImplementation::findCraftingStation(Player* player, float& wo
 						workingStationComplexity = ((CraftingStation*) inRangeObject)->getComplexityLevel();
 						zone->unlock();
 						return station->getObjectID();
+
+
 					}
 				}
 			}
@@ -484,7 +485,6 @@ uint64 CraftingToolImplementation::findCraftingStation(Player* player, float& wo
 }
 
 void CraftingToolImplementation::setWorkingTano(TangibleObject* tano){
-
 	if (currentTano != NULL) {
 
 		currentTano->setParent(NULL);
@@ -505,7 +505,7 @@ void CraftingToolImplementation::setWorkingDraftSchematic(
 		currentDraftSchematic = NULL;
 	}
 
-	currentDraftSchematic = draftSchematic->dsClone(draftSchematic);
+	currentDraftSchematic = draftSchematic;
 
 	craftingSlots->init(currentDraftSchematic);
 }
@@ -571,7 +571,7 @@ void CraftingToolImplementation::cleanUp(Player* player) {
 
 				if (tano->isResource()) {
 
-					ResourceContainer* rcno = (ResourceContainer*) tano;
+					ResourceContainer* rcno = (ResourceContainer*)tano;
 
 					if (rcno->getContents() > 0) {
 
@@ -579,10 +579,11 @@ void CraftingToolImplementation::cleanUp(Player* player) {
 
 					}
 
-				} else if (tano->isComponent()) {
+				} else if (tano->isComponent()){
 
 					Component* component = (Component*) tano;
 					cm->putComponentBackInInventory(player, component);
+
 				}
 			}
 		}
@@ -591,8 +592,7 @@ void CraftingToolImplementation::cleanUp(Player* player) {
 	if (currentDraftSchematic != NULL) {
 
 		//Scene Object Destroy
-		SceneObjectDestroyMessage* destroy =
-						new SceneObjectDestroyMessage(currentDraftSchematic->getObjectID());
+		SceneObjectDestroyMessage* destroy = new SceneObjectDestroyMessage(currentDraftSchematic->getObjectID());
 		player->sendMessage(destroy);
 
 		currentDraftSchematic->setParent(NULL);
@@ -601,10 +601,9 @@ void CraftingToolImplementation::cleanUp(Player* player) {
 	}
 
 	if (currentTano != NULL) {
-		if (status == "@crafting:tool_status_ready") {
+		if (status == "@crafting:tool_status_ready"){
 
-			SceneObjectDestroyMessage* destroy =
-					new SceneObjectDestroyMessage(currentTano->getObjectID());
+			SceneObjectDestroyMessage* destroy = new SceneObjectDestroyMessage(currentTano->getObjectID());
 			player->sendMessage(destroy);
 
 			currentTano->setParent(NULL);
@@ -616,15 +615,14 @@ void CraftingToolImplementation::cleanUp(Player* player) {
 
 	SceneObject* tempScno;
 
-	for (int i = 0; i < tempIngredient.size(); ++i) {
+	for (int i = 0; i < tempIngredient.size(); ++i){
 
 		tano = tempIngredient.get(i);
 		tempScno = player->getInventoryItem(tano->getObjectID());
 
-		if (tano != NULL && tempScno == NULL) {
+		if (tano != NULL && tempScno == NULL){
 
-			SceneObjectDestroyMessage* destroy =
-					new SceneObjectDestroyMessage(tano->getObjectID());
+			SceneObjectDestroyMessage* destroy = new SceneObjectDestroyMessage(tano->getObjectID());
 			player->sendMessage(destroy);
 
 			tano->setParent(NULL);
@@ -637,6 +635,4 @@ void CraftingToolImplementation::cleanUp(Player* player) {
 
 	tempIngredient.removeAll();
 	schematicsToSend.removeAll();
-
-	player->setActiveCraftingTool(NULL);
 }

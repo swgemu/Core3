@@ -1732,3 +1732,86 @@ void PlayerManagerImplementation::updatePlayerBaseHAMToDatabase(Player* player) 
 		System::out << e.getMessage();
 	}
 }
+
+void PlayerManagerImplementation::deletePlayerFromDatabase(Player* adminPlayer, String firstName) {
+
+
+    uint32 charId;
+
+    try {
+		StringBuffer query;
+
+		query << "SELECT character_id FROM characters WHERE firstname = '" << firstName <<"';";
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+
+		if (res->next())
+			charId = res->getLong(0);
+		else {
+			throw DatabaseException("Cannot Find Player");
+		}
+
+		query.deleteAll();
+		query << "DELETE FROM character_items WHERE character_id = '" << charId << "';";
+		ServerDatabase::instance()->executeStatement(query);
+
+		query.deleteAll(); // clear stream
+		query << "DELETE FROM character_faction_points WHERE character_id = '" << charId <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+
+		query.deleteAll(); // clear stream
+		query << "DELETE FROM character_profession WHERE character_id = '" << charId <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+
+		query.deleteAll(); // clear stream
+		query << "DELETE FROM character_badge WHERE character_id = '" << charId <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+
+		query.deleteAll();
+		query << "DELETE FROM waypoints WHERE owner_id = '" << charId <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+
+		query.deleteAll();
+		query << "DELETE FROM friendlist WHERE character_id = '" << charId <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+
+		query.deleteAll();
+		query << "DELETE FROM friendlist WHERE friend_id = '" << charId <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+
+		query.deleteAll();
+		query << "DELETE FROM ignorelist WHERE character_id = '" << charId <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+
+		query.deleteAll();
+		query << "DELETE FROM ignorelist WHERE ignore_id = '" << charId <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+
+		query.deleteAll();
+		query << "DELETE FROM mail WHERE lower(recv_name) = '" << firstName <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+
+
+		/* ToDO: Revisit this, when mail attachments are functionally
+		query.deleteAll();
+		query << "DELETE FROM mail_attachment WHERE lower(name) = '" << firstName <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+		*/
+
+		query.deleteAll(); // clear stream
+		query << "DELETE FROM characters WHERE character_id = '" << charId <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+
+		query.deleteAll();
+		query << "DELETE FROM consentlist WHERE character_id = '" << charId << "';";
+		ServerDatabase::instance()->executeStatement(query);
+
+		delete res;
+
+		adminPlayer->sendSystemMessage("Player Deleted");
+
+    } catch (DatabaseException& e) {
+
+    	adminPlayer->sendSystemMessage("Unable to delete player");
+    	e.printStackTrace();
+	}
+}

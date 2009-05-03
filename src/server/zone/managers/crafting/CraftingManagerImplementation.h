@@ -107,8 +107,7 @@ class CraftingManagerImplementation : public CraftingManagerServant,
 	VectorMap<String, DraftSchematic*> templateMap;
 
 	String generatedSerial;
-
-	int tempMask;
+	uint32 nextSchematicID;
 
 	static CraftingManagerImplementation* instance;
 
@@ -211,12 +210,14 @@ public:
 	String& generateCraftedSerial();
 
 private:
+
 	void mapTemplate(String stfName, DraftSchematic* draftSchematic);
 	void mapDraftSchematic(DraftSchematic* draftSchematic);
 	// End LUA Methods
 
 	// Methods to setup the crafting sequence
 	void createDraftSchematic(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
+	DraftSchematic* cloneSchematic(Player* player, DraftSchematic* schematic);
 	TangibleObject* createTangibleObject(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
 	TangibleObject* generateTangibleObject(uint64 oid, Player* player, DraftSchematic* draftSchematic);
 	TangibleObject* generateTangibleObject(Player* player, DraftSchematic* draftSchematic);
@@ -258,6 +259,10 @@ private:
 	void createObjectInInventory(CraftingTool* craftingTool, Player* player, int timer, bool create);
 
 	void closeCraftingWindow(Player* player, int counter);
+
+	uint32 getNextSchematicID() {
+		return nextSchematicID++;
+	}
 
 	// Calculations
 

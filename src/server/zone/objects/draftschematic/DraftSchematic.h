@@ -31,7 +31,7 @@ class DraftSchematic : public SceneObject {
 public:
 	DraftSchematic(unsigned int oid, const String& objName, const String& StringFile, const String& StringName, unsigned int objCRC, const String& groupName, unsigned int complexity, unsigned int schematicSize, int craftingToolTab);
 
-	DraftSchematic(DraftSchematic* draftSchematic);
+	DraftSchematic(DraftSchematic* draftSchematic, unsigned int id);
 
 	DraftSchematic* dsClone(DraftSchematic* draftSchematic);
 

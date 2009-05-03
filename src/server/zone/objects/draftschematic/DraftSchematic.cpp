@@ -31,8 +31,8 @@ DraftSchematic::DraftSchematic(unsigned int oid, const String& objName, const St
 	_impl->_setStub(this);
 }
 
-DraftSchematic::DraftSchematic(DraftSchematic* draftSchematic) : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new DraftSchematicImplementation(draftSchematic);
+DraftSchematic::DraftSchematic(DraftSchematic* draftSchematic, unsigned int id) : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new DraftSchematicImplementation(draftSchematic, id);
 	_impl->_setStub(this);
 }
 

@@ -74,6 +74,8 @@ interface PlayerManager {
 
 	void unload(Player player);
 	void save(Player player);
+	
+	void deletePlayerFromDatabase(Player adminPlayer, String firstName);
 
 	void handleAbortTradeMessage(Player player);
 	void handleAddItemToTradeWindow(Player player, unsigned long itemID);

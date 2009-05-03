@@ -687,15 +687,17 @@ public:
 
 	void addDraftSchematic(DraftSchematic* ds);
 
-	void subtractDraftSchematic(DraftSchematic* ds);
+	void subtractDraftSchematic(const unsigned int schematicID);
 
-	unsigned int getDraftSchematicListSize();
+	unsigned int getDraftSchematicMapSize();
 
 	unsigned int getDraftSchematicUpdateCount(unsigned int count);
 
-	DraftSchematic* getDraftSchematic(unsigned int schematicID);
+	DraftSchematic* getDraftSchematicByID(unsigned int schematicID);
 
-	DraftSchematic* getDraftSchematic(int index);
+	int getDraftSchematicIndex(unsigned int schematicID);
+
+	DraftSchematic* getDraftSchematicByIndex(int index);
 
 	bool isChangingFactionStatus();
 
@@ -1680,15 +1682,17 @@ public:
 
 	void addDraftSchematic(DraftSchematic* ds);
 
-	void subtractDraftSchematic(DraftSchematic* ds);
+	void subtractDraftSchematic(const unsigned int schematicID);
 
-	unsigned int getDraftSchematicListSize();
+	unsigned int getDraftSchematicMapSize();
 
 	unsigned int getDraftSchematicUpdateCount(unsigned int count);
 
-	DraftSchematic* getDraftSchematic(unsigned int schematicID);
+	DraftSchematic* getDraftSchematicByID(unsigned int schematicID);
 
-	DraftSchematic* getDraftSchematic(int index);
+	int getDraftSchematicIndex(unsigned int schematicID);
+
+	DraftSchematic* getDraftSchematicByIndex(int index);
 
 	bool isChangingFactionStatus();
 

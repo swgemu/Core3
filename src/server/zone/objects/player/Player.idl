@@ -581,14 +581,15 @@ interface Player implements CreatureObject {
 	void addDraftSchematicsFromGroupName(const String schematicGroupName);
 	void subtractDraftSchematicsFromGroupName(const String schematicGroupName);
 	void addDraftSchematic(DraftSchematic ds);
-	void subtractDraftSchematic(DraftSchematic ds);
+	void subtractDraftSchematic(const unsigned int schematicID);
 
-	unsigned int getDraftSchematicListSize();
+	unsigned int getDraftSchematicMapSize();
 	unsigned int getDraftSchematicUpdateCount(unsigned int count);
 	// Get by key
-	DraftSchematic getDraftSchematic(unsigned int schematicID);
+	DraftSchematic getDraftSchematicByID(unsigned int schematicID);
+	int getDraftSchematicIndex(unsigned int schematicID);
 	// Get by index
-	DraftSchematic getDraftSchematic(int index);
+	DraftSchematic getDraftSchematicByIndex(int index);
 
 	boolean isChangingFactionStatus();
 
