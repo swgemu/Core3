@@ -1,0 +1,13 @@
+1241310793027 msec (0 s) [Core] starting up server..
+1241310799207 msec (6 s) [ServerDatabase] connected to 172.26.0.23
+1241310799208 msec (6 s) [DistributedObjectBroker] root naming directory initialized
+1241310799208 msec (6 s) [DistributedObjectBrokerScheduler] started
+1241310799209 msec (6 s) [DistributedObjectBroker] started on port 44433
+1241310799210 msec (6 s) [ObjectManager] loading object templates...
+1241310800185 msec (7 s) [DistributedObjectBroker] object 'ZoneServer' deployed
+1241310800186 msec (7 s) [LoginServerScheduler] started
+1241310800187 msec (7 s) [LoginServer] started on port 44453
+1241310800187 msec (7 s) [ZoneServer] Loading galaxy name from the database.
+1241310800187 msec (7 s) [LoginProcessor0] started
+1241310802291 msec (9 s) [ZoneServer] Unhandled exception when getting galaxy name from database.
+1241310802293 msec (9 s) [Lua] Loading skills...

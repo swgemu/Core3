@@ -1,0 +1,30 @@
+import "../../scene/SceneObject";
+
+import "../../creature/CreatureObject";
+
+import "../../player/Player";
+
+import "../TangibleObject";
+
+import "Pharmaceutical";
+
+interface WoundPack implements Pharmaceutical {
+	
+	WoundPack(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn) {
+		super(oid, tempCRC, n, tempn, int mptype);
+	}
+	
+	WoundPack(CreatureObject creature, unsigned int tempCRC, const UnicodeString n, const String tempn) {
+		super(creature, tempCRC, n, tempn, int mptype);
+	}
+	
+	void generateAttributes(SceneObject obj);
+	
+	unsigned int calculatePower(CreatureObject healer, CreatureObject patient, boolean applyBattleFatigue = true);
+	
+	void setEffectiveness(float eff);
+	void setAttribute(unsigned char value);
+	
+	float getEffectiveness();
+	unsigned char getAttribute();
+}

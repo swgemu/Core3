@@ -1,0 +1,35 @@
+import "../../scene/SceneObject";
+
+include "engine/service/Message";
+
+import "../../player/Player";
+
+import "../TangibleObject";
+
+interface CamoKit implements TangibleObject {
+	CamoKit(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn) {
+		super(oid, int tp);
+	}
+
+	CamoKit(Player player, unsigned int tempCRC, const UnicodeString n, const String tempn) {
+		super(unsigned long oid, int tp);
+	}
+
+	void useCharge(Player player);
+
+	// getters
+	int getPlanet();
+	int getUsesRemaining();
+	int getConcealMin();
+		
+	// setters
+	void setPlanet(const int tp);
+	void setUsesRemaining(const int us);
+	void setConcealMin(const int min);
+	void remove(Player player);
+	
+	void sendDeltas(Player player);
+	void generateAttributes(SceneObject obj);
+	
+	void parseItemAttributes();
+}

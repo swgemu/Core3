@@ -1,0 +1,119 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+include "engine/service/proto/BaseMessage";
+
+import "../../zone/ZoneServer";
+
+import "../../zone/objects/player/Player";
+
+interface ChatRoom {
+	ChatRoom(ZoneServer server, const String name, unsigned int cid) {
+		super(server, name, cid);
+	}
+	
+	ChatRoom(ZoneServer server, ChatRoom parent, const String name, unsigned int cid) {
+		super(server, parent, name, cid);
+	}
+
+	void sendTo(Player player);
+	void sendDestroyTo(Player player);
+	
+	void addSubRoom(ChatRoom channel);
+	void removeSubRoom(ChatRoom channel);
+	ChatRoom getSubRoom(int i);
+	ChatRoom getSubRoom(const String name);
+	
+	void addPlayer(Player player, boolean doLock = true);
+	void removePlayer(Player player, boolean doLock = true);
+	void removePlayer(const String player);
+	
+	void broadcastMessage(BaseMessage msg);
+	//void broadcastMessage(Vector<Message> messages);
+	
+	boolean hasPlayer(Player player);
+	boolean hasPlayer(const String name);
+	
+	void removeAllPlayers();
+	
+	void setPrivate();
+	
+	void setPublic();
+	
+	boolean isPublic();
+	
+	boolean isPrivate();
+	
+	Player getPlayer(int idx);
+	
+	int getPlayerSize();
+	
+	void setName(const String Name);
+	
+	String getName();
+	
+	String getFullPath();
+	
+	String getOwner();
+	
+	String getCreator();
+	
+	UnicodeString getTitle();
+	
+	String getServerName();
+	
+	void setOwner(const String Owner);
+	
+	void setCreator(const String Creator);
+	
+	void setTitle(const String Title);
+	
+	unsigned int getRoomID();
+	
+	int getSubRoomsSize();
+		
+	ChatRoom getParent();
+	
+	int compareTo(ChatRoom obj);
+}

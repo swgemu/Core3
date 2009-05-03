@@ -1,0 +1,8 @@
+Exception: STATUS_ACCESS_VIOLATION at eip=61149DCC
+eax=055D0678 ebx=00000002 ecx=61108B27 edx=055DC2E8 esi=61102F64 edi=61102EDC
+ebp=00C0B73A esp=0028C820 program=g:\workspaceCore3\MMOCoreORB\bin\core3.exe, pid 6084, thread main
+cs=0023 ds=002B es=002B fs=0053 gs=002B ss=002B
+Stack trace:
+Frame     Function  Args
+00C0B73A  61149DCC  (8B944589, 55899455, 08458B98, C7240489)
+      0 [main] core3 6084 _cygtls::handle_exceptions: Error while dumping state (probably corrupted stack)
