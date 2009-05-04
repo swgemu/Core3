@@ -393,22 +393,24 @@ void GameCommandHandler::init() {
 				"Displays the current Message of the Day",
 				"USAGE: @tasks",
 				&displayMOTD);
+	gmCommands->addCommand("deletePlayer", DEVELOPER,
+				"Deletes target player from database",
+				"USAGE: @deletePlayer <player first name>",
+				&deletePlayer);
 	gmCommands->addCommand("storeVehicle", CSREVENTSJR,
 				"Stores the targeted vehicle",
-				"USAGE: @storeVehicle <target vehicle> (do not perform while invisible)",
+				"USAGE: @storeVehicle <target vehicle>",
 				&storeVehicle);
 	gmCommands->addCommand("clearMissions", PRIVILEGED,
 				"Clears mission vars for a player, in the event they are having problems",
 				"USAGE: @clearMissions <player name>",
 				&clearMissions);
-
-	/* Disabled Commands
-	 *
-	gmCommands->addCommand("woundPet", DEVELOPER,
+    /* Disabled Commands
+     *
+    gmCommands->addCommand("woundPet", DEVELOPER,
 				"woundPet",
 				"USAGE: @woundPet",
 				&woundPet);
-	 *
 	gmCommands->addCommand("createTestPet", DEVELOPER,
 				"createTestPet",
 				"USAGE: @createTestPet <player name>",
@@ -418,6 +420,7 @@ void GameCommandHandler::init() {
 				"Clears all unequipped items in a player inventory, in the event they are having problems",
 				"USAGE: @clearInventory <player name>",
 				&clearInventory);
+
 	gmCommands->addCommand("applyDot", DEVELOPER,
 				"applyDot",
 				"USAGE: @applyDot ",
@@ -2537,7 +2540,7 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 
 	String name;
 	uint64 cellid;
-
+	uint32 objcrc;
 	float x, y;
 	bool stationary = false;
 	bool baby = false;
@@ -2548,6 +2551,7 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 	} else {
 		return;
 	}
+
 
 	if (player->getParent() != NULL) {
 		cellid = player->getParent()->getObjectID();
@@ -2595,9 +2599,11 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 	if (y < -7680)
 		y = -7680;
 
-	if (creatureManager->verifyCreatureNameByStfName(name)) {
+	if (creatureManager->verifyCreatureSpawn(name)) {
 
-		Creature* creature = creatureManager->spawnCreature(name, cellid, x, y,
+		uint32 objcrc = creatureManager->getCreatureCrc(name);
+
+		Creature* creature = creatureManager->spawnCreature(objcrc, cellid, x, y,
 				0, baby, true, height);
 
 		Zone* zone;
@@ -3152,6 +3158,24 @@ void GameCommandHandler::whoDroppedThis(StringTokenizer tokenizer, Player * play
 
 void GameCommandHandler::sendp(StringTokenizer tokenizer, Player* player) {
 	//TESTING PURPOSES ULTYMAS.
+
+
+	while (tokenizer.hasMoreTokens()) {
+
+		int index = tokenizer.getIntToken();
+
+		ManagedReference<DraftSchematic> schematic =
+				player->getDraftSchematicByIndex(index);
+		System::out << "Removing " << schematic->getStfName() << " " << index
+				<< endl;
+
+		player->subtractDraftSchematic(schematic->getObjectCRC());
+
+		if(!tokenizer.hasMoreTokens())
+			player->sendDraftSchematics();
+	}
+
+
 	player->savePlayerState(false);
 	player->sendSystemMessage("char saved");
 
@@ -3822,6 +3846,34 @@ void GameCommandHandler::eventCloner(StringTokenizer tokenizer, Player* player) 
 	//Set the options it has
 }
 
+void GameCommandHandler::deletePlayer(StringTokenizer tokenizer, Player* player) {
+	ChatManager* chatManager = player->getZone()->getChatManager();
+
+	ZoneServer* server = player->getZone()->getZoneServer();
+	PlayerManager* playerManager = server->getPlayerManager();
+
+		String name;
+		int level;
+
+		if (tokenizer.hasMoreTokens()) {
+			tokenizer.getStringToken(name);
+		} else {
+			player->sendSystemMessage("Usage: @deletePlayer <player>");
+			return;
+		}
+
+		Player* target = chatManager->getPlayer(name);
+
+		if (target != NULL && target != player) {
+
+			server->kickUser(name, player->getFirstName());
+			playerManager->unload(target);
+
+		}
+
+		playerManager->deletePlayerFromDatabase(player, name);
+}
+
 void GameCommandHandler::storeVehicle(StringTokenizer tokenizer, Player* player) {
 	SceneObject* obj = player->getTarget();
 
@@ -3892,6 +3944,7 @@ void GameCommandHandler::clearMissions(StringTokenizer tokenizer, Player* player
 		player->sendSystemMessage("clearing missions failed");
 	}
 }
+
 
 void GameCommandHandler::clearInventory(StringTokenizer tokenizer, Player* player) {
 	String targetName = "";

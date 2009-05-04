@@ -83,13 +83,17 @@ class ResourceManagerImplementation : public ResourceManagerServant, public Mute
 
 	Vector<String>* minimumpool;
 	Vector<String>* fixedpool;
+
 	Vector<String>* nativepool;
+
 	Vector<String>* itemStrings;
 
 	VectorMap<String, ResourceSpawn*>* resourceMap;
 	VectorMap<uint64, String>* resourceIDNameMap;
 
 	ClassMap* resourceTree;
+
+	Vector<int> planets;
 
 	//  The following 4 variable are for testing, and provide no functionality
 	//  Used to help increase efficiency in code
@@ -161,6 +165,7 @@ public:
 
 private:
 	void init();
+	void initSpawnZones();
 
 	float getDensity(int planet, String& resname, float inx, float iny);
 
