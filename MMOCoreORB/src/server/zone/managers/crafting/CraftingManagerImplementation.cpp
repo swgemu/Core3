@@ -2584,8 +2584,8 @@ void CraftingManagerImplementation::mapTemplate(String stfName, DraftSchematic* 
 
 		DraftSchematic* draftSchematic2 = templateMap.get(stfName);
 
-		System::out << "Existing template for - " << draftSchematic2->getTanoStfName() << " in " << draftSchematic2->getStfFile() << " " << draftSchematic2->getStfName() << endl;
-		System::out << "   Duplicate template for - " << stfName << " in " << draftSchematic->getStfFile() << " " << draftSchematic->getStfName() << endl;
+		//System::out << "Existing template for - " << draftSchematic2->getTanoStfName() << " in " << draftSchematic2->getStfFile() << " " << draftSchematic2->getStfName() << endl;
+		//System::out << "   Duplicate template for - " << stfName << " in " << draftSchematic->getStfFile() << " " << draftSchematic->getStfName() << endl;
 	}
 }
 

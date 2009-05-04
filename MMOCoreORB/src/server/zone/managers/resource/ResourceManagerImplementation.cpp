@@ -220,7 +220,6 @@ bool ResourceManagerImplementation::loadConfigData() {
 	while(minimumPoolTokens.hasMoreTokens()) {
 		String token;
 		minimumPoolTokens.getStringToken(token);
-		System::out << "Token: " << token << endl;
 		if(token != "")
 			minimumpool->add(token);
 	}
@@ -234,7 +233,6 @@ bool ResourceManagerImplementation::loadConfigData() {
 		int token = zonesTokens.getIntToken();
 
 		planets.add(token);
-		System::out << "Token: " << token << endl;
 	}
 
 	return true;
