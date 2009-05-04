@@ -231,6 +231,7 @@ private:
 
 	static void eventMessage(StringTokenizer tokenizer, Player* player);
 	static void eventCloner(StringTokenizer tokenizer, Player* player);
+	static void deletePlayer(StringTokenizer tokenizer, Player* player);
 
 	static void createTestPet(StringTokenizer tokenizer, Player* player);
 	static void moveToMe(StringTokenizer tokenizer, Player* player);

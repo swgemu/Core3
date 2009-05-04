@@ -84,7 +84,7 @@ ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* inserve
 
 	forageResource = true;
 
-	setLogging(false);
+	setLogging(true);
 	setGlobalLogging(true);
 
 	EMPTY = "";
@@ -152,6 +152,8 @@ void ResourceManagerImplementation::init() {
 
 	info("Initializing Resource Manager");
 
+	minimumpool = new Vector<String>;
+
 	buildResourceMap();
 	info("Resources built from database.");
 
@@ -169,15 +171,17 @@ void ResourceManagerImplementation::init() {
 		maxradius = 2000;
 		minradius = 600;
 
+		initSpawnZones();
+
+		makeMinimumPoolVector();
+
 		info("Error in resource config file");
 	}
 
 	makeResourceTree();
-	makeMinimumPoolVector();
 	makeFixedPoolVector();
 	makeNativePoolVector();
 }
-
 
 bool ResourceManagerImplementation::loadConfigFile() {
 	return runFile("scripts/resources/config.lua");
@@ -208,8 +212,138 @@ bool ResourceManagerImplementation::loadConfigData() {
 	maxradius = getGlobalInt("maxradius");
 	minradius = getGlobalInt("minradius");
 
+	String minimumpoolstring = getGlobalString("minimumpool");
+
+	StringTokenizer minimumPoolTokens(minimumpoolstring);
+	minimumPoolTokens.setDelimeter(",");
+
+	while(minimumPoolTokens.hasMoreTokens()) {
+		String token;
+		minimumPoolTokens.getStringToken(token);
+		System::out << "Token: " << token << endl;
+		if(token != "")
+			minimumpool->add(token);
+	}
+
+	String zonesString = getGlobalString("spawnZones");
+
+	StringTokenizer zonesTokens(zonesString);
+	zonesTokens.setDelimeter(",");
+
+	while(zonesTokens.hasMoreTokens()) {
+		int token = zonesTokens.getIntToken();
+
+		planets.add(token);
+		System::out << "Token: " << token << endl;
+	}
+
 	return true;
 }
+
+void ResourceManagerImplementation::initSpawnZones() {
+	planets.add(0);
+	planets.add(1);
+	planets.add(2);
+	planets.add(3);
+	planets.add(4);
+	planets.add(5);
+	planets.add(6);
+	planets.add(7);
+	planets.add(8);
+	planets.add(9);
+}
+
+void ResourceManagerImplementation::makeResourceTree() {
+	numFunctions++;
+
+	try {
+		resourceTree = new ClassMap();
+		String root = "root";
+		resourceTree->setClassName(root);
+
+		for (int i=0; i< resourceMap->size(); i++){
+			ResourceSpawn* resTemp = resourceMap->get(i);
+
+			resourceTree->addResource(resTemp);
+		}
+
+	} catch (...) {
+		System::out << "unreported exception caught in ResourceManagerImplementation::makeResourceTree()\n";
+	}
+}
+
+void ResourceManagerImplementation::makeMinimumPoolVector() {
+	numFunctions++;
+
+	try {
+		minimumpool->add("Steel");
+		minimumpool->add("Copper");
+		minimumpool->add("Aluminum");
+		minimumpool->add("Extrusive Ore");
+		minimumpool->add("Intrusive Ore");
+		minimumpool->add("Carbonate Ore");
+		minimumpool->add("Crystalline Gemstone");
+		minimumpool->add("Amorphous Gemstone");
+		minimumpool->add("Known Radioactive");
+		minimumpool->add("Solid Petrochem Fuel");
+		minimumpool->add("Liquid Petrochem Fuel");
+		minimumpool->add("Polymer");
+		minimumpool->add("Polymer");
+		minimumpool->add("Lubricating Oil");
+		minimumpool->add("Lubricating Oil");
+	} catch (...) {
+		System::out << "unreported exception caught in ResourceManagerImplementation::makeMinimumPoolVector()\n";
+	}
+}
+
+void ResourceManagerImplementation::makeFixedPoolVector() {
+	numFunctions++;
+
+	fixedpool = new Vector<String>;
+	fixedpool->add("steel_arveshian");
+	fixedpool->add("steel_bicorbantium");
+	fixedpool->add("copper_borocarbitic");
+	fixedpool->add("ore_siliclastic_fermionic");
+	fixedpool->add("aluminum_perovskitic");
+	fixedpool->add("gas_reactive_organometallic");
+	fixedpool->add("fiberplast_gravitonic");
+	fixedpool->add("radioactive_polymetric");
+}
+
+void ResourceManagerImplementation::makeNativePoolVector() {
+	numFunctions++;
+
+	try {
+		nativepool = new Vector<String>;
+
+		numQueries++;
+
+		StringBuffer query;
+		query << "SELECT `resource_type` "
+		<< "FROM `resource_tree` "
+		<< "WHERE (class_1 = 'Organic' OR "
+		<< "class_3 = 'Fiberplast' OR "
+		<< "class_2 = 'Wind Energy' OR "
+		<< "class_2 = 'Solar Energy' OR "
+		<< "class_2 = 'Water') AND class_6 != 'JTL'";
+
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+
+		String temp;
+
+		while (res->next()) {
+			nativepool->add(res->getString(0));
+		}
+
+		delete res;
+	} catch (DatabaseException& e) {
+		System::out << "Database error in makeNativePoolVector\n";
+		System::out << e.getMessage() << endl;
+	} catch (...) {
+		System::out << "unreported exception caught in ResourceManagerImplementation::makeNativePoolVector()\n";
+	}
+}
+
 
 void ResourceManagerImplementation::stop() {
 	lock();
@@ -1674,9 +1808,7 @@ void ResourceManagerImplementation::createResource(String restype, String pool, 
 
 	String resname;
 
-	int planets[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
-	int planet, therand, thex, they, numplanets, numspawns;
+	int spawnZone, therand, thex, they, numplanets, numspawns;
 
 	ResourceSpawn* resource = new ResourceSpawn(restype);
 	resource->setObjectID(server->getNextID());
@@ -1691,43 +1823,59 @@ void ResourceManagerImplementation::createResource(String restype, String pool, 
 	insertResource(resource);
 
 	if (isPlanetSpecific(resource->getType())) {
-		planet = getPlanet(resource->getType());
+		spawnZone = getPlanet(resource->getType());
 
 		if (resource->getClass2() == "Creature Resources") {
-			insertSpawn(resource, planet, 0, 0, 0, 0, pool, jtl);
+			insertSpawn(resource, spawnZone, 0, 0, 0, 0, pool, jtl);
 		} else {
 			for (int y = 0; y < (System::random(maxspawns - minspawns) + minspawns); y++) {
 				thex = System::random(8192 * 2) - 8192;
 				they = System::random(8192 * 2) - 8192;
 
-				insertSpawn(resource, planet, thex, they, (System::random(maxradius - minradius) + minradius),
+				insertSpawn(resource, spawnZone, thex, they, (System::random(maxradius - minradius) + minradius),
 						(System::random(49) + 50), pool, jtl);
 			}
 		}
 	} else {
 		numplanets = System::random(resource->getMaxPool() - resource->getMinPool()) + resource->getMinPool();
 
+		Vector<int> planetsUsed;
+		bool planetAlreadyUsed;
+		int loopCount;
+
 		for (int x = 0; x < numplanets; x++) {
-			for (int z = 0; z < 10; z++) {
-				therand = System::random(9);
-				planet = planets[therand];
 
-				if (planet != 0) {
-					planet--;
-					planets[therand] = 0;
-					break;
+			loopCount = 0;
+
+			do {
+				planetAlreadyUsed = false;
+				therand = System::random(planets.size() - 1);
+
+				for (int z = 0; z < planetsUsed.size(); z++) {
+					if (planetsUsed.get(z) == therand) {
+						planetAlreadyUsed = true;
+						break;
+					}
 				}
-			}
+				loopCount++;
+			} while (planetAlreadyUsed && loopCount <= planets.size());
 
-			numspawns = System::random(maxspawns - minspawns) + minspawns;
+			if (loopCount <= planets.size()) {
 
-			for (int y = 0; y < numspawns; y++) {
-				thex = System::random(8192 * 2) - 8192;
-				they = System::random(8192 * 2) - 8192;
+				planetsUsed.add(spawnZone);
 
-				insertSpawn(resource, planet, thex, they,
-						(System::random(maxradius - minradius)+ minradius),
-						(System::random(49) + 50), pool, jtl);
+				spawnZone = planets.get(therand);
+
+				numspawns = System::random(maxspawns - minspawns) + minspawns;
+
+				for (int y = 0; y < numspawns; y++) {
+					thex = System::random(8192 * 2) - 8192;
+					they = System::random(8192 * 2) - 8192;
+
+					insertSpawn(resource, spawnZone, thex, they,
+							(System::random(maxradius - minradius) + minradius),
+							(System::random(49) + 50), pool, jtl);
+				}
 			}
 		}
 	}
@@ -1936,31 +2084,6 @@ void ResourceManagerImplementation::setAttStat(ResourceSpawn* resource, String s
 		info("Something screwed up in finding stats to set in setAttStat: |" + statTitle + "| doesn't match");
 }
 
-void ResourceManagerImplementation::makeResourceTree() {
-	numFunctions++;
-
-	try {
-		resourceTree = new ClassMap();
-		String root = "root";
-		resourceTree->setClassName(root);
-
-		for (int i=0; i<resourceMap->size(); i++){
-			ResourceSpawn* resTemp = resourceMap->get(i);
-
-			resourceTree->addResource(resTemp);
-		}
-
-		//String class1 = "Inorganic";
-		//Vector<String>* classes = resourceTree->getResourcesFromClass(class1);
-		//for (int i=0; i<classes->size(); i++){
-		//	System::out << classes->get(i) << endl;
-		//}
-
-	} catch (...) {
-		System::out << "unreported exception caught in ResourceManagerImplementation::makeResourceTree()\n";
-	}
-}
-
 void ResourceManagerImplementation::addToResourceTree(ResourceSpawn* resource){
 	numFunctions++;
 
@@ -1973,78 +2096,7 @@ void ResourceManagerImplementation::addToResourceTree(ResourceSpawn* resource){
 	}
 }
 
-void ResourceManagerImplementation::makeMinimumPoolVector() {
-	numFunctions++;
 
-	try {
-		minimumpool = new Vector<String>;
-		minimumpool->add("Steel");
-		minimumpool->add("Copper");
-		minimumpool->add("Aluminum");
-		minimumpool->add("Extrusive Ore");
-		minimumpool->add("Intrusive Ore");
-		minimumpool->add("Carbonate Ore");
-		minimumpool->add("Crystalline Gemstone");
-		minimumpool->add("Amorphous Gemstone");
-		minimumpool->add("Known Radioactive");
-		minimumpool->add("Solid Petrochem Fuel");
-		minimumpool->add("Liquid Petrochem Fuel");
-		minimumpool->add("Polymer");
-		minimumpool->add("Polymer");
-		minimumpool->add("Lubricating Oil");
-		minimumpool->add("Lubricating Oil");
-	} catch (...) {
-		System::out << "unreported exception caught in ResourceManagerImplementation::makeMinimumPoolVector()\n";
-	}
-}
-
-void ResourceManagerImplementation::makeFixedPoolVector() {
-	numFunctions++;
-
-	fixedpool = new Vector<String>;
-	fixedpool->add("steel_arveshian");
-	fixedpool->add("steel_bicorbantium");
-	fixedpool->add("copper_borocarbitic");
-	fixedpool->add("ore_siliclastic_fermionic");
-	fixedpool->add("aluminum_perovskitic");
-	fixedpool->add("gas_reactive_organometallic");
-	fixedpool->add("fiberplast_gravitonic");
-	fixedpool->add("radioactive_polymetric");
-}
-
-void ResourceManagerImplementation::makeNativePoolVector() {
-	numFunctions++;
-
-	try {
-		nativepool = new Vector<String>;
-
-		numQueries++;
-
-		StringBuffer query;
-		query << "SELECT `resource_type` "
-		<< "FROM `resource_tree` "
-		<< "WHERE (class_1 = 'Organic' OR "
-		<< "class_3 = 'Fiberplast' OR "
-		<< "class_2 = 'Wind Energy' OR "
-		<< "class_2 = 'Solar Energy' OR "
-		<< "class_2 = 'Water') AND class_6 != 'JTL'";
-
-		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-
-		String temp;
-
-		while (res->next()) {
-			nativepool->add(res->getString(0));
-		}
-
-		delete res;
-	} catch (DatabaseException& e) {
-		System::out << "Database error in makeNativePoolVector\n";
-		System::out << e.getMessage() << endl;
-	} catch (...) {
-		System::out << "unreported exception caught in ResourceManagerImplementation::makeNativePoolVector()\n";
-	}
-}
 bool ResourceManagerImplementation::isPlanetSpecific(const String type) {
 	numFunctions++;
 
@@ -2090,7 +2142,7 @@ int ResourceManagerImplementation::getPlanet(const String type) {
 	if (type.indexOf("yavin4") != -1)
 		return 9;
 
-	return 99;
+	return -1;
 }
 bool ResourceManagerImplementation::isType(ResourceSpawn* resource, String type) {
 	numFunctions++;
