@@ -267,7 +267,7 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		case 49: //IMAGEDESIGN
 			break;
 		case 50: //SET_NAME
-			handleSetName(player, obj);
+			handleSetObjectName(player, obj);
 			break;
 		case 51: //ITEM_ROTATE - MENU ROOT
 			break;
@@ -337,7 +337,7 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 			handleRemovePowerup(player, obj);
 			break;
 		case 77: // Add Energy
-			handleStructureAddEnergy(player, obj);
+			handleStructureDepositPower(player, obj);
 			break;
 		case 78: //SERVER_HARVESTER_MANAGE
 			handleManageHarvester(player, obj);
@@ -416,19 +416,19 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		case 118: //SERVER_TERMINAL_MANAGEMENT
 			break;
 		case 119: //SERVER_TERMINAL_PERMISSIONS_ENTER
-			handleStructurePermissionList(player, obj, StructurePermissionList::ENTRYLIST);
+			handleStructurePermissionList(player, obj, "ENTRY");
 			break;
 		case 120: //SERVER_TERMINAL_PERMISSIONS_BANNED
-			handleStructurePermissionList(player, obj, StructurePermissionList::BANLIST);
+			handleStructurePermissionList(player, obj, "BAN");
 			break;
 		case 121: //SERVER_TERMINAL_PERMISSIONS_ADMIN
-			handleStructurePermissionList(player, obj, StructurePermissionList::ADMINLIST);
+			handleStructurePermissionList(player, obj, "ADMIN");
 			break;
 		case 122: //SERVER_TERMINAL_PERMISSIONS_VENDOR
-			handleStructurePermissionList(player, obj, StructurePermissionList::VENDORLIST);
+			handleStructurePermissionList(player, obj, "VENDOR");
 			break;
 		case 123: //SERVER_TERMINAL_PERMISSIONS_HOPPER
-			handleStructurePermissionList(player, obj, StructurePermissionList::HOPPERLIST);
+			handleStructurePermissionList(player, obj, "HOPPER");
 			break;
 		case 124: //SERVER_TERMINAL_MANAGEMENT_STATUS
 			handleStructureStatus(player, obj);
@@ -446,7 +446,7 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 			handleStructureDestroy(player, obj);
 			break;
 		case 129: //SERVER_TERMINAL_MANAGEMENT_PAY
-			handleStructureManageMaintenance(player, obj);
+			handleStructurePayMaintenance(player, obj);
 			break;
 		case 130: //SERVER_TERMINAL_CREATE_VENDOR
 			handleStructureCreateVendor(player, obj);
@@ -735,8 +735,18 @@ ObjectMenuResponse* RadialManager::parseDefaults(Player* player, uint64 objectid
 		omr->addRadialParent(radialid, callback, "");
 	}
 
+	//TODO: This may be uneeded...
 	uint8 counter = pack->parseByte();
 	omr->setCounter(counter);
+
+	//Privileged players always have permission to pickup items.
+	//Players can pickup items in buildings that they have admin rights on.
+	if (player->isInBuilding() || player->isPrivileged()) {
+		BuildingObject* building = (BuildingObject*) player->getBuilding();
+
+		if (player->isPrivileged() || (building != NULL && building->isOnAdminList(player)))
+			omr->addRadialParent(10, 3, "@ui_radial:item_pickup");
+	}
 
 	return omr;
 }
@@ -899,147 +909,9 @@ void RadialManager::handleWearableColorChange(Player* player, SceneObject* obj) 
 	player->sendMessage(sui->generateMessage());
 }
 
-void RadialManager::handleManageHarvester(Player* player, SceneObject* obj) {
-	try {
-		if (!obj->isTangible())
-			return;
-
-		TangibleObject* tano = (TangibleObject*) obj;
-
-		if (tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
-			return;
-
-		InstallationObject* inso = (InstallationObject*) tano;
-
-		// Update Hopper
-		inso->updateHopper();
-
-		ResourceHarvesterActivatePageMessage* rhapm = new ResourceHarvesterActivatePageMessage(obj->getObjectID());
-		player->sendMessage(rhapm);
-	}
-	catch(...){
-		System::out << "Unreported exception in RadialManager::handleManageHarvester\n";
-	}
-}
-
-
-
-void RadialManager::handleStructureDestroy(Player* player, SceneObject* obj) {
-	try{
-		InstallationObject * inso = (InstallationObject *) obj;
-
-		if (inso!= NULL)
-			inso->handleStructureRedeed(player);
-		/*else {
-				BuildingObject * buio = (BuildingObject * ) obj;
-
-				if (buio!= NULL)
-					buio->undeploy();
-			}
-		}*/
-	}
-	catch(...){
-		System::out << "Unreported exception in RadialManager::handleStructureDestroy\n";
-	}
-}
-
-void RadialManager::handleStructureStatus(Player* player, SceneObject* obj) {
-	try{
-		if (obj != NULL && obj->isTangible() && ((TangibleObject*)obj)->isInstallation()) {
-			InstallationObject * inso = (InstallationObject *) obj;
-
-			inso->handleStructureStatus(player);
-			/*else {
-				BuildingObject * buio = (BuildingObject * ) obj;
-
-				if (buio!= NULL)
-					buio->handleStructureStatus(player);
-				}
-			}*/
-		}
-	}
-	catch(...){
-		System::out << "Unreported exception in RadialManager::handleStructureStatus\n";
-	}
-}
-
-void RadialManager::handleSetName(Player* player, SceneObject* obj) {
-	try{
-		TangibleObject * tano = (TangibleObject*) obj;
-
-		if (tano!= NULL)
-
-			tano->setObjectName(player);
-
-		/*else {
-			BuildingObject * buio = (BuildingObject * ) obj;
-
-			if (buio!= NULL)
-				buio->setName(player);
-		}
-		*/
-
-	}
-	catch(...){
-		System::out << "Unreported exception RadialManager::handleSetName\n";
-	}
-}
-
-void RadialManager::handleStructureManageMaintenance(Player* player, SceneObject* obj) {
-	try{
-		if(!obj->isTangible())
-			return;
-
-		TangibleObject* tano = (TangibleObject*) obj;
-
-		if(!tano->isInstallation())
-			return;
-
-		InstallationObject * inso = (InstallationObject*) tano;
-
-		if (inso!= NULL)
-			inso->handleStructureManageMaintenance(player);
-
-		/*else {
-			BuildingObject * buio = (BuildingObject * ) obj;
-
-			if (buio!= NULL)
-				buio->setName(player);
-		}
-		*/
-
-	}
-	catch(...){
-		System::out << "Unreported exception in RadialManager::handleStructureManageMaintenance\n";
-	}
-}
-void RadialManager::handleStructureAddEnergy(Player* player, SceneObject* obj) {
-	try{
-		if(!obj->isTangible())
-			return;
-
-		TangibleObject* tano = (TangibleObject*) obj;
-
-		if(!tano->isInstallation())
-			return;
-
-		InstallationObject * inso = (InstallationObject*) tano;
-
-		if (inso!= NULL)
-			inso->handleStructureAddEnergy(player);
-
-		/*else {
-			BuildingObject * buio = (BuildingObject * ) obj;
-
-			if (buio!= NULL)
-				buio->setName(player);
-		}
-		*/
-
-	}
-	catch(...){
-		System::out << "Unreported exception in RadialManager::handleStructureAddEnergy\n";
-	}
+void RadialManager::handleSetObjectName(Player* player, SceneObject* obj) {
+	if (obj != NULL)
+		obj->sendCustomNamePromptTo(player);
 }
 
 void RadialManager::handleSlicing(Player* player, SceneObject* obj) {
@@ -1493,6 +1365,22 @@ void RadialManager::handleBankStorage(Player* player) {
 
 
 
+/**
+ * Sends the manage harvester screen to the player and sets them as an operator.
+ * \param player Player to manager harvester.
+ * \param obj The harvester that was used to summon the radial.
+ */
+void RadialManager::handleManageHarvester(Player* player, SceneObject* obj) {
+	if (obj != NULL && obj->isTangible() && ((TangibleObject*)obj)->isInstallation()) {
+		InstallationObject* installation = (InstallationObject*) obj;
+
+		if (installation->isHarvester() || installation->isGenerator()) {
+			//TODO: Handle manage harvester screen.
+			ResourceHarvesterActivatePageMessage* rhapm = new ResourceHarvesterActivatePageMessage(installation->getObjectID());
+			player->sendMessage(rhapm);
+		}
+	}
+}
 
 
 /**
@@ -1501,12 +1389,49 @@ void RadialManager::handleBankStorage(Player* player) {
  * \param obj The object that the radial originated from.
  * \param listtype The type of the list, referencing StructurePermissionList
  */
-void RadialManager::handleStructurePermissionList(Player* player, SceneObject* obj, uint8 listtype) {
-	if (obj == NULL || !obj->isTangible() || !((TangibleObject*)obj)->isTerminal() || !((Terminal*)obj)->isPlayerStructureTerminal())
+void RadialManager::handleStructurePermissionList(Player* player, SceneObject* obj, const String& listname) {
+	if (obj == NULL || !obj->isTangible())
 		return;
 
-	PlayerStructureTerminal* terminal = (PlayerStructureTerminal*) obj;
-	terminal->sendPermissionListTo(player, listtype);
+	TangibleObject* tangible = (TangibleObject*) obj;
+
+	if (tangible->isTerminal() && ((Terminal*) tangible)->isPlayerStructureTerminal()) {
+		PlayerStructureTerminal* terminal = (PlayerStructureTerminal*) obj;
+		terminal->sendPermissionListTo(player, listname);
+	} else if (tangible->isInstallation()) {
+		InstallationObject* installation = (InstallationObject*) tangible;
+		installation->sendPermissionListTo(player, listname);
+	}
+}
+
+/**
+ * Starts the structures destroy process.
+ * \param player The player requesting that the structure be destroyed.
+ * \param obj The terminal used to invoke structure destruction.
+ */
+void RadialManager::handleStructureDestroy(Player* player, SceneObject* obj) {
+	if (obj != NULL) {
+		if (obj->isTangible() && ((TangibleObject*)obj)->isInstallation())
+			((InstallationObject*)obj)->sendConfirmDestroyTo(player);
+		else if (obj->isBuilding())
+			((BuildingObject*)obj)->sendConfirmDestroyTo(player);
+	}
+}
+
+/**
+ * Sends the interface for depositing power to the player.
+ * \param player The player whom has requested the power deposit interface.
+ * \param obj The installation used to invoke the command.
+ */
+void RadialManager::handleStructureDepositPower(Player* player, SceneObject* obj) {
+	if (obj->isTangible() && ((TangibleObject*)obj)->isInstallation()) {
+		InstallationObject* installation = (InstallationObject*) obj;
+
+		if (installation->isOnAdminList(player))
+			installation->sendManagePowerTo(player);
+		else
+			player->sendSystemMessage("@player_structure:not_admin"); //You must be an admin to do that.
+	}
 }
 
 /**
@@ -1516,6 +1441,22 @@ void RadialManager::handleStructurePermissionList(Player* player, SceneObject* o
  */
 void RadialManager::handleStructurePrivacy(Player* player, SceneObject* obj) {
 
+}
+
+void RadialManager::handleStructureStatus(Player* player, SceneObject* obj) {
+	if (obj->isTangible() && ((TangibleObject*)obj)->isInstallation()) {
+		InstallationObject* installation = (InstallationObject*) obj;
+
+		if (installation->isOnAdminList(player))
+			installation->sendStatusTo(player);
+		else
+			player->sendSystemMessage("@player_structure:not_admin"); //You must be an admin to do that.
+	} else if (obj->isBuilding()) {
+		BuildingObject* building = (BuildingObject*) obj;
+
+		//if (building->isOnEntryList(player))
+		//	building->sendStatusTo(player);
+	}
 }
 
 /**
@@ -1542,7 +1483,19 @@ void RadialManager::handleStructureDeclareResidence(Player* player, SceneObject*
  * \param obj The terminal that was summoned to pay maintenance with.
  */
 void RadialManager::handleStructurePayMaintenance(Player* player, SceneObject* obj) {
+	if (obj->isTangible() && ((TangibleObject*)obj)->isInstallation()) {
+		InstallationObject* installation = (InstallationObject*) obj;
 
+		if (installation->isOnAdminList(player))
+			installation->sendManageMaintenanceTo(player);
+		else
+			player->sendSystemMessage("@player_structure:not_admin"); //You must be an admin to do that.
+	} else if (obj->isBuilding()) {
+		BuildingObject* building = (BuildingObject*) obj;
+
+		//if (building->isOnAdminList(player))
+		//	building->sendManageMaintenanceTo(player);
+	}
 }
 
 /**
@@ -1621,7 +1574,7 @@ void RadialManager::handleInsertFactorySchematic(Player* player, SceneObject* ob
 
 	FactoryObject* fact = (FactoryObject*) obj;
 
-	fact->sendInsertManSchemTo(player);
+	//fact->sendInsertManSchemTo(player);
 }
 void RadialManager::handleViewFactoryIngredients(Player* player, SceneObject* obj){
 
@@ -1639,7 +1592,7 @@ void RadialManager::handleViewFactoryIngredients(Player* player, SceneObject* ob
 
 	FactoryObject* fact = (FactoryObject*) obj;
 
-	fact->sendViewIngredientsTo(player);
+	//fact->sendViewIngredientsTo(player);
 }
 void RadialManager::handleViewFactoryInput(Player* player, SceneObject* obj){
 	//open an inventory window with the factory input container
@@ -1659,8 +1612,8 @@ void RadialManager::handleViewFactoryInput(Player* player, SceneObject* obj){
 
 	FactoryObject* fact = (FactoryObject*) obj;
 
-	if(fact->getOwnerID() == player->getCharacterID()) {
-		fact->sendInputHopperTo(player);
+	if(fact->isOwner(player->getCharacterID())) {
+		//fact->sendInputHopperTo(player);
 	}
 }
 void RadialManager::handleViewFactoryOutput(Player* player, SceneObject* obj){
@@ -1681,8 +1634,8 @@ void RadialManager::handleViewFactoryOutput(Player* player, SceneObject* obj){
 
 	FactoryObject* fact = (FactoryObject*) obj;
 
-	if(fact->getOwnerID() == player->getCharacterID()) {
-		fact->sendOutputHopperTo(player);
+	if(fact->isOwner(player->getCharacterID())) {
+		//fact->sendOutputHopperTo(player);
 	}
 }
 void RadialManager::handleFactoryRun(Player* player, SceneObject* obj){

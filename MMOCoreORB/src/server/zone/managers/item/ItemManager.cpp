@@ -30,7 +30,7 @@
 
 #include "../../objects/tangible/Container.h"
 
-#include "../../objects/installation/factory/FactoryObject.h"
+#include "../../objects/structure/installation/factory/FactoryObject.h"
 
 /*
  *	ItemManagerStub

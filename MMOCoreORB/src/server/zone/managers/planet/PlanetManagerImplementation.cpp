@@ -940,65 +940,6 @@ String PlanetManagerImplementation::getStationName(uint64 crc){
 	return name;
 }
 
-void PlanetManagerImplementation::placePlayerStructure(Player * player,
-		uint64 objectID, float x, float y, int orient) {
-	try {
-
-		if (isNoBuildArea(x,y)) {
-			player->sendSystemMessage("You can not build here.");
-			return;
-		}
-
-		ManagedReference<DeedObject> deed = (DeedObject*) player->getInventoryItem(objectID);
-
-		if (deed == NULL)
-			return;
-
-		if(deed->getLotSize() > player->getLotsRemaining() || player->getLotsRemaining()<=0){
-			player->sendSystemMessage("You don't have enough remaining lots to place that structure");
-			return;
-		}
-
-		if (deed == NULL)
-			return;
-
-		float oX, oY, oZ, oW;
-
-		switch(orient) {
-			case 0:
-				oX = 0;
-				oY = 0;
-				oZ = 0;
-				oW = 1;
-				break;
-			case 1:
-				oX = 0;
-				oY = 0.707106;
-				oZ = 0;
-				oW = 0.707106;
-				break;
-			case 2:
-				oX = 0;
-				oY = 1;
-				oZ = 0;
-				oW = 0;
-				break;
-			case 3:
-				oX = 0;
-				oY = -0.707106;
-				oZ = 0;
-				oW = 0.707106;
-				break;
-		}
-
-		structureManager->spawnTempStructure(player, deed, x, zone->getHeight(x, y), y, oX, oZ, oY, oW);
-	}
-	catch(...) {
-		System::out << "Exception in PlanetManagerImplementation::placePlayerStructure\n";
-	}
-}
-
-
 
 void PlanetManagerImplementation::landShuttles() {
 	lock();

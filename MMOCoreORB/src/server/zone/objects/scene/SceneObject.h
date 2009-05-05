@@ -51,6 +51,10 @@ public:
 
 	void sendDestroyTo(Player* player);
 
+	void sendCustomNamePromptTo(Player* player);
+
+	void updateCustomName(Player* player, const String& value);
+
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 
 	void create(ZoneClientSession* client);
@@ -222,6 +226,16 @@ public:
 	void broadcastMessage(StandaloneBaseMessage* msg, int range = 128, bool doLock = true);
 
 	bool isUndeploymentScheduled();
+
+	void setOwnerCharacterID(unsigned int characterid);
+
+	void setOwnerName(const String& name);
+
+	unsigned int getOwnerCharacterID();
+
+	String& getOwnerName();
+
+	bool isOwner(unsigned int characterid);
 
 	int getObjectType();
 
@@ -404,6 +418,7 @@ protected:
 
 	String _return_getAttributes;
 	String _return_getLoggingName;
+	String _return_getOwnerName;
 	String _return_getStfDetail;
 	String _return_getStfFile;
 	String _return_getStfName;
@@ -432,6 +447,10 @@ public:
 	void sendTo(Player* player, bool doClose);
 
 	void sendDestroyTo(Player* player);
+
+	void sendCustomNamePromptTo(Player* player);
+
+	void updateCustomName(Player* player, const String& value);
 
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 
@@ -602,6 +621,16 @@ public:
 	void broadcastMessage(StandaloneBaseMessage* msg, int range, bool doLock);
 
 	bool isUndeploymentScheduled();
+
+	void setOwnerCharacterID(unsigned int characterid);
+
+	void setOwnerName(const String& name);
+
+	unsigned int getOwnerCharacterID();
+
+	String& getOwnerName();
+
+	bool isOwner(unsigned int characterid);
 
 	int getObjectType();
 
@@ -774,6 +803,7 @@ public:
 	void setPickupFlag(bool pickup);
 
 protected:
+	String _param1_updateCustomName__Player_String_;
 	String _param0_serialize__String_;
 	String _param0_deSerialize__String_;
 	String _param0_info__String_bool_;
@@ -783,6 +813,7 @@ protected:
 	String _param0_setAttributes__String_;
 	String _param0_setCustomizationString__String_;
 	String _param0_setCustomizationVariable__String_int_;
+	String _param0_setOwnerName__String_;
 	String _param0_getCustomizationString__String_;
 	String _param0_setStfName__String_;
 	String _param0_setStfFile__String_;

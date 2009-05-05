@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/installation/harvester/HarvesterObject.h"
+#include "../../objects/structure/installation/harvester/HarvesterObject.h"
 
 class HarvesterObjectMessage3 : public BaseLineMessage {
 public:

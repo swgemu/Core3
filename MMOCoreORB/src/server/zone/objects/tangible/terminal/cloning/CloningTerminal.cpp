@@ -10,7 +10,7 @@
 
 #include "../../../tangible/TangibleObject.h"
 
-#include "../../../building/cloningfacility/CloningFacility.h"
+#include "../../../structure/building/cloningfacility/CloningFacility.h"
 
 #include "../Terminal.h"
 

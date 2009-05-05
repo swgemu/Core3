@@ -3,7 +3,7 @@
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/installation/harvester/HarvesterObject.h"
+#include "../../objects/structure/installation/harvester/HarvesterObject.h"
 
 class HarvesterObjectMessage7 : public BaseLineMessage {
 public:

@@ -9,8 +9,6 @@
 
 class TangibleObject;
 
-class packets;
-
 class Player;
 
 class CreatureObject;
@@ -21,45 +19,70 @@ class SceneObject;
 
 class DeedObject : public TangibleObject {
 public:
-	DeedObject(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn);
+	DeedObject(CreatureObject* creature, unsigned int objcrc, const UnicodeString& customname, const String& stfname);
 
-	DeedObject(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn);
+	DeedObject(unsigned long long objid, unsigned int objcrc, const UnicodeString& customname, const String& stfname);
 
-	DeedObject(unsigned long long oid, int tp);
-
-	UnicodeString& getTargetName();
-
-	String& getTargetFile();
-
-	String& getTargetTemplate();
-
-	void setTargetFile(String& path);
-
-	String& getTargetTempFile();
+	DeedObject(unsigned long long objid);
 
 	int useObject(Player* player);
 
-	void generateAttributes(SceneObject* obj);
+	SceneObject* generateObject(Player* player);
 
-	int getHarvesterType();
+	void parseItemAttributes();
 
-	String& getDefaultTemplateName(int crc);
+	void setTargetStfFile(const String& stffile);
 
-	int getLotSize();
+	void setTargetStfName(const String& stfname);
 
-	int getSize();
+	void setTargetObjectFile(const String& objfile);
+
+	void setTargetCustomName(const UnicodeString& customname);
+
+	void setTargetObjectType(unsigned int type);
+
+	void setTargetObjectSubType(unsigned int subtype);
+
+	String& getTargetStfFile();
+
+	String& getTargetStfName();
+
+	String& getTargetObjectFile();
+
+	UnicodeString& getTargetCustomName();
+
+	unsigned int getTargetObjectCRC();
+
+	unsigned int getTargetObjectType();
+
+	unsigned int getTargetObjectSubType();
+
+	bool isInstallationDeed();
+
+	bool isBuildingDeed();
+
+	bool isPetDeed();
+
+	bool isDroidDeed();
+
+	bool isVehicleDeed();
+
+	bool isResourceDeed();
+
+	unsigned char getLotSize();
+
+	unsigned int getTargetConstructionObjectCRC();
 
 protected:
 	DeedObject(DummyConstructorParameter* param);
 
 	virtual ~DeedObject();
 
-	String _return_getDefaultTemplateName;
-	String _return_getTargetFile;
-	String _return_getTargetTempFile;
-	String _return_getTargetTemplate;
+	String _return_getTargetObjectFile;
+	String _return_getTargetStfFile;
+	String _return_getTargetStfName;
 
-	UnicodeString _return_getTargetName;
+	UnicodeString _return_getTargetCustomName;
 
 	friend class DeedObjectHelper;
 };
@@ -72,30 +95,59 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	UnicodeString& getTargetName();
-
-	String& getTargetFile();
-
-	String& getTargetTemplate();
-
-	void setTargetFile(String& path);
-
-	String& getTargetTempFile();
-
 	int useObject(Player* player);
 
-	void generateAttributes(SceneObject* obj);
+	SceneObject* generateObject(Player* player);
 
-	int getHarvesterType();
+	void parseItemAttributes();
 
-	String& getDefaultTemplateName(int crc);
+	void setTargetStfFile(const String& stffile);
 
-	int getLotSize();
+	void setTargetStfName(const String& stfname);
 
-	int getSize();
+	void setTargetObjectFile(const String& objfile);
+
+	void setTargetCustomName(const UnicodeString& customname);
+
+	void setTargetObjectType(unsigned int type);
+
+	void setTargetObjectSubType(unsigned int subtype);
+
+	String& getTargetStfFile();
+
+	String& getTargetStfName();
+
+	String& getTargetObjectFile();
+
+	UnicodeString& getTargetCustomName();
+
+	unsigned int getTargetObjectCRC();
+
+	unsigned int getTargetObjectType();
+
+	unsigned int getTargetObjectSubType();
+
+	bool isInstallationDeed();
+
+	bool isBuildingDeed();
+
+	bool isPetDeed();
+
+	bool isDroidDeed();
+
+	bool isVehicleDeed();
+
+	bool isResourceDeed();
+
+	unsigned char getLotSize();
+
+	unsigned int getTargetConstructionObjectCRC();
 
 protected:
-	String _param0_setTargetFile__String_;
+	String _param0_setTargetStfFile__String_;
+	String _param0_setTargetStfName__String_;
+	String _param0_setTargetObjectFile__String_;
+	UnicodeString _param0_setTargetCustomName__UnicodeString_;
 };
 
 class DeedObjectHelper : public DistributedObjectClassHelper, public Singleton<DeedObjectHelper> {
@@ -120,9 +172,9 @@ public:
 	DeedObject* _this;
 
 public:
-	DeedObjectServant(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
-	DeedObjectServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
-	DeedObjectServant(unsigned long long oid, int tp);
+	DeedObjectServant(CreatureObject* creature, unsigned int objcrc, const UnicodeString& customname, const String& stfname, int tp);
+	DeedObjectServant(unsigned long long objid, unsigned int objcrc, const UnicodeString& customname, const String& stfname, int tp);
+	DeedObjectServant(unsigned long long objid, int tp);
 	virtual ~DeedObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

@@ -45,18 +45,20 @@ which carries forward this exception.
 #ifndef INSTALLATIONOBJECTDELTAMESSAGE7_H_
 #define INSTALLATIONOBJECTDELTAMESSAGE7_H_
 
+//#include "engine/engine.h"
+
 #include "../../packets/DeltaMessage.h"
 
-#include "../../objects/installation/InstallationObject.h"
-#include "../../objects/installation/harvester/HarvesterObject.h"
+#include "../../objects/structure/installation/InstallationObject.h"
+#include "../../objects/structure/installation/harvester/HarvesterObject.h"
 
 class InstallationObjectDeltaMessage7 : public DeltaMessage {
-	InstallationObject* inso;
+	InstallationObject* installation;
 
 public:
-	InstallationObjectDeltaMessage7(InstallationObject* ins)
-			: DeltaMessage(ins->getObjectID(), 0x494E534F, 7) {
-		inso = ins;
+	InstallationObjectDeltaMessage7(InstallationObject* inso)
+			: DeltaMessage(inso->getObjectID(), 0x494E534F, 7) {
+		installation = inso;
 	}
 
 	void updateExtractionRate(float rate) {
@@ -67,52 +69,78 @@ public:
 		addByteUpdate(0x0C, 0);
 	}
 
-	void updateActiveResource(uint64 oid) {
+	void updateSelectedResourceID(uint64 resourceid) {
 
-		if (inso->getObjectSubType() == TangibleObjectImplementation::HARVESTER && ((HarvesterObject*)inso)->getActiveResourceID() != oid)
-			((HarvesterObject*)inso)->changeActiveResourceID(oid);
+		if (installation->isHarvester() || installation->isGenerator())
+			((HarvesterObject*)installation)->changeSelectedResourceID(resourceid);
 
-		// Active Resource
-		addLongUpdate(0x05, oid);
-		//System::out << "Adding 0x05 update for oid: " << hex << oid << endl;
-
+		addLongUpdate(0x05, resourceid); //Selected Resource ID
 	}
 
 	void updateOperating(bool state) {
-		inso->setOperating(state);
+		installation->setOperating(state);
 		addByteUpdate(0x06, state);
 	}
 
 	void updateHopper() {
-		addByteUpdate(0x0C, 1); // think about incrementing like a counter
+		addByteUpdate(0x0C, installation->getUpdateCounter() + 1);
 	}
 
 	void updateHopperSize() {
-		addFloatUpdate(0x0A, inso->getHopperSize());
+		addFloatUpdate(0x0A, installation->getHopperSize());
 	}
 
-	void updateHopperItem(uint64 rId) {
-
+	void updateHopperItem(uint64 resourceid) {
 		startUpdate(0x0D); // hopper
 		insertInt(1); // list size
-		insertInt(inso->getNewHopperUpdateCounter(1));
-		insertByte(0x02); // change
-		insertShort(0x00);
-		insertLong(rId); // ID
-		insertFloat(inso->getHopperItemQuantity(rId)); // size
+		insertInt(installation->getUpdateCounter());
+		insertByte(0x02); //change
+		insertShort(installation->getHopperItemIndex(resourceid));
+		insertLong(resourceid); // ID
+		insertFloat(installation->getHopperItemQuantity(resourceid)); // size
 	}
 
-	void addHopperItem(uint64 rId) {
+	void removeHopperItem(int index) {
+		startUpdate(0x0D);
+		insertInt(1);
+		insertInt(installation->getUpdateCounter());
+		insertByte(0x00); //remove
+		insertShort(index);
+	}
+
+	void clearHopperItems() {
+		startUpdate(0x0D);
+		insertInt(1);
+		insertInt(installation->getUpdateCounter());
+		insertByte(0x04); //clearall?
+	}
+
+	void resetHopperItemList() {
+		startUpdate(0x0D);
+		insertInt(1);
+		insertInt(installation->getUpdateCounter());
+		insertByte(0x03); //resetall
+		insertShort(installation->getHopperListSize());
+		for (int i = 0; i < installation->getHopperListSize(); i++) {
+			insertLong(installation->getHopperItemID(i));
+			insertFloat(installation->getHopperItemQuantity(i));
+		}
+	}
+
+	void addHopperItem(uint64 resourceid) {
 		startUpdate(0x0D); // hopper
-		insertInt(1); // list size
-		insertInt(inso->getNewHopperUpdateCounter(1));
-		insertByte(0x01); // add
-		insertShort(0x00);
-		insertLong(rId); // ID
-		insertFloat(inso->getHopperItemQuantity(rId)); // size
+		insertInt(1); //list size
+		insertInt(installation->getUpdateCounter());
+		insertByte(0x01); //add
+		insertShort(installation->getHopperListSize());
+		insertLong(resourceid); //resource id
+		insertFloat(floor(installation->getHopperItemQuantity(resourceid))); // size
 	}
 
-
+	void updateCondition() {
+		startUpdate(0x0E);
+		insertByte(0x00); //Condition!? of what!?
+	}
 };
 
 #endif /* INSTALLATIONOBJECTDELTAMESSAGE7_H_ */

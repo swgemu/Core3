@@ -54,8 +54,8 @@ which carries forward this exception.
 
 #include "StaticObjectImplementation.h"
 
-#include "../building/BuildingObject.h"
-#include "../building/cell/CellObject.h"
+#include "../structure/building/BuildingObject.h"
+#include "../structure/building/cell/CellObject.h"
 
 
 StaticObjectImplementation::StaticObjectImplementation(uint64 oid, int tp)

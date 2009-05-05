@@ -112,6 +112,7 @@ protected:
 	ZoneProcessServerImplementation* server;
 
 	Zone* zone;
+	int zoneID;
 
 	int objectType;
 	uint32 objectCRC;
@@ -122,8 +123,7 @@ protected:
 	String stfName;
 	String stfDetail;
 
-	int zoneID;
-
+	//TODO: What is this? Does it need to be a class member?
 	String attributeString;
 
 	CustomizationVariables customizationVariables;
@@ -133,13 +133,16 @@ protected:
 	uint32 movementCounter;
 	bool moving;
 
+	//TODO: Do we really need to use these?
 	bool persistent, updated, deleted;
 
+	//TODO: Replace this with a Quaternion representation.
 	float directionX;
 	float directionZ;
 	float directionY;
 	float directionW;
 
+	//TODO: What the hell are these used for?
 	uint8 directionAngle;
 	float precisionDirectionAngle;
 
@@ -155,10 +158,16 @@ protected:
 
 	uint64 associatedArea;
 
+	//TODO: Shouldn't this be determined by the mask
 	bool attackable;
 
+	//TODO: This needs reworking.
 	VectorMap<GroupObject*, int> groupDamageList;
 	VectorMap<ManagedReference<CreatureObject>, DamageDone*> playerDamageList;
+
+	//Every object should have owner information associated with it.
+	uint32 ownerCharacterID;
+	String ownerName;
 
 public:
 	static const int NONPLAYERCREATURE = 1;
@@ -177,9 +186,9 @@ public:
 	static const int MANUFACTURESCHEMATIC = 14;
 	static const int CAMPSITE = 15;
 	static const int INVENTORYOBJECT = 16;
-	static const int BANKINVENTORYSTORAGE = 17;
+	static const int BANKINVENTORYSTORAGE = 17; //<--- wtf it's still an inventory object...
 
-	static const int NONATTACKABLE_BITMASK = 0x1000;
+	static const int NONATTACKABLE_BITMASK = 0x1000; //If this is set, that should be enough to indicate if a create is attackable or not...
 	static const int CREO_BITMASK = 0x80;
 
 public:
@@ -263,6 +272,10 @@ public:
 	virtual void sendDestroyTo(Player* player) {
 	}
 
+	virtual void sendCustomNamePromptTo(Player* player);
+
+	virtual void updateCustomName(Player* player, const String& value);
+
 	virtual void notifyInsert(QuadTreeEntry* obj) {
 	}
 
@@ -322,6 +335,18 @@ public:
 
 	inline void increaseMovementCounter() {
 		movementCounter++;
+	}
+
+	inline virtual void setOwnerCharacterID(uint32 characterid) {
+		ownerCharacterID = characterid;
+		String attr("ownerCharacterID");
+		itemAttributes->setIntAttribute(attr, ownerCharacterID);
+	}
+
+	inline virtual void setOwnerName(const String& name) {
+		ownerName = name;
+		String attr("ownerName");
+		itemAttributes->setStringAttribute(attr, ownerName);
 	}
 
 	inline void setCustomizationString(String& cust) {
@@ -678,6 +703,14 @@ public:
 		return stfDetail;
 	}
 
+	inline uint32 getOwnerCharacterID() {
+		return ownerCharacterID;
+	}
+
+	inline String& getOwnerName() {
+		return ownerName;
+	}
+
 	inline float getPrecision(float num, int digits) {
 		float power = pow(10, digits);
 		return float(floor(num * power + .05f) / power);
@@ -794,6 +827,10 @@ public:
 
 	virtual void setPickupFlag(bool pickup) {
 		canPickup = pickup;
+	}
+
+	virtual bool isOwner(uint32 characterid) {
+		return (characterid == ownerCharacterID);
 	}
 };
 

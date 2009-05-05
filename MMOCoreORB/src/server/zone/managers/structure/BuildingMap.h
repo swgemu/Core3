@@ -46,7 +46,7 @@ which carries forward this exception.
 #define BUILDINGMAP_H_
 
 #include "engine/engine.h"
-#include "../../objects/building/BuildingObject.h"
+#include "../../objects/structure/building/BuildingObject.h"
 
 class BuildingMap : public HashTable<uint64, BuildingObject*>, public HashTableIterator<uint64, BuildingObject*> {
 

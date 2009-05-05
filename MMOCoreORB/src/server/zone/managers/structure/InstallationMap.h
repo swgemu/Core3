@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "system/lang.h"
 
-#include "../../objects/installation/InstallationObject.h"
+#include "../../objects/structure/installation/InstallationObject.h"
 
 class InstallationMap : public HashTable<uint64, ManagedReference<InstallationObject> >
 		, public HashTableIterator<uint64, ManagedReference<InstallationObject> > {

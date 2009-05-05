@@ -57,8 +57,6 @@ public:
 
 	MissionTerminal* getMissionTerminal(unsigned long long oid);
 
-	void placePlayerStructure(Player* player, unsigned long long objectID, float x, float y, int orient);
-
 	bool isNoBuildArea(float x, float y);
 
 	void addNoBuildArea(float x, float y, float radius);
@@ -116,8 +114,6 @@ public:
 	void tutorialStepStatMigration(Player* player);
 
 	MissionTerminal* getMissionTerminal(unsigned long long oid);
-
-	void placePlayerStructure(Player* player, unsigned long long objectID, float x, float y, int orient);
 
 	bool isNoBuildArea(float x, float y);
 

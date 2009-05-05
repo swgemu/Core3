@@ -45,6 +45,8 @@ public:
 
 	void setObjectName(Player* player);
 
+	void updateCustomName(Player* player, const String& value);
+
 	unsigned int getDefenderUpdateCounter();
 
 	unsigned int getNewDefenderUpdateCounter(int cnt);
@@ -245,6 +247,8 @@ public:
 
 	void setObjectName(Player* player);
 
+	void updateCustomName(Player* player, const String& value);
+
 	unsigned int getDefenderUpdateCounter();
 
 	unsigned int getNewDefenderUpdateCounter(int cnt);
@@ -412,6 +416,7 @@ public:
 	void slice(Player* slicer);
 
 protected:
+	String _param1_updateCustomName__Player_String_;
 	String _param0_setCraftersName__String_;
 	String _param0_setCraftedSerial__String_;
 	String _param0_setMisoAsocKey__String_;

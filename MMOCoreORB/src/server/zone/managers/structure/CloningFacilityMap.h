@@ -46,7 +46,7 @@ which carries forward this exception.
 
 #include "system/lang.h"
 
-#include "../../objects/building/cloningfacility/CloningFacility.h"
+#include "../../objects/structure/building/cloningfacility/CloningFacility.h"
 
 class CloningFacilityMap : public HashTable<uint64, ManagedReference<CloningFacility> >
 		, public HashTableIterator<uint64, ManagedReference<CloningFacility> >, public Mutex {

@@ -49,18 +49,13 @@ which carries forward this exception.
 
 class UpdateCellPermissionsMessage : public BaseMessage {
 public:
-    UpdateCellPermissionsMessage(uint64 coId) : BaseMessage() {
+    UpdateCellPermissionsMessage(uint64 cellid, bool allow = true)
+			: BaseMessage() {
 		insertShort(0x03); // insertShort(0x04);
 		insertInt(0xF612499C);  // CRC
 
-        insertByte(1); //0 denies, 1 allows.
-        insertLong(coId);
-
-        //setSize();
-
-		/*StringBuffer msg;
-		msg << hex << "UpdateCellPermissionsMessage [CellObjectID = " << coId << "]\n";
-		System::out << msg.toString();*/
+        insertByte((allow) ? 1 : 0); //0 denies, 1 allows.
+        insertLong(cellid);
 	}
 };
 #endif /*UPDATECELLPERMISSIONSMESSAGE_H_*/

@@ -10,7 +10,7 @@
 
 #include "../../Zone.h"
 
-#include "../building/cloningfacility/CloningFacility.h"
+#include "../structure/building/cloningfacility/CloningFacility.h"
 
 #include "../creature/CreatureObject.h"
 
@@ -67,6 +67,12 @@
 #include "faction/FactionPointList.h"
 
 #include "../area/ActiveArea.h"
+
+#include "../tangible/terminal/cloning/CloningTerminal.h"
+
+#include "../structure/building/cloningfacility/CloningFacility.h"
+
+#include "../tangible/terminal/cloning/InsuranceTerminal.h"
 
 #include "../creature/pet/CreaturePet.h"
 
@@ -5869,12 +5875,37 @@ void Player::unconsent(String& name) {
 		((PlayerImplementation*) _impl)->unconsent(name);
 }
 
-void Player::setCloningFacility(CloningFacility* facility) {
+float Player::getTotalInventoryPower() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 458);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getTotalInventoryPower();
+}
+
+void Player::subtractInventoryPower(unsigned int amount) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 459);
+		method.addUnsignedIntParameter(amount);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->subtractInventoryPower(amount);
+}
+
+void Player::setCloningFacility(CloningFacility* facility) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 460);
 		method.addObjectParameter(facility);
 
 		method.executeWithVoidReturn();
@@ -5887,7 +5918,7 @@ void Player::addConsentEntry(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 459);
+		DistributedMethod method(this, 461);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -5900,7 +5931,7 @@ void Player::removeConsentEntry(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 460);
+		DistributedMethod method(this, 462);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -5913,7 +5944,7 @@ void Player::setAcceptingBandFlourishes(bool input) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 461);
+		DistributedMethod method(this, 463);
 		method.addBooleanParameter(input);
 
 		method.executeWithVoidReturn();
@@ -5926,7 +5957,7 @@ CloningFacility* Player::getCloningFacility() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 462);
+		DistributedMethod method(this, 464);
 
 		return (CloningFacility*) method.executeWithObjectReturn();
 	} else
@@ -5938,7 +5969,7 @@ bool Player::hasConsented(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 463);
+		DistributedMethod method(this, 465);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
@@ -5951,7 +5982,7 @@ bool Player::hasConsentFrom(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 464);
+		DistributedMethod method(this, 466);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -5964,7 +5995,7 @@ unsigned int Player::getConsentListSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 465);
+		DistributedMethod method(this, 467);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -5976,7 +6007,7 @@ String& Player::getConsentEntry(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 466);
+		DistributedMethod method(this, 468);
 		method.addSignedIntParameter(index);
 
 		method.executeWithAsciiReturn(_return_getConsentEntry);
@@ -5990,7 +6021,7 @@ bool Player::isPowerboosted() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 467);
+		DistributedMethod method(this, 469);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -6002,11 +6033,36 @@ bool Player::isAcceptingBandFlourishes() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 468);
+		DistributedMethod method(this, 470);
 
 		return method.executeWithBooleanReturn();
 	} else
 		return ((PlayerImplementation*) _impl)->isAcceptingBandFlourishes();
+}
+
+bool Player::isPrivileged() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 471);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->isPrivileged();
+}
+
+bool Player::consumeLots(unsigned char lots) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 472);
+		method.addUnsignedCharParameter(lots);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->consumeLots(lots);
 }
 
 unsigned char Player::calculateIncapacitationTimer() {
@@ -6014,7 +6070,7 @@ unsigned char Player::calculateIncapacitationTimer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 469);
+		DistributedMethod method(this, 473);
 
 		return method.executeWithUnsignedCharReturn();
 	} else
@@ -6026,7 +6082,7 @@ void Player::closeSuiWindowType(unsigned int windowType) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 470);
+		DistributedMethod method(this, 474);
 		method.addUnsignedIntParameter(windowType);
 
 		method.executeWithVoidReturn();
@@ -6039,7 +6095,7 @@ void Player::displayMessageoftheDay() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 471);
+		DistributedMethod method(this, 475);
 
 		method.executeWithVoidReturn();
 	} else
@@ -6051,7 +6107,7 @@ void Player::crashClient() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 472);
+		DistributedMethod method(this, 476);
 
 		method.executeWithVoidReturn();
 	} else
@@ -6063,7 +6119,7 @@ void Player::setNumberOfCHPets(unsigned int number) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 473);
+		DistributedMethod method(this, 477);
 		method.addUnsignedIntParameter(number);
 
 		method.executeWithVoidReturn();
@@ -6076,7 +6132,7 @@ unsigned int Player::getNumberOfCHPets() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 474);
+		DistributedMethod method(this, 478);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -6088,7 +6144,7 @@ void Player::setLevelOfCHPets(unsigned int level) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 475);
+		DistributedMethod method(this, 479);
 		method.addUnsignedIntParameter(level);
 
 		method.executeWithVoidReturn();
@@ -6101,7 +6157,7 @@ unsigned int Player::getLevelOfCHPets() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 476);
+		DistributedMethod method(this, 480);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -6113,7 +6169,7 @@ void Player::setDroidCalled(bool hasDroidPet) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 477);
+		DistributedMethod method(this, 481);
 		method.addBooleanParameter(hasDroidPet);
 
 		method.executeWithVoidReturn();
@@ -6126,7 +6182,7 @@ bool Player::hasDroidCalled() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 478);
+		DistributedMethod method(this, 482);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -6138,7 +6194,7 @@ void Player::setFactionPetCalled(bool hasFactionPet) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 479);
+		DistributedMethod method(this, 483);
 		method.addBooleanParameter(hasFactionPet);
 
 		method.executeWithVoidReturn();
@@ -6151,7 +6207,7 @@ bool Player::hasFactionPetCalled() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 480);
+		DistributedMethod method(this, 484);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -6163,7 +6219,7 @@ bool Player::hasPetCalled() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 481);
+		DistributedMethod method(this, 485);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -6175,7 +6231,7 @@ void Player::registerPet(CreaturePet* pet) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 482);
+		DistributedMethod method(this, 486);
 		method.addObjectParameter(pet);
 
 		method.executeWithVoidReturn();
@@ -6188,7 +6244,7 @@ void Player::unregisterPet(CreaturePet* pet) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 483);
+		DistributedMethod method(this, 487);
 		method.addObjectParameter(pet);
 
 		method.executeWithVoidReturn();
@@ -6201,7 +6257,7 @@ void Player::sendMessageToPets(const UnicodeString& message, unsigned long long 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 484);
+		DistributedMethod method(this, 488);
 		method.addUnicodeParameter(message);
 		method.addUnsignedLongParameter(petID);
 
@@ -6215,7 +6271,7 @@ bool Player::canStoreMorePets() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 485);
+		DistributedMethod method(this, 489);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -7590,87 +7646,99 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		unconsent(inv->getAsciiParameter(_param0_unconsent__String_));
 		break;
 	case 458:
-		setCloningFacility((CloningFacility*) inv->getObjectParameter());
+		resp->insertFloat(getTotalInventoryPower());
 		break;
 	case 459:
-		addConsentEntry(inv->getAsciiParameter(_param0_addConsentEntry__String_));
+		subtractInventoryPower(inv->getUnsignedIntParameter());
 		break;
 	case 460:
-		removeConsentEntry(inv->getAsciiParameter(_param0_removeConsentEntry__String_));
+		setCloningFacility((CloningFacility*) inv->getObjectParameter());
 		break;
 	case 461:
-		setAcceptingBandFlourishes(inv->getBooleanParameter());
+		addConsentEntry(inv->getAsciiParameter(_param0_addConsentEntry__String_));
 		break;
 	case 462:
-		resp->insertLong(getCloningFacility()->_getObjectID());
+		removeConsentEntry(inv->getAsciiParameter(_param0_removeConsentEntry__String_));
 		break;
 	case 463:
-		resp->insertBoolean(hasConsented(inv->getAsciiParameter(_param0_hasConsented__String_)));
+		setAcceptingBandFlourishes(inv->getBooleanParameter());
 		break;
 	case 464:
-		resp->insertBoolean(hasConsentFrom((Player*) inv->getObjectParameter()));
+		resp->insertLong(getCloningFacility()->_getObjectID());
 		break;
 	case 465:
-		resp->insertInt(getConsentListSize());
+		resp->insertBoolean(hasConsented(inv->getAsciiParameter(_param0_hasConsented__String_)));
 		break;
 	case 466:
-		resp->insertAscii(getConsentEntry(inv->getSignedIntParameter()));
+		resp->insertBoolean(hasConsentFrom((Player*) inv->getObjectParameter()));
 		break;
 	case 467:
-		resp->insertBoolean(isPowerboosted());
+		resp->insertInt(getConsentListSize());
 		break;
 	case 468:
-		resp->insertBoolean(isAcceptingBandFlourishes());
+		resp->insertAscii(getConsentEntry(inv->getSignedIntParameter()));
 		break;
 	case 469:
-		resp->insertByte(calculateIncapacitationTimer());
+		resp->insertBoolean(isPowerboosted());
 		break;
 	case 470:
-		closeSuiWindowType(inv->getUnsignedIntParameter());
+		resp->insertBoolean(isAcceptingBandFlourishes());
 		break;
 	case 471:
-		displayMessageoftheDay();
+		resp->insertBoolean(isPrivileged());
 		break;
 	case 472:
-		crashClient();
+		resp->insertBoolean(consumeLots(inv->getUnsignedCharParameter()));
 		break;
 	case 473:
-		setNumberOfCHPets(inv->getUnsignedIntParameter());
+		resp->insertByte(calculateIncapacitationTimer());
 		break;
 	case 474:
-		resp->insertInt(getNumberOfCHPets());
+		closeSuiWindowType(inv->getUnsignedIntParameter());
 		break;
 	case 475:
-		setLevelOfCHPets(inv->getUnsignedIntParameter());
+		displayMessageoftheDay();
 		break;
 	case 476:
-		resp->insertInt(getLevelOfCHPets());
+		crashClient();
 		break;
 	case 477:
-		setDroidCalled(inv->getBooleanParameter());
+		setNumberOfCHPets(inv->getUnsignedIntParameter());
 		break;
 	case 478:
-		resp->insertBoolean(hasDroidCalled());
+		resp->insertInt(getNumberOfCHPets());
 		break;
 	case 479:
-		setFactionPetCalled(inv->getBooleanParameter());
+		setLevelOfCHPets(inv->getUnsignedIntParameter());
 		break;
 	case 480:
-		resp->insertBoolean(hasFactionPetCalled());
+		resp->insertInt(getLevelOfCHPets());
 		break;
 	case 481:
-		resp->insertBoolean(hasPetCalled());
+		setDroidCalled(inv->getBooleanParameter());
 		break;
 	case 482:
-		registerPet((CreaturePet*) inv->getObjectParameter());
+		resp->insertBoolean(hasDroidCalled());
 		break;
 	case 483:
-		unregisterPet((CreaturePet*) inv->getObjectParameter());
+		setFactionPetCalled(inv->getBooleanParameter());
 		break;
 	case 484:
-		sendMessageToPets(inv->getUnicodeParameter(_param0_sendMessageToPets__UnicodeString_long_), inv->getUnsignedLongParameter());
+		resp->insertBoolean(hasFactionPetCalled());
 		break;
 	case 485:
+		resp->insertBoolean(hasPetCalled());
+		break;
+	case 486:
+		registerPet((CreaturePet*) inv->getObjectParameter());
+		break;
+	case 487:
+		unregisterPet((CreaturePet*) inv->getObjectParameter());
+		break;
+	case 488:
+		sendMessageToPets(inv->getUnicodeParameter(_param0_sendMessageToPets__UnicodeString_long_), inv->getUnsignedLongParameter());
+		break;
+	case 489:
 		resp->insertBoolean(canStoreMorePets());
 		break;
 	default:
@@ -9488,6 +9556,14 @@ void PlayerAdapter::unconsent(String& name) {
 	return ((PlayerImplementation*) impl)->unconsent(name);
 }
 
+float PlayerAdapter::getTotalInventoryPower() {
+	return ((PlayerImplementation*) impl)->getTotalInventoryPower();
+}
+
+void PlayerAdapter::subtractInventoryPower(unsigned int amount) {
+	return ((PlayerImplementation*) impl)->subtractInventoryPower(amount);
+}
+
 void PlayerAdapter::setCloningFacility(CloningFacility* facility) {
 	return ((PlayerImplementation*) impl)->setCloningFacility(facility);
 }
@@ -9530,6 +9606,14 @@ bool PlayerAdapter::isPowerboosted() {
 
 bool PlayerAdapter::isAcceptingBandFlourishes() {
 	return ((PlayerImplementation*) impl)->isAcceptingBandFlourishes();
+}
+
+bool PlayerAdapter::isPrivileged() {
+	return ((PlayerImplementation*) impl)->isPrivileged();
+}
+
+bool PlayerAdapter::consumeLots(unsigned char lots) {
+	return ((PlayerImplementation*) impl)->consumeLots(lots);
 }
 
 unsigned char PlayerAdapter::calculateIncapacitationTimer() {

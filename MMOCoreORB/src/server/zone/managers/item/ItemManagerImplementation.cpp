@@ -54,6 +54,7 @@ which carries forward this exception.
 #include "../creature/CreatureManager.h"
 
 #include "../loot/LootManager.h"
+#include "../resource/ResourceHarvestType.h"
 
 #include "ItemManagerImplementation.h"
 #include "../../objects/creature/skills/CamoSkill.h"
@@ -464,32 +465,16 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(Player* pl
 	}  else if (objecttype & TangibleObjectImplementation::DEED) {
 		switch (objecttype) {
 			case TangibleObjectImplementation::INSTALLATIONDEED:
-				switch(DeedObjectImplementation::getSubType(objectcrc)){
-					case TangibleObjectImplementation::HARVESTER:
-						item = new HarvesterDeed(objectid, objectcrc, objectname, objecttemp);
-						break;
-					case TangibleObjectImplementation::FACTORY:
-						item = new FactoryDeed(objectid, objectcrc, objectname, objecttemp);
-						break;
-					case TangibleObjectImplementation::GENERATOR:
-						item = new GeneratorDeed(objectid, objectcrc, objectname, objecttemp);
-						break;
-					case TangibleObjectImplementation::TURRET:
-						break;
-					case TangibleObjectImplementation::MINEFIELD:
-						break;
-					case TangibleObjectImplementation::PETDEED:
-						break;
-				}
+				item = new InstallationDeed(objectid, objectcrc, objectname, objecttemp);
 				break;
 			case TangibleObjectImplementation::BUILDINGDEED:
-				item = new PlayerHouseDeed(objectid, objectcrc, objectname, objecttemp);
+				item = new BuildingDeed(objectid, objectcrc, objectname, objecttemp);
 				break;
 			case TangibleObjectImplementation::PETDEED:
-
+				item = new PetDeed(objectid, objectcrc, objectname, objecttemp);
 				break;
 			case TangibleObjectImplementation::DROIDDEED:
-
+				item = new DroidDeed(objectid, objectcrc, objectname, objecttemp);
 				break;
 			case TangibleObjectImplementation::VEHICLEDEED:
 				item = new VehicleDeed(objectid, objectcrc, objectname, objecttemp);
@@ -868,15 +853,15 @@ TangibleObject* ItemManagerImplementation::initializeTangibleForCrafting(Player*
 TangibleObject* ItemManagerImplementation::clonePlayerObjectTemplate(uint64 objectid, TangibleObject* templ) {
 
 	if (templ == NULL)
-	{
 		return NULL;
-	}
+
 	//the name is passed in a hackish way to stop buffer overflows.. anyone know why it was doing that?
 	TangibleObject* newTempl = createPlayerObjectTemplate(NULL, templ->getObjectSubType(),
 			objectid, templ->getObjectCRC(), UnicodeString(templ->getCustomName()),
 			(char *) templ->getStfName().toCharArray(), templ->isEquipped(), false, "", 0);
 
 	newTempl->setStfFile(templ->getStfFile());
+	newTempl->setStfName(templ->getStfName());
 
 	newTempl->setAttributes(templ->getAttributes());
 	newTempl->parseItemAttributes();
@@ -901,7 +886,11 @@ void ItemManagerImplementation::registerFunctions() {
 }
 
 void ItemManagerImplementation::registerGlobals() {
-	//Object Types
+	//Scene Object Types
+	setGlobalInt("BUILDING", SceneObjectImplementation::BUILDING);
+	setGlobalInt("TANGIBLE", SceneObjectImplementation::TANGIBLE);
+
+	//Tangible Object Sub Types
 	setGlobalInt("CAMOKIT", TangibleObjectImplementation::CAMOKIT);
 	setGlobalInt("HAIR", TangibleObjectImplementation::HAIR);
 	setGlobalInt("TERMINAL", TangibleObjectImplementation::TERMINAL);
@@ -1039,6 +1028,14 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("SKIRT", TangibleObjectImplementation::SKIRT);
 	setGlobalInt("ITHOGARB", TangibleObjectImplementation::ITHOGARB);
 
+	//Installations
+	setGlobalInt("INSTALLATION", TangibleObjectImplementation::INSTALLATION);
+	setGlobalInt("HARVESTER", TangibleObjectImplementation::HARVESTER);
+	setGlobalInt("FACTORY", TangibleObjectImplementation::FACTORY);
+	setGlobalInt("GENERATOR", TangibleObjectImplementation::GENERATOR);
+	setGlobalInt("TURRET", TangibleObjectImplementation::TURRET);
+	setGlobalInt("MINEFIELD", TangibleObjectImplementation::MINEFIELD);
+
 	//Armor Piercing
 	setGlobalInt("WEAPON_NONE", WeaponImplementation::NONE);
 	setGlobalInt("WEAPON_LIGHT", WeaponImplementation::LIGHT);
@@ -1165,6 +1162,17 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("MOLECULARCLAMP", ToolImplementation::MOLECULARCLAMP);
 	setGlobalInt("ARMORKIT", UpgradeKitImplementation::ARMORKIT);
 	setGlobalInt("WEAPONKIT", UpgradeKitImplementation::WEAPONKIT);
+
+	//Resource Harvest Types
+	setGlobalInt("RESOURCETYPE_SOLAR", ResourceHarvestType::SOLAR);
+	setGlobalInt("RESOURCETYPE_CHEMICAL", ResourceHarvestType::CHEMICAL);
+	setGlobalInt("RESOURCETYPE_FLORA", ResourceHarvestType::FLORA);
+	setGlobalInt("RESOURCETYPE_GAS", ResourceHarvestType::GAS);
+	setGlobalInt("RESOURCETYPE_GEOTHERMAL", ResourceHarvestType::GEOTHERMAL);
+	setGlobalInt("RESOURCETYPE_MINERAL", ResourceHarvestType::MINERAL);
+	setGlobalInt("RESOURCETYPE_WATER", ResourceHarvestType::WATER);
+	setGlobalInt("RESOURCETYPE_WIND", ResourceHarvestType::WIND);
+	setGlobalInt("RESOURCETYPE_FUSION", ResourceHarvestType::FUSION);
 }
 
 int ItemManagerImplementation::runItemLUAFile(lua_State* L) {
@@ -1269,85 +1277,78 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 			weapon->setCert(cert);
 
 	} else if (type & TangibleObjectImplementation::DEED) {
+		DeedObject* deed = (DeedObject*) item;
 
-		//System::out << "type & TangibleObjectImplementation::DEED" << endl;
+		String stfname = itemconfig.getStringField("stfName");
+		String targetstffile = itemconfig.getStringField("targetStfFile");
+		String targetstfname = itemconfig.getStringField("targetStfName");
+		String targetobjfile = itemconfig.getStringField("targetObjectFile");
+		uint32 targetobjtype = itemconfig.getIntField("targetObjectType");
+		uint32 targetsubtype = itemconfig.getIntField("targetObjectSubType");
 
-		int surplusMaintenance = 0;
-		float maintenanceRate = 0;
-		int surplusPower = 0;
-		float extractionRate = 0;
-		float hopperSize = 0;
+		deed->setStfName(stfname);
+		deed->setTargetStfFile(targetstffile);
+		deed->setTargetStfName(targetstfname);
+		deed->setTargetObjectFile(targetobjfile);
+		deed->setTargetObjectType(targetobjtype);
+		deed->setTargetObjectSubType(targetsubtype);
 
+		if (deed->isInstallationDeed()) {
+			InstallationDeed* installationdeed = (InstallationDeed*) deed;
 
-		switch (type) {
-			case TangibleObjectImplementation::INSTALLATIONDEED:
-				switch(DeedObjectImplementation::getSubType(crc)){
-					case TangibleObjectImplementation::HARVESTER:
-					{
-						//System::out << "type & TangibleObjectImplementation::DEED & harvester!!!!" << endl;
+			float maintenancerate = itemconfig.getFloatField("maintenanceRate");
+			float powerrate = itemconfig.getFloatField("powerRate");
+			float ber = itemconfig.getFloatField("baseExtractionRate");
+			float hopper = itemconfig.getFloatField("hopperSizeMax");
 
-						surplusMaintenance = itemconfig.getIntField("surplusMaintenance");
-						maintenanceRate = itemconfig.getFloatField("maintenanceRate");
-						surplusPower = itemconfig.getIntField("surplusPower");
-						extractionRate = itemconfig.getFloatField("extractionRate");
-						hopperSize = itemconfig.getFloatField("hopperSize");
+			uint32 constructioncrc = itemconfig.getIntField("targetConstructionObjectCRC");
+			uint32 surplusmaint = itemconfig.getIntField("surplusMaintenance");
+			uint32 surpluspower = itemconfig.getIntField("surplusPower");
+			uint32 conditionmax = itemconfig.getIntField("conditionMax");
+			uint32 reclaimfee = itemconfig.getIntField("reclaimFee");
 
-						//System::out << "surplusMaintenance: " << surplusMaintenance << ", maintainanceRate: "
-						//<< maintenanceRate << ", surplusPower: " << surplusPower << ", extractionRate: "
-						//<< extractionRate << ", hopperSize: " << hopperSize << endl;
+			uint8 harvestertype = itemconfig.getIntField("harvesterType");
+			uint8 lotsize = itemconfig.getByteField("lotSize");
 
+			installationdeed->setMaintenanceRate(maintenancerate);
+			installationdeed->setPowerRate(powerrate);
+			installationdeed->setBaseExtractionRate(ber);
+			installationdeed->setHopperSizeMax(hopper);
+			installationdeed->setTargetConstructionObjectCRC(constructioncrc);
+			installationdeed->setSurplusMaintenance(surplusmaint);
+			installationdeed->setSurplusPower(surpluspower);
+			installationdeed->setTargetConditionMax(conditionmax);
+			installationdeed->setReclaimFee(reclaimfee);
+			installationdeed->setLotSize(lotsize);
+			installationdeed->setHarvesterType(harvestertype);
 
-						HarvesterDeed* harv = (HarvesterDeed*) item;
-						harv->setSurplusMaintenance(surplusMaintenance);
-						harv->setMaintenanceRate(maintenanceRate);
-						harv->setSurplusPower(surplusPower);
-						harv->setExtractionRate(extractionRate);
-						harv->setHopperSize(hopperSize);
+		} else if (deed->isBuildingDeed()) {
+			BuildingDeed* buildingdeed = (BuildingDeed*) deed;
 
-						break;
-					}
-					case TangibleObjectImplementation::FACTORY:
-					{
-						surplusMaintenance = itemconfig.getIntField("surplusMaintenance");
-						maintenanceRate = itemconfig.getFloatField("maintenanceRate");
-						surplusPower = itemconfig.getIntField("surplusPower");
-						hopperSize = itemconfig.getFloatField("hopperSize");
+			float maintenancerate = itemconfig.getFloatField("maintenanceRate");
 
-						FactoryDeed* fact = (FactoryDeed*) item;
-						fact->setSurplusMaintenance(surplusMaintenance);
-						fact->setMaintenanceRate(maintenanceRate);
-						fact->setSurplusPower(surplusPower);
-						fact->setHopperSize(hopperSize);
-						break;
-					}
-					case TangibleObjectImplementation::GENERATOR:
-					{
-						surplusMaintenance = itemconfig.getIntField("surplusMaintenance");
-						maintenanceRate = itemconfig.getFloatField("maintenanceRate");
-						extractionRate = itemconfig.getFloatField("extractionRate");
-						hopperSize = itemconfig.getFloatField("hopperSize");
+			uint32 constructioncrc = itemconfig.getIntField("targetConstructionObjectCRC");
+			uint32 surplusmaint = itemconfig.getIntField("surplusMaintenance");
+			uint32 conditionmax = itemconfig.getIntField("conditionMax");
+			uint32 reclaimfee = itemconfig.getIntField("reclaimFee");
 
-						GeneratorDeed* gen = (GeneratorDeed*) item;
-						gen->setSurplusMaintenance(surplusMaintenance);
-						gen->setMaintenanceRate(maintenanceRate);
-						gen->setExtractionRate(extractionRate);
-						gen->setHopperSize(hopperSize);
-						break;
-					}
-					case TangibleObjectImplementation::TURRET:
-						break;
-					case TangibleObjectImplementation::MINEFIELD:
-						break;
-				}
-				break;
-			case TangibleObjectImplementation::BUILDINGDEED:
-				break;
-			case TangibleObjectImplementation::PETDEED:
-				break;
-			case TangibleObjectImplementation::DROIDDEED:
-				break;
-			case TangibleObjectImplementation::VEHICLEDEED:
-				break;
+			uint8 lotsize = itemconfig.getByteField("lotSize");
+
+			buildingdeed->setMaintenanceRate(maintenancerate);
+			buildingdeed->setTargetConstructionObjectCRC(constructioncrc);
+			buildingdeed->setSurplusMaintenance(surplusmaint);
+			buildingdeed->setTargetConditionMax(conditionmax);
+			buildingdeed->setReclaimFee(reclaimfee);
+			buildingdeed->setLotSize(lotsize);
+
+		} else if (deed->isDroidDeed()) {
+
+		} else if (deed->isPetDeed()) {
+
+		} else if (deed->isVehicleDeed()) {
+
+		} else if (deed->isResourceDeed()) {
+
 		}
 	} else if (type == TangibleObjectImplementation::PHARMACEUTICAL) {
 		int medpackType = itemconfig.getIntField("medpackType");
@@ -2807,8 +2808,8 @@ void ItemManagerImplementation::loadStructurePlayerItems(Player* player, uint64 
 	if (building == NULL)
 		return;
 
-	if (!building->getStorageLoaded())
-		loadContainersInStructures(player, building, cellSCO );
+	//if (!building->getStorageLoaded())
+		//loadContainersInStructures(player, building, cellSCO );
 }
 
 void ItemManagerImplementation::loadContainersInStructures(Player* player, BuildingObject* building, SceneObject* cell) {
@@ -2906,7 +2907,7 @@ void ItemManagerImplementation::loadContainersInStructures(Player* player, Build
 			}
 		}
 
-		building->setStorageLoaded(true);
+		//building->setStorageLoaded(true);
 
 		delete result;
 

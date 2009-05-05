@@ -8,8 +8,6 @@
 
 #include "../TangibleObject.h"
 
-#include "../../../packets.h"
-
 #include "../../player/Player.h"
 
 #include "../../creature/CreatureObject.h"
@@ -20,18 +18,18 @@
  *	DeedObjectStub
  */
 
-DeedObject::DeedObject(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new DeedObjectImplementation(creature, tempCRC, n, tempn);
+DeedObject::DeedObject(CreatureObject* creature, unsigned int objcrc, const UnicodeString& customname, const String& stfname) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new DeedObjectImplementation(creature, objcrc, customname, stfname);
 	_impl->_setStub(this);
 }
 
-DeedObject::DeedObject(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new DeedObjectImplementation(oid, tempCRC, n, tempn);
+DeedObject::DeedObject(unsigned long long objid, unsigned int objcrc, const UnicodeString& customname, const String& stfname) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new DeedObjectImplementation(objid, objcrc, customname, stfname);
 	_impl->_setStub(this);
 }
 
-DeedObject::DeedObject(unsigned long long oid, int tp) : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new DeedObjectImplementation(oid, tp);
+DeedObject::DeedObject(unsigned long long objid) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new DeedObjectImplementation(objid);
 	_impl->_setStub(this);
 }
 
@@ -41,77 +39,12 @@ DeedObject::DeedObject(DummyConstructorParameter* param) : TangibleObject(param)
 DeedObject::~DeedObject() {
 }
 
-UnicodeString& DeedObject::getTargetName() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 6);
-
-		method.executeWithUnicodeReturn(_return_getTargetName);
-		return _return_getTargetName;
-	} else
-		return ((DeedObjectImplementation*) _impl)->getTargetName();
-}
-
-String& DeedObject::getTargetFile() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 7);
-
-		method.executeWithAsciiReturn(_return_getTargetFile);
-		return _return_getTargetFile;
-	} else
-		return ((DeedObjectImplementation*) _impl)->getTargetFile();
-}
-
-String& DeedObject::getTargetTemplate() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 8);
-
-		method.executeWithAsciiReturn(_return_getTargetTemplate);
-		return _return_getTargetTemplate;
-	} else
-		return ((DeedObjectImplementation*) _impl)->getTargetTemplate();
-}
-
-void DeedObject::setTargetFile(String& path) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
-		method.addAsciiParameter(path);
-
-		method.executeWithVoidReturn();
-	} else
-		((DeedObjectImplementation*) _impl)->setTargetFile(path);
-}
-
-String& DeedObject::getTargetTempFile() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 10);
-
-		method.executeWithAsciiReturn(_return_getTargetTempFile);
-		return _return_getTargetTempFile;
-	} else
-		return ((DeedObjectImplementation*) _impl)->getTargetTempFile();
-}
-
 int DeedObject::useObject(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 6);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -119,67 +52,291 @@ int DeedObject::useObject(Player* player) {
 		return ((DeedObjectImplementation*) _impl)->useObject(player);
 }
 
-void DeedObject::generateAttributes(SceneObject* obj) {
+SceneObject* DeedObject::generateObject(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addObjectParameter(player);
+
+		return (SceneObject*) method.executeWithObjectReturn();
+	} else
+		return ((DeedObjectImplementation*) _impl)->generateObject(player);
+}
+
+void DeedObject::parseItemAttributes() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		method.executeWithVoidReturn();
+	} else
+		((DeedObjectImplementation*) _impl)->parseItemAttributes();
+}
+
+void DeedObject::setTargetStfFile(const String& stffile) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addAsciiParameter(stffile);
+
+		method.executeWithVoidReturn();
+	} else
+		((DeedObjectImplementation*) _impl)->setTargetStfFile(stffile);
+}
+
+void DeedObject::setTargetStfName(const String& stfname) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addAsciiParameter(stfname);
+
+		method.executeWithVoidReturn();
+	} else
+		((DeedObjectImplementation*) _impl)->setTargetStfName(stfname);
+}
+
+void DeedObject::setTargetObjectFile(const String& objfile) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addAsciiParameter(objfile);
+
+		method.executeWithVoidReturn();
+	} else
+		((DeedObjectImplementation*) _impl)->setTargetObjectFile(objfile);
+}
+
+void DeedObject::setTargetCustomName(const UnicodeString& customname) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 12);
-		method.addObjectParameter(obj);
+		method.addUnicodeParameter(customname);
 
 		method.executeWithVoidReturn();
 	} else
-		((DeedObjectImplementation*) _impl)->generateAttributes(obj);
+		((DeedObjectImplementation*) _impl)->setTargetCustomName(customname);
 }
 
-int DeedObject::getHarvesterType() {
+void DeedObject::setTargetObjectType(unsigned int type) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 13);
+		method.addUnsignedIntParameter(type);
 
-		return method.executeWithSignedIntReturn();
+		method.executeWithVoidReturn();
 	} else
-		return ((DeedObjectImplementation*) _impl)->getHarvesterType();
+		((DeedObjectImplementation*) _impl)->setTargetObjectType(type);
 }
 
-String& DeedObject::getDefaultTemplateName(int crc) {
+void DeedObject::setTargetObjectSubType(unsigned int subtype) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 14);
-		method.addSignedIntParameter(crc);
+		method.addUnsignedIntParameter(subtype);
 
-		method.executeWithAsciiReturn(_return_getDefaultTemplateName);
-		return _return_getDefaultTemplateName;
+		method.executeWithVoidReturn();
 	} else
-		return ((DeedObjectImplementation*) _impl)->getDefaultTemplateName(crc);
+		((DeedObjectImplementation*) _impl)->setTargetObjectSubType(subtype);
 }
 
-int DeedObject::getLotSize() {
+String& DeedObject::getTargetStfFile() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 15);
 
-		return method.executeWithSignedIntReturn();
+		method.executeWithAsciiReturn(_return_getTargetStfFile);
+		return _return_getTargetStfFile;
 	} else
-		return ((DeedObjectImplementation*) _impl)->getLotSize();
+		return ((DeedObjectImplementation*) _impl)->getTargetStfFile();
 }
 
-int DeedObject::getSize() {
+String& DeedObject::getTargetStfName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 16);
 
-		return method.executeWithSignedIntReturn();
+		method.executeWithAsciiReturn(_return_getTargetStfName);
+		return _return_getTargetStfName;
 	} else
-		return ((DeedObjectImplementation*) _impl)->getSize();
+		return ((DeedObjectImplementation*) _impl)->getTargetStfName();
+}
+
+String& DeedObject::getTargetObjectFile() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+
+		method.executeWithAsciiReturn(_return_getTargetObjectFile);
+		return _return_getTargetObjectFile;
+	} else
+		return ((DeedObjectImplementation*) _impl)->getTargetObjectFile();
+}
+
+UnicodeString& DeedObject::getTargetCustomName() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+
+		method.executeWithUnicodeReturn(_return_getTargetCustomName);
+		return _return_getTargetCustomName;
+	} else
+		return ((DeedObjectImplementation*) _impl)->getTargetCustomName();
+}
+
+unsigned int DeedObject::getTargetObjectCRC() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((DeedObjectImplementation*) _impl)->getTargetObjectCRC();
+}
+
+unsigned int DeedObject::getTargetObjectType() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((DeedObjectImplementation*) _impl)->getTargetObjectType();
+}
+
+unsigned int DeedObject::getTargetObjectSubType() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((DeedObjectImplementation*) _impl)->getTargetObjectSubType();
+}
+
+bool DeedObject::isInstallationDeed() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((DeedObjectImplementation*) _impl)->isInstallationDeed();
+}
+
+bool DeedObject::isBuildingDeed() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((DeedObjectImplementation*) _impl)->isBuildingDeed();
+}
+
+bool DeedObject::isPetDeed() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((DeedObjectImplementation*) _impl)->isPetDeed();
+}
+
+bool DeedObject::isDroidDeed() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 25);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((DeedObjectImplementation*) _impl)->isDroidDeed();
+}
+
+bool DeedObject::isVehicleDeed() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 26);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((DeedObjectImplementation*) _impl)->isVehicleDeed();
+}
+
+bool DeedObject::isResourceDeed() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 27);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((DeedObjectImplementation*) _impl)->isResourceDeed();
+}
+
+unsigned char DeedObject::getLotSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
+
+		return method.executeWithUnsignedCharReturn();
+	} else
+		return ((DeedObjectImplementation*) _impl)->getLotSize();
+}
+
+unsigned int DeedObject::getTargetConstructionObjectCRC() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 29);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((DeedObjectImplementation*) _impl)->getTargetConstructionObjectCRC();
 }
 
 /*
@@ -194,37 +351,76 @@ Packet* DeedObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		resp->insertUnicode(getTargetName());
-		break;
-	case 7:
-		resp->insertAscii(getTargetFile());
-		break;
-	case 8:
-		resp->insertAscii(getTargetTemplate());
-		break;
-	case 9:
-		setTargetFile(inv->getAsciiParameter(_param0_setTargetFile__String_));
-		break;
-	case 10:
-		resp->insertAscii(getTargetTempFile());
-		break;
-	case 11:
 		resp->insertSignedInt(useObject((Player*) inv->getObjectParameter()));
 		break;
+	case 7:
+		resp->insertLong(generateObject((Player*) inv->getObjectParameter())->_getObjectID());
+		break;
+	case 8:
+		parseItemAttributes();
+		break;
+	case 9:
+		setTargetStfFile(inv->getAsciiParameter(_param0_setTargetStfFile__String_));
+		break;
+	case 10:
+		setTargetStfName(inv->getAsciiParameter(_param0_setTargetStfName__String_));
+		break;
+	case 11:
+		setTargetObjectFile(inv->getAsciiParameter(_param0_setTargetObjectFile__String_));
+		break;
 	case 12:
-		generateAttributes((SceneObject*) inv->getObjectParameter());
+		setTargetCustomName(inv->getUnicodeParameter(_param0_setTargetCustomName__UnicodeString_));
 		break;
 	case 13:
-		resp->insertSignedInt(getHarvesterType());
+		setTargetObjectType(inv->getUnsignedIntParameter());
 		break;
 	case 14:
-		resp->insertAscii(getDefaultTemplateName(inv->getSignedIntParameter()));
+		setTargetObjectSubType(inv->getUnsignedIntParameter());
 		break;
 	case 15:
-		resp->insertSignedInt(getLotSize());
+		resp->insertAscii(getTargetStfFile());
 		break;
 	case 16:
-		resp->insertSignedInt(getSize());
+		resp->insertAscii(getTargetStfName());
+		break;
+	case 17:
+		resp->insertAscii(getTargetObjectFile());
+		break;
+	case 18:
+		resp->insertUnicode(getTargetCustomName());
+		break;
+	case 19:
+		resp->insertInt(getTargetObjectCRC());
+		break;
+	case 20:
+		resp->insertInt(getTargetObjectType());
+		break;
+	case 21:
+		resp->insertInt(getTargetObjectSubType());
+		break;
+	case 22:
+		resp->insertBoolean(isInstallationDeed());
+		break;
+	case 23:
+		resp->insertBoolean(isBuildingDeed());
+		break;
+	case 24:
+		resp->insertBoolean(isPetDeed());
+		break;
+	case 25:
+		resp->insertBoolean(isDroidDeed());
+		break;
+	case 26:
+		resp->insertBoolean(isVehicleDeed());
+		break;
+	case 27:
+		resp->insertBoolean(isResourceDeed());
+		break;
+	case 28:
+		resp->insertByte(getLotSize());
+		break;
+	case 29:
+		resp->insertInt(getTargetConstructionObjectCRC());
 		break;
 	default:
 		return NULL;
@@ -233,48 +429,100 @@ Packet* DeedObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
-UnicodeString& DeedObjectAdapter::getTargetName() {
-	return ((DeedObjectImplementation*) impl)->getTargetName();
-}
-
-String& DeedObjectAdapter::getTargetFile() {
-	return ((DeedObjectImplementation*) impl)->getTargetFile();
-}
-
-String& DeedObjectAdapter::getTargetTemplate() {
-	return ((DeedObjectImplementation*) impl)->getTargetTemplate();
-}
-
-void DeedObjectAdapter::setTargetFile(String& path) {
-	return ((DeedObjectImplementation*) impl)->setTargetFile(path);
-}
-
-String& DeedObjectAdapter::getTargetTempFile() {
-	return ((DeedObjectImplementation*) impl)->getTargetTempFile();
-}
-
 int DeedObjectAdapter::useObject(Player* player) {
 	return ((DeedObjectImplementation*) impl)->useObject(player);
 }
 
-void DeedObjectAdapter::generateAttributes(SceneObject* obj) {
-	return ((DeedObjectImplementation*) impl)->generateAttributes(obj);
+SceneObject* DeedObjectAdapter::generateObject(Player* player) {
+	return ((DeedObjectImplementation*) impl)->generateObject(player);
 }
 
-int DeedObjectAdapter::getHarvesterType() {
-	return ((DeedObjectImplementation*) impl)->getHarvesterType();
+void DeedObjectAdapter::parseItemAttributes() {
+	return ((DeedObjectImplementation*) impl)->parseItemAttributes();
 }
 
-String& DeedObjectAdapter::getDefaultTemplateName(int crc) {
-	return ((DeedObjectImplementation*) impl)->getDefaultTemplateName(crc);
+void DeedObjectAdapter::setTargetStfFile(const String& stffile) {
+	return ((DeedObjectImplementation*) impl)->setTargetStfFile(stffile);
 }
 
-int DeedObjectAdapter::getLotSize() {
+void DeedObjectAdapter::setTargetStfName(const String& stfname) {
+	return ((DeedObjectImplementation*) impl)->setTargetStfName(stfname);
+}
+
+void DeedObjectAdapter::setTargetObjectFile(const String& objfile) {
+	return ((DeedObjectImplementation*) impl)->setTargetObjectFile(objfile);
+}
+
+void DeedObjectAdapter::setTargetCustomName(const UnicodeString& customname) {
+	return ((DeedObjectImplementation*) impl)->setTargetCustomName(customname);
+}
+
+void DeedObjectAdapter::setTargetObjectType(unsigned int type) {
+	return ((DeedObjectImplementation*) impl)->setTargetObjectType(type);
+}
+
+void DeedObjectAdapter::setTargetObjectSubType(unsigned int subtype) {
+	return ((DeedObjectImplementation*) impl)->setTargetObjectSubType(subtype);
+}
+
+String& DeedObjectAdapter::getTargetStfFile() {
+	return ((DeedObjectImplementation*) impl)->getTargetStfFile();
+}
+
+String& DeedObjectAdapter::getTargetStfName() {
+	return ((DeedObjectImplementation*) impl)->getTargetStfName();
+}
+
+String& DeedObjectAdapter::getTargetObjectFile() {
+	return ((DeedObjectImplementation*) impl)->getTargetObjectFile();
+}
+
+UnicodeString& DeedObjectAdapter::getTargetCustomName() {
+	return ((DeedObjectImplementation*) impl)->getTargetCustomName();
+}
+
+unsigned int DeedObjectAdapter::getTargetObjectCRC() {
+	return ((DeedObjectImplementation*) impl)->getTargetObjectCRC();
+}
+
+unsigned int DeedObjectAdapter::getTargetObjectType() {
+	return ((DeedObjectImplementation*) impl)->getTargetObjectType();
+}
+
+unsigned int DeedObjectAdapter::getTargetObjectSubType() {
+	return ((DeedObjectImplementation*) impl)->getTargetObjectSubType();
+}
+
+bool DeedObjectAdapter::isInstallationDeed() {
+	return ((DeedObjectImplementation*) impl)->isInstallationDeed();
+}
+
+bool DeedObjectAdapter::isBuildingDeed() {
+	return ((DeedObjectImplementation*) impl)->isBuildingDeed();
+}
+
+bool DeedObjectAdapter::isPetDeed() {
+	return ((DeedObjectImplementation*) impl)->isPetDeed();
+}
+
+bool DeedObjectAdapter::isDroidDeed() {
+	return ((DeedObjectImplementation*) impl)->isDroidDeed();
+}
+
+bool DeedObjectAdapter::isVehicleDeed() {
+	return ((DeedObjectImplementation*) impl)->isVehicleDeed();
+}
+
+bool DeedObjectAdapter::isResourceDeed() {
+	return ((DeedObjectImplementation*) impl)->isResourceDeed();
+}
+
+unsigned char DeedObjectAdapter::getLotSize() {
 	return ((DeedObjectImplementation*) impl)->getLotSize();
 }
 
-int DeedObjectAdapter::getSize() {
-	return ((DeedObjectImplementation*) impl)->getSize();
+unsigned int DeedObjectAdapter::getTargetConstructionObjectCRC() {
+	return ((DeedObjectImplementation*) impl)->getTargetConstructionObjectCRC();
 }
 
 /*
@@ -312,15 +560,15 @@ DistributedObjectAdapter* DeedObjectHelper::createAdapter(DistributedObjectStub*
  *	DeedObjectServant
  */
 
-DeedObjectServant::DeedObjectServant(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn, int tp) : TangibleObjectImplementation(creature, tempCRC, n, tempn, tp) {
+DeedObjectServant::DeedObjectServant(CreatureObject* creature, unsigned int objcrc, const UnicodeString& customname, const String& stfname, int tp) : TangibleObjectImplementation(creature, objcrc, customname, stfname, tp) {
 	_classHelper = DeedObjectHelper::instance();
 }
 
-DeedObjectServant::DeedObjectServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp) : TangibleObjectImplementation(oid, tempCRC, n, tempn, tp) {
+DeedObjectServant::DeedObjectServant(unsigned long long objid, unsigned int objcrc, const UnicodeString& customname, const String& stfname, int tp) : TangibleObjectImplementation(objid, objcrc, customname, stfname, tp) {
 	_classHelper = DeedObjectHelper::instance();
 }
 
-DeedObjectServant::DeedObjectServant(unsigned long long oid, int tp) : TangibleObjectImplementation(oid, tp) {
+DeedObjectServant::DeedObjectServant(unsigned long long objid, int tp) : TangibleObjectImplementation(objid, tp) {
 	_classHelper = DeedObjectHelper::instance();
 }
 

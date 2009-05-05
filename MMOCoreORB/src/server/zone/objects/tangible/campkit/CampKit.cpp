@@ -12,7 +12,7 @@
 
 #include "../TangibleObject.h"
 
-#include "../../building/BuildingObject.h"
+#include "../../structure/building/BuildingObject.h"
 
 #include "../../area/CampActiveArea.h"
 

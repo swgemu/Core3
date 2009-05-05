@@ -122,6 +122,10 @@ public:
 	static const int CAMP_INFO = 51;
 
 	static const int FACTORY_SCHEMATIC = 52;
+
+
+	static const int STRUCTURE_DESTROY = 55;
+	static const int STRUCTURE_DESTROY_CODE = 56;
 };
 
 #endif /*SuiWindowType_H_*/

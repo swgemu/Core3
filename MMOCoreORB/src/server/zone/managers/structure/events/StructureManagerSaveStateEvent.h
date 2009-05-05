@@ -54,7 +54,7 @@ class StructureManagerSaveStateEvent : public Event {
 	ManagedReference<StructureManager> structureManager;
 
 public:
-	StructureManagerSaveStateEvent(StructureManager* sm) : Event(300000) {
+	StructureManagerSaveStateEvent(StructureManager* sm) : Event() {
 		structureManager = sm;
 
 		setKeeping(true);
@@ -69,38 +69,26 @@ public:
 
 	bool activate() {
 		if (structureManager == NULL) {
-			System::out << "Error in StructureManagerSaveStateEvent::activate=>structureManager is NULL";
+			System::out << "Error in StructureManagerSaveStateEvent::activate() structureManager is NULL";
 			return false;
 		}
 
-		ManagedReference<StructureManager> sm = structureManager;
-
-		structureManager = NULL;
-
 		try {
-			sm->info("StructureManagerSaveStateEvent::activate");
+			structureManager->info("StructureManagerSaveStateEvent::activate");
 
-			sm->wlock();
+			structureManager->wlock();
 
-			sm->saveStructures(true);
-			sm->info("StructureManagerSaveStateEvent::activate, saved");
+			structureManager->saveStructures(true);
 
-			sm->unlock();
+			structureManager->unlock();
 		} catch (...) {
-			sm->error("unreported Exception caught in StructureManagerSaveStateEvent::activate");
+			structureManager->error("unreported Exception caught in StructureManagerSaveStateEvent::activate");
 
-			sm->unlock();
+			structureManager->unlock();
 		}
-
-		sm = NULL;
 
 		return true;
 	}
-
-	void setStructureManager(StructureManager* sm) {
-		structureManager = sm;
-	}
-
 };
 
 

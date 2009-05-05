@@ -47,19 +47,16 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/installation/InstallationObject.h"
+#include "../../objects/structure/installation/InstallationObject.h"
 
 class InstallationObjectMessage6 : public BaseLineMessage {
 public:
-	InstallationObjectMessage6(InstallationObject * inso)
-			: BaseLineMessage(inso->getObjectID(), 0x494E534F, 6, 0x05) {
+	InstallationObjectMessage6(InstallationObject* installation)
+			: BaseLineMessage(installation->getObjectID(), 0x494E534F, 6, 0x05) {
 
-		//insertShort(0x02); // opcount
-		//insertInt(0); // ??
 		insertInt(0x62); // ??
-		insertInt(0); // defender list?
-		insertInt(0); // update counter
-		//{ insertInt(0); // defender id? }
+		insertInt(0); //Defenders
+		insertInt(0); //Defender Update Counter
 
 		setSize();
 	}

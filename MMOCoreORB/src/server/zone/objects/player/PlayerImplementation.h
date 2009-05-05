@@ -129,6 +129,7 @@ class PlayerImplementation : public PlayerServant {
 	String firstName;
 	String lastName;
 
+	//TODO: Deprecate
 	String firstNameProper;
 
 	String raceFile; //race iff, defines the race file of the character being created.
@@ -209,14 +210,17 @@ class PlayerImplementation : public PlayerServant {
 	SortedVector<ChatRoom*> chatRooms;
 
 
-	//guild permissions
+	//guild permissions - Again, this should probably be stored in the Guild object...
 	uint32 guildPermissionsBitmask;
 
+	//huh? what is this
 	float clonePositionX;
 	float clonePositionY;
 
+	//HMMM. I think this should actually be a string maybe...
 	int regionId;
 
+	//Cant this be stored in the players Guild object...
 	bool guildLeader;
 
 	bool centered;
@@ -260,11 +264,14 @@ class PlayerImplementation : public PlayerServant {
 	// Entertainer - Dance + Music
 	Event* entertainerEvent;
 
+	//TODO: This might be possible to include in the players vector of waypoints, rather than having a null one sitting around.
 	// Survey Methods
 	WaypointObject* surveyWaypoint;
 	ManagedReference<SurveyTool> surveyTool;
 	ManagedReference<SurveyTool> sampleTool;
+	//TODO: Hmmm......
 	bool cancelSample;
+	//TODO: Is this necessary?
 	bool surveyErrorMessage;
 	bool sampleErrorMessage;
 
@@ -274,8 +281,10 @@ class PlayerImplementation : public PlayerServant {
 	String inputBoxReturnBuffer;
 	SuiListBoxVector* suiChoicesList;
 
+	//TODO: This needs to be deprecated
 	uint64 resourceDeedID;
 
+	//TODO: I dont think we really need this...
 	uint64 currentStructureID;
 
 	//npc conversation
@@ -283,7 +292,7 @@ class PlayerImplementation : public PlayerServant {
 	String lastNpcConvo;
 	Vector<String> lastNpcConvoOptions;
 
-	// Stat Migration Targets
+	// Stat Migration Targets - TODO: Convert this to be an array like the other attributes?
 	uint32 migrationHealth;
 	uint32 migrationStrength;
 	uint32 migrationConstitution;
@@ -298,6 +307,7 @@ class PlayerImplementation : public PlayerServant {
 
 	uint16 characterMask;
 
+	//TODO: sigh....
 	bool imagedesignXpGiven;
 
 	Vector<SkillBox*> teachingSkillList;
@@ -308,7 +318,9 @@ class PlayerImplementation : public PlayerServant {
 	ActiveArea * activeArea;
 	Badges * badges;
 
+	//TODO: Remove this...
 	CampSite* camp;
+
 	//Cloning
 	CloningFacility* cloningFacility;
 
@@ -326,6 +338,7 @@ public:
 	static const int LOGGINGOUT = 5;
 	static const int LOADING = 6;
 
+	//TODO: Change this to use only PLAYER, CSR, DEVELOPER because they are the only client side perms.
 	static const int CSR = 1;
 	static const int DEVELOPER = 2;
 	static const int ADMIN = CSR | DEVELOPER;
@@ -357,7 +370,7 @@ public:
 	static const int REBEL = 0x4000;
 	static const int COVERT = 0x8000;
 
-	//Guild permission statics
+	//Guild permission statics - WTF IS THIS??
 	const static int GUILDMAIL = 1;
 	const static int GUILDSPONSOR = 2;
 	const static int GUILDTITLE = 4;
@@ -2084,6 +2097,9 @@ public:
 	void consent(Player* playerTarget);
 	void unconsent(const String& name);
 
+	float getTotalInventoryPower();
+	void subtractInventoryPower(uint32 amount);
+
 	void cancelRecoveryEvent();
 
 	void crashClient();
@@ -2135,6 +2151,20 @@ public:
 
 	inline bool isPowerboosted() {
 		return powerboosted;
+	}
+
+	///Returns true if the player's adminlevel is greater than 0 (which should correspond to a normal player instead of 4).
+	inline bool isPrivileged() {
+		//TODO: Remove The NORMAL check after permissions are addressed.
+		return (playerObject->getAdminLevel() > 0 && playerObject->getAdminLevel() != NORMAL);
+	}
+
+	inline bool consumeLots(uint8 lots) {
+		if (lotsRemaining < lots)
+			return false;
+
+		setLotsRemaining(lotsRemaining - lots);
+		return true;
 	}
 
 	inline void setNumberOfCHPets(uint8 number) {

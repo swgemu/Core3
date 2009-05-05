@@ -24,7 +24,7 @@
 
 #include "../player/Player.h"
 
-#include "../building/BuildingObject.h"
+#include "../structure/building/BuildingObject.h"
 
 #include "../creature/Creature.h"
 

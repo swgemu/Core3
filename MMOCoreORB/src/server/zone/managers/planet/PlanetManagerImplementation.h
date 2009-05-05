@@ -206,8 +206,6 @@ public:
 
 	uint64 getNextStaticObjectID(bool doLock = true);
 
-	void placePlayerStructure(Player * player, uint64 objectID, float x, float y, int orient);
-
 	inline uint32 getTravelFare(String departurePlanet, String arrivalPlanet) {
 		return travelFare[Planet::getPlanetID(departurePlanet)][Planet::getPlanetID(arrivalPlanet)];
 	}

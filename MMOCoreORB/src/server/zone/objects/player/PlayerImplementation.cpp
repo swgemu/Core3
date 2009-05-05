@@ -1162,6 +1162,7 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 			BuildingObject* building = (BuildingObject*) parent->getParent();
 			insertToBuilding(building);
 
+			/* TODO: This shouldn't ever really happen neways...
 			if (!building->getStorageLoaded()) {
 				ZoneServer* zserver = zone->getZoneServer();
 				ItemManager* itemManager = zserver->getItemManager();
@@ -1171,7 +1172,7 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 				itemManager->loadStructurePlayerItems(_this, parent->getObjectID());
 
 				zone->lock();
-			}
+			}*/
 		} else {
 			zone->insert(this);
 			zone->inRange(this, 128);
@@ -5898,6 +5899,72 @@ bool PlayerImplementation::migrateStats() {
 		playerManager->updatePlayerBaseHAMToDatabase(_this);
 
 	return true;
+}
+
+
+float PlayerImplementation::getTotalInventoryPower() {
+	float totalpower = 0.0f;
+
+	for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
+		SceneObject* object = inventory->getObject(i);
+
+		if (object != NULL && object->isTangible()) {
+			TangibleObject* tangible = (TangibleObject*) object;
+
+			if (tangible->isResource()) {
+				ResourceContainer* rcno = (ResourceContainer*) tangible;
+
+				if (rcno->isEnergy()) {
+					//Calculate the resources power potential.
+					uint32 pe = rcno->getPotentialEnergy();
+					float modifier = (pe > 500) ? (((float) (pe - 500)) / 500.0f) + 1.0f : 1.0f;
+					totalpower += (modifier * ((float) rcno->getContents()));
+				}
+			}
+		}
+	}
+
+	return floor(totalpower);
+}
+
+void PlayerImplementation::subtractInventoryPower(uint32 amount) {
+	if (amount <= 0)
+		return;
+
+	for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
+		SceneObject* object = inventory->getObject(i);
+
+		if (object != NULL && object->isTangible()) {
+			TangibleObject* tangible = (TangibleObject*) object;
+
+			if (tangible->isResource()) {
+				ResourceContainer* rcno = (ResourceContainer*) tangible;
+
+				if (rcno->isEnergy()) {
+					//Calculate the resources power potential.
+					uint32 pe = rcno->getPotentialEnergy();
+					float modifier = (pe > 500) ? (((float) (pe - 500)) / 500.0f) + 1.0f : 1.0f;
+					float containerpower = (modifier * ((float) rcno->getContents()));
+
+					if (containerpower > amount) {
+						//This container is enough to satisfy the cost.
+						containerpower -= amount;
+						float newcontents = floor(containerpower / modifier);
+						newcontents = (newcontents < 0) ? 0 : newcontents;
+						rcno->setContents((uint32) newcontents);
+						rcno->sendDeltas(_this);
+						return;
+					} else {
+						//We are going to need to remove this container totally and go to the next.
+						amount -= containerpower;
+						removeInventoryItem(rcno);
+						rcno->sendDestroyTo(_this);
+						rcno->finalize();
+					}
+				}
+			}
+		}
+	}
 }
 
 

@@ -9,27 +9,23 @@
 
 class DeedObject;
 
-class TangibleObject;
-
-class packets;
+class CreatureObject;
 
 class Player;
 
-class CreatureObject;
-
-class ObjectMenuResponse;
+class SceneObject;
 
 #include "../DeedObject.h"
 
 class ResourceDeed : public DeedObject {
 public:
-	ResourceDeed(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn);
+	ResourceDeed(CreatureObject* creature, int objcrc, const UnicodeString& customname, const String& stfname);
 
-	ResourceDeed(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn);
+	ResourceDeed(unsigned long long objid, int objcrc, const UnicodeString& customname, const String& stfname);
 
 	int useObject(Player* player);
 
-	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
+	SceneObject* generateObject(Player* player);
 
 	void destroyDeed(Player* player);
 
@@ -51,7 +47,7 @@ public:
 
 	int useObject(Player* player);
 
-	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
+	SceneObject* generateObject(Player* player);
 
 	void destroyDeed(Player* player);
 
@@ -79,8 +75,8 @@ public:
 	ResourceDeed* _this;
 
 public:
-	ResourceDeedServant(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
-	ResourceDeedServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
+	ResourceDeedServant(CreatureObject* creature, int objcrc, const UnicodeString& customname, const String& stfname);
+	ResourceDeedServant(unsigned long long objid, int objcrc, const UnicodeString& customname, const String& stfname);
 	virtual ~ResourceDeedServant();
 
 	void _setStub(DistributedObjectStub* stub);

@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../../packets/DeltaMessage.h"
 
-#include "../../objects/installation/InstallationObject.h"
+#include "../../objects/structure/installation/InstallationObject.h"
 
 class InstallationObjectDeltaMessage3 : public DeltaMessage {
 	InstallationObject* inso;
@@ -56,6 +56,11 @@ public:
 	InstallationObjectDeltaMessage3(InstallationObject* ins)
 			: DeltaMessage(ins->getObjectID(), 0x494E534F, 3) {
 		inso = ins;
+	}
+
+	void updateName(const String& name) {
+		inso->setCustomName(name);
+		addUnicodeUpdate(2, name);
 	}
 
 	void updateDamage(uint32 value) {

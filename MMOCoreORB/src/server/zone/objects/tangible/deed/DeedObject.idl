@@ -43,41 +43,54 @@ which carries forward this exception.
 */
 
 import "../TangibleObject";
-import "../../../packets";
 import "../../player/Player";
 import "../../creature/CreatureObject";
 import "../../scene/SceneObject";
 	
 interface DeedObject implements TangibleObject {
-	DeedObject(CreatureObject creature, int tempCRC, const UnicodeString n, const String tempn) {
-		super(creature, tempCRC, n, tempn, int tp);
+	DeedObject(CreatureObject creature, unsigned int objcrc, const UnicodeString customname, const String stfname) {
+		super(creature, objcrc, customname, stfname, int tp);
 	}
-	DeedObject(unsigned long oid, int tempCRC, const UnicodeString n, const String tempn)  {
-		super(oid, tempCRC, n, tempn, int tp);
+	DeedObject(unsigned long objid, unsigned int objcrc, const UnicodeString customname, const String stfname)  {
+		super(objid, objcrc, customname, stfname, int tp);
 	}
 
-	DeedObject(unsigned long oid, int tp)  {
-		super(oid, tp);
+	DeedObject(unsigned long objid)  {
+		super(objid, int tp);
 	}
 	
-	UnicodeString getTargetName();
-
-	String getTargetFile();
-
-	String getTargetTemplate();
-
-	void setTargetFile(String path);
-	
-	String getTargetTempFile();
-
 	int useObject(Player player);
-	void generateAttributes(SceneObject obj);
-		
-	int getHarvesterType();
 	
-	String getDefaultTemplateName(int crc);
+	SceneObject generateObject(Player player);
 	
-	int getLotSize();
-	int getSize();
+	void parseItemAttributes();
+	
+	//Setters
+	void setTargetStfFile(const String stffile);
+	void setTargetStfName(const String stfname);
+	void setTargetObjectFile(const String objfile);
+	void setTargetCustomName(const UnicodeString customname);
+	void setTargetObjectType(unsigned int type);
+	void setTargetObjectSubType(unsigned int subtype);
+	
+	//Getters
+	String getTargetStfFile();
+	String getTargetStfName();
+	String getTargetObjectFile();
+	UnicodeString getTargetCustomName();
+	unsigned int getTargetObjectCRC();
+	unsigned int getTargetObjectType();
+	unsigned int getTargetObjectSubType();
+	
+	boolean isInstallationDeed();
+	boolean isBuildingDeed();
+	boolean isPetDeed();
+	boolean isDroidDeed();
+	boolean isVehicleDeed();
+	boolean isResourceDeed();
+	
+	//Virtual methods which get overridden
+	unsigned char getLotSize();
+	unsigned int getTargetConstructionObjectCRC();
 }
 

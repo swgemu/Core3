@@ -9,23 +9,15 @@
 
 #include "../../../../managers/item/ItemManager.h"
 
-ResourceDeedImplementation::ResourceDeedImplementation(CreatureObject* creature, uint32 tempcrc, const UnicodeString& n, const String& tempn)
-	: ResourceDeedServant(creature, tempcrc, n, tempn, DEED) {
+ResourceDeedImplementation::ResourceDeedImplementation(CreatureObject* creature, uint32 objcrc, const UnicodeString& customname, const String& stfname)
+		: ResourceDeedServant(creature, objcrc, customname, stfname) {
 
-	objectID = creature->getNewItemID();
-	objectCRC = tempcrc;
-	customName = n;
-	stfName = tempn;
 	init();
 }
 
-ResourceDeedImplementation::ResourceDeedImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn)
-	: ResourceDeedServant(objid, tempcrc, n, tempn, DEED) {
+ResourceDeedImplementation::ResourceDeedImplementation(uint64 objid, uint32 objcrc, const UnicodeString& customname, const String& stfname)
+		: ResourceDeedServant(objid, objcrc, customname, stfname) {
 
-	objectID = objid;
-	objectCRC = tempcrc;
-	customName = n;
-	stfName = tempn;
 	init();
 }
 
@@ -34,24 +26,13 @@ ResourceDeedImplementation::~ResourceDeedImplementation() {
 }
 
 void ResourceDeedImplementation::init() {
+	objectSubType = RESOURCEDEED;
 
-	//deedSubType = DEED;
-	objectSubType = DEED;
-
+	setTargetStfFile(""); //TODO: What file are the resource names in.
 }
 
 void ResourceDeedImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
-	//TODO:Cell permission check
-	if (_this->getParent() != NULL) {
-		bool cellPermission = true;
-
-		if (_this->getParent()->isCell() && cellPermission) {
-			if (_this->isTangible())
-			omr->addRadialParent(10, 3, "@ui_radial:item_pickup");
-		}
-	}
-
-	omr->addRadialParent(20, 3, "@ui_radial:item_use");
+	//omr->addRadialParent(20, 3, "@ui_radial:item_use");
 
 	omr->finish();
 
@@ -75,6 +56,10 @@ int ResourceDeedImplementation::useObject(Player* player) {
 	player->sendMessage(sui1->generateMessage());
 
 	return 1;
+}
+
+SceneObject* ResourceDeedImplementation::generateObject(Player* player) {
+	return NULL;
 }
 
 void ResourceDeedImplementation::destroyDeed(Player* player) {

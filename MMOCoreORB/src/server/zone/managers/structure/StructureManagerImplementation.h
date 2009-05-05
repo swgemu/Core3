@@ -57,7 +57,7 @@ which carries forward this exception.
 #include "../../objects/tangible/deed/DeedObject.h"
 #include "../../objects/tangible/deed/DeedObjectImplementation.h"
 
-#include "../../objects/building/cloningfacility/CloningFacility.h"
+#include "../../objects/structure/building/cloningfacility/CloningFacility.h"
 
 #include "CellMap.h"
 #include "BuildingMap.h"
@@ -69,11 +69,9 @@ which carries forward this exception.
 
 class ZoneServer;
 class ZoneProcessServerImplementation;
+
 class StructureManagerSaveStateEvent;
-class InstallationSpawnEvent;
-class InstallationDespawnEvent;
-class TempInstallationSpawnEvent;
-class TempInstallationDespawnEvent;
+class StructureMaintenanceEvent;
 
 class Player;
 class PlayerImplementation;
@@ -89,17 +87,24 @@ class StructureManagerImplementation : public StructureManagerServant, public Lo
 	CloningFacilityMap* cloningFacilityMap;
 
 	StructureManagerSaveStateEvent* structureManagerSaveStateEvent;
+	StructureMaintenanceEvent* structureMaintenanceEvent;
 
-	InstallationSpawnEvent* installationSpawnEvent;
-	InstallationDespawnEvent* installationDespawnEvent;
-	TempInstallationSpawnEvent* tempInstallationSpawnEvent;
-	TempInstallationDespawnEvent* tempInstallationDespawnEvent;
+	void init();
+
 public:
 	StructureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* serv);
 	~StructureManagerImplementation();
 
-	void init();
-	void initializeEvents();
+	//Cleanup mode.
+	void serialize();
+	void deserialize();
+
+	void beginConstruction(Player* player, DeedObject* deed, float x, float z, uint8 orient = 0);
+	void endConstruction(Player* player, DeedObject* deed, float x, float z, uint8 orient = 0);
+	void createInstallation(Player* player, InstallationObject* installation, bool staticobject = false);
+	void createBuilding(Player* player, BuildingObject* building, bool staticobject = false);
+
+	void deleteStructure(SceneObject* structure);
 
 	void loadStructures();
 	void unloadStructures();
@@ -110,7 +115,7 @@ public:
 	void clearBuildings();
 	void clearInstallations();
 
-	void saveStructures(bool doSchedule = false);
+	void saveStructures(bool reschedule = false);
 	void saveBuildings();
 	void saveInstallations();
 
@@ -135,12 +140,6 @@ public:
 	}
 
 	CloningFacility* getClosestCloningFacility(Player* player);
-
-	// Player Installations
-	void spawnTempStructure(Player *player, DeedObject *deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-	void spawnInstallation(Player *player, DeedObject *deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-	void spawnHarvester(Player *player, DeedObject *deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-	void spawnFactory(Player *player, DeedObject *deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 
 	void createInstallation(InstallationObject *inso);
 	void saveInstallation(InstallationObject *inso);

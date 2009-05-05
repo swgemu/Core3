@@ -49,7 +49,7 @@ include "engine/service/Message";
 import "../../player/Player";
 
 import "../TangibleObject";
-import "../../building/BuildingObject";
+import "../../structure/building/BuildingObject";
 import "../../area/CampActiveArea";
 interface CampKit implements TangibleObject {
 	CampKit(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn) {

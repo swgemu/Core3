@@ -212,29 +212,12 @@ MissionTerminal* PlanetManager::getMissionTerminal(unsigned long long oid) {
 		return ((PlanetManagerImplementation*) _impl)->getMissionTerminal(oid);
 }
 
-void PlanetManager::placePlayerStructure(Player* player, unsigned long long objectID, float x, float y, int orient) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 20);
-		method.addObjectParameter(player);
-		method.addUnsignedLongParameter(objectID);
-		method.addFloatParameter(x);
-		method.addFloatParameter(y);
-		method.addSignedIntParameter(orient);
-
-		method.executeWithVoidReturn();
-	} else
-		((PlanetManagerImplementation*) _impl)->placePlayerStructure(player, objectID, x, y, orient);
-}
-
 bool PlanetManager::isNoBuildArea(float x, float y) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 20);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
 
@@ -248,7 +231,7 @@ void PlanetManager::addNoBuildArea(float x, float y, float radius) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 21);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
 		method.addFloatParameter(radius);
@@ -263,7 +246,7 @@ void PlanetManager::weatherUpdatePlayers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 22);
 
 		method.executeWithVoidReturn();
 	} else
@@ -275,7 +258,7 @@ void PlanetManager::weatherChange() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 23);
 
 		method.executeWithVoidReturn();
 	} else
@@ -287,7 +270,7 @@ void PlanetManager::weatherRemoveEvents() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 24);
 
 		method.executeWithVoidReturn();
 	} else
@@ -299,7 +282,7 @@ ActiveAreaTrigger* PlanetManager::spawnActiveArea(ActiveArea* area) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 25);
 		method.addObjectParameter(area);
 
 		return (ActiveAreaTrigger*) method.executeWithObjectReturn();
@@ -312,7 +295,7 @@ void PlanetManager::removeActiveAreaTrigger(ActiveAreaTrigger* trigger) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 26);
 		method.addObjectParameter(trigger);
 
 		method.executeWithVoidReturn();
@@ -374,27 +357,24 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertLong(getMissionTerminal(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 20:
-		placePlayerStructure((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter());
-		break;
-	case 21:
 		resp->insertBoolean(isNoBuildArea(inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
-	case 22:
+	case 21:
 		addNoBuildArea(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
-	case 23:
+	case 22:
 		weatherUpdatePlayers();
 		break;
-	case 24:
+	case 23:
 		weatherChange();
 		break;
-	case 25:
+	case 24:
 		weatherRemoveEvents();
 		break;
-	case 26:
+	case 25:
 		resp->insertLong(spawnActiveArea((ActiveArea*) inv->getObjectParameter())->_getObjectID());
 		break;
-	case 27:
+	case 26:
 		removeActiveAreaTrigger((ActiveAreaTrigger*) inv->getObjectParameter());
 		break;
 	default:
@@ -458,10 +438,6 @@ void PlanetManagerAdapter::tutorialStepStatMigration(Player* player) {
 
 MissionTerminal* PlanetManagerAdapter::getMissionTerminal(unsigned long long oid) {
 	return ((PlanetManagerImplementation*) impl)->getMissionTerminal(oid);
-}
-
-void PlanetManagerAdapter::placePlayerStructure(Player* player, unsigned long long objectID, float x, float y, int orient) {
-	return ((PlanetManagerImplementation*) impl)->placePlayerStructure(player, objectID, x, y, orient);
 }
 
 bool PlanetManagerAdapter::isNoBuildArea(float x, float y) {

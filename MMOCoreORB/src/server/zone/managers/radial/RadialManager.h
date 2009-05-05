@@ -86,14 +86,6 @@ public:
 	void handleVehicleRepair(SceneObject* obj);
 	void handleRemovePowerup(Player* player, SceneObject* obj);
 
-	// Installation radial handling
-	void handleManageHarvester(Player* player, SceneObject* obj);
-	void handleStructureStatus(Player* player, SceneObject* obj);
-	void handleStructureDestroy(Player* player, SceneObject* obj);
-	void handleSetName(Player* player, SceneObject* obj);
-	void handleStructureManageMaintenance(Player* player, SceneObject* obj);
-	void handleStructureAddEnergy(Player* player, SceneObject* obj);
-
 	void sendRadialResponseForVehicleDeed(Player* player, VehicleDeed* deed, ObjectMenuResponse* omr);
 
 	void handleOpenCraftingToolHopper(Player* player, SceneObject* obj);
@@ -134,13 +126,18 @@ public:
 	//Insurance
 	void handleInsureAllItems(Player* player, SceneObject* obj);
 
+	void handleSetObjectName(Player* player, SceneObject* obj);
 
 	//Structure Terminal
-	void handleStructurePermissionList(Player* player, SceneObject* obj, uint8 listtype);
+	void handleManageHarvester(Player* player, SceneObject* obj);
+	void handleStructurePermissionList(Player* player, SceneObject* obj, const String& listname);
 	void handleStructurePrivacy(Player* player, SceneObject* obj);
 	void handleStructureTransferRequest(Player* player, SceneObject* obj);
+	void handleStructureStatus(Player* player, SceneObject* obj);
+	void handleStructureDestroy(Player* player, SceneObject* obj);
 	void handleStructureDeclareResidence(Player* player, SceneObject* obj);
 	void handleStructurePayMaintenance(Player* player, SceneObject* obj);
+	void handleStructureDepositPower(Player* player, SceneObject* obj);
 	void handleStructureCreateVendor(Player* player, SceneObject* obj);
 	void handleGiveVendorMaintenance(Player* player, SceneObject* obj);
 

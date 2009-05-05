@@ -40,20 +40,23 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("objects/deed/houses/mediumNabooHouseDeed.lua");
-RunItemLUAFile("objects/deed/harvesters/oreS2HarvesterDeed.lua");
-RunItemLUAFile("objects/deed/generators/fusionGeneratorDeed.lua");
-RunItemLUAFile("objects/deed/factories/structureFactoryDeed.lua");
-
 -- Vehicles
-RunItemLUAFile("objects/deed/vehicles/jetpackVehicleDeed.lua");
---RunItemLUAFile("objects/deed/vehicles/landspeederAV21VehicleDeed.lua");
-RunItemLUAFile("objects/deed/vehicles/landspeederX31VehicleDeed.lua");
-RunItemLUAFile("objects/deed/vehicles/landspeederX34VehicleDeed.lua");
+RunItemLUAFile("objects/deed/vehicledeeds/jetpackVehicleDeed.lua");
+--RunItemLUAFile("objects/deed/vehicledeeds/landspeederAV21VehicleDeed.lua");
+RunItemLUAFile("objects/deed/vehicledeeds/landspeederX31VehicleDeed.lua");
+RunItemLUAFile("objects/deed/vehicledeeds/landspeederX34VehicleDeed.lua");
 
-RunItemLUAFile("objects/deed/vehicles/speederbikeVehicleDeed.lua");
-RunItemLUAFile("objects/deed/vehicles/speederbikeSwoopVehicleDeed.lua");
-RunItemLUAFile("objects/deed/vehicles/speederbikeFlashVehicleDeed.lua");
+RunItemLUAFile("objects/deed/vehicledeeds/speederbikeVehicleDeed.lua");
+RunItemLUAFile("objects/deed/vehicledeeds/speederbikeSwoopVehicleDeed.lua");
+RunItemLUAFile("objects/deed/vehicledeeds/speederbikeFlashVehicleDeed.lua");
 
 -- Crate of Resources
-RunItemLUAFile("objects/deed/resources/resourceDeed.lua");
+RunItemLUAFile("objects/deed/resourcedeeds/resourceDeed.lua");
+
+
+RunItemLUAFile("objects/deed/installationdeeds/main.lua");
+--RunItemLUAFile("objects/deed/buildingdeeds/main.lua");
+--RunItemLUAFile("objects/deed/droiddeeds/main.lua");
+--RunItemLUAFile("objects/deed/petdeeds/main.lua");
+--RunItemLUAFile("objects/deed/vehicledeeds/main.lua");
+--RunItemLUAFile("objects/deed/resourcedeeds/main.lua");

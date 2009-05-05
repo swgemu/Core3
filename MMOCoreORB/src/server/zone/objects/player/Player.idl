@@ -50,7 +50,7 @@ include "professions/SkillBox";
 import "../../ZoneClientSession";
 import "../../Zone";
 
-import "../building/cloningfacility/CloningFacility";
+import "../structure/building/cloningfacility/CloningFacility";
 
 import "../creature/CreatureObject";
 import "../creature/Creature";
@@ -91,6 +91,11 @@ import "badges/Badges";
 
 import "faction/FactionPointList";
 import "../area/ActiveArea";
+
+import "../tangible/terminal/cloning/CloningTerminal";
+import "../structure/building/cloningfacility/CloningFacility";
+
+import "../tangible/terminal/cloning/InsuranceTerminal";
 
 import "../creature/pet/CreaturePet";
 
@@ -792,7 +797,8 @@ interface Player implements CreatureObject {
 	boolean cashTip(Player recipient, unsigned int amount);
 	void consent(Player playerTarget);
 	void unconsent(String name);
-
+	float getTotalInventoryPower();
+	void subtractInventoryPower(unsigned int amount);
 
 	//Setters
 	void setCloningFacility(CloningFacility facility);
@@ -808,6 +814,8 @@ interface Player implements CreatureObject {
 	String getConsentEntry(int index);
 	boolean isPowerboosted();
 	boolean isAcceptingBandFlourishes();
+	boolean isPrivileged();
+	boolean consumeLots(unsigned char lots);
 
 	//Calculations
 	unsigned char calculateIncapacitationTimer();

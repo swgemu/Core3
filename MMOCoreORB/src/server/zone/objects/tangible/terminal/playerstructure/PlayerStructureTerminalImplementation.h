@@ -57,7 +57,7 @@ public:
 
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 
-	void sendPermissionListTo(Player* player, uint8 listtype);
+	void sendPermissionListTo(Player* player, const String& listname);
 };
 
 #endif /* PLAYERSTRUCTURETERMINALIMPLEMENTATION_H_ */
