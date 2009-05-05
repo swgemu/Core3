@@ -232,6 +232,10 @@ private:
 	String getCurrentNameFromType(String type);
 
 	void getHarvestingType(CreatureObject* creatureObj, String& harvestType, int& harvestAmount, int type);
+
+	uint64 getNextResourceID() {
+		return nextResourceID++;
+	}
 };
 
 #include "../../objects/player/sui/listbox/SuiListBoxVector.h"
