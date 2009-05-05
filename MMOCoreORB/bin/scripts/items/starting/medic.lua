@@ -70,7 +70,7 @@ medic_wookie_female_items = { }
 
 -------------------Medic Items (All Species)--------------------
 
-general_medic_items = {cdef_pistol, survival_knife}
+general_medic_items = {cdefPistol, survivalKnife}
 
 createItemsFromList("medic", "humanoid", "male", medic_humanoid_male_items)
 createItemsFromList("medic", "humanoid", "female", medic_humanoid_female_items)

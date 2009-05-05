@@ -71,7 +71,7 @@ entertainer_wookie_female_items = { }
 -------------------Entertainer Items (All Species)--------------------
 
 
-general_entertainer_items = {cdef_pistol, survival_knife, slitherhorn}
+general_entertainer_items = {cdefPistol, survivalKnife, slitherhorn}
 
 createItemsFromList("entertainer", "humanoid", "male", entertainer_humanoid_male_items)
 createItemsFromList("entertainer", "humanoid", "female", entertainer_humanoid_female_items)

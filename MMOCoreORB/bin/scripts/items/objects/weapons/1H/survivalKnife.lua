@@ -41,7 +41,7 @@
 --which carries forward this exception.
 
 
-survival_knife = Weapon:new{
+survivalKnife = Weapon:new{
 
 	objectName = "Survival Knife",
 

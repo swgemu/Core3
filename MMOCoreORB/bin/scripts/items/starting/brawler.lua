@@ -71,7 +71,7 @@ brawler_wookie_female_items = { }
 
 -------------------Brawler Items (All Species)--------------------
 
-general_brawler_items = {survival_knife}
+general_brawler_items = {survivalKnife}
 
 createItemsFromList("brawler", "humanoid", "male", brawler_humanoid_male_items)
 createItemsFromList("brawler", "humanoid", "female", brawler_humanoid_female_items)
