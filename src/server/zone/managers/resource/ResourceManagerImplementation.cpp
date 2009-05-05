@@ -147,6 +147,8 @@ void ResourceManagerImplementation::init() {
 	resourceMap = new VectorMap<String, ResourceSpawn*>();
 	resourceMap->setNullValue(NULL);
 
+	nextResourceID = 20000000;
+
 	resourceIDNameMap = new VectorMap<uint64, String>();
 	//resourceIDNameMap->setNullValue(NULL);
 
@@ -1374,6 +1376,9 @@ void ResourceManagerImplementation::buildResourceMap() {
 					tempSpawn->setName(resname);
 					tempSpawn->setObjectID(res->getUnsignedLong(0));
 
+					if(nextResourceID < tempSpawn->getObjectID())
+						nextResourceID = tempSpawn->getObjectID() + 1;
+
 					tempSpawn->setClass1(res->getString(3));
 					tempSpawn->setClass2(res->getString(4));
 					tempSpawn->setClass3(res->getString(5));
@@ -1801,7 +1806,8 @@ String ResourceManagerImplementation::getRandomResourceFromType(String restype, 
 	return "";
 }
 
-void ResourceManagerImplementation::createResource(String restype, String pool, bool jtl) {
+void ResourceManagerImplementation::createResource(String restype, String pool,
+		bool jtl) {
 	numFunctions++;
 
 	String resname;
@@ -1809,11 +1815,11 @@ void ResourceManagerImplementation::createResource(String restype, String pool, 
 	int spawnZone, therand, thex, they, numplanets, numspawns;
 
 	ResourceSpawn* resource = new ResourceSpawn(restype);
-	resource->setObjectID(server->getNextID());
+	resource->setObjectID(getNextResourceID());
 
 	generateResourceStats(resource);
 
-	if (resourceMap->get(resource->getName()) != NULL){
+	if (resourceMap->get(resource->getName()) != NULL) {
 		resourceMap->drop(resource->getName());
 		info("Resource " + resource->getName() + " already exists in map, removing");
 	}
@@ -1826,16 +1832,19 @@ void ResourceManagerImplementation::createResource(String restype, String pool, 
 		if (resource->getClass2() == "Creature Resources") {
 			insertSpawn(resource, spawnZone, 0, 0, 0, 0, pool, jtl);
 		} else {
-			for (int y = 0; y < (System::random(maxspawns - minspawns) + minspawns); y++) {
+			for (int y = 0; y < (System::random(maxspawns - minspawns)
+					+ minspawns); y++) {
 				thex = System::random(8192 * 2) - 8192;
 				they = System::random(8192 * 2) - 8192;
 
-				insertSpawn(resource, spawnZone, thex, they, (System::random(maxradius - minradius) + minradius),
+				insertSpawn(resource, spawnZone, thex, they, (System::random(
+						maxradius - minradius) + minradius),
 						(System::random(49) + 50), pool, jtl);
 			}
 		}
 	} else {
-		numplanets = System::random(resource->getMaxPool() - resource->getMinPool()) + resource->getMinPool();
+		numplanets = System::random(resource->getMaxPool()
+				- resource->getMinPool()) + resource->getMinPool();
 
 		Vector<int> planetsUsed;
 		bool planetAlreadyUsed;
@@ -1870,7 +1879,11 @@ void ResourceManagerImplementation::createResource(String restype, String pool, 
 					thex = System::random(8192 * 2) - 8192;
 					they = System::random(8192 * 2) - 8192;
 
-					insertSpawn(resource, spawnZone, thex, they,
+					insertSpawn(
+							resource,
+							spawnZone,
+							thex,
+							they,
 							(System::random(maxradius - minradius) + minradius),
 							(System::random(49) + 50), pool, jtl);
 				}
