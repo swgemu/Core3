@@ -100,12 +100,12 @@ class PlayerObjectImplementation : public PlayerObjectServant {
 
 	IgnoreList* ignoreList;
 
+	//WTF This was already in Player...and it should be in freaking Guild
 	uint32 guildPermissionsBitmask;
 
 	uint32 adminLevel;
 
 public:
-
 	const static int LFG = 1;
 	const static int NEWBIEHELPER = 2;
 	const static int ROLEPLAYER = 4;

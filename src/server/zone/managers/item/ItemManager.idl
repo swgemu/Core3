@@ -59,7 +59,7 @@ import "../../objects/creature/bluefrog/BlueFrogVector";
 
 import "../../objects/player/Player";
 import "../../objects/tangible/Container";
-import "../../objects/installation/factory/FactoryObject";
+import "../../objects/structure/installation/factory/FactoryObject";
 
 interface ItemManager {
 	ItemManager(ZoneServer server, ZoneProcessServerImplementation pServer) {

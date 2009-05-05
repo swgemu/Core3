@@ -78,9 +78,9 @@ void PlayerStructureTerminalImplementation::sendRadialResponseTo(Player* player,
 		player->sendMessage(omr);
 }
 
-void PlayerStructureTerminalImplementation::sendPermissionListTo(Player* player, uint8 listtype) {
+void PlayerStructureTerminalImplementation::sendPermissionListTo(Player* player, const String& listname) {
 	if (structure == NULL)
 		return;
 
-	structure->sendPermissionListTo(player, listtype);
+	structure->sendPermissionListTo(player, listname);
 }

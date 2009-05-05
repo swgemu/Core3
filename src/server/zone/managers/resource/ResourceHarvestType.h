@@ -10,14 +10,14 @@
 
 class ResourceHarvestType {
 public:
-	static const int SOLAR = 1;
-	static const int CHEMICAL = 2;
-	static const int FLORA = 3;
-	static const int GAS = 4;
-	static const int GEOTHERMAL = 5;
-	static const int MINERAL = 6;
-	static const int WATER = 7;
-	static const int WIND = 8;
-	static const int FUSION = 9;
+	static const uint8 SOLAR = 1;
+	static const uint8 CHEMICAL = 2;
+	static const uint8 FLORA = 3;
+	static const uint8 GAS = 4;
+	static const uint8 GEOTHERMAL = 5;
+	static const uint8 MINERAL = 6;
+	static const uint8 WATER = 7;
+	static const uint8 WIND = 8;
+	static const uint8 FUSION = 9;
 };
 #endif /* RESOURCEHARVESTTYPE_H_ */

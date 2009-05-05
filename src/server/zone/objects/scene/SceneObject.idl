@@ -65,7 +65,7 @@ import "../tangible/weapons/Weapon";
 
 import "../creature/CreatureObject";
 
-import "../building/BuildingObject";
+import "../structure/building/BuildingObject";
 
 import "../creature/skills/target/AttackTargetSkill";
 
@@ -82,6 +82,9 @@ interface SceneObject implements ManagedObject {
 	// client methods
 	void sendTo(Player player, boolean doClose = true);
 	void sendDestroyTo(Player player);
+	
+	void sendCustomNamePromptTo(Player player);
+	void updateCustomName(Player player, const String value);
 
 	void sendRadialResponseTo(Player player, ObjectMenuResponse omr);
 
@@ -236,8 +239,15 @@ interface SceneObject implements ManagedObject {
 	void broadcastMessage(StandaloneBaseMessage msg, int range = 128, boolean doLock = true);
 
 	boolean isUndeploymentScheduled();
+	
+	void setOwnerCharacterID(unsigned int characterid);
+	void setOwnerName(const String name);
 
 	// getters
+	unsigned int getOwnerCharacterID();
+	String getOwnerName();
+	boolean isOwner(unsigned int characterid);
+	
 	int getObjectType();
 
 	unsigned long getObjectID();

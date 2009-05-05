@@ -12,15 +12,17 @@
 
 #include "../../objects/player/Player.h"
 
-#include "../../objects/building/BuildingObject.h"
+#include "../../objects/scene/SceneObject.h"
 
-#include "../../objects/installation/InstallationObject.h"
+#include "../../objects/structure/building/BuildingObject.h"
 
-#include "../../objects/building/cell/CellObject.h"
+#include "../../objects/structure/installation/InstallationObject.h"
+
+#include "../../objects/structure/building/cell/CellObject.h"
 
 #include "../../objects/tangible/deed/DeedObject.h"
 
-#include "../../objects/building/cloningfacility/CloningFacility.h"
+#include "../../objects/structure/building/cloningfacility/CloningFacility.h"
 
 /*
  *	StructureManagerStub
@@ -38,12 +40,113 @@ StructureManager::StructureManager(DummyConstructorParameter* param) {
 StructureManager::~StructureManager() {
 }
 
-void StructureManager::loadStructures() {
+void StructureManager::serialize() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((StructureManagerImplementation*) _impl)->serialize();
+}
+
+void StructureManager::deserialize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+
+		method.executeWithVoidReturn();
+	} else
+		((StructureManagerImplementation*) _impl)->deserialize();
+}
+
+void StructureManager::beginConstruction(Player* player, DeedObject* deed, float x, float z, unsigned char orient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(player);
+		method.addObjectParameter(deed);
+		method.addFloatParameter(x);
+		method.addFloatParameter(z);
+		method.addUnsignedCharParameter(orient);
+
+		method.executeWithVoidReturn();
+	} else
+		((StructureManagerImplementation*) _impl)->beginConstruction(player, deed, x, z, orient);
+}
+
+void StructureManager::endConstruction(Player* player, DeedObject* deed, float x, float z, unsigned char orient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addObjectParameter(player);
+		method.addObjectParameter(deed);
+		method.addFloatParameter(x);
+		method.addFloatParameter(z);
+		method.addUnsignedCharParameter(orient);
+
+		method.executeWithVoidReturn();
+	} else
+		((StructureManagerImplementation*) _impl)->endConstruction(player, deed, x, z, orient);
+}
+
+void StructureManager::createInstallation(Player* player, InstallationObject* installation, bool staticobject) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addObjectParameter(player);
+		method.addObjectParameter(installation);
+		method.addBooleanParameter(staticobject);
+
+		method.executeWithVoidReturn();
+	} else
+		((StructureManagerImplementation*) _impl)->createInstallation(player, installation, staticobject);
+}
+
+void StructureManager::createBuilding(Player* player, BuildingObject* building, bool staticobject) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addObjectParameter(player);
+		method.addObjectParameter(building);
+		method.addBooleanParameter(staticobject);
+
+		method.executeWithVoidReturn();
+	} else
+		((StructureManagerImplementation*) _impl)->createBuilding(player, building, staticobject);
+}
+
+void StructureManager::deleteStructure(SceneObject* structure) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addObjectParameter(structure);
+
+		method.executeWithVoidReturn();
+	} else
+		((StructureManagerImplementation*) _impl)->deleteStructure(structure);
+}
+
+void StructureManager::loadStructures() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
 
 		method.executeWithVoidReturn();
 	} else
@@ -55,24 +158,24 @@ void StructureManager::unloadStructures() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 14);
 
 		method.executeWithVoidReturn();
 	} else
 		((StructureManagerImplementation*) _impl)->unloadStructures();
 }
 
-void StructureManager::saveStructures(bool refresh) {
+void StructureManager::saveStructures(bool reschedule) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
-		method.addBooleanParameter(refresh);
+		DistributedMethod method(this, 15);
+		method.addBooleanParameter(reschedule);
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureManagerImplementation*) _impl)->saveStructures(refresh);
+		((StructureManagerImplementation*) _impl)->saveStructures(reschedule);
 }
 
 BuildingObject* StructureManager::findBuildingType(const String& word, float targetX, float targetY) {
@@ -80,7 +183,7 @@ BuildingObject* StructureManager::findBuildingType(const String& word, float tar
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 16);
 		method.addAsciiParameter(word);
 		method.addFloatParameter(targetX);
 		method.addFloatParameter(targetY);
@@ -95,7 +198,7 @@ CellObject* StructureManager::getCell(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 17);
 		method.addUnsignedLongParameter(id);
 
 		return (CellObject*) method.executeWithObjectReturn();
@@ -108,7 +211,7 @@ BuildingObject* StructureManager::getBuilding(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 18);
 		method.addUnsignedLongParameter(id);
 
 		return (BuildingObject*) method.executeWithObjectReturn();
@@ -121,7 +224,7 @@ CloningFacility* StructureManager::getCloningFacility(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 19);
 		method.addUnsignedLongParameter(oid);
 
 		return (CloningFacility*) method.executeWithObjectReturn();
@@ -134,7 +237,7 @@ CloningFacility* StructureManager::getClosestCloningFacility(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 20);
 		method.addObjectParameter(player);
 
 		return (CloningFacility*) method.executeWithObjectReturn();
@@ -142,96 +245,12 @@ CloningFacility* StructureManager::getClosestCloningFacility(Player* player) {
 		return ((StructureManagerImplementation*) _impl)->getClosestCloningFacility(player);
 }
 
-void StructureManager::spawnTempStructure(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 14);
-		method.addObjectParameter(player);
-		method.addObjectParameter(deed);
-		method.addFloatParameter(x);
-		method.addFloatParameter(z);
-		method.addFloatParameter(y);
-		method.addFloatParameter(oX);
-		method.addFloatParameter(oZ);
-		method.addFloatParameter(oY);
-		method.addFloatParameter(oW);
-
-		method.executeWithVoidReturn();
-	} else
-		((StructureManagerImplementation*) _impl)->spawnTempStructure(player, deed, x, z, y, oX, oZ, oY, oW);
-}
-
-void StructureManager::spawnInstallation(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 15);
-		method.addObjectParameter(player);
-		method.addObjectParameter(deed);
-		method.addFloatParameter(x);
-		method.addFloatParameter(z);
-		method.addFloatParameter(y);
-		method.addFloatParameter(oX);
-		method.addFloatParameter(oZ);
-		method.addFloatParameter(oY);
-		method.addFloatParameter(oW);
-
-		method.executeWithVoidReturn();
-	} else
-		((StructureManagerImplementation*) _impl)->spawnInstallation(player, deed, x, z, y, oX, oZ, oY, oW);
-}
-
-void StructureManager::spawnHarvester(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 16);
-		method.addObjectParameter(player);
-		method.addObjectParameter(deed);
-		method.addFloatParameter(x);
-		method.addFloatParameter(z);
-		method.addFloatParameter(y);
-		method.addFloatParameter(oX);
-		method.addFloatParameter(oZ);
-		method.addFloatParameter(oY);
-		method.addFloatParameter(oW);
-
-		method.executeWithVoidReturn();
-	} else
-		((StructureManagerImplementation*) _impl)->spawnHarvester(player, deed, x, z, y, oX, oZ, oY, oW);
-}
-
-void StructureManager::spawnFactory(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 17);
-		method.addObjectParameter(player);
-		method.addObjectParameter(deed);
-		method.addFloatParameter(x);
-		method.addFloatParameter(z);
-		method.addFloatParameter(y);
-		method.addFloatParameter(oX);
-		method.addFloatParameter(oZ);
-		method.addFloatParameter(oY);
-		method.addFloatParameter(oW);
-
-		method.executeWithVoidReturn();
-	} else
-		((StructureManagerImplementation*) _impl)->spawnFactory(player, deed, x, z, y, oX, oZ, oY, oW);
-}
-
 void StructureManager::spawnBuilding(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 21);
 		method.addObjectParameter(player);
 		method.addObjectParameter(deed);
 		method.addFloatParameter(x);
@@ -252,7 +271,7 @@ void StructureManager::deleteInstallation(InstallationObject* inso) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 22);
 		method.addObjectParameter(inso);
 
 		method.executeWithVoidReturn();
@@ -265,7 +284,7 @@ void StructureManager::error(const String& message) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 23);
 		method.addAsciiParameter(message);
 
 		method.executeWithVoidReturn();
@@ -278,7 +297,7 @@ void StructureManager::info(const String& message) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 24);
 		method.addAsciiParameter(message);
 
 		method.executeWithVoidReturn();
@@ -298,51 +317,60 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 
 	switch (methid) {
 	case 6:
-		loadStructures();
+		serialize();
 		break;
 	case 7:
-		unloadStructures();
+		deserialize();
 		break;
 	case 8:
-		saveStructures(inv->getBooleanParameter());
+		beginConstruction((Player*) inv->getObjectParameter(), (DeedObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedCharParameter());
 		break;
 	case 9:
-		resp->insertLong(findBuildingType(inv->getAsciiParameter(_param0_findBuildingType__String_float_float_), inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
+		endConstruction((Player*) inv->getObjectParameter(), (DeedObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedCharParameter());
 		break;
 	case 10:
-		resp->insertLong(getCell(inv->getUnsignedLongParameter())->_getObjectID());
+		createInstallation((Player*) inv->getObjectParameter(), (InstallationObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 11:
-		resp->insertLong(getBuilding(inv->getUnsignedLongParameter())->_getObjectID());
+		createBuilding((Player*) inv->getObjectParameter(), (BuildingObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 12:
-		resp->insertLong(getCloningFacility(inv->getUnsignedLongParameter())->_getObjectID());
+		deleteStructure((SceneObject*) inv->getObjectParameter());
 		break;
 	case 13:
-		resp->insertLong(getClosestCloningFacility((Player*) inv->getObjectParameter())->_getObjectID());
+		loadStructures();
 		break;
 	case 14:
-		spawnTempStructure((Player*) inv->getObjectParameter(), (DeedObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		unloadStructures();
 		break;
 	case 15:
-		spawnInstallation((Player*) inv->getObjectParameter(), (DeedObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		saveStructures(inv->getBooleanParameter());
 		break;
 	case 16:
-		spawnHarvester((Player*) inv->getObjectParameter(), (DeedObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		resp->insertLong(findBuildingType(inv->getAsciiParameter(_param0_findBuildingType__String_float_float_), inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
 		break;
 	case 17:
-		spawnFactory((Player*) inv->getObjectParameter(), (DeedObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		resp->insertLong(getCell(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 18:
-		spawnBuilding((Player*) inv->getObjectParameter(), (DeedObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		resp->insertLong(getBuilding(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 19:
-		deleteInstallation((InstallationObject*) inv->getObjectParameter());
+		resp->insertLong(getCloningFacility(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 20:
-		error(inv->getAsciiParameter(_param0_error__String_));
+		resp->insertLong(getClosestCloningFacility((Player*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case 21:
+		spawnBuilding((Player*) inv->getObjectParameter(), (DeedObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		break;
+	case 22:
+		deleteInstallation((InstallationObject*) inv->getObjectParameter());
+		break;
+	case 23:
+		error(inv->getAsciiParameter(_param0_error__String_));
+		break;
+	case 24:
 		info(inv->getAsciiParameter(_param0_info__String_));
 		break;
 	default:
@@ -350,6 +378,34 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	}
 
 	return resp;
+}
+
+void StructureManagerAdapter::serialize() {
+	return ((StructureManagerImplementation*) impl)->serialize();
+}
+
+void StructureManagerAdapter::deserialize() {
+	return ((StructureManagerImplementation*) impl)->deserialize();
+}
+
+void StructureManagerAdapter::beginConstruction(Player* player, DeedObject* deed, float x, float z, unsigned char orient) {
+	return ((StructureManagerImplementation*) impl)->beginConstruction(player, deed, x, z, orient);
+}
+
+void StructureManagerAdapter::endConstruction(Player* player, DeedObject* deed, float x, float z, unsigned char orient) {
+	return ((StructureManagerImplementation*) impl)->endConstruction(player, deed, x, z, orient);
+}
+
+void StructureManagerAdapter::createInstallation(Player* player, InstallationObject* installation, bool staticobject) {
+	return ((StructureManagerImplementation*) impl)->createInstallation(player, installation, staticobject);
+}
+
+void StructureManagerAdapter::createBuilding(Player* player, BuildingObject* building, bool staticobject) {
+	return ((StructureManagerImplementation*) impl)->createBuilding(player, building, staticobject);
+}
+
+void StructureManagerAdapter::deleteStructure(SceneObject* structure) {
+	return ((StructureManagerImplementation*) impl)->deleteStructure(structure);
 }
 
 void StructureManagerAdapter::loadStructures() {
@@ -360,8 +416,8 @@ void StructureManagerAdapter::unloadStructures() {
 	return ((StructureManagerImplementation*) impl)->unloadStructures();
 }
 
-void StructureManagerAdapter::saveStructures(bool refresh) {
-	return ((StructureManagerImplementation*) impl)->saveStructures(refresh);
+void StructureManagerAdapter::saveStructures(bool reschedule) {
+	return ((StructureManagerImplementation*) impl)->saveStructures(reschedule);
 }
 
 BuildingObject* StructureManagerAdapter::findBuildingType(const String& word, float targetX, float targetY) {
@@ -382,22 +438,6 @@ CloningFacility* StructureManagerAdapter::getCloningFacility(unsigned long long 
 
 CloningFacility* StructureManagerAdapter::getClosestCloningFacility(Player* player) {
 	return ((StructureManagerImplementation*) impl)->getClosestCloningFacility(player);
-}
-
-void StructureManagerAdapter::spawnTempStructure(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {
-	return ((StructureManagerImplementation*) impl)->spawnTempStructure(player, deed, x, z, y, oX, oZ, oY, oW);
-}
-
-void StructureManagerAdapter::spawnInstallation(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {
-	return ((StructureManagerImplementation*) impl)->spawnInstallation(player, deed, x, z, y, oX, oZ, oY, oW);
-}
-
-void StructureManagerAdapter::spawnHarvester(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {
-	return ((StructureManagerImplementation*) impl)->spawnHarvester(player, deed, x, z, y, oX, oZ, oY, oW);
-}
-
-void StructureManagerAdapter::spawnFactory(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {
-	return ((StructureManagerImplementation*) impl)->spawnFactory(player, deed, x, z, y, oX, oZ, oY, oW);
 }
 
 void StructureManagerAdapter::spawnBuilding(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {

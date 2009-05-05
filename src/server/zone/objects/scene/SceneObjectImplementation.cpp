@@ -58,7 +58,7 @@ which carries forward this exception.
 
 #include "engine/core/ManagedObjectImplementation.h"
 
-#include "../building/cell/CellObject.h"
+#include "../structure/building/cell/CellObject.h"
 
 #include "../creature/skills/target/AttackTargetSkill.h"
 
@@ -67,6 +67,8 @@ which carries forward this exception.
 #include "../../managers/player/PlayerManager.h"
 
 #include "../tangible/TangibleObjectImplementation.h"
+
+#include "../player/sui/inputbox/SuiInputBox.h"
 
 SceneObjectImplementation::SceneObjectImplementation()
 	: SceneObjectServant(), QuadTreeEntry(), ContainerObject(this), Logger() {
@@ -95,6 +97,9 @@ void SceneObjectImplementation::init() {
 
 	server = NULL;
 	zone = NULL;
+
+	ownerCharacterID = 0;
+	ownerName = "world";
 
 	positionX = positionZ = positionY = 0;
 	directionY = 1;
@@ -135,6 +140,7 @@ SceneObjectImplementation::~SceneObjectImplementation() {
 	undeploy();
 }
 
+//TODO: UH why is this in SceneObjectImplementation!?
 bool SceneObject::destroy() {
 	bool destroying = ServerCore::getZoneServer()->destroyObject(this);
 
@@ -254,7 +260,11 @@ void SceneObjectImplementation::addAttributes(AttributeListMessage* alm) {
 }
 
 void SceneObjectImplementation::parseItemAttributes() {
+	String attr = "ownerCharacterID";
+	setOwnerCharacterID(itemAttributes->getIntAttribute(attr));
 
+	attr = "ownerName";
+	setOwnerName(itemAttributes->getStringAttribute(attr));
 }
 
 void SceneObjectImplementation::synchronizedUIListen(Player* player, int value) {
@@ -282,19 +292,25 @@ void SceneObjectImplementation::randomizePosition(float radius) {
 }
 
 void SceneObjectImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
-	//TODO:Cell permission check
-
-	if (_this->getParent() != NULL) {
-		bool cellPermission = true;
-
-		if (_this->getParent()->isCell() && cellPermission) {
-			omr->addRadialParent(10, 3, "@ui_radial:item_pickup");
-		}
-	}
-
 	omr->finish();
 
 	player->sendMessage(omr);
+}
+
+void SceneObjectImplementation::sendCustomNamePromptTo(Player* player) {
+	SuiInputBox* namepromptbox = new SuiInputBox(player, SuiWindowType::OBJECT_NAME, 0);
+	namepromptbox->setUsingObjectID(getObjectID());
+	namepromptbox->setPromptTitle("@sui:set_name_title"); //Name The Object
+	namepromptbox->setPromptText("@sui:set_name_prompt"); //Please enter the new name you would like for this object.
+	namepromptbox->setCancelButton(true, "");
+	namepromptbox->setMaxInputSize(255);
+
+	player->addSuiBox(namepromptbox);
+	player->sendMessage(namepromptbox->generateMessage());
+}
+
+void SceneObjectImplementation::updateCustomName(Player* player, const String& value) {
+	setCustomName(value);
 }
 
 void SceneObjectImplementation::lock(bool doLock) {

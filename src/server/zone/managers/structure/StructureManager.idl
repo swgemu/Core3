@@ -4,20 +4,32 @@ import "server/zone/ZoneProcessServerImplementation";
 
 import "../../objects/player/Player";
 
-import "../../objects/building/BuildingObject";
-import "../../objects/installation/InstallationObject";
-import "../../objects/building/cell/CellObject";
+import "../../objects/scene/SceneObject";
+import "../../objects/structure/building/BuildingObject";
+import "../../objects/structure/installation/InstallationObject";
+import "../../objects/structure/building/cell/CellObject";
 import "../../objects/tangible/deed/DeedObject";
-import "../../objects/building/cloningfacility/CloningFacility";
+import "../../objects/structure/building/cloningfacility/CloningFacility";
 
 interface StructureManager {
 	StructureManager(Zone zone, ZoneProcessServerImplementation processor) {
 		super(zone, processor);
 	}	
+	
+	//Cleanup mode.
+	void serialize();
+	void deserialize();
+	
+	void beginConstruction(Player player, DeedObject deed, float x, float z, unsigned char orient = 0);
+	void endConstruction(Player player, DeedObject deed, float x, float z, unsigned char orient = 0);
+	void createInstallation(Player player, InstallationObject installation, boolean staticobject = false);
+	void createBuilding(Player player, BuildingObject building, boolean staticobject = false);
+	void deleteStructure(SceneObject structure);
+
 
 	void loadStructures();
 	void unloadStructures();
-	void saveStructures(boolean refresh);
+	void saveStructures(boolean reschedule = false);
 
 	BuildingObject findBuildingType(const String word, float targetX, float targetY);
 	
@@ -27,10 +39,6 @@ interface StructureManager {
 	CloningFacility getCloningFacility(unsigned long oid);
 	CloningFacility getClosestCloningFacility(Player player);
 
-	void spawnTempStructure(Player player, DeedObject deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-	void spawnInstallation(Player player, DeedObject deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-	void spawnHarvester(Player player, DeedObject deed, float x, float z, float y, float oX, float oZ, float oY, float oW);	
-	void spawnFactory(Player player, DeedObject deed, float x, float z, float y, float oX, float oZ, float oY, float oW);	
 	void spawnBuilding(Player player, DeedObject deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 
 	void deleteInstallation(InstallationObject inso);

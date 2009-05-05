@@ -46,37 +46,37 @@ which carries forward this exception.
 #define BUILDINGOBJECTMESSAGE3_H_
 
 #include "../BaseLineMessage.h"
-#include "../../objects/building/BuildingObject.h"
+#include "../../objects/structure/building/BuildingObject.h"
 #include "../../objects/tangible/campkit/campsite/CampSite.h"
+
+//TODO: Campsites should be derived from BuildingObject - if they are in fact BUIO...
 
 class BuildingObjectMessage3 : public BaseLineMessage {
 public:
-	BuildingObjectMessage3(BuildingObject *buio)
-			: BaseLineMessage(buio->getObjectID(), 0x4255494F, 3, 0x0B) {
-		insertFloat(1.0);
-		insertAscii("building_name");
-		insertInt(0); //nothing.
-		insertAscii(buio->getDefaultName());
-		insertUnicode(buio->getName()); // insertInt(0); //nothing. Custom Name
-		insertInt(0xFF);
-		insertShort(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0x00000100); // Some type of bitmask?
-		insertInt(0);
-		insertInt(0);
-		//insertInt(1000); // unsure what this is, also seen 0x10E0
+	BuildingObjectMessage3(BuildingObject* building)
+			: BaseLineMessage(building->getObjectID(), 0x4255494F, 3, 0x0B) {
+
+		insertFloat(1.0); //Complexity
+		insertAscii(building->getStfFile()); //StfFile
+		insertInt(0); //Unknown
+		insertAscii(building->getStfName()); //StfName
+		insertUnicode(building->getCustomName()); //Custom Name
+		insertInt(0xFF); //Unknown
+		insertShort(0); //Customization String?
+		insertInt(0); //Unknown
+		insertInt(0); //Unknown
+		insertInt(0x00000100); //Condition?
+		insertInt(0); //ConditionMax?
+		insertInt(0); //Unknown
+
 		insertInt(0x00001680); // unsure what this is, also seen 0x10E0
 		insertByte(1);
 
 		setSize();
-
-		//StringBuffer msg;
-		//msg << hex << "BuildingObjectMessage3 [Object = " << buio->getObjectID() << "]\n";
-		//System::out << msg.toString();
 	}
 
-	BuildingObjectMessage3(CampSite *camp)
+	//TODO: CAMPS DONT NEED THEIR OWN STRUCT WTF............
+	BuildingObjectMessage3(CampSite* camp)
 			: BaseLineMessage(camp->getObjectID(), 0x4255494F, 3, 0x0B) {
 		insertFloat(1.0);
 		insertAscii("camp");

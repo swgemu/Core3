@@ -43,7 +43,7 @@
 
 Deed = Object:new {
 
-	objectName = "Deed",
+	objectName = "",
 
 	templateName = "",
 

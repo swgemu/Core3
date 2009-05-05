@@ -132,18 +132,18 @@ which carries forward this exception.
 // Deeds
 #include "objects/tangible/deed/DeedObject.h"
 #include "objects/tangible/deed/DeedObjectImplementation.h"
-#include "objects/tangible/deed/harvesterdeed/HarvesterDeed.h"
-#include "objects/tangible/deed/harvesterdeed/HarvesterDeedImplementation.h"
-#include "objects/tangible/deed/factorydeed/FactoryDeed.h"
-#include "objects/tangible/deed/factorydeed/FactoryDeedImplementation.h"
-#include "objects/tangible/deed/generatordeed/GeneratorDeed.h"
-#include "objects/tangible/deed/generatordeed/GeneratorDeedImplementation.h"
-#include "objects/tangible/deed/vehicledeed/VehicleDeed.h"
-#include "objects/tangible/deed/vehicledeed/VehicleDeedImplementation.h"
-#include "objects/tangible/deed/playerhousedeed/PlayerHouseDeed.h"
-#include "objects/tangible/deed/playerhousedeed/PlayerHouseDeedImplementation.h"
+#include "objects/tangible/deed/installationdeed/InstallationDeed.h"
+#include "objects/tangible/deed/installationdeed/InstallationDeedImplementation.h"
+#include "objects/tangible/deed/buildingdeed/BuildingDeed.h"
+#include "objects/tangible/deed/buildingdeed/BuildingDeedImplementation.h"
+#include "objects/tangible/deed/droiddeed/DroidDeed.h"
+#include "objects/tangible/deed/droiddeed/DroidDeedImplementation.h"
+#include "objects/tangible/deed/petdeed/PetDeed.h"
+#include "objects/tangible/deed/petdeed/PetDeedImplementation.h"
 #include "objects/tangible/deed/resourcedeed/ResourceDeed.h"
 #include "objects/tangible/deed/resourcedeed/ResourceDeedImplementation.h"
+#include "objects/tangible/deed/vehicledeed/VehicleDeed.h"
+#include "objects/tangible/deed/vehicledeed/VehicleDeedImplementation.h"
 
 #include "objects/tangible/holocron/Holocron.h"
 #include "objects/tangible/holocron/HolocronImplementation.h"
@@ -278,27 +278,23 @@ which carries forward this exception.
 #include "objects/waypoint/WaypointObject.h"
 #include "objects/waypoint/WaypointObjectImplementation.h"
 
-#include "objects/building/cell/CellObject.h"
-#include "objects/building/cell/CellObjectImplementation.h"
+//Buildings
+#include "objects/structure/building/cell/CellObject.h"
+#include "objects/structure/building/cell/CellObjectImplementation.h"
+#include "objects/structure/building/BuildingObject.h"
+#include "objects/structure/building/BuildingObjectImplementation.h"
+#include "objects/structure/building/cloningfacility/CloningFacility.h"
+#include "objects/structure/building/cloningfacility/CloningFacilityImplementation.h"
 
-#include "objects/building/BuildingObject.h"
-#include "objects/building/BuildingObjectImplementation.h"
-
-#include "objects/building/cloningfacility/CloningFacility.h"
-#include "objects/building/cloningfacility/CloningFacilityImplementation.h"
-
-#include "objects/scene/SceneObject.h"
-#include "objects/scene/SceneObjectImplementation.h"
-
-// Installations
-#include "objects/installation/InstallationObject.h"
-#include "objects/installation/InstallationObjectImplementation.h"
-#include "objects/installation/harvester/HarvesterObject.h"
-#include "objects/installation/harvester/HarvesterObjectImplementation.h"
-#include "objects/installation/factory/FactoryObject.h"
-#include "objects/installation/factory/FactoryObjectImplementation.h"
-#include "objects/installation/generator/GeneratorObject.h"
-#include "objects/installation/generator/GeneratorObjectImplementation.h"
+//Installations
+#include "objects/structure/installation/InstallationObject.h"
+#include "objects/structure/installation/InstallationObjectImplementation.h"
+#include "objects/structure/installation/harvester/HarvesterObject.h"
+#include "objects/structure/installation/harvester/HarvesterObjectImplementation.h"
+#include "objects/structure/installation/factory/FactoryObject.h"
+#include "objects/structure/installation/factory/FactoryObjectImplementation.h"
+#include "objects/structure/installation/generator/GeneratorObject.h"
+#include "objects/structure/installation/generator/GeneratorObjectImplementation.h"
 
 #include "objects/mission/MissionObject.h"
 #include "objects/mission/MissionObjectImplementation.h"
@@ -312,6 +308,9 @@ which carries forward this exception.
 #include "objects/static/firework/FireworkWorldImplementation.h"
 
 #include "objects/auction/AuctionItem.h"
+
+#include "objects/scene/SceneObject.h"
+#include "objects/scene/SceneObjectImplementation.h"
 
 // SUI
 #include "objects/player/sui/SuiBoxImplementation.h"

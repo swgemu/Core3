@@ -78,6 +78,8 @@ interface TangibleObject implements SceneObject {
 	void repairItem(Player player);
 
 	void setObjectName(Player player);
+	
+	void updateCustomName(Player player, const String value);
 
 	// getters
 

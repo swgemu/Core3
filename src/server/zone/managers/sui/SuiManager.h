@@ -73,8 +73,8 @@ public:
 	void handleTicketPurchaseMessageBox(uint32 boxID, Player* player);
 	void handleTicketCollectorRespones(uint32 boxID, Player* player, uint32 cancel, int ticketIndex);
 
-	void handleCodeForRedeed(uint32 boxID, Player* player, uint32 cancel, const String& extra);
-	void handleRedeedStructure(uint32 boxID, Player* player, uint32 cancel, const int extra);
+	void handleStructureDestroyRequest(uint32 boxID, Player* player, uint32 cancel);
+	void handleStructureDestroyCode(uint32 boxID, Player* player, uint32 cancel, const int destroycode);
 	void handleRefreshStatusListBox(uint32 boxID, Player* player, uint32 cancel, const int extra);
 	void handleSetObjectName(uint32 boxID, Player* player, uint32 cancel, const String& name);
 	void handleManageMaintenance(uint32 boxID, Player* player,uint32 cancel, const int amount);

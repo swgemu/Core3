@@ -8,27 +8,23 @@
 
 #include "../DeedObject.h"
 
-#include "../../TangibleObject.h"
-
-#include "../../../../packets.h"
+#include "../../../creature/CreatureObject.h"
 
 #include "../../../player/Player.h"
 
-#include "../../../creature/CreatureObject.h"
-
-#include "../../../../packets/object/ObjectMenuResponse.h"
+#include "../../../scene/SceneObject.h"
 
 /*
  *	ResourceDeedStub
  */
 
-ResourceDeed::ResourceDeed(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn) : DeedObject(DummyConstructorParameter::instance()) {
-	_impl = new ResourceDeedImplementation(creature, tempCRC, n, tempn);
+ResourceDeed::ResourceDeed(CreatureObject* creature, int objcrc, const UnicodeString& customname, const String& stfname) : DeedObject(DummyConstructorParameter::instance()) {
+	_impl = new ResourceDeedImplementation(creature, objcrc, customname, stfname);
 	_impl->_setStub(this);
 }
 
-ResourceDeed::ResourceDeed(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn) : DeedObject(DummyConstructorParameter::instance()) {
-	_impl = new ResourceDeedImplementation(oid, tempCRC, n, tempn);
+ResourceDeed::ResourceDeed(unsigned long long objid, int objcrc, const UnicodeString& customname, const String& stfname) : DeedObject(DummyConstructorParameter::instance()) {
+	_impl = new ResourceDeedImplementation(objid, objcrc, customname, stfname);
 	_impl->_setStub(this);
 }
 
@@ -51,18 +47,17 @@ int ResourceDeed::useObject(Player* player) {
 		return ((ResourceDeedImplementation*) _impl)->useObject(player);
 }
 
-void ResourceDeed::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+SceneObject* ResourceDeed::generateObject(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
 		method.addObjectParameter(player);
-		method.addObjectParameter(omr);
 
-		method.executeWithVoidReturn();
+		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		((ResourceDeedImplementation*) _impl)->sendRadialResponseTo(player, omr);
+		return ((ResourceDeedImplementation*) _impl)->generateObject(player);
 }
 
 void ResourceDeed::destroyDeed(Player* player) {
@@ -93,7 +88,7 @@ Packet* ResourceDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertSignedInt(useObject((Player*) inv->getObjectParameter()));
 		break;
 	case 7:
-		sendRadialResponseTo((Player*) inv->getObjectParameter(), (ObjectMenuResponse*) inv->getObjectParameter());
+		resp->insertLong(generateObject((Player*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case 8:
 		destroyDeed((Player*) inv->getObjectParameter());
@@ -109,8 +104,8 @@ int ResourceDeedAdapter::useObject(Player* player) {
 	return ((ResourceDeedImplementation*) impl)->useObject(player);
 }
 
-void ResourceDeedAdapter::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
-	return ((ResourceDeedImplementation*) impl)->sendRadialResponseTo(player, omr);
+SceneObject* ResourceDeedAdapter::generateObject(Player* player) {
+	return ((ResourceDeedImplementation*) impl)->generateObject(player);
 }
 
 void ResourceDeedAdapter::destroyDeed(Player* player) {
@@ -152,11 +147,11 @@ DistributedObjectAdapter* ResourceDeedHelper::createAdapter(DistributedObjectStu
  *	ResourceDeedServant
  */
 
-ResourceDeedServant::ResourceDeedServant(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn, int tp) : DeedObjectImplementation(creature, tempCRC, n, tempn, tp) {
+ResourceDeedServant::ResourceDeedServant(CreatureObject* creature, int objcrc, const UnicodeString& customname, const String& stfname) : DeedObjectImplementation(creature, objcrc, customname, stfname) {
 	_classHelper = ResourceDeedHelper::instance();
 }
 
-ResourceDeedServant::ResourceDeedServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp) : DeedObjectImplementation(oid, tempCRC, n, tempn, tp) {
+ResourceDeedServant::ResourceDeedServant(unsigned long long objid, int objcrc, const UnicodeString& customname, const String& stfname) : DeedObjectImplementation(objid, objcrc, customname, stfname) {
 	_classHelper = ResourceDeedHelper::instance();
 }
 

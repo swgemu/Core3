@@ -49,23 +49,30 @@ which carries forward this exception.
 
 class HarvesterResourceDataMessage : public ObjectControllerMessage {
 public:
-	HarvesterResourceDataMessage(Player* player, HarvesterObject* hino)
-		: ObjectControllerMessage(player->getObjectID(), 0x0B, 0xEA) {
+	HarvesterResourceDataMessage(Player* player, HarvesterObject* harvester)
+			: ObjectControllerMessage(player->getObjectID(), 0x0B, 0xEA) {
 
-		insertLong(hino->getObjectID()); // Harvester Object
+		insertLong(harvester->getObjectID()); // Harvester Object ID
 
-		ResourceManager* resourceManager = hino->getZone()->getZoneServer()->getResourceManager();
-		if (resourceManager == NULL) {
+		ResourceManager* resourcemanager = harvester->getZone()->getZoneServer()->getResourceManager();
+
+		if (resourcemanager == NULL) {
 			insertInt(0);
 			return;
 		}
 
 
-		ResourceList* list = resourceManager->getResourceListAtLocation(hino->getZone()->getZoneID(), hino->getPositionX(), hino->getPositionY(), hino->getHarvesterType());
+		ResourceList* list = resourcemanager->getResourceListAtLocation(harvester->getZone()->getZoneID(), harvester->getPositionX(), harvester->getPositionY(), harvester->getHarvesterType());
 		insertResourceList(list);
 	}
 
-	void insertResourceList(ResourceList *list) {
+	void insertResourceList(ResourceList* list) {
+
+		if (list == NULL) {
+			System::out << "list is null" << endl;
+			insertInt(0);
+			return;
+		}
 
 		//System::out << "insertResourceList size(): " << list->size() << endl;
 		insertInt(list->size()); // list size
@@ -77,23 +84,14 @@ public:
 */
 		for (int x = 0; x < list->size(); x++)
 		{
-			ResourceItem *ri = list->get(x);
+			ResourceItem* ri = list->get(x);
 			//System::out << "insertResourceList() ObjectID: " << hex << ri->getObjectID() << endl;
 			insertLong(ri->getObjectID());
 			insertAscii(ri->getName());
 			insertAscii(ri->getType());
 			insertByte(ri->getDensity());
 		}
-
 	}
-
 };
-
-/*
-
-if (list == NULL)
-	System::out << "list was null!" << endl;
-*/
-
 
 #endif /* HARVESTERRESOURCEDATAMESSAGE_H_ */

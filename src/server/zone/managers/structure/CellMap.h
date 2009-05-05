@@ -46,7 +46,7 @@ which carries forward this exception.
 #define CELLMAP_H_
 
 #include "engine/engine.h"
-#include "../../objects/building/cell/CellObject.h"
+#include "../../objects/structure/building/cell/CellObject.h"
 
 class CellMap : public HashTable<uint64, CellObject*>, public HashTableIterator<uint64, CellObject*> {
 

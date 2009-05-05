@@ -94,6 +94,22 @@ public:
 			return 0;
 	}
 
+	/*
+	void setUnsignedIntAttribute(String& name, uint32 value) {
+		attributes->put(name, String::valueOf(value));
+	}
+
+	uint32 getUnsignedIntAttribute(const String& name) {
+		if (attributes->containsKey(name)) {
+			String value = attributes->get(name);
+
+			System::out << "ItemAttributes::getUint32 value initially " << value << endl;
+
+			return (uint32) Long::unsignedvalueOf(value);
+		} else
+			return 0;
+	}*/
+
 	void setUnsignedLongAttribute(const String& name, uint64 value) {
 		attributes->put(name, String::valueOf(value));
 	}

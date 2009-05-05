@@ -51,7 +51,7 @@ which carries forward this exception.
 
 #include "../../../../packets.h"
 
-#include "../../../building/cloningfacility/CloningFacility.h"
+#include "../../../structure/building/cloningfacility/CloningFacility.h"
 
 class CloningTerminalImplementation : public CloningTerminalServant {
 	CloningFacility* cloningFacility;

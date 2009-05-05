@@ -44,7 +44,7 @@ which carries forward this exception.
 
 import "../../../player/Player";
 
-import "../../../building/BuildingObject";
+import "../../../structure/building/BuildingObject";
 
 import "../Terminal";
 
@@ -55,5 +55,5 @@ interface PlayerStructureTerminal implements Terminal {
 
 	int useObject(Player player);
 	
-	void sendPermissionListTo(Player player, unsigned char listtype);
+	void sendPermissionListTo(Player player, const String listname);
 }

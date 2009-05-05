@@ -51,125 +51,108 @@ which carries forward this exception.
 #include "../../managers/resource/ResourceList.h"
 #include "../../managers/resource/ResourceItem.h"
 
-#include "../../objects/installation/harvester/HarvesterObject.h"
+#include "../../objects/structure/installation/harvester/HarvesterObject.h"
 #include "../../objects/tangible/TangibleObject.h"
 
 class InstallationObjectMessage7 : public BaseLineMessage {
 public:
-	InstallationObjectMessage7(InstallationObject * inso)
-			: BaseLineMessage(inso->getObjectID(), 0x494E534F, 7, 0x05) {
+	InstallationObjectMessage7(InstallationObject* installation)
+			: BaseLineMessage(installation->getObjectID(), 0x494E534F, 7, 0x05) {
 
-		if (inso->getObjectSubType() == TangibleObjectImplementation::HARVESTER)
-		{
-			HarvesterObject* hino = (HarvesterObject*) inso;
-			ResourceManager* resourceManager = inso->getZone()->getZoneServer()->getResourceManager();
-			ResourceList* list = resourceManager->getResourceListAtLocation(inso->getZone()->getZoneID(), inso->getPositionX(), inso->getPositionY(), hino->getHarvesterType());
+		if (installation->isGenerator() || installation->isHarvester())
+			insertResourceList((HarvesterObject*) installation);
+		else
+			insertEmptyResourceList();
 
-			if (list == NULL)
-				System::out << "list was null!" << endl;
+		insertLong(installation->getSelectedResourceID()); //Currently selected resource objectID
 
-			insertByte(1); // ResourcePoolUpdateFlag ?
+		insertByte(installation->isOperating()); //Is the installation operating.
+
+		insertInt((int) installation->getDisplayedBaseExtractionRate()); //Extraction Rate Displayed
+		insertFloat(installation->getBaseExtractionRate()); //Base Extraction Rate
+		insertFloat(installation->getExtractionRate()); //Extraction Rate
+
+		insertFloat(installation->getHopperSize()); //Hopper Size
+		insertInt((int) installation->getHopperSizeMax()); //Hopper Size Max
+
+		insertHopperItems(installation);
+
+		uint32 percentcondition = (uint32) round((installation->getCondition() / installation->getMaxCondition()) * 100);
+		insertByte(percentcondition); //Condition of Installation (percentage)
+
+		setSize();
+	}
+
+	void insertResourceList(HarvesterObject* harvester) {
+		ResourceManager* resourceManager = harvester->getZone()->getZoneServer()->getResourceManager();
+		ResourceList* list = resourceManager->getResourceListAtLocation(harvester->getZone()->getZoneID(), harvester->getPositionX(), harvester->getPositionY(), harvester->getHarvesterType());
+
+		insertByte(1); //Resource Spawns Updated Flag
+
+		if (list == NULL) {
+			insertEmptyResourceList();
+		} else {
 			insertResourceIDList(list);
 			insertResourceIDList(list);
 			insertResourceNameList(list);
 			insertResourceTypeList(list);
-		} else
-		{
-			insertByte(1);
-			// ID
-			insertInt(0);
-			insertInt(0);
-			// ID
-			insertInt(0);
-			insertInt(0);
-			// Name
-			insertInt(0);
-			insertInt(0);
-			// Type
-			insertInt(0);
-			insertInt(0);
 		}
-
-		insertLong(inso->getActiveResourceID());
-
-		insertByte(inso->isOperating());
-
-		insertInt((int)inso->getExtractionRate()); // Extraction Rate Displayed
-		insertFloat(inso->getExtractionRate()); // Extract Rate Max
-
-		insertFloat(inso->getActualRate()); // Current Extract Rate
-
-		insertFloat(inso->getHopperSize());
-		insertInt((int)inso->getHopperSizeMax());
-
-		//insertByte(0); // Hopper Update Flag
-		//insertInt(inso->getHopperSize());
-
-		insertHopperItems(inso);
-
-		insertByte(100); // Percentage of Condition
-		setSize();
-
 	}
 
-	//float density = getDensity(player->getZoneIndex(), resourceName, player->getPositionX(), player->getPositionY());
-	// .f
+	void insertEmptyResourceList() {
+		//Insert an empty list since we didn't retrieve any resources.
+		insertInt(0); //Resource ID Size
+		insertInt(0); //Resource ID Counter
 
-	void insertResourceIDList(ResourceList *list) {
+		insertInt(0); //Resource ID Size
+		insertInt(0); //Resource ID Counter
 
-		//System::out << "insertResourceIDList size(): " << list->size() << endl;
-		insertInt(list->size()); // size
-		insertInt(list->size()); // counter
-		for (int x = 0; x < list->size(); x++)
-		{
+		insertInt(0); //Resource Name Size
+		insertInt(0); //Resource Name Counter
+
+		insertInt(0); //Resource Type Size
+		insertInt(0); //Resource Type Counter
+	}
+
+	void insertResourceIDList(ResourceList* list) {
+		insertInt(list->size()); //size
+		insertInt(list->size()); //counter
+
+		for (int x = 0; x < list->size(); x++) {
 			ResourceItem *ri = list->get(x);
-			//System::out << "insertResourceIDList() ObjectID: " << hex << ri->getObjectID() << endl;
 			insertLong(ri->getObjectID());
 		}
-
 	}
 
 	void insertResourceNameList(ResourceList *list) {
 
-		//System::out << "insertResourceNameList size(): " << list->size() << endl;
-		insertInt(list->size()); // size
-		insertInt(list->size()); // counter
-		for (int x = 0; x < list->size(); x++)
-		{
+		insertInt(list->size()); //size
+		insertInt(list->size()); //counter
+
+		for (int x = 0; x < list->size(); x++) {
 			ResourceItem *ri = list->get(x);
-			//System::out << "insertResourceNameList() Name: " << ri->getName() << endl;
 			insertAscii(ri->getName());
 		}
 	}
 
 	void insertResourceTypeList(ResourceList *list) {
-		//System::out << "insertResourceTypeList size(): " << list->size() << endl;
-		insertInt(list->size()); // size
-		insertInt(list->size()); // counter
-		for (int x = 0; x < list->size(); x++)
-		{
+		insertInt(list->size()); //size
+		insertInt(list->size()); //counter
+
+		for (int x = 0; x < list->size(); x++) {
 			ResourceItem *ri = list->get(x);
-			//System::out << "insertResourceTypeList() Type: " << ri->getType() << endl;
 			insertAscii(ri->getType());
 		}
 	}
 
-	void insertHopperItems(InstallationObject *inso) {
+	void insertHopperItems(InstallationObject* installation) {
+		insertByte(installation->isHopperEmpty() ? 0 : 1); //Hopper Update Flag
+		insertInt(installation->getHopperListSize()); //How many items are in the hopper
+		insertInt(installation->getUpdateCounter()); //Hopper update counter
 
-		/*insertByte(0);
-		insertInt(0);
-		insertInt(0);*/
-
-
-		// Hopper Update Flag
-		insertByte(inso->getHopperItemCount() > 0 ? 1 : 0);
-		insertInt(inso->getHopperItemCount());
-		insertInt(inso->getNewHopperUpdateCounter(1));
-		for (int i = 0; i < inso->getHopperItemCount(); i++) {
-			uint64 rid = inso->getHopperItemID(i);
-			insertLong(rid);
-			float quant = inso->getHopperItemQuantity(i);
-			insertFloat(quant);
+		for (int i = 0; i < installation->getHopperListSize(); i++) {
+			insertLong(installation->getHopperItemID(i));
+			insertFloat(installation->getHopperItemQuantity(i));
 		}
 	}
 };

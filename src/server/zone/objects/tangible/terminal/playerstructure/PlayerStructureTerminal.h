@@ -21,7 +21,7 @@ public:
 
 	int useObject(Player* player);
 
-	void sendPermissionListTo(Player* player, unsigned char listtype);
+	void sendPermissionListTo(Player* player, const String& listname);
 
 protected:
 	PlayerStructureTerminal(DummyConstructorParameter* param);
@@ -41,8 +41,10 @@ public:
 
 	int useObject(Player* player);
 
-	void sendPermissionListTo(Player* player, unsigned char listtype);
+	void sendPermissionListTo(Player* player, const String& listname);
 
+protected:
+	String _param1_sendPermissionListTo__Player_String_;
 };
 
 class PlayerStructureTerminalHelper : public DistributedObjectClassHelper, public Singleton<PlayerStructureTerminalHelper> {

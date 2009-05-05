@@ -87,9 +87,6 @@ core3_IDLS =	server/chat/ChatManager.cpp \
 		server/zone/objects/area/CampActiveArea.cpp \
 		server/zone/objects/area/TestActiveArea.cpp \
 		server/zone/objects/auction/AuctionItem.cpp \
-		server/zone/objects/building/BuildingObject.cpp \
-		server/zone/objects/building/cell/CellObject.cpp \
-		server/zone/objects/building/cloningfacility/CloningFacility.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogVector.cpp \
 		server/zone/objects/creature/Creature.cpp \
@@ -112,10 +109,6 @@ core3_IDLS =	server/chat/ChatManager.cpp \
 		server/zone/objects/draftschematic/DraftSchematicValues.cpp \
 		server/zone/objects/group/GroupObject.cpp \
 		server/zone/objects/guild/Guild.cpp \
-		server/zone/objects/installation/factory/FactoryObject.cpp \
-		server/zone/objects/installation/generator/GeneratorObject.cpp \
-		server/zone/objects/installation/harvester/HarvesterObject.cpp \
-		server/zone/objects/installation/InstallationObject.cpp \
 		server/zone/objects/intangible/IntangibleObject.cpp \
 		server/zone/objects/manufacture/ManufactureSchematic.cpp \
 		server/zone/objects/mission/MissionObject.cpp \
@@ -140,6 +133,13 @@ core3_IDLS =	server/chat/ChatManager.cpp \
 		server/zone/objects/ship/ShipObject.cpp \
 		server/zone/objects/static/firework/FireworkWorld.cpp \
 		server/zone/objects/static/StaticObject.cpp \
+		server/zone/objects/structure/building/BuildingObject.cpp \
+		server/zone/objects/structure/building/cell/CellObject.cpp \
+		server/zone/objects/structure/building/cloningfacility/CloningFacility.cpp \
+		server/zone/objects/structure/installation/InstallationObject.cpp \
+		server/zone/objects/structure/installation/factory/FactoryObject.cpp \
+		server/zone/objects/structure/installation/generator/GeneratorObject.cpp \
+		server/zone/objects/structure/installation/harvester/HarvesterObject.cpp \
 		server/zone/objects/tangible/appearance/HairObject.cpp \
 		server/zone/objects/tangible/attachment/Attachment.cpp \
 		server/zone/objects/tangible/terminal/bank/BankTerminal.cpp \
@@ -164,12 +164,12 @@ core3_IDLS =	server/chat/ChatManager.cpp \
 		server/zone/objects/tangible/crafting/factorycrate/FactoryCrate.cpp \
 		server/zone/objects/tangible/Datapad.cpp \
 		server/zone/objects/tangible/deed/DeedObject.cpp \
-		server/zone/objects/tangible/deed/factorydeed/FactoryDeed.cpp \
-		server/zone/objects/tangible/deed/generatordeed/GeneratorDeed.cpp \
-		server/zone/objects/tangible/deed/harvesterdeed/HarvesterDeed.cpp \
-		server/zone/objects/tangible/deed/playerhousedeed/PlayerHouseDeed.cpp \
-		server/zone/objects/tangible/deed/vehicledeed/VehicleDeed.cpp \
+		server/zone/objects/tangible/deed/installationdeed/InstallationDeed.cpp \
+		server/zone/objects/tangible/deed/buildingdeed/BuildingDeed.cpp \
+		server/zone/objects/tangible/deed/droiddeed/DroidDeed.cpp \
+		server/zone/objects/tangible/deed/petdeed/PetDeed.cpp \
 		server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.cpp \
+		server/zone/objects/tangible/deed/vehicledeed/VehicleDeed.cpp \
 		server/zone/objects/tangible/firework/Firework.cpp \
         server/zone/objects/tangible/generic/GenericItem.cpp \
         server/zone/objects/tangible/generic/Dice.cpp \
@@ -283,9 +283,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/sui/SuiManager.cpp \
 		server/zone/managers/user/UserManagerImplementation.cpp \
 		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
-		server/zone/objects/building/BuildingObjectImplementation.cpp \
-		server/zone/objects/building/cell/CellObjectImplementation.cpp \
-		server/zone/objects/building/StructurePermissionList.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp \
 		server/zone/objects/creature/buffs/Buff.cpp \
 		server/zone/objects/creature/dots/DamageOverTime.cpp \
@@ -305,10 +302,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/manufacture/ManufactureSchematicImplementation.cpp \
 		server/zone/objects/group/GroupObjectImplementation.cpp \
 		server/zone/objects/guild/GuildImplementation.cpp \
-		server/zone/objects/installation/factory/FactoryObjectImplementation.cpp \
-		server/zone/objects/installation/generator/GeneratorObjectImplementation.cpp \
-		server/zone/objects/installation/harvester/HarvesterObjectImplementation.cpp \
-		server/zone/objects/installation/InstallationObjectImplementation.cpp \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
 		server/zone/objects/mission/MissionObjectImplementation.cpp \
 		server/zone/objects/mission/MissionObjectiveImplementation.cpp \
@@ -330,6 +323,13 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/scene/CustomizationVariables.cpp \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \
 		server/zone/objects/static/StaticObjectImplementation.cpp \
+		server/zone/objects/structure/StructurePermissionList.cpp \
+		server/zone/objects/structure/building/BuildingObjectImplementation.cpp \
+		server/zone/objects/structure/building/cell/CellObjectImplementation.cpp \
+		server/zone/objects/structure/installation/InstallationObjectImplementation.cpp \
+		server/zone/objects/structure/installation/factory/FactoryObjectImplementation.cpp \
+		server/zone/objects/structure/installation/generator/GeneratorObjectImplementation.cpp \
+		server/zone/objects/structure/installation/harvester/HarvesterObjectImplementation.cpp \
 		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
 		server/zone/objects/tangible/camokits/CamoKitImplementation.cpp \
 		server/zone/objects/tangible/campkit/CampKitImplementation.cpp \
@@ -351,12 +351,12 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/crafting/CraftingToolImplementation.cpp \
 		server/zone/objects/tangible/crafting/factorycrate/FactoryCrateImplementation.cpp \
 		server/zone/objects/tangible/deed/DeedObjectImplementation.cpp \
-		server/zone/objects/tangible/deed/factorydeed/FactoryDeedImplementation.cpp \
-		server/zone/objects/tangible/deed/generatordeed/GeneratorDeedImplementation.cpp \
-		server/zone/objects/tangible/deed/harvesterdeed/HarvesterDeedImplementation.cpp \
-		server/zone/objects/tangible/deed/playerhousedeed/PlayerHouseDeedImplementation.cpp \
-		server/zone/objects/tangible/deed/vehicledeed/VehicleDeedImplementation.cpp \
+		server/zone/objects/tangible/deed/installationdeed/InstallationDeedImplementation.cpp \
+		server/zone/objects/tangible/deed/buildingdeed/BuildingDeedImplementation.cpp \
+		server/zone/objects/tangible/deed/droiddeed/DroidDeedImplementation.cpp \
+		server/zone/objects/tangible/deed/petdeed/PetDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/resourcedeed/ResourceDeedImplementation.cpp \
+		server/zone/objects/tangible/deed/vehicledeed/VehicleDeedImplementation.cpp \
 		server/zone/objects/tangible/firework/FireworkImplementation.cpp \
         server/zone/objects/tangible/generic/GenericItemImplementation.cpp \
         server/zone/objects/tangible/generic/DiceImplementation.cpp \

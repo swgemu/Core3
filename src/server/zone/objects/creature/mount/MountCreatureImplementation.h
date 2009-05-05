@@ -55,7 +55,6 @@ class TangibleObject;
 #include "../../scene/ItemAttributes.h"
 #include "../../../packets/scene/AttributeListMessage.h"
 #include "VehicleObject.h"
-
 class MountCreatureImplementation : public MountCreatureServant, public VehicleObject {
 
 public:

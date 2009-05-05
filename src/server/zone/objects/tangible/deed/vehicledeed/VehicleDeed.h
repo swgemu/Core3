@@ -9,27 +9,29 @@
 
 class DeedObject;
 
-class TangibleObject;
-
-class packets;
+class CreatureObject;
 
 class Player;
 
-class CreatureObject;
-
-class ObjectMenuResponse;
+class SceneObject;
 
 #include "../DeedObject.h"
 
 class VehicleDeed : public DeedObject {
 public:
-	VehicleDeed(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn);
+	VehicleDeed(CreatureObject* creature, unsigned int objcrc, const UnicodeString& customname, const String& stfname);
 
-	VehicleDeed(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn);
+	VehicleDeed(unsigned long long objid, unsigned int objcrc, const UnicodeString& customname, const String& stfname);
 
 	int useObject(Player* player);
 
-	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
+	SceneObject* generateObject(Player* player);
+
+	void parseItemAttributes();
+
+	void setTargetConditionMax(unsigned int condmax);
+
+	unsigned int getTargetConditionMax();
 
 protected:
 	VehicleDeed(DummyConstructorParameter* param);
@@ -49,7 +51,13 @@ public:
 
 	int useObject(Player* player);
 
-	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
+	SceneObject* generateObject(Player* player);
+
+	void parseItemAttributes();
+
+	void setTargetConditionMax(unsigned int condmax);
+
+	unsigned int getTargetConditionMax();
 
 };
 
@@ -75,8 +83,8 @@ public:
 	VehicleDeed* _this;
 
 public:
-	VehicleDeedServant(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
-	VehicleDeedServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
+	VehicleDeedServant(CreatureObject* creature, unsigned int objcrc, const UnicodeString& customname, const String& stfname);
+	VehicleDeedServant(unsigned long long objid, unsigned int objcrc, const UnicodeString& customname, const String& stfname);
 	virtual ~VehicleDeedServant();
 
 	void _setStub(DistributedObjectStub* stub);

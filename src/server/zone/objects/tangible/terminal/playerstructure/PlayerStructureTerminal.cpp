@@ -8,7 +8,7 @@
 
 #include "../../../player/Player.h"
 
-#include "../../../building/BuildingObject.h"
+#include "../../../structure/building/BuildingObject.h"
 
 #include "../Terminal.h"
 
@@ -40,18 +40,18 @@ int PlayerStructureTerminal::useObject(Player* player) {
 		return ((PlayerStructureTerminalImplementation*) _impl)->useObject(player);
 }
 
-void PlayerStructureTerminal::sendPermissionListTo(Player* player, unsigned char listtype) {
+void PlayerStructureTerminal::sendPermissionListTo(Player* player, const String& listname) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
 		method.addObjectParameter(player);
-		method.addUnsignedCharParameter(listtype);
+		method.addAsciiParameter(listname);
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerStructureTerminalImplementation*) _impl)->sendPermissionListTo(player, listtype);
+		((PlayerStructureTerminalImplementation*) _impl)->sendPermissionListTo(player, listname);
 }
 
 /*
@@ -69,7 +69,7 @@ Packet* PlayerStructureTerminalAdapter::invokeMethod(uint32 methid, DistributedM
 		resp->insertSignedInt(useObject((Player*) inv->getObjectParameter()));
 		break;
 	case 7:
-		sendPermissionListTo((Player*) inv->getObjectParameter(), inv->getUnsignedCharParameter());
+		sendPermissionListTo((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendPermissionListTo__Player_String_));
 		break;
 	default:
 		return NULL;
@@ -82,8 +82,8 @@ int PlayerStructureTerminalAdapter::useObject(Player* player) {
 	return ((PlayerStructureTerminalImplementation*) impl)->useObject(player);
 }
 
-void PlayerStructureTerminalAdapter::sendPermissionListTo(Player* player, unsigned char listtype) {
-	return ((PlayerStructureTerminalImplementation*) impl)->sendPermissionListTo(player, listtype);
+void PlayerStructureTerminalAdapter::sendPermissionListTo(Player* player, const String& listname) {
+	return ((PlayerStructureTerminalImplementation*) impl)->sendPermissionListTo(player, listname);
 }
 
 /*

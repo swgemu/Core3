@@ -8,27 +8,23 @@
 
 #include "../DeedObject.h"
 
-#include "../../TangibleObject.h"
-
-#include "../../../../packets.h"
+#include "../../../creature/CreatureObject.h"
 
 #include "../../../player/Player.h"
 
-#include "../../../creature/CreatureObject.h"
-
-#include "../../../../packets/object/ObjectMenuResponse.h"
+#include "../../../scene/SceneObject.h"
 
 /*
  *	VehicleDeedStub
  */
 
-VehicleDeed::VehicleDeed(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn) : DeedObject(DummyConstructorParameter::instance()) {
-	_impl = new VehicleDeedImplementation(creature, tempCRC, n, tempn);
+VehicleDeed::VehicleDeed(CreatureObject* creature, unsigned int objcrc, const UnicodeString& customname, const String& stfname) : DeedObject(DummyConstructorParameter::instance()) {
+	_impl = new VehicleDeedImplementation(creature, objcrc, customname, stfname);
 	_impl->_setStub(this);
 }
 
-VehicleDeed::VehicleDeed(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn) : DeedObject(DummyConstructorParameter::instance()) {
-	_impl = new VehicleDeedImplementation(oid, tempCRC, n, tempn);
+VehicleDeed::VehicleDeed(unsigned long long objid, unsigned int objcrc, const UnicodeString& customname, const String& stfname) : DeedObject(DummyConstructorParameter::instance()) {
+	_impl = new VehicleDeedImplementation(objid, objcrc, customname, stfname);
 	_impl->_setStub(this);
 }
 
@@ -51,18 +47,54 @@ int VehicleDeed::useObject(Player* player) {
 		return ((VehicleDeedImplementation*) _impl)->useObject(player);
 }
 
-void VehicleDeed::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+SceneObject* VehicleDeed::generateObject(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
 		method.addObjectParameter(player);
-		method.addObjectParameter(omr);
+
+		return (SceneObject*) method.executeWithObjectReturn();
+	} else
+		return ((VehicleDeedImplementation*) _impl)->generateObject(player);
+}
+
+void VehicleDeed::parseItemAttributes() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
 
 		method.executeWithVoidReturn();
 	} else
-		((VehicleDeedImplementation*) _impl)->sendRadialResponseTo(player, omr);
+		((VehicleDeedImplementation*) _impl)->parseItemAttributes();
+}
+
+void VehicleDeed::setTargetConditionMax(unsigned int condmax) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addUnsignedIntParameter(condmax);
+
+		method.executeWithVoidReturn();
+	} else
+		((VehicleDeedImplementation*) _impl)->setTargetConditionMax(condmax);
+}
+
+unsigned int VehicleDeed::getTargetConditionMax() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((VehicleDeedImplementation*) _impl)->getTargetConditionMax();
 }
 
 /*
@@ -80,7 +112,16 @@ Packet* VehicleDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertSignedInt(useObject((Player*) inv->getObjectParameter()));
 		break;
 	case 7:
-		sendRadialResponseTo((Player*) inv->getObjectParameter(), (ObjectMenuResponse*) inv->getObjectParameter());
+		resp->insertLong(generateObject((Player*) inv->getObjectParameter())->_getObjectID());
+		break;
+	case 8:
+		parseItemAttributes();
+		break;
+	case 9:
+		setTargetConditionMax(inv->getUnsignedIntParameter());
+		break;
+	case 10:
+		resp->insertInt(getTargetConditionMax());
 		break;
 	default:
 		return NULL;
@@ -93,8 +134,20 @@ int VehicleDeedAdapter::useObject(Player* player) {
 	return ((VehicleDeedImplementation*) impl)->useObject(player);
 }
 
-void VehicleDeedAdapter::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
-	return ((VehicleDeedImplementation*) impl)->sendRadialResponseTo(player, omr);
+SceneObject* VehicleDeedAdapter::generateObject(Player* player) {
+	return ((VehicleDeedImplementation*) impl)->generateObject(player);
+}
+
+void VehicleDeedAdapter::parseItemAttributes() {
+	return ((VehicleDeedImplementation*) impl)->parseItemAttributes();
+}
+
+void VehicleDeedAdapter::setTargetConditionMax(unsigned int condmax) {
+	return ((VehicleDeedImplementation*) impl)->setTargetConditionMax(condmax);
+}
+
+unsigned int VehicleDeedAdapter::getTargetConditionMax() {
+	return ((VehicleDeedImplementation*) impl)->getTargetConditionMax();
 }
 
 /*
@@ -132,11 +185,11 @@ DistributedObjectAdapter* VehicleDeedHelper::createAdapter(DistributedObjectStub
  *	VehicleDeedServant
  */
 
-VehicleDeedServant::VehicleDeedServant(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn, int tp) : DeedObjectImplementation(creature, tempCRC, n, tempn, tp) {
+VehicleDeedServant::VehicleDeedServant(CreatureObject* creature, unsigned int objcrc, const UnicodeString& customname, const String& stfname) : DeedObjectImplementation(creature, objcrc, customname, stfname) {
 	_classHelper = VehicleDeedHelper::instance();
 }
 
-VehicleDeedServant::VehicleDeedServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp) : DeedObjectImplementation(oid, tempCRC, n, tempn, tp) {
+VehicleDeedServant::VehicleDeedServant(unsigned long long objid, unsigned int objcrc, const UnicodeString& customname, const String& stfname) : DeedObjectImplementation(objid, objcrc, customname, stfname) {
 	_classHelper = VehicleDeedHelper::instance();
 }
 

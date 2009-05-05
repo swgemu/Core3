@@ -194,6 +194,18 @@ void TangibleObjectImplementation::parseItemAttributes() {
 	setObjectCount(itemAttributes->getIntAttribute(attr));
 }
 
+void TangibleObjectImplementation::updateCustomName(Player* player, const String& value) {
+	setCustomName(value);
+
+	//Send update delta.
+	TangibleObjectDeltaMessage3* delta3 = new TangibleObjectDeltaMessage3(_this);
+	delta3->updateName(value);
+	delta3->close();
+
+	player->sendMessage(delta3);
+}
+
+/*
 void TangibleObjectImplementation::synchronizedUIListen(Player* player, int value) {
 
 	// Send TANO7 Baseline
@@ -203,7 +215,7 @@ void TangibleObjectImplementation::synchronizedUIListen(Player* player, int valu
 
 void TangibleObjectImplementation::synchronizedUIStopListen(Player* player, int value) {
 
-}
+}*/
 
 void TangibleObjectImplementation::generateSkillMods(AttributeListMessage* alm, int skillModType, int skillModValue) {
 	switch (skillModType) {

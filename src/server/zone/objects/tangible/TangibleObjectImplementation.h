@@ -109,7 +109,7 @@ protected:
 
 	bool inCombat;
 
-	//Slicing
+	//TODO: Slicing needs reworking soon.
 	bool sliced;
 	bool slicable;
 	uint64 slicerID;
@@ -119,6 +119,7 @@ protected:
 	bool firstCraftingUpdate;
 
 public:
+	//TODO: Are these 6 made up lol?
 	static const int HAIR = 0x30000001;
 	static const int TERMINAL = 0x30000002;
 	static const int TICKETCOLLECTOR = 0x30000003;
@@ -353,8 +354,7 @@ public:
 
 	virtual void parseItemAttributes();
 
-	void synchronizedUIListen(Player* player, int value);
-	void synchronizedUIStopListen(Player* player, int value);
+	virtual void updateCustomName(Player* player, const String& value);
 
 	virtual void updateCraftingValues(DraftSchematic* draftSchematic) {
 

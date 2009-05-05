@@ -77,6 +77,12 @@ class FactionPointList;
 
 class ActiveArea;
 
+class CloningTerminal;
+
+class CloningFacility;
+
+class InsuranceTerminal;
+
 class CreaturePet;
 
 #include "../creature/CreatureObject.h"
@@ -991,6 +997,10 @@ public:
 
 	void unconsent(String& name);
 
+	float getTotalInventoryPower();
+
+	void subtractInventoryPower(unsigned int amount);
+
 	void setCloningFacility(CloningFacility* facility);
 
 	void addConsentEntry(const String& name);
@@ -1012,6 +1022,10 @@ public:
 	bool isPowerboosted();
 
 	bool isAcceptingBandFlourishes();
+
+	bool isPrivileged();
+
+	bool consumeLots(unsigned char lots);
 
 	unsigned char calculateIncapacitationTimer();
 
@@ -1986,6 +2000,10 @@ public:
 
 	void unconsent(String& name);
 
+	float getTotalInventoryPower();
+
+	void subtractInventoryPower(unsigned int amount);
+
 	void setCloningFacility(CloningFacility* facility);
 
 	void addConsentEntry(const String& name);
@@ -2007,6 +2025,10 @@ public:
 	bool isPowerboosted();
 
 	bool isAcceptingBandFlourishes();
+
+	bool isPrivileged();
+
+	bool consumeLots(unsigned char lots);
 
 	unsigned char calculateIncapacitationTimer();
 

@@ -79,10 +79,13 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/player/sui/inputbox/SuiInputBox.idl \
 				server/zone/objects/player/sui/colorpicker/SuiColorPicker.idl \
 				server/zone/objects/player/badges/Badges.idl \
-				server/zone/objects/installation/factory/FactoryObject.idl \
-				server/zone/objects/installation/generator/GeneratorObject.idl \
-				server/zone/objects/installation/harvester/HarvesterObject.idl \
-				server/zone/objects/installation/InstallationObject.idl \
+				server/zone/objects/structure/building/cell/CellObject.idl \
+				server/zone/objects/structure/building/BuildingObject.idl \
+				server/zone/objects/structure/building/cloningfacility/CloningFacility.idl \
+				server/zone/objects/structure/installation/factory/FactoryObject.idl \
+				server/zone/objects/structure/installation/generator/GeneratorObject.idl \
+				server/zone/objects/structure/installation/harvester/HarvesterObject.idl \
+				server/zone/objects/structure/installation/InstallationObject.idl \
 				server/zone/objects/tangible/TangibleObject.idl \
 				server/zone/objects/tangible/Container.idl \
 				server/zone/objects/tangible/Inventory.idl \
@@ -156,12 +159,12 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/powerup/Powerup.idl \
 				server/zone/objects/tangible/holocron/Holocron.idl \
 				server/zone/objects/tangible/firework/Firework.idl \
-				server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.idl \
-				server/zone/objects/tangible/deed/factorydeed/FactoryDeed.idl \
-				server/zone/objects/tangible/deed/generatordeed/GeneratorDeed.idl \
-				server/zone/objects/tangible/deed/harvesterdeed/HarvesterDeed.idl \
+				server/zone/objects/tangible/deed/installationdeed/InstallationDeed.idl \
+				server/zone/objects/tangible/deed/buildingdeed/BuildingDeed.idl \
+				server/zone/objects/tangible/deed/droiddeed/DroidDeed.idl \
+				server/zone/objects/tangible/deed/petdeed/PetDeed.idl \
 				server/zone/objects/tangible/deed/vehicledeed/VehicleDeed.idl \
-				server/zone/objects/tangible/deed/playerhousedeed/PlayerHouseDeed.idl \
+				server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.idl \
 				server/zone/objects/tangible/deed/DeedObject.idl \
 				server/zone/objects/tangible/camokits/CamoKit.idl \
 				server/zone/objects/tangible/campkit/CampKit.idl \
@@ -182,9 +185,6 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/intangible/IntangibleObject.idl \
 				server/zone/objects/group/GroupObject.idl \
 				server/zone/objects/guild/Guild.idl \
-				server/zone/objects/building/cell/CellObject.idl \
-				server/zone/objects/building/BuildingObject.idl \
-				server/zone/objects/building/cloningfacility/CloningFacility.idl \
 				server/zone/managers/crafting/CraftingManager.idl \
 				server/zone/objects/draftschematic/DraftSchematic.idl \
 				server/zone/objects/draftschematic/DraftSchematicGroup.idl \

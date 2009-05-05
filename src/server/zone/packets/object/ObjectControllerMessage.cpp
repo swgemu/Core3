@@ -51,7 +51,7 @@
 
 #include "../../managers/player/PlayerManager.h"
 
-#include "../../managers/planet/PlanetManager.h"
+#include "../../managers/structure/StructureManager.h"
 
 #include "../../managers/item/ItemManager.h"
 #include "../../managers/combat/CombatManager.h"
@@ -79,8 +79,7 @@
 
 #include "../../packets.h"
 
-ObjectControllerMessage::ObjectControllerMessage(uint64 objid, uint32 header1,
-		uint32 header2, bool comp) :
+ObjectControllerMessage::ObjectControllerMessage(uint64 objid, uint32 header1, uint32 header2, bool comp) :
 	BaseMessage() {
 	insertShort(0x05);
 	insertInt(0x80CE5E46); // CRC
@@ -359,8 +358,8 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 
 	uint32 actioncntr = pack->parseInt();
 	uint32 actionCRC = pack->parseInt();
-	uint64 target;
-	UnicodeString name;
+	uint64 target; //?
+	UnicodeString name; //?
 
 	//System::out << "acrc: " << actionCRC << "\n";
 
@@ -1456,8 +1455,7 @@ void ObjectControllerMessage::parseGetAttributes(Player* player, Message* pack) 
 	}
 }
 
-void ObjectControllerMessage::parseRadialRequest(Player* player, Message* pack,
-		RadialManager* radialManager) {
+void ObjectControllerMessage::parseRadialRequest(Player* player, Message* pack, RadialManager* radialManager) {
 	radialManager->handleRadialRequest(player, pack);
 }
 
@@ -2433,8 +2431,7 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 	}
 }
 
-void ObjectControllerMessage::parseSetWaypointActiveStatus(Player* player,
-		Message* pack) {
+void ObjectControllerMessage::parseSetWaypointActiveStatus(Player* player, Message* pack) {
 	uint64 wpId = pack->parseLong();
 
 	WaypointObject* wp = player->getWaypoint(wpId);
@@ -2445,160 +2442,114 @@ void ObjectControllerMessage::parseSetWaypointActiveStatus(Player* player,
 	wp->switchStatus();
 }
 
-void ObjectControllerMessage::parseRequestCharacterMatch(Player* player,
-		Message* pack) {
+void ObjectControllerMessage::parseRequestCharacterMatch(Player* player, Message* pack) {
 	//pack->shiftOffset(8); //Shift past the blank long. Eventually parse stuff here. Not yet. lols.
 	player->getPlayersNearYou();
 }
 
-void ObjectControllerMessage::parseResourceEmptyHopper(Player* player,
-		Message* pack) {
-	//cout << "parseResourceEmptyHopper: " <<  pack->toString() << endl;
+/**
+ * This method is called when either discard or retrieve resources is clicked on a harvester.
+ */
+void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* pack) {
+	pack->shiftOffset(20); //Shift past the playerid.
 
-	//System::out << "parseResourceEmptyHopper: " <<  pack->toString() << endl;
+	uint64 harvesterid = pack->parseLong();
+	uint64 resourceid = pack->parseLong();
 
-	//skip objId + old size
-	pack->shiftOffset(12);
+	float quantity = (float) pack->parseInt(); // need to verify the quantity exists in the hopper
 
-	//Grab the harvester object id
-	pack->shiftOffset(8); // skip passed player
-	uint64 hId = pack->parseLong();
-	uint64 rId = pack->parseLong();
-	uint32 quantity = pack->parseInt(); // need to verify the quantity exists in the hopper
-	uint8 byte1 = pack->parseByte(); // Retrieve vs Discard
-	uint8 byte2 = pack->parseByte(); // checksum?
+	bool discard = (bool) pack->parseByte(); // Are we retrieving or discarding.
+	uint8 byte2 = pack->parseByte(); // unknown
 
-	//System::out << "ObjectControllerMessage::parseResourceEmptyHopper(), hId: " << hex << hId << dec << " rId : " << rId << " id: " << rId << " quantity: " << quantity << endl;
+	SceneObject* object = player->getZone()->lookupObject(harvesterid);
 
-	SceneObject* object = player->getZone()->lookupObject(hId);
+	if (object != NULL) {
+		if (object->isTangible() && ((TangibleObject*)object)->isInstallation()) {
+			InstallationObject* installation = (InstallationObject*) object;
 
-	if (object == NULL) {
-		//System::out << "ObjectControllerMessage::parseResourceEmptyHopper() bad object" << endl;
-		return;
+			if (installation->isHarvester() || installation->isGenerator()) {
+				HarvesterObject* harvester = (HarvesterObject*) installation;
+
+				try {
+					harvester->wlock(player);
+
+					if (discard) {
+						harvester->discardResource(player, resourceid, quantity);
+					} else {
+						harvester->retrieveResource(player, resourceid, quantity);
+					}
+
+					harvester->unlock();
+				} catch (...) {
+					player->error("Unhandled exception in ObjectControllerMessage::parseResourceEmptyHopper()");
+					harvester->unlock();
+				}
+
+				GenericResponse* gr = new GenericResponse(player, 0xED, 1, byte2);
+				player->sendMessage(gr);
+			}
+		}
 	}
+}
 
-	if (!object->isTangible()) {
-		//System::out << "ObjectControllerMessage::parseResourceEmptyHopper() bad tano" << endl;
-		return;
-	}
+void ObjectControllerMessage::parsePermissionListModify(Player* player, Message* pack) {
+	pack->shiftOffset(8); //Skip players objectid.
 
-	TangibleObject* tano = (TangibleObject*) object;
+	UnicodeString arguments;
+	pack->parseUnicode(arguments);
 
-	if (tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER) {
-		//System::out << "ObjectControllerMessage::parseResourceEmptyHopper() bad harvester" << endl;
-		return;
-	}
+	StringTokenizer tokenizer(arguments.toString());
+	tokenizer.setDelimeter(" ");
 
-	InstallationObject* inso = (InstallationObject*) tano;
+	String playername;
+	String listname;
+	String action;
 
-	Zone* zone = player->getZone();
-	if (zone == NULL)
-		return;
+	tokenizer.getStringToken(playername);
+	tokenizer.getStringToken(listname);
+	tokenizer.getStringToken(action);
 
-	ResourceManager* resourceManager =
-			zone->getZoneServer()->getResourceManager();
-	if (resourceManager == NULL)
-		return;
+	bool add = (action.compareTo("add") == 0);
 
-	bool makeNewResource = true;
+	SceneObject* targetObject = player->getTarget();
 
-	//before we mess with the resources, we want to make sure we have room.
-	if (byte1 == 0 && player->getInventory()->getUnequippedItemCount() >= InventoryImplementation::MAXUNEQUIPPEDCOUNT) {
-		player->sendSystemMessage("You don't have enough space in your inventory");
-		return;
-	}
+	//Check to see if they have an installation targetted first.
+	if (targetObject != NULL && targetObject->isTangible() && ((TangibleObject*)targetObject)->isInstallation()) {
+		InstallationObject* installation = (InstallationObject*) targetObject;
 
-	quantity = (uint32) inso->removeHopperItem(rId, quantity);
-	if (quantity >= 1) {
-		if (byte1 == 0) // Retreive vs Discard
-		{
-			ResourceContainer* newRcno = new ResourceContainer(
-					player->getNewItemID());
-			String resourceName = resourceManager->getResourceNameByID(rId);
-			newRcno->setResourceName(resourceName);
-			newRcno->setContents(quantity);
-			resourceManager->setResourceData(newRcno, false);
-			player->addInventoryResource(newRcno);
+		if (installation->isOnAdminList(player)) {
+			//Found a targetted installation and player is on the adminlist.
+			installation->modifyPermissionList(player, listname, playername, add);
+			return;
 		}
 	}
 
-	// need to send to anyone looking
-	InstallationObjectDeltaMessage7* dinso7 =
-			new InstallationObjectDeltaMessage7(inso);
-	dinso7->updateHopper();
-	dinso7->updateHopperItem(rId);
-	dinso7->updateHopperSize();
-	dinso7->close();
-	player->sendMessage(dinso7);
+	//If they are in a building, try to use it.
+	if (player->isInBuilding()) {
+		BuildingObject* building = (BuildingObject*) player->getBuilding();
 
-	GenericResponse* gr = new GenericResponse(player, 0xED, 1, byte2);
-	//System::out << "GenericResponse: " <<  gr->toString() << endl;
-	player->sendMessage(gr);
-
-	/*
-	 InstallationObjectDeltaMessage3* dinso3 = new InstallationObjectDeltaMessage3(inso);
-	 dinso3->updateOperating(true);
-	 dinso3->close();
-	 player->sendMessage(dinso3);
-
-	 InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
-	 dinso7->updateOperating(true);
-	 dinso7->close();
-	 player->sendMessage(dinso7);
-	 */
-
-}
-
-// Structures
-void ObjectControllerMessage::parsePermissionListModify(Player* player, Message* pack) {
-	//Skip target id
-	pack->shiftOffset(8);
-
-	//Grab the command string:
-	UnicodeString commands;
-	String commandStr;
-	pack->parseUnicode(commands);
-	commandStr = commands.toString();
-
-	//Parse the vars from the command string
-	String name;
-	String temp;
-	uint8 listType = 1;
-	bool add = false;
-
-	//Set the name of player being modified, list type & determine if player is being add/removed
-	StringTokenizer cmdTok(commandStr);
-	cmdTok.setDelimeter(" ");
-	cmdTok.getStringToken(name);
-	name = name.toLowerCase();
-
-	cmdTok.getStringToken(temp);
-	if(temp.compareTo("ENTRY") == 0) {
-		listType = StructurePermissionList::ENTRYLIST;
-	} else if(temp.compareTo("HOPPER") == 0) {
-		listType = StructurePermissionList::HOPPERLIST;
-	} else if(temp.compareTo("BAN") == 0) {
-		listType = StructurePermissionList::BANLIST;
-	} else if(temp.compareTo("VENDOR") == 0) {
-		listType = StructurePermissionList::VENDORLIST;
-	} else if(temp.compareTo("ADMIN") == 0) {
-		listType = StructurePermissionList::ADMINLIST;
-	} else {
-		listType = StructurePermissionList::NONE;
+		if (building != NULL && building->isOnAdminList(player)) {
+			building->modifyPermissionList(player, listname, playername, add);
+			return;
+		}
 	}
 
-	//determine if the action is for adding/removing. remove = default.
-	cmdTok.getStringToken(temp);
-	if(temp.compareTo("add") == 0) {
-		add = true;
+	//Search for a nearby installation that they might be referring to.
+	for (int i = 0; i < player->inRangeObjectCount(); i++) {
+		SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_getStub());
+
+		if (object->isTangible() && ((TangibleObject*)object)->isInstallation()) {
+			InstallationObject* installation = (InstallationObject*) object;
+
+			if (installation->isOnAdminList(player)) {
+				//Found a nearby installation that player is on the admin list.
+				installation->modifyPermissionList(player, listname, playername, add);
+				return;
+			}
+		}
 	}
 
-	//Send to buildingobject handler
-	BuildingObject* blo = (BuildingObject*)player->getBuilding();
-	if(blo == NULL)
-		return;
-
-	blo->handlePermissionListModify(player, listType, name, add);
+	player->sendSystemMessage("@player_structure:no_building"); //You must be in a building, be near an installation, or have one targeted to do that.
 }
 
 
@@ -3080,8 +3031,7 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack, PlayerMana
 	}
 }
 
-void ObjectControllerMessage::handleDeathblow(Player* player, Message* packet,
-		CombatManager* combatManager) {
+void ObjectControllerMessage::handleDeathblow(Player* player, Message* packet, CombatManager* combatManager) {
 	uint64 targetID = packet->parseLong();
 
 	SceneObject* object = player->getZone()->lookupObject(targetID);
@@ -3109,278 +3059,185 @@ void ObjectControllerMessage::handleDeathblow(Player* player, Message* packet,
 	}
 }
 
-void ObjectControllerMessage::parsePlaceStructure(Player* player,
-		Message* packet) {
-	player->sendSystemMessage("Placing Structure");
-	packet->parseInt(); // Empty Data
-	packet->parseInt(); // Empty Data
+void ObjectControllerMessage::parsePlaceStructure(Player* player, Message* packet) {
+	//packet->parseInt(); // Empty Data
+	//packet->parseInt(); // Empty Data
+	packet->shiftOffset(8); //Skip Empty Data
 
 	UnicodeString data;
 	packet->parseUnicode(data);
 
 	StringTokenizer tokenizer(data.toString());
 
-	String objectID;
-	tokenizer.getStringToken(objectID);
+	String objectid;
+	tokenizer.getStringToken(objectid);
 
 	float x = tokenizer.getFloatToken();
-	float y = tokenizer.getFloatToken();
+	float z = tokenizer.getFloatToken();
 
-	int orient = tokenizer.getIntToken();
+	uint8 orient = (uint8) tokenizer.getIntToken();
 
-	uint64 toID = (uint64)Long::valueOf(objectID);
+	uint64 deedid = (uint64) Long::valueOf(objectid);
 
-	PlanetManager* planet = player->getZone()->getPlanetManager();
+	SceneObject* obj = player->getInventoryItem(deedid);
 
-	planet->placePlayerStructure(player, toID, x, y, orient);
-}
-
-void ObjectControllerMessage::parseSynchronizedUIListen(Player *player,
-		Message *pack) {
-	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
-	int value = pack->parseInt();
-
-	SceneObject* object = player->getZone()->lookupObject(objectid);
-
-	if (object == NULL)
-		return;
-
-	object->synchronizedUIListen(player, value);
-}
-
-void ObjectControllerMessage::parseSynchronizedUIStopListening(Player *player,
-		Message *pack) {
-	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
-	int value = pack->parseInt();
-
-	SceneObject* object = player->getZone()->lookupObject(objectid);
-
-	if (object == NULL)
-		return;
-
-	object->synchronizedUIStopListen(player, value);
-}
-
-void ObjectControllerMessage::parseHarvesterActivate(Player *player,
-		Message *pack) {
-	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
-
-	SceneObject* object = player->getZone()->lookupObject(objectid);
-
-	if (object == NULL)
-		return;
-
-	if (!object->isTangible())
-		return;
-
-	TangibleObject* tano = (TangibleObject*) object;
-
-	if (tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
-		return;
-
-	InstallationObject* inso = (InstallationObject*) tano;
-
-	try {
-		inso->wlock(player);
-
-		InstallationObjectDeltaMessage3* dinso3 =
-			new InstallationObjectDeltaMessage3(inso);
-		dinso3->updateOperating(true);
-		dinso3->close();
-		player->sendMessage(dinso3);
-
-		InstallationObjectDeltaMessage7* dinso7 =
-			new InstallationObjectDeltaMessage7(inso);
-		dinso7->updateOperating(true);
-		dinso7->updateExtractionRate(inso->getActualRate());
-		dinso7->close();
-		player->sendMessage(dinso7);
-
-		inso->unlock();
-	} catch (...) {
-		inso->unlock();
-	}
-}
-
-void ObjectControllerMessage::parseHarvesterDeActivate(Player *player,
-		Message *pack) {
-	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
-
-	SceneObject* object = player->getZone()->lookupObject(objectid);
-
-	if (object == NULL)
-		return;
-
-	if (!object->isTangible())
-		return;
-
-	TangibleObject* tano = (TangibleObject*) object;
-
-	if (tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
-		return;
-
-	InstallationObject* inso = (InstallationObject*) tano;
-
-	try {
-		inso->wlock(player);
-
-		InstallationObjectDeltaMessage3* dinso3 =
-			new InstallationObjectDeltaMessage3(inso);
-		dinso3->updateOperating(false);
-		dinso3->close();
-		player->sendMessage(dinso3);
-
-		InstallationObjectDeltaMessage7* dinso7 =
-			new InstallationObjectDeltaMessage7(inso);
-		dinso7->updateOperating(false);
-		dinso7->close();
-		player->sendMessage(dinso7);
-
-		inso->unlock();
-	} catch (...) {
-		inso->unlock();
-	}
-}
-
-void ObjectControllerMessage::parseHarvesterDiscardHopper(Player *player,
-		Message *pack) {
-	//skip objId + old size
-	pack->shiftOffset(12);
-
-	//if (pack->getSize())
-
-	uint64 hId = pack->parseLong();
-	SceneObject* object = player->getZone()->lookupObject(hId);
-
-	if (object == NULL) {
-		player->error(
-				"ObjectControllerMessage::parseResourceEmptyHopper() bad object");
+	if (obj == NULL) {
+		player->sendSystemMessage("@player_structure:no_possession"); //You no longer are in possession of the deed for this structure. Aborting construction.
 		return;
 	}
 
-	if (!object->isTangible()) {
-		player->error(
-				"ObjectControllerMessage::parseResourceEmptyHopper() bad tano");
+	if (obj->isTangible() && ((TangibleObject*) obj)->isDeed()) {
+		DeedObject* deed = (DeedObject*) obj;
+
+		StructureManager* structuremanager = player->getZone()->getPlanetManager()->getStructureManager();
+		structuremanager->beginConstruction(player, deed, x, z, orient);
 		return;
 	}
 
-	TangibleObject* tano = (TangibleObject*) object;
-	if (tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER) {
-		player->error(
-				"ObjectControllerMessage::parseResourceEmptyHopper() bad harvester");
-		return;
-	}
-
-	InstallationObject* inso = (InstallationObject*) tano;
-
-	// Need to loop through and remove each item in hopper
-
-
-	//Grab the harvester object id
-	/*pack->shiftOffset(8); // skip passed player
-	 uint64 hId = pack->parseLong();
-	 uint64 rId = pack->parseLong();
-	 uint32 quantity = pack->parseInt(); // need to verify the quantity exists in the hopper
-	 uint8 byte1 = pack->parseByte(); // Retrieve vs Discard
-	 uint8 byte2 = pack->parseByte(); // checksum?
-
-	 System::out << "ObjectControllerMessage::parseResourceEmptyHopper(), hId: " << hex << hId << dec << " rId : " << rId << " id: " << rId << " quantity: " << quantity << endl;
-
-
-	 InstallationObject* inso = (InstallationObject*) tano;
-
-	 Zone* zone = player->getZone();
-	 if (zone == NULL)
-	 return;
-
-
-	 ResourceManager* resourceManager = zone->getZoneServer()->getResourceManager();
-	 if (resourceManager == NULL)
-	 return;
-
-	 bool makeNewResource = true;
-
-	 quantity = inso->removeHopperItem(rId, quantity);
-	 if (quantity >= 1)
-	 {
-	 if (byte1 == 0) // Retreive vs Discard
-	 {
-	 ResourceContainer* newRcno = new ResourceContainer(player->getNewItemID());
-	 String resourceName = resourceManager->getResourceNameByID(rId);
-	 newRcno->setResourceName(resourceName);
-	 newRcno->setContents(quantity);
-	 resourceManager->setResourceData(newRcno, false);
-	 player->addInventoryResource(newRcno);
-	 }
-	 }
-	 // need to send to anyone looking
-
-
-	 InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
-	 dinso7->updateHopper();
-	 dinso7->updateHopperItem(rId);
-	 dinso7->updateHopperSize();
-	 dinso7->close();
-	 player->sendMessage(dinso7);
-
-	 GenericResponse* gr = new GenericResponse(player, 0xED, 1, byte2);
-	 //System::out << "GenericResponse: " <<  gr->toString() << endl;
-	 player->sendMessage(gr);
-
-	 */
-
-	/*
-	 InstallationObjectDeltaMessage3* dinso3 = new InstallationObjectDeltaMessage3(inso);
-	 dinso3->updateOperating(true);
-	 dinso3->close();
-	 player->sendMessage(dinso3);
-
-	 InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
-	 dinso7->updateOperating(true);
-	 dinso7->close();
-	 player->sendMessage(dinso7);
-	 */
-
+	//Give some type of error message that construction had internal problems.
 }
 
-void ObjectControllerMessage::parseHarvesterGetResourceData(Player *player,
-		Message *pack) {
+void ObjectControllerMessage::parseSynchronizedUIListen(Player* player, Message* pack) {
+	uint64 objectid = pack->parseLong();
+
+	SceneObject* object = player->getZone()->lookupObject(objectid);
+
+	if (object != NULL) {
+		if (object->isTangible() && ((TangibleObject*)object)->isInstallation()) {
+			InstallationObject* installation = (InstallationObject*) object;
+
+			//TODO: Some reason this doesn't work when moved into the actual installation?? I DNO?
+			//InstallationObjectMessage7* inso7 = new InstallationObjectMessage7(installation);
+			//player->sendMessage(inso7);
+			installation->addOperator(player);
+		}
+	}
+}
+
+void ObjectControllerMessage::parseSynchronizedUIStopListening(Player* player, Message* pack) {
+	uint64 objectid = pack->parseLong();
+
+	SceneObject* object = player->getZone()->lookupObject(objectid);
+
+	if (object != NULL) {
+		if (object->isTangible() && ((TangibleObject*)object)->isInstallation())
+			((InstallationObject*)object)->removeOperator(player);
+	}
+}
+
+void ObjectControllerMessage::parseHarvesterActivate(Player* player, Message* pack) {
+	uint64 objectid = pack->parseLong();
+
+	SceneObject* object = player->getZone()->lookupObject(objectid);
+
+	if (object != NULL) {
+		if (object->isTangible() && ((TangibleObject*) object)->isInstallation()) {
+			InstallationObject* installation = (InstallationObject*) object;
+
+			//TODO: How does factory get started?
+			if (installation->isHarvester() || installation->isGenerator()) {
+				HarvesterObject* harvester = (HarvesterObject*) installation;
+
+				try {
+					harvester->wlock(player);
+
+					harvester->start(player);
+
+					harvester->unlock();
+				} catch (...) {
+					harvester->unlock();
+				}
+			}
+		}
+	}
+}
+
+void ObjectControllerMessage::parseHarvesterDeActivate(Player* player, Message* pack) {
 	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
 
 	SceneObject* object = player->getZone()->lookupObject(objectid);
 
-	if (object == NULL)
-		return;
+	if (object != NULL) {
+		if (object->isTangible() && ((TangibleObject*) object)->isInstallation()) {
+			InstallationObject* installation = (InstallationObject*) object;
 
-	if (!object->isTangible())
-		return;
+			//TODO: How does factory get shutdown?
+			if (installation->isHarvester() || installation->isGenerator()) {
+				HarvesterObject* harvester = (HarvesterObject*) installation;
 
-	TangibleObject* tano = (TangibleObject*) object;
+				try {
+					harvester->wlock(player);
 
-	if (tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
-		return;
+					harvester->shutdown();
 
-	HarvesterObject* hino = (HarvesterObject*) tano;
-
-	HarvesterResourceDataMessage* hrdm = new HarvesterResourceDataMessage(
-			player, hino);
-	player->sendMessage(hrdm);
+					harvester->unlock();
+				} catch (...) {
+					harvester->unlock();
+				}
+			}
+		}
+	}
 }
 
-void ObjectControllerMessage::parseHarvesterSelectResource(Player *player,
-		Message *pack) {
+/**
+ * This is sent when the player clicks empty harvester...
+ */
+void ObjectControllerMessage::parseHarvesterDiscardHopper(Player* player, Message* pack) {
+	uint64 objectid = pack->parseLong();
+
+	SceneObject* object = player->getZone()->lookupObject(objectid);
+
+	if (object != NULL) {
+		if (object->isTangible() && ((TangibleObject*)object)->isInstallation()) {
+			InstallationObject* installation = (InstallationObject*) object;
+
+			if (installation->isHarvester() || installation->isGenerator()) {
+
+				HarvesterObject* harvester = (HarvesterObject*) installation;
+
+				try {
+					harvester->wlock(player);
+					harvester->emptyHarvester(player);
+					harvester->unlock();
+				} catch(...) {
+					player->error("Unreported exception discarding hopper contents in ObjectControllerMessage()");
+					harvester->unlock();
+				}
+			}
+		}
+	}
+}
+
+/**
+ * This method occurs when the player has sent a ResourceHarvesterActivatePageMessage.
+ * \param player The player requestion the resource data.
+ * \param pack The original packet.
+ */
+void ObjectControllerMessage::parseHarvesterGetResourceData(Player* player, Message* pack) {
+	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
+
+	SceneObject* object = player->getZone()->lookupObject(objectid);
+
+	if (object != NULL) {
+		if (object->isTangible() && ((TangibleObject*)object)->isInstallation()) {
+			InstallationObject* installation = (InstallationObject*) object;
+
+			if (installation->isHarvester() || installation->isGenerator()) {
+				HarvesterResourceDataMessage* hrdm = new HarvesterResourceDataMessage(player, (HarvesterObject*) installation);
+				player->sendMessage(hrdm);
+			}
+		}
+	}
+}
+
+void ObjectControllerMessage::parseHarvesterSelectResource(Player* player, Message* pack) {
 	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
 	SceneObject* object = player->getZone()->lookupObject(objectid);
 
-	// Unicode - common!
-	UnicodeString resourceIDUnicode("");
-	pack->parseUnicode(resourceIDUnicode);
+	UnicodeString uresourceid("");
+	pack->parseUnicode(uresourceid);
 
-	String sResourceID = resourceIDUnicode.toString();
-
-	//System::out << "harvesterSelectResource: " << sResourceID << endl;
-
-	uint64 resourceID = (uint64)Long::valueOf(sResourceID);
+	uint64 resourceid = (uint64) Long::valueOf(uresourceid.toString());
 
 	//return;
 	if (object == NULL)
@@ -3391,29 +3248,29 @@ void ObjectControllerMessage::parseHarvesterSelectResource(Player *player,
 
 	TangibleObject* tano = (TangibleObject*) object;
 
-	if (tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
-		return;
+	if (tano->isInstallation()) {
+		InstallationObject* installation = (InstallationObject*) tano;
 
-	InstallationObject* inso = (InstallationObject*) tano;
+		if (installation->isHarvester() || installation->isGenerator()) {
+			try {
+				installation->wlock(player);
 
-	try {
-		inso->wlock(player);
+				InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(installation);
+				dinso7->updateSelectedResourceID(resourceid);
+				dinso7->updateExtractionRate(installation->getExtractionRate());
+				dinso7->close();
+				player->sendMessage(dinso7);
 
-		InstallationObjectDeltaMessage7* dinso7 =
-			new InstallationObjectDeltaMessage7(inso);
-		dinso7->updateActiveResource(resourceID);
-		dinso7->updateExtractionRate(inso->getActualRate());
-		dinso7->close();
-		player->sendMessage(dinso7);
-
-		inso->unlock();
-	} catch (...) {
-		inso->unlock();
+				installation->unlock();
+			} catch (...) {
+				installation->unlock();
+			}
+		}
 	}
 }
 
-void ObjectControllerMessage::parseExtractObject(Player* player,
-		Message* packet) {
+void ObjectControllerMessage::parseExtractObject(Player* player, Message* packet) {
+	System::out << "In parseExtractObject()" << endl;
 	uint64 objectID = packet->parseLong();
 	SceneObject* object = player->getInventoryItem(objectID);
 
@@ -4096,7 +3953,7 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player, Message* pac
 					try {
 						building->lock();
 
-						if (building->hasCell(destinationID) && !building->isOnAdminList(player)) {
+						if (building->containsCell(destinationID) && !building->isOnAdminList(player)) {
 							player->sendSystemMessage("container_error_message", "container08"); //You do not have permission to access that container.
 							building->unlock();
 							return;
@@ -4194,7 +4051,7 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player, Message* pac
 				try {
 					building->lock();
 
-					if (building->hasCell(destinationID) && !building->isOnAdminList(player)) {
+					if (building->containsCell(destinationID) && !building->isOnAdminList(player)) {
 						player->sendSystemMessage("container_error_message", "container08"); //You do not have permission to access that container.
 						building->unlock();
 						return;

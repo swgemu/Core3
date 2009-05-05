@@ -46,7 +46,7 @@ import "../../../player/Player";
 
 import "../../../tangible/TangibleObject";
 
-import "../../../building/cloningfacility/CloningFacility";
+import "../../../structure/building/cloningfacility/CloningFacility";
 
 import "../Terminal";
 

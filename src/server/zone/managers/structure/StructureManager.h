@@ -13,6 +13,8 @@ class ZoneProcessServerImplementation;
 
 class Player;
 
+class SceneObject;
+
 class BuildingObject;
 
 class InstallationObject;
@@ -27,11 +29,25 @@ class StructureManager : public DistributedObjectStub {
 public:
 	StructureManager(Zone* zone, ZoneProcessServerImplementation* processor);
 
+	void serialize();
+
+	void deserialize();
+
+	void beginConstruction(Player* player, DeedObject* deed, float x, float z, unsigned char orient = 0);
+
+	void endConstruction(Player* player, DeedObject* deed, float x, float z, unsigned char orient = 0);
+
+	void createInstallation(Player* player, InstallationObject* installation, bool staticobject = false);
+
+	void createBuilding(Player* player, BuildingObject* building, bool staticobject = false);
+
+	void deleteStructure(SceneObject* structure);
+
 	void loadStructures();
 
 	void unloadStructures();
 
-	void saveStructures(bool refresh);
+	void saveStructures(bool reschedule = false);
 
 	BuildingObject* findBuildingType(const String& word, float targetX, float targetY);
 
@@ -42,14 +58,6 @@ public:
 	CloningFacility* getCloningFacility(unsigned long long oid);
 
 	CloningFacility* getClosestCloningFacility(Player* player);
-
-	void spawnTempStructure(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-
-	void spawnInstallation(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-
-	void spawnHarvester(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-
-	void spawnFactory(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 
 	void spawnBuilding(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 
@@ -75,11 +83,25 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void serialize();
+
+	void deserialize();
+
+	void beginConstruction(Player* player, DeedObject* deed, float x, float z, unsigned char orient);
+
+	void endConstruction(Player* player, DeedObject* deed, float x, float z, unsigned char orient);
+
+	void createInstallation(Player* player, InstallationObject* installation, bool staticobject);
+
+	void createBuilding(Player* player, BuildingObject* building, bool staticobject);
+
+	void deleteStructure(SceneObject* structure);
+
 	void loadStructures();
 
 	void unloadStructures();
 
-	void saveStructures(bool refresh);
+	void saveStructures(bool reschedule);
 
 	BuildingObject* findBuildingType(const String& word, float targetX, float targetY);
 
@@ -90,14 +112,6 @@ public:
 	CloningFacility* getCloningFacility(unsigned long long oid);
 
 	CloningFacility* getClosestCloningFacility(Player* player);
-
-	void spawnTempStructure(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-
-	void spawnInstallation(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-
-	void spawnHarvester(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-
-	void spawnFactory(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 
 	void spawnBuilding(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 
