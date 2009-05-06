@@ -17,9 +17,9 @@ class Player;
 
 class IntangibleObject : public SceneObject {
 public:
-	IntangibleObject(unsigned long long oid, String& n, String& stringFile, String& stringName, unsigned int objCRC, SceneObject* cont);
+	IntangibleObject(unsigned long long objid, String& customname, String& stffile, String& stfname, unsigned int objcrc, SceneObject* cont);
 
-	IntangibleObject(unsigned long long oid, int tp);
+	IntangibleObject(unsigned long long objid, int tp);
 
 	void sendTo(Player* player, bool doClose = true);
 
@@ -85,7 +85,7 @@ public:
 	IntangibleObject* _this;
 
 public:
-	IntangibleObjectServant(unsigned long long oid, int type);
+	IntangibleObjectServant(unsigned long long objid, int type);
 	virtual ~IntangibleObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

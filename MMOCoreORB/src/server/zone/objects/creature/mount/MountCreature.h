@@ -25,9 +25,7 @@ class VehicleObject;
 
 class MountCreature : public CreatureObject {
 public:
-	MountCreature(Player* linkCreature, const String& name, unsigned int itnocrc, unsigned int objCRC, unsigned long long oid);
-
-	MountCreature(Player* linkCreature, unsigned long long oid, unsigned int tempcrc, const UnicodeString& n, const String& tempn);
+	MountCreature(unsigned long long objid, unsigned int tempcrc, const UnicodeString& customname, const String& stfname, Player* linkedcreature);
 
 	bool isDisabled();
 
@@ -125,7 +123,7 @@ public:
 	MountCreature* _this;
 
 public:
-	MountCreatureServant(unsigned long long oid);
+	MountCreatureServant(unsigned long long objid);
 	virtual ~MountCreatureServant();
 
 	void _setStub(DistributedObjectStub* stub);

@@ -32,7 +32,7 @@ void ResourceDeedImplementation::init() {
 }
 
 void ResourceDeedImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
-	//omr->addRadialParent(20, 3, "@ui_radial:item_use");
+	omr->addRadialParent(20, 3, "@ui_radial:item_use");
 
 	omr->finish();
 
@@ -43,22 +43,21 @@ int ResourceDeedImplementation::useObject(Player* player) {
 
 	ResourceManager* resourceManager = player->getZone()->getZoneServer()->getResourceManager();
 
-	SuiListBox* sui1 = new SuiListBox(player, SuiWindowType::FREE_RESOURCE);//beginning of sui chain
+	SuiListBox* sui = new SuiListBox(player, SuiWindowType::FREE_RESOURCE);//beginning of sui chain
 
-	sui1->setPromptTitle("Resources");
-	sui1->setPromptText("Choose resource class.");
-	sui1->setCancelButton(true, "");
-	player->addSuiBox(sui1);
-	resourceManager->generateSUI(player, sui1);
-
-	player->setResourceDeedID(_this->getObjectID());
-	uint64 objID = player->getResourceDeedID();
-	player->sendMessage(sui1->generateMessage());
+	sui->setUsingObjectID(getObjectID());
+	sui->setPromptTitle("@veteran:resource_title"); //Resources
+	sui->setPromptText("@veteran:choose_class"); //Choose resource class
+	sui->setCancelButton(true, "@cancel");
+	player->addSuiBox(sui);
+	resourceManager->generateSUI(player, sui);
+	player->sendMessage(sui->generateMessage());
 
 	return 1;
 }
 
 SceneObject* ResourceDeedImplementation::generateObject(Player* player) {
+	//NOTE: Resource deeds don't actually generate an object, but use Sui Boxes instead.
 	return NULL;
 }
 

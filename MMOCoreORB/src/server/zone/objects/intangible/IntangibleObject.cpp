@@ -14,13 +14,13 @@
  *	IntangibleObjectStub
  */
 
-IntangibleObject::IntangibleObject(unsigned long long oid, String& n, String& stringFile, String& stringName, unsigned int objCRC, SceneObject* cont) : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new IntangibleObjectImplementation(oid, n, stringFile, stringName, objCRC, cont);
+IntangibleObject::IntangibleObject(unsigned long long objid, String& customname, String& stffile, String& stfname, unsigned int objcrc, SceneObject* cont) : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new IntangibleObjectImplementation(objid, customname, stffile, stfname, objcrc, cont);
 	_impl->_setStub(this);
 }
 
-IntangibleObject::IntangibleObject(unsigned long long oid, int tp) : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new IntangibleObjectImplementation(oid, tp);
+IntangibleObject::IntangibleObject(unsigned long long objid, int tp) : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new IntangibleObjectImplementation(objid, tp);
 	_impl->_setStub(this);
 }
 
@@ -202,7 +202,7 @@ DistributedObjectAdapter* IntangibleObjectHelper::createAdapter(DistributedObjec
  *	IntangibleObjectServant
  */
 
-IntangibleObjectServant::IntangibleObjectServant(unsigned long long oid, int type) : SceneObjectImplementation(oid, type) {
+IntangibleObjectServant::IntangibleObjectServant(unsigned long long objid, int type) : SceneObjectImplementation(objid, type) {
 	_classHelper = IntangibleObjectHelper::instance();
 }
 

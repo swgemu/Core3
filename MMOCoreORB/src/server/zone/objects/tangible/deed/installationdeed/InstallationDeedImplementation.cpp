@@ -90,13 +90,18 @@ void InstallationDeedImplementation::init() {
 }
 
 int InstallationDeedImplementation::useObject(Player* player) {
-	if (player->isInBuilding()) {
-		player->sendSystemMessage("player_structure", "not_inside"); //You can not place a structure while you are inside a building.
+	if (player->isMounted()) {
+		player->sendSystemMessage("@player_structure:cant_place_mounted"); //You may not place a structure while mounted or riding in a vehicle.
+		return 0;
+	}
+
+ 	if (player->isInBuilding()) {
+		player->sendSystemMessage("@player_structure:not_inside"); //You can not place a structure while you are inside a building.
 		return 0;
 	}
 
 	if (player->isInANoBuildArea()) {
-		player->sendSystemMessage("player_structure", "not_permitted"); //Building is not permitted here.
+		player->sendSystemMessage("@player_structure:not_permitted"); //Building is not permitted here.
 		return 0;
 	}
 

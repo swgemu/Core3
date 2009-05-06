@@ -56,12 +56,8 @@ import "VehicleObject";
 include "../../../packets/object/ObjectMenuResponse";
 
 interface MountCreature implements CreatureObject {
-	MountCreature(Player linkCreature, const String name, unsigned int itnocrc, unsigned int objCRC, unsigned long oid) {
-		super(oid);
-	}
-	
-	MountCreature(Player linkCreature, unsigned long oid, unsigned int tempcrc, const UnicodeString n, const String tempn){
-		super(oid);
+	MountCreature(unsigned long objid, unsigned int tempcrc, const UnicodeString customname, const String stfname, Player linkedcreature){
+		super(objid);
 	}
 	
 	boolean isDisabled();
