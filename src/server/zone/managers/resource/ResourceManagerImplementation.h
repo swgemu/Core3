@@ -234,7 +234,7 @@ private:
 	void getHarvestingType(CreatureObject* creatureObj, String& harvestType, int& harvestAmount, int type);
 
 	uint64 getNextResourceID() {
-		return nextResourceID++;
+		return (nextResourceID += 1);
 	}
 };
 
