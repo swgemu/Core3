@@ -1202,51 +1202,58 @@ void SuiManager::handleDiagnose(uint32 boxID, Player* player) {
 	}
 }
 
-void SuiManager::handleFreeResource(uint32 boxID, Player* player, uint32 cancel, int index) {
+void SuiManager::handleFreeResource(uint32 boxid, Player* player, uint32 cancel, int index) {
 	try{
 		player->wlock();
-		if (!player->hasSuiBox(boxID)){
+
+		if (!player->hasSuiBox(boxid)) {
 			player->unlock();
 			return;
 		}
 
-		SuiBox* sui = player->getSuiBox(boxID);
+		SuiBox* sui = player->getSuiBox(boxid);
+
 		ResourceManager* resManager = player->getZone()->getZoneServer()->getResourceManager();
+
 		if (sui->isListBox()) {
-			SuiListBox* listBox = (SuiListBox*)sui;
-			if (cancel!=1){
-				if (index==-1){//sui returns -1 if nothing is selected
+			SuiListBox* listBox = (SuiListBox*) sui;
+
+			if (cancel != 1) {
+				if (index == -1) { //sui returns -1 if nothing is selected
 					if(listBox->hasGeneratedMessage())
 						listBox->clearOptions();
+
 					player->sendMessage(listBox->generateMessage());
 					player->unlock();
 					return;
 				}
+
 				String choice = listBox->getMenuItemName(index);
 				player->addSuiBoxChoice(choice);
 
 				SuiListBoxVector* choicesList = player->getSuiBoxChoices();
 
-				if (resManager->containsResource(choice)){//display the resource stats
+				if (resManager->containsResource(choice)) {//display the resource stats
 					/*
 					 * If we get to a resource but there are still more list boxes ahead of
 					 * this list box, we delete them so that we can insert the final box.
 					 */
 					bool hasNextBox = false;
 					SuiListBox* nextListBox;
-					if (listBox->getNextBox()!=0 && player->hasSuiBox(listBox->getNextBox())){
+
+					if (listBox->getNextBox() != 0 && player->hasSuiBox(listBox->getNextBox())) {
 						hasNextBox = true;
 						nextListBox = (SuiListBox*)player->getSuiBox(listBox->getNextBox());
 					}
-					while (hasNextBox){
-						if (nextListBox->getNextBox()==0){
+
+					while (hasNextBox) {
+						if (nextListBox->getNextBox()==0) {
 							uint32 zero = 0;
 							nextListBox->setPreviousBox(zero);
 							player->removeSuiBox(nextListBox->getBoxID());
 							nextListBox->finalize();
 							hasNextBox=false;
-						}
-						else if (player->getSuiBox(nextListBox->getNextBox())->isListBox()){
+						} else if (player->getSuiBox(nextListBox->getNextBox())->isListBox()) {
 							uint32 nextBox = nextListBox->getNextBox();
 							uint32 zero = 0;
 							nextListBox->setNextBox(zero);
@@ -1264,28 +1271,27 @@ void SuiManager::handleFreeResource(uint32 boxID, Player* player, uint32 cancel,
 					finalListBox->setPreviousBox(listBox->getBoxID());
 					finalListBox->setBackButton(true, "");
 					finalListBox->setPromptTitle(choice);
-					finalListBox->setPromptText("Please confirm that you would like to select this resource as your Veteran Reward Crate of Resources. Use the BACK button to go back and select a different resource.");
+					finalListBox->setPromptText("@veteran:confirm_choose_type"); //Please confirm that you would like to select this resource as your Veteran Reward Crate of Resources. Use the CANCEL button to go back and select a different resource.
 					resManager->generateSUI(player, finalListBox);
 					player->sendMessage(finalListBox->generateMessage());
-				}
-				else{//use a listbox to show the next set of classes to choose from
-					if (listBox->getNextBox()!=0){ //already a listbox ahead so no need to create one
+				} else {
+					//use a listbox to show the next set of classes to choose from
+					if (listBox->getNextBox() != 0) { //already a listbox ahead so no need to create one
 						SuiBox* nextSui = player->getSuiBox(listBox->getNextBox());
-						if (nextSui->isListBox()){
+						if (nextSui->isListBox()) {
 							SuiListBox* nextListBox = (SuiListBox*)nextSui;
-							String text = ("Choose resource class from " + choice);
+							String text = ("@veteran:choose_sub_class " + choice); //Choose resource class from
 							nextListBox->setPromptText(text);
 							resManager->generateSUI(player, nextListBox);
 							player->sendMessage(nextListBox->generateMessage());
 						}
-					}
-					else if (listBox->getNextBox()==0){ //no listbox ahead so we create one
+					} else if (listBox->getNextBox() == 0) { //no listbox ahead so we create one
 						SuiListBox* listBox2 = new SuiListBox(player, SuiWindowType::FREE_RESOURCE);
 						player->addSuiBox(listBox2);
 						listBox->setNextBox(listBox2->getBoxID());
 						listBox2->setPreviousBox(listBox->getBoxID());
-						listBox2->setPromptTitle("Resources");
-						String text = ("Choose resource class from " + choice);
+						listBox2->setPromptTitle("@veteran:resource_title"); //Resources
+						String text = ("@veteran:choose_sub_class " + choice); //Choose resource class from
 						listBox2->setPromptText(text);
 						listBox2->setBackButton(true, "");
 						resManager->generateSUI(player, listBox2);
@@ -1293,19 +1299,22 @@ void SuiManager::handleFreeResource(uint32 boxID, Player* player, uint32 cancel,
 					}
 				}
 			}
-			if (cancel==1 && listBox->getPreviousBox()!=0){//clicked BACK. return to previous menu
+			if (cancel==1 && listBox->getPreviousBox() != 0) { //clicked BACK. return to previous menu
 				SuiBox* prevSui = player->getSuiBox(listBox->getPreviousBox());
-				if (prevSui->isListBox()){
+
+				if (prevSui->isListBox()) {
 					SuiListBox* prevListBox = (SuiListBox*)prevSui;
 					player->removeLastSuiBoxChoice();
+
 					if(prevListBox->hasGeneratedMessage())
 						prevListBox->clearOptions();
+
 					player->sendMessage(prevListBox->generateMessage());
 				}
 			}
-			else if (cancel==1 && listBox->getPreviousBox()==0){//clicked CANCEL. removing every menu
-				while (listBox->getNextBox()!=0 && player->hasSuiBox(listBox->getNextBox())){
-					if (player->getSuiBox(listBox->getNextBox())->isListBox()){
+			else if (cancel == 1 && listBox->getPreviousBox() == 0) {//clicked CANCEL. removing every menu
+				while (listBox->getNextBox()!=0 && player->hasSuiBox(listBox->getNextBox())) {
+					if (player->getSuiBox(listBox->getNextBox())->isListBox()) {
 						uint32 nextBox = listBox->getNextBox();
 						uint32 zero = 0;
 						listBox->setNextBox(zero);
@@ -1317,11 +1326,12 @@ void SuiManager::handleFreeResource(uint32 boxID, Player* player, uint32 cancel,
 				}
 
 				uint32 zero = 0;
-				if (player->hasSuiBox(listBox->getBoxID())){
+				if (player->hasSuiBox(listBox->getBoxID())) {
 					listBox->setPreviousBox(zero);
 					player->removeSuiBox(listBox->getBoxID());
 					listBox->finalize();
 				}
+
 				player->clearSuiBoxChoices();
 			}
 		}

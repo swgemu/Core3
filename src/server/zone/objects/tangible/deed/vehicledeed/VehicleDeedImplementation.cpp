@@ -45,6 +45,9 @@ which carries forward this exception.
 #include "../../../player/Player.h"
 #include "../../../draftschematic/DraftSchematic.h"
 #include "../../../../packets/object/ObjectMenuResponse.h"
+#include "../../../creature/mount/MountCreature.h"
+#include "../../../../managers/item/ItemManager.h"
+#include "../../../intangible/IntangibleObject.h"
 
 #include "VehicleDeedImplementation.h"
 
@@ -73,6 +76,47 @@ void VehicleDeedImplementation::init() {
 
 
 int VehicleDeedImplementation::useObject(Player* player) {/*
+	MountCreature* vehicle = (MountCreature*) generateObject(player);
+
+	try {
+		player->unlock();
+
+		vehicle->wlock();
+
+		vehicle->call();
+
+		vehicle->unlock();
+
+		player->wlock();
+
+		_this->sendDestroyTo(player);
+
+		Zone* zone = player->getZone();
+		if (zone != NULL) {
+			ZoneServer* zoneServer = zone->getZoneServer();
+
+			ItemManager* itemManager;
+
+			if (zoneServer != NULL && ((itemManager = zoneServer->getItemManager()) != NULL)) {
+				player->removeInventoryItem(objectID);
+				itemManager->deletePlayerItem(player, _this, false);
+
+				_this->finalize();
+			}
+		}
+
+		return 1;
+	} catch (...) {
+		vehicle->unlock();
+		player->wlock();
+	}*/
+
+	player->sendSystemMessage("Sorry! Vehicle deeds have been temporarily disabled.");
+	return 0;
+
+	//Destroy deed.
+
+	/*
 	TODO: REVISIT THIS ASAP
 	Datapad* datapad = player->getDatapad();
 
@@ -143,7 +187,25 @@ int VehicleDeedImplementation::useObject(Player* player) {/*
 }
 
 SceneObject* VehicleDeedImplementation::generateObject(Player* player) {
-	return NULL;
+	Datapad* datapad = player->getDatapad();
+
+	String customname = getTargetCustomName().toString();
+	IntangibleObject* controldevice = new IntangibleObject(player->getNewItemID(), customname, getTargetStfFile(), getTargetStfName(), getTargetObjectCRC(), (SceneObject*) datapad);
+
+	MountCreature* vehicle = new MountCreature(player->getNewItemID(), getTargetObjectCRC(), getTargetCustomName(), getTargetStfName(), player);
+	//vehicle->setObjectFileName(getTargetObjectFile());
+	vehicle->setZoneProcessServer(player->getZoneProcessServer());
+	vehicle->setCustomName(getTargetCustomName());
+	vehicle->setDatapadItem(controldevice);
+	vehicle->setMaxCondition(getTargetConditionMax());
+
+	controldevice->setWorldObject(vehicle);
+	controldevice->setParent((SceneObject*) datapad);
+
+	player->addDatapadItem(controldevice);
+	controldevice->sendTo(player, true);
+
+	return vehicle;
 }
 
 void VehicleDeedImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {

@@ -56,14 +56,12 @@ class TangibleObject;
 #include "../../../packets/scene/AttributeListMessage.h"
 #include "VehicleObject.h"
 class MountCreatureImplementation : public MountCreatureServant, public VehicleObject {
+protected:
+	void init();
 
 public:
-	MountCreatureImplementation(Player* linkCreature, const String& name, uint32 itnocrc, uint32 objCRC, uint64 oid);
-	MountCreatureImplementation(Player* linkCreature, uint64 oid, uint32 tempcrc, const UnicodeString& n, const String& tempn);
-
+	MountCreatureImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& customname, const String& stfname, Player* linkedcreature);
 	~MountCreatureImplementation();
-
-	void init();
 
 	void sendTo(Player* player, bool doClose = true);
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);

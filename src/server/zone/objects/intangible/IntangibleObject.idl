@@ -49,13 +49,13 @@ import "../scene/SceneObject";
 import "../player/Player";
 
 interface IntangibleObject implements SceneObject {
-	IntangibleObject(unsigned long oid, String n, String stringFile, 
-			String stringName, unsigned int objCRC, SceneObject cont) {
-		super(oid, int type);
+	IntangibleObject(unsigned long objid, String customname, String stffile, 
+			String stfname, unsigned int objcrc, SceneObject cont) {
+		super(objid, int type);
 	}
 	
-	IntangibleObject(unsigned long oid, int tp) {
-		super(oid, int type);
+	IntangibleObject(unsigned long objid, int tp) {
+		super(objid, int type);
 	}
 	
 	void sendTo(Player player, boolean doClose = true);

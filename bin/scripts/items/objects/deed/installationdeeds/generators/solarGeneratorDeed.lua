@@ -48,7 +48,7 @@ solarGeneratorDeed = Deed:new {
 	targetObjectType = TANGIBLE,
 	targetObjectSubType = GENERATOR,
 	targetStfFile = "installation_n",
-	targetStfName = "fusion_generator",
+	targetStfName = "solar_generator",
 	
 	--Required for EnterStructurePlacementModeMessage
 	targetObjectFile = "object/installation/generators/shared_power_generator_solar_style_1.iff",
@@ -65,7 +65,7 @@ solarGeneratorDeed = Deed:new {
 	surplusMaintenance = 0,
 	surplusPower = 0,
 	
-	harvesterType = RESOURCETYPE_FUSION,
+	harvesterType = RESOURCETYPE_SOLAR,
 	
 	lotSize = 1
 }

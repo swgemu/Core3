@@ -51,23 +51,23 @@ which carries forward this exception.
 #include "../../ZoneClientSession.h"
 
 
-IntangibleObjectImplementation::IntangibleObjectImplementation(uint64 oid, String n, String stringFile,
-		String stringName, uint32 objCRC, SceneObject* cont)
-	: IntangibleObjectServant(oid, INTANGIBLE) {
+IntangibleObjectImplementation::IntangibleObjectImplementation(uint64 objid, String customname, String stffile,
+		String stfname, uint32 objcrc, SceneObject* cont)
+	: IntangibleObjectServant(objid, INTANGIBLE) {
 
-	customName = n;
+	customName = customname;
 
-	stfName = stringFile;
-	stfFile = stringName;
+	stfName = stffile;
+	stfFile = stfname;
 
-	objectCRC = objCRC;
+	objectCRC = objcrc;
 
 	parent = cont;
 
 	init();
 }
 
-IntangibleObjectImplementation::IntangibleObjectImplementation(uint64 id, int tp) : IntangibleObjectServant(id, tp) {
+IntangibleObjectImplementation::IntangibleObjectImplementation(uint64 objid, int tp) : IntangibleObjectServant(objid, tp) {
 
 	init();
 }

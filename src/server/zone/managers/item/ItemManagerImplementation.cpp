@@ -489,7 +489,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(Player* pl
 		}
 	} else if (objecttype & TangibleObjectImplementation::VEHICLE){
 		if (player != NULL) {
-			item = new MountCreature(player,objectid, objectcrc, objectname, objecttemp);
+			item = new MountCreature(objectid, objectcrc, objectname, objecttemp, player);
 			MountCreature* mount = (MountCreature*) item;
 
 			item->setZoneProcessServer(player->getZoneProcessServer());
@@ -1825,7 +1825,7 @@ SceneObject* ItemManagerImplementation::loadDatapadLinkedItem(Player* player, ui
 			case 0x4E3534:
 			case 0xAF6D9F4F:
 			case 0x5FAC5956:
-				item = new MountCreature(player, objectid, objectcrc, UnicodeString(objectname), objecttemp);
+				item = new MountCreature(objectid, objectcrc, UnicodeString(objectname), objecttemp, player);
 
 				break;
 			default:

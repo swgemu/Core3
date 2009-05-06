@@ -61,9 +61,8 @@ protected:
 	uint32 status;
 
 public:
-	IntangibleObjectImplementation(uint64 oid, String n, String stringFile,
-			String stringName, uint32 objCRC, SceneObject* cont);
-	IntangibleObjectImplementation(uint64 oid, int tp);
+	IntangibleObjectImplementation(uint64 objid, String customname, String stffile, String stfname, uint32 objcrc, SceneObject* cont);
+	IntangibleObjectImplementation(uint64 objid, int tp);
 
 	void init();
 

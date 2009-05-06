@@ -58,36 +58,19 @@ which carries forward this exception.
 
 #include "../../../ZoneClientSession.h"
 #include "VehicleObject.h"
+MountCreatureImplementation::MountCreatureImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& customname, const String& stfname, Player* linkedcreature)
+	: MountCreatureServant(objid), VehicleObject(linkedcreature) {
 
-MountCreatureImplementation::MountCreatureImplementation(Player* linkCreature, const String& name, uint32 itnocrc, uint32 objCRC, uint64 oid) : MountCreatureServant(oid), VehicleObject(linkCreature) {
-
-	creatureLinkID = linkCreature->getObjectID();
-
-	stfFile = "monster_name";
-	stfName = name;
-
-	objectCRC = objCRC;
-
-	StringBuffer loggingname;
-	loggingname << "Mount = 0x" << oid;
-	setLoggingName(loggingname.toString());
-	setZoneProcessServer(linkCreature->getZoneProcessServer());
-	init();
-}
-
-MountCreatureImplementation::MountCreatureImplementation(Player* linkCreature, uint64 oid, uint32 tempcrc, const UnicodeString& n, const String& tempn)
-	: MountCreatureServant(oid), VehicleObject(linkCreature) {
-
-	creatureLinkID = linkCreature->getObjectID();
+	creatureLinkID = linkedcreature->getObjectID();
 
 	objectCRC = tempcrc;
 
-	customName = n;
+	customName = customname;
 	stfFile = "monster_name";
-	stfName = tempn;
+	stfName = stfname;
 
 	StringBuffer loggingname;
-	loggingname << "Mount = 0x" << oid;
+	loggingname << "Mount = 0x" << objid;
 	setLoggingName(loggingname.toString());
 
 	init();

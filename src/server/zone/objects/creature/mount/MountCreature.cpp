@@ -22,13 +22,8 @@
  *	MountCreatureStub
  */
 
-MountCreature::MountCreature(Player* linkCreature, const String& name, unsigned int itnocrc, unsigned int objCRC, unsigned long long oid) : CreatureObject(DummyConstructorParameter::instance()) {
-	_impl = new MountCreatureImplementation(linkCreature, name, itnocrc, objCRC, oid);
-	_impl->_setStub(this);
-}
-
-MountCreature::MountCreature(Player* linkCreature, unsigned long long oid, unsigned int tempcrc, const UnicodeString& n, const String& tempn) : CreatureObject(DummyConstructorParameter::instance()) {
-	_impl = new MountCreatureImplementation(linkCreature, oid, tempcrc, n, tempn);
+MountCreature::MountCreature(unsigned long long objid, unsigned int tempcrc, const UnicodeString& customname, const String& stfname, Player* linkedcreature) : CreatureObject(DummyConstructorParameter::instance()) {
+	_impl = new MountCreatureImplementation(objid, tempcrc, customname, stfname, linkedcreature);
 	_impl->_setStub(this);
 }
 
@@ -363,7 +358,7 @@ DistributedObjectAdapter* MountCreatureHelper::createAdapter(DistributedObjectSt
  *	MountCreatureServant
  */
 
-MountCreatureServant::MountCreatureServant(unsigned long long oid) : CreatureObjectImplementation(oid) {
+MountCreatureServant::MountCreatureServant(unsigned long long objid) : CreatureObjectImplementation(objid) {
 	_classHelper = MountCreatureHelper::instance();
 }
 
