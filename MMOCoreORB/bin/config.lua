@@ -50,11 +50,11 @@ MakeStatus = 1
 ORB = ""
 
 
-DBHost = "192.168.1.180"
+DBHost = "127.0.0.1"
 DBPort = 3306
 DBName = "swgemu"
 DBUser = "swgemu"
-DBPass = "swgemu"
+DBPass = "123456"
 
 -- vBulletin 3 integration
 ForumsDBHost = ""
@@ -79,7 +79,7 @@ PingAllowedConnections = 3000
 
 ZoneProcessingThreads = 10
 ZoneAllowedConnections = 30000
-ZoneGalaxyID = 2 --The actual zone server's galaxyID. Should coordinate with your login server.
+ZoneGalaxyID = 2 --The actual zone server's galaxyID. Should coordinate with the login server.
 
 --Status Server Config
 StatusPort = 44455
