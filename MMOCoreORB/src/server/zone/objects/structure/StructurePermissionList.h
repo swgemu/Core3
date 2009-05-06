@@ -84,15 +84,15 @@ public:
 
 	inline uint8 getPermission(const String& listname) {
 		if (listname == "BAN")
-			return pow(2, BAN);
+			return (uint8)pow(2, BAN);
 		else if (listname == "ENTRY")
-			return pow(2, ENTRY);
+			return (uint8)pow(2, ENTRY);
 		else if (listname == "HOPPER")
-			return pow(2, HOPPER);
+			return (uint8)pow(2, HOPPER);
 		else if (listname == "VENDOR")
-			return pow(2, VENDOR);
+			return (uint8)pow(2, VENDOR);
 
-		return pow(2, ADMIN);
+		return (uint8)pow(2, ADMIN);
 	}
 
 	inline bool isOwner(Player* player) {

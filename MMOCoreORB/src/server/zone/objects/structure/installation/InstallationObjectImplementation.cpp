@@ -149,6 +149,18 @@ void InstallationObjectImplementation::sendTo(Player* player, bool doClose) {
 		SceneObjectImplementation::close(client);
 }
 
+void InstallationObjectImplementation::synchronizedUIListen(Player* player, int value) {
+
+	addOperator(player);
+
+}
+
+void InstallationObjectImplementation::synchronizedUIStopListen(Player* player, int value) {
+
+	removeOperator(player);
+
+}
+
 void InstallationObjectImplementation::sendPermissionListTo(Player* player, const String& listname) {
 	permissionList->sendTo(player, listname);
 }

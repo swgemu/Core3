@@ -58,6 +58,10 @@ public:
 	void sendTo(Player* player, bool doClose = true);
 	void sendPermissionListTo(Player* player, const String& listname);
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
+
+	void synchronizedUIListen(Player* player, int value);
+	void synchronizedUIStopListen(Player* player, int value);
+
 	void sendCustomNamePromptTo(Player* player);
 
 	void updateCustomName(Player* player, const String& value);

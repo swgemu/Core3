@@ -3097,32 +3097,30 @@ void ObjectControllerMessage::parsePlaceStructure(Player* player, Message* packe
 	//Give some type of error message that construction had internal problems.
 }
 
-void ObjectControllerMessage::parseSynchronizedUIListen(Player* player, Message* pack) {
-	uint64 objectid = pack->parseLong();
+void ObjectControllerMessage::parseSynchronizedUIListen(Player *player,
+		Message *pack) {
+	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
+	int value = pack->parseInt();
 
 	SceneObject* object = player->getZone()->lookupObject(objectid);
 
-	if (object != NULL) {
-		if (object->isTangible() && ((TangibleObject*)object)->isInstallation()) {
-			InstallationObject* installation = (InstallationObject*) object;
+	if (object == NULL)
+		return;
 
-			//TODO: Some reason this doesn't work when moved into the actual installation?? I DNO?
-			//InstallationObjectMessage7* inso7 = new InstallationObjectMessage7(installation);
-			//player->sendMessage(inso7);
-			installation->addOperator(player);
-		}
-	}
+	object->synchronizedUIListen(player, value);
 }
 
-void ObjectControllerMessage::parseSynchronizedUIStopListening(Player* player, Message* pack) {
-	uint64 objectid = pack->parseLong();
+void ObjectControllerMessage::parseSynchronizedUIStopListening(Player *player,
+		Message *pack) {
+	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
+	int value = pack->parseInt();
 
 	SceneObject* object = player->getZone()->lookupObject(objectid);
 
-	if (object != NULL) {
-		if (object->isTangible() && ((TangibleObject*)object)->isInstallation())
-			((InstallationObject*)object)->removeOperator(player);
-	}
+	if (object == NULL)
+		return;
+
+	object->synchronizedUIStopListen(player, value);
 }
 
 void ObjectControllerMessage::parseHarvesterActivate(Player* player, Message* pack) {
