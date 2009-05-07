@@ -86,7 +86,9 @@ CreaturePetImplementation::CreaturePetImplementation(Player* owner, uint64 oid) 
 	loggingname << "Pet = 0x" << oid;
 	setLoggingName(loggingname.toString());
 
+	optionsBitmask = 0x1080;
 	pvpStatusBitmask = 0x01;
+
 	setHeight(growth);
 	setLastGrowth(lastGrowth.getTime());
 
@@ -116,6 +118,8 @@ void CreaturePetImplementation::init() {
 	lootContainer = NULL;
 
 	nextAttack = -1;
+	linkType = 0xFFFFFFFF;//;
+
 
 }
 
@@ -224,9 +228,6 @@ void CreaturePetImplementation::createItemAttributes() {
 	String attr;
 
 	//init species
-	attr = "objectCRC";
-	itemAttributes->setIntAttribute(attr, getObjectCRC());
-
 	attr = "petType";
 	itemAttributes->setIntAttribute(attr, petType);
 
@@ -280,9 +281,6 @@ void CreaturePetImplementation::parseItemAttributes() {
 
 	attr = "lastGrowth";
 	setLastGrowth(itemAttributes->getUnsignedLongAttribute(attr));
-
-	attr = "objectCRC";
-	setObjectCRC(itemAttributes->getIntAttribute(attr));
 
 	attr = "petType";
 	setPetType(itemAttributes->getIntAttribute(attr));
@@ -398,12 +396,13 @@ void CreaturePetImplementation::parseItemAttributes() {
 		customCommand = itemAttributes->getStringAttribute(commandAttr.toString());
 		commandHelper->trainCommand(i,customCommand);
 	}
+
+	if (isMount())
+		trainMount();
 }
 
 void CreaturePetImplementation::loadItems() {
-	if (inventory == NULL)
-		inventory = new Inventory(_this);
-
+	inventory = NULL;
 	lootContainer = NULL;
 
 	Weapon* weapon = NULL;
@@ -498,7 +497,6 @@ void CreaturePetImplementation::loadItems() {
 			weapon->setAttackSpeed(wpAttackSpeed);
 			weapon->setEquipped(true);
 
-			addInventoryItem(weapon);
 			setWeapon(weapon);
 		} catch (...) {
 			System::out
@@ -516,23 +514,27 @@ void CreaturePetImplementation::sendRadialResponseTo(Player* player, ObjectMenuR
 		ss << "CreaturePetImplementation::sendRadialResponseTo() " << objectCRC;
 		info(ss.toString());
 	}
-	if (getGroupID() != 0 && player->getGroupID() == getGroupID()) {
-		if (player == player->getGroupObject()->getLeader()) {
-			if (getGroupID() == player->getGroupID()) {
-				RadialMenuParent* kick = new RadialMenuParent(40, 1, "Kick from Group");
-				kick->addRadialMenuItem(41, 3, "Disband");
-				omr->addRadialParent(kick);
+	if (!commandHelper->getBaseCommand(PetCommandHelper::PETGROUP).isEmpty()) {
+		if (getGroupID() != 0 && player->getGroupID() == getGroupID()) {
+			if (player == player->getGroupObject()->getLeader()) {
+				if (getGroupID() == player->getGroupID()) {
+					RadialMenuParent* kick = new RadialMenuParent(40, 1, "Kick from Group");
+					kick->addRadialMenuItem(41, 3, "Disband");
+					omr->addRadialParent(kick);
+				}
+				else
+					omr->addRadialParent(37, 3, "Group Invite");
 			}
-			else
+		} else if ((player == getLinkedCreature() && getLinkedCreature()->getGroupID() == 0) ||
+				(getLinkedCreature()->getGroupID() != 0 && player->getGroupID() == getLinkedCreature()->getGroupID() && player == getLinkedCreature()->getGroupObject()->getLeader())) {
 				omr->addRadialParent(37, 3, "Group Invite");
 		}
-	} else if ((player == getLinkedCreature() && getLinkedCreature()->getGroupID() == 0) ||
-			(getLinkedCreature()->getGroupID() != 0 && player->getGroupID() == getLinkedCreature()->getGroupID() && player == getLinkedCreature()->getGroupObject()->getLeader())) {
-			omr->addRadialParent(37, 3, "Group Invite");
 	}
-	if (petType == CHPETTRAINEDMOUNT) {
+
+	if (player == getLinkedCreature() && isMount()) {
 		omr->addRadialParent(205, 1, "@pet/pet_menu:menu_enter_exit");
 	}
+
 	String skillBox = "outdoors_creaturehandler_novice";
 	if (!player->hasSkillBox(skillBox)) {
 		omr->finish();
@@ -587,9 +589,9 @@ void CreaturePetImplementation::sendRadialResponseTo(Player* player, ObjectMenuR
 		if (player->hasSkillBox(skillBox))
 			training->addRadialMenuItem(158, 3, commandHelper->getStfDesc(PetCommandHelper::PETGROUP));
 
-		/*skillBox = "outdoors_creaturehandler_support_01";
-		if (player->hasSkillBox(skillBox))
-			omr->addRadialParent(157, 3, "Train Mount");*/
+		skillBox = "outdoors_creaturehandler_support_01";
+		if (player->hasSkillBox(skillBox) && !isMount() && isMountTrainable())
+			omr->addRadialParent(157, 3, "Train Mount");
 
 		skillBox = "outdoors_creaturehandler_support_02";
 		if (getLinkedCreature()->hasSkillBox(skillBox))
@@ -602,7 +604,7 @@ void CreaturePetImplementation::sendRadialResponseTo(Player* player, ObjectMenuR
 		skillBox = "outdoors_creaturehandler_master";
 		if (player->hasSkillBox(skillBox)){
 			training->addRadialMenuItem(163, 3, commandHelper->getStfDesc(PetCommandHelper::PETRANGEDATTACK));
-			training->addRadialMenuItem(153, 3, commandHelper->getStfDesc(PetCommandHelper::PETRELEASE));
+			//training->addRadialMenuItem(153, 3, commandHelper->getStfDesc(PetCommandHelper::PETRELEASE));
 			training->addRadialMenuItem(159, 3, commandHelper->getStfDesc(PetCommandHelper::PETTRANSFER));
 		}
 		omr->addRadialParent(training);
@@ -614,13 +616,19 @@ void CreaturePetImplementation::sendRadialResponseTo(Player* player, ObjectMenuR
 }
 
 void CreaturePetImplementation::sendTo(Player* player, bool doClose) {
-	CreatureObjectImplementation::sendTo(player, doClose);
-
 	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 
 	create(client);
+
+	BaseMessage* creo3 = new CreatureObjectMessage3(_this);
+	client->sendMessage(creo3);
+
+	BaseMessage* creo6 = new CreatureObjectMessage6(_this);
+	client->sendMessage(creo6);
+
+	sendFactionStatusTo(player);
 
 	if (isRidingCreature()) {
 		getLinkedCreature()->sendTo(player);
@@ -650,7 +658,7 @@ void CreaturePetImplementation::createDataPad() {
 	}
 	 Datapad* datapad = getLinkedCreature()->getDatapad();
 
-	 uint32 objCRC = 0x2320411A;
+	 uint32 objCRC = 0x413FB544;
 
 	 if(stfName.indexOf("angler") != -1)
 	 	objCRC = 0x2320411A;
@@ -956,12 +964,12 @@ void CreaturePetImplementation::call() {
 		}
 
 		cManager->insertCreaturePet(_this);
-		//TODO: CH check why this is needed, compare MountCreature
-		getDatapadItem()->sendTo(getLinkedCreature());
 
 		if (growth < 1.0f)	{
 			doGrowUp();
 		}
+		cManager->insertCreaturePet(_this);
+
 	} catch (Exception& e) {
 		getLinkedCreature()->unlock();
 
@@ -984,6 +992,10 @@ void CreaturePetImplementation::store(bool doLock) {
 		return;
 
 	try {
+		if (isRidingCreature()) {
+			getLinkedCreature()->dismount(false,true);
+		}
+
 		if (getDatapadItem() != NULL) {
 			getDatapadItem()->wlock();
 
@@ -1003,8 +1015,6 @@ void CreaturePetImplementation::store(bool doLock) {
 		getLinkedCreature()->setLevelOfCHPets(getLinkedCreature()->getLevelOfCHPets() - getLevel());
 		if (doLock)
 			getLinkedCreature()->unlock();
-		//TODO: CH check why this is needed, compare MountCreature
-		getDatapadItem()->sendTo(getLinkedCreature());
 
 		if (getGroupObject() != NULL) {
 			GroupManager* groupManager = server->getGroupManager();
@@ -1053,7 +1063,7 @@ bool CreaturePetImplementation::canCall() {
 		}
 
 		if (getLevel() > chSkill) {
-			getLinkedCreature()->sendSystemMessage("pet/pet_menu","pet_nolearn");
+			getLinkedCreature()->sendSystemMessage("pet/pet_menu","lack_skill");
 			return false;
 		}
 
@@ -1132,10 +1142,12 @@ void CreaturePetImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 		ss << "CreaturePetImplementation::notifyPositionUpdate() " << objectCRC;
 		info(ss.toString());
 	}
-	if (isInStayState()) {
-		//System::out << "\ttnotifyPositionUpdate stay\n";
+	if (isInStayState() || isRidingCreature()) {
+		//System::out << "\ttnotifyPositionUpdate stay || mount\n";
+	//	handleStayCommand();
 		return;
 	}
+
 	if (creatureManager == NULL)
 		return;
 	try {
@@ -1263,7 +1275,7 @@ bool CreaturePetImplementation::activate() {
 		if (getLinkedCreature()->isInCombat() && !isInCombat()) {
 			//System::out << "\tactivate : player is attack\n";
 			SceneObject* scno = getLinkedCreature()->getTarget();
-			if (scno != NULL && (scno->isNonPlayerCreature() || scno->isPlayer())) {
+			if (scno != NULL && (scno->isNonPlayerCreature() || scno->isPlayer()) && !isRidingCreature()) {
 				//System::out << "\tactivate :aggro player target\n";
 
 				aggroedCreature = (CreatureObject*) scno;
@@ -1438,6 +1450,7 @@ void CreaturePetImplementation::doGrowUp(bool updateTime) {
 		ss << "CreaturePetImplementation::doGrowUp() " << objectCRC;
 		info(ss.toString());
 	}
+
 	Time currentTime;
 
 	uint32 elapsedTime = currentTime.getTime() - lastGrowth.getTime();
@@ -1548,10 +1561,18 @@ void CreaturePetImplementation::parseCommandMessage(const UnicodeString& message
 		getDatapadItem()->setUpdated(true);
 
 		String chType = "creaturehandler";
-		getLinkedCreature()->addXp(chType, 100,true);
+		getLinkedCreature()->addXp(chType, (200 + 10 * (getLevel() - getLinkedCreature()->getLevel())),true);
 
 		return;
 	}
+
+
+	if (command == commandHelper->getBaseCommand(PetCommandHelper::PETSTORE)) {
+		handleStoreCommand();
+	}
+
+	if (isRidingCreature())
+		return;
 
 	if (command == commandHelper->getBaseCommand(PetCommandHelper::PETATTACK)) {
 		handleAttackCommand();
@@ -1564,9 +1585,6 @@ void CreaturePetImplementation::parseCommandMessage(const UnicodeString& message
 	}
 	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETSTAY)) {
 		handleStayCommand();
-	}
-	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETSTORE)) {
-		handleStoreCommand();
 	}
 	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETTRANSFER)) {
 		handleTransferCommand();
@@ -1636,6 +1654,7 @@ void CreaturePetImplementation::handleStayCommand() {
 		ss << "CreaturePetImplementation::handleStayCommand() " << objectCRC;
 		info(ss.toString());
 	}
+	resetPatrolPoints(false);
 	setCommmandState(STATESTAY);
 }
 
@@ -1816,10 +1835,67 @@ void CreaturePetImplementation::handleGroupCommand() {
 }
 
 void CreaturePetImplementation::trainMount() {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::trainMount() " << objectCRC;
+		info(ss.toString());
+	}
+
+	switch(objectCRC) {
+		case 0x4745F4A5:
+			objectCRC = 0xDF44570F;
+			break;
+		case 0xD096946A:
+			objectCRC = 0xA28C8DE4;
+			break;
+		case 0xE9900379:
+			objectCRC = 0x7A65CF41;
+			break;
+		case 0xBDF0D754:
+			objectCRC = 0x52F8B1CF;
+			break;
+		case 0xE26332DA:
+			objectCRC = 0x43F43642;
+			break;
+		case 0x35226B4E:
+			objectCRC = 0x973BFD16;
+			break;
+		case 0x797B644E:
+			objectCRC = 0x1A0CA56B;
+			break;
+		case 0x28259937:
+			objectCRC = 0xADE1B39E;
+			break;
+		default:
+			return;
+
+	}
+
 	setPetType(CHPETTRAINEDMOUNT);
-	setObjectCRC(0x715AA7CD);
-	setSpeed(getLinkedCreature()->getSpeed() * 5.0f);
-	setAcceleration(getLinkedCreature()->getAcceleration() * 5.0f);
-	setCustomizationVariable("index_hover_height", 10);
+
+	setSpeed(18.5f);
+	setAcceleration(8.0f);
+
+	getDatapadItem()->setUpdated(true);
+	if (isInQuadTree()) {
+		removeFromZone();
+		insertToZone(getLinkedCreature()->getZone());
+	}
+}
+
+bool CreaturePetImplementation::isMountTrainable() {
+	switch(objectCRC) {
+		case 0x4745F4A5:
+		case 0xD096946A:
+		case 0xE9900379:
+		case 0xBDF0D754:
+		case 0xE26332DA:
+		case 0x35226B4E:
+		case 0x797B644E:
+		case 0x28259937:
+			return growth > 0.8f;
+		default:
+			return false;
+	}
 }
 

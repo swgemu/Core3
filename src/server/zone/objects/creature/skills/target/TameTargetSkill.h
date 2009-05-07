@@ -182,7 +182,7 @@ public:
 					player->unlock();
 				}
 				String chType = "creaturehandler";
-				player->addXp(chType, pet->getLevel() * 50,true);
+				player->addXp(chType, (200 + 10 * (pet->getLevel() - player->getLevel())), true);
 				//System::out << pet->isCreature() << "/" << pet->isNPC() << "/" << pet->isPlayer() <<"\n";
 				//System::out << pet->isAggressive() << "/" << pet->isKiller() << "\n";
 				//System::out << pet->isCHPet() << "/" << pet->isDroid() << "/" << pet->isFactionPet() <<"\n";

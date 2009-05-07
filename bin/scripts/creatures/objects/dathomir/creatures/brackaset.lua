@@ -47,7 +47,7 @@ brackaset = Creature:new {
 
 	speciesName = "brackaset",
 	stfName = "mob/creature_names",
-	objectCRC = 437036395, 
+	objectCRC = 2038129742, 
 	socialGroup = "Brackaset",
 	level = 26,
 
