@@ -78,10 +78,10 @@ PetCommandHelper::~PetCommandHelper() {
 	//commandList = NULL;
 }
 
-
 String& PetCommandHelper::getBaseCommand(int command) {
 	return get(command);
 }
+
 void PetCommandHelper::trainCommand(int command, String& commandMessage) {
 	if (command >= size()) {
 		return;

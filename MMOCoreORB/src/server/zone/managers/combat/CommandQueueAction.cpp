@@ -81,8 +81,7 @@ bool CommandQueueAction::check() {
 		return false;
 	}
 
-	// TODO: Default attacks can be performed from mounts
-	if (creature->isMounted()) {
+	if (creature->isMounted() && !(creature->getMount()->isPet() && skill->getNameCRC() == 0xA8FEF90A)) {
 		clearError(1, 16);
 		return false;
 	}
@@ -127,7 +126,7 @@ bool CommandQueueAction::validate() {
 		return false;
 	}
 
-	if (creature->isMounted()) {
+	if (creature->isMounted() && !(creature->getMount()->isPet() && skill->getNameCRC() == 0xA8FEF90A)) {
 		clearError(1, 16);
 		return false;
 	}
@@ -222,15 +221,15 @@ bool CommandQueueAction::validate() {
 						Player* targetPlayer = (Player*) sco;
 
 						if (targetPlayer->isInBuilding() && target->getParent() != creature->getParent()) {
-								clearError(0);
-								creature->sendSystemMessage("cbt_spam", "los_recycle"); // You cannot see your target
+							clearError(0);
+							creature->sendSystemMessage("cbt_spam", "los_recycle"); // You cannot see your target
 
-								target->unlock();
-								return false;
+							target->unlock();
+							return false;
 						}
 
 					} else {
-						if (target->getParent() != creature->getParent()) {
+						if (!creature->isMounted() && target->getParent() != creature->getParent()) {
 							clearError(0);
 							creature->sendSystemMessage("cbt_spam", "los_recycle"); // You cannot see your target
 

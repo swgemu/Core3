@@ -131,7 +131,7 @@ void GroupManager::invitePetToGroup(Player* leader, CreaturePet* pet) {
 			}
 
 			if (!group->hasMember(pet->getLinkedCreature())) {
-				leader->sendSystemMessage("pet owner group");
+				leader->sendSystemMessage("group", "considering_other_group", pet->getObjectID());
 				pet->unlock();
 				return;
 			}

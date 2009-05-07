@@ -2540,7 +2540,7 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 
 	String name;
 	uint64 cellid;
-	uint32 objcrc;
+
 	float x, y;
 	bool stationary = false;
 	bool baby = false;
@@ -2551,7 +2551,6 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 	} else {
 		return;
 	}
-
 
 	if (player->getParent() != NULL) {
 		cellid = player->getParent()->getObjectID();
@@ -2599,11 +2598,9 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 	if (y < -7680)
 		y = -7680;
 
-	if (creatureManager->verifyCreatureSpawn(name)) {
+	if (creatureManager->verifyCreatureNameByStfName(name)) {
 
-		uint32 objcrc = creatureManager->getCreatureCrc(name);
-
-		Creature* creature = creatureManager->spawnCreature(objcrc, cellid, x, y,
+		Creature* creature = creatureManager->spawnCreature(name, cellid, x, y,
 				0, baby, true, height);
 
 		Zone* zone;

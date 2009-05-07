@@ -1826,10 +1826,10 @@ SceneObject* ItemManagerImplementation::loadDatapadLinkedItem(Player* player, ui
 			case 0xAF6D9F4F:
 			case 0x5FAC5956:
 				item = new MountCreature(objectid, objectcrc, UnicodeString(objectname), objecttemp, player);
-
 				break;
 			default:
 				item = new CreaturePet(player,objectid);
+				item->setObjectCRC(objectcrc);
 				item->setCustomName(UnicodeString(objectname));
 				break;
 			}
@@ -2141,6 +2141,7 @@ void ItemManagerImplementation::saveDatapadLinkedItem(Player* player, SceneObjec
 		query << "UPDATE `datapad_items` set attributes = '" << item->getAttributes() << "' ";
 		query << ", name = '" << item->getCustomName().toString() << "' ";
 		query << ", character_id = '" << player->getCharacterID() << "' ";
+		query << ", template_crc = '" << item->getObjectCRC() << "' ";
 		query << ", deleted = 0 ";
 		query << "where item_id = " << item->getObjectID();
 

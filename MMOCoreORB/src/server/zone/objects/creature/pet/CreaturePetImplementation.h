@@ -206,12 +206,10 @@ public:
 		return petType & CHPET;
 	}
 
-	inline bool isMountTrainable() {
-		return petType & CHPETUNTRAINEDMOUNT;
-	}
+	bool isMountTrainable();
 
 	inline bool isMount() {
-		return petType & CHPETTRAINEDMOUNT;
+		return petType == CHPETTRAINEDMOUNT;
 	}
 
 	inline bool isDroid() {
