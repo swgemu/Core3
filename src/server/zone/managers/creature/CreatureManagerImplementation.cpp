@@ -613,7 +613,7 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 		setCreatureAttributes(creature, &result);
 
 		// TODO: Implement baby stats properly
-		if (baby) {
+		if (creature->getTame() > 0.0f && baby) {
 			changeStatsToBaby(creature);
 		}
 
@@ -721,7 +721,7 @@ Creature* CreatureManagerImplementation::spawnCreature(String stfName, uint64 ce
 		setCreatureAttributes(creature, &result);
 
 		// TODO: Implement baby stats properly
-		if (baby) {
+		if (creature->getTame() > 0.0f && baby) {
 			changeStatsToBaby(creature);
 		}
 

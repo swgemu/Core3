@@ -1613,7 +1613,7 @@ void CreaturePetImplementation::parseCommandMessage(Player* player, const Unicod
 	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETTRICK1) && player == getLinkedCreature()) {
 		handleTrickCommand("trick_1",20,-100);
 	}
-	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETTRICK2 && player == getLinkedCreature())) {
+	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETTRICK2) && player == getLinkedCreature()) {
 		handleTrickCommand("trick_2",10,-200);
 	}
 	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETSPECIALATTACK1)) {
@@ -1917,7 +1917,7 @@ void CreaturePetImplementation::trainMount() {
 			objectCRC = 0x52F8B1CF;
 			setSpeed(18.5f);
 			break;
-		case 0xE26332DA:  // kadun
+		case 0xE26332DA:  // kaadu
 			objectCRC = 0x43F43642;
 			setSpeed(18.0f);
 			break;
