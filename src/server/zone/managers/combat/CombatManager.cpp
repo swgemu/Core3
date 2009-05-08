@@ -184,6 +184,8 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 		uint64 weaponOID = tskill->useWeaponCharge(creature, action);
 		if (weaponOID != 0)
 			actionMessage = new CombatAction(creature, animCRC, weaponOID);
+		else
+			actionMessage = new CombatAction(creature, animCRC);
 	}
 	else
 		actionMessage = new CombatAction(creature, animCRC);
