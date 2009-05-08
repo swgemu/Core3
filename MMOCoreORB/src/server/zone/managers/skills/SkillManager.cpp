@@ -213,6 +213,10 @@ Skill* SkillManager::getSkill(const String& name) {
 	return combatActions.getSkill(name);
 }
 
+Skill* SkillManager::getSkill(uint32 actionCRC) {
+	return combatActions.getSkill(actionCRC);
+}
+
 Performance* SkillManager::getDance(const String& name) {
 	if (performanceManager == NULL)
 		return NULL;

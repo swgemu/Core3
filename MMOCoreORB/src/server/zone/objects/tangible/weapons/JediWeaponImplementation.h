@@ -70,6 +70,8 @@ public:
 		setMindAttackCost(0);
 		setForceCost(14);
 
+		setSpeedSkillMod("twohandlightsaber_speed");
+
 		setArmorPiercing(MEDIUM);
 
 		slicable = false;

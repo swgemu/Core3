@@ -49,8 +49,6 @@ which carries forward this exception.
 
 class GrenadeThrowableWeaponImplementation : public GrenadeThrowableWeaponServant {
 protected:
-	uint32 skill;
-	float area;
 
 	String animationString;
 

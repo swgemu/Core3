@@ -86,6 +86,7 @@ which carries forward this exception.
 #include "managers/loot/LootManager.h"
 #include "managers/sui/SuiManager.h"
 #include "managers/name/NameManager.h"
+#include "managers/slashcommands/SlashCommandManager.h"
 
 ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* serv, int processingThreads)
 		: ServiceMessageHandlerThread("ZoneProcessorServer") {
@@ -103,6 +104,7 @@ ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* ser
 	lootManager = new LootManager(this);
 	suiManager = new SuiManager(this);
 	nameManager = new NameManager(this);
+	slashCommandManager = new SlashCommandManager(this);
 
 	setLogging(false);
 
@@ -140,6 +142,9 @@ ZoneProcessServerImplementation::~ZoneProcessServerImplementation() {
 
 	delete nameManager;
 	nameManager = NULL;
+
+	delete slashCommandManager;
+	slashCommandManager = NULL;
 }
 
 void ZoneProcessServerImplementation::init() {

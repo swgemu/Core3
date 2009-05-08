@@ -100,6 +100,7 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddChangePostureSelfSkill", AddChangePostureSelfSkill);
 	//lua_register(getLuaState(), "AddWoundsDirectPoolAttackTargetSkill", AddWoundsDirectPoolAttackTargetSkill);
 	lua_register(getLuaState(), "AddPassiveSkill", AddPassiveSkill);
+	lua_register(getLuaState(), "AddCenterOfBeingSkill", AddCenterOfBeingSkill);
 	lua_register(getLuaState(), "AddMeditateSkill", AddMeditateSkill);
 	lua_register(getLuaState(), "AddPowerboostSkill", AddPowerboostSkill);
 	lua_register(getLuaState(), "AddEntertainSkill", AddEntertainSkill);
@@ -293,6 +294,10 @@ int ScriptAttacksManager::AddRandomPoolAttackTargetSkill(lua_State *L) {
 	float mindCostMultiplier = skill.getFloatField("mindCostMultiplier");
 	float forceCostMultiplier = skill.getFloatField("forceCostMultiplier");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	// For force powers
 	int forceCost = skill.getIntField("forceCost");
 
@@ -324,6 +329,10 @@ int ScriptAttacksManager::AddRandomPoolAttackTargetSkill(lua_State *L) {
 	attack->setActionCostMultiplier(actionCostMultiplier);
 	attack->setMindCostMultiplier(mindCostMultiplier);
 	attack->setForceCostMultiplier(forceCostMultiplier);
+
+	attack->setStateMask(mask);
+	attack->setInvalidPostures(field);
+	attack->setInstant(instant);
 
 	CombatActions->put(attack);
 	return 0;
@@ -379,6 +388,10 @@ int ScriptAttacksManager::AddDirectPoolAttackTargetSkill(lua_State *L) {
 	float mindCostMultiplier = skill.getFloatField("mindCostMultiplier");
 	float forceCostMultiplier = skill.getFloatField("forceCostMultiplier");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	attack = new DirectPoolAttackTargetSkill(attackname, animation, server);
 
 	attack->setRequiredWeaponType(weaponType);
@@ -418,6 +431,10 @@ int ScriptAttacksManager::AddDirectPoolAttackTargetSkill(lua_State *L) {
 	attack->setActionCostMultiplier(actionCostMultiplier);
 	attack->setMindCostMultiplier(mindCostMultiplier);
 	attack->setForceCostMultiplier(forceCostMultiplier);
+
+	attack->setStateMask(mask);
+	attack->setInvalidPostures(field);
+	attack->setInstant(instant);
 
 	CombatActions->put(attack);
 	return 0;
@@ -477,6 +494,10 @@ int ScriptAttacksManager::AddDotPoolAttackTargetSkill(lua_State *L) {
 	float mindCostMultiplier = skill.getFloatField("mindCostMultiplier");
 	float forceCostMultiplier = skill.getFloatField("forceCostMultiplier");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 
 	attack = new DotPoolAttackTargetSkill(attackname, animation, server);
 
@@ -520,6 +541,10 @@ int ScriptAttacksManager::AddDotPoolAttackTargetSkill(lua_State *L) {
 	attack->setActionCostMultiplier(actionCostMultiplier);
 	attack->setMindCostMultiplier(mindCostMultiplier);
 	attack->setForceCostMultiplier(forceCostMultiplier);
+
+	attack->setStateMask(mask);
+	attack->setInvalidPostures(field);
+	attack->setInstant(instant);
 
 	CombatActions->put(attack);
 	return 0;
@@ -574,6 +599,10 @@ int ScriptAttacksManager::AddWeaponlessDotPoolAttackSkill(lua_State *L) {
 	String CbtSpamHit = skill.getStringField("CbtSpamHit");
 	String CbtSpamMiss = skill.getStringField("CbtSpamMiss");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 
 	attack = new WeaponlessDotPoolAttackSkill(attackname, animation, server);
 
@@ -610,6 +639,10 @@ int ScriptAttacksManager::AddWeaponlessDotPoolAttackSkill(lua_State *L) {
 	attack->setCbtSpamEvade(CbtSpamEvade);
 	attack->setCbtSpamCounter(CbtSpamCounter);
 	attack->setCbtSpamBlock(CbtSpamBlock);
+
+	attack->setStateMask(mask);
+	attack->setInvalidPostures(field);
+	attack->setInstant(instant);
 
 	CombatActions->put(attack);
 	return 0;
@@ -652,6 +685,10 @@ int ScriptAttacksManager::AddForcePowersPoolAttackTargetSkill(lua_State *L) {
 	String CbtSpamHit = skill.getStringField("CbtSpamHit");
 	String CbtSpamMiss = skill.getStringField("CbtSpamMiss");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 
 	attack = new ForcePowersPoolAttackTargetSkill(attackname, animation, server);
 	attack->setForceCost(forceCost);
@@ -681,6 +718,10 @@ int ScriptAttacksManager::AddForcePowersPoolAttackTargetSkill(lua_State *L) {
 	attack->setCbtSpamEvade(CbtSpamEvade);
 	attack->setCbtSpamCounter(CbtSpamCounter);
 	attack->setCbtSpamBlock(CbtSpamBlock);
+
+	attack->setStateMask(mask);
+	attack->setInvalidPostures(field);
+	attack->setInstant(instant);
 
 	CombatActions->put(attack);
 	return 0;
@@ -715,6 +756,10 @@ int ScriptAttacksManager::AddForceHealSelfSkill(lua_State *L) {
 	bool healFire = skill.getIntField("healFire");
 	bool healBleeding = skill.getIntField("healBleeding");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	fheal = new ForceHealSelfSkill(skillname, effect.toCharArray(), server);
 
 	fheal->setForceCost(forceCost);
@@ -732,6 +777,10 @@ int ScriptAttacksManager::AddForceHealSelfSkill(lua_State *L) {
 	fheal->setHealFire(healFire);
 	fheal->setHealBleeding(healBleeding);
 	fheal->setHealDisease(healDisease);
+
+	fheal->setStateMask(mask);
+	fheal->setInvalidPostures(field);
+	fheal->setInstant(instant);
 
 	CombatActions->put(fheal);
 	return 0;
@@ -765,6 +814,10 @@ int ScriptAttacksManager::AddHealSelfSkill(lua_State* L) {
 	bool healFire = skill.getIntField("healFire");
 	bool healBleeding = skill.getIntField("healBleeding");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	heal = new HealSelfSkill(skillname, effect.toCharArray(), server);
 	heal->setSecondaryAnim(animation);
 
@@ -783,6 +836,10 @@ int ScriptAttacksManager::AddHealSelfSkill(lua_State* L) {
 	heal->setHealFire(healFire);
 	heal->setHealBleeding(healBleeding);
 	heal->setHealDisease(healDisease);
+
+	heal->setStateMask(mask);
+	heal->setInvalidPostures(field);
+	heal->setInstant(instant);
 
 	CombatActions->put(heal);
 	return 0;
@@ -818,6 +875,10 @@ int ScriptAttacksManager::AddHealTargetSkill(lua_State* L) {
 
 	int range = skill.getIntField("range");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	heal = new HealTargetSkill(skillname, effect.toCharArray(), server);
 	heal->setSecondaryAnim(animation);
 
@@ -839,6 +900,10 @@ int ScriptAttacksManager::AddHealTargetSkill(lua_State* L) {
 	heal->setHealBleeding(healBleeding);
 	heal->setHealDisease(healDisease);
 
+	heal->setStateMask(mask);
+	heal->setInvalidPostures(field);
+	heal->setInstant(instant);
+
 	CombatActions->put(heal);
 	return 0;
 }
@@ -859,11 +924,18 @@ int ScriptAttacksManager::AddHealEnhanceTargetSkill(lua_State* L) {
 	int mindCost = skill.getIntField("mindCost");
 	float range = skill.getFloatField("range");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	heal = new HealEnhanceTargetSkill(skillname, effect.toCharArray(), server);
 	heal->setSecondaryAnim(animation);
 	heal->setMindCost(mindCost);
 	heal->setRange(range);
 
+	heal->setStateMask(mask);
+	heal->setInvalidPostures(field);
+	heal->setInstant(instant);
 
 	CombatActions->put(heal);
 
@@ -885,10 +957,18 @@ int ScriptAttacksManager::AddHealWoundTargetSkill(lua_State* L) {
 	int mindCost = skill.getIntField("mindCost");
 	float range = skill.getFloatField("range");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	heal = new HealWoundTargetSkill(skillname, effect.toCharArray(), server);
 	heal->setSecondaryAnim(animation);
 	heal->setMindCost(mindCost);
 	heal->setRange(range);
+
+	heal->setStateMask(mask);
+	heal->setInvalidPostures(field);
+	heal->setInstant(instant);
 
 	CombatActions->put(heal);
 	return 0;
@@ -910,11 +990,19 @@ int ScriptAttacksManager::AddFirstAidTargetSkill(lua_State* L) {
 	float speed = skill.getFloatField("speed");
 	float range = skill.getFloatField("range");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	heal = new FirstAidTargetSkill(skillname, effect.toCharArray(), server);
 	heal->setSecondaryAnim(animation);
 	heal->setMindCost(mindCost);
 	heal->setSpeed(speed);
 	heal->setRange(range);
+
+	heal->setStateMask(mask);
+	heal->setInvalidPostures(field);
+	heal->setInstant(instant);
 
 	CombatActions->put(heal);
 	return 0;
@@ -936,11 +1024,19 @@ int ScriptAttacksManager::AddCureTargetSkill(lua_State* L) {
 	uint64 conditionCured = skill.getLongField("conditionCured");
 	float range = skill.getFloatField("range");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	heal = new CureTargetSkill(skillname, effect.toCharArray(), server);
 	heal->setSecondaryAnim(animation);
 	heal->setMindCost(mindCost);
 	heal->setState(conditionCured);
 	heal->setRange(range);
+
+	heal->setStateMask(mask);
+	heal->setInvalidPostures(field);
+	heal->setInstant(instant);
 
 	CombatActions->put(heal);
 	return 0;
@@ -961,10 +1057,18 @@ int ScriptAttacksManager::AddHealStateTargetSkill(lua_State* L) {
 	int mindCost = skill.getIntField("mindCost");
 	float range = skill.getFloatField("range");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	heal = new HealStateTargetSkill(skillname, effect.toCharArray(), server);
 	heal->setSecondaryAnim(animation);
 	heal->setMindCost(mindCost);
 	heal->setRange(range);
+
+	heal->setStateMask(mask);
+	heal->setInvalidPostures(field);
+	heal->setInstant(instant);
 
 	CombatActions->put(heal);
 	return 0;
@@ -985,10 +1089,18 @@ int ScriptAttacksManager::AddHealDamageTargetSkill(lua_State* L) {
 	int mindCost = skill.getIntField("mindCost");
 	float range = skill.getFloatField("range");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	heal = new HealDamageTargetSkill(skillname, effect.toCharArray(), server);
 	heal->setSecondaryAnim(animation);
 	heal->setMindCost(mindCost);
 	heal->setRange(range);
+
+	heal->setStateMask(mask);
+	heal->setInvalidPostures(field);
+	heal->setInstant(instant);
 
 	CombatActions->put(heal);
 	return 0;
@@ -1010,10 +1122,18 @@ int ScriptAttacksManager::AddReviveTargetSkill(lua_State* L) {
 	int mindCost = skill.getIntField("mindCost");
 	float range = skill.getFloatField("range");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	heal = new ReviveTargetSkill(skillname, effect.toCharArray(), server);
 	heal->setSecondaryAnim(animation);
 	heal->setMindCost(mindCost);
 	heal->setRange(range);
+
+	heal->setStateMask(mask);
+	heal->setInvalidPostures(field);
+	heal->setInstant(instant);
 
 	CombatActions->put(heal);
 	return 0;
@@ -1046,6 +1166,10 @@ int ScriptAttacksManager::AddTendHealTargetSkill(lua_State* L) {
 	bool tendDamage = skill.getIntField("tendDamage");
 	bool tendWound = skill.getIntField("tendWound");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	heal = new TendHealTargetSkill(skillname, effect.toCharArray(), server);
 	heal->setSecondaryAnim(animation);
 	heal->setMindCost(mindCost);
@@ -1062,6 +1186,10 @@ int ScriptAttacksManager::AddTendHealTargetSkill(lua_State* L) {
 
 	heal->setTendDamage(tendDamage);
 	heal->setTendWound(tendWound);
+
+	heal->setStateMask(mask);
+	heal->setInvalidPostures(field);
+	heal->setInstant(instant);
 
 	CombatActions->put(heal);
 	return 0;
@@ -1088,6 +1216,10 @@ int ScriptAttacksManager::AddQuickHealTargetSkill(lua_State* L) {
 	int actionHealed = skill.getIntField("actionHealed");
 	int mindHealed = skill.getIntField("mindHealed");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	heal = new QuickHealTargetSkill(skillname, effect.toCharArray(), server);
 	heal->setSecondaryAnim(animation);
 	heal->setMindCost(mindCost);
@@ -1098,6 +1230,10 @@ int ScriptAttacksManager::AddQuickHealTargetSkill(lua_State* L) {
 	heal->setHealthHealed(healthHealed);
 	heal->setActionHealed(actionHealed);
 	heal->setMindHealed(mindHealed);
+
+	heal->setStateMask(mask);
+	heal->setInvalidPostures(field);
+	heal->setInstant(instant);
 
 	CombatActions->put(heal);
 	return 0;
@@ -1119,11 +1255,19 @@ int ScriptAttacksManager::AddMindHealTargetSkill(lua_State* L) {
 	float range = skill.getFloatField("range");
 	float speed = skill.getFloatField("speed");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	heal = new MindHealTargetSkill(skillname, effect.toCharArray(), server);
 	heal->setSecondaryAnim(animation);
 	heal->setMindCost(mindCost);
 	heal->setRange(range);
 	heal->setSpeed(speed);
+
+	heal->setStateMask(mask);
+	heal->setInvalidPostures(field);
+	heal->setInstant(instant);
 
 	CombatActions->put(heal);
 	return 0;
@@ -1144,6 +1288,10 @@ int ScriptAttacksManager::AddDragTargetSkill(lua_State* L) {
 	float speed = skill.getFloatField("speed");
 	bool needsConsent = skill.getIntField("needsConsent");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	drag = new DragTargetSkill(skillname, effect.toCharArray(), server);
 
 	drag->setMaxRange(maxRange);
@@ -1151,6 +1299,10 @@ int ScriptAttacksManager::AddDragTargetSkill(lua_State* L) {
 	drag->setSpeed(speed);
 	drag->setNeedsConsent(needsConsent);
 	drag->setRange(130.0f);
+
+	drag->setStateMask(mask);
+	drag->setInvalidPostures(field);
+	drag->setInstant(instant);
 
 	CombatActions->put(drag);
 	return 0;
@@ -1197,6 +1349,10 @@ int ScriptAttacksManager::AddDeBuffAttackTargetSkill(lua_State* L) {
 
 	String flytext = skill.getStringField("FlyText");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	attSkill = new DeBuffAttackTargetSkill(skillname, animation, server);
 
 	attSkill->setSpeed(speed);
@@ -1226,6 +1382,10 @@ int ScriptAttacksManager::AddDeBuffAttackTargetSkill(lua_State* L) {
 	attSkill->setSelfEffect(selfeffect);
 
 	attSkill->setFlyText(flytext);
+
+	attSkill->setStateMask(mask);
+	attSkill->setInvalidPostures(field);
+	attSkill->setInstant(instant);
 
 	CombatActions->put(attSkill);
 
@@ -1264,6 +1424,10 @@ int ScriptAttacksManager::AddEnhanceSelfSkill(lua_State* L) {
 	String startflytext = skill.getStringField("StartFlyText");
 	String finishflytext = skill.getStringField("FinishFlyText");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	Skill = new EnhanceSelfSkill(skillname, effect.toCharArray(), server);
 
 	Skill->setSpeed(speed);
@@ -1282,6 +1446,10 @@ int ScriptAttacksManager::AddEnhanceSelfSkill(lua_State* L) {
 	Skill->setRequiredState(requiredState);
 
 	Skill->setFlyText(startflytext, finishflytext);
+
+	Skill->setStateMask(mask);
+	Skill->setInvalidPostures(field);
+	Skill->setInstant(instant);
 
 	CombatActions->put(Skill);
 
@@ -1304,10 +1472,18 @@ int ScriptAttacksManager::AddChangePostureSelfSkill(lua_State* L) {
 
 	uint8 posture = (uint8)skill.getIntField("posture");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	Skill = new ChangePostureSelfSkill(skillname, anim, server);
 
 	Skill->setSpeed(speed);
 	Skill->setPosture(posture);
+
+	Skill->setStateMask(mask);
+	Skill->setInvalidPostures(field);
+	Skill->setInstant(instant);
 
 	CombatActions->put(Skill);
 
@@ -1356,6 +1532,10 @@ int ScriptAttacksManager::AddWoundsDirectPoolAttackTargetSkill(lua_State *L) {
 	float mindCostMultiplier = skill.getFloatField("mindCostMultiplier");
 	float forceCostMultiplier = skill.getFloatField("forceCostMultiplier");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	attack = new WoundsDirectPoolAttackTargetSkill(attackname, animation, server);
 
 	attack->setRequiredWeaponType(weaponType);
@@ -1388,6 +1568,9 @@ int ScriptAttacksManager::AddWoundsDirectPoolAttackTargetSkill(lua_State *L) {
 	attack->setMindCostMultiplier(mindCostMultiplier);
 	attack->setForceCostMultiplier(forceCostMultiplier);
 
+	attack->setStateMask(mask);
+	attack->setInvalidPostures(field);
+	attack->setInstant(instant);
 
 	CombatActions->put(attack);
 	return 0;
@@ -1422,6 +1605,31 @@ int ScriptAttacksManager::AddPassiveSkill(lua_State* L) {
 	return 0;
 }
 
+int ScriptAttacksManager::AddCenterOfBeingSkill(lua_State* L) {
+	LuaObject skill(L);
+	if (!skill.isValidTable())
+		return 0;
+
+	CenterOfBeingSelfSkill* Skill;
+
+	String skillname = skill.getStringField("skillname");
+	String effect = skill.getStringField("effect");
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+	//TODO: didnt center of being have flytext? +center+ or something?
+
+	Skill = new CenterOfBeingSelfSkill(skillname, effect, server);
+
+	Skill->setStateMask(mask);
+	Skill->setInvalidPostures(field);
+	Skill->setInstant(instant);
+
+	CombatActions->put(Skill);
+
+	return 0;
+}
+
 int ScriptAttacksManager::AddMeditateSkill(lua_State* L) {
 	LuaObject skill(L);
 	if (!skill.isValidTable())
@@ -1431,7 +1639,16 @@ int ScriptAttacksManager::AddMeditateSkill(lua_State* L) {
 	String skillname = skill.getStringField("skillname");
 	String effect = skill.getStringField("effectname");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	meditate = new MeditateSelfSkill(skillname, effect, server);
+
+	meditate->setStateMask(mask);
+	meditate->setInvalidPostures(field);
+	meditate->setInstant(instant);
+
 	CombatActions->put(meditate);
 
 	return 0;
@@ -1446,8 +1663,17 @@ int ScriptAttacksManager::AddPowerboostSkill(lua_State* L) {
 	String effect = skill.getStringField("effect");
 	float bonus = skill.getFloatField("bonus");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	PowerboostSelfSkill* powerboost = new PowerboostSelfSkill(skillname, effect.toCharArray(), server);
+
 	powerboost->setBonus(bonus);
+	powerboost->setStateMask(mask);
+	powerboost->setInvalidPostures(field);
+	powerboost->setInstant(instant);
+
 	CombatActions->put(powerboost);
 
 	return 0;
@@ -1461,7 +1687,16 @@ int ScriptAttacksManager::AddEntertainSkill(lua_State* L) {
 	EntertainSelfSkill* entertain;
 	String skillname = skill.getStringField("skillname");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	entertain = new EntertainSelfSkill(skillname, server);
+
+	entertain->setStateMask(mask);
+	entertain->setInvalidPostures(field);
+	entertain->setInstant(instant);
+
 	CombatActions->put(entertain);
 
 	return 0;
@@ -1475,9 +1710,18 @@ int ScriptAttacksManager::AddEntertainEffectSkill(lua_State* L) {
 	EntertainEffectSelfSkill* entertain;
 	String skillname = skill.getStringField("skillname");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	String effect_prefix = skill.getStringField("effect_prefix");
 
 	entertain = new EntertainEffectSelfSkill(skillname, effect_prefix, server);
+
+	entertain->setStateMask(mask);
+	entertain->setInvalidPostures(field);
+	entertain->setInstant(instant);
+
 	CombatActions->put(entertain);
 
 	return 0;
@@ -1490,8 +1734,17 @@ int ScriptAttacksManager::AddBandFlourishSkill(lua_State* L) {
 
 	String skillname = skill.getStringField("skillname");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	BandFlourishSkill* bandflo;
 	bandflo = new BandFlourishSkill(skillname, server);
+
+	bandflo->setStateMask(mask);
+	bandflo->setInvalidPostures(field);
+	bandflo->setInstant(instant);
+
 	CombatActions->put(bandflo);
 
 	return 0;
@@ -1505,9 +1758,18 @@ int ScriptAttacksManager::AddDanceEffectSkill(lua_State* L) {
 	DanceEffectSelfSkill* dance;
 	String skillname = skill.getStringField("skillname");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	String effect_prefix = skill.getStringField("effect_prefix");
 
 	dance = new DanceEffectSelfSkill(skillname, effect_prefix, server);
+
+	dance->setStateMask(mask);
+	dance->setInvalidPostures(field);
+	dance->setInstant(instant);
+
 	CombatActions->put(dance);
 
 	return 0;
@@ -1521,9 +1783,18 @@ int ScriptAttacksManager::AddMusicEffectSkill(lua_State* L) {
 	MusicEffectSelfSkill* music;
 	String skillname = skill.getStringField("skillname");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	String effect_prefix = skill.getStringField("effect_prefix");
 
 	music = new MusicEffectSelfSkill(skillname, effect_prefix, server);
+
+	music->setStateMask(mask);
+	music->setInvalidPostures(field);
+	music->setInstant(instant);
+
 	CombatActions->put(music);
 
 	return 0;
@@ -1543,10 +1814,17 @@ int ScriptAttacksManager::AddForceRunSelfSkill(lua_State *L) {
 	int slope = skill.getIntField("slope");
 	int duration = skill.getIntField("duration");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 
 	ForceRunSelfSkill* frun = new ForceRunSelfSkill(skillname, effect, speed, acceleration, slope, duration, server);
 
 	frun->setForceCost(forceCost);
+	frun->setStateMask(mask);
+	frun->setInvalidPostures(field);
+	frun->setInstant(instant);
 
 	CombatActions->put(frun);
 	return 0;
@@ -1567,11 +1845,18 @@ int ScriptAttacksManager::AddDiagnoseTargetSkill(lua_State* L) {
 	int mindCost = skill.getIntField("mindCost");
 	float range = skill.getFloatField("range");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	diagnose = new DiagnoseTargetSkill(skillname, effect.toCharArray(), server);
 	diagnose->setSecondaryAnim(animation);
 	diagnose->setMindCost(mindCost);
 	diagnose->setRange(range);
 
+	diagnose->setStateMask(mask);
+	diagnose->setInvalidPostures(field);
+	diagnose->setInstant(instant);
 
 	CombatActions->put(diagnose);
 	return 0;
@@ -1587,6 +1872,10 @@ int ScriptAttacksManager::AddCamoSkill(lua_State* L) {
 	int type = skill.getIntField("type");
 	float duration = skill.getFloatField("duration");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	CamoSkill* Skill ;
 	if (type == 1)
 		Skill = new MaskScentSelfSkill(skillname, server);
@@ -1594,6 +1883,9 @@ int ScriptAttacksManager::AddCamoSkill(lua_State* L) {
 		Skill = new ConcealSkill(skillname, server);
 
 	Skill->setDuration(duration);
+	Skill->setStateMask(mask);
+	Skill->setInvalidPostures(field);
+	Skill->setInstant(instant);
 
 	CombatActions->put(Skill);
 
@@ -1610,11 +1902,18 @@ int ScriptAttacksManager::AddForageSkill(lua_State* L) {
 	String animation = skill.getStringField("animation");
 	int actionCost = skill.getIntField("actionCost");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	ForageSelfSkill* forage;
 	forage = new ForageSelfSkill(skillName, animation, server);
 
 	actionCost = abs(actionCost);
 	forage->setActionCost(actionCost);
+	forage->setStateMask(mask);
+	forage->setInvalidPostures(field);
+	forage->setInstant(instant);
 
 	if (skillName == "forage") {
 		forage->setSkill(0);
@@ -1639,8 +1938,16 @@ int ScriptAttacksManager::AddSystemGroupMessageSkill(lua_State* L) {
 		String skillName = skill.getStringField("skillname");
 		String animation = "";
 
+		uint64 mask = skill.getLongField("invalidStateMask");
+		String field = skill.getStringField("invalidPostures");
+		int instant = skill.getIntField("instant");
+
 		SystemGroupMessageSkill* sysgroup;
 		sysgroup = new SystemGroupMessageSkill(skillName, animation, server);
+
+		sysgroup->setStateMask(mask);
+		sysgroup->setInvalidPostures(field);
+		sysgroup->setInstant(instant);
 
 		CombatActions->put(sysgroup);
 		return 0;
@@ -1666,6 +1973,10 @@ int ScriptAttacksManager::AddBoostMoraleGroupSkill(lua_State* L) {
 		int actionCost = skill.getIntField("actioncost");
 		int mindCost = skill.getIntField("mindcost");
 
+		uint64 mask = skill.getLongField("invalidStateMask");
+		String field = skill.getStringField("invalidPostures");
+		int instant = skill.getIntField("instant");
+
 		BoostMoraleGroupSkill* boostMorale;
 		boostMorale = new BoostMoraleGroupSkill(skillName, animation, server);
 		boostMorale->setCombatSpam(combatSpam);
@@ -1673,6 +1984,9 @@ int ScriptAttacksManager::AddBoostMoraleGroupSkill(lua_State* L) {
 		boostMorale->setHealthCost(healthCost);
 		boostMorale->setActionCost(actionCost);
 		boostMorale->setMindCost(mindCost);
+		boostMorale->setStateMask(mask);
+		boostMorale->setInvalidPostures(field);
+		boostMorale->setInstant(instant);
 
 		CombatActions->put(boostMorale);
 		return 0;
@@ -1699,6 +2013,10 @@ int ScriptAttacksManager::AddVolleyFireGroupSkill(lua_State* L) {
 		int actionCost = skill.getIntField("actioncost");
 		int mindCost = skill.getIntField("mindcost");
 
+		uint64 mask = skill.getLongField("invalidStateMask");
+		String field = skill.getStringField("invalidPostures");
+		int instant = skill.getIntField("instant");
+
 		VolleyFireGroupSkill* volleyFire;
 		volleyFire = new VolleyFireGroupSkill(skillName, animation, server);
 		volleyFire->setCombatSpam(combatSpam);
@@ -1707,6 +2025,9 @@ int ScriptAttacksManager::AddVolleyFireGroupSkill(lua_State* L) {
 		volleyFire->setHealthCost(healthCost);
 		volleyFire->setActionCost(actionCost);
 		volleyFire->setMindCost(mindCost);
+		volleyFire->setStateMask(mask);
+		volleyFire->setInvalidPostures(field);
+		volleyFire->setInstant(instant);
 
 		CombatActions->put(volleyFire);
 		return 0;
@@ -1736,6 +2057,10 @@ int ScriptAttacksManager::AddFormupGroupSkill(lua_State* L) {
 		int healBlindChance = skill.getIntField("healblindchance");
 		int healIntimidateChance = skill.getIntField("healintimidatechance");
 
+		uint64 mask = skill.getLongField("invalidStateMask");
+		String field = skill.getStringField("invalidPostures");
+		int instant = skill.getIntField("instant");
+
 		FormupGroupSkill* formup;
 		formup = new FormupGroupSkill(skillName, animation, server);
 		formup->setCombatSpam(combatSpam);
@@ -1749,6 +2074,10 @@ int ScriptAttacksManager::AddFormupGroupSkill(lua_State* L) {
 		formup->setHealStunChance(healStunChance);
 		formup->setHealBlindChance(healBlindChance);
 		formup->setHealIntimidateChance(healIntimidateChance);
+
+		formup->setStateMask(mask);
+		formup->setInvalidPostures(field);
+		formup->setInstant(instant);
 
 		CombatActions->put(formup);
 		return 0;
@@ -1776,6 +2105,10 @@ int ScriptAttacksManager::AddRallyGroupSkill(lua_State* L) {
 		int rallyDuration = skill.getIntField("rallyduration");
 		int accuracyBonus = skill.getIntField("accuracybonus");
 
+		uint64 mask = skill.getLongField("invalidStateMask");
+		String field = skill.getStringField("invalidPostures");
+		int instant = skill.getIntField("instant");
+
 		RallyGroupSkill* rally;
 		rally = new RallyGroupSkill(skillName, animation, server);
 		rally->setCombatSpam(combatSpam);
@@ -1787,6 +2120,10 @@ int ScriptAttacksManager::AddRallyGroupSkill(lua_State* L) {
 
 		rally->setRallyDuration(rallyDuration);
 		rally->setAccuracyBonus(accuracyBonus);
+
+		rally->setStateMask(mask);
+		rally->setInvalidPostures(field);
+		rally->setInstant(instant);
 
 		CombatActions->put(rally);
 		return 0;
@@ -1812,6 +2149,10 @@ int ScriptAttacksManager::AddRetreatGroupSkill(lua_State* L) {
 	int actionCost = skill.getIntField("actioncost");
 	int mindCost = skill.getIntField("mindcost");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	bool buffSL = skill.getIntField("buffSL");
 
 	RetreatGroupSkill* retreat = new RetreatGroupSkill(skillname, effect, "", server);
@@ -1822,6 +2163,10 @@ int ScriptAttacksManager::AddRetreatGroupSkill(lua_State* L) {
 	retreat->setActionCost(actionCost);
 	retreat->setMindCost(mindCost);
 	retreat->setBuffSL(buffSL);
+
+	retreat->setStateMask(mask);
+	retreat->setInvalidPostures(field);
+	retreat->setInstant(instant);
 
 	CombatActions->put(retreat);
 
@@ -1875,6 +2220,10 @@ int ScriptAttacksManager::AddThrowRandomPoolTargetSkill(lua_State* L) {
 	int stunDefDebuff = skill.getIntField("stunDefDebuff");
 	int intimidateDefDebuff = skill.getIntField("intimidateDefDebuff");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	attack = new ThrowRandomPoolAttackTargetSkill(attackname, animation, server);
 
 	attack->setRequiredWeaponType(weaponType);
@@ -1909,6 +2258,10 @@ int ScriptAttacksManager::AddThrowRandomPoolTargetSkill(lua_State* L) {
 	attack->setRangedDefDebuff(rangedDefDebuff);
 	attack->setStunDefDebuff(stunDefDebuff);
 	attack->setIntimidateDefDebuff(intimidateDefDebuff);
+
+	attack->setStateMask(mask);
+	attack->setInvalidPostures(field);
+	attack->setInstant(instant);
 
 	CombatActions->put(attack);
 
@@ -1975,6 +2328,10 @@ int ScriptAttacksManager::AddThrowDirectPoolTargetSkill(lua_State *L) {
 	int stunDefDebuff = skill.getIntField("stunDefDebuff");
 	int intimidateDefDebuff = skill.getIntField("intimidateDefDebuff");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	attack = new ThrowDirectPoolAttackTargetSkill(attackname, animation, server);
 
 	attack->setRequiredWeaponType(weaponType);
@@ -2022,6 +2379,10 @@ int ScriptAttacksManager::AddThrowDirectPoolTargetSkill(lua_State *L) {
 	attack->setRangedDefDebuff(rangedDefDebuff);
 	attack->setStunDefDebuff(stunDefDebuff);
 	attack->setIntimidateDefDebuff(intimidateDefDebuff);
+
+	attack->setStateMask(mask);
+	attack->setInvalidPostures(field);
+	attack->setInstant(instant);
 
 
 	CombatActions->put(attack);
@@ -2075,6 +2436,10 @@ int ScriptAttacksManager::AddThrowGrenadeTargetSkill(lua_State* L) {
 	int stunDefDebuff = skill.getIntField("stunDefDebuff");
 	int intimidateDefDebuff = skill.getIntField("intimidateDefDebuff");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	attack = new ThrowGrenadeAttackTargetSkill(attackname, animation, server);
 
 	attack->setRequiredWeaponType(weaponType);
@@ -2109,6 +2474,11 @@ int ScriptAttacksManager::AddThrowGrenadeTargetSkill(lua_State* L) {
 	attack->setRangedDefDebuff(rangedDefDebuff);
 	attack->setStunDefDebuff(stunDefDebuff);
 	attack->setIntimidateDefDebuff(intimidateDefDebuff);
+
+	attack->setStateMask(mask);
+	attack->setInvalidPostures(field);
+	attack->setInstant(instant);
+
 	CombatActions->put(attack);
 
 	return 0;
@@ -2126,8 +2496,16 @@ int ScriptAttacksManager::AddCMDotAttackTargetSkill(lua_State* L) {
 	String effect = skill.getStringField("effect");
 	int medPack = skill.getIntField("medpackType");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	dot = new CMDotAttackTargetSkill(skillname, effect.toCharArray(), server);
 	dot->setMedType(medPack);
+
+	dot->setStateMask(mask);
+	dot->setInvalidPostures(field);
+	dot->setInstant(instant);
 
 	CombatActions->put(dot);
 	return 0;
@@ -2172,6 +2550,10 @@ int ScriptAttacksManager::AddHeavyWeaponSkill(lua_State *L) {
 	float mindCostMultiplier = skill.getFloatField("mindCostMultiplier");
 	float forceCostMultiplier = skill.getFloatField("forceCostMultiplier");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	// For force powers
 	int forceCost = skill.getIntField("forceCost");
 
@@ -2204,6 +2586,10 @@ int ScriptAttacksManager::AddHeavyWeaponSkill(lua_State *L) {
 	attack->setMindCostMultiplier(mindCostMultiplier);
 	attack->setForceCostMultiplier(forceCostMultiplier);
 
+	attack->setStateMask(mask);
+	attack->setInvalidPostures(field);
+	attack->setInstant(instant);
+
 	CombatActions->put(attack);
 	return 0;
 }
@@ -2219,10 +2605,17 @@ int ScriptAttacksManager::AddAreaTrackSkill(lua_State* L) {
 		String animation = skill.getStringField("animation");
 		int cooldownTime = skill.getIntField("cooldowntime");
 
+		uint64 mask = skill.getLongField("invalidStateMask");
+		String field = skill.getStringField("invalidPostures");
+		int instant = skill.getIntField("instant");
+
 		AreaTrackSelfSkill* areaTrack;
 		areaTrack = new AreaTrackSelfSkill(skillName, animation, server);
 
 		areaTrack->setCooldownTime(cooldownTime);
+		areaTrack->setStateMask(mask);
+		areaTrack->setInvalidPostures(field);
+		areaTrack->setInstant(instant);
 
 		CombatActions->put(areaTrack);
 		return 0;
@@ -2273,6 +2666,10 @@ int ScriptAttacksManager::AddPosutreChangeRandomPoolAttackTargetSkill(lua_State 
 	float forceCostMultiplier = skill.getFloatField("forceCostMultiplier");
 	int posture = skill.getIntField("postureChange");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	// For force powers
 	int forceCost = skill.getIntField("forceCost");
 
@@ -2308,6 +2705,10 @@ int ScriptAttacksManager::AddPosutreChangeRandomPoolAttackTargetSkill(lua_State 
 
 	attack->setPosture(posture);
 
+	attack->setStateMask(mask);
+	attack->setInvalidPostures(field);
+	attack->setInstant(instant);
+
 	CombatActions->put(attack);
 	return 0;
 }
@@ -2327,10 +2728,18 @@ int ScriptAttacksManager::AddBerserkSelfSkill(lua_State* L) {
 	int duration = skill.getIntField("duration");
 	int damage = skill.getIntField("damage");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	Skill = new BerserkSelfSkill(skillname, server);
 
 	Skill->setDuration(duration);
 	Skill->setBerserkDamage(damage);
+
+	Skill->setStateMask(mask);
+	Skill->setInvalidPostures(field);
+	Skill->setInstant(instant);
 
 	CombatActions->put(Skill);
 
@@ -2347,7 +2756,15 @@ int ScriptAttacksManager::AddAimTargetSkill(lua_State* L) {
 
 	String skillname = skill.getStringField("skillname");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	Skill = new AimTargetSkill(skillname, server);
+
+	Skill->setStateMask(mask);
+	Skill->setInvalidPostures(field);
+	Skill->setInstant(instant);
 
 	CombatActions->put(Skill);
 
@@ -2364,7 +2781,15 @@ int ScriptAttacksManager::AddCoverSelfSkill(lua_State* L) {
 
 	String skillname = skill.getStringField("skillname");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	Skill = new CoverSelfSkill(skillname, server);
+
+	Skill->setStateMask(mask);
+	Skill->setInvalidPostures(field);
+	Skill->setInstant(instant);
 
 	CombatActions->put(Skill);
 
@@ -2410,6 +2835,10 @@ int ScriptAttacksManager::AddThreatenAttackTargetSkill(lua_State *L) {
 	float mindCostMultiplier = skill.getFloatField("mindCostMultiplier");
 	float forceCostMultiplier = skill.getFloatField("forceCostMultiplier");
 
+	uint64 mask = skill.getLongField("invalidStateMask");
+	String field = skill.getStringField("invalidPostures");
+	int instant = skill.getIntField("instant");
+
 	// For force powers
 	int forceCost = skill.getIntField("forceCost");
 
@@ -2441,6 +2870,10 @@ int ScriptAttacksManager::AddThreatenAttackTargetSkill(lua_State *L) {
 	attack->setActionCostMultiplier(actionCostMultiplier);
 	attack->setMindCostMultiplier(mindCostMultiplier);
 	attack->setForceCostMultiplier(forceCostMultiplier);
+
+	attack->setStateMask(mask);
+	attack->setInvalidPostures(field);
+	attack->setInstant(instant);
 
 	CombatActions->put(attack);
 	return 0;

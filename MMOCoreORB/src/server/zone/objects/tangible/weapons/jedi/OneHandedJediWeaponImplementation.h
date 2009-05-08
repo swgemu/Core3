@@ -55,12 +55,12 @@ class OneHandedJediWeaponImplementation : public OneHandedJediWeaponServant {
 
 
 public:
-	OneHandedJediWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, bool eqp = false) 
+	OneHandedJediWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, bool eqp = false)
 			: OneHandedJediWeaponServant(objid, tempcrc, n, tempn, ONEHANDSABER, eqp) {
 		init();
 	}
 
-	OneHandedJediWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false) 
+	OneHandedJediWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false)
 			: OneHandedJediWeaponServant(creature, temp, n, tempn, ONEHANDSABER, eqp) {
 		init();
 	}
@@ -94,6 +94,8 @@ public:
 		setHealthAttackCost(5);
 		setActionAttackCost(5);
 		setMindAttackCost(5);
+
+		setSpeedSkillMod("onehandlightsaber_speed");
 
 		setForceCost(5);
 	}

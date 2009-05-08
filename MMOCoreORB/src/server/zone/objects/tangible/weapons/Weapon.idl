@@ -137,6 +137,8 @@ interface Weapon implements TangibleObject {
 	
 	float getArea();
 
+	String& getSpeedSkillMod();
+
 	// setters
 	void setType(int type);
 	
@@ -153,15 +155,6 @@ interface Weapon implements TangibleObject {
 	void setWoundsRatio(float woundsRat);
 	
 	void setArmorPiercing(int armorPierce);
-
-	/*void setDot0Type(int type);
-	void setDot0Attribute(int attribute);
-	void setDot0Strength(int strength);
-	void setDot0Duration(int duration);
-	void setDot0Potency(int potency);
-	void setDot0Uses(int uses);
-	void setDot1Uses(int uses);
-	void setDot2Uses(int uses);*/
 	
 	void setPointBlankRange(int pointBlankRnge);
 	void setPointBlankAccuracy(int pointBlankAcc);
@@ -170,6 +163,7 @@ interface Weapon implements TangibleObject {
 	void setIdealRange(int idealRnge);
 	void setIdealAccuracy(int idealAcc);
 	void setArea(float ar);
+	void setSpeedSkillMod(String& speedMod);
 	
 	void powerupMinDamage(float powerupValue);
 	void powerupMaxDamage(float powerupValue);

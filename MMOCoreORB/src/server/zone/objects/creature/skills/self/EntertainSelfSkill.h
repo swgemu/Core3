@@ -68,6 +68,8 @@ public:
 			creature->startPlayingMusic(modifier, true);
 		else if (getSkillName().length() >= 8 && getSkillName().subString(0, 8) == "flourish")
 			creature->doFlourish(modifier);
+		else
+			creature->doFlourish(modifier);
 	}
 
 	virtual bool isUseful(CreatureObject* creature) {

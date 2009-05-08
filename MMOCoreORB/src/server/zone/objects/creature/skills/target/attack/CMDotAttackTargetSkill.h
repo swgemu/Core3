@@ -248,7 +248,7 @@ public:
 	}
 
 	void handleArea(CreatureObject* creature, CreatureObject* areaCenter,Pharmaceutical* pharma, float range) {
-		server->getCombatManager()->handelMedicArea(creature, areaCenter,this, pharma, range);
+		server->getCombatManager()->handleMedicArea(creature, areaCenter,this, pharma, range);
 	}
 
 	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, Pharmaceutical* pharma)	{

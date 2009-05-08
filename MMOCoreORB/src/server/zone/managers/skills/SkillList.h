@@ -69,6 +69,10 @@ public:
 		return HashTable<uint32, Skill*>::get(crc);
 	}
 
+	Skill* getSkill(uint32 actionCRC) {
+		return HashTable<uint32, Skill*>::get(actionCRC);
+	}
+
 };
 
 #endif /*SKILLLIST_H_*/

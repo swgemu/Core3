@@ -82,6 +82,7 @@ public:
 	static int AddDotPoolAttackTargetSkill(lua_State *L);
 	static int AddChangePostureSelfSkill(lua_State* L);
 	static int AddWoundsDirectPoolAttackTargetSkill(lua_State* L);
+	static int AddCenterOfBeingSkill(lua_State* L);
 	static int AddPassiveSkill(lua_State* L);
 	static int AddMeditateSkill(lua_State* L);
 	static int AddPowerboostSkill(lua_State* L);

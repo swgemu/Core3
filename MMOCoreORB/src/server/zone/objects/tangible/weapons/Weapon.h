@@ -101,6 +101,8 @@ public:
 
 	float getArea();
 
+	String& getSpeedSkillMod();
+
 	void setType(int type);
 
 	void setDamageType(int type);
@@ -136,6 +138,8 @@ public:
 	void setIdealAccuracy(int idealAcc);
 
 	void setArea(float ar);
+
+	void setSpeedSkillMod(String& speedMod);
 
 	void powerupMinDamage(float powerupValue);
 
@@ -203,6 +207,7 @@ protected:
 	virtual ~Weapon();
 
 	String _return_getCert;
+	String _return_getSpeedSkillMod;
 	String _return_getXpType;
 
 	friend class WeaponHelper;
@@ -292,6 +297,8 @@ public:
 
 	float getArea();
 
+	String& getSpeedSkillMod();
+
 	void setType(int type);
 
 	void setDamageType(int type);
@@ -327,6 +334,8 @@ public:
 	void setIdealAccuracy(int idealAcc);
 
 	void setArea(float ar);
+
+	void setSpeedSkillMod(String& speedMod);
 
 	void powerupMinDamage(float powerupValue);
 
@@ -389,6 +398,7 @@ public:
 	void slice(Player* slicer);
 
 protected:
+	String _param0_setSpeedSkillMod__String_;
 	String _param0_setCert__String_;
 };
 

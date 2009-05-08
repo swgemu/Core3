@@ -123,17 +123,15 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 
 			if (creature->getMount() != target) {
 				//CreatureObject* linkCreo = vehicle->getLinkedCreature();
-
-
-
 				/*if (!linkCreo->isAttackableBy(creature)) {
 					target->unlock();
 					return false;
 				}*/
 				MountCreature* mount = (MountCreature*) target;
 
-				handleMountDamage(creature, (MountCreature*) target);
+			 	handleMountDamage(creature, (MountCreature*) target);
 			}
+
 			target->unlock();
 			return 0.0f;
 
@@ -149,7 +147,7 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 	if (creature->isListening() && !tskill->isHealSkill())
 		creature->stopListen(creature->getListenID());
 
-	if (tskill->isHealSkill()) {
+	if (tskill->isHealSkill() || tskill->isEnhanceSkill() || tskill->isTameSkill()) {
 		if (!tskill->calculateCost(creature))
 			return 0.0f;
 
@@ -166,44 +164,7 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 				target->unlock();
 		}
 
-		return calculateHealSpeed(creature, tskill);
-	}
-
-	if (tskill->isEnhanceSkill()) {
-		if (!tskill->calculateCost(creature))
-			return 0.0f;
-
-		try {
-			if (creature != target)
-				target->wlock(creature);
-
-			tskill->doSkill(creature, target, actionModifier);
-
-			if (creature != target)
-				target->unlock();
-		} catch (...) {
-			if (creature != target)
-				target->unlock();
-		}
-
-		return calculateWeaponAttackSpeed(creature,tskill,action);
-	}
-
-	if (tskill->isTameSkill()) {
-				try {
-			if (creature != target)
-				target->wlock(creature);
-
-				tskill->doSkill(creature, target, actionModifier);
-
-			if (creature != target)
-				target->unlock();
-		} catch (...) {
-			if (creature != target)
-				target->unlock();
-		}
-
-		return 0.0f;
+		return tskill->calculateSpeed(creature, action);
 	}
 
 	// Attack skills
@@ -218,41 +179,14 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 		animCRC = getDefaultAttackAnimation(creature);
 
 	CombatAction* actionMessage;
-	if (tskill->isThrowSkill()) {
-		ThrowAttackTargetSkill* tarSkill = (ThrowAttackTargetSkill*) tskill;
-		ThrowableWeapon* throwWeapon= tarSkill->getThrowableWeapon(creature,actionModifier);
+	if(tskill->isThrowSkill() || (tskill->isHeavyWeaponSkill() && creature->isPlayer())) {
 
-		if (throwWeapon == NULL)  {
-			return 0.0f;
-		}
-		else {
-			if (creature->isPlayer()) {
-				Player* player = (Player*) creature;
-				if (tarSkill->isTrapSkill()) {
-					if (!player->hasCooldownExpired(tarSkill->getSkillName())) {
-						player->sendSystemMessage("trap/trap", "sys_not_ready");
-						return 0.0f;
-					}
-				} else {
-					if (!player->hasCooldownExpired(tarSkill->getSkillName())) {
-						player->sendSystemMessage("This grenade is not ready to be used again");
-						return 0.0f;
-					}
-				}
-
-				throwWeapon->useCharge(player);
-			}
-			actionMessage = new CombatAction(creature, animCRC,throwWeapon->getObjectID());
-		}
-	} else {
-		if (tskill->isHeavyWeaponSkill() && creature->isPlayer()) {
-			FireHeavyWeaponAttackTarget* tarSkill = (FireHeavyWeaponAttackTarget*) tskill;
-			HeavyRangedWeapon* heavyWeapon= tarSkill->getHeavyRangedWeapon(creature,actionModifier);
-
-			heavyWeapon->useCharge((Player*) creature);
-		}
-		actionMessage = new CombatAction(creature, animCRC);
+		uint64 weaponOID = tskill->useWeaponCharge(creature, action);
+		if (weaponOID != 0)
+			actionMessage = new CombatAction(creature, animCRC, weaponOID);
 	}
+	else
+		actionMessage = new CombatAction(creature, animCRC);
 
 	if (!doAttackAction(creature, targetObject, (AttackTargetSkill*)tskill, actionModifier, actionMessage)) {
 		delete actionMessage;
@@ -374,18 +308,9 @@ void CombatManager::handleAreaAction(CreatureObject* creature, TangibleObject* t
 		if (skill->getRange() != 0)
 			areaRange = (int)skill->getAreaRange();
 
-		if (skill->isThrowSkill()) {
-			ThrowableWeapon* throwWeapon = ((ThrowAttackTargetSkill*)skill)->getThrowableWeapon(creature,actionModifier);
-			if (throwWeapon != NULL && throwWeapon->isGrenade())
-				areaRange = (int)throwWeapon->getArea();
-		}
-
-		if (skill->isHeavyWeaponSkill()) {
-			HeavyRangedWeapon* heavyWeeapon = ((FireHeavyWeaponAttackTarget*)skill)->getHeavyRangedWeapon(creature,actionModifier);
-			areaRange = (int)heavyWeeapon->getArea();
-		}
-
 		bool rangeArea = skill->isThrowSkill() || skill->isHeavyWeaponSkill();
+		if (rangeArea)
+			areaRange = skill->getWeaponArea(creature, action);
 
 		for (int i = 0; i < creature->inRangeObjectCount(); i++) {
 			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) creature->getInRangeObject(i))->_this);
@@ -446,7 +371,7 @@ void CombatManager::handleAreaAction(CreatureObject* creature, TangibleObject* t
 	}
 }
 
-void CombatManager::handelMedicArea(CreatureObject* creature, CreatureObject* areaCenter, Skill* skill, Pharmaceutical* pharma, float range) {
+void CombatManager::handleMedicArea(CreatureObject* creature, CreatureObject* areaCenter, Skill* skill, Pharmaceutical* pharma, float range) {
 	/* Pre: creature && areaCenter wlocked, nothing else is locked
 	 * Post: creature && areaCenter wlocked, nothing else is locked
 	 */
@@ -492,7 +417,7 @@ void CombatManager::handelMedicArea(CreatureObject* creature, CreatureObject* ar
 			try {
 				skill->doAreaMedicActionTarget(creature, creatureTarget, pharma);
 			} catch (...) {
-				System::out << "unreported exception caught in CombatManager::handelMedicArea";
+				System::out << "unreported exception caught in CombatManager::handleMedicArea";
 			}
 
 			if (creatureTarget != creature)
@@ -577,8 +502,7 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* tar
 
 			//bare metal vehicles shouldn't fight back - but pets should
 			if(targetCreature->isNonPlayerCreature()) {
-
-				if (!targetCreature->isVehicle())
+				if ( !targetCreature->isVehicle())
 					targetCreature->doAttack(attacker, damage);
 			}
 
@@ -1017,7 +941,6 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target,
 
 	//target->addDamage(attacker, damage);
 	target->addDamageDone(attacker, damage, askill->getSkillName());
-
 	if (part < 6) {
 		attacker->inflictDamage(target, CreatureAttribute::HEALTH, damage);
 	}
@@ -1301,109 +1224,6 @@ bool CombatManager::calculateCost(CreatureObject* creature, float healthMultipli
 	}
 
 	return true;
-}
-
-float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, TargetSkill* tskill,CommandQueueAction* action) {
-	Weapon* weapon = creature->getWeapon();
-	float weaponSpeed;
-	int speedMod = 0;
-
-	if (creature->isPlayer()) {
-		if (weapon == NULL)
-			speedMod = ((Player*)creature)->getSkillMod("unarmed_speed");
-		else switch (weapon->getObjectSubType()) {
-			case TangibleObjectImplementation::MELEEWEAPON:
-				speedMod = ((Player*)creature)->getSkillMod("unarmed_speed");
-				break;
-			case TangibleObjectImplementation::ONEHANDMELEEWEAPON:
-				speedMod = ((Player*)creature)->getSkillMod("onehandmelee_speed");
-				break;
-			case TangibleObjectImplementation::TWOHANDMELEEWEAPON:
-				speedMod = ((Player*)creature)->getSkillMod("twohandmelee_speed");
-				break;
-			case TangibleObjectImplementation::POLEARM:
-				speedMod = ((Player*)creature)->getSkillMod("polearm_speed");
-				break;
-			case TangibleObjectImplementation::PISTOL:
-				speedMod = ((Player*)creature)->getSkillMod("pistol_speed");
-				break;
-			case TangibleObjectImplementation::CARBINE:
-				speedMod = ((Player*)creature)->getSkillMod("carbine_speed");
-				break;
-			case TangibleObjectImplementation::RIFLE:
-				speedMod = ((Player*)creature)->getSkillMod("rifle_speed");
-				break;
-			case TangibleObjectImplementation::HEAVYWEAPON:
-				speedMod = ((Player*)creature)->getSkillMod("heavyweapon_speed");
-				break;
-			case TangibleObjectImplementation::SPECIALHEAVYWEAPON:
-				if (weapon->getType() == WeaponImplementation::RIFLEFLAMETHROWER)
-					speedMod = ((Player*)creature)->getSkillMod("heavy_flame_thrower_speed");
-				else if (weapon->getType() == WeaponImplementation::RIFLELIGHTNING)
-					speedMod = ((Player*)creature)->getSkillMod("heavy_rifle_lightning_speed");
-				else if (weapon->getType() == WeaponImplementation::RIFLEACIDBEAM)
-					speedMod = ((Player*)creature)->getSkillMod("heavy_rifle_acid_speed");
-
-				speedMod += ((Player*)creature)->getSkillMod("heavyweapon_speed");
-				break;
-			case TangibleObjectImplementation::ONEHANDSABER:
-				speedMod = ((Player*)creature)->getSkillMod("onehandlightsaber_speed");
-				break;
-			case TangibleObjectImplementation::TWOHANDSABER:
-				speedMod = ((Player*)creature)->getSkillMod("twohandlightsaber_speed");
-				break;
-			case TangibleObjectImplementation::POLEARMSABER:
-				speedMod = ((Player*)creature)->getSkillMod("polearmlightsaber_speed");
-				break;
-		}
-	}
-
-	if (action != NULL) {
-		String actionModifier = action->getActionModifier();
-		if (tskill->isTrapSkill()) {
-			speedMod = ((Player*)creature)->getSkillMod("trapping");
-
-			weapon = ((ThrowAttackTargetSkill*)tskill)->getThrowableWeapon(creature,actionModifier);
-
-
-		} else if (tskill->isThrowSkill()) {
-			speedMod = ((Player*)creature)->getSkillMod("thrown_speed");
-
-			weapon = ((ThrowAttackTargetSkill*)tskill)->getThrowableWeapon(creature,actionModifier);
-
-
-		} else if (tskill->isHeavyWeaponSkill()) {
-			weapon = ((FireHeavyWeaponAttackTarget*)tskill)->getHeavyRangedWeapon(creature,actionModifier);
-
-			switch(weapon->getType()) {
-			case HEAVYROCKETLAUNCHERATTACK:
-				speedMod = ((Player*)creature)->getSkillMod("heavy_rocket_launcher_speed");
-				break;
-			case HEAVYACIDBEAMATTACK:
-				speedMod = ((Player*)creature)->getSkillMod("heavy_acid_beam_speed");
-				break;
-			case HEAVYLIGHTNINGBEAMATTACK:
-				speedMod = ((Player*)creature)->getSkillMod("heavy_lightning_beam_speed");
-				break;
-			case HEAVYPARTICLEBEAMATTACK:
-				speedMod = ((Player*)creature)->getSkillMod("heavy_particle_beam_speed");
-				break;
-			}
-		}
-	}
-
-	// Classic speed equation
-	if (weapon != NULL)
-		weaponSpeed = (1.0f - ((float)speedMod / 100.0f)) * tskill->getSpeedRatio() * weapon->getAttackSpeed();
-	else
-		weaponSpeed = (1.0f - ((float)speedMod / 100.0f)) * tskill->getSpeedRatio() * 2.0f;
-
-	return MAX(weaponSpeed, 1.0f);
-}
-
-float CombatManager::calculateHealSpeed(CreatureObject* creature, TargetSkill* tskill) {
-	// Heals use an event for the timings.  However the combat queue needs timing for next action
-	return tskill->calculateSpeed(creature);
 }
 
 void CombatManager::calculateStates(CreatureObject* creature, CreatureObject* targetCreature, AttackTargetSkill* tskill) {
@@ -1896,6 +1716,7 @@ int CombatManager::calculateDamage(CreatureObject* creature, TangibleObject* tar
 		else
 			globalMultiplier *= PVP_MULTIPLIER;
 	}
+	//TODO: add creature skill bonuses here. ex. foods
 
 	damage = skill->damageRatio * average * globalMultiplier;
 	if(DEBUG)
@@ -2005,10 +1826,6 @@ int CombatManager::calculateDamage(CreatureObject* creature, TangibleObject* tar
 			if (individualDamage > tempReduction)
 				applyWounds(creature, targetCreature, weapon, bodyPart);
 			reduction += tempReduction;
-		}
-		if (damage > 0.0f && skill->isDotSkill()) {
-			DotPoolAttackTargetSkill* dotSkill = (DotPoolAttackTargetSkill*) skill;
-			dotSkill->checkDots(creature,targetCreature,damage);
 		}
 		//if (!skill->isTrapSkill() && skill->hasCbtSpamHit())
 		//	creature->sendCombatSpam(targetCreature, NULL, (int32)damage, skill->getCbtSpamHit());
@@ -2264,6 +2081,7 @@ void CombatManager::declineDuel(Player* player, Player* targetPlayer) {
 }
 
 bool CombatManager::handleMountDamage(CreatureObject* attacker, MountCreature* mount) {
+
 	CreatureObject* owner = mount->getLinkedCreature();
 
 	if (mount->isDisabled())

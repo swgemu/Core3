@@ -197,6 +197,36 @@ public:
 	}
 
 	/*
+	 * calculate the speed at which the player can execute this command
+	 */
+	virtual float calculateSpeed(CreatureObject* creature, CommandQueueAction* action) {
+		Weapon* weapon;
+		float weaponSpeed;
+		int speedMod = 0;
+
+		if (creature == NULL)
+			return 1.0f;
+
+		if (action != NULL) {
+			String actionModifier = action->getActionModifier();
+			weapon = getThrowableWeapon(creature,actionModifier);
+			if (weapon != NULL)
+				speedMod = creature->getSkillMod(weapon->getSpeedSkillMod());
+			else //default to grenade speed
+				speedMod = creature->getSkillMod("thrown_speed");
+
+		}
+
+		// Classic speed equation
+		if (weapon != NULL)
+			weaponSpeed = (1.0f - ((float)speedMod / 100.0f)) * getSpeedRatio() * weapon->getAttackSpeed();
+		else
+			weaponSpeed = (1.0f - ((float)speedMod / 100.0f)) * getSpeedRatio() * 2.0f;
+
+		return MAX(weaponSpeed, 1.0f);
+	}
+
+	/*
 	 * Applies the states to the target.
 	 * \param creature The skill user.
 	 * \param targetCreature The target.
@@ -214,32 +244,82 @@ public:
 	 * \return The trap.
 	 */
 	ThrowableWeapon* getThrowableWeapon(CreatureObject* creature, const String& modifier) {
+
+		uint64 objectid = 0;
+
 		if (!modifier.isEmpty()) {
 			StringTokenizer tokenizer(modifier);
-			String poolName;
-			uint64 objectid = 0;
 
 			tokenizer.setDelimeter("|");
 
 			if (tokenizer.hasMoreTokens())
 				objectid = tokenizer.getLongToken();
+		} else {
+			if (creature->isPlayer()) {
+				Player* player = (Player*) creature;
 
-			if (objectid > 0) {
-				SceneObject* invObj = creature->getInventoryItem(objectid);
+				if (isTrapSkill())
+					objectid = player->getTrap();
+				else
+					objectid = player->getGrenade();
+			}
+		}
 
-				if (invObj != NULL && invObj->isTangible()) {
-					TangibleObject* tano = (TangibleObject*) invObj;
+		if (objectid > 0) {
+			SceneObject* invObj = creature->getInventoryItem(objectid);
 
-					if (tano->isThrowable()) {
-						ThrowableWeapon* twp = (ThrowableWeapon*) tano;
+			if (invObj != NULL && invObj->isTangible()) {
+				TangibleObject* tano = (TangibleObject*) invObj;
 
-						return twp;
-					}
+				if (tano->isThrowable()) {
+					ThrowableWeapon* twp = (ThrowableWeapon*) tano;
+
+					return twp;
 				}
 			}
 		}
 
 		return NULL;
+	}
+
+	virtual uint64 useWeaponCharge(CreatureObject* creature, CommandQueueAction* action) {
+		if (action == NULL)
+			return 0;
+
+		String actionModifier = action->getActionModifier();
+		ThrowableWeapon* throwWeapon= getThrowableWeapon(creature,actionModifier);
+
+		if (throwWeapon == NULL)
+			return 0;
+
+		if (creature->isPlayer()) {
+			Player* player = (Player*) creature;
+			if (isTrapSkill()) {
+				if (!player->hasCooldownExpired(getSkillName())) {
+					player->sendSystemMessage("trap/trap", "sys_not_ready");
+					return 0;
+				}
+			} else {
+				if (!player->hasCooldownExpired(getSkillName())) {
+					player->sendSystemMessage("This grenade is not ready to be used again");
+					return 0;
+				}
+			}
+			throwWeapon->useCharge(player);
+			return throwWeapon->getObjectID();
+		}
+		return 0;
+	}
+
+	virtual int getWeaponArea(CreatureObject* creature, CommandQueueAction* action) {
+		if (creature == NULL || action == NULL)
+			return 5; //default area range
+
+		String actionModifier = action->getActionModifier();
+		ThrowableWeapon* throwWeapon = getThrowableWeapon(creature,actionModifier);
+		if (throwWeapon != NULL && throwWeapon->isGrenade())
+			return throwWeapon->getArea();
+		return 5; //default area range
 	}
 
 	inline void setDotType(int type) {

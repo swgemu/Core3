@@ -88,6 +88,8 @@ void ThrowableWeaponImplementation::init() {
 	setActionAttackCost(30);
 	setMindAttackCost(17);
 
+	setSpeedSkillMod("thrown_speed");
+
 	setEquipped(false);
 }
 

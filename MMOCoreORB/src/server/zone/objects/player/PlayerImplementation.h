@@ -1996,8 +1996,9 @@ public:
 		activeArea = area;
 	}
 
-	void throwTrap(uint64 targetID);
-	void throwGrenade(uint64 targetID);
+	uint64 getTrap();
+	uint64 getGrenade();
+	uint64 getHeavyRangedWeapon();
 
 	Armor* getPlayerArmor (int location) {
 		if (location > 14 || location < 0)

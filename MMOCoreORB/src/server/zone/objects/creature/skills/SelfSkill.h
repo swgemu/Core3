@@ -45,11 +45,9 @@ which carries forward this exception.
 #ifndef SELFSKILL_H_
 #define SELFSKILL_H_
 
-#include "../CreatureObject.h"
 #include "../CreatureObjectImplementation.h"
 
 #include "../../player/Player.h"
-#include "../../tangible/weapons/Weapon.h"
 
 #include "Skill.h"
 

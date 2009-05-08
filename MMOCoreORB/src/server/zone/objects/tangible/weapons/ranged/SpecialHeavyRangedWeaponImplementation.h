@@ -85,6 +85,7 @@ public:
 		case 0xC105AB54:
 			setType(RIFLEFLAMETHROWER);
 			setCategory(RANGED);
+			setSpeedSkillMod("heavy_flame_thrower_speed");
 
 			setDamageType(HEAT);
 			setArmorPiercing(NONE);
@@ -94,6 +95,7 @@ public:
 		case 0x2A3988BD:
 			setType(RIFLELIGHTNING);
 			setCategory(RANGED);
+			setSpeedSkillMod("heavy_rifle_lightning_speed");
 
 			setDamageType(ELECTRICITY);
 			setArmorPiercing(LIGHT);
@@ -103,6 +105,7 @@ public:
 		case 0xC677369F:
 			setType(RIFLEACIDBEAM);
 			setCategory(RANGED);
+			setSpeedSkillMod("heavy_rifle_acid_speed");
 
 			setDamageType(ACID);
 			setArmorPiercing(NONE);

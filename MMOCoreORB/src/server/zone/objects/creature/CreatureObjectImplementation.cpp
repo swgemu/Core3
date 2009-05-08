@@ -3267,7 +3267,9 @@ void CreatureObjectImplementation::doFlourish(const String& modifier) {
 		}
 	}
 
-	int fid = atoi(modifier.toCharArray());
+	int fid = 1;
+	if(!modifier.isEmpty())
+		fid = atoi(modifier.toCharArray());
 
 	if (!isDancing() && !isPlayingMusic()) {
 		sendSystemMessage("performance", "flourish_not_performing");

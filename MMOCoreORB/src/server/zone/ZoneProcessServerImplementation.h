@@ -73,6 +73,7 @@ class GroupManager;
 class LootManager;
 class SuiManager;
 class NameManager;
+class SlashCommandManager;
 
 class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
 	ZoneServer* server;
@@ -91,6 +92,7 @@ class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
 	LootManager* lootManager;
 	SuiManager* suiManager;
 	NameManager* nameManager;
+	SlashCommandManager* slashCommandManager;
 
 public:
 	ZoneProcessServerImplementation(ZoneServer* serv, int processingThreads);
@@ -174,6 +176,10 @@ public:
 
 	inline NameManager* getNameManager() {
 		return nameManager;
+	}
+
+	inline SlashCommandManager* getSlashCommandManager() {
+		return slashCommandManager;
 	}
 
 };

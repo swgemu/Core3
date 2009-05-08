@@ -726,8 +726,9 @@ interface Player implements CreatureObject {
 	ActiveArea getActiveArea();
 	void setActiveArea(ActiveArea area);
 
-	void throwTrap(unsigned int targetID);
-	void throwGrenade(unsigned int targetID);
+	unsigned long getTrap();
+	unsigned long getGrenade();
+	unsigned long getHeavyRangedWeapon();
 	
 	void equipItem(TangibleObject item);
 	void unequipItem(TangibleObject item);
