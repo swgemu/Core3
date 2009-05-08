@@ -67,6 +67,10 @@ pekoPekoAttack1 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(pekoPekoAttack1)
@@ -101,6 +105,10 @@ pekoPekoAttack2 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(pekoPekoAttack2)
@@ -135,6 +143,10 @@ pekoPekoAttack3 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(pekoPekoAttack3)
@@ -169,6 +181,10 @@ pekoPekoAttack4 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(pekoPekoAttack4)
@@ -203,6 +219,10 @@ pekoPekoAttack5 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(pekoPekoAttack5)
@@ -237,6 +257,10 @@ pekoPekoAttack6 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(pekoPekoAttack6)
@@ -271,6 +295,10 @@ pekoPekoAttack7 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(pekoPekoAttack7)

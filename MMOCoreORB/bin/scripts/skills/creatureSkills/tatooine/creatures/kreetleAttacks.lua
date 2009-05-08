@@ -67,6 +67,10 @@ kreetleAttack1 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(kreetleAttack1)
@@ -101,6 +105,10 @@ kreetleAttack2 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(kreetleAttack2)
@@ -135,6 +143,10 @@ kreetleAttack3 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(kreetleAttack3)

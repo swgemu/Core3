@@ -67,6 +67,10 @@ bordokAttack1 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(bordokAttack1)
@@ -101,6 +105,10 @@ bordokAttack2 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(bordokAttack2)
@@ -135,6 +143,10 @@ bordokAttack3 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(bordokAttack3)
@@ -169,6 +181,10 @@ bordokAttack4 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(bordokAttack4)
@@ -203,6 +219,10 @@ bordokAttack5 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(bordokAttack5)
@@ -237,6 +257,10 @@ bordokAttack6 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(bordokAttack6)

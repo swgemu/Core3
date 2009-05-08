@@ -42,12 +42,20 @@
 
 distractSkill = {
 	skillname = "distract",
-	effect_prefix = "clienteffect/entertainer_distract_level_"
+	effect_prefix = "clienteffect/entertainer_distract_level_",
+
+        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,1,2,5,6,7,8,10,11,12,13,14,4,",
+	instant = 0
 }
 AddDanceEffectSkill(distractSkill)
 
 distractSkill = {
 	skillname = "smokebomb",
-	effect_prefix = "clienteffect/entertainer_smoke_bomb_level_"
+	effect_prefix = "clienteffect/entertainer_smoke_bomb_level_",
+
+        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,1,2,5,6,7,8,10,11,12,13,14,4,",
+	instant = 0
 }
 AddDanceEffectSkill(distractSkill)

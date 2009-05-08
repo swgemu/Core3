@@ -44,6 +44,10 @@
 
 TameSkill = {
 	skillname = "tame",
+
+	invalidStateMask = 3895717968, --alert, feigndeath, stunned, blinded, dizzy, intimidated, immobilized, frozen, crafting, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "10,11,12,13,14,",
+	instant = 0
 }
 
 AddTameTargetSkill(TameSkill)

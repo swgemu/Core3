@@ -86,6 +86,10 @@ boarWolfAttack1 = {
         CbtSpamEvade = "attack_evade",
         CbtSpamHit = "attack_hit",
         CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(boarWolfAttack1)
@@ -120,6 +124,10 @@ boarWolfAttack2 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(boarWolfAttack2)
@@ -154,6 +162,10 @@ boarWolfAttack3 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(boarWolfAttack3)
@@ -188,6 +200,10 @@ boarWolfAttack4 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(boarWolfAttack4)

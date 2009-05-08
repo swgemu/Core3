@@ -26,6 +26,10 @@ dungMiteAttack1 = {
         CbtSpamEvade = "attack_evade",
         CbtSpamHit = "attack_hit",
         CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(dungMiteAttack1)
@@ -79,6 +83,10 @@ dungMiteAttack2 = {
         CbtSpamEvade = "attack_evade",
         CbtSpamHit = "attack_hit",
         CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(dungMiteAttack2)
@@ -112,6 +120,10 @@ dungMiteAttack3 = {
         CbtSpamEvade = "attack_evade",
         CbtSpamHit = "attack_hit",
         CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(dungMiteAttack3)

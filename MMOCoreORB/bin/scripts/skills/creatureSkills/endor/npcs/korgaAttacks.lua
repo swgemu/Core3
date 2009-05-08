@@ -78,6 +78,10 @@ korgaAttack01 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(korgaAttack01)
@@ -120,6 +124,10 @@ korgaAttack02 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddDirectPoolAttackTargetSkill(korgaAttack02)
@@ -151,6 +159,10 @@ korgaAttack03 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(korgaAttack03)
@@ -182,6 +194,10 @@ korgaAttack04 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(korgaAttack04)
@@ -212,6 +228,10 @@ korgaAttack05 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(korgaAttack05)
@@ -242,7 +262,11 @@ korgaAttack06 = {
 	CbtSpamEvade = "melee_evade", 
 	CbtSpamHit = "melee_hit", 
 	CbtSpamMiss = "melee_miss", 
-	} 
+	
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
+} 
 	
 AddRandomPoolAttackTargetSkill(korgaAttack06) 
 

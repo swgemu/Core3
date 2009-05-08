@@ -64,6 +64,10 @@ chewbaccaAttack1 = {
 	CbtSpamEvade = "strafeshot_evade",
 	CbtSpamHit = "strafeshot_hit",
 	CbtSpamMiss = "strafeshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(chewbaccaAttack1)
@@ -107,6 +111,10 @@ chewbaccaAttack2 = {
 	CbtSpamEvade = "headshot_evade",
 	CbtSpamHit = "headshot_hit",
 	CbtSpamMiss = "headshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(chewbaccaAttack2)
@@ -149,6 +157,10 @@ chewbaccaAttack3 = {
 	CbtSpamEvade = "masterheadshot_evade",
 	CbtSpamHit = "masterheadshot_hit",
 	CbtSpamMiss = "masterheadshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(chewbaccaAttack3)
@@ -180,6 +192,10 @@ chewbaccaAttack4 = {
 	CbtSpamEvade = "snipershot_evade",
 	CbtSpamHit = "snipershot_hit",
 	CbtSpamMiss = "snipershot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(chewbaccaAttack4)
@@ -211,6 +227,10 @@ chewbaccaAttack5 = {
 	CbtSpamEvade = "concealedshot_evade",
 	CbtSpamHit = "concealedshot_hit",
 	CbtSpamMiss = "concealedshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(chewbaccaAttack5)
@@ -242,6 +262,10 @@ chewbaccaAttack6 = {
 	CbtSpamEvade = "flushingshot_evade",
 	CbtSpamHit = "flushingshot_hit",
 	CbtSpamMiss = "flushingshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(chewbaccaAttack6)
@@ -273,6 +297,10 @@ chewbaccaAttack7 = {
 	CbtSpamEvade = "startleshot_evade",
 	CbtSpamHit = "startleshot_hit",
 	CbtSpamMiss = "startleshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(chewbaccaAttack7)
@@ -304,6 +332,10 @@ chewbaccaAttack8 = {
 	CbtSpamEvade = "flushingvolley_evade",
 	CbtSpamHit = "flushingvolley_hit",
 	CbtSpamMiss = "flushingvolley_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(chewbaccaAttack8)
@@ -335,6 +367,10 @@ chewbaccaAttack9 = {
 	CbtSpamEvade = "startleshot_evade",
 	CbtSpamHit = "startleshot_hit",
 	CbtSpamMiss = "startleshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(chewbaccaAttack9)
@@ -366,6 +402,10 @@ chewbaccaAttack10 = {
 	CbtSpamEvade = "flurryshot_evade",
 	CbtSpamHit = "flurryshot_hit",
 	CbtSpamMiss = "flurryshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(chewbaccaAttack10)
@@ -397,6 +437,10 @@ chewbaccaAttack11 = {
 	CbtSpamEvade = "flurry_evade",
 	CbtSpamHit = "flurry_hit",
 	CbtSpamMiss = "flurry_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(chewbaccaAttack11)
@@ -428,6 +472,10 @@ chewbaccaAttack12 = {
 	CbtSpamEvade = "advancedstrafe_evade",
 	CbtSpamHit = "advancedstrafe_hit",
 	CbtSpamMiss = "advancedstrafe_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(chewbaccaAttack12)

@@ -68,6 +68,10 @@ nyaxAttack1 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nyaxAttack1)
@@ -100,6 +104,10 @@ nyaxAttack2 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nyaxAttack2)
@@ -140,6 +148,10 @@ nyaxAttack10 = {
 	CbtSpamEvade = "legshot_evade",
 	CbtSpamHit = "legshot_hit",
 	CbtSpamMiss = "legshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(nyaxAttack10)
@@ -171,6 +183,10 @@ nyaxAttack11 = {
 	CbtSpamEvade = "fullautoattack_evade",
 	CbtSpamHit = "fullautoattack_hit",
 	CbtSpamMiss = "fullautoattack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nyaxAttack11)
@@ -214,6 +230,10 @@ nyaxAttack12 = {
 	CbtSpamEvade = "scattershot_evade",
 	CbtSpamHit = "scattershot_hit",
 	CbtSpamMiss = "scattershot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddDirectPoolAttackTargetSkill(nyaxAttack12)
@@ -245,6 +265,10 @@ nyaxAttack13 = {
 	CbtSpamEvade = "wildshot_evade",
 	CbtSpamHit = "wildshot_hit",
 	CbtSpamMiss = "wildshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nyaxAttack13)
@@ -287,6 +311,10 @@ nyaxAttack14 = {
 	CbtSpamEvade = "scattershot_evade",
 	CbtSpamHit = "scattershot_hit",
 	CbtSpamMiss = "scattershot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddDirectPoolAttackTargetSkill(nyaxAttack14)
@@ -318,6 +346,10 @@ nyaxAttack15 = {
 	CbtSpamEvade = "wildshot_evade",
 	CbtSpamHit = "wildshot_hit",
 	CbtSpamMiss = "wildshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nyaxAttack15)
@@ -359,6 +391,10 @@ nyaxAttack16 = {
 	CbtSpamEvade = "legshot_evade",
 	CbtSpamHit = "legshot_hit",
 	CbtSpamMiss = "legshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddDirectPoolAttackTargetSkill(nyaxAttack16)
@@ -390,6 +426,10 @@ nyaxAttack17 = {
 	CbtSpamEvade = "cripplingshot_evade",
 	CbtSpamHit = "cripplingshot_hit",
 	CbtSpamMiss = "cripplingshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nyaxAttack17)
@@ -421,6 +461,10 @@ nyaxAttack18 = {
 	CbtSpamEvade = "burstshot_evade",
 	CbtSpamHit = "burstshot_hit",
 	CbtSpamMiss = "burstshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nyaxAttack18)
@@ -452,6 +496,10 @@ nyaxAttack19 = {
 	CbtSpamEvade = "burstshot_evade",
 	CbtSpamHit = "burstshot_hit",
 	CbtSpamMiss = "burstshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nyaxAttack19)
@@ -483,6 +531,10 @@ nyaxAttack20 = {
 	CbtSpamEvade = "sup_fire_evade",
 	CbtSpamHit = "sup_fire_hit",
 	CbtSpamMiss = "sup_fire_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nyaxAttack20)
@@ -514,6 +566,10 @@ nyaxAttack21 = {
 	CbtSpamEvade = "fullautoattack_evade",
 	CbtSpamHit = "fullautoattack_hit",
 	CbtSpamMiss = "fullautoattack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nyaxAttack21)
@@ -545,6 +601,10 @@ nyaxAttack22 = {
 	CbtSpamEvade = "chargeshot_evade",
 	CbtSpamHit = "chargeshot_hit",
 	CbtSpamMiss = "chargeshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nyaxAttack22)
@@ -576,6 +636,10 @@ nyaxAttack23 = {
 	CbtSpamEvade = "fullautoattack_evade",
 	CbtSpamHit = "fullautoattack_hit",
 	CbtSpamMiss = "fullautoattack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nyaxAttack23)
@@ -607,6 +671,10 @@ nyaxAttack24 = {
 	CbtSpamEvade = "chargeshot_evade",
 	CbtSpamHit = "chargeshot_hit",
 	CbtSpamMiss = "chargeshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nyaxAttack24)

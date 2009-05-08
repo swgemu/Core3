@@ -43,7 +43,11 @@
 CamoSkill = {
 	skillname = "conceal",
 	type = 2,
-	duration = 3600.0
+	duration = 3600.0,
+
+        invalidStateMask = 3760586802, --combat, alert, berzerk, frozen, swimming, glowingJedi, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddCamoSkill(CamoSkill);
@@ -102,7 +106,11 @@ ThrowSkill = {
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
 	stunDefDebuff = 0,
-	intimidateDefDebuff = 0
+	intimidateDefDebuff = 0,
+
+        invalidStateMask = 3894543472, --alert, berzerk, feigndeath, tumbling, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddThrowDirectPoolTargetSkill(ThrowSkill);
@@ -148,7 +156,11 @@ ThrowSkill = {
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
 	stunDefDebuff = 0,
-	intimidateDefDebuff = 0
+	intimidateDefDebuff = 0,
+
+        invalidStateMask = 3894543472, --alert, berzerk, feigndeath, tumbling, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddThrowRandomPoolTargetSkill(ThrowSkill);
@@ -157,7 +169,11 @@ AddThrowRandomPoolTargetSkill(ThrowSkill);
 AreaTrackSkill = {
 	skillname = "areatrack",
 	animation = "combarea",
-	cooldowntime = 30
+	cooldowntime = 30,
+
+        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "5,6,7,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddAreaTrackSkill(AreaTrackSkill);

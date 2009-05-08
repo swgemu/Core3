@@ -44,7 +44,11 @@
 ForageSkill = {
 	skillName = "forage",
 	animation = "forage",       
-        actionCost = 50	
+        actionCost = 50,
+
+        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddForageSkill(ForageSkill);
@@ -53,7 +57,11 @@ AddForageSkill(ForageSkill);
 MedicalForageSkill = {
 	skillName = "medicalforage",
 	animation = "forage",       
-        actionCost = 50	
+        actionCost = 50,
+
+        invalidStateMask = 3894934635, --cover, combat, aiming, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddForageSkill(MedicalForageSkill);
@@ -64,12 +72,73 @@ AddForageSkill(MedicalForageSkill);
 CamoSkill = {
 	skillname = "maskscent",
 	type = 1,
-	duration = 1200.0,	
+	duration = 1200.0,
+
+        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "5,6,7,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddCamoSkill(CamoSkill)
 
 ----------------------------- Traps NOVICE --------------------------------
+
+ThrowSkill = { 
+	attackname = "throwtrap",
+	animation = "throw_trap_drowsy_dart",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 0,
+	accuracyBonus = 0,
+	
+	healthAttackChance = 0,
+	strengthAttackChance = 0,
+	constitutionAttackChance = 0,
+
+	actionAttackChance = 0,
+	quicknessAttackChance = 0,
+	staminaAttackChance = 0,
+
+	mindAttackChance = 0,
+	focusAttackChance = 0,
+	willpowerAttackChance = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	dotType = 0,
+
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+	
+	deBuffStrFile = "trap\\trap",
+	deBuffHitMessage = "trap_drowsy_effect",
+	deBuffMissMessage = "trap_drowsy_effect_no",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0,
+
+        invalidStateMask = 3894543472, --alert, berzerk, feigndeath, tumbling, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
+}
+
+AddThrowDirectPoolTargetSkill(ThrowSkill)
 
 --A small dart delivery system, ingeniously crafted from natural organics. The tip is coated with a 
 --light Lecepanine poison. This object is thrown at a target in combat. If it hits, the poison will 
@@ -125,7 +194,11 @@ ThrowSkill = {
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
 	stunDefDebuff = 0,
-	intimidateDefDebuff = 0
+	intimidateDefDebuff = 0,
+
+        invalidStateMask = 3894543472, --alert, berzerk, feigndeath, tumbling, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddThrowDirectPoolTargetSkill(ThrowSkill)
@@ -169,7 +242,11 @@ ThrowSkill = {
 	meleeDefDebuff = -15,
 	rangedDefDebuff = 0,
 	stunDefDebuff = 0,
-	intimidateDefDebuff = 0
+	intimidateDefDebuff = 0,
+
+        invalidStateMask = 3894543472, --alert, berzerk, feigndeath, tumbling, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddThrowRandomPoolTargetSkill(ThrowSkill)
@@ -216,7 +293,11 @@ ThrowSkill = {
 	meleeDefDebuff = 0,
 	rangedDefDebuff = -15,
 	stunDefDebuff = 0,
-	intimidateDefDebuff = 0
+	intimidateDefDebuff = 0,
+
+        invalidStateMask = 3894543472, --alert, berzerk, feigndeath, tumbling, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddThrowRandomPoolTargetSkill(ThrowSkill)
@@ -273,7 +354,11 @@ ThrowSkill = {
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
 	stunDefDebuff = 0,
-	intimidateDefDebuff = 0
+	intimidateDefDebuff = 0,
+
+        invalidStateMask = 3894543472, --alert, berzerk, feigndeath, tumbling, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddThrowDirectPoolTargetSkill(ThrowSkill)
@@ -332,7 +417,11 @@ ThrowSkill = {
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
 	stunDefDebuff = 0,
-	intimidateDefDebuff = 0
+	intimidateDefDebuff = 0,
+
+        invalidStateMask = 3894543472, --alert, berzerk, feigndeath, tumbling, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddThrowDirectPoolTargetSkill(ThrowSkill)
@@ -376,7 +465,11 @@ ThrowSkill = {
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
 	stunDefDebuff = -20,
-	intimidateDefDebuff = -20
+	intimidateDefDebuff = -20,
+
+        invalidStateMask = 3894543472, --alert, berzerk, feigndeath, tumbling, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddThrowRandomPoolTargetSkill(ThrowSkill)
@@ -422,7 +515,11 @@ ThrowSkill = {
 	meleeDefDebuff = -30,
 	rangedDefDebuff = -30,
 	stunDefDebuff = 0,
-	intimidateDefDebuff = 0
+	intimidateDefDebuff = 0,
+
+        invalidStateMask = 3894543472, --alert, berzerk, feigndeath, tumbling, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddThrowRandomPoolTargetSkill(ThrowSkill)
@@ -466,7 +563,11 @@ ThrowSkill = {
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
 	stunDefDebuff = 0,
-	intimidateDefDebuff = 0
+	intimidateDefDebuff = 0,
+
+        invalidStateMask = 3894543472, --alert, berzerk, feigndeath, tumbling, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddThrowRandomPoolTargetSkill(ThrowSkill)
@@ -526,7 +627,11 @@ ThrowSkill = {
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
 	stunDefDebuff = 0,
-	intimidateDefDebuff = 0
+	intimidateDefDebuff = 0,
+
+        invalidStateMask = 3894543472, --alert, berzerk, feigndeath, tumbling, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddThrowDirectPoolTargetSkill(ThrowSkill)

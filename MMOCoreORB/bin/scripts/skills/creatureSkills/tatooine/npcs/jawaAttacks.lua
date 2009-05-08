@@ -64,6 +64,10 @@ jawaRangedAttack1 = {
 	CbtSpamEvade = "strafeshot_evade",
 	CbtSpamHit = "strafeshot_hit",
 	CbtSpamMiss = "strafeshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jawaRangedAttack1)
@@ -107,6 +111,10 @@ jawaRangedAttack2 = {
 	CbtSpamEvade = "headshot_evade",
 	CbtSpamHit = "headshot_hit",
 	CbtSpamMiss = "headshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jawaRangedAttack2)
@@ -149,6 +157,10 @@ jawaRangedAttack3 = {
 	CbtSpamEvade = "masterheadshot_evade",
 	CbtSpamHit = "masterheadshot_hit",
 	CbtSpamMiss = "masterheadshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jawaRangedAttack3)
@@ -180,6 +192,10 @@ jawaRangedAttack4 = {
 	CbtSpamEvade = "snipershot_evade",
 	CbtSpamHit = "snipershot_hit",
 	CbtSpamMiss = "snipershot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jawaRangedAttack4)
@@ -211,6 +227,10 @@ jawaRangedAttack5 = {
 	CbtSpamEvade = "concealedshot_evade",
 	CbtSpamHit = "concealedshot_hit",
 	CbtSpamMiss = "concealedshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jawaRangedAttack5)
@@ -242,6 +262,10 @@ jawaRangedAttack6 = {
 	CbtSpamEvade = "flushingshot_evade",
 	CbtSpamHit = "flushingshot_hit",
 	CbtSpamMiss = "flushingshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jawaRangedAttack6)
@@ -273,6 +297,10 @@ jawaRangedAttack7 = {
 	CbtSpamEvade = "startleshot_evade",
 	CbtSpamHit = "startleshot_hit",
 	CbtSpamMiss = "startleshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jawaRangedAttack7)
@@ -304,6 +332,10 @@ jawaRangedAttack8 = {
 	CbtSpamEvade = "flushingvolley_evade",
 	CbtSpamHit = "flushingvolley_hit",
 	CbtSpamMiss = "flushingvolley_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jawaRangedAttack8)
@@ -335,6 +367,10 @@ jawaRangedAttack9 = {
 	CbtSpamEvade = "startleshot_evade",
 	CbtSpamHit = "startleshot_hit",
 	CbtSpamMiss = "startleshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jawaRangedAttack9)
@@ -366,6 +402,10 @@ jawaRangedAttack10 = {
 	CbtSpamEvade = "flurryshot_evade",
 	CbtSpamHit = "flurryshot_hit",
 	CbtSpamMiss = "flurryshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jawaRangedAttack10)
@@ -397,6 +437,10 @@ jawaRangedAttack11 = {
 	CbtSpamEvade = "flurry_evade",
 	CbtSpamHit = "flurry_hit",
 	CbtSpamMiss = "flurry_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jawaRangedAttack11)
@@ -428,6 +472,10 @@ jawaRangedAttack12 = {
 	CbtSpamEvade = "advancedstrafe_evade",
 	CbtSpamHit = "advancedstrafe_hit",
 	CbtSpamMiss = "advancedstrafe_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jawaRangedAttack12)
@@ -459,6 +507,10 @@ jawaMeleeAttack1 = {
 	CbtSpamEvade = "sword1_sweep_evade",
 	CbtSpamHit = "sword1_sweep_hit",
 	CbtSpamMiss = "sword1_sweep_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jawaMeleeAttack1)
@@ -490,6 +542,10 @@ jawaMeleeAttack2 = {
 	CbtSpamEvade = "chomai_evade",
 	CbtSpamHit = "chomai_hit",
 	CbtSpamMiss = "chomai_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jawaMeleeAttack2)
@@ -532,6 +588,10 @@ jawaMeleeAttack3 = {
 	CbtSpamEvade = "saimai_evade",
 	CbtSpamHit = "saimai_hit",
 	CbtSpamMiss = "saimai_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddDirectPoolAttackTargetSkill(jawaMeleeAttack3)
@@ -563,6 +623,10 @@ jawaMeleeAttack4 = {
 	CbtSpamEvade = "sword1_dizzy_evade",
 	CbtSpamHit = "sword1_dizzy_hit",
 	CbtSpamMiss = "sword1_dizzy_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jawaMeleeAttack4)
@@ -594,6 +658,10 @@ jawaMeleeAttack5 = {
 	CbtSpamEvade = "slashspin_evade",
 	CbtSpamHit = "slashspin_hit",
 	CbtSpamMiss = "slashspin_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jawaMeleeAttack5)

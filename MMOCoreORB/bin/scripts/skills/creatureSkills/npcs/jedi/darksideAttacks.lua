@@ -63,8 +63,12 @@ darksideAttack1 = {
 	CbtSpamCounter = "mindblast1_counter",
 	CbtSpamEvade = "mindblast1_evade",
 	CbtSpamHit = "mindblast1_hit",
-	CbtSpamMiss = "mindblast1_miss"
+	CbtSpamMiss = "mindblast1_miss",
 	
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(darksideAttack1)
@@ -93,8 +97,12 @@ darksideAttack2 = {
 	CbtSpamCounter = "mindblast2_counter",
 	CbtSpamEvade = "mindblast2_evade",
 	CbtSpamHit = "mindblast2_hit",
-	CbtSpamMiss = "mindblast2_miss"
+	CbtSpamMiss = "mindblast2_miss",
 	
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(darksideAttack2)
@@ -123,8 +131,12 @@ darksideAttack3 = {
 	CbtSpamCounter = "forcelightningcone1_counter",
 	CbtSpamEvade = "forcelightningcone1_evade",
 	CbtSpamHit = "forcelightningcone1_hit",
-	CbtSpamMiss = "forcelightningcone1_miss"
+	CbtSpamMiss = "forcelightningcone1_miss",
 	
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(darksideAttack3)
@@ -153,8 +165,12 @@ darksideAttack4 = {
 	CbtSpamCounter = "forcelightningcone2_counter",
 	CbtSpamEvade = "forcelightningcone2_evade",
 	CbtSpamHit = "forcelightningcone2_hit",
-	CbtSpamMiss = "forcelightningcone2_miss"
+	CbtSpamMiss = "forcelightningcone2_miss",
 	
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(darksideAttack4)
@@ -181,8 +197,12 @@ darksideAttack5 = {
 	CbtSpamCounter = "forcelightningsingle1_counter",
 	CbtSpamEvade = "forcelightningsingle1_evade",
 	CbtSpamHit = "forcelightningsingle1_hit",
-	CbtSpamMiss = "forcelightningsingle1_miss"
+	CbtSpamMiss = "forcelightningsingle1_miss",
 	
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(darksideAttack5)
@@ -209,8 +229,12 @@ darksideAttack6 = {
 	CbtSpamCounter = "forcelightningsingle2_counter",
 	CbtSpamEvade = "forcelightningsingle2_evade",
 	CbtSpamHit = "forcelightningsingle2_hit",
-	CbtSpamMiss = "forcelightningsingle2_miss"
+	CbtSpamMiss = "forcelightningsingle2_miss",
 	
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(darksideAttack6)
@@ -238,8 +262,12 @@ darksideAttack7 = {
 	CbtSpamCounter = "forceknockdown1_counter",
 	CbtSpamEvade = "forceknockdown1_evade",
 	CbtSpamHit = "forceknockdown1_hit",
-	CbtSpamMiss = "forceknockdown1_miss"
+	CbtSpamMiss = "forceknockdown1_miss",
 	
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(darksideAttack7)
@@ -267,8 +295,12 @@ darksideAttack8 = {
 	CbtSpamCounter = "forceknockdown2_counter",
 	CbtSpamEvade = "forceknockdown2_evade",
 	CbtSpamHit = "forceknockdown2_hit",
-	CbtSpamMiss = "forceknockdown2_miss"
+	CbtSpamMiss = "forceknockdown2_miss",
 	
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(darksideAttack8)
@@ -296,8 +328,12 @@ darksideAttack9 = {
 	CbtSpamCounter = "forceknockdown3_counter",
 	CbtSpamEvade = "forceknockdown3_evade",
 	CbtSpamHit = "forceknockdown3_hit",
-	CbtSpamMiss = "forceknockdown3_miss"
+	CbtSpamMiss = "forceknockdown3_miss",
 	
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(darksideAttack9)
@@ -324,8 +360,12 @@ darksideAttack10 = {
 	CbtSpamCounter = "forcechoke_counter",
 	CbtSpamEvade = "forcechoke_evade",
 	CbtSpamHit = "forcechoke_hit",
-	CbtSpamMiss = "forcechoke_miss"
+	CbtSpamMiss = "forcechoke_miss",
 	
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(darksideAttack10)

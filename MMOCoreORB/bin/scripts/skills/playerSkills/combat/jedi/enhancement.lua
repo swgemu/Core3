@@ -53,7 +53,11 @@ FR1 = {
 	 speed = 2.624,
 	 acceleration = -.55,
 	 slope = 50,
-	 duration = 120
+	 duration = 120,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,",
+	instant = 0
 }
 
 AddForceRunSelfSkill(FR1)
@@ -69,7 +73,11 @@ FR2 = {
 	 speed = 8.624,
 	 acceleration = -.55,
 	 slope = 50,
-	 duration = 120
+	 duration = 120,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,",
+	instant = 0
 }
 AddForceRunSelfSkill(FR2)
 
@@ -85,7 +93,11 @@ FR3 = {
 	 speed = 14.624,
 	 acceleration = -.55,
 	 slope = 50,
-	 duration = 120
+	 duration = 120,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,",
+	instant = 0
 }
 AddForceRunSelfSkill(FR3)
 
@@ -100,6 +112,10 @@ ForceSpeed1 = {
 	duration = 180,
 	
 	speedBonus = 15,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,",
+	instant = 0
 }
 
 AddForceSpeedSelfSkill(ForceSpeed1)
@@ -115,6 +131,10 @@ ForceSpeed2 = {
 	duration = 360,
 	
 	speedBonus = 25,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,",
+	instant = 0
 }
 
 AddForceSpeedSelfSkill(ForceSpeed2)
@@ -130,6 +150,10 @@ ForceResistBleeding = {
 	duration = 800,
 	
 	rBBonus = 25,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,9,10,11,13,14,",
+	instant = 0
 }
 
 AddForceResistBleedingSelfSkill(ForceResistBleeding)
@@ -145,6 +169,10 @@ ForceResistPoison = {
 	duration = 900,
 	
 	rPBonus = 25,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,9,10,11,13,14,",
+	instant = 0
 }
 
 AddForceResistPoisonSelfSkill(ForceResistPoison)
@@ -160,6 +188,10 @@ ForceResistDisease = {
 	duration = 900,
 	
 	rDBonus = 25,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,9,10,11,13,14,",
+	instant = 0
 }
 
 AddForceResistDiseaseSelfSkill(ForceResistDisease)
@@ -175,6 +207,10 @@ ForceResistStates = {
 	duration = 900,
 	
 	rSBonus = 25,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,9,10,11,13,14,",
+	instant = 0
 }
 
 AddForceResistStatesSelfSkill(ForceResistStates)
@@ -188,6 +224,10 @@ ForceMeditate = {
 	--regen = "300",
 	regen = "*3",
 
+        invalidStateMask = 4164812873, --cover, aiming, feigndeath, frozen, swimming, sittingOnChair, crafting, glowingJedi, ridingMount, mountedCreature, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "0,3,1,2,5,6,7,9,10,11,12,13,14,4,",
+
+	instant = 0
 }
 
 AddForceMeditateSelfSkill(ForceMeditate)
@@ -201,7 +241,11 @@ DrainForce = {
 	
 	--forceCost = 0,
 	speedRatio = 4,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,",
 	
+	instant = 0
 }
 --AddDrainForceSkill(DrainForce)
 
@@ -216,6 +260,10 @@ ForceArmor1 = {
 	duration = 900,
 	
 	armorBonus = 25,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,13,14,",
+	instant = 0
 }
 
 AddForceArmor2SelfSkill(ForceArmor1)
@@ -231,6 +279,10 @@ ForceArmor2 = {
 	duration = 1800,
 	
 	armorBonus = 45,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,13,14,",
+	instant = 0
 }
 
 AddForceArmor2SelfSkill(ForceArmor2)
@@ -259,6 +311,10 @@ HealEnhanceSkill = {
 	
 	StartFlyText = "",
 	FinishFlyText = "",
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,13,14,",
+	instant = 0
 }
 
 AddEnhanceSelfSkill(HealEnhanceSkill)
@@ -288,6 +344,10 @@ HealEnhanceSkill = {
 	StartFlyText = "",
 	
 	FinishFlyText = "",
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,13,14,",
+	instant = 0
 }
 
 AddEnhanceSelfSkill(HealEnhanceSkill)

@@ -66,6 +66,10 @@ rebelSergeantAttack1 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(rebelSergeantAttack1)
@@ -97,6 +101,10 @@ rebelSergeantAttack2 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(rebelSergeantAttack2)
@@ -128,6 +136,10 @@ rebelSergeantAttack3 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(rebelSergeantAttack3)
@@ -166,6 +178,10 @@ rebelSergeantAttack4 = {
 	CbtSpamEvade = "sapblast_evade",
 	CbtSpamHit = "sapblast_hit",
 	CbtSpamMiss = "sapblast_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(rebelSergeantAttack4)

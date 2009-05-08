@@ -65,7 +65,11 @@ lukeAttack1 = {
 	CbtSpamCounter = "saberthrow1_counter",
 	CbtSpamEvade = "saberthrow1_evade",
 	CbtSpamHit = "saberthrow1_hit",
-	CbtSpamMiss = "saberthrow1_miss"
+	CbtSpamMiss = "saberthrow1_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(lukeAttack1)
@@ -95,7 +99,11 @@ lukeAttack2 = {
 	CbtSpamCounter = "saberthrow2_counter",
 	CbtSpamEvade = "saberthrow2_evade",
 	CbtSpamHit = "saberthrow2_hit",
-	CbtSpamMiss = "saberthrow2_miss"
+	CbtSpamMiss = "saberthrow2_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(lukeAttack2)
@@ -127,7 +135,11 @@ lukeAttack3 = {
 	CbtSpamCounter = "saberthrow3_counter",
 	CbtSpamEvade = "saberthrow3_evade",
 	CbtSpamHit = "saberthrow3_hit",
-	CbtSpamMiss = "saberthrow3_miss"
+	CbtSpamMiss = "saberthrow3_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(lukeAttack3)
@@ -170,7 +182,11 @@ lukeAttack4 = {
 	CbtSpamCounter = "saberslash1_counter",
 	CbtSpamEvade = "saberslash1_evade",
 	CbtSpamHit = "saberslash1_hit",
-	CbtSpamMiss = "saberslash1_miss"
+	CbtSpamMiss = "saberslash1_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(lukeAttack4)
@@ -213,7 +229,11 @@ lukeAttack5 = {
 	CbtSpamCounter = "saberslash2_counter",
 	CbtSpamEvade = "saberslash2_evade",
 	CbtSpamHit = "saberslash2_hit",
-	CbtSpamMiss = "saberslash2_miss"
+	CbtSpamMiss = "saberslash2_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(lukeAttack5)
@@ -243,7 +263,11 @@ lukeAttack6 = {
 	CbtSpamCounter = "saber1hflurry_counter",
 	CbtSpamEvade = "saber1hflurry_evade",
 	CbtSpamHit = "saber1hflurry_hit",
-	CbtSpamMiss = "saber1hflurry_miss"
+	CbtSpamMiss = "saber1hflurry_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 	
 AddRandomPoolAttackTargetSkill(lukeAttack6)
@@ -273,7 +297,11 @@ lukeAttack7 = {
 	CbtSpamCounter = "saber1hflurry2_counter",
 	CbtSpamEvade = "saber1hflurry2_evade",
 	CbtSpamHit = "saber1hflurry2_hit",
-	CbtSpamMiss = "saber1hflurry2_miss"
+	CbtSpamMiss = "saber1hflurry2_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 	
 AddRandomPoolAttackTargetSkill(lukeAttack7)
@@ -303,8 +331,12 @@ lukeAttack8 = {
 	CbtSpamCounter = "saber2hphantom_counter",
 	CbtSpamEvade = "saber2hphantom_evade",
 	CbtSpamHit = "saber2hphantom_hit",
-	CbtSpamMiss = "saber2hphantom_miss"
+	CbtSpamMiss = "saber2hphantom_miss",
 	
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(lukeAttack8)
@@ -342,8 +374,12 @@ lukeAttack9 = {
 	CbtSpamCounter = "saber1hheadhit1_counter",
 	CbtSpamEvade = "saber1hheadhit1_evade",
 	CbtSpamHit = "saber1hheadhit1_hit",
-	CbtSpamMiss = "saber1hheadhit1_miss"
+	CbtSpamMiss = "saber1hheadhit1_miss",
 	
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(lukeAttack9)
@@ -383,8 +419,12 @@ lukeAttack10 = {
 	CbtSpamCounter = "saber1hheadhit2_counter",
 	CbtSpamEvade = "saber1hheadhit2_evade",
 	CbtSpamHit = "saber1hheadhit2_hit",
-	CbtSpamMiss = "saber1hheadhit2_miss"
+	CbtSpamMiss = "saber1hheadhit2_miss",
 	
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(lukeAttack10)
@@ -424,8 +464,12 @@ lukeAttack11 = {
 	CbtSpamCounter = "saber1hheadhit3_counter",
 	CbtSpamEvade = "saber1hheadhit3_evade",
 	CbtSpamHit = "saber1hheadhit3_hit",
-	CbtSpamMiss = "saber1hheadhit3_miss"
+	CbtSpamMiss = "saber1hheadhit3_miss",
 	
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(lukeAttack11)
@@ -450,8 +494,12 @@ lukeAttack12 = {
 	CbtSpamCounter = "saber1hcombohit1_counter",
 	CbtSpamEvade = "saber1hcombohit1_evade",
 	CbtSpamHit = "saber1hcombohit1_hit",
-	CbtSpamMiss = "saber1hcombohit1_miss"
+	CbtSpamMiss = "saber1hcombohit1_miss",
 	
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(lukeAttack12)
@@ -476,8 +524,12 @@ lukeAttack13 = {
 	CbtSpamCounter = "saber1hcombohit2_counter",
 	CbtSpamEvade = "saber1hcombohit2_evade",
 	CbtSpamHit = "saber1hcombohit2_hit",
-	CbtSpamMiss = "saber1hcombohit2_miss"
+	CbtSpamMiss = "saber1hcombohit2_miss",
 	
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(lukeAttack13)
@@ -502,8 +554,12 @@ lukeAttack14 = {
 	CbtSpamCounter = "saber1hcombohit3_counter",
 	CbtSpamEvade = "saber1hcombohit3_evade",
 	CbtSpamHit = "saber1hcombohit3_hit",
-	CbtSpamMiss = "saber1hcombohit3_miss"
+	CbtSpamMiss = "saber1hcombohit3_miss",
 	
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(lukeAttack14)
@@ -528,8 +584,12 @@ lukeAttack15 = {
 	CbtSpamCounter = "saber1hhit1_counter",
 	CbtSpamEvade = "saber1hhit1_evade",
 	CbtSpamHit = "saber1hhit1_hit",
-	CbtSpamMiss = "saber1hhit1_miss"
+	CbtSpamMiss = "saber1hhit1_miss",
 	
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(lukeAttack15)
@@ -555,8 +615,12 @@ lukeAttack16 = {
 	CbtSpamCounter = "saber1hhit2_counter",
 	CbtSpamEvade = "saber1hhit2_evade",
 	CbtSpamHit = "saber1hhit2_hit",
-	CbtSpamMiss = "saber1hhit2_miss"
+	CbtSpamMiss = "saber1hhit2_miss",
 	
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(lukeAttack16)
@@ -582,8 +646,12 @@ lukeAttack17 = {
 	CbtSpamCounter = "saber1hhit3_counter",
 	CbtSpamEvade = "saber1hhit3_evade",
 	CbtSpamHit = "saber1hhit3_hit",
-	CbtSpamMiss = "saber1hhit3_miss"
+	CbtSpamMiss = "saber1hhit3_miss",
 	
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(lukeAttack17)

@@ -85,6 +85,10 @@ imperialStormTrooperNovaTrooperAttack1 = {
 	CbtSpamEvade = "legshot_evade",
 	CbtSpamHit = "legshot_hit",
 	CbtSpamMiss = "legshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperNovaTrooperAttack1)
@@ -116,6 +120,10 @@ imperialStormTrooperNovaTrooperAttack2 = {
 	CbtSpamEvade = "s_auto_evade",
 	CbtSpamHit = "s_auto_hit",
 	CbtSpamMiss = "s_auto_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperNovaTrooperAttack2)
@@ -158,6 +166,10 @@ imperialStormTrooperNovaTrooperAttack3 = {
 	CbtSpamEvade = "scattershot_evade",
 	CbtSpamHit = "scattershot_hit",
 	CbtSpamMiss = "scattershot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperNovaTrooperAttack3)
@@ -188,6 +200,10 @@ imperialStormTrooperNovaTrooperAttack4 = {
 	CbtSpamEvade = "wildshot_evade",
 	CbtSpamHit = "wildshot_hit",
 	CbtSpamMiss = "wildshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperNovaTrooperAttack4)
@@ -229,6 +245,10 @@ imperialStormTrooperNovaTrooperAttack5 = {
 	CbtSpamEvade = "scatterblast_evade",
 	CbtSpamHit = "scatterblast_hit",
 	CbtSpamMiss = "scatterblast_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperNovaTrooperAttack5)
@@ -259,6 +279,10 @@ imperialStormTrooperNovaTrooperAttack6 = {
 	CbtSpamEvade = "widewildshot_evade",
 	CbtSpamHit = "widewildshot_hit",
 	CbtSpamMiss = "widewildshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperNovaTrooperAttack6)
@@ -299,6 +323,10 @@ imperialStormTrooperNovaTrooperAttack7 = {
 	CbtSpamEvade = "kneecapshot_evade",
 	CbtSpamHit = "kneecapshot_hit",
 	CbtSpamMiss = "kneecapshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperNovaTrooperAttack7)
@@ -329,6 +357,10 @@ imperialStormTrooperNovaTrooperAttack8 = {
 	CbtSpamEvade = "cripplingshot_evade",
 	CbtSpamHit = "cripplingshot_hit",
 	CbtSpamMiss = "cripplingshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperNovaTrooperAttack8)
@@ -359,6 +391,10 @@ imperialStormTrooperNovaTrooperAttack9 = {
 	CbtSpamEvade = "burstshot_evade",
 	CbtSpamHit = "burstshot_hit",
 	CbtSpamMiss = "burstshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperNovaTrooperAttack9)
@@ -389,6 +425,10 @@ imperialStormTrooperNovaTrooperAttack10 = {
 	CbtSpamEvade = "burstblast_evade",
 	CbtSpamHit = "burstblast_hit",
 	CbtSpamMiss = "burstblast_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperNovaTrooperAttack10)
@@ -419,6 +459,10 @@ imperialStormTrooperNovaTrooperAttack11 = {
 	CbtSpamEvade = "sup_fire_evade",
 	CbtSpamHit = "sup_fire_hit",
 	CbtSpamMiss = "sup_fire_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperNovaTrooperAttack11)
@@ -449,6 +493,10 @@ imperialStormTrooperNovaTrooperAttack12 = {
 	CbtSpamEvade = "a_auto_evade",
 	CbtSpamHit = "a_auto_hit",
 	CbtSpamMiss = "a_auto_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperNovaTrooperAttack12)
@@ -479,6 +527,10 @@ imperialStormTrooperNovaTrooperAttack13 = {
 	CbtSpamEvade = "chargeshot_evade",
 	CbtSpamHit = "chargeshot_hit",
 	CbtSpamMiss = "chargeshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperNovaTrooperAttack13)
@@ -509,6 +561,10 @@ imperialStormTrooperNovaTrooperAttack14 = {
 	CbtSpamEvade = "a_auto_evade",
 	CbtSpamHit = "a_auto_hit",
 	CbtSpamMiss = "a_auto_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperNovaTrooperAttack14)
@@ -539,6 +595,10 @@ imperialStormTrooperNovaTrooperAttack15 = {
 	CbtSpamEvade = "chargeblast_evade",
 	CbtSpamHit = "chargeblast_hit",
 	CbtSpamMiss = "chargeblast_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperNovaTrooperAttack15)

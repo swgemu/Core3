@@ -76,6 +76,10 @@ kungaAttack01 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(kungaAttack01)
@@ -118,6 +122,10 @@ kungaAttack02 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddDirectPoolAttackTargetSkill(kungaAttack02)
@@ -149,6 +157,10 @@ kungaAttack03 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(kungaAttack03)
@@ -180,6 +192,10 @@ kungaAttack04 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(kungaAttack04)
@@ -210,6 +226,10 @@ kungaAttack05 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(kungaAttack05)
@@ -240,7 +260,11 @@ kungaAttack06 = {
 	CbtSpamEvade = "melee_evade", 
 	CbtSpamHit = "melee_hit", 
 	CbtSpamMiss = "melee_miss", 
-	} 
+	
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
+} 
 	
 AddRandomPoolAttackTargetSkill(kungaAttack06) 
 
@@ -270,7 +294,11 @@ kungaAttack07 = {
 	CbtSpamEvade = "melee_evade", 
 	CbtSpamHit = "melee_hit", 
 	CbtSpamMiss = "melee_miss", 
-	} 
+	
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
+} 
 	
 AddRandomPoolAttackTargetSkill(kungaAttack07) 
 
@@ -300,7 +328,11 @@ kungaAttack08 = {
 	CbtSpamEvade = "melee_evade", 
 	CbtSpamHit = "melee_hit", 
 	CbtSpamMiss = "melee_miss", 
-	} 
+	
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
+} 
 	
 AddRandomPoolAttackTargetSkill(kungaAttack08) 
 
@@ -331,6 +363,10 @@ kungaAttack09 = {
 	CbtSpamEvade = "melee_evade", 
 	CbtSpamHit = "melee_hit", 
 	CbtSpamMiss = "melee_miss", 
-	} 
+	
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
+} 
 	
 AddRandomPoolAttackTargetSkill(kungaAttack09) 

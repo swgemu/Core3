@@ -65,6 +65,10 @@ imperialStormTrooperSquadLeaderAttack1 = {
 	CbtSpamEvade = "strafeshot_evade",
 	CbtSpamHit = "strafeshot_hit",
 	CbtSpamMiss = "strafeshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperSquadLeaderAttack1)
@@ -107,6 +111,10 @@ imperialStormTrooperSquadLeaderAttack2 = {
 	CbtSpamEvade = "masterheadshot_evade",
 	CbtSpamHit = "masterheadshot_hit",
 	CbtSpamMiss = "masterheadshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddDirectPoolAttackTargetSkill(imperialStormTrooperSquadLeaderAttack2)
@@ -138,6 +146,10 @@ imperialStormTrooperSquadLeaderAttack3 = {
 	CbtSpamEvade = "concealedshot_evade",
 	CbtSpamHit = "concealedshot_hit",
 	CbtSpamMiss = "concealedshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperSquadLeaderAttack3)
@@ -169,6 +181,10 @@ imperialStormTrooperSquadLeaderAttack4 = {
 	CbtSpamEvade = "flushingshot_evade",
 	CbtSpamHit = "flushingshot_hit",
 	CbtSpamMiss = "flushingshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperSquadLeaderAttack4)

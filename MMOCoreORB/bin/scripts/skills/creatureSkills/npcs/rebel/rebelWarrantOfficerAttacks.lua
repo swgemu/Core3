@@ -77,6 +77,10 @@ rebelWarrantOfficerAttack1 = {
 	CbtSpamEvade = "sapblast_evade",
 	CbtSpamHit = "sapblast_hit",
 	CbtSpamMiss = "sapblast_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(rebelWarrantOfficerAttack1)
@@ -108,6 +112,10 @@ rebelWarrantOfficerAttack2 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(rebelWarrantOfficerAttack2)
