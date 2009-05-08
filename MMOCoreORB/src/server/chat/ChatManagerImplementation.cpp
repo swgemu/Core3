@@ -297,13 +297,29 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 						creature->sendMessage(cmsg);
 					}
 				}
+
+				if (object->isNonPlayerCreature()) {
+					Creature* crea = (Creature*) object;
+					if (crea->isPet()) {
+						CreaturePet * pet = (CreaturePet*) crea;
+						try {
+							zone->unlock();
+							pet->lock();
+							pet->parseCommandMessage((Player*)player,message);
+							pet->unlock();
+							zone->lock();
+						} catch (...) {
+							zone->lock();
+						}
+					}
+				}
 			}
 
 			zone->unlock();
 
-			if (player !=NULL && player->isPlayer() && ((Player*)player)->hasPetCalled()) {
+			/*if (player !=NULL && player->isPlayer() && ((Player*)player)->hasPetCalled()) {
 				((Player*)player)->sendMessageToPets(message);
-			}
+			}*/
 
 		} catch (...) {
 

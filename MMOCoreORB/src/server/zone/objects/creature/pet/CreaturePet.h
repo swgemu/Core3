@@ -75,7 +75,7 @@ public:
 
 	void setPetName(String& name);
 
-	void parseCommandMessage(const UnicodeString& message);
+	void parseCommandMessage(Player* player, const UnicodeString& message);
 
 	void setCommmandState(int command);
 
@@ -85,9 +85,9 @@ public:
 
 	void deaggro();
 
-	void handleAttackCommand();
+	void handleAttackCommand(Player* player);
 
-	void handleFollowCommand();
+	void handleFollowCommand(Player* target);
 
 	void handleStayCommand();
 
@@ -101,9 +101,11 @@ public:
 
 	void handleEnrageCommand();
 
-	void handleSpecialAttackCommand(int att);
+	void handleSpecialAttackCommand(Player* player, int att);
 
 	void handleGroupCommand();
+
+	void handleFriendCommand();
 
 	void trainMount();
 
@@ -173,7 +175,7 @@ public:
 
 	void setPetName(String& name);
 
-	void parseCommandMessage(const UnicodeString& message);
+	void parseCommandMessage(Player* player, const UnicodeString& message);
 
 	void setCommmandState(int command);
 
@@ -183,9 +185,9 @@ public:
 
 	void deaggro();
 
-	void handleAttackCommand();
+	void handleAttackCommand(Player* player);
 
-	void handleFollowCommand();
+	void handleFollowCommand(Player* target);
 
 	void handleStayCommand();
 
@@ -199,15 +201,17 @@ public:
 
 	void handleEnrageCommand();
 
-	void handleSpecialAttackCommand(int att);
+	void handleSpecialAttackCommand(Player* player, int att);
 
 	void handleGroupCommand();
+
+	void handleFriendCommand();
 
 	void trainMount();
 
 protected:
 	String _param0_setPetName__String_;
-	UnicodeString _param0_parseCommandMessage__UnicodeString_;
+	UnicodeString _param1_parseCommandMessage__Player_UnicodeString_;
 	String _param0_handleTrickCommand__String_int_int_;
 };
 

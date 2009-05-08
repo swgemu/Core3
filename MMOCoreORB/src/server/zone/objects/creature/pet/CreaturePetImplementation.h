@@ -52,6 +52,7 @@ which carries forward this exception.
 #include "../../../packets/scene/AttributeListMessage.h"
 #include "PetCommandHelper.h"
 #include "../mount/VehicleObject.h"
+#include "PetFriendSet.h"
 
 class Player;
 
@@ -77,6 +78,9 @@ class CreaturePetImplementation : public CreaturePetServant ,public VehicleObjec
 	uint32 maxLevel;
 
 	int nextAttack;
+
+	PetFriendSet* befriendList;
+	Player* followTarget;
 
 	static const bool debug = true;
 public:
@@ -175,6 +179,11 @@ public:
 
 	void setFaction(uint32 fac);
 
+	bool isFriend(CreatureObject* creo) {
+		if (!creo->isPlayer())
+			return false;
+		return befriendList->contains(creo->getObjectID());
+	}
 
 	inline void setMaxLevel(uint32 level) {
 		maxLevel = level;
@@ -237,7 +246,7 @@ public:
 	// ai
 	void initTrainingState(int command);
 	void setPetName(String& name);
-	void parseCommandMessage(const UnicodeString& message);
+	void parseCommandMessage(Player* player, const UnicodeString& message);
 
 	inline bool isInFollowState() {
 		return commandState == STATEFOLLOW;
@@ -267,18 +276,19 @@ public:
 	bool attack(CreatureObject* target);
 	void deaggro();
 
-	void handleAttackCommand();
-	void handleFollowCommand();
+	void handleAttackCommand(Player* player);
+	void handleFollowCommand(Player* target);
 	void handleStayCommand();
 	void handleGuardCommand();
 	void handleStoreCommand();
 	void handleTransferCommand();
 	void handleTrickCommand(String anim,int mod,int cost);
 	void handleEnrageCommand();
-	void handleSpecialAttackCommand(int att);
+	void handleSpecialAttackCommand(Player* player,int att);
 	bool consumeOwnerHam(int h, int a, int m);
 	void healPetMind(int mod);
 	void handleGroupCommand();
+	void handleFriendCommand();
 	void trainMount();
 };
 

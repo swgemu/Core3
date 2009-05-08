@@ -105,6 +105,12 @@ CreaturePetImplementation::~CreaturePetImplementation() {
 	delete commandHelper;
 
 	commandHelper = NULL;
+
+	delete befriendList;
+
+	befriendList = NULL;
+
+	followTarget = NULL;
 }
 
 void CreaturePetImplementation::init() {
@@ -120,7 +126,8 @@ void CreaturePetImplementation::init() {
 	nextAttack = -1;
 	linkType = 0xFFFFFFFF;//;
 
-
+	befriendList = new PetFriendSet();
+	befriendList->add(getLinkedCreature()->getObjectID());
 }
 
 void CreaturePetImplementation::init(Creature* creature, float growth) {
@@ -947,7 +954,7 @@ void CreaturePetImplementation::call() {
 
 		setFaction(getLinkedCreature()->getFaction());
 
-		setCommmandState(STATEFOLLOW);
+		handleFollowCommand(getLinkedCreature());
 		getLinkedCreature()->registerPet(_this);
 		getLinkedCreature()->setNumberOfCHPets(getLinkedCreature()->getNumberOfCHPets() + 1);
 		getLinkedCreature()->setLevelOfCHPets(getLinkedCreature()->getLevelOfCHPets() + getLevel());
@@ -1007,6 +1014,7 @@ void CreaturePetImplementation::store(bool doLock) {
 			creatureManager->dequeueActivity(this);
 
 		removeFromZone();
+		befriendList->removeAll();
 
 		if (doLock)
 			getLinkedCreature()->lock();
@@ -1162,9 +1170,9 @@ void CreaturePetImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 			//System::out << "\tnotifyPositionUpdate : is player\n" ;
 			Player* player = (Player*) scno;
 
-			if (player == getLinkedCreature()) {
+			if (player == followTarget) {
 				//System::out << "\tnotifyPositionUpdate : is owner\n" ;
-				if (!getLinkedCreature()->isInCombat() && aggroedCreature == NULL) {
+				if (!followTarget->isInCombat() && aggroedCreature == NULL) {
 					//System::out << "\tnotifyPositionUpdate : not aggro\n" ;
 					/*if (isInGuardState()) {
 						//System::out << "\tnotifyPositionUpdate : isInGuardState\n" ;
@@ -1213,12 +1221,12 @@ void CreaturePetImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 					if (aggroedCreature == NULL) {
 						//System::out << "\tnotifyPositionUpdate : move to player\n";
 						resetPatrolPoints();
-						addPatrolPoint(getLinkedCreature(),false);
+						addPatrolPoint(followTarget,false);
 					}
-				} if (getLinkedCreature()->isInCombat() && (aggroedCreature == NULL)) {
+				} if (isFriend(followTarget) && followTarget->isInCombat() && (aggroedCreature == NULL)) {
 					//System::out << "\tnotifyPositionUpdate : aggro player combat\n";
 
-					SceneObject* scno = getLinkedCreature()->getTarget();
+					SceneObject* scno = followTarget->getTarget();
 					if (scno != NULL && (scno->isNonPlayerCreature() || scno->isPlayer())) {
 						//System::out << "\tnotifyPositionUpdate :aggro more\n";
 
@@ -1268,13 +1276,13 @@ bool CreaturePetImplementation::activate() {
 		needMoreActivity |= doMovement();
 
 		if (!isInCombat() && !needMoreActivity && !isInRange(getLinkedCreature(),5.0f)) {
-			addPatrolPoint(getLinkedCreature(),false);
+			addPatrolPoint(followTarget,false);
 		}
 
 
-		if (getLinkedCreature()->isInCombat() && !isInCombat()) {
+		if (isFriend(followTarget) && followTarget->isInCombat() && !isInCombat()) {
 			//System::out << "\tactivate : player is attack\n";
-			SceneObject* scno = getLinkedCreature()->getTarget();
+			SceneObject* scno = followTarget->getTarget();
 			if (scno != NULL && (scno->isNonPlayerCreature() || scno->isPlayer()) && !isRidingCreature()) {
 				//System::out << "\tactivate :aggro player target\n";
 
@@ -1290,7 +1298,7 @@ bool CreaturePetImplementation::activate() {
 		}
 
 		if (aggroedCreature != NULL) {
-			if(!aggroedCreature->isAttackable()) {
+			if(!aggroedCreature->isAttackableBy(getLinkedCreature())) {
 				//System::out << "\tactivate : deaggro\n";
 				deaggro();
 			} else {
@@ -1299,11 +1307,11 @@ bool CreaturePetImplementation::activate() {
 
 				needMoreActivity |= attack(aggroedCreature);
 			}
-			if(!getLinkedCreature()->isInCombat() && !isInRange(getLinkedCreature(),100.0f)) {
+			if(!followTarget->isInCombat() && !isInRange(followTarget,100.0f)) {
 				//System::out << "\tactivate : abort combat retun to owner\n";
 
 				deaggro();
-				addPatrolPoint(getLinkedCreature(),false);
+				addPatrolPoint(followTarget,false);
 			}
 
 		} else if (isInCombat()) {
@@ -1440,7 +1448,7 @@ void CreaturePetImplementation::deaggro() {
 
 	if (!isInStayState() && isInRange(getLinkedCreature(),8.0f)) {
 		resetPatrolPoints(false);
-		addPatrolPoint(getLinkedCreature(),false);
+		addPatrolPoint(followTarget,false);
 	}
 }
 
@@ -1530,7 +1538,7 @@ void CreaturePetImplementation::setPetName(String& name) {
 
 }
 
-void CreaturePetImplementation::parseCommandMessage(const UnicodeString& message) {
+void CreaturePetImplementation::parseCommandMessage(Player* player, const UnicodeString& message) {
 	if (debug) {
 			StringBuffer ss;
 			ss << "CreaturePetImplementation::parseCommandMessage() " << objectCRC;
@@ -1546,13 +1554,20 @@ void CreaturePetImplementation::parseCommandMessage(const UnicodeString& message
 		command = message.subString(customName.length()+1,message.length()).toString();
 	}
 	//System::out << customName.toString() << " command : -" << command << "-\n";
+
 	if (isInTrainingState()) {
+		if (player != getLinkedCreature())
+			return;
+
 		if(System::random(1) == 1) {
 			commandToTrain = -1;
 			getLinkedCreature()->sendSystemMessage("pet/pet_menu","pet_nolearn");
 			return;
 		}
 		getLinkedCreature()->sendSystemMessage("pet/pet_menu","pet_learn");
+
+		bool newCommand = commandHelper->getBaseCommand(commandToTrain).isEmpty();
+
 		commandHelper->trainCommand(commandToTrain,command);
 		commandHelper->trainName(_this);
 		commandToTrain = -1;
@@ -1560,14 +1575,20 @@ void CreaturePetImplementation::parseCommandMessage(const UnicodeString& message
 		createItemAttributes();
 		getDatapadItem()->setUpdated(true);
 
-		String chType = "creaturehandler";
-		getLinkedCreature()->addXp(chType, (200 + 10 * (getLevel() - getLinkedCreature()->getLevel())),true);
+		if (newCommand) {
+			String chType = "creaturehandler";
+			getLinkedCreature()->addXp(chType, (200 + 10 * (getLevel() - getLinkedCreature()->getLevel())),true);
+		}
 
 		return;
 	}
 
+	if (player != getLinkedCreature()) {
+		if (!isFriend(player))
+			return;
+	}
 
-	if (command == commandHelper->getBaseCommand(PetCommandHelper::PETSTORE)) {
+	if (command == commandHelper->getBaseCommand(PetCommandHelper::PETSTORE) && player == getLinkedCreature()) {
 		handleStoreCommand();
 	}
 
@@ -1575,10 +1596,10 @@ void CreaturePetImplementation::parseCommandMessage(const UnicodeString& message
 		return;
 
 	if (command == commandHelper->getBaseCommand(PetCommandHelper::PETATTACK)) {
-		handleAttackCommand();
+		handleAttackCommand(player);
 	}
 	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETFOLLOW)) {
-		handleFollowCommand();
+		handleFollowCommand(player);
 	}
 	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETGUARD)) {
 		handleGuardCommand();
@@ -1586,36 +1607,46 @@ void CreaturePetImplementation::parseCommandMessage(const UnicodeString& message
 	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETSTAY)) {
 		handleStayCommand();
 	}
-	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETTRANSFER)) {
+	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETTRANSFER) && player == getLinkedCreature()) {
 		handleTransferCommand();
 	}
-	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETTRICK1)) {
+	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETTRICK1) && player == getLinkedCreature()) {
 		handleTrickCommand("trick_1",20,-100);
 	}
-	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETTRICK2)) {
+	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETTRICK2 && player == getLinkedCreature())) {
 		handleTrickCommand("trick_2",10,-200);
 	}
 	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETSPECIALATTACK1)) {
-		handleSpecialAttackCommand(0);
+		handleSpecialAttackCommand(player,0);
 	}
 	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETSPECIALATTACK2)) {
-		handleSpecialAttackCommand(1);
+		handleSpecialAttackCommand(player,1);
 	}
-	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETGROUP)) {
+	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETGROUP) && player == getLinkedCreature()) {
 		handleGroupCommand();
 	}
+	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETFOLLOWOTHER)) {
+		SceneObject* target = player->getTarget();
+		if (target != NULL && target->isPlayer()) {
+			handleFollowCommand((Player*) target);
+		}
+	}
+	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETFRIEND) && player == getLinkedCreature()) {
+		handleFriendCommand();
+	}
+
 }
 
-void CreaturePetImplementation::handleAttackCommand() {
+void CreaturePetImplementation::handleAttackCommand(Player* player) {
 	if (debug) {
 		StringBuffer ss;
 		ss << "CreaturePetImplementation::handleAttackCommand() " << objectCRC;
 		info(ss.toString());
 	}
-	if (getLinkedCreature() == NULL || creatureManager == NULL)
+	if (player == NULL || creatureManager == NULL)
 		return;
 
-	SceneObject* scno = getLinkedCreature()->getTarget();
+	SceneObject* scno = player->getTarget();
 	if (scno != NULL && (scno->isNonPlayerCreature() || scno->isPlayer())) {
 		//System::out << "\thandleAttackCommand : aggro attack target\n";
 		CreatureObject* creo = (CreatureObject*)scno;
@@ -1636,7 +1667,7 @@ void CreaturePetImplementation::handleAttackCommand() {
 	}
 }
 
-void CreaturePetImplementation::handleFollowCommand() {
+void CreaturePetImplementation::handleFollowCommand(Player* target) {
 	if (debug) {
 		StringBuffer ss;
 		ss << "CreaturePetImplementation::handleFollowCommand() " << objectCRC;
@@ -1646,6 +1677,8 @@ void CreaturePetImplementation::handleFollowCommand() {
 
 	if (aggroedCreature != NULL)
 		deaggro();
+
+	followTarget = target;
 }
 
 void CreaturePetImplementation::handleStayCommand() {
@@ -1800,16 +1833,15 @@ void CreaturePetImplementation::handleEnrageCommand() {
 	setBerserkedState(30*1000);
 }
 
-void CreaturePetImplementation::handleSpecialAttackCommand(int att) {
+void CreaturePetImplementation::handleSpecialAttackCommand(Player* player, int att) {
 	if (debug) {
 		StringBuffer ss;
 		ss << "CreaturePetImplementation::handleSpecialCommand() " << objectCRC;
 		info(ss.toString());
 	}
-		if (!isInCombat())
-			handleAttackCommand();
+	handleAttackCommand(player);
 
-		nextAttack = att;
+	nextAttack = att;
 }
 
 void CreaturePetImplementation::handleGroupCommand() {
@@ -1834,6 +1866,33 @@ void CreaturePetImplementation::handleGroupCommand() {
 
 }
 
+void CreaturePetImplementation::handleFriendCommand() {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::handleFriendCommand() " << objectCRC;
+		info(ss.toString());
+	}
+
+	SceneObject* scno = getLinkedCreature()->getTarget();
+
+	if (!scno->isPlayer())
+		return;
+
+	Player* newFriend = (Player*) scno;
+
+	if (newFriend == getLinkedCreature())
+		return;
+
+	if (isFriend(newFriend)) {
+		befriendList->remove(newFriend->getObjectID());
+		if (followTarget == newFriend)
+			followTarget == getLinkedCreature();
+		return;
+	} else {
+		befriendList->add(newFriend->getObjectID());
+	}
+}
+
 void CreaturePetImplementation::trainMount() {
 	if (debug) {
 		StringBuffer ss;
@@ -1842,29 +1901,37 @@ void CreaturePetImplementation::trainMount() {
 	}
 
 	switch(objectCRC) {
-		case 0x4745F4A5:
+		case 0x4745F4A5: // bol
 			objectCRC = 0xDF44570F;
+			setSpeed(15.0f);
 			break;
-		case 0xD096946A:
+		case 0xD096946A: // dewback
 			objectCRC = 0xA28C8DE4;
+			setSpeed(15.5f);
 			break;
-		case 0xE9900379:
+		case 0xE9900379:  // bantha
 			objectCRC = 0x7A65CF41;
+			setSpeed(14.0f);
 			break;
-		case 0xBDF0D754:
+		case 0xBDF0D754: // carrion spat
 			objectCRC = 0x52F8B1CF;
+			setSpeed(18.5f);
 			break;
-		case 0xE26332DA:
+		case 0xE26332DA:  // kadun
 			objectCRC = 0x43F43642;
+			setSpeed(18.0f);
 			break;
-		case 0x35226B4E:
+		case 0x35226B4E:  // falumpaset
 			objectCRC = 0x973BFD16;
+			setSpeed(14.5f);
 			break;
-		case 0x797B644E:
+		case 0x797B644E: // brackaset
 			objectCRC = 0x1A0CA56B;
+			setSpeed(15.0f);
 			break;
-		case 0x28259937:
+		case 0x28259937:  // cu pa
 			objectCRC = 0xADE1B39E;
+			setSpeed(17.5f);
 			break;
 		default:
 			return;
@@ -1873,8 +1940,7 @@ void CreaturePetImplementation::trainMount() {
 
 	setPetType(CHPETTRAINEDMOUNT);
 
-	setSpeed(18.5f);
-	setAcceleration(8.0f);
+	setAcceleration(getSpeed() / 2);
 
 	getDatapadItem()->setUpdated(true);
 	if (isInQuadTree()) {
