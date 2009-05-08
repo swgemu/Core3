@@ -87,7 +87,6 @@ void SlashCommandConfigManager::registerFunctions() {
 	lua_register(getLuaState(), "AddAssignDroidSlashCommand", addAssignDroidSlashCommand);
 	lua_register(getLuaState(), "AddAssociateDroidControlDeviceWithShipSlashCommand", addAssociateDroidControlDeviceWithShipSlashCommand);
 	lua_register(getLuaState(), "AddAttackSlashCommand", addAttackSlashCommand);
-	lua_register(getLuaState(), "AddAuctionSlashCommand", addAuctionSlashCommand);
 	lua_register(getLuaState(), "AddAuctionAcceptSlashCommand", addAuctionAcceptSlashCommand);
 	lua_register(getLuaState(), "AddAuctionBidSlashCommand", addAuctionBidSlashCommand);
 	lua_register(getLuaState(), "AddAuctionCancelSlashCommand", addAuctionCancelSlashCommand);
@@ -482,7 +481,6 @@ void SlashCommandConfigManager::registerFunctions() {
 	lua_register(getLuaState(), "AddPlacedShotSlashCommand", addPlacedShotSlashCommand);
 	lua_register(getLuaState(), "AddPlaceStructureSlashCommand", addPlaceStructureSlashCommand);
 	lua_register(getLuaState(), "AddPlaceStructureModeSlashCommand", addPlaceStructureModeSlashCommand);
-	lua_register(getLuaState(), "AddPlanetSlashCommand", addPlanetSlashCommand);
 	lua_register(getLuaState(), "AddPlanetsaySlashCommand", addPlanetsaySlashCommand);
 	lua_register(getLuaState(), "AddPlanetwarpSlashCommand", addPlanetwarpSlashCommand);
 	lua_register(getLuaState(), "AddPlanetwarpTargetSlashCommand", addPlanetwarpTargetSlashCommand);
@@ -1062,16 +1060,6 @@ int SlashCommandConfigManager::addAttackSlashCommand(lua_State* L) {
 		return 0;
 
 	AttackSlashCommand* slashCommand = new AttackSlashCommand(slashcommand.getStringField("name"), server);
-	parseSlashCommand(slashcommand, slashCommand);
-	return 1;
-}
-
-int SlashCommandConfigManager::addAuctionSlashCommand(lua_State* L) {
-	LuaObject slashcommand(L);
-	if (!slashcommand.isValidTable())
-		return 0;
-
-	AuctionSlashCommand* slashCommand = new AuctionSlashCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
@@ -5011,16 +4999,6 @@ int SlashCommandConfigManager::addPlaceStructureModeSlashCommand(lua_State* L) {
 		return 0;
 
 	PlaceStructureModeSlashCommand* slashCommand = new PlaceStructureModeSlashCommand(slashcommand.getStringField("name"), server);
-	parseSlashCommand(slashcommand, slashCommand);
-	return 1;
-}
-
-int SlashCommandConfigManager::addPlanetSlashCommand(lua_State* L) {
-	LuaObject slashcommand(L);
-	if (!slashcommand.isValidTable())
-		return 0;
-
-	PlanetSlashCommand* slashCommand = new PlanetSlashCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }

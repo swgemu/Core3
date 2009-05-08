@@ -82,6 +82,7 @@ public:
 
 		// Clean up crafting here, delete, sceneremove unneeded objects
 		craftingTool->cleanUp(player);
+		return true;
 
 	}
 

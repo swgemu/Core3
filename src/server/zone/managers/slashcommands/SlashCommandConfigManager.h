@@ -97,7 +97,6 @@ public:
 	static int addAssignDroidSlashCommand(lua_State* L);
 	static int addAssociateDroidControlDeviceWithShipSlashCommand(lua_State* L);
 	static int addAttackSlashCommand(lua_State* L);
-	static int addAuctionSlashCommand(lua_State* L);
 	static int addAuctionAcceptSlashCommand(lua_State* L);
 	static int addAuctionBidSlashCommand(lua_State* L);
 	static int addAuctionCancelSlashCommand(lua_State* L);
@@ -492,7 +491,6 @@ public:
 	static int addPlacedShotSlashCommand(lua_State* L);
 	static int addPlaceStructureSlashCommand(lua_State* L);
 	static int addPlaceStructureModeSlashCommand(lua_State* L);
-	static int addPlanetSlashCommand(lua_State* L);
 	static int addPlanetsaySlashCommand(lua_State* L);
 	static int addPlanetwarpSlashCommand(lua_State* L);
 	static int addPlanetwarpTargetSlashCommand(lua_State* L);
