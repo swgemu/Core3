@@ -45,6 +45,10 @@ grovoAttack1 = {
         CbtSpamEvade = "attack_evade",
         CbtSpamHit = "attack_hit",
         CbtSpamMiss = "attack_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(grovoAttack1)
@@ -87,6 +91,10 @@ grovoAttack2 = {
         CbtSpamEvade = "melee_evade",
         CbtSpamHit = "melee_hit",
         CbtSpamMiss = "melee_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddDirectPoolAttackTargetSkill(grovoAttack2)

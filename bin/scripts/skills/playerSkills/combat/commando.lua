@@ -79,6 +79,10 @@ DotPoolAtt = {
 	CbtSpamEvade = "flamesingle1_evade",
 	CbtSpamHit = "flamesingle1_hit",
 	CbtSpamMiss = "flamesingle1_miss",
+
+        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(DotPoolAtt)
@@ -125,6 +129,10 @@ DotPoolAtt = {
 	CbtSpamEvade = "flamecone1_evade",
 	CbtSpamHit = "flamecone1_hit",
 	CbtSpamMiss = "flamecone1_miss",
+
+        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(DotPoolAtt)
@@ -171,6 +179,10 @@ DotPoolAtt = {
 	CbtSpamEvade = "flamesingle2_evade",
 	CbtSpamHit = "flamesingle2_hit",
 	CbtSpamMiss = "flamesingle2_miss",
+
+        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(DotPoolAtt)
@@ -218,6 +230,10 @@ DotPoolAtt = {
 	CbtSpamEvade = "flamecone2_evade",
 	CbtSpamHit = "flamecone2_hit",
 	CbtSpamMiss = "flamecone2_miss",
+
+        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(DotPoolAtt)
@@ -258,6 +274,10 @@ RandPoolAtt = {
 	CbtSpamEvade = "fireacidsingle1_evade",
 	CbtSpamHit = "fireacidsingle1_hit",
 	CbtSpamMiss = "fireacidsingle1_miss",
+
+        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -298,6 +318,10 @@ RandPoolAtt = {
 	CbtSpamEvade = "fireacidcone1_evade",
 	CbtSpamHit = "fireacidcone1_hit",
 	CbtSpamMiss = "fireacidcone1_miss",
+
+        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -338,6 +362,10 @@ RandPoolAtt = {
 	CbtSpamEvade = "fireacidsingle2_evade",
 	CbtSpamHit = "fireacidsingle2_hit",
 	CbtSpamMiss = "fireacidsingle2_miss",
+
+        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -378,11 +406,58 @@ RandPoolAtt = {
 	CbtSpamEvade = "fireacidcone2_evade",
 	CbtSpamHit = "fireacidcone2_hit",
 	CbtSpamMiss = "fireacidcone2_miss",
+
+        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
 
 -----------------------------------------------------------------------
+
+FireHWeapon = {
+	attackname = "fireheavyweapon",
+	animation = "fire_heavy_rocket_launcher_medium",
+
+	requiredWeaponType = ALL,
+
+	range = 64,
+	damageRatio = 1.0,
+	speedRatio = 1.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "rocket_launcher_block",
+	CbtSpamCounter = "rocket_launcher_counter",
+	CbtSpamEvade = "rocket_launcher_evade",
+	CbtSpamHit = "rocket_launcher_hit",
+	CbtSpamMiss = "rocket_launcher_miss",
+	
+	deBuffStrFile = "",
+	deBuffHitMessage = "",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0,
+
+        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
+}
+AddHeavyWeaponSkill(FireHWeapon)
 
 FireHWWeapon = {
 	attackname = "firerocketlauncher",
@@ -419,7 +494,11 @@ FireHWWeapon = {
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
 	stunDefDebuff = 0,
-	intimidateDefDebuff = 0
+	intimidateDefDebuff = 0,
+
+        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 AddHeavyWeaponSkill(FireHWWeapon)
 
@@ -458,7 +537,11 @@ FireHWWeapon = {
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
 	stunDefDebuff = 0,
-	intimidateDefDebuff = 0
+	intimidateDefDebuff = 0,
+
+        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 AddHeavyWeaponSkill(FireHWWeapon)
 
@@ -497,7 +580,11 @@ FireHWWeapon = {
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
 	stunDefDebuff = 0,
-	intimidateDefDebuff = 0
+	intimidateDefDebuff = 0,
+
+        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 AddHeavyWeaponSkill(FireHWWeapon)
 
@@ -536,7 +623,11 @@ FireHWWeapon = {
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
 	stunDefDebuff = 0,
-	intimidateDefDebuff = 0
+	intimidateDefDebuff = 0,
+
+        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 AddHeavyWeaponSkill(FireHWWeapon)
 
@@ -575,7 +666,11 @@ AddHeavyWeaponSkill(FireHWWeapon)
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
 	stunDefDebuff = 0,
-	intimidateDefDebuff = 0
+	intimidateDefDebuff = 0,
+
+        invalidStateMask = 3894804576, --berzerk, feigndeath, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "5,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddThrowGrenadeTargetSkill(ThrowSkill)
@@ -615,7 +710,11 @@ AddThrowGrenadeTargetSkill(ThrowSkill)
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
 	stunDefDebuff = 0,
-	intimidateDefDebuff = 0
+	intimidateDefDebuff = 0,
+
+        invalidStateMask = 3894804576, --berzerk, feigndeath, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "5,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddThrowGrenadeTargetSkill(ThrowSkill)
@@ -655,7 +754,11 @@ AddThrowGrenadeTargetSkill(ThrowSkill)
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
 	stunDefDebuff = 0,
-	intimidateDefDebuff = 0
+	intimidateDefDebuff = 0,
+
+        invalidStateMask = 3894804576, --berzerk, feigndeath, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "5,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddThrowGrenadeTargetSkill(ThrowSkill)
@@ -695,7 +798,11 @@ AddThrowGrenadeTargetSkill(ThrowSkill)
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
 	stunDefDebuff = 0,
-	intimidateDefDebuff = 0
+	intimidateDefDebuff = 0,
+
+        invalidStateMask = 3894804576, --berzerk, feigndeath, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "5,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddThrowGrenadeTargetSkill(ThrowSkill)
@@ -735,7 +842,11 @@ AddThrowGrenadeTargetSkill(ThrowSkill)
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
 	stunDefDebuff = 0,
-	intimidateDefDebuff = 0
+	intimidateDefDebuff = 0,
+
+        invalidStateMask = 3894804576, --berzerk, feigndeath, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "5,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddThrowGrenadeTargetSkill(ThrowSkill)
@@ -775,7 +886,11 @@ AddThrowGrenadeTargetSkill(ThrowSkill)
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
 	stunDefDebuff = 0,
-	intimidateDefDebuff = 0
+	intimidateDefDebuff = 0,
+
+        invalidStateMask = 3894804576, --berzerk, feigndeath, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "5,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
 
 AddThrowGrenadeTargetSkill(ThrowSkill)

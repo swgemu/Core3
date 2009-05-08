@@ -62,7 +62,11 @@ ForceHealSk = {
 	healPoison = 0,
 	healFire = 0,
 	healBleeding = 0,
-	healDisease = 0
+	healDisease = 0,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,9,10,11,13,14,",
+	instant = 0
 }
 
 AddForceHealSelfSkill(ForceHealSk)
@@ -89,7 +93,11 @@ ForceHealSk = {
 	healPoison = 0,
 	healFire = 0,
 	healBleeding = 0,
-	healDisease = 0
+	healDisease = 0,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,9,10,11,13,14,",
+	instant = 0
 }
 
 AddForceHealSelfSkill(ForceHealSk)
@@ -108,7 +116,11 @@ HealTargetSk = {
 
 	speed = 3.0,
 	
-	range = 32
+	range = 32,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,9,10,11,13,14,",
+	instant = 0
 }
 
 AddHealTargetSkill(HealTargetSk)
@@ -134,7 +146,11 @@ ForceHealSk = {
 	healPoison = 0,
 	healFire = 0,
 	healBleeding = 0,
-	healDisease = 0
+	healDisease = 0,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,9,10,11,13,14,",
+	instant = 0
 }
 
 AddForceHealSelfSkill(ForceHealSk)
@@ -151,7 +167,11 @@ ForceHealSk = {
 	HealAction = 0,
 	HealMind = 0,
 
-	speed = 3.0
+	speed = 3.0,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,9,10,11,13,14,",
+	instant = 0
 }
 
 AddForceHealSelfSkill(ForceHealSk)
@@ -168,7 +188,11 @@ ForceHealSk = {
 	HealAction = 1500,
 	HealMind = 0,
 
-	speed = 3.0
+	speed = 3.0,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,9,10,11,13,14,",
+	instant = 0
 }
 
 AddForceHealSelfSkill(ForceHealSk)
@@ -185,7 +209,11 @@ ForceHealSk = {
 	HealAction = 0,
 	HealMind = 1500,
 
-	speed = 3.0
+	speed = 3.0,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,9,10,11,13,14,",
+	instant = 0
 }
 
 AddForceHealSelfSkill(ForceHealSk)
@@ -212,8 +240,12 @@ ForceHealSk = {
 	healPoison = 0,
 	healFire = 0,
 	healBleeding = 1,
-	healDisease = 0
+	healDisease = 0,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,9,10,11,13,14,",
 	
+	instant = 0
 }
 
 AddForceHealSelfSkill(ForceHealSk)
@@ -241,8 +273,12 @@ ForceHealSk = {
 	healPoison = 0,
 	healFire = 0,
 	healBleeding = 0,
-	healDisease = 1
+	healDisease = 1,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,9,10,11,13,14,",
 	
+	instant = 0
 }
 
 AddForceHealSelfSkill(ForceHealSk)
@@ -269,8 +305,12 @@ ForceHealSk = {
 	healPoison = 1,
 	healFire = 0,
 	healBleeding = 0,
-	healDisease = 0
+	healDisease = 0,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,9,10,11,13,14,",
 	
+	instant = 0
 }
 
 AddForceHealSelfSkill(ForceHealSk)
@@ -297,8 +337,12 @@ ForceHealSk = {
 	healPoison = 1,
 	healFire = 1,
 	healBleeding = 1,
-	healDisease = 1
+	healDisease = 1,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,9,10,11,13,14,",
 	
+	instant = 0
 }
 
 AddForceHealSelfSkill(ForceHealSk)

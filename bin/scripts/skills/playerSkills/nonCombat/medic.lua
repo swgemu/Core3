@@ -45,7 +45,11 @@ HealSelfSkill = {
 	animation = "heal_self",
  
 	mindCost = -50,
-	range = 6.0
+	range = 6.0,
+
+        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,5,6,9,10,11,13,14,",
+	instant = 0
 }
  
 AddHealDamageTargetSkill(HealSelfSkill);
@@ -56,7 +60,11 @@ HealSelfSkill = {
 	animation = "heal_self",
  
 	mindCost = -50,
-	range = 6.0
+	range = 6.0,
+
+        invalidStateMask = 3894542352, --alert, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "2,5,7,9,10,11,12,13,14,4,",
+	instant = 0
 }
  
 AddHealWoundTargetSkill(HealSelfSkill);
@@ -67,7 +75,11 @@ FirstAidSkill = {
 	animation = "heal_self",
  
 	speed = 5.0,
-	range = 6.0
+	range = 6.0,
+
+        invalidStateMask = 3894542352, --alert, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "2,5,7,9,10,11,12,13,14,4,",
+	instant = 0
 }
  
 AddFirstAidTargetSkill(FirstAidSkill);
@@ -86,7 +98,11 @@ TendDamageSkill = {
 	tendDamage = 1,
  
 	speed = 5.0,
-	range = 6.0
+	range = 6.0,
+
+        invalidStateMask = 3894542352, --alert, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "2,5,7,9,10,11,12,13,14,4,",
+	instant = 0
 }
  
 AddTendHealTargetSkill(TendDamageSkill);
@@ -100,7 +116,11 @@ QuickHealSkill = {
 	mindWoundCost = 10,
  
 	speed = 3.5,
-	range = 6.0
+	range = 6.0,
+
+        invalidStateMask = 3894542352, --alert, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "2,5,7,9,10,11,12,13,14,4,",
+	instant = 0
 }
  
 AddQuickHealTargetSkill(QuickHealSkill);
@@ -119,7 +139,11 @@ TendWoundSkill = {
 	tendWound = 1,
  
 	speed = 5.0,
-	range = 6.0
+	range = 6.0,
+
+        invalidStateMask = 3894542352, --alert, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "2,5,7,9,10,11,12,13,14,4,",
+	instant = 0
 }
  
 AddTendHealTargetSkill(TendWoundSkill);
@@ -131,7 +155,11 @@ DiagnoseTargetSkill = {
  
 	mindCost = 0,
 	range = 6.0,
-	speed = 0
+	speed = 0,
+
+        invalidStateMask = 3894542352, --alert, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "2,5,7,9,10,11,12,13,14,4,",
+	instant = 0
 }
  
 AddDiagnoseTargetSkill(DiagnoseTargetSkill);
@@ -142,7 +170,11 @@ DragTargetSkill = {
 	maxRange = 20.0,
 	maxMovement = 5.0,
 	speed = 0.0,
-	needsConsent = 1
+	needsConsent = 1,
+
+        invalidStateMask = 3894934649, --cover, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
+	instant = 0
 }
  
 AddDragTargetSkill(DragTargetSkill);

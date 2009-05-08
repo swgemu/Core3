@@ -75,6 +75,10 @@ imperialStormCommandoAttack1 = {
 	CbtSpamEvade = "flamesingle1_evade",
 	CbtSpamHit = "flamesingle1_hit",
 	CbtSpamMiss = "flamesingle1_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormCommandoAttack1)
@@ -116,6 +120,10 @@ imperialStormCommandoAttack2 = {
 	CbtSpamEvade = "flamecone1_evade",
 	CbtSpamHit = "flamecone1_hit",
 	CbtSpamMiss = "flamecone1_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormCommandoAttack2)
@@ -157,6 +165,10 @@ imperialStormCommandoAttack3 = {
 	CbtSpamEvade = "flamesingle2_evade",
 	CbtSpamHit = "flamesingle2_hit",
 	CbtSpamMiss = "flamesingle2_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormCommandoAttack3)
@@ -199,6 +211,10 @@ imperialStormCommandoAttack4 = {
 	CbtSpamEvade = "flamecone2_evade",
 	CbtSpamHit = "flamecone2_hit",
 	CbtSpamMiss = "flamecone2_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormCommandoAttack4)

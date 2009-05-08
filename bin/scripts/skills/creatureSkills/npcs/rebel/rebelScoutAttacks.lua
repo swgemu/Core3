@@ -77,6 +77,10 @@ rebelScoutAttack1 = {
 	CbtSpamEvade = "sapblast_evade",
 	CbtSpamHit = "sapblast_hit",
 	CbtSpamMiss = "sapblast_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(rebelScoutAttack1)
@@ -108,6 +112,10 @@ rebelScoutAttack2 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(rebelScoutAttack2)

@@ -85,6 +85,10 @@ imperialPrivateAttack1 = {
 	CbtSpamEvade = "legshot_evade",
 	CbtSpamHit = "legshot_hit",
 	CbtSpamMiss = "legshot_miss",
+
+	invalidStateMask = 0,
+	invalidPostures = "",
+	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialPrivateAttack1)
