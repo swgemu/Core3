@@ -399,8 +399,11 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		bool completed = sc->doSlashCommand(player, pack);
 		if (!completed)
 			sc->onFail(actioncntr, player);
-		else
+		else{
 			sc->onComplete(actioncntr, player);
+			if (sc->addToCombatQueue())
+				player->clearQueueAction(actioncntr);
+		}
 		return;
 	}
 
