@@ -54,12 +54,12 @@ which carries forward this exception.
 class PolearmJediWeaponImplementation : public PolearmJediWeaponServant {
 
 public:
-	PolearmJediWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, bool eqp = false) 
+	PolearmJediWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, bool eqp = false)
 			: PolearmJediWeaponServant(objid, tempcrc, n, tempn, POLEARMSABER, eqp) {
 		init();
 	}
 
-	PolearmJediWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false) 
+	PolearmJediWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false)
 			: PolearmJediWeaponServant(creature, temp, n, tempn, POLEARMSABER, eqp) {
 		init();
 	}
@@ -93,6 +93,8 @@ public:
 		setHealthAttackCost(5);
 		setActionAttackCost(5);
 		setMindAttackCost(5);
+
+		setSpeedSkillMod("polearmlightsaber_speed");
 
 		setForceCost(7);
 	}

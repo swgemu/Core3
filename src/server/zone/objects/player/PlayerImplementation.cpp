@@ -5151,52 +5151,64 @@ void PlayerImplementation::teachSkill(String& skillname) {
 	setTeacher(NULL);
 }
 
-/**
- * Executes the /throwtrap command. Searchs for a usefull trap and activates id.
- * \param targetID The targets id.
- */
-void PlayerImplementation::throwTrap(uint64 targetID) {
+uint64 PlayerImplementation::getTrap() {
 	Inventory* inventory = getInventory();
 
 	if (inventory != NULL) {
-		for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
+		for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 			TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 
 			if (item->isTrap()) {
 				TrapThrowableWeapon* trap = (TrapThrowableWeapon*) item;
 
 				if (trap->isUsefull(_this) && hasCooldownExpired(trap->getSkill())) {
-
-					trap->useObject(_this);
-					return;
+					return trap->getObjectID();
 				}
 			}
 		}
 	}
+	return 0;
 }
 
-/**
- * Executes the /throwtrap command. Searchs for a usefull grenade and activates id.
- * \param targetID The targets id.
- */
-void PlayerImplementation::throwGrenade(uint64 targetID) {
+uint64 PlayerImplementation::getGrenade() {
 	Inventory* inventory = getInventory();
 
 	if (inventory != NULL) {
-		for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
+		for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 			TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 
 			if (item->isGrenade()) {
-				GrenadeThrowableWeapon* greande = (GrenadeThrowableWeapon*) item;
+				GrenadeThrowableWeapon* grenade = (GrenadeThrowableWeapon*) item;
 
-				if (greande->isUsefull(_this) && hasCooldownExpired(greande->getSkill())) {
-
-					greande->useObject(_this);
-					return;
+				if (grenade->isUsefull(_this) && hasCooldownExpired(grenade->getSkill())) {
+					return grenade->getObjectID();
 				}
 			}
 		}
 	}
+	return 0;
+}
+
+uint64 PlayerImplementation::getHeavyRangedWeapon() {
+	Inventory* inventory = getInventory();
+
+	if (inventory != NULL) {
+		for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+			TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+
+			if (item->isWeapon()) {
+				Weapon* weapon = (Weapon*) item;
+
+				if (weapon->isHeavyWeapon()) {
+					HeavyRangedWeapon* hw = (HeavyRangedWeapon*) item;
+
+					//TODO: check if useful() and hasCoolDownExpired?
+					return hw->getObjectID();
+				}
+			}
+		}
+	}
+	return 0;
 }
 
 void PlayerImplementation::removeOldSuiBoxIfPresent(const int suiWindowType) {

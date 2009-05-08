@@ -49,7 +49,6 @@ which carries forward this exception.
 
 class TrapThrowableWeaponImplementation : public TrapThrowableWeaponServant {
 protected:
-	uint32 skill;
 	String successString;
 	String failureString;
 	String animationString;

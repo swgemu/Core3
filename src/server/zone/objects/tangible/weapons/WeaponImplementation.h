@@ -122,6 +122,8 @@ protected:
 
 	float bonusWoundsRatio;
 
+	String speedSkillMod;
+
 	String xpType;
 	float area;
 
@@ -457,6 +459,10 @@ public:
 		itemAttributes->setFloatAttribute(name, area);
 	}
 
+	inline void setSpeedSkillMod(const String& speedMod) {
+		speedSkillMod = speedMod;
+	}
+
 	inline float getArea() {
 		return area;
 	}
@@ -582,6 +588,10 @@ public:
 
 	inline int getArmorPiercing() {
 		return armorPiercing;
+	}
+
+	inline String& getSpeedSkillMod() {
+		return speedSkillMod;
 	}
 
 	/*

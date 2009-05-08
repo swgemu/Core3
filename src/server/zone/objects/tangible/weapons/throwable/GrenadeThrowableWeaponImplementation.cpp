@@ -92,6 +92,8 @@ void GrenadeThrowableWeaponImplementation::init() {
 	setEquipped(false);
 	setCertified(false);
 
+	setSpeedSkillMod("thrown_speed");
+
 	switch(objectCRC) {
 		case 0xA943F10B:
 			setArmorPiercing(NONE);
@@ -166,13 +168,13 @@ int GrenadeThrowableWeaponImplementation::useObject(Player* player) {
 	}
 
 	if (!player->checkCertification(getCert())) {
-		player->sendSystemMessage("This grenade is not certified");
+		player->sendSystemMessage("You are not certified to use that grenade.");
 		return 0;
 	}
 
 
 	 if (!player->hasCooldownExpired(getSkill())) {
-		player->sendSystemMessage("This grenade is not ready to be used again");
+		player->sendSystemMessage("That grenade is not ready to be used again.");
 		return 0;
 	}
 

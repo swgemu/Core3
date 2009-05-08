@@ -91,6 +91,8 @@ void TrapThrowableWeaponImplementation::init() {
 	setActionAttackCost(30);
 	setMindAttackCost(17);
 
+	setSpeedSkillMod("trapping");
+
 	setEquipped(false);
 	switch(objectCRC) {
 		case 0xB7D57DE9:

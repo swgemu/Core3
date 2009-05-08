@@ -45,7 +45,6 @@ which carries forward this exception.
 #ifndef GROUPSKILL_H_
 #define GROUPSKILL_H_
 
-#include "../CreatureObject.h"
 #include "../CreatureObjectImplementation.h"
 
 #include "../../player/Player.h"

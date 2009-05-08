@@ -45,12 +45,10 @@ which carries forward this exception.
 #ifndef TARGETRSKILL_H_
 #define TARGETRSKILL_H_
 
-#include "../CreatureObject.h"
 #include "../CreatureObjectImplementation.h"
 
 #include "../../player/Player.h"
 
-#include "../../tangible/weapons/Weapon.h"
 #include "../../tangible/weapons/WeaponImplementation.h"
 
 #include "Skill.h"
@@ -89,8 +87,12 @@ public:
 
 	virtual bool calculateCost(CreatureObject* creature) = 0;
 
-	virtual float calculateSpeed(CreatureObject* creature,CommandQueueAction* action = NULL) {
-		return 1.0f;
+	virtual uint64 useWeaponCharge(CreatureObject* creature, CommandQueueAction* action) {
+		return 0;
+	}
+
+	virtual int getWeaponArea(CreatureObject* creature, CommandQueueAction* action) {
+		return 0;
 	}
 
 	void setSecondaryAnim(const String& name) {

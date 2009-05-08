@@ -143,6 +143,57 @@ public:
 		return true;
 	}
 
+	float calculateSpeed(CreatureObject* creature, CommandQueueAction* action) {
+		Weapon* weapon;
+		float weaponSpeed;
+		int speedMod = 0;
+
+		if (creature == NULL)
+			return 1.0f;
+
+		if (action != NULL) {
+			String actionModifier = action->getActionModifier();
+			weapon = getHeavyRangedWeapon(creature,actionModifier);
+			if (weapon != NULL)
+				speedMod = creature->getSkillMod(weapon->getSpeedSkillMod());
+			else //default to lightning heavy weapon
+				speedMod = creature->getSkillMod("heavy_rifle_lightning_speed");
+		}
+
+		// Classic speed equation
+		if (weapon != NULL)
+			weaponSpeed = (1.0f - ((float)speedMod / 100.0f)) * getSpeedRatio() * weapon->getAttackSpeed();
+		else
+			weaponSpeed = (1.0f - ((float)speedMod / 100.0f)) * getSpeedRatio() * 2.0f;
+
+		return MAX(weaponSpeed, 1.0f);
+	}
+
+	virtual uint64 useWeaponCharge(CreatureObject* creature, CommandQueueAction* action) {
+		if (creature == NULL || action == NULL)
+			return 0;
+
+		if (creature->isPlayer()) {
+			String actionModifier = action->getActionModifier();
+			HeavyRangedWeapon* heavyWeapon= getHeavyRangedWeapon(creature,actionModifier);
+
+			heavyWeapon->useCharge((Player*) creature);
+			return heavyWeapon->getObjectID();
+		}
+		return 0;
+	}
+
+	virtual int getWeaponArea(CreatureObject* creature, CommandQueueAction* action) {
+		if (creature == NULL || action == NULL)
+			return 5; //default area range
+
+		String actionModifier = action->getActionModifier();
+		HeavyRangedWeapon* heavyWeapon = getHeavyRangedWeapon(creature,actionModifier);
+		if (heavyWeapon != NULL)
+			return heavyWeapon->getArea();
+		return 5; //default area range
+	}
+
 	/*
 	 * Find the trap in the inventory.
 	 * \param creature The skill user.
@@ -150,22 +201,27 @@ public:
 	 * \return The trap.
 	 */
 	HeavyRangedWeapon* getHeavyRangedWeapon(CreatureObject* creature, const String& modifier) {
+		uint64 objectid = 0;
+
 		if (!modifier.isEmpty()) {
 			StringTokenizer tokenizer(modifier);
-			String poolName;
-			uint64 objectid = 0;
 
 			tokenizer.setDelimeter("|");
 
 			if (tokenizer.hasMoreTokens())
 				objectid = tokenizer.getLongToken();
+		} else {
+			if (creature->isPlayer()) {
+				Player* player = (Player*) creature;
 
-			if (objectid > 0) {
-				SceneObject* invObj = creature->getInventoryItem(objectid);
-				if (invObj != NULL)
-					return (HeavyRangedWeapon* ) invObj;
+				objectid = player->getHeavyRangedWeapon();
 			}
+		}
 
+		if (objectid > 0) {
+			SceneObject* invObj = creature->getInventoryItem(objectid);
+			if (invObj != NULL)
+				return (HeavyRangedWeapon* ) invObj;
 		}
 
 		return NULL;

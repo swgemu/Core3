@@ -142,6 +142,8 @@ void WeaponImplementation::init() {
 
 	slicable = true;
 
+	setSpeedSkillMod("unarmed_speed");
+
 	StringBuffer loggingname;
 	loggingname << "Weapon = 0x" << objectID;
 	setLoggingName(loggingname.toString());

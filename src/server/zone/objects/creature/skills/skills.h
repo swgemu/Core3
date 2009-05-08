@@ -86,6 +86,7 @@ which carries forward this exception.
 #include "self/PowerboostSelfSkill.h"
 #include "self/BerserkSelfSkill.h"
 #include "self/CoverSelfSkill.h"
+#include "self/CenterOfBeingSelfSkill.h"
 
 #include "self/EntertainSelfSkill.h"
 #include "self/EntertainEffectSelfSkill.h"

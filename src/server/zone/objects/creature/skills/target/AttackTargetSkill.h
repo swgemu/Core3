@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "../TargetSkill.h"
 #include "../PassiveSkill.h"
 #include "../../../tangible/wearables/Armor.h"
+#include "../../../../managers/combat/CommandQueueAction.h"
 
 #include "../../../../packets/object/ShowFlyText.h"
 
@@ -443,9 +444,34 @@ public:
 		return accuracyBonus;
 	}
 
-	virtual float calculateSpeed(CreatureObject* creature,CommandQueueAction* action) {
-		return server->getCombatManager()->calculateWeaponAttackSpeed(creature, this, action);
+	virtual float calculateSpeed(CreatureObject* creature, CommandQueueAction* action) {
+		if (isHealSkill())
+			return 1.0f; //Heals use an event for the timings.  However the combat queue needs timing for next action
+
+		if (creature == NULL)
+			return 1.0f;
+
+		Weapon* weapon = creature->getWeapon();
+		float weaponSpeed;
+		int speedMod = 0;
+
+		if (weapon == NULL)
+			speedMod = creature->getSkillMod("unarmed_speed");
+		else {
+			speedMod = creature->getSkillMod(weapon->getSpeedSkillMod());
+			if (weapon->isHeavyWeapon())
+				speedMod += creature->getSkillMod("heavyweapon_speed");
+		}
+
+		// Classic speed equation
+		if (weapon != NULL)
+			weaponSpeed = (1.0f - ((float)speedMod / 100.0f)) * getSpeedRatio() * weapon->getAttackSpeed();
+		else
+			weaponSpeed = (1.0f - ((float)speedMod / 100.0f)) * getSpeedRatio() * 2.0f;
+
+		return MAX(weaponSpeed, 1.0f);
 	}
+
 
 	float getDamageRatio() {
 		return damageRatio;

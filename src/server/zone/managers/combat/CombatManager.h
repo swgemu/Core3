@@ -150,8 +150,6 @@ public:
 	int getArmorReduction(CreatureObject* target, int damage, int location, int attacktype, int damagetype, int armorpiercing);
 	void applyWounds(CreatureObject* attacker, CreatureObject* target, Weapon* weapon, int location);
 	bool calculateCost(CreatureObject* creature, float healthMultiplier, float actionMultiplier, float mindMultiplier, float forceMultiplier);
-	float calculateWeaponAttackSpeed(CreatureObject* creature, TargetSkill* tskill, CommandQueueAction* action = NULL);
-	float calculateHealSpeed(CreatureObject* creature, TargetSkill* tskill);
 	void calculateStates(CreatureObject* creature, CreatureObject* targetCreature, AttackTargetSkill* tskill);
 	void calculateThrowItemStates(CreatureObject* creature, CreatureObject* targetCreature, ThrowAttackTargetSkill* tskill);
 	void checkKnockDown(CreatureObject* creature, CreatureObject* targetCreature, int chance);
@@ -166,7 +164,7 @@ public:
 			int damageType, int armorPiercing, float minDmg, float maxDmg, bool randompoolhit, bool cankill);
 	void doDotWeaponAttack(CreatureObject* creature, CreatureObject* targetCreature, bool areaHit);
 	void counterAttack(CreatureObject* targetCreature, CreatureObject* creature);
-	void handelMedicArea(CreatureObject* creature, CreatureObject* areaCenter,Skill* skill, Pharmaceutical* pharma, float range);
+	void handleMedicArea(CreatureObject* creature, CreatureObject* areaCenter,Skill* skill, Pharmaceutical* pharma, float range);
 };
 
 #endif /*COMBATMANAGER_H_*/

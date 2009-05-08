@@ -1,0 +1,170 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
+
+#ifndef IMAGEDESIGNSLASHCOMMAND_H_
+#define IMAGEDESIGNSLASHCOMMAND_H_
+
+#include "../../../scene/SceneObject.h"
+#include "../../../../packets.h"
+#include "../../../structure/building/cell/CellObject.h"
+#include "../../../structure/building/BuildingObject.h"
+#include "../../../structure/building/BuildingObjectImplementation.h"
+
+class ImagedesignSlashCommand : public SlashCommand {
+public:
+
+	ImagedesignSlashCommand(const String& name, ZoneProcessServerImplementation* server)
+		: SlashCommand(name, server) {
+
+	}
+
+	bool doSlashCommand(Player* player, Message* packet) {
+
+		if (!checkStateMask(player))
+			return false;
+
+		if (!checkInvalidPostures(player))
+			return false;
+
+
+		String skillBox = "social_entertainer_novice";
+
+		if (!player->getSkillBoxesSize() || !player->hasSkillBox(skillBox)) {
+			// TODO: sendSystemMessage("cmd_err", "ability_prose", creature);
+			player->sendSystemMessage(
+					"You do not have sufficient abilities to image design.");
+			return false;
+		}
+
+		uint64 target = packet->parseLong(); // skip passed target get this later?
+
+		SceneObject* object = player->getZone()->lookupObject(target);
+
+		if (object == NULL)
+			return false;
+
+		unsigned long tent = 0; // objectid of the salon building
+
+		if (player->isInBuilding() && player->getBuildingType()
+				== BuildingObjectImplementation::SALON) {
+			CellObject* cell = (CellObject*) player->getParent();
+			BuildingObject* building = (BuildingObject*) cell->getParent();
+
+			tent = building->getObjectID();
+		}
+
+		try {
+			if (object != player)
+				object->wlock(player);
+
+			if (object->isPlayer()) {
+				Player* targetPlayer = (Player*) object;
+
+				// If the target player isn't yourself, then that player must be in a group
+				if (targetPlayer->getObjectID() != player->getObjectID()
+						&& (!player->isInAGroup() || (player->isInAGroup()
+								&& player->getGroupID()
+										!= targetPlayer->getGroupID()))) {
+
+					player->sendSystemMessage(
+							"Target player must be in your group to Image Design.");
+
+					if (object != player)
+						object->unlock();
+
+					return false;
+				}
+
+				/*
+				 Designer:
+				 3A 02 00 00
+				 72 B0 E9 91 22 00 00 00 // designer
+				 00 00 00 00
+				 72 B0 E9 91 22 00 00 00
+				 DF D4 50 92 22 00 00 00
+				 00 00 00 00 00 00 00 00 // tent
+				 00 00
+
+
+				 Designee:
+
+				 3A 02 00 00
+				 72 B0 E9 91 22 00 00 00
+				 00 00 00 00
+				 DF D4 50 92 22 00 00 00
+				 72 B0 E9 91 22 00 00 00
+				 00 00 00 00 00 00 00 00
+				 00 00 */
+
+				// Initiate Self
+				ImageDesignStartMessage* msgPlayer = new ImageDesignStartMessage(
+						player, player, targetPlayer, tent);
+				player->sendMessage(msgPlayer);
+
+				// Initiate Target (
+				if (targetPlayer->getObjectID() != player->getObjectID()) {
+					ImageDesignStartMessage* msgTarget =
+							new ImageDesignStartMessage(targetPlayer, player,
+									targetPlayer, tent);
+					targetPlayer->sendMessage(msgTarget);
+				}
+			} else {
+				player->sendSystemMessage("Invalid Image Design target.");
+			}
+
+			if (object != player)
+				object->unlock();
+		} catch (...) {
+			System::out
+					<< "Unreported exception in ObjectControllerMessage::parseImageDesign(Player* player, Message *pack)";
+			if (object != player)
+				object->unlock();
+			return false;
+		}
+		return true;
+	}
+
+};
+
+#endif //IMAGEDESIGNSLASHCOMMAND_H_

@@ -875,9 +875,11 @@ public:
 
 	void setActiveArea(ActiveArea* area);
 
-	void throwTrap(unsigned int targetID);
+	unsigned long long getTrap();
 
-	void throwGrenade(unsigned int targetID);
+	unsigned long long getGrenade();
+
+	unsigned long long getHeavyRangedWeapon();
 
 	void equipItem(TangibleObject* item);
 
@@ -1878,9 +1880,11 @@ public:
 
 	void setActiveArea(ActiveArea* area);
 
-	void throwTrap(unsigned int targetID);
+	unsigned long long getTrap();
 
-	void throwGrenade(unsigned int targetID);
+	unsigned long long getGrenade();
+
+	unsigned long long getHeavyRangedWeapon();
 
 	void equipItem(TangibleObject* item);
 

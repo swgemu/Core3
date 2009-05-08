@@ -51,6 +51,8 @@ which carries forward this exception.
 
 #include "../../../ZoneProcessServerImplementation.h"
 #include "../../../managers/combat/CombatManager.h"
+#include "../CreatureObject.h"
+#include "../../tangible/weapons/Weapon.h"
 
 class Skill {
 protected:
@@ -58,6 +60,10 @@ protected:
 	uint32 nameCRC;
 	int type;
 	int category;
+
+	uint64 stateMask;
+	Vector<int> invalidPostures;
+	bool instant;
 
 	uint32 animCRC;
 	String effectName;
@@ -100,6 +106,9 @@ public:
 		skillName = name;
 		type = tp;
 		category = cat;
+
+		stateMask = 0;
+		instant = false;
 
 		animCRC = 0;
 
@@ -250,12 +259,94 @@ public:
 		return false;
 	}
 
+	virtual float calculateSpeed(CreatureObject* creature, CommandQueueAction* action) {
+		return 1.0f;
+	}
+
 	virtual void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, Pharmaceutical* pharma) {
 		return;
 	}
 
 	virtual bool checkAreaMedicTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
 		return false;
+	}
+
+	/*
+	 * Sets the invalid states for this command
+	 */
+	inline void setStateMask(uint64 mask) {
+		stateMask = mask;
+	}
+
+	/*
+	 * Sets the invalid postures for this command.
+	 * Parses the string from LUA's. Format: "4,12,13,"
+	 */
+	void setInvalidPostures(const String& postureStr) {
+		StringTokenizer tokenizer(postureStr);
+		tokenizer.setDelimeter(",");
+
+		String token = "";
+		while (tokenizer.hasMoreTokens()) {
+			tokenizer.getStringToken(token);
+
+			if(!token.isEmpty())
+				invalidPostures.add(Integer::valueOf(token));
+		}
+	}
+
+	/*
+	 * Sets whether the skill is instant or to be added to the queue
+	 * @var int inst 1 = true; 0 = false
+	 */
+	void setInstant(int inst) {
+		if (inst == 0)
+			instant = false;
+		else
+			instant = true;
+	}
+
+	/*
+	 * Sets whether the skill is instant or to be added to the queue
+	 */
+	void setInstant(bool inst) {
+		instant = inst;
+	}
+
+	inline uint64 getStateMask() {
+		return stateMask;
+	}
+
+	bool isInstant() {
+		return instant;
+	}
+
+	/*
+	 * Checks all states at once with a bitwise operation
+	 */
+	virtual bool checkStateMask(CreatureObject* creature) {
+		return (creature->getStateBitmask() & stateMask) == 0;
+	}
+
+	/*
+	 * Checks each invalid posture with the player's current posture
+	 */
+	virtual bool checkInvalidPostures(CreatureObject* creature) {
+		for (int i = 0; i < invalidPostures.size(); ++i) {
+			if (invalidPostures.get(i) == creature->getPosture())
+				return false;
+		}
+		return true;
+	}
+
+	virtual bool canPerform(CreatureObject* creature, Message* packet) {
+			if (!checkStateMask(creature))
+				return false;
+
+			if (!checkInvalidPostures(creature))
+				return false;
+
+			return true;
 	}
 
 };

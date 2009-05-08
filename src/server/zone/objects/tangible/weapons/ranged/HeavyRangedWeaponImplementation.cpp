@@ -88,6 +88,7 @@ void HeavyRangedWeaponImplementation::init() {
 			setType(HEAVYROCKETLAUNCHER);
 			setDamageType(BLAST);
 			setArmorPiercing(HEAVY);
+			setSpeedSkillMod("heavy_rocket_launcher_speed");
 
 			setSkill("firerocketlauncher");
 			setCert("cert_heavy_rocket_launcher");
@@ -97,6 +98,7 @@ void HeavyRangedWeaponImplementation::init() {
 			setType(HEAVYLIGHTNINGBEAM);
 			setDamageType(ENERGY);
 			setArmorPiercing(HEAVY);
+			setSpeedSkillMod("heavy_lightning_beam_speed");
 
 			setSkill("firelightningbeam");
 			setCert("cert_heavy_lightning_beam");
@@ -106,6 +108,7 @@ void HeavyRangedWeaponImplementation::init() {
 			setType(HEAVYACIDBEAM);
 			setDamageType(ACID);
 			setArmorPiercing(MEDIUM);
+			setSpeedSkillMod("heavy_acid_beam_speed");
 
 			setSkill("fireacidbeam");
 			setCert("cert_heavy_acid_beam");
@@ -115,6 +118,7 @@ void HeavyRangedWeaponImplementation::init() {
 			setType(HEAVYPARTICLEBEAM);
 			setDamageType(ENERGY);
 			setArmorPiercing(MEDIUM);
+			setSpeedSkillMod("heavy_particle_beam_speed");
 
 			setSkill("fireparticlebeam");
 			setCert("cert_heavy_particle_beam");
