@@ -345,17 +345,18 @@ void CreaturePet::setPetName(String& name) {
 		((CreaturePetImplementation*) _impl)->setPetName(name);
 }
 
-void CreaturePet::parseCommandMessage(const UnicodeString& message) {
+void CreaturePet::parseCommandMessage(Player* player, const UnicodeString& message) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 31);
+		method.addObjectParameter(player);
 		method.addUnicodeParameter(message);
 
 		method.executeWithVoidReturn();
 	} else
-		((CreaturePetImplementation*) _impl)->parseCommandMessage(message);
+		((CreaturePetImplementation*) _impl)->parseCommandMessage(player, message);
 }
 
 void CreaturePet::setCommmandState(int command) {
@@ -408,28 +409,30 @@ void CreaturePet::deaggro() {
 		((CreaturePetImplementation*) _impl)->deaggro();
 }
 
-void CreaturePet::handleAttackCommand() {
+void CreaturePet::handleAttackCommand(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 36);
+		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
 	} else
-		((CreaturePetImplementation*) _impl)->handleAttackCommand();
+		((CreaturePetImplementation*) _impl)->handleAttackCommand(player);
 }
 
-void CreaturePet::handleFollowCommand() {
+void CreaturePet::handleFollowCommand(Player* target) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 37);
+		method.addObjectParameter(target);
 
 		method.executeWithVoidReturn();
 	} else
-		((CreaturePetImplementation*) _impl)->handleFollowCommand();
+		((CreaturePetImplementation*) _impl)->handleFollowCommand(target);
 }
 
 void CreaturePet::handleStayCommand() {
@@ -507,17 +510,18 @@ void CreaturePet::handleEnrageCommand() {
 		((CreaturePetImplementation*) _impl)->handleEnrageCommand();
 }
 
-void CreaturePet::handleSpecialAttackCommand(int att) {
+void CreaturePet::handleSpecialAttackCommand(Player* player, int att) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 44);
+		method.addObjectParameter(player);
 		method.addSignedIntParameter(att);
 
 		method.executeWithVoidReturn();
 	} else
-		((CreaturePetImplementation*) _impl)->handleSpecialAttackCommand(att);
+		((CreaturePetImplementation*) _impl)->handleSpecialAttackCommand(player, att);
 }
 
 void CreaturePet::handleGroupCommand() {
@@ -532,12 +536,24 @@ void CreaturePet::handleGroupCommand() {
 		((CreaturePetImplementation*) _impl)->handleGroupCommand();
 }
 
-void CreaturePet::trainMount() {
+void CreaturePet::handleFriendCommand() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 46);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreaturePetImplementation*) _impl)->handleFriendCommand();
+}
+
+void CreaturePet::trainMount() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 47);
 
 		method.executeWithVoidReturn();
 	} else
@@ -631,7 +647,7 @@ Packet* CreaturePetAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		setPetName(inv->getAsciiParameter(_param0_setPetName__String_));
 		break;
 	case 31:
-		parseCommandMessage(inv->getUnicodeParameter(_param0_parseCommandMessage__UnicodeString_));
+		parseCommandMessage((Player*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_parseCommandMessage__Player_UnicodeString_));
 		break;
 	case 32:
 		setCommmandState(inv->getSignedIntParameter());
@@ -646,10 +662,10 @@ Packet* CreaturePetAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		deaggro();
 		break;
 	case 36:
-		handleAttackCommand();
+		handleAttackCommand((Player*) inv->getObjectParameter());
 		break;
 	case 37:
-		handleFollowCommand();
+		handleFollowCommand((Player*) inv->getObjectParameter());
 		break;
 	case 38:
 		handleStayCommand();
@@ -670,12 +686,15 @@ Packet* CreaturePetAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		handleEnrageCommand();
 		break;
 	case 44:
-		handleSpecialAttackCommand(inv->getSignedIntParameter());
+		handleSpecialAttackCommand((Player*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 45:
 		handleGroupCommand();
 		break;
 	case 46:
+		handleFriendCommand();
+		break;
+	case 47:
 		trainMount();
 		break;
 	default:
@@ -785,8 +804,8 @@ void CreaturePetAdapter::setPetName(String& name) {
 	return ((CreaturePetImplementation*) impl)->setPetName(name);
 }
 
-void CreaturePetAdapter::parseCommandMessage(const UnicodeString& message) {
-	return ((CreaturePetImplementation*) impl)->parseCommandMessage(message);
+void CreaturePetAdapter::parseCommandMessage(Player* player, const UnicodeString& message) {
+	return ((CreaturePetImplementation*) impl)->parseCommandMessage(player, message);
 }
 
 void CreaturePetAdapter::setCommmandState(int command) {
@@ -805,12 +824,12 @@ void CreaturePetAdapter::deaggro() {
 	return ((CreaturePetImplementation*) impl)->deaggro();
 }
 
-void CreaturePetAdapter::handleAttackCommand() {
-	return ((CreaturePetImplementation*) impl)->handleAttackCommand();
+void CreaturePetAdapter::handleAttackCommand(Player* player) {
+	return ((CreaturePetImplementation*) impl)->handleAttackCommand(player);
 }
 
-void CreaturePetAdapter::handleFollowCommand() {
-	return ((CreaturePetImplementation*) impl)->handleFollowCommand();
+void CreaturePetAdapter::handleFollowCommand(Player* target) {
+	return ((CreaturePetImplementation*) impl)->handleFollowCommand(target);
 }
 
 void CreaturePetAdapter::handleStayCommand() {
@@ -837,12 +856,16 @@ void CreaturePetAdapter::handleEnrageCommand() {
 	return ((CreaturePetImplementation*) impl)->handleEnrageCommand();
 }
 
-void CreaturePetAdapter::handleSpecialAttackCommand(int att) {
-	return ((CreaturePetImplementation*) impl)->handleSpecialAttackCommand(att);
+void CreaturePetAdapter::handleSpecialAttackCommand(Player* player, int att) {
+	return ((CreaturePetImplementation*) impl)->handleSpecialAttackCommand(player, att);
 }
 
 void CreaturePetAdapter::handleGroupCommand() {
 	return ((CreaturePetImplementation*) impl)->handleGroupCommand();
+}
+
+void CreaturePetAdapter::handleFriendCommand() {
+	return ((CreaturePetImplementation*) impl)->handleFriendCommand();
 }
 
 void CreaturePetAdapter::trainMount() {

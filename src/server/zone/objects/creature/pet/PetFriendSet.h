@@ -42,76 +42,21 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../../../managers/creature/CreatureManagerImplementation";
+#ifndef PETFRIENDSET_H_
+#define PETFRIENDSET_H_
 
-import "../Creature";
+#include "system/lang.h"
+#include "CreaturePet.h"
 
-import "../CreatureObject";
-
-import "../../player/Player";
-
-import "../../intangible/IntangibleObject";
-
-import "../../scene/SceneObject";
-
-interface CreaturePet implements Creature {
-
-	CreaturePet(Player owner, unsigned long oid) {
-		super(oid);	
+class PetFriendSet : public HashSet<uint64> {
+	int hash(const uint64& key) {
+		return Long::hashCode(key);
 	}
 
-	void init(Creature creature , float growth);
-	void createDataPad();
-	
-	void setLinkedCreature(Player linkCreature);
-	Player getLinkedCreature();
-	void setDatapadItem(SceneObject item);
-	IntangibleObject getDatapadItem();
-	void parseItemAttributes();
+public:
+	PetFriendSet() : HashSet<uint64>() {
 
-	void call();
-	void store(boolean doLock = true);
-	boolean canCall();
+	}
+};
 
-	boolean isAttackable();
-	boolean isAttackableBy(CreatureObject creature);
-	void onIncapacitated(SceneObject attacker);
-	void recoverFromIncapacitation();
-
-	void setFaction(unsigned int fac);
-	void setMaxLevel(unsigned int level);
-
-	boolean isCHPet();
-	boolean isDroid();
-	boolean isFactionPet();
-
-	boolean isInFollowState();
-
-	boolean isInStayState();
-
-	boolean isInGuardState();
-
-	void doGrowUp(boolean updateTime = true);
-
-	void initTrainingState(int command);
-	void setPetName(String name);
-	void parseCommandMessage(Player player, const UnicodeString message);
-	void setCommmandState(int command);
-	boolean hasCommandTrained(unsigned int state);
-
-	boolean activate();
-	void deaggro();
-
-	void handleAttackCommand(Player player);
-	void handleFollowCommand(Player target);
-	void handleStayCommand();
-	void handleGuardCommand();
-	void handleStoreCommand();
-	void handleTransferCommand();
-	void handleTrickCommand(String anim,int mod,int cost);
-	void handleEnrageCommand();
-	void handleSpecialAttackCommand(Player player, int att);
-	void handleGroupCommand();
-	void handleFriendCommand();
-	void trainMount();
-}
+#endif /* PETFRIENDSET_H_ */

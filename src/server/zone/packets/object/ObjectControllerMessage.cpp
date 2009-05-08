@@ -2399,7 +2399,7 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 				if (crea->isPet()) {
 					try {
 						((CreaturePet*)crea)->wlock();
-						((CreaturePet*)crea)->store();
+						((CreaturePet*)crea)->store(false);
 						((CreaturePet*)crea)->unlock();
 					} catch (...) {
 						System::out << "Unreported exception caught in RadialManager::handlePetCall\n";
@@ -2408,6 +2408,7 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 				}
 			}
 		}
+
 		player->removeDatapadItem(objid);
 
 		itemManager->deleteDatapadItem(player, datapadData.get(), true);

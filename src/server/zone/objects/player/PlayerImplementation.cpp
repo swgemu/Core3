@@ -6355,7 +6355,7 @@ void PlayerImplementation::sendMessageToPets(const UnicodeString& message, uint6
 		if (isInRange(pet,128.0f)) {
 			try {
 				pet->lock();
-				pet->parseCommandMessage(message);
+				pet->parseCommandMessage(_this,message);
 				pet->unlock();
 			} catch (...) {
 				pet->unlock();
@@ -6369,7 +6369,7 @@ void PlayerImplementation::sendMessageToPets(const UnicodeString& message, uint6
 		if (isInRange(pet,128.0f)) {
 			try {
 				pet->lock();
-				pet->parseCommandMessage(message);
+				pet->parseCommandMessage(_this,message);
 				pet->unlock();
 			} catch (...) {
 				pet->unlock();
