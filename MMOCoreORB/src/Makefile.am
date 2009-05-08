@@ -279,6 +279,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/skills/performance/PerformanceManager.cpp \
 		server/zone/managers/skills/ScriptAttacksManager.cpp \
 		server/zone/managers/skills/SkillManager.cpp \
+		server/zone/managers/slashcommands/SlashCommandConfigManager.cpp \
+		server/zone/managers/slashcommands/SlashCommandManager.cpp \
 		server/zone/managers/structure/StructureManagerImplementation.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
 		server/zone/managers/user/UserManagerImplementation.cpp \

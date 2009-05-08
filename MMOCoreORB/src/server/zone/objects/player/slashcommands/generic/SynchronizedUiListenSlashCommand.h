@@ -72,7 +72,7 @@ public:
 			return false;
 
 		object->synchronizedUIListen(player, value);
-
+		return true;
 	}
 
 };
