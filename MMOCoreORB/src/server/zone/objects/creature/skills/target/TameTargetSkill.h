@@ -147,21 +147,23 @@ public:
 				player->say("Don't bite me.");
 				bool notInRange = !player->isInRange(creature,10.0f);
 
-				if (notInRange || (creature->isAggressive() && creature->getLevel() > System::random(player->getSkillMod("tame_aggro")))) {
+				if (true){//notInRange || (creature->isAggressive() && creature->getLevel() > System::random(player->getSkillMod("tame_aggro")))) {
 					player->sendSystemMessage("Failed to tame Creature");
-					if (System::random(1) == 1) {
-						/*System::out << "attack aggro\n";
+					//if (System::random(1) == 1) {
+						System::out << "attack aggro\n";
 						creature->updateTarget(player);
-						creature->setCombatState();*/
-					}
+						creature->setCombatState();
+						creature->activate();
+					//}
 					return;
 				}else if (notInRange || creature->getLevel() > System::random(player->getSkillMod("tame_non_aggro"))) {
 					player->sendSystemMessage("Failed to tame creature");
-					if (System::random(4) == 1) {
-						/*System::out << "attack\n";
+					//if (System::random(4) == 1) {
+						System::out << "attack\n";
 						creature->updateTarget(player);
-						creature->setCombatState();*/
-					}
+						creature->setCombatState();
+						creature->activate();
+					//}
 					return;
 				}
 				creature->deaggro();

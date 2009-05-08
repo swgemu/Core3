@@ -395,7 +395,7 @@ void CreatureImplementation::generateAttributes(SceneObject* obj) {
 	}
 
 	if (creaKnowledge >= 10) {
-		if (getTame() >= 0.0f && isBaby())
+		if (getTame() > 0.0f && isBaby())
 			alm->insertAttribute("tamable", "yes");
 		else
 			alm->insertAttribute("tamable", "no");

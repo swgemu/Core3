@@ -204,7 +204,8 @@ am_core3_OBJECTS = $(am__objects_1) \
 	CustomizationManager.$(OBJEXT) \
 	ImageDesignCustomization.$(OBJEXT) \
 	PerformanceManager.$(OBJEXT) ScriptAttacksManager.$(OBJEXT) \
-	SkillManager.$(OBJEXT) \
+	SkillManager.$(OBJEXT) SlashCommandConfigManager.$(OBJEXT) \
+	SlashCommandManager.$(OBJEXT) \
 	StructureManagerImplementation.$(OBJEXT) SuiManager.$(OBJEXT) \
 	UserManagerImplementation.$(OBJEXT) \
 	LairObjectImplementation.$(OBJEXT) \
@@ -664,6 +665,8 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/managers/skills/performance/PerformanceManager.cpp \
 		server/zone/managers/skills/ScriptAttacksManager.cpp \
 		server/zone/managers/skills/SkillManager.cpp \
+		server/zone/managers/slashcommands/SlashCommandConfigManager.cpp \
+		server/zone/managers/slashcommands/SlashCommandManager.cpp \
 		server/zone/managers/structure/StructureManagerImplementation.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
 		server/zone/managers/user/UserManagerImplementation.cpp \
@@ -1111,6 +1114,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ShuttleCreature.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ShuttleCreatureImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SkillManager.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SlashCommandConfigManager.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SlashCommandManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SpawnLocation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SpecialHeavyRangedWeapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StartingLocationTerminal.Po@am__quote@
@@ -4324,6 +4329,34 @@ SkillManager.obj: server/zone/managers/skills/SkillManager.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/skills/SkillManager.cpp' object='SkillManager.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SkillManager.obj `if test -f 'server/zone/managers/skills/SkillManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/skills/SkillManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/skills/SkillManager.cpp'; fi`
+
+SlashCommandConfigManager.o: server/zone/managers/slashcommands/SlashCommandConfigManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SlashCommandConfigManager.o -MD -MP -MF $(DEPDIR)/SlashCommandConfigManager.Tpo -c -o SlashCommandConfigManager.o `test -f 'server/zone/managers/slashcommands/SlashCommandConfigManager.cpp' || echo '$(srcdir)/'`server/zone/managers/slashcommands/SlashCommandConfigManager.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SlashCommandConfigManager.Tpo $(DEPDIR)/SlashCommandConfigManager.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/slashcommands/SlashCommandConfigManager.cpp' object='SlashCommandConfigManager.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SlashCommandConfigManager.o `test -f 'server/zone/managers/slashcommands/SlashCommandConfigManager.cpp' || echo '$(srcdir)/'`server/zone/managers/slashcommands/SlashCommandConfigManager.cpp
+
+SlashCommandConfigManager.obj: server/zone/managers/slashcommands/SlashCommandConfigManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SlashCommandConfigManager.obj -MD -MP -MF $(DEPDIR)/SlashCommandConfigManager.Tpo -c -o SlashCommandConfigManager.obj `if test -f 'server/zone/managers/slashcommands/SlashCommandConfigManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/slashcommands/SlashCommandConfigManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/slashcommands/SlashCommandConfigManager.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SlashCommandConfigManager.Tpo $(DEPDIR)/SlashCommandConfigManager.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/slashcommands/SlashCommandConfigManager.cpp' object='SlashCommandConfigManager.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SlashCommandConfigManager.obj `if test -f 'server/zone/managers/slashcommands/SlashCommandConfigManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/slashcommands/SlashCommandConfigManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/slashcommands/SlashCommandConfigManager.cpp'; fi`
+
+SlashCommandManager.o: server/zone/managers/slashcommands/SlashCommandManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SlashCommandManager.o -MD -MP -MF $(DEPDIR)/SlashCommandManager.Tpo -c -o SlashCommandManager.o `test -f 'server/zone/managers/slashcommands/SlashCommandManager.cpp' || echo '$(srcdir)/'`server/zone/managers/slashcommands/SlashCommandManager.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SlashCommandManager.Tpo $(DEPDIR)/SlashCommandManager.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/slashcommands/SlashCommandManager.cpp' object='SlashCommandManager.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SlashCommandManager.o `test -f 'server/zone/managers/slashcommands/SlashCommandManager.cpp' || echo '$(srcdir)/'`server/zone/managers/slashcommands/SlashCommandManager.cpp
+
+SlashCommandManager.obj: server/zone/managers/slashcommands/SlashCommandManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SlashCommandManager.obj -MD -MP -MF $(DEPDIR)/SlashCommandManager.Tpo -c -o SlashCommandManager.obj `if test -f 'server/zone/managers/slashcommands/SlashCommandManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/slashcommands/SlashCommandManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/slashcommands/SlashCommandManager.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SlashCommandManager.Tpo $(DEPDIR)/SlashCommandManager.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/slashcommands/SlashCommandManager.cpp' object='SlashCommandManager.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SlashCommandManager.obj `if test -f 'server/zone/managers/slashcommands/SlashCommandManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/slashcommands/SlashCommandManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/slashcommands/SlashCommandManager.cpp'; fi`
 
 StructureManagerImplementation.o: server/zone/managers/structure/StructureManagerImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StructureManagerImplementation.o -MD -MP -MF $(DEPDIR)/StructureManagerImplementation.Tpo -c -o StructureManagerImplementation.o `test -f 'server/zone/managers/structure/StructureManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/structure/StructureManagerImplementation.cpp
