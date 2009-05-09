@@ -42,20 +42,62 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "Features.h"
+#ifndef FEATUREMANAGER_H_
+#define FEATUREMANAGER_H_
 
-Features::Features()
-	: VectorMap<String, String>() {
-	setInsertPlan(NO_DUPLICATE);
-}
+#include "engine/engine.h"
 
-Features::~Features() {
-}
 
-bool Features::loadFeatures() {
-	Lua* lua = new Lua();
-	if (!lua->runFile("features.lua"))
+class FeatureManager : public Mutex, public Lua {
+
+	static VectorMap<String, String>* stringFeature;
+	static VectorMap<String, int>* intFeature;
+	static VectorMap<String, float>* floatFeature;
+	static VectorMap<String, VectorMap<String, String>*>* setFeature;
+public:
+	FeatureManager();
+	~FeatureManager();
+
+	void init();
+	bool loadFeatures();
+
+	inline bool hasStringFeature(const String& key) {
+		return stringFeature->contains(key);
+	}
+
+	inline String& getStringFeature(const String& key) {
+		return stringFeature->get(key);
+	}
+
+	inline bool hasIntegerFeature(const String& key) {
+		return intFeature->contains(key);
+	}
+
+	inline int getIntegerFeature(const String& key) {
+		return intFeature->get(key);
+	}
+
+	inline bool hasFloatFeature(const String& key) {
+		return floatFeature->contains(key);
+	}
+
+	inline int getFloatFeature(const String& key) {
+		return floatFeature->get(key);
+	}
+
+	inline bool hasSetFeature(const String& key, const String& feature) {
+		if (setFeature->contains(key))
+			return setFeature->get(key)->contains(feature);
 		return false;
+	}
 
-	return true;
-}
+	void registerFunctions();
+	void registerGlobals();
+
+	static int addStringFeature(lua_State* L);
+	static int addIntegerFeature(lua_State* L);
+	static int addFloatFeature(lua_State* L);
+	static int addSetFeature(lua_State* L);
+};
+
+#endif /* FEATUREMANAGER_H_ */

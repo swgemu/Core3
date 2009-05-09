@@ -465,27 +465,27 @@ PlayerMap* PlayerManager::getPlayerMap() {
 		return ((PlayerManagerImplementation*) _impl)->getPlayerMap();
 }
 
-void PlayerManager::setXpScale(int scale) {
+void PlayerManager::setXpScale(float scale) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 38);
-		method.addSignedIntParameter(scale);
+		method.addFloatParameter(scale);
 
 		method.executeWithVoidReturn();
 	} else
 		((PlayerManagerImplementation*) _impl)->setXpScale(scale);
 }
 
-int PlayerManager::getXpScale() {
+float PlayerManager::getXpScale() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 39);
 
-		return method.executeWithSignedIntReturn();
+		return method.executeWithFloatReturn();
 	} else
 		return ((PlayerManagerImplementation*) _impl)->getXpScale();
 }
@@ -598,10 +598,10 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertLong(getPlayerMap()->_getObjectID());
 		break;
 	case 38:
-		setXpScale(inv->getSignedIntParameter());
+		setXpScale(inv->getFloatParameter());
 		break;
 	case 39:
-		resp->insertSignedInt(getXpScale());
+		resp->insertFloat(getXpScale());
 		break;
 	default:
 		return NULL;
@@ -738,11 +738,11 @@ PlayerMap* PlayerManagerAdapter::getPlayerMap() {
 	return ((PlayerManagerImplementation*) impl)->getPlayerMap();
 }
 
-void PlayerManagerAdapter::setXpScale(int scale) {
+void PlayerManagerAdapter::setXpScale(float scale) {
 	return ((PlayerManagerImplementation*) impl)->setXpScale(scale);
 }
 
-int PlayerManagerAdapter::getXpScale() {
+float PlayerManagerAdapter::getXpScale() {
 	return ((PlayerManagerImplementation*) impl)->getXpScale();
 }
 

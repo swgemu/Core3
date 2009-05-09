@@ -74,6 +74,7 @@ class LootManager;
 class SuiManager;
 class NameManager;
 class SlashCommandManager;
+class FeatureManager;
 
 class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
 	ZoneServer* server;
@@ -93,6 +94,7 @@ class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
 	SuiManager* suiManager;
 	NameManager* nameManager;
 	SlashCommandManager* slashCommandManager;
+	FeatureManager* featureManager;
 
 public:
 	ZoneProcessServerImplementation(ZoneServer* serv, int processingThreads);
@@ -182,6 +184,9 @@ public:
 		return slashCommandManager;
 	}
 
+	inline FeatureManager* getFeatureManager() {
+		return featureManager;
+	}
 };
 
 #endif /*ZONEPROCESSSERVERIMPLEMENTATION_H_*/

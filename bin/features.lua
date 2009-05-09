@@ -51,27 +51,50 @@
 
 --     Features should follow the following format:
 
+--	    String:
 --          --Values: "value1", "value2", "value3"
---          feature("featureKey", "value1")
+--          in lua: AddStringFeature("featureKey", "value1")
+--	    in Code: features->getStringFeature("featureKey") , returns the associated value as String
+--		     features->hasStringFeature("featureKey") , checks if the key exists
 
---     In the code, you will use features->get("featureKey") to retrieve the
---     associated value.
+--	    Integer:
+--          --Values: -5, 0 ,1 , 18
+--          in lua: AddIntegerFeature("featureKey", 1)
+--	    in Code: features->getIntegerFeature("featureKey") , returns the associated value as int
+--		     features->hasIntegerFeature("featureKey") , checks if the key exists
+
+--	    String:
+--          --Values: 0.0, 0.4, -0.5
+--          in lua: AddFloatFeature("featureKey", 0.6)
+--	    in Code: features->getFloatFeature("featureKey") , returns the associated value as float
+--		     features->hasFloatFeature("featureKey") , checks if the key exists
+
+--	   Binary Feature:
+--          --No values ,
+--          in lua: true : AddStringFeature("featureKey", "")
+--		    false : --AddStringFeature("featureKey", "")
+--	    in Code: features->getStringFeature("featureKey") , returns an empty String will not be used
+--		     features->hasStringFeature("featureKey") , checks if the key exists
+
+--	   Set Feature:
+--          --Values: {"unarmed_damge","heavy_weapon_speed"}
+--          in lua: AddSetFeature("featureKey", "unarmed_damge","heavy_weapon_speed")
+--			creatues a new set if the key does not exist, adds the new entries to the set if the key exists
+--	    in Code: features->hasSetFeature("key","features") , checks if the key exists
+
 --*****************************************************************************
 -------------------------------------------------------------------------------
-
-
-
 --Jedi System Features
 --Values: "hologrind", "village"
---feature("jediSystem", "hologrind")
+--AddStringFeature("jediSystem", "hologrind")
 
 --Armor Protection
---Values: "normal", "minisuits"
---feature("armorProtection", "minisuits")
+--Values: "minisuits" yes/no
+--AddStringFeature("minisuits","")
 
 --GCW System
 --Values: "specialForces", "TEF"
---feature("gcwSystem", "specialForces")
+--AddStringFeature("gcwSystem", "specialForces")
 
 --************************
 --Broken Skillmods Section
@@ -80,4 +103,24 @@
 --feature("modUnarmedDamage", "enabled");
 --feature("modCombatMedicEffectiveness", "enabled");
 
-testing = "test"
+
+--XP scale
+--Values: float, 1.0 = default
+AddFloatFeature("xpScale",1.0)
+
+-- Globale damage multipier (player)
+--Values: float, 1.5 = default
+AddFloatFeature("globalMultiplier",1.5)
+
+-- PVP damage multipier (player)
+--Values: float, 0.25 = default
+AddFloatFeature("pvpMultiplier",0.25)
+
+-- PVE damage multipier (player)
+--Values: float, 1.0 = default
+AddFloatFeature("pveMultiplier",1.0)
+
+-- PVP damage multipier (pet)
+--Values: float, 0.25 = default
+AddFloatFeature("petPvpMultiplier",0.25)
+

@@ -3552,7 +3552,7 @@ void GameCommandHandler::warpAreaToWP(StringTokenizer tokenizer, Player* player)
 }
 
 void GameCommandHandler::scaleXP(StringTokenizer tokenizer, Player* player) {
-	int scale;
+	float scale;
 
 	ZoneProcessServerImplementation* srv = player->getZoneProcessServer();
 	if (srv == NULL)
@@ -3569,7 +3569,7 @@ void GameCommandHandler::scaleXP(StringTokenizer tokenizer, Player* player) {
 	if (!tokenizer.hasMoreTokens())
 		return;
 
-	scale = tokenizer.getIntToken();
+	scale = tokenizer.getFloatToken();
 
 	pmng->setXpScale(scale);
 

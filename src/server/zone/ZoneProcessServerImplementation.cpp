@@ -88,6 +88,8 @@ which carries forward this exception.
 #include "managers/name/NameManager.h"
 #include "managers/slashcommands/SlashCommandManager.h"
 
+#include "managers/feature/FeatureManager.h"
+
 ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* serv, int processingThreads)
 		: ServiceMessageHandlerThread("ZoneProcessorServer") {
 	server = serv;
@@ -96,6 +98,7 @@ ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* ser
 	procThreadCount = processingThreads;
 
 	//Static managers
+	featureManager = new FeatureManager();
 	combatManager = new CombatManager(this);
 	professionManager = new ProfessionManager(this);
 	skillManager = professionManager->getSkillManager();
@@ -145,6 +148,9 @@ ZoneProcessServerImplementation::~ZoneProcessServerImplementation() {
 
 	delete slashCommandManager;
 	slashCommandManager = NULL;
+
+	delete featureManager;
+	featureManager = NULL;
 }
 
 void ZoneProcessServerImplementation::init() {

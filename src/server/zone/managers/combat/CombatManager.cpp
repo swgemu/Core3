@@ -62,8 +62,31 @@ which carries forward this exception.
 
 #include "../../objects/creature/mount/MountCreature.h"
 
+#include "../feature/FeatureManager.h"
+
 CombatManager::CombatManager(ZoneProcessServerImplementation* srv) {
 	server = srv;
+	FeatureManager* featManager = server->getFeatureManager();
+
+	if (featManager != NULL && featManager->hasFloatFeature("globalMultiplier"))
+		GLOBAL_MULTIPLIER = featManager->getFloatFeature("globalMultiplier");
+	else
+		GLOBAL_MULTIPLIER = 1.5f;
+
+	if (featManager != NULL && featManager->hasFloatFeature("pvpMultiplier"))
+		PVP_MULTIPLIER = featManager->getFloatFeature("pvpMultiplier");
+	else
+		PVP_MULTIPLIER = 0.25f;
+
+	if (featManager != NULL && featManager->hasFloatFeature("pveMultiplier"))
+		PVE_MULTIPLIER = featManager->getFloatFeature("pveMultiplier");
+	else
+		PVE_MULTIPLIER = 1.0f;
+
+	if (featManager != NULL && featManager->hasFloatFeature("petPvpMultiplier"))
+		PET_PVP_MULTIPLIER = featManager->getFloatFeature("petPvpMultiplier");
+	else
+		PET_PVP_MULTIPLIER = 0.25f;
 }
 
 /*
@@ -1718,6 +1741,10 @@ int CombatManager::calculateDamage(CreatureObject* creature, TangibleObject* tar
 		else
 			globalMultiplier *= PVP_MULTIPLIER;
 	}
+
+	if (creature->isPet() && target->isPlayer())
+		globalMultiplier *= PET_PVP_MULTIPLIER;
+
 	//TODO: add creature skill bonuses here. ex. foods
 
 	damage = skill->damageRatio * average * globalMultiplier;

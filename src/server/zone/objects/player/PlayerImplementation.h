@@ -1216,6 +1216,11 @@ public:
 	 * \param updateClient Boolean to determing whether the client should receive a delta packet for the experience gain.
 	 */
 	void addXp(const String& xpType, int xp, bool updateClient) {
+		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+
+		if (playerManager != NULL)
+			xp = (int) (playerManager->getXpScale() * (float) xp);
+
 		playerObject->addExperience(xpType, xp, updateClient);
 	}
 

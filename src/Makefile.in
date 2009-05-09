@@ -180,8 +180,8 @@ am__objects_1 = ChatManager.$(OBJEXT) GameCommandHandler.$(OBJEXT) \
 am_core3_OBJECTS = $(am__objects_1) \
 	ChatManagerImplementation.$(OBJEXT) \
 	ChatRoomImplementation.$(OBJEXT) ConfigManager.$(OBJEXT) \
-	Features.$(OBJEXT) ForumsDatabase.$(OBJEXT) \
-	ServerDatabase.$(OBJEXT) LoginMessageProcessorThread.$(OBJEXT) \
+	ForumsDatabase.$(OBJEXT) ServerDatabase.$(OBJEXT) \
+	LoginMessageProcessorThread.$(OBJEXT) \
 	LoginPacketHandler.$(OBJEXT) LoginServer.$(OBJEXT) \
 	PingServer.$(OBJEXT) LoginProxyServer.$(OBJEXT) \
 	ServerCore.$(OBJEXT) StatusServer.$(OBJEXT) \
@@ -207,7 +207,7 @@ am_core3_OBJECTS = $(am__objects_1) \
 	SkillManager.$(OBJEXT) SlashCommandConfigManager.$(OBJEXT) \
 	SlashCommandManager.$(OBJEXT) \
 	StructureManagerImplementation.$(OBJEXT) SuiManager.$(OBJEXT) \
-	UserManagerImplementation.$(OBJEXT) \
+	UserManagerImplementation.$(OBJEXT) FeatureManager.$(OBJEXT) \
 	LairObjectImplementation.$(OBJEXT) \
 	BlueFrogCreatureImplementation.$(OBJEXT) Buff.$(OBJEXT) \
 	DamageOverTime.$(OBJEXT) DamageOverTimeList.$(OBJEXT) \
@@ -629,7 +629,6 @@ core3_SOURCES = $(core3_IDLS) \
 		server/chat/ChatManagerImplementation.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/conf/ConfigManager.cpp \
-		server/features/Features.cpp \
 		server/db/ForumsDatabase.cpp \
 		server/db/ServerDatabase.cpp \
 		server/login/LoginMessageProcessorThread.cpp \
@@ -670,6 +669,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/managers/structure/StructureManagerImplementation.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
 		server/zone/managers/user/UserManagerImplementation.cpp \
+		server/zone/managers/feature/FeatureManager.cpp \
 		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp \
 		server/zone/objects/creature/buffs/Buff.cpp \
@@ -966,7 +966,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FactoryCrateImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FactoryObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FactoryObjectImplementation.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Features.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FeatureManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Firework.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FireworkImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FireworkWorld.Po@am__quote@
@@ -3826,20 +3826,6 @@ ConfigManager.obj: server/conf/ConfigManager.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ConfigManager.obj `if test -f 'server/conf/ConfigManager.cpp'; then $(CYGPATH_W) 'server/conf/ConfigManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/conf/ConfigManager.cpp'; fi`
 
-Features.o: server/features/Features.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Features.o -MD -MP -MF $(DEPDIR)/Features.Tpo -c -o Features.o `test -f 'server/features/Features.cpp' || echo '$(srcdir)/'`server/features/Features.cpp
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Features.Tpo $(DEPDIR)/Features.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/features/Features.cpp' object='Features.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Features.o `test -f 'server/features/Features.cpp' || echo '$(srcdir)/'`server/features/Features.cpp
-
-Features.obj: server/features/Features.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Features.obj -MD -MP -MF $(DEPDIR)/Features.Tpo -c -o Features.obj `if test -f 'server/features/Features.cpp'; then $(CYGPATH_W) 'server/features/Features.cpp'; else $(CYGPATH_W) '$(srcdir)/server/features/Features.cpp'; fi`
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Features.Tpo $(DEPDIR)/Features.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/features/Features.cpp' object='Features.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Features.obj `if test -f 'server/features/Features.cpp'; then $(CYGPATH_W) 'server/features/Features.cpp'; else $(CYGPATH_W) '$(srcdir)/server/features/Features.cpp'; fi`
-
 ForumsDatabase.o: server/db/ForumsDatabase.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ForumsDatabase.o -MD -MP -MF $(DEPDIR)/ForumsDatabase.Tpo -c -o ForumsDatabase.o `test -f 'server/db/ForumsDatabase.cpp' || echo '$(srcdir)/'`server/db/ForumsDatabase.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ForumsDatabase.Tpo $(DEPDIR)/ForumsDatabase.Po
@@ -4399,6 +4385,20 @@ UserManagerImplementation.obj: server/zone/managers/user/UserManagerImplementati
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/user/UserManagerImplementation.cpp' object='UserManagerImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o UserManagerImplementation.obj `if test -f 'server/zone/managers/user/UserManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/user/UserManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/user/UserManagerImplementation.cpp'; fi`
+
+FeatureManager.o: server/zone/managers/feature/FeatureManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT FeatureManager.o -MD -MP -MF $(DEPDIR)/FeatureManager.Tpo -c -o FeatureManager.o `test -f 'server/zone/managers/feature/FeatureManager.cpp' || echo '$(srcdir)/'`server/zone/managers/feature/FeatureManager.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/FeatureManager.Tpo $(DEPDIR)/FeatureManager.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/feature/FeatureManager.cpp' object='FeatureManager.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o FeatureManager.o `test -f 'server/zone/managers/feature/FeatureManager.cpp' || echo '$(srcdir)/'`server/zone/managers/feature/FeatureManager.cpp
+
+FeatureManager.obj: server/zone/managers/feature/FeatureManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT FeatureManager.obj -MD -MP -MF $(DEPDIR)/FeatureManager.Tpo -c -o FeatureManager.obj `if test -f 'server/zone/managers/feature/FeatureManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/feature/FeatureManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/feature/FeatureManager.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/FeatureManager.Tpo $(DEPDIR)/FeatureManager.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/feature/FeatureManager.cpp' object='FeatureManager.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o FeatureManager.obj `if test -f 'server/zone/managers/feature/FeatureManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/feature/FeatureManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/feature/FeatureManager.cpp'; fi`
 
 LairObjectImplementation.o: server/zone/objects/tangible/lair/LairObjectImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LairObjectImplementation.o -MD -MP -MF $(DEPDIR)/LairObjectImplementation.Tpo -c -o LairObjectImplementation.o `test -f 'server/zone/objects/tangible/lair/LairObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/lair/LairObjectImplementation.cpp
