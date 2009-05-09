@@ -1,5 +1,16 @@
 #include "DamageOverTimeList.h"
 
+DamageOverTimeList::~DamageOverTimeList() {
+	DamageOverTime* dot = NULL;
+	uint32 key = 0;
+	resetIterator();
+
+	while (hasNext()) {
+		key = getNextKey();
+		dot = get(key);
+		delete dot;
+	}
+}
 uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 	if(!hasDot())
 		return 0x0;

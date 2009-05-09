@@ -69,6 +69,8 @@ public:
 		dot = false;
 	}
 
+	virtual ~DamageOverTimeList();
+
 	inline void setAttacker(CreatureObject* crea) {
 		attacker = crea;
 	}

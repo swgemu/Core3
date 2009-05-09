@@ -396,7 +396,7 @@ CreatureObjectImplementation::~CreatureObjectImplementation() {
 	}
 
 	if (dotMap != NULL) {
-		// TODO: clear & delete dotMap
+		delete dotMap;
 		dotMap = NULL;
 	}
 }

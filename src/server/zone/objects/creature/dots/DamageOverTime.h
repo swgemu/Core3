@@ -62,7 +62,7 @@ public:
 	DamageOverTime();
 	DamageOverTime(uint64 tp, uint8 attrib, uint32 str ,uint32 dur,float potency);
 
-	//~DamageOverTime();
+	virtual ~DamageOverTime(){}
 
 	void activate();
 	uint32 applyDot(CreatureObject* attacker, CreatureObject* victim);
