@@ -170,7 +170,7 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 	if (creature->isListening() && !tskill->isHealSkill())
 		creature->stopListen(creature->getListenID());
 
-	if (tskill->isHealSkill() || tskill->isEnhanceSkill() || tskill->isTameSkill()) {
+	if (tskill->isHealSkill() || tskill->isEnhanceSkill() || tskill->isPetSkill()) {
 		if (!tskill->calculateCost(creature))
 			return 0.0f;
 
@@ -1856,6 +1856,10 @@ int CombatManager::calculateDamage(CreatureObject* creature, TangibleObject* tar
 				applyWounds(creature, targetCreature, weapon, bodyPart);
 			reduction += tempReduction;
 		}
+		if (damage > 0.0f && skill->isDotSkill()) {
+			DotPoolAttackTargetSkill* dotSkill = (DotPoolAttackTargetSkill*) skill;
+			dotSkill->checkDots(creature,targetCreature,damage);
+		 }
 		//if (!skill->isTrapSkill() && skill->hasCbtSpamHit())
 		//	creature->sendCombatSpam(targetCreature, NULL, (int32)damage, skill->getCbtSpamHit());
 

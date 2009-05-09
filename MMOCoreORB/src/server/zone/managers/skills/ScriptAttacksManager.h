@@ -131,6 +131,8 @@ public:
 
 	// ch skill
 	static int AddTameTargetSkill(lua_State* L);
+	static int AddEmboldenPetsSkill(lua_State* L);
+	static int AddEnragePetsSkill(lua_State* L);
 };
 
 

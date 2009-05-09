@@ -6288,6 +6288,30 @@ bool Player::canStoreMorePets() {
 		return ((PlayerImplementation*) _impl)->canStoreMorePets();
 }
 
+void Player::enragePets() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 491);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->enragePets();
+}
+
+void Player::emboldenPets() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 492);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->emboldenPets();
+}
+
 /*
  *	PlayerAdapter
  */
@@ -7753,6 +7777,12 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 490:
 		resp->insertBoolean(canStoreMorePets());
+		break;
+	case 491:
+		enragePets();
+		break;
+	case 492:
+		emboldenPets();
 		break;
 	default:
 		return NULL;
@@ -9699,6 +9729,14 @@ void PlayerAdapter::sendMessageToPets(const UnicodeString& message, unsigned lon
 
 bool PlayerAdapter::canStoreMorePets() {
 	return ((PlayerImplementation*) impl)->canStoreMorePets();
+}
+
+void PlayerAdapter::enragePets() {
+	return ((PlayerImplementation*) impl)->enragePets();
+}
+
+void PlayerAdapter::emboldenPets() {
+	return ((PlayerImplementation*) impl)->emboldenPets();
 }
 
 /*

@@ -284,6 +284,7 @@ public:
 	void handleTransferCommand();
 	void handleTrickCommand(String anim,int mod,int cost);
 	void handleEnrageCommand();
+	void handleEmboldenCommand();
 	void handleSpecialAttackCommand(Player* player,int att);
 	bool consumeOwnerHam(int h, int a, int m);
 	void healPetMind(int mod);

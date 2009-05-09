@@ -510,12 +510,24 @@ void CreaturePet::handleEnrageCommand() {
 		((CreaturePetImplementation*) _impl)->handleEnrageCommand();
 }
 
-void CreaturePet::handleSpecialAttackCommand(Player* player, int att) {
+void CreaturePet::handleEmboldenCommand() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 44);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreaturePetImplementation*) _impl)->handleEmboldenCommand();
+}
+
+void CreaturePet::handleSpecialAttackCommand(Player* player, int att) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 45);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(att);
 
@@ -529,7 +541,7 @@ void CreaturePet::handleGroupCommand() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 46);
 
 		method.executeWithVoidReturn();
 	} else
@@ -541,7 +553,7 @@ void CreaturePet::handleFriendCommand() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 47);
 
 		method.executeWithVoidReturn();
 	} else
@@ -553,7 +565,7 @@ void CreaturePet::trainMount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 48);
 
 		method.executeWithVoidReturn();
 	} else
@@ -686,15 +698,18 @@ Packet* CreaturePetAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		handleEnrageCommand();
 		break;
 	case 44:
-		handleSpecialAttackCommand((Player*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		handleEmboldenCommand();
 		break;
 	case 45:
-		handleGroupCommand();
+		handleSpecialAttackCommand((Player*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 46:
-		handleFriendCommand();
+		handleGroupCommand();
 		break;
 	case 47:
+		handleFriendCommand();
+		break;
+	case 48:
 		trainMount();
 		break;
 	default:
@@ -854,6 +869,10 @@ void CreaturePetAdapter::handleTrickCommand(String& anim, int mod, int cost) {
 
 void CreaturePetAdapter::handleEnrageCommand() {
 	return ((CreaturePetImplementation*) impl)->handleEnrageCommand();
+}
+
+void CreaturePetAdapter::handleEmboldenCommand() {
+	return ((CreaturePetImplementation*) impl)->handleEmboldenCommand();
 }
 
 void CreaturePetAdapter::handleSpecialAttackCommand(Player* player, int att) {

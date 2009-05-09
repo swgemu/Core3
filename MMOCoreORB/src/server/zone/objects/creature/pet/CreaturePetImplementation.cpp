@@ -72,6 +72,7 @@ which carries forward this exception.
 #include "../../../managers/combat/CombatManager.h"
 #include "../../../managers/item/ItemManager.h"
 #include "../../../managers/group/GroupManager.h"
+#include "../buffs/Buff.h"
 
 CreaturePetImplementation::CreaturePetImplementation(Player* owner, uint64 oid) : CreaturePetServant(oid) ,VehicleObject(owner){
 	creatureLinkID = owner->getObjectID();
@@ -1817,22 +1818,36 @@ void CreaturePetImplementation::handleEnrageCommand() {
 		ss << "CreaturePetImplementation::handleEnrageCommand() " << objectCRC;
 		info(ss.toString());
 	}
-	if (getLinkedCreature() == NULL)
-			return;
-
-	if (!consumeOwnerHam(0,-200,0)) {
-		getLinkedCreature()->sendSystemMessage("pet/pet_menu","sys_fail_enrage");
-
-		return;
-	}
 
 	if (getWeapon() == NULL) {
 		return;
 	}
-	setBerserkDamage((int) getWeapon()->getMinDamage());
+	setBerserkDamage((int) (getWeapon()->getMinDamage() / 4.0f));
 	setBerserkedState(30*1000);
 }
+void CreaturePetImplementation::handleEmboldenCommand() {
+	if (debug) {
+			StringBuffer ss;
+			ss << "CreaturePetImplementation::handleEmboldenCommand() " << objectCRC;
+			info(ss.toString());
+		}
 
+		if (hasBuff(0x58F5818C))
+			return;
+
+		int healthBoost = getHealthMax() / 10;
+		int actionBoost = getActionMax() / 10;
+		int mindBoost = getMindMax() / 10;
+
+		Buff* buff = new Buff(0x58F5818C, 0, 60);
+		buff->setHealthBuff(healthBoost);
+		buff->setActionBuff(actionBoost);
+		buff->setMindBuff(mindBoost);
+
+		BuffObject* bo = new BuffObject(buff);
+		applyBuff(bo);
+
+}
 void CreaturePetImplementation::handleSpecialAttackCommand(Player* player, int att) {
 	if (debug) {
 		StringBuffer ss;

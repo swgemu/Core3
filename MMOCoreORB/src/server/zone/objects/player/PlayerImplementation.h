@@ -2211,6 +2211,8 @@ public:
 	void unregisterPet(CreaturePet* pet);
 	void sendMessageToPets(const UnicodeString& message, uint64 petID = 0);
 	bool canStoreMorePets();
+	void enragePets();
+	void emboldenPets();
 
 	friend class PlayerManager;
 	friend class ProfessionManager;

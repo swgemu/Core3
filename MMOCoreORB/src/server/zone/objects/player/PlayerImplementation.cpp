@@ -6391,6 +6391,37 @@ void PlayerImplementation::sendMessageToPets(const UnicodeString& message, uint6
 	}
 }
 
+void PlayerImplementation::enragePets() {
+	for (int i = 0 ; i < petList.size() ; i++) {
+		CreaturePet* pet = petList.get(i);
+		if (isInRange(pet,128.0f) && pet->isCHPet()) {
+			try {
+				pet->lock();
+				pet->handleEnrageCommand();
+				pet->unlock();
+			} catch (...) {
+				pet->unlock();
+				System::out << "exception PlayerImplementation::sendMessageToPets\n";
+			}
+		}
+	}
+}
+
+void PlayerImplementation::emboldenPets() {
+	for (int i = 0 ; i < petList.size() ; i++) {
+		CreaturePet* pet = petList.get(i);
+		if (isInRange(pet,128.0f) && pet->isCHPet()) {
+			try {
+				pet->lock();
+				pet->handleEmboldenCommand();
+				pet->unlock();
+			} catch (...) {
+				pet->unlock();
+				System::out << "exception PlayerImplementation::sendMessageToPets\n";
+			}
+		}
+	}
+}
 bool PlayerImplementation::canStoreMorePets() {
 	int chPet = 0;
 	int chPetNumMax = getSkillMod("stored_pets");

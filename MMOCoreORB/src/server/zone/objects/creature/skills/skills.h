@@ -111,4 +111,7 @@ which carries forward this exception.
 #include "group/RetreatGroupSkill.h"
 
 #include "target/TameTargetSkill.h"
+#include "self/EmboldenPetsSkill.h"
+#include "self/EnragePetsSkill.h"
+
 #endif /*SKILLS_H_*/

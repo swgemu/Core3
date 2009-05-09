@@ -57,7 +57,7 @@ public:
 	 * \param name The skill name
 	 * \param serv The ZoneProcessServerImplementation.
 	 */
-	TameTargetSkill(const String& name, ZoneProcessServerImplementation* serv) : TargetSkill(name, "", TAME, serv) {
+	TameTargetSkill(const String& name, ZoneProcessServerImplementation* serv) : TargetSkill(name, "", PETSKILL, serv) {
 	}
 
 

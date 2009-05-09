@@ -1063,6 +1063,10 @@ public:
 
 	bool canStoreMorePets();
 
+	void enragePets();
+
+	void emboldenPets();
+
 protected:
 	Player(DummyConstructorParameter* param);
 
@@ -2067,6 +2071,10 @@ public:
 	void sendMessageToPets(const UnicodeString& message, unsigned long long petID);
 
 	bool canStoreMorePets();
+
+	void enragePets();
+
+	void emboldenPets();
 
 protected:
 	String _param0_queueFlourish__String_long_int_;
