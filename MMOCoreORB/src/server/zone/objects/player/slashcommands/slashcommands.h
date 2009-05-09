@@ -80,7 +80,6 @@ which carries forward this exception.
 #include "skills/BactaSpraySlashCommand.h"
 #include "skills/BactaTossSlashCommand.h"
 #include "skills/BandageSlashCommand.h"
-#include "entertainer/BandFlourishSlashCommand.h"
 #include "generic/BattlefieldStatusSlashCommand.h"
 #include "skills/BerserkSlashCommand.h"
 #include "generic/BetSlashCommand.h"

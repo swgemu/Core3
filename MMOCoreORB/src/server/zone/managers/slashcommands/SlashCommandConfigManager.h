@@ -111,7 +111,6 @@ public:
 	static int addBactaSpraySlashCommand(lua_State* L);
 	static int addBactaTossSlashCommand(lua_State* L);
 	static int addBandageSlashCommand(lua_State* L);
-	static int addBandFlourishSlashCommand(lua_State* L);
 	static int addBattlefieldStatusSlashCommand(lua_State* L);
 	static int addBerserkSlashCommand(lua_State* L);
 	static int addBetSlashCommand(lua_State* L);

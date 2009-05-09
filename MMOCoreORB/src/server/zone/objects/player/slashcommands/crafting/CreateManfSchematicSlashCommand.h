@@ -84,6 +84,9 @@ public:
 			return false;
 
 		CraftingManager* craftingManager = player->getZone()->getZoneServer()->getCraftingManager();
+		if (craftingManager == NULL)
+			return false;
+
 		craftingManager->createSchematic(craftingTool, player, counter);
 		return true;
 	}

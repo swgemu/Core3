@@ -40,7 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunSlashCommandsFile("entertainer/bandFlourish.lua")
 RunSlashCommandsFile("entertainer/changeBandMusic.lua")
 RunSlashCommandsFile("entertainer/changeDance.lua")
 RunSlashCommandsFile("entertainer/changeMusic.lua")

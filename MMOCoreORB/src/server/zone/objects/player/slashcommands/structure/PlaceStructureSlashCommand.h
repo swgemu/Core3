@@ -94,6 +94,9 @@ public:
 			DeedObject* deed = (DeedObject*) obj;
 
 			StructureManager* structuremanager = player->getZone()->getPlanetManager()->getStructureManager();
+			if (structuremanager == NULL)
+				return false;
+
 			structuremanager->beginConstruction(player, deed, x, z, orient);
 			return true;
 		}

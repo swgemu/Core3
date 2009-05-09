@@ -76,6 +76,9 @@ public:
 		String data = d.toString();
 
 		CraftingManager* craftingManager = player->getZone()->getZoneServer()->getCraftingManager();
+		if (craftingManager == NULL)
+			return false;
+
 		craftingManager->nextCraftingStage(craftingTool, player, data);
 		return true;
 	}

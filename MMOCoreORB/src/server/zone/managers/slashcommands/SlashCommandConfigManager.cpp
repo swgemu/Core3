@@ -101,7 +101,6 @@ void SlashCommandConfigManager::registerFunctions() {
 	lua_register(getLuaState(), "AddBactaSpraySlashCommand", addBactaSpraySlashCommand);
 	lua_register(getLuaState(), "AddBactaTossSlashCommand", addBactaTossSlashCommand);
 	lua_register(getLuaState(), "AddBandageSlashCommand", addBandageSlashCommand);
-	lua_register(getLuaState(), "AddBandFlourishSlashCommand", addBandFlourishSlashCommand);
 	lua_register(getLuaState(), "AddBattlefieldStatusSlashCommand", addBattlefieldStatusSlashCommand);
 	lua_register(getLuaState(), "AddBerserkSlashCommand", addBerserkSlashCommand);
 	lua_register(getLuaState(), "AddBetSlashCommand", addBetSlashCommand);
@@ -1200,16 +1199,6 @@ int SlashCommandConfigManager::addBandageSlashCommand(lua_State* L) {
 		return 0;
 
 	BandageSlashCommand* slashCommand = new BandageSlashCommand(slashcommand.getStringField("name"), server);
-	parseSlashCommand(slashcommand, slashCommand);
-	return 1;
-}
-
-int SlashCommandConfigManager::addBandFlourishSlashCommand(lua_State* L) {
-	LuaObject slashcommand(L);
-	if (!slashcommand.isValidTable())
-		return 0;
-
-	BandFlourishSlashCommand* slashCommand = new BandFlourishSlashCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
