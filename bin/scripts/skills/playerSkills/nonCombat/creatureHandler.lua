@@ -52,3 +52,23 @@ TameSkill = {
 
 AddTameTargetSkill(TameSkill)
 
+Enrage = {
+	skillname = "enragepets",
+
+	invalidStateMask = 3895717968, --alert, feigndeath, stunned, blinded, dizzy, intimidated, immobilized, frozen, crafting, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "10,11,12,13,14,",
+	instant = 0
+}
+
+AddEnragePetsSkill(Enrage)
+
+Embolden = {
+	skillname = "emboldenpets",
+
+	invalidStateMask = 3895717968, --alert, feigndeath, stunned, blinded, dizzy, intimidated, immobilized, frozen, crafting, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
+        invalidPostures = "10,11,12,13,14,",
+	instant = 0
+}
+
+AddEmboldenPetsSkill(Embolden)
+

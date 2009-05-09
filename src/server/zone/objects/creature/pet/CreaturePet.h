@@ -101,6 +101,8 @@ public:
 
 	void handleEnrageCommand();
 
+	void handleEmboldenCommand();
+
 	void handleSpecialAttackCommand(Player* player, int att);
 
 	void handleGroupCommand();
@@ -200,6 +202,8 @@ public:
 	void handleTrickCommand(String& anim, int mod, int cost);
 
 	void handleEnrageCommand();
+
+	void handleEmboldenCommand();
 
 	void handleSpecialAttackCommand(Player* player, int att);
 

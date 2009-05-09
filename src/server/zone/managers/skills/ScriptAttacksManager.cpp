@@ -131,6 +131,8 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddThreatenAttackTargetSkill", AddThreatenAttackTargetSkill);
 
 	lua_register(getLuaState(), "AddTameTargetSkill", AddTameTargetSkill);
+	lua_register(getLuaState(), "AddEmboldenPetsSkill", AddEmboldenPetsSkill);
+	lua_register(getLuaState(), "AddEnragePetsSkill", AddEnragePetsSkill);
 
 }
 
@@ -2895,3 +2897,38 @@ int ScriptAttacksManager::AddTameTargetSkill(lua_State* L) {
 
 	return 0;
 }
+
+int ScriptAttacksManager::AddEmboldenPetsSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	if (!skill.isValidTable())
+		return 0;
+
+	EmboldenPetsSkill* embolden;
+
+	String skillname = skill.getStringField("skillname");
+
+	embolden = new EmboldenPetsSkill(skillname, server);
+
+	CombatActions->put(embolden);
+
+	return 0;
+}
+
+int ScriptAttacksManager::AddEnragePetsSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	if (!skill.isValidTable())
+		return 0;
+
+	EnragePetsSkill* enrage;
+
+	String skillname = skill.getStringField("skillname");
+
+	enrage = new EnragePetsSkill(skillname, server);
+
+	CombatActions->put(enrage);
+
+	return 0;
+}
+

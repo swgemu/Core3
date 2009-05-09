@@ -91,7 +91,7 @@ public:
 	static const int DRAG = 14;
 	static const int CMDOT = 15;
 	static const int HEAVYWEAPON = 16;
-	static const int TAME = 17;
+	static const int PETSKILL = 17;
 
 	static const int TARGET = 1;
 	static const int SELF = 2;
@@ -199,8 +199,8 @@ public:
 		return type == CMDOT;
 	}
 
-	inline bool isTameSkill() {
-		return type == TAME;
+	inline bool isPetSkill() {
+		return type == PETSKILL;
 	}
 
 	inline uint32 getNameCRC() {

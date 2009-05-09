@@ -45,7 +45,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
-	range = 25,
+	range = 16,
 	damageRatio = 5,
 	speedRatio = 4,
 	areaRange = 0,
@@ -95,7 +95,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
-	range = 20,
+	range = 16,
 	damageRatio = 5,
 	speedRatio = 4,
 	coneAngle = 30,
@@ -145,7 +145,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
-	range = 25,
+	range = 16,
 	damageRatio = 8,
 	speedRatio = 4,
 	coneAngle = 0,
@@ -195,7 +195,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
-	range = 20,
+	range = 16,
 	damageRatio = 6,
 	speedRatio = 4,
 	coneAngle = 30,
