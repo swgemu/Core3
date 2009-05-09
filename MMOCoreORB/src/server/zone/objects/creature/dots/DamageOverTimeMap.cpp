@@ -2,6 +2,18 @@
 #include "DamageOverTimeMap.h"
 #include "../../player/Player.h"
 
+DamageOverTimeMap::~DamageOverTimeMap() {
+	uint64 attacker = 0;
+	DamageOverTimeList* dotList = NULL;
+	resetIterator();
+	while (hasNext()) {
+		attacker = getNextKey();
+		dotList = get(attacker);
+
+		delete dotList;
+	}
+}
+
 uint32 DamageOverTimeMap::addDot(CreatureObject* attacker, CreatureObject* victim, uint64 dotID, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense) {
 	uint64 attackerID = attacker->getObjectID();
 	DamageOverTimeList* dotList = get(attackerID);
@@ -66,16 +78,18 @@ void DamageOverTimeMap::activateDots(CreatureObject* victim) {
 		dotList = get(attacker);
 
 		if(!dotList->hasDot()) {
+			delete dotList;
+			dotList = NULL;
 			remove(attacker);
 			continue;
-		}
+		} else {
+			if (dotList->isNextTickPast())
+				newStates |= dotList->activateDots(victim);
 
-		if (dotList->isNextTickPast())
-			newStates |= dotList->activateDots(victim);
-
-		if (nextTick.isPast() || (dotList->getNextTick().compareTo(nextTick) > 0)) {
-			Time nextDot = dotList->getNextTick();
-			nextTick = nextDot;
+			if (nextTick.isPast() || (dotList->getNextTick().compareTo(nextTick) > 0)) {
+				Time nextDot = dotList->getNextTick();
+				nextTick = nextDot;
+			}
 		}
 	}
 

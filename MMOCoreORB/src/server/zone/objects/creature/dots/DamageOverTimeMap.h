@@ -31,6 +31,8 @@ public:
 		dotStates = 0x0;
 	}
 
+	virtual ~DamageOverTimeMap();
+
 	inline void setNextTick(Time time) {
 		nextTick = time;
 	}
