@@ -147,23 +147,25 @@ public:
 				player->say("Don't bite me.");
 				bool notInRange = !player->isInRange(creature,10.0f);
 
-				if (true){//notInRange || (creature->isAggressive() && creature->getLevel() > System::random(player->getSkillMod("tame_aggro")))) {
+				if (notInRange || (creature->isAggressive() && creature->getLevel() > System::random(player->getSkillMod("tame_aggro")))) {
 					player->sendSystemMessage("Failed to tame Creature");
-					//if (System::random(1) == 1) {
-						System::out << "attack aggro\n";
+					if (System::random(1) == 1) {
 						creature->updateTarget(player);
 						creature->setCombatState();
-						creature->activate();
-					//}
+						player->setCombatState();
+						creature->attack(player);
+						creature->addPatrolPoint(player->getPositionX(),player->getPositionY(),false);
+					}
 					return;
 				}else if (notInRange || creature->getLevel() > System::random(player->getSkillMod("tame_non_aggro"))) {
 					player->sendSystemMessage("Failed to tame creature");
-					//if (System::random(4) == 1) {
-						System::out << "attack\n";
+					if (System::random(4) == 1) {
 						creature->updateTarget(player);
 						creature->setCombatState();
-						creature->activate();
-					//}
+						player->setCombatState();
+						creature->attack(player);
+						creature->addPatrolPoint(player->getPositionX(),player->getPositionY(),false);
+					}
 					return;
 				}
 				creature->deaggro();
@@ -185,9 +187,7 @@ public:
 				}
 				String chType = "creaturehandler";
 				player->addXp(chType, (200 + 10 * (pet->getLevel() - player->getLevel())), true);
-				//System::out << pet->isCreature() << "/" << pet->isNPC() << "/" << pet->isPlayer() <<"\n";
-				//System::out << pet->isAggressive() << "/" << pet->isKiller() << "\n";
-				//System::out << pet->isCHPet() << "/" << pet->isDroid() << "/" << pet->isFactionPet() <<"\n";
+
 				return;
 
 		}
