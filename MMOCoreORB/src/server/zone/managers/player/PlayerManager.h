@@ -91,9 +91,9 @@ public:
 
 	PlayerMap* getPlayerMap();
 
-	void setXpScale(int scale);
+	void setXpScale(float scale);
 
-	int getXpScale();
+	float getXpScale();
 
 protected:
 	PlayerManager(DummyConstructorParameter* param);
@@ -175,9 +175,9 @@ public:
 
 	PlayerMap* getPlayerMap();
 
-	void setXpScale(int scale);
+	void setXpScale(float scale);
 
-	int getXpScale();
+	float getXpScale();
 
 protected:
 	String _param0_validateName__String_;

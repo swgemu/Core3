@@ -732,9 +732,9 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 				if (!((petLevel - 7) < levels && levels < (petLevel + 7)))
 					xpaddsingle /= 10.0f;
 
-				PlayerManager* pmng = server->getPlayerManager();
+				/*PlayerManager* pmng = server->getPlayerManager();
 				if (pmng != NULL)
-					xpaddsingle *= pmng->getXpScale();
+					xpaddsingle *= pmng->getXpScale();*/
 
 				Player * petOwner = (Player*)pet->getLinkedCreature();
 				String skillBox = "outdoors_creaturehandler_novice";
@@ -812,9 +812,9 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 			if (xptype == "none")
 				throwCombatXP += xpaddsingle;
 
-			PlayerManager* pmng = server->getPlayerManager();
+			/*PlayerManager* pmng = server->getPlayerManager();
 			if (pmng != NULL)
-				xpaddsingle *= pmng->getXpScale();
+				xpaddsingle *= pmng->getXpScale();*/
 
 			if (xptype != "none")
 				player->addXp(xptype, (int)xpaddsingle, true);

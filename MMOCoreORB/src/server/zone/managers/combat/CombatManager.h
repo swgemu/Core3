@@ -93,14 +93,16 @@ class CombatManager {
 	ZoneProcessServerImplementation* server;
 	static const bool DEBUG = false;
 
+	float GLOBAL_MULTIPLIER;
+	float PVE_MULTIPLIER;
+	float PVP_MULTIPLIER;
+	float PET_PVP_MULTIPLIER;
+
 private:
 	bool doAttackAction(CreatureObject* attacker, TangibleObject* target, AttackTargetSkill* skill, String& modifier, CombatAction* actionMessage);
 	uint32 getDefaultAttackAnimation(CreatureObject* creature);
 
 public:
-	static const float GLOBAL_MULTIPLIER = 1.5;
-	static const float PVE_MULTIPLIER = 1.0;
-	static const float PVP_MULTIPLIER = 0.25;
 
 	CombatManager(ZoneProcessServerImplementation* srv);
 

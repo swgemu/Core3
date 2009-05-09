@@ -79,6 +79,7 @@ which carries forward this exception.
 #include "../user/UserManager.h"
 #include "../../../chat/ChatManager.h"
 #include "../../../chat/ChatManagerImplementation.h"
+#include "../feature/FeatureManager.h"
 
 PlayerManagerImplementation::PlayerManagerImplementation(ItemManager* mgr, ZoneProcessServerImplementation* srv) : PlayerManagerServant() {
 	playerMap = new PlayerMap(3000);
@@ -87,8 +88,12 @@ PlayerManagerImplementation::PlayerManagerImplementation(ItemManager* mgr, ZoneP
 	itemManager = mgr;
 
 	server = srv;
+	FeatureManager* featManager = server->getFeatureManager();
 
-	xpScale = 1;
+	if (featManager != NULL && featManager->hasIntegerFeature("xpScale"))
+		xpScale = featManager->getFloatFeature("xpScale");
+	else
+		xpScale = 1.0f;
 }
 
 PlayerManagerImplementation::~PlayerManagerImplementation() {

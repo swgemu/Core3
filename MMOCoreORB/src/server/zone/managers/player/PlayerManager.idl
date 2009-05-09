@@ -110,6 +110,6 @@ interface PlayerManager {
 
 	PlayerMap getPlayerMap();
 
-	void setXpScale(int scale);
-	int getXpScale();
+	void setXpScale(float scale);
+	float getXpScale();
 }
