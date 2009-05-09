@@ -100,6 +100,8 @@ public:
 
 				CraftingManager* craftingManager =
 					player->getZone()->getZoneServer()->getCraftingManager();
+				if (craftingManager == NULL)
+					return false;
 
 				craftingManager->prepareCraftingSession(player, craftingTool, draftSchematic);
 

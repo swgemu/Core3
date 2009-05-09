@@ -89,6 +89,9 @@ public:
 			practice = 1;
 
 		CraftingManager* craftingManager = player->getZone()->getZoneServer()->getCraftingManager();
+		if (craftingManager == NULL)
+			return false;
+
 		craftingManager->createPrototype(craftingTool, player, counter, practice);
 		return true;
 	}

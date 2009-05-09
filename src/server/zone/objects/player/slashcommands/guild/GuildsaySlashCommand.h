@@ -65,6 +65,9 @@ public:
 			return false;
 
 		ChatManager* chatManager = player->getZone()->getChatManager();
+		if (chatManager == NULL)
+			return false;
+
 		chatManager->handleGuildChat(player, packet);
 		return true;
 	}

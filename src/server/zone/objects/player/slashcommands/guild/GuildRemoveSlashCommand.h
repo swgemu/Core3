@@ -77,6 +77,8 @@ public:
 			return false;
 
 		GuildManager* pGuild = server->getGuildManager();
+		if (pGuild == NULL)
+			return false;
 
 		player->unlock();
 		pGuild->removeOnlineFromGuild(player, removePlayer);

@@ -256,55 +256,57 @@ public:
 		 * SOE is stupid so player postures do NOT match up with their respective client error message
 		 * Because of this, we have to have this switch statement to match them up manually
 		 * */
-		switch(player->getPosture()) {
-		case(CreaturePosture::UPRIGHT):
-			player->clearQueueAction(actioncntr, 0, 1, 0);
-			break;
-		case(CreaturePosture::CROUCHED):
-			player->clearQueueAction(actioncntr, 0, 1, 4);
-			break;
-		case(CreaturePosture::PRONE):
-			player->clearQueueAction(actioncntr, 0, 1, 7);
-			break;
-		case(CreaturePosture::SNEAKING):
-			player->clearQueueAction(actioncntr, 0, 1, 5);
-			break;
-		case(CreaturePosture::BLOCKING):
-			player->clearQueueAction(actioncntr, 0, 1, 21);
-			break;
-		case(CreaturePosture::CLIMBING):
-			player->clearQueueAction(actioncntr, 0, 1, 10);
-			break;
-		case(CreaturePosture::FLYING):
-			player->clearQueueAction(actioncntr, 0, 1, 12);
-			break;
-		case(CreaturePosture::LYINGDOWN):
-			player->clearQueueAction(actioncntr, 0, 1, 13);
-			break;
-		case(CreaturePosture::SITTING):
-			player->clearQueueAction(actioncntr, 0, 1, 14);
-			break;
-		case(CreaturePosture::SKILLANIMATING):
-			player->clearQueueAction(actioncntr, 0, 1, 15);
-			break;
-		case(CreaturePosture::DRIVINGVEHICLE):
-			player->clearQueueAction(actioncntr, 0, 1, 16);
-			break;
-		case(CreaturePosture::RIDINGCREATURE):
-			player->clearQueueAction(actioncntr, 0, 1, 17);
-			break;
-		case(CreaturePosture::KNOCKEDDOWN):
-			player->clearQueueAction(actioncntr, 0, 1, 18);
-			break;
-		case(CreaturePosture::INCAPACITATED):
-			player->clearQueueAction(actioncntr, 0, 1, 19);
-			break;
-		case(CreaturePosture::DEAD):
-			player->clearQueueAction(actioncntr, 0, 1, 20);
-			break;
-		default:
-			player->clearQueueAction(actioncntr);
-			break;
+		if (!checkInvalidPostures(player)) {
+			switch(player->getPosture()) {
+			case(CreaturePosture::UPRIGHT):
+				player->clearQueueAction(actioncntr, 0, 1, 0);
+				break;
+			case(CreaturePosture::CROUCHED):
+				player->clearQueueAction(actioncntr, 0, 1, 4);
+				break;
+			case(CreaturePosture::PRONE):
+				player->clearQueueAction(actioncntr, 0, 1, 7);
+				break;
+			case(CreaturePosture::SNEAKING):
+				player->clearQueueAction(actioncntr, 0, 1, 5);
+				break;
+			case(CreaturePosture::BLOCKING):
+				player->clearQueueAction(actioncntr, 0, 1, 21);
+				break;
+			case(CreaturePosture::CLIMBING):
+				player->clearQueueAction(actioncntr, 0, 1, 10);
+				break;
+			case(CreaturePosture::FLYING):
+				player->clearQueueAction(actioncntr, 0, 1, 12);
+				break;
+			case(CreaturePosture::LYINGDOWN):
+				player->clearQueueAction(actioncntr, 0, 1, 13);
+				break;
+			case(CreaturePosture::SITTING):
+				player->clearQueueAction(actioncntr, 0, 1, 14);
+				break;
+			case(CreaturePosture::SKILLANIMATING):
+				player->clearQueueAction(actioncntr, 0, 1, 15);
+				break;
+			case(CreaturePosture::DRIVINGVEHICLE):
+				player->clearQueueAction(actioncntr, 0, 1, 16);
+				break;
+			case(CreaturePosture::RIDINGCREATURE):
+				player->clearQueueAction(actioncntr, 0, 1, 17);
+				break;
+			case(CreaturePosture::KNOCKEDDOWN):
+				player->clearQueueAction(actioncntr, 0, 1, 18);
+				break;
+			case(CreaturePosture::INCAPACITATED):
+				player->clearQueueAction(actioncntr, 0, 1, 19);
+				break;
+			case(CreaturePosture::DEAD):
+				player->clearQueueAction(actioncntr, 0, 1, 20);
+				break;
+			default:
+				player->clearQueueAction(actioncntr);
+				break;
+			}
 		}
 	}
 
