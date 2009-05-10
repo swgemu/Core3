@@ -303,12 +303,22 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 					if (crea->isPet()) {
 						CreaturePet * pet = (CreaturePet*) crea;
 						try {
+							System::out << "unlock zone before pet command " << ((Player*)player)->getFirstName();
+							System::out << " , is Owner ?" << (player == pet->getLinkedCreature()) << "\n";
+							System::out << "Msg: " << message.toString();
 							zone->unlock();
-							pet->lock();
-							pet->parseCommandMessage((Player*)player,message);
-							pet->unlock();
+							try {
+								pet->lock();
+								pet->parseCommandMessage((Player*)player,message);
+								pet->unlock();
+							} catch (...) {
+								System::out << "exception ChatManagerImplementation::broadcastMessage pet lock\n";
+								pet->unlock();
+							}
+							System::out << "lock zone after pet command" << "\n";
 							zone->lock();
 						} catch (...) {
+							System::out << "exception ChatManagerImplementation::broadcastMessage pet zone lock\n";
 							zone->lock();
 						}
 					}
