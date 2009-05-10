@@ -652,6 +652,20 @@ void PlayerImplementation::unload() {
 		delete action;
 	}
 
+	for (int i = 0 ; i < petList.size() ; i++) {
+		CreaturePet* pet = petList.get(i);
+		try {
+			if (pet->getLinkedCreature() == _this) {
+				pet->lock();
+				pet->store(false);
+				pet->unlock();
+			}
+		} catch (...) {
+			pet->unlock();
+			System::out << "exception PlayerImplementation::switchMap pet\n";
+		}
+	}
+
 	commandQueue.removeAll();
 
 	forageZones.removeAll();
@@ -1682,12 +1696,29 @@ void PlayerImplementation::switchMap(int planetid) {
 	saveMissions();
 
 	if (mount != NULL) {
-		//MountCreature* mnt = mount;
-		mount->wlock();
+		try {
+			mount->wlock();
+			((VehicleObject*)mount)->store(false);
+			mount->unlock();
+		} catch (...) {
+			mount->unlock();
+			System::out << "exception PlayerImplementation::switchMap vehicle\n";
+		}
+	}
 
-		((VehicleObject*)mount)->store(false);
-
-		mount->unlock();
+	for (int i = 0 ; i < petList.size() ; i++) {
+		CreaturePet* pet = petList.get(i);
+		try {
+			if (pet->getLinkedCreature() == _this) {
+				pet->lock();
+				pet->deaggro();
+				pet->store(false);
+				pet->unlock();
+			}
+		} catch (...) {
+			pet->unlock();
+			System::out << "exception PlayerImplementation::switchMap pet\n";
+		}
 	}
 
 	removeFromZone();

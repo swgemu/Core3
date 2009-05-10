@@ -69,6 +69,8 @@ class CreaturePetImplementation : public CreaturePetServant ,public VehicleObjec
 	uint8 petType;
 	uint8 commandState;
 	int commandToTrain;
+	int trainingPhase;
+	int trainingPhaseCounter;
 
 	PetCommandHelper* commandHelper;
 
@@ -180,9 +182,15 @@ public:
 	void setFaction(uint32 fac);
 
 	bool isFriend(CreatureObject* creo) {
-		if (!creo->isPlayer())
-			return false;
-		return befriendList->contains(creo->getObjectID());
+		for (int i = 0 ; i < befriendList->size() ; i++) {
+			if (!creo->isPlayer())
+				continue;
+			Player* petFriend = befriendList->get(i);
+			if (petFriend == creo)
+				return true;
+		}
+
+		return false;
 	}
 
 	inline void setMaxLevel(uint32 level) {

@@ -1824,19 +1824,19 @@ void GameCommandHandler::buff(StringTokenizer tokenizer, Player* player) {
 	//players which lost buffs due to bugs or participate in stress test
 	//and can't find someone buffing them.
 
-	Player* targetPlayer;
-	Player* buffie;
+	Creature* targetCreature;
+	Creature* buffie;
 
-	buffie = player;
+	buffie = (Creature*) player;
 
 	try {
 		SceneObject* obj = player->getTarget();
 
-		if (obj != NULL && obj->isPlayer()) {
-			targetPlayer = (Player*) obj;
+		if (obj != NULL && (obj->isNonPlayerCreature() || obj->isPlayer())) {
+			targetCreature = (Creature*) obj;
 
-			if (targetPlayer != NULL && targetPlayer != player) {
-				buffie = targetPlayer;
+			if (targetCreature != NULL && targetCreature != (Creature*)player && (targetCreature->isPet() || targetCreature->isPlayer())) {
+				buffie = targetCreature;
 				buffie->wlock(player);
 			}
 		}
@@ -1924,11 +1924,11 @@ void GameCommandHandler::buff(StringTokenizer tokenizer, Player* player) {
 			player->sendSystemMessage("Already buffed");
 		}
 
-		if (buffie != player)
+		if (buffie != (Creature*)player)
 			buffie->unlock();
 
 	} catch (...) {
-		if (buffie != player)
+		if (buffie != (Creature*)player)
 			buffie->unlock();
 
 		player->sendSystemMessage("Error buffing player.");
