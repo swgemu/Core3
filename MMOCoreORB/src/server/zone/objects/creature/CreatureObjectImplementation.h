@@ -78,6 +78,8 @@ which carries forward this exception.
 
 #include "dots/DamageOverTimeMap.h"
 
+#include "../../managers/feature/FeatureManager.h"
+
 class CombatManager;
 class MissionManager;
 
@@ -1094,8 +1096,14 @@ public:
 	}
 
 	int getSkillMod(const String& name) {
+		FeatureManager* featManager = server->getFeatureManager();
+		if (featManager != NULL && featManager->hasSetFeature("brokenSkillMods",name))
+			return 0;
+
 		// TODO: Add Buffs
-		int bonus = creatureSkillModBonus.get(name);
+
+		int bonus = getSkillModBonus(name);
+
 		if (!(name == "burst_run") && !(name == "group_slope_move")) {
 			if (bonus > 25)
 				bonus = 25;
@@ -1123,6 +1131,11 @@ public:
 	}
 
 	int getSkillModBonus(const String& name) {
+		FeatureManager* featManager = server->getFeatureManager();
+
+		if (featManager != NULL && featManager->hasSetFeature("brokenSkillBonus",name))
+			return 0;
+
 		int bonus = creatureSkillModBonus.get(name);
 		return bonus;
 	}

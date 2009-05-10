@@ -93,11 +93,21 @@ class CombatManager {
 	ZoneProcessServerImplementation* server;
 	static const bool DEBUG = false;
 
-	float GLOBAL_MULTIPLIER;
-	float PVE_MULTIPLIER;
-	float PVP_MULTIPLIER;
+	float PLAYER_GLOBAL_MULTIPLIER;
+	float PLAYER_PVE_MULTIPLIER;
+	float PLAYER_PVP_MULTIPLIER;
+
+	float PET_GLOBAL_MULTIPLIER;
+	float PET_PVE_MULTIPLIER;
 	float PET_PVP_MULTIPLIER;
 
+	float CREATURE_GLOBAL_MULTIPLIER;
+
+	int STATE_IMMUNITY;
+	int MAX_STATE_DEFENSE;
+
+	bool MINI_SUIT;
+	bool HAND_FEET_DAMAGE;
 private:
 	bool doAttackAction(CreatureObject* attacker, TangibleObject* target, AttackTargetSkill* skill, String& modifier, CombatAction* actionMessage);
 	uint32 getDefaultAttackAnimation(CreatureObject* creature);

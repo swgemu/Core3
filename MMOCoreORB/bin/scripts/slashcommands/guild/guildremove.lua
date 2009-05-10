@@ -40,7 +40,7 @@
 --this exception also makes it possible to release a modified version
 --which carries forward this exception.
 --true = 1, false = 0
-GuildremoveSlashCommand = {
+GuildRemoveSlashCommand = {
         name = "guildremove",
         alternativeNames = "",
         animation = "",
@@ -56,5 +56,5 @@ GuildremoveSlashCommand = {
 
 }
 
-AddGuildremoveSlashCommand(GuildremoveSlashCommand)
+AddGuildRemoveSlashCommand(GuildRemoveSlashCommand)
 
