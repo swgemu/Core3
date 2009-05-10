@@ -246,7 +246,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLEACIDBEAM,
 	
-	range = 40,
+	range = 16,
 	damageRatio = 5,
 	speedRatio = 4,
 	coneAngle = 0,
@@ -290,7 +290,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLEACIDBEAM,
 	
-	range = 30,
+	range = 16,
 	damageRatio = 5,
 	speedRatio = 4,
 	coneAngle = 30,
@@ -334,7 +334,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLEACIDBEAM,
 	
-	range = 40,
+	range = 16,
 	damageRatio = 8,
 	speedRatio = 4,
 	areaRange = 0,
@@ -378,7 +378,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLEACIDBEAM,
 	
-	range = 30,
+	range = 16,
 	damageRatio = 6,
 	speedRatio = 4,
 	coneAngle = 30,

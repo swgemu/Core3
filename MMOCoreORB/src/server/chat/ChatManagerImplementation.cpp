@@ -298,38 +298,13 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 					}
 				}
 
-				if (object->isNonPlayerCreature()) {
-					Creature* crea = (Creature*) object;
-					if (crea->isPet()) {
-						CreaturePet * pet = (CreaturePet*) crea;
-						try {
-							System::out << "unlock zone before pet command " << ((Player*)player)->getFirstName();
-							System::out << " , is Owner ?" << (player == pet->getLinkedCreature()) << "\n";
-							System::out << "Msg: " << message.toString();
-							zone->unlock();
-							try {
-								pet->lock();
-								pet->parseCommandMessage((Player*)player,message);
-								pet->unlock();
-							} catch (...) {
-								System::out << "exception ChatManagerImplementation::broadcastMessage pet lock\n";
-								pet->unlock();
-							}
-							System::out << "lock zone after pet command" << "\n";
-							zone->lock();
-						} catch (...) {
-							System::out << "exception ChatManagerImplementation::broadcastMessage pet zone lock\n";
-							zone->lock();
-						}
-					}
-				}
 			}
 
 			zone->unlock();
 
-			/*if (player !=NULL && player->isPlayer() && ((Player*)player)->hasPetCalled()) {
+			if (player !=NULL && player->isPlayer() && ((Player*)player)->hasPetCalled()) {
 				((Player*)player)->sendMessageToPets(message);
-			}*/
+			}
 
 		} catch (...) {
 

@@ -48,13 +48,10 @@ which carries forward this exception.
 #include "system/lang.h"
 #include "CreaturePet.h"
 
-class PetFriendSet : public HashSet<uint64> {
-	int hash(const uint64& key) {
-		return Long::hashCode(key);
-	}
+class PetFriendSet : public SortedVector<Player*> {
 
 public:
-	PetFriendSet() : HashSet<uint64>() {
+	PetFriendSet() : SortedVector<Player*>() {
 
 	}
 };

@@ -167,7 +167,11 @@ void MountCreatureImplementation::repair() {
 
 void MountCreatureImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
 	if (player == getLinkedCreature()) {
-		omr->addRadialParent(205, 1, "@pet/pet_menu:menu_enter_exit");
+		if (isRidingCreature())
+			omr->addRadialParent(206, 1, "@cmd_n/dismount");
+		else
+			omr->addRadialParent(205, 1, "@cmd_n/mount");
+
 		omr->addRadialParent(61, 3, "");
 
 		//TODO:Remove this when garages are functioning
