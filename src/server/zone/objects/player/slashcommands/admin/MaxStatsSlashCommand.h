@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef MAXSTATSSLASHCOMMAND_H_
+
 #define MAXSTATSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

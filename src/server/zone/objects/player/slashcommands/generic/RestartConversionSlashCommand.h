@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef RESTARTCONVERSIONSLASHCOMMAND_H_
+
 #define RESTARTCONVERSIONSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

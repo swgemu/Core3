@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef USEDOCTORBAGSLASHCOMMAND_H_
+
 #define USEDOCTORBAGSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

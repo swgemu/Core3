@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef EXECUTEKNOWLEDGEBASEMESSAGESLASHCOMMAND_H_
+
 #define EXECUTEKNOWLEDGEBASEMESSAGESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

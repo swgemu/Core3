@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef PERMISSIONLISTMODIFYSLASHCOMMAND_H_
+
 #define PERMISSIONLISTMODIFYSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../structure/building/BuildingObject.h"
@@ -129,3 +131,4 @@ public:
 };
 
 #endif //PERMISSIONLISTMODIFYSLASHCOMMAND_H_
+

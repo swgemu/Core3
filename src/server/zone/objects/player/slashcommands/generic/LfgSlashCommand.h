@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef LFGSLASHCOMMAND_H_
+
 #define LFGSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -70,3 +72,4 @@ public:
 };
 
 #endif //LFGSLASHCOMMAND_H_
+

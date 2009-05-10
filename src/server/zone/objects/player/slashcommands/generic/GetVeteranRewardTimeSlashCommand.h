@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GETVETERANREWARDTIMESLASHCOMMAND_H_
+
 #define GETVETERANREWARDTIMESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

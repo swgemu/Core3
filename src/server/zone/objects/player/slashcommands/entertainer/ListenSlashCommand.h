@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef LISTENSLASHCOMMAND_H_
+
 #define LISTENSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -72,3 +74,4 @@ public:
 };
 
 #endif //LISTENSLASHCOMMAND_H_
+

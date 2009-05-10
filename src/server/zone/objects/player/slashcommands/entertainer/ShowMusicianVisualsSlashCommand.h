@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SHOWMUSICIANVISUALSSLASHCOMMAND_H_
+
 #define SHOWMUSICIANVISUALSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

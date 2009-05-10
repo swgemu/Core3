@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef ACTIVATECLONESLASHCOMMAND_H_
+
 #define ACTIVATECLONESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -70,3 +72,4 @@ public:
 };
 
 #endif //ACTIVATECLONESLASHCOMMAND_H_
+

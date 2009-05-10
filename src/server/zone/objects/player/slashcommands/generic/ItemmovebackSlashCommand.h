@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef ITEMMOVEBACKSLASHCOMMAND_H_
+
 #define ITEMMOVEBACKSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

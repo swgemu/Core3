@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef ELECTROLYTEDRAINSLASHCOMMAND_H_
+
 #define ELECTROLYTEDRAINSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REQUESTCORESAMPLESLASHCOMMAND_H_
+
 #define REQUESTCORESAMPLESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -90,3 +92,4 @@ public:
 };
 
 #endif //REQUESTCORESAMPLESLASHCOMMAND_H_
+

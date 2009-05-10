@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DECONTAMINATESLASHCOMMAND_H_
+
 #define DECONTAMINATESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

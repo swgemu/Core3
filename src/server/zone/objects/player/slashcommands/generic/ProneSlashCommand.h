@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef PRONESLASHCOMMAND_H_
+
 #define PRONESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -70,3 +72,4 @@ public:
 };
 
 #endif //PRONESLASHCOMMAND_H_
+

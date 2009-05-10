@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SLASHCOMMAND_H_
+
 #define SLASHCOMMAND_H_
+
 
 #include "engine/engine.h"
 
@@ -152,7 +154,7 @@ public:
 	}
 
 	inline void setMaxRange(float r) {
-		maxRangeToTarget = r;
+		maxRangeToTarget = (int)r;
 	}
 
 	//getters
@@ -320,3 +322,4 @@ public:
 };
 
 #endif //SLASHCOMMAND_H_
+

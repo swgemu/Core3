@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GIVEVENDORMAINTSLASHCOMMAND_H_
+
 #define GIVEVENDORMAINTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

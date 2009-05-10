@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SETSTEADYAIMSLASHCOMMAND_H_
+
 #define SETSTEADYAIMSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

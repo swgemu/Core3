@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef UNINSTALLSHIPCOMPONENTSLASHCOMMAND_H_
+
 #define UNINSTALLSHIPCOMPONENTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

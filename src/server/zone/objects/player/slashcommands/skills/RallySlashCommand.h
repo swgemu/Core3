@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef RALLYSLASHCOMMAND_H_
+
 #define RALLYSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

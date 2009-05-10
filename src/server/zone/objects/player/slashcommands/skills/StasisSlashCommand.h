@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef STASISSLASHCOMMAND_H_
+
 #define STASISSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

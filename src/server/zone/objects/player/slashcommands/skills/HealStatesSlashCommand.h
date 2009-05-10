@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef HEALSTATESSLASHCOMMAND_H_
+
 #define HEALSTATESSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

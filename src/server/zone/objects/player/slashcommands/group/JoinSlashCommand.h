@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef JOINSLASHCOMMAND_H_
+
 #define JOINSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../managers/group/GroupManager.h"
@@ -75,3 +77,4 @@ public:
 };
 
 #endif //JOINSLASHCOMMAND_H_
+

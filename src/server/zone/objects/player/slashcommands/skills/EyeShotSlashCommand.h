@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef EYESHOTSLASHCOMMAND_H_
+
 #define EYESHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

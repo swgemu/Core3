@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef WARNINGSHOTSLASHCOMMAND_H_
+
 #define WARNINGSHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef THYROIDRUPTURESLASHCOMMAND_H_
+
 #define THYROIDRUPTURESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

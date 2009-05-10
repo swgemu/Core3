@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef EQUILIBRIUMSLASHCOMMAND_H_
+
 #define EQUILIBRIUMSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

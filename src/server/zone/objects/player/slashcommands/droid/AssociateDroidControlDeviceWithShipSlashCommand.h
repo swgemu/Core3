@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef ASSOCIATEDROIDCONTROLDEVICEWITHSHIPSLASHCOMMAND_H_
+
 #define ASSOCIATEDROIDCONTROLDEVICEWITHSHIPSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

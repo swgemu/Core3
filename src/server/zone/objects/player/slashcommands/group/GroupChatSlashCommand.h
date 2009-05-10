@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GROUPCHATSLASHCOMMAND_H_
+
 #define GROUPCHATSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../../chat/ChatManager.h"
@@ -73,3 +75,4 @@ public:
 };
 
 #endif //GROUPCHATSLASHCOMMAND_H_
+

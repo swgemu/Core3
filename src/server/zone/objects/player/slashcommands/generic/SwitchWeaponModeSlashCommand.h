@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SWITCHWEAPONMODESLASHCOMMAND_H_
+
 #define SWITCHWEAPONMODESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef STOPLISTENINGSLASHCOMMAND_H_
+
 #define STOPLISTENINGSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -72,3 +74,4 @@ public:
 };
 
 #endif //STOPLISTENINGSLASHCOMMAND_H_
+

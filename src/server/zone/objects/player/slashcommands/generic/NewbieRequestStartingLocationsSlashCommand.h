@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef NEWBIEREQUESTSTARTINGLOCATIONSSLASHCOMMAND_H_
+
 #define NEWBIEREQUESTSTARTINGLOCATIONSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

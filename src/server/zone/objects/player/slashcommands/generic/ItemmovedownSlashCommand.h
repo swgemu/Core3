@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef ITEMMOVEDOWNSLASHCOMMAND_H_
+
 #define ITEMMOVEDOWNSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

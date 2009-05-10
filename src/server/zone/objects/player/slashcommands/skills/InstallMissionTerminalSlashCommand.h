@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef INSTALLMISSIONTERMINALSLASHCOMMAND_H_
+
 #define INSTALLMISSIONTERMINALSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

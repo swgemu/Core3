@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DISARMINGSHOTSLASHCOMMAND_H_
+
 #define DISARMINGSHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

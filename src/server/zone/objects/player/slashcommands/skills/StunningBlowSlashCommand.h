@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef STUNNINGBLOWSLASHCOMMAND_H_
+
 #define STUNNINGBLOWSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

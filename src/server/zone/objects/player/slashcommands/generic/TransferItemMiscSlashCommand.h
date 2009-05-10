@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef TRANSFERITEMMISCSLASHCOMMAND_H_
+
 #define TRANSFERITEMMISCSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../tangible/Inventory.h"
@@ -285,3 +287,4 @@ public:
 };
 
 #endif //TRANSFERITEMMISCSLASHCOMMAND_H_
+

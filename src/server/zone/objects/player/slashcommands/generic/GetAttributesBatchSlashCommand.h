@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GETATTRIBUTESBATCHSLASHCOMMAND_H_
+
 #define GETATTRIBUTESBATCHSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../creature/Creature.h"
@@ -142,3 +144,4 @@ public:
 };
 
 #endif //GETATTRIBUTESBATCHSLASHCOMMAND_H_
+

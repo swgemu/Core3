@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CUICONSENTRESPONSESLASHCOMMAND_H_
+
 #define CUICONSENTRESPONSESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

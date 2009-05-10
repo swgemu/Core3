@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REQUESTWAYPOINTATPOSITIONSLASHCOMMAND_H_
+
 #define REQUESTWAYPOINTATPOSITIONSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../waypoint/WaypointObject.h"
@@ -202,3 +204,4 @@ public:
 };
 
 #endif //REQUESTWAYPOINTATPOSITIONSLASHCOMMAND_H_
+

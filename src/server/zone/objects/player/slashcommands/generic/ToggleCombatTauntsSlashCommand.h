@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef TOGGLECOMBATTAUNTSSLASHCOMMAND_H_
+
 #define TOGGLECOMBATTAUNTSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

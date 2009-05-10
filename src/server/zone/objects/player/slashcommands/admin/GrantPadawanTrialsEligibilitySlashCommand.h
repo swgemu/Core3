@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GRANTPADAWANTRIALSELIGIBILITYSLASHCOMMAND_H_
+
 #define GRANTPADAWANTRIALSELIGIBILITYSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

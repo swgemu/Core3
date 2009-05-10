@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef COMBATTARGETSLASHCOMMAND_H_
+
 #define COMBATTARGETSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

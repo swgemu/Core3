@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DRAGPLAYERSLASHCOMMAND_H_
+
 #define DRAGPLAYERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

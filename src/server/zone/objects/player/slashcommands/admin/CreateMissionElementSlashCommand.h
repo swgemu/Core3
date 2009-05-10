@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CREATEMISSIONELEMENTSLASHCOMMAND_H_
+
 #define CREATEMISSIONELEMENTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

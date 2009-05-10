@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GMWEAPONSLASHCOMMAND_H_
+
 #define GMWEAPONSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

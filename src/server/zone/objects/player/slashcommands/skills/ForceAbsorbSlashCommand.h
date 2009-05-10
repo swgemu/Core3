@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef FORCEABSORBSLASHCOMMAND_H_
+
 #define FORCEABSORBSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef RECRUITSKILLTRAINERSLASHCOMMAND_H_
+
 #define RECRUITSKILLTRAINERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

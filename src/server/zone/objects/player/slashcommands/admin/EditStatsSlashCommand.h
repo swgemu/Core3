@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef EDITSTATSSLASHCOMMAND_H_
+
 #define EDITSTATSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

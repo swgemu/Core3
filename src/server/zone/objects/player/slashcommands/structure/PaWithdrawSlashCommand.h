@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef PAWITHDRAWSLASHCOMMAND_H_
+
 #define PAWITHDRAWSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

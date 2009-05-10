@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef INSERTITEMINTOSHIPCOMPONENTSLOTSLASHCOMMAND_H_
+
 #define INSERTITEMINTOSHIPCOMPONENTSLOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

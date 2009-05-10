@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SEARCHCORPSESLASHCOMMAND_H_
+
 #define SEARCHCORPSESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

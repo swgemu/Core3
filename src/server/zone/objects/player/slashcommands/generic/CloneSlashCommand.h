@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CLONESLASHCOMMAND_H_
+
 #define CLONESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

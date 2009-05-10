@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REVIVEPLAYERSLASHCOMMAND_H_
+
 #define REVIVEPLAYERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

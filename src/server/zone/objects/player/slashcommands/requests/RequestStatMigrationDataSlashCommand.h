@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REQUESTSTATMIGRATIONDATASLASHCOMMAND_H_
+
 #define REQUESTSTATMIGRATIONDATASLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../packets.h"
@@ -80,3 +82,4 @@ public:
 };
 
 #endif //REQUESTSTATMIGRATIONDATASLASHCOMMAND_H_
+

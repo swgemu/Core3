@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REPAIRSHIPCOMPONENTINSLOTSLASHCOMMAND_H_
+
 #define REPAIRSHIPCOMPONENTINSLOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

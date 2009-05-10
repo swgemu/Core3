@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DRAINFORCESLASHCOMMAND_H_
+
 #define DRAINFORCESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

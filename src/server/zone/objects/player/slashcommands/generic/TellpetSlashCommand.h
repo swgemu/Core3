@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef TELLPETSLASHCOMMAND_H_
+
 #define TELLPETSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -75,3 +77,4 @@ public:
 };
 
 #endif //TELLPETSLASHCOMMAND_H_
+

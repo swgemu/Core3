@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef EDITBANKACCOUNTSLASHCOMMAND_H_
+
 #define EDITBANKACCOUNTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

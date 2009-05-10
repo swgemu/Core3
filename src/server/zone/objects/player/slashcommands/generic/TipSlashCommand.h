@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef TIPSLASHCOMMAND_H_
+
 #define TIPSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../packets.h"
@@ -321,3 +323,4 @@ public:
 };
 
 #endif //TIPSLASHCOMMAND_H_
+

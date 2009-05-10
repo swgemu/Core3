@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef TORSOSHOTSLASHCOMMAND_H_
+
 #define TORSOSHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

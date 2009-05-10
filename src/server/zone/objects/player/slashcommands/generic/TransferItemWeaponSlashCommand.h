@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef TRANSFERITEMWEAPONSLASHCOMMAND_H_
+
 #define TRANSFERITEMWEAPONSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../tangible/Inventory.h"
@@ -83,3 +85,4 @@ public:
 };
 
 #endif //TRANSFERITEMWEAPONSLASHCOMMAND_H_
+

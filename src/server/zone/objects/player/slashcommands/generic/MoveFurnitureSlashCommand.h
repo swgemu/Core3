@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef MOVEFURNITURESLASHCOMMAND_H_
+
 #define MOVEFURNITURESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

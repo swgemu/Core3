@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SETSPOKENLANGUAGESLASHCOMMAND_H_
+
 #define SETSPOKENLANGUAGESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

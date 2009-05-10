@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef RESOURCECONTAINERSPLITSLASHCOMMAND_H_
+
 #define RESOURCECONTAINERSPLITSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../tangible/resource/ResourceContainer.h"
@@ -107,3 +109,4 @@ public:
 };
 
 #endif //RESOURCECONTAINERSPLITSLASHCOMMAND_H_
+

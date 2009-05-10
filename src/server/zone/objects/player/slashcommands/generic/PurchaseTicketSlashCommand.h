@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef PURCHASETICKETSLASHCOMMAND_H_
+
 #define PURCHASETICKETSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../managers/planet/PlanetManager.h"
@@ -180,3 +182,4 @@ public:
 };
 
 #endif //PURCHASETICKETSLASHCOMMAND_H_
+

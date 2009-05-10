@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef FINDMYTRAINERSLASHCOMMAND_H_
+
 #define FINDMYTRAINERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

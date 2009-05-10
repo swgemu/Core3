@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef RESTRAININGSHOTSLASHCOMMAND_H_
+
 #define RESTRAININGSHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

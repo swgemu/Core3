@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GETACCOUNTINFOSLASHCOMMAND_H_
+
 #define GETACCOUNTINFOSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

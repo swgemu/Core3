@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef BATTLEFIELDSTATUSSLASHCOMMAND_H_
+
 #define BATTLEFIELDSTATUSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

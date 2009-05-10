@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef TRAUMATIZESLASHCOMMAND_H_
+
 #define TRAUMATIZESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

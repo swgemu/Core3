@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SCATTERSHOTSLASHCOMMAND_H_
+
 #define SCATTERSHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

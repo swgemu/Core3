@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef STRUCTURESTATUSSLASHCOMMAND_H_
+
 #define STRUCTURESTATUSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

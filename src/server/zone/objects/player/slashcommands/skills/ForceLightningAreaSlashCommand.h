@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef FORCELIGHTNINGAREASLASHCOMMAND_H_
+
 #define FORCELIGHTNINGAREASLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

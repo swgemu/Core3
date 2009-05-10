@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef MEDITATESLASHCOMMAND_H_
+
 #define MEDITATESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DELEGATEFACTIONPOINTSSLASHCOMMAND_H_
+
 #define DELEGATEFACTIONPOINTSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -111,3 +113,4 @@ public:
 };
 
 #endif //DELEGATEFACTIONPOINTSSLASHCOMMAND_H_
+

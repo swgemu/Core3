@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef FLOURISHSLASHCOMMAND_H_
+
 #define FLOURISHSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -82,3 +84,4 @@ public:
 };
 
 #endif //FLOURISHSLASHCOMMAND_H_
+

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef TAUNTSLASHCOMMAND_H_
+
 #define TAUNTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

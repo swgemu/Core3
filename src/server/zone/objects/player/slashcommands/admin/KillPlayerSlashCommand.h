@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef KILLPLAYERSLASHCOMMAND_H_
+
 #define KILLPLAYERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

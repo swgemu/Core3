@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef MAKELEADERSLASHCOMMAND_H_
+
 #define MAKELEADERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../group/GroupObject.h"
@@ -87,3 +89,4 @@ public:
 };
 
 #endif //MAKELEADERSLASHCOMMAND_H_
+

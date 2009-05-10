@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef ITEMROTATELEFTSLASHCOMMAND_H_
+
 #define ITEMROTATELEFTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

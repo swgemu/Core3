@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef HEALDROIDDAMAGESLASHCOMMAND_H_
+
 #define HEALDROIDDAMAGESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

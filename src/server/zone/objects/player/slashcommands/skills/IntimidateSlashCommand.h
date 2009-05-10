@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef INTIMIDATESLASHCOMMAND_H_
+
 #define INTIMIDATESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

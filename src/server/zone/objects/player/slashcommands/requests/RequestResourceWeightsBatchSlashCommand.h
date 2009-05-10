@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REQUESTRESOURCEWEIGHTSBATCHSLASHCOMMAND_H_
+
 #define REQUESTRESOURCEWEIGHTSBATCHSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../draftschematic/DraftSchematic.h"
@@ -87,3 +89,4 @@ public:
 };
 
 #endif //REQUESTRESOURCEWEIGHTSBATCHSLASHCOMMAND_H_
+

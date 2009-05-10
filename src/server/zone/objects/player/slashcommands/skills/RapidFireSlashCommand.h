@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef RAPIDFIRESLASHCOMMAND_H_
+
 #define RAPIDFIRESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

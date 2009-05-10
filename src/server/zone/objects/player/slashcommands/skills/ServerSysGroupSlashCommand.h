@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SERVERSYSGROUPSLASHCOMMAND_H_
+
 #define SERVERSYSGROUPSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

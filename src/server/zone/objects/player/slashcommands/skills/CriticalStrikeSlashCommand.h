@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CRITICALSTRIKESLASHCOMMAND_H_
+
 #define CRITICALSTRIKESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

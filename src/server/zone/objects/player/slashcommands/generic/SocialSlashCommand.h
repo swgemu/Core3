@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SOCIALSLASHCOMMAND_H_
+
 #define SOCIALSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

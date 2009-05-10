@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef MAKEMASTERLOOTERSLASHCOMMAND_H_
+
 #define MAKEMASTERLOOTERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

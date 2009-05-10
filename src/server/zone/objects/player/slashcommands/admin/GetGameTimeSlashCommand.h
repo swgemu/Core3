@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GETGAMETIMESLASHCOMMAND_H_
+
 #define GETGAMETIMESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

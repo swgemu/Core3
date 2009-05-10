@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef COUPDEGRACESLASHCOMMAND_H_
+
 #define COUPDEGRACESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

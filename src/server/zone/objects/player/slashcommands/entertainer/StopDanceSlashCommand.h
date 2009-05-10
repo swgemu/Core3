@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef STOPDANCESLASHCOMMAND_H_
+
 #define STOPDANCESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

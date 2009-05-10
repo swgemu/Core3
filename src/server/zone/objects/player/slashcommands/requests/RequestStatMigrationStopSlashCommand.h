@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REQUESTSTATMIGRATIONSTOPSLASHCOMMAND_H_
+
 #define REQUESTSTATMIGRATIONSTOPSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

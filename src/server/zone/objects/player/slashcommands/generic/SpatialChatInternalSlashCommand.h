@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SPATIALCHATINTERNALSLASHCOMMAND_H_
+
 #define SPATIALCHATINTERNALSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../../chat/ChatManager.h"
@@ -75,3 +77,4 @@ public:
 };
 
 #endif //SPATIALCHATINTERNALSLASHCOMMAND_H_
+

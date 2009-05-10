@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REPORTSLASHCOMMAND_H_
+
 #define REPORTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

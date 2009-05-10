@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef RELOADSLASHCOMMAND_H_
+
 #define RELOADSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef LOGOUTSERVERSLASHCOMMAND_H_
+
 #define LOGOUTSERVERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -70,3 +72,4 @@ public:
 };
 
 #endif //LOGOUTSERVERSLASHCOMMAND_H_
+

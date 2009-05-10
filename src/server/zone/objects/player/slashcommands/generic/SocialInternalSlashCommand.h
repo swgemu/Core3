@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SOCIALINTERNALSLASHCOMMAND_H_
+
 #define SOCIALINTERNALSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../../chat/ChatManager.h"
@@ -75,3 +77,4 @@ public:
 };
 
 #endif //SOCIALINTERNALSLASHCOMMAND_H_
+

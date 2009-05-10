@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef RESUSCITATEPLAYERSLASHCOMMAND_H_
+
 #define RESUSCITATEPLAYERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

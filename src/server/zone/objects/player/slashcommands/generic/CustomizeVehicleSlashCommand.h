@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CUSTOMIZEVEHICLESLASHCOMMAND_H_
+
 #define CUSTOMIZEVEHICLESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

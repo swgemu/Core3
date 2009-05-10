@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef FORCERESISTBLEEDINGSLASHCOMMAND_H_
+
 #define FORCERESISTBLEEDINGSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

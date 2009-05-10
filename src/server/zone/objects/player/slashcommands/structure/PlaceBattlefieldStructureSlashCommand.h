@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef PLACEBATTLEFIELDSTRUCTURESLASHCOMMAND_H_
+
 #define PLACEBATTLEFIELDSTRUCTURESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

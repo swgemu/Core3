@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef BACTAINFUSIONSLASHCOMMAND_H_
+
 #define BACTAINFUSIONSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

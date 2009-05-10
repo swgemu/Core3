@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CSCREATETICKETSLASHCOMMAND_H_
+
 #define CSCREATETICKETSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

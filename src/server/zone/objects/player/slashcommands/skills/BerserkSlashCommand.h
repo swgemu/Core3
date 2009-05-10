@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef BERSERKSLASHCOMMAND_H_
+
 #define BERSERKSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

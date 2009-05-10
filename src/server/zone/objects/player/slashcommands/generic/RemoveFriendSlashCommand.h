@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REMOVEFRIENDSLASHCOMMAND_H_
+
 #define REMOVEFRIENDSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -79,3 +81,4 @@ public:
 };
 
 #endif //REMOVEFRIENDSLASHCOMMAND_H_
+

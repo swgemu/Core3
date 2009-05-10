@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SETMOODSLASHCOMMAND_H_
+
 #define SETMOODSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

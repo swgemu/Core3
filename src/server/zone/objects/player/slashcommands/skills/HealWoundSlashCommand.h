@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef HEALWOUNDSLASHCOMMAND_H_
+
 #define HEALWOUNDSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

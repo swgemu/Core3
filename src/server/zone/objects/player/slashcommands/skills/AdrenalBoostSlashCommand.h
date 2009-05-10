@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef ADRENALBOOSTSLASHCOMMAND_H_
+
 #define ADRENALBOOSTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

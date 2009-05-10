@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REGISTERWITHLOCATIONSLASHCOMMAND_H_
+
 #define REGISTERWITHLOCATIONSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

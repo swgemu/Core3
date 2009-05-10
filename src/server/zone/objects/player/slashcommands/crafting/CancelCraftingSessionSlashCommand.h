@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CANCELCRAFTINGSESSIONSLASHCOMMAND_H_
+
 #define CANCELCRAFTINGSESSIONSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../tangible/crafting/CraftingTool.h"
@@ -89,3 +91,4 @@ public:
 };
 
 #endif //CANCELCRAFTINGSESSIONSLASHCOMMAND_H_
+

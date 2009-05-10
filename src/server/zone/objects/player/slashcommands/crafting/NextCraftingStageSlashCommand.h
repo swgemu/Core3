@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef NEXTCRAFTINGSTAGESLASHCOMMAND_H_
+
 #define NEXTCRAFTINGSTAGESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -86,3 +88,4 @@ public:
 };
 
 #endif //NEXTCRAFTINGSTAGESLASHCOMMAND_H_
+

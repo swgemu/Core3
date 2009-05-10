@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SYSTEMMESSAGESLASHCOMMAND_H_
+
 #define SYSTEMMESSAGESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

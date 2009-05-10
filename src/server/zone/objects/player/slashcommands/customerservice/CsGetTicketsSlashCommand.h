@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CSGETTICKETSSLASHCOMMAND_H_
+
 #define CSGETTICKETSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CYBORGKICKDOWNSLASHCOMMAND_H_
+
 #define CYBORGKICKDOWNSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

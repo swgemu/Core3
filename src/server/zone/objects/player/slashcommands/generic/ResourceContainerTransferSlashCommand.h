@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef RESOURCECONTAINERTRANSFERSLASHCOMMAND_H_
+
 #define RESOURCECONTAINERTRANSFERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../tangible/resource/ResourceContainer.h"
@@ -105,3 +107,4 @@ public:
 };
 
 #endif //RESOURCECONTAINERTRANSFERSLASHCOMMAND_H_
+

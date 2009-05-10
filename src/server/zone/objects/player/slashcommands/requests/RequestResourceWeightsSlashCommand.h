@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REQUESTRESOURCEWEIGHTSSLASHCOMMAND_H_
+
 #define REQUESTRESOURCEWEIGHTSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef LETHALSHOTSLASHCOMMAND_H_
+
 #define LETHALSHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

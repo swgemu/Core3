@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef WIPEITEMSSLASHCOMMAND_H_
+
 #define WIPEITEMSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

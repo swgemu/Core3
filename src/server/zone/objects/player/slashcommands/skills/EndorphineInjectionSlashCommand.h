@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef ENDORPHINEINJECTIONSLASHCOMMAND_H_
+
 #define ENDORPHINEINJECTIONSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

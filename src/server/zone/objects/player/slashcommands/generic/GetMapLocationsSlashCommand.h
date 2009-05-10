@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GETMAPLOCATIONSSLASHCOMMAND_H_
+
 #define GETMAPLOCATIONSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

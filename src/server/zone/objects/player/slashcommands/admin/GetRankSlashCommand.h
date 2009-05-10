@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GETRANKSLASHCOMMAND_H_
+
 #define GETRANKSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

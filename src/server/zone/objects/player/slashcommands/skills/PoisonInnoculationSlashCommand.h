@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef POISONINNOCULATIONSLASHCOMMAND_H_
+
 #define POISONINNOCULATIONSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

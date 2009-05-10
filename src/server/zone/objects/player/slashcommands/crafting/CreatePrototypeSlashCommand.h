@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CREATEPROTOTYPESLASHCOMMAND_H_
+
 #define CREATEPROTOTYPESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../managers/crafting/CraftingManager.h"
@@ -99,3 +101,4 @@ public:
 };
 
 #endif //CREATEPROTOTYPESLASHCOMMAND_H_
+

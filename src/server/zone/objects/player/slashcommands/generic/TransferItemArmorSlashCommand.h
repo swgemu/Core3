@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef TRANSFERITEMARMORSLASHCOMMAND_H_
+
 #define TRANSFERITEMARMORSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../tangible/Inventory.h"
@@ -84,3 +86,4 @@ public:
 };
 
 #endif //TRANSFERITEMARMORSLASHCOMMAND_H_
+

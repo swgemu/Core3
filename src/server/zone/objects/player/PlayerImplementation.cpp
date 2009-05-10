@@ -5968,7 +5968,7 @@ void PlayerImplementation::subtractInventoryPower(uint32 amount) {
 						return;
 					} else {
 						//We are going to need to remove this container totally and go to the next.
-						amount -= containerpower;
+						amount -= (uint32)containerpower;
 						removeInventoryItem(rcno);
 						rcno->sendDestroyTo(_this);
 						rcno->finalize();

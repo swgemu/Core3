@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SETPERFORMANCEBUFFTARGETSLASHCOMMAND_H_
+
 #define SETPERFORMANCEBUFFTARGETSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

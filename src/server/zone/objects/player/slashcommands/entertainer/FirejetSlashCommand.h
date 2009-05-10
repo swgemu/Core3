@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef FIREJETSLASHCOMMAND_H_
+
 #define FIREJETSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

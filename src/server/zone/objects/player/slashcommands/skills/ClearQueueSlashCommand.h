@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CLEARQUEUESLASHCOMMAND_H_
+
 #define CLEARQUEUESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

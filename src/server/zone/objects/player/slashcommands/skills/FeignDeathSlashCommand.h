@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef FEIGNDEATHSLASHCOMMAND_H_
+
 #define FEIGNDEATHSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

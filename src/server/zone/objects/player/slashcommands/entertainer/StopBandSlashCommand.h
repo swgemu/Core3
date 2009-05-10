@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef STOPBANDSLASHCOMMAND_H_
+
 #define STOPBANDSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CLOSELOTTERYCONTAINERSLASHCOMMAND_H_
+
 #define CLOSELOTTERYCONTAINERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

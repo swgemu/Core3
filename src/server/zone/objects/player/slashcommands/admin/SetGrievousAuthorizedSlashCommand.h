@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SETGRIEVOUSAUTHORIZEDSLASHCOMMAND_H_
+
 #define SETGRIEVOUSAUTHORIZEDSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

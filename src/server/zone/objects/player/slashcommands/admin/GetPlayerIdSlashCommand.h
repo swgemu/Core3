@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GETPLAYERIDSLASHCOMMAND_H_
+
 #define GETPLAYERIDSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

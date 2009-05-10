@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SURVEYSLASHCOMMAND_H_
+
 #define SURVEYSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -70,3 +72,4 @@ public:
 };
 
 #endif //SURVEYSLASHCOMMAND_H_
+

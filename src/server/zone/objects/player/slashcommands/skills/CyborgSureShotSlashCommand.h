@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CYBORGSURESHOTSLASHCOMMAND_H_
+
 #define CYBORGSURESHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

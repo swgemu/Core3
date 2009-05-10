@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef UNCITYBANSLASHCOMMAND_H_
+
 #define UNCITYBANSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

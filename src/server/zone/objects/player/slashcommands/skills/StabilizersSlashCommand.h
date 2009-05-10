@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef STABILIZERSSLASHCOMMAND_H_
+
 #define STABILIZERSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef EATSLASHCOMMAND_H_
+
 #define EATSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

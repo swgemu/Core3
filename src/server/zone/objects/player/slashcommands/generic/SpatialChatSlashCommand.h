@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SPATIALCHATSLASHCOMMAND_H_
+
 #define SPATIALCHATSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

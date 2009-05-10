@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef WARCRYSLASHCOMMAND_H_
+
 #define WARCRYSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

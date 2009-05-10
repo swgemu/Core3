@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef POINTBLANKSHOTSLASHCOMMAND_H_
+
 #define POINTBLANKSHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

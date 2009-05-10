@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SYNCHRONIZEDUISTOPLISTENINGSLASHCOMMAND_H_
+
 #define SYNCHRONIZEDUISTOPLISTENINGSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -78,3 +80,4 @@ public:
 };
 
 #endif //SYNCHRONIZEDUISTOPLISTENINGSLASHCOMMAND_H_
+

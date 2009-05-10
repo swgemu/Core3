@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GMREVIVESLASHCOMMAND_H_
+
 #define GMREVIVESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

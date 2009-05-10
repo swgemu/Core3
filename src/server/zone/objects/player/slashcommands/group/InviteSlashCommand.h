@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef INVITESLASHCOMMAND_H_
+
 #define INVITESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../player/Player.h"
@@ -94,3 +96,4 @@ public:
 };
 
 #endif //INVITESLASHCOMMAND_H_
+

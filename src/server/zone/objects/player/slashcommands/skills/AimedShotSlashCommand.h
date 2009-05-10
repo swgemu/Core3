@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef AIMEDSHOTSLASHCOMMAND_H_
+
 #define AIMEDSHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

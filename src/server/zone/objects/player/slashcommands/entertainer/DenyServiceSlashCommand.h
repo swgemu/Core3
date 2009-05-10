@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DENYSERVICESLASHCOMMAND_H_
+
 #define DENYSERVICESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

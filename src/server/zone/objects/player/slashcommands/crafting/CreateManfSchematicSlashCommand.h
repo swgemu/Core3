@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CREATEMANFSCHEMATICSLASHCOMMAND_H_
+
 #define CREATEMANFSCHEMATICSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../managers/crafting/CraftingManager.h"
@@ -94,3 +96,4 @@ public:
 };
 
 #endif //CREATEMANFSCHEMATICSLASHCOMMAND_H_
+

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef PISTOLWHIPSLASHCOMMAND_H_
+
 #define PISTOLWHIPSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

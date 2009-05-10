@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef FIREARMSTRIKESLASHCOMMAND_H_
+
 #define FIREARMSTRIKESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef HEMORRHAGESLASHCOMMAND_H_
+
 #define HEMORRHAGESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

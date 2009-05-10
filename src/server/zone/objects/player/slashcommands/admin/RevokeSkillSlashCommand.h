@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REVOKESKILLSLASHCOMMAND_H_
+
 #define REVOKESKILLSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

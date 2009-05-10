@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef LASTDITCHSLASHCOMMAND_H_
+
 #define LASTDITCHSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CHANNELFORCESLASHCOMMAND_H_
+
 #define CHANNELFORCESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

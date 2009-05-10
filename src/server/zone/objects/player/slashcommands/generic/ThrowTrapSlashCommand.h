@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef THROWTRAPSLASHCOMMAND_H_
+
 #define THROWTRAPSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../tangible/weapons/ThrowableWeapon.h"
@@ -98,3 +100,4 @@ public:
 };
 
 #endif //THROWTRAPSLASHCOMMAND_H_
+

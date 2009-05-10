@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef KNOCKDOWNRECOVERYSLASHCOMMAND_H_
+
 #define KNOCKDOWNRECOVERYSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

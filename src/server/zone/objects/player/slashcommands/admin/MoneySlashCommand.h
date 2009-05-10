@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef MONEYSLASHCOMMAND_H_
+
 #define MONEYSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

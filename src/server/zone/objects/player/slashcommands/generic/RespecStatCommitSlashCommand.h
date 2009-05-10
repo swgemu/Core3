@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef RESPECSTATCOMMITSLASHCOMMAND_H_
+
 #define RESPECSTATCOMMITSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

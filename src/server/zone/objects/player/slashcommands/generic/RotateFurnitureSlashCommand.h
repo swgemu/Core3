@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef ROTATEFURNITURESLASHCOMMAND_H_
+
 #define ROTATEFURNITURESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

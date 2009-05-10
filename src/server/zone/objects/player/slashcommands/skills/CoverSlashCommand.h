@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef COVERSLASHCOMMAND_H_
+
 #define COVERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

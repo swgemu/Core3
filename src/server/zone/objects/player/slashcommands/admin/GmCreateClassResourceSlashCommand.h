@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GMCREATECLASSRESOURCESLASHCOMMAND_H_
+
 #define GMCREATECLASSRESOURCESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

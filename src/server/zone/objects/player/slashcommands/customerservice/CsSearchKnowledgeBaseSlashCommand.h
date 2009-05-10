@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CSSEARCHKNOWLEDGEBASESLASHCOMMAND_H_
+
 #define CSSEARCHKNOWLEDGEBASESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

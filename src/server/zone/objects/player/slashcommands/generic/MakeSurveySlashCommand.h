@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef MAKESURVEYSLASHCOMMAND_H_
+
 #define MAKESURVEYSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

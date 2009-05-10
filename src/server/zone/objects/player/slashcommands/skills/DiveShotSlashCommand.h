@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DIVESHOTSLASHCOMMAND_H_
+
 #define DIVESHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

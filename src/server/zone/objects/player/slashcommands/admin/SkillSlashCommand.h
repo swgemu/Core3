@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SKILLSLASHCOMMAND_H_
+
 #define SKILLSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -62,3 +64,4 @@ public:
 };
 
 #endif //SKILLSLASHCOMMAND_H_
+

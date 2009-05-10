@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef PURCHASEREINFORCEMENTSLASHCOMMAND_H_
+
 #define PURCHASEREINFORCEMENTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

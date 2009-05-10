@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef FORCESUPPRESSIONSLASHCOMMAND_H_
+
 #define FORCESUPPRESSIONSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef STUNRECOVERYSLASHCOMMAND_H_
+
 #define STUNRECOVERYSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

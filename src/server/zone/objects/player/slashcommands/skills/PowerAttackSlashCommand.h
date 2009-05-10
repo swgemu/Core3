@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef POWERATTACKSLASHCOMMAND_H_
+
 #define POWERATTACKSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

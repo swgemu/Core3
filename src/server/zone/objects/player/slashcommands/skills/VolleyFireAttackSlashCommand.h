@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef VOLLEYFIREATTACKSLASHCOMMAND_H_
+
 #define VOLLEYFIREATTACKSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef BROADCASTAREASLASHCOMMAND_H_
+
 #define BROADCASTAREASLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

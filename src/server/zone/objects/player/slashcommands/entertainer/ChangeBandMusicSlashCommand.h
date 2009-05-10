@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CHANGEBANDMUSICSLASHCOMMAND_H_
+
 #define CHANGEBANDMUSICSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef COVERCHARGESLASHCOMMAND_H_
+
 #define COVERCHARGESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SHOWCOUNCILRANKSLASHCOMMAND_H_
+
 #define SHOWCOUNCILRANKSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

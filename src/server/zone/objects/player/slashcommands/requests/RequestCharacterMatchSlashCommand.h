@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REQUESTCHARACTERMATCHSLASHCOMMAND_H_
+
 #define REQUESTCHARACTERMATCHSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -71,3 +73,4 @@ public:
 };
 
 #endif //REQUESTCHARACTERMATCHSLASHCOMMAND_H_
+

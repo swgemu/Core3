@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef FINDFRIENDSLASHCOMMAND_H_
+
 #define FINDFRIENDSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../managers/player/PlayerManager.h"
@@ -84,3 +86,4 @@ public:
 };
 
 #endif //FINDFRIENDSLASHCOMMAND_H_
+

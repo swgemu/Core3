@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GETSPAWNDELAYSSLASHCOMMAND_H_
+
 #define GETSPAWNDELAYSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

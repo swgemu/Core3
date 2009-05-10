@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SEROTONININJECTIONSLASHCOMMAND_H_
+
 #define SEROTONININJECTIONSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

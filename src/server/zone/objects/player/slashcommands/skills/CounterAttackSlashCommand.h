@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef COUNTERATTACKSLASHCOMMAND_H_
+
 #define COUNTERATTACKSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

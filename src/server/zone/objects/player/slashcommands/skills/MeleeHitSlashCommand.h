@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef MELEEHITSLASHCOMMAND_H_
+
 #define MELEEHITSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

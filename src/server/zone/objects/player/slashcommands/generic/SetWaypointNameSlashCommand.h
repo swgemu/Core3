@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SETWAYPOINTNAMESLASHCOMMAND_H_
+
 #define SETWAYPOINTNAMESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../waypoint/WaypointObject.h"
@@ -85,3 +87,4 @@ public:
 };
 
 #endif //SETWAYPOINTNAMESLASHCOMMAND_H_
+

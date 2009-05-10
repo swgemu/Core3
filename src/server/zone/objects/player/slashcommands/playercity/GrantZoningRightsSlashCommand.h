@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GRANTZONINGRIGHTSSLASHCOMMAND_H_
+
 #define GRANTZONINGRIGHTSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

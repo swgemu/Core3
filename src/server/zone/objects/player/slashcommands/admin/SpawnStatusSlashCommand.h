@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SPAWNSTATUSSLASHCOMMAND_H_
+
 #define SPAWNSTATUSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SWORDFLURRYSLASHCOMMAND_H_
+
 #define SWORDFLURRYSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

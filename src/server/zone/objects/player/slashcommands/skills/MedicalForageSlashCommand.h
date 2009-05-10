@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef MEDICALFORAGESLASHCOMMAND_H_
+
 #define MEDICALFORAGESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

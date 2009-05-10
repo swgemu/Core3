@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef HARVESTERGETRESOURCEDATASLASHCOMMAND_H_
+
 #define HARVESTERGETRESOURCEDATASLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../structure/installation/harvester/HarvesterObject.h"
@@ -86,3 +88,4 @@ public:
 };
 
 #endif //HARVESTERGETRESOURCEDATASLASHCOMMAND_H_
+

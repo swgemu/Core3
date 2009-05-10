@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DISMOUNTANDSTORESLASHCOMMAND_H_
+
 #define DISMOUNTANDSTORESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

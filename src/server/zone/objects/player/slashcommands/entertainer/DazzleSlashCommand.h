@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DAZZLESLASHCOMMAND_H_
+
 #define DAZZLESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

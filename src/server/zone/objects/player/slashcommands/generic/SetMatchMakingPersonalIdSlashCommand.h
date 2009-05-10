@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SETMATCHMAKINGPERSONALIDSLASHCOMMAND_H_
+
 #define SETMATCHMAKINGPERSONALIDSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

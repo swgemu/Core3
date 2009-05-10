@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GETFRIENDLISTSLASHCOMMAND_H_
+
 #define GETFRIENDLISTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

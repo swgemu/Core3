@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef HAVECONSENTSLASHCOMMAND_H_
+
 #define HAVECONSENTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -85,3 +87,4 @@ public:
 };
 
 #endif //HAVECONSENTSLASHCOMMAND_H_
+

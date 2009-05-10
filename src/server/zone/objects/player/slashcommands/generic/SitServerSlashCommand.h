@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SITSERVERSLASHCOMMAND_H_
+
 #define SITSERVERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -109,3 +111,4 @@ public:
 };
 
 #endif //SITSERVERSLASHCOMMAND_H_
+

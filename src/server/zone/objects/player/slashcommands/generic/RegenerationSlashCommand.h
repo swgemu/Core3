@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REGENERATIONSLASHCOMMAND_H_
+
 #define REGENERATIONSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

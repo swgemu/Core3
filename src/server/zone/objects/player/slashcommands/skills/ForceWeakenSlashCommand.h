@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef FORCEWEAKENSLASHCOMMAND_H_
+
 #define FORCEWEAKENSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

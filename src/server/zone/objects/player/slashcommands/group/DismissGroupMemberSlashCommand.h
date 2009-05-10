@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DISMISSGROUPMEMBERSLASHCOMMAND_H_
+
 #define DISMISSGROUPMEMBERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../managers/group/GroupManager.h"
@@ -90,3 +92,4 @@ public:
 };
 
 #endif //DISMISSGROUPMEMBERSLASHCOMMAND_H_
+

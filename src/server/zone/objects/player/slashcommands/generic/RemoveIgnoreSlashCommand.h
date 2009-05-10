@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REMOVEIGNORESLASHCOMMAND_H_
+
 #define REMOVEIGNORESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -79,3 +81,4 @@ public:
 };
 
 #endif //REMOVEIGNORESLASHCOMMAND_H_
+

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CSREQUESTCATEGORIESSLASHCOMMAND_H_
+
 #define CSREQUESTCATEGORIESSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

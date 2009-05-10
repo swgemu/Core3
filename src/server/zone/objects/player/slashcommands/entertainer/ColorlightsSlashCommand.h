@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef COLORLIGHTSSLASHCOMMAND_H_
+
 #define COLORLIGHTSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

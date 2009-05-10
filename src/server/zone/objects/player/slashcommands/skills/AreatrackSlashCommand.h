@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef AREATRACKSLASHCOMMAND_H_
+
 #define AREATRACKSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

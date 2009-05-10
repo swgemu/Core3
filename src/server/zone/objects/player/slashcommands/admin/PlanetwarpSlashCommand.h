@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef PLANETWARPSLASHCOMMAND_H_
+
 #define PLANETWARPSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

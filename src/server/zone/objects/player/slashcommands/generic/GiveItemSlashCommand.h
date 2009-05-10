@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GIVEITEMSLASHCOMMAND_H_
+
 #define GIVEITEMSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -88,3 +90,4 @@ public:
 };
 
 #endif //GIVEITEMSLASHCOMMAND_H_
+

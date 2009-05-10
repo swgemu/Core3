@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GROUPLOOTSLASHCOMMAND_H_
+
 #define GROUPLOOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

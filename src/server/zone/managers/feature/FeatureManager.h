@@ -82,7 +82,7 @@ public:
 	}
 
 	inline int getFloatFeature(const String& key) {
-		return floatFeature->get(key);
+		return (int)floatFeature->get(key);
 	}
 
 	inline bool hasSetFeature(const String& key, const String& feature) {

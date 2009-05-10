@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef TEACHSLASHCOMMAND_H_
+
 #define TEACHSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../packets.h"
@@ -127,3 +129,4 @@ public:
 };
 
 #endif //TEACHSLASHCOMMAND_H_
+

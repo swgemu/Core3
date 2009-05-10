@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SERVERSLASHCOMMAND_H_
+
 #define SERVERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
