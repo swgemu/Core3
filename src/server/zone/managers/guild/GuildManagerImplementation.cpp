@@ -1559,6 +1559,7 @@ void GuildManagerImplementation::removeOfflineFromGuild(Player* player, String k
 void GuildManagerImplementation::removeOnlineFromGuild(Player* player, Player* removePlayer) {
 	player->info("Entering GuildManagerImplementation::removeFromGuild(Player* player, Player* removePlayer)");
 
+	String removeName, guildName, playerName;
 	Guild* playerGuild;
 	ChatRoom* room;
 
@@ -1572,6 +1573,7 @@ void GuildManagerImplementation::removeOnlineFromGuild(Player* player, Player* r
 			removePlayer->wlock(player);
 
 		if (player->getGuildID() == 0) {
+			player->sendSystemMessage("error_message", "not_in_guild");
 			player->info("Clean exit from GuildManagerImplementation::removeFromGuild(Player* player, Player* removePlayer)");
 
 			if (player != removePlayer)
@@ -1583,7 +1585,7 @@ void GuildManagerImplementation::removeOnlineFromGuild(Player* player, Player* r
 		}
 
 
-		if ( ! twoPlayersInSameGuild(player, removePlayer)) {
+		if (!twoPlayersInSameGuild(player, removePlayer)) {
 			player->info("Clean exit from GuildManagerImplementation::removeFromGuild(Player* player, Player* removePlayer)");
 
 			if (player != removePlayer)
@@ -1596,14 +1598,11 @@ void GuildManagerImplementation::removeOnlineFromGuild(Player* player, Player* r
 
 
 		playerGuild = player->getGuild();
-
 		removeCharID = removePlayer->getCharacterID();
-
 		room = playerGuild->getGuildChat();
 
-
 		if (removeCharID == playerGuild->getGuildLeader()) {
-			ErrorMessage* errMsg = new ErrorMessage("Guild:", "The guild leader cannot be removed from the guild.", 0);
+			ErrorMessage* errMsg = new ErrorMessage("Guild", "The guild leader cannot be removed from the guild.", 0);
 			player->sendMessage(errMsg);
 
 			player->info("Clean exit from GuildManagerImplementation::removeFromGuild(Player* player, Player* removePlayer)");
@@ -1615,6 +1614,7 @@ void GuildManagerImplementation::removeOnlineFromGuild(Player* player, Player* r
 
 			return;
 		}
+
 
 		if (player != removePlayer)
 			removePlayer->unlock();
@@ -2789,7 +2789,7 @@ void GuildManagerImplementation::handleGuildInfo(Player* player) {
 		guildInfoBox->setPromptTitle("@guild:info_title");
 		guildInfoBox->setPromptText("@guild:menu_info");
 
-		ssTotalMembers << totalMembers;
+		ssTotalMembers << "Members: " << totalMembers;
 		String leaderName = getGuildLeaderName(playerGuild);
 
 		guildtag << "Abbreviation: <" << playerGuild->getGuildTag() << ">";
@@ -2909,7 +2909,7 @@ void GuildManagerImplementation::handleGuildRenaming(Player* player) {
 	ResultSet* guildStamp;
 
 	if ( !checkLastRenameTime(player) ) {
-		player->sendSystemMessage("Your are allowed to change your guild's name only every 24 hours.");
+		player->sendSystemMessage("Your only allowed to change your guild's name once every 24 hours.");
 		player->info("Clean exit from GuildManagerImplementation::handleGuildRenaming(Player* player)");
 
 		return;

@@ -357,7 +357,7 @@ void SlashCommandConfigManager::registerFunctions() {
 	//lua_register(getLuaState(), "AddGsaySlashCommand", addGsaySlashCommand);
 	//lua_register(getLuaState(), "AddGtellSlashCommand", addGtellSlashCommand);
 	//lua_register(getLuaState(), "AddGuildSlashCommand", addGuildSlashCommand);
-	lua_register(getLuaState(), "AddGuildremoveSlashCommand", addGuildremoveSlashCommand);
+	lua_register(getLuaState(), "AddGuildRemoveSlashCommand", addGuildRemoveSlashCommand);
 	lua_register(getLuaState(), "AddGuildsaySlashCommand", addGuildsaySlashCommand);
 	lua_register(getLuaState(), "AddGuildstatusSlashCommand", addGuildstatusSlashCommand);
 	lua_register(getLuaState(), "AddHandleClientLoginSlashCommand", addHandleClientLoginSlashCommand);
@@ -3763,12 +3763,12 @@ int SlashCommandConfigManager::addGuildSlashCommand(lua_State* L) {
 	return 1;
 }
 */
-int SlashCommandConfigManager::addGuildremoveSlashCommand(lua_State* L) {
+int SlashCommandConfigManager::addGuildRemoveSlashCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GuildremoveSlashCommand* slashCommand = new GuildremoveSlashCommand(slashcommand.getStringField("name"), server);
+	GuildRemoveSlashCommand* slashCommand = new GuildRemoveSlashCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
@@ -7462,23 +7462,4 @@ int SlashCommandConfigManager::addGroupSaySlashCommand(lua_State* L) {
 
 	return 1;
 }
-
-int SlashCommandConfigManager::addGuildRemoveSlashCommand(lua_State* L) {
-	LuaObject slashcommand(L);
-	if (!slashcommand.isValidTable())
-		return 0;
-
-	String commandname = slashcommand.getStringField("name");
-	GuildRemoveSlashCommand* slashCommand = new GuildRemoveSlashCommand(commandname, server);
-
-	parseOptions(L, slashCommand);
-
-	String alternativeNames = slashcommand.getStringField("alternativeNames");
-
-	slashCommands->put(slashCommand);
-
-	if (!alternativeNames.isEmpty())
-		parseAlternativeNames(alternativeNames, slashCommand);
-
-	return 1;
-}*/
+*/

@@ -336,7 +336,7 @@ which carries forward this exception.
 //#include "generic/GsaySlashCommand.h" //duplicate of groupchat
 //#include "generic/GtellSlashCommand.h" //duplicate of groupchat
 //#include "guild/GuildSlashCommand.h" //duplicate of guildsay
-#include "guild/GuildremoveSlashCommand.h"
+#include "guild/GuildRemoveSlashCommand.h"
 #include "guild/GuildsaySlashCommand.h"
 #include "guild/GuildstatusSlashCommand.h"
 #include "generic/HandleClientLoginSlashCommand.h"
