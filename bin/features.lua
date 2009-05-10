@@ -84,43 +84,74 @@
 
 --*****************************************************************************
 -------------------------------------------------------------------------------
---Jedi System Features
---Values: "hologrind", "village"
---AddStringFeature("jediSystem", "hologrind")
-
---Armor Protection
---Values: "minisuits" yes/no
---AddStringFeature("minisuits","")
-
---GCW System
---Values: "specialForces", "TEF"
---AddStringFeature("gcwSystem", "specialForces")
 
 --************************
---Broken Skillmods Section
+-- General Server settings
+-- XP scale
 --************************
---Values: "enabled", "disabled"
---feature("modUnarmedDamage", "enabled");
---feature("modCombatMedicEffectiveness", "enabled");
-
 
 --XP scale
 --Values: float, 1.0 = default
 AddFloatFeature("xpScale",1.0)
 
+--************************
+-- Comabt System setting
+-- damage modifiers, minisuits, state defense, ...
+--************************
+
 -- Globale damage multipier (player)
 --Values: float, 1.5 = default
-AddFloatFeature("globalMultiplier",1.5)
+AddFloatFeature("playerGlobalMultiplier",1.5)
 
 -- PVP damage multipier (player)
 --Values: float, 0.25 = default
-AddFloatFeature("pvpMultiplier",0.25)
+AddFloatFeature("playerPvpMultiplier",0.25)
 
 -- PVE damage multipier (player)
 --Values: float, 1.0 = default
-AddFloatFeature("pveMultiplier",1.0)
+AddFloatFeature("playerPveMultiplier",1.0)
+
+-- Globale damage multipier (pet)
+--Values: float, 1.5 = default
+AddFloatFeature("petGlobalMultiplier",1.5)
 
 -- PVP damage multipier (pet)
 --Values: float, 0.25 = default
 AddFloatFeature("petPvpMultiplier",0.25)
 
+-- PVE damage multipier (pet)
+--Values: float, 1.0 = default
+AddFloatFeature("petPveMultiplier",1.0)
+
+-- Globale damage multipier (creatures)
+--Values: float, 1.0 = default
+AddFloatFeature("creatureGlobalMultiplier",1.0)
+
+-- Max state defense
+--Values: integer, 125 = default
+AddFloatFeature("maxStateDefense",125)
+
+-- Stae Defense Immunity
+--Values: int, 125 = default, 0 for no immunity
+AddFloatFeature("stateImmunity",125)
+
+--Armor Protection
+--Values: binary, default no mini-suit
+AddStringFeature("miniSuit","")
+
+--Damage to hand and feet
+--Values: binary, default yes
+--AddStringFeature("noHandFeetDamage","")
+
+--************************
+-- Broken skill mods
+--************************
+
+--Broken skill mods, these skill mods will be shown in the character sheet but will be considered as 0 calculations 
+--Values: Set of the brocken skill mods
+--Example: grenade and heavyy weapon speed.
+AddSetFeature("brokenSkillMods","heavy_weapon_speed","thrown_speed")
+
+--Broken skill mod bonuses, similar to the broken skill mods. The skill mod will be used but it bonuses are 0  
+--Values: Set of the brocken skill mod bonuses
+AddSetFeature("brokenSkillBonus","healing_ability","combat_healing_ability","keep_creature","stored_pets","tame_level")

@@ -66,27 +66,77 @@ which carries forward this exception.
 
 CombatManager::CombatManager(ZoneProcessServerImplementation* srv) {
 	server = srv;
+
 	FeatureManager* featManager = server->getFeatureManager();
 
-	if (featManager != NULL && featManager->hasFloatFeature("globalMultiplier"))
-		GLOBAL_MULTIPLIER = featManager->getFloatFeature("globalMultiplier");
+	if (featManager != NULL && featManager->hasFloatFeature("playerGlobalMultiplier"))
+		PLAYER_GLOBAL_MULTIPLIER = featManager->getFloatFeature("playerGlobalMultiplier");
 	else
-		GLOBAL_MULTIPLIER = 1.5f;
+		PLAYER_GLOBAL_MULTIPLIER = 1.5f;
 
-	if (featManager != NULL && featManager->hasFloatFeature("pvpMultiplier"))
-		PVP_MULTIPLIER = featManager->getFloatFeature("pvpMultiplier");
+	if (featManager != NULL && featManager->hasFloatFeature("playerPvpMultiplier"))
+		PLAYER_PVP_MULTIPLIER = featManager->getFloatFeature("playerPvpMultiplier");
 	else
-		PVP_MULTIPLIER = 0.25f;
+		PLAYER_PVP_MULTIPLIER = 0.25f;
 
-	if (featManager != NULL && featManager->hasFloatFeature("pveMultiplier"))
-		PVE_MULTIPLIER = featManager->getFloatFeature("pveMultiplier");
+	if (featManager != NULL && featManager->hasFloatFeature("playerPveMultiplier"))
+		PLAYER_PVE_MULTIPLIER = featManager->getFloatFeature("playerPveMultiplier");
 	else
-		PVE_MULTIPLIER = 1.0f;
+		PLAYER_PVE_MULTIPLIER = 1.0f;
+
+	if (featManager != NULL && featManager->hasFloatFeature("petGlobalMultiplier"))
+		PET_GLOBAL_MULTIPLIER = featManager->getFloatFeature("petGlobalMultiplier");
+	else
+		PET_GLOBAL_MULTIPLIER = 1.5f;
 
 	if (featManager != NULL && featManager->hasFloatFeature("petPvpMultiplier"))
 		PET_PVP_MULTIPLIER = featManager->getFloatFeature("petPvpMultiplier");
 	else
 		PET_PVP_MULTIPLIER = 0.25f;
+
+	if (featManager != NULL && featManager->hasFloatFeature("petPveMultiplier"))
+		PET_PVE_MULTIPLIER = featManager->getFloatFeature("petPveMultiplier");
+	else
+		PET_PVE_MULTIPLIER = 1.0f;
+
+	if (featManager != NULL && featManager->hasFloatFeature("creatureGlobalMultiplier"))
+		CREATURE_GLOBAL_MULTIPLIER = featManager->getFloatFeature("creatureGlobalMultiplier");
+	else
+		CREATURE_GLOBAL_MULTIPLIER = 1.0f;
+
+	if (featManager != NULL && featManager->hasIntegerFeature("stateImmunity"))
+		STATE_IMMUNITY = featManager->getIntegerFeature("stateImmunity");
+	else
+		STATE_IMMUNITY = 125;
+
+	if (featManager != NULL && featManager->hasIntegerFeature("maxStateDefense"))
+		MAX_STATE_DEFENSE = featManager->getIntegerFeature("maxStateDefense");
+	else
+		MAX_STATE_DEFENSE = 125;
+
+	if (featManager != NULL && featManager->hasStringFeature("miniSuit"))
+		MINI_SUIT = true;
+	else
+		MINI_SUIT = false;
+
+	if (featManager != NULL && featManager->hasStringFeature("noHandFeetDamage"))
+		HAND_FEET_DAMAGE = false;
+	else
+		HAND_FEET_DAMAGE = true;
+
+	StringBuffer ss;
+	ss << "\nCombat Manager Player global multiplier " << PLAYER_GLOBAL_MULTIPLIER << "\n";
+	ss << "Combat Manager Player pvp multiplier " << PLAYER_PVP_MULTIPLIER << "\n";
+	ss << "Combat Manager Player pve multiplier " << PLAYER_PVE_MULTIPLIER << "\n\n";
+	ss << "Combat Manager Pet global multiplier " << PET_GLOBAL_MULTIPLIER << "\n";
+	ss << "Combat Manager Pet pvp multiplier " << PET_PVP_MULTIPLIER << "\n";
+	ss << "Combat Manager Pet pve multiplier " << PET_PVE_MULTIPLIER << "\n\n";
+	ss << "Combat Manager Creature global multiplier " << CREATURE_GLOBAL_MULTIPLIER << "\n\n";
+	ss << "Combat Manager State immunity " << STATE_IMMUNITY << "\n";
+	ss << "Combat Manager Max state defense " << MAX_STATE_DEFENSE << "\n\n";
+	ss << "Combat Manager Mini suit " << MINI_SUIT << "\n";
+	ss << "Combat Manager Hand foot damage " << HAND_FEET_DAMAGE << "\n\n";
+	System::out << ss.toString();
 }
 
 /*
@@ -1109,6 +1159,50 @@ int CombatManager::getArmorReduction(CreatureObject* target, int damage, int loc
 
 	if (target->isPlayer()) {
 		armor = ((Player*)target)->getPlayerArmor(location);
+		/* Body parts are
+		 * 	0 - Chest
+		 * 	1 - Hands
+		 * 	2,3 - Left arm
+		 * 	4,5 - Right arm
+		 * 	6 -	Legs
+		 * 	7 - Feet
+		 * 	8 - Head
+		 */
+		if (armor == NULL && MINI_SUIT) {
+			if (DEBUG)
+				System::out << "\tmini-suit damage redirection from location " << location;
+
+			Player* player = (Player*)target;
+
+			switch (location) {
+			case 1:
+			case 2:
+			case 3:
+			case 4:
+			case 5:
+				for (int i = 1 ; i < 6 ; i++) {
+					if (i != location) {
+						armor = player->getPlayerArmor(i);
+						if (armor != NULL) {
+							if (DEBUG)
+								System::out << " to " << i << "\n";
+							break;
+						}
+					}
+				}
+				break;
+			case 6:
+				armor = player->getPlayerArmor(7);
+				if (DEBUG)
+					System::out << " to " << "7\n";
+				break;
+			case 7:
+				armor = player->getPlayerArmor(6);
+				if (DEBUG)
+					System::out << " to " << "6\n";
+				break;
+			}
+		}
 		if (armor != NULL)
 			if (!armor->isArmor()) {
 				System::out << "Returned item is not armor, location " << location << endl;
@@ -1254,6 +1348,7 @@ bool CombatManager::calculateCost(CreatureObject* creature, float healthMultipli
 void CombatManager::calculateStates(CreatureObject* creature, CreatureObject* targetCreature, AttackTargetSkill* tskill) {
 	// TODO: None of these equations seem correct except intimidate
 	int chance = 0;
+	bool immunitySystem = STATE_IMMUNITY > 0;
 	if ((chance = tskill->getKnockdownChance()) > 0)
 		checkKnockDown(creature, targetCreature, chance);
 	if ((chance = tskill->getPostureDownChance()) > 0)
@@ -1265,50 +1360,71 @@ void CombatManager::calculateStates(CreatureObject* creature, CreatureObject* ta
 		float targetDefense = targetCreature->getSkillMod("dizzy_defense");
 		targetDefense -= (targetDefense * targetCreature->calculateBFRatio());
 
-		if (targetDefense > 125)
-			targetDefense = 125;
+		if (targetDefense > MAX_STATE_DEFENSE)
+			targetDefense = MAX_STATE_DEFENSE;
 
 		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
 
-		if (System::random(100) <= hitChanceEquation(0.0f, 0.0f, targetDefense, defenseBonus))
-			targetCreature->setDizziedState();
+		if (!immunitySystem) {
+			if (System::random(100) <= hitChanceEquation(0.0f, 0.0f, targetDefense, defenseBonus))
+				targetCreature->setDizziedState();
+		} else {
+			if (System::random(STATE_IMMUNITY) > (targetDefense + defenseBonus))
+				targetCreature->setDizziedState();
+		}
 	}
 
 	if (tskill->getBlindChance() != 0) {
 		float targetDefense = targetCreature->getSkillMod("blind_defense");
 		targetDefense -= (targetDefense * targetCreature->calculateBFRatio());
 
-		if (targetDefense > 125)
-			targetDefense = 125;
+		if (targetDefense > MAX_STATE_DEFENSE)
+			targetDefense = MAX_STATE_DEFENSE;
 
 		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
-
-		if (System::random(100) <= hitChanceEquation(0.0f, 0.0f, targetDefense, defenseBonus))
-			targetCreature->setBlindedState();
+		if (!immunitySystem) {
+			if (System::random(100) <= hitChanceEquation(0.0f, 0.0f, targetDefense, defenseBonus))
+				targetCreature->setBlindedState();
+		} else {
+			if (System::random(STATE_IMMUNITY) > (targetDefense + defenseBonus))
+				targetCreature->setBlindedState();
+		}
 	}
 
 	if (tskill->getStunChance() != 0) {
 		int targetDefense = targetCreature->getSkillMod("stun_defense");
 		targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
 
-		if (targetDefense > 125)
-			targetDefense = 125;
+		if (targetDefense > MAX_STATE_DEFENSE)
+			targetDefense = MAX_STATE_DEFENSE;
 
 		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
-		if (System::random(100) <= hitChanceEquation(0.0f, 0.0f, targetDefense, defenseBonus))
-			targetCreature->setStunnedState();
+
+		if (!immunitySystem) {
+			if (System::random(100) <= hitChanceEquation(0.0f, 0.0f, targetDefense, defenseBonus))
+				targetCreature->setStunnedState();
+		} else {
+			if (System::random(STATE_IMMUNITY) > (targetDefense + defenseBonus))
+				targetCreature->setStunnedState();
+		}
 	}
 
 	if ((chance = tskill->getIntimidateChance()) > 0) {
 		int targetDefense = targetCreature->getSkillMod("intimidate_defense");
 		targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
 
-		if (targetDefense > 125)
-			targetDefense = 125;
+		if (targetDefense > MAX_STATE_DEFENSE)
+			targetDefense = MAX_STATE_DEFENSE;
 
 		float defenseBonus = 0.0f; // TODO: Food/drink bonuses go here
-		if (System::random(100) <= hitChanceEquation(chance, 0.0f, targetDefense, defenseBonus))
-			targetCreature->setIntimidatedState();
+
+		if (!immunitySystem) {
+			if (System::random(100) <= hitChanceEquation(chance, 0.0f, targetDefense, defenseBonus))
+				targetCreature->setIntimidatedState();
+		} else {
+			if (System::random(STATE_IMMUNITY) > (targetDefense + defenseBonus))
+				targetCreature->setIntimidatedState();
+		}
 	}
 
 	targetCreature->updateStates();
@@ -1735,15 +1851,22 @@ int CombatManager::calculateDamage(CreatureObject* creature, TangibleObject* tar
 
 	float globalMultiplier = 1.0f;
 	if (creature->isPlayer()) {
-		globalMultiplier = GLOBAL_MULTIPLIER;  // All player damage has a multiplier
+		globalMultiplier = PLAYER_GLOBAL_MULTIPLIER;  // All player damage has a multiplier
 		if (!target->isPlayer())
-			globalMultiplier *= PVE_MULTIPLIER;
+			globalMultiplier *= PLAYER_PVE_MULTIPLIER;
 		else
-			globalMultiplier *= PVP_MULTIPLIER;
+			globalMultiplier *= PLAYER_PVP_MULTIPLIER;
 	}
 
-	if (creature->isPet() && target->isPlayer())
-		globalMultiplier *= PET_PVP_MULTIPLIER;
+	else if (creature->isPet()) {
+		globalMultiplier = PET_GLOBAL_MULTIPLIER;  // All player damage has a multiplier
+		if (!target->isPlayer())
+			globalMultiplier *= PET_PVE_MULTIPLIER;
+		else
+			globalMultiplier *= PET_PVP_MULTIPLIER;
+	} else {
+		globalMultiplier *= CREATURE_GLOBAL_MULTIPLIER;
+	}
 
 	//TODO: add creature skill bonuses here. ex. foods
 
@@ -1834,12 +1957,16 @@ int CombatManager::calculateDamage(CreatureObject* creature, TangibleObject* tar
 				healthDamage = individualDamage;
 				if (System::random(1) == 0)  // 50% chance of chest hit
 					bodyPart = 0;
-				else
-					bodyPart = System::random(4)+1;
+				else {
+					if (HAND_FEET_DAMAGE)
+						bodyPart = System::random(4)+1;
+					else
+						bodyPart = System::random(3)+2;
+				}
 			}
 			else if (pool < skill->healthPoolAttackChance + skill->actionPoolAttackChance) {
 				actionDamage = individualDamage;
-				if (System::random(2) == 0)
+				if (HAND_FEET_DAMAGE && System::random(2) == 0)
 					bodyPart = 7;
 				else
 					bodyPart = 6;
