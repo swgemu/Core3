@@ -63,6 +63,13 @@ public:
 	 * It SHOULD only be called from ObjectControllerMessage.cpp which already takes care of it.
 	 */
 	bool doSlashCommand(Player* player, Message* packet) {
+
+		if (!checkStateMask(player))
+			return false;
+
+		if (!checkInvalidPostures(player))
+			return false;
+
 		//player is prelocked if coming from ObjectControllerMessage.cpp
 		uint64 objectid = packet->parseLong();
 
@@ -91,4 +98,3 @@ public:
 };
 
 #endif //GUILDREMOVESLASHCOMMAND_H_
-

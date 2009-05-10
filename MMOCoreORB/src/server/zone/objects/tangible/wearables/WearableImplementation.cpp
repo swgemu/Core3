@@ -222,7 +222,7 @@ void WearableImplementation::sendRadialResponseTo(Player* player, ObjectMenuResp
 	if (player->getInventoryItem(getObjectID()) != NULL) {
 
 		if (getConditionDamage() > 0)
-			omr->addRadialParent(70, 3, "sui:repair");
+			omr->addRadialParent(70, 3, "@sui:repair");
 	}
 
 	//TODO:Cell permission check

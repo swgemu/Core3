@@ -367,7 +367,7 @@ public:
 	//static int addGsaySlashCommand(lua_State* L);
 	//static int addGtellSlashCommand(lua_State* L);
 	//static int addGuildSlashCommand(lua_State* L);
-	static int addGuildremoveSlashCommand(lua_State* L);
+	static int addGuildRemoveSlashCommand(lua_State* L);
 	static int addGuildsaySlashCommand(lua_State* L);
 	static int addGuildstatusSlashCommand(lua_State* L);
 	static int addHandleClientLoginSlashCommand(lua_State* L);
