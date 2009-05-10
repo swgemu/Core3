@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REQUESTCHARACTERSHEETINFOSLASHCOMMAND_H_
+
 #define REQUESTCHARACTERSHEETINFOSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../packets.h"
@@ -75,3 +77,4 @@ public:
 };
 
 #endif //REQUESTCHARACTERSHEETINFOSLASHCOMMAND_H_
+

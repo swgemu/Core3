@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef JOINGAMESLASHCOMMAND_H_
+
 #define JOINGAMESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

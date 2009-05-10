@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef BACTASPRAYSLASHCOMMAND_H_
+
 #define BACTASPRAYSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

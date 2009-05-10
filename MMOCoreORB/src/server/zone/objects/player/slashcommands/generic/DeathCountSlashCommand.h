@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DEATHCOUNTSLASHCOMMAND_H_
+
 #define DEATHCOUNTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

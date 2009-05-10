@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef FORCECUREDISEASESLASHCOMMAND_H_
+
 #define FORCECUREDISEASESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

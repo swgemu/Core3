@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef HANDLECLIENTLOGINSLASHCOMMAND_H_
+
 #define HANDLECLIENTLOGINSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

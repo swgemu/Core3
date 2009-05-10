@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef TOGGLEDISPLAYINGFACTIONRANKSLASHCOMMAND_H_
+
 #define TOGGLEDISPLAYINGFACTIONRANKSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -70,3 +72,4 @@ public:
 };
 
 #endif //TOGGLEDISPLAYINGFACTIONRANKSLASHCOMMAND_H_
+

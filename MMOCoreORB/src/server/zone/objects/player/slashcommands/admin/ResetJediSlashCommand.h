@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef RESETJEDISLASHCOMMAND_H_
+
 #define RESETJEDISLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

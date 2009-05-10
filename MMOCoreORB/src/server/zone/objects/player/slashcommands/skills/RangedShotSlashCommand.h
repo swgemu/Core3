@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef RANGEDSHOTSLASHCOMMAND_H_
+
 #define RANGEDSHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

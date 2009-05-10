@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SETFORMUPSLASHCOMMAND_H_
+
 #define SETFORMUPSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

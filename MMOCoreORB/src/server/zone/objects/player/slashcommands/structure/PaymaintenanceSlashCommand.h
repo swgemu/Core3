@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef PAYMAINTENANCESLASHCOMMAND_H_
+
 #define PAYMAINTENANCESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

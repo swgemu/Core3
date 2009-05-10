@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef UNSNOOPSLASHCOMMAND_H_
+
 #define UNSNOOPSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

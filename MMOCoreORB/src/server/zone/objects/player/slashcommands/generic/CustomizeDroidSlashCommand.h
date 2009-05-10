@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CUSTOMIZEDROIDSLASHCOMMAND_H_
+
 #define CUSTOMIZEDROIDSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

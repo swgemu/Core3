@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef HOLOEMOTESLASHCOMMAND_H_
+
 #define HOLOEMOTESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

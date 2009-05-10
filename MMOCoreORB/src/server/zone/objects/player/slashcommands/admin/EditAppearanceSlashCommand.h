@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef EDITAPPEARANCESLASHCOMMAND_H_
+
 #define EDITAPPEARANCESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

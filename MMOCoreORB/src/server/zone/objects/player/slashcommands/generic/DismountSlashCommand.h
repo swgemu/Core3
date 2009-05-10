@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DISMOUNTSLASHCOMMAND_H_
+
 #define DISMOUNTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../creature/CreatureObject.h"
@@ -77,3 +79,4 @@ public:
 };
 
 #endif //DISMOUNTSLASHCOMMAND_H_
+

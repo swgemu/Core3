@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef OVERRIDEACTIVEMONTHSSLASHCOMMAND_H_
+
 #define OVERRIDEACTIVEMONTHSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

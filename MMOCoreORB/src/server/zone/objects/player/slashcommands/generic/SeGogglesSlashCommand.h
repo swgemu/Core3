@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SEGOGGLESSLASHCOMMAND_H_
+
 #define SEGOGGLESSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

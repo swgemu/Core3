@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef PLACESTRUCTUREMODESLASHCOMMAND_H_
+
 #define PLACESTRUCTUREMODESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

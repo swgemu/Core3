@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GALLOPSTOPSLASHCOMMAND_H_
+
 #define GALLOPSTOPSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

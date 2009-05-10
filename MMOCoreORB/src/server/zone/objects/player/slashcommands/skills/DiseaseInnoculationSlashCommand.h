@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DISEASEINNOCULATIONSLASHCOMMAND_H_
+
 #define DISEASEINNOCULATIONSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef LEAVEGAMESLASHCOMMAND_H_
+
 #define LEAVEGAMESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

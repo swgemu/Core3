@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef THROWGRENADESLASHCOMMAND_H_
+
 #define THROWGRENADESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

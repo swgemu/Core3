@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef RESSAMPLELOOPSLASHCOMMAND_H_
+
 #define RESSAMPLELOOPSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

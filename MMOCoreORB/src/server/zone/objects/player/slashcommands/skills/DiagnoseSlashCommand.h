@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DIAGNOSESLASHCOMMAND_H_
+
 #define DIAGNOSESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

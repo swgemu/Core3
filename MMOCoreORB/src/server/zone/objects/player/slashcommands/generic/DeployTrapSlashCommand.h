@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DEPLOYTRAPSLASHCOMMAND_H_
+
 #define DEPLOYTRAPSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

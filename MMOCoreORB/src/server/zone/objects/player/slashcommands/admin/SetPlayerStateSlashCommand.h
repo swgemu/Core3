@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SETPLAYERSTATESLASHCOMMAND_H_
+
 #define SETPLAYERSTATESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

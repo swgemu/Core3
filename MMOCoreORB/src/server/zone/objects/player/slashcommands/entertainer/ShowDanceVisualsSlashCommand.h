@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SHOWDANCEVISUALSSLASHCOMMAND_H_
+
 #define SHOWDANCEVISUALSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

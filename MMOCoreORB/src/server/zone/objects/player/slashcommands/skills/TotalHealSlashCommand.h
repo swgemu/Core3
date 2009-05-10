@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef TOTALHEALSLASHCOMMAND_H_
+
 #define TOTALHEALSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

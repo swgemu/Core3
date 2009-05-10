@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REMOVEALLOWEDPLAYERSLASHCOMMAND_H_
+
 #define REMOVEALLOWEDPLAYERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

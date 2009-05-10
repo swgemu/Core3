@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef BINDINGSTRIKESLASHCOMMAND_H_
+
 #define BINDINGSTRIKESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

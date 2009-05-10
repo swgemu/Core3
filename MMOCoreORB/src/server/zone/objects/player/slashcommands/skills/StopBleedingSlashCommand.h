@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef STOPBLEEDINGSLASHCOMMAND_H_
+
 #define STOPBLEEDINGSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

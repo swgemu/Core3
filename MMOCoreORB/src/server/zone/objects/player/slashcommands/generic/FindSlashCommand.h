@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef FINDSLASHCOMMAND_H_
+
 #define FINDSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

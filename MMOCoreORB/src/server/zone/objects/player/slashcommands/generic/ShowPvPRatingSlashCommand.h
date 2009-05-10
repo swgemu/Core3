@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SHOWPVPRATINGSLASHCOMMAND_H_
+
 #define SHOWPVPRATINGSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -73,3 +75,4 @@ public:
 };
 
 #endif //SHOWPVPRATINGSLASHCOMMAND_H_
+

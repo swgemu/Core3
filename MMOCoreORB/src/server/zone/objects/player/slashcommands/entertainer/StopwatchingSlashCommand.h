@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef STOPWATCHINGSLASHCOMMAND_H_
+
 #define STOPWATCHINGSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -72,3 +74,4 @@ public:
 };
 
 #endif //STOPWATCHINGSLASHCOMMAND_H_
+

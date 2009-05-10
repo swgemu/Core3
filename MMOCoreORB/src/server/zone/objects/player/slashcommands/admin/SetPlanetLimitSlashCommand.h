@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SETPLANETLIMITSLASHCOMMAND_H_
+
 #define SETPLANETLIMITSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

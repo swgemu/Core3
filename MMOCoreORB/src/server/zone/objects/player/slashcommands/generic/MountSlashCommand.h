@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef MOUNTSLASHCOMMAND_H_
+
 #define MOUNTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../creature/CreatureObject.h"
@@ -89,3 +91,4 @@ public:
 };
 
 #endif //MOUNTSLASHCOMMAND_H_
+

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef OPENCONTAINERSLASHCOMMAND_H_
+
 #define OPENCONTAINERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../tangible/TangibleObject.h"
@@ -101,3 +103,4 @@ public:
 };
 
 #endif //OPENCONTAINERSLASHCOMMAND_H_
+

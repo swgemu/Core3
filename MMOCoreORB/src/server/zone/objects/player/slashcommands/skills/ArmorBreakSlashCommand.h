@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef ARMORBREAKSLASHCOMMAND_H_
+
 #define ARMORBREAKSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

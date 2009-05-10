@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SERVERDESTROYOBJECTSLASHCOMMAND_H_
+
 #define SERVERDESTROYOBJECTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../managers/item/ItemManager.h"
@@ -197,3 +199,4 @@ public:
 };
 
 #endif //SERVERDESTROYOBJECTSLASHCOMMAND_H_
+

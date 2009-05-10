@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef ANONSLASHCOMMAND_H_
+
 #define ANONSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../PlayerObjectImplementation.h"
@@ -71,3 +73,4 @@ public:
 };
 
 #endif //ANONSLASHCOMMAND_H_
+

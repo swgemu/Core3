@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GRANTBADGESLASHCOMMAND_H_
+
 #define GRANTBADGESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

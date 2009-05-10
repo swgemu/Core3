@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DESTROYSLASHCOMMAND_H_
+
 #define DESTROYSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

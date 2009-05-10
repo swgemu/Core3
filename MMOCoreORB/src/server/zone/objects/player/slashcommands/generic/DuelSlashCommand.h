@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DUELSLASHCOMMAND_H_
+
 #define DUELSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../managers/combat/CombatManager.h"
@@ -75,3 +77,4 @@ public:
 };
 
 #endif //DUELSLASHCOMMAND_H_
+

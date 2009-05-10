@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef HARVESTERACTIVATESLASHCOMMAND_H_
+
 #define HARVESTERACTIVATESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../structure/installation/InstallationObject.h"
@@ -97,3 +99,4 @@ public:
 };
 
 #endif //HARVESTERACTIVATESLASHCOMMAND_H_
+

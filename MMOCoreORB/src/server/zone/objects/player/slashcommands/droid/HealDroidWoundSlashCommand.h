@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef HEALDROIDWOUNDSLASHCOMMAND_H_
+
 #define HEALDROIDWOUNDSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

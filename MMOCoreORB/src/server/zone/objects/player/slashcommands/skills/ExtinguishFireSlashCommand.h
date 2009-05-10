@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef EXTINGUISHFIRESLASHCOMMAND_H_
+
 #define EXTINGUISHFIRESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SETMOODINTERNALSLASHCOMMAND_H_
+
 #define SETMOODINTERNALSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../../chat/ChatManager.h"
@@ -75,3 +77,4 @@ public:
 };
 
 #endif //SETMOODINTERNALSLASHCOMMAND_H_
+

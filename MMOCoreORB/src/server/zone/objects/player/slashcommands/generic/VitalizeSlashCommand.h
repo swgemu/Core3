@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef VITALIZESLASHCOMMAND_H_
+
 #define VITALIZESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef HARVESTERMAKECRATESLASHCOMMAND_H_
+
 #define HARVESTERMAKECRATESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

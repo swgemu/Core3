@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef STARTLESHOTSLASHCOMMAND_H_
+
 #define STARTLESHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

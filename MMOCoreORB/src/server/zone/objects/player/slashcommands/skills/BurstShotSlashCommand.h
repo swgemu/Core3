@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef BURSTSHOTSLASHCOMMAND_H_
+
 #define BURSTSHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

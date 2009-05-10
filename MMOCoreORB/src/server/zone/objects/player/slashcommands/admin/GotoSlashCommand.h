@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GOTOSLASHCOMMAND_H_
+
 #define GOTOSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

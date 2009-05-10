@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CITYBANSLASHCOMMAND_H_
+
 #define CITYBANSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

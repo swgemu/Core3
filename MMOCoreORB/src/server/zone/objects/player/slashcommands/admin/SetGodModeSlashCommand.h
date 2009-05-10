@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SETGODMODESLASHCOMMAND_H_
+
 #define SETGODMODESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

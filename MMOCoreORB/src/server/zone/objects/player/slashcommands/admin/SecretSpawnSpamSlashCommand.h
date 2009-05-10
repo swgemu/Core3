@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SECRETSPAWNSPAMSLASHCOMMAND_H_
+
 #define SECRETSPAWNSPAMSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

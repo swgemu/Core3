@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef HARVESTCORPSESLASHCOMMAND_H_
+
 #define HARVESTCORPSESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../Zone.h"
@@ -127,3 +129,4 @@ public:
 };
 
 #endif //HARVESTCORPSESLASHCOMMAND_H_
+

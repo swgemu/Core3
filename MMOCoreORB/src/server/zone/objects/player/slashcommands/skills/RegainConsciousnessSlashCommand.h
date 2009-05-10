@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REGAINCONSCIOUSNESSSLASHCOMMAND_H_
+
 #define REGAINCONSCIOUSNESSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef APPLYPOWERUPSLASHCOMMAND_H_
+
 #define APPLYPOWERUPSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -78,3 +80,4 @@ public:
 };
 
 #endif //APPLYPOWERUPSLASHCOMMAND_H_
+

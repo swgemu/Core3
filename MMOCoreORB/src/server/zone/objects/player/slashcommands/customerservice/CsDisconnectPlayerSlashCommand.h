@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CSDISCONNECTPLAYERSLASHCOMMAND_H_
+
 #define CSDISCONNECTPLAYERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

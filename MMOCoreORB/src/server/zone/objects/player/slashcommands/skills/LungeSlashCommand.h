@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef LUNGESLASHCOMMAND_H_
+
 #define LUNGESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

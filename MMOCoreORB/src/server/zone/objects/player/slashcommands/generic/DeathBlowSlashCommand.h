@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DEATHBLOWSLASHCOMMAND_H_
+
 #define DEATHBLOWSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../managers/combat/CombatManager.h"
@@ -99,3 +101,4 @@ public:
 };
 
 #endif //DEATHBLOWSLASHCOMMAND_H_
+

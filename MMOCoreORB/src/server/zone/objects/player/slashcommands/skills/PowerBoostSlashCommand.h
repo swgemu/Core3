@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef POWERBOOSTSLASHCOMMAND_H_
+
 #define POWERBOOSTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

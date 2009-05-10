@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CRIPPLINGSHOTSLASHCOMMAND_H_
+
 #define CRIPPLINGSHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

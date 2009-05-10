@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SETLOGINMESSAGESLASHCOMMAND_H_
+
 #define SETLOGINMESSAGESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

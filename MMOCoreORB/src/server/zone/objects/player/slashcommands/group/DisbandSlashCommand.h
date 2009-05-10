@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DISBANDSLASHCOMMAND_H_
+
 #define DISBANDSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../group/GroupObject.h"
@@ -86,3 +88,4 @@ public:
 };
 
 #endif //DISBANDSLASHCOMMAND_H_
+

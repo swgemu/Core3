@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef NEUROTOXINSLASHCOMMAND_H_
+
 #define NEUROTOXINSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

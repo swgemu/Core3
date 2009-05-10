@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef NUTRIENTINJECTIONSLASHCOMMAND_H_
+
 #define NUTRIENTINJECTIONSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

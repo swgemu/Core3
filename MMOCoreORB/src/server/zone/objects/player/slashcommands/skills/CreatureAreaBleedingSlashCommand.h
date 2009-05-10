@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CREATUREAREABLEEDINGSLASHCOMMAND_H_
+
 #define CREATUREAREABLEEDINGSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

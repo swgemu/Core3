@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef COMBATESCAPESLASHCOMMAND_H_
+
 #define COMBATESCAPESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

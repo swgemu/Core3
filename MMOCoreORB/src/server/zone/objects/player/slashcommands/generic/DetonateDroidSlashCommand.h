@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DETONATEDROIDSLASHCOMMAND_H_
+
 #define DETONATEDROIDSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

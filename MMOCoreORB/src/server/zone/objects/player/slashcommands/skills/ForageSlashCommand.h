@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef FORAGESLASHCOMMAND_H_
+
 #define FORAGESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

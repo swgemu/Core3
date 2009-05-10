@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef BODYHITSLASHCOMMAND_H_
+
 #define BODYHITSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

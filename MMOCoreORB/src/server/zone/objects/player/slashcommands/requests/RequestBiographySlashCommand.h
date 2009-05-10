@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REQUESTBIOGRAPHYSLASHCOMMAND_H_
+
 #define REQUESTBIOGRAPHYSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../packets.h"
@@ -99,3 +101,4 @@ public:
 };
 
 #endif //REQUESTBIOGRAPHYSLASHCOMMAND_H_
+

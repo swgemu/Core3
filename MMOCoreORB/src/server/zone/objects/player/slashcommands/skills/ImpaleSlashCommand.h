@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef IMPALESLASHCOMMAND_H_
+
 #define IMPALESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

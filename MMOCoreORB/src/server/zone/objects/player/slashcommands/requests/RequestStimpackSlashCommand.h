@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REQUESTSTIMPACKSLASHCOMMAND_H_
+
 #define REQUESTSTIMPACKSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

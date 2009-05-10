@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef TELEPORTTOSLASHCOMMAND_H_
+
 #define TELEPORTTOSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

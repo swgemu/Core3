@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef STANDSLASHCOMMAND_H_
+
 #define STANDSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -70,3 +72,4 @@ public:
 };
 
 #endif //STANDSLASHCOMMAND_H_
+

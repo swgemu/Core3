@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SAMPLESLASHCOMMAND_H_
+
 #define SAMPLESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -71,3 +73,4 @@ public:
 };
 
 #endif //SAMPLESLASHCOMMAND_H_
+

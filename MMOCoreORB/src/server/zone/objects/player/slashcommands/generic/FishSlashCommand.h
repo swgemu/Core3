@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef FISHSLASHCOMMAND_H_
+
 #define FISHSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

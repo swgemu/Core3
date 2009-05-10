@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SETMATCHMAKINGCHARACTERIDSLASHCOMMAND_H_
+
 #define SETMATCHMAKINGCHARACTERIDSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

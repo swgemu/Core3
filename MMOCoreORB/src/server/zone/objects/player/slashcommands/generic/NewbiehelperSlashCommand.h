@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef NEWBIEHELPERSLASHCOMMAND_H_
+
 #define NEWBIEHELPERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -70,3 +72,4 @@ public:
 };
 
 #endif //NEWBIEHELPERSLASHCOMMAND_H_
+

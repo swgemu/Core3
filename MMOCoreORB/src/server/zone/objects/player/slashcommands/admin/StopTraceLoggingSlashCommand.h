@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef STOPTRACELOGGINGSLASHCOMMAND_H_
+
 #define STOPTRACELOGGINGSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

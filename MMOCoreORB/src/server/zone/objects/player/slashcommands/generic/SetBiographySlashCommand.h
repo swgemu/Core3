@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SETBIOGRAPHYSLASHCOMMAND_H_
+
 #define SETBIOGRAPHYSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -75,3 +77,4 @@ public:
 };
 
 #endif //SETBIOGRAPHYSLASHCOMMAND_H_
+

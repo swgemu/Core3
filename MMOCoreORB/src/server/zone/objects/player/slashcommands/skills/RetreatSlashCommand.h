@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef RETREATSLASHCOMMAND_H_
+
 #define RETREATSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

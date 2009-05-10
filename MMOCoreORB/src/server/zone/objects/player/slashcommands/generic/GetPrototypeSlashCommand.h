@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GETPROTOTYPESLASHCOMMAND_H_
+
 #define GETPROTOTYPESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

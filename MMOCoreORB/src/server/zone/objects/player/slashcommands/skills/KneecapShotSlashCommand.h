@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef KNEECAPSHOTSLASHCOMMAND_H_
+
 #define KNEECAPSHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

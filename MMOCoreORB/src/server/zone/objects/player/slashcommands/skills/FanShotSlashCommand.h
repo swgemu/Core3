@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef FANSHOTSLASHCOMMAND_H_
+
 #define FANSHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

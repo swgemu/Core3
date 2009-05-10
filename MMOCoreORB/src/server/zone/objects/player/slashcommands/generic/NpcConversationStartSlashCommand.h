@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef NPCCONVERSATIONSTARTSLASHCOMMAND_H_
+
 #define NPCCONVERSATIONSTARTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -95,3 +97,4 @@ public:
 };
 
 #endif //NPCCONVERSATIONSTARTSLASHCOMMAND_H_
+

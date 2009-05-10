@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DEFUSEMINEFIELDSLASHCOMMAND_H_
+
 #define DEFUSEMINEFIELDSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

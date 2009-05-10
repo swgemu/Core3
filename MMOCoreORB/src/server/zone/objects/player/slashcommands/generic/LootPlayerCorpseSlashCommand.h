@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef LOOTPLAYERCORPSESLASHCOMMAND_H_
+
 #define LOOTPLAYERCORPSESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

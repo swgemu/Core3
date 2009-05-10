@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef PLACESTRUCTURESLASHCOMMAND_H_
+
 #define PLACESTRUCTURESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../managers/structure/StructureManager.h"
@@ -108,3 +110,4 @@ public:
 };
 
 #endif //PLACESTRUCTURESLASHCOMMAND_H_
+

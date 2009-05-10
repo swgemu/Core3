@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SAMPLEDNASLASHCOMMAND_H_
+
 #define SAMPLEDNASLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

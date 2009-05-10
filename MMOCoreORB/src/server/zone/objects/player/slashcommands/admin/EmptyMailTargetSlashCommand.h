@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef EMPTYMAILTARGETSLASHCOMMAND_H_
+
 #define EMPTYMAILTARGETSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

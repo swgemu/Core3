@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SETFIRSTNAMESLASHCOMMAND_H_
+
 #define SETFIRSTNAMESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

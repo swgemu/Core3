@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DECLINESLASHCOMMAND_H_
+
 #define DECLINESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../managers/combat/CombatManager.h"
@@ -89,3 +91,4 @@ public:
 };
 
 #endif //DECLINESLASHCOMMAND_H_
+

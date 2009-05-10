@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GETATTRIBUTESSLASHCOMMAND_H_
+
 #define GETATTRIBUTESSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GENERATECRAFTEDITEMSLASHCOMMAND_H_
+
 #define GENERATECRAFTEDITEMSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

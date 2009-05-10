@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef PARRYRIPOSTESLASHCOMMAND_H_
+
 #define PARRYRIPOSTESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

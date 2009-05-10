@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef AUCTIONQUERYSLASHCOMMAND_H_
+
 #define AUCTIONQUERYSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

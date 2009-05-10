@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CREDITSSLASHCOMMAND_H_
+
 #define CREDITSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

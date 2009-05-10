@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef MASKSCENTSLASHCOMMAND_H_
+
 #define MASKSCENTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

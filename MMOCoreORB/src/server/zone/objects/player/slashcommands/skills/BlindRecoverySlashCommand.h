@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef BLINDRECOVERYSLASHCOMMAND_H_
+
 #define BLINDRECOVERYSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

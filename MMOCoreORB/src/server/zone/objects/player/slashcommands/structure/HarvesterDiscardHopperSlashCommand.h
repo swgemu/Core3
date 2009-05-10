@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef HARVESTERDISCARDHOPPERSLASHCOMMAND_H_
+
 #define HARVESTERDISCARDHOPPERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../structure/installation/InstallationObject.h"
@@ -100,3 +102,4 @@ public:
 };
 
 #endif //HARVESTERDISCARDHOPPERSLASHCOMMAND_H_
+

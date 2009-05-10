@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SNIPERSHOTSLASHCOMMAND_H_
+
 #define SNIPERSHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef TAKECOVERSLASHCOMMAND_H_
+
 #define TAKECOVERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

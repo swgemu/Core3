@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CONSENTSLASHCOMMAND_H_
+
 #define CONSENTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../player/Player.h"
@@ -98,3 +100,4 @@ public:
 };
 
 #endif //CONSENTSLASHCOMMAND_H_
+

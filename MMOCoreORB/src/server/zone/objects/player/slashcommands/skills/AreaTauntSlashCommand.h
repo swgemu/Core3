@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef AREATAUNTSLASHCOMMAND_H_
+
 #define AREATAUNTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

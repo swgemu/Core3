@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef LISTACTIVEQUESTSSLASHCOMMAND_H_
+
 #define LISTACTIVEQUESTSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

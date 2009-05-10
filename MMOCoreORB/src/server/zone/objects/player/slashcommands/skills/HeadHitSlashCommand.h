@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef HEADHITSLASHCOMMAND_H_
+
 #define HEADHITSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

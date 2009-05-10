@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef IMAGEDESIGNSLASHCOMMAND_H_
+
 #define IMAGEDESIGNSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../packets.h"
@@ -168,3 +170,4 @@ public:
 };
 
 #endif //IMAGEDESIGNSLASHCOMMAND_H_
+

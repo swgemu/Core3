@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REQUESTMANFSCHEMATICSLOTSSLASHCOMMAND_H_
+
 #define REQUESTMANFSCHEMATICSLOTSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

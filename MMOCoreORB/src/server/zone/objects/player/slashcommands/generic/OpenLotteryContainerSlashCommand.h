@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef OPENLOTTERYCONTAINERSLASHCOMMAND_H_
+
 #define OPENLOTTERYCONTAINERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

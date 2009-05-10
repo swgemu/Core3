@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef FULLAUTOAREASLASHCOMMAND_H_
+
 #define FULLAUTOAREASLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

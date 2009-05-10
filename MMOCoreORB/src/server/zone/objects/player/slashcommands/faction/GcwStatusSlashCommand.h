@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GCWSTATUSSLASHCOMMAND_H_
+
 #define GCWSTATUSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

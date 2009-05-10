@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CLIENTQUALIFIEDFORSKILLSLASHCOMMAND_H_
+
 #define CLIENTQUALIFIEDFORSKILLSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

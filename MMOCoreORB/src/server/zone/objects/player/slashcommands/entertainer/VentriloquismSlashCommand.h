@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef VENTRILOQUISMSLASHCOMMAND_H_
+
 #define VENTRILOQUISMSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

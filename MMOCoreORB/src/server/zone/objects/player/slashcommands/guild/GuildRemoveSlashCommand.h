@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GUILDREMOVESLASHCOMMAND_H_
+
 #define GUILDREMOVESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../managers/guild/GuildManager.h"
@@ -89,3 +91,4 @@ public:
 };
 
 #endif //GUILDREMOVESLASHCOMMAND_H_
+

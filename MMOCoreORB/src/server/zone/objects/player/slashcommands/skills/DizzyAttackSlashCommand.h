@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DIZZYATTACKSLASHCOMMAND_H_
+
 #define DIZZYATTACKSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

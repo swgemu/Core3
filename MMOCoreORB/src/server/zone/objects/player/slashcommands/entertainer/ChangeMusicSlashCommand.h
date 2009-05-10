@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CHANGEMUSICSLASHCOMMAND_H_
+
 #define CHANGEMUSICSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -76,3 +78,4 @@ public:
 };
 
 #endif //CHANGEMUSICSLASHCOMMAND_H_
+

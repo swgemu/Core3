@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef FREEZEPLAYERSLASHCOMMAND_H_
+
 #define FREEZEPLAYERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

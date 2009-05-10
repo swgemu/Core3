@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef FACTORYCRATESPLITSLASHCOMMAND_H_
+
 #define FACTORYCRATESPLITSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

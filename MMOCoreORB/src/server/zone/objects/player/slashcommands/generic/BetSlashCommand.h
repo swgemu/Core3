@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef BETSLASHCOMMAND_H_
+
 #define BETSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

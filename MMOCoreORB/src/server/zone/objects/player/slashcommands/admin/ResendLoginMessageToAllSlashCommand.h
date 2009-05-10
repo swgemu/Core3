@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef RESENDLOGINMESSAGETOALLSLASHCOMMAND_H_
+
 #define RESENDLOGINMESSAGETOALLSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

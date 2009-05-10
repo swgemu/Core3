@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef MINDBLASTSLASHCOMMAND_H_
+
 #define MINDBLASTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

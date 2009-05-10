@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GMFORCERANKSLASHCOMMAND_H_
+
 #define GMFORCERANKSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

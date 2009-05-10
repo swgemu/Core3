@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CREATENPCSLASHCOMMAND_H_
+
 #define CREATENPCSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CORPSESLASHCOMMAND_H_
+
 #define CORPSESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

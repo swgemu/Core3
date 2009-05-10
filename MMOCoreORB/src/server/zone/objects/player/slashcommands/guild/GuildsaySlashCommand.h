@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GUILDSAYSLASHCOMMAND_H_
+
 #define GUILDSAYSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../../chat/ChatManager.h"
@@ -75,3 +77,4 @@ public:
 };
 
 #endif //GUILDSAYSLASHCOMMAND_H_
+

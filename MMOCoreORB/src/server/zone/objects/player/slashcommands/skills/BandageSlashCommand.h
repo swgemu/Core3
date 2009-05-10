@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef BANDAGESLASHCOMMAND_H_
+
 #define BANDAGESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

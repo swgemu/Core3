@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SPINATTACKSLASHCOMMAND_H_
+
 #define SPINATTACKSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

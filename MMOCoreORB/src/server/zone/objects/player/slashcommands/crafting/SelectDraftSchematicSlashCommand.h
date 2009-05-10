@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SELECTDRAFTSCHEMATICSLASHCOMMAND_H_
+
 #define SELECTDRAFTSCHEMATICSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../tangible/crafting/CraftingTool.h"
@@ -137,3 +139,4 @@ void parseCancelCraftingSession(Player* player, Message* packet) {
 };
 
 #endif //SELECTDRAFTSCHEMATICSLASHCOMMAND_H_
+

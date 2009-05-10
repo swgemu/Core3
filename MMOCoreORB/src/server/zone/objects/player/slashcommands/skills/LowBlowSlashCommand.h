@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef LOWBLOWSLASHCOMMAND_H_
+
 #define LOWBLOWSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

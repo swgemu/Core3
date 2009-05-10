@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GETIGNORELISTSLASHCOMMAND_H_
+
 #define GETIGNORELISTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

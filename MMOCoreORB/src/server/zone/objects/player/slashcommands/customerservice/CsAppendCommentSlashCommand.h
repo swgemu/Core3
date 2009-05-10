@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CSAPPENDCOMMENTSLASHCOMMAND_H_
+
 #define CSAPPENDCOMMENTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

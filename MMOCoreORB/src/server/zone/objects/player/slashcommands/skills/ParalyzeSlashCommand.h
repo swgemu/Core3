@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef PARALYZESLASHCOMMAND_H_
+
 #define PARALYZESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

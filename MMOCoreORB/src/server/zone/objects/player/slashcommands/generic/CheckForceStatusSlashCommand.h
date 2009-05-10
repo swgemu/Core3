@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CHECKFORCESTATUSSLASHCOMMAND_H_
+
 #define CHECKFORCESTATUSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -70,3 +72,4 @@ public:
 };
 
 #endif //CHECKFORCESTATUSSLASHCOMMAND_H_
+

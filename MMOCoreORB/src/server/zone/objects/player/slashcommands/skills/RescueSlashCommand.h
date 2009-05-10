@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef RESCUESLASHCOMMAND_H_
+
 #define RESCUESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

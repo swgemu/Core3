@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef BOARDSHUTTLESLASHCOMMAND_H_
+
 #define BOARDSHUTTLESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

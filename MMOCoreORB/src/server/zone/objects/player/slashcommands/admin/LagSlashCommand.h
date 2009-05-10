@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef LAGSLASHCOMMAND_H_
+
 #define LAGSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

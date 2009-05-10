@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef LEGHITSLASHCOMMAND_H_
+
 #define LEGHITSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

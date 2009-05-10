@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef PLACEDSHOTSLASHCOMMAND_H_
+
 #define PLACEDSHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

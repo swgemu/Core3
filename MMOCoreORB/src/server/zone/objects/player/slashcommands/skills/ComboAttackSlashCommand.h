@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef COMBOATTACKSLASHCOMMAND_H_
+
 #define COMBOATTACKSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

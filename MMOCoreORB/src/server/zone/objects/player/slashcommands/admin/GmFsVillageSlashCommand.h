@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GMFSVILLAGESLASHCOMMAND_H_
+
 #define GMFSVILLAGESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

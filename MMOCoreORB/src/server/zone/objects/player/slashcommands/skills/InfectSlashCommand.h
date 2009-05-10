@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef INFECTSLASHCOMMAND_H_
+
 #define INFECTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

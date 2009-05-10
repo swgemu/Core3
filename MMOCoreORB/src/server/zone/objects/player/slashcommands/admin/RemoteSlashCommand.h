@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REMOTESLASHCOMMAND_H_
+
 #define REMOTESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

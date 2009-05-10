@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef ENRAGEPETSSLASHCOMMAND_H_
+
 #define ENRAGEPETSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CYBORGCRITICALSNIPESLASHCOMMAND_H_
+
 #define CYBORGCRITICALSNIPESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

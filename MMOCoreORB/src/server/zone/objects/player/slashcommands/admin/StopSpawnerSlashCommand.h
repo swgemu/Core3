@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef STOPSPAWNERSLASHCOMMAND_H_
+
 #define STOPSPAWNERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

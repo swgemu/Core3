@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef WOOKIEEROARSLASHCOMMAND_H_
+
 #define WOOKIEEROARSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

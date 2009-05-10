@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef LEAVEGROUPSLASHCOMMAND_H_
+
 #define LEAVEGROUPSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../managers/group/GroupManager.h"
@@ -81,3 +83,4 @@ public:
 };
 
 #endif //LEAVEGROUPSLASHCOMMAND_H_
+

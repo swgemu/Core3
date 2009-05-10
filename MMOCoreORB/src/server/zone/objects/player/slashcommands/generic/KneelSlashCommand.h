@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef KNEELSLASHCOMMAND_H_
+
 #define KNEELSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -70,3 +72,4 @@ public:
 };
 
 #endif //KNEELSLASHCOMMAND_H_
+

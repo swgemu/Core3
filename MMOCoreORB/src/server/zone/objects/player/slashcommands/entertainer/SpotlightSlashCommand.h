@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SPOTLIGHTSLASHCOMMAND_H_
+
 #define SPOTLIGHTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

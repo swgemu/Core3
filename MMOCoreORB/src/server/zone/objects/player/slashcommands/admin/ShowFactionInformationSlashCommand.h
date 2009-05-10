@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SHOWFACTIONINFORMATIONSLASHCOMMAND_H_
+
 #define SHOWFACTIONINFORMATIONSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

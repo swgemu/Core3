@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GRANTSKILLSLASHCOMMAND_H_
+
 #define GRANTSKILLSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef PEACESLASHCOMMAND_H_
+
 #define PEACESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -69,3 +71,4 @@ public:
 };
 
 #endif //PEACESLASHCOMMAND_H_
+

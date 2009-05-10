@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SETMAXIMUMSPAWNTIMESLASHCOMMAND_H_
+
 #define SETMAXIMUMSPAWNTIMESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

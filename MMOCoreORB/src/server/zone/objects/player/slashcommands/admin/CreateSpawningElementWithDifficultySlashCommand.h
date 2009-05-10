@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CREATESPAWNINGELEMENTWITHDIFFICULTYSLASHCOMMAND_H_
+
 #define CREATESPAWNINGELEMENTWITHDIFFICULTYSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

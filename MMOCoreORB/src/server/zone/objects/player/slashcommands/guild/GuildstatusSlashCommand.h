@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GUILDSTATUSSLASHCOMMAND_H_
+
 #define GUILDSTATUSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

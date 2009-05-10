@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef LAUNCHFIREWORKSLASHCOMMAND_H_
+
 #define LAUNCHFIREWORKSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

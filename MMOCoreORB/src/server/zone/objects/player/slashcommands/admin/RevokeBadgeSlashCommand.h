@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REVOKEBADGESLASHCOMMAND_H_
+
 #define REVOKEBADGESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

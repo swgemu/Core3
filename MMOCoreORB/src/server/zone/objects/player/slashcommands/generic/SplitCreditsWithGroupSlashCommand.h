@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SPLITCREDITSWITHGROUPSLASHCOMMAND_H_
+
 #define SPLITCREDITSWITHGROUPSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

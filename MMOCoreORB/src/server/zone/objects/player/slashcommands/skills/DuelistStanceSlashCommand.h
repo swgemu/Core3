@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DUELISTSTANCESLASHCOMMAND_H_
+
 #define DUELISTSTANCESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CENTEROFBEINGSLASHCOMMAND_H_
+
 #define CENTEROFBEINGSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

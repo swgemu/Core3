@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CHARGESHOTSLASHCOMMAND_H_
+
 #define CHARGESHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

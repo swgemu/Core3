@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef EXTRACTOBJECTSLASHCOMMAND_H_
+
 #define EXTRACTOBJECTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../tangible/crafting/factorycrate/FactoryCrate.h"
@@ -97,3 +99,4 @@ public:
 };
 
 #endif //EXTRACTOBJECTSLASHCOMMAND_H_
+

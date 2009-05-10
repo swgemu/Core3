@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef BLEEDATTACKSLASHCOMMAND_H_
+
 #define BLEEDATTACKSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

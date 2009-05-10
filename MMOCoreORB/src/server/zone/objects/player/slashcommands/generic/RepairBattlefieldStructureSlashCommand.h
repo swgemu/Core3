@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REPAIRBATTLEFIELDSTRUCTURESLASHCOMMAND_H_
+
 #define REPAIRBATTLEFIELDSTRUCTURESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

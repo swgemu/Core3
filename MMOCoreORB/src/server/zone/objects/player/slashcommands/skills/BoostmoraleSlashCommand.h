@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef BOOSTMORALESLASHCOMMAND_H_
+
 #define BOOSTMORALESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

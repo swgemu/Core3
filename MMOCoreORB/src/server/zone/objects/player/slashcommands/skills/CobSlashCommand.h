@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef COBSLASHCOMMAND_H_
+
 #define COBSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CHANGEDANCESLASHCOMMAND_H_
+
 #define CHANGEDANCESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -76,3 +78,4 @@ public:
 };
 
 #endif //CHANGEDANCESLASHCOMMAND_H_
+

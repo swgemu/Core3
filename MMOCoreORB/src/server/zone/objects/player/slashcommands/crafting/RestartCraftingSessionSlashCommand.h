@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef RESTARTCRAFTINGSESSIONSLASHCOMMAND_H_
+
 #define RESTARTCRAFTINGSESSIONSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

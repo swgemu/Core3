@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CRAFTSLASHCOMMAND_H_
+
 #define CRAFTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

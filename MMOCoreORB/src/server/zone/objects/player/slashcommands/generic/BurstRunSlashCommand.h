@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef BURSTRUNSLASHCOMMAND_H_
+
 #define BURSTRUNSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -70,3 +72,4 @@ public:
 };
 
 #endif //BURSTRUNSLASHCOMMAND_H_
+

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SWEEPATTACKSLASHCOMMAND_H_
+
 #define SWEEPATTACKSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

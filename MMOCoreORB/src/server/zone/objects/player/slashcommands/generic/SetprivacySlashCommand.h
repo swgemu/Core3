@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SETPRIVACYSLASHCOMMAND_H_
+
 #define SETPRIVACYSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

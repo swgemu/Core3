@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef TOGGLEAWAYFROMKEYBOARDSLASHCOMMAND_H_
+
 #define TOGGLEAWAYFROMKEYBOARDSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -70,3 +72,4 @@ public:
 };
 
 #endif //TOGGLEAWAYFROMKEYBOARDSLASHCOMMAND_H_
+

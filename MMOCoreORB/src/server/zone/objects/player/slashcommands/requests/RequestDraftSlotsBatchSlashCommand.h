@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REQUESTDRAFTSLOTSBATCHSLASHCOMMAND_H_
+
 #define REQUESTDRAFTSLOTSBATCHSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../draftschematic/DraftSchematic.h"
@@ -91,3 +93,4 @@ public:
 };
 
 #endif //REQUESTDRAFTSLOTSBATCHSLASHCOMMAND_H_
+

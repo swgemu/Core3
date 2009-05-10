@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SHOWSPAWNREGIONSLASHCOMMAND_H_
+
 #define SHOWSPAWNREGIONSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -62,3 +64,4 @@ public:
 };
 
 #endif //SHOWSPAWNREGIONSLASHCOMMAND_H_
+

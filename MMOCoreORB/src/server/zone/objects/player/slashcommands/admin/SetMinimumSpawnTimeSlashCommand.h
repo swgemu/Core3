@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SETMINIMUMSPAWNTIMESLASHCOMMAND_H_
+
 #define SETMINIMUMSPAWNTIMESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

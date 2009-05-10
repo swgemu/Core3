@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SURRENDERSKILLSLASHCOMMAND_H_
+
 #define SURRENDERSKILLSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -87,3 +89,4 @@ public:
 };
 
 #endif //SURRENDERSKILLSLASHCOMMAND_H_
+

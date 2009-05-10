@@ -143,7 +143,7 @@ int FeatureManager::addIntegerFeature(lua_State* L) {
 		return 0;
 
 	String key = lua_tostring(L, 1);
-	int value = lua_tonumber(L, 2);
+	int value = lua_tointeger(L, 2);
 
 	intFeature->put(key,value);
 	return 0;

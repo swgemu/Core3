@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef WATCHSLASHCOMMAND_H_
+
 #define WATCHSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -72,3 +74,4 @@ public:
 };
 
 #endif //WATCHSLASHCOMMAND_H_
+

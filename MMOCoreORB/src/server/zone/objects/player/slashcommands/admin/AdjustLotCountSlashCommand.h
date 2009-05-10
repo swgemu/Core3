@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef ADJUSTLOTCOUNTSLASHCOMMAND_H_
+
 #define ADJUSTLOTCOUNTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

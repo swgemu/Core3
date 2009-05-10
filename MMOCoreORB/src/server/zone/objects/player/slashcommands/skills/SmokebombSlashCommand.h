@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SMOKEBOMBSLASHCOMMAND_H_
+
 #define SMOKEBOMBSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

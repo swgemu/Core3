@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef NPCSLASHCOMMAND_H_
+
 #define NPCSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

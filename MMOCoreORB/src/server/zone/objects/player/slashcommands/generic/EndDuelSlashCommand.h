@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef ENDDUELSLASHCOMMAND_H_
+
 #define ENDDUELSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../managers/combat/CombatManager.h"
@@ -76,3 +78,4 @@ public:
 };
 
 #endif //ENDDUELSLASHCOMMAND_H_
+

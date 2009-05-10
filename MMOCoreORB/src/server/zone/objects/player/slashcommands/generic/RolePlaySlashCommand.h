@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef ROLEPLAYSLASHCOMMAND_H_
+
 #define ROLEPLAYSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -70,3 +72,4 @@ public:
 };
 
 #endif //ROLEPLAYSLASHCOMMAND_H_
+

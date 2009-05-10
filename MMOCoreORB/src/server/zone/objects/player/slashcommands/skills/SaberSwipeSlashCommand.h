@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SABERSWIPESLASHCOMMAND_H_
+
 #define SABERSWIPESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

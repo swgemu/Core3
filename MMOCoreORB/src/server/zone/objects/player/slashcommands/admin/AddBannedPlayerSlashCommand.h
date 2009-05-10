@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef ADDBANNEDPLAYERSLASHCOMMAND_H_
+
 #define ADDBANNEDPLAYERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

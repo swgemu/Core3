@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DISTRACTSLASHCOMMAND_H_
+
 #define DISTRACTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

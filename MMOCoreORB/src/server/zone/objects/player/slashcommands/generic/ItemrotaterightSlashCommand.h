@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef ITEMROTATERIGHTSLASHCOMMAND_H_
+
 #define ITEMROTATERIGHTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

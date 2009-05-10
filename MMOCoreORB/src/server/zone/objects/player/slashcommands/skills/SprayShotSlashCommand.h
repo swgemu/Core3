@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SPRAYSHOTSLASHCOMMAND_H_
+
 #define SPRAYSHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

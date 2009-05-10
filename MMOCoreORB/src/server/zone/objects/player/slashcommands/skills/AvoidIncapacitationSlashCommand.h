@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef AVOIDINCAPACITATIONSLASHCOMMAND_H_
+
 #define AVOIDINCAPACITATIONSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DUMPTARGETINFORMATIONSLASHCOMMAND_H_
+
 #define DUMPTARGETINFORMATIONSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

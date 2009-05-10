@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef BODYSHOTSLASHCOMMAND_H_
+
 #define BODYSHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

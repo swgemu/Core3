@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef TAMESLASHCOMMAND_H_
+
 #define TAMESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

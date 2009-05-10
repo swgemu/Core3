@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef REQUESTBADGESSLASHCOMMAND_H_
+
 #define REQUESTBADGESSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../../../packets.h"
@@ -99,3 +101,4 @@ public:
 };
 
 #endif //REQUESTBADGESSLASHCOMMAND_H_
+

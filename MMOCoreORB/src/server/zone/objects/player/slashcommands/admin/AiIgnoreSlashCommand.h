@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef AIIGNORESLASHCOMMAND_H_
+
 #define AIIGNORESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

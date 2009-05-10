@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef ADDIGNORESLASHCOMMAND_H_
+
 #define ADDIGNORESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../PlayerObject.h"
@@ -82,3 +84,4 @@ public:
 };
 
 #endif //ADDIGNORESLASHCOMMAND_H_
+

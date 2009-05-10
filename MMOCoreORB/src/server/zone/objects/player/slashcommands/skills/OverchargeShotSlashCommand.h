@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef OVERCHARGESHOTSLASHCOMMAND_H_
+
 #define OVERCHARGESHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef GMJEDISTATESLASHCOMMAND_H_
+
 #define GMJEDISTATESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

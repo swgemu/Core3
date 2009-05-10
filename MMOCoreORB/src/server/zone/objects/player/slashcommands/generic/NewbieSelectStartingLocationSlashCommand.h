@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef NEWBIESELECTSTARTINGLOCATIONSLASHCOMMAND_H_
+
 #define NEWBIESELECTSTARTINGLOCATIONSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -119,3 +121,4 @@ public:
 };
 
 #endif //NEWBIESELECTSTARTINGLOCATIONSLASHCOMMAND_H_
+

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef ADDFRIENDSLASHCOMMAND_H_
+
 #define ADDFRIENDSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 #include "../../PlayerObject.h"
@@ -82,3 +84,4 @@ public:
 };
 
 #endif //ADDFRIENDSLASHCOMMAND_H_
+

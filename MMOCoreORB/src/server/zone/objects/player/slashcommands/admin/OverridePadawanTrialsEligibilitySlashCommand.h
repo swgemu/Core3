@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef OVERRIDEPADAWANTRIALSELIGIBILITYSLASHCOMMAND_H_
+
 #define OVERRIDEPADAWANTRIALSELIGIBILITYSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

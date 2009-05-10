@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef EMBOLDENPETSSLASHCOMMAND_H_
+
 #define EMBOLDENPETSSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

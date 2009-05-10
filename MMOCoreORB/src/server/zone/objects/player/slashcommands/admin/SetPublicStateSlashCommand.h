@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SETPUBLICSTATESLASHCOMMAND_H_
+
 #define SETPUBLICSTATESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

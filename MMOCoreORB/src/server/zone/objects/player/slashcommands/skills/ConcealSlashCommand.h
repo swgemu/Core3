@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CONCEALSLASHCOMMAND_H_
+
 #define CONCEALSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

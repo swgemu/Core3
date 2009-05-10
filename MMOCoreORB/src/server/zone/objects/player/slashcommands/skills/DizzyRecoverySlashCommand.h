@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DIZZYRECOVERYSLASHCOMMAND_H_
+
 #define DIZZYRECOVERYSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

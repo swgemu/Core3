@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef SETCURRENTSKILLTITLESLASHCOMMAND_H_
+
 #define SETCURRENTSKILLTITLESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -81,3 +83,4 @@ public:
 };
 
 #endif //SETCURRENTSKILLTITLESLASHCOMMAND_H_
+

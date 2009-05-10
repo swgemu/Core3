@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef CYBORGSTRENGTHBUFFSLASHCOMMAND_H_
+
 #define CYBORGSTRENGTHBUFFSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

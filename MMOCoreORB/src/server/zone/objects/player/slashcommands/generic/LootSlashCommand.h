@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef LOOTSLASHCOMMAND_H_
+
 #define LOOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
@@ -70,3 +72,4 @@ public:
 };
 
 #endif //LOOTSLASHCOMMAND_H_
+

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef FLASHSPEEDERSLASHCOMMAND_H_
+
 #define FLASHSPEEDERSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

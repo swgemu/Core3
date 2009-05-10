@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef DECLARERESIDENCESLASHCOMMAND_H_
+
 #define DECLARERESIDENCESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef TRANSFERSTRUCTURESLASHCOMMAND_H_
+
 #define TRANSFERSTRUCTURESLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 

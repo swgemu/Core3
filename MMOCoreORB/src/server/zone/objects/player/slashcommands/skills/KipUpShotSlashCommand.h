@@ -43,7 +43,9 @@ which carries forward this exception.
 */
 
 #ifndef KIPUPSHOTSLASHCOMMAND_H_
+
 #define KIPUPSHOTSLASHCOMMAND_H_
+
 
 #include "../../../scene/SceneObject.h"
 
