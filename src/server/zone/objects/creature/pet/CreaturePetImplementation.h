@@ -65,7 +65,6 @@ class CreatureManagerImplementation;
 class VehicleObject;
 
 class CreaturePetImplementation : public CreaturePetServant ,public VehicleObject {
-
 	uint8 petType;
 	uint8 commandState;
 	int commandToTrain;
@@ -84,6 +83,10 @@ class CreaturePetImplementation : public CreaturePetServant ,public VehicleObjec
 	PetFriendSet* befriendList;
 	Player* followTarget;
 
+	Coordinate* nextFollowPosition;
+	uint8 positionNumber;
+	uint8 formation;
+
 	static const bool debug = true;
 public:
 	static const uint8 CHPET = 0x10;
@@ -100,6 +103,10 @@ public:
 	static const uint8 STATESTAY = 3;
 	static const uint8 STATEPATROL = 4;
 	static const uint8 STATEFOLLOWOTHER = 5;
+
+	static const uint8 FORMATIONNONE = 0;
+	static const uint8 FORMATIONWEDGE = 1;
+	static const uint8 FORMATIONCOLUM = 2;
 
 public:
 
@@ -276,6 +283,14 @@ public:
 		commandState = state;
 	}
 
+	inline void setPositionNumber(uint8 posNumber) {
+		positionNumber = posNumber;
+	}
+
+	inline uint8 getPositionNumber() {
+		return positionNumber;
+	}
+
 	inline bool hasCommandTrained(int command) {
 		return !commandHelper->getBaseCommand(command).isEmpty();
 	}
@@ -298,7 +313,11 @@ public:
 	void healPetMind(int mod);
 	void handleGroupCommand();
 	void handleFriendCommand();
+	void handleFormationCommand(uint8 form);
 	void trainMount();
+
+	void calculateRelativePosition();
+	void updateFollowPosition();
 };
 
 #endif /* CREATUREPETIMPLEMENTATION_H_ */

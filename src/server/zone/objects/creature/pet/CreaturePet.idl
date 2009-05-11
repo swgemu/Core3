@@ -92,6 +92,8 @@ interface CreaturePet implements Creature {
 	boolean isInGuardState();
 
 	void doGrowUp(boolean updateTime = true);
+	void setGrowth(float gr);
+	void setLastGrowth(unsigned long stamp);
 
 	void initTrainingState(int command);
 	void setPetName(String name);
@@ -114,5 +116,8 @@ interface CreaturePet implements Creature {
 	void handleSpecialAttackCommand(Player player, int att);
 	void handleGroupCommand();
 	void handleFriendCommand();
+	void handleFormationCommand(unsigned int form);
 	void trainMount();
+
+	void setPositionNumber(int posNumber);
 }

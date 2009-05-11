@@ -1055,6 +1055,8 @@ public:
 
 	bool hasPetCalled();
 
+	int numberOfPetsCalled();
+
 	void registerPet(CreaturePet* pet);
 
 	void unregisterPet(CreaturePet* pet);
@@ -2063,6 +2065,8 @@ public:
 	bool hasFactionPetCalled();
 
 	bool hasPetCalled();
+
+	int numberOfPetsCalled();
 
 	void registerPet(CreaturePet* pet);
 

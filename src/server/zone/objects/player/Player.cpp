@@ -6236,12 +6236,24 @@ bool Player::hasPetCalled() {
 		return ((PlayerImplementation*) _impl)->hasPetCalled();
 }
 
-void Player::registerPet(CreaturePet* pet) {
+int Player::numberOfPetsCalled() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 487);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->numberOfPetsCalled();
+}
+
+void Player::registerPet(CreaturePet* pet) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 488);
 		method.addObjectParameter(pet);
 
 		method.executeWithVoidReturn();
@@ -6254,7 +6266,7 @@ void Player::unregisterPet(CreaturePet* pet) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 488);
+		DistributedMethod method(this, 489);
 		method.addObjectParameter(pet);
 
 		method.executeWithVoidReturn();
@@ -6267,7 +6279,7 @@ void Player::sendMessageToPets(const UnicodeString& message, unsigned long long 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 489);
+		DistributedMethod method(this, 490);
 		method.addUnicodeParameter(message);
 		method.addUnsignedLongParameter(petID);
 
@@ -6281,7 +6293,7 @@ bool Player::canStoreMorePets() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 490);
+		DistributedMethod method(this, 491);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -6293,7 +6305,7 @@ void Player::enragePets() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 491);
+		DistributedMethod method(this, 492);
 
 		method.executeWithVoidReturn();
 	} else
@@ -6305,7 +6317,7 @@ void Player::emboldenPets() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 492);
+		DistributedMethod method(this, 493);
 
 		method.executeWithVoidReturn();
 	} else
@@ -7767,21 +7779,24 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(hasPetCalled());
 		break;
 	case 487:
-		registerPet((CreaturePet*) inv->getObjectParameter());
+		resp->insertSignedInt(numberOfPetsCalled());
 		break;
 	case 488:
-		unregisterPet((CreaturePet*) inv->getObjectParameter());
+		registerPet((CreaturePet*) inv->getObjectParameter());
 		break;
 	case 489:
-		sendMessageToPets(inv->getUnicodeParameter(_param0_sendMessageToPets__UnicodeString_long_), inv->getUnsignedLongParameter());
+		unregisterPet((CreaturePet*) inv->getObjectParameter());
 		break;
 	case 490:
-		resp->insertBoolean(canStoreMorePets());
+		sendMessageToPets(inv->getUnicodeParameter(_param0_sendMessageToPets__UnicodeString_long_), inv->getUnsignedLongParameter());
 		break;
 	case 491:
-		enragePets();
+		resp->insertBoolean(canStoreMorePets());
 		break;
 	case 492:
+		enragePets();
+		break;
+	case 493:
 		emboldenPets();
 		break;
 	default:
@@ -9713,6 +9728,10 @@ bool PlayerAdapter::hasFactionPetCalled() {
 
 bool PlayerAdapter::hasPetCalled() {
 	return ((PlayerImplementation*) impl)->hasPetCalled();
+}
+
+int PlayerAdapter::numberOfPetsCalled() {
+	return ((PlayerImplementation*) impl)->numberOfPetsCalled();
 }
 
 void PlayerAdapter::registerPet(CreaturePet* pet) {

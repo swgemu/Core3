@@ -269,7 +269,7 @@ void CampSiteImplementation::enterNotification(Player* player) {
 		abortAbandonPhase();
 	}
 
-	player->sendSystemMessage("@camp:camp_enter");
+	player->sendSystemMessage("You are now entering a campsite; While in a campsite Doctors and Entertainers can heal your wounds or buff you.");
 	player->setCampModifier(campModifier);
 	player->setCampAggroMod(aggroMod);
 

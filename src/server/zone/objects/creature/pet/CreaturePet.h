@@ -71,6 +71,10 @@ public:
 
 	void doGrowUp(bool updateTime = true);
 
+	void setGrowth(float gr);
+
+	void setLastGrowth(unsigned long long stamp);
+
 	void initTrainingState(int command);
 
 	void setPetName(String& name);
@@ -109,7 +113,11 @@ public:
 
 	void handleFriendCommand();
 
+	void handleFormationCommand(unsigned int form);
+
 	void trainMount();
+
+	void setPositionNumber(int posNumber);
 
 protected:
 	CreaturePet(DummyConstructorParameter* param);
@@ -173,6 +181,10 @@ public:
 
 	void doGrowUp(bool updateTime);
 
+	void setGrowth(float gr);
+
+	void setLastGrowth(unsigned long long stamp);
+
 	void initTrainingState(int command);
 
 	void setPetName(String& name);
@@ -211,7 +223,11 @@ public:
 
 	void handleFriendCommand();
 
+	void handleFormationCommand(unsigned int form);
+
 	void trainMount();
+
+	void setPositionNumber(int posNumber);
 
 protected:
 	String _param0_setPetName__String_;
