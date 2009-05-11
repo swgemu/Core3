@@ -992,12 +992,13 @@ bool CreatureImplementation::doMovement() {
 
 	float directionangle = atan2(dy, dx);
 
-	float maxDistance = 5;
+	float maxDistance = 0.1f;
 
-	if (weaponObject != NULL)
+	if (weaponObject != NULL && isInCombat())
 		maxDistance = weaponObject->getMaxRange();
 
 	if (dist < maxDistance) {
+
 		//info("reached destintaion");
 
 		if (aggroedCreature == NULL) {
@@ -1031,6 +1032,17 @@ bool CreatureImplementation::doMovement() {
 	} else {
 		newPositionX = positionX + (actualSpeed * (dx / dist));
 		newPositionY = positionY + (actualSpeed * (dy / dist));
+
+		float newDistanceX = newPositionX - positionX;
+		float newDistanceY = newPositionY - positionY;
+
+		float travelDist = sqrt(newDistanceX * newDistanceX + newDistanceY * newDistanceY);
+
+		if (travelDist > maxDistance) {
+			newPositionX = waypointX;
+			newPositionY = waypointY;
+		}
+
 	}
 
 	if (cellID == 0)

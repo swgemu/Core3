@@ -87,7 +87,6 @@ CreaturePetImplementation::CreaturePetImplementation(Player* owner, uint64 oid) 
 	loggingname << "Pet = 0x" << oid;
 	setLoggingName(loggingname.toString());
 
-	optionsBitmask = 0x1080;
 	pvpStatusBitmask = 0x01;
 
 	setHeight(growth);
@@ -130,6 +129,9 @@ void CreaturePetImplementation::init() {
 
 	trainingPhase = -1;
 	trainingPhaseCounter = 0;
+
+	positionCounter = 0;
+	formation = FORMATIONNONE;
 }
 
 void CreaturePetImplementation::init(Creature* creature, float growth) {
@@ -584,10 +586,10 @@ void CreaturePetImplementation::sendRadialResponseTo(Player* player, ObjectMenuR
 			training->addRadialMenuItem(148, 3, commandHelper->getStfDesc(PetCommandHelper::PETPATROLPOINTADD));
 			training->addRadialMenuItem(149, 3, commandHelper->getStfDesc(PetCommandHelper::PETPATROLPOINTCLEAR));
 		}
-		skillBox = " outdoors_creaturehandler_training_04";
+		skillBox = "outdoors_creaturehandler_training_04";
 		if (getLinkedCreature()->hasSkillBox(skillBox)) {
 			training->addRadialMenuItem(150, 3, commandHelper->getStfDesc(PetCommandHelper::PETFORMATION1));
-			training->addRadialMenuItem(150, 3, commandHelper->getStfDesc(PetCommandHelper::PETFORMATION2));
+			training->addRadialMenuItem(151, 3, commandHelper->getStfDesc(PetCommandHelper::PETFORMATION2));
 		}
 		skillBox = "outdoors_creaturehandler_healing_01";
 		if (player->hasSkillBox(skillBox))
@@ -680,7 +682,7 @@ void CreaturePetImplementation::createDataPad() {
 	 	objCRC = 0xFD13ABAE;
 	 else if(stfName.indexOf("bark_mite") != -1)
 	 	objCRC = 0x92A57735;
-	 else if(stfName.indexOf("bearded_jax") != -1)
+	 else if(stfName.indexOf("jax") != -1)
 	 	objCRC = 0x7D7C54B5;
 	 else if(stfName.indexOf("blurrg") != -1)
 	 	objCRC = 0xAD494074;
@@ -700,7 +702,7 @@ void CreaturePetImplementation::createDataPad() {
 	 	objCRC = 0xE11D43D0;
 	 else if(stfName.indexOf("brackaset") != -1)
 	 	objCRC = 0x37926FEA;
-	 else if(stfName.indexOf("capper_spineflap") != -1)
+	 else if(stfName.indexOf("spineflap") != -1)
 	 	objCRC = 0x51ABA1D;
 	 else if(stfName.indexOf("carrion_spat") != -1)
 	 	objCRC = 0x6FD1A2BC;
@@ -708,13 +710,13 @@ void CreaturePetImplementation::createDataPad() {
 	 	objCRC = 0x5F96C70C;
 	 else if(stfName.indexOf("chuba") != -1)
 	 	objCRC = 0x93BF3850;
-	 else if(stfName.indexOf("condor_dragon") != -1)
-	 	objCRC = 0xF7D40042;
+	 //else if(stfName.indexOf("condor_dragon") != -1)
+	 //	objCRC = 0xF7D40042;
 	 else if(stfName.indexOf("corellian_butterfly") != -1)
 	 	objCRC = 0x588A342F;
-	 else if(stfName.indexOf("corellian_sand_panther") != -1)
+	 else if(stfName.indexOf("sand_panther") != -1)
 	 	objCRC = 0xF9D744D;
-	 else if(stfName.indexOf("corellian_slice_hound") != -1)
+	 else if(stfName.indexOf("slice_hound") != -1)
 	 	objCRC = 0x25F22E01;
 	 else if(stfName.indexOf("cu_pa") != -1)
 	 	objCRC = 0x84DC2FBC;
@@ -726,7 +728,7 @@ void CreaturePetImplementation::createDataPad() {
 	 	objCRC = 0x8DB8EE2A;
 	 else if(stfName.indexOf("durni") != -1)
 	 	objCRC = 0x2E7286AC;
-	 else if(stfName.indexOf("dwarf_nuna") != -1)
+	 else if(stfName.indexOf("nuna") != -1)
 	 	objCRC = 0x8AB2BE02;
 	 else if(stfName.indexOf("eopie") != -1)
 	 	objCRC = 0xBBC9E706;
@@ -888,14 +890,19 @@ void CreaturePetImplementation::createDataPad() {
 	 	objCRC = 0x5E178DBC;
 	 else if(stfName.indexOf("vynock") != -1)
 	 	objCRC = 0xE438CCBF;
-	 else if(stfName.indexOf("womp_rat") != -1)
+	 else if(stfName.indexOf("womprat") != -1)
 	 	objCRC = 0x10522A37;
 	 else if(stfName.indexOf("woolamander") != -1)
 	 	objCRC = 0xBDB7AF8A;
 	 else if(stfName.indexOf("worrt") != -1)
 	 	objCRC = 0x78A55603;
 	 else if(stfName.indexOf("zucca_boar") != -1)
-	 	objCRC = 0x2F9DB65;
+		objCRC = 0x2F9DB65;
+	 /*else if(stfName.indexOf("paralope") != -1) {
+		objCRC = 0x93A584ED;
+	 } else if(stfName.indexOf("rill") != -1) {
+		objCRC = 0xC1FDBAD7;
+	 }*/
 
 	 String cName = customName.toString();
 
@@ -942,7 +949,7 @@ void CreaturePetImplementation::call() {
 			getLinkedCreature()->unlock();
 			return;
 		}
-		initializePosition(getLinkedCreature()->getPositionX(), getLinkedCreature()->getPositionZ(), getLinkedCreature()->getPositionY());
+
 		zone = getLinkedCreature()->getZone();
 
 		if (zone == NULL) {
@@ -950,6 +957,13 @@ void CreaturePetImplementation::call() {
 			return;
 		}
 		getLinkedCreature()->unlock();
+
+		handleFollowCommand(getLinkedCreature());
+		calculateRelativePosition();
+
+		initializePosition(nextFollowPosition->getPositionX(),
+				zone->getHeight(nextFollowPosition->getPositionX(), nextFollowPosition->getPositionY()),
+				nextFollowPosition->getPositionY());
 
 		if (getDatapadItem() != NULL) {
 			getDatapadItem()->wlock();
@@ -959,7 +973,6 @@ void CreaturePetImplementation::call() {
 
 		setFaction(getLinkedCreature()->getFaction());
 
-		handleFollowCommand(getLinkedCreature());
 		befriendList->add(getLinkedCreature());
 		getLinkedCreature()->registerPet(_this);
 		getLinkedCreature()->setNumberOfCHPets(getLinkedCreature()->getNumberOfCHPets() + 1);
@@ -1181,14 +1194,18 @@ void CreaturePetImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 			Player* player = (Player*) scno;
 
 			if (player == followTarget) {
+
 				//System::out << "\tnotifyPositionUpdate : is owner\n" ;
 				if (!followTarget->isInCombat() && aggroedCreature == NULL) {
 					//System::out << "\tnotifyPositionUpdate : not aggro\n" ;
 
 					if (aggroedCreature == NULL) {
 						//System::out << "\tnotifyPositionUpdate : move to player\n";
-						resetPatrolPoints(false);
-						addPatrolPoint(followTarget,false);
+						updateFollowPosition();
+
+						//resetPatrolPoints(false);
+
+						//addPatrolPoint(pos->getPositionX(), pos->getPositionX(),false);
 					}
 				} if (isFriend(followTarget) && followTarget->isInCombat() && (aggroedCreature == NULL)) {
 					//System::out << "\tnotifyPositionUpdate : aggro player combat\n";
@@ -1239,12 +1256,11 @@ bool CreaturePetImplementation::activate() {
 			return false;
 		}
 		//System::out << "\tactivate : movement\n";
-
 		needMoreActivity |= doMovement();
 
-		if (!isInCombat() && !needMoreActivity && !isInRange(getLinkedCreature(),5.0f)) {
-			addPatrolPoint(followTarget,false);
-		}
+		/*if (!isInCombat() && !needMoreActivity) {
+			updateFollowPosition();
+		}*/
 
 
 		if (isFriend(followTarget) && followTarget->isInCombat() && !isInCombat()) {
@@ -1278,7 +1294,13 @@ bool CreaturePetImplementation::activate() {
 				//System::out << "\tactivate : abort combat retun to owner\n";
 
 				deaggro();
-				addPatrolPoint(followTarget,false);
+
+				//Coordinate* pos = getCoordinate(getLinkedCreature() , 10.0f, getLinkedCreature()->getDirectionAngle());
+
+				//addPatrolPoint(pos->getPositionX(), pos->getPositionX(),false);
+
+				//addPatrolPoint(followTarget,false);
+				updateFollowPosition();
 			}
 
 		} else if (isInCombat()) {
@@ -1414,8 +1436,9 @@ void CreaturePetImplementation::deaggro() {
 	CreatureImplementation::deaggro();
 
 	if (!isInStayState() && isInRange(getLinkedCreature(),8.0f)) {
-		resetPatrolPoints(false);
-		addPatrolPoint(followTarget,false);
+		/*resetPatrolPoints(false);
+		addPatrolPoint(followTarget,false);*/
+		updateFollowPosition();
 	}
 }
 
@@ -1430,7 +1453,7 @@ void CreaturePetImplementation::doGrowUp(bool updateTime) {
 
 	uint32 elapsedTime = currentTime.getTime() - lastGrowth.getTime();
 
-	float growCycles = (float)round((float)elapsedTime / 3600);
+	float growCycles = (float)round((float)elapsedTime / (86400 + 13000));
 
 	if (growCycles < 0.05f)
 		return;
@@ -1457,9 +1480,14 @@ void CreaturePetImplementation::doGrowUp(bool updateTime) {
 	getLinkedCreature()->setLevelOfCHPets(getLinkedCreature()->getLevelOfCHPets() -oldLevel + level);
 
 	loadItems();
-	int babyPos = customName.indexOf(UnicodeString(" (baby)"));
-	if (growth > 0.7 && babyPos != -1) {
-		customName = customName.subString(0,baby);
+
+	if (growth > 0.7) {
+		int babyPos = customName.indexOf(UnicodeString(" (baby)"));
+
+		if (babyPos != -1) {
+			String newName = customName.subString(0,baby).toString();
+			setPetName(newName);
+		}
 	}
 
 	if (isInQuadTree()) {
@@ -1608,6 +1636,12 @@ void CreaturePetImplementation::parseCommandMessage(Player* player, const Unicod
 	}
 	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETFRIEND) && player == getLinkedCreature()) {
 		handleFriendCommand();
+	}
+	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETFORMATION1)) {
+		handleFormationCommand(FORMATIONWEDGE);
+	}
+	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETFORMATION2)) {
+		handleFormationCommand(FORMATIONCOLUM);
 	}
 
 	if (debug) {
@@ -1784,6 +1818,24 @@ void CreaturePetImplementation::healPetMind(int mod) {
 	}
 }
 
+void CreaturePetImplementation::handleFormationCommand(uint8 form) {
+	if (debug) {
+		StringBuffer ss;
+		ss << "CreaturePetImplementation::handleTrickCommand() " << getLinkedCreature()->getCharacterName().toString();
+		info(ss.toString());
+	}
+	if (getLinkedCreature() == NULL)
+		return;
+
+	if (formation == form) {
+		formation = FORMATIONNONE;
+		return;
+	}
+
+	if (formation < 3)
+		formation = form;
+}
+
 bool CreaturePetImplementation::consumeOwnerHam(int h,int a, int m) {
 	if (!getLinkedCreature()->changeHAMBars(h,a,m)) {
 		return false;
@@ -1944,6 +1996,8 @@ void CreaturePetImplementation::trainMount() {
 
 	setAcceleration(getSpeed() / 2);
 
+	optionsBitmask = 0x1080;
+
 	getDatapadItem()->setUpdated(true);
 	if (isInQuadTree()) {
 		removeFromZone();
@@ -1967,3 +2021,45 @@ bool CreaturePetImplementation::isMountTrainable() {
 	}
 }
 
+void CreaturePetImplementation::calculateRelativePosition() {
+	nextFollowPosition = followTarget->getCoordinate(getLinkedCreature() , 3.0f, 180.0f);
+
+	if (formation == FORMATIONNONE) {
+		if (followTarget->numberOfPetsCalled() == 2) {
+			if (positionNumber == 0)
+				nextFollowPosition = followTarget->getCoordinate(getLinkedCreature() , 3.0f, 155.0f);
+			if (positionNumber == 1)
+				nextFollowPosition = followTarget->getCoordinate(getLinkedCreature() , 3.0f, -145.0f);
+		} else {
+			switch (positionNumber % 3) {
+			case 0:
+				nextFollowPosition = followTarget->getCoordinate(getLinkedCreature() , (1 + (positionNumber / 3)) * 3.0f, 180.0f);
+				break;
+			case 1:
+				nextFollowPosition = followTarget->getCoordinate(getLinkedCreature() , (1 + (positionNumber / 3)) * 3.0f, 135.0f);
+				break;
+			case 2:
+				nextFollowPosition = followTarget->getCoordinate(getLinkedCreature() , (1 + (positionNumber / 3)) * 3.0f, -135.0f);
+				break;
+			}
+		}
+	}
+	if (formation == FORMATIONCOLUM) {
+		nextFollowPosition = followTarget->getCoordinate(getLinkedCreature() , (1 + positionNumber) * 3.0f, -180.0f);
+	}
+	if (formation == FORMATIONWEDGE) {
+		if ((positionCounter % 2) == 0) {
+			nextFollowPosition = followTarget->getCoordinate(getLinkedCreature() , (1 + (positionNumber / 2)) * 3.0f, 160.0f);
+		} else {
+			nextFollowPosition = followTarget->getCoordinate(getLinkedCreature() , (1 + (positionNumber / 2)) * 3.0f, -160.0f);
+		}
+	}
+}
+
+void CreaturePetImplementation::updateFollowPosition() {
+	calculateRelativePosition();
+	resetPatrolPoints(false);
+
+	addPatrolPoint(nextFollowPosition->getPositionX(), nextFollowPosition->getPositionY(),false);
+
+}

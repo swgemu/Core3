@@ -2207,6 +2207,11 @@ public:
 	inline bool hasPetCalled() {
 		return (0 < petList.size());
 	}
+
+	inline int numberOfPetsCalled() {
+		return petList.size();
+	}
+
 	void registerPet(CreaturePet* pet);
 	void unregisterPet(CreaturePet* pet);
 	void sendMessageToPets(const UnicodeString& message, uint64 petID = 0);

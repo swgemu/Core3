@@ -236,6 +236,7 @@ private:
 	static void createTestPet(StringTokenizer tokenizer, Player* player);
 	static void moveToMe(StringTokenizer tokenizer, Player* player);
 	static void woundPet(StringTokenizer tokenizer, Player* player);
+	static void growUpPet(StringTokenizer tokenizer, Player* player);
 
 	static void storeVehicle(StringTokenizer tokenizer, Player* player);
 	static void clearMissions(StringTokenizer tokenizer, Player* player);

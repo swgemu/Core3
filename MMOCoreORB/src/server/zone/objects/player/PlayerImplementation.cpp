@@ -6381,11 +6381,16 @@ void PlayerImplementation::onBankTipSuccessful() {
 }
 
 void PlayerImplementation::registerPet(CreaturePet* pet) {
+	pet->setPositionNumber(petList.size());
 	petList.put(pet->getObjectID(),pet);
 }
 
 void PlayerImplementation::unregisterPet(CreaturePet* pet) {
 	petList.drop(pet->getObjectID());
+
+	for (int i = 0 ; i < petList.size() ; i++) {
+		petList.get(i)->setPositionNumber(i);
+	}
 }
 
 void PlayerImplementation::sendMessageToPets(const UnicodeString& message, uint64 petID) {

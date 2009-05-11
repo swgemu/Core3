@@ -843,6 +843,8 @@ interface Player implements CreatureObject {
 	boolean hasFactionPetCalled();
 
 	boolean hasPetCalled();
+	int numberOfPetsCalled();
+	
 	void registerPet(CreaturePet pet);
 	void unregisterPet(CreaturePet pet);
 	void sendMessageToPets(const UnicodeString message, unsigned long petID = 0);

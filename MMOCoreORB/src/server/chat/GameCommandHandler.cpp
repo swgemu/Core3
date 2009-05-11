@@ -405,7 +405,13 @@ void GameCommandHandler::init() {
 				"Clears mission vars for a player, in the event they are having problems",
 				"USAGE: @clearMissions <player name>",
 				&clearMissions);
-    /* Disabled Commands
+
+	gmCommands->addCommand("growUpPet", PRIVILEGED,
+				"growUpPet",
+				"USAGE: @growUpPet",
+				&growUpPet);
+
+	/* Disabled Commands
      *
     gmCommands->addCommand("woundPet", DEVELOPER,
 				"woundPet",
@@ -4008,6 +4014,28 @@ void GameCommandHandler::woundPet(StringTokenizer tokenizer, Player* player) {
 				try {
 					pet->wlock();
 					pet->changeMindWoundsBar(100, false);
+					pet->unlock();
+				}catch (...) {
+					pet->unlock();
+				}
+
+
+			}
+		}
+	}
+}
+
+void GameCommandHandler::growUpPet(StringTokenizer tokenizer, Player* player) {
+	if (player->getTarget() != NULL) {
+		SceneObject* sco = player->getTarget();
+		if (sco->isNonPlayerCreature()) {
+			Creature* crea = (Creature*) sco;
+			if (crea->isPet()) {
+				CreaturePet* pet = (CreaturePet*) crea;
+				try {
+					pet->wlock();
+					pet->setLastGrowth(0);
+					pet->doGrowUp();
 					pet->unlock();
 				}catch (...) {
 					pet->unlock();
