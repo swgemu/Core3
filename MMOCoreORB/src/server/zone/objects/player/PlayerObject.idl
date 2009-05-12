@@ -154,6 +154,8 @@ interface PlayerObject implements SceneObject {
 	void saveIgnore();
 	void loadIgnore();
 
+	boolean hasWaypoint(WaypointObject wp);
+	boolean hasWaypoint(unsigned long wpid);
 	void saveWaypoints(Player player);
 	WaypointObject searchWaypoint(Player play, const String name, int mode);
 }

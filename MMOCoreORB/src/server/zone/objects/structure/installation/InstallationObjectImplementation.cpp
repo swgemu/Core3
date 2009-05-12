@@ -83,6 +83,8 @@ void InstallationObjectImplementation::init() {
 
 	deedCRC = 0;
 	deedStfName = "default";
+	deedCustomName = "";
+	constructionObjectCRC = 0;
 	objectFile = "";
 
 	optionsBitmask = 0x00000100; //TODO: What does this flag represent? 256 in decimal
@@ -198,10 +200,9 @@ void InstallationObjectImplementation::insertToZone(Zone* zone) {
 	permissionList->setParentStructure(_this);
 
 	structureStatusPollEvent = new StructureStatusPollEvent(_this);
-	server->addEvent(structureStatusPollEvent, 3600000); //TODO: once per hour.
+	server->addEvent(structureStatusPollEvent, 3000000); //TODO: once per hour.
 
 	if (isOperating()) {
-		System::out << "Setting installation to operating" << endl;
 		//Start up the harvester, send deltas to anyone who might be nearby...
 		InstallationObjectDeltaMessage3* dinso3 = new InstallationObjectDeltaMessage3(_this);
 		dinso3->updateOperating(true);
@@ -237,6 +238,13 @@ void InstallationObjectImplementation::parseItemAttributes() {
 
 	attr = "deedStfName";
 	setDeedStfName(itemAttributes->getStringAttribute(attr));
+
+	attr = "deedCustomName";
+	UnicodeString customname = UnicodeString(itemAttributes->getStringAttribute(attr));
+	setDeedCustomName(customname);
+
+	attr = "constructionObjectCRC";
+	setConstructionObjectCRC(itemAttributes->getIntAttribute(attr));
 
 	attr = "objectFile";
 	setObjectFile(itemAttributes->getStringAttribute(attr));
@@ -357,12 +365,12 @@ void InstallationObjectImplementation::shutdown(uint8 errorcode, bool sendmail) 
  */
 bool InstallationObjectImplementation::destroyStructure(Player* player) {
 	if (isOperating()) {
-		player->sendSystemMessage("player_structure", "destroy_deactivate_first"); //You must first deactivate the harvester before you may destroy it or reclaim the deed.
+		player->sendSystemMessage("@player_structure:destroy_deactivate_first"); //You must first deactivate the harvester before you may destroy it or reclaim the deed.
 		return false;
 	}
 
 	if (!isHopperEmpty()) {
-		player->sendSystemMessage("player_structure", "destroy_hopper"); //You must first empty the harvester's hopper before you may destroy it or reclaim the deed.
+		player->sendSystemMessage("@player_structure:destroy_empty_hopper"); //You must first empty the harvester's hopper before you may destroy it or reclaim the deed.
 		return false;
 	}
 
@@ -370,11 +378,13 @@ bool InstallationObjectImplementation::destroyStructure(Player* player) {
 
 	//If their is still a surplus of maintenance, then we can redeed the structure.
 	if (isRedeedable()) {
+		//Subtract reclaim fee.
+		changeMaintenancePool(-getReclaimFee());
+
 		InstallationDeed* deed = redeed(player);
 
 		if (deed != NULL) {
 			player->getZone()->getZoneServer()->addObject(deed);
-			System::out << "Deed has the following crc : " << deed->getObjectCRC() << endl;
 			player->addInventoryItem(deed);
 			deed->sendTo(player);
 			player->sendSystemMessage("@player_structure:deed_reclaimed"); //Structure destroyed and deed reclaimed.
@@ -433,6 +443,7 @@ void InstallationObjectImplementation::modifyPermissionList(Player* player, cons
  * NOTE: Installation should be locked prior to this method.
  */
 void InstallationObjectImplementation::pollStatus(bool reschedule) {
+	info("Polling for maintenance, power, and taxes.");
 	consumeMaintenance();
 
 	if (isOperating() && !isGenerator())
@@ -443,16 +454,16 @@ void InstallationObjectImplementation::pollStatus(bool reschedule) {
 	lastStatusPoll.update();
 
 	if (reschedule)
-		server->addEvent(structureStatusPollEvent, 10000); //TODO: set to 1 hour
+		server->addEvent(structureStatusPollEvent, 3000000);
 }
-
 /**
  * Consumes maintenance based on the current maintenance rate. If the maintenance pool runs out
  * then the installation is shut down and appropriate messages are sent.
  * NOTE: This is primarily for use with the status poll event.
  */
 void InstallationObjectImplementation::consumeMaintenance() {
-	changeMaintenancePool(-getMaintenanceRate());
+	float amount = ((float) lastStatusPoll.miliDifference() / 3600000.0f) * getMaintenanceRate();
+	changeMaintenancePool(-amount);
 
 	if (isOutOfMaintenance() && isOperating())
 		shutdown(ERR_OUTOFMAINTENANCE);
@@ -464,8 +475,10 @@ void InstallationObjectImplementation::consumeMaintenance() {
  * NOTE: This is primarily for use with the status poll event.
  */
 void InstallationObjectImplementation::consumePower() {
-	if (isOperating())
-		changePowerReserves(-getPowerRate());
+	if (isOperating()) {
+		float amount = ((float) lastStatusPoll.miliDifference() / 3600000.0f) * getPowerRate();
+		changePowerReserves(-amount);
+	}
 
 	if (isOutOfPower() && isOperating())
 		shutdown(ERR_OUTOFPOWER);
@@ -566,7 +579,7 @@ void InstallationObjectImplementation::sendStatusTo(Player* player) {
 
 	//TODO: Add in estimated time remaining.
 	entry.removeAll();
-	entry << "@player_structure:maintenance_pool_prompt " << getMaintenancePool();
+	entry << "@player_structure:maintenance_pool_prompt " << floor(getMaintenancePool());
 	statusbox->addMenuItem(entry.toString());
 
 	entry.removeAll();

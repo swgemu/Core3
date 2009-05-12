@@ -601,11 +601,11 @@ void ResourceManagerImplementation::sendSurveyMessage(Player* player,
 				player->setSurveyWaypoint(NULL);
 			}
 
-			WaypointObject* waypoint = new WaypointObject(player, player->getNewItemID());
-			waypoint->setName("Resource Survey");
+			WaypointObject* waypoint = new WaypointObject(player->getNewItemID());
+			waypoint->setCustomName(String("Resource Survey"));
 			waypoint->setPosition(wp_x, 0.0f, wp_y);
 
-			waypoint->changeStatus(true);
+			waypoint->setActivated(true);
 
 			player->setSurveyWaypoint(waypoint);
 			player->addWaypoint(waypoint);

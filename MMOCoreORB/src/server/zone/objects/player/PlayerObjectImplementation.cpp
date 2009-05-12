@@ -352,7 +352,7 @@ void PlayerObjectImplementation::addWaypoint(WaypointObject* wp, bool updateClie
 			PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
 
 			dplay8->startWaypointUpdate();
-			dplay8->addWaypoint(0, wp);
+			dplay8->addWaypoint(wp);
 			dplay8->close();
 			player->sendMessage(dplay8);
 		}
@@ -369,7 +369,7 @@ bool PlayerObjectImplementation::removeWaypoint(WaypointObject* wp, bool updateC
 			PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
 
 			dplay8->startWaypointUpdate();
-			dplay8->addWaypoint(1, wp);
+			dplay8->removeWaypoint(wp);
 			dplay8->close();
 			player->sendMessage(dplay8);
 		}
@@ -410,7 +410,7 @@ void PlayerObjectImplementation::updateWaypoint(WaypointObject* wp) {
 		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
 
 		dplay8->startWaypointUpdate();
-		dplay8->addWaypoint(0, wp);
+		dplay8->addWaypoint(wp);
 		dplay8->close();
 
 		player->sendMessage(dplay8);
@@ -433,7 +433,7 @@ void PlayerObjectImplementation::saveWaypoints(Player* player) {
 		for (int i = 0; i < waypointList.size() ; ++i) {
 			WaypointObject* wpl = waypointList.get(i);
 
-			name = wpl->getName();
+			name = wpl->getCustomName().toString();
 			MySqlDatabase::escapeString(name);
 
 			String internalnote = wpl->getInternalNote();
@@ -447,7 +447,7 @@ void PlayerObjectImplementation::saveWaypoints(Player* player) {
 				  << wpl->getPositionX() << "','"  << wpl->getPositionY() << "','"
 				  << wpl->getPlanetName() << "','"
 				  << internalnote << "',"
-				  << wpl->getStatus() << ");" ;
+				  << (uint8) wpl->isActivated() << ");" ;
 
 			ServerDatabase::instance()->executeStatement(query);
 		}
@@ -484,7 +484,7 @@ WaypointObject* PlayerObjectImplementation::searchWaypoint(Player* player, const
 
 		for (int i = 0; i < waypointList.size(); ++i) {
 			waypoint = waypointList.get(i);
-			String wpName = waypoint->getName().toLowerCase();
+			String wpName = waypoint->getCustomName().toString().toLowerCase();
 
 			if (wpName == sName) {
 				returnWP = waypoint;

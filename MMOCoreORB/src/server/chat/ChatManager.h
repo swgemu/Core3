@@ -61,6 +61,8 @@ public:
 
 	void broadcastMessageRange(Player* player, const String& message, float range);
 
+	void broadcastFactionMessage(unsigned int factionmask, const String& message);
+
 	void handleGameCommand(Player* player, const String& command);
 
 	void initiateRooms();
@@ -165,6 +167,8 @@ public:
 
 	void broadcastMessageRange(Player* player, const String& message, float range);
 
+	void broadcastFactionMessage(unsigned int factionmask, const String& message);
+
 	void handleGameCommand(Player* player, const String& command);
 
 	void initiateRooms();
@@ -230,6 +234,7 @@ protected:
 	String _param2_broadcastMessage__CreatureObject_String_String_StfParameter_long_int_int_;
 	String _param0_broadcastMessage__String_;
 	String _param1_broadcastMessageRange__Player_String_float_;
+	String _param1_broadcastFactionMessage__int_String_;
 	String _param1_handleGameCommand__Player_String_;
 	String _param0_createRoomByFullPath__String_;
 	String _param0_getChatRoomByFullPath__String_;

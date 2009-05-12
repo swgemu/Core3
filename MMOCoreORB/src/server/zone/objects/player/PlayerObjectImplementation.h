@@ -61,6 +61,8 @@ which carries forward this exception.
 #include "IgnoreList.h"
 #include "IgnoreListImplementation.h"
 
+#include "../waypoint/WaypointObject.h"
+
 class Player;
 class FriendsList;
 class IgnoreList;
@@ -272,6 +274,14 @@ public:
 	void addWaypoint(WaypointObject* wp, bool updateClient);
 
 	bool removeWaypoint(WaypointObject* wp, bool updateClient);
+
+	inline bool hasWaypoint(WaypointObject* wp) {
+		return (waypointList.contains(wp->getObjectID()));
+	}
+
+	inline bool hasWaypoint(uint64 wpid) {
+		return (waypointList.contains(wpid));
+	}
 
 	inline Player* getPlayer() {
 		return player;

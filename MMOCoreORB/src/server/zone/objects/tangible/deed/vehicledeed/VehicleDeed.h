@@ -31,7 +31,11 @@ public:
 
 	void setTargetConditionMax(unsigned int condmax);
 
+	void setTargetControlDeviceCRC(unsigned int crc);
+
 	unsigned int getTargetConditionMax();
+
+	unsigned int getTargetControlDeviceCRC();
 
 protected:
 	VehicleDeed(DummyConstructorParameter* param);
@@ -57,7 +61,11 @@ public:
 
 	void setTargetConditionMax(unsigned int condmax);
 
+	void setTargetControlDeviceCRC(unsigned int crc);
+
 	unsigned int getTargetConditionMax();
+
+	unsigned int getTargetControlDeviceCRC();
 
 };
 

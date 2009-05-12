@@ -1219,7 +1219,9 @@ void SuiManager::handleFreeResource(uint32 boxid, Player* player, uint32 cancel,
 			SuiListBox* listBox = (SuiListBox*) sui;
 
 			if (cancel != 1) {
-				if (index == -1) { //sui returns -1 if nothing is selected
+				if (index == -1) {
+					//Resending the listbox because they didnt select an option.
+
 					if(listBox->hasGeneratedMessage())
 						listBox->clearOptions();
 
@@ -1369,16 +1371,16 @@ void SuiManager::handleGiveFreeResource(uint32 boxID, Player* player, uint32 can
 				player->clearSuiBoxChoices();
 				player->sendSystemMessage("You received 30k of resources.");
 
-				uint64 oID = player->getResourceDeedID();
+				uint64 deedid = listBox->getUsingObjectID();
 
-				SceneObject* obj = player->getPlayerItem(oID);
+				SceneObject* obj = player->getPlayerItem(deedid);
 
 				if (obj == NULL) {
 					player->unlock();
 					return;
 				}
 
-				ResourceDeed* deed = (ResourceDeed*)obj;
+				ResourceDeed* deed = (ResourceDeed*) obj;
 				deed->destroyDeed(player);
 
 				uint32 zero = 0;

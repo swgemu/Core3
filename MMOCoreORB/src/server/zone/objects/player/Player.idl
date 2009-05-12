@@ -701,10 +701,6 @@ interface Player implements CreatureObject {
 
 	void clearSuiBoxChoices();
 
-	void setResourceDeedID(unsigned long objectID);
-
-	unsigned long getResourceDeedID();
-
 	void queueThrow(TangibleObject throwItem, unsigned int actionCRC);
 	void fireHeavyWeapon(TangibleObject heavyWeapon, unsigned int actionCRC);
 	
@@ -722,6 +718,9 @@ interface Player implements CreatureObject {
 	void clearTeachingSkillOptions();
 	void teachSkill(String skillname);
 	int getSkillPoints();
+	
+	boolean hasWaypoint(WaypointObject wp);
+	boolean hasWaypoint(unsigned long wpid);
 
 	ActiveArea getActiveArea();
 	void setActiveArea(ActiveArea area);

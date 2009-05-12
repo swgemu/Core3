@@ -54,74 +54,74 @@ which carries forward this exception.
 #include "../terrain/PlanetNames.h"
 
 class WaypointObjectImplementation : public WaypointObjectServant {
-	String name;
 	String internalNote;
 	String planetName;
 
-	bool active;
+	uint8 waypointType;
+	bool activated;
 
-	Player* owner;
+	void init();
 
 public:
-	WaypointObjectImplementation(Player* player, uint64 oid) : WaypointObjectServant(oid, WAYPOINT) {
-		active = false;
-		internalNote = "EMPTY";
+	static const uint8 WAYPOINT_WHITE = 0x00; //White is used for what?
+	static const uint8 WAYPOINT_NORMAL = 0x01;
+	static const uint8 WAYPOINT_GREEN = 0x02; //Quest?
 
-		name = "New Waypoint";
+public:
+	WaypointObjectImplementation(uint64 objid);
+	WaypointObjectImplementation(uint64 objid, SceneObject* obj);
 
-		owner = player;
+	virtual void insertToZone(Zone* zone);
 
-		planetName = Planet::getPlanetName(player->getZoneIndex());
+	//virtual void serialize();
+	//virtual void deserialize();
 
-		StringBuffer name;
-		name << "WaypointObject :" << oid;
-		setLoggingName(name.toString());
+	virtual void activate(Player* player);
+	virtual void deactivate(Player* player);
+	virtual void updateWaypoint(Player* player);
 
-		setLogging(false);
-		setGlobalLogging(true);
+	virtual void updateCustomName(Player* player, const String& value);
+
+	inline bool toggleActivation() {
+		return (activated = !activated);
 	}
 
-	inline void changeStatus(bool status) {
-		active = status;
+	//Setters
+	inline void setPlanetName(const String& planetname) {
+		planetName = planetname;
 	}
 
-	void switchStatus() {
-		if (active)
-			active = false;
-		else
-			active = true;
+	inline void setInternalNote(const String& note) {
+		internalNote = note;
 	}
 
-	inline bool getStatus() {
-		return active;
+	inline void setWaypointType(uint8 type) {
+		waypointType = type;
 	}
 
-	inline void setName(const String& Name) {
-		name = Name;
+	inline void setActivated(bool active) {
+		activated = active;
 	}
 
-	inline void setInternalNote(const String& message) {
-		internalNote = message;
+	//Getters
+	inline String& getPlanetName() {
+		return planetName;
 	}
 
-	inline void setPlanetName(const String& planet) {
-		planetName = planet;
-	}
-
-	uint32 getPlanetCRC() {
+	inline uint32 getPlanetCRC() {
 		return planetName.hashCode();
-	}
-
-	inline String& getName() {
-		return name;
 	}
 
 	inline String& getInternalNote() {
 		return internalNote;
 	}
 
-	inline String& getPlanetName() {
-		return planetName;
+	inline uint8 getWaypointType() {
+		return waypointType;
+	}
+
+	inline bool isActivated() {
+		return activated;
 	}
 
 };

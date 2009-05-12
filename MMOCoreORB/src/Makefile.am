@@ -118,6 +118,7 @@ core3_IDLS =	server/chat/ChatManager.cpp \
 		server/zone/objects/player/IgnoreList.cpp \
 		server/zone/objects/player/Player.cpp \
 		server/zone/objects/player/PlayerObject.cpp \
+		server/zone/objects/player/sui/resourcebox/SuiResourceBox.cpp \
 		server/zone/objects/player/sui/slicingbox/SuiSlicingBox.cpp \
 		server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp \
 		server/zone/objects/player/sui/banktransferbox/SuiBankTipConfirmBox.cpp \
@@ -312,6 +313,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/PlayerImplementation.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
 		server/zone/objects/player/badges/Badge.cpp \
+		server/zone/objects/player/sui/resourcebox/SuiResourceBoxImplementation.cpp \
 		server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp \
 		server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
@@ -391,6 +393,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/wearables/ArmorImplementation.cpp \
 		server/zone/packets/object/ObjectControllerMessage.cpp \
 		server/zone/packets/charcreation/ClientCreateCharacter.cpp \
+		server/zone/objects/waypoint/WaypointObjectImplementation.cpp \
 		server/zone/ZoneClientSessionImplementation.cpp \
 		server/zone/ZoneImplementation.cpp \
 		server/zone/ZoneMessageProcessorThread.cpp \

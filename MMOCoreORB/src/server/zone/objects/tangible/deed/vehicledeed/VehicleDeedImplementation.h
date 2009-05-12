@@ -50,6 +50,7 @@ which carries forward this exception.
 class VehicleDeedImplementation : public VehicleDeedServant {
 protected:
 	uint32 targetConditionMax;
+	uint32 targetControlDeviceCRC;
 
 	void init();
 
@@ -77,9 +78,19 @@ public:
 		itemAttributes->setIntAttribute(attr, targetConditionMax);
 	}
 
+	inline void setTargetControlDeviceCRC(uint32 crc) {
+		targetControlDeviceCRC = crc;
+		String attr("targetControlDeviceCRC");
+		itemAttributes->setIntAttribute(attr, targetControlDeviceCRC);
+	}
+
 	//Getters
 	inline uint32 getTargetConditionMax() {
 		return targetConditionMax;
+	}
+
+	inline uint32 getTargetControlDeviceCRC() {
+		return targetControlDeviceCRC;
 	}
 };
 

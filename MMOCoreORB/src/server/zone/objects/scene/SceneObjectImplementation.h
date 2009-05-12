@@ -228,6 +228,9 @@ public:
 	virtual void removeFromZone(bool doLock = true);
 	virtual void removeFromBuilding(BuildingObject* building);
 
+	///Creates a new WaypointObject to this location.
+	virtual WaypointObject* createWaypointTo(Player* player, bool updateclient = true);
+
 	// experience functions
 	/**
 	 * Adds to or creates a log of the damage done

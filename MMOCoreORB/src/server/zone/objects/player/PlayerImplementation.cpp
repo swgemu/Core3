@@ -270,7 +270,6 @@ void PlayerImplementation::initializePlayer() {
 	draftSchematicMap = new DraftSchematicMap(_this);
 
 	//Crafting
-	resourceDeedID = 0;
 	activeCraftingTool = NULL;
 
 	//GM Flags
@@ -4825,14 +4824,6 @@ SuiListBoxVector* PlayerImplementation::getSuiBoxChoices(){
 
 void PlayerImplementation::clearSuiBoxChoices(){
 	suiChoicesList->removeAll();
-}
-
-void PlayerImplementation::setResourceDeedID(uint64 objectID){
-	resourceDeedID = objectID;
-}
-
-uint64 PlayerImplementation::getResourceDeedID(){
-	return resourceDeedID;
 }
 
 int PlayerImplementation::getXpTypeCap(String xptype) {

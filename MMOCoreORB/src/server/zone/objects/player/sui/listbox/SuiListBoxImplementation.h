@@ -55,6 +55,7 @@ which carries forward this exception.
 class Player;
 
 class SuiListBoxImplementation : public SuiListBoxServant {
+protected:
 	Vector<SuiListBoxMenuItem*> menuItems;
 
 	int type;
@@ -109,7 +110,7 @@ public:
 		return menuItems.size();
 	}
 
-	BaseMessage* generateMessage();
+	virtual BaseMessage* generateMessage();
 
 	void setNextBox(uint32 boxID){
 		next = boxID;

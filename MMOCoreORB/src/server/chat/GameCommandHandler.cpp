@@ -377,6 +377,14 @@ void GameCommandHandler::init() {
 				"Plays the specified audio file",
 				"USAGE: @playAudio [soundfile]",
 				&playAudio);
+	gmCommands->addCommand("rebelMessage", STAFF,
+					"Sends a system message to all members of the Rebellion",
+					"USAGE: @rebelMessage <message>",
+					&rebelMessage);
+	gmCommands->addCommand("imperialMessage", STAFF,
+					"Sends a system message, to all members of the Empire.",
+					"USAGE: @imperialMessage <message>",
+					&imperialMessage);
 	gmCommands->addCommand("eventMessage", STAFF,
 				"Sends a system message, tailored for announcing events.",
 				"USAGE: @eventMessage <message>",
@@ -1652,6 +1660,52 @@ void GameCommandHandler::systemMessage(StringTokenizer tokenizer, Player* player
 	}
 }
 
+
+void GameCommandHandler::rebelMessage(StringTokenizer tokenizer, Player* player) {
+	String message;
+	try {
+		ChatManager * chatManager = player->getZone()->getChatManager();
+
+		StringBuffer message;
+		String msg;
+		message << " \\#.\\#773311[\\#ff3311Rebellion\\#773311]\\#. ";
+
+		while (tokenizer.hasMoreTokens()) {
+			tokenizer.getStringToken(msg);
+			message << msg << " ";
+		}
+
+		//System::out << message.toString() << endl;
+		chatManager->broadcastFactionMessage(PlayerImplementation::REBEL | PlayerImplementation::COVERT, message.toString());
+
+	} catch (...) {
+		player->sendSystemMessage("Error sending rebelMessage - Usage: @rebelMessage <message>");
+	}
+}
+
+
+void GameCommandHandler::imperialMessage(StringTokenizer tokenizer, Player* player) {
+	String message;
+	try {
+		ChatManager * chatManager = player->getZone()->getChatManager();
+
+		StringBuffer message;
+		String msg;
+		message << " \\#.\\#114477[\\#1166ffEmpire\\#114477]\\#. ";
+
+		while (tokenizer.hasMoreTokens()) {
+			tokenizer.getStringToken(msg);
+			message << msg << " ";
+		}
+
+		//System::out << message.toString() << endl;
+		chatManager->broadcastFactionMessage(PlayerImplementation::IMPERIAL | PlayerImplementation::COVERT, message.toString());
+
+	} catch (...) {
+		player->sendSystemMessage("Error sending imperialMessage - Usage: @imperialMessage <message>");
+	}
+}
+
 void GameCommandHandler::eventMessage(StringTokenizer tokenizer, Player* player) {
 	String message;
 	try {
@@ -1659,18 +1713,18 @@ void GameCommandHandler::eventMessage(StringTokenizer tokenizer, Player* player)
 
 		StringBuffer message;
 		String msg;
-		message << "[\\#ffaa33\\Event\\#ffffff\\] ";
+		message << " \\#.\\#773300[\\#ffaa33Event\\#773300]\\#. ";
 
 		while (tokenizer.hasMoreTokens()) {
 			tokenizer.getStringToken(msg);
 			message << msg << " ";
 		}
 
-		System::out << message.toString() << endl;
+		//System::out << message.toString() << endl;
 		chatManager->broadcastMessage(message.toString());
 
 	} catch (...) {
-		player->sendSystemMessage("Error sending eventMessage - Usage: @systemMessage <message>");
+		player->sendSystemMessage("Error sending eventMessage - Usage: @eventMessage <message>");
 	}
 }
 

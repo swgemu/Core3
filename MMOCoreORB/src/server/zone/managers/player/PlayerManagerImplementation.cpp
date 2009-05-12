@@ -646,13 +646,12 @@ void PlayerManagerImplementation::loadWaypoints(Player* player) {
 			String internalNote = result->getString(7);
 			bool active = result->getInt(6);
 
-			WaypointObject* wp = new WaypointObject(player, player->getNewItemID());
-
-			wp->setName(wpName);
+			WaypointObject* wp = new WaypointObject(player->getNewItemID());
+			wp->setCustomName(wpName);
 			wp->setPlanetName(planetName);
 			wp->setInternalNote(internalNote);
 			wp->setPosition(x, 0.0f, y);
-			wp->changeStatus(active);
+			wp->setActivated(active);
 			player->addWaypoint(wp);
 		}
 	} catch (DatabaseException& e) {

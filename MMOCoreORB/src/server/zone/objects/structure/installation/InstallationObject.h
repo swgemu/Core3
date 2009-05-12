@@ -77,6 +77,10 @@ public:
 
 	void setDeedStfName(const String& stfname);
 
+	void setDeedCustomName(const UnicodeString& customname);
+
+	void setConstructionObjectCRC(unsigned int crc);
+
 	void setObjectFile(const String& objectfile);
 
 	void setReclaimFee(unsigned int fee);
@@ -102,6 +106,10 @@ public:
 	unsigned int getDeedCRC();
 
 	String& getDeedStfName();
+
+	UnicodeString& getDeedCustomName();
+
+	unsigned int getConstructionObjectCRC();
 
 	String& getObjectFile();
 
@@ -190,6 +198,8 @@ protected:
 	String _return_getObjectFile;
 	String _return_getPermissionsString;
 
+	UnicodeString _return_getDeedCustomName;
+
 	friend class InstallationObjectHelper;
 };
 
@@ -257,6 +267,10 @@ public:
 
 	void setDeedStfName(const String& stfname);
 
+	void setDeedCustomName(const UnicodeString& customname);
+
+	void setConstructionObjectCRC(unsigned int crc);
+
 	void setObjectFile(const String& objectfile);
 
 	void setReclaimFee(unsigned int fee);
@@ -282,6 +296,10 @@ public:
 	unsigned int getDeedCRC();
 
 	String& getDeedStfName();
+
+	UnicodeString& getDeedCustomName();
+
+	unsigned int getConstructionObjectCRC();
 
 	String& getObjectFile();
 
@@ -367,6 +385,7 @@ protected:
 	String _param1_modifyPermissionList__Player_String_String_bool_;
 	String _param2_modifyPermissionList__Player_String_String_bool_;
 	String _param0_setDeedStfName__String_;
+	UnicodeString _param0_setDeedCustomName__UnicodeString_;
 	String _param0_setObjectFile__String_;
 	String _param0_setPermissionsFromString__String_;
 };

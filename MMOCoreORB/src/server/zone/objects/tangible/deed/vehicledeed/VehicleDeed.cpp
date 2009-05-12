@@ -85,16 +85,41 @@ void VehicleDeed::setTargetConditionMax(unsigned int condmax) {
 		((VehicleDeedImplementation*) _impl)->setTargetConditionMax(condmax);
 }
 
-unsigned int VehicleDeed::getTargetConditionMax() {
+void VehicleDeed::setTargetControlDeviceCRC(unsigned int crc) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
+		method.addUnsignedIntParameter(crc);
+
+		method.executeWithVoidReturn();
+	} else
+		((VehicleDeedImplementation*) _impl)->setTargetControlDeviceCRC(crc);
+}
+
+unsigned int VehicleDeed::getTargetConditionMax() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
 		return ((VehicleDeedImplementation*) _impl)->getTargetConditionMax();
+}
+
+unsigned int VehicleDeed::getTargetControlDeviceCRC() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((VehicleDeedImplementation*) _impl)->getTargetControlDeviceCRC();
 }
 
 /*
@@ -121,7 +146,13 @@ Packet* VehicleDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		setTargetConditionMax(inv->getUnsignedIntParameter());
 		break;
 	case 10:
+		setTargetControlDeviceCRC(inv->getUnsignedIntParameter());
+		break;
+	case 11:
 		resp->insertInt(getTargetConditionMax());
+		break;
+	case 12:
+		resp->insertInt(getTargetControlDeviceCRC());
 		break;
 	default:
 		return NULL;
@@ -146,8 +177,16 @@ void VehicleDeedAdapter::setTargetConditionMax(unsigned int condmax) {
 	return ((VehicleDeedImplementation*) impl)->setTargetConditionMax(condmax);
 }
 
+void VehicleDeedAdapter::setTargetControlDeviceCRC(unsigned int crc) {
+	return ((VehicleDeedImplementation*) impl)->setTargetControlDeviceCRC(crc);
+}
+
 unsigned int VehicleDeedAdapter::getTargetConditionMax() {
 	return ((VehicleDeedImplementation*) impl)->getTargetConditionMax();
+}
+
+unsigned int VehicleDeedAdapter::getTargetControlDeviceCRC() {
+	return ((VehicleDeedImplementation*) impl)->getTargetControlDeviceCRC();
 }
 
 /*

@@ -400,12 +400,38 @@ void InstallationObject::setDeedStfName(const String& stfname) {
 		((InstallationObjectImplementation*) _impl)->setDeedStfName(stfname);
 }
 
-void InstallationObject::setObjectFile(const String& objectfile) {
+void InstallationObject::setDeedCustomName(const UnicodeString& customname) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 34);
+		method.addUnicodeParameter(customname);
+
+		method.executeWithVoidReturn();
+	} else
+		((InstallationObjectImplementation*) _impl)->setDeedCustomName(customname);
+}
+
+void InstallationObject::setConstructionObjectCRC(unsigned int crc) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 35);
+		method.addUnsignedIntParameter(crc);
+
+		method.executeWithVoidReturn();
+	} else
+		((InstallationObjectImplementation*) _impl)->setConstructionObjectCRC(crc);
+}
+
+void InstallationObject::setObjectFile(const String& objectfile) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 36);
 		method.addAsciiParameter(objectfile);
 
 		method.executeWithVoidReturn();
@@ -418,7 +444,7 @@ void InstallationObject::setReclaimFee(unsigned int fee) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 37);
 		method.addUnsignedIntParameter(fee);
 
 		method.executeWithVoidReturn();
@@ -431,7 +457,7 @@ void InstallationObject::setPowerRate(float rate) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 38);
 		method.addFloatParameter(rate);
 
 		method.executeWithVoidReturn();
@@ -444,7 +470,7 @@ void InstallationObject::setMaintenancePool(float maint) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 39);
 		method.addFloatParameter(maint);
 
 		method.executeWithVoidReturn();
@@ -457,7 +483,7 @@ void InstallationObject::setMaintenanceRate(float rate) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 40);
 		method.addFloatParameter(rate);
 
 		method.executeWithVoidReturn();
@@ -470,7 +496,7 @@ void InstallationObject::setPowerReserves(float pow) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 41);
 		method.addFloatParameter(pow);
 
 		method.executeWithVoidReturn();
@@ -483,7 +509,7 @@ void InstallationObject::setOperating(bool state) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 42);
 		method.addBooleanParameter(state);
 
 		method.executeWithVoidReturn();
@@ -496,7 +522,7 @@ void InstallationObject::setPublicStructure(bool status) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 43);
 		method.addBooleanParameter(status);
 
 		method.executeWithVoidReturn();
@@ -509,7 +535,7 @@ void InstallationObject::setLotSize(unsigned char size) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 44);
 		method.addUnsignedCharParameter(size);
 
 		method.executeWithVoidReturn();
@@ -522,7 +548,7 @@ void InstallationObject::setPermissionsFromString(const String& permissionsstrin
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 45);
 		method.addAsciiParameter(permissionsstring);
 
 		method.executeWithVoidReturn();
@@ -535,7 +561,7 @@ unsigned int InstallationObject::getStructureID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 46);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -547,7 +573,7 @@ unsigned int InstallationObject::getDeedCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 47);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -559,7 +585,7 @@ String& InstallationObject::getDeedStfName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 48);
 
 		method.executeWithAsciiReturn(_return_getDeedStfName);
 		return _return_getDeedStfName;
@@ -567,12 +593,37 @@ String& InstallationObject::getDeedStfName() {
 		return ((InstallationObjectImplementation*) _impl)->getDeedStfName();
 }
 
+UnicodeString& InstallationObject::getDeedCustomName() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 49);
+
+		method.executeWithUnicodeReturn(_return_getDeedCustomName);
+		return _return_getDeedCustomName;
+	} else
+		return ((InstallationObjectImplementation*) _impl)->getDeedCustomName();
+}
+
+unsigned int InstallationObject::getConstructionObjectCRC() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 50);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->getConstructionObjectCRC();
+}
+
 String& InstallationObject::getObjectFile() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 51);
 
 		method.executeWithAsciiReturn(_return_getObjectFile);
 		return _return_getObjectFile;
@@ -585,7 +636,7 @@ unsigned int InstallationObject::getReclaimFee() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 52);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -597,7 +648,7 @@ float InstallationObject::getMaintenancePool() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, 53);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -609,7 +660,7 @@ float InstallationObject::getMaintenanceRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, 54);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -621,7 +672,7 @@ float InstallationObject::getPowerReserves() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, 55);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -633,7 +684,7 @@ float InstallationObject::getPowerRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, 56);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -645,7 +696,7 @@ unsigned int InstallationObject::getDestroyCode() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, 57);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -657,7 +708,7 @@ unsigned char InstallationObject::getLotSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, 58);
 
 		return method.executeWithUnsignedCharReturn();
 	} else
@@ -669,7 +720,7 @@ String& InstallationObject::getPermissionsString() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, 59);
 
 		method.executeWithAsciiReturn(_return_getPermissionsString);
 		return _return_getPermissionsString;
@@ -682,7 +733,7 @@ unsigned int InstallationObject::getNewUpdateCounter(unsigned int update) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 56);
+		DistributedMethod method(this, 60);
 		method.addUnsignedIntParameter(update);
 
 		return method.executeWithUnsignedIntReturn();
@@ -695,7 +746,7 @@ unsigned int InstallationObject::getUpdateCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, 61);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -707,7 +758,7 @@ bool InstallationObject::isRedeedable() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, 62);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -719,7 +770,7 @@ bool InstallationObject::isOperating() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, 63);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -731,7 +782,7 @@ bool InstallationObject::isHopperEmpty() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, 64);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -743,7 +794,7 @@ bool InstallationObject::isHopperFull() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, 65);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -755,7 +806,7 @@ bool InstallationObject::isOutOfMaintenance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 62);
+		DistributedMethod method(this, 66);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -767,7 +818,7 @@ bool InstallationObject::isOutOfPower() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 63);
+		DistributedMethod method(this, 67);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -779,7 +830,7 @@ bool InstallationObject::isPublicStructure() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 64);
+		DistributedMethod method(this, 68);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -791,7 +842,7 @@ bool InstallationObject::isOnAdminList(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 65);
+		DistributedMethod method(this, 69);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -804,7 +855,7 @@ bool InstallationObject::isOnHopperList(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 66);
+		DistributedMethod method(this, 70);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -817,7 +868,7 @@ bool InstallationObject::isHarvester() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 67);
+		DistributedMethod method(this, 71);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -829,7 +880,7 @@ bool InstallationObject::isGenerator() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 68);
+		DistributedMethod method(this, 72);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -841,7 +892,7 @@ bool InstallationObject::isFactory() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 69);
+		DistributedMethod method(this, 73);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -853,7 +904,7 @@ bool InstallationObject::isTurret() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 70);
+		DistributedMethod method(this, 74);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -865,7 +916,7 @@ bool InstallationObject::isMinefield() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 71);
+		DistributedMethod method(this, 75);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -877,7 +928,7 @@ void InstallationObject::setBaseExtractionRate(float rate) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 72);
+		DistributedMethod method(this, 76);
 		method.addFloatParameter(rate);
 
 		method.executeWithVoidReturn();
@@ -890,7 +941,7 @@ void InstallationObject::setHopperSizeMax(float maxsize) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 73);
+		DistributedMethod method(this, 77);
 		method.addFloatParameter(maxsize);
 
 		method.executeWithVoidReturn();
@@ -903,7 +954,7 @@ void InstallationObject::setHarvesterType(unsigned char type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 74);
+		DistributedMethod method(this, 78);
 		method.addUnsignedCharParameter(type);
 
 		method.executeWithVoidReturn();
@@ -916,7 +967,7 @@ unsigned long long InstallationObject::getSelectedResourceID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 75);
+		DistributedMethod method(this, 79);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -928,7 +979,7 @@ float InstallationObject::getDisplayedBaseExtractionRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 76);
+		DistributedMethod method(this, 80);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -940,7 +991,7 @@ float InstallationObject::getBaseExtractionRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 77);
+		DistributedMethod method(this, 81);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -952,7 +1003,7 @@ float InstallationObject::getExtractionRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 78);
+		DistributedMethod method(this, 82);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -964,7 +1015,7 @@ float InstallationObject::getHopperSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 79);
+		DistributedMethod method(this, 83);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -976,7 +1027,7 @@ float InstallationObject::getHopperSizeMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 80);
+		DistributedMethod method(this, 84);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -988,7 +1039,7 @@ unsigned int InstallationObject::getHopperListSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 81);
+		DistributedMethod method(this, 85);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -1000,7 +1051,7 @@ unsigned long long InstallationObject::getHopperItemID(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 82);
+		DistributedMethod method(this, 86);
 		method.addSignedIntParameter(index);
 
 		return method.executeWithUnsignedLongReturn();
@@ -1013,7 +1064,7 @@ float InstallationObject::getHopperItemQuantity(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 83);
+		DistributedMethod method(this, 87);
 		method.addSignedIntParameter(index);
 
 		return method.executeWithFloatReturn();
@@ -1026,7 +1077,7 @@ float InstallationObject::getHopperItemQuantity(unsigned long long resourceid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 84);
+		DistributedMethod method(this, 88);
 		method.addUnsignedLongParameter(resourceid);
 
 		return method.executeWithFloatReturn();
@@ -1039,7 +1090,7 @@ int InstallationObject::getHopperItemIndex(unsigned long long resourceid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 85);
+		DistributedMethod method(this, 89);
 		method.addUnsignedLongParameter(resourceid);
 
 		return method.executeWithSignedIntReturn();
@@ -1143,159 +1194,171 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 		setDeedStfName(inv->getAsciiParameter(_param0_setDeedStfName__String_));
 		break;
 	case 34:
-		setObjectFile(inv->getAsciiParameter(_param0_setObjectFile__String_));
+		setDeedCustomName(inv->getUnicodeParameter(_param0_setDeedCustomName__UnicodeString_));
 		break;
 	case 35:
-		setReclaimFee(inv->getUnsignedIntParameter());
+		setConstructionObjectCRC(inv->getUnsignedIntParameter());
 		break;
 	case 36:
-		setPowerRate(inv->getFloatParameter());
+		setObjectFile(inv->getAsciiParameter(_param0_setObjectFile__String_));
 		break;
 	case 37:
-		setMaintenancePool(inv->getFloatParameter());
+		setReclaimFee(inv->getUnsignedIntParameter());
 		break;
 	case 38:
-		setMaintenanceRate(inv->getFloatParameter());
+		setPowerRate(inv->getFloatParameter());
 		break;
 	case 39:
-		setPowerReserves(inv->getFloatParameter());
+		setMaintenancePool(inv->getFloatParameter());
 		break;
 	case 40:
-		setOperating(inv->getBooleanParameter());
+		setMaintenanceRate(inv->getFloatParameter());
 		break;
 	case 41:
-		setPublicStructure(inv->getBooleanParameter());
+		setPowerReserves(inv->getFloatParameter());
 		break;
 	case 42:
-		setLotSize(inv->getUnsignedCharParameter());
+		setOperating(inv->getBooleanParameter());
 		break;
 	case 43:
-		setPermissionsFromString(inv->getAsciiParameter(_param0_setPermissionsFromString__String_));
+		setPublicStructure(inv->getBooleanParameter());
 		break;
 	case 44:
-		resp->insertInt(getStructureID());
+		setLotSize(inv->getUnsignedCharParameter());
 		break;
 	case 45:
-		resp->insertInt(getDeedCRC());
+		setPermissionsFromString(inv->getAsciiParameter(_param0_setPermissionsFromString__String_));
 		break;
 	case 46:
-		resp->insertAscii(getDeedStfName());
+		resp->insertInt(getStructureID());
 		break;
 	case 47:
-		resp->insertAscii(getObjectFile());
+		resp->insertInt(getDeedCRC());
 		break;
 	case 48:
-		resp->insertInt(getReclaimFee());
+		resp->insertAscii(getDeedStfName());
 		break;
 	case 49:
-		resp->insertFloat(getMaintenancePool());
+		resp->insertUnicode(getDeedCustomName());
 		break;
 	case 50:
-		resp->insertFloat(getMaintenanceRate());
+		resp->insertInt(getConstructionObjectCRC());
 		break;
 	case 51:
-		resp->insertFloat(getPowerReserves());
+		resp->insertAscii(getObjectFile());
 		break;
 	case 52:
-		resp->insertFloat(getPowerRate());
+		resp->insertInt(getReclaimFee());
 		break;
 	case 53:
-		resp->insertInt(getDestroyCode());
+		resp->insertFloat(getMaintenancePool());
 		break;
 	case 54:
-		resp->insertByte(getLotSize());
+		resp->insertFloat(getMaintenanceRate());
 		break;
 	case 55:
-		resp->insertAscii(getPermissionsString());
+		resp->insertFloat(getPowerReserves());
 		break;
 	case 56:
-		resp->insertInt(getNewUpdateCounter(inv->getUnsignedIntParameter()));
+		resp->insertFloat(getPowerRate());
 		break;
 	case 57:
-		resp->insertInt(getUpdateCounter());
+		resp->insertInt(getDestroyCode());
 		break;
 	case 58:
-		resp->insertBoolean(isRedeedable());
+		resp->insertByte(getLotSize());
 		break;
 	case 59:
-		resp->insertBoolean(isOperating());
+		resp->insertAscii(getPermissionsString());
 		break;
 	case 60:
-		resp->insertBoolean(isHopperEmpty());
+		resp->insertInt(getNewUpdateCounter(inv->getUnsignedIntParameter()));
 		break;
 	case 61:
-		resp->insertBoolean(isHopperFull());
+		resp->insertInt(getUpdateCounter());
 		break;
 	case 62:
-		resp->insertBoolean(isOutOfMaintenance());
+		resp->insertBoolean(isRedeedable());
 		break;
 	case 63:
-		resp->insertBoolean(isOutOfPower());
+		resp->insertBoolean(isOperating());
 		break;
 	case 64:
-		resp->insertBoolean(isPublicStructure());
+		resp->insertBoolean(isHopperEmpty());
 		break;
 	case 65:
-		resp->insertBoolean(isOnAdminList((Player*) inv->getObjectParameter()));
+		resp->insertBoolean(isHopperFull());
 		break;
 	case 66:
-		resp->insertBoolean(isOnHopperList((Player*) inv->getObjectParameter()));
+		resp->insertBoolean(isOutOfMaintenance());
 		break;
 	case 67:
-		resp->insertBoolean(isHarvester());
+		resp->insertBoolean(isOutOfPower());
 		break;
 	case 68:
-		resp->insertBoolean(isGenerator());
+		resp->insertBoolean(isPublicStructure());
 		break;
 	case 69:
-		resp->insertBoolean(isFactory());
+		resp->insertBoolean(isOnAdminList((Player*) inv->getObjectParameter()));
 		break;
 	case 70:
-		resp->insertBoolean(isTurret());
+		resp->insertBoolean(isOnHopperList((Player*) inv->getObjectParameter()));
 		break;
 	case 71:
-		resp->insertBoolean(isMinefield());
+		resp->insertBoolean(isHarvester());
 		break;
 	case 72:
-		setBaseExtractionRate(inv->getFloatParameter());
+		resp->insertBoolean(isGenerator());
 		break;
 	case 73:
-		setHopperSizeMax(inv->getFloatParameter());
+		resp->insertBoolean(isFactory());
 		break;
 	case 74:
-		setHarvesterType(inv->getUnsignedCharParameter());
+		resp->insertBoolean(isTurret());
 		break;
 	case 75:
-		resp->insertLong(getSelectedResourceID());
+		resp->insertBoolean(isMinefield());
 		break;
 	case 76:
-		resp->insertFloat(getDisplayedBaseExtractionRate());
+		setBaseExtractionRate(inv->getFloatParameter());
 		break;
 	case 77:
-		resp->insertFloat(getBaseExtractionRate());
+		setHopperSizeMax(inv->getFloatParameter());
 		break;
 	case 78:
-		resp->insertFloat(getExtractionRate());
+		setHarvesterType(inv->getUnsignedCharParameter());
 		break;
 	case 79:
-		resp->insertFloat(getHopperSize());
+		resp->insertLong(getSelectedResourceID());
 		break;
 	case 80:
-		resp->insertFloat(getHopperSizeMax());
+		resp->insertFloat(getDisplayedBaseExtractionRate());
 		break;
 	case 81:
-		resp->insertInt(getHopperListSize());
+		resp->insertFloat(getBaseExtractionRate());
 		break;
 	case 82:
-		resp->insertLong(getHopperItemID(inv->getSignedIntParameter()));
+		resp->insertFloat(getExtractionRate());
 		break;
 	case 83:
-		resp->insertFloat(getHopperItemQuantity(inv->getSignedIntParameter()));
+		resp->insertFloat(getHopperSize());
 		break;
 	case 84:
-		resp->insertFloat(getHopperItemQuantity(inv->getUnsignedLongParameter()));
+		resp->insertFloat(getHopperSizeMax());
 		break;
 	case 85:
+		resp->insertInt(getHopperListSize());
+		break;
+	case 86:
+		resp->insertLong(getHopperItemID(inv->getSignedIntParameter()));
+		break;
+	case 87:
+		resp->insertFloat(getHopperItemQuantity(inv->getSignedIntParameter()));
+		break;
+	case 88:
+		resp->insertFloat(getHopperItemQuantity(inv->getUnsignedLongParameter()));
+		break;
+	case 89:
 		resp->insertSignedInt(getHopperItemIndex(inv->getUnsignedLongParameter()));
 		break;
 	default:
@@ -1417,6 +1480,14 @@ void InstallationObjectAdapter::setDeedStfName(const String& stfname) {
 	return ((InstallationObjectImplementation*) impl)->setDeedStfName(stfname);
 }
 
+void InstallationObjectAdapter::setDeedCustomName(const UnicodeString& customname) {
+	return ((InstallationObjectImplementation*) impl)->setDeedCustomName(customname);
+}
+
+void InstallationObjectAdapter::setConstructionObjectCRC(unsigned int crc) {
+	return ((InstallationObjectImplementation*) impl)->setConstructionObjectCRC(crc);
+}
+
 void InstallationObjectAdapter::setObjectFile(const String& objectfile) {
 	return ((InstallationObjectImplementation*) impl)->setObjectFile(objectfile);
 }
@@ -1467,6 +1538,14 @@ unsigned int InstallationObjectAdapter::getDeedCRC() {
 
 String& InstallationObjectAdapter::getDeedStfName() {
 	return ((InstallationObjectImplementation*) impl)->getDeedStfName();
+}
+
+UnicodeString& InstallationObjectAdapter::getDeedCustomName() {
+	return ((InstallationObjectImplementation*) impl)->getDeedCustomName();
+}
+
+unsigned int InstallationObjectAdapter::getConstructionObjectCRC() {
+	return ((InstallationObjectImplementation*) impl)->getConstructionObjectCRC();
 }
 
 String& InstallationObjectAdapter::getObjectFile() {

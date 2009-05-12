@@ -42,31 +42,36 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../DeedObject";
-import "../../../creature/CreatureObject";
-import "../../../player/Player";
-import "../../../scene/SceneObject";
+#ifndef SUIRESOURCEBOXIMPLEMENTATION_H_
+#define SUIRESOURCEBOXIMPLEMENTATION_H_
 
-interface VehicleDeed implements DeedObject {
-	VehicleDeed(CreatureObject creature, unsigned int objcrc, const UnicodeString customname, const String stfname) {
-		super(creature, objcrc, customname, stfname);
-	}
-	
-	VehicleDeed(unsigned long objid, unsigned int objcrc, const UnicodeString customname, const String stfname) {
-		super(objid, objcrc, customname, stfname);
-	}
-	
-	int useObject(Player player);
-	
-	SceneObject generateObject(Player player);
-	
-	void parseItemAttributes();
-	
-	//Setters
-	void setTargetConditionMax(unsigned int condmax);
-	void setTargetControlDeviceCRC(unsigned int crc);
-	
-	//Getters
-	unsigned int getTargetConditionMax();
-	unsigned int getTargetControlDeviceCRC();
-}
+#include "engine/engine.h"
+
+#include "SuiResourceBox.h"
+
+#include "../../../../packets/ui/SuiCreatePageMessage.h"
+
+class Player;
+
+class SuiResourceBoxImplementation : public SuiResourceBoxServant {
+protected:
+	uint8 stage;
+
+	void init();
+
+public:
+	static const uint8 STAGE_CLASS = 0;
+	static const uint8 STAGE_TYPE = 1;
+	static const uint8 STAGE_SELECT = 2;
+
+public:
+	SuiResourceBoxImplementation(Player* player);
+	~SuiResourceBoxImplementation();
+
+	virtual BaseMessage* generateMessage();
+
+	void nextStage();
+	void previousStage();
+};
+
+#endif /*SUILISTBOXEVENT_H_*/

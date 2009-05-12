@@ -315,6 +315,22 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 	}
 }
 
+
+void ChatManagerImplementation::broadcastFactionMessage(uint32 factionmask, const String& message) {
+	lock();
+
+	playerMap->resetIterator(false);
+
+	while (playerMap->hasNext(false)) {
+		Player* player = playerMap->getNextValue(false);
+
+		if (factionmask & player->getFaction())
+			player->sendSystemMessage(message);
+	}
+
+	unlock();
+}
+
 void ChatManagerImplementation::broadcastMessage(const String& message) {
 	lock();
 

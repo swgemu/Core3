@@ -296,7 +296,7 @@ void FriendsListImplementation::findFriend(String& name, PlayerManager* playerMa
 			if (returnWP != NULL) {
 				returnWP->setPlanetName(targetPlanet);
 				returnWP->setPosition(x, 0.0f, y);
-				returnWP->changeStatus(true);
+				returnWP->setActivated(true);
 				player->updateWaypoint(returnWP);
 
 				StringBuffer friendString;
@@ -308,16 +308,16 @@ void FriendsListImplementation::findFriend(String& name, PlayerManager* playerMa
 				break;
 
 			} else {
-				WaypointObject* wp = new WaypointObject(player, player->getNewItemID());
+				WaypointObject* wp = new WaypointObject(player->getNewItemID());
 
 				StringBuffer friendString;
 				friendString << "FINDFRIEND:" << name;
 
 				wp->setInternalNote(friendString.toString());
-				wp->setName(name);
+				wp->setCustomName(name);
 				wp->setPlanetName(targetPlanet);
 				wp->setPosition(x, 0.0f, y);
-				wp->changeStatus(true);
+				wp->setActivated(true);
 				player->addWaypoint(wp);
 
 				friendString.deleteAll();

@@ -14,8 +14,13 @@
  *	WaypointObjectStub
  */
 
-WaypointObject::WaypointObject(Player* player, unsigned long long oid) : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new WaypointObjectImplementation(player, oid);
+WaypointObject::WaypointObject(unsigned long long objid) : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new WaypointObjectImplementation(objid);
+	_impl->_setStub(this);
+}
+
+WaypointObject::WaypointObject(unsigned long long objid, SceneObject* obj) : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new WaypointObjectImplementation(objid, obj);
 	_impl->_setStub(this);
 }
 
@@ -25,30 +30,69 @@ WaypointObject::WaypointObject(DummyConstructorParameter* param) : SceneObject(p
 WaypointObject::~WaypointObject() {
 }
 
-void WaypointObject::changeStatus(bool status) {
+void WaypointObject::activate(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
-		method.addBooleanParameter(status);
+		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
 	} else
-		((WaypointObjectImplementation*) _impl)->changeStatus(status);
+		((WaypointObjectImplementation*) _impl)->activate(player);
 }
 
-void WaypointObject::setName(const String& Name) {
+void WaypointObject::deactivate(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
-		method.addAsciiParameter(Name);
+		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
 	} else
-		((WaypointObjectImplementation*) _impl)->setName(Name);
+		((WaypointObjectImplementation*) _impl)->deactivate(player);
+}
+
+void WaypointObject::updateWaypoint(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((WaypointObjectImplementation*) _impl)->updateWaypoint(player);
+}
+
+void WaypointObject::updateCustomName(Player* player, const String& value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((WaypointObjectImplementation*) _impl)->updateCustomName(player, value);
+}
+
+bool WaypointObject::toggleActivation() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((WaypointObjectImplementation*) _impl)->toggleActivation();
 }
 
 void WaypointObject::setInternalNote(const String& message) {
@@ -56,7 +100,7 @@ void WaypointObject::setInternalNote(const String& message) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 11);
 		method.addAsciiParameter(message);
 
 		method.executeWithVoidReturn();
@@ -69,7 +113,7 @@ void WaypointObject::setPlanetName(const String& planet) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 12);
 		method.addAsciiParameter(planet);
 
 		method.executeWithVoidReturn();
@@ -77,53 +121,30 @@ void WaypointObject::setPlanetName(const String& planet) {
 		((WaypointObjectImplementation*) _impl)->setPlanetName(planet);
 }
 
-void WaypointObject::switchStatus() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 10);
-
-		method.executeWithVoidReturn();
-	} else
-		((WaypointObjectImplementation*) _impl)->switchStatus();
-}
-
-unsigned int WaypointObject::getPlanetCRC() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 11);
-
-		return method.executeWithUnsignedIntReturn();
-	} else
-		return ((WaypointObjectImplementation*) _impl)->getPlanetCRC();
-}
-
-bool WaypointObject::getStatus() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 12);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((WaypointObjectImplementation*) _impl)->getStatus();
-}
-
-String& WaypointObject::getName() {
+void WaypointObject::setWaypointType(unsigned char type) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 13);
+		method.addUnsignedCharParameter(type);
 
-		method.executeWithAsciiReturn(_return_getName);
-		return _return_getName;
+		method.executeWithVoidReturn();
 	} else
-		return ((WaypointObjectImplementation*) _impl)->getName();
+		((WaypointObjectImplementation*) _impl)->setWaypointType(type);
+}
+
+void WaypointObject::setActivated(bool active) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+		method.addBooleanParameter(active);
+
+		method.executeWithVoidReturn();
+	} else
+		((WaypointObjectImplementation*) _impl)->setActivated(active);
 }
 
 String& WaypointObject::getPlanetName() {
@@ -131,7 +152,7 @@ String& WaypointObject::getPlanetName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 
 		method.executeWithAsciiReturn(_return_getPlanetName);
 		return _return_getPlanetName;
@@ -139,17 +160,53 @@ String& WaypointObject::getPlanetName() {
 		return ((WaypointObjectImplementation*) _impl)->getPlanetName();
 }
 
+unsigned int WaypointObject::getPlanetCRC() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((WaypointObjectImplementation*) _impl)->getPlanetCRC();
+}
+
 String& WaypointObject::getInternalNote() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 17);
 
 		method.executeWithAsciiReturn(_return_getInternalNote);
 		return _return_getInternalNote;
 	} else
 		return ((WaypointObjectImplementation*) _impl)->getInternalNote();
+}
+
+unsigned char WaypointObject::getWaypointType() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+
+		return method.executeWithUnsignedCharReturn();
+	} else
+		return ((WaypointObjectImplementation*) _impl)->getWaypointType();
+}
+
+bool WaypointObject::isActivated() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((WaypointObjectImplementation*) _impl)->isActivated();
 }
 
 /*
@@ -164,34 +221,46 @@ Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 	switch (methid) {
 	case 6:
-		changeStatus(inv->getBooleanParameter());
+		activate((Player*) inv->getObjectParameter());
 		break;
 	case 7:
-		setName(inv->getAsciiParameter(_param0_setName__String_));
+		deactivate((Player*) inv->getObjectParameter());
 		break;
 	case 8:
-		setInternalNote(inv->getAsciiParameter(_param0_setInternalNote__String_));
+		updateWaypoint((Player*) inv->getObjectParameter());
 		break;
 	case 9:
-		setPlanetName(inv->getAsciiParameter(_param0_setPlanetName__String_));
+		updateCustomName((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_updateCustomName__Player_String_));
 		break;
 	case 10:
-		switchStatus();
+		resp->insertBoolean(toggleActivation());
 		break;
 	case 11:
-		resp->insertInt(getPlanetCRC());
+		setInternalNote(inv->getAsciiParameter(_param0_setInternalNote__String_));
 		break;
 	case 12:
-		resp->insertBoolean(getStatus());
+		setPlanetName(inv->getAsciiParameter(_param0_setPlanetName__String_));
 		break;
 	case 13:
-		resp->insertAscii(getName());
+		setWaypointType(inv->getUnsignedCharParameter());
 		break;
 	case 14:
-		resp->insertAscii(getPlanetName());
+		setActivated(inv->getBooleanParameter());
 		break;
 	case 15:
+		resp->insertAscii(getPlanetName());
+		break;
+	case 16:
+		resp->insertInt(getPlanetCRC());
+		break;
+	case 17:
 		resp->insertAscii(getInternalNote());
+		break;
+	case 18:
+		resp->insertByte(getWaypointType());
+		break;
+	case 19:
+		resp->insertBoolean(isActivated());
 		break;
 	default:
 		return NULL;
@@ -200,12 +269,24 @@ Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	return resp;
 }
 
-void WaypointObjectAdapter::changeStatus(bool status) {
-	return ((WaypointObjectImplementation*) impl)->changeStatus(status);
+void WaypointObjectAdapter::activate(Player* player) {
+	return ((WaypointObjectImplementation*) impl)->activate(player);
 }
 
-void WaypointObjectAdapter::setName(const String& Name) {
-	return ((WaypointObjectImplementation*) impl)->setName(Name);
+void WaypointObjectAdapter::deactivate(Player* player) {
+	return ((WaypointObjectImplementation*) impl)->deactivate(player);
+}
+
+void WaypointObjectAdapter::updateWaypoint(Player* player) {
+	return ((WaypointObjectImplementation*) impl)->updateWaypoint(player);
+}
+
+void WaypointObjectAdapter::updateCustomName(Player* player, const String& value) {
+	return ((WaypointObjectImplementation*) impl)->updateCustomName(player, value);
+}
+
+bool WaypointObjectAdapter::toggleActivation() {
+	return ((WaypointObjectImplementation*) impl)->toggleActivation();
 }
 
 void WaypointObjectAdapter::setInternalNote(const String& message) {
@@ -216,28 +297,32 @@ void WaypointObjectAdapter::setPlanetName(const String& planet) {
 	return ((WaypointObjectImplementation*) impl)->setPlanetName(planet);
 }
 
-void WaypointObjectAdapter::switchStatus() {
-	return ((WaypointObjectImplementation*) impl)->switchStatus();
+void WaypointObjectAdapter::setWaypointType(unsigned char type) {
+	return ((WaypointObjectImplementation*) impl)->setWaypointType(type);
 }
 
-unsigned int WaypointObjectAdapter::getPlanetCRC() {
-	return ((WaypointObjectImplementation*) impl)->getPlanetCRC();
-}
-
-bool WaypointObjectAdapter::getStatus() {
-	return ((WaypointObjectImplementation*) impl)->getStatus();
-}
-
-String& WaypointObjectAdapter::getName() {
-	return ((WaypointObjectImplementation*) impl)->getName();
+void WaypointObjectAdapter::setActivated(bool active) {
+	return ((WaypointObjectImplementation*) impl)->setActivated(active);
 }
 
 String& WaypointObjectAdapter::getPlanetName() {
 	return ((WaypointObjectImplementation*) impl)->getPlanetName();
 }
 
+unsigned int WaypointObjectAdapter::getPlanetCRC() {
+	return ((WaypointObjectImplementation*) impl)->getPlanetCRC();
+}
+
 String& WaypointObjectAdapter::getInternalNote() {
 	return ((WaypointObjectImplementation*) impl)->getInternalNote();
+}
+
+unsigned char WaypointObjectAdapter::getWaypointType() {
+	return ((WaypointObjectImplementation*) impl)->getWaypointType();
+}
+
+bool WaypointObjectAdapter::isActivated() {
+	return ((WaypointObjectImplementation*) impl)->isActivated();
 }
 
 /*
@@ -275,7 +360,7 @@ DistributedObjectAdapter* WaypointObjectHelper::createAdapter(DistributedObjectS
  *	WaypointObjectServant
  */
 
-WaypointObjectServant::WaypointObjectServant(unsigned long long oid, int type) : SceneObjectImplementation(oid, type) {
+WaypointObjectServant::WaypointObjectServant(unsigned long long objid, int type) : SceneObjectImplementation(objid, type) {
 	_classHelper = WaypointObjectHelper::instance();
 }
 

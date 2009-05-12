@@ -69,14 +69,23 @@ VehicleDeedImplementation::~VehicleDeedImplementation() {
 void VehicleDeedImplementation::init() {
 	objectSubType = VEHICLEDEED;
 
-	setTargetStfFile("monster_name");
+	setStfFile("pet_deed");
+
+	setTargetObjectType(NONPLAYERCREATURE);
+	setTargetObjectSubType(VEHICLE);
 
 	setTargetConditionMax(2000);
+	setTargetControlDeviceCRC(0);
 }
 
 
-int VehicleDeedImplementation::useObject(Player* player) {/*
+int VehicleDeedImplementation::useObject(Player* player) {
 	MountCreature* vehicle = (MountCreature*) generateObject(player);
+
+	if (vehicle == NULL) {
+		player->sendSystemMessage("Sorry, this vehicle deed is no longer usable.");
+		return 0;
+	}
 
 	try {
 		player->unlock();
@@ -109,93 +118,25 @@ int VehicleDeedImplementation::useObject(Player* player) {/*
 	} catch (...) {
 		vehicle->unlock();
 		player->wlock();
-	}*/
-
-	player->sendSystemMessage("Sorry! Vehicle deeds have been temporarily disabled.");
-	return 0;
-
-	//Destroy deed.
-
-	/*
-	TODO: REVISIT THIS ASAP
-	Datapad* datapad = player->getDatapad();
-
-	String customname = getTargetCustomName().toString();
-
-
-	IntangibleObject* datapaditem = new IntangibleObject(player->getNewItemID(), getTargetCustomName(), getTargetStfFile(),
-			getTargetStfName(), getTargetObjectCRC(), (SceneObject*) datapad);
-
-
-	MountCreature* vehicle = new MountCreature(player, getTargetStfName(), getTargetStfFile(),
-			getTargetObjectCRC(), getTargetObjectCRC(), player->getNewItemID());
-
-	//MountCreature* vehicle = new MountCreature(player, sname, targetFile.hashCode(), vehicleFile.hashCode(), player->getNewItemID());
-
-	try {
-		vehicle->setMaxCondition(getTargetConditionMax());
-		vehicle->setObjectFileName(getTargetObjectFile());
-		vehicle->setZoneProcessServer(player->getZoneProcessServer());
-		vehicle->setCustomName(getTargetCustomName());
-		vehicle->setDatapadItem(datapaditem);
-		vehicle->setMaxCondition(getHitPoints());
-
-		datapaditem->setWorldObject(vehicle);
-		datapaditem->setParent(datapad);
-
-		player->addDatapadItem(datapaditem);
-
-		datapaditem->sendTo(player, true);
-
-		player->unlock();
-
-		vehicle->wlock();
-
-		vehicle->call();
-
-		vehicle->unlock();
-
-		player->wlock();
-
-		// Remove Deed
-		_this->sendDestroyTo(player);
-
-		Zone* zone = player->getZone();
-		if (zone != NULL) {
-			ZoneServer* zoneServer = zone->getZoneServer();
-
-			ItemManager* itemManager;
-
-			if (zoneServer != NULL && ((itemManager = zoneServer->getItemManager()) != NULL)) {
-				player->removeInventoryItem(objectID);
-				itemManager->deletePlayerItem(player, _this, false);
-
-				_this->finalize();
-			}
-		}
-
-		return 1;
-	} catch(...) {
-		vehicle->unlock();
-
-		player->wlock();
-
-		System::out << "Unreported exception caught in VehicleDeedImplementation::useObject\n";
 	}
-	*/
+
 	return 0;
 }
 
 SceneObject* VehicleDeedImplementation::generateObject(Player* player) {
 	Datapad* datapad = player->getDatapad();
 
+	uint32 controldevicecrc = getTargetControlDeviceCRC();
+
+	if (controldevicecrc == 0)
+		return NULL;
+
 	String customname = getTargetCustomName().toString();
-	IntangibleObject* controldevice = new IntangibleObject(player->getNewItemID(), customname, getTargetStfFile(), getTargetStfName(), getTargetObjectCRC(), (SceneObject*) datapad);
+	IntangibleObject* controldevice = new IntangibleObject(player->getNewItemID(), customname, getTargetStfFile(), getTargetStfName(), controldevicecrc, (SceneObject*) datapad);
 
 	MountCreature* vehicle = new MountCreature(player->getNewItemID(), getTargetObjectCRC(), getTargetCustomName(), getTargetStfName(), player);
-	//vehicle->setObjectFileName(getTargetObjectFile());
-	vehicle->setZoneProcessServer(player->getZoneProcessServer());
-	vehicle->setCustomName(getTargetCustomName());
+	vehicle->setStfFile(getTargetStfFile());
+	vehicle->setStfName(getTargetStfName());
 	vehicle->setDatapadItem(controldevice);
 	vehicle->setMaxCondition(getTargetConditionMax());
 
@@ -230,6 +171,11 @@ void VehicleDeedImplementation::addAttributes(AttributeListMessage* alm) {
 }
 
 void VehicleDeedImplementation::parseItemAttributes(){
+	DeedObjectImplementation::parseItemAttributes();
+
 	String attr("targetConditionMax");
 	targetConditionMax = itemAttributes->getIntAttribute(attr);
+
+	attr = "targetControlDeviceCRC";
+	targetControlDeviceCRC = itemAttributes->getIntAttribute(attr);
 }

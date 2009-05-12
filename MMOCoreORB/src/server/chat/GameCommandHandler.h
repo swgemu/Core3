@@ -229,6 +229,8 @@ private:
 	static void displayMOTD(StringTokenizer tokenizer, Player* player);
 	static void applyDot(StringTokenizer tokenizer, Player* player);
 
+	static void rebelMessage(StringTokenizer tokenizer, Player* player);
+	static void imperialMessage(StringTokenizer tokenizer, Player* player);
 	static void eventMessage(StringTokenizer tokenizer, Player* player);
 	static void eventCloner(StringTokenizer tokenizer, Player* player);
 	static void deletePlayer(StringTokenizer tokenizer, Player* player);

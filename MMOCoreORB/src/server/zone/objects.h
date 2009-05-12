@@ -329,7 +329,8 @@ which carries forward this exception.
 #include "objects/player/sui/banktransferbox/SuiBankTipConfirmBox.h"
 #include "objects/player/sui/slicingbox/SuiSlicingBox.h"
 #include "objects/player/sui/slicingbox/SuiSlicingBoxImplementation.h"
-
+#include "objects/player/sui/resourcebox/SuiResourceBox.h"
+#include "objects/player/sui/resourcebox/SuiResourceBoxImplementation.h"
 
 #include "objects/tangible/camokits/CamoKit.h"
 #include "objects/tangible/camokits/CamoKitImplementation.h"

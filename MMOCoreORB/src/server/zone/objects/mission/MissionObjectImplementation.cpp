@@ -210,11 +210,11 @@ void MissionObjectImplementation::assetSetup() {
 		return;
 
 	//Create & Send destination waypoint
-	targetWaypoint = new WaypointObject(ownerObject, ownerObject->getNewItemID());
+	targetWaypoint = new WaypointObject(ownerObject->getNewItemID());
 	targetWaypoint->setPlanetName(Planet::getPlanetNameByCrc(destPlanetCrc));
 	targetWaypoint->setPosition(destX, 0, destY);
-	targetWaypoint->setName(titleStr);
-	targetWaypoint->changeStatus(true);
+	targetWaypoint->setCustomName(titleStr);
+	targetWaypoint->setActivated(true);
 
 	ownerObject->addWaypoint(targetWaypoint);
 }

@@ -279,10 +279,7 @@ class PlayerImplementation : public PlayerServant {
 	VectorMap<uint32, SuiBox*> suiBoxes;
 	uint32 suiBoxNextID;
 	String inputBoxReturnBuffer;
-	SuiListBoxVector* suiChoicesList;
-
-	//TODO: This needs to be deprecated
-	uint64 resourceDeedID;
+	SuiListBoxVector* suiChoicesList; //TODO: Is this used for anything besides resource deed?
 
 	//TODO: I dont think we really need this...
 	uint64 currentStructureID;
@@ -1312,6 +1309,14 @@ public:
 			surveyWaypoint = NULL;
 
 		return playerObject->removeWaypoint(wp, true);
+	}
+
+	bool hasWaypoint(WaypointObject* wp) {
+		return playerObject->hasWaypoint(wp);
+	}
+
+	bool hasWaypoint(uint64 wpid) {
+		return playerObject->hasWaypoint(wpid);
 	}
 
 	WaypointObject* getWaypoint(uint64 id) {

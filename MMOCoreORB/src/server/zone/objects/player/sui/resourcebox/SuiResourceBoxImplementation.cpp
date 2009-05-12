@@ -42,31 +42,80 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../DeedObject";
-import "../../../creature/CreatureObject";
-import "../../../player/Player";
-import "../../../scene/SceneObject";
+#include "SuiResourceBoxImplementation.h"
+#include "../SuiWindowType.h"
 
-interface VehicleDeed implements DeedObject {
-	VehicleDeed(CreatureObject creature, unsigned int objcrc, const UnicodeString customname, const String stfname) {
-		super(creature, objcrc, customname, stfname);
+SuiResourceBoxImplementation::SuiResourceBoxImplementation(Player* player) :
+		SuiResourceBoxServant(player, SuiWindowType::FREE_RESOURCE, RESOURCEBOX) {
+}
+
+SuiResourceBoxImplementation::~SuiResourceBoxImplementation() {
+}
+
+void SuiResourceBoxImplementation::nextStage() {
+
+}
+
+void SuiResourceBoxImplementation::previousStage() {
+
+}
+
+
+BaseMessage* SuiResourceBoxImplementation::generateMessage() {
+	SuiCreatePageMessage* message = new SuiCreatePageMessage(boxID, "Script.listBox");
+
+	//Declare Headers:
+	addHeader("List.lstList", "SelectedRow");
+	addHeader("bg.caption.lblTitle", "Text");
+
+	//Set Body Options:
+	addSetting("3", "bg.caption.lblTitle", "Text", "@veteran:resource_title");
+	addSetting("3", "Prompt.lblPrompt", "Text", promptText);
+
+	addSetting("3", "btnCancel", "Text", "@cancel");
+	addSetting("3", "btnOk", "Text", "@ok");
+
+	//Data Container Option
+	addSetting("1", "List.dataList", "", "");
+
+	for (int i = 0; i < getMenuSize(); i++) {
+		addSetting("4", "List.dataList", "Name", String::valueOf(i));
+		addSetting("3", "List.dataList." + i, "Text", menuItems.get(i)->getOptionName());
 	}
-	
-	VehicleDeed(unsigned long objid, unsigned int objcrc, const UnicodeString customname, const String stfname) {
-		super(objid, objcrc, customname, stfname);
-	}
-	
-	int useObject(Player player);
-	
-	SceneObject generateObject(Player player);
-	
-	void parseItemAttributes();
-	
-	//Setters
-	void setTargetConditionMax(unsigned int condmax);
-	void setTargetControlDeviceCRC(unsigned int crc);
-	
-	//Getters
-	unsigned int getTargetConditionMax();
-	unsigned int getTargetControlDeviceCRC();
+
+	/*
+	//Fill the above Data Container
+	String tempVal = "";
+	for (int i = 0; i < getMenuSize(); i++) {
+		char tempStr[30];
+		sprintf(tempStr, "%d", i);
+
+		addSetting("4", "List.dataList", "Name", String::valueOf(i));
+
+		sprintf(tempStr, "List.dataList.%d", i);
+
+		tempVal = menuItems.get(i)->getOptionName();
+
+		addSetting("3", tempStr, "Text", tempVal);
+	}*/
+
+	//Generate Packet:
+	/*
+	switch(type) {
+	case HANDLESTATUSUI:
+		generateHeader(message, "handleStatusUi");
+		break;
+	case HANDLEDESTROYUI:
+		generateHeader(message, "handleDestroyUi");
+		break;
+	default:
+		generateHeader(message, "msgSelected");
+	}*/
+
+	generateHeader(message, "msgSelected");
+	generateBody(message);
+	generateFooter(message);
+	hasGenerated = true;
+
+	return message;
 }

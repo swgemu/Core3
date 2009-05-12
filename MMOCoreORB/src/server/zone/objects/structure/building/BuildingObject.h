@@ -47,6 +47,8 @@ public:
 
 	void setBuildingType(unsigned char type);
 
+	void setPublicStructure(bool pub);
+
 	unsigned char getBuildingType();
 
 	unsigned int getCellCount();
@@ -122,6 +124,8 @@ public:
 	void parseItemAttributes();
 
 	void setBuildingType(unsigned char type);
+
+	void setPublicStructure(bool pub);
 
 	unsigned char getBuildingType();
 

@@ -64,23 +64,36 @@ public:
 		startList(1, play->getNewWaypointListCount(1));
 	}
 
-	void addWaypoint(uint8 subtype, WaypointObject* wp) {
-		insertByte(subtype);
+	void addWaypoint(WaypointObject* waypoint) {
+		insertByte(0x00);
+		insertLong(waypoint->getObjectID());
+		insertInt(0); //This can't be cellid can it? An integer as cell id?
+		insertFloat(waypoint->getPositionX());
+		insertFloat(0.0f); //Z is always 0.0f (unless in space?)
+		insertFloat(waypoint->getPositionY());
+		insertLong(0); //Unsure of this? Perhaps this is cellid?
+		insertInt(waypoint->getPlanetCRC()); //Planet CRC
+		insertUnicode(waypoint->getCustomName());
+		insertLong(waypoint->getObjectID()); //Objectid again?
+		//TODO: Perhaps this is waypoint type.
+		insertByte(waypoint->getWaypointType()); //Waypoint text color. Flag  1=Normal WP (light blue)  / 0 = White WP text  / 2 = green WP text
+		insertByte((uint8) waypoint->isActivated()); //Waypoint Activated Flag
+	}
 
-		insertLong(wp->getObjectID());
-		insertInt(0); // cellID
-		insertFloat(wp->getPositionX());
-		insertFloat(0.0f); //Z
-		insertFloat(wp->getPositionY());
-		insertLong(0); //?
-		insertInt(wp->getPlanetCRC()); //21 91 27 57 planet crc
-
-		UnicodeString name = wp->getName();
-		insertUnicode(name);
-
-		insertLong(wp->getObjectID());
-		insertByte(0x01); //Flag  1=Normal WP (light blue)  / 0 = White WP text  / 2 = green WP text
+	void removeWaypoint(WaypointObject* waypoint) {
 		insertByte(0x01);
+		insertLong(waypoint->getObjectID());
+		insertInt(0); //This can't be cellid can it? An integer as cell id?
+		insertFloat(waypoint->getPositionX());
+		insertFloat(0.0f); //Z is always 0.0f (unless in space?)
+		insertFloat(waypoint->getPositionY());
+		insertLong(0); //Unsure of this? Perhaps this is cellid?
+		insertInt(waypoint->getPlanetCRC()); //Planet CRC
+		insertUnicode(waypoint->getCustomName());
+		insertLong(waypoint->getObjectID()); //Objectid again?
+		//TODO: Perhaps this is waypoint type.
+		insertByte(waypoint->getWaypointType()); //What color is the waypoint? Flag  1=Normal WP (light blue)  / 0 = White WP text  / 2 = green WP text
+		insertByte((uint8) waypoint->isActivated()); //Waypoint Activated Flag
 	}
 
 	void updateForcePower() {
