@@ -556,7 +556,7 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid, i
 
 			buio->setObjectCRC(file.hashCode());
 			buio->setBuildingType(guessBuildingType(oid, file));
-			buio->setPublicEntry(true);
+			buio->setPublicStructure(true);
 			//setObjectType
 			//setObjectName
 

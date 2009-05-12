@@ -73,6 +73,7 @@ interface BuildingObject implements SceneObject {
 	
 	//Setters
 	void setBuildingType(unsigned char type);
+	void setPublicStructure(boolean pub);
 	
 	//Getters
 	unsigned char getBuildingType();
