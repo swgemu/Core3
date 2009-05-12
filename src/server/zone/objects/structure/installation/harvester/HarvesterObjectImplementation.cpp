@@ -209,7 +209,8 @@ void HarvesterObjectImplementation::sendRadialResponseTo(Player* player, ObjectM
 			management->addRadialMenuItem(124, 3, "@player_structure:management_status"); //Status
 			management->addRadialMenuItem(129, 3, "@player_structure:management_pay"); //Pay Maintenance
 			management->addRadialMenuItem(50, 3, "@player_structure:management_name_structure"); //Name Structure
-			management->addRadialMenuItem(77, 3, "@player_structure:management_power"); //Deposit Power
+			if (!isGenerator())
+				management->addRadialMenuItem(77, 3, "@player_structure:management_power"); //Deposit Power
 		}
 
 		management->addRadialMenuItem(78, 3, "@harvester:manage "); //Operate Machinery
@@ -560,10 +561,11 @@ bool HarvesterObjectImplementation::emptyHarvester(Player* player) {
 }
 
 InstallationDeed* HarvesterObjectImplementation::redeed(Player* player) {
-	InstallationDeed* installationdeed = new InstallationDeed(player->getNewItemID(), getDeedCRC(), getCustomName(), getDeedStfName());
+	InstallationDeed* installationdeed = new InstallationDeed(player->getNewItemID(), getDeedCRC(), getDeedCustomName(), getDeedStfName());
 	installationdeed->setTargetStfFile(getStfFile());
 	installationdeed->setTargetStfName(getStfName());
 	installationdeed->setTargetCustomName(getCustomName());
+	installationdeed->setTargetConstructionObjectCRC(getConstructionObjectCRC());
 	installationdeed->setTargetObjectFile(getObjectFile());
 	installationdeed->setTargetObjectSubType(getObjectSubType());
 

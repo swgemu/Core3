@@ -847,12 +847,38 @@ void PlayerObject::loadIgnore() {
 		((PlayerObjectImplementation*) _impl)->loadIgnore();
 }
 
-void PlayerObject::saveWaypoints(Player* player) {
+bool PlayerObject::hasWaypoint(WaypointObject* wp) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 69);
+		method.addObjectParameter(wp);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->hasWaypoint(wp);
+}
+
+bool PlayerObject::hasWaypoint(unsigned long long wpid) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 70);
+		method.addUnsignedLongParameter(wpid);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->hasWaypoint(wpid);
+}
+
+void PlayerObject::saveWaypoints(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 71);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -865,7 +891,7 @@ WaypointObject* PlayerObject::searchWaypoint(Player* play, const String& name, i
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 70);
+		DistributedMethod method(this, 72);
 		method.addObjectParameter(play);
 		method.addAsciiParameter(name);
 		method.addSignedIntParameter(mode);
@@ -1076,9 +1102,15 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		loadIgnore();
 		break;
 	case 69:
-		saveWaypoints((Player*) inv->getObjectParameter());
+		resp->insertBoolean(hasWaypoint((WaypointObject*) inv->getObjectParameter()));
 		break;
 	case 70:
+		resp->insertBoolean(hasWaypoint(inv->getUnsignedLongParameter()));
+		break;
+	case 71:
+		saveWaypoints((Player*) inv->getObjectParameter());
+		break;
+	case 72:
 		resp->insertLong(searchWaypoint((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_searchWaypoint__Player_String_int_), inv->getSignedIntParameter())->_getObjectID());
 		break;
 	default:
@@ -1338,6 +1370,14 @@ void PlayerObjectAdapter::saveIgnore() {
 
 void PlayerObjectAdapter::loadIgnore() {
 	return ((PlayerObjectImplementation*) impl)->loadIgnore();
+}
+
+bool PlayerObjectAdapter::hasWaypoint(WaypointObject* wp) {
+	return ((PlayerObjectImplementation*) impl)->hasWaypoint(wp);
+}
+
+bool PlayerObjectAdapter::hasWaypoint(unsigned long long wpid) {
+	return ((PlayerObjectImplementation*) impl)->hasWaypoint(wpid);
 }
 
 void PlayerObjectAdapter::saveWaypoints(Player* player) {

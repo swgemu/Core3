@@ -190,11 +190,10 @@ public:
 		y = (y > 8192) ? 8192 : y;
 
 		//Create our waypoint
-		WaypointObject* waypoint = new WaypointObject(player,
-				player->getNewItemID());
+		WaypointObject* waypoint = new WaypointObject(player->getNewItemID());
 		waypoint->setPlanetName(planet);
 		waypoint->setPosition(x, z, y);
-		waypoint->setName(waypointName);
+		waypoint->setCustomName(waypointName);
 
 		player->addWaypoint(waypoint);
 

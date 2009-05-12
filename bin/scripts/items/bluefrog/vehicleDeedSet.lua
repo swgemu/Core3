@@ -43,7 +43,7 @@
 
 --vehicle_deed_set = {jetpackVehicleDeed, landspeederAV21Deed, landspeederX31Deed, landspeederX34Deed, speederbikeVehicleDeed, speederbikeSwoopVehicleDeed, speederbikeFlashVehicleDeed}
 
-vehicle_deed_set = {landspeederX31Deed, landspeederX34Deed, speederbikeVehicleDeed, speederbikeSwoopVehicleDeed, speederbikeFlashVehicleDeed}
+vehicle_deed_set = {speederbikeSwoopDeed}
 
-addBFItemSet("Vehicle Deed Set" , vehicle_deed_set);
+addBFItemSet("\\#ff6600 Vehicle Deed Set\\#." , vehicle_deed_set);
 

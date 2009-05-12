@@ -140,7 +140,6 @@ SceneObjectImplementation::~SceneObjectImplementation() {
 	undeploy();
 }
 
-//TODO: UH why is this in SceneObjectImplementation!?
 bool SceneObject::destroy() {
 	bool destroying = ServerCore::getZoneServer()->destroyObject(this);
 
@@ -347,6 +346,25 @@ void SceneObjectImplementation::serialize(String& str) {
 
 void SceneObjectImplementation::deSerialize(const String& str) {
 
+}
+
+/**
+ * This method creates a new waypoint to this object.
+ * TODO: Remove the dependency on a player object with the implementation of the new objectid manager.
+ * \param player The player to use as reference for the waypointobjects objectid.
+ * \param activate Should the waypoint be activated by default. Defaults to false.
+ * \return WaypointObject Returns a waypoint object refering to this object world location.
+ */
+WaypointObject* SceneObjectImplementation::createWaypointTo(Player* player, bool activate) {
+	if (player != NULL) {
+		//TODO: Update this with the new objectid manager plzzzzz.
+		WaypointObject* waypoint = new WaypointObject(player->getNewItemID(), _this);
+		player->addWaypoint(waypoint);
+
+		return waypoint;
+	}
+
+	return NULL;
 }
 
 void SceneObjectImplementation::insertToZone(Zone* zone) {

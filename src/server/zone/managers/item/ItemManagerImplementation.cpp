@@ -889,6 +889,7 @@ void ItemManagerImplementation::registerGlobals() {
 	//Scene Object Types
 	setGlobalInt("BUILDING", SceneObjectImplementation::BUILDING);
 	setGlobalInt("TANGIBLE", SceneObjectImplementation::TANGIBLE);
+	setGlobalInt("NONPLAYERCREATRE", SceneObjectImplementation::NONPLAYERCREATURE);
 
 	//Tangible Object Sub Types
 	setGlobalInt("CAMOKIT", TangibleObjectImplementation::CAMOKIT);
@@ -1283,15 +1284,11 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		String targetstffile = itemconfig.getStringField("targetStfFile");
 		String targetstfname = itemconfig.getStringField("targetStfName");
 		String targetobjfile = itemconfig.getStringField("targetObjectFile");
-		uint32 targetobjtype = itemconfig.getIntField("targetObjectType");
-		uint32 targetsubtype = itemconfig.getIntField("targetObjectSubType");
 
 		deed->setStfName(stfname);
 		deed->setTargetStfFile(targetstffile);
 		deed->setTargetStfName(targetstfname);
 		deed->setTargetObjectFile(targetobjfile);
-		deed->setTargetObjectType(targetobjtype);
-		deed->setTargetObjectSubType(targetsubtype);
 
 		if (deed->isInstallationDeed()) {
 			InstallationDeed* installationdeed = (InstallationDeed*) deed;
@@ -1346,7 +1343,9 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		} else if (deed->isPetDeed()) {
 
 		} else if (deed->isVehicleDeed()) {
-
+			VehicleDeed* vehicledeed = (VehicleDeed*) deed;
+			uint32 controldevicecrc = itemconfig.getIntField("targetControlDeviceCRC");
+			vehicledeed->setTargetControlDeviceCRC(controldevicecrc);
 		} else if (deed->isResourceDeed()) {
 
 		}

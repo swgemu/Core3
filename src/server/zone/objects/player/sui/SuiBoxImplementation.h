@@ -110,6 +110,8 @@ public:
 
 	const static int SLICINGBOX = 20;
 
+	const static int RESOURCEBOX = 30;
+
 public:
 	SuiBoxImplementation(Player* play, uint32 windowtype, uint32 boxtype);
 

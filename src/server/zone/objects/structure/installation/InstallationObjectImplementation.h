@@ -20,12 +20,14 @@ protected:
 	Time lastStatusPoll;
 
 	String deedStfName;
+	UnicodeString deedCustomName;
 	String objectFile;
 
 	uint32 structureID;
 	uint32 destroyCode;
 	uint32 reclaimFee;
 	uint32 deedCRC;
+	uint32 constructionObjectCRC;
 	uint32 updateCounter;
 
 	float maintenanceRate;
@@ -167,6 +169,21 @@ public:
 		itemAttributes->setStringAttribute(attr, deedStfName);
 	}
 
+	inline void setDeedCustomName(const UnicodeString& customname) {
+		setUpdated(true);
+		deedCustomName = customname;
+		String attr("deedCustomName");
+		String stringname(deedCustomName.toString());
+		itemAttributes->setStringAttribute(attr, stringname);
+	}
+
+	inline void setConstructionObjectCRC(uint32 crc) {
+		setUpdated(true);
+		constructionObjectCRC = crc;
+		String attr("constructionObjectCRC");
+		itemAttributes->setIntAttribute(attr, constructionObjectCRC);
+	}
+
 	inline void setObjectFile(const String& objectfile) {
 		setUpdated(true);
 		objectFile = objectfile;
@@ -245,6 +262,14 @@ public:
 
 	inline uint32 getDeedCRC() {
 		return deedCRC;
+	}
+
+	inline UnicodeString& getDeedCustomName() {
+		return deedCustomName;
+	}
+
+	inline uint32 getConstructionObjectCRC() {
+		return constructionObjectCRC;
 	}
 
 	inline uint32 getReclaimFee() {

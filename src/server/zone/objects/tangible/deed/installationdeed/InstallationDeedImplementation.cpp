@@ -152,6 +152,8 @@ SceneObject* InstallationDeedImplementation::generateObject(Player* player) {
 
 	installation->setDeedCRC(getObjectCRC());
 	installation->setDeedStfName(getStfName());
+	installation->setDeedCustomName(getCustomName());
+	installation->setConstructionObjectCRC(getTargetConstructionObjectCRC());
 	installation->setObjectFile(getTargetObjectFile());
 
 	installation->setReclaimFee(getReclaimFee());

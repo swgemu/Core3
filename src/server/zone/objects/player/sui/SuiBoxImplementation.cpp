@@ -46,16 +46,16 @@ which carries forward this exception.
 #include "../../../packets.h"
 #include "../PlayerImplementation.h"
 
-SuiBoxImplementation::SuiBoxImplementation(Player* play, uint32 windowType, uint32 boxType) :
+SuiBoxImplementation::SuiBoxImplementation(Player* play, uint32 windowtype, uint32 boxtype) :
 	SuiBoxServant() {
 
 	player = play;
 
-	this->boxType = boxType;
+	boxType = boxtype;
 
-	boxID = player->getNewSuiBoxID(windowType);
+	boxID = player->getNewSuiBoxID(windowtype);
 
-	this->windowType = windowType;
+	windowType = windowtype;
 
 	cancelButtonText = "@cancel";
 	cancelButton = false;
@@ -102,12 +102,12 @@ void SuiBoxImplementation::addSetting(const String& optType, const String& varia
 
 	String optStr = "";
 	int optTypeInt = 0;
-	optStr+=(optType+"~"+variable);
+	optStr += (optType + "~" + variable);
 	optTypeInt = Integer::valueOf(optType);
 
 	//OptionType 3 & 4 have variable settings and values (see documentation for packet)
 	if((optTypeInt == 3) || (optTypeInt == 4)) {
-		optStr+=("~"+setName+"~"+setVal);
+		optStr += ("~" + setName + "~" + setVal);
 	}
 
 	// Insert the option into the list:

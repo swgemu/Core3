@@ -40,13 +40,16 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-speederbikeSwoopVehicleDeed = Deed:new {
-	objectName = "Deed for: Speederbike Swoop",
-
-	templateName = "speederbike_swoop_deed",
-
+speederbikeSwoopDeed = Deed:new {
+	stfName = "speederbike_swoop",
 	objectCRC = 495473751,
-
-	objectType = VEHICLEDEED
-
+	objectType = VEHICLEDEED,
+	
+	targetStfFile = "monster_name",
+	targetStfName = "speederbike_swoop",
+	targetObjectFile = "object/mobile/vehicle/shared_speederbike_swoop.iff",
+	
+	targetControlDeviceCRC = 2233671002,
+	
+	conditionMax = 7200,
 }

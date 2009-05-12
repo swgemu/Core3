@@ -65,6 +65,8 @@ import "../tangible/weapons/Weapon";
 
 import "../creature/CreatureObject";
 
+import "../waypoint/WaypointObject";
+
 import "../structure/building/BuildingObject";
 
 import "../creature/skills/target/AttackTargetSkill";
@@ -247,6 +249,8 @@ interface SceneObject implements ManagedObject {
 	unsigned int getOwnerCharacterID();
 	String getOwnerName();
 	boolean isOwner(unsigned int characterid);
+	
+	WaypointObject createWaypointTo(Player player, boolean activate = false);
 	
 	int getObjectType();
 

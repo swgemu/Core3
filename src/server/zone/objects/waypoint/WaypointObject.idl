@@ -47,23 +47,33 @@ import "../scene/SceneObject";
 import "../player/Player";
 
 interface WaypointObject implements SceneObject {
-	WaypointObject(Player player, unsigned long oid) {
-		super(oid, int type);
+	WaypointObject(unsigned long objid) {
+		super(objid, int type);
 	}
 	
-	void changeStatus(boolean status);
-
-	void setName(const String Name);
+	WaypointObject(unsigned long objid, SceneObject obj) {
+		super(objid, int type);
+	}
+	
+	void activate(Player player);
+	void deactivate(Player player);
+	void updateWaypoint(Player player);
+	
+	void updateCustomName(Player player, const String value);
+	
+	boolean toggleActivation();
+	
+	//Setters
 	void setInternalNote(const String message);
 	void setPlanetName(const String planet);
+	void setWaypointType(unsigned char type);
+	void setActivated(boolean active);
 	
-	void switchStatus();
-	
-	unsigned int getPlanetCRC();
-	
-	boolean getStatus();
-	
-	String getName();
+	//Getters
 	String getPlanetName();
+	unsigned int getPlanetCRC();
 	String getInternalNote();
+	unsigned char getWaypointType();
+	
+	boolean isActivated();
 }

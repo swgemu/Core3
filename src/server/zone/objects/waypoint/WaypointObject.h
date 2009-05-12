@@ -15,27 +15,37 @@ class Player;
 
 class WaypointObject : public SceneObject {
 public:
-	WaypointObject(Player* player, unsigned long long oid);
+	WaypointObject(unsigned long long objid);
 
-	void changeStatus(bool status);
+	WaypointObject(unsigned long long objid, SceneObject* obj);
 
-	void setName(const String& Name);
+	void activate(Player* player);
+
+	void deactivate(Player* player);
+
+	void updateWaypoint(Player* player);
+
+	void updateCustomName(Player* player, const String& value);
+
+	bool toggleActivation();
 
 	void setInternalNote(const String& message);
 
 	void setPlanetName(const String& planet);
 
-	void switchStatus();
+	void setWaypointType(unsigned char type);
 
-	unsigned int getPlanetCRC();
-
-	bool getStatus();
-
-	String& getName();
+	void setActivated(bool active);
 
 	String& getPlanetName();
 
+	unsigned int getPlanetCRC();
+
 	String& getInternalNote();
+
+	unsigned char getWaypointType();
+
+	bool isActivated();
 
 protected:
 	WaypointObject(DummyConstructorParameter* param);
@@ -43,7 +53,6 @@ protected:
 	virtual ~WaypointObject();
 
 	String _return_getInternalNote;
-	String _return_getName;
 	String _return_getPlanetName;
 
 	friend class WaypointObjectHelper;
@@ -57,28 +66,36 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void changeStatus(bool status);
+	void activate(Player* player);
 
-	void setName(const String& Name);
+	void deactivate(Player* player);
+
+	void updateWaypoint(Player* player);
+
+	void updateCustomName(Player* player, const String& value);
+
+	bool toggleActivation();
 
 	void setInternalNote(const String& message);
 
 	void setPlanetName(const String& planet);
 
-	void switchStatus();
+	void setWaypointType(unsigned char type);
 
-	unsigned int getPlanetCRC();
-
-	bool getStatus();
-
-	String& getName();
+	void setActivated(bool active);
 
 	String& getPlanetName();
 
+	unsigned int getPlanetCRC();
+
 	String& getInternalNote();
 
+	unsigned char getWaypointType();
+
+	bool isActivated();
+
 protected:
-	String _param0_setName__String_;
+	String _param1_updateCustomName__Player_String_;
 	String _param0_setInternalNote__String_;
 	String _param0_setPlanetName__String_;
 };
@@ -105,7 +122,7 @@ public:
 	WaypointObject* _this;
 
 public:
-	WaypointObjectServant(unsigned long long oid, int type);
+	WaypointObjectServant(unsigned long long objid, int type);
 	virtual ~WaypointObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

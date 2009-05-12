@@ -31,6 +31,8 @@ class Weapon;
 
 class CreatureObject;
 
+class WaypointObject;
+
 class BuildingObject;
 
 class AttackTargetSkill;
@@ -236,6 +238,8 @@ public:
 	String& getOwnerName();
 
 	bool isOwner(unsigned int characterid);
+
+	WaypointObject* createWaypointTo(Player* player, bool activate = false);
 
 	int getObjectType();
 
@@ -631,6 +635,8 @@ public:
 	String& getOwnerName();
 
 	bool isOwner(unsigned int characterid);
+
+	WaypointObject* createWaypointTo(Player* player, bool activate);
 
 	int getObjectType();
 

@@ -73,12 +73,11 @@ public:
 		if (waypoint == NULL)
 			return false;
 
-		UnicodeString unicodeWaypointName; //new waypoint name
-		packet->parseUnicode(unicodeWaypointName);
+		UnicodeString waypointname; //new waypoint name
+		packet->parseUnicode(waypointname);
 
-		String newWaypointName = unicodeWaypointName.toString();
-		waypoint->setName(newWaypointName);
-		waypoint->switchStatus();
+		waypoint->setCustomName(waypointname);
+		waypoint->toggleActivation();//Why?wtf?
 
 		player->updateWaypoint(waypoint);
 		return true;

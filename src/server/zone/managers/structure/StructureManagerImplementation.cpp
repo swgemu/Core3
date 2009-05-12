@@ -292,7 +292,9 @@ void StructureManagerImplementation::endConstruction(Player* player, DeedObject*
 	SceneObject* structure = deed->generateObject(player);
 	structure->setOwnerCharacterID(player->getCharacterID());
 	structure->setOwnerName(player->getFirstName().toLowerCase());
-	structure->initializePosition(x, zone->getHeight(x, z), z);
+
+	float y = zone->getHeight(x, z);
+	structure->initializePosition(x, y, z);
 	//TODO: Orientation
 	structure->insertToZone(zone);
 
@@ -308,6 +310,14 @@ void StructureManagerImplementation::endConstruction(Player* player, DeedObject*
 	ItemManager* itemManager = zone->getZoneServer()->getItemManager();
 	itemManager->deletePlayerItem(player, deed, false);
 	deed->finalize();
+
+	//Create a Waypoint to the spot.
+	WaypointObject* waypoint = new WaypointObject(player->getNewItemID(), structure);
+	String waypointname = structure->getCustomName().toString();
+	if (waypointname.isEmpty())
+		waypointname = "@" + structure->getStfFile() + ":" + structure->getStfName();
+	waypoint->setCustomName(waypointname);
+	player->addWaypoint(waypoint);
 
 	//Give construction is complete message, place the structure from the deed.
 

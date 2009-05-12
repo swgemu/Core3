@@ -73,7 +73,7 @@ public:
 		if (wp == NULL)
 			return false;
 
-		wp->switchStatus();
+		wp->toggleActivation();
 		return true;
 	}
 

@@ -155,6 +155,10 @@ public:
 
 	void loadIgnore();
 
+	bool hasWaypoint(WaypointObject* wp);
+
+	bool hasWaypoint(unsigned long long wpid);
+
 	void saveWaypoints(Player* player);
 
 	WaypointObject* searchWaypoint(Player* play, const String& name, int mode);
@@ -303,6 +307,10 @@ public:
 	void saveIgnore();
 
 	void loadIgnore();
+
+	bool hasWaypoint(WaypointObject* wp);
+
+	bool hasWaypoint(unsigned long long wpid);
 
 	void saveWaypoints(Player* player);
 

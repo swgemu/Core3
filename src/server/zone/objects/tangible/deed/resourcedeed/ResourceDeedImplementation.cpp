@@ -43,14 +43,12 @@ int ResourceDeedImplementation::useObject(Player* player) {
 
 	ResourceManager* resourceManager = player->getZone()->getZoneServer()->getResourceManager();
 
-	SuiListBox* sui = new SuiListBox(player, SuiWindowType::FREE_RESOURCE);//beginning of sui chain
-
+	SuiResourceBox* sui = new SuiResourceBox(player);//beginning of sui chain
 	sui->setUsingObjectID(getObjectID());
-	sui->setPromptTitle("@veteran:resource_title"); //Resources
 	sui->setPromptText("@veteran:choose_class"); //Choose resource class
 	sui->setCancelButton(true, "@cancel");
 	player->addSuiBox(sui);
-	resourceManager->generateSUI(player, sui);
+	//MOVE THIS TO generateMessage - resourceManager->generateSUI(player, sui);
 	player->sendMessage(sui->generateMessage());
 
 	return 1;

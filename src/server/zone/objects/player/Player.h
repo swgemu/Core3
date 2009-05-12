@@ -837,10 +837,6 @@ public:
 
 	void clearSuiBoxChoices();
 
-	void setResourceDeedID(unsigned long long objectID);
-
-	unsigned long long getResourceDeedID();
-
 	void queueThrow(TangibleObject* throwItem, unsigned int actionCRC);
 
 	void fireHeavyWeapon(TangibleObject* heavyWeapon, unsigned int actionCRC);
@@ -870,6 +866,10 @@ public:
 	void teachSkill(String& skillname);
 
 	int getSkillPoints();
+
+	bool hasWaypoint(WaypointObject* wp);
+
+	bool hasWaypoint(unsigned long long wpid);
 
 	ActiveArea* getActiveArea();
 
@@ -1848,10 +1848,6 @@ public:
 
 	void clearSuiBoxChoices();
 
-	void setResourceDeedID(unsigned long long objectID);
-
-	unsigned long long getResourceDeedID();
-
 	void queueThrow(TangibleObject* throwItem, unsigned int actionCRC);
 
 	void fireHeavyWeapon(TangibleObject* heavyWeapon, unsigned int actionCRC);
@@ -1881,6 +1877,10 @@ public:
 	void teachSkill(String& skillname);
 
 	int getSkillPoints();
+
+	bool hasWaypoint(WaypointObject* wp);
+
+	bool hasWaypoint(unsigned long long wpid);
 
 	ActiveArea* getActiveArea();
 
