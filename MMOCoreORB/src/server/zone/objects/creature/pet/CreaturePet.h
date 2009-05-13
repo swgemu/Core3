@@ -109,7 +109,7 @@ public:
 
 	void handleSpecialAttackCommand(Player* player, int att);
 
-	void handleGroupCommand();
+	void handleGroupCommand(Player* player);
 
 	void handleFriendCommand();
 
@@ -219,7 +219,7 @@ public:
 
 	void handleSpecialAttackCommand(Player* player, int att);
 
-	void handleGroupCommand();
+	void handleGroupCommand(Player* player);
 
 	void handleFriendCommand();
 

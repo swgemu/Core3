@@ -56,10 +56,10 @@ public:
 	}
 
 	~PlayerRecoveryEvent() {
-		if (enQueued) {
+		/*if (enQueued) {
 			System::out << "ERROR: PlayerRecoveryEvent scheduled event deleted\n";
 			raise(SIGSEGV);
-		}
+		}*/
 	}
 
 	bool activate() {
