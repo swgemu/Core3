@@ -1626,7 +1626,7 @@ void CreatureImplementation::onDeath() {
 		else if (lootOwner->isPet())
 			lootOwnerPlayer = ((CreaturePet*)lootOwner)->getLinkedCreature();
 
-		if (lootOwner != NULL) {
+		if (lootOwnerPlayer != NULL) {
 			String pfaction = (lootOwnerPlayer->isImperial()) ? "imperial" : "rebel";
 
 			String myfaction = (isImperial()) ? "imperial" : "rebel";

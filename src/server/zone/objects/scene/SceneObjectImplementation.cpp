@@ -424,7 +424,7 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 
 	} catch (...) {
 		error("exception SceneObjectImplementation::insertToBuilding(BuildingObject* building)");
-		//building->unlock(doLock);
+		building->unlock();
 	}
 }
 

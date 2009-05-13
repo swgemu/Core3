@@ -1595,7 +1595,7 @@ void CreaturePetImplementation::parseCommandMessage(Player* player, const Unicod
 	if (command == commandHelper->getBaseCommand(PetCommandHelper::PETSTORE) && player == getLinkedCreature()) {
 		handleStoreCommand();
 	} else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETGROUP) && player == getLinkedCreature()) {
-		handleGroupCommand();
+		handleGroupCommand(player);
 	}
 
 	if (isRidingCreature())
@@ -1734,6 +1734,9 @@ void CreaturePetImplementation::handleTransferCommand() {
 		return;
 
 	SceneObject* scno = getLinkedCreature()->getTarget();
+	if (scno == NULL)
+		return;
+
 	Player* newOwner = NULL;
 	if (scno->isPlayer())
 		newOwner = (Player*) scno;
@@ -1891,7 +1894,7 @@ void CreaturePetImplementation::handleSpecialAttackCommand(Player* player, int a
 	nextAttack = att;
 }
 
-void CreaturePetImplementation::handleGroupCommand() {
+void CreaturePetImplementation::handleGroupCommand(Player* player) {
 	if (debug) {
 		StringBuffer ss;
 		ss << "CreaturePetImplementation::handleGroupCommand() " << getLinkedCreature()->getCharacterName().toString();
@@ -1904,6 +1907,15 @@ void CreaturePetImplementation::handleGroupCommand() {
 	GroupManager* groupManager = server->getGroupManager();
 	if (groupManager == NULL)
 		return;
+
+	GroupObject* group = player->getGroupObject();
+	if (group == NULL)
+		return;
+
+	if (group->getLeader() != player) {
+		player->sendSystemMessage("group", "must_be_leader");
+		return;
+	}
 
 	try {
 		unlock();
@@ -1924,6 +1936,9 @@ void CreaturePetImplementation::handleFriendCommand() {
 	}
 
 	SceneObject* scno = getLinkedCreature()->getTarget();
+
+	if (scno == NULL)
+		return;
 
 	if (!scno->isPlayer())
 		return;

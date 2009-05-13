@@ -311,7 +311,7 @@ public:
 	void handleSpecialAttackCommand(Player* player,int att);
 	bool consumeOwnerHam(int h, int a, int m);
 	void healPetMind(int mod);
-	void handleGroupCommand();
+	void handleGroupCommand(Player* player);
 	void handleFriendCommand();
 	void handleFormationCommand(uint8 form);
 	void trainMount();

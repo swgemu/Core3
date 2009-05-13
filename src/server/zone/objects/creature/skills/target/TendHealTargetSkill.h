@@ -213,6 +213,12 @@ public:
 	}
 
 	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, int healthDamage, int actionDamage) {
+		if (!creature->isPlayer())
+			return;
+
+		if (!creatureTarget->isPlayer())
+			return;
+
 		Player* player = (Player*) creature;
 		Player* playerTarget = (Player*) creatureTarget;
 

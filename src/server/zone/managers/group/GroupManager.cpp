@@ -148,11 +148,16 @@ void GroupManager::invitePetToGroup(Player* leader, CreaturePet* pet) {
 
 		leader->sendSystemMessage("group", "invite_leader", pet->getObjectID());
 
-		pet->unlock();
+
 		try {
-		leader->unlock();
-		joinGroup(pet);
-		leader->lock();
+			leader->unlock();
+
+			joinGroup(pet);
+
+			pet->unlock();
+
+			leader->wlock();
+
 		} catch (...) {
 			System::out << "Exception in GroupManager::invitePetToGroup(GroupObject* group, CreatureObject* pet)\n";
 			leader->lock();

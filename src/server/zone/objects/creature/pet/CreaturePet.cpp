@@ -562,16 +562,17 @@ void CreaturePet::handleSpecialAttackCommand(Player* player, int att) {
 		((CreaturePetImplementation*) _impl)->handleSpecialAttackCommand(player, att);
 }
 
-void CreaturePet::handleGroupCommand() {
+void CreaturePet::handleGroupCommand(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 48);
+		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
 	} else
-		((CreaturePetImplementation*) _impl)->handleGroupCommand();
+		((CreaturePetImplementation*) _impl)->handleGroupCommand(player);
 }
 
 void CreaturePet::handleFriendCommand() {
@@ -762,7 +763,7 @@ Packet* CreaturePetAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		handleSpecialAttackCommand((Player*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 48:
-		handleGroupCommand();
+		handleGroupCommand((Player*) inv->getObjectParameter());
 		break;
 	case 49:
 		handleFriendCommand();
@@ -951,8 +952,8 @@ void CreaturePetAdapter::handleSpecialAttackCommand(Player* player, int att) {
 	return ((CreaturePetImplementation*) impl)->handleSpecialAttackCommand(player, att);
 }
 
-void CreaturePetAdapter::handleGroupCommand() {
-	return ((CreaturePetImplementation*) impl)->handleGroupCommand();
+void CreaturePetAdapter::handleGroupCommand(Player* player) {
+	return ((CreaturePetImplementation*) impl)->handleGroupCommand(player);
 }
 
 void CreaturePetAdapter::handleFriendCommand() {
