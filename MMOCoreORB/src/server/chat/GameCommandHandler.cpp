@@ -1676,7 +1676,7 @@ void GameCommandHandler::rebelMessage(StringTokenizer tokenizer, Player* player)
 		}
 
 		//System::out << message.toString() << endl;
-		chatManager->broadcastFactionMessage(PlayerImplementation::REBEL | PlayerImplementation::COVERT, message.toString());
+		chatManager->broadcastFactionMessage(PlayerImplementation::REBEL, message.toString());
 
 	} catch (...) {
 		player->sendSystemMessage("Error sending rebelMessage - Usage: @rebelMessage <message>");
@@ -1699,7 +1699,7 @@ void GameCommandHandler::imperialMessage(StringTokenizer tokenizer, Player* play
 		}
 
 		//System::out << message.toString() << endl;
-		chatManager->broadcastFactionMessage(PlayerImplementation::IMPERIAL | PlayerImplementation::COVERT, message.toString());
+		chatManager->broadcastFactionMessage(PlayerImplementation::IMPERIAL, message.toString());
 
 	} catch (...) {
 		player->sendSystemMessage("Error sending imperialMessage - Usage: @imperialMessage <message>");
