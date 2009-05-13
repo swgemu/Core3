@@ -45,7 +45,6 @@ fusionIonGeneratorDeed = Deed:new {
 	objectCRC = 3852530581,
 	objectType = INSTALLATIONDEED,
 	
-	targetObjectType = TANGIBLE,
 	targetObjectSubType = GENERATOR,
 	targetStfFile = "installation_n",
 	targetStfName = "fusion_generator",

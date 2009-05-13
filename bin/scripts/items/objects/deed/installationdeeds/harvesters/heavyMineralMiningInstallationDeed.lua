@@ -45,7 +45,6 @@ heavyMineralMiningInstallationDeed = Deed:new {
 	objectCRC = 3224287923,
 	objectType = INSTALLATIONDEED,
  	
-	targetObjectType = TANGIBLE,
 	targetObjectSubType = HARVESTER,
 	targetStfFile = "installation_n",
 	targetStfName = "heavy_ore_mine",

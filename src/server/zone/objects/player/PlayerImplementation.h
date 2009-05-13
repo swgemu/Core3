@@ -995,6 +995,10 @@ public:
 		return (pvpStatusBitmask & CreatureFlag::ATTACKABLE);
 	}
 
+	inline bool isPrivileged() {
+		return (getAdminLevel() != NORMAL);
+	}
+
 	// faction methods
 	void setOvert();
 	void setCovert();
@@ -2162,12 +2166,6 @@ public:
 
 	inline bool isPowerboosted() {
 		return powerboosted;
-	}
-
-	///Returns true if the player's adminlevel is greater than 0 (which should correspond to a normal player instead of 4).
-	inline bool isPrivileged() {
-		//TODO: Remove The NORMAL check after permissions are addressed.
-		return (playerObject->getAdminLevel() > 0 && playerObject->getAdminLevel() != NORMAL);
 	}
 
 	inline bool consumeLots(uint8 lots) {

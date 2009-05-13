@@ -113,7 +113,7 @@ void StructurePermissionList::grantPermission(Player* player, const String& entr
 void StructurePermissionList::revokePermission(Player* player, const String& entryname, const String& listname) {
 	uint8 listpermission = getPermission(listname);
 
-	if (entryname == parentStructure->getOwnerName()) {
+	if (entryname == parentStructure->getOwnerName().toLowerCase()) {
 		player->sendSystemMessage("@player_structure:cannot_remove_owner"); //You cannot remove the owner from the admin list.
 		return;
 	}

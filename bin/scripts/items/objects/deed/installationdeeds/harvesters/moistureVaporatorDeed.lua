@@ -45,7 +45,6 @@ moistureVaporatorDeed = Deed:new {
 	objectCRC = 3335458434,
 	objectType = INSTALLATIONDEED,
  	
-	targetObjectType = TANGIBLE,
 	targetObjectSubType = HARVESTER,
 	targetStfFile = "installation_n",
 	targetStfName = "moisture_mine_medium",

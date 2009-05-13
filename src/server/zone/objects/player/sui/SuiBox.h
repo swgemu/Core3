@@ -51,6 +51,8 @@ public:
 
 	bool isSlicingBox();
 
+	bool isResourceBox();
+
 	unsigned long long getBoxID();
 
 	unsigned long long getWindowType();
@@ -114,6 +116,8 @@ public:
 	bool isBankTransferBox();
 
 	bool isSlicingBox();
+
+	bool isResourceBox();
 
 	unsigned long long getBoxID();
 

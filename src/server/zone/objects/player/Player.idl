@@ -724,6 +724,8 @@ interface Player implements CreatureObject {
 
 	ActiveArea getActiveArea();
 	void setActiveArea(ActiveArea area);
+	
+	boolean isPrivileged();
 
 	unsigned long getTrap();
 	unsigned long getGrenade();
@@ -814,7 +816,6 @@ interface Player implements CreatureObject {
 	String getConsentEntry(int index);
 	boolean isPowerboosted();
 	boolean isAcceptingBandFlourishes();
-	boolean isPrivileged();
 	boolean consumeLots(unsigned char lots);
 
 	//Calculations

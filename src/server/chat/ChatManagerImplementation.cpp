@@ -324,7 +324,7 @@ void ChatManagerImplementation::broadcastFactionMessage(uint32 factionmask, cons
 	while (playerMap->hasNext(false)) {
 		Player* player = playerMap->getNextValue(false);
 
-		if (player->getCharacterMask() & factionmask)
+		if ((player->getCharacterMask() & factionmask) || player->isPrivileged())
 			player->sendSystemMessage(message);
 	}
 

@@ -45,7 +45,6 @@ personalMineralExtractorDeed = Deed:new {
 	objectCRC = 2126009375,
 	objectType = INSTALLATIONDEED,
 		
-	targetObjectType = TANGIBLE,
 	targetObjectTypeSub = HARVESTER,
 	targetStfFile = "installation_n",
 	targetStfName = "small_ore_mine",

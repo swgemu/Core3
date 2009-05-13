@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "SuiResourceBox.h"
+#include "../../../../managers/resource/ResourceManager.h"
 
 #include "../../../../packets/ui/SuiCreatePageMessage.h"
 
@@ -55,23 +56,39 @@ class Player;
 
 class SuiResourceBoxImplementation : public SuiResourceBoxServant {
 protected:
-	uint8 stage;
+	ManagedReference<ResourceManager> resourceManager;
+	String stage;
 
 	void init();
 
 public:
-	static const uint8 STAGE_CLASS = 0;
-	static const uint8 STAGE_TYPE = 1;
-	static const uint8 STAGE_SELECT = 2;
-
-public:
-	SuiResourceBoxImplementation(Player* player);
+	SuiResourceBoxImplementation(Player* player, ResourceManager* resourcemanager);
 	~SuiResourceBoxImplementation();
 
 	virtual BaseMessage* generateMessage();
 
-	void nextStage();
-	void previousStage();
+	virtual void onSelect(uint32 menuchoice);
+
+	virtual void nextStage();
+	virtual void previousStage();
+
+	//Setters
+	inline void setStage(const String& value) {
+		stage = value;
+	}
+
+	inline void setResourceManager(ResourceManager* resourcemanager) {
+		resourceManager = resourcemanager;
+	}
+
+	//Getters
+	inline String& getStage() {
+		return stage;
+	}
+
+	inline ResourceManager* getResourceManager() {
+		return resourceManager.get();
+	}
 };
 
 #endif /*SUILISTBOXEVENT_H_*/

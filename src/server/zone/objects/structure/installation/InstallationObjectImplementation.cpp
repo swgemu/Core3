@@ -200,7 +200,7 @@ void InstallationObjectImplementation::insertToZone(Zone* zone) {
 	permissionList->setParentStructure(_this);
 
 	structureStatusPollEvent = new StructureStatusPollEvent(_this);
-	server->addEvent(structureStatusPollEvent, 3000000); //TODO: once per hour.
+	server->addEvent(structureStatusPollEvent, 3600000); //Once per hour.
 
 	if (isOperating()) {
 		//Start up the harvester, send deltas to anyone who might be nearby...
@@ -429,10 +429,21 @@ InstallationDeed* InstallationObjectImplementation::redeed(Player* player) {
  * \param add Is the entry being removed or added to the list.
  */
 void InstallationObjectImplementation::modifyPermissionList(Player* player, const String& listname, const String& entryname, bool add) {
+	if (entryname.isEmpty())
+		return;
+
+	StringTokenizer tokenizer(entryname);
+	tokenizer.setDelimeter(" ");
+
+	String name;
+	tokenizer.getStringToken(name);
+
+	name = name.toLowerCase();
+
 	if (add)
-		permissionList->grantPermission(player, entryname, listname);
+		permissionList->grantPermission(player, name, listname);
 	else
-		permissionList->revokePermission(player, entryname, listname);
+		permissionList->revokePermission(player, name, listname);
 }
 
 
@@ -454,7 +465,7 @@ void InstallationObjectImplementation::pollStatus(bool reschedule) {
 	lastStatusPoll.update();
 
 	if (reschedule)
-		server->addEvent(structureStatusPollEvent, 3000000);
+		server->addEvent(structureStatusPollEvent, 3600000); //Once per hour
 }
 /**
  * Consumes maintenance based on the current maintenance rate. If the maintenance pool runs out
@@ -589,7 +600,7 @@ void InstallationObjectImplementation::sendStatusTo(Player* player) {
 	if (!isGenerator()) {
 		//TODO: Add in estimated time remaining.
 		entry.removeAll();
-		entry << "@player_structure:power_reserve_prompt " << getPowerReserves();
+		entry << "@player_structure:power_reserve_prompt " << floor(getPowerReserves());
 		statusbox->addMenuItem(entry.toString());
 
 		entry.removeAll();
@@ -613,7 +624,7 @@ void InstallationObjectImplementation::sendManageMaintenanceTo(Player* player) {
 	maintenancebox->setPromptText(entry.toString());
 
 	maintenancebox->addFrom("@player_structure:total_funds", String::valueOf(player->getCashCredits()), String::valueOf(player->getCashCredits()), "1");
-	maintenancebox->addTo("@player_structure:to_pay", String::valueOf(getMaintenancePool()), String::valueOf(getMaintenancePool()), "1");
+	maintenancebox->addTo("@player_structure:to_pay", String::valueOf(0), String::valueOf(0), "1");
 
 	player->addSuiBox(maintenancebox);
 	player->sendMessage(maintenancebox->generateMessage());
@@ -635,7 +646,7 @@ void InstallationObjectImplementation::sendManagePowerTo(Player* player) {
 	//TODO: Get players power from inventory.
 
 	powerbox->addFrom("@player_structure:total_energy", String::valueOf(player->getTotalInventoryPower()), String::valueOf(player->getTotalInventoryPower()), "1");
-	powerbox->addTo("@player_structure:to_deposit", String::valueOf(getPowerReserves()), String::valueOf(getPowerReserves()), "1");
+	powerbox->addTo("@player_structure:to_deposit", String::valueOf(0), String::valueOf(0), "1");
 
 	player->addSuiBox(powerbox);
 	player->sendMessage(powerbox->generateMessage());

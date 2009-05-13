@@ -45,7 +45,6 @@ automatedFloraFarmDeed = Deed:new {
 	objectCRC = 1378608973,
 	objectType = INSTALLATIONDEED,
 	
-	targetObjectType = TANGIBLE,
 	targetObjectSubType = HARVESTER,
 	targetStfFile = "installation_n",
 	targetStfName = "flora_farm",

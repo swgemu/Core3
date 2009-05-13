@@ -875,6 +875,8 @@ public:
 
 	void setActiveArea(ActiveArea* area);
 
+	bool isPrivileged();
+
 	unsigned long long getTrap();
 
 	unsigned long long getGrenade();
@@ -1024,8 +1026,6 @@ public:
 	bool isPowerboosted();
 
 	bool isAcceptingBandFlourishes();
-
-	bool isPrivileged();
 
 	bool consumeLots(unsigned char lots);
 
@@ -1886,6 +1886,8 @@ public:
 
 	void setActiveArea(ActiveArea* area);
 
+	bool isPrivileged();
+
 	unsigned long long getTrap();
 
 	unsigned long long getGrenade();
@@ -2035,8 +2037,6 @@ public:
 	bool isPowerboosted();
 
 	bool isAcceptingBandFlourishes();
-
-	bool isPrivileged();
 
 	bool consumeLots(unsigned char lots);
 

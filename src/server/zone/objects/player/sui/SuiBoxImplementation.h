@@ -187,6 +187,10 @@ public:
 		return boxType == SLICINGBOX;
 	}
 
+	inline bool isResourceBox() {
+		return boxType == RESOURCEBOX;
+	}
+
 	inline bool isColorPicker() {
 		return boxType == COLORPICKER;
 	}

@@ -45,7 +45,6 @@ solarGeneratorDeed = Deed:new {
 	objectCRC = 1181332776,
 	objectType = INSTALLATIONDEED,
 	
-	targetObjectType = TANGIBLE,
 	targetObjectSubType = GENERATOR,
 	targetStfFile = "installation_n",
 	targetStfName = "solar_generator",

@@ -44,8 +44,7 @@ personalNaturalGasProcessor = Deed:new {
 	stfName = "gas_harvester_deed_name",
 	objectCRC = 3335458434,
 	objectType = INSTALLATIONDEED,
-		
-	targetObjectType = TANGIBLE,
+
 	targetObjectSubType = HARVESTER,
 	targetStfFile = "installation_n",
 	targetStfName = "gas_mine_small",
