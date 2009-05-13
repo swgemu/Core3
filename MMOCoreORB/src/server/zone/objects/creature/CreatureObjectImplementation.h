@@ -2943,7 +2943,7 @@ public:
 	void deactivateEscape();
 
 	int getNumberOfSkills() {
-		return creatureSkills.size();;
+		return creatureSkills.size();
 	}
 
 	void updateZone(bool lightUpdate = false, bool sendPackets = true);

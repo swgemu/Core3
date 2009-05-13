@@ -114,8 +114,11 @@ interface Creature implements CreatureObject {
 	void queueRespawn();
 
 	// waypoint methods
-	void addPatrolPoint(float x, float y, boolean doLock = true);
-	void resetPatrolPoints(boolean doLock = true);
+	void setNextMovementPosition(float x, float y, boolean doLock = true);
+	void clearPatrolPoints(boolean doLock = true);
+	void addPatrolPoint(float positionX, float positionY, boolean doLock = true);
+	void startPatrol(boolean doLock = true);
+	void stopPatrol(boolean doLock = true);
 
 	void setSpawnPosition(float posX, float posZ, float posY, unsigned long cellid = 0);
 

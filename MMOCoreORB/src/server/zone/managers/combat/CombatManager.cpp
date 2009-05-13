@@ -560,16 +560,18 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* tar
 			attacker->setDefender(target);
 
 		//No defender for bare metal vehicles (but for pets)
-		if (!targetCreature->isVehicle())
+		if (!targetCreature->isVehicle() && !targetCreature->isRidingCreature()) {
 			target->addDefender(attacker);
+		}
 
 
 		attacker->clearState(CreatureState::PEACE);
 
 		int damage = skill->doSkill(attacker, target, modifier, false);
 
-		if (actionMessage != NULL && targetCreature != NULL)
+		if (actionMessage != NULL && targetCreature != NULL) {
 			actionMessage->addDefender(targetCreature, damage >= 0);
+		}
 
 		if (targetCreature != NULL && !targetCreature->isDead()) {
 
@@ -577,8 +579,11 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* tar
 
 			//bare metal vehicles shouldn't fight back - but pets should
 			if(targetCreature->isNonPlayerCreature()) {
-				if ( !targetCreature->isVehicle())
+				if(!targetCreature->isVehicle() && !targetCreature->isRidingCreature()) {
 					targetCreature->doAttack(attacker, damage);
+				} else {
+					targetCreature->clearState(CreatureState::PEACE);
+				}
 			}
 
 			targetCreature->activateRecovery();
@@ -1538,6 +1543,14 @@ void CombatManager::checkKnockDown(CreatureObject* creature, CreatureObject* tar
 		if ((5 > rand) || (rand > targetDefense)) {
 			if (targetCreature->isMounted())
 				targetCreature->dismount();
+
+			if (targetCreature->isRidingCreature() && targetCreature->isPet()) {
+				CreaturePet* pet = (CreaturePet*) targetCreature;
+				Player* petOwner = pet->getLinkedCreature();
+				petOwner->lock();
+				petOwner->dismount(false);
+				petOwner->unlock();
+			}
 
 			targetCreature->setPosture(CreaturePosture::KNOCKEDDOWN);
 			targetCreature->updateKnockdownRecovery();

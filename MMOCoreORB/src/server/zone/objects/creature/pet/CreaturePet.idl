@@ -91,6 +91,8 @@ interface CreaturePet implements Creature {
 
 	boolean isInGuardState();
 
+	boolean isInPatrolState();
+
 	void doGrowUp(boolean updateTime = true);
 	void setGrowth(float gr);
 	void setLastGrowth(unsigned long stamp);
@@ -117,6 +119,10 @@ interface CreaturePet implements Creature {
 	void handleGroupCommand(Player player);
 	void handleFriendCommand();
 	void handleFormationCommand(unsigned int form);
+	void handleAddPatrolPointCommand(Player player);
+	void handleActivatePatrolCommand();
+	void handleClearPatrolPointsCommand();
+
 	void trainMount();
 
 	void setPositionNumber(int posNumber);

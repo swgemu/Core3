@@ -110,6 +110,12 @@ CreatureImplementation::~CreatureImplementation() {
 	playerCanHarvest.removeAll();
 
 	damageMap.removeAll();
+
+	if (nextMovementPosition == NULL) {
+		delete nextMovementPosition;
+
+		nextMovementPosition = NULL;
+	}
 }
 
 void CreatureImplementation::init() {
@@ -190,6 +196,10 @@ void CreatureImplementation::init() {
 
 	setLogging(false);
 	setGlobalLogging(true);
+
+	nextMovementPosition = NULL;
+	nextPatrolPosition = 0;
+	patrolMode = false;
 }
 
 void CreatureImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
@@ -480,7 +490,7 @@ void CreatureImplementation::unload() {
 
 	clearLootItems();
 
-	resetPatrolPoints(false);
+	clearPatrolPoints(false);
 
 	playerCanHarvest.removeAll();
 
@@ -691,10 +701,10 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 				if (isQueued())
 					creatureManager->dequeueActivity(this);
 
-				creatureManager->queueActivity(this, 10);
+				creatureManager->queueActivity(this);
 			}
 		} else if ((parent == NULL) && scno->isPlayer() && !doRandomMovement && hasRandomMovement
-				&& patrolPoints.isEmpty() && System::random(200) < 1) {
+				&& nextMovementPosition == NULL && System::random(200) < 1) {
 			doRandomMovement = true;
 
 			//positionZ = obj->getPositionZ();
@@ -752,6 +762,8 @@ bool CreatureImplementation::shouldAgro(SceneObject * target) {
 }
 
 bool CreatureImplementation::activate() {
+	if (!isInQuadTree())
+		return false;
 	try {
 		wlock();
 
@@ -768,7 +780,7 @@ bool CreatureImplementation::activate() {
 		} else if (doRandomMovement) {
 			doRandomMovement = false;
 
-			addRandomPatrolPoint(32 + System::random(64), false);
+			addRandomMovementPosition(32 + System::random(64), false);
 		}
 
 		needMoreActivity |= doMovement();
@@ -875,7 +887,7 @@ void CreatureImplementation::resetState() {
 
 	aggroedCreature = NULL;
 
-	resetPatrolPoints(false);
+	clearPatrolPoints(false);
 
 	looted = false;
 
@@ -948,6 +960,9 @@ bool CreatureImplementation::doMovement() {
 
 	float maxSpeed = speed + 0.75f;
 
+	if (patrolMode)
+		maxSpeed = speed / 2;
+
 	if (isSnared())
 		maxSpeed *= 0.20f;
 
@@ -957,8 +972,8 @@ bool CreatureImplementation::doMovement() {
 		waypointY = aggroedCreature->getPositionY();
 		cellID = aggroedCreature->getParentID();
 
-	} else if (!patrolPoints.isEmpty()) {
-		PatrolPoint* waypoint = patrolPoints.get(0);
+	} else if (nextMovementPosition != NULL) {
+		PatrolPoint* waypoint = nextMovementPosition;
 
 		waypointX = waypoint->getPositionX();
 		waypointZ = waypoint->getPositionZ();
@@ -1002,7 +1017,12 @@ bool CreatureImplementation::doMovement() {
 		//info("reached destintaion");
 
 		if (aggroedCreature == NULL) {
-			resetPatrolPoints(false);
+			if (patrolMode && !patrolPoints.isEmpty()) {
+				setNextMovementPosition(getNextPatrolPoint(false),false);
+				return true;
+			} else
+				nextMovementPosition = NULL;
+
 			actualSpeed = 0;
 		}
 
@@ -1122,7 +1142,7 @@ void CreatureImplementation::doAttack(CreatureObject* target, int damage) {
 		//info("new target locked");
 	}
 	if (aggroedCreature != NULL && !isActive() && creatureManager != NULL) {
-		creatureManager->queueActivity(this, 10);
+		creatureManager->queueActivity(this);
 
 	}
 }
@@ -1131,6 +1151,11 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 	//info("attacking target");
 
 	// Not ready to attack yet
+	if (isRidingCreature()) {
+		deaggro();
+		return false;
+	}
+
 	if (!nextAttackDelay.isPast()) {
 		return true;
 	}
@@ -1489,7 +1514,6 @@ void CreatureImplementation::doStatesRecovery() {
 	}
 
 	if (isAiming() && aimRecoveryTime.isPast()) {
-		System::out << "remove aim\n";
 		clearState(CreatureState::AIMING);
 	}
 
@@ -1510,26 +1534,11 @@ void CreatureImplementation::queueRespawn() {
 		creatureManager->queueActivity(this, respawnTimer * 1000);
 }
 
-void CreatureImplementation::setPatrolPoint(PatrolPoint* cord, bool doLock) {
+void CreatureImplementation::clearPatrolPoints(bool doLock) {
 	try {
 		wlock(doLock);
-
-		patrolPoints.add(0, cord);
-
-		if (!isActive())
-			creatureManager->queueActivity(this);
-
-		unlock(doLock);
-	} catch (...) {
-		System::out << "exception CreatureImplementation::addPatrolPoint()\n";
-		unlock(doLock);
-	}
-}
-
-void CreatureImplementation::resetPatrolPoints(bool doLock) {
-	try {
-		wlock(doLock);
-
+		patrolMode = false;
+		setNextMovementPosition(_this,false);
 		while (!patrolPoints.isEmpty()) {
 			PatrolPoint* point = patrolPoints.remove(0);
 
@@ -1540,41 +1549,118 @@ void CreatureImplementation::resetPatrolPoints(bool doLock) {
 
 		unlock(doLock);
 	} catch (...) {
-		System::out << "exception CreatureImplementation::addPatrolPoint()\n";
+		System::out << "exception CreatureImplementation::setNextMovementPosition()\n";
 		unlock(doLock);
 	}
 }
 
-void CreatureImplementation::addPatrolPoint(float x, float y, bool doLock) {
-	float z = zone->getHeight(x, y);
+PatrolPoint* CreatureImplementation::getNextPatrolPoint(bool doLock) {
+	PatrolPoint* point = NULL;
+	try {
+		wlock(doLock);
+		if (patrolPoints.isEmpty())
+			return NULL;
 
-	addPatrolPoint(new PatrolPoint(x, z, y, getParentID()), doLock);
+		if(nextPatrolPosition >= patrolPoints.size())
+			nextPatrolPosition = 0;
+
+		point = patrolPoints.get(nextPatrolPosition);
+		nextPatrolPosition++;
+
+		if (!isActive()) {
+			creatureManager->queueActivity(this,3000);
+		}
+		unlock(doLock);
+	} catch (...) {
+		System::out << "exception CreatureImplementation::setNextMovementPosition()\n";
+		unlock(doLock);
+	}
+	return point;
 }
 
-void CreatureImplementation::addPatrolPoint(SceneObject* obj, bool doLock) {
-	addPatrolPoint(
+void CreatureImplementation::addPatrolPoint(float positionX, float positionY, bool doLock) {
+	try {
+			wlock(doLock);
+
+			float positionZ = zone->getHeight(positionX, positionY);
+
+			PatrolPoint* point =
+							new PatrolPoint(positionX, positionZ, positionY, getParentID());
+			patrolPoints.add(point);
+			//patrolPoints.removeAll();
+
+			unlock(doLock);
+		} catch (...) {
+			System::out << "exception CreatureImplementation::setNextMovementPosition()\n";
+			unlock(doLock);
+		}
+
+}
+
+void CreatureImplementation::startPatrol(bool doLock) {
+	try {
+			wlock(doLock);
+			if (!patrolPoints.isEmpty()) {
+				setNextMovementPosition(getNextPatrolPoint(false),false);
+				patrolMode = true;
+				if (!isActive()) {
+					creatureManager->queueActivity(this,10);
+
+				}
+			}
+			unlock(doLock);
+		} catch (...) {
+			System::out << "exception CreatureImplementation::setNextMovementPosition()\n";
+			unlock(doLock);
+		}
+
+}
+
+void CreatureImplementation::stopPatrol(bool doLock) {
+	try {
+			wlock(doLock);
+			nextPatrolPosition = 0;
+			patrolMode = false;
+			unlock(doLock);
+		} catch (...) {
+			System::out << "exception CreatureImplementation::setNextMovementPosition()\n";
+			unlock(doLock);
+		}
+
+}
+
+void CreatureImplementation::setNextMovementPosition(float x, float y, bool doLock) {
+	float z = zone->getHeight(x, y);
+
+	setNextMovementPosition(new PatrolPoint(x, z, y, getParentID()), doLock);
+}
+
+void CreatureImplementation::setNextMovementPosition(SceneObject* obj, bool doLock) {
+	setNextMovementPosition(
 			new PatrolPoint(obj->getPositionX(), obj->getPositionZ(), obj->getPositionY(), obj->getParentID()),
 			doLock);
 }
 
-void CreatureImplementation::addPatrolPoint(PatrolPoint* cord, bool doLock) {
+void CreatureImplementation::setNextMovementPosition(PatrolPoint* cord, bool doLock) {
 	try {
 		if (doLock)
 			wlock(doLock);
-		patrolPoints.add(cord);
-		if (!isActive()) {
+
+		nextMovementPosition = cord;
+		if (!isActive() && (nextMovementPosition != NULL)) {
 			creatureManager->queueActivity(this);
 		}
+
 		if (doLock)
 			unlock(doLock);
 	} catch (...) {
-		System::out << "exception CreatureImplementation::addPatrolPoint()\n";
+		System::out << "exception CreatureImplementation::setNextMovementPosition()\n";
 		if (doLock)
 			unlock(doLock);
 	}
 }
 
-void CreatureImplementation::addRandomPatrolPoint(float radius, bool doLock) {
+void CreatureImplementation::addRandomMovementPosition(float radius, bool doLock) {
 	float angle = (45 + System::random(200)) / 3.14;
 	float distance = radius + System::random((int) radius);
 
@@ -1587,7 +1673,7 @@ void CreatureImplementation::addRandomPatrolPoint(float radius, bool doLock) {
 			* cord =
 					new PatrolPoint(newPositionX, newPositionZ, newPositionY, getParentID());
 
-	addPatrolPoint(cord, doLock);
+	setNextMovementPosition(cord, doLock);
 }
 
 
@@ -1648,5 +1734,5 @@ void CreatureImplementation::activateEscapeRoute() {
 	Coordinate* escapePoint = new Coordinate(positionX, positionZ, positionY);
 	escapePoint->randomizePosition(15.0f);
 
-	addPatrolPoint(escapePoint->getPositionX(),escapePoint->getPositionY(),false);
+	setNextMovementPosition(escapePoint->getPositionX(),escapePoint->getPositionY(),false);
 }

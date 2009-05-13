@@ -690,7 +690,7 @@ void PlayerImplementation::unload() {
 	// unload mount from world
 	if (mount != NULL) {
 		//CreatureObject* mnt = (CreatureObject*) mount;
-		mount->wlock();
+		mount->lock();
 
 		((VehicleObject*)mount)->store(false);
 
@@ -1696,7 +1696,7 @@ void PlayerImplementation::switchMap(int planetid) {
 
 	if (mount != NULL) {
 		try {
-			mount->wlock();
+			mount->lock();
 			((VehicleObject*)mount)->store(false);
 			mount->unlock();
 		} catch (...) {

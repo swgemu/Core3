@@ -69,6 +69,8 @@ public:
 
 	bool isInGuardState();
 
+	bool isInPatrolState();
+
 	void doGrowUp(bool updateTime = true);
 
 	void setGrowth(float gr);
@@ -114,6 +116,12 @@ public:
 	void handleFriendCommand();
 
 	void handleFormationCommand(unsigned int form);
+
+	void handleAddPatrolPointCommand(Player* player);
+
+	void handleActivatePatrolCommand();
+
+	void handleClearPatrolPointsCommand();
 
 	void trainMount();
 
@@ -179,6 +187,8 @@ public:
 
 	bool isInGuardState();
 
+	bool isInPatrolState();
+
 	void doGrowUp(bool updateTime);
 
 	void setGrowth(float gr);
@@ -224,6 +234,12 @@ public:
 	void handleFriendCommand();
 
 	void handleFormationCommand(unsigned int form);
+
+	void handleAddPatrolPointCommand(Player* player);
+
+	void handleActivatePatrolCommand();
+
+	void handleClearPatrolPointsCommand();
 
 	void trainMount();
 

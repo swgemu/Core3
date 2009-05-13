@@ -81,9 +81,15 @@ public:
 
 	void queueRespawn();
 
-	void addPatrolPoint(float x, float y, bool doLock = true);
+	void setNextMovementPosition(float x, float y, bool doLock = true);
 
-	void resetPatrolPoints(bool doLock = true);
+	void clearPatrolPoints(bool doLock = true);
+
+	void addPatrolPoint(float positionX, float positionY, bool doLock = true);
+
+	void startPatrol(bool doLock = true);
+
+	void stopPatrol(bool doLock = true);
 
 	void setSpawnPosition(float posX, float posZ, float posY, unsigned long long cellid = 0);
 
@@ -220,9 +226,15 @@ public:
 
 	void queueRespawn();
 
-	void addPatrolPoint(float x, float y, bool doLock);
+	void setNextMovementPosition(float x, float y, bool doLock);
 
-	void resetPatrolPoints(bool doLock);
+	void clearPatrolPoints(bool doLock);
+
+	void addPatrolPoint(float positionX, float positionY, bool doLock);
+
+	void startPatrol(bool doLock);
+
+	void stopPatrol(bool doLock);
 
 	void setSpawnPosition(float posX, float posZ, float posY, unsigned long long cellid);
 

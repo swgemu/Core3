@@ -88,7 +88,10 @@ protected:
 	float acid;
 	float lightSaber;
 
+	PatrolPoint* nextMovementPosition;
 	Vector<PatrolPoint*> patrolPoints;
+	bool patrolMode;
+	int nextPatrolPosition;
 
 	bool doRandomMovement;
 
@@ -217,15 +220,17 @@ public:
 	}
 
 	// waypoint methods
-	void setPatrolPoint(PatrolPoint* cord, bool doLock = true );
+	void setNextMovementPosition(float x, float y, bool doLock = true);
+	void setNextMovementPosition(PatrolPoint* cord, bool doLock = true);
+	void setNextMovementPosition(SceneObject* obj, bool doLock = true);
 
-	void addPatrolPoint(float x, float y, bool doLock = true);
-	void addPatrolPoint(PatrolPoint* cord, bool doLock = true);
-	void addPatrolPoint(SceneObject* obj, bool doLock = true);
+	void addRandomMovementPosition(float radius = 30, bool doLock = true);
 
-	void addRandomPatrolPoint(float radius = 30, bool doLock = true);
-
-	void resetPatrolPoints(bool doLock = true);
+	void clearPatrolPoints(bool doLock = true);
+	PatrolPoint* getNextPatrolPoint(bool doLock = true);
+	void addPatrolPoint(float positionX, float positionY, bool doLock = true);
+	void startPatrol(bool doLock = true);
+	void stopPatrol(bool doLock = true);
 
 	int compareTo(Creature* creature) {
 		if (objectID < creature->getObjectID())
