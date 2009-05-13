@@ -46,7 +46,7 @@ AttackSlashCommand = {
         animation = "",
 
         invalidStateMask = 3760586768, --alert, frozen, swimming, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "5,6,7,8,9,10,11,12,13,14,4,",
+        invalidPostures = "5,6,7,8,9,10,12,13,14,4,",
         target = 1,
         targeType = 2,
         disabled = 0,

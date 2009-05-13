@@ -111,6 +111,10 @@ CreaturePetImplementation::~CreaturePetImplementation() {
 	befriendList = NULL;
 
 	followTarget = NULL;
+
+	delete nextMovementPosition;
+
+	nextMovementPosition = NULL;
 }
 
 void CreaturePetImplementation::init() {
@@ -132,6 +136,8 @@ void CreaturePetImplementation::init() {
 
 	positionCounter = 0;
 	formation = FORMATIONNONE;
+
+	//nextPatrolPoint = 0;
 }
 
 void CreaturePetImplementation::init(Creature* creature, float growth) {
@@ -408,8 +414,44 @@ void CreaturePetImplementation::parseItemAttributes() {
 		commandHelper->trainCommand(i,customCommand);
 	}
 
-	if (isMount())
-		trainMount();
+	if (isMount()) {
+		switch(objectCRC) {
+			case 0xDF44570F:
+				setSpeed(15.0f);
+				break;
+			case 0xA28C8DE4:
+				setSpeed(15.5f);
+				break;
+			case 0x7A65CF41:
+				setSpeed(14.0f);
+				break;
+			case 0x52F8B1CF:
+				setSpeed(18.5f);
+				break;
+			case 0x43F43642:
+				setSpeed(18.0f);
+				break;
+			case 0x973BFD16:
+				setSpeed(14.5f);
+				break;
+			case 0x1A0CA56B:
+				setSpeed(15.0f);
+				break;
+			case 0xADE1B39E:
+				setSpeed(17.5f);
+				break;
+			default:
+				System::out << "no mount\n";
+		}
+
+		linkType = 0xFFFFFFFF;
+
+		setPetType(CHPETTRAINEDMOUNT);
+
+		setAcceleration(getSpeed() / 2);
+
+		optionsBitmask = 0x1080;
+	}
 }
 
 void CreaturePetImplementation::loadItems() {
@@ -959,11 +1001,12 @@ void CreaturePetImplementation::call() {
 		getLinkedCreature()->unlock();
 
 		handleFollowCommand(getLinkedCreature());
-		calculateRelativePosition();
 
-		initializePosition(nextFollowPosition->getPositionX(),
-				zone->getHeight(nextFollowPosition->getPositionX(), nextFollowPosition->getPositionY()),
-				nextFollowPosition->getPositionY());
+		Coordinate* pos = calculateRelativePosition();
+
+		initializePosition(pos->getPositionX(),
+				zone->getHeight(pos->getPositionX(), pos->getPositionY()),
+				pos->getPositionY());
 
 		if (getDatapadItem() != NULL) {
 			getDatapadItem()->wlock();
@@ -1141,6 +1184,10 @@ void CreaturePetImplementation::setFaction(uint32 fac) {
 void CreaturePetImplementation::onIncapacitated(SceneObject* attacker) {
 	deaggro();
 
+	if (isRidingCreature()) {
+			getLinkedCreature()->dismount(false,true);
+	}
+
 	setPosture(CreaturePosture::INCAPACITATED);
 
 	if (isQueued()) {
@@ -1173,64 +1220,96 @@ void CreaturePetImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 		ss << "CreaturePetImplementation::notifyPositionUpdate() " << getLinkedCreature()->getCharacterName().toString();
 		info(ss.toString());
 	}
+	if (creatureManager == NULL)
+		return;
+
+	if (obj == NULL || obj == this)
+		return;
+
 	if (isInStayState() || isRidingCreature()) {
 		//System::out << "\ttnotifyPositionUpdate stay || mount\n";
 	//	handleStayCommand();
 		return;
 	}
 
-	if (creatureManager == NULL)
-		return;
-	try {
-		if (obj == this)
-			return;
-		//System::out << "CreaturePetImplementation::notifyPositionUpdate\n";
+	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
 
-		SceneObject* scno =
-			(SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
+	if (isInPatrolState()) {
+		if (!isInCombat()) {
 
-		if (scno->isPlayer()) {
-			//System::out << "\tnotifyPositionUpdate : is player\n" ;
-			Player* player = (Player*) scno;
+			if (scno->isPlayer() || scno->isNonPlayerCreature()) {
+				System::out << "\tnotifyPositionUpdate : patrol is player\n" ;
+				CreatureObject* creature = (CreatureObject*) scno;
+				if ((creature->isImperial() && isRebel()) || (isImperial() && creature->isRebel())) {
+					if (isInRange(creature,45.0f)) {
+						//System::out << "\tnotifyPositionUpdate : attack patrol\n" ;
 
-			if (player == followTarget) {
-
-				//System::out << "\tnotifyPositionUpdate : is owner\n" ;
-				if (!followTarget->isInCombat() && aggroedCreature == NULL) {
-					//System::out << "\tnotifyPositionUpdate : not aggro\n" ;
-
-					if (aggroedCreature == NULL) {
-						//System::out << "\tnotifyPositionUpdate : move to player\n";
-						updateFollowPosition();
-
-						//resetPatrolPoints(false);
-
-						//addPatrolPoint(pos->getPositionX(), pos->getPositionX(),false);
-					}
-				} if (isFriend(followTarget) && followTarget->isInCombat() && (aggroedCreature == NULL)) {
-					//System::out << "\tnotifyPositionUpdate : aggro player combat\n";
-
-					SceneObject* scno = followTarget->getTarget();
-					if (scno != NULL && (scno->isNonPlayerCreature() || scno->isPlayer())) {
-						//System::out << "\tnotifyPositionUpdate :aggro more\n";
-
-						if (aggroedCreature != targetObject) {
-							//System::out << "\tnotifyPositionUpdate : new target\n";
-
-							aggroedCreature = (CreatureObject*) scno;
-						}
+						aggroedCreature = creature;
 						updateTarget(aggroedCreature);
-						if (isQueued())
-							creatureManager->dequeueActivity(this);
-						creatureManager->queueActivity(this, 10);
 					}
 				}
 			}
 		}
+		return;
+	}
 
-	} catch (...) {
-		error(
-				"Unreported exception caught in void CreaturePetImplementation::notifyPositionUpdate(QuadTreeEntry* obj)\n");
+	//System::out << "CreaturePetImplementation::notifyPositionUpdate\n";
+
+	if (isInGuardState()) {
+		if (scno != NULL && scno->isNonPlayerCreature() && scno != getLinkedCreature()) {
+			CreatureObject* creature = (CreatureObject*) scno;
+			if (creature->isInCombat() && creature->getTarget() == followTarget) {
+				aggroedCreature = creature;
+				updateTarget(aggroedCreature);
+
+				if (aggroedCreature != NULL) {
+					if (isQueued())
+						creatureManager->dequeueActivity(this);
+
+					creatureManager->queueActivity(this, 10);
+					return;
+				}
+			}
+		}
+	}
+
+	if (scno->isPlayer()) {
+		//System::out << "\tnotifyPositionUpdate : is player\n" ;
+		Player* player = (Player*) scno;
+
+		if (player == followTarget) {
+
+			//System::out << "\tnotifyPositionUpdate : is owner\n" ;
+			if (!followTarget->isInCombat() && aggroedCreature == NULL) {
+				//System::out << "\tnotifyPositionUpdate : not aggro\n" ;
+
+				if (aggroedCreature == NULL) {
+					//System::out << "\tnotifyPositionUpdate : move to player\n";
+					updateNextMovementPosition(calculateRelativePosition());
+
+					//resetPatrolPoints(false);
+
+					//addPatrolPoint(pos->getPositionX(), pos->getPositionX(),false);
+				}
+			} if (isFriend(followTarget) && followTarget->isInCombat() && (aggroedCreature == NULL)) {
+				//System::out << "\tnotifyPositionUpdate : aggro player combat\n";
+
+				SceneObject* scno = followTarget->getTarget();
+				if (scno != NULL && (scno->isNonPlayerCreature() || scno->isPlayer())) {
+					//System::out << "\tnotifyPositionUpdate :aggro more\n";
+
+					if (aggroedCreature != targetObject) {
+						//System::out << "\tnotifyPositionUpdate : new target\n";
+
+						aggroedCreature = (CreatureObject*) scno;
+					}
+					updateTarget(aggroedCreature);
+					if (isQueued())
+						creatureManager->dequeueActivity(this);
+					creatureManager->queueActivity(this, 10);
+				}
+			}
+		}
 	}
 }
 
@@ -1240,6 +1319,8 @@ bool CreaturePetImplementation::activate() {
 		ss << "CreaturePetImplementation::activate() " << getLinkedCreature()->getCharacterName().toString();
 		info(ss.toString());
 	}
+	if (!isInQuadTree())
+		return false;
 	//System::out << "activate\n";
 	if (isIncapacitated()) {
 		return false;
@@ -1255,58 +1336,66 @@ bool CreaturePetImplementation::activate() {
 			unlock();
 			return false;
 		}
-		//System::out << "\tactivate : movement\n";
-		needMoreActivity |= doMovement();
 
-		/*if (!isInCombat() && !needMoreActivity) {
-			updateFollowPosition();
-		}*/
+		if (isRidingCreature()) {
+			//System::out << "\tactivate : riding recovery\n";
 
+			needMoreActivity |= doRecovery();
 
-		if (isFriend(followTarget) && followTarget->isInCombat() && !isInCombat()) {
-			//System::out << "\tactivate : player is attack\n";
-			SceneObject* scno = followTarget->getTarget();
-			if (scno != NULL && (scno->isNonPlayerCreature() || scno->isPlayer()) && !isRidingCreature()) {
-				//System::out << "\tactivate :aggro player target\n";
-
-				aggroedCreature = (CreatureObject*) scno;
-
-				if (aggroedCreature != targetObject) {
-					//System::out << "\tactivate : new target\n";
-
-					updateTarget(aggroedCreature);
-				}
-				//updateTarget(aggroedCreature);
+			if (zone != NULL && needMoreActivity && creatureManager != NULL) {
+				//info("queuing more activities");
+				//System::out << "\tactivate : queue\n";
+				creatureManager->queueActivity(this);
 			}
+			unlock();
+			return needMoreActivity;
 		}
 
-		if (aggroedCreature != NULL) {
-			if(!aggroedCreature->isAttackableBy(getLinkedCreature())) {
-				//System::out << "\tactivate : deaggro\n";
-				deaggro();
-			} else {
-				//System::out << "\tactivate : attack(" << aggroedCreature->getStfName()<<","<< aggroedCreature->getStfFile() <<")\n";
-				//System::out << "\tactivate : attack , num skills = " << getNumberOfSkills() <<"\n";
+		needMoreActivity |= doMovement();
 
-				needMoreActivity |= attack(aggroedCreature);
-			}
-			if(!followTarget->isInCombat() && !isInRange(followTarget,100.0f)) {
-				//System::out << "\tactivate : abort combat retun to owner\n";
-
-				deaggro();
-
-				//Coordinate* pos = getCoordinate(getLinkedCreature() , 10.0f, getLinkedCreature()->getDirectionAngle());
-
-				//addPatrolPoint(pos->getPositionX(), pos->getPositionX(),false);
-
-				//addPatrolPoint(followTarget,false);
-				updateFollowPosition();
+		if (!isInStayState() && !isRidingCreature()) {
+			if (!isInPatrolState() && !isInCombat() && !needMoreActivity && !isInPatrolState()) {
+				updateNextMovementPosition(calculateRelativePosition());
 			}
 
-		} else if (isInCombat()) {
-			//System::out << "activate : clear combat\n";
-			clearCombatState();
-			aggroedCreature == NULL;
+			if (!isInPatrolState() && isFriend(followTarget) && followTarget->isInCombat() && !isInCombat()) {
+				//System::out << "\tactivate : player is attack\n";
+				SceneObject* scno = followTarget->getTarget();
+				if (scno != NULL && (scno->isNonPlayerCreature() || scno->isPlayer())) {
+					//System::out << "\tactivate :aggro player target\n";
+
+					aggroedCreature = (CreatureObject*) scno;
+
+					if (aggroedCreature != targetObject) {
+						//System::out << "\tactivate : new target\n";
+
+						updateTarget(aggroedCreature);
+					}
+					//updateTarget(aggroedCreature);
+				}
+			}
+
+			if (aggroedCreature != NULL) {
+				if(!aggroedCreature->isAttackableBy(getLinkedCreature())) {
+					//System::out << "\tactivate : deaggro\n";
+					deaggro();
+				} else {
+					//System::out << "\tactivate : attack(" << aggroedCreature->getStfName()<<","<< aggroedCreature->getStfFile() <<")\n";
+					//System::out << "\tactivate : attack , num skills = " << getNumberOfSkills() <<"\n";
+
+					needMoreActivity |= attack(aggroedCreature);
+				}
+				if(!isInPatrolState() && !followTarget->isInCombat() && !isInRange(followTarget,70.0f)) {
+					//System::out << "\tactivate : abort combat retun to owner\n";
+					deaggro();
+					updateNextMovementPosition(calculateRelativePosition());
+				}
+
+			} else if (isInCombat()) {
+				//System::out << "activate : clear combat\n";
+				clearCombatState();
+				aggroedCreature == NULL;
+			}
 		}
 		//System::out << "\tactivate : recovery\n";
 		needMoreActivity |= doRecovery();
@@ -1335,6 +1424,10 @@ bool CreaturePetImplementation::attack(CreatureObject* target) {
 	}
 	//info("attacking target");
 
+	if (isRidingCreature()) {
+		deaggro();
+		return false;
+	}
 	// Not ready to attack yet
 	if (!nextAttackDelay.isPast()) {
 		return true;
@@ -1435,10 +1528,8 @@ void CreaturePetImplementation::deaggro() {
 	}
 	CreatureImplementation::deaggro();
 
-	if (!isInStayState() && isInRange(getLinkedCreature(),8.0f)) {
-		/*resetPatrolPoints(false);
-		addPatrolPoint(followTarget,false);*/
-		updateFollowPosition();
+	if (!isInStayState()) {
+		updateNextMovementPosition(calculateRelativePosition());
 	}
 }
 
@@ -1643,6 +1734,16 @@ void CreaturePetImplementation::parseCommandMessage(Player* player, const Unicod
 	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETFORMATION2)) {
 		handleFormationCommand(FORMATIONCOLUM);
 	}
+	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETPATROLPOINTADD) && player == getLinkedCreature()) {
+		handleAddPatrolPointCommand(player);
+	}
+	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETPATROLPOINTCLEAR) && player == getLinkedCreature()) {
+		handleClearPatrolPointsCommand();
+	}
+	else if (command == commandHelper->getBaseCommand(PetCommandHelper::PETPATROL) && player == getLinkedCreature()) {
+		handleActivatePatrolCommand();
+	}
+
 
 	if (debug) {
 		StringBuffer ss;
@@ -1692,7 +1793,7 @@ void CreaturePetImplementation::handleFollowCommand(Player* target) {
 
 	if (aggroedCreature != NULL)
 		deaggro();
-
+	patrolMode = false;
 	followTarget = target;
 }
 
@@ -1702,7 +1803,7 @@ void CreaturePetImplementation::handleStayCommand() {
 		ss << "CreaturePetImplementation::handleStayCommand() " << getLinkedCreature()->getCharacterName().toString();
 		info(ss.toString());
 	}
-	resetPatrolPoints(false);
+	nextMovementPosition = NULL;
 	setCommmandState(STATESTAY);
 }
 
@@ -1959,6 +2060,31 @@ void CreaturePetImplementation::handleFriendCommand() {
 		newFriend->registerPet(_this);
 	}
 }
+void CreaturePetImplementation::handleAddPatrolPointCommand(Player* player) {
+	addPatrolPoint(player->getPositionX(),player->getPositionY(),false);
+}
+
+void CreaturePetImplementation::handleActivatePatrolCommand() {
+	if (patrolPoints.isEmpty()) {
+		handleFollowCommand(followTarget);
+		return;
+	}
+
+	if (isInPatrolState()) {
+		handleFollowCommand(followTarget);
+		return;
+	}
+
+	setCommmandState(STATEPATROL);
+	startPatrol(false);
+}
+
+void CreaturePetImplementation::handleClearPatrolPointsCommand() {
+	if (isInPatrolState()) {
+		handleFollowCommand(followTarget);
+	}
+	clearPatrolPoints(false);
+}
 
 void CreaturePetImplementation::trainMount() {
 	if (debug) {
@@ -2014,10 +2140,12 @@ void CreaturePetImplementation::trainMount() {
 	optionsBitmask = 0x1080;
 
 	getDatapadItem()->setUpdated(true);
+
 	if (isInQuadTree()) {
 		removeFromZone();
 		insertToZone(getZone());
 	}
+	getDatapadItem()->setUpdated(true);
 }
 
 bool CreaturePetImplementation::isMountTrainable() {
@@ -2036,45 +2164,37 @@ bool CreaturePetImplementation::isMountTrainable() {
 	}
 }
 
-void CreaturePetImplementation::calculateRelativePosition() {
-	nextFollowPosition = followTarget->getCoordinate(getLinkedCreature() , 3.0f, 180.0f);
-
+Coordinate* CreaturePetImplementation::calculateRelativePosition() {
 	if (formation == FORMATIONNONE) {
 		if (followTarget->numberOfPetsCalled() == 2) {
-			if (positionNumber == 0)
-				nextFollowPosition = followTarget->getCoordinate(getLinkedCreature() , 3.0f, 155.0f);
 			if (positionNumber == 1)
-				nextFollowPosition = followTarget->getCoordinate(getLinkedCreature() , 3.0f, -145.0f);
+				return followTarget->getCoordinate(getLinkedCreature() , 3.0f, 155.0f);
+			if (positionNumber == 0)
+				return followTarget->getCoordinate(getLinkedCreature() , 3.0f, -155.0f);
 		} else {
 			switch (positionNumber % 3) {
 			case 0:
-				nextFollowPosition = followTarget->getCoordinate(getLinkedCreature() , (1 + (positionNumber / 3)) * 3.0f, 180.0f);
-				break;
+				return followTarget->getCoordinate(getLinkedCreature() , (1 + (positionNumber / 3)) * 3.0f, 180.0f);
 			case 1:
-				nextFollowPosition = followTarget->getCoordinate(getLinkedCreature() , (1 + (positionNumber / 3)) * 3.0f, 135.0f);
-				break;
+				return followTarget->getCoordinate(getLinkedCreature() , (1 + (positionNumber / 3)) * 3.0f, 135.0f);
 			case 2:
-				nextFollowPosition = followTarget->getCoordinate(getLinkedCreature() , (1 + (positionNumber / 3)) * 3.0f, -135.0f);
-				break;
+				return followTarget->getCoordinate(getLinkedCreature() , (1 + (positionNumber / 3)) * 3.0f, -135.0f);
 			}
 		}
 	}
 	if (formation == FORMATIONCOLUM) {
-		nextFollowPosition = followTarget->getCoordinate(getLinkedCreature() , (1 + positionNumber) * 3.0f, -180.0f);
+		return followTarget->getCoordinate(getLinkedCreature() , (1 + positionNumber) * 3.0f, -180.0f);
 	}
 	if (formation == FORMATIONWEDGE) {
 		if ((positionCounter % 2) == 0) {
-			nextFollowPosition = followTarget->getCoordinate(getLinkedCreature() , (1 + (positionNumber / 2)) * 3.0f, 160.0f);
+			return followTarget->getCoordinate(getLinkedCreature() , (1 + (positionNumber / 2)) * 3.0f, 160.0f);
 		} else {
-			nextFollowPosition = followTarget->getCoordinate(getLinkedCreature() , (1 + (positionNumber / 2)) * 3.0f, -160.0f);
+			return followTarget->getCoordinate(getLinkedCreature() , (1 + (positionNumber / 2)) * 3.0f, -160.0f);
 		}
 	}
+	return getCoordinate(getLinkedCreature() , 3.0f, 180.0f);
 }
 
-void CreaturePetImplementation::updateFollowPosition() {
-	calculateRelativePosition();
-	resetPatrolPoints(false);
-
-	addPatrolPoint(nextFollowPosition->getPositionX(), nextFollowPosition->getPositionY(),false);
-
+void CreaturePetImplementation::updateNextMovementPosition(Coordinate* nextPostition) {
+	setNextMovementPosition(nextPostition->getPositionX(), nextPostition->getPositionY(),false);
 }

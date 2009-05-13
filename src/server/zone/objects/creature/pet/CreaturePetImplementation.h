@@ -83,9 +83,12 @@ class CreaturePetImplementation : public CreaturePetServant ,public VehicleObjec
 	PetFriendSet* befriendList;
 	Player* followTarget;
 
-	Coordinate* nextFollowPosition;
+	Coordinate* nextMovementPosition;
 	uint8 positionNumber;
 	uint8 formation;
+
+	//Vector<Coordinate*> patrolPoints;
+	//uint8 nextPatrolPoint;
 
 	static const bool debug = true;
 public:
@@ -275,6 +278,10 @@ public:
 		return commandState == STATEGUARD;
 	}
 
+	inline bool isInPatrolState() {
+		return commandState == STATEPATROL;
+	}
+
 	inline bool isInTrainingState() {
 		return commandToTrain != -1;
 	}
@@ -314,10 +321,14 @@ public:
 	void handleGroupCommand(Player* player);
 	void handleFriendCommand();
 	void handleFormationCommand(uint8 form);
+	void handleAddPatrolPointCommand(Player* player);
+	void handleActivatePatrolCommand();
+	void handleClearPatrolPointsCommand();
+
 	void trainMount();
 
-	void calculateRelativePosition();
-	void updateFollowPosition();
+	Coordinate* calculateRelativePosition();
+	void updateNextMovementPosition(Coordinate* nextPostition);
 };
 
 #endif /* CREATUREPETIMPLEMENTATION_H_ */

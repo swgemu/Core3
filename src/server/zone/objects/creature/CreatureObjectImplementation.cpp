@@ -3899,8 +3899,17 @@ void CreatureObjectImplementation::mountCreature(CreatureObject* mnt, bool lockM
 
 		mount->setState(CreatureState::MOUNTEDCREATURE);
 		mount->updateStates();
+
 		updateSpeed(mount->getSpeed(), mount->getAcceleration());
+
 		setState(CreatureState::RIDINGMOUNT);
+
+		if (mount->isVehicle()) {
+			setPosture(CreaturePosture::DRIVINGVEHICLE);
+		} else {
+			setPosture(CreaturePosture::RIDINGCREATURE);
+		}
+
 		updateStates();
 		if (lockMount)
 			mount->unlock();
@@ -3939,7 +3948,10 @@ void CreatureObjectImplementation::dismount(bool lockMount, bool ignoreCooldown)
 			updateSpeed(5.376f, 1.549f);
 		}
 
+		setPosture(CreaturePosture::UPRIGHT);
+
 		clearState(CreatureState::RIDINGMOUNT);
+
 		updateStates();
 
 		if (lockMount)

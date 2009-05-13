@@ -46,7 +46,7 @@ DismountSlashCommand = {
         animation = "",
 
         invalidStateMask = 3760391201, --cover, berzerk, tumbling, immobilized, frozen, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
+        invalidPostures = "3,5,6,7,8,9,12,13,14,4,",
         target = 2,
         targeType = 2,
         disabled = 0,
