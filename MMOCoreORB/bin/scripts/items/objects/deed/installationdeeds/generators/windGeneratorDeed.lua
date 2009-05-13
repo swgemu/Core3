@@ -45,7 +45,6 @@ windGeneratorDeed = Deed:new {
 	objectCRC = 3871805863,
 	objectType = INSTALLATIONDEED,
 	
-	targetObjectType = TANGIBLE,
 	targetObjectSubType = GENERATOR,
 	targetStfFile = "installation_n",
 	targetStfName = "wind_generator",

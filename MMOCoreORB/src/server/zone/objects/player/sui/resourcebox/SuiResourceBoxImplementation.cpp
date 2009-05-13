@@ -45,8 +45,9 @@ which carries forward this exception.
 #include "SuiResourceBoxImplementation.h"
 #include "../SuiWindowType.h"
 
-SuiResourceBoxImplementation::SuiResourceBoxImplementation(Player* player) :
+SuiResourceBoxImplementation::SuiResourceBoxImplementation(Player* player, ResourceManager* resourcemanager) :
 		SuiResourceBoxServant(player, SuiWindowType::FREE_RESOURCE, RESOURCEBOX) {
+	resourceManager = resourcemanager;
 }
 
 SuiResourceBoxImplementation::~SuiResourceBoxImplementation() {
@@ -58,6 +59,10 @@ void SuiResourceBoxImplementation::nextStage() {
 
 void SuiResourceBoxImplementation::previousStage() {
 
+}
+
+void SuiResourceBoxImplementation::onSelect(uint32 menuchoice) {
+	System::out << "Menu choice " << menuchoice << " was selected." << endl;
 }
 
 

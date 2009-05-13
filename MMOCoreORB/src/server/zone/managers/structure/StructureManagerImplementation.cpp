@@ -317,6 +317,7 @@ void StructureManagerImplementation::endConstruction(Player* player, DeedObject*
 	if (waypointname.isEmpty())
 		waypointname = "@" + structure->getStfFile() + ":" + structure->getStfName();
 	waypoint->setCustomName(waypointname);
+	waypoint->setActivated(true);
 	player->addWaypoint(waypoint);
 
 	//Give construction is complete message, place the structure from the deed.

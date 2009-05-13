@@ -1298,6 +1298,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 			float ber = itemconfig.getFloatField("baseExtractionRate");
 			float hopper = itemconfig.getFloatField("hopperSizeMax");
 
+			uint32 targetobjectsubtype = itemconfig.getIntField("targetObjectSubType");
 			uint32 constructioncrc = itemconfig.getIntField("targetConstructionObjectCRC");
 			uint32 surplusmaint = itemconfig.getIntField("surplusMaintenance");
 			uint32 surpluspower = itemconfig.getIntField("surplusPower");
@@ -1307,6 +1308,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 			uint8 harvestertype = itemconfig.getIntField("harvesterType");
 			uint8 lotsize = itemconfig.getByteField("lotSize");
 
+			installationdeed->setTargetObjectSubType(targetobjectsubtype);
 			installationdeed->setMaintenanceRate(maintenancerate);
 			installationdeed->setPowerRate(powerrate);
 			installationdeed->setBaseExtractionRate(ber);

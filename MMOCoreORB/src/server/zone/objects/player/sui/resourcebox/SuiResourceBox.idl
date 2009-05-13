@@ -44,11 +44,27 @@ which carries forward this exception.
 
 import "../listbox/SuiListBox";
 import "../../Player";
+import "../../../../managers/resource/ResourceManager";
 
 include "engine/service/proto/BaseMessage";
 
 interface SuiResourceBox implements SuiListBox {
-	SuiResourceBox(Player player) {
+	SuiResourceBox(Player player, ResourceManager resourcemanager) {
 		super(player, unsigned int suitype, unsigned int boxtype);
 	}
+	
+	BaseMessage generateMessage();
+	
+	void onSelect(unsigned int menuchoice);
+	
+	void nextStage();
+	void previousStage();
+	
+	//Setters
+	void setStage(const String value);
+	void setResourceManager(ResourceManager resourcemananger);
+	
+	//Getters
+	String getStage();
+	ResourceManager getResourceManager();
 }

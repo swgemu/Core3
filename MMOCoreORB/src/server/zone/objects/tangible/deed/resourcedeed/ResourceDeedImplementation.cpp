@@ -43,7 +43,7 @@ int ResourceDeedImplementation::useObject(Player* player) {
 
 	ResourceManager* resourceManager = player->getZone()->getZoneServer()->getResourceManager();
 
-	SuiResourceBox* sui = new SuiResourceBox(player);//beginning of sui chain
+	SuiResourceBox* sui = new SuiResourceBox(player, resourceManager);//beginning of sui chain
 	sui->setUsingObjectID(getObjectID());
 	sui->setPromptText("@veteran:choose_class"); //Choose resource class
 	sui->setCancelButton(true, "@cancel");
