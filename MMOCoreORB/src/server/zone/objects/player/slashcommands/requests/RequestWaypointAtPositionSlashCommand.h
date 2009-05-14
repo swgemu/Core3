@@ -194,6 +194,7 @@ public:
 		waypoint->setPlanetName(planet);
 		waypoint->setPosition(x, z, y);
 		waypoint->setCustomName(waypointName);
+		waypoint->setActivated(true);
 
 		player->addWaypoint(waypoint);
 

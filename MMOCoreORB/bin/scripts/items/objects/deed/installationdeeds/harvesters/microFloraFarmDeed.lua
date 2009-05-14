@@ -61,7 +61,6 @@ microFloraFarmDeed = Deed:new {
 	
 	conditionMax = 1800,
 
-	reclaimFee = 1500,
 	surplusMaintenance = 0,
 	surplusPower = 0,
 			

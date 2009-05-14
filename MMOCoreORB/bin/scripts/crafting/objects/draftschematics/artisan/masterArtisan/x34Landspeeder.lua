@@ -77,7 +77,7 @@ x34Landspeeder = Object:new {
    experimentalMax = "0, 0, 3000",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8388613:objectcrc=905926205:stfFile=monster_name:stfName=landspeeder_x34:stfDetail=:itemmask=65535::",
+   tanoAttributes = "objecttype=8388613:objectcrc=905926205:stfFile=monster_name:stfName=landspeeder_x34:stfDetail=:itemmask=65535:customattributes=targetStfFile=monster_name;targetStfName=landspeeder_x34;targetObjectFile=object/mobile/vehicle/shared_landspeeder_x34.iff;targetControlDeviceCRC=2364632781;:",
 
    blueFrogAttributes = "",
    blueFrogEnabled = False,
@@ -85,7 +85,6 @@ x34Landspeeder = Object:new {
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"
-
 }
 
 DraftSchematics:addDraftSchematic(x34Landspeeder, 3178368929)--- Add to global DraftSchematics table

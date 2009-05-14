@@ -98,7 +98,6 @@ interface InstallationObject implements TangibleObject {
 	void setDeedCustomName(const UnicodeString customname);
 	void setConstructionObjectCRC(unsigned int crc);
 	void setObjectFile(const String objectfile);
-	void setReclaimFee(unsigned int fee);
 	void setPowerRate(float rate);
 	void setMaintenancePool(float maint);
 	void setMaintenanceRate(float rate);

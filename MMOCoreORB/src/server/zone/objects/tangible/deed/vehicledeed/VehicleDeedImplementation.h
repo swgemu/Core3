@@ -81,7 +81,7 @@ public:
 	inline void setTargetControlDeviceCRC(uint32 crc) {
 		targetControlDeviceCRC = crc;
 		String attr("targetControlDeviceCRC");
-		itemAttributes->setIntAttribute(attr, targetControlDeviceCRC);
+		itemAttributes->setUnsignedLongAttribute(attr, targetControlDeviceCRC);
 	}
 
 	//Getters

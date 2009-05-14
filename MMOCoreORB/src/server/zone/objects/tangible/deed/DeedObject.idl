@@ -70,7 +70,6 @@ interface DeedObject implements TangibleObject {
 	void setTargetStfName(const String stfname);
 	void setTargetObjectFile(const String objfile);
 	void setTargetCustomName(const UnicodeString customname);
-	void setTargetObjectType(unsigned int type);
 	void setTargetObjectSubType(unsigned int subtype);
 	
 	//Getters
@@ -79,7 +78,6 @@ interface DeedObject implements TangibleObject {
 	String getTargetObjectFile();
 	UnicodeString getTargetCustomName();
 	unsigned int getTargetObjectCRC();
-	unsigned int getTargetObjectType();
 	unsigned int getTargetObjectSubType();
 	
 	boolean isInstallationDeed();

@@ -25,7 +25,6 @@ protected:
 
 	uint32 structureID;
 	uint32 destroyCode;
-	uint32 reclaimFee;
 	uint32 deedCRC;
 	uint32 constructionObjectCRC;
 	uint32 updateCounter;
@@ -191,13 +190,6 @@ public:
 		itemAttributes->setStringAttribute(attr, objectFile);
 	}
 
-	inline void setReclaimFee(uint32 fee) {
-		setUpdated(true);
-		reclaimFee = fee;
-		String attr("reclaimFee");
-		itemAttributes->setIntAttribute(attr, reclaimFee);
-	}
-
 	inline void setMaintenancePool(float maint) {
 		setUpdated(true);
 		maintenancePool = maint;
@@ -273,7 +265,7 @@ public:
 	}
 
 	inline uint32 getReclaimFee() {
-		return reclaimFee;
+		return ((uint32) floor(maintenanceRate * 50.0f));
 	}
 
 	inline String& getDeedStfName() {

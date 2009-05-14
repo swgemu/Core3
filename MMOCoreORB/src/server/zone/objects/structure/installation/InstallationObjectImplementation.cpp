@@ -99,8 +99,6 @@ void InstallationObjectImplementation::init() {
 	setMaintenancePool(0);
 	setMaintenanceRate(45);
 
-	setReclaimFee(1000);
-
 	setOperating(false);
 
 	maxCondition = 1000;
@@ -248,9 +246,6 @@ void InstallationObjectImplementation::parseItemAttributes() {
 
 	attr = "objectFile";
 	setObjectFile(itemAttributes->getStringAttribute(attr));
-
-	attr = "reclaimFee";
-	setReclaimFee(itemAttributes->getIntAttribute(attr));
 
 	attr = "maintenancePool";
 	setMaintenancePool(itemAttributes->getFloatAttribute(attr));
@@ -415,8 +410,6 @@ bool InstallationObjectImplementation::destroyStructure(Player* player) {
  */
 InstallationDeed* InstallationObjectImplementation::redeed(Player* player) {
 	//TODO: Generate the proper installation deed from this structure.
-	//Stop the installation from operating, turn off the structure status poll event.
-	//Subtract due maintenance.
 	return NULL;
 }
 

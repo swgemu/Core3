@@ -319,7 +319,6 @@ bool HarvesterObjectImplementation::start(Player* player) {
 		rescheduleHarvestEvent(10000);
 		return true;
 	}
-
 	return false;
 }
 
@@ -575,7 +574,6 @@ InstallationDeed* HarvesterObjectImplementation::redeed(Player* player) {
 	installationdeed->setSurplusPower(getPowerReserves());
 	installationdeed->setBaseExtractionRate(getBaseExtractionRate());
 	installationdeed->setHopperSizeMax(getHopperSizeMax());
-	installationdeed->setReclaimFee(getReclaimFee());
 
 	installationdeed->setHarvesterType(getHarvesterType());
 	installationdeed->setLotSize(getLotSize());

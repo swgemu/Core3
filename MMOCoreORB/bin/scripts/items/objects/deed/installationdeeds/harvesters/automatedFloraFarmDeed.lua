@@ -61,7 +61,6 @@ automatedFloraFarmDeed = Deed:new {
 	
 	conditionMax = 7200,
 	
-	reclaimFee = 3000,
 	surplusMaintenance = 0,
 	surplusPower = 0,
 	
