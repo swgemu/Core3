@@ -54,7 +54,6 @@ protected:
 	String targetObjectFile;
 	UnicodeString targetCustomName;
 
-	uint32 targetObjectType;
 	uint32 targetObjectSubType;
 
 	void init();
@@ -102,12 +101,6 @@ public:
 		itemAttributes->setStringAttribute(attr, strname);
 	}
 
-	inline void setTargetObjectType(uint32 type) {
-		targetObjectType = type;
-		String attr("targetObjectType");
-		itemAttributes->setIntAttribute(attr, targetObjectType);
-	}
-
 	inline void setTargetObjectSubType(uint32 subtype) {
 		targetObjectSubType = subtype;
 		String attr("targetObjectSubType");
@@ -133,10 +126,6 @@ public:
 
 	inline uint32 getTargetObjectCRC() {
 		return targetObjectFile.hashCode();
-	}
-
-	inline uint32 getTargetObjectType() {
-		return targetObjectType;
 	}
 
 	inline uint32 getTargetObjectSubType() {

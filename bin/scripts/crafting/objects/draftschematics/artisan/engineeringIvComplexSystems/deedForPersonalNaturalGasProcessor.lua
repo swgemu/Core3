@@ -77,7 +77,7 @@ deedForPersonalNaturalGasProcessor = Object:new {
    experimentalMax = "0, 0, 5, 50000, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8388610:objectcrc=2231503385:stfFile=deed:stfName=gas_harvester_deed_name:stfDetail=:itemmask=65535::",
+   tanoAttributes = "objecttype=8388610:objectcrc=2231503385:stfFile=deed:stfName=gas_harvester_deed_name:stfDetail=:itemmask=65535:customattributes=targetObjectSubType=4099;targetStfFile=installation_n;targetStfName=gas_mine_small;targetObjectFile=object/installation/mining_gas/shared_mining_gas_harvester_style_1.iff;targetConstructionObjectCRC=2242761962;maintenanceRate=30.0;powerRate=25.0;harvesterType=4;lotSize=1;:",
 
    blueFrogAttributes = "",
    blueFrogEnabled = False,
@@ -85,7 +85,6 @@ deedForPersonalNaturalGasProcessor = Object:new {
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"
-
 }
 
 DraftSchematics:addDraftSchematic(deedForPersonalNaturalGasProcessor, 140336833)--- Add to global DraftSchematics table

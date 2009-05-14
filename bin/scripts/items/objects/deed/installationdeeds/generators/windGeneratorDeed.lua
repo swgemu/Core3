@@ -52,7 +52,7 @@ windGeneratorDeed = Deed:new {
 	--Required for EnterStructurePlacementModeMessage
 	targetObjectFile = "object/installation/generators/shared_power_generator_wind_style_1.iff",
 	
-	targetConstructionObjectCRC = 2242761962,
+	targetConstructionObjectCRC = 1589279869,
 	
 	maintenanceRate = 60.0,
 	baseExtractionRate = 3.0,
@@ -60,7 +60,6 @@ windGeneratorDeed = Deed:new {
 	
 	conditionMax = 7200,
 	
-	reclaimFee = 1500,
 	surplusMaintenance = 0,
 	surplusPower = 0,
 	

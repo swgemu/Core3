@@ -45,8 +45,6 @@ public:
 
 	void setTargetConditionMax(unsigned int condmax);
 
-	void setReclaimFee(unsigned int fee);
-
 	void setHarvesterType(unsigned char type);
 
 	void setLotSize(unsigned char lotsize);
@@ -64,8 +62,6 @@ public:
 	unsigned int getSurplusPower();
 
 	unsigned int getTargetConstructionObjectCRC();
-
-	unsigned int getReclaimFee();
 
 	unsigned char getHarvesterType();
 
@@ -121,8 +117,6 @@ public:
 
 	void setTargetConditionMax(unsigned int condmax);
 
-	void setReclaimFee(unsigned int fee);
-
 	void setHarvesterType(unsigned char type);
 
 	void setLotSize(unsigned char lotsize);
@@ -140,8 +134,6 @@ public:
 	unsigned int getSurplusPower();
 
 	unsigned int getTargetConstructionObjectCRC();
-
-	unsigned int getReclaimFee();
 
 	unsigned char getHarvesterType();
 

@@ -61,7 +61,6 @@ highCapacityFloraFarmDeed = Deed:new {
 	
 	conditionMax = 21600,
 
-	reclaimFee = 4500,
 	surplusMaintenance = 0,
 	surplusPower = 0,
 			

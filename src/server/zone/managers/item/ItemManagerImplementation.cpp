@@ -1317,7 +1317,6 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 			installationdeed->setSurplusMaintenance(surplusmaint);
 			installationdeed->setSurplusPower(surpluspower);
 			installationdeed->setTargetConditionMax(conditionmax);
-			installationdeed->setReclaimFee(reclaimfee);
 			installationdeed->setLotSize(lotsize);
 			installationdeed->setHarvesterType(harvestertype);
 

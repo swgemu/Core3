@@ -129,25 +129,12 @@ void DeedObject::setTargetCustomName(const UnicodeString& customname) {
 		((DeedObjectImplementation*) _impl)->setTargetCustomName(customname);
 }
 
-void DeedObject::setTargetObjectType(unsigned int type) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 13);
-		method.addUnsignedIntParameter(type);
-
-		method.executeWithVoidReturn();
-	} else
-		((DeedObjectImplementation*) _impl)->setTargetObjectType(type);
-}
-
 void DeedObject::setTargetObjectSubType(unsigned int subtype) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 13);
 		method.addUnsignedIntParameter(subtype);
 
 		method.executeWithVoidReturn();
@@ -160,7 +147,7 @@ String& DeedObject::getTargetStfFile() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 14);
 
 		method.executeWithAsciiReturn(_return_getTargetStfFile);
 		return _return_getTargetStfFile;
@@ -173,7 +160,7 @@ String& DeedObject::getTargetStfName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 15);
 
 		method.executeWithAsciiReturn(_return_getTargetStfName);
 		return _return_getTargetStfName;
@@ -186,7 +173,7 @@ String& DeedObject::getTargetObjectFile() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 16);
 
 		method.executeWithAsciiReturn(_return_getTargetObjectFile);
 		return _return_getTargetObjectFile;
@@ -199,7 +186,7 @@ UnicodeString& DeedObject::getTargetCustomName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 17);
 
 		method.executeWithUnicodeReturn(_return_getTargetCustomName);
 		return _return_getTargetCustomName;
@@ -212,23 +199,11 @@ unsigned int DeedObject::getTargetObjectCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
 		return ((DeedObjectImplementation*) _impl)->getTargetObjectCRC();
-}
-
-unsigned int DeedObject::getTargetObjectType() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 20);
-
-		return method.executeWithUnsignedIntReturn();
-	} else
-		return ((DeedObjectImplementation*) _impl)->getTargetObjectType();
 }
 
 unsigned int DeedObject::getTargetObjectSubType() {
@@ -236,7 +211,7 @@ unsigned int DeedObject::getTargetObjectSubType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -248,7 +223,7 @@ bool DeedObject::isInstallationDeed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 20);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -260,7 +235,7 @@ bool DeedObject::isBuildingDeed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 21);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -272,7 +247,7 @@ bool DeedObject::isPetDeed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 22);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -284,7 +259,7 @@ bool DeedObject::isDroidDeed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 23);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -296,7 +271,7 @@ bool DeedObject::isVehicleDeed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 24);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -308,7 +283,7 @@ bool DeedObject::isResourceDeed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 25);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -320,7 +295,7 @@ unsigned char DeedObject::getLotSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 26);
 
 		return method.executeWithUnsignedCharReturn();
 	} else
@@ -332,7 +307,7 @@ unsigned int DeedObject::getTargetConstructionObjectCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 27);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -372,54 +347,48 @@ Packet* DeedObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setTargetCustomName(inv->getUnicodeParameter(_param0_setTargetCustomName__UnicodeString_));
 		break;
 	case 13:
-		setTargetObjectType(inv->getUnsignedIntParameter());
-		break;
-	case 14:
 		setTargetObjectSubType(inv->getUnsignedIntParameter());
 		break;
-	case 15:
+	case 14:
 		resp->insertAscii(getTargetStfFile());
 		break;
-	case 16:
+	case 15:
 		resp->insertAscii(getTargetStfName());
 		break;
-	case 17:
+	case 16:
 		resp->insertAscii(getTargetObjectFile());
 		break;
-	case 18:
+	case 17:
 		resp->insertUnicode(getTargetCustomName());
 		break;
-	case 19:
+	case 18:
 		resp->insertInt(getTargetObjectCRC());
 		break;
-	case 20:
-		resp->insertInt(getTargetObjectType());
-		break;
-	case 21:
+	case 19:
 		resp->insertInt(getTargetObjectSubType());
 		break;
-	case 22:
+	case 20:
 		resp->insertBoolean(isInstallationDeed());
 		break;
-	case 23:
+	case 21:
 		resp->insertBoolean(isBuildingDeed());
 		break;
-	case 24:
+	case 22:
 		resp->insertBoolean(isPetDeed());
 		break;
-	case 25:
+	case 23:
 		resp->insertBoolean(isDroidDeed());
 		break;
-	case 26:
+	case 24:
 		resp->insertBoolean(isVehicleDeed());
 		break;
-	case 27:
+	case 25:
 		resp->insertBoolean(isResourceDeed());
 		break;
-	case 28:
+	case 26:
 		resp->insertByte(getLotSize());
 		break;
-	case 29:
+	case 27:
 		resp->insertInt(getTargetConstructionObjectCRC());
 		break;
 	default:
@@ -457,10 +426,6 @@ void DeedObjectAdapter::setTargetCustomName(const UnicodeString& customname) {
 	return ((DeedObjectImplementation*) impl)->setTargetCustomName(customname);
 }
 
-void DeedObjectAdapter::setTargetObjectType(unsigned int type) {
-	return ((DeedObjectImplementation*) impl)->setTargetObjectType(type);
-}
-
 void DeedObjectAdapter::setTargetObjectSubType(unsigned int subtype) {
 	return ((DeedObjectImplementation*) impl)->setTargetObjectSubType(subtype);
 }
@@ -483,10 +448,6 @@ UnicodeString& DeedObjectAdapter::getTargetCustomName() {
 
 unsigned int DeedObjectAdapter::getTargetObjectCRC() {
 	return ((DeedObjectImplementation*) impl)->getTargetObjectCRC();
-}
-
-unsigned int DeedObjectAdapter::getTargetObjectType() {
-	return ((DeedObjectImplementation*) impl)->getTargetObjectType();
 }
 
 unsigned int DeedObjectAdapter::getTargetObjectSubType() {

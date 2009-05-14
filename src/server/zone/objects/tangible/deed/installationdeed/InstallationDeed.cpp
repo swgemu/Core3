@@ -176,25 +176,12 @@ void InstallationDeed::setTargetConditionMax(unsigned int condmax) {
 		((InstallationDeedImplementation*) _impl)->setTargetConditionMax(condmax);
 }
 
-void InstallationDeed::setReclaimFee(unsigned int fee) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 17);
-		method.addUnsignedIntParameter(fee);
-
-		method.executeWithVoidReturn();
-	} else
-		((InstallationDeedImplementation*) _impl)->setReclaimFee(fee);
-}
-
 void InstallationDeed::setHarvesterType(unsigned char type) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 17);
 		method.addUnsignedCharParameter(type);
 
 		method.executeWithVoidReturn();
@@ -207,7 +194,7 @@ void InstallationDeed::setLotSize(unsigned char lotsize) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 18);
 		method.addUnsignedCharParameter(lotsize);
 
 		method.executeWithVoidReturn();
@@ -220,7 +207,7 @@ float InstallationDeed::getMaintenanceRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -232,7 +219,7 @@ float InstallationDeed::getPowerRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 20);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -244,7 +231,7 @@ float InstallationDeed::getBaseExtractionRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 21);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -256,7 +243,7 @@ float InstallationDeed::getHopperSizeMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 22);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -268,7 +255,7 @@ unsigned int InstallationDeed::getSurplusMaintenance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 23);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -280,7 +267,7 @@ unsigned int InstallationDeed::getSurplusPower() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 24);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -292,23 +279,11 @@ unsigned int InstallationDeed::getTargetConstructionObjectCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 25);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
 		return ((InstallationDeedImplementation*) _impl)->getTargetConstructionObjectCRC();
-}
-
-unsigned int InstallationDeed::getReclaimFee() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 27);
-
-		return method.executeWithUnsignedIntReturn();
-	} else
-		return ((InstallationDeedImplementation*) _impl)->getReclaimFee();
 }
 
 unsigned char InstallationDeed::getHarvesterType() {
@@ -316,7 +291,7 @@ unsigned char InstallationDeed::getHarvesterType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 26);
 
 		return method.executeWithUnsignedCharReturn();
 	} else
@@ -328,7 +303,7 @@ bool InstallationDeed::isMaintenanceEmpty() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 27);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -340,7 +315,7 @@ bool InstallationDeed::isPowerEmpty() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 28);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -352,7 +327,7 @@ bool InstallationDeed::isFactoryDeed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 29);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -364,7 +339,7 @@ bool InstallationDeed::isGeneratorDeed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 30);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -376,7 +351,7 @@ bool InstallationDeed::isHarvesterDeed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 31);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -388,7 +363,7 @@ bool InstallationDeed::isTurretDeed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 32);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -400,7 +375,7 @@ bool InstallationDeed::isMinefieldDeed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 33);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -452,60 +427,54 @@ Packet* InstallationDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		setTargetConditionMax(inv->getUnsignedIntParameter());
 		break;
 	case 17:
-		setReclaimFee(inv->getUnsignedIntParameter());
-		break;
-	case 18:
 		setHarvesterType(inv->getUnsignedCharParameter());
 		break;
-	case 19:
+	case 18:
 		setLotSize(inv->getUnsignedCharParameter());
 		break;
-	case 20:
+	case 19:
 		resp->insertFloat(getMaintenanceRate());
 		break;
-	case 21:
+	case 20:
 		resp->insertFloat(getPowerRate());
 		break;
-	case 22:
+	case 21:
 		resp->insertFloat(getBaseExtractionRate());
 		break;
-	case 23:
+	case 22:
 		resp->insertFloat(getHopperSizeMax());
 		break;
-	case 24:
+	case 23:
 		resp->insertInt(getSurplusMaintenance());
 		break;
-	case 25:
+	case 24:
 		resp->insertInt(getSurplusPower());
 		break;
-	case 26:
+	case 25:
 		resp->insertInt(getTargetConstructionObjectCRC());
 		break;
-	case 27:
-		resp->insertInt(getReclaimFee());
-		break;
-	case 28:
+	case 26:
 		resp->insertByte(getHarvesterType());
 		break;
-	case 29:
+	case 27:
 		resp->insertBoolean(isMaintenanceEmpty());
 		break;
-	case 30:
+	case 28:
 		resp->insertBoolean(isPowerEmpty());
 		break;
-	case 31:
+	case 29:
 		resp->insertBoolean(isFactoryDeed());
 		break;
-	case 32:
+	case 30:
 		resp->insertBoolean(isGeneratorDeed());
 		break;
-	case 33:
+	case 31:
 		resp->insertBoolean(isHarvesterDeed());
 		break;
-	case 34:
+	case 32:
 		resp->insertBoolean(isTurretDeed());
 		break;
-	case 35:
+	case 33:
 		resp->insertBoolean(isMinefieldDeed());
 		break;
 	default:
@@ -559,10 +528,6 @@ void InstallationDeedAdapter::setTargetConditionMax(unsigned int condmax) {
 	return ((InstallationDeedImplementation*) impl)->setTargetConditionMax(condmax);
 }
 
-void InstallationDeedAdapter::setReclaimFee(unsigned int fee) {
-	return ((InstallationDeedImplementation*) impl)->setReclaimFee(fee);
-}
-
 void InstallationDeedAdapter::setHarvesterType(unsigned char type) {
 	return ((InstallationDeedImplementation*) impl)->setHarvesterType(type);
 }
@@ -597,10 +562,6 @@ unsigned int InstallationDeedAdapter::getSurplusPower() {
 
 unsigned int InstallationDeedAdapter::getTargetConstructionObjectCRC() {
 	return ((InstallationDeedImplementation*) impl)->getTargetConstructionObjectCRC();
-}
-
-unsigned int InstallationDeedAdapter::getReclaimFee() {
-	return ((InstallationDeedImplementation*) impl)->getReclaimFee();
 }
 
 unsigned char InstallationDeedAdapter::getHarvesterType() {

@@ -77,7 +77,6 @@ void DeedObjectImplementation::init() {
 	setTargetStfName("");
 	setTargetObjectFile("");
 	setTargetCustomName("");
-	setTargetObjectType(0);
 	setTargetObjectSubType(0);
 }
 
@@ -124,9 +123,6 @@ void DeedObjectImplementation::parseItemAttributes() {
 
 	attr = "targetCustomName";
 	setTargetCustomName(UnicodeString(itemAttributes->getStringAttribute(attr)));
-
-	attr = "targetObjectType";
-	setTargetObjectType(itemAttributes->getIntAttribute(attr));
 
 	attr = "targetObjectSubType";
 	setTargetObjectSubType(itemAttributes->getIntAttribute(attr));

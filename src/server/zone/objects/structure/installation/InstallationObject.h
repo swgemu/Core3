@@ -83,8 +83,6 @@ public:
 
 	void setObjectFile(const String& objectfile);
 
-	void setReclaimFee(unsigned int fee);
-
 	void setPowerRate(float rate);
 
 	void setMaintenancePool(float maint);
@@ -272,8 +270,6 @@ public:
 	void setConstructionObjectCRC(unsigned int crc);
 
 	void setObjectFile(const String& objectfile);
-
-	void setReclaimFee(unsigned int fee);
 
 	void setPowerRate(float rate);
 

@@ -180,7 +180,7 @@ public:
 		if (!isOperating())
 			return 0.0f;
 
-		return baseExtractionRate * ((float) spawnDensity) / 100.0f;
+		return baseExtractionRate * (((float) spawnDensity) / 100.0f);
 	}
 
 	inline float getBaseExtractionRate() {
@@ -188,7 +188,7 @@ public:
 	}
 
 	inline float getDisplayedBaseExtractionRate() {
-		return floor(baseExtractionRate);
+		return round(baseExtractionRate);
 	}
 
 	inline float getHopperSize() {

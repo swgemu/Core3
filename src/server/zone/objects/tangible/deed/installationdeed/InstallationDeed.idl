@@ -71,7 +71,6 @@ interface InstallationDeed implements DeedObject {
 	void setSurplusPower(unsigned int power);
 	void setTargetConstructionObjectCRC(unsigned int objcrc);
 	void setTargetConditionMax(unsigned int condmax);
-	void setReclaimFee(unsigned int fee);
 	void setHarvesterType(unsigned char type);
 	void setLotSize(unsigned char lotsize);
 	
@@ -83,7 +82,6 @@ interface InstallationDeed implements DeedObject {
 	unsigned int getSurplusMaintenance();
 	unsigned int getSurplusPower();
 	unsigned int getTargetConstructionObjectCRC();
-	unsigned int getReclaimFee();
 	unsigned char getHarvesterType();
 	
 	boolean isMaintenanceEmpty();

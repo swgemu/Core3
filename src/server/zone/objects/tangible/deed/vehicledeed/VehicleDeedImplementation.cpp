@@ -71,7 +71,6 @@ void VehicleDeedImplementation::init() {
 
 	setStfFile("pet_deed");
 
-	setTargetObjectType(NONPLAYERCREATURE);
 	setTargetObjectSubType(VEHICLE);
 
 	setTargetConditionMax(2000);
@@ -166,8 +165,6 @@ void VehicleDeedImplementation::updateCraftingValues(DraftSchematic* draftSchema
 }
 
 void VehicleDeedImplementation::addAttributes(AttributeListMessage* alm) {
-	addHeaderAttributes(alm);
-
 }
 
 void VehicleDeedImplementation::parseItemAttributes(){
@@ -177,5 +174,5 @@ void VehicleDeedImplementation::parseItemAttributes(){
 	targetConditionMax = itemAttributes->getIntAttribute(attr);
 
 	attr = "targetControlDeviceCRC";
-	targetControlDeviceCRC = itemAttributes->getIntAttribute(attr);
+	targetControlDeviceCRC = itemAttributes->getUnsignedLongAttribute(attr);
 }

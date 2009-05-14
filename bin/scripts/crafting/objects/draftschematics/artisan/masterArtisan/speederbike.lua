@@ -77,7 +77,7 @@ speederbike = Object:new {
    experimentalMax = "0, 0, 2500",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8388613:objectcrc=4075476273:stfFile=monster_name:stfName=speederbike:stfDetail=:itemmask=65535::",
+   tanoAttributes = "objecttype=8388613:objectcrc=4075476273:stfFile=monster_name:stfName=speederbike:stfDetail=:itemmask=65535:customattributes=targetStfFile=monster_name;targetStfName=speederbike;targetObjectFile=object/mobile/vehicle/shared_speederbike.iff;targetControlDeviceCRC=3659586517;:",
 
    blueFrogAttributes = "",
    blueFrogEnabled = False,
@@ -85,7 +85,6 @@ speederbike = Object:new {
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"
-
 }
 
 DraftSchematics:addDraftSchematic(speederbike, 3893680726)--- Add to global DraftSchematics table

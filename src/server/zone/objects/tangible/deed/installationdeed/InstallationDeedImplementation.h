@@ -59,8 +59,6 @@ class InstallationDeedImplementation : public InstallationDeedServant {
 	uint32 targetConstructionObjectCRC;
 	uint32 targetConditionMax;
 
-	uint32 reclaimFee;
-
 	uint8 harvesterType;
 	uint8 lotSize;
 
@@ -78,13 +76,9 @@ public:
 	void parseItemAttributes();
 	void addAttributes(AttributeListMessage* alm);
 
-	//Setters
-	inline void setReclaimFee(uint32 fee) {
-		reclaimFee = fee;
-		String attr("reclaimFee");
-		itemAttributes->setIntAttribute(attr, reclaimFee);
-	}
+	void updateCraftingValues(DraftSchematic* draftSchematic);
 
+	//Setters
 	inline void setMaintenanceRate(float rate) {
 		maintenanceRate = rate;
 		String attr("maintenanceRate");
@@ -124,7 +118,7 @@ public:
 	inline void setTargetConstructionObjectCRC(uint32 objcrc) {
 		targetConstructionObjectCRC = objcrc;
 		String attr("targetConstructionObjectCRC");
-		itemAttributes->setIntAttribute(attr, targetConstructionObjectCRC);
+		itemAttributes->setUnsignedLongAttribute(attr, targetConstructionObjectCRC);
 	}
 
 	inline void setTargetConditionMax(uint32 condmax) {
@@ -176,10 +170,6 @@ public:
 
 	inline uint32 getTargetConditionMax() {
 		return targetConditionMax;
-	}
-
-	inline uint32 getReclaimFee() {
-		return reclaimFee;
 	}
 
 	inline uint8 getHarvesterType() {

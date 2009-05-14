@@ -602,6 +602,7 @@ void ResourceManagerImplementation::sendSurveyMessage(Player* player,
 			}
 
 			WaypointObject* waypoint = new WaypointObject(player->getNewItemID());
+			waypoint->setPlanetName(Planet::getPlanetName(player->getZoneID()));
 			waypoint->setCustomName(String("Resource Survey"));
 			waypoint->setPosition(wp_x, 0.0f, wp_y);
 

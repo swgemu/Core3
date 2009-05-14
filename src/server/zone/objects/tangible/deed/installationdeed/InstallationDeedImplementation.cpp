@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "../../../structure/installation/harvester/HarvesterObject.h"
 #include "../../../structure/installation/generator/GeneratorObject.h"
 #include "../../../structure/installation/factory/FactoryObject.h"
+#include "../../../draftschematic/DraftSchematic.h"
 #include "../../../player/Player.h"
 
 #include "InstallationDeedImplementation.h"
@@ -83,8 +84,6 @@ void InstallationDeedImplementation::init() {
 
 	setTargetConstructionObjectCRC(0);
 	setTargetConditionMax(2000);
-
-	setReclaimFee(1000);
 
 	setLotSize(0);
 }
@@ -156,7 +155,6 @@ SceneObject* InstallationDeedImplementation::generateObject(Player* player) {
 	installation->setConstructionObjectCRC(getTargetConstructionObjectCRC());
 	installation->setObjectFile(getTargetObjectFile());
 
-	installation->setReclaimFee(getReclaimFee());
 	installation->setMaintenancePool(getSurplusMaintenance());
 	installation->setMaintenanceRate(getMaintenanceRate());
 	installation->setPowerReserves(getSurplusPower());
@@ -175,9 +173,6 @@ void InstallationDeedImplementation::parseItemAttributes() {
 	String attr = "maintenanceRate";
 	setMaintenanceRate(itemAttributes->getFloatAttribute(attr));
 
-	attr = "reclaimFee";
-	setReclaimFee(itemAttributes->getIntAttribute(attr));
-
 	attr = "powerRate";
 	setPowerRate(itemAttributes->getFloatAttribute(attr));
 
@@ -194,7 +189,7 @@ void InstallationDeedImplementation::parseItemAttributes() {
 	setSurplusPower(itemAttributes->getIntAttribute(attr));
 
 	attr = "targetConstructionObjectCRC";
-	setTargetConstructionObjectCRC(itemAttributes->getIntAttribute(attr));
+	setTargetConstructionObjectCRC(itemAttributes->getUnsignedLongAttribute(attr));
 
 	attr = "targetConditionMax";
 	setTargetConditionMax(itemAttributes->getIntAttribute(attr));
@@ -217,6 +212,19 @@ void InstallationDeedImplementation::addAttributes(AttributeListMessage* alm) {
 
 	if (isHarvesterDeed() || isGeneratorDeed()) {
 		alm->insertAttribute("examine_hoppersize", (int) getHopperSizeMax()); //Storage Capacity
-		alm->insertAttribute("examine_extractionrate", (int) getBaseExtractionRate()); //Base Extraction Rate
+		alm->insertAttribute("examine_extractionrate", (int) round(getBaseExtractionRate())); //Base Extraction Rate
 	}
+}
+
+void InstallationDeedImplementation::updateCraftingValues(DraftSchematic* draftSchematic) {
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+
+	uint32 condmax = (uint32) craftingValues->getCurrentValue("hit_points");
+	setTargetConditionMax(condmax);
+
+	float extractrate = (float) craftingValues->getCurrentValue("extractrate");
+	setBaseExtractionRate(extractrate);
+
+	float hoppersize = (float) craftingValues->getCurrentValue("hoppersize");
+	setHopperSizeMax(hoppersize);
 }

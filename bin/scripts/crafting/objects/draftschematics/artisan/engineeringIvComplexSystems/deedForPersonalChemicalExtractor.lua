@@ -77,7 +77,7 @@ deedForPersonalChemicalExtractor = Object:new {
    experimentalMax = "0, 0, 5, 50000, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8388610:objectcrc=3335458434:stfFile=deed:stfName=liquid_harvester_deed_name:stfDetail=:itemmask=65535::",
+   tanoAttributes = "objecttype=8388610:objectcrc=3335458434:stfFile=deed:stfName=liquid_harvester_deed_name:stfDetail=:itemmask=65535:customattributes=targetObjectTypeSub=4099;targetStfFile=installation_n;targetStfName=liquid_mine;targetObjectFile=object/installation/mining_liquid/shared_mining_liquid_harvester_style_1.iff;targetConstructionObjectCRC=2242761962;maintenanceRate=30.0;powerRate=25.0;harvesterType=2;lotSize=1;:",
 
    blueFrogAttributes = "",
    blueFrogEnabled = False,
@@ -85,7 +85,6 @@ deedForPersonalChemicalExtractor = Object:new {
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"
-
 }
 
 DraftSchematics:addDraftSchematic(deedForPersonalChemicalExtractor, 3569746504)--- Add to global DraftSchematics table

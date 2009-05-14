@@ -39,8 +39,6 @@ public:
 
 	void setTargetCustomName(const UnicodeString& customname);
 
-	void setTargetObjectType(unsigned int type);
-
 	void setTargetObjectSubType(unsigned int subtype);
 
 	String& getTargetStfFile();
@@ -52,8 +50,6 @@ public:
 	UnicodeString& getTargetCustomName();
 
 	unsigned int getTargetObjectCRC();
-
-	unsigned int getTargetObjectType();
 
 	unsigned int getTargetObjectSubType();
 
@@ -109,8 +105,6 @@ public:
 
 	void setTargetCustomName(const UnicodeString& customname);
 
-	void setTargetObjectType(unsigned int type);
-
 	void setTargetObjectSubType(unsigned int subtype);
 
 	String& getTargetStfFile();
@@ -122,8 +116,6 @@ public:
 	UnicodeString& getTargetCustomName();
 
 	unsigned int getTargetObjectCRC();
-
-	unsigned int getTargetObjectType();
 
 	unsigned int getTargetObjectSubType();
 
