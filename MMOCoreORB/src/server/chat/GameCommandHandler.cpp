@@ -414,13 +414,28 @@ void GameCommandHandler::init() {
 				"USAGE: @clearMissions <player name>",
 				&clearMissions);
 
-	gmCommands->addCommand("growUpPet", PRIVILEGED,
+	 /* Disabled Commands
+
+ 	gmCommands->addCommand("growUpPet", PRIVILEGED,
 				"growUpPet",
 				"USAGE: @growUpPet",
 				&growUpPet);
 
-	/* Disabled Commands
-     *
+	 gmCommands->addCommand("woundPet", DEVELOPER,
+				"woundPet",
+				"USAGE: @woundPet",
+				&woundPet);
+
+	 gmCommands->addCommand("changePetDatapadCRC", DEVELOPER,
+				"changePetDatapadCRC",
+				"USAGE: @changePetDatapadCRC",
+				&changePetDatapadCRC);
+
+	 gmCommands->addCommand("petAnimation", DEVELOPER,
+				"petAnimation",
+				"USAGE: @petAnimation",
+				&petAnimation);
+
     gmCommands->addCommand("woundPet", DEVELOPER,
 				"woundPet",
 				"USAGE: @woundPet",
@@ -4068,6 +4083,7 @@ void GameCommandHandler::woundPet(StringTokenizer tokenizer, Player* player) {
 				try {
 					pet->wlock();
 					pet->changeMindWoundsBar(100, false);
+					pet->changeShockWounds(50);
 					pet->unlock();
 				}catch (...) {
 					pet->unlock();
@@ -4090,6 +4106,68 @@ void GameCommandHandler::growUpPet(StringTokenizer tokenizer, Player* player) {
 					pet->wlock();
 					pet->setLastGrowth(0);
 					pet->doGrowUp();
+					pet->unlock();
+				}catch (...) {
+					pet->unlock();
+				}
+
+
+			}
+		}
+	}
+}
+
+void GameCommandHandler::petAnimation(StringTokenizer tokenizer, Player* player) {
+	String anim;
+	if (tokenizer.hasMoreTokens()) {
+		tokenizer.getStringToken(anim);
+	} else {
+		return;
+	}
+	if (player->getTarget() != NULL) {
+		SceneObject* sco = player->getTarget();
+		if (sco->isNonPlayerCreature()) {
+			Creature* crea = (Creature*) sco;
+			if (crea->isPet()) {
+				CreaturePet* pet = (CreaturePet*) crea;
+				try {
+					pet->wlock();
+					pet->doAnimation(anim);
+					pet->unlock();
+				}catch (...) {
+					pet->unlock();
+				}
+
+
+			}
+		}
+	}
+}
+
+void GameCommandHandler::changePetDatapadCRC(StringTokenizer tokenizer, Player* player) {
+	uint32 crc;
+	if (tokenizer.hasMoreTokens()) {
+		crc = tokenizer.getIntToken();
+	} else {
+		return;
+	}
+	if (player->getTarget() != NULL) {
+		SceneObject* sco = player->getTarget();
+		if (sco->isNonPlayerCreature()) {
+			Creature* crea = (Creature*) sco;
+			if (crea->isPet()) {
+				CreaturePet* pet = (CreaturePet*) crea;
+				try {
+					pet->wlock();
+					IntangibleObject* dpItem = pet->getDatapadItem();
+					try {
+						dpItem->lock();
+						dpItem->setObjectCRC(crc);
+						dpItem->unlock();
+					}catch (...) {
+						dpItem->unlock();
+					}
+					dpItem->sendTo(pet->getLinkedCreature());
 					pet->unlock();
 				}catch (...) {
 					pet->unlock();

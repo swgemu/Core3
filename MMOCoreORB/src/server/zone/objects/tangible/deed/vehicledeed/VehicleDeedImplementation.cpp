@@ -174,5 +174,5 @@ void VehicleDeedImplementation::parseItemAttributes(){
 	targetConditionMax = itemAttributes->getIntAttribute(attr);
 
 	attr = "targetControlDeviceCRC";
-	targetControlDeviceCRC = itemAttributes->getUnsignedLongAttribute(attr);
+	targetControlDeviceCRC = itemAttributes->getIntAttribute(attr);
 }

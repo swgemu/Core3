@@ -1575,6 +1575,7 @@ void CreatureManagerImplementation::setPetDefaultAttributes(CreaturePet* creatur
 }
 
 void CreatureManagerImplementation::changeStatsToBaby(Creature* creature) {
+	creature->setPvpStatusBitmask(1);
 	creature->setHealth(creature->getHealth() / 2);
 	creature->setAction(creature->getAction() / 2);
 	creature->setMind(creature->getMind() / 2);
