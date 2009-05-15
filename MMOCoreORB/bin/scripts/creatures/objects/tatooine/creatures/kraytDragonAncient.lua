@@ -69,7 +69,7 @@ kraytDragonAncient = Creature:new {
 	focus = 30000,
 	willpower = 30000,
 
-	height = 3, -- Size of creature
+	height = 1.5, -- Size of creature
 	
 	armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 95,
@@ -137,7 +137,7 @@ kraytDragonAncient = Creature:new {
 
 	meatType = "meat_carnivore_tatooine",
 	meatMax = 1700,
-	skills = { "kraytAttack1", "kraytAttack2", "kraytAttack3", "kraytAttack4", "kraytAttack5", "kraytAttack6", "kraytAttack7" },	
+	skills = { "Areacombo", "Forcestrike", "Areastrike", "Cripplingstrike", "Stunningstrike", },	
 	respawnTimer = 300, 
 
 	behaviorScript = "", -- Link to the behavior script for this object

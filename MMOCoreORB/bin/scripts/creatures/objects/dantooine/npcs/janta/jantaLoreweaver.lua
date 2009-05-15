@@ -53,7 +53,7 @@ jantaLoreweaver = Creature:new {
 	socialGroup = "janta_tribe",
 	level = 55,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
 	healthMax = 14000,
 	healthMin = 11000,

@@ -59,7 +59,7 @@ spineflapAttack1 = {
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 50,
+	stunChance = 0,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "attack_block",

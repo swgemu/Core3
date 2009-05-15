@@ -68,17 +68,17 @@ juvenileCanyonKrayt = Creature:new {
 	focus = 5000,
 	willpower = 5000,
 
-	height = 1, -- Size of creature
+	height = 0.5, -- Size of creature
 	
 	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 70,
 	energy = 70,
-	electricity = 0,
-	stun = 0,
-	blast = 0,
-	heat = 0,
+	electricity = 15,
+	stun = 15,
+	blast = 15,
+	heat = 15,
 	cold = 10,
-	acid = 0,
+	acid = 15,
 	lightsaber = 0,
 
 	accuracy = 370,
@@ -137,7 +137,7 @@ juvenileCanyonKrayt = Creature:new {
 	meatType = "meat_carnivore_tatooine",
 	meatMax = 750,
 
-	skills = { "kraytAttack3", "kraytAttack5" },
+	skills = { "Areastrike", "Cripplingstrike" },
 	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object

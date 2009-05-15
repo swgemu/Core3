@@ -53,7 +53,7 @@ jantaPrimalist = Creature:new {
 	socialGroup = "janta_tribe",
 	level = 42,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
 	healthMax = 11900,
 	healthMin = 9700,

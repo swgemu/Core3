@@ -53,7 +53,7 @@ jantaTribesman = Creature:new {
 	socialGroup = "janta_tribe",
 	level = 20,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
 	healthMax = 6100,
 	healthMin = 5000,

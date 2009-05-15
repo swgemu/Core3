@@ -53,7 +53,7 @@ jantaClanLeader = Creature:new {
 	socialGroup = "janta_tribe",
 	level = 75,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
 	healthMax = 15000,
 	healthMin = 12000,

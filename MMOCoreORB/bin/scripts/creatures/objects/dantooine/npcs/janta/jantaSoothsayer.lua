@@ -53,7 +53,7 @@ jantaSoothsayer = Creature:new {
 	socialGroup = "janta_tribe",
 	level = 60,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
 	healthMax = 14000,
 	healthMin = 12000,
