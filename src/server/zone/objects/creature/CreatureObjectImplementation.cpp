@@ -3902,13 +3902,11 @@ void CreatureObjectImplementation::mountCreature(CreatureObject* mnt, bool lockM
 
 		updateSpeed(mount->getSpeed(), mount->getAcceleration());
 
-		setState(CreatureState::RIDINGMOUNT);
-
-		if (mount->isVehicle()) {
+		/*if (mount->isVehicle()) {
 			setPosture(CreaturePosture::DRIVINGVEHICLE);
 		} else {
 			setPosture(CreaturePosture::RIDINGCREATURE);
-		}
+		}*/
 
 		updateStates();
 		if (lockMount)

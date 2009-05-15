@@ -1240,7 +1240,7 @@ void CreaturePetImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 			if (scno->isPlayer() || scno->isNonPlayerCreature()) {
 				System::out << "\tnotifyPositionUpdate : patrol is player\n" ;
 				CreatureObject* creature = (CreatureObject*) scno;
-				if ((creature->isImperial() && isRebel()) || (isImperial() && creature->isRebel())) {
+				if (creature->isAttackableBy(getLinkedCreature())) {
 					if (isInRange(creature,45.0f)) {
 						//System::out << "\tnotifyPositionUpdate : attack patrol\n" ;
 
@@ -1920,6 +1920,8 @@ void CreaturePetImplementation::healPetMind(int mod) {
 		woundPower = getFocusMax() / mod;
 		healWound(_this, CreatureAttribute::FOCUS, woundPower);
 	}
+
+	changeShockWounds(-100);
 }
 
 void CreaturePetImplementation::handleFormationCommand(uint8 form) {

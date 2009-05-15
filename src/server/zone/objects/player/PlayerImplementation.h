@@ -989,8 +989,12 @@ public:
 				return true;
 		}
 
-		if (creature->hatesFaction(this->getFaction()))
-			return true;
+		if (creature->hatesFaction(this->getFaction())) {
+			if (creature->isPlayer() && (isRebel() || isImperial()))
+				return (isOvert() && creature->isOvert());
+			else
+				return true;
+		}
 
 		return (pvpStatusBitmask & CreatureFlag::ATTACKABLE);
 	}
