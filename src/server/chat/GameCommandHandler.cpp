@@ -779,7 +779,7 @@ void GameCommandHandler::summon(StringTokenizer tokenizer, Player* player) {
 	try {
 		targetPlayer->wlock();
 
-		if (targetPlayer->isMounted()) {
+		if (targetPlayer->isRidingMount()) {
 			targetPlayer->dismount(true, true);
 		}
 

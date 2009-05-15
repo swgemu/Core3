@@ -83,7 +83,7 @@ public:
 
 			if (craftingTool != NULL) {
 
-				if (player->isMounted()) {
+				if (player->isRidingMount()) {
 					craftingTool->sendToolStartFailure(player, "error_message",
  	                                                "survey_on_mount");
 					return false;

@@ -73,7 +73,7 @@ TicketCollectorImplementation::TicketCollectorImplementation(ShuttleCreature* sh
 int TicketCollectorImplementation::useObject(Player* player) {
 	// Pre: player wlocked
 	// Post: player wlocked
-	if (player->isMounted()) {
+	if (player->isRidingMount()) {
 		player->sendSystemMessage("travel", "no_pets");
 		return 0;
 	}
@@ -182,7 +182,7 @@ bool TicketCollectorImplementation::checkTime(ShuttleCreature* shuttle, Player* 
 void TicketCollectorImplementation::useTicket(Player* player, Ticket* ticket) {
 	// Pre: player wlocked
 	// Post: player wlocked
-	if (player->isMounted()) {
+	if (player->isRidingMount()) {
 		player->sendSystemMessage("travel", "no_pets");
 		return;
 	}

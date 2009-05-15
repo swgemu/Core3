@@ -89,7 +89,7 @@ void InstallationDeedImplementation::init() {
 }
 
 int InstallationDeedImplementation::useObject(Player* player) {
-	if (player->isMounted()) {
+	if (player->isRidingMount()) {
 		player->sendSystemMessage("@player_structure:cant_place_mounted"); //You may not place a structure while mounted or riding in a vehicle.
 		return 0;
 	}

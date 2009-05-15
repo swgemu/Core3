@@ -585,7 +585,7 @@ void CreaturePetImplementation::sendRadialResponseTo(Player* player, ObjectMenuR
 	}
 
 	if (player == getLinkedCreature() && isMount()) {
-		if (isRidingCreature())
+		if (isMountedCreature())
 			omr->addRadialParent(206, 1, "@pet/pet_menu:menu_dismount");
 		else
 			omr->addRadialParent(205, 1, "@pet/pet_menu:menu_mount");
@@ -686,7 +686,7 @@ void CreaturePetImplementation::sendTo(Player* player, bool doClose) {
 
 	sendFactionStatusTo(player);
 
-	if (isRidingCreature()) {
+	if (isMountedCreature()) {
 		getLinkedCreature()->sendTo(player);
 		getLinkedCreature()->sendItemsTo(player);
 	}
@@ -1061,7 +1061,7 @@ void CreaturePetImplementation::store(bool doLock) {
 		return;
 
 	try {
-		if (isRidingCreature()) {
+		if (isMountedCreature()) {
 			getLinkedCreature()->dismount(false,true);
 		}
 
@@ -1184,7 +1184,7 @@ void CreaturePetImplementation::setFaction(uint32 fac) {
 void CreaturePetImplementation::onIncapacitated(SceneObject* attacker) {
 	deaggro();
 
-	if (isRidingCreature()) {
+	if (isMountedCreature()) {
 			getLinkedCreature()->dismount(false,true);
 	}
 
@@ -1226,7 +1226,7 @@ void CreaturePetImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 	if (obj == NULL || obj == this)
 		return;
 
-	if (isInStayState() || isRidingCreature()) {
+	if (isInStayState() || isMountedCreature()) {
 		//System::out << "\ttnotifyPositionUpdate stay || mount\n";
 	//	handleStayCommand();
 		return;
@@ -1337,7 +1337,7 @@ bool CreaturePetImplementation::activate() {
 			return false;
 		}
 
-		if (isRidingCreature()) {
+		if (isMountedCreature()) {
 			//System::out << "\tactivate : riding recovery\n";
 
 			needMoreActivity |= doRecovery();
@@ -1353,7 +1353,7 @@ bool CreaturePetImplementation::activate() {
 
 		needMoreActivity |= doMovement();
 
-		if (!isInStayState() && !isRidingCreature()) {
+		if (!isInStayState() && !isMountedCreature()) {
 			if (!isInPatrolState() && !isInCombat() && !needMoreActivity && !isInPatrolState()) {
 				updateNextMovementPosition(calculateRelativePosition());
 			}
@@ -1424,7 +1424,7 @@ bool CreaturePetImplementation::attack(CreatureObject* target) {
 	}
 	//info("attacking target");
 
-	if (isRidingCreature()) {
+	if (isMountedCreature()) {
 		deaggro();
 		return false;
 	}
@@ -1689,7 +1689,7 @@ void CreaturePetImplementation::parseCommandMessage(Player* player, const Unicod
 		handleGroupCommand(player);
 	}
 
-	if (isRidingCreature())
+	if (isMountedCreature())
 		return;
 
 	if (command == commandHelper->getBaseCommand(PetCommandHelper::PETATTACK)) {

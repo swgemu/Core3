@@ -107,6 +107,10 @@ public:
 
 	bool isSkillAnimating();
 
+	bool isDrivingVehicle();
+
+	bool isRidingCreature();
+
 	bool isInCombat();
 
 	bool isDizzied();
@@ -129,9 +133,9 @@ public:
 
 	bool isOnFire();
 
-	bool isMounted();
+	bool isRidingMount();
 
-	bool isRidingCreature();
+	bool isMountedCreature();
 
 	bool isMeditating();
 
@@ -1448,6 +1452,10 @@ public:
 
 	bool isSkillAnimating();
 
+	bool isDrivingVehicle();
+
+	bool isRidingCreature();
+
 	bool isInCombat();
 
 	bool isDizzied();
@@ -1470,9 +1478,9 @@ public:
 
 	bool isOnFire();
 
-	bool isMounted();
+	bool isRidingMount();
 
-	bool isRidingCreature();
+	bool isMountedCreature();
 
 	bool isMeditating();
 

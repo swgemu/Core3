@@ -299,7 +299,7 @@ public:
 
 
 	bool calculateCost(CreatureObject* creature) {
-		if (creature->isInCombat() || creature->isMounted())
+		if (creature->isInCombat() || creature->isRidingMount())
 			return false;
 		else
 			return true;

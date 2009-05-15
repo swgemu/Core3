@@ -611,7 +611,7 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 
 	//If a player is incapacitated when the server saves, and subsequently are unloaded from memory, they should be loaded as standing.
 	//Also set standing if player was entertaining and got disconnected to prevent the invisible bandfill bug.
-	if (player->isIncapacitated() || player->isSkillAnimating())
+	if (player->isIncapacitated() || player->isSkillAnimating() || player->isRidingCreature() || player->isDrivingVehicle())
 		player->setPosture(CreaturePosture::UPRIGHT);
 
 	//Set time of death

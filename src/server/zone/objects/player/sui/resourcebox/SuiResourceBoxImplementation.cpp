@@ -46,8 +46,10 @@ which carries forward this exception.
 #include "../SuiWindowType.h"
 
 SuiResourceBoxImplementation::SuiResourceBoxImplementation(Player* player, ResourceManager* resourcemanager) :
-		SuiResourceBoxServant(player, SuiWindowType::FREE_RESOURCE, RESOURCEBOX) {
+		SuiResourceBoxServant(player, SuiWindowType::FREE_RESOURCE) {
 	resourceManager = resourcemanager;
+
+	boxType = RESOURCEBOX;
 }
 
 SuiResourceBoxImplementation::~SuiResourceBoxImplementation() {
@@ -76,8 +78,10 @@ BaseMessage* SuiResourceBoxImplementation::generateMessage() {
 	//Set Body Options:
 	addSetting("3", "bg.caption.lblTitle", "Text", "@veteran:resource_title");
 	addSetting("3", "Prompt.lblPrompt", "Text", promptText);
-
-	addSetting("3", "btnCancel", "Text", "@cancel");
+	addSetting("3", "btnOther", "Text", "@revert");
+	addSetting("3", "btnOther", "Enabled", "true");
+	addSetting("3", "btnOther", "Visible", "true");
+	//addSetting("3", "btnCancel", "Text", "@cancel");
 	addSetting("3", "btnOk", "Text", "@ok");
 
 	//Data Container Option

@@ -72,7 +72,7 @@ public:
 		try {
 			creo->wlock();
 
-			if (!creo->isMounted())
+			if (!creo->isRidingMount())
 			{
 				float new_speed = MAX(creo->getSpeed() - speed, CreatureObjectImplementation::DEFAULT_SPEED);
 				float new_acceleration = MAX(creo->getAcceleration() - acceleration, CreatureObjectImplementation::DEFAULT_ACCELERATION);

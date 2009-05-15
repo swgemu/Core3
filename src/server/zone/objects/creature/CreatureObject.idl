@@ -121,6 +121,8 @@ interface CreatureObject implements TangibleObject {
 	boolean isProne();
 	boolean isStanding();
 	boolean isSkillAnimating();
+	boolean isDrivingVehicle();
+	boolean isRidingCreature();
 	boolean isInCombat();
 	boolean isDizzied();
 	boolean isStunned();
@@ -132,8 +134,8 @@ interface CreatureObject implements TangibleObject {
 	boolean isPoisoned();
 	boolean isBleeding();
 	boolean isOnFire();
-	boolean isMounted();
-	boolean isRidingCreature();
+	boolean isRidingMount();
+	boolean isMountedCreature();
 	boolean isMeditating();
 	boolean isCreature();
 	boolean isNPC();

@@ -55,7 +55,7 @@ public:
 	}
 
 	void doSkill(CreatureObject* creature, String& modifier) {
-		//if (player->isMounted() || player->isDizzied() || player->isInCombat()
+		//if (player->isRidingMount() || player->isDizzied() || player->isInCombat()
 		//		|| player->isKnockedDown()) {
 		//
 		//	player->sendSystemMessage("teraskasi", "med_fail");
@@ -77,7 +77,7 @@ public:
 	}
 
 	bool calculateCost(CreatureObject* creature) {
-		if (creature->isMeditating() || creature->isInCombat() || creature->isMounted())
+		if (creature->isMeditating() || creature->isInCombat() || creature->isRidingMount())
 			return false;
 		else
 			return true;

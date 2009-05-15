@@ -81,7 +81,7 @@ bool CommandQueueAction::check() {
 		return false;
 	}
 
-	if (creature->isMounted() && !(creature->getMount()->isPet() && skill->getNameCRC() == 0xA8FEF90A)) {
+	if (creature->isRidingMount() && !(creature->getMount()->isPet() && skill->getNameCRC() == 0xA8FEF90A)) {
 		clearError(1, 16);
 		return false;
 	}
@@ -126,7 +126,7 @@ bool CommandQueueAction::validate() {
 		return false;
 	}
 
-	if (creature->isMounted() && !(creature->getMount()->isPet() && skill->getNameCRC() == 0xA8FEF90A)) {
+	if (creature->isRidingMount() && !(creature->getMount()->isPet() && skill->getNameCRC() == 0xA8FEF90A)) {
 		clearError(1, 16);
 		return false;
 	}
@@ -229,7 +229,7 @@ bool CommandQueueAction::validate() {
 						}
 
 					} else {
-						if (!creature->isMounted() && target->getParent() != creature->getParent()) {
+						if (!creature->isRidingMount() && target->getParent() != creature->getParent()) {
 							clearError(0);
 							creature->sendSystemMessage("cbt_spam", "los_recycle"); // You cannot see your target
 

@@ -82,7 +82,7 @@ public:
 
 		CreatureObject* creatureTarget = (CreatureObject*) target;
 
-		if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted())
+		if (creatureTarget->isDead() || creatureTarget->isMountedCreature() || creatureTarget->isRidingMount())
 			creatureTarget = creature;	//If our target is dead, riding a creature, or mounted, then we make ourself target.
 
 		if (creature->isProne()) {
@@ -95,12 +95,12 @@ public:
 			return 0;
 		}
 
-		if (creature->isRidingCreature()) {
+		if (creature->isMountedCreature()) {
 			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
 			return 0;
 		}
 
-		if (creature->isMounted()) {
+		if (creature->isRidingMount()) {
 			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
 			return 0;
 		}
