@@ -142,9 +142,9 @@ void GameCommandHandler::init() {
 			"Kills a creature. EC version of the kill command.",
 			"Usage: @ecKill <current-target>",
 			&ecKill);
-	gmCommands->addCommand("killArea", PRIVILEGED,
+	gmCommands->addCommand("killArea", STAFF,
 			"Kills all players or creatures within a certain range.",
-			"Usage: @killArea [distance]",
+			"Usage: @killArea <players> <distance>",
 			&killArea);
 	gmCommands->addCommand("muteChat", CSREVENTSJR,
 			"Prevents players from speaking in spacial chat.",
@@ -1356,16 +1356,17 @@ void GameCommandHandler::ecKill(StringTokenizer tokenizer, Player* player) {
 }
 
 void GameCommandHandler::killArea(StringTokenizer tokenizer, Player* player) {
-	String name = player->getFirstName();
-	//Default
-	int meter;
+	bool killplayers = false;
+	int distance = 32;
 
 	if (tokenizer.hasMoreTokens())
-		meter = tokenizer.getIntToken();
-	else
-		meter = 32;
+		killplayers = (bool) tokenizer.getIntToken();
+
+	if (tokenizer.hasMoreTokens())
+		distance = tokenizer.getIntToken();
 
 	Zone* zone = player->getZone();
+
 	if (zone == NULL)
 		return;
 
@@ -1375,71 +1376,61 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player* player) {
 		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
 			ManagedReference<SceneObject> obj = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_getStub());
 
-			if (obj->isPlayer()) {
-				Player* otherPlayer = (Player*) obj.get();
-				String otherName = otherPlayer->getFirstName();
+			if (obj->isPlayer() && killplayers) {
+				Player* targetplayer = (Player*) obj.get();
 
-				if (otherName != name && player->isInRange(otherPlayer, meter)
-						&& (otherPlayer->getAdminLevel()
-								== PlayerImplementation::NORMAL)) {
+				if (targetplayer != player && !targetplayer->isPrivileged() && player->isInRange(targetplayer, distance)) {
 					zone->unlock();
-
-					if (otherPlayer != player)
-						player->unlock();
+					player->unlock();
 
 					try {
-						if (otherPlayer != player)
-							otherPlayer->wlock();
-
-						otherPlayer->explode(2, false);
-						otherPlayer->die();
-
-						if (otherPlayer != player)
-							otherPlayer->unlock();
-
-						player->sendSystemMessage("player \'" + otherName
-								+ "\' has been killed.");
+						targetplayer->wlock();
+						targetplayer->explode(2, false);
+						targetplayer->die();
+						StringBuffer msg;
+						msg << "You were slain by the divine wrath of " << player->getCharacterName().toString() << ".";
+						targetplayer->sendSystemMessage(msg.toString());
+						targetplayer->unlock();
 					} catch (...) {
-						if (otherPlayer != player)
-							otherPlayer->unlock();
-						player->sendSystemMessage("Unable to kill player \'"
-								+ otherName + "\'");
+						targetplayer->unlock();
 					}
 
-					if (otherPlayer != player)
-						player->wlock();
-
+					player->wlock();
 					zone->lock();
 				}
 			} else if (obj->isNonPlayerCreature()) {
+				Creature* targetcreature = (Creature*) obj.get();
 
-				Creature* creature = (Creature*) obj.get();
+				if (player->isInRange(targetcreature, distance) && targetcreature->getOptionsBitmask() != 0x108 && targetcreature->getOptionsBitmask() != 0x1080) {
 
-				//if (creature->isInRange(creature, meter) && !creature->isTrainer() && !creature->isRecruiter()) {
-				if (player->isInRange(creature, meter) && creature->getOptionsBitmask() != 0x108 && creature->getOptionsBitmask() != 0x1080) {
+					//If creature is a pet and killplayers is false, then don't kill it.
+					if (targetcreature->isPet() && !killplayers)
+						continue;
+
 					zone->unlock();
-
 					try {
 						uint32 damage = 100000000;
+						targetcreature->wlock(player);
+						targetcreature->explode(2, false);
+						targetcreature->die();
 
-						creature->wlock(player);
+						//Despawn the creature after 500 milliseconds.
+						if (!targetcreature->isPet())
+							targetcreature->scheduleDespawnCreature(500);
 
-						creature->explode(2, false);
-						player->inflictDamage(creature, CreatureAttribute::HEALTH, damage);
-						player->sendSystemMessage("Creature has been killed.");
-
-						creature->unlock();
+						//player->inflictDamage(targetcreature, CreatureAttribute::HEALTH, damage);
+						targetcreature->unlock();
 					} catch (...) {
-						player->sendSystemMessage("Unable to kill creature");
-						creature->unlock();
+						targetcreature->unlock();
 					}
-
 					zone->lock();
-
 				}
 			}
 		}
+
 		zone->unlock();
+
+		player->sendSystemMessage("All applicable targets in the area have been vaporized.");
 	} catch (...) {
 		zone->unlock();
 	}

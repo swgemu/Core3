@@ -71,6 +71,8 @@ interface Creature implements CreatureObject {
 	//void update(unsigned int time);
 
 	void loadItems();
+	
+	void scheduleDespawnCreature(int time);
 
 	// combat methods
 	boolean activate();

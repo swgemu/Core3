@@ -967,8 +967,6 @@ void ZonePacketHandler::handleChatRemoveAvatarFromRoom(Message* pack) {
 }
 
 void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
-	System::out << "[ZonePacketHandler::handleSuiEventNotificiation] packet:" << endl;
-	System::out << pack->toString() << endl;
 	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 	Player* player = client->getPlayer();
 	if (player == NULL)
