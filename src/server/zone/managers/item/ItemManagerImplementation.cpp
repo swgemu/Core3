@@ -138,6 +138,9 @@ void ItemManagerImplementation::loadPlayerItems(Player* player) {
 		delete res;
 	} catch (DatabaseException& e) {
 		System::out << e.getMessage() << "\n";
+	} catch (Exception& e) {
+		System::out << e.getMessage() << "\n";
+		e.printStackTrace();
 	} catch (...) {
 		System::out << "unreported exception caught in ItemManagerImplementation::loadPlayerItems(Player* player)\n";
 	}
@@ -2116,9 +2119,15 @@ void ItemManagerImplementation::saveDatapadItem(Player* player, SceneObject* ite
 
 		StringBuffer query;
 
+		String name = item->getCustomName().toString();
+		MySqlDatabase::escapeString(name);
+
+		String attr = item->getAttributes();
+		MySqlDatabase::escapeString(attr);
+
 		query << "UPDATE `datapad` set character_id = " << player->getCharacterID() << " ";
-		query << ", attributes = '" << item->getAttributes() << "' ";
-		query << ", custom_name = '" << item->getCustomName().toString() << "' ";
+		query << ", attributes = '" << attr << "' ";
+		query << ", custom_name = '" << name << "' ";
 		query << ", deleted = 0 ";
 		query << "where object_id = " << item->getObjectID();
 
@@ -2138,8 +2147,14 @@ void ItemManagerImplementation::saveDatapadLinkedItem(Player* player, SceneObjec
 
 		StringBuffer query;
 
-		query << "UPDATE `datapad_items` set attributes = '" << item->getAttributes() << "' ";
-		query << ", name = '" << item->getCustomName().toString() << "' ";
+		String name = item->getCustomName().toString();
+		MySqlDatabase::escapeString(name);
+
+		String attr = item->getAttributes();
+		MySqlDatabase::escapeString(attr);
+
+		query << "UPDATE `datapad_items` set attributes = '" << attr << "' ";
+		query << ", name = '" << name << "' ";
 		query << ", character_id = '" << player->getCharacterID() << "' ";
 		query << ", template_crc = '" << item->getObjectCRC() << "' ";
 		query << ", deleted = 0 ";

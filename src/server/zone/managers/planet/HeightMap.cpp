@@ -64,6 +64,9 @@ float HeightMap::getHeight(float x, float y) {
 
 		int planePosition = getPlanePosition(x, y);
 
+		if (planePosition < 0 || planePosition > PLANESSIZE * PLANESSIZE)
+			return retHeight;
+
 		rlock();
 
 		HeightMapPlane* plane = planes[planePosition];

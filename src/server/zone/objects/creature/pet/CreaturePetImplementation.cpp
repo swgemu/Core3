@@ -1245,7 +1245,7 @@ void CreaturePetImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 						//System::out << "\tnotifyPositionUpdate : attack patrol\n" ;
 
 						aggroedCreature = creature;
-						updateTarget(aggroedCreature);
+						targetObject = aggroedCreature;
 					}
 				}
 			}
@@ -1260,7 +1260,7 @@ void CreaturePetImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 			CreatureObject* creature = (CreatureObject*) scno;
 			if (creature->isInCombat() && creature->getTarget() == followTarget) {
 				aggroedCreature = creature;
-				updateTarget(aggroedCreature);
+				targetObject = aggroedCreature;
 
 				if (aggroedCreature != NULL) {
 					if (isQueued())
@@ -1303,7 +1303,7 @@ void CreaturePetImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 
 						aggroedCreature = (CreatureObject*) scno;
 					}
-					updateTarget(aggroedCreature);
+					targetObject = aggroedCreature;
 					if (isQueued())
 						creatureManager->dequeueActivity(this);
 					creatureManager->queueActivity(this, 10);

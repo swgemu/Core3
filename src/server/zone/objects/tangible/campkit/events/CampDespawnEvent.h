@@ -49,7 +49,7 @@ which carries forward this exception.
 #include "../../../player/Player.h"
 
 class CampDespawnEvent: public Event {
-	CampSite* campSite;
+	ManagedReference<CampSite> campSite;
 	bool ended;
 public:
 	CampDespawnEvent(CampSite* camp, int dur) :
@@ -64,9 +64,13 @@ public:
 			if (ended) {
 				return true;
 			}
-			campSite->lock();
+			campSite->wlock();
+
 			campSite->removeCampArea();
 			campSite->removeFromZone();
+
+			campSite->unlock();
+
 			campSite->finalize();
 		} catch (...) {
 			campSite->error("Unreported exception caught on Camp Site\n");
@@ -80,6 +84,7 @@ public:
 	void endNow() {
 		activate();
 		ended = true;
+		campSite = NULL;
 	}
 };
 

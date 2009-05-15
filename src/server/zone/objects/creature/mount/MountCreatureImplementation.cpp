@@ -138,6 +138,9 @@ void MountCreatureImplementation::repair() {
 	BaseMessage* creo3 = new CreatureObjectMessage3(_this);
 	client->sendMessage(creo3);
 
+	if (zone == NULL)
+		return;
+
 	try {
 		zone->lock();
 
