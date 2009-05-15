@@ -97,7 +97,7 @@ public:
 	SuiResourceBox* _this;
 
 public:
-	SuiResourceBoxServant(Player* player, unsigned int suitype, unsigned int boxtype);
+	SuiResourceBoxServant(Player* player, unsigned int suitype);
 	virtual ~SuiResourceBoxServant();
 
 	void _setStub(DistributedObjectStub* stub);

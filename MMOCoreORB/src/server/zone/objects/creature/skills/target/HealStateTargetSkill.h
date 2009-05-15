@@ -93,12 +93,12 @@ public:
 			return false;
 		}
 
-		if (creature->isRidingCreature()) {
+		if (creature->isMountedCreature()) {
 			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
 			return false;
 		}
 
-		if (creature->isMounted()) {
+		if (creature->isRidingMount()) {
 			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
 			return false;
 		}
@@ -183,7 +183,7 @@ public:
 
 		CreatureObject* creatureTarget = (CreatureObject*) target;
 
-		if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted())
+		if (creatureTarget->isDead() || creatureTarget->isMountedCreature() || creatureTarget->isRidingMount())
 			creatureTarget = creature;
 
 		if (!canPerformSkill(creature, creatureTarget, statePack))

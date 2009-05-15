@@ -112,7 +112,7 @@ public:
 	}
 
 	bool calculateCost(CreatureObject* creature) {
-		if (!creature->isMeditating() || creature->isInCombat() || creature->isMounted())
+		if (!creature->isMeditating() || creature->isInCombat() || creature->isRidingMount())
 			return false;
 		else
 			return true;

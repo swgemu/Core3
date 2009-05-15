@@ -1213,6 +1213,8 @@ void SuiManager::handleFreeResource(uint32 boxid, Player* player, uint32 cancel,
 
 		SuiBox* sui = player->getSuiBox(boxid);
 
+		System::out << "Cancel is " << cancel << " and index is " << index << endl;
+
 		if (sui->isResourceBox()) {
 			SuiResourceBox* resourcebox = (SuiResourceBox*) sui;
 

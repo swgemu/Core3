@@ -99,12 +99,12 @@ public:
 			return false;
 		}
 
-		if (enhancer->isRidingCreature()) {
+		if (enhancer->isMountedCreature()) {
 			enhancer->sendSystemMessage("You cannot do that while Riding a Creature.");
 			return false;
 		}
 
-		if (enhancer->isMounted()) {
+		if (enhancer->isRidingMount()) {
 			enhancer->sendSystemMessage("You cannot do that while Driving a Vehicle.");
 			return false;
 		}
@@ -198,7 +198,7 @@ public:
 
 		CreatureObject* patient = (CreatureObject*) target;
 
-		if (patient->isDead() || patient->isRidingCreature() || patient->isMounted())
+		if (patient->isDead() || patient->isMountedCreature() || patient->isRidingMount())
 			patient = enhancer;
 
 		if (!canPerformSkill(enhancer, patient, enhancePack))

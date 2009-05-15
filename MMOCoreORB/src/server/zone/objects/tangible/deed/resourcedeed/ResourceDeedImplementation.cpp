@@ -48,7 +48,6 @@ int ResourceDeedImplementation::useObject(Player* player) {
 	sui->setPromptText("@veteran:choose_class"); //Choose resource class
 	sui->setCancelButton(true, "@cancel");
 	player->addSuiBox(sui);
-	//MOVE THIS TO generateMessage - resourceManager->generateSUI(player, sui);
 	player->sendMessage(sui->generateMessage());
 
 	return 1;

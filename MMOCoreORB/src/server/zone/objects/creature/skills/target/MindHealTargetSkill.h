@@ -100,17 +100,17 @@ public:
 			return 0;
 		}
 
-		if (creature->isRidingCreature()) {
+		if (creature->isMountedCreature()) {
 			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
 			return 0;
 		}
 
-		if (creature->isMounted()) {
+		if (creature->isRidingMount()) {
 			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
 			return 0;
 		}
 
-		if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted()) {
+		if (creatureTarget->isDead() || creatureTarget->isMountedCreature() || creatureTarget->isRidingMount()) {
 			creature->sendSystemMessage("You cannot Heal the Mind of your Target in their current state.");
 			return 0;
 		}

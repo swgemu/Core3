@@ -1151,7 +1151,7 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 	//info("attacking target");
 
 	// Not ready to attack yet
-	if (isRidingCreature()) {
+	if (isMountedCreature()) {
 		deaggro();
 		return false;
 	}
@@ -1349,7 +1349,7 @@ void CreatureImplementation::doCamoCheck(CreatureObject* target) {
 			score *= 0.75f;
 		if (target->isProne())
 			score *= 1.25f;
-		if (target->isRidingCreature())
+		if (target->isMountedCreature())
 			score *= 0.5f;
 
 		if(!isCreature())

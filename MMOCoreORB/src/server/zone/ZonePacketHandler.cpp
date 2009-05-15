@@ -967,6 +967,8 @@ void ZonePacketHandler::handleChatRemoveAvatarFromRoom(Message* pack) {
 }
 
 void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
+	System::out << "[ZonePacketHandler::handleSuiEventNotificiation] packet:" << endl;
+	System::out << pack->toString() << endl;
 	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 	Player* player = client->getPlayer();
 	if (player == NULL)
@@ -984,6 +986,8 @@ void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
 		pack->parseUnicode(value);
 	if (unk2 > 1)
 		pack->parseUnicode(value2);
+
+	System::out << "cancel=" << cancel << " unk1=" << unk1 << " unk2=" << unk2 << " value=" << value.toString() << " value2=" << value2.toString() << endl;
 
 	processServer->getSuiManager()->handleSuiEventNotification(opcode, player, cancel, value.toString(), value2.toString());
 }

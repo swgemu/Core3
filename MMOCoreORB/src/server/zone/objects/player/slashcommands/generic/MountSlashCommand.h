@@ -80,7 +80,7 @@ public:
 		if (creo == NULL || !creo->isMount())
 			return false;
 		else {
-			if (player->isMounted())
+			if (player->isRidingMount())
 				player->dismount();
 			else
 				player->mountCreature(creo);

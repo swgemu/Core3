@@ -98,12 +98,12 @@ public:
 			return false;
 		}
 
-		if (creature->isRidingCreature()) {
+		if (creature->isMountedCreature()) {
 			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
 			return false;
 		}
 
-		if (creature->isMounted()) {
+		if (creature->isRidingMount()) {
 			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
 			return false;
 		}

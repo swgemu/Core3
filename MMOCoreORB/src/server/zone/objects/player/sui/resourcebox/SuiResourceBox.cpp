@@ -236,7 +236,7 @@ DistributedObjectAdapter* SuiResourceBoxHelper::createAdapter(DistributedObjectS
  *	SuiResourceBoxServant
  */
 
-SuiResourceBoxServant::SuiResourceBoxServant(Player* player, unsigned int suitype, unsigned int boxtype) : SuiListBoxImplementation(player, suitype, boxtype) {
+SuiResourceBoxServant::SuiResourceBoxServant(Player* player, unsigned int suitype) : SuiListBoxImplementation(player, suitype) {
 	_classHelper = SuiResourceBoxHelper::instance();
 }
 

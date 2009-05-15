@@ -120,7 +120,7 @@ public:
 		if (player->isInBuilding()) {
 			player->sendSystemMessage("skl_use", "sys_forage_inside"); //"You can't forage inside a structure."
 			return false;
-		} else if (player->isInCombat() || !player->isStanding() || player->isMounted()) {
+		} else if (player->isInCombat() || !player->isStanding() || player->isRidingMount()) {
 			player->sendSystemMessage("skl_use", "sys_forage_cant"); //"You can't forage right now."
 	        return false;
 		} else
@@ -140,7 +140,7 @@ public:
 	}
 
 	bool calculateCost(CreatureObject* creature) {
-		if (creature->isInCombat() || creature->isMounted())
+		if (creature->isInCombat() || creature->isRidingMount())
 			return false;
 		else
 			return true;

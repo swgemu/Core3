@@ -616,7 +616,7 @@ void PlayerImplementation::reload(ZoneClientSession* client) {
 		playerObject->updateAllFriends(playerObject);
 		playerManager->updateGuildStatus(_this);
 
-		if (isMounted())
+		if (isRidingMount())
 			dismount(true, true);
 
 		//resetArmorEncumbrance();
@@ -1274,7 +1274,7 @@ void PlayerImplementation::updateZone(bool lightUpdate) {
 		System::out << "(" << positionX << "," << height << "," << positionY << "\n";
 	}*/
 
-	if (isMounted()) {
+	if (isRidingMount()) {
 		updateMountPosition();
 	}
 	try {
@@ -1302,7 +1302,7 @@ void PlayerImplementation::updateZone(bool lightUpdate) {
 */
 		zone->inRange(this, 128);
 
-		if (!isMounted())
+		if (!isRidingMount())
 			updatePlayerPosition(lightUpdate);
 
 		zone->unlock();
@@ -1316,7 +1316,7 @@ void PlayerImplementation::updateZone(bool lightUpdate) {
 }
 
 void PlayerImplementation::updateZoneWithParent(uint64 Parent, bool lightUpdate) {
-	if (isMounted())
+	if (isRidingMount())
 		dismount(true, true);
 
 	if (zone == NULL)
@@ -1429,7 +1429,7 @@ void PlayerImplementation::updatePlayerPosition(bool doLightUpdate) {
 }
 
 void PlayerImplementation::updateMountPosition() {
-	if (parent == NULL || !isMounted())
+	if (parent == NULL || !isRidingMount())
 		return;
 
 	try {
@@ -1746,7 +1746,7 @@ void PlayerImplementation::doWarp(float x, float y, float z, float randomizeDist
 
 	saveMissions();
 
-	if (isMounted())
+	if (isRidingMount())
 		dismount(true, true);
 
 	removeFromZone();
@@ -2215,7 +2215,7 @@ void PlayerImplementation::doIncapacitate() {
 	//TODO:Is this code ever executed ??
 	//Please remove the above line if so...
 
-	if (isMounted())
+	if (isRidingMount())
 		dismount(true, true);
 
 	clearCombatState();
@@ -2286,7 +2286,7 @@ void PlayerImplementation::changePosture(int post) {
 		}
 	}
 
-	if (isMounted())
+	if (isRidingMount())
 		return;
 
 	if (hasAttackDelay()) {
@@ -2562,7 +2562,7 @@ bool PlayerImplementation::forageMoveCheck(float startx, float starty, int start
     int movementX = abs((int)getPositionX() - (int)startx);
     int movementY = abs((int)getPositionY() - (int)starty);
 
-    if (movementX > 5 || movementY > 5 || zone->getZoneID() != startplanet || isMounted() || !isStanding()) {
+    if (movementX > 5 || movementY > 5 || zone->getZoneID() != startplanet || isRidingMount() || !isStanding()) {
     	sendSystemMessage("skl_use", "sys_forage_movefail"); //"You fail to forage because you moved."
     	return false;
     } else
@@ -2994,7 +2994,7 @@ void PlayerImplementation::activateInvisible() {
 		return;
 	}
 
-	if (isInvisible() && isMounted()) {
+	if (isInvisible() && isRidingMount()) {
 		sendSystemMessage("You can't become visible while mounted.");
 		return;
 	}
@@ -4528,7 +4528,7 @@ void PlayerImplementation::setSampleEvent(String& resourceName, bool firstTime) 
 		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","sample_cancel_attack");
 		sendMessage(sysMessage);
 		return;
-	} else if (isMounted()) {
+	} else if (isRidingMount()) {
 		sendSystemMessage("You can not sample while riding a mount.");
 		return;
 	} else if (getInventoryItem(surveyTool->getObjectID()) == NULL) {
@@ -6019,7 +6019,7 @@ void PlayerImplementation::onIncapacitateTarget(CreatureObject* victim) {
  */
 void PlayerImplementation::onIncapacitated(SceneObject* attacker) {
 	//Dismount has to take place before clearStates! ClearStates() also
-	//clears the "mount state" so we need to check "isMounted()" before cleared
+	//clears the "mount state" so we need to check "isRidingMount()" before cleared
 
 	if (attacker != _this && attacker != NULL)
 		attacker->unlock();
@@ -6037,7 +6037,7 @@ void PlayerImplementation::onIncapacitated(SceneObject* attacker) {
 	if (attacker != _this && attacker != NULL)
 		attacker->wlock(_this);
 
-	if (isMounted())
+	if (isRidingMount())
 		dismount(true, true);
 
 	updateIncapacitationCounter();
@@ -6070,8 +6070,8 @@ void PlayerImplementation::onIncapacitated(SceneObject* attacker) {
  */
 void PlayerImplementation::onDeath() {
 	//Dismount has to take place before clearStates! ClearStates() also
-	//clears the "mount state" so we need to check "isMounted()" before cleared
-	if (isMounted())
+	//clears the "mount state" so we need to check "isRidingMount()" before cleared
+	if (isRidingMount())
 		dismount(true, true);
 
 	if (powerboosted) {

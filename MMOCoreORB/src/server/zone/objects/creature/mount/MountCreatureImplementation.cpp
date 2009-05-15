@@ -168,7 +168,7 @@ void MountCreatureImplementation::repair() {
 void MountCreatureImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
 	if (player == getLinkedCreature()) {
 		//This should show Enter/Exit Vehicle for Vehicles
-		if (isRidingCreature()) {
+		if (isMountedCreature()) {
 			omr->addRadialParent(206, 1, "@cmd_n:dismount");
 		} else {
 			omr->addRadialParent(205, 1, "@cmd_n:mount");
@@ -200,7 +200,7 @@ void MountCreatureImplementation::sendTo(Player* player, bool doClose) {
 
 	sendFactionStatusTo(player);
 
-	if (isRidingCreature()) {
+	if (isMountedCreature()) {
 		getLinkedCreature()->sendTo(player);
 		getLinkedCreature()->sendItemsTo(player);
 	}
@@ -342,7 +342,7 @@ void MountCreatureImplementation::store(bool doLock) {
 		if (doLock)
 			getLinkedCreature()->wlock(_this);
 
-		if (getLinkedCreature()->isMounted())
+		if (getLinkedCreature()->isRidingMount())
 			getLinkedCreature()->dismount(false, true);
 
 		getLinkedCreature()->setMount(NULL);

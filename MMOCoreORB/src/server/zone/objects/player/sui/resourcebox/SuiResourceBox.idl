@@ -50,7 +50,7 @@ include "engine/service/proto/BaseMessage";
 
 interface SuiResourceBox implements SuiListBox {
 	SuiResourceBox(Player player, ResourceManager resourcemanager) {
-		super(player, unsigned int suitype, unsigned int boxtype);
+		super(player, unsigned int suitype);
 	}
 	
 	BaseMessage generateMessage();

@@ -1796,7 +1796,7 @@ void CreatureObjectImplementation::activateBurstRun(bool bypassChecks) {
 	int coolDown = 300; //seconds after burst run ends.
 
 	//Check if mounted.
-	if (isMounted()) {
+	if (isRidingMount()) {
 		sendSystemMessage("cbt_spam", "no_burst"); //"You cannot burst-run while mounted on a creature or vehicle."
 		return;
 	}
@@ -1885,7 +1885,7 @@ void CreatureObjectImplementation::deactivateBurstRun(bool bypassChecks) {
 
 	burstRunning = false;
 
-	if (isMounted()) {
+	if (isRidingMount()) {
 		return;
 	}
 
@@ -3869,7 +3869,7 @@ float CreatureObjectImplementation::getDistanceTo(SceneObject* targetCreature) {
 }
 
 void CreatureObjectImplementation::mountCreature(CreatureObject* mnt, bool lockMount) {
-	if (isMounted() || mnt == NULL || !mnt->isMount())
+	if (isRidingMount() || mnt == NULL || !mnt->isMount())
 		return;
 
 	if (!mountCooldown.isPast())
@@ -3920,7 +3920,7 @@ void CreatureObjectImplementation::mountCreature(CreatureObject* mnt, bool lockM
 }
 
 void CreatureObjectImplementation::dismount(bool lockMount, bool ignoreCooldown) {
-	if (parent == NULL || mount == NULL || !isMounted())
+	if (parent == NULL || mount == NULL || !isRidingMount())
 		return;
 
 	if (!ignoreCooldown && !mountCooldown.isPast())

@@ -560,7 +560,7 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* tar
 			attacker->setDefender(target);
 
 		//No defender for bare metal vehicles (but for pets)
-		if (!targetCreature->isVehicle() && !targetCreature->isRidingCreature()) {
+		if (!targetCreature->isVehicle() && !targetCreature->isMountedCreature()) {
 			target->addDefender(attacker);
 		}
 
@@ -579,7 +579,7 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, TangibleObject* tar
 
 			//bare metal vehicles shouldn't fight back - but pets should
 			if(targetCreature->isNonPlayerCreature()) {
-				if(!targetCreature->isVehicle() && !targetCreature->isRidingCreature()) {
+				if(!targetCreature->isVehicle() && !targetCreature->isMountedCreature()) {
 					targetCreature->doAttack(attacker, damage);
 				} else {
 					targetCreature->clearState(CreatureState::PEACE);
@@ -1541,10 +1541,10 @@ void CombatManager::checkKnockDown(CreatureObject* creature, CreatureObject* tar
 		int rand = System::random(100);
 
 		if ((5 > rand) || (rand > targetDefense)) {
-			if (targetCreature->isMounted())
+			if (targetCreature->isRidingMount())
 				targetCreature->dismount();
 
-			if (targetCreature->isRidingCreature() && targetCreature->isPet()) {
+			if (targetCreature->isMountedCreature() && targetCreature->isPet()) {
 				CreaturePet* pet = (CreaturePet*) targetCreature;
 				Player* petOwner = pet->getLinkedCreature();
 				petOwner->lock();
@@ -1583,7 +1583,7 @@ void CombatManager::checkPostureDown(CreatureObject* creature, CreatureObject* t
 			int rand = System::random(100);
 
 			if ((5 > rand) || (rand > targetDefense)) {
-				if (targetCreature->isMounted())
+				if (targetCreature->isRidingMount())
 					targetCreature->dismount();
 
 				if (targetCreature->getPosture() == CreaturePosture::UPRIGHT)
@@ -1614,7 +1614,7 @@ void CombatManager::checkPostureUp(CreatureObject* creature, CreatureObject* tar
 		int rand = System::random(100);
 
 		if ((5 > rand) || (rand > targetDefense)) {
-			if (targetCreature->isMounted())
+			if (targetCreature->isRidingMount())
 				targetCreature->dismount();
 
 			if (targetCreature->getPosture() == CreaturePosture::PRONE) {
@@ -2282,7 +2282,7 @@ bool CombatManager::handleMountDamage(CreatureObject* attacker, MountCreature* m
 	if (mount->isDisabled()) {
 		CreatureObject* creature = mount->getLinkedCreature();
 
-		if (creature != NULL && creature->isMounted()) {
+		if (creature != NULL && creature->isRidingMount()) {
 			mount->unlock();
 
 			attacker->unlock();

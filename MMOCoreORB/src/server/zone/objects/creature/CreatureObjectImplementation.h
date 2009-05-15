@@ -799,6 +799,14 @@ public:
 		return postureState == CreaturePosture::SKILLANIMATING;
 	}
 
+	inline bool isDrivingVehicle() {
+		return postureState == CreaturePosture::DRIVINGVEHICLE;
+	}
+
+	inline bool isRidingCreature() {
+		return postureState == CreaturePosture::RIDINGCREATURE;
+	}
+
 	inline bool isInCombat() {
 		return stateBitmask & CreatureState::COMBAT;
 	}
@@ -847,11 +855,11 @@ public:
 		return stateBitmask & CreatureState::ONFIRE;
 	}
 
-	inline bool isMounted() {
+	inline bool isRidingMount() {
 		return stateBitmask & CreatureState::RIDINGMOUNT;
 	}
 
-	inline bool isRidingCreature() {
+	inline bool isMountedCreature() {
 		return stateBitmask & CreatureState::MOUNTEDCREATURE;
 	}
 
