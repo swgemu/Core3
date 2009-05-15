@@ -53,7 +53,7 @@ jantaHarvester = Creature:new {
 	socialGroup = "janta_tribe",
 	level = 40,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
 	healthMax = 11300,
 	healthMin = 9300,

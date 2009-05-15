@@ -69,7 +69,7 @@ giantCanyonKraytDragon = Creature:new {
 	focus = 20000,
 	willpower = 20000,
 
-	height = 1, -- Size of creature
+	height = 1.1, -- Size of creature
 	armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 70,
 	energy = 70,
@@ -137,7 +137,7 @@ giantCanyonKraytDragon = Creature:new {
 	meatType = "meat_carnivore_tatooine",
 	meatMax = 1500,
 	
-	skills = { "kraytAttack1" },
+	skills = { "Areastrike", "Forcestrike", },
 	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object

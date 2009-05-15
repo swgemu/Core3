@@ -53,7 +53,7 @@ jantaHerbalist = Creature:new {
 	socialGroup = "janta_tribe",
 	level = 27,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
 	healthMax = 10000,
 	healthMin = 8200,
