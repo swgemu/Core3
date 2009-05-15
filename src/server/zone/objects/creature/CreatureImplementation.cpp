@@ -1092,6 +1092,10 @@ void CreatureImplementation::createHarvestList() {
 
 	CreatureObject* lootOwner = getLootOwner();
 
+	//TODO: Refactor this
+
+	if (lootOwner == NULL)
+		return;
 
 	Player* owner = NULL;
 

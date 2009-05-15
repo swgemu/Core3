@@ -33,6 +33,8 @@ public:
 
 	void loadItems();
 
+	void scheduleDespawnCreature(int time);
+
 	bool activate();
 
 	bool isActive();
@@ -177,6 +179,8 @@ public:
 	void unload();
 
 	void loadItems();
+
+	void scheduleDespawnCreature(int time);
 
 	bool activate();
 
