@@ -1228,7 +1228,10 @@ void ObjectControllerMessage::parseItemDropTrade(Player* player, Message* pack) 
 	ManagedReference<SceneObject> obj = player->getZone()->lookupObject(targetPlayerId);
 	ManagedReference<SceneObject> item = player->getZone()->lookupObject(tradeItemId);
 
-	if(obj.get() == NULL || item.get() == NULL)
+	if (obj == NULL || item == NULL)
+		return;
+
+	if (!obj->isPlayer() || !item->isPlayer())
 		return;
 
 	Player* sender = (Player*) obj.get();

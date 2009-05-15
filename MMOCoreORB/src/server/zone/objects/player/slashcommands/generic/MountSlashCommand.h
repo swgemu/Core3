@@ -68,14 +68,14 @@ public:
 			return false;
 
 		uint64 target = packet->parseLong();
-		SceneObject* object = player->getZone()->lookupObject(target);
+		ManagedReference<SceneObject> object = player->getZone()->lookupObject(target);
 
 		if (object == NULL || object->isPlayer() || object == player)
 			return false;
 
-		CreatureObject* creo;
+		CreatureObject* creo = NULL;
 		if (object->isNonPlayerCreature())
-			creo = (CreatureObject*) object;
+			creo = (CreatureObject*) object.get();
 
 		if (creo == NULL || !creo->isMount())
 			return false;
