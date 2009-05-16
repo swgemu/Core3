@@ -81,21 +81,19 @@ void StructureManager::beginConstruction(Player* player, DeedObject* deed, float
 		((StructureManagerImplementation*) _impl)->beginConstruction(player, deed, x, z, orient);
 }
 
-void StructureManager::endConstruction(Player* player, DeedObject* deed, float x, float z, unsigned char orient) {
+void StructureManager::endConstruction(Player* player, InstallationObject* constructionsite, DeedObject* deed) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
 		method.addObjectParameter(player);
+		method.addObjectParameter(constructionsite);
 		method.addObjectParameter(deed);
-		method.addFloatParameter(x);
-		method.addFloatParameter(z);
-		method.addUnsignedCharParameter(orient);
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureManagerImplementation*) _impl)->endConstruction(player, deed, x, z, orient);
+		((StructureManagerImplementation*) _impl)->endConstruction(player, constructionsite, deed);
 }
 
 void StructureManager::createInstallation(Player* player, InstallationObject* installation, bool staticobject) {
@@ -326,7 +324,7 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		beginConstruction((Player*) inv->getObjectParameter(), (DeedObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedCharParameter());
 		break;
 	case 9:
-		endConstruction((Player*) inv->getObjectParameter(), (DeedObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedCharParameter());
+		endConstruction((Player*) inv->getObjectParameter(), (InstallationObject*) inv->getObjectParameter(), (DeedObject*) inv->getObjectParameter());
 		break;
 	case 10:
 		createInstallation((Player*) inv->getObjectParameter(), (InstallationObject*) inv->getObjectParameter(), inv->getBooleanParameter());
@@ -392,8 +390,8 @@ void StructureManagerAdapter::beginConstruction(Player* player, DeedObject* deed
 	return ((StructureManagerImplementation*) impl)->beginConstruction(player, deed, x, z, orient);
 }
 
-void StructureManagerAdapter::endConstruction(Player* player, DeedObject* deed, float x, float z, unsigned char orient) {
-	return ((StructureManagerImplementation*) impl)->endConstruction(player, deed, x, z, orient);
+void StructureManagerAdapter::endConstruction(Player* player, InstallationObject* constructionsite, DeedObject* deed) {
+	return ((StructureManagerImplementation*) impl)->endConstruction(player, constructionsite, deed);
 }
 
 void StructureManagerAdapter::createInstallation(Player* player, InstallationObject* installation, bool staticobject) {

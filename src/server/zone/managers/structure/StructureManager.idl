@@ -21,7 +21,7 @@ interface StructureManager {
 	void deserialize();
 	
 	void beginConstruction(Player player, DeedObject deed, float x, float z, unsigned char orient = 0);
-	void endConstruction(Player player, DeedObject deed, float x, float z, unsigned char orient = 0);
+	void endConstruction(Player player, InstallationObject constructionsite, DeedObject deed);
 	void createInstallation(Player player, InstallationObject installation, boolean staticobject = false);
 	void createBuilding(Player player, BuildingObject building, boolean staticobject = false);
 	void deleteStructure(SceneObject structure);

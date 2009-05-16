@@ -52,6 +52,8 @@ which carries forward this exception.
 
 #include "../../objects.h"
 
+#include "../../Quaternion.h"
+
 
 StructureManagerImplementation::StructureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* server) : StructureManagerServant(), Logger("StructureManager") {
 	StructureManagerImplementation::zone = zone;
@@ -262,6 +264,8 @@ void StructureManagerImplementation::beginConstruction(Player* player, DeedObjec
 	//Player should be locked still, so the deed should still be okay.
 
 	//Create a quaternion based on this orientation.
+	float degrees = 90.0f * (float) orient; //How many degrees of rotation.
+	Quaternion q(Vector3::UNIT_Y, Math::deg2rad(degrees));
 
 	//Create a construction marker and move it to world at this location.
 	InstallationObject* installation = new InstallationObject(zone->getZoneServer()->getNextID());
@@ -270,6 +274,7 @@ void StructureManagerImplementation::beginConstruction(Player* player, DeedObjec
 	installation->setStfFile("player_structure");
 	installation->setStfName("temporary_structure");
 	installation->initializePosition(x, zone->getHeight(x, z), z);
+	installation->setDirection(q.getX(), q.getZ(), q.getY(), q.getW());
 
 	//Subtract lots.
 	if (!player->consumeLots(deed->getLotSize())) {
@@ -288,14 +293,21 @@ void StructureManagerImplementation::beginConstruction(Player* player, DeedObjec
 	//TODO: Do we need to delete this event somewhere even though it's setKeeping(false)?
 }
 
-void StructureManagerImplementation::endConstruction(Player* player, DeedObject* deed, float x, float z, uint8 orient) {
+void StructureManagerImplementation::endConstruction(Player* player, InstallationObject* constructionsite, DeedObject* deed) {
+	float x = constructionsite->getPositionX();
+	float z = constructionsite->getPositionY();
+
 	SceneObject* structure = deed->generateObject(player);
 	structure->setOwnerCharacterID(player->getCharacterID());
 	structure->setOwnerName(player->getFirstName().toLowerCase());
+	structure->setDirection(constructionsite->getDirectionX(), constructionsite->getDirectionZ(), constructionsite->getDirectionY(), constructionsite->getDirectionW());
 
 	float y = zone->getHeight(x, z);
+
+	constructionsite->removeFromZone();
+	constructionsite->finalize();
+
 	structure->initializePosition(x, y, z);
-	//TODO: Orientation
 	structure->insertToZone(zone);
 
 	if (structure->isBuilding()) {

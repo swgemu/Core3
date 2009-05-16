@@ -70,16 +70,8 @@ public:
 	bool activate() {
 		try {
 			structureManager->wlock();
-			//TODO: Shouldn't player be locked as well... TRY IT
 
-			float x = constructionSite->getPositionX();
-			float z = constructionSite->getPositionY();
-
-			constructionSite->removeFromZone();
-			constructionSite->finalize();
-			//structureManager->removeInstallation(constructionSite);
-
-			structureManager->endConstruction(contractor, structureDeed, x, z, 0);
+			structureManager->endConstruction(contractor, constructionSite, structureDeed);
 
 			structureManager->unlock();
 		} catch (...) {
