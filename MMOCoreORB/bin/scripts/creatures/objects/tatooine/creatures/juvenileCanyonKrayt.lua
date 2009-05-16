@@ -137,7 +137,7 @@ juvenileCanyonKrayt = Creature:new {
 	meatType = "meat_carnivore_tatooine",
 	meatMax = 750,
 
-	skills = { "Areastrike", "Cripplingstrike" },
+	skills = { "areaStrike", "cripplingStrike" },
 	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object

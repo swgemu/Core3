@@ -137,7 +137,7 @@ kraytDragonAncient = Creature:new {
 
 	meatType = "meat_carnivore_tatooine",
 	meatMax = 1700,
-	skills = { "Areacombo", "Forcestrike", "Areastrike", "Cripplingstrike", "Stunningstrike", },	
+	skills = { "areaCombo", "forceStrike", "areaStrike", "cripplingStrike", "stunningStrike" },	
 	respawnTimer = 300, 
 
 	behaviorScript = "", -- Link to the behavior script for this object

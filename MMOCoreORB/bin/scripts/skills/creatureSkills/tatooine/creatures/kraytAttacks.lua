@@ -39,8 +39,8 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-Areastrike = {
-	attackname = "Area strike",
+areaStrike = {
+	attackname = "areaStrike",
 	animation = "creature_attack_light",
 	
 	requiredWeaponType = NONE,
@@ -73,12 +73,12 @@ Areastrike = {
 	instant = 0
 }
 
-AddRandomPoolAttackTargetSkill(kraytAttack1)
+AddRandomPoolAttackTargetSkill(areaStrike)
 
 -------------------------------------------------------------------------------
 
-Cripplingstrike = {
-	attackname = "Crippling strike",
+cripplingStrike = {
+	attackname = "cripplingStrike",
 	animation = "creature_attack_light",
 	
 	requiredWeaponType = NONE,
@@ -111,12 +111,12 @@ Cripplingstrike = {
 	instant = 0
 }
 
-AddRandomPoolAttackTargetSkill(kraytAttack2)
+AddRandomPoolAttackTargetSkill(cripplingStrike)
 
 -------------------------------------------------------------------------------
 
-Stunningstrike = {
-	attackname = "Stunning strike",
+stunningStrike = {
+	attackname = "stunningStrike",
 	animation = "creature_attack_light",
 	
 	requiredWeaponType = NONE,
@@ -149,12 +149,12 @@ Stunningstrike = {
 	instant = 0
 }
 
-AddRandomPoolAttackTargetSkill(kraytAttack3)
+AddRandomPoolAttackTargetSkill(stunningStrike)
 
 -------------------------------------------------------------------------------
 
-Forcestrike = {
-	attackname = "Force strike",
+forceStrike = {
+	attackname = "forceStrike",
 	animation = "creature_attack_light",
 	
 	requiredWeaponType = NONE,
@@ -187,12 +187,12 @@ Forcestrike = {
 	instant = 0
 }
 
-AddRandomPoolAttackTargetSkill(kraytAttack4)
+AddRandomPoolAttackTargetSkill(forceStrike)
 
 -------------------------------------------------------------------------------
 
-Areacombo = {
-	attackname = "Area combo",
+areaCombo = {
+	attackname = "areaCombo",
 	animation = "creature_attack_light",
 	
 	requiredWeaponType = NONE,
@@ -225,7 +225,7 @@ Areacombo = {
 	instant = 0
 }
 
-AddRandomPoolAttackTargetSkill(kraytAttack5)
+AddRandomPoolAttackTargetSkill(areaCombo)
 
 -------------------------------------------------------------------------------
 
