@@ -100,7 +100,7 @@ public:
 	void deserialize();
 
 	void beginConstruction(Player* player, DeedObject* deed, float x, float z, uint8 orient = 0);
-	void endConstruction(Player* player, DeedObject* deed, float x, float z, uint8 orient = 0);
+	void endConstruction(Player* player, InstallationObject* constructionsite, DeedObject* deed);
 	void createInstallation(Player* player, InstallationObject* installation, bool staticobject = false);
 	void createBuilding(Player* player, BuildingObject* building, bool staticobject = false);
 

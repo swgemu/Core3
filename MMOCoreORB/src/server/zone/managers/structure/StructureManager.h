@@ -35,7 +35,7 @@ public:
 
 	void beginConstruction(Player* player, DeedObject* deed, float x, float z, unsigned char orient = 0);
 
-	void endConstruction(Player* player, DeedObject* deed, float x, float z, unsigned char orient = 0);
+	void endConstruction(Player* player, InstallationObject* constructionsite, DeedObject* deed);
 
 	void createInstallation(Player* player, InstallationObject* installation, bool staticobject = false);
 
@@ -89,7 +89,7 @@ public:
 
 	void beginConstruction(Player* player, DeedObject* deed, float x, float z, unsigned char orient);
 
-	void endConstruction(Player* player, DeedObject* deed, float x, float z, unsigned char orient);
+	void endConstruction(Player* player, InstallationObject* constructionsite, DeedObject* deed);
 
 	void createInstallation(Player* player, InstallationObject* installation, bool staticobject);
 
