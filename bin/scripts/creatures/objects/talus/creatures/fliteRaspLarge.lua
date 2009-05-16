@@ -68,7 +68,7 @@ fliteRaspLarge = Creature:new {
 	focus = 0,
 	willpower = 0,
 
-	height = 1, -- Size of creature
+	height = 1.5, -- Size of creature
 	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 0,
 	energy = 0,

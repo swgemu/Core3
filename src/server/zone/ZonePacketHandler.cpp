@@ -985,8 +985,6 @@ void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
 	if (unk2 > 1)
 		pack->parseUnicode(value2);
 
-	System::out << "cancel=" << cancel << " unk1=" << unk1 << " unk2=" << unk2 << " value=" << value.toString() << " value2=" << value2.toString() << endl;
-
 	processServer->getSuiManager()->handleSuiEventNotification(opcode, player, cancel, value.toString(), value2.toString());
 }
 

@@ -47,6 +47,7 @@ festeringDungQueen = Creature:new {
 
 	speciesName = "festering_dung_queen",
 	stfName = "mob/creature_names",
+	objectCRC = 2430922138,
 	socialGroup = "Decay Mite",
 	level = 18,
 
@@ -67,7 +68,7 @@ festeringDungQueen = Creature:new {
 	focus = 0,
 	willpower = 0,
 
-	height = 1, -- Size of creature
+	height = 2, -- Size of creature
 	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 15,
 	energy = 5,
