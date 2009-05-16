@@ -1376,10 +1376,14 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player* player) {
 		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
 			ManagedReference<SceneObject> obj = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_getStub());
 
+			//We don't want to kill ourself.
+			if (obj == player)
+				continue;
+
 			if (obj->isPlayer() && killplayers) {
 				Player* targetplayer = (Player*) obj.get();
 
-				if (targetplayer != player && !targetplayer->isPrivileged() && player->isInRange(targetplayer, distance)) {
+				if (player->isInRange(targetplayer, distance) && !targetplayer->isPrivileged()) {
 					zone->unlock();
 					player->unlock();
 
@@ -1409,7 +1413,6 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player* player) {
 
 					zone->unlock();
 					try {
-						uint32 damage = 100000000;
 						targetcreature->wlock(player);
 						targetcreature->explode(2, false);
 						targetcreature->die();
@@ -1418,7 +1421,6 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player* player) {
 						if (!targetcreature->isPet())
 							targetcreature->scheduleDespawnCreature(500);
 
-						//player->inflictDamage(targetcreature, CreatureAttribute::HEALTH, damage);
 						targetcreature->unlock();
 					} catch (...) {
 						targetcreature->unlock();

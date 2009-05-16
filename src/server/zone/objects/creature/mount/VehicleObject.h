@@ -80,8 +80,8 @@ public:
 		return datapadItem;
 	}
 
-	void call() {System::out << "veh::call\n";};
-	void store(bool doLock = true) {System::out << "veh::store\n";};
+	void call();
+	void store(bool dolock = true);
 
 };
 

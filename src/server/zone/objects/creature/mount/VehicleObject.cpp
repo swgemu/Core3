@@ -61,3 +61,35 @@ VehicleObject::~VehicleObject() {
 	if (datapadItem != NULL)
 		datapadItem = NULL;
 }
+
+void VehicleObject::call() {
+
+}
+
+void VehicleObject::store(bool dolock) {
+	//This object doesn't inherit mutex, nor should it...
+	if (linkedCreature == NULL)
+		return;
+
+	try {
+		//if (dolock)
+			//lock();
+
+		System::out << "VehicleObject::store() called" << endl;
+		//TODO: Store the vehicle on the linkedplayer that this belongs to.
+		//TODO: Kill two stones with one bird.
+
+		//Set player as dismounted.
+		//linkedCreature->setPosture(CreaturePosture::UPRIGHT);
+		//linkedCreature->clearState(CreatureState::RIDINGMOUNT);
+
+		//if (dolock)
+			//unlock();
+
+	} catch (...) {
+		System::out << "Unexpected exception caught in VehicleObject::store()" << endl;
+
+		//if (dolock)
+			//unlock();
+	}
+}
