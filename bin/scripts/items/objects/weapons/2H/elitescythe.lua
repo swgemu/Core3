@@ -40,23 +40,26 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-staffMetalPolearm = Weapon:new{
-
-	objectName = "Metal Staff",
-
-	templateName = "object/weapon/melee/polearm/shared_lance_staff_metal.iff",
-
-	objectCRC = 978782032,
-
-	objectType = POLEARM,
-
-	damageType = WEAPON_KINETIC,
+elitescythe = Weapon:new{
 	
-	certification = "cert_lance_staff_metal",
 
-	attackSpeed = 5,
+	objectName = "Elite Scythe",
 
-	minDamage = 80,
+	templateName = "object/weapon/melee/2h_sword/shared_2h_sword_scythe.iff",
 
-	maxDamage = 110
+	objectCRC = 3006583634,
+	
+	damageType = WEAPON_KINETIC,
+
+	objectType = TWOHANDMELEEWEAPON,
+
+	armorPiercing = WEAPON_MEDIUM,
+	
+	certification = "cert_sword_2h_scythe",
+
+	attackSpeed = 3.6,
+
+	minDamage = 189,
+
+	maxDamage = 456
 }

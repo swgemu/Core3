@@ -42,7 +42,7 @@
 
 controllerfpPolearm = Weapon:new{
 
-	objectName = "Controllerfp lance",
+	objectName = "Nightsister lance",
 
 	templateName = "object/weapon/melee/polearm/shared_lance_controllerfp.iff",
 

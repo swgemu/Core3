@@ -42,7 +42,7 @@
 
 nightsisterLance = Weapon:new{
 
-	objectName = "Nightsister lance",
+	objectName = "Nightsister energy lance",
 
 	templateName = "object/weapon/melee/polearm/shared_lance_nightsister_npc_version.iff",
 
@@ -50,7 +50,7 @@ nightsisterLance = Weapon:new{
 
 	objectType = POLEARM,
 
-	damageType = WEAPON_KINETIC,
+	damageType = WEAPON_ENERGY,
 	
 	certification = "cert_lance_vibrolance",
 

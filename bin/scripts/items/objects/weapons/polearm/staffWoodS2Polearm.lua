@@ -42,7 +42,7 @@
 
 staffWoodS2Polearm = Weapon:new{
 
-	objectName = "Wooden Staff",
+	objectName = "Reinforced Combat Staff",
 
 	templateName = "object/weapon/melee/polearm/shared_lance_staff_wood_s2.iff",
 
