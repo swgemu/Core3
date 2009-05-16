@@ -42,7 +42,7 @@
 
 vibroAxePolearm = Weapon:new{
 
-	objectName = "Vibro-Axe",
+	objectName = "Long Vibro Axe",
 
 	templateName = "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff",
 

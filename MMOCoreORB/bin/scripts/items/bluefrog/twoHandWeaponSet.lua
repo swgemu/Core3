@@ -40,6 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-twoHandWeaponSet = {battleAxe, cleaver, heavyDutyAxe, katana, maul, powerHammer, scythe, vibroAxe}
+twoHandWeaponSet = {battleAxe, cleaver, heavyDutyAxe, katana, maul, powerHammer, scythe, vibroAxe, elitescythe}
 
 addBFItemSet("2H Weapon Set" , twoHandWeaponSet);

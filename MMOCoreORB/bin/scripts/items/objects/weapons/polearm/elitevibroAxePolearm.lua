@@ -40,23 +40,25 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-staffMetalPolearm = Weapon:new{
+elitevibroAxePolearm = Weapon:new{
 
-	objectName = "Metal Staff",
+	objectName = "Elite Long Vibro Axe",
 
-	templateName = "object/weapon/melee/polearm/shared_lance_staff_metal.iff",
+	templateName = "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff",
 
-	objectCRC = 978782032,
+	objectCRC = 1723256113,
 
 	objectType = POLEARM,
 
-	damageType = WEAPON_KINETIC,
+	damageType = WEAPON_KINEITC,
+
+	armorPiercing = WEAPON_MEDIUM,
 	
-	certification = "cert_lance_staff_metal",
+	certification = "cert_lance_vibro_axe",
 
-	attackSpeed = 5,
+	attackSpeed = 4.0,
 
-	minDamage = 80,
+	minDamage = 172,
 
-	maxDamage = 110
+	maxDamage = 436
 }

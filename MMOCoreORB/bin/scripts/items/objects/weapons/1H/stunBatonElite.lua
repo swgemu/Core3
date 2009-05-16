@@ -58,7 +58,7 @@ stunBatonElite = Weapon:new{
 
 	attackSpeed = 3.1,
 	
-	minDamage = 215,
+	minDamage = 151,
 
-	maxDamage = 341
+	maxDamage = 287
 }

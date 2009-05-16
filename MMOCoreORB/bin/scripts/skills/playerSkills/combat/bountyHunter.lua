@@ -482,8 +482,8 @@ RandPoolAtt = {
 	requiredWeaponType = CARBINE,
 	
 	range = 0,
-	damageRatio = 5.5,
-	speedRatio = 3.5,
+	damageRatio = 4,
+	speedRatio = 2.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 
