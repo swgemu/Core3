@@ -1276,7 +1276,7 @@ narhsallNpc57 = Creature:new {
 	objectName = "narhsallNpc57",
 	creatureType = "NPC",
 
-	speciesName = "cheerleader_rebel_squad_leader_hard",
+	speciesName = "fbase_rebel_squad_leader_hard",
 	combatFlags = 0,
 	creatureBitmask = 264,
 	stfName = "mob/creature_names",

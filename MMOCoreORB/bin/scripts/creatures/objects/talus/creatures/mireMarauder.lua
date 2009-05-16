@@ -47,7 +47,7 @@ mireMarauder = Creature:new {
 
 	speciesName = "mire_marauder",
 	stfName = "mob/creature_names",
-	objectCRC = 197708576, 
+	objectCRC = 2403761131, 
 	socialGroup = "Sludge Panther",
 	level = 56,
 
@@ -68,7 +68,7 @@ mireMarauder = Creature:new {
 	focus = 0,
 	willpower = 0,
 
-	height = 1, -- Size of creature
+	height = 1.5, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 55,
 	energy = 55,

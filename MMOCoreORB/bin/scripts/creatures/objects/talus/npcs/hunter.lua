@@ -48,7 +48,7 @@ hunter = Creature:new {
 	
 	speciesName = "hunter",
 	stfName = "mob/creature_names", 
-	objectCRC = ?, 
+	objectCRC = 3717185433, 
 	socialGroup = "Talus Poacher",
 	level = 16,
 
