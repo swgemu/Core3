@@ -124,7 +124,7 @@ public:
 	}
 
 	inline bool isOnEntryList(Player* player) {
-		if (isOwner(player))
+		if (isOwner(player) || isOnAdminList(player))
 			return true;
 
 		String fname = player->getFirstName().toLowerCase();
@@ -136,7 +136,7 @@ public:
 	}
 
 	inline bool isOnVendorList(Player* player) {
-		if (isOwner(player))
+		if (isOwner(player) || isOnAdminList(player))
 			return true;
 
 		String fname = player->getFirstName().toLowerCase();
@@ -148,7 +148,7 @@ public:
 	}
 
 	inline bool isOnHopperList(Player* player) {
-		if (isOwner(player))
+		if (isOwner(player) || isOnAdminList(player))
 			return true;
 
 		String fname = player->getFirstName().toLowerCase();
