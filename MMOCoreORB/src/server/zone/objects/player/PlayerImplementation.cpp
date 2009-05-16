@@ -1697,7 +1697,11 @@ void PlayerImplementation::switchMap(int planetid) {
 	if (mount != NULL) {
 		try {
 			mount->lock();
+			//TODO: What's going on here!?
 			((VehicleObject*)mount)->store(false);
+			//TODO: Move this to your store method...
+			setPosture(CreaturePosture::UPRIGHT);
+			clearState(CreatureState::RIDINGMOUNT);
 			mount->unlock();
 		} catch (...) {
 			mount->unlock();
