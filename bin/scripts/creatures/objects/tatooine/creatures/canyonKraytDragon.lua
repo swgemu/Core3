@@ -137,7 +137,7 @@ canyonKraytDragon = Creature:new {
 	meatType = "meat_carnivore_tatooine",
 	meatMax = 1250,
 
-	skills = { "Areastrike", "Stunningstrike", },
+	skills = { "areaStrike", "stunningStrike" },
 	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object
