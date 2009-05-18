@@ -1069,6 +1069,10 @@ public:
 
 	void emboldenPets();
 
+	bool isTameing();
+
+	void setTameing(bool tame);
+
 protected:
 	Player(DummyConstructorParameter* param);
 
@@ -2079,6 +2083,10 @@ public:
 	void enragePets();
 
 	void emboldenPets();
+
+	bool isTameing();
+
+	void setTameing(bool tame);
 
 protected:
 	String _param0_queueFlourish__String_long_int_;

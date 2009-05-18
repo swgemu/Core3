@@ -182,4 +182,5 @@ interface Creature implements CreatureObject {
 	void onKilled(CreatureObject killer);
 	void onDeath();
 
+	void initAI();
 }

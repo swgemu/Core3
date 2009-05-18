@@ -123,7 +123,7 @@ woodedParalope = Creature:new {
 
 	lootGroup = "0", -- Group it belongs to for loot
 
-	tame = 0.25,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
 	milk = 0,
 

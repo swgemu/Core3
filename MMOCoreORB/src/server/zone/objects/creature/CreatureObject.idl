@@ -351,6 +351,8 @@ interface CreatureObject implements TangibleObject {
 
 	local void addSkill(Skill skill);
 
+	local void setDefaultSkill(Skill skill);
+
 	void addSkillMod(const String name, int mod, boolean updateClient = false);
 
 	int getSkillMod(const String name);
@@ -443,7 +445,8 @@ interface CreatureObject implements TangibleObject {
 	int getCreatureSkillsSize();
 	String getSkill(int idx);
 	boolean hasSkill(unsigned int skillCRC);
-	
+	local Skill getSkillAt(int idx);
+	local Skill getDefaultSkill();
 	
 	String getSkillOrCertification(int idx);
 	int getSkillAndCertificationSize();
@@ -1006,5 +1009,4 @@ interface CreatureObject implements TangibleObject {
 	void updateZoneWithParent(unsigned long cell, boolean lightUpdate = false, boolean sendPackets = true);
 
 	boolean isDisabled();
-	
 }

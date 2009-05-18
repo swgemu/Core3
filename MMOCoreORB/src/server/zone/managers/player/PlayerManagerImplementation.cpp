@@ -1074,6 +1074,16 @@ bool PlayerManagerImplementation::addItemToTrade(Player* player, Player* receive
 		return false;
 	}
 
+	if (item->isIntangible()) {
+		IntangibleObject* itno = (IntangibleObject*) item;
+		SceneObject* worldObject = itno->getWorldObject();
+		if (worldObject->isNonPlayerCreature()) {
+			handleAbortTradeMessage(player, false);
+			player->sendSystemMessage("@ui_auc:err_create_auction_not_allowed");
+			return false;
+		}
+	}
+
 	int itemsOfTradeType = 1;
 
 	for(int i = 0; i < player->getTradeSize(); ++i) {

@@ -65,7 +65,11 @@ public:
 
 	bool activate() {
 		try {
-			crea->wlock();
+			if (!crea->isInQuadTree()) {
+				player->setTameing(false);
+				return true;
+			}
+			crea->lock();
 			SkillManager* sm = player->getZoneProcessServer()->getSkillManager();
 			TargetSkill* skill = (TargetSkill*) sm->getSkill("tame");
 			if(skill != NULL) {
@@ -73,10 +77,10 @@ public:
 				mod << stage;
 				skill->doSkill(player,crea,mod.toString());
 			}
-
 			crea->unlock();
 		} catch (...) {
 			crea->error("unreported exception caught in CreatureRecoveryEvent::activate");
+			player->setTameing(false);
 			crea->unlock();
 		}
 

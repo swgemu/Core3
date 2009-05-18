@@ -617,6 +617,10 @@ void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
 }
 
 void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int damage, String skillname) {
+	// increase pet aggro, xp ration of pets increased too
+	if (creature->isPet())
+		damage *= 4;
+
 	String xptype;
 
 	AttackTargetSkill *askill;

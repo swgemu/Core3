@@ -111,10 +111,6 @@ CreaturePetImplementation::~CreaturePetImplementation() {
 	befriendList = NULL;
 
 	followTarget = NULL;
-
-	delete nextMovementPosition;
-
-	nextMovementPosition = NULL;
 }
 
 void CreaturePetImplementation::init() {
@@ -236,6 +232,13 @@ void CreaturePetImplementation::init(Creature* creature, float growth) {
 		if (skill != NULL) {
 			addSkill(skill);
 		}
+	}
+
+	String defaultAttack = "attack";
+	skill = sManager->getSkill(defaultAttack);
+
+	if (skill != NULL) {
+		setDefaultSkill(skill);
 	}
 
 	createItemAttributes();
@@ -404,6 +407,13 @@ void CreaturePetImplementation::parseItemAttributes() {
 		if (skill != NULL) {
 			addSkill(skill);
 		}
+	}
+
+	String defaultAttack = "attack";
+	skill = sManager->getSkill(defaultAttack);
+
+	if (skill != NULL) {
+		setDefaultSkill(skill);
 	}
 
 	String customCommand;
@@ -1291,7 +1301,7 @@ void CreaturePetImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 
 					//addPatrolPoint(pos->getPositionX(), pos->getPositionX(),false);
 				}
-			} if (isFriend(followTarget) && followTarget->isInCombat() && (aggroedCreature == NULL)) {
+			} /*if (isFriend(followTarget) && followTarget->isInCombat() && (aggroedCreature == NULL)) {
 				//System::out << "\tnotifyPositionUpdate : aggro player combat\n";
 
 				SceneObject* scno = followTarget->getTarget();
@@ -1308,7 +1318,7 @@ void CreaturePetImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 						creatureManager->dequeueActivity(this);
 					creatureManager->queueActivity(this, 10);
 				}
-			}
+			}*/
 		}
 	}
 }
@@ -1453,26 +1463,16 @@ bool CreaturePetImplementation::attack(CreatureObject* target) {
 		return false;
 	}
 
-	int skills = creatureSkills.size();
+	Skill* skill = getDefaultSkill();
 
-	Skill* skill = NULL;
-
-	if (skills == 0) {
-		return false;
-	}
-	if (nextAttack != -1 && nextAttack < skills) {
-		skill = creatureSkills.get(nextAttack);
+	if (nextAttack != -1 && getNumberOfSkills() > nextAttack) {
+		skill = getSkillAt(nextAttack);
 		nextAttack = -1;
 	}
-	else {
-		int rand = System::random(skills - 1);
-		skill = creatureSkills.get(rand);
-	}
-
-	if (skill == NULL) {
-		return false;
-	}
-
+	System::out << "1\n";
+	if (skill == NULL)
+		return true;
+	System::out << "2\n";
 	uint32 actionCRC = skill->getNameCRC();
 
 	if (weaponObject != NULL
@@ -1481,7 +1481,7 @@ bool CreaturePetImplementation::attack(CreatureObject* target) {
 	} else if (!isInRange(target, skill->getRange())) {
 		return true;
 	}
-
+	System::out << "3\n";
 	//info("queuing attacking");
 
 	String modifier = "";
@@ -2012,10 +2012,8 @@ void CreaturePetImplementation::handleGroupCommand(Player* player) {
 		return;
 
 	GroupObject* group = player->getGroupObject();
-	if (group == NULL)
-		return;
 
-	if (group->getLeader() != player) {
+	if (group != NULL && group->getLeader() != player) {
 		player->sendSystemMessage("group", "must_be_leader");
 		return;
 	}

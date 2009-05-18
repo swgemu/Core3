@@ -237,6 +237,9 @@ public:
 		return forceCost > 0;
 	}
 
+	bool isStateAttack() {
+		return hasStateChance;
+	}
 	inline void setDamageRatio(float ratio) {
 		damageRatio = ratio;
 	}

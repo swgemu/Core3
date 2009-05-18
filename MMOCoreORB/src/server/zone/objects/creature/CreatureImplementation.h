@@ -59,6 +59,7 @@ which carries forward this exception.
 
 #include "events/CreatureRemoveEvent.h"
 
+#include "ai/CombatAI.h"
 
 class CreatureManagerImplementation;
 class LairObject;
@@ -146,6 +147,7 @@ protected:
 
 	bool onEscape;
 
+	CombatAI* combatAI;
 public:
 
 	const static int CREATURE = 1;
@@ -515,6 +517,8 @@ public:
 	inline void setOnEscape(bool escape) {
 		onEscape = escape;
 	}
+
+	void initAI();
 
 	friend class CreatureManagerImplementation;
 
