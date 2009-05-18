@@ -60,6 +60,12 @@ public:
 	}
 
 	void doSkill(CreatureObject* creature, String& modifier) {
+		if (creature->isPlayer()) {
+			Player* player = (Player*) creature;
+			if (!player->doPowerboost())
+				return;
+		}
+
 		int baseMind = creature->getBaseMind();
 
 		//Calculate the Powerboost bonus.
