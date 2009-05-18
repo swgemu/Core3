@@ -53,7 +53,7 @@ public:
 	}
 
 	void doSkill(CreatureObject* creature, String& modifier) {
-		/*creature->sendSystemMessage("doSkill called" + getSkillName() + " and modifier: " + modifier); */
+		//creature->sendSystemMessage("doSkill called" + getSkillName() + " and modifier: " + modifier);
 		if (getSkillName() == "startdance")
 			creature->startDancing(modifier, false);
 		else if (getSkillName() == "startmusic")
@@ -62,10 +62,6 @@ public:
 			creature->stopDancing();
 		else if (getSkillName() == "stopmusic")
 			creature->stopPlayingMusic();
-		else if (getSkillName() == "changedance")
-			creature->startDancing(modifier, true);
-		else if (getSkillName() == "changemusic")
-			creature->startPlayingMusic(modifier, true);
 		else if (getSkillName().length() >= 8 && getSkillName().subString(0, 8) == "flourish")
 			creature->doFlourish(modifier);
 		else

@@ -49,7 +49,7 @@ imagedesignSkill = {
         invalidPostures = "2,5,7,9,10,11,12,13,14,4,",
 	instant = 0
 }
-AddEntertainSkill(imagedesignSkill)
+--AddEntertainSkill(imagedesignSkill)
 
 startdanceSkill = {
 	skillname = "startdance",
@@ -81,25 +81,7 @@ stopmusicSkill = {
         invalidPostures = "",
 	instant = 0
 }
-AddEntertainSkill(stopmusicSkill)
-
-changedanceSkill = {
-	skillname = "changedance",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,10,11,12,13,14,4,",
-	instant = 0
-}
-AddEntertainSkill(changedanceSkill)
-
-changemusicSkill = {
-	skillname = "changemusic",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,10,11,12,13,14,4,",
-	instant = 0
-}
-AddEntertainSkill(changemusicSkill)
-
-
+AddEntertainSkill(stopmusicSkill)
 -- Effects
 
 spotlightSkill = {
