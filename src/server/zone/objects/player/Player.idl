@@ -851,4 +851,7 @@ interface Player implements CreatureObject {
 	boolean canStoreMorePets();
 	void enragePets();
 	void emboldenPets();
+
+	boolean isTameing();
+	void setTameing(boolean tame);
 }

@@ -1037,16 +1037,17 @@ void CreatureManagerImplementation::load(Creature* creature) {
 	LuaFunction getSkills(getLuaState(), objectName, "getNumberOfSkills", 1);
 	callFunction(&getSkills);
 	int res = getIntParameter(getLuaState());
-
+	SkillManager* sManager = server->getSkillManager();
+	Skill* s = NULL;
+	String skill;
 	for (int i = 1; i <= res; i++) {
 		LuaFunction getSkill(getLuaState(), objectName, "getSkill", 1);
 		getSkill << i; // push arg
 
 		callFunction(&getSkill);
-		String skill = getStringParameter(getLuaState());
+		skill = getStringParameter(getLuaState());
 
-		SkillManager* sManager = server->getSkillManager();
-		Skill* s = sManager->getSkill(skill);
+		s = sManager->getSkill(skill);
 
 		if (s == NULL) {
 			System::out << "Invalid Skill [" << skill << "] for {" << objectName << "}\n";
@@ -1054,7 +1055,17 @@ void CreatureManagerImplementation::load(Creature* creature) {
 		}
 
 		creature->addSkill(s);
+
+		s = NULL;
 	}
+
+	skill = "attack";
+	s = sManager->getSkill(skill);
+
+	if (s != NULL)
+		creature->setDefaultSkill(s);
+
+	creature->initAI();
 
 	if (creature->getTame() > 0.0f && System::random(10) == 1) {
 		changeStatsToBaby(creature);
@@ -1509,7 +1520,7 @@ void CreatureManagerImplementation::setPetDefaultAttributes(CreaturePet* creatur
 		creature->setPack(creatureConfig.getIntField("pack"));
 		creature->setHerd(creatureConfig.getIntField("herd"));
 		creature->setStalker(creatureConfig.getIntField("stalker"));
-		creature->setKiller(creatureConfig.getIntField("killer"));
+		//creature->setKiller(creatureConfig.getIntField("killer"));
 		creature->setAggressive(creatureConfig.getIntField("aggressive"));
 		creature->setFerocity(5);
 

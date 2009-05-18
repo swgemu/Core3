@@ -111,10 +111,17 @@ CreatureImplementation::~CreatureImplementation() {
 
 	damageMap.removeAll();
 
-	if (nextMovementPosition == NULL) {
+	if (nextMovementPosition != NULL) {
 		delete nextMovementPosition;
 
 		nextMovementPosition = NULL;
+	}
+
+	defaultSkill = NULL;
+
+	if (combatAI != NULL) {
+		delete combatAI;
+		combatAI = NULL;
 	}
 }
 
@@ -200,6 +207,10 @@ void CreatureImplementation::init() {
 	nextMovementPosition = NULL;
 	nextPatrolPosition = 0;
 	patrolMode = false;
+
+	defaultSkill = NULL;
+
+	combatAI = NULL;
 }
 
 void CreatureImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
@@ -967,12 +978,10 @@ bool CreatureImplementation::doMovement() {
 		maxSpeed *= 0.20f;
 
 	if (aggroedCreature != NULL && !camoSet) {
-		waypointX = aggroedCreature->getPositionX();
-		waypointZ = aggroedCreature->getPositionZ();
-		waypointY = aggroedCreature->getPositionY();
-		cellID = aggroedCreature->getParentID();
+		setNextMovementPosition(aggroedCreature,false);
+	}
 
-	} else if (nextMovementPosition != NULL) {
+	if (nextMovementPosition != NULL) {
 		PatrolPoint* waypoint = nextMovementPosition;
 
 		waypointX = waypoint->getPositionX();
@@ -1008,7 +1017,6 @@ bool CreatureImplementation::doMovement() {
 	float directionangle = atan2(dy, dx);
 
 	float maxDistance = 0.1f;
-
 	if (weaponObject != NULL && isInCombat())
 		maxDistance = weaponObject->getMaxRange();
 
@@ -1050,19 +1058,18 @@ bool CreatureImplementation::doMovement() {
 		newPositionX = waypointX;
 		newPositionY = waypointY;
 	} else {
-		newPositionX = positionX + (actualSpeed * (dx / dist));
-		newPositionY = positionY + (actualSpeed * (dy / dist));
-
-		float newDistanceX = newPositionX - positionX;
-		float newDistanceY = newPositionY - positionY;
-
-		float travelDist = sqrt(newDistanceX * newDistanceX + newDistanceY * newDistanceY);
-
-		if (travelDist > maxDistance) {
+		if (dist < actualSpeed) {
 			newPositionX = waypointX;
 			newPositionY = waypointY;
-		}
 
+			nextMovementPosition = NULL;
+		} else {
+			newPositionX = positionX + (actualSpeed * (dx / dist));
+			newPositionY = positionY + (actualSpeed * (dy / dist));
+
+			float newDistanceX = waypointX - newPositionX;
+			float newDistanceY = waypointY - newPositionY;
+		}
 	}
 
 	if (cellID == 0)
@@ -1155,7 +1162,7 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 	//info("attacking target");
 
 	// Not ready to attack yet
-	if (isMountedCreature()) {
+	if (isRidingCreature()) {
 		deaggro();
 		return false;
 	}
@@ -1206,24 +1213,20 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 		}
 	}
 
-	CombatManager* combatManager = server->getCombatManager();
-
-	int skills = creatureSkills.size();
-
 	Skill* skill = NULL;
 
-	if (skills == 0) {
-		return false;
-	}
+	if (combatAI == NULL)
+		skill = getDefaultSkill();
 	else {
-		int rand = System::random(skills - 1);
-		skill = creatureSkills.get(rand);
+		/*if (combatAI->shouldRunAway(_this,target)) {
+			activateEscapeRoute();
+			return true;
+		}*/
+		skill = combatAI->selectAttackSkill(_this,target);
 	}
 
 	if (skill == NULL)
-		return false;
-
-	uint32 actionCRC = skill->getNameCRC();
+		return true;
 
 	//updateTarget(target->getObjectID());
 	if (isDead() || isKnockedDown())
@@ -1240,10 +1243,12 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 
 	String modifier = "";
 	CommandQueueAction* action =
-					new CommandQueueAction(_this, target->getObjectID(), 0, actionCRC, modifier);
+					new CommandQueueAction(_this, target->getObjectID(), 0, skill->getNameCRC(), modifier);
 
 	action->setSkill(skill);
 	action->setTarget(target);
+
+	CombatManager* combatManager = server->getCombatManager();
 
 	combatManager->handleAction(action);
 	delete action;
@@ -1735,8 +1740,12 @@ void CreatureImplementation::activateEscapeRoute() {
 	setOnEscape(true);
 	deaggro();
 
-	Coordinate* escapePoint = new Coordinate(positionX, positionZ, positionY);
-	escapePoint->randomizePosition(15.0f);
+	Coordinate* escapePoint = getCoordinate(_this,32.0f,180.0f);
 
 	setNextMovementPosition(escapePoint->getPositionX(),escapePoint->getPositionY(),false);
+}
+
+void CreatureImplementation::initAI() {
+	combatAI = new CombatAI();
+	combatAI->init();
 }

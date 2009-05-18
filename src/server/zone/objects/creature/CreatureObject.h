@@ -437,6 +437,8 @@ public:
 
 	void addSkill(Skill* skill);
 
+	void setDefaultSkill(Skill* skill);
+
 	void addSkillMod(const String& name, int mod, bool updateClient = false);
 
 	int getSkillMod(const String& name);
@@ -552,6 +554,10 @@ public:
 	String& getSkill(int idx);
 
 	bool hasSkill(unsigned int skillCRC);
+
+	Skill* getSkillAt(int idx);
+
+	Skill* getDefaultSkill();
 
 	String& getSkillOrCertification(int idx);
 

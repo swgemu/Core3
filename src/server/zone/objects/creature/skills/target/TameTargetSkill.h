@@ -110,6 +110,10 @@ public:
 		if (!modifier.isEmpty())
 			stage = Integer::valueOf(modifier);
 
+		if (player->isTameing() && (0 == stage)) {
+			return 0;
+		}
+
 		tame(player,targetCreature,stage);
 		return 0;
 
@@ -122,8 +126,12 @@ public:
 				creature->isIncapacitated() || creature->isDead() ||
 				player->isIncapacitated() || player->isDead()) {
 			player->sendSystemMessage("Failed to tame creature");
+			player->setTameing(false);
 			return;
 		}
+
+		player->setTameing(true);
+
 		switch(stage) {
 			case 0:
 				if (!player->canStoreMorePets()) {
@@ -156,6 +164,7 @@ public:
 						creature->attack(player);
 						creature->addPatrolPoint(player->getPositionX(),player->getPositionY(),false);
 					}
+					player->setTameing(false);
 					return;
 				}else if (notInRange || creature->getLevel() > System::random(player->getSkillMod("tame_non_aggro"))) {
 					player->sendSystemMessage("Failed to tame creature");
@@ -166,6 +175,7 @@ public:
 						creature->attack(player);
 						creature->addPatrolPoint(player->getPositionX(),player->getPositionY(),false);
 					}
+					player->setTameing(false);
 					return;
 				}
 				creature->deaggro();
@@ -173,6 +183,7 @@ public:
 				CreaturePet* pet = new CreaturePet(player,player->getNewItemID());
 
 				if (pet == NULL) {
+					player->setTameing(false);
 					return;
 				}
 				pet->init(creature,0.5f);
@@ -187,6 +198,7 @@ public:
 				}
 				String chType = "creaturehandler";
 				player->addXp(chType, (200 + 10 * (pet->getLevel() - player->getLevel())), true);
+				player->setTameing(false);
 
 				return;
 

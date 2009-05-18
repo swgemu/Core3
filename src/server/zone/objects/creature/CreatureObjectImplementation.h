@@ -164,6 +164,7 @@ protected:
 	uint32 actionCounter;
 
 	VectorMap<uint32, Skill*> creatureSkills;
+	Skill* defaultSkill;
 	Vector<String> skillsAndCertifications;
 	uint32 creatureSkillsCount;
 
@@ -628,6 +629,10 @@ public:
 
 	inline String& getSkill(int idx) {
 		return creatureSkills.get(idx)->getSkillName();
+	}
+
+	inline Skill* getSkillAt(int idx) {
+		return creatureSkills.get(idx);
 	}
 
 	inline String& getSkillOrCertification(int idx) {
@@ -2958,6 +2963,12 @@ public:
 	void updateZoneWithParent(uint64 par, bool lightUpdate = false, bool sendPackets = true);
 	void updateCreaturePosition(bool lightUpdate = false);
 
+	inline void setDefaultSkill(Skill* skill) {
+		defaultSkill = skill;
+	}
+	inline Skill* getDefaultSkill() {
+		return defaultSkill;
+	}
 
 	friend class CombatManager;
 	friend class SkillManager;

@@ -2599,6 +2599,14 @@ void CreatureObject::addSkill(Skill* skill) {
 		((CreatureObjectImplementation*) _impl)->addSkill(skill);
 }
 
+void CreatureObject::setDefaultSkill(Skill* skill) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((CreatureObjectImplementation*) _impl)->setDefaultSkill(skill);
+}
+
 void CreatureObject::addSkillMod(const String& name, int mod, bool updateClient) {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -3347,6 +3355,22 @@ bool CreatureObject::hasSkill(unsigned int skillCRC) {
 		return method.executeWithBooleanReturn();
 	} else
 		return ((CreatureObjectImplementation*) _impl)->hasSkill(skillCRC);
+}
+
+Skill* CreatureObject::getSkillAt(int idx) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getSkillAt(idx);
+}
+
+Skill* CreatureObject::getDefaultSkill() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getDefaultSkill();
 }
 
 String& CreatureObject::getSkillOrCertification(int idx) {

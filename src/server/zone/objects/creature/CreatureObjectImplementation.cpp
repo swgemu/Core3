@@ -4828,23 +4828,30 @@ void CreatureObjectImplementation::onRegenerateHAM() {
 	else if (!isSitting())
 		modifier *= (4.0f / 7.0f);
 
-	uint32 healthTick = (uint32) ceil((float) getConstitutionMax() * 13.0f / 1200.0f * 3.0f * modifier);
-	uint32 actionTick = (uint32) ceil((float) getStaminaMax() * 13.0f / 1200.0f * 3.0f * modifier);
-	uint32 mindTick = (uint32) ceil((float) getWillpowerMax() * 13.0f / 1200.0f * 3.0f * modifier);
+	if (isMeditating()) {
+		int meditateMod = getSkillMod("meditate");
+		modifier *= 1.0f + ((float)meditateMod / 100.0f);
+		doMeditateHeals();
+	}
+
+	// 13.0f / 1200.0f * 3.0f = 0.0325f
+	uint32 healthTick = (uint32) ceil((float) getConstitutionMax() * 0.0325f * modifier);
+	uint32 actionTick = (uint32) ceil((float) getStaminaMax() * 0.0325f * modifier);
+	uint32 mindTick = (uint32) ceil((float) getWillpowerMax() * 0.0325f * modifier);
 
 	healthTick = (healthTick > 1) ? healthTick : 1;
 	actionTick = (actionTick > 1) ? actionTick : 1;
 	mindTick = (mindTick > 1) ? mindTick : 1;
 
 	//TODO: Refactor this with event handlers
-	if (isMeditating()) {
+/*	if (isMeditating()) {
 		int meditateMod = getSkillMod("meditate");
 		float meditateBonus = 1 + ((float)meditateMod / 100);
 		healthTick *= (int)meditateBonus;
 		actionTick *= (int)meditateBonus;
 		mindTick *= (int)meditateBonus;
 		doMeditateHeals();
-	}
+	}*/
 
 	//TODO: Refactor this into an event handler
 	if (isPlayer()) {

@@ -6325,6 +6325,31 @@ void Player::emboldenPets() {
 		((PlayerImplementation*) _impl)->emboldenPets();
 }
 
+bool Player::isTameing() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 494);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->isTameing();
+}
+
+void Player::setTameing(bool tame) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 495);
+		method.addBooleanParameter(tame);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->setTameing(tame);
+}
+
 /*
  *	PlayerAdapter
  */
@@ -7799,6 +7824,12 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 493:
 		emboldenPets();
+		break;
+	case 494:
+		resp->insertBoolean(isTameing());
+		break;
+	case 495:
+		setTameing(inv->getBooleanParameter());
 		break;
 	default:
 		return NULL;
@@ -9757,6 +9788,14 @@ void PlayerAdapter::enragePets() {
 
 void PlayerAdapter::emboldenPets() {
 	return ((PlayerImplementation*) impl)->emboldenPets();
+}
+
+bool PlayerAdapter::isTameing() {
+	return ((PlayerImplementation*) impl)->isTameing();
+}
+
+void PlayerAdapter::setTameing(bool tame) {
+	return ((PlayerImplementation*) impl)->setTameing(tame);
 }
 
 /*

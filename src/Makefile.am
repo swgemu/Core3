@@ -288,6 +288,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp \
 		server/zone/objects/creature/buffs/Buff.cpp \
+		server/zone/objects/creature/ai/CombatAI.cpp \
 		server/zone/objects/creature/dots/DamageOverTime.cpp \
 		server/zone/objects/creature/dots/DamageOverTimeList.cpp \
 		server/zone/objects/creature/dots/DamageOverTimeMap.cpp \

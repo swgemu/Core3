@@ -210,8 +210,9 @@ am_core3_OBJECTS = $(am__objects_1) \
 	UserManagerImplementation.$(OBJEXT) FeatureManager.$(OBJEXT) \
 	LairObjectImplementation.$(OBJEXT) \
 	BlueFrogCreatureImplementation.$(OBJEXT) Buff.$(OBJEXT) \
-	DamageOverTime.$(OBJEXT) DamageOverTimeList.$(OBJEXT) \
-	DamageOverTimeMap.$(OBJEXT) CreatureImplementation.$(OBJEXT) \
+	CombatAI.$(OBJEXT) DamageOverTime.$(OBJEXT) \
+	DamageOverTimeList.$(OBJEXT) DamageOverTimeMap.$(OBJEXT) \
+	CreatureImplementation.$(OBJEXT) \
 	CreatureObjectImplementation.$(OBJEXT) \
 	CreaturePetImplementation.$(OBJEXT) \
 	MountCreatureImplementation.$(OBJEXT) \
@@ -676,6 +677,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp \
 		server/zone/objects/creature/buffs/Buff.cpp \
+		server/zone/objects/creature/ai/CombatAI.cpp \
 		server/zone/objects/creature/dots/DamageOverTime.cpp \
 		server/zone/objects/creature/dots/DamageOverTimeList.cpp \
 		server/zone/objects/creature/dots/DamageOverTimeMap.cpp \
@@ -906,6 +908,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ClientCreateCharacter.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CloningFacility.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CloningTerminal.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CombatAI.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CombatManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CommandQueueAction.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Component.Po@am__quote@
@@ -4463,6 +4466,20 @@ Buff.obj: server/zone/objects/creature/buffs/Buff.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/creature/buffs/Buff.cpp' object='Buff.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Buff.obj `if test -f 'server/zone/objects/creature/buffs/Buff.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/buffs/Buff.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/buffs/Buff.cpp'; fi`
+
+CombatAI.o: server/zone/objects/creature/ai/CombatAI.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CombatAI.o -MD -MP -MF $(DEPDIR)/CombatAI.Tpo -c -o CombatAI.o `test -f 'server/zone/objects/creature/ai/CombatAI.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/ai/CombatAI.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CombatAI.Tpo $(DEPDIR)/CombatAI.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/creature/ai/CombatAI.cpp' object='CombatAI.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CombatAI.o `test -f 'server/zone/objects/creature/ai/CombatAI.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/ai/CombatAI.cpp
+
+CombatAI.obj: server/zone/objects/creature/ai/CombatAI.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CombatAI.obj -MD -MP -MF $(DEPDIR)/CombatAI.Tpo -c -o CombatAI.obj `if test -f 'server/zone/objects/creature/ai/CombatAI.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/ai/CombatAI.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/ai/CombatAI.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CombatAI.Tpo $(DEPDIR)/CombatAI.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/creature/ai/CombatAI.cpp' object='CombatAI.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CombatAI.obj `if test -f 'server/zone/objects/creature/ai/CombatAI.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/ai/CombatAI.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/ai/CombatAI.cpp'; fi`
 
 DamageOverTime.o: server/zone/objects/creature/dots/DamageOverTime.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DamageOverTime.o -MD -MP -MF $(DEPDIR)/DamageOverTime.Tpo -c -o DamageOverTime.o `test -f 'server/zone/objects/creature/dots/DamageOverTime.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/dots/DamageOverTime.cpp

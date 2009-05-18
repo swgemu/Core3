@@ -155,6 +155,8 @@ public:
 
 	void onDeath();
 
+	void initAI();
+
 protected:
 	Creature(DummyConstructorParameter* param);
 
@@ -299,6 +301,8 @@ public:
 	void onKilled(CreatureObject* killer);
 
 	void onDeath();
+
+	void initAI();
 
 protected:
 	String _param0_setObjectFileName__String_;

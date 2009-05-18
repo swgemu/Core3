@@ -326,7 +326,7 @@ class PlayerImplementation : public PlayerServant {
 	bool droidCalled;
 	bool factionPetCalled;
 	VectorMap<uint64, CreaturePet*> petList;
-
+	bool tameing;
 public:
 	static const int ONLINE = 1;
 	static const int OFFLINE = 2;
@@ -2225,6 +2225,14 @@ public:
 	bool canStoreMorePets();
 	void enragePets();
 	void emboldenPets();
+
+	inline bool isTameing() {
+		return tameing;
+	}
+
+	inline void setTameing(bool tame) {
+		tameing = tame;
+	}
 
 	friend class PlayerManager;
 	friend class ProfessionManager;

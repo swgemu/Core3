@@ -385,6 +385,8 @@ void PlayerImplementation::initializePlayer() {
 	petList.setInsertPlan(SortedVector<CreaturePet*>::NO_DUPLICATE);
 	petList.setNullValue(NULL);
 
+	tameing = false;
+
 }
 
 void PlayerImplementation::create(ZoneClientSession* client) {

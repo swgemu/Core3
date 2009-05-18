@@ -842,6 +842,18 @@ void Creature::onDeath() {
 		((CreatureImplementation*) _impl)->onDeath();
 }
 
+void Creature::initAI() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 69);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureImplementation*) _impl)->initAI();
+}
+
 /*
  *	CreatureAdapter
  */
@@ -1041,6 +1053,9 @@ Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 68:
 		onDeath();
+		break;
+	case 69:
+		initAI();
 		break;
 	default:
 		return NULL;
@@ -1299,6 +1314,10 @@ void CreatureAdapter::onKilled(CreatureObject* killer) {
 
 void CreatureAdapter::onDeath() {
 	return ((CreatureImplementation*) impl)->onDeath();
+}
+
+void CreatureAdapter::initAI() {
+	return ((CreatureImplementation*) impl)->initAI();
 }
 
 /*
