@@ -1631,7 +1631,6 @@ void CreatureManagerImplementation::convertPetToMount(CreaturePet* creature, boo
 			creature->setSpeed(creatureConfig.getFloatField("mountSpeed"));
 			creature->setAcceleration(creatureConfig.getFloatField("mountAcceleration"));
 			creature->setOptionsBitmask(0x1080);
-			creature->getDatapadItem()->setUpdated(true);
 
 			if (creature->isInQuadTree()) {
 				creature->removeFromZone();

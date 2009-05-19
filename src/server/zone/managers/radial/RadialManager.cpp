@@ -1747,6 +1747,7 @@ void RadialManager::handlePetTrainMount(SceneObject* obj) {
 		try {
 			obj->wlock();
 			((CreaturePet*)obj)->trainMount();
+			((CreaturePet*)obj)->getDatapadItem()->setUpdated(true);
 			obj->unlock();
 		} catch (...) {
 			System::out << "Unreported exception caught in RadialManager::handleVehicleStore(Player* player, SceneObject* obj)\n";
