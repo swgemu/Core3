@@ -84,7 +84,7 @@ skill = {
 	effectname = "",
 
         invalidStateMask = 4164812873, --cover, aiming, feigndeath, frozen, swimming, sittingOnChair, crafting, glowingJedi, ridingMount, mountedCreature, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "0,3,1,2,5,6,7,9,10,11,12,13,14,4,",
+        invalidPostures = "3,1,2,5,6,7,9,10,11,12,13,14,4,",
 	instant = 0
 }
 
