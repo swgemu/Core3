@@ -66,7 +66,7 @@ CellObjectImplementation::CellObjectImplementation(uint64 objID, BuildingObject*
 }
 
 void CellObjectImplementation::init() {
-	//objectType = SceneObjectImplementation::CELL;
+	objectType = SceneObjectImplementation::CELL;
 
 	setContainerVolumeLimit(-1);
 

@@ -102,6 +102,7 @@ public:
 
 		if (!player->isInRange(targetCreature,10.0f)) {
 			player->sendSystemMessage("Failed to tame creature.");
+			player->setTameing(false);
 			return 0;
 		}
 
@@ -187,14 +188,14 @@ public:
 				}
 				pet->init(creature,0.5f);
 				creature->unload();
-				try {
+				/*try {
 					player->wlock();
 					pet->createDataPad();
 					player->unlock();
 				} catch(...) {
 					System::out <<"tame lock\n";
 					player->unlock();
-				}
+				}*/
 				String chType = "creaturehandler";
 				player->addXp(chType, (200 + 10 * (pet->getLevel() - player->getLevel())), true);
 				player->setTameing(false);

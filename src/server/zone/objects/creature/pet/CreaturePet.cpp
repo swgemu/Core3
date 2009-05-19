@@ -47,16 +47,30 @@ void CreaturePet::init(Creature* creature, float growth) {
 		((CreaturePetImplementation*) _impl)->init(creature, growth);
 }
 
-void CreaturePet::createDataPad() {
+void CreaturePet::createDataPad(unsigned long long datapadCRC) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addUnsignedLongParameter(datapadCRC);
 
 		method.executeWithVoidReturn();
 	} else
-		((CreaturePetImplementation*) _impl)->createDataPad();
+		((CreaturePetImplementation*) _impl)->createDataPad(datapadCRC);
+}
+
+void CreaturePet::setPetType(unsigned char type) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addUnsignedCharParameter(type);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreaturePetImplementation*) _impl)->setPetType(type);
 }
 
 void CreaturePet::setLinkedCreature(Player* linkCreature) {
@@ -64,7 +78,7 @@ void CreaturePet::setLinkedCreature(Player* linkCreature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(linkCreature);
 
 		method.executeWithVoidReturn();
@@ -77,7 +91,7 @@ Player* CreaturePet::getLinkedCreature() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 
 		return (Player*) method.executeWithObjectReturn();
 	} else
@@ -89,7 +103,7 @@ void CreaturePet::setDatapadItem(SceneObject* item) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(item);
 
 		method.executeWithVoidReturn();
@@ -102,7 +116,7 @@ IntangibleObject* CreaturePet::getDatapadItem() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 
 		return (IntangibleObject*) method.executeWithObjectReturn();
 	} else
@@ -114,7 +128,7 @@ void CreaturePet::parseItemAttributes() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 
 		method.executeWithVoidReturn();
 	} else
@@ -126,7 +140,7 @@ void CreaturePet::call() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 
 		method.executeWithVoidReturn();
 	} else
@@ -138,7 +152,7 @@ void CreaturePet::store(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
@@ -151,7 +165,7 @@ bool CreaturePet::canCall() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -163,7 +177,7 @@ bool CreaturePet::isAttackable() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -175,7 +189,7 @@ bool CreaturePet::isAttackableBy(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(creature);
 
 		return method.executeWithBooleanReturn();
@@ -188,7 +202,7 @@ void CreaturePet::onIncapacitated(SceneObject* attacker) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 		method.addObjectParameter(attacker);
 
 		method.executeWithVoidReturn();
@@ -201,7 +215,7 @@ void CreaturePet::recoverFromIncapacitation() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 
 		method.executeWithVoidReturn();
 	} else
@@ -213,7 +227,7 @@ void CreaturePet::setFaction(unsigned int fac) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 		method.addUnsignedIntParameter(fac);
 
 		method.executeWithVoidReturn();
@@ -226,7 +240,7 @@ void CreaturePet::setMaxLevel(unsigned int level) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 22);
 		method.addUnsignedIntParameter(level);
 
 		method.executeWithVoidReturn();
@@ -239,7 +253,7 @@ bool CreaturePet::isCHPet() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 23);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -251,7 +265,7 @@ bool CreaturePet::isDroid() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 24);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -263,7 +277,7 @@ bool CreaturePet::isFactionPet() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 25);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -275,7 +289,7 @@ bool CreaturePet::isInFollowState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 26);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -287,7 +301,7 @@ bool CreaturePet::isInStayState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 27);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -299,7 +313,7 @@ bool CreaturePet::isInGuardState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 28);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -311,7 +325,7 @@ bool CreaturePet::isInPatrolState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 29);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -323,7 +337,7 @@ void CreaturePet::doGrowUp(bool updateTime) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 30);
 		method.addBooleanParameter(updateTime);
 
 		method.executeWithVoidReturn();
@@ -336,7 +350,7 @@ void CreaturePet::setGrowth(float gr) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 		method.addFloatParameter(gr);
 
 		method.executeWithVoidReturn();
@@ -349,7 +363,7 @@ void CreaturePet::setLastGrowth(unsigned long long stamp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 		method.addUnsignedLongParameter(stamp);
 
 		method.executeWithVoidReturn();
@@ -362,7 +376,7 @@ void CreaturePet::initTrainingState(int command) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 		method.addSignedIntParameter(command);
 
 		method.executeWithVoidReturn();
@@ -375,7 +389,7 @@ void CreaturePet::setPetName(String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -388,7 +402,7 @@ void CreaturePet::parseCommandMessage(Player* player, const UnicodeString& messa
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 		method.addObjectParameter(player);
 		method.addUnicodeParameter(message);
 
@@ -402,7 +416,7 @@ void CreaturePet::setCommmandState(int command) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 		method.addSignedIntParameter(command);
 
 		method.executeWithVoidReturn();
@@ -415,7 +429,7 @@ bool CreaturePet::hasCommandTrained(unsigned int state) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 		method.addUnsignedIntParameter(state);
 
 		return method.executeWithBooleanReturn();
@@ -428,7 +442,7 @@ bool CreaturePet::activate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 38);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -440,7 +454,7 @@ void CreaturePet::deaggro() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 39);
 
 		method.executeWithVoidReturn();
 	} else
@@ -452,7 +466,7 @@ void CreaturePet::handleAttackCommand(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 40);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -465,7 +479,7 @@ void CreaturePet::handleFollowCommand(Player* target) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 41);
 		method.addObjectParameter(target);
 
 		method.executeWithVoidReturn();
@@ -478,7 +492,7 @@ void CreaturePet::handleStayCommand() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 42);
 
 		method.executeWithVoidReturn();
 	} else
@@ -490,7 +504,7 @@ void CreaturePet::handleGuardCommand() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 43);
 
 		method.executeWithVoidReturn();
 	} else
@@ -502,7 +516,7 @@ void CreaturePet::handleStoreCommand() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 44);
 
 		method.executeWithVoidReturn();
 	} else
@@ -514,7 +528,7 @@ void CreaturePet::handleTransferCommand() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 45);
 
 		method.executeWithVoidReturn();
 	} else
@@ -526,7 +540,7 @@ void CreaturePet::handleTrickCommand(String& anim, int mod, int cost) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 46);
 		method.addAsciiParameter(anim);
 		method.addSignedIntParameter(mod);
 		method.addSignedIntParameter(cost);
@@ -541,7 +555,7 @@ void CreaturePet::handleEnrageCommand() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 47);
 
 		method.executeWithVoidReturn();
 	} else
@@ -553,7 +567,7 @@ void CreaturePet::handleEmboldenCommand() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 48);
 
 		method.executeWithVoidReturn();
 	} else
@@ -565,7 +579,7 @@ void CreaturePet::handleSpecialAttackCommand(Player* player, int att) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 49);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(att);
 
@@ -579,7 +593,7 @@ void CreaturePet::handleGroupCommand(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, 50);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -592,7 +606,7 @@ void CreaturePet::handleFriendCommand() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, 51);
 
 		method.executeWithVoidReturn();
 	} else
@@ -604,7 +618,7 @@ void CreaturePet::handleFormationCommand(unsigned int form) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, 52);
 		method.addUnsignedIntParameter(form);
 
 		method.executeWithVoidReturn();
@@ -617,7 +631,7 @@ void CreaturePet::handleAddPatrolPointCommand(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, 53);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -630,7 +644,7 @@ void CreaturePet::handleActivatePatrolCommand() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, 54);
 
 		method.executeWithVoidReturn();
 	} else
@@ -642,7 +656,7 @@ void CreaturePet::handleClearPatrolPointsCommand() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, 55);
 
 		method.executeWithVoidReturn();
 	} else
@@ -654,7 +668,7 @@ void CreaturePet::trainMount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, 56);
 
 		method.executeWithVoidReturn();
 	} else
@@ -666,7 +680,7 @@ void CreaturePet::setPositionNumber(int posNumber) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 56);
+		DistributedMethod method(this, 57);
 		method.addSignedIntParameter(posNumber);
 
 		method.executeWithVoidReturn();
@@ -689,153 +703,156 @@ Packet* CreaturePetAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		init((Creature*) inv->getObjectParameter(), inv->getFloatParameter());
 		break;
 	case 7:
-		createDataPad();
+		createDataPad(inv->getUnsignedLongParameter());
 		break;
 	case 8:
-		setLinkedCreature((Player*) inv->getObjectParameter());
+		setPetType(inv->getUnsignedCharParameter());
 		break;
 	case 9:
-		resp->insertLong(getLinkedCreature()->_getObjectID());
+		setLinkedCreature((Player*) inv->getObjectParameter());
 		break;
 	case 10:
-		setDatapadItem((SceneObject*) inv->getObjectParameter());
+		resp->insertLong(getLinkedCreature()->_getObjectID());
 		break;
 	case 11:
-		resp->insertLong(getDatapadItem()->_getObjectID());
+		setDatapadItem((SceneObject*) inv->getObjectParameter());
 		break;
 	case 12:
-		parseItemAttributes();
+		resp->insertLong(getDatapadItem()->_getObjectID());
 		break;
 	case 13:
-		call();
+		parseItemAttributes();
 		break;
 	case 14:
-		store(inv->getBooleanParameter());
+		call();
 		break;
 	case 15:
-		resp->insertBoolean(canCall());
+		store(inv->getBooleanParameter());
 		break;
 	case 16:
-		resp->insertBoolean(isAttackable());
+		resp->insertBoolean(canCall());
 		break;
 	case 17:
-		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
+		resp->insertBoolean(isAttackable());
 		break;
 	case 18:
-		onIncapacitated((SceneObject*) inv->getObjectParameter());
+		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case 19:
-		recoverFromIncapacitation();
+		onIncapacitated((SceneObject*) inv->getObjectParameter());
 		break;
 	case 20:
-		setFaction(inv->getUnsignedIntParameter());
+		recoverFromIncapacitation();
 		break;
 	case 21:
-		setMaxLevel(inv->getUnsignedIntParameter());
+		setFaction(inv->getUnsignedIntParameter());
 		break;
 	case 22:
-		resp->insertBoolean(isCHPet());
+		setMaxLevel(inv->getUnsignedIntParameter());
 		break;
 	case 23:
-		resp->insertBoolean(isDroid());
+		resp->insertBoolean(isCHPet());
 		break;
 	case 24:
-		resp->insertBoolean(isFactionPet());
+		resp->insertBoolean(isDroid());
 		break;
 	case 25:
-		resp->insertBoolean(isInFollowState());
+		resp->insertBoolean(isFactionPet());
 		break;
 	case 26:
-		resp->insertBoolean(isInStayState());
+		resp->insertBoolean(isInFollowState());
 		break;
 	case 27:
-		resp->insertBoolean(isInGuardState());
+		resp->insertBoolean(isInStayState());
 		break;
 	case 28:
-		resp->insertBoolean(isInPatrolState());
+		resp->insertBoolean(isInGuardState());
 		break;
 	case 29:
-		doGrowUp(inv->getBooleanParameter());
+		resp->insertBoolean(isInPatrolState());
 		break;
 	case 30:
-		setGrowth(inv->getFloatParameter());
+		doGrowUp(inv->getBooleanParameter());
 		break;
 	case 31:
-		setLastGrowth(inv->getUnsignedLongParameter());
+		setGrowth(inv->getFloatParameter());
 		break;
 	case 32:
-		initTrainingState(inv->getSignedIntParameter());
+		setLastGrowth(inv->getUnsignedLongParameter());
 		break;
 	case 33:
-		setPetName(inv->getAsciiParameter(_param0_setPetName__String_));
+		initTrainingState(inv->getSignedIntParameter());
 		break;
 	case 34:
-		parseCommandMessage((Player*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_parseCommandMessage__Player_UnicodeString_));
+		setPetName(inv->getAsciiParameter(_param0_setPetName__String_));
 		break;
 	case 35:
-		setCommmandState(inv->getSignedIntParameter());
+		parseCommandMessage((Player*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_parseCommandMessage__Player_UnicodeString_));
 		break;
 	case 36:
-		resp->insertBoolean(hasCommandTrained(inv->getUnsignedIntParameter()));
+		setCommmandState(inv->getSignedIntParameter());
 		break;
 	case 37:
-		resp->insertBoolean(activate());
+		resp->insertBoolean(hasCommandTrained(inv->getUnsignedIntParameter()));
 		break;
 	case 38:
-		deaggro();
+		resp->insertBoolean(activate());
 		break;
 	case 39:
-		handleAttackCommand((Player*) inv->getObjectParameter());
+		deaggro();
 		break;
 	case 40:
-		handleFollowCommand((Player*) inv->getObjectParameter());
+		handleAttackCommand((Player*) inv->getObjectParameter());
 		break;
 	case 41:
-		handleStayCommand();
+		handleFollowCommand((Player*) inv->getObjectParameter());
 		break;
 	case 42:
-		handleGuardCommand();
+		handleStayCommand();
 		break;
 	case 43:
-		handleStoreCommand();
+		handleGuardCommand();
 		break;
 	case 44:
-		handleTransferCommand();
+		handleStoreCommand();
 		break;
 	case 45:
-		handleTrickCommand(inv->getAsciiParameter(_param0_handleTrickCommand__String_int_int_), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		handleTransferCommand();
 		break;
 	case 46:
-		handleEnrageCommand();
+		handleTrickCommand(inv->getAsciiParameter(_param0_handleTrickCommand__String_int_int_), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 47:
-		handleEmboldenCommand();
+		handleEnrageCommand();
 		break;
 	case 48:
-		handleSpecialAttackCommand((Player*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		handleEmboldenCommand();
 		break;
 	case 49:
-		handleGroupCommand((Player*) inv->getObjectParameter());
+		handleSpecialAttackCommand((Player*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 50:
-		handleFriendCommand();
+		handleGroupCommand((Player*) inv->getObjectParameter());
 		break;
 	case 51:
-		handleFormationCommand(inv->getUnsignedIntParameter());
+		handleFriendCommand();
 		break;
 	case 52:
-		handleAddPatrolPointCommand((Player*) inv->getObjectParameter());
+		handleFormationCommand(inv->getUnsignedIntParameter());
 		break;
 	case 53:
-		handleActivatePatrolCommand();
+		handleAddPatrolPointCommand((Player*) inv->getObjectParameter());
 		break;
 	case 54:
-		handleClearPatrolPointsCommand();
+		handleActivatePatrolCommand();
 		break;
 	case 55:
-		trainMount();
+		handleClearPatrolPointsCommand();
 		break;
 	case 56:
+		trainMount();
+		break;
+	case 57:
 		setPositionNumber(inv->getSignedIntParameter());
 		break;
 	default:
@@ -849,8 +866,12 @@ void CreaturePetAdapter::init(Creature* creature, float growth) {
 	return ((CreaturePetImplementation*) impl)->init(creature, growth);
 }
 
-void CreaturePetAdapter::createDataPad() {
-	return ((CreaturePetImplementation*) impl)->createDataPad();
+void CreaturePetAdapter::createDataPad(unsigned long long datapadCRC) {
+	return ((CreaturePetImplementation*) impl)->createDataPad(datapadCRC);
+}
+
+void CreaturePetAdapter::setPetType(unsigned char type) {
+	return ((CreaturePetImplementation*) impl)->setPetType(type);
 }
 
 void CreaturePetAdapter::setLinkedCreature(Player* linkCreature) {

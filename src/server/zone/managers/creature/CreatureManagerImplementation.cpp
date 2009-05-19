@@ -1491,7 +1491,7 @@ void CreatureManagerImplementation::insertCreaturePet(CreaturePet* pet, bool doL
 	}
 }
 
-void CreatureManagerImplementation::setPetDefaultAttributes(CreaturePet* creature,bool doLock) {
+void CreatureManagerImplementation::setPetDefaultAttributes(CreaturePet* creature, bool newPet, bool doLock) {
 	lock(doLock);
 	try {
 		if (doLock)
@@ -1515,7 +1515,10 @@ void CreatureManagerImplementation::setPetDefaultAttributes(CreaturePet* creatur
 		}
 
 		String objectName = creatureConfig.getStringField("objectName");
-
+		if (newPet) {
+			if (creatureConfig.getIntField("mountCRC") > 0)
+			creature->setPetType(CreaturePetImplementation::CHPETUNTRAINEDMOUNT);
+		}
 		creature->setHealer(creatureConfig.getIntField("healer"));
 		creature->setPack(creatureConfig.getIntField("pack"));
 		creature->setHerd(creatureConfig.getIntField("herd"));
@@ -1573,6 +1576,19 @@ void CreatureManagerImplementation::setPetDefaultAttributes(CreaturePet* creatur
 		creature->setSpeed(creatureConfig.getFloatField("speed"));
 		creature->setAcceleration(creatureConfig.getFloatField("acceleration"));
 
+		if (newPet) {
+			try {
+				uint32 dpCRC = creatureConfig.getIntField("datapadItemCRC");
+				creature->getLinkedCreature()->wlock(doLock);
+				creature->createDataPad(dpCRC);
+				if (doLock)
+					creature->getLinkedCreature()->unlock();
+			} catch(...) {
+				System::out <<"error dp create lock\n";
+				if (doLock)
+					creature->getLinkedCreature()->unlock();
+			}
+		}
 		if (doLock)
 			creature->unlock();
 	} catch (...) {
@@ -1584,7 +1600,55 @@ void CreatureManagerImplementation::setPetDefaultAttributes(CreaturePet* creatur
 	if (doLock)
 		unlock();
 }
+void CreatureManagerImplementation::convertPetToMount(CreaturePet* creature, bool doLock) {
+	lock(doLock);
+	try {
+		if (doLock)
+			creature->wlock();
 
+		// Load creature from lua
+		LuaFunction getCreature(getLuaState(), "getCreature", 1);
+		getCreature << creature->getStfName(); // push first argument
+		callFunction(&getCreature);
+
+		LuaObject creatureConfig(getLuaState());
+		if (!creatureConfig.isValidTable()) {
+			StringBuffer ss;
+			ss << "Unknown object stfName " << creature->getStfName();
+			info(ss.toString());
+			creature->unlock();
+			creature->finalize();
+			if (doLock)
+				unlock();
+			return;
+		}
+
+		uint32 mountCRC = creatureConfig.getIntField("mountCRC");
+		if (mountCRC > 0) {
+
+			creature->setPetType(CreaturePetImplementation::CHPETTRAINEDMOUNT);
+			creature->setObjectCRC(mountCRC);
+			creature->setSpeed(creatureConfig.getFloatField("mountSpeed"));
+			creature->setAcceleration(creatureConfig.getFloatField("mountAcceleration"));
+			creature->setOptionsBitmask(0x1080);
+			creature->getDatapadItem()->setUpdated(true);
+
+			if (creature->isInQuadTree()) {
+				creature->removeFromZone();
+				creature->insertToZone(getZone());
+			}
+		}
+		if (doLock)
+				creature->unlock();
+	} catch (...) {
+		if (doLock)
+			creature->unlock();
+		unlock(doLock);
+		return;
+	}
+	if (doLock)
+		unlock();
+}
 void CreatureManagerImplementation::changeStatsToBaby(Creature* creature) {
 	creature->setPvpStatusBitmask(1);
 	creature->setHealth(creature->getHealth() / 2);

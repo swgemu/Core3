@@ -94,7 +94,7 @@ class CreaturePetImplementation : public CreaturePetServant ,public VehicleObjec
 	static const bool debug = true;
 public:
 	static const uint8 CHPET = 0x10;
-	static const uint8 CHPETUNTRAINEDMOUNT = 0x12;
+	static const uint8 CHPETUNTRAINEDMOUNT = 0x11;
 	static const uint8 CHPETTRAINEDMOUNT = 0x12;
 	static const uint8 DROID = 0x20;
 	static const uint8 DROIDCOMBAT = 0x21;
@@ -136,7 +136,7 @@ public:
 	/*
 	 * Creates the datapad item in the pet owners datapad.
 	 */
-	void createDataPad();
+	void createDataPad(uint32 datapadCRC);
 
 	//pet store/load
 
@@ -240,7 +240,9 @@ public:
 		return petType & CHPET;
 	}
 
-	bool isMountTrainable();
+	bool isMountTrainable() {
+		return (petType == CHPETUNTRAINEDMOUNT) && growth > 0.8f;
+	}
 
 	inline bool isMount() {
 		return petType == CHPETTRAINEDMOUNT;

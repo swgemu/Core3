@@ -206,14 +206,6 @@ void CreaturePetImplementation::init(Creature* creature, float growth) {
 	if (zone == NULL)
 		return;
 
-	CreatureManager* creatureManager = zone->getCreatureManager();
-
-	if (creatureManager == NULL) {
-		return;
-	}
-
-	creatureManager->setPetDefaultAttributes(_this,false);
-
 	loadItems();
 
 	if (server == NULL)
@@ -241,6 +233,15 @@ void CreaturePetImplementation::init(Creature* creature, float growth) {
 	if (skill != NULL) {
 		setDefaultSkill(skill);
 	}
+
+	CreatureManager* creatureManager = zone->getCreatureManager();
+
+	if (creatureManager == NULL) {
+		return;
+	}
+
+	creatureManager->setPetDefaultAttributes(_this,true,false);
+
 
 	createItemAttributes();
 }
@@ -381,12 +382,6 @@ void CreaturePetImplementation::parseItemAttributes() {
 
 	CreatureManager* creatureManager = zone->getCreatureManager();
 
-	if (creatureManager == NULL) {
-		return;
-	}
-
-	creatureManager->setPetDefaultAttributes(_this,false);
-
 	loadItems();
 
 	if (server == NULL)
@@ -428,43 +423,15 @@ void CreaturePetImplementation::parseItemAttributes() {
 		commandHelper->trainCommand(i,customCommand);
 	}
 
+
+	if (creatureManager == NULL) {
+		return;
+	}
+
+	creatureManager->setPetDefaultAttributes(_this,false,false);
+
 	if (isMount()) {
-		switch(objectCRC) {
-			case 0xDF44570F:
-				setSpeed(15.0f);
-				break;
-			case 0xA28C8DE4:
-				setSpeed(15.5f);
-				break;
-			case 0x7A65CF41:
-				setSpeed(14.0f);
-				break;
-			case 0x52F8B1CF:
-				setSpeed(18.5f);
-				break;
-			case 0x43F43642:
-				setSpeed(18.0f);
-				break;
-			case 0x973BFD16:
-				setSpeed(14.5f);
-				break;
-			case 0x1A0CA56B:
-				setSpeed(15.0f);
-				break;
-			case 0xADE1B39E:
-				setSpeed(17.5f);
-				break;
-			default:
-				System::out << "no mount\n";
-		}
-
-		linkType = 0xFFFFFFFF;
-
-		setPetType(CHPETTRAINEDMOUNT);
-
-		setAcceleration(getSpeed() / 2);
-
-		optionsBitmask = 0x1080;
+		trainMount();
 	}
 }
 
@@ -720,7 +687,7 @@ void CreaturePetImplementation::addAttributes(AttributeListMessage* alm) {
 }
 
 
-void CreaturePetImplementation::createDataPad() {
+void CreaturePetImplementation::createDataPad(uint32 datapadCRC) {
 	if (debug) {
 		StringBuffer ss;
 		ss << "CreaturePetImplementation::createDatapadItem() " << getLinkedCreature()->getCharacterName().toString();
@@ -728,242 +695,13 @@ void CreaturePetImplementation::createDataPad() {
 	}
 	 Datapad* datapad = getLinkedCreature()->getDatapad();
 
-	 uint32 objCRC = 0x413FB544;
-
-	 if(stfName.indexOf("angler") != -1)
-	 	objCRC = 0x2320411A;
-	 else if(stfName.indexOf("bageraset") != -1)
-	 	objCRC = 0xE3EAD76B;
-	 else if(stfName.indexOf("bantha") != -1)
-	 	objCRC = 0xFD13ABAE;
-	 else if(stfName.indexOf("bark_mite") != -1)
-	 	objCRC = 0x92A57735;
-	 else if(stfName.indexOf("jax") != -1)
-	 	objCRC = 0x7D7C54B5;
-	 else if(stfName.indexOf("blurrg") != -1)
-	 	objCRC = 0xAD494074;
-	 else if(stfName.indexOf("boar_wolf") != -1)
-	 	objCRC = 0xEC271F10;
-	 else if(stfName.indexOf("bocatt") != -1)
-	 	objCRC = 0x572A942B;
-	 else if(stfName.indexOf("bol") != -1)
-	 	objCRC = 0xC89F0554;
-	 else if(stfName.indexOf("bolle_bol") != -1)
-	 	objCRC = 0xCE8E6559;
-	 else if(stfName.indexOf("bolma") != -1)
-	 	objCRC = 0x7DE2DE89;
-	 else if(stfName.indexOf("bordok") != -1)
-	 	objCRC = 0xC19AEE44;
-	 else if(stfName.indexOf("borgle") != -1)
-	 	objCRC = 0xE11D43D0;
-	 else if(stfName.indexOf("brackaset") != -1)
-	 	objCRC = 0x37926FEA;
-	 else if(stfName.indexOf("spineflap") != -1)
-	 	objCRC = 0x51ABA1D;
-	 else if(stfName.indexOf("carrion_spat") != -1)
-	 	objCRC = 0x6FD1A2BC;
-	 else if(stfName.indexOf("choku") != -1)
-	 	objCRC = 0x5F96C70C;
-	 else if(stfName.indexOf("chuba") != -1)
-	 	objCRC = 0x93BF3850;
-	 else if(stfName.indexOf("reptilian_flier") != -1)
-	 	objCRC = 0xF7D40042;
-	 else if(stfName.indexOf("corellian_butterfly") != -1)
-	 	objCRC = 0x588A342F;
-	 else if(stfName.indexOf("sand_panther") != -1)
-	 	objCRC = 0xF9D744D;
-	 else if(stfName.indexOf("slice_hound") != -1)
-	 	objCRC = 0x25F22E01;
-	 else if(stfName.indexOf("cu_pa") != -1)
-	 	objCRC = 0x84DC2FBC;
-	 else if(stfName.indexOf("dalyrake") != -1)
-	 	objCRC = 0xDECFB92E;
-	 else if(stfName.indexOf("dewback") != -1)
-	 	objCRC = 0xA3A3D20F;
-	 else if(stfName.indexOf("dune_lizard") != -1)
-	 	objCRC = 0x8DB8EE2A;
-	 else if(stfName.indexOf("durni") != -1)
-	 	objCRC = 0x2E7286AC;
-	 else if(stfName.indexOf("nuna") != -1)
-	 	objCRC = 0x8AB2BE02;
-	 else if(stfName.indexOf("eopie") != -1)
-	 	objCRC = 0xBBC9E706;
-	 else if(stfName.indexOf("falumpaset") != -1)
-	 	objCRC = 0xA01F4C25;
-	 else if(stfName.indexOf("fambaa") != -1)
-	 	objCRC = 0xC7E995C3;
-	 else if(stfName.indexOf("fanned_rawl") != -1)
-	 	objCRC = 0x6EAEDBEF;
-	 else if(stfName.indexOf("flewt") != -1)
-	 	objCRC = 0xE2C3907A;
-	 else if(stfName.indexOf("flit") != -1)
-	 	objCRC = 0xAE42BA5D;
-	 else if(stfName.indexOf("fynock") != -1)
-	 	objCRC = 0x88405673;
-	 else if(stfName.indexOf("gackle_bat") != -1)
-	 	objCRC = 0xAF83294;
-	 else if(stfName.indexOf("gaping_spider") != -1)
-	 	objCRC = 0xC6C7012C;
-	 else if(stfName.indexOf("gnort") != -1)
-	 	objCRC = 0xAA6167F8;
-	 else if(stfName.indexOf("graul") != -1)
-	 	objCRC = 0x229ED8CB;
-	 else if(stfName.indexOf("gronda") != -1)
-	 	objCRC = 0xB797F66D;
-	 else if(stfName.indexOf("gualama") != -1)
-	 	objCRC = 0x3838F3CD;
-	 else if(stfName.indexOf("gubbur") != -1)
-	 	objCRC = 0x9F37FD4D;
-	 else if(stfName.indexOf("guf_drolg") != -1)
-	 	objCRC = 0x8B232BEC;
-	 else if(stfName.indexOf("gulginaw") != -1)
-	 	objCRC = 0x356D1175;
-	 else if(stfName.indexOf("gurk") != -1)
-	 	objCRC = 0xDDC9651B;
-	 else if(stfName.indexOf("gurnaset") != -1)
-	 	objCRC = 0xD5798BE;
-	 else if(stfName.indexOf("gurreck") != -1)
-	 	objCRC = 0x7FE3572B;
-	 else if(stfName.indexOf("hanadak") != -1)
-	 	objCRC = 0x2994A101;
-	 else if(stfName.indexOf("hermit_spider") != -1)
-	 	objCRC = 0x8D18AD37;
-	 else if(stfName.indexOf("horned_krevol") != -1)
-	 	objCRC = 0x8ED4E4A0;
-	 else if(stfName.indexOf("horned_rasp") != -1)
-	 	objCRC = 0xD0A3D4C2;
-	 else if(stfName.indexOf("huf_dun") != -1)
-	 	objCRC = 0xB8278BCA;
-	 else if(stfName.indexOf("huurton") != -1)
-	 	objCRC = 0x7563BBCE;
-	 else if(stfName.indexOf("ikopi") != -1)
-	 	objCRC = 0x37D4470D;
-	 else if(stfName.indexOf("kaadu") != -1)
-	 	objCRC = 0x6AC9AA60;
-	 else if(stfName.indexOf("kai_tok") != -1)
-	 	objCRC = 0xCDAF55E3;
-	 else if(stfName.indexOf("kima") != -1)
-	 	objCRC = 0xBF41F7F4;
-	 else if(stfName.indexOf("kimogila") != -1)
-	 	objCRC = 0xEFBA1F80;
-	 else if(stfName.indexOf("kliknik") != -1)
-	 	objCRC = 0xB10F7587;
-	 else if(stfName.indexOf("krahbu") != -1)
-	 	objCRC = 0x7A799781;
-	 else if(stfName.indexOf("kusak") != -1)
-	 	objCRC = 0x67B50369;
-	 else if(stfName.indexOf("kwi") != -1)
-	 	objCRC = 0xEDD256C4;
-	 else if(stfName.indexOf("langlatch") != -1)
-	 	objCRC = 0xA2D6F35E;
-	 else if(stfName.indexOf("lantern_bird") != -1)
-	 	objCRC = 0x210D9CE7;
-	 else if(stfName.indexOf("malkloc") != -1)
-	 	objCRC = 0x2CF472CC;
-	 else if(stfName.indexOf("mamien") != -1)
-	 	objCRC = 0xB6D9A48D;
-	 else if(stfName.indexOf("mawgax") != -1)
-	 	objCRC = 0xA369BB;
-	 else if(stfName.indexOf("merek") != -1)
-	 	objCRC = 0x90ECC165;
-	 else if(stfName.indexOf("mott") != -1)
-	 	objCRC = 0x2409965B;
-	 else if(stfName.indexOf("murra") != -1)
-	 	objCRC = 0x20B2176F;
-	 else if(stfName.indexOf("mynock") != -1)
-	 	objCRC = 0x76644856;
-	 else if(stfName.indexOf("narglatch") != -1)
-	 	objCRC = 0xE7C6E524;
-	 else if(stfName.indexOf("nuna") != -1)
-	 	objCRC = 0xB849F0BD;
-	 else if(stfName.indexOf("peko_peko") != -1)
-	 	objCRC = 0x176373C4;
-	 else if(stfName.indexOf("perlek") != -1)
-	 	objCRC = 0x6DA3FF72;
-	 else if(stfName.indexOf("piket") != -1)
-	 	objCRC = 0xD3D60280;
-	 else if(stfName.indexOf("plumed_rasp") != -1)
-	 	objCRC = 0xB14F236F;
-	 else if(stfName.indexOf("pugoriss") != -1)
-	 	objCRC = 0xEE77825B;
-	 else if(stfName.indexOf("purbole") != -1)
-	 	objCRC = 0xED5AE191;
-	 else if(stfName.indexOf("quenker") != -1)
-	 	objCRC = 0x87295687;
-	 else if(stfName.indexOf("rancor") != -1)
-	 	objCRC = 0x521CE1F7;
-	 else if(stfName.indexOf("reptilian_flier") != -1)
-	 	objCRC = 0x78EDD589;
-	 else if(stfName.indexOf("roba") != -1)
-	 	objCRC = 0x7D3625A0;
-	 else if(stfName.indexOf("rock_mite") != -1)
-	 	objCRC = 0x4FA66928;
-	 else if(stfName.indexOf("ronto") != -1)
-	 	objCRC = 0x2F61F7FC;
-	 else if(stfName.indexOf("salt_mynock") != -1)
-	 	objCRC = 0x7C50FD73;
-	 else if(stfName.indexOf("sharnaff") != -1)
-	 	objCRC = 0x104861B3;
-	 else if(stfName.indexOf("shaupaut") != -1)
-	 	objCRC = 0x80AFDEF2;
-	 else if(stfName.indexOf("shear_mite") != -1)
-	 	objCRC = 0xB0D73676;
-	 else if(stfName.indexOf("skreeg") != -1)
-	 	objCRC = 0xE509E783;
-	 else if(stfName.indexOf("snorbal") != -1)
-	 	objCRC = 0xE88C745E;
-	 else if(stfName.indexOf("spined_puc") != -1)
-	 	objCRC = 0xFDA719A3;
-	 else if(stfName.indexOf("spined_snake") != -1)
-	 	objCRC = 0x7DF683A2;
-	 else if(stfName.indexOf("squall") != -1)
-	 	objCRC = 0x2A8CD391;
-	 else if(stfName.indexOf("squill") != -1)
-	 	objCRC = 0xF9AFBCE4;
-	 else if(stfName.indexOf("stintaril") != -1)
-	 	objCRC = 0x2C95DE68;
-	 else if(stfName.indexOf("swirl_prong") != -1)
-	 	objCRC = 0xAB2B80F9;
-	 else if(stfName.indexOf("tanc_mite") != -1)
-	 	objCRC = 0xC737E13A;
-	 else if(stfName.indexOf("thune") != -1)
-	 	objCRC = 0x6E8B2128;
-	 else if(stfName.indexOf("torton") != -1)
-	 	objCRC = 0xACD529C3;
-	 else if(stfName.indexOf("tusk_cat") != -1)
-	 	objCRC = 0x88830C1C;
-	 else if(stfName.indexOf("tybis") != -1)
-	 	objCRC = 0xE22507FC;
-	 else if(stfName.indexOf("veermok") != -1)
-	 	objCRC = 0xC4F1442A;
-	 else if(stfName.indexOf("verne") != -1)
-	 	objCRC = 0x795D4B5F;
-	 else if(stfName.indexOf("vesp") != -1)
-	 	objCRC = 0x3812EB2;
-	 else if(stfName.indexOf("vir_vur") != -1)
-	 	objCRC = 0x32552948;
-	 else if(stfName.indexOf("voritor_lizard") != -1)
-	 	objCRC = 0x5E178DBC;
-	 else if(stfName.indexOf("vynock") != -1)
-	 	objCRC = 0xE438CCBF;
-	 else if(stfName.indexOf("womprat") != -1)
-	 	objCRC = 0x10522A37;
-	 else if(stfName.indexOf("woolamander") != -1)
-	 	objCRC = 0xBDB7AF8A;
-	 else if(stfName.indexOf("worrt") != -1)
-	 	objCRC = 0x78A55603;
-	 else if(stfName.indexOf("zucca_boar") != -1)
-		objCRC = 0x2F9DB65;
-	 /*else if(stfName.indexOf("paralope") != -1) {
-		objCRC = 0x93A584ED;
-	 } else if(stfName.indexOf("rill") != -1) {
-		objCRC = 0xC1FDBAD7;
-	 }*/
+	 if (datapadCRC == 0)
+		 datapadCRC = 0x413FB544;
 
 	 String cName = customName.toString();
 
 	 setDatapadItem(new IntangibleObject(getLinkedCreature()->getNewItemID(), cName, stfFile,
-			 stfName, objCRC, (SceneObject*) datapad));
+			 stfName, datapadCRC, (SceneObject*) datapad));
 
 	try {
 		getDatapadItem()->setWorldObject(_this);
@@ -1886,7 +1624,7 @@ void CreaturePetImplementation::handleTransferCommand() {
 		System::out << "Error: CreaturePetImplementation::handleTransferCommand()\n";
 		return;
 	}
-
+	uint32 datapadCRC = getDatapadItem()->getObjectCRC();
 	getDatapadItem()->sendDestroyTo(getLinkedCreature());
 	getLinkedCreature()->removeDatapadItem(getDatapadItem()->getObjectID());
 	itemManager->deleteDatapadItem(getLinkedCreature(), getDatapadItem(), true);
@@ -1896,7 +1634,7 @@ void CreaturePetImplementation::handleTransferCommand() {
 	creatureLinkID = newOwner->getObjectID();
 	setLinkedCreature(newOwner);
 
-	createDataPad();
+	createDataPad(datapadCRC);
 }
 
 void CreaturePetImplementation::handleTrickCommand(String anim,int mod,int cost) {
@@ -2108,75 +1846,13 @@ void CreaturePetImplementation::trainMount() {
 		info(ss.toString());
 	}
 
-	switch(objectCRC) {
-		case 0x4745F4A5: // bol
-			objectCRC = 0xDF44570F;
-			setSpeed(15.0f);
-			break;
-		case 0xD096946A: // dewback
-			objectCRC = 0xA28C8DE4;
-			setSpeed(15.5f);
-			break;
-		case 0xE9900379:  // bantha
-			objectCRC = 0x7A65CF41;
-			setSpeed(14.0f);
-			break;
-		case 0xBDF0D754: // carrion spat
-			objectCRC = 0x52F8B1CF;
-			setSpeed(18.5f);
-			break;
-		case 0xE26332DA:  // kaadu
-			objectCRC = 0x43F43642;
-			setSpeed(18.0f);
-			break;
-		case 0x35226B4E:  // falumpaset
-			objectCRC = 0x973BFD16;
-			setSpeed(14.5f);
-			break;
-		case 0x797B644E: // brackaset
-			objectCRC = 0x1A0CA56B;
-			setSpeed(15.0f);
-			break;
-		case 0x28259937:  // cu pa
-			objectCRC = 0xADE1B39E;
-			setSpeed(17.5f);
-			break;
-		default:
-			return;
+	CreatureManager* creatureManager = zone->getCreatureManager();
 
+	if (creatureManager == NULL) {
+		return;
 	}
 
-	linkType = 0xFFFFFFFF;
-
-	setPetType(CHPETTRAINEDMOUNT);
-
-	setAcceleration(getSpeed() / 2);
-
-	optionsBitmask = 0x1080;
-
-	getDatapadItem()->setUpdated(true);
-
-	if (isInQuadTree()) {
-		removeFromZone();
-		insertToZone(getZone());
-	}
-	getDatapadItem()->setUpdated(true);
-}
-
-bool CreaturePetImplementation::isMountTrainable() {
-	switch(objectCRC) {
-		case 0x4745F4A5:
-		case 0xD096946A:
-		case 0xE9900379:
-		case 0xBDF0D754:
-		case 0xE26332DA:
-		case 0x35226B4E:
-		case 0x797B644E:
-		case 0x28259937:
-			return growth > 0.8f;
-		default:
-			return false;
-	}
+	creatureManager->convertPetToMount(_this,false);
 }
 
 Coordinate* CreaturePetImplementation::calculateRelativePosition() {
