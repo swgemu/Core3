@@ -124,6 +124,10 @@ kaadu = Creature:new {
 	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0.25,  -- Likely hood to be tamed
+	datapadItemCRC = 1791601248,
+	mountCRC = 1140078146,
+	mountSpeed = 18.0,
+	mountAcceleration = 18.0,
 
 	milk = 1,
 

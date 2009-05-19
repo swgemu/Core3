@@ -124,6 +124,10 @@ cuPa = Creature:new {
 	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0.25,  -- Likely hood to be tamed
+	datapadItemCRC = 2229022652,
+	mountCRC = 2917249950,
+	mountSpeed = 17.5,
+	mountAcceleration = 17.5,
 
 	milk = 1,
 
