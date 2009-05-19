@@ -124,6 +124,10 @@ brackasetFemale = Creature:new {
 	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0.25,  -- Likely hood to be tamed
+	datapadItemCRC = 932343786,
+	mountCRC = 437036395,
+	mountSpeed = 15.0,
+	mountAcceleration = 15.0,
 
 	milk = 1,
 

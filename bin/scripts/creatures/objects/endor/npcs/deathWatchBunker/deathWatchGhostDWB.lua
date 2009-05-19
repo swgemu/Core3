@@ -123,7 +123,11 @@ deathWatchGhostDWB = Creature:new {
 
 	lootGroup = "0,1,3,4,11,15,19,33,46,47", -- Group it belongs to for loot
 
-	tame = 0,  -- Likely hood to be tamed
+	tame = 0,
+	datapadItemCRC = 0,
+	mountCRC = 0,
+	mountSpeed = 0,
+	mountAcceleration = 0,
 
 	milk = 0,
 

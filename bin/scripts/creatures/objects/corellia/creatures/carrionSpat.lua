@@ -124,6 +124,10 @@ carrionSpat = Creature:new {
 	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0.25,  -- Likely hood to be tamed
+	datapadItemCRC = 1876009660,
+	mountCRC = 1392030159,
+	mountSpeed = 18.5,
+	mountAcceleration = 18.5,
 
 	milk = 0,
 
