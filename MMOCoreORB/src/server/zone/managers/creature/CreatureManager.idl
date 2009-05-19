@@ -111,5 +111,6 @@ interface CreatureManager {
 	float getGlobalNPCRegen();
 
 	void insertCreaturePet(CreaturePet pet, boolean doLock = true);
-	void setPetDefaultAttributes(CreaturePet creature, boolean doLock = true);
+	void setPetDefaultAttributes(CreaturePet creature, boolean newPet, boolean doLock = true);
+	void convertPetToMount(CreaturePet creature,  boolean doLock = true);
 }

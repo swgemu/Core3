@@ -177,7 +177,8 @@ public:
 	}
 
 	void insertCreaturePet(CreaturePet* pet, bool doLock = true);
-	void setPetDefaultAttributes(CreaturePet* creature,bool doLock = true);
+	void setPetDefaultAttributes(CreaturePet* creature, bool newPet ,bool doLock = true);
+	void convertPetToMount(CreaturePet* creature,bool doLock = true);
 	void changeStatsToBaby(Creature* creature);
 
 

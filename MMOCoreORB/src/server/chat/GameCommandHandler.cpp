@@ -413,7 +413,10 @@ void GameCommandHandler::init() {
 				"Clears mission vars for a player, in the event they are having problems",
 				"USAGE: @clearMissions <player name>",
 				&clearMissions);
-
+ 	gmCommands->addCommand("growUpPet", PRIVILEGED,
+				"growUpPet",
+				"USAGE: @growUpPet",
+				&growUpPet);
 	 /* Disabled Commands
 
  	gmCommands->addCommand("growUpPet", PRIVILEGED,
@@ -4053,7 +4056,6 @@ void GameCommandHandler::createTestPet(StringTokenizer tokenizer, Player* player
 			if (creature->isBaby()) {
 				pet->init(creature,0.5f);
 				creature->unload();
-				pet->createDataPad();
 			} else {
 				return;
 			}

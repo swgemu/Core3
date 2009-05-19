@@ -27,7 +27,9 @@ public:
 
 	void init(Creature* creature, float growth);
 
-	void createDataPad();
+	void createDataPad(unsigned long long datapadCRC);
+
+	void setPetType(unsigned char type);
 
 	void setLinkedCreature(Player* linkCreature);
 
@@ -145,7 +147,9 @@ public:
 
 	void init(Creature* creature, float growth);
 
-	void createDataPad();
+	void createDataPad(unsigned long long datapadCRC);
+
+	void setPetType(unsigned char type);
 
 	void setLinkedCreature(Player* linkCreature);
 

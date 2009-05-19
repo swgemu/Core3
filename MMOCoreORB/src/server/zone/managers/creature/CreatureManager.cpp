@@ -424,18 +424,33 @@ void CreatureManager::insertCreaturePet(CreaturePet* pet, bool doLock) {
 		((CreatureManagerImplementation*) _impl)->insertCreaturePet(pet, doLock);
 }
 
-void CreatureManager::setPetDefaultAttributes(CreaturePet* creature, bool doLock) {
+void CreatureManager::setPetDefaultAttributes(CreaturePet* creature, bool newPet, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 33);
 		method.addObjectParameter(creature);
+		method.addBooleanParameter(newPet);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureManagerImplementation*) _impl)->setPetDefaultAttributes(creature, doLock);
+		((CreatureManagerImplementation*) _impl)->setPetDefaultAttributes(creature, newPet, doLock);
+}
+
+void CreatureManager::convertPetToMount(CreaturePet* creature, bool doLock) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 34);
+		method.addObjectParameter(creature);
+		method.addBooleanParameter(doLock);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureManagerImplementation*) _impl)->convertPetToMount(creature, doLock);
 }
 
 /*
@@ -531,7 +546,10 @@ Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		insertCreaturePet((CreaturePet*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 33:
-		setPetDefaultAttributes((CreaturePet*) inv->getObjectParameter(), inv->getBooleanParameter());
+		setPetDefaultAttributes((CreaturePet*) inv->getObjectParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		break;
+	case 34:
+		convertPetToMount((CreaturePet*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	default:
 		return NULL;
@@ -648,8 +666,12 @@ void CreatureManagerAdapter::insertCreaturePet(CreaturePet* pet, bool doLock) {
 	return ((CreatureManagerImplementation*) impl)->insertCreaturePet(pet, doLock);
 }
 
-void CreatureManagerAdapter::setPetDefaultAttributes(CreaturePet* creature, bool doLock) {
-	return ((CreatureManagerImplementation*) impl)->setPetDefaultAttributes(creature, doLock);
+void CreatureManagerAdapter::setPetDefaultAttributes(CreaturePet* creature, bool newPet, bool doLock) {
+	return ((CreatureManagerImplementation*) impl)->setPetDefaultAttributes(creature, newPet, doLock);
+}
+
+void CreatureManagerAdapter::convertPetToMount(CreaturePet* creature, bool doLock) {
+	return ((CreatureManagerImplementation*) impl)->convertPetToMount(creature, doLock);
 }
 
 /*

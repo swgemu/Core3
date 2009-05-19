@@ -87,7 +87,9 @@ public:
 
 	void insertCreaturePet(CreaturePet* pet, bool doLock = true);
 
-	void setPetDefaultAttributes(CreaturePet* creature, bool doLock = true);
+	void setPetDefaultAttributes(CreaturePet* creature, bool newPet, bool doLock = true);
+
+	void convertPetToMount(CreaturePet* creature, bool doLock = true);
 
 protected:
 	CreatureManager(DummyConstructorParameter* param);
@@ -159,7 +161,9 @@ public:
 
 	void insertCreaturePet(CreaturePet* pet, bool doLock);
 
-	void setPetDefaultAttributes(CreaturePet* creature, bool doLock);
+	void setPetDefaultAttributes(CreaturePet* creature, bool newPet, bool doLock);
+
+	void convertPetToMount(CreaturePet* creature, bool doLock);
 
 protected:
 	String _param0_verifyCreatureSpawn__String_;
