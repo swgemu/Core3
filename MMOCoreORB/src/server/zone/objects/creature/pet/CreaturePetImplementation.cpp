@@ -134,6 +134,7 @@ void CreaturePetImplementation::init() {
 	formation = FORMATIONNONE;
 
 	//nextPatrolPoint = 0;
+	attackGrowth = 0;
 }
 
 void CreaturePetImplementation::init(Creature* creature, float growth) {
@@ -301,6 +302,9 @@ void CreaturePetImplementation::parseItemAttributes() {
 
 	attr = "lastGrowth";
 	setLastGrowth(itemAttributes->getUnsignedLongAttribute(attr));
+
+	attr = "attackGrowth";
+	setAttackGrowth(itemAttributes->getUnsignedLongAttribute(attr));
 
 	attr = "petType";
 	setPetType(itemAttributes->getIntAttribute(attr));
@@ -762,8 +766,8 @@ void CreaturePetImplementation::createDataPad() {
 	 	objCRC = 0x5F96C70C;
 	 else if(stfName.indexOf("chuba") != -1)
 	 	objCRC = 0x93BF3850;
-	 //else if(stfName.indexOf("condor_dragon") != -1)
-	 //	objCRC = 0xF7D40042;
+	 else if(stfName.indexOf("reptilian_flier") != -1)
+	 	objCRC = 0xF7D40042;
 	 else if(stfName.indexOf("corellian_butterfly") != -1)
 	 	objCRC = 0x588A342F;
 	 else if(stfName.indexOf("sand_panther") != -1)
@@ -1463,25 +1467,28 @@ bool CreaturePetImplementation::attack(CreatureObject* target) {
 		return false;
 	}
 
-	Skill* skill = getDefaultSkill();
+	Skill* skill = NULL;
 
 	if (nextAttack != -1 && getNumberOfSkills() > nextAttack) {
 		skill = getSkillAt(nextAttack);
 		nextAttack = -1;
 	}
-	System::out << "1\n";
+
 	if (skill == NULL)
-		return true;
-	System::out << "2\n";
+		skill = getDefaultSkill();
+
 	uint32 actionCRC = skill->getNameCRC();
 
 	if (weaponObject != NULL
 			&& (!isInRange(target, weaponObject->getMaxRange()))) {
+		if (!isInRange(target, skill->getRange())) {
+			return true;
+		}
+	} /*else if (!isInRange(target, skill->getRange())) {
+		System::out << "PET not in skill range\n";
 		return true;
-	} else if (!isInRange(target, skill->getRange())) {
-		return true;
-	}
-	System::out << "3\n";
+	}*/
+
 	//info("queuing attacking");
 
 	String modifier = "";
@@ -1517,6 +1524,8 @@ bool CreaturePetImplementation::attack(CreatureObject* target) {
 
 	nextAttackDelay.update();
 	nextAttackDelay.addMiliTime((uint64) (delay * 1000));
+
+	setAttackGrowth(++attackGrowth);
 	return true;
 }
 
@@ -1544,8 +1553,7 @@ void CreaturePetImplementation::doGrowUp(bool updateTime) {
 
 	uint32 elapsedTime = currentTime.getTime() - lastGrowth.getTime();
 
-	float growCycles = (float)round((float)elapsedTime / (86400 + 13000));
-
+	float growCycles = (float)(elapsedTime / 86400);
 	if (growCycles < 0.05f)
 		return;
 
@@ -1554,6 +1562,7 @@ void CreaturePetImplementation::doGrowUp(bool updateTime) {
 		growth = 1.0f;
 
 	setHeight(growth);
+	setGrowth(growth);
 	setBaby(false);
 
 	setHealthMax((int) ((float)getBaseHealth() * growth));
@@ -1592,8 +1601,8 @@ void CreaturePetImplementation::doGrowUp(bool updateTime) {
 
 	if (growth < 1.0f)	{
 		lastGrowth.update();
-		setLastGrowth(lastGrowth.getTime());
-
+		setLastGrowth(lastGrowth.getTime() + System::random(13000) - (attackGrowth * 6));
+		setAttackGrowth(0);
 		CreaturePetGrowEvent* growEvent = new CreaturePetGrowEvent(_this);
 		server->addEvent(growEvent);
 	}
@@ -1608,6 +1617,8 @@ void CreaturePetImplementation::initTrainingState(int command) {
 		trainingPhaseCounter = 0;
 		trainingPhase = commandToTrain;
 	}
+	showFlyText("npc_reaction/flytext", "alert", 0xFF, 0xFF, 0xFF);
+
 }
 
 void CreaturePetImplementation::setPetName(String& name) {
@@ -1655,14 +1666,17 @@ void CreaturePetImplementation::parseCommandMessage(Player* player, const Unicod
 		if (player != getLinkedCreature())
 			return;
 
-		if(System::random(1) == 1 && trainingPhaseCounter < 3) {
+		if(command.indexOf("\\") != -1 || (System::random(1) == 1 && trainingPhaseCounter < 3)) {
 			trainingPhase = commandToTrain;
 			trainingPhaseCounter++;
+			showFlyText("npc_reaction/flytext", "confused", 0xFF, 0xFF, 0xFF);
 
 			commandToTrain = -1;
 			getLinkedCreature()->sendSystemMessage("pet/pet_menu","pet_nolearn");
 			return;
 		}
+		showFlyText("npc_reaction/flytext", "threaten", 0xFF, 0xFF, 0xFF);
+
 		getLinkedCreature()->sendSystemMessage("pet/pet_menu","pet_learn");
 
 		bool newCommand = commandHelper->getBaseCommand(commandToTrain).isEmpty();
@@ -1793,6 +1807,7 @@ void CreaturePetImplementation::handleFollowCommand(Player* target) {
 
 	if (aggroedCreature != NULL)
 		deaggro();
+	aggroedCreature = NULL;
 	patrolMode = false;
 	followTarget = target;
 }

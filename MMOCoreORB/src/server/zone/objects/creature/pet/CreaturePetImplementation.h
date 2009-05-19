@@ -87,6 +87,7 @@ class CreaturePetImplementation : public CreaturePetServant ,public VehicleObjec
 	uint8 positionNumber;
 	uint8 formation;
 
+	uint64 attackGrowth;
 	//Vector<Coordinate*> patrolPoints;
 	//uint8 nextPatrolPoint;
 
@@ -227,6 +228,12 @@ public:
 		lastGrowth = mStamp;
 		String attr("lastGrowth");
 		itemAttributes->setUnsignedLongAttribute(attr, stamp);
+	}
+
+	inline void setAttackGrowth(uint64 att) {
+		attackGrowth = att;
+		String attr("attackGrowth");
+		itemAttributes->setUnsignedLongAttribute(attr, attackGrowth);
 	}
 
 	inline bool isCHPet() {

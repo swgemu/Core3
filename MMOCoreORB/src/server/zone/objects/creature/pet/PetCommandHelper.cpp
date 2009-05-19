@@ -100,7 +100,7 @@ void PetCommandHelper::trainName(CreaturePet* pet) {
 		for (int j = 0 ; j < cmd.length() ; j++) {
 			char c = cmd.charAt(j);
 			if (c == ' ') {
-				nameCandidates->put(tempName,nameCandidates->get(tempName) + 1);
+				nameCandidates->put(filterName(tempName),nameCandidates->get(tempName) + 1);
 				tempName += c;
 			} else {
 				tempName += c;
@@ -209,4 +209,8 @@ String PetCommandHelper::getStfDesc(int command) {
 			break;
 	}
 	return stfDesc;
+}
+
+String& PetCommandHelper::filterName(String& name) {
+	return name;
 }
