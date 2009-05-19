@@ -1343,21 +1343,17 @@ void CreatureImplementation::doCamoCheck(CreatureObject* target) {
 			return;
 		}
 
-		float rndNumber = (float) rand()/RAND_MAX;
-		float score = target->getMaskScent();
+		int score = target->getMaskScent();
 
 
 
 		if (targetCamoType == CamoSkill::MASKSCENT)
-			score -= 1.0f * (float) getLevel();
+			score -= 1.0f * getLevel();
 		else
-			score -= 0.5f * (float) getLevel();
-
-		score = score / 100.0f;
-
+			score -= 0.5f * getLevel();
 
 		if (target->isInCombat())
-			score *= 0.75f;
+			score = 5;
 		if (target->isProne())
 			score *= 1.25f;
 		if (target->isMountedCreature())
@@ -1366,13 +1362,12 @@ void CreatureImplementation::doCamoCheck(CreatureObject* target) {
 		if(!isCreature())
 			score *= 0.75f;
 
-		if (score > 0.9f)
-			score = 0.9f;
-		else if (score < 0.1f)
-			score = 0.1f;
+		if (score > 90)
+			score = 90;
+		else if (score < 1)
+			score = 1;
 
-
-		if (rndNumber < score) {
+		if (System::random(100) < score) {
 			if (!target->isInCombat()) {
 				if (target->isPlayer()) {
 					Player* player = (Player*) target;
