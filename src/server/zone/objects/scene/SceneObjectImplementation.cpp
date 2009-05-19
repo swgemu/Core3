@@ -741,7 +741,7 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 				int petLevel = creature->getLevel();
 
 				for ( int j = 0; j < dmg->getSize(); j++) {
-					float damage = (float)dmg->getDamage(j);
+					float damage = (float)dmg->getDamage(j) / 4;
 
 					xpaddsingle = (damage/total)*20.0f*((float)levels);
 

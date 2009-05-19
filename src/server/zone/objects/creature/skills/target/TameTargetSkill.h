@@ -81,12 +81,12 @@ public:
 			return 0;
 
 		if (!targetCreature->isBaby()) {
-			player->sendSystemMessage("Failed to tame creature");
+			player->sendSystemMessage("Failed to tame creature.");
 			return 0;
 		}
 
 		if (targetCreature->isInCombat()) {
-			player->sendSystemMessage("Failed to tame creature");
+			player->sendSystemMessage("Failed to tame creature.");
 			return 0;
 		}
 
@@ -101,7 +101,7 @@ public:
 		}
 
 		if (!player->isInRange(targetCreature,10.0f)) {
-			player->sendSystemMessage("Failed to tame creature");
+			player->sendSystemMessage("Failed to tame creature.");
 			return 0;
 		}
 
@@ -111,6 +111,7 @@ public:
 			stage = Integer::valueOf(modifier);
 
 		if (player->isTameing() && (0 == stage)) {
+			player->sendSystemMessage("You have to wait to tame another creature.");
 			return 0;
 		}
 
@@ -125,7 +126,7 @@ public:
 		if (creature->isInCombat() || player->isInCombat() ||
 				creature->isIncapacitated() || creature->isDead() ||
 				player->isIncapacitated() || player->isDead()) {
-			player->sendSystemMessage("Failed to tame creature");
+			player->sendSystemMessage("Failed to tame creature.");
 			player->setTameing(false);
 			return;
 		}
@@ -156,7 +157,7 @@ public:
 				bool notInRange = !player->isInRange(creature,10.0f);
 
 				if (notInRange || (creature->isAggressive() && creature->getLevel() > System::random(player->getSkillMod("tame_aggro")))) {
-					player->sendSystemMessage("Failed to tame Creature");
+					player->sendSystemMessage("Failed to tame Creature.");
 					if (System::random(1) == 1) {
 						creature->updateTarget(player);
 						creature->setCombatState();
@@ -167,7 +168,7 @@ public:
 					player->setTameing(false);
 					return;
 				}else if (notInRange || creature->getLevel() > System::random(player->getSkillMod("tame_non_aggro"))) {
-					player->sendSystemMessage("Failed to tame creature");
+					player->sendSystemMessage("Failed to tame creature.");
 					if (System::random(4) == 1) {
 						creature->updateTarget(player);
 						creature->setCombatState();
@@ -178,8 +179,6 @@ public:
 					player->setTameing(false);
 					return;
 				}
-				creature->deaggro();
-
 				CreaturePet* pet = new CreaturePet(player,player->getNewItemID());
 
 				if (pet == NULL) {

@@ -92,6 +92,7 @@ public:
 	void trainCommand(int command, String& commandMessage);
 
 	void trainName(CreaturePet* pet);
+	String& filterName(String& name);
 
 	static String getStfDesc(int command);
 };

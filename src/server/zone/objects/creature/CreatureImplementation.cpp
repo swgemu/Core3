@@ -1021,7 +1021,6 @@ bool CreatureImplementation::doMovement() {
 		maxDistance = weaponObject->getMaxRange();
 
 	if (dist < maxDistance) {
-
 		//info("reached destintaion");
 
 		if (aggroedCreature == NULL) {
@@ -1125,7 +1124,7 @@ void CreatureImplementation::createHarvestList() {
 
 		for (int i = 0; i < group->getGroupSize(); ++i) {
 			CreatureObject* creo = group->getGroupMember(i);
-			if (creo->isPlayer()) {
+			if (creo->isPlayer() && creo != owner) {
 				tempPlayer = (Player*) creo;
 
 				if (tempPlayer != NULL && tempPlayer->hasSkillBox(skillBox))
@@ -1226,7 +1225,7 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 	}
 
 	if (skill == NULL)
-		return true;
+		skill = getDefaultSkill();
 
 	//updateTarget(target->getObjectID());
 	if (isDead() || isKnockedDown())
@@ -1234,10 +1233,13 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 
 	if (weaponObject != NULL
 			&& (!isInRange(target, weaponObject->getMaxRange()))) {
+		if (!isInRange(target, skill->getRange())) {
+			return true;
+		}
+	} /*else if (!isInRange(target, skill->getRange())) {
+		System::out << "NPC not in skill range\n";
 		return true;
-	} else if (!isInRange(target, skill->getRange())) {
-		return true;
-	}
+	}*/
 
 	//info("queuing attacking");
 
