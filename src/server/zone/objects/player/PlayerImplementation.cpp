@@ -1943,8 +1943,14 @@ void PlayerImplementation::updateAdminLevel(uint32 level) {
 		//Set name to have staff tag.
 	} else if (level == NORMAL) {
 		//Remove staff chat if they have it.
-		//if (chatmanager != NULL)
-			//chatmanager->removeFromStaffChat(_this);
+		if (chatmanager != NULL) {
+			ChatRoom* staffchat = chatmanager->getStaffChat();
+
+			if (staffchat != NULL)
+				staffchat->removePlayer(_this);
+		}
+
+		//Do we need to update their name too?
 	}
 
 	setAdminLevel(level);

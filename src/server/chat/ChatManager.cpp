@@ -610,12 +610,24 @@ ChatRoom* ChatManager::getChatRoomByGamePath(ChatRoom* game, const String& path)
 		return ((ChatManagerImplementation*) _impl)->getChatRoomByGamePath(game, path);
 }
 
-unsigned int ChatManager::getNextRoomID() {
+ChatRoom* ChatManager::getStaffChat() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 48);
+
+		return (ChatRoom*) method.executeWithObjectReturn();
+	} else
+		return ((ChatManagerImplementation*) _impl)->getStaffChat();
+}
+
+unsigned int ChatManager::getNextRoomID() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 49);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -627,7 +639,7 @@ int ChatManager::getPlayerCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, 50);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -639,7 +651,7 @@ bool ChatManager::isMute() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, 51);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -651,7 +663,7 @@ void ChatManager::setMute(bool isMuted) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, 52);
 		method.addBooleanParameter(isMuted);
 
 		method.executeWithVoidReturn();
@@ -797,15 +809,18 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertLong(getChatRoomByGamePath((ChatRoom*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_getChatRoomByGamePath__ChatRoom_String_))->_getObjectID());
 		break;
 	case 48:
-		resp->insertInt(getNextRoomID());
+		resp->insertLong(getStaffChat()->_getObjectID());
 		break;
 	case 49:
-		resp->insertSignedInt(getPlayerCount());
+		resp->insertInt(getNextRoomID());
 		break;
 	case 50:
-		resp->insertBoolean(isMute());
+		resp->insertSignedInt(getPlayerCount());
 		break;
 	case 51:
+		resp->insertBoolean(isMute());
+		break;
+	case 52:
 		setMute(inv->getBooleanParameter());
 		break;
 	default:
@@ -981,6 +996,10 @@ ChatRoom* ChatManagerAdapter::getGameRoom(const String& game) {
 
 ChatRoom* ChatManagerAdapter::getChatRoomByGamePath(ChatRoom* game, const String& path) {
 	return ((ChatManagerImplementation*) impl)->getChatRoomByGamePath(game, path);
+}
+
+ChatRoom* ChatManagerAdapter::getStaffChat() {
+	return ((ChatManagerImplementation*) impl)->getStaffChat();
 }
 
 unsigned int ChatManagerAdapter::getNextRoomID() {

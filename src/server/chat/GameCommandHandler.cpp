@@ -2245,7 +2245,7 @@ void GameCommandHandler::setAdminLevel(StringTokenizer tokenizer, Player* player
 		if (target != player)
 			target->wlock(player);
 
-		target->setAdminLevel(level);
+		target->updateAdminLevel(level);
 
 		if (target != player)
 			target->unlock();

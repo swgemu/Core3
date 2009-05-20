@@ -167,6 +167,10 @@ public:
 	ChatRoom* getGameRoom(const String& game);
 	ChatRoom* getChatRoomByGamePath(ChatRoom* game, const String& path);
 
+	inline ChatRoom* getStaffChat() {
+		return staffRoom;
+	}
+
 	inline uint32 getNextRoomID() {
 		return ++roomID;
 	}
