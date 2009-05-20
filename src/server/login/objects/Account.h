@@ -106,39 +106,41 @@ public:
 
 			int validateResult = validateForumAccount(configManager);
 
+			// If the check against forum db fails, bail out of the validate. If successful, continue with the check
 			if (validateResult != 0)
 				return validateResult;
-			else
-				return ACCOUNTDOESNTEXIST;
 		}
 
 		// Authentication against the account table
 		try {
-			// Check if the account exists at all
 			String query = "SELECT * FROM account WHERE username = \'" + username + "\'";
 			ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-			if(!res->next()) {
+			if (!res->next()) {
 				delete res;
 				return ACCOUNTDOESNTEXIST;
 			}
 
-			// If the account exists, check the password
-			query += " and password = sha1(\'" + password + "\')";
+			delete res;
+
+			// If the account exists and forum integration is off, check the password. (Forum pass was already checked above)
+			if (configManager->getUseVBIngeration() == 0)
+				query += " and password = sha1(\'" + password + "\')";
+
 			ResultSet* resP = ServerDatabase::instance()->executeQuery(query);
+
 			accountID = -1;
+			// Snatch the account and station id's from the return
 			if (resP->next()) {
 				accountID = resP->getInt(0);
 				stationID = resP->getUnsignedInt(3);
+			} else {
+				delete resP;
+				return ACCOUNTBADPW;
 			}
 
-			delete res;
 			delete resP;
 
-			// If account id is set, password was correct
-			if (accountID != -1)
-				return ACCOUNTOK;
-			else
-				return ACCOUNTBADPW;
+			return ACCOUNTOK;
 		} catch(DatabaseException& e) { //thrown if any of the queries fail, indicates server is down
 			System::out << e.getMessage() << endl;
 			return SERVERERROR;
@@ -159,8 +161,7 @@ public:
 			ServerDatabase::instance()->executeStatement(query);
 
 			return ACCOUNTOK;
-		} catch(DatabaseException& e) {
-			System::out << e.getMessage() << endl;
+		} catch(DatabaseException& e) { //rare
 			return ACCOUNTINUSE;
 		}
 	}
@@ -250,7 +251,7 @@ public:
 
 			delete res;
 
-			return ACCOUNTDOESNTEXIST;
+			return ACCOUNTINUSE;
 		} catch(DatabaseException& e) {
 			System::out << e.getMessage() << endl;
 			return SERVERERROR;

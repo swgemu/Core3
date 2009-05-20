@@ -115,8 +115,8 @@ void LoginPacketHandler::handleLoginClientID(Message* pack) {
 			account.login(client);
 			return;
 		case ACCOUNTINUSE:
-			errtype = "Bad Password";
-			errmsg= "Either you have mistyped your password, or this account is already in use.";
+			errtype = "Error";
+			errmsg= "Either you have mistyped your username, password, or this account is already in use.";
 			ver = new ErrorMessage(errtype, errmsg, 0x00);
 			client->sendMessage(ver);
 			return;
