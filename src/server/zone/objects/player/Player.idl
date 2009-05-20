@@ -455,8 +455,9 @@ interface Player implements CreatureObject {
 
 	void setLoggingIn();
 
-	void setAdminLevel(int level);
-	int getAdminLevel();
+	void updateAdminLevel(unsigned int level);
+	void setAdminLevel(unsigned int level);
+	unsigned int getAdminLevel();
 
 	void setLastTestPositionX(float pos);
 	void setLastTestPositionY(float pos);
@@ -669,6 +670,7 @@ interface Player implements CreatureObject {
 	void setGuildLeader(boolean guildLeader = true);
 
 	void loadGuildChat();
+	void loadStaffChat();
 
 	//Guild Bitmask Permissions
 	void setGuildPermissions(unsigned int bit);

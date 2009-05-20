@@ -82,6 +82,7 @@ class ChatManagerImplementation : public ChatManagerServant, public Mutex {
 
 	VectorMap<String, ChatRoom*> gameRooms;
 
+	ChatRoom* staffRoom;
 	ChatRoom* groupRoom;
 	ChatRoom* guildRoom;
 	ChatRoomMap* roomMap;
@@ -148,6 +149,7 @@ public:
 	void sendRoomList(Player* player);
 
 	void sendGuildChat(Player* player);
+	void sendStaffChat(Player* player);
 
 	ChatRoom* createGroupRoom(uint32 groupID, Player* creator);
 

@@ -531,9 +531,11 @@ public:
 
 	void setLoggingIn();
 
-	void setAdminLevel(int level);
+	void updateAdminLevel(unsigned int level);
 
-	int getAdminLevel();
+	void setAdminLevel(unsigned int level);
+
+	unsigned int getAdminLevel();
 
 	void setLastTestPositionX(float pos);
 
@@ -798,6 +800,8 @@ public:
 	void setGuildLeader(bool guildLeader = true);
 
 	void loadGuildChat();
+
+	void loadStaffChat();
 
 	void setGuildPermissions(unsigned int bit);
 
@@ -1546,9 +1550,11 @@ public:
 
 	void setLoggingIn();
 
-	void setAdminLevel(int level);
+	void updateAdminLevel(unsigned int level);
 
-	int getAdminLevel();
+	void setAdminLevel(unsigned int level);
+
+	unsigned int getAdminLevel();
 
 	void setLastTestPositionX(float pos);
 
@@ -1813,6 +1819,8 @@ public:
 	void setGuildLeader(bool guildLeader);
 
 	void loadGuildChat();
+
+	void loadStaffChat();
 
 	void setGuildPermissions(unsigned int bit);
 

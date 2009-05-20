@@ -161,6 +161,13 @@ void ChatManagerImplementation::initiateRooms() {
 	nabooPlanetary->deploy();
 	nabooRoom->addSubRoom(nabooPlanetary);
 	addRoom(nabooPlanetary);
+
+	//Staff only chat.
+	staffRoom = new ChatRoom(server, core3Room, "Staff", getNextRoomID());
+	staffRoom->deploy();
+	staffRoom->setPrivate();
+	core3Room->addSubRoom(staffRoom);
+	addRoom(staffRoom);
 }
 
 void ChatManagerImplementation::destroyRooms() {
@@ -1025,6 +1032,16 @@ void ChatManagerImplementation::sendRoomList(Player* player) {
  	player->sendMessage(crl);
 }
 
+void ChatManagerImplementation::sendStaffChat(Player* player) {
+	if (!player->isPrivileged())
+		return;
+
+	if (staffRoom != NULL) {
+		staffRoom->sendTo(player);
+		staffRoom->addPlayer(player, false);
+	}
+}
+
 void ChatManagerImplementation::sendGuildChat(Player* player) {
 	if (player->getGuildID() == 0)
 		return;
@@ -1047,7 +1064,6 @@ void ChatManagerImplementation::sendGuildChat(Player* player) {
 		guildchat->addPlayer(player, false);
 	}
 }
-
 
 void ChatManagerImplementation::populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg) {
 	if (channel->isPublic())

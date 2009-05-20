@@ -1888,6 +1888,7 @@ void PlayerImplementation::notifySceneReady() {
 		playerObject->loadIgnore();
 
 		loadGuildChat();
+		loadStaffChat();
 
 		if (isDead())
 			onDeath();
@@ -1920,6 +1921,33 @@ void PlayerImplementation::loadGuildChat() {
 		chatManager->sendGuildChat(_this);
 	else
 		error("Error: PlayerManagerImplementation::loadGuildChat() chatManager is null ");
+}
+
+void PlayerImplementation::loadStaffChat() {
+	if (!isPrivileged())
+		return;
+
+	ChatManager* chatmanager = server->getChatManager();
+
+	if (chatmanager != NULL)
+		chatmanager->sendStaffChat(_this);
+	else
+		error("Error sending StaffChat channel to privileged player.");
+}
+
+void PlayerImplementation::updateAdminLevel(uint32 level) {
+	ChatManager* chatmanager = server->getChatManager();
+	//If they aren't already a staff member, and they aren't being set to normal level, send staff chat.
+	if (!isPrivileged() && (level != NORMAL)){
+		loadStaffChat();
+		//Set name to have staff tag.
+	} else if (level == NORMAL) {
+		//Remove staff chat if they have it.
+		//if (chatmanager != NULL)
+			//chatmanager->removeFromStaffChat(_this);
+	}
+
+	setAdminLevel(level);
 }
 
 void PlayerImplementation::sendSystemMessage(const String& message) {

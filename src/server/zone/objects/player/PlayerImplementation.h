@@ -1173,6 +1173,7 @@ public:
 	bool updateGuild(uint32 gid);
 	void updateGuild(Guild* guild);
 	void loadGuildChat();
+	void loadStaffChat();
 
 	void toggleGuildPermissionsBit(uint32 bit);
 
@@ -1765,11 +1766,13 @@ public:
 
 	void sendGuildList();
 
-	void setAdminLevel(int level) {
+	virtual void updateAdminLevel(uint32 level);
+
+	void setAdminLevel(uint32 level) {
 		playerObject->setAdminLevel(level);
 	}
 
-	inline int getAdminLevel() {
+	inline uint32 getAdminLevel() {
 		return playerObject->getAdminLevel();
 	}
 
