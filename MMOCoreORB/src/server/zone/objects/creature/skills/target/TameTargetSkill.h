@@ -98,7 +98,7 @@ public:
 			return 0;
 		}
 
-		if (targetCreature->isAggressive() && player->getSkillMod("tame_aggro") == 0) {
+		if (targetCreature->isAggressiveBaby() && player->getSkillMod("tame_aggro") == 0) {
 			player->sendSystemMessage("pet/pet_menu","sys_lack_skill");
 			return 0;
 		}
@@ -171,7 +171,7 @@ public:
 				player->say("Don't bite me.");
 				bool notInRange = !player->isInRange(creature,10.0f);
 
-				if (notInRange || (creature->isAggressive() && creature->getLevel() > System::random(player->getSkillMod("tame_aggro")))) {
+				if (notInRange || (creature->isAggressiveBaby() && creature->getLevel() > System::random(player->getSkillMod("tame_aggro")))) {
 					player->sendSystemMessage("Failed to tame Creature.");
 					if (System::random(1) == 1) {
 						creature->updateTarget(player);

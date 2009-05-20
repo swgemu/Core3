@@ -931,6 +931,10 @@ public:
 
 	bool isBaby();
 
+	void setAggressiveBaby(bool ag);
+
+	bool isAggressiveBaby();
+
 	void setBaseAttribute(unsigned char attribute, int value);
 
 	void setBaseHealth(int value);
@@ -2273,6 +2277,10 @@ public:
 	unsigned int getFerocity();
 
 	bool isBaby();
+
+	void setAggressiveBaby(bool ag);
+
+	bool isAggressiveBaby();
 
 	void setBaseAttribute(unsigned char attribute, int value);
 

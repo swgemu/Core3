@@ -56,7 +56,7 @@ class TameEvent : public Event {
 	int stage;
 
 public:
-	TameEvent(Player* pl, Creature* target, int st) : Event(2000) {
+	TameEvent(Player* pl, Creature* target, int st) : Event(6000) {
 		player = pl;
 		crea = target;
 		stage = st;

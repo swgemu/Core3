@@ -388,7 +388,7 @@ protected:
 
 	int ferocity;
 	bool baby;
-
+	bool aggressiveBaby;
 	uint8 campMod;
 	uint8 campAggro;
 
@@ -2841,6 +2841,14 @@ public:
 
 	bool isBaby() {
 		return baby;
+	}
+
+	void setAggressiveBaby(bool ag) {
+		aggressiveBaby = ag;
+	}
+
+	bool isAggressiveBaby() {
+		return aggressiveBaby;
 	}
 
 	Player* getCamoXPTraget() {

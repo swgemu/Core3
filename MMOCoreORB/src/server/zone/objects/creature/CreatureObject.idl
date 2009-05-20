@@ -706,6 +706,8 @@ interface CreatureObject implements TangibleObject {
 
 	unsigned int getFerocity();
 	boolean isBaby();
+	void setAggressiveBaby(boolean ag);
+	boolean isAggressiveBaby();
 
 	// setters
 	void setBaseAttribute(unsigned char attribute, int value);

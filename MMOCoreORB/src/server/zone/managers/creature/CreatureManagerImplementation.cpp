@@ -1662,6 +1662,9 @@ void CreatureManagerImplementation::changeStatsToBaby(Creature* creature) {
 	creature->setBaby(true);
 	creature->setLevel(creature->getLevel() / 2);
 
+	creature->setAggressiveBaby(creature->isAggressive());
+	creature->setAggressive(false);
+
 	creature->setCreatureWeaponMinDamage(creature->getCreatureWeaponMinDamage() / 2);
 	creature->setCreatureWeaponMaxDamage(creature->getCreatureWeaponMaxDamage() / 2);
 	creature->loadItems();
