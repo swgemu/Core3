@@ -107,6 +107,8 @@ public:
 
 	ChatRoom* getChatRoomByGamePath(ChatRoom* game, const String& path);
 
+	ChatRoom* getStaffChat();
+
 	unsigned int getNextRoomID();
 
 	int getPlayerCount();
@@ -214,6 +216,8 @@ public:
 	ChatRoom* getGameRoom(const String& game);
 
 	ChatRoom* getChatRoomByGamePath(ChatRoom* game, const String& path);
+
+	ChatRoom* getStaffChat();
 
 	unsigned int getNextRoomID();
 

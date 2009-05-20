@@ -118,6 +118,7 @@ interface ChatManager {
 	ChatRoom getChatRoomByFullPath(const String path);
 	ChatRoom getGameRoom(const String game);
 	ChatRoom getChatRoomByGamePath(ChatRoom game, const String path);
+	ChatRoom getStaffChat();
 
 	unsigned int getNextRoomID();
 
