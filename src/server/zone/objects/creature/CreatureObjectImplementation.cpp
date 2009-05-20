@@ -289,6 +289,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 
 	ferocity = 0;
 	baby = false;
+	aggressiveBaby = false;
 	tame = 0.0f;
 
 	//Regeneration modifiers
