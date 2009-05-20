@@ -5893,11 +5893,9 @@ void PlayerImplementation::unconsent(const String& name) {
 
 void PlayerImplementation::crashClient() {
 
-	// Rick Roll them
-	LaunchBrowserMessage* lbm = new LaunchBrowserMessage("smouch.net/lol");
-
-	_this->sendMessage(lbm);
-	// http://smouch.net/lol/
+	// Rick Roll them - optional.
+	//LaunchBrowserMessage* lbm = new LaunchBrowserMessage("smouch.net/lol");
+	//_this->sendMessage(lbm);
 
 	// Crash Client
 	ErrorMessage* errMsg = new ErrorMessage("You aren't welcome", "Get out and don't come back", true);
