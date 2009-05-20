@@ -79,6 +79,7 @@ public:
 	static const int ACCOUNTAUTOREGDISABLED = 4;
 	static const int ACCOUNTDOESNTEXIST = 5;
 	static const int ACCOUNTNOTACTIVE = 6;
+	const static int SERVERERROR = 7;
 
 public:
 	int accountID;
@@ -100,51 +101,57 @@ public:
 	}
 
 	int validate(ConfigManager* configManager) {
+		// If vBulletin integration is on, validate against the vB DB
 		if (configManager->getUseVBIngeration() == 1){
 
 			int validateResult = validateForumAccount(configManager);
 
 			if (validateResult != 0)
 				return validateResult;
-
-		} else if (configManager->getAutoReg() == 0 && !validateForumAccount(configManager)){
-			return ACCOUNTAUTOREGDISABLED;
+			else
+				return ACCOUNTDOESNTEXIST;
 		}
 
-		String query = "SELECT * FROM account WHERE username = \'" + username + "\'";
+		// Authentication against the account table
+		try {
+			// Check if the account exists at all
+			String query = "SELECT * FROM account WHERE username = \'" + username + "\'";
+			ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+			if(!res->next()) {
+				delete res;
+				return ACCOUNTDOESNTEXIST;
+			}
 
-		if (configManager->getUseVBIngeration() == 0)
+			// If the account exists, check the password
 			query += " and password = sha1(\'" + password + "\')";
+			ResultSet* resP = ServerDatabase::instance()->executeQuery(query);
+			accountID = -1;
+			if (resP->next()) {
+				accountID = resP->getInt(0);
+				stationID = resP->getUnsignedInt(3);
+			}
 
-		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+			delete res;
+			delete resP;
 
-		accountID = -1;
-		if (res->next()) {
-			accountID = res->getInt(0);
-			stationID = res->getUnsignedInt(3);
+			// If account id is set, password was correct
+			if (accountID != -1)
+				return ACCOUNTOK;
+			else
+				return ACCOUNTBADPW;
+		} catch(DatabaseException& e) { //thrown if any of the queries fail, indicates server is down
+			System::out << e.getMessage() << endl;
+			return SERVERERROR;
 		}
-
-		delete res;
-
-		if ( accountID != -1)
-			return ACCOUNTOK;
-		else
-			return ACCOUNTINUSE;
 	}
 
 	int create(ConfigManager* configManager) {
 		try {
-			if (configManager->getUseVBIngeration() == 1){
-				int validateResult = validateForumAccount(configManager);
-
-				if (validateResult != 0)
-					return validateResult;
-			} else if (configManager->getAutoReg() == 0 && configManager->getUseVBIngeration() == 0) {
-				return ACCOUNTAUTOREGDISABLED; // Auto Reg Disabled
-			}
+			// Disable account creation when Auto Reg Disabled is set AND forum integration is off
+			if (configManager->getAutoReg() == 0 && configManager->getUseVBIngeration() == 0)
+				return ACCOUNTAUTOREGDISABLED;
 
 			StringBuffer query;
-
 			query << "INSERT INTO `account` (username,password,station_id,gm,banned,email,joindate,lastlogin) "
                	  << "VALUES ('" << username.toCharArray() << "',SHA1('" << password.toCharArray() << "'),"
                	  << System::random() << ",0,0,'ChangeMe@email.com',NOW(),NOW())";
@@ -246,7 +253,7 @@ public:
 			return ACCOUNTDOESNTEXIST;
 		} catch(DatabaseException& e) {
 			System::out << e.getMessage() << endl;
-			return ACCOUNTINUSE;
+			return SERVERERROR;
 		}
 
 	}

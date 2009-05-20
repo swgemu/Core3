@@ -96,19 +96,20 @@ void LoginPacketHandler::handleLoginClientID(Message* pack) {
 		ver = new ErrorMessage(errtype, errmsg, 0x00);
 		client->sendMessage(ver);
 	} else {
+		// Check if the account exists in the db
 		int validateResult = account.validate(configManager);
 
-		if (validateResult != ACCOUNTOK){
-
+		// Only bother attempting an account if we know for sure there isn't an error and it doesnt exist
+		if (validateResult == ACCOUNTDOESNTEXIST) {
+			// Create the account
 			validateResult = account.create(configManager);
 
-			if (validateResult == ACCOUNTOK){
-
+			// If there are no errors, validate the login once again
+			if (validateResult == ACCOUNTOK)
 				account.validate(configManager);
-
-			}
 		}
 
+		// Parse the validation result. If successful, authenticate the login
 		switch (validateResult) {
 		case ACCOUNTOK:
 			account.login(client);
@@ -148,6 +149,13 @@ void LoginPacketHandler::handleLoginClientID(Message* pack) {
 			errmsg = "Your forum account is not active.  Please respond to your activation email.  "
 					"If you have already responded to the email, it can take up to 24 hours for "
 					"your game account to activate";
+			ver = new ErrorMessage(errtype, errmsg, 0x00);
+			client->sendMessage(ver);
+			return;
+		case SERVERERROR:
+			errtype = "Server Error";
+			errmsg = "The Login Server has encountered an internal error and is either refusing connections or undergoing maintenance.  "
+					"Please try again later.";
 			ver = new ErrorMessage(errtype, errmsg, 0x00);
 			client->sendMessage(ver);
 			return;
