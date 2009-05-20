@@ -740,18 +740,16 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 				float xpaddsingle = 0.0f;
 				int petLevel = creature->getLevel();
 
-				for ( int j = 0; j < dmg->getSize(); j++) {
-					float damage = (float)dmg->getDamage(j) / 4;
 
-					xpaddsingle = (damage/total)*20.0f*((float)levels);
+				xpaddsingle = 20.0f*((float)levels);
 
-					if (levels > 25)
-						xpaddsingle += (petLevel - levels) * 20.0f;
-					else if (petLevel > levels)
-						xpaddsingle += (levels - petLevel) * 1.5f;
-				}
+				if (levels > 25)
+					xpaddsingle += (petLevel - levels) * 20.0f;
+				else if (petLevel > levels)
+					xpaddsingle += (levels - petLevel) * 1.5f;
 
-				if (!((petLevel - 7) < levels && levels < (petLevel + 7)))
+
+				if (!((petLevel * 0.5f) < levels && levels < (petLevel * 1.5f)))
 					xpaddsingle /= 10.0f;
 
 				/*PlayerManager* pmng = server->getPlayerManager();

@@ -125,9 +125,9 @@ bolLesserPlains = Creature:new {
 
 	tame = 0.25,  -- Likely hood to be tamed
 	datapadItemCRC = 3365864788,
-	mountCRC = 0,
-	mountSpeed = 0,
-	mountAcceleration = 0,
+	mountCRC = 3745797903,
+	mountSpeed = 15.0,
+	mountAcceleration = 15.0,
 
 	milk = 1,
 

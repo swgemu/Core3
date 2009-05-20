@@ -235,7 +235,7 @@ public:
 	 * \return Returns if costs are applied.
 	 */
 	virtual bool calculateCost(CreatureObject* creature) {
-		if (!creature->isPlayer())
+		/*if (!creature->isPlayer())
 			return true;
 
 		Player* player = (Player*) creature;
@@ -262,7 +262,7 @@ public:
 		if (!player->changeHAMBars(-healthAttackCost, -actionAttackCost,
 				-mindAttackCost))
 			return false;
-
+		 */
 		return true;
 	}
 
