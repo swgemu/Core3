@@ -69,7 +69,10 @@ public:
 	}
 
 	void updateName(String name) {
-		addUnicodeUpdate(2, name);
+		if (tano->isPlayer() && ((Player*)tano)->isPrivileged())
+			addUnicodeUpdate(2, (name + " \\#ffff00[SWGEmu-Staff]\\#."));
+		else
+			addUnicodeUpdate(2, name);
 	}
 
 	void updateCraftingTimer(int timer) {

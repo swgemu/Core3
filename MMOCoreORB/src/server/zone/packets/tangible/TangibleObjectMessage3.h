@@ -59,7 +59,10 @@ public:
 		insertInt(0);
 		insertAscii(tano->getStfName());
 
-		insertUnicode(tano->getCustomName());
+		if (tano->isPlayer() && ((Player*)tano)->isPrivileged())
+			insertUnicode(tano->getCustomName() + UnicodeString(" \\#ffff00[SWGEmu-Staff]\\#."));
+		else
+			insertUnicode(tano->getCustomName());
 
 		insertInt(tano->getVolume());
 

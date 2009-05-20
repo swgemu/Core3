@@ -93,6 +93,8 @@ public:
 
 	void sendGuildChat(Player* player);
 
+	void sendStaffChat(Player* player);
+
 	ChatRoom* createRoomByFullPath(const String& path);
 
 	void destroyRoom(ChatRoom* room);
@@ -198,6 +200,8 @@ public:
 	ChatRoom* createGroupRoom(unsigned int groupID, Player* creator);
 
 	void sendGuildChat(Player* player);
+
+	void sendStaffChat(Player* player);
 
 	ChatRoom* createRoomByFullPath(const String& path);
 
