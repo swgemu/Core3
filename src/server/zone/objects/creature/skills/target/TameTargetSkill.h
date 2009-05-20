@@ -70,15 +70,22 @@ public:
 	virtual int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
 		Player* player = (Player*) creature;
 
-		if(player == NULL)
+		if(player == NULL) {
+			player->sendSystemMessage("Failed to tame creature.");
 			return 0;
-		if (!target->isNonPlayerCreature())
+		}
+
+		if (!target->isNonPlayerCreature()) {
+			player->sendSystemMessage("Failed to tame creature.");
 			return 0;
+		}
 
 		Creature* targetCreature = (Creature*) target;
 
-		if (targetCreature == NULL)
+		if (targetCreature == NULL) {
+			player->sendSystemMessage("Failed to tame creature.");
 			return 0;
+		}
 
 		if (!targetCreature->isBaby()) {
 			player->sendSystemMessage("Failed to tame creature.");
@@ -86,6 +93,7 @@ public:
 		}
 
 		if (targetCreature->isInCombat()) {
+			player->setTameing(false);
 			player->sendSystemMessage("Failed to tame creature.");
 			return 0;
 		}
@@ -101,8 +109,8 @@ public:
 		}
 
 		if (!player->isInRange(targetCreature,10.0f)) {
-			player->sendSystemMessage("Failed to tame creature.");
 			player->setTameing(false);
+			player->sendSystemMessage("Failed to tame creature.");
 			return 0;
 		}
 
@@ -110,8 +118,14 @@ public:
 
 		if (!modifier.isEmpty())
 			stage = Integer::valueOf(modifier);
+		if (!player->isTameing() && (0 != stage)) {
+			player->sendSystemMessage("Failed to tame creature.");
+			player->setTameing(false);
+			return 0;
+		}
 
 		if (player->isTameing() && (0 == stage)) {
+			player->setTameing(false);
 			player->sendSystemMessage("You have to wait to tame another creature.");
 			return 0;
 		}

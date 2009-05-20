@@ -206,8 +206,6 @@ void CreaturePetImplementation::init(Creature* creature, float growth) {
 	if (zone == NULL)
 		return;
 
-	loadItems();
-
 	if (server == NULL)
 		return;
 
@@ -241,7 +239,7 @@ void CreaturePetImplementation::init(Creature* creature, float growth) {
 	}
 
 	creatureManager->setPetDefaultAttributes(_this,true,false);
-
+	loadItems();
 
 	createItemAttributes();
 }
@@ -382,8 +380,6 @@ void CreaturePetImplementation::parseItemAttributes() {
 
 	CreatureManager* creatureManager = zone->getCreatureManager();
 
-	loadItems();
-
 	if (server == NULL)
 		return;
 
@@ -429,6 +425,7 @@ void CreaturePetImplementation::parseItemAttributes() {
 	}
 
 	creatureManager->setPetDefaultAttributes(_this,false,false);
+	loadItems();
 
 	if (isMount()) {
 		trainMount();
@@ -990,7 +987,7 @@ void CreaturePetImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 		if (!isInCombat()) {
 
 			if (scno->isPlayer() || scno->isNonPlayerCreature()) {
-				System::out << "\tnotifyPositionUpdate : patrol is player\n" ;
+				//System::out << "\tnotifyPositionUpdate : patrol is player\n" ;
 				CreatureObject* creature = (CreatureObject*) scno;
 				if (creature->isAttackableBy(getLinkedCreature())) {
 					if (isInRange(creature,45.0f)) {

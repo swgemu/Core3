@@ -1060,8 +1060,6 @@ bool CreatureImplementation::doMovement() {
 		if (dist < actualSpeed) {
 			newPositionX = waypointX;
 			newPositionY = waypointY;
-
-			nextMovementPosition = NULL;
 		} else {
 			newPositionX = positionX + (actualSpeed * (dx / dist));
 			newPositionY = positionY + (actualSpeed * (dy / dist));

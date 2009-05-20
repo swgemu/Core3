@@ -113,7 +113,7 @@ AddFloatFeature("playerPveMultiplier",1.0)
 
 -- Globale damage multipier (pet)
 --Values: float, 1.5 = default
-AddFloatFeature("petGlobalMultiplier",1.5)
+AddFloatFeature("petGlobalMultiplier",1.0)
 
 -- PVP damage multipier (pet)
 --Values: float, 0.25 = default
