@@ -1946,11 +1946,24 @@ void PlayerImplementation::updateAdminLevel(uint32 level) {
 		if (chatmanager != NULL) {
 			ChatRoom* staffchat = chatmanager->getStaffChat();
 
-			if (staffchat != NULL)
-				staffchat->removePlayer(_this);
+			try {
+				staffchat->wlock();
+
+				if (staffchat != NULL)
+					staffchat->removePlayer(_this, false);
+
+				staffchat->unlock();
+			} catch (...) {
+				staffchat->unlock();
+				info("Unhandled exception in PlayerImplementation::updateAdminLevel");
+			}
 		}
 
 		//Do we need to update their name too?
+		TangibleObjectDeltaMessage3* dcreo3 = new TangibleObjectDeltaMessage3(_this);
+		dcreo3->updateName(getCharacterName().toString());
+		dcreo3->close();
+		broadcastMessage(dcreo3);
 	}
 
 	setAdminLevel(level);
