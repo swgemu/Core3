@@ -142,6 +142,7 @@ private:
 	static GMCommandMap* gmCommands;
 
 	static void commands(StringTokenizer tokenizer, Player* player);
+	static void buildInfo(StringTokenizer tokenizer, Player* player);
 	static void map(StringTokenizer tokenizer, Player* player);
 	static void warp(StringTokenizer tokenizer, Player* player);
 	static void warpTo(StringTokenizer tokenizer, Player* player);
