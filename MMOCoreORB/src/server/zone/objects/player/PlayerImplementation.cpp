@@ -1937,36 +1937,45 @@ void PlayerImplementation::loadStaffChat() {
 
 void PlayerImplementation::updateAdminLevel(uint32 level) {
 	ChatManager* chatmanager = server->getChatManager();
-	//If they aren't already a staff member, and they aren't being set to normal level, send staff chat.
-	if (!isPrivileged() && (level != NORMAL)){
-		loadStaffChat();
-		//Set name to have staff tag.
-	} else if (level == NORMAL) {
-		//Remove staff chat if they have it.
-		if (chatmanager != NULL) {
-			ChatRoom* staffchat = chatmanager->getStaffChat();
 
-			try {
-				staffchat->wlock();
+	if (level != PlayerImplementation::NORMAL) {
 
-				if (staffchat != NULL)
-					staffchat->removePlayer(_this, false);
+		//Player is not already a staff member and they are being made one.
+		if (!isPrivileged())
+			loadStaffChat();
 
-				staffchat->unlock();
-			} catch (...) {
-				staffchat->unlock();
-				info("Unhandled exception in PlayerImplementation::updateAdminLevel");
+	} else {
+
+		//Player is being made a non-staff member. If they are a staff member, remove from staff channel.
+		if (isPrivileged()) {
+			System::out << "Hi" << endl;
+			if (chatmanager != NULL) {
+				ChatRoom* staffchat = chatmanager->getStaffChat();
+
+				try {
+					staffchat->wlock();
+
+					if (staffchat != NULL) {
+						staffchat->removePlayer(_this, false);
+						staffchat->sendDestroyTo(_this);
+					}
+
+					staffchat->unlock();
+				} catch (...) {
+					staffchat->unlock();
+					info("Unhandled exception in PlayerImplementation::updateAdminLevel");
+				}
 			}
 		}
-
-		//Do we need to update their name too?
-		TangibleObjectDeltaMessage3* dcreo3 = new TangibleObjectDeltaMessage3(_this);
-		dcreo3->updateName(getCharacterName().toString());
-		dcreo3->close();
-		broadcastMessage(dcreo3);
 	}
 
 	setAdminLevel(level);
+
+	//Update the name.
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
+	dtano3->updateName(getCharacterName().toString());
+	dtano3->close();
+	broadcastMessage(dtano3);
 }
 
 void PlayerImplementation::sendSystemMessage(const String& message) {
