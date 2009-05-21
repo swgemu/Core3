@@ -90,6 +90,10 @@ void GameCommandHandler::init() {
 			"Prints a list of commands.",
 			"Usage: @commands [command]",
 			&commands);
+	gmCommands->addCommand("build", ALL,
+			"Prints SVN build.",
+			"Usage: @build",
+			&buildInfo);
 	gmCommands->addCommand("map", STAFF,
 			"Warps you to a different map.",
 			"Usage: @map <planetid> \n PlanetId List: 0=Corellia, 1=Dantooine, 2=Dathomir, 3=Endor, 4=Lok, 5=Naboo, 6=Rori, 7=Talus, 8=Tatooine, 9=Yavin 4",
@@ -529,6 +533,11 @@ void GameCommandHandler::handleCommand(String cmd, StringTokenizer tokenizer, Pl
 	} catch (...) {
 		player->sendSystemMessage("Command not found.");
 	}
+}
+
+void GameCommandHandler::buildInfo(StringTokenizer tokenizer, Player* player) {
+	String build = "The server is currently running: Core3 SVN_REV " + String(SVN_REV);
+	player->sendSystemMessage(build);
 }
 
 void GameCommandHandler::commands(StringTokenizer tokenizer, Player* player) {

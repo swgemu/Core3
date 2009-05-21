@@ -40,7 +40,8 @@
 # this exception also makes it possible to release a modified version 
 # which carries forward this exception.
 
-AM_CXXFLAGS=-ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare
+SVNDEF=-D'SVN_REV="$(shell svnversion -n .)"'
+AM_CXXFLAGS=$(SVNDEF) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare
 
 ENGINE3_PATH=../../../../MMOEngine
 
