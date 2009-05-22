@@ -1038,7 +1038,9 @@ void ChatManagerImplementation::sendStaffChat(Player* player) {
 
 	if (staffRoom != NULL) {
 		staffRoom->sendTo(player);
-		staffRoom->addPlayer(player, false);
+
+		if (!staffRoom->hasPlayer(player))
+			staffRoom->addPlayer(player, false);
 	}
 }
 

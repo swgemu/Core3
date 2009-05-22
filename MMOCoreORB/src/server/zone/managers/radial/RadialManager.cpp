@@ -254,7 +254,7 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 			break;
 		case 44: //PET_CALL
 			player->sendSystemMessage("Sorry, Creature Handler has been temporarily disabled.");
-			return;
+			break;
 
 			//player->unlock();
 			//handlePetCall(obj);
@@ -296,7 +296,7 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 			break;
 		case 59: //PET_STORE
 			player->sendSystemMessage("Sorry, Creature Handler has been temporarily disabled.");
-			return;
+			break;
 
 			//player->unlock();
 			//handlePetStore(obj);
