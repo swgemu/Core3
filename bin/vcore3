@@ -1,0 +1,2 @@
+rm log.txt*
+valgrind --tool=memcheck --leak-check=no --show-reachable=yes --suppressions=core3-default.supp ./core3
