@@ -51,7 +51,7 @@ minorWorrt = Creature:new {
 	socialGroup = "self",
 	level = 5,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
 	healthMax = 165,
 	healthMin = 135,

@@ -1,4 +1,4 @@
---Copyright (C) 2007 <SWGEmu>
+--Copyright (C) 2009 <SWGEmu>
  
 --This File is part of Core3.
  
@@ -40,34 +40,30 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-
---Krayt Graveyard
-
-spawnCreature(kraytDragonAncient, 8, 6739, 4288)
-
-spawnCreature(canyonKraytDragon, 8, 7456, 4449)
-spawnCreature(canyonKraytDragon, 8, 7561, 4562)
-spawnCreature(canyonKraytDragon, 8, 7461, 4659)
-spawnCreature(canyonKraytDragon, 8, 6998, 4362)
-spawnCreature(canyonKraytDragon, 8, 7528, 4822)
-spawnCreature(canyonKraytDragon, 8, 6814, 4339)
-spawnCreature(canyonKraytDragon, 8, 6738, 4481)
-spawnCreature(kraytDragonAncient, 8, 6828, 4066)
-spawnCreature(kraytDragonAncient, 8, 7054, 4194)
-
-spawnCreature(giantCanyonKraytDragon, 8, 6630, 4244)
-spawnCreature(giantCanyonKraytDragon, 8, 7305, 4468)
-spawnCreature(giantCanyonKraytDragon, 8, 7191, 4881)
-
-spawnCreature(juvenileCanyonKrayt, 8, 7426, 4621)
-spawnCreature(juvenileCanyonKrayt, 8, 7413, 4515)
-spawnCreature(juvenileCanyonKrayt, 8, 7475, 4446)
-spawnCreature(juvenileCanyonKrayt, 8, 7266, 4597)
-spawnCreature(juvenileCanyonKrayt, 8, 7128, 4554)
-spawnCreature(juvenileCanyonKrayt, 8, 6875, 4499)
-spawnCreature(juvenileCanyonKrayt, 8, 6707, 4461)
-spawnCreature(juvenileCanyonKrayt, 8, 6515, 4445)
-spawnCreature(juvenileCanyonKrayt, 8, 6543, 4283)
-spawnCreature(juvenileCanyonKrayt, 8, 6865, 4093)
-spawnCreature(juvenileCanyonKrayt, 8, 7044, 4203)
-spawnCreature(juvenileCanyonKrayt, 8, 7273, 4317)
+spawnCreature(binayreHooligan, 7, 5511.38, -4090.56)
+spawnCreature(binayreHooligan, 7, 5549.96, -4077.64)
+spawnCreature(binayreHooligan, 7, 5556.98, -4079.32)
+spawnCreature(binayreScalawag, 7, 5557.22, -4082.82)
+spawnCreature(binayreScalawag, 7, 5584.64, -4091.87)
+spawnCreature(binayreHooligan, 7, 5582.36, -4089.3)
+spawnCreature(binayrePirate, 7, 5589.49, -4067)
+spawnCreatureInCell(binayreHooligan, 7, -0.430278, 0.25, 4.97759, 6075872)
+spawnCreatureInCell(binayreScalawag, 7, -4.19398, 0.25, -4.69589, 6075873)
+spawnCreatureInCell(binayreScalawag, 7, 4.13298, -6.75, 2.10633, 6075874)
+spawnCreatureInCell(binayrePirate, 7, 5.68188, -6.75, -1.68431, 6075875)
+spawnCreatureInCell(binayreScalawag, 7, 2.75183, -6.75, -9.59902, 6075875)
+spawnCreatureInCell(binayreRuffian, 7, -5.68369, -13.75, -8.45748, 6075877)
+spawnCreatureInCell(binayreScalawag, 7, -2.65826, -13.75, -2.48826, 6075877)
+spawnCreatureInCell(binayreRuffian, 7, -1.19615, -13.7499, 1.48799, 6075877)
+spawnCreatureInCell(binayreSwindler, 7, -5.19788, -13.7584, 11.7887, 6075878)
+spawnCreatureInCell(binayreSmuggler, 7, 0.625938, -13.7584, 12.5011, 6075878)
+spawnCreatureInCell(binayrePirate, 7, 4.9631, -13.7584, 12.527, 6075878)
+spawnCreatureInCell(binayreSmuggler, 7, 9.09233, -13.7584, 13.8209, 6075878)
+spawnCreatureInCell(binayrePirate, 7, 14.8653, -13.7584, 14.5048, 6075879)
+spawnCreatureInCell(binayreSwindler, 7, 16.6829, -13.7584, 9.4113, 6075879)
+spawnCreatureInCell(binayreSmuggler, 7, 12.7806, -13.7584, -13.1562, 6075880)
+spawnCreatureInCell(binayrePirate, 7, 12.7865, -13.7584, -16.063, 6075880)
+spawnCreatureInCell(binayreSwindler, 7, 18.4081, -12.8675, -16.8773, 6075880)
+spawnCreatureInCell(binayreSmuggler, 7, 11.5283, -11.5, -20.033, 6075880)
+spawnCreatureInCell(binayreSwindler, 7, 18.3268, -13.7584, -13.322, 6075880)
+spawnCreatureInCell(binayreChief, 7, 15.5485, -11.5, -20.5385, 6075880)

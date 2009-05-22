@@ -1,4 +1,4 @@
---Copyright (C) 2007 <SWGEmu>
+--Copyright (C) 2009 <SWGEmu>
  
 --This File is part of Core3.
  
@@ -40,34 +40,25 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-
---Krayt Graveyard
-
-spawnCreature(kraytDragonAncient, 8, 6739, 4288)
-
-spawnCreature(canyonKraytDragon, 8, 7456, 4449)
-spawnCreature(canyonKraytDragon, 8, 7561, 4562)
-spawnCreature(canyonKraytDragon, 8, 7461, 4659)
-spawnCreature(canyonKraytDragon, 8, 6998, 4362)
-spawnCreature(canyonKraytDragon, 8, 7528, 4822)
-spawnCreature(canyonKraytDragon, 8, 6814, 4339)
-spawnCreature(canyonKraytDragon, 8, 6738, 4481)
-spawnCreature(kraytDragonAncient, 8, 6828, 4066)
-spawnCreature(kraytDragonAncient, 8, 7054, 4194)
-
-spawnCreature(giantCanyonKraytDragon, 8, 6630, 4244)
-spawnCreature(giantCanyonKraytDragon, 8, 7305, 4468)
-spawnCreature(giantCanyonKraytDragon, 8, 7191, 4881)
-
-spawnCreature(juvenileCanyonKrayt, 8, 7426, 4621)
-spawnCreature(juvenileCanyonKrayt, 8, 7413, 4515)
-spawnCreature(juvenileCanyonKrayt, 8, 7475, 4446)
-spawnCreature(juvenileCanyonKrayt, 8, 7266, 4597)
-spawnCreature(juvenileCanyonKrayt, 8, 7128, 4554)
-spawnCreature(juvenileCanyonKrayt, 8, 6875, 4499)
-spawnCreature(juvenileCanyonKrayt, 8, 6707, 4461)
-spawnCreature(juvenileCanyonKrayt, 8, 6515, 4445)
-spawnCreature(juvenileCanyonKrayt, 8, 6543, 4283)
-spawnCreature(juvenileCanyonKrayt, 8, 6865, 4093)
-spawnCreature(juvenileCanyonKrayt, 8, 7044, 4203)
-spawnCreature(juvenileCanyonKrayt, 8, 7273, 4317)
+spawnCreature(mutatedKahmurra, 7, -4798.24, -4748.6)
+spawnCreature(mutatedKahmurra, 7, -4798.35, -4756.09)
+spawnCreature(geneticallyEnhancedKahmurra, 7, -4792.17, -4745.49)
+spawnCreatureInCell(rabidMutantmutatedKahmurra, 7, -0.94946, 0.25, 2.2559, 4795358)
+spawnCreatureInCell(mutatedKahmurra, 7, -4.73236, 0.25, 2.04001, 4795358)
+spawnCreatureInCell(rabidMutantmutatedKahmurra, 7, 1.00761, 0.25, -3.75523, 4795359)
+spawnCreatureInCell(mutatedKahmurra, 7, 3.22162, 0.25, -2.95417, 4795359)
+spawnCreatureInCell(geneticallyEnhancedKahmurra, 7, -1.00758, -6.75, -0.775908, 4795361)
+spawnCreatureInCell(rabidMutantmutatedKahmurra, 7, -6.30676, -6.75, -1.48995, 4795361)
+spawnCreatureInCell(rabidMutantmutatedKahmurra, 7, -1.20986, -6.75, -7.35538, 4795361)
+spawnCreatureInCell(mutatedKahmurra, 7, -4.87175, -6.76678, -14.0188, 4795362)
+spawnCreatureInCell(rabidMutantmutatedKahmurra, 7, -4.85972, -6.76678, -14.192, 4795362)
+spawnCreatureInCell(mutatedKahmurra, 7, 8.20108, -6.76678, -14.8508, 4795362)
+spawnCreatureInCell(geneticallyEnhancedKahmurra, 7, 6.52901, -6.75952, -7.57077, 4795363)
+spawnCreatureInCell(rabidMutantmutatedKahmurra, 7, 6.19641, -6.75, -1.8162, 4795363)
+spawnCreatureInCell(rabidMutantmutatedKahmurra, 7, -4.35384, -13.75, -0.664531, 4795365)
+spawnCreatureInCell(geneticallyEnhancedKahmurra, 7, -5.79593, -13.75, -0.211184, 4795365)
+spawnCreatureInCell(mutatedKahmurra, 7, 1.08025, -13.75, -6.05015, 4795365)
+spawnCreatureInCell(rabidMutantmutatedKahmurra, 7, 0.744924, -13.75, -6.5687, 4795365)
+spawnCreatureInCell(geneticallyEnhancedKahmurra, 7, -0.907271, -13.75, -12.7642, 4795365)
+spawnCreatureInCell(mutatedKahmurra, 7, -4.82255, -13.75, -14.3071, 4795365)
+spawnCreatureInCell(rabidMutantmutatedKahmurra, 7, -1.23151, -13.75, -13.8155, 4795365)

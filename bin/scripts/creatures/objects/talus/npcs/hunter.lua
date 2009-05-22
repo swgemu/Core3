@@ -144,4 +144,4 @@ hunter = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(hunter, ?) --  Add to Global Table
+Creatures:addCreature(hunter, 3717185433) --  Add to Global Table

@@ -51,7 +51,7 @@ mutatedKahmurra = Creature:new {
 	socialGroup = "Kahmurra",
 	level = 26,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
 	healthMax = 8300,
 	healthMin = 6800,

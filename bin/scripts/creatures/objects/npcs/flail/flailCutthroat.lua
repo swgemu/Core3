@@ -41,33 +41,33 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-flailSlayer = Creature:new {
-	objectName = "flailSlayer",  -- Lua Object Name
+flailCutthroat = Creature:new {
+	objectName = "flailCutthroat",  -- Lua Object Name
 	creatureType = "NPC",
 	faction = "flail", 
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "flail_slayer",
+	speciesName = "flail_cutthroat",
 	stfName = "mob/creature_names", 
-	objectCRC = 1731610618, 
+	objectCRC = 1633608178, 
 	socialGroup = "flail",
-	level = 20,
+	level = 15,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	healthMax = 6100,
-	healthMin = 5000,
+	healthMax = 3000,
+	healthMin = 2400,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 6100,
-	actionMin = 5000,
+	actionMax = 3000,
+	actionMin = 2400,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 6100,
-	mindMin = 5000,
+	mindMax = 3000,
+	mindMin = 2400,
 	focus = 0,
 	willpower = 0,
 
@@ -76,7 +76,7 @@ flailSlayer = Creature:new {
 	kinetic = 0,
 	energy = 0,
 	electricity = 0,
-	stun = -1,
+	stun = 0,
 	blast = 0,
 	heat = 0,
 	cold = 0,
@@ -90,20 +90,20 @@ flailSlayer = Creature:new {
 	pack = 1,
 	herd = 0,
 	stalker = 0,
-	killer = 1,
+	killer = 0,
 	ferocity = 0,
 	aggressive = 1,
 	invincible = 0,
 
-	attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "corsec", -- Enter socialGroups 
 
 	weapon = "object/weapon/ranged/pistol/shared_pistol_fwg5.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "FWG5 Pistol", -- Name ex. 'a Vibrolance'
 	weaponTemp = "pistol_fwg5", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 190,
-	weaponMaxDamage = 200,
+	weaponMinDamage = 160,
+	weaponMaxDamage = 170,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -146,4 +146,4 @@ flailSlayer = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(flailSlayer, 1731610618) -- Add to Global Table
+Creatures:addCreature(flailCutthroat, 1633608178) -- Add to Global Table

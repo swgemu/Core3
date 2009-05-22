@@ -41,20 +41,20 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-corsecLieutenant = Creature:new {
-	objectName = "corsecLieutenant",  -- Lua Object Name
+flailSlayer = Creature:new {
+	objectName = "flailSlayer",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "corsec", 
+	faction = "flail", 
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "corsec_lieutenant",
+	speciesName = "flail_slayer",
 	stfName = "mob/creature_names", 
-	objectCRC = 3254959481, 
-	socialGroup = "corsec",
+	objectCRC = 1731610618, 
+	socialGroup = "flail",
 	level = 20,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	healthMax = 6100,
 	healthMin = 5000,
@@ -92,14 +92,14 @@ corsecLieutenant = Creature:new {
 	stalker = 0,
 	killer = 1,
 	ferocity = 0,
-	aggressive = 0,
+	aggressive = 1,
 	invincible = 0,
 
-	attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "corsec", -- Enter socialGroups 
 
-	weapon = "object/weapon/ranged/pistol/shared_pistol_cdef_corsec.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "Corsec Pistol", -- Name ex. 'a Vibrolance'
-	weaponTemp = "pistol_cdef_corsec", -- Weapon Template ex. 'lance_vibrolance'
+	weapon = "object/weapon/ranged/pistol/shared_pistol_fwg5.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "FWG5 Pistol", -- Name ex. 'a Vibrolance'
+	weaponTemp = "pistol_fwg5", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
 	weaponMinDamage = 190,
@@ -140,10 +140,10 @@ corsecLieutenant = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "corsecAttack1" },
+	skills = { "flailAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(corsecLieutenant, 3254959481) -- Add to Global Table
+Creatures:addCreature(flailSlayer, 1731610618) -- Add to Global Table

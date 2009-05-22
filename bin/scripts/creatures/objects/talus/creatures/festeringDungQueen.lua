@@ -147,4 +147,4 @@ festeringDungQueen = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(festeringDungQueen, 382834958) --  Add to Global Table
+Creatures:addCreature(festeringDungQueen, 2430922138) --  Add to Global Table

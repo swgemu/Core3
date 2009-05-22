@@ -41,47 +41,48 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-flailButcher = Creature:new {
-	objectName = "flailButcher",  -- Lua Object Name
+tednDahai = Creature:new {
+	objectName = "tednDahai",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "flail", 
-	factionPoints = 20,
+	faction = "", 
+	factionPoints = 0,
 	gender = "",
 
-	speciesName = "flail_butcher",
-	stfName = "mob/creature_names", 
-	objectCRC = 2735896748, 
-	socialGroup = "flail",
-	level = 22,
+	speciesName = "",
+	creatureBitmask = 264,
+	stfName = "Tedn Dahai", 
+	objectCRC = 4060343926, 
+	socialGroup = "",
+	level = 7,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = 0,
 
-	healthMax = 7700,
-	healthMin = 6300,
+	healthMax = 220,
+	healthMin = 180,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 7700,
-	actionMin = 6300,
+	actionMax = 220,
+	actionMin = 180,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 7700,
-	mindMin = 6300,
+	mindMax = 220,
+	mindMin = 180,
 	focus = 0,
 	willpower = 0,
 
-	height = 1, -- Size of creature
+	height = 0.9, -- Size of creature
 	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 0,
-	energy = 0,
-	electricity = 0,
+	kinetic = -1,
+	energy = -1,
+	electricity = -1,
 	stun = -1,
-	blast = 0,
-	heat = 0,
-	cold = 0,
-	acid = 0,
-	lightsaber = 0,
+	blast = -1,
+	heat = -1,
+	cold = -1,
+	acid = -1,
+	lightsaber = -1,
 
 	accuracy = 0,
 
@@ -90,22 +91,22 @@ flailButcher = Creature:new {
 	pack = 1,
 	herd = 0,
 	stalker = 0,
-	killer = 1,
+	killer = 0,
 	ferocity = 0,
-	aggressive = 1,
+	aggressive = 0,
 	invincible = 0,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/ranged/pistol/shared_pistol_fwg5.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "FWG5 Pistol", -- Name ex. 'a Vibrolance'
-	weaponTemp = "pistol_fwg5", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weapon = "object/tangible/instrument/shared_fanfar.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a Fanfar", -- Name ex. 'a Vibrolance'
+	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 220,
-	weaponMaxDamage = 230,
+	weaponMinDamage = 1,
+	weaponMaxDamage = 1,
 	weaponAttackSpeed = 2,
-	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	WeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
@@ -140,10 +141,16 @@ flailButcher = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "flailAttack1" },
+	mood = "calm",
+
+	randomMovement = 0,
+
+	skills = { },
 	respawnTimer = 180,
+
+	--posture = SKILL_ANIMATING -- doesnt work current
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(flailButcher, 2735896748) -- Add to Global Table
+Creatures:addCreature(tednDahai, 4060343926) -- Add to Global Table

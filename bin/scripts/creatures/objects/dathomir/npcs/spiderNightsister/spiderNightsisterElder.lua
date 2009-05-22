@@ -58,18 +58,18 @@ spiderNightsisterElder = Creature:new {
 
 	healthMax = 392000,
 	healthMin = 321000,
-	strength = 0,
-	constitution = 0,
+	strength = 10000,
+	constitution = 10000,
 
 	actionMax = 392000,
 	actionMin = 321000,
-	quickness = 0,
-	stamina = 0,
+	quickness = 10000,
+	stamina = 10000,
 
 	mindMax = 392000,
 	mindMin = 321000,
-	focus = 0,
-	willpower = 0,
+	focus = 10000,
+	willpower = 10000,
 
 	height = 1, -- Size of creature
 	armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -141,7 +141,7 @@ spiderNightsisterElder = Creature:new {
 	meatMax = 0,
 
 	skills = { "spiderNightsisterAttack1" },
-	respawnTimer = 180,
+	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

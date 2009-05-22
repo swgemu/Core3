@@ -41,46 +41,46 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-corsecMajor = Creature:new {
-	objectName = "corsecMajor",  -- Lua Object Name
+corsecAgent = Creature:new {
+	objectName = "corsecAgent",  -- Lua Object Name
 	creatureType = "NPC",
 	faction = "corsec", 
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "corsec_major",
+	speciesName = "corsec_agent",
 	stfName = "mob/creature_names", 
-	objectCRC = 3254959481, 
+	objectCRC = 3630538207, 
 	socialGroup = "corsec",
-	level = 24,
+	level = 17,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
-	healthMax = 8300,
-	healthMin = 6800,
+	healthMax = 4300,
+	healthMin = 3500,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 8300,
-	actionMin = 6800,
+	actionMax = 4300,
+	actionMin = 3500,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 8300,
-	mindMin = 6800,
+	mindMax = 4300,
+	mindMin = 3500,
 	focus = 0,
 	willpower = 0,
 
 	height = 1, -- Size of creature
 	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 15,
-	energy = 15,
-	electricity = -1,
+	kinetic = 0,
+	energy = 0,
+	electricity = 0,
 	stun = -1,
 	blast = 0,
 	heat = 0,
 	cold = 0,
-	acid = -1,
+	acid = 0,
 	lightsaber = 0,
 
 	accuracy = 0,
@@ -90,7 +90,7 @@ corsecMajor = Creature:new {
 	pack = 1,
 	herd = 0,
 	stalker = 0,
-	killer = 1,
+	killer = 0,
 	ferocity = 0,
 	aggressive = 0,
 	invincible = 0,
@@ -102,8 +102,8 @@ corsecMajor = Creature:new {
 	weaponTemp = "pistol_cdef_corsec", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 230,
-	weaponMaxDamage = 240,
+	weaponMinDamage = 160,
+	weaponMaxDamage = 170,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -146,4 +146,4 @@ corsecMajor = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(corsecMajor, 3254959481) -- Add to Global Table
+Creatures:addCreature(corsecAgent, 3630538207) -- Add to Global Table

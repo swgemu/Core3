@@ -71,3 +71,41 @@
   RunCreatureFile("objects/npcs/specforce/specforceProcurementSpecialist.lua")
   RunCreatureFile("objects/npcs/specforce/specforceTechnician.lua")
   RunCreatureFile("objects/npcs/specforce/specforceWildernessOperative.lua")
+
+  --Corsec
+  RunCreatureFile("objects/npcs/corsec/corsecAgent.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecAgentAggro.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecCadet.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecCadetAggro.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecCaptain.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecCaptainAggro.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecChief.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecChiefAggro.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecComissioner.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecComissionerAggro.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecDeserter.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecDetective.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecDetectiveAggro.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecInspectorSergeant.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecInvestigator.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecLieutenant.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecLieutenantAggro.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecMajor.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecMajorAggro.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecMasterSergeant.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecMasterSergeantAggro.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecRenegade.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecRogue.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecSergeant.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecSergeantAggro.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecTraitor.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecTrooper.lua") -- Weapon "Corsec CDEF Pistol"
+  RunCreatureFile("objects/npcs/corsec/corsecTrooperAggro.lua") -- Weapon "Corsec CDEF Pistol"
+
+  --Flail
+  RunCreatureFile("objects/npcs/flail/flailBoss.lua") -- Weapon "FWG5 Pistol"
+  RunCreatureFile("objects/npcs/flail/flailButcher.lua") -- Weapon "FWG5 Pistol"
+  RunCreatureFile("objects/npcs/flail/flailCutthroat.lua") -- Weapon "FWG5 Pistol"
+  RunCreatureFile("objects/npcs/flail/flailExecutioner.lua") -- Weapon "FWG5 Pistol"
+  RunCreatureFile("objects/npcs/flail/flailKiller.lua") -- Weapon "FWG5 Pistol"
+  RunCreatureFile("objects/npcs/flail/flailSlayer.lua") -- Weapon "FWG5 Pistol"

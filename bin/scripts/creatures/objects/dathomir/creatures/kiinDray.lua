@@ -40,47 +40,44 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-
-corsecAgent = Creature:new {
-	objectName = "corsecAgent",  -- Lua Object Name
-	creatureType = "NPC",
-	faction = "corsec", 
-	factionPoints = 20,
+kiinDray = Creature:new {
+	objectName = "kiinDray",  -- Lua Object Name
+	creatureType = "ANIMAL",
 	gender = "",
 
-	speciesName = "corsec_agent",
-	stfName = "mob/creature_names", 
-	objectCRC = 3630538207, 
-	socialGroup = "corsec",
-	level = 17,
+	speciesName = "gaping_spider_recluse_giant_kiin_dray",
+	stfName = "mob/creature_names",
+	objectCRC = 9986579, 
+	socialGroup = "Nightspider",
+	level = 300,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	healthMax = 4300,
-	healthMin = 3500,
-	strength = 0,
-	constitution = 0,
+	healthMax = 100000,
+	healthMin = 85000,
+	strength = 20000,
+	constitution = 20000,
 
-	actionMax = 4300,
-	actionMin = 3500,
-	quickness = 0,
-	stamina = 0,
+	actionMax = 100000,
+	actionMin = 85000,
+	quickness = 20000,
+	stamina = 20000,
 
-	mindMax = 4300,
-	mindMin = 3500,
-	focus = 0,
-	willpower = 0,
+	mindMax = 100000,
+	mindMin = 85000,
+	focus = 20000,
+	willpower = 20000,
 
-	height = 1, -- Size of creature
-	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 0,
-	energy = 0,
-	electricity = 0,
-	stun = -1,
-	blast = 0,
-	heat = 0,
-	cold = 0,
-	acid = 0,
+	height = 4, -- Size of creature
+	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 55,
+	energy = 55,
+	electricity = 30,
+	stun = 30,
+	blast = 35,
+	heat = 30,
+	cold = 30,
+	acid = 15,
 	lightsaber = 0,
 
 	accuracy = 0,
@@ -89,23 +86,26 @@ corsecAgent = Creature:new {
 
 	pack = 1,
 	herd = 0,
-	stalker = 0,
-	killer = 0,
+	stalker = 1,
+	killer = 1,
 	ferocity = 0,
-	aggressive = 0,
-	invincible = 0,
+	aggressive = 1,
+	invincible = 0, 
+
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/ranged/pistol/shared_pistol_cdef_corsec.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "Corsec Pistol", -- Name ex. 'a Vibrolance'
-	weaponTemp = "pistol_cdef_corsec", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 1,
-	weaponMinDamage = 160,
-	weaponMaxDamage = 170,
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
+	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 830,
+	weaponMaxDamage = 1370,
 	weaponAttackSpeed = 2,
-	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
@@ -115,9 +115,9 @@ corsecAgent = Creature:new {
 	alternateWeaponEquipped = 0,
 	alternateWeaponMinDamage = 0,
 	alternateWeaponMaxDamage = 0,
-	alternateweaponAttackSpeed = 2,
+	alternateWeaponAttackSpeed = 0,
 	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	alternateweaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
@@ -132,18 +132,19 @@ corsecAgent = Creature:new {
 	milk = 0,
 
 	boneType = "",
-	boneMax = 0,
+	boneMax = 20,
 
 	hideType = "",
-	hideMax = 0,
+	hideMax = 20,
 
-	meatType = "",
-	meatMax = 0,
+	meatType = "meat_insect_dathomir",
+	meatMax = 450,
 
-	skills = { "corsecAttack1" },
-	respawnTimer = 180,
+	--skills = { " Area attack (poison)", " Poison attack (strong)", "" }
+	skills = { "poisonSpray", "strongPoison"},
+	respawnTimer = 3600,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(corsecAgent, 3630538207) -- Add to Global Table
+Creatures:addCreature(kiinDray, 9986579) --  Add to Global Table
