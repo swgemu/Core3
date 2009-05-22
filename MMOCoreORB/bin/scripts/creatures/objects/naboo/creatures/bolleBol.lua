@@ -51,7 +51,7 @@ bolleBol = Creature:new {
 	socialGroup = "Bolle Bol",
 	level = 27,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
 	healthMax = 9400,
 	healthMin = 7700,

@@ -40,74 +40,72 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-kraytDragonAncient = Creature:new {
-	objectName = "kraytDragonAncient",  -- Lua Object Name
-	creatureType = "ANIMAL",
+
+corsecSergeant = Creature:new {
+	objectName = "corsecSergeant",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "corsec", 
+	factionPoints = 20,
 	gender = "",
 
-	speciesName = "krayt_dragon_ancient",
-	
-	stfName = "mob/creature_names",
-	objectCRC = 1238991743, 
-	socialGroup = "Krayt Dragon",
-	level = 336,
+	speciesName = "corsec_sergeant",
+	stfName = "mob/creature_names", 
+	objectCRC = 3254959481, 
+	socialGroup = "corsec",
+	level = 16,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
-	healthMax = 501000,
-	healthMin = 410000,
-	strength = 30000,
-	constitution = 30000,
+	healthMax = 3500,
+	healthMin = 2900,
+	strength = 0,
+	constitution = 0,
 
-	actionMax = 501000,
-	actionMin = 410000,
-	quickness = 30000,
-	stamina = 30000,
+	actionMax = 3500,
+	actionMin = 2900,
+	quickness = 0,
+	stamina = 0,
 
-	mindMax = 501000,
-	mindMin = 410000,
-	focus = 30000,
-	willpower = 30000,
+	mindMax = 3500,
+	mindMin = 2900,
+	focus = 0,
+	willpower = 0,
 
-	height = 1.5, -- Size of creature
-	
-	armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 95,
-	energy = 95,
-	electricity = 95,
-	stun = 95,
-	blast = 95,
-	heat = 95,
-	cold = 65,
-	acid = 95,
+	height = 1, -- Size of creature
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 0,
+	energy = 0,
+	electricity = 0,
+	stun = -1,
+	blast = 0,
+	heat = 0,
+	cold = 0,
+	acid = 0,
 	lightsaber = 0,
 
-	accuracy = 400,
+	accuracy = 0,
 
 	healer = 0,
 
 	pack = 1,
 	herd = 0,
-	stalker = 1,
-	killer = 1,
+	stalker = 0,
+	killer = 0,
 	ferocity = 0,
-	aggressive = 1,
-	invincible = 0, 
+	aggressive = 0,
+	invincible = 0,
 
-	meleeDefense = 1,  
-	rangedDefense = 1,
+	attackCreatureOnSight = "flail", -- Enter socialGroups 
 
-	attackCreatureOnSight = "", -- Enter socialGroups 
-
-	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
-	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 2270,
-	weaponMaxDamage = 4250,
+	weapon = "object/weapon/ranged/pistol/shared_pistol_cdef_corsec.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Corsec Pistol", -- Name ex. 'a Vibrolance'
+	weaponTemp = "pistol_cdef_corsec", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 170,
+	weaponMaxDamage = 180,
 	weaponAttackSpeed = 2,
-	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
@@ -117,9 +115,9 @@ kraytDragonAncient = Creature:new {
 	alternateWeaponEquipped = 0,
 	alternateWeaponMinDamage = 0,
 	alternateWeaponMaxDamage = 0,
-	alternateWeaponAttackSpeed = 0,
+	alternateweaponAttackSpeed = 2,
 	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateweaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
@@ -133,18 +131,19 @@ kraytDragonAncient = Creature:new {
 
 	milk = 0,
 
-	boneType = "bone_mammal_tatooine",
-	boneMax = 905,
+	boneType = "",
+	boneMax = 0,
 
-	hideType = "hide_bristley_tatooine",
-	hideMax = 950,
+	hideType = "",
+	hideMax = 0,
 
-	meatType = "meat_carnivore_tatooine",
-	meatMax = 1700,
-	skills = { "areaCombo", "forceStrike", },	
-	respawnTimer = 300, 
+	meatType = "",
+	meatMax = 0,
+
+	skills = { "corsecAttack1" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(kraytDragonAncient, 1238991743) -- Add to Global Table
+Creatures:addCreature(corsecSergeant, 3254959481) -- Add to Global Table

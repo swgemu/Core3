@@ -41,33 +41,33 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-corsecMasterSergeant = Creature:new {
-	objectName = "corsecMasterSergeant",  -- Lua Object Name
+corsecChief = Creature:new {
+	objectName = "corsecChief",  -- Lua Object Name
 	creatureType = "NPC",
 	faction = "corsec", 
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "corsec_master_sergeant",
+	speciesName = "corsec_chief",
 	stfName = "mob/creature_names", 
-	objectCRC = 3254959481, 
+	objectCRC = 142160511, 
 	socialGroup = "corsec",
-	level = 18,
+	level = 27,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
-	healthMax = 5000,
-	healthMin = 4100,
+	healthMax = 9900,
+	healthMin = 8100,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 5000,
-	actionMin = 4100,
+	actionMax = 9900,
+	actionMin = 8100,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 5000,
-	mindMin = 4100,
+	mindMax = 9900,
+	mindMin = 8100,
 	focus = 0,
 	willpower = 0,
 
@@ -75,12 +75,12 @@ corsecMasterSergeant = Creature:new {
 	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 0,
 	energy = 0,
-	electricity = 0,
+	electricity = -1,
 	stun = -1,
 	blast = 0,
 	heat = 0,
 	cold = 0,
-	acid = 0,
+	acid = -1,
 	lightsaber = 0,
 
 	accuracy = 0,
@@ -90,20 +90,20 @@ corsecMasterSergeant = Creature:new {
 	pack = 1,
 	herd = 0,
 	stalker = 0,
-	killer = 0,
+	killer = 1,
 	ferocity = 0,
 	aggressive = 0,
 	invincible = 0,
 
-	attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "flail", -- Enter socialGroups 
 
 	weapon = "object/weapon/ranged/pistol/shared_pistol_cdef_corsec.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "Corsec Pistol", -- Name ex. 'a Vibrolance'
 	weaponTemp = "pistol_cdef_corsec", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 845,
-	weaponMaxDamage = 1400,
+	weaponMinDamage = 260,
+	weaponMaxDamage = 270,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -146,4 +146,4 @@ corsecMasterSergeant = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(corsecMasterSergeant, 3254959481) -- Add to Global Table
+Creatures:addCreature(corsecChief, 142160511) -- Add to Global Table

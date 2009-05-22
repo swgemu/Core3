@@ -51,7 +51,7 @@ kaadu = Creature:new {
 	socialGroup = "Kaadu",
 	level = 10,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
 	healthMax = 990,
 	healthMin = 810,

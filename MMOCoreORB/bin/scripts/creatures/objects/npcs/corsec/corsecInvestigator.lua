@@ -41,33 +41,33 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-corsecSergeant = Creature:new {
-	objectName = "corsecSergeant",  -- Lua Object Name
+corsecInvestigator = Creature:new {
+	objectName = "corsecInvestigator",  -- Lua Object Name
 	creatureType = "NPC",
 	faction = "corsec", 
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "corsec_sergeant",
+	speciesName = "corsec_investigator",
 	stfName = "mob/creature_names", 
-	objectCRC = 3254959481, 
+	objectCRC = 3750712439, 
 	socialGroup = "corsec",
-	level = 16,
+	level = 15,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
-	healthMax = 3500,
-	healthMin = 2900,
+	healthMax = 3000,
+	healthMin = 2400,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 3500,
-	actionMin = 2900,
+	actionMax = 3000,
+	actionMin = 2400,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 3500,
-	mindMin = 2900,
+	mindMax = 3000,
+	mindMin = 2400,
 	focus = 0,
 	willpower = 0,
 
@@ -76,7 +76,7 @@ corsecSergeant = Creature:new {
 	kinetic = 0,
 	energy = 0,
 	electricity = 0,
-	stun = -1,
+	stun = 0,
 	blast = 0,
 	heat = 0,
 	cold = 0,
@@ -102,8 +102,8 @@ corsecSergeant = Creature:new {
 	weaponTemp = "pistol_cdef_corsec", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 170,
-	weaponMaxDamage = 180,
+	weaponMinDamage = 160,
+	weaponMaxDamage = 170,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -146,4 +146,4 @@ corsecSergeant = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(corsecSergeant, 3254959481) -- Add to Global Table
+Creatures:addCreature(corsecInvestigator, 3750712439) -- Add to Global Table

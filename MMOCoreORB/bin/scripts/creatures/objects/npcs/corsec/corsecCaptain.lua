@@ -41,33 +41,33 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-flailCutthroat = Creature:new {
-	objectName = "flailCutthroat",  -- Lua Object Name
+corsecCaptain = Creature:new {
+	objectName = "corsecCaptain",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "flail", 
+	faction = "corsec", 
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "flail_cutthroat",
+	speciesName = "corsec_captain",
 	stfName = "mob/creature_names", 
-	objectCRC = 1633608178, 
-	socialGroup = "flail",
-	level = 15,
+	objectCRC = 16556953, 
+	socialGroup = "corsec",
+	level = 22,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
-	healthMax = 3000,
-	healthMin = 2400,
+	healthMax = 7200,
+	healthMin = 5900,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 3000,
-	actionMin = 2400,
+	actionMax = 7200,
+	actionMin = 5900,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 3000,
-	mindMin = 2400,
+	mindMax = 7200,
+	mindMin = 5900,
 	focus = 0,
 	willpower = 0,
 
@@ -76,7 +76,7 @@ flailCutthroat = Creature:new {
 	kinetic = 0,
 	energy = 0,
 	electricity = 0,
-	stun = 0,
+	stun = -1,
 	blast = 0,
 	heat = 0,
 	cold = 0,
@@ -90,20 +90,20 @@ flailCutthroat = Creature:new {
 	pack = 1,
 	herd = 0,
 	stalker = 0,
-	killer = 0,
+	killer = 1,
 	ferocity = 0,
-	aggressive = 1,
+	aggressive = 0,
 	invincible = 0,
 
-	attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "flail", -- Enter socialGroups 
 
-	weapon = "object/weapon/ranged/pistol/shared_pistol_fwg5.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "FWG5 Pistol", -- Name ex. 'a Vibrolance'
-	weaponTemp = "pistol_fwg5", -- Weapon Template ex. 'lance_vibrolance'
+	weapon = "object/weapon/ranged/pistol/shared_pistol_cdef_corsec.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Corsec Pistol", -- Name ex. 'a Vibrolance'
+	weaponTemp = "pistol_cdef_corsec", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 160,
-	weaponMaxDamage = 170,
+	weaponMinDamage = 210,
+	weaponMaxDamage = 220,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -140,10 +140,10 @@ flailCutthroat = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "flailAttack1" },
+	skills = { "corsecAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(flailCutthroat, 1633608178) -- Add to Global Table
+Creatures:addCreature(corsecCaptain, 16556953) -- Add to Global Table

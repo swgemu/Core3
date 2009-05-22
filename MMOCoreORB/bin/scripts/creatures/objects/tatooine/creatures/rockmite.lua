@@ -51,7 +51,7 @@ rockmite = Creature:new {
 	socialGroup = "self",
 	level = 8,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
 	healthMax = 495,
 	healthMin = 405,
@@ -122,6 +122,7 @@ rockmite = Creature:new {
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
 	lootGroup = "0", -- Group it belongs to for loot
+
 
 	tame = 0,
 	datapadItemCRC = 0,

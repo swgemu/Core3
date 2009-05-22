@@ -1948,7 +1948,6 @@ void PlayerImplementation::updateAdminLevel(uint32 level) {
 
 		//Player is being made a non-staff member. If they are a staff member, remove from staff channel.
 		if (isPrivileged()) {
-			System::out << "Hi" << endl;
 			if (chatmanager != NULL) {
 				ChatRoom* staffchat = chatmanager->getStaffChat();
 

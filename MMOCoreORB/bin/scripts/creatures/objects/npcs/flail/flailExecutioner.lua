@@ -41,46 +41,46 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-flailKiller = Creature:new {
-	objectName = "flailKiller",  -- Lua Object Name
+flailExecutioner = Creature:new {
+	objectName = "flailExecutioner",  -- Lua Object Name
 	creatureType = "NPC",
 	faction = "flail", 
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "flail_killer",
+	speciesName = "flail_executioner",
 	stfName = "mob/creature_names", 
 	objectCRC = 1731610618, 
 	socialGroup = "flail",
-	level = 18,
+	level = 25,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	healthMax = 4300,
-	healthMin = 3500,
+	healthMax = 7200,
+	healthMin = 5900,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 4300,
-	actionMin = 3500,
+	actionMax = 7200,
+	actionMin = 5900,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 4300,
-	mindMin = 3500,
+	mindMax = 7200,
+	mindMin = 5900,
 	focus = 0,
 	willpower = 0,
 
 	height = 1, -- Size of creature
 	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 0,
+	kinetic = 25,
 	energy = 0,
-	electricity = 0,
+	electricity = 60,
 	stun = -1,
 	blast = 0,
-	heat = 0,
-	cold = 0,
-	acid = 0,
+	heat = -1,
+	cold = -1,
+	acid = -1,
 	lightsaber = 0,
 
 	accuracy = 0,
@@ -90,20 +90,20 @@ flailKiller = Creature:new {
 	pack = 1,
 	herd = 0,
 	stalker = 0,
-	killer = 0,
+	killer = 1,
 	ferocity = 0,
 	aggressive = 1,
 	invincible = 0,
 
-	attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "corsec", -- Enter socialGroups 
 
 	weapon = "object/weapon/ranged/pistol/shared_pistol_fwg5.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "FWG5 Pistol", -- Name ex. 'a Vibrolance'
 	weaponTemp = "pistol_fwg5", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 180,
-	weaponMaxDamage = 190,
+	weaponMinDamage = 280,
+	weaponMaxDamage = 290,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -146,4 +146,4 @@ flailKiller = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(flailKiller, 1731610618) -- Add to Global Table
+Creatures:addCreature(flailExecutioner, 1731610618) -- Add to Global Table

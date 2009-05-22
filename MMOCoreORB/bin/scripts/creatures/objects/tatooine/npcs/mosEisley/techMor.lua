@@ -41,49 +41,50 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-corsecTrooper = Creature:new {
-	objectName = "corsecTrooper",  -- Lua Object Name
+techMor = Creature:new {
+	objectName = "techMor",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "corsec", 
-	factionPoints = 20,
+	faction = "", 
+	factionPoints = 0,
 	gender = "",
 
-	speciesName = "corsec_trooper",
-	stfName = "mob/creature_names", 
-	objectCRC = 3630538207, 
-	socialGroup = "corsec",
-	level = 14,
+	speciesName = "",
+	creatureBitmask = 264,
+	stfName = "Tech Mo'r", 
+	objectCRC = 4060343926, 
+	socialGroup = "",
+	level = 7,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = 0,
 
-	healthMax = 2400,
-	healthMin = 2000,
-	strength = 500,
-	constitution = 500,
+	healthMax = 220,
+	healthMin = 180,
+	strength = 0,
+	constitution = 0,
 
-	actionMax = 2400,
-	actionMin = 2000,
-	quickness = 500,
-	stamina = 500,
+	actionMax = 220,
+	actionMin = 180,
+	quickness = 0,
+	stamina = 0,
 
-	mindMax = 2400,
-	mindMin = 2000,
-	focus = 500,
-	willpower = 500,
+	mindMax = 220,
+	mindMin = 180,
+	focus = 0,
+	willpower = 0,
 
-	height = 1, -- Size of creature
+	height = 0.9, -- Size of creature
 	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 0,
-	energy = 0,
-	electricity = 0,
-	stun = 0,
-	blast = 0,
-	heat = 0,
-	cold = 0,
-	acid = 0,
-	lightsaber = 0,
+	kinetic = -1,
+	energy = -1,
+	electricity = -1,
+	stun = -1,
+	blast = -1,
+	heat = -1,
+	cold = -1,
+	acid = -1,
+	lightsaber = -1,
 
-	accuracy = 300,
+	accuracy = 0,
 
 	healer = 0,
 
@@ -93,22 +94,19 @@ corsecTrooper = Creature:new {
 	killer = 0,
 	ferocity = 0,
 	aggressive = 0,
-	invincible = 0, 
-
-	meleeDefense = 1,  
-	rangedDefense = 1,
+	invincible = 0,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/ranged/pistol/shared_pistol_cdef_corsec.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "Corsec CDEF Pistol", -- Name ex. 'a Vibrolance'
-	weaponTemp = "pistol_cdef_corsec", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weapon = "object/tangible/instrument/shared_ommni_box.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a Omnibox", -- Name ex. 'a Vibrolance'
+	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 150,
-	weaponMaxDamage = 160,
+	weaponMinDamage = 1,
+	weaponMaxDamage = 1,
 	weaponAttackSpeed = 2,
-	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	WeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
@@ -124,7 +122,7 @@ corsecTrooper = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,11,15,19,33,39,40", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,
 	datapadItemCRC = 0,
@@ -143,10 +141,16 @@ corsecTrooper = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "corsecAttack1" },
-	respawnTimer = 300, 
+	mood = "calm",
+
+	randomMovement = 0,
+
+	skills = { },
+	respawnTimer = 180,
+
+	--posture = SKILL_ANIMATING -- doesnt work current
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(corsecTrooper, 3630538207) -- Add to Global Table
+Creatures:addCreature(techMor, 4060343926) -- Add to Global Table

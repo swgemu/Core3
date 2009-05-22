@@ -147,4 +147,4 @@ sludgePanther = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(sludgePanther, 347380569) --  Add to Global Table
+Creatures:addCreature(sludgePanther, 2183424297) --  Add to Global Table

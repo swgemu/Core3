@@ -41,33 +41,33 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-corsecInvestigator = Creature:new {
-	objectName = "corsecInvestigator",  -- Lua Object Name
+corsecLieutenant = Creature:new {
+	objectName = "corsecLieutenant",  -- Lua Object Name
 	creatureType = "NPC",
 	faction = "corsec", 
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "corsec_investigator",
+	speciesName = "corsec_lieutenant",
 	stfName = "mob/creature_names", 
-	objectCRC = 3750712439, 
+	objectCRC = 3254959481, 
 	socialGroup = "corsec",
-	level = 15,
+	level = 20,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
-	healthMax = 3000,
-	healthMin = 2400,
+	healthMax = 6100,
+	healthMin = 5000,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 3000,
-	actionMin = 2400,
+	actionMax = 6100,
+	actionMin = 5000,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 3000,
-	mindMin = 2400,
+	mindMax = 6100,
+	mindMin = 5000,
 	focus = 0,
 	willpower = 0,
 
@@ -76,7 +76,7 @@ corsecInvestigator = Creature:new {
 	kinetic = 0,
 	energy = 0,
 	electricity = 0,
-	stun = 0,
+	stun = -1,
 	blast = 0,
 	heat = 0,
 	cold = 0,
@@ -90,7 +90,7 @@ corsecInvestigator = Creature:new {
 	pack = 1,
 	herd = 0,
 	stalker = 0,
-	killer = 0,
+	killer = 1,
 	ferocity = 0,
 	aggressive = 0,
 	invincible = 0,
@@ -102,8 +102,8 @@ corsecInvestigator = Creature:new {
 	weaponTemp = "pistol_cdef_corsec", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 160,
-	weaponMaxDamage = 170,
+	weaponMinDamage = 190,
+	weaponMaxDamage = 200,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -146,4 +146,4 @@ corsecInvestigator = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(corsecInvestigator, 3750712439) -- Add to Global Table
+Creatures:addCreature(corsecLieutenant, 3254959481) -- Add to Global Table

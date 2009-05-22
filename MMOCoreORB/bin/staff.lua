@@ -41,33 +41,44 @@
 --which carries forward this exception.
 
 
---Krayt Graveyard
+csr = {
+	name = "CSR",
+	
+	forumUsergroups = "",
+	
+	clientFlag = 1,
+	
+	prependTextToName = "CSR-",
+	
+	staffTag = "[SWGEmu-CSR]",
+	
+	staffTagColor = "#ffff00"
+}
 
-spawnCreature(kraytDragonAncient, 8, 6739, 4288)
+dev = {
+	name = "Developer",
+	
+	forumUsergroups = "",
+	
+	clientFlag = 2,
+	
+	prependTextToName = "",
+	
+	staffTag = "[SWGEmu-Staff]",
+	
+	staffTagColor = "#ffff00"
+}
 
-spawnCreature(canyonKraytDragon, 8, 7456, 4449)
-spawnCreature(canyonKraytDragon, 8, 7561, 4562)
-spawnCreature(canyonKraytDragon, 8, 7461, 4659)
-spawnCreature(canyonKraytDragon, 8, 6998, 4362)
-spawnCreature(canyonKraytDragon, 8, 7528, 4822)
-spawnCreature(canyonKraytDragon, 8, 6814, 4339)
-spawnCreature(canyonKraytDragon, 8, 6738, 4481)
-spawnCreature(kraytDragonAncient, 8, 6828, 4066)
-spawnCreature(kraytDragonAncient, 8, 7054, 4194)
-
-spawnCreature(giantCanyonKraytDragon, 8, 6630, 4244)
-spawnCreature(giantCanyonKraytDragon, 8, 7305, 4468)
-spawnCreature(giantCanyonKraytDragon, 8, 7191, 4881)
-
-spawnCreature(juvenileCanyonKrayt, 8, 7426, 4621)
-spawnCreature(juvenileCanyonKrayt, 8, 7413, 4515)
-spawnCreature(juvenileCanyonKrayt, 8, 7475, 4446)
-spawnCreature(juvenileCanyonKrayt, 8, 7266, 4597)
-spawnCreature(juvenileCanyonKrayt, 8, 7128, 4554)
-spawnCreature(juvenileCanyonKrayt, 8, 6875, 4499)
-spawnCreature(juvenileCanyonKrayt, 8, 6707, 4461)
-spawnCreature(juvenileCanyonKrayt, 8, 6515, 4445)
-spawnCreature(juvenileCanyonKrayt, 8, 6543, 4283)
-spawnCreature(juvenileCanyonKrayt, 8, 6865, 4093)
-spawnCreature(juvenileCanyonKrayt, 8, 7044, 4203)
-spawnCreature(juvenileCanyonKrayt, 8, 7273, 4317)
+staff = {
+	name = "Staff",
+	
+	forumUsergroups = "",
+	
+	clientFlag = 0,
+	
+	prependTextToName = "",
+	
+	staffTag = "[SWGEmu-Staff]",
+	
+	staffTagColor = "#ffff00"
+}

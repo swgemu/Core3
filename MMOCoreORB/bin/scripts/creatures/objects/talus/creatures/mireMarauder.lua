@@ -123,10 +123,10 @@ mireMarauder = Creature:new {
 
 	lootGroup = "0", -- Group it belongs to for loot
 
-	tame = 0,
-	datapadItemCRC = 0,
-	mountCRC = 0,
-	mountSpeed = 0,
+	tame = 0, 
+	datapadItemCRC = 0, 
+	mountCRC = 0, 
+	mountSpeed = 0, 
 	mountAcceleration = 0,
 
 	milk = 0,
@@ -147,4 +147,4 @@ mireMarauder = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(mireMarauder, 197708576) --  Add to Global Table
+Creatures:addCreature(mireMarauder, 2403761131) --  Add to Global Table

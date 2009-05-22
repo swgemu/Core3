@@ -52,7 +52,7 @@ mosEisleyPoliceLieutenant = Creature:new {
 	socialGroup = "imperial",
 	level = 15,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
 	healthMax = 3000,
 	healthMin = 2400,
