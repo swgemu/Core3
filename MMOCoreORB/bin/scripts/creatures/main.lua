@@ -66,31 +66,31 @@ end
 
 -- Standard Creature Spawning
 function spawnCreature(creature, Planet, PositionX, PositionY)
-	newCreature = Creature:new { planet = Planet, positionX = PositionX, positionY = PositionY }
+	newCreature = creature:new { planet = Planet, positionX = PositionX, positionY = PositionY }
 	AddCreatureToServer(newCreature)
 end
 
 -- Spawning with Respawn Time
 function spawnCreature(creature, Planet, PositionX, PositionY, respawnTime)
-	newCreature = Creature:new { planet = Planet, positionX = PositionX, positionY = PositionY, respawnTimer = respawnTime }
+	newCreature = creature:new { planet = Planet, positionX = PositionX, positionY = PositionY, respawnTimer = respawnTime }
 	AddCreatureToServer(newCreature)
 end
 
 -- Spawning With Direction
 function spawnCreatureDir(creature, Planet, PositionX, PositionY, DirectionX, DirectionZ, DirectionY, DirectionW)
-	newCreature = Creature:new { planet = Planet, positionX = PositionX, positionY = PositionY, directionX = DirectionX, directionZ = DirectionZ, directionY = DirectionY, directionW = DirectionW }
+	newCreature = creature:new { planet = Planet, positionX = PositionX, positionY = PositionY, directionX = DirectionX, directionZ = DirectionZ, directionY = DirectionY, directionW = DirectionW }
 	AddCreatureToServer(newCreature)
 end
 
 -- Spawning Inside Cells
 function spawnCreatureInCell(creature, Planet, PositionX, PositionZ, PositionY, cellid)
-	newCreature = Creature:new { planet = Planet, positionX = PositionX, positionZ = PositionZ, positionY = PositionY, cellID = cellid }
+	newCreature = creature:new { planet = Planet, positionX = PositionX, positionZ = PositionZ, positionY = PositionY, cellID = cellid }
 	AddCreatureToServer(newCreature)
 end
 
 -- Spawning Inside Cells With Direction
 function spawnCreatureDirInCell(creature, Planet, PositionX, PositionZ, PositionY, DirectionX, DirectionZ, DirectionY, DirectionW, cellid)
-	newCreature = Creature:new { planet = Planet, positionX = PositionX, positionZ = PositionZ, positionY = PositionY, directionX = DirectionX, directionZ = DirectionZ, directionY = DirectionY, directionW = DirectionW, cellID = cellid }
+	newCreature = creature:new { planet = Planet, positionX = PositionX, positionZ = PositionZ, positionY = PositionY, directionX = DirectionX, directionZ = DirectionZ, directionY = DirectionY, directionW = DirectionW, cellID = cellid }
 	AddCreatureToServer(newCreature)
 end
 
