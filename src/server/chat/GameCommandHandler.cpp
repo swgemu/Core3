@@ -4056,6 +4056,9 @@ void GameCommandHandler::clearInventory(StringTokenizer tokenizer, Player* playe
 }
 
 void GameCommandHandler::createTestPet(StringTokenizer tokenizer, Player* player) {
+	player->sendSystemMessage("Disabled until CH is fixed.");
+	return;
+
 	CreaturePet* pet = new CreaturePet(player,player->getNewItemID());
 
 	if (player->getTarget() != NULL) {
