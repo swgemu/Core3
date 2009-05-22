@@ -68,7 +68,14 @@ public:
 	 * \param modifier The modifiers, not used.
 	 */
 	virtual int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
+		if (!creature->isPlayer())
+			return 0;
+
 		Player* player = (Player*) creature;
+
+		//TODO: Temporarily disabled creaturehandler.
+		player->sendSystemMessage("Sorry, creature handler is temporarily disabled.");
+		return 0;
 
 		if(player == NULL) {
 			player->sendSystemMessage("Failed to tame creature.");

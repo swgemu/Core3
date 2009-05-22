@@ -716,6 +716,9 @@ void CreaturePetImplementation::createDataPad(uint32 datapadCRC) {
 }
 
 void CreaturePetImplementation::call() {
+	//TODO: Creature pet calling disabled.
+	return;
+
 	if (debug) {
 		StringBuffer ss;
 		ss << "CreaturePetImplementation::call() " << getLinkedCreature()->getCharacterName().toString();
