@@ -1936,39 +1936,24 @@ void PlayerImplementation::loadStaffChat() {
 }
 
 void PlayerImplementation::updateAdminLevel(uint32 level) {
+	setAdminLevel(level);
+
 	ChatManager* chatmanager = server->getChatManager();
+	ChatRoom* staffchat = chatmanager->getStaffChat();
 
-	if (level != PlayerImplementation::NORMAL) {
-
-		//Player is not already a staff member and they are being made one.
-		if (!isPrivileged())
-			loadStaffChat();
-
-	} else {
-
-		//Player is being made a non-staff member. If they are a staff member, remove from staff channel.
-		if (isPrivileged()) {
-			if (chatmanager != NULL) {
-				ChatRoom* staffchat = chatmanager->getStaffChat();
-
-				try {
-					staffchat->wlock();
-
-					if (staffchat != NULL) {
-						staffchat->removePlayer(_this, false);
-						staffchat->sendDestroyTo(_this);
-					}
-
-					staffchat->unlock();
-				} catch (...) {
-					staffchat->unlock();
-					info("Unhandled exception in PlayerImplementation::updateAdminLevel");
-				}
-			}
+	if (!isPrivileged()) {
+		try {
+			staffchat->wlock();
+			staffchat->removePlayer(_this, false);
+			staffchat->sendDestroyTo(_this);
+			staffchat->unlock();
+		} catch (...) {
+			error("Unhandled exception in PlayerImplementation::updateAdminLevel");
+			staffchat->unlock();
 		}
 	}
 
-	setAdminLevel(level);
+	loadStaffChat();
 
 	//Update the name.
 	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
