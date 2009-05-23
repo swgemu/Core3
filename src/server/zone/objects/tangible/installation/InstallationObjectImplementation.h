@@ -42,53 +42,17 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SCENEOBJECTIMPLEMENTATION_H_
-#define SCENEOBJECTIMPLEMENTATION_H_
+#ifndef INSTALLATIONOBJECTIMPLEMENTATION_H_
+#define INSTALLATIONOBJECTIMPLEMENTATION_H_
 
-#include "../ZoneProcessServerImplementation.h"
-#include "../Zone.h"
-#include "../Quaternion.h"
-#include "SceneObject.h"
+#include "InstallationObject.h"
 
-class SceneObjectImplementation : public SceneObjectServant, public QuadTreeEntry, public ContainerObject, public Logger {
+class InstallationObjectImplementation : public InstallationObjectServant {
 protected:
-	ZoneProcessServerImplementation* server;
-	Zone* zone;
-
-	String stfFile;
-	String stfName;
-	UnicodeString customName;
-
-	Quaternion* direction;
-
-	uint32 objectCRC;
-
-	uint8 gameObjectType;
 
 public:
-	//Game Object Types
-
-public:
-	SceneObjectImplementation();
-	virtual ~SceneObjectImplementation();
-
-	//Saving and loading
-	virtual void serialize(String& str);
-	virtual void deserialize(const String& str);
-
-	//Sending of data to client
-	virtual void sendTo(Player* player, bool doclose = true);
-	virtual void sendDestroyTo(Player* player);
-	virtual void sendRadialResponseTo(Player* player);
-	virtual void sendConversationStopTo(Player* player);
-	virtual void sendCustomNamePromptTo(Player* player);
-
-	//Generic Radial Responses
-	virtual int useObject(Player* player);
-
-	//Setters
-
-	//Getters
+	InstallationObjectImplementation();
+	~InstallationObjectImplementation();
 };
 
-#endif /*SCENEOBJECTIMPLEMENTATION_H_*/
+#endif /* INSTALLATIONOBJECTIMPLEMENTATION_H_ */
