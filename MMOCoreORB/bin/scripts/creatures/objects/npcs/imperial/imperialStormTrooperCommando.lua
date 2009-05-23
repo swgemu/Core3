@@ -50,10 +50,9 @@ imperialStormTrooperCommando = Creature:new {
 
 	speciesName = "storm_commando",
     stfName = "mob/creature_names",
-	objectCRC = 427178976, 
+	objectCRC = 3037629485, 
 	socialGroup = "imperial",
 	level = 29,
-	
 
 	combatFlags = 0,
 
@@ -95,10 +94,10 @@ imperialStormTrooperCommando = Creature:new {
 	ferocity = 0,
 	aggressive = 0,
 	invincible = 0,
-	
+
 	meleeDefense = 1,
 	rangedDefense = 1,
-	
+
 	randomMovement = 0,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 

@@ -47,7 +47,7 @@ gubbur = Creature:new {
 
 	speciesName = "gubbur",
 	stfName = "mob/creature_names",
-	objectCRC = 170808, 
+	objectCRC = 2210767459, 
 	socialGroup = "Gubbur",
 	level = 6,
 
@@ -146,4 +146,4 @@ gubbur = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(gubbur, 170808) --  Add to Global Table
+Creatures:addCreature(gubbur, 2210767459) --  Add to Global Table

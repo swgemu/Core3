@@ -47,7 +47,7 @@ fleshEatingChuba = Creature:new {
 
 	speciesName = "flesh_eating_chuba",
 	stfName = "mob/creature_names",
-	objectCRC = 3308574907, 
+	objectCRC = 3129123954, 
 	socialGroup = "self",
 	level = 6,
 
@@ -146,4 +146,4 @@ fleshEatingChuba = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(fleshEatingChuba, 3308574907) --  Add to Global Table
+Creatures:addCreature(fleshEatingChuba, 3129123954) --  Add to Global Table
