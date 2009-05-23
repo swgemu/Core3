@@ -1,6 +1,5 @@
 --Copyright (C) 2008 <SWGEmu>
 
-
 --This File is part of Core3.
 
 --This program is free software; you can redistribute 
@@ -40,6 +39,7 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+
 imperialStormTrooper = Creature:new {
 	objectName = "imperialStormTrooper",  -- Lua Object Name
 	creatureType = "NPC",
@@ -52,7 +52,6 @@ imperialStormTrooper = Creature:new {
 	objectCRC = 3128894413, 
 	socialGroup = "imperial",
 	level = 25,
-	
 
 	combatFlags = 0,
 
@@ -70,8 +69,8 @@ imperialStormTrooper = Creature:new {
 	mindMin = 7200,
 	focus = 500,
 	willpower = 500,
-	height = 1, -- Size of creature
 
+	height = 1, -- Size of creature
 	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 15,
 	energy = 15,
@@ -97,7 +96,7 @@ imperialStormTrooper = Creature:new {
 
 	meleeDefense = 1,
 	rangedDefense = 1,
-	
+
 	randomMovement = 0,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 

@@ -47,7 +47,7 @@ chuba = Creature:new {
 
 	speciesName = "chuba",
 	stfName = "mob/creature_names",
-	objectCRC = 3129123954, 
+	objectCRC = 3129123954,
 	socialGroup = "Chuba",
 	level = 5,
 
