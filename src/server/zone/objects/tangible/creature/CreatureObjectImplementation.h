@@ -57,6 +57,39 @@ protected:
 public:
 	CreatureObjectImplementation();
 	~CreatureObjectImplementation();
+
+	//Saving and loading
+
+	//Generic Radial Responses
+	virtual void onRadialGroupInvite(Player* player);
+	virtual void onRadialGroupJoin(Player* player);
+	virtual void onRadialGroupLeave(Player* player);
+	virtual void onRadialGroupKick(Player* player);
+	virtual void onRadialGroupDisband(Player* player);
+	virtual void onRadialGroupDecline(Player* player);
+	virtual void onRadialFollow(Player* player);
+	virtual void onRadialStopFollow(Player* player);
+	virtual void onRadialImageDesign(Player* player);
+	virtual void onRadialDiagnose(Player* player);
+	virtual void onRadialTendDamage(Player* player);
+	virtual void onRadialTendWound(Player* player);
+	virtual void onRadialHealWound(Player* player, uint8 woundtype);
+	virtual void onRadialHealDamage(Player* player);
+	virtual void onRadialHealState(Player* player, uint8 statetype);
+	virtual void onRadialHealEnhance(Player* player, uint8 enhancetype);
+	virtual void onRadialHealFirstAid(Player* player);
+	virtual void onRadialHealCurePoison(Player* player);
+	virtual void onRadialHealCureDisease(Player* player);
+	virtual void onRadialHealApplyPoison(Player* player);
+	virtual void onRadialHealApplyDisease(Player* player);
+	virtual void onRadialPerformanceListen(Player* player);
+	virtual void onRadialPerformanceWatch(Player* player);
+	virtual void onRadialPerformanceStopListen(Player* player);
+	virtual void onRadialPerformanceStopWatch(Player* player);
+
+	//Setters
+
+	//Getters
 };
 
 #endif /*CREATUREOBJECTIMPLEMENTATION_H_*/

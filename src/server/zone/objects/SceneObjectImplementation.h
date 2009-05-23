@@ -61,7 +61,11 @@ protected:
 
 	Quaternion* direction;
 
+	uint64 ownerCharacterID;
+
 	uint32 objectCRC;
+	uint32 movementCounter;
+	uint32 linkType;
 
 	uint8 gameObjectType;
 
@@ -71,6 +75,14 @@ public:
 public:
 	SceneObjectImplementation();
 	virtual ~SceneObjectImplementation();
+
+	void initialize();
+
+	//ORB methods
+	void deploy();
+	void scheduleRedeploy();
+	void undeploy();
+	void removeUndeploymentEvent();
 
 	//Saving and loading
 	virtual void serialize(String& str);
@@ -84,7 +96,30 @@ public:
 	virtual void sendCustomNamePromptTo(Player* player);
 
 	//Generic Radial Responses
-	virtual int useObject(Player* player);
+	virtual void onRadialUse(Player* player);
+	virtual void onRadialPickup(Player* player);
+	virtual void onRadialDrop(Player* player);
+	virtual void onRadialDestroy(Player* player);
+	virtual void onRadialOpen(Player* player);
+	virtual void onRadialActivate(Player* player);
+	virtual void onRadialDeactivate(Player* player);
+	virtual void onRadialSetName(Player* player);
+	virtual void onRadialConverseStart(Player* player);
+	virtual void onRadialConverseRespond(Player* player);
+	virtual void onRadialConverseResponse(Player* player);
+	virtual void onRadialConverseStop(Player* player);
+	//Overridible?
+	virtual void onRadialMenu1(Player* player);
+	virtual void onRadialMenu2(Player* player);
+	virtual void onRadialMenu3(Player* player);
+	virtual void onRadialMenu4(Player* player);
+	virtual void onRadialMenu5(Player* player);
+	virtual void onRadialMenu6(Player* player);
+	virtual void onRadialMenu7(Player* player);
+	virtual void onRadialMenu8(Player* player);
+	virtual void onRadialMenu9(Player* player);
+	virtual void onRadialMenu10(Player* player);
+
 
 	//Setters
 
