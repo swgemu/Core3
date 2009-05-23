@@ -63,15 +63,15 @@ void LoginPacketHandler::handleMessage(Message* pack) {
 		break;
 	case 03:
 		switch (opcode) {
-			case 0xE87AD031:
+			case 0xE87AD031: //DeleteCharacterMessage
 			handleDeleteCharacterMessage(pack);
 			break;
 		}
 		break;
 	case 04:
 		switch (opcode) {
-		case 0x41131F96: //LoginClientID CLIENT VERSION BUILD DATE AND LOGIN INFO
-			handleLoginClientID(pack);
+		case 0x41131F96: //LoginClientId - CLIENT VERSION BUILD DATE AND LOGIN INFO
+			handleLoginClientId(pack);
 			break;
 		}
 		break;
@@ -82,7 +82,7 @@ void LoginPacketHandler::handleMessage(Message* pack) {
 	}
 }
 
-void LoginPacketHandler::handleLoginClientID(Message* pack) {
+void LoginPacketHandler::handleLoginClientId(Message* pack) {
 	LoginClient* client = (LoginClient*) pack->getClient();
 
 	String errtype, errmsg;
