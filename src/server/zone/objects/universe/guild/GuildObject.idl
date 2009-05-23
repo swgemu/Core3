@@ -1,0 +1,7 @@
+import "../SceneObject";
+
+interface GuildObject implements SceneObject {
+	GuildObject() {
+		super();
+	}
+}

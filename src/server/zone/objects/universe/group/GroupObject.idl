@@ -1,0 +1,7 @@
+import "../SceneObject";
+
+interface GroupObject implements SceneObject {
+	GroupObject() {
+		super();
+	}
+}

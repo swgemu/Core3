@@ -49,6 +49,10 @@ which carries forward this exception.
 
 class CreatureObjectImplementation : public CreatureObjectServant {
 protected:
+	int32 attributesBase[9];
+	int32 attributes[9];
+	int32 attributesMax[9];
+	int32 wounds[9];
 
 public:
 	CreatureObjectImplementation();

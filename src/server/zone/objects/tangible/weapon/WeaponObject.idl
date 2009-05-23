@@ -42,22 +42,10 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SCENEOBJECTIMPLEMENTATION_H_
-#define SCENEOBJECTIMPLEMENTATION_H_
+import "../TangibleObject";
 
-#include "SceneObject.h"
-
-class SceneObjectImplementation : public SceneObjectServant, public QuadTreeEntry, public ContainerObject, public Logger {
-protected:
-	//TODO: Should these be seperated, or in the form of "@stfFile:stfName"?
-	//Further, should these be in SceneObject? Or should they be higher up? SceneObject packets have no need of them.
-	String stfFile;
-	String stfName;
-	UnicodeString customName;
-
-public:
-	SceneObjectImplementation();
-	virtual ~SceneObjectImplementation();
-};
-
-#endif /*SCENEOBJECTIMPLEMENTATION_H_*/
+interface WeaponObject implements TangibleObject {
+	WeaponObject() {
+		super();
+	}
+}
