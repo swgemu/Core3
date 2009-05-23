@@ -42,39 +42,15 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SCENEOBJECTIMPLEMENTATION_H_
-#define SCENEOBJECTIMPLEMENTATION_H_
+#ifndef CONTAINEROBJECT_H_
+#define CONTAINEROBJECT_H_
 
-#include "../ZoneProcessServerImplementation.h"
-#include "../Zone.h"
-#include "../Quaternion.h"
-#include "SceneObject.h"
-
-class SceneObjectImplementation : public SceneObjectServant, public QuadTreeEntry, public ContainerObject, public Logger {
+class ContainerObject {
 protected:
-	ZoneProcessServerImplementation* server;
-	Zone* zone;
-
-	String stfFile;
-	String stfName;
-	UnicodeString customName;
-
-	Quaternion* direction;
-
-	uint32 objectCRC;
-
-	uint8 objectType;
 
 public:
-	//Object Types
-
-public:
-	SceneObjectImplementation();
-	virtual ~SceneObjectImplementation();
-
-	//Setters
-
-	//Getters
+	ContainerObject();
+	virtual ~ContainerObject();
 };
 
-#endif /*SCENEOBJECTIMPLEMENTATION_H_*/
+#endif /* CONTAINEROBJECT_H_ */
