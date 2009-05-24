@@ -47,10 +47,43 @@ which carries forward this exception.
 
 class ContainerObject {
 protected:
+	VectorMap<uint64, ManagedReference<SceneObject> > objects;
+	int containerLimit;
 
 public:
 	ContainerObject();
 	virtual ~ContainerObject();
+
+	bool addChild(SceneObject* obj);
+	bool removeChild(uint64 oid);
+
+	SceneObject* getChild(uint64 oid, bool extend = false);
+
+	bool hasChild(uint64 oid, bool extend = false);
+
+	// getters
+
+	int getContainerSize(bool extend = false);
+
+	bool isContainerEmpty() {
+		return objects.isEmpty();
+	}
+
+	bool isContainerFull() {
+		if(containerLimit == -1)
+			return false;
+		return objects.size() >= containerLimit;
+	}
+
+	inline int getContainerLimit() {
+		return containerLimit;
+	}
+
+	// setters
+
+	inline void setContainerLimit(int limit) {
+		containerLimit = limit;
+	}
 };
 
 #endif /* CONTAINEROBJECT_H_ */
