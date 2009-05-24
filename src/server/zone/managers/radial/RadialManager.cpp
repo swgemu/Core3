@@ -49,11 +49,6 @@ which carries forward this exception.
 #include "../../packets/installation/ResourceHarvesterActivatePageMessage.h"
 
 #include "../../Zone.h"
-#include "../../objects.h"
-
-#include "../../objects/player/sui/listbox/SuiListBoxImplementation.h"
-#include "../../objects/player/sui/colorpicker/SuiColorPickerImplementation.h"
-#include "../../objects/player/sui/inputbox/SuiInputBoxImplementation.h"
 
 #include "../bazaar/BazaarManager.h"
 #include "../bazaar/BazaarManagerImplementation.h"

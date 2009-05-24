@@ -48,6 +48,7 @@ which carries forward this exception.
 
 class TangibleObjectImplementation : public TangibleObjectServant {
 protected:
+	uint32 movementCounter;
 
 public:
 	//Game Object Types

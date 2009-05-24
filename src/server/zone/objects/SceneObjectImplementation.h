@@ -55,6 +55,8 @@ protected:
 	ZoneProcessServerImplementation* server;
 	Zone* zone;
 
+	SceneObject* parent;
+
 	String stfFile;
 	String stfName;
 	UnicodeString customName;
@@ -64,7 +66,6 @@ protected:
 	uint64 ownerCharacterID;
 
 	uint32 objectCRC;
-	uint32 movementCounter;
 	uint32 linkType;
 
 	int gameObjectType;
@@ -135,7 +136,6 @@ public:
 	virtual void onRadialConverseRespond(Player* player);
 	virtual void onRadialConverseResponse(Player* player);
 	virtual void onRadialConverseStop(Player* player);
-	//Overridible?
 	virtual void onRadialMenu1(Player* player);
 	virtual void onRadialMenu2(Player* player);
 	virtual void onRadialMenu3(Player* player);
@@ -146,6 +146,9 @@ public:
 	virtual void onRadialMenu8(Player* player);
 	virtual void onRadialMenu9(Player* player);
 	virtual void onRadialMenu10(Player* player);
+
+	virtual void create(ZoneClientSession* client);
+	virtual void destroy(ZoneClientSession* client);
 
 	//Setters
 
