@@ -74,6 +74,9 @@ void VehicleDeedImplementation::init() {
 	setTargetObjectSubType(VEHICLE);
 
 	setTargetConditionMax(2000);
+	setVehicleSpeed(0.0f);
+	setVehicleAcceleration(0.0f);
+
 	setTargetControlDeviceCRC(0);
 }
 
@@ -138,7 +141,9 @@ SceneObject* VehicleDeedImplementation::generateObject(Player* player) {
 	vehicle->setStfName(getTargetStfName());
 	vehicle->setDatapadItem(controldevice);
 	vehicle->setMaxCondition(getTargetConditionMax());
-
+	vehicle->setSpeed(getVehicleSpeed());
+	vehicle->setAcceleration(getVehicleAcceleration());
+	System::out << "speed/acc = " << vehicle->getSpeed() << "/" << vehicle->getAcceleration() <<"\n";
 	controldevice->setWorldObject(vehicle);
 	controldevice->setParent((SceneObject*) datapad);
 
@@ -175,4 +180,10 @@ void VehicleDeedImplementation::parseItemAttributes(){
 
 	attr = "targetControlDeviceCRC";
 	targetControlDeviceCRC = itemAttributes->getUnsignedLongAttribute(attr);
+
+	attr = "vehicleSpeed";
+	vehicleSpeed = itemAttributes->getFloatAttribute(attr);
+
+	attr = "vehicleAcceleration";
+	vehicleAcceleration = itemAttributes->getFloatAttribute(attr);
 }

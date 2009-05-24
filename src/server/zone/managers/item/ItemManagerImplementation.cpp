@@ -1349,7 +1349,12 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		} else if (deed->isVehicleDeed()) {
 			VehicleDeed* vehicledeed = (VehicleDeed*) deed;
 			uint32 controldevicecrc = itemconfig.getIntField("targetControlDeviceCRC");
+			float vehicleSpeed = itemconfig.getFloatField("vehicleSpeed");
+			float vehicleAcceleration = itemconfig.getFloatField("vehicleAcceleration");
+
 			vehicledeed->setTargetControlDeviceCRC(controldevicecrc);
+			vehicledeed->setVehicleSpeed(vehicleSpeed);
+			vehicledeed->setVehicleAcceleration(vehicleAcceleration);
 		} else if (deed->isResourceDeed()) {
 
 		}

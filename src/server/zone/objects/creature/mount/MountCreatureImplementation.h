@@ -90,6 +90,18 @@ public:
 		return isInQuadTree();
 	}
 
+	inline void setSpeed(float sp) {
+		speed = sp;
+		String attr("vehicleSpeed");
+		itemAttributes->setFloatAttribute(attr, speed);
+	}
+
+	inline void setAcceleration(float ac) {
+		acceleration = ac;
+		String attr("vehicleAcceleration");
+		itemAttributes->setFloatAttribute(attr, acceleration);
+	}
+
 };
 
 #endif /*MOUNTCREATUREIMPLEMENTATION_H_*/

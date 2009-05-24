@@ -55,6 +55,10 @@ public:
 
 	void repair();
 
+	void setSpeed(float sp);
+
+	void setAcceleration(float ac);
+
 protected:
 	MountCreature(DummyConstructorParameter* param);
 
@@ -98,6 +102,10 @@ public:
 	bool isInWorld();
 
 	void repair();
+
+	void setSpeed(float sp);
+
+	void setAcceleration(float ac);
 
 };
 

@@ -98,12 +98,38 @@ void VehicleDeed::setTargetControlDeviceCRC(unsigned int crc) {
 		((VehicleDeedImplementation*) _impl)->setTargetControlDeviceCRC(crc);
 }
 
-unsigned int VehicleDeed::getTargetConditionMax() {
+void VehicleDeed::setVehicleSpeed(float speed) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 11);
+		method.addFloatParameter(speed);
+
+		method.executeWithVoidReturn();
+	} else
+		((VehicleDeedImplementation*) _impl)->setVehicleSpeed(speed);
+}
+
+void VehicleDeed::setVehicleAcceleration(float acceleration) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addFloatParameter(acceleration);
+
+		method.executeWithVoidReturn();
+	} else
+		((VehicleDeedImplementation*) _impl)->setVehicleAcceleration(acceleration);
+}
+
+unsigned int VehicleDeed::getTargetConditionMax() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -115,11 +141,35 @@ unsigned int VehicleDeed::getTargetControlDeviceCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 14);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
 		return ((VehicleDeedImplementation*) _impl)->getTargetControlDeviceCRC();
+}
+
+float VehicleDeed::getVehicleSpeed() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((VehicleDeedImplementation*) _impl)->getVehicleSpeed();
+}
+
+float VehicleDeed::getVehicleAcceleration() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((VehicleDeedImplementation*) _impl)->getVehicleAcceleration();
 }
 
 /*
@@ -149,10 +199,22 @@ Packet* VehicleDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		setTargetControlDeviceCRC(inv->getUnsignedIntParameter());
 		break;
 	case 11:
-		resp->insertInt(getTargetConditionMax());
+		setVehicleSpeed(inv->getFloatParameter());
 		break;
 	case 12:
+		setVehicleAcceleration(inv->getFloatParameter());
+		break;
+	case 13:
+		resp->insertInt(getTargetConditionMax());
+		break;
+	case 14:
 		resp->insertInt(getTargetControlDeviceCRC());
+		break;
+	case 15:
+		resp->insertFloat(getVehicleSpeed());
+		break;
+	case 16:
+		resp->insertFloat(getVehicleAcceleration());
 		break;
 	default:
 		return NULL;
@@ -181,12 +243,28 @@ void VehicleDeedAdapter::setTargetControlDeviceCRC(unsigned int crc) {
 	return ((VehicleDeedImplementation*) impl)->setTargetControlDeviceCRC(crc);
 }
 
+void VehicleDeedAdapter::setVehicleSpeed(float speed) {
+	return ((VehicleDeedImplementation*) impl)->setVehicleSpeed(speed);
+}
+
+void VehicleDeedAdapter::setVehicleAcceleration(float acceleration) {
+	return ((VehicleDeedImplementation*) impl)->setVehicleAcceleration(acceleration);
+}
+
 unsigned int VehicleDeedAdapter::getTargetConditionMax() {
 	return ((VehicleDeedImplementation*) impl)->getTargetConditionMax();
 }
 
 unsigned int VehicleDeedAdapter::getTargetControlDeviceCRC() {
 	return ((VehicleDeedImplementation*) impl)->getTargetControlDeviceCRC();
+}
+
+float VehicleDeedAdapter::getVehicleSpeed() {
+	return ((VehicleDeedImplementation*) impl)->getVehicleSpeed();
+}
+
+float VehicleDeedAdapter::getVehicleAcceleration() {
+	return ((VehicleDeedImplementation*) impl)->getVehicleAcceleration();
 }
 
 /*

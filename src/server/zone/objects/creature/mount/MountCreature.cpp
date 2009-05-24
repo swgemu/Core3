@@ -207,6 +207,32 @@ void MountCreature::repair() {
 		((MountCreatureImplementation*) _impl)->repair();
 }
 
+void MountCreature::setSpeed(float sp) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+		method.addFloatParameter(sp);
+
+		method.executeWithVoidReturn();
+	} else
+		((MountCreatureImplementation*) _impl)->setSpeed(sp);
+}
+
+void MountCreature::setAcceleration(float ac) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+		method.addFloatParameter(ac);
+
+		method.executeWithVoidReturn();
+	} else
+		((MountCreatureImplementation*) _impl)->setAcceleration(ac);
+}
+
 /*
  *	MountCreatureAdapter
  */
@@ -259,6 +285,12 @@ Packet* MountCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case 19:
 		repair();
+		break;
+	case 20:
+		setSpeed(inv->getFloatParameter());
+		break;
+	case 21:
+		setAcceleration(inv->getFloatParameter());
 		break;
 	default:
 		return NULL;
@@ -321,6 +353,14 @@ bool MountCreatureAdapter::isInWorld() {
 
 void MountCreatureAdapter::repair() {
 	return ((MountCreatureImplementation*) impl)->repair();
+}
+
+void MountCreatureAdapter::setSpeed(float sp) {
+	return ((MountCreatureImplementation*) impl)->setSpeed(sp);
+}
+
+void MountCreatureAdapter::setAcceleration(float ac) {
+	return ((MountCreatureImplementation*) impl)->setAcceleration(ac);
 }
 
 /*

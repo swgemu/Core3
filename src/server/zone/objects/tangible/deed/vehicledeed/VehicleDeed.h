@@ -33,9 +33,17 @@ public:
 
 	void setTargetControlDeviceCRC(unsigned int crc);
 
+	void setVehicleSpeed(float speed);
+
+	void setVehicleAcceleration(float acceleration);
+
 	unsigned int getTargetConditionMax();
 
 	unsigned int getTargetControlDeviceCRC();
+
+	float getVehicleSpeed();
+
+	float getVehicleAcceleration();
 
 protected:
 	VehicleDeed(DummyConstructorParameter* param);
@@ -63,9 +71,17 @@ public:
 
 	void setTargetControlDeviceCRC(unsigned int crc);
 
+	void setVehicleSpeed(float speed);
+
+	void setVehicleAcceleration(float acceleration);
+
 	unsigned int getTargetConditionMax();
 
 	unsigned int getTargetControlDeviceCRC();
+
+	float getVehicleSpeed();
+
+	float getVehicleAcceleration();
 
 };
 

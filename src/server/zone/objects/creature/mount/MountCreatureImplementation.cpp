@@ -217,6 +217,9 @@ void MountCreatureImplementation::parseItemAttributes() {
 	maxCondition = itemAttributes->getMaxCondition();
 	conditionDamage = maxCondition - itemAttributes->getCurrentCondition();
 
+	speed = itemAttributes->getFloatAttribute("vehicleSpeed");
+	acceleration = itemAttributes->getFloatAttribute("vehicleAcceleration");
+
 	//String temp = "objectFileName";
 	//setObjectFileName(itemAttributes->getStringAttribute(temp));
 }

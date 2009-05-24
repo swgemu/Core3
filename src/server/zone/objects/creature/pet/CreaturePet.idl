@@ -68,6 +68,9 @@ interface CreaturePet implements Creature {
 	Player getLinkedCreature();
 	void setDatapadItem(SceneObject item);
 	IntangibleObject getDatapadItem();
+	
+	Player getFollowTarget();	
+
 	void parseItemAttributes();
 
 	void call();

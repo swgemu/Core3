@@ -716,9 +716,6 @@ void CreaturePetImplementation::createDataPad(uint32 datapadCRC) {
 }
 
 void CreaturePetImplementation::call() {
-	//TODO: Creature pet calling disabled.
-	return;
-
 	if (debug) {
 		StringBuffer ss;
 		ss << "CreaturePetImplementation::call() " << getLinkedCreature()->getCharacterName().toString();
@@ -731,8 +728,9 @@ void CreaturePetImplementation::call() {
 		return;
 
 	try {
-		parent = NULL;
 		getLinkedCreature()->wlock(_this);
+
+		parent = NULL;
 
 		if (getLinkedCreature()->getParent() != NULL) {
 			getLinkedCreature()->unlock();
@@ -750,6 +748,7 @@ void CreaturePetImplementation::call() {
 			getLinkedCreature()->unlock();
 			return;
 		}
+
 		getLinkedCreature()->unlock();
 
 		handleFollowCommand(getLinkedCreature());
@@ -785,6 +784,7 @@ void CreaturePetImplementation::call() {
 		}
 
 		cManager->insertCreaturePet(_this);
+		updateNextMovementPosition(pos);
 
 		if (growth < 1.0f)	{
 			doGrowUp();
@@ -1147,6 +1147,8 @@ bool CreaturePetImplementation::activate() {
 				//System::out << "activate : clear combat\n";
 				clearCombatState();
 				aggroedCreature == NULL;
+			} else {
+				updateNextMovementPosition(calculateRelativePosition());
 			}
 		}
 		//System::out << "\tactivate : recovery\n";
@@ -1887,5 +1889,9 @@ Coordinate* CreaturePetImplementation::calculateRelativePosition() {
 }
 
 void CreaturePetImplementation::updateNextMovementPosition(Coordinate* nextPostition) {
+	/*System::out << "pet parent: " << getParentID() << "\n";;
+	System::out << "player parent: " << followTarget->getParentID() <<"\n";
+	System::out << "pos " << nextPostition->getPositionX() << ", " << nextPostition->getPositionY() <<"\n";
+*/
 	setNextMovementPosition(nextPostition->getPositionX(), nextPostition->getPositionY(),false);
 }

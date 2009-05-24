@@ -41,11 +41,18 @@
 --which carries forward this exception.
 
 jetpackVehicleDeed = Deed:new {
-	objectName = "Deed for: Jetpack",
-
-	templateName = "jetpack_deed",
-
+	stfName = "jetpack",
 	objectCRC = 2560190060,
+	objectType = VEHICLEDEED,
+	
+	targetStfFile = "monster_name",
+	targetStfName = "jetpack",
+	targetObjectFile = "object/mobile/vehicle/shared_jetpack.iff",
+	
+	targetControlDeviceCRC = 2096609656,
+	
+	conditionMax = 7200,
 
-	objectType = VEHICLEDEED
+	vehicleSpeed = 18.0,
+	vehicleAcceleration = 11.0,
 }

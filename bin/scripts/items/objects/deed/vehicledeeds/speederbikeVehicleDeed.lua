@@ -41,12 +41,18 @@
 --which carries forward this exception.
 
 speederbikeVehicleDeed = Deed:new {
-	objectName = "Deed for: Speederbike",
-
-	templateName = "speederbike_deed",
-
+	stfName = "speederbike",
 	objectCRC = 4075476273,
+	objectType = VEHICLEDEED,
+	
+	targetStfFile = "monster_name",
+	targetStfName = "speederbike",
+	targetObjectFile = "object/mobile/vehicle/shared_speederbike.iff",
+	
+	targetControlDeviceCRC = 3659586517,
+	
+	conditionMax = 7200,
 
-	objectType = VEHICLEDEED
-
+	vehicleSpeed = 18.0,
+	vehicleAcceleration = 11.0,
 }

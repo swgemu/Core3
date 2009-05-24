@@ -52,6 +52,8 @@ protected:
 	uint32 targetConditionMax;
 	uint32 targetControlDeviceCRC;
 
+	float vehicleSpeed;
+	float vehicleAcceleration;
 	void init();
 
 public:
@@ -84,6 +86,19 @@ public:
 		itemAttributes->setUnsignedLongAttribute(attr, targetControlDeviceCRC);
 	}
 
+	inline void setVehicleSpeed(float speed) {
+		vehicleSpeed = speed;
+		String attr("vehicleSpeed");
+		itemAttributes->setFloatAttribute(attr, vehicleSpeed);
+	}
+
+	inline void setVehicleAcceleration(float acceleration) {
+		vehicleAcceleration = acceleration;
+		String attr("vehicleAcceleration");
+		itemAttributes->setFloatAttribute(attr, vehicleAcceleration);
+	}
+
+
 	//Getters
 	inline uint32 getTargetConditionMax() {
 		return targetConditionMax;
@@ -92,6 +107,15 @@ public:
 	inline uint32 getTargetControlDeviceCRC() {
 		return targetControlDeviceCRC;
 	}
+
+	inline float getVehicleSpeed() {
+		return vehicleSpeed;
+	}
+
+	inline float getVehicleAcceleration() {
+		return vehicleAcceleration;
+	}
+
 };
 
 #endif /*VEHICLEDEEDIMPLEMENTATION_H_*/

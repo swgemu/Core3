@@ -39,6 +39,8 @@ public:
 
 	IntangibleObject* getDatapadItem();
 
+	Player* getFollowTarget();
+
 	void parseItemAttributes();
 
 	void call();
@@ -158,6 +160,8 @@ public:
 	void setDatapadItem(SceneObject* item);
 
 	IntangibleObject* getDatapadItem();
+
+	Player* getFollowTarget();
 
 	void parseItemAttributes();
 

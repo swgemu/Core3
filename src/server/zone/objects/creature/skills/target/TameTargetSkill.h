@@ -73,10 +73,6 @@ public:
 
 		Player* player = (Player*) creature;
 
-		//TODO: Temporarily disabled creaturehandler.
-		player->sendSystemMessage("Sorry, creature handler is temporarily disabled.");
-		return 0;
-
 		if(player == NULL) {
 			player->sendSystemMessage("Failed to tame creature.");
 			return 0;

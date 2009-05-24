@@ -1332,8 +1332,9 @@ void PlayerImplementation::updateZoneWithParent(uint64 Parent, bool lightUpdate)
 	if (newParent == NULL)
 		return;
 
-	if (!newParent->isCell())
+	if (!newParent->isCell()) {
 		return;
+	}
 
 	bool insert = false;
 

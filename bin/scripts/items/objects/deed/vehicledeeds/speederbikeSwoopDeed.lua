@@ -52,4 +52,7 @@ speederbikeSwoopDeed = Deed:new {
 	targetControlDeviceCRC = 2233671002,
 	
 	conditionMax = 7200,
+
+	vehicleSpeed = 18.0,
+	vehicleAcceleration = 11.0,
 }

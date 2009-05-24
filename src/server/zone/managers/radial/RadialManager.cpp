@@ -253,11 +253,8 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		case 43: //EXTRACT_OBJECT
 			break;
 		case 44: //PET_CALL
-			player->sendSystemMessage("Sorry, Creature Handler has been temporarily disabled.");
-			break;
-
-			//player->unlock();
-			//handlePetCall(obj);
+			player->unlock();
+			handlePetCall(obj);
 			return;
 		case 45: //TERMINAL_AUCTION_USE
 			sendRadialResponseForBazaar(obj->getObjectID(), player);
@@ -295,11 +292,8 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 			//obj->move(down, amount);
 			break;
 		case 59: //PET_STORE
-			player->sendSystemMessage("Sorry, Creature Handler has been temporarily disabled.");
-			break;
-
-			//player->unlock();
-			//handlePetStore(obj);
+			player->unlock();
+			handlePetStore(obj);
 			return;
 		case 60: // VEHICLE_GENERATE
 			player->unlock();

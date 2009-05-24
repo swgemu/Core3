@@ -338,6 +338,10 @@ public:
 
 	Coordinate* calculateRelativePosition();
 	void updateNextMovementPosition(Coordinate* nextPostition);
+
+	inline Player* getFollowTarget() {
+		return followTarget;
+	}
 };
 
 #endif /* CREATUREPETIMPLEMENTATION_H_ */
