@@ -67,10 +67,37 @@ protected:
 	uint32 movementCounter;
 	uint32 linkType;
 
-	uint8 gameObjectType;
+	int gameObjectType;
 
 public:
 	//Game Object Types
+	static const int SCENE = 0x00;
+	static const int CELL = 0x01;
+	static const int STATIC = 0x04;
+	// Universe
+	static const int GROUP = 0x02;
+	static const int GUILD = 0x03;
+	// Tangible (top level)
+	static const int BUILDING = 0x200;
+	static const int CREATURE = 0x400;
+	static const int INSTALLATION = 0x1000;
+	static const int TANGIBLE = 0x2000;
+	static const int TOOL = 0x8000;
+	static const int VEHICLE = 0x10000;
+	static const int WEAPON = 0x20000;
+	static const int COMPONENT = 0x40000;
+	static const int POWERUP = 0x80000;
+	static const int RESOURCECONTAINER = 0x400000;
+	static const int DEED = 0x800000;
+	static const int WEARABLE = 0x1000000;
+	static const int SHIP = 0x20000000;
+	// Intangible (top level)
+	static const int INTANGIBLE = 0x800;
+	static const int DRAFTSCHEMATIC = 0x801;
+	static const int DRAFTSCHEMATIC = 0x801;
+	static const int MANUFACTURESCHEMATIC = 0x802;
+	static const int MISSION = 0x803;
+	static const int WAYPOINT = 0x802;
 
 public:
 	SceneObjectImplementation();
@@ -120,10 +147,10 @@ public:
 	virtual void onRadialMenu9(Player* player);
 	virtual void onRadialMenu10(Player* player);
 
-
 	//Setters
 
 	//Getters
+	bool isObjectType(int type, bool similar = false);
 };
 
 #endif /*SCENEOBJECTIMPLEMENTATION_H_*/

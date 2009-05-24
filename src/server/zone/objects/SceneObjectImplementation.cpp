@@ -1206,3 +1206,82 @@ Coordinate* SceneObjectImplementation::getCoordinate(SceneObject* object1, Scene
 float SceneObjectImplementation::calculateDistance(SceneObject* scno) {
 	return (sqrt(pow(getPositionX() - scno->getPositionX(), 2) + pow(getPositionY() - scno->getPositionY(), 2)));
 }
+
+/**
+ * Compares the local gameObjectType to the type passed in variable "type"
+ * \param type type to compare with
+ * \param similar Default: false. If true, will return true if object inherits the object specified in variable "type"
+ */
+bool SceneObjectImplementation::isObjectType(int type, bool similar) {
+	if(!similar)
+		return type == gameObjectType;
+
+	// If similar is true, check inheritance relationship
+	switch(type) {
+	case INTANGIBLE:
+		if(gameObjectType >= 0x800 && gameObjectType <= 0x80B && (!(gameObjectType >= 0x01 && gameObjectType <= 0x04)))
+			return true;
+		break;
+	// Tangible & children:
+	case TANGIBLE:
+		if((!(gameObjectType >= 0x800 && gameObjectType <= 0x80B)) && (!(gameObjectType >= 0x01 && gameObjectType <= 0x04)))
+			return true;
+		break;
+	case BUILDING:
+		if(gameObjectType >= 200 && gameObjectType <= 203)
+			return true;
+		break;
+	case CREATURE:
+		if(gameObjectType >= 400 && gameObjectType <= 403)
+			return true;
+		break;
+	case INSTALLATION:
+		if(gameObjectType >= 0x1000 && gameObjectType <= 0x1005)
+			return true;
+		break;
+	case TOOL:
+		if(gameObjectType >= 0x8000 && gameObjectType <= 0x8005)
+			return true;
+		break;
+	case VEHICLE:
+		if(gameObjectType >= 0x10000 && gameObjectType <= 0x10001)
+			return true;
+		break;
+	case WEAPON:
+		if(gameObjectType >= 0x20000 && gameObjectType <= 0x2000E)
+			return true;
+		break;
+	case COMPONENT:
+		if(gameObjectType >= 0x40000 && gameObjectType <= 0x4000D)
+			return true;
+		break;
+	case POWERUP:
+		if(gameObjectType >= 0x80000 && gameObjectType <= 0x80006)
+			return true;
+		break;
+	case RESOURCECONTAINER:
+		if(gameObjectType >= 0x400000 && gameObjectType <= 0x40000B)
+			return true;
+		break;
+	case DEED:
+		if(gameObjectType >= 0x800000 && gameObjectType <= 0x400006)
+			return true;
+		break;
+	case WEARABLE:
+		if(gameObjectType >= 0x1000000 && gameObjectType <= 0x1000013)
+			return true;
+		break;
+	case SHIP:
+		if(gameObjectType >= 0x2000000 && gameObjectType <= 0x2000001)
+			return true;
+		break;
+	case SCENE:
+		return true;
+		break;
+	default:
+		return false;
+		break;
+	}
+
+	return false;
+}

@@ -50,6 +50,47 @@ class TangibleObjectImplementation : public TangibleObjectServant {
 protected:
 
 public:
+	//Game Object Types
+	// Generic
+	static const int MISC = 0x2000;
+	static const int AMMUNITION = 0x2001;
+	static const int CHEMICAL = 0x2002;
+	static const int CONTAINER = 0x2005;
+	static const int CRAFTINGSTATION = 0x2006;
+	static const int ELECTRONICS = 0x2008;
+	static const int FLORA = 0x2009;
+	static const int FOOD = 0x200A;
+	static const int FURNITURE = 0x200B;
+	static const int INSTRUMENT = 0x200C;
+	static const int PHARMACEUTICAL = 0x200D;
+	static const int SIGN = 0x200F;
+	static const int COUNTER = 0x2010;
+	static const int FACTORYCRATE = 0x2011;
+	static const int TRAVELTICKET = 0x2012;
+	static const int GENERICITEM = 0x2013;
+	static const int TRAP = 0x2014;
+	static const int WEARABLECONTAINER = 0x2015;
+	static const int FISHINGPOLE = 0x2016;
+	static const int FISHINGBAIT = 0x2017;
+	static const int DRINK = 0x2018;
+	static const int FIREWORK = 0x2019;
+	static const int ITEM = 0x201A;
+	static const int PETMEDECINE = 0x201B;
+	static const int FIREWORKSHOW = 0x201C;
+	static const int CLOTHINGATTACHMENT = 0x201D;
+	static const int LIVESAMPLE = 0x201E;
+	static const int ARMORATTACHMENT = 0x201F;
+	static const int COMMUNITYCRAFTINGPROJECT = 0x2020;
+	static const int CRYSTAL = 0x2021;
+	static const int DROIDPROGRAMMINGCHIP = 0x2022;
+	static const int ASTEROID = 0x2023;
+	static const int PILOTCHAIR = 0x2024;
+	static const int OPERATIONSCHAIR = 0x2025;
+	static const int TURRETACCESSLADDER = 0x2026;
+	static const int CONTAINER2 = 0x2027;
+	static const int CAMOKIT = 0x2028;
+
+public:
 	TangibleObjectImplementation();
 	~TangibleObjectImplementation();
 
