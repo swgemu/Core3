@@ -55,6 +55,66 @@ SceneObjectImplementation::~SceneObjectImplementation() {
 }
 
 /**
+ * When an object is "used" via the radial, double clicked, or accessed via hotkey, this method
+ * defines its use procedure.
+ * \param player The player who has requested use of this object.
+ */
+void SceneObjectImplementation::use(Player* player) {
+}
+
+/**
+ * When a player attempts to pickup an object, this method is called.
+ * \param player The player who is attempting to pickup this object.
+ */
+void SceneObjectImplementation::pickup(Player* player) {
+	if (!player->isPrivileged())
+		return;
+}
+
+/**
+ * When a player attempts to drop an object, this method is called.
+ * \param player The player who is attempting to drop this object.
+ */
+void SceneObjectImplementation::drop(Player* player) {
+	if (!player->isPrivileged())
+		return;
+}
+
+/**
+ * When a player attempts to destroy an item via radial menu or dragging it out of the container to the world.
+ * \param player The player who is attempting to destroy this object.
+ */
+void SceneObjectImplementation::destroy(Player* player) {
+	//TODO: Confirm that the object is actually in player's inventory first.
+	//TODO: Self destruction instructions.
+}
+
+/**
+ * When a player attempts to open an object's container. For example, a corpse or inventory.
+ * \param player The player attempting to open this object.
+ */
+void SceneObjectImplementation::open(Player* player) {
+	//TODO: Confirm that the player has permission to open this container.
+}
+
+/**
+ * When a player attempts to "activate" an object. This may be a different
+ * sequence of events than use().
+ * \param player The player that is attempting to activate this object.
+ */
+void SceneObjectImplementation::activate(Player* player) {
+
+}
+
+/**
+ * When a player attempts to "deactivate" an object.
+ * \param player The player that is attempting to deactivate this object.
+ */
+void SceneObjectImplementation::deactivate(Player* player) {
+
+}
+
+/**
  * Compares the local gameObjectType to the type passed in variable "type"
  * \param type type to compare with
  * \param similar Default: false. If true, will return true if object inherits the object specified in variable "type"

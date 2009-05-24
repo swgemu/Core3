@@ -59,12 +59,11 @@ public:
 	virtual void serialize(String& str);
 	virtual void deserialize(const String& str);
 
-	//Radial Responses
-	virtual void onRadialDuel(Player* player);
-	virtual void onRadialDeathblow(Player* player);
-	virtual void onRadialTradeStart(Player* player);
-	virtual void onRadialTradeAccept(Player* player);
-	virtual void onRadialTeach(Player* player);
+	virtual void duel(Player* player);
+	virtual void deathblow(Player* player);
+	virtual void teach(Player* player);
+	virtual void tradeStart(Player* player);
+	virtual void tradeAccept(Player* player);
 };
 
 #endif /*PLAYERIMPLEMENTATION_H_*/

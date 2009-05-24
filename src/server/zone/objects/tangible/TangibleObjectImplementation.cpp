@@ -50,3 +50,93 @@ TangibleObjectImplementation::TangibleObjectImplementation()
 
 TangibleObjectImplementation::~TangibleObjectImplementation() {
 }
+
+
+
+
+/**
+ * If this object is conversible, then this method will start the conversation with the player.
+ * \param player The player attempting to initiate conversation.
+ */
+void TangibleObjectImplementation::converseStart(Player* player) {
+}
+
+/**
+ * TODO: Fill in description for this method.
+ * \param player The player conversing with the object.
+ */
+void TangibleObjectImplementation::converseRespond(Player* player) {
+
+}
+
+/**
+ * TODO: Fill in description for this method.
+ * \param player The player conversing with the object.
+ */
+void TangibleObjectImplementation::converseResponse(Player* player) {
+
+}
+
+/**
+ * TODO: Fill in description for this method.
+ * \param player The player conversing with the object.
+ */
+void TangibleObjectImplementation::converseStop(Player* player) {
+
+}
+
+/**
+ * This method rotates the object to the left by a set number of degrees.
+ * \param player The player conversing with the object.
+ * \param direction (left|right) The direction to rotate the object. Right is the default direction.
+ * \param degrees How many degrees to rotate the object. Default is 90.
+ */
+void TangibleObjectImplementation::loot(Player* player, bool lootall) {
+	//TODO: Check if the player is able to loot this object.
+
+	if (lootall) {
+		//TODO: Loot everything.
+		return;
+	}
+
+	//TODO: Show the loot window to the player.
+}
+
+/**
+ * This method rotates the object to the left by a set number of degrees.
+ * \param player The player conversing with the object.
+ * \param direction (left|right) The direction to rotate the object. Right is the default direction.
+ * \param degrees How many degrees to rotate the object. Default is 90.
+ */
+void TangibleObjectImplementation::rotate(Player* player, const String& direction, uint32 degrees) {
+	//TODO: Check to make sure the player has permission to move the object.
+
+	if (direction.indexOf("left") == 0)
+		degrees = -degrees;
+
+	direction->rotate(Vector3::UNIT_Y, degrees);
+
+	//TODO: Send tano delta updates.
+}
+
+/**
+ * This method rotates the object to the right by a set number of degrees.
+ * \param player The player conversing with the object.
+ * \param direction (up|down|forward|back) The direction to move the object. Forward is the default direction.
+ * \param distance How far to move the object. Default is 10.
+ */
+void TangibleObjectImplementation::move(Player* player, const String& direction, uint32 distance) {
+	//TODO: Check to make sure the player has permission to move the object.
+
+	if (direction.indexOf("up")) {
+		//TODO: Move object up
+	} else if (direction.indexOf("down")) {
+		//TODO: Move object down
+	} else if (direction.indexOf("back")) {
+		//TODO: Move object back
+	} else {
+		//TODO: Move object foward
+	}
+
+	//Send tano delta updates.
+}

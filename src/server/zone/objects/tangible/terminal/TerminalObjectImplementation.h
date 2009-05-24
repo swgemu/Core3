@@ -42,21 +42,32 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef GUILDOBJECTIMPLEMENTATION_H_
-#define GUILDOBJECTIMPLEMENTATION_H_
+#ifndef TERMINALOBJECTIMPLEMENTATION_H_
+#define TERMINALOBJECTIMPLEMENTATION_H_
 
-#include "GuildObject.h"
+#include "TerminalObject.h"
 
-class GuildObjectImplementation : public GuildObjectServant {
+class TerminalObjectImplementation : public TerminalObjectServant {
 protected:
 
 public:
-	GuildObjectImplementation();
-	~GuildObjectImplementation();
+	static const int TERMINALBANK = 0x4001;
+	static const int TERMINALBAZAAR = 0x4002;
+	static const int TERMINALCLONING = 0x4003;
+	static const int TERMINALINSURANCE = 0x4004;
+	static const int TERMINALMISSION = 0x4006;
+	static const int TERMINALPLAYERSTRUCTURE = 0x4008;
+	static const int TERMINALSHIPPING = 0x4009; //What is a shipping terminal?
+	static const int TERMINALSPACE = 0x400B;
+	static const int TERMINALMISC = 0x400C;
+
+public:
+	TerminalObjectImplementation();
+	~TerminalObjectImplementation();
 
 	//Setters
 
 	//Getters
 };
 
-#endif /* GUILDOBJECTIMPLEMENTATION_H_ */
+#endif /* TERMINALOBJECTIMPLEMENTATION_H_ */

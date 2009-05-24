@@ -42,21 +42,10 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef GUILDOBJECTIMPLEMENTATION_H_
-#define GUILDOBJECTIMPLEMENTATION_H_
+import "../TangibleObject"
 
-#include "GuildObject.h"
-
-class GuildObjectImplementation : public GuildObjectServant {
-protected:
-
-public:
-	GuildObjectImplementation();
-	~GuildObjectImplementation();
-
-	//Setters
-
-	//Getters
-};
-
-#endif /* GUILDOBJECTIMPLEMENTATION_H_ */
+interface TerminalObject implements TangibleObject {
+	TerminalObject() {
+		super();
+	}
+}

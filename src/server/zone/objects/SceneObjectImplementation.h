@@ -73,25 +73,35 @@ protected:
 public:
 	//Game Object Types
 	static const int SCENE = 0x00;
-	static const int CELL = 0x01;
-	static const int STATIC = 0x04;
-	// Universe
+	static const int CELL = 0x00; //0x01 is a corpse.
+	static const int LAIR = 0x04; //Also appears to be general attackable objects.
+	static const int STATIC = 0x05;
+	static const int CAMPSPIT = 0x06; //Doesn't appear to be anything else in this category.
+
+	//Universe Objects
 	static const int GROUP = 0x02;
 	static const int GUILD = 0x03;
-	// Tangible (top level)
+
+	//Tangible Objects - Top level
+	static const int ARMOR = 0x100;
 	static const int BUILDING = 0x200;
 	static const int CREATURE = 0x400;
 	static const int INSTALLATION = 0x1000;
-	static const int TANGIBLE = 0x2000;
+	static const int MISC = 0x2000;
+	static const int TERMINAL = 0x4000;
 	static const int TOOL = 0x8000;
 	static const int VEHICLE = 0x10000;
 	static const int WEAPON = 0x20000;
 	static const int COMPONENT = 0x40000;
-	static const int POWERUP = 0x80000;
+	static const int WEAPONPOWERUP = 0x80000;
+	static const int ARMORPOWERUP = 0x100000;
+	static const int JEWELRY = 0x200000;
 	static const int RESOURCECONTAINER = 0x400000;
 	static const int DEED = 0x800000;
 	static const int WEARABLE = 0x1000000;
 	static const int SHIP = 0x20000000;
+	static const int SHIPCOMPONENTS = 0x40000000;
+
 	// Intangible (top level)
 	static const int INTANGIBLE = 0x800;
 	static const int DRAFTSCHEMATIC = 0x801;
@@ -107,6 +117,7 @@ public:
 	void initialize();
 
 	//ORB methods
+	void destroy();
 	void deploy();
 	void scheduleRedeploy();
 	void undeploy();
@@ -122,20 +133,22 @@ public:
 	virtual void sendRadialResponseTo(Player* player);
 	virtual void sendConversationStopTo(Player* player);
 	virtual void sendCustomNamePromptTo(Player* player);
+	virtual void sendStatusTo(Player* player); //TODO: We can use this for administrative purposes, and of course for structures/camps.
 
-	//Generic Radial Responses
-	virtual void onRadialUse(Player* player);
-	virtual void onRadialPickup(Player* player);
-	virtual void onRadialDrop(Player* player);
-	virtual void onRadialDestroy(Player* player);
-	virtual void onRadialOpen(Player* player);
-	virtual void onRadialActivate(Player* player);
-	virtual void onRadialDeactivate(Player* player);
-	virtual void onRadialSetName(Player* player);
-	virtual void onRadialConverseStart(Player* player);
-	virtual void onRadialConverseRespond(Player* player);
-	virtual void onRadialConverseResponse(Player* player);
-	virtual void onRadialConverseStop(Player* player);
+	//SceneObject packets?
+	virtual void create(ZoneClientSession* client);
+	virtual void destroy(ZoneClientSession* client);
+
+	//General actions.
+	virtual void use(Player* player);
+	virtual void pickup(Player* player);
+	virtual void drop(Player* player);
+	virtual void destroy(Player* player); //TODO: Should we name this something else to not confuse it with the ORB method?
+	virtual void open(Player* player);
+	virtual void activate(Player* player);
+	virtual void deactivate(Player* player);
+
+	//These radial responses can be overridden.
 	virtual void onRadialMenu1(Player* player);
 	virtual void onRadialMenu2(Player* player);
 	virtual void onRadialMenu3(Player* player);
@@ -146,9 +159,6 @@ public:
 	virtual void onRadialMenu8(Player* player);
 	virtual void onRadialMenu9(Player* player);
 	virtual void onRadialMenu10(Player* player);
-
-	virtual void create(ZoneClientSession* client);
-	virtual void destroy(ZoneClientSession* client);
 
 	//Setters
 

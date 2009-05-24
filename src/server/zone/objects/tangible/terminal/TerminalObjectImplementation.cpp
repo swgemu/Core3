@@ -42,21 +42,13 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef GUILDOBJECTIMPLEMENTATION_H_
-#define GUILDOBJECTIMPLEMENTATION_H_
+#include "TerminalObjectImplementation.h"
 
-#include "GuildObject.h"
+TerminalObjectImplementation::TerminalObjectImplementation()
+		: TerminalObjectServant() {
 
-class GuildObjectImplementation : public GuildObjectServant {
-protected:
+}
 
-public:
-	GuildObjectImplementation();
-	~GuildObjectImplementation();
+TerminalObjectImplementation::~TerminalObjectImplementation() {
 
-	//Setters
-
-	//Getters
-};
-
-#endif /* GUILDOBJECTIMPLEMENTATION_H_ */
+}

@@ -107,18 +107,18 @@ public:
 	virtual void sendDestroyTo(Player* player);
 	virtual void sendRadialResponseTo(Player* player);
 
-	//Generic Radial Response handlers
-	virtual void onRadialAttack(Player* player);
-	virtual void onRadialPeace(Player* player);
-	virtual void onRadialLootAll(Player* player);
-	virtual void onRadialLoot(Player* player);
-	virtual void onRadialSplit(Player* player);
-	virtual void onRadialRotateLeft(Player* player, uint32 degrees);
-	virtual void onRadialRotateRight(Player* player, uint32 degrees);
-	virtual void onRadialMoveItemForward(Player* player, uint32 meters);
-	virtual void onRadialMoveItemBackward(Player* player, uint32 meters);
-	virtual void onRadialMoveItemUp(Player* player, uint32 meters);
-	virtual void onRadialMoveItemDown(Player* player, uint32 meters);
+	//General actions.
+	virtual void converseStart(Player* player);
+	virtual void converseRespond(Player* player);
+	virtual void converseResponse(Player* player);
+	virtual void converseStop(Player* player);
+	virtual void equip(Player* player);
+	virtual void unequip(Player* player);
+	virtual void loot(Player* player, bool lootall = true);
+
+	//Object orientation and position.
+	virtual void rotate(Player* player, const String& direction, uint32 degrees = 90);
+	virtual void move(Player* player, const String& direction, uint32 distance = 10);
 };
 
 #endif /*TANGIBLEOBJECTIMPLEMENTATION_H_*/
