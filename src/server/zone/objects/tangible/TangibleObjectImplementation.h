@@ -50,6 +50,9 @@ class TangibleObjectImplementation : public TangibleObjectServant {
 protected:
 	uint32 movementCounter;
 
+	float conditionDamage;
+	uint32 conditionMax;
+
 public:
 	//Game Object Types
 	// Generic
