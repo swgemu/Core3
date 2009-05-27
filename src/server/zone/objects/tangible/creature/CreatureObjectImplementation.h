@@ -46,6 +46,8 @@ which carries forward this exception.
 #define CREATUREOBJECTIMPLEMENTATION_H_
 
 #include "CreatureObject.h"
+#include "modifiers/ModifierEffect.h"
+#include "modifiers/ModifierList.h"
 
 class CreatureObjectImplementation : public CreatureObjectServant {
 protected:
@@ -54,38 +56,48 @@ protected:
 	int32 attributesMax[9];
 	int32 wounds[9];
 
+	ModifierList* modifiers;
+
 public:
 	CreatureObjectImplementation();
 	~CreatureObjectImplementation();
 
 	//Saving and loading
 
-	//Generic Radial Responses
-	virtual void onRadialGroupInvite(Player* player);
-	virtual void onRadialGroupJoin(Player* player);
-	virtual void onRadialGroupLeave(Player* player);
-	virtual void onRadialGroupKick(Player* player);
-	virtual void onRadialGroupDisband(Player* player);
-	virtual void onRadialGroupDecline(Player* player);
-	virtual void onRadialFollow(Player* player);
-	virtual void onRadialStopFollow(Player* player);
-	virtual void onRadialImageDesign(Player* player);
-	virtual void onRadialDiagnose(Player* player);
-	virtual void onRadialTendDamage(Player* player);
-	virtual void onRadialTendWound(Player* player);
-	virtual void onRadialHealWound(Player* player, uint8 woundtype);
-	virtual void onRadialHealDamage(Player* player);
-	virtual void onRadialHealState(Player* player, uint8 statetype);
-	virtual void onRadialHealEnhance(Player* player, uint8 enhancetype);
-	virtual void onRadialHealFirstAid(Player* player);
-	virtual void onRadialHealCurePoison(Player* player);
-	virtual void onRadialHealCureDisease(Player* player);
-	virtual void onRadialHealApplyPoison(Player* player);
-	virtual void onRadialHealApplyDisease(Player* player);
-	virtual void onRadialPerformanceListen(Player* player);
-	virtual void onRadialPerformanceWatch(Player* player);
-	virtual void onRadialPerformanceStopListen(Player* player);
-	virtual void onRadialPerformanceStopWatch(Player* player);
+	//Modifiers
+	virtual void addModifierEffect(ModifierEffect* modeffect, bool activate = true);
+	virtual void removeModifierEffect(ModifierEffect* modeffect);
+	virtual ModifierEffect* getModifierEffect(const String& modeffectname);
+	virtual bool hasModifierEffect(const String& modeffectname);
+	virtual float getModifier(const String& modname);
+	virtual bool hasModifier(const String& modname);
+
+	//General Commands
+	virtual void groupInvite(Player* player);
+	virtual void groupJoin(Player* player);
+	virtual void groupLeave(Player* player);
+	virtual void groupKick(Player* player);
+	virtual void groupDisband(Player* player);
+	virtual void groupDecline(Player* player);
+	virtual void follow(TangibleObject* target);
+	virtual void stopFollowing(TangibleObject* target);
+	virtual void imageDesign(CreatureObject* target);
+	virtual void diagnose(CreatureObject* target);
+	virtual void tendDamage(CreatureObject* target);
+	virtual void tendWound(CreatureObject* target);
+	virtual void healWound(CreatureObject* target, uint8 woundtype);
+	virtual void healDamage(CreatureObject* target);
+	virtual void healState(CreatureObject* target, uint8 statetype);
+	virtual void healEnhance(CreatureObject* target, uint8 enhancetype);
+	virtual void healFirstAid(CreatureObject* target);
+	virtual void healCurePoison(CreatureObject* target);
+	virtual void healCureDisease(CreatureObject* target);
+	virtual void healApplyPoison(CreatureObject* target);
+	virtual void healApplyDisease(CreatureObject* target);
+	virtual void performanceListen(CreatureObject* target);
+	virtual void performanceWatch(CreatureObject* target);
+	virtual void performanceStopListening(CreatureObject* target);
+	virtual void performanceStopWatching(CreatureObject* target);
 
 	//Setters
 
