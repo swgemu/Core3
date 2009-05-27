@@ -42,18 +42,63 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef INSTALLATIONOBJECTIMPLEMENTATION_H_
-#define INSTALLATIONOBJECTIMPLEMENTATION_H_
+#ifndef STRUCTURE_H_
+#define STRUCTURE_H_
 
-#include "InstallationObject.h"
-#include "../structure/Structure.h"
+#include "StructurePermissionList.h"
 
-class InstallationObjectImplementation : public InstallationObjectServant, public Structure {
+class Structure {
 protected:
+	StructurePermissionList* permissionList;
+
+	float maintenanceRate;
+	float powerRate;
+	float maintenancePool;
+	float powerReserves;
+
+	bool publicStructure;
 
 public:
-	InstallationObjectImplementation();
-	~InstallationObjectImplementation();
+	Structure();
+	~Structure();
+
+	//Sui Menus
+	virtual void sendPayMaintenanceTo(Player* player);
+	virtual void sendDepositPowerTo(Player* player);
+	virtual void sendStructureStatusTo(Player* player);
+	virtual void sendDestroyQueryTo(Player* player);
+	virtual void sendDestroyConfirmTo(Player* player);
+	virtual void sendPermissionListTo(Player* player, const String& listname);
+
+	virtual void destroyStructure();
+	virtual void pollStructureStatus();
+
+	//Setters
+
+	//Getters
+	void isPublicStructure() {
+		return publicStructure;
+	}
+
+	inline bool isOnBanList(Player* player) {
+		return permissionList->isOnPermissionList(player, StructurePermissionList::BAN);
+	}
+
+	inline bool isOnEntryList(Player* player) {
+		return permissionList->isOnPermissionList(player, StructurePermissionList::ENTRY);
+	}
+
+	inline bool isOnAdminList(Player* player) {
+		return permissionList->isOnPermissionList(player, StructurePermissionList::ADMIN);
+	}
+
+	inline bool isOnHopperList(Player* player) {
+		return permissionList->isOnPermissionList(player, StructurePermissionList::HOPPER);
+	}
+
+	inline bool isOnVendorList(Player* player) {
+		return permissionList->isOnPermissionList(player, StructurePermissionList::VENDOR);
+	}
 };
 
-#endif /* INSTALLATIONOBJECTIMPLEMENTATION_H_ */
+#endif /* STRUCTURE_H_ */

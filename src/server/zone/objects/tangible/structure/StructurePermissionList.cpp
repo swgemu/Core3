@@ -42,18 +42,20 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef INSTALLATIONOBJECTIMPLEMENTATION_H_
-#define INSTALLATIONOBJECTIMPLEMENTATION_H_
+#include "StructurePermissionList.h"
 
-#include "InstallationObject.h"
-#include "../structure/Structure.h"
+StructurePermissionList::StructurePermissionList(SceneObject* linkedstructure) {
+	linkedStructure = linkedstructure;
+}
 
-class InstallationObjectImplementation : public InstallationObjectServant, public Structure {
-protected:
+void StructurePermissionList::sendTo(Player* player, const String& listname) {
+	//TODO: Send permission list packet to player.
+}
 
-public:
-	InstallationObjectImplementation();
-	~InstallationObjectImplementation();
-};
+void StructurePermissionList::parsePermissionString(const String& str) {
+	//TODO: Parse the passed string into this object.
+}
 
-#endif /* INSTALLATIONOBJECTIMPLEMENTATION_H_ */
+String& StructurePermissionList::getPermissionString() {
+	//TODO: Return a serialized string representing the data of this object.
+}

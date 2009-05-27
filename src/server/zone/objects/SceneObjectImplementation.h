@@ -73,14 +73,16 @@ protected:
 public:
 	//Game Object Types
 	static const int SCENE = 0x00;
-	static const int CELL = 0x00; //0x01 is a corpse.
-	static const int LAIR = 0x04; //Also appears to be general attackable objects.
-	static const int STATIC = 0x05;
-	static const int CAMPSPIT = 0x06; //Doesn't appear to be anything else in this category.
+	static const int CELL = 0x00;
+	static const int CORPSE = 0x01;
 
 	//Universe Objects
 	static const int GROUP = 0x02;
 	static const int GUILD = 0x03;
+
+	static const int LAIR = 0x04; //Also appears to be general attackable objects.
+	static const int STATIC = 0x05;
+	static const int CAMPSPIT = 0x06; //Doesn't appear to be anything else in this category.
 
 	//Tangible Objects - Top level
 	static const int ARMOR = 0x100;

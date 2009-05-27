@@ -42,18 +42,40 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef INSTALLATIONOBJECTIMPLEMENTATION_H_
-#define INSTALLATIONOBJECTIMPLEMENTATION_H_
+#ifndef STRUCTUREPERMISSIONLIST_H_
+#define STRUCTUREPERMISSIONLIST_H_
 
-#include "InstallationObject.h"
-#include "../structure/Structure.h"
+#include "engine/engine.h"
+#include "../../SceneObject.h"
+#include "../../tangible/creature/player/Player.h"
 
-class InstallationObjectImplementation : public InstallationObjectServant, public Structure {
+class StructurePermissionList : public VectorMap<String, uint8> {
 protected:
+	ManagedReference<SceneObject> linkedStructure;
+	String permissionString;
 
 public:
-	InstallationObjectImplementation();
-	~InstallationObjectImplementation();
+	static const uint8 BAN = 0;
+	static const uint8 ENTRY = 1;
+	static const uint8 ADMIN = 2;
+	static const uint8 HOPPER = 4;
+	static const uint8 VENDOR = 8;
+
+public:
+	StructurePermissionList(SceneObject* linkedstructure);
+
+	void sendTo(Player* player, const String& listname);
+
+	void parsePermissionString(const String& str);
+	String& getPermissionString();
+
+	void grantPermission(Player* player, const String& entryname, const String& listname);
+	void revokePermission(Player* player, const String& entryname, const String& listname);
+
+	//Setters
+
+	//Getters
+	bool isOnPermissionList(const String& entryname, uint8 listtype);
 };
 
-#endif /* INSTALLATIONOBJECTIMPLEMENTATION_H_ */
+#endif /* STRUCTUREPERMISSIONLIST_H_ */

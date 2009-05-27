@@ -42,18 +42,8 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef INSTALLATIONOBJECTIMPLEMENTATION_H_
-#define INSTALLATIONOBJECTIMPLEMENTATION_H_
+#ifndef CREATUREPETOBJECTIMPLEMENTATION_H_
+#define CREATUREPETOBJECTIMPLEMENTATION_H_
 
-#include "InstallationObject.h"
-#include "../structure/Structure.h"
 
-class InstallationObjectImplementation : public InstallationObjectServant, public Structure {
-protected:
-
-public:
-	InstallationObjectImplementation();
-	~InstallationObjectImplementation();
-};
-
-#endif /* INSTALLATIONOBJECTIMPLEMENTATION_H_ */
+#endif /* CREATUREPETOBJECTIMPLEMENTATION_H_ */

@@ -42,18 +42,17 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef INSTALLATIONOBJECTIMPLEMENTATION_H_
-#define INSTALLATIONOBJECTIMPLEMENTATION_H_
+#ifndef FOODOBJECTIMPLEMENTATION_H_
+#define FOODOBJECTIMPLEMENTATION_H_
 
-#include "InstallationObject.h"
-#include "../structure/Structure.h"
+#include "FoodObject.h"
 
-class InstallationObjectImplementation : public InstallationObjectServant, public Structure {
+class FoodObjectImplementation : public FoodObjectServant, public Consumable {
 protected:
 
 public:
-	InstallationObjectImplementation();
-	~InstallationObjectImplementation();
+	FoodObjectImplementation();
+	~FoodObjectImplementation();
 };
 
-#endif /* INSTALLATIONOBJECTIMPLEMENTATION_H_ */
+#endif /* FOODOBJECTIMPLEMENTATION_H_ */

@@ -42,18 +42,17 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef INSTALLATIONOBJECTIMPLEMENTATION_H_
-#define INSTALLATIONOBJECTIMPLEMENTATION_H_
+#ifndef SPICEOBJECTIMPLEMENTATION_H_
+#define SPICEOBJECTIMPLEMENTATION_H_
 
-#include "InstallationObject.h"
-#include "../structure/Structure.h"
+#include "SpiceObject.h"
 
-class InstallationObjectImplementation : public InstallationObjectServant, public Structure {
+class SpiceObjectImplementation : public SpiceObjectServant, public Consumable {
 protected:
 
 public:
-	InstallationObjectImplementation();
-	~InstallationObjectImplementation();
+	SpiceObjectImplementation();
+	~SpiceObjectImplementation();
 };
 
-#endif /* INSTALLATIONOBJECTIMPLEMENTATION_H_ */
+#endif /* SPICEOBJECTIMPLEMENTATION_H_ */
