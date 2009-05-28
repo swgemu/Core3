@@ -65,8 +65,12 @@ protected:
 
 	uint64 ownerCharacterID;
 
+	float complexity;
+
+	uint64 objectID;
 	uint32 objectCRC;
 	uint32 linkType;
+	uint32 volume;
 
 	int gameObjectType;
 
@@ -166,6 +170,63 @@ public:
 
 	//Getters
 	bool isObjectType(int type, bool similar = false);
+
+	inline float getDirectionX() {
+		return direction->getX();
+	}
+
+	inline float getDirectionY() {
+		return direction->getY();
+	}
+
+	inline float getDirectionZ() {
+		return direction->getZ();
+	}
+
+	inline float getDirectionW() {
+		return direction->getW();
+	}
+
+	inline float getPositionX() {
+		return positionX;
+	}
+
+	//TODO: We need to change Coordinate and QuadTreeEntry to reflect the standard vector format of x, y, z rather than x, z, y...
+	inline float getPositionY() {
+		return positionZ;
+	}
+
+	inline float getPositionZ() {
+		return pozitionY;
+	}
+
+	inline String& getStfFile() {
+		return stfFile;
+	}
+
+	inline String& getStfName() {
+		return stfName;
+	}
+
+	inline UnicodeString& getCustomName() {
+		return customName;
+	}
+
+	inline uint64 getObjectID() {
+		return objectID;
+	}
+
+	inline uint32 getObjectCRC() {
+		return objectCRC;
+	}
+
+	inline float getComplexity() {
+		return complexity;
+	}
+
+	inline uint32 getVolume() {
+		return volume;
+	}
 };
 
 #endif /*SCENEOBJECTIMPLEMENTATION_H_*/

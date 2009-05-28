@@ -45,11 +45,12 @@ IDLC = /usr/local/bin/idlc
 IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/ZoneClientSession.idl \
 				server/zone/ZoneServer.idl \
-				server/zone/objects/scene/SceneObject.idl \
-				server/zone/objects/creature/CreatureObject.idl \
-				server/zone/objects/player/Player.idl \
-				server/zone/objects/player/PlayerObject.idl \
+				server/zone/objects/SceneObject.idl \
 				server/zone/objects/tangible/TangibleObject.idl \
+				server/zone/objects/tangible/creature/CreatureObject.idl \
+				server/zone/objects/tangible/creature/player/Player.idl \
+				server/zone/objects/intangible/IntangibleObject.idl \
+				server/zone/objects/intangible/player/PlayerObject.idl \
 				server/zone/managers/crafting/CraftingManager.idl \
 				server/zone/managers/bank/BankManager.idl \
 				server/zone/managers/bazaar/BazaarManager.idl \
@@ -71,8 +72,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/managers/structure/StructureManager.idl \
 				server/zone/managers/user/UserManager.idl \
 				server/chat/room/ChatRoom.idl \
-				server/chat/ChatManager.idl \
-				server/zone/objects/creature/pet/CreaturePet.idl
+
 all:
 	cd src && $(IDLC) $(IDL_SOURCES)
 	cd build/unix && ../../configure && make

@@ -49,7 +49,17 @@ which carries forward this exception.
 
 class PlayerImplementation : public PlayerServant {
 protected:
+	WaypointList waypointList;
+	FriendsList friendsList;
+	IgnoreList ignoreList;
 
+	uint32 fillingFood;
+	uint32 fillingFoodMax;
+	uint32 fillingDrink;
+	uint32 fillingDrinkMax;
+
+	uint32 language;
+	uint32 jediState;
 
 public:
 	PlayerImplementation();
@@ -64,6 +74,10 @@ public:
 	virtual void teach(Player* player);
 	virtual void tradeStart(Player* player);
 	virtual void tradeAccept(Player* player);
+
+	//Setters
+
+	//Getters
 };
 
 #endif /*PLAYERIMPLEMENTATION_H_*/

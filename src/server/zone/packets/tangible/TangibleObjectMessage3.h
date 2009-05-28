@@ -51,43 +51,36 @@ which carries forward this exception.
 
 class TangibleObjectMessage3 : public BaseLineMessage {
 public:
-	TangibleObjectMessage3(TangibleObject* tano, uint32 objType = 0x54414E4F, uint16 opcnt = 0x0B)
-			: BaseLineMessage(tano->getObjectID(), objType, 3, opcnt) {
-		insertFloat(tano->getComplexity());
+	TangibleObjectMessage3(TangibleObject* tano, uint32 objtype = 0x54414E4F, uint16 opcnt = 0x0B)
+			: BaseLineMessage(tano->getObjectID(), objtype, 3, opcnt) {
+		insertFloat(tano->getComplexity()); //Complexity
 
-		insertAscii(tano->getStfFile());
-		insertInt(0);
-		insertAscii(tano->getStfName());
-
-		UnicodeString customname = tano->getCustomName();
-
-		if (tano->isPlayer() && ((Player*)tano)->isPrivileged())
-			insertUnicode(customname + UnicodeString(" \\#ffff00[SWGEmu-Staff]\\#."));
-		else
-			insertUnicode(customname);
-
-		insertInt(tano->getVolume());
+		insertAscii(tano->getStfFile()); //StfFile
+		insertInt(0); //Unknown
+		insertAscii(tano->getStfName()); //StfName
+		insertUnicode(tano->getCustomName()); //CustomName
+		insertInt(tano->getVolume()); //Volume
 
 		String app;
 		tano->getCustomizationString(app);
-		insertAscii(app);
+		insertAscii(app); //Customization String
 
-		insertInt(0);
-		insertInt(0);
+		insertInt(0); //Unknown
+		insertInt(0); //Unknown
 
-		insertInt(tano->getOptionsBitmask());
+		insertInt(tano->getOptionsBitmask()); //OptionsBitmask
 
 		int count = tano->getObjectCount();
 
 		if (count <= 1)
 			count = 0;
 
-		insertInt(count); //item count
+		insertInt(count); //Object Count? Perhaps this could be named something better.
 
-		insertInt(int(tano->getConditionDamage()));
-		insertInt(tano->getMaxCondition());
+		insertInt(int(tano->getConditionDamage())); //Condition Damage
+		insertInt(tano->getConditionMax()); //Condition Max
 
-		insertByte(tano->getUnknownByte());
+		insertByte(tano->getUnknownByte()); //Unknown
 
 		setSize();
 	}

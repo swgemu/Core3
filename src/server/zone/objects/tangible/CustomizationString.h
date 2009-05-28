@@ -42,43 +42,17 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CREATUREOBJECTMESSAGE3_H_
-#define CREATUREOBJECTMESSAGE3_H_
+#ifndef CUSTOMIZATIONSTRING_H_
+#define CUSTOMIZATIONSTRING_H_
 
-#include "../tangible/TangibleObjectMessage3.h"
+class CustomizationString : public String {
+protected:
+	//TODO: To take the place of CustomizationVariables in a more standardized way.
 
-#include "../../objects/creature/CreatureObject.h"
 
-class CreatureObjectMessage3 : public TangibleObjectMessage3 {
 public:
-	CreatureObjectMessage3(CreatureObject* creo)
-			: TangibleObjectMessage3(creo, 0x4352454F, 0x12) {
-
-		insertByte(creo->getPosture()); //Posture
-		insertByte(creo->getFactionRank()); //Faction Rank
-
-		insertLong(creo->getMountObjectID()); //LinkedCreatureID (Mount)
-
-		insertFloat(creo->getHeight()); //Height
-		insertInt(creo->getShockWounds()); //BattleFatigue
-
-		insertLong(creo->getStateBitmask()); //StateBitmask
-
-		insertInt(9); // List Size
-		insertInt(creo->getWoundsUpdateCounter());
-		insertInt(creo->getHealthWounds());
-		insertInt(creo->getStrengthWounds());
-		insertInt(creo->getConstitutionWounds());
-		insertInt(creo->getActionWounds());
-		insertInt(creo->getQuicknessWounds());
-		insertInt(creo->getStaminaWounds());
-		insertInt(creo->getMindWounds());
-		insertInt(creo->getFocusWounds());
-		insertInt(creo->getWillpowerWounds());
-
-		setSize();
-	}
-
+	CustomizationString();
+	~CustomizationString();
 };
 
-#endif /*CREATUREOBJECTMESSAGE3_H_*/
+#endif /* CUSTOMIZATIONSTRING_H_ */

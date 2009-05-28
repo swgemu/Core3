@@ -45,6 +45,18 @@ which carries forward this exception.
 
 CreatureObjectImplementation::CreatureObjectImplementation()
 		: CreatureObjectServant() {
+	complexity = 10.0f;
+	volume = 0x0085E5CA;
+
+	height = 1.0f;
+	pvpStatusBitmask = 0x10;
+	factionRank = 0;
+
+	speed = DEFAULT_SPEED;
+	turnRadius = 1.0f;
+	terrainNegotiation = 1.0f;
+	acceleration = DEFAULT_ACCEL;
+	deceleration = 1.0f;
 }
 
 CreatureObjectImplementation::~CreatureObjectImplementation() {

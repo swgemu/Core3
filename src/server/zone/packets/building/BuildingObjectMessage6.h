@@ -49,14 +49,12 @@ which carries forward this exception.
 
 class BuildingObjectMessage6 : public BaseLineMessage {
 public:
-	BuildingObjectMessage6(BuildingObject *buio)
-			: BaseLineMessage(buio->getObjectID(), 0x4255494F, 6, 0x02) {
-		// BaseLineMessage(uint64 oid, uint32 name, uint8 type, uint16 opcnt)
-		//insertInt(0x4A);
-		insertInt(0x42);
+	BuildingObjectMessage6(BuildingObject* building)
+			: BaseLineMessage(building->getObjectID(), 0x4255494F, 6, 0x02) {
+		insertInt(0x42); //What is this value?
+		//It is different in each packet that (appears to) inherit TANO baselines. Some sort of variable? ObjectType?
 
-		insertInt(0); //Counter of uint64's
-		insertInt(0); //Update count I assume.
+		insertDefenders(building);
 
 		setSize();
 
@@ -65,20 +63,14 @@ public:
 		//System::out << msg.toString();
 	}
 
-	BuildingObjectMessage6(CampSite *camp)
-			: BaseLineMessage(camp->getObjectID(), 0x4255494F, 6, 0x02) {
-		// BaseLineMessage(uint64 oid, uint32 name, uint8 type, uint16 opcnt)
-		//insertInt(0x4A);
-		insertInt(0x42);
+	void insertDefenders(BuildingObject* building) {
+		int size = building->getDefenderListSize();
 
-		insertInt(0); //Counter of uint64's
-		insertInt(0); //Update count I assume.
+		insertInt(size);
+		insertInt(building->getDefenderUpdateCounter());
 
-		setSize();
-
-		//StringBuffer msg;
-		//msg << hex << "BuildingObjectMessage6 [Object = " << buio->getObjectID() << "]\n";
-		//System::out << msg.toString();
+		for (int i = 0; i < size; ++i)
+			insertLong(building->getDefender(i)->getObjectID());
 	}
 };
 #endif /*BUILDINGOBJECTMESSAGE6_H_*/

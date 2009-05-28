@@ -44,14 +44,30 @@ which carries forward this exception.
 
 #ifndef TANGIBLEOBJECTIMPLEMENTATION_H_
 #define TANGIBLEOBJECTIMPLEMENTATION_H_
+
 #include "TangibleObject.h"
+#include "CustomizationString.h"
 
 class TangibleObjectImplementation : public TangibleObjectServant {
 protected:
+	CustomizationString customizationString;
+
+	//TODO: Make an object?
+	Vector<ManagedReference<TangibleObject> > defenderList;
+
+	uint32 pvpStatusBitmask;
+	uint32 faction;
+
 	uint32 movementCounter;
+	uint32 defenderUpdateCounter;
+
+	uint32 optionsBitmask;
+	uint32 objectCount;
 
 	float conditionDamage;
 	uint32 conditionMax;
+
+	uint8 unknownByte;
 
 public:
 	//Game Object Types
@@ -119,6 +135,33 @@ public:
 	//Object orientation and position.
 	virtual void rotate(Player* player, const String& direction, uint32 degrees = 90);
 	virtual void move(Player* player, const String& direction, uint32 distance = 10);
+
+	//Setters
+
+	//Getters
+	inline uint32 getOptionsBitmask() {
+		return optionsBitmask;
+	}
+
+	//TODO: This could probably be more accurately named. It represents the value of the number overlaying items in inventory.
+	inline uint32 getObjectCount() {
+		return objectCount;
+	}
+
+	inline float getConditionDamage() {
+		return conditionDamage;
+	}
+
+	inline float getConditionMax() {
+		return conditionMax;
+	}
+
+	//TODO: Figure out if this byte has any significance.
+	inline uint8 getUnknownByte() {
+		return unknownByte;
+	}
+
+
 };
 
 #endif /*TANGIBLEOBJECTIMPLEMENTATION_H_*/

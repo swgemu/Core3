@@ -48,15 +48,62 @@ which carries forward this exception.
 #include "CreatureObject.h"
 #include "modifiers/ModifierEffect.h"
 #include "modifiers/ModifierList.h"
+#include "../SkillModList.h"
 
 class CreatureObjectImplementation : public CreatureObjectServant {
 protected:
+	ManagedReference<InstrumentObject> instrument;
+	ManagedReference<TangibleObject> target; //For targetID?
+	ManagedReference<WeaponObject> weapon;
+	ManagedReference<GroupObject> group;
+	ManagedReference<GuildObject> guild;
+	ManagedReference<CreatureObject> linkedCreature; //TODO: Is this only used for Mount?
+
+	SkillModList skillMods;
+	ModifierList modifiers;
+
+	String performanceAnimation;
+
+	float height;
+	float speed;
+	float turnRadius;
+	float terrainNegotiation;
+	float acceleration;
+	float deceleration;
+
+	uint64 statesBitmask;
+	uint64 listeningToID;
+	uint64 groupInviteCounter;
+	uint64 groupInviterID;
+
+	uint32 level;
+
+	uint32 creditsBank;
+	uint32 creditsCash;
+
+	uint32 factionRank;
+
+	uint32 updateCounterHAMBase;
+	uint32 updateCounterWounds;
+	uint32 updateCounterEncumbrance;
+	uint32 updateCounterPerformance;
+
 	int32 attributesBase[9];
 	int32 attributes[9];
 	int32 attributesMax[9];
 	int32 wounds[9];
+	int32 shockWounds;
 
-	ModifierList* modifiers;
+	int32 healthEncumbrance;
+	int32 actionEncumbrance;
+	int32 mindEncumbrance;
+
+	uint8 moodID;
+	uint8 posture;
+
+public:
+	static const float DEFAULT_SPEED = 5.376f;
+	static const float DEFAULT_ACCEL = 1.549f;
 
 public:
 	CreatureObjectImplementation();

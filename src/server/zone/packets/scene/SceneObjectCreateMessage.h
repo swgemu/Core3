@@ -60,8 +60,8 @@ public:
 		insertFloat(scno->getDirectionZ());
 		insertFloat(scno->getDirectionW());
 		insertFloat(scno->getPositionX());
-		insertFloat(scno->getPositionZ());
 		insertFloat(scno->getPositionY());
+		insertFloat(scno->getPositionZ());
 		insertInt(scno->getObjectCRC());  // ObjectCRC
 		insertByte(0);
 	}
@@ -85,10 +85,10 @@ public:
 		pack->shiftOffset(16);
 
 		float x = pack->parseFloat();
-		float z = pack->parseFloat();
 		float y = pack->parseFloat();
+		float z = pack->parseFloat();
 
-		scno->setPosition(x, z, y);
+		scno->setPosition(x, y, z);
 	}
 };
 

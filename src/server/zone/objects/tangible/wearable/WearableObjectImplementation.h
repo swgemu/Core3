@@ -59,6 +59,8 @@ public:
 	virtual ~WearableObjectImplementation();
 
 	//Setters
+	virtual void equip(CreatureObject* creature);
+	virtual void unequip(CreatureObject* creature);
 
 	//Getters
 	virtual bool isBody() { return false; }

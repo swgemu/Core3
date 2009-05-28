@@ -54,41 +54,38 @@ public:
 	CreatureObjectMessage4(CreatureObjectImplementation* creo)
 			: BaseLineMessage(creo->getObjectID(), 0x4352454F, 4, 0x0E) {
 		//
-		insertFloat(1);
-		insertFloat(1);
+		insertFloat(1); //Unknown
+		insertFloat(1); //Unknown
 
 		//Encumbrances
-		insertInt(3);
-		insertInt(creo->getEncumbUpdateCounter());
-		insertInt(creo->getHealthEncumbrance());
-		insertInt(creo->getActionEncumbrance());
-		insertInt(creo->getMindEncumbrance());
+		insertInt(3); //List Size
+		insertInt(creo->getEncumbranceUpdateCounter()); //Update Counter
+		insertInt(creo->getHealthEncumbrance()); //Health Encumbrance
+		insertInt(creo->getActionEncumbrance()); //Action Encumbrance
+		insertInt(creo->getMindEncumbrance());   //Mind Encumbrance
 
 		// skill mods
 		insertSkillMods(creo);
 
 		//
-		insertFloat(1);
-		insertFloat(1);
+		insertFloat(1); //Unknown
+		insertFloat(1); //Unknown
 
-		// listenToID
-		insertLong(creo->getListenID());
+		insertLong(creo->getListenID()); //Listening to ID
 
-		insertFloat(creo->speed);
+		insertFloat(creo->getSpeed()); //Speed
 
-		insertFloat(1.00625f);
+		insertFloat(1.00625f); //What is this value?
 
-		insertFloat(creo->getTerrainNegotiation());  // Terrain Negotiation
+		insertFloat(creo->getTerrainNegotiation());  //Terrain Negotiation
 
-		// turn radius
-		insertFloat(1);
+		insertFloat(creo->getTurnRadius()); //Turn radius
 
-		insertFloat(creo->acceleration);
-		insertFloat(0.0125f);
+		insertFloat(creo->getAcceleration()); //Acceleration
+		insertFloat(creo->getDeceleration()); //Deceleration
 
-		//
-		insertInt(0);
-		insertInt(0);
+		insertInt(0); //Unknown
+		insertInt(0); //Unknown
 
 		setSize();
 	}

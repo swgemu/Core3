@@ -47,19 +47,19 @@ which carries forward this exception.
 
 #include "../../packets/BaseLineMessage.h"
 
-#include "../../objects/creature/CreatureObjectImplementation.h"
-#include "../../objects/player/PlayerImplementation.h"
+#include "../../objects/tangible/creature/CreatureObjectImplementation.h"
+#include "../../objects/tangible/creature/player/PlayerImplementation.h"
 
 class CreatureObjectMessage1 : public BaseLineMessage {
 public:
 	CreatureObjectMessage1(CreatureObjectImplementation* creo)
 			: BaseLineMessage(creo->getObjectID(), 0x4352454F, 1, 0x04) {
-		insertInt(creo->bankCredits);
-		insertInt(creo->cashCredits);
+		insertInt(creo->getBankCredits()); //Bank Credits
+		insertInt(creo->getCashCredits()); //Cash Credits
 
 		// Base HAM
-		insertInt(9);
-		insertInt(creo->getHAMBaseUpdateCounter());
+		insertInt(9); //HAM List Size
+		insertInt(creo->getHAMBaseUpdateCounter()); //HAM Update Counter
 		insertInt(creo->getBaseHealth());
 		insertInt(creo->getBaseStrength());
 		insertInt(creo->getBaseConstitution());
@@ -78,6 +78,7 @@ public:
 	}
 
 	void insertSkillBoxes(CreatureObjectImplementation* creo) {
+		//TODO: This seems unsafish...
 		PlayerImplementation* player = (PlayerImplementation*)creo;
 
 		int size = player->skillBoxes.size();

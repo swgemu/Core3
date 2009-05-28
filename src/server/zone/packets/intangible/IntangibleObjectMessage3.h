@@ -53,15 +53,14 @@ class IntangibleObjectMessage3 : public BaseLineMessage {
 public:
 	IntangibleObjectMessage3(IntangibleObject* itno)
 			: BaseLineMessage(itno->getObjectID(), 0x4F4E5449, 3, 5) {
-		insertFloat(1);
-		insertAscii(itno->getStfName()); //real stf name
-		insertInt(0);
-		insertAscii(itno->getStfFile());
-		insertUnicode(itno->getCustomName());
-		insertInt(0);
+		insertFloat(itno->getComplexity()); //Complexity?
+		insertAscii(itno->getStfName()); //StfName
+		insertInt(0); //Unknown
+		insertAscii(itno->getStfFile()); //StfFile
+		insertUnicode(itno->getCustomName()); //CustomName
+		insertInt(itno->getVolume()); //Volume
 
-		//insertInt(1);
-		insertInt(itno->getStatus());
+		insertInt(itno->getStatus()); //Status = Called/Stored???
 
 		setSize();
 	}

@@ -48,6 +48,8 @@ which carries forward this exception.
 SceneObjectImplementation::SceneObjectImplementation()
 		: SceneObjectServant() {
 
+	complexity = 1.0f;
+	volume = 0;
 }
 
 SceneObjectImplementation::~SceneObjectImplementation() {
