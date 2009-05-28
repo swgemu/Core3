@@ -83,10 +83,18 @@ core3_IDLS =	server/chat/ChatManager.cpp \
 		server/zone/managers/user/UserManager.cpp \
 		server/zone/objects/SceneObject.cpp \
 		server/zone/objects/tangible/TangibleObject.cpp \
+		server/zone/objects/tangible/building/BuildingObject.cpp \
+		server/zone/objects/tangible/building/camp/CampObject.cpp \
 		server/zone/objects/tangible/creature/CreatureObject.cpp \
 		server/zone/objects/tangible/creature/player/Player.cpp \
+		server/zone/objects/tangible/deed/DeedObject.cpp \
+		server/zone/objects/tangible/instrument/InstrumentObject.cpp \
+		server/zone/objects/tangible/powerup/PowerupObject.cpp \
+		server/zone/objects/tangible/weapon/WeaponObject.cpp \
 		server/zone/objects/intangible/IntangibleObject.cpp \
 		server/zone/objects/intangible/player/PlayerObject.cpp \
+		server/zone/objects/universe/group/GroupObject.cpp \
+		server/zone/objects/universe/guild/GuildObject.cpp \
 		server/zone/ZoneClientSession.cpp \
 		server/zone/Zone.cpp \
 		server/zone/ZoneServer.cpp 
@@ -137,10 +145,18 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/feature/FeatureManager.cpp \
 		server/zone/objects/SceneObjectImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
+		server/zone/objects/tangible/building/BuildingObjectImplementation.cpp \
+		server/zone/objects/tangible/building/camp/CampObjectImplementation.cpp \
 		server/zone/objects/tangible/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/tangible/creature/player/PlayerImplementation.cpp \
+		server/zone/objects/tangible/deed/DeedObjectImplementation.cpp \
+		server/zone/objects/tangible/instrument/InstrumentObjectImplementation.cpp \
+		server/zone/objects/tangible/powerup/PowerupObjectImplementation.cpp \
+		server/zone/objects/tangible/weapon/WeaponObjectImplementation.cpp \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
 		server/zone/objects/intangible/player/PlayerObjectImplementation.cpp \
+		server/zone/objects/universe/group/GroupObjectImplementation.cpp \
+		server/zone/objects/universe/guild/GuildObjectImplementation.cpp \
 		server/zone/packets/object/ObjectControllerMessage.cpp \
 		server/zone/packets/charcreation/ClientCreateCharacter.cpp \
 		server/zone/ZoneClientSessionImplementation.cpp \

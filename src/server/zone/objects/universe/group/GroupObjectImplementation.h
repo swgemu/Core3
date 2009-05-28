@@ -45,5 +45,14 @@ which carries forward this exception.
 #ifndef GROUPOBJECTIMPLEMENTATION_H_
 #define GROUPOBJECTIMPLEMENTATION_H_
 
+#include "GroupObject.h"
+
+class GroupObjectImplementation : public GroupObjectServant {
+protected:
+
+public:
+	GroupObjectImplementation();
+	~GroupObjectImplementation();
+};
 
 #endif /* GROUPOBJECTIMPLEMENTATION_H_ */

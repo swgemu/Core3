@@ -42,42 +42,19 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef MODIFIEREXPIRATIONEVENT_H_
-#define MODIFIEREXPIRATIONEVENT_H_
+#ifndef INSTRUMENTOBJECTIMPLEMENTATION_H_
+#define INSTRUMENTOBJECTIMPLEMENTATION_H_
 
-#include "engine/engine.h"
+#include "InstrumentObject.h"
 
-class ModifierEffect;
-
-class ModifierExpirationEvent : public Event {
+class InstrumentObjectImplementation : public InstrumentObjectServant {
 protected:
-	ManagedReference<CreatureObject> creature;
-	ModifierEffect* effect;
 
 public:
-	ModifierExpirationEvent(CreatureObject* creo, ModifierEffect* mod) : Event() {
-		creature = creo;
-		effect = mod;
-		setKeeping(false);
-	}
 
-	bool activate() {
-		if (creature == NULL || effect == NULL)
-			return false;
-
-		try {
-			creature->wlock();
-
-			//creature->removeModifierEffect(effect);
-
-			creature->unlock();
-		} catch (...) {
-			creature->error("Unexpected exception in ModifierExpirationEvent::activate().");
-			creature->unlock();
-		}
-
-		return true;
-	}
+public:
+	InstrumentObjectImplementation();
+	~InstrumentObjectImplementation();
 };
 
-#endif /* MODIFIEREXPIRATIONEVENT_H_ */
+#endif /* INSTRUMENTOBJECTIMPLEMENTATION_H_ */

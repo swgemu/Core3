@@ -58,8 +58,8 @@ public:
 		//TODO: Delete all ModifierEffect objects here.
 	}
 
-	inline int put(ModifierEffect* effect, bool activate = true) {
-		return put(effect->getEffectCRC(), effect);
+	inline void add(ModifierEffect* effect) {
+		put(effect->getEffectCRC(), effect);
 	}
 };
 

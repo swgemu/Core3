@@ -42,3 +42,13 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#include "GroupObjectImplementation.h"
+
+GroupObjectImplementation::GroupObjectImplementation()
+		: GroupObjectServant() {
+
+}
+
+GroupObjectImplementation::~GroupObjectImplementation() {
+
+}

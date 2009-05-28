@@ -1,4 +1,4 @@
-import "../SceneObject";
+import "../../SceneObject";
 
 interface GuildObject implements SceneObject {
 	GuildObject() {

@@ -47,10 +47,18 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/ZoneServer.idl \
 				server/zone/objects/SceneObject.idl \
 				server/zone/objects/tangible/TangibleObject.idl \
+				server/zone/objects/tangible/building/BuildingObject.idl \
+				server/zone/objects/tangible/building/camp/CampObject.idl \
 				server/zone/objects/tangible/creature/CreatureObject.idl \
 				server/zone/objects/tangible/creature/player/Player.idl \
+				server/zone/objects/tangible/deed/DeedObject.idl \
+				server/zone/objects/tangible/instrument/InstrumentObject.idl \
+				server/zone/objects/tangible/powerup/PowerupObject.idl \
+				server/zone/objects/tangible/weapon/WeaponObject.idl \
 				server/zone/objects/intangible/IntangibleObject.idl \
 				server/zone/objects/intangible/player/PlayerObject.idl \
+				server/zone/objects/universe/group/GroupObject.idl \
+				server/zone/objects/universe/guild/GuildObject.idl \
 				server/zone/managers/crafting/CraftingManager.idl \
 				server/zone/managers/bank/BankManager.idl \
 				server/zone/managers/bazaar/BazaarManager.idl \
@@ -72,6 +80,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/managers/structure/StructureManager.idl \
 				server/zone/managers/user/UserManager.idl \
 				server/chat/room/ChatRoom.idl \
+				server/chat/ChatManager.idl \
 
 all:
 	cd src && $(IDLC) $(IDL_SOURCES)

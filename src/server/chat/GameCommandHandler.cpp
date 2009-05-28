@@ -51,8 +51,6 @@ which carries forward this exception.
 #include "../zone/managers/player/PlayerMap.h"
 
 #include "../zone/Zone.h"
-#include "../zone/packets.h"
-#include "../zone/objects.h"
 
 #include "ChatManager.h"
 
@@ -61,8 +59,6 @@ which carries forward this exception.
 #include "../zone/managers/structure/StructureManager.h"
 #include "../zone/managers/combat/CombatManager.h"
 #include "../zone/managers/mission/MissionManager.h"
-
-#include "../zone/objects/area/TestActiveArea.h"
 
 GMCommandMap * GameCommandHandler::gmCommands = NULL;
 

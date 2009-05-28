@@ -57,12 +57,11 @@ class ChatRoomMap;
 
 #include "../zone/managers/player/PlayerMap.h"
 
-#include "../zone/packets.h"
-
 #include "ChatManager.h"
 #include "GameCommandHandler.h"
+#include "../zone/packets/chat/ChatRoomList.h"
 
-#include "../zone/objects/creature/CreatureObject.h"
+#include "../zone/objects/tangible/creature/CreatureObject.h"
 
 class ZoneServer;
 

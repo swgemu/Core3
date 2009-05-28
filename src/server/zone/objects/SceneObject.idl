@@ -43,4 +43,8 @@ which carries forward this exception.
 */
 
 interface SceneObject implements ManagedObject {
+
+	// logger methods
+	void info(const String message, boolean forcedLog = false);
+	void error(const String message);
 }

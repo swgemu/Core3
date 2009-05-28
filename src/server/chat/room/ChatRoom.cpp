@@ -8,7 +8,7 @@
 
 #include "../../zone/ZoneServer.h"
 
-#include "../../zone/objects/player/Player.h"
+#include "../../zone/objects/tangible/creature/player/Player.h"
 
 /*
  *	ChatRoomStub

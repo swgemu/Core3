@@ -49,6 +49,10 @@ which carries forward this exception.
 #include "modifiers/ModifierEffect.h"
 #include "modifiers/ModifierList.h"
 #include "../SkillModList.h"
+#include "../instrument/InstrumentObject.h"
+#include "../weapon/WeaponObject.h"
+#include "../../universe/group/GroupObject.h"
+#include "../../universe/guild/GuildObject.h"
 
 class CreatureObjectImplementation : public CreatureObjectServant {
 protected:

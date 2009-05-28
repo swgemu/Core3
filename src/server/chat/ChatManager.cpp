@@ -8,9 +8,9 @@
 
 #include "room/ChatRoom.h"
 
-#include "../zone/objects/player/Player.h"
+#include "../zone/objects/tangible/creature/player/Player.h"
 
-#include "../zone/objects/creature/CreatureObject.h"
+#include "../zone/objects/tangible/creature/CreatureObject.h"
 
 #include "server/zone/ZoneServer.h"
 

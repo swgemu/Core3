@@ -47,9 +47,9 @@ include "../zone/packets/object/StfParameter";
 
 import "room/ChatRoom";
 
-import "../zone/objects/player/Player";
+import "../zone/objects/tangible/creature/player/Player";
 
-import "../zone/objects/creature/CreatureObject";
+import "../zone/objects/tangible/creature/CreatureObject";
 
 import "server/zone/ZoneServer";
 

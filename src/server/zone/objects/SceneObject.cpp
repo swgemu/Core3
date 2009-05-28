@@ -16,6 +16,33 @@ SceneObject::SceneObject(DummyConstructorParameter* param) : ManagedObject(param
 SceneObject::~SceneObject() {
 }
 
+void SceneObject::info(const String& message, bool forcedLog) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+		method.addAsciiParameter(message);
+		method.addBooleanParameter(forcedLog);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->info(message, forcedLog);
+}
+
+void SceneObject::error(const String& message) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addAsciiParameter(message);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->error(message);
+}
+
 /*
  *	SceneObjectAdapter
  */
@@ -27,11 +54,25 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		info(inv->getAsciiParameter(_param0_info__String_bool_), inv->getBooleanParameter());
+		break;
+	case 7:
+		error(inv->getAsciiParameter(_param0_error__String_));
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void SceneObjectAdapter::info(const String& message, bool forcedLog) {
+	return ((SceneObjectImplementation*) impl)->info(message, forcedLog);
+}
+
+void SceneObjectAdapter::error(const String& message) {
+	return ((SceneObjectImplementation*) impl)->error(message);
 }
 
 /*

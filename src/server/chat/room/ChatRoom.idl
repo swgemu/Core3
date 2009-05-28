@@ -46,7 +46,7 @@ include "engine/service/proto/BaseMessage";
 
 import "../../zone/ZoneServer";
 
-import "../../zone/objects/player/Player";
+import "../../zone/objects/tangible/creature/player/Player";
 
 interface ChatRoom {
 	ChatRoom(ZoneServer server, const String name, unsigned int cid) {

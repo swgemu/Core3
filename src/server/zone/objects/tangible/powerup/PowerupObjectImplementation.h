@@ -42,42 +42,20 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef MODIFIEREXPIRATIONEVENT_H_
-#define MODIFIEREXPIRATIONEVENT_H_
+#ifndef POWERUPOBJECTIMPLEMENTATION_H_
+#define POWERUPOBJECTIMPLEMENTATION_H_
 
-#include "engine/engine.h"
+#include "PowerupObject.h"
 
-class ModifierEffect;
-
-class ModifierExpirationEvent : public Event {
+class PowerupObjectImplementation : public PowerupObjectServant {
 protected:
-	ManagedReference<CreatureObject> creature;
-	ModifierEffect* effect;
 
 public:
-	ModifierExpirationEvent(CreatureObject* creo, ModifierEffect* mod) : Event() {
-		creature = creo;
-		effect = mod;
-		setKeeping(false);
-	}
+	//Types here
 
-	bool activate() {
-		if (creature == NULL || effect == NULL)
-			return false;
-
-		try {
-			creature->wlock();
-
-			//creature->removeModifierEffect(effect);
-
-			creature->unlock();
-		} catch (...) {
-			creature->error("Unexpected exception in ModifierExpirationEvent::activate().");
-			creature->unlock();
-		}
-
-		return true;
-	}
+public:
+	PowerupObjectImplementation();
+	~PowerupObjectImplementation();
 };
 
-#endif /* MODIFIEREXPIRATIONEVENT_H_ */
+#endif /* POWERUPOBJECTIMPLEMENTATION_H_ */

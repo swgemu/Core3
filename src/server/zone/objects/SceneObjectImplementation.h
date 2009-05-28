@@ -45,10 +45,13 @@ which carries forward this exception.
 #ifndef SCENEOBJECTIMPLEMENTATION_H_
 #define SCENEOBJECTIMPLEMENTATION_H_
 
+#include "engine/engine.h"
 #include "../ZoneProcessServerImplementation.h"
 #include "../Zone.h"
+#include "../ZoneClientSession.h"
 #include "../Quaternion.h"
 #include "SceneObject.h"
+#include "ContainerObject.h"
 
 class SceneObjectImplementation : public SceneObjectServant, public QuadTreeEntry, public ContainerObject, public Logger {
 protected:
@@ -111,7 +114,6 @@ public:
 	// Intangible (top level)
 	static const int INTANGIBLE = 0x800;
 	static const int DRAFTSCHEMATIC = 0x801;
-	static const int DRAFTSCHEMATIC = 0x801;
 	static const int MANUFACTURESCHEMATIC = 0x802;
 	static const int MISSION = 0x803;
 	static const int WAYPOINT = 0x802;
@@ -123,7 +125,7 @@ public:
 	void initialize();
 
 	//ORB methods
-	void destroy();
+	bool destroy();
 	void deploy();
 	void scheduleRedeploy();
 	void undeploy();
@@ -197,7 +199,7 @@ public:
 	}
 
 	inline float getPositionZ() {
-		return pozitionY;
+		return positionY;
 	}
 
 	inline String& getStfFile() {

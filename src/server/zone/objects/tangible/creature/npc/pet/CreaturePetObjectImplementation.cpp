@@ -42,3 +42,13 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#include "CreaturePetObjectImplementation.h"
+
+CreaturePetObjectImplementation::CreaturePetObjectImplementation()
+		: CreaturePetObjectServant() {
+
+}
+
+CreaturePetObjectImplementation::~CreaturePetObjectImplementation() {
+
+}

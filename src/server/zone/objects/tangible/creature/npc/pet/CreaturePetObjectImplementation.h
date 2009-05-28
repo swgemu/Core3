@@ -45,5 +45,14 @@ which carries forward this exception.
 #ifndef CREATUREPETOBJECTIMPLEMENTATION_H_
 #define CREATUREPETOBJECTIMPLEMENTATION_H_
 
+#include "CreaturePetObject.h"
+
+class CreaturePetObjectImplementation : public CreaturePetObjectServant {
+protected:
+
+public:
+	CreaturePetObjectImplementation();
+	~CreaturePetObjectImplementation();
+};
 
 #endif /* CREATUREPETOBJECTIMPLEMENTATION_H_ */

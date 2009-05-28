@@ -42,3 +42,13 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#include "GuildObjectImplementation.h"
+
+GuildObjectImplementation::GuildObjectImplementation()
+		: GuildObjectServant() {
+
+}
+
+GuildObjectImplementation::~GuildObjectImplementation() {
+
+}

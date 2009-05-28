@@ -48,9 +48,6 @@ which carries forward this exception.
 #include "../zone/ZoneClientSession.h"
 #include "../zone/ZoneServer.h"
 
-#include "../zone/packets.h"
-#include "../zone/objects.h"
-
 #include "../zone/managers/creature/CreatureManager.h"
 #include "../zone/managers/player/ProfessionManager.h"
 #include "../zone/managers/resource/ResourceManager.h"
@@ -72,10 +69,10 @@ which carries forward this exception.
 
 #include "../zone/managers/player/PlayerMapImplementation.h"
 
-#include "../zone/objects/player/sui/listbox/SuiListBoxImplementation.h"
-#include "../zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.h"
+#include "../zone/objects/tangible/creature/player/sui/listbox/SuiListBoxImplementation.h"
+#include "../zone/objects/tangible/creature/player/sui/colorpicker/SuiColorPickerImplementation.h"
 
-#include "../zone/objects/scene/CustomizationVariables.h"
+#include "../zone/objects/tangible/CustomizationVariables.h"
 
 #include "../zone/managers/planet/PlanetManager.h"
 

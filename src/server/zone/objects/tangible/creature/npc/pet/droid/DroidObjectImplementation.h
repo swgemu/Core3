@@ -42,42 +42,21 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef MODIFIEREXPIRATIONEVENT_H_
-#define MODIFIEREXPIRATIONEVENT_H_
+#ifndef DROIDOBJECTIMPLEMENTATION_H_
+#define DROIDOBJECTIMPLEMENTATION_H_
 
-#include "engine/engine.h"
+#include "DroidObject.h"
 
-class ModifierEffect;
-
-class ModifierExpirationEvent : public Event {
+class DroidObjectImplementation : public DroidObjectServant {
 protected:
-	ManagedReference<CreatureObject> creature;
-	ModifierEffect* effect;
 
 public:
-	ModifierExpirationEvent(CreatureObject* creo, ModifierEffect* mod) : Event() {
-		creature = creo;
-		effect = mod;
-		setKeeping(false);
-	}
+	DroidObjectImplementation();
+	~DroidObjectImplementation();
 
-	bool activate() {
-		if (creature == NULL || effect == NULL)
-			return false;
+	//Setters
 
-		try {
-			creature->wlock();
-
-			//creature->removeModifierEffect(effect);
-
-			creature->unlock();
-		} catch (...) {
-			creature->error("Unexpected exception in ModifierExpirationEvent::activate().");
-			creature->unlock();
-		}
-
-		return true;
-	}
+	//Getters
 };
 
-#endif /* MODIFIEREXPIRATIONEVENT_H_ */
+#endif /* DROIDOBJECTIMPLEMENTATION_H_ */

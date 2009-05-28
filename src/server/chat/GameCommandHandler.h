@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../zone/objects/player/Player.h"
+#include "../zone/objects/tangible/creature/player/Player.h"
 
 #include "../db/ForumsDatabase.h"
 

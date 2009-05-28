@@ -44,10 +44,7 @@ which carries forward this exception.
 
 #include "ChatRoomImplementation.h"
 
-#include "../../zone/objects.h"
 #include "../../zone/ZoneServer.h"
-
-#include "../../zone/packets.h"
 
 ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, const String& Name, uint32 channelId)
 		: ChatRoomServant(), Mutex("ChatRoom") {
