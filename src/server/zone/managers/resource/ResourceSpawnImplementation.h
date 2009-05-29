@@ -50,7 +50,7 @@ which carries forward this exception.
 #include "ResourceSpawn.h"
 #include "SpawnLocation.h"
 #include "../../packets/scene/AttributeListMessage.h"
-#include "../../objects/player/Player.h"
+#include "../../objects/tangible/creature/player/Player.h"
 
 class ResourceSpawnImplementation : public ResourceSpawnServant {
 
@@ -547,7 +547,7 @@ public:
 		System::out << att10 << " = " << att10stat << endl;
 		System::out << att11 << " = " << att11stat << endl;
 
-		System::out << "Subtype = " << objectType  << endl;
+		//System::out << "Subtype = " << objectType  << endl;
 		System::out << "objectCRC = " << objectCRC  << endl;
 
 	}

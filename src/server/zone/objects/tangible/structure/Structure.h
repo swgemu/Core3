@@ -76,7 +76,7 @@ public:
 	//Setters
 
 	//Getters
-	void isPublicStructure() {
+	inline bool isPublicStructure() {
 		return publicStructure;
 	}
 

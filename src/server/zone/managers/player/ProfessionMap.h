@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../objects/player/professions/Profession.h"
+#include "../../objects/tangible/creature/player/professions/Profession.h"
 
 class ProfessionMap : public HashTable<String, Profession*> , public HashTableIterator<String, Profession*> {
 	int hash(const String& key) {

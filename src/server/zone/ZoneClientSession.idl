@@ -51,7 +51,7 @@ include "engine/service/proto/StandaloneBaseMessage";
 
 import "ZoneServer";
 
-import "objects/player/Player";
+import "objects/tangible/creature/player/Player";
 
 interface ZoneClientSession {
 	ZoneClientSession(DatagramServiceThread server, Socket sock, SocketAddress addr) {

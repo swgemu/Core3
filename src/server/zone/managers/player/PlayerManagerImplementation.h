@@ -52,17 +52,16 @@ which carries forward this exception.
 #include "PlayerMap.h"
 
 #include "../../ZoneProcessServerImplementation.h"
-#include "../../objects/manufacture/ManufactureSchematic.h"
+#include "../../objects/intangible/manufactureschematic/ManufactureSchematicObject.h"
 
 #include "PlayerManager.h"
 
-#include "../../packets.h"
+#include "../../objects/tangible/creature/player/Player.h"
+
 
 class ProfessionManager;
 class ItemManager;
-
 class GuildManager;
-
 class Player;
 class PlayerImplementation;
 

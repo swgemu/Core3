@@ -42,9 +42,9 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../scene/SceneObject";
+import "../IntangibleObject";
 
-interface PlayerObject implements SceneObject {
+interface PlayerObject implements IntangibleObject {
 	PlayerObject() {
 		super();
 	}

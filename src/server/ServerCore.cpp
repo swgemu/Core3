@@ -46,8 +46,6 @@ which carries forward this exception.
 
 #include "zone/ZoneServerImplementation.h"
 
-#include "zone/objects.h"
-
 #include "zone/managers/combat/CombatManager.h"
 #include "zone/managers/player/ProfessionManager.h"
 #include "zone/managers/radial/RadialManager.h"

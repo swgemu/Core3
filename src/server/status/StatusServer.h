@@ -51,11 +51,8 @@
 
 #include "../conf/ConfigManager.h"
 
-#include "../zone/objects/tangible/attachment/Attachment.h"
-
 class StatusServer: public StreamServiceThread {
 	ZoneServer* zoneServer;
-
 	ConfigManager* configManager;
 
 	unsigned int statusInterval;
@@ -63,7 +60,6 @@ class StatusServer: public StreamServiceThread {
 	Time timestamp;
 	bool lastStatus;
 
-	Attachment* obj; //zone test object
 	uint64 oid;
 
 public:
@@ -80,8 +76,6 @@ public:
 	ServiceClient* createConnection(Socket* sock, SocketAddress& addr);
 
 	Packet* getStatusXMLPacket();
-
-	bool testZone();
 };
 
 #endif /* STATUSSERVER_H_ */

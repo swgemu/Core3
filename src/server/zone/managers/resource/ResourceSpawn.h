@@ -13,7 +13,7 @@ class SpawnLocation;
 
 class SceneObject;
 
-#include "../../objects/scene/SceneObject.h"
+#include "../../objects/SceneObject.h"
 
 class ResourceSpawn : public SceneObject {
 public:
@@ -399,7 +399,7 @@ public:
 	friend class SingletonWrapper<ResourceSpawnHelper>;
 };
 
-#include "../../objects/scene/SceneObjectImplementation.h"
+#include "../../objects/SceneObjectImplementation.h"
 
 class ResourceSpawnServant : public SceneObjectImplementation {
 public:

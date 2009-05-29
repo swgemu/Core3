@@ -42,20 +42,10 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "engine/util/Coordinate";
-
 import "server/zone/Zone";
 include "server/zone/ZoneProcessServerImplementation";
 
-import "../../objects/player/Player";
-
-import "../../objects/creature/shuttle/ShuttleCreature";
-
-import "../../objects/tangible/terminal/mission/MissionTerminal";
-import "../structure/StructureManager";
-
-import "../../objects/area/ActiveArea";
-import "../../objects/area/ActiveAreaTrigger";
+import "../../objects/tangible/creature/player/Player";
 
 interface PlanetManager {
 	PlanetManager(Zone zone, ZoneProcessServerImplementation processor) {
@@ -66,29 +56,4 @@ interface PlanetManager {
 	
 	void start();
 	void stop();
-		
-	unsigned long getNextStaticObjectID(boolean doLock = true);
-	
-	StructureManager getStructureManager();
-		
-	void landShuttles();
-	void takeOffShuttles();	
-	unsigned long getLandingTime();
-	unsigned int getTravelFare(String departurePlanet, String arrivalPlanet);
-	ShuttleCreature getShuttle(const String Shuttle);	
-	void sendPlanetTravelPointListResponse(Player player);
-	
-	void tutorialStepWelcome(Player player);
-	void tutorialStepStatMigration(Player player);
-
-	MissionTerminal getMissionTerminal(unsigned long oid);
-
-	boolean isNoBuildArea(float x, float y);
-	void addNoBuildArea(float x, float y, float radius);
-	
-	void weatherUpdatePlayers();
-	void weatherChange();
-	void weatherRemoveEvents();
-	ActiveAreaTrigger spawnActiveArea(ActiveArea area);
-	void removeActiveAreaTrigger(ActiveAreaTrigger trigger);
 }

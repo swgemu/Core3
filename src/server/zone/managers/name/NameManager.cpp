@@ -49,7 +49,7 @@ which carries forward this exception.
 
 #include "../../ZoneServer.h"
 #include "../../ZoneClientSession.h"
-#include "../../objects/player/Races.h"
+//#include "../../objects/tangible/creature/player/Races.h"
 
 NameManager::NameManager(ZoneProcessServerImplementation* serv) : Logger("NameManager") {
 	server = serv;

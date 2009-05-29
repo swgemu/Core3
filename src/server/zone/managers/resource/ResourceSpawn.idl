@@ -44,7 +44,7 @@ which carries forward this exception.
 
 import "ResourceSpawn";
 import "SpawnLocation";
-import "../../objects/scene/SceneObject";
+import "../../objects/SceneObject";
 
 interface ResourceSpawn : implements SceneObject {
 	ResourceSpawn(String& inType) {

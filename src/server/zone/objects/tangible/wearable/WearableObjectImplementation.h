@@ -46,6 +46,7 @@ which carries forward this exception.
 #define WEARABLEOBJECTIMPLEMENTATION_H_
 
 #include "WearableObject.h"
+#include "../creature/CreatureObject.h"
 
 class WearableObjectImplementation : public WearableObjectServant {
 protected:

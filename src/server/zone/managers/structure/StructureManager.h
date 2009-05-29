@@ -11,57 +11,9 @@ class Zone;
 
 class ZoneProcessServerImplementation;
 
-class Player;
-
-class SceneObject;
-
-class BuildingObject;
-
-class InstallationObject;
-
-class CellObject;
-
-class DeedObject;
-
-class CloningFacility;
-
 class StructureManager : public DistributedObjectStub {
 public:
 	StructureManager(Zone* zone, ZoneProcessServerImplementation* processor);
-
-	void serialize();
-
-	void deserialize();
-
-	void beginConstruction(Player* player, DeedObject* deed, float x, float z, unsigned char orient = 0);
-
-	void endConstruction(Player* player, InstallationObject* constructionsite, DeedObject* deed);
-
-	void createInstallation(Player* player, InstallationObject* installation, bool staticobject = false);
-
-	void createBuilding(Player* player, BuildingObject* building, bool staticobject = false);
-
-	void deleteStructure(SceneObject* structure);
-
-	void loadStructures();
-
-	void unloadStructures();
-
-	void saveStructures(bool reschedule = false);
-
-	BuildingObject* findBuildingType(const String& word, float targetX, float targetY);
-
-	CellObject* getCell(unsigned long long id);
-
-	BuildingObject* getBuilding(unsigned long long id);
-
-	CloningFacility* getCloningFacility(unsigned long long oid);
-
-	CloningFacility* getClosestCloningFacility(Player* player);
-
-	void spawnBuilding(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-
-	void deleteInstallation(InstallationObject* inso);
 
 	void error(const String& message);
 
@@ -83,46 +35,11 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void serialize();
-
-	void deserialize();
-
-	void beginConstruction(Player* player, DeedObject* deed, float x, float z, unsigned char orient);
-
-	void endConstruction(Player* player, InstallationObject* constructionsite, DeedObject* deed);
-
-	void createInstallation(Player* player, InstallationObject* installation, bool staticobject);
-
-	void createBuilding(Player* player, BuildingObject* building, bool staticobject);
-
-	void deleteStructure(SceneObject* structure);
-
-	void loadStructures();
-
-	void unloadStructures();
-
-	void saveStructures(bool reschedule);
-
-	BuildingObject* findBuildingType(const String& word, float targetX, float targetY);
-
-	CellObject* getCell(unsigned long long id);
-
-	BuildingObject* getBuilding(unsigned long long id);
-
-	CloningFacility* getCloningFacility(unsigned long long oid);
-
-	CloningFacility* getClosestCloningFacility(Player* player);
-
-	void spawnBuilding(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-
-	void deleteInstallation(InstallationObject* inso);
-
 	void error(const String& message);
 
 	void info(const String& message);
 
 protected:
-	String _param0_findBuildingType__String_float_float_;
 	String _param0_error__String_;
 	String _param0_info__String_;
 };

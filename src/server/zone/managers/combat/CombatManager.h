@@ -47,42 +47,6 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#define MELEEATTACK 0
-#define RANGEDATTACK 1
-#define FORCEATTACK 2
-#define TRAPATTACK 3
-#define GRENADEATTACK 4
-#define HEAVYACIDBEAMATTACK 14
-#define HEAVYLIGHTNINGBEAMATTACK 15
-#define HEAVYPARTICLEBEAMATTACK 17
-#define HEAVYROCKETLAUNCHERATTACK 18
-#define HEAVYLAUNCHERATTACK 19
-
-#define MELEEWEAPON(weapontype) ((weapontype < 4 || (weapontype > 6 && weapontype < 10)) ? true : false)
-#define RANGEDWEAPON(weapontype) (((weapontype > 3 && weapontype < 7) || (weapontype > 6 && weapontype < 20)) ? true : false)
-#define THROWNWEAPON(weapontype) ((weapontype > 19 && weapontype < 21) ? true : false)
-#define HEAVYWEAPON(weapontype) ((weapontype > 13 && weapontype < 20) ? true : false)
-
-class SceneObject;
-class TangibleObject;
-class ZoneServer;
-class Player;
-class CreatureObject;
-class MountCreature;
-class Weapon;
-class Pharmaceutical;
-
-class Skill;
-class TargetSkill;
-class AttackTargetSkill;
-class ThrowAttackTargetSkill;
-class FireHeavyWeaponAttackTarget;
-class ForcePowersPoolAttackTargetSkill;
-class ZoneProcessServerImplementation;
-class CombatAction;
-
-class CommandQueueAction;
-
 static uint32 defaultAttacks[] = {
 			0x99476628, 0xF5547B91, 0x3CE273EC, 0x734C00C,
 			0x43C4FFD0, 0x56D7CC78, 0x4B41CAFB, 0x2257D06B,
@@ -90,93 +54,8 @@ static uint32 defaultAttacks[] = {
 };
 
 class CombatManager {
-	ZoneProcessServerImplementation* server;
-	static const bool DEBUG = false;
-
-	float PLAYER_GLOBAL_MULTIPLIER;
-	float PLAYER_PVE_MULTIPLIER;
-	float PLAYER_PVP_MULTIPLIER;
-
-	float PET_GLOBAL_MULTIPLIER;
-	float PET_PVE_MULTIPLIER;
-	float PET_PVP_MULTIPLIER;
-
-	float CREATURE_GLOBAL_MULTIPLIER;
-
-	int STATE_IMMUNITY;
-	int MAX_STATE_DEFENSE;
-
-	bool MINI_SUIT;
-	bool HAND_FEET_DAMAGE;
-private:
-	bool doAttackAction(CreatureObject* attacker, TangibleObject* target, AttackTargetSkill* skill, String& modifier, CombatAction* actionMessage);
-	uint32 getDefaultAttackAnimation(CreatureObject* creature);
-
 public:
-
-	CombatManager(ZoneProcessServerImplementation* srv);
-
-	float handleAction(CommandQueueAction* action);
-	void handleAreaAction(CreatureObject* creature, TangibleObject* target, CommandQueueAction* action, CombatAction* actionMessage);
-
-	float doTargetSkill(CommandQueueAction* action);
-	float doSelfSkill(CommandQueueAction* action);
-	float doCamoSkill(CommandQueueAction* action);
-	float doGroupSkill(CommandQueueAction* action);
-
-	bool handleMountDamage(CreatureObject* targetCreature, MountCreature* mount);
-
-	// misc methods
-	bool canAttack(Player* player, Player* targetPlayer);
-	float getConeAngle(TangibleObject* targetCreature, float CreatureVectorX, float CreatureVectorY, float DirectionVectorX, float DirectionVectorY);
-	bool checkSkill(CreatureObject* creature, TangibleObject* target, TargetSkill* skill);
-
-	void requestDuel(Player* player, uint64 targetID);
-	void requestDuel(Player* player, Player* targetPlayer);
-
-	void requestEndDuel(Player* player, Player* targetPlayer);
-	void requestEndDuel(Player* player, uint64 targetID);
-
-	void freeDuelList(Player* player);
-
-	void declineDuel(Player* player, uint64 targetID);
-	void declineDuel(Player* player, Player* targetPlayer);
-
-	//bool areInDuel(Player* player, Player* targetPlayer);
-
-	void doDodge(CreatureObject* creature, CreatureObject* defender);
-	void doCounterAttack(CreatureObject* creature, CreatureObject* defender);
-	void doBlock(CreatureObject* creature, CreatureObject* defender);
-
-	// calc methods
-	void calculateDamageReduction(CreatureObject* creature, CreatureObject* targetCreature, float& damage);
-	int calculatePostureMods(CreatureObject* creature, CreatureObject* targetCreature);
-	void checkMitigation(CreatureObject* creature, CreatureObject* targetCreature, int attacktype, float& minDamage, float& maxDamage);
-	int checkSecondaryDefenses(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon, int attackType);
-	int getHitChance(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon, int accuracyBonus, int attackType);
-	inline float hitChanceEquation(float attackerAccuracy, float accuracyBonus, float targetDefense, float defenseBonus);
-	float getWeaponRangeMod(float currentRange, Weapon* weapon);
-	uint32 getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, int attackType);
-	int applyDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part,
-			AttackTargetSkill* askill, int attacktype, int damagetype, int armorpiercing, bool cankill);
-	int getArmorReduction(CreatureObject* target, int damage, int location, int attacktype, int damagetype, int armorpiercing);
-	void applyWounds(CreatureObject* attacker, CreatureObject* target, Weapon* weapon, int location);
-	bool calculateCost(CreatureObject* creature, float healthMultiplier, float actionMultiplier, float mindMultiplier, float forceMultiplier);
-	void calculateStates(CreatureObject* creature, CreatureObject* targetCreature, AttackTargetSkill* tskill);
-	void calculateThrowItemStates(CreatureObject* creature, CreatureObject* targetCreature, ThrowAttackTargetSkill* tskill);
-	void checkKnockDown(CreatureObject* creature, CreatureObject* targetCreature, int chance);
-	void checkPostureDown(CreatureObject* creature, CreatureObject* targetCreature, int chance);
-	void checkPostureUp(CreatureObject* creature, CreatureObject* targetCreature, int chance);
-	int calculateWeaponDamage(CreatureObject* creature, TangibleObject* target, AttackTargetSkill* skill, bool randompoolhit);
-	int calculateThrowItemDamage(CreatureObject* creature, TangibleObject* target, ThrowAttackTargetSkill* skill, bool randompoolhit, bool canKill, Weapon* weapon);
-	int calculateHeavyWeaponDamage(CreatureObject* creature, TangibleObject* target, FireHeavyWeaponAttackTarget* skill, Weapon* weapon);
-
-	int calculateForceDamage(CreatureObject* creature, TangibleObject* target, ForcePowersPoolAttackTargetSkill* skill, int forceAttackType, int damageType, float mindmg, float maxdmg);
-	int calculateDamage(CreatureObject* creature, TangibleObject* target, Weapon* weapon, AttackTargetSkill* skill, int attackType,
-			int damageType, int armorPiercing, float minDmg, float maxDmg, bool randompoolhit, bool cankill);
-	void doDotWeaponAttack(CreatureObject* creature, CreatureObject* targetCreature, bool areaHit);
-	void counterAttack(CreatureObject* targetCreature, CreatureObject* creature);
-	void handleMedicArea(CreatureObject* creature, CreatureObject* areaCenter,Skill* skill, Pharmaceutical* pharma, float range);
+	CombatManager();
 };
 
 #endif /*COMBATMANAGER_H_*/

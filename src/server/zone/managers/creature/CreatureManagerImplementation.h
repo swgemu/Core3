@@ -54,21 +54,18 @@ which carries forward this exception.
 
 #include "../player/ProfessionManager.h"
 
-#include "../../objects/creature/Creature.h"
-#include "../../objects/creature/CreatureImplementation.h"
-#include "../../objects/creature/bluefrog/BlueFrogCreature.h"
-#include "../../objects/creature/bluefrog/BlueFrogCreatureImplementation.h"
+//#include "../../objects/tangible/creature/Creature.h"
+//#include "../../objects/creature/bluefrog/BlueFrogCreature.h"
+//#include "../../objects/creature/bluefrog/BlueFrogCreatureImplementation.h"
 
 #include "CreatureMap.h"
-#include "LairMap.h"
+//#include "LairMap.h"
 #include "SpawnInfoMap.h"
 
 #include "CreatureManager.h"
 
-class ZoneProcessServerImplementation;
-class BlueFrogCreatureImplementation;
-
 class CreatureManagerImplementation : public CreatureManagerServant, public Thread, public Mutex, public Lua {
+/*
 	Zone* zone;
 	ScheduleManager* scheduler;
 
@@ -83,24 +80,25 @@ class CreatureManagerImplementation : public CreatureManagerServant, public Thre
 
 	static SpawnInfoMap* spawnInfoMap;
 	static CreatureManagerImplementation* instance;
+	*/
 
 public:
-
 	static const int LINE_LAYOUT = 1;
 	static const int GRID_LAYOUT = 2;
 	static const int RANDOM_LAYOUT = 3;
 
 public:
 	CreatureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* serv);
-
 	~CreatureManagerImplementation();
 
+	/*
 	void init();
 	void loadCreatures();
 
+	*/
 	void run();
-
 	void stop();
+	/*
 
 	// creature loading methods
 	void loadTrainers();
@@ -207,6 +205,7 @@ public:
 	inline float getGlobalNPCRegen() {
 		return globalNPCRegen;
 	}
+	*/
 
 };
 

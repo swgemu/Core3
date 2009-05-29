@@ -51,6 +51,18 @@ class IntangibleObjectImplementation : public IntangibleObjectServant {
 protected:
 
 public:
+	static const int DRAFTSCHEMATIC = 0x801;
+	static const int MANUFACTURINGSCHEMATIC = 0x802;
+	static const int MISSIONOBJECT = 0x803;
+	static const int WAYPOINTOBJECT = 0x805;
+	static const int QUESTOBJECT = 0x806;
+	static const int PETCONTROLDEVICE = 0x807;
+	static const int VEHICLECONTROLDEVICE = 0x808;
+	static const int FSDRAFTSCHEMATIC = 0x809;
+	static const int SHIPCONTROLDEVICE = 0x80A;
+	static const int DROIDCONTROLDEVICE = 0x80B;
+
+public:
 	IntangibleObjectImplementation();
 	~IntangibleObjectImplementation();
 };

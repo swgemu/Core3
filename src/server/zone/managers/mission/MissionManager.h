@@ -7,57 +7,9 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class Player;
-
-class MissionObject;
-
-class ZoneServer;
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
 class MissionManager : public DistributedObjectStub {
 public:
-	MissionManager(ZoneServer* zs, ZoneProcessServerImplementation* ps);
-
-	void init();
-
-	void unloadManager();
-
-	void removeMissions();
-
-	MissionObject* poolMission(MissionObject* miso, bool doLock);
-
-	void instanceMission(Player* player, MissionObject* misoCopy, const String& objectives, bool isNew);
-
-	void sendTerminalData(Player* player, int termBitmask, bool doLock = true);
-
-	void sendMission(Player* player, String& tKey, bool doLock = true);
-
-	void doMissionAccept(Player* player, unsigned long long oid, bool doLock = true);
-
-	void doMissionComplete(Player* player, const String& tKey, bool doLock = true);
-
-	void doMissionAbort(Player* player, unsigned long long oid, bool doLock = true);
-
-	void doMissionAbort(Player* player, const String& tKey, bool doLock = true);
-
-	bool evalMission(Player* player, const String& tKey, String& retSay);
-
-	bool evalMission(Player* player, MissionObject* miso);
-
-	void loadPlayerMissions(Player* player, bool doLock = true);
-
-	void savePlayerMission(Player* player, MissionObject* miso);
-
-	void savePlayerKeys(Player* player, const String& curMisoKeys, const String& finMisoKeys);
-
-	void clearPlayerMissions(Player* target, bool lockTarget = false);
-
-	void loadMissionScripts();
-
-	void registerFunctions();
-
-	void registerGlobals();
+	MissionManager();
 
 protected:
 	MissionManager(DummyConstructorParameter* param);
@@ -75,55 +27,6 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void init();
-
-	void unloadManager();
-
-	void removeMissions();
-
-	MissionObject* poolMission(MissionObject* miso, bool doLock);
-
-	void instanceMission(Player* player, MissionObject* misoCopy, const String& objectives, bool isNew);
-
-	void sendTerminalData(Player* player, int termBitmask, bool doLock);
-
-	void sendMission(Player* player, String& tKey, bool doLock);
-
-	void doMissionAccept(Player* player, unsigned long long oid, bool doLock);
-
-	void doMissionComplete(Player* player, const String& tKey, bool doLock);
-
-	void doMissionAbort(Player* player, unsigned long long oid, bool doLock);
-
-	void doMissionAbort(Player* player, const String& tKey, bool doLock);
-
-	bool evalMission(Player* player, const String& tKey, String& retSay);
-
-	bool evalMission(Player* player, MissionObject* miso);
-
-	void loadPlayerMissions(Player* player, bool doLock);
-
-	void savePlayerMission(Player* player, MissionObject* miso);
-
-	void savePlayerKeys(Player* player, const String& curMisoKeys, const String& finMisoKeys);
-
-	void clearPlayerMissions(Player* target, bool lockTarget);
-
-	void loadMissionScripts();
-
-	void registerFunctions();
-
-	void registerGlobals();
-
-protected:
-	String _param2_instanceMission__Player_MissionObject_String_bool_;
-	String _param1_sendMission__Player_String_bool_;
-	String _param1_doMissionComplete__Player_String_bool_;
-	String _param1_doMissionAbort__Player_String_bool_;
-	String _param1_evalMission__Player_String_String_;
-	String _param2_evalMission__Player_String_String_;
-	String _param1_savePlayerKeys__Player_String_String_;
-	String _param2_savePlayerKeys__Player_String_String_;
 };
 
 class MissionManagerHelper : public DistributedObjectClassHelper, public Singleton<MissionManagerHelper> {

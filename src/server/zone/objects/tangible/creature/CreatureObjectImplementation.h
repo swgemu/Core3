@@ -109,6 +109,10 @@ public:
 	static const float DEFAULT_SPEED = 5.376f;
 	static const float DEFAULT_ACCEL = 1.549f;
 
+	//TODO: These need to be checked out.
+	static const int NPC = 0x402;
+	static const int DROID = 0x403;
+
 public:
 	CreatureObjectImplementation();
 	~CreatureObjectImplementation();

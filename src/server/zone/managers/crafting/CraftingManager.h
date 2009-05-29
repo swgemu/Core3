@@ -7,72 +7,14 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class Player;
-
-class DraftSchematic;
-
-class TangibleObject;
-
-class ResourceContainer;
-
-class CraftingTool;
-
-class CraftingStation;
-
-class Component;
-
-class ZoneServer;
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
 class CraftingManager : public DistributedObjectStub {
 public:
-	CraftingManager(ZoneServer* server, ZoneProcessServerImplementation* processor);
-
-	void reloadSchematicTable();
-
-	void prepareCraftingSession(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
-
-	void addIngredientToSlot(CraftingTool* craftingTool, Player* player, TangibleObject* tano, int slot, int counter);
-
-	void removeIngredientFromSlot(CraftingTool* craftingTool, Player* player, int slot, int counter);
-
-	void putComponentBackInInventory(Player* player, Component* component);
-
-	void nextCraftingStage(CraftingTool* craftingTool, Player* player, String& test);
-
-	void craftingCustomization(CraftingTool* craftingTool, Player* player, String& name, int condition, String& customizationString);
-
-	void handleExperimenting(CraftingTool* craftingTool, Player* player, int counter, int numRowsAttempted, String& expString);
-
-	void createPrototype(CraftingTool* craftingTool, Player* player, int counter, int practice);
-
-	void createSchematic(CraftingTool* craftingTool, Player* player, int counter);
-
-	float getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type);
-
-	float getAssemblyPercentage(float value);
-
-	float calculateAssemblyValueModifier(CraftingTool* craftingTool);
-
-	void addDraftSchematicsFromGroupName(Player* player, const String& schematicGroupName);
-
-	void subtractDraftSchematicsFromGroupName(Player* player, const String& schematicGroupName);
-
-	void refreshDraftSchematics(Player* player);
-
-	TangibleObject* requestObjectTemplate(String& stfName);
-
-	TangibleObject* requestBlueFrogObjectTemplate(String& stfName);
-
-	String& generateCraftedSerial();
+	CraftingManager();
 
 protected:
 	CraftingManager(DummyConstructorParameter* param);
 
 	virtual ~CraftingManager();
-
-	String _return_generateCraftedSerial;
 
 	friend class CraftingManagerHelper;
 };
@@ -85,53 +27,6 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void reloadSchematicTable();
-
-	void prepareCraftingSession(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
-
-	void addIngredientToSlot(CraftingTool* craftingTool, Player* player, TangibleObject* tano, int slot, int counter);
-
-	void removeIngredientFromSlot(CraftingTool* craftingTool, Player* player, int slot, int counter);
-
-	void putComponentBackInInventory(Player* player, Component* component);
-
-	void nextCraftingStage(CraftingTool* craftingTool, Player* player, String& test);
-
-	void craftingCustomization(CraftingTool* craftingTool, Player* player, String& name, int condition, String& customizationString);
-
-	void handleExperimenting(CraftingTool* craftingTool, Player* player, int counter, int numRowsAttempted, String& expString);
-
-	void createPrototype(CraftingTool* craftingTool, Player* player, int counter, int practice);
-
-	void createSchematic(CraftingTool* craftingTool, Player* player, int counter);
-
-	float getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type);
-
-	float getAssemblyPercentage(float value);
-
-	float calculateAssemblyValueModifier(CraftingTool* craftingTool);
-
-	void addDraftSchematicsFromGroupName(Player* player, const String& schematicGroupName);
-
-	void subtractDraftSchematicsFromGroupName(Player* player, const String& schematicGroupName);
-
-	void refreshDraftSchematics(Player* player);
-
-	TangibleObject* requestObjectTemplate(String& stfName);
-
-	TangibleObject* requestBlueFrogObjectTemplate(String& stfName);
-
-	String& generateCraftedSerial();
-
-protected:
-	String _param2_nextCraftingStage__CraftingTool_Player_String_;
-	String _param2_craftingCustomization__CraftingTool_Player_String_int_String_;
-	String _param4_craftingCustomization__CraftingTool_Player_String_int_String_;
-	String _param4_handleExperimenting__CraftingTool_Player_int_int_String_;
-	String _param1_addDraftSchematicsFromGroupName__Player_String_;
-	String _param1_subtractDraftSchematicsFromGroupName__Player_String_;
-	String _param0_requestObjectTemplate__String_;
-	String _param0_requestBlueFrogObjectTemplate__String_;
 };
 
 class CraftingManagerHelper : public DistributedObjectClassHelper, public Singleton<CraftingManagerHelper> {

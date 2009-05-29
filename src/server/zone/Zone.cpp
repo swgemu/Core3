@@ -6,7 +6,7 @@
 
 #include "ZoneImplementation.h"
 
-#include "objects/scene/SceneObject.h"
+#include "objects/SceneObject.h"
 
 #include "ZoneServer.h"
 

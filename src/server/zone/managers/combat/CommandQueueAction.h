@@ -47,79 +47,10 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class Weapon;
-class CreatureObject;
-class SceneObject;
-class Player;
-class Skill;
-
 class CommandQueueAction {
-	ManagedReference<CreatureObject> creature;
-	ManagedReference<Player> player;
-	ManagedReference<SceneObject> target;
-	Skill* skill;
-	Weapon* weapon;
-
-	uint32 actionCRC;
-	uint32 actionCounter;
-	uint64 targetID;
-
-	String actionModifier;
 
 public:
-	CommandQueueAction(CreatureObject* cr, uint64 targid, uint32 acrc, uint32 acntr, const String& amod);
-
-	bool check();
-	bool validate();
-	bool checkWeapon();
-
-	bool checkHealSkill();
-
-	void clearError(uint32 tab1, uint32 tab2 = 0) {
-		clear(0.0f, tab1, tab2);
-	}
-
-	void clear(float timer, uint32 tab1 = 0, uint32 tab2 = 0);
-
-	void setTarget(SceneObject* targ) {
-		target = targ;
-	}
-
-	void setSkill(Skill* sk) {
-		skill = sk;
-	}
-
-	void setActionModifier(String& modifier) {
-		actionModifier = modifier;
-	}
-
-	inline CreatureObject* getCreature() {
-		return creature;
-	}
-
-	inline SceneObject* getTarget() {
-		return target;
-	}
-
-	inline uint32 getActionCRC() {
-		return actionCRC;
-	}
-
-	inline uint32 getActionCounter() {
-		return actionCounter;
-	}
-
-	inline uint64 getTargetID() {
-		return targetID;
-	}
-
-	inline String& getActionModifier() {
-		return actionModifier;
-	}
-
-	inline Skill* getSkill() {
-		return skill;
-	}
+	CommandQueueAction();
 };
 
 #endif /*COMMANDQUEUEACTION_H_*/

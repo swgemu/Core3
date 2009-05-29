@@ -42,64 +42,9 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../../objects/guild/Guild";
-import "../../objects/player/Player";
-
-import "server/zone/ZoneServer";
-
-import "GuildMap";
 
 interface GuildManager {
-	GuildManager(ZoneServer server) {
-		super(server);
+	GuildManager() {
+		super();
 	}
-	
-	void lock(boolean doLock = true);
-	void unlock(boolean doLock = true);
-	
-	void load();
-
-	boolean createGuild(Player player, String tag, String name);
-
-	Guild getGuild(String tag, boolean doLock = true);
-	Guild getGuild(unsigned int gid, boolean doLock = true);
-		
-	GuildMap getGuildMap();
-	
-	void handleGuildTag(unsigned int boxID, Player player, unsigned int  cancel, String returnString);
-	void handleGuildName(unsigned int boxID, Player player, unsigned int cancel, String returnString);
-
-	void handleGuildSponsor(unsigned int boxID, Player player, unsigned int cancel, String returnString);
-
-	void handleVerifyBoxSponsorTargetforGuildMembership(unsigned int boxID, Player otherPlayer, unsigned int cancel);
-	
-	void handleSponsoredGuildMembersBox(unsigned int boxID, Player player, unsigned int cancel, int index);
-	void handleSponsoredGuildMembersAcceptBox(unsigned int boxID, Player player, unsigned int cancel, int index);
-	
-	void removeOnlineFromGuild(Player player, Player removePlayer);
-	void execRemoveFromGuild(unsigned int boxID, Player player, unsigned int cancel);
-	
-	void handleGuildDisbandBox(unsigned int boxID, Player player, unsigned int cancel, String returnString);
-	void handleGuildNameChange(unsigned int boxID, Player player, unsigned int cancel, String returnString);
-	void handleGuildNameChangeName(unsigned int boxID, Player player, unsigned int cancel, String returnString);
-	
-	void handleGuildInformationMembers(Player player);
-	void handleGuildInformationMembersBox(unsigned int boxID, Player player, unsigned int cancel, int index);
-	
-	void handleGuildMemberOptions(unsigned int boxID, Player player, unsigned int cancel, int index);
-
-	void handleGuildPermissionSelection(unsigned int boxID, Player player, unsigned int cancel, int index);
-	
-
-	void handleGuildInfo(Player player);
-	
-	void handleGuildSponsoring(Player player);
-	
-	void handleGuildRenaming(Player player);
-	
-	void handleGuildTransferLeader(Player player);
-	void handleGuildTransferLeaderBox(unsigned int boxID, Player player, unsigned int cancel, String returnString);	
-	void handleGuildTransferLeaderVerifyBox(unsigned int boxID, Player player, unsigned int cancel);
-	
-	void sendGuildMail(Player player, const String& sender, const String& subject, const String& body, boolean excludeSender);
 }

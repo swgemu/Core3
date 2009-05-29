@@ -42,9 +42,6 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "objects.h"
-#include "packets.h"
-
 #include "ZoneServer.h"
 
 #include "ZoneClientSessionImplementation.h"
@@ -58,12 +55,11 @@ which carries forward this exception.
 #include "managers/item/ItemManager.h"
 #include "managers/radial/RadialManager.h"
 #include "managers/planet/PlanetManager.h"
-#include "managers/bazaar/BazaarManager.h"
-#include "managers/bazaar/BazaarPlanetManager.h"
+#include "managers/auction/AuctionManager.h"
 #include "managers/sui/SuiManager.h"
 
 #include "objects/terrain/PlanetNames.h"
-#include "objects/tangible/terminal/bazaar/RegionBazaar.h"
+#include "objects/tangible/terminal/bazaar/BazaarTerminalObject.h"
 
 #include "managers/planet/events/tutorial/TutorialAudioStatMigrationEvent.h"
 #include "managers/planet/events/tutorial/TutorialAudioWelcomeEvent.h"
@@ -76,7 +72,6 @@ which carries forward this exception.
 
 ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServerImplementation* serv) : Logger(s) {
 		processServer = serv;
-
 		server = processServer->getZoneServer();
 }
 

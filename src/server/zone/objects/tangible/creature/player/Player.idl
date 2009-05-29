@@ -48,4 +48,15 @@ interface Player implements CreatureObject {
 	Player() {
 		super();
 	}
+	
+	void sendMessage(BaseMessage message);
+	void sendMessage(StandaloneBaseMessage message);
+	
+	//Setters
+	void setFirstName(const String fname);
+	void setLastName(const String lname);
+	
+	//Getters
+	String getFirstName();
+	String getLastName();
 }

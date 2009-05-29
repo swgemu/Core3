@@ -141,6 +141,7 @@ class GameCommandHandler {
 private:
 	static GMCommandMap* gmCommands;
 
+	/*
 	static void commands(StringTokenizer tokenizer, Player* player);
 	static void buildInfo(StringTokenizer tokenizer, Player* player);
 	static void map(StringTokenizer tokenizer, Player* player);
@@ -246,6 +247,7 @@ private:
 	static void storeVehicle(StringTokenizer tokenizer, Player* player);
 	static void clearMissions(StringTokenizer tokenizer, Player* player);
 	static void clearInventory(StringTokenizer tokenizer, Player* player);
+	*/
 
 	void init();
 

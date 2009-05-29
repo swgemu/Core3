@@ -49,7 +49,7 @@ which carries forward this exception.
 #include "ZoneClientSession.h"
 #include "ZoneClientSessionImplementation.h"
 
-#include "objects/player/Player.h"
+#include "objects/tangible/creature/player/Player.h"
 
 ZoneClientSessionImplementation::ZoneClientSessionImplementation(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr)
 		: BaseClientProxy(sock, *addr), ZoneClientSessionServant() {

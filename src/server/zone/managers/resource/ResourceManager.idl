@@ -42,55 +42,11 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../../objects/player/Player";
-
-import "../../objects/tangible/resource/ResourceContainer";
-
-import "../../objects/creature/Creature";
-
-import "ResourceList";
-
 import "server/zone/ZoneServer";
-
 import "server/zone/ZoneProcessServerImplementation";
-
-import "../../objects/player/sui/listbox/SuiListBox";
-import "../../objects/player/sui/listbox/SuiListBoxVector";
 
 interface ResourceManager {
 	ResourceManager(ZoneServer server, ZoneProcessServerImplementation processor) {
 		super(server, processor);
 	}
-	
-	void theShift();
-	void stop();
-	void clearResources();
-	
-	boolean checkResource(Player player, String resource_name, int SurveyToolType);
-	
-	void sendSurveyMessage(Player player, String resource_name);
-	void sendSampleMessage(Player player, String resource_name);
-	
-	void setResourceData(ResourceContainer resContainer, boolean lock = false);
-	
-	boolean sendSurveyResources(Player player, int SurveyToolType);
-	
-	void getClassSeven(const String str, String clas);
-	void getResourceContainerName(const String str, String name);
-
-	void printResource(String resname);
-
-	void harvestOrganics(Player player, Creature creature, int type);
-	
-	ResourceList getResourceListAtLocation(int zone, float x, float y, int type);
-	
-	String getResourceNameByID(unsigned long rID);
-	
-	void generateSUI(Player player, SuiListBox sui);
-	
-	boolean useResourceDeed(Player player, String resourceName, int resourceQuantity);
-
-	boolean containsResource(String resourceName);
-	
-	void giveForageResource(Player player, float foragex, float foragey, int forageplanet);                                              
 }

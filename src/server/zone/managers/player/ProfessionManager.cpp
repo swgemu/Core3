@@ -46,22 +46,17 @@ which carries forward this exception.
 
 #include "../../../db/ServerDatabase.h"
 
-#include "../../objects/player/Player.h"
-#include "../../objects/player/PlayerImplementation.h"
-
+#include "../../objects/tangible/creature/player/Player.h"
 #include "../skills/SkillManager.h"
 #include "../../ZoneServer.h"
 
-#include "../../objects/player/badges/Badge.h"
-#include "../../objects/player/professions/SkillBox.h"
-#include "../../objects/player/professions/profession/FourByFourProfession.h"
-#include "../../objects/player/professions/profession/OneByFourProfession.h"
-#include "../../objects/player/professions/profession/PyramidProfession.h"
-
-#include "../../packets.h"
+#include "../../objects/tangible/creature/player/professions/SkillBox.h"
+#include "../../objects/tangible/creature/player/professions/FourByFourProfession.h"
+#include "../../objects/tangible/creature/player/professions/OneByFourProfession.h"
+#include "../../objects/tangible/creature/player/professions/PyramidProfession.h"
 
 ProfessionManager::ProfessionManager(ZoneProcessServerImplementation* serv)
-	: Mutex("Profession Manager") {
+	: Mutex("ProfessionManager") {
 
 	server = serv;
 	skillManager = new SkillManager(this);

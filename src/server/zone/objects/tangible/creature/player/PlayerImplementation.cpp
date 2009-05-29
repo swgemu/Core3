@@ -41,6 +41,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#include "engine/engine.h"
 #include "PlayerImplementation.h"
 
 PlayerImplementation::PlayerImplementation()
@@ -49,5 +50,13 @@ PlayerImplementation::PlayerImplementation()
 }
 
 PlayerImplementation::~PlayerImplementation() {
+
+}
+
+void PlayerImplementation::sendMessage(BaseMessage* message) {
+
+}
+
+void PlayerImplementation::sendMessage(StandaloneBaseMessage* message) {
 
 }

@@ -10,7 +10,7 @@
 
 #include "../guild/GuildManager.h"
 
-#include "../../objects/player/Player.h"
+#include "../../objects/tangible/creature/player/Player.h"
 
 #include "../../objects/tangible/TangibleObject.h"
 

@@ -42,51 +42,8 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../../objects/player/Player";
-
-import "../../objects/draftschematic/DraftSchematic";
-
-import "../../objects/tangible/TangibleObject";
-import "../../objects/tangible/resource/ResourceContainer";
-import "../../objects/tangible/crafting/CraftingTool";
-import "../../objects/tangible/crafting/CraftingStation";
-import "../../objects/tangible/crafting/component/Component";
-
-import "server/zone/ZoneServer";
-include "server/zone/ZoneProcessServerImplementation";
-
 interface CraftingManager {
-	CraftingManager(ZoneServer server, ZoneProcessServerImplementation processor) {
-		super(server, processor);
+	CraftingManager() {
+		super();
 	}
-	
-	void reloadSchematicTable();
-	
-	void prepareCraftingSession(Player player, CraftingTool craftingTool, DraftSchematic draftSchematic);
-	
-	void addIngredientToSlot(CraftingTool craftingTool, Player player, TangibleObject tano, int slot, int counter);
-	void removeIngredientFromSlot(CraftingTool craftingTool, Player player, int slot, int counter);
-
-	void putComponentBackInInventory(Player player, Component component);
-	
-	void nextCraftingStage(CraftingTool craftingTool, Player player, String test);
-	void craftingCustomization(CraftingTool craftingTool, Player player, String name, int condition, String customizationString);
-	void handleExperimenting(CraftingTool craftingTool, Player player, int counter, int numRowsAttempted, String expString);
-	void createPrototype(CraftingTool craftingTool, Player player, int counter, int practice);
-	void createSchematic(CraftingTool craftingTool, Player player, int counter);
-
-
-	float getWeightedValue(Player player, CraftingTool craftingTool, DraftSchematic draftSchematic, int type);
-	float getAssemblyPercentage(float value);
-	float calculateAssemblyValueModifier(CraftingTool craftingTool);
-
-	void addDraftSchematicsFromGroupName(Player player, const String schematicGroupName);
-	void subtractDraftSchematicsFromGroupName(Player player, const String schematicGroupName);
-
-	void refreshDraftSchematics(Player player);
-	
-	TangibleObject requestObjectTemplate(String stfName);
-	TangibleObject requestBlueFrogObjectTemplate(String stfName);
-	
-	String generateCraftedSerial();
 }

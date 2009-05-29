@@ -6,18 +6,18 @@
 
 #include "PlayerObjectImplementation.h"
 
-#include "../scene/SceneObject.h"
+#include "../IntangibleObject.h"
 
 /*
  *	PlayerObjectStub
  */
 
-PlayerObject::PlayerObject() : SceneObject(DummyConstructorParameter::instance()) {
+PlayerObject::PlayerObject() : IntangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new PlayerObjectImplementation();
 	_impl->_setStub(this);
 }
 
-PlayerObject::PlayerObject(DummyConstructorParameter* param) : SceneObject(param) {
+PlayerObject::PlayerObject(DummyConstructorParameter* param) : IntangibleObject(param) {
 }
 
 PlayerObject::~PlayerObject() {
@@ -27,7 +27,7 @@ PlayerObject::~PlayerObject() {
  *	PlayerObjectAdapter
  */
 
-PlayerObjectAdapter::PlayerObjectAdapter(PlayerObjectImplementation* obj) : SceneObjectAdapter(obj) {
+PlayerObjectAdapter::PlayerObjectAdapter(PlayerObjectImplementation* obj) : IntangibleObjectAdapter(obj) {
 }
 
 Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -76,7 +76,7 @@ DistributedObjectAdapter* PlayerObjectHelper::createAdapter(DistributedObjectStu
  *	PlayerObjectServant
  */
 
-PlayerObjectServant::PlayerObjectServant() : SceneObjectImplementation() {
+PlayerObjectServant::PlayerObjectServant() : IntangibleObjectImplementation() {
 	_classHelper = PlayerObjectHelper::instance();
 }
 
@@ -85,7 +85,7 @@ PlayerObjectServant::~PlayerObjectServant() {
 
 void PlayerObjectServant::_setStub(DistributedObjectStub* stub) {
 	_this = (PlayerObject*) stub;
-	SceneObjectServant::_setStub(stub);
+	IntangibleObjectServant::_setStub(stub);
 }
 
 DistributedObjectStub* PlayerObjectServant::_getStub() {

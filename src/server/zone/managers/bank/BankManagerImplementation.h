@@ -45,30 +45,13 @@ which carries forward this exception.
 #ifndef BANKMANAGERIMPLEMENTATION_H_
 #define BANKMANAGERIMPLEMENTATION_H_
 
-#include "engine/engine.h"
-
-#include "../../objects.h"
-
 #include "BankManager.h"
-#include "BankTerminals.h"
-
-#include "../../objects/tangible/Container.h"
-
-class container;
 
 class BankManagerImplementation : public BankManagerServant, public Logger {
-	ZoneProcessServerImplementation* processServer;
-	ZoneServer*	zoneServer;
-
-	BankTerminals* bankTerminals;
 
 public:
-	BankManagerImplementation(ZoneServer* zoneServer, ZoneProcessServerImplementation* server);
+	BankManagerImplementation();
 	~BankManagerImplementation();
-
-	bool isBankTerminal(uint64 objectid);
-
-	void handleBankStorage(Player* player);
 };
 
 #endif /*BANKMANAGERIMPLEMENTATION_H_*/

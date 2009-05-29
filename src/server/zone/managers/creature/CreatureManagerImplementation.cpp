@@ -44,23 +44,21 @@ which carries forward this exception.
 
 #include "../../objects/terrain/Terrain.h"
 
-#include "../../objects/tangible/weapons/Weapon.h"
+#include "../../objects/tangible/weapon/WeaponObject.h"
+#include "../../objects/tangible/inventory/InventoryObject.h"
+//#include "../../objects/tangible/inventory/BankInventory.h"
 
-#include "../../objects.h"
-#include "../../objects/tangible/Inventory.h"
-#include "../../objects/tangible/inventory/BankInventory.h"
+//#include "../../objects/creature/Creature.h"
+//#include "../../objects/creature/CreatureImplementation.h"
+#include "../../objects/tangible/creature/CreatureObject.h"
 
-#include "../../objects/creature/Creature.h"
-#include "../../objects/creature/CreatureImplementation.h"
-#include "../../objects/creature/CreatureObject.h"
+//#include "../../objects/creature/trainer/TrainerCreature.h"
+//#include "../../objects/creature/recruiter/RecruiterCreature.h"
+//#include "../../objects/creature/recruiter/imperial/ImperialRecruiterCreature.h"
+//#include "../../objects/creature/recruiter/rebel/RebelRecruiterCreature.h"
+//#include "../../objects/creature/shuttle/ShuttleCreature.h"
 
-#include "../../objects/creature/trainer/TrainerCreature.h"
-#include "../../objects/creature/recruiter/RecruiterCreature.h"
-#include "../../objects/creature/recruiter/imperial/ImperialRecruiterCreature.h"
-#include "../../objects/creature/recruiter/rebel/RebelRecruiterCreature.h"
-#include "../../objects/creature/shuttle/ShuttleCreature.h"
-
-#include "../../objects/creature/CreatureGroup.h"
+//#include "../../objects/creature/CreatureGroup.h"
 
 #include "../skills/SkillManager.h"
 #include "../name/NameManager.h"
@@ -78,6 +76,7 @@ SpawnInfoMap* CreatureManagerImplementation::spawnInfoMap;
 
 CreatureManagerImplementation::CreatureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* serv) : CreatureManagerServant(), Thread(), Mutex("CreatureManager"),
 		Lua() {
+	/*
 	CreatureManagerImplementation::zone = zone;
 
 	server = serv;
@@ -93,9 +92,11 @@ CreatureManagerImplementation::CreatureManagerImplementation(Zone* zone, ZonePro
 
 	setLogging(false);
 	setGlobalLogging(true);
+	*/
 }
 
 CreatureManagerImplementation::~CreatureManagerImplementation() {
+	/*
 	if (creatureMap != NULL) {
 		delete creatureMap;
 		creatureMap = NULL;
@@ -115,12 +116,14 @@ CreatureManagerImplementation::~CreatureManagerImplementation() {
 		delete spawnInfoMap;
 		spawnInfoMap = NULL;
 	}
+	*/
 
 }
 
+/*
 void CreatureManagerImplementation::init() {
-	/*ZoneServer* server = zone->getZoneServer();
-	scheduler = server->getScheduler();*/
+	//ZoneServer* server = zone->getZoneServer();
+	//scheduler = server->getScheduler();
 
 	globalNPCRegen = 1.0f;
 
@@ -280,7 +283,7 @@ void CreatureManagerImplementation::loadTrainers() {
 }
 
 void CreatureManagerImplementation::loadStaticCreatures() {
-}
+}*/
 
 /* TODO:  Rewrite this to use the new lua based spawnCreature.
 CreatureGroup* CreatureManagerImplementation::spawnCreatureGroup(int count, const String& stfname, const String& name, int objCrc, float x, float y, int bitmask, int layout) {
@@ -321,6 +324,7 @@ CreatureGroup* CreatureManagerImplementation::spawnCreatureGroup(int count, cons
 }
 */
 
+/*
 BlueFrogCreature* CreatureManagerImplementation::spawnBlueFrog(float x, float y, float oY, float oW, int type, uint64 cellid, bool doLock) {
 	try {
 		lock(doLock);
@@ -1076,8 +1080,8 @@ void CreatureManagerImplementation::load(Creature* creature) {
 	callFunction(&getScreenN);
 	int nscreens = getIntParameter(getLuaState());
 
-	/*if(nscreens > 1)
-		System::out << "initial nscreens: " << nscreens << endl;*/
+	//if(nscreens > 1)
+		//System::out << "initial nscreens: " << nscreens << endl;
 
 	for (int i = 1; i <= nscreens; i++) {
 		LuaFunction getScreen(getLuaState(), objectName, "getConvoScreen", 1);
@@ -1140,10 +1144,10 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 	if (!creatureConfig.isValidTable())
 		return 1;
 
-	/*int planet = creatureConfig.getIntField("planet");
+	//int planet = creatureConfig.getIntField("planet");
 
-	if (planet != instance->getZone()->getZoneID())
-		return 1;*/
+	//if (planet != instance->getZone()->getZoneID())
+		//return 1;
 
 	instance->lock();
 
@@ -1674,4 +1678,4 @@ void CreatureManagerImplementation::changeStatsToBaby(Creature* creature) {
 	creature->setCustomName(costumName.toString().replaceAll("_"," "));
 
 
-}
+}*/

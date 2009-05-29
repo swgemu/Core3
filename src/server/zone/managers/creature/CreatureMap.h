@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "system/lang.h"
 
-#include "../../objects/creature/Creature.h"
+#include "../../objects/tangible/creature/npc/Creature.h"
 
 class CreatureMap : public HashTable<uint64, Creature*>
 		, public HashTableIterator<uint64, Creature*> {

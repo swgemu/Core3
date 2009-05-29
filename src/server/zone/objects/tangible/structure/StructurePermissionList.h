@@ -75,6 +75,7 @@ public:
 	//Setters
 
 	//Getters
+	bool isOnPermissionList(Player* player, uint8 listtype);
 	bool isOnPermissionList(const String& entryname, uint8 listtype);
 };
 

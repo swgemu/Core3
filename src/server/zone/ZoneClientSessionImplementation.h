@@ -49,7 +49,7 @@ which carries forward this exception.
 
 //class ZoneClientSession;
 
-#include "objects/player/Player.h"
+#include "objects/tangible/creature/player/Player.h"
 
 #include "ZoneClientSession.h"
 

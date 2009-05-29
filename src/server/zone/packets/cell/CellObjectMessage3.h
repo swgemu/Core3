@@ -52,12 +52,12 @@ public:
 	CellObjectMessage3(uint64 cellid, int cellnumber)
 			: BaseLineMessage(cellid, 0x53434C54, 3, 0x05) {
 
-		insertInt(0);
+		insertInt(0); //?
 		insertShort(0); //StfFile
-		insertInt(0);
+		insertInt(0); //?
 		insertShort(0); //StfName
 		insertInt(0); //Custom Name
-		insertInt(0);
+		insertInt(0); //?
 		insertInt(cellnumber); //Cell Number, like 1,2,3,4 etc. NOT Object id.
 
 		setSize();

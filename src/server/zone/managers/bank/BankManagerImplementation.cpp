@@ -44,78 +44,9 @@ which carries forward this exception.
 
 #include "BankManagerImplementation.h"
 
-#include "../item/ItemManager.h"
-
-BankManagerImplementation::BankManagerImplementation(ZoneServer* zoneserver, ZoneProcessServerImplementation* server) :
-	BankManagerServant(), Logger("BankManager") {
-
-	processServer = server;
-	zoneServer = zoneserver;
-
-	bankTerminals = new BankTerminals();
-
-	setLogging(false);
-	setGlobalLogging(true);
-
-
-	info("Populating the bank terminal details");
-
-	BankTerminal* bankTerminal;
-
-	try {
-		StringBuffer query;
-		query << "SELECT * from `staticobjects` where `file` like '%terminal_bank%';";
-
-		ResultSet* terminals = ServerDatabase::instance()->executeQuery(query);
-
-		while (terminals->next()) {
-
-			int planet = terminals->getUnsignedInt(0);
-			uint64 objectID = terminals->getUnsignedLong(1);
-			float x = terminals->getFloat(8);
-			float z = terminals->getFloat(9);
-
-			bankTerminals->addTerminal(objectID, planet, (int)x, (int)z);
-
-			bankTerminal = new BankTerminal(server->getBankManager(), objectID, x, z, 0);
-			zoneServer->addObject(bankTerminal);
-		}
-
-		delete terminals;
-	} catch (DatabaseException& e) {
-		System::out << "Can't get details of bank terminals\n";
-		System::out << e.getMessage() << endl;
-	} catch (...) {
-		System::out << "unreported exception caught in BankManagerImplementation::BankManagerImplementation\n";
-	}
-
-	info("Terminals populated");
+BankManagerImplementation::BankManagerImplementation()
+		: BankManagerServant(), Logger("BankManager") {
 }
 
 BankManagerImplementation::~BankManagerImplementation() {
-	delete bankTerminals;
-	bankTerminals = NULL;
-}
-
-bool BankManagerImplementation::isBankTerminal(uint64 objectid) {
-	return (bankTerminals->isBankTerminal(objectid) != NULL);
-}
-
-void BankManagerImplementation::handleBankStorage(Player* player) {
-	BankInventory* playersBank = (BankInventory*) player->getBankContainer();
-
-	if (playersBank == NULL)
-		return;
-
-	ItemManager* im = zoneServer->getItemManager();
-	if (im == NULL)
-		return;
-
-	if (!playersBank->getBankIsLoaded()) {
-		im->loadBankItems(player);
-		playersBank->setBankIsLoaded();
-	}
-
-	playersBank->sendTo(player);
-	playersBank->openTo(player);
 }

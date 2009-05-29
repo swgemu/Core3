@@ -54,9 +54,9 @@ which carries forward this exception.
 
 #include "../chat/ChatManager.h"
 
-#include "objects/scene/SceneObject.h"
+#include "objects/SceneObject.h"
 
-#include "objects/creature/Creature.h"
+#include "objects/tangible/creature/npc/Creature.h"
 
 #include "Zone.h"
 #include "ZoneImplementation.h"

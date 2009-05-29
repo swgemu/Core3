@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "system/lang.h"
 
-#include "../../objects/mission/MissionObject.h"
+#include "../../objects/intangible/mission/MissionObject.h"
 
 class MissionMap {
 	VectorMap<uint64, MissionObject*> missionMap;

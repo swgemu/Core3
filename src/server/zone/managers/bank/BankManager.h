@@ -7,19 +7,9 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class Player;
-
-class ZoneServer;
-
-#include "server/zone/ZoneProcessServerImplementation.h"
-
 class BankManager : public DistributedObjectStub {
 public:
-	BankManager(ZoneServer* server, ZoneProcessServerImplementation* processor);
-
-	bool isBankTerminal(long long objectid);
-
-	void handleBankStorage(Player* player);
+	BankManager();
 
 protected:
 	BankManager(DummyConstructorParameter* param);
@@ -36,10 +26,6 @@ public:
 	BankManagerAdapter(BankManagerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	bool isBankTerminal(long long objectid);
-
-	void handleBankStorage(Player* player);
 
 };
 

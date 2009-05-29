@@ -44,32 +44,16 @@ which carries forward this exception.
 
 #include "../../objects/player/Races.h"
 #include "../../objects/terrain/Terrain.h"
-
 #include "../skills/SkillManager.h"
-
-#include "../../objects/player/PlayerImplementation.h"
-#include "../../objects/player/PlayerObjectImplementation.h"
-
-#include "../../objects/creature/Creature.h"
-#include "../../objects/creature/mount/MountCreature.h"
-
-#include "../../objects/tangible/weapons/Weapon.h"
-#include "../../objects/tangible/weapons/JediWeapon.h"
-
+#include "../../objects/tangible/creature/player/Player.h"
+#include "../../objects/tangible/creature/npc/Creature.h"
+#include "../../objects/tangible/weapon/WeaponObject.h"
 #include "../../../ServerCore.h"
-
 #include "../../ZoneClientSession.h"
 #include "../../ZoneServer.h"
-
-#include "../../objects.h"
-
 #include "../../Zone.h"
-
 #include "PlayerManager.h"
-#include "PlayerManagerImplementation.h"
-
 #include "PlayerMapImplementation.h"
-
 #include "../guild/GuildManager.h"
 #include "../group/GroupManager.h"
 #include "../planet/PlanetManager.h"
@@ -79,7 +63,6 @@ which carries forward this exception.
 #include "../user/UserManager.h"
 #include "../../../chat/ChatManager.h"
 #include "../../../chat/ChatManagerImplementation.h"
-#include "../feature/FeatureManager.h"
 
 PlayerManagerImplementation::PlayerManagerImplementation(ItemManager* mgr, ZoneProcessServerImplementation* srv) : PlayerManagerServant() {
 	playerMap = new PlayerMap(3000);

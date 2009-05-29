@@ -42,53 +42,8 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../../objects/player/Player";
-import "../../objects/mission/MissionObject";
-
-import "server/zone/ZoneServer";
-include "server/zone/ZoneProcessServerImplementation";
-
 interface MissionManager {
-	MissionManager(ZoneServer zs, ZoneProcessServerImplementation ps) {
-		super(zs, ps);
+	MissionManager() {
+		super();
 	}
-	
-	void init();
-	void unloadManager();
-	void removeMissions();
-	
-	// Creation methods
-	MissionObject poolMission(MissionObject miso, boolean doLock);
-	void instanceMission(Player player, MissionObject misoCopy, const String objectives, boolean isNew);
-	
-	//data setup
-	void sendTerminalData(Player player, int termBitmask, boolean doLock = true);
-	void sendMission(Player player, String tKey, boolean doLock = true);
-	
-	//events
-	void doMissionAccept(Player player, unsigned long oid, boolean doLock = true);
-	void doMissionComplete(Player player, const String tKey, boolean doLock = true);
-	void doMissionAbort(Player player, unsigned long oid, boolean doLock = true);
-	void doMissionAbort(Player player, const String tKey, boolean doLock = true);
-	
-	boolean evalMission(Player player, const String tKey, String retSay);
-	boolean evalMission(Player player, MissionObject miso);
-	
-	//Save functions
-	// Loads all missions for a player from mission_saves:
-	void loadPlayerMissions(Player player, boolean doLock = true);
-
-	// Saves OR updates a mission for a player in mission_saves:
-	void savePlayerMission(Player player, MissionObject miso);
-
-	// Saves mission keys to the DB
-	void savePlayerKeys(Player player, const String curMisoKeys, const String finMisoKeys);
-
-	// Clear all player mission vars for a player.
-	void clearPlayerMissions(Player target, boolean lockTarget = false);
-
-	// Script methods
-	void loadMissionScripts();
-	void registerFunctions();
-	void registerGlobals();
 }

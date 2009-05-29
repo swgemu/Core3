@@ -42,19 +42,8 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../../objects/player/Player";
-
-import "server/zone/ZoneServer";
-include "server/zone/ZoneProcessServerImplementation";
-
-
 interface BankManager {
-	BankManager(ZoneServer server, ZoneProcessServerImplementation processor) {
-		super(server, processor);
+	BankManager() {
+		super();
 	}
-
-	boolean isBankTerminal(long objectid);
-	
-	void handleBankStorage(Player player);
-
 }

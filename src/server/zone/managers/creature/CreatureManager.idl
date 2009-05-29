@@ -47,28 +47,29 @@ include "engine/util/Coordinate";
 import "server/zone/Zone";
 include "server/zone/ZoneProcessServerImplementation";
 
-import "../../objects/creature/Creature";
-import "../../objects/creature/CreatureObject";
-import "../../objects/creature/CreatureGroup";
-import "../../objects/tangible/lair/LairObject";
+//import "../../objects/tangible/creature/Creature";
+import "../../objects/tangible/creature/CreatureObject";
+//import "../../objects/creature/CreatureGroup";
+//import "../../objects/tangible/lair/LairObject";
 
-import "../../objects/creature/trainer/TrainerCreature";
-import "../../objects/creature/recruiter/RecruiterCreature";
-import "../../objects/creature/shuttle/ShuttleCreature";
-import "../../objects/creature/pet/CreaturePet";
+//import "../../objects/creature/trainer/TrainerCreature";
+//import "../../objects/creature/recruiter/RecruiterCreature";
+//import "../../objects/creature/shuttle/ShuttleCreature";
+//import "../../objects/creature/pet/CreaturePet";
 
 interface CreatureManager {
 	CreatureManager(Zone zone, ZoneProcessServerImplementation processor) {
 		super(zone, processor);
 	}
-
+	
+	/*
 	void init();
 
 	void loadCreatures();
-
+	*/
 	void start();
-
 	void stop();
+	/*
 
 	// creature loading methods
 	void loadTrainers();
@@ -113,4 +114,5 @@ interface CreatureManager {
 	void insertCreaturePet(CreaturePet pet, boolean doLock = true);
 	void setPetDefaultAttributes(CreaturePet creature, boolean newPet, boolean doLock = true);
 	void convertPetToMount(CreaturePet creature,  boolean doLock = true);
+	*/
 }

@@ -23,6 +23,84 @@ Player::Player(DummyConstructorParameter* param) : CreatureObject(param) {
 Player::~Player() {
 }
 
+void Player::sendMessage(BaseMessage* message) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+		method.addObjectParameter(message);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->sendMessage(message);
+}
+
+void Player::sendMessage(StandaloneBaseMessage* message) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addObjectParameter(message);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->sendMessage(message);
+}
+
+void Player::setFirstName(const String& fname) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addAsciiParameter(fname);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->setFirstName(fname);
+}
+
+void Player::setLastName(const String& lname) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addAsciiParameter(lname);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->setLastName(lname);
+}
+
+String& Player::getFirstName() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		method.executeWithAsciiReturn(_return_getFirstName);
+		return _return_getFirstName;
+	} else
+		return ((PlayerImplementation*) _impl)->getFirstName();
+}
+
+String& Player::getLastName() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		method.executeWithAsciiReturn(_return_getLastName);
+		return _return_getLastName;
+	} else
+		return ((PlayerImplementation*) _impl)->getLastName();
+}
+
 /*
  *	PlayerAdapter
  */
@@ -34,11 +112,53 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		sendMessage((BaseMessage*) inv->getObjectParameter());
+		break;
+	case 7:
+		sendMessage((StandaloneBaseMessage*) inv->getObjectParameter());
+		break;
+	case 8:
+		setFirstName(inv->getAsciiParameter(_param0_setFirstName__String_));
+		break;
+	case 9:
+		setLastName(inv->getAsciiParameter(_param0_setLastName__String_));
+		break;
+	case 10:
+		resp->insertAscii(getFirstName());
+		break;
+	case 11:
+		resp->insertAscii(getLastName());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void PlayerAdapter::sendMessage(BaseMessage* message) {
+	return ((PlayerImplementation*) impl)->sendMessage(message);
+}
+
+void PlayerAdapter::sendMessage(StandaloneBaseMessage* message) {
+	return ((PlayerImplementation*) impl)->sendMessage(message);
+}
+
+void PlayerAdapter::setFirstName(const String& fname) {
+	return ((PlayerImplementation*) impl)->setFirstName(fname);
+}
+
+void PlayerAdapter::setLastName(const String& lname) {
+	return ((PlayerImplementation*) impl)->setLastName(lname);
+}
+
+String& PlayerAdapter::getFirstName() {
+	return ((PlayerImplementation*) impl)->getFirstName();
+}
+
+String& PlayerAdapter::getLastName() {
+	return ((PlayerImplementation*) impl)->getLastName();
 }
 
 /*

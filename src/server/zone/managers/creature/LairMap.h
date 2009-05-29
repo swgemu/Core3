@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "system/lang.h"
 
+/*
 #include "../../objects/tangible/lair/LairObject.h"
 
 class LairMap : public HashTable<uint64, LairObject*>
@@ -62,5 +63,6 @@ public:
 		setNullValue(NULL);
 	}
 };
+*/
 
 #endif /*LAIRMAP_H_*/

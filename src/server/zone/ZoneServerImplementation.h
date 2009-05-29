@@ -56,22 +56,15 @@ which carries forward this exception.
 #include "managers/object/ObjectManager.h"
 
 class SceneObject;
-
 class UserManager;
-
 class PlayerManager;
 class CraftingManager;
 class ItemManager;
-class ItemConfigManager;
 class GuildManager;
-
 class ChatManager;
-
 class ResourceManager;
 class MissionManager;
-class LootTableManager;
-
-class BazaarManager;
+class AuctionManager;
 class BankManager;
 
 #include "ZoneServer.h"
@@ -90,17 +83,11 @@ class ZoneServerImplementation : public DatagramServiceThread, public ZoneServer
 	PlayerManager* playerManager;
 	CraftingManager* craftingManager;
 	ItemManager* itemManager;
-	ItemConfigManager* itemConfigManager;
 	ChatManager* chatManager;
 	GuildManager* guildManager;
-
 	ResourceManager* resourceManager;
-
-	LootTableManager* lootTableManager;
-
 	MissionManager* missionManager;
-
-	BazaarManager* bazaarManager;
+	AuctionManager* auctionManager;
 	BankManager* bankManager;
 
 	int totalSentPackets;
@@ -218,10 +205,6 @@ public:
 		return itemManager;
 	}
 
-	inline ItemConfigManager* getItemConfigManager() {
-		return itemConfigManager;
-	}
-
 	inline ChatManager* getChatManager() {
 		return chatManager;
 	}
@@ -238,12 +221,8 @@ public:
 		return resourceManager;
 	}
 
-	inline LootTableManager* getLootTableManager() {
-		return lootTableManager;
-	}
-
-	inline BazaarManager* getBazaarManager() {
-		return bazaarManager;
+	inline AuctionManager* getAuctionManager() {
+		return auctionManager;
 	}
 
 	inline MissionManager* getMissionManager() {

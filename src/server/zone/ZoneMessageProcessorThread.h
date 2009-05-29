@@ -47,7 +47,6 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "objects.h"
 #include "ZonePacketHandler.h"
 
 class ZoneMessageProcessorThread : public ServiceProcessThread {

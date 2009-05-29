@@ -45,23 +45,22 @@
 #ifndef MANUFACTURESCHEMATICOBJECTDELTAMESSAGE7_H_
 #define MANUFACTURESCHEMATICOBJECTDELTAMESSAGE7_H_
 
-#include "../BaseLineMessage.h"
+#include "../DeltaMessage.h"
 
-#include "../../objects/draftschematic/DraftSchematic.h"
-#include "../../objects/draftschematic/DraftSchematicExpPropGroup.h"
-#include "../../objects/draftschematic/DraftSchematicValues.h"
+#include "../../objects/intangible/draftschematic/DraftSchematicObject.h"
+//#include "../../objects/draftschematic/DraftSchematicExpPropGroup.h"
+//#include "../../objects/draftschematic/DraftSchematicValues.h"
 
 class ManufactureSchematicObjectDeltaMessage7 : public DeltaMessage {
 public:
-	ManufactureSchematicObjectDeltaMessage7(uint64 sceneObjSchematic) :
-		DeltaMessage(sceneObjSchematic, 0x4D53434F, 7) {
+	ManufactureSchematicObjectDeltaMessage7(uint64 schematicid) :
+		DeltaMessage(schematicid, 0x4D53434F, 7) {
 	}
 
-	void fullUpdate(DraftSchematic* draftSchematic, int size, int slot,
-			uint64 resourceID, int quantity) {
-		updateIngredientList(draftSchematic);
+	void fullUpdate(DraftSchematicObject* schematic, int size, int slot, uint64 resourceid, int quantity) {
+		updateIngredientList(schematic);
 		updateSlot(size+1, size+1, slot);
-		updateResource(size+1, size+1, slot, resourceID);
+		updateResource(size+1, size+1, slot, resourceid);
 		updateQuantity(size+1, size+1, slot, quantity);
 		update4(size, size, slot);
 		update5(size+1, size+1, slot);
@@ -71,9 +70,9 @@ public:
 		update14();
 	}
 
-	void partialUpdate(int slot, int counter, uint64 resourceID, int quantity) {
+	void partialUpdate(int slot, int counter, uint64 resourceid, int quantity) {
 		updateSlot(1, counter, slot);
-		updateResource(1, counter, slot, resourceID);
+		updateResource(1, counter, slot, resourceid);
 		updateQuantity(1, counter, slot, quantity);
 		update5(1, counter, slot);
 		update7();
@@ -99,41 +98,46 @@ public:
 		update7();
 	}
 
-	void updateForAssembly(DraftSchematic* draftSchematic){
-		initializeExperimentalValues(draftSchematic);  // Temp
-		update9(draftSchematic, true);
-		update0B(draftSchematic);
-		update0C(draftSchematic);
-		update12(draftSchematic);
+	void updateForAssembly(DraftSchematicObject* schematic){
+		initializeExperimentalValues(schematic);  // Temp
+		update9(schematic, true);
+		update0B(schematic);
+		update0C(schematic);
+		update12(schematic);
 	}
 
-	void updateCustomizationOptions(DraftSchematic* draftSchematic, int custpoints){
-		update0D(draftSchematic);
-		update0E(draftSchematic);
-		update0F(draftSchematic);
-		update10(draftSchematic, custpoints);
+	void updateCustomizationOptions(DraftSchematicObject* schematic, int custpoints){
+		update0D(schematic);
+		update0E(schematic);
+		update0F(schematic);
+		update10(schematic, custpoints);
 		update11();
 	}
 
-	void updateIngredientList(DraftSchematic* draftSchematic) {
+	void updateIngredientList(DraftSchematicObject* schematic) {
 
 		startUpdate(0);
 
-		int ingredientListSize = draftSchematic->getIngredientListSize();
+		//int ingredientListSize = schematic->getIngredientListSize();
+		int ingredientListSize = 0;
 
 		startList(ingredientListSize, ingredientListSize);
 
 		for (int i = 0; i < ingredientListSize; i++) {
-			DraftSchematicIngredient* dsi = draftSchematic->getIngredient(i);
+			/*
+			//DraftSchematicIngredient* dsi = schematic->getIngredient(i);
 			if (dsi != NULL) {
 				insertByte(1);
 				insertShort(i);
-				insertAscii(dsi->getTemplateName());
+				//insertAscii(dsi->getTemplateName());
+				insertAscii("FIXME");
 				insertInt(0);
-				insertAscii(dsi->getTitleName());
+				//insertAscii(dsi->getTitleName());
+				insertAscii("FIXME");
 			} else {
 				System::out << "\n\nError DMSCO7: line 65\n";
 			}
+			*/
 		}
 	}
 
@@ -149,7 +153,7 @@ public:
 		removeListIntElement(slot, 4);
 	}
 
-	void updateResource(int size, int counter, int slot, uint64 resourceID) {
+	void updateResource(int size, int counter, int slot, uint64 resourceid) {
 		startUpdate(2);
 
 		startList(size, counter);
@@ -158,7 +162,7 @@ public:
 			addListIntElement(i, 0);
 		}
 		removeListIntElement(slot, 1);
-		insertLong(resourceID);
+		insertLong(resourceid);
 
 	}
 	void updateQuantity(int size, int counter, int slot, int quantity) {
@@ -219,20 +223,24 @@ public:
 
 	}
 
-	void initializeExperimentalValues(DraftSchematic* draftSchematic) {
+	void initializeExperimentalValues(DraftSchematicObject* draftSchematic) {
 
-		DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+		//DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
 		startUpdate(8);
 
-		int titleCount = craftingValues->getVisibleExperimentalPropertyTitleSize();
-		int counter = draftSchematic->getExpCounter();
+		//int titleCount = craftingValues->getVisibleExperimentalPropertyTitleSize();
+		//int counter = draftSchematic->getExpCounter();
+
+		int titleCount = 0;
+		int counter = 0;
 
 		insertInt(titleCount);
 		insertInt(titleCount);
 
 		for (int i = 0; i < titleCount; i++) {
-			String title = craftingValues->getVisibleExperimentalPropertyTitle(i);
+			//String title = craftingValues->getVisibleExperimentalPropertyTitle(i);
+			String title = "FIXME";
 
 			insertByte(1);
 			insertShort(i);
@@ -281,10 +289,10 @@ public:
 	}
 
 	// This sends the experimental values shown in the Screen after hitting assemble
-	void update9(DraftSchematic* draftSchematic, bool initial) {
+	void update9(DraftSchematicObject* draftSchematic, bool initial) {
 		startUpdate(9);
-
-		DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+		/*
+		//DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 		int count, linenum;
 		String title, subtitle;
 		float value;
@@ -328,9 +336,11 @@ public:
 		}
 
 		updatedLines.removeAll();
+		*/
 	}
 
-	void update0A(DraftSchematic* draftSchematic) {
+	void update0A(DraftSchematicObject* draftSchematic) {
+		/*
 
 		DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
@@ -343,9 +353,11 @@ public:
 		for (int i = 0; i < titleCount; i++) {
 			removeListFloatElement(i, 1.0f);
 		}
+		*/
 	}
 	// I think this is usually 1.0
-	void update0B(DraftSchematic* draftSchematic) {
+	void update0B(DraftSchematicObject* draftSchematic) {
+		/*
 
 		DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
@@ -358,9 +370,11 @@ public:
 		for (int i = 0; i < titleCount; i++) {
 			removeListFloatElement(i, 1.0f);
 		}
+		*/
 	}
 	// This is the MAX experimental value.  How many bars
-	void update0C(DraftSchematic* draftSchematic) {
+	void update0C(DraftSchematicObject* draftSchematic) {
+		/*
 
 		DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
@@ -379,9 +393,11 @@ public:
 			removeListFloatElement(i, value);
 
 		}
+		*/
 	}
 
-	void update0D(DraftSchematic* draftSchematic) {
+	void update0D(DraftSchematicObject* draftSchematic) {
+		/*
 
 		int count = draftSchematic->getCustomizationOptionCount();
 
@@ -395,11 +411,13 @@ public:
 			insertShort(i);
 			insertAscii(draftSchematic->getCustomizationOption(i));
 		}
+		*/
 
 	}
 
 	// Starting COlor chooser position
-	void update0E(DraftSchematic* draftSchematic) {
+	void update0E(DraftSchematicObject* draftSchematic) {
+		/*
 
 		int count = draftSchematic->getCustomizationOptionCount();
 
@@ -413,9 +431,11 @@ public:
 			insertShort(i);
 			insertInt(draftSchematic->getCustomizationDefaultValue(i));
 		}
+		*/
 	}
 
-	void update0F(DraftSchematic* draftSchematic) {
+	void update0F(DraftSchematicObject* draftSchematic) {
+		/*
 
 		int count = draftSchematic->getCustomizationOptionCount();
 
@@ -428,10 +448,12 @@ public:
 			insertShort(i);
 			insertInt(0);
 		}
+		*/
 	}
 
 	// Number of palette colors
-	void update10(DraftSchematic* draftSchematic, int custpoints) {
+	void update10(DraftSchematicObject* draftSchematic, int custpoints) {
+		/*
 
 		int count = draftSchematic->getCustomizationOptionCount();
 
@@ -444,6 +466,7 @@ public:
 			insertShort(i);
 			insertInt(custpoints);
 		}
+		*/
 	}
 
 	void update11() {
@@ -452,9 +475,10 @@ public:
 		insertByte(1);
 	}
 
-	void update12(DraftSchematic* draftSchematic){
+	void update12(DraftSchematicObject* draftSchematic){
 		startUpdate(0x12);
-		insertFloat(draftSchematic->getExpFailure());
+		//insertFloat(draftSchematic->getExpFailure());
+		insertFloat(0.0f); //TODO: Remove me later.
 	}
 
 	void update14() {

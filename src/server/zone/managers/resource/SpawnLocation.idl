@@ -43,7 +43,7 @@ which carries forward this exception.
 */
 
 import "ResourceSpawn";
-import "../../objects/scene/SceneObject";
+import "../../objects/SceneObject";
 
 interface SpawnLocation : implements SceneObject { 
 	SpawnLocation(unsigned long oid, int inPlanet, float inX, float inY, float inRadius, float inMax, unsigned long et, String& inPool) {

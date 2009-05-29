@@ -11,7 +11,7 @@ class ResourceSpawn;
 
 class SceneObject;
 
-#include "../../objects/scene/SceneObject.h"
+#include "../../objects/SceneObject.h"
 
 class SpawnLocation : public SceneObject {
 public:
@@ -80,7 +80,7 @@ public:
 	friend class SingletonWrapper<SpawnLocationHelper>;
 };
 
-#include "../../objects/scene/SceneObjectImplementation.h"
+#include "../../objects/SceneObjectImplementation.h"
 
 class SpawnLocationServant : public SceneObjectImplementation {
 public:

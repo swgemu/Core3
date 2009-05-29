@@ -70,11 +70,9 @@ class ProfessionManager;
 class SkillManager;
 class RadialManager;
 class GroupManager;
-class LootManager;
 class SuiManager;
 class NameManager;
 class SlashCommandManager;
-class FeatureManager;
 
 class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
 	ZoneServer* server;
@@ -90,11 +88,9 @@ class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
 	SkillManager* skillManager;
 	RadialManager* radialManager;
 	GroupManager* groupManager;
-	LootManager* lootManager;
 	SuiManager* suiManager;
 	NameManager* nameManager;
 	SlashCommandManager* slashCommandManager;
-	FeatureManager* featureManager;
 
 public:
 	ZoneProcessServerImplementation(ZoneServer* serv, int processingThreads);
@@ -168,10 +164,6 @@ public:
 		return groupManager;
 	}
 
-	inline LootManager* getLootManager() {
-		return lootManager;
-	}
-
 	inline SuiManager* getSuiManager() {
 		return suiManager;
 	}
@@ -182,10 +174,6 @@ public:
 
 	inline SlashCommandManager* getSlashCommandManager() {
 		return slashCommandManager;
-	}
-
-	inline FeatureManager* getFeatureManager() {
-		return featureManager;
 	}
 };
 

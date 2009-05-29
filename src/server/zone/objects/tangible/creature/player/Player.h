@@ -15,10 +15,25 @@ class Player : public CreatureObject {
 public:
 	Player();
 
+	void sendMessage(BaseMessage* message);
+
+	void sendMessage(StandaloneBaseMessage* message);
+
+	void setFirstName(const String& fname);
+
+	void setLastName(const String& lname);
+
+	String& getFirstName();
+
+	String& getLastName();
+
 protected:
 	Player(DummyConstructorParameter* param);
 
 	virtual ~Player();
+
+	String _return_getFirstName;
+	String _return_getLastName;
 
 	friend class PlayerHelper;
 };
@@ -31,6 +46,21 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void sendMessage(BaseMessage* message);
+
+	void sendMessage(StandaloneBaseMessage* message);
+
+	void setFirstName(const String& fname);
+
+	void setLastName(const String& lname);
+
+	String& getFirstName();
+
+	String& getLastName();
+
+protected:
+	String _param0_setFirstName__String_;
+	String _param0_setLastName__String_;
 };
 
 class PlayerHelper : public DistributedObjectClassHelper, public Singleton<PlayerHelper> {

@@ -7,23 +7,11 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-#include "engine/util/Coordinate.h"
-
 class Zone;
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 
 class Player;
-
-class ShuttleCreature;
-
-class MissionTerminal;
-
-class StructureManager;
-
-class ActiveArea;
-
-class ActiveAreaTrigger;
 
 class PlanetManager : public DistributedObjectStub {
 public:
@@ -34,42 +22,6 @@ public:
 	void start();
 
 	void stop();
-
-	unsigned long long getNextStaticObjectID(bool doLock = true);
-
-	StructureManager* getStructureManager();
-
-	void landShuttles();
-
-	void takeOffShuttles();
-
-	unsigned long long getLandingTime();
-
-	unsigned int getTravelFare(String& departurePlanet, String& arrivalPlanet);
-
-	ShuttleCreature* getShuttle(const String& Shuttle);
-
-	void sendPlanetTravelPointListResponse(Player* player);
-
-	void tutorialStepWelcome(Player* player);
-
-	void tutorialStepStatMigration(Player* player);
-
-	MissionTerminal* getMissionTerminal(unsigned long long oid);
-
-	bool isNoBuildArea(float x, float y);
-
-	void addNoBuildArea(float x, float y, float radius);
-
-	void weatherUpdatePlayers();
-
-	void weatherChange();
-
-	void weatherRemoveEvents();
-
-	ActiveAreaTrigger* spawnActiveArea(ActiveArea* area);
-
-	void removeActiveAreaTrigger(ActiveAreaTrigger* trigger);
 
 protected:
 	PlanetManager(DummyConstructorParameter* param);
@@ -93,46 +45,6 @@ public:
 
 	void stop();
 
-	unsigned long long getNextStaticObjectID(bool doLock);
-
-	StructureManager* getStructureManager();
-
-	void landShuttles();
-
-	void takeOffShuttles();
-
-	unsigned long long getLandingTime();
-
-	unsigned int getTravelFare(String& departurePlanet, String& arrivalPlanet);
-
-	ShuttleCreature* getShuttle(const String& Shuttle);
-
-	void sendPlanetTravelPointListResponse(Player* player);
-
-	void tutorialStepWelcome(Player* player);
-
-	void tutorialStepStatMigration(Player* player);
-
-	MissionTerminal* getMissionTerminal(unsigned long long oid);
-
-	bool isNoBuildArea(float x, float y);
-
-	void addNoBuildArea(float x, float y, float radius);
-
-	void weatherUpdatePlayers();
-
-	void weatherChange();
-
-	void weatherRemoveEvents();
-
-	ActiveAreaTrigger* spawnActiveArea(ActiveArea* area);
-
-	void removeActiveAreaTrigger(ActiveAreaTrigger* trigger);
-
-protected:
-	String _param0_getTravelFare__String_String_;
-	String _param1_getTravelFare__String_String_;
-	String _param0_getShuttle__String_;
 };
 
 class PlanetManagerHelper : public DistributedObjectClassHelper, public Singleton<PlanetManagerHelper> {

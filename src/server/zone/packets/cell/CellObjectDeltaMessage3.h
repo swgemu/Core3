@@ -48,7 +48,7 @@ which carries forward this exception.
 
 #include "../../packets/DeltaMessage.h"
 
-#include "../../objects/structure/building/cell/CellObject.h"
+#include "../../objects/cell/CellObject.h"
 
 class CellObjectDeltaMessage3 : public DeltaMessage {
 	CellObject* cell;

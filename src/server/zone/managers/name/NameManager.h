@@ -49,7 +49,7 @@ which carries forward this exception.
 
 class ZoneServer;
 
-#include "../../objects/creature/CreatureObject.h"
+//#include "../../objects/creature/CreatureObject.h"
 
 class CreatureObject;
 class ZoneProcessServerImplementation;

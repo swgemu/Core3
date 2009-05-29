@@ -44,8 +44,6 @@ which carries forward this exception.
 
 #include "StatusServer.h"
 
-#include "../zone/managers/item/ItemManager.h"
-
 StatusServer::StatusServer(ConfigManager* conf, ZoneServer* server)
 		: StreamServiceThread("StatusServer") {
 	zoneServer = server;
@@ -57,17 +55,11 @@ StatusServer::StatusServer(ConfigManager* conf, ZoneServer* server)
 }
 
 StatusServer::~StatusServer() {
-	obj->finalize();
 }
 
 void StatusServer::init() {
 	timestamp.update();
 	lastStatus = true;
-
-	if (zoneServer != NULL) {
-		oid = zoneServer->getItemManager()->getNextStaticObjectID();
-		obj = new Attachment(oid, 1);
-	}
 
 	info("initialized", true);
 }
@@ -121,23 +113,4 @@ Packet* StatusServer::getStatusXMLPacket() {
 	pack->insertStream(xml.toCharArray(), xml.length());
 
 	return pack;
-}
-
-bool StatusServer::testZone() {
-	if (zoneServer == NULL)
-		return false;
-
-	if (-timestamp.miliDifference() < statusInterval) {
-		return lastStatus;
-	}
-
-	timestamp.update();
-
-	try {
-		zoneServer->addObject(obj);
-
-		return zoneServer->removeObject(oid) == obj;
-	} catch (...) {
-		return false;
-	}
 }

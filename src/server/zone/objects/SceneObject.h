@@ -7,6 +7,10 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+#include "engine/service/proto/BaseMessage.h"
+
+#include "engine/service/proto/StandaloneBaseMessage.h"
+
 #include "engine/core/ManagedObject.h"
 
 class SceneObject : public ManagedObject {
@@ -15,10 +19,47 @@ public:
 
 	void error(const String& message);
 
+	bool isObjectType(int type, bool similar = false);
+
+	float getDirectionX();
+
+	float getDirectionY();
+
+	float getDirectionZ();
+
+	float getDirectionW();
+
+	float getPositionX();
+
+	float getPositionY();
+
+	float getPositionZ();
+
+	String& getStfFile();
+
+	String& getStfName();
+
+	UnicodeString& getCustomName();
+
+	unsigned long long getObjectID();
+
+	unsigned int getObjectCRC();
+
+	float getComplexity();
+
+	unsigned int getVolume();
+
+	bool isPlayer();
+
 protected:
 	SceneObject(DummyConstructorParameter* param);
 
 	virtual ~SceneObject();
+
+	String _return_getStfFile;
+	String _return_getStfName;
+
+	UnicodeString _return_getCustomName;
 
 	friend class SceneObjectHelper;
 };
@@ -34,6 +75,38 @@ public:
 	void info(const String& message, bool forcedLog);
 
 	void error(const String& message);
+
+	bool isObjectType(int type, bool similar);
+
+	float getDirectionX();
+
+	float getDirectionY();
+
+	float getDirectionZ();
+
+	float getDirectionW();
+
+	float getPositionX();
+
+	float getPositionY();
+
+	float getPositionZ();
+
+	String& getStfFile();
+
+	String& getStfName();
+
+	UnicodeString& getCustomName();
+
+	unsigned long long getObjectID();
+
+	unsigned int getObjectCRC();
+
+	float getComplexity();
+
+	unsigned int getVolume();
+
+	bool isPlayer();
 
 protected:
 	String _param0_info__String_bool_;

@@ -83,12 +83,9 @@ which carries forward this exception.
 #include "managers/guild/GuildManagerImplementation.h"
 #include "managers/group/GroupManager.h"
 #include "managers/skills/SkillManager.h"
-#include "managers/loot/LootManager.h"
 #include "managers/sui/SuiManager.h"
 #include "managers/name/NameManager.h"
 #include "managers/slashcommands/SlashCommandManager.h"
-
-#include "managers/feature/FeatureManager.h"
 
 ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* serv, int processingThreads)
 		: ServiceMessageHandlerThread("ZoneProcessorServer") {
@@ -98,13 +95,11 @@ ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* ser
 	procThreadCount = processingThreads;
 
 	//Static managers
-	featureManager = new FeatureManager();
 	combatManager = new CombatManager(this);
 	professionManager = new ProfessionManager(this);
 	skillManager = professionManager->getSkillManager();
 	radialManager = new RadialManager();
 	groupManager = new GroupManager();
-	lootManager = new LootManager(this);
 	suiManager = new SuiManager(this);
 	nameManager = new NameManager(this);
 	slashCommandManager = new SlashCommandManager(this);

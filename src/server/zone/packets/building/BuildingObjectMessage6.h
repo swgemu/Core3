@@ -46,6 +46,7 @@ which carries forward this exception.
 #define BUILDINGOBJECTMESSAGE6_H_
 
 #include "../BaseLineMessage.h"
+#include "../../objects/tangible/building/BuildingObject.h"
 
 class BuildingObjectMessage6 : public BaseLineMessage {
 public:

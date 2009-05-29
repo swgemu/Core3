@@ -19,13 +19,9 @@ class CraftingManager;
 
 class ItemManager;
 
-class ItemConfigManager;
-
 class ResourceManager;
 
-class LootTableManager;
-
-class BazaarManager;
+class AuctionManager;
 
 class BankManager;
 
@@ -103,13 +99,9 @@ public:
 
 	ItemManager* getItemManager();
 
-	ItemConfigManager* getItemConfigManager();
-
 	ResourceManager* getResourceManager();
 
-	LootTableManager* getLootTableManager();
-
-	BazaarManager* getBazaarManager();
+	AuctionManager* getAuctionManager();
 
 	BankManager* getBankManager();
 
@@ -236,13 +228,9 @@ public:
 
 	ItemManager* getItemManager();
 
-	ItemConfigManager* getItemConfigManager();
-
 	ResourceManager* getResourceManager();
 
-	LootTableManager* getLootTableManager();
-
-	BazaarManager* getBazaarManager();
+	AuctionManager* getAuctionManager();
 
 	BankManager* getBankManager();
 

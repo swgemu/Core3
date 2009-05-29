@@ -49,9 +49,12 @@ which carries forward this exception.
 
 class PlayerImplementation : public PlayerServant {
 protected:
-	WaypointList waypointList;
-	FriendsList friendsList;
-	IgnoreList ignoreList;
+	//WaypointList waypointList;
+	//FriendsList friendsList;
+	//IgnoreList ignoreList;
+
+	String firstName;
+	String lastName;
 
 	uint32 fillingFood;
 	uint32 fillingFoodMax;
@@ -69,6 +72,10 @@ public:
 	virtual void serialize(String& str);
 	virtual void deserialize(const String& str);
 
+	//Sending of packets
+	void sendMessage(BaseMessage* message);
+	void sendMessage(StandaloneBaseMessage* message);
+
 	virtual void duel(Player* player);
 	virtual void deathblow(Player* player);
 	virtual void teach(Player* player);
@@ -76,8 +83,22 @@ public:
 	virtual void tradeAccept(Player* player);
 
 	//Setters
+	inline void setFirstName(const String& fname) {
+		firstName = fname;
+	}
+
+	inline void setLastName(const String& lname) {
+		lastName = lname;
+	}
 
 	//Getters
+	inline String& getFirstName() {
+		return firstName;
+	}
+
+	inline String& getLastName() {
+		return lastName;
+	}
 };
 
 #endif /*PLAYERIMPLEMENTATION_H_*/

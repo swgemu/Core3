@@ -49,8 +49,10 @@ which carries forward this exception.
 
 class CellObjectMessage6 : public BaseLineMessage {
 public:
-	CellObjectMessage6(uint64 coId)
-			: BaseLineMessage(coId, 0x53434C54, 6, 0x02) {
+	CellObjectMessage6(uint64 cellid)
+			: BaseLineMessage(cellid, 0x53434C54, 6, 0x02) {
+
+		//TODO: More research
 
 		//insertShort(1); //operand count
 		//insertInt(0x42); // some const value it appears

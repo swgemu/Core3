@@ -10,7 +10,7 @@
 
 #include "SpawnLocation.h"
 
-#include "../../objects/scene/SceneObject.h"
+#include "../../objects/SceneObject.h"
 
 /*
  *	ResourceSpawnStub

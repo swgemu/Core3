@@ -48,8 +48,8 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/draftschematic/DraftSchematic.h"
-#include "../../objects/manufacture/ManufactureSchematic.h"
+#include "../../objects/intangible/draftschematic/DraftSchematicObject.h"
+#include "../../objects/intangible/manufactureschematic/ManufactureSchematicObject.h"
 
 class ManufactureSchematicObjectMessage3 : public BaseLineMessage {
 public:
@@ -84,7 +84,7 @@ public:
 		setSize();
 	}
 
-	ManufactureSchematicObjectMessage3(DraftSchematic* draftSchematic, UnicodeString& playerName)
+	ManufactureSchematicObjectMessage3(DraftSchematicObject* draftSchematic, UnicodeString& playerName)
 			: BaseLineMessage(draftSchematic->getObjectID(), 0x4D53434F, 3, 0x09) {
 
 		insertFloat(draftSchematic->getComplexity());
@@ -95,7 +95,8 @@ public:
 		insertUnicode(draftSchematic->getCustomName());
 
 		insertInt(0);  // Unknown
-		insertInt(draftSchematic->getManufacturingLimit()); // Manufacturing Count
+		//insertInt(draftSchematic->getManufacturingLimit()); // Manufacturing Count
+		insertInt(1000); //TODO: Remove this and add the one above it
 		insertInt(1);
 		insertInt(1);
 		insertByte(0);
@@ -113,7 +114,7 @@ public:
 		setSize();
 	}
 
-	ManufactureSchematicObjectMessage3(ManufactureSchematic* manufactureSchematic, UnicodeString& playerName)
+	ManufactureSchematicObjectMessage3(ManufactureSchematicObject* manufactureSchematic, UnicodeString& playerName)
 			: BaseLineMessage(manufactureSchematic->getObjectID(), 0x4D53434F, 3, 0x09) {
 
 		insertFloat(manufactureSchematic->getComplexity());

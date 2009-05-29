@@ -49,14 +49,8 @@ which carries forward this exception.
 
 #include "../../../db/ServerDatabase.h"
 
-#include "../../objects.h"
-
 #include "../../Zone.h"
 
-#include "ShuttleMap.h"
-#include "TicketCollectorMap.h"
-#include "TravelTerminalMap.h"
-#include "MissionTerminalMap.h"
 #include "../creature/CreatureManager.h"
 #include "../structure/StructureManager.h"
 #include "../bank/BankManager.h"
@@ -66,74 +60,23 @@ which carries forward this exception.
 
 #include "PlanetManager.h"
 
-#include "NoBuildAreaMap.h"
-#include "../../objects/area/Area.h"
-
-#include "../../objects/area/ActiveArea.h"
-
-class ShuttleTakeOffEvent;
-class ShuttleLandingEvent;
-
-class WeatherChangeEvent;
-class WeatherIncreaseEvent;
-class WeatherDecreaseEvent;
 
 class Zone;
 class CreatureManager;
 class StructureManager;
 class BankManager;
-
 class ZoneProcessServerImplementation;
-class BuildingObject;
-
 class ChatManager;
 
 class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, public Logger {
 	Zone* zone;
-
 	ZoneProcessServerImplementation* server;
 
-	uint64 nextStaticObjectID;
-
-	uint32 targetWeatherID;
-
-	ShuttleMap* shuttleMap;
-
-	TicketCollectorMap* ticketCollectorMap;
-	TravelTerminalMap* travelTerminalMap;
-
-	MissionTerminalMap* missionTerminalMap;
-	VectorMap<uint64, CraftingStation*> craftingStationMap;
-
-	ShuttleLandingEvent* shuttleLandingEvent;
-	ShuttleTakeOffEvent* shuttleTakeOffEvent;
-
-	WeatherChangeEvent* weatherChangeEvent;
-    WeatherIncreaseEvent* weatherIncreaseEvent;
-    WeatherDecreaseEvent* weatherDecreaseEvent;
-
-	VectorMap<uint64, TangibleObject*> staticTangibleObjectMap;
-
 	CreatureManager* creatureManager;
-
 	StructureManager* structureManager;
-
 	BankManager* bankManager;
-
-	NoBuildAreaMap * noBuildAreaMap;
-
-	static const uint32 travelFare[10][10];
-
-	static const float windDirection[8][2];
-
-	uint8 windRow;
-
 	PlayerManager* playerManager;
     PlayerMap* playerMap;
-
-    //tutorial stuffs
-    //TutorialAudioStatMigrationEvent* tutorialAudioStatMigrationEvent;
-    //TutorialAudioWelcomeEvent* tutorialAudioWelcomeEvent;
 
 public:
 	PlanetManagerImplementation(Zone* zone, ZoneProcessServerImplementation* serv);
@@ -143,76 +86,6 @@ public:
 	void start();
 
 	void stop();
-
-	void landShuttles();
-	void takeOffShuttles();
-
-	void sendPlanetTravelPointListResponse(Player* player);
-
-	bool isNoBuildArea(float x, float y);
-	void addNoBuildArea(float x, float y, float radius);
-
-	void weatherChange();
-	void weatherTransition(int direction);
-	void weatherWindChange();
-	void weatherUpdatePlayers();
-	void weatherRemoveEvents();
-
-	void tutorialStepWelcome(Player* player);
-	void tutorialStepStatMigration(Player* player);
-
-private:
-	void loadStaticPlanetObjects();
-	void loadStaticTangibleObjects();
-	void loadShuttles();
-	void loadTrainers();
-	void loadGuildTerminals();
-	void loadCloningTerminals();
-	void loadInsuranceTerminals();
-	void loadBankTerminals();
-	void loadCloneSpawnPoints();
-	void loadVendorTerminals();
-	void loadMissionTerminals();
-	void loadCraftingStations();
-	void loadNoBuildAreas();
-	void loadBadgeAreas();
-	String getStationName(uint64 crc);
-	void loadStartingLocationTerminals();
-
-
-	void clearShuttles();
-	//void clearBuildings();
-	void clearTicketCollectors();
-	void clearTravelTerminals();
-	void clearMissionTerminals();
-	void clearCraftingStations();
-	void clearStaticTangibleObjects();
-
-
-public:
-	// getters
-	ShuttleCreature* getShuttle(const String& Shuttle);
-
-	StructureManager* getStructureManager() {
-		return structureManager;
-	}
-
-	//change this to generic get terminal function if we move to unified terminal map:
-	inline MissionTerminal* getMissionTerminal(uint64 oid) {
-		return missionTerminalMap->get(oid);
-	}
-
-	int64 getLandingTime();
-
-	uint64 getNextStaticObjectID(bool doLock = true);
-
-	inline uint32 getTravelFare(String departurePlanet, String arrivalPlanet) {
-		return travelFare[Planet::getPlanetID(departurePlanet)][Planet::getPlanetID(arrivalPlanet)];
-	}
-
-	ActiveAreaTrigger* spawnActiveArea(ActiveArea * area);
-	void removeActiveAreaTrigger(ActiveAreaTrigger* trigger);
-
 };
 
-#endif
+#endif /*PLANETMANAGERIMPLEMENTATION_H_*/

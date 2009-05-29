@@ -46,15 +46,15 @@ which carries forward this exception.
 #ifndef MANUFACTURESCHEMATICOBJECTDELTAMESSAGE3_H_
 #define MANUFACTURESCHEMATICOBJECTDELTAMESSAGE3_H_
 
-#include "../BaseLineMessage.h"
+#include "../DeltaMessage.h"
 
-#include "../../objects/draftschematic/DraftSchematic.h"
-#include "../../objects/draftschematic/DraftSchematicValues.h"
+#include "../../objects/intangible/draftschematic/DraftSchematicObject.h"
+//#include "../../objects/draftschematic/DraftSchematicValues.h"
 
 class ManufactureSchematicObjectDeltaMessage3 : public DeltaMessage {
 public:
-	ManufactureSchematicObjectDeltaMessage3(uint64 sceneObjSchematic)
-			: DeltaMessage(sceneObjSchematic, 0x4D53434F, 3) {
+	ManufactureSchematicObjectDeltaMessage3(uint64 schematicid)
+			: DeltaMessage(schematicid, 0x4D53434F, 3) {
 	}
 
 	void updateComplexity(float complexity) {
@@ -69,14 +69,15 @@ public:
 		addIntUpdate(4, condition);
 	}
 
-	void updateCraftedValues(DraftSchematic * draftSchematic){
+	void updateCraftedValues(DraftSchematicObject* draftSchematic){
 
-		DraftSchematicValues * craftingValues = draftSchematic->getCraftingValues();
+		//DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
 		String name;
 		float value;
 
-		int count = craftingValues->getValuesToSendSize();
+		//int count = craftingValues->getValuesToSendSize();
+		int count = 0;
 
 		startUpdate(5);
 
@@ -87,8 +88,10 @@ public:
 			insertByte(0);
 			insertAscii("crafting");
 			insertInt(0);
-			name = craftingValues->getValuesToSend(i);
-			value = craftingValues->getCurrentValue(name);
+			//name = craftingValues->getValuesToSend(i);
+			//value = craftingValues->getCurrentValue(name);
+			name = "FIXME";
+			value = 1.0f;
 			insertAscii(name);
 			insertFloat(value);
 

@@ -46,6 +46,7 @@ which carries forward this exception.
 #define BUILDINGOBJECTIMPLEMENTATION_H_
 
 #include "BuildingObject.h"
+#include "../structure/Structure.h"
 
 class BuildingObjectImplementation : public BuildingObjectServant, public Structure {
 protected:

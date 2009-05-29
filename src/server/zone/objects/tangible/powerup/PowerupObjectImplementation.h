@@ -51,11 +51,17 @@ class PowerupObjectImplementation : public PowerupObjectServant {
 protected:
 
 public:
-	//Types here
+	const static int MELEEPOWERUP = 0x80001;
+	const static int RANGEDPOWERUP = 0x80002;
+	const static int THROWNPOWERUP = 0x80003;
+	const static int HEAVYPOWERUP = 0x80004;
+	const static int MINEPOWERUP = 0x80005;
 
 public:
 	PowerupObjectImplementation();
 	~PowerupObjectImplementation();
+
+	void use(Player* player);
 };
 
 #endif /* POWERUPOBJECTIMPLEMENTATION_H_ */

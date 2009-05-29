@@ -45,29 +45,14 @@ IDLC = /usr/local/bin/idlc
 IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/ZoneClientSession.idl \
 				server/zone/ZoneServer.idl \
-				server/zone/objects/SceneObject.idl \
-				server/zone/objects/tangible/TangibleObject.idl \
-				server/zone/objects/tangible/building/BuildingObject.idl \
-				server/zone/objects/tangible/building/camp/CampObject.idl \
-				server/zone/objects/tangible/creature/CreatureObject.idl \
-				server/zone/objects/tangible/creature/player/Player.idl \
-				server/zone/objects/tangible/deed/DeedObject.idl \
-				server/zone/objects/tangible/instrument/InstrumentObject.idl \
-				server/zone/objects/tangible/powerup/PowerupObject.idl \
-				server/zone/objects/tangible/weapon/WeaponObject.idl \
-				server/zone/objects/intangible/IntangibleObject.idl \
-				server/zone/objects/intangible/player/PlayerObject.idl \
-				server/zone/objects/universe/group/GroupObject.idl \
-				server/zone/objects/universe/guild/GuildObject.idl \
-				server/zone/managers/crafting/CraftingManager.idl \
+				server/chat/ChatManager.idl \
+				server/chat/room/ChatRoom.idl \
+				server/zone/managers/auction/AuctionManager.idl \
 				server/zone/managers/bank/BankManager.idl \
-				server/zone/managers/bazaar/BazaarManager.idl \
-				server/zone/managers/bazaar/BazaarPlanetManager.idl \
+				server/zone/managers/crafting/CraftingManager.idl \
 				server/zone/managers/creature/CreatureManager.idl \
-				server/zone/managers/guild/GuildMap.idl \
 				server/zone/managers/guild/GuildManager.idl \
 				server/zone/managers/item/ItemManager.idl \
-				server/zone/managers/loot/LootTableManager.idl \
 				server/zone/managers/mission/MissionManager.idl \
 				server/zone/managers/planet/PlanetManager.idl \
 				server/zone/managers/player/PlayerManager.idl \
@@ -79,8 +64,34 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/managers/resource/SpawnLocation.idl \
 				server/zone/managers/structure/StructureManager.idl \
 				server/zone/managers/user/UserManager.idl \
-				server/chat/room/ChatRoom.idl \
-				server/chat/ChatManager.idl \
+				server/zone/objects/SceneObject.idl \
+				server/zone/objects/cell/CellObject.idl \
+				server/zone/objects/intangible/IntangibleObject.idl \
+				server/zone/objects/intangible/draftschematic/DraftSchematicObject.idl \
+				server/zone/objects/intangible/manufactureschematic/ManufactureSchematicObject.idl \
+				server/zone/objects/intangible/mission/MissionObject.idl \
+				server/zone/objects/intangible/player/PlayerObject.idl \
+				server/zone/objects/intangible/waypoint/WaypointObject.idl \
+				server/zone/objects/tangible/TangibleObject.idl \
+				server/zone/objects/tangible/building/BuildingObject.idl \
+				server/zone/objects/tangible/building/camp/CampObject.idl \
+				server/zone/objects/tangible/component/ComponentObject.idl \
+				server/zone/objects/tangible/creature/CreatureObject.idl \
+				server/zone/objects/tangible/creature/npc/Creature.idl \
+				server/zone/objects/tangible/creature/player/Player.idl \
+				server/zone/objects/tangible/deed/DeedObject.idl \
+				server/zone/objects/tangible/instrument/InstrumentObject.idl \
+				server/zone/objects/tangible/inventory/InventoryObject.idl \
+				server/zone/objects/tangible/powerup/PowerupObject.idl \
+				server/zone/objects/tangible/resourcecontainer/ResourceContainerObject.idl \
+				server/zone/objects/tangible/terminal/TerminalObject.idl \
+				server/zone/objects/tangible/terminal/bazaar/BazaarTerminalObject.idl \
+				server/zone/objects/tangible/weapon/WeaponObject.idl \
+				server/zone/objects/tangible/wearable/WearableObject.idl \
+				server/zone/objects/tangible/wearable/armor/ArmorObject.idl \
+				server/zone/objects/tangible/wearable/clothing/ClothingObject.idl \
+				server/zone/objects/universe/group/GroupObject.idl \
+				server/zone/objects/universe/guild/GuildObject.idl \
 
 all:
 	cd src && $(IDLC) $(IDL_SOURCES)

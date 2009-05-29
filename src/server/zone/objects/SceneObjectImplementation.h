@@ -95,6 +95,7 @@ public:
 	static const int ARMOR = 0x100;
 	static const int BUILDING = 0x200;
 	static const int CREATURE = 0x400;
+	static const int PLAYER = 0x401;
 	static const int INSTALLATION = 0x1000;
 	static const int MISC = 0x2000;
 	static const int TERMINAL = 0x4000;
@@ -228,6 +229,10 @@ public:
 
 	inline uint32 getVolume() {
 		return volume;
+	}
+
+	inline bool isPlayer() {
+		return (gameObjectType == PLAYER);
 	}
 };
 

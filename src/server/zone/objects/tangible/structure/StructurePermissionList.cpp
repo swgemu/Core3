@@ -59,3 +59,11 @@ void StructurePermissionList::parsePermissionString(const String& str) {
 String& StructurePermissionList::getPermissionString() {
 	//TODO: Return a serialized string representing the data of this object.
 }
+
+bool StructurePermissionList::isOnPermissionList(Player* player, uint8 listtype) {
+	return false;
+}
+
+bool StructurePermissionList::isOnPermissionList(const String& entryname, uint8 listtype) {
+	return false;
+}

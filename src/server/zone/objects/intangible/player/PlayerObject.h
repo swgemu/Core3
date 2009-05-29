@@ -7,11 +7,11 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class SceneObject;
+class IntangibleObject;
 
-#include "../scene/SceneObject.h"
+#include "../IntangibleObject.h"
 
-class PlayerObject : public SceneObject {
+class PlayerObject : public IntangibleObject {
 public:
 	PlayerObject();
 
@@ -25,7 +25,7 @@ protected:
 
 class PlayerObjectImplementation;
 
-class PlayerObjectAdapter : public SceneObjectAdapter {
+class PlayerObjectAdapter : public IntangibleObjectAdapter {
 public:
 	PlayerObjectAdapter(PlayerObjectImplementation* impl);
 
@@ -48,9 +48,9 @@ public:
 	friend class SingletonWrapper<PlayerObjectHelper>;
 };
 
-#include "../scene/SceneObjectImplementation.h"
+#include "../IntangibleObjectImplementation.h"
 
-class PlayerObjectServant : public SceneObjectImplementation {
+class PlayerObjectServant : public IntangibleObjectImplementation {
 public:
 	PlayerObject* _this;
 

@@ -43,6 +43,203 @@ void SceneObject::error(const String& message) {
 		((SceneObjectImplementation*) _impl)->error(message);
 }
 
+bool SceneObject::isObjectType(int type, bool similar) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addSignedIntParameter(type);
+		method.addBooleanParameter(similar);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->isObjectType(type, similar);
+}
+
+float SceneObject::getDirectionX() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->getDirectionX();
+}
+
+float SceneObject::getDirectionY() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->getDirectionY();
+}
+
+float SceneObject::getDirectionZ() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->getDirectionZ();
+}
+
+float SceneObject::getDirectionW() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->getDirectionW();
+}
+
+float SceneObject::getPositionX() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->getPositionX();
+}
+
+float SceneObject::getPositionY() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->getPositionY();
+}
+
+float SceneObject::getPositionZ() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->getPositionZ();
+}
+
+String& SceneObject::getStfFile() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		method.executeWithAsciiReturn(_return_getStfFile);
+		return _return_getStfFile;
+	} else
+		return ((SceneObjectImplementation*) _impl)->getStfFile();
+}
+
+String& SceneObject::getStfName() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+
+		method.executeWithAsciiReturn(_return_getStfName);
+		return _return_getStfName;
+	} else
+		return ((SceneObjectImplementation*) _impl)->getStfName();
+}
+
+UnicodeString& SceneObject::getCustomName() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+
+		method.executeWithUnicodeReturn(_return_getCustomName);
+		return _return_getCustomName;
+	} else
+		return ((SceneObjectImplementation*) _impl)->getCustomName();
+}
+
+unsigned long long SceneObject::getObjectID() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->getObjectID();
+}
+
+unsigned int SceneObject::getObjectCRC() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->getObjectCRC();
+}
+
+float SceneObject::getComplexity() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->getComplexity();
+}
+
+unsigned int SceneObject::getVolume() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->getVolume();
+}
+
+bool SceneObject::isPlayer() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->isPlayer();
+}
+
 /*
  *	SceneObjectAdapter
  */
@@ -60,6 +257,54 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case 7:
 		error(inv->getAsciiParameter(_param0_error__String_));
 		break;
+	case 8:
+		resp->insertBoolean(isObjectType(inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		break;
+	case 9:
+		resp->insertFloat(getDirectionX());
+		break;
+	case 10:
+		resp->insertFloat(getDirectionY());
+		break;
+	case 11:
+		resp->insertFloat(getDirectionZ());
+		break;
+	case 12:
+		resp->insertFloat(getDirectionW());
+		break;
+	case 13:
+		resp->insertFloat(getPositionX());
+		break;
+	case 14:
+		resp->insertFloat(getPositionY());
+		break;
+	case 15:
+		resp->insertFloat(getPositionZ());
+		break;
+	case 16:
+		resp->insertAscii(getStfFile());
+		break;
+	case 17:
+		resp->insertAscii(getStfName());
+		break;
+	case 18:
+		resp->insertUnicode(getCustomName());
+		break;
+	case 19:
+		resp->insertLong(getObjectID());
+		break;
+	case 20:
+		resp->insertInt(getObjectCRC());
+		break;
+	case 21:
+		resp->insertFloat(getComplexity());
+		break;
+	case 22:
+		resp->insertInt(getVolume());
+		break;
+	case 23:
+		resp->insertBoolean(isPlayer());
+		break;
 	default:
 		return NULL;
 	}
@@ -73,6 +318,70 @@ void SceneObjectAdapter::info(const String& message, bool forcedLog) {
 
 void SceneObjectAdapter::error(const String& message) {
 	return ((SceneObjectImplementation*) impl)->error(message);
+}
+
+bool SceneObjectAdapter::isObjectType(int type, bool similar) {
+	return ((SceneObjectImplementation*) impl)->isObjectType(type, similar);
+}
+
+float SceneObjectAdapter::getDirectionX() {
+	return ((SceneObjectImplementation*) impl)->getDirectionX();
+}
+
+float SceneObjectAdapter::getDirectionY() {
+	return ((SceneObjectImplementation*) impl)->getDirectionY();
+}
+
+float SceneObjectAdapter::getDirectionZ() {
+	return ((SceneObjectImplementation*) impl)->getDirectionZ();
+}
+
+float SceneObjectAdapter::getDirectionW() {
+	return ((SceneObjectImplementation*) impl)->getDirectionW();
+}
+
+float SceneObjectAdapter::getPositionX() {
+	return ((SceneObjectImplementation*) impl)->getPositionX();
+}
+
+float SceneObjectAdapter::getPositionY() {
+	return ((SceneObjectImplementation*) impl)->getPositionY();
+}
+
+float SceneObjectAdapter::getPositionZ() {
+	return ((SceneObjectImplementation*) impl)->getPositionZ();
+}
+
+String& SceneObjectAdapter::getStfFile() {
+	return ((SceneObjectImplementation*) impl)->getStfFile();
+}
+
+String& SceneObjectAdapter::getStfName() {
+	return ((SceneObjectImplementation*) impl)->getStfName();
+}
+
+UnicodeString& SceneObjectAdapter::getCustomName() {
+	return ((SceneObjectImplementation*) impl)->getCustomName();
+}
+
+unsigned long long SceneObjectAdapter::getObjectID() {
+	return ((SceneObjectImplementation*) impl)->getObjectID();
+}
+
+unsigned int SceneObjectAdapter::getObjectCRC() {
+	return ((SceneObjectImplementation*) impl)->getObjectCRC();
+}
+
+float SceneObjectAdapter::getComplexity() {
+	return ((SceneObjectImplementation*) impl)->getComplexity();
+}
+
+unsigned int SceneObjectAdapter::getVolume() {
+	return ((SceneObjectImplementation*) impl)->getVolume();
+}
+
+bool SceneObjectAdapter::isPlayer() {
+	return ((SceneObjectImplementation*) impl)->isPlayer();
 }
 
 /*

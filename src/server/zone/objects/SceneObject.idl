@@ -42,9 +42,33 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+include "engine/service/proto/BaseMessage";
+include "engine/service/proto/StandaloneBaseMessage";
+
 interface SceneObject implements ManagedObject {
 
 	// logger methods
 	void info(const String message, boolean forcedLog = false);
 	void error(const String message);
+	
+	//Setters
+	
+	//Getters
+	boolean isObjectType(int type, boolean similar = false);
+	float getDirectionX();
+	float getDirectionY();
+	float getDirectionZ();
+	float getDirectionW();
+	float getPositionX();
+	float getPositionY();
+	float getPositionZ();
+	String getStfFile();
+	String getStfName();
+	UnicodeString getCustomName();
+	unsigned long getObjectID();
+	unsigned int getObjectCRC();
+	float getComplexity();
+	unsigned int getVolume();
+	
+	boolean isPlayer();
 }

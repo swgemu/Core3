@@ -47,16 +47,14 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../objects/auction/AuctionItem.h"
-#include "../../objects/auction/AuctionItemImplementation.h"
+#include "../../managers/bazaar/AuctionItem.h"
 
 class AuctionQueryHeadersResponseMessage : public BaseMessage {
-
 	Vector<AuctionItem*> itemList;
-
 	Vector<String> locationList;
 
 public:
+	//TODO: Rework this.
 	AuctionQueryHeadersResponseMessage(int screen, int counter) : BaseMessage() {
 		insertShort(0x08);
 		insertInt(0xFA500E52);  // opcode

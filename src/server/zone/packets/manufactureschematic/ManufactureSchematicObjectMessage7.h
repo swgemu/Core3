@@ -48,17 +48,18 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/draftschematic/DraftSchematic.h"
-#include "../../objects/draftschematic/DraftSchematicIngredient.h"
-#include "../../objects/draftschematic/DraftSchematicExpPropGroup.h"
-#include "../../objects/draftschematic/DraftSchematicValues.h"
+#include "../../objects/intangible/draftschematic/DraftSchematicObject.h"
+//#include "../../objects/draftschematic/DraftSchematicIngredient.h"
+//#include "../../objects/draftschematic/DraftSchematicExpPropGroup.h"
+//#include "../../objects/draftschematic/DraftSchematicValues.h"
 
 class ManufactureSchematicObjectMessage7 : public BaseLineMessage {
 public:
-	ManufactureSchematicObjectMessage7(DraftSchematic* draftSchematic)
+	ManufactureSchematicObjectMessage7(DraftSchematicObject* draftSchematic)
 			: BaseLineMessage(draftSchematic->getObjectID(), 0x4D53434F, 7, 0x15) {
 
-		int ingredientListSize = draftSchematic->getIngredientListSize();
+		//int ingredientListSize = draftSchematic->getIngredientListSize();
+		int ingredientListSize = 0;
 		int updateCount = ingredientListSize;
 
 		insertInt(ingredientListSize);
@@ -66,23 +67,29 @@ public:
 
 		// Send Slot Names
 		for (int i = 0; i < ingredientListSize; i++) {
+			/*
 			DraftSchematicIngredient* dsi = draftSchematic->getIngredient(i);
 			if (dsi != NULL) {
-				insertAscii(dsi->getTemplateName());
+				//insertAscii(dsi->getTemplateName());
+				insertAscii("FIXME");
 				insertInt(0);
-				insertAscii(dsi->getTitleName());
+				insertAscii("FIXME");
+				//insertAscii(dsi->getTitleName());
 			} else {
 				System::out << "\n\nInvalid dsi: MSCO7 line 63.\n\n";
-			}
+			}*/
 		}
 
 		// Send slot type
 		insertInt(ingredientListSize);
 		insertInt(updateCount);
 		for (int i = 0; i < ingredientListSize; i++) {
-			DraftSchematicIngredient* dsi = draftSchematic->getIngredient(i);
+			/*
+			//DraftSchematicIngredient* dsi = draftSchematic->getIngredient(i);
 			if (dsi != NULL)
-				insertInt(dsi->getSlotType());
+				//insertInt(dsi->getSlotType());
+				insertInt(0); //TODO: Fix me
+				*/
 		}
 
 		// Send Resource ID per slot - initially empty

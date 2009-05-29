@@ -49,7 +49,7 @@ which carries forward this exception.
 
 #include "PlayerMap.h"
 
-#include "../../objects/player/Player.h"
+#include "../../objects/tangible/creature/player/Player.h"
 
 class PlayerMapImplementation : public PlayerMapServant, private HashTable<String, Player*>, private HashTableIterator<String, Player*>, public Mutex {
 	int hash(const String& key) {
