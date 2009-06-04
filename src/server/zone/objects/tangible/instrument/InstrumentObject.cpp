@@ -12,8 +12,8 @@
  *	InstrumentObjectStub
  */
 
-InstrumentObject::InstrumentObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new InstrumentObjectImplementation();
+InstrumentObject::InstrumentObject(unsigned long long objectid) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new InstrumentObjectImplementation(objectid);
 	_impl->_setStub(this);
 }
 
@@ -76,7 +76,7 @@ DistributedObjectAdapter* InstrumentObjectHelper::createAdapter(DistributedObjec
  *	InstrumentObjectServant
  */
 
-InstrumentObjectServant::InstrumentObjectServant() : TangibleObjectImplementation() {
+InstrumentObjectServant::InstrumentObjectServant(unsigned long long objectid, int type) : TangibleObjectImplementation(objectid, type) {
 	_classHelper = InstrumentObjectHelper::instance();
 }
 

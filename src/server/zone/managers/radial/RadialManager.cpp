@@ -43,19 +43,10 @@ which carries forward this exception.
  */
 
 #include "RadialManager.h"
-
-#include "../../packets/object/ObjectMenuResponse.h"
-#include "../../packets/trade/BeginTradeMessage.h"
-#include "../../packets/installation/ResourceHarvesterActivatePageMessage.h"
-
 #include "../../Zone.h"
-
-#include "../bazaar/BazaarManager.h"
-#include "../bazaar/BazaarManagerImplementation.h"
-#include "../bank/BankManager.h"
-#include "../bank/BankManagerImplementation.h"
-
-#include "../guild/GuildManagerImplementation.h"
+#include "../../objects/SceneObject.h"
+#include "../../objects/intangible/player/PlayerObject.h"
+#include "../../packets/object/ObjectMenuResponse.h"
 
 RadialManager::RadialManager() {
 }
@@ -66,7 +57,7 @@ RadialManager::RadialManager() {
  * \param player The player that has requested the radial options.
  * \param pack The packet that was sent from the client to the server.
  */
-void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
+void RadialManager::handleRadialRequest(PlayerObject* player, Packet* pack) {
 	pack->shiftOffset(12); // skip ObjectID and size
 
 	uint64 objectid = pack->parseLong();
@@ -82,10 +73,10 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 		return;
 	}
 
-	ManagedReference<SceneObject> object = zone->lookupObject(objectid);
+	//ManagedReference<SceneObject> object = zone->lookupObject(objectid);
 
 	//System::out << "Radial Request ObjectID: " << dec << objectid << "\n";
-	if (object == NULL)
+	/*if (object == NULL)
 		object = player->getPlayerItem(objectid);
 
 	if (object == NULL) {
@@ -104,10 +95,11 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 				object->unlock();
 			System::out << "unreported exception caught in RadialManager::handleRadialRequest\n";
 		}
-	}
+	}*/
 }
 
-void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
+void RadialManager::handleRadialSelect(PlayerObject* player, Packet* pack) {
+	/*
 	try {
 		player->wlock();
 
@@ -124,16 +116,6 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 		//System::out << "Radial ID = " << dec << radialID << endl;
 		ManagedReference<SceneObject> obj = zone->lookupObject(objectID);
 
-		//TODO: Get a bazaar object to pass to the next functions
-		BazaarManager* bazaarManager = zone->getZoneServer()->getBazaarManager();
-
-		if (bazaarManager->isBazaarTerminal(objectID)) {
-			sendRadialResponseForBazaar(objectID, player);
-
-			player->unlock();
-			return;
-		}
-
 		if (obj == NULL) {
 			obj = player->getInventoryItem(objectID);
 
@@ -147,9 +129,7 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 		}
 
 		try {
-
 			handleSelection(radialID, player, obj);
-
 		} catch (Exception& e) {
 			System::out << "exceptcion while handling radial selection \n" << e.getMessage();
 			e.printStackTrace();
@@ -160,10 +140,10 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 	} catch (...) {
 		System::out << "unreported exception in void RadialManager::handleRadialSelect(Player* player, Packet* pack)\n";
 		player->unlock();
-	}
+	}*/
 }
 
-void RadialManager::handleSelection(int radialID, Player* player, SceneObject* obj) {
+void RadialManager::handleSelection(int radialID, PlayerObject* player, SceneObject* obj) {
 	// Pre: player is wlocked, obj is unlocked
 	// Post: player and obj unlocked
 
@@ -188,56 +168,56 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 			break;
 		case 8: //TRADE_START
 			//handleTrade(player, obj);
-			obj->tradeStart(player);
+			//obj->tradeStart(player);
 			break;
 		case 9: //TRADE_ACCEPT
-			obj->tradeAccept(player);
+			//obj->tradeAccept(player);
 			break;
 		case 10: //ITEM_PICKUP
-			obj->pickup(player);
+			//obj->pickup(player);
 		case 11: //ITEM_EQUIP
-			obj->equip(player);
+			//obj->equip(player);
 			break;
 		case 12: //ITEM_UNEQUIP
-			obj->unequip(player);
+			//obj->unequip(player);
 			break;
 		case 13: //ITEM_DROP
-			obj->drop(player);
+			//obj->drop(player);
 			break;
 		case 14: //ITEM_DESTROY
-			obj->destroy(player);
+			//obj->destroy(player);
 			break;
 		case 15: //ITEM_TOKEN
 			break;
 		case 16: //ITEM_OPEN
-			obj->open(player);
+			//obj->open(player);
 			break;
 		case 17: //ITEM_OPEN_NEW_WINDOW
 			break;
 		case 18: //ITEM_ACTIVATE
-			obj->activate(player);
+			//obj->activate(player);
 			break;
 		case 19: //ITEM_DEACTIVATE
-			obj->deactivate(player);
+			//obj->deactivate(player);
 			break;
 		case 20: //ITEM_USE
-			obj->use(player);
+			//obj->use(player);
 			break;
 		case 21: //ITEM_USE_SELF
 		case 22: //ITEM_USE_OTHER
 		case 23: //ITEM_SIT
 		case 24: //ITEM_MAIL
 		case 25: //CONVERSE_START
-			obj->converseStart(player);
+			//obj->converseStart(player);
 			break;
 		case 26: //CONVERSE_RESPOND
-			obj->converseRespond(player);
+			//obj->converseRespond(player);
 			break;
 		case 27: //CONVERSE_RESPONSE
-			obj->converseResponse(player);
+			//obj->converseResponse(player);
 			break;
 		case 28: //CONVERSE_STOP
-			obj->converseStop(player);
+			//obj->converseStop(player);
 			break;
 		case 29: //CRAFT_OPTIONS
 			break;
@@ -246,95 +226,95 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		case 31: //CRAFT_HOPPER_INPUT
 			break;
 		case 32: //CRAFT_HOPPER_OUTPUT
-			handleOpenCraftingToolHopper(player, obj);
+			//handleOpenCraftingToolHopper(player, obj);
 			break;
 		case 33: //MISSION_TERMINAL_LIST
 			break;
 		case 34: //MISSION_DETAILS
 			break;
 		case 35: //LOOT
-			obj->loot(player, false);
+			//obj->loot(player, false);
 			break;
 		case 36: //LOOT_ALL
-			obj->loot(player);
+			//obj->loot(player);
 			break;
 		case 37: //GROUP_INVITE
-			player->sendGroupInviteTo((Player*) obj);
+			//player->sendGroupInviteTo((Player*) obj);
 			break;
 		case 38: //GROUP_JOIN
-			player->acceptGroupInvite(player);
+			//player->acceptGroupInvite(player);
 			break;
 		case 39: //GROUP_LEAVE
-			obj->leaveGroup();
+			//obj->leaveGroup();
 			break;
 		case 40: //GROUP_KICK
-			player->kickFromGroup((Player*) obj);
+			//player->kickFromGroup((Player*) obj);
 			break;
 		case 41: //GROUP_DISBAND
-			obj->groupDisband();
+			//obj->groupDisband();
 			break;
 		case 42: //GROUP_DECLINE
-			player->declineGroupInvite(player);
+			//player->declineGroupInvite(player);
 			break;
 		case 43: //EXTRACT_OBJECT
 			break;
 		case 44: //PET_CALL
-			obj->call(player);
+			//obj->call(player);
 			break;
 		case 45: //TERMINAL_AUCTION_USE
-			sendRadialResponseForBazaar(obj->getObjectID(), player);
+			//sendRadialResponseForBazaar(obj->getObjectID(), player);
 			break;
 		case 46: //CREATURE_FOLLOW
-			player->follow(obj);
+			//player->follow(obj);
 			break;
 		case 47: //CREATURE_STOP_FOLLOW
-			player->stopFollow(obj);
+			//player->stopFollow(obj);
 			break;
 		case 48: //SPLIT
-			obj->splitContents(player);
+			//obj->splitContents(player);
 			break;
 		case 49: //IMAGEDESIGN
-			player->imageDesign(obj);
+			//player->imageDesign(obj);
 			break;
 		case 50: //SET_NAME
-			obj->sendCustomNamePromptTo(player);
+			//obj->sendCustomNamePromptTo(player);
 			break;
 		case 51: //ITEM_ROTATE - MENU ROOT
 			break;
 		case 52: //ITEM_ROTATE_RIGHT
-			obj->rotate(player, "right");
+			//obj->rotate(player, "right");
 			break;
 		case 53: //ITEM_ROTATE_LEFT
-			obj->rotate(player, "left");
+			//obj->rotate(player, "left");
 			break;
 		case 54: //ITEM_MOVE - MENU ROOT
 			break;
 		case 55: //ITEM_MOVE_FORWARD
-			obj->move(player, "forward");
+			//obj->move(player, "forward");
 			break;
 		case 56: //ITEM_MOVE_BACK
-			obj->move(player, "back");
+			//obj->move(player, "back");
 			break;
 		case 57: //ITEM_MOVE_UP
-			obj->move(player, "up");
+			//obj->move(player, "up");
 			break;
 		case 58: //ITEM_MOVE_DOWN
-			obj->move(player, "down");
+			//obj->move(player, "down");
 			break;
 		case 59: //PET_STORE
-			obj->store(player);
+			//obj->store(player);
 			break;
 		case 60: //VEHICLE_GENERATE
-			obj->generateVehicle(player);
+			//obj->generateVehicle(player);
 			break;
 		case 61: //VEHICLE_STORE
-			obj->store(player);
+			//obj->store(player);
 			break;
 		case 62: //MISSION_ABORT
-			obj->missionAbort(player);
+			//obj->missionAbort(player);
 			break;
 		case 63: //MISSION_END_DUTY
-			obj->missionEndDuty(player);
+			//obj->missionEndDuty(player);
 			break;
 		case 64: //SHIP_MANAGE_COMPONENTS
 		case 65: //WAYPOINT_AUTOPILOT
@@ -342,37 +322,37 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		case 67: //SERVER_DIVIDER
 			break;
 		case 68: //SERVER_MENU1
-			obj->onRadialMenu1(player);
+			//obj->onRadialMenu1(player);
 			break;
 		case 69: //SERVER_MENU2
-			obj->onRadialMenu2(player);
+			//obj->onRadialMenu2(player);
 			break;
 		case 70: //SERVER_MENU3
-			obj->onRadialMenu3(player);
+			//obj->onRadialMenu3(player);
 			break;
 		case 71: //SERVER_MENU4
-			obj->onRadialMenu4(player);
+			//obj->onRadialMenu4(player);
 			break;
 		case 72: //SERVER_MENU5
-			obj->onRadialMenu5(player);
+			//obj->onRadialMenu5(player);
 			break;
 		case 73: //SERVER_MENU6
-			obj->onRadialMenu6(player);
+			//obj->onRadialMenu6(player);
 			break;
 		case 74: //SERVER_MENU7
-			obj->onRadialMenu7(player);
+			//obj->onRadialMenu7(player);
 			break;
 		case 75: //SERVER_MENU8
-			obj->onRadialMenu8(player);
+			//obj->onRadialMenu8(player);
 			break;
 		case 76: //SERVER_MENU9
-			obj->onRadialMenu9(player);
+			//obj->onRadialMenu9(player);
 			break;
 		case 77: //SERVER_MENU10
-			obj->onRadialMenu10(player);
+			//obj->onRadialMenu10(player);
 			break;
 		case 78: //SERVER_HARVESTER_MANAGE
-			obj->manageHarvester(player);
+			//obj->manageHarvester(player);
 			break;
 		case 79: //SERVER_HOUSE_MANAGE
 		case 80: //SERVER_FACTION_HALL_MANAGE
@@ -385,136 +365,136 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		case 87: //SERVER_HEAL_WOUND
 			break;
 		case 88: //SERVER_HEAL_WOUND_HEALTH
-			player->healWound(obj, CreatureAttribute::HEALTH);
+			//player->healWound(obj, CreatureAttribute::HEALTH);
 			break;
 		case 89: //SERVER_HEAL_WOUND_ACTION
-			player->healWound(obj, CreatureAttribute::ACTION);
+			//player->healWound(obj, CreatureAttribute::ACTION);
 			break;
 		case 90: //SERVER_HEAL_WOUND_STRENGTH
-			player->healWound(obj, CreatureAttribute::STRENGTH);
+			//player->healWound(obj, CreatureAttribute::STRENGTH);
 			break;
 		case 91: //SERVER_HEAL_WOUND_CONSTITUTION
-			player->healWound(obj, CreatureAttribute::CONSTITUTION);
+			//player->healWound(obj, CreatureAttribute::CONSTITUTION);
 			break;
 		case 92: //SERVER_HEAL_WOUND_QUICKNESS
-			player->healWound(obj, CreatureAttribute::QUICKNESS);
+			//player->healWound(obj, CreatureAttribute::QUICKNESS);
 			break;
 		case 93: //SERVER_HEAL_WOUND_STAMINA
-			player->healWound(obj, CreatureAttribute::STAMINA);
+			//player->healWound(obj, CreatureAttribute::STAMINA);
 			break;
 		case 94: //SERVER_HEAL_DAMAGE
-			player->healDamage(obj);
+			//player->healDamage(obj);
 			break;
 		case 95: //SERVER_HEAL_STATE
 			break;
 		case 96: //SERVER_HEAL_STATE_STUNNED
-			player->healState(obj, CreatureState::STUNNED);
+			//player->healState(obj, CreatureState::STUNNED);
 			break;
 		case 97: //SERVER_HEAL_STATE_BLINDED
-			player->healState(obj, CreatureState::BLINDED);
+			//player->healState(obj, CreatureState::BLINDED);
 			break;
 		case 98: //SERVER_HEAL_STATE_DIZZY
-			player->healState(obj, CreatureState::DIZZY);
+			//player->healState(obj, CreatureState::DIZZY);
 			break;
 		case 99: //SERVER_HEAL_STATE_INTIMIDATED
-			player->healState(obj, CreatureState::INTIMIDATED);
+			//player->healState(obj, CreatureState::INTIMIDATED);
 			break;
 		case 100: //SERVER_HEAL_ENHANCE
 			break;
 		case 101: //SERVER_HEAL_ENHANCE_HEALTH
-			player->healEnhance(obj, CreatureAttribute::HEALTH);
+			//player->healEnhance(obj, CreatureAttribute::HEALTH);
 			break;
 		case 102: //SERVER_HEAL_ENHANCE_ACTION
-			player->healEnhance(obj, CreatureAttribute::ACTION);
+			//player->healEnhance(obj, CreatureAttribute::ACTION);
 			break;
 		case 103: //SERVER_HEAL_ENHANCE_STRENGTH
-			player->healEnhance(obj, CreatureAttribute::STRENGTH);
+			//player->healEnhance(obj, CreatureAttribute::STRENGTH);
 			break;
 		case 104: //SERVER_HEAL_ENHANCE_CONSTITUTION
-			player->healEnhance(obj, CreatureAttribute::CONSTITUTION);
+			//player->healEnhance(obj, CreatureAttribute::CONSTITUTION);
 			break;
 		case 105: //SERVER_HEAL_ENHANCE_QUICKNESS
-			player->healEnhance(obj, CreatureAttribute::QUICKNESS);
+			//player->healEnhance(obj, CreatureAttribute::QUICKNESS);
 			break;
 		case 106: //SERVER_HEAL_ENHANCE_STAMINA
-			player->healEnhance(obj, CreatureAttribute::STAMINA);
+			//player->healEnhance(obj, CreatureAttribute::STAMINA);
 			break;
 		case 107: //SERVER_HEAL_FIRSTAID
-			player->applyFirstAid(obj);
+			//player->applyFirstAid(obj);
 			break;
 		case 108: //SERVER_HEAL_CURE_POISON
-			player->curePoison(obj);
+			//player->curePoison(obj);
 			break;
 		case 109: //SERVER_HEAL_CURE_DISEASE
-			player->cureDisease(obj);
+			//player->cureDisease(obj);
 			break;
 		case 110: //SERVER_HEAL_APPLY_POISON
-			player->applyPoison(player);
+			//player->applyPoison(player);
 			break;
 		case 111: //SERVER_HEAL_APPLY_DISEASE
-			player->applyDisease(player);
+			//player->applyDisease(player);
 			break;
 		case 112: //SERVER_HARVEST_CORPSE
-			player->harvestCorpse(obj);
+			//player->harvestCorpse(obj);
 			break;
 		case 113: //SERVER_PERFORMANCE_LISTEN
-			obj->performanceListen(player);
+			//obj->performanceListen(player);
 			break;
 		case 114: //SERVER_PERFORMANCE_WATCH
-			obj->performanceWatch(player);
+			//obj->performanceWatch(player);
 			break;
 		case 115: //SERVER_PERFORMANCE_LISTEN_STOP
-			obj->performanceListenStop(player);
+			//obj->performanceListenStop(player);
 			break;
 		case 116: //SERVER_PERFORMANCE_WATCH_STOP
-			obj->performanceWatchStop(player);
+			//obj->performanceWatchStop(player);
 			break;
 		case 117: //SERVER_TERMINAL_PERMISSIONS
 		case 118: //SERVER_TERMINAL_MANAGEMENT
 			break;
 		case 119: //SERVER_TERMINAL_PERMISSIONS_ENTER
-			obj->sendPermissionListTo(player, "ENTRY");
+			//obj->sendPermissionListTo(player, "ENTRY");
 			break;
 		case 120: //SERVER_TERMINAL_PERMISSIONS_BANNED
-			obj->sendPermissionListTo(player, "BAN");
+			//obj->sendPermissionListTo(player, "BAN");
 			break;
 		case 121: //SERVER_TERMINAL_PERMISSIONS_ADMIN
-			obj->sendPermissionListTo(player, "ADMIN");
+			//obj->sendPermissionListTo(player, "ADMIN");
 			break;
 		case 122: //SERVER_TERMINAL_PERMISSIONS_VENDOR
-			obj->sendPermissionListTo(player, "VENDOR");
+			//obj->sendPermissionListTo(player, "VENDOR");
 			break;
 		case 123: //SERVER_TERMINAL_PERMISSIONS_HOPPER
-			obj->sendPermissionListTo(player, "HOPPER");
+			//obj->sendPermissionListTo(player, "HOPPER");
 			break;
 		case 124: //SERVER_TERMINAL_MANAGEMENT_STATUS
-			obj->sendStructureStatusTo(player);
+			//obj->sendStructureStatusTo(player);
 			break;
 		case 125: //SERVER_TERMINAL_MANAGEMENT_PRIVACY
-			obj->sendStructurePrivacyTo(player);
+			//obj->sendStructurePrivacyTo(player);
 			break;
 		case 126: //SERVER_TERMINAL_MANAGEMENT_TRANSFER
-			obj->sendStructureTransferTo(player);
+			//obj->sendStructureTransferTo(player);
 			break;
 		case 127: //SERVER_TERMINAL_MANAGEMENT_RESIDENCE
-			obj->declareResidence(player);
+			//obj->declareResidence(player);
 			break;
 		case 128: //SERVER_TERMINAL_MANAGEMENT_DESTROY
-			obj->sendDestroyStructureTo(player);
+			//obj->sendDestroyStructureTo(player);
 			break;
 		case 129: //SERVER_TERMINAL_MANAGEMENT_PAY
-			obj->sendPayMaintenanceTo(player);
+			//obj->sendPayMaintenanceTo(player);
 			break;
 		case 130: //SERVER_TERMINAL_CREATE_VENDOR
-			obj->sendCreateVendorTo(player);
+			//obj->sendCreateVendorTo(player);
 			break;
 		case 131: //SERVER_GIVE_VENDOR_MAINTENANCE
-			obj->payMaintenance(player);
+			//obj->payMaintenance(player);
 			break;
 		case 132: //SERVER_ITEM_OPTIONS
 			break;
 		case 133: //SERVER_SURVEY_TOOL_RANGE
-			sendRadialResponseForSurveyToolRange(player, obj);
+			//sendRadialResponseForSurveyToolRange(player, obj);
 			break;
 		case 134: //SERVER_SURVEY_TOOL_RESOLUTION
 		case 135: //SERVER_SURVEY_TOOL_CLASS
@@ -525,110 +505,110 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		case 139: //SERVER_PROBE_DROID_BUY
 			break;
 		case 140: // SERVER_TEACH
-			player->sendTeachTo(obj);
+			//player->sendTeachTo(obj);
 			break;
 		case 141: //PET_COMMAND
 			break;
 		case 142: //PET_FOLLOW
-			obj->commandFollow(player);
+			//obj->commandFollow(player);
 			break;
 		case 143: //PET_STAY
-			obj->commandStay(player);
+			//obj->commandStay(player);
 			break;
 		case 144: //PET_GUARD
-			obj->commandGuard(player);
+			//obj->commandGuard(player);
 			break;
 		case 145: //PET_FRIEND
-			obj->commandFriend(player);
+			//obj->commandFriend(player);
 			break;
 		case 146: //PET_ATTACK
-			obj->commandAttack(player);
+			//obj->commandAttack(player);
 			break;
 		case 147: //PET_PATROL
-			obj->commandPatrol(player);
+			//obj->commandPatrol(player);
 			break;
 		case 148: //PET_GET_PATROL_POINT
-			obj->commandGetPatrolPoints(player);
+			//obj->commandGetPatrolPoints(player);
 			break;
 		case 149: //PET_CLEAR_PATROL_POINTS
-			obj->commandClearPatrolPoints(player);
+			//obj->commandClearPatrolPoints(player);
 			break;
 		case 150: //PET_ASSUME_FORMATION_1
-			obj->commandAssumeFormation(player, 1);
+			//obj->commandAssumeFormation(player, 1);
 			break;
 		case 151: //PET_ASSUME_FORMATION_2
-			obj->commandAssumeFormation(player, 2);
+			//obj->commandAssumeFormation(player, 2);
 			break;
 		case 152: //PET_TRANSFER
-			obj->commandTransfer(player);
+			//obj->commandTransfer(player);
 			break;
 		case 153: //PET_RELEASE
-			obj->commandRelease(player);
+			//obj->commandRelease(player);
 			break;
 		case 154: //PET_TRICK_1
-			obj->commandTrick(player, 1);
+			//obj->commandTrick(player, 1);
 			break;
 		case 155: //PET_TRICK_2
-			obj->commandTrick(player, 2);
+			//obj->commandTrick(player, 2);
 			break;
 		case 156: //PET_TRICK_3
-			obj->commandTrick(player, 3);
+			//obj->commandTrick(player, 3);
 			break;
 		case 157: //PET_TRICK_4
-			obj->commandTrick(player, 4);
+			//obj->commandTrick(player, 4);
 			break;
 		case 158: //PET_GROUP
-			obj->commandGroup(player);
+			//obj->commandGroup(player);
 			break;
 		case 159: //PET_TAME
-			obj->commandTame(player);
+			//obj->commandTame(player);
 			break;
 		case 160: //PET_FEED
-			obj->commandFeed(player);
+			//obj->commandFeed(player);
 			break;
 		case 161: //PET_SPECIAL_ATTACK_ONE
-			obj->commandSpecialAttack(player, 1);
+			//obj->commandSpecialAttack(player, 1);
 			break;
 		case 162: //PET_SPECIAL_ATTACK_TWO
-			obj->commandSpecialAttack(player, 2);
+			//obj->commandSpecialAttack(player, 2);
 			break;
 		case 163: //PET_RANGED_ATTACK
-			obj->commandRangedAttack(player);
+			//obj->commandRangedAttack(player);
 			break;
 		case 164: // ROLL_DICE (Configure)
 			break;
 		case 165: // DICE_TWO_FACE
-			obj->configure(player, 2);
+			//obj->configure(player, 2);
 			break;
 		case 166: // DICE_THREE_FACE
-			obj->configure(player, 3);
+			//obj->configure(player, 3);
 			break;
 		case 167: // DICE_FOUR_FACE
-			obj->configure(player, 4);
+			//obj->configure(player, 4);
 			break;
 		case 168: // DICE_FIVE_FACE
-			obj->configure(player, 5);
+			//obj->configure(player, 5);
 			break;
 		case 169: // DICE_SIX_FACE
-			obj->configure(player, 6);
+			//obj->configure(player, 6);
 			break;
 		case 170: // DICE_SEVEN_FACE
-			obj->configure(player, 7);
+			//obj->configure(player, 7);
 			break;
 		case 171: // DICE_EIGHT_FACE
-			obj->configure(player, 8);
+			//obj->configure(player, 8);
 			break;
 		case 172: // DICE_COUNT_ONE
-			obj->setDiceCount(1);
+			//obj->setDiceCount(1);
 			break;
 		case 173: // DICE_COUNT_TWO
-			obj->setDiceCount(2);
+			//obj->setDiceCount(2);
 			break;
 		case 174: // DICE_COUNT_THREE
-			obj->setDiceCount(3);
+			//obj->setDiceCount(3);
 			break;
 		case 175: // DICE_COUNT_FOUR
-			obj->setDiceCount(4);
+			//obj->setDiceCount(4);
 			break;
 		case 176: //CREATE_BALLOT
 		case 177: //VOTE
@@ -638,88 +618,88 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		case 181: //FIFTEEN_SEC
 			break;
 		case 182: //SERVER_CAMP_DISBAND
-			obj->disband(player);
+			//obj->disband(player);
 			break;
 		case 183: //SERVER_CAMP_ASSUME_OWNERSHIP
-			obj->transferOwnership(player);
+			//obj->transferOwnership(player);
 			break;
 		case 184: //SERVER_PROBE_DROID_PROGRAM
 			break;
 		case 185: //SERVER_GUILD_CREATE
-			obj->create(player);
+			//obj->create(player);
 			break;
 		case 186: //SERVER_GUILD_INFO
-			obj->sendInfoTo(player);
+			//obj->sendInfoTo(player);
 			break;
 		case 187: // SERVER_GUILD_MEMBERS
-			obj->sendMembersTo(player);
+			//obj->sendMembersTo(player);
 			break;
 		case 188: //SERVER_GUILD_SPONSORED
-			obj->sendSponsoredListTo(player);
+			//obj->sendSponsoredListTo(player);
 			break;
 		case 189: //SERVER_GUILD_ENEMIES
-			obj->sendEnemiesListTo(player);
+			//obj->sendEnemiesListTo(player);
 			break;
 		case 190: //SERVER_GUILD_SPONSOR
-			obj->sendSponsorTo(player);
+			//obj->sendSponsorTo(player);
 			break;
 		case 191: //SERVER_GUILD_DISBAND
-			obj->disband(player);
+			//obj->disband(player);
 			break;
 		case 192: //SERVER_GUILD_NAMECHANGE
-			obj->sendCustomNamePromptTo(player);
+			//obj->sendCustomNamePromptTo(player);
 			break;
 		case 193: //SERVER_GUILD_GUILD_MANAGEMENT
 			break;
 		case 194: //SERVER_GUILD_MEMBER_MANAGEMENT
-			obj->sendMemberManagementTo(player);
+			//obj->sendMemberManagementTo(player);
 			break;
 		case 195: //SERVER_MANF_HOPPER_INPUT
-			obj->onRadialManufactureInputHopper(player);
+			//obj->onRadialManufactureInputHopper(player);
 			break;
 		case 196: //SERVER_MANF_HOPPER_OUTPUT
-			obj->onRadialManufactureOutputHopper(player);
+			//obj->onRadialManufactureOutputHopper(player);
 			break;
 		case 197: //SERVER_MANF_STATION_SCHEMATIC
-			obj->onRadialManufactureSchematic(player);
+			//obj->onRadialManufactureSchematic(player);
 			break;
 		case 198: //ELEVATOR_UP
-			obj->up(player);
+			//obj->up(player);
 			break;
 		case 199: //ELEVATOR_DOWN
-			obj->down(player);
+			//obj->down(player);
 			break;
 		case 200: //SERVER_PET_OPEN
 			//Must be for droids?
-			obj->petOpen(player);
+			//obj->petOpen(player);
 			break;
 		case 201: //SERVER_PET_DPAD
 			//Must be for droids?
-			obj->petDpad(player);
+			//obj->petDpad(player);
 			break;
 		case 202: //SERVER_MED_TOOL_DIAGNOSE
-			player->diagnose(obj);
+			//player->diagnose(obj);
 			break;
 		case 203: //SERVER_MED_TOOL_TENDWOUND
-			player->tendWound(obj);
+			//player->tendWound(obj);
 			break;
 		case 204: //SERVER_MED_TOOL_TENDDAMAGE
-			player->tendDamage(obj);
+			//player->tendDamage(obj);
 			break;
 		case 205: //SERVER_PET_MOUNT
-			obj->mount(player);
+			//obj->mount(player);
 			break;
 		case 206: //SERVER_PET_DISMOUNT
-			obj->dismount(player);
+			//obj->dismount(player);
 			break;
 		case 207: //SERVER_PET_TRAIN_MOUNT
-			obj->trainMount(player);
+			//obj->trainMount(player);
 			break;
 		case 208: //SERVER_VEHICLE_ENTER
-			obj->enterVehicle(player);
+			//obj->enterVehicle(player);
 			break;
 		case 209: //SERVER_VEHICLE_EXIT
-			obj->exitVehicle(player);
+			//obj->exitVehicle(player);
 			break;
 		case 210: //OPEN_NAVICOMP_DPAD
 		case 211: //INIT_NAVICOMP_DPAD
@@ -761,7 +741,7 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	player->unlock();
 }
 
-ObjectMenuResponse* RadialManager::parseDefaults(Player* player, uint64 objectid, Packet* pack) {
+ObjectMenuResponse* RadialManager::parseDefaults(PlayerObject* player, uint64 objectid, Packet* pack) {
 	int size = pack->parseInt();
 	ObjectMenuResponse* omr = new ObjectMenuResponse(player, objectid, 0);
 
@@ -785,30 +765,18 @@ ObjectMenuResponse* RadialManager::parseDefaults(Player* player, uint64 objectid
 
 	//Privileged players always have permission to pickup items.
 	//Players can pickup items in buildings that they have admin rights on.
-	if (player->isInBuilding() || player->isPrivileged()) {
-		BuildingObject* building = (BuildingObject*) player->getBuilding();
+	//if (player->isInBuilding() || player->isPrivileged()) {
+		//BuildingObject* building = (BuildingObject*) player->getBuilding();
 
-		if (player->isPrivileged() || (building != NULL && building->isOnAdminList(player)))
-			omr->addRadialParent(10, 3, "@ui_radial:item_pickup");
-	}
+		//if (player->isPrivileged() || (building != NULL && building->isOnAdminList(player)))
+		//	omr->addRadialParent(10, 3, "@ui_radial:item_pickup");
+	//}
 
 	return omr;
 }
 
-void RadialManager::sendDefaultRadialResponse(Player* player, ObjectMenuResponse* omr) {
+void RadialManager::sendDefaultRadialResponse(PlayerObject* player, ObjectMenuResponse* omr) {
 	omr->finish();
 
 	player->sendMessage(omr);
 }
-
-void RadialManager::sendRadialResponseForBazaar(uint64 objectId, Player* player) {
-	Zone* zone = player->getZone();
-
-	BazaarManager* bazaarManager = zone->getZoneServer()->getBazaarManager();
-
-	RegionBazaar* bazaar = bazaarManager->getBazaar(objectId);
-
-	if (bazaar != NULL)
-		bazaar->newBazaarRequest(objectId, player, player->getZoneID());
-}
-

@@ -12,8 +12,8 @@
  *	ArmorObjectStub
  */
 
-ArmorObject::ArmorObject() : WearableObject(DummyConstructorParameter::instance()) {
-	_impl = new ArmorObjectImplementation();
+ArmorObject::ArmorObject(unsigned long long objectid, int type) : WearableObject(DummyConstructorParameter::instance()) {
+	_impl = new ArmorObjectImplementation(objectid, type);
 	_impl->_setStub(this);
 }
 
@@ -76,7 +76,7 @@ DistributedObjectAdapter* ArmorObjectHelper::createAdapter(DistributedObjectStub
  *	ArmorObjectServant
  */
 
-ArmorObjectServant::ArmorObjectServant() : WearableObjectImplementation() {
+ArmorObjectServant::ArmorObjectServant(unsigned long long objectid, int type) : WearableObjectImplementation(objectid, type) {
 	_classHelper = ArmorObjectHelper::instance();
 }
 

@@ -51,7 +51,7 @@ class WaypointObjectImplementation : public WaypointObjectServant {
 protected:
 
 public:
-	WaypointObjectImplementation();
+	WaypointObjectImplementation(uint64 objectid);
 	~WaypointObjectImplementation();
 };
 #endif /* WAYPOINTOBJECTIMPLEMENTATION_H_ */

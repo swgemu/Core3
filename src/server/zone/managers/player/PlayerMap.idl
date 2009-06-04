@@ -42,24 +42,24 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../../objects/tangible/creature/player/Player";
+import "../../objects/intangible/player/PlayerObject";
 
 interface PlayerMap {
 	PlayerMap(int initsize) {
 		super(initsize);
 	}
 
-	Player put(const String name, Player player, boolean doLock = true);
+	PlayerObject put(const String name, PlayerObject player, boolean doLock = true);
 
-	Player get(const String name, boolean doLock = true);
+	PlayerObject get(const String name, boolean doLock = true);
 
-	Player remove(const String name, boolean doLock = true);
+	PlayerObject remove(const String name, boolean doLock = true);
 
 	int size(boolean doLock = true);
 
-	Player getNextValue(boolean doLock = true);
+	PlayerObject getNextValue(boolean doLock = true);
 
-	Player next(boolean doLock = true);
+	PlayerObject next(boolean doLock = true);
 
 	boolean hasNext(boolean doLock = true);
 

@@ -19,8 +19,6 @@ class CraftingManager;
 
 class ItemManager;
 
-class ResourceManager;
-
 class AuctionManager;
 
 class BankManager;
@@ -98,8 +96,6 @@ public:
 	CraftingManager* getCraftingManager();
 
 	ItemManager* getItemManager();
-
-	ResourceManager* getResourceManager();
 
 	AuctionManager* getAuctionManager();
 
@@ -227,8 +223,6 @@ public:
 	CraftingManager* getCraftingManager();
 
 	ItemManager* getItemManager();
-
-	ResourceManager* getResourceManager();
 
 	AuctionManager* getAuctionManager();
 

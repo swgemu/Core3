@@ -43,9 +43,13 @@ which carries forward this exception.
 */
 
 import "../TangibleObject";
+import "../../intangible/player/PlayerObject";
+import "../../SceneObject";
 
 interface PowerupObject implements TangibleObject {
-	PowerupObject() {
-		super();
+	PowerupObject(unsigned long objectid, int type = 0x80000) {
+		super(objectid, type);
 	}
+	
+	void onDragDrop(PlayerObject player, SceneObject target);
 }

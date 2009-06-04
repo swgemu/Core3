@@ -12,8 +12,8 @@
  *	ManufactureSchematicObjectStub
  */
 
-ManufactureSchematicObject::ManufactureSchematicObject() : IntangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new ManufactureSchematicObjectImplementation();
+ManufactureSchematicObject::ManufactureSchematicObject(unsigned long long objectid) : IntangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new ManufactureSchematicObjectImplementation(objectid);
 	_impl->_setStub(this);
 }
 
@@ -76,7 +76,7 @@ DistributedObjectAdapter* ManufactureSchematicObjectHelper::createAdapter(Distri
  *	ManufactureSchematicObjectServant
  */
 
-ManufactureSchematicObjectServant::ManufactureSchematicObjectServant() : IntangibleObjectImplementation() {
+ManufactureSchematicObjectServant::ManufactureSchematicObjectServant(unsigned long long objectid, int type) : IntangibleObjectImplementation(objectid, type) {
 	_classHelper = ManufactureSchematicObjectHelper::instance();
 }
 

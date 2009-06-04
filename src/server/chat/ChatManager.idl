@@ -46,85 +46,16 @@ include "engine/service/Message";
 include "../zone/packets/object/StfParameter";
 
 import "room/ChatRoom";
-
-import "../zone/objects/tangible/creature/player/Player";
-
+import "../zone/objects/intangible/player/PlayerObject";
 import "../zone/objects/tangible/creature/CreatureObject";
 
 import "server/zone/ZoneServer";
 
 interface ChatManager {
-	ChatManager(ZoneServer server, int initPlayers) {
-		super(server, initPlayers);
+	ChatManager(ZoneServer server) {
+		
 	}
 
-	void lock(boolean doLock = true);
-	void unlock(boolean doLock = true);
-
-	void addPlayer(Player player);
-	Player getPlayer(String name);
-	Player removePlayer(String name);
-
-	void sendMail(const String sendername, UnicodeString header, UnicodeString body, const String name);
-	void sendMailBody(Player receiver, unsigned int mailid);
-	void listMail(Player ply);
-	void deleteMail(unsigned int mailid);
-
-	void handleTellMessage(Player player, Message pack);
-	
-	void handleMessage(Player player, Message pack);
-	void handleEmote(Player player, Message pack);
-	void handleMood(Player player, Message pack);
-
-	void sendSystemMessage(Player player, UnicodeString message);
-	void sendSystemMessage(Player player, const String file, const String str, StfParameter param);
-
-	void broadcastMessage(CreatureObject player, const UnicodeString message, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
-	void broadcastMessage(CreatureObject player, const String file, const String str, StfParameter param, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
-	void broadcastMessage(const String message);
-	void broadcastMessageRange(Player player, const String message, float range);
-	void broadcastFactionMessage(unsigned int factionmask, const String message);
-
-	void handleGameCommand(Player player, const String command);
-
-	// ChatRooms
-	void initiateRooms();
-
-	void handleChatRoomMessage(Player player, Message pack);
-	void handleGroupChat(Player player, Message pack);
-	void handleGuildChat(Player player, Message pack);
-	void handleCreateRoom(Player player, Message pack);
-	void handleChatEnterRoomById(Player player, Message pack);
-	void handleChatDestroyRoom(Player player, Message pack);
-	void handleChatRemoveAvatarFromRoom(Player player, Message pack);
-
-	ChatRoom getChatRoom(unsigned int id);
-
-	void addRoom(ChatRoom channel);
-	void removeRoom(ChatRoom channel);
-
-	void sendRoomList(Player player);
-	ChatRoom createGroupRoom(unsigned int groupID, Player creator);
-
-	void sendGuildChat(Player player);
-	void sendStaffChat(Player player);
-
-	ChatRoom createRoomByFullPath(const String path);
-
-	void destroyRoom(ChatRoom room);
-
-	void printRoomTree(ChatRoom channel);
-
-	ChatRoom getChatRoomByFullPath(const String path);
-	ChatRoom getGameRoom(const String game);
-	ChatRoom getChatRoomByGamePath(ChatRoom game, const String path);
-	ChatRoom getStaffChat();
-
-	unsigned int getNextRoomID();
-
-	int getPlayerCount();
-
-	boolean isMute();
-
-	void setMute(boolean isMuted);
+	void lock(boolean dolock = true);
+	void unlock(boolean dolock = true);
 }

@@ -13,7 +13,7 @@ class SceneObject;
 
 class IntangibleObject : public SceneObject {
 public:
-	IntangibleObject();
+	IntangibleObject(unsigned long long objectid, int type = 800);
 
 protected:
 	IntangibleObject(DummyConstructorParameter* param);
@@ -55,7 +55,7 @@ public:
 	IntangibleObject* _this;
 
 public:
-	IntangibleObjectServant();
+	IntangibleObjectServant(unsigned long long objectid, int type);
 	virtual ~IntangibleObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

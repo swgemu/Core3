@@ -13,7 +13,7 @@ class TerminalObject;
 
 class BazaarTerminalObject : public TerminalObject {
 public:
-	BazaarTerminalObject();
+	BazaarTerminalObject(unsigned long long objectid);
 
 protected:
 	BazaarTerminalObject(DummyConstructorParameter* param);
@@ -55,7 +55,7 @@ public:
 	BazaarTerminalObject* _this;
 
 public:
-	BazaarTerminalObjectServant();
+	BazaarTerminalObjectServant(unsigned long long objectid, int type);
 	virtual ~BazaarTerminalObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

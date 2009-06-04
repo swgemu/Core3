@@ -53,7 +53,7 @@ ImageDesignCustomization::ImageDesignCustomization(ZoneProcessServerImplementati
 	server = serv;
 	speciesGender = creo->getStfName();
 	speciesGender += "_";
-	speciesGender += creo->getGender();
+	//speciesGender += creo->getGender();
 
 	customization = NULL;
 	creatureObject = creo;
@@ -61,6 +61,7 @@ ImageDesignCustomization::ImageDesignCustomization(ZoneProcessServerImplementati
 }
 
 void ImageDesignCustomization::updateCustomization(String customizationName, float value) {
+	/*
 	if (value < 0 || value > 1 || creatureObject == NULL || server == NULL)
 		return; // valid values are a scale of 0-1
 
@@ -196,9 +197,11 @@ void ImageDesignCustomization::updateCustomization(String customizationName, flo
 		// danger will robinson!
 		creatureObject->sendSystemMessage("This shouldn't have happend.  Please report repro steps to McMahon - updateCustomization(String customizationName, uint32 value)");
 	}
+	*/
 }
 
 void ImageDesignCustomization::updateCustomization(String customizationName, uint32 value) {
+/*
 	// bad value, 0-255 = good
 	if (value > 255 || creatureObject == NULL || server == NULL)
 		return;
@@ -238,5 +241,6 @@ void ImageDesignCustomization::updateCustomization(String customizationName, uin
 	{
 		creatureObject->sendSystemMessage("This shouldn't have happend.  Please report repro steps to McMahon - updateCustomization(String customizationName, uint32 value)");
 	}
+	*/
 }
 

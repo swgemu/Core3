@@ -49,12 +49,12 @@ which carries forward this exception.
 
 //class ZoneClientSession;
 
-#include "objects/tangible/creature/player/Player.h"
+#include "objects/intangible/player/PlayerObject.h"
 
 #include "ZoneClientSession.h"
 
 class ZoneClientSessionImplementation : public BaseClientProxy, public ZoneClientSessionServant {
-	ManagedReference<Player> player;
+	ManagedReference<PlayerObject> player;
 
 	uint32 sessionKey;
 
@@ -83,7 +83,7 @@ public:
 	void release();
 
 	// setters and getters
-	void setPlayer(Player* p) {
+	void setPlayer(PlayerObject* p) {
 		player = p;
 	}
 
@@ -91,7 +91,7 @@ public:
 		sessionKey = key;
 	}
 
-	Player* getPlayer() {
+	PlayerObject* getPlayer() {
 		return player;
 	}
 

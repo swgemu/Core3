@@ -8,8 +8,6 @@
 
 #include "server/zone/Zone.h"
 
-#include "../../objects/tangible/creature/CreatureObject.h"
-
 /*
  *	CreatureManagerStub
  */

@@ -51,7 +51,7 @@ class ResourceContainerObjectImplementation : public ResourceContainerObjectServ
 protected:
 
 public:
-	ResourceContainerObjectImplementation();
+	ResourceContainerObjectImplementation(uint64 objectid);
 	~ResourceContainerObjectImplementation();
 };
 

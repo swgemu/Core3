@@ -42,3 +42,13 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#include "InstallationObjectImplementation.h"
+
+InstallationObjectImplementation::InstallationObjectImplementation(uint64 objectid, int type)
+		: InstallationObjectServant(objectid, type), Structure() {
+
+}
+
+InstallationObjectImplementation::~InstallationObjectImplementation() {
+
+}

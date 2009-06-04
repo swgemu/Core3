@@ -53,7 +53,7 @@ protected:
 public:
 
 public:
-	WeaponObjectImplementation();
+	WeaponObjectImplementation(uint64 objectid, int type = WEAPON);
 	virtual ~WeaponObjectImplementation();
 
 	//Setters

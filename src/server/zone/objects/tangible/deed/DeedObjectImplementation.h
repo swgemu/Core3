@@ -46,7 +46,7 @@ which carries forward this exception.
 #define DEEDOBJECTIMPLEMENTATION_H_
 
 #include "DeedObject.h"
-#include "../creature/player/Player.h"
+#include "../../intangible/player/PlayerObject.h"
 
 class DeedObjectImplementation : public DeedObjectServant {
 protected:
@@ -60,11 +60,11 @@ public:
 	static const int RESOURCEDEED = 0x800006;
 
 public:
-	DeedObjectImplementation();
+	DeedObjectImplementation(uint64 objectid, int type = DEED);
 	~DeedObjectImplementation();
 
-	virtual void use(Player* player);
-	virtual SceneObject* generateObject(Player* player);
+	virtual void use(PlayerObject* player);
+	virtual SceneObject* generateObject(PlayerObject* player);
 };
 
 #endif /* DEEDOBJECTIMPLEMENTATION_H_ */

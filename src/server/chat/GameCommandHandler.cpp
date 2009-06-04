@@ -511,7 +511,7 @@ GameCommandHandler::~GameCommandHandler() {
 	}
 }
 
-void GameCommandHandler::handleCommand(String cmd, StringTokenizer tokenizer, Player* player) {
+void GameCommandHandler::handleCommand(String cmd, StringTokenizer tokenizer, PlayerObject* player) {
 	//TODO: Rework commands. Disabled for now.
 	return;
 

@@ -45,7 +45,7 @@ which carries forward this exception.
 import "../SceneObject";
 
 interface CellObject implements SceneObject {
-	CellObject() {
-		super();
+	CellObject(unsigned long objectid) {
+		super(objectid, int type);
 	}
 }

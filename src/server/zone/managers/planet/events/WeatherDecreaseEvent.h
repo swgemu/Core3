@@ -58,7 +58,7 @@ public:
 	}
 
 	bool activate() {
-		planet->weatherTransition(-1);
+		//planet->weatherTransition(-1);
 		return true;
 	}
 

@@ -45,7 +45,7 @@ which carries forward this exception.
 import "../TangibleObject";
 
 interface DeedObject implements TangibleObject {
-	DeedObject() {
-		super();
+	DeedObject(unsigned long objectid, int type = 0x800000) {
+		super(objectid, type);
 	}
 }

@@ -42,10 +42,35 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+include "engine/service/proto/BaseMessage";
+include "engine/service/proto/StandaloneBaseMessage";
+
+import "../../../ZoneClientSession";
 import "../IntangibleObject";
+import "../../tangible/creature/CreatureObject";
 
 interface PlayerObject implements IntangibleObject {
-	PlayerObject() {
-		super();
+	PlayerObject(unsigned long objectid, CreatureObject linkedcreature) {
+		super(objectid, int type);
 	}
+	
+	void sendMessage(BaseMessage msg);
+	void sendMessage(StandaloneBaseMessage msg);
+	
+	//Setters
+	void setClient(ZoneClientSession client);
+	void setAccessLevel(unsigned char level);
+	
+	//Getters
+	ZoneClientSession getClient();
+	unsigned char getAccessLevel();
+	
+	boolean isOnline();
+	boolean isOffline();
+	boolean isLoading();
+	boolean isLinkDead();
+	boolean isLoggingIn();
+	boolean isLoggingOut();
+	
+	boolean isPrivileged();
 }

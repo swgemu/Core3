@@ -44,8 +44,8 @@ which carries forward this exception.
 
 #include "ArmorObjectImplementation.h"
 
-ArmorObjectImplementation::ArmorObjectImplementation()
-		: ArmorObjectServant() {
+ArmorObjectImplementation::ArmorObjectImplementation(uint64 objectid, int type)
+		: ArmorObjectServant(objectid, type) {
 
 }
 

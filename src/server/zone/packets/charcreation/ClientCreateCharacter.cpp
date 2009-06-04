@@ -65,12 +65,13 @@ void ClientCreateCharacter::parse(Packet* pack, Player* player) {
 	String customization;
 	pack->parseAscii(customization);
 
-	player->setCustomizationString(customization);
+	//player->setCustomizationString(customization);
 
 	UnicodeString characterName;
 	pack->parseUnicode(characterName); //get UnicodeString name
-	player->setCharacterName(characterName);
+	player->setCustomName(characterName);
 
+	//Split name into first and last tokens.
 	int idx = characterName.indexOf(' ');
 	if (idx != -1) {
 		player->setFirstName(characterName.subString(0, idx).toString());
@@ -82,35 +83,40 @@ void ClientCreateCharacter::parse(Packet* pack, Player* player) {
 
 	String racefile;
 	pack->parseAscii(racefile);
-	player->setRaceFileName(racefile);
+	//player->setRaceFileName(racefile);
 
 	int raceid = Races::getRaceID(racefile);
-	player->setRaceID(raceid);
-	player->setRaceName(Races::getRace(raceid));
-	player->setStfName(Races::getSpecies(raceid));
-	player->setGender(Races::getGender(raceid));
+	//player->setRaceID(raceid);
+	//player->setRaceName(Races::getRace(raceid));
+	//player->setStfName(Races::getSpecies(raceid));
+	//player->setGender(Races::getGender(raceid));
 
-	player->makeCharacterMask();
+	//player->makeCharacterMask();
 
 	String location;
 	pack->parseAscii(location);
-	player->setStartingLocation(location);
+	//player->setStartingLocation(location);
 
 	String hairobj;
 	pack->parseAscii(hairobj);
 	if (!hairobj.isEmpty()) {
 		hairobj = hairobj.replaceFirst("hair_", "shared_hair_");
 
-		player->setHairObject(hairobj);
+		//player->setHairObject(hairobj);
 	}
 
 	String haircust;
 	pack->parseAscii(haircust); //grab the hair cust data
-	player->setHairAppearance(haircust);
+	//player->setHairAppearance(haircust);
+
+	//TODO: Create a hair object here and give that to the player instead.
+	//TangibleObject* hairobject = new TangibleObject();
+	//hairobject->setObjectCRC(hairobj.hashCode());
+	//hairobject->setCustomizationString(haircust);
 
 	String profession;
 	pack->parseAscii(profession);
-	player->setStartingProfession(profession);
+	//player->setStartingProfession(profession);
 
 	pack->shiftOffset(1); //move past some unknown byte
 
@@ -122,7 +128,8 @@ void ClientCreateCharacter::parse(Packet* pack, Player* player) {
 
 	UnicodeString bio;
 	pack->parseUnicode(bio); //get the biography.
-	player->setBiography(bio);
+	//player->setBiography(bio);
 
 	uint8 tutflag = pack->parseByte(); //tutorial bool.
+	//TODO: We need to do something to signify that they decided to watch the tutorial or not lol.
 }

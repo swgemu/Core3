@@ -44,8 +44,8 @@ which carries forward this exception.
 
 #include "ResourceContainerObjectImplementation.h"
 
-ResourceContainerObjectImplementation::ResourceContainerObjectImplementation()
-		: ResourceContainerObjectServant() {
+ResourceContainerObjectImplementation::ResourceContainerObjectImplementation(uint64 objectid)
+		: ResourceContainerObjectServant(objectid, RESOURCECONTAINER) {
 
 }
 

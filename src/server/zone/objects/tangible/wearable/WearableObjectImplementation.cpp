@@ -42,3 +42,35 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#include "WearableObjectImplementation.h"
+
+WearableObjectImplementation::WearableObjectImplementation(uint64 objectid, int type)
+		: WearableObjectServant(objectid, type) {
+
+}
+
+WearableObjectImplementation::~WearableObjectImplementation() {
+
+}
+
+
+/***********************************************************
+ * Event Handlers
+ ***********************************************************/
+/**
+ * This event should be fired when a creature uses equip() to equip this item. Any special
+ * code that is non standard to the equiping process should be processed here.
+ * \param creature The creature equiping the object.
+ */
+void WearableObjectImplementation::onEquip(CreatureObject* creature) {
+
+}
+
+/**
+ * This event should be fired when a creature uses unequip() to unequip this item. Any special
+ * code that is non standard to the unequiping process should be processed here.
+ * \param creature The creature unequiping the object.
+ */
+void WearableObjectImplementation::onUnequip(CreatureObject* creature) {
+
+}

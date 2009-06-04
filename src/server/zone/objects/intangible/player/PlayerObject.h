@@ -7,13 +7,47 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+#include "engine/service/proto/BaseMessage.h"
+
+#include "engine/service/proto/StandaloneBaseMessage.h"
+
+class ZoneClientSession;
+
 class IntangibleObject;
+
+class CreatureObject;
 
 #include "../IntangibleObject.h"
 
 class PlayerObject : public IntangibleObject {
 public:
-	PlayerObject();
+	PlayerObject(unsigned long long objectid, CreatureObject* linkedcreature);
+
+	void sendMessage(BaseMessage* msg);
+
+	void sendMessage(StandaloneBaseMessage* msg);
+
+	void setClient(ZoneClientSession* client);
+
+	void setAccessLevel(unsigned char level);
+
+	ZoneClientSession* getClient();
+
+	unsigned char getAccessLevel();
+
+	bool isOnline();
+
+	bool isOffline();
+
+	bool isLoading();
+
+	bool isLinkDead();
+
+	bool isLoggingIn();
+
+	bool isLoggingOut();
+
+	bool isPrivileged();
 
 protected:
 	PlayerObject(DummyConstructorParameter* param);
@@ -30,6 +64,32 @@ public:
 	PlayerObjectAdapter(PlayerObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void sendMessage(BaseMessage* msg);
+
+	void sendMessage(StandaloneBaseMessage* msg);
+
+	void setClient(ZoneClientSession* client);
+
+	void setAccessLevel(unsigned char level);
+
+	ZoneClientSession* getClient();
+
+	unsigned char getAccessLevel();
+
+	bool isOnline();
+
+	bool isOffline();
+
+	bool isLoading();
+
+	bool isLinkDead();
+
+	bool isLoggingIn();
+
+	bool isLoggingOut();
+
+	bool isPrivileged();
 
 };
 
@@ -55,7 +115,7 @@ public:
 	PlayerObject* _this;
 
 public:
-	PlayerObjectServant();
+	PlayerObjectServant(unsigned long long objectid, int type);
 	virtual ~PlayerObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

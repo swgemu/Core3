@@ -63,14 +63,14 @@ public:
 	~Structure();
 
 	//Sui Menus
-	virtual void sendPayMaintenanceTo(Player* player);
-	virtual void sendDepositPowerTo(Player* player);
-	virtual void sendStructureStatusTo(Player* player);
-	virtual void sendDestroyQueryTo(Player* player);
-	virtual void sendDestroyConfirmTo(Player* player);
-	virtual void sendPermissionListTo(Player* player, const String& listname);
+	virtual void sendPayMaintenanceTo(PlayerObject* player);
+	virtual void sendDepositPowerTo(PlayerObject* player);
+	virtual void sendStructureStatusTo(PlayerObject* player);
+	virtual void sendDestroyQueryTo(PlayerObject* player);
+	virtual void sendDestroyConfirmTo(PlayerObject* player);
+	virtual void sendPermissionListTo(PlayerObject* player, const String& listname);
 
-	virtual void destroyStructure();
+	virtual void destroyStructure(PlayerObject* player);
 	virtual void pollStructureStatus();
 
 	//Setters
@@ -80,23 +80,23 @@ public:
 		return publicStructure;
 	}
 
-	inline bool isOnBanList(Player* player) {
+	inline bool isOnBanList(PlayerObject* player) {
 		return permissionList->isOnPermissionList(player, StructurePermissionList::BAN);
 	}
 
-	inline bool isOnEntryList(Player* player) {
+	inline bool isOnEntryList(PlayerObject* player) {
 		return permissionList->isOnPermissionList(player, StructurePermissionList::ENTRY);
 	}
 
-	inline bool isOnAdminList(Player* player) {
+	inline bool isOnAdminList(PlayerObject* player) {
 		return permissionList->isOnPermissionList(player, StructurePermissionList::ADMIN);
 	}
 
-	inline bool isOnHopperList(Player* player) {
+	inline bool isOnHopperList(PlayerObject* player) {
 		return permissionList->isOnPermissionList(player, StructurePermissionList::HOPPER);
 	}
 
-	inline bool isOnVendorList(Player* player) {
+	inline bool isOnVendorList(PlayerObject* player) {
 		return permissionList->isOnPermissionList(player, StructurePermissionList::VENDOR);
 	}
 };

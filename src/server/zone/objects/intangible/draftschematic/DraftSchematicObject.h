@@ -13,7 +13,7 @@ class IntangibleObject;
 
 class DraftSchematicObject : public IntangibleObject {
 public:
-	DraftSchematicObject();
+	DraftSchematicObject(unsigned long long objectid);
 
 protected:
 	DraftSchematicObject(DummyConstructorParameter* param);
@@ -55,7 +55,7 @@ public:
 	DraftSchematicObject* _this;
 
 public:
-	DraftSchematicObjectServant();
+	DraftSchematicObjectServant(unsigned long long objectid, int type);
 	virtual ~DraftSchematicObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

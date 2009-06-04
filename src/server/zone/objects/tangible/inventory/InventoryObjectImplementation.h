@@ -51,7 +51,7 @@ class InventoryObjectImplementation : public InventoryObjectServant {
 protected:
 
 public:
-	InventoryObjectImplementation();
+	InventoryObjectImplementation(uint64 objectid);
 	~InventoryObjectImplementation();
 };
 

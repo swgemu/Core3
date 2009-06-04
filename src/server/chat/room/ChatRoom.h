@@ -7,96 +7,16 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-#include "engine/service/proto/BaseMessage.h"
-
 class ZoneServer;
-
-class Player;
 
 class ChatRoom : public DistributedObjectStub {
 public:
-	ChatRoom(ZoneServer* server, const String& name, unsigned int cid);
-
-	ChatRoom(ZoneServer* server, ChatRoom* parent, const String& name, unsigned int cid);
-
-	void sendTo(Player* player);
-
-	void sendDestroyTo(Player* player);
-
-	void addSubRoom(ChatRoom* channel);
-
-	void removeSubRoom(ChatRoom* channel);
-
-	ChatRoom* getSubRoom(int i);
-
-	ChatRoom* getSubRoom(const String& name);
-
-	void addPlayer(Player* player, bool doLock = true);
-
-	void removePlayer(Player* player, bool doLock = true);
-
-	void removePlayer(const String& player);
-
-	void broadcastMessage(BaseMessage* msg);
-
-	bool hasPlayer(Player* player);
-
-	bool hasPlayer(const String& name);
-
-	void removeAllPlayers();
-
-	void setPrivate();
-
-	void setPublic();
-
-	bool isPublic();
-
-	bool isPrivate();
-
-	Player* getPlayer(int idx);
-
-	int getPlayerSize();
-
-	void setName(const String& Name);
-
-	String& getName();
-
-	String& getFullPath();
-
-	String& getOwner();
-
-	String& getCreator();
-
-	UnicodeString& getTitle();
-
-	String& getServerName();
-
-	void setOwner(const String& Owner);
-
-	void setCreator(const String& Creator);
-
-	void setTitle(const String& Title);
-
-	unsigned int getRoomID();
-
-	int getSubRoomsSize();
-
-	ChatRoom* getParent();
-
-	int compareTo(ChatRoom* obj);
+	ChatRoom(ZoneServer* server);
 
 protected:
 	ChatRoom(DummyConstructorParameter* param);
 
 	virtual ~ChatRoom();
-
-	String _return_getCreator;
-	String _return_getFullPath;
-	String _return_getName;
-	String _return_getOwner;
-	String _return_getServerName;
-
-	UnicodeString _return_getTitle;
 
 	friend class ChatRoomHelper;
 };
@@ -109,80 +29,6 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void sendTo(Player* player);
-
-	void sendDestroyTo(Player* player);
-
-	void addSubRoom(ChatRoom* channel);
-
-	void removeSubRoom(ChatRoom* channel);
-
-	ChatRoom* getSubRoom(int i);
-
-	ChatRoom* getSubRoom(const String& name);
-
-	void addPlayer(Player* player, bool doLock);
-
-	void removePlayer(Player* player, bool doLock);
-
-	void removePlayer(const String& player);
-
-	void broadcastMessage(BaseMessage* msg);
-
-	bool hasPlayer(Player* player);
-
-	bool hasPlayer(const String& name);
-
-	void removeAllPlayers();
-
-	void setPrivate();
-
-	void setPublic();
-
-	bool isPublic();
-
-	bool isPrivate();
-
-	Player* getPlayer(int idx);
-
-	int getPlayerSize();
-
-	void setName(const String& Name);
-
-	String& getName();
-
-	String& getFullPath();
-
-	String& getOwner();
-
-	String& getCreator();
-
-	UnicodeString& getTitle();
-
-	String& getServerName();
-
-	void setOwner(const String& Owner);
-
-	void setCreator(const String& Creator);
-
-	void setTitle(const String& Title);
-
-	unsigned int getRoomID();
-
-	int getSubRoomsSize();
-
-	ChatRoom* getParent();
-
-	int compareTo(ChatRoom* obj);
-
-protected:
-	String _param0_getSubRoom__String_;
-	String _param0_removePlayer__String_;
-	String _param0_hasPlayer__String_;
-	String _param0_setName__String_;
-	String _param0_setOwner__String_;
-	String _param0_setCreator__String_;
-	String _param0_setTitle__String_;
 };
 
 class ChatRoomHelper : public DistributedObjectClassHelper, public Singleton<ChatRoomHelper> {

@@ -42,33 +42,318 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#include "../../ServerCore.h"
 #include "SceneObjectImplementation.h"
+#include "intangible/player/PlayerObject.h"
+
+#include "../packets/object/ObjectMenuResponse.h"
 
 
-SceneObjectImplementation::SceneObjectImplementation()
+SceneObjectImplementation::SceneObjectImplementation(uint64 objectid, int type)
 		: SceneObjectServant() {
 
-	complexity = 1.0f;
-	volume = 0;
+	objectID = objectid;
+	gameObjectType = type;
+
+	initialize();
 }
 
 SceneObjectImplementation::~SceneObjectImplementation() {
 
 }
 
+
+void SceneObjectImplementation::initialize() {
+	complexity = 1.0f;
+	volume = 0;
+
+	undeployEvent = NULL;
+	keepObject = false;
+}
+
+/**
+ * Serializes (saves) the object to the passed string.
+ * \param str The string to append the serialized data.
+ */
+void SceneObjectImplementation::serialize(String& str) {
+
+}
+
+/**
+ * Deserializes (loads) the object from the passed string.
+ * \param str The string containing the serialized data.
+ */
+void SceneObjectImplementation::deserialize(const String& str) {
+
+}
+
+
+//ORB Methods
+bool SceneObject::destroy() {
+	bool destroying = ServerCore::getZoneServer()->destroyObject(this);
+
+	if (destroying) {
+		//info("destroying object");
+		delete this;
+	}
+
+	return destroying;
+}
+
+bool SceneObjectImplementation::destroy() {
+	return _this->destroy();
+}
+
+void SceneObjectImplementation::redeploy() {
+	info("redeploying object");
+
+	_this->revoke();
+
+	removeUndeploymentEvent();
+}
+
+void SceneObjectImplementation::scheduleUndeploy() {
+	if (undeployEvent == NULL && !keepObject && server != NULL) {
+		info("scheduling uneploy");
+		undeployEvent = new UndeploySceneObjectEvent(_this);
+		server->addEvent(undeployEvent);
+	}
+}
+
+void SceneObjectImplementation::undeploy() {
+	if (isInQuadTree()) {
+		error("Deleting scene object that is in QT");
+		raise(SIGSEGV);
+	}
+
+	removeUndeploymentEvent();
+	/*if (zone != NULL)
+	//zone->deleteObject(_this);
+	error("object is still in Zone");*/
+}
+
+void SceneObjectImplementation::removeUndeploymentEvent() {
+	if (undeployEvent != NULL) {
+		server->removeEvent(undeployEvent);
+		delete undeployEvent;
+		undeployEvent = NULL;
+	}
+}
+
+
+/*************************************************************************
+ * Sending of Interfaces
+ *************************************************************************/
+/**
+ * This packet is sent when a player is sent this object, to be displayed on their client.
+ * \param player The player requesting the object.
+ * \param doclose Should we close the SceneObjectCreatMessage.
+ */
+void SceneObjectImplementation::sendTo(PlayerObject* player, bool doclose) {
+
+}
+
+/**
+ * This method sends the packets to a client needed to destroy it on said client.
+ * \param player The player who is receiving the destroy packet.
+ */
+void SceneObjectImplementation::sendDestroyTo(PlayerObject* player) {
+
+
+}
+
+/**
+ * This method sends the requested radial menu to the player, with all options affixed.
+ * \param player The player requesting the radial.
+ * \param omr The object representing the radial menu.
+ */
+void SceneObjectImplementation::sendRadialResponseTo(PlayerObject* player, ObjectMenuResponse* omr) {
+
+}
+
+/**
+ * This method does something with the stopping of conversation...
+ * TODO: Look into this.
+ * \param player The player requesting to stop conversation.
+ */
+void SceneObjectImplementation::sendConversationStopTo(PlayerObject* player) {
+
+}
+
+/**
+ * This method sends the Set Name Sui Input Box to the player, allowing them
+ * to set a custom name for this object.
+ * \param player The player setting the name.
+ */
+void SceneObjectImplementation::sendCustomNamePromptTo(PlayerObject* player) {
+
+}
+
+/**
+ * This method sends a Sui List Box with information about this object.
+ * \param player The player requesting the status.
+ */
+void SceneObjectImplementation::sendStatusTo(PlayerObject* player) {
+
+}
+
+
+/*************************************************************************
+ * Sending of Packets
+ *************************************************************************/
+/**
+ * This method broadcasts the passed packet in a certain range.
+ * \param msg The message/packet to be broadcast.
+ * \param range The range in which to broadcast the packet.
+ * \param dolock Should we lock this object before broadcasting?
+ * \param sendself Should we send this packet to this object as well?
+ */
+void SceneObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bool dolock, bool sendself) {
+	if (zone == NULL) {
+		delete msg;
+		return;
+	}
+
+	try {
+		//System::out << "CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
+		zone->lock(dolock);
+
+		for (int i = 0; i < inRangeObjectCount(); ++i) {
+			SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+			SceneObject* object = (SceneObject*) scno->_getStub();
+
+			if (object->isPlayer()) {
+				PlayerObject* player = (PlayerObject*) object;
+
+				if (range == 128 || isInRange(player, range) || player->getParent() != NULL) {
+					if (isPlayer()) {
+						PlayerObject* sender = (PlayerObject*) _getStub();
+
+						if (!sendself && (player == sender))
+							continue;
+					}
+
+					//System::out << "CreatureObject - sending message to player " << player->getFirstName() << "\n";
+					player->sendMessage(msg->clone());
+				}
+			}
+		}
+
+		delete msg;
+		zone->unlock(dolock);
+	} catch (...) {
+		error("exception SceneObject::broadcastMessage(Message* msg, int range, bool doLock)");
+		zone->unlock(dolock);
+	}
+//System::out << "finished CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
+}
+
+/**
+ * This method broadcasts the passed packet in a certain range.
+ * \param msg The message/packet to be broadcast.
+ * \param range The range in which to broadcast the packet.
+ * \param dolock Should we lock this object before broadcasting?
+ */
+void SceneObjectImplementation::broadcastMessage(StandaloneBaseMessage* msg, int range, bool dolock) {
+	if (zone == NULL) {
+		delete msg;
+		return;
+	}
+
+	try {
+		//System::out << "SceneObjectImplementation::broadcastMessage(Message* msg, int range, bool doLock)\n";
+		zone->lock(dolock);
+
+		for (int i = 0; i < inRangeObjectCount(); ++i) {
+			SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+			SceneObject* object = (SceneObject*) scno->_getStub();
+
+			if (object->isPlayer()) {
+				PlayerObject* player = (PlayerObject*) object;
+
+				if (range == 128|| isInRange(player, range) || player->getParent() != NULL) {
+					//System::out << "CreatureObject - sending message to player " << player->getFirstName() << "\n";
+					player->sendMessage((StandaloneBaseMessage*)msg->clone());
+				}
+			}
+		}
+
+		delete msg;
+		zone->unlock(dolock);
+	} catch (...) {
+		error("exception SceneObjectImplementation::broadcastMessage(Message* msg, int range, bool doLock)");
+		zone->unlock(dolock);
+	}
+
+	//System::out << "finished SceneObjectImplementation::broadcastMessage(Message* msg, int range, bool doLock)\n";
+}
+
+/**
+ * This method broadcasts a series of packets within a certain range.
+ * \param msgs The messages/packets to be broadcast.
+ * \param range The range in which to broadcast the packet.
+ * \param dolock Should we lock this object before broadcasting?
+ */
+void SceneObjectImplementation::broadcastMessages(Vector<BaseMessage*>& msgs, int range, bool dolock) {
+	if (zone == NULL) {
+		for (int j = 0; j < msgs.size(); ++j) {
+			Message* msg = msgs.get(j);
+			delete msg;
+		}
+
+		msgs.removeAll();
+		return;
+	}
+
+	try {
+		//System::out << "CreatureObject::broadcastMessages(Vector<Message*>& msgs, int range, bool doLock)\n";
+		zone->lock(dolock);
+
+		for (int i = 0; i < inRangeObjectCount(); ++i) {
+			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_getStub());
+
+			if (object->isPlayer()) {
+				PlayerObject* player = (PlayerObject*) object;
+
+				if (range == 128 || isInRange(player, range) || player->getParent() != NULL) {
+					for (int j = 0; j < msgs.size(); ++j) {
+						BaseMessage* msg = msgs.get(j);
+						player->sendMessage(msg->clone());
+					}
+				}
+			}
+		}
+
+		for (int j = 0; j < msgs.size(); ++j) {
+			Message* msg = msgs.get(j);
+			delete msg;
+		}
+
+		msgs.removeAll();
+		zone->unlock(dolock);
+		//System::out << "finished CreatureObject::broadcastMessages(Vector<Message*>& msgs, int range, bool doLock)\n";
+	} catch (...) {
+		error("exception CreatureObject::broadcastMessages(Vector<Message*>& msgs, int range, bool doLock)");
+		zone->unlock(dolock);
+	}
+}
+
+/*************************************************************************
+ * General Actions
+ *************************************************************************/
 /**
  * When an object is "used" via the radial, double clicked, or accessed via hotkey, this method
  * defines its use procedure.
  * \param player The player who has requested use of this object.
  */
-void SceneObjectImplementation::use(Player* player) {
+void SceneObjectImplementation::use(PlayerObject* player) {
 }
 
 /**
  * When a player attempts to pickup an object, this method is called.
  * \param player The player who is attempting to pickup this object.
  */
-void SceneObjectImplementation::pickup(Player* player) {
+void SceneObjectImplementation::pickup(PlayerObject* player) {
 	if (!player->isPrivileged())
 		return;
 }
@@ -77,7 +362,7 @@ void SceneObjectImplementation::pickup(Player* player) {
  * When a player attempts to drop an object, this method is called.
  * \param player The player who is attempting to drop this object.
  */
-void SceneObjectImplementation::drop(Player* player) {
+void SceneObjectImplementation::drop(PlayerObject* player) {
 	if (!player->isPrivileged())
 		return;
 }
@@ -86,7 +371,7 @@ void SceneObjectImplementation::drop(Player* player) {
  * When a player attempts to destroy an item via radial menu or dragging it out of the container to the world.
  * \param player The player who is attempting to destroy this object.
  */
-void SceneObjectImplementation::destroy(Player* player) {
+void SceneObjectImplementation::destroyObject(PlayerObject* player) {
 	//TODO: Confirm that the object is actually in player's inventory first.
 	//TODO: Self destruction instructions.
 }
@@ -95,7 +380,7 @@ void SceneObjectImplementation::destroy(Player* player) {
  * When a player attempts to open an object's container. For example, a corpse or inventory.
  * \param player The player attempting to open this object.
  */
-void SceneObjectImplementation::open(Player* player) {
+void SceneObjectImplementation::open(PlayerObject* player) {
 	//TODO: Confirm that the player has permission to open this container.
 }
 
@@ -104,7 +389,7 @@ void SceneObjectImplementation::open(Player* player) {
  * sequence of events than use().
  * \param player The player that is attempting to activate this object.
  */
-void SceneObjectImplementation::activate(Player* player) {
+void SceneObjectImplementation::activate(PlayerObject* player) {
 
 }
 
@@ -112,7 +397,7 @@ void SceneObjectImplementation::activate(Player* player) {
  * When a player attempts to "deactivate" an object.
  * \param player The player that is attempting to deactivate this object.
  */
-void SceneObjectImplementation::deactivate(Player* player) {
+void SceneObjectImplementation::deactivate(PlayerObject* player) {
 
 }
 
@@ -201,4 +486,56 @@ bool SceneObjectImplementation::isObjectType(int type, bool similar) {
 
 	return false;
 	*/
+}
+
+
+
+
+
+//Generic Radial Responses
+void SceneObjectImplementation::onRadialMenu1(PlayerObject* player) {
+
+}
+
+void SceneObjectImplementation::onRadialMenu2(PlayerObject* player) {
+
+}
+
+void SceneObjectImplementation::onRadialMenu3(PlayerObject* player) {
+
+}
+
+void SceneObjectImplementation::onRadialMenu4(PlayerObject* player) {
+
+}
+
+void SceneObjectImplementation::onRadialMenu5(PlayerObject* player) {
+
+}
+
+void SceneObjectImplementation::onRadialMenu6(PlayerObject* player) {
+
+}
+
+void SceneObjectImplementation::onRadialMenu7(PlayerObject* player) {
+
+}
+
+void SceneObjectImplementation::onRadialMenu8(PlayerObject* player) {
+
+}
+
+void SceneObjectImplementation::onRadialMenu9(PlayerObject* player) {
+
+}
+
+void SceneObjectImplementation::onRadialMenu10(PlayerObject* player) {
+
+}
+
+/*************************************************************************
+ * Event Handlers
+ *************************************************************************/
+void SceneObjectImplementation::onDragDrop(PlayerObject* player, SceneObject* target) {
+
 }

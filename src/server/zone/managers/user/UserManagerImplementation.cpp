@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "UserManagerImplementation.h"
 
-#include "../../objects/player/Player.h"
+#include "../../objects/intangible/player/PlayerObject.h"
 
 #include "../../ZoneServer.h"
 #include "../../ZoneClientSession.h"
@@ -168,7 +168,8 @@ bool UserManagerImplementation::banUserByName(String& name, String& admin) {
 
 	name = name.toLowerCase();
 
-	Player* player = playerManager->getPlayer(name);
+	//PlayerObject* player = playerManager->getPlayer(name);
+	PlayerObject* player = NULL;
 
 	if (player != NULL) {
 		ZoneClientSession* client = player->getClient();
@@ -220,14 +221,15 @@ bool UserManagerImplementation::kickUser(String& name, String& admin) {
 
 	name = name.toLowerCase();
 
-	Player* player = playerManager->getPlayer(name);
+	//PlayerObject* player = playerManager->getPlayer(name);
+	PlayerObject* player = NULL;
 
 	if (player != NULL) {
 		ZoneClientSession* client = player->getClient();
 		if (client == NULL)
 			return false;
 
-		player->explode(1);
+		//player->explode(1);
 
 		ErrorMessage* errMsg = new ErrorMessage(admin.toCharArray(), "You were disconnected from the server. "
 				"Don't log in before sorting out the issue with an admin on the forums "

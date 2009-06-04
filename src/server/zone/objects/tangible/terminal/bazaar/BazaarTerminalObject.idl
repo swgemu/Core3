@@ -45,7 +45,7 @@ which carries forward this exception.
 import "../TerminalObject";
 
 interface BazaarTerminalObject implements TerminalObject {
-	BazaarTerminalObject() {
-		super();
+	BazaarTerminalObject(unsigned long objectid) {
+		super(objectid, int type);
 	}
 }

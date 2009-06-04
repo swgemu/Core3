@@ -56,9 +56,6 @@ which carries forward this exception.
 #include "managers/item/ItemManager.h"
 #include "managers/item/ItemManagerImplementation.h"
 
-#include "managers/item/ItemConfigManager.h"
-#include "managers/item/ItemConfigManagerImplementation.h"
-
 #include "managers/combat/CombatManager.h"
 #include "../chat/ChatManager.h"
 #include "../chat/ChatManagerImplementation.h"
@@ -68,14 +65,6 @@ which carries forward this exception.
 #include "managers/guild/GuildManagerImplementation.h"
 #include "managers/group/GroupManager.h"
 
-#include "managers/resource/ResourceManager.h"
-#include "managers/resource/ResourceManagerImplementation.h"
-
-#include "managers/loot/LootTableManager.h"
-#include "managers/loot/LootTableManagerImplementation.h"
-
-#include "managers/bazaar/BazaarManager.h"
-#include "managers/bazaar/BazaarManagerImplementation.h"
 
 #include "managers/bank/BankManager.h"
 #include "managers/bank/BankManagerImplementation.h"
@@ -145,16 +134,6 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 		itemManager = NULL;
 	}
 
-	if (itemConfigManager != NULL) {
-		itemConfigManager->finalize();
-		itemConfigManager = NULL;
-	}
-
-	if (bazaarManager != NULL) {
-		bazaarManager->finalize();
-		bazaarManager = NULL;
-	}
-
 	if (objectManager != NULL) {
 		delete objectManager;
 		objectManager = NULL;
@@ -173,16 +152,6 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 	if (guildManager != NULL) {
 		guildManager->finalize();
 		guildManager = NULL;
-	}
-
-	if (resourceManager != NULL) {
-		resourceManager->finalize();
-		resourceManager = NULL;
-	}
-
-	if (lootTableManager != NULL) {
-		lootTableManager->finalize();
-		lootTableManager = NULL;
 	}
 
 	if (craftingManager != NULL) {
@@ -255,12 +224,8 @@ void ZoneServerImplementation::init() {
 
 	userManager = NULL;
 	itemManager = NULL;
-	itemConfigManager = NULL;
 	playerManager = NULL;
 	guildManager = NULL;
-	resourceManager = NULL;
-	lootTableManager = NULL;
-	bazaarManager = NULL;
 	bankManager = NULL;
 	chatManager = NULL;
 
@@ -282,40 +247,28 @@ void ZoneServerImplementation::startManagers() {
 	userManager = new UserManager(_this);
 	userManager->deploy("UserManager");
 
-	itemManager = new ItemManager(_this, processor);
+	itemManager = new ItemManager();
 	itemManager->deploy("ItemManager");
-
-	itemConfigManager = new ItemConfigManager();
-	itemConfigManager->deploy("ItemConfigManager");
 
 	playerManager = new PlayerManager(itemManager, processor);
 	playerManager->deploy("PlayerManager");
 
-	guildManager = new GuildManager(_this);
+	guildManager = new GuildManager();
 	guildManager->deploy("GuildManager");
 
-	guildManager->load();
-	playerManager->setGuildManager(guildManager);
+	//guildManager->load();
+	//playerManager->setGuildManager(guildManager);
 
-	resourceManager = new ResourceManager(_this, processor);
-	resourceManager->deploy("ResourceManager");
-
-	lootTableManager = new LootTableManager(_this, processor);
-	lootTableManager->deploy("LootTableManager");
-
-	craftingManager = new CraftingManager(_this, processor);
+	craftingManager = new CraftingManager();
 	craftingManager->deploy("CraftingManager");
 
 	chatManager = new ChatManager(_this, 10000);
 	chatManager->deploy("ChatManager");
 
-	bazaarManager = new BazaarManager(_this, processor);
-	bazaarManager->deploy("BazaarManager");
-
-	bankManager = new BankManager(_this, processor);
+	bankManager = new BankManager();
 	bankManager->deploy("BankManager");
 
-	missionManager = new MissionManager(_this, processor);
+	missionManager = new MissionManager();
 	missionManager->deploy("MissionManager");
 }
 
@@ -369,11 +322,8 @@ void ZoneServerImplementation::stopManagers() {
 	/*if (playerManager != NULL)
 		playerManager->stop();*/
 
-	if (missionManager != NULL)
-		missionManager->unloadManager();
-
-	if (resourceManager != NULL)
-		resourceManager->stop();
+	//if (missionManager != NULL)
+		//missionManager->unloadManager();
 
 	info("managers stopped", true);
 }

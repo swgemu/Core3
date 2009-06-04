@@ -19,7 +19,7 @@
 
 class ZoneServer;
 
-class Player;
+class PlayerObject;
 
 class ZoneClientSession : public DistributedObjectStub {
 public:
@@ -39,9 +39,9 @@ public:
 
 	void info(const String& msg, bool foredLog = false);
 
-	void setPlayer(Player* player);
+	void setPlayer(PlayerObject* player);
 
-	Player* getPlayer();
+	PlayerObject* getPlayer();
 
 	bool isAvailable();
 
@@ -81,9 +81,9 @@ public:
 
 	void info(const String& msg, bool foredLog);
 
-	void setPlayer(Player* player);
+	void setPlayer(PlayerObject* player);
 
-	Player* getPlayer();
+	PlayerObject* getPlayer();
 
 	bool isAvailable();
 

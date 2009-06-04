@@ -62,7 +62,7 @@ public:
 	static const int TERMINALMISC = 0x400C;
 
 public:
-	TerminalObjectImplementation();
+	TerminalObjectImplementation(uint64 objectid, int type = TERMINAL);
 	~TerminalObjectImplementation();
 
 	//Setters

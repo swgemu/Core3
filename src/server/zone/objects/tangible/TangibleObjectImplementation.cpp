@@ -43,9 +43,10 @@ which carries forward this exception.
 */
 
 #include "TangibleObjectImplementation.h"
+#include "creature/CreatureObject.h"
 
-TangibleObjectImplementation::TangibleObjectImplementation()
-		: TangibleObjectServant() {
+TangibleObjectImplementation::TangibleObjectImplementation(uint64 objectid, int type)
+		: TangibleObjectServant(objectid, type) {
 }
 
 TangibleObjectImplementation::~TangibleObjectImplementation() {
@@ -54,26 +55,23 @@ TangibleObjectImplementation::~TangibleObjectImplementation() {
 
 
 
+
+
+/*************************************************************************
+ * General Actions
+ *************************************************************************/
 /**
  * If this object is conversible, then this method will start the conversation with the player.
  * \param player The player attempting to initiate conversation.
  */
-void TangibleObjectImplementation::converseStart(Player* player) {
+void TangibleObjectImplementation::converseStart(PlayerObject* player) {
 }
 
 /**
  * TODO: Fill in description for this method.
  * \param player The player conversing with the object.
  */
-void TangibleObjectImplementation::converseRespond(Player* player) {
-
-}
-
-/**
- * TODO: Fill in description for this method.
- * \param player The player conversing with the object.
- */
-void TangibleObjectImplementation::converseResponse(Player* player) {
+void TangibleObjectImplementation::converseRespond(PlayerObject* player) {
 
 }
 
@@ -81,7 +79,15 @@ void TangibleObjectImplementation::converseResponse(Player* player) {
  * TODO: Fill in description for this method.
  * \param player The player conversing with the object.
  */
-void TangibleObjectImplementation::converseStop(Player* player) {
+void TangibleObjectImplementation::converseResponse(PlayerObject* player) {
+
+}
+
+/**
+ * TODO: Fill in description for this method.
+ * \param player The player conversing with the object.
+ */
+void TangibleObjectImplementation::converseStop(PlayerObject* player) {
 
 }
 
@@ -91,7 +97,7 @@ void TangibleObjectImplementation::converseStop(Player* player) {
  * \param direction (left|right) The direction to rotate the object. Right is the default direction.
  * \param degrees How many degrees to rotate the object. Default is 90.
  */
-void TangibleObjectImplementation::loot(Player* player, bool lootall) {
+void TangibleObjectImplementation::loot(PlayerObject* player, bool lootall) {
 	//TODO: Check if the player is able to loot this object.
 
 	if (lootall) {
@@ -105,16 +111,16 @@ void TangibleObjectImplementation::loot(Player* player, bool lootall) {
 /**
  * This method rotates the object to the left by a set number of degrees.
  * \param player The player conversing with the object.
- * \param direction (left|right) The direction to rotate the object. Right is the default direction.
+ * \param orientation (left|right) The direction to rotate the object. Right is the default direction.
  * \param degrees How many degrees to rotate the object. Default is 90.
  */
-void TangibleObjectImplementation::rotate(Player* player, const String& direction, uint32 degrees) {
+void TangibleObjectImplementation::rotate(PlayerObject* player, const String& orientation, uint32 degrees) {
 	//TODO: Check to make sure the player has permission to move the object.
 
-	if (direction.indexOf("left") == 0)
+	if (orientation.indexOf("left") == 0)
 		degrees = -degrees;
 
-	direction->rotate(Vector3::UNIT_Y, degrees);
+	direction.rotate(Vector3::UNIT_Y, degrees);
 
 	//TODO: Send tano delta updates.
 }
@@ -122,21 +128,43 @@ void TangibleObjectImplementation::rotate(Player* player, const String& directio
 /**
  * This method rotates the object to the right by a set number of degrees.
  * \param player The player conversing with the object.
- * \param direction (up|down|forward|back) The direction to move the object. Forward is the default direction.
+ * \param orientation (up|down|forward|back) The direction to move the object. Forward is the default direction.
  * \param distance How far to move the object. Default is 10.
  */
-void TangibleObjectImplementation::move(Player* player, const String& direction, uint32 distance) {
+void TangibleObjectImplementation::move(PlayerObject* player, const String& orientation, uint32 distance) {
 	//TODO: Check to make sure the player has permission to move the object.
 
-	if (direction.indexOf("up")) {
+	if (orientation.indexOf("up")) {
 		//TODO: Move object up
-	} else if (direction.indexOf("down")) {
+	} else if (orientation.indexOf("down")) {
 		//TODO: Move object down
-	} else if (direction.indexOf("back")) {
+	} else if (orientation.indexOf("back")) {
 		//TODO: Move object back
 	} else {
 		//TODO: Move object foward
 	}
 
 	//Send tano delta updates.
+}
+
+
+/*************************************************************************
+ * Event Handlers
+ *************************************************************************/
+/**
+ * This event should be fired when a creature uses equip() to equip this item. Any special
+ * code that is non standard to the equiping process should be processed here.
+ * \param creature The creature equiping the object.
+ */
+void TangibleObjectImplementation::onEquip(CreatureObject* creature) {
+
+}
+
+/**
+ * This event should be fired when a creature uses unequip() to unequip this item. Any special
+ * code that is non standard to the unequiping process should be processed here.
+ * \param creature The creature unequiping the object.
+ */
+void TangibleObjectImplementation::onUnequip(CreatureObject* creature) {
+
 }

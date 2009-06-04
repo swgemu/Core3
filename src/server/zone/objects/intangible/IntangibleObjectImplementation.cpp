@@ -44,7 +44,7 @@ which carries forward this exception.
 
 #include "IntangibleObjectImplementation.h"
 
-IntangibleObjectImplementation::IntangibleObjectImplementation()
-		: IntangibleObjectServant() {
+IntangibleObjectImplementation::IntangibleObjectImplementation(uint64 objectid, int type)
+		: IntangibleObjectServant(objectid, type) {
 
 }

@@ -12,8 +12,8 @@
  *	GuildObjectStub
  */
 
-GuildObject::GuildObject() : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new GuildObjectImplementation();
+GuildObject::GuildObject(unsigned long long objectid) : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new GuildObjectImplementation(objectid);
 	_impl->_setStub(this);
 }
 
@@ -76,7 +76,7 @@ DistributedObjectAdapter* GuildObjectHelper::createAdapter(DistributedObjectStub
  *	GuildObjectServant
  */
 
-GuildObjectServant::GuildObjectServant() : SceneObjectImplementation() {
+GuildObjectServant::GuildObjectServant(unsigned long long objectid, int type) : SceneObjectImplementation(objectid, type) {
 	_classHelper = GuildObjectHelper::instance();
 }
 

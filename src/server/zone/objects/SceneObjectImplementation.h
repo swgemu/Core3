@@ -47,14 +47,18 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 #include "../ZoneProcessServerImplementation.h"
+#include "events/UndeploySceneObjectEvent.h"
 #include "../Zone.h"
 #include "../ZoneClientSession.h"
 #include "../Quaternion.h"
 #include "SceneObject.h"
-#include "ContainerObject.h"
+#include "Container.h"
 
-class SceneObjectImplementation : public SceneObjectServant, public QuadTreeEntry, public ContainerObject, public Logger {
+class PlayerObject;
+class ObjectMenuResponse;
+class SceneObjectImplementation : public SceneObjectServant, public QuadTreeEntry, public Container, public Logger {
 protected:
+	UndeploySceneObjectEvent* undeployEvent;
 	ZoneProcessServerImplementation* server;
 	Zone* zone;
 
@@ -64,18 +68,19 @@ protected:
 	String stfName;
 	UnicodeString customName;
 
-	Quaternion* direction;
-
-	uint64 ownerCharacterID;
+	Quaternion direction;
 
 	float complexity;
 
+	uint64 ownerCharacterID;
 	uint64 objectID;
 	uint32 objectCRC;
 	uint32 linkType;
 	uint32 volume;
 
 	int gameObjectType;
+
+	bool keepObject;
 
 public:
 	//Game Object Types
@@ -112,95 +117,158 @@ public:
 	static const int SHIP = 0x20000000;
 	static const int SHIPCOMPONENTS = 0x40000000;
 
-	// Intangible (top level)
+	// Intangible
 	static const int INTANGIBLE = 0x800;
-	static const int DRAFTSCHEMATIC = 0x801;
-	static const int MANUFACTURESCHEMATIC = 0x802;
-	static const int MISSION = 0x803;
-	static const int WAYPOINT = 0x802;
 
 public:
-	SceneObjectImplementation();
+	SceneObjectImplementation(uint64 objectid, int type);
 	virtual ~SceneObjectImplementation();
 
-	void initialize();
-
-	//ORB methods
-	bool destroy();
-	void deploy();
-	void scheduleRedeploy();
-	void undeploy();
-	void removeUndeploymentEvent();
+	virtual void initialize();
 
 	//Saving and loading
 	virtual void serialize(String& str);
 	virtual void deserialize(const String& str);
 
-	//Sending of data to client
-	virtual void sendTo(Player* player, bool doclose = true);
-	virtual void sendDestroyTo(Player* player);
-	virtual void sendRadialResponseTo(Player* player);
-	virtual void sendConversationStopTo(Player* player);
-	virtual void sendCustomNamePromptTo(Player* player);
-	virtual void sendStatusTo(Player* player); //TODO: We can use this for administrative purposes, and of course for structures/camps.
+	//ORB methods
+	bool destroy();
+	void deploy();
+	void scheduleUndeploy();
+	void undeploy();
+	void removeUndeploymentEvent();
+	void redeploy();
 
-	//SceneObject packets?
-	virtual void create(ZoneClientSession* client);
-	virtual void destroy(ZoneClientSession* client);
+	inline void setObjectKeeping(bool keeping) {
+		keepObject = true;
+	}
+
+	inline void clearUndeploymentEvent() {
+		undeployEvent = NULL;
+	}
+
+	inline bool isUndeploymentScheduled() {
+		return undeployEvent != NULL;
+	}
+
+	//QuadTree Methods
+	bool isInRange(SceneObject* obj, float range) {
+		return QuadTreeEntry::isInRange(obj->getPositionX(), obj->getPositionZ(), range);
+	}
+
+	bool isInRange(float x, float z, float range) {
+		return QuadTreeEntry::isInRange(x, z, range);
+	}
+
+	inline QuadTreeEntry* getQuadTreeEntry() {
+		return (QuadTreeEntry*) this;
+	}
+
+	//Sending of data to client
+	virtual void sendTo(PlayerObject* player, bool doclose = true);
+	virtual void sendDestroyTo(PlayerObject* player);
+	virtual void sendRadialResponseTo(PlayerObject* player, ObjectMenuResponse* omr);
+	virtual void sendConversationStopTo(PlayerObject* player);
+	virtual void sendCustomNamePromptTo(PlayerObject* player);
+	virtual void sendStatusTo(PlayerObject* player); //TODO: We can use this for administrative purposes, and of course for structures/camps.
+
+	virtual void broadcastMessage(BaseMessage* msg, int range = 128, bool dolock = true, bool sendself = true);
+	virtual void broadcastMessage(StandaloneBaseMessage* msg, int range = 128, bool dolock = true);
+	void broadcastMessages(Vector<BaseMessage*>& msgs, int range = 128, bool dolock = true);
 
 	//General actions.
-	virtual void use(Player* player);
-	virtual void pickup(Player* player);
-	virtual void drop(Player* player);
-	virtual void destroy(Player* player); //TODO: Should we name this something else to not confuse it with the ORB method?
-	virtual void open(Player* player);
-	virtual void activate(Player* player);
-	virtual void deactivate(Player* player);
+	virtual void use(PlayerObject* player);
+	virtual void pickup(PlayerObject* player);
+	virtual void drop(PlayerObject* player);
+	virtual void destroyObject(PlayerObject* player);
+	virtual void open(PlayerObject* player);
+	virtual void activate(PlayerObject* player);
+	virtual void deactivate(PlayerObject* player);
 
 	//These radial responses can be overridden.
-	virtual void onRadialMenu1(Player* player);
-	virtual void onRadialMenu2(Player* player);
-	virtual void onRadialMenu3(Player* player);
-	virtual void onRadialMenu4(Player* player);
-	virtual void onRadialMenu5(Player* player);
-	virtual void onRadialMenu6(Player* player);
-	virtual void onRadialMenu7(Player* player);
-	virtual void onRadialMenu8(Player* player);
-	virtual void onRadialMenu9(Player* player);
-	virtual void onRadialMenu10(Player* player);
+	virtual void onRadialMenu1(PlayerObject* player);
+	virtual void onRadialMenu2(PlayerObject* player);
+	virtual void onRadialMenu3(PlayerObject* player);
+	virtual void onRadialMenu4(PlayerObject* player);
+	virtual void onRadialMenu5(PlayerObject* player);
+	virtual void onRadialMenu6(PlayerObject* player);
+	virtual void onRadialMenu7(PlayerObject* player);
+	virtual void onRadialMenu8(PlayerObject* player);
+	virtual void onRadialMenu9(PlayerObject* player);
+	virtual void onRadialMenu10(PlayerObject* player);
+
+	//Event handlers.
+	virtual void onDragDrop(PlayerObject* player, SceneObject* target);
 
 	//Setters
+	inline void setParent(SceneObject* obj, uint32 linktype = 0x04) {
+		if (obj != _this) {
+			parent = obj;
+			linkType = linktype;
+		}
+	}
+
+	inline void setZoneProcessServer(ZoneProcessServerImplementation* srvr) {
+		server = srvr;
+	}
+
+	inline void setZone(Zone* zne) {
+		zone = zne;
+	}
+
+	inline void setDirection(float x, float y, float z, float w) {
+		direction = Quaternion(w, x, y, z);
+	}
+
+	inline void setCustomName(const UnicodeString& customname) {
+		customName = customname;
+	}
+
+	inline void setStfFile(const String& stffile) {
+		stfFile = stffile;
+	}
+
+	inline void setStfName(const String& stfname) {
+		stfName = stfname;
+	}
 
 	//Getters
-	bool isObjectType(int type, bool similar = false);
+	inline SceneObject* getParent() {
+		return parent;
+	}
+
+	inline uint32 getLinkType() {
+		return linkType;
+	}
+
+	inline ZoneProcessServerImplementation* getZoneProcessServer() {
+		return server;
+	}
+
+	inline Zone* getZone() {
+		return zone;
+	}
+
+	inline uint32 getZoneID() {
+		if (zone == NULL)
+			return 0;
+
+		return zone->getZoneID();
+	}
 
 	inline float getDirectionX() {
-		return direction->getX();
+		return direction.getX();
 	}
 
 	inline float getDirectionY() {
-		return direction->getY();
+		return direction.getY();
 	}
 
 	inline float getDirectionZ() {
-		return direction->getZ();
+		return direction.getZ();
 	}
 
 	inline float getDirectionW() {
-		return direction->getW();
-	}
-
-	inline float getPositionX() {
-		return positionX;
-	}
-
-	//TODO: We need to change Coordinate and QuadTreeEntry to reflect the standard vector format of x, y, z rather than x, z, y...
-	inline float getPositionY() {
-		return positionZ;
-	}
-
-	inline float getPositionZ() {
-		return positionY;
+		return direction.getW();
 	}
 
 	inline String& getStfFile() {
@@ -223,6 +291,10 @@ public:
 		return objectCRC;
 	}
 
+	inline uint32 getObjectType() {
+		return gameObjectType;
+	}
+
 	inline float getComplexity() {
 		return complexity;
 	}
@@ -230,6 +302,8 @@ public:
 	inline uint32 getVolume() {
 		return volume;
 	}
+
+	bool isObjectType(int type, bool similar = false);
 
 	inline bool isPlayer() {
 		return (gameObjectType == PLAYER);

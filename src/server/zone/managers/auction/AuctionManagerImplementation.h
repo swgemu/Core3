@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+#include "AuctionManager.h"
+
 class AuctionManagerImplementation : public AuctionManagerServant, public Logger {
 
 public:

@@ -12,8 +12,8 @@
  *	BuildingObjectStub
  */
 
-BuildingObject::BuildingObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new BuildingObjectImplementation();
+BuildingObject::BuildingObject(unsigned long long objectid) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new BuildingObjectImplementation(objectid);
 	_impl->_setStub(this);
 }
 
@@ -76,7 +76,7 @@ DistributedObjectAdapter* BuildingObjectHelper::createAdapter(DistributedObjectS
  *	BuildingObjectServant
  */
 
-BuildingObjectServant::BuildingObjectServant() : TangibleObjectImplementation() {
+BuildingObjectServant::BuildingObjectServant(unsigned long long objectid, int type) : TangibleObjectImplementation(objectid, type) {
 	_classHelper = BuildingObjectHelper::instance();
 }
 

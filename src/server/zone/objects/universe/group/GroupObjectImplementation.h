@@ -51,7 +51,7 @@ class GroupObjectImplementation : public GroupObjectServant {
 protected:
 
 public:
-	GroupObjectImplementation();
+	GroupObjectImplementation(uint64 objectid);
 	~GroupObjectImplementation();
 };
 

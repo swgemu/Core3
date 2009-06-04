@@ -46,6 +46,7 @@ which carries forward this exception.
 #define POWERUPOBJECTIMPLEMENTATION_H_
 
 #include "PowerupObject.h"
+#include "../../intangible/player/PlayerObject.h"
 
 class PowerupObjectImplementation : public PowerupObjectServant {
 protected:
@@ -58,10 +59,10 @@ public:
 	const static int MINEPOWERUP = 0x80005;
 
 public:
-	PowerupObjectImplementation();
+	PowerupObjectImplementation(uint64 objectid, int type = WEAPONPOWERUP);
 	~PowerupObjectImplementation();
 
-	void use(Player* player);
+	void onDragDrop(PlayerObject* player, SceneObject* target);
 };
 
 #endif /* POWERUPOBJECTIMPLEMENTATION_H_ */

@@ -45,7 +45,7 @@ which carries forward this exception.
 import "../SceneObject";
 
 interface IntangibleObject implements SceneObject {
-	IntangibleObject() {
-		super();
+	IntangibleObject(unsigned long objectid, int type = 0x800) {
+		super(objectid, type);
 	}
 }

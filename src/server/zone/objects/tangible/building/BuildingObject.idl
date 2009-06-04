@@ -46,7 +46,7 @@ which carries forward this exception.
 import "../TangibleObject";
 
 interface BuildingObject implements TangibleObject {
-	BuildingObject() {
-		super();
+	BuildingObject(unsigned long objectid) {
+		super(objectid, int type);
 	}
 }

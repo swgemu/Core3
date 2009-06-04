@@ -69,11 +69,6 @@ core3_IDLS = server/chat/ChatManager.cpp \
 		server/zone/managers/planet/PlanetManager.cpp \
 		server/zone/managers/player/PlayerManager.cpp \
 		server/zone/managers/player/PlayerMap.cpp \
-		server/zone/managers/resource/ResourceManager.cpp \
-		server/zone/managers/resource/ResourceList.cpp \
-		server/zone/managers/resource/ResourceItem.cpp \
-	    server/zone/managers/resource/ResourceSpawn.cpp \
-	    server/zone/managers/resource/SpawnLocation.cpp \
 		server/zone/managers/structure/StructureManager.cpp \
 		server/zone/managers/user/UserManager.cpp \
 		server/zone/objects/SceneObject.cpp \
@@ -90,9 +85,9 @@ core3_IDLS = server/chat/ChatManager.cpp \
 		server/zone/objects/tangible/component/ComponentObject.cpp \
 		server/zone/objects/tangible/creature/CreatureObject.cpp \
 		server/zone/objects/tangible/creature/npc/Creature.cpp \
-		server/zone/objects/tangible/creature/player/Player.cpp \
 		server/zone/objects/tangible/deed/DeedObject.cpp \
 		server/zone/objects/tangible/instrument/InstrumentObject.cpp \
+		server/zone/objects/tangible/installation/InstallationObject.cpp \
 		server/zone/objects/tangible/inventory/InventoryObject.cpp \
 		server/zone/objects/tangible/terminal/TerminalObject.cpp \
 		server/zone/objects/tangible/terminal/bazaar/BazaarTerminalObject.cpp \
@@ -101,7 +96,6 @@ core3_IDLS = server/chat/ChatManager.cpp \
 		server/zone/objects/tangible/weapon/WeaponObject.cpp \
 		server/zone/objects/tangible/wearable/WearableObject.cpp \
 		server/zone/objects/tangible/wearable/armor/ArmorObject.cpp \
-		server/zone/objects/tangible/wearable/clothing/ClothingObject.cpp \
 		server/zone/objects/universe/group/GroupObject.cpp \
 		server/zone/objects/universe/guild/GuildObject.cpp \
 		server/zone/ZoneClientSession.cpp \
@@ -137,18 +131,14 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/player/PlayerManagerImplementation.cpp \
 		server/zone/managers/player/ProfessionManager.cpp \
 		server/zone/managers/radial/RadialManager.cpp \
-		server/zone/managers/resource/ResourceManagerImplementation.cpp \
 		server/zone/managers/skills/imagedesign/CustomizationManager.cpp \
 		server/zone/managers/skills/imagedesign/ImageDesignCustomization.cpp \
-		server/zone/managers/skills/performance/PerformanceManager.cpp \
 		server/zone/managers/skills/ScriptAttacksManager.cpp \
 		server/zone/managers/skills/SkillManager.cpp \
-		server/zone/managers/slashcommands/SlashCommandConfigManager.cpp \
-		server/zone/managers/slashcommands/SlashCommandManager.cpp \
 		server/zone/managers/structure/StructureManagerImplementation.cpp \
-		server/zone/managers/sui/SuiManager.cpp \
 		server/zone/managers/user/UserManagerImplementation.cpp \
 		server/zone/objects/SceneObjectImplementation.cpp \
+		server/zone/objects/Container.cpp \
 		server/zone/objects/cell/CellObjectImplementation.cpp \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
 		server/zone/objects/intangible/player/PlayerObjectImplementation.cpp \
@@ -157,14 +147,15 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/intangible/mission/MissionObjectImplementation.cpp \
 		server/zone/objects/intangible/waypoint/WaypointObjectImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
+		server/zone/objects/tangible/CustomizationVariables.cpp \
 		server/zone/objects/tangible/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/tangible/building/camp/CampObjectImplementation.cpp \
 		server/zone/objects/tangible/component/ComponentObjectImplementation.cpp \
 		server/zone/objects/tangible/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/tangible/creature/npc/CreatureImplementation.cpp \
-		server/zone/objects/tangible/creature/player/PlayerImplementation.cpp \
 		server/zone/objects/tangible/deed/DeedObjectImplementation.cpp \
 		server/zone/objects/tangible/instrument/InstrumentObjectImplementation.cpp \
+		server/zone/objects/tangible/installation/InstallationObjectImplementation.cpp \
 		server/zone/objects/tangible/inventory/InventoryObjectImplementation.cpp \
 		server/zone/objects/tangible/powerup/PowerupObjectImplementation.cpp \
 		server/zone/objects/tangible/resourcecontainer/ResourceContainerObjectImplementation.cpp \
@@ -173,7 +164,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/weapon/WeaponObjectImplementation.cpp \
 		server/zone/objects/tangible/wearable/WearableObjectImplementation.cpp \
 		server/zone/objects/tangible/wearable/armor/ArmorObjectImplementation.cpp \
-		server/zone/objects/tangible/wearable/clothing/ClothingObjectImplementation.cpp \
 		server/zone/objects/universe/group/GroupObjectImplementation.cpp \
 		server/zone/objects/universe/guild/GuildObjectImplementation.cpp \
 		server/zone/packets/object/ObjectControllerMessage.cpp \

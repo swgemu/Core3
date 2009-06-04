@@ -23,7 +23,7 @@ public:
 	}
 
 	bool activate() {
-		planet->tutorialStepStatMigration(player);
+		//planet->tutorialStepStatMigration(player);
 
 		return true;
 	}

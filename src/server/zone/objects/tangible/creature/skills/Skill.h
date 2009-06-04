@@ -49,10 +49,11 @@ which carries forward this exception.
 
 #include "Animations.h"
 
-#include "../../../ZoneProcessServerImplementation.h"
-#include "../../../managers/combat/CombatManager.h"
+#include "../../../../ZoneProcessServerImplementation.h"
+#include "../../../../managers/combat/CombatManager.h"
+#include "../../../../managers/combat/CommandQueueAction.h"
 #include "../CreatureObject.h"
-#include "../../tangible/weapons/Weapon.h"
+#include "../../weapon/WeaponObject.h"
 
 class Skill {
 protected:
@@ -262,15 +263,6 @@ public:
 	virtual float calculateSpeed(CreatureObject* creature, CommandQueueAction* action) {
 		return 1.0f;
 	}
-
-	virtual void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, Pharmaceutical* pharma) {
-		return;
-	}
-
-	virtual bool checkAreaMedicTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
-		return false;
-	}
-
 	/*
 	 * Sets the invalid states for this command
 	 */
@@ -325,7 +317,7 @@ public:
 	 * Checks all states at once with a bitwise operation
 	 */
 	virtual bool checkStateMask(CreatureObject* creature) {
-		return (creature->getStateBitmask() & stateMask) == 0;
+		return (creature->getStatesBitmask() & stateMask) == 0;
 	}
 
 	/*

@@ -13,7 +13,7 @@ class SceneObject;
 
 class GroupObject : public SceneObject {
 public:
-	GroupObject();
+	GroupObject(unsigned long long objectid);
 
 protected:
 	GroupObject(DummyConstructorParameter* param);
@@ -55,7 +55,7 @@ public:
 	GroupObject* _this;
 
 public:
-	GroupObjectServant();
+	GroupObjectServant(unsigned long long objectid, int type);
 	virtual ~GroupObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

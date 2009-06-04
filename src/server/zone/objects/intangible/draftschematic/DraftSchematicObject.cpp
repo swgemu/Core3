@@ -12,8 +12,8 @@
  *	DraftSchematicObjectStub
  */
 
-DraftSchematicObject::DraftSchematicObject() : IntangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new DraftSchematicObjectImplementation();
+DraftSchematicObject::DraftSchematicObject(unsigned long long objectid) : IntangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new DraftSchematicObjectImplementation(objectid);
 	_impl->_setStub(this);
 }
 
@@ -76,7 +76,7 @@ DistributedObjectAdapter* DraftSchematicObjectHelper::createAdapter(DistributedO
  *	DraftSchematicObjectServant
  */
 
-DraftSchematicObjectServant::DraftSchematicObjectServant() : IntangibleObjectImplementation() {
+DraftSchematicObjectServant::DraftSchematicObjectServant(unsigned long long objectid, int type) : IntangibleObjectImplementation(objectid, type) {
 	_classHelper = DraftSchematicObjectHelper::instance();
 }
 

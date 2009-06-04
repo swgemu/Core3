@@ -9,16 +9,60 @@
 
 class TangibleObject;
 
+class SceneObject;
+
+class GroupObject;
+
 #include "../TangibleObject.h"
 
 class CreatureObject : public TangibleObject {
 public:
-	CreatureObject();
+	CreatureObject(unsigned long long objectid, int type = 400);
+
+	void updateTargetObject(unsigned long long targetid, bool updateclients = true);
+
+	void updateTargetObject(SceneObject* target, bool updateclients = true);
+
+	void setLastMovementStamp(unsigned int timestamp);
+
+	void setMovementCounter(unsigned int counter);
+
+	void setHairObject(TangibleObject* hair);
+
+	void setMoodID(unsigned char moodid);
+
+	void setBankCredits(unsigned int credits);
+
+	void setCashCredits(unsigned int credits);
+
+	void setHeight(float value);
+
+	unsigned int getLastMovementStamp();
+
+	TangibleObject* getHairObject();
+
+	GroupObject* getGroupObject();
+
+	unsigned char getMoodID();
+
+	float getHeight();
+
+	unsigned int getBankCredits();
+
+	unsigned int getCashCredits();
+
+	String& getMoodName();
+
+	unsigned long long getStatesBitmask();
+
+	unsigned char getPosture();
 
 protected:
 	CreatureObject(DummyConstructorParameter* param);
 
 	virtual ~CreatureObject();
+
+	String _return_getMoodName;
 
 	friend class CreatureObjectHelper;
 };
@@ -30,6 +74,44 @@ public:
 	CreatureObjectAdapter(CreatureObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void updateTargetObject(unsigned long long targetid, bool updateclients);
+
+	void updateTargetObject(SceneObject* target, bool updateclients);
+
+	void setLastMovementStamp(unsigned int timestamp);
+
+	void setMovementCounter(unsigned int counter);
+
+	void setHairObject(TangibleObject* hair);
+
+	void setMoodID(unsigned char moodid);
+
+	void setBankCredits(unsigned int credits);
+
+	void setCashCredits(unsigned int credits);
+
+	void setHeight(float value);
+
+	unsigned int getLastMovementStamp();
+
+	TangibleObject* getHairObject();
+
+	GroupObject* getGroupObject();
+
+	unsigned char getMoodID();
+
+	float getHeight();
+
+	unsigned int getBankCredits();
+
+	unsigned int getCashCredits();
+
+	String& getMoodName();
+
+	unsigned long long getStatesBitmask();
+
+	unsigned char getPosture();
 
 };
 
@@ -55,7 +137,7 @@ public:
 	CreatureObject* _this;
 
 public:
-	CreatureObjectServant();
+	CreatureObjectServant(unsigned long long objectid, int type);
 	virtual ~CreatureObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

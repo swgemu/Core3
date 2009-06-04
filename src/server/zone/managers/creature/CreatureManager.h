@@ -7,13 +7,9 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-#include "engine/util/Coordinate.h"
-
 class Zone;
 
 #include "server/zone/ZoneProcessServerImplementation.h"
-
-class CreatureObject;
 
 class CreatureManager : public DistributedObjectStub {
 public:

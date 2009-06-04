@@ -44,8 +44,8 @@ which carries forward this exception.
 
 #include "CreatureImplementation.h"
 
-CreatureImplementation::CreatureImplementation()
-		: CreatureServant() {
+CreatureImplementation::CreatureImplementation(uint64 objectid)
+		: CreatureServant(objectid, NPC) {
 
 }
 

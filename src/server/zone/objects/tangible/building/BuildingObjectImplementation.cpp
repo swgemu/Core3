@@ -44,8 +44,8 @@ which carries forward this exception.
 
 #include "BuildingObjectImplementation.h"
 
-BuildingObjectImplementation::BuildingObjectImplementation()
-		: BuildingObjectServant(), Structure() {
+BuildingObjectImplementation::BuildingObjectImplementation(uint64 objectid)
+		: BuildingObjectServant(objectid, BUILDING), Structure() {
 
 }
 

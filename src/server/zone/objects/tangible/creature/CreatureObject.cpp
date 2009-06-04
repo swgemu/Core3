@@ -8,12 +8,16 @@
 
 #include "../TangibleObject.h"
 
+#include "../../SceneObject.h"
+
+#include "../../universe/group/GroupObject.h"
+
 /*
  *	CreatureObjectStub
  */
 
-CreatureObject::CreatureObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new CreatureObjectImplementation();
+CreatureObject::CreatureObject(unsigned long long objectid, int type) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new CreatureObjectImplementation(objectid, type);
 	_impl->_setStub(this);
 }
 
@@ -21,6 +25,246 @@ CreatureObject::CreatureObject(DummyConstructorParameter* param) : TangibleObjec
 }
 
 CreatureObject::~CreatureObject() {
+}
+
+void CreatureObject::updateTargetObject(unsigned long long targetid, bool updateclients) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+		method.addUnsignedLongParameter(targetid);
+		method.addBooleanParameter(updateclients);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->updateTargetObject(targetid, updateclients);
+}
+
+void CreatureObject::updateTargetObject(SceneObject* target, bool updateclients) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addObjectParameter(target);
+		method.addBooleanParameter(updateclients);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->updateTargetObject(target, updateclients);
+}
+
+void CreatureObject::setLastMovementStamp(unsigned int timestamp) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addUnsignedIntParameter(timestamp);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setLastMovementStamp(timestamp);
+}
+
+void CreatureObject::setMovementCounter(unsigned int counter) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addUnsignedIntParameter(counter);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setMovementCounter(counter);
+}
+
+void CreatureObject::setHairObject(TangibleObject* hair) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addObjectParameter(hair);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setHairObject(hair);
+}
+
+void CreatureObject::setMoodID(unsigned char moodid) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addUnsignedCharParameter(moodid);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setMoodID(moodid);
+}
+
+void CreatureObject::setBankCredits(unsigned int credits) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addUnsignedIntParameter(credits);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setBankCredits(credits);
+}
+
+void CreatureObject::setCashCredits(unsigned int credits) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addUnsignedIntParameter(credits);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setCashCredits(credits);
+}
+
+void CreatureObject::setHeight(float value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+		method.addFloatParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setHeight(value);
+}
+
+unsigned int CreatureObject::getLastMovementStamp() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getLastMovementStamp();
+}
+
+TangibleObject* CreatureObject::getHairObject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return (TangibleObject*) method.executeWithObjectReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getHairObject();
+}
+
+GroupObject* CreatureObject::getGroupObject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+
+		return (GroupObject*) method.executeWithObjectReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getGroupObject();
+}
+
+unsigned char CreatureObject::getMoodID() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+
+		return method.executeWithUnsignedCharReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getMoodID();
+}
+
+float CreatureObject::getHeight() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getHeight();
+}
+
+unsigned int CreatureObject::getBankCredits() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getBankCredits();
+}
+
+unsigned int CreatureObject::getCashCredits() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getCashCredits();
+}
+
+String& CreatureObject::getMoodName() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+
+		method.executeWithAsciiReturn(_return_getMoodName);
+		return _return_getMoodName;
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getMoodName();
+}
+
+unsigned long long CreatureObject::getStatesBitmask() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getStatesBitmask();
+}
+
+unsigned char CreatureObject::getPosture() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
+
+		return method.executeWithUnsignedCharReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getPosture();
 }
 
 /*
@@ -34,11 +278,144 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		updateTargetObject(inv->getUnsignedLongParameter(), inv->getBooleanParameter());
+		break;
+	case 7:
+		updateTargetObject((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		break;
+	case 8:
+		setLastMovementStamp(inv->getUnsignedIntParameter());
+		break;
+	case 9:
+		setMovementCounter(inv->getUnsignedIntParameter());
+		break;
+	case 10:
+		setHairObject((TangibleObject*) inv->getObjectParameter());
+		break;
+	case 11:
+		setMoodID(inv->getUnsignedCharParameter());
+		break;
+	case 12:
+		setBankCredits(inv->getUnsignedIntParameter());
+		break;
+	case 13:
+		setCashCredits(inv->getUnsignedIntParameter());
+		break;
+	case 14:
+		setHeight(inv->getFloatParameter());
+		break;
+	case 15:
+		resp->insertInt(getLastMovementStamp());
+		break;
+	case 16:
+		resp->insertLong(getHairObject()->_getObjectID());
+		break;
+	case 17:
+		resp->insertLong(getGroupObject()->_getObjectID());
+		break;
+	case 18:
+		resp->insertByte(getMoodID());
+		break;
+	case 19:
+		resp->insertFloat(getHeight());
+		break;
+	case 20:
+		resp->insertInt(getBankCredits());
+		break;
+	case 21:
+		resp->insertInt(getCashCredits());
+		break;
+	case 22:
+		resp->insertAscii(getMoodName());
+		break;
+	case 23:
+		resp->insertLong(getStatesBitmask());
+		break;
+	case 24:
+		resp->insertByte(getPosture());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void CreatureObjectAdapter::updateTargetObject(unsigned long long targetid, bool updateclients) {
+	return ((CreatureObjectImplementation*) impl)->updateTargetObject(targetid, updateclients);
+}
+
+void CreatureObjectAdapter::updateTargetObject(SceneObject* target, bool updateclients) {
+	return ((CreatureObjectImplementation*) impl)->updateTargetObject(target, updateclients);
+}
+
+void CreatureObjectAdapter::setLastMovementStamp(unsigned int timestamp) {
+	return ((CreatureObjectImplementation*) impl)->setLastMovementStamp(timestamp);
+}
+
+void CreatureObjectAdapter::setMovementCounter(unsigned int counter) {
+	return ((CreatureObjectImplementation*) impl)->setMovementCounter(counter);
+}
+
+void CreatureObjectAdapter::setHairObject(TangibleObject* hair) {
+	return ((CreatureObjectImplementation*) impl)->setHairObject(hair);
+}
+
+void CreatureObjectAdapter::setMoodID(unsigned char moodid) {
+	return ((CreatureObjectImplementation*) impl)->setMoodID(moodid);
+}
+
+void CreatureObjectAdapter::setBankCredits(unsigned int credits) {
+	return ((CreatureObjectImplementation*) impl)->setBankCredits(credits);
+}
+
+void CreatureObjectAdapter::setCashCredits(unsigned int credits) {
+	return ((CreatureObjectImplementation*) impl)->setCashCredits(credits);
+}
+
+void CreatureObjectAdapter::setHeight(float value) {
+	return ((CreatureObjectImplementation*) impl)->setHeight(value);
+}
+
+unsigned int CreatureObjectAdapter::getLastMovementStamp() {
+	return ((CreatureObjectImplementation*) impl)->getLastMovementStamp();
+}
+
+TangibleObject* CreatureObjectAdapter::getHairObject() {
+	return ((CreatureObjectImplementation*) impl)->getHairObject();
+}
+
+GroupObject* CreatureObjectAdapter::getGroupObject() {
+	return ((CreatureObjectImplementation*) impl)->getGroupObject();
+}
+
+unsigned char CreatureObjectAdapter::getMoodID() {
+	return ((CreatureObjectImplementation*) impl)->getMoodID();
+}
+
+float CreatureObjectAdapter::getHeight() {
+	return ((CreatureObjectImplementation*) impl)->getHeight();
+}
+
+unsigned int CreatureObjectAdapter::getBankCredits() {
+	return ((CreatureObjectImplementation*) impl)->getBankCredits();
+}
+
+unsigned int CreatureObjectAdapter::getCashCredits() {
+	return ((CreatureObjectImplementation*) impl)->getCashCredits();
+}
+
+String& CreatureObjectAdapter::getMoodName() {
+	return ((CreatureObjectImplementation*) impl)->getMoodName();
+}
+
+unsigned long long CreatureObjectAdapter::getStatesBitmask() {
+	return ((CreatureObjectImplementation*) impl)->getStatesBitmask();
+}
+
+unsigned char CreatureObjectAdapter::getPosture() {
+	return ((CreatureObjectImplementation*) impl)->getPosture();
 }
 
 /*
@@ -76,7 +453,7 @@ DistributedObjectAdapter* CreatureObjectHelper::createAdapter(DistributedObjectS
  *	CreatureObjectServant
  */
 
-CreatureObjectServant::CreatureObjectServant() : TangibleObjectImplementation() {
+CreatureObjectServant::CreatureObjectServant(unsigned long long objectid, int type) : TangibleObjectImplementation(objectid, type) {
 	_classHelper = CreatureObjectHelper::instance();
 }
 

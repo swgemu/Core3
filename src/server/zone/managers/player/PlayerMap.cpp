@@ -6,7 +6,7 @@
 
 #include "PlayerMapImplementation.h"
 
-#include "../../objects/tangible/creature/player/Player.h"
+#include "../../objects/intangible/player/PlayerObject.h"
 
 /*
  *	PlayerMapStub
@@ -24,7 +24,7 @@ PlayerMap::PlayerMap(DummyConstructorParameter* param) {
 PlayerMap::~PlayerMap() {
 }
 
-Player* PlayerMap::put(const String& name, Player* player, bool doLock) {
+PlayerObject* PlayerMap::put(const String& name, PlayerObject* player, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -34,12 +34,12 @@ Player* PlayerMap::put(const String& name, Player* player, bool doLock) {
 		method.addObjectParameter(player);
 		method.addBooleanParameter(doLock);
 
-		return (Player*) method.executeWithObjectReturn();
+		return (PlayerObject*) method.executeWithObjectReturn();
 	} else
 		return ((PlayerMapImplementation*) _impl)->put(name, player, doLock);
 }
 
-Player* PlayerMap::get(const String& name, bool doLock) {
+PlayerObject* PlayerMap::get(const String& name, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -48,12 +48,12 @@ Player* PlayerMap::get(const String& name, bool doLock) {
 		method.addAsciiParameter(name);
 		method.addBooleanParameter(doLock);
 
-		return (Player*) method.executeWithObjectReturn();
+		return (PlayerObject*) method.executeWithObjectReturn();
 	} else
 		return ((PlayerMapImplementation*) _impl)->get(name, doLock);
 }
 
-Player* PlayerMap::remove(const String& name, bool doLock) {
+PlayerObject* PlayerMap::remove(const String& name, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -62,7 +62,7 @@ Player* PlayerMap::remove(const String& name, bool doLock) {
 		method.addAsciiParameter(name);
 		method.addBooleanParameter(doLock);
 
-		return (Player*) method.executeWithObjectReturn();
+		return (PlayerObject*) method.executeWithObjectReturn();
 	} else
 		return ((PlayerMapImplementation*) _impl)->remove(name, doLock);
 }
@@ -80,7 +80,7 @@ int PlayerMap::size(bool doLock) {
 		return ((PlayerMapImplementation*) _impl)->size(doLock);
 }
 
-Player* PlayerMap::getNextValue(bool doLock) {
+PlayerObject* PlayerMap::getNextValue(bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -88,12 +88,12 @@ Player* PlayerMap::getNextValue(bool doLock) {
 		DistributedMethod method(this, 10);
 		method.addBooleanParameter(doLock);
 
-		return (Player*) method.executeWithObjectReturn();
+		return (PlayerObject*) method.executeWithObjectReturn();
 	} else
 		return ((PlayerMapImplementation*) _impl)->getNextValue(doLock);
 }
 
-Player* PlayerMap::next(bool doLock) {
+PlayerObject* PlayerMap::next(bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -101,7 +101,7 @@ Player* PlayerMap::next(bool doLock) {
 		DistributedMethod method(this, 11);
 		method.addBooleanParameter(doLock);
 
-		return (Player*) method.executeWithObjectReturn();
+		return (PlayerObject*) method.executeWithObjectReturn();
 	} else
 		return ((PlayerMapImplementation*) _impl)->next(doLock);
 }
@@ -170,7 +170,7 @@ Packet* PlayerMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		resp->insertLong(put(inv->getAsciiParameter(_param0_put__String_Player_bool_), (Player*) inv->getObjectParameter(), inv->getBooleanParameter())->_getObjectID());
+		resp->insertLong(put(inv->getAsciiParameter(_param0_put__String_PlayerObject_bool_), (PlayerObject*) inv->getObjectParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 7:
 		resp->insertLong(get(inv->getAsciiParameter(_param0_get__String_bool_), inv->getBooleanParameter())->_getObjectID());
@@ -206,15 +206,15 @@ Packet* PlayerMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
-Player* PlayerMapAdapter::put(const String& name, Player* player, bool doLock) {
+PlayerObject* PlayerMapAdapter::put(const String& name, PlayerObject* player, bool doLock) {
 	return ((PlayerMapImplementation*) impl)->put(name, player, doLock);
 }
 
-Player* PlayerMapAdapter::get(const String& name, bool doLock) {
+PlayerObject* PlayerMapAdapter::get(const String& name, bool doLock) {
 	return ((PlayerMapImplementation*) impl)->get(name, doLock);
 }
 
-Player* PlayerMapAdapter::remove(const String& name, bool doLock) {
+PlayerObject* PlayerMapAdapter::remove(const String& name, bool doLock) {
 	return ((PlayerMapImplementation*) impl)->remove(name, doLock);
 }
 
@@ -222,11 +222,11 @@ int PlayerMapAdapter::size(bool doLock) {
 	return ((PlayerMapImplementation*) impl)->size(doLock);
 }
 
-Player* PlayerMapAdapter::getNextValue(bool doLock) {
+PlayerObject* PlayerMapAdapter::getNextValue(bool doLock) {
 	return ((PlayerMapImplementation*) impl)->getNextValue(doLock);
 }
 
-Player* PlayerMapAdapter::next(bool doLock) {
+PlayerObject* PlayerMapAdapter::next(bool doLock) {
 	return ((PlayerMapImplementation*) impl)->next(doLock);
 }
 

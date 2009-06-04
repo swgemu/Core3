@@ -44,9 +44,13 @@ which carries forward this exception.
 
 
 import "../TangibleObject";
+import "../creature/CreatureObject";
 
 interface WearableObject implements TangibleObject {
-	WearableObject() {
-		super();
+	WearableObject(unsigned long objectid, int type = 0x1000000) {
+		super(objectid, type);
 	}
+	
+	void onEquip(CreatureObject creature);
+	void onUnequip(CreatureObject creature);
 }

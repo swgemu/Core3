@@ -13,7 +13,7 @@ class IntangibleObject;
 
 class ManufactureSchematicObject : public IntangibleObject {
 public:
-	ManufactureSchematicObject();
+	ManufactureSchematicObject(unsigned long long objectid);
 
 protected:
 	ManufactureSchematicObject(DummyConstructorParameter* param);
@@ -55,7 +55,7 @@ public:
 	ManufactureSchematicObject* _this;
 
 public:
-	ManufactureSchematicObjectServant();
+	ManufactureSchematicObjectServant(unsigned long long objectid, int type);
 	virtual ~ManufactureSchematicObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

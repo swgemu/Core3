@@ -44,8 +44,8 @@ which carries forward this exception.
 
 #include "GuildObjectImplementation.h"
 
-GuildObjectImplementation::GuildObjectImplementation()
-		: GuildObjectServant() {
+GuildObjectImplementation::GuildObjectImplementation(uint64 objectid)
+		: GuildObjectServant(objectid, GUILD) {
 
 }
 

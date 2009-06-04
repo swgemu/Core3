@@ -8,12 +8,14 @@
 
 #include "../TangibleObject.h"
 
+#include "../creature/CreatureObject.h"
+
 /*
  *	WearableObjectStub
  */
 
-WearableObject::WearableObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new WearableObjectImplementation();
+WearableObject::WearableObject(unsigned long long objectid, int type) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new WearableObjectImplementation(objectid, type);
 	_impl->_setStub(this);
 }
 
@@ -21,6 +23,32 @@ WearableObject::WearableObject(DummyConstructorParameter* param) : TangibleObjec
 }
 
 WearableObject::~WearableObject() {
+}
+
+void WearableObject::onEquip(CreatureObject* creature) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+		method.addObjectParameter(creature);
+
+		method.executeWithVoidReturn();
+	} else
+		((WearableObjectImplementation*) _impl)->onEquip(creature);
+}
+
+void WearableObject::onUnequip(CreatureObject* creature) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addObjectParameter(creature);
+
+		method.executeWithVoidReturn();
+	} else
+		((WearableObjectImplementation*) _impl)->onUnequip(creature);
 }
 
 /*
@@ -34,11 +62,25 @@ Packet* WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		onEquip((CreatureObject*) inv->getObjectParameter());
+		break;
+	case 7:
+		onUnequip((CreatureObject*) inv->getObjectParameter());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void WearableObjectAdapter::onEquip(CreatureObject* creature) {
+	return ((WearableObjectImplementation*) impl)->onEquip(creature);
+}
+
+void WearableObjectAdapter::onUnequip(CreatureObject* creature) {
+	return ((WearableObjectImplementation*) impl)->onUnequip(creature);
 }
 
 /*
@@ -76,7 +118,7 @@ DistributedObjectAdapter* WearableObjectHelper::createAdapter(DistributedObjectS
  *	WearableObjectServant
  */
 
-WearableObjectServant::WearableObjectServant() : TangibleObjectImplementation() {
+WearableObjectServant::WearableObjectServant(unsigned long long objectid, int type) : TangibleObjectImplementation(objectid, type) {
 	_classHelper = WearableObjectHelper::instance();
 }
 

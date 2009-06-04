@@ -45,7 +45,7 @@ which carries forward this exception.
 import "../IntangibleObject";
 
 interface DraftSchematicObject implements IntangibleObject {
-	DraftSchematicObject() {
-		super();
+	DraftSchematicObject(unsigned long objectid) {
+		super(objectid, int type);
 	}
 }

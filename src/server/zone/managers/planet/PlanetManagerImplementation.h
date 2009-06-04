@@ -46,37 +46,14 @@ which carries forward this exception.
 #define PLANETMANAGERIMPLEMENTATION_H_
 
 #include "engine/engine.h"
-
-#include "../../../db/ServerDatabase.h"
-
 #include "../../Zone.h"
-
-#include "../creature/CreatureManager.h"
-#include "../structure/StructureManager.h"
-#include "../bank/BankManager.h"
-
-#include "../player/PlayerManager.h"
-#include "../player/PlayerMap.h"
-
 #include "PlanetManager.h"
 
 
-class Zone;
-class CreatureManager;
-class StructureManager;
-class BankManager;
 class ZoneProcessServerImplementation;
-class ChatManager;
-
 class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, public Logger {
 	Zone* zone;
 	ZoneProcessServerImplementation* server;
-
-	CreatureManager* creatureManager;
-	StructureManager* structureManager;
-	BankManager* bankManager;
-	PlayerManager* playerManager;
-    PlayerMap* playerMap;
 
 public:
 	PlanetManagerImplementation(Zone* zone, ZoneProcessServerImplementation* serv);

@@ -44,8 +44,8 @@ which carries forward this exception.
 
 #include "WaypointObjectImplementation.h"
 
-WaypointObjectImplementation::WaypointObjectImplementation()
-		: WaypointObjectServant() {
+WaypointObjectImplementation::WaypointObjectImplementation(uint64 objectid)
+		: WaypointObjectServant(objectid, WAYPOINTOBJECT) {
 
 }
 

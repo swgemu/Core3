@@ -46,118 +46,20 @@ which carries forward this exception.
 #define RADIALMANAGER_H_
 
 #include "engine/engine.h"
+#include "../../objects/intangible/player/PlayerObject.h"
 
-class RadialItem;
-class MountCreature;
 class ObjectMenuResponse;
-class Player;
-class SceneObject;
-class GuildTerminal;
-class BankTerminal;
-class SurveyTool;
-class CraftingTool;
-class Weapon;
-class Armor;
-class InstallationObject;
-class HarvesterObject;
-class VehicleDeed;
-
 class RadialManager {
-
 private:
-	ObjectMenuResponse* parseDefaults(Player* player, uint64 objectid, Packet* pack);
+	ObjectMenuResponse* parseDefaults(PlayerObject* player, uint64 objectid, Packet* pack);
 
 public:
 	RadialManager();
 
-	void handleRadialRequest(Player* player, Packet* pack);
-	void handleRadialSelect(Player* player, Packet* pack);
-
-	void sendDefaultRadialResponse(Player* player, ObjectMenuResponse* omr);
-	void sendRadialResponseForBazaar(uint64 objectId, Player* player);
-
-	void handleSelection(int radialID, Player* player, SceneObject* obj);
-	void handleVehicleStore(SceneObject* obj);
-	void handleVehicleGenerate(SceneObject* obj);
-	void handleTrade(Player* player, SceneObject* obj);
-	void handleWearableColorChange(Player* player, SceneObject* obj);
-	void handleSlicing(Player* player, SceneObject* obj);
-	void handleRepair(Player* player, SceneObject* obj);
-	void handleVehicleRepair(SceneObject* obj);
-	void handleRemovePowerup(Player* player, SceneObject* obj);
-
-	void sendRadialResponseForVehicleDeed(Player* player, VehicleDeed* deed, ObjectMenuResponse* omr);
-
-	void handleOpenCraftingToolHopper(Player* player, SceneObject* obj);
-	void handleHarvest(Player* player, SceneObject* obj, int type);
-
-	//Guildterminal
-	void handleGuildCreationTag(Player* player);
-	void handleGuildSponsor(Player* player);
-	void handleGuildSponsored(Player* player);
-	void handleGuildInformation(Player* player);
-	void handleGuildDisband(Player* player);
-	void handleGuildNameChange(Player* player);
-	void handleGuildInformationMembers(Player* player);
-	void handleGuildTransferLeader(Player* player);
-
-	//Bankterminal
-	void handleBankStorage(Player* player);
-
-	//Surveytools
-	void sendRadialResponseForSurveyTools(Player* player, SurveyTool* surveyTool, ObjectMenuResponse* omr);
-	void sendRadialResponseForSurveyToolRange(Player* player, SceneObject* obj);
-
-	//Dice
-	void handleDiceRoll(Player* player, SceneObject* obj, int dnum);
-	void handleDiceConfigure(Player* player, SceneObject* obj, int dsides);
-
-	//Watch / Listen
-	void handleEntertainerActions(Player* player, SceneObject* obj);
-
-	void handleItemDrop(Player* player, SceneObject* obj);
-
-	//Teach
-	void handleTeach(SceneObject* obj, Player* trainer);
-
-	//camp
-	void handleDisbandCamp(Player* player,SceneObject* obj);
-	void handleCampInfo(Player* player,SceneObject* obj);
-	//Insurance
-	void handleInsureAllItems(Player* player, SceneObject* obj);
-
-	void handleSetObjectName(Player* player, SceneObject* obj);
-
-	//Structure Terminal
-	void handleManageHarvester(Player* player, SceneObject* obj);
-	void handleStructurePermissionList(Player* player, SceneObject* obj, const String& listname);
-	void handleStructurePrivacy(Player* player, SceneObject* obj);
-	void handleStructureTransferRequest(Player* player, SceneObject* obj);
-	void handleStructureStatus(Player* player, SceneObject* obj);
-	void handleStructureDestroy(Player* player, SceneObject* obj);
-	void handleStructureDeclareResidence(Player* player, SceneObject* obj);
-	void handleStructurePayMaintenance(Player* player, SceneObject* obj);
-	void handleStructureDepositPower(Player* player, SceneObject* obj);
-	void handleStructureCreateVendor(Player* player, SceneObject* obj);
-	void handleGiveVendorMaintenance(Player* player, SceneObject* obj);
-
-
-	//Healing
-	void handleHealWound(Player* player, SceneObject* obj, uint8 attribute = 9);
-	void handleHealEnhance(Player* player, SceneObject* obj, uint8 attribute = 9);
-
-	//Factories
-	void handleInsertFactorySchematic(Player* player, SceneObject* obj);
-	void handleViewFactoryIngredients(Player* player, SceneObject* obj);
-	void handleViewFactoryInput(Player* player, SceneObject* obj);
-	void handleViewFactoryOutput(Player* player, SceneObject* obj);
-	void handleFactoryRun(Player* player, SceneObject* obj);
-
-	//pet
-	void handlePetCall(SceneObject* obj);
-	void handlePetStore(SceneObject* obj);
-	void handlePetTraining(SceneObject* obj,int command);
-	void handlePetTrainMount(SceneObject* obj);
+	void handleRadialRequest(PlayerObject* player, Packet* pack);
+	void handleRadialSelect(PlayerObject* player, Packet* pack);
+	void sendDefaultRadialResponse(PlayerObject* player, ObjectMenuResponse* omr);
+	void handleSelection(int radialID, PlayerObject* player, SceneObject* obj);
 
 };
 

@@ -62,7 +62,7 @@ public:
 
 
 public:
-	ArmorObjectImplementation();
+	ArmorObjectImplementation(uint64 objectid, int type = ARMOR);
 	~ArmorObjectImplementation();
 };
 

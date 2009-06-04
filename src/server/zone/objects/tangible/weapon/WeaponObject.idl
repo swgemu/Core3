@@ -45,7 +45,7 @@ which carries forward this exception.
 import "../TangibleObject";
 
 interface WeaponObject implements TangibleObject {
-	WeaponObject() {
-		super();
+	WeaponObject(unsigned long objectid, int type = 0x20000) {
+		super(objectid, type);
 	}
 }

@@ -13,7 +13,7 @@ class TangibleObject;
 
 class TerminalObject : public TangibleObject {
 public:
-	TerminalObject();
+	TerminalObject(unsigned long long objectid, int type = 4000);
 
 protected:
 	TerminalObject(DummyConstructorParameter* param);
@@ -55,7 +55,7 @@ public:
 	TerminalObject* _this;
 
 public:
-	TerminalObjectServant();
+	TerminalObjectServant(unsigned long long objectid, int type);
 	virtual ~TerminalObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

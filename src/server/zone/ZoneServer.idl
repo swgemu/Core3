@@ -51,7 +51,6 @@ import "managers/guild/GuildManager";
 import "managers/player/PlayerManager";
 import "managers/crafting/CraftingManager";
 import "managers/item/ItemManager";
-import "managers/resource/ResourceManager";
 import "managers/auction/AuctionManager";
 import "managers/bank/BankManager";
 import "managers/mission/MissionManager";
@@ -120,7 +119,6 @@ interface ZoneServer {
 	UserManager getUserManager();
 	CraftingManager getCraftingManager();
 	ItemManager getItemManager();
-	ResourceManager getResourceManager();
 	AuctionManager getAuctionManager();
 	BankManager getBankManager();
 	MissionManager getMissionManager();

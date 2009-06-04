@@ -12,8 +12,8 @@
  *	BazaarTerminalObjectStub
  */
 
-BazaarTerminalObject::BazaarTerminalObject() : TerminalObject(DummyConstructorParameter::instance()) {
-	_impl = new BazaarTerminalObjectImplementation();
+BazaarTerminalObject::BazaarTerminalObject(unsigned long long objectid) : TerminalObject(DummyConstructorParameter::instance()) {
+	_impl = new BazaarTerminalObjectImplementation(objectid);
 	_impl->_setStub(this);
 }
 
@@ -76,7 +76,7 @@ DistributedObjectAdapter* BazaarTerminalObjectHelper::createAdapter(DistributedO
  *	BazaarTerminalObjectServant
  */
 
-BazaarTerminalObjectServant::BazaarTerminalObjectServant() : TerminalObjectImplementation() {
+BazaarTerminalObjectServant::BazaarTerminalObjectServant(unsigned long long objectid, int type) : TerminalObjectImplementation(objectid, type) {
 	_classHelper = BazaarTerminalObjectHelper::instance();
 }
 

@@ -12,8 +12,8 @@
  *	TangibleObjectStub
  */
 
-TangibleObject::TangibleObject() : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new TangibleObjectImplementation();
+TangibleObject::TangibleObject(unsigned long long objectid, int type) : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new TangibleObjectImplementation(objectid, type);
 	_impl->_setStub(this);
 }
 
@@ -21,6 +21,45 @@ TangibleObject::TangibleObject(DummyConstructorParameter* param) : SceneObject(p
 }
 
 TangibleObject::~TangibleObject() {
+}
+
+void TangibleObject::getCustomizationString(String& appearance) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+		method.addAsciiParameter(appearance);
+
+		method.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->getCustomizationString(appearance);
+}
+
+unsigned int TangibleObject::getNewMovementUpdateCounter(unsigned char count) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addUnsignedCharParameter(count);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getNewMovementUpdateCounter(count);
+}
+
+unsigned int TangibleObject::getNewDefenderUpdateCounter(unsigned char count) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addUnsignedCharParameter(count);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getNewDefenderUpdateCounter(count);
 }
 
 /*
@@ -34,11 +73,32 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__String_));
+		break;
+	case 7:
+		resp->insertInt(getNewMovementUpdateCounter(inv->getUnsignedCharParameter()));
+		break;
+	case 8:
+		resp->insertInt(getNewDefenderUpdateCounter(inv->getUnsignedCharParameter()));
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void TangibleObjectAdapter::getCustomizationString(String& appearance) {
+	return ((TangibleObjectImplementation*) impl)->getCustomizationString(appearance);
+}
+
+unsigned int TangibleObjectAdapter::getNewMovementUpdateCounter(unsigned char count) {
+	return ((TangibleObjectImplementation*) impl)->getNewMovementUpdateCounter(count);
+}
+
+unsigned int TangibleObjectAdapter::getNewDefenderUpdateCounter(unsigned char count) {
+	return ((TangibleObjectImplementation*) impl)->getNewDefenderUpdateCounter(count);
 }
 
 /*
@@ -76,7 +136,7 @@ DistributedObjectAdapter* TangibleObjectHelper::createAdapter(DistributedObjectS
  *	TangibleObjectServant
  */
 
-TangibleObjectServant::TangibleObjectServant() : SceneObjectImplementation() {
+TangibleObjectServant::TangibleObjectServant(unsigned long long objectid, int type) : SceneObjectImplementation(objectid, type) {
 	_classHelper = TangibleObjectHelper::instance();
 }
 

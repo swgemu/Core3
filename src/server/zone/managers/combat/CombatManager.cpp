@@ -46,4 +46,3 @@ which carries forward this exception.
 
 CombatManager::CombatManager() {
 }
-}

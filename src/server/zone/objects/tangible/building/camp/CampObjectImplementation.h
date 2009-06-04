@@ -51,10 +51,10 @@ class CampObjectImplementation : public CampObjectServant {
 protected:
 
 public:
-	CampObjectImplementation();
+	CampObjectImplementation(uint64 objectid);
 	~CampObjectImplementation();
 
-	virtual void disband(Player* player);
+	virtual void disband(PlayerObject* player);
 };
 
 #endif /* CAMPOBJECTIMPLEMENTATION_H_ */

@@ -44,8 +44,8 @@ which carries forward this exception.
 
 #include "WeaponObjectImplementation.h"
 
-WeaponObjectImplementation::WeaponObjectImplementation()
-		: WeaponObjectServant() {
+WeaponObjectImplementation::WeaponObjectImplementation(uint64 objectid, int type)
+		: WeaponObjectServant(objectid, type) {
 
 }
 

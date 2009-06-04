@@ -20,7 +20,7 @@ public:
 	}
 
 	bool activate() {
-		planet->tutorialStepWelcome(player);
+		//planet->tutorialStepWelcome(player);
 
 		return true;
 	}

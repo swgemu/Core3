@@ -44,8 +44,8 @@ which carries forward this exception.
 
 #include "ManufactureSchematicObjectImplementation.h"
 
-ManufactureSchematicObjectImplementation::ManufactureSchematicObjectImplementation()
-		: ManufactureSchematicObjectServant() {
+ManufactureSchematicObjectImplementation::ManufactureSchematicObjectImplementation(uint64 objectid)
+		: ManufactureSchematicObjectServant(objectid, MANUFACTURESCHEMATIC) {
 
 }
 

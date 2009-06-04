@@ -58,6 +58,30 @@ which carries forward this exception.
 #include "managers/auction/AuctionManager.h"
 #include "managers/sui/SuiManager.h"
 
+#include "packets/charcreation/ClientCreateCharacter.h"
+#include "packets/charcreation/ClientCreateCharacterFailed.h"
+#include "packets/charcreation/ClientRandomNameResponse.h"
+#include "packets/object/ObjectControllerMessage.h"
+#include "packets/player/FactionResponseMessage.h"
+#include "packets/player/GetMapLocationsResponseMessage.h"
+#include "packets/player/GuildResponseMessage.h"
+#include "packets/player/NewbieTutorialRequest.h"
+#include "packets/player/PlayerMoneyResponseMessage.h"
+#include "packets/player/PlayerObjectDeltaMessage9.h"
+#include "packets/ui/CommoditiesItemTypeListResponse.h"
+#include "packets/ui/CreateTicketResponseMessage.h"
+#include "packets/ui/GetArticleResponseMessage.h"
+#include "packets/ui/GetTicketsResponseMessage.h"
+#include "packets/ui/NewTicketActivityResponseMessage.h"
+#include "packets/ui/RequestCategoriesResponseMessage.h"
+#include "packets/ui/SearchKnowledgebaseResponseMessage.h"
+#include "packets/ui/VerifyPlayerNameResponseMessage.h"
+#include "packets/zone/ClientIDMessage.h"
+#include "packets/zone/ClientPermissionsMessage.h"
+#include "packets/zone/ConnectPlayerResponseMessage.h"
+#include "packets/zone/SelectCharacter.h"
+#include "packets/zone/CmdSceneReady.h"
+
 #include "objects/terrain/PlanetNames.h"
 #include "objects/tangible/terminal/bazaar/BazaarTerminalObject.h"
 
@@ -335,14 +359,14 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 
 			server->unlock();
 
-			player->reload(client);
+			//player->reload(client);
 
 			playerManager->updatePlayerCreditsFromDatabase(player);
 			playerManager->putPlayer(player);
 		} else {
 			//Loading the player from the database
 			player = playerManager->load(characterID);
-			player->setZone(server->getZone(player->getZoneIndex()));
+			player->setZone(server->getZone(player->getZoneID()));
 
 			server->addObject(player, false);
 
@@ -351,7 +375,7 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 			try {
 				player->wlock();
 
-				player->load(client);
+				//player->load(client);
 
 				player->unlock();
 			} catch (...) {
@@ -384,7 +408,7 @@ void ZonePacketHandler::handleCmdSceneReady(Message* pack) {
 	try {
 		player->wlock();
 
-		player->notifySceneReady();
+		//player->notifySceneReady();
 
 		//If they are on the tutorial terrain, send audio.
 
@@ -417,18 +441,23 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 		return;
 	}
 
-	Player* player = new Player();
-	player->initializePlayer();
+	//This appears to be the entry point for character creation.
+	info("Creating a character...", true);
+
+	Player* player = new Player((uint64) 0);
+	//player->initializePlayer();
 
 	player->setZoneProcessServer(processServer);
 
 	ClientCreateCharacter::parse(pack, player);
 
-	player->create(client);
+	//The packet has been parsed, and the player has been setup based on creation process.
+
+	//player->create(client);
 
 	String species = player->getStfName();
 	String firstName = player->getFirstName();
-	String name = player->getCharacterName().toString();
+	String name = player->getCustomName().toString();
 
 	player->info("attempting to create Player " + firstName);
 
@@ -451,12 +480,15 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 			return;
 		}
 
-		player->deploy("Player " + firstName);
+		//player->deploy("Player " + firstName);
+		player->deploy();
 
 		server->unlock();
 
 		//Try to finish completing character creation.
 		msg = playerManager->attemptPlayerCreation(player, client);
+
+		//A basemessage is returned indicating the type of error to send.
 		client->sendMessage(msg);
 	} catch (Exception& e) {
 		error(e.getMessage());
@@ -513,18 +545,18 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 			case 0x71:
 				//msg << "light chaging position (" << player->getPositionX() << ", " << player->getPositionY() << ") ->";
 
-				if (ObjectControllerMessage::parseDataTransform(player, pack)) {
-					player->updateZone(true);
+				//if (ObjectControllerMessage::parseDataTransform(player, pack)) {
+					//player->updateZone(true);
 
 					//player->info(msg);
-				}
+				//}
 
 				break;
 			case 0xF1:
 				uint64 parent = ObjectControllerMessage::parseDataTransformWithParent(player, pack);
 
-				if (parent != 0)
-					player->updateZoneWithParent(parent, true);
+				//if (parent != 0)
+					//player->updateZoneWithParent(parent, true);
 
 				break;
 			}
@@ -534,18 +566,18 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 			case 0x71:
 				//msg << "chaging position (" << player->getPositionX() << ", " << player->getPositionY() << ") ->";
 
-				if (ObjectControllerMessage::parseDataTransform(player, pack)) {
-					player->updateZone();
+				//if (ObjectControllerMessage::parseDataTransform(player, pack)) {
+					//player->updateZone();
 
 					//player->info(msg);
-				}
+				//}
 
 				break;
 			case 0xF1:
 				parent = ObjectControllerMessage::parseDataTransformWithParent(player, pack);
 
-				if (parent != 0)
-					player->updateZoneWithParent(parent);
+				//if (parent != 0)
+					//player->updateZoneWithParent(parent);
 
 				break;
 			case 0x115:
@@ -713,10 +745,12 @@ void ZonePacketHandler::handleFactionRequestMessage(Message* pack) {
 
 	try {
 		player->wlock();
-		FactionPointList * list = player->getFactionList();
+		//FactionPointList * list = player->getFactionList();
 
-		FactionResponseMessage* frm = new FactionResponseMessage("", player->getFactionPoints("rebel"), player->getFactionPoints("imperial"));
+		//FactionResponseMessage* frm = new FactionResponseMessage("", player->getFactionPoints("rebel"), player->getFactionPoints("imperial"));
+		FactionResponseMessage* frm = new FactionResponseMessage("", 0, 0);
 
+		/*
 		frm->addFactionCount(list->size());
 		for (int i=0; i < list->size(); i++) {
 			String faction = list->get(i);
@@ -728,7 +762,8 @@ void ZonePacketHandler::handleFactionRequestMessage(Message* pack) {
 			String faction = list->get(i);
 			int points = player->getFactionPoints(faction);
 			frm->addFactionPoint(points);
-		}
+		}*/
+
 		frm->insertInt(0); //Client crashes with more than one faction if this isn't included
 
 		player->sendMessage(frm);
@@ -788,11 +823,11 @@ void ZonePacketHandler::handleStomachRequestMessage(Message* pack) {
 	try {
 		player->wlock();
 
-		PlayerObjectDeltaMessage9* delta = new PlayerObjectDeltaMessage9(player->getPlayerObject());
-		delta->updateStomachFilling();
-		delta->close();
+		//PlayerObjectDeltaMessage9* delta = new PlayerObjectDeltaMessage9(player->getPlayerObject());
+		//delta->updateStomachFilling();
+		//delta->close();
 
-		player->sendMessage(delta);
+		//player->sendMessage(delta);
 
 		player->unlock();
 	} catch (...) {
@@ -802,6 +837,7 @@ void ZonePacketHandler::handleStomachRequestMessage(Message* pack) {
 }
 
 void ZonePacketHandler::handleGuildRequestMessage(Message* pack) {
+	//TODO: Revisit this.
     ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
     Player* player = client->getPlayer();
 
@@ -820,7 +856,7 @@ void ZonePacketHandler::handleGuildRequestMessage(Message* pack) {
     		return;
     	}
 
-    	if (obj->isNonPlayerCreature() || obj->isPlayer()) {
+    	if (obj->isPlayer()) {
 
     		CreatureObject* creo = (CreatureObject*) obj;
 
@@ -879,9 +915,9 @@ void ZonePacketHandler::handleTravelListRequest(Message* pack) {
 	Zone* zone = server->getZone(id);
 
 	if (zone != NULL) {
-		PlanetManager* planetManager = zone->getPlanetManager();
-
-		planetManager->sendPlanetTravelPointListResponse(player);
+		//PlanetManager* planetManager = zone->getPlanetManager();
+		//planetManager->sendPlanetTravelPointListResponse(player);
+		//TODO: Redo this monstrosity.
 	}
 }
 
@@ -980,7 +1016,7 @@ void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
 	if (unk2 > 1)
 		pack->parseUnicode(value2);
 
-	processServer->getSuiManager()->handleSuiEventNotification(opcode, player, cancel, value.toString(), value2.toString());
+	//processServer->getSuiManager()->handleSuiEventNotification(opcode, player, cancel, value.toString(), value2.toString());
 }
 
 void ZonePacketHandler::handleAbortTradeMessage(Message* pack) {
@@ -1063,8 +1099,8 @@ void ZonePacketHandler::handleBazaarAddItem(Message* pack, bool auction) {
    	UnicodeString description;
    	pack->parseUnicode(description);
 
-   	BazaarManager* bazaarManager = server->getBazaarManager();
-   	bazaarManager->addSaleItem(player, objectid, bazaarid, description, price, duration, auction);
+   	//BazaarManager* bazaarManager = server->getBazaarManager();
+   	//bazaarManager->addSaleItem(player, objectid, bazaarid, description, price, duration, auction);
 }
 
 void ZonePacketHandler::handleBazaarScreens(Message* pack) {
@@ -1086,6 +1122,7 @@ void ZonePacketHandler::handleBazaarScreens(Message* pack) {
 	char unk1 = pack->parseByte();
 	int offset = pack->parseShort();
 
+	/*
    	BazaarManager* bazaarManager = server->getBazaarManager();
    	if (extent == 0)
    		bazaarManager->getBazaarData(player, bazaarId, screen, extent, category, counter, offset);
@@ -1097,7 +1134,7 @@ void ZonePacketHandler::handleBazaarScreens(Message* pack) {
    		RegionBazaar* bazaar = bazaarManager->getBazaar(bazaarId);
    		if (bazaar != NULL)
    			bazaar->getBazaarData(player, bazaarId, screen, extent, category, counter, offset);
-   	}
+   	}*/
 }
 
 void ZonePacketHandler::handleBazaarBuy(Message* pack) {
@@ -1111,8 +1148,8 @@ void ZonePacketHandler::handleBazaarBuy(Message* pack) {
 	uint32 price1 = pack->parseInt();
 	uint32 price2 = pack->parseInt();
 
-   	BazaarManager* bazaarManager = server->getBazaarManager();
-   	bazaarManager->buyItem(player, objectId, price1, price2);
+    //BazaarManager* bazaarManager = server->getBazaarManager();
+   	//bazaarManager->buyItem(player, objectId, price1, price2);
 
 }
 
@@ -1126,9 +1163,8 @@ void ZonePacketHandler::handleRetrieveAuctionItem(Message* pack) {
 	uint64 objectId = pack->parseLong();
 	uint64 bazaarId = pack->parseLong();
 
-   	BazaarManager* bazaarManager = server->getBazaarManager();
-   	bazaarManager->retrieveItem(player, objectId, bazaarId);
-
+    //BazaarManager* bazaarManager = server->getBazaarManager();
+   	//bazaarManager->retrieveItem(player, objectId, bazaarId);
 }
 
 void ZonePacketHandler::handleGetAuctionItemAttributes(Message* pack) {
@@ -1140,8 +1176,8 @@ void ZonePacketHandler::handleGetAuctionItemAttributes(Message* pack) {
 
 	uint64 objectId = pack->parseLong();
 
-   	BazaarManager* bazaarManager = server->getBazaarManager();
-   	bazaarManager->getItemAttributes(player, objectId);
+   	//BazaarManager* bazaarManager = server->getBazaarManager();
+   	//bazaarManager->getItemAttributes(player, objectId);
 }
 
 void ZonePacketHandler::handleVerifyPlayerNameMessage(Message* pack) {

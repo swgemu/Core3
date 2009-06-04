@@ -46,7 +46,7 @@ which carries forward this exception.
 import "../IntangibleObject";
 
 interface ManufactureSchematicObject implements IntangibleObject {
-	ManufactureSchematicObject() {
-		super();
+	ManufactureSchematicObject(unsigned long objectid) {
+		super(objectid, int type);
 	}
 }

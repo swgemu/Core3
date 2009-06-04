@@ -62,7 +62,6 @@ class CraftingManager;
 class ItemManager;
 class GuildManager;
 class ChatManager;
-class ResourceManager;
 class MissionManager;
 class AuctionManager;
 class BankManager;
@@ -85,7 +84,6 @@ class ZoneServerImplementation : public DatagramServiceThread, public ZoneServer
 	ItemManager* itemManager;
 	ChatManager* chatManager;
 	GuildManager* guildManager;
-	ResourceManager* resourceManager;
 	MissionManager* missionManager;
 	AuctionManager* auctionManager;
 	BankManager* bankManager;
@@ -215,10 +213,6 @@ public:
 
 	inline BankManager* getBankManager() {
 		return bankManager;
-	}
-
-	inline ResourceManager* getResourceManager() {
-		return resourceManager;
 	}
 
 	inline AuctionManager* getAuctionManager() {

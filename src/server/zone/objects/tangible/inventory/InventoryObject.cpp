@@ -12,8 +12,8 @@
  *	InventoryObjectStub
  */
 
-InventoryObject::InventoryObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new InventoryObjectImplementation();
+InventoryObject::InventoryObject(unsigned long long objectid) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new InventoryObjectImplementation(objectid);
 	_impl->_setStub(this);
 }
 
@@ -76,7 +76,7 @@ DistributedObjectAdapter* InventoryObjectHelper::createAdapter(DistributedObject
  *	InventoryObjectServant
  */
 
-InventoryObjectServant::InventoryObjectServant() : TangibleObjectImplementation() {
+InventoryObjectServant::InventoryObjectServant(unsigned long long objectid, int type) : TangibleObjectImplementation(objectid, type) {
 	_classHelper = InventoryObjectHelper::instance();
 }
 

@@ -41,12 +41,15 @@ gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
+
 #include "CreatureObjectImplementation.h"
 
-CreatureObjectImplementation::CreatureObjectImplementation()
-		: CreatureObjectServant() {
+#include "../../../packets/creature/CreatureObjectDeltaMessage6.h"
+
+CreatureObjectImplementation::CreatureObjectImplementation(uint64 objectid, int type)
+		: CreatureObjectServant(objectid, type) {
 	complexity = 10.0f;
-	volume = 0x0085E5CA;
+	volume = 0x0085E5CA; //TODO: Why is it this value?
 
 	height = 1.0f;
 	pvpStatusBitmask = 0x10;
@@ -57,7 +60,63 @@ CreatureObjectImplementation::CreatureObjectImplementation()
 	terrainNegotiation = 1.0f;
 	acceleration = DEFAULT_ACCEL;
 	deceleration = 1.0f;
+
+	attributes[CreatureAttribute::HEALTH] = 1000;
+	attributes[CreatureAttribute::STRENGTH] = 1000;
+	attributes[CreatureAttribute::CONSTITUTION] = 1000;
+	attributes[CreatureAttribute::ACTION] = 1000;
+	attributes[CreatureAttribute::QUICKNESS] = 1000;
+	attributes[CreatureAttribute::STAMINA] = 1000;
+	attributes[CreatureAttribute::MIND] = 1000;
+	attributes[CreatureAttribute::FOCUS] = 1000;
+	attributes[CreatureAttribute::WILLPOWER] = 1000;
 }
 
 CreatureObjectImplementation::~CreatureObjectImplementation() {
+}
+
+/**
+ * Updates the creatures current target and updates all nearby players.
+ * \param targetid The objectid of the new target.
+ */
+void CreatureObjectImplementation::updateTargetObject(uint64 targetid, bool updateclients) {
+	if (zone == NULL)
+		return;
+
+	if (targetObject != NULL && targetid == targetObject->getObjectID())
+		return;
+
+	SceneObject* targetobj = zone->lookupObject(targetid);
+
+	if (targetobj == NULL)
+		return;
+
+	info("Updating target.");
+
+	targetObject = targetobj;
+
+	if (updateclients) {
+		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
+		dcreo6->updateTargetID(targetid);
+		dcreo6->close();
+
+		broadcastMessage(dcreo6);
+	}
+}
+
+void CreatureObjectImplementation::updateTargetObject(SceneObject* target, bool updateclients) {
+	if (target == NULL || targetObject == target)
+		return;
+
+	info("Updating target.");
+
+	targetObject = target;
+
+	if (updateclients) {
+		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
+		dcreo6->updateTargetID(target->getObjectID());
+		dcreo6->close();
+
+		broadcastMessage(dcreo6);
+	}
 }

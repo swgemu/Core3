@@ -13,7 +13,7 @@ class TangibleObject;
 
 class DeedObject : public TangibleObject {
 public:
-	DeedObject();
+	DeedObject(unsigned long long objectid, int type = 800000);
 
 protected:
 	DeedObject(DummyConstructorParameter* param);
@@ -55,7 +55,7 @@ public:
 	DeedObject* _this;
 
 public:
-	DeedObjectServant();
+	DeedObjectServant(unsigned long long objectid, int type);
 	virtual ~DeedObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

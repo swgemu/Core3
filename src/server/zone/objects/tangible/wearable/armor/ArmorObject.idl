@@ -45,7 +45,7 @@ which carries forward this exception.
 import "../WearableObject";
 
 interface ArmorObject implements WearableObject {
-	ArmorObject() {
-		super();
+	ArmorObject(unsigned long objectid, int type = 0x100) {
+		super(objectid, type);
 	}
 }

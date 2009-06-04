@@ -51,7 +51,7 @@ class CreatureImplementation : public CreatureServant {
 protected:
 
 public:
-	CreatureImplementation();
+	CreatureImplementation(uint64 objectid);
 	~CreatureImplementation();
 };
 

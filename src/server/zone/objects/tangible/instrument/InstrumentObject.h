@@ -13,7 +13,7 @@ class TangibleObject;
 
 class InstrumentObject : public TangibleObject {
 public:
-	InstrumentObject();
+	InstrumentObject(unsigned long long objectid);
 
 protected:
 	InstrumentObject(DummyConstructorParameter* param);
@@ -55,7 +55,7 @@ public:
 	InstrumentObject* _this;
 
 public:
-	InstrumentObjectServant();
+	InstrumentObjectServant(unsigned long long objectid, int type);
 	virtual ~InstrumentObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

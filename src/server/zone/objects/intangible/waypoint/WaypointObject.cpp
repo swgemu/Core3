@@ -12,8 +12,8 @@
  *	WaypointObjectStub
  */
 
-WaypointObject::WaypointObject() : IntangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new WaypointObjectImplementation();
+WaypointObject::WaypointObject(unsigned long long objectid) : IntangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new WaypointObjectImplementation(objectid);
 	_impl->_setStub(this);
 }
 
@@ -76,7 +76,7 @@ DistributedObjectAdapter* WaypointObjectHelper::createAdapter(DistributedObjectS
  *	WaypointObjectServant
  */
 
-WaypointObjectServant::WaypointObjectServant() : IntangibleObjectImplementation() {
+WaypointObjectServant::WaypointObjectServant(unsigned long long objectid, int type) : IntangibleObjectImplementation(objectid, type) {
 	_classHelper = WaypointObjectHelper::instance();
 }
 

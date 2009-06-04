@@ -88,7 +88,7 @@ public:
 	void handleClientPermissionsMessage(Message* pack);
 	void handleSelectCharacter(Message* pack);
 	void handleCmdSceneReady(Message* packet);
-	void handleLoginClientID(Message* packet);
+	void handleLoginClientId(Message* packet);
 	void handleDeleteCharacterMessage(Message* pack);
 
 };

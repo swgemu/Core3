@@ -46,7 +46,7 @@ which carries forward this exception.
 import "../TangibleObject";
 
 interface InstallationObject implements TangibleObject {
-	InstallationObject() {
-		super();
+	InstallationObject(unsigned long objectid, int type = 0x1000) {
+		super(objectid, type);
 	}
 }

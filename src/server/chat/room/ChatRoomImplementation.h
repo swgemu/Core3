@@ -48,144 +48,14 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 class ZoneServer;
-class Player;
-
 #include "ChatRoom.h"
 
 class ChatRoomImplementation : public ChatRoomServant, public Mutex {
 	ZoneServer* server;
 
-	String name;
-	String fullPath;
-
-	String owner;
-	String creator;
-
-	UnicodeString title;
-	uint32 roomID;
-
-	ManagedReference<ChatRoom> parent;
-
-	//SortedVector<Player*> playerList;
-	VectorMap<String, Player*> playerList;
-	VectorMap<String, ChatRoom*> subRooms;
-
-	bool isPublicRoom;
-
 public:
-	ChatRoomImplementation(ZoneServer* serv, const String& Name, uint32 channelId);
-	ChatRoomImplementation(ZoneServer* serv, ChatRoom* Parent, const String& Name, uint32 channelId);
-
+	ChatRoomImplementation(ZoneServer* serv);
 	virtual ~ChatRoomImplementation();
-
-	void sendTo(Player* player);
-	void sendDestroyTo(Player* player);
-
-	void addSubRoom(ChatRoom* channel);
-
-	void removeSubRoom(ChatRoom* channel);
-
-	ChatRoom* getSubRoom(int i);
-	ChatRoom* getSubRoom(const String& name);
-
-	void addPlayer(Player* player, bool doLock = true);
-	void removePlayer(Player* player, bool doLock = true);
-	void removePlayer(const String& player);
-
-	void broadcastMessage(BaseMessage* msg);
-	void broadcastMessage(Vector<BaseMessage*>& messages);
-
-	bool hasPlayer(Player* player);
-	bool hasPlayer(const String& name);
-
-	void removeAllPlayers();
-
-	void setPrivate() {
-		isPublicRoom = false;
-	}
-
-	void setPublic() {
-		isPublicRoom = true;
-	}
-
-	inline bool isPublic() {
-		return isPublicRoom == true;
-	}
-
-	inline bool isPrivate() {
-		return isPublicRoom == false;
-	}
-
-	Player* getPlayer(int idx) {
-		return playerList.get(idx);
-	}
-
-	int getPlayerSize() {
-		return playerList.size();
-	}
-
-	void setName(const String& Name) {
-		name = Name;
-	}
-
-	inline String& getName() {
-		return name;
-	}
-
-	inline String& getFullPath() {
-		return fullPath;
-	}
-
-	inline String& getOwner() {
-		return owner;
-	}
-
-	inline String& getCreator() {
-		return creator;
-	}
-
-	inline UnicodeString& getTitle() {
-		return title;
-	}
-
-	String& getServerName();
-
-	inline void setOwner(const String& Owner) {
-		owner = Owner;
-	}
-
-	inline void setCreator(const String& Creator) {
-		creator = Creator;
-	}
-
-	inline void setTitle(const String& Title) {
-		title = UnicodeString(Title);
-	}
-
-	inline uint32 getRoomID() {
-		return roomID;
-	}
-
-	int getSubRoomsSize() {
-		return subRooms.size();
-	}
-
-	ChatRoom* getParent() {
-		return parent;
-	}
-
-	int compareTo(ChatRoom* obj) {
-		if (roomID < obj->getRoomID())
-			return 1;
-		else if (roomID > obj->getRoomID())
-			return -1;
-		else
-			return 0;
-	}
-
-	friend class ChatRoomList;
-	friend class ChatOnCreateRoom;
-
 };
 
 #endif /*CHATROOMIMPLEMENTATION_H_*/

@@ -46,167 +46,18 @@ which carries forward this exception.
 #define CREATUREMANAGERIMPLEMENTATION_H_
 
 #include "engine/engine.h"
-
-#include "../../../db/ServerDatabase.h"
-
-#include "../../ZoneServer.h"
-#include "../../Zone.h"
-
-#include "../player/ProfessionManager.h"
-
-//#include "../../objects/tangible/creature/Creature.h"
-//#include "../../objects/creature/bluefrog/BlueFrogCreature.h"
-//#include "../../objects/creature/bluefrog/BlueFrogCreatureImplementation.h"
-
-#include "CreatureMap.h"
-//#include "LairMap.h"
-#include "SpawnInfoMap.h"
-
 #include "CreatureManager.h"
 
 class CreatureManagerImplementation : public CreatureManagerServant, public Thread, public Mutex, public Lua {
-/*
-	Zone* zone;
-	ScheduleManager* scheduler;
-
-	CreatureMap* creatureMap;
-	LairMap* lairMap;
-
-	EventQueue creatureActivityQueue;
-
-	float globalNPCRegen;
-
-	ZoneProcessServerImplementation* server;
-
-	static SpawnInfoMap* spawnInfoMap;
-	static CreatureManagerImplementation* instance;
-	*/
 
 public:
-	static const int LINE_LAYOUT = 1;
-	static const int GRID_LAYOUT = 2;
-	static const int RANDOM_LAYOUT = 3;
 
 public:
 	CreatureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* serv);
 	~CreatureManagerImplementation();
 
-	/*
-	void init();
-	void loadCreatures();
-
-	*/
 	void run();
 	void stop();
-	/*
-
-	// creature loading methods
-	void loadTrainers();
-	void loadRecruiters();
-	void loadStaticCreatures();
-	void loadBlueFrogs();
-
-	void load(Creature* creature);
-	void unloadCreature(Creature* creature);
-
-	// creation methods
-	//Creature* spawnCreature(const String& stfname, const String& name, int objCrc, float x, float y, int bitmask = 0x00, bool doLock = true);
-	//Creature* spawnCreature(String objname, uint64 cellid, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true, float height = 1);
-
-	bool verifyCreatureSpawn(String objname);
-	bool verifyCreatureNameByStfName(String stfName);
-
-	Creature* spawnCreature(uint32 objcrc, uint64 cellid, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true, float height = 1);
-	Creature* spawnCreature(String sftName, uint64 cellid, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true, float height = 1);
-
-	TrainerCreature* spawnTrainer(const String& profession, const String& stfname, const String& name, int objCrc, uint64 cell, float x, float y, float z, float oy, float ow, bool doLock = true);
-	ShuttleCreature* spawnShuttle(const String& Planet, const String& City, Coordinate* playerSpawnPoint, uint64 cellid,float x, float y, float z, uint32 tax = 0, bool starport = false, bool doLock = true);
-	RecruiterCreature* spawnRecruiter(float x, float y, float oY, float oW, uint8 type = 1, uint64 cellid = 0, bool doLock = true);
-	BlueFrogCreature* spawnBlueFrog(float x, float y, float oY, float oW, int type = 0, uint64 cellid = 0, bool doLock = true);
-
-	//CreatureGroup* spawnCreatureGroup(int count, const String& stfname, const String& name, int objCrc, float x, float y, int bitmask = 0x00, int layout = LINE_LAYOUT);
-
-	LairObject* spawnLair(const String& type, float x, float y, float z, bool doLock = true);
-
-	void despawnCreature(Creature* creature);
-	void respawnCreature(Creature* creature);
-
-	uint32 getCreatureCrc(String name);
-
-	void unloadManager();
-
-	void registerFunctions();
-	void registerGlobals();
-
-	void loadCreatureFile() {
-		runFile("scripts/creatures/main.lua");
-	}
-
-	void loadObjectFile() {
-		runFile("scripts/sceneobjects/main.lua");
-	}
-
-	void setCreatureAttributes(Creature* creature, LuaObject* creatureConfig);
-
-	bool hotLoadCreature(String name);
-
-	//creature naming
-	String makeStormTrooperName();
-	String makeDarkTrooperName();
-	String makeCreatureName(String charname);
-
-	//lua functions
-	static int runCreatureFile(lua_State* L);
-	static int runObjectFile(lua_State* L);
-
-	static int addCreature(lua_State *L);
-	static int addLair(lua_State * L);
-	static int testServer(lua_State * L);
-
-	static int addBlueFrog(lua_State *L);
-
-	void queueActivity(CreatureImplementation* creature, uint32 time = 1000) {
-		creature->update(time);
-		creatureActivityQueue.add(creature);
-	}
-
-	void dequeueActivity(CreatureImplementation* creature) {
-		creatureActivityQueue.remove(creature);
-	}
-
-	void insertCreaturePet(CreaturePet* pet, bool doLock = true);
-	void setPetDefaultAttributes(CreaturePet* creature, bool newPet ,bool doLock = true);
-	void convertPetToMount(CreaturePet* creature,bool doLock = true);
-	void changeStatsToBaby(Creature* creature);
-
-
-
-private:
-	uint64 getNextCreatureID();
-
-public:
-	// setters and getters
-	inline Creature* getCreature(uint64& oid) {
-		return creatureMap->get(oid);
-	}
-
-	inline void addCreature(Creature* creature) {
-		creatureMap->put(creature->getObjectID(), creature);
-	}
-
-	inline Zone* getZone() {
-		return zone;
-	}
-
-	inline void setGlobalNPCRegen(float value) {
-		globalNPCRegen = value;
-	}
-
-	inline float getGlobalNPCRegen() {
-		return globalNPCRegen;
-	}
-	*/
-
 };
 
 

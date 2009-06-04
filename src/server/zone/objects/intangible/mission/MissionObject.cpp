@@ -12,8 +12,8 @@
  *	MissionObjectStub
  */
 
-MissionObject::MissionObject() : IntangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new MissionObjectImplementation();
+MissionObject::MissionObject(unsigned long long objectid) : IntangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new MissionObjectImplementation(objectid);
 	_impl->_setStub(this);
 }
 
@@ -76,7 +76,7 @@ DistributedObjectAdapter* MissionObjectHelper::createAdapter(DistributedObjectSt
  *	MissionObjectServant
  */
 
-MissionObjectServant::MissionObjectServant() : IntangibleObjectImplementation() {
+MissionObjectServant::MissionObjectServant(unsigned long long objectid, int type) : IntangibleObjectImplementation(objectid, type) {
 	_classHelper = MissionObjectHelper::instance();
 }
 

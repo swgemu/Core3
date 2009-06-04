@@ -13,7 +13,7 @@ class TangibleObject;
 
 class InventoryObject : public TangibleObject {
 public:
-	InventoryObject();
+	InventoryObject(unsigned long long objectid);
 
 protected:
 	InventoryObject(DummyConstructorParameter* param);
@@ -55,7 +55,7 @@ public:
 	InventoryObject* _this;
 
 public:
-	InventoryObjectServant();
+	InventoryObjectServant(unsigned long long objectid, int type);
 	virtual ~InventoryObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

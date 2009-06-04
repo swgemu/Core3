@@ -45,11 +45,8 @@ which carries forward this exception.
 import "server/zone/Zone";
 include "server/zone/ZoneProcessServerImplementation";
 
-import "../../objects/tangible/creature/player/Player";
-
 interface PlanetManager {
 	PlanetManager(Zone zone, ZoneProcessServerImplementation processor) {
-		super(zone, processor);
 	}
 
 	void init();

@@ -12,8 +12,8 @@
  *	ResourceContainerObjectStub
  */
 
-ResourceContainerObject::ResourceContainerObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new ResourceContainerObjectImplementation();
+ResourceContainerObject::ResourceContainerObject(unsigned long long objectid) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new ResourceContainerObjectImplementation(objectid);
 	_impl->_setStub(this);
 }
 
@@ -76,7 +76,7 @@ DistributedObjectAdapter* ResourceContainerObjectHelper::createAdapter(Distribut
  *	ResourceContainerObjectServant
  */
 
-ResourceContainerObjectServant::ResourceContainerObjectServant() : TangibleObjectImplementation() {
+ResourceContainerObjectServant::ResourceContainerObjectServant(unsigned long long objectid, int type) : TangibleObjectImplementation(objectid, type) {
 	_classHelper = ResourceContainerObjectHelper::instance();
 }
 

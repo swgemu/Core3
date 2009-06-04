@@ -41,78 +41,14 @@ gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
-
-include "engine/util/Coordinate";
-
 import "server/zone/Zone";
 include "server/zone/ZoneProcessServerImplementation";
-
-//import "../../objects/tangible/creature/Creature";
-import "../../objects/tangible/creature/CreatureObject";
-//import "../../objects/creature/CreatureGroup";
-//import "../../objects/tangible/lair/LairObject";
-
-//import "../../objects/creature/trainer/TrainerCreature";
-//import "../../objects/creature/recruiter/RecruiterCreature";
-//import "../../objects/creature/shuttle/ShuttleCreature";
-//import "../../objects/creature/pet/CreaturePet";
 
 interface CreatureManager {
 	CreatureManager(Zone zone, ZoneProcessServerImplementation processor) {
 		super(zone, processor);
 	}
 	
-	/*
-	void init();
-
-	void loadCreatures();
-	*/
 	void start();
 	void stop();
-	/*
-
-	// creature loading methods
-	void loadTrainers();
-	void loadRecruiters();
-	void loadBlueFrogs();
-
-	void load(Creature creature);
-	void unloadCreature(Creature creature);
-
-	// creation methods
-
-	//Creature spawnCreature(String objname, unsigned long cellid, float x, float y, int bitmask = 0, boolean baby = false, boolean doLock = true, float height = 1);
-	boolean verifyCreatureSpawn(String name);
-	boolean verifyCreatureNameByStfName(String stfName);
-
-	Creature spawnCreature(unsigned int objcrc, unsigned long cellid, float x, float y, int bitmask = 0, boolean baby = false, boolean doLock = true, float height = 1);
-	Creature spawnCreature(String stfName, unsigned long cellid, float x, float y, int bitmask = 0, boolean baby = false, boolean doLock = true, float height = 1);
-
-	TrainerCreature spawnTrainer(const String profession, const String stfname, const String name, int objCrc, unsigned long cell, float x, float y, float z, float oy, float ow, boolean doLock = true);
-	ShuttleCreature spawnShuttle(const String Planet, const String City, Coordinate playerSpawnPoint, unsigned long cellid, float x, float y, float z, int tax = 0, boolean starport = false, boolean doLock = true);
-	RecruiterCreature spawnRecruiter(float x, float y, float oY, float oW, unsigned char type = 1, unsigned long cellid = 0, boolean doLock = true);
-
-	LairObject spawnLair(const String type, float x, float y, float z, boolean doLock = true);
-
-	unsigned int getCreatureCrc(String name);
-	boolean hotLoadCreature(String name);
-
-	void registerFunctions();
-	void registerGlobals();
-
-	void loadCreatureFile();
-
-	//void queueActivity(Creature creature, unsigned int time = 1000);
-
-	// setters and getters
-	Creature getCreature(unsigned long oid);
-	void addCreature(Creature creature);
-
-	void setGlobalNPCRegen(float value);
-	float getGlobalNPCRegen();
-
-	void insertCreaturePet(CreaturePet pet, boolean doLock = true);
-	void setPetDefaultAttributes(CreaturePet creature, boolean newPet, boolean doLock = true);
-	void convertPetToMount(CreaturePet creature,  boolean doLock = true);
-	*/
 }

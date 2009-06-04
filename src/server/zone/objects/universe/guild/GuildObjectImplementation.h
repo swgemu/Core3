@@ -51,7 +51,7 @@ class GuildObjectImplementation : public GuildObjectServant {
 protected:
 
 public:
-	GuildObjectImplementation();
+	GuildObjectImplementation(uint64 objectid);
 	~GuildObjectImplementation();
 
 	//Setters

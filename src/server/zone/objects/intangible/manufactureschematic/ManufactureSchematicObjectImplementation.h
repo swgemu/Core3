@@ -51,7 +51,7 @@ class ManufactureSchematicObjectImplementation : public ManufactureSchematicObje
 protected:
 
 public:
-	ManufactureSchematicObjectImplementation();
+	ManufactureSchematicObjectImplementation(uint64 objectid);
 	~ManufactureSchematicObjectImplementation();
 };
 

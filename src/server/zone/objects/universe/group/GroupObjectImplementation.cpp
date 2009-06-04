@@ -44,8 +44,8 @@ which carries forward this exception.
 
 #include "GroupObjectImplementation.h"
 
-GroupObjectImplementation::GroupObjectImplementation()
-		: GroupObjectServant() {
+GroupObjectImplementation::GroupObjectImplementation(uint64 objectid)
+		: GroupObjectServant(objectid, GROUP) {
 
 }
 

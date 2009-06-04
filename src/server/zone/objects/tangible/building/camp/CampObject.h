@@ -13,7 +13,7 @@ class BuildingObject;
 
 class CampObject : public BuildingObject {
 public:
-	CampObject();
+	CampObject(unsigned long long objectid);
 
 protected:
 	CampObject(DummyConstructorParameter* param);
@@ -55,7 +55,7 @@ public:
 	CampObject* _this;
 
 public:
-	CampObjectServant();
+	CampObjectServant(unsigned long long objectid);
 	virtual ~CampObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

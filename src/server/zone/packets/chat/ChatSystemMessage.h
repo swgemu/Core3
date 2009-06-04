@@ -51,7 +51,7 @@ which carries forward this exception.
 class ChatSystemMessage : public BaseMessage {
 public:
 
-	ChatSystemMessage(UnicodeString& message) : BaseMessage() {
+	ChatSystemMessage(const UnicodeString& message) : BaseMessage() {
 		insertShort(0x05);
 		insertInt(0x6D2A6413);  // CRC
 

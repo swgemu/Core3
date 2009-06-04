@@ -52,7 +52,7 @@ protected:
 
 public:
 	static const int DRAFTSCHEMATIC = 0x801;
-	static const int MANUFACTURINGSCHEMATIC = 0x802;
+	static const int MANUFACTURESCHEMATIC = 0x802;
 	static const int MISSIONOBJECT = 0x803;
 	static const int WAYPOINTOBJECT = 0x805;
 	static const int QUESTOBJECT = 0x806;
@@ -63,7 +63,7 @@ public:
 	static const int DROIDCONTROLDEVICE = 0x80B;
 
 public:
-	IntangibleObjectImplementation();
+	IntangibleObjectImplementation(uint64 objectid, int type = INTANGIBLE);
 	~IntangibleObjectImplementation();
 };
 

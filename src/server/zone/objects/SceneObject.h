@@ -11,15 +11,97 @@
 
 #include "engine/service/proto/StandaloneBaseMessage.h"
 
+#include "engine/util/QuadTreeEntry.h"
+
+#include "../ZoneProcessServerImplementation.h"
+
+class Zone;
+
+class PlayerObject;
+
 #include "engine/core/ManagedObject.h"
 
 class SceneObject : public ManagedObject {
 public:
+	bool hasChild(unsigned long long objid, bool recursive = false);
+
+	int getContainerSize(bool recursive = false);
+
 	void info(const String& message, bool forcedLog = false);
 
 	void error(const String& message);
 
-	bool isObjectType(int type, bool similar = false);
+	bool destroy();
+
+	void deploy();
+
+	void scheduleUndeploy();
+
+	void undeploy();
+
+	void redeploy();
+
+	void removeUndeploymentEvent();
+
+	void setObjectKeeping(bool keeping);
+
+	void clearUndeploymentEvent();
+
+	bool isUndeploymentScheduled();
+
+	bool isInRange(SceneObject* obj, float range);
+
+	bool isInRange(float x, float y, float range);
+
+	int inRangeObjectCount();
+
+	QuadTreeEntry* getInRangeObject(int idx);
+
+	void addInRangeObject(QuadTreeEntry* obj, bool notifyUpdate = true);
+
+	void removeInRangeObject(QuadTreeEntry* obj);
+
+	bool isInQuadTree();
+
+	QuadTreeEntry* getQuadTreeEntry();
+
+	void broadcastMessage(BaseMessage* msg, int range = 128, bool dolock = true, bool sendself = true);
+
+	void broadcastMessage(StandaloneBaseMessage* msg, int range = 128, bool dolock = true);
+
+	void onDragDrop(PlayerObject* player, SceneObject* target);
+
+	void setParent(SceneObject* obj, unsigned int linktype = 04);
+
+	void setZoneProcessServer(ZoneProcessServerImplementation* srv);
+
+	void setZone(Zone* zne);
+
+	void setDirection(float x, float y, float z, float w);
+
+	void setPosition(float x, float y, float z);
+
+	void setPositionX(float x);
+
+	void setPositionY(float y);
+
+	void setPositionZ(float z);
+
+	void setCustomName(const UnicodeString& customname);
+
+	void setStfFile(const String& stffile);
+
+	void setStfName(const String& stfname);
+
+	SceneObject* getParent();
+
+	unsigned int getLinkType();
+
+	ZoneProcessServerImplementation* getZoneProcessServer();
+
+	Zone* getZone();
+
+	unsigned int getZoneID();
 
 	float getDirectionX();
 
@@ -45,9 +127,13 @@ public:
 
 	unsigned int getObjectCRC();
 
+	unsigned int getObjectType();
+
 	float getComplexity();
 
 	unsigned int getVolume();
+
+	bool isObjectType(int type, bool similar = false);
 
 	bool isPlayer();
 
@@ -72,11 +158,81 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	bool hasChild(unsigned long long objid, bool recursive);
+
+	int getContainerSize(bool recursive);
+
 	void info(const String& message, bool forcedLog);
 
 	void error(const String& message);
 
-	bool isObjectType(int type, bool similar);
+	bool destroy();
+
+	void deploy();
+
+	void scheduleUndeploy();
+
+	void undeploy();
+
+	void redeploy();
+
+	void removeUndeploymentEvent();
+
+	void setObjectKeeping(bool keeping);
+
+	void clearUndeploymentEvent();
+
+	bool isUndeploymentScheduled();
+
+	bool isInRange(SceneObject* obj, float range);
+
+	bool isInRange(float x, float y, float range);
+
+	int inRangeObjectCount();
+
+	QuadTreeEntry* getInRangeObject(int idx);
+
+	void addInRangeObject(QuadTreeEntry* obj, bool notifyUpdate);
+
+	void removeInRangeObject(QuadTreeEntry* obj);
+
+	bool isInQuadTree();
+
+	QuadTreeEntry* getQuadTreeEntry();
+
+	void broadcastMessage(BaseMessage* msg, int range, bool dolock, bool sendself);
+
+	void broadcastMessage(StandaloneBaseMessage* msg, int range, bool dolock);
+
+	void onDragDrop(PlayerObject* player, SceneObject* target);
+
+	void setParent(SceneObject* obj, unsigned int linktype);
+
+	void setZone(Zone* zne);
+
+	void setDirection(float x, float y, float z, float w);
+
+	void setPosition(float x, float y, float z);
+
+	void setPositionX(float x);
+
+	void setPositionY(float y);
+
+	void setPositionZ(float z);
+
+	void setCustomName(const UnicodeString& customname);
+
+	void setStfFile(const String& stffile);
+
+	void setStfName(const String& stfname);
+
+	SceneObject* getParent();
+
+	unsigned int getLinkType();
+
+	Zone* getZone();
+
+	unsigned int getZoneID();
 
 	float getDirectionX();
 
@@ -102,15 +258,22 @@ public:
 
 	unsigned int getObjectCRC();
 
+	unsigned int getObjectType();
+
 	float getComplexity();
 
 	unsigned int getVolume();
+
+	bool isObjectType(int type, bool similar);
 
 	bool isPlayer();
 
 protected:
 	String _param0_info__String_bool_;
 	String _param0_error__String_;
+	UnicodeString _param0_setCustomName__UnicodeString_;
+	String _param0_setStfFile__String_;
+	String _param0_setStfName__String_;
 };
 
 class SceneObjectHelper : public DistributedObjectClassHelper, public Singleton<SceneObjectHelper> {

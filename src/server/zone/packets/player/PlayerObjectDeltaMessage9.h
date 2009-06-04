@@ -47,13 +47,13 @@ which carries forward this exception.
 
 #include "../DeltaMessage.h"
 
-#include "../../objects/player/PlayerObject.h"
-#include "../../objects/player/Player.h"
+#include "../../objects/intangible/player/PlayerObject.h"
+#include "../../objects/tangible/creature/player/Player.h"
 
-#include "../../objects/draftschematic/DraftSchematic.h"
+#include "../../objects/intangible/draftschematic/DraftSchematicObject.h"
 
-#include "../../objects/player/FriendsList.h"
-#include "../../objects/player/IgnoreList.h"
+//#include "../../objects/player/FriendsList.h"
+//#include "../../objects/player/IgnoreList.h"
 
 class PlayerObjectDeltaMessage9 : public DeltaMessage {
 	PlayerObject* play;
@@ -66,7 +66,8 @@ public:
 
 	void startSkillListUpdate(int skillsToUpdate) {
 		startUpdate(0);
-		startList(skillsToUpdate, play->getPlayer()->getNewCreatureSkillsCount(skillsToUpdate));
+		//startList(skillsToUpdate, play->getPlayer()->getNewCreatureSkillsCount(skillsToUpdate));
+		startList(0, 0);
 	}
 
 	void addSkill(const String& name, uint16 idx) {
@@ -102,10 +103,11 @@ public:
 
 	void startUpdateDraftSchematics(int count) {
 
-		Player* player = play->getPlayer();
+		//Player* player = play->getPlayer();
 
 		startUpdate(4);
-		startList(count, player->getDraftSchematicUpdateCount(count));
+		//startList(count, player->getDraftSchematicUpdateCount(count));
+		startList(count, 0);
 	}
 
 	void removeDraftSchematic(uint16 index) {
@@ -114,10 +116,10 @@ public:
 		insertShort(index);
 	}
 
-	void addDraftSchematic(DraftSchematic* draftSchematic) {
-
-		Player* player = play->getPlayer();
-		int index = player->getDraftSchematicMapSize();
+	void addDraftSchematic(DraftSchematicObject* draftSchematic) {
+		//Player* player = play->getPlayer();
+		//int index = player->getDraftSchematicMapSize();
+		int index = 0;
 
 		insertByte(1);
 
@@ -125,43 +127,49 @@ public:
 
 		//insertLong(draftSchematic->getObjectID());
 
-		insertInt(draftSchematic->getSchematicID());
-		insertInt(draftSchematic->getObjectCRC());
+		//insertInt(draftSchematic->getSchematicID());
+		//insertInt(draftSchematic->getObjectCRC());
+		insertInt(0);
+		insertInt(0);
 	}
 
 
-	void changeDraftSchematic(uint16 index, DraftSchematic* draftSchematic) {
+	void changeDraftSchematic(uint16 index, DraftSchematicObject* draftSchematic) {
 
 		insertByte(2);
 		insertShort(index);
 
 		//insertLong(draftSchematic->getObjectID());
-		insertInt(draftSchematic->getSchematicID());
-		insertInt(draftSchematic->getObjectCRC());
+		//insertInt(draftSchematic->getSchematicID());
+		//insertInt(draftSchematic->getObjectCRC());
+		insertInt(0);
+		insertInt(0);
 	}
 
 	void clearDraftSchematics() {
 
-		DraftSchematic* draftSchematic;
-		Player* player = play->getPlayer();
+		//DraftSchematic* draftSchematic;
+		//Player* player = play->getPlayer();
 
 		insertByte(4);
 	}
 
 	void resetDraftSchematics() {
 
-		DraftSchematic* draftSchematic;
-		Player* player = play->getPlayer();
+		//DraftSchematic* draftSchematic;
+		//Player* player = play->getPlayer();
 
 		insertByte(3);
 
-		for(int i = 0; i < player->getDraftSchematicMapSize(); ++i) {
-
-			draftSchematic = player->getDraftSchematicByIndex(i);
+		//for(int i = 0; i < player->getDraftSchematicMapSize(); ++i) {
+		for(int i = 0; i < 0; ++i) {
+			//draftSchematic = player->getDraftSchematicByIndex(i);
 
 			//insertLong(draftSchematic->getObjectID());
-			insertInt(draftSchematic->getSchematicID());
-			insertInt(draftSchematic->getObjectCRC());
+			//insertInt(draftSchematic->getSchematicID());
+			//insertInt(draftSchematic->getObjectCRC());
+			insertInt(0);
+			insertInt(0);
 		}
 	}
 
@@ -172,6 +180,7 @@ public:
 
 
 	void updateFriendsList(){
+		/*
 		FriendsList* friendsList = play->getFriendsList();
 
 		startUpdate(7);
@@ -185,10 +194,11 @@ public:
 
 		for (int i = 0; i < friendsList->getCount(); ++i){
 			insertAscii(friendsList->getFriendsName(i));
-		}
+		}*/
 	}
 
 	void updateIgnoreList(){
+		/*
 		IgnoreList* ignoreList = play->getIgnoreList();
 
 		startUpdate(8);
@@ -202,10 +212,11 @@ public:
 
 		for (int i = 0; i < ignoreList->getCount(); ++i){
 			insertAscii(ignoreList->getIgnoreName(i));
-		}
+		}*/
 	}
 
 	void updateSkilsAndCertifications() {
+		/*
 		Player* player = play->getPlayer();
 
 		int certSize = player->getCertificationListSize();
@@ -222,14 +233,18 @@ public:
 		}
 
 		for (int i = 0; i < certSize; i++)
-			insertAscii(player->getCertification(i));
+			insertAscii(player->getCertification(i));*/
 	}
 
 	void updateStomachFilling() {
-		addIntUpdate(0x0A, play->getFoodFilling());
-		addIntUpdate(0x0B, play->getFoodFillingMax());
-		addIntUpdate(0x0C, play->getDrinkFilling());
-		addIntUpdate(0x0D, play->getDrinkFillingMax());
+		//addIntUpdate(0x0A, play->getFoodFilling());
+		//addIntUpdate(0x0B, play->getFoodFillingMax());
+		//addIntUpdate(0x0C, play->getDrinkFilling());
+		//addIntUpdate(0x0D, play->getDrinkFillingMax());
+		addIntUpdate(0x0A, 0);
+		addIntUpdate(0x0B, 100);
+		addIntUpdate(0x0C, 0);
+		addIntUpdate(0x0D, 100);
 	}
 
 };

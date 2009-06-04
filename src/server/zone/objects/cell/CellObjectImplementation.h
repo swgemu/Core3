@@ -51,7 +51,7 @@ class CellObjectImplementation : public CellObjectServant {
 protected:
 
 public:
-	CellObjectImplementation();
+	CellObjectImplementation(uint64 objectid);
 	~CellObjectImplementation();
 };
 

@@ -13,7 +13,7 @@ class SceneObject;
 
 class CellObject : public SceneObject {
 public:
-	CellObject();
+	CellObject(unsigned long long objectid);
 
 protected:
 	CellObject(DummyConstructorParameter* param);
@@ -55,7 +55,7 @@ public:
 	CellObject* _this;
 
 public:
-	CellObjectServant();
+	CellObjectServant(unsigned long long objectid, int type);
 	virtual ~CellObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

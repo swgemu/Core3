@@ -8,7 +8,7 @@
 
 #include "ZoneServer.h"
 
-#include "objects/tangible/creature/player/Player.h"
+#include "objects/intangible/player/PlayerObject.h"
 
 /*
  *	ZoneClientSessionStub
@@ -117,7 +117,7 @@ void ZoneClientSession::info(const String& msg, bool foredLog) {
 		((ZoneClientSessionImplementation*) _impl)->info(msg, foredLog);
 }
 
-void ZoneClientSession::setPlayer(Player* player) {
+void ZoneClientSession::setPlayer(PlayerObject* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -130,14 +130,14 @@ void ZoneClientSession::setPlayer(Player* player) {
 		((ZoneClientSessionImplementation*) _impl)->setPlayer(player);
 }
 
-Player* ZoneClientSession::getPlayer() {
+PlayerObject* ZoneClientSession::getPlayer() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 14);
 
-		return (Player*) method.executeWithObjectReturn();
+		return (PlayerObject*) method.executeWithObjectReturn();
 	} else
 		return ((ZoneClientSessionImplementation*) _impl)->getPlayer();
 }
@@ -212,7 +212,7 @@ Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		info(inv->getAsciiParameter(_param0_info__String_bool_), inv->getBooleanParameter());
 		break;
 	case 13:
-		setPlayer((Player*) inv->getObjectParameter());
+		setPlayer((PlayerObject*) inv->getObjectParameter());
 		break;
 	case 14:
 		resp->insertLong(getPlayer()->_getObjectID());
@@ -261,11 +261,11 @@ void ZoneClientSessionAdapter::info(const String& msg, bool foredLog) {
 	return ((ZoneClientSessionImplementation*) impl)->info(msg, foredLog);
 }
 
-void ZoneClientSessionAdapter::setPlayer(Player* player) {
+void ZoneClientSessionAdapter::setPlayer(PlayerObject* player) {
 	return ((ZoneClientSessionImplementation*) impl)->setPlayer(player);
 }
 
-Player* ZoneClientSessionAdapter::getPlayer() {
+PlayerObject* ZoneClientSessionAdapter::getPlayer() {
 	return ((ZoneClientSessionImplementation*) impl)->getPlayer();
 }
 

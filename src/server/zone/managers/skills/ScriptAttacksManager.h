@@ -48,91 +48,10 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 class ZoneProcessServerImplementation;
-class SkillList;
-
 class ScriptAttacksManager : public Lua {
-	static ZoneProcessServerImplementation* server;
-	static SkillList* CombatActions;
 
 public:
 	ScriptAttacksManager(ZoneProcessServerImplementation* serv);
-
-	void registerFunctions();
-	void registerGlobals();
-
-	bool loadSkillsFile(SkillList* cmbtActions) {
-		CombatActions = cmbtActions;
-		info("Loading skills...");
-		return runFile("scripts/skills/skills.lua");
-	}
-
-	//lua functions
-	static int RunSkillsFile(lua_State* L);
-
-	// AddSkills functions
-	static int AddRandomPoolAttackTargetSkill(lua_State* L);
-	static int AddDirectPoolAttackTargetSkill(lua_State *L);
-	static int AddForceRandomPoolAttackTargetSkill(lua_State* L);
-	static int AddWeaponlessDotPoolAttackSkill(lua_State *L);
-	static int AddForcePowersPoolAttackTargetSkill(lua_State *L);
-	static int AddForceHealSelfSkill(lua_State* L);
-	static int AddHealSelfSkill(lua_State* L);
-	static int AddDeBuffAttackTargetSkill(lua_State* L);
-	static int AddEnhanceSelfSkill(lua_State* L);
-	static int AddDotPoolAttackTargetSkill(lua_State *L);
-	static int AddChangePostureSelfSkill(lua_State* L);
-	static int AddWoundsDirectPoolAttackTargetSkill(lua_State* L);
-	static int AddCenterOfBeingSkill(lua_State* L);
-	static int AddPassiveSkill(lua_State* L);
-	static int AddMeditateSkill(lua_State* L);
-	static int AddPowerboostSkill(lua_State* L);
-	static int AddHealTargetSkill(lua_State* L);
-	static int AddHealEnhanceTargetSkill(lua_State* L);
-	static int AddHealDamageTargetSkill(lua_State* L);
-	static int AddHealStateTargetSkill(lua_State* L);
-	static int AddHealWoundTargetSkill(lua_State* L);
-	static int AddCureTargetSkill(lua_State* L);
-	static int AddDiagnoseTargetSkill(lua_State* L);
-	static int AddReviveTargetSkill(lua_State* L);
-	static int AddFirstAidTargetSkill(lua_State* L);
-	static int AddTendHealTargetSkill(lua_State* L);
-	static int AddQuickHealTargetSkill(lua_State* L);
-	static int AddMindHealTargetSkill(lua_State* L);
-	static int AddDragTargetSkill(lua_State* L);
-	static int AddCMDotAttackTargetSkill(lua_State* L);
-	static int AddThrowGrenadeTargetSkill(lua_State* L);
-	static int AddPosutreChangeRandomPoolAttackTargetSkill(lua_State *L);
-	static int AddBerserkSelfSkill(lua_State* L);
-	static int AddAimTargetSkill(lua_State* L);
-	static int AddCoverSelfSkill(lua_State* L);
-
-	static int AddEntertainSkill(lua_State* L);
-	static int AddEntertainEffectSkill(lua_State* L);
-	static int AddBandFlourishSkill(lua_State* L);
-	static int AddDanceEffectSkill(lua_State* L);
-	static int AddMusicEffectSkill(lua_State* L);
-	static int AddForceRunSelfSkill(lua_State *L);
-
-	static int AddCamoSkill(lua_State* L);
-	static int AddForageSkill(lua_State* L);
-	static int AddThrowRandomPoolTargetSkill(lua_State *L);
-	static int AddThrowDirectPoolTargetSkill(lua_State *L);
-	static int AddHeavyWeaponSkill(lua_State *L);
-	static int AddAreaTrackSkill(lua_State* L);
-	static int AddThreatenAttackTargetSkill(lua_State *L);
-
-	// Squad Leader
-	static int AddSystemGroupMessageSkill(lua_State *L);
-	static int AddBoostMoraleGroupSkill(lua_State *L);
-	static int AddVolleyFireGroupSkill(lua_State* L);
-	static int AddFormupGroupSkill(lua_State* L);
-	static int AddRallyGroupSkill(lua_State* L);
-	static int AddRetreatGroupSkill(lua_State *L);
-
-	// ch skill
-	static int AddTameTargetSkill(lua_State* L);
-	static int AddEmboldenPetsSkill(lua_State* L);
-	static int AddEnragePetsSkill(lua_State* L);
 };
 
 

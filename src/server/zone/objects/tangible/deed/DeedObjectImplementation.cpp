@@ -44,8 +44,8 @@ which carries forward this exception.
 
 #include "DeedObjectImplementation.h"
 
-DeedObjectImplementation::DeedObjectImplementation()
-		: DeedObjectServant() {
+DeedObjectImplementation::DeedObjectImplementation(uint64 objectid, int type)
+		: DeedObjectServant(objectid, type) {
 
 }
 
@@ -53,10 +53,10 @@ DeedObjectImplementation::~DeedObjectImplementation() {
 
 }
 
-void DeedObjectImplementation::use(Player* player) {
+void DeedObjectImplementation::use(PlayerObject* player) {
 
 }
 
-SceneObject* DeedObjectImplementation::generateObject(Player* player) {
-
+SceneObject* DeedObjectImplementation::generateObject(PlayerObject* player) {
+	return NULL;
 }

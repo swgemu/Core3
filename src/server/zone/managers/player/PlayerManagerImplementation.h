@@ -46,134 +46,17 @@ which carries forward this exception.
 #define PLAYERMANAGERIMPLEMENTATION_H_
 
 #include "engine/engine.h"
-
-#include "../../../db/ServerDatabase.h"
-
-#include "PlayerMap.h"
-
-#include "../../ZoneProcessServerImplementation.h"
-#include "../../objects/intangible/manufactureschematic/ManufactureSchematicObject.h"
-
 #include "PlayerManager.h"
-
-#include "../../objects/tangible/creature/player/Player.h"
-
-
-class ProfessionManager;
-class ItemManager;
-class GuildManager;
-class Player;
-class PlayerImplementation;
+#include "../../ZoneProcessServerImplementation.h"
 
 class PlayerManagerImplementation : public PlayerManagerServant {
 	ZoneProcessServerImplementation* server;
 
-	PlayerMap* playerMap;
-
-	ItemManager* itemManager;
-
-	GuildManager* guildManager;
-
-	float xpScale;
-
-private:
-	void loadFromDatabase(Player* player);
-	void loadWaypoints(Player* player);
-	void loadFactionPoints(Player * player);
-	void loadBadges(Player * player);
-	void saveFactionPoints(Player * player);
-	void saveBadges(Player * player);
-
 public:
-	PlayerManagerImplementation(ItemManager* mgr, ZoneProcessServerImplementation* srv);
-
+	PlayerManagerImplementation(ZoneProcessServerImplementation* srv);
 	~PlayerManagerImplementation();
 
 	void stop();
-
-	bool create(Player* player, uint32 sessionkey);
-
-	Player* load(uint64 charid);
-
-	void unload(Player* player);
-
-	void save(Player* player);
-
-	//void savePlayers();
-
-	void deletePlayerFromDatabase(Player* adminPlayer, String firstName);
-
-	bool validateName(const String& name);
-	bool hasAdminRights(uint32 characterID);
-
-	BaseMessage* checkPlayerName(const String& name, const String& species);
-	BaseMessage* attemptPlayerCreation(Player* player, ZoneClientSession* client);
-
-	void doBankTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo);
-	void doCashTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo);
-	bool modifyOfflineBank(Player* sender, String playerName, uint32 creditAmount);
-	bool modifyRecipientOfflineBank(String recipient, uint32 creditAmount);
-	void updatePlayerCreditsFromDatabase(Player* player);
-	void updatePlayerCreditsToDatabase(Player* player);
-
-	void updatePlayerAppearanceToDatabase(Player* player);
-	void updatePlayerBaseHAMToDatabase(Player* player);
-
-	void handleAbortTradeMessage(Player* player, bool doLock = true);
-	void handleAddItemToTradeWindow(Player* player, uint64 itemID);
-	bool addItemToTrade(Player* player, Player* receiver, SceneObject* item, SceneObject* destinationContainer);
-	void handleGiveMoneyMessage(Player* player, uint32 value);
-	void handleAcceptTransactionMessage(Player* player);
-	void handleUnAcceptTransactionMessage(Player* player);
-	void handleVerifyTradeMessage(Player* player);
-
-	void loadConsentList(Player* player);
-	void updateConsentList(Player* player);
-
-	void updateOtherFriendlists(Player* player,bool status);
-	void sendUpdateMessagesToFriends(Player* player, bool status);
-	void populateReverseFriendList(Player* player);
-
-	void updateGuildStatus(Player* player);
-
-	void moveItem(Player* sender, Player* receiver, TangibleObject* item);
-	void moveItem(Player* sender, Player* receiver, SceneObject* item);
-
-	//bool checkSpeedHack(TransformVariables* postions);
-
-	// setters
-	inline void setGuildManager(GuildManager* gmanager) {
-		guildManager = gmanager;
-	}
-
-	// getters
-	inline PlayerMap* getPlayerMap() {
-		return playerMap;
-	}
-
-	inline Player* getPlayer(const String& name) {
-		return playerMap->get(name);
-	}
-
-	inline Player* putPlayer(Player* player) {
-		return playerMap->put(player->getFirstName(), player);
-	}
-
-	inline Player* removePlayer(const String& firstname) {
-		return playerMap->remove(firstname);
-	}
-
-	inline GuildManager* getGuildManager() {
-		return guildManager;
-	}
-
-	inline void setXpScale(float scale) {
-		xpScale = scale;
-	}
-
-	inline float getXpScale() {
-		return xpScale;
-	}
 };
 
 #endif /*PLAYERMANAGERIMPLEMENTATION_H_*/

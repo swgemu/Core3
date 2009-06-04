@@ -42,78 +42,9 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "engine/service/proto/BaseMessage";
-
 import "../../zone/ZoneServer";
 
-import "../../zone/objects/tangible/creature/player/Player";
-
 interface ChatRoom {
-	ChatRoom(ZoneServer server, const String name, unsigned int cid) {
-		super(server, name, cid);
+	ChatRoom(ZoneServer server) {
 	}
-	
-	ChatRoom(ZoneServer server, ChatRoom parent, const String name, unsigned int cid) {
-		super(server, parent, name, cid);
-	}
-
-	void sendTo(Player player);
-	void sendDestroyTo(Player player);
-	
-	void addSubRoom(ChatRoom channel);
-	void removeSubRoom(ChatRoom channel);
-	ChatRoom getSubRoom(int i);
-	ChatRoom getSubRoom(const String name);
-	
-	void addPlayer(Player player, boolean doLock = true);
-	void removePlayer(Player player, boolean doLock = true);
-	void removePlayer(const String player);
-	
-	void broadcastMessage(BaseMessage msg);
-	//void broadcastMessage(Vector<Message> messages);
-	
-	boolean hasPlayer(Player player);
-	boolean hasPlayer(const String name);
-	
-	void removeAllPlayers();
-	
-	void setPrivate();
-	
-	void setPublic();
-	
-	boolean isPublic();
-	
-	boolean isPrivate();
-	
-	Player getPlayer(int idx);
-	
-	int getPlayerSize();
-	
-	void setName(const String Name);
-	
-	String getName();
-	
-	String getFullPath();
-	
-	String getOwner();
-	
-	String getCreator();
-	
-	UnicodeString getTitle();
-	
-	String getServerName();
-	
-	void setOwner(const String Owner);
-	
-	void setCreator(const String Creator);
-	
-	void setTitle(const String Title);
-	
-	unsigned int getRoomID();
-	
-	int getSubRoomsSize();
-		
-	ChatRoom getParent();
-	
-	int compareTo(ChatRoom obj);
 }

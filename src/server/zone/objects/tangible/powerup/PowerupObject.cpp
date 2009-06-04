@@ -8,12 +8,16 @@
 
 #include "../TangibleObject.h"
 
+#include "../../intangible/player/PlayerObject.h"
+
+#include "../../SceneObject.h"
+
 /*
  *	PowerupObjectStub
  */
 
-PowerupObject::PowerupObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new PowerupObjectImplementation();
+PowerupObject::PowerupObject(unsigned long long objectid, int type) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new PowerupObjectImplementation(objectid, type);
 	_impl->_setStub(this);
 }
 
@@ -21,6 +25,20 @@ PowerupObject::PowerupObject(DummyConstructorParameter* param) : TangibleObject(
 }
 
 PowerupObject::~PowerupObject() {
+}
+
+void PowerupObject::onDragDrop(PlayerObject* player, SceneObject* target) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+		method.addObjectParameter(player);
+		method.addObjectParameter(target);
+
+		method.executeWithVoidReturn();
+	} else
+		((PowerupObjectImplementation*) _impl)->onDragDrop(player, target);
 }
 
 /*
@@ -34,11 +52,18 @@ Packet* PowerupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		onDragDrop((PlayerObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void PowerupObjectAdapter::onDragDrop(PlayerObject* player, SceneObject* target) {
+	return ((PowerupObjectImplementation*) impl)->onDragDrop(player, target);
 }
 
 /*
@@ -76,7 +101,7 @@ DistributedObjectAdapter* PowerupObjectHelper::createAdapter(DistributedObjectSt
  *	PowerupObjectServant
  */
 
-PowerupObjectServant::PowerupObjectServant() : TangibleObjectImplementation() {
+PowerupObjectServant::PowerupObjectServant(unsigned long long objectid, int type) : TangibleObjectImplementation(objectid, type) {
 	_classHelper = PowerupObjectHelper::instance();
 }
 

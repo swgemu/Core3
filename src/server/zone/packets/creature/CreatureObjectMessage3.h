@@ -57,12 +57,18 @@ public:
 		insertByte(creo->getPosture()); //Posture
 		insertByte(creo->getFactionRank()); //Faction Rank
 
-		insertLong(creo->getMountObjectID()); //LinkedCreatureID (Mount)
+		uint64 mountobjectid = 0;
+		CreatureObject* mount = creo->getMount();
+
+		if (mount != NULL)
+			mountobjectid = mount->getObjectID();
+
+		insertLong(mountobjectid); //LinkedCreatureID (Mount)
 
 		insertFloat(creo->getHeight()); //Height
 		insertInt(creo->getShockWounds()); //BattleFatigue
 
-		insertLong(creo->getStateBitmask()); //StateBitmask
+		insertLong(creo->getStatesBitmask()); //StateBitmask
 
 		insertInt(9); // List Size
 		insertInt(creo->getWoundsUpdateCounter());

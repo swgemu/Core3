@@ -12,8 +12,8 @@
  *	DeedObjectStub
  */
 
-DeedObject::DeedObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new DeedObjectImplementation();
+DeedObject::DeedObject(unsigned long long objectid, int type) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new DeedObjectImplementation(objectid, type);
 	_impl->_setStub(this);
 }
 
@@ -76,7 +76,7 @@ DistributedObjectAdapter* DeedObjectHelper::createAdapter(DistributedObjectStub*
  *	DeedObjectServant
  */
 
-DeedObjectServant::DeedObjectServant() : TangibleObjectImplementation() {
+DeedObjectServant::DeedObjectServant(unsigned long long objectid, int type) : TangibleObjectImplementation(objectid, type) {
 	_classHelper = DeedObjectHelper::instance();
 }
 

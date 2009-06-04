@@ -42,6 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#include "engine/engine.h"
 #include "AuctionManagerImplementation.h"
 
 AuctionManagerImplementation::AuctionManagerImplementation()

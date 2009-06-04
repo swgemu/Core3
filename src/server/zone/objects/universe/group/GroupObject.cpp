@@ -12,8 +12,8 @@
  *	GroupObjectStub
  */
 
-GroupObject::GroupObject() : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new GroupObjectImplementation();
+GroupObject::GroupObject(unsigned long long objectid) : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new GroupObjectImplementation(objectid);
 	_impl->_setStub(this);
 }
 
@@ -76,7 +76,7 @@ DistributedObjectAdapter* GroupObjectHelper::createAdapter(DistributedObjectStub
  *	GroupObjectServant
  */
 
-GroupObjectServant::GroupObjectServant() : SceneObjectImplementation() {
+GroupObjectServant::GroupObjectServant(unsigned long long objectid, int type) : SceneObjectImplementation(objectid, type) {
 	_classHelper = GroupObjectHelper::instance();
 }
 

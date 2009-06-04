@@ -44,8 +44,8 @@ which carries forward this exception.
 
 #include "TerminalObjectImplementation.h"
 
-TerminalObjectImplementation::TerminalObjectImplementation()
-		: TerminalObjectServant() {
+TerminalObjectImplementation::TerminalObjectImplementation(uint64 objectid, int type)
+		: TerminalObjectServant(objectid, type) {
 
 }
 

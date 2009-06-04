@@ -42,3 +42,13 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#include "InventoryObjectImplementation.h"
+
+InventoryObjectImplementation::InventoryObjectImplementation(uint64 objectid)
+		: InventoryObjectServant(objectid, CONTAINER) {
+
+}
+
+InventoryObjectImplementation::~InventoryObjectImplementation() {
+
+}

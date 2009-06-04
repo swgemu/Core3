@@ -13,7 +13,7 @@ class TangibleObject;
 
 class BuildingObject : public TangibleObject {
 public:
-	BuildingObject();
+	BuildingObject(unsigned long long objectid);
 
 protected:
 	BuildingObject(DummyConstructorParameter* param);
@@ -55,7 +55,7 @@ public:
 	BuildingObject* _this;
 
 public:
-	BuildingObjectServant();
+	BuildingObjectServant(unsigned long long objectid, int type);
 	virtual ~BuildingObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

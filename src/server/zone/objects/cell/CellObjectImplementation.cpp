@@ -44,8 +44,8 @@ which carries forward this exception.
 
 #include "CellObjectImplementation.h"
 
-CellObjectImplementation::CellObjectImplementation()
-		: CellObjectServant() {
+CellObjectImplementation::CellObjectImplementation(uint64 objectid)
+		: CellObjectServant(objectid, CELL) {
 
 }
 

@@ -51,7 +51,7 @@ class BazaarTerminalObjectImplementation : public BazaarTerminalObjectServant {
 protected:
 
 public:
-	BazaarTerminalObjectImplementation();
+	BazaarTerminalObjectImplementation(uint64 objectid);
 	~BazaarTerminalObjectImplementation();
 };
 

@@ -12,8 +12,8 @@
  *	CreatureStub
  */
 
-Creature::Creature() : CreatureObject(DummyConstructorParameter::instance()) {
-	_impl = new CreatureImplementation();
+Creature::Creature(unsigned long long objectid) : CreatureObject(DummyConstructorParameter::instance()) {
+	_impl = new CreatureImplementation(objectid);
 	_impl->_setStub(this);
 }
 
@@ -76,7 +76,7 @@ DistributedObjectAdapter* CreatureHelper::createAdapter(DistributedObjectStub* o
  *	CreatureServant
  */
 
-CreatureServant::CreatureServant() : CreatureObjectImplementation() {
+CreatureServant::CreatureServant(unsigned long long objectid, int type) : CreatureObjectImplementation(objectid, type) {
 	_classHelper = CreatureHelper::instance();
 }
 

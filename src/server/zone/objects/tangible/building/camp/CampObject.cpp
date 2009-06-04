@@ -12,8 +12,8 @@
  *	CampObjectStub
  */
 
-CampObject::CampObject() : BuildingObject(DummyConstructorParameter::instance()) {
-	_impl = new CampObjectImplementation();
+CampObject::CampObject(unsigned long long objectid) : BuildingObject(DummyConstructorParameter::instance()) {
+	_impl = new CampObjectImplementation(objectid);
 	_impl->_setStub(this);
 }
 
@@ -76,7 +76,7 @@ DistributedObjectAdapter* CampObjectHelper::createAdapter(DistributedObjectStub*
  *	CampObjectServant
  */
 
-CampObjectServant::CampObjectServant() : BuildingObjectImplementation() {
+CampObjectServant::CampObjectServant(unsigned long long objectid) : BuildingObjectImplementation(objectid) {
 	_classHelper = CampObjectHelper::instance();
 }
 

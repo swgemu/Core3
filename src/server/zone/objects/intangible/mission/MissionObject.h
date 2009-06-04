@@ -13,7 +13,7 @@ class IntangibleObject;
 
 class MissionObject : public IntangibleObject {
 public:
-	MissionObject();
+	MissionObject(unsigned long long objectid);
 
 protected:
 	MissionObject(DummyConstructorParameter* param);
@@ -55,7 +55,7 @@ public:
 	MissionObject* _this;
 
 public:
-	MissionObjectServant();
+	MissionObjectServant(unsigned long long objectid, int type);
 	virtual ~MissionObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

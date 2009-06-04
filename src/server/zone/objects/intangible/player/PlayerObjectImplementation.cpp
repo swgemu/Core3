@@ -43,11 +43,21 @@ which carries forward this exception.
 */
 
 #include "PlayerObjectImplementation.h"
+#include "../../tangible/creature/CreatureObject.h"
 
-PlayerObjectImplementation::PlayerObjectImplementation()
-		: PlayerObjectServant() {
+PlayerObjectImplementation::PlayerObjectImplementation(uint64 objectid, CreatureObject* linkedcreature)
+		: PlayerObjectServant(objectid, PLAYER) {
+	linkedCreature = linkedcreature;
 }
 
 PlayerObjectImplementation::~PlayerObjectImplementation() {
+
+}
+
+void PlayerObjectImplementation::sendMessage(BaseMessage* msg) {
+
+}
+
+void PlayerObjectImplementation::sendMessage(StandaloneBaseMessage* msg) {
 
 }

@@ -42,3 +42,56 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#include "Structure.h"
+
+Structure::Structure() {
+
+}
+
+Structure::~Structure() {
+
+}
+
+
+/***********************************************************
+ * Sending of Sui Boxes
+ ***********************************************************/
+void Structure::sendPayMaintenanceTo(PlayerObject* player) {
+
+}
+
+void Structure::sendDepositPowerTo(PlayerObject* player) {
+
+}
+
+void Structure::sendStructureStatusTo(PlayerObject* player) {
+
+}
+
+void Structure::sendDestroyQueryTo(PlayerObject* player) {
+
+}
+
+void Structure::sendDestroyConfirmTo(PlayerObject* player) {
+
+}
+
+void Structure::sendPermissionListTo(PlayerObject* player, const String& listname) {
+
+}
+
+/***********************************************************
+ * General Actions
+ ***********************************************************/
+/**
+ * Action that is fired when radial or slash command for destroy structure has been invoked.
+ * \param player The player attempting to destroy the structure.
+ */
+void Structure::destroyStructure(PlayerObject* player) {
+
+}
+void Structure::pollStructureStatus() {
+	//TODO: Consume maintenance based on last structure poll time.
+	//TODO: Consume power if it is required.
+	//TODO: Pay taxes if required.
+}

@@ -12,8 +12,8 @@
  *	ComponentObjectStub
  */
 
-ComponentObject::ComponentObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new ComponentObjectImplementation();
+ComponentObject::ComponentObject(unsigned long long objectid) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new ComponentObjectImplementation(objectid);
 	_impl->_setStub(this);
 }
 
@@ -76,7 +76,7 @@ DistributedObjectAdapter* ComponentObjectHelper::createAdapter(DistributedObject
  *	ComponentObjectServant
  */
 
-ComponentObjectServant::ComponentObjectServant() : TangibleObjectImplementation() {
+ComponentObjectServant::ComponentObjectServant(unsigned long long objectid, int type) : TangibleObjectImplementation(objectid, type) {
 	_classHelper = ComponentObjectHelper::instance();
 }
 

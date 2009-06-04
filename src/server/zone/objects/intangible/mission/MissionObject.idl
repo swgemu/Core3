@@ -45,7 +45,7 @@ which carries forward this exception.
 import "../IntangibleObject";
 
 interface MissionObject implements IntangibleObject {
-	MissionObject() {
-		super();
+	MissionObject(unsigned long objectid) {
+		super(objectid, int type);
 	}
 }

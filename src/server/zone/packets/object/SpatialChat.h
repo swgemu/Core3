@@ -50,9 +50,8 @@
 
 class SpatialChat: public ObjectControllerMessage {
 public:
-	SpatialChat(uint64 senderid, uint64 recvid, const UnicodeString& message, uint64 target, uint32 moodid,
-			uint32 mood2) :
-		ObjectControllerMessage(recvid, 0x0B, 0xF4) {
+	SpatialChat(uint64 senderid, uint64 recvid, const UnicodeString& message, uint64 target, uint32 moodid, uint32 mood2)
+			: ObjectControllerMessage(recvid, 0x0B, 0xF4) {
 		insertLong(senderid);
 		insertLong(target);
 		insertUnicode(message);
@@ -70,8 +69,8 @@ public:
 		setCompression(true);
 	}
 
-	SpatialChat(uint64 senderid, uint64 recvid, const String& file, const String& str, StfParameter* params, uint64 target, uint16 moodid, uint16 mood2) :
-		ObjectControllerMessage(recvid, 0x0B, 0xF4) {
+	SpatialChat(uint64 senderid, uint64 recvid, const String& file, const String& str, StfParameter* params, uint64 target, uint16 moodid, uint16 mood2)
+			: ObjectControllerMessage(recvid, 0x0B, 0xF4) {
 
 		params->generate();
 

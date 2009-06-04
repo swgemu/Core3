@@ -51,7 +51,7 @@ class DraftSchematicObjectImplementation : public DraftSchematicObjectServant {
 protected:
 
 public:
-	DraftSchematicObjectImplementation();
+	DraftSchematicObjectImplementation(uint64 objectid);
 	~DraftSchematicObjectImplementation();
 };
 

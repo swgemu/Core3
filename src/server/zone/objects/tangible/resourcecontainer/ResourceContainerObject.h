@@ -13,7 +13,7 @@ class TangibleObject;
 
 class ResourceContainerObject : public TangibleObject {
 public:
-	ResourceContainerObject();
+	ResourceContainerObject(unsigned long long objectid);
 
 protected:
 	ResourceContainerObject(DummyConstructorParameter* param);
@@ -55,7 +55,7 @@ public:
 	ResourceContainerObject* _this;
 
 public:
-	ResourceContainerObjectServant();
+	ResourceContainerObjectServant(unsigned long long objectid, int type);
 	virtual ~ResourceContainerObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

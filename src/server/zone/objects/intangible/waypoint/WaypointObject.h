@@ -13,7 +13,7 @@ class IntangibleObject;
 
 class WaypointObject : public IntangibleObject {
 public:
-	WaypointObject();
+	WaypointObject(unsigned long long objectid);
 
 protected:
 	WaypointObject(DummyConstructorParameter* param);
@@ -55,7 +55,7 @@ public:
 	WaypointObject* _this;
 
 public:
-	WaypointObjectServant();
+	WaypointObjectServant(unsigned long long objectid, int type);
 	virtual ~WaypointObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

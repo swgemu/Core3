@@ -44,17 +44,68 @@ which carries forward this exception.
 
 include "engine/service/proto/BaseMessage";
 include "engine/service/proto/StandaloneBaseMessage";
+include "engine/util/QuadTreeEntry";
+include "../ZoneProcessServerImplementation";
+
+import "../Zone";
+import "intangible/player/PlayerObject";
 
 interface SceneObject implements ManagedObject {
+	//Container Methods
+	boolean hasChild(unsigned long objid, boolean recursive = false);
+	int getContainerSize(boolean recursive = false);
 
-	// logger methods
+	//Logger methods
 	void info(const String message, boolean forcedLog = false);
 	void error(const String message);
 	
+	//ORB Methods
+	boolean destroy();
+	void deploy();
+	void scheduleUndeploy();
+	void undeploy();
+	void redeploy();
+	void removeUndeploymentEvent();
+	void setObjectKeeping(boolean keeping);
+	void clearUndeploymentEvent();
+	boolean isUndeploymentScheduled();
+	
+	//QuadTree methods
+	boolean isInRange(SceneObject obj, float range);
+	boolean isInRange(float x, float y, float range);
+	int inRangeObjectCount();
+	QuadTreeEntry getInRangeObject(int idx);
+	void addInRangeObject(QuadTreeEntry obj, boolean notifyUpdate = true);
+	void removeInRangeObject(QuadTreeEntry obj);
+	boolean isInQuadTree();
+	QuadTreeEntry getQuadTreeEntry();
+	
+	//Sending of Packets
+	void broadcastMessage(BaseMessage msg, int range = 128, boolean dolock = true, boolean sendself = true);
+	void broadcastMessage(StandaloneBaseMessage msg, int range = 128, boolean dolock = true);
+	
+	//Event handlers
+	void onDragDrop(PlayerObject player, SceneObject target);
+	
 	//Setters
+	void setParent(SceneObject obj, unsigned int linktype = 0x04);
+	local void setZoneProcessServer(ZoneProcessServerImplementation srv);
+	void setZone(Zone zne);
+	void setDirection(float x, float y, float z, float w);
+	void setPosition(float x, float y, float z);
+	void setPositionX(float x);
+	void setPositionY(float y);
+	void setPositionZ(float z);
+	void setCustomName(const UnicodeString customname);
+	void setStfFile(const String stffile);
+	void setStfName(const String stfname);
 	
 	//Getters
-	boolean isObjectType(int type, boolean similar = false);
+	SceneObject getParent();
+	unsigned int getLinkType();
+	local ZoneProcessServerImplementation getZoneProcessServer();
+	Zone getZone();
+	unsigned int getZoneID();
 	float getDirectionX();
 	float getDirectionY();
 	float getDirectionZ();
@@ -67,8 +118,10 @@ interface SceneObject implements ManagedObject {
 	UnicodeString getCustomName();
 	unsigned long getObjectID();
 	unsigned int getObjectCRC();
+	unsigned int getObjectType();
 	float getComplexity();
 	unsigned int getVolume();
 	
+	boolean isObjectType(int type, boolean similar = false);
 	boolean isPlayer();
 }

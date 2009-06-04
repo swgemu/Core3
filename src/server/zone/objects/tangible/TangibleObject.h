@@ -13,7 +13,13 @@ class SceneObject;
 
 class TangibleObject : public SceneObject {
 public:
-	TangibleObject();
+	TangibleObject(unsigned long long objectid, int type);
+
+	void getCustomizationString(String& appearance);
+
+	unsigned int getNewMovementUpdateCounter(unsigned char count);
+
+	unsigned int getNewDefenderUpdateCounter(unsigned char count);
 
 protected:
 	TangibleObject(DummyConstructorParameter* param);
@@ -31,6 +37,14 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void getCustomizationString(String& appearance);
+
+	unsigned int getNewMovementUpdateCounter(unsigned char count);
+
+	unsigned int getNewDefenderUpdateCounter(unsigned char count);
+
+protected:
+	String _param0_getCustomizationString__String_;
 };
 
 class TangibleObjectHelper : public DistributedObjectClassHelper, public Singleton<TangibleObjectHelper> {
@@ -55,7 +69,7 @@ public:
 	TangibleObject* _this;
 
 public:
-	TangibleObjectServant();
+	TangibleObjectServant(unsigned long long objectid, int type);
 	virtual ~TangibleObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

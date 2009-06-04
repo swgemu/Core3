@@ -51,7 +51,7 @@ class ComponentObjectImplementation : public ComponentObjectServant {
 protected:
 
 public:
-	ComponentObjectImplementation();
+	ComponentObjectImplementation(uint64 objectid);
 	~ComponentObjectImplementation();
 };
 

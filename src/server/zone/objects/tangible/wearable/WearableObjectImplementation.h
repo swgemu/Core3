@@ -56,12 +56,35 @@ protected:
 	uint8 sockets;
 
 public:
-	WearableObjectImplementation();
+	static const int BANDOLIER = 0x1000001;
+	static const int BELT = 0x100002;
+	static const int BODYSUIT = 0x100003;
+	static const int CAPE = 0x100004;
+	static const int CLOAK = 0x100005;
+	static const int FOOTWEAR = 0x100006;
+	static const int DRESS = 0x100007;
+	static const int HANDWEAR = 0x100008;
+	static const int EYEWEAR = 0x100009;
+	static const int HEADWEAR = 0x10000A;
+	static const int JACKET = 0x10000B;
+	static const int PANTS = 0x10000C;
+	static const int ROBE = 0x10000D;
+	static const int SHIRT = 0x10000E;
+	static const int VEST = 0x10000F;
+	static const int WOOKIEGARB = 0x100010;
+	static const int MISCCLOTHING = 0x100011;
+	static const int SKIRT = 0x100012;
+	static const int ITHOGARB = 0x100013;
+
+public:
+	WearableObjectImplementation(uint64 objectid, int type = WEARABLE);
 	virtual ~WearableObjectImplementation();
 
+	//Event Handlers
+	virtual void onEquip(CreatureObject* creature);
+	virtual void onUnequip(CreatureObject* creature);
+
 	//Setters
-	virtual void equip(CreatureObject* creature);
-	virtual void unequip(CreatureObject* creature);
 
 	//Getters
 	virtual bool isBody() { return false; }

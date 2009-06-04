@@ -6,14 +6,18 @@
 
 #include "PlayerObjectImplementation.h"
 
+#include "../../../ZoneClientSession.h"
+
 #include "../IntangibleObject.h"
+
+#include "../../tangible/creature/CreatureObject.h"
 
 /*
  *	PlayerObjectStub
  */
 
-PlayerObject::PlayerObject() : IntangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new PlayerObjectImplementation();
+PlayerObject::PlayerObject(unsigned long long objectid, CreatureObject* linkedcreature) : IntangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new PlayerObjectImplementation(objectid, linkedcreature);
 	_impl->_setStub(this);
 }
 
@@ -21,6 +25,166 @@ PlayerObject::PlayerObject(DummyConstructorParameter* param) : IntangibleObject(
 }
 
 PlayerObject::~PlayerObject() {
+}
+
+void PlayerObject::sendMessage(BaseMessage* msg) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+		method.addObjectParameter(msg);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->sendMessage(msg);
+}
+
+void PlayerObject::sendMessage(StandaloneBaseMessage* msg) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addObjectParameter(msg);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->sendMessage(msg);
+}
+
+void PlayerObject::setClient(ZoneClientSession* client) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(client);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->setClient(client);
+}
+
+void PlayerObject::setAccessLevel(unsigned char level) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addUnsignedCharParameter(level);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->setAccessLevel(level);
+}
+
+ZoneClientSession* PlayerObject::getClient() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		return (ZoneClientSession*) method.executeWithObjectReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getClient();
+}
+
+unsigned char PlayerObject::getAccessLevel() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		return method.executeWithUnsignedCharReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getAccessLevel();
+}
+
+bool PlayerObject::isOnline() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->isOnline();
+}
+
+bool PlayerObject::isOffline() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->isOffline();
+}
+
+bool PlayerObject::isLoading() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->isLoading();
+}
+
+bool PlayerObject::isLinkDead() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->isLinkDead();
+}
+
+bool PlayerObject::isLoggingIn() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->isLoggingIn();
+}
+
+bool PlayerObject::isLoggingOut() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->isLoggingOut();
+}
+
+bool PlayerObject::isPrivileged() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->isPrivileged();
 }
 
 /*
@@ -34,11 +198,102 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		sendMessage((BaseMessage*) inv->getObjectParameter());
+		break;
+	case 7:
+		sendMessage((StandaloneBaseMessage*) inv->getObjectParameter());
+		break;
+	case 8:
+		setClient((ZoneClientSession*) inv->getObjectParameter());
+		break;
+	case 9:
+		setAccessLevel(inv->getUnsignedCharParameter());
+		break;
+	case 10:
+		resp->insertLong(getClient()->_getObjectID());
+		break;
+	case 11:
+		resp->insertByte(getAccessLevel());
+		break;
+	case 12:
+		resp->insertBoolean(isOnline());
+		break;
+	case 13:
+		resp->insertBoolean(isOffline());
+		break;
+	case 14:
+		resp->insertBoolean(isLoading());
+		break;
+	case 15:
+		resp->insertBoolean(isLinkDead());
+		break;
+	case 16:
+		resp->insertBoolean(isLoggingIn());
+		break;
+	case 17:
+		resp->insertBoolean(isLoggingOut());
+		break;
+	case 18:
+		resp->insertBoolean(isPrivileged());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void PlayerObjectAdapter::sendMessage(BaseMessage* msg) {
+	return ((PlayerObjectImplementation*) impl)->sendMessage(msg);
+}
+
+void PlayerObjectAdapter::sendMessage(StandaloneBaseMessage* msg) {
+	return ((PlayerObjectImplementation*) impl)->sendMessage(msg);
+}
+
+void PlayerObjectAdapter::setClient(ZoneClientSession* client) {
+	return ((PlayerObjectImplementation*) impl)->setClient(client);
+}
+
+void PlayerObjectAdapter::setAccessLevel(unsigned char level) {
+	return ((PlayerObjectImplementation*) impl)->setAccessLevel(level);
+}
+
+ZoneClientSession* PlayerObjectAdapter::getClient() {
+	return ((PlayerObjectImplementation*) impl)->getClient();
+}
+
+unsigned char PlayerObjectAdapter::getAccessLevel() {
+	return ((PlayerObjectImplementation*) impl)->getAccessLevel();
+}
+
+bool PlayerObjectAdapter::isOnline() {
+	return ((PlayerObjectImplementation*) impl)->isOnline();
+}
+
+bool PlayerObjectAdapter::isOffline() {
+	return ((PlayerObjectImplementation*) impl)->isOffline();
+}
+
+bool PlayerObjectAdapter::isLoading() {
+	return ((PlayerObjectImplementation*) impl)->isLoading();
+}
+
+bool PlayerObjectAdapter::isLinkDead() {
+	return ((PlayerObjectImplementation*) impl)->isLinkDead();
+}
+
+bool PlayerObjectAdapter::isLoggingIn() {
+	return ((PlayerObjectImplementation*) impl)->isLoggingIn();
+}
+
+bool PlayerObjectAdapter::isLoggingOut() {
+	return ((PlayerObjectImplementation*) impl)->isLoggingOut();
+}
+
+bool PlayerObjectAdapter::isPrivileged() {
+	return ((PlayerObjectImplementation*) impl)->isPrivileged();
 }
 
 /*
@@ -76,7 +331,7 @@ DistributedObjectAdapter* PlayerObjectHelper::createAdapter(DistributedObjectStu
  *	PlayerObjectServant
  */
 
-PlayerObjectServant::PlayerObjectServant() : IntangibleObjectImplementation() {
+PlayerObjectServant::PlayerObjectServant(unsigned long long objectid, int type) : IntangibleObjectImplementation(objectid, type) {
 	_classHelper = PlayerObjectHelper::instance();
 }
 

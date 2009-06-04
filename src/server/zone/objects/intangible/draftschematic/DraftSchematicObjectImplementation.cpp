@@ -44,8 +44,8 @@ which carries forward this exception.
 
 #include "DraftSchematicObjectImplementation.h"
 
-DraftSchematicObjectImplementation::DraftSchematicObjectImplementation()
-		: DraftSchematicObjectServant() {
+DraftSchematicObjectImplementation::DraftSchematicObjectImplementation(uint64 objectid)
+		: DraftSchematicObjectServant(objectid, DRAFTSCHEMATIC) {
 
 }
 

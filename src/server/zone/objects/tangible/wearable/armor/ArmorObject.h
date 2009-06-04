@@ -13,7 +13,7 @@ class WearableObject;
 
 class ArmorObject : public WearableObject {
 public:
-	ArmorObject();
+	ArmorObject(unsigned long long objectid, int type = 100);
 
 protected:
 	ArmorObject(DummyConstructorParameter* param);
@@ -55,7 +55,7 @@ public:
 	ArmorObject* _this;
 
 public:
-	ArmorObjectServant();
+	ArmorObjectServant(unsigned long long objectid, int type);
 	virtual ~ArmorObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

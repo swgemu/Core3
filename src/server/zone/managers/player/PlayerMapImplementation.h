@@ -48,26 +48,25 @@ which carries forward this exception.
 #include "system/lang.h"
 
 #include "PlayerMap.h"
+#include "../../objects/intangible/player/PlayerObject.h"
 
-#include "../../objects/tangible/creature/player/Player.h"
-
-class PlayerMapImplementation : public PlayerMapServant, private HashTable<String, Player*>, private HashTableIterator<String, Player*>, public Mutex {
+class PlayerMapImplementation : public PlayerMapServant, private HashTable<String, PlayerObject*>, private HashTableIterator<String, PlayerObject*>, public Mutex {
 	int hash(const String& key) {
         return key.hashCode();
 	}
 
 public:
-	PlayerMapImplementation(int initsize) : PlayerMapServant(), HashTable<String, Player*>(initsize), HashTableIterator<String, Player*>(this), Mutex("PlayerMap") {
+	PlayerMapImplementation(int initsize) : PlayerMapServant(), HashTable<String, PlayerObject*>(initsize), HashTableIterator<String, PlayerObject*>(this), Mutex("PlayerMap") {
 		setNullValue(NULL);
 	}
 
-	Player* put(const String& name, Player* player, bool doLock = true) {
-		Player* play = NULL;
+	PlayerObject* put(const String& name, PlayerObject* player, bool doLock = true) {
+		PlayerObject* play = NULL;
 
 		lock(doLock);
 
 		try {
-			play = HashTable<String, Player*>::put(name.toLowerCase(), player);
+			play = HashTable<String, PlayerObject*>::put(name.toLowerCase(), player);
 
 			if (play == NULL)
 				player->acquire();
@@ -84,14 +83,14 @@ public:
 		return play;
 	}
 
-	Player* get(const String& name, bool doLock = true) {
-		Player* player = NULL;
+	PlayerObject* get(const String& name, bool doLock = true) {
+		PlayerObject* player = NULL;
 
 		lock(doLock);
 
 		try {
 
-			player = HashTable<String, Player*>::get(name.toLowerCase());
+			player = HashTable<String, PlayerObject*>::get(name.toLowerCase());
 
 		} catch (Exception& e) {
 			System::out << e.getMessage();
@@ -105,14 +104,14 @@ public:
 		return player;
 	}
 
-	Player* remove(const String& name, bool doLock = true) {
-		Player* player = NULL;
+	PlayerObject* remove(const String& name, bool doLock = true) {
+		PlayerObject* player = NULL;
 
 		lock(doLock);
 
 		try {
 
-			player = HashTable<String, Player*>::remove(name.toLowerCase());
+			player = HashTable<String, PlayerObject*>::remove(name.toLowerCase());
 
 			if (player != NULL)
 				player->release();
@@ -129,19 +128,19 @@ public:
 		return player;
 	}
 
-	Player* getNextValue(bool doLock = true) {
-		Player* player = NULL;
+	PlayerObject* getNextValue(bool doLock = true) {
+		PlayerObject* player = NULL;
 
 		lock(doLock);
 
-		player = HashTableIterator<String, Player*>::getNextValue();
+		player = HashTableIterator<String, PlayerObject*>::getNextValue();
 
 		unlock(doLock);
 
 		return player;
 	}
 
-	Player* next(bool doLock = true) {
+	PlayerObject* next(bool doLock = true) {
 		return getNextValue(doLock);
 	}
 
@@ -150,7 +149,7 @@ public:
 
 		lock(doLock);
 
-		res = HashTableIterator<String, Player*>::hasNext();
+		res = HashTableIterator<String, PlayerObject*>::hasNext();
 
 		unlock(doLock);
 
@@ -160,7 +159,7 @@ public:
 	void resetIterator(bool doLock = true) {
 		lock(doLock);
 
-		HashTableIterator<String, Player*>::resetIterator();
+		HashTableIterator<String, PlayerObject*>::resetIterator();
 
 		unlock(doLock);
 	}
@@ -168,7 +167,7 @@ public:
 	int size(bool doLock = true) {
 		lock(doLock);
 
-		int res = HashTable<String, Player*>::size();
+		int res = HashTable<String, PlayerObject*>::size();
 
 		unlock(doLock);
 

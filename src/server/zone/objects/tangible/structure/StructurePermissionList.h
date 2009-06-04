@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 #include "../../SceneObject.h"
-#include "../../tangible/creature/player/Player.h"
+#include "../../intangible/player/PlayerObject.h"
 
 class StructurePermissionList : public VectorMap<String, uint8> {
 protected:
@@ -64,18 +64,18 @@ public:
 public:
 	StructurePermissionList(SceneObject* linkedstructure);
 
-	void sendTo(Player* player, const String& listname);
+	void sendTo(PlayerObject* player, const String& listname);
 
 	void parsePermissionString(const String& str);
 	String& getPermissionString();
 
-	void grantPermission(Player* player, const String& entryname, const String& listname);
-	void revokePermission(Player* player, const String& entryname, const String& listname);
+	void grantPermission(PlayerObject* player, const String& entryname, const String& listname);
+	void revokePermission(PlayerObject* player, const String& entryname, const String& listname);
 
 	//Setters
 
 	//Getters
-	bool isOnPermissionList(Player* player, uint8 listtype);
+	bool isOnPermissionList(PlayerObject* player, uint8 listtype);
 	bool isOnPermissionList(const String& entryname, uint8 listtype);
 };
 

@@ -13,7 +13,7 @@ class CreatureObject;
 
 class Creature : public CreatureObject {
 public:
-	Creature();
+	Creature(unsigned long long objectid);
 
 protected:
 	Creature(DummyConstructorParameter* param);
@@ -55,7 +55,7 @@ public:
 	Creature* _this;
 
 public:
-	CreatureServant();
+	CreatureServant(unsigned long long objectid, int type);
 	virtual ~CreatureServant();
 
 	void _setStub(DistributedObjectStub* stub);

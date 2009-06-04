@@ -53,10 +53,10 @@ which carries forward this exception.
 
 class PlayerObjectMessage9 : public BaseLineMessage {
 public:
-	PlayerObjectMessage9(PlayerObjectImplementation* play)
-			: BaseLineMessage(play->getObjectID(), 0x504C4159, 9, 0x13) {
+	PlayerObjectMessage9(PlayerObjectImplementation* player)
+			: BaseLineMessage(player->getObjectID(), 0x504C4159, 9, 0x13) {
 		// certifications && skills
-		insertSkills(play);
+		insertSkills(player);
 
 		// crafting states
 		insertInt(0);
@@ -66,57 +66,60 @@ public:
 		insertLong(0);
 
 		// datapad draft schematics
-		insertDraftSchematics(play);
+		insertDraftSchematics(player);
 
 		// crafting?
 		insertInt(0);
 
-		// species data
+		// species data - what is this
 		insertInt(0);
 
 		// friends list
-		insertInt(0);
-		insertInt(0);
+		insertInt(0); //List size
+		insertInt(0); //Update Counter
 
 		// ignore list
-		insertInt(0);
-		insertInt(0);
+		insertInt(0); //List Size
+		insertInt(0); //Update Counter
 
 		// language
-		insertInt(0);
+		insertInt(player->getLanguage());
 
 		// stomach fillings
-		insertInt(play->getFoodFilling());
-		insertInt(play->getFoodFillingMax());
-		insertInt(play->getDrinkFilling());
-		insertInt(play->getDrinkFillingMax());
+		insertInt(player->getFoodFilling());
+		insertInt(player->getFoodFillingMax());
+		insertInt(player->getDrinkFilling());
+		insertInt(player->getDrinkFillingMax());
 
 		//
 		insertInt(0);
 		insertInt(0);
 
-		// waypoint list?
+		// waypoint list? ... Waypoints are sent in PLAY8
 		insertInt(0);
 		insertInt(0);
 
 		// jedi state
-		insertInt(play->getJediState());
+		insertInt(player->getJediState());
 
 		setSize();
 	}
 
 	void insertDraftSchematics(PlayerObjectImplementation* play) {
-		uint32 dsListSize = play->player->getDraftSchematicMapSize();
-		uint32 dsUpdateCount = play->player->getDraftSchematicUpdateCount(0);
+		//uint32 dsListSize = play->player->getDraftSchematicMapSize();
+		//uint32 dsUpdateCount = play->player->getDraftSchematicUpdateCount(0);
 
-		insertInt(dsListSize);
-		insertInt(dsUpdateCount);
+		//insertInt(dsListSize);
+		//insertInt(dsUpdateCount);
+		//TODO: Temp
+		insertInt(0);
+		insertInt(0);
 
-		for (int i = 0; i < dsListSize; i++) {
+		//for (int i = 0; i < dsListSize; i++) {
 			//insertLong(play->player->getDraftSchematic(i)->getObjectID());
-			insertInt(play->player->getDraftSchematicByIndex(i)->getSchematicID());
-			insertInt(play->player->getDraftSchematicByIndex(i)->getObjectCRC());
-		}
+			//insertInt(play->player->getDraftSchematicByIndex(i)->getSchematicID());
+			//insertInt(play->player->getDraftSchematicByIndex(i)->getObjectCRC());
+		//}
 	}
 
 	void insertSkills(PlayerObjectImplementation* play) {

@@ -83,9 +83,8 @@ which carries forward this exception.
 #include "managers/guild/GuildManagerImplementation.h"
 #include "managers/group/GroupManager.h"
 #include "managers/skills/SkillManager.h"
-#include "managers/sui/SuiManager.h"
+//#include "managers/sui/SuiManager.h"
 #include "managers/name/NameManager.h"
-#include "managers/slashcommands/SlashCommandManager.h"
 
 ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* serv, int processingThreads)
 		: ServiceMessageHandlerThread("ZoneProcessorServer") {
@@ -95,14 +94,13 @@ ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* ser
 	procThreadCount = processingThreads;
 
 	//Static managers
-	combatManager = new CombatManager(this);
+	//combatManager = new CombatManager(this);
 	professionManager = new ProfessionManager(this);
-	skillManager = professionManager->getSkillManager();
+	//skillManager = professionManager->getSkillManager();
 	radialManager = new RadialManager();
 	groupManager = new GroupManager();
-	suiManager = new SuiManager(this);
+	//suiManager = new SuiManager(this);
 	nameManager = new NameManager(this);
-	slashCommandManager = new SlashCommandManager(this);
 
 	setLogging(false);
 
@@ -132,20 +130,11 @@ ZoneProcessServerImplementation::~ZoneProcessServerImplementation() {
 	delete groupManager;
 	groupManager = NULL;
 
-	delete lootManager;
-	lootManager = NULL;
-
-	delete suiManager;
-	suiManager = NULL;
+	//delete suiManager;
+	//suiManager = NULL;
 
 	delete nameManager;
 	nameManager = NULL;
-
-	delete slashCommandManager;
-	slashCommandManager = NULL;
-
-	delete featureManager;
-	featureManager = NULL;
 }
 
 void ZoneProcessServerImplementation::init() {

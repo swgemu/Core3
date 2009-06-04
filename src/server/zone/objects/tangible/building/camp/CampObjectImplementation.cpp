@@ -44,11 +44,15 @@ which carries forward this exception.
 
 #include "CampObjectImplementation.h"
 
-CampObjectImplementation::CampObjectImplementation()
-		: CampObjectServant() {
+CampObjectImplementation::CampObjectImplementation(uint64 objectid)
+		: CampObjectServant(objectid) {
 
 }
 
 CampObjectImplementation::~CampObjectImplementation() {
+
+}
+
+void CampObjectImplementation::disband(PlayerObject* player) {
 
 }

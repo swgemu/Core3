@@ -47,44 +47,44 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/player/PlayerObject.h"
-#include "../../objects/player/Player.h"
+#include "../../objects/intangible/player/PlayerObject.h"
+#include "../../objects/tangible/creature/player/Player.h"
+
+//TODO: Looks like this inherits ITNO3
 
 class PlayerObjectMessage3 : public BaseLineMessage {
 public:
 	PlayerObjectMessage3(PlayerObject* play)
 			: BaseLineMessage(play->getObjectID(), 0x504C4159, 3, 0x0B) {
-		insertFloat(1);
+		insertFloat(1.0f); //Complexity
 
-		insertAscii("String_id_table");
-		insertInt(0);
-		insertAscii("");
+		insertAscii("String_id_table"); //StfFile
+		insertInt(0); //Unknown
+		insertAscii(""); //StfName
+		insertUnicode(""); //CustomName
+		insertInt(0); //Volume
+		insertInt(0); //Status
 
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-
-		insertInt(4);
+		insertInt(4); //Listsize of some sort
 		insertInt(play->getCharacterBitmask());
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
+		insertInt(0); //Unknown
+		insertInt(0); //Unknown
+		insertInt(0); //Unknown
 
-		insertInt(4);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
+		insertInt(4); //ListSize
+		insertInt(0); //Unknown
+		insertInt(0); //Unknown
+		insertInt(0); //Unknown
+		insertInt(0); //Unknown
 
-		insertAscii(play->getCurrentTitle());
+		insertAscii(play->getCurrentTitle()); //Character Title
 
-		insertInt(0x6C2);
-		insertInt(0xDC62);
-		insertInt(0x23);
+		insertInt(0x6C2); //Unknown
+		insertInt(0xDC62);//Unknown
+		insertInt(0x23);  //Unknown
 
 		setSize();
 	}
-
 };
 
 #endif /*PLAYEROBJECTMESSAGE3_H_*/

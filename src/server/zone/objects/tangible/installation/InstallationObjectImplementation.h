@@ -52,7 +52,7 @@ class InstallationObjectImplementation : public InstallationObjectServant, publi
 protected:
 
 public:
-	InstallationObjectImplementation();
+	InstallationObjectImplementation(uint64 objectid, int type = INSTALLATION);
 	~InstallationObjectImplementation();
 };
 

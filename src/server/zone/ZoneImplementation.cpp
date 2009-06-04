@@ -52,6 +52,8 @@ which carries forward this exception.
 #include "managers/planet/PlanetManager.h"
 #include "managers/planet/PlanetManagerImplementation.h"
 
+#include "objects/terrain/PlanetNames.h"
+
 #include "../chat/ChatManager.h"
 
 #include "objects/SceneObject.h"
@@ -87,21 +89,21 @@ void ZoneImplementation::startManagers() {
 		heightMap.load("planets/" + planetName + "/" + planetName + ".hmap");
 	}
 
-	creatureManager = new CreatureManager(_this, processor);
-	creatureManager->deploy("CreatureManager", zoneID);
+	//creatureManager = new CreatureManager(_this, processor);
+	//creatureManager->deploy("CreatureManager", zoneID);
 
-	creatureManager->init();
+	//creatureManager->init();
 
 	planetManager = new PlanetManager(_this, processor);
 	planetManager->deploy("PlanetManager", zoneID);
 
 	planetManager->init();
 
-	creatureManager->loadCreatures();
+	//creatureManager->loadCreatures();
 
 	planetManager->start();
 
-	creatureManager->start();
+	//creatureManager->start();
 }
 
 void ZoneImplementation::stopManagers() {

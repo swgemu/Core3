@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../zone/objects/tangible/creature/player/Player.h"
+#include "../zone/objects/intangible/player/PlayerObject.h"
 
 #include "../db/ForumsDatabase.h"
 
@@ -63,11 +63,11 @@ class GMCommand {
 
 	int requiredAdminLevel;
 
-    void (*gmCommandFunc)(StringTokenizer tokenizer, Player* player);
+    void (*gmCommandFunc)(StringTokenizer tokenizer, PlayerObject* player);
 
 public:
 	GMCommand(String cmd, int reqAdminLevel, String desc, String use,
-			void (*func)(StringTokenizer tokenizer, Player* player)) {
+			void (*func)(StringTokenizer tokenizer, PlayerObject* player)) {
 		command = cmd;
 		description = desc;
 		gmCommandFunc = func;
@@ -91,7 +91,7 @@ public:
 		return requiredAdminLevel;
 	}
 
-	inline void exec(StringTokenizer tokenizer, Player* player) {
+	inline void exec(StringTokenizer tokenizer, PlayerObject* player) {
 		gmCommandFunc(tokenizer, player);
 	}
 
@@ -124,7 +124,7 @@ public:
 	}
 
 	void addCommand(String command, int reqAdminLevel, String disc, String usage,
-			void (*gmCommandFunc)(StringTokenizer tokenizer, Player* player)) {
+			void (*gmCommandFunc)(StringTokenizer tokenizer, PlayerObject* player)) {
 		String cmdLower = command.toLowerCase();
 
 		put(cmdLower, new GMCommand(command, reqAdminLevel, disc, usage, gmCommandFunc));
@@ -142,111 +142,111 @@ private:
 	static GMCommandMap* gmCommands;
 
 	/*
-	static void commands(StringTokenizer tokenizer, Player* player);
-	static void buildInfo(StringTokenizer tokenizer, Player* player);
-	static void map(StringTokenizer tokenizer, Player* player);
-	static void warp(StringTokenizer tokenizer, Player* player);
-	static void warpTo(StringTokenizer tokenizer, Player* player);
-	static void warpToWP(StringTokenizer tokenizer, Player* player);
-	static void warpPlayer(StringTokenizer tokenizer, Player* player);
-	static void summon(StringTokenizer tokenizer, Player* player);
-	static void kick(StringTokenizer tokenizer, Player* player);
-	static void kickArea(StringTokenizer tokenizer, Player* player);
-	static void printRoomTree(StringTokenizer tokenizer, Player* player);
-	static void banUser(StringTokenizer tokenizer, Player* player);
-	static void getForumName(StringTokenizer tokenizer, Player* player);
-	static void mutePlayer(StringTokenizer tokenizer, Player* player);
-	static void kill(StringTokenizer tokenizer, Player* player);
-	static void killArea(StringTokenizer tokenizer, Player* player);
-	static void muteChat(StringTokenizer tokenizer, Player* player);
-	static void users(StringTokenizer tokenizer, Player* player);
-	static void setWeather(StringTokenizer tokenizer, Player* player);
-	static void enableWeather(StringTokenizer tokenizer, Player* player);
-	static void disableWeather(StringTokenizer tokenizer, Player* player);
-	static void ticketPurchase(StringTokenizer tokenizer, Player* player);
-	static void awardBadge(StringTokenizer tokenizer, Player* player);
-	static void systemMessage(StringTokenizer tokenizer, Player* player);
-	static void setForce(StringTokenizer tokenizer, Player* player);
-	static void setDrinkFilling(StringTokenizer tokenizer, Player* player);
-	static void setFoodFilling(StringTokenizer tokenizer, Player* player);
-	static void getDrinkFilling(StringTokenizer tokenizer, Player* player);
-	static void getFoodFilling(StringTokenizer tokenizer, Player* player);
-	static void logAppearance(StringTokenizer tokenizer, Player* player);
-	static void updateAppearance(StringTokenizer tokenizer, Player* player);
-	static void setAppearanceVariable(StringTokenizer tokenizer, Player* player);
-	static void HAMStats(StringTokenizer tokenizer, Player* player);
-	static void buff(StringTokenizer tokenizer, Player* player);
-	static void spice(StringTokenizer tokenizer, Player* player);
-	static void dbStats(StringTokenizer tokenizer, Player* player);
-	static void dbShowDeleted(StringTokenizer tokenizer, Player* player);
-	static void dbPurge(StringTokenizer tokenizer, Player* player);
-	static void getDirection(StringTokenizer tokenizer, Player* player);
-	static void setAdminLevel(StringTokenizer tokenizer, Player* player);
-	static void getLocation(StringTokenizer tokenizer, Player* player);
-	static void getTargetLocation(StringTokenizer tokenizer, Player* player);
-	static void getCords(StringTokenizer tokenizer, Player* player);
-	static void giveItemTemp(StringTokenizer tokenizer, Player* player);
-	static void clientEffect(StringTokenizer tokenizer, Player* player);
-	static void rez(StringTokenizer tokenizer, Player* player);
-	static void immune(StringTokenizer tokenizer, Player* player);
-	static void invisible(StringTokenizer tokenizer, Player* player);
-	static void flare(StringTokenizer tokenizer, Player* player);
-	static void reloadSchematics(StringTokenizer tokenizer, Player* player);
-	static void spawn(StringTokenizer tokenizer, Player* player);
-	static void guildAdmin(StringTokenizer tokenizer, Player* player);
-	static void endGuildAdmin(StringTokenizer tokenizer, Player* player);
-	static void factionSet(StringTokenizer tokenizer, Player* player);
-	static void getCredits(StringTokenizer tokenizer, Player* player);
-	static void getXP(StringTokenizer tokenizer, Player* player);
-	static void adjustFP(StringTokenizer tokenizer, Player* player);
-	static void adminList(StringTokenizer tokenizer, Player* player);
-	static void showChars(StringTokenizer tokenizer, Player* player);
+	static void commands(StringTokenizer tokenizer, PlayerObjectObject* player);
+	static void buildInfo(StringTokenizer tokenizer, PlayerObject* player);
+	static void map(StringTokenizer tokenizer, PlayerObject* player);
+	static void warp(StringTokenizer tokenizer, PlayerObject* player);
+	static void warpTo(StringTokenizer tokenizer, PlayerObject* player);
+	static void warpToWP(StringTokenizer tokenizer, PlayerObject* player);
+	static void warpPlayerObject(StringTokenizer tokenizer, PlayerObject* player);
+	static void summon(StringTokenizer tokenizer, PlayerObject* player);
+	static void kick(StringTokenizer tokenizer, PlayerObject* player);
+	static void kickArea(StringTokenizer tokenizer, PlayerObject* player);
+	static void printRoomTree(StringTokenizer tokenizer, PlayerObject* player);
+	static void banUser(StringTokenizer tokenizer, PlayerObject* player);
+	static void getForumName(StringTokenizer tokenizer, PlayerObject* player);
+	static void mutePlayerObject(StringTokenizer tokenizer, PlayerObject* player);
+	static void kill(StringTokenizer tokenizer, PlayerObject* player);
+	static void killArea(StringTokenizer tokenizer, PlayerObject* player);
+	static void muteChat(StringTokenizer tokenizer, PlayerObject* player);
+	static void users(StringTokenizer tokenizer, PlayerObject* player);
+	static void setWeather(StringTokenizer tokenizer, PlayerObject* player);
+	static void enableWeather(StringTokenizer tokenizer, PlayerObject* player);
+	static void disableWeather(StringTokenizer tokenizer, PlayerObject* player);
+	static void ticketPurchase(StringTokenizer tokenizer, PlayerObject* player);
+	static void awardBadge(StringTokenizer tokenizer, PlayerObject* player);
+	static void systemMessage(StringTokenizer tokenizer, PlayerObject* player);
+	static void setForce(StringTokenizer tokenizer, PlayerObject* player);
+	static void setDrinkFilling(StringTokenizer tokenizer, PlayerObject* player);
+	static void setFoodFilling(StringTokenizer tokenizer, PlayerObject* player);
+	static void getDrinkFilling(StringTokenizer tokenizer, PlayerObject* player);
+	static void getFoodFilling(StringTokenizer tokenizer, PlayerObject* player);
+	static void logAppearance(StringTokenizer tokenizer, PlayerObject* player);
+	static void updateAppearance(StringTokenizer tokenizer, PlayerObject* player);
+	static void setAppearanceVariable(StringTokenizer tokenizer, PlayerObject* player);
+	static void HAMStats(StringTokenizer tokenizer, PlayerObject* player);
+	static void buff(StringTokenizer tokenizer, PlayerObject* player);
+	static void spice(StringTokenizer tokenizer, PlayerObject* player);
+	static void dbStats(StringTokenizer tokenizer, PlayerObject* player);
+	static void dbShowDeleted(StringTokenizer tokenizer, PlayerObject* player);
+	static void dbPurge(StringTokenizer tokenizer, PlayerObject* player);
+	static void getDirection(StringTokenizer tokenizer, PlayerObject* player);
+	static void setAdminLevel(StringTokenizer tokenizer, PlayerObject* player);
+	static void getLocation(StringTokenizer tokenizer, PlayerObject* player);
+	static void getTargetLocation(StringTokenizer tokenizer, PlayerObject* player);
+	static void getCords(StringTokenizer tokenizer, PlayerObject* player);
+	static void giveItemTemp(StringTokenizer tokenizer, PlayerObject* player);
+	static void clientEffect(StringTokenizer tokenizer, PlayerObject* player);
+	static void rez(StringTokenizer tokenizer, PlayerObject* player);
+	static void immune(StringTokenizer tokenizer, PlayerObject* player);
+	static void invisible(StringTokenizer tokenizer, PlayerObject* player);
+	static void flare(StringTokenizer tokenizer, PlayerObject* player);
+	static void reloadSchematics(StringTokenizer tokenizer, PlayerObject* player);
+	static void spawn(StringTokenizer tokenizer, PlayerObject* player);
+	static void guildAdmin(StringTokenizer tokenizer, PlayerObject* player);
+	static void endGuildAdmin(StringTokenizer tokenizer, PlayerObject* player);
+	static void factionSet(StringTokenizer tokenizer, PlayerObject* player);
+	static void getCredits(StringTokenizer tokenizer, PlayerObject* player);
+	static void getXP(StringTokenizer tokenizer, PlayerObject* player);
+	static void adjustFP(StringTokenizer tokenizer, PlayerObject* player);
+	static void adminList(StringTokenizer tokenizer, PlayerObject* player);
+	static void showChars(StringTokenizer tokenizer, PlayerObject* player);
 
-	static void ecKill(StringTokenizer tokenizer, Player * player);
-	static void poofObject(StringTokenizer tokenizer, Player * player);
-	static void whoDroppedThis(StringTokenizer tokenizer, Player * player);
-	static void openInventory(StringTokenizer tokenizer, Player * player);
-	//static void toggleCombat(StringTokenizer tokenizer, Player* player);
-	static void lockServer(StringTokenizer tokenizer, Player* player);
-	static void unlockServer(StringTokenizer tokenizer, Player* player);
-	static void sendp(StringTokenizer tokenizer, Player* player);
-	static void requestStartingLocations(StringTokenizer tokenizer, Player* player);
-	static void help(StringTokenizer tokenizer, Player* player);
-	static void bug(StringTokenizer tokenizer, Player* player);
-	static void freezePlayer(StringTokenizer tokenizer, Player* player);
-	static void unfreezePlayer(StringTokenizer tokenizer, Player* player);
-	static void changeTemplate(StringTokenizer tokenizer, Player* player);
-	static void setSpeed(StringTokenizer tokenizer, Player* player);
-	static void setHeight(StringTokenizer tokenizer, Player* player);
-	static void warpAreaToWP(StringTokenizer tokenizer, Player* player);
-	static void scaleXP(StringTokenizer tokenizer, Player* player);
-	static void spawnAA(StringTokenizer tokenizer, Player* player);
-	static void revokeBadge(StringTokenizer tokenizer, Player* player);
-	static void setLocation(StringTokenizer tokenizer, Player* player);
-	static void drag(StringTokenizer tokenizer, Player* player);
-	static void damage(StringTokenizer tokenizer, Player* player);
-	static void deleteFromZone(StringTokenizer tokenizer, Player* player);
-	static void playAudio(StringTokenizer tokenizer, Player* player);
-	static void setMOTD(StringTokenizer tokenizer, Player* player);
-	static void displayMOTD(StringTokenizer tokenizer, Player* player);
-	static void applyDot(StringTokenizer tokenizer, Player* player);
+	static void ecKill(StringTokenizer tokenizer, PlayerObject * player);
+	static void poofObject(StringTokenizer tokenizer, PlayerObject * player);
+	static void whoDroppedThis(StringTokenizer tokenizer, PlayerObject * player);
+	static void openInventory(StringTokenizer tokenizer, PlayerObject * player);
+	//static void toggleCombat(StringTokenizer tokenizer, PlayerObject* player);
+	static void lockServer(StringTokenizer tokenizer, PlayerObject* player);
+	static void unlockServer(StringTokenizer tokenizer, PlayerObject* player);
+	static void sendp(StringTokenizer tokenizer, PlayerObject* player);
+	static void requestStartingLocations(StringTokenizer tokenizer, PlayerObject* player);
+	static void help(StringTokenizer tokenizer, PlayerObject* player);
+	static void bug(StringTokenizer tokenizer, PlayerObject* player);
+	static void freezePlayerObject(StringTokenizer tokenizer, PlayerObject* player);
+	static void unfreezePlayerObject(StringTokenizer tokenizer, PlayerObject* player);
+	static void changeTemplate(StringTokenizer tokenizer, PlayerObject* player);
+	static void setSpeed(StringTokenizer tokenizer, PlayerObject* player);
+	static void setHeight(StringTokenizer tokenizer, PlayerObject* player);
+	static void warpAreaToWP(StringTokenizer tokenizer, PlayerObject* player);
+	static void scaleXP(StringTokenizer tokenizer, PlayerObject* player);
+	static void spawnAA(StringTokenizer tokenizer, PlayerObject* player);
+	static void revokeBadge(StringTokenizer tokenizer, PlayerObject* player);
+	static void setLocation(StringTokenizer tokenizer, PlayerObject* player);
+	static void drag(StringTokenizer tokenizer, PlayerObject* player);
+	static void damage(StringTokenizer tokenizer, PlayerObject* player);
+	static void deleteFromZone(StringTokenizer tokenizer, PlayerObject* player);
+	static void playAudio(StringTokenizer tokenizer, PlayerObject* player);
+	static void setMOTD(StringTokenizer tokenizer, PlayerObject* player);
+	static void displayMOTD(StringTokenizer tokenizer, PlayerObject* player);
+	static void applyDot(StringTokenizer tokenizer, PlayerObject* player);
 
-	static void rebelMessage(StringTokenizer tokenizer, Player* player);
-	static void imperialMessage(StringTokenizer tokenizer, Player* player);
-	static void eventMessage(StringTokenizer tokenizer, Player* player);
-	static void eventCloner(StringTokenizer tokenizer, Player* player);
-	static void deletePlayer(StringTokenizer tokenizer, Player* player);
+	static void rebelMessage(StringTokenizer tokenizer, PlayerObject* player);
+	static void imperialMessage(StringTokenizer tokenizer, PlayerObject* player);
+	static void eventMessage(StringTokenizer tokenizer, PlayerObject* player);
+	static void eventCloner(StringTokenizer tokenizer, PlayerObject* player);
+	static void deletePlayerObject(StringTokenizer tokenizer, PlayerObject* player);
 
-	static void createTestPet(StringTokenizer tokenizer, Player* player);
-	static void moveToMe(StringTokenizer tokenizer, Player* player);
-	static void woundPet(StringTokenizer tokenizer, Player* player);
-	static void growUpPet(StringTokenizer tokenizer, Player* player);
-	static void petAnimation(StringTokenizer tokenizer, Player* player);
-	static void changePetDatapadCRC(StringTokenizer tokenizer, Player* player);
+	static void createTestPet(StringTokenizer tokenizer, PlayerObject* player);
+	static void moveToMe(StringTokenizer tokenizer, PlayerObject* player);
+	static void woundPet(StringTokenizer tokenizer, PlayerObject* player);
+	static void growUpPet(StringTokenizer tokenizer, PlayerObject* player);
+	static void petAnimation(StringTokenizer tokenizer, PlayerObject* player);
+	static void changePetDatapadCRC(StringTokenizer tokenizer, PlayerObject* player);
 
-	static void storeVehicle(StringTokenizer tokenizer, Player* player);
-	static void clearMissions(StringTokenizer tokenizer, Player* player);
-	static void clearInventory(StringTokenizer tokenizer, Player* player);
+	static void storeVehicle(StringTokenizer tokenizer, PlayerObject* player);
+	static void clearMissions(StringTokenizer tokenizer, PlayerObject* player);
+	static void clearInventory(StringTokenizer tokenizer, PlayerObject* player);
 	*/
 
 	void init();
@@ -258,7 +258,7 @@ public:
 
 	~GameCommandHandler();
 
-	void handleCommand(String cmd, StringTokenizer tokenizer, Player* player);
+	void handleCommand(String cmd, StringTokenizer tokenizer, PlayerObject* player);
 };
 
 #endif /*GAMECOMMANDHANDLER_H_*/

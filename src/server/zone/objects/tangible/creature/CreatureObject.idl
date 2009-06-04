@@ -43,9 +43,35 @@ which carries forward this exception.
 */
 
 import "../TangibleObject";
+import "../../SceneObject";
+import "../../universe/group/GroupObject";
 
 interface CreatureObject implements TangibleObject {
-	CreatureObject() {
-		super();
+	CreatureObject(unsigned long objectid, int type = 0x400) {
+		super(objectid, type);
 	}
+	
+	void updateTargetObject(unsigned long targetid, boolean updateclients = true);
+	void updateTargetObject(SceneObject target, boolean updateclients = true);
+	
+	//Setters
+	void setLastMovementStamp(unsigned int timestamp);
+	void setMovementCounter(unsigned int counter);
+	void setHairObject(TangibleObject hair);
+	void setMoodID(unsigned char moodid);
+	void setBankCredits(unsigned int credits);
+	void setCashCredits(unsigned int credits);
+	void setHeight(float value);
+	
+	//Getters
+	unsigned int getLastMovementStamp();
+	TangibleObject getHairObject();
+	GroupObject getGroupObject();
+	unsigned char getMoodID();
+	float getHeight();
+	unsigned int getBankCredits();
+	unsigned int getCashCredits();
+	String getMoodName();
+	unsigned long getStatesBitmask();
+	unsigned char getPosture();
 }

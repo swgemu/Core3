@@ -12,8 +12,8 @@
  *	TerminalObjectStub
  */
 
-TerminalObject::TerminalObject() : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new TerminalObjectImplementation();
+TerminalObject::TerminalObject(unsigned long long objectid, int type) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new TerminalObjectImplementation(objectid, type);
 	_impl->_setStub(this);
 }
 
@@ -76,7 +76,7 @@ DistributedObjectAdapter* TerminalObjectHelper::createAdapter(DistributedObjectS
  *	TerminalObjectServant
  */
 
-TerminalObjectServant::TerminalObjectServant() : TangibleObjectImplementation() {
+TerminalObjectServant::TerminalObjectServant(unsigned long long objectid, int type) : TangibleObjectImplementation(objectid, type) {
 	_classHelper = TerminalObjectHelper::instance();
 }
 

@@ -6,6 +6,10 @@
 
 #include "SceneObjectImplementation.h"
 
+#include "../Zone.h"
+
+#include "intangible/player/PlayerObject.h"
+
 /*
  *	SceneObjectStub
  */
@@ -16,12 +20,39 @@ SceneObject::SceneObject(DummyConstructorParameter* param) : ManagedObject(param
 SceneObject::~SceneObject() {
 }
 
-void SceneObject::info(const String& message, bool forcedLog) {
+bool SceneObject::hasChild(unsigned long long objid, bool recursive) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+		method.addUnsignedLongParameter(objid);
+		method.addBooleanParameter(recursive);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->hasChild(objid, recursive);
+}
+
+int SceneObject::getContainerSize(bool recursive) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addBooleanParameter(recursive);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->getContainerSize(recursive);
+}
+
+void SceneObject::info(const String& message, bool forcedLog) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
 		method.addAsciiParameter(message);
 		method.addBooleanParameter(forcedLog);
 
@@ -35,7 +66,7 @@ void SceneObject::error(const String& message) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 9);
 		method.addAsciiParameter(message);
 
 		method.executeWithVoidReturn();
@@ -43,18 +74,463 @@ void SceneObject::error(const String& message) {
 		((SceneObjectImplementation*) _impl)->error(message);
 }
 
-bool SceneObject::isObjectType(int type, bool similar) {
+bool SceneObject::destroy() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
-		method.addSignedIntParameter(type);
-		method.addBooleanParameter(similar);
+		DistributedMethod method(this, 10);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _impl)->isObjectType(type, similar);
+		return ((SceneObjectImplementation*) _impl)->destroy();
+}
+
+void SceneObject::deploy() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->deploy();
+}
+
+void SceneObject::scheduleUndeploy() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->scheduleUndeploy();
+}
+
+void SceneObject::undeploy() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->undeploy();
+}
+
+void SceneObject::redeploy() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->redeploy();
+}
+
+void SceneObject::removeUndeploymentEvent() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->removeUndeploymentEvent();
+}
+
+void SceneObject::setObjectKeeping(bool keeping) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+		method.addBooleanParameter(keeping);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->setObjectKeeping(keeping);
+}
+
+void SceneObject::clearUndeploymentEvent() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->clearUndeploymentEvent();
+}
+
+bool SceneObject::isUndeploymentScheduled() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->isUndeploymentScheduled();
+}
+
+bool SceneObject::isInRange(SceneObject* obj, float range) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+		method.addObjectParameter(obj);
+		method.addFloatParameter(range);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->isInRange(obj, range);
+}
+
+bool SceneObject::isInRange(float x, float y, float range) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+		method.addFloatParameter(x);
+		method.addFloatParameter(y);
+		method.addFloatParameter(range);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->isInRange(x, y, range);
+}
+
+int SceneObject::inRangeObjectCount() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->inRangeObjectCount();
+}
+
+QuadTreeEntry* SceneObject::getInRangeObject(int idx) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+		method.addSignedIntParameter(idx);
+
+		return (QuadTreeEntry*) method.executeWithObjectReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->getInRangeObject(idx);
+}
+
+void SceneObject::addInRangeObject(QuadTreeEntry* obj, bool notifyUpdate) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+		method.addObjectParameter(obj);
+		method.addBooleanParameter(notifyUpdate);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->addInRangeObject(obj, notifyUpdate);
+}
+
+void SceneObject::removeInRangeObject(QuadTreeEntry* obj) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
+		method.addObjectParameter(obj);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->removeInRangeObject(obj);
+}
+
+bool SceneObject::isInQuadTree() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 25);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->isInQuadTree();
+}
+
+QuadTreeEntry* SceneObject::getQuadTreeEntry() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 26);
+
+		return (QuadTreeEntry*) method.executeWithObjectReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->getQuadTreeEntry();
+}
+
+void SceneObject::broadcastMessage(BaseMessage* msg, int range, bool dolock, bool sendself) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 27);
+		method.addObjectParameter(msg);
+		method.addSignedIntParameter(range);
+		method.addBooleanParameter(dolock);
+		method.addBooleanParameter(sendself);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->broadcastMessage(msg, range, dolock, sendself);
+}
+
+void SceneObject::broadcastMessage(StandaloneBaseMessage* msg, int range, bool dolock) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
+		method.addObjectParameter(msg);
+		method.addSignedIntParameter(range);
+		method.addBooleanParameter(dolock);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->broadcastMessage(msg, range, dolock);
+}
+
+void SceneObject::onDragDrop(PlayerObject* player, SceneObject* target) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 29);
+		method.addObjectParameter(player);
+		method.addObjectParameter(target);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->onDragDrop(player, target);
+}
+
+void SceneObject::setParent(SceneObject* obj, unsigned int linktype) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 30);
+		method.addObjectParameter(obj);
+		method.addUnsignedIntParameter(linktype);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->setParent(obj, linktype);
+}
+
+void SceneObject::setZoneProcessServer(ZoneProcessServerImplementation* srv) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((SceneObjectImplementation*) _impl)->setZoneProcessServer(srv);
+}
+
+void SceneObject::setZone(Zone* zne) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 31);
+		method.addObjectParameter(zne);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->setZone(zne);
+}
+
+void SceneObject::setDirection(float x, float y, float z, float w) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 32);
+		method.addFloatParameter(x);
+		method.addFloatParameter(y);
+		method.addFloatParameter(z);
+		method.addFloatParameter(w);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->setDirection(x, y, z, w);
+}
+
+void SceneObject::setPosition(float x, float y, float z) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 33);
+		method.addFloatParameter(x);
+		method.addFloatParameter(y);
+		method.addFloatParameter(z);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->setPosition(x, y, z);
+}
+
+void SceneObject::setPositionX(float x) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 34);
+		method.addFloatParameter(x);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->setPositionX(x);
+}
+
+void SceneObject::setPositionY(float y) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 35);
+		method.addFloatParameter(y);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->setPositionY(y);
+}
+
+void SceneObject::setPositionZ(float z) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 36);
+		method.addFloatParameter(z);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->setPositionZ(z);
+}
+
+void SceneObject::setCustomName(const UnicodeString& customname) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 37);
+		method.addUnicodeParameter(customname);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->setCustomName(customname);
+}
+
+void SceneObject::setStfFile(const String& stffile) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 38);
+		method.addAsciiParameter(stffile);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->setStfFile(stffile);
+}
+
+void SceneObject::setStfName(const String& stfname) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 39);
+		method.addAsciiParameter(stfname);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->setStfName(stfname);
+}
+
+SceneObject* SceneObject::getParent() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 40);
+
+		return (SceneObject*) method.executeWithObjectReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->getParent();
+}
+
+unsigned int SceneObject::getLinkType() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 41);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->getLinkType();
+}
+
+ZoneProcessServerImplementation* SceneObject::getZoneProcessServer() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((SceneObjectImplementation*) _impl)->getZoneProcessServer();
+}
+
+Zone* SceneObject::getZone() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 42);
+
+		return (Zone*) method.executeWithObjectReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->getZone();
+}
+
+unsigned int SceneObject::getZoneID() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 43);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->getZoneID();
 }
 
 float SceneObject::getDirectionX() {
@@ -62,7 +538,7 @@ float SceneObject::getDirectionX() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 44);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -74,7 +550,7 @@ float SceneObject::getDirectionY() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 45);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -86,7 +562,7 @@ float SceneObject::getDirectionZ() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 46);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -98,7 +574,7 @@ float SceneObject::getDirectionW() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 47);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -110,7 +586,7 @@ float SceneObject::getPositionX() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 48);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -122,7 +598,7 @@ float SceneObject::getPositionY() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 49);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -134,7 +610,7 @@ float SceneObject::getPositionZ() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 50);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -146,7 +622,7 @@ String& SceneObject::getStfFile() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 51);
 
 		method.executeWithAsciiReturn(_return_getStfFile);
 		return _return_getStfFile;
@@ -159,7 +635,7 @@ String& SceneObject::getStfName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 52);
 
 		method.executeWithAsciiReturn(_return_getStfName);
 		return _return_getStfName;
@@ -172,7 +648,7 @@ UnicodeString& SceneObject::getCustomName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 53);
 
 		method.executeWithUnicodeReturn(_return_getCustomName);
 		return _return_getCustomName;
@@ -185,7 +661,7 @@ unsigned long long SceneObject::getObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 54);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -197,11 +673,23 @@ unsigned int SceneObject::getObjectCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 55);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
 		return ((SceneObjectImplementation*) _impl)->getObjectCRC();
+}
+
+unsigned int SceneObject::getObjectType() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 56);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->getObjectType();
 }
 
 float SceneObject::getComplexity() {
@@ -209,7 +697,7 @@ float SceneObject::getComplexity() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 57);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -221,11 +709,25 @@ unsigned int SceneObject::getVolume() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 58);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
 		return ((SceneObjectImplementation*) _impl)->getVolume();
+}
+
+bool SceneObject::isObjectType(int type, bool similar) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 59);
+		method.addSignedIntParameter(type);
+		method.addBooleanParameter(similar);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->isObjectType(type, similar);
 }
 
 bool SceneObject::isPlayer() {
@@ -233,7 +735,7 @@ bool SceneObject::isPlayer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 60);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -252,57 +754,168 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case 6:
-		info(inv->getAsciiParameter(_param0_info__String_bool_), inv->getBooleanParameter());
+		resp->insertBoolean(hasChild(inv->getUnsignedLongParameter(), inv->getBooleanParameter()));
 		break;
 	case 7:
-		error(inv->getAsciiParameter(_param0_error__String_));
+		resp->insertSignedInt(getContainerSize(inv->getBooleanParameter()));
 		break;
 	case 8:
-		resp->insertBoolean(isObjectType(inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		info(inv->getAsciiParameter(_param0_info__String_bool_), inv->getBooleanParameter());
 		break;
 	case 9:
-		resp->insertFloat(getDirectionX());
+		error(inv->getAsciiParameter(_param0_error__String_));
 		break;
 	case 10:
-		resp->insertFloat(getDirectionY());
+		resp->insertBoolean(destroy());
 		break;
 	case 11:
-		resp->insertFloat(getDirectionZ());
+		deploy();
 		break;
 	case 12:
-		resp->insertFloat(getDirectionW());
+		scheduleUndeploy();
 		break;
 	case 13:
-		resp->insertFloat(getPositionX());
+		undeploy();
 		break;
 	case 14:
-		resp->insertFloat(getPositionY());
+		redeploy();
 		break;
 	case 15:
-		resp->insertFloat(getPositionZ());
+		removeUndeploymentEvent();
 		break;
 	case 16:
-		resp->insertAscii(getStfFile());
+		setObjectKeeping(inv->getBooleanParameter());
 		break;
 	case 17:
-		resp->insertAscii(getStfName());
+		clearUndeploymentEvent();
 		break;
 	case 18:
-		resp->insertUnicode(getCustomName());
+		resp->insertBoolean(isUndeploymentScheduled());
 		break;
 	case 19:
-		resp->insertLong(getObjectID());
+		resp->insertBoolean(isInRange((SceneObject*) inv->getObjectParameter(), inv->getFloatParameter()));
 		break;
 	case 20:
-		resp->insertInt(getObjectCRC());
+		resp->insertBoolean(isInRange(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
 	case 21:
-		resp->insertFloat(getComplexity());
+		resp->insertSignedInt(inRangeObjectCount());
 		break;
 	case 22:
-		resp->insertInt(getVolume());
+		resp->insertLong(getInRangeObject(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 23:
+		addInRangeObject((QuadTreeEntry*) inv->getObjectParameter(), inv->getBooleanParameter());
+		break;
+	case 24:
+		removeInRangeObject((QuadTreeEntry*) inv->getObjectParameter());
+		break;
+	case 25:
+		resp->insertBoolean(isInQuadTree());
+		break;
+	case 26:
+		resp->insertLong(getQuadTreeEntry()->_getObjectID());
+		break;
+	case 27:
+		broadcastMessage((BaseMessage*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		break;
+	case 28:
+		broadcastMessage((StandaloneBaseMessage*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		break;
+	case 29:
+		onDragDrop((PlayerObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
+		break;
+	case 30:
+		setParent((SceneObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		break;
+	case 31:
+		setZone((Zone*) inv->getObjectParameter());
+		break;
+	case 32:
+		setDirection(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		break;
+	case 33:
+		setPosition(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		break;
+	case 34:
+		setPositionX(inv->getFloatParameter());
+		break;
+	case 35:
+		setPositionY(inv->getFloatParameter());
+		break;
+	case 36:
+		setPositionZ(inv->getFloatParameter());
+		break;
+	case 37:
+		setCustomName(inv->getUnicodeParameter(_param0_setCustomName__UnicodeString_));
+		break;
+	case 38:
+		setStfFile(inv->getAsciiParameter(_param0_setStfFile__String_));
+		break;
+	case 39:
+		setStfName(inv->getAsciiParameter(_param0_setStfName__String_));
+		break;
+	case 40:
+		resp->insertLong(getParent()->_getObjectID());
+		break;
+	case 41:
+		resp->insertInt(getLinkType());
+		break;
+	case 42:
+		resp->insertLong(getZone()->_getObjectID());
+		break;
+	case 43:
+		resp->insertInt(getZoneID());
+		break;
+	case 44:
+		resp->insertFloat(getDirectionX());
+		break;
+	case 45:
+		resp->insertFloat(getDirectionY());
+		break;
+	case 46:
+		resp->insertFloat(getDirectionZ());
+		break;
+	case 47:
+		resp->insertFloat(getDirectionW());
+		break;
+	case 48:
+		resp->insertFloat(getPositionX());
+		break;
+	case 49:
+		resp->insertFloat(getPositionY());
+		break;
+	case 50:
+		resp->insertFloat(getPositionZ());
+		break;
+	case 51:
+		resp->insertAscii(getStfFile());
+		break;
+	case 52:
+		resp->insertAscii(getStfName());
+		break;
+	case 53:
+		resp->insertUnicode(getCustomName());
+		break;
+	case 54:
+		resp->insertLong(getObjectID());
+		break;
+	case 55:
+		resp->insertInt(getObjectCRC());
+		break;
+	case 56:
+		resp->insertInt(getObjectType());
+		break;
+	case 57:
+		resp->insertFloat(getComplexity());
+		break;
+	case 58:
+		resp->insertInt(getVolume());
+		break;
+	case 59:
+		resp->insertBoolean(isObjectType(inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		break;
+	case 60:
 		resp->insertBoolean(isPlayer());
 		break;
 	default:
@@ -310,6 +923,14 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	}
 
 	return resp;
+}
+
+bool SceneObjectAdapter::hasChild(unsigned long long objid, bool recursive) {
+	return ((SceneObjectImplementation*) impl)->hasChild(objid, recursive);
+}
+
+int SceneObjectAdapter::getContainerSize(bool recursive) {
+	return ((SceneObjectImplementation*) impl)->getContainerSize(recursive);
 }
 
 void SceneObjectAdapter::info(const String& message, bool forcedLog) {
@@ -320,8 +941,140 @@ void SceneObjectAdapter::error(const String& message) {
 	return ((SceneObjectImplementation*) impl)->error(message);
 }
 
-bool SceneObjectAdapter::isObjectType(int type, bool similar) {
-	return ((SceneObjectImplementation*) impl)->isObjectType(type, similar);
+bool SceneObjectAdapter::destroy() {
+	return ((SceneObjectImplementation*) impl)->destroy();
+}
+
+void SceneObjectAdapter::deploy() {
+	return ((SceneObjectImplementation*) impl)->deploy();
+}
+
+void SceneObjectAdapter::scheduleUndeploy() {
+	return ((SceneObjectImplementation*) impl)->scheduleUndeploy();
+}
+
+void SceneObjectAdapter::undeploy() {
+	return ((SceneObjectImplementation*) impl)->undeploy();
+}
+
+void SceneObjectAdapter::redeploy() {
+	return ((SceneObjectImplementation*) impl)->redeploy();
+}
+
+void SceneObjectAdapter::removeUndeploymentEvent() {
+	return ((SceneObjectImplementation*) impl)->removeUndeploymentEvent();
+}
+
+void SceneObjectAdapter::setObjectKeeping(bool keeping) {
+	return ((SceneObjectImplementation*) impl)->setObjectKeeping(keeping);
+}
+
+void SceneObjectAdapter::clearUndeploymentEvent() {
+	return ((SceneObjectImplementation*) impl)->clearUndeploymentEvent();
+}
+
+bool SceneObjectAdapter::isUndeploymentScheduled() {
+	return ((SceneObjectImplementation*) impl)->isUndeploymentScheduled();
+}
+
+bool SceneObjectAdapter::isInRange(SceneObject* obj, float range) {
+	return ((SceneObjectImplementation*) impl)->isInRange(obj, range);
+}
+
+bool SceneObjectAdapter::isInRange(float x, float y, float range) {
+	return ((SceneObjectImplementation*) impl)->isInRange(x, y, range);
+}
+
+int SceneObjectAdapter::inRangeObjectCount() {
+	return ((SceneObjectImplementation*) impl)->inRangeObjectCount();
+}
+
+QuadTreeEntry* SceneObjectAdapter::getInRangeObject(int idx) {
+	return ((SceneObjectImplementation*) impl)->getInRangeObject(idx);
+}
+
+void SceneObjectAdapter::addInRangeObject(QuadTreeEntry* obj, bool notifyUpdate) {
+	return ((SceneObjectImplementation*) impl)->addInRangeObject(obj, notifyUpdate);
+}
+
+void SceneObjectAdapter::removeInRangeObject(QuadTreeEntry* obj) {
+	return ((SceneObjectImplementation*) impl)->removeInRangeObject(obj);
+}
+
+bool SceneObjectAdapter::isInQuadTree() {
+	return ((SceneObjectImplementation*) impl)->isInQuadTree();
+}
+
+QuadTreeEntry* SceneObjectAdapter::getQuadTreeEntry() {
+	return ((SceneObjectImplementation*) impl)->getQuadTreeEntry();
+}
+
+void SceneObjectAdapter::broadcastMessage(BaseMessage* msg, int range, bool dolock, bool sendself) {
+	return ((SceneObjectImplementation*) impl)->broadcastMessage(msg, range, dolock, sendself);
+}
+
+void SceneObjectAdapter::broadcastMessage(StandaloneBaseMessage* msg, int range, bool dolock) {
+	return ((SceneObjectImplementation*) impl)->broadcastMessage(msg, range, dolock);
+}
+
+void SceneObjectAdapter::onDragDrop(PlayerObject* player, SceneObject* target) {
+	return ((SceneObjectImplementation*) impl)->onDragDrop(player, target);
+}
+
+void SceneObjectAdapter::setParent(SceneObject* obj, unsigned int linktype) {
+	return ((SceneObjectImplementation*) impl)->setParent(obj, linktype);
+}
+
+void SceneObjectAdapter::setZone(Zone* zne) {
+	return ((SceneObjectImplementation*) impl)->setZone(zne);
+}
+
+void SceneObjectAdapter::setDirection(float x, float y, float z, float w) {
+	return ((SceneObjectImplementation*) impl)->setDirection(x, y, z, w);
+}
+
+void SceneObjectAdapter::setPosition(float x, float y, float z) {
+	return ((SceneObjectImplementation*) impl)->setPosition(x, y, z);
+}
+
+void SceneObjectAdapter::setPositionX(float x) {
+	return ((SceneObjectImplementation*) impl)->setPositionX(x);
+}
+
+void SceneObjectAdapter::setPositionY(float y) {
+	return ((SceneObjectImplementation*) impl)->setPositionY(y);
+}
+
+void SceneObjectAdapter::setPositionZ(float z) {
+	return ((SceneObjectImplementation*) impl)->setPositionZ(z);
+}
+
+void SceneObjectAdapter::setCustomName(const UnicodeString& customname) {
+	return ((SceneObjectImplementation*) impl)->setCustomName(customname);
+}
+
+void SceneObjectAdapter::setStfFile(const String& stffile) {
+	return ((SceneObjectImplementation*) impl)->setStfFile(stffile);
+}
+
+void SceneObjectAdapter::setStfName(const String& stfname) {
+	return ((SceneObjectImplementation*) impl)->setStfName(stfname);
+}
+
+SceneObject* SceneObjectAdapter::getParent() {
+	return ((SceneObjectImplementation*) impl)->getParent();
+}
+
+unsigned int SceneObjectAdapter::getLinkType() {
+	return ((SceneObjectImplementation*) impl)->getLinkType();
+}
+
+Zone* SceneObjectAdapter::getZone() {
+	return ((SceneObjectImplementation*) impl)->getZone();
+}
+
+unsigned int SceneObjectAdapter::getZoneID() {
+	return ((SceneObjectImplementation*) impl)->getZoneID();
 }
 
 float SceneObjectAdapter::getDirectionX() {
@@ -372,12 +1125,20 @@ unsigned int SceneObjectAdapter::getObjectCRC() {
 	return ((SceneObjectImplementation*) impl)->getObjectCRC();
 }
 
+unsigned int SceneObjectAdapter::getObjectType() {
+	return ((SceneObjectImplementation*) impl)->getObjectType();
+}
+
 float SceneObjectAdapter::getComplexity() {
 	return ((SceneObjectImplementation*) impl)->getComplexity();
 }
 
 unsigned int SceneObjectAdapter::getVolume() {
 	return ((SceneObjectImplementation*) impl)->getVolume();
+}
+
+bool SceneObjectAdapter::isObjectType(int type, bool similar) {
+	return ((SceneObjectImplementation*) impl)->isObjectType(type, similar);
 }
 
 bool SceneObjectAdapter::isPlayer() {

@@ -52,7 +52,7 @@ class BuildingObjectImplementation : public BuildingObjectServant, public Struct
 protected:
 
 public:
-	BuildingObjectImplementation();
+	BuildingObjectImplementation(uint64 objectid);
 	~BuildingObjectImplementation();
 };
 

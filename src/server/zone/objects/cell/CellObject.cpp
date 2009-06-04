@@ -12,8 +12,8 @@
  *	CellObjectStub
  */
 
-CellObject::CellObject() : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new CellObjectImplementation();
+CellObject::CellObject(unsigned long long objectid) : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new CellObjectImplementation(objectid);
 	_impl->_setStub(this);
 }
 
@@ -76,7 +76,7 @@ DistributedObjectAdapter* CellObjectHelper::createAdapter(DistributedObjectStub*
  *	CellObjectServant
  */
 
-CellObjectServant::CellObjectServant() : SceneObjectImplementation() {
+CellObjectServant::CellObjectServant(unsigned long long objectid, int type) : SceneObjectImplementation(objectid, type) {
 	_classHelper = CellObjectHelper::instance();
 }
 

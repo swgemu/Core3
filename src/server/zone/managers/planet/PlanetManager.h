@@ -11,8 +11,6 @@ class Zone;
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 
-class Player;
-
 class PlanetManager : public DistributedObjectStub {
 public:
 	PlanetManager(Zone* zone, ZoneProcessServerImplementation* processor);

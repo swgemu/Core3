@@ -53,7 +53,7 @@ protected:
 public:
 
 public:
-	InstrumentObjectImplementation();
+	InstrumentObjectImplementation(uint64 objectid);
 	~InstrumentObjectImplementation();
 };
 

@@ -53,20 +53,28 @@ which carries forward this exception.
 #include "../weapon/WeaponObject.h"
 #include "../../universe/group/GroupObject.h"
 #include "../../universe/guild/GuildObject.h"
+#include "Moods.h"
+#include "CreatureAttribute.h"
+#include "CreaturePosture.h"
+#include "CreatureState.h"
+#include "CreatureFlag.h"
 
 class CreatureObjectImplementation : public CreatureObjectServant {
 protected:
-	ManagedReference<InstrumentObject> instrument;
-	ManagedReference<TangibleObject> target; //For targetID?
-	ManagedReference<WeaponObject> weapon;
-	ManagedReference<GroupObject> group;
-	ManagedReference<GuildObject> guild;
+	ManagedReference<TangibleObject> hairObject;
+	ManagedReference<InstrumentObject> instrumentObject;
+	ManagedReference<SceneObject> targetObject;
+	ManagedReference<WeaponObject> weaponObject;
+	ManagedReference<GroupObject> groupObject;
+	ManagedReference<GuildObject> guildObject;
 	ManagedReference<CreatureObject> linkedCreature; //TODO: Is this only used for Mount?
 
 	SkillModList skillMods;
 	ModifierList modifiers;
 
+	String templatePath;
 	String performanceAnimation;
+	String moodName;
 
 	float height;
 	float speed;
@@ -87,10 +95,17 @@ protected:
 
 	uint32 factionRank;
 
+	uint32 timestampLastMovement;
+
+	uint32 updateCounterPosition;
+	uint32 updateCounterAction;
+	uint32 updateCounterHAM;
+	uint32 updateCounterHAMMax;
 	uint32 updateCounterHAMBase;
 	uint32 updateCounterWounds;
 	uint32 updateCounterEncumbrance;
 	uint32 updateCounterPerformance;
+	uint32 updateCounterEquipment;
 
 	int32 attributesBase[9];
 	int32 attributes[9];
@@ -105,6 +120,8 @@ protected:
 	uint8 moodID;
 	uint8 posture;
 
+	bool stationary;
+
 public:
 	static const float DEFAULT_SPEED = 5.376f;
 	static const float DEFAULT_ACCEL = 1.549f;
@@ -114,7 +131,7 @@ public:
 	static const int DROID = 0x403;
 
 public:
-	CreatureObjectImplementation();
+	CreatureObjectImplementation(uint64 objectid, int type = CREATURE);
 	~CreatureObjectImplementation();
 
 	//Saving and loading
@@ -128,12 +145,12 @@ public:
 	virtual bool hasModifier(const String& modname);
 
 	//General Commands
-	virtual void groupInvite(Player* player);
-	virtual void groupJoin(Player* player);
-	virtual void groupLeave(Player* player);
-	virtual void groupKick(Player* player);
-	virtual void groupDisband(Player* player);
-	virtual void groupDecline(Player* player);
+	virtual void groupInvite(PlayerObject* player);
+	virtual void groupJoin(PlayerObject* player);
+	virtual void groupLeave(PlayerObject* player);
+	virtual void groupKick(PlayerObject* player);
+	virtual void groupDisband(PlayerObject* player);
+	virtual void groupDecline(PlayerObject* player);
 	virtual void follow(TangibleObject* target);
 	virtual void stopFollowing(TangibleObject* target);
 	virtual void imageDesign(CreatureObject* target);
@@ -154,9 +171,216 @@ public:
 	virtual void performanceStopListening(CreatureObject* target);
 	virtual void performanceStopWatching(CreatureObject* target);
 
+	virtual void updateTargetObject(uint64 targetid, bool updateclients = true);
+	virtual void updateTargetObject(SceneObject* target, bool updateclients = true);
+
 	//Setters
+	inline void setMovementCounter(uint32 counter) {
+		updateCounterMovement = counter;
+	}
+
+	inline void setLastMovementStamp(uint32 timestamp) {
+		timestampLastMovement = timestamp;
+	}
+
+	inline void setHairObject(TangibleObject* hair) {
+		hairObject = hair;
+	}
+
+	inline void setMoodID(uint8 moodid) {
+		moodID = moodid;
+		moodName = Moods::getName(moodid);
+	}
+
+	inline void setHeight(float value) {
+		height = value;
+	}
+
+	inline void setBankCredits(uint32 credits) {
+		creditsBank = credits;
+	}
+
+	inline void setCashCredits(uint32 credits) {
+		creditsCash = credits;
+	}
 
 	//Getters
+	inline uint32 getLastMovementStamp() {
+		return timestampLastMovement;
+	}
+
+	inline TangibleObject* getHairObject() {
+		return hairObject.get();
+	}
+
+	inline GroupObject* getGroupObject() {
+		return groupObject.get();
+	}
+	inline uint8 getMoodID() {
+		return moodID;
+	}
+
+	inline String& getMoodName() {
+		return moodName;
+	}
+
+	inline float getHeight() {
+		return height;
+	}
+
+	inline uint64 getStatesBitmask() {
+		return statesBitmask;
+	}
+
+	inline uint8 getPosture() {
+		return posture;
+	}
+
+	inline uint32 getBankCredits() {
+		return creditsBank;
+	}
+
+	inline uint32 getCashCredits() {
+		return creditsCash;
+	}
+
+	inline int32 getHealth() {
+		return attributes[CreatureAttribute::HEALTH];
+	}
+
+	inline int32 getStrength() {
+		return attributes[CreatureAttribute::STRENGTH];
+	}
+
+	inline int32 getConstitution() {
+		return attributes[CreatureAttribute::CONSTITUTION];
+	}
+
+	inline int32 getAction() {
+		return attributes[CreatureAttribute::ACTION];
+	}
+
+	inline int32 getQuickness() {
+		return attributes[CreatureAttribute::QUICKNESS];
+	}
+
+	inline int32 getStamina() {
+		return attributes[CreatureAttribute::STAMINA];
+	}
+
+	inline int32 getMind() {
+		return attributes[CreatureAttribute::MIND];
+	}
+
+	inline int32 getFocus() {
+		return attributes[CreatureAttribute::FOCUS];
+	}
+
+	inline int32 getWillpower() {
+		return attributes[CreatureAttribute::WILLPOWER];
+	}
+
+
+	//State Getters
+	inline bool isInCombat() {
+		return (statesBitmask & CreatureState::COMBAT);
+	}
+
+	inline bool isPeaced() {
+		return (statesBitmask & CreatureState::PEACE);
+	}
+
+	inline bool isAiming() {
+		return (statesBitmask & CreatureState::AIMING);
+	}
+
+	inline bool isMeditating() {
+		return (statesBitmask & CreatureState::ALERT);
+	}
+
+	inline bool isBerserk() {
+		return (statesBitmask & CreatureState::BERSERK);
+	}
+
+	inline bool isFeigningDeath() {
+		return (statesBitmask & CreatureState::FEIGNDEATH);
+	}
+
+	inline bool isTumbling() {
+		return (statesBitmask & CreatureState::TUMBLING);
+	}
+
+	inline bool isRallied() {
+		return (statesBitmask & CreatureState::RALLIED);
+	}
+
+	inline bool isStunned() {
+		return (statesBitmask & CreatureState::STUNNED);
+	}
+
+	inline bool isBlinded() {
+		return (statesBitmask & CreatureState::BLINDED);
+	}
+
+	inline bool isDizzy() {
+		return (statesBitmask & CreatureState::DIZZY);
+	}
+
+	inline bool isIntimidated() {
+		return (statesBitmask & CreatureState::INTIMIDATED);
+	}
+
+	inline bool isSnared() {
+		return (statesBitmask & CreatureState::SNARED);
+	}
+
+	inline bool isRooted() {
+		return (statesBitmask & CreatureState::ROOTED);
+	}
+
+	inline bool isSwimming() {
+		return (statesBitmask & CreatureState::SWIMMING);
+	}
+
+	inline bool isSittingOnChair() {
+		return (statesBitmask & CreatureState::SITTINGONCHAIR);
+	}
+
+	inline bool isCrafting() {
+		return (statesBitmask & CreatureState::CRAFTING);
+	}
+
+	inline bool isGlowingJedi() {
+		return (statesBitmask & CreatureState::GLOWINGJEDI);
+	}
+
+	inline bool isMaskedScent() {
+		return (statesBitmask & CreatureState::MASKSCENT);
+	}
+
+	inline bool isPoisoned() {
+		return (statesBitmask & CreatureState::POISONED);
+	}
+
+	inline bool isBleeding() {
+		return (statesBitmask & CreatureState::BLEEDING);
+	}
+
+	inline bool isDiseased() {
+		return (statesBitmask & CreatureState::DISEASED);
+	}
+
+	inline bool isOnFire() {
+		return (statesBitmask & CreatureState::ONFIRE);
+	}
+
+	inline bool isRidingMount() {
+		return (statesBitmask & CreatureState::RIDINGMOUNT);
+	}
+
+	inline bool isOnMountedCreature() {
+		return (statesBitmask & CreatureState::MOUNTEDCREATURE);
+	}
 };
 
 #endif /*CREATUREOBJECTIMPLEMENTATION_H_*/

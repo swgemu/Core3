@@ -46,20 +46,20 @@ which carries forward this exception.
 #define TANGIBLEOBJECTIMPLEMENTATION_H_
 
 #include "TangibleObject.h"
-#include "CustomizationString.h"
+#include "CustomizationVariables.h"
 
+class CreatureObject;
 class TangibleObjectImplementation : public TangibleObjectServant {
 protected:
-	CustomizationString customizationString;
+	CustomizationVariables* customizationString;
 
-	//TODO: Make an object?
 	Vector<ManagedReference<TangibleObject> > defenderList;
 
 	uint32 pvpStatusBitmask;
 	uint32 faction;
 
-	uint32 movementCounter;
-	uint32 defenderUpdateCounter;
+	uint32 updateCounterMovement;
+	uint32 updateCounterDefenders;
 
 	uint32 optionsBitmask;
 	uint32 objectCount;
@@ -111,34 +111,40 @@ public:
 	static const int CAMOKIT = 0x2028;
 
 public:
-	TangibleObjectImplementation();
+	TangibleObjectImplementation(uint64 objectid, int type);
 	~TangibleObjectImplementation();
 
 	//Saving and loading
-	virtual void serialize(String& str);
-	virtual void deserialize(const String& str);
+	//virtual void serialize(String& str);
+	//virtual void deserialize(const String& str);
 
 	//Sending data to client
-	virtual void sendTo(Player* player, bool doclose = true);
-	virtual void sendDestroyTo(Player* player);
-	virtual void sendRadialResponseTo(Player* player);
+	//virtual void sendTo(Player* player, bool doclose = true);
+	//virtual void sendDestroyTo(Player* player);
+	//virtual void sendRadialResponseTo(Player* player);
 
 	//General actions.
-	virtual void converseStart(Player* player);
-	virtual void converseRespond(Player* player);
-	virtual void converseResponse(Player* player);
-	virtual void converseStop(Player* player);
-	virtual void equip(Player* player);
-	virtual void unequip(Player* player);
-	virtual void loot(Player* player, bool lootall = true);
+	virtual void converseStart(PlayerObject* player);
+	virtual void converseRespond(PlayerObject* player);
+	virtual void converseResponse(PlayerObject* player);
+	virtual void converseStop(PlayerObject* player);
+	virtual void loot(PlayerObject* player, bool lootall = true);
 
 	//Object orientation and position.
-	virtual void rotate(Player* player, const String& direction, uint32 degrees = 90);
-	virtual void move(Player* player, const String& direction, uint32 distance = 10);
+	virtual void rotate(PlayerObject* player, const String& direction, uint32 degrees = 90);
+	virtual void move(PlayerObject* player, const String& direction, uint32 distance = 10);
+
+	//Event handlers.
+	virtual void onEquip(CreatureObject* creature);
+	virtual void onUnequip(CreatureObject* creature);
 
 	//Setters
 
 	//Getters
+	inline void getCustomizationString(String& appearance) {
+		customizationString->toString(appearance);
+	}
+
 	inline uint32 getOptionsBitmask() {
 		return optionsBitmask;
 	}
@@ -159,6 +165,14 @@ public:
 	//TODO: Figure out if this byte has any significance.
 	inline uint8 getUnknownByte() {
 		return unknownByte;
+	}
+
+	inline uint32 getNewMovementUpdateCounter(uint8 count) {
+		return (updateCounterMovement += count);
+	}
+
+	inline uint32 getNewDefenderUpdateCounter(uint8 count) {
+		return (updateCounterDefenders += count);
 	}
 
 

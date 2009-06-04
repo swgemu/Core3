@@ -44,8 +44,8 @@ which carries forward this exception.
 
 #include "BazaarTerminalObjectImplementation.h"
 
-BazaarTerminalObjectImplementation::BazaarTerminalObjectImplementation()
-		: BazaarTerminalObjectServant() {
+BazaarTerminalObjectImplementation::BazaarTerminalObjectImplementation(uint64 objectid)
+		: BazaarTerminalObjectServant(objectid, TERMINALBAZAAR) {
 
 }
 

@@ -51,7 +51,7 @@ class MissionObjectImplementation : public MissionObjectServant {
 protected:
 
 public:
-	MissionObjectImplementation();
+	MissionObjectImplementation(uint64 objectid);
 	~MissionObjectImplementation();
 
 	//Setters

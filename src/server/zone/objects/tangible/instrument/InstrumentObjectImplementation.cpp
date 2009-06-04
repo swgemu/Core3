@@ -44,8 +44,8 @@ which carries forward this exception.
 
 #include "InstrumentObjectImplementation.h"
 
-InstrumentObjectImplementation::InstrumentObjectImplementation()
-		: InstrumentObjectServant() {
+InstrumentObjectImplementation::InstrumentObjectImplementation(uint64 objectid)
+		: InstrumentObjectServant(objectid, INSTRUMENT) {
 
 }
 

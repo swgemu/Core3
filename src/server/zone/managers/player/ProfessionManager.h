@@ -46,69 +46,15 @@ which carries forward this exception.
 #define PROFESSIONMANAGER_H_
 
 #include "engine/engine.h"
-#include "ProfessionMap.h"
 
-class SkillManager;
-class SkillBox;
-class Certification;
-class Player;
-class PlayerImplementation;
 class ZoneProcessServerImplementation;
 
 class ProfessionManager : public Mutex {
 	ZoneProcessServerImplementation* server;
 
-	SkillManager* skillManager;
-
-	VectorMap<String, SkillBox*> skillBoxMap;
-	VectorMap<String, Certification*> certificationMap;
-
-	ProfessionMap professionMap;
-
-private:
-	// load at startup DB methods
-	void loadProfessionsFromDatabase();
-	Profession* loadProfession(ResultSet* result);
-	SkillBox* loadSkillBox(ResultSet* result, Profession* profession);
-	void loadSkillRequirements(SkillBox* skillBox, String& skillRequirements);
-	void loadSkillPreclusions(SkillBox* skillBox, String& skillPreclusions);
-	void loadSkillSpeciesRequired(SkillBox* skillBox, String& skillSpeciesRequired);
-	void loadSkillCommands(SkillBox* skillBox, String& skillCommands);
-	void loadSkillMods(SkillBox* skillBox, String& skillMods);
-	void loadDraftSchematics(SkillBox* skillBox, String& grantedDraftSchematics);
-
 public:
-
 	ProfessionManager(ZoneProcessServerImplementation* serv);
 	~ProfessionManager();
-
-	// Player methods
-	void loadProfessions(PlayerImplementation* player);
-	void saveProfessions(PlayerImplementation* player);
-
-	void loadDefaultSkills(PlayerImplementation* player);
-
-	bool trainSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient = true);
-	bool trainSkillBox(const String& skillBox, PlayerImplementation* player, bool updateClient = true);
-	bool surrenderSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient = true);
-	bool surrenderSkillBox(const String& skillBox, PlayerImplementation* player, bool updateClient = true);
-
-	void surrenderAll(PlayerImplementation* player);
-
-	inline SkillManager* getSkillManager() {
-		return skillManager;
-	}
-
-	inline ZoneProcessServerImplementation* getZoneProcessServer() {
-		return server;
-	}
-
-	inline SkillBox* getSkillBox(const String& prof) {
-		return skillBoxMap.get(prof);
-	}
-
-	friend class SkillManager;
-	friend class CreatureManagerImplementation;
 };
 
 #endif /*PROFESSIONMANAGER_H_*/

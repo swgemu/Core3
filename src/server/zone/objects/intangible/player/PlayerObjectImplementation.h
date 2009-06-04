@@ -46,13 +46,84 @@ which carries forward this exception.
 #define PLAYEROBJECTIMPLEMENTATION_H_
 
 #include "PlayerObject.h"
+#include "../../../ZoneClientSession.h"
 
+class CreatureObject;
 class PlayerObjectImplementation : public PlayerObjectServant {
 protected:
+	ManagedReference<ZoneClientSession> zoneClient;
+	ManagedReference<CreatureObject> linkedCreature;
+	//WaypointList* waypointList;
+	//FriendsList* friendsList;
+	//IgnoreList* ignoreList;
+
+	uint8 onlineStatus;
+	uint8 accessLevel;
 
 public:
-	PlayerObjectImplementation();
+	static const uint8 ONLINE = 1;
+	static const uint8 OFFLINE = 2;
+	static const uint8 LINKDEAD = 3;
+	static const uint8 LOGGINGIN = 4;
+	static const uint8 LOGGINGOUT = 5;
+	static const uint8 LOADING = 6;
+
+	//Client side permissions - 0 = Player
+	static const uint8 CSR = 1;
+	static const uint8 DEVELOPER = 2;
+
+public:
+	PlayerObjectImplementation(uint64 objectid, CreatureObject* linkedcreature);
 	~PlayerObjectImplementation();
+
+	virtual void sendMessage(BaseMessage* msg);
+	virtual void sendMessage(StandaloneBaseMessage* msg);
+
+	//Setters
+	inline void setClient(ZoneClientSession* client) {
+		zoneClient = client;
+	}
+
+	inline void setAccessLevel(uint8 level) {
+		accessLevel = level;
+	}
+
+	//Getters
+	inline ZoneClientSession* getClient() {
+		return zoneClient;
+	}
+
+	inline uint8 getAccessLevel() {
+		return accessLevel;
+	}
+
+	inline bool isOnline() {
+		return (onlineStatus != OFFLINE && onlineStatus != LINKDEAD);
+	}
+
+	inline bool isOffline() {
+		return (onlineStatus == OFFLINE);
+	}
+
+	inline bool isLoading() {
+		return (onlineStatus == LOADING || onlineStatus == LOGGINGIN);
+	}
+
+	inline bool isLinkDead() {
+		return (onlineStatus == LINKDEAD);
+	}
+
+	inline bool isLoggingIn() {
+		return (onlineStatus == LOGGINGIN);
+	}
+
+	inline bool isLoggingOut() {
+		return (onlineStatus == LOGGINGOUT);
+	}
+
+	inline bool isPrivileged() {
+		return (accessLevel > 0);
+	}
 };
 
 #endif /*PLAYEROBJECTIMPLEMENTATION_H_*/

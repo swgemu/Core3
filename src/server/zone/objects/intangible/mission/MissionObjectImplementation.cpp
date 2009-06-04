@@ -44,8 +44,8 @@ which carries forward this exception.
 
 #include "MissionObjectImplementation.h"
 
-MissionObjectImplementation::MissionObjectImplementation()
-		: MissionObjectServant() {
+MissionObjectImplementation::MissionObjectImplementation(uint64 objectid)
+		: MissionObjectServant(objectid, MISSIONOBJECT) {
 
 }
 

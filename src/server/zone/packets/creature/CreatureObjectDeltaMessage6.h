@@ -46,84 +46,177 @@ which carries forward this exception.
 #define CREATUREOBJECTDELTAMESSAGE6_H_
 
 #include "../tangible/TangibleObjectDeltaMessage6.h"
-
-#include "../../objects/creature/CreatureObject.h"
-
-#include "../../objects/creature/CreatureAttribute.h"
+#include "../../objects/tangible/creature/CreatureObject.h"
 
 class CreatureObjectDeltaMessage6 : public TangibleObjectDeltaMessage6 {
-	CreatureObject* creo;
+protected:
+	CreatureObject* creature;
+
+	void addAttributeUpdate(uint16 attribute, int32 value) {
+		insertShort(attribute);
+		insertInt(value);
+	}
 
 public:
-	CreatureObjectDeltaMessage6(CreatureObject* cr)
-		: TangibleObjectDeltaMessage6(cr, 0x4352454F) {
-		creo = cr;
+	CreatureObjectDeltaMessage6(CreatureObject* creo)
+			: TangibleObjectDeltaMessage6(creo, 0x4352454F) {
+		creature = creo;
 	}
 
-	void updateWeapon() {
-		addLongUpdate(0x05, creo->getWeaponID());
+	void updateLevel(uint16 level) {
+		startUpdate(0x02);
+		insertShort(level);
 	}
 
-	void updateGroupID() {
-		addLongUpdate(0x06, creo->getGroupID());
+	void updatePerformanceName(const String& performancename) {
+		startUpdate(0x03);
+		insertAscii(performancename);
 	}
 
-	void updateInviterId() {
+	void updateMoodName(const String& moodname) {
+		startUpdate(0x04);
+		insertAscii(moodname);
+	}
+
+	void updateWeaponID(uint64 weaponid) {
+		startUpdate(0x05);
+		insertLong(weaponid);
+	}
+
+	void updateGroupID(uint64 groupid) {
+		startUpdate(0x06);
+		insertLong(groupid);
+	}
+
+	void updateGroupInviterID(uint64 inviterid, uint64 invitecounter) {
 		startUpdate(0x07);
-
-		insertLong(creo->getGroupInviterID());
-		insertLong(creo->getNewGroupInviteCounter());
+		insertLong(inviterid);
+		insertLong(invitecounter);
 	}
 
-	void updateTarget() {
-		addLongUpdate(0x09, creo->getTargetID());
+	void updateGuildID(uint64 guildid) {
+		startUpdate(0x08);
+		insertLong(guildid);
+	}
+
+	void updateTargetID(uint64 targetid) {
+		startUpdate(0x09);
+		insertLong(targetid);
+	}
+
+	void updateMoodID(uint8 moodid) {
+		startUpdate(0x0A);
+		insertByte(moodid);
+	}
+
+	void updatePerformanceCounter(uint32 performancecounter) {
+		startUpdate(0x0B);
+		insertInt(performancecounter);
+	}
+
+	void updatePerformanceID(uint32 performanceid) {
+		startUpdate(0x0C);
+		insertInt(performanceid);
+	}
+
+	void updateAttributes(int32* attributechanges, uint32 counter) {
+		startUpdate(0x0D);
+
+		insertInt(3); //Attributes List Size TODO: Find a way to update this with list size.
+		insertInt(counter); //Attributes Update Counter
+
+		insertByte(0x02); //Update type
+		for (int i = 0; i < 9; i++) {
+			if (attributechanges[i] != 0)
+				addAttributeUpdate(i, attributechanges[i]);
+		}
+
+	}
+
+	void updateAttributesMax(uint32* attributechanges, uint32 counter) {
+		startUpdate(0x0E);
+		insertInt(3); //Attributes Max List Size
+		insertInt(counter); //Attributes Max Update Counter
+
+		insertByte(0x02); //Update type
+		for (int i = 0; i < 9; i++) {
+			if (attributechanges[i] != 0)
+				addAttributeUpdate(i, attributechanges[i]);
+		}
+	}
+
+	//0x0F = Equipment List
+	void updateEquipmentList() {
+		//TODO: This needs research
+		startUpdate(0x0F);
+		insertInt(0); //Equipment List Size
+		insertInt(0); //Equipment List Update Counter
+
+		//for (int i = 0; i < equipmentList.size(); i++) {
+			//TangibleObject* equipment = equipmentList.get(i);
+			//insertCustomizationString(equipment->getCustomizationString());
+			//insertInt(equipment->getWHATEVERTHISISLOL());
+			//insertLong(equipment->getObjectID());
+			//insertInt(equipment->getObjectCRC());
+		//}
+	}
+
+	void updateTemplatePath(const String& templatepath) {
+		startUpdate(0x10);
+		insertAscii(templatepath);
+	}
+
+	void updateStationaryFlag(bool stationary) {
+		startUpdate(0x11);
+		insertByte((uint8) stationary);
 	}
 
 
 	/*void updateMaximumHAMBars() {
 		we need to send full creo6 here intead of deltas to avoid counter corruption
+		TODO: Perhaps there is another alternative...
 	}
 
 	void updateHAMBars() {
 		we need to send full creo6 here intead of deltas to avoid counter corruption
-	}*/
+	}
 
-	void updateMaximumPrimaryBars(int32 health, int32 action, int32 mind) {
+	void updateHAMPrimaryMaximum(int32 health, int32 action, int32 mind) {
 		startUpdate(0x0E);
 
 		uint8 h = 0, a = 0, m = 0;
 
-		if (creo->getHealthMax() != health)
+		if (creature->getHealthMax() != health)
 			h = 1;
 
-		if (creo->getActionMax() != action)
+		if (creature->getActionMax() != action)
 			a = 1;
 
-		if (creo->getMindMax() != mind)
+		if (creature->getMindMax() != mind)
 			m = 1;
 
-		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(h + a + m);
+		uint32 updatecount = creature->getNewHAMMaxUpdateCounter(h + a + m);
 		startList((h + a + m), updatecount);
 
 		if (h) {
-			int32 healthCreo = creo->getHealthMax();
+			int32 healthCreo = creature->getHealthMax();
 			addBar(0, healthCreo, health);
 
-			creo->setHealthMax(healthCreo);
+			creature->setHealthMax(healthCreo);
 		}
 
 		if (a) {
-			int32 actionCreo = creo->getActionMax();
+			int32 actionCreo = creature->getActionMax();
 			addBar(3, actionCreo, action);
 
-			creo->setActionMax(actionCreo);
+			creature->setActionMax(actionCreo);
 		}
 
 		if (m) {
-			int32 mindCreo = creo->getMindMax();
+			int32 mindCreo = creature->getMindMax();
 			addBar(6, mindCreo, mind);
 
-			creo->setMindMax(mindCreo);
+			creature->setMindMax(mindCreo);
 		}
 	}
 
@@ -132,55 +225,55 @@ public:
 
 		uint8 h = 0, a = 0, m = 0;
 
-		if (creo->getHealth() != health)
+		if (creature->getHealth() != health)
 			h = 1;
 
-		if (creo->getAction() != action)
+		if (creature->getAction() != action)
 			a = 1;
 
-		if (creo->getMind() != mind)
+		if (creature->getMind() != mind)
 			m = 1;
 
-		uint32 updatecount = creo->getNewHAMUpdateCounter(h + a + m);
+		uint32 updatecount = creature->getNewHAMUpdateCounter(h + a + m);
 		startList((h+a+m), updatecount);
 
 		if (h) {
-			int32 healthCreo = creo->getHealth();
+			int32 healthCreo = creature->getHealth();
 			addBar(0, healthCreo, health);
 
-			creo->setHealth(healthCreo);
+			creature->setHealth(healthCreo);
 		}
 
 		if (a) {
-			int32 actionCreo = creo->getAction();
+			int32 actionCreo = creature->getAction();
 			addBar(3, actionCreo, action);
 
-			creo->setAction(actionCreo);
+			creature->setAction(actionCreo);
 		}
 
 		if (m) {
-			int32 mindCreo = creo->getMind();
+			int32 mindCreo = creature->getMind();
 			addBar(6, mindCreo, mind);
 
-			creo->setMind(mindCreo);
+			creature->setMind(mindCreo);
 		}
 	}
 
 	void updateAttributeBar(uint8 attribute, int32 value) {
-		int32 creoValue = creo->getAttribute(attribute);
+		int32 creatureValue = creature->getAttribute(attribute);
 
-		if (value == creoValue) {
-			creo->error("mhmm update creo delta6 bar error");
+		if (value == creatureValue) {
+			creature->error("mhmm update creature delta6 bar error");
 			StackTrace::printStackTrace();
 		}
 
 		startUpdate(0x0D);
-		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
+		uint32 updatecount = creature->getNewHAMUpdateCounter(1);
 		startList(1, updatecount);
 
-		addBar(attribute, creoValue, value);
+		addBar(attribute, creatureValue, value);
 
-		creo->setAttribute(attribute, creoValue);
+		creature->setAttribute(attribute, creatureValue);
 	}
 
 	void updateHealthBar(int32 value) {
@@ -220,21 +313,17 @@ public:
 	}
 
 	void updateMaxAttributeBar(uint8 attribute, int32 value) {
-		int32 creoAttributeMax = creo->getAttributeMax(attribute);
+		int32 creatureAttributeMax = creature->getAttributeMax(attribute);
 
-		/*if (value == creoAttributeMax) {
-			creo->error("update creo delta6 bar error");
-			StackTrace::printStackTrace();
-		}*/
 
 		startUpdate(0x0E);
 
-		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
+		uint32 updatecount = creature->getNewHAMMaxUpdateCounter(1);
 		startList(1, updatecount);
 
-		addBar(attribute, creoAttributeMax, value);
+		addBar(attribute, creatureAttributeMax, value);
 
-		creo->setAttributeMax(attribute, creoAttributeMax);
+		creature->setAttributeMax(attribute, creatureAttributeMax);
 	}
 
 	void updateMaxHealthBar(int32 value) {
@@ -275,18 +364,18 @@ public:
 
 	void changeAttributeBar(uint8 attribute, int32 value) {
 		if (value == 0) {
-			creo->error("oh hi update creo delta6 bar error");
+			creature->error("oh hi update creature delta6 bar error");
 			StackTrace::printStackTrace();
 		}
 
 		startUpdate(0x0D);
 
-		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
+		uint32 updatecount = creature->getNewHAMUpdateCounter(1);
 		startList(1, updatecount);
 
-		creo->changeAttribute(attribute, value);
-		int32 creoValue = creo->getAttribute(attribute);
-		addBar(attribute, creoValue);
+		creature->changeAttribute(attribute, value);
+		int32 creatureValue = creature->getAttribute(attribute);
+		addBar(attribute, creatureValue);
 	}
 
 	void changeHealthBar(int32 value) {
@@ -327,18 +416,18 @@ public:
 
 	void changeMaxAttributeBar(uint8 attribute, int32 value) {
 		if (value == 0) {
-			creo->error("u there update creo delta6 bar error");
+			creature->error("u there update creature delta6 bar error");
 			StackTrace::printStackTrace();
 		}
 
 		startUpdate(0x0E);
 
-		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
+		uint32 updatecount = creature->getNewHAMMaxUpdateCounter(1);
 		startList(1, updatecount);
 
-		creo->changeAttributeMax(attribute, value);
-		int32 creoAttributeMax = creo->getAttributeMax(attribute);
-		addBar(attribute, MAX(1, creoAttributeMax));
+		creature->changeAttributeMax(attribute, value);
+		int32 creatureAttributeMax = creature->getAttributeMax(attribute);
+		addBar(attribute, MAX(1, creatureAttributeMax));
 	}
 
 	void changeMaxHealthBar(int32 value) {
@@ -383,59 +472,7 @@ public:
 
 	void addBar(uint16 index, int32 value) {
 		removeListIntElement(index, value);
-	}
-
-	void updateMoodID() {
-		addByteUpdate(0x0A, creo->getMoodID());
-	}
-
-	void updateMoodStr() {
-		addAsciiUpdate(0x04, creo->getMoodStr());
-	}
-
-	void updatePerformanceAnimation(String pAnimation) {
-		startUpdate(0x03);
-		insertAscii(pAnimation);
-	}
-
-	void updatePerformanceCounter(uint32 pCounter) {
-		startUpdate(0x0B);
-		insertInt(pCounter);
-	}
-
-	void updateInstrumentID(int value) {
-		startUpdate(0x0C);
-		insertInt(value);
-	}
-
-	void updateMoodAnimation(String value) {
-		startUpdate(0x04);
-		insertAscii(value);
-	}
-
-	void updateGuild(uint32 value) {
-		startUpdate(0x08);
-		insertInt(value);
-	}
-
-	void updateTemplateString() {
-		startUpdate(0x10);
-		insertAscii(creo->getTemplateString());
-	}
-
-	void setFrozen(bool frozen) {
-		startUpdate(0x11);
-		if (frozen) {
-			insertByte(0x01);
-		} else {
-			insertByte(0);
-		}
-	}
-
-	void updateLevel(uint16 value) {
-		startUpdate(0x02);
-		insertShort(value);
-	}
+	}*/
 };
 
 #endif /*CREATUREOBJECTDELTAMESSAGE6_H_*/

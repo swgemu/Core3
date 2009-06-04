@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../../packets/BaseLineMessage.h"
 
-#include "../../objects/creature/CreatureObject.h"
+#include "../../objects/tangible/creature/CreatureObject.h"
 #include "../tangible/TangibleObjectMessage6.h"
 
 class CreatureObjectMessage6 : public TangibleObjectMessage6 {
@@ -55,7 +55,7 @@ public:
 	CreatureObjectMessage6(CreatureObject* creo)
 			: TangibleObjectMessage6(creo, 0x4352454F, 0x16) {
 
-		insertShort((uint16)creo->getLevel());
+		insertShort((uint16) creo->getLevel());
 
 		insertAscii(creo->getPerformanceAnimation());
 

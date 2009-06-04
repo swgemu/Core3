@@ -51,7 +51,7 @@ include "engine/service/proto/StandaloneBaseMessage";
 
 import "ZoneServer";
 
-import "objects/tangible/creature/player/Player";
+import "objects/intangible/player/PlayerObject";
 
 interface ZoneClientSession {
 	ZoneClientSession(DatagramServiceThread server, Socket sock, SocketAddress addr) {
@@ -71,9 +71,9 @@ interface ZoneClientSession {
 	void info(const String msg, boolean foredLog = false);
 
 	// setters and getters
-	void setPlayer(Player player);
+	void setPlayer(PlayerObject player);
 	
-	Player getPlayer();
+	PlayerObject getPlayer();
 
 	boolean isAvailable();
 	

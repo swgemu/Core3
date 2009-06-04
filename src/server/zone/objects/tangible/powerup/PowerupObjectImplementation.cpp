@@ -44,11 +44,18 @@ which carries forward this exception.
 
 #include "PowerupObjectImplementation.h"
 
-PowerupObjectImplementation::PowerupObjectImplementation()
-		: PowerupObjectServant() {
+PowerupObjectImplementation::PowerupObjectImplementation(uint64 objectid, int type)
+		: PowerupObjectServant(objectid, type) {
 
 }
 
 PowerupObjectImplementation::~PowerupObjectImplementation() {
 
+}
+
+/*************************************************************************
+ * General Actions
+ *************************************************************************/
+void PowerupObjectImplementation::onDragDrop(PlayerObject* player, SceneObject* target) {
+	//TODO: Handle the draging and dropping of powerups here.
 }

@@ -7,23 +7,23 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class Player;
+class PlayerObject;
 
 class PlayerMap : public DistributedObjectStub {
 public:
 	PlayerMap(int initsize);
 
-	Player* put(const String& name, Player* player, bool doLock = true);
+	PlayerObject* put(const String& name, PlayerObject* player, bool doLock = true);
 
-	Player* get(const String& name, bool doLock = true);
+	PlayerObject* get(const String& name, bool doLock = true);
 
-	Player* remove(const String& name, bool doLock = true);
+	PlayerObject* remove(const String& name, bool doLock = true);
 
 	int size(bool doLock = true);
 
-	Player* getNextValue(bool doLock = true);
+	PlayerObject* getNextValue(bool doLock = true);
 
-	Player* next(bool doLock = true);
+	PlayerObject* next(bool doLock = true);
 
 	bool hasNext(bool doLock = true);
 
@@ -49,17 +49,17 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	Player* put(const String& name, Player* player, bool doLock);
+	PlayerObject* put(const String& name, PlayerObject* player, bool doLock);
 
-	Player* get(const String& name, bool doLock);
+	PlayerObject* get(const String& name, bool doLock);
 
-	Player* remove(const String& name, bool doLock);
+	PlayerObject* remove(const String& name, bool doLock);
 
 	int size(bool doLock);
 
-	Player* getNextValue(bool doLock);
+	PlayerObject* getNextValue(bool doLock);
 
-	Player* next(bool doLock);
+	PlayerObject* next(bool doLock);
 
 	bool hasNext(bool doLock);
 
@@ -70,7 +70,7 @@ public:
 	void unlock(bool doLock);
 
 protected:
-	String _param0_put__String_Player_bool_;
+	String _param0_put__String_PlayerObject_bool_;
 	String _param0_get__String_bool_;
 	String _param0_remove__String_bool_;
 };

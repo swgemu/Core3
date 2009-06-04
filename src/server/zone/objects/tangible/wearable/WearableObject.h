@@ -9,11 +9,17 @@
 
 class TangibleObject;
 
+class CreatureObject;
+
 #include "../TangibleObject.h"
 
 class WearableObject : public TangibleObject {
 public:
-	WearableObject();
+	WearableObject(unsigned long long objectid, int type = 1000000);
+
+	void onEquip(CreatureObject* creature);
+
+	void onUnequip(CreatureObject* creature);
 
 protected:
 	WearableObject(DummyConstructorParameter* param);
@@ -30,6 +36,10 @@ public:
 	WearableObjectAdapter(WearableObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void onEquip(CreatureObject* creature);
+
+	void onUnequip(CreatureObject* creature);
 
 };
 
@@ -55,7 +65,7 @@ public:
 	WearableObject* _this;
 
 public:
-	WearableObjectServant();
+	WearableObjectServant(unsigned long long objectid, int type);
 	virtual ~WearableObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

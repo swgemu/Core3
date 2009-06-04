@@ -9,11 +9,17 @@
 
 class TangibleObject;
 
+class PlayerObject;
+
+class SceneObject;
+
 #include "../TangibleObject.h"
 
 class PowerupObject : public TangibleObject {
 public:
-	PowerupObject();
+	PowerupObject(unsigned long long objectid, int type = 80000);
+
+	void onDragDrop(PlayerObject* player, SceneObject* target);
 
 protected:
 	PowerupObject(DummyConstructorParameter* param);
@@ -30,6 +36,8 @@ public:
 	PowerupObjectAdapter(PowerupObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void onDragDrop(PlayerObject* player, SceneObject* target);
 
 };
 
@@ -55,7 +63,7 @@ public:
 	PowerupObject* _this;
 
 public:
-	PowerupObjectServant();
+	PowerupObjectServant(unsigned long long objectid, int type);
 	virtual ~PowerupObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

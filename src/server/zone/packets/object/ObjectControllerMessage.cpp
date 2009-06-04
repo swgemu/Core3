@@ -46,29 +46,20 @@
 
 #include "../../Zone.h"
 #include "../../ZoneServer.h"
-
 #include "../../ZoneProcessServerImplementation.h"
 
 #include "../../managers/player/PlayerManager.h"
-
 #include "../../managers/item/ItemManager.h"
 #include "../../managers/mission/MissionManager.h"
 #include "../../managers/radial/RadialManager.h"
-#include "../../managers/resource/ResourceManager.h"
-#include "../../managers/loot/LootManager.h"
 #include "../../managers/planet/PlanetManager.h"
-#include "../../managers/slashcommands/SlashCommandManager.h"
-
 #include "../../managers/skills/imagedesign/ImageDesignCustomization.h"
-
-#include "../../objects.h"
-
 #include "../../managers/combat/CommandQueueAction.h"
+
+#include "../../packets/object/ImageDesignMessage.h"
 
 #include "ObjectControllerMessage.h"
 #include "CommandQueueRemove.h"
-
-#include "../../packets.h"
 
 ObjectControllerMessage::ObjectControllerMessage(uint64 objid, uint32 header1,
 		uint32 header2, bool comp) :
@@ -83,35 +74,31 @@ ObjectControllerMessage::ObjectControllerMessage(uint64 objid, uint32 header1,
 	setCompression(comp);
 }
 
-bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) {
-	//System::out << pack->toString() << "\n";
+bool ObjectControllerMessage::parseDataTransform(CreatureObject* creature, Message* pack) {
+	if (!creature->isPlayer())
+		return;
+
+	PlayerObject* player = creature->getPlayerObject();
 	pack->shiftOffset(8); // skip ObjectID and size
 
 	uint32 movementStamp = pack->parseInt();
 	uint32 movementCounter = pack->parseInt();
-
-	float x;
-	float z;
-	float y;
 
 	float dx = pack->parseFloat();
 	float dy = pack->parseFloat();
 	float dz = pack->parseFloat();
 	float dw = pack->parseFloat();
 
-	//System::out << "dir vector x:" << dx << " dz:" << dz << " dy:" << dy << " dw:" << dw << "\n";
+	float x = pack->parseFloat();
+	float y = pack->parseFloat();
+	float z = pack->parseFloat();
 
-	x = pack->parseFloat();
-	z = pack->parseFloat();
-	y = pack->parseFloat();
-
-	if (x > 8192.0f || x < -8192.0f || y > 8192.0f || y < -8192.0f) {
+	if (x > 8192.0f || x < -8192.0f || z > 8192.0f || z < -8192.0f) {
 		player->error("position out of bounds...");
 		return false;
 	}
 
-	if (!player->isOnline())
-		return false;
+	/*
 
 	uint32 lastStamp = player->getLastMovementUpdateStamp();
 
@@ -174,14 +161,16 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 
 		player->setLastTestPositionX(x);
 		player->setLastTestPositionY(y);
-	}
+	}*/
 
-	//System::out << "Movement counter:" << movementCounter << "\n";
+	System::out << "Movement counter:" << movementCounter << "\n";
 
-	player->setMovementCounter(movementCounter);
+	CreatureObject* playercreo = player->getLinkedCreature();
 
-	player->setDirection(dx, dz, dy, dw);
-	player->setPosition(x, z, y);
+	playercreo->setMovementCounter(movementCounter);
+
+	playercreo->setDirection(dx, dy, dz, dw);
+	playercreo->setPosition(x, y, z);
 
 	/*System::out << "Player [" << player->getObjectID() << "] - Counter [" << player->getMovementCounter() << "]"
 	 << " - Position (" << (int) x << "," << (int) z << "," << (int) y << ")\n";*/
@@ -189,9 +178,10 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 	return true;
 }
 
-uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
-		Message* pack) {
+uint64 ObjectControllerMessage::parseDataTransformWithParent(PlayerObject* player, Message* pack) {
 	//System::out << pack->toString() << "\n";
+	System::out << "parseDataTransformWithParent" << endl;
+
 	if (!player->isOnline())
 		return 0;
 
@@ -202,21 +192,11 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 	player->setMovementCounter(pack->parseInt() + 1);
 
 	uint64 parent = pack->parseLong();
-	uint64 oldParent = 0;
 
 	Zone* zone = player->getZone();
+
 	if (zone == NULL)
 		return 0;
-
-	if (player->getParent() != NULL)
-		oldParent = player->getParent()->getObjectID();
-
-	if (oldParent != parent) {
-		ItemManager* itemManager = zone->getZoneServer()->getItemManager();
-		if (itemManager != NULL) {
-			itemManager->loadStructurePlayerItems(player, parent);
-		}
-	}
 
 	if (zone->lookupObject(parent) == NULL)
 		return 0;
@@ -227,18 +207,19 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 	float dw = pack->parseFloat();
 
 	float x = pack->parseFloat();
-	float z = pack->parseFloat();
 	float y = pack->parseFloat();
+	float z = pack->parseFloat();
 
-	if (x > 1024.0f || x < -1024.0f || y > 1024.0f || y < -1024.0f) {
+	if (x > 1024.0f || x < -1024.0f || z > 1024.0f || z < -1024.0f) {
 		StringBuffer msg;
 		msg << "position out of bounds cell:[" << parent << "]";
 		player->error(msg.toString());
 		return 0;
 	}
 
-	uint32 lastStamp = player->getLastMovementUpdateStamp();
+	//uint32 lastStamp = player->getLastMovementUpdateStamp();
 
+	/*
 	if (lastStamp == 0 || lastStamp > movementStamp) {
 		player->updateServerMovementStamp();
 
@@ -296,7 +277,7 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 
 		player->setLastTestPositionX(x);
 		player->setLastTestPositionY(y);
-	}
+	}*/
 
 	/*
 	 // if we changed cell
@@ -318,9 +299,9 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 	 player->broadcastMessage(link);
 	 }*/
 
-	player->setDirection(dx, dz, dy, dw);
-	player->setPosition(x, z, y);
-	player->setLastMovementUpdateStamp(movementStamp);
+	player->setDirection(dx, dy, dz, dw);
+	player->setPosition(x, y, z);
+	//player->setLastMovementUpdateStamp(movementStamp);
 
 	return parent;
 
@@ -328,20 +309,15 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 	 << " - Position (" << (int) x << "," << (int) z << "," << (int) y << ")\n";*/
 }
 
-void ObjectControllerMessage::parseObjectTargetUpdate(Player* player,
-		Message* pack) {
+void ObjectControllerMessage::parseObjectTargetUpdate(PlayerObject* player, Message* pack) {
 	pack->shiftOffset(12); // skip ObjectID and size
 
-	uint64 target = pack->parseLong();
-	player->updateTarget(target);
+	uint64 targetid = pack->parseLong();
+	player->updateTargetObject(targetid);
 }
 
-void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
-		Message* pack, ZoneProcessServerImplementation* serv) {
-
-	/**
-	 * Player is wlock() upon entry
-	 */
+void ObjectControllerMessage::parseCommandQueueEnqueue(PlayerObject* player, Message* pack, ZoneProcessServerImplementation* serv) {
+	//Player is wlock() upon entry
 
 	pack->shiftOffset(12); // skip ObjectID and size
 
@@ -353,149 +329,10 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	uint64 target; //?
 	UnicodeString name; //?
 
-	//System::out << "acrc: " << actionCRC << "\n";
-
-	if (actionCRC == 0) {
-		player->clearQueueAction(actioncntr, 0.0f, 0, 0);
-		return;
-	}
-
-	player->setActionCounter(actioncntr);
-
-	SkillManager* skillManager = serv->getSkillManager();
-	if (skillManager == NULL)
-		return;
-
-	Skill* sk = skillManager->getSkill(actionCRC);
-	if (sk != NULL) {
-		target = pack->parseLong();
-
-		UnicodeString option = UnicodeString("");
-		pack->parseUnicode(option);
-		String  actionModifier = option.toString();
-
-		bool canPerform = sk->canPerform(player, pack);
-		if (!canPerform)
-			sendErrMsg(actioncntr, sk, player);
-		else {
-			//System::out << "Skill: " << sk->getSkillName() << " modifier: " << actionModifier << "\n";
-			if (sk->isInstant())
-				player->doInstantAction(target, actionCRC, actioncntr,
-						actionModifier.toCharArray());
-			else
-				player->queueAction(player, target, actionCRC, actioncntr,
-						actionModifier.toCharArray());
-		}
-
-		return;
-	}
-
-	SlashCommandManager* scManager = serv->getSlashCommandManager();
-	if (scManager == NULL)
-		return;
-
-	SlashCommand* sc = scManager->getSlashCommand(actionCRC);
-	if (sc != NULL) {
-		bool completed = sc->doSlashCommand(player, pack);
-		if (!completed)
-			sc->onFail(actioncntr, player);
-		else{
-			sc->onComplete(actioncntr, player);
-			if (sc->addToCombatQueue())
-				player->clearQueueAction(actioncntr);
-		}
-		return;
-	}
-
-	player->clearQueueAction(actioncntr, 0, 2, 0);
-
+	System::out << "ActionCounter: " << actioncntr << " ActionCRC: " << actionCRC << " TargetID: " << target << " Name: " << name.toString() << endl;
 }
 
-/*
- * Unsuccessful skill completion alerts the player of the invalid state
- */
-void ObjectControllerMessage::sendErrMsg(uint32 actioncntr, Skill* skill, Player* player) {
-
-	uint64 states = skill->getStateMask() & player->getStateBitmask();
-
-	if (!skill->checkStateMask(player)) {
-
-		uint64 state = 1;
-		int num = 0;
-
-		while (num < 34) {
-			if (states & state) {
-
-				player->clearQueueAction(actioncntr, 0, 5, num);
-				return;
-
-			}
-
-			state *= 2;
-			++num;
-		}
-	}
-
-	/*
-	 * SOE is stupid so player postures do NOT match up with their respective client error message
-	 * Because of this, we have to have this switch statement to match them up manually
-	 * */
-	if (!skill->checkInvalidPostures(player)){
-
-		switch(player->getPosture()) {
-		case(CreaturePosture::UPRIGHT):
-			player->clearQueueAction(actioncntr, 0, 1, 0);
-			break;
-		case(CreaturePosture::CROUCHED):
-			player->clearQueueAction(actioncntr, 0, 1, 4);
-		break;
-		case(CreaturePosture::PRONE):
-			player->clearQueueAction(actioncntr, 0, 1, 7);
-			break;
-		case(CreaturePosture::SNEAKING):
-			player->clearQueueAction(actioncntr, 0, 1, 5);
-			break;
-		case(CreaturePosture::BLOCKING):
-			player->clearQueueAction(actioncntr, 0, 1, 21);
-			break;
-		case(CreaturePosture::CLIMBING):
-			player->clearQueueAction(actioncntr, 0, 1, 10);
-			break;
-		case(CreaturePosture::FLYING):
-			player->clearQueueAction(actioncntr, 0, 1, 12);
-			break;
-		case(CreaturePosture::LYINGDOWN):
-			player->clearQueueAction(actioncntr, 0, 1, 13);
-			break;
-		case(CreaturePosture::SITTING):
-			player->clearQueueAction(actioncntr, 0, 1, 14);
-			break;
-		case(CreaturePosture::SKILLANIMATING):
-			player->clearQueueAction(actioncntr, 0, 1, 15);
-			break;
-		case(CreaturePosture::DRIVINGVEHICLE):
-			player->clearQueueAction(actioncntr, 0, 1, 16);
-			break;
-		case(CreaturePosture::RIDINGCREATURE):
-			player->clearQueueAction(actioncntr, 0, 1, 17);
-			break;
-		case(CreaturePosture::KNOCKEDDOWN):
-			player->clearQueueAction(actioncntr, 0, 1, 18);
-			break;
-		case(CreaturePosture::INCAPACITATED):
-			player->clearQueueAction(actioncntr, 0, 1, 19);
-			break;
-		case(CreaturePosture::DEAD):
-			player->clearQueueAction(actioncntr, 0, 1, 20);
-			break;
-		default:
-			player->clearQueueAction(actioncntr);
-			break;
-		}
-	}
-}
-
-void ObjectControllerMessage::parseCommandQueueClear(Player* player,
+void ObjectControllerMessage::parseCommandQueueClear(PlayerObject* player,
 		Message* pack) {
 	pack->shiftOffset(12); // skip ObjectID and size
 
@@ -503,16 +340,16 @@ void ObjectControllerMessage::parseCommandQueueClear(Player* player,
 	uint32 actionCRC = pack->parseInt();
 	uint64 target;
 
-	player->deleteQueueAction(actioncntr);
+	System::out << "Clear command from queue" << endl;
+
+	//player->deleteQueueAction(actioncntr);
 }
 
-void ObjectControllerMessage::parseRadialRequest(Player* player, Message* pack,
-		RadialManager* radialManager) {
+void ObjectControllerMessage::parseRadialRequest(PlayerObject* player, Message* pack, RadialManager* radialManager) {
 	radialManager->handleRadialRequest(player, pack);
 }
 
-void ObjectControllerMessage::parseImageDesignCancel(Player* player,
-		Message* pack) {
+void ObjectControllerMessage::parseImageDesignCancel(PlayerObject* player, Message* pack) {
 	// TODO combine these functions together
 	try {
 		// Read the Packet
@@ -682,11 +519,11 @@ void ObjectControllerMessage::parseImageDesignCancel(Player* player,
 
 	} catch (...) {
 		System::out
-				<< "unreported ObjectControllerMessage::parseImageDesignReject(Player* player, Message* pack) exception\n";
+				<< "unreported ObjectControllerMessage::parseImageDesignReject(PlayerObject* player, Message* pack) exception\n";
 	}
 }
 
-void ObjectControllerMessage::parseImageDesignChange(Player* player,
+void ObjectControllerMessage::parseImageDesignChange(PlayerObject* player,
 		Message* pack, ZoneProcessServerImplementation* serv) {
 	int xpval = 0;
 
@@ -906,8 +743,8 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player,
 					hairObject = hairObject.replaceFirst("hair_",
 							"shared_hair_");
 
-					player->setHairObject(hairObject);
-					player->updateHair();
+					//TODO: player->setHairObject(hairObject);
+					//TODO: player->updateHair();
 
 					/*StringBuffer msg;
 					 msg << "imagedesignerupdate, hairObject:" << hex << hairObject;
@@ -922,10 +759,11 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player,
 
 			// Stat Migration
 			if (stat_migration > 0) {
-				player->migrateStats();
+				//TODO: player->migrateStats();
 				xpval = 2000;
 			}
 
+			/*
 			// Add Experience
 			String xptype("imagedesigner");
 			if (designer == target) {
@@ -937,71 +775,42 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player,
 					player->setImagedesignXpGiven(false);
 			} else if (player->getObjectID() == target) {
 				if (designer_object->isPlayer()) {
-					Player* designer_player = (Player*) designer_object;
+					PlayerObject* designer_player = (PlayerObject*) designer_object;
 					designer_player->addXp(xptype, xpval, true);
 				}
-			}
+			}*/
 
 			if (customization != NULL)
 				delete customization;
 
-			if (target_object != NULL)
-				((CreatureObject *) target_object)->updateCharacterAppearance();
+			//if (target_object != NULL)
+				//((CreatureObject *) target_object)->updateCharacterAppearance();
 
-			if (playerManager != NULL)
-				playerManager->updatePlayerAppearanceToDatabase(player);
+			//if (playerManager != NULL)
+				//playerManager->updatePlayerAppearanceToDatabase(player);
 		}
 	} catch (...) {
-		System::out << "unreported ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pack) exception\n";
+		System::out << "unreported ObjectControllerMessage::parseImageDesignChange(PlayerObject* player, Message* pack) exception\n";
 	}
 }
 
-void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* pack) {
-
+void ObjectControllerMessage::parseResourceEmptyHopper(PlayerObject* player, Message* pack) {
 	pack->shiftOffset(20); //Shift past the playerid.
 
 	uint64 harvesterid = pack->parseLong();
 	uint64 resourceid = pack->parseLong();
-
-	float quantity = (float) pack->parseInt(); // need to verify the quantity exists in the hopper
-
-	bool discard = (bool) pack->parseByte(); // Are we retrieving or discarding.
+	float quantity = (float) pack->parseInt();
+	bool discard = (bool) pack->parseByte();
 	uint8 byte2 = pack->parseByte(); // unknown
 
-	SceneObject* object = player->getZone()->lookupObject(harvesterid);
-
-	if (object != NULL) {
-		if (object->isTangible() && ((TangibleObject*)object)->isInstallation()) {
-			InstallationObject* installation = (InstallationObject*) object;
-
-			if (installation->isHarvester() || installation->isGenerator()) {
-				HarvesterObject* harvester = (HarvesterObject*) installation;
-
-				try {
-					harvester->wlock(player);
-
-					if (discard) {
-						harvester->discardResource(player, resourceid, quantity);
-					} else {
-						harvester->retrieveResource(player, resourceid, quantity);
-					}
-
-					harvester->unlock();
-				} catch (...) {
-					player->error("Unhandled exception in ObjectControllerMessage::parseResourceEmptyHopper()");
-					harvester->unlock();
-				}
-
-				GenericResponse* gr = new GenericResponse(player, 0xED, 1, byte2);
-				player->sendMessage(gr);
-			}
-		}
-	}
-
+	/*
+	GenericResponse* gr = new GenericResponse(player, 0xED, 1, byte2);
+	player->sendMessage(gr);
+	*/
 }
 
 // Missions
-void ObjectControllerMessage::parseMissionListRequest(Player* player, Message* pack) {
+void ObjectControllerMessage::parseMissionListRequest(PlayerObject* player, Message* pack) {
 	//skip objId + old size + unk byte + refresh byte
 	pack->shiftOffset(14);
 
@@ -1015,10 +824,11 @@ void ObjectControllerMessage::parseMissionListRequest(Player* player, Message* p
 		return;
 	}
 
+	/*
 	MissionTerminal* mt = plnMgr->getMissionTerminal(termId);
 	if (mt == NULL) {
-		//Turn this message off after testing: (this msg will be frequent until we have a complete static object table)
-		//System::out << "Error: Mission Terminal object NULL in parseMissionListRequest(). Mission Terminal does not exist! \n";
+		Turn this message off after testing: (this msg will be frequent until we have a complete static object table)
+		System::out << "Error: Mission Terminal object NULL in parseMissionListRequest(). Mission Terminal does not exist! \n";
 		return;
 	}
 
@@ -1029,9 +839,10 @@ void ObjectControllerMessage::parseMissionListRequest(Player* player, Message* p
 	}
 
 	misoMgr->sendTerminalData(player, mt->getTerminalMask(), true);
+	*/
 }
 
-void ObjectControllerMessage::parseMissionAccept(Player* player, Message* pack) {
+void ObjectControllerMessage::parseMissionAccept(PlayerObject* player, Message* pack) {
 	//skip objId + old size
 	pack->shiftOffset(12);
 
@@ -1045,10 +856,10 @@ void ObjectControllerMessage::parseMissionAccept(Player* player, Message* pack) 
 		return;
 	}
 
-	misoMgr->doMissionAccept(player, misoId, true);
+	//misoMgr->doMissionAccept(player, misoId, true);
 }
 
-void ObjectControllerMessage::parseMissionAbort(Player* player, Message* pack) {
+void ObjectControllerMessage::parseMissionAbort(PlayerObject* player, Message* pack) {
 	//skip objId + old size
 	pack->shiftOffset(12);
 
@@ -1062,11 +873,12 @@ void ObjectControllerMessage::parseMissionAbort(Player* player, Message* pack) {
 		return;
 	}
 
-	misoMgr->doMissionAbort(player, misoId, true);
+	//misoMgr->doMissionAbort(player, misoId, true);
 }
 
-void ObjectControllerMessage::parseAddCraftingResource(Player* player, Message* packet) {
+void ObjectControllerMessage::parseAddCraftingResource(PlayerObject* player, Message* packet) {
 
+	/*
 	CraftingTool* craftingTool = player->getActiveCraftingTool();
 
 	if(craftingTool == NULL)
@@ -1095,10 +907,11 @@ void ObjectControllerMessage::parseAddCraftingResource(Player* player, Message* 
 		player->sendSystemMessage("Add resource invalid, contact kyle");
 
 	}
+	*/
 }
 
-void ObjectControllerMessage::parseRemoveCraftingResource(Player* player, Message* packet) {
-
+void ObjectControllerMessage::parseRemoveCraftingResource(PlayerObject* player, Message* packet) {
+/*
 	CraftingTool* craftingTool = player->getActiveCraftingTool();
 
 	if(craftingTool == NULL)
@@ -1114,11 +927,11 @@ void ObjectControllerMessage::parseRemoveCraftingResource(Player* player, Messag
 
 	CraftingManager* craftingManager = player->getZone()->getZoneServer()->getCraftingManager();
 	craftingManager->removeIngredientFromSlot(craftingTool, player, slot, counter);
-
+*/
 }
 
-void ObjectControllerMessage::parseCraftCustomization(Player* player, Message* packet) {
-
+void ObjectControllerMessage::parseCraftCustomization(PlayerObject* player, Message* packet) {
+/*
 	CraftingTool* craftingTool = player->getActiveCraftingTool();
 
 	if(craftingTool == NULL)
@@ -1157,10 +970,11 @@ void ObjectControllerMessage::parseCraftCustomization(Player* player, Message* p
 
 	CraftingManager* craftingManager = player->getZone()->getZoneServer()->getCraftingManager();
 	craftingManager->craftingCustomization(craftingTool, player, name, manufacturingSchematicCount, customizationString);
+	*/
 }
 
-void ObjectControllerMessage::parseExperimentation(Player* player, Message* pack) {
-
+void ObjectControllerMessage::parseExperimentation(PlayerObject* player, Message* pack) {
+/*
 	CraftingTool* craftingTool = player->getActiveCraftingTool();
 
 	if(craftingTool == NULL)
@@ -1212,13 +1026,14 @@ void ObjectControllerMessage::parseExperimentation(Player* player, Message* pack
 
 		player->sendMessage(objMsg);
 	}
+	*/
 }
 
-void ObjectControllerMessage::parsePickup(Player* player, Message* pack) {
-	//System::out << pack->toString() << "\n";
+void ObjectControllerMessage::parsePickup(PlayerObject* player, Message* pack) {
+	System::out << "Picking up item" << endl;
 }
 
-void ObjectControllerMessage::parseItemDropTrade(Player* player, Message* pack) {
+void ObjectControllerMessage::parseItemDropTrade(PlayerObject* player, Message* pack) {
 	uint64 targetPlayerId = pack->parseLong();
 
 	pack->shiftOffset(16);
@@ -1234,15 +1049,15 @@ void ObjectControllerMessage::parseItemDropTrade(Player* player, Message* pack) 
 	if (!obj->isPlayer() || !item->isPlayer())
 		return;
 
-	Player* sender = (Player*) obj.get();
-	Player* receiver = (Player*) item.get();
+	PlayerObject* sender = (PlayerObject*) obj.get();
+	PlayerObject* receiver = (PlayerObject*) item.get();
 
 	if (sender != NULL && receiver != NULL) {
 
-		sender->setTradeRequestedPlayer(receiver->getObjectID());
+		//sender->setTradeRequestedPlayer(receiver->getObjectID());
 
 		StfParameter* params = new StfParameter();
-		params->addTU(player->getCharacterName().toString());
+		params->addTU(player->getCustomName().toString());
 
 		receiver->sendSystemMessage("ui_trade", "requested_prose", params);
 
@@ -1250,8 +1065,10 @@ void ObjectControllerMessage::parseItemDropTrade(Player* player, Message* pack) 
 	}
 }
 
-void ObjectControllerMessage::parseRotateItem(Player* player, Message* pack) {
+void ObjectControllerMessage::parseRotateItem(PlayerObject* player, Message* pack) {
 	uint64 target = pack->parseLong();
+
+	System::out << "Rotate item " << pack->toString() << endl;
 
 	SceneObject* object = player->getZone()->getZoneServer()->getObject(target,
 			true);
@@ -1259,9 +1076,7 @@ void ObjectControllerMessage::parseRotateItem(Player* player, Message* pack) {
 	try {
 		object->wlock(player);
 
-		object->setDirection(object->getDirectionX(), (object->getDirectionZ()
-				+ sqrt(.5)), object->getDirectionY(), (object->getDirectionW()
-				+ sqrt(.5)));
+		//object->rotate();
 
 		object->unlock();
 	} catch (...) {

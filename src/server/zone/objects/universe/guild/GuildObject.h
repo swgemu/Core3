@@ -13,7 +13,7 @@ class SceneObject;
 
 class GuildObject : public SceneObject {
 public:
-	GuildObject();
+	GuildObject(unsigned long long objectid);
 
 protected:
 	GuildObject(DummyConstructorParameter* param);
@@ -55,7 +55,7 @@ public:
 	GuildObject* _this;
 
 public:
-	GuildObjectServant();
+	GuildObjectServant(unsigned long long objectid, int type);
 	virtual ~GuildObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

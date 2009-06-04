@@ -45,7 +45,14 @@ which carries forward this exception.
 import "../SceneObject";
 
 interface TangibleObject implements SceneObject {
-	TangibleObject() {
-		super();
+	TangibleObject(unsigned long objectid, int type) {
+		super(objectid, type);
 	}
+	
+	//Setters
+	
+	//Getters
+	void getCustomizationString(String& appearance);
+	unsigned int getNewMovementUpdateCounter(unsigned char count);
+	unsigned int getNewDefenderUpdateCounter(unsigned char count);
 }

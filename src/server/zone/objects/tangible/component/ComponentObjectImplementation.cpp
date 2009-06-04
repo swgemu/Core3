@@ -44,8 +44,8 @@ which carries forward this exception.
 
 #include "ComponentObjectImplementation.h"
 
-ComponentObjectImplementation::ComponentObjectImplementation()
-		: ComponentObjectServant() {
+ComponentObjectImplementation::ComponentObjectImplementation(uint64 objectid)
+		: ComponentObjectServant(objectid, COMPONENT) {
 
 }
 

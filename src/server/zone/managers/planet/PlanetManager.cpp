@@ -8,8 +8,6 @@
 
 #include "server/zone/Zone.h"
 
-#include "../../objects/tangible/creature/player/Player.h"
-
 /*
  *	PlanetManagerStub
  */

@@ -47,52 +47,10 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "SkillList.h"
-#include "performance/PerformanceManager.h"
-#include "imagedesign/CustomizationManager.h"
-
-class SkillBox;
-class Player;
-class PlayerImplementation;
-class ScriptAttacksManager;
-class ProfessionManager;
-class CreatureObject;
-
 class SkillManager {
-
-	SkillList combatActions;
-	ScriptAttacksManager* scr;
-	ProfessionManager* professionManager;
-	PerformanceManager* performanceManager;
-	CustomizationManager* customizationManager;
-
 public:
-
-	SkillManager(ProfessionManager* profManager);
+	SkillManager();
 	~SkillManager();
-
-	void loadSkills(CreatureObject* creature);
-
-	void loadSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool loadRequirements = false, bool updateClient = false);
-	void removeSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient = false);
-
-	Skill* getSkill(const String& name);
-	Skill* getSkill(uint32 actionCRC);
-
-	Performance* getDance(const String& name);
-	Performance* getSong(const String& name, int instrumentType);
-	CustomizationData* getCustomizationData(const String& speciesGender, const String& customizationName);
-
-private:
-	void loadSkillCommands(SkillBox* skillBox, PlayerImplementation* player, bool updateClient);
-	void loadSkillMods(SkillBox* skillBox, PlayerImplementation* player, bool updateClient);
-	void loadSkillCertifications(SkillBox* skillBox, PlayerImplementation* player, bool updateClient);
-	void loadDraftSchematics(SkillBox* skillBox, PlayerImplementation* player, bool updateClient);
-
-	void removeSkillCommands(SkillBox* skillBox, PlayerImplementation* player, bool updateClient);
-	void removeSkillMods(SkillBox* skillBox, PlayerImplementation* player, bool updateClient);
-	void removeSkillCertifications(SkillBox* skillBox, PlayerImplementation* player, bool updateClient);
-	void removeGrantedDraftSchematics(SkillBox* skillBox, PlayerImplementation* player, bool updateClient);
 };
 
-#endif
+#endif /*SKILLMANAGER_H_*/

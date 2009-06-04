@@ -45,7 +45,7 @@ which carries forward this exception.
 import "../CreatureObject";
 
 interface Creature implements CreatureObject {
-	Creature() {
-		super();
+	Creature(unsigned long objectid) {
+		super(objectid, int type);
 	}
 }

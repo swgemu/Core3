@@ -46,146 +46,14 @@ which carries forward this exception.
 #define CHATMANAGERIMPLEMENTATION_H_
 
 #include "engine/engine.h"
-
-class UserManager;
-class ItemManager;
-class ProfessionManager;
-class CreatureManager;
-
-class ChatRoom;
-class ChatRoomMap;
-
-#include "../zone/managers/player/PlayerMap.h"
-
 #include "ChatManager.h"
-#include "GameCommandHandler.h"
-#include "../zone/packets/chat/ChatRoomList.h"
-
-#include "../zone/objects/tangible/creature/CreatureObject.h"
-
-class ZoneServer;
 
 class ChatManagerImplementation : public ChatManagerServant, public Mutex {
 	ZoneServer* server;
 
-	UserManager* userManager;
-
-	PlayerManager* playerManager;
-	GuildManager* guildManager;
-
-	GameCommandHandler * gameCommandHandler;
-
-	ResourceManager* resourceManager;
-
-	PlayerMap* playerMap;
-
-	VectorMap<String, ChatRoom*> gameRooms;
-
-	ChatRoom* staffRoom;
-	ChatRoom* groupRoom;
-	ChatRoom* guildRoom;
-	ChatRoomMap* roomMap;
-
-	uint32 roomID;
-
-	bool mute;
-
-private:
-	void populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg);
-	void printRoomTree(ChatRoom* channel, String name);
-
 public:
-	ChatManagerImplementation(ZoneServer* serv, int initsize);
-
+	ChatManagerImplementation(ZoneServer* serv);
 	~ChatManagerImplementation();
-
-	void addPlayer(Player* player);
-	Player* getPlayer(String& name);
-	Player* removePlayer(String& name);
-
-	void sendMail(const String& sendername, UnicodeString& header, UnicodeString& body, const String& name);
-	void sendMailBody(Player* receiver, uint32 mailid);
-	void listMail(Player* ply);
-	void deleteMail(uint32 mailid);
-
-	void handleTellMessage(Player* player, Message* pack);
-	void handleMessage(Player* player, Message* pack);
-	static void handleEmote(Player* player, Message* pack);
-	static void handleMood(Player* player, Message* pack);
-
-	void handleGameCommand(Player* player, const String& command);
-	static void sendSystemMessage(Player* player, UnicodeString& message);
-	static void sendSystemMessage(Player* player, const String& file, const String& str, StfParameter * param);
-
-	static void broadcastMessage(CreatureObject* player, const UnicodeString& message, uint64 target = 0, uint32 moodid = 0, uint32 mood2 = 0);
-	static void broadcastMessage(CreatureObject* player, const String& file, const String& str, StfParameter * param, uint64 target = 0, uint32 moodid = 0, uint32 mood2 = 0);
-
-	void broadcastFactionMessage(uint32 factionmask, const String& message);
-
-	void broadcastMessage(const String& message);
-	void broadcastMessageRange(Player* player, const String& message, float range);
-
-	// ChatRooms
-	void initiateRooms();
-	void initGuildChannel(Player* creator, uint32 gid);
-
-	void destroyRooms();
-
-	void handleChatRoomMessage(Player* player, Message* pack);
-	void handleGroupChat(Player* player, Message* pack);
-	void handleGuildChat(Player* player, Message* pack);
-
-	void handleCreateRoom(Player* player, Message* pack);
-	void handleChatEnterRoomById(Player* player, Message* pack);
-	void handleChatDestroyRoom(Player* player, Message* pack);
-	void handleChatRemoveAvatarFromRoom(Player* player, Message* pack);
-
-	ChatRoom* getChatRoom(uint32 id);
-
-	void addRoom(ChatRoom* channel);
-	void removeRoom(ChatRoom* channel);
-
-	void sendRoomList(Player* player);
-
-	void sendGuildChat(Player* player);
-	void sendStaffChat(Player* player);
-
-	ChatRoom* createGroupRoom(uint32 groupID, Player* creator);
-
-	ChatRoom* createRoomByFullPath(const String& path);
-
-	void destroyRoom(ChatRoom* room);
-
-	void printRoomTree(ChatRoom* channel) {
-		String name;
-		printRoomTree(channel, name);
-	}
-
-	ChatRoom* getChatRoomByFullPath(const String& path);
-
-	ChatRoom* getGameRoom(const String& game);
-	ChatRoom* getChatRoomByGamePath(ChatRoom* game, const String& path);
-
-	inline ChatRoom* getStaffChat() {
-		return staffRoom;
-	}
-
-	inline uint32 getNextRoomID() {
-		return ++roomID;
-	}
-
-	inline int getPlayerCount() {
-		return playerMap->size();
-	}
-
-	inline bool isMute() {
-		return mute;
-	}
-
-	inline void setMute(bool isMuted) {
-		mute = isMuted;
-	}
-
 };
 
 #endif /*CHATMANAGERIMPLEMENTATION_H_*/
