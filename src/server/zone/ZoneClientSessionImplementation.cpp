@@ -49,13 +49,13 @@ which carries forward this exception.
 #include "ZoneClientSession.h"
 #include "ZoneClientSessionImplementation.h"
 
-#include "objects/tangible/creature/player/Player.h"
+#include "objects/intangible/player/PlayerObject.h"
 
 ZoneClientSessionImplementation::ZoneClientSessionImplementation(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr)
 		: BaseClientProxy(sock, *addr), ZoneClientSessionServant() {
 	init(serv);
 
-	player = NULL;
+	playerObject = NULL;
 	sessionKey = 0;
 
 	disconnecting = false;
@@ -68,7 +68,7 @@ ZoneClientSessionImplementation::ZoneClientSessionImplementation(DatagramService
 }
 
 ZoneClientSessionImplementation::~ZoneClientSessionImplementation() {
-	player = NULL;
+	playerObject = NULL;
 }
 
 void ZoneClientSessionImplementation::disconnect() {
@@ -86,29 +86,29 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 	disconnecting = true;
 
 	if (hasError || !clientDisconnected) {
-		if (player != NULL) {
+		if (playerObject != NULL) {
 			unlock();
 
-			//player->disconnect(false, true);
+			//playerObject->disconnect(false, true);
 
 			lock();
 		}
 
 		closeConnection(true, false);
-	} else if (player != NULL) {
+	} else if (playerObject != NULL) {
 		unlock();
 
-		if (player->isLoggingOut()) {
-			//player->logout();
+		if (playerObject->isLoggingOut()) {
+			//playerObject->logout();
 		} else {
 			try {
-				//player->wlock();
+				playerObject->wlock();
 
-				//player->setLinkDead();
+				//playerObject->setLinkDead();
 
-				//player->unlock();
+				playerObject->unlock();
 			} catch (...) {
-				//player->unlock();
+				playerObject->unlock();
 			}
 
 			closeConnection(true, true);
@@ -128,25 +128,23 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 
 		ZoneServer* server = NULL;
 
-		if (player != NULL) {
+		if (playerObject != NULL) {
 			ZoneServer* srv = NULL;
-
-			ManagedReference<Player> play = player;
 
 			if (lockPlayer)
 				unlock();
 
 			try {
-				play->wlock(lockPlayer);
+				playerObject->wlock(lockPlayer);
 
-				if (play->getZone() != NULL)
-					srv = play->getZone()->getZoneServer();
+				if (playerObject->getZone() != NULL)
+					srv = playerObject->getZone()->getZoneServer();
 
-				play->setClient(NULL);
+				playerObject->setClient(NULL);
 
-				play->unlock(lockPlayer);
+				playerObject->unlock(lockPlayer);
 			} catch (...) {
-				play->unlock(lockPlayer);
+				playerObject->unlock(lockPlayer);
 			}
 
 			if (lockPlayer)
@@ -154,7 +152,7 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 
 			server = srv;
 
-			player = NULL;
+			playerObject = NULL;
 		}
 
 		BaseClient::disconnect(false);

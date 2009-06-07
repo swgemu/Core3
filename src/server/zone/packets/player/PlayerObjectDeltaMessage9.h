@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "../DeltaMessage.h"
 
 #include "../../objects/intangible/player/PlayerObject.h"
-#include "../../objects/tangible/creature/player/Player.h"
+#include "../../objects/tangible/creature/CreatureObject.h"
 
 #include "../../objects/intangible/draftschematic/DraftSchematicObject.h"
 
@@ -65,7 +65,7 @@ public:
 	}
 
 	void startSkillListUpdate(int skillsToUpdate) {
-		startUpdate(0);
+		startUpdate(0x00);
 		//startList(skillsToUpdate, play->getPlayer()->getNewCreatureSkillsCount(skillsToUpdate));
 		startList(0, 0);
 	}
@@ -82,7 +82,7 @@ public:
 	}
 
 	void setExperimentationEnabled(bool experimenting) {
-		startUpdate(1);
+		startUpdate(0x01);
 		if (experimenting){
 			insertInt(3);  // 3 // 4
 		}
@@ -92,12 +92,12 @@ public:
 	}
 
 	void setCraftingState(int state) {
-		startUpdate(2);
+		startUpdate(0x02);
 		insertInt(state);
 	}
 
 	void setClosestCraftingStation(uint64 oid) {
-		startUpdate(3);
+		startUpdate(0x03);
 		insertLong(oid);
 	}
 
@@ -105,7 +105,7 @@ public:
 
 		//Player* player = play->getPlayer();
 
-		startUpdate(4);
+		startUpdate(0x04);
 		//startList(count, player->getDraftSchematicUpdateCount(count));
 		startList(count, 0);
 	}
@@ -174,7 +174,7 @@ public:
 	}
 
 	void setExperimentationPoints(int points){
-		startUpdate(5);
+		startUpdate(0x05);
 		insertInt(points); // Number of experimentation points
 	}
 
@@ -246,7 +246,6 @@ public:
 		addIntUpdate(0x0C, 0);
 		addIntUpdate(0x0D, 100);
 	}
-
 };
 
 #endif /*PLAYEROBJECTDELTAMESSAGE9_H_*/

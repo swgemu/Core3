@@ -33,8 +33,6 @@ public:
 
 	bool destroy();
 
-	void deploy();
-
 	void scheduleUndeploy();
 
 	void undeploy();
@@ -142,6 +140,8 @@ protected:
 
 	virtual ~SceneObject();
 
+	bool _destroy();
+
 	String _return_getStfFile;
 	String _return_getStfName;
 
@@ -167,8 +167,6 @@ public:
 	void error(const String& message);
 
 	bool destroy();
-
-	void deploy();
 
 	void scheduleUndeploy();
 

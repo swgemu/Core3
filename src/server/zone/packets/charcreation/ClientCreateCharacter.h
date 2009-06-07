@@ -47,13 +47,13 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../objects/tangible/creature/player/Player.h"
-#include "../../objects/tangible/creature/player/Races.h"
+#include "../../objects/intangible/player/PlayerObject.h"
+#include "../../objects/tangible/creature/Races.h"
 
 class ClientCreateCharacter : public BaseMessage {
 public:
 	ClientCreateCharacter(const UnicodeString& name);
-	static void parse(Packet* pack, Player* player);
+	static void parse(Packet* pack, PlayerObject* player);
 };
 
 #endif /*CLIENTCREATECHARACTER_H_*/

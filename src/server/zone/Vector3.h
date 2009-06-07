@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef VECTOR3_H_
 #define VECTOR3_H_
 
-//TODO: Need to figure out how to make this class distributable :-/
+#include "engine/engine.h"
 
 class Vector3 {
 protected:
@@ -337,11 +337,5 @@ public:
 
 	friend class Quaternion;
 };
-
-//TODO: Temporary until we can add .cpp to the engine
-const Vector3 Vector3::ZERO(0,0,0);
-const Vector3 Vector3::UNIT_X(1,0,0);
-const Vector3 Vector3::UNIT_Y(0,1,0);
-const Vector3 Vector3::UNIT_Z(0,0,1);
 
 #endif /* VECTOR3_H_ */

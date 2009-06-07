@@ -7,15 +7,15 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-#include "system/net/Socket.h"
-
-#include "system/net/SocketAddress.h"
-
 #include "engine/service/DatagramServiceThread.h"
 
 #include "engine/service/proto/BaseMessage.h"
 
 #include "engine/service/proto/StandaloneBaseMessage.h"
+
+#include "system/net/Socket.h"
+
+#include "system/net/SocketAddress.h"
 
 class ZoneServer;
 
@@ -39,9 +39,9 @@ public:
 
 	void info(const String& msg, bool foredLog = false);
 
-	void setPlayer(PlayerObject* player);
+	void setPlayerObject(PlayerObject* player);
 
-	PlayerObject* getPlayer();
+	PlayerObject* getPlayerObject();
 
 	bool isAvailable();
 
@@ -81,9 +81,9 @@ public:
 
 	void info(const String& msg, bool foredLog);
 
-	void setPlayer(PlayerObject* player);
+	void setPlayerObject(PlayerObject* player);
 
-	PlayerObject* getPlayer();
+	PlayerObject* getPlayerObject();
 
 	bool isAvailable();
 

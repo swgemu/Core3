@@ -53,6 +53,7 @@ which carries forward this exception.
 #include "../weapon/WeaponObject.h"
 #include "../../universe/group/GroupObject.h"
 #include "../../universe/guild/GuildObject.h"
+#include "FactionRank.h"
 #include "Moods.h"
 #include "CreatureAttribute.h"
 #include "CreaturePosture.h"
@@ -93,7 +94,7 @@ protected:
 	uint32 creditsBank;
 	uint32 creditsCash;
 
-	uint32 factionRank;
+	FactionRank* factionRank;
 
 	uint32 timestampLastMovement;
 
@@ -204,7 +205,27 @@ public:
 		creditsCash = credits;
 	}
 
+	inline void setFactionRank(FactionRank* rank) {
+		factionRank = rank;
+	}
+
+	inline void setGroupObject(GroupObject* groupobject) {
+		groupObject = groupobject;
+	}
+
+	inline void setGuildObject(GuildObject* guildobject) {
+		guildObject = guildobject;
+	}
+
 	//Getters
+	inline GroupObject* getGroupObject() {
+		return groupObject.get();
+	}
+
+	inline GuildObject* getGuildObject() {
+		return guildObject.get();
+	}
+
 	inline uint32 getLastMovementStamp() {
 		return timestampLastMovement;
 	}
@@ -213,9 +234,6 @@ public:
 		return hairObject.get();
 	}
 
-	inline GroupObject* getGroupObject() {
-		return groupObject.get();
-	}
 	inline uint8 getMoodID() {
 		return moodID;
 	}
@@ -242,6 +260,10 @@ public:
 
 	inline uint32 getCashCredits() {
 		return creditsCash;
+	}
+
+	inline FactionRank* getFactionRank() {
+		return factionRank;
 	}
 
 	inline int32 getHealth() {
@@ -381,6 +403,18 @@ public:
 	inline bool isOnMountedCreature() {
 		return (statesBitmask & CreatureState::MOUNTEDCREATURE);
 	}
+
+	inline bool isGrouped() {
+		return (groupObject != NULL);
+	}
+
+	//inline bool isInGroupWith(CreatureObject* creature);
+
+	inline bool isGuilded() {
+		return (guildObject != NULL);
+	}
+
+	//inline bool isInGuildWith(CreatureObject* creature);
 };
 
 #endif /*CREATUREOBJECTIMPLEMENTATION_H_*/

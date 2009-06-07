@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "ObjectControllerMessage.h"
-#include "../../objects/intangible/player/PlayerObject.h"
+#include "../../objects/tangible/creature/CreatureObject.h"
 
 #include "RadialMenuItem.h"
 
@@ -74,10 +74,10 @@ class ObjectMenuResponse : public ObjectControllerMessage {
 	}
 
 public:
-	ObjectMenuResponse(PlayerObject* player, uint64 target, uint8 counter)
-	   		: ObjectControllerMessage(player->getObjectID(), 0x0B, 0x147) {
+	ObjectMenuResponse(CreatureObject* creature, uint64 target, uint8 counter)
+	   		: ObjectControllerMessage(creature->getObjectID(), 0x0B, 0x147) {
 		insertLong(target);
-		insertLong(player->getObjectID());
+		insertLong(creature->getObjectID());
 
 		insertInt(0); // size
 

@@ -54,3 +54,4 @@ PlayerManagerImplementation::~PlayerManagerImplementation() {
 
 void PlayerManagerImplementation::stop() {
 }
+

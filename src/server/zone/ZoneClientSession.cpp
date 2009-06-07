@@ -117,7 +117,7 @@ void ZoneClientSession::info(const String& msg, bool foredLog) {
 		((ZoneClientSessionImplementation*) _impl)->info(msg, foredLog);
 }
 
-void ZoneClientSession::setPlayer(PlayerObject* player) {
+void ZoneClientSession::setPlayerObject(PlayerObject* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -127,10 +127,10 @@ void ZoneClientSession::setPlayer(PlayerObject* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneClientSessionImplementation*) _impl)->setPlayer(player);
+		((ZoneClientSessionImplementation*) _impl)->setPlayerObject(player);
 }
 
-PlayerObject* ZoneClientSession::getPlayer() {
+PlayerObject* ZoneClientSession::getPlayerObject() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -139,7 +139,7 @@ PlayerObject* ZoneClientSession::getPlayer() {
 
 		return (PlayerObject*) method.executeWithObjectReturn();
 	} else
-		return ((ZoneClientSessionImplementation*) _impl)->getPlayer();
+		return ((ZoneClientSessionImplementation*) _impl)->getPlayerObject();
 }
 
 bool ZoneClientSession::isAvailable() {
@@ -212,10 +212,10 @@ Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		info(inv->getAsciiParameter(_param0_info__String_bool_), inv->getBooleanParameter());
 		break;
 	case 13:
-		setPlayer((PlayerObject*) inv->getObjectParameter());
+		setPlayerObject((PlayerObject*) inv->getObjectParameter());
 		break;
 	case 14:
-		resp->insertLong(getPlayer()->_getObjectID());
+		resp->insertLong(getPlayerObject()->_getObjectID());
 		break;
 	case 15:
 		resp->insertBoolean(isAvailable());
@@ -261,12 +261,12 @@ void ZoneClientSessionAdapter::info(const String& msg, bool foredLog) {
 	return ((ZoneClientSessionImplementation*) impl)->info(msg, foredLog);
 }
 
-void ZoneClientSessionAdapter::setPlayer(PlayerObject* player) {
-	return ((ZoneClientSessionImplementation*) impl)->setPlayer(player);
+void ZoneClientSessionAdapter::setPlayerObject(PlayerObject* player) {
+	return ((ZoneClientSessionImplementation*) impl)->setPlayerObject(player);
 }
 
-PlayerObject* ZoneClientSessionAdapter::getPlayer() {
-	return ((ZoneClientSessionImplementation*) impl)->getPlayer();
+PlayerObject* ZoneClientSessionAdapter::getPlayerObject() {
+	return ((ZoneClientSessionImplementation*) impl)->getPlayerObject();
 }
 
 bool ZoneClientSessionAdapter::isAvailable() {

@@ -43,8 +43,10 @@ which carries forward this exception.
 */
 
 #include "ClientCreateCharacter.h"
+#include "../../objects/tangible/creature/CreatureObject.h"
 
 ClientCreateCharacter::ClientCreateCharacter(const UnicodeString& name) {
+	//TODO: What is the purpose of this? Do we ever use this?
 	insertShort(12);
 	insertInt(0xB97F3074);
 
@@ -61,24 +63,25 @@ ClientCreateCharacter::ClientCreateCharacter(const UnicodeString& name) {
 	insertByte(0);
 }
 
-void ClientCreateCharacter::parse(Packet* pack, Player* player) {
+void ClientCreateCharacter::parse(Packet* pack, PlayerObject* player) {
 	String customization;
 	pack->parseAscii(customization);
 
 	//player->setCustomizationString(customization);
+	CreatureObject* playercreature = player->getLinkedCreature();
 
 	UnicodeString characterName;
 	pack->parseUnicode(characterName); //get UnicodeString name
-	player->setCustomName(characterName);
+	playercreature->setCustomName(characterName);
 
 	//Split name into first and last tokens.
 	int idx = characterName.indexOf(' ');
 	if (idx != -1) {
 		player->setFirstName(characterName.subString(0, idx).toString());
-		player->setLastName(characterName.subString(idx + 1, characterName.length()).toString());
+		//player->setLastName(characterName.subString(idx + 1, characterName.length()).toString());
 	} else {
 		player->setFirstName(characterName.toString());
-		player->setLastName("");
+		//player->setLastName("");
 	}
 
 	String racefile;
@@ -124,7 +127,7 @@ void ClientCreateCharacter::parse(Packet* pack, Player* player) {
 	if (height < 0.7 || height > 1.5)
 		height = 1;
 
-	player->setHeight(height);
+	playercreature->setHeight(height);
 
 	UnicodeString bio;
 	pack->parseUnicode(bio); //get the biography.

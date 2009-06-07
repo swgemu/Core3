@@ -47,12 +47,11 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 #include "../../SceneObject.h"
-#include "../../intangible/player/PlayerObject.h"
+#include "../creature/CreatureObject.h"
 
 class StructurePermissionList : public VectorMap<String, uint8> {
 protected:
 	ManagedReference<SceneObject> linkedStructure;
-	String permissionString;
 
 public:
 	static const uint8 BAN = 0;
@@ -64,18 +63,18 @@ public:
 public:
 	StructurePermissionList(SceneObject* linkedstructure);
 
-	void sendTo(PlayerObject* player, const String& listname);
+	void sendTo(CreatureObject* player, const String& listname);
 
 	void parsePermissionString(const String& str);
-	String& getPermissionString();
+	void getPermissionString(String& permissionstring);
 
-	void grantPermission(PlayerObject* player, const String& entryname, const String& listname);
-	void revokePermission(PlayerObject* player, const String& entryname, const String& listname);
+	void grantPermission(CreatureObject* player, const String& entryname, const String& listname);
+	void revokePermission(CreatureObject* player, const String& entryname, const String& listname);
 
 	//Setters
 
 	//Getters
-	bool isOnPermissionList(PlayerObject* player, uint8 listtype);
+	bool isOnPermissionList(CreatureObject* player, uint8 listtype);
 	bool isOnPermissionList(const String& entryname, uint8 listtype);
 };
 

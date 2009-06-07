@@ -9,13 +9,19 @@
 
 class SceneObject;
 
+#include "FactionPointsList.h"
+
 #include "../SceneObject.h"
 
 class TangibleObject : public SceneObject {
 public:
 	TangibleObject(unsigned long long objectid, int type);
 
+	void setFactionPointsList(FactionPointsList* fplist);
+
 	void getCustomizationString(String& appearance);
+
+	FactionPointsList* getFactionPointsList();
 
 	unsigned int getNewMovementUpdateCounter(unsigned char count);
 
@@ -37,7 +43,11 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void setFactionPointsList(FactionPointsList* fplist);
+
 	void getCustomizationString(String& appearance);
+
+	FactionPointsList* getFactionPointsList();
 
 	unsigned int getNewMovementUpdateCounter(unsigned char count);
 

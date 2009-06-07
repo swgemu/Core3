@@ -47,6 +47,8 @@ which carries forward this exception.
 
 TangibleObjectImplementation::TangibleObjectImplementation(uint64 objectid, int type)
 		: TangibleObjectServant(objectid, type) {
+
+	factionPointsList = new FactionPointsList();
 }
 
 TangibleObjectImplementation::~TangibleObjectImplementation() {

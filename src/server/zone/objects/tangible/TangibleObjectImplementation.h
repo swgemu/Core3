@@ -47,11 +47,13 @@ which carries forward this exception.
 
 #include "TangibleObject.h"
 #include "CustomizationVariables.h"
+#include "FactionPointsList.h"
 
 class CreatureObject;
 class TangibleObjectImplementation : public TangibleObjectServant {
 protected:
 	CustomizationVariables* customizationString;
+	FactionPointsList* factionPointsList;
 
 	Vector<ManagedReference<TangibleObject> > defenderList;
 
@@ -139,10 +141,17 @@ public:
 	virtual void onUnequip(CreatureObject* creature);
 
 	//Setters
+	inline void setFactionPointsList(FactionPointsList* fplist) {
+		factionPointsList = fplist;
+	}
 
 	//Getters
 	inline void getCustomizationString(String& appearance) {
 		customizationString->toString(appearance);
+	}
+
+	inline FactionPointsList* getFactionPointsList() {
+		return factionPointsList;
 	}
 
 	inline uint32 getOptionsBitmask() {

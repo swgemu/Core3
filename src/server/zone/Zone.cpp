@@ -16,6 +16,8 @@
 
 #include "managers/creature/CreatureManager.h"
 
+#include "packets/player/GetMapLocationsResponseMessage.h"
+
 /*
  *	ZoneStub
  */
@@ -326,12 +328,24 @@ unsigned int Zone::getWeatherID() {
 		return ((ZoneImplementation*) _impl)->getWeatherID();
 }
 
-void Zone::setWeatherID(unsigned int value) {
+GetMapLocationsResponseMessage* Zone::getPlanetaryMapMessage() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 29);
+
+		return (GetMapLocationsResponseMessage*) method.executeWithObjectReturn();
+	} else
+		return ((ZoneImplementation*) _impl)->getPlanetaryMapMessage();
+}
+
+void Zone::setWeatherID(unsigned int value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 30);
 		method.addUnsignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -344,7 +358,7 @@ void Zone::changeWeatherID(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -357,7 +371,7 @@ bool Zone::isWeatherEnabled() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -369,7 +383,7 @@ void Zone::setWeatherEnabled(bool value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 		method.addBooleanParameter(value);
 
 		method.executeWithVoidReturn();
@@ -382,7 +396,7 @@ void Zone::setWeatherWindX(float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 		method.addFloatParameter(value);
 
 		method.executeWithVoidReturn();
@@ -395,7 +409,7 @@ void Zone::setWeatherWindY(float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 		method.addFloatParameter(value);
 
 		method.executeWithVoidReturn();
@@ -408,7 +422,7 @@ float Zone::getWeatherWindX() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -420,7 +434,7 @@ float Zone::getWeatherWindY() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -508,27 +522,30 @@ Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertInt(getWeatherID());
 		break;
 	case 29:
-		setWeatherID(inv->getUnsignedIntParameter());
+		resp->insertLong(getPlanetaryMapMessage()->_getObjectID());
 		break;
 	case 30:
-		changeWeatherID(inv->getSignedIntParameter());
+		setWeatherID(inv->getUnsignedIntParameter());
 		break;
 	case 31:
-		resp->insertBoolean(isWeatherEnabled());
+		changeWeatherID(inv->getSignedIntParameter());
 		break;
 	case 32:
-		setWeatherEnabled(inv->getBooleanParameter());
+		resp->insertBoolean(isWeatherEnabled());
 		break;
 	case 33:
-		setWeatherWindX(inv->getFloatParameter());
+		setWeatherEnabled(inv->getBooleanParameter());
 		break;
 	case 34:
-		setWeatherWindY(inv->getFloatParameter());
+		setWeatherWindX(inv->getFloatParameter());
 		break;
 	case 35:
-		resp->insertFloat(getWeatherWindX());
+		setWeatherWindY(inv->getFloatParameter());
 		break;
 	case 36:
+		resp->insertFloat(getWeatherWindX());
+		break;
+	case 37:
 		resp->insertFloat(getWeatherWindY());
 		break;
 	default:
@@ -628,6 +645,10 @@ unsigned long long ZoneAdapter::getGalacticTime() {
 
 unsigned int ZoneAdapter::getWeatherID() {
 	return ((ZoneImplementation*) impl)->getWeatherID();
+}
+
+GetMapLocationsResponseMessage* ZoneAdapter::getPlanetaryMapMessage() {
+	return ((ZoneImplementation*) impl)->getPlanetaryMapMessage();
 }
 
 void ZoneAdapter::setWeatherID(unsigned int value) {

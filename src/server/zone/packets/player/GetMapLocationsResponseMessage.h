@@ -52,6 +52,19 @@ class GetMapLocationsResponseMessage : public BaseMessage {
 	String planetName;
 
 public:
+	GetMapLocationsResponseMessage() : BaseMessage() {
+		insertShort(0x05);
+		insertInt(0x9F80464C); //GetMapLocationsResponseMessage
+
+		insertAscii("naboo");
+		insertInt(0); //List 1
+		insertInt(0); //List 2
+		insertInt(0); //List 3
+		insertInt(0); //Unknown 1
+		insertInt(0); //Unknown 2
+		insertInt(0); //Unknown 3
+	}
+
 	GetMapLocationsResponseMessage(String planet) : BaseMessage() {
 		planetName = planet;
 		insertShort(0x05);

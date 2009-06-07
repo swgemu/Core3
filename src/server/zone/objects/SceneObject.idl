@@ -60,8 +60,7 @@ interface SceneObject implements ManagedObject {
 	void error(const String message);
 	
 	//ORB Methods
-	boolean destroy();
-	void deploy();
+	native boolean destroy();
 	void scheduleUndeploy();
 	void undeploy();
 	void redeploy();

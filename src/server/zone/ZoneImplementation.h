@@ -46,22 +46,19 @@ which carries forward this exception.
 #define ZONEIMPLEMENTATION_H_
 
 #include "engine/engine.h"
+#include "Zone.h"
 
 #include "managers/planet/HeightMap.h"
+#include "packets/player/GetMapLocationsResponseMessage.h"
 
 class ZoneProcessServerImplementation;
-
 class ZoneServer;
 
 class CreatureManager;
-
 class CombatManager;
 class ChatManager;
-
 class RadialManager;
-
 class PlanetManager;
-
 class SceneObject;
 
 class ZoneImplementation : public ZoneServant, public QuadTree {
@@ -88,10 +85,16 @@ class ZoneImplementation : public ZoneServant, public QuadTree {
 	uint32 weatherID;
 	bool weatherEnabled;
 
+	GetMapLocationsResponseMessage* getMapLocationsResponseMessage;
+
 public:
 	ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplementation* srv, int id);
 
 	~ZoneImplementation() {
+		if (getMapLocationsResponseMessage != NULL) {
+			delete getMapLocationsResponseMessage;
+			getMapLocationsResponseMessage = NULL;
+		}
 	}
 
 	void startManagers();
@@ -113,6 +116,10 @@ public:
 	// setters and getters
 	inline int getZoneID() {
 		return zoneID;
+	}
+
+	inline GetMapLocationsResponseMessage* getPlanetaryMapMessage() {
+		return (GetMapLocationsResponseMessage*) getMapLocationsResponseMessage->clone();
 	}
 
 	inline ZoneServer* getZoneServer() {

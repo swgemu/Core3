@@ -250,7 +250,7 @@ void ZoneServerImplementation::startManagers() {
 	itemManager = new ItemManager();
 	itemManager->deploy("ItemManager");
 
-	playerManager = new PlayerManager(itemManager, processor);
+	playerManager = new PlayerManager(processor);
 	playerManager->deploy("PlayerManager");
 
 	guildManager = new GuildManager();
@@ -262,7 +262,7 @@ void ZoneServerImplementation::startManagers() {
 	craftingManager = new CraftingManager();
 	craftingManager->deploy("CraftingManager");
 
-	chatManager = new ChatManager(_this, 10000);
+	chatManager = new ChatManager(_this);
 	chatManager->deploy("ChatManager");
 
 	bankManager = new BankManager();
@@ -283,16 +283,16 @@ void ZoneServerImplementation::run() {
 }
 
 void ZoneServerImplementation::shutdown() {
-	chatManager->broadcastMessage("Server is shutting down in 30 seconds..");
+	//chatManager->broadcastMessage("Server is shutting down in 30 seconds..");
 	Thread::sleep(10000);
 
-	chatManager->broadcastMessage("Server is shutting down in 20 seconds..");
+	//chatManager->broadcastMessage("Server is shutting down in 20 seconds..");
 	Thread::sleep(10000);
 
-	chatManager->broadcastMessage("Server is shutting down in 10 seconds..");
+	//chatManager->broadcastMessage("Server is shutting down in 10 seconds..");
 	Thread::sleep(10000);
 
-	chatManager->broadcastMessage("Server is shutting down in 5 seconds..");
+	//chatManager->broadcastMessage("Server is shutting down in 5 seconds..");
 	Thread::sleep(5000);
 
 	processor->stop();
@@ -390,9 +390,9 @@ void ZoneServerImplementation::addObject(SceneObject* obj, bool doLock) {
 		obj->setZoneProcessServer(processor);
 
 		if (conflictedObj == NULL && obj->isPlayer()) {
-			Player* player = (Player*) obj;
+			PlayerObject* player = (PlayerObject*) obj;
 
-			chatManager->addPlayer(player);
+			//chatManager->addPlayer(player);
 
 			if (++currentPlayers > maximumPlayers)
 				maximumPlayers = currentPlayers;
@@ -435,10 +435,10 @@ SceneObject* ZoneServerImplementation::removeObject(uint64 oid, bool doLock) {
 		}
 
 		if (obj->isPlayer()) {
-			Player* player = (Player*) obj;
+			PlayerObject* player = (PlayerObject*) obj;
 			String& name = player->getFirstName();
 
-			chatManager->removePlayer(name);
+			//chatManager->removePlayer(name);
 
 			--currentPlayers;
 		}

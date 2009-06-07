@@ -57,6 +57,12 @@ protected:
 	//FriendsList* friendsList;
 	//IgnoreList* ignoreList;
 
+	String firstName;
+	//TODO: Should we even store lastName? I can't think of a time when it is needed seperate.
+	String lastName;
+
+	uint64 characterID;
+
 	uint8 onlineStatus;
 	uint8 accessLevel;
 
@@ -88,6 +94,18 @@ public:
 		accessLevel = level;
 	}
 
+	inline void setLinkedCreature(CreatureObject* creature) {
+		linkedCreature = creature;
+	}
+
+	inline void setFirstName(const String& fname) {
+		firstName = fname;
+	}
+
+	inline void setCharacterID(uint64 characterid) {
+		characterID = characterid;
+	}
+
 	//Getters
 	inline ZoneClientSession* getClient() {
 		return zoneClient;
@@ -95,6 +113,18 @@ public:
 
 	inline uint8 getAccessLevel() {
 		return accessLevel;
+	}
+
+	inline CreatureObject* getLinkedCreature() {
+		return linkedCreature.get();
+	}
+
+	inline String& getFirstName() {
+		return firstName;
+	}
+
+	inline uint64 getCharacterID() {
+		return characterID;
 	}
 
 	inline bool isOnline() {

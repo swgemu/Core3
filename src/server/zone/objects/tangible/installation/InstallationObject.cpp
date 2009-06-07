@@ -8,6 +8,8 @@
 
 #include "../TangibleObject.h"
 
+#include "../creature/CreatureObject.h"
+
 /*
  *	InstallationObjectStub
  */
@@ -23,6 +25,110 @@ InstallationObject::InstallationObject(DummyConstructorParameter* param) : Tangi
 InstallationObject::~InstallationObject() {
 }
 
+void InstallationObject::sendPayMaintenanceTo(CreatureObject* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((InstallationObjectImplementation*) _impl)->sendPayMaintenanceTo(player);
+}
+
+void InstallationObject::sendDepositPowerTo(CreatureObject* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((InstallationObjectImplementation*) _impl)->sendDepositPowerTo(player);
+}
+
+void InstallationObject::sendStructureStatusTo(CreatureObject* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((InstallationObjectImplementation*) _impl)->sendStructureStatusTo(player);
+}
+
+void InstallationObject::sendDestroyQueryTo(CreatureObject* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((InstallationObjectImplementation*) _impl)->sendDestroyQueryTo(player);
+}
+
+void InstallationObject::sendDestroyConfirmTo(CreatureObject* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((InstallationObjectImplementation*) _impl)->sendDestroyConfirmTo(player);
+}
+
+void InstallationObject::sendPermissionListTo(CreatureObject* player, const String& listname) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(listname);
+
+		method.executeWithVoidReturn();
+	} else
+		((InstallationObjectImplementation*) _impl)->sendPermissionListTo(player, listname);
+}
+
+void InstallationObject::destroyStructure(CreatureObject* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((InstallationObjectImplementation*) _impl)->destroyStructure(player);
+}
+
+void InstallationObject::pollStructureStatus() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		method.executeWithVoidReturn();
+	} else
+		((InstallationObjectImplementation*) _impl)->pollStructureStatus();
+}
+
 /*
  *	InstallationObjectAdapter
  */
@@ -34,11 +140,67 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		sendPayMaintenanceTo((CreatureObject*) inv->getObjectParameter());
+		break;
+	case 7:
+		sendDepositPowerTo((CreatureObject*) inv->getObjectParameter());
+		break;
+	case 8:
+		sendStructureStatusTo((CreatureObject*) inv->getObjectParameter());
+		break;
+	case 9:
+		sendDestroyQueryTo((CreatureObject*) inv->getObjectParameter());
+		break;
+	case 10:
+		sendDestroyConfirmTo((CreatureObject*) inv->getObjectParameter());
+		break;
+	case 11:
+		sendPermissionListTo((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendPermissionListTo__CreatureObject_String_));
+		break;
+	case 12:
+		destroyStructure((CreatureObject*) inv->getObjectParameter());
+		break;
+	case 13:
+		pollStructureStatus();
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void InstallationObjectAdapter::sendPayMaintenanceTo(CreatureObject* player) {
+	return ((InstallationObjectImplementation*) impl)->sendPayMaintenanceTo(player);
+}
+
+void InstallationObjectAdapter::sendDepositPowerTo(CreatureObject* player) {
+	return ((InstallationObjectImplementation*) impl)->sendDepositPowerTo(player);
+}
+
+void InstallationObjectAdapter::sendStructureStatusTo(CreatureObject* player) {
+	return ((InstallationObjectImplementation*) impl)->sendStructureStatusTo(player);
+}
+
+void InstallationObjectAdapter::sendDestroyQueryTo(CreatureObject* player) {
+	return ((InstallationObjectImplementation*) impl)->sendDestroyQueryTo(player);
+}
+
+void InstallationObjectAdapter::sendDestroyConfirmTo(CreatureObject* player) {
+	return ((InstallationObjectImplementation*) impl)->sendDestroyConfirmTo(player);
+}
+
+void InstallationObjectAdapter::sendPermissionListTo(CreatureObject* player, const String& listname) {
+	return ((InstallationObjectImplementation*) impl)->sendPermissionListTo(player, listname);
+}
+
+void InstallationObjectAdapter::destroyStructure(CreatureObject* player) {
+	return ((InstallationObjectImplementation*) impl)->destroyStructure(player);
+}
+
+void InstallationObjectAdapter::pollStructureStatus() {
+	return ((InstallationObjectImplementation*) impl)->pollStructureStatus();
 }
 
 /*

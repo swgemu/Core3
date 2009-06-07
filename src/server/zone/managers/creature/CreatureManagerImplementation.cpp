@@ -52,3 +52,11 @@ CreatureManagerImplementation::CreatureManagerImplementation(Zone* zone, ZonePro
 CreatureManagerImplementation::~CreatureManagerImplementation() {
 
 }
+
+void CreatureManagerImplementation::run() {
+
+}
+
+void CreatureManagerImplementation::stop() {
+
+}

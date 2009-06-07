@@ -57,16 +57,16 @@ RadialManager::RadialManager() {
  * \param player The player that has requested the radial options.
  * \param pack The packet that was sent from the client to the server.
  */
-void RadialManager::handleRadialRequest(PlayerObject* player, Packet* pack) {
+void RadialManager::handleRadialRequest(CreatureObject* creature, Packet* pack) {
 	pack->shiftOffset(12); // skip ObjectID and size
 
 	uint64 objectid = pack->parseLong();
 	uint64 playerid = pack->parseLong();
 
 	ObjectMenuResponse* omr;
-	omr = parseDefaults(player, objectid, pack);
+	omr = parseDefaults(creature, objectid, pack);
 
-	Zone* zone = player->getZone();
+	Zone* zone = creature->getZone();
 
 	if (zone == NULL) {
 		delete omr;
@@ -98,7 +98,7 @@ void RadialManager::handleRadialRequest(PlayerObject* player, Packet* pack) {
 	}*/
 }
 
-void RadialManager::handleRadialSelect(PlayerObject* player, Packet* pack) {
+void RadialManager::handleRadialSelect(CreatureObject* creature, Packet* pack) {
 	/*
 	try {
 		player->wlock();
@@ -143,7 +143,7 @@ void RadialManager::handleRadialSelect(PlayerObject* player, Packet* pack) {
 	}*/
 }
 
-void RadialManager::handleSelection(int radialID, PlayerObject* player, SceneObject* obj) {
+void RadialManager::handleSelection(int radialID, CreatureObject* creature, SceneObject* obj) {
 	// Pre: player is wlocked, obj is unlocked
 	// Post: player and obj unlocked
 
@@ -738,12 +738,12 @@ void RadialManager::handleSelection(int radialID, PlayerObject* player, SceneObj
 		StackTrace::printStackTrace();
 	}
 
-	player->unlock();
+	creature->unlock();
 }
 
-ObjectMenuResponse* RadialManager::parseDefaults(PlayerObject* player, uint64 objectid, Packet* pack) {
+ObjectMenuResponse* RadialManager::parseDefaults(CreatureObject* creature, uint64 objectid, Packet* pack) {
 	int size = pack->parseInt();
-	ObjectMenuResponse* omr = new ObjectMenuResponse(player, objectid, 0);
+	ObjectMenuResponse* omr = new ObjectMenuResponse(creature, objectid, 0);
 
 	for (int i = 0; i < size; i++) {
 		uint8 index = pack->parseByte();
@@ -775,8 +775,8 @@ ObjectMenuResponse* RadialManager::parseDefaults(PlayerObject* player, uint64 ob
 	return omr;
 }
 
-void RadialManager::sendDefaultRadialResponse(PlayerObject* player, ObjectMenuResponse* omr) {
+void RadialManager::sendDefaultRadialResponse(CreatureObject* creature, ObjectMenuResponse* omr) {
 	omr->finish();
 
-	player->sendMessage(omr);
+	//creature->sendMessage(omr);
 }

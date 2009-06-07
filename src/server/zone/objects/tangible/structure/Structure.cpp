@@ -43,6 +43,7 @@ which carries forward this exception.
 */
 
 #include "Structure.h"
+#include "../creature/CreatureObject.h"
 
 Structure::Structure() {
 
@@ -56,27 +57,27 @@ Structure::~Structure() {
 /***********************************************************
  * Sending of Sui Boxes
  ***********************************************************/
-void Structure::sendPayMaintenanceTo(PlayerObject* player) {
+void Structure::sendPayMaintenanceTo(CreatureObject* player) {
 
 }
 
-void Structure::sendDepositPowerTo(PlayerObject* player) {
+void Structure::sendDepositPowerTo(CreatureObject* player) {
 
 }
 
-void Structure::sendStructureStatusTo(PlayerObject* player) {
+void Structure::sendStructureStatusTo(CreatureObject* player) {
 
 }
 
-void Structure::sendDestroyQueryTo(PlayerObject* player) {
+void Structure::sendDestroyQueryTo(CreatureObject* player) {
 
 }
 
-void Structure::sendDestroyConfirmTo(PlayerObject* player) {
+void Structure::sendDestroyConfirmTo(CreatureObject* player) {
 
 }
 
-void Structure::sendPermissionListTo(PlayerObject* player, const String& listname) {
+void Structure::sendPermissionListTo(CreatureObject* player, const String& listname) {
 
 }
 
@@ -87,7 +88,7 @@ void Structure::sendPermissionListTo(PlayerObject* player, const String& listnam
  * Action that is fired when radial or slash command for destroy structure has been invoked.
  * \param player The player attempting to destroy the structure.
  */
-void Structure::destroyStructure(PlayerObject* player) {
+void Structure::destroyStructure(CreatureObject* player) {
 
 }
 void Structure::pollStructureStatus() {

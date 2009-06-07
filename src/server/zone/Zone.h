@@ -19,6 +19,8 @@ class PlanetManager;
 
 class CreatureManager;
 
+class GetMapLocationsResponseMessage;
+
 #include "engine/util/QuadTreeEntry.h"
 
 class Zone : public DistributedObjectStub {
@@ -70,6 +72,8 @@ public:
 	unsigned long long getGalacticTime();
 
 	unsigned int getWeatherID();
+
+	GetMapLocationsResponseMessage* getPlanetaryMapMessage();
 
 	void setWeatherID(unsigned int value);
 
@@ -148,6 +152,8 @@ public:
 	unsigned long long getGalacticTime();
 
 	unsigned int getWeatherID();
+
+	GetMapLocationsResponseMessage* getPlanetaryMapMessage();
 
 	void setWeatherID(unsigned int value);
 

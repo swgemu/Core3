@@ -42,47 +42,9 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "FactionRank";
+#include "Vector3.h"
 
-import "../TangibleObject";
-import "../../SceneObject";
-import "../../universe/group/GroupObject";
-import "../../universe/guild/GuildObject";
-
-interface CreatureObject implements TangibleObject {
-	CreatureObject(unsigned long objectid, int type = 0x400) {
-		super(objectid, type);
-	}
-	
-	void updateTargetObject(unsigned long targetid, boolean updateclients = true);
-	void updateTargetObject(SceneObject target, boolean updateclients = true);
-	
-	//Setters
-	void setLastMovementStamp(unsigned int timestamp);
-	void setMovementCounter(unsigned int counter);
-	void setHairObject(TangibleObject hair);
-	void setMoodID(unsigned char moodid);
-	void setBankCredits(unsigned int credits);
-	void setCashCredits(unsigned int credits);
-	void setHeight(float value);
-	void setFactionRank(FactionRank rank);
-	void setGroupObject(GroupObject groupobject);
-	void setGuildObject(GuildObject guildobject);
-	
-	//Getters
-	GroupObject getGroupObject();
-	GuildObject getGuildObject();
-	unsigned int getLastMovementStamp();
-	TangibleObject getHairObject();
-	unsigned char getMoodID();
-	float getHeight();
-	unsigned int getBankCredits();
-	unsigned int getCashCredits();
-	FactionRank getFactionRank();
-	String getMoodName();
-	unsigned long getStatesBitmask();
-	unsigned char getPosture();
-	
-	boolean isGrouped();
-	boolean isGuilded();
-}
+const Vector3 Vector3::ZERO(0,0,0);
+const Vector3 Vector3::UNIT_X(1,0,0);
+const Vector3 Vector3::UNIT_Y(0,1,0);
+const Vector3 Vector3::UNIT_Z(0,0,1);

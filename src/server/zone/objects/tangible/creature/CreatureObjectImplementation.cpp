@@ -53,7 +53,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 objectid, int 
 
 	height = 1.0f;
 	pvpStatusBitmask = 0x10;
-	factionRank = 0;
+	factionRank = FactionRankList[0];
 
 	speed = DEFAULT_SPEED;
 	turnRadius = 1.0f;
@@ -74,6 +74,120 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 objectid, int 
 
 CreatureObjectImplementation::~CreatureObjectImplementation() {
 }
+
+
+
+/*************************************************************************
+ * Modifier Effects
+ *************************************************************************/
+void CreatureObjectImplementation::addModifierEffect(ModifierEffect* modeffect, bool activate) {
+
+}
+void CreatureObjectImplementation::removeModifierEffect(ModifierEffect* modeffect) {
+
+}
+ModifierEffect* CreatureObjectImplementation::getModifierEffect(const String& modeffectname) {
+	return NULL;
+}
+bool CreatureObjectImplementation::hasModifierEffect(const String& modeffectname) {
+	return false;
+}
+float CreatureObjectImplementation::getModifier(const String& modname) {
+	return 0.0f;
+}
+bool CreatureObjectImplementation::hasModifier(const String& modname) {
+	return false;
+}
+
+
+
+/*************************************************************************
+ * General Actions
+ *************************************************************************/
+void CreatureObjectImplementation::groupInvite(PlayerObject* player) {
+
+}
+void CreatureObjectImplementation::groupJoin(PlayerObject* player) {
+
+}
+void CreatureObjectImplementation::groupLeave(PlayerObject* player) {
+
+}
+void CreatureObjectImplementation::groupKick(PlayerObject* player) {
+
+}
+void CreatureObjectImplementation::groupDisband(PlayerObject* player) {
+
+}
+void CreatureObjectImplementation::groupDecline(PlayerObject* player) {
+
+}
+void CreatureObjectImplementation::follow(TangibleObject* target) {
+
+}
+void CreatureObjectImplementation::stopFollowing(TangibleObject* target) {
+
+}
+void CreatureObjectImplementation::imageDesign(CreatureObject* target) {
+
+}
+void CreatureObjectImplementation::diagnose(CreatureObject* target) {
+
+}
+void CreatureObjectImplementation::tendDamage(CreatureObject* target) {
+
+}
+void CreatureObjectImplementation::tendWound(CreatureObject* target) {
+
+}
+void CreatureObjectImplementation::healWound(CreatureObject* target, uint8 woundtype) {
+
+}
+void CreatureObjectImplementation::healDamage(CreatureObject* target) {
+
+}
+void CreatureObjectImplementation::healState(CreatureObject* target, uint8 statetype) {
+
+}
+void CreatureObjectImplementation::healEnhance(CreatureObject* target, uint8 enhancetype) {
+
+}
+void CreatureObjectImplementation::healFirstAid(CreatureObject* target) {
+
+}
+void CreatureObjectImplementation::healCurePoison(CreatureObject* target) {
+
+}
+void CreatureObjectImplementation::healCureDisease(CreatureObject* target) {
+
+}
+void CreatureObjectImplementation::healApplyPoison(CreatureObject* target) {
+
+}
+void CreatureObjectImplementation::healApplyDisease(CreatureObject* target) {
+
+}
+void CreatureObjectImplementation::performanceListen(CreatureObject* target) {
+
+}
+void CreatureObjectImplementation::performanceWatch(CreatureObject* target) {
+
+}
+void CreatureObjectImplementation::performanceStopListening(CreatureObject* target) {
+
+}
+void CreatureObjectImplementation::performanceStopWatching(CreatureObject* target) {
+
+}
+
+
+
+
+
+
+
+
+
 
 /**
  * Updates the creatures current target and updates all nearby players.

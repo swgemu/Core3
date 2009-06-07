@@ -50,6 +50,8 @@ which carries forward this exception.
 #include "PlanetManager.h"
 
 
+//TODO: Deprecate use of this manager.
+
 class ZoneProcessServerImplementation;
 class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, public Logger {
 	Zone* zone;

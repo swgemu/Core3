@@ -9,11 +9,29 @@
 
 class TangibleObject;
 
+class CreatureObject;
+
 #include "../TangibleObject.h"
 
 class InstallationObject : public TangibleObject {
 public:
 	InstallationObject(unsigned long long objectid, int type = 1000);
+
+	void sendPayMaintenanceTo(CreatureObject* player);
+
+	void sendDepositPowerTo(CreatureObject* player);
+
+	void sendStructureStatusTo(CreatureObject* player);
+
+	void sendDestroyQueryTo(CreatureObject* player);
+
+	void sendDestroyConfirmTo(CreatureObject* player);
+
+	void sendPermissionListTo(CreatureObject* player, const String& listname);
+
+	void destroyStructure(CreatureObject* player);
+
+	void pollStructureStatus();
 
 protected:
 	InstallationObject(DummyConstructorParameter* param);
@@ -31,6 +49,24 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void sendPayMaintenanceTo(CreatureObject* player);
+
+	void sendDepositPowerTo(CreatureObject* player);
+
+	void sendStructureStatusTo(CreatureObject* player);
+
+	void sendDestroyQueryTo(CreatureObject* player);
+
+	void sendDestroyConfirmTo(CreatureObject* player);
+
+	void sendPermissionListTo(CreatureObject* player, const String& listname);
+
+	void destroyStructure(CreatureObject* player);
+
+	void pollStructureStatus();
+
+protected:
+	String _param1_sendPermissionListTo__CreatureObject_String_;
 };
 
 class InstallationObjectHelper : public DistributedObjectClassHelper, public Singleton<InstallationObjectHelper> {

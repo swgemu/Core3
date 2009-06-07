@@ -48,3 +48,7 @@ IntangibleObjectImplementation::IntangibleObjectImplementation(uint64 objectid, 
 		: IntangibleObjectServant(objectid, type) {
 
 }
+
+IntangibleObjectImplementation::~IntangibleObjectImplementation() {
+
+}

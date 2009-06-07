@@ -114,6 +114,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/ping/PingServer.cpp \
 		server/proxy/LoginProxyServer.cpp \
 		server/status/StatusServer.cpp \
+		server/zone/Quaternion.cpp \
+		server/zone/Vector3.cpp \
 		server/zone/managers/auction/AuctionManagerImplementation.cpp \
 		server/zone/managers/bank/BankManagerImplementation.cpp \
 		server/zone/managers/combat/CombatManager.cpp \
@@ -159,6 +161,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/inventory/InventoryObjectImplementation.cpp \
 		server/zone/objects/tangible/powerup/PowerupObjectImplementation.cpp \
 		server/zone/objects/tangible/resourcecontainer/ResourceContainerObjectImplementation.cpp \
+		server/zone/objects/tangible/structure/Structure.cpp \
+		server/zone/objects/tangible/structure/StructurePermissionList.cpp \
 		server/zone/objects/tangible/terminal/TerminalObjectImplementation.cpp \
 		server/zone/objects/tangible/terminal/bazaar/BazaarTerminalObjectImplementation.cpp \
 		server/zone/objects/tangible/weapon/WeaponObjectImplementation.cpp \

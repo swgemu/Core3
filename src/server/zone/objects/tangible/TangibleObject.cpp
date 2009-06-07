@@ -23,12 +23,25 @@ TangibleObject::TangibleObject(DummyConstructorParameter* param) : SceneObject(p
 TangibleObject::~TangibleObject() {
 }
 
-void TangibleObject::getCustomizationString(String& appearance) {
+void TangibleObject::setFactionPointsList(FactionPointsList* fplist) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+		method.addObjectParameter(fplist);
+
+		method.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->setFactionPointsList(fplist);
+}
+
+void TangibleObject::getCustomizationString(String& appearance) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 		method.addAsciiParameter(appearance);
 
 		method.executeWithVoidReturn();
@@ -36,12 +49,24 @@ void TangibleObject::getCustomizationString(String& appearance) {
 		((TangibleObjectImplementation*) _impl)->getCustomizationString(appearance);
 }
 
+FactionPointsList* TangibleObject::getFactionPointsList() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		return (FactionPointsList*) method.executeWithObjectReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getFactionPointsList();
+}
+
 unsigned int TangibleObject::getNewMovementUpdateCounter(unsigned char count) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 9);
 		method.addUnsignedCharParameter(count);
 
 		return method.executeWithUnsignedIntReturn();
@@ -54,7 +79,7 @@ unsigned int TangibleObject::getNewDefenderUpdateCounter(unsigned char count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 10);
 		method.addUnsignedCharParameter(count);
 
 		return method.executeWithUnsignedIntReturn();
@@ -74,12 +99,18 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 	switch (methid) {
 	case 6:
-		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__String_));
+		setFactionPointsList((FactionPointsList*) inv->getObjectParameter());
 		break;
 	case 7:
-		resp->insertInt(getNewMovementUpdateCounter(inv->getUnsignedCharParameter()));
+		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__String_));
 		break;
 	case 8:
+		resp->insertLong(getFactionPointsList()->_getObjectID());
+		break;
+	case 9:
+		resp->insertInt(getNewMovementUpdateCounter(inv->getUnsignedCharParameter()));
+		break;
+	case 10:
 		resp->insertInt(getNewDefenderUpdateCounter(inv->getUnsignedCharParameter()));
 		break;
 	default:
@@ -89,8 +120,16 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	return resp;
 }
 
+void TangibleObjectAdapter::setFactionPointsList(FactionPointsList* fplist) {
+	return ((TangibleObjectImplementation*) impl)->setFactionPointsList(fplist);
+}
+
 void TangibleObjectAdapter::getCustomizationString(String& appearance) {
 	return ((TangibleObjectImplementation*) impl)->getCustomizationString(appearance);
+}
+
+FactionPointsList* TangibleObjectAdapter::getFactionPointsList() {
+	return ((TangibleObjectImplementation*) impl)->getFactionPointsList();
 }
 
 unsigned int TangibleObjectAdapter::getNewMovementUpdateCounter(unsigned char count) {

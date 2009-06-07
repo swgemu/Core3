@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "StructurePermissionList.h"
 
+class CreatureObject;
 class Structure {
 protected:
 	StructurePermissionList* permissionList;
@@ -63,14 +64,14 @@ public:
 	~Structure();
 
 	//Sui Menus
-	virtual void sendPayMaintenanceTo(PlayerObject* player);
-	virtual void sendDepositPowerTo(PlayerObject* player);
-	virtual void sendStructureStatusTo(PlayerObject* player);
-	virtual void sendDestroyQueryTo(PlayerObject* player);
-	virtual void sendDestroyConfirmTo(PlayerObject* player);
-	virtual void sendPermissionListTo(PlayerObject* player, const String& listname);
+	virtual void sendPayMaintenanceTo(CreatureObject* player);
+	virtual void sendDepositPowerTo(CreatureObject* player);
+	virtual void sendStructureStatusTo(CreatureObject* player);
+	virtual void sendDestroyQueryTo(CreatureObject* player);
+	virtual void sendDestroyConfirmTo(CreatureObject* player);
+	virtual void sendPermissionListTo(CreatureObject* player, const String& listname);
 
-	virtual void destroyStructure(PlayerObject* player);
+	virtual void destroyStructure(CreatureObject* player);
 	virtual void pollStructureStatus();
 
 	//Setters
@@ -80,23 +81,23 @@ public:
 		return publicStructure;
 	}
 
-	inline bool isOnBanList(PlayerObject* player) {
+	inline bool isOnBanList(CreatureObject* player) {
 		return permissionList->isOnPermissionList(player, StructurePermissionList::BAN);
 	}
 
-	inline bool isOnEntryList(PlayerObject* player) {
+	inline bool isOnEntryList(CreatureObject* player) {
 		return permissionList->isOnPermissionList(player, StructurePermissionList::ENTRY);
 	}
 
-	inline bool isOnAdminList(PlayerObject* player) {
+	inline bool isOnAdminList(CreatureObject* player) {
 		return permissionList->isOnPermissionList(player, StructurePermissionList::ADMIN);
 	}
 
-	inline bool isOnHopperList(PlayerObject* player) {
+	inline bool isOnHopperList(CreatureObject* player) {
 		return permissionList->isOnPermissionList(player, StructurePermissionList::HOPPER);
 	}
 
-	inline bool isOnVendorList(PlayerObject* player) {
+	inline bool isOnVendorList(CreatureObject* player) {
 		return permissionList->isOnPermissionList(player, StructurePermissionList::VENDOR);
 	}
 };

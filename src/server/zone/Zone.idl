@@ -52,6 +52,8 @@ import "../chat/ChatManager";
 import "managers/planet/PlanetManager";
 import "managers/creature/CreatureManager";
 
+import "packets/player/GetMapLocationsResponseMessage";
+
 include "engine/util/QuadTreeEntry";
 
 interface Zone {
@@ -101,7 +103,9 @@ interface Zone {
 	
 	unsigned long getGalacticTime();
 	
-	unsigned int getWeatherID();  																																
+	unsigned int getWeatherID();  
+	
+	GetMapLocationsResponseMessage getPlanetaryMapMessage();																															
 	
 	void setWeatherID(unsigned int value);
 	

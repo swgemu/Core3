@@ -60,10 +60,16 @@ interface PlayerObject implements IntangibleObject {
 	//Setters
 	void setClient(ZoneClientSession client);
 	void setAccessLevel(unsigned char level);
+	void setLinkedCreature(CreatureObject creature);
+	void setFirstName(const String fname);
+	void setCharacterID(unsigned long characterid);
 	
 	//Getters
 	ZoneClientSession getClient();
 	unsigned char getAccessLevel();
+	CreatureObject getLinkedCreature();
+	String getFirstName();
+	unsigned long getCharacterID();
 	
 	boolean isOnline();
 	boolean isOffline();

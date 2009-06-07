@@ -7,11 +7,15 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+#include "FactionRank.h"
+
 class TangibleObject;
 
 class SceneObject;
 
 class GroupObject;
+
+class GuildObject;
 
 #include "../TangibleObject.h"
 
@@ -37,11 +41,19 @@ public:
 
 	void setHeight(float value);
 
+	void setFactionRank(FactionRank* rank);
+
+	void setGroupObject(GroupObject* groupobject);
+
+	void setGuildObject(GuildObject* guildobject);
+
+	GroupObject* getGroupObject();
+
+	GuildObject* getGuildObject();
+
 	unsigned int getLastMovementStamp();
 
 	TangibleObject* getHairObject();
-
-	GroupObject* getGroupObject();
 
 	unsigned char getMoodID();
 
@@ -51,11 +63,17 @@ public:
 
 	unsigned int getCashCredits();
 
+	FactionRank* getFactionRank();
+
 	String& getMoodName();
 
 	unsigned long long getStatesBitmask();
 
 	unsigned char getPosture();
+
+	bool isGrouped();
+
+	bool isGuilded();
 
 protected:
 	CreatureObject(DummyConstructorParameter* param);
@@ -93,11 +111,19 @@ public:
 
 	void setHeight(float value);
 
+	void setFactionRank(FactionRank* rank);
+
+	void setGroupObject(GroupObject* groupobject);
+
+	void setGuildObject(GuildObject* guildobject);
+
+	GroupObject* getGroupObject();
+
+	GuildObject* getGuildObject();
+
 	unsigned int getLastMovementStamp();
 
 	TangibleObject* getHairObject();
-
-	GroupObject* getGroupObject();
 
 	unsigned char getMoodID();
 
@@ -107,11 +133,17 @@ public:
 
 	unsigned int getCashCredits();
 
+	FactionRank* getFactionRank();
+
 	String& getMoodName();
 
 	unsigned long long getStatesBitmask();
 
 	unsigned char getPosture();
+
+	bool isGrouped();
+
+	bool isGuilded();
 
 };
 

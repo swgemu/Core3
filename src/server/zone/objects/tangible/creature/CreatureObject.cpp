@@ -12,6 +12,8 @@
 
 #include "../../universe/group/GroupObject.h"
 
+#include "../../universe/guild/GuildObject.h"
+
 /*
  *	CreatureObjectStub
  */
@@ -146,12 +148,75 @@ void CreatureObject::setHeight(float value) {
 		((CreatureObjectImplementation*) _impl)->setHeight(value);
 }
 
-unsigned int CreatureObject::getLastMovementStamp() {
+void CreatureObject::setFactionRank(FactionRank* rank) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 15);
+		method.addObjectParameter(rank);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setFactionRank(rank);
+}
+
+void CreatureObject::setGroupObject(GroupObject* groupobject) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+		method.addObjectParameter(groupobject);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setGroupObject(groupobject);
+}
+
+void CreatureObject::setGuildObject(GuildObject* guildobject) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+		method.addObjectParameter(guildobject);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setGuildObject(guildobject);
+}
+
+GroupObject* CreatureObject::getGroupObject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+
+		return (GroupObject*) method.executeWithObjectReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getGroupObject();
+}
+
+GuildObject* CreatureObject::getGuildObject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+
+		return (GuildObject*) method.executeWithObjectReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getGuildObject();
+}
+
+unsigned int CreatureObject::getLastMovementStamp() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -163,23 +228,11 @@ TangibleObject* CreatureObject::getHairObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 21);
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
 		return ((CreatureObjectImplementation*) _impl)->getHairObject();
-}
-
-GroupObject* CreatureObject::getGroupObject() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 17);
-
-		return (GroupObject*) method.executeWithObjectReturn();
-	} else
-		return ((CreatureObjectImplementation*) _impl)->getGroupObject();
 }
 
 unsigned char CreatureObject::getMoodID() {
@@ -187,7 +240,7 @@ unsigned char CreatureObject::getMoodID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 22);
 
 		return method.executeWithUnsignedCharReturn();
 	} else
@@ -199,7 +252,7 @@ float CreatureObject::getHeight() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 23);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -211,7 +264,7 @@ unsigned int CreatureObject::getBankCredits() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 24);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -223,11 +276,23 @@ unsigned int CreatureObject::getCashCredits() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 25);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
 		return ((CreatureObjectImplementation*) _impl)->getCashCredits();
+}
+
+FactionRank* CreatureObject::getFactionRank() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 26);
+
+		return (FactionRank*) method.executeWithObjectReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getFactionRank();
 }
 
 String& CreatureObject::getMoodName() {
@@ -235,7 +300,7 @@ String& CreatureObject::getMoodName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 27);
 
 		method.executeWithAsciiReturn(_return_getMoodName);
 		return _return_getMoodName;
@@ -248,7 +313,7 @@ unsigned long long CreatureObject::getStatesBitmask() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 28);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -260,11 +325,35 @@ unsigned char CreatureObject::getPosture() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 29);
 
 		return method.executeWithUnsignedCharReturn();
 	} else
 		return ((CreatureObjectImplementation*) _impl)->getPosture();
+}
+
+bool CreatureObject::isGrouped() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 30);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->isGrouped();
+}
+
+bool CreatureObject::isGuilded() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 31);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->isGuilded();
 }
 
 /*
@@ -306,34 +395,55 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setHeight(inv->getFloatParameter());
 		break;
 	case 15:
-		resp->insertInt(getLastMovementStamp());
+		setFactionRank((FactionRank*) inv->getObjectParameter());
 		break;
 	case 16:
-		resp->insertLong(getHairObject()->_getObjectID());
+		setGroupObject((GroupObject*) inv->getObjectParameter());
 		break;
 	case 17:
-		resp->insertLong(getGroupObject()->_getObjectID());
+		setGuildObject((GuildObject*) inv->getObjectParameter());
 		break;
 	case 18:
-		resp->insertByte(getMoodID());
+		resp->insertLong(getGroupObject()->_getObjectID());
 		break;
 	case 19:
-		resp->insertFloat(getHeight());
+		resp->insertLong(getGuildObject()->_getObjectID());
 		break;
 	case 20:
-		resp->insertInt(getBankCredits());
+		resp->insertInt(getLastMovementStamp());
 		break;
 	case 21:
-		resp->insertInt(getCashCredits());
+		resp->insertLong(getHairObject()->_getObjectID());
 		break;
 	case 22:
-		resp->insertAscii(getMoodName());
+		resp->insertByte(getMoodID());
 		break;
 	case 23:
-		resp->insertLong(getStatesBitmask());
+		resp->insertFloat(getHeight());
 		break;
 	case 24:
+		resp->insertInt(getBankCredits());
+		break;
+	case 25:
+		resp->insertInt(getCashCredits());
+		break;
+	case 26:
+		resp->insertLong(getFactionRank()->_getObjectID());
+		break;
+	case 27:
+		resp->insertAscii(getMoodName());
+		break;
+	case 28:
+		resp->insertLong(getStatesBitmask());
+		break;
+	case 29:
 		resp->insertByte(getPosture());
+		break;
+	case 30:
+		resp->insertBoolean(isGrouped());
+		break;
+	case 31:
+		resp->insertBoolean(isGuilded());
 		break;
 	default:
 		return NULL;
@@ -378,16 +488,32 @@ void CreatureObjectAdapter::setHeight(float value) {
 	return ((CreatureObjectImplementation*) impl)->setHeight(value);
 }
 
+void CreatureObjectAdapter::setFactionRank(FactionRank* rank) {
+	return ((CreatureObjectImplementation*) impl)->setFactionRank(rank);
+}
+
+void CreatureObjectAdapter::setGroupObject(GroupObject* groupobject) {
+	return ((CreatureObjectImplementation*) impl)->setGroupObject(groupobject);
+}
+
+void CreatureObjectAdapter::setGuildObject(GuildObject* guildobject) {
+	return ((CreatureObjectImplementation*) impl)->setGuildObject(guildobject);
+}
+
+GroupObject* CreatureObjectAdapter::getGroupObject() {
+	return ((CreatureObjectImplementation*) impl)->getGroupObject();
+}
+
+GuildObject* CreatureObjectAdapter::getGuildObject() {
+	return ((CreatureObjectImplementation*) impl)->getGuildObject();
+}
+
 unsigned int CreatureObjectAdapter::getLastMovementStamp() {
 	return ((CreatureObjectImplementation*) impl)->getLastMovementStamp();
 }
 
 TangibleObject* CreatureObjectAdapter::getHairObject() {
 	return ((CreatureObjectImplementation*) impl)->getHairObject();
-}
-
-GroupObject* CreatureObjectAdapter::getGroupObject() {
-	return ((CreatureObjectImplementation*) impl)->getGroupObject();
 }
 
 unsigned char CreatureObjectAdapter::getMoodID() {
@@ -406,6 +532,10 @@ unsigned int CreatureObjectAdapter::getCashCredits() {
 	return ((CreatureObjectImplementation*) impl)->getCashCredits();
 }
 
+FactionRank* CreatureObjectAdapter::getFactionRank() {
+	return ((CreatureObjectImplementation*) impl)->getFactionRank();
+}
+
 String& CreatureObjectAdapter::getMoodName() {
 	return ((CreatureObjectImplementation*) impl)->getMoodName();
 }
@@ -416,6 +546,14 @@ unsigned long long CreatureObjectAdapter::getStatesBitmask() {
 
 unsigned char CreatureObjectAdapter::getPosture() {
 	return ((CreatureObjectImplementation*) impl)->getPosture();
+}
+
+bool CreatureObjectAdapter::isGrouped() {
+	return ((CreatureObjectImplementation*) impl)->isGrouped();
+}
+
+bool CreatureObjectAdapter::isGuilded() {
+	return ((CreatureObjectImplementation*) impl)->isGuilded();
 }
 
 /*

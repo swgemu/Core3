@@ -45,6 +45,7 @@ which carries forward this exception.
 #ifndef QUATERNION_H_
 #define QUATERNION_H_
 
+#include "engine/engine.h"
 #include "Vector3.h"
 
 class Quaternion {
@@ -210,8 +211,5 @@ public:
 		return (*this == IDENTITY);
 	}
 };
-
-const Quaternion Quaternion::ZERO(0.0f, 0.0f, 0.0f, 0.0f);
-const Quaternion Quaternion::IDENTITY(1.0f, 0.0f, 0.0f, 0.0f);
 
 #endif /* QUATERNION_H_ */

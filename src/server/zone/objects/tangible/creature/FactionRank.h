@@ -42,47 +42,61 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "FactionRank";
+#ifndef FACTIONRANK_H_
+#define FACTIONRANK_H_
 
-import "../TangibleObject";
-import "../../SceneObject";
-import "../../universe/group/GroupObject";
-import "../../universe/guild/GuildObject";
+#include "engine/engine.h"
 
-interface CreatureObject implements TangibleObject {
-	CreatureObject(unsigned long objectid, int type = 0x400) {
-		super(objectid, type);
+class FactionRank : public DistributedObject {
+protected:
+	String rankTitle;
+	uint32 pointsCost;
+	uint32 pointsMax;
+	float conversionRatio;
+
+public:
+	FactionRank(const String& title, uint32 cost, uint32 max, float ratio) : DistributedObject() {
+		rankTitle = title;
+		pointsCost = cost;
+		pointsMax = max;
+		conversionRatio = ratio;
 	}
-	
-	void updateTargetObject(unsigned long targetid, boolean updateclients = true);
-	void updateTargetObject(SceneObject target, boolean updateclients = true);
-	
-	//Setters
-	void setLastMovementStamp(unsigned int timestamp);
-	void setMovementCounter(unsigned int counter);
-	void setHairObject(TangibleObject hair);
-	void setMoodID(unsigned char moodid);
-	void setBankCredits(unsigned int credits);
-	void setCashCredits(unsigned int credits);
-	void setHeight(float value);
-	void setFactionRank(FactionRank rank);
-	void setGroupObject(GroupObject groupobject);
-	void setGuildObject(GuildObject guildobject);
-	
+
 	//Getters
-	GroupObject getGroupObject();
-	GuildObject getGuildObject();
-	unsigned int getLastMovementStamp();
-	TangibleObject getHairObject();
-	unsigned char getMoodID();
-	float getHeight();
-	unsigned int getBankCredits();
-	unsigned int getCashCredits();
-	FactionRank getFactionRank();
-	String getMoodName();
-	unsigned long getStatesBitmask();
-	unsigned char getPosture();
-	
-	boolean isGrouped();
-	boolean isGuilded();
-}
+	inline String& getRankTitle() {
+		return rankTitle;
+	}
+
+	inline uint32 getPointsCost() {
+		return pointsCost;
+	}
+
+	inline uint32 getPointsMax() {
+		return pointsMax;
+	}
+
+	inline float getConversionRatio() {
+		return conversionRatio;
+	}
+};
+
+static FactionRank* FactionRankList[16] = {
+	new FactionRank("", 0, 1000, 6.5f),
+	new FactionRank("private", 200, 1000, 6.5f),
+	new FactionRank("lance_corporal", 400, 8000, 5.0f),
+	new FactionRank("corporal", 800, 16000, 4.0f),
+	new FactionRank("staff_corporal", 1200, 24000, 4.0f),
+	new FactionRank("sergeant", 1600, 32000, 2.86f),
+	new FactionRank("staff_sergeant", 2000, 40000, 2.5f),
+	new FactionRank("master_sergeant", 2500, 50000, 2.3f),
+	new FactionRank("warrant_officer_2", 3000, 60000, 2.0f),
+	new FactionRank("warrant_officer_1", 3500, 70000, 1.8f),
+	new FactionRank("second_lieutenant", 4000, 80000, 1.67f),
+	new FactionRank("lieutenant", 5000, 100000, 1.54f),
+	new FactionRank("captain", 5000, 100000, 1.43f),
+	new FactionRank("major", 5500, 110000, 1.34f),
+	new FactionRank("lieutenant_colonel", 5500, 110000, 1.25f),
+	new FactionRank("colonel", 6000, 120000, 1.18f)
+};
+
+#endif /* FACTIONRANK_H_ */

@@ -12,10 +12,10 @@
 
 class TutorialAudioStatMigrationEvent : public Event {
 	PlanetManager* planet;
-	Player* player;
+	PlayerObject* player;
 
 public:
-	TutorialAudioStatMigrationEvent(PlanetManager* Planet, Player* pl) : Event() {
+	TutorialAudioStatMigrationEvent(PlanetManager* Planet, PlayerObject* pl) : Event() {
 		planet = Planet;
 		player = pl;
 

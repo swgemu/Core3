@@ -45,16 +45,13 @@ which carries forward this exception.
 #ifndef ZONECLIENTSESSIONIMPLEMENTATION_H_
 #define ZONECLIENTSESSIONIMPLEMENTATION_H_
 
+#include "ZoneClientSession.h"
 #include "engine/engine.h"
-
-//class ZoneClientSession;
-
 #include "objects/intangible/player/PlayerObject.h"
 
-#include "ZoneClientSession.h"
-
 class ZoneClientSessionImplementation : public BaseClientProxy, public ZoneClientSessionServant {
-	ManagedReference<PlayerObject> player;
+	ManagedReference<PlayerObject> playerObject;
+	//TODO: Should have some sort of reference to an account object here too.
 
 	uint32 sessionKey;
 
@@ -62,7 +59,6 @@ class ZoneClientSessionImplementation : public BaseClientProxy, public ZoneClien
 
 public:
 	ZoneClientSessionImplementation(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr);
-
 	virtual ~ZoneClientSessionImplementation();
 
 	void sendMessage(BaseMessage* msg) {
@@ -83,16 +79,16 @@ public:
 	void release();
 
 	// setters and getters
-	void setPlayer(PlayerObject* p) {
-		player = p;
+	void setPlayerObject(PlayerObject* plyo) {
+		playerObject = plyo;
 	}
 
 	void setSessionKey(uint32 key) {
 		sessionKey = key;
 	}
 
-	PlayerObject* getPlayer() {
-		return player;
+	PlayerObject* getPlayerObject() {
+		return playerObject;
 	}
 
 	uint32 getSessionKey() {

@@ -47,13 +47,11 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/player/PlayerObjectImplementation.h"
-
-#include "../../objects/draftschematic/DraftSchematic.h"
+#include "../../objects/intangible/player/PlayerObject.h"
 
 class PlayerObjectMessage9 : public BaseLineMessage {
 public:
-	PlayerObjectMessage9(PlayerObjectImplementation* player)
+	PlayerObjectMessage9(PlayerObject* player)
 			: BaseLineMessage(player->getObjectID(), 0x504C4159, 9, 0x13) {
 		// certifications && skills
 		insertSkills(player);

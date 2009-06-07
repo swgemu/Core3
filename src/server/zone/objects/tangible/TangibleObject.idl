@@ -43,6 +43,7 @@ which carries forward this exception.
 */
 
 import "../SceneObject";
+include "FactionPointsList";
 
 interface TangibleObject implements SceneObject {
 	TangibleObject(unsigned long objectid, int type) {
@@ -50,9 +51,11 @@ interface TangibleObject implements SceneObject {
 	}
 	
 	//Setters
+	void setFactionPointsList(FactionPointsList fplist);
 	
 	//Getters
 	void getCustomizationString(String& appearance);
+	FactionPointsList getFactionPointsList();
 	unsigned int getNewMovementUpdateCounter(unsigned char count);
 	unsigned int getNewDefenderUpdateCounter(unsigned char count);
 }

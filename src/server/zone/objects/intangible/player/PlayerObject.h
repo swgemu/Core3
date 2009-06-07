@@ -31,9 +31,21 @@ public:
 
 	void setAccessLevel(unsigned char level);
 
+	void setLinkedCreature(CreatureObject* creature);
+
+	void setFirstName(const String& fname);
+
+	void setCharacterID(unsigned long long characterid);
+
 	ZoneClientSession* getClient();
 
 	unsigned char getAccessLevel();
+
+	CreatureObject* getLinkedCreature();
+
+	String& getFirstName();
+
+	unsigned long long getCharacterID();
 
 	bool isOnline();
 
@@ -54,6 +66,8 @@ protected:
 
 	virtual ~PlayerObject();
 
+	String _return_getFirstName;
+
 	friend class PlayerObjectHelper;
 };
 
@@ -73,9 +87,21 @@ public:
 
 	void setAccessLevel(unsigned char level);
 
+	void setLinkedCreature(CreatureObject* creature);
+
+	void setFirstName(const String& fname);
+
+	void setCharacterID(unsigned long long characterid);
+
 	ZoneClientSession* getClient();
 
 	unsigned char getAccessLevel();
+
+	CreatureObject* getLinkedCreature();
+
+	String& getFirstName();
+
+	unsigned long long getCharacterID();
 
 	bool isOnline();
 
@@ -91,6 +117,8 @@ public:
 
 	bool isPrivileged();
 
+protected:
+	String _param0_setFirstName__String_;
 };
 
 class PlayerObjectHelper : public DistributedObjectClassHelper, public Singleton<PlayerObjectHelper> {

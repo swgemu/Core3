@@ -43,25 +43,20 @@ which carries forward this exception.
 */
 
 #include "ZoneServer.h"
+#include "ZoneImplementation.h"
 
+#include "../chat/ChatManager.h"
 #include "managers/creature/CreatureManager.h"
 #include "managers/creature/CreatureManagerImplementation.h"
-
 #include "managers/combat/CombatManager.h"
-
 #include "managers/planet/PlanetManager.h"
 #include "managers/planet/PlanetManagerImplementation.h"
 
 #include "objects/terrain/PlanetNames.h"
-
-#include "../chat/ChatManager.h"
-
 #include "objects/SceneObject.h"
-
 #include "objects/tangible/creature/npc/Creature.h"
 
-#include "Zone.h"
-#include "ZoneImplementation.h"
+
 
 ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplementation* srv, int id) : ZoneServant(), QuadTree(-8192, -8192, 8192, 8192) {
 	zoneID = id;
@@ -77,6 +72,8 @@ ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplem
 	weatherWindX = 1.0f;
 	weatherWindY = -1.0f;
 	weatherEnabled = true;
+
+	getMapLocationsResponseMessage = new GetMapLocationsResponseMessage();
 }
 
 void ZoneImplementation::startManagers() {

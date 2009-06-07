@@ -44,9 +44,21 @@ which carries forward this exception.
 
 
 import "../TangibleObject";
+import "../creature/CreatureObject";
 
 interface InstallationObject implements TangibleObject {
 	InstallationObject(unsigned long objectid, int type = 0x1000) {
 		super(objectid, type);
 	}
+	
+	//Structure Methods
+	void sendPayMaintenanceTo(CreatureObject player);
+	void sendDepositPowerTo(CreatureObject player);
+	void sendStructureStatusTo(CreatureObject player);
+	void sendDestroyQueryTo(CreatureObject player);
+	void sendDestroyConfirmTo(CreatureObject player);
+	void sendPermissionListTo(CreatureObject player, const String& listname);
+
+	void destroyStructure(CreatureObject player);
+	void pollStructureStatus();
 }

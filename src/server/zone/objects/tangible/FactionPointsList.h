@@ -42,47 +42,92 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "FactionRank";
+#ifndef FACTIONPOINTSLIST_H_
+#define FACTIONPOINTSLIST_H_
 
-import "../TangibleObject";
-import "../../SceneObject";
-import "../../universe/group/GroupObject";
-import "../../universe/guild/GuildObject";
+#include "engine/engine.h"
 
-interface CreatureObject implements TangibleObject {
-	CreatureObject(unsigned long objectid, int type = 0x400) {
-		super(objectid, type);
+class FactionPointsList : public VectorMap<String, float>, public DistributedObject {
+protected:
+	int pointsRebel;
+	int pointsImperial;
+	int pointsHutt;
+
+public:
+	FactionPointsList() : VectorMap<String, float>(), DistributedObject() {
+		pointsRebel = 0;
+		pointsImperial = 0;
+		pointsHutt = 0;
+
+		setInsertPlan(SortedVector<VectorMapEntry<String, float>*>::NO_DUPLICATE);
+		setNullValue(NULL);
 	}
-	
-	void updateTargetObject(unsigned long targetid, boolean updateclients = true);
-	void updateTargetObject(SceneObject target, boolean updateclients = true);
-	
+
+	virtual ~FactionPointsList() {
+	}
+
+	inline bool isEmpty() {
+		return (VectorMap<String, float>::isEmpty());
+	}
+
+	inline int size() {
+		return (VectorMap<String, float>::size());
+	}
+
+	inline String getName(int index) {
+		try {
+			VectorMapEntry<String, float>* entry = elementAt(index);
+			return entry->getKey();
+		} catch (ArrayIndexOutOfBoundsException& e) {
+			return "";
+		}
+	}
+
+	inline float getValue(int index) {
+		try {
+			VectorMapEntry<String, float>* entry = elementAt(index);
+			return entry->getValue();
+		} catch (ArrayIndexOutOfBoundsException& e) {
+			return 0.0f;
+		}
+	}
+
+	inline float getValue(const String& factionname) {
+		if (!contains(factionname))
+			return 0.0f;
+
+		return (get(factionname));
+	}
+
+	inline bool hasFaction(const String& factionname) {
+		return (contains(factionname));
+	}
+
 	//Setters
-	void setLastMovementStamp(unsigned int timestamp);
-	void setMovementCounter(unsigned int counter);
-	void setHairObject(TangibleObject hair);
-	void setMoodID(unsigned char moodid);
-	void setBankCredits(unsigned int credits);
-	void setCashCredits(unsigned int credits);
-	void setHeight(float value);
-	void setFactionRank(FactionRank rank);
-	void setGroupObject(GroupObject groupobject);
-	void setGuildObject(GuildObject guildobject);
-	
+	inline void setRebelPoints(int points) {
+		pointsRebel = points;
+	}
+
+	inline void setImperialPoints(int points) {
+		pointsImperial = points;
+	}
+
+	inline void setHuttPoints(int points) {
+		pointsHutt = points;
+	}
+
 	//Getters
-	GroupObject getGroupObject();
-	GuildObject getGuildObject();
-	unsigned int getLastMovementStamp();
-	TangibleObject getHairObject();
-	unsigned char getMoodID();
-	float getHeight();
-	unsigned int getBankCredits();
-	unsigned int getCashCredits();
-	FactionRank getFactionRank();
-	String getMoodName();
-	unsigned long getStatesBitmask();
-	unsigned char getPosture();
-	
-	boolean isGrouped();
-	boolean isGuilded();
-}
+	inline int getRebelPoints() {
+		return pointsRebel;
+	}
+
+	inline int getImperialPoints() {
+		return pointsImperial;
+	}
+
+	inline int getHuttPoints() {
+		return pointsHutt;
+	}
+};
+
+#endif /* FACTIONPOINTSLIST_H_ */

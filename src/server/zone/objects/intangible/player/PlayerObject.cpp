@@ -79,12 +79,51 @@ void PlayerObject::setAccessLevel(unsigned char level) {
 		((PlayerObjectImplementation*) _impl)->setAccessLevel(level);
 }
 
-ZoneClientSession* PlayerObject::getClient() {
+void PlayerObject::setLinkedCreature(CreatureObject* creature) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
+		method.addObjectParameter(creature);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->setLinkedCreature(creature);
+}
+
+void PlayerObject::setFirstName(const String& fname) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addAsciiParameter(fname);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->setFirstName(fname);
+}
+
+void PlayerObject::setCharacterID(unsigned long long characterid) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addUnsignedLongParameter(characterid);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->setCharacterID(characterid);
+}
+
+ZoneClientSession* PlayerObject::getClient() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
 
 		return (ZoneClientSession*) method.executeWithObjectReturn();
 	} else
@@ -96,11 +135,48 @@ unsigned char PlayerObject::getAccessLevel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 14);
 
 		return method.executeWithUnsignedCharReturn();
 	} else
 		return ((PlayerObjectImplementation*) _impl)->getAccessLevel();
+}
+
+CreatureObject* PlayerObject::getLinkedCreature() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		return (CreatureObject*) method.executeWithObjectReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getLinkedCreature();
+}
+
+String& PlayerObject::getFirstName() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		method.executeWithAsciiReturn(_return_getFirstName);
+		return _return_getFirstName;
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getFirstName();
+}
+
+unsigned long long PlayerObject::getCharacterID() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getCharacterID();
 }
 
 bool PlayerObject::isOnline() {
@@ -108,7 +184,7 @@ bool PlayerObject::isOnline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -120,7 +196,7 @@ bool PlayerObject::isOffline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -132,7 +208,7 @@ bool PlayerObject::isLoading() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 20);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -144,7 +220,7 @@ bool PlayerObject::isLinkDead() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 21);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -156,7 +232,7 @@ bool PlayerObject::isLoggingIn() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 22);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -168,7 +244,7 @@ bool PlayerObject::isLoggingOut() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 23);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -180,7 +256,7 @@ bool PlayerObject::isPrivileged() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 24);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -211,30 +287,48 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		setAccessLevel(inv->getUnsignedCharParameter());
 		break;
 	case 10:
-		resp->insertLong(getClient()->_getObjectID());
+		setLinkedCreature((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 11:
-		resp->insertByte(getAccessLevel());
+		setFirstName(inv->getAsciiParameter(_param0_setFirstName__String_));
 		break;
 	case 12:
-		resp->insertBoolean(isOnline());
+		setCharacterID(inv->getUnsignedLongParameter());
 		break;
 	case 13:
-		resp->insertBoolean(isOffline());
+		resp->insertLong(getClient()->_getObjectID());
 		break;
 	case 14:
-		resp->insertBoolean(isLoading());
+		resp->insertByte(getAccessLevel());
 		break;
 	case 15:
-		resp->insertBoolean(isLinkDead());
+		resp->insertLong(getLinkedCreature()->_getObjectID());
 		break;
 	case 16:
-		resp->insertBoolean(isLoggingIn());
+		resp->insertAscii(getFirstName());
 		break;
 	case 17:
-		resp->insertBoolean(isLoggingOut());
+		resp->insertLong(getCharacterID());
 		break;
 	case 18:
+		resp->insertBoolean(isOnline());
+		break;
+	case 19:
+		resp->insertBoolean(isOffline());
+		break;
+	case 20:
+		resp->insertBoolean(isLoading());
+		break;
+	case 21:
+		resp->insertBoolean(isLinkDead());
+		break;
+	case 22:
+		resp->insertBoolean(isLoggingIn());
+		break;
+	case 23:
+		resp->insertBoolean(isLoggingOut());
+		break;
+	case 24:
 		resp->insertBoolean(isPrivileged());
 		break;
 	default:
@@ -260,12 +354,36 @@ void PlayerObjectAdapter::setAccessLevel(unsigned char level) {
 	return ((PlayerObjectImplementation*) impl)->setAccessLevel(level);
 }
 
+void PlayerObjectAdapter::setLinkedCreature(CreatureObject* creature) {
+	return ((PlayerObjectImplementation*) impl)->setLinkedCreature(creature);
+}
+
+void PlayerObjectAdapter::setFirstName(const String& fname) {
+	return ((PlayerObjectImplementation*) impl)->setFirstName(fname);
+}
+
+void PlayerObjectAdapter::setCharacterID(unsigned long long characterid) {
+	return ((PlayerObjectImplementation*) impl)->setCharacterID(characterid);
+}
+
 ZoneClientSession* PlayerObjectAdapter::getClient() {
 	return ((PlayerObjectImplementation*) impl)->getClient();
 }
 
 unsigned char PlayerObjectAdapter::getAccessLevel() {
 	return ((PlayerObjectImplementation*) impl)->getAccessLevel();
+}
+
+CreatureObject* PlayerObjectAdapter::getLinkedCreature() {
+	return ((PlayerObjectImplementation*) impl)->getLinkedCreature();
+}
+
+String& PlayerObjectAdapter::getFirstName() {
+	return ((PlayerObjectImplementation*) impl)->getFirstName();
+}
+
+unsigned long long PlayerObjectAdapter::getCharacterID() {
+	return ((PlayerObjectImplementation*) impl)->getCharacterID();
 }
 
 bool PlayerObjectAdapter::isOnline() {

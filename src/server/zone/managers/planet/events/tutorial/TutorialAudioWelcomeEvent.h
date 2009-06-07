@@ -10,10 +10,10 @@
 
 class TutorialAudioWelcomeEvent : public Event {
 	PlanetManager* planet;
-	Player* player;
+	PlayerObject* player;
 
 public:
-	TutorialAudioWelcomeEvent(PlanetManager* Planet, Player* pl) : Event() {
+	TutorialAudioWelcomeEvent(PlanetManager* Planet, PlayerObject* pl) : Event() {
 		planet = Planet;
 		player = pl;
 		setKeeping(true);

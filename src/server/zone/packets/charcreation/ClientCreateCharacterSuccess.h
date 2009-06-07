@@ -52,13 +52,12 @@ which carries forward this exception.
 
 class ClientCreateCharacterSuccess : public BaseMessage {
 public:
-	ClientCreateCharacterSuccess(uint64 objid) : BaseMessage() {
+	ClientCreateCharacterSuccess(uint64 characterid) : BaseMessage() {
 		insertShort(0x02);
 		insertInt(0x1DB575CC); //opcode: ClientCreateCharacterSuccess
 		insertInt(0x15);
-		insertInt(objid); //New obj id of the character.
+		insertInt(characterid); //New character id of the character.
 	}
-
 };
 
 

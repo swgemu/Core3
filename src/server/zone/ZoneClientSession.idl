@@ -42,15 +42,13 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "system/net/Socket";
-include "system/net/SocketAddress";
-
 include "engine/service/DatagramServiceThread";
 include "engine/service/proto/BaseMessage";
 include "engine/service/proto/StandaloneBaseMessage";
+include "system/net/Socket";
+include "system/net/SocketAddress";
 
 import "ZoneServer";
-
 import "objects/intangible/player/PlayerObject";
 
 interface ZoneClientSession {
@@ -71,9 +69,9 @@ interface ZoneClientSession {
 	void info(const String msg, boolean foredLog = false);
 
 	// setters and getters
-	void setPlayer(PlayerObject player);
+	void setPlayerObject(PlayerObject player);
 	
-	PlayerObject getPlayer();
+	PlayerObject getPlayerObject();
 
 	boolean isAvailable();
 	

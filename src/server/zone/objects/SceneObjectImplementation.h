@@ -132,7 +132,6 @@ public:
 
 	//ORB methods
 	bool destroy();
-	void deploy();
 	void scheduleUndeploy();
 	void undeploy();
 	void removeUndeploymentEvent();

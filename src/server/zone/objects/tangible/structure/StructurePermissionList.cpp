@@ -48,7 +48,7 @@ StructurePermissionList::StructurePermissionList(SceneObject* linkedstructure) {
 	linkedStructure = linkedstructure;
 }
 
-void StructurePermissionList::sendTo(PlayerObject* player, const String& listname) {
+void StructurePermissionList::sendTo(CreatureObject* player, const String& listname) {
 	//TODO: Send permission list packet to player.
 }
 
@@ -56,11 +56,11 @@ void StructurePermissionList::parsePermissionString(const String& str) {
 	//TODO: Parse the passed string into this object.
 }
 
-String& StructurePermissionList::getPermissionString() {
+void StructurePermissionList::getPermissionString(String& permissionstring) {
 	//TODO: Return a serialized string representing the data of this object.
 }
 
-bool StructurePermissionList::isOnPermissionList(PlayerObject* player, uint8 listtype) {
+bool StructurePermissionList::isOnPermissionList(CreatureObject* player, uint8 listtype) {
 	return false;
 }
 
