@@ -13,10 +13,6 @@
 
 class ChatRoom;
 
-class PlayerObject;
-
-class CreatureObject;
-
 class ZoneServer;
 
 class ChatManager : public DistributedObjectStub {

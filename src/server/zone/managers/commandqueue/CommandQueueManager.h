@@ -42,41 +42,25 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "engine/service/proto/BaseMessage";
-include "engine/service/proto/StandaloneBaseMessage";
+#ifndef COMMANDQUEUEMANAGER_H_
+#define COMMANDQUEUEMANAGER_H_
 
-import "../../../ZoneClientSession";
-import "../IntangibleObject";
-import "../../tangible/creature/CreatureObject";
+#include "engine/engine.h"
 
-interface PlayerObject implements IntangibleObject {
-	PlayerObject(unsigned long objectid, CreatureObject linkedcreature) {
-		super(objectid, int type);
-	}
-	
-	void sendMessage(BaseMessage msg);
-	void sendMessage(StandaloneBaseMessage msg);
-	
-	//Setters
-	void setClient(ZoneClientSession client);
-	void setAccessLevel(unsigned char level);
-	void setLinkedCreature(CreatureObject creature);
-	void setFirstName(const String fname);
-	void setCharacterID(unsigned long characterid);
-	
-	//Getters
-	ZoneClientSession getClient();
-	unsigned char getAccessLevel();
-	CreatureObject getLinkedCreature();
-	String getFirstName();
-	unsigned long getCharacterID();
-	
-	boolean isOnline();
-	boolean isOffline();
-	boolean isLoading();
-	boolean isLinkDead();
-	boolean isLoggingIn();
-	boolean isLoggingOut();
-	
-	boolean isPrivileged();
-}
+#include "QueueCommand.h"
+
+class CommandQueueManager : public Lua {
+protected:
+	ZoneProcessServerImplementation* server;
+	static VectorMap<uint32, QueueCommand*> commandList;
+
+public:
+	CommandQueueManager(ZoneProcessServerImplementation* serv);
+	~CommandQueueManager();
+
+	static void loadQueueCommands(const String& luapath);
+	static void addQueueCommand(QueueCommand* command);
+	static QueueCommand* getQueueCommand(uint32 commandcrc);
+};
+
+#endif /* COMMANDQUEUEMANAGER_H_ */

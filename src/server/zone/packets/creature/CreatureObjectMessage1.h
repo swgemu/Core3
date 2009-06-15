@@ -47,28 +47,27 @@ which carries forward this exception.
 
 #include "../../packets/BaseLineMessage.h"
 
-#include "../../objects/tangible/creature/CreatureObjectImplementation.h"
-#include "../../objects/tangible/creature/player/PlayerImplementation.h"
+#include "../../objects/tangible/creature/CreatureObject.h"
 
 class CreatureObjectMessage1 : public BaseLineMessage {
 public:
-	CreatureObjectMessage1(CreatureObjectImplementation* creo)
+	CreatureObjectMessage1(CreatureObject* creo)
 			: BaseLineMessage(creo->getObjectID(), 0x4352454F, 1, 0x04) {
 		insertInt(creo->getBankCredits()); //Bank Credits
 		insertInt(creo->getCashCredits()); //Cash Credits
 
 		// Base HAM
 		insertInt(9); //HAM List Size
-		insertInt(creo->getHAMBaseUpdateCounter()); //HAM Update Counter
-		insertInt(creo->getBaseHealth());
-		insertInt(creo->getBaseStrength());
-		insertInt(creo->getBaseConstitution());
-		insertInt(creo->getBaseAction());
-		insertInt(creo->getBaseQuickness());
-		insertInt(creo->getBaseStamina());
-		insertInt(creo->getBaseMind());
-		insertInt(creo->getBaseFocus());
-		insertInt(creo->getBaseWillpower());
+		insertInt(creo->getUpdateCounterHAMBase()); //HAM Update Counter
+		insertInt(creo->getHealthBase());
+		insertInt(creo->getStrengthBase());
+		insertInt(creo->getConstitutionBase());
+		insertInt(creo->getActionBase());
+		insertInt(creo->getQuicknessBase());
+		insertInt(creo->getStaminaBase());
+		insertInt(creo->getMindBase());
+		insertInt(creo->getFocusBase());
+		insertInt(creo->getWillpowerBase());
 
 		insertSkillBoxes(creo);
 
@@ -77,8 +76,10 @@ public:
 		setCompression(true);
 	}
 
-	void insertSkillBoxes(CreatureObjectImplementation* creo) {
-		//TODO: This seems unsafish...
+	void insertSkillBoxes(CreatureObject* creo) {
+		insertInt(0);
+		insertInt(0);
+		/*
 		PlayerImplementation* player = (PlayerImplementation*)creo;
 
 		int size = player->skillBoxes.size();
@@ -91,6 +92,7 @@ public:
 			SkillBox* skillBox = player->skillBoxes.getNextValue();
 			insertAscii(skillBox->getName());
 		}
+		*/
 	}
 
 };

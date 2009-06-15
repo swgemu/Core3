@@ -49,12 +49,23 @@ which carries forward this exception.
 
 class InstrumentObjectImplementation : public InstrumentObjectServant {
 protected:
+	uint32 instrumentID;
 
 public:
 
 public:
 	InstrumentObjectImplementation(uint64 objectid);
 	~InstrumentObjectImplementation();
+
+	//Setters
+	inline void setInstrumentID(uint32 id) {
+		instrumentID = id;
+	}
+
+	//Getters
+	inline uint32 getInstrumentID() {
+		return instrumentID;
+	}
 };
 
 #endif /* INSTRUMENTOBJECTIMPLEMENTATION_H_ */

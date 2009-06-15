@@ -6,7 +6,7 @@
 
 #include "PlayerMapImplementation.h"
 
-#include "../../objects/intangible/player/PlayerObject.h"
+#include "../../objects/tangible/creature/player/PlayerObject.h"
 
 /*
  *	PlayerMapStub

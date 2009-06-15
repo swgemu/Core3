@@ -52,10 +52,22 @@ interface TangibleObject implements SceneObject {
 	
 	//Setters
 	void setFactionPointsList(FactionPointsList fplist);
+	void setOptionsBitmask(unsigned int bitmask);
+	void setObjectCount(unsigned int count);
+	void setConditionDamage(float damage);
+	void setConditionMax(float max);
 	
 	//Getters
 	void getCustomizationString(String& appearance);
+	unsigned int getPvpStatusBitmask();
 	FactionPointsList getFactionPointsList();
+	unsigned int getFaction();
+	float getConditionDamage();
+	float getConditionMax();
+	unsigned int getOptionsBitmask();
+	unsigned int getObjectCount();
+	unsigned int getMovementUpdateCounter();
 	unsigned int getNewMovementUpdateCounter(unsigned char count);
 	unsigned int getNewDefenderUpdateCounter(unsigned char count);
+	unsigned char getUnknownByte();
 }

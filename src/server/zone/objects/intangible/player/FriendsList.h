@@ -45,40 +45,29 @@ which carries forward this exception.
 #ifndef FRIENDSLIST_H_
 #define FRIENDSLIST_H_
 
-class FriendsList : public VectorMap<String, FriendListEntry*> {
+#include "engine/engine.h"
+
+class FriendsList : public Vector<String> {
 protected:
-	ManagedReference<Player> linkedPlayer;
+	ManagedReference<PlayerObject> linkedPlayer;
 
 public:
-	FriendsList(Player* player) : VectorMap<String, FriendListEntry*>() {
+	FriendsList(PlayerObject* player) : Vector<String>() {
 		linkedPlayer = player;
 	}
 
-	void sendTo(Player* player) {
+	void sendTo(PlayerDataObject* player) {
 		//TODO: Send the list to the player.
 	}
 
-	void addFriend(const String& friendname) {
+	void add(const String& friendname) {
 		//TODO: Check if the playername exists or not.
 		//TODO: If successful, send a message to linkedPlayer.
 		//TODO: Send a ChatFriendsListUpdate for the new player.
 	}
 
-	void removeFriend(const String& friendname) {
+	void remove(const String& friendname) {
 		//TODO: If successful, send a message to linkedPlayer.
-	}
-};
-
-class FriendListEntry {
-	String firstName;
-	String group;
-	String comment;
-
-public:
-	FriendListEntry(const String& fname) {
-		firstName = fname;
-		group = "";
-		comment = "";
 	}
 };
 #endif /* FRIENDSLIST_H_ */

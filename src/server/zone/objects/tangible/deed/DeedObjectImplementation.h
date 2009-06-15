@@ -46,7 +46,7 @@ which carries forward this exception.
 #define DEEDOBJECTIMPLEMENTATION_H_
 
 #include "DeedObject.h"
-#include "../../intangible/player/PlayerObject.h"
+#include "../../tangible/creature/player/PlayerObject.h"
 
 class DeedObjectImplementation : public DeedObjectServant {
 protected:

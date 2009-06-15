@@ -17,6 +17,8 @@
 
 class Zone;
 
+class CellObject;
+
 class PlayerObject;
 
 #include "engine/core/ManagedObject.h"
@@ -26,6 +28,10 @@ public:
 	bool hasChild(unsigned long long objid, bool recursive = false);
 
 	int getContainerSize(bool recursive = false);
+
+	bool appendChild(SceneObject* obj);
+
+	bool removeChild(unsigned long long objid);
 
 	void info(const String& message, bool forcedLog = false);
 
@@ -63,9 +69,15 @@ public:
 
 	QuadTreeEntry* getQuadTreeEntry();
 
+	void insertToZone(Zone* zne);
+
+	void insertToCell(CellObject* cell);
+
 	void broadcastMessage(BaseMessage* msg, int range = 128, bool dolock = true, bool sendself = true);
 
 	void broadcastMessage(StandaloneBaseMessage* msg, int range = 128, bool dolock = true);
+
+	void sendTo(PlayerObject* player);
 
 	void onDragDrop(PlayerObject* player, SceneObject* target);
 
@@ -86,6 +98,12 @@ public:
 	void setPositionZ(float z);
 
 	void setCustomName(const UnicodeString& customname);
+
+	void setObjectID(unsigned long long objectid);
+
+	void setObjectCRC(unsigned int crc);
+
+	void setObjectType(unsigned int type);
 
 	void setStfFile(const String& stffile);
 
@@ -162,6 +180,10 @@ public:
 
 	int getContainerSize(bool recursive);
 
+	bool appendChild(SceneObject* obj);
+
+	bool removeChild(unsigned long long objid);
+
 	void info(const String& message, bool forcedLog);
 
 	void error(const String& message);
@@ -198,9 +220,15 @@ public:
 
 	QuadTreeEntry* getQuadTreeEntry();
 
+	void insertToZone(Zone* zne);
+
+	void insertToCell(CellObject* cell);
+
 	void broadcastMessage(BaseMessage* msg, int range, bool dolock, bool sendself);
 
 	void broadcastMessage(StandaloneBaseMessage* msg, int range, bool dolock);
+
+	void sendTo(PlayerObject* player);
 
 	void onDragDrop(PlayerObject* player, SceneObject* target);
 
@@ -219,6 +247,12 @@ public:
 	void setPositionZ(float z);
 
 	void setCustomName(const UnicodeString& customname);
+
+	void setObjectID(unsigned long long objectid);
+
+	void setObjectCRC(unsigned int crc);
+
+	void setObjectType(unsigned int type);
 
 	void setStfFile(const String& stffile);
 

@@ -46,38 +46,15 @@ which carries forward this exception.
 #define UPDATEPVPSTATUSMESSAGE_H_
 
 #include "engine/engine.h"
-
 #include "../../objects/tangible/TangibleObject.h"
-
-#include "../../objects/creature/CreatureObject.h"
-#include "../../objects/creature/CreatureObjectImplementation.h"
 
 class UpdatePVPStatusMessage : public BaseMessage {
 public:
-	UpdatePVPStatusMessage(CreatureObject* creo, uint32 pvpBitmask) : BaseMessage() {
+	UpdatePVPStatusMessage(TangibleObject* tano) : BaseMessage() {
 		insertShort(0x04);
-		insertInt(0x08A1C126);  // CRC
-		insertInt(pvpBitmask);
-		insertInt(creo->getFaction());
-
-		insertLong(creo->getObjectID());
-	}
-
-	UpdatePVPStatusMessage(CreatureObjectImplementation* creo, uint32 pvpBitmask) : BaseMessage() {
-		insertShort(0x04);
-		insertInt(0x08A1C126);  // CRC
-		insertInt(pvpBitmask);
-		insertInt(creo->getFaction());
-
-		insertLong(creo->getObjectID());
-	}
-
-	UpdatePVPStatusMessage(TangibleObject* tano, uint32 pvpBitmask) : BaseMessage() {
-		insertShort(0x04);
-		insertInt(0x08A1C126);  // CRC
-		insertInt(pvpBitmask);
-		insertInt(0);
-
+		insertInt(0x08A1C126);  //UpdatePVPStatusMessage
+		insertInt(tano->getPvpStatusBitmask());
+		insertInt(tano->getFaction());
 		insertLong(tano->getObjectID());
 	}
 

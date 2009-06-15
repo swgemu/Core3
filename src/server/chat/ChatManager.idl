@@ -46,8 +46,6 @@ include "engine/service/Message";
 include "../zone/packets/object/StfParameter";
 
 import "room/ChatRoom";
-import "../zone/objects/intangible/player/PlayerObject";
-import "../zone/objects/tangible/creature/CreatureObject";
 
 import "server/zone/ZoneServer";
 

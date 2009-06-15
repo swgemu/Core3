@@ -43,6 +43,7 @@ which carries forward this exception.
  */
 
 #include "PlayerManagerImplementation.h"
+#include "../../packets/charcreation/ClientCreateCharacterFailed.h"
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneProcessServerImplementation* srv)
 		: PlayerManagerServant() {
@@ -54,4 +55,3 @@ PlayerManagerImplementation::~PlayerManagerImplementation() {
 
 void PlayerManagerImplementation::stop() {
 }
-

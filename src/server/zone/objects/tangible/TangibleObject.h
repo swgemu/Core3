@@ -19,13 +19,37 @@ public:
 
 	void setFactionPointsList(FactionPointsList* fplist);
 
+	void setOptionsBitmask(unsigned int bitmask);
+
+	void setObjectCount(unsigned int count);
+
+	void setConditionDamage(float damage);
+
+	void setConditionMax(float max);
+
 	void getCustomizationString(String& appearance);
 
+	unsigned int getPvpStatusBitmask();
+
 	FactionPointsList* getFactionPointsList();
+
+	unsigned int getFaction();
+
+	float getConditionDamage();
+
+	float getConditionMax();
+
+	unsigned int getOptionsBitmask();
+
+	unsigned int getObjectCount();
+
+	unsigned int getMovementUpdateCounter();
 
 	unsigned int getNewMovementUpdateCounter(unsigned char count);
 
 	unsigned int getNewDefenderUpdateCounter(unsigned char count);
+
+	unsigned char getUnknownByte();
 
 protected:
 	TangibleObject(DummyConstructorParameter* param);
@@ -45,13 +69,37 @@ public:
 
 	void setFactionPointsList(FactionPointsList* fplist);
 
+	void setOptionsBitmask(unsigned int bitmask);
+
+	void setObjectCount(unsigned int count);
+
+	void setConditionDamage(float damage);
+
+	void setConditionMax(float max);
+
 	void getCustomizationString(String& appearance);
 
+	unsigned int getPvpStatusBitmask();
+
 	FactionPointsList* getFactionPointsList();
+
+	unsigned int getFaction();
+
+	float getConditionDamage();
+
+	float getConditionMax();
+
+	unsigned int getOptionsBitmask();
+
+	unsigned int getObjectCount();
+
+	unsigned int getMovementUpdateCounter();
 
 	unsigned int getNewMovementUpdateCounter(unsigned char count);
 
 	unsigned int getNewDefenderUpdateCounter(unsigned char count);
+
+	unsigned char getUnknownByte();
 
 protected:
 	String _param0_getCustomizationString__String_;

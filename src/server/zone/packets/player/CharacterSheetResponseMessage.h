@@ -46,16 +46,16 @@ which carries forward this exception.
 #define CHARACTERSHEETRESPONSEMESSAGE_H_
 
 #include "engine/engine.h"
-#include "../../objects/player/Player.h"
+#include "../../objects/tangible/creature/player/PlayerObject.h"
 
 class CharacterSheetResponseMessage : public BaseMessage {
 public:
-    CharacterSheetResponseMessage(Player * player) : BaseMessage() {
+    CharacterSheetResponseMessage(PlayerObject* player) : BaseMessage() {
 		insertShort(0x0D);
-		insertInt(0x9B3A17C4); // CRC
+		insertInt(0x9B3A17C4); //CharacterSheetResponseMessage
 
-		insertInt(0); //??
-		insertInt(0); //??
+		insertInt(0); //What is this for!
+		insertInt(0);
 
 		insertFloat(0); //Bind Location X
 		insertFloat(0); //Bind Location Y
@@ -65,14 +65,14 @@ public:
 		insertFloat(0); //Bank Location X
 		insertFloat(0); //Bank Location Y
 		insertFloat(0); //Bank Location Z
-		insertAscii("tatooine"); //Bank Planet
+		insertAscii(""); //Bank Planet
 
-		insertFloat(1337.0f); //Home Location X
-		insertFloat(1337.0f); //Home Location Y
-		insertFloat(1337.0f); //Home Location Z
-		insertAscii("tatooine"); //Home Planet
+		insertFloat(0.0f); //Home Location X
+		insertFloat(0.0f); //Home Location Y
+		insertFloat(0.0f); //Home Location Z
+		insertAscii(""); //Home Planet
 
-		insertUnicode(""); //Spouse Name
+		insertUnicode(player->getSpouseName()); //Spouse Name
 		insertInt(player->getLotsRemaining()); //Lots Remaining
 
 		insertInt(player->getFaction()); //Faction CRC (or hashCode?)

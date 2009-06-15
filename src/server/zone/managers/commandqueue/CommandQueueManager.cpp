@@ -42,8 +42,34 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef IGNORELIST_H_
-#define IGNORELIST_H_
+#include "CommandQueueManager.h"
 
+VectorMap<uint32, QueueCommand*> CommandQueueManager::commandList;
 
-#endif /* IGNORELIST_H_ */
+CommandQueueManager::CommandQueueManager(ZoneProcessServerImplementation* serv) {
+	server = serv;
+	commandList.setInsertPlan(SortedVector<VectorMapEntry<uint32, QueueCommand*>*>::NO_DUPLICATE);
+	commandList.setNullValue(NULL);
+}
+
+CommandQueueManager::~CommandQueueManager() {
+
+}
+
+void CommandQueueManager::loadQueueCommands(const String& luapath) {
+
+}
+
+void CommandQueueManager::addQueueCommand(QueueCommand* command) {
+	if (command == NULL)
+		return;
+
+	commandList.put(command->getCommandCRC(), command);
+}
+
+QueueCommand* CommandQueueManager::getQueueCommand(uint32 commandcrc) {
+	if (!commandList.contains(commandcrc))
+		return NULL;
+
+	return commandList.get(commandcrc);
+}

@@ -49,13 +49,15 @@ which carries forward this exception.
 #include "ZoneClientSession.h"
 #include "ZoneClientSessionImplementation.h"
 
-#include "objects/intangible/player/PlayerObject.h"
+#include "objects/intangible/player/PlayerDataObject.h"
+#include "objects/tangible/creature/player/PlayerObject.h"
 
 ZoneClientSessionImplementation::ZoneClientSessionImplementation(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr)
 		: BaseClientProxy(sock, *addr), ZoneClientSessionServant() {
 	init(serv);
 
 	playerObject = NULL;
+	playerDataObject = NULL;
 	sessionKey = 0;
 
 	disconnecting = false;
@@ -69,6 +71,7 @@ ZoneClientSessionImplementation::ZoneClientSessionImplementation(DatagramService
 
 ZoneClientSessionImplementation::~ZoneClientSessionImplementation() {
 	playerObject = NULL;
+	playerDataObject = NULL;
 }
 
 void ZoneClientSessionImplementation::disconnect() {

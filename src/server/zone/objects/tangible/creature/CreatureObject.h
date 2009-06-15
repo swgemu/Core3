@@ -9,6 +9,8 @@
 
 #include "FactionRank.h"
 
+class PlayerObject;
+
 class TangibleObject;
 
 class SceneObject;
@@ -17,11 +19,15 @@ class GroupObject;
 
 class GuildObject;
 
+class Species;
+
 #include "../TangibleObject.h"
 
 class CreatureObject : public TangibleObject {
 public:
 	CreatureObject(unsigned long long objectid, int type = 400);
+
+	void sendTo(PlayerObject* player, bool close = true);
 
 	void updateTargetObject(unsigned long long targetid, bool updateclients = true);
 
@@ -30,6 +36,8 @@ public:
 	void setLastMovementStamp(unsigned int timestamp);
 
 	void setMovementCounter(unsigned int counter);
+
+	void setLinkedCreature(CreatureObject* creature);
 
 	void setHairObject(TangibleObject* hair);
 
@@ -43,6 +51,8 @@ public:
 
 	void setFactionRank(FactionRank* rank);
 
+	void setSpecies(Species* spec);
+
 	void setGroupObject(GroupObject* groupobject);
 
 	void setGuildObject(GuildObject* guildobject);
@@ -53,7 +63,23 @@ public:
 
 	unsigned int getLastMovementStamp();
 
+	CreatureObject* getLinkedCreature();
+
 	TangibleObject* getHairObject();
+
+	unsigned long long getWeaponID();
+
+	unsigned long long getGroupID();
+
+	unsigned long long getGroupInviterID();
+
+	unsigned long long getUpdateCounterGroupInvite();
+
+	unsigned int getGuildID();
+
+	unsigned long long getTargetID();
+
+	unsigned int getInstrumentID();
 
 	unsigned char getMoodID();
 
@@ -65,15 +91,141 @@ public:
 
 	FactionRank* getFactionRank();
 
+	Species* getSpecies();
+
+	String& getTemplatePath();
+
 	String& getMoodName();
+
+	String& getPerformanceAnimation();
+
+	unsigned long long getListeningToID();
+
+	float getSpeed();
+
+	float getTerrainNegotiation();
+
+	float getTurnRadius();
+
+	float getAcceleration();
+
+	float getDeceleration();
+
+	unsigned int getLevel();
 
 	unsigned long long getStatesBitmask();
 
 	unsigned char getPosture();
 
+	unsigned int getUpdateCounterAction();
+
+	unsigned int getUpdateCounterHAM();
+
+	unsigned int getUpdateCounterHAMMax();
+
+	unsigned int getUpdateCounterHAMBase();
+
+	unsigned int getUpdateCounterWounds();
+
+	unsigned int getUpdateCounterEncumbrance();
+
+	unsigned int getUpdateCounterPerformance();
+
+	unsigned int getUpdateCounterEquipment();
+
+	int getAttribute(unsigned char attribute);
+
+	int getHealth();
+
+	int getStrength();
+
+	int getConstitution();
+
+	int getAction();
+
+	int getQuickness();
+
+	int getStamina();
+
+	int getMind();
+
+	int getFocus();
+
+	int getWillpower();
+
+	int getAttributeBase(unsigned char attribute);
+
+	int getHealthBase();
+
+	int getStrengthBase();
+
+	int getConstitutionBase();
+
+	int getActionBase();
+
+	int getQuicknessBase();
+
+	int getStaminaBase();
+
+	int getMindBase();
+
+	int getFocusBase();
+
+	int getWillpowerBase();
+
+	int getAttributeMax(unsigned char attribute);
+
+	int getHealthMax();
+
+	int getStrengthMax();
+
+	int getConstitutionMax();
+
+	int getActionMax();
+
+	int getQuicknessMax();
+
+	int getStaminaMax();
+
+	int getMindMax();
+
+	int getFocusMax();
+
+	int getWillpowerMax();
+
+	int getAttributeWounds(unsigned char attribute);
+
+	int getHealthWounds();
+
+	int getStrengthWounds();
+
+	int getConstitutionWounds();
+
+	int getActionWounds();
+
+	int getQuicknessWounds();
+
+	int getStaminaWounds();
+
+	int getMindWounds();
+
+	int getFocusWounds();
+
+	int getWillpowerWounds();
+
+	int getHealthEncumbrance();
+
+	int getActionEncumbrance();
+
+	int getMindEncumbrance();
+
+	unsigned int getShockWounds();
+
 	bool isGrouped();
 
 	bool isGuilded();
+
+	bool isStationary();
 
 protected:
 	CreatureObject(DummyConstructorParameter* param);
@@ -81,6 +233,8 @@ protected:
 	virtual ~CreatureObject();
 
 	String _return_getMoodName;
+	String _return_getPerformanceAnimation;
+	String _return_getTemplatePath;
 
 	friend class CreatureObjectHelper;
 };
@@ -93,6 +247,8 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void sendTo(PlayerObject* player, bool close);
+
 	void updateTargetObject(unsigned long long targetid, bool updateclients);
 
 	void updateTargetObject(SceneObject* target, bool updateclients);
@@ -100,6 +256,8 @@ public:
 	void setLastMovementStamp(unsigned int timestamp);
 
 	void setMovementCounter(unsigned int counter);
+
+	void setLinkedCreature(CreatureObject* creature);
 
 	void setHairObject(TangibleObject* hair);
 
@@ -113,6 +271,8 @@ public:
 
 	void setFactionRank(FactionRank* rank);
 
+	void setSpecies(Species* spec);
+
 	void setGroupObject(GroupObject* groupobject);
 
 	void setGuildObject(GuildObject* guildobject);
@@ -123,7 +283,23 @@ public:
 
 	unsigned int getLastMovementStamp();
 
+	CreatureObject* getLinkedCreature();
+
 	TangibleObject* getHairObject();
+
+	unsigned long long getWeaponID();
+
+	unsigned long long getGroupID();
+
+	unsigned long long getGroupInviterID();
+
+	unsigned long long getUpdateCounterGroupInvite();
+
+	unsigned int getGuildID();
+
+	unsigned long long getTargetID();
+
+	unsigned int getInstrumentID();
 
 	unsigned char getMoodID();
 
@@ -135,15 +311,141 @@ public:
 
 	FactionRank* getFactionRank();
 
+	Species* getSpecies();
+
+	String& getTemplatePath();
+
 	String& getMoodName();
+
+	String& getPerformanceAnimation();
+
+	unsigned long long getListeningToID();
+
+	float getSpeed();
+
+	float getTerrainNegotiation();
+
+	float getTurnRadius();
+
+	float getAcceleration();
+
+	float getDeceleration();
+
+	unsigned int getLevel();
 
 	unsigned long long getStatesBitmask();
 
 	unsigned char getPosture();
 
+	unsigned int getUpdateCounterAction();
+
+	unsigned int getUpdateCounterHAM();
+
+	unsigned int getUpdateCounterHAMMax();
+
+	unsigned int getUpdateCounterHAMBase();
+
+	unsigned int getUpdateCounterWounds();
+
+	unsigned int getUpdateCounterEncumbrance();
+
+	unsigned int getUpdateCounterPerformance();
+
+	unsigned int getUpdateCounterEquipment();
+
+	int getAttribute(unsigned char attribute);
+
+	int getHealth();
+
+	int getStrength();
+
+	int getConstitution();
+
+	int getAction();
+
+	int getQuickness();
+
+	int getStamina();
+
+	int getMind();
+
+	int getFocus();
+
+	int getWillpower();
+
+	int getAttributeBase(unsigned char attribute);
+
+	int getHealthBase();
+
+	int getStrengthBase();
+
+	int getConstitutionBase();
+
+	int getActionBase();
+
+	int getQuicknessBase();
+
+	int getStaminaBase();
+
+	int getMindBase();
+
+	int getFocusBase();
+
+	int getWillpowerBase();
+
+	int getAttributeMax(unsigned char attribute);
+
+	int getHealthMax();
+
+	int getStrengthMax();
+
+	int getConstitutionMax();
+
+	int getActionMax();
+
+	int getQuicknessMax();
+
+	int getStaminaMax();
+
+	int getMindMax();
+
+	int getFocusMax();
+
+	int getWillpowerMax();
+
+	int getAttributeWounds(unsigned char attribute);
+
+	int getHealthWounds();
+
+	int getStrengthWounds();
+
+	int getConstitutionWounds();
+
+	int getActionWounds();
+
+	int getQuicknessWounds();
+
+	int getStaminaWounds();
+
+	int getMindWounds();
+
+	int getFocusWounds();
+
+	int getWillpowerWounds();
+
+	int getHealthEncumbrance();
+
+	int getActionEncumbrance();
+
+	int getMindEncumbrance();
+
+	unsigned int getShockWounds();
+
 	bool isGrouped();
 
 	bool isGuilded();
+
+	bool isStationary();
 
 };
 

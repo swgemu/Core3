@@ -48,4 +48,9 @@ interface InstrumentObject implements TangibleObject {
 	InstrumentObject(unsigned long objectid) {
 		super(objectid, int type);
 	}
+	
+	//Setters
+	
+	//Getters
+	unsigned int getInstrumentID();
 }

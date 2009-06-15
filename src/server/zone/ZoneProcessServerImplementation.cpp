@@ -85,6 +85,7 @@ which carries forward this exception.
 #include "managers/skills/SkillManager.h"
 //#include "managers/sui/SuiManager.h"
 #include "managers/name/NameManager.h"
+#include "managers/commandqueue/CommandQueueManager.h"
 
 ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* serv, int processingThreads)
 		: ServiceMessageHandlerThread("ZoneProcessorServer") {
@@ -101,6 +102,7 @@ ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* ser
 	groupManager = new GroupManager();
 	//suiManager = new SuiManager(this);
 	nameManager = new NameManager(this);
+	commandQueueManager = new CommandQueueManager(this);
 
 	setLogging(false);
 

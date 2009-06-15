@@ -63,45 +63,47 @@ class ObjectControllerMessage : public BaseMessage {
 public:
 	ObjectControllerMessage(uint64 objid, uint32 header1, uint32 header2, bool comp = true);
 
-	static bool parseDataTransform(CreatureObject* player, Message* pack);
-	static uint64 parseDataTransformWithParent(CreatureObject* player, Message* pack);
+	static void handleRequestBiography(PlayerObject* player, Message* pack);
 
-	static void parseCommandQueueEnqueue(CreatureObject* player, Message* pack, ZoneProcessServerImplementation* serv);
-	static void parseCommandQueueClear(CreatureObject* player, Message* pack);
+	static bool parseDataTransform(PlayerObject* player, Message* pack);
+	static uint64 parseDataTransformWithParent(PlayerObject* player, Message* pack);
 
-	static void parseObjectTargetUpdate(CreatureObject* player, Message* pack);
-    static void parseRadialRequest(CreatureObject* player, Message* pack, RadialManager* radialManager);
+	static void parseCommandQueueEnqueue(PlayerObject* player, Message* pack, ZoneProcessServerImplementation* serv);
+	static void parseCommandQueueClear(PlayerObject* player, Message* pack);
 
-    static void parseImageDesignChange(CreatureObject* player, Message* pack, ZoneProcessServerImplementation* serv);
-    static void parseImageDesignCancel(CreatureObject* player, Message* pack);
+	static void parseObjectTargetUpdate(PlayerObject* player, Message* pack);
+    static void parseRadialRequest(PlayerObject* player, Message* pack, RadialManager* radialManager);
 
-    static void parseFlourish(CreatureObject* player, Message* pack);
+    static void parseImageDesignChange(PlayerObject* player, Message* pack, ZoneProcessServerImplementation* serv);
+    static void parseImageDesignCancel(PlayerObject* player, Message* pack);
 
-    static void parseResourceEmptyHopper(CreatureObject* player, Message* pack);
+    static void parseFlourish(PlayerObject* player, Message* pack);
 
-    static void sendErrMsg(uint32 actioncntr, Skill* skill, CreatureObject* player);
+    static void parseResourceEmptyHopper(PlayerObject* player, Message* pack);
+
+    static void sendErrMsg(uint32 actioncntr, Skill* skill, PlayerObject* player);
     // structures
     //static void parsePermissionListModify(PlayerObject* player, Message* pack);
 
     // mission
-    static void parseMissionListRequest(CreatureObject* player, Message* pack);
-    static void parseMissionAccept(CreatureObject* player, Message* pack);
-    static void parseMissionAbort(CreatureObject* player, Message* pack);
+    static void parseMissionListRequest(PlayerObject* player, Message* pack);
+    static void parseMissionAccept(PlayerObject* player, Message* pack);
+    static void parseMissionAbort(PlayerObject* player, Message* pack);
 
 	// Crafting
-	static void parseAddCraftingResource(CreatureObject* player, Message* packet);
-	static void parseRemoveCraftingResource(CreatureObject* player, Message* packet);
-	static void parseCraftCustomization(CreatureObject* player, Message* packet);
-	static void parseExperimentation(CreatureObject* player, Message* packet);
+	static void parseAddCraftingResource(PlayerObject* player, Message* packet);
+	static void parseRemoveCraftingResource(PlayerObject* player, Message* packet);
+	static void parseCraftCustomization(PlayerObject* player, Message* packet);
+	static void parseExperimentation(PlayerObject* player, Message* packet);
 
 
-	static void parsePickup(CreatureObject* player, Message* pack);
+	static void parsePickup(PlayerObject* player, Message* pack);
 
-	static void parseItemDropTrade(CreatureObject* player, Message* pack);
+	static void parseItemDropTrade(PlayerObject* player, Message* pack);
 
-	static void parseRotateItem(CreatureObject* player, Message* pack);
+	static void parseRotateItem(PlayerObject* player, Message* pack);
 
-	static void parseTellPet(CreatureObject* player, Message* pack);
+	static void parseTellPet(PlayerObject* player, Message* pack);
 };
 
 #endif /*OBJECTCONTROLLERMESSAGE_H_*/

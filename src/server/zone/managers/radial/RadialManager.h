@@ -46,20 +46,20 @@ which carries forward this exception.
 #define RADIALMANAGER_H_
 
 #include "engine/engine.h"
-#include "../../objects/tangible/creature/CreatureObject.h"
+#include "../../objects/tangible/creature/player/PlayerObject.h"
 
 class ObjectMenuResponse;
 class RadialManager {
 private:
-	ObjectMenuResponse* parseDefaults(CreatureObject* creature, uint64 objectid, Packet* pack);
+	ObjectMenuResponse* parseDefaults(PlayerObject* player, uint64 objectid, Packet* pack);
 
 public:
 	RadialManager();
 
-	void handleRadialRequest(CreatureObject* creature, Packet* pack);
-	void handleRadialSelect(CreatureObject* creature, Packet* pack);
-	void sendDefaultRadialResponse(CreatureObject* creature, ObjectMenuResponse* omr);
-	void handleSelection(int radialID, CreatureObject* creature, SceneObject* obj);
+	void handleRadialRequest(PlayerObject* player, Packet* pack);
+	void handleRadialSelect(PlayerObject* player, Packet* pack);
+	void sendDefaultRadialResponse(PlayerObject* player, ObjectMenuResponse* omr);
+	void handleSelection(PlayerObject* player, int radialid,  SceneObject* obj);
 
 };
 

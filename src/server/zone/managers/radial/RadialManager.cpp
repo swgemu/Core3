@@ -45,7 +45,7 @@ which carries forward this exception.
 #include "RadialManager.h"
 #include "../../Zone.h"
 #include "../../objects/SceneObject.h"
-#include "../../objects/intangible/player/PlayerObject.h"
+#include "../../objects/tangible/creature/player/PlayerObject.h"
 #include "../../packets/object/ObjectMenuResponse.h"
 
 RadialManager::RadialManager() {
@@ -57,16 +57,16 @@ RadialManager::RadialManager() {
  * \param player The player that has requested the radial options.
  * \param pack The packet that was sent from the client to the server.
  */
-void RadialManager::handleRadialRequest(CreatureObject* creature, Packet* pack) {
+void RadialManager::handleRadialRequest(PlayerObject* player, Packet* pack) {
 	pack->shiftOffset(12); // skip ObjectID and size
 
 	uint64 objectid = pack->parseLong();
 	uint64 playerid = pack->parseLong();
 
 	ObjectMenuResponse* omr;
-	omr = parseDefaults(creature, objectid, pack);
+	omr = parseDefaults(player, objectid, pack);
 
-	Zone* zone = creature->getZone();
+	Zone* zone = player->getZone();
 
 	if (zone == NULL) {
 		delete omr;
@@ -98,7 +98,13 @@ void RadialManager::handleRadialRequest(CreatureObject* creature, Packet* pack) 
 	}*/
 }
 
-void RadialManager::handleRadialSelect(CreatureObject* creature, Packet* pack) {
+/**
+ * This method is called when a radial option has been selected and the packet handled by ZonePacketHandler
+ * \param player The player's CreatureObject that selected the radial option.
+ * \param pack The original packet containing the radial selection.
+ */
+void RadialManager::handleRadialSelect(PlayerObject* player, Packet* pack) {
+	System::out << "Radial selection made." << endl;
 	/*
 	try {
 		player->wlock();
@@ -143,19 +149,22 @@ void RadialManager::handleRadialSelect(CreatureObject* creature, Packet* pack) {
 	}*/
 }
 
-void RadialManager::handleSelection(int radialID, CreatureObject* creature, SceneObject* obj) {
+/**
+ * TODO: Do we really need to have a seperate method here?
+ */
+void RadialManager::handleSelection(PlayerObject* player, int radialid, SceneObject* obj) {
 	// Pre: player is wlocked, obj is unlocked
 	// Post: player and obj unlocked
 
 
-	//System::out << "Radial ID = " << dec << radialID << endl;
+	//System::out << "Radial ID = " << dec << radialid << endl;
 
 	//TODO: Revisit locking before and after this method since we are handing on the object
 	//rather than in the manager.
 	//Should objects which need casting still be handled? Should everything be handled, then
 	//point to it's objects onRadialHandler?
 	try {
-		switch (radialID) {
+		switch (radialid) {
 		case 0: //UNKNOWN
 		case 1: //COMBAT_TARGET
 		case 2: //COMBAT_UNTARGET
@@ -738,12 +747,18 @@ void RadialManager::handleSelection(int radialID, CreatureObject* creature, Scen
 		StackTrace::printStackTrace();
 	}
 
-	creature->unlock();
+	player->unlock();
 }
 
-ObjectMenuResponse* RadialManager::parseDefaults(CreatureObject* creature, uint64 objectid, Packet* pack) {
+/**
+ * This method parses out the radial options that are sent by the client when a player requests a radial menu.
+ * \param player The player who is requesting the radials default options.
+ * \param objectid The object id of the object the radial belongs to.
+ * \param pack The original packet.
+ */
+ObjectMenuResponse* RadialManager::parseDefaults(PlayerObject* player, uint64 objectid, Packet* pack) {
 	int size = pack->parseInt();
-	ObjectMenuResponse* omr = new ObjectMenuResponse(creature, objectid, 0);
+	ObjectMenuResponse* omr = new ObjectMenuResponse(player, objectid, 0);
 
 	for (int i = 0; i < size; i++) {
 		uint8 index = pack->parseByte();
@@ -775,8 +790,12 @@ ObjectMenuResponse* RadialManager::parseDefaults(CreatureObject* creature, uint6
 	return omr;
 }
 
-void RadialManager::sendDefaultRadialResponse(CreatureObject* creature, ObjectMenuResponse* omr) {
+/**
+ * This method sends the default radial response.
+ * TODO: Is this method even needed?
+ */
+void RadialManager::sendDefaultRadialResponse(PlayerObject* player, ObjectMenuResponse* omr) {
 	omr->finish();
 
-	//creature->sendMessage(omr);
+	//player->sendMessage(omr);
 }

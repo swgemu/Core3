@@ -47,11 +47,13 @@ which carries forward this exception.
 
 #include "ZoneClientSession.h"
 #include "engine/engine.h"
-#include "objects/intangible/player/PlayerObject.h"
+#include "objects/intangible/player/PlayerDataObject.h"
+#include "objects/tangible/creature/player/PlayerObject.h"
 
 class ZoneClientSessionImplementation : public BaseClientProxy, public ZoneClientSessionServant {
+	ManagedReference<PlayerDataObject> playerDataObject;
 	ManagedReference<PlayerObject> playerObject;
-	//TODO: Should have some sort of reference to an account object here too.
+	//TODO: ManagedReference<AccountInfo> accountInfo;
 
 	uint32 sessionKey;
 
@@ -78,20 +80,29 @@ public:
 
 	void release();
 
-	// setters and getters
-	void setPlayerObject(PlayerObject* plyo) {
-		playerObject = plyo;
+	//Setters
+	inline void setPlayerObject(PlayerObject* player) {
+		playerObject = player;
 	}
 
-	void setSessionKey(uint32 key) {
+	inline void setPlayerDataObject(PlayerDataObject* playerdata) {
+		playerDataObject = playerdata;
+	}
+
+	inline void setSessionKey(uint32 key) {
 		sessionKey = key;
 	}
 
-	PlayerObject* getPlayerObject() {
+	//Getters
+	inline PlayerObject* getPlayerObject() {
 		return playerObject;
 	}
 
-	uint32 getSessionKey() {
+	inline PlayerDataObject* getPlayerDataObject() {
+		return playerDataObject;
+	}
+
+	inline uint32 getSessionKey() {
 		return sessionKey;
 	}
 };

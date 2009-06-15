@@ -54,12 +54,14 @@ which carries forward this exception.
 #include "../../universe/group/GroupObject.h"
 #include "../../universe/guild/GuildObject.h"
 #include "FactionRank.h"
+#include "Species.h"
 #include "Moods.h"
 #include "CreatureAttribute.h"
 #include "CreaturePosture.h"
 #include "CreatureState.h"
 #include "CreatureFlag.h"
 
+class PlayerObject;
 class CreatureObjectImplementation : public CreatureObjectServant {
 protected:
 	ManagedReference<TangibleObject> hairObject;
@@ -86,8 +88,8 @@ protected:
 
 	uint64 statesBitmask;
 	uint64 listeningToID;
-	uint64 groupInviteCounter;
 	uint64 groupInviterID;
+	uint64 updateCounterGroupInvite;
 
 	uint32 level;
 
@@ -95,10 +97,11 @@ protected:
 	uint32 creditsCash;
 
 	FactionRank* factionRank;
+	Species* species; //Should this actually go in player?
 
 	uint32 timestampLastMovement;
-
 	uint32 updateCounterPosition;
+
 	uint32 updateCounterAction;
 	uint32 updateCounterHAM;
 	uint32 updateCounterHAMMax;
@@ -112,11 +115,11 @@ protected:
 	int32 attributes[9];
 	int32 attributesMax[9];
 	int32 wounds[9];
-	int32 shockWounds;
+	uint32 shockWounds;
 
-	int32 healthEncumbrance;
-	int32 actionEncumbrance;
-	int32 mindEncumbrance;
+	int32 encumbranceHealth;
+	int32 encumbranceAction;
+	int32 encumbranceMind;
 
 	uint8 moodID;
 	uint8 posture;
@@ -136,6 +139,10 @@ public:
 	~CreatureObjectImplementation();
 
 	//Saving and loading
+
+	//Sending of packets
+	virtual void sendTo(PlayerObject* player, bool close = true);
+	virtual void sendToOwner(PlayerObject* player, bool close = true);
 
 	//Modifiers
 	virtual void addModifierEffect(ModifierEffect* modeffect, bool activate = true);
@@ -184,6 +191,10 @@ public:
 		timestampLastMovement = timestamp;
 	}
 
+	inline void setLinkedCreature(CreatureObject* creature) {
+		linkedCreature = creature;
+	}
+
 	inline void setHairObject(TangibleObject* hair) {
 		hairObject = hair;
 	}
@@ -209,6 +220,10 @@ public:
 		factionRank = rank;
 	}
 
+	inline void setSpecies(Species* spec) {
+		species = spec;
+	}
+
 	inline void setGroupObject(GroupObject* groupobject) {
 		groupObject = groupobject;
 	}
@@ -230,6 +245,10 @@ public:
 		return timestampLastMovement;
 	}
 
+	inline CreatureObject* getLinkedCreature() {
+		return linkedCreature;
+	}
+
 	inline TangibleObject* getHairObject() {
 		return hairObject.get();
 	}
@@ -238,8 +257,55 @@ public:
 		return moodID;
 	}
 
+	inline String& getTemplatePath() {
+		return templatePath;
+	}
+
 	inline String& getMoodName() {
 		return moodName;
+	}
+
+	inline String& getPerformanceAnimation() {
+		return performanceAnimation;
+	}
+
+	inline uint64 getWeaponID() {
+		if (weaponObject != NULL)
+			return weaponObject->getObjectID();
+
+		return 0;
+	}
+
+	inline uint64 getGroupID() {
+		if (groupObject != NULL)
+			return groupObject->getObjectID();
+
+		return 0;
+	}
+
+	inline uint64 getGroupInviterID() {
+		return groupInviterID;
+	}
+
+	inline uint32 getGuildID() {
+		if (guildObject != NULL)
+			return guildObject->getObjectID();
+
+		return 0;
+	}
+
+	inline uint64 getTargetID() {
+		if (targetObject != NULL)
+			return targetObject->getObjectID();
+
+		return 0;
+	}
+
+	inline uint32 getInstrumentID() {
+		if (instrumentObject != NULL)
+			return instrumentObject->getInstrumentID();
+
+		return 0;
 	}
 
 	inline float getHeight() {
@@ -264,6 +330,78 @@ public:
 
 	inline FactionRank* getFactionRank() {
 		return factionRank;
+	}
+
+	inline Species* getSpecies() {
+		return species;
+	}
+
+	inline uint64 getListeningToID() {
+		return listeningToID;
+	}
+
+	inline float getSpeed() {
+		return speed;
+	}
+
+	inline float getTerrainNegotiation() {
+		return terrainNegotiation;
+	}
+
+	inline float getTurnRadius() {
+		return turnRadius;
+	}
+
+	inline float getAcceleration() {
+		return acceleration;
+	}
+
+	inline float getDeceleration() {
+		return deceleration;
+	}
+
+	inline uint32 getLevel() {
+		return level;
+	}
+
+	inline uint32 getUpdateCounterAction() {
+		return updateCounterAction;
+	}
+
+	inline uint64 getUpdateCounterGroupInvite() {
+		return updateCounterGroupInvite;
+	}
+
+	inline uint32 getUpdateCounterHAM() {
+		return updateCounterHAM;
+	}
+
+	inline uint32 getUpdateCounterHAMMax() {
+		return updateCounterHAMMax;
+	}
+
+	inline uint32 getUpdateCounterHAMBase() {
+		return updateCounterHAMBase;
+	}
+
+	inline uint32 getUpdateCounterWounds() {
+		return updateCounterWounds;
+	}
+
+	inline uint32 getUpdateCounterEncumbrance() {
+		return updateCounterEncumbrance;
+	}
+
+	inline uint32 getUpdateCounterPerformance() {
+		return updateCounterPerformance;
+	}
+
+	inline uint32 getUpdateCounterEquipment() {
+		return updateCounterEquipment;
+	}
+
+	inline int32 getAttribute(uint8 attribute) {
+		return attributes[attribute];
 	}
 
 	inline int32 getHealth() {
@@ -302,6 +440,141 @@ public:
 		return attributes[CreatureAttribute::WILLPOWER];
 	}
 
+	inline int32 getAttributeBase(uint8 attribute) {
+		return attributesBase[attribute];
+	}
+
+	inline int32 getHealthBase() {
+		return attributesBase[CreatureAttribute::HEALTH];
+	}
+
+	inline int32 getStrengthBase() {
+		return attributesBase[CreatureAttribute::STRENGTH];
+	}
+
+	inline int32 getConstitutionBase() {
+		return attributesBase[CreatureAttribute::CONSTITUTION];
+	}
+
+	inline int32 getActionBase() {
+		return attributesBase[CreatureAttribute::ACTION];
+	}
+
+	inline int32 getQuicknessBase() {
+		return attributesBase[CreatureAttribute::QUICKNESS];
+	}
+
+	inline int32 getStaminaBase() {
+		return attributesBase[CreatureAttribute::STAMINA];
+	}
+
+	inline int32 getMindBase() {
+		return attributesBase[CreatureAttribute::MIND];
+	}
+
+	inline int32 getFocusBase() {
+		return attributesBase[CreatureAttribute::FOCUS];
+	}
+
+	inline int32 getWillpowerBase() {
+		return attributesBase[CreatureAttribute::WILLPOWER];
+	}
+
+	inline int32 getAttributeMax(uint8 attribute) {
+		return attributesMax[attribute];
+	}
+
+	inline int32 getHealthMax() {
+		return attributesMax[CreatureAttribute::HEALTH];
+	}
+
+	inline int32 getStrengthMax() {
+		return attributesMax[CreatureAttribute::STRENGTH];
+	}
+
+	inline int32 getConstitutionMax() {
+		return attributesMax[CreatureAttribute::CONSTITUTION];
+	}
+
+	inline int32 getActionMax() {
+		return attributesMax[CreatureAttribute::ACTION];
+	}
+
+	inline int32 getQuicknessMax() {
+		return attributesMax[CreatureAttribute::QUICKNESS];
+	}
+
+	inline int32 getStaminaMax() {
+		return attributesMax[CreatureAttribute::STAMINA];
+	}
+
+	inline int32 getMindMax() {
+		return attributesMax[CreatureAttribute::MIND];
+	}
+
+	inline int32 getFocusMax() {
+		return attributesMax[CreatureAttribute::FOCUS];
+	}
+
+	inline int32 getWillpowerMax() {
+		return attributesMax[CreatureAttribute::WILLPOWER];
+	}
+
+	inline int32 getAttributeWounds(uint8 attribute) {
+		return wounds[attribute];
+	}
+
+	inline int32 getHealthWounds() {
+		return wounds[CreatureAttribute::HEALTH];
+	}
+
+	inline int32 getStrengthWounds() {
+		return wounds[CreatureAttribute::STRENGTH];
+	}
+
+	inline int32 getConstitutionWounds() {
+		return wounds[CreatureAttribute::CONSTITUTION];
+	}
+
+	inline int32 getActionWounds() {
+		return wounds[CreatureAttribute::ACTION];
+	}
+
+	inline int32 getQuicknessWounds() {
+		return wounds[CreatureAttribute::QUICKNESS];
+	}
+
+	inline int32 getStaminaWounds() {
+		return wounds[CreatureAttribute::STAMINA];
+	}
+
+	inline int32 getMindWounds() {
+		return wounds[CreatureAttribute::MIND];
+	}
+
+	inline int32 getFocusWounds() {
+		return wounds[CreatureAttribute::FOCUS];
+	}
+
+	inline int32 getWillpowerWounds() {
+		return wounds[CreatureAttribute::WILLPOWER];
+	}
+
+	inline int32 getHealthEncumbrance() {
+		return encumbranceHealth;
+	}
+
+	inline int32 getActionEncumbrance() {
+		return encumbranceAction;
+	}
+
+	inline int32 getMindEncumbrance() {
+		return encumbranceMind;
+	}
+
+	inline uint32 getShockWounds() {
+		return shockWounds;
+	}
 
 	//State Getters
 	inline bool isInCombat() {
@@ -415,6 +688,10 @@ public:
 	}
 
 	//inline bool isInGuildWith(CreatureObject* creature);
+
+	inline bool isStationary() {
+		return stationary;
+	}
 };
 
 #endif /*CREATUREOBJECTIMPLEMENTATION_H_*/

@@ -45,7 +45,6 @@ which carries forward this exception.
 #ifndef PLAYERMANAGERIMPLEMENTATION_H_
 #define PLAYERMANAGERIMPLEMENTATION_H_
 
-#include "engine/engine.h"
 #include "PlayerManager.h"
 #include "../../ZoneProcessServerImplementation.h"
 

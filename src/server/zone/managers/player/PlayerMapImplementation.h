@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "system/lang.h"
 
 #include "PlayerMap.h"
-#include "../../objects/intangible/player/PlayerObject.h"
+#include "../../objects/tangible/creature/player/PlayerObject.h"
 
 class PlayerMapImplementation : public PlayerMapServant, private HashTable<String, PlayerObject*>, private HashTableIterator<String, PlayerObject*>, public Mutex {
 	int hash(const String& key) {

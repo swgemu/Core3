@@ -46,14 +46,16 @@ which carries forward this exception.
 #define SCENEOBJECTIMPLEMENTATION_H_
 
 #include "engine/engine.h"
+
+#include "../Quaternion.h"
 #include "../ZoneProcessServerImplementation.h"
-#include "events/UndeploySceneObjectEvent.h"
 #include "../Zone.h"
 #include "../ZoneClientSession.h"
-#include "../Quaternion.h"
 #include "SceneObject.h"
 #include "Container.h"
+#include "events/UndeploySceneObjectEvent.h"
 
+class CellObject;
 class PlayerObject;
 class ObjectMenuResponse;
 class SceneObjectImplementation : public SceneObjectServant, public QuadTreeEntry, public Container, public Logger {
@@ -162,8 +164,18 @@ public:
 		return (QuadTreeEntry*) this;
 	}
 
+	//Zone Insertion
+	virtual void insertToZone(Zone* zne);
+	virtual void insertToCell(CellObject* cell);
+
+	//Generic SceneObject Packets
+	virtual void close(ZoneClientSession* client);
+	virtual void create(ZoneClientSession* client);
+	virtual void destroy(ZoneClientSession* client);
+	virtual void link(ZoneClientSession* client, SceneObject* container);
+
 	//Sending of data to client
-	virtual void sendTo(PlayerObject* player, bool doclose = true);
+	virtual void sendTo(PlayerObject* player, bool close = true);
 	virtual void sendDestroyTo(PlayerObject* player);
 	virtual void sendRadialResponseTo(PlayerObject* player, ObjectMenuResponse* omr);
 	virtual void sendConversationStopTo(PlayerObject* player);
@@ -228,6 +240,18 @@ public:
 
 	inline void setStfName(const String& stfname) {
 		stfName = stfname;
+	}
+
+	inline void setObjectID(uint64 objectid) {
+		objectID = objectid;
+	}
+
+	inline void setObjectCRC(uint32 crc) {
+		objectCRC = crc;
+	}
+
+	inline void setObjectType(uint32 type) {
+		gameObjectType = type;
 	}
 
 	//Getters

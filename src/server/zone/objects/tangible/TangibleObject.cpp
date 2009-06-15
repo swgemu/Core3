@@ -36,12 +36,64 @@ void TangibleObject::setFactionPointsList(FactionPointsList* fplist) {
 		((TangibleObjectImplementation*) _impl)->setFactionPointsList(fplist);
 }
 
-void TangibleObject::getCustomizationString(String& appearance) {
+void TangibleObject::setOptionsBitmask(unsigned int bitmask) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addUnsignedIntParameter(bitmask);
+
+		method.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->setOptionsBitmask(bitmask);
+}
+
+void TangibleObject::setObjectCount(unsigned int count) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addUnsignedIntParameter(count);
+
+		method.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->setObjectCount(count);
+}
+
+void TangibleObject::setConditionDamage(float damage) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addFloatParameter(damage);
+
+		method.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->setConditionDamage(damage);
+}
+
+void TangibleObject::setConditionMax(float max) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addFloatParameter(max);
+
+		method.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->setConditionMax(max);
+}
+
+void TangibleObject::getCustomizationString(String& appearance) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
 		method.addAsciiParameter(appearance);
 
 		method.executeWithVoidReturn();
@@ -49,16 +101,100 @@ void TangibleObject::getCustomizationString(String& appearance) {
 		((TangibleObjectImplementation*) _impl)->getCustomizationString(appearance);
 }
 
+unsigned int TangibleObject::getPvpStatusBitmask() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getPvpStatusBitmask();
+}
+
 FactionPointsList* TangibleObject::getFactionPointsList() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 13);
 
 		return (FactionPointsList*) method.executeWithObjectReturn();
 	} else
 		return ((TangibleObjectImplementation*) _impl)->getFactionPointsList();
+}
+
+unsigned int TangibleObject::getFaction() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getFaction();
+}
+
+float TangibleObject::getConditionDamage() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getConditionDamage();
+}
+
+float TangibleObject::getConditionMax() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getConditionMax();
+}
+
+unsigned int TangibleObject::getOptionsBitmask() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getOptionsBitmask();
+}
+
+unsigned int TangibleObject::getObjectCount() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getObjectCount();
+}
+
+unsigned int TangibleObject::getMovementUpdateCounter() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getMovementUpdateCounter();
 }
 
 unsigned int TangibleObject::getNewMovementUpdateCounter(unsigned char count) {
@@ -66,7 +202,7 @@ unsigned int TangibleObject::getNewMovementUpdateCounter(unsigned char count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 20);
 		method.addUnsignedCharParameter(count);
 
 		return method.executeWithUnsignedIntReturn();
@@ -79,12 +215,24 @@ unsigned int TangibleObject::getNewDefenderUpdateCounter(unsigned char count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 21);
 		method.addUnsignedCharParameter(count);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
 		return ((TangibleObjectImplementation*) _impl)->getNewDefenderUpdateCounter(count);
+}
+
+unsigned char TangibleObject::getUnknownByte() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+
+		return method.executeWithUnsignedCharReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getUnknownByte();
 }
 
 /*
@@ -102,16 +250,52 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setFactionPointsList((FactionPointsList*) inv->getObjectParameter());
 		break;
 	case 7:
-		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__String_));
+		setOptionsBitmask(inv->getUnsignedIntParameter());
 		break;
 	case 8:
-		resp->insertLong(getFactionPointsList()->_getObjectID());
+		setObjectCount(inv->getUnsignedIntParameter());
 		break;
 	case 9:
-		resp->insertInt(getNewMovementUpdateCounter(inv->getUnsignedCharParameter()));
+		setConditionDamage(inv->getFloatParameter());
 		break;
 	case 10:
+		setConditionMax(inv->getFloatParameter());
+		break;
+	case 11:
+		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__String_));
+		break;
+	case 12:
+		resp->insertInt(getPvpStatusBitmask());
+		break;
+	case 13:
+		resp->insertLong(getFactionPointsList()->_getObjectID());
+		break;
+	case 14:
+		resp->insertInt(getFaction());
+		break;
+	case 15:
+		resp->insertFloat(getConditionDamage());
+		break;
+	case 16:
+		resp->insertFloat(getConditionMax());
+		break;
+	case 17:
+		resp->insertInt(getOptionsBitmask());
+		break;
+	case 18:
+		resp->insertInt(getObjectCount());
+		break;
+	case 19:
+		resp->insertInt(getMovementUpdateCounter());
+		break;
+	case 20:
+		resp->insertInt(getNewMovementUpdateCounter(inv->getUnsignedCharParameter()));
+		break;
+	case 21:
 		resp->insertInt(getNewDefenderUpdateCounter(inv->getUnsignedCharParameter()));
+		break;
+	case 22:
+		resp->insertByte(getUnknownByte());
 		break;
 	default:
 		return NULL;
@@ -124,12 +308,56 @@ void TangibleObjectAdapter::setFactionPointsList(FactionPointsList* fplist) {
 	return ((TangibleObjectImplementation*) impl)->setFactionPointsList(fplist);
 }
 
+void TangibleObjectAdapter::setOptionsBitmask(unsigned int bitmask) {
+	return ((TangibleObjectImplementation*) impl)->setOptionsBitmask(bitmask);
+}
+
+void TangibleObjectAdapter::setObjectCount(unsigned int count) {
+	return ((TangibleObjectImplementation*) impl)->setObjectCount(count);
+}
+
+void TangibleObjectAdapter::setConditionDamage(float damage) {
+	return ((TangibleObjectImplementation*) impl)->setConditionDamage(damage);
+}
+
+void TangibleObjectAdapter::setConditionMax(float max) {
+	return ((TangibleObjectImplementation*) impl)->setConditionMax(max);
+}
+
 void TangibleObjectAdapter::getCustomizationString(String& appearance) {
 	return ((TangibleObjectImplementation*) impl)->getCustomizationString(appearance);
 }
 
+unsigned int TangibleObjectAdapter::getPvpStatusBitmask() {
+	return ((TangibleObjectImplementation*) impl)->getPvpStatusBitmask();
+}
+
 FactionPointsList* TangibleObjectAdapter::getFactionPointsList() {
 	return ((TangibleObjectImplementation*) impl)->getFactionPointsList();
+}
+
+unsigned int TangibleObjectAdapter::getFaction() {
+	return ((TangibleObjectImplementation*) impl)->getFaction();
+}
+
+float TangibleObjectAdapter::getConditionDamage() {
+	return ((TangibleObjectImplementation*) impl)->getConditionDamage();
+}
+
+float TangibleObjectAdapter::getConditionMax() {
+	return ((TangibleObjectImplementation*) impl)->getConditionMax();
+}
+
+unsigned int TangibleObjectAdapter::getOptionsBitmask() {
+	return ((TangibleObjectImplementation*) impl)->getOptionsBitmask();
+}
+
+unsigned int TangibleObjectAdapter::getObjectCount() {
+	return ((TangibleObjectImplementation*) impl)->getObjectCount();
+}
+
+unsigned int TangibleObjectAdapter::getMovementUpdateCounter() {
+	return ((TangibleObjectImplementation*) impl)->getMovementUpdateCounter();
 }
 
 unsigned int TangibleObjectAdapter::getNewMovementUpdateCounter(unsigned char count) {
@@ -138,6 +366,10 @@ unsigned int TangibleObjectAdapter::getNewMovementUpdateCounter(unsigned char co
 
 unsigned int TangibleObjectAdapter::getNewDefenderUpdateCounter(unsigned char count) {
 	return ((TangibleObjectImplementation*) impl)->getNewDefenderUpdateCounter(count);
+}
+
+unsigned char TangibleObjectAdapter::getUnknownByte() {
+	return ((TangibleObjectImplementation*) impl)->getUnknownByte();
 }
 
 /*

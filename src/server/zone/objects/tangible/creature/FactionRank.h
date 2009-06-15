@@ -53,9 +53,11 @@ protected:
 	uint32 pointsCost;
 	uint32 pointsMax;
 	float conversionRatio;
+	uint8 rankIndex;
 
 public:
-	FactionRank(const String& title, uint32 cost, uint32 max, float ratio) : DistributedObject() {
+	FactionRank(uint8 index, const String& title, uint32 cost, uint32 max, float ratio) : DistributedObject() {
+		rankIndex = index;
 		rankTitle = title;
 		pointsCost = cost;
 		pointsMax = max;
@@ -78,25 +80,29 @@ public:
 	inline float getConversionRatio() {
 		return conversionRatio;
 	}
+
+	inline uint8 getRankIndex() {
+		return rankIndex;
+	}
 };
 
 static FactionRank* FactionRankList[16] = {
-	new FactionRank("", 0, 1000, 6.5f),
-	new FactionRank("private", 200, 1000, 6.5f),
-	new FactionRank("lance_corporal", 400, 8000, 5.0f),
-	new FactionRank("corporal", 800, 16000, 4.0f),
-	new FactionRank("staff_corporal", 1200, 24000, 4.0f),
-	new FactionRank("sergeant", 1600, 32000, 2.86f),
-	new FactionRank("staff_sergeant", 2000, 40000, 2.5f),
-	new FactionRank("master_sergeant", 2500, 50000, 2.3f),
-	new FactionRank("warrant_officer_2", 3000, 60000, 2.0f),
-	new FactionRank("warrant_officer_1", 3500, 70000, 1.8f),
-	new FactionRank("second_lieutenant", 4000, 80000, 1.67f),
-	new FactionRank("lieutenant", 5000, 100000, 1.54f),
-	new FactionRank("captain", 5000, 100000, 1.43f),
-	new FactionRank("major", 5500, 110000, 1.34f),
-	new FactionRank("lieutenant_colonel", 5500, 110000, 1.25f),
-	new FactionRank("colonel", 6000, 120000, 1.18f)
+	new FactionRank(0x00, "", 0, 1000, 6.5f),
+	new FactionRank(0x01, "private", 200, 1000, 6.5f),
+	new FactionRank(0x02, "lance_corporal", 400, 8000, 5.0f),
+	new FactionRank(0x03, "corporal", 800, 16000, 4.0f),
+	new FactionRank(0x04, "staff_corporal", 1200, 24000, 4.0f),
+	new FactionRank(0x05, "sergeant", 1600, 32000, 2.86f),
+	new FactionRank(0x06, "staff_sergeant", 2000, 40000, 2.5f),
+	new FactionRank(0x07, "master_sergeant", 2500, 50000, 2.3f),
+	new FactionRank(0x08, "warrant_officer_2", 3000, 60000, 2.0f),
+	new FactionRank(0x09, "warrant_officer_1", 3500, 70000, 1.8f),
+	new FactionRank(0x0A, "second_lieutenant", 4000, 80000, 1.67f),
+	new FactionRank(0x0B, "lieutenant", 5000, 100000, 1.54f),
+	new FactionRank(0x0C, "captain", 5000, 100000, 1.43f),
+	new FactionRank(0x0D, "major", 5500, 110000, 1.34f),
+	new FactionRank(0x0E, "lieutenant_colonel", 5500, 110000, 1.25f),
+	new FactionRank(0x0F, "colonel", 6000, 120000, 1.18f)
 };
 
 #endif /* FACTIONRANK_H_ */

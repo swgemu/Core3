@@ -47,18 +47,18 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/intangible/player/PlayerObject.h"
+#include "../../objects/intangible/player/PlayerDataObject.h"
 
 class PlayerObjectMessage9 : public BaseLineMessage {
 public:
-	PlayerObjectMessage9(PlayerObject* player)
+	PlayerObjectMessage9(PlayerDataObject* player)
 			: BaseLineMessage(player->getObjectID(), 0x504C4159, 9, 0x13) {
 		// certifications && skills
 		insertSkills(player);
 
 		// crafting states
-		insertInt(0);
-		insertInt(0);
+		insertInt(0); //Experimentation Flag
+		insertInt(0); //Crafting Stage
 
 		// Nearest crafting station
 		insertLong(0);
@@ -67,21 +67,28 @@ public:
 		insertDraftSchematics(player);
 
 		// crafting?
-		insertInt(0);
+		insertInt(0); //Experimentation Points
+		//This should get updated with the delta
 
 		// species data - what is this
-		insertInt(0);
+		insertInt(0); //Accomplishment Counter!?
 
 		// friends list
 		insertInt(0); //List size
 		insertInt(0); //Update Counter
+		//{
+		//A_STRING friend_name
+		//}
 
 		// ignore list
 		insertInt(0); //List Size
 		insertInt(0); //Update Counter
+		//{
+		//A_STRING ignore_name
+		//}
 
 		// language
-		insertInt(player->getLanguage());
+		insertInt(player->getLanguageID());
 
 		// stomach fillings
 		insertInt(player->getFoodFilling());
@@ -90,10 +97,10 @@ public:
 		insertInt(player->getDrinkFillingMax());
 
 		//
-		insertInt(0);
-		insertInt(0);
+		insertInt(0); //Current Consumable - not used.
+		insertInt(0); //Max Consumable - not used.
 
-		// waypoint list? ... Waypoints are sent in PLAY8
+		//Seems to be an unused waypoint list - waypoints are already sent in PLYO8
 		insertInt(0);
 		insertInt(0);
 
@@ -103,7 +110,7 @@ public:
 		setSize();
 	}
 
-	void insertDraftSchematics(PlayerObjectImplementation* play) {
+	void insertDraftSchematics(PlayerDataObject* play) {
 		//uint32 dsListSize = play->player->getDraftSchematicMapSize();
 		//uint32 dsUpdateCount = play->player->getDraftSchematicUpdateCount(0);
 
@@ -120,7 +127,10 @@ public:
 		//}
 	}
 
-	void insertSkills(PlayerObjectImplementation* play) {
+	void insertSkills(PlayerDataObject* play) {
+		insertInt(0);
+		insertInt(0);
+		/*
 		int size = play->player->getSkillAndCertificationSize();
 
 		insertInt(size);
@@ -129,6 +139,7 @@ public:
 		for (int i = 0; i < size; ++i) {
 			insertAscii(play->player->getSkillOrCertification(i));
 		}
+		*/
 	}
 
 };

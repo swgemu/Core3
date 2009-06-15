@@ -61,13 +61,17 @@ public:
 	}
 
 	void insertDefenders(TangibleObject* tano) {
+		insertInt(0);
+		insertInt(0);
+		/*
 		int size = tano->getDefenderListSize();
 
 		insertInt(size);
-		insertInt(tano->getDefenderUpdateCounter());
+		insertInt(tano->getUpdateCounterDefenders());
 
 		for (int i = 0; i < size; ++i)
 			insertLong(tano->getDefender(i)->getObjectID());
+			*/
 	}
 
 };

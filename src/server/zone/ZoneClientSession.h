@@ -19,6 +19,8 @@
 
 class ZoneServer;
 
+class PlayerDataObject;
+
 class PlayerObject;
 
 class ZoneClientSession : public DistributedObjectStub {
@@ -41,7 +43,11 @@ public:
 
 	void setPlayerObject(PlayerObject* player);
 
+	void setPlayerDataObject(PlayerDataObject* playerdata);
+
 	PlayerObject* getPlayerObject();
+
+	PlayerDataObject* getPlayerDataObject();
 
 	bool isAvailable();
 
@@ -83,7 +89,11 @@ public:
 
 	void setPlayerObject(PlayerObject* player);
 
+	void setPlayerDataObject(PlayerDataObject* playerdata);
+
 	PlayerObject* getPlayerObject();
+
+	PlayerDataObject* getPlayerDataObject();
 
 	bool isAvailable();
 

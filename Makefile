@@ -65,7 +65,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/intangible/draftschematic/DraftSchematicObject.idl \
 				server/zone/objects/intangible/manufactureschematic/ManufactureSchematicObject.idl \
 				server/zone/objects/intangible/mission/MissionObject.idl \
-				server/zone/objects/intangible/player/PlayerObject.idl \
+				server/zone/objects/intangible/player/PlayerDataObject.idl \
 				server/zone/objects/intangible/waypoint/WaypointObject.idl \
 				server/zone/objects/tangible/TangibleObject.idl \
 				server/zone/objects/tangible/building/BuildingObject.idl \
@@ -73,6 +73,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/component/ComponentObject.idl \
 				server/zone/objects/tangible/creature/CreatureObject.idl \
 				server/zone/objects/tangible/creature/npc/Creature.idl \
+				server/zone/objects/tangible/creature/player/PlayerObject.idl \
 				server/zone/objects/tangible/deed/DeedObject.idl \
 				server/zone/objects/tangible/instrument/InstrumentObject.idl \
 				server/zone/objects/tangible/installation/InstallationObject.idl \

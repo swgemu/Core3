@@ -23,6 +23,18 @@ InstrumentObject::InstrumentObject(DummyConstructorParameter* param) : TangibleO
 InstrumentObject::~InstrumentObject() {
 }
 
+unsigned int InstrumentObject::getInstrumentID() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((InstrumentObjectImplementation*) _impl)->getInstrumentID();
+}
+
 /*
  *	InstrumentObjectAdapter
  */
@@ -34,11 +46,18 @@ Packet* InstrumentObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		resp->insertInt(getInstrumentID());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+unsigned int InstrumentObjectAdapter::getInstrumentID() {
+	return ((InstrumentObjectImplementation*) impl)->getInstrumentID();
 }
 
 /*

@@ -47,22 +47,22 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/waypoint/WaypointObject.h"
-#include "../../objects/player/PlayerObjectImplementation.h"
+#include "../../objects/intangible/waypoint/WaypointObject.h"
+#include "../../objects/tangible/creature/player/PlayerObject.h"
 
 class PlayerObjectMessage8 : public BaseLineMessage {
 public:
-	PlayerObjectMessage8(PlayerObjectImplementation* play)
-			: BaseLineMessage(play->getObjectID(), 0x504C4159, 8, 0x07) {
+	PlayerObjectMessage8(PlayerDataObject* plyo)
+			: BaseLineMessage(plyo->getObjectID(), 0x504C4159, 8, 0x07) {
 		// experiences
-		insertExperiences(play);
+		insertExperiences(plyo);
 
 		// waypoints
-		insertWaypoints(play);
+		insertWaypoints(plyo);
 
 		// force bar stats
-		insertInt(play->getForcePower());
-		insertInt(play->getForcePowerMax());
+		insertInt(plyo->getForcePower());
+		insertInt(plyo->getForcePowerMax());
 
 		// padawan quests
 		insertInt(0);
@@ -83,25 +83,31 @@ public:
 		setSize();
 	}
 
-	void insertExperiences(PlayerObjectImplementation* play) {
-		int size = play->experienceList.size();
+	void insertExperiences(PlayerDataObject* plyo) {
+		insertInt(0);
+		insertInt(0);
+		/*
+		int size = plyo->experienceList.size();
 
 		insertInt(size);
-		insertInt(play->experienceListCount);
+		insertInt(plyo->experienceListCount);
 
 		play->experienceList.resetIterator();
-		while (play->experienceList.hasNext()) {
+		while (plyo->experienceList.hasNext()) {
 			String xpType;
 			int value;
-			play->experienceList.getNextKeyAndValue(xpType, value);
+			plyo->experienceList.getNextKeyAndValue(xpType, value);
 
 			insertByte(0);
 			insertAscii(xpType);
 			insertInt(value);
-		}
+		}*/
 	}
 
-	void insertWaypoints(PlayerObjectImplementation* play) {
+	void insertWaypoints(PlayerDataObject* plyo) {
+		insertInt(0);
+		insertInt(0);
+		/*
 		int size = play->waypointList.size();
 
 		insertInt(size);
@@ -126,6 +132,7 @@ public:
 			insertByte(wp->getWaypointType());
 			insertByte((uint8) wp->isActivated());
 		}
+		*/
 	}
 };
 

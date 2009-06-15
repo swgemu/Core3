@@ -42,22 +42,68 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "PlayerObjectImplementation.h"
-#include "../../tangible/creature/CreatureObject.h"
+#ifndef WAYPOINT_H_
+#define WAYPOINT_H_
 
-PlayerObjectImplementation::PlayerObjectImplementation(uint64 objectid, CreatureObject* linkedcreature)
-		: PlayerObjectServant(objectid, PLAYER) {
-	linkedCreature = linkedcreature;
-}
+#include "engine/engine.h"
 
-PlayerObjectImplementation::~PlayerObjectImplementation() {
+#include "WaypointObject.h"
+#include "../../tangible/creature/player/PlayerObject.h"
 
-}
+class Waypoint : public DistributedObject {
+protected:
+	float x;
+	float y;
+	float z;
 
-void PlayerObjectImplementation::sendMessage(BaseMessage* msg) {
+	String planetName;
 
-}
+public:
+	Waypoint(float fx, float fy, float fz, const String& planetname) {
+		x = fx;
+		y = fy;
+		z = fz;
 
-void PlayerObjectImplementation::sendMessage(StandaloneBaseMessage* msg) {
+		planetName = planetname;
+	}
 
-}
+	WaypointObject* createWaypointObject(PlayerObject* player) {
+		//TODO: Creates a new waypoint object resembling this data and assigns it to the player.
+	}
+
+	//Setters
+	inline void setPositionX(float fx) {
+		x = fx;
+	}
+
+	inline void setPositionY(float fy) {
+		y = fy;
+	}
+
+	inline void setPositionZ(float fz) {
+		z = fz;
+	}
+
+	inline void setPlanetName(const String& planetname) {
+		planetName = planetname;
+	}
+
+	//Getters
+	inline float getPositionX() {
+		return x;
+	}
+
+	inline float getPositionY() {
+		return y;
+	}
+
+	inline float getPositionZ() {
+		return z;
+	}
+
+	inline String& getPlanetName() {
+		return planetName;
+	}
+};
+
+#endif /* WAYPOINT_H_ */

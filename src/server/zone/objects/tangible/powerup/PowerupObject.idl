@@ -43,7 +43,7 @@ which carries forward this exception.
 */
 
 import "../TangibleObject";
-import "../../intangible/player/PlayerObject";
+import "../../tangible/creature/player/PlayerObject";
 import "../../SceneObject";
 
 interface PowerupObject implements TangibleObject {

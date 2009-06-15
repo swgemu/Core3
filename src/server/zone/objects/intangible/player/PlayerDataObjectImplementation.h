@@ -42,48 +42,52 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef PLAYEROBJECTIMPLEMENTATION_H_
-#define PLAYEROBJECTIMPLEMENTATION_H_
+#ifndef PLAYERDATAOBJECTIMPLEMENTATION_H_
+#define PLAYERDATAOBJECTIMPLEMENTATION_H_
 
-#include "PlayerObject.h"
+#include "PlayerDataObject.h"
+#include "FriendsList.h"
 #include "../../../ZoneClientSession.h"
+#include "../../tangible/creature/player/PlayerObject.h"
 
-class CreatureObject;
-class PlayerObjectImplementation : public PlayerObjectServant {
+class PlayerObject;
+class PlayerDataObjectImplementation : public PlayerDataObjectServant {
 protected:
 	ManagedReference<ZoneClientSession> zoneClient;
-	ManagedReference<CreatureObject> linkedCreature;
+	ManagedReference<PlayerObject> linkedPlayer;
 	//WaypointList* waypointList;
-	//FriendsList* friendsList;
-	//IgnoreList* ignoreList;
+	FriendsList* friendsList;
+	FriendsList* ignoreList;
+	//SkillsList* skillsList;
+	//DraftSchematicsList* draftSchematics;
+	//ExperienceList* experienceList;
 
-	String firstName;
-	//TODO: Should we even store lastName? I can't think of a time when it is needed seperate.
-	String lastName;
+	String currentTitle;
 
-	uint64 characterID;
+	uint32 forcePower;
+	uint32 forcePowerMax;
 
-	uint8 onlineStatus;
+	uint32 characterBitmask;
+	uint32 languageID;
+	uint32 fillingFood;
+	uint32 fillingFoodMax;
+	uint32 fillingDrink;
+	uint32 fillingDrinkMax;
+	uint32 jediState;
+
 	uint8 accessLevel;
 
 public:
-	static const uint8 ONLINE = 1;
-	static const uint8 OFFLINE = 2;
-	static const uint8 LINKDEAD = 3;
-	static const uint8 LOGGINGIN = 4;
-	static const uint8 LOGGINGOUT = 5;
-	static const uint8 LOADING = 6;
-
 	//Client side permissions - 0 = Player
 	static const uint8 CSR = 1;
 	static const uint8 DEVELOPER = 2;
 
 public:
-	PlayerObjectImplementation(uint64 objectid, CreatureObject* linkedcreature);
-	~PlayerObjectImplementation();
+	PlayerDataObjectImplementation(uint64 objectid);
+	~PlayerDataObjectImplementation();
 
-	virtual void sendMessage(BaseMessage* msg);
-	virtual void sendMessage(StandaloneBaseMessage* msg);
+	void sendTo(PlayerObject* player, bool close);
+	void sendToOwner();
 
 	//Setters
 	inline void setClient(ZoneClientSession* client) {
@@ -94,16 +98,48 @@ public:
 		accessLevel = level;
 	}
 
-	inline void setLinkedCreature(CreatureObject* creature) {
-		linkedCreature = creature;
+	inline void setLinkedPlayer(PlayerObject* player) {
+		linkedPlayer = player;
 	}
 
-	inline void setFirstName(const String& fname) {
-		firstName = fname;
+	inline void setCharacterBitmask(uint32 bitmask) {
+		characterBitmask = bitmask;
 	}
 
-	inline void setCharacterID(uint64 characterid) {
-		characterID = characterid;
+	inline void setCurrentTitle(const String& title) {
+		currentTitle = title;
+	}
+
+	inline void setForcePower(uint32 power) {
+		forcePower = power;
+	}
+
+	inline void setForcePowerMax(uint32 power) {
+		forcePowerMax = power;
+	}
+
+	inline void setFoodFilling(uint32 filling) {
+		fillingFood = filling;
+	}
+
+	inline void setFoodFillingMax(uint32 filling) {
+		fillingFoodMax = filling;
+	}
+
+	inline void setDrinkFilling(uint32 filling) {
+		fillingDrink = filling;
+	}
+
+	inline void setDrinkFillingMax(uint32 filling) {
+		fillingDrinkMax = filling;
+	}
+
+	inline void setLanguageID(uint32 id) {
+		languageID = id;
+	}
+
+	inline void setJediState(uint32 jedistate) {
+		jediState = jedistate;
 	}
 
 	//Getters
@@ -115,40 +151,48 @@ public:
 		return accessLevel;
 	}
 
-	inline CreatureObject* getLinkedCreature() {
-		return linkedCreature.get();
+	inline PlayerObject* getLinkedPlayer() {
+		return linkedPlayer.get();
 	}
 
-	inline String& getFirstName() {
-		return firstName;
+	inline uint32 getCharacterBitmask() {
+		return characterBitmask;
 	}
 
-	inline uint64 getCharacterID() {
-		return characterID;
+	inline String& getCurrentTitle() {
+		return currentTitle;
 	}
 
-	inline bool isOnline() {
-		return (onlineStatus != OFFLINE && onlineStatus != LINKDEAD);
+	inline uint32 getForcePower() {
+		return forcePower;
 	}
 
-	inline bool isOffline() {
-		return (onlineStatus == OFFLINE);
+	inline uint32 getForcePowerMax() {
+		return forcePowerMax;
 	}
 
-	inline bool isLoading() {
-		return (onlineStatus == LOADING || onlineStatus == LOGGINGIN);
+	inline uint32 getFoodFilling() {
+		return fillingFood;
 	}
 
-	inline bool isLinkDead() {
-		return (onlineStatus == LINKDEAD);
+	inline uint32 getFoodFillingMax() {
+		return fillingFoodMax;
 	}
 
-	inline bool isLoggingIn() {
-		return (onlineStatus == LOGGINGIN);
+	inline uint32 getDrinkFilling() {
+		return fillingDrink;
 	}
 
-	inline bool isLoggingOut() {
-		return (onlineStatus == LOGGINGOUT);
+	inline uint32 getDrinkFillingMax() {
+		return fillingDrinkMax;
+	}
+
+	inline uint32 getLanguageID() {
+		return languageID;
+	}
+
+	inline uint32 getJediState() {
+		return jediState;
 	}
 
 	inline bool isPrivileged() {
@@ -156,4 +200,4 @@ public:
 	}
 };
 
-#endif /*PLAYEROBJECTIMPLEMENTATION_H_*/
+#endif /*PLAYERDATAOBJECTIMPLEMENTATION_H_*/

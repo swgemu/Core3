@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../../db/ServerDatabase.h"
 
-#include "Species.h"
+#include "../../zone/objects/tangible/creature/Species.h"
 
 class CharacterList {
 	ResultSet* characters;
@@ -89,13 +89,12 @@ public:
 	}
 
 	uint32 getCharacterRaceCRC() {
-		return String(Race[characters->getUnsignedInt(7)]).hashCode();
+		return SpeciesList[characters->getUnsignedInt(7)]->getSpeciesCRC();
 	}
 
 	inline int size() {
 		return characters->size();
 	}
-
 };
 
 #endif /*CHARACTERLIST_H_*/

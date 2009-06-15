@@ -43,23 +43,52 @@ which carries forward this exception.
 */
 
 #include "CreatureObjectImplementation.h"
+#include "player/PlayerObject.h"
 
 #include "../../../packets/creature/CreatureObjectDeltaMessage6.h"
+#include "../../../packets/creature/CreatureObjectMessage1.h"
+#include "../../../packets/creature/CreatureObjectMessage3.h"
+#include "../../../packets/creature/CreatureObjectMessage4.h"
+#include "../../../packets/creature/CreatureObjectMessage6.h"
+#include "../../../packets/creature/UpdatePVPStatusMessage.h"
+#include "../../../packets/zone/CmdStartScene.h"
+#include "../../../packets/zone/ParametersMessage.h"
+#include "../../../packets/zone/unkByteFlag.h"
 
 CreatureObjectImplementation::CreatureObjectImplementation(uint64 objectid, int type)
 		: CreatureObjectServant(objectid, type) {
 	complexity = 10.0f;
 	volume = 0x0085E5CA; //TODO: Why is it this value?
 
+	templatePath = "";
+	performanceAnimation = "";
+
 	height = 1.0f;
 	pvpStatusBitmask = 0x10;
 	factionRank = FactionRankList[0];
+	species = SpeciesList[0];
 
 	speed = DEFAULT_SPEED;
 	turnRadius = 1.0f;
 	terrainNegotiation = 1.0f;
 	acceleration = DEFAULT_ACCEL;
 	deceleration = 1.0f;
+
+	statesBitmask = 0;
+	listeningToID = 0;
+	updateCounterGroupInvite = 0;
+	groupInviterID = 0;
+
+	level = 0;
+
+	updateCounterAction = 0;
+	updateCounterHAM = 0;
+	updateCounterHAMMax = 0;
+	updateCounterHAMBase = 0;
+	updateCounterWounds = 0;
+	updateCounterEncumbrance = 0;
+	updateCounterPerformance = 0;
+	updateCounterEquipment = 0;
 
 	attributes[CreatureAttribute::HEALTH] = 1000;
 	attributes[CreatureAttribute::STRENGTH] = 1000;
@@ -70,11 +99,120 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 objectid, int 
 	attributes[CreatureAttribute::MIND] = 1000;
 	attributes[CreatureAttribute::FOCUS] = 1000;
 	attributes[CreatureAttribute::WILLPOWER] = 1000;
+
+	attributesBase[CreatureAttribute::HEALTH] = 1000;
+	attributesBase[CreatureAttribute::STRENGTH] = 1000;
+	attributesBase[CreatureAttribute::CONSTITUTION] = 1000;
+	attributesBase[CreatureAttribute::ACTION] = 1000;
+	attributesBase[CreatureAttribute::QUICKNESS] = 1000;
+	attributesBase[CreatureAttribute::STAMINA] = 1000;
+	attributesBase[CreatureAttribute::MIND] = 1000;
+	attributesBase[CreatureAttribute::FOCUS] = 1000;
+	attributesBase[CreatureAttribute::WILLPOWER] = 1000;
+
+	attributesMax[CreatureAttribute::HEALTH] = 1000;
+	attributesMax[CreatureAttribute::STRENGTH] = 1000;
+	attributesMax[CreatureAttribute::CONSTITUTION] = 1000;
+	attributesMax[CreatureAttribute::ACTION] = 1000;
+	attributesMax[CreatureAttribute::QUICKNESS] = 1000;
+	attributesMax[CreatureAttribute::STAMINA] = 1000;
+	attributesMax[CreatureAttribute::MIND] = 1000;
+	attributesMax[CreatureAttribute::FOCUS] = 1000;
+	attributesMax[CreatureAttribute::WILLPOWER] = 1000;
+
+	wounds[CreatureAttribute::HEALTH] = 0;
+	wounds[CreatureAttribute::STRENGTH] = 0;
+	wounds[CreatureAttribute::CONSTITUTION] = 0;
+	wounds[CreatureAttribute::ACTION] = 0;
+	wounds[CreatureAttribute::QUICKNESS] = 0;
+	wounds[CreatureAttribute::STAMINA] = 0;
+	wounds[CreatureAttribute::MIND] = 0;
+	wounds[CreatureAttribute::FOCUS] = 0;
+	wounds[CreatureAttribute::WILLPOWER] = 0;
+
+	encumbranceHealth = 0;
+	encumbranceAction = 0;
+	encumbranceMind = 0;
+
+	shockWounds = 0;
+
+	posture = CreaturePosture::UPRIGHT;
+
+	moodID = 0;
+	moodName = "";
+
+	stationary = false;
 }
 
 CreatureObjectImplementation::~CreatureObjectImplementation() {
 }
 
+
+//Sending of packets
+
+/**
+ * This method sends this object to the specified player's client.
+ * \param player The player whos client will be receiving this objects packet data.
+ * \param close Should we close the scene?
+ */
+void CreatureObjectImplementation::sendTo(PlayerObject* player, bool close) {
+	ReferenceSlot<ZoneClientSession> client = player->getClient();
+
+	if (client == NULL)
+		return;
+
+	SceneObjectImplementation::create(client);
+
+	//if (parent != NULL)
+		//TODO: Link the object to its parent
+
+	if (player == _this) {
+		BaseMessage* creo1 = new CreatureObjectMessage1(_this);
+		client->sendMessage(creo1);
+	}
+
+	BaseMessage* creo3 = new CreatureObjectMessage3(_this);
+	client->sendMessage(creo3);
+
+	if (player == _this) {
+		BaseMessage* creo4 = new CreatureObjectMessage4(_this);
+		client->sendMessage(creo4);
+	}
+
+	BaseMessage* creo6 = new CreatureObjectMessage6(_this);
+	client->sendMessage(creo6);
+
+	BaseMessage* upvps = new UpdatePVPStatusMessage(_this);
+	client->sendMessage(upvps);
+
+	if (close)
+		SceneObjectImplementation::close(client);
+}
+
+/**
+ * This methods sends this object to its player owner.
+ * \param player The player owner requesting the packets.
+ * \param close Should we close the scene?
+ */
+void CreatureObjectImplementation::sendToOwner(PlayerObject* player, bool close) {
+	ReferenceSlot<ZoneClientSession> client = player->getClient();
+
+	if (client == NULL)
+		return;
+
+	BaseMessage* unkbf = new unkByteFlag();
+	client->sendMessage(unkbf);
+
+	BaseMessage* cmdss = new CmdStartScene(_this);
+	client->sendMessage(cmdss);
+
+	BaseMessage* param = new ParametersMessage();
+	client->sendMessage(param);
+
+	//TODO: Building sendto
+
+	sendTo(player, close);
+}
 
 
 /*************************************************************************

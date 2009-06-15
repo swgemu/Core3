@@ -46,9 +46,8 @@ which carries forward this exception.
 #define CREATUREOBJECTMESSAGE6_H_
 
 #include "../../packets/BaseLineMessage.h"
-
+#include "../../packets/tangible/TangibleObjectMessage6.h"
 #include "../../objects/tangible/creature/CreatureObject.h"
-#include "../tangible/TangibleObjectMessage6.h"
 
 class CreatureObjectMessage6 : public TangibleObjectMessage6 {
 public:
@@ -59,14 +58,14 @@ public:
 
 		insertAscii(creo->getPerformanceAnimation());
 
-		insertAscii(creo->getMoodStr());
+		insertAscii(creo->getMoodName());
 
 		insertLong(creo->getWeaponID());
 
 		insertLong(creo->getGroupID());
 
 		insertLong(creo->getGroupInviterID());
-		insertLong(creo->getGroupInviteCounter());
+		insertLong(creo->getUpdateCounterGroupInvite());
 
 		insertInt(creo->getGuildID());
 		//0x50, 0xC3, 0x00, 0x00,   // #08
@@ -75,12 +74,12 @@ public:
 
 		insertByte(creo->getMoodID());
 
-		insertInt(creo->getPerformanceCounter()); //might be switched
+		insertInt(creo->getUpdateCounterPerformance()); //might be switched
 
 		insertInt(creo->getInstrumentID()); //might be switched
 
 		insertInt(9);
-		insertInt(creo->getHAMUpdateCounter());
+		insertInt(creo->getUpdateCounterHAM());
 		insertInt(creo->getHealth());
 		insertInt(creo->getStrength());
 		insertInt(creo->getConstitution());
@@ -92,7 +91,7 @@ public:
 		insertInt(creo->getWillpower());
 
 		insertInt(9);
-		insertInt(creo->getHAMMaxUpdateCounter());
+		insertInt(creo->getUpdateCounterHAMMax());
 		insertInt(creo->getHealthMax());
 		insertInt(creo->getStrengthMax());
 		insertInt(creo->getConstitutionMax());
@@ -119,14 +118,9 @@ public:
 	*/
 
 
-		insertAscii(creo->getTemplateString());
+		insertAscii(creo->getTemplatePath());
 
-		if (creo->isFrozen() == true) {
-			insertByte(1);
-		} else {
-			insertByte(0);
-		}
-
+		insertByte((uint8) creo->isStationary());
 
 		setSize();
 	}

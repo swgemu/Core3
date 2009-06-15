@@ -15,6 +15,8 @@ class InstrumentObject : public TangibleObject {
 public:
 	InstrumentObject(unsigned long long objectid);
 
+	unsigned int getInstrumentID();
+
 protected:
 	InstrumentObject(DummyConstructorParameter* param);
 
@@ -30,6 +32,8 @@ public:
 	InstrumentObjectAdapter(InstrumentObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	unsigned int getInstrumentID();
 
 };
 

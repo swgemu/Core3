@@ -44,11 +44,11 @@ which carries forward this exception.
 
 #include "ClientCreateCharacter.h"
 #include "../../objects/tangible/creature/CreatureObject.h"
+#include "../../objects/tangible/creature/Species.h"
 
 ClientCreateCharacter::ClientCreateCharacter(const UnicodeString& name) {
-	//TODO: What is the purpose of this? Do we ever use this?
 	insertShort(12);
-	insertInt(0xB97F3074);
+	insertInt(0xB97F3074); //ClientCreateCharacter
 
 	insertAscii("");
 	insertUnicode(name);
@@ -63,16 +63,16 @@ ClientCreateCharacter::ClientCreateCharacter(const UnicodeString& name) {
 	insertByte(0);
 }
 
-void ClientCreateCharacter::parse(Packet* pack, PlayerObject* player) {
+bool ClientCreateCharacter::parse(Packet* pack, PlayerObject* player) {
 	String customization;
 	pack->parseAscii(customization);
 
 	//player->setCustomizationString(customization);
-	CreatureObject* playercreature = player->getLinkedCreature();
 
 	UnicodeString characterName;
 	pack->parseUnicode(characterName); //get UnicodeString name
-	playercreature->setCustomName(characterName);
+
+	player->setCustomName(characterName);
 
 	//Split name into first and last tokens.
 	int idx = characterName.indexOf(' ');
@@ -86,18 +86,16 @@ void ClientCreateCharacter::parse(Packet* pack, PlayerObject* player) {
 
 	String racefile;
 	pack->parseAscii(racefile);
-	//player->setRaceFileName(racefile);
 
-	int raceid = Races::getRaceID(racefile);
-	//player->setRaceID(raceid);
-	//player->setRaceName(Races::getRace(raceid));
-	//player->setStfName(Races::getSpecies(raceid));
-	//player->setGender(Races::getGender(raceid));
-
-	//player->makeCharacterMask();
+	Species* species = SpeciesList[Species::getSpeciesID(racefile)];
+	player->setSpecies(species);
+	player->setStfName(species->getSpeciesName());
+	player->setObjectCRC(species->getSpeciesCRC());
 
 	String location;
 	pack->parseAscii(location);
+
+	//Players are no longer started strictly at bestine, but on the tutorial station.
 	//player->setStartingLocation(location);
 
 	String hairobj;
@@ -119,20 +117,19 @@ void ClientCreateCharacter::parse(Packet* pack, PlayerObject* player) {
 
 	String profession;
 	pack->parseAscii(profession);
+	System::out << "Starting profession is " << profession << endl;
 	//player->setStartingProfession(profession);
 
 	pack->shiftOffset(1); //move past some unknown byte
 
 	float height = pack->parseFloat();
-	if (height < 0.7 || height > 1.5)
-		height = 1;
-
-	playercreature->setHeight(height);
+	//Restrict players height to between .7 and 1.5.
+	player->setHeight(MIN(MAX(0.7f, height), 1.5f));
 
 	UnicodeString bio;
-	pack->parseUnicode(bio); //get the biography.
-	//player->setBiography(bio);
+	pack->parseUnicode(bio); //Players biography made at character creation.
+	player->setBiography(bio.toString());
 
-	uint8 tutflag = pack->parseByte(); //tutorial bool.
-	//TODO: We need to do something to signify that they decided to watch the tutorial or not lol.
+	uint8 tutflag = pack->parseByte(); //Does the player wish to see the entire tutorial?
+	return tutflag;
 }

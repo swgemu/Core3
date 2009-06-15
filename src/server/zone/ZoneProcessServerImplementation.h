@@ -65,6 +65,7 @@ class ChatManager;
 class MissionManager;
 
 // Static managers
+class CommandQueueManager;
 class CombatManager;
 class ProfessionManager;
 class SkillManager;
@@ -89,6 +90,7 @@ class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
 	GroupManager* groupManager;
 	//SuiManager* suiManager;
 	NameManager* nameManager;
+	CommandQueueManager* commandQueueManager;
 
 public:
 	ZoneProcessServerImplementation(ZoneServer* serv, int processingThreads);
@@ -168,6 +170,10 @@ public:
 
 	inline NameManager* getNameManager() {
 		return nameManager;
+	}
+
+	inline CommandQueueManager* getCommandQueueManager() {
+		return commandQueueManager;
 	}
 };
 

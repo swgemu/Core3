@@ -47,16 +47,16 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/player/PlayerObject.h"
+#include "../../objects/intangible/player/PlayerDataObject.h"
 
 class PlayerObjectMessage6 : public BaseLineMessage {
 public:
-	PlayerObjectMessage6(PlayerObject* play)
+	PlayerObjectMessage6(PlayerDataObject* play)
 			: BaseLineMessage(play->getObjectID(), 0x504C4159, 6, 0x03) {
 
 		insertInt(0);
 
-		insertByte(play->getAdminLevel());  //Developer/CSR Flag
+		insertByte(play->getAccessLevel());  //Developer/CSR Flag
 
 		setSize();
 	}

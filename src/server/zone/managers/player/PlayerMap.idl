@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../../objects/intangible/player/PlayerObject";
+import "../../objects/tangible/creature/player/PlayerObject";
 
 interface PlayerMap {
 	PlayerMap(int initsize) {

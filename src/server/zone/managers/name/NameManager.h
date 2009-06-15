@@ -66,14 +66,19 @@ public:
 
 class NameManagerResult {
 public:
-	static const uint8 DECLINED_EMPTY = 0;
-	static const uint8 DECLINED_DEVELOPER = 1;
-	static const uint8 DECLINED_FICT_RESERVED = 2;
-	static const uint8 DECLINED_PROFANE = 3;
-	static const uint8 DECLINED_RACE_INAPP = 4;
-	static const uint8 DECLINED_SYNTAX = 5;
-	static const uint8 DECLINED_RESERVED = 6;
-	static const uint8 ACCEPTED	= 7;
+	static const uint8 APPROVED = 0;
+	static const uint8 DECLINED_EMPTY = 1;
+	static const uint8 DECLINED_DEVELOPER = 2;
+	static const uint8 DECLINED_FICT_RESERVED = 3;
+	static const uint8 DECLINED_PROFANE = 4;
+	static const uint8 DECLINED_RACE_INAPP = 5;
+	static const uint8 DECLINED_SYNTAX = 6;
+	static const uint8 DECLINED_RESERVED = 7;
+	static const uint8 DECLINED_INTERNAL = 8;
+	static const uint8 DECLINED_IN_USE = 9;
+	static const uint8 DECLINED_TOO_FAST = 10;
+
+	static const char* ResultNames[11];
 };
 
 class NameManager :  public Logger {
@@ -111,6 +116,7 @@ public:
 
 	int validateName(CreatureObject * obj);
 	int validateName(const String& name, const String& species);
+	uint8 validatePlayerName(ZoneClientSession* client);
 
 	const String makeCreatureName(bool surname = true);
 

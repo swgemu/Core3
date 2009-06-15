@@ -49,6 +49,21 @@ TangibleObjectImplementation::TangibleObjectImplementation(uint64 objectid, int 
 		: TangibleObjectServant(objectid, type) {
 
 	factionPointsList = new FactionPointsList();
+	faction = 0;
+	pvpStatusBitmask = 0x00;
+
+	customizationString = new CustomizationVariables();
+
+	updateCounterMovement = 0;
+	updateCounterDefenders = 0;
+
+	optionsBitmask = 0;
+	objectCount = 0;
+
+	conditionDamage = 0;
+	conditionMax = 100;
+
+	unknownByte = 0;
 }
 
 TangibleObjectImplementation::~TangibleObjectImplementation() {

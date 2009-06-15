@@ -47,19 +47,18 @@ which carries forward this exception.
 
 #include "../../packets/BaseLineMessage.h"
 
-#include "../../objects/creature/CreatureObjectImplementation.h"
+#include "../../objects/tangible/creature/CreatureObject.h"
 
 class CreatureObjectMessage4 : public BaseLineMessage {
 public:
-	CreatureObjectMessage4(CreatureObjectImplementation* creo)
+	CreatureObjectMessage4(CreatureObject* creo)
 			: BaseLineMessage(creo->getObjectID(), 0x4352454F, 4, 0x0E) {
-		//
-		insertFloat(1); //Unknown
-		insertFloat(1); //Unknown
+		insertFloat(1); //Unknown MovementRatio?
+		insertFloat(1); //Unknown MovementRatio?
 
 		//Encumbrances
 		insertInt(3); //List Size
-		insertInt(creo->getEncumbranceUpdateCounter()); //Update Counter
+		insertInt(creo->getUpdateCounterEncumbrance()); //Update Counter
 		insertInt(creo->getHealthEncumbrance()); //Health Encumbrance
 		insertInt(creo->getActionEncumbrance()); //Action Encumbrance
 		insertInt(creo->getMindEncumbrance());   //Mind Encumbrance
@@ -68,10 +67,10 @@ public:
 		insertSkillMods(creo);
 
 		//
-		insertFloat(1); //Unknown
-		insertFloat(1); //Unknown
+		insertFloat(1); //Unknown AccellerationRatio?
+		insertFloat(1); //Unknown AccellerationRatio?
 
-		insertLong(creo->getListenID()); //Listening to ID
+		insertLong(creo->getListeningToID()); //Listening to ID
 
 		insertFloat(creo->getSpeed()); //Speed
 
@@ -84,14 +83,21 @@ public:
 		insertFloat(creo->getAcceleration()); //Acceleration
 		insertFloat(creo->getDeceleration()); //Deceleration
 
-		insertInt(0); //Unknown
-		insertInt(0); //Unknown
+		insertInt(0); //Unknown ListSize for ?
+		insertInt(0); //Unknown UpdateCounter for ?
+		//{
+		//insertLong(0); //Unknown
+		//}
 
 		setSize();
 	}
 
 	// TODO: this needs to be cleaner for dealing with values
-	void insertSkillMods(CreatureObjectImplementation* creo) {
+	void insertSkillMods(CreatureObject* creo) {
+		insertInt(0);
+		insertInt(0);
+
+		/*
 		String skillmod;
 		int value;
 
@@ -108,7 +114,7 @@ public:
 			insertInt(value + creo->creatureSkillModBonus.get(skillmod));
 
 			insertInt(0);
-		}
+		}*/
 	}
 };
 

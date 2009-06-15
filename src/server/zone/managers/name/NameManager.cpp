@@ -49,7 +49,20 @@ which carries forward this exception.
 
 #include "../../ZoneServer.h"
 #include "../../ZoneClientSession.h"
-//#include "../../objects/tangible/creature/player/Races.h"
+
+const char* NameManagerResult::ResultNames[11] = {
+		"name_approved",
+		"name_declined_empty",
+		"name_declined_developer",
+		"name_declined_fictionally_reserved",
+		"name_declined_profane",
+		"name_declined_racially_inappropriate",
+		"name_declined_syntax",
+		"name_declined_reserved",
+		"name_declined_internal_error",
+		"name_declined_in_use",
+		"name_declined_too_fast"
+};
 
 NameManager::NameManager(ZoneProcessServerImplementation* serv) : Logger("NameManager") {
 	server = serv;
@@ -210,7 +223,7 @@ int NameManager::validateName(const String& name, const String& species) {
 			return NameManagerResult::DECLINED_RACE_INAPP;
 	}
 
-	return NameManagerResult::ACCEPTED;
+	return NameManagerResult::APPROVED;
 }
 
 const String NameManager::makeCreatureName(bool surname) {
@@ -559,3 +572,6 @@ inline void NameManager::addSuffix(char* name, int location) {
 	}
 }
 
+uint8 NameManager::validatePlayerName(ZoneClientSession* client) {
+	return 0;
+}

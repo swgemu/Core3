@@ -8,7 +8,7 @@
 
 #include "../TangibleObject.h"
 
-#include "../../intangible/player/PlayerObject.h"
+#include "../../tangible/creature/player/PlayerObject.h"
 
 #include "../../SceneObject.h"
 

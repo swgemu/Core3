@@ -145,13 +145,37 @@ public:
 		factionPointsList = fplist;
 	}
 
+	inline void setOptionsBitmask(uint32 bitmask) {
+		optionsBitmask = bitmask;
+	}
+
+	inline void setObjectCount(uint32 count) {
+		objectCount = count;
+	}
+
+	inline void setConditionDamage(float damage) {
+		conditionDamage = damage;
+	}
+
+	inline void setConditionMax(float max) {
+		conditionMax = max;
+	}
+
 	//Getters
 	inline void getCustomizationString(String& appearance) {
 		customizationString->toString(appearance);
 	}
 
+	inline uint32 getPvpStatusBitmask() {
+		return pvpStatusBitmask;
+	}
+
 	inline FactionPointsList* getFactionPointsList() {
 		return factionPointsList;
+	}
+
+	inline uint32 getFaction() {
+		return faction;
 	}
 
 	inline uint32 getOptionsBitmask() {
@@ -169,6 +193,10 @@ public:
 
 	inline float getConditionMax() {
 		return conditionMax;
+	}
+
+	inline uint32 getMovementUpdateCounter() {
+		return updateCounterMovement;
 	}
 
 	//TODO: Figure out if this byte has any significance.

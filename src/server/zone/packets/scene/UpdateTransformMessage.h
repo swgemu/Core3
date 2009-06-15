@@ -47,33 +47,34 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../objects/scene/SceneObject.h"
+#include "../../objects/tangible/TangibleObject.h"
 
 class UpdateTransformMessage : public BaseMessage {
 public:
-	UpdateTransformMessage(SceneObject* scno) : BaseMessage(50) {
+	UpdateTransformMessage(TangibleObject* tano) : BaseMessage(50) {
 		insertShort(0x08);
 		insertInt(0x1B24F808);
-	    insertLong(scno->getObjectID());
+	    insertLong(tano->getObjectID());
 
 		// add coordinates
-		insertSignedShort((int16) (scno->getPositionX() * 4));
-		insertSignedShort((int16) (scno->getPositionZ() * 4));
-		insertSignedShort((int16) (scno->getPositionY() * 4));
+		insertSignedShort((int16) (tano->getPositionX() * 4));
+		insertSignedShort((int16) (tano->getPositionZ() * 4));
+		insertSignedShort((int16) (tano->getPositionY() * 4));
 
 		// add movement counter
-		insertInt(scno->getMovementCounter());
+		insertInt(tano->getMovementUpdateCounter());
 
 		insertByte(0); // unknown
 
 		// add direction
-		insertByte(scno->getDirectionAngle());
+		//insertByte(tano->getDirectionAngle());
+		insertByte(0x00);
 	}
 
-	UpdateTransformMessage(SceneObject* scno, float posX, float posZ, float posY) : BaseMessage(50) {
+	UpdateTransformMessage(TangibleObject* tano, float posX, float posZ, float posY) : BaseMessage(50) {
 		insertShort(0x08);
 		insertInt(0x1B24F808);
-		insertLong(scno->getObjectID());
+		insertLong(tano->getObjectID());
 
 		// add coordinates
 		insertSignedShort((int16) (posX * 4));
@@ -81,12 +82,13 @@ public:
 		insertSignedShort((int16) (posY * 4));
 
 		// add movement counter
-		insertInt(scno->getMovementCounter());
+		insertInt(tano->getMovementUpdateCounter());
 
 		insertByte(0); // unknown
 
 		// add direction
-		insertByte(scno->getDirectionAngle());
+		//insertByte(tano->getDirectionAngle());
+		insertByte(0x00);
 	}
 
 	static void parse(Packet* pack, SceneObject* scno) {

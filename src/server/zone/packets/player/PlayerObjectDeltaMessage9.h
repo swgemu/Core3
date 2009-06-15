@@ -47,8 +47,7 @@ which carries forward this exception.
 
 #include "../DeltaMessage.h"
 
-#include "../../objects/intangible/player/PlayerObject.h"
-#include "../../objects/tangible/creature/CreatureObject.h"
+#include "../../objects/intangible/player/PlayerDataObject.h"
 
 #include "../../objects/intangible/draftschematic/DraftSchematicObject.h"
 
@@ -56,12 +55,12 @@ which carries forward this exception.
 //#include "../../objects/player/IgnoreList.h"
 
 class PlayerObjectDeltaMessage9 : public DeltaMessage {
-	PlayerObject* play;
+	PlayerDataObject* plyo;
 
 public:
-	PlayerObjectDeltaMessage9(PlayerObject* pl)
+	PlayerObjectDeltaMessage9(PlayerDataObject* pl)
 			: DeltaMessage(pl->getObjectID(), 0x504C4159, 9) {
-		play = pl;
+		plyo = pl;
 	}
 
 	void startSkillListUpdate(int skillsToUpdate) {

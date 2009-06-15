@@ -49,7 +49,8 @@ include "system/net/Socket";
 include "system/net/SocketAddress";
 
 import "ZoneServer";
-import "objects/intangible/player/PlayerObject";
+import "objects/intangible/player/PlayerDataObject";
+import "objects/tangible/creature/player/PlayerObject";
 
 interface ZoneClientSession {
 	ZoneClientSession(DatagramServiceThread server, Socket sock, SocketAddress addr) {
@@ -68,11 +69,13 @@ interface ZoneClientSession {
 
 	void info(const String msg, boolean foredLog = false);
 
-	// setters and getters
+	//Setters
 	void setPlayerObject(PlayerObject player);
+	void setPlayerDataObject(PlayerDataObject playerdata);
 	
+	//Getters
 	PlayerObject getPlayerObject();
-
+	PlayerDataObject getPlayerDataObject();
 	boolean isAvailable();
 	
 	String getAddress();	

@@ -43,16 +43,21 @@ which carries forward this exception.
 */
 
 include "FactionRank";
+//include "Species";
 
+import "player/PlayerObject";
 import "../TangibleObject";
 import "../../SceneObject";
 import "../../universe/group/GroupObject";
 import "../../universe/guild/GuildObject";
+import "Species";
 
 interface CreatureObject implements TangibleObject {
 	CreatureObject(unsigned long objectid, int type = 0x400) {
 		super(objectid, type);
 	}
+	
+	void sendTo(PlayerObject player, boolean close = true);
 	
 	void updateTargetObject(unsigned long targetid, boolean updateclients = true);
 	void updateTargetObject(SceneObject target, boolean updateclients = true);
@@ -60,12 +65,14 @@ interface CreatureObject implements TangibleObject {
 	//Setters
 	void setLastMovementStamp(unsigned int timestamp);
 	void setMovementCounter(unsigned int counter);
+	void setLinkedCreature(CreatureObject creature);
 	void setHairObject(TangibleObject hair);
 	void setMoodID(unsigned char moodid);
 	void setBankCredits(unsigned int credits);
 	void setCashCredits(unsigned int credits);
 	void setHeight(float value);
 	void setFactionRank(FactionRank rank);
+	void setSpecies(Species spec);
 	void setGroupObject(GroupObject groupobject);
 	void setGuildObject(GuildObject guildobject);
 	
@@ -73,16 +80,87 @@ interface CreatureObject implements TangibleObject {
 	GroupObject getGroupObject();
 	GuildObject getGuildObject();
 	unsigned int getLastMovementStamp();
+	CreatureObject getLinkedCreature();
 	TangibleObject getHairObject();
+	unsigned long getWeaponID();
+	unsigned long getGroupID();
+	unsigned long getGroupInviterID();
+	unsigned long getUpdateCounterGroupInvite();
+	unsigned int getGuildID();
+	unsigned long getTargetID();
+	unsigned int getInstrumentID();
 	unsigned char getMoodID();
 	float getHeight();
 	unsigned int getBankCredits();
 	unsigned int getCashCredits();
 	FactionRank getFactionRank();
+	Species getSpecies();
+	String getTemplatePath();
 	String getMoodName();
+	String getPerformanceAnimation();
+	unsigned long getListeningToID();
+	float getSpeed();
+	float getTerrainNegotiation();
+	float getTurnRadius();
+	float getAcceleration();
+	float getDeceleration();
+	unsigned int getLevel();
 	unsigned long getStatesBitmask();
 	unsigned char getPosture();
+	unsigned int getUpdateCounterAction();
+	unsigned int getUpdateCounterHAM();
+	unsigned int getUpdateCounterHAMMax();
+	unsigned int getUpdateCounterHAMBase();
+	unsigned int getUpdateCounterWounds();
+	unsigned int getUpdateCounterEncumbrance();
+	unsigned int getUpdateCounterPerformance();
+	unsigned int getUpdateCounterEquipment();
+	int getAttribute(unsigned char attribute);
+	int getHealth();
+	int getStrength();
+	int getConstitution();
+	int getAction();
+	int getQuickness();
+	int getStamina();
+	int getMind();
+	int getFocus();
+	int getWillpower();
+	int getAttributeBase(unsigned char attribute);
+	int getHealthBase();
+	int getStrengthBase();
+	int getConstitutionBase();
+	int getActionBase();
+	int getQuicknessBase();
+	int getStaminaBase();
+	int getMindBase();
+	int getFocusBase();
+	int getWillpowerBase();
+	int getAttributeMax(unsigned char attribute);
+	int getHealthMax();
+	int getStrengthMax();
+	int getConstitutionMax();
+	int getActionMax();
+	int getQuicknessMax();
+	int getStaminaMax();
+	int getMindMax();
+	int getFocusMax();
+	int getWillpowerMax();
+	int getAttributeWounds(unsigned char attribute);
+	int getHealthWounds();
+	int getStrengthWounds();
+	int getConstitutionWounds();
+	int getActionWounds();
+	int getQuicknessWounds();
+	int getStaminaWounds();
+	int getMindWounds();
+	int getFocusWounds();
+	int getWillpowerWounds();
+	int getHealthEncumbrance();
+	int getActionEncumbrance();
+	int getMindEncumbrance();
+	unsigned int getShockWounds();
 	
 	boolean isGrouped();
 	boolean isGuilded();
+	boolean isStationary();
 }

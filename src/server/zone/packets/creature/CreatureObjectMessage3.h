@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../tangible/TangibleObjectMessage3.h"
 
-#include "../../objects/creature/CreatureObject.h"
+#include "../../objects/tangible/creature/CreatureObject.h"
 
 class CreatureObjectMessage3 : public TangibleObjectMessage3 {
 public:
@@ -55,10 +55,10 @@ public:
 			: TangibleObjectMessage3(creo, 0x4352454F, 0x12) {
 
 		insertByte(creo->getPosture()); //Posture
-		insertByte(creo->getFactionRank()); //Faction Rank
+		insertByte(creo->getFactionRank()->getRankIndex()); //Faction Rank
 
 		uint64 mountobjectid = 0;
-		CreatureObject* mount = creo->getMount();
+		CreatureObject* mount = creo->getLinkedCreature();
 
 		if (mount != NULL)
 			mountobjectid = mount->getObjectID();
@@ -71,7 +71,7 @@ public:
 		insertLong(creo->getStatesBitmask()); //StateBitmask
 
 		insertInt(9); // List Size
-		insertInt(creo->getWoundsUpdateCounter());
+		insertInt(creo->getUpdateCounterWounds());
 		insertInt(creo->getHealthWounds());
 		insertInt(creo->getStrengthWounds());
 		insertInt(creo->getConstitutionWounds());

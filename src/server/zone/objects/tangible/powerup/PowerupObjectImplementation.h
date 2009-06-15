@@ -46,7 +46,7 @@ which carries forward this exception.
 #define POWERUPOBJECTIMPLEMENTATION_H_
 
 #include "PowerupObject.h"
-#include "../../intangible/player/PlayerObject.h"
+#include "../../tangible/creature/player/PlayerObject.h"
 
 class PowerupObjectImplementation : public PowerupObjectServant {
 protected:

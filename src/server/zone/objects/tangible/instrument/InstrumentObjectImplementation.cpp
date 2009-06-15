@@ -46,7 +46,7 @@ which carries forward this exception.
 
 InstrumentObjectImplementation::InstrumentObjectImplementation(uint64 objectid)
 		: InstrumentObjectServant(objectid, INSTRUMENT) {
-
+	instrumentID = 0;
 }
 
 InstrumentObjectImplementation::~InstrumentObjectImplementation() {

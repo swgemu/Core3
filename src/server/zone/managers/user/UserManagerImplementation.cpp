@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "UserManagerImplementation.h"
 
-#include "../../objects/intangible/player/PlayerObject.h"
+#include "../../objects/tangible/creature/player/PlayerObject.h"
 
 #include "../../ZoneServer.h"
 #include "../../ZoneClientSession.h"

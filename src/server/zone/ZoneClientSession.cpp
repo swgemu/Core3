@@ -8,7 +8,9 @@
 
 #include "ZoneServer.h"
 
-#include "objects/intangible/player/PlayerObject.h"
+#include "objects/intangible/player/PlayerDataObject.h"
+
+#include "objects/tangible/creature/player/PlayerObject.h"
 
 /*
  *	ZoneClientSessionStub
@@ -130,16 +132,41 @@ void ZoneClientSession::setPlayerObject(PlayerObject* player) {
 		((ZoneClientSessionImplementation*) _impl)->setPlayerObject(player);
 }
 
-PlayerObject* ZoneClientSession::getPlayerObject() {
+void ZoneClientSession::setPlayerDataObject(PlayerDataObject* playerdata) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 14);
+		method.addObjectParameter(playerdata);
+
+		method.executeWithVoidReturn();
+	} else
+		((ZoneClientSessionImplementation*) _impl)->setPlayerDataObject(playerdata);
+}
+
+PlayerObject* ZoneClientSession::getPlayerObject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
 
 		return (PlayerObject*) method.executeWithObjectReturn();
 	} else
 		return ((ZoneClientSessionImplementation*) _impl)->getPlayerObject();
+}
+
+PlayerDataObject* ZoneClientSession::getPlayerDataObject() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return (PlayerDataObject*) method.executeWithObjectReturn();
+	} else
+		return ((ZoneClientSessionImplementation*) _impl)->getPlayerDataObject();
 }
 
 bool ZoneClientSession::isAvailable() {
@@ -147,7 +174,7 @@ bool ZoneClientSession::isAvailable() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -159,7 +186,7 @@ String& ZoneClientSession::getAddress() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 18);
 
 		method.executeWithAsciiReturn(_return_getAddress);
 		return _return_getAddress;
@@ -172,7 +199,7 @@ unsigned int ZoneClientSession::getSessionKey() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -215,15 +242,21 @@ Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		setPlayerObject((PlayerObject*) inv->getObjectParameter());
 		break;
 	case 14:
-		resp->insertLong(getPlayerObject()->_getObjectID());
+		setPlayerDataObject((PlayerDataObject*) inv->getObjectParameter());
 		break;
 	case 15:
-		resp->insertBoolean(isAvailable());
+		resp->insertLong(getPlayerObject()->_getObjectID());
 		break;
 	case 16:
-		resp->insertAscii(getAddress());
+		resp->insertLong(getPlayerDataObject()->_getObjectID());
 		break;
 	case 17:
+		resp->insertBoolean(isAvailable());
+		break;
+	case 18:
+		resp->insertAscii(getAddress());
+		break;
+	case 19:
 		resp->insertInt(getSessionKey());
 		break;
 	default:
@@ -265,8 +298,16 @@ void ZoneClientSessionAdapter::setPlayerObject(PlayerObject* player) {
 	return ((ZoneClientSessionImplementation*) impl)->setPlayerObject(player);
 }
 
+void ZoneClientSessionAdapter::setPlayerDataObject(PlayerDataObject* playerdata) {
+	return ((ZoneClientSessionImplementation*) impl)->setPlayerDataObject(playerdata);
+}
+
 PlayerObject* ZoneClientSessionAdapter::getPlayerObject() {
 	return ((ZoneClientSessionImplementation*) impl)->getPlayerObject();
+}
+
+PlayerDataObject* ZoneClientSessionAdapter::getPlayerDataObject() {
+	return ((ZoneClientSessionImplementation*) impl)->getPlayerDataObject();
 }
 
 bool ZoneClientSessionAdapter::isAvailable() {

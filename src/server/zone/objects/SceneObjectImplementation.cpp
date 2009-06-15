@@ -42,11 +42,18 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#include "engine/service/proto/BaseMessage.h"
+
 #include "../../ServerCore.h"
 #include "SceneObjectImplementation.h"
-#include "intangible/player/PlayerObject.h"
+#include "cell/CellObject.h"
+#include "tangible/creature/player/PlayerObject.h"
 
 #include "../packets/object/ObjectMenuResponse.h"
+#include "../packets/scene/SceneObjectCloseMessage.h"
+#include "../packets/scene/SceneObjectCreateMessage.h"
+#include "../packets/scene/SceneObjectDestroyMessage.h"
+#include "../packets/scene/UpdateContainmentMessage.h"
 
 
 SceneObjectImplementation::SceneObjectImplementation(uint64 objectid, int type)
@@ -69,6 +76,8 @@ void SceneObjectImplementation::initialize() {
 
 	undeployEvent = NULL;
 	keepObject = false;
+
+	parent = NULL;
 }
 
 /**
@@ -140,17 +149,65 @@ void SceneObjectImplementation::removeUndeploymentEvent() {
 	}
 }
 
+/*************************************************************************
+ * Zone Insertion
+ *************************************************************************/
+/**
+ * This method is called when the object is "inserted" to the zone, meaning that it is ready to
+ * be sent to all other objects in the area as well and interact in the world.
+ * \param zone The zone to insert the object to.
+ */
+void SceneObjectImplementation::insertToZone(Zone* zne) {
+	zone = zne;
+
+	try {
+		zone->lock();
+		zone->registerObject(_this);
+
+		if (parent != NULL && parent->isObjectType(CELL)) {
+			insertToCell((CellObject*) parent);
+			//building->notifyInsertToZone(_this); //TODO: Do we need this.
+		} else {
+			zone->insert(this);
+			zone->inRange(this, 128);
+		}
+
+		zone->unlock();
+	} catch (...) {
+		error("Exception on zone insertion in SceneObjectImplementation.");
+		zone->unlock();
+	}
+}
+
+void SceneObjectImplementation::insertToCell(CellObject* cell) {
+	if (isInQuadTree() || !parent->isObjectType(CELL))
+		return;
+
+	try {
+		cell->lock();
+		cell->appendChild(_this);
+		//cell->insert(this);
+		//cell->inRange(this, 128);
+		cell->unlock();
+		//cell->notifyInsertToZone(_this);
+		linkType = 0xFFFFFFFF;
+		//broadcastMessage(link(parent), 128, false);
+	} catch (...) {
+		error("Exception on insertion to cell in SceneObjectImplementation.");
+		cell->unlock();
+	}
+}
+
 
 /*************************************************************************
  * Sending of Interfaces
  *************************************************************************/
 /**
- * This packet is sent when a player is sent this object, to be displayed on their client.
+ * This method sends the appropriate object packets to the player.
  * \param player The player requesting the object.
  * \param doclose Should we close the SceneObjectCreatMessage.
  */
-void SceneObjectImplementation::sendTo(PlayerObject* player, bool doclose) {
-
+void SceneObjectImplementation::sendTo(PlayerObject* player, bool close) {
 }
 
 /**
@@ -158,8 +215,6 @@ void SceneObjectImplementation::sendTo(PlayerObject* player, bool doclose) {
  * \param player The player who is receiving the destroy packet.
  */
 void SceneObjectImplementation::sendDestroyTo(PlayerObject* player) {
-
-
 }
 
 /**
@@ -201,6 +256,41 @@ void SceneObjectImplementation::sendStatusTo(PlayerObject* player) {
 /*************************************************************************
  * Sending of Packets
  *************************************************************************/
+void SceneObjectImplementation::close(ZoneClientSession* client) {
+	if (client == NULL)
+		return;
+
+	BaseMessage* msg = new SceneObjectCloseMessage(_this);
+	client->sendMessage(msg);
+}
+
+void SceneObjectImplementation::create(ZoneClientSession* client) {
+	if (client == NULL)
+		return;
+
+	BaseMessage* msg = new SceneObjectCreateMessage(_this);
+	client->sendMessage(msg);
+}
+
+void SceneObjectImplementation::destroy(ZoneClientSession* client) {
+	if (client == NULL)
+		return;
+
+	BaseMessage* msg = new SceneObjectDestroyMessage(_this);
+	client->sendMessage(msg);
+}
+
+void SceneObjectImplementation::link(ZoneClientSession* client, SceneObject* container) {
+	if (client == NULL)
+		return;
+
+	parent = container;
+	container->appendChild(_this);
+
+	BaseMessage* msg = new UpdateContainmentMessage(_this, container, linkType);
+	client->sendMessage(msg);
+}
+
 /**
  * This method broadcasts the passed packet in a certain range.
  * \param msg The message/packet to be broadcast.

@@ -74,7 +74,7 @@ core3_IDLS = server/chat/ChatManager.cpp \
 		server/zone/objects/SceneObject.cpp \
 		server/zone/objects/cell/CellObject.cpp \
 		server/zone/objects/intangible/IntangibleObject.cpp \
-		server/zone/objects/intangible/player/PlayerObject.cpp \
+		server/zone/objects/intangible/player/PlayerDataObject.cpp \
 		server/zone/objects/intangible/draftschematic/DraftSchematicObject.cpp \
 		server/zone/objects/intangible/manufactureschematic/ManufactureSchematicObject.cpp \
 		server/zone/objects/intangible/mission/MissionObject.cpp \
@@ -85,6 +85,7 @@ core3_IDLS = server/chat/ChatManager.cpp \
 		server/zone/objects/tangible/component/ComponentObject.cpp \
 		server/zone/objects/tangible/creature/CreatureObject.cpp \
 		server/zone/objects/tangible/creature/npc/Creature.cpp \
+		server/zone/objects/tangible/creature/player/PlayerObject.cpp \
 		server/zone/objects/tangible/deed/DeedObject.cpp \
 		server/zone/objects/tangible/instrument/InstrumentObject.cpp \
 		server/zone/objects/tangible/installation/InstallationObject.cpp \
@@ -120,6 +121,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/bank/BankManagerImplementation.cpp \
 		server/zone/managers/combat/CombatManager.cpp \
 		server/zone/managers/combat/CommandQueueAction.cpp \
+		server/zone/managers/commandqueue/CommandQueueManager.cpp \
 		server/zone/managers/crafting/CraftingManagerImplementation.cpp \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
 		server/zone/managers/group/GroupManager.cpp \
@@ -143,7 +145,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/Container.cpp \
 		server/zone/objects/cell/CellObjectImplementation.cpp \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
-		server/zone/objects/intangible/player/PlayerObjectImplementation.cpp \
+		server/zone/objects/intangible/player/PlayerDataObjectImplementation.cpp \
 		server/zone/objects/intangible/draftschematic/DraftSchematicObjectImplementation.cpp \
 		server/zone/objects/intangible/manufactureschematic/ManufactureSchematicObjectImplementation.cpp \
 		server/zone/objects/intangible/mission/MissionObjectImplementation.cpp \
@@ -155,6 +157,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/component/ComponentObjectImplementation.cpp \
 		server/zone/objects/tangible/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/tangible/creature/npc/CreatureImplementation.cpp \
+		server/zone/objects/tangible/creature/player/PlayerObjectImplementation.cpp \
 		server/zone/objects/tangible/deed/DeedObjectImplementation.cpp \
 		server/zone/objects/tangible/instrument/InstrumentObjectImplementation.cpp \
 		server/zone/objects/tangible/installation/InstallationObjectImplementation.cpp \

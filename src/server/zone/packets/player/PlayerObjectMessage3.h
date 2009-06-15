@@ -47,14 +47,11 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/intangible/player/PlayerObject.h"
-#include "../../objects/tangible/creature/player/Player.h"
-
-//TODO: Looks like this inherits ITNO3
+#include "../../objects/intangible/player/PlayerDataObject.h"
 
 class PlayerObjectMessage3 : public BaseLineMessage {
 public:
-	PlayerObjectMessage3(PlayerObject* play)
+	PlayerObjectMessage3(PlayerDataObject* play)
 			: BaseLineMessage(play->getObjectID(), 0x504C4159, 3, 0x0B) {
 		insertFloat(1.0f); //Complexity
 
@@ -65,13 +62,13 @@ public:
 		insertInt(0); //Volume
 		insertInt(0); //Status
 
-		insertInt(4); //Listsize of some sort
+		insertInt(0x04); //Listsize of some sort - never changes
 		insertInt(play->getCharacterBitmask());
 		insertInt(0); //Unknown
 		insertInt(0); //Unknown
 		insertInt(0); //Unknown
 
-		insertInt(4); //ListSize
+		insertInt(0x04); //ListSize
 		insertInt(0); //Unknown
 		insertInt(0); //Unknown
 		insertInt(0); //Unknown

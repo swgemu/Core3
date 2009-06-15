@@ -8,10 +8,6 @@
 
 #include "room/ChatRoom.h"
 
-#include "../zone/objects/intangible/player/PlayerObject.h"
-
-#include "../zone/objects/tangible/creature/CreatureObject.h"
-
 #include "server/zone/ZoneServer.h"
 
 /*

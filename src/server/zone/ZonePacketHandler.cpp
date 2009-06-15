@@ -77,6 +77,7 @@ which carries forward this exception.
 #include "packets/ui/RequestCategoriesResponseMessage.h"
 #include "packets/ui/SearchKnowledgebaseResponseMessage.h"
 #include "packets/ui/VerifyPlayerNameResponseMessage.h"
+#include "packets/scene/UpdateTransformMessage.h"
 #include "packets/zone/ClientIDMessage.h"
 #include "packets/zone/ClientPermissionsMessage.h"
 #include "packets/zone/ConnectPlayerResponseMessage.h"
@@ -106,7 +107,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 	uint16 opcount = pack->parseShort();
 	uint32 opcode = pack->parseInt();
 
-	//System::out << "handleMessage: opcount: " << hex << opcount << dec << " opcode: " << hex << opcode << endl;
+	System::out << "handleMessage: opcount: " << dec << opcount << dec << " opcode: " << dec << opcode << endl;
 
 	switch (opcount) {
 	case 1:
@@ -222,7 +223,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		break;
 	case 04:
 		switch (opcode) {
-		case 0xD5899226:
+		case 0xD5899226: //ClientPermissionsMessage
 			handleClientPermissionsMessage(pack);
 			break;
 		case 0x092D3564: //SuiEventNotification
@@ -314,7 +315,11 @@ void ZonePacketHandler::handleClientPermissionsMessage(Message* pack) {
 	uint32 accountID = ClientIDMessage::parse(pack);
 	client->setSessionKey(accountID);
 
-	BaseMessage* cpm = new ClientPermissionsMessage();
+	//TODO: Check how many slots the client has available for characters versus the max allowed on the zone server.
+	//If they have reached their limit, then make slotavailable = false.
+	bool slotavailable = true;
+
+	BaseMessage* cpm = new ClientPermissionsMessage(slotavailable);
 	client->sendMessage(cpm);
 
 }
@@ -329,7 +334,24 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 	uint64 characterid = SelectCharacter::parse(pack);
 	uint64 playerid = (characterid << 32) + 0x15;
 
-	PlayerObject* player = NULL;
+	client->info("Selecting character with characterid " + String::valueOf(characterid) + ".", true);
+
+	PlayerObject* player;
+	PlayerDataObject* playerdata;
+
+	if (client->getPlayerObject() == NULL) {
+		System::out << "Client player object is null" << endl;
+		playerdata = new PlayerDataObject(playerid + 0x0C);
+		player = new PlayerObject(playerid, playerdata);
+		playerdata->setLinkedPlayer(player);
+	} else {
+		System::out << "Cleint player object is NOT null" << endl;
+		player = client->getPlayerObject();
+		playerdata = client->getPlayerDataObject();
+	}
+
+	player->setCharacterID(characterid);
+	System::out << "Logging in character with objectid " << player->getObjectID() << endl;
 
 	if (server->isServerLocked()) {
 		/*TODO: Revisit this with new authentication
@@ -344,7 +366,7 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 	try {
 		server->lock();
 
-		//TODO: Should this be the creo or the itno?
+		//creo
 		SceneObject* obj = server->getObject(playerid, false);
 
 		if (obj == NULL)
@@ -370,7 +392,7 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 		} else {
 			//Loading the player from the database
 			//player = playerManager->load(characterid);
-			player->setZone(server->getZone(player->getZoneID()));
+			//player->setZone(server->getZone(42)); //TODO: Temporary
 
 			server->addObject(player, false);
 
@@ -379,7 +401,7 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 			try {
 				player->wlock();
 
-				//TODO: Work on this. player->load(client);
+				player->insertToZone(server->getZone(8));
 
 				player->unlock();
 			} catch (...) {
@@ -394,10 +416,12 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 
 		server->unlock();
 	}
+
+	client->info("Finished character selection.", true);
 }
 
 void ZonePacketHandler::handleCmdSceneReady(Message* pack) {
-	info("ZonePacketHandler::handleCmdSceneReady");
+	info("ZonePacketHandler::handleCmdSceneReady", true);
 	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
 	BaseMessage* csr = new CmdSceneReady();
@@ -413,7 +437,7 @@ void ZonePacketHandler::handleCmdSceneReady(Message* pack) {
 	try {
 		playerobject->wlock();
 
-		//playerobject->notifySceneReady();
+		playerobject->notifySceneReady();
 
 		//If they are on the tutorial terrain, send audio.
 		//if (playerobject->getZoneID() == 42) {
@@ -438,6 +462,7 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 	ZoneClientSessionImplementation* clientimpl = (ZoneClientSessionImplementation*) pack->getClient();
 	ZoneClientSession* client = (ZoneClientSession*) clientimpl->_getStub();
 
+	//TODO: client->isPrivilegedAccount(); Checks to see if they logged in a staff account.
 	if (server->isServerLocked()) {
 		ErrorMessage* msg = new ErrorMessage("Server", "Sever is locked. Please try again later.", 0);
 		client->sendMessage(msg);
@@ -445,30 +470,47 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 		return;
 	}
 
-	//TODO: This appears to be the entry point for character creation.
-	info("Creating a character...", true);
-	CreatureObject* playercreature = new CreatureObject((uint64) 0);
-	PlayerObject* player = new PlayerObject((uint64) 0, playercreature);
-	//playercreature->appendChild(player);
-	//player->initializePlayer();
+	client->info("Attempting to create a new character.", true);
+
+	//TODO: Need the new objectid manager bad.
+	uint64 characterid = 1;
+	uint64 playerid = (characterid << 32) + 0x15;
+	PlayerDataObject* playerdata = new PlayerDataObject(playerid + 0x0C);
+	PlayerObject* player = new PlayerObject(playerid, playerdata);
+
+	client->setPlayerObject(player);
+	client->setPlayerDataObject(playerdata);
+
+	player->setClient(client);
+	playerdata->setClient(client);
+
+	playerdata->setLinkedPlayer(player);
 
 	player->setZoneProcessServer(processServer);
 
-	ClientCreateCharacter::parse(pack, player);
+	Zone* tutorialzone = processServer->getZoneServer()->getZone(8); //Tutorial Zone is 42
 
-	//The packet has been parsed, and the player has been setup based on creation process.
+	//TODO: We need to figure out another means of keeping the playerobject and playercreature in sync.
+	//Perhaps when setZone is called, all child objects should have it set as well recursively?
+	player->setZone(tutorialzone);
 
-	//TODO: What was this? player->create(client);
+	bool tutorial = ClientCreateCharacter::parse(pack, player);
+
+	if (tutorial) {
+		//TODO: Insert into begining of tutorial zone.
+	} else {
+		//TODO: Insert into planetary selection room.
+	}
 
 	String species = player->getStfName();
 	String firstName = player->getFirstName();
 	String name = player->getCustomName().toString();
 
-	player->info("attempting to create Player " + firstName);
+	client->info("Validating player name '" + name + "'.", true);
 
+	NameManager* nameManager = processServer->getNameManager();
+	uint8 result = nameManager->validatePlayerName(client);
 
-	//Check name for invalid characters and profanity
-	//BaseMessage* msg = playerManager->checkPlayerName(name, species);
 	BaseMessage* msg = NULL;
 
 	try {
@@ -483,6 +525,7 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 			client->sendMessage(msg);
 			//player->disconnect();
 			player->finalize();
+			//TODO: Do we need to finalize the playerdata as well? Or will it get recurively finalized?
 			return;
 		}
 
@@ -505,6 +548,8 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 		error("unreported exception caught in ZonePacketHandler::handleClientCreateCharacter(Message* pack)");
 		server->unlock();
 	}
+
+	info("Finished creating character.", true);
 }
 
 void ZonePacketHandler::handleClientRandomNameRequest(Message* pack) {
@@ -529,11 +574,6 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 	if (playerObject == NULL)
 		return;
 
-	CreatureObject* playerCreature = playerObject->getLinkedCreature();
-
-	if (playerCreature == NULL)
-		return;
-
 	uint32 header1 = pack->parseInt();
 	uint32 header2 = pack->parseInt();
 
@@ -542,11 +582,11 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 	player->info(msg.toString());*/
 
 	try {
-		playerCreature->wlock();
+		playerObject->wlock();
 
 		//TODO: Do we need to lock playerObject here be for checking online status?
 		if (!playerObject->isOnline()) {
-			playerCreature->unlock();
+			playerObject->unlock();
 			return;
 		}
 
@@ -568,7 +608,7 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 
 				break;
 			case 0xF1:
-				uint64 parent = ObjectControllerMessage::parseDataTransformWithParent(playerCreature, pack);
+				uint64 parent = ObjectControllerMessage::parseDataTransformWithParent(playerObject, pack);
 
 				//if (parent != 0)
 					//player->updateZoneWithParent(parent, true);
@@ -589,60 +629,60 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 
 				break;
 			case 0xF1:
-				parent = ObjectControllerMessage::parseDataTransformWithParent(playerCreature, pack);
+				parent = ObjectControllerMessage::parseDataTransformWithParent(playerObject, pack);
 
 				//if (parent != 0)
 					//player->updateZoneWithParent(parent);
 
 				break;
 			case 0x115:
-				ObjectControllerMessage::parseItemDropTrade(playerCreature, pack);
+				ObjectControllerMessage::parseItemDropTrade(playerObject, pack);
 				break;
 			case 0x116:
-				ObjectControllerMessage::parseCommandQueueEnqueue(playerCreature, pack, processServer);
+				ObjectControllerMessage::parseCommandQueueEnqueue(playerObject, pack, processServer);
 				break;
 			case 0x117:
-				ObjectControllerMessage::parseCommandQueueClear(playerCreature, pack);
+				ObjectControllerMessage::parseCommandQueueClear(playerObject, pack);
 				break;
 			case 0x146:
-				ObjectControllerMessage::parseRadialRequest(playerCreature, pack, processServer->getRadialManager());
+				ObjectControllerMessage::parseRadialRequest(playerObject, pack, processServer->getRadialManager());
 				break;
 			case 0x238:
-				ObjectControllerMessage::parseImageDesignChange(playerCreature, pack, processServer);
+				ObjectControllerMessage::parseImageDesignChange(playerObject, pack, processServer);
 				break;
 			case 0x239:
-				ObjectControllerMessage::parseImageDesignCancel(playerCreature, pack);
+				ObjectControllerMessage::parseImageDesignCancel(playerObject, pack);
 				break;
 			}
 			break;
 		case 0x83:
 			switch (header2) {
 			case 0xED:
-				ObjectControllerMessage::parseResourceEmptyHopper(playerCreature, pack);
+				ObjectControllerMessage::parseResourceEmptyHopper(playerObject, pack);
 				break;
 			case 0xF5:
-				ObjectControllerMessage::parseMissionListRequest(playerCreature, pack);
+				ObjectControllerMessage::parseMissionListRequest(playerObject, pack);
 				break;
 			case 0xF9:
-				ObjectControllerMessage::parseMissionAccept(playerCreature, pack);
+				ObjectControllerMessage::parseMissionAccept(playerObject, pack);
 				break;
 			case 0x142:
-				ObjectControllerMessage::parseMissionAbort(playerCreature, pack);
+				ObjectControllerMessage::parseMissionAbort(playerObject, pack);
 				break;
 			case 0x106:
-				ObjectControllerMessage::parseExperimentation(playerCreature, pack);
+				ObjectControllerMessage::parseExperimentation(playerObject, pack);
 				break;
 			case 0x107:
-				ObjectControllerMessage::parseAddCraftingResource(playerCreature, pack);
+				ObjectControllerMessage::parseAddCraftingResource(playerObject, pack);
 				break;
 			case 0x108:
-				ObjectControllerMessage::parseRemoveCraftingResource(playerCreature, pack);
+				ObjectControllerMessage::parseRemoveCraftingResource(playerObject, pack);
 				break;
 			case 0x126:
-				ObjectControllerMessage::parseObjectTargetUpdate(playerCreature, pack);
+				ObjectControllerMessage::parseObjectTargetUpdate(playerObject, pack);
 				break;
 			case 0x15A:
-				ObjectControllerMessage::parseCraftCustomization(playerCreature, pack);
+				ObjectControllerMessage::parseCraftCustomization(playerObject, pack);
 				break;
 			}
 			break;
@@ -652,14 +692,14 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 			break;
 		}
 
-		playerCreature->unlock();
+		playerObject->unlock();
 	} catch (Exception& e) {
-		playerCreature->unlock();
+		playerObject->unlock();
 
 		System::out << "exception on ZonePacketHandler:::handleObjectControllerMessage(Message* pack)\n";
 		e.printStackTrace();
 	} catch (...) {
-		playerCreature->unlock();
+		playerObject->unlock();
 
 		System::out << "unreported exception on ZonePacketHandler:::handleObjectControllerMessage(Message* pack)\n";
 	}
@@ -668,32 +708,21 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 void ZonePacketHandler::handleTellMessage(Message* pack) {
 	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
-	//Intangible Object representing a Player.
 	PlayerObject* playerObject = client->getPlayerObject();
 
 	if (playerObject == NULL)
 		return;
 
-	//The CreatureObject which represents the Player in the game world.
-	CreatureObject* playerCreature = playerObject->getLinkedCreature();
-
-	if (playerCreature == NULL)
-		return;
-
-	//TODO: Do we need to lock both objects since we are reading from both?
 	try {
 		playerObject->wlock();
-		playerCreature->wlock();
 
 		if (playerObject->isOnline()) {
 			ChatManager* chatManager = server->getChatManager();
-			//chatManager->handleTellMessage(playerCreature, pack);
+			//chatManager->handleTellMessage(playerObject, pack);
 		}
 
-		playerCreature->unlock();
 		playerObject->unlock();
 	} catch (...) {
-		playerCreature->unlock();
 		playerObject->unlock();
 		System::out << "unreported exception on ZonePacketHandler:::handleTellMessage(Message* pack)\n";
 	}
@@ -774,24 +803,19 @@ void ZonePacketHandler::handleFactionRequestMessage(Message* pack) {
 	if (playerObject == NULL)
 		return;
 
-	CreatureObject* playerCreature = playerObject->getLinkedCreature();
-
-	if (playerCreature == NULL)
-		return;
-
 	try {
-		playerCreature->wlock();
+		playerObject->wlock();
 
-		FactionResponseMessage* frm = new FactionResponseMessage(playerCreature);
+		FactionResponseMessage* frm = new FactionResponseMessage(playerObject);
 
 		//TODO: Investigate this.
 		frm->insertInt(0); //Client crashes with more than one faction if this isn't included
 
 		client->sendMessage(frm);
 
-		playerCreature->unlock();
+		playerObject->unlock();
 	} catch (...) {
-		playerCreature->unlock();
+		playerObject->unlock();
 		System::out << "unreported exception on ZonePacketHandler:::handleTellMessage(Message* pack)\n";
 	}
 }
@@ -824,24 +848,24 @@ void ZonePacketHandler::handleGetMapLocationsRequestMessage(Message* pack) {
 void ZonePacketHandler::handleStomachRequestMessage(Message* pack) {
 	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
-	PlayerObject* playerObject = client->getPlayerObject();
+	PlayerDataObject* playerdata = client->getPlayerDataObject();
 
-	if (playerObject == NULL)
+	if (playerdata == NULL)
 		return;
 
 	try {
-		playerObject->wlock();
+		playerdata->wlock();
 
-		PlayerObjectDeltaMessage9* delta = new PlayerObjectDeltaMessage9(playerObject);
+		PlayerObjectDeltaMessage9* delta = new PlayerObjectDeltaMessage9(playerdata);
 		delta->updateStomachFilling();
 		delta->close();
 
-		playerObject->sendMessage(delta);
+		client->sendMessage(delta);
 
-		playerObject->unlock();
+		playerdata->unlock();
 	} catch (...) {
-		playerObject->error("unreported exception in ZonePacketHandler::handleStomachRequestMessage(Message* pack)");
-		playerObject->unlock();
+		playerdata->error("unreported exception in ZonePacketHandler::handleStomachRequestMessage(Message* pack)");
+		playerdata->unlock();
 	}
 }
 
@@ -849,48 +873,39 @@ void ZonePacketHandler::handleGuildRequestMessage(Message* pack) {
 	//TODO: Revisit guilds.
     ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
-    PlayerObject* playerObject = client->getPlayerObject();
+    PlayerObject* playerobject = client->getPlayerObject();
 
-	if (playerObject == NULL)
+	if (playerobject == NULL)
 		return;
 
-	CreatureObject* playerCreature = playerObject->getLinkedCreature();
-
-	if (playerCreature == NULL)
-		return;
-
-	//TODO: Locking ok here?
 	try {
-		playerCreature->wlock();
+		playerobject->wlock();
 
    		uint64 creoid = pack->parseLong();
 
-   		//TODO: Revisit this, is there any point in looking up the object?
-   		//Can it be anyone besides yourself?
-
-    	SceneObject* obj = playerCreature->getZone()->lookupObject(creoid);
+    	SceneObject* obj = playerobject->getZone()->lookupObject(creoid);
 
     	//Has to be another player?
 
     	if (obj == NULL || !obj->isPlayer()) {
-    		playerCreature->unlock();
+    		playerobject->unlock();
     		return;
     	}
 
 		CreatureObject* creature = (CreatureObject*) obj;
 
-		if (creature != playerCreature)
-			creature->wlock(playerCreature);
+		if (creature != playerobject)
+			creature->wlock(playerobject);
 
 		GuildResponseMessage* grm = new GuildResponseMessage(creature);
 		client->sendMessage(grm);
 
-		if (creature != playerCreature)
+		if (creature != playerobject)
 			creature->unlock();
 
-		playerCreature->unlock();
+		playerobject->unlock();
 	} catch (...) {
-		playerCreature->unlock();
+		playerobject->unlock();
 		System::out << "unreported exception on ZonePacketHandler:::handleGuildRequest(Message* pack)\\\\\\\\n";
 	}
 }
@@ -898,25 +913,20 @@ void ZonePacketHandler::handleGuildRequestMessage(Message* pack) {
 void ZonePacketHandler::handlePlayerMoneyRequest(Message* pack) {
     ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
-    PlayerObject* playerObject = client->getPlayerObject();
+    PlayerObject* playerobject = client->getPlayerObject();
 
-	if (playerObject == NULL)
-		return;
-
-	CreatureObject* playerCreature = playerObject->getLinkedCreature();
-
-	if (playerCreature == NULL)
+	if (playerobject == NULL)
 		return;
 
 	try {
-		playerCreature->wlock();
+		playerobject->wlock();
 
-		PlayerMoneyResponseMessage* pmrm = new PlayerMoneyResponseMessage(playerCreature);
+		PlayerMoneyResponseMessage* pmrm = new PlayerMoneyResponseMessage(playerobject);
 		client->sendMessage(pmrm);
 
-		playerCreature->unlock();
+		playerobject->unlock();
 	} catch (...) {
-		playerCreature->unlock();
+		playerobject->unlock();
 		System::out << "unreported exception on ZonePacketHandler:::handlePlayerMoneyRequest(Message* pack)\n";
 	}
 }
@@ -924,9 +934,9 @@ void ZonePacketHandler::handlePlayerMoneyRequest(Message* pack) {
 void ZonePacketHandler::handleTravelListRequest(Message* pack) {
     ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
-    PlayerObject* playerObject = client->getPlayerObject();
+    PlayerObject* playerobject = client->getPlayerObject();
 
-    if (playerObject == NULL)
+    if (playerobject == NULL)
     	return;
 
 	uint64 objectid = pack->parseLong(); //Terminal ID
@@ -942,7 +952,7 @@ void ZonePacketHandler::handleTravelListRequest(Message* pack) {
 
 	if (zone != NULL) {
 		//PlanetManager* planetManager = zone->getPlanetManager();
-		//planetManager->sendPlanetTravelPointListResponse(player);
+		//planetManager->sendPlanetTravelPointListResponse(playerobject);
 		//TODO: Redo this monstrosity.
 	}
 }
@@ -950,54 +960,49 @@ void ZonePacketHandler::handleTravelListRequest(Message* pack) {
 void ZonePacketHandler::handleRadialSelect(Message* pack) {
 	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
-	PlayerObject* playerObject = client->getPlayerObject();
+	PlayerObject* playerobject = client->getPlayerObject();
 
-    if (playerObject == NULL)
+    if (playerobject == NULL)
 		return;
 
-    CreatureObject* playerCreature = playerObject->getLinkedCreature();
-
-    if (playerCreature == NULL)
-    	return;
-
     //TODO: Could we make this a static method: RadialManager::handleRadialSelect(player, pack);
-    processServer->getRadialManager()->handleRadialSelect(playerCreature, pack);
+    processServer->getRadialManager()->handleRadialSelect(playerobject, pack);
 }
 
 void ZonePacketHandler::handleChatRoomMessage(Message* pack) {
 	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
-	PlayerObject* playerObject = client->getPlayerObject();
+	PlayerObject* playerobject = client->getPlayerObject();
 
-	if (playerObject == NULL)
+	if (playerobject == NULL)
 		return;
 
 	ChatManager* chatManager = server->getChatManager();
-	//chatManager->handleChatRoomMessage(playerObject, pack);
+	//chatManager->handleChatRoomMessage(playerobject, pack);
 }
 
 void ZonePacketHandler::handleChatRequestRoomList(Message* pack) {
 	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
-	PlayerObject* playerObject = client->getPlayerObject();
+	PlayerObject* playerobject = client->getPlayerObject();
 
-	if (playerObject == NULL)
+	if (playerobject == NULL)
 		return;
 
 	ChatManager* chatManager = server->getChatManager();
-	//chatManager->sendRoomList(playerObject);
+	//chatManager->sendRoomList(playerobject);
 }
 
 void ZonePacketHandler::handleChatCreateRoom(Message* pack) {
 	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
-	PlayerObject* playerObject = client->getPlayerObject();
+	PlayerObject* playerobject = client->getPlayerObject();
 
-	if (playerObject == NULL)
+	if (playerobject == NULL)
 		return;
 
 	ChatManager* chatManager = server->getChatManager();
-	//chatManager->handleCreateRoom(playerObject, pack);
+	//chatManager->handleCreateRoom(playerobject, pack);
 }
 
 void ZonePacketHandler::handleChatEnterRoomById(Message* pack) {

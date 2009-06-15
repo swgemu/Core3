@@ -48,12 +48,15 @@ include "engine/util/QuadTreeEntry";
 include "../ZoneProcessServerImplementation";
 
 import "../Zone";
-import "intangible/player/PlayerObject";
+import "cell/CellObject";
+import "tangible/creature/player/PlayerObject";
 
 interface SceneObject implements ManagedObject {
 	//Container Methods
 	boolean hasChild(unsigned long objid, boolean recursive = false);
 	int getContainerSize(boolean recursive = false);
+	boolean appendChild(SceneObject obj);
+	boolean removeChild(unsigned long objid);
 
 	//Logger methods
 	void info(const String message, boolean forcedLog = false);
@@ -79,9 +82,14 @@ interface SceneObject implements ManagedObject {
 	boolean isInQuadTree();
 	QuadTreeEntry getQuadTreeEntry();
 	
+	//Zone Insertion
+	void insertToZone(Zone zne);
+	void insertToCell(CellObject cell);
+	
 	//Sending of Packets
 	void broadcastMessage(BaseMessage msg, int range = 128, boolean dolock = true, boolean sendself = true);
 	void broadcastMessage(StandaloneBaseMessage msg, int range = 128, boolean dolock = true);
+	void sendTo(PlayerObject player);
 	
 	//Event handlers
 	void onDragDrop(PlayerObject player, SceneObject target);
@@ -96,6 +104,9 @@ interface SceneObject implements ManagedObject {
 	void setPositionY(float y);
 	void setPositionZ(float z);
 	void setCustomName(const UnicodeString customname);
+	void setObjectID(unsigned long objectid);
+	void setObjectCRC(unsigned int crc);
+	void setObjectType(unsigned int type);
 	void setStfFile(const String stffile);
 	void setStfName(const String stfname);
 	
