@@ -45,74 +45,62 @@ which carries forward this exception.
 #ifndef ACCOUNT_H_
 #define ACCOUNT_H_
 
+#include "engine/engine.h"
+
 #include "../../db/ServerDatabase.h"
-#include "../../db/ForumsDatabase.h"
+#include "../../ServerCore.h"
 
 #include "../LoginClient.h"
-#include "../objects.h"
+#include "../LoginServer.h"
 
 #include "GalaxyList.h"
 #include "CharacterList.h"
+#include "../packets/AccountVersionMessage.h"
+#include "../packets/LoginClusterStatus.h"
+#include "../packets/LoginEnumCluster.h"
 
 #include "../../conf/ConfigManager.h"
 
+class LoginServer;
+
 class Account {
+
 	uint32 stationID;
+
+	LoginServer* loginServer;
 
 	String username;
 	String password;
-	String version;
+	String clientVersion;
 
-	String forumUserID;
-	String forumUserGroupID;
-	String forumUser;
-	String forumPass;
-	String forumSalt;
+	uint32 sessionKey;
+
 	bool isBanned;
-
-public:
-
-	static const int ACCOUNTOK = 0;
-	static const int ACCOUNTINUSE = 1;
-	static const int ACCOUNTBADPW = 2;
-	static const int ACCOUNTBANNED = 3;
-	static const int ACCOUNTAUTOREGDISABLED = 4;
-	static const int ACCOUNTDOESNTEXIST = 5;
-	static const int ACCOUNTNOTACTIVE = 6;
-	const static int SERVERERROR = 7;
 
 public:
 	int accountID;
 
-	Account(Packet* pack) {
-		AccountVersionMessage::parse(pack, username, password, version);
+	Account(LoginServer* server, Packet* pack) {
+
+		loginServer = server;
+
+		AccountVersionMessage::parse(pack, username, password, clientVersion);
 
 		MySqlDatabase::escapeString(username);
 		MySqlDatabase::escapeString(password);
 	}
 
-	//Checks for publish 14 clients. To disable: have the function return true all the time.
-	//Disabling Version check could be hazardous in game.
-	bool checkVersion() {
-		if (version == "20050408-18:00")
-			return true;
-		else
-			return false;
-	}
-
 	int validate(ConfigManager* configManager) {
-		// If vBulletin integration is on, validate against the vB DB
-		if (configManager->getUseVBIngeration() == 1){
 
-			int validateResult = validateForumAccount(configManager);
+		/*int validateResult = validateForumAccount(configManager);
 
-			// If the check against forum db fails, bail out of the validate. If successful, continue with the check
-			if (validateResult != 0)
-				return validateResult;
-		}
+		// If the check against forum db fails, bail out of the validate. If successful, continue with the check
+		if (validateResult != 0)
+			return validateResult;
 
-		// Authentication against the account table
 		try {
+
+			// Authentication against the account table
 			String query = "SELECT * FROM account WHERE username = \'" + username + "\'";
 			ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 			if (!res->next()) {
@@ -123,7 +111,7 @@ public:
 			delete res;
 
 			// If the account exists and forum integration is off, check the password. (Forum pass was already checked above)
-			if (configManager->getUseVBIngeration() == 0)
+			if (configManager->getUseVBIntegration() == 0)
 				query += " and password = sha1(\'" + password + "\')";
 
 			ResultSet* resP = ServerDatabase::instance()->executeQuery(query);
@@ -144,13 +132,14 @@ public:
 		} catch(DatabaseException& e) { //thrown if any of the queries fail, indicates server is down
 			System::out << e.getMessage() << endl;
 			return SERVERERROR;
-		}
+		}*/
+		return 0;
 	}
 
 	int create(ConfigManager* configManager) {
-		try {
+		/*try {
 			// Disable account creation when Auto Reg Disabled is set AND forum integration is off
-			if (configManager->getAutoReg() == 0 && configManager->getUseVBIngeration() == 0)
+			if (configManager->getAutoReg() == 0 && configManager->getUseVBIntegration() == 0)
 				return ACCOUNTAUTOREGDISABLED;
 
 			StringBuffer query;
@@ -163,110 +152,17 @@ public:
 			return ACCOUNTOK;
 		} catch(DatabaseException& e) { //rare
 			return ACCOUNTINUSE;
-		}
-	}
-
-	int validateForumAccount(ConfigManager* configManager){
-		if (configManager->getUseVBIngeration() == 0 || configManager->getAutoReg() == 1)
-			return 0;
-
-		try {
-			StringBuffer query, query2;
-
-			query << "SELECT "
-				  << ForumsDatabase::userTable() << ".userid, "
-				  << ForumsDatabase::userTable() << ".usergroupid, "
-				  << ForumsDatabase::userTable() << ".username, "
-				  << ForumsDatabase::userTable() << ".password, "
-				  << ForumsDatabase::userTable() << ".salt, "
-				  << "(SELECT userid FROM "
-				  << ForumsDatabase::bannedTable()
-			      << " WHERE userid = (SELECT "
-			      << ForumsDatabase::userTable() << ".userid "
-			      << "FROM " << ForumsDatabase::userTable()
-			      << " WHERE username = \'" << username << "\' LIMIT 1 ) LIMIT 1 ) as banned, "
-				  << "(SELECT userid FROM "
-				  << ForumsDatabase::newActivationTable()
-			      << " WHERE userid = (SELECT "
-			      << ForumsDatabase::userTable() << ".userid "
-			      << "FROM " << ForumsDatabase::userTable()
-			      << " WHERE username = \'" << username << "\' LIMIT 1 ) LIMIT 1 ) as newuser "
-				  << " FROM " << ForumsDatabase::userTable()
-			      << " WHERE "
-			      << ForumsDatabase::userTable() << ".username = \'" << username << "\'";
-
-			ResultSet* res = ForumsDatabase::instance()->executeQuery(query);
-
-			if (res->next()){
-				forumUserID = res->getString(0);
-				forumUserGroupID = res->getString(1);
-				forumUser = res->getString(2);
-				forumPass = res->getString(3);
-				forumSalt = res->getString(4);
-
-				try {
-					String test = res->getString(5);
-					isBanned = true;
-				} catch (...) {
-					isBanned = false;
-				}
-
-				if (isBanned){
-					delete res;
-					return ACCOUNTBANNED;
-				}
-
-
-				try {
-					String test = res->getString(6);
-					isBanned = true;
-				} catch (...) {
-					isBanned = false;
-				}
-
-				if (isBanned){
-					delete res;
-					return ACCOUNTNOTACTIVE;
-				}
-
-				String forSalt = forumSalt;
-				MySqlDatabase::escapeString(forSalt);
-
-				query2 << "SELECT MD5(CONCAT(MD5(\'" + password + "\'), \'" + forSalt + "\'))";
-				ResultSet* res2 = ForumsDatabase::instance()->executeQuery(query2);
-
-				if (res2->next()){
-					String tempPass = res2->getString(0);
-
-					if (tempPass == forumPass){
-						delete res;
-						delete res2;
-						return ACCOUNTOK; // Good Account
-					} else {
-						return ACCOUNTBADPW; // Bad Password
-					}
-				}
-				delete res2;
-			}
-
-			delete res;
-
-			return ACCOUNTINUSE;
-		} catch(DatabaseException& e) {
-			System::out << e.getMessage() << endl;
-			return SERVERERROR;
-		}
-
+		}*/
+		return 0;
 	}
 
 	void login(LoginClient* client) {
-		if (accountID > 0) {
-			//uint32 sessionKey = System::random();
-			uint32 sessionKey = 0; //temp until we store the session key in the db and check on zone server
+		/*if (accountID > 0) {
+
+			sessionKey = System::random(0xFFFFFFFF - 0x10000000) + 0x10000000;
+
 			Message* lct = new LoginClientToken(username, sessionKey, accountID, stationID);
 			client->sendMessage(lct);
-
-			//send the sessionkey to the DB here
 
 			loadGalaxies(client);
 
@@ -274,7 +170,7 @@ public:
 
 			Message* eci = new EnumerateCharacterID(&characters);
 			client->sendMessage(eci);
-		}
+		}*/
 	}
 
 	void loadGalaxies(LoginClient* client) {

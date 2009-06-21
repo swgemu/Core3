@@ -78,7 +78,7 @@ public:
 		insertInt(count); //Object Count? Perhaps this could be named something better.
 
 		insertInt(int(tano->getConditionDamage())); //Condition Damage
-		insertInt(tano->getConditionMax()); //Condition Max
+		insertInt(int(tano->getConditionMax())); //Condition Max
 
 		insertByte(tano->getUnknownByte()); //Unknown
 

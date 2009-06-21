@@ -49,7 +49,13 @@ which carries forward this exception.
 
 #include "LoginClient.h"
 
+#include "objects/authentication/Authentication.h"
+#include "objects/Account.h"
+
 #include "../conf/ConfigManager.h"
+
+#include "packets/ErrorMessage.h"
+#include "packets/DeleteCharacterReplyMessage.h"
 
 class LoginServer;
 
@@ -57,6 +63,7 @@ class LoginPacketHandler : public Logger {
 	LoginServer* server;
 	ConfigManager* configManager;
 
+	Authentication* authentication;
 
 public:
 
@@ -68,6 +75,7 @@ public:
 	static const int ACCOUNTDOESNTEXIST = 5;
 	static const int ACCOUNTNOTACTIVE = 6;
 	static const int SERVERERROR = 7;
+	static const int CLIENTOUTOFDATE = 8;
 
 public:
 

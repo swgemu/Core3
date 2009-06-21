@@ -61,7 +61,7 @@ protected:
 
 public:
 	Structure();
-	~Structure();
+	virtual ~Structure();
 
 	//Sui Menus
 	virtual void sendPayMaintenanceTo(CreatureObject* player);

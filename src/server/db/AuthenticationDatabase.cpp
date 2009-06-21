@@ -42,67 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef FORUMSDATABASE_H_
-#define FORUMSDATABASE_H_
+#include "AuthenticationDatabase.h"
 
-#include "engine/engine.h"
+Database* AuthenticationDatabase::impl = NULL;
 
-#include "../conf/ConfigManager.h"
-
-class ForumsDatabase {
-	static Database* impl;
-	static String forumsbannedGroup;
-	static String forumsStandardGroup;
-	static String forumsUserTable;
-	static String forumsBannedTable;
-	static String forumsNewActivationTable;
-
-public:
-	ForumsDatabase(ConfigManager* configManager) {
-		String& forumdbHost = configManager->getForumsDBHost();
-        String& forumdbUser = configManager->getForumsDBUser();
-        String& forumdbPass = configManager->getForumsDBPass();
-        String& forumdbName = configManager->getForumsDBName();
-        uint16& forumdbPort = configManager->getForumsDBPort();
-        forumsbannedGroup = configManager->getForumsBannedGroup();
-        forumsStandardGroup = configManager->getForumsStandardGroup();
-        forumsUserTable = configManager->getForumsUserTable();
-        forumsBannedTable = configManager->getForumsBannedTable();
-        forumsNewActivationTable = configManager->getForumsNewActivationTable();
-
-        impl = new MySqlDatabase(String("ForumsDatabase"), forumdbHost);
-        impl->connect(forumdbName, forumdbUser, forumdbPass, forumdbPort);
-	}
-
-	~ForumsDatabase() {
-		delete impl;
-	}
-
-	inline static Database* instance() {
-		return impl;
-	}
-
-	inline static String bannedGroup() {
-		return forumsbannedGroup;
-	}
-
-	inline static String standardGroup() {
-		return forumsStandardGroup;
-	}
-
-
-	inline static String userTable() {
-		return forumsUserTable;
-	}
-
-	inline static String bannedTable() {
-		return forumsBannedTable;
-	}
-
-	inline static String newActivationTable() {
-		return forumsNewActivationTable;
-	}
-
-};
-
-#endif /*FORUMSDATABASE_H_*/

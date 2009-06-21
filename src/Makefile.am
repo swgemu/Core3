@@ -107,7 +107,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/chat/ChatManagerImplementation.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/conf/ConfigManager.cpp \
-		server/db/ForumsDatabase.cpp \
+		server/db/AuthenticationDatabase.cpp \
 		server/db/ServerDatabase.cpp \
 		server/login/LoginMessageProcessorThread.cpp \
 		server/login/LoginPacketHandler.cpp \

@@ -42,9 +42,6 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-
-#include "objects.h"
-
 #include "LoginPacketHandler.h"
 #include "LoginClient.h"
 
@@ -88,80 +85,79 @@ void LoginPacketHandler::handleLoginClientId(Message* pack) {
 	String errtype, errmsg;
 	Message* ver;
 
-	Account account(pack);
+	Account account(server, pack);
 
-	if (!account.checkVersion()) {
+	// Check if the account exists in the db
+	int validateResult = account.validate(configManager);
+
+	// Only bother attempting an account if we know for sure there isn't an error and it doesnt exist
+	if (validateResult == ACCOUNTDOESNTEXIST) {
+		// Create the account
+		validateResult = account.create(configManager);
+
+		// If there are no errors, validate the login once again
+		if (validateResult == ACCOUNTOK)
+			account.validate(configManager);
+	}
+
+	// Parse the validation result. If successful, authenticate the login
+	switch (validateResult) {
+	case CLIENTOUTOFDATE:
 		errtype = "Login Error";
 		errmsg = "The client you are using is out of date. Exit the game and run the Launchpad Enhanced patcher.";
 		ver = new ErrorMessage(errtype, errmsg, 0x00);
 		client->sendMessage(ver);
-	} else {
-		// Check if the account exists in the db
-		int validateResult = account.validate(configManager);
-
-		// Only bother attempting an account if we know for sure there isn't an error and it doesnt exist
-		if (validateResult == ACCOUNTDOESNTEXIST) {
-			// Create the account
-			validateResult = account.create(configManager);
-
-			// If there are no errors, validate the login once again
-			if (validateResult == ACCOUNTOK)
-				account.validate(configManager);
-		}
-
-		// Parse the validation result. If successful, authenticate the login
-		switch (validateResult) {
-		case ACCOUNTOK:
-			account.login(client);
-			return;
-		case ACCOUNTINUSE:
-			errtype = "Error";
-			errmsg= "Either you have mistyped your username, password, or this account is already in use.";
-			ver = new ErrorMessage(errtype, errmsg, 0x00);
-			client->sendMessage(ver);
-			return;
-		case ACCOUNTBADPW:
-			errtype = "Password Error";
-			errmsg= "Incorrect password entered.  Try again";
-			ver = new ErrorMessage(errtype, errmsg, 0x00);
-			client->sendMessage(ver);
-			return;
-		case ACCOUNTBANNED:
-			errtype = "User Banned";
-			errmsg = "Your Account is Banned.";
-			ver = new ErrorMessage(errtype, errmsg, 0x00);
-			client->sendMessage(ver);
-			return;
-		case ACCOUNTAUTOREGDISABLED:
-			errtype = "Login Error";
-			errmsg = "Auto Registration is disabled, please obtain an account from a server administrator";
-			ver = new ErrorMessage(errtype, errmsg, 0x00);
-			client->sendMessage(ver);
-			return;
-		case ACCOUNTDOESNTEXIST:
-			errtype = "Invalid Account";
-			errmsg = "The specified user is not a registered forum user, please register on the forums to access this server.";
-			ver = new ErrorMessage(errtype, errmsg, 0x00);
-			client->sendMessage(ver);
-			return;
-		case ACCOUNTNOTACTIVE:
-			errtype = "Inactive Account";
-			errmsg = "Your forum account is not active.  Please respond to your activation email.  "
+		return;
+	case ACCOUNTOK:
+		account.login(client);
+		return;
+	case ACCOUNTINUSE:
+		errtype = "Error";
+		errmsg = "Either you have mistyped your username, password, or this account is already in use.";
+		ver = new ErrorMessage(errtype, errmsg, 0x00);
+		client->sendMessage(ver);
+		return;
+	case ACCOUNTBADPW:
+		errtype = "Password Error";
+		errmsg = "Incorrect password entered.  Try again";
+		ver = new ErrorMessage(errtype, errmsg, 0x00);
+		client->sendMessage(ver);
+		return;
+	case ACCOUNTBANNED:
+		errtype = "User Banned";
+		errmsg = "Your Account is Banned.";
+		ver = new ErrorMessage(errtype, errmsg, 0x00);
+		client->sendMessage(ver);
+		return;
+	case ACCOUNTAUTOREGDISABLED:
+		errtype = "Login Error";
+		errmsg = "Auto Registration is disabled, please obtain an account from a server administrator";
+		ver = new ErrorMessage(errtype, errmsg, 0x00);
+		client->sendMessage(ver);
+		return;
+	case ACCOUNTDOESNTEXIST:
+		errtype = "Invalid Account";
+		errmsg = "The specified user is not a registered forum user, please register on the forums to access this server.";
+		ver = new ErrorMessage(errtype, errmsg, 0x00);
+		client->sendMessage(ver);
+		return;
+	case ACCOUNTNOTACTIVE:
+		errtype = "Inactive Account";
+		errmsg = "This forum account is not active.  Please respond to your activation email.  "
 					"If you have already responded to the email, it can take up to 24 hours for "
 					"your game account to activate";
-			ver = new ErrorMessage(errtype, errmsg, 0x00);
-			client->sendMessage(ver);
-			return;
-		case SERVERERROR:
-			errtype = "Server Error";
-			errmsg = "The Login Server has encountered an internal error and is either refusing connections or undergoing maintenance.  "
+		ver = new ErrorMessage(errtype, errmsg, 0x00);
+		client->sendMessage(ver);
+		return;
+	case SERVERERROR:
+		errtype = "Server Error";
+		errmsg = "The Login Server has encountered an internal error and is either refusing connections or undergoing maintenance.  "
 					"Please try again later.";
-			ver = new ErrorMessage(errtype, errmsg, 0x00);
-			client->sendMessage(ver);
-			return;
-		default:
-			break;
-		}
+		ver = new ErrorMessage(errtype, errmsg, 0x00);
+		client->sendMessage(ver);
+		return;
+	default:
+		break;
 	}
 }
 

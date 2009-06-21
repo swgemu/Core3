@@ -61,33 +61,24 @@ bool ConfigManager::loadConfigData() {
 	dBUser = getGlobalString("DBUser");
 	dBPass = getGlobalString("DBPass");
 
-	forumsdBHost = getGlobalString("ForumsDBHost");
-	forumsdBPort = getGlobalShort("ForumsDBPort");
-	forumsdBName = getGlobalString("ForumsDBName");
-	forumsdBUser = getGlobalString("ForumsDBUser");
-	forumsdBPass = getGlobalString("ForumsDBPass");
-	forumsBannedGroupID = getGlobalString("ForumsBannedGroupID");
-	forumsStandardGroupID = getGlobalString("ForumsStandardGroupID");
-	forumsUserTable = getGlobalString("ForumsUserTable");
-	forumsBannedTable = getGlobalString("ForumsBannedTable");
-	forumsNewActivationTable = getGlobalString("ForumsNewActivationTable");
-
-	statusPort = getGlobalShort("StatusPort");
-
-	pingPort = getGlobalShort("PingPort");
-	pingAllowedConnections = getGlobalInt("PingAllowedConnections");
-
 	loginPort = getGlobalShort("LoginPort");
 	loginAllowedConnections =  getGlobalInt("LoginAllowedConnections");
 	autoReg = getGlobalByte("AutoReg");
-	useVBIngeration  = getGlobalByte("UseVBIngeration");
+	authenticationMethod  = getGlobalInt("AuthenticationMethod");
+
+	pingPort = getGlobalShort("PingPort");
+	pingAllowedConnections = getGlobalInt("PingAllowedConnections");
 
 	zoneProcessingThreads = getGlobalInt("ZoneProcessingThreads");
 	zoneAllowedConnections = getGlobalInt("ZoneAllowedConnections");
 	zoneGalaxyID = getGlobalInt("ZoneGalaxyID");
 
+
+	statusPort = getGlobalShort("StatusPort");
 	statusAllowedConnections = getGlobalInt("StatusAllowedConnections");
 	statusInterval = getGlobalInt("StatusInterval");
+
+	clientVersion = getGlobalString("ClientVersion");
 
 	return true;
 }

@@ -56,39 +56,29 @@ class ConfigManager : public Lua {
 
 	String orbNamingDirectoryAddress;
 
-	String forumsdBHost;
-	uint16 forumsdBPort;
-	String forumsdBName;
-	String forumsdBUser;
-	String forumsdBPass;
-	String forumsBannedGroupID;
-	String forumsStandardGroupID;
-	String forumsUserTable;
-	String forumsBannedTable;
-	String forumsNewActivationTable;
-
 	String dBHost;
 	uint16 dBPort;
 	String dBName;
 	String dBUser;
 	String dBPass;
 
-	uint16 statusPort;
 	uint16 loginPort;
-	uint16 pingPort;
-
 	int loginAllowedConnections;
 	bool autoReg;
-	bool useVBIngeration;
+	int authenticationMethod;
+
+	uint16 pingPort;
+	int pingAllowedConnections;
 
 	int zoneProcessingThreads;
 	int zoneAllowedConnections;
 	int zoneGalaxyID;
 
+	uint16 statusPort;
 	int statusAllowedConnections;
 	unsigned int statusInterval;
 
-	int pingAllowedConnections;
+	String clientVersion;
 
 public:
 
@@ -103,37 +93,26 @@ public:
 		dBHost = "127.0.0.1";
 		dBPort = 3306;
 		dBName = "swgemu";
-		dBUser = "root";
-		dBPass = "Gemeni1";
-
-		forumsdBHost = "127.0.0.1";
-		forumsdBPort = 3306;
-		forumsdBName = "swgemu";
-		forumsdBUser = "root";
-		forumsdBPass = "Gemeni1";
-		forumsBannedGroupID = "8";
-		forumsStandardGroupID = "2";
-		forumsUserTable = "vb3_users";
-		forumsBannedTable = "vb3_bannedusers";
-		forumsNewActivationTable = "vb3_useractivation";
-		useVBIngeration = 0;
-
-		statusPort = 44455;
-
-		pingPort = 44462;
+		dBUser = "swgemu";
+		dBPass = "123456";
 
 		loginPort = 44453;
 		loginAllowedConnections = 30;
 		autoReg = true;
+		authenticationMethod = 0;
+
+		pingPort = 44462;
+		pingAllowedConnections = 3000;
 
 		zoneProcessingThreads = 10;
 		zoneAllowedConnections = 300;
 		zoneGalaxyID = 2;
 
+		statusPort = 44455;
 		statusAllowedConnections = 100;
 		statusInterval = 60;
 
-		pingAllowedConnections = 3000;
+		clientVersion = "20050408-18:00"; // This is the 14.1 Client
 	}
 
 	~ConfigManager() {
@@ -187,80 +166,40 @@ public:
 		return dBPass;
 	}
 
-	inline String& getForumsDBHost() {
-		return forumsdBHost;
-	}
-
-	inline uint16& getForumsDBPort() {
-		return forumsdBPort;
-	}
-
-	inline String& getForumsDBName() {
-		return forumsdBName;
-	}
-
-	inline String& getForumsDBUser() {
-		return forumsdBUser;
-	}
-
-	inline String& getForumsDBPass() {
-		return forumsdBPass;
-	}
-
-	inline String& getForumsBannedGroup() {
-		return forumsBannedGroupID;
-	}
-
-	inline String& getForumsStandardGroup() {
-		return forumsStandardGroupID;
-	}
-
-	inline String& getForumsUserTable() {
-		return forumsUserTable;
-	}
-
-	inline String& getForumsBannedTable() {
-		return forumsBannedTable;
-	}
-
-	inline String& getForumsNewActivationTable() {
-		return forumsNewActivationTable;
-	}
-
 	inline uint16 getLoginPort() {
 		return loginPort;
-	}
-
-	inline uint16 getStatusPort() {
-		return statusPort;
-	}
-
-	inline uint16 getPingPort() {
-		return pingPort;
 	}
 
 	inline int getLoginAllowedConnections() {
 		return loginAllowedConnections;
 	}
 
-	inline int getStatusAllowedConnections() {
-		return statusAllowedConnections;
+	inline int getAutoReg() {
+		return autoReg;
+	}
+
+	inline int getAuthenticationMethod() {
+		return authenticationMethod ;
+	}
+
+	inline uint16 getPingPort() {
+		return pingPort;
 	}
 
 	inline int getPingAllowedConnections() {
 		return pingAllowedConnections;
 	}
 
+	inline uint16 getStatusPort() {
+		return statusPort;
+	}
+
+	inline int getStatusAllowedConnections() {
+		return statusAllowedConnections;
+	}
+
 	inline int getStatusInterval() {
 		return statusInterval;
-	}
-
-	inline int getAutoReg() {
-		return autoReg;
-	}
-
-	inline int getUseVBIngeration() {
-		return useVBIngeration ;
 	}
 
 	inline int getZoneProcessingThreads() {
@@ -275,6 +214,9 @@ public:
 		return zoneGalaxyID;
 	}
 
+	inline String& getClientVersion() {
+		return clientVersion;
+	}
 };
 
 #endif // #ifndef CONFIGMANAGER_H_

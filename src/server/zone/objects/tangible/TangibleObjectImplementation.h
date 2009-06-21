@@ -158,7 +158,7 @@ public:
 	}
 
 	inline void setConditionMax(float max) {
-		conditionMax = max;
+		conditionMax = (uint32)max;
 	}
 
 	//Getters

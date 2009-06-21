@@ -49,8 +49,6 @@ which carries forward this exception.
 
 #include "../zone/objects/tangible/creature/player/PlayerObject.h"
 
-#include "../db/ForumsDatabase.h"
-
 class GMCommand;
 class GMCommandMap;
 class GameCommandHandler;

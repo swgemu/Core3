@@ -51,7 +51,6 @@ LoginServer::LoginServer(ConfigManager* configMan) : DatagramServiceThread("Logi
 	phand = NULL;
 	phandler = NULL;
 
-	processors = NULL;
 	procThreadCount = 0;
 
 	configManager = configMan;
@@ -70,9 +69,9 @@ LoginServer::~LoginServer() {
 		phandler = NULL;
 	}
 
-	if (processors != NULL) {
-		free(processors);
-		processors = NULL;
+	while (processors.size() > 0) {
+		LoginMessageProcessorThread* processor = processors.remove(0);
+		delete processor;
 	}
 }
 
@@ -87,13 +86,12 @@ void LoginServer::init() {
 
 	procThreadCount = 1;
 
-	processors = (LoginMessageProcessorThread**) malloc(procThreadCount * sizeof(LoginMessageProcessorThread*));
-
 	for (int i = 0; i < procThreadCount; ++i) {
 		StringBuffer name;
 		name << "LoginProcessor" << i;
 
-		processors[i] = new LoginMessageProcessorThread(name.toString(), phandler);
+		LoginMessageProcessorThread* processor = new LoginMessageProcessorThread(name.toString(), phandler);
+		processors.add(processor);
 	}
 
 	return;
@@ -102,8 +100,8 @@ void LoginServer::init() {
 void LoginServer::run() {
 	scheduler->start();
 
-	for (int i = 0; i < procThreadCount; ++i) {
-		LoginMessageProcessorThread* processor = processors[i];
+	for (int i = 0; i < processors.size(); ++i) {
+		LoginMessageProcessorThread* processor = processors.get(i);
 		processor->start(this);
 	}
 
@@ -115,8 +113,8 @@ void LoginServer::run() {
 
 void LoginServer::shutdown() {
 	// shutting down
-	for (int i = 0; i < procThreadCount; ++i) {
-		LoginMessageProcessorThread* processor = processors[i];
+	for (int i = 0; i < processors.size(); ++i) {
+		LoginMessageProcessorThread* processor = processors.get(i);
 
 		flushMessages();
 		processor->stop();

@@ -60,7 +60,7 @@ public:
 		pointsHutt = 0;
 
 		setInsertPlan(SortedVector<VectorMapEntry<String, float>*>::NO_DUPLICATE);
-		setNullValue(NULL);
+		//setNullValue(NULL);
 	}
 
 	virtual ~FactionPointsList() {

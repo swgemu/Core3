@@ -51,7 +51,6 @@ which carries forward this exception.
 #include "conf/ConfigManager.h"
 
 #include "db/ServerDatabase.h"
-#include "db/ForumsDatabase.h"
 
 #include "login/LoginServer.h"
 
@@ -62,20 +61,20 @@ which carries forward this exception.
 #include "zone/ZoneServer.h"
 #include "zone/ZoneServerImplementation.h"
 
+class LoginServer;
+
 class ServerCore : public Core, public Logger {
 	ConfigManager configManager;
 
 	ServerDatabase* database;
 
-	ForumsDatabase* forumDatabase;
-
 	DistributedObjectBroker* orb;
-
-	LoginServer* loginServer;
 
 	StatusServer* statusServer;
 
 	PingServer* pingServer;
+
+	LoginServer* loginServer;
 
 	static ZoneServer* zoneServer;
 
@@ -96,7 +95,6 @@ public:
 	static ZoneServer* getZoneServer() {
 		return zoneServer;
 	}
-
 };
 
 #endif /*SERVERCORE_H_*/

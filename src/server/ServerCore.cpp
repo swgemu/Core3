@@ -60,7 +60,6 @@ ServerCore::ServerCore() : Core("log/core3.log"), Logger("Core") {
 	zoneServer = NULL;
 	statusServer = NULL;
 	pingServer = NULL;
-	forumDatabase = NULL;
 	database = NULL;
 }
 
@@ -72,9 +71,6 @@ void ServerCore::init() {
 	try {
 
 		database = new ServerDatabase(&configManager);
-
-		if (configManager.getUseVBIngeration() == 1)
-			forumDatabase = new ForumsDatabase(&configManager);
 
 		if (configManager.getMakeZone()) {
 			String& orbaddr = configManager.getORBNamingDirectoryAddress();
@@ -176,11 +172,6 @@ void ServerCore::shutdown() {
 	if (database != NULL) {
 		delete database;
 		database = NULL;
-	}
-
-	if (forumDatabase != NULL) {
-		delete forumDatabase;
-		forumDatabase = NULL;
 	}
 
 	DistributedObjectBroker::finalize();

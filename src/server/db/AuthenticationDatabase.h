@@ -42,11 +42,30 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "ForumsDatabase.h"
+#ifndef AUTHENTICATIONDATABASE_H_
+#define AUTHENTICATIONDATABASE_H_
 
-Database* ForumsDatabase::impl = NULL;
-String ForumsDatabase::forumsbannedGroup = "0";
-String ForumsDatabase::forumsStandardGroup = "0";
-String ForumsDatabase::forumsUserTable = "0";
-String ForumsDatabase::forumsBannedTable = "0";
-String ForumsDatabase::forumsNewActivationTable = "0";
+#include "engine/engine.h"
+
+class AuthenticationDatabase {
+	static Database* impl;
+
+public:
+	AuthenticationDatabase(const String& hostaddress, const String& schemaname,
+			const String& user, const String& pass, const int port) {
+
+        impl = new MySqlDatabase(String("AuthenticationDatabase"), hostaddress);
+        impl->connect(schemaname, user, pass, port);
+	}
+
+	~AuthenticationDatabase() {
+		delete impl;
+	}
+
+	inline static Database* instance() {
+		return impl;
+	}
+
+};
+
+#endif /*AUTHENTICATIONDATABASE_H_*/

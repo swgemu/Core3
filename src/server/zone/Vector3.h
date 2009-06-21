@@ -101,7 +101,7 @@ public:
 		z = scalar;;
 	}
 
-	~Vector3() {
+	virtual ~Vector3() {
 	}
 
 public:

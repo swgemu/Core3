@@ -50,17 +50,27 @@ which carries forward this exception.
 #include "LoginPacketHandler.h"
 #include "LoginMessageProcessorThread.h"
 
+#include "objects/Account.h"
+
 #include "../conf/ConfigManager.h"
 
+class LoginPacketHandler;
+class LoginMessageProcessorThread;
+class Account;
+
 class LoginServer : public DatagramServiceThread {
+
 	BasePacketHandler* phand;
 
 	LoginPacketHandler* phandler;
 
 	ConfigManager* configManager;
 
-	LoginMessageProcessorThread** processors;
+	Vector<LoginMessageProcessorThread*> processors;
+
 	int procThreadCount;
+
+	VectorMap<String, Account*> activeAccountMap;
 
 public:
 	LoginServer(ConfigManager* configManager);
