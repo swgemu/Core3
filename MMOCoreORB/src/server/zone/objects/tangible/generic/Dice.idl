@@ -1,0 +1,30 @@
+import "../../scene/SceneObject";
+
+import "../../creature/CreatureObject";
+
+import "../../player/Player";
+
+import "../TangibleObject";
+
+import "GenericItem";
+
+interface Dice implements GenericItem {
+
+
+	Dice(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn) {
+		super(oid, tempCRC, n, tempn, int gitype);
+	}
+
+	Dice(CreatureObject creature, unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn) {
+		super(creature, oid, tempCRC, n, tempn, int gitype);
+	}
+
+	Dice(CreatureObject creature, unsigned int tempCRC, const UnicodeString n, const String tempn) {
+		super(creature, unsigned long oid, tempCRC, n, tempn, int gitype);
+	}
+
+	void generateAttributes(SceneObject obj);
+
+	void rollDice(Player player, int dnum);
+	void setConfigurableDice(int dsides);
+}

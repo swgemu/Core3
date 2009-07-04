@@ -1,0 +1,119 @@
+/* Copyright (C) 2007 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+import "server/zone/ZoneServer";
+import "server/zone/Zone";
+include "server/zone/ZoneProcessServerImplementation";
+
+import "../../objects/tangible/TangibleObject";
+import "../../objects/intangible/IntangibleObject";
+import "../../objects/scene/SceneObject";
+import "../../objects/manufacture/ManufactureSchematic";
+
+import "../../objects/tangible/weapons/Weapon";
+import "../../objects/tangible/wearables/Armor";
+
+import "../../objects/tangible/deed/DeedObject";
+
+import "../../objects/creature/bluefrog/BlueFrogVector";
+
+import "../../objects/player/Player";
+import "../../objects/tangible/Container";
+import "../../objects/installation/factory/FactoryObject";
+
+interface ItemManager {
+	ItemManager(ZoneServer server, ZoneProcessServerImplementation pServer) {
+		super(server, pServer);
+	}
+	
+	void loadStaticWorldObjects();
+
+	TangibleObject getPlayerItem(Player player, long objectid);
+	
+	void loadPlayerItems(Player player);
+	void loadDefaultPlayerItems(Player player);
+	void loadPlayerDatapadItems(Player player);
+	void loadBankItems(Player player);
+	
+	void unloadPlayerItems(Player player);
+	void unloadDatapadItems(Player player);
+	
+	void createPlayerItem(Player player, TangibleObject item);
+
+	TangibleObject clonePlayerObjectTemplate(unsigned long objectid, TangibleObject templ);
+
+	TangibleObject initializeTangibleForCrafting(Player player, int objecttype,
+			unsigned long objectid, unsigned long objectcrc, String objectn,
+			String objecttemp, boolean equipped);
+
+	void savePlayerItem(Player player, TangibleObject item); 
+	void saveDatapadItem(Player player, ManufactureSchematic schematic);
+
+	void deletePlayerItem(Player player, TangibleObject item, boolean notify);
+	void deleteDatapadItem(Player player, SceneObject item, boolean notify);
+	
+	void transferContainerItem(Player player, TangibleObject item, unsigned long destinationID);
+	void loadStructurePlayerItems(Player player, unsigned long cellID);
+	void loadFactoryContainerItems(FactoryObject fact, Container conti);
+
+	boolean moveItemToDestination(Player player, TangibleObject item, SceneObject destination);
+	
+	void giveForageItem(Player player, int group, int count);                                                                     
+	
+	// stat methods
+	void showDbStats(Player player);
+	void showDbDeleted(Player player);
+	
+	void purgeDbDeleted(Player player);
+	
+	// getters
+	unsigned long getNextStaticObjectID();
+
+	BlueFrogVector getBFItemList();
+	
+	BlueFrogVector getBFProfList(String group);
+
+	String getBFProf(String key);
+
+	void giveBFItemSet(Player player, String set);
+}

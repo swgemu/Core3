@@ -1,0 +1,384 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
+
+include "engine/service/proto/BaseMessage";
+include "engine/service/proto/StandaloneBaseMessage";
+
+include "engine/util/QuadTreeEntry";
+
+include "engine/util/Coordinate";
+
+include "../../ZoneProcessServerImplementation";
+
+import "../../packets/scene/AttributeListMessage";
+
+import "../../packets/object/ObjectMenuResponse";
+
+import "../../Zone";
+
+import "../../ZoneClientSession";
+
+import "../player/Player";
+
+import "../tangible/weapons/Weapon";
+
+import "../creature/CreatureObject";
+
+import "../building/BuildingObject";
+
+import "../creature/skills/target/AttackTargetSkill";
+
+
+interface SceneObject implements ManagedObject {
+	native boolean destroy();
+
+	void redeploy();
+
+	void scheduleUndeploy();
+
+	void removeUndeploymentEvent();
+
+	// client methods
+	void sendTo(Player player, boolean doClose = true);
+	void sendDestroyTo(Player player);
+
+	void sendRadialResponseTo(Player player, ObjectMenuResponse omr);
+
+	void create(ZoneClientSession client);
+	void destroy(ZoneClientSession client);
+
+	void sendConversationStartTo(SceneObject obj);
+	void selectConversationOption(int option, SceneObject obj);
+	void sendConversationStopTo(SceneObject obj);
+
+	void close(ZoneClientSession client);
+	
+	void init();
+	void initScriptedValues();
+
+	// Container methods
+	void openTo(Player player);
+
+	boolean addObject(SceneObject obj);
+
+	SceneObject getObject(int index);
+	SceneObject getObject(unsigned long oid);
+
+	boolean removeObject(int index);
+	boolean removeObject(unsigned long oid);
+
+	void sendItemsTo(Player player);
+
+	// getters
+	int getContainerObjectsSize();
+	int getContainerObjectsWithChildsSize();
+
+	boolean isContainerEmpty();
+	boolean isContainerFull();
+	
+	boolean isAttackable();
+
+	int getSlots();
+	int getContainerType();
+	int getContainerVolumeLimit();
+
+	// setters
+	void setContainerVolumeLimit(unsigned int limit);
+	void setContainerType(unsigned int type);
+
+	// QT methods
+	boolean isInRange(SceneObject obj, float range);
+
+	boolean isInRange(float x, float y, float range);
+
+	int inRangeObjectCount();
+
+	QuadTreeEntry getInRangeObject(int idx);
+	void addInRangeObject(QuadTreeEntry obj, boolean notifyUpdate = true);
+	void removeInRangeObject(QuadTreeEntry obj);
+
+	boolean isInQuadTree();
+
+	QuadTreeEntry getQuadTreeEntry();
+	
+	void serialize(String str);
+	void deSerialize(String str);
+
+	int compareTo(SceneObject obj);
+
+	BaseMessage link(SceneObject obj);
+	void link(ZoneClientSession client, SceneObject obj);
+
+	void randomizePosition(float radius);
+
+	int useObject(Player player);
+
+	// positioning methods
+	void initializePosition(float x, float z, float y);
+
+	void setPosition(float x, float z, float y);
+
+	void setPositionX(float x);
+	void setPositionZ(float z);
+	void setPositionY(float y);
+
+	void setDirection(float x, float z, float y, float w);
+
+	void setPersistent(boolean pers);
+	void setUpdated(boolean upd);
+	void setDeleted(boolean del);
+	
+	// Saving methods
+	boolean isPersistent();
+	boolean isUpdated();
+	boolean isDeleted();
+
+	
+	Coordinate getCoordinate(float x, float y, float distance, float angle);
+	Coordinate getCoordinate(SceneObject object, float distance, float angle);
+	Coordinate getCoordinate(SceneObject object1, SceneObject object2, float distanceFromObject1);
+
+	// attribute methods
+	void generateAttributes(Player player);
+	void addAttributes(AttributeListMessage alm);
+	void parseItemAttributes();
+	
+	// UI Listen Methods
+	void synchronizedUIListen(Player player, int value);
+	void synchronizedUIStopListen(Player player, int value);
+
+	// logger methods
+	void info(const String message, boolean forcedLog = false);
+	void error(const String message);
+
+	// setters
+	local void setZoneProcessServer(ZoneProcessServerImplementation processor);
+
+	void setCustomName(const String n);
+	void setCustomName(const UnicodeString n);
+
+	void setObjectID(unsigned long oid);
+
+	void setObjectCRC(unsigned int crc);
+
+	void setObjectType(int tp);
+
+	void setMovementCounter(unsigned int cntr);
+
+	void setZoneIndex(int id);
+
+	void setAssociatedArea(unsigned long uid);
+
+	//void setLockName(const String name);
+
+	void setParent(SceneObject par, unsigned int linktype = 0x04);
+
+	void setZone(Zone zne);
+	
+	void setAttributes(String attributeString);
+	
+	void setCustomizationString(String cust);
+
+	void setCustomizationVariable(const String type, unsigned int value);
+	void setCustomizationVariable(unsigned char type, unsigned int value);
+
+	void clearUndeploymentEvent();
+
+	void insertToZone(Zone zone);
+
+	void insertToBuilding(BuildingObject building);
+
+	void removeFromZone(boolean doLock = true);
+	void removeFromBuilding(BuildingObject building);
+
+	void broadcastMessage(BaseMessage msg, int range = 128, boolean doLock = true, boolean sendSelf = true);
+	void broadcastMessage(StandaloneBaseMessage msg, int range = 128, boolean doLock = true);
+
+	boolean isUndeploymentScheduled();
+
+	// getters
+	int getObjectType();
+
+	unsigned long getObjectID();
+
+	unsigned int getObjectCRC();
+
+	unsigned int getMovementCounter();
+
+	float getPositionX();
+
+	float getPositionZ();
+
+	float getPositionY();
+
+	int getDirectionAngle();
+	
+	float getPrecisionDirectionAngle();
+
+	float getDirectionX();
+
+	float getDirectionZ();
+
+	float getDirectionY();
+
+	float getDirectionW();
+
+	String getLoggingName();
+
+	UnicodeString getCustomName();
+	String getStfName();
+	String getStfFile();
+	String getStfDetail();
+
+	unsigned long getAssociatedArea();
+	
+	void getCustomizationString(String appearance);
+	
+	String getAttributes();
+
+	boolean isPlayer();
+
+	boolean isNonPlayerCreature();
+	
+	boolean isPlayerInventory();
+
+	boolean isPlayerBankStorage();	
+
+	boolean isBuilding();
+
+	boolean isCell();
+
+	boolean isTangible();
+
+	boolean isIntangible();
+
+	boolean isStatic();
+
+	boolean isShip();
+
+	boolean isMission();
+
+	boolean isPlayerObject();
+
+	boolean isWaypoint();
+
+	boolean isManufactureSchematic();
+
+	Zone getZone();
+
+	int getZoneID();
+
+	SceneObject getParent();
+
+	unsigned long getParentID();
+
+	boolean isMoving();
+
+	void switchMovingState();
+
+	boolean doKeepObject();
+
+	local ZoneProcessServerImplementation getZoneProcessServer();
+
+	void setStfName(const String name);
+	void setStfFile(const String file);
+	void setStfDetail(const String detail);
+
+	// Virtual functions for combat
+	void setCombatState();
+	void clearCombatState(boolean removedefenders = true);
+
+	void setDefender(SceneObject defender);
+	void addDefender(SceneObject defender);
+
+	void removeDefenders();
+	void removeDefender(SceneObject defender);
+
+	boolean hasDefender(SceneObject defender);
+	SceneObject getDefender(int idx);
+	unsigned int getDefenderListSize();
+
+	boolean isPeaced();
+	boolean isAttackableBy(CreatureObject creature);
+
+	boolean isInANoBuildArea();
+
+	// experience functions
+	void addDamageDone(CreatureObject creature, int damage, String skillname);
+	void dropDamageDone(CreatureObject creature);
+	int getTotalDamage();
+	void disseminateXp(int levels);
+	void cleanupDamageDone();
+
+
+	//Event Handlers
+	void onIncapacitateTarget(CreatureObject victim);
+	void onInflictDamage(CreatureObject victim, unsigned char attribute, unsigned int damage);
+	void onKill(CreatureObject victim);
+	void onDeathblow(Player victim);
+	void onResuscitateTarget(CreatureObject patient);
+	void onHealTargetDamage(CreatureObject patient, unsigned char attribute, unsigned int amount);
+	void onHealTargetWound(CreatureObject patient, unsigned char attribute, unsigned int amount);
+	void onHealEnhanceTarget(CreatureObject patient, unsigned char attribute, unsigned int amount, float duration);
+	void onReceivePaymentFrom(CreatureObject sender, unsigned int amount);
+	void onTrade(Player sender, Player receiver);
+
+	//Actions
+	boolean inflictDamage(CreatureObject victim, unsigned char attribute, unsigned int damage);
+	void incapacitate(CreatureObject victim);
+	void kill(CreatureObject victim);
+	void deathblow(Player victim);
+	unsigned int healDamage(CreatureObject patient, unsigned char attribute, unsigned int amount);
+	unsigned int healWound(CreatureObject patient, unsigned char attribute, unsigned int amount);
+	unsigned int healEnhance(CreatureObject patient, unsigned char attribute, unsigned int amount, float duration);
+	void resuscitate(CreatureObject patient, boolean forced = false);
+	void receivePaymentFrom(CreatureObject sender, unsigned int amount);
+	void warpTo(float x, float z, float y, unsigned long parentID = 0);
+
+	float calculateDistance(SceneObject scno);
+	
+	boolean getPickupFlag();
+
+	void setPickupFlag(boolean pickup);	
+}
