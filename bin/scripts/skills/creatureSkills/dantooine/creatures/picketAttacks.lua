@@ -67,10 +67,6 @@ picketAttack1 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(picketAttack1)
@@ -105,10 +101,6 @@ picketAttack2 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(picketAttack2)
@@ -143,10 +135,6 @@ picketAttack3 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(picketAttack3)
@@ -181,10 +169,6 @@ picketAttack4 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(picketAttack4)
@@ -219,10 +203,6 @@ picketAttack5 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(picketAttack5)

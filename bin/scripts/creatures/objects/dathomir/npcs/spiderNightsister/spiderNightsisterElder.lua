@@ -58,18 +58,18 @@ spiderNightsisterElder = Creature:new {
 
 	healthMax = 392000,
 	healthMin = 321000,
-	strength = 10000,
-	constitution = 10000,
+	strength = 0,
+	constitution = 0,
 
 	actionMax = 392000,
 	actionMin = 321000,
-	quickness = 10000,
-	stamina = 10000,
+	quickness = 0,
+	stamina = 0,
 
 	mindMax = 392000,
 	mindMin = 321000,
-	focus = 10000,
-	willpower = 10000,
+	focus = 0,
+	willpower = 0,
 
 	height = 1, -- Size of creature
 	armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -123,11 +123,7 @@ spiderNightsisterElder = Creature:new {
 
 	lootGroup = "0", -- Group it belongs to for loot
 
-	tame = 0,
-	datapadItemCRC = 0,
-	mountCRC = 0,
-	mountSpeed = 0,
-	mountAcceleration = 0,
+	tame = 0,  -- Likely hood to be tamed
 
 	milk = 0,
 
@@ -141,7 +137,7 @@ spiderNightsisterElder = Creature:new {
 	meatMax = 0,
 
 	skills = { "spiderNightsisterAttack1" },
-	respawnTimer = 300,
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

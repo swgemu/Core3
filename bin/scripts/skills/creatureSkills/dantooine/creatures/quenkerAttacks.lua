@@ -67,10 +67,6 @@ quenkerAttack1 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(quenkerAttack1)
@@ -105,10 +101,6 @@ quenkerAttack2 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(quenkerAttack2)
@@ -143,10 +135,6 @@ quenkerAttack3 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(quenkerAttack3)
@@ -200,10 +188,6 @@ quenkerAttack4 = {
         CbtSpamEvade = "attack_evade",
         CbtSpamHit = "attack_hit",
         CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(quenkerAttack4)
@@ -238,10 +222,6 @@ quenkerAttack5 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(quenkerAttack5)
@@ -276,10 +256,6 @@ quenkerAttack6 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(quenkerAttack6)
@@ -314,10 +290,6 @@ quenkerAttack7 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(quenkerAttack7)

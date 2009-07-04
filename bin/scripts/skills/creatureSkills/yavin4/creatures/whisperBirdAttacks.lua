@@ -67,10 +67,6 @@ whisperBirdAttack1 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(whisperBirdAttack1)
@@ -105,10 +101,6 @@ whisperBirdAttack2 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(whisperBirdAttack2)

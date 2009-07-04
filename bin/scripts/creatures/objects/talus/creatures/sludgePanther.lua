@@ -47,7 +47,7 @@ sludgePanther = Creature:new {
 
 	speciesName = "sludge_panther",
 	stfName = "mob/creature_names",
-	objectCRC = 2183424297, 
+	objectCRC = 347380569, 
 	socialGroup = "Sludge Panther",
 	level = 16,
 
@@ -123,11 +123,7 @@ sludgePanther = Creature:new {
 
 	lootGroup = "0", -- Group it belongs to for loot
 
-	tame = 0,
-	datapadItemCRC = 0,
-	mountCRC = 0,
-	mountSpeed = 0,
-	mountAcceleration = 0,
+	tame = 0.25,  -- Likely hood to be tamed
 
 	milk = 0,
 
@@ -147,4 +143,4 @@ sludgePanther = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(sludgePanther, 2183424297) --  Add to Global Table
+Creatures:addCreature(sludgePanther, 347380569) --  Add to Global Table

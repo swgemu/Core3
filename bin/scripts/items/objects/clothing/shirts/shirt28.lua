@@ -50,7 +50,7 @@ shirt28 = Clothing:new {
 
 	objectType = SHIRT,
 	
-	itemMask = HUMANOID_FEMALES,
+	itemMask = HUMANOIDS,
 
 	equipped = "0"
 }

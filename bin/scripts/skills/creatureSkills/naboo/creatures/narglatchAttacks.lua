@@ -67,10 +67,6 @@ narglatchAttack1 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(narglatchAttack1)
@@ -105,10 +101,6 @@ narglatchAttack2 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(narglatchAttack2)
@@ -143,10 +135,6 @@ narglatchAttack3 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(narglatchAttack3)

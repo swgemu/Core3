@@ -71,7 +71,7 @@ scout_wookie_female_items = { }
 
 -------------------Scout Items (All Species)--------------------
 
-general_scout_items = {cdefPistol, survivalKnife}
+general_scout_items = {cdef_pistol}
 
 createItemsFromList("scout", "humanoid", "male", scout_humanoid_male_items)
 createItemsFromList("scout", "humanoid", "female", scout_humanoid_female_items)

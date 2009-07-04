@@ -66,10 +66,6 @@ dwbMeleeAttack40 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(dwbMeleeAttack40)
@@ -101,10 +97,6 @@ dwbMeleeAttack41 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(dwbMeleeAttack41)
@@ -136,10 +128,6 @@ dwbMeleeAttack42 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(dwbMeleeAttack42)
@@ -171,10 +159,6 @@ dwbMeleeAttack43 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(dwbMeleeAttack43)
@@ -218,10 +202,6 @@ dwbMeleeAttack44 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(dwbMeleeAttack44)
@@ -253,10 +233,6 @@ dwbMeleeAttack45 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(dwbMeleeAttack45)
@@ -300,10 +276,6 @@ dwbMeleeAttack46 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(dwbMeleeAttack46)
@@ -346,10 +318,6 @@ dwbMeleeAttack47 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddDirectPoolAttackTargetSkill(dwbMeleeAttack47)
@@ -392,10 +360,6 @@ dwbMeleeAttack48 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddDirectPoolAttackTargetSkill(dwbMeleeAttack48)
@@ -427,10 +391,6 @@ dwbMeleeAttack49 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(dwbMeleeAttack49)
@@ -462,10 +422,6 @@ dwbMeleeAttack50 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(dwbMeleeAttack50)
@@ -497,10 +453,6 @@ dwbMeleeAttack51 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(dwbMeleeAttack51)
@@ -545,10 +497,6 @@ dwbMeleeAttack52 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(dwbMeleeAttack52)
@@ -590,10 +538,6 @@ dwbMeleeAttack53 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(dwbMeleeAttack53)
@@ -629,10 +573,6 @@ dwbMeleeRangedAttack1 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(dwbMeleeRangedAttack1)
@@ -665,10 +605,6 @@ dwbMeleeRangedAttack2 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(dwbMeleeRangedAttack2)
@@ -701,10 +637,6 @@ dwbMeleeRangedAttack3 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(dwbMeleeRangedAttack3)
@@ -744,10 +676,6 @@ dwbMeleeRangedAttack4 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(dwbMeleeRangedAttack4)

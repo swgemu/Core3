@@ -26,10 +26,6 @@ sandPantherAttack1 = {
         CbtSpamEvade = "attack_evade",
         CbtSpamHit = "attack_hit",
         CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(sandPantherAttack1)
@@ -64,10 +60,6 @@ sandPantherAttack2 = {
         CbtSpamEvade = "attack_evade",
         CbtSpamHit = "attack_hit",
         CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(sandPantherAttack2)
@@ -102,10 +94,6 @@ sandPantherAttack3 = {
         CbtSpamEvade = "attack_evade",
         CbtSpamHit = "attack_hit",
         CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(sandPantherAttack3)
@@ -140,10 +128,6 @@ sandPantherAttack4 = {
         CbtSpamEvade = "attack_evade",
         CbtSpamHit = "attack_hit",
         CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(sandPantherAttack4)

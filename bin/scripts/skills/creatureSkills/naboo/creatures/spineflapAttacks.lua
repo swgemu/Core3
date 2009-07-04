@@ -59,7 +59,7 @@ spineflapAttack1 = {
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 0,
+	stunChance = 50,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "attack_block",
@@ -67,10 +67,6 @@ spineflapAttack1 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(spineflapAttack1)
@@ -105,10 +101,6 @@ spineflapAttack2 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(spineflapAttack2)
@@ -143,10 +135,6 @@ spineflapAttack3 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(spineflapAttack3)
@@ -181,10 +169,6 @@ spineflapAttack4 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(spineflapAttack4)
@@ -219,10 +203,6 @@ spineflapAttack5 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(spineflapAttack5)
@@ -276,10 +256,6 @@ spineflapAttack6 = {
         CbtSpamEvade = "attack_evade",
         CbtSpamHit = "attack_hit",
         CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(spineflapAttack6)

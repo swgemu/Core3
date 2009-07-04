@@ -45,10 +45,6 @@ decayMiteAttack1 = {
         CbtSpamEvade = "attack_evade",
         CbtSpamHit = "attack_hit",
         CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(decayMiteAttack1)
@@ -83,10 +79,6 @@ decayMiteAttack2 = {
         CbtSpamEvade = "attack_evade",
         CbtSpamHit = "attack_hit",
         CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(decayMiteAttack2)
@@ -121,10 +113,6 @@ decayMiteAttack3 = {
         CbtSpamEvade = "attack_evade",
         CbtSpamHit = "attack_hit",
         CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(decayMiteAttack3)
@@ -159,10 +147,6 @@ decayMiteAttack4 = {
         CbtSpamEvade = "attack_evade",
         CbtSpamHit = "attack_hit",
         CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(decayMiteAttack4)
@@ -197,10 +181,6 @@ decayMiteAttack5 = {
         CbtSpamEvade = "attack_evade",
         CbtSpamHit = "attack_hit",
         CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(decayMiteAttack5)
@@ -254,10 +234,6 @@ decayMiteAttack6 = {
         CbtSpamEvade = "attack_evade",
         CbtSpamHit = "attack_hit",
         CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(decayMiteAttack6)
@@ -292,10 +268,6 @@ decayMiteAttack7 = {
         CbtSpamEvade = "attack_evade",
         CbtSpamHit = "attack_hit",
         CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(decayMiteAttack7)

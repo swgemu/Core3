@@ -26,10 +26,6 @@ tuskcatAttack1 = {
         CbtSpamEvade = "attack_evade",
         CbtSpamHit = "attack_hit",
         CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(tuskcatAttack1)
@@ -64,10 +60,6 @@ tuskcatAttack2 = {
         CbtSpamEvade = "attack_evade",
         CbtSpamHit = "attack_hit",
         CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(tuskcatAttack2)
@@ -102,10 +94,6 @@ tuskcatAttack3 = {
         CbtSpamEvade = "attack_evade",
         CbtSpamHit = "attack_hit",
         CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(tuskcatAttack3)

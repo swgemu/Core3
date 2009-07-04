@@ -49,4 +49,3 @@ RunItemLUAFile("objects/weapons/2H/maul.lua");
 RunItemLUAFile("objects/weapons/2H/powerHammer.lua");
 RunItemLUAFile("objects/weapons/2H/scythe.lua");
 RunItemLUAFile("objects/weapons/2H/vibroAxe.lua");
-RunItemLUAFile("objects/weapons/2H/elitescythe.lua");

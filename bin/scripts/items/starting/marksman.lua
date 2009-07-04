@@ -71,7 +71,7 @@ marksman_wookie_female_items = { }
 
 ----------------------Marksman Items (All Species)------------------------
 
-general_marksman_items = {cdefPistol, cdefCarbine, cdefRifle}
+general_marksman_items = {cdef_pistol, cdef_carbine, cdef_rifle}
 
 createItemsFromList("marksman", "humanoid", "male", marksman_humanoid_male_items)
 createItemsFromList("marksman", "humanoid", "female", marksman_humanoid_female_items)

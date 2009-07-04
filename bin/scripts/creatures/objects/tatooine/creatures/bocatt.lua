@@ -124,10 +124,6 @@ bocatt = Creature:new {
 	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0.25,  -- Likely hood to be tamed
-	datapadItemCRC = 1462408235,
-	mountCRC = 0,
-	mountSpeed = 0,
-	mountAcceleration = 0,
 
 	milk = 0,
 

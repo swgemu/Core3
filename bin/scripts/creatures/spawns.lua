@@ -90,7 +90,6 @@ if (PLANET_ID == 2) then
  RunCreatureFile("spawns/dathomir/sarlaacPit.lua")  
  RunCreatureFile("spawns/dathomir/citys/scienceOutpost.lua") 
  RunCreatureFile("spawns/dathomir/citys/tradeOutpost.lua")  
- RunCreatureFile("spawns/dathomir/nightspiderCultCave.lua")  
 end
 
 
@@ -152,13 +151,8 @@ RunCreatureFile("spawns/talus/citys/dearic.lua")
 RunCreatureFile("spawns/talus/citys/narshal.lua")
 --
 RunCreatureFile("spawns/talus/poi/lostVillageOfDurbin.lua")
-RunCreatureFile("spawns/talus/poi/corsecVsFlail.lua")
 --
 RunCreatureFile("spawns/talus/dungeons/aakuanChampionsCave.lua")
-RunCreatureFile("spawns/talus/dungeons/giantDecayMiteCave.lua")
-RunCreatureFile("spawns/talus/dungeons/binyarePirateBase.lua")
-RunCreatureFile("spawns/talus/dungeons/khamurraBiogeneticResearchStation.lua")
-RunCreatureFile("spawns/talus/dungeons/giantFynockCave.lua")
 end
 
 --Tatooine

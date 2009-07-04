@@ -77,14 +77,15 @@ deedForWindPowerGenerator = Object:new {
    experimentalMax = "0, 0, 10, 50000, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8388610:objectcrc=3871805863:stfFile=deed:stfName=wind_generator_deed_name:stfDetail=:itemmask=65535:customattributes=targetObjectSubType=4098;targetStfFile=installation_n;targetStfName=wind_generator;targetObjectFile=object/installation/generators/shared_power_generator_wind_style_1.iff;targetConstructionObjectCRC=1589279869;maintenanceRate=60.0;harvestType=8;lotSize=1;:",
-   
+   tanoAttributes = "objecttype=8388610:objectcrc=3871805863:stfFile=deed:stfName=wind_generator_deed_name:stfDetail=:itemmask=65535::",
+
    blueFrogAttributes = "",
    blueFrogEnabled = False,
 
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"
+
 }
 
 DraftSchematics:addDraftSchematic(deedForWindPowerGenerator, 3011453668)--- Add to global DraftSchematics table

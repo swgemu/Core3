@@ -77,10 +77,6 @@ rebelLanceCorporalAttack1 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(rebelLanceCorporalAttack1)
@@ -112,10 +108,6 @@ rebelLanceCorporalAttack2 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(rebelLanceCorporalAttack2)

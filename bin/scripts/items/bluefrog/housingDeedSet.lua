@@ -40,7 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-structureDeed = {solarGeneratorDeed, windGeneratorDeed, fusionIonGeneratorDeed, automatedFloraFarmDeed, personalMoistureVaporatorDeed, heavyMineralMiningInstallationDeed}
+deed_set = {mediumNabooHouseDeed, oreS2HarvesterDeed, fusionGeneratorDeed, structureFactoryDeed}
 
-addBFItemSet("Structure Deeds" , structureDeed);
+addBFItemSet("Deed Set" , deed_set);
 

@@ -47,7 +47,7 @@ fleshEatingChuba = Creature:new {
 
 	speciesName = "flesh_eating_chuba",
 	stfName = "mob/creature_names",
-	objectCRC = 3129123954, 
+	objectCRC = 3308574907, 
 	socialGroup = "self",
 	level = 6,
 
@@ -124,10 +124,6 @@ fleshEatingChuba = Creature:new {
 	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0.25,  -- Likely hood to be tamed
-	datapadItemCRC = 2478782544,
-	mountCRC = 0,
-	mountSpeed = 0,
-	mountAcceleration = 0,
 
 	milk = 0,
 
@@ -146,4 +142,4 @@ fleshEatingChuba = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(fleshEatingChuba, 3129123954) --  Add to Global Table
+Creatures:addCreature(fleshEatingChuba, 3308574907) --  Add to Global Table

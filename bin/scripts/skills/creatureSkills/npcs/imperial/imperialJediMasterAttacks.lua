@@ -65,11 +65,7 @@ imperialJediMasterAttack1 = {
 	CbtSpamCounter = "saberthrow1_counter",
 	CbtSpamEvade = "saberthrow1_evade",
 	CbtSpamHit = "saberthrow1_hit",
-	CbtSpamMiss = "saberthrow1_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
+	CbtSpamMiss = "saberthrow1_miss"
 }
 
 AddRandomPoolAttackTargetSkill(imperialJediMasterAttack1)
@@ -99,11 +95,7 @@ imperialJediMasterAttack2 = {
 	CbtSpamCounter = "saberthrow2_counter",
 	CbtSpamEvade = "saberthrow2_evade",
 	CbtSpamHit = "saberthrow2_hit",
-	CbtSpamMiss = "saberthrow2_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
+	CbtSpamMiss = "saberthrow2_miss"
 }
 
 AddRandomPoolAttackTargetSkill(imperialJediMasterAttack2)
@@ -135,11 +127,7 @@ imperialJediMasterAttack3 = {
 	CbtSpamCounter = "saberthrow3_counter",
 	CbtSpamEvade = "saberthrow3_evade",
 	CbtSpamHit = "saberthrow3_hit",
-	CbtSpamMiss = "saberthrow3_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
+	CbtSpamMiss = "saberthrow3_miss"
 }
 
 AddRandomPoolAttackTargetSkill(imperialJediMasterAttack3)
@@ -182,11 +170,7 @@ imperialJediMasterAttack4 = {
 	CbtSpamCounter = "saberslash1_counter",
 	CbtSpamEvade = "saberslash1_evade",
 	CbtSpamHit = "saberslash1_hit",
-	CbtSpamMiss = "saberslash1_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
+	CbtSpamMiss = "saberslash1_miss"
 }
 
 AddRandomPoolAttackTargetSkill(imperialJediMasterAttack4)
@@ -229,11 +213,7 @@ imperialJediMasterAttack5 = {
 	CbtSpamCounter = "saberslash2_counter",
 	CbtSpamEvade = "saberslash2_evade",
 	CbtSpamHit = "saberslash2_hit",
-	CbtSpamMiss = "saberslash2_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
+	CbtSpamMiss = "saberslash2_miss"
 }
 
 AddRandomPoolAttackTargetSkill(imperialJediMasterAttack5)
@@ -263,11 +243,7 @@ imperialJediMasterAttack6 = {
 	CbtSpamCounter = "saberpolearmdervish_counter",
 	CbtSpamEvade = "saberpolearmdervish_evade",
 	CbtSpamHit = "saberpolearmdervish_hit",
-	CbtSpamMiss = "saberpolearmdervish_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
+	CbtSpamMiss = "saberpolearmdervish_miss"
 }
 
 AddRandomPoolAttackTargetSkill(imperialJediMasterAttack6)
@@ -297,11 +273,7 @@ imperialJediMasterAttack7 = {
 	CbtSpamCounter = "saberpolearmdervish2_counter",
 	CbtSpamEvade = "saberpolearmdervish2_evade",
 	CbtSpamHit = "saberpolearmdervish2_hit",
-	CbtSpamMiss = "saberpolearmdervish2_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
+	CbtSpamMiss = "saberpolearmdervish2_miss"
 }
 
 AddRandomPoolAttackTargetSkill(imperialJediMasterAttack7)
@@ -331,11 +303,7 @@ imperialJediMasterAttack8 = {
 	CbtSpamCounter = "saberpolearmhit1_counter",
 	CbtSpamEvade = "saberpolearmhit1_evade",
 	CbtSpamHit = "saberpolearmhit1_hit",
-	CbtSpamMiss = "saberpolearmhit1_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
+	CbtSpamMiss = "saberpolearmhit1_miss"
 }
 
 AddRandomPoolAttackTargetSkill(imperialJediMasterAttack8)
@@ -366,11 +334,7 @@ imperialJediMasterAttack9 = {
 	CbtSpamCounter = "saberpolearmhit2_counter",
 	CbtSpamEvade = "saberpolearmhit2_evade",
 	CbtSpamHit = "saberpolearmhit2_hit",
-	CbtSpamMiss = "saberpolearmhit2_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
+	CbtSpamMiss = "saberpolearmhit2_miss"
 }
 
 AddRandomPoolAttackTargetSkill(imperialJediMasterAttack9)
@@ -400,11 +364,7 @@ imperialJediMasterAttack10 = {
 	CbtSpamCounter = "saberpolearmhit3_counter",
 	CbtSpamEvade = "saberpolearmhit3_evade",
 	CbtSpamHit = "saberpolearmhit3_hit",
-	CbtSpamMiss = "saberpolearmhit3_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
+	CbtSpamMiss = "saberpolearmhit3_miss"
 }
 
 AddRandomPoolAttackTargetSkill(imperialJediMasterAttack10)
@@ -445,12 +405,8 @@ imperialJediMasterAttack11 = {
 	CbtSpamCounter = "saberpolearmleghit1_counter",
 	CbtSpamEvade = "saberpolearmleghit1_evade",
 	CbtSpamHit = "saberpolearmleghit1_hit",
-	CbtSpamMiss = "saberpolearmleghit1_miss",
+	CbtSpamMiss = "saberpolearmleghit1_miss"
 	
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialJediMasterAttack11)
@@ -491,12 +447,8 @@ imperialJediMasterAttack12 = {
 	CbtSpamCounter = "saberpolearmleghit2_counter",
 	CbtSpamEvade = "saberpolearmleghit2_evade",			
 	CbtSpamHit = "saberpolearmleghit2_hit",
-	CbtSpamMiss = "saberpolearmleghit2_miss",
+	CbtSpamMiss = "saberpolearmleghit2_miss"
 	
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialJediMasterAttack12)
@@ -536,12 +488,8 @@ imperialJediMasterAttack13 = {
 	CbtSpamCounter = "saberpolearmleghit3_counter",
 	CbtSpamEvade = "saberpolearmleghit3_evade",
 	CbtSpamHit = "saberpolearmleghit3_hit",
-	CbtSpamMiss = "saberpolearmleghit3_miss",
+	CbtSpamMiss = "saberpolearmleghit3_miss"
 	
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialJediMasterAttack13)
@@ -571,11 +519,7 @@ imperialJediMasterAttack14 = {
 	CbtSpamCounter = "saberpolearmspinattack1_counter",
 	CbtSpamEvade = "saberpolearmspinattack1_evade",
 	CbtSpamHit = "saberpolearmspinattack1_hit",
-	CbtSpamMiss = "saberpolearmspinattack1_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
+	CbtSpamMiss = "saberpolearmspinattack1_miss"
 }
 
 AddRandomPoolAttackTargetSkill(imperialJediMasterAttack14)
@@ -605,11 +549,7 @@ imperialJediMasterAttack15 = {
 	CbtSpamCounter = "saberpolearmspinattack2_counter",
 	CbtSpamEvade = "saberpolearmspinattack2_evade",
 	CbtSpamHit = "saberpolearmspinattack2_hit",
-	CbtSpamMiss = "saberpolearmspinattack2_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
+	CbtSpamMiss = "saberpolearmspinattack2_miss"
 }
 
 AddRandomPoolAttackTargetSkill(imperialJediMasterAttack15)
@@ -639,11 +579,7 @@ imperialJediMasterAttack16 = {
 	CbtSpamCounter = "saberpolearmspinattack3_counter",
 	CbtSpamEvade = "saberpolearmspinattack3_evade",
 	CbtSpamHit = "saberpolearmspinattack3_hit",
-	CbtSpamMiss = "saberpolearmspinattack3_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
+	CbtSpamMiss = "saberpolearmspinattack3_miss"
 }
 
 AddRandomPoolAttackTargetSkill(imperialJediMasterAttack16)

@@ -40,45 +40,12 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+jetpackVehicleDeed = Deed:new {
+	objectName = "Deed for: Jetpack",
 
-csr = {
-	name = "CSR",
-	
-	forumUsergroups = "",
-	
-	clientFlag = 1,
-	
-	prependTextToName = "CSR-",
-	
-	staffTag = "[SWGEmu-CSR]",
-	
-	staffTagColor = "#ffff00"
-}
+	templateName = "jetpack_deed",
 
-dev = {
-	name = "Developer",
-	
-	forumUsergroups = "",
-	
-	clientFlag = 2,
-	
-	prependTextToName = "",
-	
-	staffTag = "[SWGEmu-Staff]",
-	
-	staffTagColor = "#ffff00"
-}
+	objectCRC = 2560190060,
 
-staff = {
-	name = "Staff",
-	
-	forumUsergroups = "",
-	
-	clientFlag = 0,
-	
-	prependTextToName = "",
-	
-	staffTag = "[SWGEmu-Staff]",
-	
-	staffTagColor = "#ffff00"
+	objectType = VEHICLEDEED
 }

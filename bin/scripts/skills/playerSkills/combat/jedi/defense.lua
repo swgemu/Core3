@@ -52,12 +52,8 @@ AvSelfSkill = {
 	 speed = -2.624,
 	 acceleration = -.55,
 	 slope = 0,
-	 duration = 30,
-
-        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,9,10,11,13,14,",
+	 duration = 30
 	 
-	instant = 0
 }
 
 AddAISelfSkill(AvSelfSkill)

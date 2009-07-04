@@ -68,7 +68,7 @@ giantFynock = Creature:new {
 	focus = 0,
 	willpower = 0,
 
-	height = 1.7, -- Size of creature
+	height = 1, -- Size of creature
 	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 0,
 	energy = 0,
@@ -124,10 +124,6 @@ giantFynock = Creature:new {
 	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
-	datapadItemCRC = 0,
-	mountCRC = 0,
-	mountSpeed = 0,
-	mountAcceleration = 0,
 
 	milk = 0,
 

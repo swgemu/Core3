@@ -72,7 +72,7 @@ artisan_wookie_female_items = { }
 
 -------------------Artisan Items (All Species)--------------------
 
-general_artisan_items = {cdefPistol, survivalKnife, generic_tool, mineral_tool, chemical_tool}
+general_artisan_items = {cdef_pistol, survival_knife, generic_tool, mineral_tool, chemical_tool}
 
 
 createItemsFromList("artisan", "humanoid", "male", artisan_humanoid_male_items)

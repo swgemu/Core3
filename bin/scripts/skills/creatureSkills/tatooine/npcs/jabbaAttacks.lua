@@ -77,10 +77,6 @@ jabbaAttack25 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddDirectPoolAttackTargetSkill(jabbaAttack25)
@@ -112,10 +108,6 @@ jabbaAttack26 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jabbaAttack26)
@@ -158,10 +150,6 @@ jabbaAttack27 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddDirectPoolAttackTargetSkill(jabbaAttack27)
@@ -193,10 +181,6 @@ jabbaAttack28 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jabbaAttack28)
@@ -228,10 +212,6 @@ jabbaAttack40 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jabbaAttack40)
@@ -263,10 +243,6 @@ jabbaAttack41 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jabbaAttack41)
@@ -298,10 +274,6 @@ jabbaAttack42 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jabbaAttack42)

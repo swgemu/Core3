@@ -42,7 +42,7 @@
 -- Core3 Config File
 -- 0 = false, 1 = true
 
-averageShiftTime = 3600000 -- In milliseconds
+averageShiftTime = 7200000 -- In milliseconds
   --  This is the time between each time the Resource Manager schedules
   --  itself to run again.
   --  *** Default is 1 hour (3600000) ***
@@ -76,9 +76,3 @@ maxspawns = 40   --  Maximum number of spawns per planet
 minspawns = 25   --  Minimum number of spawns per planet
 maxradius = 2000 --  Maximum Spawn radius of resource on map
 minradius = 600  --  Minimum Spawn radius of resource on map
-
-minimumpool = "Steel,Copper,Aluminum,Extrusive Ore,Intrusive Ore,Carbonate Ore,Crystalline Gemstone,Amorphous Gemstone,Known Radioactive,Solid Petrochem Fuel,Liquid Petrochem Fuel,Polymer,Polymer,Lubricating Oil,Lubricating Oil"
-
-spawnZones = "0,1,2,3,4,5,6,7,8,9"
---  These indicate zone ID's where resources spawn
-

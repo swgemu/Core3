@@ -68,17 +68,17 @@ juvenileCanyonKrayt = Creature:new {
 	focus = 5000,
 	willpower = 5000,
 
-	height = 0.5, -- Size of creature
+	height = 1, -- Size of creature
 	
 	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 70,
 	energy = 70,
-	electricity = 15,
-	stun = 15,
-	blast = 15,
-	heat = 15,
+	electricity = 0,
+	stun = 0,
+	blast = 0,
+	heat = 0,
 	cold = 10,
-	acid = 15,
+	acid = 0,
 	lightsaber = 0,
 
 	accuracy = 370,
@@ -124,11 +124,7 @@ juvenileCanyonKrayt = Creature:new {
 
 	lootGroup = "0", -- Group it belongs to for loot
 
-	tame = 0,
-	datapadItemCRC = 0,
-	mountCRC = 0,
-	mountSpeed = 0,
-	mountAcceleration = 0,
+	tame = 0,  -- Likely hood to be tamed
 
 	milk = 0,
 
@@ -141,7 +137,7 @@ juvenileCanyonKrayt = Creature:new {
 	meatType = "meat_carnivore_tatooine",
 	meatMax = 750,
 
-	skills = { "areaStrike", "cripplingStrike" },
+	skills = { "kraytAttack3", "kraytAttack5" },
 	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object

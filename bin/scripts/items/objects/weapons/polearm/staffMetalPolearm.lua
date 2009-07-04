@@ -42,7 +42,7 @@
 
 staffMetalPolearm = Weapon:new{
 
-	objectName = "Metal Staff",
+	objectName = "Staff Metal Lance",
 
 	templateName = "object/weapon/melee/polearm/shared_lance_staff_metal.iff",
 

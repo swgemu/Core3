@@ -43,7 +43,7 @@
 
 deedForHeavyMineralMiningInstallation = Object:new {
 
-   objectName = "",
+   objectName = "Deed for: Heavy Mineral Mining Installation",
    stfName = "ore_heavy_harvester_deed_name",
    stfFile = "deed",
    objectCRC = 1543208719,
@@ -77,14 +77,15 @@ deedForHeavyMineralMiningInstallation = Object:new {
    experimentalMax = "0, 0, 7, 150000, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8388610:objectcrc=3224287923:stfFile=deed:stfName=ore_heavy_harvester_deed_name:stfDetail=:itemmask=65535:customattributes=targetObjectSubType=4099;targetStfFile=installation_n;targetStfName=heavy_ore_mine;targetObjectFile=object/installation/mining_ore/shared_mining_ore_harvester_heavy.iff;targetConstructionObjectCRC=1103585647;maintenanceRate=90.0;powerRate=75.0;harvesterType=6;lotSize=1;:",
+   tanoAttributes = "objecttype=8388610:objectcrc=3224287923:stfFile=deed:stfName=deed_installation:stfDetail=:itemmask=65535::",
 
    blueFrogAttributes = "",
    blueFrogEnabled = False,
 
    customizationOptions = "",
    customizationDefaults = "",
-   customizationSkill = "structure_customization",
+   customizationSkill = "structure_customization"
+
 }
 
 DraftSchematics:addDraftSchematic(deedForHeavyMineralMiningInstallation, 1543208719)--- Add to global DraftSchematics table

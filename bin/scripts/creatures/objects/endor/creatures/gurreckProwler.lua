@@ -124,10 +124,6 @@ gurreckProwler = Creature:new {
 	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0.05,  -- Likely hood to be tamed
-	datapadItemCRC = 2145605419,
-	mountCRC = 0,
-	mountSpeed = 0,
-	mountAcceleration = 0,
 
 	milk = 0,
 

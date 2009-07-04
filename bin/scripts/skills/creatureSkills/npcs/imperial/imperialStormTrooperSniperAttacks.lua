@@ -65,10 +65,6 @@ imperialStormTrooperSniperAttack1 = {
 	CbtSpamEvade = "strafeshot_evade",
 	CbtSpamHit = "strafeshot_hit",
 	CbtSpamMiss = "strafeshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperSniperAttack1)
@@ -111,10 +107,6 @@ imperialStormTrooperSniperAttack2 = {
 	CbtSpamEvade = "masterheadshot_evade",
 	CbtSpamHit = "masterheadshot_hit",
 	CbtSpamMiss = "masterheadshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddDirectPoolAttackTargetSkill(imperialStormTrooperSniperAttack2)
@@ -146,10 +138,6 @@ imperialStormTrooperSniperAttack3 = {
 	CbtSpamEvade = "concealedshot_evade",
 	CbtSpamHit = "concealedshot_hit",
 	CbtSpamMiss = "concealedshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperSniperAttack3)
@@ -181,10 +169,6 @@ imperialStormTrooperSniperAttack4 = {
 	CbtSpamEvade = "flushingshot_evade",
 	CbtSpamHit = "flushingshot_hit",
 	CbtSpamMiss = "flushingshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperSniperAttack4)
@@ -216,10 +200,6 @@ imperialStormTrooperSniperAttack5 = {
 	CbtSpamEvade = "snipershot_evade",
 	CbtSpamHit = "snipershot_hit",
 	CbtSpamMiss = "snipershot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperSniperAttack5)
@@ -251,10 +231,6 @@ imperialStormTrooperSniperAttack6 = {
 	CbtSpamEvade = "advancedstrafe_evade",
 	CbtSpamHit = "advancedstrafe_hit",
 	CbtSpamMiss = "advancedstrafe_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(imperialStormTrooperSniperAttack6)
