@@ -1,0 +1,29 @@
+import "../DeedObject";
+import "../../TangibleObject";
+import "../../../../packets";
+import "../../../player/Player";
+import "../../../creature/CreatureObject";
+
+interface GeneratorDeed implements DeedObject {
+	GeneratorDeed(CreatureObject creature, int tempCRC, const UnicodeString n, const String tempn) {
+		super(creature, tempCRC, n, tempn, int tp);
+	}
+	GeneratorDeed(unsigned long oid, int tempCRC, const UnicodeString n, const String tempn) {
+		super(oid, tempCRC, n, tempn, int tp);
+	}
+	
+	void parseItemAttributes();
+	
+	void setSurplusMaintenance(int maint);
+	void setMaintenanceRate(float rate);
+	void setExtractionRate(float rate);
+	void setHopperSize(float size);
+	void setLotSize(int size);
+	
+	int getSurplusMaintenance();
+	float getMaintenanceRate();
+	float getExtractionRate();
+	float getHopperSize();
+	int getLotSize();
+}
+

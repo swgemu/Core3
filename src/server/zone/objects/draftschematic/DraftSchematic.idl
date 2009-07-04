@@ -1,0 +1,194 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
+
+include "engine/core/ManagedObject";
+
+import "../scene/SceneObject";
+
+import "../intangible/IntangibleObject";
+
+import "../player/Player";
+import "DraftSchematicIngredient";
+import "DraftSchematicAttribute";
+import "DraftSchematicValues";
+import "DraftSchematicExpPropGroup";
+import "../../packets/object/ObjectControllerMessage";
+
+interface DraftSchematic implements SceneObject {
+
+	DraftSchematic(unsigned int oid, const String objName, const String StringFile, const String StringName,
+			unsigned int objCRC, const String groupName, unsigned int complexity,
+			unsigned int schematicSize, int craftingToolTab) {
+		super();
+	}
+
+	DraftSchematic(DraftSchematic draftSchematic) {
+		super();
+	}
+
+	DraftSchematic dsClone(DraftSchematic draftSchematic);
+
+	void destroy(Player player);
+
+	void sendTo(Player player);
+
+	void addExperimentalProperty(unsigned int groupNumber, const String experimentalProperty,
+	unsigned int weight, String title, String subtitle, float min, float max, int precision);
+
+	void sendExperimentalPropertiesToPlayer(Player player);
+
+	void increaseComplexity();
+
+	void decreaseComplexity();
+
+	void increaseExpCounter();
+
+	// Ingredient Methods
+
+	void sendIngredientsToPlayer(Player player);
+
+	void helperSendIngredientsToPlayer(ObjectControllerMessage objMsg);
+
+	void addIngredient(const String ingredientTemplateName, const String ingredientTitleName,
+		const int optional, const String resourceType, unsigned int resourceQuantity,
+		unsigned int combineType, unsigned int contribution);
+
+	// setters
+
+	void setTanoAttributes(String attributes);
+	void setBlueFrogAttributes(String attributes);
+	void setBlueFrogEnabled(boolean enabled);
+
+	void setXpType(String type);
+
+	void setXp(int x);
+
+	void setExpCounter(int value);
+
+	void setExpPoints(int points);
+
+	void setExpFailure(float rate);
+
+	void setExperimentingSkill(const String exp);
+
+	void setCustomizationSkill(const String cust);
+
+	void addCustomizationOption(const String cust, const int value);
+
+	void setAssemblySkill(const String ass);
+
+	void setResourcesWereRemoved();
+
+	void setFinished();
+
+	void setCrafter(Player crafter);
+
+	void setManufacturingLimit(int value);
+
+	//getters
+
+	String getTanoStfName();
+
+	int getExpPropGroupListSize();
+
+	DraftSchematicExpPropGroup getExpPropGroup(int index);
+	DraftSchematicExpPropGroup cloneExpPropGroup(int index);
+
+	unsigned int getSchematicID();
+
+	DraftSchematicIngredient getIngredient(int index);
+	DraftSchematicIngredient cloneIngredient(int index);
+
+	int getIngredientListSize();
+
+	int getRequiredIngredientCount();
+
+	String getGroupName();
+
+	unsigned int getComplexity();
+
+	unsigned int getSchematicSize();
+
+	String getTanoAttributes();
+	String getBlueFrogAttributes();
+	boolean getBlueFrogEnabled();
+
+	int getCraftingToolTab();
+
+	String getXpType();
+
+	int getXp();
+
+	String getExperimentingSkill();
+
+	String getCustomizationSkill();
+
+	String getCustomizationOption(const int i);
+
+	int getCustomizationDefaultValue(const int i);
+
+	int getCustomizationOptionCount();
+
+	String getAssemblySkill();
+
+	int getExpPoints();
+
+	int getExpCounter();
+
+	float getExpFailure();
+
+	Player getCrafter();
+
+	int getManufacturingLimit();
+
+	DraftSchematicValues getCraftingValues();
+
+	boolean isFinished();
+
+	boolean resourcesWereRemoved();
+
+	void resetCraftingValues();
+
+	//void toString();
+}

@@ -1,0 +1,43 @@
+import "../../scene/SceneObject";
+
+import "../../creature/CreatureObject";
+
+import "../../player/Player";
+
+import "../TangibleObject";
+
+import "Pharmaceutical";
+
+interface DotPack implements Pharmaceutical {
+	
+	DotPack(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn) {
+		super(oid, tempCRC, n, tempn, int mptype);
+	}
+	
+	DotPack(CreatureObject creature, unsigned int tempCRC, const UnicodeString n, const String tempn) {
+		super(creature, tempCRC, n, tempn, int mptype);
+	}
+	
+	void generateAttributes(SceneObject obj);
+	
+	int calculatePower(CreatureObject creature);
+	
+	
+	void setEffectiveness(float eff);
+	float getEffectiveness();
+
+	void setRange(float rng);
+	float getRange(CreatureObject creature = NULL);
+
+	void setDuration(int dur);
+	int getDuration();
+
+	void setArea(float ar);
+	float getArea();
+
+	float getPotency();
+	void setPotency(float pot);
+
+	int getPool();
+	void setPool(int pl);
+}
