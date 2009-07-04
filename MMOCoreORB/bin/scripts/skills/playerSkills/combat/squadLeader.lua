@@ -42,11 +42,7 @@
 
 ------------------------------------------------------------------------
 SystemGroupMessageSkill = {
-	skillname = "serversysgroup",
-
-        invalidStateMask = 2097152, --glowingJedi, 
-        invalidPostures = "",
-	instant = 1
+	skillname = "serversysgroup"	
 }
 
 AddSystemGroupMessageSkill(SystemGroupMessageSkill);
@@ -59,11 +55,7 @@ BoostMoraleGroupSkill = {
 	cooldowntime = 120,
 	healthcost = 100,
 	actioncost = 100,
-	mindcost = 100,
-
-        invalidStateMask = 3895410769, --cover, alert, feigndeath, dizzy, immobilized, frozen, swimming, sittingOnChair, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	mindcost = 100
 }
 
 AddBoostMoraleGroupSkill(BoostMoraleGroupSkill);
@@ -80,11 +72,7 @@ VolleyFireGroupSkill = {
 	cooldowntime = 30,
 	healthcost = 100,
 	actioncost = 100,
-	mindcost = 50,
-
-        invalidStateMask = 3894871073, --cover, berzerk, tumbling, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 1
+	mindcost = 50
 }
 
 AddVolleyFireGroupSkill(VolleyFireGroupSkill);
@@ -102,10 +90,6 @@ FormupGroupSkill = {
 	healstunchance = 25,
 	healblindchance = 25,
 	healintimidatechance = 25,
-
-        invalidStateMask = 3895410753, --cover, feigndeath, dizzy, immobilized, frozen, swimming, sittingOnChair, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
 }
 
 AddFormupGroupSkill(FormupGroupSkill);
@@ -120,11 +104,7 @@ RallyGroupSkill = {
 	actioncost = 200,
 	mindcost = 100,
 	rallyduration = 45,
-	accuracybonus = 15,
-
-        invalidStateMask = 3895394336, --berzerk, immobilized, frozen, swimming, sittingOnChair, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "5,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	accuracybonus = 15
 }
 
 AddRallyGroupSkill(RallyGroupSkill);
@@ -140,11 +120,7 @@ RetreatSkill = {
 	mindcost = 600,   
 
 	effect = "", --applied to all group members that receive the buff.
-	buffSL = 0, --determines if Squad Leader also receives the buff. 
-
-        invalidStateMask = 4163846225, --cover, alert, feigndeath, dizzy, immobilized, frozen, swimming, sittingOnChair, glowingJedi, ridingMount, mountedCreature, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",	                   
-	instant = 1
+	buffSL = 0 --determines if Squad Leader also receives the buff. 	                   
 }
 
 AddRetreatGroupSkill(RetreatSkill);

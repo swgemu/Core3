@@ -45,11 +45,7 @@ HealStateSkill = {
 	animation = "heal_self",
 	
 	mindCost = -20,
-	range = 6.0,
-
-        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,9,10,11,13,14,",
-	instant = 0
+	range = 6.0
 }
 
 AddHealStateTargetSkill(HealStateSkill);
@@ -61,12 +57,7 @@ CurePoisonSkill = {
 	
 	mindCost = -100,
 	conditionCured = POISONED_STATE,
-	range = 6.0,
-
-	--There was no CUREPOISON skill on assembla so these are from FORCECUREPOISON
-        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,9,10,11,13,14,",
-	instant = 0
+	range = 6.0
 }
 
 AddCureTargetSkill(CurePoisonSkill);
@@ -78,12 +69,7 @@ CureDiseaseSkill = {
 
 	mindCost = -100,
 	conditionCured = DISEASED_STATE,
-	range = 6.0,
-
-	--There was no CUREDISEASE skill on assembla so these are from FORCECUREDISEASE
-        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,9,10,11,13,14,",
-	instant = 0
+	range = 6.0
 }
 
 AddCureTargetSkill(CureDiseaseSkill);
@@ -95,11 +81,7 @@ ExtinguishFireSkill = {
 
 	mindCost = -100,
 	conditionCured = ONFIRE_STATE,
-	range = 6.0,
-
-        invalidStateMask = 3894542352, --alert, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "2,5,7,9,10,11,12,13,14,4,",
-	instant = 0
+	range = 6.0
 }
 
 AddCureTargetSkill(ExtinguishFireSkill);
@@ -110,12 +92,7 @@ HealEnhanceTargetSkill = {
 	animation = "heal_self",
 	
 	mindCost = -150,
-	range = 6.0,
-
-	--Taken from healwound
-        invalidStateMask = 3894542352, --alert, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "2,5,7,9,10,11,12,13,14,4,",
-	instant = 0
+	range = 6.0
 }
 
 AddHealEnhanceTargetSkill(HealEnhanceTargetSkill);
@@ -126,11 +103,7 @@ ReviveTargetSkill = {
 	animation = "heal_self",
 	
 	mindCost = -200,
-	range = 6.0,
-
-        invalidStateMask = 3894934649, --cover, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	range = 6.0
 }
 
 AddReviveTargetSkill(ReviveTargetSkill);

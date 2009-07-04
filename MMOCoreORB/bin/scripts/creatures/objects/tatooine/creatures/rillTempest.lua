@@ -51,7 +51,7 @@ rillTempest = Creature:new {
 	socialGroup = "Rill",
 	level = 9,
 
-	combatFlags = ATTACKABLE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	healthMax = 330,
 	healthMin = 270,
@@ -89,7 +89,7 @@ rillTempest = Creature:new {
 	stalker = 0,
 	killer = 0,
 	ferocity = 0,
-	aggressive = 0,
+	aggressive = 1,
 	invincible = 0, 
 
 	meleeDefense = 1,  
@@ -123,11 +123,7 @@ rillTempest = Creature:new {
 
 	lootGroup = "0", -- Group it belongs to for loot
 
-	tame = 0,
-	datapadItemCRC = 0,
-	mountCRC = 0,
-	mountSpeed = 0,
-	mountAcceleration = 0,
+	tame = 0.05,  -- Likely hood to be tamed
 
 	milk = 0,
 

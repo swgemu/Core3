@@ -78,10 +78,6 @@ jindaAttack01 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(jindaAttack01)
@@ -124,10 +120,6 @@ jindaAttack02 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddDirectPoolAttackTargetSkill(jindaAttack02)
@@ -159,10 +151,6 @@ jindaAttack03 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jindaAttack03)
@@ -194,10 +182,6 @@ jindaAttack04 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jindaAttack04)
@@ -228,10 +212,6 @@ jindaAttack05 = {
 	CbtSpamEvade = "melee_evade",
 	CbtSpamHit = "melee_hit",
 	CbtSpamMiss = "melee_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(jindaAttack05)
@@ -262,11 +242,7 @@ jindaAttack06 = {
 	CbtSpamEvade = "melee_evade", 
 	CbtSpamHit = "melee_hit", 
 	CbtSpamMiss = "melee_miss", 
-	
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
-} 
+	} 
 	
 AddRandomPoolAttackTargetSkill(jindaAttack06) 
 
@@ -296,11 +272,7 @@ jindaAttack07 = {
 	CbtSpamEvade = "melee_evade", 
 	CbtSpamHit = "melee_hit", 
 	CbtSpamMiss = "melee_miss", 
-	
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
-} 
+	} 
 	
 AddRandomPoolAttackTargetSkill(jindaAttack07) 
 
@@ -330,11 +302,7 @@ jindaAttack08 = {
 	CbtSpamEvade = "melee_evade", 
 	CbtSpamHit = "melee_hit", 
 	CbtSpamMiss = "melee_miss", 
-	
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
-} 
+	} 
 	
 AddRandomPoolAttackTargetSkill(jindaAttack08) 
 
@@ -365,10 +333,6 @@ jindaAttack09 = {
 	CbtSpamEvade = "melee_evade", 
 	CbtSpamHit = "melee_hit", 
 	CbtSpamMiss = "melee_miss", 
-	
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
-} 
+	} 
 	
 AddRandomPoolAttackTargetSkill(jindaAttack09) 

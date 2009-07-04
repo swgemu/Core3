@@ -69,7 +69,7 @@ giantCanyonKraytDragon = Creature:new {
 	focus = 20000,
 	willpower = 20000,
 
-	height = 1.1, -- Size of creature
+	height = 1, -- Size of creature
 	armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 70,
 	energy = 70,
@@ -124,11 +124,7 @@ giantCanyonKraytDragon = Creature:new {
 
 	lootGroup = "0", -- Group it belongs to for loot
 
-	tame = 0,
-	datapadItemCRC = 0,
-	mountCRC = 0,
-	mountSpeed = 0,
-	mountAcceleration = 0,
+	tame = 0,  -- Likely hood to be tamed
 
 	milk = 0,
 
@@ -141,7 +137,7 @@ giantCanyonKraytDragon = Creature:new {
 	meatType = "meat_carnivore_tatooine",
 	meatMax = 1500,
 	
-	skills = { "areaStrike", "forceStrike" },
+	skills = { "kraytAttack1" },
 	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object

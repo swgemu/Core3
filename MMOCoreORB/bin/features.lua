@@ -51,107 +51,33 @@
 
 --     Features should follow the following format:
 
---	    String:
 --          --Values: "value1", "value2", "value3"
---          in lua: AddStringFeature("featureKey", "value1")
---	    in Code: features->getStringFeature("featureKey") , returns the associated value as String
---		     features->hasStringFeature("featureKey") , checks if the key exists
+--          feature("featureKey", "value1")
 
---	    Integer:
---          --Values: -5, 0 ,1 , 18
---          in lua: AddIntegerFeature("featureKey", 1)
---	    in Code: features->getIntegerFeature("featureKey") , returns the associated value as int
---		     features->hasIntegerFeature("featureKey") , checks if the key exists
-
---	    String:
---          --Values: 0.0, 0.4, -0.5
---          in lua: AddFloatFeature("featureKey", 0.6)
---	    in Code: features->getFloatFeature("featureKey") , returns the associated value as float
---		     features->hasFloatFeature("featureKey") , checks if the key exists
-
---	   Binary Feature:
---          --No values ,
---          in lua: true : AddStringFeature("featureKey", "")
---		    false : --AddStringFeature("featureKey", "")
---	    in Code: features->getStringFeature("featureKey") , returns an empty String will not be used
---		     features->hasStringFeature("featureKey") , checks if the key exists
-
---	   Set Feature:
---          --Values: {"unarmed_damge","heavy_weapon_speed"}
---          in lua: AddSetFeature("featureKey", "unarmed_damge","heavy_weapon_speed")
---			creatues a new set if the key does not exist, adds the new entries to the set if the key exists
---	    in Code: features->hasSetFeature("key","features") , checks if the key exists
-
+--     In the code, you will use features->get("featureKey") to retrieve the
+--     associated value.
 --*****************************************************************************
 -------------------------------------------------------------------------------
 
---************************
--- General Server settings
--- XP scale
---************************
 
---XP scale
---Values: float, 1.0 = default
-AddFloatFeature("xpScale",1.0)
 
---************************
--- Comabt System setting
--- damage modifiers, minisuits, state defense, ...
---************************
-
--- Globale damage multipier (player)
---Values: float, 1.5 = default
-AddFloatFeature("playerGlobalMultiplier",1.5)
-
--- PVP damage multipier (player)
---Values: float, 0.25 = default
-AddFloatFeature("playerPvpMultiplier",0.25)
-
--- PVE damage multipier (player)
---Values: float, 1.0 = default
-AddFloatFeature("playerPveMultiplier",1.0)
-
--- Globale damage multipier (pet)
---Values: float, 1.5 = default
-AddFloatFeature("petGlobalMultiplier",1.0)
-
--- PVP damage multipier (pet)
---Values: float, 0.25 = default
-AddFloatFeature("petPvpMultiplier",0.25)
-
--- PVE damage multipier (pet)
---Values: float, 1.0 = default
-AddFloatFeature("petPveMultiplier",1.0)
-
--- Globale damage multipier (creatures)
---Values: float, 1.0 = default
-AddFloatFeature("creatureGlobalMultiplier",1.0)
-
--- Max state defense
---Values: integer, 125 = default
-AddFloatFeature("maxStateDefense",125)
-
--- Stae Defense Immunity
---Values: int, 125 = default, 0 for no immunity
-AddFloatFeature("stateImmunity",125)
+--Jedi System Features
+--Values: "hologrind", "village"
+--feature("jediSystem", "hologrind")
 
 --Armor Protection
---Values: binary, default no mini-suit
-AddStringFeature("miniSuit","")
+--Values: "normal", "minisuits"
+--feature("armorProtection", "minisuits")
 
---Damage to hand and feet
---Values: binary, default yes
---AddStringFeature("noHandFeetDamage","")
+--GCW System
+--Values: "specialForces", "TEF"
+--feature("gcwSystem", "specialForces")
 
 --************************
--- Broken skill mods
+--Broken Skillmods Section
 --************************
+--Values: "enabled", "disabled"
+--feature("modUnarmedDamage", "enabled");
+--feature("modCombatMedicEffectiveness", "enabled");
 
---Broken skill mods, these skill mods will be shown in the character sheet but will be considered as 0 calculations 
---Values: Set of the brocken skill mods
---Example: grenade and heavyy weapon speed.
-AddSetFeature("brokenSkillMods","heavy_weapon_speed","thrown_speed")
-
---Broken skill mod bonuses, similar to the broken skill mods. The skill mod will be used but it bonuses are 0  
---Values: Set of the brocken skill mod bonuses
-AddSetFeature("brokenSkillBonus","healing_ability","combat_healing_ability","keep_creature","stored_pets","tame_level")
+testing = "test"

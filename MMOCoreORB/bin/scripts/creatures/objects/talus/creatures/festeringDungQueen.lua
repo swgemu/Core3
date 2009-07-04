@@ -47,7 +47,6 @@ festeringDungQueen = Creature:new {
 
 	speciesName = "festering_dung_queen",
 	stfName = "mob/creature_names",
-	objectCRC = 2430922138,
 	socialGroup = "Decay Mite",
 	level = 18,
 
@@ -68,7 +67,7 @@ festeringDungQueen = Creature:new {
 	focus = 0,
 	willpower = 0,
 
-	height = 2, -- Size of creature
+	height = 1, -- Size of creature
 	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 15,
 	energy = 5,
@@ -123,11 +122,7 @@ festeringDungQueen = Creature:new {
 
 	lootGroup = "0", -- Group it belongs to for loot
 
-	tame = 0,
-	datapadItemCRC = 0,
-	mountCRC = 0,
-	mountSpeed = 0,
-	mountAcceleration = 0,
+	tame = 0,  -- Likely hood to be tamed
 
 	milk = 0,
 
@@ -147,4 +142,4 @@ festeringDungQueen = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(festeringDungQueen, 2430922138) --  Add to Global Table
+Creatures:addCreature(festeringDungQueen, 382834958) --  Add to Global Table

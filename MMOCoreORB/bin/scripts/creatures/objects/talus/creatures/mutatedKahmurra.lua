@@ -51,7 +51,7 @@ mutatedKahmurra = Creature:new {
 	socialGroup = "Kahmurra",
 	level = 26,
 
-	combatFlags = ATTACKABLE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
 	healthMax = 8300,
 	healthMin = 6800,
@@ -124,10 +124,6 @@ mutatedKahmurra = Creature:new {
 	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0.25,  -- Likely hood to be tamed
-	datapadItemCRC = 548542319,
-	mountCRC = 0,
-	mountSpeed = 0,
-	mountAcceleration = 0,
 
 	milk = 0,
 

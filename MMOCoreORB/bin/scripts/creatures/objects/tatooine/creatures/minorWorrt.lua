@@ -51,7 +51,7 @@ minorWorrt = Creature:new {
 	socialGroup = "self",
 	level = 5,
 
-	combatFlags = ATTACKABLE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
 	healthMax = 165,
 	healthMin = 135,
@@ -124,10 +124,6 @@ minorWorrt = Creature:new {
 	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0.25,  -- Likely hood to be tamed
-	datapadItemCRC = 2024101379,
-	mountCRC = 0,
-	mountSpeed = 0,
-	mountAcceleration = 0,
 
 	milk = 0,
 

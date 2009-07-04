@@ -48,7 +48,7 @@ hunter = Creature:new {
 	
 	speciesName = "hunter",
 	stfName = "mob/creature_names", 
-	objectCRC = 3717185433, 
+	objectCRC = ?, 
 	socialGroup = "Talus Poacher",
 	level = 16,
 
@@ -121,11 +121,7 @@ hunter = Creature:new {
 
 	lootGroup = "0", -- Group it belongs to for loot
 
-	tame = 0,
-	datapadItemCRC = 0,
-	mountCRC = 0,
-	mountSpeed = 0,
-	mountAcceleration = 0,
+	tame = 0,  -- Likely hood to be tamed
 
 	milk = 0,
 
@@ -144,4 +140,4 @@ hunter = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(hunter, 3717185433) --  Add to Global Table
+Creatures:addCreature(hunter, ?) --  Add to Global Table

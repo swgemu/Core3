@@ -77,7 +77,7 @@ deedForPersonalMineralExtractor = Object:new {
    experimentalMax = "0, 0, 5, 50000, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8388610:objectcrc=2126009375:stfFile=deed:stfName=ore_s1_harvester_deed_name:stfDetail=:itemmask=65535:customattributes=targetObjectSubType=4099;targetStfFile=installation_n;targetStfName=small_ore_mine;targetObjectFile=object/installation/mining_ore/shared_mining_ore_harvester_style_1.iff;targetConstructionObjectCRC=2242761962;maintenanceRate=30.0;powerRate=25.0;harvesterType=6;lotSize=1;:",
+   tanoAttributes = "objecttype=8388610:objectcrc=2126009375:stfFile=deed:stfName=ore_s1_harvester_deed_name:stfDetail=:itemmask=65535::",
 
    blueFrogAttributes = "",
    blueFrogEnabled = False,
@@ -85,6 +85,7 @@ deedForPersonalMineralExtractor = Object:new {
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"
+
 }
 
 DraftSchematics:addDraftSchematic(deedForPersonalMineralExtractor, 2594390993)--- Add to global DraftSchematics table

@@ -77,7 +77,7 @@ deedForPersonalMoistureVaporator = Object:new {
    experimentalMax = "0, 0, 5, 50000, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8388610:objectcrc=1578846375:stfFile=deed:stfName=moisture_harvester_deed_name:stfDetail=:itemmask=65535:customattributes=targetObjectSubType=4099;targetStfFile=installation_n;targetStfName=moisture_mine;targetObjectFile=object/installation/mining_liquid/shared_mining_liquid_moisture_harvester.iff;targetConstructionObjectCRC=2242761962;maintenanceRate=30.0;powerRate=25.0;harvesterType=7;lotSize=1;:",
+   tanoAttributes = "objecttype=8388610:objectcrc=1578846375:stfFile=deed:stfName=moisture_harvester_deed_name:stfDetail=:itemmask=65535::",
 
    blueFrogAttributes = "",
    blueFrogEnabled = False,
@@ -85,6 +85,7 @@ deedForPersonalMoistureVaporator = Object:new {
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"
+
 }
 
 DraftSchematics:addDraftSchematic(deedForPersonalMoistureVaporator, 2695386336)--- Add to global DraftSchematics table

@@ -53,7 +53,7 @@ jantaSoothsayer = Creature:new {
 	socialGroup = "janta_tribe",
 	level = 60,
 
-	combatFlags = ATTACKABLE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
 	healthMax = 14000,
 	healthMin = 12000,
@@ -127,11 +127,7 @@ jantaSoothsayer = Creature:new {
 
 	lootGroup = "0,11,15,19,33,65", -- Group it belongs to for loot
 
-	tame = 0,
-	datapadItemCRC = 0,
-	mountCRC = 0,
-	mountSpeed = 0,
-	mountAcceleration = 0,
+	tame = 0,  -- Likely hood to be tamed
 
 	milk = 0,
 

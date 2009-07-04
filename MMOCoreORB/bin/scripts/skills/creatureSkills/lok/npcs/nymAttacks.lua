@@ -69,10 +69,6 @@ nymAttack1 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nymAttack1)
@@ -108,10 +104,6 @@ nymAttack2 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nymAttack2)
@@ -143,10 +135,6 @@ nymAttack3 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nymAttack3)
@@ -188,10 +176,6 @@ nymAttack10 = {
 	CbtSpamEvade = "legshot_evade",
 	CbtSpamHit = "legshot_hit",
 	CbtSpamMiss = "legshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(nymAttack10)
@@ -223,10 +207,6 @@ nymAttack11 = {
 	CbtSpamEvade = "fullautoattack_evade",
 	CbtSpamHit = "fullautoattack_hit",
 	CbtSpamMiss = "fullautoattack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nymAttack11)
@@ -269,10 +249,6 @@ nymAttack12 = {
 	CbtSpamEvade = "scattershot_evade",
 	CbtSpamHit = "scattershot_hit",
 	CbtSpamMiss = "scattershot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddDirectPoolAttackTargetSkill(nymAttack12)
@@ -304,10 +280,6 @@ nymAttack13 = {
 	CbtSpamEvade = "wildshot_evade",
 	CbtSpamHit = "wildshot_hit",
 	CbtSpamMiss = "wildshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nymAttack13)
@@ -350,10 +322,6 @@ nymAttack14 = {
 	CbtSpamEvade = "scattershot_evade",
 	CbtSpamHit = "scattershot_hit",
 	CbtSpamMiss = "scattershot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddDirectPoolAttackTargetSkill(nymAttack14)
@@ -385,10 +353,6 @@ nymAttack15 = {
 	CbtSpamEvade = "wildshot_evade",
 	CbtSpamHit = "wildshot_hit",
 	CbtSpamMiss = "wildshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nymAttack15)
@@ -430,10 +394,6 @@ nymAttack16 = {
 	CbtSpamEvade = "legshot_evade",
 	CbtSpamHit = "legshot_hit",
 	CbtSpamMiss = "legshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddDirectPoolAttackTargetSkill(nymAttack16)
@@ -465,10 +425,6 @@ nymAttack17 = {
 	CbtSpamEvade = "cripplingshot_evade",
 	CbtSpamHit = "cripplingshot_hit",
 	CbtSpamMiss = "cripplingshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nymAttack17)
@@ -500,10 +456,6 @@ nymAttack18 = {
 	CbtSpamEvade = "burstshot_evade",
 	CbtSpamHit = "burstshot_hit",
 	CbtSpamMiss = "burstshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nymAttack18)
@@ -535,10 +487,6 @@ nymAttack19 = {
 	CbtSpamEvade = "burstshot_evade",
 	CbtSpamHit = "burstshot_hit",
 	CbtSpamMiss = "burstshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nymAttack19)
@@ -570,10 +518,6 @@ nymAttack20 = {
 	CbtSpamEvade = "sup_fire_evade",
 	CbtSpamHit = "sup_fire_hit",
 	CbtSpamMiss = "sup_fire_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nymAttack20)
@@ -605,10 +549,6 @@ nymAttack21 = {
 	CbtSpamEvade = "fullautoattack_evade",
 	CbtSpamHit = "fullautoattack_hit",
 	CbtSpamMiss = "fullautoattack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nymAttack21)
@@ -640,10 +580,6 @@ nymAttack22 = {
 	CbtSpamEvade = "chargeshot_evade",
 	CbtSpamHit = "chargeshot_hit",
 	CbtSpamMiss = "chargeshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nymAttack22)
@@ -675,10 +611,6 @@ nymAttack23 = {
 	CbtSpamEvade = "fullautoattack_evade",
 	CbtSpamHit = "fullautoattack_hit",
 	CbtSpamMiss = "fullautoattack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(nymAttack23)
@@ -710,9 +642,5 @@ nymAttack24 = {
 	CbtSpamEvade = "chargeshot_evade",
 	CbtSpamHit = "chargeshot_hit",
 	CbtSpamMiss = "chargeshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 AddRandomPoolAttackTargetSkill(nymAttack24)

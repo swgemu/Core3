@@ -39,8 +39,8 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-areaStrike = {
-	attackname = "areaStrike",
+kraytAttack1 = {
+	attackname = "kraytAttack1",
 	animation = "creature_attack_light",
 	
 	requiredWeaponType = NONE,
@@ -54,31 +54,27 @@ areaStrike = {
 	arearange = 14,
 	accuracyBonus = 0,
 		
-	knockdownChance = 0,
-	postureDownChance = 0,
+	knockdownChance = 50,
+	postureDownChance = 10,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
-	intimidateChance = 0,
+	intimidateChance = 40,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
-AddRandomPoolAttackTargetSkill(areaStrike)
+AddRandomPoolAttackTargetSkill(kraytAttack1)
 
 -------------------------------------------------------------------------------
 
-cripplingStrike = {
-	attackname = "cripplingStrike",
+kraytAttack2 = {
+	attackname = "kraytAttack2",
 	animation = "creature_attack_light",
 	
 	requiredWeaponType = NONE,
@@ -93,82 +89,6 @@ cripplingStrike = {
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
-}
-
-AddRandomPoolAttackTargetSkill(cripplingStrike)
-
--------------------------------------------------------------------------------
-
-stunningStrike = {
-	attackname = "stunningStrike",
-	animation = "creature_attack_light",
-	
-	requiredWeaponType = NONE,
-
-	range = 14,
-
-	damageRatio = 1.2,
-
-	speedRatio = 2,
-
-	arearange = 14,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 50,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
-}
-
-AddRandomPoolAttackTargetSkill(stunningStrike)
-
--------------------------------------------------------------------------------
-
-forceStrike = {
-	attackname = "forceStrike",
-	animation = "creature_attack_light",
-	
-	requiredWeaponType = NONE,
-
-	range = 14,
-
-	damageRatio = 1.2,
-
-	speedRatio = 2,
-
-	arearange = 14,
-	accuracyBonus = 0,
-		
-	knockdownChance = 30,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 50,
@@ -181,18 +101,14 @@ forceStrike = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
-AddRandomPoolAttackTargetSkill(forceStrike)
+AddRandomPoolAttackTargetSkill(kraytAttack2)
 
 -------------------------------------------------------------------------------
 
-areaCombo = {
-	attackname = "areaCombo",
+kraytAttack3 = {
+	attackname = "kraytAttack3",
 	animation = "creature_attack_light",
 	
 	requiredWeaponType = NONE,
@@ -206,26 +122,90 @@ areaCombo = {
 	arearange = 14,
 	accuracyBonus = 0,
 		
-	knockdownChance = 60,
+	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 60,
-	blindChance = 60,
-	stunChance = 60,
-	intimidateChance = 60,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 85,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
-AddRandomPoolAttackTargetSkill(areaCombo)
+AddRandomPoolAttackTargetSkill(kraytAttack3)
+
+-------------------------------------------------------------------------------
+
+kraytAttack4 = {
+	attackname = "kraytAttack4",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 14,
+
+	damageRatio = 1.2,
+
+	speedRatio = 2,
+
+	arearange = 14,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 40,
+	blindChance = 0,
+	stunChance = 40,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(kraytAttack4)
+
+-------------------------------------------------------------------------------
+
+kraytAttack5 = {
+	attackname = "kraytAttack5",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 14,
+
+	damageRatio = 1.2,
+
+	speedRatio = 2,
+
+	arearange = 14,
+	accuracyBonus = 0,
+		
+	knockdownChance = 10,
+	postureDownChance = 25,
+	postureUpChance = 0,
+	dizzyChance = 10,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(kraytAttack5)
 
 -------------------------------------------------------------------------------
 
@@ -244,9 +224,9 @@ kraytAttack6 = {
 	arearange = 14,
 	accuracyBonus = 0,
 		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
+	knockdownChance = 80,
+	postureDownChance = 80,
+	postureUpChance = 10,
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
@@ -257,10 +237,6 @@ kraytAttack6 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(kraytAttack6)
@@ -285,7 +261,7 @@ kraytAttack7 = {
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 0,
+	dizzyChance = 85,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -295,10 +271,6 @@ kraytAttack7 = {
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(kraytAttack7)

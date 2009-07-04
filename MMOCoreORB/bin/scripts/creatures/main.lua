@@ -55,8 +55,6 @@ math.cos = function (x) return cos(rad(x)) end
 Creatures = { }
 
 function Creatures:addCreature(obj, crc)
-	-- added to get different creatures with the same crc
-	self[obj.speciesName] = obj
 	self[crc] = obj
 end
 
@@ -129,4 +127,4 @@ end
 RunCreatureFile("creatureObjects.lua")
 
 -- Spawns
-RunCreatureFile("spawns.lua")
+--RunCreatureFile("spawns.lua")

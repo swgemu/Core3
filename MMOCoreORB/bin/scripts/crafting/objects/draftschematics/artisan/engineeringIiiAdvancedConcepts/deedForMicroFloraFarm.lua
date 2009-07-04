@@ -77,7 +77,7 @@ deedForMicroFloraFarm = Object:new {
    experimentalMax = "0, 0, 5, 50000, 1000",
    experimentalPrecision = "0, 0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8388610:objectcrc=2840949012:stfFile=deed:stfName=flora_harvester_deed_name:stfDetail=:itemmask=65535:customattributes=targetObjectSubType=4099;targetStfFile=installation_n;targetStfName=flora_farm_small;targetObjectFile=object/installation/mining_organic/shared_mining_organic_flora_farm.iff;targetConstructionObjectCRC=2242761962;maintenanceRate=30.0;powerRate=25.0;harvesterType=3;lotSize=1;:",
+   tanoAttributes = "objecttype=8388610:objectcrc=2840949012:stfFile=deed:stfName=flora_harvester_deed_name:stfDetail=:itemmask=65535::",
 
    blueFrogAttributes = "",
    blueFrogEnabled = False,
@@ -85,6 +85,7 @@ deedForMicroFloraFarm = Object:new {
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"
+
 }
 
 DraftSchematics:addDraftSchematic(deedForMicroFloraFarm, 1809212659)--- Add to global DraftSchematics table

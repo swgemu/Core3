@@ -75,10 +75,6 @@ hanAttack1 = {
 	CbtSpamEvade = "sapblast_evade",
 	CbtSpamHit = "sapblast_hit",
 	CbtSpamMiss = "sapblast_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(hanAttack1)
@@ -109,10 +105,6 @@ hanAttack2 = {
 	CbtSpamEvade = "pointblankblast_evade",
 	CbtSpamHit = "pointblankblast_hit",
 	CbtSpamMiss = "pointblankblast_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(hanAttack2)
@@ -156,10 +148,6 @@ hanAttack3 = {
 	CbtSpamEvade = "bodyshot_evade",
 	CbtSpamHit = "bodyshot_hit",
 	CbtSpamMiss = "bodyshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(hanAttack3)
@@ -191,10 +179,6 @@ hanAttack4 = {
 	CbtSpamEvade = "areashot_evade",
 	CbtSpamHit = "areashot_hit",
 	CbtSpamMiss = "areashot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(hanAttack4)
@@ -226,10 +210,6 @@ hanAttack5 = {
 	CbtSpamEvade = "disarmshot_evade",
 	CbtSpamHit = "disarmshot_hit",
 	CbtSpamMiss = "disarmshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(hanAttack5)
@@ -273,10 +253,6 @@ hanAttack6 = {
 	CbtSpamEvade = "doubletap_evade",
 	CbtSpamHit = "doubletap_hit",
 	CbtSpamMiss = "doubletap_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(hanAttack6)
@@ -308,10 +284,6 @@ hanAttack7 = {
 	CbtSpamEvade = "stoppingshot_evade",
 	CbtSpamHit = "stoppingshot_hit",
 	CbtSpamMiss = "stoppingshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(hanAttack7)
@@ -344,10 +316,6 @@ hanAttack8 = {
 	CbtSpamEvade = "fanshot_evade",
 	CbtSpamHit = "fanshot_hit",
 	CbtSpamMiss = "fanshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(hanAttack8)
@@ -380,10 +348,6 @@ hanAttack9 = {
 	CbtSpamHit = "pistolwhip_hit",
 	CbtSpamMiss = "pistolwhip_miss",
 
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(hanAttack9)
@@ -416,10 +380,6 @@ hanAttack10 = {
 	CbtSpamHit = "pistolsmash_hit",
 	CbtSpamMiss = "pistolsmash_miss",
 
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(hanAttack10)
@@ -451,10 +411,6 @@ hanAttack11 = {
 	CbtSpamEvade = "pistolmultishot_evade",
 	CbtSpamHit = "pistolmultishot_hit",
 	CbtSpamMiss = "pistolmultishot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(hanAttack11)
@@ -486,10 +442,6 @@ hanAttack12= {
 	CbtSpamEvade = "disarmblast_evade",
 	CbtSpamHit = "disarmblast_hit",
 	CbtSpamMiss = "disarmblast_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(hanAttack12)

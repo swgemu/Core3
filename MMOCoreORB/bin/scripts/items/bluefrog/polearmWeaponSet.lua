@@ -40,6 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-polearmWeaponSet = {controllerfpPolearm, nightsisterLance, staffMetalPolearm, staffWoodS1Polearm, staffWoodS2Polearm, vibroAxePolearm, vibrolance, elitevibroAxePolearm}
+polearmWeaponSet = {controllerfpPolearm, nightsisterLance, staffMetalPolearm, staffWoodS1Polearm, staffWoodS2Polearm, vibroAxePolerarm, vibrolance}
 
 addBFItemSet("Polearm Weapon Set" , polearmWeaponSet);

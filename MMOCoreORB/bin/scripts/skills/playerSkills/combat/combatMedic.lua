@@ -49,11 +49,7 @@ MindHealSkill = {
 	mindWoundCost = 250,
  
 	speed = 5.0,
-	range = 6.0,
-
-        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,9,10,11,13,14,",
-	instant = 0
+	range = 6.0
 }
 
 AddMindHealTargetSkill(MindHealSkill);
@@ -62,11 +58,7 @@ CMDotSkill = {
 	skillname = "applypoison",
 	effect = "clienteffect/healing_healenhance.cef",
 
-	medpackType = POISONDELIVERYUNIT,
-
-        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,9,10,11,13,14,",	instant = 0
-}
+	medpackType = POISONDELIVERYUNIT}
 
 AddCMDotAttackTargetSkill(CMDotSkill);
 
@@ -74,11 +66,7 @@ CMDotSkill = {
 	skillname = "applydisease",
 	effect = "clienteffect/healing_healenhance.cef",
 
-	medpackType = DISEASEDELIVERYUNIT,
-
-        invalidStateMask = 3894805544, --aiming, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,9,10,11,13,14,",
-	instant = 0
+	medpackType = DISEASEDELIVERYUNIT
 }
  
 AddCMDotAttackTargetSkill(CMDotSkill);

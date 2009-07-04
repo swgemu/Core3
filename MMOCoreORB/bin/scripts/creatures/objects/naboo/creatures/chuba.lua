@@ -47,7 +47,7 @@ chuba = Creature:new {
 
 	speciesName = "chuba",
 	stfName = "mob/creature_names",
-	objectCRC = 3129123954,
+	objectCRC = 3129123954, 
 	socialGroup = "Chuba",
 	level = 5,
 
@@ -124,10 +124,6 @@ chuba = Creature:new {
 	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0.25,  -- Likely hood to be tamed
-	datapadItemCRC = 2478782544,
-	mountCRC = 0,
-	mountSpeed = 0,
-	mountAcceleration = 0,
 
 	milk = 0,
 

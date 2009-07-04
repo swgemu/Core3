@@ -64,11 +64,7 @@ RandPoolAtt = {
 	CbtSpamCounter = "attack_counter",
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-
-        invalidStateMask = 3760586768, --alert, frozen, swimming, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	CbtSpamMiss = "attack_miss"
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -108,11 +104,8 @@ ThrowSkill = {
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
 	stunDefDebuff = 0,
-	intimidateDefDebuff = 0,
-
-        invalidStateMask = 3894804576, --berzerk, feigndeath, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "5,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	intimidateDefDebuff = 0
 }
 
 AddThrowGrenadeTargetSkill(ThrowSkill)
+

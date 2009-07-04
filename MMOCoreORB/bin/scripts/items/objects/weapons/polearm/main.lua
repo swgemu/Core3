@@ -48,4 +48,3 @@ RunItemLUAFile("objects/weapons/polearm/staffWoodS1Polearm.lua");
 RunItemLUAFile("objects/weapons/polearm/staffWoodS2Polearm.lua");
 RunItemLUAFile("objects/weapons/polearm/vibroAxePolearm.lua");
 RunItemLUAFile("objects/weapons/polearm/vibrolance.lua");
-RunItemLUAFile("objects/weapons/polearm/elitevibroAxePolearm.lua");

@@ -69,10 +69,6 @@ RandPoolAtt = {
 	CbtSpamEvade = "underhandshot_evade",
 	CbtSpamHit = "underhandshot_hit",
 	CbtSpamMiss = "underhandshot_miss",
-
-        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -136,10 +132,6 @@ RandPoolAtt = {
 	CbtSpamEvade = "knockdownfire_evade",
 	CbtSpamHit = "knockdownfire_hit",
 	CbtSpamMiss = "knockdownfire_miss",
-
-        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -176,10 +168,6 @@ RandPoolAtt = {
 	CbtSpamEvade = "confusionshot_evade",
 	CbtSpamHit = "confusionshot_hit",
 	CbtSpamMiss = "confusionshot_miss",
-
-        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -223,10 +211,6 @@ DotPoolAtt = {
 	CbtSpamEvade = "bleedingshot_evade",
 	CbtSpamHit = "bleedingshot_hit",
 	CbtSpamMiss = "bleedingshot_miss",
-
-        invalidStateMask = 3894805520, --alert, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(DotPoolAtt)
@@ -274,10 +258,6 @@ DirectPoolAtt = {
 	CbtSpamEvade = "eyeshot_evade",
 	CbtSpamHit = "eyeshot_hit",
 	CbtSpamMiss = "eyeshot_miss",
-
-        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
 }
 
 AddDirectPoolAttackTargetSkill(DirectPoolAtt)
@@ -333,10 +313,6 @@ DotPoolAtt = {
 	CbtSpamEvade = "torsoshot_evade",
 	CbtSpamHit = "torsoshot_hit",
 	CbtSpamMiss = "torsoshot_miss",
-
-        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
 }
 
 AddDotPoolAttackTargetSkill(DotPoolAtt)
@@ -377,10 +353,6 @@ RandPoolAtt = {
 	CbtSpamEvade = "firelightningsingle1_evade",
 	CbtSpamHit = "firelightningsingle1_hit",
 	CbtSpamMiss = "firelightningsingle1_miss",
-
-        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -421,10 +393,6 @@ RandPoolAtt = {
 	CbtSpamEvade = "firelightningcone1_evade",
 	CbtSpamHit = "firelightningcone1_hit",
 	CbtSpamMiss = "firelightningcone1_miss",
-
-        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -465,10 +433,6 @@ RandPoolAtt = {
 	CbtSpamEvade = "firelightningsingle2_evade",
 	CbtSpamHit = "firelightningsingle2_hit",
 	CbtSpamMiss = "firelightningsingle2_miss",
-
-        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -482,8 +446,8 @@ RandPoolAtt = {
 	requiredWeaponType = CARBINE,
 	
 	range = 0,
-	damageRatio = 4,
-	speedRatio = 2.5,
+	damageRatio = 5.5,
+	speedRatio = 3.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -505,10 +469,6 @@ RandPoolAtt = {
 	CbtSpamEvade = "sprayshot_evade",
 	CbtSpamHit = "sprayshot_hit",
 	CbtSpamMiss = "sprayshot_miss",
-
-        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -549,10 +509,6 @@ RandPoolAtt = {
 	CbtSpamEvade = "firelightningcone2_evade",
 	CbtSpamHit = "firelightningcone2_hit",
 	CbtSpamMiss = "firelightningcone2_miss",
-
-        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -600,10 +556,6 @@ DirectPoolAtt = {
 	CbtSpamEvade = "fastblast_evade",
 	CbtSpamHit = "fastblast_hit",
 	CbtSpamMiss = "fastblast_miss",
-
-        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
 }
 
 AddDirectPoolAttackTargetSkill(DirectPoolAtt)

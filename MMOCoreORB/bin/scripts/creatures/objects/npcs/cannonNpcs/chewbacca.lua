@@ -57,18 +57,18 @@ chewbacca = Creature:new {
 
 	healthMax = 30000,
 	healthMin = 24000,
-	strength = 40000,
-	constitution = 40000,
+	strength = 0,
+	constitution = 0,
 
 	actionMax = 30000,
 	actionMin = 24000,
-	quickness = 40000,
-	stamina = 40000,
+	quickness = 0,
+	stamina = 0,
 
 	mindMax = 30000,
 	mindMin = 24000,
-	focus = 40000,
-	willpower = 40000,
+	focus = 0,
+	willpower = 0,
 
 	height = 1, -- Size of creature
 	armor = 3, -- Just a guess
@@ -125,11 +125,7 @@ chewbacca = Creature:new {
 
 	lootGroup = "0,11,15,19,33,39,40", -- Group it belongs to for loot
 
-	tame = 0,
-	datapadItemCRC = 0,
-	mountCRC = 0,
-	mountSpeed = 0,
-	mountAcceleration = 0,
+	tame = 0,  -- Likely hood to be tamed
 
 	milk = 0,
 

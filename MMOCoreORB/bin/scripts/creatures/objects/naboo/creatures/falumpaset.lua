@@ -124,10 +124,6 @@ falumpaset = Creature:new {
 	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0.25,  -- Likely hood to be tamed
-	datapadItemCRC = 2686405669,
-	mountCRC = 2537291030,
-	mountSpeed = 14.5,
-	mountAcceleration = 14.5,
 
 	milk = 1,
 

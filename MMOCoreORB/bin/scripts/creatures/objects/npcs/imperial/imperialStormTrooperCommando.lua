@@ -50,9 +50,10 @@ imperialStormTrooperCommando = Creature:new {
 
 	speciesName = "storm_commando",
     stfName = "mob/creature_names",
-	objectCRC = 3037629485, 
+	objectCRC = 427178976, 
 	socialGroup = "imperial",
 	level = 29,
+	
 
 	combatFlags = 0,
 
@@ -94,10 +95,10 @@ imperialStormTrooperCommando = Creature:new {
 	ferocity = 0,
 	aggressive = 0,
 	invincible = 0,
-
+	
 	meleeDefense = 1,
 	rangedDefense = 1,
-
+	
 	randomMovement = 0,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
@@ -128,11 +129,7 @@ imperialStormTrooperCommando = Creature:new {
 
 	lootGroup = "0,11,15,19,33,42", -- Group it belongs to for loot
 
-	tame = 0,
-	datapadItemCRC = 0,
-	mountCRC = 0,
-	mountSpeed = 0,
-	mountAcceleration = 0,
+	tame = 0,  -- Likely hood to be tamed
 
 	milk = 0,
 

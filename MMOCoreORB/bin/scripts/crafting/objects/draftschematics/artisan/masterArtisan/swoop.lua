@@ -77,7 +77,7 @@ swoop = Object:new {
    experimentalMax = "0, 0, 2500",
    experimentalPrecision = "0, 0, 0",
 
-   tanoAttributes = "objecttype=8388613:objectcrc=495473751:stfFile=monster_name:stfName=speederbike_swoop:stfDetail=:itemmask=65535:customattributes=targetStfFile=monster_name;targetStfName=speederbike_swoop;targetObjectFile=object/mobile/vehicle/shared_speederbike_swoop.iff;targetControlDeviceCRC=2233671002;:",
+   tanoAttributes = "objecttype=8388613:objectcrc=495473751:stfFile=monster_name:stfName=speederbike_swoop:stfDetail=:itemmask=65535::",
 
    blueFrogAttributes = "",
    blueFrogEnabled = False,
@@ -85,6 +85,7 @@ swoop = Object:new {
    customizationOptions = "",
    customizationDefaults = "",
    customizationSkill = "clothing_customization"
+
 }
 
 DraftSchematics:addDraftSchematic(swoop, 4231876597)--- Add to global DraftSchematics table

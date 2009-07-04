@@ -124,10 +124,6 @@ lesserDewback = Creature:new {
 	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0.25,  -- Likely hood to be tamed
-	datapadItemCRC = 2745422351,
-	mountCRC = 2727120356,
-	mountSpeed = 15.5,
-	mountAcceleration = 15.5,
 
 	milk = 0,
 

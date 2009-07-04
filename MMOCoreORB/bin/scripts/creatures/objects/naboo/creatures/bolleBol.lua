@@ -51,7 +51,7 @@ bolleBol = Creature:new {
 	socialGroup = "Bolle Bol",
 	level = 27,
 
-	combatFlags = ATTACKABLE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
 	healthMax = 9400,
 	healthMin = 7700,
@@ -124,10 +124,6 @@ bolleBol = Creature:new {
 	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
-	datapadItemCRC = 0,
-	mountCRC = 0,
-	mountSpeed = 0,
-	mountAcceleration = 0,
 
 	milk = 1,
 

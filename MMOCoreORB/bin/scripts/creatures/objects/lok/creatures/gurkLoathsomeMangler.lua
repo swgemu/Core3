@@ -124,11 +124,6 @@ gurkLoathsomeMangler = Creature:new {
 	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0.05,  -- Likely hood to be tamed
-	datapadItemCRC = 589316378,
-	datapadItemCRC = 3720963355,
-	mountCRC = 0,
-	mountSpeed = 0,
-	mountAcceleration = 0,
 
 	milk = 0,
 

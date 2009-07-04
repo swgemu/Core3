@@ -53,7 +53,7 @@ jantaScout = Creature:new {
 	socialGroup = "janta_tribe",
 	level = 51,
 
-	combatFlags = ATTACKABLE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
 	healthMax = 13000,
 	healthMin = 11000,
@@ -126,11 +126,7 @@ jantaScout = Creature:new {
 
 	lootGroup = "0,11,15,19,33,65", -- Group it belongs to for loot
 
-	tame = 0,
-	datapadItemCRC = 0,
-	mountCRC = 0,
-	mountSpeed = 0,
-	mountAcceleration = 0,
+	tame = 0,  -- Likely hood to be tamed
 
 	milk = 0,
 

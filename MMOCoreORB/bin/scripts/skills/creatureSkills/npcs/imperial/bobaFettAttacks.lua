@@ -84,10 +84,6 @@ bobaAttack1 = {
 	CbtSpamEvade = "legshot_evade",
 	CbtSpamHit = "legshot_hit",
 	CbtSpamMiss = "legshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(bobaAttack1)
@@ -119,10 +115,6 @@ bobaAttack2 = {
 	CbtSpamEvade = "s_auto_evade",
 	CbtSpamHit = "s_auto_hit",
 	CbtSpamMiss = "s_auto_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(bobaAttack2)
@@ -165,10 +157,6 @@ bobaAttack3 = {
 	CbtSpamEvade = "scattershot_evade",
 	CbtSpamHit = "scattershot_hit",
 	CbtSpamMiss = "scattershot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(bobaAttack3)
@@ -199,10 +187,6 @@ bobaAttack4 = {
 	CbtSpamEvade = "wildshot_evade",
 	CbtSpamHit = "wildshot_hit",
 	CbtSpamMiss = "wildshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(bobaAttack4)
@@ -244,10 +228,6 @@ bobaAttack5 = {
 	CbtSpamEvade = "scatterblast_evade",
 	CbtSpamHit = "scatterblast_hit",
 	CbtSpamMiss = "scatterblast_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(bobaAttack5)
@@ -278,10 +258,6 @@ bobaAttack6 = {
 	CbtSpamEvade = "widewildshot_evade",
 	CbtSpamHit = "widewildshot_hit",
 	CbtSpamMiss = "widewildshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(bobaAttack6)
@@ -322,10 +298,6 @@ bobaAttack7 = {
 	CbtSpamEvade = "kneecapshot_evade",
 	CbtSpamHit = "kneecapshot_hit",
 	CbtSpamMiss = "kneecapshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(bobaAttack7)
@@ -356,10 +328,6 @@ bobaAttack8 = {
 	CbtSpamEvade = "cripplingshot_evade",
 	CbtSpamHit = "cripplingshot_hit",
 	CbtSpamMiss = "cripplingshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(bobaAttack8)
@@ -390,10 +358,6 @@ bobaAttack9 = {
 	CbtSpamEvade = "burstshot_evade",
 	CbtSpamHit = "burstshot_hit",
 	CbtSpamMiss = "burstshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(bobaAttack9)
@@ -424,10 +388,6 @@ bobaAttack10 = {
 	CbtSpamEvade = "burstblast_evade",
 	CbtSpamHit = "burstblast_hit",
 	CbtSpamMiss = "burstblast_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(bobaAttack10)
@@ -458,10 +418,6 @@ bobaAttack11 = {
 	CbtSpamEvade = "sup_fire_evade",
 	CbtSpamHit = "sup_fire_hit",
 	CbtSpamMiss = "sup_fire_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(bobaAttack11)
@@ -492,10 +448,6 @@ bobaAttack12 = {
 	CbtSpamEvade = "a_auto_evade",
 	CbtSpamHit = "a_auto_hit",
 	CbtSpamMiss = "a_auto_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(bobaAttack12)
@@ -526,10 +478,6 @@ bobaAttack13 = {
 	CbtSpamEvade = "chargeshot_evade",
 	CbtSpamHit = "chargeshot_hit",
 	CbtSpamMiss = "chargeshot_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(bobaAttack13)
@@ -560,10 +508,6 @@ bobaAttack14 = {
 	CbtSpamEvade = "a_auto_evade",
 	CbtSpamHit = "a_auto_hit",
 	CbtSpamMiss = "a_auto_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(bobaAttack14)
@@ -594,10 +538,6 @@ bobaAttack15 = {
 	CbtSpamEvade = "chargeblast_evade",
 	CbtSpamHit = "chargeblast_hit",
 	CbtSpamMiss = "chargeblast_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(bobaAttack15)

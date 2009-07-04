@@ -44,153 +44,106 @@
 -- Core Commands
 
 imagedesignSkill = {
-	skillname = "imagedesign",
-        invalidStateMask = 3894542336, --frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "2,5,7,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "imagedesign"
 }
---AddEntertainSkill(imagedesignSkill)
+AddEntertainSkill(imagedesignSkill)
 
 startdanceSkill = {
-	skillname = "startdance",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startdance"
 }
 AddEntertainSkill(startdanceSkill)
 
 startmusicSkill = {
-	skillname = "startmusic",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startmusic"
 }
 AddEntertainSkill(startmusicSkill)
 
 stopdanceSkill = {
-	skillname = "stopdance",
-        invalidStateMask = 3760193552, --alert, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "",
-	instant = 0
+	skillname = "stopdance"
 }
 AddEntertainSkill(stopdanceSkill)
 
 stopmusicSkill = {
-	skillname = "stopmusic",
-        invalidStateMask = 3760193552, --alert, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "",
-	instant = 0
+	skillname = "stopmusic"
 }
-AddEntertainSkill(stopmusicSkill)
+AddEntertainSkill(stopmusicSkill)
+
+changedanceSkill = {
+	skillname = "changedance"
+}
+AddEntertainSkill(changedanceSkill)
+
+changemusicSkill = {
+	skillname = "changemusic"
+}
+AddEntertainSkill(changemusicSkill)
+
+
 -- Effects
 
 spotlightSkill = {
 	skillname = "spotlight",
-	effect_prefix = "clienteffect/entertainer_spot_light_level_",
-        invalidStateMask = 3894934635, --cover, combat, aiming, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,10,11,12,13,14,4,",
-	instant = 0
+	effect_prefix = "clienteffect/entertainer_spot_light_level_"
 }
 AddEntertainEffectSkill(spotlightSkill)
 
 dazzleSkill = {
 	skillname = "dazzle",
-	effect_prefix = "clienteffect/entertainer_dazzle_level_",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,10,11,12,13,14,4,",
-	instant = 0
+	effect_prefix = "clienteffect/entertainer_dazzle_level_"
 }
 AddEntertainEffectSkill(dazzleSkill)
 
 
 colorlightsSkill = {
 	skillname = "colorlights",
-	effect_prefix = "clienteffect/entertainer_color_lights_level_",
-        invalidStateMask = 3894934635, --cover, combat, aiming, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,10,11,12,13,14,4,",
-	instant = 0
+	effect_prefix = "clienteffect/entertainer_color_lights_level_"
 }
 AddEntertainEffectSkill(colorlightsSkill)
 
 -- Flourishes
 
 bandflourishSkill = {
-	skillname = "bandflourish",
-        invalidStateMask = 3760193552, --alert, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "",
-	instant = 0
+	skillname = "bandflourish"
 }
 AddBandFlourishSkill(bandflourishSkill) 
 
-flourishSkill = {
-	skillname = "flourish",
-        invalidStateMask = 3760193552, --alert, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "",
-	instant = 0
-}
-AddEntertainSkill(flourishSkill)
-
 flourish1Skill = {
-	skillname = "flourish+1",
-        invalidStateMask = 3760193552, --alert, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "",
-	instant = 0
+	skillname = "flourish+1"
 }
 AddEntertainSkill(flourish1Skill)
 
 flourish2Skill = {
-	skillname = "flourish+2",
-        invalidStateMask = 3760193552, --alert, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "",
-	instant = 0
+	skillname = "flourish+2"
 }
 AddEntertainSkill(flourish2Skill)
 
 flourish3Skill = {
-	skillname = "flourish+3",
-        invalidStateMask = 3760193552, --alert, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "",
-	instant = 0
+	skillname = "flourish+3"
 }
 AddEntertainSkill(flourish3Skill)
 
 flourish4Skill = {
-	skillname = "flourish+4",
-        invalidStateMask = 3760193552, --alert, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "",
-	instant = 0
+	skillname = "flourish+4"
 }
 AddEntertainSkill(flourish4Skill)
 
 flourish5Skill = {
-	skillname = "flourish+5",
-        invalidStateMask = 3760193552, --alert, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "",
-	instant = 0
+	skillname = "flourish+5"
 }
 AddEntertainSkill(flourish5Skill)
 
 flourish6Skill = {
-	skillname = "flourish+6",
-        invalidStateMask = 3760193552, --alert, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "",
-	instant = 0
+	skillname = "flourish+6"
 }
 AddEntertainSkill(flourish6Skill)
 
 flourish7Skill = {
-	skillname = "flourish+7",
-        invalidStateMask = 3760193552, --alert, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "",
-	instant = 0
+	skillname = "flourish+7"
 }
 AddEntertainSkill(flourish7Skill)
 
 flourish8Skill = {
-	skillname = "flourish+8",
-        invalidStateMask = 3760193552, --alert, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "",
-	instant = 0
+	skillname = "flourish+8"
 }
 AddEntertainSkill(flourish8Skill)
 
@@ -198,300 +151,189 @@ AddEntertainSkill(flourish8Skill)
 -- Dances
 
 startdanceBasicSkill = {
-	skillname = "startdance+basic",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startdance+basic"
 }
 AddEntertainSkill(startdanceBasicSkill)
 
 startdanceRhythmicSkill = {
-	skillname = "startdance+rhythmic",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startdance+rhythmic"
 }
 AddEntertainSkill(startdanceRhythmicSkill)
 
 startdanceBasic2Skill = {
-	skillname = "startdance+basic2",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startdance+basic2"
 }
 AddEntertainSkill(startdanceBasic2Skill)
 
 startdanceRhythmic2Skill = {
-	skillname = "startdance+rhythmic2",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startdance+rhythmic2"
 }
 AddEntertainSkill(startdanceRhythmic2Skill)
 
 startdanceFootlooseSkill = {
-	skillname = "startdance+footloose",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startdance+footloose"
 }
 AddEntertainSkill(startdanceFootlooseSkill)
 
 startdanceFormalSkill = {
-	skillname = "startdance+formal",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startdance+formal"
 }
 AddEntertainSkill(startdanceFormalSkill)
 
 startdanceFootloose2Skill = {
-	skillname = "startdance+footloose2",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startdance+footloose2"
 }
 AddEntertainSkill(startdanceFootloose2Skill)
 
 startdanceFormal2Skill = {
-	skillname = "startdance+formal2",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startdance+formal2"
 }
 AddEntertainSkill(startdanceFormal2Skill)
 
 startdancePopularSkill = {
-	skillname = "startdance+popular",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startdance+popular"
 }
 AddEntertainSkill(startdancePopularSkill)
 
 startdancePoplockSkill = {
-	skillname = "startdance+poplock",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startdance+poplock"
 }
 AddEntertainSkill(startdancePoplockSkill)
 
 startdancePopular2Skill = {
-	skillname = "startdance+popular2",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startdance+popular2"
 }
 AddEntertainSkill(startdancePopular2Skill)
 
 startdancePoplock2Skill = {
-	skillname = "startdance+poplock2",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startdance+poplock2"
 }
 AddEntertainSkill(startdancePoplock2Skill)
 
 startdanceLyricalSkill = {
-	skillname = "startdance+lyrical",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startdance+lyrical"
 }
 AddEntertainSkill(startdanceLyricalSkill)
 
 startdanceBreakdanceSkill = {
 	skillname = "startdance+breakdance",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
 }
 AddEntertainSkill(startdanceBreakdanceSkill)
 
 startdanceBreakdance2Skill = {
 	skillname = "startdance+breakdance2",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
 }
 AddEntertainSkill(startdanceBreakdance2Skill)
 
 startdanceExoticSkill = {
 	skillname = "startdance+exotic",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
 }
 AddEntertainSkill(startdanceExoticSkill)
 
 startdanceExotic2Skill = {
-	skillname = "startdance+exotic2",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startdance+exotic2"
 }
 AddEntertainSkill(startdanceExotic2Skill)
 
 startdanceLyrical2Skill = {
-	skillname = "startdance+lyrical2",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startdance+lyrical2"
 }
 AddEntertainSkill(startdanceLyrical2Skill)
 
 startdanceExotic3Skill = {
-	skillname = "startdance+exotic3",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startdance+exotic3"
 }
 AddEntertainSkill(startdanceExotic3Skill)
 
 startdanceExotic4Skill = {
-	skillname = "startdance+exotic4",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startdance+exotic4"
 }
 AddEntertainSkill(startdanceExotic4Skill)
 
 startdanceTheatricalSkill = {
-	skillname = "startdance+theatrical",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startdance+theatrical"
 }
 AddEntertainSkill(startdanceTheatricalSkill)
 
 startdanceTheatrical2Skill = {
-	skillname = "startdance+theatrical2",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startdance+theatrical2"
 }
 AddEntertainSkill(startdanceTheatrical2Skill)
 
 startdanceTumbleSkill = {
     skillname = "startdance+tumble",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
 }
 AddEntertainSkill(startdanceTumbleSkill)
 
 startdanceTumble2Skill = {
     skillname = "startdance+tumble2",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
 }
 AddEntertainSkill(startdanceTumble2Skill)
 
 -- Music Songs
 
 startmusicStarwars1Skill = {
-	skillname = "startmusic+starwars1",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startmusic+starwars1"
 }
 AddEntertainSkill(startmusicStarwars1Skill)
 
 startmusicRockSkill = {
-	skillname = "startmusic+rock",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startmusic+rock"
 }
 AddEntertainSkill(startmusicRockSkill)
 
 startmusicStarwars2Skill = {
-	skillname = "startmusic+starwars2",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startmusic+starwars2"
 }
 AddEntertainSkill(startmusicStarwars2Skill)
 
 startmusicFolkSkill = {
-	skillname = "startmusic+folk",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startmusic+folk"
 }
 AddEntertainSkill(startmusicFolkSkill)
 
 startmusicStarwars3Skill = {
-	skillname = "startmusic+starwars3",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startmusic+starwars3"
 }
 AddEntertainSkill(startmusicStarwars3Skill)
 
 startmusicCeremonialSkill = {
-	skillname = "startmusic+ceremonial",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startmusic+ceremonial"
 }
 AddEntertainSkill(startmusicCeremonialSkill)
 
 startmusicStarwars4Skill = {
-	skillname = "startmusic+starwars4",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startmusic+starwars4"
 }
 AddEntertainSkill(startmusicStarwars4Skill)
 
 startmusicBalladSkill = {
-	skillname = "startmusic+ballad",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startmusic+ballad"
 }
 AddEntertainSkill(startmusicBalladSkill)
 
 startmusicFunkSkill = {
-	skillname = "startmusic+funk",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startmusic+funk"
 }
 AddEntertainSkill(startmusicFunkSkill)
 
 startmusicWaltzSkill = {
-	skillname = "startmusic+waltz",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startmusic+waltz"
 }
 AddEntertainSkill(startmusicWaltzSkill)
 
 startmusicJazzSkill = {
-	skillname = "startmusic+jazz",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startmusic+jazz"
 }
 AddEntertainSkill(startmusicJazzSkill)
 
 startmusicVirtuosoSkill = {
-	skillname = "startmusic+virtuoso",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startmusic+virtuoso"
 }
 AddEntertainSkill(startmusicVirtuosoSkill)
 
 startmusicWesternSkill = {
-	skillname = "startmusic+western",
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4,",
-	instant = 0
+	skillname = "startmusic+western"
 }
 AddEntertainSkill(startmusicWesternSkill)
 

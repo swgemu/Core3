@@ -55,10 +55,6 @@ spawnCreature(canyonKraytDragon, 8, 6738, 4481)
 spawnCreature(kraytDragonAncient, 8, 6828, 4066)
 spawnCreature(kraytDragonAncient, 8, 7054, 4194)
 
-spawnCreature(giantCanyonKraytDragon, 8, 6630, 4244)
-spawnCreature(giantCanyonKraytDragon, 8, 7305, 4468)
-spawnCreature(giantCanyonKraytDragon, 8, 7191, 4881)
-
 spawnCreature(juvenileCanyonKrayt, 8, 7426, 4621)
 spawnCreature(juvenileCanyonKrayt, 8, 7413, 4515)
 spawnCreature(juvenileCanyonKrayt, 8, 7475, 4446)

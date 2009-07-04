@@ -142,10 +142,3 @@
  RunCreatureFile("objects/tatooine/npcs/weequay/weequaySoldier.lua")
  RunCreatureFile("objects/tatooine/npcs/weequay/weequayThug.lua")
  RunCreatureFile("objects/tatooine/npcs/weequay/weequayZealot.lua")  
-
- RunCreatureFile("objects/tatooine/npcs/mosEisley/figrinDan.lua")
- RunCreatureFile("objects/tatooine/npcs/mosEisley/techMor.lua")
- RunCreatureFile("objects/tatooine/npcs/mosEisley/doikkNats.lua")
- RunCreatureFile("objects/tatooine/npcs/mosEisley/tednDahai.lua")
- RunCreatureFile("objects/tatooine/npcs/mosEisley/nalanCheel.lua")
- 

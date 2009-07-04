@@ -65,11 +65,7 @@ twoHandedJediAttack1 = {
 	CbtSpamCounter = "saberthrow1_counter",
 	CbtSpamEvade = "saberthrow1_evade",
 	CbtSpamHit = "saberthrow1_hit",
-	CbtSpamMiss = "saberthrow1_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
+	CbtSpamMiss = "saberthrow1_miss"
 }
 
 AddRandomPoolAttackTargetSkill(twoHandedJediAttack1)
@@ -99,11 +95,7 @@ twoHandedJediAttack2 = {
 	CbtSpamCounter = "saberthrow2_counter",
 	CbtSpamEvade = "saberthrow2_evade",
 	CbtSpamHit = "saberthrow2_hit",
-	CbtSpamMiss = "saberthrow2_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
+	CbtSpamMiss = "saberthrow2_miss"
 }
 
 AddRandomPoolAttackTargetSkill(twoHandedJediAttack2)
@@ -135,11 +127,7 @@ twoHandedJediAttack3 = {
 	CbtSpamCounter = "saberthrow3_counter",
 	CbtSpamEvade = "saberthrow3_evade",
 	CbtSpamHit = "saberthrow3_hit",
-	CbtSpamMiss = "saberthrow3_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
+	CbtSpamMiss = "saberthrow3_miss"
 }
 
 AddRandomPoolAttackTargetSkill(twoHandedJediAttack3)
@@ -182,11 +170,7 @@ twoHandedJediAttack4 = {
 	CbtSpamCounter = "saberslash1_counter",
 	CbtSpamEvade = "saberslash1_evade",
 	CbtSpamHit = "saberslash1_hit",
-	CbtSpamMiss = "saberslash1_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
+	CbtSpamMiss = "saberslash1_miss"
 }
 
 AddRandomPoolAttackTargetSkill(twoHandedJediAttack4)
@@ -229,11 +213,7 @@ twoHandedJediAttack5 = {
 	CbtSpamCounter = "saberslash2_counter",
 	CbtSpamEvade = "saberslash2_evade",
 	CbtSpamHit = "saberslash2_hit",
-	CbtSpamMiss = "saberslash2_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
+	CbtSpamMiss = "saberslash2_miss"
 }
 
 AddRandomPoolAttackTargetSkill(twoHandedJediAttack5)
@@ -263,12 +243,8 @@ twoHandedJediAttack6 = {
 	CbtSpamCounter = "saber2hphantom_counter",
 	CbtSpamEvade = "saber2hphantom_evade",
 	CbtSpamHit = "saber2hphantom_hit",
-	CbtSpamMiss = "saber2hphantom_miss",
+	CbtSpamMiss = "saber2hphantom_miss"
 	
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(twoHandedJediAttack6)
@@ -307,12 +283,8 @@ twoHandedJediAttack7 = {
 	CbtSpamCounter = "saber2hbodyhit1_counter",
 	CbtSpamEvade = "saber2hbodyhit1_evade",
 	CbtSpamHit = "saber2hbodyhit1_hit",
-	CbtSpamMiss = "saber2hbodyhit1_miss",
+	CbtSpamMiss = "saber2hbodyhit1_miss"
 	
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(twoHandedJediAttack7)
@@ -352,12 +324,8 @@ twoHandedJediAttack8 = {
 	CbtSpamCounter = "saber2hbodyhit2_counter",
 	CbtSpamEvade = "saber2hbodyhit2_evade",
 	CbtSpamHit = "saber2hbodyhit2_hit",
-	CbtSpamMiss = "saber2hbodyhit2_miss",
+	CbtSpamMiss = "saber2hbodyhit2_miss"
 	
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(twoHandedJediAttack8)
@@ -397,12 +365,8 @@ twoHandedJediAttack9 = {
 	CbtSpamCounter = "saber2hbodyhit3_counter",
 	CbtSpamEvade = "saber2hbodyhit3_evade",
 	CbtSpamHit = "saber2hbodyhit3_hit",
-	CbtSpamMiss = "saber2hbodyhit3_miss",
+	CbtSpamMiss = "saber2hbodyhit3_miss"
 	
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(twoHandedJediAttack9)
@@ -427,12 +391,8 @@ twoHandedJediAttack10 = {
 	CbtSpamCounter = "saber2hsweep1_counter",
 	CbtSpamEvade = "saber2hsweep1_evade",
 	CbtSpamHit = "saber2hsweep1_hit",
-	CbtSpamMiss = "saber2hsweep1_miss",
+	CbtSpamMiss = "saber2hsweep1_miss"
 	
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(twoHandedJediAttack10)
@@ -457,12 +417,8 @@ twoHandedJediAttack11 = {
 	CbtSpamCounter = "saber2hsweep2_counter",
 	CbtSpamEvade = "saber2hsweep2_evade",
 	CbtSpamHit = "saber2hsweep2_hit",
-	CbtSpamMiss = "saber2hsweep2_miss",
+	CbtSpamMiss = "saber2hsweep2_miss"
 	
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(twoHandedJediAttack11)
@@ -487,12 +443,8 @@ twoHandedJediAttack12 = {
 	CbtSpamCounter = "saber2hsweep3_counter",
 	CbtSpamEvade = "saber2hsweep3_evade",
 	CbtSpamHit = "saber2hsweep3_hit",
-	CbtSpamMiss = "saber2hsweep3_miss",
+	CbtSpamMiss = "saber2hsweep3_miss"
 	
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(twoHandedJediAttack12)
@@ -517,12 +469,8 @@ twoHandedJediAttack13 = {
 	CbtSpamCounter = "saber2hhit1_counter",
 	CbtSpamEvade = "saber2hhit1_evade",
 	CbtSpamHit = "saber2hhit1_hit",
-	CbtSpamMiss = "saber2hhit1_miss",
+	CbtSpamMiss = "saber2hhit1_miss"
 	
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(twoHandedJediAttack13)
@@ -547,12 +495,8 @@ twoHandedJediAttack14 = {
 	CbtSpamCounter = "saber2hhit2_counter",
 	CbtSpamEvade = "saber2hhit2_evade",
 	CbtSpamHit = "saber2hhit2_hit",
-	CbtSpamMiss = "saber2hhit2_miss",
+	CbtSpamMiss = "saber2hhit2_miss"
 	
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(twoHandedJediAttack14)
@@ -577,12 +521,8 @@ twoHandedJediAttack15 = {
 	CbtSpamCounter = "saber2hhit3_counter",
 	CbtSpamEvade = "saber2hhit3_evade",
 	CbtSpamHit = "saber2hhit3_hit",
-	CbtSpamMiss = "saber2hhit3_miss",
+	CbtSpamMiss = "saber2hhit3_miss"
 	
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
 }
 
 AddRandomPoolAttackTargetSkill(twoHandedJediAttack15)
@@ -612,11 +552,7 @@ twoHandedJediAttack16 = {
 	CbtSpamCounter = "saber2hfrenzy_counter",
 	CbtSpamEvade = "saber2hfrenzy_evade",
 	CbtSpamHit = "saber2hfrenzy_hit",
-	CbtSpamMiss = "saber2hfrenzy_miss",
-
-	invalidStateMask = 0,
-	invalidPostures = "",
-	instant = 0
+	CbtSpamMiss = "saber2hfrenzy_miss"
 }
 
 AddRandomPoolAttackTargetSkill(twoHandedJediAttack16)
