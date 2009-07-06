@@ -1849,7 +1849,7 @@ void PlayerImplementation::notifySceneReady() {
 	ChatManager* chatManager = server->getChatManager();
 	chatManager->listMail(_this);
 
-	if (parent == NULL) {
+	if (parent == NULL && zone != NULL) {
 		setPosition(positionX, zone->getHeight(positionX, positionY), positionY);
 		bounceBack();
 		updatePlayerPosition(false);
@@ -3473,25 +3473,25 @@ void PlayerImplementation::unsetArmorEncumbrance(Armor* armor) {
 }
 
 void PlayerImplementation::applyPowerup(uint64 powerupID, uint64 targetID) {
-	SceneObject* invObj = getInventoryItem(powerupID);
+	ManagedReference<SceneObject> invObj = getInventoryItem(powerupID);
 	if (invObj == NULL || !invObj->isTangible())
 		return;
 
-	TangibleObject* tano = (TangibleObject*) invObj;
+	ManagedReference<TangibleObject> tano = (TangibleObject*) invObj.get();
 	if (!tano->isWeaponPowerup())
 		return;
 
-	Powerup* powerup = (Powerup*) tano;
+	ManagedReference<Powerup> powerup = (Powerup*) tano.get();
 
 	invObj = getInventoryItem(targetID);
 	if (invObj == NULL || !invObj->isTangible())
 		return;
 
-	tano = (TangibleObject*) invObj;
+	tano = (TangibleObject*) invObj.get();
 	if (!tano->isWeapon())
 		return;
 
-	Weapon* weapon = (Weapon*) tano;
+	ManagedReference<Weapon> weapon = (Weapon*) tano.get();
 
 	weapon->wlock(_this);
 

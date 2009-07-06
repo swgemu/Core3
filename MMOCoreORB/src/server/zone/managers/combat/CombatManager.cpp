@@ -229,7 +229,8 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 			FireHeavyWeaponAttackTarget* tarSkill = (FireHeavyWeaponAttackTarget*) tskill;
 			HeavyRangedWeapon* heavyWeapon= tarSkill->getHeavyRangedWeapon(creature,actionModifier);
 
-			heavyWeapon->useCharge((Player*) creature);
+			if (heavyWeapon != NULL)
+				heavyWeapon->useCharge((Player*) creature);
 		}
 		actionMessage = new CombatAction(creature, animCRC);
 	}
@@ -362,7 +363,9 @@ void CombatManager::handleAreaAction(CreatureObject* creature, TangibleObject* t
 
 		if (skill->isHeavyWeaponSkill()) {
 			HeavyRangedWeapon* heavyWeeapon = ((FireHeavyWeaponAttackTarget*)skill)->getHeavyRangedWeapon(creature,actionModifier);
-			areaRange = heavyWeeapon->getArea();
+
+			if (heavyWeeapon)
+				areaRange = heavyWeeapon->getArea();
 		}
 
 		bool rangeArea = skill->isThrowSkill() || skill->isHeavyWeaponSkill();
@@ -1353,19 +1356,21 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 		} else if (tskill->isHeavyWeaponSkill()) {
 			weapon = ((FireHeavyWeaponAttackTarget*)tskill)->getHeavyRangedWeapon(creature,actionModifier);
 
-			switch(weapon->getType()) {
-			case HEAVYROCKETLAUNCHERATTACK:
-				speedMod = ((Player*)creature)->getSkillMod("heavy_rocket_launcher_speed");
-				break;
-			case HEAVYACIDBEAMATTACK:
-				speedMod = ((Player*)creature)->getSkillMod("heavy_acid_beam_speed");
-				break;
-			case HEAVYLIGHTNINGBEAMATTACK:
-				speedMod = ((Player*)creature)->getSkillMod("heavy_lightning_beam_speed");
-				break;
-			case HEAVYPARTICLEBEAMATTACK:
-				speedMod = ((Player*)creature)->getSkillMod("heavy_particle_beam_speed");
-				break;
+			if (weapon != NULL) {
+				switch(weapon->getType()) {
+				case HEAVYROCKETLAUNCHERATTACK:
+					speedMod = ((Player*)creature)->getSkillMod("heavy_rocket_launcher_speed");
+					break;
+				case HEAVYACIDBEAMATTACK:
+					speedMod = ((Player*)creature)->getSkillMod("heavy_acid_beam_speed");
+					break;
+				case HEAVYLIGHTNINGBEAMATTACK:
+					speedMod = ((Player*)creature)->getSkillMod("heavy_lightning_beam_speed");
+					break;
+				case HEAVYPARTICLEBEAMATTACK:
+					speedMod = ((Player*)creature)->getSkillMod("heavy_particle_beam_speed");
+					break;
+				}
 			}
 		}
 	}

@@ -206,7 +206,7 @@ public:
 
 
 	void doBandFlourish(Player* leader, String& number, bool musicflourish, int instrumentType) {
-		GroupObject* group = leader->getGroupObject();
+		ManagedReference<GroupObject> group = leader->getGroupObject();
 
 		//Make the leader flourish.
 		if (group == NULL) { //leader is not in a group.
@@ -250,14 +250,14 @@ public:
 			group->wlock();
 
 			for(int i = 0; i < group->getGroupSize(); i++) {
-				CreatureObject* groupMember = (CreatureObject*)group->getGroupMember(i);
+				ManagedReference<CreatureObject> groupMember = (CreatureObject*)group->getGroupMember(i);
 
 				try {
 
-					groupMember->wlock(group);
+					groupMember->wlock();
 
 					if (groupMember != leader && groupMember->isPlayer()) {
-						Player* player = (Player*)groupMember;
+						Player* player = (Player*)groupMember.get();
 
 						if (player->isAcceptingBandFlourishes()) {
 
