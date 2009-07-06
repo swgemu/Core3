@@ -106,7 +106,7 @@ void GameCommandHandler::init() {
 			"Warps you to a player\'s location ",
 			"Usage @warpTo <player>",
 			&warpTo);
-	gmCommands->addCommand("warpPlayer", PRIVILEGEDJR,
+	gmCommands->addCommand("warpPlayer", PRIVILEGED,
 			"Warps a player to a given location.",
 			"Usage: @warpPlayer <player> <starport | hotel | shuttle | medical | bank | garage | salon | punish>",
 			&warpPlayer);
@@ -126,7 +126,7 @@ void GameCommandHandler::init() {
 			"Bans a user from logging in to the server.",
 			"Usage: @banUser <name> <ban time in minutes> <reason>",
 			&banUser);
-	gmCommands->addCommand("getForumName", PRIVILEGEDJR,
+	gmCommands->addCommand("getForumName", PRIVILEGEDJR | EC,
 			"Returns forum name for select character.",
 			"Usage: @getForumName <player>",
 			&getForumName);

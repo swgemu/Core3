@@ -64,6 +64,8 @@ public:
 		try {
 			player->wlock();
 
+			player->clearForageDelayEvent();
+
 			if (player->isOnline() && !player->isLoggingOut()) {
                 player->finishForaging(forageType);
 			}

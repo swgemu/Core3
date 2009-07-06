@@ -389,6 +389,10 @@ public:
 		logoutEvent = NULL;
 	}
 
+	inline void clearForageDelayEvent() {
+		forageDelayEvent = NULL;
+	}
+
 	inline void clearDigestEvent() {
 		digestEvent = NULL;
 	}
