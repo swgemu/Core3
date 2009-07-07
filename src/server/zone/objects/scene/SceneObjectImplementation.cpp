@@ -69,7 +69,7 @@ which carries forward this exception.
 #include "../tangible/TangibleObjectImplementation.h"
 
 SceneObjectImplementation::SceneObjectImplementation()
-	: SceneObjectServant(), QuadTreeEntry(), ContainerObject(this), Logger() {
+	: ManagedObjectImplementation(), QuadTreeEntry(), ContainerObject(this), Logger() {
 	objectID = 0;
 	objectType = 0;
 
@@ -77,7 +77,7 @@ SceneObjectImplementation::SceneObjectImplementation()
 }
 
 SceneObjectImplementation::SceneObjectImplementation(uint64 oid, int type)
-	: SceneObjectServant(), QuadTreeEntry(), ContainerObject(this), Logger() {
+	: ManagedObjectImplementation(), QuadTreeEntry(), ContainerObject(this), Logger() {
 	objectID = oid;
 	objectType = type;
 
