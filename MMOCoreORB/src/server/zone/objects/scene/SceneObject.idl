@@ -42,343 +42,796 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "engine/service/proto/BaseMessage";
-include "engine/service/proto/StandaloneBaseMessage";
+/* comment for TA: you always have to start with defining the package name. This
+			 have to match with the path name of the file, the relative path
+			 will start where the compiler is running from (eg. src). This
+			 is going to create the C++ namespaces as well. */
+package server.zone.objects.scene;
 
-include "engine/util/QuadTreeEntry";
+/* comment for TA: you have to add includes for all the used classes in the file. 
+			 Let it be native C/C++ or scripting classes. Have same rules for
+			 the package naming. If you check the first few, they are from 
+			 engine3. The compiler will parse even the C/C++ fles and use
+			 their interfaces for using them. Note that you must use the 
+			 complete path, you cannot do relative addressing like ../.. and
+			 things like variables.DamageDone. */
+import system.lang.System;
+import system.lang.Math;
 
-include "engine/util/Coordinate";
+import system.io.Serializable;
 
-include "../../ZoneProcessServerImplementation";
+import system.util.Vector;
+import system.util.VectorMap;
 
-import "../../packets/scene/AttributeListMessage";
+import engine.log.Logger;
 
-import "../../packets/object/ObjectMenuResponse";
+import engine.core.ManagedReference;
 
-import "../../Zone";
+import engine.util.Coordinate;
+import engine.util.QuadTreeEntry;
 
-import "../../ZoneClientSession";
+import engine.service.proto.BaseMessage;
+import engine.service.proto.StandaloneBaseMessage;
 
-import "../player/Player";
+import engine.core.ManagedObject;
 
-import "../tangible/weapons/Weapon";
+import server.zone.Zone;
+import server.zone.ZoneClientSession;
+import server.zone.ZoneProcessServerImplementation;
 
-import "../creature/CreatureObject";
+import server.zone.managers.player.ProfessionManager;
 
-import "../building/BuildingObject";
+import server.zone.managers.planet.PlanetManager;
 
-import "../creature/skills/target/AttackTargetSkill";
+import server.zone.objects.scene.ContainerObject;
 
+import server.zone.objects.scene.events.UndeploySceneObjectEvent;
 
-interface SceneObject implements ManagedObject {
-	native boolean destroy();
+import server.zone.objects.scene.variables.DamageDone;
+import server.zone.objects.scene.variables.SceneObjectReference;
+import server.zone.objects.scene.variables.ItemAttributes;
+import server.zone.objects.scene.variables.CustomizationVariables;
 
-	void redeploy();
+import server.zone.objects.creature.CreatureObject;
 
-	void scheduleUndeploy();
+import server.zone.objects.player.Player;
 
-	void removeUndeploymentEvent();
+import server.zone.objects.building.BuildingObject;
 
-	// client methods
-	void sendTo(Player player, boolean doClose = true);
-	void sendDestroyTo(Player player);
+import server.zone.objects.group.GroupObject;
 
-	void sendRadialResponseTo(Player player, ObjectMenuResponse omr);
+import server.zone.packets.object.ObjectMenuResponse;
 
-	void create(ZoneClientSession client);
-	void destroy(ZoneClientSession client);
+import server.zone.packets.scene.AttributeListMessage;
 
-	void sendConversationStartTo(SceneObject obj);
-	void selectConversationOption(int option, SceneObject obj);
-	void sendConversationStopTo(SceneObject obj);
+/* comment for TA: a sciting class can only inherit from one another scripting class and
+			 any number of C++ classes. */
+class SceneObject extends ManagedObject, native ContainerObject, native QuadTreeEntry, native Logger, native Serializable {
+	/*  comment for TA: Objects will always be references. Note that you have to give the 
+	    access scope for any methods and members. If you dont set it, it will be private 
+   	    by default. */
+	protected ZoneProcessServerImplementation server;
 
-	void close(ZoneClientSession client);
+	protected Zone zone;
+
+	/* comment for TA: for now, native C++ inherited classes is not parsed so we have to define
+				 members here that we use in the scripting language. */
+	protected native unsigned long objectID;
+
+	protected int objectType;
+
+	/* comment for TA: there is no uint32 or alike. byte = 8 bit, short = 16 bit, int = 32 bit
+				 and long = 64 bit. They will transleted to uintXY of course. */
+	protected unsigned int objectCRC;
+
+	/* comment for TA: string and unicode are basic type in the language now. they are passed as
+					   String& and UnicodeString& for C/C++. Using final keyword before them will
+					   make them pass as const values. */
+	protected unicode customName;
+
+	protected string stfFile;
+	protected string stfName;
+	protected string stfDetail;
+
+	protected int zoneID;
+
+	protected string attributeString;
+
+	protected CustomizationVariables customizationVariables;
+
+	protected ItemAttributes itemAttributes;
+
+	protected unsigned int movementCounter;
 	
-	void init();
-	void initScriptedValues();
+	/* comment for TA: its boolean, not bool. */
+	protected boolean moving;
 
-	// Container methods
-	void openTo(Player player);
+	protected boolean persistent;
+	protected boolean updated;
+	protected boolean deleted;
 
-	boolean addObject(SceneObject obj);
+	protected native float positionX;
+	protected native float positionZ;
+	protected native float positionY;
 
-	SceneObject getObject(int index);
-	SceneObject getObject(unsigned long oid);
+	protected float directionX;
+	protected float directionZ;
+	protected float directionY;
+	protected float directionW;
 
-	boolean removeObject(int index);
-	boolean removeObject(unsigned long oid);
+	protected byte directionAngle;
+	protected float precisionDirectionAngle;
 
-	void sendItemsTo(Player player);
+	protected SceneObject parent;
 
-	// getters
-	int getContainerObjectsSize();
-	int getContainerObjectsWithChildsSize();
+	protected unsigned int linkType;
 
-	boolean isContainerEmpty();
-	boolean isContainerFull();
+	protected UndeploySceneObjectEvent undeployEvent;
+
+	protected boolean keepObject;
+
+	protected boolean canPickup;
+
+	protected unsigned long associatedArea;
+
+	protected boolean attackable;
+
+	protected VectorMap<GroupObject, int> groupDamageList;
+	protected VectorMap<ManagedReference<CreatureObject>, DamageDone> playerDamageList;
+
+	/* comment for TA: const = final. */
+	public static final int NONPLAYERCREATURE = 1;
+	public static final int PLAYER = 2;
+	public static final int TANGIBLE = 3;
+	public static final int GROUP = 4;
+	public static final int BUILDING = 5;
+	public static final int CELL = 6;
+	public static final int INTANGIBLE = 7;
+	public static final int STATIC = 8;
+	public static final int SHIP = 9;
+	public static final int ATTACKABLE = 10;
+	public static final int MISSION = 11;
+	public static final int PLAYEROBJECT = 12;
+	public static final int WAYPOINT = 13;
+	public static final int MANUFACTURESCHEMATIC = 14;
+	public static final int CAMPSITE = 15;
+	public static final int INVENTORYOBJECT = 16;
+	public static final int BANKINVENTORYSTORAGE = 17;
+
+	public static final int NONATTACKABLE_BITMASK = 0x1000;
+	public static final int CREO_BITMASK = 0x80;
+
+	public SceneObject();
+	public SceneObject(unsigned long oid, int type);
+
+	/* comment for TA: no destructors are availabe, finalize() is replacing it */
+	public void finalize();
+
+	public boolean destroy();
+
+	public void redeploy();
+
+	public void scheduleUndeploy();
+
+	public void undeploy();
+
+	public void removeUndeploymentEvent();
+
+	public void create(ZoneClientSession client);
+	public void destroy(ZoneClientSession client);
+
+	public void link(ZoneClientSession client, SceneObject obj);
+	public BaseMessage link(SceneObject obj, unsigned int type);
+	public BaseMessage link(SceneObject obj);
+	public BaseMessage link(unsigned long container, unsigned int type);
+
+	public void close(ZoneClientSession client);
+
+	public void init();
+	public abstract void initScriptedValues();
+
+	public abstract void insertToZone(Zone zone);
 	
-	boolean isAttackable();
-
-	int getSlots();
-	int getContainerType();
-	int getContainerVolumeLimit();
-
-	// setters
-	void setContainerVolumeLimit(unsigned int limit);
-	void setContainerType(unsigned int type);
-
-	// QT methods
-	boolean isInRange(SceneObject obj, float range);
-
-	boolean isInRange(float x, float y, float range);
-
-	int inRangeObjectCount();
-
-	QuadTreeEntry getInRangeObject(int idx);
-	void addInRangeObject(QuadTreeEntry obj, boolean notifyUpdate = true);
-	void removeInRangeObject(QuadTreeEntry obj);
-
-	boolean isInQuadTree();
-
-	QuadTreeEntry getQuadTreeEntry();
+	public abstract void insertToBuilding(BuildingObject building);
 	
-	void serialize(String str);
-	void deSerialize(String str);
-
-	int compareTo(SceneObject obj);
-
-	BaseMessage link(SceneObject obj);
-	void link(ZoneClientSession client, SceneObject obj);
-
-	void randomizePosition(float radius);
-
-	int useObject(Player player);
-
-	// positioning methods
-	void initializePosition(float x, float z, float y);
-
-	void setPosition(float x, float z, float y);
-
-	void setPositionX(float x);
-	void setPositionZ(float z);
-	void setPositionY(float y);
-
-	void setDirection(float x, float z, float y, float w);
-
-	void setPersistent(boolean pers);
-	void setUpdated(boolean upd);
-	void setDeleted(boolean del);
-	
-	// Saving methods
-	boolean isPersistent();
-	boolean isUpdated();
-	boolean isDeleted();
-
-	
-	Coordinate getCoordinate(float x, float y, float distance, float angle);
-	Coordinate getCoordinate(SceneObject object, float distance, float angle);
-	Coordinate getCoordinate(SceneObject object1, SceneObject object2, float distanceFromObject1);
-
-	// attribute methods
-	void generateAttributes(Player player);
-	void addAttributes(AttributeListMessage alm);
-	void parseItemAttributes();
-	
-	// UI Listen Methods
-	void synchronizedUIListen(Player player, int value);
-	void synchronizedUIStopListen(Player player, int value);
-
-	// logger methods
-	void info(const String message, boolean forcedLog = false);
-	void error(const String message);
-
-	// setters
-	local void setZoneProcessServer(ZoneProcessServerImplementation processor);
-
-	void setCustomName(const String n);
-	void setCustomName(const UnicodeString n);
-
-	void setObjectID(unsigned long oid);
-
-	void setObjectCRC(unsigned int crc);
-
-	void setObjectType(int tp);
-
-	void setMovementCounter(unsigned int cntr);
-
-	void setZoneIndex(int id);
-
-	void setAssociatedArea(unsigned long uid);
-
-	//void setLockName(const String name);
-
-	void setParent(SceneObject par, unsigned int linktype = 0x04);
-
-	void setZone(Zone zne);
-	
-	void setAttributes(String attributeString);
-	
-	void setCustomizationString(String cust);
-
-	void setCustomizationVariable(const String type, unsigned int value);
-	void setCustomizationVariable(unsigned char type, unsigned int value);
-
-	void clearUndeploymentEvent();
-
-	void insertToZone(Zone zone);
-
-	void insertToBuilding(BuildingObject building);
-
-	void removeFromZone(boolean doLock = true);
-	void removeFromBuilding(BuildingObject building);
-
-	void broadcastMessage(BaseMessage msg, int range = 128, boolean doLock = true, boolean sendSelf = true);
-	void broadcastMessage(StandaloneBaseMessage msg, int range = 128, boolean doLock = true);
-
-	boolean isUndeploymentScheduled();
-
-	// getters
-	int getObjectType();
-
-	unsigned long getObjectID();
-
-	unsigned int getObjectCRC();
-
-	unsigned int getMovementCounter();
-
-	float getPositionX();
-
-	float getPositionZ();
-
-	float getPositionY();
-
-	int getDirectionAngle();
-	
-	float getPrecisionDirectionAngle();
-
-	float getDirectionX();
-
-	float getDirectionZ();
-
-	float getDirectionY();
-
-	float getDirectionW();
-
-	String getLoggingName();
-
-	UnicodeString getCustomName();
-	String getStfName();
-	String getStfFile();
-	String getStfDetail();
-
-	unsigned long getAssociatedArea();
-	
-	void getCustomizationString(String appearance);
-	
-	String getAttributes();
-
-	boolean isPlayer();
-
-	boolean isNonPlayerCreature();
-	
-	boolean isPlayerInventory();
-
-	boolean isPlayerBankStorage();	
-
-	boolean isBuilding();
-
-	boolean isCell();
-
-	boolean isTangible();
-
-	boolean isIntangible();
-
-	boolean isStatic();
-
-	boolean isShip();
-
-	boolean isMission();
-
-	boolean isPlayerObject();
-
-	boolean isWaypoint();
-
-	boolean isManufactureSchematic();
-
-	Zone getZone();
-
-	int getZoneID();
-
-	SceneObject getParent();
-
-	unsigned long getParentID();
-
-	boolean isMoving();
-
-	void switchMovingState();
-
-	boolean doKeepObject();
-
-	local ZoneProcessServerImplementation getZoneProcessServer();
-
-	void setStfName(const String name);
-	void setStfFile(const String file);
-	void setStfDetail(const String detail);
-
-	// Virtual functions for combat
-	void setCombatState();
-	void clearCombatState(boolean removedefenders = true);
-
-	void setDefender(SceneObject defender);
-	void addDefender(SceneObject defender);
-
-	void removeDefenders();
-	void removeDefender(SceneObject defender);
-
-	boolean hasDefender(SceneObject defender);
-	SceneObject getDefender(int idx);
-	unsigned int getDefenderListSize();
-
-	boolean isPeaced();
-	boolean isAttackableBy(CreatureObject creature);
-
-	boolean isInANoBuildArea();
+	public abstract void removeFromZone(boolean doLock = true);
+	public abstract void removeFromBuilding(BuildingObject building);
 
 	// experience functions
-	void addDamageDone(CreatureObject creature, int damage, String skillname);
-	void dropDamageDone(CreatureObject creature);
+	/**
+	 * Adds to or creates a log of the damage done
+	 * to this object by creature.
+	 * \param creature The CreatureObject that is doing the damage.
+	 * \param damage How much damage is done.
+	 * \param skillname the name of the skill that is doing the damage.
+	 */
+	public void addDamageDone(CreatureObject creature, int damage, string skillname);
+	/**
+	 * Removes the damage log of a specific creature
+	 * from this object.
+	 * \param creature The CreatureObject that is getting dropped.
+	 */
+	public void dropDamageDone(CreatureObject creature);
+	/**
+	 * Calculates the value of the total damage done
+	 * to this object in all of the logs.
+	 * \return Total damage done to the mob according to the damage log.
+	 */
 	int getTotalDamage();
-	void disseminateXp(int levels);
-	void cleanupDamageDone();
+	/**
+	 * takes the level of the destroyed/dead scno
+	 * and disseminates experience appropriately.
+	 * \param levels The level of the dead object.
+	 */
+	public void disseminateXp(int levels);
+	/**
+	 * Cleans up the damage logs and frees the
+	 * appropriate resources after the logs have
+	 * been used.
+	 */
+	public void cleanupDamageDone();
 
+	public void broadcastMessage(BaseMessage msg, int range = 128, boolean doLock = true, boolean sendSelf = true);
+	public void broadcastMessage(StandaloneBaseMessage msg, int range = 128, boolean doLock = true);
+	public void broadcastMessages(Vector<BaseMessage> msgs, int range = 128, boolean doLock = true);
+
+	public abstract void sendTo(Player player, boolean doClose = true) {
+	}
+
+	public abstract void sendDestroyTo(Player player) {
+	}
+
+	public abstract void notifyInsert(QuadTreeEntry obj) {
+	}
+
+	public abstract void notifyDissapear(QuadTreeEntry obj) {
+	}
+
+	public abstract void sendConversationStartTo(SceneObject obj) {
+	}
+
+	public abstract void selectConversationOption(int option, SceneObject obj) {
+	}
+
+	public abstract void sendConversationStopTo(SceneObject obj) {
+	}
+
+	public abstract void sendRadialResponseTo(Player player, ObjectMenuResponse omr);
+
+	public abstract int useObject(Player player) {
+		return 0;
+	}
+
+	public abstract void generateAttributes(SceneObject obj);
+	public abstract void addAttributes(AttributeListMessage alm);
+	public abstract void parseItemAttributes();
+
+	public abstract void synchronizedUIListen(Player player, int value);
+	public abstract void synchronizedUIStopListen(Player player, int value);
+
+	public void randomizePosition(float radius);
+
+	//TODO: figure out why gcc don't fookin see these shit from ManagedObjectImplementation directly
+	public void lock(boolean doLock = true);
+	public void lock(ManagedObject obj);
+
+	public void wlock(boolean doLock = true);
+	public void wlock(ManagedObject obj);
+
+	public void unlock(boolean doLock = true);
+
+	public void setLockName(final string name);
+
+	/* comment for TA: there are no inline methods. */
+	// setters and getters
+	public void setMovementCounter(unsigned int cnt) {
+		movementCounter = cnt;
+	}
+
+	public void switchMovingState() {
+		if (moving)
+			moving = false;
+		else
+			moving = true;
+	}
+
+	unsigned int returnMovementCounter() {
+		return movementCounter;
+	}
+
+	public void increaseMovementCounter() {
+		movementCounter++;
+	}
+
+	public void setCustomizationString(final string cust) {
+		customizationVariables = cust;
+	}
+
+	public void setCustomizationVariable(byte type, unsigned short value) {
+		customizationVariables.setVariable(type, value);
+	}
+
+	public void setCustomizationVariable(final string type, byte value) {
+		customizationVariables.setVariable(type, value);
+	}
+
+	public void setNorthDirection() {
+		directionX = 0;
+		directionZ = 0;
+		directionY = 1;
+	}
+
+	public void setSouthDirection() {
+		directionX = 0;
+		directionZ = 0;
+		directionY = -1;
+	}
+
+	public void setWestDirection() {
+		directionX = -1;
+		directionZ = 0;
+		directionY = 0;
+	}
+
+	public void setEastDirection() {
+		directionX = 1;
+		directionZ = 0;
+		directionY = 0;
+	}
+
+	// set direction by angle
+	public void setDirection(float angle) {
+		float angleInRadial = (angle / 180) * Math.PI;
+
+		directionAngle = (byte) ((angleInRadial / 6.283f) * 100);
+
+		directionX = Math.sin(angleInRadial);
+		directionY = Math.cos(angleInRadial);
+		directionZ = 0;
+	}
+
+	public void setRadialDirection(float radangle) {
+		directionAngle = (byte) ((radangle / 6.283f) * 100);
+
+		directionX = Math.sin(radangle);
+		directionY = Math.cos(radangle);
+		directionZ = 0;
+	}
+
+	// set direction by quaternion
+	public void setDirection(float x, float z, float y, float w) {
+		float angle;
+
+		directionX = x;
+		directionZ = z;
+		directionY = y;
+		directionW = w;
+
+		if (w * w + y * y > 0.0f) {
+			if (w > 0.0f && y < 0.0f)
+				w *= -1.0f;
+
+			angle = 2.0f * Math.acos(w);
+		} else
+			angle = 0.0f;
+
+		precisionDirectionAngle = angle;
+		directionAngle = (byte) ((angle / 6.283f) * 100); //used for updating player clients.
+	}
+
+
+	public void setPersistent(boolean pers) {
+		persistent = pers;
+	}
+
+	public void setUpdated(boolean upd) {
+		updated = upd;
+	}
+
+	public void setDeleted(boolean del) {
+		deleted = del;
+	}
+
+	/**
+	 * getCoordinate Returns the coordinates of a position away from a set of coordinates, using desired distance and angle offset.
+	 * The angle offset is clockwise relative to north and is on a 360 degree scale.
+	 * Example: If you want a position directly east of the given position, input 90.0f for angle.
+	 * Example: If you want a position directly west of the given position, input -90.0f for angle.
+	 * \param x The x-coordinate of the position we are finding a new position away from.
+	 * \param y The y-coordinate of the position we are finding a new position away from.
+	 * \param distance The distance away from the given position the new position will be (in meters).
+	 * \param angle The clockwise direction from north we want the new position to be (in degrees).
+	 * \return The Coordinate of the new position.
+	 */
+	public Coordinate getCoordinate(float x, float y, float distance, float angle);
+
+	/**
+	 * getCoordinate Returns the coordinates of a position away from an object, using desired distance and angle offset.
+	 * The angle offset is clockwise relative to the object's front surface and is on a 360 degree scale.
+	 * Example: If you want a position directly to the right of a player's viewing angle, you input 90.0f for angle.
+	 * Example: If you want a position directly to the left of a player's viewing angle, enter -90.0f for angle.
+	 * \param object The object from which we are finding a position nearby.
+	 * \param distance The distance away from the object the new position will be (in meters).
+	 * \param angle The clockwise direction from the object's front surface we want the new position to be (in degrees).
+	 * \return The Coordinate of the new position.
+	 */
+	public Coordinate getCoordinate(SceneObject object, float distance, float angle);
+
+	/**
+	 * getCoordinate Returns the coordinates of a position directly between two objects, using distance from the first object.
+	 * \param object1 The first object which we will find a new position a given distance away from, toward the second object.
+	 * \param object2 The second object.
+	 * \param distanceFromObject1 The distance from object1 we want the new position to be (in meters).
+	 * \return The Coordinate of the new position.
+	 */
+	public Coordinate getCoordinate(SceneObject object1, SceneObject object2, float distanceFromObject1);
+
+	public boolean isInRange(SceneObject obj, float range) {
+		return QuadTreeEntry.isInRange(obj.getPositionX(), obj.getPositionY(), range);
+	}
+
+	public boolean isInRange(float x, float y, float range) {
+		return QuadTreeEntry.isInRange(x, y, range);
+	}
+
+	public ZoneProcessServerImplementation getZoneProcessServer() {
+		return server;
+	}
+
+	public boolean isPlayer() {
+		return objectType == PLAYER;
+	}
+
+	public boolean isNonPlayerCreature() {
+		return objectType == NONPLAYERCREATURE;
+	}
+
+	public boolean isPlayerInventory() {
+		return objectType == INVENTORYOBJECT;
+	}
+
+	public boolean isPlayerBankStorage() {
+		return objectType == BANKINVENTORYSTORAGE;
+	}
+
+	public boolean isBuilding() {
+		return objectType == BUILDING;
+	}
+
+	public boolean isCell() {
+		return objectType == CELL;
+	}
+
+	public boolean isTangible() {
+		return objectType == TANGIBLE;
+	}
+
+	public boolean isIntangible() {
+		return objectType == INTANGIBLE;
+	}
+
+	public boolean isStatic() {
+		return objectType == STATIC;
+	}
+
+	public boolean isShip() {
+		return objectType == SHIP;
+	}
+
+	public boolean isAttackable() {
+		return attackable;
+	}
+
+	public boolean isMission() {
+		return objectType == MISSION;
+	}
+
+	public boolean isPlayerObject() {
+		return objectType == PLAYEROBJECT;
+	}
+
+	public boolean isWaypoint() {
+		return objectType == WAYPOINT;
+	}
+
+	public boolean isManufactureSchematic() {
+		return objectType == MANUFACTURESCHEMATIC;
+	}
+
+	public int compareTo(SceneObject obj) {
+		unsigned long id = obj.getObjectID();
+
+		if (objectID < id)
+			return 1;
+		else if (objectID > id)
+			return -1;
+		else
+			return 0;
+	}
+
+	// setters
+	public void setParent(SceneObject par, unsigned int linktype = 0x04) {
+		if (par != _this) {
+			parent = par;
+			linkType = linktype;
+		}
+	}
+
+	public void setZoneProcessServer(ZoneProcessServerImplementation server) {
+		this.server = server;
+	}
+
+	public void setZone(Zone zone) {
+		this.zone = zone;
+	}
+
+	public void setZoneIndex(int id) {
+		zoneID = id;
+	}
+
+	public void setObjectID(unsigned long oid) {
+		objectID = oid;
+	}
+
+	public void setObjectCRC(unsigned int crc) {
+		objectCRC = crc;
+	}
+
+	public void setObjectType(int tp) {
+		objectType = tp;
+	}
+
+	public void setObjectKeeping(boolean keeping) {
+		keepObject = true;
+	}
+
+	/* comment for TA: NULL is null in the scripting languge */
+	public void clearUndeploymentEvent() {
+		undeployEvent = null;
+	}
+
+	public boolean isUndeploymentScheduled() {
+		return undeployEvent != null;
+	}
+
+	public void setAssociatedArea(unsigned long uid) {
+		associatedArea = uid;
+	}
+
+	// getters
+	public Zone getZone() {
+		return zone;
+	}
+
+	public int getZoneID() {
+		return zoneID;
+	}
+
+	public unsigned long getObjectID() {
+		return QuadTreeEntry.getObjectID();
+	}
+
+	public unsigned int getObjectCRC() {
+		return objectCRC;
+	}
+
+	public int getObjectType() {
+		return objectType;
+	}
+
+	public unsigned int getMovementCounter() {
+		return movementCounter;
+	}
+
+	public boolean isMoving() {
+		return moving;
+	}
+
+	public float getPositionX() {
+		return QuadTreeEntry.getPositionX();
+	}
+
+	public float getPositionZ() {
+		return QuadTreeEntry.getPositionZ();
+	}
+
+	public float getPositionY() {
+		return QuadTreeEntry.getPositionY();
+	}
+
+	public float getDirectionX() {
+		return directionX;
+	}
+
+	public float getDirectionZ() {
+		return directionZ;
+	}
+
+	public float getDirectionY() {
+		return directionY;
+	}
+
+	public float getDirectionW() {
+		return directionW;
+	}
+
+	public byte getDirectionAngle() {
+		return directionAngle;
+	}
+
+	public float getPrecisionDirectionAngle() {
+		return precisionDirectionAngle;
+	}
+
+	public SceneObject getParent() {
+		return parent;
+	}
+
+	public QuadTreeEntry getQuadTreeEntry() {
+		return (QuadTreeEntry) this;
+	}
+
+	public unsigned long getParentID() {
+		if (parent == null)
+			return 0;
+		else
+			return parent.getObjectID();
+	}
+
+	public unicode getCustomName() {
+		return customName;
+	}
+
+	public void setCustomName(final string name) {
+		customName = name;
+	}
+
+	public void setCustomName(final unicode name) {
+		customName = name;
+	}
+
+	public void setStfName(final string name) {
+		stfName = name;
+	}
+
+	public string getStfName() {
+		return stfName;
+	}
+
+	public void setStfFile(final string file) {
+		stfFile = file;
+	}
+
+	public string getStfFile() {
+		return stfFile;
+	}
+
+	public void setStfDetail(final string detail) {
+		stfDetail = detail;
+	}
+
+	public string getStfDetail() {
+		return stfDetail;
+	}
+
+	public float getPrecision(float num, int digits) {
+		float power = Math.pow(10, digits);
+		
+		return (float) (Math.floor(num * power + 0.05f) / power);
+	}
+
+	public void getCustomizationString(string appearance) {
+		return customizationVariables.getData(appearance);
+	}
+
+	public boolean isPersistent() {
+		return persistent;
+	}
+
+	public boolean isUpdated() {
+		return updated;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setAttributes(string attributeString) {
+		itemAttributes.setAttributes(attributeString);
+	}
+
+	public string getAttributes() {
+		itemAttributes.getAttributeString(attributeString);
+		
+		return attributeString;
+	}
+
+	public unsigned long getAssociatedArea() {
+		return associatedArea;
+	}
+
+	public boolean doKeepObject() {
+		return keepObject;
+	}
+
+	// public abstract combat functions
+	public abstract void setDefender(SceneObject defender) {
+	}
+
+	public abstract void addDefender(SceneObject defender) {
+	}
+
+	public abstract void removeDefender(SceneObject defender) {
+	}
+
+	public abstract void removeDefenders() {
+	}
+
+	public abstract boolean hasDefender(SceneObject defender) {
+		return false;
+	}
+
+	public abstract void setCombatState() {
+	}
+
+	public abstract void clearCombatState(boolean removeDefenders = true) {
+	}
+
+	public abstract SceneObject getDefender(int idx) {
+		return null;
+	}
+
+	public abstract boolean isPeaced() {
+		return true;
+	}
+
+	public abstract unsigned int getDefenderListSize() {
+		return 0;
+	}
+
+	public abstract boolean isAttackableBy(CreatureObject creature) {
+		return false;
+	}
+
+	public boolean isInANoBuildArea() {
+		PlanetManager planetManager = this.getZone().getPlanetManager();
+
+		return planetManager.isNoBuildArea(positionX, positionY);
+	}
 
 	//Event Handlers
-	void onIncapacitateTarget(CreatureObject victim);
-	void onInflictDamage(CreatureObject victim, unsigned char attribute, unsigned int damage);
-	void onKill(CreatureObject victim);
-	void onDeathblow(Player victim);
-	void onResuscitateTarget(CreatureObject patient);
-	void onHealTargetDamage(CreatureObject patient, unsigned char attribute, unsigned int amount);
-	void onHealTargetWound(CreatureObject patient, unsigned char attribute, unsigned int amount);
-	void onHealEnhanceTarget(CreatureObject patient, unsigned char attribute, unsigned int amount, float duration);
-	void onReceivePaymentFrom(CreatureObject sender, unsigned int amount);
-	void onTrade(Player sender, Player receiver);
+	public abstract void onIncapacitateTarget(CreatureObject victim);
+	public abstract void onInflictDamage(CreatureObject victim, byte attribute, unsigned int damage);
+	public abstract void onKill(CreatureObject victim);
+	public abstract void onDeathblow(Player victim);
+	public abstract void onResuscitateTarget(CreatureObject patient);
+	public abstract void onHealTargetDamage(CreatureObject patient, byte attribute, unsigned int amount);
+	public abstract void onHealTargetWound(CreatureObject patient, byte attribute, unsigned int amount);
+	public abstract void onHealEnhanceTarget(CreatureObject patient, byte attribute, unsigned int amount, float duration);
+	public abstract void onReceivePaymentFrom(CreatureObject sender, unsigned int amount);
+	public abstract void onTrade(Player sender, Player receiver);
 
 	//Actions
-	boolean inflictDamage(CreatureObject victim, unsigned char attribute, unsigned int damage);
-	void incapacitate(CreatureObject victim);
-	void kill(CreatureObject victim);
-	void deathblow(Player victim);
-	unsigned int healDamage(CreatureObject patient, unsigned char attribute, unsigned int amount);
-	unsigned int healWound(CreatureObject patient, unsigned char attribute, unsigned int amount);
-	unsigned int healEnhance(CreatureObject patient, unsigned char attribute, unsigned int amount, float duration);
-	void resuscitate(CreatureObject patient, boolean forced = false);
-	void receivePaymentFrom(CreatureObject sender, unsigned int amount);
-	void warpTo(float x, float z, float y, unsigned long parentID = 0);
+	public abstract boolean inflictDamage(CreatureObject victim, byte attribute, unsigned int damage);
+	public abstract void incapacitate(CreatureObject victim);
+	public abstract void kill(CreatureObject victim);
+	public abstract void deathblow(Player victim);
+	public abstract void resuscitate(CreatureObject patient, boolean forced = false);
+	public abstract unsigned int healDamage(CreatureObject patient, byte attribute, unsigned int amount);
+	public abstract unsigned int healWound(CreatureObject patient, byte attribute, unsigned int amount);
+	public abstract unsigned int healEnhance(CreatureObject patient, byte attribute, unsigned int amount, float duration);
+	public abstract void receivePaymentFrom(CreatureObject sender, unsigned int amount);
+	public abstract void warpTo(float x, float z, float y, unsigned long parentID = 0);
 
 	float calculateDistance(SceneObject scno);
-	
-	boolean getPickupFlag();
 
-	void setPickupFlag(boolean pickup);	
+	public abstract boolean getPickupFlag() {
+		return canPickup;
+	}
+
+	public abstract void setPickupFlag(boolean pickup) {
+		canPickup = pickup;
+	}
+
+	private void addSerializableVariables();
 }
