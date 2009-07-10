@@ -64,7 +64,191 @@ import server.zone.ZoneProcessServerImplementation;
 class SceneObject extends ManagedObject, native QuadTreeEntry, native Serializable {
 	public native unsigned long objectID;
 	
-	public static boolean registered;
+	public static boolean registered = false;
+	
+	public static final int ARMOR = 0x100;
+	public static final int BODYARMOR = 0x101;
+	public static final int HEADARMOR = 0x102;
+	public static final int MISCARMOR = 0x103;
+	public static final int LEGARMOR = 0x104;
+	public static final int ARMARMOR = 0x105;
+	public static final int HANDARMOR = 0x106;
+	public static final int FOOTARMOR = 0x107;
+	public static final int SHIELDGENERATOR = 0x108;
+
+	public static final int BUILDING = 0x200;
+	public static final int MUNICIPALBUILDING = 0x201;
+	public static final int FACTIONPERKBUILDING = 0x203;
+
+	public static final int CREATURE = 0x400;
+	public static final int NPCCREATURE = 0x401;
+	public static final int DROIDCREATURE = 0x402;
+	public static final int PROBOTCREATURE = 0x403;
+
+	public static final int INTANGIBLE = 0x800;
+	public static final int DRAFTSCHEMATIC = 0x801;
+	public static final int MANUFACTURINGSCHEMATIC = 0x802;
+	public static final int MISSIONOBJECT = 0x803;
+	public static final int TOKEN = 0x804;
+	public static final int WAYPOINT = 0x805;
+	public static final int DATA2 = 0x806;
+	public static final int PETCONTROLDEVICE = 0x807;
+	public static final int VEHICLECONTROLDEVICE = 0x808;
+	public static final int SHIPCONTROLDEVICE = 0x80A;
+	public static final int DROIDCONTROLDEVICE = 0x80B;
+
+	public static final int INSTALLATION = 0x1000;
+	public static final int FACTORY = 0x1001;
+	public static final int GENERATOR = 0x1002;
+	public static final int HARVESTER = 0x1003;
+	public static final int TURRET = 0x1004;
+	public static final int MINEFIELD = 0x1005;
+
+	public static final int TANGIBLE = 0x2000;
+	public static final int AMMUNITION = 0x2001;
+	public static final int CHEMICAL = 0x2002;
+	public static final int CONTAINER = 0x2005;
+	public static final int CRAFTINGSTATION = 0x2006;
+	public static final int ELECTRONICS = 0x2008;
+	public static final int FLORA = 0x2009;
+	public static final int FOOD = 0x200A;
+	public static final int FURNITURE = 0x200B;
+	public static final int INSTRUMENT = 0x200C;
+	public static final int PHARMACEUTICAL = 0x200D;
+	public static final int SIGN = 0x200F;
+	public static final int COUNTER = 0x2010;
+	public static final int FACTORYCRATE = 0x2011;
+	public static final int TRAVELTICKET = 0x2012;
+	public static final int GENERICITEM = 0x2013;
+	public static final int TRAP = 0x2014;
+	public static final int WEARABLECONTAINER = 0x2015;
+	public static final int FISHINGPOLE = 0x2016;
+	public static final int FISHINGBAIT = 0x2017;
+	public static final int DRINK = 0x2018;
+	public static final int FIREWORK = 0x2019;
+	public static final int ITEM = 0x201A;
+	public static final int PETMEDECINE = 0x201B;
+	public static final int FIREWORKSHOW = 0x201C;
+	public static final int CLOTHINGATTACHMENT = 0x201D;
+	public static final int LIVESAMPLE = 0x201E;
+	public static final int ARMORATTACHMENT = 0x201F;
+	public static final int COMMUNITYCRAFTINGPROJECT = 0x2020;
+	public static final int CRYSTAL = 0x2021;
+	public static final int DROIDPROGRAMMINGCHIP = 0x2022;
+	public static final int ASTEROID = 0x2023;
+	public static final int PILOTCHAIR = 0x2024;
+	public static final int OPERATIONSCHAIR = 0x2025;
+	public static final int TURRETACCESSLADDER = 0x2026;
+	public static final int CONTAINER2 = 0x2027;
+	public static final int CAMOKIT = 0x2028;
+
+	public static final int TERMINAL = 0x4000;
+	public static final int BANK = 0x4001;
+	public static final int BAZAAR = 0x4002;
+	public static final int CLONING = 0x4003;
+	public static final int INSURANCE = 0x4004;
+	public static final int MISSIONTERMINAL = 0x4006;
+	public static final int PLAYERTERMINALSTRUCTURE = 0x4008;
+	public static final int SHIPPINGTERMINAL = 0x4009;
+	public static final int SPACETERMINAL = 0x400B;
+	public static final int INTERACTIVETERMINAL = 0x400C;
+
+	public static final int TOOL = 0x8000;
+	public static final int CRAFTINGTOOL = 0x8001;
+	public static final int SURVEYTOOL = 0x8002;
+	public static final int REPAIRTOOL = 0x8003;
+	public static final int CAMPKIT = 0x8004;
+	public static final int SHIPCOMPONENTREPAIRITEM = 0x8005;
+
+	public static final int VEHICLE = 0x10000;
+	public static final int HOVERVEHICLE = 0x10001;
+
+	public static final int WEAPON = 0x20000;
+	public static final int MELEEWEAPON = 0x20001;
+	public static final int RANGEDWEAPON = 0x20002;
+	public static final int THROWNWEAPON = 0x20003;
+	public static final int HEAVYWEAPON = 0x20004;
+	public static final int MINE = 0x20005;
+	public static final int SPECIALHEAVYWEAPON = 0x20006;
+	public static final int ONEHANDMELEEWEAPON = 0x20007;
+	public static final int TWOHANDMELEEWEAPON = 0x20008;
+	public static final int POLEARM = 0x20009;
+	public static final int PISTOL = 0x2000A;
+	public static final int CARBINE = 0x2000B;
+	public static final int RIFLE = 0x2000C;
+	public static final int GRENADE = 0x2000E;
+
+	public static final int COMPONENT = 0x40000;
+	public static final int ARMORCOMPONENT = 0x40001;
+	public static final int CHEMISTRYCOMPONENT = 0x40002;
+	public static final int CLOTHINGCOMPONENT = 0x40003;
+	public static final int COMMUNITYCRAFTINGCOMPONENT = 0x40004;
+	public static final int DROIDCOMPONENT = 0x40005;
+	public static final int ELECTRONICSCOMPONENT = 0x40006;
+	public static final int GENETICCOMPONENT = 0x40007;
+	public static final int LIGHTSABERCRYSTAL = 0x40008;
+	public static final int MELEEWEAPONCOMPONENT = 0x40009;
+	public static final int MUNITIONCOMPONENT = 0x4000A;
+	public static final int RANGEDWEAPONCOMPONENT = 0x4000B;
+	public static final int STRUVTURECOMPONENT = 0x4000C;
+	public static final int TISSUECOMPONENT = 0x4000D;
+
+	public static final int WEAPONPOWERUP = 0x80000;
+	public static final int MELEEWEAPONPOWERUP = 0x80001;
+	public static final int RANGEDWEAPONPOWERUP = 0x80002;
+	public static final int THROWNWEAPONPOWERUP = 0x80003;
+	public static final int HEAVYWEAPONPOWERUP = 0x80004;
+	public static final int MINEPOWERUP = 0x80005;
+	public static final int SPECIALHEAVYWEAPONPOWERUP = 0x80006;
+
+	public static final int WEARABLE = 0x200000;
+	public static final int RING = 0x200001;
+	public static final int BRACELET = 0x200002;
+	public static final int NECKLACE = 0x200003;
+	public static final int EARRING = 0x200004;
+
+	public static final int RESOURCECONTAINER = 0x400000;
+	public static final int ENERGYGAS = 0x400001;
+	public static final int ENERGYLIQUID = 0x400002;
+	public static final int ENERGYRADIOACTIVE = 0x400003;
+	public static final int ENERGYSOLID = 0x400004;
+	public static final int INORGANICCHEMICAL = 0x400005;
+	public static final int INORGANICGAS = 0x400006;
+	public static final int INORGANICMINERAL = 0x400007;
+	public static final int WATER = 0x400008;
+	public static final int ORGANICFOOD = 0x400009;
+	public static final int ORGANICHIDE = 0x40000A;
+	public static final int ORGANICSTRUCTURAL = 0x40000B;
+	public static final int QUESTREOURCE = 0x40000C;
+
+	public static final int DEED = 0x800000;
+	public static final int BUILDINGDEED = 0x800001;
+	public static final int INSTALLATIONDEED = 0x800002;
+	public static final int PETDEED = 0x800003;
+	public static final int DROIDDEED = 0x800004;
+	public static final int VEHICLEDEED = 0x800005;
+	public static final int RESOURCEDEED = 0x800006;
+
+	public static final int CLOTHING = 0x1000000;
+	public static final int BANDOLIER = 0x1000001;
+	public static final int BELT = 0x1000002;
+	public static final int BODYSUIT = 0x1000003;
+	public static final int CAPE = 0x1000004;
+	public static final int CLOAK = 0x1000005;
+	public static final int FOOTWEAR = 0x1000006;
+	public static final int DRESS = 0x1000007;
+	public static final int HANDWEAR = 0x1000008;
+	public static final int EYEWEAR = 0x1000009;
+	public static final int HEADWEAR = 0x100000A;
+	public static final int JACKET = 0x100000B;
+	public static final int PANTS = 0x100000C;
+	public static final int ROBE = 0x100000D;
+	public static final int SHIRT = 0x100000E;
+	public static final int VEST = 0x100000F;
+	public static final int WOOKIEGARB = 0x1000010;
+	public static final int MISCCLOTHING = 0x1000011;
+	public static final int SKIRT = 0x1000012;
+	public static final int ITHOGARB = 0x1000013;
 
 	public SceneObject(Lua templateData, SceneObject parent = NULL);
 	
