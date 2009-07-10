@@ -69,7 +69,7 @@ public:
 
 	void handleMessage(Message* pack);
 
-	void handleClientPermissionsMessage(Message* pack);
+	/*void handleClientPermissionsMessage(Message* pack);
 	void handleSelectCharacter(Message* pack);
 	void handleCmdSceneReady(Message* packet);
 
@@ -132,7 +132,7 @@ public:
 
 	void handleClientInactivityMessage(Message* pack);
 
-	void handleCommoditiesItemTypeListRequest(Message* pack);
+	void handleCommoditiesItemTypeListRequest(Message* pack);*/
 
 
 };

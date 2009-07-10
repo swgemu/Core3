@@ -69,7 +69,7 @@ class ServerCore : public Core, public Logger {
 
 	LoginServer* loginServer;
 
-	StatusServer * statusServer;
+	//StatusServer * statusServer;
 
 	Features* features;
 

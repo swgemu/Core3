@@ -44,56 +44,26 @@ which carries forward this exception.
 
 package server.zone;
 
-import engine.service.proto.BaseClientProxy;
-import engine.service.proto.StandaloneBaseMessage;
-import engine.service.proto.BaseMessage;
-import engine.service.DatagramServiceThread;
-import system.net.SocketAddress;
-import system.net.Socket;
-import engine.core.ManagedObject;
+import engine.util.QuadTree;
+import engine.sched.ScheduleManager;
+import system.util.Time;
+import server.zone.ZoneProcessServerImplementation;
+import server.zone.ZoneServer;
 
-class ZoneClientSession extends ManagedObject, native BaseClientProxy {
-	//Player player;
+class Zone extends ManagedObject, native QuadTree {
+	int zoneID;
+
+	ZoneProcessServerImplementation processor;
+
+	ZoneServer server;
+	ScheduleManager scheduler;
+
+	Time galacticTime;
+
+	//Weather
+	float weatherWindX; //1.0 = east, -1.0 = west
+	float weatherWindY; //1.0 = north, -1.0 = south
+	unsigned int weatherID;
+	boolean weatherEnabled;
 	
-	unsigned int sessionKey;
-	
-	boolean disconnecting;
-	
-	public ZoneClientSession(DatagramServiceThread serv, Socket sock, SocketAddress addr);
-	
-	public void sendMessage(BaseMessage msg);
-	
-	public void sendMessage(StandaloneBaseMessage msg);
-	
-	public void disconnect();
-	public void disconnect(boolean doLock);
-
-	public void closeConnection(boolean lockPlayer, boolean doLock = true);
-
-	public void acquire();
-
-	public void release();
-	
-	public string getAddress();
-	
-	public native void lock(boolean doLock = true);
-	public native void unlock(boolean doLock = true);
-
-	// setters and getters
-	/*public void setPlayer(Player p) {
-		player = p;
-	}*/
-
-	public void setSessionKey(unsigned int key) {
-		sessionKey = key;
-	}
-
-	/*public Player getPlayer() {
-		return player;
-	}*/
-
-	public unsigned int getSessionKey() {
-		return sessionKey;
-	}
-
 }

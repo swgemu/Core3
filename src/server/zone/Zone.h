@@ -7,17 +7,9 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class SceneObject;
-
 class ZoneServer;
 
 #include "ZoneProcessServerImplementation.h"
-
-class ChatManager;
-
-class PlanetManager;
-
-class CreatureManager;
 
 #include "engine/util/QuadTreeEntry.h"
 
@@ -32,16 +24,6 @@ public:
 	void lock(bool doLock = true);
 
 	void unlock(bool doLock = true);
-
-	void registerObject(SceneObject* obj);
-
-	SceneObject* lookupObject(unsigned long long oid);
-
-	SceneObject* deleteObject(unsigned long long oid);
-
-	SceneObject* deleteObject(SceneObject* obj);
-
-	SceneObject* deleteCachedObject(SceneObject* obj);
 
 	float getHeight(float x, float y);
 
@@ -60,12 +42,6 @@ public:
 	int getZoneID();
 
 	ZoneServer* getZoneServer();
-
-	ChatManager* getChatManager();
-
-	CreatureManager* getCreatureManager();
-
-	PlanetManager* getPlanetManager();
 
 	unsigned long long getGalacticTime();
 
@@ -111,16 +87,6 @@ public:
 
 	void unlock(bool doLock);
 
-	void registerObject(SceneObject* obj);
-
-	SceneObject* lookupObject(unsigned long long oid);
-
-	SceneObject* deleteObject(unsigned long long oid);
-
-	SceneObject* deleteObject(SceneObject* obj);
-
-	SceneObject* deleteCachedObject(SceneObject* obj);
-
 	float getHeight(float x, float y);
 
 	void setSize(float minx, float miny, float maxx, float maxy);
@@ -138,12 +104,6 @@ public:
 	int getZoneID();
 
 	ZoneServer* getZoneServer();
-
-	ChatManager* getChatManager();
-
-	CreatureManager* getCreatureManager();
-
-	PlanetManager* getPlanetManager();
 
 	unsigned long long getGalacticTime();
 

@@ -49,11 +49,16 @@ which carries forward this exception.
 
 #include "ObjectMap.h"
 
-class ObjectManager : public Logger {
+#include "ObjectFactory.h"
+
+class ObjectManager : public Logger, public Singleton<ObjectManager> {
 	ServiceThread* server;
 
 	ObjectMap* objectMap;
 	ObjectMap* objectCacheMap;
+
+public:
+	static ObjectFactory<SceneObject *(Lua*, SceneObject*), unsigned int> objectFactory;
 
 	static Lua* luaTemplatesInstance;
 

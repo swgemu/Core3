@@ -52,7 +52,7 @@ which carries forward this exception.
 class ZonePacketHandler;
 class ZoneMessageProcessorThread;
 
-class Zone;
+/*class Zone;
 class SceneObject;
 
 class UserManager;
@@ -72,7 +72,7 @@ class RadialManager;
 class GroupManager;
 class LootManager;
 class SuiManager;
-class NameManager;
+class NameManager;*/
 
 class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
 	ZoneServer* server;
@@ -83,14 +83,14 @@ class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
 	int procThreadCount;
 
 	//Static Managers
-	CombatManager* combatManager;
+	/*CombatManager* combatManager;
 	ProfessionManager* professionManager;
 	SkillManager* skillManager;
 	RadialManager* radialManager;
 	GroupManager* groupManager;
 	LootManager* lootManager;
 	SuiManager* suiManager;
-	NameManager* nameManager;
+	NameManager* nameManager;*/
 
 public:
 	ZoneProcessServerImplementation(ZoneServer* serv, int processingThreads);
@@ -112,7 +112,7 @@ public:
 		return server;
 	}
 
-	inline PlayerManager* getPlayerManager() {
+	/*inline PlayerManager* getPlayerManager() {
 		return server->getPlayerManager();
 	}
 
@@ -174,7 +174,7 @@ public:
 
 	inline NameManager* getNameManager() {
 		return nameManager;
-	}
+	}*/
 
 };
 

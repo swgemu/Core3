@@ -44,18 +44,18 @@ which carries forward this exception.
 
 #include "ZoneServer.h"
 
-#include "Zone.h"
+//#include "Zone.h"
 
 #include "ZoneClientSession.h"
-#include "ZoneClientSessionImplementation.h"
+//#include "ZoneClientSessionImplementation.h"
 
-#include "objects/player/Player.h"
+//#include "objects/player/Player.h"
 
 ZoneClientSessionImplementation::ZoneClientSessionImplementation(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr)
-		: BaseClientProxy(sock, *addr), ZoneClientSessionServant() {
+		:  ManagedObjectImplementation(), BaseClientProxy(sock, *addr) {
 	init(serv);
 
-	player = NULL;
+	//player = NULL;
 	sessionKey = 0;
 
 	disconnecting = false;
@@ -67,18 +67,34 @@ ZoneClientSessionImplementation::ZoneClientSessionImplementation(DatagramService
 	setLogging(false);
 }
 
-ZoneClientSessionImplementation::~ZoneClientSessionImplementation() {
-	player = NULL;
-}
-
 void ZoneClientSessionImplementation::disconnect() {
 	BaseClient::disconnect();
+}
+
+void ZoneClientSessionImplementation::lock(bool doLock) {
+	BaseClient::lock(doLock);
+}
+
+void ZoneClientSessionImplementation::unlock(bool doLock) {
+	BaseClient::unlock(doLock);
+}
+
+void ZoneClientSessionImplementation::sendMessage(BaseMessage* msg) {
+	BaseClientProxy::sendPacket((BasePacket*) msg);
+}
+
+void ZoneClientSessionImplementation::sendMessage(StandaloneBaseMessage* msg) {
+	BaseClientProxy::sendPacket((BasePacket*) msg);
+}
+
+String& ZoneClientSessionImplementation::getAddress() {
+	return BaseClientProxy::getAddress();
 }
 
 void ZoneClientSessionImplementation::disconnect(bool doLock) {
 	lock(doLock);
 
-	if (disconnecting) {
+	/*if (disconnecting) {
 		unlock(doLock);
 		return;
 	}
@@ -115,7 +131,7 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 		}
 
 		lock();
-	}
+	}*/
 
 	unlock(doLock);
 }
@@ -126,7 +142,7 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 
 		info("disconnecting client \'" + ip + "\'");
 
-		ZoneServer* server = NULL;
+		/*ZoneServer* server = NULL;
 
 		if (player != NULL) {
 			ZoneServer* srv = NULL;
@@ -162,7 +178,7 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 		if (server != NULL) {
 			server->addTotalSentPacket(getSentPacketCount());
 			server->addTotalResentPacket(getResentPacketCount());
-		}
+		}*/
 
 		unlock(doLock);
 	} catch (...) {

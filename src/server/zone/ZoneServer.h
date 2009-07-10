@@ -7,36 +7,6 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class SceneObject;
-
-class UserManager;
-
-class GuildManager;
-
-class PlayerManager;
-
-class CraftingManager;
-
-class ItemManager;
-
-class ItemConfigManager;
-
-class ResourceManager;
-
-class LootTableManager;
-
-class BazaarManager;
-
-class BankManager;
-
-class MissionManager;
-
-class CreatureManager;
-
-class ChatManager;
-
-class Zone;
-
 #include "../db/ServerDatabase.h"
 
 class ZoneServer : public DistributedObjectStub {
@@ -48,28 +18,6 @@ public:
 	void stop();
 
 	void startManagers();
-
-	void addObject(SceneObject* obj, bool doLock = true);
-
-	SceneObject* getObject(unsigned long long oid, bool doLock = true);
-
-	SceneObject* removeObject(unsigned long long oid, bool doLock = true);
-
-	SceneObject* removeObject(SceneObject* obj, bool doLock = true);
-
-	bool destroyObject(SceneObject* obj, bool doLock = true);
-
-	SceneObject* getCachedObject(unsigned long long oid, bool doLock = true);
-
-	SceneObject* removeCachedObject(unsigned long long oid, bool doLock = true);
-
-	SceneObject* removeCachedObject(SceneObject* obj, bool doLock = true);
-
-	SceneObject* createObject(unsigned int objectCRC, bool doLock = true);
-
-	bool banUser(String& name, String& admin);
-
-	bool kickUser(String& name, String& admin);
 
 	void changeUserCap(int amount = 50);
 
@@ -90,34 +38,6 @@ public:
 	void changeMessageoftheDay(const String& newMOTD);
 
 	void loadMessageoftheDay();
-
-	ChatManager* getChatManager();
-
-	GuildManager* getGuildManager();
-
-	PlayerManager* getPlayerManager();
-
-	UserManager* getUserManager();
-
-	CraftingManager* getCraftingManager();
-
-	ItemManager* getItemManager();
-
-	ItemConfigManager* getItemConfigManager();
-
-	ResourceManager* getResourceManager();
-
-	LootTableManager* getLootTableManager();
-
-	BazaarManager* getBazaarManager();
-
-	BankManager* getBankManager();
-
-	MissionManager* getMissionManager();
-
-	CreatureManager* getCreatureManager(int zone);
-
-	Zone* getZone(int index);
 
 	String& getServerName();
 
@@ -182,28 +102,6 @@ public:
 
 	void startManagers();
 
-	void addObject(SceneObject* obj, bool doLock);
-
-	SceneObject* getObject(unsigned long long oid, bool doLock);
-
-	SceneObject* removeObject(unsigned long long oid, bool doLock);
-
-	SceneObject* removeObject(SceneObject* obj, bool doLock);
-
-	bool destroyObject(SceneObject* obj, bool doLock);
-
-	SceneObject* getCachedObject(unsigned long long oid, bool doLock);
-
-	SceneObject* removeCachedObject(unsigned long long oid, bool doLock);
-
-	SceneObject* removeCachedObject(SceneObject* obj, bool doLock);
-
-	SceneObject* createObject(unsigned int objectCRC, bool doLock);
-
-	bool banUser(String& name, String& admin);
-
-	bool kickUser(String& name, String& admin);
-
 	void changeUserCap(int amount);
 
 	void addTotalSentPacket(int count);
@@ -223,34 +121,6 @@ public:
 	void changeMessageoftheDay(const String& newMOTD);
 
 	void loadMessageoftheDay();
-
-	ChatManager* getChatManager();
-
-	GuildManager* getGuildManager();
-
-	PlayerManager* getPlayerManager();
-
-	UserManager* getUserManager();
-
-	CraftingManager* getCraftingManager();
-
-	ItemManager* getItemManager();
-
-	ItemConfigManager* getItemConfigManager();
-
-	ResourceManager* getResourceManager();
-
-	LootTableManager* getLootTableManager();
-
-	BazaarManager* getBazaarManager();
-
-	BankManager* getBankManager();
-
-	MissionManager* getMissionManager();
-
-	CreatureManager* getCreatureManager(int zone);
-
-	Zone* getZone(int index);
 
 	String& getServerName();
 
@@ -291,10 +161,6 @@ public:
 	void setServerStateOnline();
 
 protected:
-	String _param0_banUser__String_String_;
-	String _param1_banUser__String_String_;
-	String _param0_kickUser__String_String_;
-	String _param1_kickUser__String_String_;
 	String _param0_changeMessageoftheDay__String_;
 };
 

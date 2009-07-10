@@ -44,7 +44,7 @@ which carries forward this exception.
 
 #include "ZoneServer.h"
 
-#include "managers/creature/CreatureManager.h"
+/*#include "managers/creature/CreatureManager.h"
 #include "managers/creature/CreatureManagerImplementation.h"
 
 #include "managers/combat/CombatManager.h"
@@ -56,19 +56,18 @@ which carries forward this exception.
 
 #include "objects/scene/SceneObject.h"
 
-#include "objects/creature/Creature.h"
+#include "objects/creature/Creature.h"*/
 
 #include "Zone.h"
 #include "ZoneImplementation.h"
+
+#include "objects/terrain/PlanetNames.h"
 
 ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplementation* srv, int id) : ZoneServant(), QuadTree(-8192, -8192, 8192, 8192) {
 	zoneID = id;
 
 	processor = srv;
 	server = serv;
-
-	creatureManager = NULL;
-	planetManager = NULL;
 
 	//Weather
 	weatherID = 0;
@@ -87,7 +86,7 @@ void ZoneImplementation::startManagers() {
 		heightMap.load("planets/" + planetName + "/" + planetName + ".hmap");
 	}
 
-	creatureManager = new CreatureManager(_this, processor);
+	/*creatureManager = new CreatureManager(_this, processor);
 	creatureManager->deploy("CreatureManager", zoneID);
 
 	creatureManager->init();
@@ -101,14 +100,14 @@ void ZoneImplementation::startManagers() {
 
 	planetManager->start();
 
-	creatureManager->start();
+	creatureManager->start();*/
 }
 
 void ZoneImplementation::stopManagers() {
 	//if (zoneID > 45) //TODO: Change back to 9 sometimes. We use Zone 10 (Space Corellia) as a "prison" for the CSRs sending bad players there
 	//	return;
 
-	if (creatureManager != NULL) {
+	/*if (creatureManager != NULL) {
 		creatureManager->stop();
 
 		creatureManager->finalize();
@@ -120,10 +119,10 @@ void ZoneImplementation::stopManagers() {
 
 		planetManager->finalize();
 		planetManager = NULL;
-	}
+	}*/
 }
 
-void ZoneImplementation::registerObject(SceneObject* obj) {
+/*void ZoneImplementation::registerObject(SceneObject* obj) {
 	server->addObject(obj);
 }
 
@@ -141,12 +140,12 @@ SceneObject* ZoneImplementation::deleteObject(SceneObject* obj) {
 
 SceneObject* ZoneImplementation::deleteCachedObject(SceneObject* obj) {
 	return server->removeCachedObject(obj->getObjectID());
-}
+}*/
 
 float ZoneImplementation::getHeight(float x, float y) {
 	return heightMap.getHeight(x, y);
 }
 
-ChatManager* ZoneImplementation::getChatManager() {
+/*ChatManager* ZoneImplementation::getChatManager() {
 	return server->getChatManager();
-}
+}*/
