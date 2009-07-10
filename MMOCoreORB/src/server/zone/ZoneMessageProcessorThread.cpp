@@ -43,7 +43,6 @@ which carries forward this exception.
 */
 
 #include "ZoneClientSession.h"
-#include "ZoneClientSessionImplementation.h"
 
 #include "ZoneMessageProcessorThread.h"
 

@@ -42,15 +42,9 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "objects/scene/SceneObject";
 
 import "ZoneServer";
 include "ZoneProcessServerImplementation";
-
-import "../chat/ChatManager";
-
-import "managers/planet/PlanetManager";
-import "managers/creature/CreatureManager";
 
 include "engine/util/QuadTreeEntry";
 
@@ -66,14 +60,14 @@ interface Zone {
 	void lock(boolean doLock = true);
 	void unlock(boolean doLock = true);
 	
-	void registerObject(SceneObject obj);
+	/*void registerObject(SceneObject obj);
 	
 	SceneObject lookupObject(unsigned long oid);
 	
 	SceneObject deleteObject(unsigned long oid);
 	SceneObject deleteObject(SceneObject obj);
 
-	SceneObject deleteCachedObject(SceneObject obj);
+	SceneObject deleteCachedObject(SceneObject obj);*/
 
 	// zone cell methods
 	float getHeight(float x, float y);
@@ -95,9 +89,9 @@ interface Zone {
 
 	ZoneServer getZoneServer();
 
-	ChatManager getChatManager();
+	/*ChatManager getChatManager();
 	CreatureManager getCreatureManager();
-	PlanetManager getPlanetManager();
+	PlanetManager getPlanetManager();*/
 	
 	unsigned long getGalacticTime();
 	

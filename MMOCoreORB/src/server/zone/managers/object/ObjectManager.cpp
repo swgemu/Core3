@@ -61,6 +61,8 @@ ObjectManager::ObjectManager(ServiceThread* serv) : Logger("ObjectManager") {
 
 	setLogging(false);
 	setGlobalLogging(true);
+
+	objectFactory.registerObject<SceneObject>(0);
 }
 
 ObjectManager::~ObjectManager() {
@@ -115,7 +117,7 @@ SceneObject* ObjectManager::remove(uint64 oid) {
 	if (obj->isPlayer()) {
 		objectCacheMap->put(oid, obj);
 
-		//obj->scheduleUndeploy();
+		obj->scheduleUndeploy();
 	}
 
 	return obj;

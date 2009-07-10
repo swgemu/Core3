@@ -49,32 +49,11 @@ which carries forward this exception.
 
 #include "ZoneProcessServerImplementation.h"
 
-#include "ZonePacketHandler.h"
-
 #include "Zone.h"
 
-#include "managers/object/ObjectManager.h"
-
-class SceneObject;
-
-class UserManager;
-
-class PlayerManager;
-class CraftingManager;
-class ItemManager;
-class ItemConfigManager;
-class GuildManager;
-
-class ChatManager;
-
-class ResourceManager;
-class MissionManager;
-class LootTableManager;
-
-class BazaarManager;
-class BankManager;
-
 #include "ZoneServer.h"
+
+class ObjectManager;
 
 class ZoneServerImplementation : public DatagramServiceThread, public ZoneServerServant {
 	BasePacketHandler* phandler;
@@ -86,7 +65,7 @@ class ZoneServerImplementation : public DatagramServiceThread, public ZoneServer
 
 	ObjectManager* objectManager;
 
-	UserManager* userManager;
+	/*UserManager* userManager;
 	PlayerManager* playerManager;
 	CraftingManager* craftingManager;
 	ItemManager* itemManager;
@@ -101,7 +80,7 @@ class ZoneServerImplementation : public DatagramServiceThread, public ZoneServer
 	MissionManager* missionManager;
 
 	BazaarManager* bazaarManager;
-	BankManager* bankManager;
+	BankManager* bankManager;*/
 
 	int totalSentPackets;
 	int totalResentPackets;
@@ -149,7 +128,7 @@ public:
 	bool handleError(ServiceClient* client, Exception& e);
 
 	// object methods
-	void addObject(SceneObject* obj, bool doLock = true);
+	/*void addObject(SceneObject* obj, bool doLock = true);
 
 	SceneObject* getObject(uint64 oid, bool doLock = true);
 
@@ -166,7 +145,7 @@ public:
 	SceneObject* createObject(uint32 objectCRC, bool doLock = true);
 
 	// server methods
-	void addTotalSentPacket(int count);
+	*/void addTotalSentPacket(int count);
 	void addTotalResentPacket(int count);
 
 	void printInfo(bool forcedLog = true);
@@ -174,12 +153,12 @@ public:
 
 	void fixScheduler() {
 		scheduler->fixQueue();
-	}
+	}/*
 
 	// user control methods
 	bool banUser(String& name, String& admin);
 
-	bool kickUser(String& name, String& admin);
+	bool kickUser(String& name, String& admin);*/
 
 	void changeUserCap(int amount = 50);
 
@@ -202,7 +181,7 @@ public:
 		return name;
 	}
 
-	inline PlayerManager* getPlayerManager() {
+	/*inline PlayerManager* getPlayerManager() {
 		return playerManager;
 	}
 
@@ -252,7 +231,7 @@ public:
 
 	inline CreatureManager* getCreatureManager(int zone) {
 		return (zones.get(zone))->getCreatureManager();
-	}
+	}*/
 
 	inline bool isServerLocked() {
 		return serverState == LOCKED;

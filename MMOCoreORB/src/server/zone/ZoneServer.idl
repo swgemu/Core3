@@ -44,25 +44,6 @@ which carries forward this exception.
 
 /*import "objects/ObjectMap";*/
 
-import "objects/scene/SceneObject";
-
-import "managers/user/UserManager";
-import "managers/guild/GuildManager";
-import "managers/player/PlayerManager";
-import "managers/crafting/CraftingManager";
-import "managers/item/ItemManager";
-import "managers/item/ItemConfigManager";
-import "managers/resource/ResourceManager";
-import "managers/loot/LootTableManager";
-import "managers/bazaar/BazaarManager";
-import "managers/bank/BankManager";
-import "managers/mission/MissionManager";
-import "managers/creature/CreatureManager";
-
-import "../chat/ChatManager";
-
-import "Zone";
-
 include "../db/ServerDatabase";
 
 interface ZoneServer {
@@ -77,7 +58,7 @@ interface ZoneServer {
 	void startManagers();
 
 	// object methods	
-	void addObject(SceneObject obj, boolean doLock = true);
+	/*void addObject(SceneObject obj, boolean doLock = true);
 
 	SceneObject getObject(unsigned long oid, boolean doLock = true);
 
@@ -91,12 +72,12 @@ interface ZoneServer {
 	SceneObject removeCachedObject(unsigned long oid, boolean doLock = true);
 	SceneObject removeCachedObject(SceneObject obj, boolean doLock = true);
 	
-	SceneObject createObject(unsigned int objectCRC, boolean doLock = true);
+	SceneObject createObject(unsigned int objectCRC, boolean doLock = true);*/
 
 	// administration methods
-	boolean banUser(String name, String admin);
+	/*boolean banUser(String name, String admin);
 	
-	boolean kickUser(String name, String admin);
+	boolean kickUser(String name, String admin);*/
 
 	void changeUserCap(int amount = 50);
 
@@ -116,7 +97,7 @@ interface ZoneServer {
 	void loadMessageoftheDay();
 
 	// getters
-	ChatManager getChatManager();
+	/*ChatManager getChatManager();
 	GuildManager getGuildManager();
 	PlayerManager getPlayerManager();
 	UserManager getUserManager();
@@ -130,7 +111,7 @@ interface ZoneServer {
 	MissionManager getMissionManager();
 	CreatureManager getCreatureManager(int zone);
 	
-	Zone getZone(int index);
+	Zone getZone(int index);*/
 	
 	String getServerName();
 	int getGalaxyID();

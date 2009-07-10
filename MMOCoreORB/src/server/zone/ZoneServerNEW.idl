@@ -44,56 +44,44 @@ which carries forward this exception.
 
 package server.zone;
 
-import engine.service.proto.BaseClientProxy;
-import engine.service.proto.StandaloneBaseMessage;
-import engine.service.proto.BaseMessage;
+import engine.service.proto.BasePacketHandler;
 import engine.service.DatagramServiceThread;
-import system.net.SocketAddress;
 import system.net.Socket;
+import system.net.SocketAddress;
+import engine.service.ServiceClient;
 import engine.core.ManagedObject;
 
-class ZoneClientSession extends ManagedObject, native BaseClientProxy {
-	//Player player;
-	
-	unsigned int sessionKey;
-	
-	boolean disconnecting;
-	
-	public ZoneClientSession(DatagramServiceThread serv, Socket sock, SocketAddress addr);
-	
-	public void sendMessage(BaseMessage msg);
-	
-	public void sendMessage(StandaloneBaseMessage msg);
-	
-	public void disconnect();
-	public void disconnect(boolean doLock);
+/*import server.zone.ZoneProcessServerImplementation;*/
 
-	public void closeConnection(boolean lockPlayer, boolean doLock = true);
+class ZoneServer extends ManagedObject, native DatagramServiceThread {
+	BasePacketHandler phandler;
 
-	public void acquire();
+	int procThreadCount;
 
-	public void release();
+	int totalSentPackets;
 	
-	public string getAddress();
+	int totalResentPackets;
+
+	int currentPlayers;
+	int maximumPlayers;
+	int totalPlayers;
+	int totalDeletedPlayers;
+
+	unsigned long nextCreatureID;
+	unsigned long nextCellID;
+
+	int serverState;
+
+	string name;
+	string messageoftheDay;
+
+	int galaxyID;
 	
-	public native void lock(boolean doLock = true);
-	public native void unlock(boolean doLock = true);
-
-	// setters and getters
-	/*public void setPlayer(Player p) {
-		player = p;
-	}*/
-
-	public void setSessionKey(unsigned int key) {
-		sessionKey = key;
-	}
-
-	/*public Player getPlayer() {
-		return player;
-	}*/
-
-	public unsigned int getSessionKey() {
-		return sessionKey;
-	}
-
+	public static final int OFFLINE = 0;
+	public static final int LOADING = 1;
+	public static final int ONLINE = 2;
+	public static final int LOCKED = 3;
+	
+	public ZoneServer(int processingThreads, int galaxyid = 2);
+	
 }

@@ -44,14 +44,6 @@ which carries forward this exception.
 
 #include "ServerCore.h"
 
-#include "zone/ZoneServerImplementation.h"
-
-#include "zone/objects.h"
-
-#include "zone/managers/combat/CombatManager.h"
-#include "zone/managers/player/ProfessionManager.h"
-#include "zone/managers/radial/RadialManager.h"
-#include "zone/managers/group/GroupManager.h"
 
 #include "db/ServerDatabase.h"
 #include "db/ForumsDatabase.h"
@@ -62,19 +54,18 @@ which carries forward this exception.
 
 #include "ping/PingServer.h"
 
-#include "status/StatusServer.h"
+//#include "status/StatusServer.h"
 
 #include "zone/ZoneServer.h"
-#include "zone/ZoneServerImplementation.h"
 
-ZoneServer* ServerCore::zoneServer;
+ZoneServer* ServerCore::zoneServer = NULL;
 
 ServerCore::ServerCore() : Core("log/core3.log"), Logger("Core") {
 	orb = NULL;
 
 	loginServer = NULL;
 	zoneServer = NULL;
-	statusServer = NULL;
+	//statusServer = NULL;
 	pingServer = NULL;
 	forumDatabase = NULL;
 	database = NULL;
@@ -108,9 +99,9 @@ void ServerCore::init() {
 			zoneServer->deploy("ZoneServer");
 		}
 
-		if (configManager.getMakeStatus()) {
+		/*if (configManager.getMakeStatus()) {
 			statusServer = new StatusServer(&configManager, zoneServer);
-		}
+		}*/
 
 		if (configManager.getMakePing()) {
 			pingServer = new PingServer();
@@ -139,12 +130,12 @@ void ServerCore::run() {
 		zoneServer->start(44463, zoneAllowedConnections);
 	}
 
-	if (statusServer != NULL) {
+	/*if (statusServer != NULL) {
 		int statusPort = configManager.getStatusPort();
 		int statusAllowedConnections = configManager.getStatusAllowedConnections();
 
 		statusServer->start(statusPort);
-	}
+	}*/
 
 	if (pingServer != NULL) {
 		int pingPort = configManager.getPingPort();
@@ -163,12 +154,12 @@ void ServerCore::run() {
 void ServerCore::shutdown() {
 	info("shutting down server..");
 
-	if (statusServer != NULL) {
+	/*if (statusServer != NULL) {
 		statusServer->stop();
 
 		delete statusServer;
 		statusServer = NULL;
-	}
+	}*/
 
 	if (zoneServer != NULL) {
 		zoneServer->stop();

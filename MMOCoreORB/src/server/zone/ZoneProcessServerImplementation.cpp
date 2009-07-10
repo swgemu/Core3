@@ -45,21 +45,20 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "ZoneClientSession.h"
-#include "ZoneClientSessionImplementation.h"
 
 #include "ZoneServer.h"
-#include "Zone.h"
+//#include "Zone.h"
 
 #include "ZonePacketHandler.h"
 #include "ZoneMessageProcessorThread.h"
 
 #include "ZoneProcessServerImplementation.h"
 
-#include "ZoneImplementation.h"
+//#include "ZoneImplementation.h"
 
 #include "../ServerCore.h"
 
-#include "managers/user/UserManager.h"
+/*#include "managers/user/UserManager.h"
 #include "managers/user/UserManagerImplementation.h"
 
 #include "managers/player/PlayerManager.h"
@@ -85,7 +84,7 @@ which carries forward this exception.
 #include "managers/skills/SkillManager.h"
 #include "managers/loot/LootManager.h"
 #include "managers/sui/SuiManager.h"
-#include "managers/name/NameManager.h"
+#include "managers/name/NameManager.h"*/
 
 ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* serv, int processingThreads)
 		: ServiceMessageHandlerThread("ZoneProcessorServer") {
@@ -93,16 +92,6 @@ ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* ser
 
 	processors = NULL;
 	procThreadCount = processingThreads;
-
-	//Static managers
-	combatManager = new CombatManager(this);
-	professionManager = new ProfessionManager(this);
-	skillManager = professionManager->getSkillManager();
-	radialManager = new RadialManager();
-	groupManager = new GroupManager();
-	lootManager = new LootManager(this);
-	suiManager = new SuiManager(this);
-	nameManager = new NameManager(this);
 
 	setLogging(false);
 
@@ -119,27 +108,6 @@ ZoneProcessServerImplementation::~ZoneProcessServerImplementation() {
 		delete zonephandler;
 		zonephandler = NULL;
 	}
-
-	delete combatManager;
-	combatManager = NULL;
-
-	delete professionManager;
-	professionManager = NULL;
-
-	delete radialManager;
-	radialManager = NULL;
-
-	delete groupManager;
-	groupManager = NULL;
-
-	delete lootManager;
-	lootManager = NULL;
-
-	delete suiManager;
-	suiManager = NULL;
-
-	delete nameManager;
-	nameManager = NULL;
 }
 
 void ZoneProcessServerImplementation::init() {

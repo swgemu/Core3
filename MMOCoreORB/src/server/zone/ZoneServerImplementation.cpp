@@ -42,55 +42,15 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "managers/user/UserManager.h"
-#include "managers/user/UserManagerImplementation.h"
-
-#include "managers/player/PlayerManager.h"
-#include "managers/player/PlayerManagerImplementation.h"
-
-#include "managers/player/ProfessionManager.h"
-
-#include "managers/crafting/CraftingManager.h"
-#include "managers/crafting/CraftingManagerImplementation.h"
-
-#include "managers/item/ItemManager.h"
-#include "managers/item/ItemManagerImplementation.h"
-
-#include "managers/item/ItemConfigManager.h"
-#include "managers/item/ItemConfigManagerImplementation.h"
-
-#include "managers/combat/CombatManager.h"
-#include "../chat/ChatManager.h"
-#include "../chat/ChatManagerImplementation.h"
-
-#include "managers/radial/RadialManager.h"
-#include "managers/guild/GuildManager.h"
-#include "managers/guild/GuildManagerImplementation.h"
-#include "managers/group/GroupManager.h"
-
-#include "managers/resource/ResourceManager.h"
-#include "managers/resource/ResourceManagerImplementation.h"
-
-#include "managers/loot/LootTableManager.h"
-#include "managers/loot/LootTableManagerImplementation.h"
-
-#include "managers/bazaar/BazaarManager.h"
-#include "managers/bazaar/BazaarManagerImplementation.h"
-
-#include "managers/bank/BankManager.h"
-#include "managers/bank/BankManagerImplementation.h"
-
-#include "managers/mission/MissionManager.h"
-#include "managers/mission/MissionManagerImplementation.h"
-
 #include "ZoneClientSession.h"
-#include "ZoneClientSessionImplementation.h"
 
 #include "ZoneServerImplementation.h"
 
 #include "ZoneImplementation.h"
 
 #include "../ServerCore.h"
+
+#include "managers/object/ObjectManager.h"
 
 ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int galaxyid) :
 		DatagramServiceThread("ZoneServer"), ZoneServerServant() {
@@ -103,7 +63,7 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	processor = NULL;
 	procThreadCount = processingThreads;
 
-	objectManager = new ObjectManager(this);
+	//objectManager = new ObjectManager(this);
 
 	totalSentPackets = 0;
 	totalResentPackets = 0;
@@ -125,7 +85,7 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 }
 
 ZoneServerImplementation::~ZoneServerImplementation() {
-	if (missionManager != NULL) {
+	/*if (missionManager != NULL) {
 		missionManager->finalize();
 		missionManager = NULL;
 	}
@@ -199,7 +159,7 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 		chatManager->finalize();
 		chatManager = NULL;
 	}
-
+	*/
 	for (int i = 0; i < 45; ++i) {
 		Zone* zone = zones.get(i);
 
@@ -252,7 +212,7 @@ void ZoneServerImplementation::init() {
 
 		zones.add(zone);
 	}
-
+/*
 	userManager = NULL;
 	itemManager = NULL;
 	itemConfigManager = NULL;
@@ -266,7 +226,7 @@ void ZoneServerImplementation::init() {
 
 	startManagers();
 
-	loadMessageoftheDay();
+	loadMessageoftheDay();*/
 
 	startTimestamp = time(NULL);
 
@@ -277,7 +237,7 @@ void ZoneServerImplementation::init() {
 }
 
 void ZoneServerImplementation::startManagers() {
-	info("loading managers..");
+	/*info("loading managers..");
 
 	userManager = new UserManager(_this);
 	userManager->deploy("UserManager");
@@ -316,7 +276,7 @@ void ZoneServerImplementation::startManagers() {
 	bankManager->deploy("BankManager");
 
 	missionManager = new MissionManager(_this, processor);
-	missionManager->deploy("MissionManager");
+	missionManager->deploy("MissionManager");*/
 }
 
 void ZoneServerImplementation::run() {
@@ -330,7 +290,7 @@ void ZoneServerImplementation::run() {
 }
 
 void ZoneServerImplementation::shutdown() {
-	chatManager->broadcastMessage("Server is shutting down in 30 seconds..");
+	/*chatManager->broadcastMessage("Server is shutting down in 30 seconds..");
 	Thread::sleep(10000);
 
 	chatManager->broadcastMessage("Server is shutting down in 20 seconds..");
@@ -340,7 +300,7 @@ void ZoneServerImplementation::shutdown() {
 	Thread::sleep(10000);
 
 	chatManager->broadcastMessage("Server is shutting down in 5 seconds..");
-	Thread::sleep(5000);
+	Thread::sleep(5000);*/
 
 	processor->stop();
 
@@ -369,18 +329,18 @@ void ZoneServerImplementation::stopManagers() {
 	/*if (playerManager != NULL)
 		playerManager->stop();*/
 
-	if (missionManager != NULL)
+	/*if (missionManager != NULL)
 		missionManager->unloadManager();
 
 	if (resourceManager != NULL)
-		resourceManager->stop();
+		resourceManager->stop();*/
 
 	info("managers stopped", true);
 }
 
 ServiceClient* ZoneServerImplementation::createConnection(Socket* sock, SocketAddress& addr) {
-	if (!userManager->checkUser(addr.getIPID()))
-		return NULL;
+	/*if (!userManager->checkUser(addr.getIPID()))
+		return NULL;*/
 
 	ZoneClientSession* client = new ZoneClientSession(this, sock, &addr);
 	client->deploy("ZoneClientSession " + addr.getFullIPAddress());
@@ -426,7 +386,7 @@ bool ZoneServerImplementation::handleError(ServiceClient* client, Exception& e) 
 	return true;
 }
 
-void ZoneServerImplementation::addObject(SceneObject* obj, bool doLock) {
+/*void ZoneServerImplementation::addObject(SceneObject* obj, bool doLock) {
 	try {
 		lock(doLock);
 
@@ -592,12 +552,12 @@ bool ZoneServerImplementation::kickUser(String& name, String& admin) {
 	unlock();
 
 	return result;
-}
+}*/
 
 void ZoneServerImplementation::changeUserCap(int amount) {
 	lock();
 
-	userManager->changeUserCap(amount);
+	//userManager->changeUserCap(amount);
 
 	unlock();
 }

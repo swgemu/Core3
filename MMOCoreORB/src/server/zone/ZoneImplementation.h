@@ -53,17 +53,6 @@ class ZoneProcessServerImplementation;
 
 class ZoneServer;
 
-class CreatureManager;
-
-class CombatManager;
-class ChatManager;
-
-class RadialManager;
-
-class PlanetManager;
-
-class SceneObject;
-
 class ZoneImplementation : public ZoneServant, public QuadTree {
 	int zoneID;
 
@@ -72,11 +61,6 @@ class ZoneImplementation : public ZoneServant, public QuadTree {
 	ZoneServer* server;
 	ScheduleManager* scheduler;
 
-	CreatureManager* creatureManager;
-
-	RadialManager* radialManager;
-
-	PlanetManager* planetManager;
 
 	HeightMap heightMap;
 
@@ -98,14 +82,14 @@ public:
 
 	void stopManagers();
 
-	void registerObject(SceneObject* obj);
+	/*void registerObject(SceneObject* obj);
 
 	SceneObject* lookupObject(uint64 oid);
 
 	SceneObject* deleteObject(uint64 oid);
 	SceneObject* deleteObject(SceneObject* obj);
 
-	SceneObject* deleteCachedObject(SceneObject* obj);
+	SceneObject* deleteCachedObject(SceneObject* obj);*/
 
 	// zone cell methods
 	float getHeight(float x, float y);
@@ -119,7 +103,7 @@ public:
 		return server;
 	}
 
-	inline CreatureManager* getCreatureManager() {
+	/*inline CreatureManager* getCreatureManager() {
 		return creatureManager;
 	}
 
@@ -127,7 +111,7 @@ public:
 		return planetManager;
 	}
 
-	ChatManager* getChatManager();
+	ChatManager* getChatManager();*/
 
 	inline uint64 getGalacticTime() {
 		return (uint64) galacticTime.miliDifference() / 1000;
