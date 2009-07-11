@@ -46,8 +46,10 @@ which carries forward this exception.
 
 #include "../../managers/object/ObjectManager.h"
 
-//bool SceneObjectImplementation::registered = ObjectManager::objectFactory.registerObject<SceneObject>(0);
+bool SceneObjectImplementation::registered = ObjectManager::objectFactory.registerObject<SceneObject>(0);
 
-SceneObjectImplementation::SceneObjectImplementation(Lua* templateData, SceneObject* parent) {
+SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData, SceneObject* parent) {
+	SceneObjectImplementation::parent = parent;
 
+	children = new VectorMap<uint32, SceneObject*>();
 }

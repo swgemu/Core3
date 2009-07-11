@@ -48,14 +48,14 @@ import engine.util.QuadTree;
 import engine.sched.ScheduleManager;
 import system.util.Time;
 import server.zone.ZoneProcessServerImplementation;
-import server.zone.ZoneServer;
+//import server.zone.ZoneServer;
 
 class Zone extends ManagedObject, native QuadTree {
 	int zoneID;
 
 	ZoneProcessServerImplementation processor;
 
-	ZoneServer server;
+	//ZoneServer server;
 	ScheduleManager scheduler;
 
 	Time galacticTime;
@@ -65,5 +65,14 @@ class Zone extends ManagedObject, native QuadTree {
 	float weatherWindY; //1.0 = north, -1.0 = south
 	unsigned int weatherID;
 	boolean weatherEnabled;
+	
+	public Zone(ZoneServer zserv, ZoneProcessServerImplementation processor, int zoneid);
+
+	public void startManagers();
+	
+	public void stopManagers();
+
+	public void lock(boolean doLock = true);
+	public void unlock(boolean doLock = true);
 	
 }

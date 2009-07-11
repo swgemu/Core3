@@ -56,15 +56,24 @@ import engine.util.QuadTreeEntry;
 import system.io.Serializable;
 
 import engine.lua.Lua;
+import engine.lua.LuaObject;
 
-import server.zone.objects.scene.ContainerObject;
+import system.util.VectorMap;
 
 import server.zone.ZoneProcessServerImplementation;
 
-class SceneObject extends ManagedObject, native QuadTreeEntry, native Serializable {
-	public native unsigned long objectID;
+class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, native Serializable {
+	protected ZoneProcessServerImplementation server;
 	
-	public static boolean registered = false;
+	protected native unsigned long objectID;
+	
+	protected SceneObject parent;
+	
+	protected VectorMap<unsigned int, SceneObject> children;
+	
+	protected unsigned int objectCRC;
+	
+	public static boolean registered;
 	
 	public static final int ARMOR = 0x100;
 	public static final int BODYARMOR = 0x101;
@@ -250,7 +259,7 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Serializab
 	public static final int SKIRT = 0x1000012;
 	public static final int ITHOGARB = 0x1000013;
 
-	public SceneObject(Lua templateData, SceneObject parent = NULL);
+	public SceneObject(LuaObject templateData, SceneObject parent = NULL);
 	
 	public native unsigned long getObjectID() {
 		return objectID;
@@ -271,5 +280,24 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Serializab
 	public boolean isPlayer() {
 		return true;
 	}
+	
+	public abstract boolean addObject(unsigned int slot, SceneObject object) {
+		if (children.contains(slot)) {
+			removeObject(slot);
+		}
+		
+		children.put(slot, object);
+		
+		object.setParent(this);
+		
+		return true;
+	}
+	
+	public abstract boolean removeObject(unsigned int slot) {
+		return children.drop(slot);
+	}
+	
+	//public native void info(final byte[] dat);
+
 }
 

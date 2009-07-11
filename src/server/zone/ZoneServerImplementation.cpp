@@ -63,7 +63,7 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	processor = NULL;
 	procThreadCount = processingThreads;
 
-	//objectManager = new ObjectManager(this);
+	objectManager = ObjectManager::instance();
 
 	totalSentPackets = 0;
 	totalResentPackets = 0;

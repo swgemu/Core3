@@ -42,34 +42,13 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "engine/service/Message";
+package server.zone.objects.intangible;
 
-import "../scene/SceneObject";
+import engine.lua.LuaObject;
+import server.zone.objects.scene.SceneObject;
 
-import "../player/Player";
-
-interface IntangibleObject implements SceneObject {
-	IntangibleObject(unsigned long oid, String n, String stringFile, 
-			String stringName, unsigned int objCRC, SceneObject cont) {
-		super(oid, int type);
-	}
+class IntangibleObject extends SceneObject {
+	public static boolean registered;
 	
-	IntangibleObject(unsigned long oid, int tp) {
-		super(oid, int type);
-	}
-	
-	void sendTo(Player player, boolean doClose = true);
-	void sendDestroyTo(Player player);
-	
-	void updateStatus(unsigned int stat);
-	
-	//int useObject(Player player);
-
-	SceneObject getWorldObject();
-
-	
-	unsigned int getStatus();
-
-	void setWorldObject(SceneObject obj);
-	
+	public IntangibleObject(LuaObject templ, SceneObject parent = NULL);
 }

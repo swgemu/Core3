@@ -45,10 +45,9 @@ which carries forward this exception.
 #include "ObjectManager.h"
 
 Lua* ObjectManager::luaTemplatesInstance = NULL;
+ObjectFactory<SceneObject> ObjectManager::objectFactory;
 
-ObjectManager::ObjectManager(ServiceThread* serv) : Logger("ObjectManager") {
-	server = serv;
-
+ObjectManager::ObjectManager() : Logger("ObjectManager") {
 	objectMap = new ObjectMap(100000);
 	objectCacheMap = new ObjectMap(20000);
 
@@ -61,8 +60,6 @@ ObjectManager::ObjectManager(ServiceThread* serv) : Logger("ObjectManager") {
 
 	setLogging(false);
 	setGlobalLogging(true);
-
-	objectFactory.registerObject<SceneObject>(0);
 }
 
 ObjectManager::~ObjectManager() {
@@ -90,7 +87,7 @@ ObjectManager::~ObjectManager() {
 }
 
 SceneObject* ObjectManager::add(SceneObject* obj) {
-	uint64 oid = obj->getObjectID();
+	/*uint64 oid = obj->getObjectID();
 
 	if (objectCacheMap->remove(oid) != NULL) {
 		obj->redeploy();
@@ -98,7 +95,9 @@ SceneObject* ObjectManager::add(SceneObject* obj) {
 		return objectMap->put(oid, obj);
 	} else {
 		return objectMap->put(oid, obj);
-	}
+	}*/
+
+	return NULL;
 }
 
 SceneObject* ObjectManager::get(uint64 oid) {
@@ -108,7 +107,7 @@ SceneObject* ObjectManager::get(uint64 oid) {
 SceneObject* ObjectManager::remove(uint64 oid) {
 	SceneObject* obj = NULL;
 
-	obj = objectMap->remove(oid);
+	/*obj = objectMap->remove(oid);
 	if (obj == NULL)
 		return NULL;
 
@@ -118,18 +117,18 @@ SceneObject* ObjectManager::remove(uint64 oid) {
 		objectCacheMap->put(oid, obj);
 
 		obj->scheduleUndeploy();
-	}
+	}*/
 
 	return obj;
 }
 
 bool ObjectManager::destroy(SceneObject* obj) {
-	uint64 oid = obj->getObjectID();
+	/*uint64 oid = obj->getObjectID();
 
 	if (!objectCacheMap->containsKey(oid) && objectMap->containsKey(oid))
 		return false;
 
-	objectCacheMap->remove(oid);
+	objectCacheMap->remove(oid);*/
 
 	return true;
 }
@@ -137,11 +136,11 @@ bool ObjectManager::destroy(SceneObject* obj) {
 SceneObject* ObjectManager::getCachedObject(uint64 oid) {
 	SceneObject* obj = objectCacheMap->get(oid);
 
-	if (obj != NULL) {
+	/*if (obj != NULL) {
 		objectCacheMap->remove(oid);
 
 		obj->redeploy();
-	}
+	}*/
 
 	return obj;
 }
@@ -149,8 +148,8 @@ SceneObject* ObjectManager::getCachedObject(uint64 oid) {
 SceneObject* ObjectManager::removeCachedObject(uint64 oid) {
 	SceneObject* obj = objectCacheMap->remove(oid);
 
-	if (obj != NULL)
-		obj->info("removed from ObjectManager cache");
+	/*if (obj != NULL)
+		obj->info("removed from ObjectManager cache");*/
 
 	return obj;
 }
@@ -171,7 +170,19 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC) {
 	msg << "Object crc:[0x" <<  hex << objectCRC << "]" << " is a [0x" << hex << gameObjectType << "] gameObjectType";
 	info(msg, true);
 
-	return NULL;
+	SceneObject* object = NULL;
+
+	object = objectFactory.createObject(gameObjectType, &result, NULL);
+
+	if (object == NULL) {
+		if (gameObjectType > 0x100)
+			gameObjectType & 0xFF;
+
+		object = objectFactory.createObject(gameObjectType, &result, NULL);
+	}
+
+
+	return object;
 }
 
 void ObjectManager::registerFunctions() {

@@ -58,7 +58,11 @@ bin_PROGRAMS = core3
 core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/ZoneClientSession.cpp \
 				server/zone/Zone.cpp \
-				server/zone/objects/scene/SceneObject.cpp
+				server/zone/objects/scene/SceneObject.cpp \
+				server/zone/objects/intangible/IntangibleObject.cpp \
+				server/zone/objects/tangible/TangibleObject.cpp \
+				server/zone/objects/creature/CreatureObject.cpp \
+				server/zone/objects/player/PlayerObject.cpp
 		
 core3_SOURCES =	$(core3_IDLS) \
 		server/conf/ConfigManager.cpp \
@@ -79,5 +83,10 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/ZoneImplementation.cpp \
 		server/zone/managers/planet/HeightMap.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
+		server/zone/managers/object/ObjectManager.cpp \
+		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
+		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
+		server/zone/objects/creature/CreatureObjectImplementation.cpp \
+		server/zone/objects/player/PlayerObjectImplementation.cpp \
 		main.cpp 
 		
