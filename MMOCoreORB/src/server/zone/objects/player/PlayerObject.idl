@@ -42,118 +42,16 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../../Zone";
+package server.zone.objects.player;
 
-import "../scene/SceneObject";
+import engine.lua.LuaObject;
+include server.zone.objects.scene.SceneObject;
+import server.zone.objects.intangible.IntangibleObject;
+import server.zone.objects.creature.CreatureObject;
 
-import "Player";
-
-import "FriendsList";
-import "IgnoreList";
-
-import "../waypoint/WaypointObject";
-
-import "../../managers/player/PlayerManager";
-
-import "badges/Badges";
-
-
-interface PlayerObject implements SceneObject {
-	PlayerObject(Player player) {
-		super(unsigned long oid, int type);
-	}
-
-	void sendToOwner();
-	void sendTo(Player player, boolean doClose = true);
-
-	int getExperience(const String xpType);
-	void addExperience(const String xpType, int xp, boolean updateClient);
-	void removeExperience(const String xpType, int xp, boolean updateClient);
-	void loadExperience(const String xpStr);
-	String saveExperience();
-
-	boolean setCharacterBit(unsigned int bit, boolean updateClient = false);
-	boolean clearCharacterBit(unsigned int bit, boolean updateClient = false);
-
-	// client actions
-	void setForcePowerBar(unsigned int fp);
-	void updateMaxForcePowerBar(boolean updateClient = true);
-
-	// force setters
-	void setForcePower(unsigned int fp);
-
-	// force getters
-	unsigned int getForcePower();
-	unsigned int getForcePowerMax();
-	unsigned int getForceRegen();
-
-	boolean isJedi();
-	boolean isOnFullForce();
-
-	unsigned int getCharacterBitmask();
-
-	int getWaypointListSize();
-
-	int getDrinkFilling();
-	int getDrinkFillingMax();
-	int getFoodFilling();
-	int getFoodFillingMax();
-
-	void setDrinkFilling(int filling, boolean updateClient);
-	void setDrinkFillingMax(int filling);
-	void setFoodFilling(int filling, boolean updateClient);
-	void setFoodFillingMax(int filling);
-
-	void changeDrinkFilling(int filling, boolean updateClient);
-	void changeFoodFilling(int filling, boolean updateClient);
-
-	boolean isDigesting();
-
-	void setAdminLevel(unsigned int level, boolean updateClient = true);
-	unsigned int getAdminLevel();	
-
-	unsigned int getJediState();
-
-	WaypointObject getWaypoint(unsigned long id);
-
-	void addWaypoint(WaypointObject wp, boolean updateClient);
-
-	boolean removeWaypoint(WaypointObject wp, boolean updateClient);
-
-	void updateWaypoint(WaypointObject wp);
-
-	Player getPlayer();
-
-	void setCurrentTitle(String nTitle, boolean updateClient);
-	void setTitle(String temptitle);
-	String getCurrentTitle();
-
-	unsigned int getExperienceListCount();
-	unsigned int getNewExperienceListCount(int cnt);
-
-	unsigned int getWaypointListCount();
-	unsigned int getNewWaypointListCount(int cnt);
-
-	FriendsList getFriendsList();
-	void addFriend(String name, String inServer);
-	void friendsMagicNumberReset();
-	void removeFriend(String name);
-	void findFriend(String name, PlayerManager playerManager);
-	void saveFriends();
-	void loadFriends();
-	void updateAllFriends(PlayerObject playerObject);
-	void pokeReverseFriendList(unsigned long playerID);
-	void removeFromReverseFriendList(unsigned long playID);
-	int getReverseFriendListSize();
-	unsigned long getReverseFriendListEntry(int i);
-
-	IgnoreList getIgnoreList();
-	void addIgnore(String name, String inServer);
-	void ignoreMagicNumberReset();
-	void removeIgnore(String name);
-	void saveIgnore();
-	void loadIgnore();
-
-	void saveWaypoints(Player player);
-	WaypointObject searchWaypoint(Player play, const String name, int mode);
+class PlayerObject extends IntangibleObject {
+	int test;
+	CreatureObject creatureObject;
+	
+	public PlayerObject(LuaObject templ, SceneObject parent = NULL);
 }

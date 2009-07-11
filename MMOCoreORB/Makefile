@@ -41,13 +41,18 @@
 # which carries forward this exception.
 
 IDLC = /usr/local/bin/idlc -rb
-#IDLC55 = /usr/local/bin/idlc55
+IDLC55 = /usr/local/bin/idlc55
 
-#IDL55_SOURCES = server/zone/ZoneServer.idl \
-#				server/zone/Zone.idl
+IDL55_SOURCES = server/zone/ZoneServer.idl \
+				server/zone/Zone.idl
+				
 
 IDL_SOURCES = 	server/zone/ZoneClientSession.idl \
-				server/zone/objects/scene/SceneObject.idl
+				server/zone/objects/scene/SceneObject.idl \
+				server/zone/objects/creature/CreatureObject.idl \
+				server/zone/objects/player/PlayerObject.idl \
+				server/zone/objects/intangible/IntangibleObject.idl \
+				server/zone/objects/tangible/TangibleObject.idl
 
 all:
 	cd src && $(IDLC) $(IDL_SOURCES)

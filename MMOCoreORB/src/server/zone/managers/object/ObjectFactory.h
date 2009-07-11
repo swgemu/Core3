@@ -10,44 +10,43 @@
 
 #include "engine/engine.h"
 
-template <typename CtorSignature, typename UniqueIdType> class ObjectFactory;
+//#include <map>
 
 namespace objectfactory {
-	template<typename BaseClassType, typename Param1Type, typename Param2Type, typename ClassType>
-	BaseClassType CreateObject(Param1Type param1, Param2Type param2) {
-		return new ClassType(param1, param2);
+	template<typename BaseClassType, typename ClassType>
+	BaseClassType* CreateObject(LuaObject* templ, BaseClassType* parent) {
+	   return new ClassType(templ, parent);
 	}
 }
 
-template<typename BaseClassType, typename Param1Type, typename Param2Type, typename UniqueIdType>
-class ObjectFactory<BaseClassType (Param1Type, Param2Type), UniqueIdType>
-{
-protected:
-   typedef BaseClassType (*CreateObjectFunc)(Param1Type, Param2Type);
+template<typename BaseClassType> class ObjectFactory {
+	VectorMap<uint32, BaseClassType*(*)(LuaObject*, BaseClassType*)> objectMap;
+public:
+	//~ObjectFactory<BaseClassType>() { }
+
+	template<typename ClassType>
+	bool registerObject(uint32 str) {
+		if (objectMap.contains(str))
+			return false;
+
+		objectMap.put(str, &objectfactory::CreateObject<BaseClassType, ClassType>);
+
+		return true;
+	}
+
+	void unregisterObject(uint32 str) {
+		return objectMap.drop(str);
+	}
+
+	BaseClassType* createObject(uint32 str, LuaObject* templ, BaseClassType* parent) {
+		if (!objectMap.contains(str))
+			return NULL;
+		else
+			return objectMap.get(str)(templ, parent);
+	}
 
 public:
-   template<typename ClassType> bool registerObject(UniqueIdType objectType) {
-	   if (objectCreatorMap.contains(objectType))
-		   return false;
-
-	   objectCreatorMap.put(objectType, &objectfactory::CreateObject<BaseClassType, ClassType>);
-
-	   return true;
-   }
-
-   bool unregisterObject(UniqueIdType objectType) {
-	   return objectCreatorMap.drop(objectType);
-   }
-
-   BaseClassType createObject(UniqueIdType objectType, Param1Type param1, Param2Type param2) {
-	   if (!objectCreatorMap.contains(objectType))
-		   return NULL;
-	   else
-		   return (objectCreatorMap.get(objectType))(param1, param2);
-   }
-
-protected:
-   VectorMap<unsigned int, CreateObjectFunc> objectCreatorMap;
+	//ObjectFactory<BaseClassType>(void) { }
 };
 
 

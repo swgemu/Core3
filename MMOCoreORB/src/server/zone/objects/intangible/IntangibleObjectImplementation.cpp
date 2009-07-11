@@ -42,128 +42,13 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "IntangibleObjectImplementation.h"
 #include "IntangibleObject.h"
 
-#include "../../packets.h"
-#include "../../objects.h"
+#include "../../managers/object/ObjectManager.h"
 
-#include "../../ZoneClientSession.h"
+bool IntangibleObjectImplementation::registered = ObjectManager::objectFactory.registerObject<IntangibleObject>(0x800);
 
+IntangibleObjectImplementation::IntangibleObjectImplementation(LuaObject* templ, SceneObject* parent)
+	: SceneObjectImplementation(templ, parent) {
 
-IntangibleObjectImplementation::IntangibleObjectImplementation(uint64 oid, String n, String stringFile,
-		String stringName, uint32 objCRC, SceneObject* cont)
-	: IntangibleObjectServant(oid, INTANGIBLE) {
-
-	customName = n;
-
-	stfName = stringFile;
-	stfFile = stringName;
-
-	objectCRC = objCRC;
-
-	parent = cont;
-
-	init();
-}
-
-IntangibleObjectImplementation::IntangibleObjectImplementation(uint64 id, int tp) : IntangibleObjectServant(id, tp) {
-
-	init();
-}
-
-void IntangibleObjectImplementation::init() {
-
-	linkType = 0xFFFFFFFF;
-
-	status = 0;
-
-	objectType = INTANGIBLE;
-}
-
-IntangibleObjectImplementation::~IntangibleObjectImplementation() {
-	SceneObject* item = getObject(0);
-	if (item != NULL) {
-		item->finalize();
-		objects.removeAll();
-	}
-}
-
-void IntangibleObjectImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClientSession* client = player->getClient();
-	if (client == NULL)
-		return;
-
-	SceneObjectImplementation::create(client);
-
-	if (parent != NULL)
-		client->sendMessage(link(parent));
-
-	IntangibleObjectMessage3* itno3 = new IntangibleObjectMessage3(_this);
-	client->sendMessage(itno3);
-
-	IntangibleObjectMessage6* itno6 = new IntangibleObjectMessage6(_this);
-	client->sendMessage(itno6);
-
-	if (doClose)
-		SceneObjectImplementation::close(client);
-}
-
-void IntangibleObjectImplementation::sendDestroyTo(Player* player) {
-	SceneObjectImplementation::destroy(player->getClient());
-}
-
-void IntangibleObjectImplementation::parseItemAttributes() {
-
-}
-
-void IntangibleObjectImplementation::generateAttributes(SceneObject* obj) {
-	if (!obj->isPlayer())
-		return;
-
-	Player* player = (Player*) obj;
-
-	AttributeListMessage* alm = new AttributeListMessage(_this);
-	addAttributes(alm);
-
-	player->sendMessage(alm);
-}
-
-
-void IntangibleObjectImplementation::addAttributes(AttributeListMessage* alm) {
-
-}
-
-void IntangibleObjectImplementation::updateStatus(uint32 stat) {
-	status = stat;
-
-	if (parent == NULL)
-		return;
-
-	SceneObject* object = parent->getParent();
-	if (object == NULL)
-		return;
-
-	if (!object->isPlayer())
-		return;
-
-	Player* player = (Player*) object;
-
-	IntangibleObjectDeltaMessage3* itno3 = new IntangibleObjectDeltaMessage3(_this);
-	itno3->updateStatus(status);
-	itno3->close();
-
-	player->sendMessage(itno3);
-}
-
-void IntangibleObjectImplementation::onTrade(Player* sender, Player* receiver) {
-	SceneObject* scno = getObject(0);
-
-	if(scno->isNonPlayerCreature()) {
-		MountCreature* mount = (MountCreature*) scno;
-
-		if(mount != NULL) {
-			mount->setLinkedCreature(receiver);
-		}
-	}
 }

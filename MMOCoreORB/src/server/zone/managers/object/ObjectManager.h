@@ -51,19 +51,19 @@ which carries forward this exception.
 
 #include "ObjectFactory.h"
 
-class ObjectManager : public Logger, public Singleton<ObjectManager> {
-	ServiceThread* server;
+#include "../../objects/scene/SceneObject.h"
 
+class ObjectManager : public Logger, public Singleton<ObjectManager> {
 	ObjectMap* objectMap;
 	ObjectMap* objectCacheMap;
 
 public:
-	static ObjectFactory<SceneObject *(Lua*, SceneObject*), unsigned int> objectFactory;
+	static ObjectFactory<SceneObject> objectFactory;
 
 	static Lua* luaTemplatesInstance;
 
 public:
-	ObjectManager(ServiceThread* serv);
+	ObjectManager();
 
 	~ObjectManager();
 

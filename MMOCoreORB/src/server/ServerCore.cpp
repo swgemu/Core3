@@ -58,6 +58,8 @@ which carries forward this exception.
 
 #include "zone/ZoneServer.h"
 
+#include "zone/managers/object/ObjectManager.h"
+
 ZoneServer* ServerCore::zoneServer = NULL;
 
 ServerCore::ServerCore() : Core("log/core3.log"), Logger("Core") {

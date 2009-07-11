@@ -84,4 +84,6 @@ class ZoneServer extends ManagedObject, native DatagramServiceThread {
 	
 	public ZoneServer(int processingThreads, int galaxyid = 2);
 	
+	public ServiceClient createConnection(Socket sock, dereferenced SocketAddress addr);
+	
 }
