@@ -43,7 +43,7 @@
 
 object_static_space_debris_shared_cargo_destroyed_large_a = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_debris_crate_s02.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_static_space_debris_shared_cargo_destroyed_large_a = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_cargo_destroyed_la
 
 object_static_space_debris_shared_cargo_destroyed_small_a = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_debris_chunk_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -112,7 +112,7 @@ object_static_space_debris_shared_cargo_destroyed_small_a = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -121,7 +121,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_cargo_destroyed_sm
 
 object_static_space_debris_shared_cargo_pristine_large_a = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_debris_crate_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -151,7 +151,7 @@ object_static_space_debris_shared_cargo_pristine_large_a = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -160,7 +160,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_cargo_pristine_lar
 
 object_static_space_debris_shared_death_star_debris_a = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/dsdebris_chunksmalla.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -190,7 +190,7 @@ object_static_space_debris_shared_death_star_debris_a = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -199,7 +199,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_
 
 object_static_space_debris_shared_death_star_debris_b = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_yavn_death_star_wreckage_s02.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -229,7 +229,7 @@ object_static_space_debris_shared_death_star_debris_b = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -238,7 +238,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_
 
 object_static_space_debris_shared_death_star_debris_c = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_yavn_death_star_wreckage_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -268,7 +268,7 @@ object_static_space_debris_shared_death_star_debris_c = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -277,7 +277,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_
 
 object_static_space_debris_shared_death_star_debris_d = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_yavn_death_star_wreckage_s03.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -307,7 +307,7 @@ object_static_space_debris_shared_death_star_debris_d = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -316,7 +316,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_
 
 object_static_space_debris_shared_death_star_debris_e = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/dsdebris_tubesmall.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -346,7 +346,7 @@ object_static_space_debris_shared_death_star_debris_e = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -355,7 +355,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_
 
 object_static_space_debris_shared_death_star_debris_f = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/dsdebris_tube.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -385,7 +385,7 @@ object_static_space_debris_shared_death_star_debris_f = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -394,7 +394,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_
 
 object_static_space_debris_shared_death_star_debris_g = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/dsdebris_conduit.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -424,7 +424,7 @@ object_static_space_debris_shared_death_star_debris_g = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -433,7 +433,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_
 
 object_static_space_debris_shared_death_star_debris_h = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_junk_s5.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -463,7 +463,7 @@ object_static_space_debris_shared_death_star_debris_h = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -472,7 +472,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_
 
 object_static_space_debris_shared_death_star_debris_i = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_junk_s6.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -502,7 +502,7 @@ object_static_space_debris_shared_death_star_debris_i = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -511,7 +511,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_
 
 object_static_space_debris_shared_droid_fighter_debris_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/droid_fighter_debris_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -541,7 +541,7 @@ object_static_space_debris_shared_droid_fighter_debris_s01 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -550,7 +550,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_droid_fighter_debr
 
 object_static_space_debris_shared_droid_fighter_debris_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/droid_fighter_debris_s02.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -580,7 +580,7 @@ object_static_space_debris_shared_droid_fighter_debris_s02 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -589,7 +589,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_droid_fighter_debr
 
 object_static_space_debris_shared_droid_fighter_debris_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/droid_fighter_debris_s03.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -619,7 +619,7 @@ object_static_space_debris_shared_droid_fighter_debris_s03 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -628,7 +628,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_droid_fighter_debr
 
 object_static_space_debris_shared_droid_fighter_debris_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/droid_fighter_debris_s04.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -658,7 +658,7 @@ object_static_space_debris_shared_droid_fighter_debris_s04 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -667,7 +667,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_droid_fighter_debr
 
 object_static_space_debris_shared_tie_fighter_debris_a = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter_debris_a.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -697,7 +697,7 @@ object_static_space_debris_shared_tie_fighter_debris_a = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -706,7 +706,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_tie_fighter_debris
 
 object_static_space_debris_shared_tie_fighter_debris_b = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter_debris_b.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -736,7 +736,7 @@ object_static_space_debris_shared_tie_fighter_debris_b = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -745,7 +745,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_tie_fighter_debris
 
 object_static_space_debris_shared_tie_fighter_debris_c = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter_debris_c.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -775,7 +775,7 @@ object_static_space_debris_shared_tie_fighter_debris_c = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -784,7 +784,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_tie_fighter_debris
 
 object_static_space_debris_shared_tie_fighter_debris_d = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter_debris_d.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -814,7 +814,7 @@ object_static_space_debris_shared_tie_fighter_debris_d = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -823,7 +823,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_tie_fighter_debris
 
 object_static_space_debris_shared_tie_fighter_debris_e = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter_debris_e.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -853,7 +853,7 @@ object_static_space_debris_shared_tie_fighter_debris_e = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -862,7 +862,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_tie_fighter_debris
 
 object_static_space_debris_shared_tie_fighter_debris_f = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter_debris_f.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -892,7 +892,7 @@ object_static_space_debris_shared_tie_fighter_debris_f = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -901,7 +901,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_tie_fighter_debris
 
 object_static_space_debris_shared_tie_fighter_debris_g = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_tie_bomber_debris_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -931,7 +931,7 @@ object_static_space_debris_shared_tie_fighter_debris_g = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -940,7 +940,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_tie_fighter_debris
 
 object_static_space_debris_shared_tradefed_hulk_debris_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/debris_tradefed_hulk_radial_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -970,7 +970,7 @@ object_static_space_debris_shared_tradefed_hulk_debris_s01 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -979,7 +979,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_tradefed_hulk_debr
 
 object_static_space_debris_shared_tradefed_hulk_debris_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/debris_tradefed_hulk_radial_s02.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1009,7 +1009,7 @@ object_static_space_debris_shared_tradefed_hulk_debris_s02 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1018,7 +1018,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_tradefed_hulk_debr
 
 object_static_space_debris_shared_tradefed_hulk_debris_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/debris_tradefed_hulk_radial_s03.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1048,7 +1048,7 @@ object_static_space_debris_shared_tradefed_hulk_debris_s03 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1057,7 +1057,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_tradefed_hulk_debr
 
 object_static_space_debris_shared_tradefed_hulk_debris_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/debris_tradefed_hulk_radial_s04.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1087,7 +1087,7 @@ object_static_space_debris_shared_tradefed_hulk_debris_s04 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1096,7 +1096,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_tradefed_hulk_debr
 
 object_static_space_debris_shared_xwing_debris_a = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_debris_a.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1126,7 +1126,7 @@ object_static_space_debris_shared_xwing_debris_a = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1135,7 +1135,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_xwing_debris_a, 35
 
 object_static_space_debris_shared_xwing_debris_b = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_debris_b.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1165,7 +1165,7 @@ object_static_space_debris_shared_xwing_debris_b = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1174,7 +1174,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_xwing_debris_b, 14
 
 object_static_space_debris_shared_xwing_debris_c = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_debris_c.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1204,7 +1204,7 @@ object_static_space_debris_shared_xwing_debris_c = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1213,7 +1213,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_xwing_debris_c, 11
 
 object_static_space_debris_shared_xwing_debris_d = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_debris_d.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1243,7 +1243,7 @@ object_static_space_debris_shared_xwing_debris_d = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1252,7 +1252,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_xwing_debris_d, 31
 
 object_static_space_debris_shared_xwing_debris_e = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_debris_e.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1282,7 +1282,7 @@ object_static_space_debris_shared_xwing_debris_e = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1291,7 +1291,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_xwing_debris_e, 40
 
 object_static_space_debris_shared_xwing_debris_f = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_debris_f.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1321,7 +1321,7 @@ object_static_space_debris_shared_xwing_debris_f = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1330,7 +1330,7 @@ ObjectTemplates:addTemplate(object_static_space_debris_shared_xwing_debris_f, 67
 
 object_static_space_debris_shared_xwing_debris_g = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_debris_g.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1360,7 +1360,7 @@ object_static_space_debris_shared_xwing_debris_g = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }

@@ -43,7 +43,7 @@
 
 object_installation_mining_liquid_shared_mining_liquid_harvester_style_1 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_mobile_chem_refinery.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -78,7 +78,7 @@ object_installation_mining_liquid_shared_mining_liquid_harvester_style_1 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/mining_liquid/shared_mining_liquid_harvester_style_1.sfp",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_installation_mining_liquid_shared_mining_liqu
 
 object_installation_mining_liquid_shared_mining_liquid_harvester_style_2 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_min_liquid_s01_u0.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -128,7 +128,7 @@ object_installation_mining_liquid_shared_mining_liquid_harvester_style_2 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/mining_liquid/shared_mining_liquid_harvester_style_2.sfp",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_installation_mining_liquid_shared_mining_liqu
 
 object_installation_mining_liquid_shared_mining_liquid_harvester_style_3 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_creature_farm_s01_u0.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -178,7 +178,7 @@ object_installation_mining_liquid_shared_mining_liquid_harvester_style_3 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/mining_liquid/shared_mining_liquid_harvester_style_3.sfp",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_installation_mining_liquid_shared_mining_liqu
 
 object_installation_mining_liquid_shared_mining_liquid_moisture_harvester = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_min_moisture_s01_u0.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -228,7 +228,7 @@ object_installation_mining_liquid_shared_mining_liquid_moisture_harvester = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/mining_liquid/shared_mining_liquid_moisture_harvester.sfp",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_installation_mining_liquid_shared_mining_liqu
 
 object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_heavy = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_moisture_lrg.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -278,7 +278,7 @@ object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_heavy 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/mining_liquid/shared_mining_liquid_moisture_harvester_heavy.sfp",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_installation_mining_liquid_shared_mining_liqu
 
 object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_medium = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_moisture_med.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -328,7 +328,7 @@ object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_medium
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/mining_liquid/shared_mining_liquid_moisture_harvester_medium.sfp",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_installation_mining_liquid_shared_mining_liqu
 
 object_installation_mining_liquid_shared_resource_harvester = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/tatt_ming_hydro_evaporator.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -378,7 +378,7 @@ object_installation_mining_liquid_shared_resource_harvester = SharedInstallation
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/base/shared_installation_base.sfp",

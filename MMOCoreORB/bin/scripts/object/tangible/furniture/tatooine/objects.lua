@@ -43,7 +43,7 @@
 
 object_tangible_furniture_tatooine_shared_frn_tato_cafe_parasol = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_cafe_parasol_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_cafe_parasol = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_c
 
 object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_chair_cafe_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_01 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_c
 
 object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_chair_cafe_s02.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_02 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_c
 
 object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_large_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_fruit_stand_large_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_large_style_01 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_f
 
 object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_small_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_fruit_stand_sml_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_small_style_01 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_f
 
 object_tangible_furniture_tatooine_shared_frn_tato_meat_rack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_meat_rack.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_meat_rack = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_m
 
 object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_table_small_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_01 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_t
 
 object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_table_small_s02.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_02 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_t
 
 object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_table_small_s03.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_03 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_t
 
 object_tangible_furniture_tatooine_shared_frn_tato_tbl_cafe_table_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_tbl_cafe_table_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_tbl_cafe_table_style_01 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_t
 
 object_tangible_furniture_tatooine_shared_frn_tato_vase_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_vase_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_vase_style_01 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_v
 
 object_tangible_furniture_tatooine_shared_frn_tato_vase_style_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_vase_s02.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_furniture_tatooine_shared_frn_tato_vase_style_02 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tato_v
 
 object_tangible_furniture_tatooine_shared_frn_tatt_cantina_droid_detector = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_droid_detector.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_furniture_tatooine_shared_frn_tatt_cantina_droid_detector = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_c
 
 object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_frn_chair_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_c
 
 object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_frn_chair_s02.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_2 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_c
 
 object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_frn_chair_s03.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_3 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_c
 
 object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_frn_table_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_1 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_t
 
 object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_frn_table_s02.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -928,7 +928,7 @@ object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_2 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_t
 
 object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_frn_table_s03.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -978,7 +978,7 @@ object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_3 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

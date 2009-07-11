@@ -43,7 +43,7 @@
 
 object_tangible_mission_quest_item_shared_aaph_koden_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_mission_quest_item_shared_aaph_koden_q1_needed = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_aaph_koden
 
 object_tangible_mission_quest_item_shared_ajuva_vamasterin_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_mission_quest_item_shared_ajuva_vamasterin_q1_needed = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ajuva_vama
 
 object_tangible_mission_quest_item_shared_ajuva_vamasterin_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_mission_quest_item_shared_ajuva_vamasterin_q2_needed = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ajuva_vama
 
 object_tangible_mission_quest_item_shared_arrek_vonsarko_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_mission_quest_item_shared_arrek_vonsarko_q1_needed = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_arrek_vons
 
 object_tangible_mission_quest_item_shared_arven_wendik_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_mission_quest_item_shared_arven_wendik_q1_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_arven_wend
 
 object_tangible_mission_quest_item_shared_athok_dinvar_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s03.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_mission_quest_item_shared_athok_dinvar_q2_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_athok_dinv
 
 object_tangible_mission_quest_item_shared_attunement_grid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_mission_quest_item_shared_attunement_grid = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_attunement
 
 object_tangible_mission_quest_item_shared_aujante_klee_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_mission_quest_item_shared_aujante_klee_q2_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_aujante_kl
 
 object_tangible_mission_quest_item_shared_ayn_eckener_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_mission_quest_item_shared_ayn_eckener_q3_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ayn_eckene
 
 object_tangible_mission_quest_item_shared_bab_esrus_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_bacta_ampules.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_mission_quest_item_shared_bab_esrus_q1_needed = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bab_esrus_
 
 object_tangible_mission_quest_item_shared_bab_esrus_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_cage_bamboo.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_mission_quest_item_shared_bab_esrus_q3_needed = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bab_esrus_
 
 object_tangible_mission_quest_item_shared_bardo_klinj_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_gas.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_mission_quest_item_shared_bardo_klinj_q1_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bardo_klin
 
 object_tangible_mission_quest_item_shared_bardo_klinj_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_gas.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_mission_quest_item_shared_bardo_klinj_q2_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bardo_klin
 
 object_tangible_mission_quest_item_shared_bardo_klinj_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_mission_quest_item_shared_bardo_klinj_q3_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bardo_klin
 
 object_tangible_mission_quest_item_shared_binna_jode_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s05.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_mission_quest_item_shared_binna_jode_q1_needed = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_binna_jode
 
 object_tangible_mission_quest_item_shared_binna_jode_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_mission_quest_item_shared_binna_jode_q2_needed = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_binna_jode
 
 object_tangible_mission_quest_item_shared_binna_jode_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shirt_s08_f.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_tangible_mission_quest_item_shared_binna_jode_q3_needed = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_binna_jode
 
 object_tangible_mission_quest_item_shared_binna_jode_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -928,7 +928,7 @@ object_tangible_mission_quest_item_shared_binna_jode_q4_needed = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_binna_jode
 
 object_tangible_mission_quest_item_shared_biribas_tarun_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -978,7 +978,7 @@ object_tangible_mission_quest_item_shared_biribas_tarun_q1_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_biribas_ta
 
 object_tangible_mission_quest_item_shared_booto_lubble_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_rank_cylinder.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1028,7 +1028,7 @@ object_tangible_mission_quest_item_shared_booto_lubble_q1_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1043,7 +1043,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_booto_lubb
 
 object_tangible_mission_quest_item_shared_booto_lubble_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_imp_detonator.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1078,7 +1078,7 @@ object_tangible_mission_quest_item_shared_booto_lubble_q2_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1093,7 +1093,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_booto_lubb
 
 object_tangible_mission_quest_item_shared_borvo_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1128,7 +1128,7 @@ object_tangible_mission_quest_item_shared_borvo_q1_needed = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_borvo_q1_n
 
 object_tangible_mission_quest_item_shared_borvo_q6_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_m_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1178,7 +1178,7 @@ object_tangible_mission_quest_item_shared_borvo_q6_needed = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1193,7 +1193,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_borvo_q6_n
 
 object_tangible_mission_quest_item_shared_boshek_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1228,7 +1228,7 @@ object_tangible_mission_quest_item_shared_boshek_q1_needed = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1243,7 +1243,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_boshek_q1_
 
 object_tangible_mission_quest_item_shared_boshek_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_weapons_lg.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1278,7 +1278,7 @@ object_tangible_mission_quest_item_shared_boshek_q2_needed = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1293,7 +1293,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_boshek_q2_
 
 object_tangible_mission_quest_item_shared_brantlee_spondoon_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_sandstat.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1328,7 +1328,7 @@ object_tangible_mission_quest_item_shared_brantlee_spondoon_q1_needed = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1343,7 +1343,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_brantlee_s
 
 object_tangible_mission_quest_item_shared_brantlee_spondoon_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_gas.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1378,7 +1378,7 @@ object_tangible_mission_quest_item_shared_brantlee_spondoon_q2_needed = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1393,7 +1393,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_brantlee_s
 
 object_tangible_mission_quest_item_shared_brass_marshoo_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_loaf_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1428,7 +1428,7 @@ object_tangible_mission_quest_item_shared_brass_marshoo_q1_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1443,7 +1443,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_brass_mars
 
 object_tangible_mission_quest_item_shared_brass_marshoo_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_sliced.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1478,7 +1478,7 @@ object_tangible_mission_quest_item_shared_brass_marshoo_q2_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1493,7 +1493,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_brass_mars
 
 object_tangible_mission_quest_item_shared_brea_tonnika_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1528,7 +1528,7 @@ object_tangible_mission_quest_item_shared_brea_tonnika_q1_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1543,7 +1543,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_brea_tonni
 
 object_tangible_mission_quest_item_shared_bren_kingal_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_shield_generator.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1578,7 +1578,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q1_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1593,7 +1593,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bren_kinga
 
 object_tangible_mission_quest_item_shared_bren_kingal_q1_reward = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_dish_casserole_full.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1628,7 +1628,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q1_reward = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1643,7 +1643,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bren_kinga
 
 object_tangible_mission_quest_item_shared_bren_kingal_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medbag_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1678,7 +1678,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q2_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bren_kinga
 
 object_tangible_mission_quest_item_shared_bren_kingal_q2_reward = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_full_s02.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1728,7 +1728,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q2_reward = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1743,7 +1743,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bren_kinga
 
 object_tangible_mission_quest_item_shared_bren_kingal_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1778,7 +1778,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q3_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1793,7 +1793,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bren_kinga
 
 object_tangible_mission_quest_item_shared_bren_kingal_q3_reward = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_muffin.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1828,7 +1828,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q3_reward = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1843,7 +1843,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bren_kinga
 
 object_tangible_mission_quest_item_shared_bren_kingal_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/helmet_atat_f.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1878,7 +1878,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q4_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1893,7 +1893,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bren_kinga
 
 object_tangible_mission_quest_item_shared_bren_kingal_q4_reward = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_pie_full_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1928,7 +1928,7 @@ object_tangible_mission_quest_item_shared_bren_kingal_q4_reward = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1943,7 +1943,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_bren_kinga
 
 object_tangible_mission_quest_item_shared_brennis_doore_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_f.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1978,7 +1978,7 @@ object_tangible_mission_quest_item_shared_brennis_doore_q1_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1993,7 +1993,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_brennis_do
 
 object_tangible_mission_quest_item_shared_brennis_doore_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2028,7 +2028,7 @@ object_tangible_mission_quest_item_shared_brennis_doore_q2_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2043,7 +2043,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_brennis_do
 
 object_tangible_mission_quest_item_shared_brennis_doore_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2078,7 +2078,7 @@ object_tangible_mission_quest_item_shared_brennis_doore_q3_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2093,7 +2093,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_brennis_do
 
 object_tangible_mission_quest_item_shared_champhra_biahin_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_vegetable_s5.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2128,7 +2128,7 @@ object_tangible_mission_quest_item_shared_champhra_biahin_q1_needed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2143,7 +2143,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_champhra_b
 
 object_tangible_mission_quest_item_shared_champhra_biahin_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2178,7 +2178,7 @@ object_tangible_mission_quest_item_shared_champhra_biahin_q2_needed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2193,7 +2193,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_champhra_b
 
 object_tangible_mission_quest_item_shared_charal_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2228,7 +2228,7 @@ object_tangible_mission_quest_item_shared_charal_q1_needed = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2243,7 +2243,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_charal_q1_
 
 object_tangible_mission_quest_item_shared_charal_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_nboo_comlink_civilian.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2278,7 +2278,7 @@ object_tangible_mission_quest_item_shared_charal_q4_needed = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2293,7 +2293,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_charal_q4_
 
 object_tangible_mission_quest_item_shared_chertyl_ruruwoor_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2328,7 +2328,7 @@ object_tangible_mission_quest_item_shared_chertyl_ruruwoor_q1_needed = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2343,7 +2343,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_chertyl_ru
 
 object_tangible_mission_quest_item_shared_crev_bombaasa_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2378,7 +2378,7 @@ object_tangible_mission_quest_item_shared_crev_bombaasa_q1_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2393,7 +2393,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_crev_bomba
 
 object_tangible_mission_quest_item_shared_crev_bombaasa_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2428,7 +2428,7 @@ object_tangible_mission_quest_item_shared_crev_bombaasa_q2_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2443,7 +2443,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_crev_bomba
 
 object_tangible_mission_quest_item_shared_crider_trant_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2478,7 +2478,7 @@ object_tangible_mission_quest_item_shared_crider_trant_q1_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2493,7 +2493,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_crider_tra
 
 object_tangible_mission_quest_item_shared_current_alternator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2528,7 +2528,7 @@ object_tangible_mission_quest_item_shared_current_alternator = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2543,7 +2543,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_current_al
 
 object_tangible_mission_quest_item_shared_daclif_gallamby_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2578,7 +2578,7 @@ object_tangible_mission_quest_item_shared_daclif_gallamby_q1_needed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2593,7 +2593,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_daclif_gal
 
 object_tangible_mission_quest_item_shared_daclif_gallamby_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2628,7 +2628,7 @@ object_tangible_mission_quest_item_shared_daclif_gallamby_q2_needed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2643,7 +2643,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_daclif_gal
 
 object_tangible_mission_quest_item_shared_daclif_gallamby_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2678,7 +2678,7 @@ object_tangible_mission_quest_item_shared_daclif_gallamby_q3_needed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2693,7 +2693,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_daclif_gal
 
 object_tangible_mission_quest_item_shared_daclif_gallamby_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2728,7 +2728,7 @@ object_tangible_mission_quest_item_shared_daclif_gallamby_q4_needed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2743,7 +2743,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_daclif_gal
 
 object_tangible_mission_quest_item_shared_daclif_gallamby_q6_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2778,7 +2778,7 @@ object_tangible_mission_quest_item_shared_daclif_gallamby_q6_needed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2793,7 +2793,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_daclif_gal
 
 object_tangible_mission_quest_item_shared_damalia_korde_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2828,7 +2828,7 @@ object_tangible_mission_quest_item_shared_damalia_korde_q1_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2843,7 +2843,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_damalia_ko
 
 object_tangible_mission_quest_item_shared_dannik_malaan_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2878,7 +2878,7 @@ object_tangible_mission_quest_item_shared_dannik_malaan_q1_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2893,7 +2893,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_dannik_mal
 
 object_tangible_mission_quest_item_shared_dea_tore_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2928,7 +2928,7 @@ object_tangible_mission_quest_item_shared_dea_tore_q2_needed = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2943,7 +2943,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_dea_tore_q
 
 object_tangible_mission_quest_item_shared_dea_tore_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2978,7 +2978,7 @@ object_tangible_mission_quest_item_shared_dea_tore_q3_needed = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2993,7 +2993,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_dea_tore_q
 
 object_tangible_mission_quest_item_shared_dea_tore_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3028,7 +3028,7 @@ object_tangible_mission_quest_item_shared_dea_tore_q4_needed = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3043,7 +3043,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_dea_tore_q
 
 object_tangible_mission_quest_item_shared_denell_kelvannon_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3078,7 +3078,7 @@ object_tangible_mission_quest_item_shared_denell_kelvannon_q1_needed = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3093,7 +3093,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_denell_kel
 
 object_tangible_mission_quest_item_shared_diax_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3128,7 +3128,7 @@ object_tangible_mission_quest_item_shared_diax_q2_needed = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3143,7 +3143,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_diax_q2_ne
 
 object_tangible_mission_quest_item_shared_didina_lippinoss_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3178,7 +3178,7 @@ object_tangible_mission_quest_item_shared_didina_lippinoss_q1_needed = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3193,7 +3193,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_didina_lip
 
 object_tangible_mission_quest_item_shared_dilvin_lormurojo_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3228,7 +3228,7 @@ object_tangible_mission_quest_item_shared_dilvin_lormurojo_q2_needed = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3243,7 +3243,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_dilvin_lor
 
 object_tangible_mission_quest_item_shared_dolac_legasi_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_holocron_splinters.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3278,7 +3278,7 @@ object_tangible_mission_quest_item_shared_dolac_legasi_q2_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3293,7 +3293,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_dolac_lega
 
 object_tangible_mission_quest_item_shared_draya_korbinari_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3328,7 +3328,7 @@ object_tangible_mission_quest_item_shared_draya_korbinari_q3_needed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3343,7 +3343,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_draya_korb
 
 object_tangible_mission_quest_item_shared_drenn_zebber_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_briefcase.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3378,7 +3378,7 @@ object_tangible_mission_quest_item_shared_drenn_zebber_q1_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3393,7 +3393,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_drenn_zebb
 
 object_tangible_mission_quest_item_shared_ebenn_baobab_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3428,7 +3428,7 @@ object_tangible_mission_quest_item_shared_ebenn_baobab_q2_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3443,7 +3443,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ebenn_baob
 
 object_tangible_mission_quest_item_shared_ebenn_baobab_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3478,7 +3478,7 @@ object_tangible_mission_quest_item_shared_ebenn_baobab_q3_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3493,7 +3493,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ebenn_baob
 
 object_tangible_mission_quest_item_shared_feedback_controller = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3528,7 +3528,7 @@ object_tangible_mission_quest_item_shared_feedback_controller = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3543,7 +3543,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_feedback_c
 
 object_tangible_mission_quest_item_shared_figrindan_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3578,7 +3578,7 @@ object_tangible_mission_quest_item_shared_figrindan_q1_needed = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3593,7 +3593,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_figrindan_
 
 object_tangible_mission_quest_item_shared_figrindan_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3628,7 +3628,7 @@ object_tangible_mission_quest_item_shared_figrindan_q2_needed = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3643,7 +3643,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_figrindan_
 
 object_tangible_mission_quest_item_shared_figrindan_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3678,7 +3678,7 @@ object_tangible_mission_quest_item_shared_figrindan_q3_needed = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3693,7 +3693,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_figrindan_
 
 object_tangible_mission_quest_item_shared_fixer_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_engine.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3728,7 +3728,7 @@ object_tangible_mission_quest_item_shared_fixer_q1_needed = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3743,7 +3743,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_fixer_q1_n
 
 object_tangible_mission_quest_item_shared_fixer_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_engine_component.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3778,7 +3778,7 @@ object_tangible_mission_quest_item_shared_fixer_q3_needed = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3793,7 +3793,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_fixer_q3_n
 
 object_tangible_mission_quest_item_shared_garm_beliblis_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3828,7 +3828,7 @@ object_tangible_mission_quest_item_shared_garm_beliblis_q2_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3843,7 +3843,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_garm_belib
 
 object_tangible_mission_quest_item_shared_gilad_pellaeon_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3878,7 +3878,7 @@ object_tangible_mission_quest_item_shared_gilad_pellaeon_q1_needed = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3893,7 +3893,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_gilad_pell
 
 object_tangible_mission_quest_item_shared_gilad_pellaeon_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3928,7 +3928,7 @@ object_tangible_mission_quest_item_shared_gilad_pellaeon_q2_needed = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3943,7 +3943,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_gilad_pell
 
 object_tangible_mission_quest_item_shared_gilker_budz_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3978,7 +3978,7 @@ object_tangible_mission_quest_item_shared_gilker_budz_q1_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3993,7 +3993,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_gilker_bud
 
 object_tangible_mission_quest_item_shared_ging_darjeek_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4028,7 +4028,7 @@ object_tangible_mission_quest_item_shared_ging_darjeek_q1_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4043,7 +4043,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ging_darje
 
 object_tangible_mission_quest_item_shared_gins_darone_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_jawa.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4078,7 +4078,7 @@ object_tangible_mission_quest_item_shared_gins_darone_q1_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4093,7 +4093,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_gins_daron
 
 object_tangible_mission_quest_item_shared_gins_darone_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_vibroknuckler.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4128,7 +4128,7 @@ object_tangible_mission_quest_item_shared_gins_darone_q2_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4143,7 +4143,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_gins_daron
 
 object_tangible_mission_quest_item_shared_graf_zapalo_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4178,7 +4178,7 @@ object_tangible_mission_quest_item_shared_graf_zapalo_q2_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4193,7 +4193,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_graf_zapal
 
 object_tangible_mission_quest_item_shared_graf_zapalo_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4228,7 +4228,7 @@ object_tangible_mission_quest_item_shared_graf_zapalo_q3_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4243,7 +4243,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_graf_zapal
 
 object_tangible_mission_quest_item_shared_gravin_attal_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4278,7 +4278,7 @@ object_tangible_mission_quest_item_shared_gravin_attal_q1_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4293,7 +4293,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_gravin_att
 
 object_tangible_mission_quest_item_shared_gravin_attal_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_engine_component.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4328,7 +4328,7 @@ object_tangible_mission_quest_item_shared_gravin_attal_q2_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4343,7 +4343,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_gravin_att
 
 object_tangible_mission_quest_item_shared_green_laser_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4378,7 +4378,7 @@ object_tangible_mission_quest_item_shared_green_laser_q1_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4393,7 +4393,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_green_lase
 
 object_tangible_mission_quest_item_shared_grondorn_muse_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4428,7 +4428,7 @@ object_tangible_mission_quest_item_shared_grondorn_muse_q2_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4443,7 +4443,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_grondorn_m
 
 object_tangible_mission_quest_item_shared_hagrin_zeed_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4478,7 +4478,7 @@ object_tangible_mission_quest_item_shared_hagrin_zeed_q1_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4493,7 +4493,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_hagrin_zee
 
 object_tangible_mission_quest_item_shared_hagrin_zeed_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4528,7 +4528,7 @@ object_tangible_mission_quest_item_shared_hagrin_zeed_q2_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4543,7 +4543,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_hagrin_zee
 
 object_tangible_mission_quest_item_shared_hal_horn_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4578,7 +4578,7 @@ object_tangible_mission_quest_item_shared_hal_horn_q1_needed = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4593,7 +4593,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_hal_horn_q
 
 object_tangible_mission_quest_item_shared_haleen_snowline_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4628,7 +4628,7 @@ object_tangible_mission_quest_item_shared_haleen_snowline_q1_needed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4643,7 +4643,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_haleen_sno
 
 object_tangible_mission_quest_item_shared_haleen_snowline_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4678,7 +4678,7 @@ object_tangible_mission_quest_item_shared_haleen_snowline_q2_needed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4693,7 +4693,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_haleen_sno
 
 object_tangible_mission_quest_item_shared_hedon_istee_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4728,7 +4728,7 @@ object_tangible_mission_quest_item_shared_hedon_istee_q3_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4743,7 +4743,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_hedon_iste
 
 object_tangible_mission_quest_item_shared_hefsen_zindalai_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4778,7 +4778,7 @@ object_tangible_mission_quest_item_shared_hefsen_zindalai_q1_needed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4793,7 +4793,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_hefsen_zin
 
 object_tangible_mission_quest_item_shared_ian_logo_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sensor_package_unit.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4828,7 +4828,7 @@ object_tangible_mission_quest_item_shared_ian_logo_q1_needed = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4843,7 +4843,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ian_logo_q
 
 object_tangible_mission_quest_item_shared_ian_logo_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4878,7 +4878,7 @@ object_tangible_mission_quest_item_shared_ian_logo_q3_needed = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4893,7 +4893,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ian_logo_q
 
 object_tangible_mission_quest_item_shared_igbi_freemo_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_briefcase.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4928,7 +4928,7 @@ object_tangible_mission_quest_item_shared_igbi_freemo_q2_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4943,7 +4943,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_igbi_freem
 
 object_tangible_mission_quest_item_shared_ikka_gesul_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4978,7 +4978,7 @@ object_tangible_mission_quest_item_shared_ikka_gesul_q2_needed = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4993,7 +4993,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ikka_gesul
 
 object_tangible_mission_quest_item_shared_indintra_imbru_yerevan_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5028,7 +5028,7 @@ object_tangible_mission_quest_item_shared_indintra_imbru_yerevan_q1_needed = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5043,7 +5043,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_indintra_i
 
 object_tangible_mission_quest_item_shared_indintra_imbru_yerevan_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5078,7 +5078,7 @@ object_tangible_mission_quest_item_shared_indintra_imbru_yerevan_q2_needed = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5093,7 +5093,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_indintra_i
 
 object_tangible_mission_quest_item_shared_jadam_questrel_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5128,7 +5128,7 @@ object_tangible_mission_quest_item_shared_jadam_questrel_q1_needed = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5143,7 +5143,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_jadam_ques
 
 object_tangible_mission_quest_item_shared_jaleela_bindoo_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_ronka.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5178,7 +5178,7 @@ object_tangible_mission_quest_item_shared_jaleela_bindoo_q1_needed = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5193,7 +5193,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_jaleela_bi
 
 object_tangible_mission_quest_item_shared_jaleela_bindoo_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5228,7 +5228,7 @@ object_tangible_mission_quest_item_shared_jaleela_bindoo_q3_needed = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5243,7 +5243,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_jaleela_bi
 
 object_tangible_mission_quest_item_shared_jaleela_bindoo_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5278,7 +5278,7 @@ object_tangible_mission_quest_item_shared_jaleela_bindoo_q4_needed = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5293,7 +5293,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_jaleela_bi
 
 object_tangible_mission_quest_item_shared_jatrian_lytus_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5328,7 +5328,7 @@ object_tangible_mission_quest_item_shared_jatrian_lytus_q3_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5343,7 +5343,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_jatrian_ly
 
 object_tangible_mission_quest_item_shared_jazeen_thurmm_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_briefcase.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5378,7 +5378,7 @@ object_tangible_mission_quest_item_shared_jazeen_thurmm_q1_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5393,7 +5393,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_jazeen_thu
 
 object_tangible_mission_quest_item_shared_junelle_astor_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5428,7 +5428,7 @@ object_tangible_mission_quest_item_shared_junelle_astor_q1_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5443,7 +5443,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_junelle_as
 
 object_tangible_mission_quest_item_shared_junelle_astor_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_gas.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5478,7 +5478,7 @@ object_tangible_mission_quest_item_shared_junelle_astor_q3_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5493,7 +5493,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_junelle_as
 
 object_tangible_mission_quest_item_shared_jusani_zhord_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_briefcase.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5528,7 +5528,7 @@ object_tangible_mission_quest_item_shared_jusani_zhord_q1_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5543,7 +5543,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_jusani_zho
 
 object_tangible_mission_quest_item_shared_jyr_koble_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5578,7 +5578,7 @@ object_tangible_mission_quest_item_shared_jyr_koble_q1_needed = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5593,7 +5593,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_jyr_koble_
 
 object_tangible_mission_quest_item_shared_jyr_koble_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5628,7 +5628,7 @@ object_tangible_mission_quest_item_shared_jyr_koble_q3_needed = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5643,7 +5643,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_jyr_koble_
 
 object_tangible_mission_quest_item_shared_jyr_koble_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5678,7 +5678,7 @@ object_tangible_mission_quest_item_shared_jyr_koble_q4_needed = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5693,7 +5693,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_jyr_koble_
 
 object_tangible_mission_quest_item_shared_kadil_nurugen_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5728,7 +5728,7 @@ object_tangible_mission_quest_item_shared_kadil_nurugen_q1_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5743,7 +5743,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kadil_nuru
 
 object_tangible_mission_quest_item_shared_kaeline_ungasan_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5778,7 +5778,7 @@ object_tangible_mission_quest_item_shared_kaeline_ungasan_q1_needed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5793,7 +5793,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kaeline_un
 
 object_tangible_mission_quest_item_shared_kaeline_ungasan_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5828,7 +5828,7 @@ object_tangible_mission_quest_item_shared_kaeline_ungasan_q2_needed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5843,7 +5843,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kaeline_un
 
 object_tangible_mission_quest_item_shared_kais_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5878,7 +5878,7 @@ object_tangible_mission_quest_item_shared_kais_q1_needed = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5893,7 +5893,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kais_q1_ne
 
 object_tangible_mission_quest_item_shared_kais_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5928,7 +5928,7 @@ object_tangible_mission_quest_item_shared_kais_q2_needed = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5943,7 +5943,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kais_q2_ne
 
 object_tangible_mission_quest_item_shared_kais_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s02.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5978,7 +5978,7 @@ object_tangible_mission_quest_item_shared_kais_q3_needed = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5993,7 +5993,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kais_q3_ne
 
 object_tangible_mission_quest_item_shared_karena_keer_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6028,7 +6028,7 @@ object_tangible_mission_quest_item_shared_karena_keer_q1_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6043,7 +6043,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_karena_kee
 
 object_tangible_mission_quest_item_shared_karena_keer_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s03.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6078,7 +6078,7 @@ object_tangible_mission_quest_item_shared_karena_keer_q2_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6093,7 +6093,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_karena_kee
 
 object_tangible_mission_quest_item_shared_karrek_film_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6128,7 +6128,7 @@ object_tangible_mission_quest_item_shared_karrek_film_q1_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6143,7 +6143,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_karrek_fil
 
 object_tangible_mission_quest_item_shared_karrek_film_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6178,7 +6178,7 @@ object_tangible_mission_quest_item_shared_karrek_film_q2_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6193,7 +6193,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_karrek_fil
 
 object_tangible_mission_quest_item_shared_karrek_film_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_gas.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6228,7 +6228,7 @@ object_tangible_mission_quest_item_shared_karrek_film_q3_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6243,7 +6243,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_karrek_fil
 
 object_tangible_mission_quest_item_shared_kelvus_naria_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6278,7 +6278,7 @@ object_tangible_mission_quest_item_shared_kelvus_naria_q1_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6293,7 +6293,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kelvus_nar
 
 object_tangible_mission_quest_item_shared_kirkin_liawoon_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6328,7 +6328,7 @@ object_tangible_mission_quest_item_shared_kirkin_liawoon_q2_needed = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6343,7 +6343,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kirkin_lia
 
 object_tangible_mission_quest_item_shared_kitster_banai_q5_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6378,7 +6378,7 @@ object_tangible_mission_quest_item_shared_kitster_banai_q5_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6393,7 +6393,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kitster_ba
 
 object_tangible_mission_quest_item_shared_kormund_thrylle_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6428,7 +6428,7 @@ object_tangible_mission_quest_item_shared_kormund_thrylle_q1_needed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6443,7 +6443,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kormund_th
 
 object_tangible_mission_quest_item_shared_kritus_morven_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6478,7 +6478,7 @@ object_tangible_mission_quest_item_shared_kritus_morven_q1_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6493,7 +6493,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kritus_mor
 
 object_tangible_mission_quest_item_shared_kritus_morven_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6528,7 +6528,7 @@ object_tangible_mission_quest_item_shared_kritus_morven_q2_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6543,7 +6543,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kritus_mor
 
 object_tangible_mission_quest_item_shared_kritus_morven_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6578,7 +6578,7 @@ object_tangible_mission_quest_item_shared_kritus_morven_q3_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6593,7 +6593,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kritus_mor
 
 object_tangible_mission_quest_item_shared_kritus_morven_q5_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6628,7 +6628,7 @@ object_tangible_mission_quest_item_shared_kritus_morven_q5_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6643,7 +6643,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kritus_mor
 
 object_tangible_mission_quest_item_shared_kylantha_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_disguise_kit_materials_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6678,7 +6678,7 @@ object_tangible_mission_quest_item_shared_kylantha_q1_needed = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6693,7 +6693,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kylantha_q
 
 object_tangible_mission_quest_item_shared_kylantha_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6728,7 +6728,7 @@ object_tangible_mission_quest_item_shared_kylantha_q2_needed = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6743,7 +6743,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_kylantha_q
 
 object_tangible_mission_quest_item_shared_lasha_bindari_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6778,7 +6778,7 @@ object_tangible_mission_quest_item_shared_lasha_bindari_q1_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6793,7 +6793,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_lasha_bind
 
 object_tangible_mission_quest_item_shared_leb_slesher_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6828,7 +6828,7 @@ object_tangible_mission_quest_item_shared_leb_slesher_q1_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6843,7 +6843,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_leb_sleshe
 
 object_tangible_mission_quest_item_shared_leb_slesher_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6878,7 +6878,7 @@ object_tangible_mission_quest_item_shared_leb_slesher_q2_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6893,7 +6893,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_leb_sleshe
 
 object_tangible_mission_quest_item_shared_leb_slesher_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6928,7 +6928,7 @@ object_tangible_mission_quest_item_shared_leb_slesher_q3_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6943,7 +6943,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_leb_sleshe
 
 object_tangible_mission_quest_item_shared_lergo_brazee_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6978,7 +6978,7 @@ object_tangible_mission_quest_item_shared_lergo_brazee_q1_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6993,7 +6993,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_lergo_braz
 
 object_tangible_mission_quest_item_shared_lian_byrne_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7028,7 +7028,7 @@ object_tangible_mission_quest_item_shared_lian_byrne_q1_needed = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7043,7 +7043,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_lian_byrne
 
 object_tangible_mission_quest_item_shared_lian_byrne_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7078,7 +7078,7 @@ object_tangible_mission_quest_item_shared_lian_byrne_q3_needed = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7093,7 +7093,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_lian_byrne
 
 object_tangible_mission_quest_item_shared_liane_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_mandoviol.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7128,7 +7128,7 @@ object_tangible_mission_quest_item_shared_liane_q1_needed = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7143,7 +7143,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_liane_q1_n
 
 object_tangible_mission_quest_item_shared_liane_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7178,7 +7178,7 @@ object_tangible_mission_quest_item_shared_liane_q2_needed = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7193,7 +7193,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_liane_q2_n
 
 object_tangible_mission_quest_item_shared_liane_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7228,7 +7228,7 @@ object_tangible_mission_quest_item_shared_liane_q3_needed = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7243,7 +7243,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_liane_q3_n
 
 object_tangible_mission_quest_item_shared_lilas_dinhint_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_tusken_raider_s02_m.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7278,7 +7278,7 @@ object_tangible_mission_quest_item_shared_lilas_dinhint_q1_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7293,7 +7293,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_lilas_dinh
 
 object_tangible_mission_quest_item_shared_lilas_dinhint_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_padded_s01_chest_plate_f.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7328,7 +7328,7 @@ object_tangible_mission_quest_item_shared_lilas_dinhint_q2_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7343,7 +7343,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_lilas_dinh
 
 object_tangible_mission_quest_item_shared_lilas_dinhint_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_ore.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7378,7 +7378,7 @@ object_tangible_mission_quest_item_shared_lilas_dinhint_q3_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7393,7 +7393,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_lilas_dinh
 
 object_tangible_mission_quest_item_shared_lilas_dinhint_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_all_meat_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7428,7 +7428,7 @@ object_tangible_mission_quest_item_shared_lilas_dinhint_q4_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7443,7 +7443,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_lilas_dinh
 
 object_tangible_mission_quest_item_shared_lob_dizz_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7478,7 +7478,7 @@ object_tangible_mission_quest_item_shared_lob_dizz_q3_needed = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7493,7 +7493,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_lob_dizz_q
 
 object_tangible_mission_quest_item_shared_luthik_uwyr_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_holocron_splinters.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7528,7 +7528,7 @@ object_tangible_mission_quest_item_shared_luthik_uwyr_q2_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7543,7 +7543,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_luthik_uwy
 
 object_tangible_mission_quest_item_shared_luthik_uwyr_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_m_hair_s16.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7578,7 +7578,7 @@ object_tangible_mission_quest_item_shared_luthik_uwyr_q3_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7593,7 +7593,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_luthik_uwy
 
 object_tangible_mission_quest_item_shared_luthin_dlunar_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7628,7 +7628,7 @@ object_tangible_mission_quest_item_shared_luthin_dlunar_q1_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7643,7 +7643,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_luthin_dlu
 
 object_tangible_mission_quest_item_shared_luthin_dlunar_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7678,7 +7678,7 @@ object_tangible_mission_quest_item_shared_luthin_dlunar_q2_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7693,7 +7693,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_luthin_dlu
 
 object_tangible_mission_quest_item_shared_lx466_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_ration_kit_m.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7728,7 +7728,7 @@ object_tangible_mission_quest_item_shared_lx466_q2_needed = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7743,7 +7743,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_lx466_q2_n
 
 object_tangible_mission_quest_item_shared_lx466_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_recording_rod.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7778,7 +7778,7 @@ object_tangible_mission_quest_item_shared_lx466_q3_needed = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7793,7 +7793,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_lx466_q3_n
 
 object_tangible_mission_quest_item_shared_mal_sikander_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_scout.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7828,7 +7828,7 @@ object_tangible_mission_quest_item_shared_mal_sikander_q1_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7843,7 +7843,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_mal_sikand
 
 object_tangible_mission_quest_item_shared_mal_sikander_q5_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7878,7 +7878,7 @@ object_tangible_mission_quest_item_shared_mal_sikander_q5_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7893,7 +7893,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_mal_sikand
 
 object_tangible_mission_quest_item_shared_mat_rags_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_all_meat_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7928,7 +7928,7 @@ object_tangible_mission_quest_item_shared_mat_rags_q1_needed = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7943,7 +7943,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_mat_rags_q
 
 object_tangible_mission_quest_item_shared_mat_rags_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7978,7 +7978,7 @@ object_tangible_mission_quest_item_shared_mat_rags_q2_needed = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7993,7 +7993,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_mat_rags_q
 
 object_tangible_mission_quest_item_shared_mat_rags_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_decorative_sm_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8028,7 +8028,7 @@ object_tangible_mission_quest_item_shared_mat_rags_q3_needed = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8043,7 +8043,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_mat_rags_q
 
 object_tangible_mission_quest_item_shared_mat_rags_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8078,7 +8078,7 @@ object_tangible_mission_quest_item_shared_mat_rags_q4_needed = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8093,7 +8093,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_mat_rags_q
 
 object_tangible_mission_quest_item_shared_megan_drlar_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_engine_component.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8128,7 +8128,7 @@ object_tangible_mission_quest_item_shared_megan_drlar_q2_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8143,7 +8143,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_megan_drla
 
 object_tangible_mission_quest_item_shared_melios_purl_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8178,7 +8178,7 @@ object_tangible_mission_quest_item_shared_melios_purl_q2_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8193,7 +8193,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_melios_pur
 
 object_tangible_mission_quest_item_shared_melios_purl_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8228,7 +8228,7 @@ object_tangible_mission_quest_item_shared_melios_purl_q3_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8243,7 +8243,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_melios_pur
 
 object_tangible_mission_quest_item_shared_morag_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8278,7 +8278,7 @@ object_tangible_mission_quest_item_shared_morag_q2_needed = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8293,7 +8293,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_morag_q2_n
 
 object_tangible_mission_quest_item_shared_mozo_bondog_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/backpack_s05_m.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8328,7 +8328,7 @@ object_tangible_mission_quest_item_shared_mozo_bondog_q2_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8343,7 +8343,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_mozo_bondo
 
 object_tangible_mission_quest_item_shared_mullud_bombo_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survival_climbing_equipment_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8378,7 +8378,7 @@ object_tangible_mission_quest_item_shared_mullud_bombo_q1_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8393,7 +8393,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_mullud_bom
 
 object_tangible_mission_quest_item_shared_mullud_bombo_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8428,7 +8428,7 @@ object_tangible_mission_quest_item_shared_mullud_bombo_q2_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8443,7 +8443,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_mullud_bom
 
 object_tangible_mission_quest_item_shared_nass_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8478,7 +8478,7 @@ object_tangible_mission_quest_item_shared_nass_q1_needed = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8493,7 +8493,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_nass_q1_ne
 
 object_tangible_mission_quest_item_shared_noren_krast_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8528,7 +8528,7 @@ object_tangible_mission_quest_item_shared_noren_krast_q1_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8543,7 +8543,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_noren_kras
 
 object_tangible_mission_quest_item_shared_noren_krast_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8578,7 +8578,7 @@ object_tangible_mission_quest_item_shared_noren_krast_q2_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8593,7 +8593,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_noren_kras
 
 object_tangible_mission_quest_item_shared_noren_krast_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8628,7 +8628,7 @@ object_tangible_mission_quest_item_shared_noren_krast_q3_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8643,7 +8643,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_noren_kras
 
 object_tangible_mission_quest_item_shared_nurla_slinthiss_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8678,7 +8678,7 @@ object_tangible_mission_quest_item_shared_nurla_slinthiss_q1_needed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8693,7 +8693,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_nurla_slin
 
 object_tangible_mission_quest_item_shared_nurla_slinthiss_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8728,7 +8728,7 @@ object_tangible_mission_quest_item_shared_nurla_slinthiss_q3_needed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8743,7 +8743,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_nurla_slin
 
 object_tangible_mission_quest_item_shared_oron_wintree_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8778,7 +8778,7 @@ object_tangible_mission_quest_item_shared_oron_wintree_q1_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8793,7 +8793,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_oron_wintr
 
 object_tangible_mission_quest_item_shared_output_governor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8828,7 +8828,7 @@ object_tangible_mission_quest_item_shared_output_governor = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8843,7 +8843,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_output_gov
 
 object_tangible_mission_quest_item_shared_oxil_sarban_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8878,7 +8878,7 @@ object_tangible_mission_quest_item_shared_oxil_sarban_q1_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8893,7 +8893,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_oxil_sarba
 
 object_tangible_mission_quest_item_shared_oxil_sarban_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_holocron_splinters.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8928,7 +8928,7 @@ object_tangible_mission_quest_item_shared_oxil_sarban_q2_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8943,7 +8943,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_oxil_sarba
 
 object_tangible_mission_quest_item_shared_pooja_naberrie_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8978,7 +8978,7 @@ object_tangible_mission_quest_item_shared_pooja_naberrie_q1_needed = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8993,7 +8993,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_pooja_nabe
 
 object_tangible_mission_quest_item_shared_pooja_naberrie_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9028,7 +9028,7 @@ object_tangible_mission_quest_item_shared_pooja_naberrie_q2_needed = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9043,7 +9043,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_pooja_nabe
 
 object_tangible_mission_quest_item_shared_pooja_naberrie_q5_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9078,7 +9078,7 @@ object_tangible_mission_quest_item_shared_pooja_naberrie_q5_needed = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9093,7 +9093,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_pooja_nabe
 
 object_tangible_mission_quest_item_shared_power_regulator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9128,7 +9128,7 @@ object_tangible_mission_quest_item_shared_power_regulator = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9143,7 +9143,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_power_regu
 
 object_tangible_mission_quest_item_shared_radanthus_mandelatara_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_sml.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9178,7 +9178,7 @@ object_tangible_mission_quest_item_shared_radanthus_mandelatara_q2_needed = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9193,7 +9193,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_radanthus_
 
 object_tangible_mission_quest_item_shared_radanthus_mandelatara_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_armor_rpr_kit_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9228,7 +9228,7 @@ object_tangible_mission_quest_item_shared_radanthus_mandelatara_q3_needed = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9243,7 +9243,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_radanthus_
 
 object_tangible_mission_quest_item_shared_radlee_mathiss_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9278,7 +9278,7 @@ object_tangible_mission_quest_item_shared_radlee_mathiss_q1_needed = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9293,7 +9293,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_radlee_mat
 
 object_tangible_mission_quest_item_shared_raglith_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9328,7 +9328,7 @@ object_tangible_mission_quest_item_shared_raglith_q3_needed = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9343,7 +9343,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_raglith_q3
 
 object_tangible_mission_quest_item_shared_rakir_banai_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9378,7 +9378,7 @@ object_tangible_mission_quest_item_shared_rakir_banai_q2_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9393,7 +9393,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_rakir_bana
 
 object_tangible_mission_quest_item_shared_rakir_banai_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9428,7 +9428,7 @@ object_tangible_mission_quest_item_shared_rakir_banai_q4_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9443,7 +9443,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_rakir_bana
 
 object_tangible_mission_quest_item_shared_rep_been_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9478,7 +9478,7 @@ object_tangible_mission_quest_item_shared_rep_been_q1_needed = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9493,7 +9493,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_rep_been_q
 
 object_tangible_mission_quest_item_shared_ric_olie_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9528,7 +9528,7 @@ object_tangible_mission_quest_item_shared_ric_olie_q1_needed = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9543,7 +9543,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ric_olie_q
 
 object_tangible_mission_quest_item_shared_rovim_minnoni_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_radio_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9578,7 +9578,7 @@ object_tangible_mission_quest_item_shared_rovim_minnoni_q1_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9593,7 +9593,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_rovim_minn
 
 object_tangible_mission_quest_item_shared_ruwan_tokai_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_warhead_electronic.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9628,7 +9628,7 @@ object_tangible_mission_quest_item_shared_ruwan_tokai_q1_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9643,7 +9643,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ruwan_toka
 
 object_tangible_mission_quest_item_shared_ruwan_tokai_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9678,7 +9678,7 @@ object_tangible_mission_quest_item_shared_ruwan_tokai_q2_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9693,7 +9693,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_ruwan_toka
 
 object_tangible_mission_quest_item_shared_sango_rond_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9728,7 +9728,7 @@ object_tangible_mission_quest_item_shared_sango_rond_q1_needed = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9743,7 +9743,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_sango_rond
 
 object_tangible_mission_quest_item_shared_sayama_edosun_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9778,7 +9778,7 @@ object_tangible_mission_quest_item_shared_sayama_edosun_q1_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9793,7 +9793,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_sayama_edo
 
 object_tangible_mission_quest_item_shared_sayama_edosun_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9828,7 +9828,7 @@ object_tangible_mission_quest_item_shared_sayama_edosun_q2_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9843,7 +9843,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_sayama_edo
 
 object_tangible_mission_quest_item_shared_sayama_edosun_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9878,7 +9878,7 @@ object_tangible_mission_quest_item_shared_sayama_edosun_q3_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9893,7 +9893,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_sayama_edo
 
 object_tangible_mission_quest_item_shared_senni_tonnika_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9928,7 +9928,7 @@ object_tangible_mission_quest_item_shared_senni_tonnika_q1_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9943,7 +9943,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_senni_tonn
 
 object_tangible_mission_quest_item_shared_senni_tonnika_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9978,7 +9978,7 @@ object_tangible_mission_quest_item_shared_senni_tonnika_q2_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9993,7 +9993,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_senni_tonn
 
 object_tangible_mission_quest_item_shared_senni_tonnika_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10028,7 +10028,7 @@ object_tangible_mission_quest_item_shared_senni_tonnika_q3_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10043,7 +10043,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_senni_tonn
 
 object_tangible_mission_quest_item_shared_serena_fenner_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10078,7 +10078,7 @@ object_tangible_mission_quest_item_shared_serena_fenner_q1_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10093,7 +10093,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_serena_fen
 
 object_tangible_mission_quest_item_shared_serena_fenner_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10128,7 +10128,7 @@ object_tangible_mission_quest_item_shared_serena_fenner_q3_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10143,7 +10143,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_serena_fen
 
 object_tangible_mission_quest_item_shared_serjix_arrogantus_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10178,7 +10178,7 @@ object_tangible_mission_quest_item_shared_serjix_arrogantus_q1_needed = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10193,7 +10193,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_serjix_arr
 
 object_tangible_mission_quest_item_shared_shaki_hamachil_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_gas.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10228,7 +10228,7 @@ object_tangible_mission_quest_item_shared_shaki_hamachil_q1_needed = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10243,7 +10243,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_shaki_hama
 
 object_tangible_mission_quest_item_shared_shaki_hamachil_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10278,7 +10278,7 @@ object_tangible_mission_quest_item_shared_shaki_hamachil_q2_needed = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10293,7 +10293,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_shaki_hama
 
 object_tangible_mission_quest_item_shared_shalera_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10328,7 +10328,7 @@ object_tangible_mission_quest_item_shared_shalera_q1_needed = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10343,7 +10343,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_shalera_q1
 
 object_tangible_mission_quest_item_shared_shalera_q6_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10378,7 +10378,7 @@ object_tangible_mission_quest_item_shared_shalera_q6_needed = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10393,7 +10393,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_shalera_q6
 
 object_tangible_mission_quest_item_shared_sidoras_bey_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10428,7 +10428,7 @@ object_tangible_mission_quest_item_shared_sidoras_bey_q1_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10443,7 +10443,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_sidoras_be
 
 object_tangible_mission_quest_item_shared_sigrix_slix_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10478,7 +10478,7 @@ object_tangible_mission_quest_item_shared_sigrix_slix_q1_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10493,7 +10493,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_sigrix_sli
 
 object_tangible_mission_quest_item_shared_sigrix_slix_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10528,7 +10528,7 @@ object_tangible_mission_quest_item_shared_sigrix_slix_q2_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10543,7 +10543,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_sigrix_sli
 
 object_tangible_mission_quest_item_shared_sindra_lintikoor_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10578,7 +10578,7 @@ object_tangible_mission_quest_item_shared_sindra_lintikoor_q1_needed = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10593,7 +10593,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_sindra_lin
 
 object_tangible_mission_quest_item_shared_sindra_lintikoor_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10628,7 +10628,7 @@ object_tangible_mission_quest_item_shared_sindra_lintikoor_q2_needed = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10643,7 +10643,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_sindra_lin
 
 object_tangible_mission_quest_item_shared_singular_nak_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_sleekblack.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10678,7 +10678,7 @@ object_tangible_mission_quest_item_shared_singular_nak_q1_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10693,7 +10693,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_singular_n
 
 object_tangible_mission_quest_item_shared_singular_nak_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_sleekblack.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10728,7 +10728,7 @@ object_tangible_mission_quest_item_shared_singular_nak_q2_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10743,7 +10743,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_singular_n
 
 object_tangible_mission_quest_item_shared_slooni_jong_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_briefcase.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10778,7 +10778,7 @@ object_tangible_mission_quest_item_shared_slooni_jong_q1_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10793,7 +10793,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_slooni_jon
 
 object_tangible_mission_quest_item_shared_stella_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10828,7 +10828,7 @@ object_tangible_mission_quest_item_shared_stella_q1_needed = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10843,7 +10843,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_stella_q1_
 
 object_tangible_mission_quest_item_shared_stella_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10878,7 +10878,7 @@ object_tangible_mission_quest_item_shared_stella_q2_needed = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10893,7 +10893,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_stella_q2_
 
 object_tangible_mission_quest_item_shared_stella_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10928,7 +10928,7 @@ object_tangible_mission_quest_item_shared_stella_q3_needed = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10943,7 +10943,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_stella_q3_
 
 object_tangible_mission_quest_item_shared_stoos_olko_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_ledger.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10978,7 +10978,7 @@ object_tangible_mission_quest_item_shared_stoos_olko_q1_needed = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10993,7 +10993,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_stoos_olko
 
 object_tangible_mission_quest_item_shared_stoos_olko_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_briefcase.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11028,7 +11028,7 @@ object_tangible_mission_quest_item_shared_stoos_olko_q2_needed = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11043,7 +11043,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_stoos_olko
 
 object_tangible_mission_quest_item_shared_stoos_olko_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_ledger.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11078,7 +11078,7 @@ object_tangible_mission_quest_item_shared_stoos_olko_q3_needed = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11093,7 +11093,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_stoos_olko
 
 object_tangible_mission_quest_item_shared_surlin_rolei_q1_recruitment_disk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11128,7 +11128,7 @@ object_tangible_mission_quest_item_shared_surlin_rolei_q1_recruitment_disk = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11143,7 +11143,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_surlin_rol
 
 object_tangible_mission_quest_item_shared_surlin_rolei_q2_camera = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_camera.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11178,7 +11178,7 @@ object_tangible_mission_quest_item_shared_surlin_rolei_q2_camera = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11193,7 +11193,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_surlin_rol
 
 object_tangible_mission_quest_item_shared_surlin_rolei_q6_spy_report = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11228,7 +11228,7 @@ object_tangible_mission_quest_item_shared_surlin_rolei_q6_spy_report = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11243,7 +11243,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_surlin_rol
 
 object_tangible_mission_quest_item_shared_surlin_rolei_q6_stolen_info = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_camera.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11278,7 +11278,7 @@ object_tangible_mission_quest_item_shared_surlin_rolei_q6_stolen_info = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11293,7 +11293,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_surlin_rol
 
 object_tangible_mission_quest_item_shared_syren1_locked_data = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_datapad_s2.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11328,7 +11328,7 @@ object_tangible_mission_quest_item_shared_syren1_locked_data = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11343,7 +11343,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_syren1_loc
 
 object_tangible_mission_quest_item_shared_syren1_spice = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s03.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11378,7 +11378,7 @@ object_tangible_mission_quest_item_shared_syren1_spice = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11393,7 +11393,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_syren1_spi
 
 object_tangible_mission_quest_item_shared_syren1_warning = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_datapad_s2.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11428,7 +11428,7 @@ object_tangible_mission_quest_item_shared_syren1_warning = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11443,7 +11443,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_syren1_war
 
 object_tangible_mission_quest_item_shared_syren2_blacksun_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_datapad_s2.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11478,7 +11478,7 @@ object_tangible_mission_quest_item_shared_syren2_blacksun_base = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11493,7 +11493,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_syren2_bla
 
 object_tangible_mission_quest_item_shared_szingo_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_dlt20.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11528,7 +11528,7 @@ object_tangible_mission_quest_item_shared_szingo_q1_needed = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11543,7 +11543,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_szingo_q1_
 
 object_tangible_mission_quest_item_shared_talon_karrde_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11578,7 +11578,7 @@ object_tangible_mission_quest_item_shared_talon_karrde_q1_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11593,7 +11593,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_talon_karr
 
 object_tangible_mission_quest_item_shared_talon_karrde_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_gas.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11628,7 +11628,7 @@ object_tangible_mission_quest_item_shared_talon_karrde_q3_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11643,7 +11643,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_talon_karr
 
 object_tangible_mission_quest_item_shared_talon_karrde_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11678,7 +11678,7 @@ object_tangible_mission_quest_item_shared_talon_karrde_q4_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11693,7 +11693,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_talon_karr
 
 object_tangible_mission_quest_item_shared_tekil_barje_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_m_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11728,7 +11728,7 @@ object_tangible_mission_quest_item_shared_tekil_barje_q1_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11743,7 +11743,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_tekil_barj
 
 object_tangible_mission_quest_item_shared_tekil_barje_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_m_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11778,7 +11778,7 @@ object_tangible_mission_quest_item_shared_tekil_barje_q3_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11793,7 +11793,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_tekil_barj
 
 object_tangible_mission_quest_item_shared_terak_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11828,7 +11828,7 @@ object_tangible_mission_quest_item_shared_terak_q1_needed = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11843,7 +11843,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_terak_q1_n
 
 object_tangible_mission_quest_item_shared_terak_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_shields.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11878,7 +11878,7 @@ object_tangible_mission_quest_item_shared_terak_q3_needed = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11893,7 +11893,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_terak_q3_n
 
 object_tangible_mission_quest_item_shared_thrackan_salsolo_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11928,7 +11928,7 @@ object_tangible_mission_quest_item_shared_thrackan_salsolo_q3_needed = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11943,7 +11943,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_thrackan_s
 
 object_tangible_mission_quest_item_shared_throme_gormengal_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11978,7 +11978,7 @@ object_tangible_mission_quest_item_shared_throme_gormengal_q1_needed = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11993,7 +11993,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_throme_gor
 
 object_tangible_mission_quest_item_shared_throme_gormengal_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12028,7 +12028,7 @@ object_tangible_mission_quest_item_shared_throme_gormengal_q3_needed = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12043,7 +12043,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_throme_gor
 
 object_tangible_mission_quest_item_shared_vana_sage_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12078,7 +12078,7 @@ object_tangible_mission_quest_item_shared_vana_sage_q1_needed = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12093,7 +12093,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_vana_sage_
 
 object_tangible_mission_quest_item_shared_vardias_tyne_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_sclpt_stuffed_bantha.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12128,7 +12128,7 @@ object_tangible_mission_quest_item_shared_vardias_tyne_q2_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12143,7 +12143,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_vardias_ty
 
 object_tangible_mission_quest_item_shared_vhaunda_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_chest_plate_pad_m.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12178,7 +12178,7 @@ object_tangible_mission_quest_item_shared_vhaunda_q1_needed = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12193,7 +12193,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_vhaunda_q1
 
 object_tangible_mission_quest_item_shared_village_defenses = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12228,7 +12228,7 @@ object_tangible_mission_quest_item_shared_village_defenses = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12243,7 +12243,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_village_de
 
 object_tangible_mission_quest_item_shared_village_shields = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ins_shield_generator.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12278,7 +12278,7 @@ object_tangible_mission_quest_item_shared_village_shields = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12293,7 +12293,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_village_sh
 
 object_tangible_mission_quest_item_shared_vinya_maysor_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12328,7 +12328,7 @@ object_tangible_mission_quest_item_shared_vinya_maysor_q1_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12343,7 +12343,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_vinya_mays
 
 object_tangible_mission_quest_item_shared_vordin_sildor_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12378,7 +12378,7 @@ object_tangible_mission_quest_item_shared_vordin_sildor_q3_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12393,7 +12393,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_vordin_sil
 
 object_tangible_mission_quest_item_shared_vrir_unglan_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12428,7 +12428,7 @@ object_tangible_mission_quest_item_shared_vrir_unglan_q1_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12443,7 +12443,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_vrir_ungla
 
 object_tangible_mission_quest_item_shared_vrir_unglan_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12478,7 +12478,7 @@ object_tangible_mission_quest_item_shared_vrir_unglan_q2_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12493,7 +12493,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_vrir_ungla
 
 object_tangible_mission_quest_item_shared_vurlene_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_berries_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12528,7 +12528,7 @@ object_tangible_mission_quest_item_shared_vurlene_q1_needed = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12543,7 +12543,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_vurlene_q1
 
 object_tangible_mission_quest_item_shared_vurlene_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12578,7 +12578,7 @@ object_tangible_mission_quest_item_shared_vurlene_q2_needed = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12593,7 +12593,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_vurlene_q2
 
 object_tangible_mission_quest_item_shared_vurlene_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12628,7 +12628,7 @@ object_tangible_mission_quest_item_shared_vurlene_q3_needed = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12643,7 +12643,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_vurlene_q3
 
 object_tangible_mission_quest_item_shared_wald_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12678,7 +12678,7 @@ object_tangible_mission_quest_item_shared_wald_q1_needed = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12693,7 +12693,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_wald_q1_ne
 
 object_tangible_mission_quest_item_shared_wald_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_power_unit.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12728,7 +12728,7 @@ object_tangible_mission_quest_item_shared_wald_q2_needed = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12743,7 +12743,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_wald_q2_ne
 
 object_tangible_mission_quest_item_shared_wald_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12778,7 +12778,7 @@ object_tangible_mission_quest_item_shared_wald_q3_needed = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12793,7 +12793,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_wald_q3_ne
 
 object_tangible_mission_quest_item_shared_wald_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12828,7 +12828,7 @@ object_tangible_mission_quest_item_shared_wald_q4_needed = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12843,7 +12843,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_wald_q4_ne
 
 object_tangible_mission_quest_item_shared_warren_core_control_rod_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_engine_component.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12878,7 +12878,7 @@ object_tangible_mission_quest_item_shared_warren_core_control_rod_s01 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12893,7 +12893,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_cor
 
 object_tangible_mission_quest_item_shared_warren_core_control_rod_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_engine_component.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12928,7 +12928,7 @@ object_tangible_mission_quest_item_shared_warren_core_control_rod_s02 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12943,7 +12943,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_cor
 
 object_tangible_mission_quest_item_shared_warren_device_encryption_key = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12978,7 +12978,7 @@ object_tangible_mission_quest_item_shared_warren_device_encryption_key = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12993,7 +12993,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_dev
 
 object_tangible_mission_quest_item_shared_warren_evidence_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13028,7 +13028,7 @@ object_tangible_mission_quest_item_shared_warren_evidence_s01 = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13043,7 +13043,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_evi
 
 object_tangible_mission_quest_item_shared_warren_evidence_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13078,7 +13078,7 @@ object_tangible_mission_quest_item_shared_warren_evidence_s02 = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13093,7 +13093,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_evi
 
 object_tangible_mission_quest_item_shared_warren_evidence_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13128,7 +13128,7 @@ object_tangible_mission_quest_item_shared_warren_evidence_s03 = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13143,7 +13143,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_evi
 
 object_tangible_mission_quest_item_shared_warren_evidence_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13178,7 +13178,7 @@ object_tangible_mission_quest_item_shared_warren_evidence_s04 = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13193,7 +13193,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_evi
 
 object_tangible_mission_quest_item_shared_warren_farewell_letter = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13228,7 +13228,7 @@ object_tangible_mission_quest_item_shared_warren_farewell_letter = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13243,7 +13243,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_far
 
 object_tangible_mission_quest_item_shared_warren_inquisitor_letter = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13278,7 +13278,7 @@ object_tangible_mission_quest_item_shared_warren_inquisitor_letter = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13293,7 +13293,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_inq
 
 object_tangible_mission_quest_item_shared_warren_passkey_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13328,7 +13328,7 @@ object_tangible_mission_quest_item_shared_warren_passkey_s01 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13343,7 +13343,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_pas
 
 object_tangible_mission_quest_item_shared_warren_passkey_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13378,7 +13378,7 @@ object_tangible_mission_quest_item_shared_warren_passkey_s02 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13393,7 +13393,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_pas
 
 object_tangible_mission_quest_item_shared_warren_passkey_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13428,7 +13428,7 @@ object_tangible_mission_quest_item_shared_warren_passkey_s03 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13443,7 +13443,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_pas
 
 object_tangible_mission_quest_item_shared_warren_passkey_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13478,7 +13478,7 @@ object_tangible_mission_quest_item_shared_warren_passkey_s04 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13493,7 +13493,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_pas
 
 object_tangible_mission_quest_item_shared_warren_turret_sequence = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13528,7 +13528,7 @@ object_tangible_mission_quest_item_shared_warren_turret_sequence = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13543,7 +13543,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_warren_tur
 
 object_tangible_mission_quest_item_shared_wilhalm_skrim_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13578,7 +13578,7 @@ object_tangible_mission_quest_item_shared_wilhalm_skrim_q1_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13593,7 +13593,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_wilhalm_sk
 
 object_tangible_mission_quest_item_shared_wilhalm_skrim_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13628,7 +13628,7 @@ object_tangible_mission_quest_item_shared_wilhalm_skrim_q2_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13643,7 +13643,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_wilhalm_sk
 
 object_tangible_mission_quest_item_shared_windom_starkiller_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_power5.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13678,7 +13678,7 @@ object_tangible_mission_quest_item_shared_windom_starkiller_q2_needed = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13693,7 +13693,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_windom_sta
 
 object_tangible_mission_quest_item_shared_wuher_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13728,7 +13728,7 @@ object_tangible_mission_quest_item_shared_wuher_q1_needed = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13743,7 +13743,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_wuher_q1_n
 
 object_tangible_mission_quest_item_shared_wuher_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_camera.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13778,7 +13778,7 @@ object_tangible_mission_quest_item_shared_wuher_q2_needed = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13793,7 +13793,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_wuher_q2_n
 
 object_tangible_mission_quest_item_shared_wuher_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_empty_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13828,7 +13828,7 @@ object_tangible_mission_quest_item_shared_wuher_q3_needed = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13843,7 +13843,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_wuher_q3_n
 
 object_tangible_mission_quest_item_shared_wuher_q4_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13878,7 +13878,7 @@ object_tangible_mission_quest_item_shared_wuher_q4_needed = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13893,7 +13893,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_wuher_q4_n
 
 object_tangible_mission_quest_item_shared_xaan_talmaron_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13928,7 +13928,7 @@ object_tangible_mission_quest_item_shared_xaan_talmaron_q1_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13943,7 +13943,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_xaan_talma
 
 object_tangible_mission_quest_item_shared_xaan_talmaron_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13978,7 +13978,7 @@ object_tangible_mission_quest_item_shared_xaan_talmaron_q3_needed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13993,7 +13993,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_xaan_talma
 
 object_tangible_mission_quest_item_shared_xalox_guul_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14028,7 +14028,7 @@ object_tangible_mission_quest_item_shared_xalox_guul_q2_needed = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14043,7 +14043,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_xalox_guul
 
 object_tangible_mission_quest_item_shared_xarot_korlin_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14078,7 +14078,7 @@ object_tangible_mission_quest_item_shared_xarot_korlin_q1_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14093,7 +14093,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_xarot_korl
 
 object_tangible_mission_quest_item_shared_xarot_korlin_q2_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14128,7 +14128,7 @@ object_tangible_mission_quest_item_shared_xarot_korlin_q2_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14143,7 +14143,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_xarot_korl
 
 object_tangible_mission_quest_item_shared_yith_seenath_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14178,7 +14178,7 @@ object_tangible_mission_quest_item_shared_yith_seenath_q1_needed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14193,7 +14193,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_yith_seena
 
 object_tangible_mission_quest_item_shared_zekka_thyne_q1_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14228,7 +14228,7 @@ object_tangible_mission_quest_item_shared_zekka_thyne_q1_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14243,7 +14243,7 @@ ObjectTemplates:addTemplate(object_tangible_mission_quest_item_shared_zekka_thyn
 
 object_tangible_mission_quest_item_shared_zogor_sturm_q3_needed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14278,7 +14278,7 @@ object_tangible_mission_quest_item_shared_zogor_sturm_q3_needed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

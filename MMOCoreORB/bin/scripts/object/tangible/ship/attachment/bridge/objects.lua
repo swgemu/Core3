@@ -43,7 +43,7 @@
 
 object_tangible_ship_attachment_bridge_shared_star_destroyer_bridge = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/star_destroyer_bridge.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_ship_attachment_bridge_shared_star_destroyer_bridge = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -43,7 +43,7 @@
 
 object_tangible_wearables_wookiee_shared_wke_gloves_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_gloves_s01_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves_long.iff",
+	arrangementDescriptor = "gloves",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s01 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_
 
 object_tangible_wearables_wookiee_shared_wke_gloves_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_gloves_s02_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves_long.iff",
+	arrangementDescriptor = "gloves",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s02 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_
 
 object_tangible_wearables_wookiee_shared_wke_gloves_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_gloves_s03_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves_long.iff",
+	arrangementDescriptor = "gloves",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s03 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_
 
 object_tangible_wearables_wookiee_shared_wke_gloves_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_gloves_s04_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves_long.iff",
+	arrangementDescriptor = "gloves",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s04 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_
 
 object_tangible_wearables_wookiee_shared_wke_hat_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_hat_s01_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_wearables_wookiee_shared_wke_hat_s01 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_hat_s01
 
 object_tangible_wearables_wookiee_shared_wke_hood_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_hood_s01_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_wearables_wookiee_shared_wke_hood_s01 = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_hood_s0
 
 object_tangible_wearables_wookiee_shared_wke_hood_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_hood_s02_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_wearables_wookiee_shared_wke_hood_s02 = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_hood_s0
 
 object_tangible_wearables_wookiee_shared_wke_hood_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_hood_s03_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_wearables_wookiee_shared_wke_hood_s03 = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_hood_s0
 
 object_tangible_wearables_wookiee_shared_wke_lifeday_robe = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_lifeday_robe_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/robe_longsleeve.iff",
+	arrangementDescriptor = "chest2",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_wearables_wookiee_shared_wke_lifeday_robe = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_lifeday
 
 object_tangible_wearables_wookiee_shared_wke_lifeday_robe_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_lifeday_robe_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/robe_longsleeve.iff",
+	arrangementDescriptor = "chest2",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_wearables_wookiee_shared_wke_lifeday_robe_f = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_lifeday
 
 object_tangible_wearables_wookiee_shared_wke_lifeday_robe_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_lifeday_robe_m.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/robe_longsleeve.iff",
+	arrangementDescriptor = "chest2",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_wearables_wookiee_shared_wke_lifeday_robe_m = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_lifeday
 
 object_tangible_wearables_wookiee_shared_wke_shirt_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_shirt_s01_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
+	arrangementDescriptor = "chest1",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s01 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s
 
 object_tangible_wearables_wookiee_shared_wke_shirt_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_shirt_s02_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
+	arrangementDescriptor = "chest1",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s02 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s
 
 object_tangible_wearables_wookiee_shared_wke_shirt_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_shirt_s03_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
+	arrangementDescriptor = "chest1",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s03 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s
 
 object_tangible_wearables_wookiee_shared_wke_shirt_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_shirt_s04_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
+	arrangementDescriptor = "chest1",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s04 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s
 
 object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_shoulder_pad_s01_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
+	arrangementDescriptor = "chest1",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s01 = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shoulde
 
 object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_shoulder_pad_s02_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
+	arrangementDescriptor = "chest1",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s02 = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shoulde
 
 object_tangible_wearables_wookiee_shared_wke_skirt_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_skirt_s01_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/skirt.iff",
+	arrangementDescriptor = "pants1",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -928,7 +928,7 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s01 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s
 
 object_tangible_wearables_wookiee_shared_wke_skirt_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_skirt_s02_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/skirt.iff",
+	arrangementDescriptor = "pants1",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -978,7 +978,7 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s02 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s
 
 object_tangible_wearables_wookiee_shared_wke_skirt_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_skirt_s03_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/skirt.iff",
+	arrangementDescriptor = "pants1",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1028,7 +1028,7 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s03 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1043,7 +1043,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s
 
 object_tangible_wearables_wookiee_shared_wke_skirt_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wke_skirt_s04_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/skirt.iff",
+	arrangementDescriptor = "pants1",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1078,7 +1078,7 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s04 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

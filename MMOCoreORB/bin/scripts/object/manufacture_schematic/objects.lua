@@ -43,7 +43,7 @@
 
 object_manufacture_schematic_shared_generic_schematic = SharedManufactureSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_manf_schematic.iff",
+	arrangementDescriptor = "test_manf_schematic",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_manufacture_schematic_shared_generic_schematic = SharedManufactureSchemat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }

@@ -43,7 +43,7 @@
 
 object_tangible_wearables_hat_shared_hat_chef_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_chef_s01_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_wearables_hat_shared_hat_chef_s01 = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_chef_s01, 4
 
 object_tangible_wearables_hat_shared_hat_chef_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_chef_s02_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_wearables_hat_shared_hat_chef_s02 = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_chef_s02, 6
 
 object_tangible_wearables_hat_shared_hat_imp_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_imperial_s01_m.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_wearables_hat_shared_hat_imp_s01 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_imp_s01, 16
 
 object_tangible_wearables_hat_shared_hat_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_s02_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_wearables_hat_shared_hat_s02 = SharedTangibleObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s02, 522601
 
 object_tangible_wearables_hat_shared_hat_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_s04_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_wearables_hat_shared_hat_s04 = SharedTangibleObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s04, 291556
 
 object_tangible_wearables_hat_shared_hat_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_s10_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_wearables_hat_shared_hat_s10 = SharedTangibleObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s10, 251792
 
 object_tangible_wearables_hat_shared_hat_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_s12_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_wearables_hat_shared_hat_s12 = SharedTangibleObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s12, 680466
 
 object_tangible_wearables_hat_shared_hat_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_s13_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_wearables_hat_shared_hat_s13 = SharedTangibleObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s13, 129205
 
 object_tangible_wearables_hat_shared_hat_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_s14_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_wearables_hat_shared_hat_s14 = SharedTangibleObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s14, 306813
 
 object_tangible_wearables_hat_shared_hat_twilek_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_twk_s01_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_wearables_hat_shared_hat_twilek_s01 = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_twilek_s01,
 
 object_tangible_wearables_hat_shared_hat_twilek_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_twk_s02_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_wearables_hat_shared_hat_twilek_s02 = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_twilek_s02,
 
 object_tangible_wearables_hat_shared_hat_twilek_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_twk_s03_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_wearables_hat_shared_hat_twilek_s03 = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_twilek_s03,
 
 object_tangible_wearables_hat_shared_hat_twilek_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_twk_s04_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_wearables_hat_shared_hat_twilek_s04 = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_twilek_s04,
 
 object_tangible_wearables_hat_shared_hat_twilek_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_twk_s05_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_wearables_hat_shared_hat_twilek_s05 = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_twilek_s05,
 
 object_tangible_wearables_hat_shared_nightsister_hat_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/nightsister_hat_s01.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_wearables_hat_shared_nightsister_hat_s01 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_nightsister_hat
 
 object_tangible_wearables_hat_shared_nightsister_hat_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/nightsister_hat_s02.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_wearables_hat_shared_nightsister_hat_s02 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_nightsister_hat
 
 object_tangible_wearables_hat_shared_nightsister_hat_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/nightsister_hat_s03.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_tangible_wearables_hat_shared_nightsister_hat_s03 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_nightsister_hat
 
 object_tangible_wearables_hat_shared_singing_mountain_clan_hat_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_hat_s01.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -928,7 +928,7 @@ object_tangible_wearables_hat_shared_singing_mountain_clan_hat_s01 = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_singing_mountai
 
 object_tangible_wearables_hat_shared_singing_mountain_clan_hat_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_hat_s02.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -978,7 +978,7 @@ object_tangible_wearables_hat_shared_singing_mountain_clan_hat_s02 = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_singing_mountai
 
 object_tangible_wearables_hat_shared_singing_mountain_clan_mask_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_mask_s01.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1028,7 +1028,7 @@ object_tangible_wearables_hat_shared_singing_mountain_clan_mask_s01 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

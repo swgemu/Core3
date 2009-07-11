@@ -43,7 +43,7 @@
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap9 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_deluxe_cruiser_grade_cap2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_deluxe_cru
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_elite = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_standard =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_tuned_cruiser_grade_cap1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_tuned_crui
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_cygnus_cygcap_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_cygnus_cygcap_a = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_cygnus_cygcap_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_cygnus_cygcap_b = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_freitek_xd2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_freitek_xd2 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_gallofree_lt22 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_gallofree_lt22 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_generic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_generic = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_haor_chall_old_capacitor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_haor_chall_old_capac
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_huppla_pasa_tisc_old_capacitor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_huppla_pasa_tisc_old
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_incom_bjn825 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -928,7 +928,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_incom_bjn825 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_incom_improved_rebel_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -978,7 +978,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_incom_improved_rebel
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_incom_rebel_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -1028,7 +1028,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_incom_rebel_mk1 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1043,7 +1043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_incom_special_bjn825 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -1078,7 +1078,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_incom_special_bjn825
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1093,7 +1093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_rendili_hyperbattery = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -1128,7 +1128,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_rend
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_sds_imperial_finest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -1178,7 +1178,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_sds_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1193,7 +1193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_sfs_array = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -1228,7 +1228,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_sfs_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1243,7 +1243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_armek_array = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -1278,7 +1278,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_armek_a
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1293,7 +1293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_deepwell_k33_prototype = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -1328,7 +1328,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_deepwel
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1343,7 +1343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_taim_hypercharger = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -1378,7 +1378,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_taim_hy
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1393,7 +1393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_custom_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -1428,7 +1428,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_custom_ligh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1443,7 +1443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_deluxe_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -1478,7 +1478,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_deluxe_mk4 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1493,7 +1493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_elite_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -1528,7 +1528,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_elite_mk5 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1543,7 +1543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_improved_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -1578,7 +1578,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_improved_li
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1593,7 +1593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -1628,7 +1628,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_light = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1643,7 +1643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -1678,7 +1678,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk3 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -1728,7 +1728,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk4 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1743,7 +1743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -1778,7 +1778,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk5 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1793,7 +1793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_rare_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -1828,7 +1828,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_rare_mk2 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1843,7 +1843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_tuned_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -1878,7 +1878,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_tuned_mk3 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1893,7 +1893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kse_elite_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -1928,7 +1928,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_elite_mk5 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1943,7 +1943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kse_limited_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -1978,7 +1978,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_limited_mk1 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1993,7 +1993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kse_limited_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -2028,7 +2028,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_limited_mk4 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2043,7 +2043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -2078,7 +2078,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk1 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2093,7 +2093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -2128,7 +2128,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk2 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2143,7 +2143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -2178,7 +2178,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk3 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2193,7 +2193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -2228,7 +2228,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk4 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2243,7 +2243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -2278,7 +2278,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk5 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2293,7 +2293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kse_performance_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -2328,7 +2328,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_performance_mk2 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2343,7 +2343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_kse_supercharged_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -2378,7 +2378,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_supercharged_mk3
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2393,7 +2393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_improved_powermaster_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -2428,7 +2428,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_improved_powe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2443,7 +2443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -2478,7 +2478,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_m
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2493,7 +2493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -2528,7 +2528,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_m
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2543,7 +2543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -2578,7 +2578,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_m
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2593,7 +2593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -2628,7 +2628,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_m
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2643,7 +2643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -2678,7 +2678,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_m
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2693,7 +2693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powersoak = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -2728,7 +2728,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powersoak = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2743,7 +2743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_provider_p1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -2778,7 +2778,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_provider_p1 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2793,7 +2793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_rare_powermaster_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -2828,7 +2828,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_rare_powermas
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2843,7 +2843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_special_powermaster_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -2878,7 +2878,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_special_power
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2893,7 +2893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_tuned_powermaster_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -2928,7 +2928,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_tuned_powerma
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2943,7 +2943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_imperial_rendili_k_class = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -2978,7 +2978,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_imper
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2993,7 +2993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_neutral_sorosuub_v1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -3028,7 +3028,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_neutr
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3043,7 +3043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_rebel_qualdex_battery_array = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -3078,7 +3078,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_rebel
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3093,7 +3093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -3128,7 +3128,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_advanced = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3143,7 +3143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_charged_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -3178,7 +3178,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_charged_light
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3193,7 +3193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_deluxe_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -3228,7 +3228,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_deluxe_elite 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3243,7 +3243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -3278,7 +3278,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_elite = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3293,7 +3293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_enhanced_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -3328,7 +3328,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_enhanced_adva
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3343,7 +3343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -3378,7 +3378,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_heavy = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3393,7 +3393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -3428,7 +3428,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_light = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3443,7 +3443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_modified_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -3478,7 +3478,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_modified_heav
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3493,7 +3493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_modified_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -3528,7 +3528,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_modified_stan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3543,7 +3543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -3578,7 +3578,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_standard = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3593,7 +3593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_deluxe_wampa_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -3628,7 +3628,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_deluxe_wamp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3643,7 +3643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_experimental = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -3678,7 +3678,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_experimenta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3693,7 +3693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_experimental_sarlacc_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -3728,7 +3728,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_experimenta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3743,7 +3743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -3778,7 +3778,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s1 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3793,7 +3793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -3828,7 +3828,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s2 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3843,7 +3843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -3878,7 +3878,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s3 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3893,7 +3893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_small_capacitor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -3928,7 +3928,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_small_capac
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3943,7 +3943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -3978,7 +3978,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s1 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3993,7 +3993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -4028,7 +4028,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s2 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4043,7 +4043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -4078,7 +4078,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s3 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4093,7 +4093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_prototype_capacitor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -4128,7 +4128,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_prototype_capacitor 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4143,7 +4143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_q3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -4178,7 +4178,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4193,7 +4193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_q7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -4228,7 +4228,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4243,7 +4243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -4278,7 +4278,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4293,7 +4293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -4328,7 +4328,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4343,7 +4343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -4378,7 +4378,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4393,7 +4393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -4428,7 +4428,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4443,7 +4443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -4478,7 +4478,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4493,7 +4493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_experimental = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -4528,7 +4528,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_experimental
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4543,7 +4543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -4578,7 +4578,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_elite 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4593,7 +4593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -4628,7 +4628,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_light 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4643,7 +4643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -4678,7 +4678,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_standa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4693,7 +4693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_rendili_overseer_j7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -4728,7 +4728,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_rendili_overseer_j7 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4743,7 +4743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_rendili_overseer_j8 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -4778,7 +4778,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_rendili_overseer_j8 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4793,7 +4793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_reward_mandal_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -4828,7 +4828,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_reward_mandal_elite 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4843,7 +4843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_reward_novaldex_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -4878,7 +4878,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_reward_novaldex_elit
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4893,7 +4893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_reward_qualdex_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -4928,7 +4928,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_reward_qualdex_elite
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4943,7 +4943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_reward_sorosuub_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -4978,7 +4978,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_reward_sorosuub_elit
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4993,7 +4993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_reward_subpro_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -5028,7 +5028,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_reward_subpro_elite 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5043,7 +5043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_rss_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -5078,7 +5078,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_rss_imperial_1 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5093,7 +5093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sds_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -5128,7 +5128,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sds_imperial_1 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5143,7 +5143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sds_imperial_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -5178,7 +5178,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sds_imperial_2 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5193,7 +5193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sds_special_imperial_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -5228,7 +5228,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sds_special_imperial
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5243,7 +5243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sfs_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -5278,7 +5278,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sfs_imperial_1 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5293,7 +5293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -5328,7 +5328,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk1 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5343,7 +5343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -5378,7 +5378,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk2 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5393,7 +5393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -5428,7 +5428,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk3 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5443,7 +5443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -5478,7 +5478,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk4 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5493,7 +5493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_enhanced_dynamo_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -5528,7 +5528,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_enhanced_dy
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5543,7 +5543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_flash = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -5578,7 +5578,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_flash = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5593,7 +5593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_premium_dynamo_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -5628,7 +5628,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_premium_dyn
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5643,7 +5643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_supercharged_dynamo_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -5678,7 +5678,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_supercharge
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5693,7 +5693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_tuned_dynamo_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -5728,7 +5728,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_tuned_dynam
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5743,7 +5743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_turbo = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -5778,7 +5778,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_turbo = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5793,7 +5793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_dauntless_z3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -5828,7 +5828,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_dauntless_z3 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5843,7 +5843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_dauntless_z5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -5878,7 +5878,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_dauntless_z5 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5893,7 +5893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -5928,7 +5928,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c1 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5943,7 +5943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -5978,7 +5978,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c2 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5993,7 +5993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -6028,7 +6028,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c3 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6043,7 +6043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_experimental = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -6078,7 +6078,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_experimental 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6093,7 +6093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_gallant_a1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -6128,7 +6128,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_gallant_a1 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6143,7 +6143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_improved_valiant_z1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -6178,7 +6178,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_improved_vali
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6193,7 +6193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_modified_defiant_c1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -6228,7 +6228,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_modified_defi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6243,7 +6243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_valiant_z1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -6278,7 +6278,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_valiant_z1 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6293,7 +6293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_valiant_z2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -6328,7 +6328,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_valiant_z2 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6343,7 +6343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -6378,7 +6378,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_basic = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6393,7 +6393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -6428,7 +6428,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6443,7 +6443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -6478,7 +6478,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk2
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6493,7 +6493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -6528,7 +6528,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk3
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6543,7 +6543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_experimental = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -6578,7 +6578,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_experimen
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6593,7 +6593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_unknown_experimental = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -6628,7 +6628,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_unknown_experimental
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6643,7 +6643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_z95_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -6678,7 +6678,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_z95_basic = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6693,7 +6693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_experimental = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -6728,7 +6728,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_experim
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6743,7 +6743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_k3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -6778,7 +6778,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_k3 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6793,7 +6793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_k5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -6828,7 +6828,7 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_k5 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6843,7 +6843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_weapon_capacitor_sha
 
 object_tangible_ship_components_weapon_capacitor_shared_weapon_capacitor_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_red_ball_jet_organ.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -6878,7 +6878,7 @@ object_tangible_ship_components_weapon_capacitor_shared_weapon_capacitor_test = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

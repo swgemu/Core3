@@ -43,7 +43,7 @@
 
 object_tangible_space_spacestations_shared_spacestation_imperial_01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_rebel.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
+	arrangementDescriptor = "ship_control_device",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_space_spacestations_shared_spacestation_imperial_01 = SharedShip
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestat
 
 object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_control = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_neutral.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
+	arrangementDescriptor = "ship_control_device",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_con
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestat
 
 object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_entry = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_neutral.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
+	arrangementDescriptor = "ship_control_device",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_ent
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestat
 
 object_tangible_space_spacestations_shared_spacestation_neutral_01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_neutral.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
+	arrangementDescriptor = "ship_control_device",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_space_spacestations_shared_spacestation_neutral_01 = SharedShipO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestat
 
 object_tangible_space_spacestations_shared_spacestation_rebel_01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_rebel.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
+	arrangementDescriptor = "ship_control_device",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_space_spacestations_shared_spacestation_rebel_01 = SharedShipObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestat
 
 object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_control = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_rebel.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
+	arrangementDescriptor = "ship_control_device",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_contro
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestat
 
 object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_entry = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_rebel.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
+	arrangementDescriptor = "ship_control_device",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_entry 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",

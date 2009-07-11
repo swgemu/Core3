@@ -43,7 +43,7 @@
 
 object_tangible_wearables_bustier_shared_bustier_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bustier_s01_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
+	arrangementDescriptor = "chest1",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_wearables_bustier_shared_bustier_s01 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_bustier_shared_bustier_s01
 
 object_tangible_wearables_bustier_shared_bustier_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bustier_s02_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
+	arrangementDescriptor = "chest1",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_wearables_bustier_shared_bustier_s02 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_bustier_shared_bustier_s02
 
 object_tangible_wearables_bustier_shared_bustier_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bustier_s03_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
+	arrangementDescriptor = "chest1",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_wearables_bustier_shared_bustier_s03 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -43,7 +43,7 @@
 
 object_building_endor_shared_endor_catwalk = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_village_tree_catwlk_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_building_endor_shared_endor_catwalk = SharedStaticObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_building_endor_shared_endor_catwalk, 10922027
 
 object_building_endor_shared_endor_catwalk_cap = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_village_tree_catwlk_cap_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_building_endor_shared_endor_catwalk_cap = SharedStaticObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_building_endor_shared_endor_catwalk_cap, 1451
 
 object_building_endor_shared_endor_forest_hut = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_forest_hut_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_building_endor_shared_endor_forest_hut = SharedBuildingObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_building_endor_shared_endor_forest_hut, 27595
 
 object_building_endor_shared_endor_giant_catwalk = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_village_tree_catwlk_64m_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_building_endor_shared_endor_giant_catwalk = SharedStaticObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_building_endor_shared_endor_giant_catwalk, 25
 
 object_building_endor_shared_endor_giant_village_tree_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_village_tree_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_building_endor_shared_endor_giant_village_tree_s01 = SharedBuildingObject
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_building_endor_shared_endor_giant_village_tre
 
 object_building_endor_shared_endor_lake_hut = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_lakevillage_lake_hut.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_building_endor_shared_endor_lake_hut = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_building_endor_shared_endor_lake_hut, 7903539
 
 object_building_endor_shared_endor_lake_hut_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_lake_hut_s02.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_building_endor_shared_endor_lake_hut_s02 = SharedBuildingObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_building_endor_shared_endor_lake_hut_s02, 148
 
 object_building_endor_shared_endor_lake_platform = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_lakevillage_lake_hut_pc1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_building_endor_shared_endor_lake_platform = SharedBuildingObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_building_endor_shared_endor_lake_platform, 24
 
 object_building_endor_shared_endor_lake_platform_cap = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_lake_platform_cap_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_building_endor_shared_endor_lake_platform_cap = SharedBuildingObjectTempl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_building_endor_shared_endor_lake_platform_cap
 
 object_building_endor_shared_endor_lake_walkway_square = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_lake_platform_square_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_building_endor_shared_endor_lake_walkway_square = SharedBuildingObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_building_endor_shared_endor_lake_walkway_squa
 
 object_building_endor_shared_endor_lake_walkway_straight = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_lake_platform_rectangle_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_building_endor_shared_endor_lake_walkway_straight = SharedBuildingObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_building_endor_shared_endor_lake_walkway_stra
 
 object_building_endor_shared_endor_tiki_torch = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_tiki_torch_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_building_endor_shared_endor_tiki_torch = SharedBuildingObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_building_endor_shared_endor_tiki_torch, 41480
 
 object_building_endor_shared_endor_village_tree = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_village_tree_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_building_endor_shared_endor_village_tree = SharedBuildingObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_building_endor_shared_endor_village_tree, 111
 
 object_building_endor_shared_endor_village_tree_viewpoint = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_village_tree_viewpoint_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_building_endor_shared_endor_village_tree_viewpoint = SharedBuildingObject
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_building_endor_shared_endor_village_tree_view
 
 object_building_endor_shared_endr_lake_rail16m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_lake_rail16m.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -773,7 +773,7 @@ object_building_endor_shared_endr_lake_rail16m = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 3
 }
@@ -782,7 +782,7 @@ ObjectTemplates:addTemplate(object_building_endor_shared_endr_lake_rail16m, 2748
 
 object_building_endor_shared_endr_lake_rail2m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_lake_rail2m.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -812,7 +812,7 @@ object_building_endor_shared_endr_lake_rail2m = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 3
 }
@@ -821,7 +821,7 @@ ObjectTemplates:addTemplate(object_building_endor_shared_endr_lake_rail2m, 38024
 
 object_building_endor_shared_endr_lake_rail4m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_lake_rail4m.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -851,7 +851,7 @@ object_building_endor_shared_endr_lake_rail4m = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 3
 }
@@ -860,7 +860,7 @@ ObjectTemplates:addTemplate(object_building_endor_shared_endr_lake_rail4m, 12809
 
 object_building_endor_shared_endr_lake_rail8m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_lake_rail8m.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -890,7 +890,7 @@ object_building_endor_shared_endr_lake_rail8m = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 3
 }

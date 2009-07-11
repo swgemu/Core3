@@ -43,7 +43,7 @@
 
 object_tangible_item_quest_hero_of_tatooine_shared_explosives = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_webber.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_item_quest_hero_of_tatooine_shared_explosives = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_item_quest_hero_of_tatooine_shared_e
 
 object_tangible_item_quest_hero_of_tatooine_shared_explosives_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_newbie_crate.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_item_quest_hero_of_tatooine_shared_explosives_crate = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

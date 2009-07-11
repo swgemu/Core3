@@ -43,7 +43,7 @@
 
 object_tangible_hair_rodian_shared_hair_rodian_female_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_f_hair_s01.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s01 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_femal
 
 object_tangible_hair_rodian_shared_hair_rodian_female_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_f_hair_s02.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s02 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_femal
 
 object_tangible_hair_rodian_shared_hair_rodian_female_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_f_hair_s03.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s03 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_femal
 
 object_tangible_hair_rodian_shared_hair_rodian_female_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_f_hair_s04.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s04 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_femal
 
 object_tangible_hair_rodian_shared_hair_rodian_female_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_f_hair_s05.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s05 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_femal
 
 object_tangible_hair_rodian_shared_hair_rodian_female_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_f_hair_s06.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s06 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_femal
 
 object_tangible_hair_rodian_shared_hair_rodian_female_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_f_hair_s07.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s07 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_femal
 
 object_tangible_hair_rodian_shared_hair_rodian_female_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_f_hair_s08.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s08 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_femal
 
 object_tangible_hair_rodian_shared_hair_rodian_female_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_f_hair_s09.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s09 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_femal
 
 object_tangible_hair_rodian_shared_hair_rodian_female_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_f_hair_s10.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s10 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_femal
 
 object_tangible_hair_rodian_shared_hair_rodian_female_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_f_hair_s12.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s12 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_femal
 
 object_tangible_hair_rodian_shared_hair_rodian_female_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_f_hair_s13.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s13 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_femal
 
 object_tangible_hair_rodian_shared_hair_rodian_female_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_f_hair_s14.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s14 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_femal
 
 object_tangible_hair_rodian_shared_hair_rodian_female_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_f_hair_s15.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s15 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_femal
 
 object_tangible_hair_rodian_shared_hair_rodian_female_s16 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_f_hair_s16.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s16 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_femal
 
 object_tangible_hair_rodian_shared_hair_rodian_female_s17 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_f_hair_s17.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s17 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_femal
 
 object_tangible_hair_rodian_shared_hair_rodian_female_s18 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_f_hair_s18.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s18 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_femal
 
 object_tangible_hair_rodian_shared_hair_rodian_female_s19 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_f_hair_s19.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -928,7 +928,7 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s19 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_femal
 
 object_tangible_hair_rodian_shared_hair_rodian_female_s20 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_f_hair_s20.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -978,7 +978,7 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s20 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_femal
 
 object_tangible_hair_rodian_shared_hair_rodian_female_s21 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_f_hair_s21.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1028,7 +1028,7 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s21 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1043,7 +1043,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_femal
 
 object_tangible_hair_rodian_shared_hair_rodian_female_s22 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_f_hair_s22.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1078,7 +1078,7 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s22 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1093,7 +1093,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_femal
 
 object_tangible_hair_rodian_shared_hair_rodian_male_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_m_hair_s01.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1128,7 +1128,7 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s01 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_
 
 object_tangible_hair_rodian_shared_hair_rodian_male_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_m_hair_s02.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1178,7 +1178,7 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s02 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1193,7 +1193,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_
 
 object_tangible_hair_rodian_shared_hair_rodian_male_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_m_hair_s03.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1228,7 +1228,7 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s03 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1243,7 +1243,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_
 
 object_tangible_hair_rodian_shared_hair_rodian_male_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_m_hair_s04.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1278,7 +1278,7 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s04 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1293,7 +1293,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_
 
 object_tangible_hair_rodian_shared_hair_rodian_male_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_m_hair_s05.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1328,7 +1328,7 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s05 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1343,7 +1343,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_
 
 object_tangible_hair_rodian_shared_hair_rodian_male_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_m_hair_s06.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1378,7 +1378,7 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s06 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1393,7 +1393,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_
 
 object_tangible_hair_rodian_shared_hair_rodian_male_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_m_hair_s07.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1428,7 +1428,7 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s07 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1443,7 +1443,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_
 
 object_tangible_hair_rodian_shared_hair_rodian_male_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_m_hair_s08.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1478,7 +1478,7 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s08 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1493,7 +1493,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_
 
 object_tangible_hair_rodian_shared_hair_rodian_male_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_m_hair_s09.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1528,7 +1528,7 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s09 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1543,7 +1543,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_
 
 object_tangible_hair_rodian_shared_hair_rodian_male_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_m_hair_s10.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1578,7 +1578,7 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s10 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1593,7 +1593,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_
 
 object_tangible_hair_rodian_shared_hair_rodian_male_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_m_hair_s11.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1628,7 +1628,7 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s11 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1643,7 +1643,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_
 
 object_tangible_hair_rodian_shared_hair_rodian_male_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_m_hair_s12.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1678,7 +1678,7 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s12 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_
 
 object_tangible_hair_rodian_shared_hair_rodian_male_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_m_hair_s13.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1728,7 +1728,7 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s13 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1743,7 +1743,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_
 
 object_tangible_hair_rodian_shared_hair_rodian_male_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_m_hair_s14.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1778,7 +1778,7 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s14 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1793,7 +1793,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_
 
 object_tangible_hair_rodian_shared_hair_rodian_male_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_m_hair_s15.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1828,7 +1828,7 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s15 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1843,7 +1843,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_
 
 object_tangible_hair_rodian_shared_hair_rodian_male_s16 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rod_m_hair_s16.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1878,7 +1878,7 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s16 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

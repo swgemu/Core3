@@ -43,7 +43,7 @@
 
 object_weapon_ranged_grenade_shared_grenade_bug_bomb = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_class_a.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -79,7 +79,7 @@ object_weapon_ranged_grenade_shared_grenade_bug_bomb = SharedWeaponObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -97,7 +97,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_bug_bomb
 
 object_weapon_ranged_grenade_shared_grenade_cryoban = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_ww41.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -133,7 +133,7 @@ object_weapon_ranged_grenade_shared_grenade_cryoban = SharedWeaponObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -151,7 +151,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_cryoban,
 
 object_weapon_ranged_grenade_shared_grenade_fallback = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_c22.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -187,7 +187,7 @@ object_weapon_ranged_grenade_shared_grenade_fallback = SharedWeaponObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -205,7 +205,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_fallback
 
 object_weapon_ranged_grenade_shared_grenade_fragmentation = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_c22.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -241,7 +241,7 @@ object_weapon_ranged_grenade_shared_grenade_fragmentation = SharedWeaponObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -259,7 +259,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_fragment
 
 object_weapon_ranged_grenade_shared_grenade_fragmentation_light = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_c22.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -295,7 +295,7 @@ object_weapon_ranged_grenade_shared_grenade_fragmentation_light = SharedWeaponOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -313,7 +313,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_fragment
 
 object_weapon_ranged_grenade_shared_grenade_glop = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_glop.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -349,7 +349,7 @@ object_weapon_ranged_grenade_shared_grenade_glop = SharedWeaponObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -367,7 +367,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_glop, 59
 
 object_weapon_ranged_grenade_shared_grenade_imperial_detonator = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_imp_detonator.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -403,7 +403,7 @@ object_weapon_ranged_grenade_shared_grenade_imperial_detonator = SharedWeaponObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -421,7 +421,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_imperial
 
 object_weapon_ranged_grenade_shared_grenade_poison = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_class_a.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -457,7 +457,7 @@ object_weapon_ranged_grenade_shared_grenade_poison = SharedWeaponObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -475,7 +475,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_poison, 
 
 object_weapon_ranged_grenade_shared_grenade_proton = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_7prg.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -511,7 +511,7 @@ object_weapon_ranged_grenade_shared_grenade_proton = SharedWeaponObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -529,7 +529,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_proton, 
 
 object_weapon_ranged_grenade_shared_grenade_thermal_detonator = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_class_a.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -565,7 +565,7 @@ object_weapon_ranged_grenade_shared_grenade_thermal_detonator = SharedWeaponObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

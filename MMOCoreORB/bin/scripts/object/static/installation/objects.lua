@@ -43,7 +43,7 @@
 
 object_static_installation_shared_mockup_factory_clothing_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_factory_clothing.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_static_installation_shared_mockup_factory_clothing_style_1 = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_static_installation_shared_mockup_factory_clo
 
 object_static_installation_shared_mockup_factory_item_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_factory_item.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -112,7 +112,7 @@ object_static_installation_shared_mockup_factory_item_style_1 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -121,7 +121,7 @@ ObjectTemplates:addTemplate(object_static_installation_shared_mockup_factory_ite
 
 object_static_installation_shared_mockup_factory_machine_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_factory_machine.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -151,7 +151,7 @@ object_static_installation_shared_mockup_factory_machine_style_1 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -160,7 +160,7 @@ ObjectTemplates:addTemplate(object_static_installation_shared_mockup_factory_mac
 
 object_static_installation_shared_mockup_factory_organic_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_factory_organic.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -190,7 +190,7 @@ object_static_installation_shared_mockup_factory_organic_style_1 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -199,7 +199,7 @@ ObjectTemplates:addTemplate(object_static_installation_shared_mockup_factory_org
 
 object_static_installation_shared_mockup_farm_creature_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_creature_farm_s01_u0.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -229,7 +229,7 @@ object_static_installation_shared_mockup_farm_creature_style_1 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -238,7 +238,7 @@ ObjectTemplates:addTemplate(object_static_installation_shared_mockup_farm_creatu
 
 object_static_installation_shared_mockup_farm_flora_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_flora_farm_s01_u0.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -268,7 +268,7 @@ object_static_installation_shared_mockup_farm_flora_style_1 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -277,7 +277,7 @@ ObjectTemplates:addTemplate(object_static_installation_shared_mockup_farm_flora_
 
 object_static_installation_shared_mockup_mining_gas_harvester_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_min_gas_s01_u0.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/installation/client_shared_mining_gas_harvester_style_2.cdf",
@@ -307,7 +307,7 @@ object_static_installation_shared_mockup_mining_gas_harvester_style_1 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -316,7 +316,7 @@ ObjectTemplates:addTemplate(object_static_installation_shared_mockup_mining_gas_
 
 object_static_installation_shared_mockup_mining_liquid_harvester_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_min_liquid_s01_u0.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/installation/client_shared_mining_liquid_harvester_style_2.cdf",
@@ -346,7 +346,7 @@ object_static_installation_shared_mockup_mining_liquid_harvester_style_1 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -355,7 +355,7 @@ ObjectTemplates:addTemplate(object_static_installation_shared_mockup_mining_liqu
 
 object_static_installation_shared_mockup_mining_liquid_moisture_harvester = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_min_moisture_s01_u0.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/installation/client_shared_mining_moisture_harvester_style_1.cdf",
@@ -385,7 +385,7 @@ object_static_installation_shared_mockup_mining_liquid_moisture_harvester = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -394,7 +394,7 @@ ObjectTemplates:addTemplate(object_static_installation_shared_mockup_mining_liqu
 
 object_static_installation_shared_mockup_mining_ore_harvester_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_min_s01_u1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/installation/client_shared_mining_ore_harvester_style_1.cdf",
@@ -424,7 +424,7 @@ object_static_installation_shared_mockup_mining_ore_harvester_style_1 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -433,7 +433,7 @@ ObjectTemplates:addTemplate(object_static_installation_shared_mockup_mining_ore_
 
 object_static_installation_shared_mockup_mining_ore_harvester_style_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_min_s02_u1.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/installation/client_shared_mining_ore_harvester_style_2.cdf",
@@ -463,7 +463,7 @@ object_static_installation_shared_mockup_mining_ore_harvester_style_2 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -472,7 +472,7 @@ ObjectTemplates:addTemplate(object_static_installation_shared_mockup_mining_ore_
 
 object_static_installation_shared_mockup_power_generator_fusion_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_pow_fusion_ion_u0.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/installation/client_shared_power_generator_fusion_style_1.cdf",
@@ -502,7 +502,7 @@ object_static_installation_shared_mockup_power_generator_fusion_style_1 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -511,7 +511,7 @@ ObjectTemplates:addTemplate(object_static_installation_shared_mockup_power_gener
 
 object_static_installation_shared_mockup_power_generator_photo_bio_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_photo_bio_u0.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/installation/client_shared_power_generator_photo_bio_style_1.cdf",
@@ -541,7 +541,7 @@ object_static_installation_shared_mockup_power_generator_photo_bio_style_1 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -550,7 +550,7 @@ ObjectTemplates:addTemplate(object_static_installation_shared_mockup_power_gener
 
 object_static_installation_shared_mockup_power_generator_solar_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_pow_solar_u0.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/installation/client_shared_power_generator_solar_style_1.cdf",
@@ -580,7 +580,7 @@ object_static_installation_shared_mockup_power_generator_solar_style_1 = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -589,7 +589,7 @@ ObjectTemplates:addTemplate(object_static_installation_shared_mockup_power_gener
 
 object_static_installation_shared_mockup_power_generator_wind_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_pow_wind_u0.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/installation/client_shared_power_generator_wind_style_1.cdf",
@@ -619,7 +619,7 @@ object_static_installation_shared_mockup_power_generator_wind_style_1 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }

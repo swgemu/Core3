@@ -43,7 +43,7 @@
 
 object_static_structure_talus_shared_talus_imprv_bannerpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_bannerpole_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/talus_imprv_bannerpole_s01.cdf",
@@ -72,7 +72,7 @@ object_static_structure_talus_shared_talus_imprv_bannerpole_s01 = SharedStaticOb
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -81,7 +81,7 @@ ObjectTemplates:addTemplate(object_static_structure_talus_shared_talus_imprv_ban
 
 object_static_structure_talus_shared_talus_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/talus_imprv_flagpole_s01.cdf",
@@ -110,7 +110,7 @@ object_static_structure_talus_shared_talus_imprv_flagpole_s01 = SharedStaticObje
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
