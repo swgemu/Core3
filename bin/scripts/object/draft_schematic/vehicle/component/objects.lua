@@ -43,7 +43,7 @@
 
 object_draft_schematic_vehicle_component_shared_adv_hvy_blaster_power_handler = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_draft_schematic_vehicle_component_shared_adv_hvy_blaster_power_handler = 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_adv_
 
 object_draft_schematic_vehicle_component_shared_adv_hvy_projectile_feed_mech = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -112,7 +112,7 @@ object_draft_schematic_vehicle_component_shared_adv_hvy_projectile_feed_mech = S
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -121,7 +121,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_adv_
 
 object_draft_schematic_vehicle_component_shared_adv_warhead_launcher = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -151,7 +151,7 @@ object_draft_schematic_vehicle_component_shared_adv_warhead_launcher = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -160,7 +160,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_adv_
 
 object_draft_schematic_vehicle_component_shared_armor_panel_acid = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -190,7 +190,7 @@ object_draft_schematic_vehicle_component_shared_armor_panel_acid = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -199,7 +199,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_armo
 
 object_draft_schematic_vehicle_component_shared_armor_panel_blast = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -229,7 +229,7 @@ object_draft_schematic_vehicle_component_shared_armor_panel_blast = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -238,7 +238,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_armo
 
 object_draft_schematic_vehicle_component_shared_armor_panel_cold = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -268,7 +268,7 @@ object_draft_schematic_vehicle_component_shared_armor_panel_cold = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -277,7 +277,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_armo
 
 object_draft_schematic_vehicle_component_shared_armor_panel_electrical = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -307,7 +307,7 @@ object_draft_schematic_vehicle_component_shared_armor_panel_electrical = SharedD
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -316,7 +316,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_armo
 
 object_draft_schematic_vehicle_component_shared_armor_panel_energy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -346,7 +346,7 @@ object_draft_schematic_vehicle_component_shared_armor_panel_energy = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -355,7 +355,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_armo
 
 object_draft_schematic_vehicle_component_shared_armor_panel_heat = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -385,7 +385,7 @@ object_draft_schematic_vehicle_component_shared_armor_panel_heat = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -394,7 +394,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_armo
 
 object_draft_schematic_vehicle_component_shared_armor_panel_kinetic = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -424,7 +424,7 @@ object_draft_schematic_vehicle_component_shared_armor_panel_kinetic = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -433,7 +433,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_armo
 
 object_draft_schematic_vehicle_component_shared_armor_plating_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -463,7 +463,7 @@ object_draft_schematic_vehicle_component_shared_armor_plating_mk1 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -472,7 +472,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_armo
 
 object_draft_schematic_vehicle_component_shared_armor_plating_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -502,7 +502,7 @@ object_draft_schematic_vehicle_component_shared_armor_plating_mk2 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -511,7 +511,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_armo
 
 object_draft_schematic_vehicle_component_shared_armor_plating_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -541,7 +541,7 @@ object_draft_schematic_vehicle_component_shared_armor_plating_mk3 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -550,7 +550,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_armo
 
 object_draft_schematic_vehicle_component_shared_auto_blaster_cannon = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -580,7 +580,7 @@ object_draft_schematic_vehicle_component_shared_auto_blaster_cannon = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -589,7 +589,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_auto
 
 object_draft_schematic_vehicle_component_shared_blaster_cannon = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -619,7 +619,7 @@ object_draft_schematic_vehicle_component_shared_blaster_cannon = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -628,7 +628,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_blas
 
 object_draft_schematic_vehicle_component_shared_command_center = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -658,7 +658,7 @@ object_draft_schematic_vehicle_component_shared_command_center = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -667,7 +667,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_comm
 
 object_draft_schematic_vehicle_component_shared_disperser = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -697,7 +697,7 @@ object_draft_schematic_vehicle_component_shared_disperser = SharedDraftSchematic
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -706,7 +706,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_disp
 
 object_draft_schematic_vehicle_component_shared_dx_disruptor_array = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -736,7 +736,7 @@ object_draft_schematic_vehicle_component_shared_dx_disruptor_array = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -745,7 +745,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_dx_d
 
 object_draft_schematic_vehicle_component_shared_extended_fuel_tank = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -775,7 +775,7 @@ object_draft_schematic_vehicle_component_shared_extended_fuel_tank = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -784,7 +784,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_exte
 
 object_draft_schematic_vehicle_component_shared_extended_fuel_tank_heavy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -814,7 +814,7 @@ object_draft_schematic_vehicle_component_shared_extended_fuel_tank_heavy = Share
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -823,7 +823,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_exte
 
 object_draft_schematic_vehicle_component_shared_fuel_a = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -853,7 +853,7 @@ object_draft_schematic_vehicle_component_shared_fuel_a = SharedDraftSchematicObj
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -862,7 +862,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_fuel
 
 object_draft_schematic_vehicle_component_shared_fuel_b = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -892,7 +892,7 @@ object_draft_schematic_vehicle_component_shared_fuel_b = SharedDraftSchematicObj
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -901,7 +901,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_fuel
 
 object_draft_schematic_vehicle_component_shared_fuel_c = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -931,7 +931,7 @@ object_draft_schematic_vehicle_component_shared_fuel_c = SharedDraftSchematicObj
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -940,7 +940,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_fuel
 
 object_draft_schematic_vehicle_component_shared_fuel_cell_a = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -970,7 +970,7 @@ object_draft_schematic_vehicle_component_shared_fuel_cell_a = SharedDraftSchemat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -979,7 +979,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_fuel
 
 object_draft_schematic_vehicle_component_shared_fuel_cell_b = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1009,7 +1009,7 @@ object_draft_schematic_vehicle_component_shared_fuel_cell_b = SharedDraftSchemat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1018,7 +1018,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_fuel
 
 object_draft_schematic_vehicle_component_shared_fuel_cell_c = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1048,7 +1048,7 @@ object_draft_schematic_vehicle_component_shared_fuel_cell_c = SharedDraftSchemat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1057,7 +1057,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_fuel
 
 object_draft_schematic_vehicle_component_shared_hvy_blaster_power_handler = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1087,7 +1087,7 @@ object_draft_schematic_vehicle_component_shared_hvy_blaster_power_handler = Shar
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1096,7 +1096,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_hvy_
 
 object_draft_schematic_vehicle_component_shared_hvy_projectile_feed_mech = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1126,7 +1126,7 @@ object_draft_schematic_vehicle_component_shared_hvy_projectile_feed_mech = Share
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1135,7 +1135,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_hvy_
 
 object_draft_schematic_vehicle_component_shared_laser_cannon = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1165,7 +1165,7 @@ object_draft_schematic_vehicle_component_shared_laser_cannon = SharedDraftSchema
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1174,7 +1174,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_lase
 
 object_draft_schematic_vehicle_component_shared_launcher = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1204,7 +1204,7 @@ object_draft_schematic_vehicle_component_shared_launcher = SharedDraftSchematicO
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1213,7 +1213,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_laun
 
 object_draft_schematic_vehicle_component_shared_mass_driver = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1243,7 +1243,7 @@ object_draft_schematic_vehicle_component_shared_mass_driver = SharedDraftSchemat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1252,7 +1252,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_mass
 
 object_draft_schematic_vehicle_component_shared_mini_launcher_pod = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1282,7 +1282,7 @@ object_draft_schematic_vehicle_component_shared_mini_launcher_pod = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1291,7 +1291,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_mini
 
 object_draft_schematic_vehicle_component_shared_power_plant_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1321,7 +1321,7 @@ object_draft_schematic_vehicle_component_shared_power_plant_mk1 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1330,7 +1330,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_powe
 
 object_draft_schematic_vehicle_component_shared_power_plant_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1360,7 +1360,7 @@ object_draft_schematic_vehicle_component_shared_power_plant_mk2 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1369,7 +1369,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_powe
 
 object_draft_schematic_vehicle_component_shared_power_plant_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1399,7 +1399,7 @@ object_draft_schematic_vehicle_component_shared_power_plant_mk3 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1408,7 +1408,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_powe
 
 object_draft_schematic_vehicle_component_shared_proton_torpedo_array = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1438,7 +1438,7 @@ object_draft_schematic_vehicle_component_shared_proton_torpedo_array = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1447,7 +1447,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_prot
 
 object_draft_schematic_vehicle_component_shared_reactor_unit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1477,7 +1477,7 @@ object_draft_schematic_vehicle_component_shared_reactor_unit = SharedDraftSchema
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1486,7 +1486,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_reac
 
 object_draft_schematic_vehicle_component_shared_starship_module = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1516,7 +1516,7 @@ object_draft_schematic_vehicle_component_shared_starship_module = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1525,7 +1525,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_star
 
 object_draft_schematic_vehicle_component_shared_starship_module_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1555,7 +1555,7 @@ object_draft_schematic_vehicle_component_shared_starship_module_advanced = Share
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1564,7 +1564,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_star
 
 object_draft_schematic_vehicle_component_shared_starship_shield_generator_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1594,7 +1594,7 @@ object_draft_schematic_vehicle_component_shared_starship_shield_generator_mk1 = 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1603,7 +1603,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_star
 
 object_draft_schematic_vehicle_component_shared_storage_bay = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1633,7 +1633,7 @@ object_draft_schematic_vehicle_component_shared_storage_bay = SharedDraftSchemat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1642,7 +1642,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_stor
 
 object_draft_schematic_vehicle_component_shared_structural_frame = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1672,7 +1672,7 @@ object_draft_schematic_vehicle_component_shared_structural_frame = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1681,7 +1681,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_stru
 
 object_draft_schematic_vehicle_component_shared_structural_frame_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1711,7 +1711,7 @@ object_draft_schematic_vehicle_component_shared_structural_frame_advanced = Shar
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1720,7 +1720,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_stru
 
 object_draft_schematic_vehicle_component_shared_structural_reinforcement = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1750,7 +1750,7 @@ object_draft_schematic_vehicle_component_shared_structural_reinforcement = Share
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1759,7 +1759,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_stru
 
 object_draft_schematic_vehicle_component_shared_structural_reinforcement_heavy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1789,7 +1789,7 @@ object_draft_schematic_vehicle_component_shared_structural_reinforcement_heavy =
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1798,7 +1798,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_stru
 
 object_draft_schematic_vehicle_component_shared_veh_shield_generator_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1828,7 +1828,7 @@ object_draft_schematic_vehicle_component_shared_veh_shield_generator_mk1 = Share
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1837,7 +1837,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_veh_
 
 object_draft_schematic_vehicle_component_shared_veh_shield_generator_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1867,7 +1867,7 @@ object_draft_schematic_vehicle_component_shared_veh_shield_generator_mk2 = Share
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1876,7 +1876,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_veh_
 
 object_draft_schematic_vehicle_component_shared_veh_shield_generator_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1906,7 +1906,7 @@ object_draft_schematic_vehicle_component_shared_veh_shield_generator_mk3 = Share
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1915,7 +1915,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_veh_
 
 object_draft_schematic_vehicle_component_shared_vehicle_module = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1945,7 +1945,7 @@ object_draft_schematic_vehicle_component_shared_vehicle_module = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1954,7 +1954,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_vehi
 
 object_draft_schematic_vehicle_component_shared_vehicle_module_advanced = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1984,7 +1984,7 @@ object_draft_schematic_vehicle_component_shared_vehicle_module_advanced = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1993,7 +1993,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_vehi
 
 object_draft_schematic_vehicle_component_shared_warhead_launcher = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2023,7 +2023,7 @@ object_draft_schematic_vehicle_component_shared_warhead_launcher = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2032,7 +2032,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_warh
 
 object_draft_schematic_vehicle_component_shared_weapon_array = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2062,7 +2062,7 @@ object_draft_schematic_vehicle_component_shared_weapon_array = SharedDraftSchema
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2071,7 +2071,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_vehicle_component_shared_weap
 
 object_draft_schematic_vehicle_component_shared_weapon_link = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
+	arrangementDescriptor = "datapad",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2101,7 +2101,7 @@ object_draft_schematic_vehicle_component_shared_weapon_link = SharedDraftSchemat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }

@@ -43,7 +43,7 @@
 
 object_intangible_theater_shared_base_theater = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_intangible_theater_shared_base_theater = SharedIntangibleObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	surfaceType = 0
 }

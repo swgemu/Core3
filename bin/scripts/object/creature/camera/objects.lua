@@ -43,7 +43,7 @@
 
 object_creature_camera_shared_intro_camera = SharedCreatureObjectTemplate:new {
 	appearanceFilename = "appearance/intro_camera.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_creature_camera_shared_intro_camera = SharedCreatureObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/creature.iff",
+	slotDescriptor = {"inventory", "default_weapon"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_creature_camera_shared_intro_camera, 22170426
 
 object_creature_camera_shared_intro_controller = SharedCreatureObjectTemplate:new {
 	appearanceFilename = "appearance/intro_controller.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_creature_camera_shared_intro_controller = SharedCreatureObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/creature.iff",
+	slotDescriptor = {"inventory", "default_weapon"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

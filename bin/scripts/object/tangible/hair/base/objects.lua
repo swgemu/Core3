@@ -43,7 +43,7 @@
 
 object_tangible_hair_base_shared_hair_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
+	arrangementDescriptor = "hair",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_hair_base_shared_hair_base = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

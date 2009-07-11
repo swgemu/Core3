@@ -43,7 +43,7 @@
 
 object_token_base_shared_base_token = SharedTokenObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_token_base_shared_base_token = SharedTokenObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_token_base_shared_base_token, 3897855130)
 
 object_token_base_shared_token_default = SharedTokenObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -112,7 +112,7 @@ object_token_base_shared_token_default = SharedTokenObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }

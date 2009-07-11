@@ -43,7 +43,7 @@
 
 object_weapon_ranged_heavy_shared_heavy_acid_beam = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_hvy_acid_launcher.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/empty.iff",
+	arrangementDescriptor = "",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -79,7 +79,7 @@ object_weapon_ranged_heavy_shared_heavy_acid_beam = SharedWeaponObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -97,7 +97,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_heavy_shared_heavy_acid_beam, 3
 
 object_weapon_ranged_heavy_shared_heavy_lightning_beam = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_hvy_acid_launcher.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/empty.iff",
+	arrangementDescriptor = "",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -133,7 +133,7 @@ object_weapon_ranged_heavy_shared_heavy_lightning_beam = SharedWeaponObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -151,7 +151,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_heavy_shared_heavy_lightning_be
 
 object_weapon_ranged_heavy_shared_heavy_particle_beam = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_hvy_acid_launcher.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/empty.iff",
+	arrangementDescriptor = "",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -187,7 +187,7 @@ object_weapon_ranged_heavy_shared_heavy_particle_beam = SharedWeaponObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -205,7 +205,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_heavy_shared_heavy_particle_bea
 
 object_weapon_ranged_heavy_shared_heavy_rocket_launcher = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_hvy_launcher.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/empty.iff",
+	arrangementDescriptor = "",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -241,7 +241,7 @@ object_weapon_ranged_heavy_shared_heavy_rocket_launcher = SharedWeaponObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -259,7 +259,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_heavy_shared_heavy_rocket_launc
 
 object_weapon_ranged_heavy_shared_launcher = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_hvy_launcher.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/empty.iff",
+	arrangementDescriptor = "",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -295,7 +295,7 @@ object_weapon_ranged_heavy_shared_launcher = SharedWeaponObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

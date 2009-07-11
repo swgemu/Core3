@@ -43,7 +43,7 @@
 
 object_static_test_shared_test_blast = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_bls_1_red_hit_creature_01.prt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_static_test_shared_test_blast = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_static_test_shared_test_blast, 956566051)
 
 object_static_test_shared_test_blaster_bolt = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_bolt_red.prt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -112,7 +112,7 @@ object_static_test_shared_test_blaster_bolt = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -121,7 +121,7 @@ ObjectTemplates:addTemplate(object_static_test_shared_test_blaster_bolt, 1262353
 
 object_static_test_shared_test_sound_obelisk_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_obelisk_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "sample/windmill.sam",
@@ -151,7 +151,7 @@ object_static_test_shared_test_sound_obelisk_1 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -160,7 +160,7 @@ ObjectTemplates:addTemplate(object_static_test_shared_test_sound_obelisk_1, 4068
 
 object_static_test_shared_test_sound_obelisk_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_obelisk_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "sample/tie_fighter_flyby_2.sam",
@@ -190,7 +190,7 @@ object_static_test_shared_test_sound_obelisk_2 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -199,7 +199,7 @@ ObjectTemplates:addTemplate(object_static_test_shared_test_sound_obelisk_2, 6948
 
 object_static_test_shared_test_static_sandcrawler = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/sandcrawler.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -229,7 +229,7 @@ object_static_test_shared_test_static_sandcrawler = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }

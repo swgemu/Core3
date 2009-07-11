@@ -43,7 +43,7 @@
 
 object_static_creature_shared_corellia_bageraset = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bageraset_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_bageraset.cdf",
@@ -73,7 +73,7 @@ object_static_creature_shared_corellia_bageraset = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_corellia_bageraset, 27
 
 object_static_creature_shared_corellia_carrion_spat = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/carrion_spat_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_carrion_spat.cdf",
@@ -112,7 +112,7 @@ object_static_creature_shared_corellia_carrion_spat = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -121,7 +121,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_corellia_carrion_spat,
 
 object_static_creature_shared_corellia_dalyrake = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/dalyrake.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_dalyrake.cdf",
@@ -151,7 +151,7 @@ object_static_creature_shared_corellia_dalyrake = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -160,7 +160,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_corellia_dalyrake, 274
 
 object_static_creature_shared_corellia_durni = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/durni_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_carrion_spat.cdf",
@@ -190,7 +190,7 @@ object_static_creature_shared_corellia_durni = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -199,7 +199,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_corellia_durni, 304872
 
 object_static_creature_shared_corellia_gulingaw = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/gulginaw_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_gulginaw.cdf",
@@ -229,7 +229,7 @@ object_static_creature_shared_corellia_gulingaw = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -238,7 +238,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_corellia_gulingaw, 295
 
 object_static_creature_shared_corellia_krahbu = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/krahbu_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_krahbu.cdf",
@@ -268,7 +268,7 @@ object_static_creature_shared_corellia_krahbu = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -277,7 +277,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_corellia_krahbu, 26835
 
 object_static_creature_shared_corellia_murra = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/murra_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_murra.cdf",
@@ -307,7 +307,7 @@ object_static_creature_shared_corellia_murra = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -316,7 +316,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_corellia_murra, 234447
 
 object_static_creature_shared_corellia_paralope = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/swirl_prong_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_paralope.cdf",
@@ -346,7 +346,7 @@ object_static_creature_shared_corellia_paralope = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -355,7 +355,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_corellia_paralope, 137
 
 object_static_creature_shared_corellia_slice_hound = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_slice_hound_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_slice_hound.cdf",
@@ -385,7 +385,7 @@ object_static_creature_shared_corellia_slice_hound = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -394,7 +394,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_corellia_slice_hound, 
 
 object_static_creature_shared_corellia_wrix = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/gurreck_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_wrix.cdf",
@@ -424,7 +424,7 @@ object_static_creature_shared_corellia_wrix = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -433,7 +433,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_corellia_wrix, 4063038
 
 object_static_creature_shared_dantooine_bol = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bol_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_bol.cdf",
@@ -463,7 +463,7 @@ object_static_creature_shared_dantooine_bol = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -472,7 +472,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_bol, 8547578
 
 object_static_creature_shared_dantooine_huurton = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/huurton.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_huurton.cdf",
@@ -502,7 +502,7 @@ object_static_creature_shared_dantooine_huurton = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -511,7 +511,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_huurton, 193
 
 object_static_creature_shared_dantooine_picket = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/piket_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_piket.cdf",
@@ -541,7 +541,7 @@ object_static_creature_shared_dantooine_picket = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -550,7 +550,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_picket, 2303
 
 object_static_creature_shared_dantooine_quenker = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/quenker.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_quenker.cdf",
@@ -580,7 +580,7 @@ object_static_creature_shared_dantooine_quenker = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -589,7 +589,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_quenker, 215
 
 object_static_creature_shared_dantooine_thune = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thune_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_thune.cdf",
@@ -619,7 +619,7 @@ object_static_creature_shared_dantooine_thune = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -628,7 +628,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_thune, 32110
 
 object_static_creature_shared_dantooine_voritor_lizard = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/voritor_lizard_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_voritor_lizard.cdf",
@@ -658,7 +658,7 @@ object_static_creature_shared_dantooine_voritor_lizard = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -667,7 +667,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_voritor_liza
 
 object_static_creature_shared_dathomir_baz_nitch = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/baz_nitch.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_baz_nitch.cdf",
@@ -697,7 +697,7 @@ object_static_creature_shared_dathomir_baz_nitch = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -706,7 +706,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_baz_nitch, 37
 
 object_static_creature_shared_dathomir_bolma = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bolma_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_bolma.cdf",
@@ -736,7 +736,7 @@ object_static_creature_shared_dathomir_bolma = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -745,7 +745,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_bolma, 213037
 
 object_static_creature_shared_dathomir_brackaset = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/brackaset_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_brackaset.cdf",
@@ -775,7 +775,7 @@ object_static_creature_shared_dathomir_brackaset = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -784,7 +784,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_brackaset, 14
 
 object_static_creature_shared_dathomir_gaping_spider = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/gaping_spider.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_gaping_spider.cdf",
@@ -814,7 +814,7 @@ object_static_creature_shared_dathomir_gaping_spider = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -823,7 +823,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_gaping_spider
 
 object_static_creature_shared_dathomir_kwi = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/kwi_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_kwi.cdf",
@@ -853,7 +853,7 @@ object_static_creature_shared_dathomir_kwi = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -862,7 +862,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_kwi, 24754250
 
 object_static_creature_shared_dathomir_purbole = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/purbole.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_purbole.cdf",
@@ -892,7 +892,7 @@ object_static_creature_shared_dathomir_purbole = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -901,7 +901,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_purbole, 1615
 
 object_static_creature_shared_dathomir_rancor = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rancor_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_rancor.cdf",
@@ -931,7 +931,7 @@ object_static_creature_shared_dathomir_rancor = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -940,7 +940,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_rancor, 17344
 
 object_static_creature_shared_droids_21b_medical = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/droid_21b.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -970,7 +970,7 @@ object_static_creature_shared_droids_21b_medical = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -979,7 +979,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_droids_21b_medical, 63
 
 object_static_creature_shared_droids_c118 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/cll8.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1009,7 +1009,7 @@ object_static_creature_shared_droids_c118 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1018,7 +1018,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_droids_c118, 376458057
 
 object_static_creature_shared_droids_dz70 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/dz70.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1048,7 +1048,7 @@ object_static_creature_shared_droids_dz70 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1057,7 +1057,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_droids_dz70, 126824683
 
 object_static_creature_shared_droids_eg6 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eg6.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1087,7 +1087,7 @@ object_static_creature_shared_droids_eg6 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1096,7 +1096,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_droids_eg6, 3476817295
 
 object_static_creature_shared_droids_imperial_it0 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ito.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1126,7 +1126,7 @@ object_static_creature_shared_droids_imperial_it0 = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1135,7 +1135,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_droids_imperial_it0, 4
 
 object_static_creature_shared_droids_le_repair = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/le_repair.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1165,7 +1165,7 @@ object_static_creature_shared_droids_le_repair = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1174,7 +1174,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_droids_le_repair, 1273
 
 object_static_creature_shared_droids_lin_demolition = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/lin_demolition.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1204,7 +1204,7 @@ object_static_creature_shared_droids_lin_demolition = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1213,7 +1213,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_droids_lin_demolition,
 
 object_static_creature_shared_droids_mse_droid = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mouse_droid.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1243,7 +1243,7 @@ object_static_creature_shared_droids_mse_droid = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1252,7 +1252,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_droids_mse_droid, 1766
 
 object_static_creature_shared_droids_protocol_droid_gold = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/protocol_droid_gold.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1282,7 +1282,7 @@ object_static_creature_shared_droids_protocol_droid_gold = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1291,7 +1291,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_droids_protocol_droid_
 
 object_static_creature_shared_droids_r2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r2.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1321,7 +1321,7 @@ object_static_creature_shared_droids_r2 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1330,7 +1330,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_droids_r2, 1386398217)
 
 object_static_creature_shared_droids_r2_waiter = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r2_waiter_s1.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1360,7 +1360,7 @@ object_static_creature_shared_droids_r2_waiter = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1369,7 +1369,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_droids_r2_waiter, 7459
 
 object_static_creature_shared_droids_r5 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r5.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1399,7 +1399,7 @@ object_static_creature_shared_droids_r5 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1408,7 +1408,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_droids_r5, 2839669021)
 
 object_static_creature_shared_endor_arachne = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/angler_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_angler.cdf",
@@ -1438,7 +1438,7 @@ object_static_creature_shared_endor_arachne = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1447,7 +1447,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_endor_arachne, 4031936
 
 object_static_creature_shared_endor_blurrg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/blurrg_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_blurrg.cdf",
@@ -1477,7 +1477,7 @@ object_static_creature_shared_endor_blurrg = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1486,7 +1486,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_endor_blurrg, 27777680
 
 object_static_creature_shared_endor_boar_wolf = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/boar_wolf.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_boar_wolf.cdf",
@@ -1516,7 +1516,7 @@ object_static_creature_shared_endor_boar_wolf = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1525,7 +1525,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_endor_boar_wolf, 29970
 
 object_static_creature_shared_endor_bolma = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bolma.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_bolma.cdf",
@@ -1555,7 +1555,7 @@ object_static_creature_shared_endor_bolma = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1564,7 +1564,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_endor_bolma, 403004989
 
 object_static_creature_shared_endor_bordok = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bordok_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_bordok.cdf",
@@ -1594,7 +1594,7 @@ object_static_creature_shared_endor_bordok = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1603,7 +1603,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_endor_bordok, 15316159
 
 object_static_creature_shared_endor_gurrek = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/gurreck_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_gurrek.cdf",
@@ -1633,7 +1633,7 @@ object_static_creature_shared_endor_gurrek = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1642,7 +1642,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_endor_gurrek, 15250676
 
 object_static_creature_shared_endor_roba = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/roba.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_roba.cdf",
@@ -1672,7 +1672,7 @@ object_static_creature_shared_endor_roba = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1681,7 +1681,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_endor_roba, 3844520985
 
 object_static_creature_shared_imperial_at_st = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/at_st.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1711,7 +1711,7 @@ object_static_creature_shared_imperial_at_st = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1720,7 +1720,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_imperial_at_st, 319172
 
 object_static_creature_shared_lok_gurk = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/gurk_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_gurk.cdf",
@@ -1750,7 +1750,7 @@ object_static_creature_shared_lok_gurk = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1759,7 +1759,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_lok_gurk, 315951279)
 
 object_static_creature_shared_lok_gurnaset = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/gurnaset_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_gurnaset.cdf",
@@ -1789,7 +1789,7 @@ object_static_creature_shared_lok_gurnaset = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1798,7 +1798,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_lok_gurnaset, 42710660
 
 object_static_creature_shared_lok_kusak = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/kusak_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_kusak.cdf",
@@ -1828,7 +1828,7 @@ object_static_creature_shared_lok_kusak = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1837,7 +1837,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_lok_kusak, 3580345318)
 
 object_static_creature_shared_lok_langlatch = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/langlatch.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_langlatch.cdf",
@@ -1867,7 +1867,7 @@ object_static_creature_shared_lok_langlatch = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1876,7 +1876,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_lok_langlatch, 2773469
 
 object_static_creature_shared_lok_pharple = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pharple.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_pharple.cdf",
@@ -1906,7 +1906,7 @@ object_static_creature_shared_lok_pharple = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1915,7 +1915,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_lok_pharple, 357241664
 
 object_static_creature_shared_lok_snorbal = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/snorbal_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_snorbal.cdf",
@@ -1945,7 +1945,7 @@ object_static_creature_shared_lok_snorbal = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1954,7 +1954,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_lok_snorbal, 161773580
 
 object_static_creature_shared_lok_vesp = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/vesp.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_vesp.cdf",
@@ -1984,7 +1984,7 @@ object_static_creature_shared_lok_vesp = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1993,7 +1993,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_lok_vesp, 14297223)
 
 object_static_creature_shared_naboo_bolle_bol = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bolle_bol_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_bolle_bol.cdf",
@@ -2023,7 +2023,7 @@ object_static_creature_shared_naboo_bolle_bol = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2032,7 +2032,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_naboo_bolle_bol, 17675
 
 object_static_creature_shared_naboo_falumpaset = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/falumpaset_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_falumpaset.cdf",
@@ -2062,7 +2062,7 @@ object_static_creature_shared_naboo_falumpaset = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2071,7 +2071,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_naboo_falumpaset, 2263
 
 object_static_creature_shared_naboo_fambaa = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/fambaa_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_fambaa.cdf",
@@ -2101,7 +2101,7 @@ object_static_creature_shared_naboo_fambaa = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2110,7 +2110,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_naboo_fambaa, 23545044
 
 object_static_creature_shared_naboo_gualama = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/gualama_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_gualama.cdf",
@@ -2140,7 +2140,7 @@ object_static_creature_shared_naboo_gualama = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2149,7 +2149,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_naboo_gualama, 1571631
 
 object_static_creature_shared_naboo_kaadu = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/kaadu_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_kaadu.cdf",
@@ -2179,7 +2179,7 @@ object_static_creature_shared_naboo_kaadu = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2188,7 +2188,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_naboo_kaadu, 236472460
 
 object_static_creature_shared_naboo_shaupaut = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/shaupaut.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_shaupaut.cdf",
@@ -2218,7 +2218,7 @@ object_static_creature_shared_naboo_shaupaut = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2227,7 +2227,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_naboo_shaupaut, 192084
 
 object_static_creature_shared_naboo_tusk_cat = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/tusk_cat_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_tusk_cat.cdf",
@@ -2257,7 +2257,7 @@ object_static_creature_shared_naboo_tusk_cat = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2266,7 +2266,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_naboo_tusk_cat, 359397
 
 object_static_creature_shared_naboo_veermok = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/veermok.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_veermok.cdf",
@@ -2296,7 +2296,7 @@ object_static_creature_shared_naboo_veermok = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2305,7 +2305,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_naboo_veermok, 3885148
 
 object_static_creature_shared_rori_bearded_jax = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bearded_jax.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_bearded_jax.cdf",
@@ -2335,7 +2335,7 @@ object_static_creature_shared_rori_bearded_jax = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2344,7 +2344,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_rori_bearded_jax, 1608
 
 object_static_creature_shared_rori_forest_mite = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bark_mite_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_forest_mite.cdf",
@@ -2374,7 +2374,7 @@ object_static_creature_shared_rori_forest_mite = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2383,7 +2383,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_rori_forest_mite, 3736
 
 object_static_creature_shared_rori_pugoriss = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pugoriss.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_pugoriss.cdf",
@@ -2413,7 +2413,7 @@ object_static_creature_shared_rori_pugoriss = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2422,7 +2422,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_rori_pugoriss, 1151174
 
 object_static_creature_shared_rori_squall = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/squall.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_squall.cdf",
@@ -2452,7 +2452,7 @@ object_static_creature_shared_rori_squall = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2461,7 +2461,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_rori_squall, 268999089
 
 object_static_creature_shared_rori_vrobal = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/roba_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_vrobal.cdf",
@@ -2491,7 +2491,7 @@ object_static_creature_shared_rori_vrobal = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2500,7 +2500,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_rori_vrobal, 229643505
 
 object_static_creature_shared_talus_guf_drolg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/guf_drolg_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_guf_drolg.cdf",
@@ -2530,7 +2530,7 @@ object_static_creature_shared_talus_guf_drolg = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2539,7 +2539,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_talus_guf_drolg, 37376
 
 object_static_creature_shared_talus_kima = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/kima.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_kima.cdf",
@@ -2569,7 +2569,7 @@ object_static_creature_shared_talus_kima = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2578,7 +2578,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_talus_kima, 595006750)
 
 object_static_creature_shared_talus_sludge_panther = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_sand_panther_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_greater_sludge_panther.cdf",
@@ -2608,7 +2608,7 @@ object_static_creature_shared_talus_sludge_panther = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2617,7 +2617,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_talus_sludge_panther, 
 
 object_static_creature_shared_tatooine_bantha_nosaddle = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bantha.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_bantha.cdf",
@@ -2647,7 +2647,7 @@ object_static_creature_shared_tatooine_bantha_nosaddle = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2656,7 +2656,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_bantha_nosadd
 
 object_static_creature_shared_tatooine_bantha_saddle = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bantha_hue_saddle.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_bantha_saddle.cdf",
@@ -2686,7 +2686,7 @@ object_static_creature_shared_tatooine_bantha_saddle = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2695,7 +2695,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_bantha_saddle
 
 object_static_creature_shared_tatooine_cu_pa = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/cu_pa_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_cu_pa.cdf",
@@ -2725,7 +2725,7 @@ object_static_creature_shared_tatooine_cu_pa = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2734,7 +2734,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_cu_pa, 188344
 
 object_static_creature_shared_tatooine_dewback = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/dewback_saddle_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_dewback.cdf",
@@ -2764,7 +2764,7 @@ object_static_creature_shared_tatooine_dewback = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2773,7 +2773,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_dewback, 7202
 
 object_static_creature_shared_tatooine_dewback_nosaddle = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/dewback.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_dewback.cdf",
@@ -2803,7 +2803,7 @@ object_static_creature_shared_tatooine_dewback_nosaddle = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2812,7 +2812,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_dewback_nosad
 
 object_static_creature_shared_tatooine_eopie = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eopie_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_eopie.cdf",
@@ -2842,7 +2842,7 @@ object_static_creature_shared_tatooine_eopie = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2851,7 +2851,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_eopie, 262462
 
 object_static_creature_shared_tatooine_jawa = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/jawa_m.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_npc_jawa_m.cdf",
@@ -2881,7 +2881,7 @@ object_static_creature_shared_tatooine_jawa = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2890,7 +2890,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_jawa, 1052685
 
 object_static_creature_shared_tatooine_ronto = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ronto_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_ronto.cdf",
@@ -2920,7 +2920,7 @@ object_static_creature_shared_tatooine_ronto = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2929,7 +2929,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_ronto, 286414
 
 object_static_creature_shared_tatooine_sarlacc = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/sarlacc.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_sarlacc.cdf",
@@ -2959,7 +2959,7 @@ object_static_creature_shared_tatooine_sarlacc = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2968,7 +2968,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_sarlacc, 4245
 
 object_static_creature_shared_tatooine_squill = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/squill.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_squill.cdf",
@@ -2998,7 +2998,7 @@ object_static_creature_shared_tatooine_squill = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3007,7 +3007,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_squill, 14224
 
 object_static_creature_shared_tatooine_womp_rat = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/womp_rat.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_womp_rat.cdf",
@@ -3037,7 +3037,7 @@ object_static_creature_shared_tatooine_womp_rat = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3046,7 +3046,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_womp_rat, 386
 
 object_static_creature_shared_tatooine_worrt = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/worrt_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_worrt.cdf",
@@ -3076,7 +3076,7 @@ object_static_creature_shared_tatooine_worrt = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3085,7 +3085,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_worrt, 192924
 
 object_static_creature_shared_yavin4_choku = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/choku_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_choku.cdf",
@@ -3115,7 +3115,7 @@ object_static_creature_shared_yavin4_choku = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3124,7 +3124,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_choku, 36880753
 
 object_static_creature_shared_yavin4_kliknik = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/kliknik.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_kliknik.cdf",
@@ -3154,7 +3154,7 @@ object_static_creature_shared_yavin4_kliknik = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3163,7 +3163,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_kliknik, 408088
 
 object_static_creature_shared_yavin4_mamien = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mamien_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_mamien.cdf",
@@ -3193,7 +3193,7 @@ object_static_creature_shared_yavin4_mamien = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3202,7 +3202,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_mamien, 3561928
 
 object_static_creature_shared_yavin4_mawgax = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mawgax_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_mawgax.cdf",
@@ -3232,7 +3232,7 @@ object_static_creature_shared_yavin4_mawgax = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3241,7 +3241,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_mawgax, 2479758
 
 object_static_creature_shared_yavin4_skreeg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/skreeg.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_skreeg.cdf",
@@ -3271,7 +3271,7 @@ object_static_creature_shared_yavin4_skreeg = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3280,7 +3280,7 @@ ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_skreeg, 8366563
 
 object_static_creature_shared_yavin4_tybis = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/tybis_hue.sat",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_tybis.cdf",
@@ -3310,7 +3310,7 @@ object_static_creature_shared_yavin4_tybis = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }

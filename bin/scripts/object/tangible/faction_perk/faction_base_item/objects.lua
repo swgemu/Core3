@@ -43,7 +43,7 @@
 
 object_tangible_faction_perk_faction_base_item_shared_alarm_destruct = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pob_station_warning_lighthousing.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_destruct = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_share
 
 object_tangible_faction_perk_faction_base_item_shared_alarm_destruct_no_sound = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pob_station_warning_lighthousing.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_destruct_no_sound = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_share
 
 object_tangible_faction_perk_faction_base_item_shared_alarm_hack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pob_station_warning_lighthousing.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_hack = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_share
 
 object_tangible_faction_perk_faction_base_item_shared_alarm_hack_no_sound = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pob_station_warning_lighthousing.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_hack_no_sound = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

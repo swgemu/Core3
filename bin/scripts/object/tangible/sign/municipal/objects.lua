@@ -43,7 +43,7 @@
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_bank = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_bank = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_cantina = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_cantina = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_capitol = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_capitol = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_cloning = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_cloning = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_combat = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_combat = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_commerce = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_commerce = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_hospital = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_hospital = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_hotel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_hotel = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_parking = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_parking = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_shuttle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_shuttle = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_starport = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_starport = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_theater = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_theater = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_university = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_university = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",

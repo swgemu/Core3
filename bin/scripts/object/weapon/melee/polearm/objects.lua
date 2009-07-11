@@ -43,7 +43,7 @@
 
 object_weapon_melee_polearm_shared_lance_controllerfp = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_controller.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -79,7 +79,7 @@ object_weapon_melee_polearm_shared_lance_controllerfp = SharedWeaponObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -97,7 +97,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_controllerf
 
 object_weapon_melee_polearm_shared_lance_controllerfp_nightsister = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_controller.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -133,7 +133,7 @@ object_weapon_melee_polearm_shared_lance_controllerfp_nightsister = SharedWeapon
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -151,7 +151,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_controllerf
 
 object_weapon_melee_polearm_shared_lance_lightsaber_01 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s01.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -187,7 +187,7 @@ object_weapon_melee_polearm_shared_lance_lightsaber_01 = SharedWeaponObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -205,7 +205,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_lightsaber_
 
 object_weapon_melee_polearm_shared_lance_lightsaber_02 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s02.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -241,7 +241,7 @@ object_weapon_melee_polearm_shared_lance_lightsaber_02 = SharedWeaponObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -259,7 +259,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_lightsaber_
 
 object_weapon_melee_polearm_shared_lance_nightsister = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_nightsister.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -295,7 +295,7 @@ object_weapon_melee_polearm_shared_lance_nightsister = SharedWeaponObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -313,7 +313,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_nightsister
 
 object_weapon_melee_polearm_shared_lance_nightsister_npc_version = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_nightsister.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -349,7 +349,7 @@ object_weapon_melee_polearm_shared_lance_nightsister_npc_version = SharedWeaponO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -367,7 +367,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_nightsister
 
 object_weapon_melee_polearm_shared_lance_staff_janta = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_staff_wood_s01.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -403,7 +403,7 @@ object_weapon_melee_polearm_shared_lance_staff_janta = SharedWeaponObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -421,7 +421,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_staff_janta
 
 object_weapon_melee_polearm_shared_lance_staff_metal = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_staff_metal_s01.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -457,7 +457,7 @@ object_weapon_melee_polearm_shared_lance_staff_metal = SharedWeaponObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -475,7 +475,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_staff_metal
 
 object_weapon_melee_polearm_shared_lance_staff_wood_s1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_staff_wood_s01.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -511,7 +511,7 @@ object_weapon_melee_polearm_shared_lance_staff_wood_s1 = SharedWeaponObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -529,7 +529,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_staff_wood_
 
 object_weapon_melee_polearm_shared_lance_staff_wood_s2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_staff_wood_s02.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -565,7 +565,7 @@ object_weapon_melee_polearm_shared_lance_staff_wood_s2 = SharedWeaponObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -583,7 +583,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_staff_wood_
 
 object_weapon_melee_polearm_shared_lance_vibrolance = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_vibrolance.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -619,7 +619,7 @@ object_weapon_melee_polearm_shared_lance_vibrolance = SharedWeaponObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -637,7 +637,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_vibrolance,
 
 object_weapon_melee_polearm_shared_polearm_vibro_axe = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_vibroaxe.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -673,7 +673,7 @@ object_weapon_melee_polearm_shared_polearm_vibro_axe = SharedWeaponObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

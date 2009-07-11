@@ -43,7 +43,7 @@
 
 object_weapon_ranged_carbine_base_shared_carbine_base = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -79,7 +79,7 @@ object_weapon_ranged_carbine_base_shared_carbine_base = SharedWeaponObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

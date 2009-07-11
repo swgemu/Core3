@@ -43,7 +43,7 @@
 
 object_intangible_holocron_shared_newbie_mission = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ui_planet_sel_default.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_intangible_holocron_shared_newbie_mission = SharedIntangibleObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }

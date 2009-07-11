@@ -43,7 +43,7 @@
 
 object_installation_generators_shared_power_generator_fusion_style_1 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_pow_fusion_ion_u0.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -78,7 +78,7 @@ object_installation_generators_shared_power_generator_fusion_style_1 = SharedIns
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/generators/shared_generator_fusion_style_1.sfp",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_installation_generators_shared_power_generato
 
 object_installation_generators_shared_power_generator_photo_bio_style_1 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_photo_bio_u0.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -128,7 +128,7 @@ object_installation_generators_shared_power_generator_photo_bio_style_1 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/generators/shared_generator_photo_bio_style_1.sfp",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_installation_generators_shared_power_generato
 
 object_installation_generators_shared_power_generator_solar_style_1 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_pow_solar_base_u0.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -178,7 +178,7 @@ object_installation_generators_shared_power_generator_solar_style_1 = SharedInst
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/generators/shared_generator_solar_style_1.sfp",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_installation_generators_shared_power_generato
 
 object_installation_generators_shared_power_generator_wind_style_1 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_pow_wind_u0.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -228,7 +228,7 @@ object_installation_generators_shared_power_generator_wind_style_1 = SharedInsta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/generators/shared_generator_wind_style_1.sfp",

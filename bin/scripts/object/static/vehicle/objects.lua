@@ -43,7 +43,7 @@
 
 object_static_vehicle_shared_player_shuttle = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/shuttle.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_static_vehicle_shared_player_shuttle = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_static_vehicle_shared_player_shuttle, 3753376
 
 object_static_vehicle_shared_static_lambda_shuttle = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/lambda_shuttle_static_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -112,7 +112,7 @@ object_static_vehicle_shared_static_lambda_shuttle = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -121,7 +121,7 @@ ObjectTemplates:addTemplate(object_static_vehicle_shared_static_lambda_shuttle, 
 
 object_static_vehicle_shared_static_sandcrawler = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/sandcrawler.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -151,7 +151,7 @@ object_static_vehicle_shared_static_sandcrawler = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -160,7 +160,7 @@ ObjectTemplates:addTemplate(object_static_vehicle_shared_static_sandcrawler, 156
 
 object_static_vehicle_shared_static_speeder_bike = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/speeder_bike.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -190,7 +190,7 @@ object_static_vehicle_shared_static_speeder_bike = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -199,7 +199,7 @@ ObjectTemplates:addTemplate(object_static_vehicle_shared_static_speeder_bike, 13
 
 object_static_vehicle_shared_static_swoop_bike = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/swoop_bike.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -229,7 +229,7 @@ object_static_vehicle_shared_static_swoop_bike = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -238,7 +238,7 @@ ObjectTemplates:addTemplate(object_static_vehicle_shared_static_swoop_bike, 1844
 
 object_static_vehicle_shared_static_tie_bomber = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/tie_bomber.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -268,7 +268,7 @@ object_static_vehicle_shared_static_tie_bomber = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -277,7 +277,7 @@ ObjectTemplates:addTemplate(object_static_vehicle_shared_static_tie_bomber, 4082
 
 object_static_vehicle_shared_static_tie_fighter = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter_static.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -307,7 +307,7 @@ object_static_vehicle_shared_static_tie_fighter = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }

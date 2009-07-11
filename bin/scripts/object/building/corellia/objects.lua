@@ -43,7 +43,7 @@
 
 object_building_corellia_shared_association_hall_civilian_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 35,
@@ -78,7 +78,7 @@ object_building_corellia_shared_association_hall_civilian_corellia = SharedBuild
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_association_hall_civ
 
 object_building_corellia_shared_bank_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_bank_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 43,
@@ -128,7 +128,7 @@ object_building_corellia_shared_bank_corellia = SharedBuildingObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_bank_corellia, 92529
 
 object_building_corellia_shared_cantina_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 58,
@@ -178,7 +178,7 @@ object_building_corellia_shared_cantina_corellia = SharedBuildingObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_cantina_corellia, 20
 
 object_building_corellia_shared_capitol_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 70,
@@ -228,7 +228,7 @@ object_building_corellia_shared_capitol_corellia = SharedBuildingObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_capitol_corellia, 20
 
 object_building_corellia_shared_cloning_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -278,7 +278,7 @@ object_building_corellia_shared_cloning_corellia = SharedBuildingObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_cloning_corellia, 41
 
 object_building_corellia_shared_filler_block_corellia_32x16_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_block_32x16_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 19,
@@ -328,7 +328,7 @@ object_building_corellia_shared_filler_block_corellia_32x16_s01 = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_filler_block_corelli
 
 object_building_corellia_shared_filler_block_corellia_64x32_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_block_64x32_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -378,7 +378,7 @@ object_building_corellia_shared_filler_block_corellia_64x32_s01 = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_filler_block_corelli
 
 object_building_corellia_shared_filler_block_corellia_64x32_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_block_64x32_s02.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -428,7 +428,7 @@ object_building_corellia_shared_filler_block_corellia_64x32_s02 = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_filler_block_corelli
 
 object_building_corellia_shared_filler_building_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 50,
@@ -478,7 +478,7 @@ object_building_corellia_shared_filler_building_corellia_style_01 = SharedBuildi
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_core
 
 object_building_corellia_shared_filler_building_corellia_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s02.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 40,
@@ -528,7 +528,7 @@ object_building_corellia_shared_filler_building_corellia_style_02 = SharedBuildi
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_core
 
 object_building_corellia_shared_filler_building_corellia_style_03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s03.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 40,
@@ -578,7 +578,7 @@ object_building_corellia_shared_filler_building_corellia_style_03 = SharedBuildi
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_core
 
 object_building_corellia_shared_filler_building_corellia_style_04 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s04.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 52,
@@ -628,7 +628,7 @@ object_building_corellia_shared_filler_building_corellia_style_04 = SharedBuildi
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_core
 
 object_building_corellia_shared_filler_building_corellia_style_05 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s05.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 34,
@@ -678,7 +678,7 @@ object_building_corellia_shared_filler_building_corellia_style_05 = SharedBuildi
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_core
 
 object_building_corellia_shared_filler_building_corellia_style_06 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s06.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 68,
@@ -728,7 +728,7 @@ object_building_corellia_shared_filler_building_corellia_style_06 = SharedBuildi
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_core
 
 object_building_corellia_shared_filler_building_corellia_style_07 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_building_s07.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 50,
@@ -778,7 +778,7 @@ object_building_corellia_shared_filler_building_corellia_style_07 = SharedBuildi
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_filler_building_core
 
 object_building_corellia_shared_filler_historic_24x16_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_historic_24x16_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -828,7 +828,7 @@ object_building_corellia_shared_filler_historic_24x16_s01 = SharedBuildingObject
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_filler_historic_24x1
 
 object_building_corellia_shared_filler_historic_24x16_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_historic_24x16_s02.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -878,7 +878,7 @@ object_building_corellia_shared_filler_historic_24x16_s02 = SharedBuildingObject
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_filler_historic_24x1
 
 object_building_corellia_shared_filler_historic_32x16_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_historic_32x16_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 18,
@@ -928,7 +928,7 @@ object_building_corellia_shared_filler_historic_32x16_s01 = SharedBuildingObject
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_filler_historic_32x1
 
 object_building_corellia_shared_filler_historic_32x16_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_historic_32x16_s02.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 18,
@@ -978,7 +978,7 @@ object_building_corellia_shared_filler_historic_32x16_s02 = SharedBuildingObject
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_filler_historic_32x1
 
 object_building_corellia_shared_filler_slum_16x16_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_slum_16x16_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 12,
@@ -1028,7 +1028,7 @@ object_building_corellia_shared_filler_slum_16x16_s01 = SharedBuildingObjectTemp
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1043,7 +1043,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_filler_slum_16x16_s0
 
 object_building_corellia_shared_filler_slum_16x32_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_slum_16x32_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 18,
@@ -1078,7 +1078,7 @@ object_building_corellia_shared_filler_slum_16x32_s01 = SharedBuildingObjectTemp
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1093,7 +1093,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_filler_slum_16x32_s0
 
 object_building_corellia_shared_filler_slum_16x32_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_slum_16x32_s02.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 18,
@@ -1128,7 +1128,7 @@ object_building_corellia_shared_filler_slum_16x32_s02 = SharedBuildingObjectTemp
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_filler_slum_16x32_s0
 
 object_building_corellia_shared_garage_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_garage_s01_u01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 24,
@@ -1178,7 +1178,7 @@ object_building_corellia_shared_garage_corellia = SharedBuildingObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1193,7 +1193,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_garage_corellia, 114
 
 object_building_corellia_shared_guild_combat_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -1228,7 +1228,7 @@ object_building_corellia_shared_guild_combat_corellia_style_01 = SharedBuildingO
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1243,7 +1243,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_guild_combat_corelli
 
 object_building_corellia_shared_guild_commerce_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -1278,7 +1278,7 @@ object_building_corellia_shared_guild_commerce_corellia_style_01 = SharedBuildin
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1293,7 +1293,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_guild_commerce_corel
 
 object_building_corellia_shared_guild_theater_corellia_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -1328,7 +1328,7 @@ object_building_corellia_shared_guild_theater_corellia_s01 = SharedBuildingObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1343,7 +1343,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_guild_theater_corell
 
 object_building_corellia_shared_guild_university_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -1378,7 +1378,7 @@ object_building_corellia_shared_guild_university_corellia_style_01 = SharedBuild
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1393,7 +1393,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_guild_university_cor
 
 object_building_corellia_shared_hospital_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 62,
@@ -1428,7 +1428,7 @@ object_building_corellia_shared_hospital_corellia = SharedBuildingObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1443,7 +1443,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_hospital_corellia, 2
 
 object_building_corellia_shared_hospital_corellia_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -1478,7 +1478,7 @@ object_building_corellia_shared_hospital_corellia_s02 = SharedBuildingObjectTemp
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1493,7 +1493,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_hospital_corellia_s0
 
 object_building_corellia_shared_hotel_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 40,
@@ -1528,7 +1528,7 @@ object_building_corellia_shared_hotel_corellia = SharedBuildingObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1543,7 +1543,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_hotel_corellia, 3326
 
 object_building_corellia_shared_merchant_tent_corellia_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1578,7 +1578,7 @@ object_building_corellia_shared_merchant_tent_corellia_s01 = SharedBuildingObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1593,7 +1593,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_merchant_tent_corell
 
 object_building_corellia_shared_ply_corl_house_lg_s01_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -1628,7 +1628,7 @@ object_building_corellia_shared_ply_corl_house_lg_s01_fp1 = SharedBuildingObject
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1643,7 +1643,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_lg_s0
 
 object_building_corellia_shared_ply_corl_house_m_s01_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -1678,7 +1678,7 @@ object_building_corellia_shared_ply_corl_house_m_s01_fp1 = SharedBuildingObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_m_s01
 
 object_building_corellia_shared_ply_corl_house_s_s01_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -1728,7 +1728,7 @@ object_building_corellia_shared_ply_corl_house_s_s01_fp1 = SharedBuildingObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1743,7 +1743,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_s_s01
 
 object_building_corellia_shared_ply_corl_house_s_s01_fp2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -1778,7 +1778,7 @@ object_building_corellia_shared_ply_corl_house_s_s01_fp2 = SharedBuildingObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1793,7 +1793,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_s_s01
 
 object_building_corellia_shared_ply_corl_house_s_s02_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -1828,7 +1828,7 @@ object_building_corellia_shared_ply_corl_house_s_s02_fp1 = SharedBuildingObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1843,7 +1843,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_ply_corl_house_s_s02
 
 object_building_corellia_shared_salon_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 40,
@@ -1878,7 +1878,7 @@ object_building_corellia_shared_salon_corellia = SharedBuildingObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1893,7 +1893,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_salon_corellia, 4015
 
 object_building_corellia_shared_shuttleport_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_shuttleport_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 29,
@@ -1928,7 +1928,7 @@ object_building_corellia_shared_shuttleport_corellia = SharedBuildingObjectTempl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1943,7 +1943,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_shuttleport_corellia
 
 object_building_corellia_shared_skyscraper_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_skyskraper_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 42,
@@ -1978,7 +1978,7 @@ object_building_corellia_shared_skyscraper_corellia_style_01 = SharedBuildingObj
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1993,7 +1993,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_
 
 object_building_corellia_shared_skyscraper_corellia_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_skyskraper_s02.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 45,
@@ -2028,7 +2028,7 @@ object_building_corellia_shared_skyscraper_corellia_style_02 = SharedBuildingObj
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2043,7 +2043,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_
 
 object_building_corellia_shared_skyscraper_corellia_style_03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_skyskraper_s03.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 55,
@@ -2078,7 +2078,7 @@ object_building_corellia_shared_skyscraper_corellia_style_03 = SharedBuildingObj
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2093,7 +2093,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_
 
 object_building_corellia_shared_skyscraper_corellia_style_04 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_skyskraper_s04.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 55,
@@ -2128,7 +2128,7 @@ object_building_corellia_shared_skyscraper_corellia_style_04 = SharedBuildingObj
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2143,7 +2143,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_
 
 object_building_corellia_shared_skyscraper_corellia_style_05 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_skyskraper_s05.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 42,
@@ -2178,7 +2178,7 @@ object_building_corellia_shared_skyscraper_corellia_style_05 = SharedBuildingObj
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2193,7 +2193,7 @@ ObjectTemplates:addTemplate(object_building_corellia_shared_skyscraper_corellia_
 
 object_building_corellia_shared_starport_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 96,
@@ -2228,7 +2228,7 @@ object_building_corellia_shared_starport_corellia = SharedBuildingObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

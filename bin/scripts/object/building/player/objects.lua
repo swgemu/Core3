@@ -43,7 +43,7 @@
 
 object_building_player_shared_construction_structure = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_street_sign_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_building_player_shared_construction_structure = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_construction_structure
 
 object_building_player_shared_player_garage_corellia_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garage_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -128,7 +128,7 @@ object_building_player_shared_player_garage_corellia_style_01 = SharedInstallati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_garage_corellia_style_01.sfp",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_garage_corellia
 
 object_building_player_shared_player_garage_naboo_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garage_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -178,7 +178,7 @@ object_building_player_shared_player_garage_naboo_style_01 = SharedInstallationO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_garage_naboo_style_01.sfp",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_garage_naboo_st
 
 object_building_player_shared_player_garage_tatooine_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garage_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -228,7 +228,7 @@ object_building_player_shared_player_garage_tatooine_style_01 = SharedInstallati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_garage_tatooine_style_01.sfp",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_garage_tatooine
 
 object_building_player_shared_player_guildhall_corellia_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -278,7 +278,7 @@ object_building_player_shared_player_guildhall_corellia_style_01 = SharedBuildin
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_guildhall_corellia_style_01.sfp",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_guildhall_corel
 
 object_building_player_shared_player_guildhall_generic_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -328,7 +328,7 @@ object_building_player_shared_player_guildhall_generic_style_01 = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_guildhall_corellia_style_01.sfp",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_guildhall_gener
 
 object_building_player_shared_player_guildhall_naboo_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -378,7 +378,7 @@ object_building_player_shared_player_guildhall_naboo_style_01 = SharedBuildingOb
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_guildhall_naboo_style_01.sfp",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_guildhall_naboo
 
 object_building_player_shared_player_guildhall_tatooine_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -428,7 +428,7 @@ object_building_player_shared_player_guildhall_tatooine_style_01 = SharedBuildin
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_guildhall_tatooine_style_01.sfp",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_guildhall_tatoo
 
 object_building_player_shared_player_guildhall_tatooine_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -478,7 +478,7 @@ object_building_player_shared_player_guildhall_tatooine_style_02 = SharedBuildin
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_guildhall_tatooine_style_02.sfp",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_guildhall_tatoo
 
 object_building_player_shared_player_house_corellia_large_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -528,7 +528,7 @@ object_building_player_shared_player_house_corellia_large_style_01 = SharedBuild
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_corellia_large_style_01.sfp",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_
 
 object_building_player_shared_player_house_corellia_large_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -578,7 +578,7 @@ object_building_player_shared_player_house_corellia_large_style_02 = SharedBuild
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_corellia_large_style_02.sfp",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_
 
 object_building_player_shared_player_house_corellia_medium_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -628,7 +628,7 @@ object_building_player_shared_player_house_corellia_medium_style_01 = SharedBuil
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_corellia_medium_style_01.sfp",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_
 
 object_building_player_shared_player_house_corellia_medium_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -678,7 +678,7 @@ object_building_player_shared_player_house_corellia_medium_style_02 = SharedBuil
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_corellia_medium_style_02.sfp",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_
 
 object_building_player_shared_player_house_corellia_small_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -728,7 +728,7 @@ object_building_player_shared_player_house_corellia_small_style_01 = SharedBuild
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_corellia_small_style_01.sfp",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_
 
 object_building_player_shared_player_house_corellia_small_style_01_floorplan_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -778,7 +778,7 @@ object_building_player_shared_player_house_corellia_small_style_01_floorplan_02 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_corellia_small_style_01.sfp",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_
 
 object_building_player_shared_player_house_corellia_small_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -828,7 +828,7 @@ object_building_player_shared_player_house_corellia_small_style_02 = SharedBuild
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_corellia_small_style_02.sfp",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_
 
 object_building_player_shared_player_house_corellia_small_style_02_floorplan_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -878,7 +878,7 @@ object_building_player_shared_player_house_corellia_small_style_02_floorplan_02 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_corellia_small_style_02.sfp",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_
 
 object_building_player_shared_player_house_generic_large_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -928,7 +928,7 @@ object_building_player_shared_player_house_generic_large_style_01 = SharedBuildi
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_generic_large_style_01.sfp",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_l
 
 object_building_player_shared_player_house_generic_large_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -978,7 +978,7 @@ object_building_player_shared_player_house_generic_large_style_02 = SharedBuildi
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_generic_large_style_02.sfp",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_l
 
 object_building_player_shared_player_house_generic_medium_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -1028,7 +1028,7 @@ object_building_player_shared_player_house_generic_medium_style_01 = SharedBuild
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_generic_medium_style_01.sfp",
@@ -1043,7 +1043,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_m
 
 object_building_player_shared_player_house_generic_medium_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -1078,7 +1078,7 @@ object_building_player_shared_player_house_generic_medium_style_02 = SharedBuild
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_generic_medium_style_01.sfp",
@@ -1093,7 +1093,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_m
 
 object_building_player_shared_player_house_generic_small_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -1128,7 +1128,7 @@ object_building_player_shared_player_house_generic_small_style_01 = SharedBuildi
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_generic_small_style_01.sfp",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_s
 
 object_building_player_shared_player_house_generic_small_style_01_floorplan_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -1178,7 +1178,7 @@ object_building_player_shared_player_house_generic_small_style_01_floorplan_02 =
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_generic_small_style_01.sfp",
@@ -1193,7 +1193,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_s
 
 object_building_player_shared_player_house_generic_small_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -1228,7 +1228,7 @@ object_building_player_shared_player_house_generic_small_style_02 = SharedBuildi
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_generic_small_style_02.sfp",
@@ -1243,7 +1243,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_s
 
 object_building_player_shared_player_house_generic_small_style_02_floorplan_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 38,
@@ -1278,7 +1278,7 @@ object_building_player_shared_player_house_generic_small_style_02_floorplan_02 =
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_generic_small_style_02.sfp",
@@ -1293,7 +1293,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_s
 
 object_building_player_shared_player_house_naboo_large_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 36,
@@ -1328,7 +1328,7 @@ object_building_player_shared_player_house_naboo_large_style_01 = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_naboo_large_style_01.sfp",
@@ -1343,7 +1343,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_naboo_lar
 
 object_building_player_shared_player_house_naboo_medium_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 36,
@@ -1378,7 +1378,7 @@ object_building_player_shared_player_house_naboo_medium_style_01 = SharedBuildin
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_naboo_medium_style_01.sfp",
@@ -1393,7 +1393,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_naboo_med
 
 object_building_player_shared_player_house_naboo_small_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 36,
@@ -1428,7 +1428,7 @@ object_building_player_shared_player_house_naboo_small_style_01 = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_naboo_small_style_01.sfp",
@@ -1443,7 +1443,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_naboo_sma
 
 object_building_player_shared_player_house_naboo_small_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 36,
@@ -1478,7 +1478,7 @@ object_building_player_shared_player_house_naboo_small_style_02 = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_naboo_small_style_02.sfp",
@@ -1493,7 +1493,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_naboo_sma
 
 object_building_player_shared_player_house_tatooine_large_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 36,
@@ -1528,7 +1528,7 @@ object_building_player_shared_player_house_tatooine_large_style_01 = SharedBuild
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_tatooine_large_style_01.sfp",
@@ -1543,7 +1543,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_tatooine_
 
 object_building_player_shared_player_house_tatooine_medium_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 36,
@@ -1578,7 +1578,7 @@ object_building_player_shared_player_house_tatooine_medium_style_01 = SharedBuil
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_tatooine_medium_style_01.sfp",
@@ -1593,7 +1593,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_tatooine_
 
 object_building_player_shared_player_house_tatooine_small_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 36,
@@ -1628,7 +1628,7 @@ object_building_player_shared_player_house_tatooine_small_style_01 = SharedBuild
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_tatooine_small_style_01.sfp",
@@ -1643,7 +1643,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_tatooine_
 
 object_building_player_shared_player_house_tatooine_small_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 36,
@@ -1678,7 +1678,7 @@ object_building_player_shared_player_house_tatooine_small_style_02 = SharedBuild
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_tatooine_small_style_02.sfp",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_house_tatooine_
 
 object_building_player_shared_player_merchant_tent_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 36,
@@ -1728,7 +1728,7 @@ object_building_player_shared_player_merchant_tent_style_01 = SharedBuildingObje
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_merchant_tent.sfp",
@@ -1743,7 +1743,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_merchant_tent_s
 
 object_building_player_shared_player_merchant_tent_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 36,
@@ -1778,7 +1778,7 @@ object_building_player_shared_player_merchant_tent_style_02 = SharedBuildingObje
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_merchant_tent.sfp",
@@ -1793,7 +1793,7 @@ ObjectTemplates:addTemplate(object_building_player_shared_player_merchant_tent_s
 
 object_building_player_shared_player_merchant_tent_style_03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 36,
@@ -1828,7 +1828,7 @@ object_building_player_shared_player_merchant_tent_style_03 = SharedBuildingObje
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_merchant_tent.sfp",

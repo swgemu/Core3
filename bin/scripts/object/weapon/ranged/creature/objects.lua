@@ -43,7 +43,7 @@
 
 object_weapon_ranged_creature_shared_creature_spit_heavy_flame = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -79,7 +79,7 @@ object_weapon_ranged_creature_shared_creature_spit_heavy_flame = SharedWeaponObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -97,7 +97,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_h
 
 object_weapon_ranged_creature_shared_creature_spit_large_green = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -133,7 +133,7 @@ object_weapon_ranged_creature_shared_creature_spit_large_green = SharedWeaponObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -151,7 +151,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_l
 
 object_weapon_ranged_creature_shared_creature_spit_large_red = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -187,7 +187,7 @@ object_weapon_ranged_creature_shared_creature_spit_large_red = SharedWeaponObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -205,7 +205,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_l
 
 object_weapon_ranged_creature_shared_creature_spit_large_toxicgreen = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -241,7 +241,7 @@ object_weapon_ranged_creature_shared_creature_spit_large_toxicgreen = SharedWeap
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -259,7 +259,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_l
 
 object_weapon_ranged_creature_shared_creature_spit_large_yellow = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -295,7 +295,7 @@ object_weapon_ranged_creature_shared_creature_spit_large_yellow = SharedWeaponOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -313,7 +313,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_l
 
 object_weapon_ranged_creature_shared_creature_spit_lightning_ball = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -349,7 +349,7 @@ object_weapon_ranged_creature_shared_creature_spit_lightning_ball = SharedWeapon
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -367,7 +367,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_l
 
 object_weapon_ranged_creature_shared_creature_spit_particle_beam = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -403,7 +403,7 @@ object_weapon_ranged_creature_shared_creature_spit_particle_beam = SharedWeaponO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -421,7 +421,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_p
 
 object_weapon_ranged_creature_shared_creature_spit_small_green = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -457,7 +457,7 @@ object_weapon_ranged_creature_shared_creature_spit_small_green = SharedWeaponObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -475,7 +475,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_s
 
 object_weapon_ranged_creature_shared_creature_spit_small_red = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -511,7 +511,7 @@ object_weapon_ranged_creature_shared_creature_spit_small_red = SharedWeaponObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -529,7 +529,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_s
 
 object_weapon_ranged_creature_shared_creature_spit_small_toxicgreen = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -565,7 +565,7 @@ object_weapon_ranged_creature_shared_creature_spit_small_toxicgreen = SharedWeap
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -583,7 +583,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_s
 
 object_weapon_ranged_creature_shared_creature_spit_small_yellow = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -619,7 +619,7 @@ object_weapon_ranged_creature_shared_creature_spit_small_yellow = SharedWeaponOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -637,7 +637,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_s
 
 object_weapon_ranged_creature_shared_creature_spit_spray_green = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -673,7 +673,7 @@ object_weapon_ranged_creature_shared_creature_spit_spray_green = SharedWeaponObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -691,7 +691,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_s
 
 object_weapon_ranged_creature_shared_creature_spit_spray_red = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -727,7 +727,7 @@ object_weapon_ranged_creature_shared_creature_spit_spray_red = SharedWeaponObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -745,7 +745,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_s
 
 object_weapon_ranged_creature_shared_creature_spit_spray_toxicgreen = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -781,7 +781,7 @@ object_weapon_ranged_creature_shared_creature_spit_spray_toxicgreen = SharedWeap
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -799,7 +799,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_s
 
 object_weapon_ranged_creature_shared_creature_spit_spray_yellow = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -835,7 +835,7 @@ object_weapon_ranged_creature_shared_creature_spit_spray_yellow = SharedWeaponOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

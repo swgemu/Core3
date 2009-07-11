@@ -43,7 +43,7 @@
 
 object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bicep_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s02_bicep_l_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_l.iff",
+	arrangementDescriptor = "bicep_l",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bicep_l =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_sh
 
 object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s02_bicep_r_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_r.iff",
+	arrangementDescriptor = "bicep_r",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bicep_r =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_sh
 
 object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s02_boots_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shoe.iff",
+	arrangementDescriptor = "shoes",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_boots = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_sh
 
 object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s02_bracer_l_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_l.iff",
+	arrangementDescriptor = "bracer_upper_l",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bracer_l 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_sh
 
 object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s02_bracer_r_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_r.iff",
+	arrangementDescriptor = "bracer_upper_r",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bracer_r 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_sh
 
 object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s02_chest_plate_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
+	arrangementDescriptor = "chest2",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_chest_pla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_sh
 
 object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s02_gloves_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves.iff",
+	arrangementDescriptor = "gloves",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_gloves = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_sh
 
 object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s02_helmet_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_helmet = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_sh
 
 object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_armor_s02_leggings_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
+	arrangementDescriptor = "pants1",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_leggings 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

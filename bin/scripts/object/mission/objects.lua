@@ -43,7 +43,7 @@
 
 object_mission_shared_mission_data_object = SharedMissionDataObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_mission_shared_mission_data_object = SharedMissionDataObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_mission_shared_mission_data_object, 320560857
 
 object_mission_shared_mission_list_entry_object = SharedMissionListEntryObjectTemplate:new {
 	appearanceFilename = "appearance/ui_destroy.spr",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -112,7 +112,7 @@ object_mission_shared_mission_list_entry_object = SharedMissionListEntryObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/mission_list_entry.iff",
+	slotDescriptor = {"token_creator", "token_end_location", "token_target", "token_start_location"},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -121,7 +121,7 @@ ObjectTemplates:addTemplate(object_mission_shared_mission_list_entry_object, 272
 
 object_mission_shared_mission_object = SharedMissionObjectTemplate:new {
 	appearanceFilename = "appearance/ui_destroy.spr",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -151,7 +151,7 @@ object_mission_shared_mission_object = SharedMissionObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }

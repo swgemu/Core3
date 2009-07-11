@@ -43,7 +43,7 @@
 
 object_installation_faction_perk_turret_base_shared_faction_turret_base = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_lg_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -78,7 +78,7 @@ object_installation_faction_perk_turret_base_shared_faction_turret_base = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/turret/turret_base.sfp",

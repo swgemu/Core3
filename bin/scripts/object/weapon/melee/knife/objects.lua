@@ -43,7 +43,7 @@
 
 object_weapon_melee_knife_shared_knife_dagger = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_knife_dagger.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -79,7 +79,7 @@ object_weapon_melee_knife_shared_knife_dagger = SharedWeaponObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -97,7 +97,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_dagger, 40400
 
 object_weapon_melee_knife_shared_knife_donkuwah = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_knife_stone.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -133,7 +133,7 @@ object_weapon_melee_knife_shared_knife_donkuwah = SharedWeaponObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -151,7 +151,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_donkuwah, 532
 
 object_weapon_melee_knife_shared_knife_janta = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_knife_stone.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -187,7 +187,7 @@ object_weapon_melee_knife_shared_knife_janta = SharedWeaponObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -205,7 +205,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_janta, 225518
 
 object_weapon_melee_knife_shared_knife_stone = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_knife_stone.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -241,7 +241,7 @@ object_weapon_melee_knife_shared_knife_stone = SharedWeaponObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -259,7 +259,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_stone, 121855
 
 object_weapon_melee_knife_shared_knife_stone_noob = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_knife_stone.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -295,7 +295,7 @@ object_weapon_melee_knife_shared_knife_stone_noob = SharedWeaponObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -313,7 +313,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_stone_noob, 1
 
 object_weapon_melee_knife_shared_knife_survival = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_knife_survival.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -349,7 +349,7 @@ object_weapon_melee_knife_shared_knife_survival = SharedWeaponObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -367,7 +367,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_survival, 530
 
 object_weapon_melee_knife_shared_knife_vibroblade = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_vibroblade.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -403,7 +403,7 @@ object_weapon_melee_knife_shared_knife_vibroblade = SharedWeaponObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -421,7 +421,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_vibroblade, 4
 
 object_weapon_melee_knife_shared_knife_vibroblade_quest = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_vibroblade.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -457,7 +457,7 @@ object_weapon_melee_knife_shared_knife_vibroblade_quest = SharedWeaponObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
+	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

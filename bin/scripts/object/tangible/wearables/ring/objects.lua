@@ -43,7 +43,7 @@
 
 object_tangible_wearables_ring_shared_aakuan_ring = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ring_s01.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/ring_either.iff",
+	arrangementDescriptor = "ring_l",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_wearables_ring_shared_aakuan_ring = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_aakuan_ring, 9
 
 object_tangible_wearables_ring_shared_ring_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/ring_either.iff",
+	arrangementDescriptor = "ring_l",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_wearables_ring_shared_ring_base = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_base, 413
 
 object_tangible_wearables_ring_shared_ring_mark_hero = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ring_quest_hero.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/ring_either.iff",
+	arrangementDescriptor = "ring_l",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_wearables_ring_shared_ring_mark_hero = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_mark_hero
 
 object_tangible_wearables_ring_shared_ring_nightsister = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ring_s03.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/ring_either.iff",
+	arrangementDescriptor = "ring_l",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_wearables_ring_shared_ring_nightsister = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_nightsist
 
 object_tangible_wearables_ring_shared_ring_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ring_s01.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/ring_either.iff",
+	arrangementDescriptor = "ring_l",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_wearables_ring_shared_ring_s01 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_s01, 1300
 
 object_tangible_wearables_ring_shared_ring_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ring_s02.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/ring_either.iff",
+	arrangementDescriptor = "ring_l",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_wearables_ring_shared_ring_s02 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_s02, 2526
 
 object_tangible_wearables_ring_shared_ring_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ring_s03.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/ring_either.iff",
+	arrangementDescriptor = "ring_l",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_wearables_ring_shared_ring_s03 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_s03, 3751
 
 object_tangible_wearables_ring_shared_ring_s03_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ring_s03.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/ring_either.iff",
+	arrangementDescriptor = "ring_l",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_wearables_ring_shared_ring_s03_quest = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_s03_quest
 
 object_tangible_wearables_ring_shared_ring_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ring_s04.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/ring_either.iff",
+	arrangementDescriptor = "ring_l",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_wearables_ring_shared_ring_s04 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

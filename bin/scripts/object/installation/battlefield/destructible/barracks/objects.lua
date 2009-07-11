@@ -43,7 +43,7 @@
 
 object_installation_battlefield_destructible_barracks_shared_bfield_gungan_barracks = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_relic_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -78,7 +78,7 @@ object_installation_battlefield_destructible_barracks_shared_bfield_gungan_barra
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_barracks.sfp",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_installation_battlefield_destructible_barrack
 
 object_installation_battlefield_destructible_barracks_shared_bfield_nightsister_barracks = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_tent_house_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -128,7 +128,7 @@ object_installation_battlefield_destructible_barracks_shared_bfield_nightsister_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_barracks.sfp",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_installation_battlefield_destructible_barrack
 
 object_installation_battlefield_destructible_barracks_shared_rebel_infantry_barracks = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_base_lookout_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -178,7 +178,7 @@ object_installation_battlefield_destructible_barracks_shared_rebel_infantry_barr
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_barracks.sfp",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_installation_battlefield_destructible_barrack
 
 object_installation_battlefield_destructible_barracks_shared_storm_trooper_barracks = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_base_lookout_s01.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -228,7 +228,7 @@ object_installation_battlefield_destructible_barracks_shared_storm_trooper_barra
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_barracks.sfp",

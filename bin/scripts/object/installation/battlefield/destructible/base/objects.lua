@@ -43,7 +43,7 @@
 
 object_installation_battlefield_destructible_base_shared_base_destructible_building = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_factory_organic.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -78,7 +78,7 @@ object_installation_battlefield_destructible_base_shared_base_destructible_build
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/battlefield/shared_destructible_base.sfp",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_installation_battlefield_destructible_base_sh
 
 object_installation_battlefield_destructible_base_shared_construction_base_destructible_building = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -128,7 +128,7 @@ object_installation_battlefield_destructible_base_shared_construction_base_destr
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/battlefield/shared_destructible_base.sfp",

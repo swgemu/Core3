@@ -43,7 +43,7 @@
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_belt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_zam_wesell_belt_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
+	arrangementDescriptor = "utility_belt",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_belt = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_zam_wesell_boots_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shoe.iff",
+	arrangementDescriptor = "shoes",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_boots = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_zam_wesell_chest_plate_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
+	arrangementDescriptor = "chest2",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_zam_wesell_chest_plate_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
+	arrangementDescriptor = "chest2",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate_quest = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_zam_wesell_gloves_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gauntlets_long.iff",
+	arrangementDescriptor = "gloves",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_gloves = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_zam_wesell_helmet_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_zam_wesell_helmet_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
+	arrangementDescriptor = "hat",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet_quest = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_zam_wesell_pants_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/skirt.iff",
+	arrangementDescriptor = "pants1",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_zam_wesell_pants_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/skirt.iff",
+	arrangementDescriptor = "pants1",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants_quest = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

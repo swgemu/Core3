@@ -43,7 +43,7 @@
 
 object_weapon_mine_base_shared_mine_base = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/mockup_e11.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -79,7 +79,7 @@ object_weapon_mine_base_shared_mine_base = SharedWeaponObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

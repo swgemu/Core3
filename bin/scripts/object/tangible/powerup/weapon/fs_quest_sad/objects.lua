@@ -43,7 +43,7 @@
 
 object_tangible_powerup_weapon_fs_quest_sad_shared_melee_speed_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_melee_weapon.apt",
-	arrangementDescriptorFilename = "",
+	arrangementDescriptor = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_powerup_weapon_fs_quest_sad_shared_melee_speed_quest = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "",
+	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

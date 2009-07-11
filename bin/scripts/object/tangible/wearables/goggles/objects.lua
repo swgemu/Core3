@@ -43,7 +43,7 @@
 
 object_tangible_wearables_goggles_shared_goggles_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/goggles_s01_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/eyes.iff",
+	arrangementDescriptor = "eyes",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_wearables_goggles_shared_goggles_s01 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_goggles_shared_goggles_s01
 
 object_tangible_wearables_goggles_shared_goggles_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/goggles_s02_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/eyes.iff",
+	arrangementDescriptor = "eyes",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_wearables_goggles_shared_goggles_s02 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_goggles_shared_goggles_s02
 
 object_tangible_wearables_goggles_shared_goggles_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/goggles_s03_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/eyes.iff",
+	arrangementDescriptor = "eyes",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_wearables_goggles_shared_goggles_s03 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_goggles_shared_goggles_s03
 
 object_tangible_wearables_goggles_shared_goggles_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/goggles_s04_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/eyes.iff",
+	arrangementDescriptor = "eyes",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_wearables_goggles_shared_goggles_s04 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_goggles_shared_goggles_s04
 
 object_tangible_wearables_goggles_shared_goggles_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/goggles_s05_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/eyes.iff",
+	arrangementDescriptor = "eyes",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_wearables_goggles_shared_goggles_s05 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_goggles_shared_goggles_s05
 
 object_tangible_wearables_goggles_shared_goggles_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/goggles_s06_f.sat",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/eyes.iff",
+	arrangementDescriptor = "eyes",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_wearables_goggles_shared_goggles_s06 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_goggles_shared_goggles_s06
 
 object_tangible_wearables_goggles_shared_rebreather = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_acc_a99_aquata_breather.apt",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/eyes.iff",
+	arrangementDescriptor = "eyes",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_wearables_goggles_shared_rebreather = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	slotDescriptor = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -43,7 +43,7 @@
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_anakin.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -79,7 +79,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_ge
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -97,7 +97,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_anakin.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -133,7 +133,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_ge
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -151,7 +151,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_anakin.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -187,7 +187,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_ge
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -205,7 +205,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_anakin.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -241,7 +241,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_ge
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -259,7 +259,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_gen5 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_anakin.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -295,7 +295,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_ge
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -313,7 +313,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_anakin.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -349,7 +349,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -367,7 +367,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s10 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_quigon.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -403,7 +403,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -421,7 +421,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s10_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_quigon.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -457,7 +457,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -475,7 +475,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s10_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_quigon.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -511,7 +511,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -529,7 +529,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s10_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_quigon.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -565,7 +565,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -583,7 +583,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s10_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_quigon.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -619,7 +619,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -637,7 +637,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s11 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_sleekblack.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -673,7 +673,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -691,7 +691,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s11_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_sleekblack.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -727,7 +727,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -745,7 +745,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s11_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_sleekblack.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -781,7 +781,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -799,7 +799,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s11_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_sleekblack.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -835,7 +835,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -853,7 +853,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s11_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_sleekblack.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -889,7 +889,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -907,7 +907,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s12 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_sleeksilver.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -943,7 +943,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -961,7 +961,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s12_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_sleeksilver.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -997,7 +997,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1015,7 +1015,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s12_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_sleeksilver.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1051,7 +1051,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1069,7 +1069,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s12_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_sleeksilver.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1105,7 +1105,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1123,7 +1123,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s12_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_sleeksilver.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1159,7 +1159,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1177,7 +1177,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s13 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_vader.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1213,7 +1213,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1231,7 +1231,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s13_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_vader.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1267,7 +1267,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1285,7 +1285,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s13_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_vader.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1321,7 +1321,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1339,7 +1339,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s13_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_vader.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1375,7 +1375,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1393,7 +1393,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s13_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_vader.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1429,7 +1429,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1447,7 +1447,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_anakin.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1483,7 +1483,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1501,7 +1501,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_anakin.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1537,7 +1537,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1555,7 +1555,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_anakin.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1591,7 +1591,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1609,7 +1609,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_anakin.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1645,7 +1645,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1663,7 +1663,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_andael.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1699,7 +1699,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s2
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1717,7 +1717,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s2_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_andael.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1753,7 +1753,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s2
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1771,7 +1771,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s2_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_andael.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1807,7 +1807,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s2
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1825,7 +1825,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s2_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_andael.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1861,7 +1861,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s2
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1879,7 +1879,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s2_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_andael.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1915,7 +1915,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s2
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1933,7 +1933,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_ben.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1969,7 +1969,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s3
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1987,7 +1987,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s3_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_ben.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -2023,7 +2023,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s3
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2041,7 +2041,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s3_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_ben.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -2077,7 +2077,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s3
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2095,7 +2095,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s3_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_ben.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -2131,7 +2131,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s3
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2149,7 +2149,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s3_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_ben.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -2185,7 +2185,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s3
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2203,7 +2203,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_dugald.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -2239,7 +2239,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s4
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2257,7 +2257,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s4_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_dugald.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -2293,7 +2293,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s4
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2311,7 +2311,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s4_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_dugald.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -2347,7 +2347,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s4
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2365,7 +2365,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s4_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_dugald.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -2401,7 +2401,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s4
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2419,7 +2419,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s4_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_dugald.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -2455,7 +2455,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s4
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2473,7 +2473,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s5 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_leather.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -2509,7 +2509,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s5
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2527,7 +2527,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s5_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_leather.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -2563,7 +2563,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s5
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2581,7 +2581,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s5_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_leather.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -2617,7 +2617,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s5
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2635,7 +2635,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s5_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_leather.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -2671,7 +2671,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s5
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2689,7 +2689,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s5_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_leather.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -2725,7 +2725,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s5
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2743,7 +2743,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s6 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_luke.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -2779,7 +2779,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s6
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2797,7 +2797,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s6_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_luke.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -2833,7 +2833,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s6
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2851,7 +2851,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s6_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_luke.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -2887,7 +2887,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s6
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2905,7 +2905,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s6_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_luke.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -2941,7 +2941,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s6
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2959,7 +2959,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s6_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_luke.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -2995,7 +2995,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s6
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3013,7 +3013,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s7 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_mace.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -3049,7 +3049,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s7
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3067,7 +3067,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s7_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_mace.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -3103,7 +3103,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s7
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3121,7 +3121,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s7_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_mace.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -3157,7 +3157,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s7
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3175,7 +3175,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s7_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_mace.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -3211,7 +3211,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s7
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3229,7 +3229,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s7_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_mace.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -3265,7 +3265,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s7
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3283,7 +3283,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s8 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_nebu.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -3319,7 +3319,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s8
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3337,7 +3337,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s8_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_nebu.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -3373,7 +3373,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s8
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3391,7 +3391,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s8_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_nebu.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -3427,7 +3427,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s8
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3445,7 +3445,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s8_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_nebu.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -3481,7 +3481,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s8
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3499,7 +3499,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s8_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_nebu.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -3535,7 +3535,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s8
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3553,7 +3553,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s9 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_obi.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -3589,7 +3589,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s9
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3607,7 +3607,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s9_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_obi.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -3643,7 +3643,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s9
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3661,7 +3661,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s9_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_obi.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -3697,7 +3697,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s9
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3715,7 +3715,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s9_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_obi.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -3751,7 +3751,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s9
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3769,7 +3769,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sw
 
 object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s9_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_obi.lsb",
-	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
+	arrangementDescriptor = "hold_r",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -3805,7 +3805,7 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s9
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
+	slotDescriptor = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
