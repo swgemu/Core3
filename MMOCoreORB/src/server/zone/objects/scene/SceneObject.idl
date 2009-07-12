@@ -61,6 +61,8 @@ include server.zone.ZoneClientSession;
 
 import server.zone.objects.scene.variables.StringId;
 
+//import server.zone.objects.scene.variables.SceneObjectReference;
+
 class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, native Serializable {
 	protected ZoneProcessServerImplementation server;
 	
@@ -85,6 +87,16 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 	protected unsigned int containerType;
 	protected unsigned int containerVolumeLimit;
 	protected unsigned int gameObjectType; 
+	
+	public void addSerializableVariables();
+	
+	public void serialize(string data) {
+		Serializable.serialize(data);
+	}
+	
+	public void deSerialize(final string data) {
+		Serializable.deSerialize(data);
+	}
 	
 	public static boolean registered;
 	

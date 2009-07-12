@@ -67,6 +67,8 @@ class TangibleObject extends SceneObject {
 	
 	protected Vector<SceneObject > defenderList;
 	protected unsigned int defenderListUpdateCounter;
+	
+	public void addSerializableVariables();
 	 
 	public static boolean registered;
 	
