@@ -67,4 +67,18 @@ TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templ, Sce
 	optionsBitmask = 0;
 
 	defenderList = new Vector<SceneObject*>();
+
+	addSerializableVariables();
+}
+
+void TangibleObjectImplementation::addSerializableVariables() {
+	addSerializableVariable("targetable", &targetable);
+	addSerializableVariable("complexity", &complexity);
+	addSerializableVariable("volume", &volume);
+	addSerializableVariable("unknownByte", &unknownByte);
+	addSerializableVariable("objectCount", &objectCount);
+	addSerializableVariable("conditionDamage", &conditionDamage);
+	addSerializableVariable("maxCondition", &maxCondition);
+	addSerializableVariable("optionsBitmask", &optionsBitmask);
+	addSerializableVariable("defenderList", defenderList);
 }

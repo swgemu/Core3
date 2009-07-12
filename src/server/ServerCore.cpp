@@ -256,6 +256,13 @@ void ServerCore::handleCommands() {
 				zoneServer->fixScheduler();*/
 
 				SceneObject* object = ObjectManager::instance()->createObject(0xA4ADAAE6);
+				String data;
+				object->serialize(data);
+				System::out << data << "\n";
+				object->deSerialize(data);
+				data = "";
+				object->serialize(data);
+				System::out << data;
 				/*String name;
 				object->getFullObjectName(name);
 

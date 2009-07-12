@@ -53,7 +53,7 @@ which carries forward this exception.
 
 bool SceneObjectImplementation::registered = ObjectManager::objectFactory.registerObject<SceneObject>(0);
 
-SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData, SceneObject* parent) {
+SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData, SceneObject* parent) : Serializable() {
 	SceneObjectImplementation::parent = parent;
 
 	children = new VectorMap<uint32, SceneObject*>();
@@ -71,6 +71,20 @@ SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData, Sc
 	/*arrangementDescriptor = String();
 	arrangementDescriptor = templateData->getStringField("arrangementDescriptor");*/
 
+
+	addSerializableVariables();
+}
+
+void SceneObjectImplementation::addSerializableVariables() {
+	addSerializableVariable("parent", parent);
+	addSerializableVariable("children", children);
+	addSerializableVariable("objectCRC", &objectCRC);
+	addSerializableVariable("direction", direction);
+	addSerializableVariable("objectName", objectName);
+	addSerializableVariable("detailedDescription", detailedDescription);
+	addSerializableVariable("containerType", &containerType);
+	addSerializableVariable("containerVolumeLimit", &containerVolumeLimit);
+	addSerializableVariable("gameObjectType", &gameObjectType);
 }
 
 void SceneObjectImplementation::create(ZoneClientSession* client) {

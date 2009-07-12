@@ -54,13 +54,91 @@ bool CreatureObjectImplementation::registered4 = ObjectManager::objectFactory.re
 CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templ, SceneObject* parent) :
 	TangibleObjectImplementation(templ, parent) {
 
+	bankCredits = 0;
+	cashCredits = 0;
+
+	posture = 0;
+	factionRank = 0;
+
+	creatureLinkID = 0;
+
+	shockWounds = 0.f;
+
+	stateBitmask = 0;
+
+	speed = 0.f;
+
+	terrainNegotiation = 0.f;
+
+	acceleration = 0.f;
+
+	listenToID = 0;
+
+	level = 0;
+
+	weaponID = 0;
+	groupID = 0;
+	groupInviterID = 0;
+	groupInviteCounter = 0;
+	guildID = 0;
+	targetID = 0;
+	moodID = 0;
+	performanceCounter = 0;
+	instrumentID = 0;
+
 	encumbrances = new Vector<int>(3, 1);
+	encumbrancesUpdateCounter = 0;
+
 	baseHealth = new Vector<int>(9, 1);
+	baseHealthUpdateCounter = 0;
+
 	wounds = new Vector<int>(9, 1);
+	woundsUpdateCounter = 0;
+
 	hamList = new Vector<int>(9, 1);
+	hamListUpdateCounter = 0;
+
 	maxHamList = new Vector<int>(9, 1);
+	maxHamListUpdateCounter = 0;
 
+	frozen = 0;
 
+	addSerializableVariables();
+}
+
+void CreatureObjectImplementation::addSerializableVariables() {
+	addSerializableVariable("bankCredits", &bankCredits);
+	addSerializableVariable("cashCredits", &cashCredits);
+	addSerializableVariable("posture", &posture);
+	addSerializableVariable("factionRank", &factionRank);
+	addSerializableVariable("creatureLinkID", &creatureLinkID);
+	addSerializableVariable("shockWounds", &shockWounds);
+	addSerializableVariable("stateBitmask", &stateBitmask);
+	addSerializableVariable("speed", &speed);
+	addSerializableVariable("terrainNegotiation", &terrainNegotiation);
+	addSerializableVariable("acceleration", &acceleration);
+	addSerializableVariable("listenToID", &listenToID);
+	addSerializableVariable("level", &level);
+	addSerializableVariable("weaponID", &weaponID);
+	addSerializableVariable("groupID", &groupID);
+	addSerializableVariable("groupInviterID", &groupInviterID);
+	addSerializableVariable("groupInviteCounter", &groupInviteCounter);
+	addSerializableVariable("guildID", &guildID);
+	addSerializableVariable("targetID", &targetID);
+	addSerializableVariable("moodID", &moodID);
+	addSerializableVariable("performanceCounter", &performanceCounter);
+	addSerializableVariable("instrumentID", &instrumentID);
+	addSerializableVariable("encumbrances", encumbrances);
+	addSerializableVariable("encumbrancesUpdateCounter", &encumbrancesUpdateCounter);
+	addSerializableVariable("baseHealth", baseHealth);
+	addSerializableVariable("baseHealthUpdateCounter", &baseHealthUpdateCounter);
+	addSerializableVariable("wounds", wounds);
+	addSerializableVariable("woundsUpdateCounter", &woundsUpdateCounter);
+	addSerializableVariable("hamList", hamList);
+	addSerializableVariable("hamListUpdateCounter", &hamListUpdateCounter);
+	addSerializableVariable("maxHamList", maxHamList);
+	addSerializableVariable("maxHamListUpdateCounter", &maxHamListUpdateCounter);
+	addSerializableVariable("frozen", &frozen);
 }
 
 

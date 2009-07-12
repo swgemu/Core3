@@ -55,6 +55,8 @@ StringId::StringId(const String& fullPath) {
 		tokenizer.getStringToken(file);
 		tokenizer.getStringToken(stringID);
 	}
+
+	addSerializableVariables();
 }
 
 StringId::StringId(const String& fil, const String& stringId) {
