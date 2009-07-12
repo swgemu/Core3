@@ -42,18 +42,26 @@
 
 
 object_mobile_naboo_npc_shared_thrawn = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/chiss_m.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/npc/client_shared_npc_dressed_thrawn.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -61,10 +69,14 @@ object_mobile_naboo_npc_shared_thrawn = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "@npc_lookat:human_base_male",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 0,
 	noBuildRadius = 0,
 
 	objectName = "@npc_name:human_base_male",
@@ -72,38 +84,58 @@ object_mobile_naboo_npc_shared_thrawn = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 0,
 	socketDestinations = {},
+	species = 0,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_mobile_naboo_npc_shared_thrawn, 721694525)
 
 object_mobile_naboo_npc_shared_veers = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/npc/client_shared_npc_dressed_imperial_colonel_veers.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -111,10 +143,14 @@ object_mobile_naboo_npc_shared_veers = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "@npc_lookat:human_base_male",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 0,
 	noBuildRadius = 0,
 
 	objectName = "@npc_name:human_base_male",
@@ -122,21 +158,33 @@ object_mobile_naboo_npc_shared_veers = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 0,
 	socketDestinations = {},
+	species = 0,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_mobile_naboo_npc_shared_veers, 548983473)

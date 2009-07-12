@@ -42,18 +42,26 @@
 
 
 object_creature_npc_droid_shared_2_1b_surgical_droid_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/droid_21b.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -61,10 +69,14 @@ object_creature_npc_droid_shared_2_1b_surgical_droid_base = SharedCreatureObject
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:b_surgical_droid_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:b_surgical_droid_base",
@@ -72,38 +84,58 @@ object_creature_npc_droid_shared_2_1b_surgical_droid_base = SharedCreatureObject
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 220,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_2_1b_surgical_droid_base, 1605343560)
 
 object_creature_npc_droid_shared_3po_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/protocol_droid_gold.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -111,10 +143,14 @@ object_creature_npc_droid_shared_3po_base = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:po_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:po_base",
@@ -122,38 +158,58 @@ object_creature_npc_droid_shared_3po_base = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 217,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_3po_base, 2915624318)
 
 object_creature_npc_droid_shared_bomarr_monk_spider_droid = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/spider_droid.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -161,10 +217,14 @@ object_creature_npc_droid_shared_bomarr_monk_spider_droid = SharedCreatureObject
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:bomarr_monk_spider_droid",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:bomarr_monk_spider_droid",
@@ -172,38 +232,58 @@ object_creature_npc_droid_shared_bomarr_monk_spider_droid = SharedCreatureObject
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 219,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_bomarr_monk_spider_droid, 3197073485)
 
 object_creature_npc_droid_shared_cll_8_binary_load_lifter_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/cll8.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -211,10 +291,14 @@ object_creature_npc_droid_shared_cll_8_binary_load_lifter_base = SharedCreatureO
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:cll_8_binary_load_lifter_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:cll_8_binary_load_lifter_base",
@@ -222,38 +306,58 @@ object_creature_npc_droid_shared_cll_8_binary_load_lifter_base = SharedCreatureO
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 213,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_cll_8_binary_load_lifter_base, 2746759604)
 
 object_creature_npc_droid_shared_dark_trooper_phase_ii_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/dark_trooper_2.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -261,10 +365,14 @@ object_creature_npc_droid_shared_dark_trooper_phase_ii_base = SharedCreatureObje
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:dark_trooper_phase_ii_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:dark_trooper_phase_ii_base",
@@ -272,38 +380,58 @@ object_creature_npc_droid_shared_dark_trooper_phase_ii_base = SharedCreatureObje
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 207,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_dark_trooper_phase_ii_base, 3007882000)
 
 object_creature_npc_droid_shared_droideka_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/droideka.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -311,10 +439,14 @@ object_creature_npc_droid_shared_droideka_base = SharedCreatureObjectTemplate:ne
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:droideka_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:droideka_base",
@@ -322,38 +454,58 @@ object_creature_npc_droid_shared_droideka_base = SharedCreatureObjectTemplate:ne
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 210,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_droideka_base, 1363686436)
 
 object_creature_npc_droid_shared_dz_70_fugitive_tracker_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/dz70.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -361,10 +513,14 @@ object_creature_npc_droid_shared_dz_70_fugitive_tracker_base = SharedCreatureObj
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:dz_70_fugitive_tracker_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:dz_70_fugitive_tracker_base",
@@ -372,38 +528,58 @@ object_creature_npc_droid_shared_dz_70_fugitive_tracker_base = SharedCreatureObj
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 222,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_dz_70_fugitive_tracker_base, 1822521972)
 
 object_creature_npc_droid_shared_eg_6_power_droid_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/eg6.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/droid/client_shared_dro_gonk.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -411,10 +587,14 @@ object_creature_npc_droid_shared_eg_6_power_droid_base = SharedCreatureObjectTem
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:eg_6_power_droid_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:eg_6_power_droid_base",
@@ -422,38 +602,58 @@ object_creature_npc_droid_shared_eg_6_power_droid_base = SharedCreatureObjectTem
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 215,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_eg_6_power_droid_base, 4263326196)
 
 object_creature_npc_droid_shared_ig_assassin_droid_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/ig88.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -461,10 +661,14 @@ object_creature_npc_droid_shared_ig_assassin_droid_base = SharedCreatureObjectTe
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:ig_assassin_droid_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:ig_assassin_droid_base",
@@ -472,38 +676,58 @@ object_creature_npc_droid_shared_ig_assassin_droid_base = SharedCreatureObjectTe
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 203,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_ig_assassin_droid_base, 2147155885)
 
 object_creature_npc_droid_shared_imperial_probot_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/probe_droid.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -511,10 +735,14 @@ object_creature_npc_droid_shared_imperial_probot_base = SharedCreatureObjectTemp
 	detailedDescription = "",
 
 	gameObjectType = 1027,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:imperial_probot_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:imperial_probot_base",
@@ -522,38 +750,58 @@ object_creature_npc_droid_shared_imperial_probot_base = SharedCreatureObjectTemp
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 216,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_imperial_probot_base, 855701230)
 
 object_creature_npc_droid_shared_it_o_interrogator_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/ito.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -561,10 +809,14 @@ object_creature_npc_droid_shared_it_o_interrogator_base = SharedCreatureObjectTe
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:it_o_interrogator_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:it_o_interrogator_base",
@@ -572,38 +824,58 @@ object_creature_npc_droid_shared_it_o_interrogator_base = SharedCreatureObjectTe
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 211,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_it_o_interrogator_base, 2404177386)
 
 object_creature_npc_droid_shared_jedi_training_droid_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/jedi_training_droid.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -611,10 +883,14 @@ object_creature_npc_droid_shared_jedi_training_droid_base = SharedCreatureObject
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:jedi_training_droid_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:jedi_training_droid_base",
@@ -622,38 +898,58 @@ object_creature_npc_droid_shared_jedi_training_droid_base = SharedCreatureObject
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 212,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_jedi_training_droid_base, 1824587153)
 
 object_creature_npc_droid_shared_le_repair_droid = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/le_repair.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -661,10 +957,14 @@ object_creature_npc_droid_shared_le_repair_droid = SharedCreatureObjectTemplate:
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:le_repair_droid",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:le_repair_droid",
@@ -672,38 +972,58 @@ object_creature_npc_droid_shared_le_repair_droid = SharedCreatureObjectTemplate:
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 218,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_le_repair_droid, 3636727392)
 
 object_creature_npc_droid_shared_lin_demolitionmech_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/lin_demolition.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -711,10 +1031,14 @@ object_creature_npc_droid_shared_lin_demolitionmech_base = SharedCreatureObjectT
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:lin_demolitionmech_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:lin_demolitionmech_base",
@@ -722,38 +1046,58 @@ object_creature_npc_droid_shared_lin_demolitionmech_base = SharedCreatureObjectT
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 208,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_lin_demolitionmech_base, 3586538841)
 
 object_creature_npc_droid_shared_maul_probe_droid_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/maul_probe_droid.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -761,10 +1105,14 @@ object_creature_npc_droid_shared_maul_probe_droid_base = SharedCreatureObjectTem
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:probe_droid",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:probe_droid",
@@ -772,38 +1120,58 @@ object_creature_npc_droid_shared_maul_probe_droid_base = SharedCreatureObjectTem
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 225,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_maul_probe_droid_base, 1281145336)
 
 object_creature_npc_droid_shared_mse_6_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/mouse_droid.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -811,10 +1179,14 @@ object_creature_npc_droid_shared_mse_6_base = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:mse_6_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:mse_6_base",
@@ -822,38 +1194,58 @@ object_creature_npc_droid_shared_mse_6_base = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 214,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_mse_6_base, 3289977441)
 
 object_creature_npc_droid_shared_r2_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/astromech_r2.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -861,10 +1253,14 @@ object_creature_npc_droid_shared_r2_base = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:r2_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:r2_base",
@@ -872,38 +1268,58 @@ object_creature_npc_droid_shared_r2_base = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 204,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_r2_base, 2822086398)
 
 object_creature_npc_droid_shared_r3_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/astromech_r3.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -911,10 +1327,14 @@ object_creature_npc_droid_shared_r3_base = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:r3_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:r3_base",
@@ -922,38 +1342,58 @@ object_creature_npc_droid_shared_r3_base = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 1,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 204,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_r3_base, 681918105)
 
 object_creature_npc_droid_shared_r4_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/astromech_r4.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -961,10 +1401,14 @@ object_creature_npc_droid_shared_r4_base = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:r4_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:r4_base",
@@ -972,38 +1416,58 @@ object_creature_npc_droid_shared_r4_base = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 2,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 204,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_r4_base, 2786425205)
 
 object_creature_npc_droid_shared_r5_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/astromech_r5.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -1011,10 +1475,14 @@ object_creature_npc_droid_shared_r5_base = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:r5_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:r5_base",
@@ -1022,38 +1490,58 @@ object_creature_npc_droid_shared_r5_base = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 3,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 204,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_r5_base, 646306066)
 
 object_creature_npc_droid_shared_ra7_bug_droid_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/ra7.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -1061,10 +1549,14 @@ object_creature_npc_droid_shared_ra7_bug_droid_base = SharedCreatureObjectTempla
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:ra7_bug_droid_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:ra7_bug_droid_base",
@@ -1072,38 +1564,58 @@ object_creature_npc_droid_shared_ra7_bug_droid_base = SharedCreatureObjectTempla
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 206,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_ra7_bug_droid_base, 148666614)
 
 object_creature_npc_droid_shared_red_protocol_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/protocol_droid_red.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -1111,10 +1623,14 @@ object_creature_npc_droid_shared_red_protocol_base = SharedCreatureObjectTemplat
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:3po_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:3po_base",
@@ -1122,38 +1638,58 @@ object_creature_npc_droid_shared_red_protocol_base = SharedCreatureObjectTemplat
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 217,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_red_protocol_base, 368181993)
 
 object_creature_npc_droid_shared_robo_bartender_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/robo_bartender.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -1161,10 +1697,14 @@ object_creature_npc_droid_shared_robo_bartender_base = SharedCreatureObjectTempl
 	detailedDescription = "",
 
 	gameObjectType = 7,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:robo_bartender_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:robo_bartender_base",
@@ -1172,38 +1712,58 @@ object_creature_npc_droid_shared_robo_bartender_base = SharedCreatureObjectTempl
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 205,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_robo_bartender_base, 3380886881)
 
 object_creature_npc_droid_shared_silver_protocol_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/protocol_droid_silver.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -1211,10 +1771,14 @@ object_creature_npc_droid_shared_silver_protocol_base = SharedCreatureObjectTemp
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:3po_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:3po_base",
@@ -1222,38 +1786,58 @@ object_creature_npc_droid_shared_silver_protocol_base = SharedCreatureObjectTemp
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 217,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_silver_protocol_base, 2083758013)
 
 object_creature_npc_droid_shared_tt_8l_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/tt8l.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -1261,10 +1845,14 @@ object_creature_npc_droid_shared_tt_8l_base = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:tt_8l_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:tt_8l_base",
@@ -1272,38 +1860,58 @@ object_creature_npc_droid_shared_tt_8l_base = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 221,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_tt_8l_base, 1547923813)
 
 object_creature_npc_droid_shared_tt_8l_y7_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/tt8l_y7.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -1311,10 +1919,14 @@ object_creature_npc_droid_shared_tt_8l_y7_base = SharedCreatureObjectTemplate:ne
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:tt_8l_y7_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:tt_8l_y7_base",
@@ -1322,38 +1934,58 @@ object_creature_npc_droid_shared_tt_8l_y7_base = SharedCreatureObjectTemplate:ne
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 209,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_tt_8l_y7_base, 1384722195)
 
 object_creature_npc_droid_shared_wed_treadwell_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/wed_treadwell.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -1361,10 +1993,14 @@ object_creature_npc_droid_shared_wed_treadwell_base = SharedCreatureObjectTempla
 	detailedDescription = "",
 
 	gameObjectType = 1026,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@droid_lookat:wed_treadwell_base",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 3,
 	noBuildRadius = 0,
 
 	objectName = "@droid_name:wed_treadwell_base",
@@ -1372,21 +2008,33 @@ object_creature_npc_droid_shared_wed_treadwell_base = SharedCreatureObjectTempla
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 223,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_wed_treadwell_base, 1639908569)

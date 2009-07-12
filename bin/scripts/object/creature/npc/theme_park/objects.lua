@@ -42,18 +42,26 @@
 
 
 object_creature_npc_theme_park_shared_event_transport = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/player_event_transport.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_player_transport.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -61,10 +69,14 @@ object_creature_npc_theme_park_shared_event_transport = SharedCreatureObjectTemp
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 1,
 
 	locationReservationRadius = 0,
 	lookAtText = "@theme_park_lookat:transport",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 5,
 	noBuildRadius = 0,
 
 	objectName = "@theme_park_name:transport",
@@ -72,38 +84,58 @@ object_creature_npc_theme_park_shared_event_transport = SharedCreatureObjectTemp
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 1,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_event_transport, 1686537229)
 
 object_creature_npc_theme_park_shared_event_transport_theed_hangar = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/player_event_transport.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_player_transport.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -111,10 +143,14 @@ object_creature_npc_theme_park_shared_event_transport_theed_hangar = SharedCreat
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@theme_park_lookat:transport",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 5,
 	noBuildRadius = 0,
 
 	objectName = "@theme_park_name:transport",
@@ -122,38 +158,58 @@ object_creature_npc_theme_park_shared_event_transport_theed_hangar = SharedCreat
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 1,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_event_transport_theed_hangar, 3010351388)
 
 object_creature_npc_theme_park_shared_lambda_shuttle = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/lamda_shuttle_faction_perk.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_lambda_shuttle.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -161,10 +217,14 @@ object_creature_npc_theme_park_shared_lambda_shuttle = SharedCreatureObjectTempl
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@theme_park_lookat:shuttle",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 5,
 	noBuildRadius = 0,
 
 	objectName = "@theme_park_name:shuttle",
@@ -172,38 +232,58 @@ object_creature_npc_theme_park_shared_lambda_shuttle = SharedCreatureObjectTempl
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 1,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_lambda_shuttle, 3752954766)
 
 object_creature_npc_theme_park_shared_lambda_shuttle_faction_perk = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/lamda_shuttle_faction_perk.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_lambda_shuttle.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 0,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -211,10 +291,14 @@ object_creature_npc_theme_park_shared_lambda_shuttle_faction_perk = SharedCreatu
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@theme_park_lookat:lambda",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 5,
 	noBuildRadius = 0,
 
 	objectName = "@theme_park_name:lambda",
@@ -222,38 +306,58 @@ object_creature_npc_theme_park_shared_lambda_shuttle_faction_perk = SharedCreatu
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 216,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_lambda_shuttle_faction_perk, 3655546204)
 
 object_creature_npc_theme_park_shared_player_shuttle = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/player_shuttle.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_player_shuttle.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -261,10 +365,14 @@ object_creature_npc_theme_park_shared_player_shuttle = SharedCreatureObjectTempl
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@theme_park_lookat:shuttle",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 5,
 	noBuildRadius = 0,
 
 	objectName = "@theme_park_name:shuttle",
@@ -272,38 +380,58 @@ object_creature_npc_theme_park_shared_player_shuttle = SharedCreatureObjectTempl
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 1,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_player_shuttle, 1984806965)
 
 object_creature_npc_theme_park_shared_player_transport = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/player_transport.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_player_transport.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -311,10 +439,14 @@ object_creature_npc_theme_park_shared_player_transport = SharedCreatureObjectTem
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 1,
 
 	locationReservationRadius = 0,
 	lookAtText = "@theme_park_lookat:transport",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 5,
 	noBuildRadius = 0,
 
 	objectName = "@theme_park_name:transport",
@@ -322,38 +454,58 @@ object_creature_npc_theme_park_shared_player_transport = SharedCreatureObjectTem
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 1,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_player_transport, 1196401137)
 
 object_creature_npc_theme_park_shared_player_transport_theed_hangar = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/player_transport_theed_hangar.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_player_transport.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -361,10 +513,14 @@ object_creature_npc_theme_park_shared_player_transport_theed_hangar = SharedCrea
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 2,
 
 	locationReservationRadius = 0,
 	lookAtText = "@theme_park_lookat:transport",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 5,
 	noBuildRadius = 0,
 
 	objectName = "@theme_park_name:transport",
@@ -372,21 +528,33 @@ object_creature_npc_theme_park_shared_player_transport_theed_hangar = SharedCrea
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 15,
+	slopeModPercent = 0.1,
 	slotDescriptor = {"inventory"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 1,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.5
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_player_transport_theed_hangar, 773296996)

@@ -50,8 +50,8 @@ SharedObjectTemplate = Object:new {
 	 containerVolumeLimit = 0,
 
 	 tintPallete = "",
-	 slotDescriptorFilename = "",
-	 arrangementDescriptorFilename = "",
+	 slotDescriptor = "",
+	 arrangementDescriptor = "",
 	 appearanceFilename = "",
 	 portalLayoutFilename = "",
 	 clientDataFile = "",

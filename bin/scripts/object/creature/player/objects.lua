@@ -42,18 +42,26 @@
 
 
 object_creature_player_shared_bothan_female = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/bth_f.sat",
 	arrangementDescriptor = "rider",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_human_f.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -61,10 +69,14 @@ object_creature_player_shared_bothan_female = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 1,
 
 	locationReservationRadius = 0,
 	lookAtText = "",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 1,
 	noBuildRadius = 0,
 
 	objectName = "@species:bothan",
@@ -72,38 +84,58 @@ object_creature_player_shared_bothan_female = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 5,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_bothan_female, 491942670)
 
 object_creature_player_shared_bothan_male = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/bth_m.sat",
 	arrangementDescriptor = "rider",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_human_m.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -111,10 +143,14 @@ object_creature_player_shared_bothan_male = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 1,
 	noBuildRadius = 0,
 
 	objectName = "@species:bothan",
@@ -122,38 +158,58 @@ object_creature_player_shared_bothan_male = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 5,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_bothan_male, 1542946611)
 
 object_creature_player_shared_human_female = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_f.sat",
 	arrangementDescriptor = "rider",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_human_f.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -161,10 +217,14 @@ object_creature_player_shared_human_female = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 1,
 
 	locationReservationRadius = 0,
 	lookAtText = "",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 1,
 	noBuildRadius = 0,
 
 	objectName = "@species:human",
@@ -172,38 +232,58 @@ object_creature_player_shared_human_female = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 0,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_human_female, 4294949865)
 
 object_creature_player_shared_human_male = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptor = "rider",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_human_m.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -211,10 +291,14 @@ object_creature_player_shared_human_male = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 1,
 	noBuildRadius = 0,
 
 	objectName = "@species:human",
@@ -222,38 +306,58 @@ object_creature_player_shared_human_male = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 0,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_human_male, 2937962913)
 
 object_creature_player_shared_ithorian_female = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/ith_f.sat",
 	arrangementDescriptor = "rider",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_ithorian_f.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -261,10 +365,14 @@ object_creature_player_shared_ithorian_female = SharedCreatureObjectTemplate:new
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 1,
 
 	locationReservationRadius = 0,
 	lookAtText = "",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 1,
 	noBuildRadius = 0,
 
 	objectName = "@species:ithorian",
@@ -272,38 +380,58 @@ object_creature_player_shared_ithorian_female = SharedCreatureObjectTemplate:new
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 33,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_ithorian_female, 3017834515)
 
 object_creature_player_shared_ithorian_male = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/ith_m.sat",
 	arrangementDescriptor = "rider",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_ithorian_m.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -311,10 +439,14 @@ object_creature_player_shared_ithorian_male = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 1,
 	noBuildRadius = 0,
 
 	objectName = "@species:ithorian",
@@ -322,38 +454,58 @@ object_creature_player_shared_ithorian_male = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 33,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_ithorian_male, 951764932)
 
 object_creature_player_shared_moncal_female = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/mon_f.sat",
 	arrangementDescriptor = "rider",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_moncal_f.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -361,10 +513,14 @@ object_creature_player_shared_moncal_female = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 1,
 
 	locationReservationRadius = 0,
 	lookAtText = "",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 1,
 	noBuildRadius = 0,
 
 	objectName = "@species:moncalamari",
@@ -372,38 +528,58 @@ object_creature_player_shared_moncal_female = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 3,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_moncal_female, 2553266142)
 
 object_creature_player_shared_moncal_male = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/mon_m.sat",
 	arrangementDescriptor = "rider",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_moncal_m.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -411,10 +587,14 @@ object_creature_player_shared_moncal_male = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 1,
 	noBuildRadius = 0,
 
 	objectName = "@species:moncalamari",
@@ -422,38 +602,58 @@ object_creature_player_shared_moncal_male = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 3,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_moncal_male, 3116914088)
 
 object_creature_player_shared_rodian_female = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/rod_f.sat",
 	arrangementDescriptor = "rider",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_rodian_f.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -461,10 +661,14 @@ object_creature_player_shared_rodian_female = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 1,
 
 	locationReservationRadius = 0,
 	lookAtText = "",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 1,
 	noBuildRadius = 0,
 
 	objectName = "@species:rodian",
@@ -472,38 +676,58 @@ object_creature_player_shared_rodian_female = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 1,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_rodian_female, 3261342811)
 
 object_creature_player_shared_rodian_male = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/rod_m.sat",
 	arrangementDescriptor = "rider",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_rodian_m.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -511,10 +735,14 @@ object_creature_player_shared_rodian_male = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 1,
 	noBuildRadius = 0,
 
 	objectName = "@species:rodian",
@@ -522,38 +750,58 @@ object_creature_player_shared_rodian_male = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 1,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_rodian_male, 200920476)
 
 object_creature_player_shared_sullustan_female = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/sul_f.sat",
 	arrangementDescriptor = "rider",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_sullustan_f.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -561,10 +809,14 @@ object_creature_player_shared_sullustan_female = SharedCreatureObjectTemplate:ne
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 1,
 
 	locationReservationRadius = 0,
 	lookAtText = "",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 1,
 	noBuildRadius = 0,
 
 	objectName = "@species:sullustan",
@@ -572,38 +824,58 @@ object_creature_player_shared_sullustan_female = SharedCreatureObjectTemplate:ne
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 49,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_sullustan_female, 359871514)
 
 object_creature_player_shared_sullustan_male = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/sul_m.sat",
 	arrangementDescriptor = "rider",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_sullustan_m.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -611,10 +883,14 @@ object_creature_player_shared_sullustan_male = SharedCreatureObjectTemplate:new 
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 1,
 	noBuildRadius = 0,
 
 	objectName = "@species:sullustan",
@@ -622,38 +898,58 @@ object_creature_player_shared_sullustan_male = SharedCreatureObjectTemplate:new 
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 49,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_sullustan_male, 194222500)
 
 object_creature_player_shared_trandoshan_female = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/trn_f.sat",
 	arrangementDescriptor = "rider",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_trandoshan_f.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -661,10 +957,14 @@ object_creature_player_shared_trandoshan_female = SharedCreatureObjectTemplate:n
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 1,
 
 	locationReservationRadius = 0,
 	lookAtText = "",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 1,
 	noBuildRadius = 0,
 
 	objectName = "@species:trandoshan",
@@ -672,38 +972,58 @@ object_creature_player_shared_trandoshan_female = SharedCreatureObjectTemplate:n
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 2,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_trandoshan_female, 406594758)
 
 object_creature_player_shared_trandoshan_male = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/trn_m.sat",
 	arrangementDescriptor = "rider",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_trandoshan_m.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -711,10 +1031,14 @@ object_creature_player_shared_trandoshan_male = SharedCreatureObjectTemplate:new
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 1,
 	noBuildRadius = 0,
 
 	objectName = "@species:trandoshan",
@@ -722,38 +1046,58 @@ object_creature_player_shared_trandoshan_male = SharedCreatureObjectTemplate:new
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 2,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_trandoshan_male, 1355045775)
 
 object_creature_player_shared_twilek_female = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/twk_f.sat",
 	arrangementDescriptor = "rider",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_twilek_f.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -761,10 +1105,14 @@ object_creature_player_shared_twilek_female = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 1,
 
 	locationReservationRadius = 0,
 	lookAtText = "",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 1,
 	noBuildRadius = 0,
 
 	objectName = "@species:twilek",
@@ -772,38 +1120,58 @@ object_creature_player_shared_twilek_female = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 6,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_twilek_female, 2224509660)
 
 object_creature_player_shared_twilek_male = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/twk_m.sat",
 	arrangementDescriptor = "rider",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_twilek_m.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -811,10 +1179,14 @@ object_creature_player_shared_twilek_male = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 1,
 	noBuildRadius = 0,
 
 	objectName = "@species:twilek",
@@ -822,38 +1194,58 @@ object_creature_player_shared_twilek_male = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 6,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_twilek_male, 4068532859)
 
 object_creature_player_shared_wookiee_female = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/wke_f.sat",
 	arrangementDescriptor = "rider",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_wookiee_f.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {{"/private/index_texture_1", "/shared_owner/index_texture_1"}},
@@ -861,10 +1253,14 @@ object_creature_player_shared_wookiee_female = SharedCreatureObjectTemplate:new 
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 1,
 
 	locationReservationRadius = 0,
 	lookAtText = "",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 1,
 	noBuildRadius = 0,
 
 	objectName = "@species:wookiee",
@@ -872,38 +1268,58 @@ object_creature_player_shared_wookiee_female = SharedCreatureObjectTemplate:new 
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 4,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_wookiee_female, 229336546)
 
 object_creature_player_shared_wookiee_male = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/wke_m.sat",
 	arrangementDescriptor = "rider",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_wookiee_m.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {{"/private/index_texture_1", "/shared_owner/index_texture_1"}},
@@ -911,10 +1327,14 @@ object_creature_player_shared_wookiee_male = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "@:e",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 1,
 	noBuildRadius = 0,
 
 	objectName = "@species:wookiee",
@@ -922,38 +1342,58 @@ object_creature_player_shared_wookiee_male = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 4,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_wookiee_male, 90470685)
 
 object_creature_player_shared_zabrak_female = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/zab_f.sat",
 	arrangementDescriptor = "rider",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_zabrak_f.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -961,10 +1401,14 @@ object_creature_player_shared_zabrak_female = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 1,
 
 	locationReservationRadius = 0,
 	lookAtText = "",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 1,
 	noBuildRadius = 0,
 
 	objectName = "@species:zabrak",
@@ -972,38 +1416,58 @@ object_creature_player_shared_zabrak_female = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 7,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_zabrak_female, 2850250749)
 
 object_creature_player_shared_zabrak_male = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/zab_m.sat",
 	arrangementDescriptor = "rider",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/player/client_shared_player_zabrak_m.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 1,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -1011,10 +1475,14 @@ object_creature_player_shared_zabrak_male = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1025,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 1,
 	noBuildRadius = 0,
 
 	objectName = "@species:zabrak",
@@ -1022,21 +1490,33 @@ object_creature_player_shared_zabrak_male = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 7,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 1,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_zabrak_male, 3791955286)

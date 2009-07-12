@@ -41,5 +41,32 @@
 --which carries forward this exception.
 
 SharedCreatureObjectTemplate = SharedTangibleObjectTemplate:new {
+	gender = 0,
+	niche = 0,
+	species = 0,
+	race = 0,
+
+	acceleration = { },
+	speed = { },
+	turnRate = { },
+
+	animationMapFilename = "",
+	slopeModAngle = 0,
+	slopeModPercent = 0,
+	waterModPercent = 0,
+	stepHeight = 0,
+	collisionHeight = 0,
+	collisionRadius = 0,
+
+	movementDatatable = "",
+
+	postureAlignToTerrain = { },
+
+	swimHeight = 0,
+	warpTolerance = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionLength = 0,
+	cameraHeight = 0
 
 }

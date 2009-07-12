@@ -42,18 +42,26 @@
 
 
 object_mobile_vehicle_shared_jetpack = SharedCreatureObjectTemplate:new {
+	acceleration = {8,3},
+	animationMapFilename = "",
 	appearanceFilename = "appearance/pv_jetpack_mandalorian.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 6.8,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 2.7,
 	containerType = 5,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -61,10 +69,14 @@ object_mobile_vehicle_shared_jetpack = SharedCreatureObjectTemplate:new {
 	detailedDescription = "@monster_detail:jetpack",
 
 	gameObjectType = 65537,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "string_id_table",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 0,
 	noBuildRadius = 0,
 
 	objectName = "@monster_name:jetpack",
@@ -72,38 +84,58 @@ object_mobile_vehicle_shared_jetpack = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.23,
 	slotDescriptor = {"rider", "inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 90,
+	speed = {13,7},
+	stepHeight = 2,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 0,
 
 	targetable = 1,
+	turnRate = {77,154},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 20,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_jetpack, 1613040434)
 
 object_mobile_vehicle_shared_landspeeder_av21 = SharedCreatureObjectTemplate:new {
+	acceleration = {10,3},
+	animationMapFilename = "",
 	appearanceFilename = "appearance/pv_landspeeder_av21.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 8.8,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 2.7,
 	containerType = 5,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -111,10 +143,14 @@ object_mobile_vehicle_shared_landspeeder_av21 = SharedCreatureObjectTemplate:new
 	detailedDescription = "@monster_detail:landspeeder_av21",
 
 	gameObjectType = 65537,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "string_id_table",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 0,
 	noBuildRadius = 0,
 
 	objectName = "@monster_name:landspeeder_av21",
@@ -122,38 +158,58 @@ object_mobile_vehicle_shared_landspeeder_av21 = SharedCreatureObjectTemplate:new
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.23,
 	slotDescriptor = {"rider", "inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 90,
+	speed = {17,9},
+	stepHeight = 2,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 0,
 
 	targetable = 1,
+	turnRate = {77,154},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 20,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_landspeeder_av21, 2842025402)
 
 object_mobile_vehicle_shared_landspeeder_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "",
 	appearanceFilename = "",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 5,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -161,10 +217,14 @@ object_mobile_vehicle_shared_landspeeder_base = SharedCreatureObjectTemplate:new
 	detailedDescription = "",
 
 	gameObjectType = 65537,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "string_id_table",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 0,
 	noBuildRadius = 0,
 
 	objectName = "@obj_n:unknown_creature",
@@ -172,38 +232,58 @@ object_mobile_vehicle_shared_landspeeder_base = SharedCreatureObjectTemplate:new
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"rider", "inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 0,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 0,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_landspeeder_base, 634510067)
 
 object_mobile_vehicle_shared_landspeeder_x31 = SharedCreatureObjectTemplate:new {
+	acceleration = {7,2},
+	animationMapFilename = "",
 	appearanceFilename = "appearance/pv_landspeeder_luke.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 6.8,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 2.7,
 	containerType = 5,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -211,10 +291,14 @@ object_mobile_vehicle_shared_landspeeder_x31 = SharedCreatureObjectTemplate:new 
 	detailedDescription = "@monster_detail:landspeeder_x31",
 
 	gameObjectType = 65537,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "string_id_table",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 0,
 	noBuildRadius = 0,
 
 	objectName = "@monster_name:landspeeder_x31",
@@ -222,38 +306,58 @@ object_mobile_vehicle_shared_landspeeder_x31 = SharedCreatureObjectTemplate:new 
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.23,
 	slotDescriptor = {"rider", "inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 90,
+	speed = {11,6},
+	stepHeight = 2,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 0,
 
 	targetable = 1,
+	turnRate = {77,154},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 20,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_landspeeder_x31, 658152450)
 
 object_mobile_vehicle_shared_landspeeder_x34 = SharedCreatureObjectTemplate:new {
+	acceleration = {8,3},
+	animationMapFilename = "",
 	appearanceFilename = "appearance/pv_landspeeder_luke.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 6.8,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 2.7,
 	containerType = 5,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -261,10 +365,14 @@ object_mobile_vehicle_shared_landspeeder_x34 = SharedCreatureObjectTemplate:new 
 	detailedDescription = "@monster_detail:landspeeder_x34",
 
 	gameObjectType = 65537,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "string_id_table",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 0,
 	noBuildRadius = 0,
 
 	objectName = "@monster_name:landspeeder_x34",
@@ -272,38 +380,58 @@ object_mobile_vehicle_shared_landspeeder_x34 = SharedCreatureObjectTemplate:new 
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.23,
 	slotDescriptor = {"rider", "inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 90,
+	speed = {13,7},
+	stepHeight = 2,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 0,
 
 	targetable = 1,
+	turnRate = {77,154},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 20,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_landspeeder_x34, 1321433100)
 
 object_mobile_vehicle_shared_landspeeder_xp38 = SharedCreatureObjectTemplate:new {
+	acceleration = {9,3},
+	animationMapFilename = "",
 	appearanceFilename = "appearance/monstrosity.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/creature/client_shared_cr_dewback.cdf",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 6.8,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 2.7,
 	containerType = 5,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -311,10 +439,14 @@ object_mobile_vehicle_shared_landspeeder_xp38 = SharedCreatureObjectTemplate:new
 	detailedDescription = "@monster_detail:landspeeder_xp38",
 
 	gameObjectType = 65537,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "string_id_table",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 0,
 	noBuildRadius = 0,
 
 	objectName = "@monster_name:landspeeder_xp38",
@@ -322,38 +454,58 @@ object_mobile_vehicle_shared_landspeeder_xp38 = SharedCreatureObjectTemplate:new
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"rider", "inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 90,
+	speed = {9.75,0.95},
+	stepHeight = 0.8,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 0,
 
 	targetable = 1,
+	turnRate = {90,180},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_landspeeder_xp38, 1064205223)
 
 object_mobile_vehicle_shared_speederbike = SharedCreatureObjectTemplate:new {
+	acceleration = {9,3},
+	animationMapFilename = "",
 	appearanceFilename = "appearance/pv_speeder_bike.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 3.8,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 1.15,
 	containerType = 5,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -361,10 +513,14 @@ object_mobile_vehicle_shared_speederbike = SharedCreatureObjectTemplate:new {
 	detailedDescription = "@monster_detail:speederbike",
 
 	gameObjectType = 65537,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "string_id_table",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 0,
 	noBuildRadius = 0,
 
 	objectName = "@monster_name:speederbike",
@@ -372,38 +528,58 @@ object_mobile_vehicle_shared_speederbike = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.126,
 	slotDescriptor = {"rider", "inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 90,
+	speed = {15,8},
+	stepHeight = 0.8,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 0,
 
 	targetable = 1,
+	turnRate = {90,180},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_speederbike, 1922373615)
 
 object_mobile_vehicle_shared_speederbike_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "",
 	appearanceFilename = "",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 5,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -411,10 +587,14 @@ object_mobile_vehicle_shared_speederbike_base = SharedCreatureObjectTemplate:new
 	detailedDescription = "",
 
 	gameObjectType = 65537,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "string_id_table",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 0,
 	noBuildRadius = 0,
 
 	objectName = "@obj_n:unknown_creature",
@@ -422,38 +602,58 @@ object_mobile_vehicle_shared_speederbike_base = SharedCreatureObjectTemplate:new
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"rider", "inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 0,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 0,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_speederbike_base, 2115869795)
 
 object_mobile_vehicle_shared_speederbike_flash = SharedCreatureObjectTemplate:new {
+	acceleration = {10,3},
+	animationMapFilename = "",
 	appearanceFilename = "appearance/pv_flash_speeder.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 2.8,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 1.17,
 	containerType = 5,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -461,10 +661,14 @@ object_mobile_vehicle_shared_speederbike_flash = SharedCreatureObjectTemplate:ne
 	detailedDescription = "@monster_detail:speederbike_flash",
 
 	gameObjectType = 65537,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "string_id_table",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 0,
 	noBuildRadius = 0,
 
 	objectName = "@monster_name:speederbike_flash",
@@ -472,38 +676,58 @@ object_mobile_vehicle_shared_speederbike_flash = SharedCreatureObjectTemplate:ne
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.056,
 	slotDescriptor = {"rider", "inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 90,
+	speed = {17,9},
+	stepHeight = 0.8,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 0,
 
 	targetable = 1,
+	turnRate = {103,205},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_speederbike_flash, 5125428)
 
 object_mobile_vehicle_shared_speederbike_swoop = SharedCreatureObjectTemplate:new {
+	acceleration = {10,3},
+	animationMapFilename = "",
 	appearanceFilename = "appearance/pv_swoop_bike.sat",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 2.8,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 1.17,
 	containerType = 5,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -511,10 +735,14 @@ object_mobile_vehicle_shared_speederbike_swoop = SharedCreatureObjectTemplate:ne
 	detailedDescription = "@monster_detail:speederbike_swoop",
 
 	gameObjectType = 65537,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "string_id_table",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 0,
 	noBuildRadius = 0,
 
 	objectName = "@monster_name:speederbike_swoop",
@@ -522,38 +750,58 @@ object_mobile_vehicle_shared_speederbike_swoop = SharedCreatureObjectTemplate:ne
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.056,
 	slotDescriptor = {"rider", "inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 90,
+	speed = {17,9},
+	stepHeight = 0.8,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 0,
 
 	targetable = 1,
+	turnRate = {103,205},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_speederbike_swoop, 2943197007)
 
 object_mobile_vehicle_shared_vehicle_base = SharedCreatureObjectTemplate:new {
+	acceleration = {0,0},
+	animationMapFilename = "",
 	appearanceFilename = "",
 	arrangementDescriptor = "",
 
+	cameraHeight = 0,
 	certificationsRequired = {},
 	clearFloraRadius = 0,
 	clientDataFile = "",
 	collisionActionBlockFlags = 0,
 	collisionActionFlags = 255,
 	collisionActionPassFlags = 0,
+	collisionHeight = 1.8,
+	collisionLength = 1.5,
 	collisionMaterialBlockFlags = 0,
 	collisionMaterialFlags = 1,
 	collisionMaterialPassFlags = 0,
+	collisionOffsetX = 0,
+	collisionOffsetZ = 0,
+	collisionRadius = 0.5,
 	containerType = 5,
 	containerVolumeLimit = 0,
 	customizationVariableMapping = {},
@@ -561,10 +809,14 @@ object_mobile_vehicle_shared_vehicle_base = SharedCreatureObjectTemplate:new {
 	detailedDescription = "",
 
 	gameObjectType = 1024,
+	gender = 0,
 
 	locationReservationRadius = 0,
 	lookAtText = "string_id_table",
 
+	movementDatatable = "datatables/movement/movement_human.iff",
+
+	niche = 0,
 	noBuildRadius = 0,
 
 	objectName = "@obj_n:unknown_creature",
@@ -572,21 +824,33 @@ object_mobile_vehicle_shared_vehicle_base = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
+	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 
+	race = 0,
 	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
+	slopeModAngle = 26,
+	slopeModPercent = 0.0125,
 	slotDescriptor = {"rider", "inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
+	species = 0,
+	speed = {0,0},
+	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
+	swimHeight = 0,
 
 	targetable = 1,
+	turnRate = {0,0},
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	warpTolerance = 17,
+	waterModPercent = 0.75
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_vehicle_base, 1605130582)
