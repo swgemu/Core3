@@ -42,7 +42,7 @@ public:
 
 	void release();
 
-	String& getAddress();
+	string getAddress();
 
 	void lock(bool doLock = true);
 
@@ -98,7 +98,7 @@ public:
 
 	void release();
 
-	String& getAddress();
+	string getAddress();
 
 	void lock(bool doLock = true);
 
@@ -137,7 +137,7 @@ public:
 
 	void release();
 
-	String& getAddress();
+	string getAddress();
 
 	void lock(bool doLock);
 

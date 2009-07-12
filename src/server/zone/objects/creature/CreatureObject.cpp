@@ -182,9 +182,9 @@ short CreatureObject::getLevel() {
 
 		DistributedMethod method(this, 19);
 
-		method.executeWithVoidReturn();
+		return method.executeWithSignedShortReturn();
 	} else
-		((CreatureObjectImplementation*) _impl)->getLevel();
+		return ((CreatureObjectImplementation*) _impl)->getLevel();
 }
 
 unsigned long long CreatureObject::getWeaponID() {
@@ -489,7 +489,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertFloat(getAcceleration());
 		break;
 	case 19:
-		getLevel();
+		resp->insertSignedShort(getLevel());
 		break;
 	case 20:
 		resp->insertLong(getWeaponID());

@@ -108,7 +108,7 @@ void ZoneClientSession::release() {
 		((ZoneClientSessionImplementation*) _impl)->release();
 }
 
-String& ZoneClientSession::getAddress() {
+string ZoneClientSession::getAddress() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -280,7 +280,7 @@ void ZoneClientSessionAdapter::release() {
 	return ((ZoneClientSessionImplementation*) impl)->release();
 }
 
-String& ZoneClientSessionAdapter::getAddress() {
+string ZoneClientSessionAdapter::getAddress() {
 	return ((ZoneClientSessionImplementation*) impl)->getAddress();
 }
 
