@@ -384,11 +384,6 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 	void setParent(SceneObject parent) {
 		this.parent = parent;
 	}
-	
-	public string strTemp;
-	
-	void setStrTemp(string strtmp) {
-		strTemp = strtmp;
-	}
+
 }
 

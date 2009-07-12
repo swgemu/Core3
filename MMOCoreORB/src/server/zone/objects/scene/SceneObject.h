@@ -11,6 +11,8 @@ class ZoneProcessServerImplementation;
 
 class StringId;
 
+class SceneObject;
+
 #include "server/zone/ZoneClientSession.h"
 
 #include "engine/core/ManagedObject.h"
