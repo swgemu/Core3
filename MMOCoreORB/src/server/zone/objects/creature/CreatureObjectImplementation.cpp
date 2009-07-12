@@ -54,6 +54,13 @@ bool CreatureObjectImplementation::registered4 = ObjectManager::objectFactory.re
 CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templ, SceneObject* parent) :
 	TangibleObjectImplementation(templ, parent) {
 
+	encumbrances = new Vector<int>(3, 1);
+	baseHealth = new Vector<int>(9, 1);
+	wounds = new Vector<int>(9, 1);
+	hamList = new Vector<int>(9, 1);
+	maxHamList = new Vector<int>(9, 1);
+
+
 }
 
 

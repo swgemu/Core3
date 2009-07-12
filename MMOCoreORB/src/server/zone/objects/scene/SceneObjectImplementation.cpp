@@ -46,10 +46,44 @@ which carries forward this exception.
 
 #include "../../managers/object/ObjectManager.h"
 
+#include "../../packets/scene/SceneObjectCreateMessage.h"
+#include "../../packets/scene/SceneObjectDestroyMessage.h"
+
+#include "variables/StringId.h"
+
 bool SceneObjectImplementation::registered = ObjectManager::objectFactory.registerObject<SceneObject>(0);
 
 SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData, SceneObject* parent) {
 	SceneObjectImplementation::parent = parent;
 
 	children = new VectorMap<uint32, SceneObject*>();
+
+	direction = new Quaternion();
+
+	objectName = new StringId(String(templateData->getStringField("objectName")));
+	detailedDescription = new StringId(String(templateData->getStringField("detailedDescription")));
+
+	containerType = templateData->getIntField("containerType");
+	containerVolumeLimit = templateData->getIntField("containerVolumeLimit");
+
+	gameObjectType = templateData->getIntField("gameObjectType");
+
+	/*arrangementDescriptor = String();
+	arrangementDescriptor = templateData->getStringField("arrangementDescriptor");*/
+
+}
+
+void SceneObjectImplementation::create(ZoneClientSession* client) {
+	BaseMessage* msg = new SceneObjectCreateMessage(_this);
+
+	client->sendMessage(msg);
+}
+
+
+void SceneObjectImplementation::destroy(ZoneClientSession* client) {
+	if (client == NULL)
+		return;
+
+	BaseMessage* msg = new SceneObjectDestroyMessage(_this);
+	client->sendMessage(msg);
 }

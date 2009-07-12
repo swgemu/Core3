@@ -19,6 +19,114 @@ TangibleObject::TangibleObject(DummyConstructorParameter* param) : SceneObject(p
 TangibleObject::~TangibleObject() {
 }
 
+byte TangibleObject::getUnknownByte() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+
+		return method.executeWithByteReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getUnknownByte();
+}
+
+int TangibleObject::getObjectCount() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getObjectCount();
+}
+
+int TangibleObject::getMaxCondition() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getMaxCondition();
+}
+
+int TangibleObject::getConditionDamage() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getConditionDamage();
+}
+
+int TangibleObject::getVolume() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getVolume();
+}
+
+float TangibleObject::getComplexity() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getComplexity();
+}
+
+unsigned int TangibleObject::getOptionsBitmask() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getOptionsBitmask();
+}
+
+unsigned int TangibleObject::getPvpStatusBitmask() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getPvpStatusBitmask();
+}
+
+unsigned int TangibleObject::getDefenderListUpdateCounter() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getDefenderListUpdateCounter();
+}
+
 /*
  *	TangibleObjectImplementation
  */
@@ -35,6 +143,51 @@ DistributedObjectStub* TangibleObjectImplementation::_getStub() {
 	return _this;
 }
 
+byte TangibleObjectImplementation::getUnknownByte() {
+	// server/zone/objects/tangible/TangibleObject.idl(76):  return this.unknownByte;
+	return this->unknownByte;
+}
+
+int TangibleObjectImplementation::getObjectCount() {
+	// server/zone/objects/tangible/TangibleObject.idl(80):  return this.objectCount;
+	return this->objectCount;
+}
+
+int TangibleObjectImplementation::getMaxCondition() {
+	// server/zone/objects/tangible/TangibleObject.idl(84):  return this.maxCondition;
+	return this->maxCondition;
+}
+
+int TangibleObjectImplementation::getConditionDamage() {
+	// server/zone/objects/tangible/TangibleObject.idl(88):  return this.conditionDamage;
+	return this->conditionDamage;
+}
+
+int TangibleObjectImplementation::getVolume() {
+	// server/zone/objects/tangible/TangibleObject.idl(92):  return this.volume;
+	return this->volume;
+}
+
+float TangibleObjectImplementation::getComplexity() {
+	// server/zone/objects/tangible/TangibleObject.idl(96):  return this.complexity;
+	return this->complexity;
+}
+
+unsigned int TangibleObjectImplementation::getOptionsBitmask() {
+	// server/zone/objects/tangible/TangibleObject.idl(100):  return this.optionsBitmask;
+	return this->optionsBitmask;
+}
+
+unsigned int TangibleObjectImplementation::getPvpStatusBitmask() {
+	// server/zone/objects/tangible/TangibleObject.idl(104):  return this.pvpStatusBitmask;
+	return this->pvpStatusBitmask;
+}
+
+unsigned int TangibleObjectImplementation::getDefenderListUpdateCounter() {
+	// server/zone/objects/tangible/TangibleObject.idl(108):  return this.defenderListUpdateCounter;
+	return this->defenderListUpdateCounter;
+}
+
 /*
  *	TangibleObjectAdapter
  */
@@ -46,11 +199,74 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		resp->insertByte(getUnknownByte());
+		break;
+	case 7:
+		resp->insertSignedInt(getObjectCount());
+		break;
+	case 8:
+		resp->insertSignedInt(getMaxCondition());
+		break;
+	case 9:
+		resp->insertSignedInt(getConditionDamage());
+		break;
+	case 10:
+		resp->insertSignedInt(getVolume());
+		break;
+	case 11:
+		resp->insertFloat(getComplexity());
+		break;
+	case 12:
+		resp->insertInt(getOptionsBitmask());
+		break;
+	case 13:
+		resp->insertInt(getPvpStatusBitmask());
+		break;
+	case 14:
+		resp->insertInt(getDefenderListUpdateCounter());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+byte TangibleObjectAdapter::getUnknownByte() {
+	return ((TangibleObjectImplementation*) impl)->getUnknownByte();
+}
+
+int TangibleObjectAdapter::getObjectCount() {
+	return ((TangibleObjectImplementation*) impl)->getObjectCount();
+}
+
+int TangibleObjectAdapter::getMaxCondition() {
+	return ((TangibleObjectImplementation*) impl)->getMaxCondition();
+}
+
+int TangibleObjectAdapter::getConditionDamage() {
+	return ((TangibleObjectImplementation*) impl)->getConditionDamage();
+}
+
+int TangibleObjectAdapter::getVolume() {
+	return ((TangibleObjectImplementation*) impl)->getVolume();
+}
+
+float TangibleObjectAdapter::getComplexity() {
+	return ((TangibleObjectImplementation*) impl)->getComplexity();
+}
+
+unsigned int TangibleObjectAdapter::getOptionsBitmask() {
+	return ((TangibleObjectImplementation*) impl)->getOptionsBitmask();
+}
+
+unsigned int TangibleObjectAdapter::getPvpStatusBitmask() {
+	return ((TangibleObjectImplementation*) impl)->getPvpStatusBitmask();
+}
+
+unsigned int TangibleObjectAdapter::getDefenderListUpdateCounter() {
+	return ((TangibleObjectImplementation*) impl)->getDefenderListUpdateCounter();
 }
 
 /*

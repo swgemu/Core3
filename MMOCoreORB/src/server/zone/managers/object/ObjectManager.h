@@ -53,7 +53,7 @@ which carries forward this exception.
 
 #include "../../objects/scene/SceneObject.h"
 
-class ObjectManager : public Logger, public Singleton<ObjectManager> {
+class ObjectManager : public Logger, public Mutex, public Singleton<ObjectManager> {
 	ObjectMap* objectMap;
 	ObjectMap* objectCacheMap;
 

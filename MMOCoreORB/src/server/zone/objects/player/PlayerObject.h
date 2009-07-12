@@ -9,6 +9,8 @@
 
 class CreatureObject;
 
+class ZoneClientSession;
+
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -23,6 +25,8 @@ namespace player {
 class PlayerObject : public IntangibleObject {
 public:
 	PlayerObject(LuaObject* templ, SceneObject* parent = NULL);
+
+	void initialize(unsigned int creatureObjectCRC);
 
 protected:
 	PlayerObject(DummyConstructorParameter* param);
@@ -47,12 +51,14 @@ namespace objects {
 namespace player {
 
 class PlayerObjectImplementation : public IntangibleObjectImplementation {
-	int test;
-
 	CreatureObject* creatureObject;
+
+	ZoneClientSession* owner;
 
 public:
 	PlayerObjectImplementation(LuaObject* templ, SceneObject* parent = NULL);
+
+	void initialize(unsigned int creatureObjectCRC);
 
 	PlayerObject* _this;
 
@@ -68,6 +74,8 @@ public:
 	PlayerObjectAdapter(PlayerObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initialize(unsigned int creatureObjectCRC);
 
 };
 

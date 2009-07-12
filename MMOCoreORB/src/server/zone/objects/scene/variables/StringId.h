@@ -42,20 +42,28 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.objects.player;
+#ifndef STRINGID_H_
+#define STRINGID_H_
 
-import engine.lua.LuaObject;
-include server.zone.objects.scene.SceneObject;
-import server.zone.objects.intangible.IntangibleObject;
-import server.zone.objects.creature.CreatureObject;
+#include "engine/engine.h"
 
-import server.zone.ZoneClientSession;
+class StringId : public Serializable {
+	String file;
+	String stringID;
 
-class PlayerObject extends IntangibleObject {
-	CreatureObject creatureObject;
-	ZoneClientSession owner;
-	
-	public PlayerObject(LuaObject templ, SceneObject parent = NULL);
-	
-	public void initialize(unsigned int creatureObjectCRC);
-}
+	UnicodeString customName;
+
+public:
+	StringId(const String& fullPath);
+	StringId(const String& fil, const String& stringId);
+	StringId(const UnicodeString& custom);
+
+	void getFullPath(String& str) {
+		str = "@" + file + ":" + stringID;
+	}
+
+private:
+	inline void addSerializableVariables();
+};
+
+#endif /* STRINGID_H_ */

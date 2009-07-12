@@ -51,4 +51,20 @@ bool TangibleObjectImplementation::registered = false;//ObjectManager::objectFac
 TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templ, SceneObject* parent)
 		: SceneObjectImplementation(templ, parent) {
 
+	targetable = templ->getByteField("targetable");
+
+	complexity = 100.f;
+
+	volume = 1;
+
+	unknownByte = 1;
+
+	objectCount = 0;
+
+	conditionDamage = 0;
+	maxCondition = 6000;
+
+	optionsBitmask = 0;
+
+	defenderList = new Vector<SceneObject*>();
 }

@@ -13,6 +13,8 @@
 
 #include "engine/lua/LuaObject.h"
 
+#include "system/util/Vector.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -21,6 +23,52 @@ namespace creature {
 class CreatureObject : public TangibleObject {
 public:
 	CreatureObject(LuaObject* templateData, SceneObject* parent = NULL);
+
+	int getBankCredits();
+
+	int getCashCredits();
+
+	int getBaseHealthUpdateCounter();
+
+	byte getPosture();
+
+	byte getFactionRank();
+
+	unsigned long long getCreatureLinkID();
+
+	float getShockWounds();
+
+	unsigned long long getStateBitmask();
+
+	unsigned long long getListenID();
+
+	float getSpeed();
+
+	float getTerrainNegotiation();
+
+	float getAcceleration();
+
+	short getLevel();
+
+	unsigned long long getWeaponID();
+
+	unsigned long long getGroupID();
+
+	unsigned long long getGroupInviterID();
+
+	unsigned long long getGroupInviteCounter();
+
+	int getGuildID();
+
+	unsigned long long getTargetID();
+
+	byte getMoodID();
+
+	int getPerformanceCounter();
+
+	int getInstrumentID();
+
+	byte getFrozen();
 
 protected:
 	CreatureObject(DummyConstructorParameter* param);
@@ -45,7 +93,70 @@ namespace objects {
 namespace creature {
 
 class CreatureObjectImplementation : public TangibleObjectImplementation {
-	int test;
+protected:
+	int bankCredits;
+
+	int cashCredits;
+
+	Vector<int >* baseHealth;
+
+	unsigned int baseHealthUpdateCounter;
+
+	byte posture;
+
+	byte factionRank;
+
+	unsigned long long creatureLinkID;
+
+	float shockWounds;
+
+	Vector<int >* wounds;
+
+	unsigned int woundsUpdateCounter;
+
+	unsigned long long stateBitmask;
+
+	Vector<int >* encumbrances;
+
+	unsigned int encumbrancesUpdateCounter;
+
+	float speed;
+
+	float terrainNegotiation;
+
+	float acceleration;
+
+	unsigned long long listenToID;
+
+	short level;
+
+	unsigned long long weaponID;
+
+	unsigned long long groupID;
+
+	unsigned long long groupInviterID;
+
+	unsigned long long groupInviteCounter;
+
+	int guildID;
+
+	unsigned long long targetID;
+
+	byte moodID;
+
+	int performanceCounter;
+
+	int instrumentID;
+
+	Vector<int >* hamList;
+
+	unsigned int hamListUpdateCounter;
+
+	Vector<int >* maxHamList;
+
+	unsigned int maxHamListUpdateCounter;
+
+	byte frozen;
 
 public:
 	static bool registered;
@@ -57,6 +168,52 @@ public:
 	static bool registered4;
 
 	CreatureObjectImplementation(LuaObject* templateData, SceneObject* parent = NULL);
+
+	int getBankCredits();
+
+	int getCashCredits();
+
+	int getBaseHealthUpdateCounter();
+
+	byte getPosture();
+
+	byte getFactionRank();
+
+	unsigned long long getCreatureLinkID();
+
+	float getShockWounds();
+
+	unsigned long long getStateBitmask();
+
+	unsigned long long getListenID();
+
+	float getSpeed();
+
+	float getTerrainNegotiation();
+
+	float getAcceleration();
+
+	short getLevel();
+
+	unsigned long long getWeaponID();
+
+	unsigned long long getGroupID();
+
+	unsigned long long getGroupInviterID();
+
+	unsigned long long getGroupInviteCounter();
+
+	int getGuildID();
+
+	unsigned long long getTargetID();
+
+	byte getMoodID();
+
+	int getPerformanceCounter();
+
+	int getInstrumentID();
+
+	byte getFrozen();
 
 	CreatureObject* _this;
 
@@ -72,6 +229,52 @@ public:
 	CreatureObjectAdapter(CreatureObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	int getBankCredits();
+
+	int getCashCredits();
+
+	int getBaseHealthUpdateCounter();
+
+	byte getPosture();
+
+	byte getFactionRank();
+
+	unsigned long long getCreatureLinkID();
+
+	float getShockWounds();
+
+	unsigned long long getStateBitmask();
+
+	unsigned long long getListenID();
+
+	float getSpeed();
+
+	float getTerrainNegotiation();
+
+	float getAcceleration();
+
+	short getLevel();
+
+	unsigned long long getWeaponID();
+
+	unsigned long long getGroupID();
+
+	unsigned long long getGroupInviterID();
+
+	unsigned long long getGroupInviteCounter();
+
+	int getGuildID();
+
+	unsigned long long getTargetID();
+
+	byte getMoodID();
+
+	int getPerformanceCounter();
+
+	int getInstrumentID();
+
+	byte getFrozen();
 
 };
 
